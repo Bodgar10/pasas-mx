@@ -414,7 +414,7 @@ export default function OnboardingPage() {
               transition: 'background-color 0.15s, color 0.15s',
             }}
           >
-            {step === 3 ? '¡Empezar! ✨' : step === 4 ? 'Ir al dashboard →' : 'Siguiente →'}
+            {step === 3 ? '¡Empezar! ✨' : step === 4 ? 'Ver cómo estudiarías →' : 'Siguiente →'}
           </button>
 
           {/* Back link */}
