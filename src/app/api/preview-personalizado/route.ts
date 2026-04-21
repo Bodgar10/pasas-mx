@@ -41,18 +41,30 @@ Hobby/interés: ${theme}
 Materia: ${subject}
 Diagnóstico del estudiante: ${diagnostico}`
 
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 300,
-      system: [
-        {
-          type: 'text',
-          text: SYSTEM_PROMPT,
-          cache_control: { type: 'ephemeral' },
-        },
-      ],
-      messages: [{ role: 'user', content: userMessage }],
-    })
+    const callAnthropic = async (retries = 1) => {
+      try {
+        return await client.messages.create({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 300,
+          system: [
+            {
+              type: 'text',
+              text: SYSTEM_PROMPT,
+              cache_control: { type: 'ephemeral' },
+            },
+          ],
+          messages: [{ role: 'user', content: userMessage }],
+        })
+      } catch (error: any) {
+        if (retries > 0 && error.message?.includes('overloaded')) {
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+          return callAnthropic(retries - 1)
+        }
+        throw error
+      }
+    }
+
+    const response = await callAnthropic()
 
     const textBlock = response.content.find((b) => b.type === 'text')
     if (!textBlock || textBlock.type !== 'text') {

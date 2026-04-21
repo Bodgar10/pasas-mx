@@ -20,6 +20,7 @@ function PreviewIAContent() {
 
   const [preview, setPreview] = useState<AIPreview | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [dots, setDots] = useState('.')
   const hasFetched = useRef(false)
 
   useEffect(() => {
@@ -38,10 +39,22 @@ function PreviewIAContent() {
       })
       .then(setPreview)
       .catch((err: unknown) => {
-        const msg = err instanceof Error ? err.message : 'No pudimos generar tu vista previa.'
-        setError(msg)
+        const msg = err instanceof Error ? err.message : ''
+        if (msg.includes('overloaded') || msg.includes('529')) {
+          setError('Demasiada demanda en este momento. Intenta de nuevo en unos segundos.')
+        } else {
+          setError('No pudimos generar tu vista previa. Intenta de nuevo.')
+        }
       })
   }, [subject, theme, diagnostico, level])
+
+  useEffect(() => {
+    if (preview || error) return
+    const interval = setInterval(() => {
+      setDots((d) => (d.length >= 3 ? '.' : d + '.'))
+    }, 500)
+    return () => clearInterval(interval)
+  }, [preview, error])
 
   function handleBack() {
     const params = new URLSearchParams({ level })
@@ -95,31 +108,85 @@ function PreviewIAContent() {
 
         {/* Loading state */}
         {!preview && !error && (
-          <div
-            style={{
-              backgroundColor: '#1a1035',
-              border: '1px solid rgba(124,58,237,0.25)',
-              borderRadius: 20,
-              padding: '40px 20px',
-              textAlign: 'center',
-            }}
-          >
-            <div style={{ fontSize: 40, marginBottom: 16 }}>✨</div>
-            <h2
+          <>
+            <style dangerouslySetInnerHTML={{ __html: `
+              @keyframes pulse-ring { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+              @keyframes shimmer {
+                0% { background-position: -200px 0; }
+                100% { background-position: calc(200px + 100%) 0; }
+              }
+            `}} />
+            <div
               style={{
-                fontFamily: 'var(--font-orbitron)',
-                fontSize: 18,
-                fontWeight: 900,
-                color: '#e2d9f3',
-                margin: '0 0 8px',
+                backgroundColor: '#1a1035',
+                border: '1px solid #2D2048',
+                borderRadius: 16,
+                padding: '32px 24px',
+                textAlign: 'center',
               }}
             >
-              Generando tu guía…
-            </h2>
-            <p style={{ fontSize: 13, color: '#a78bfa', margin: 0 }}>
-              Preparando tu ejemplo personalizado...
-            </p>
-          </div>
+              {/* Pulsing circle */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+                <div
+                  style={{
+                    width: 64,
+                    height: 64,
+                    borderRadius: '50%',
+                    border: '2px solid #7c3aed',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    animation: 'pulse-ring 1.5s ease-in-out infinite',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: '50%',
+                      backgroundColor: '#7c3aed',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 20,
+                    }}
+                  >
+                    ✨
+                  </div>
+                </div>
+              </div>
+
+              {/* Animated dots */}
+              <p
+                style={{
+                  fontFamily: 'var(--font-nunito)',
+                  fontSize: 15,
+                  fontWeight: 700,
+                  color: '#e2d9f3',
+                  margin: '0 0 20px',
+                }}
+              >
+                Preparando tu ejemplo personalizado{dots}
+              </p>
+
+              {/* Skeleton rows */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {([100, 80, 60] as const).map((width, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      height: 12,
+                      borderRadius: 6,
+                      width: `${width}%`,
+                      background: 'linear-gradient(90deg, #2D2048 25%, #3d2a6e 50%, #2D2048 75%)',
+                      backgroundSize: '200px 100%',
+                      animation: 'shimmer 1.5s infinite linear',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
         )}
 
         {/* Error state */}
