@@ -33,11 +33,16 @@ function PreviewIAContent() {
       body: JSON.stringify({ subject, theme, diagnostico, level }),
     })
       .then(async (res) => {
+        console.log('API response status:', res.status)
         const data = await res.json() as AIPreview & { error?: string }
+        console.log('API response data:', data)
         if (!res.ok) throw new Error(data.error ?? 'Error al generar la vista previa')
         return data
       })
-      .then(setPreview)
+      .then((data) => {
+        console.log('Setting preview with data:', data)
+        setPreview(data)
+      })
       .catch((err: unknown) => {
         const msg = err instanceof Error ? err.message : ''
         if (msg.includes('overloaded') || msg.includes('529')) {
@@ -200,11 +205,31 @@ function PreviewIAContent() {
               textAlign: 'center',
             }}
           >
-            <p style={{ fontSize: 14, color: '#f87171', margin: '0 0 20px' }}>{error}</p>
+            <p style={{ fontSize: 14, color: '#f87171', margin: '0 0 16px' }}>{error}</p>
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              style={{
+                marginTop: '12px',
+                width: '100%',
+                background: '#7c3aed',
+                border: 'none',
+                borderRadius: '14px',
+                padding: '14px',
+                fontFamily: 'var(--font-nunito)',
+                fontSize: '15px',
+                fontWeight: 900,
+                color: '#ffffff',
+                cursor: 'pointer',
+              }}
+            >
+              Intentar de nuevo
+            </button>
             <button
               type="button"
               onClick={handleBack}
               style={{
+                marginTop: 12,
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
