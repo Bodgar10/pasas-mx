@@ -42,7 +42,7 @@ Materia: ${subject}
 Diagnóstico del estudiante: ${diagnostico}`
 
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 300,
       system: [
         {
@@ -59,7 +59,13 @@ Diagnóstico del estudiante: ${diagnostico}`
       throw new Error('No text response from AI')
     }
 
-    const parsed = JSON.parse(textBlock.text) as {
+    const rawText = textBlock.text
+    const cleanText = rawText
+      .replace(/^```json\s*/i, '')
+      .replace(/^```\s*/i, '')
+      .replace(/```\s*$/i, '')
+      .trim()
+    const parsed = JSON.parse(cleanText) as {
       title: string
       explanation: string
       bullets: string[]

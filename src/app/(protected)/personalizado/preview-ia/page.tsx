@@ -117,7 +117,7 @@ function PreviewIAContent() {
               Generando tu guía…
             </h2>
             <p style={{ fontSize: 13, color: '#a78bfa', margin: 0 }}>
-              La IA está creando tu vista previa personalizada
+              Preparando tu ejemplo personalizado...
             </p>
           </div>
         )}
