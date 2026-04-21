@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useTransition } from 'react'
-import { saveOnboarding, type OnboardingResult } from './actions'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 type Step = 1 | 2 | 3 | 4
 
@@ -88,8 +88,7 @@ export default function OnboardingPage() {
   const [level, setLevel] = useState<string | null>(null)
   const [grade, setGrade] = useState<string | null>(null)
   const [theme, setTheme] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   const selectedLevel = LEVELS.find((l) => l.label === level)
   const selectedTheme = THEMES.find((t) => t.label === theme)
@@ -110,11 +109,10 @@ export default function OnboardingPage() {
       setStep(4)
     } else {
       if (!theme || !level) return
-      setError(null)
-      startTransition(async () => {
-        const result: OnboardingResult = await saveOnboarding({ level, grade, theme })
-        if (result?.error) setError(result.error)
-      })
+      const params = new URLSearchParams({ level })
+      if (grade) params.set('grade', grade)
+      params.set('theme', theme)
+      router.push(`/onboarding/preview?${params.toString()}`)
     }
   }
 
@@ -397,30 +395,11 @@ export default function OnboardingPage() {
             </>
           )}
 
-          {/* Error */}
-          {error && (
-            <p
-              role="alert"
-              style={{
-                marginTop: 16,
-                borderRadius: 12,
-                padding: '12px 16px',
-                fontSize: 14,
-                fontWeight: 500,
-                backgroundColor: 'rgba(239,68,68,0.1)',
-                color: '#f87171',
-                border: '1px solid rgba(239,68,68,0.2)',
-              }}
-            >
-              {error}
-            </p>
-          )}
-
           {/* Primary button */}
           <button
             type="button"
             onClick={handleNext}
-            disabled={!canProceed || isPending}
+            disabled={!canProceed}
             style={{
               marginTop: 20,
               width: '100%',
@@ -429,19 +408,13 @@ export default function OnboardingPage() {
               fontWeight: 900,
               fontSize: 16,
               border: 'none',
-              cursor: canProceed && !isPending ? 'pointer' : 'not-allowed',
-              backgroundColor: canProceed && !isPending ? '#7c3aed' : '#2D2048',
-              color: canProceed && !isPending ? '#ffffff' : '#4B3D6E',
+              cursor: canProceed ? 'pointer' : 'not-allowed',
+              backgroundColor: canProceed ? '#7c3aed' : '#2D2048',
+              color: canProceed ? '#ffffff' : '#4B3D6E',
               transition: 'background-color 0.15s, color 0.15s',
             }}
           >
-            {isPending
-              ? 'Guardando…'
-              : step === 3
-              ? '¡Empezar! ✨'
-              : step === 4
-              ? 'Ir al dashboard →'
-              : 'Siguiente →'}
+            {step === 3 ? '¡Empezar! ✨' : step === 4 ? 'Ir al dashboard →' : 'Siguiente →'}
           </button>
 
           {/* Back link */}
