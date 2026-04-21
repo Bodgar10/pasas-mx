@@ -21,6 +21,7 @@ Responde SOLO con JSON válido en este formato exacto:
 Usa lenguaje cercano, motivador y adaptado a adolescentes mexicanos. Conecta siempre la materia con el hobby del estudiante.`
 
 export async function POST(request: Request) {
+  console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY)
   try {
     const body = await request.json() as {
       subject: string
@@ -65,7 +66,9 @@ Diagnóstico del estudiante: ${diagnostico}`
     }
 
     return NextResponse.json(parsed)
-  } catch {
-    return NextResponse.json({ error: 'Error al generar la vista previa' }, { status: 500 })
+  } catch (error) {
+    console.error('Anthropic error:', error)
+    const message = error instanceof Error ? error.message : 'Error al generar la vista previa'
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }

@@ -31,12 +31,16 @@ function PreviewIAContent() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ subject, theme, diagnostico, level }),
     })
-      .then((res) => {
-        if (!res.ok) throw new Error('Error al generar la vista previa')
-        return res.json() as Promise<AIPreview>
+      .then(async (res) => {
+        const data = await res.json() as AIPreview & { error?: string }
+        if (!res.ok) throw new Error(data.error ?? 'Error al generar la vista previa')
+        return data
       })
       .then(setPreview)
-      .catch(() => setError('No pudimos generar tu vista previa. Intenta de nuevo.'))
+      .catch((err: unknown) => {
+        const msg = err instanceof Error ? err.message : 'No pudimos generar tu vista previa.'
+        setError(msg)
+      })
   }, [subject, theme, diagnostico, level])
 
   function handleBack() {
