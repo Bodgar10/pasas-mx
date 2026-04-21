@@ -268,7 +268,7 @@ function PreviewContent() {
             </p>
           </div>
 
-          <p style={{ fontSize: 12, color: '#4B3D6E', textAlign: 'center', margin: '16px 0' }}>
+          <p style={{ fontSize: 12, color: '#a78bfa', textAlign: 'center', margin: '16px 0' }}>
             ¿Te falla solo una materia?
           </p>
 
@@ -297,7 +297,7 @@ function PreviewContent() {
         </div>
 
         {/* E) Trust line */}
-        <p style={{ fontSize: 12, color: '#4B3D6E', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
+        <p style={{ fontSize: 12, color: '#a78bfa', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
           Sin tarjeta para empezar · Cancela cuando quieras
         </p>
 
