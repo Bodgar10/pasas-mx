@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { saveOnboarding, type OnboardingResult } from './actions'
 
-type Step = 1 | 2 | 3
+type Step = 1 | 2 | 3 | 4
 
 const LEVELS = [
   { emoji: '📚', label: 'Secundaria', subtitle: '1°, 2° o 3° año', needsGrade: true },
@@ -64,6 +64,7 @@ function Checkmark({ selected }: { selected: boolean }) {
 }
 
 function ProgressBar({ step }: { step: Step }) {
+  const filled = Math.min(step, 3) as 1 | 2 | 3
   return (
     <div style={{ display: 'flex', gap: 8, marginBottom: 32 }}>
       {([1, 2, 3] as const).map((s) => (
@@ -73,7 +74,7 @@ function ProgressBar({ step }: { step: Step }) {
             flex: 1,
             height: 6,
             borderRadius: 999,
-            backgroundColor: s <= step ? '#7c3aed' : '#2D2048',
+            backgroundColor: s <= filled ? '#7c3aed' : '#2D2048',
             transition: 'background-color 0.3s',
           }}
         />
@@ -91,7 +92,8 @@ export default function OnboardingPage() {
   const [isPending, startTransition] = useTransition()
 
   const selectedLevel = LEVELS.find((l) => l.label === level)
-  const canProceed = step === 1 ? !!level : step === 2 ? !!grade : !!theme
+  const selectedTheme = THEMES.find((t) => t.label === theme)
+  const canProceed = step === 1 ? !!level : step === 2 ? !!grade : step === 3 ? !!theme : true
 
   function handleNext() {
     if (step === 1) {
@@ -103,6 +105,9 @@ export default function OnboardingPage() {
       if (!grade) return
       setTheme(null)
       setStep(3)
+    } else if (step === 3) {
+      if (!theme) return
+      setStep(4)
     } else {
       if (!theme || !level) return
       setError(null)
@@ -118,6 +123,8 @@ export default function OnboardingPage() {
       setStep(1)
     } else if (step === 3) {
       setStep(selectedLevel?.needsGrade ? 2 : 1)
+    } else if (step === 4) {
+      setStep(3)
     }
   }
 
@@ -277,7 +284,7 @@ export default function OnboardingPage() {
                   marginBottom: 20,
                 }}
               >
-                ¿Cuál es tu rollo?
+                ¿Cuál es tu hobbie principal?
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
                 {THEMES.map((t) => {
@@ -310,6 +317,82 @@ export default function OnboardingPage() {
                     </button>
                   )
                 })}
+              </div>
+            </>
+          )}
+
+          {/* Step 4 — Confirmation */}
+          {step === 4 && (
+            <>
+              {/* XP badge */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 13,
+                    fontWeight: 900,
+                    backgroundColor: '#422006',
+                    color: '#fbbf24',
+                    border: '1.5px solid #78350f',
+                    borderRadius: 999,
+                    padding: '5px 16px',
+                  }}
+                >
+                  +100 XP 🔥
+                </span>
+              </div>
+
+              {/* Trophy + title */}
+              <div style={{ textAlign: 'center', marginBottom: 20 }}>
+                <div style={{ fontSize: 56, lineHeight: 1, marginBottom: 12 }}>🏆</div>
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 22,
+                    fontWeight: 900,
+                    color: '#e2d9f3',
+                    margin: '0 0 6px',
+                  }}
+                >
+                  ¡Todo listo!
+                </h2>
+                <p style={{ fontSize: 14, color: '#a78bfa', margin: 0 }}>
+                  Tu cuenta está personalizada
+                </p>
+              </div>
+
+              {/* Summary card */}
+              <div
+                style={{
+                  backgroundColor: '#1a1035',
+                  border: '1.5px solid #2D2048',
+                  borderRadius: 16,
+                  padding: '16px 18px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12,
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Nivel</span>
+                  <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                    {selectedLevel?.emoji} {level}
+                  </span>
+                </div>
+                {grade && (
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Año</span>
+                    <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                      📅 {grade}
+                    </span>
+                  </div>
+                )}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Hobbie</span>
+                  <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                    {selectedTheme?.emoji} {theme}
+                  </span>
+                </div>
               </div>
             </>
           )}
@@ -352,7 +435,13 @@ export default function OnboardingPage() {
               transition: 'background-color 0.15s, color 0.15s',
             }}
           >
-            {isPending ? 'Guardando…' : step === 3 ? '¡Empezar! ✨' : 'Siguiente →'}
+            {isPending
+              ? 'Guardando…'
+              : step === 3
+              ? '¡Empezar! ✨'
+              : step === 4
+              ? 'Ir al dashboard →'
+              : 'Siguiente →'}
           </button>
 
           {/* Back link */}
