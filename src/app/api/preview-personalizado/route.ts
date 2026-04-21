@@ -3,22 +3,15 @@ import { NextResponse } from 'next/server'
 
 const client = new Anthropic()
 
-const SYSTEM_PROMPT = `Eres un tutor educativo para estudiantes mexicanos de secundaria, preparatoria y exámenes de admisión.
-Tu tarea es generar una vista previa de guía de estudio personalizada en español mexicano.
-
-Dado el nivel educativo del estudiante, su tema de interés (hobby), la materia que le falla, y su diagnóstico, genera:
-1. Un título atractivo y motivador que conecte la materia con el hobby del estudiante
-2. Una breve explicación (2-3 oraciones) de cómo se abordaría el aprendizaje
-3. Exactamente 3 bullets concretos de lo que el estudiante aprendería
-
-Responde SOLO con JSON válido en este formato exacto:
+const SYSTEM_PROMPT = `Eres un tutor para estudiantes mexicanos.
+Responde ÚNICAMENTE con JSON válido, sin texto adicional, sin markdown, sin explicaciones.
+La respuesta debe ser un objeto JSON con exactamente estas claves:
 {
-  "title": "...",
-  "explanation": "...",
-  "bullets": ["...", "...", "..."]
+  "title": "máximo 8 palabras",
+  "explanation": "máximo 40 palabras",
+  "bullets": ["máximo 6 palabras", "máximo 6 palabras", "máximo 6 palabras"]
 }
-
-Usa lenguaje cercano, motivador y adaptado a adolescentes mexicanos. Conecta siempre la materia con el hobby del estudiante.`
+NO uses comillas dentro de los valores de texto. NO uses caracteres especiales.`
 
 export async function POST(request: Request) {
   console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY)
@@ -45,7 +38,7 @@ Diagnóstico del estudiante: ${diagnostico}`
       try {
         return await client.messages.create({
           model: 'claude-sonnet-4-6',
-          max_tokens: 300,
+          max_tokens: 800,
           system: [
             {
               type: 'text',
