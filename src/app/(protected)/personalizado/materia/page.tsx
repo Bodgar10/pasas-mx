@@ -2,6 +2,7 @@
 
 import { Suspense, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
 
 const SUBJECTS_BY_LEVEL: Record<string, { emoji: string; label: string }[]> = {
   Secundaria: [
@@ -41,6 +42,8 @@ function MateriaContent() {
   const grade = searchParams.get('grade')
   const theme = searchParams.get('theme') ?? ''
 
+  const supabase = createClient()
+
   const [subject, setSubject] = useState<string | null>(null)
 
   const subjects = SUBJECTS_BY_LEVEL[level] ?? SUBJECTS_BY_LEVEL['Secundaria']!
@@ -52,12 +55,35 @@ function MateriaContent() {
     router.push(`/onboarding/preview?${params.toString()}`)
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (!subject) return
+
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
+
+    const today = new Date().toISOString().split('T')[0]
+
+    const { data: cache } = await supabase
+      .from('preview_cache')
+      .select('result_json, diagnostico, last_reset')
+      .eq('user_id', user.id)
+      .eq('subject', subject)
+      .eq('theme', theme)
+      .single()
+
     const params = new URLSearchParams({ level })
     if (grade) params.set('grade', grade)
     params.set('theme', theme)
     params.set('subject', subject)
+
+    if (cache && cache.last_reset === today) {
+      params.set('diagnostico', cache.diagnostico)
+      params.set('tipo', 'descripcion')
+      params.set('cached', 'true')
+      router.push(`/personalizado/preview-ia?${params.toString()}`)
+      return
+    }
+
     router.push(`/personalizado/diagnostico?${params.toString()}`)
   }
 

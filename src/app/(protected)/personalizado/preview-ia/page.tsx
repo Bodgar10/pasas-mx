@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
 
 type AIPreview = {
   title: string
@@ -18,6 +19,8 @@ function PreviewIAContent() {
   const subject = searchParams.get('subject') ?? ''
   const diagnostico = searchParams.get('diagnostico') ?? ''
 
+  const supabase = createClient()
+
   const [preview, setPreview] = useState<AIPreview | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [dots, setDots] = useState('.')
@@ -27,43 +30,76 @@ function PreviewIAContent() {
     if (hasFetched.current || !subject || !diagnostico) return
     hasFetched.current = true
 
-    const cacheKey = `pasas_preview_${level}_${subject}_${theme}_${diagnostico?.slice(0, 30)}`
-    const cached = sessionStorage.getItem(cacheKey)
-    if (cached) {
-      setPreview(JSON.parse(cached))
-      return
-    }
+    async function loadPreview() {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
 
-    fetch('/api/preview-personalizado', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, theme, diagnostico, level }),
-    })
-      .then(async (res) => {
+      const cacheKey = `pasas_preview_${level}_${subject}_${theme}_${diagnostico?.slice(0, 30)}`
+
+      // Layer 1: sessionStorage
+      const cached = sessionStorage.getItem(cacheKey)
+      if (cached) {
+        setPreview(JSON.parse(cached))
+        return
+      }
+
+      // Layer 2: Supabase cache
+      const { data: dbCache } = await supabase
+        .from('preview_cache')
+        .select('result_json')
+        .eq('user_id', user.id)
+        .eq('subject', subject)
+        .eq('theme', theme)
+        .single()
+
+      if (dbCache && dbCache.result_json && dbCache.result_json.title) {
+        sessionStorage.setItem(cacheKey, JSON.stringify(dbCache.result_json))
+        setPreview(dbCache.result_json)
+        return
+      }
+
+      // Layer 3: Call Claude
+      try {
+        const res = await fetch('/api/preview-personalizado', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ subject, theme, diagnostico, level }),
+        })
+
         console.log('API response status:', res.status)
-        const data = await res.json() as AIPreview & { error?: string }
+        const data = await res.json()
         console.log('API response data:', data)
+
         if (res.status === 422 && data.error === 'mismatch') {
           setError('mismatch')
           return
         }
+
         if (!res.ok) throw new Error(data.error ?? 'Error al generar la vista previa')
-        return data
-      })
-      .then((data) => {
-        if (!data) return
-        console.log('Setting preview with data:', data)
+
+        // Save to Supabase
+        await supabase
+          .from('preview_cache')
+          .update({ result_json: data, updated_at: new Date().toISOString() })
+          .eq('user_id', user.id)
+          .eq('subject', subject)
+          .eq('theme', theme)
+
+        // Save to sessionStorage
         sessionStorage.setItem(cacheKey, JSON.stringify(data))
         setPreview(data)
-      })
-      .catch((err: unknown) => {
+
+      } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : ''
         if (msg.includes('overloaded') || msg.includes('529')) {
           setError('Demasiada demanda en este momento. Intenta de nuevo en unos segundos.')
         } else {
           setError('No pudimos generar tu vista previa. Intenta de nuevo.')
         }
-      })
+      }
+    }
+
+    loadPreview()
   }, [subject, theme, diagnostico, level])
 
   useEffect(() => {
@@ -74,7 +110,21 @@ function PreviewIAContent() {
     return () => clearInterval(interval)
   }, [preview, error])
 
-  function handleBack() {
+  async function handleBack() {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (user) {
+      await supabase
+        .from('preview_cache')
+        .update({ result_json: {}, updated_at: new Date().toISOString() })
+        .eq('user_id', user.id)
+        .eq('subject', subject)
+        .eq('theme', theme)
+
+      const cacheKey = `pasas_preview_${level}_${subject}_${theme}_${diagnostico?.slice(0, 30)}`
+      sessionStorage.removeItem(cacheKey)
+    }
+
     const params = new URLSearchParams({ level })
     if (grade) params.set('grade', grade)
     params.set('theme', theme)

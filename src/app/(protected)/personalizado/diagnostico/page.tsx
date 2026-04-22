@@ -1,7 +1,8 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
 
 function DiagnosticoContent() {
   const searchParams = useSearchParams()
@@ -11,11 +12,39 @@ function DiagnosticoContent() {
   const theme = searchParams.get('theme') ?? ''
   const subject = searchParams.get('subject') ?? ''
 
+  const supabase = createClient()
+
   const [path, setPath] = useState<'descripcion' | 'quiz'>('descripcion')
   const [description, setDescription] = useState('')
+  const [limitAlcanzado, setLimitAlcanzado] = useState(false)
+  const [loadingLimit, setLoadingLimit] = useState(true)
 
   const canProceed =
     (path === 'descripcion' && description.trim().length >= 10) || path === 'quiz'
+
+  useEffect(() => {
+    async function checkLimit() {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
+
+      const today = new Date().toISOString().split('T')[0]
+
+      const { data: cache } = await supabase
+        .from('preview_cache')
+        .select('daily_count, last_reset')
+        .eq('user_id', user.id)
+        .eq('subject', subject)
+        .eq('theme', theme)
+        .single()
+
+      if (cache && cache.last_reset === today && cache.daily_count >= 3) {
+        setLimitAlcanzado(true)
+      }
+
+      setLoadingLimit(false)
+    }
+    checkLimit()
+  }, [subject, theme])
 
   function handleBack() {
     const params = new URLSearchParams({ level })
@@ -24,16 +53,84 @@ function DiagnosticoContent() {
     router.push(`/personalizado/materia?${params.toString()}`)
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (!canProceed) return
+
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
+
+    const today = new Date().toISOString().split('T')[0]
+    const diagnostico = path === 'descripcion' ? description.trim() : 'quiz'
+
+    const { data: existing } = await supabase
+      .from('preview_cache')
+      .select('daily_count, last_reset')
+      .eq('user_id', user.id)
+      .eq('subject', subject)
+      .eq('theme', theme)
+      .single()
+
+    const isNewDay = !existing || existing.last_reset !== today
+    const newCount = isNewDay ? 1 : (existing.daily_count + 1)
+
+    await supabase
+      .from('preview_cache')
+      .upsert({
+        user_id: user.id,
+        subject,
+        theme,
+        diagnostico,
+        result_json: {},
+        daily_count: newCount,
+        last_reset: today,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,subject,theme' })
+
     const params = new URLSearchParams({ level })
     if (grade) params.set('grade', grade)
     params.set('theme', theme)
     params.set('subject', subject)
-    params.set('diagnostico', path === 'descripcion' ? description.trim() : 'quiz')
+    params.set('diagnostico', diagnostico)
     params.set('tipo', path)
     router.push(`/personalizado/preview-ia?${params.toString()}`)
   }
+
+  if (loadingLimit) return (
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <p style={{ color: '#a78bfa', fontFamily: 'var(--font-nunito)', fontSize: 14 }}>Cargando...</p>
+    </div>
+  )
+
+  if (limitAlcanzado) return (
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '48px 16px 40px' }}>
+      <div style={{ width: '100%', maxWidth: 390 }}>
+        <div style={{ textAlign: 'center', marginBottom: 24 }}>
+          <p style={{ fontFamily: 'var(--font-orbitron)', fontSize: 13, fontWeight: 700, letterSpacing: '0.2em', color: '#a78bfa', margin: 0 }}>PASAS.MX</p>
+        </div>
+        <div style={{ backgroundColor: '#1a1035', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 20, padding: '32px 20px', textAlign: 'center' }}>
+          <div style={{ fontSize: 40, marginBottom: 16 }}>⏳</div>
+          <p style={{ fontSize: 15, fontWeight: 700, color: '#e2d9f3', margin: '0 0 8px', fontFamily: 'var(--font-nunito)' }}>
+            Límite diario alcanzado
+          </p>
+          <p style={{ fontSize: 13, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
+            Ya generaste 3 diagnósticos para {subject} hoy. Regresa mañana para intentarlo de nuevo.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              const params = new URLSearchParams({ level })
+              if (grade) params.set('grade', grade)
+              params.set('theme', theme)
+              router.push(`/personalizado/materia?${params.toString()}`)
+            }}
+            style={{ width: '100%', minHeight: 52, backgroundColor: '#7c3aed', border: 'none', borderRadius: 14, fontFamily: 'var(--font-nunito)', fontSize: 15, fontWeight: 900, color: '#ffffff', cursor: 'pointer' }}
+          >
+            Elegir otra materia
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <div

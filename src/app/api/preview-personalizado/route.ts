@@ -1,6 +1,28 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { NextResponse } from 'next/server'
 
+const ipRateLimit = new Map<string, { count: number; resetAt: number }>()
+
+const MAX_CALLS = 10
+const WINDOW_MS = 60 * 60 * 1000 // 1 hour
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const record = ipRateLimit.get(ip)
+
+  if (!record || now > record.resetAt) {
+    ipRateLimit.set(ip, { count: 1, resetAt: now + WINDOW_MS })
+    return true
+  }
+
+  if (record.count >= MAX_CALLS) {
+    return false
+  }
+
+  record.count++
+  return true
+}
+
 const client = new Anthropic()
 
 const SYSTEM_PROMPT = `Eres un tutor para estudiantes mexicanos.
@@ -25,6 +47,16 @@ REGLAS:
 
 export async function POST(request: Request) {
   console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY)
+
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: 'Demasiadas solicitudes. Intenta de nuevo en una hora.' },
+      { status: 429 }
+    )
+  }
+
   try {
     const body = await request.json() as {
       subject: string
