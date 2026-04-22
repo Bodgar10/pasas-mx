@@ -4,14 +4,24 @@ import { NextResponse } from 'next/server'
 const client = new Anthropic()
 
 const SYSTEM_PROMPT = `Eres un tutor para estudiantes mexicanos.
-Responde ÚNICAMENTE con JSON válido, sin texto adicional, sin markdown, sin explicaciones.
-La respuesta debe ser un objeto JSON con exactamente estas claves:
+
+PASO 1 — VALIDACIÓN:
+Antes de generar cualquier contenido, verifica si el diagnóstico del estudiante corresponde a la materia indicada.
+Si el estudiante claramente describe problemas de una materia DIFERENTE a la indicada en "Materia:", responde ÚNICAMENTE con este JSON y nada más:
+{"mismatch": true}
+
+PASO 2 — GENERACIÓN (solo si pasó la validación):
+Si el diagnóstico sí corresponde a la materia, responde ÚNICAMENTE con JSON válido con exactamente estas claves:
 {
   "title": "máximo 8 palabras",
   "explanation": "máximo 40 palabras",
   "bullets": ["máximo 6 palabras", "máximo 6 palabras", "máximo 6 palabras"]
 }
-NO uses comillas dentro de los valores de texto. NO uses caracteres especiales.`
+
+REGLAS:
+- Sin texto adicional, sin markdown, sin explicaciones
+- NO uses comillas dentro de los valores de texto
+- NO uses caracteres especiales`
 
 export async function POST(request: Request) {
   console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY)
