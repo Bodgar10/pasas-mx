@@ -74,6 +74,11 @@ Diagnóstico del estudiante: ${diagnostico}`
       title: string
       explanation: string
       bullets: string[]
+      mismatch?: boolean
+    }
+
+    if (parsed.mismatch) {
+      return NextResponse.json({ error: 'mismatch' }, { status: 422 })
     }
 
     return NextResponse.json(parsed)

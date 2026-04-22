@@ -27,6 +27,13 @@ function PreviewIAContent() {
     if (hasFetched.current || !subject || !diagnostico) return
     hasFetched.current = true
 
+    const cacheKey = `pasas_preview_${level}_${subject}_${theme}_${diagnostico?.slice(0, 30)}`
+    const cached = sessionStorage.getItem(cacheKey)
+    if (cached) {
+      setPreview(JSON.parse(cached))
+      return
+    }
+
     fetch('/api/preview-personalizado', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,11 +43,17 @@ function PreviewIAContent() {
         console.log('API response status:', res.status)
         const data = await res.json() as AIPreview & { error?: string }
         console.log('API response data:', data)
+        if (res.status === 422 && data.error === 'mismatch') {
+          setError('mismatch')
+          return
+        }
         if (!res.ok) throw new Error(data.error ?? 'Error al generar la vista previa')
         return data
       })
       .then((data) => {
+        if (!data) return
         console.log('Setting preview with data:', data)
+        sessionStorage.setItem(cacheKey, JSON.stringify(data))
         setPreview(data)
       })
       .catch((err: unknown) => {
@@ -194,8 +207,77 @@ function PreviewIAContent() {
           </>
         )}
 
+        {/* Mismatch state */}
+        {error === 'mismatch' && (
+          <div
+            style={{
+              backgroundColor: '#1a1035',
+              border: '1px solid rgba(239,68,68,0.3)',
+              borderRadius: 20,
+              padding: '32px 20px',
+              textAlign: 'center',
+            }}
+          >
+            <div style={{ fontSize: 40, marginBottom: 16 }}>🤔</div>
+            <p style={{ fontSize: 15, fontWeight: 700, color: '#e2d9f3', margin: '0 0 8px' }}>
+              Tu descripción no parece ser de {subject}
+            </p>
+            <p style={{ fontSize: 13, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
+              ¿Quieres cambiar de materia o volver a describir lo que te falla?
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                const params = new URLSearchParams({ level })
+                if (grade) params.set('grade', grade)
+                params.set('theme', theme)
+                params.set('subject', subject)
+                router.push(`/personalizado/diagnostico?${params.toString()}`)
+              }}
+              style={{
+                width: '100%',
+                minHeight: 52,
+                backgroundColor: '#7c3aed',
+                border: 'none',
+                borderRadius: 14,
+                fontFamily: 'var(--font-nunito)',
+                fontSize: 15,
+                fontWeight: 900,
+                color: '#ffffff',
+                cursor: 'pointer',
+                marginBottom: 12,
+              }}
+            >
+              ✍️ Volver a describir {subject}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const params = new URLSearchParams({ level })
+                if (grade) params.set('grade', grade)
+                params.set('theme', theme)
+                router.push(`/personalizado/materia?${params.toString()}`)
+              }}
+              style={{
+                width: '100%',
+                background: 'none',
+                border: '1.5px solid #2D2048',
+                borderRadius: 14,
+                padding: '14px',
+                fontFamily: 'var(--font-nunito)',
+                fontSize: 15,
+                fontWeight: 700,
+                color: '#a78bfa',
+                cursor: 'pointer',
+              }}
+            >
+              📖 Cambiar de materia
+            </button>
+          </div>
+        )}
+
         {/* Error state */}
-        {error && (
+        {error && error !== 'mismatch' && (
           <div
             style={{
               backgroundColor: '#1a1035',
