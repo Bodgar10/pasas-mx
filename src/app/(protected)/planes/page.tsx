@@ -92,12 +92,14 @@ function PlanesContent() {
           display: flex;
           flex-direction: column;
           gap: 12px;
+          align-items: stretch;
         }
         @media (min-width: 768px) {
           .planes-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            align-items: stretch;
           }
         }
         .card-middle-desktop {
@@ -269,6 +271,9 @@ function PlanesContent() {
                   border: isMiddle ? '2px solid #7c3aed' : '1.5px solid #2D2048',
                   borderRadius: 20,
                   overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
                 }}
               >
                 {/* Popular tag */}
@@ -291,7 +296,7 @@ function PlanesContent() {
                   </div>
                 )}
 
-                <div className="card-padding" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="card-padding" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                   {/* Duration label */}
                   <p
                     style={{
