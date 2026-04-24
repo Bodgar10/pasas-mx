@@ -19,8 +19,12 @@
   }
 }
 
-body {
+html {
   background: #0f0a1e;
+}
+
+body {
+  background: transparent;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -30,9 +30,11 @@ export default function RootLayout({
       lang="en"
       className={`${orbitron.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" style={{ position: 'relative' }}>
         <Starfield />
-        {children}
+        <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column' }}>
+          {children}
+        </div>
       </body>
     </html>
   );
