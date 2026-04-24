@@ -82,7 +82,6 @@ function PlanesContent() {
     <div
       style={{
         minHeight: '100vh',
-        backgroundColor: '#0f0a1e',
         color: '#e2d9f3',
         fontFamily: 'var(--font-nunito)',
       }}
