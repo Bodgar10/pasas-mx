@@ -32,7 +32,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col" style={{ position: 'relative' }}>
         <Starfield />
-        <div style={{ position: 'relative', zIndex: 20, flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column' }}>
           {children}
         </div>
       </body>

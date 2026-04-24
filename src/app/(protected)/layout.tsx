@@ -21,7 +21,7 @@ export default function ProtectedLayout({
   return (
     <div
       className={`${nunito.variable} ${orbitron.variable} min-h-screen`}
-      style={{ backgroundColor: '#0f0a1e', fontFamily: 'var(--font-nunito)' }}
+      style={{ fontFamily: 'var(--font-nunito)' }}
     >
       {children}
     </div>

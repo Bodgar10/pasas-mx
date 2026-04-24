@@ -21,7 +21,7 @@ export default function AuthLayout({
   return (
     <div
       className={`${nunito.variable} ${orbitron.variable} min-h-screen flex items-center justify-center px-4 py-12`}
-      style={{ backgroundColor: '#0f0a1e', fontFamily: 'var(--font-nunito)' }}
+      style={{ fontFamily: 'var(--font-nunito)' }}
     >
       <div className="w-full max-w-sm">{children}</div>
     </div>
