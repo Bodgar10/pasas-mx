@@ -291,7 +291,7 @@ function PlanesContent() {
                   </div>
                 )}
 
-                <div className="card-padding">
+                <div className="card-padding" style={{ display: 'flex', flexDirection: 'column' }}>
                   {/* Duration label */}
                   <p
                     style={{
@@ -387,6 +387,7 @@ function PlanesContent() {
                       fontWeight: 900,
                       color: '#ffffff',
                       cursor: 'pointer',
+                      marginTop: 'auto',
                     }}
                   >
                     Elegir {card.label}
