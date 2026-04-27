@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   // Fetch user profile
   const { data: profile } = await supabase
     .from('users')
-    .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done')
+    .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done, interests')
     .eq('id', user.id)
     .single()
 
@@ -72,6 +72,7 @@ export default async function DashboardPage() {
         streak_days: profile.streak_days ?? 0,
         education_level: profile.education_level,
         grade: profile.grade,
+        interests: (profile.interests as string[] | null) ?? [],
       }}
       subscriptionStatus={subscriptionStatus}
       subjects={subjects ?? []}
