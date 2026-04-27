@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -79,6 +80,23 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
   }, [])
+
+  const [showMenu, setShowMenu] = useState(false)
+  useEffect(() => {
+    if (!showMenu) return
+    function handleClickOutside(e: MouseEvent) {
+      const target = e.target as HTMLElement
+      if (!target.closest('[data-avatar-menu]')) setShowMenu(false)
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showMenu])
+
+  async function handleLogout() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push('/login')
+  }
 
   const isExam =
     profile.education_level === 'Examen de Preparatoria' ||
@@ -166,26 +184,97 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 {profile.name}
               </p>
 
-              {/* Avatar */}
+              {/* Avatar with dropdown */}
               <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  width: 44,
-                  height: 44,
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'var(--font-orbitron)',
-                  fontSize: 18,
-                  fontWeight: 900,
-                  color: '#fff',
-                }}
+                data-avatar-menu=""
+                style={{ position: 'absolute', top: 0, right: 0 }}
               >
-                {profile.name.charAt(0).toUpperCase()}
+                <div
+                  onClick={() => setShowMenu(!showMenu)}
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 18,
+                    fontWeight: 900,
+                    color: '#fff',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {profile.name.charAt(0).toUpperCase()}
+                </div>
+
+                {showMenu && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 44,
+                      right: 0,
+                      background: '#1a1035',
+                      border: '1.5px solid #2D2048',
+                      borderRadius: 12,
+                      padding: '6px',
+                      minWidth: 160,
+                      zIndex: 50,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => { setShowMenu(false); router.push('/perfil') }}
+                      style={{
+                        width: '100%',
+                        background: 'none',
+                        border: 'none',
+                        borderRadius: 8,
+                        padding: '10px 14px',
+                        textAlign: 'left',
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: '#e2d9f3',
+                        cursor: 'pointer',
+                        fontFamily: 'var(--font-nunito)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.background = '#2D2048')}
+                      onMouseLeave={e => (e.currentTarget.style.background = 'none')}
+                    >
+                      👤 Mi perfil
+                    </button>
+                    <div style={{ height: '1px', background: '#2D2048', margin: '4px 0' }} />
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      style={{
+                        width: '100%',
+                        background: 'none',
+                        border: 'none',
+                        borderRadius: 8,
+                        padding: '10px 14px',
+                        textAlign: 'left',
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: '#f87171',
+                        cursor: 'pointer',
+                        fontFamily: 'var(--font-nunito)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.background = '#2D2048')}
+                      onMouseLeave={e => (e.currentTarget.style.background = 'none')}
+                    >
+                      🚪 Cerrar sesión
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
