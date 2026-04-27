@@ -504,16 +504,14 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                         }
                       }}
                     >
-                      {/* Lock overlay */}
+                      {/* Lock icon */}
                       {isLocked && (
                         <div
                           style={{
                             position: 'absolute',
-                            inset: 0,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: 22,
+                            top: 8,
+                            right: 8,
+                            fontSize: 14,
                             zIndex: 1,
                           }}
                         >
