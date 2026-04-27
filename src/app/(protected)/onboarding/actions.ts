@@ -26,9 +26,13 @@ export async function saveOnboarding(data: OnboardingData): Promise<OnboardingRe
     return { error: 'No pudimos verificar tu sesión. Intenta de nuevo.' }
   }
 
-  let educationLevel: 'middle_school' | 'high_school' | null = null
-  if (data.level === 'Secundaria') educationLevel = 'middle_school'
-  else if (data.level === 'Preparatoria / Bachillerato') educationLevel = 'high_school'
+  const LEVEL_MAP: Record<string, 'middle_school' | 'high_school'> = {
+    'Secundaria': 'middle_school',
+    'Preparatoria / Bachillerato': 'high_school',
+    'Examen de Preparatoria': 'high_school',
+    'Examen de Universidad': 'high_school',
+  }
+  const educationLevel = LEVEL_MAP[data.level] ?? 'high_school'
 
   const grade = data.grade ? (GRADE_MAP[data.grade] ?? null) : null
 
@@ -65,9 +69,13 @@ export async function saveOnboardingData(data: OnboardingData): Promise<SaveResu
     return { error: 'No pudimos verificar tu sesión. Intenta de nuevo.' }
   }
 
-  let educationLevel: 'middle_school' | 'high_school' | null = null
-  if (data.level === 'Secundaria') educationLevel = 'middle_school'
-  else if (data.level === 'Preparatoria / Bachillerato') educationLevel = 'high_school'
+  const LEVEL_MAP: Record<string, 'middle_school' | 'high_school'> = {
+    'Secundaria': 'middle_school',
+    'Preparatoria / Bachillerato': 'high_school',
+    'Examen de Preparatoria': 'high_school',
+    'Examen de Universidad': 'high_school',
+  }
+  const educationLevel = LEVEL_MAP[data.level] ?? 'high_school'
 
   const grade = data.grade ? (GRADE_MAP[data.grade] ?? null) : null
 
