@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   // Fetch user profile
   const { data: profile } = await supabase
     .from('users')
-    .select('name, xp_total, streak_days, education_level, grade, onboarding_done')
+    .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done')
     .eq('id', user.id)
     .single()
 
@@ -67,7 +67,7 @@ export default async function DashboardPage() {
   return (
     <DashboardClient
       profile={{
-        name: profile.name ?? user.email?.split('@')[0] ?? 'Estudiante',
+        name: profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
         xp_total: profile.xp_total ?? 0,
         streak_days: profile.streak_days ?? 0,
         education_level: profile.education_level,
