@@ -110,6 +110,26 @@ export default function RegistroPage() {
       <form action={formAction} className="space-y-4">
         <div className="space-y-1">
           <label
+            htmlFor="full_name"
+            className="block text-sm font-semibold"
+            style={{ color: '#9CA3AF' }}
+          >
+            ¿Cómo te llamas?
+          </label>
+          <input
+            id="full_name"
+            name="full_name"
+            type="text"
+            autoComplete="name"
+            required
+            className={inputClass}
+            style={{ ...inputStyle, minHeight: '52px' }}
+            placeholder="Tu nombre o apodo"
+          />
+        </div>
+
+        <div className="space-y-1">
+          <label
             htmlFor="email"
             className="block text-sm font-semibold"
             style={{ color: '#9CA3AF' }}
