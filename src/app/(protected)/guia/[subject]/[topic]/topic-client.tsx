@@ -1,0 +1,633 @@
+'use client'
+
+import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+interface Section {
+  id: string
+  type: 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip'
+  title: string | null
+  content: string
+  display_order: number
+}
+
+interface QuizQuestion {
+  id: string
+  question: string
+  options: { letter: string; text: string }[]
+  correct_answer: string
+  explanation: string | null
+  difficulty: number
+  xp_reward: number
+}
+
+interface TopicProgress {
+  status: 'not_started' | 'in_progress' | 'completed'
+  best_score: number
+  attempts: number
+}
+
+interface Props {
+  subject: { id: string; name: string; slug: string }
+  topic: { id: string; name: string; slug: string; difficulty: number; xp_reward: number }
+  sections: Section[]
+  quizQuestions: QuizQuestion[]
+  initialProgress: TopicProgress | null
+}
+
+function renderContent(text: string): React.ReactNode {
+  const parts = text.split('**')
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} style={{ fontWeight: 800, color: '#e2d9f3' }}>
+        {part}
+      </strong>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  )
+}
+
+const SECTION_TYPE_LABELS: Record<Section['type'], { label: string; bg: string; color: string; border: string }> = {
+  explanation: {
+    label: '📘 Explicación',
+    bg: 'rgba(124,58,237,0.15)',
+    color: '#c4b5fd',
+    border: 'rgba(124,58,237,0.3)',
+  },
+  analogy: {
+    label: '🎮 Analogía',
+    bg: 'rgba(236,72,153,0.12)',
+    color: '#ec4899',
+    border: 'rgba(236,72,153,0.3)',
+  },
+  example: {
+    label: '🔢 Ejemplo',
+    bg: 'rgba(6,182,212,0.1)',
+    color: '#06b6d4',
+    border: 'rgba(6,182,212,0.3)',
+  },
+  key_fact: {
+    label: '📌 Dato clave',
+    bg: 'rgba(251,191,36,0.1)',
+    color: '#fbbf24',
+    border: 'rgba(251,191,36,0.3)',
+  },
+  tip: {
+    label: '💡 Tip de examen',
+    bg: 'rgba(16,185,129,0.1)',
+    color: '#10b981',
+    border: 'rgba(16,185,129,0.3)',
+  },
+}
+
+const SECTION_ICONS: Record<Section['type'], string> = {
+  explanation: '📘',
+  analogy: '🎮',
+  example: '🔢',
+  key_fact: '📌',
+  tip: '💡',
+}
+
+export default function TopicClient({
+  subject,
+  topic,
+  sections,
+  quizQuestions,
+  initialProgress,
+}: Props) {
+  void initialProgress
+  const router = useRouter()
+  const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
+  const [sessionXp, setSessionXp] = useState(0)
+  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [score, setScore] = useState(0)
+  const [combo, setCombo] = useState(0)
+  const [xpPerQuestion, setXpPerQuestion] = useState<Record<string, number>>({})
+  const [comboAtAnswer, setComboAtAnswer] = useState<Record<string, number>>({})
+
+  function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
+    if (answers[questionId]) return
+    const isCorrect = selectedLetter === question.correct_answer
+    const newCombo = isCorrect ? combo + 1 : 0
+    const multiplier = newCombo >= 3 ? 2 : newCombo >= 2 ? 1.5 : 1
+    const xpEarned = isCorrect ? Math.round(question.xp_reward * multiplier) : 0
+    setAnswers((prev) => ({ ...prev, [questionId]: selectedLetter }))
+    setCombo(newCombo)
+    setXpPerQuestion((prev) => ({ ...prev, [questionId]: xpEarned }))
+    setComboAtAnswer((prev) => ({ ...prev, [questionId]: newCombo }))
+    if (isCorrect) {
+      setScore((prev) => prev + 1)
+      setSessionXp((prev) => prev + xpEarned)
+    }
+  }
+
+  const summaryItems = sections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
+  const resumenSections = summaryItems.length > 0 ? summaryItems : sections
+
+  return (
+    <div
+      style={{
+        maxWidth: 440,
+        margin: '0 auto',
+        fontFamily: 'var(--font-nunito)',
+        color: '#e2d9f3',
+        minHeight: '100vh',
+      }}
+    >
+      {/* Top bar */}
+      <div
+        style={{
+          position: 'sticky',
+          top: 0,
+          background: '#0f0a1e',
+          borderBottom: '1px solid rgba(124,58,237,0.15)',
+          padding: '18px 16px 14px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          zIndex: 10,
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => router.push(`/guia/${subject.slug}`)}
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: 10,
+            background: '#1a1035',
+            border: '1px solid #2D2048',
+            cursor: 'pointer',
+            color: '#a78bfa',
+            fontSize: 16,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          ←
+        </button>
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div
+            style={{
+              fontSize: 10,
+              color: '#a78bfa',
+              textTransform: 'uppercase',
+              letterSpacing: '1.5px',
+              fontWeight: 700,
+              marginBottom: 2,
+            }}
+          >
+            {subject.name}
+          </div>
+          <div
+            style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 13,
+              fontWeight: 900,
+              color: '#e2d9f3',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {topic.name}
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: 'rgba(251,191,36,0.1)',
+            border: '1px solid rgba(251,191,36,0.25)',
+            borderRadius: 50,
+            padding: '4px 10px',
+            fontSize: 11,
+            fontWeight: 800,
+            color: '#fbbf24',
+            flexShrink: 0,
+          }}
+        >
+          ⚡ +{sessionXp} XP
+        </div>
+      </div>
+
+      {/* Tabs row */}
+      <div
+        style={{
+          display: 'flex',
+          padding: '0 16px',
+          borderBottom: '1px solid rgba(124,58,237,0.15)',
+        }}
+      >
+        {(
+          [
+            { key: 'guia', label: '📖 Guía' },
+            { key: 'quiz', label: '🎮 Quiz' },
+            { key: 'resumen', label: '⚡ Resumen' },
+          ] as const
+        ).map(({ key, label }) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => setActiveTab(key)}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              padding: '10px 0',
+              fontSize: 13,
+              fontWeight: 800,
+              cursor: 'pointer',
+              background: 'none',
+              fontFamily: 'var(--font-nunito)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 5,
+              transition: 'color 0.2s',
+              color: activeTab === key ? '#e2d9f3' : '#a78bfa',
+              borderBottom: activeTab === key ? '2.5px solid #7c3aed' : '2.5px solid transparent',
+              borderTop: 'none',
+              borderLeft: 'none',
+              borderRight: 'none',
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab: Guía */}
+      <div style={{ display: activeTab === 'guia' ? 'block' : 'none', padding: 16 }}>
+        {sections.length === 0 ? (
+          <div
+            style={{
+              background: '#1a1035',
+              border: '1px solid rgba(124,58,237,0.2)',
+              borderRadius: 16,
+              padding: '32px 16px',
+              textAlign: 'center',
+              color: '#a78bfa',
+              fontSize: 14,
+            }}
+          >
+            Contenido próximamente
+          </div>
+        ) : (
+          sections.map((section) => {
+            const typeMeta = SECTION_TYPE_LABELS[section.type]
+            return (
+              <div
+                key={section.id}
+                style={{
+                  background: '#1a1035',
+                  border: '1px solid rgba(124,58,237,0.2)',
+                  borderRadius: 16,
+                  padding: 16,
+                  marginBottom: 12,
+                }}
+              >
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    fontSize: 10,
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    letterSpacing: 1,
+                    padding: '3px 9px',
+                    borderRadius: 50,
+                    marginBottom: 10,
+                    border: `1px solid ${typeMeta.border}`,
+                    background: typeMeta.bg,
+                    color: typeMeta.color,
+                  }}
+                >
+                  {typeMeta.label}
+                </div>
+                <div
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 1.65,
+                    color: '#e2d9f3',
+                  }}
+                >
+                  {renderContent(section.content)}
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    marginTop: 8,
+                    gap: 6,
+                    fontSize: 11,
+                    color: '#a78bfa',
+                    fontWeight: 700,
+                  }}
+                >
+                  Leíste esto{' '}
+                  <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                </div>
+              </div>
+            )
+          })
+        )}
+      </div>
+
+      {/* Tab: Quiz */}
+      <div style={{ display: activeTab === 'quiz' ? 'block' : 'none', padding: 16 }}>
+        {quizQuestions.length === 0 ? (
+          <div
+            style={{
+              background: '#1a1035',
+              border: '1px solid rgba(124,58,237,0.2)',
+              borderRadius: 16,
+              padding: '32px 16px',
+              textAlign: 'center',
+              color: '#a78bfa',
+              fontSize: 14,
+            }}
+          >
+            Preguntas próximamente
+          </div>
+        ) : (
+          <>
+            {/* Score display */}
+            <div style={{ textAlign: 'center', paddingBottom: 16 }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 22,
+                  fontWeight: 900,
+                  background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {score} / {quizQuestions.length}
+              </div>
+              <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
+                Respuestas correctas
+              </div>
+            </div>
+
+            {/* Combo dots */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                marginBottom: 16,
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: '50%',
+                    background: i < combo ? '#fbbf24' : 'rgba(255,255,255,0.1)',
+                    border: i < combo
+                      ? '1px solid #fbbf24'
+                      : '1px solid rgba(124,58,237,0.3)',
+                    boxShadow: i < combo ? '0 0 6px rgba(251,191,36,0.5)' : 'none',
+                  }}
+                />
+              ))}
+              <span style={{ fontSize: 11, color: '#a78bfa' }}>
+                {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
+              </span>
+            </div>
+
+            {quizQuestions.map((question, index) => {
+              const isAnswered = !!answers[question.id]
+              const isLocked = index > 0 && !answers[quizQuestions[index - 1].id]
+              const earnedXp = xpPerQuestion[question.id] ?? 0
+              const comboWhenAnswered = comboAtAnswer[question.id] ?? 0
+              const isCorrectAnswer = answers[question.id] === question.correct_answer
+
+              return (
+                <div
+                  key={question.id}
+                  style={{
+                    background: '#1e1040',
+                    border: '1px solid rgba(236,72,153,0.2)',
+                    borderRadius: 16,
+                    padding: 18,
+                    marginBottom: 12,
+                    opacity: isLocked ? 0.4 : 1,
+                    pointerEvents: isLocked ? 'none' : 'auto',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 700,
+                      color: '#f0e6ff',
+                      marginBottom: 14,
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    {question.question}
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {question.options.map((option) => {
+                      const isThisCorrect = option.letter === question.correct_answer
+                      const isThisSelected = answers[question.id] === option.letter
+                      const isThisWrong = isThisSelected && !isThisCorrect
+
+                      let optBg = 'rgba(255,255,255,0.04)'
+                      let optBorder = '1px solid rgba(124,58,237,0.2)'
+                      let optColor = '#e2d9f3'
+
+                      if (isAnswered && isThisCorrect) {
+                        optBg = 'rgba(16,185,129,0.2)'
+                        optBorder = '1px solid #10b981'
+                        optColor = '#6ee7b7'
+                      } else if (isThisWrong) {
+                        optBg = 'rgba(239,68,68,0.15)'
+                        optBorder = '1px solid #ef4444'
+                        optColor = '#fca5a5'
+                      }
+
+                      return (
+                        <button
+                          key={option.letter}
+                          type="button"
+                          onClick={() => handleAnswer(question.id, option.letter, question)}
+                          style={{
+                            width: '100%',
+                            background: optBg,
+                            border: optBorder,
+                            borderRadius: 10,
+                            padding: '10px 14px',
+                            fontSize: 13,
+                            color: optColor,
+                            cursor: isAnswered ? 'default' : 'pointer',
+                            textAlign: 'left',
+                            fontFamily: 'var(--font-nunito)',
+                            fontWeight: 600,
+                            transition: 'all 0.2s',
+                            pointerEvents: isAnswered ? 'none' : 'auto',
+                          }}
+                        >
+                          <strong style={{ fontWeight: 800 }}>{option.letter}.</strong>{' '}
+                          {option.text}
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {isAnswered && (
+                    <div
+                      style={{
+                        marginTop: 10,
+                        padding: '10px 12px',
+                        borderRadius: 8,
+                        fontSize: 13,
+                        fontWeight: 700,
+                        ...(isCorrectAnswer
+                          ? {
+                              background: 'rgba(16,185,129,0.12)',
+                              color: '#6ee7b7',
+                              border: '1px solid rgba(16,185,129,0.3)',
+                            }
+                          : {
+                              background: 'rgba(239,68,68,0.08)',
+                              color: '#fca5a5',
+                              border: '1px solid rgba(239,68,68,0.25)',
+                            }),
+                      }}
+                    >
+                      {question.explanation}
+                      {isCorrectAnswer && earnedXp > 0 && (
+                        <span
+                          style={{
+                            background: 'rgba(251,191,36,0.15)',
+                            color: '#fbbf24',
+                            borderRadius: 50,
+                            padding: '2px 8px',
+                            fontSize: 11,
+                            marginLeft: 8,
+                          }}
+                        >
+                          +{earnedXp}XP{comboWhenAnswered >= 3 ? ' COMBO🔥' : ''}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </>
+        )}
+      </div>
+
+      {/* Tab: Resumen */}
+      <div style={{ display: activeTab === 'resumen' ? 'block' : 'none', padding: 16 }}>
+        <div
+          style={{
+            fontFamily: 'var(--font-orbitron)',
+            fontSize: 10,
+            color: '#a78bfa',
+            textTransform: 'uppercase',
+            letterSpacing: 2,
+            marginBottom: 12,
+          }}
+        >
+          ⚡ Lo que necesitas saber
+        </div>
+
+        <div>
+          {resumenSections.map((section, index) => (
+            <div
+              key={section.id}
+              style={{
+                display: 'flex',
+                gap: 10,
+                alignItems: 'flex-start',
+                padding: '12px 0',
+                borderBottom:
+                  index < resumenSections.length - 1
+                    ? '1px solid rgba(124,58,237,0.1)'
+                    : 'none',
+              }}
+            >
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 8,
+                  background: 'rgba(124,58,237,0.15)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 15,
+                  flexShrink: 0,
+                }}
+              >
+                {SECTION_ICONS[section.type]}
+              </div>
+              <div style={{ fontSize: 13, lineHeight: 1.55, color: '#e2d9f3' }}>
+                {renderContent(section.content)}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Completion card */}
+        <div
+          style={{
+            marginTop: 16,
+            background: 'rgba(16,185,129,0.08)',
+            border: '1px solid rgba(16,185,129,0.25)',
+            borderRadius: 14,
+            padding: 14,
+            textAlign: 'center',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 12,
+              color: '#10b981',
+              fontWeight: 700,
+              marginBottom: 4,
+            }}
+          >
+            ✓ Listo por ahora
+          </div>
+          <div style={{ fontSize: 12, color: '#a78bfa' }}>Haz el Quiz para ganar XP</div>
+          <button
+            type="button"
+            onClick={() => setActiveTab('quiz')}
+            style={{
+              width: '100%',
+              minHeight: 52,
+              background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+              color: 'white',
+              border: 'none',
+              borderRadius: 14,
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 12,
+              fontWeight: 700,
+              cursor: 'pointer',
+              letterSpacing: 1,
+              marginTop: 12,
+            }}
+          >
+            IR AL QUIZ →
+          </button>
+        </div>
+      </div>
+
+      <div style={{ height: 32 }} />
+    </div>
+  )
+}
