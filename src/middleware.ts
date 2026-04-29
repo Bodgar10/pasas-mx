@@ -50,14 +50,6 @@ export async function middleware(request: NextRequest) {
   }
 
   if (user && isProtected(pathname)) {
-    const onboardingDone = user.user_metadata?.onboarding_done as boolean | undefined
-
-    if (!onboardingDone && !pathname.startsWith('/onboarding')) {
-      const url = request.nextUrl.clone()
-      url.pathname = '/onboarding'
-      return NextResponse.redirect(url)
-    }
-
     if (pathname.startsWith('/admin')) {
       const { data: adminProfile } = await supabase
         .from('users')
@@ -67,6 +59,14 @@ export async function middleware(request: NextRequest) {
       if (adminProfile?.role !== 'admin') {
         const url = request.nextUrl.clone()
         url.pathname = '/dashboard'
+        return NextResponse.redirect(url)
+      }
+    } else {
+      const onboardingDone = user.user_metadata?.onboarding_done as boolean | undefined
+
+      if (!onboardingDone && !pathname.startsWith('/onboarding')) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/onboarding'
         return NextResponse.redirect(url)
       }
     }
