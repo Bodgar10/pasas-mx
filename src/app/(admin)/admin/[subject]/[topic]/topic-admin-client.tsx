@@ -141,6 +141,14 @@ export default function TopicAdminClient({
   const [saving, setSaving] = useState(false)
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemeId)
   const [published, setPublished] = useState(topic.published)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   useEffect(() => {
     setSections(initialSections)
@@ -288,7 +296,7 @@ export default function TopicAdminClient({
   }
 
   return (
-    <div style={{ fontFamily: 'var(--font-nunito)', color: '#e2d9f3', minHeight: '100vh' }}>
+    <div style={{ fontFamily: 'var(--font-nunito)', color: '#e2d9f3', minHeight: '100vh', maxWidth: isDesktop ? 1100 : '100%', margin: '0 auto' }}>
       {/* ─── ADMIN TOP BANNER ─── */}
       <div
         style={{

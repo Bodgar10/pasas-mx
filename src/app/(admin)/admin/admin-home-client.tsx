@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
 
 interface Subject {
   id: string
@@ -17,9 +18,13 @@ interface Props {
   subjects: Subject[]
 }
 
-const LEVEL_LABELS = {
+type SelectedLevel = 'middle_school' | 'high_school' | 'exam_prepa' | 'exam_uni' | null
+
+const LEVEL_LABELS: Record<string, string> = {
   middle_school: 'Secundaria',
   high_school: 'Preparatoria',
+  exam_prepa: 'Examen de Prepa',
+  exam_uni: 'Examen de Universidad',
 }
 
 const GRADE_LABELS: Record<number, string> = { 1: '1°', 2: '2°', 3: '3°' }
@@ -34,60 +39,155 @@ const LABEL_STYLE = {
   display: 'block',
 }
 
+const LEVEL_BUTTONS = [
+  { key: 'middle_school', label: '🏫 Secundaria' },
+  { key: 'high_school', label: '🎓 Preparatoria' },
+  { key: 'exam_prepa', label: '📝 Examen de Prepa' },
+  { key: 'exam_uni', label: '🏛️ Examen de Universidad' },
+] as const
+
 export default function AdminHomeClient({ subjects }: Props) {
   const router = useRouter()
-  const [selectedLevel, setSelectedLevel] = useState<'middle_school' | 'high_school' | null>(null)
+  const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>(null)
   const [selectedGrade, setSelectedGrade] = useState<number | null>(null)
   const [hoveredSubject, setHoveredSubject] = useState<string | null>(null)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  // Add subject form
+  const [showAddSubject, setShowAddSubject] = useState(false)
+  const [hoveredAdd, setHoveredAdd] = useState(false)
+  const [newName, setNewName] = useState('')
+  const [newSlug, setNewSlug] = useState('')
+  const [newIcon, setNewIcon] = useState('')
+  const [newOrder, setNewOrder] = useState<number>(0)
+  const [savingSubject, setSavingSubject] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  const isExamLevel = selectedLevel === 'exam_prepa' || selectedLevel === 'exam_uni'
 
   const filteredSubjects =
-    selectedLevel !== null && selectedGrade !== null
+    selectedLevel === null
+      ? []
+      : isExamLevel
+      ? subjects.filter((s) => s.education_level === 'high_school')
+      : selectedGrade !== null
       ? subjects.filter(
           (s) => s.education_level === selectedLevel && s.grades.includes(selectedGrade)
         )
       : []
 
-  function handleLevelSelect(level: 'middle_school' | 'high_school') {
+  const showSubjectsSection =
+    selectedLevel !== null && (isExamLevel || selectedGrade !== null)
+
+  function handleLevelSelect(level: Exclude<SelectedLevel, null>) {
     setSelectedLevel(level)
     setSelectedGrade(null)
+    setShowAddSubject(false)
   }
+
+  async function handleAddSubject() {
+    if (!newName || !newSlug || selectedLevel === null) return
+    setSavingSubject(true)
+    const supabase = createClient()
+    const educationLevel =
+      selectedLevel === 'middle_school' ? 'middle_school' : 'high_school'
+    const grades = isExamLevel
+      ? [1, 2, 3]
+      : selectedGrade !== null
+      ? [selectedGrade]
+      : [1]
+    await supabase.from('subjects').insert({
+      name: newName,
+      slug: newSlug,
+      education_level: educationLevel,
+      grades,
+      plan_types: ['grade', 'exam'],
+      icon: newIcon || null,
+      display_order: newOrder,
+    })
+    setNewName('')
+    setNewSlug('')
+    setNewIcon('')
+    setNewOrder(0)
+    setShowAddSubject(false)
+    setSavingSubject(false)
+    router.refresh()
+  }
+
+  const gradeParam = isExamLevel ? 1 : (selectedGrade ?? 1)
 
   return (
     <div
       style={{
-        maxWidth: 880,
+        maxWidth: isDesktop ? 1100 : '100%',
         margin: '0 auto',
-        padding: '32px 24px',
+        padding: isDesktop ? '32px 48px' : '32px 16px',
         fontFamily: 'var(--font-nunito)',
         color: '#e2d9f3',
       }}
     >
       {/* Top bar */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
-        <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 22, fontWeight: 900, color: '#e2d9f3' }}>
+        <div
+          style={{
+            fontFamily: 'var(--font-orbitron)',
+            fontSize: 22,
+            fontWeight: 900,
+            color: '#e2d9f3',
+          }}
+        >
           ⚙️ Panel Admin
         </div>
         <div style={{ fontSize: 13, color: '#a78bfa', marginLeft: 8 }}>
           Gestión de contenido
         </div>
+        <div style={{ marginLeft: 'auto' }}>
+          <button
+            type="button"
+            onClick={async () => {
+              const supabase = createClient()
+              await supabase.auth.signOut()
+              router.push('/login')
+            }}
+            style={{
+              background: 'rgba(239,68,68,0.08)',
+              border: '1px solid rgba(239,68,68,0.25)',
+              color: '#ef4444',
+              borderRadius: 10,
+              padding: '8px 16px',
+              fontSize: 13,
+              fontWeight: 800,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            Cerrar sesión
+          </button>
+        </div>
       </div>
 
-      {/* Level selector */}
+      {/* Level selector — 2×2 grid */}
       <div style={{ marginBottom: 24 }}>
         <span style={LABEL_STYLE}>Nivel educativo</span>
-        <div style={{ display: 'flex', gap: 12 }}>
-          {(
-            [
-              { key: 'middle_school', label: '🏫 Secundaria' },
-              { key: 'high_school', label: '🎓 Preparatoria' },
-            ] as const
-          ).map(({ key, label }) => (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 12,
+          }}
+        >
+          {LEVEL_BUTTONS.map(({ key, label }) => (
             <button
               key={key}
               type="button"
               onClick={() => handleLevelSelect(key)}
               style={{
-                flex: 1,
                 minHeight: 64,
                 borderRadius: 16,
                 cursor: 'pointer',
@@ -110,8 +210,8 @@ export default function AdminHomeClient({ subjects }: Props) {
         </div>
       </div>
 
-      {/* Grade selector */}
-      {selectedLevel !== null && (
+      {/* Grade selector — only for school levels */}
+      {selectedLevel !== null && !isExamLevel && (
         <div style={{ marginBottom: 24 }}>
           <span style={LABEL_STYLE}>Grado</span>
           <div style={{ display: 'flex', gap: 12 }}>
@@ -142,12 +242,13 @@ export default function AdminHomeClient({ subjects }: Props) {
       )}
 
       {/* Subjects grid */}
-      {selectedLevel !== null && selectedGrade !== null && (
+      {showSubjectsSection && (
         <div>
           <span style={{ ...LABEL_STYLE, marginTop: 24 }}>Materias disponibles</span>
           {filteredSubjects.length === 0 ? (
-            <div style={{ color: '#a78bfa', fontSize: 14, marginTop: 12 }}>
-              No hay materias para {LEVEL_LABELS[selectedLevel]} — {GRADE_LABELS[selectedGrade]}
+            <div style={{ color: '#a78bfa', fontSize: 14, marginTop: 12, marginBottom: 16 }}>
+              No hay materias para {LEVEL_LABELS[selectedLevel!]}
+              {!isExamLevel && selectedGrade !== null ? ` — ${GRADE_LABELS[selectedGrade]}` : ''}
             </div>
           ) : (
             <div
@@ -156,6 +257,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                 gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
                 gap: 14,
                 marginTop: 12,
+                marginBottom: 16,
               }}
             >
               {filteredSubjects.map((subject) => (
@@ -163,7 +265,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                   key={subject.id}
                   onClick={() =>
                     router.push(
-                      `/admin/${subject.slug}?grade=${selectedGrade}&level=${selectedLevel}`
+                      `/admin/${subject.slug}?grade=${gradeParam}&level=${selectedLevel}`
                     )
                   }
                   onMouseEnter={() => setHoveredSubject(subject.id)}
@@ -206,6 +308,216 @@ export default function AdminHomeClient({ subjects }: Props) {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Add subject button */}
+          <button
+            type="button"
+            onClick={() => setShowAddSubject((v) => !v)}
+            onMouseEnter={() => setHoveredAdd(true)}
+            onMouseLeave={() => setHoveredAdd(false)}
+            style={{
+              width: '100%',
+              minHeight: 52,
+              background: hoveredAdd
+                ? 'rgba(124,58,237,0.15)'
+                : 'rgba(124,58,237,0.08)',
+              border: hoveredAdd
+                ? '2px dashed rgba(124,58,237,0.5)'
+                : '2px dashed rgba(124,58,237,0.3)',
+              borderRadius: 16,
+              color: '#7c3aed',
+              fontSize: 14,
+              fontWeight: 800,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-nunito)',
+              marginTop: 8,
+              transition: 'all 0.2s',
+            }}
+          >
+            ＋ Añadir materia
+          </button>
+
+          {/* Inline add subject form */}
+          {showAddSubject && (
+            <div
+              style={{
+                background: '#1a1035',
+                border: '1px solid rgba(124,58,237,0.3)',
+                borderRadius: 16,
+                padding: 20,
+                marginTop: 12,
+              }}
+            >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div>
+                  <label
+                    style={{
+                      fontSize: 11,
+                      color: '#a78bfa',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: 1,
+                      display: 'block',
+                      marginBottom: 6,
+                    }}
+                  >
+                    Nombre
+                  </label>
+                  <input
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    placeholder="ej. Física"
+                    style={{
+                      width: '100%',
+                      background: '#1C1033',
+                      border: '1.5px solid #2D2048',
+                      borderRadius: 10,
+                      color: '#e2d9f3',
+                      fontSize: 14,
+                      padding: '8px 12px',
+                      fontFamily: 'var(--font-nunito)',
+                      boxSizing: 'border-box',
+                    }}
+                  />
+                </div>
+                <div>
+                  <label
+                    style={{
+                      fontSize: 11,
+                      color: '#a78bfa',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: 1,
+                      display: 'block',
+                      marginBottom: 6,
+                    }}
+                  >
+                    Slug
+                  </label>
+                  <input
+                    value={newSlug}
+                    onChange={(e) => setNewSlug(e.target.value)}
+                    placeholder="ej. fisica-sec"
+                    style={{
+                      width: '100%',
+                      background: '#1C1033',
+                      border: '1.5px solid #2D2048',
+                      borderRadius: 10,
+                      color: '#e2d9f3',
+                      fontSize: 14,
+                      padding: '8px 12px',
+                      fontFamily: 'var(--font-nunito)',
+                      boxSizing: 'border-box',
+                    }}
+                  />
+                </div>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <div style={{ flex: 1 }}>
+                    <label
+                      style={{
+                        fontSize: 11,
+                        color: '#a78bfa',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: 1,
+                        display: 'block',
+                        marginBottom: 6,
+                      }}
+                    >
+                      Ícono (emoji)
+                    </label>
+                    <input
+                      value={newIcon}
+                      onChange={(e) => setNewIcon(e.target.value)}
+                      placeholder="📚"
+                      maxLength={2}
+                      style={{
+                        width: '100%',
+                        background: '#1C1033',
+                        border: '1.5px solid #2D2048',
+                        borderRadius: 10,
+                        color: '#e2d9f3',
+                        fontSize: 14,
+                        padding: '8px 12px',
+                        fontFamily: 'var(--font-nunito)',
+                        boxSizing: 'border-box',
+                      }}
+                    />
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <label
+                      style={{
+                        fontSize: 11,
+                        color: '#a78bfa',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: 1,
+                        display: 'block',
+                        marginBottom: 6,
+                      }}
+                    >
+                      Orden
+                    </label>
+                    <input
+                      type="number"
+                      value={newOrder}
+                      onChange={(e) => setNewOrder(Number(e.target.value))}
+                      style={{
+                        width: '100%',
+                        background: '#1C1033',
+                        border: '1.5px solid #2D2048',
+                        borderRadius: 10,
+                        color: '#e2d9f3',
+                        fontSize: 14,
+                        padding: '8px 12px',
+                        fontFamily: 'var(--font-nunito)',
+                        boxSizing: 'border-box',
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: 8, marginTop: 16, justifyContent: 'flex-end' }}>
+                <button
+                  type="button"
+                  onClick={() => setShowAddSubject(false)}
+                  style={{
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid #2D2048',
+                    color: '#a78bfa',
+                    borderRadius: 10,
+                    padding: '10px 20px',
+                    fontSize: 12,
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={handleAddSubject}
+                  disabled={savingSubject}
+                  style={{
+                    background: '#7c3aed',
+                    color: 'white',
+                    borderRadius: 12,
+                    padding: '10px 20px',
+                    fontWeight: 800,
+                    border: 'none',
+                    cursor: savingSubject ? 'not-allowed' : 'pointer',
+                    fontSize: 12,
+                    fontFamily: 'var(--font-nunito)',
+                    opacity: savingSubject ? 0.7 : 1,
+                  }}
+                >
+                  {savingSubject ? 'Guardando...' : 'Guardar materia'}
+                </button>
+              </div>
             </div>
           )}
         </div>
