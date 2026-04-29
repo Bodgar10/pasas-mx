@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface Subject {
@@ -61,6 +61,14 @@ function getStatus(
 export default function SubjectClient({ subject, topics, topicProgress, profile }: Props) {
   const router = useRouter()
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   const completedTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'completed')
   const inProgressTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'in_progress')
@@ -149,7 +157,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
           border: `1px solid ${cardBorder}`,
           borderRadius: 16,
           padding: '14px 16px',
-          marginBottom: 10,
+          marginBottom: isDesktop ? 0 : 10,
           cursor: 'pointer',
           display: 'flex',
           gap: 12,
@@ -261,13 +269,19 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
         >
           {label}
         </div>
-        {sectionTopics.map(renderTopicCard)}
+        <div style={{
+          display: isDesktop ? 'grid' : 'block',
+          gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined,
+          gap: isDesktop ? 12 : undefined,
+        }}>
+          {sectionTopics.map(renderTopicCard)}
+        </div>
       </div>
     )
   }
 
   return (
-    <div style={{ maxWidth: 440, margin: '0 auto', fontFamily: 'var(--font-nunito)', color: '#e2d9f3' }}>
+    <div style={{ maxWidth: isDesktop ? 960 : 440, margin: '0 auto', minHeight: '100vh', padding: isDesktop ? '0 0 40px' : undefined, fontFamily: 'var(--font-nunito)', color: '#e2d9f3' }}>
       {/* Top bar */}
       <div
         style={{
@@ -275,7 +289,8 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
           top: 0,
           background: '#0f0a1e',
           borderBottom: '1px solid rgba(124,58,237,0.15)',
-          padding: '18px 16px 14px',
+          padding: isDesktop ? '20px 32px 16px' : '18px 16px 14px',
+          maxWidth: isDesktop ? 960 : 440,
           display: 'flex',
           alignItems: 'center',
           gap: 10,
@@ -346,7 +361,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
       </div>
 
       {/* Stats row */}
-      <div style={{ display: 'flex', gap: 10, padding: '14px 16px 6px' }}>
+      <div style={{ display: 'flex', gap: 10, padding: isDesktop ? '16px 32px 8px' : '14px 16px 6px' }}>
         {[
           { icon: '✅', value: completedTopics.length, label: 'Completados' },
           { icon: '🔥', value: inProgressTopics.length, label: 'En progreso' },
@@ -356,6 +371,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
             key={label}
             style={{
               flex: 1,
+              minWidth: isDesktop ? 180 : undefined,
               background: '#1a1035',
               border: '1px solid #2D2048',
               borderRadius: 12,
@@ -381,7 +397,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
           border: '1px solid #2D2048',
           borderRadius: 14,
           padding: '14px 16px',
-          margin: '0 16px 18px',
+          margin: isDesktop ? '0 32px 24px' : '0 16px 18px',
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
@@ -428,7 +444,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
       </div>
 
       {/* Topics sections */}
-      <div style={{ padding: '0 16px' }}>
+      <div style={{ padding: isDesktop ? '0 32px' : '0 16px' }}>
         {topics.length === 0 ? (
           <div
             style={{

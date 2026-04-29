@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface Section {
@@ -105,6 +105,14 @@ export default function TopicClient({
   const [combo, setCombo] = useState(0)
   const [xpPerQuestion, setXpPerQuestion] = useState<Record<string, number>>({})
   const [comboAtAnswer, setComboAtAnswer] = useState<Record<string, number>>({})
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
     if (answers[questionId]) return
@@ -128,7 +136,7 @@ export default function TopicClient({
   return (
     <div
       style={{
-        maxWidth: 440,
+        maxWidth: isDesktop ? 860 : 440,
         margin: '0 auto',
         fontFamily: 'var(--font-nunito)',
         color: '#e2d9f3',
@@ -142,7 +150,7 @@ export default function TopicClient({
           top: 0,
           background: '#0f0a1e',
           borderBottom: '1px solid rgba(124,58,237,0.15)',
-          padding: '18px 16px 14px',
+          padding: isDesktop ? '20px 32px 16px' : '18px 16px 14px',
           display: 'flex',
           alignItems: 'center',
           gap: 10,
@@ -218,7 +226,7 @@ export default function TopicClient({
       <div
         style={{
           display: 'flex',
-          padding: '0 16px',
+          padding: isDesktop ? '0 32px' : '0 16px',
           borderBottom: '1px solid rgba(124,58,237,0.15)',
         }}
       >
@@ -234,10 +242,10 @@ export default function TopicClient({
             type="button"
             onClick={() => setActiveTab(key)}
             style={{
-              flex: 1,
+              flex: isDesktop ? undefined : 1,
               justifyContent: 'center',
-              padding: '10px 0',
-              fontSize: 13,
+              padding: isDesktop ? '12px 24px' : '10px 0',
+              fontSize: isDesktop ? 14 : 13,
               fontWeight: 800,
               cursor: 'pointer',
               background: 'none',
@@ -259,7 +267,7 @@ export default function TopicClient({
       </div>
 
       {/* Tab: Guía */}
-      <div style={{ display: activeTab === 'guia' ? 'block' : 'none', padding: 16 }}>
+      <div style={{ display: activeTab === 'guia' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
         {sections.length === 0 ? (
           <div
             style={{
@@ -275,69 +283,76 @@ export default function TopicClient({
             Contenido próximamente
           </div>
         ) : (
-          sections.map((section) => {
-            const typeMeta = SECTION_TYPE_LABELS[section.type]
-            return (
-              <div
-                key={section.id}
-                style={{
-                  background: '#1a1035',
-                  border: '1px solid rgba(124,58,237,0.2)',
-                  borderRadius: 16,
-                  padding: 16,
-                  marginBottom: 12,
-                }}
-              >
+          <div style={{
+            display: isDesktop ? 'grid' : 'block',
+            gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined,
+            gap: isDesktop ? 16 : undefined,
+            alignItems: 'start',
+          }}>
+            {sections.map((section) => {
+              const typeMeta = SECTION_TYPE_LABELS[section.type]
+              return (
                 <div
+                  key={section.id}
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 4,
-                    fontSize: 10,
-                    fontWeight: 800,
-                    textTransform: 'uppercase',
-                    letterSpacing: 1,
-                    padding: '3px 9px',
-                    borderRadius: 50,
-                    marginBottom: 10,
-                    border: `1px solid ${typeMeta.border}`,
-                    background: typeMeta.bg,
-                    color: typeMeta.color,
+                    background: '#1a1035',
+                    border: '1px solid rgba(124,58,237,0.2)',
+                    borderRadius: 16,
+                    padding: 16,
+                    marginBottom: isDesktop ? 0 : 12,
                   }}
                 >
-                  {typeMeta.label}
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 4,
+                      fontSize: 10,
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      letterSpacing: 1,
+                      padding: '3px 9px',
+                      borderRadius: 50,
+                      marginBottom: 10,
+                      border: `1px solid ${typeMeta.border}`,
+                      background: typeMeta.bg,
+                      color: typeMeta.color,
+                    }}
+                  >
+                    {typeMeta.label}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 14,
+                      lineHeight: 1.65,
+                      color: '#e2d9f3',
+                    }}
+                  >
+                    {renderContent(section.content)}
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      marginTop: 8,
+                      gap: 6,
+                      fontSize: 11,
+                      color: '#a78bfa',
+                      fontWeight: 700,
+                    }}
+                  >
+                    Leíste esto{' '}
+                    <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                  </div>
                 </div>
-                <div
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.65,
-                    color: '#e2d9f3',
-                  }}
-                >
-                  {renderContent(section.content)}
-                </div>
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                    marginTop: 8,
-                    gap: 6,
-                    fontSize: 11,
-                    color: '#a78bfa',
-                    fontWeight: 700,
-                  }}
-                >
-                  Leíste esto{' '}
-                  <span style={{ color: '#fbbf24' }}>+10 XP</span>
-                </div>
-              </div>
-            )
-          })
+              )
+            })}
+          </div>
         )}
       </div>
 
       {/* Tab: Quiz */}
-      <div style={{ display: activeTab === 'quiz' ? 'block' : 'none', padding: 16 }}>
+      <div style={{ display: activeTab === 'quiz' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
         {quizQuestions.length === 0 ? (
           <div
             style={{
@@ -353,184 +368,195 @@ export default function TopicClient({
             Preguntas próximamente
           </div>
         ) : (
-          <>
-            {/* Score display */}
-            <div style={{ textAlign: 'center', paddingBottom: 16 }}>
-              <div
-                style={{
-                  fontFamily: 'var(--font-orbitron)',
-                  fontSize: 22,
-                  fontWeight: 900,
-                  background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                {score} / {quizQuestions.length}
-              </div>
-              <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
-                Respuestas correctas
-              </div>
-            </div>
-
-            {/* Combo dots */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 8,
-                marginBottom: 16,
-              }}
-            >
-              {[0, 1, 2].map((i) => (
+          <div style={{
+            display: isDesktop ? 'grid' : 'block',
+            gridTemplateColumns: isDesktop ? '200px 1fr' : undefined,
+            gap: isDesktop ? 24 : undefined,
+            alignItems: 'start',
+          }}>
+            {/* Left: score + combo dots */}
+            <div style={{ position: isDesktop ? 'sticky' : undefined, top: isDesktop ? 80 : undefined }}>
+              {/* Score display */}
+              <div style={{ textAlign: 'center', paddingBottom: 16 }}>
                 <div
-                  key={i}
                   style={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: '50%',
-                    background: i < combo ? '#fbbf24' : 'rgba(255,255,255,0.1)',
-                    border: i < combo
-                      ? '1px solid #fbbf24'
-                      : '1px solid rgba(124,58,237,0.3)',
-                    boxShadow: i < combo ? '0 0 6px rgba(251,191,36,0.5)' : 'none',
-                  }}
-                />
-              ))}
-              <span style={{ fontSize: 11, color: '#a78bfa' }}>
-                {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
-              </span>
-            </div>
-
-            {quizQuestions.map((question, index) => {
-              const isAnswered = !!answers[question.id]
-              const isLocked = index > 0 && !answers[quizQuestions[index - 1].id]
-              const earnedXp = xpPerQuestion[question.id] ?? 0
-              const comboWhenAnswered = comboAtAnswer[question.id] ?? 0
-              const isCorrectAnswer = answers[question.id] === question.correct_answer
-
-              return (
-                <div
-                  key={question.id}
-                  style={{
-                    background: '#1e1040',
-                    border: '1px solid rgba(236,72,153,0.2)',
-                    borderRadius: 16,
-                    padding: 18,
-                    marginBottom: 12,
-                    opacity: isLocked ? 0.4 : 1,
-                    pointerEvents: isLocked ? 'none' : 'auto',
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 22,
+                    fontWeight: 900,
+                    background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
                   }}
                 >
+                  {score} / {quizQuestions.length}
+                </div>
+                <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
+                  Respuestas correctas
+                </div>
+              </div>
+
+              {/* Combo dots */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
+                  marginBottom: 16,
+                }}
+              >
+                {[0, 1, 2].map((i) => (
                   <div
+                    key={i}
                     style={{
-                      fontSize: 14,
-                      fontWeight: 700,
-                      color: '#f0e6ff',
-                      marginBottom: 14,
-                      lineHeight: 1.55,
+                      width: 10,
+                      height: 10,
+                      borderRadius: '50%',
+                      background: i < combo ? '#fbbf24' : 'rgba(255,255,255,0.1)',
+                      border: i < combo
+                        ? '1px solid #fbbf24'
+                        : '1px solid rgba(124,58,237,0.3)',
+                      boxShadow: i < combo ? '0 0 6px rgba(251,191,36,0.5)' : 'none',
+                    }}
+                  />
+                ))}
+                <span style={{ fontSize: 11, color: '#a78bfa' }}>
+                  {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
+                </span>
+              </div>
+            </div>
+
+            {/* Right: questions */}
+            <div>
+              {quizQuestions.map((question, index) => {
+                const isAnswered = !!answers[question.id]
+                const isLocked = index > 0 && !answers[quizQuestions[index - 1].id]
+                const earnedXp = xpPerQuestion[question.id] ?? 0
+                const comboWhenAnswered = comboAtAnswer[question.id] ?? 0
+                const isCorrectAnswer = answers[question.id] === question.correct_answer
+
+                return (
+                  <div
+                    key={question.id}
+                    style={{
+                      background: '#1e1040',
+                      border: '1px solid rgba(236,72,153,0.2)',
+                      borderRadius: 16,
+                      padding: 18,
+                      marginBottom: 12,
+                      opacity: isLocked ? 0.4 : 1,
+                      pointerEvents: isLocked ? 'none' : 'auto',
                     }}
                   >
-                    {question.question}
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {question.options.map((option) => {
-                      const isThisCorrect = option.letter === question.correct_answer
-                      const isThisSelected = answers[question.id] === option.letter
-                      const isThisWrong = isThisSelected && !isThisCorrect
-
-                      let optBg = 'rgba(255,255,255,0.04)'
-                      let optBorder = '1px solid rgba(124,58,237,0.2)'
-                      let optColor = '#e2d9f3'
-
-                      if (isAnswered && isThisCorrect) {
-                        optBg = 'rgba(16,185,129,0.2)'
-                        optBorder = '1px solid #10b981'
-                        optColor = '#6ee7b7'
-                      } else if (isThisWrong) {
-                        optBg = 'rgba(239,68,68,0.15)'
-                        optBorder = '1px solid #ef4444'
-                        optColor = '#fca5a5'
-                      }
-
-                      return (
-                        <button
-                          key={option.letter}
-                          type="button"
-                          onClick={() => handleAnswer(question.id, option.letter, question)}
-                          style={{
-                            width: '100%',
-                            background: optBg,
-                            border: optBorder,
-                            borderRadius: 10,
-                            padding: '10px 14px',
-                            fontSize: 13,
-                            color: optColor,
-                            cursor: isAnswered ? 'default' : 'pointer',
-                            textAlign: 'left',
-                            fontFamily: 'var(--font-nunito)',
-                            fontWeight: 600,
-                            transition: 'all 0.2s',
-                            pointerEvents: isAnswered ? 'none' : 'auto',
-                          }}
-                        >
-                          <strong style={{ fontWeight: 800 }}>{option.letter}.</strong>{' '}
-                          {option.text}
-                        </button>
-                      )
-                    })}
-                  </div>
-
-                  {isAnswered && (
                     <div
                       style={{
-                        marginTop: 10,
-                        padding: '10px 12px',
-                        borderRadius: 8,
-                        fontSize: 13,
+                        fontSize: 14,
                         fontWeight: 700,
-                        ...(isCorrectAnswer
-                          ? {
-                              background: 'rgba(16,185,129,0.12)',
-                              color: '#6ee7b7',
-                              border: '1px solid rgba(16,185,129,0.3)',
-                            }
-                          : {
-                              background: 'rgba(239,68,68,0.08)',
-                              color: '#fca5a5',
-                              border: '1px solid rgba(239,68,68,0.25)',
-                            }),
+                        color: '#f0e6ff',
+                        marginBottom: 14,
+                        lineHeight: 1.55,
                       }}
                     >
-                      {question.explanation}
-                      {isCorrectAnswer && earnedXp > 0 && (
-                        <span
-                          style={{
-                            background: 'rgba(251,191,36,0.15)',
-                            color: '#fbbf24',
-                            borderRadius: 50,
-                            padding: '2px 8px',
-                            fontSize: 11,
-                            marginLeft: 8,
-                          }}
-                        >
-                          +{earnedXp}XP{comboWhenAnswered >= 3 ? ' COMBO🔥' : ''}
-                        </span>
-                      )}
+                      {question.question}
                     </div>
-                  )}
-                </div>
-              )
-            })}
-          </>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      {question.options.map((option) => {
+                        const isThisCorrect = option.letter === question.correct_answer
+                        const isThisSelected = answers[question.id] === option.letter
+                        const isThisWrong = isThisSelected && !isThisCorrect
+
+                        let optBg = 'rgba(255,255,255,0.04)'
+                        let optBorder = '1px solid rgba(124,58,237,0.2)'
+                        let optColor = '#e2d9f3'
+
+                        if (isAnswered && isThisCorrect) {
+                          optBg = 'rgba(16,185,129,0.2)'
+                          optBorder = '1px solid #10b981'
+                          optColor = '#6ee7b7'
+                        } else if (isThisWrong) {
+                          optBg = 'rgba(239,68,68,0.15)'
+                          optBorder = '1px solid #ef4444'
+                          optColor = '#fca5a5'
+                        }
+
+                        return (
+                          <button
+                            key={option.letter}
+                            type="button"
+                            onClick={() => handleAnswer(question.id, option.letter, question)}
+                            style={{
+                              width: '100%',
+                              background: optBg,
+                              border: optBorder,
+                              borderRadius: 10,
+                              padding: '10px 14px',
+                              fontSize: 13,
+                              color: optColor,
+                              cursor: isAnswered ? 'default' : 'pointer',
+                              textAlign: 'left',
+                              fontFamily: 'var(--font-nunito)',
+                              fontWeight: 600,
+                              transition: 'all 0.2s',
+                              pointerEvents: isAnswered ? 'none' : 'auto',
+                            }}
+                          >
+                            <strong style={{ fontWeight: 800 }}>{option.letter}.</strong>{' '}
+                            {option.text}
+                          </button>
+                        )
+                      })}
+                    </div>
+
+                    {isAnswered && (
+                      <div
+                        style={{
+                          marginTop: 10,
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          fontSize: 13,
+                          fontWeight: 700,
+                          ...(isCorrectAnswer
+                            ? {
+                                background: 'rgba(16,185,129,0.12)',
+                                color: '#6ee7b7',
+                                border: '1px solid rgba(16,185,129,0.3)',
+                              }
+                            : {
+                                background: 'rgba(239,68,68,0.08)',
+                                color: '#fca5a5',
+                                border: '1px solid rgba(239,68,68,0.25)',
+                              }),
+                        }}
+                      >
+                        {question.explanation}
+                        {isCorrectAnswer && earnedXp > 0 && (
+                          <span
+                            style={{
+                              background: 'rgba(251,191,36,0.15)',
+                              color: '#fbbf24',
+                              borderRadius: 50,
+                              padding: '2px 8px',
+                              fontSize: 11,
+                              marginLeft: 8,
+                            }}
+                          >
+                            +{earnedXp}XP{comboWhenAnswered >= 3 ? ' COMBO🔥' : ''}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         )}
       </div>
 
       {/* Tab: Resumen */}
-      <div style={{ display: activeTab === 'resumen' ? 'block' : 'none', padding: 16 }}>
+      <div style={{ display: activeTab === 'resumen' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
         <div
           style={{
             fontFamily: 'var(--font-orbitron)',
@@ -544,7 +570,11 @@ export default function TopicClient({
           ⚡ Lo que necesitas saber
         </div>
 
-        <div>
+        <div style={{
+          display: isDesktop ? 'grid' : 'block',
+          gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined,
+          gap: isDesktop ? '0 24px' : undefined,
+        }}>
           {resumenSections.map((section, index) => (
             <div
               key={section.id}
