@@ -59,8 +59,12 @@ export async function middleware(request: NextRequest) {
     }
 
     if (pathname.startsWith('/admin')) {
-      const role = (user.app_metadata?.role ?? user.user_metadata?.role) as string | undefined
-      if (role !== 'admin') {
+      const { data: adminProfile } = await supabase
+        .from('users')
+        .select('role')
+        .eq('id', user.id)
+        .single()
+      if (adminProfile?.role !== 'admin') {
         const url = request.nextUrl.clone()
         url.pathname = '/dashboard'
         return NextResponse.redirect(url)
