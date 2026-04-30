@@ -50,25 +50,29 @@ export async function middleware(request: NextRequest) {
   }
 
   if (user && isProtected(pathname)) {
-    if (pathname.startsWith('/admin')) {
-      const { data: adminProfile } = await supabase
-        .from('users')
-        .select('role')
-        .eq('id', user.id)
-        .single()
-      if (adminProfile?.role !== 'admin') {
-        const url = request.nextUrl.clone()
-        url.pathname = '/dashboard'
-        return NextResponse.redirect(url)
-      }
-    } else {
-      const onboardingDone = user.user_metadata?.onboarding_done as boolean | undefined
+    const { data: profile } = await supabase
+      .from('users')
+      .select('role, onboarding_done')
+      .eq('id', user.id)
+      .single()
 
-      if (!onboardingDone && !pathname.startsWith('/onboarding')) {
-        const url = request.nextUrl.clone()
-        url.pathname = '/onboarding'
-        return NextResponse.redirect(url)
-      }
+    // Admin bypass: admins skip onboarding redirect on all protected routes
+    if (profile?.role === 'admin') {
+      return supabaseResponse
+    }
+
+    // Non-admin trying to access /admin → kick to dashboard
+    if (pathname.startsWith('/admin')) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/dashboard'
+      return NextResponse.redirect(url)
+    }
+
+    // Non-admin: enforce onboarding using public.users as source of truth
+    if (!profile?.onboarding_done && !pathname.startsWith('/onboarding')) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/onboarding'
+      return NextResponse.redirect(url)
     }
   }
 
