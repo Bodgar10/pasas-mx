@@ -204,10 +204,10 @@ export default function OnboardingClient({ themes }: Props) {
                     >
                       <span style={{ fontSize: 24 }}>{opt.emoji}</span>
                       <div style={{ flex: 1 }}>
-                        <p style={{ fontWeight: 700, fontSize: 14, color: '#e2d9f3', margin: 0 }}>
+                        <p style={{ fontWeight: 700, fontSize: 16, color: '#e2d9f3', margin: 0 }}>
                           {opt.label}
                         </p>
-                        <p style={{ fontSize: 12, color: '#a78bfa', margin: '2px 0 0' }}>
+                        <p style={{ fontSize: 14, color: '#a78bfa', margin: '2px 0 0' }}>
                           {opt.subtitle}
                         </p>
                       </div>
@@ -262,7 +262,7 @@ export default function OnboardingClient({ themes }: Props) {
                       >
                         {g.num}
                       </span>
-                      <span style={{ fontSize: 11, color: '#a78bfa', marginTop: 4, textAlign: 'center' }}>
+                      <span style={{ fontSize: 13, color: '#a78bfa', marginTop: 4, textAlign: 'center' }}>
                         {g.label}
                       </span>
                       <div style={{ position: 'absolute', top: 8, right: 8 }}>
@@ -308,10 +308,10 @@ export default function OnboardingClient({ themes }: Props) {
                       }}
                     >
                       <span style={{ fontSize: 24, marginBottom: 8 }}>{t.icon ?? '✨'}</span>
-                      <p style={{ fontWeight: 700, fontSize: 13, color: '#e2d9f3', margin: 0 }}>
+                      <p style={{ fontWeight: 700, fontSize: 15, color: '#e2d9f3', margin: 0 }}>
                         {t.name}
                       </p>
-                      <p style={{ fontSize: 11, color: '#a78bfa', margin: '3px 0 0' }}>
+                      <p style={{ fontSize: 13, color: '#a78bfa', margin: '3px 0 0' }}>
                         {t.subtitle ?? t.description}
                       </p>
                       <div style={{ position: 'absolute', top: 8, right: 8 }}>
@@ -332,7 +332,7 @@ export default function OnboardingClient({ themes }: Props) {
                 <span
                   style={{
                     fontFamily: 'var(--font-orbitron)',
-                    fontSize: 13,
+                    fontSize: 15,
                     fontWeight: 900,
                     backgroundColor: '#422006',
                     color: '#fbbf24',
@@ -351,7 +351,7 @@ export default function OnboardingClient({ themes }: Props) {
                 <h2
                   style={{
                     fontFamily: 'var(--font-orbitron)',
-                    fontSize: 22,
+                    fontSize: 24,
                     fontWeight: 900,
                     color: '#e2d9f3',
                     margin: '0 0 6px',
@@ -359,7 +359,7 @@ export default function OnboardingClient({ themes }: Props) {
                 >
                   ¡Todo listo!
                 </h2>
-                <p style={{ fontSize: 14, color: '#a78bfa', margin: 0 }}>
+                <p style={{ fontSize: 16, color: '#a78bfa', margin: 0 }}>
                   Tu cuenta está personalizada
                 </p>
               </div>
@@ -377,22 +377,22 @@ export default function OnboardingClient({ themes }: Props) {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Nivel</span>
-                  <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                  <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Nivel</span>
+                  <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                     {selectedLevel?.emoji} {level}
                   </span>
                 </div>
                 {grade && (
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Año</span>
-                    <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                    <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Año</span>
+                    <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                       📅 {grade}
                     </span>
                   </div>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Hobbie</span>
-                  <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                  <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Hobbie</span>
+                  <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                     {selectedTheme?.icon ?? '✨'} {theme}
                   </span>
                 </div>
@@ -433,7 +433,7 @@ export default function OnboardingClient({ themes }: Props) {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: 600,
                 color: '#a78bfa',
                 textAlign: 'center',

@@ -185,13 +185,13 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
         </div>
 
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 14, fontWeight: 800, color: '#e2d9f3', marginBottom: 3 }}>
+          <div style={{ fontSize: 16, fontWeight: 800, color: '#e2d9f3', marginBottom: 3 }}>
             {topic.name}
           </div>
           {topic.description && (
             <div
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 color: '#a78bfa',
                 lineHeight: 1.45,
                 marginBottom: 8,
@@ -219,10 +219,10 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
                 }}
               />
             </div>
-            <span style={{ fontSize: 11, fontWeight: 800, color: pctColor }}>{pctText}</span>
+            <span style={{ fontSize: 13, fontWeight: 800, color: pctColor }}>{pctText}</span>
             <span
               style={{
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 800,
                 borderRadius: 50,
                 padding: '2px 8px',
@@ -235,7 +235,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
             </span>
             <span
               style={{
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 800,
                 borderRadius: 50,
                 padding: '2px 8px',
@@ -259,7 +259,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
         <div
           style={{
             fontFamily: 'var(--font-orbitron)',
-            fontSize: 10,
+            fontSize: 12,
             color: '#a78bfa',
             textTransform: 'uppercase',
             letterSpacing: 2,
@@ -321,7 +321,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
         <div style={{ flex: 1 }}>
           <div
             style={{
-              fontSize: 10,
+              fontSize: 12,
               color: '#a78bfa',
               textTransform: 'uppercase',
               letterSpacing: '1.5px',
@@ -335,7 +335,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
           <div
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 15,
+              fontSize: 17,
               fontWeight: 900,
               color: '#e2d9f3',
             }}
@@ -350,7 +350,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
             border: '1px solid rgba(251,191,36,0.25)',
             borderRadius: 50,
             padding: '4px 10px',
-            fontSize: 11,
+            fontSize: 13,
             fontWeight: 800,
             color: '#fbbf24',
             flexShrink: 0,
@@ -383,8 +383,8 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
           >
             <span style={{ fontSize: 16 }}>{icon}</span>
             <div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#e2d9f3' }}>{value}</div>
-              <div style={{ fontSize: 10, color: '#a78bfa', fontWeight: 700 }}>{label}</div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: '#e2d9f3' }}>{value}</div>
+              <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700 }}>{label}</div>
             </div>
           </div>
         ))}
@@ -403,7 +403,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
           <span
             style={{
-              fontSize: 12,
+              fontSize: 14,
               color: '#a78bfa',
               textTransform: 'uppercase',
               letterSpacing: 1,
@@ -415,7 +415,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
           <span
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 12,
+              fontSize: 14,
               color: '#fbbf24',
               fontWeight: 700,
             }}
@@ -451,7 +451,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
               textAlign: 'center',
               padding: '40px 16px',
               color: '#a78bfa',
-              fontSize: 14,
+              fontSize: 16,
             }}
           >
             No hay temas disponibles para este grado aún.

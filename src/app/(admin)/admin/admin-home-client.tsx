@@ -31,7 +31,7 @@ const GRADE_LABELS: Record<number, string> = { 1: '1°', 2: '2°', 3: '3°' }
 
 const LABEL_STYLE = {
   fontFamily: 'var(--font-orbitron)',
-  fontSize: 10,
+  fontSize: 12,
   color: '#a78bfa',
   textTransform: 'uppercase' as const,
   letterSpacing: 2,
@@ -137,14 +137,14 @@ export default function AdminHomeClient({ subjects }: Props) {
         <div
           style={{
             fontFamily: 'var(--font-orbitron)',
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: 900,
             color: '#e2d9f3',
           }}
         >
           ⚙️ Panel Admin
         </div>
-        <div style={{ fontSize: 13, color: '#a78bfa', marginLeft: 8 }}>
+        <div style={{ fontSize: 15, color: '#a78bfa', marginLeft: 8 }}>
           Gestión de contenido
         </div>
         <div style={{ marginLeft: 'auto' }}>
@@ -161,7 +161,7 @@ export default function AdminHomeClient({ subjects }: Props) {
               color: '#ef4444',
               borderRadius: 10,
               padding: '8px 16px',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 800,
               cursor: 'pointer',
               fontFamily: 'var(--font-nunito)',
@@ -195,7 +195,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: 10,
-                fontSize: 15,
+                fontSize: 17,
                 fontWeight: 800,
                 fontFamily: 'var(--font-nunito)',
                 transition: 'all 0.2s',
@@ -226,7 +226,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                   borderRadius: 14,
                   cursor: 'pointer',
                   fontFamily: 'var(--font-orbitron)',
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: 900,
                   transition: 'all 0.2s',
                   background: selectedGrade === grade ? '#7c3aed' : '#1a1035',
@@ -246,7 +246,7 @@ export default function AdminHomeClient({ subjects }: Props) {
         <div>
           <span style={{ ...LABEL_STYLE, marginTop: 24 }}>Materias disponibles</span>
           {filteredSubjects.length === 0 ? (
-            <div style={{ color: '#a78bfa', fontSize: 14, marginTop: 12, marginBottom: 16 }}>
+            <div style={{ color: '#a78bfa', fontSize: 16, marginTop: 12, marginBottom: 16 }}>
               No hay materias para {LEVEL_LABELS[selectedLevel!]}
               {!isExamLevel && selectedGrade !== null ? ` — ${GRADE_LABELS[selectedGrade]}` : ''}
             </div>
@@ -297,13 +297,13 @@ export default function AdminHomeClient({ subjects }: Props) {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: 22,
+                      fontSize: 24,
                       flexShrink: 0,
                     }}
                   >
                     {subject.icon ?? '📚'}
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: '#e2d9f3' }}>
+                  <div style={{ fontSize: 17, fontWeight: 800, color: '#e2d9f3' }}>
                     {subject.name}
                   </div>
                 </div>
@@ -328,7 +328,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                 : '2px dashed rgba(124,58,237,0.3)',
               borderRadius: 16,
               color: '#7c3aed',
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 800,
               cursor: 'pointer',
               fontFamily: 'var(--font-nunito)',
@@ -354,7 +354,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                 <div>
                   <label
                     style={{
-                      fontSize: 11,
+                      fontSize: 13,
                       color: '#a78bfa',
                       fontWeight: 700,
                       textTransform: 'uppercase',
@@ -375,7 +375,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                       border: '1.5px solid #2D2048',
                       borderRadius: 10,
                       color: '#e2d9f3',
-                      fontSize: 14,
+                      fontSize: 16,
                       padding: '8px 12px',
                       fontFamily: 'var(--font-nunito)',
                       boxSizing: 'border-box',
@@ -385,7 +385,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                 <div>
                   <label
                     style={{
-                      fontSize: 11,
+                      fontSize: 13,
                       color: '#a78bfa',
                       fontWeight: 700,
                       textTransform: 'uppercase',
@@ -406,7 +406,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                       border: '1.5px solid #2D2048',
                       borderRadius: 10,
                       color: '#e2d9f3',
-                      fontSize: 14,
+                      fontSize: 16,
                       padding: '8px 12px',
                       fontFamily: 'var(--font-nunito)',
                       boxSizing: 'border-box',
@@ -417,7 +417,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                   <div style={{ flex: 1 }}>
                     <label
                       style={{
-                        fontSize: 11,
+                        fontSize: 13,
                         color: '#a78bfa',
                         fontWeight: 700,
                         textTransform: 'uppercase',
@@ -439,7 +439,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                         border: '1.5px solid #2D2048',
                         borderRadius: 10,
                         color: '#e2d9f3',
-                        fontSize: 14,
+                        fontSize: 16,
                         padding: '8px 12px',
                         fontFamily: 'var(--font-nunito)',
                         boxSizing: 'border-box',
@@ -449,7 +449,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                   <div style={{ flex: 1 }}>
                     <label
                       style={{
-                        fontSize: 11,
+                        fontSize: 13,
                         color: '#a78bfa',
                         fontWeight: 700,
                         textTransform: 'uppercase',
@@ -470,7 +470,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                         border: '1.5px solid #2D2048',
                         borderRadius: 10,
                         color: '#e2d9f3',
-                        fontSize: 14,
+                        fontSize: 16,
                         padding: '8px 12px',
                         fontFamily: 'var(--font-nunito)',
                         boxSizing: 'border-box',
@@ -490,7 +490,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                     color: '#a78bfa',
                     borderRadius: 10,
                     padding: '10px 20px',
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: 800,
                     cursor: 'pointer',
                     fontFamily: 'var(--font-nunito)',
@@ -510,7 +510,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                     fontWeight: 800,
                     border: 'none',
                     cursor: savingSubject ? 'not-allowed' : 'pointer',
-                    fontSize: 12,
+                    fontSize: 14,
                     fontFamily: 'var(--font-nunito)',
                     opacity: savingSubject ? 0.7 : 1,
                   }}

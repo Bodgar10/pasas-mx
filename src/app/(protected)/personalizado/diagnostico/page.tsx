@@ -105,14 +105,14 @@ function DiagnosticoContent() {
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '48px 16px 40px' }}>
       <div style={{ width: '100%', maxWidth: 390 }}>
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <p style={{ fontFamily: 'var(--font-orbitron)', fontSize: 13, fontWeight: 700, letterSpacing: '0.2em', color: '#a78bfa', margin: 0 }}>PASAS.MX</p>
+          <p style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 700, letterSpacing: '0.2em', color: '#a78bfa', margin: 0 }}>PASAS.MX</p>
         </div>
         <div style={{ backgroundColor: '#1a1035', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 20, padding: '32px 20px', textAlign: 'center' }}>
           <div style={{ fontSize: 40, marginBottom: 16 }}>⏳</div>
-          <p style={{ fontSize: 15, fontWeight: 700, color: '#e2d9f3', margin: '0 0 8px', fontFamily: 'var(--font-nunito)' }}>
+          <p style={{ fontSize: 17, fontWeight: 700, color: '#e2d9f3', margin: '0 0 8px', fontFamily: 'var(--font-nunito)' }}>
             Límite diario alcanzado
           </p>
-          <p style={{ fontSize: 13, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
             Ya generaste 3 diagnósticos para {subject} hoy. Regresa mañana para intentarlo de nuevo.
           </p>
           <button
@@ -123,7 +123,7 @@ function DiagnosticoContent() {
               params.set('theme', theme)
               router.push(`/personalizado/materia?${params.toString()}`)
             }}
-            style={{ width: '100%', minHeight: 52, backgroundColor: '#7c3aed', border: 'none', borderRadius: 14, fontFamily: 'var(--font-nunito)', fontSize: 15, fontWeight: 900, color: '#ffffff', cursor: 'pointer' }}
+            style={{ width: '100%', minHeight: 52, backgroundColor: '#7c3aed', border: 'none', borderRadius: 14, fontFamily: 'var(--font-nunito)', fontSize: 17, fontWeight: 900, color: '#ffffff', cursor: 'pointer' }}
           >
             Elegir otra materia
           </button>
@@ -148,7 +148,7 @@ function DiagnosticoContent() {
           <p
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 700,
               letterSpacing: '0.2em',
               color: '#a78bfa',
@@ -194,7 +194,7 @@ function DiagnosticoContent() {
           >
             ¿Qué te falla en {subject}?
           </h2>
-          <p style={{ fontSize: 13, color: '#a78bfa', margin: '0 0 20px' }}>
+          <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 20px' }}>
             Cuéntanos para personalizar tu guía
           </p>
 
@@ -210,7 +210,7 @@ function DiagnosticoContent() {
                 border: `1.5px solid ${path === 'descripcion' ? '#7c3aed' : '#2D2048'}`,
                 backgroundColor: path === 'descripcion' ? '#2d1b69' : '#1a1035',
                 cursor: 'pointer',
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 700,
                 color: '#e2d9f3',
                 transition: 'border-color 0.15s, background-color 0.15s',
@@ -228,7 +228,7 @@ function DiagnosticoContent() {
                 border: `1.5px solid ${path === 'quiz' ? '#7c3aed' : '#2D2048'}`,
                 backgroundColor: path === 'quiz' ? '#2d1b69' : '#1a1035',
                 cursor: 'pointer',
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 700,
                 color: '#e2d9f3',
                 transition: 'border-color 0.15s, background-color 0.15s',
@@ -252,7 +252,7 @@ function DiagnosticoContent() {
                   border: '1.5px solid #2D2048',
                   borderRadius: 12,
                   padding: '12px 14px',
-                  fontSize: 13,
+                  fontSize: 15,
                   color: '#e2d9f3',
                   resize: 'none',
                   outline: 'none',
@@ -262,7 +262,7 @@ function DiagnosticoContent() {
                 }}
               />
               {description.trim().length > 0 && description.trim().length < 10 && (
-                <p style={{ fontSize: 11, color: '#f87171', margin: '6px 0 0' }}>
+                <p style={{ fontSize: 13, color: '#f87171', margin: '6px 0 0' }}>
                   Agrega un poco más de detalle (mínimo 10 caracteres)
                 </p>
               )}
@@ -277,7 +277,7 @@ function DiagnosticoContent() {
                 border: '1.5px solid #2D2048',
                 borderRadius: 12,
                 padding: '16px 14px',
-                fontSize: 13,
+                fontSize: 15,
                 color: '#a78bfa',
                 lineHeight: 1.6,
               }}
@@ -319,7 +319,7 @@ function DiagnosticoContent() {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 600,
               color: '#a78bfa',
               textAlign: 'center',

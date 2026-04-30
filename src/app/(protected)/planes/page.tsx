@@ -162,7 +162,7 @@ function PlanesContent() {
           <p
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 700,
               letterSpacing: '0.2em',
               color: '#a78bfa',
@@ -185,7 +185,7 @@ function PlanesContent() {
           </h1>
           <p
             style={{
-              fontSize: 14,
+              fontSize: 16,
               color: '#a78bfa',
               margin: '0 0 16px',
               lineHeight: 1.6,
@@ -224,7 +224,7 @@ function PlanesContent() {
                         : '#1a1035',
                     color: activePlan === p ? '#fff' : '#a78bfa',
                     fontFamily: 'var(--font-nunito)',
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: 700,
                     cursor: 'pointer',
                   }}
@@ -243,7 +243,7 @@ function PlanesContent() {
                 backgroundColor: plan.badgeBg,
                 color: plan.badgeColor,
                 border: `1px solid ${plan.badgeBorder}`,
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: 700,
                 borderRadius: 999,
                 padding: '4px 14px',
@@ -284,7 +284,7 @@ function PlanesContent() {
                       right: 16,
                       backgroundColor: '#7c3aed',
                       color: '#fff',
-                      fontSize: 10,
+                      fontSize: 12,
                       fontWeight: 700,
                       padding: '4px 12px',
                       borderRadius: '0 0 8px 8px',
@@ -300,7 +300,7 @@ function PlanesContent() {
                   <p
                     style={{
                       fontFamily: 'var(--font-orbitron)',
-                      fontSize: 13,
+                      fontSize: 15,
                       fontWeight: 700,
                       color: '#a78bfa',
                       margin: isMiddle ? '16px 0 12px' : '0 0 12px',
@@ -332,7 +332,7 @@ function PlanesContent() {
                     </span>
                     <span
                       style={{
-                        fontSize: 13,
+                        fontSize: 15,
                         color: '#a78bfa',
                         marginBottom: 4,
                       }}
@@ -350,7 +350,7 @@ function PlanesContent() {
                           backgroundColor: '#10b98120',
                           color: '#10b981',
                           border: '1px solid #10b98140',
-                          fontSize: 11,
+                          fontSize: 13,
                           fontWeight: 700,
                           borderRadius: 999,
                           padding: '2px 10px',
@@ -365,7 +365,7 @@ function PlanesContent() {
                   {card.total !== null && (
                     <p
                       style={{
-                        fontSize: 12,
+                        fontSize: 14,
                         color: '#a78bfa',
                         margin: '0 0 16px',
                       }}
@@ -387,7 +387,7 @@ function PlanesContent() {
                       border: 'none',
                       borderRadius: 14,
                       fontFamily: 'var(--font-nunito)',
-                      fontSize: 15,
+                      fontSize: 17,
                       fontWeight: 900,
                       color: '#ffffff',
                       cursor: 'pointer',
@@ -414,7 +414,7 @@ function PlanesContent() {
         >
           <p
             style={{
-              fontSize: 13,
+              fontSize: 15,
               color: '#a78bfa',
               margin: 0,
               lineHeight: 1.6,

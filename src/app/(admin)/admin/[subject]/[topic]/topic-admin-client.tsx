@@ -291,7 +291,7 @@ export default function TopicAdminClient({
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    fontSize: 14,
+    fontSize: 16,
     padding: '2px 4px',
   }
 
@@ -326,7 +326,7 @@ export default function TopicAdminClient({
               border: '1px solid #2D2048',
               cursor: 'pointer',
               color: '#a78bfa',
-              fontSize: 14,
+              fontSize: 16,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -337,7 +337,7 @@ export default function TopicAdminClient({
           </button>
           <span
             style={{
-              fontSize: 11,
+              fontSize: 13,
               color: '#a78bfa',
               fontWeight: 700,
               textTransform: 'uppercase',
@@ -349,7 +349,7 @@ export default function TopicAdminClient({
           <span style={{ color: '#2D2048', fontSize: 14 }}>›</span>
           <span
             style={{
-              fontSize: 13,
+              fontSize: 15,
               color: '#e2d9f3',
               fontWeight: 800,
               fontFamily: 'var(--font-orbitron)',
@@ -375,7 +375,7 @@ export default function TopicAdminClient({
               borderRadius: 10,
               color: '#e2d9f3',
               padding: '6px 12px',
-              fontSize: 12,
+              fontSize: 14,
               fontFamily: 'var(--font-nunito)',
               cursor: 'pointer',
             }}
@@ -387,13 +387,13 @@ export default function TopicAdminClient({
             ))}
           </select>
 
-          <span style={{ fontSize: 11, color: '#a78bfa' }}>
+          <span style={{ fontSize: 13, color: '#a78bfa' }}>
             {completedCount} alumnos completaron
           </span>
 
           <span
             style={{
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 800,
               borderRadius: 50,
               padding: '4px 12px',
@@ -419,7 +419,7 @@ export default function TopicAdminClient({
             style={{
               borderRadius: 10,
               padding: '6px 14px',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 800,
               cursor: 'pointer',
               fontFamily: 'var(--font-nunito)',
@@ -480,7 +480,7 @@ export default function TopicAdminClient({
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
-                fontSize: 10,
+                fontSize: 12,
                 color: '#a78bfa',
                 textTransform: 'uppercase',
                 letterSpacing: '1.5px',
@@ -493,7 +493,7 @@ export default function TopicAdminClient({
             <div
               style={{
                 fontFamily: 'var(--font-orbitron)',
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 900,
                 color: '#e2d9f3',
                 whiteSpace: 'nowrap',
@@ -510,7 +510,7 @@ export default function TopicAdminClient({
               border: '1px solid rgba(251,191,36,0.25)',
               borderRadius: 50,
               padding: '4px 10px',
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 800,
               color: '#fbbf24',
               flexShrink: 0,
@@ -543,7 +543,7 @@ export default function TopicAdminClient({
                 flex: 1,
                 justifyContent: 'center',
                 padding: '10px 0',
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 800,
                 cursor: 'pointer',
                 background: 'none',
@@ -581,14 +581,14 @@ export default function TopicAdminClient({
               <div
                 style={{
                   fontFamily: 'var(--font-orbitron)',
-                  fontSize: 14,
+                  fontSize: 16,
                   color: '#a78bfa',
                   marginBottom: 8,
                 }}
               >
                 Sin contenido para esta temática
               </div>
-              <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 20 }}>
+              <div style={{ fontSize: 15, color: '#a78bfa', marginBottom: 20 }}>
                 Genera las secciones y preguntas de quiz con un solo clic
               </div>
               <button
@@ -603,7 +603,7 @@ export default function TopicAdminClient({
                   minHeight: 52,
                   padding: '0 32px',
                   fontFamily: 'var(--font-orbitron)',
-                  fontSize: 13,
+                  fontSize: 15,
                   fontWeight: 700,
                   cursor: generating ? 'not-allowed' : 'pointer',
                   opacity: generating ? 0.7 : 1,
@@ -612,7 +612,7 @@ export default function TopicAdminClient({
                 {generating ? '⏳ Generando...' : '✨ Generar contenido con Claude'}
               </button>
               {generating && (
-                <div style={{ fontSize: 12, color: '#a78bfa', marginTop: 12 }}>
+                <div style={{ fontSize: 14, color: '#a78bfa', marginTop: 12 }}>
                   Generando... esto toma unos segundos
                 </div>
               )}
@@ -663,7 +663,7 @@ export default function TopicAdminClient({
                           border: '1.5px solid #2D2048',
                           borderRadius: 10,
                           color: '#e2d9f3',
-                          fontSize: 14,
+                          fontSize: 16,
                           lineHeight: 1.65,
                           padding: '10px 12px',
                           fontFamily: 'var(--font-nunito)',
@@ -688,7 +688,7 @@ export default function TopicAdminClient({
                             color: '#a78bfa',
                             borderRadius: 10,
                             padding: '6px 14px',
-                            fontSize: 12,
+                            fontSize: 14,
                             fontWeight: 800,
                             cursor: 'pointer',
                             fontFamily: 'var(--font-nunito)',
@@ -705,7 +705,7 @@ export default function TopicAdminClient({
                             color: 'white',
                             borderRadius: 10,
                             padding: '6px 14px',
-                            fontSize: 12,
+                            fontSize: 14,
                             fontWeight: 800,
                             cursor: 'pointer',
                             fontFamily: 'var(--font-nunito)',
@@ -731,7 +731,7 @@ export default function TopicAdminClient({
                           display: 'inline-flex',
                           alignItems: 'center',
                           gap: 4,
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: 800,
                           textTransform: 'uppercase',
                           letterSpacing: 1,
@@ -746,7 +746,7 @@ export default function TopicAdminClient({
                         {typeMeta.label}
                       </div>
                       <div
-                        style={{ fontSize: 14, lineHeight: 1.65, color: '#e2d9f3' }}
+                        style={{ fontSize: 16, lineHeight: 1.65, color: '#e2d9f3' }}
                       >
                         {renderContent(section.content)}
                       </div>
@@ -756,7 +756,7 @@ export default function TopicAdminClient({
                           justifyContent: 'flex-end',
                           marginTop: 8,
                           gap: 6,
-                          fontSize: 11,
+                          fontSize: 13,
                           color: '#a78bfa',
                           fontWeight: 700,
                         }}
@@ -783,7 +783,7 @@ export default function TopicAdminClient({
                 padding: '32px 16px',
                 textAlign: 'center',
                 color: '#a78bfa',
-                fontSize: 14,
+                fontSize: 16,
               }}
             >
               Preguntas próximamente
@@ -795,7 +795,7 @@ export default function TopicAdminClient({
                 <div
                   style={{
                     fontFamily: 'var(--font-orbitron)',
-                    fontSize: 22,
+                    fontSize: 24,
                     fontWeight: 900,
                     background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
                     WebkitBackgroundClip: 'text',
@@ -806,7 +806,7 @@ export default function TopicAdminClient({
                   {score} / {quizQuestions.length}
                 </div>
                 <div
-                  style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}
+                  style={{ fontSize: 14, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}
                 >
                   Respuestas correctas
                 </div>
@@ -839,7 +839,7 @@ export default function TopicAdminClient({
                     }}
                   />
                 ))}
-                <span style={{ fontSize: 11, color: '#a78bfa' }}>
+                <span style={{ fontSize: 13, color: '#a78bfa' }}>
                   {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
                 </span>
               </div>
@@ -887,7 +887,7 @@ export default function TopicAdminClient({
                         <div style={{ marginBottom: 10 }}>
                           <label
                             style={{
-                              fontSize: 11,
+                              fontSize: 13,
                               color: '#a78bfa',
                               fontWeight: 700,
                               textTransform: 'uppercase',
@@ -912,7 +912,7 @@ export default function TopicAdminClient({
                               border: '1.5px solid #2D2048',
                               borderRadius: 10,
                               color: '#e2d9f3',
-                              fontSize: 13,
+                              fontSize: 15,
                               padding: '8px 12px',
                               fontFamily: 'var(--font-nunito)',
                               resize: 'vertical',
@@ -925,7 +925,7 @@ export default function TopicAdminClient({
                           <div key={opt.letter} style={{ marginBottom: 8 }}>
                             <label
                               style={{
-                                fontSize: 11,
+                                fontSize: 13,
                                 color: '#a78bfa',
                                 fontWeight: 700,
                                 display: 'block',
@@ -950,7 +950,7 @@ export default function TopicAdminClient({
                                 border: '1.5px solid #2D2048',
                                 borderRadius: 10,
                                 color: '#e2d9f3',
-                                fontSize: 13,
+                                fontSize: 15,
                                 padding: '8px 12px',
                                 fontFamily: 'var(--font-nunito)',
                                 boxSizing: 'border-box',
@@ -962,7 +962,7 @@ export default function TopicAdminClient({
                         <div style={{ marginBottom: 10 }}>
                           <label
                             style={{
-                              fontSize: 11,
+                              fontSize: 13,
                               color: '#a78bfa',
                               fontWeight: 700,
                               textTransform: 'uppercase',
@@ -986,7 +986,7 @@ export default function TopicAdminClient({
                               borderRadius: 10,
                               color: '#e2d9f3',
                               padding: '8px 12px',
-                              fontSize: 13,
+                              fontSize: 15,
                               fontFamily: 'var(--font-nunito)',
                               cursor: 'pointer',
                             }}
@@ -1002,7 +1002,7 @@ export default function TopicAdminClient({
                         <div style={{ marginBottom: 10 }}>
                           <label
                             style={{
-                              fontSize: 11,
+                              fontSize: 13,
                               color: '#a78bfa',
                               fontWeight: 700,
                               textTransform: 'uppercase',
@@ -1027,7 +1027,7 @@ export default function TopicAdminClient({
                               border: '1.5px solid #2D2048',
                               borderRadius: 10,
                               color: '#e2d9f3',
-                              fontSize: 13,
+                              fontSize: 15,
                               padding: '8px 12px',
                               fontFamily: 'var(--font-nunito)',
                               resize: 'vertical',
@@ -1055,7 +1055,7 @@ export default function TopicAdminClient({
                               color: '#a78bfa',
                               borderRadius: 10,
                               padding: '6px 14px',
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: 800,
                               cursor: 'pointer',
                               fontFamily: 'var(--font-nunito)',
@@ -1072,7 +1072,7 @@ export default function TopicAdminClient({
                               color: 'white',
                               borderRadius: 10,
                               padding: '6px 14px',
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: 800,
                               cursor: 'pointer',
                               fontFamily: 'var(--font-nunito)',
@@ -1097,7 +1097,7 @@ export default function TopicAdminClient({
                       >
                         <div
                           style={{
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: 700,
                             color: '#f0e6ff',
                             marginBottom: 14,
@@ -1138,7 +1138,7 @@ export default function TopicAdminClient({
                                   border: optBorder,
                                   borderRadius: 10,
                                   padding: '10px 14px',
-                                  fontSize: 13,
+                                  fontSize: 15,
                                   color: optColor,
                                   cursor: isAnswered ? 'default' : 'pointer',
                                   textAlign: 'left',
@@ -1161,7 +1161,7 @@ export default function TopicAdminClient({
                               marginTop: 10,
                               padding: '10px 12px',
                               borderRadius: 8,
-                              fontSize: 13,
+                              fontSize: 15,
                               fontWeight: 700,
                               ...(isCorrectAnswer
                                 ? {
@@ -1184,7 +1184,7 @@ export default function TopicAdminClient({
                                   color: '#fbbf24',
                                   borderRadius: 50,
                                   padding: '2px 8px',
-                                  fontSize: 11,
+                                  fontSize: 13,
                                   marginLeft: 8,
                                 }}
                               >
@@ -1207,7 +1207,7 @@ export default function TopicAdminClient({
           <div
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 10,
+              fontSize: 12,
               color: '#a78bfa',
               textTransform: 'uppercase',
               letterSpacing: 2,
@@ -1241,13 +1241,13 @@ export default function TopicAdminClient({
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: 15,
+                    fontSize: 17,
                     flexShrink: 0,
                   }}
                 >
                   {SECTION_ICONS[section.type]}
                 </div>
-                <div style={{ fontSize: 13, lineHeight: 1.55, color: '#e2d9f3' }}>
+                <div style={{ fontSize: 15, lineHeight: 1.55, color: '#e2d9f3' }}>
                   {renderContent(section.content)}
                 </div>
               </div>
@@ -1268,7 +1268,7 @@ export default function TopicAdminClient({
             <div
               style={{
                 fontFamily: 'var(--font-orbitron)',
-                fontSize: 12,
+                fontSize: 14,
                 color: '#10b981',
                 fontWeight: 700,
                 marginBottom: 4,
@@ -1276,7 +1276,7 @@ export default function TopicAdminClient({
             >
               ✓ Listo por ahora
             </div>
-            <div style={{ fontSize: 12, color: '#a78bfa' }}>Haz el Quiz para ganar XP</div>
+            <div style={{ fontSize: 14, color: '#a78bfa' }}>Haz el Quiz para ganar XP</div>
             <button
               type="button"
               onClick={() => setActiveTab('quiz')}
@@ -1288,7 +1288,7 @@ export default function TopicAdminClient({
                 border: 'none',
                 borderRadius: 14,
                 fontFamily: 'var(--font-orbitron)',
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: 700,
                 cursor: 'pointer',
                 letterSpacing: 1,
@@ -1319,7 +1319,7 @@ export default function TopicAdminClient({
             border: 'none',
             borderRadius: 50,
             padding: '12px 20px',
-            fontSize: 13,
+            fontSize: 15,
             fontWeight: 800,
             cursor: generating ? 'not-allowed' : 'pointer',
             boxShadow: '0 4px 20px rgba(124,58,237,0.4)',

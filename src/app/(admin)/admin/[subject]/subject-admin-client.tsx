@@ -43,7 +43,7 @@ function getSectionCount(
 }
 
 const LABEL_STYLE = {
-  fontSize: 11,
+  fontSize: 13,
   color: '#a78bfa',
   fontWeight: 700,
   textTransform: 'uppercase' as const,
@@ -159,7 +159,7 @@ export default function SubjectAdminClient({
             border: '1px solid rgba(6,182,212,0.25)',
             borderRadius: 50,
             padding: '4px 10px',
-            fontSize: 11,
+            fontSize: 13,
             fontWeight: 800,
             color: '#06b6d4',
             flexShrink: 0,
@@ -170,7 +170,7 @@ export default function SubjectAdminClient({
       </div>
 
       {/* Subtitle */}
-      <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 28 }}>
+      <div style={{ fontSize: 15, color: '#a78bfa', marginBottom: 28 }}>
         Selecciona un tema para gestionar su contenido por temática
       </div>
 
@@ -184,7 +184,7 @@ export default function SubjectAdminClient({
             padding: '32px 16px',
             textAlign: 'center',
             color: '#a78bfa',
-            fontSize: 14,
+            fontSize: 16,
             marginBottom: 16,
           }}
         >
@@ -222,7 +222,7 @@ export default function SubjectAdminClient({
               >
                 {topic.icon ?? '📚'}
               </div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#e2d9f3' }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: '#e2d9f3' }}>
                 {topic.name}
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function SubjectAdminClient({
                   <span
                     key={theme.id}
                     style={{
-                      fontSize: 11,
+                      fontSize: 13,
                       fontWeight: 700,
                       borderRadius: 50,
                       padding: '3px 10px',
@@ -273,7 +273,7 @@ export default function SubjectAdminClient({
                 border: 'none',
                 borderRadius: 10,
                 padding: '8px 16px',
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: 800,
                 fontFamily: 'var(--font-nunito)',
                 cursor: 'pointer',
@@ -301,7 +301,7 @@ export default function SubjectAdminClient({
             : '2px dashed rgba(124,58,237,0.3)',
           borderRadius: 16,
           color: '#7c3aed',
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: 800,
           cursor: 'pointer',
           fontFamily: 'var(--font-nunito)',
@@ -337,7 +337,7 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
-                    fontSize: 14,
+                    fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     boxSizing: 'border-box',
@@ -356,7 +356,7 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
-                    fontSize: 14,
+                    fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     boxSizing: 'border-box',
@@ -378,7 +378,7 @@ export default function SubjectAdminClient({
                   border: '1.5px solid #2D2048',
                   borderRadius: 10,
                   color: '#e2d9f3',
-                  fontSize: 14,
+                  fontSize: 16,
                   padding: '8px 12px',
                   fontFamily: 'var(--font-nunito)',
                   resize: 'vertical',
@@ -401,7 +401,7 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
-                    fontSize: 14,
+                    fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     boxSizing: 'border-box',
@@ -419,7 +419,7 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
-                    fontSize: 14,
+                    fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     cursor: 'pointer',
@@ -443,7 +443,7 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
-                    fontSize: 14,
+                    fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     boxSizing: 'border-box',
@@ -462,7 +462,7 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
-                    fontSize: 14,
+                    fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     boxSizing: 'border-box',
@@ -482,7 +482,7 @@ export default function SubjectAdminClient({
                 color: '#a78bfa',
                 borderRadius: 10,
                 padding: '10px 20px',
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: 800,
                 cursor: 'pointer',
                 fontFamily: 'var(--font-nunito)',
@@ -502,7 +502,7 @@ export default function SubjectAdminClient({
                 fontWeight: 800,
                 border: 'none',
                 cursor: savingTopic ? 'not-allowed' : 'pointer',
-                fontSize: 12,
+                fontSize: 14,
                 fontFamily: 'var(--font-nunito)',
                 opacity: savingTopic ? 0.7 : 1,
               }}

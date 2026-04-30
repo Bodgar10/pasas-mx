@@ -74,7 +74,7 @@ function PreviewContent() {
           <p
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 700,
               letterSpacing: '0.2em',
               color: '#a78bfa',
@@ -99,7 +99,7 @@ function PreviewContent() {
             style={{
               backgroundColor: '#2d1b69',
               color: '#a78bfa',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 700,
               borderRadius: 999,
               padding: '4px 12px',
@@ -112,7 +112,7 @@ function PreviewContent() {
               style={{
                 backgroundColor: '#2d1b69',
                 color: '#a78bfa',
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: 700,
                 borderRadius: 999,
                 padding: '4px 12px',
@@ -125,7 +125,7 @@ function PreviewContent() {
             style={{
               backgroundColor: '#1a0f00',
               color: '#fbbf24',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 700,
               borderRadius: 999,
               padding: '4px 12px',
@@ -150,7 +150,7 @@ function PreviewContent() {
               display: 'inline-block',
               backgroundColor: '#7c3aed',
               color: '#ffffff',
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 700,
               borderRadius: 999,
               padding: '3px 12px',
@@ -163,7 +163,7 @@ function PreviewContent() {
           <h2
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 22,
+              fontSize: 24,
               fontWeight: 900,
               color: '#e2d9f3',
               margin: '0 0 8px',
@@ -174,7 +174,7 @@ function PreviewContent() {
 
           <p
             style={{
-              fontSize: 14,
+              fontSize: 16,
               color: '#a78bfa',
               margin: '0 0 16px',
               lineHeight: 1.5,
@@ -197,7 +197,7 @@ function PreviewContent() {
           >
             <p
               style={{
-                fontSize: 10,
+                fontSize: 12,
                 color: '#7c3aed',
                 fontWeight: 700,
                 letterSpacing: '0.12em',
@@ -216,7 +216,7 @@ function PreviewContent() {
                     borderLeft: '2px solid #7c3aed',
                     borderRadius: 8,
                     padding: '8px 12px',
-                    fontSize: 14,
+                    fontSize: 16,
                     color: '#e2d9f3',
                     fontWeight: 600,
                   }}
@@ -234,7 +234,7 @@ function PreviewContent() {
               border: '1px solid rgba(16,185,129,0.19)',
               borderRadius: 10,
               padding: '10px 12px',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 700,
               color: '#10b981',
             }}
@@ -263,12 +263,12 @@ function PreviewContent() {
             >
               Ver planes — todas las materias →
             </button>
-            <p style={{ fontSize: 12, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
+            <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
               Matemáticas, Español, Historia, Ciencias y más · Desde $199/mes
             </p>
           </div>
 
-          <p style={{ fontSize: 12, color: '#a78bfa', textAlign: 'center', margin: '16px 0' }}>
+          <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '16px 0' }}>
             ¿Te falla solo una materia?
           </p>
 
@@ -283,21 +283,21 @@ function PreviewContent() {
                 borderRadius: 12,
                 border: '1.5px solid #ec4899',
                 fontWeight: 800,
-                fontSize: 15,
+                fontSize: 17,
                 color: '#ec4899',
                 cursor: 'pointer',
               }}
             >
               Quiero guías solo de {subject} →
             </button>
-            <p style={{ fontSize: 12, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
+            <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
               Una sola materia, adaptada exactamente a lo que te falla · Desde $499/mes
             </p>
           </div>
         </div>
 
         {/* E) Trust line */}
-        <p style={{ fontSize: 12, color: '#a78bfa', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
+        <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
           Sin tarjeta para empezar · Cancela cuando quieras
         </p>
 

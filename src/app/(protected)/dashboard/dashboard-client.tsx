@@ -155,7 +155,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               <p
                 style={{
                   fontFamily: 'var(--font-orbitron)',
-                  fontSize: 13,
+                  fontSize: 15,
                   fontWeight: 900,
                   letterSpacing: '0.2em',
                   margin: '0 0 16px',
@@ -169,7 +169,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               </p>
 
               {/* Greeting */}
-              <p style={{ fontSize: 14, color: '#a78bfa', margin: '0 0 4px', fontWeight: 600 }}>
+              <p style={{ fontSize: 16, color: '#a78bfa', margin: '0 0 4px', fontWeight: 600 }}>
                 Bienvenido de vuelta,
               </p>
               <p
@@ -234,7 +234,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                         borderRadius: 8,
                         padding: '10px 14px',
                         textAlign: 'left',
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: 700,
                         color: '#e2d9f3',
                         cursor: 'pointer',
@@ -259,7 +259,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                         borderRadius: 8,
                         padding: '10px 14px',
                         textAlign: 'left',
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: 700,
                         color: '#f87171',
                         cursor: 'pointer',
@@ -295,7 +295,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               >
                 <span style={{ fontSize: 18 }}>⭐</span>
                 <div>
-                  <p style={{ margin: 0, fontSize: 11, color: '#a78bfa', fontWeight: 600 }}>XP Total</p>
+                  <p style={{ margin: 0, fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>XP Total</p>
                   <p style={{ margin: 0, fontSize: 16, fontWeight: 900, color: '#fbbf24' }}>
                     {profile.xp_total.toLocaleString('es-MX')}
                   </p>
@@ -317,7 +317,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               >
                 <span style={{ fontSize: 18 }}>🔥</span>
                 <div>
-                  <p style={{ margin: 0, fontSize: 11, color: '#a78bfa', fontWeight: 600 }}>Racha</p>
+                  <p style={{ margin: 0, fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Racha</p>
                   <p style={{ margin: 0, fontSize: 16, fontWeight: 900, color: '#ec4899' }}>
                     {profile.streak_days} días
                   </p>
@@ -339,7 +339,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 <span
                   style={{
                     fontFamily: 'var(--font-orbitron)',
-                    fontSize: 12,
+                    fontSize: 14,
                     fontWeight: 700,
                     color: '#fbbf24',
                     letterSpacing: '0.05em',
@@ -347,7 +347,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 >
                   NIVEL {level}
                 </span>
-                <span style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600 }}>
+                <span style={{ fontSize: 14, color: '#a78bfa', fontWeight: 600 }}>
                   {current}/{total} XP
                 </span>
               </div>
@@ -387,7 +387,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 <p
                   style={{
                     fontFamily: 'var(--font-orbitron)',
-                    fontSize: 15,
+                    fontSize: 17,
                     fontWeight: 900,
                     color: isExpiredBanner ? '#fbbf24' : '#e2d9f3',
                     margin: '0 0 8px',
@@ -398,7 +398,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 </p>
                 <p
                   style={{
-                    fontSize: 14,
+                    fontSize: 16,
                     color: isExpiredBanner ? '#d97706' : '#a78bfa',
                     margin: '0 0 16px',
                     lineHeight: 1.6,
@@ -417,7 +417,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     border: 'none',
                     borderRadius: 12,
                     fontFamily: 'var(--font-nunito)',
-                    fontSize: 15,
+                    fontSize: 17,
                     fontWeight: 900,
                     cursor: 'pointer',
                   }}
@@ -440,7 +440,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               >
                 <p
                   style={{
-                    fontSize: 11,
+                    fontSize: 13,
                     color: '#a78bfa',
                     fontWeight: 700,
                     letterSpacing: '0.1em',
@@ -460,7 +460,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 >
                   Matemáticas
                 </p>
-                <p style={{ fontSize: 13, color: '#a78bfa', margin: '0 0 16px' }}>
+                <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 16px' }}>
                   Álgebra · Ecuaciones lineales
                 </p>
                 <button
@@ -474,7 +474,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     border: 'none',
                     borderRadius: 12,
                     fontFamily: 'var(--font-nunito)',
-                    fontSize: 15,
+                    fontSize: 17,
                     fontWeight: 900,
                     cursor: 'pointer',
                   }}
@@ -503,8 +503,8 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               >
                 {/* Level row — always shown */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Nivel</span>
-                  <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                  <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Nivel</span>
+                  <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                     {levelMeta.emoji} {levelMeta.label}
                   </span>
                 </div>
@@ -512,8 +512,8 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 {/* Grade row — only for middle_school and high_school */}
                 {showGrade && GRADE_LABELS[profile.grade] && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Año</span>
-                    <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                    <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Año</span>
+                    <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                       📅 {GRADE_LABELS[profile.grade]}
                     </span>
                   </div>
@@ -522,8 +522,8 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 {/* Theme row — only if interests exist */}
                 {profile.interests[0] && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Temática</span>
-                    <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 700 }}>
+                    <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Temática</span>
+                    <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                       {themeEmoji} {profile.interests[0]}
                     </span>
                   </div>
@@ -535,7 +535,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
             <div style={{ marginBottom: 16 }}>
               <p
                 style={{
-                  fontSize: 11,
+                  fontSize: 13,
                   color: '#a78bfa',
                   fontWeight: 700,
                   letterSpacing: '0.1em',
@@ -600,7 +600,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                             position: 'absolute',
                             top: 8,
                             right: 8,
-                            fontSize: 14,
+                            fontSize: 16,
                             zIndex: 1,
                           }}
                         >
@@ -629,7 +629,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                       {/* Subject name */}
                       <p
                         style={{
-                          fontSize: 15,
+                          fontSize: 17,
                           fontWeight: 800,
                           color: '#e2d9f3',
                           margin: '0 0 3px',
@@ -641,7 +641,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                       {/* XP label */}
                       <p
                         style={{
-                          fontSize: 12,
+                          fontSize: 14,
                           color: '#a78bfa',
                           margin: '0 0 10px',
                         }}

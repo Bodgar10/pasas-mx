@@ -181,7 +181,7 @@ export default function TopicClient({
         <div style={{ flex: 1, minWidth: 0 }}>
           <div
             style={{
-              fontSize: 10,
+              fontSize: 12,
               color: '#a78bfa',
               textTransform: 'uppercase',
               letterSpacing: '1.5px',
@@ -194,7 +194,7 @@ export default function TopicClient({
           <div
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 900,
               color: '#e2d9f3',
               whiteSpace: 'nowrap',
@@ -212,7 +212,7 @@ export default function TopicClient({
             border: '1px solid rgba(251,191,36,0.25)',
             borderRadius: 50,
             padding: '4px 10px',
-            fontSize: 11,
+            fontSize: 13,
             fontWeight: 800,
             color: '#fbbf24',
             flexShrink: 0,
@@ -245,7 +245,7 @@ export default function TopicClient({
               flex: isDesktop ? undefined : 1,
               justifyContent: 'center',
               padding: isDesktop ? '12px 24px' : '10px 0',
-              fontSize: isDesktop ? 14 : 13,
+              fontSize: isDesktop ? 16 : 15,
               fontWeight: 800,
               cursor: 'pointer',
               background: 'none',
@@ -277,7 +277,7 @@ export default function TopicClient({
               padding: '32px 16px',
               textAlign: 'center',
               color: '#a78bfa',
-              fontSize: 14,
+              fontSize: 16,
             }}
           >
             Contenido próximamente
@@ -307,7 +307,7 @@ export default function TopicClient({
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: 4,
-                      fontSize: 10,
+                      fontSize: 12,
                       fontWeight: 800,
                       textTransform: 'uppercase',
                       letterSpacing: 1,
@@ -323,7 +323,7 @@ export default function TopicClient({
                   </div>
                   <div
                     style={{
-                      fontSize: 14,
+                      fontSize: 16,
                       lineHeight: 1.65,
                       color: '#e2d9f3',
                     }}
@@ -336,7 +336,7 @@ export default function TopicClient({
                       justifyContent: 'flex-end',
                       marginTop: 8,
                       gap: 6,
-                      fontSize: 11,
+                      fontSize: 13,
                       color: '#a78bfa',
                       fontWeight: 700,
                     }}
@@ -362,7 +362,7 @@ export default function TopicClient({
               padding: '32px 16px',
               textAlign: 'center',
               color: '#a78bfa',
-              fontSize: 14,
+              fontSize: 16,
             }}
           >
             Preguntas próximamente
@@ -381,7 +381,7 @@ export default function TopicClient({
                 <div
                   style={{
                     fontFamily: 'var(--font-orbitron)',
-                    fontSize: 22,
+                    fontSize: 24,
                     fontWeight: 900,
                     background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
                     WebkitBackgroundClip: 'text',
@@ -391,7 +391,7 @@ export default function TopicClient({
                 >
                   {score} / {quizQuestions.length}
                 </div>
-                <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
+                <div style={{ fontSize: 14, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
                   Respuestas correctas
                 </div>
               </div>
@@ -421,7 +421,7 @@ export default function TopicClient({
                     }}
                   />
                 ))}
-                <span style={{ fontSize: 11, color: '#a78bfa' }}>
+                <span style={{ fontSize: 13, color: '#a78bfa' }}>
                   {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
                 </span>
               </div>
@@ -451,7 +451,7 @@ export default function TopicClient({
                   >
                     <div
                       style={{
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: 700,
                         color: '#f0e6ff',
                         marginBottom: 14,
@@ -492,7 +492,7 @@ export default function TopicClient({
                               border: optBorder,
                               borderRadius: 10,
                               padding: '10px 14px',
-                              fontSize: 13,
+                              fontSize: 15,
                               color: optColor,
                               cursor: isAnswered ? 'default' : 'pointer',
                               textAlign: 'left',
@@ -515,7 +515,7 @@ export default function TopicClient({
                           marginTop: 10,
                           padding: '10px 12px',
                           borderRadius: 8,
-                          fontSize: 13,
+                          fontSize: 15,
                           fontWeight: 700,
                           ...(isCorrectAnswer
                             ? {
@@ -538,7 +538,7 @@ export default function TopicClient({
                               color: '#fbbf24',
                               borderRadius: 50,
                               padding: '2px 8px',
-                              fontSize: 11,
+                              fontSize: 13,
                               marginLeft: 8,
                             }}
                           >
@@ -560,7 +560,7 @@ export default function TopicClient({
         <div
           style={{
             fontFamily: 'var(--font-orbitron)',
-            fontSize: 10,
+            fontSize: 12,
             color: '#a78bfa',
             textTransform: 'uppercase',
             letterSpacing: 2,
@@ -598,13 +598,13 @@ export default function TopicClient({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: 15,
+                  fontSize: 17,
                   flexShrink: 0,
                 }}
               >
                 {SECTION_ICONS[section.type]}
               </div>
-              <div style={{ fontSize: 13, lineHeight: 1.55, color: '#e2d9f3' }}>
+              <div style={{ fontSize: 15, lineHeight: 1.55, color: '#e2d9f3' }}>
                 {renderContent(section.content)}
               </div>
             </div>
@@ -625,7 +625,7 @@ export default function TopicClient({
           <div
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 12,
+              fontSize: 14,
               color: '#10b981',
               fontWeight: 700,
               marginBottom: 4,
@@ -633,7 +633,7 @@ export default function TopicClient({
           >
             ✓ Listo por ahora
           </div>
-          <div style={{ fontSize: 12, color: '#a78bfa' }}>Haz el Quiz para ganar XP</div>
+          <div style={{ fontSize: 14, color: '#a78bfa' }}>Haz el Quiz para ganar XP</div>
           <button
             type="button"
             onClick={() => setActiveTab('quiz')}
@@ -645,7 +645,7 @@ export default function TopicClient({
               border: 'none',
               borderRadius: 14,
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 700,
               cursor: 'pointer',
               letterSpacing: 1,

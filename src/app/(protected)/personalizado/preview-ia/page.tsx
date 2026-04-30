@@ -148,7 +148,7 @@ function PreviewIAContent() {
           <p
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 700,
               letterSpacing: '0.2em',
               color: '#a78bfa',
@@ -228,7 +228,7 @@ function PreviewIAContent() {
               <p
                 style={{
                   fontFamily: 'var(--font-nunito)',
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: 700,
                   color: '#e2d9f3',
                   margin: '0 0 20px',
@@ -269,10 +269,10 @@ function PreviewIAContent() {
             }}
           >
             <div style={{ fontSize: 40, marginBottom: 16 }}>🤔</div>
-            <p style={{ fontSize: 15, fontWeight: 700, color: '#e2d9f3', margin: '0 0 8px' }}>
+            <p style={{ fontSize: 17, fontWeight: 700, color: '#e2d9f3', margin: '0 0 8px' }}>
               Tu descripción no parece ser de {subject}
             </p>
-            <p style={{ fontSize: 13, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
+            <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
               ¿Quieres cambiar de materia o volver a describir lo que te falla?
             </p>
             <button
@@ -291,7 +291,7 @@ function PreviewIAContent() {
                 border: 'none',
                 borderRadius: 14,
                 fontFamily: 'var(--font-nunito)',
-                fontSize: 15,
+                fontSize: 17,
                 fontWeight: 900,
                 color: '#ffffff',
                 cursor: 'pointer',
@@ -315,7 +315,7 @@ function PreviewIAContent() {
                 borderRadius: 14,
                 padding: '14px',
                 fontFamily: 'var(--font-nunito)',
-                fontSize: 15,
+                fontSize: 17,
                 fontWeight: 700,
                 color: '#a78bfa',
                 cursor: 'pointer',
@@ -337,7 +337,7 @@ function PreviewIAContent() {
               textAlign: 'center',
             }}
           >
-            <p style={{ fontSize: 14, color: '#f87171', margin: '0 0 16px' }}>{error}</p>
+            <p style={{ fontSize: 16, color: '#f87171', margin: '0 0 16px' }}>{error}</p>
             <button
               type="button"
               onClick={() => window.location.reload()}
@@ -349,7 +349,7 @@ function PreviewIAContent() {
                 borderRadius: '14px',
                 padding: '14px',
                 fontFamily: 'var(--font-nunito)',
-                fontSize: '15px',
+                fontSize: '17px',
                 fontWeight: 900,
                 color: '#ffffff',
                 cursor: 'pointer',
@@ -365,7 +365,7 @@ function PreviewIAContent() {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: 600,
                 color: '#a78bfa',
               }}
@@ -392,7 +392,7 @@ function PreviewIAContent() {
                   display: 'inline-block',
                   backgroundColor: '#7c3aed',
                   color: '#ffffff',
-                  fontSize: 11,
+                  fontSize: 13,
                   fontWeight: 700,
                   borderRadius: 999,
                   padding: '3px 12px',
@@ -417,7 +417,7 @@ function PreviewIAContent() {
 
               <p
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   color: '#a78bfa',
                   margin: '0 0 18px',
                   lineHeight: 1.6,
@@ -430,7 +430,7 @@ function PreviewIAContent() {
 
               <p
                 style={{
-                  fontSize: 10,
+                  fontSize: 12,
                   color: '#7c3aed',
                   fontWeight: 700,
                   letterSpacing: '0.12em',
@@ -449,7 +449,7 @@ function PreviewIAContent() {
                       borderLeft: '2px solid #7c3aed',
                       borderRadius: 8,
                       padding: '8px 12px',
-                      fontSize: 13,
+                      fontSize: 15,
                       color: '#e2d9f3',
                       fontWeight: 600,
                     }}
@@ -489,7 +489,7 @@ function PreviewIAContent() {
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: 600,
                 color: '#a78bfa',
                 textAlign: 'center',

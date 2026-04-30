@@ -103,7 +103,7 @@ function MateriaContent() {
           <p
             style={{
               fontFamily: 'var(--font-orbitron)',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 700,
               letterSpacing: '0.2em',
               color: '#a78bfa',
@@ -174,8 +174,8 @@ function MateriaContent() {
                     transition: 'border-color 0.15s, background-color 0.15s',
                   }}
                 >
-                  <span style={{ fontSize: 22 }}>{opt.emoji}</span>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: '#e2d9f3' }}>
+                  <span style={{ fontSize: 24 }}>{opt.emoji}</span>
+                  <span style={{ fontSize: 16, fontWeight: 700, color: '#e2d9f3' }}>
                     {opt.label}
                   </span>
                   <div
@@ -239,7 +239,7 @@ function MateriaContent() {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 600,
               color: '#a78bfa',
               textAlign: 'center',
