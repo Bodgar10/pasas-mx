@@ -263,6 +263,7 @@ export default function TopicAdminClient({
           themeId: selectedThemeId,
           themeName: themes.find((t) => t.id === selectedThemeId)?.name,
           grade,
+          level,
         }),
       })
       const data = await res.json()

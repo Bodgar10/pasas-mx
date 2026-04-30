@@ -18,18 +18,34 @@ export async function POST(req: NextRequest) {
   if (profile?.role !== 'admin')
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
-  const { topicId, topicName, topicSlug: _topicSlug, subjectName, themeId, themeName, grade } =
+  const { topicId, topicName, topicSlug: _topicSlug, subjectName, themeId, themeName, grade, level } =
     await req.json()
+
+  function getEducationContext(level: string, grade: number): string {
+    switch (level) {
+      case 'middle_school': return `${grade}° de secundaria`
+      case 'high_school':   return `${grade}° de preparatoria`
+      case 'exam_prepa':    return `preparación para examen de ingreso a preparatoria (COMIPEMS)`
+      case 'exam_uni':      return `preparación para examen de ingreso a universidad (UNAM/IPN)`
+      default:              return `${grade}° grado`
+    }
+  }
+
+  const educationContext = getEducationContext(level ?? 'middle_school', grade)
+  const isExam = level === 'exam_prepa' || level === 'exam_uni'
 
   const client = new Anthropic()
 
-  const systemPrompt = `Eres un experto en educación mexicana de nivel secundaria y preparatoria.
-Tu tarea es generar contenido educativo de alta calidad para estudiantes mexicanos de ${grade}° grado.
+  const systemPrompt = `Eres un experto en educación mexicana.
+Tu tarea es generar contenido educativo de alta calidad para estudiantes mexicanos en ${educationContext}.
 El contenido debe usar la temática "${themeName}" para crear analogías y ejemplos creativos y relevantes.
 IMPORTANTE: Usa referencias específicas y reales de "${themeName}" — no genéricas.
+Adapta el vocabulario y complejidad al nivel de ${educationContext}.
+${isExam ? `Este contenido es para examen de admisión: enfócate en los conceptos más evaluados, usa distractores plausibles en el quiz, y añade tips para responder rápido bajo presión.` : ''}
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
 
   const userPrompt = `Genera el contenido completo para el tema "${topicName}" de la materia "${subjectName}".
+Nivel: ${educationContext}
 Temática: ${themeName}
 
 Responde con este JSON exacto:
@@ -38,19 +54,19 @@ Responde con este JSON exacto:
     {
       "type": "explanation",
       "title": "título corto",
-      "content": "explicación clara del concepto. Usa **negritas** para términos clave. Máximo 120 palabras.",
+      "content": "explicación clara del concepto para alumnos de ${educationContext}. Usa **negritas** para términos clave. Máximo 120 palabras.",
       "display_order": 1
     },
     {
       "type": "analogy",
       "title": "título de la analogía",
-      "content": "analogía creativa usando ${themeName}. Conecta el concepto con algo específico de ${themeName}. Máximo 100 palabras.",
+      "content": "analogía creativa usando referencias específicas de ${themeName}. Conecta el concepto con algo concreto que un fan de ${themeName} reconocería al instante. Máximo 100 palabras.",
       "display_order": 2
     },
     {
       "type": "example",
       "title": "Ejemplo resuelto",
-      "content": "ejemplo paso a paso con **pasos numerados** claros. Máximo 150 palabras.",
+      "content": "ejemplo paso a paso con **pasos numerados** claros. El contexto del problema debe ser de ${themeName}. Máximo 150 palabras.",
       "display_order": 3
     },
     {
@@ -61,14 +77,14 @@ Responde con este JSON exacto:
     },
     {
       "type": "tip",
-      "title": "Tip para el examen",
-      "content": "consejo práctico para no fallar en el examen. Máximo 60 palabras.",
+      "title": "${isExam ? 'Tip para el examen de admisión' : 'Tip para el examen'}",
+      "content": "${isExam ? 'consejo estratégico para resolver este tipo de pregunta rápido en un examen de opción múltiple con tiempo limitado' : 'consejo práctico para no fallar en el examen'}. Máximo 60 palabras.",
       "display_order": 5
     }
   ],
   "quiz_questions": [
     {
-      "question": "pregunta clara y específica sobre ${topicName}",
+      "question": "pregunta de dificultad básica sobre ${topicName}",
       "options": [
         { "letter": "A", "text": "opción A" },
         { "letter": "B", "text": "opción B" },
@@ -76,15 +92,15 @@ Responde con este JSON exacto:
         { "letter": "D", "text": "opción D" }
       ],
       "correct_answer": "A",
-      "explanation": "explicación de por qué es correcta y por qué las otras son incorrectas. Máximo 60 palabras.",
+      "explanation": "por qué es correcta y por qué las otras son incorrectas. Máximo 60 palabras.",
       "difficulty": 1,
       "xp_reward": 20
     }
   ]
 }
 
-Genera 5 secciones (una de cada tipo) y 3 preguntas de quiz (difficulty: 1 fácil, 2 media, 3 difícil con xp_reward 20/30/50).
-Las preguntas deben ser variadas en dificultad.`
+Genera 5 secciones (una de cada tipo) y 3 preguntas de quiz (difficulty 1/2/3, xp_reward 20/30/50).
+${isExam ? 'Las preguntas deben simular el estilo real del COMIPEMS/UNAM — distractores plausibles, no triviales.' : 'Las preguntas deben ser variadas en dificultad y tipo de razonamiento.'}`
 
   try {
     const message = await client.messages.create({
