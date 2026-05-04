@@ -57,12 +57,25 @@ REGLAS ESTRICTAS:
       ? message.content[0].text.trim()
       : ''
 
-    const svgMatch = rawSvg.match(/<svg[\s\S]*<\/svg>/)
+    console.log('Raw SVG response length:', rawSvg.length)
+    console.log('Raw SVG first 200 chars:', rawSvg.substring(0, 200))
+
+    const svgMatch = rawSvg.match(/<svg[\s\S]*?<\/svg>/i)
+      || rawSvg.match(/<svg[\s\S]*/i)
+
     if (!svgMatch) {
+      console.error('No SVG found in response:', rawSvg.substring(0, 300))
       return NextResponse.json({ error: 'No SVG generated' }, { status: 500 })
     }
 
-    const diagramSvg = svgMatch[0]
+    let diagramSvg = svgMatch[0]
+
+    // Ensure it closes properly
+    if (!diagramSvg.includes('</svg>')) {
+      diagramSvg = diagramSvg + '</svg>'
+    }
+
+    console.log('Extracted SVG length:', diagramSvg.length)
 
     // Delete existing diagram section for this topic+theme
     await supabase
