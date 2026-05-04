@@ -153,13 +153,13 @@ export default function TopicAdminClient({
   }, [])
 
   useEffect(() => {
+    setThemeChanging(false)
     setSections(initialSections)
   }, [initialSections])
 
   useEffect(() => {
-    setThemeChanging(false)
     setPublished(topic.published && initialSections.length > 0)
-  }, [initialSections, topic.published])
+  }, [selectedThemeId, topic.published, initialSections])
 
   useEffect(() => {
     setQuizQuestions(initialQuizQuestions)
@@ -428,6 +428,12 @@ export default function TopicAdminClient({
           <select
             value={selectedThemeId}
             onChange={(e) => {
+              if (!published && sections.length > 0) {
+                const confirm = window.confirm(
+                  '⚠️ Este contenido aún no está publicado.\n\n¿Seguro que quieres cambiar de temática? El contenido generado ya está guardado en la base de datos y podrás volver a verlo cuando regreses a esta temática.'
+                )
+                if (!confirm) return
+              }
               setThemeChanging(true)
               setPublished(false)
               setSelectedThemeId(e.target.value)

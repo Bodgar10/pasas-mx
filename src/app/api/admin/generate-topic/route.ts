@@ -134,16 +134,42 @@ Genera este JSON exacto con las secciones EN ESTE ORDEN (primero la analogía, l
       "explanation": "por qué es correcta y por qué los distractores son plausibles. Máximo 50 palabras.",
       "difficulty": 3,
       "xp_reward": 50
+    },
+    {
+      "question": "pregunta de dificultad media — aplica el concepto en contexto diferente de ${themeName}",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "D",
+      "explanation": "por qué es correcta y cuál es el error típico. Máximo 50 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta difícil — combina conceptos o requiere varios pasos de razonamiento",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "A",
+      "explanation": "por qué es correcta y por qué los distractores son plausibles. Máximo 50 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
     }
   ]
 }
 
-Llena TODOS los campos con contenido real. Solo JSON, sin texto adicional.`
+Genera 5 secciones (una de cada tipo) y 5 preguntas de quiz (difficulty 1, 2, 2, 3, 3 — xp_reward 20, 30, 30, 50, 50). Todas las preguntas deben tener contexto de ${themeName}.`
 
   try {
     const message = await client.messages.create({
       model: 'claude-sonnet-4-6',
-      max_tokens: 2500,
+      max_tokens: 3500,
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     })
