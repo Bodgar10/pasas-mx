@@ -220,6 +220,8 @@ REGLAS ESTRICTAS:
 
     // Second call — generate SVG diagram separately
     let diagramSvg = null
+    console.log('Starting diagram generation...')
+    const diagramStart = Date.now()
     try {
       const diagramMessage = await client.messages.create({
         model: 'claude-sonnet-4-6',
@@ -238,6 +240,8 @@ REGLAS ESTRICTAS:
       console.error('Diagram generation error:', diagramError)
       // Diagram is optional — continue without it
     }
+    console.log('Diagram generation took:', Date.now() - diagramStart, 'ms')
+    console.log('Diagram SVG length:', diagramSvg?.length ?? 0)
 
     await supabase
       .from('topics')
