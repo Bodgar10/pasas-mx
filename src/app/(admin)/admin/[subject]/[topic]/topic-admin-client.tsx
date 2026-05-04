@@ -589,7 +589,7 @@ export default function TopicAdminClient({
       </div>
 
       {/* ─── STUDENT VIEW ─── */}
-      <div style={{ maxWidth: 440, margin: '0 auto' }}>
+      <div style={{ maxWidth: isDesktop ? 780 : 440, margin: '0 auto' }}>
         {themeChanging && (
           <div style={{
             position: 'fixed',
@@ -982,10 +982,11 @@ export default function TopicAdminClient({
                           {section.type === 'diagram' ? (
                             <div
                               style={{ width: '100%' }}
-                              dangerouslySetInnerHTML={{ __html: section.content.replace(
-                                /viewBox="0 0 560 300"/,
-                                'viewBox="0 0 560 300" style="width:100%;height:auto;display:block;"'
-                              )}}
+                              dangerouslySetInnerHTML={{ __html: section.content
+                                .replace(/<svg([^>]*?)width="[^"]*"([^>]*?)height="[^"]*"/g, '<svg$1$2')
+                                .replace(/<svg([^>]*?)height="[^"]*"([^>]*?)width="[^"]*"/g, '<svg$1$2')
+                                .replace('<svg ', '<svg style="width:100%;height:auto;display:block;" ')
+                            }}
                             />
                           ) : renderContent(section.content)}
                         </div>
