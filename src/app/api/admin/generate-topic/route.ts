@@ -83,16 +83,22 @@ Genera este JSON exacto con las secciones EN ESTE ORDEN (primero la analogía, l
       "display_order": 3
     },
     {
+      "type": "diagram",
+      "title": "título descriptivo del diagrama",
+      "content": "SVG_PLACEHOLDER",
+      "display_order": 4
+    },
+    {
       "type": "key_fact",
       "title": "Lo que debes recordar",
       "content": "La definición formal del concepto en 1-2 oraciones con **negritas** en lo más crítico. Incluye la fórmula o regla principal si aplica.",
-      "display_order": 4
+      "display_order": 5
     },
     {
       "type": "tip",
       "title": "${isExam ? 'Tip para el examen de admisión' : 'Tip para no fallar en el examen'}",
       "content": "${isExam ? 'Consejo estratégico específico para resolver este tipo de pregunta rápido en COMIPEMS/UNAM. Menciona el tipo de trampa más común en las opciones.' : 'Truco práctico para recordar el concepto o evitar el error más común.'} Máximo 50 palabras.",
-      "display_order": 5
+      "display_order": 6
     }
   ],
   "quiz_questions": [
@@ -164,7 +170,31 @@ Genera este JSON exacto con las secciones EN ESTE ORDEN (primero la analogía, l
   ]
 }
 
-Genera 5 secciones (una de cada tipo) y 5 preguntas de quiz (difficulty 1, 2, 2, 3, 3 — xp_reward 20, 30, 30, 50, 50). Todas las preguntas deben tener contexto de ${themeName}.`
+INSTRUCCIÓN ESPECIAL PARA EL DIAGRAMA (display_order: 4):
+Genera un diagrama SVG educativo que ilustre visualmente el concepto "${topicName}"
+usando elementos visuales de "${themeName}".
+
+El SVG debe:
+- Tener viewBox="0 0 560 300"
+- Usar SOLO estos colores del sistema de diseño:
+  fondo de elementos: #1a1035 o #0f0a1e
+  morado primario: #7c3aed
+  rosa: #ec4899
+  cyan: #06b6d4
+  amarillo: #fbbf24
+  verde: #10b981
+  texto principal: #e2d9f3
+  texto secundario: #a78bfa
+- Incluir elementos visuales reconocibles de "${themeName}" (personajes, objetos, mecánicas)
+- Mostrar el concepto matemático/académico de forma visual con flechas, etiquetas y fórmulas
+- Tener texto legible mínimo de font-size="12"
+- NO usar imágenes externas ni referencias a URLs
+- Ser autocontenido — solo SVG puro
+
+Reemplaza "SVG_PLACEHOLDER" en el campo content con el código SVG completo.
+El content de la sección diagram debe ser SOLO el código SVG comenzando con <svg y terminando con </svg>.
+
+Genera 6 secciones (analogy, explanation, example, diagram, key_fact, tip) y 5 preguntas de quiz.`
 
   try {
     const message = await client.messages.create({

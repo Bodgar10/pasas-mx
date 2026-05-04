@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 interface Section {
   id: string
-  type: 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip'
+  type: 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
   title: string | null
   content: string
   display_order: number
@@ -36,6 +36,16 @@ interface Props {
 }
 
 function renderContent(text: string): React.ReactNode {
+  // If content is SVG, render it directly
+  if (text.trim().startsWith('<svg')) {
+    return (
+      <div
+        style={{ width: '100%', overflowX: 'auto' }}
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
+    )
+  }
+  // Otherwise render markdown bold
   const parts = text.split('**')
   return parts.map((part, i) =>
     i % 2 === 1 ? (
@@ -87,6 +97,7 @@ const SECTION_ICONS: Record<Section['type'], string> = {
   example: '🔢',
   key_fact: '📌',
   tip: '💡',
+  diagram: '🎨',
 }
 
 const SECTION_TYPE_CONFIG: Record<string, {
@@ -130,6 +141,13 @@ const SECTION_TYPE_CONFIG: Record<string, {
     color: '#10b981',
     borderColor: 'rgba(16,185,129,0.25)',
     headerBg: 'rgba(16,185,129,0.06)',
+  },
+  diagram: {
+    label: 'Diagrama',
+    icon: '🎨',
+    color: '#06b6d4',
+    borderColor: 'rgba(6,182,212,0.25)',
+    headerBg: 'rgba(6,182,212,0.06)',
   },
 }
 
