@@ -807,14 +807,27 @@ export default function TopicAdminClient({
                 <div key={section.id} style={{ position: 'relative' }}>
                   {/* Admin toolbar */}
                   <div style={ADMIN_TOOLBAR_STYLE}>
-                    <button
-                      type="button"
-                      onClick={() => startEdit(section.id, section.content)}
-                      style={TOOLBAR_BTN_STYLE}
-                      title="Editar"
-                    >
-                      ✏️
-                    </button>
+                    {section.type !== 'diagram' && (
+                      <button
+                        type="button"
+                        onClick={() => startEdit(section.id, section.content)}
+                        style={TOOLBAR_BTN_STYLE}
+                        title="Editar"
+                      >
+                        ✏️
+                      </button>
+                    )}
+                    {section.type === 'diagram' && (
+                      <button
+                        type="button"
+                        onClick={handleGenerateDiagram}
+                        disabled={generatingDiagram}
+                        style={TOOLBAR_BTN_STYLE}
+                        title="Regenerar diagrama"
+                      >
+                        🔄
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => handleDeleteSection(section.id)}
@@ -929,9 +942,17 @@ export default function TopicAdminClient({
                         {typeMeta.label}
                       </div>
                       <div
-                        style={{ fontSize: 16, lineHeight: 1.65, color: '#e2d9f3' }}
+                        style={{ padding: section.type === 'diagram' ? '0' : undefined, fontSize: 16, lineHeight: 1.65, color: '#e2d9f3' }}
                       >
-                        {renderContent(section.content)}
+                        {section.type === 'diagram' ? (
+                          <div
+                            style={{ width: '100%' }}
+                            dangerouslySetInnerHTML={{ __html: section.content.replace(
+                              /viewBox="0 0 560 300"/,
+                              'viewBox="0 0 560 300" style="width:100%;height:auto;display:block;"'
+                            )}}
+                          />
+                        ) : renderContent(section.content)}
                       </div>
                       <div
                         style={{

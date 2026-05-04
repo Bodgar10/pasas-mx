@@ -417,12 +417,20 @@ export default function TopicClient({
 
                     {/* Content */}
                     <div style={{
-                      padding: '14px 16px',
+                      padding: section.type === 'diagram' ? '0' : '14px 16px',
                       fontSize: 15,
                       lineHeight: 1.75,
                       color: '#e2d9f3',
                     }}>
-                      {renderContent(section.content)}
+                      {section.type === 'diagram' ? (
+                        <div
+                          style={{ width: '100%' }}
+                          dangerouslySetInnerHTML={{ __html: section.content.replace(
+                            /viewBox="0 0 560 300"/,
+                            'viewBox="0 0 560 300" style="width:100%;height:auto;display:block;"'
+                          )}}
+                        />
+                      ) : renderContent(section.content)}
                     </div>
 
                     {/* Footer XP */}
