@@ -152,6 +152,11 @@ Llena TODOS los campos con contenido real. Solo JSON, sin texto adicional.`
     const clean = rawText.replace(/```json|```/g, '').trim()
     const generated = JSON.parse(clean)
 
+    await supabase
+      .from('topics')
+      .update({ published: false })
+      .eq('id', topicId)
+
     // Delete existing sections for this topic+theme (regenerate flow)
     await supabase.from('sections').delete().eq('topic_id', topicId).eq('theme_id', themeId)
 
@@ -208,10 +213,13 @@ Llena TODOS los campos con contenido real. Solo JSON, sin texto adicional.`
       source: 'ai',
     }))
 
-    const { data: insertedQuestions } = await supabase
+    const { data: insertedQuestions, error: quizError } = await supabase
       .from('quiz_questions')
       .insert(questionsToInsert)
       .select()
+
+    console.error('Quiz insert error:', quizError)
+    console.log('Quiz insert result:', insertedQuestions)
 
     return NextResponse.json({
       sections: sectionsToReturn,

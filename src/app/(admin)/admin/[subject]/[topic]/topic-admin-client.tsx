@@ -138,6 +138,7 @@ export default function TopicAdminClient({
     explanation: string
   } | null>(null)
   const [generating, setGenerating] = useState(false)
+  const [themeChanging, setThemeChanging] = useState(false)
   const [generateError, setGenerateError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemeId)
@@ -281,6 +282,7 @@ export default function TopicAdminClient({
       }
       if (data.sections) setSections(data.sections)
       if (data.quizQuestions) setQuizQuestions(data.quizQuestions)
+      setPublished(false)
     } catch (err) {
       setGenerateError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
     } finally {
@@ -379,6 +381,7 @@ export default function TopicAdminClient({
           <select
             value={selectedThemeId}
             onChange={(e) => {
+              setThemeChanging(true)
               setSelectedThemeId(e.target.value)
               const url = new URL(window.location.href)
               url.searchParams.set('themeId', e.target.value)
@@ -458,6 +461,38 @@ export default function TopicAdminClient({
 
       {/* ─── STUDENT VIEW ─── */}
       <div style={{ maxWidth: 440, margin: '0 auto' }}>
+        {themeChanging && (
+          <div style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 50,
+            background: 'rgba(15,10,30,0.85)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 16,
+          }}>
+            <div style={{
+              width: 48,
+              height: 48,
+              borderRadius: '50%',
+              border: '3px solid rgba(124,58,237,0.2)',
+              borderTop: '3px solid #7c3aed',
+              animation: 'spin 0.8s linear infinite',
+            }} />
+            <div style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 14,
+              color: '#a78bfa',
+              fontWeight: 700,
+              letterSpacing: 1,
+            }}>
+              Cargando temática...
+            </div>
+            <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+          </div>
+        )}
         {/* Student top bar */}
         <div
           style={{
