@@ -39,10 +39,18 @@ export default async function TopicPage({
     .is('user_id', null)
     .order('display_order', { ascending: true })
 
+  const { data: userSubject } = await supabase
+    .from('user_subjects')
+    .select('theme_id')
+    .eq('user_id', user?.id ?? '')
+    .eq('subject_id', subject.id)
+    .single()
+
   const { data: quizQuestions } = await supabase
     .from('quiz_questions')
     .select('*')
     .eq('topic_id', topic.id)
+    .eq('theme_id', userSubject?.theme_id)
     .order('created_at', { ascending: true })
 
   let initialProgress = null

@@ -51,6 +51,7 @@ export default async function TopicAdminPage({
     .from('quiz_questions')
     .select('*')
     .eq('topic_id', topic.id)
+    .eq('theme_id', selectedThemeId)
     .order('created_at', { ascending: true })
 
   const { count: completedCount } = await supabase

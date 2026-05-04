@@ -192,8 +192,12 @@ Llena TODOS los campos con contenido real. Solo JSON, sin texto adicional.`
       id: `temp-${i}`,
     }))
 
-    // Always delete and regenerate quiz questions
-    await supabase.from('quiz_questions').delete().eq('topic_id', topicId)
+    // Always delete and regenerate quiz questions for this topic+theme
+    await supabase
+      .from('quiz_questions')
+      .delete()
+      .eq('topic_id', topicId)
+      .eq('theme_id', themeId)
 
     const questionsToInsert = generated.quiz_questions.map((q: {
       question: string
@@ -204,6 +208,7 @@ Llena TODOS los campos con contenido real. Solo JSON, sin texto adicional.`
       xp_reward: number
     }) => ({
       topic_id: topicId,
+      theme_id: themeId,
       question: q.question,
       options: q.options,
       correct_answer: q.correct_answer,
