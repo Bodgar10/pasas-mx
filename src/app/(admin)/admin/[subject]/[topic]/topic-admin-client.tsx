@@ -278,7 +278,7 @@ export default function TopicAdminClient({
     setGenerateError(null)
     try {
       const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 55000)
+      const timeoutId = setTimeout(() => controller.abort(), 110000)
 
       const res = await fetch('/api/admin/generate-topic', {
         method: 'POST',
@@ -369,11 +369,13 @@ export default function TopicAdminClient({
             fontSize: 14,
             color: '#a78bfa',
             fontWeight: 600,
-            maxWidth: 260,
+            maxWidth: 280,
             textAlign: 'center',
             lineHeight: 1.6,
           }}>
-            Claude está creando las secciones, preguntas y diagrama. Esto puede tardar hasta 50 segundos.
+            Fase 1: secciones y preguntas (~30s){'\n'}
+            Fase 2: diagrama visual (~30s más){'\n'}
+            Total estimado: ~60 segundos
           </div>
           <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
         </div>
