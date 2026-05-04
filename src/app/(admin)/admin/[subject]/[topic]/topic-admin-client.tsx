@@ -157,6 +157,10 @@ export default function TopicAdminClient({
   }, [initialSections])
 
   useEffect(() => {
+    setThemeChanging(false)
+  }, [initialSections])
+
+  useEffect(() => {
     setQuizQuestions(initialQuizQuestions)
   }, [initialQuizQuestions])
 
