@@ -434,6 +434,48 @@ export default function TopicAdminClient({
           <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
         </div>
       )}
+      {generatingDiagram && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 100,
+          background: 'rgba(15,10,30,0.92)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 20,
+        }}>
+          <div style={{
+            width: 56,
+            height: 56,
+            borderRadius: '50%',
+            border: '3px solid rgba(6,182,212,0.2)',
+            borderTop: '3px solid #06b6d4',
+            animation: 'spin 0.8s linear infinite',
+          }} />
+          <div style={{
+            fontFamily: 'var(--font-orbitron)',
+            fontSize: 15,
+            color: '#e2d9f3',
+            fontWeight: 700,
+            letterSpacing: 1,
+          }}>
+            Generando diagrama...
+          </div>
+          <div style={{
+            fontSize: 14,
+            color: '#a78bfa',
+            fontWeight: 600,
+            maxWidth: 260,
+            textAlign: 'center',
+            lineHeight: 1.6,
+          }}>
+            Claude está creando el diagrama visual. Esto tarda unos 30 segundos.
+          </div>
+          <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+        </div>
+      )}
       {/* ─── ADMIN TOP BANNER ─── */}
       <div
         style={{
