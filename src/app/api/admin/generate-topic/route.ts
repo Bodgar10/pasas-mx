@@ -175,8 +175,35 @@ Genera 5 secciones (una de cada tipo) y 5 preguntas de quiz (difficulty 1, 2, 2,
     })
 
     const rawText = message.content[0].type === 'text' ? message.content[0].text : ''
-    const clean = rawText.replace(/```json|```/g, '').trim()
-    const generated = JSON.parse(clean)
+
+    // Clean markdown fences if present
+    let clean = rawText.replace(/```json|```/g, '').trim()
+
+    // Try to extract JSON object if there's extra text around it
+    const jsonMatch = clean.match(/\{[\s\S]*\}/)
+    if (jsonMatch) {
+      clean = jsonMatch[0]
+    }
+
+    let generated
+    try {
+      generated = JSON.parse(clean)
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError)
+      console.error('Raw text from Claude:', rawText.substring(0, 500))
+      return NextResponse.json({ error: 'Generation failed — invalid JSON from Claude. Please try again.' }, { status: 500 })
+    }
+
+    // Validate structure
+    if (!generated.sections || !Array.isArray(generated.sections)) {
+      console.error('Invalid structure — missing sections:', JSON.stringify(generated).substring(0, 200))
+      return NextResponse.json({ error: 'Generation failed — missing sections. Please try again.' }, { status: 500 })
+    }
+
+    if (!generated.quiz_questions || !Array.isArray(generated.quiz_questions)) {
+      console.error('Invalid structure — missing quiz_questions')
+      generated.quiz_questions = []
+    }
 
     await supabase
       .from('topics')
