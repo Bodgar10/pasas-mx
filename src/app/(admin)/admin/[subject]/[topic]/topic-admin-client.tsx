@@ -69,47 +69,6 @@ function renderContent(text: string): React.ReactNode {
   )
 }
 
-const SECTION_TYPE_LABELS: Record<
-  Section['type'],
-  { label: string; bg: string; color: string; border: string }
-> = {
-  explanation: {
-    label: '📘 Explicación',
-    bg: 'rgba(124,58,237,0.15)',
-    color: '#c4b5fd',
-    border: 'rgba(124,58,237,0.3)',
-  },
-  analogy: {
-    label: '🎮 Analogía',
-    bg: 'rgba(236,72,153,0.12)',
-    color: '#ec4899',
-    border: 'rgba(236,72,153,0.3)',
-  },
-  example: {
-    label: '🔢 Ejemplo',
-    bg: 'rgba(6,182,212,0.1)',
-    color: '#06b6d4',
-    border: 'rgba(6,182,212,0.3)',
-  },
-  key_fact: {
-    label: '📌 Dato clave',
-    bg: 'rgba(251,191,36,0.1)',
-    color: '#fbbf24',
-    border: 'rgba(251,191,36,0.3)',
-  },
-  tip: {
-    label: '💡 Tip de examen',
-    bg: 'rgba(16,185,129,0.1)',
-    color: '#10b981',
-    border: 'rgba(16,185,129,0.3)',
-  },
-  diagram: {
-    label: '🎨 Diagrama',
-    bg: 'rgba(6,182,212,0.1)',
-    color: '#06b6d4',
-    border: 'rgba(6,182,212,0.3)',
-  },
-}
 
 const SECTION_ICONS: Record<Section['type'], string> = {
   explanation: '📘',
@@ -118,6 +77,57 @@ const SECTION_ICONS: Record<Section['type'], string> = {
   key_fact: '📌',
   tip: '💡',
   diagram: '🎨',
+}
+
+const SECTION_TYPE_CONFIG: Record<string, {
+  label: string
+  icon: string
+  color: string
+  borderColor: string
+  headerBg: string
+}> = {
+  analogy: {
+    label: 'Analogía',
+    icon: '🎭',
+    color: '#ec4899',
+    borderColor: 'rgba(236,72,153,0.25)',
+    headerBg: 'rgba(236,72,153,0.06)',
+  },
+  explanation: {
+    label: 'Explicación',
+    icon: '📘',
+    color: '#a78bfa',
+    borderColor: 'rgba(167,139,250,0.25)',
+    headerBg: 'rgba(167,139,250,0.06)',
+  },
+  example: {
+    label: 'Ejemplo resuelto',
+    icon: '🔢',
+    color: '#06b6d4',
+    borderColor: 'rgba(6,182,212,0.25)',
+    headerBg: 'rgba(6,182,212,0.06)',
+  },
+  key_fact: {
+    label: 'Dato clave',
+    icon: '📌',
+    color: '#fbbf24',
+    borderColor: 'rgba(251,191,36,0.25)',
+    headerBg: 'rgba(251,191,36,0.06)',
+  },
+  tip: {
+    label: 'Tip para el examen',
+    icon: '💡',
+    color: '#10b981',
+    borderColor: 'rgba(16,185,129,0.25)',
+    headerBg: 'rgba(16,185,129,0.06)',
+  },
+  diagram: {
+    label: 'Diagrama',
+    icon: '🎨',
+    color: '#06b6d4',
+    borderColor: 'rgba(6,182,212,0.25)',
+    headerBg: 'rgba(6,182,212,0.06)',
+  },
 }
 
 export default function TopicAdminClient({
@@ -801,178 +811,202 @@ export default function TopicAdminClient({
               )}
             </div>
           ) : (
-            sections.map((section) => {
-              const typeMeta = SECTION_TYPE_LABELS[section.type]
-              return (
-                <div key={section.id} style={{ position: 'relative' }}>
-                  {/* Admin toolbar */}
-                  <div style={ADMIN_TOOLBAR_STYLE}>
-                    {section.type !== 'diagram' && (
-                      <button
-                        type="button"
-                        onClick={() => startEdit(section.id, section.content)}
-                        style={TOOLBAR_BTN_STYLE}
-                        title="Editar"
-                      >
-                        ✏️
-                      </button>
-                    )}
-                    {section.type === 'diagram' && (
-                      <button
-                        type="button"
-                        onClick={handleGenerateDiagram}
-                        disabled={generatingDiagram}
-                        style={TOOLBAR_BTN_STYLE}
-                        title="Regenerar diagrama"
-                      >
-                        🔄
-                      </button>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteSection(section.id)}
-                      style={TOOLBAR_BTN_STYLE}
-                      title="Eliminar"
-                    >
-                      🗑️
-                    </button>
-                  </div>
+            <div style={{ position: 'relative', paddingLeft: 40 }}>
+              {/* Vertical line */}
+              <div style={{
+                position: 'absolute',
+                left: 15,
+                top: 20,
+                bottom: 20,
+                width: 1,
+                background: 'rgba(124,58,237,0.2)',
+              }} />
 
-                  {editingId === section.id ? (
-                    /* Edit mode */
-                    <div
-                      style={{
+              {sections.map((section, index) => {
+                const meta = SECTION_TYPE_CONFIG[section.type]
+                return (
+                  <div key={section.id} style={{ position: 'relative', marginBottom: 16 }}>
+                    {/* Numbered dot */}
+                    <div style={{
+                      position: 'absolute',
+                      left: -33,
+                      top: 16,
+                      width: 18,
+                      height: 18,
+                      borderRadius: '50%',
+                      border: `2px solid ${meta.color}`,
+                      background: '#0f0a1e',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 10,
+                      fontWeight: 800,
+                      color: meta.color,
+                      fontFamily: 'var(--font-nunito)',
+                    }}>
+                      {index + 1}
+                    </div>
+
+                    {/* Admin toolbar */}
+                    <div style={ADMIN_TOOLBAR_STYLE}>
+                      {section.type !== 'diagram' && (
+                        <button
+                          type="button"
+                          onClick={() => startEdit(section.id, section.content)}
+                          style={TOOLBAR_BTN_STYLE}
+                          title="Editar"
+                        >
+                          ✏️
+                        </button>
+                      )}
+                      {section.type === 'diagram' && (
+                        <button
+                          type="button"
+                          onClick={handleGenerateDiagram}
+                          disabled={generatingDiagram}
+                          style={TOOLBAR_BTN_STYLE}
+                          title="Regenerar diagrama"
+                        >
+                          🔄
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteSection(section.id)}
+                        style={TOOLBAR_BTN_STYLE}
+                        title="Eliminar"
+                      >
+                        🗑️
+                      </button>
+                    </div>
+
+                    {editingId === section.id ? (
+                      /* Edit mode */
+                      <div style={{
                         background: '#1a1035',
                         border: '2px solid #7c3aed',
                         borderRadius: 16,
                         padding: 16,
-                        marginBottom: 12,
-                      }}
-                    >
-                      <textarea
-                        value={editContent}
-                        onChange={(e) => setEditContent(e.target.value)}
-                        style={{
-                          width: '100%',
-                          minHeight: 120,
-                          background: '#1C1033',
-                          border: '1.5px solid #2D2048',
-                          borderRadius: 10,
-                          color: '#e2d9f3',
-                          fontSize: 16,
-                          lineHeight: 1.65,
-                          padding: '10px 12px',
-                          fontFamily: 'var(--font-nunito)',
-                          resize: 'vertical',
-                          boxSizing: 'border-box',
-                        }}
-                      />
-                      <div
-                        style={{
-                          display: 'flex',
-                          gap: 8,
-                          marginTop: 10,
-                          justifyContent: 'flex-end',
-                        }}
-                      >
-                        <button
-                          type="button"
-                          onClick={() => setEditingId(null)}
+                      }}>
+                        <textarea
+                          value={editContent}
+                          onChange={(e) => setEditContent(e.target.value)}
                           style={{
-                            background: 'rgba(255,255,255,0.06)',
-                            border: '1px solid #2D2048',
-                            color: '#a78bfa',
+                            width: '100%',
+                            minHeight: 120,
+                            background: '#1C1033',
+                            border: '1.5px solid #2D2048',
                             borderRadius: 10,
-                            padding: '6px 14px',
-                            fontSize: 14,
-                            fontWeight: 800,
-                            cursor: 'pointer',
+                            color: '#e2d9f3',
+                            fontSize: 16,
+                            lineHeight: 1.65,
+                            padding: '10px 12px',
                             fontFamily: 'var(--font-nunito)',
+                            resize: 'vertical',
+                            boxSizing: 'border-box',
                           }}
-                        >
-                          Cancelar
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleSaveSection(section.id)}
-                          style={{
-                            background: '#7c3aed',
-                            border: 'none',
-                            color: 'white',
-                            borderRadius: 10,
-                            padding: '6px 14px',
-                            fontSize: 14,
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                            fontFamily: 'var(--font-nunito)',
-                          }}
-                        >
-                          {saving ? 'Guardando...' : 'Guardar'}
-                        </button>
+                        />
+                        <div style={{ display: 'flex', gap: 8, marginTop: 10, justifyContent: 'flex-end' }}>
+                          <button
+                            type="button"
+                            onClick={() => setEditingId(null)}
+                            style={{
+                              background: 'rgba(255,255,255,0.06)',
+                              border: '1px solid #2D2048',
+                              color: '#a78bfa',
+                              borderRadius: 10,
+                              padding: '6px 14px',
+                              fontSize: 14,
+                              fontWeight: 800,
+                              cursor: 'pointer',
+                              fontFamily: 'var(--font-nunito)',
+                            }}
+                          >
+                            Cancelar
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleSaveSection(section.id)}
+                            style={{
+                              background: '#7c3aed',
+                              border: 'none',
+                              color: 'white',
+                              borderRadius: 10,
+                              padding: '6px 14px',
+                              fontSize: 14,
+                              fontWeight: 800,
+                              cursor: 'pointer',
+                              fontFamily: 'var(--font-nunito)',
+                            }}
+                          >
+                            {saving ? 'Guardando...' : 'Guardar'}
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    /* Student card view */
-                    <div
-                      style={{
+                    ) : (
+                      /* Card */
+                      <div style={{
                         background: '#1a1035',
-                        border: '1px solid rgba(124,58,237,0.2)',
-                        borderRadius: 16,
-                        padding: 16,
-                        marginBottom: 12,
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: 'inline-flex',
+                        border: `1px solid ${meta.borderColor}`,
+                        borderRadius: 14,
+                        overflow: 'hidden',
+                      }}>
+                        {/* Header */}
+                        <div style={{
+                          padding: '10px 16px',
+                          borderBottom: `1px solid ${meta.borderColor}`,
+                          background: meta.headerBg,
+                          display: 'flex',
                           alignItems: 'center',
-                          gap: 4,
-                          fontSize: 12,
-                          fontWeight: 800,
-                          textTransform: 'uppercase',
-                          letterSpacing: 1,
-                          padding: '3px 9px',
-                          borderRadius: 50,
-                          marginBottom: 10,
-                          border: `1px solid ${typeMeta.border}`,
-                          background: typeMeta.bg,
-                          color: typeMeta.color,
-                        }}
-                      >
-                        {typeMeta.label}
-                      </div>
-                      <div
-                        style={{ padding: section.type === 'diagram' ? '0' : undefined, fontSize: 16, lineHeight: 1.65, color: '#e2d9f3' }}
-                      >
-                        {section.type === 'diagram' ? (
-                          <div
-                            style={{ width: '100%' }}
-                            dangerouslySetInnerHTML={{ __html: section.content.replace(
-                              /viewBox="0 0 560 300"/,
-                              'viewBox="0 0 560 300" style="width:100%;height:auto;display:block;"'
-                            )}}
-                          />
-                        ) : renderContent(section.content)}
-                      </div>
-                      <div
-                        style={{
+                          gap: 8,
+                        }}>
+                          <span style={{ fontSize: 15 }}>{meta.icon}</span>
+                          <span style={{
+                            fontSize: 12,
+                            fontWeight: 700,
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: 1,
+                            color: meta.color,
+                          }}>
+                            {meta.label}
+                          </span>
+                        </div>
+
+                        {/* Content */}
+                        <div style={{
+                          padding: section.type === 'diagram' ? '0' : '14px 16px',
+                          fontSize: 15,
+                          lineHeight: 1.75,
+                          color: '#e2d9f3',
+                        }}>
+                          {section.type === 'diagram' ? (
+                            <div
+                              style={{ width: '100%' }}
+                              dangerouslySetInnerHTML={{ __html: section.content.replace(
+                                /viewBox="0 0 560 300"/,
+                                'viewBox="0 0 560 300" style="width:100%;height:auto;display:block;"'
+                              )}}
+                            />
+                          ) : renderContent(section.content)}
+                        </div>
+
+                        {/* Footer XP */}
+                        <div style={{
+                          padding: '8px 16px 12px',
                           display: 'flex',
                           justifyContent: 'flex-end',
-                          marginTop: 8,
-                          gap: 6,
-                          fontSize: 13,
-                          color: '#a78bfa',
-                          fontWeight: 700,
-                        }}
-                      >
-                        Leíste esto{' '}
-                        <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                        }}>
+                          <span style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600 }}>
+                            Leíste esto{' '}
+                            <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              )
-            })
+                    )}
+                  </div>
+                )
+              })}
+            </div>
           )}
 
           {/* Generate diagram button */}
