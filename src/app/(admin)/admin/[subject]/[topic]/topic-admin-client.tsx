@@ -382,6 +382,7 @@ export default function TopicAdminClient({
             value={selectedThemeId}
             onChange={(e) => {
               setThemeChanging(true)
+              setPublished(false)
               setSelectedThemeId(e.target.value)
               const url = new URL(window.location.href)
               url.searchParams.set('themeId', e.target.value)
@@ -428,19 +429,21 @@ export default function TopicAdminClient({
                   }),
             }}
           >
-            {published ? '● Publicado' : '○ Borrador'}
+            {published ? '● Publicado' : sections.length === 0 ? '○ Sin contenido' : '○ Listo para publicar'}
           </span>
 
           <button
             type="button"
             onClick={togglePublish}
+            disabled={!published && sections.length === 0}
             style={{
               borderRadius: 10,
               padding: '6px 14px',
               fontSize: 14,
               fontWeight: 800,
-              cursor: 'pointer',
               fontFamily: 'var(--font-nunito)',
+              cursor: (!published && sections.length === 0) ? 'not-allowed' : 'pointer',
+              opacity: (!published && sections.length === 0) ? 0.4 : 1,
               ...(published
                 ? {
                     background: 'rgba(239,68,68,0.1)',
