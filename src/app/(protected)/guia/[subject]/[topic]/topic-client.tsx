@@ -89,6 +89,12 @@ const SECTION_TYPE_LABELS: Record<Section['type'], { label: string; bg: string; 
     color: '#10b981',
     border: 'rgba(16,185,129,0.3)',
   },
+  diagram: {
+    label: '🎨 Diagrama',
+    bg: 'rgba(6,182,212,0.1)',
+    color: '#06b6d4',
+    border: 'rgba(6,182,212,0.3)',
+  },
 }
 
 const SECTION_ICONS: Record<Section['type'], string> = {
