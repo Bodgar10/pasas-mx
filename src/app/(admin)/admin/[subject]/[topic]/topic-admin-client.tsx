@@ -138,6 +138,7 @@ export default function TopicAdminClient({
     explanation: string
   } | null>(null)
   const [generating, setGenerating] = useState(false)
+  const [generateError, setGenerateError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemeId)
   const [published, setPublished] = useState(topic.published)
@@ -251,10 +252,15 @@ export default function TopicAdminClient({
 
   async function handleGenerate() {
     setGenerating(true)
+    setGenerateError(null)
     try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 55000)
+
       const res = await fetch('/api/admin/generate-topic', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           topicId: topic.id,
           topicName: topic.name,
@@ -266,9 +272,17 @@ export default function TopicAdminClient({
           level,
         }),
       })
+
+      clearTimeout(timeoutId)
       const data = await res.json()
+      if (data.error) {
+        setGenerateError(`Error del servidor: ${data.error}`)
+        return
+      }
       if (data.sections) setSections(data.sections)
       if (data.quizQuestions) setQuizQuestions(data.quizQuestions)
+    } catch (err) {
+      setGenerateError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
     } finally {
       setGenerating(false)
     }
@@ -615,6 +629,20 @@ export default function TopicAdminClient({
               {generating && (
                 <div style={{ fontSize: 14, color: '#a78bfa', marginTop: 12 }}>
                   Generando... esto toma unos segundos
+                </div>
+              )}
+              {generateError && (
+                <div style={{
+                  marginTop: 12,
+                  padding: '10px 14px',
+                  background: 'rgba(239,68,68,0.1)',
+                  border: '1px solid rgba(239,68,68,0.3)',
+                  borderRadius: 10,
+                  color: '#fca5a5',
+                  fontSize: 14,
+                  fontWeight: 600,
+                }}>
+                  {generateError}
                 </div>
               )}
             </div>
