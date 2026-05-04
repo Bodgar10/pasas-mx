@@ -89,6 +89,50 @@ const SECTION_ICONS: Record<Section['type'], string> = {
   tip: '💡',
 }
 
+const SECTION_TYPE_CONFIG: Record<string, {
+  label: string
+  icon: string
+  color: string
+  borderColor: string
+  headerBg: string
+}> = {
+  analogy: {
+    label: 'Analogía',
+    icon: '🎭',
+    color: '#ec4899',
+    borderColor: 'rgba(236,72,153,0.25)',
+    headerBg: 'rgba(236,72,153,0.06)',
+  },
+  explanation: {
+    label: 'Explicación',
+    icon: '📘',
+    color: '#a78bfa',
+    borderColor: 'rgba(167,139,250,0.25)',
+    headerBg: 'rgba(167,139,250,0.06)',
+  },
+  example: {
+    label: 'Ejemplo resuelto',
+    icon: '🔢',
+    color: '#06b6d4',
+    borderColor: 'rgba(6,182,212,0.25)',
+    headerBg: 'rgba(6,182,212,0.06)',
+  },
+  key_fact: {
+    label: 'Dato clave',
+    icon: '📌',
+    color: '#fbbf24',
+    borderColor: 'rgba(251,191,36,0.25)',
+    headerBg: 'rgba(251,191,36,0.06)',
+  },
+  tip: {
+    label: 'Tip para el examen',
+    icon: '💡',
+    color: '#10b981',
+    borderColor: 'rgba(16,185,129,0.25)',
+    headerBg: 'rgba(16,185,129,0.06)',
+  },
+}
+
 export default function TopicClient({
   subject,
   topic,
@@ -283,66 +327,95 @@ export default function TopicClient({
             Contenido próximamente
           </div>
         ) : (
-          <div style={{
-            display: isDesktop ? 'grid' : 'block',
-            gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined,
-            gap: isDesktop ? 16 : undefined,
-            alignItems: 'start',
-          }}>
-            {sections.map((section) => {
-              const typeMeta = SECTION_TYPE_LABELS[section.type]
+          <div style={{ position: 'relative', paddingLeft: 40 }}>
+            {/* Vertical line */}
+            <div style={{
+              position: 'absolute',
+              left: 15,
+              top: 20,
+              bottom: 20,
+              width: 1,
+              background: 'rgba(124,58,237,0.2)',
+            }} />
+
+            {sections.map((section, index) => {
+              const meta = SECTION_TYPE_CONFIG[section.type]
               return (
-                <div
-                  key={section.id}
-                  style={{
+                <div key={section.id} style={{ position: 'relative', marginBottom: 16 }}>
+                  {/* Dot */}
+                  <div style={{
+                    position: 'absolute',
+                    left: -33,
+                    top: 16,
+                    width: 18,
+                    height: 18,
+                    borderRadius: '50%',
+                    border: `2px solid ${meta.color}`,
+                    background: '#0f0a1e',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 10,
+                    fontWeight: 800,
+                    color: meta.color,
+                    fontFamily: 'var(--font-nunito)',
+                  }}>
+                    {index + 1}
+                  </div>
+
+                  {/* Card */}
+                  <div style={{
                     background: '#1a1035',
-                    border: '1px solid rgba(124,58,237,0.2)',
-                    borderRadius: 16,
-                    padding: 16,
-                    marginBottom: isDesktop ? 0 : 12,
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'inline-flex',
+                    border: `1px solid ${meta.borderColor}`,
+                    borderRadius: 14,
+                    overflow: 'hidden',
+                  }}>
+                    {/* Header */}
+                    <div style={{
+                      padding: '10px 16px',
+                      borderBottom: `1px solid ${meta.borderColor}`,
+                      background: meta.headerBg,
+                      display: 'flex',
                       alignItems: 'center',
-                      gap: 4,
-                      fontSize: 12,
-                      fontWeight: 800,
-                      textTransform: 'uppercase',
-                      letterSpacing: 1,
-                      padding: '3px 9px',
-                      borderRadius: 50,
-                      marginBottom: 10,
-                      border: `1px solid ${typeMeta.border}`,
-                      background: typeMeta.bg,
-                      color: typeMeta.color,
-                    }}
-                  >
-                    {typeMeta.label}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 16,
-                      lineHeight: 1.65,
+                      gap: 8,
+                    }}>
+                      <span style={{ fontSize: 15 }}>{meta.icon}</span>
+                      <span style={{
+                        fontSize: 12,
+                        fontWeight: 700,
+                        textTransform: 'uppercase' as const,
+                        letterSpacing: 1,
+                        color: meta.color,
+                      }}>
+                        {meta.label}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div style={{
+                      padding: '14px 16px',
+                      fontSize: 15,
+                      lineHeight: 1.75,
                       color: '#e2d9f3',
-                    }}
-                  >
-                    {renderContent(section.content)}
-                  </div>
-                  <div
-                    style={{
+                    }}>
+                      {renderContent(section.content)}
+                    </div>
+
+                    {/* Footer XP */}
+                    <div style={{
+                      padding: '8px 16px 12px',
                       display: 'flex',
                       justifyContent: 'flex-end',
-                      marginTop: 8,
-                      gap: 6,
-                      fontSize: 13,
-                      color: '#a78bfa',
-                      fontWeight: 700,
-                    }}
-                  >
-                    Leíste esto{' '}
-                    <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                    }}>
+                      <span style={{
+                        fontSize: 12,
+                        color: '#a78bfa',
+                        fontWeight: 600,
+                      }}>
+                        Leíste esto{' '}
+                        <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               )
