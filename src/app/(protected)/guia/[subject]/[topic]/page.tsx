@@ -31,20 +31,41 @@ export default async function TopicPage({
 
   if (!topic) return notFound()
 
-  const { data: sections } = await supabase
-    .from('sections')
-    .select('*')
-    .eq('topic_id', topic.id)
-    .is('theme_id', null)
-    .is('user_id', null)
-    .order('display_order', { ascending: true })
-
+  // First get user's theme for this subject
   const { data: userSubject } = await supabase
     .from('user_subjects')
     .select('theme_id')
     .eq('user_id', user?.id ?? '')
     .eq('subject_id', subject.id)
     .single()
+
+  // Fetch sections for user's theme, fallback to base content
+  let sections = null
+
+  if (userSubject?.theme_id) {
+    const { data: themedSections } = await supabase
+      .from('sections')
+      .select('*')
+      .eq('topic_id', topic.id)
+      .eq('theme_id', userSubject.theme_id)
+      .is('user_id', null)
+      .order('display_order', { ascending: true })
+
+    sections = themedSections
+  }
+
+  // Fallback to base content if no themed sections exist
+  if (!sections || sections.length === 0) {
+    const { data: baseSections } = await supabase
+      .from('sections')
+      .select('*')
+      .eq('topic_id', topic.id)
+      .is('theme_id', null)
+      .is('user_id', null)
+      .order('display_order', { ascending: true })
+
+    sections = baseSections
+  }
 
   const { data: quizQuestions } = await supabase
     .from('quiz_questions')
