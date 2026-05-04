@@ -142,7 +142,7 @@ export default function TopicAdminClient({
   const [generateError, setGenerateError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemeId)
-  const [published, setPublished] = useState(topic.published)
+  const [published, setPublished] = useState(topic.published && initialSections.length > 0)
   const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
@@ -158,7 +158,8 @@ export default function TopicAdminClient({
 
   useEffect(() => {
     setThemeChanging(false)
-  }, [initialSections])
+    setPublished(topic.published && initialSections.length > 0)
+  }, [initialSections, topic.published])
 
   useEffect(() => {
     setQuizQuestions(initialQuizQuestions)
