@@ -38,71 +38,107 @@ export async function POST(req: NextRequest) {
 
   const client = new Anthropic()
 
-  const systemPrompt = `Eres un experto en educación mexicana.
-Tu tarea es generar contenido educativo de alta calidad para estudiantes mexicanos en ${educationContext}.
-El contenido debe usar la temática "${themeName}" para crear analogías y ejemplos creativos y relevantes.
-IMPORTANTE: Usa referencias específicas y reales de "${themeName}" — no genéricas.
-Adapta el vocabulario y complejidad al nivel de ${educationContext}.
-${isExam ? `Este contenido es para examen de admisión: enfócate en los conceptos más evaluados, usa distractores plausibles en el quiz, y añade tips para responder rápido bajo presión.` : ''}
+  const systemPrompt = `Eres un experto en educación mexicana y storytelling pedagógico.
+Tu tarea es generar contenido educativo inmersivo para estudiantes mexicanos de ${educationContext}.
+REGLA MÁS IMPORTANTE: La temática "${themeName}" no es un adorno — es el MUNDO donde ocurre todo el contenido.
+El alumno debe sentir que está aprendiendo matemáticas DENTRO de ${themeName}, no que alguien le menciona ${themeName} de pasada.
+Cada sección debe usar personajes, situaciones, mecánicas o referencias MUY ESPECÍFICAS de "${themeName}".
+Nada genérico. Si la temática es Minecraft, usa creepers, redstone, chunks, biomas — no solo "un juego".
+Si es K-pop, usa fandoms, lightsticks, music shows, comebacks — no solo "una canción".
+Si es Fútbol, usa posiciones, tiros libres, VAR, estadios específicos — no solo "un partido".
+Si es Anime, usa poderes, arcos argumentales, personajes conocidos — no solo "un personaje".
+Adapta vocabulario y complejidad a ${educationContext}.
+${isExam ? 'Enfócate en conceptos frecuentes en exámenes de admisión, con distractores plausibles en el quiz.' : ''}
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
 
-  const userPrompt = `Genera el contenido completo para el tema "${topicName}" de la materia "${subjectName}".
-Nivel: ${educationContext}
-Temática: ${themeName}
+  const userPrompt = `Genera contenido educativo inmersivo para:
+- Tema: "${topicName}"
+- Materia: "${subjectName}"
+- Nivel: ${educationContext}
+- Temática: "${themeName}"
 
-Responde con este JSON exacto:
+INSTRUCCIÓN CRÍTICA: Cada sección debe desarrollar una situación REAL y ESPECÍFICA de "${themeName}".
+No menciones "${themeName}" solo una vez — construye toda la narrativa dentro de ese mundo.
+
+Genera este JSON exacto con las secciones EN ESTE ORDEN (primero la analogía, luego la explicación):
+
 {
   "sections": [
     {
-      "type": "explanation",
-      "title": "título corto",
-      "content": "explicación clara del concepto para alumnos de ${educationContext}. Usa **negritas** para términos clave. Máximo 120 palabras.",
+      "type": "analogy",
+      "title": "título que mencione algo específico de ${themeName}",
+      "content": "Empieza con una situación concreta y detallada de ${themeName}. Describe el escenario, los personajes o elementos involucrados. Plantea el problema que surge naturalmente en ese contexto. Usa detalles específicos de ${themeName} — nombres, mecánicas, situaciones reales del universo de ${themeName}. Mínimo 100 palabras. El concepto matemático/académico debe emerger naturalmente de la situación, no al revés.",
       "display_order": 1
     },
     {
-      "type": "analogy",
-      "title": "título de la analogía",
-      "content": "analogía creativa usando referencias específicas de ${themeName}. Conecta el concepto con algo concreto que un fan de ${themeName} reconocería al instante. Máximo 100 palabras.",
+      "type": "explanation",
+      "title": "título que conecte la situación anterior con el concepto formal",
+      "content": "Arranca con 'Lo que acabas de ver en [situación de ${themeName}] es exactamente [concepto].' Luego explica el concepto formal usando **negritas** para términos clave. Conecta cada parte del concepto con elementos de la situación anterior. Máximo 100 palabras.",
       "display_order": 2
     },
     {
       "type": "example",
-      "title": "Ejemplo resuelto",
-      "content": "ejemplo paso a paso con **pasos numerados** claros. El contexto del problema debe ser de ${themeName}. Máximo 150 palabras.",
+      "title": "Ejemplo resuelto — situación diferente de ${themeName}",
+      "content": "Plantea un problema NUEVO dentro de ${themeName}, diferente al de la analogía. Resuélvelo paso a paso con **pasos numerados**. Los datos del problema deben venir del universo de ${themeName}. Muestra la operación completa. Máximo 120 palabras.",
       "display_order": 3
     },
     {
       "type": "key_fact",
       "title": "Lo que debes recordar",
-      "content": "el dato más importante del tema en 1-2 oraciones. Usa **negritas** en lo crítico.",
+      "content": "La definición formal del concepto en 1-2 oraciones con **negritas** en lo más crítico. Incluye la fórmula o regla principal si aplica.",
       "display_order": 4
     },
     {
       "type": "tip",
-      "title": "${isExam ? 'Tip para el examen de admisión' : 'Tip para el examen'}",
-      "content": "${isExam ? 'consejo estratégico para resolver este tipo de pregunta rápido en un examen de opción múltiple con tiempo limitado' : 'consejo práctico para no fallar en el examen'}. Máximo 60 palabras.",
+      "title": "${isExam ? 'Tip para el examen de admisión' : 'Tip para no fallar en el examen'}",
+      "content": "${isExam ? 'Consejo estratégico específico para resolver este tipo de pregunta rápido en COMIPEMS/UNAM. Menciona el tipo de trampa más común en las opciones.' : 'Truco práctico para recordar el concepto o evitar el error más común.'} Máximo 50 palabras.",
       "display_order": 5
     }
   ],
   "quiz_questions": [
     {
-      "question": "pregunta de dificultad básica sobre ${topicName}",
+      "question": "pregunta de dificultad básica — puede tener contexto de ${themeName}",
       "options": [
-        { "letter": "A", "text": "opción A" },
-        { "letter": "B", "text": "opción B" },
-        { "letter": "C", "text": "opción C" },
-        { "letter": "D", "text": "opción D" }
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
       ],
       "correct_answer": "A",
-      "explanation": "por qué es correcta y por qué las otras son incorrectas. Máximo 60 palabras.",
+      "explanation": "por qué es correcta y cuál es el error típico de las otras opciones. Máximo 50 palabras.",
       "difficulty": 1,
       "xp_reward": 20
+    },
+    {
+      "question": "pregunta de dificultad media — requiere aplicar el concepto",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "B",
+      "explanation": "por qué es correcta. Máximo 50 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta difícil — requiere razonamiento, no memorización",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "C",
+      "explanation": "por qué es correcta y por qué los distractores son plausibles. Máximo 50 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
     }
   ]
 }
 
-Genera 5 secciones (una de cada tipo) y 3 preguntas de quiz (difficulty 1/2/3, xp_reward 20/30/50).
-${isExam ? 'Las preguntas deben simular el estilo real del COMIPEMS/UNAM — distractores plausibles, no triviales.' : 'Las preguntas deben ser variadas en dificultad y tipo de razonamiento.'}`
+Llena TODOS los campos con contenido real. Solo JSON, sin texto adicional.`
 
   try {
     const message = await client.messages.create({
@@ -151,40 +187,31 @@ ${isExam ? 'Las preguntas deben simular el estilo real del COMIPEMS/UNAM — dis
       id: `temp-${i}`,
     }))
 
-    // Insert quiz questions only if none exist yet
-    const { count } = await supabase
-      .from('quiz_questions')
-      .select('*', { count: 'exact', head: true })
-      .eq('topic_id', topicId)
+    // Always delete and regenerate quiz questions
+    await supabase.from('quiz_questions').delete().eq('topic_id', topicId)
 
-    let insertedQuestions: unknown[] = []
-    if ((count ?? 0) === 0) {
-      const questionsToInsert = generated.quiz_questions.map((q: {
-        question: string
-        options: { letter: string; text: string }[]
-        correct_answer: string
-        explanation: string
-        difficulty: number
-        xp_reward: number
-      }) => ({
-        topic_id: topicId,
-        question: q.question,
-        options: q.options,
-        correct_answer: q.correct_answer,
-        explanation: q.explanation,
-        difficulty: q.difficulty,
-        xp_reward: q.xp_reward,
-        source: 'ai',
-      }))
-      const { data } = await supabase.from('quiz_questions').insert(questionsToInsert).select()
-      insertedQuestions = data ?? []
-    } else {
-      const { data } = await supabase
-        .from('quiz_questions')
-        .select('*')
-        .eq('topic_id', topicId)
-      insertedQuestions = data ?? []
-    }
+    const questionsToInsert = generated.quiz_questions.map((q: {
+      question: string
+      options: { letter: string; text: string }[]
+      correct_answer: string
+      explanation: string
+      difficulty: number
+      xp_reward: number
+    }) => ({
+      topic_id: topicId,
+      question: q.question,
+      options: q.options,
+      correct_answer: q.correct_answer,
+      explanation: q.explanation,
+      difficulty: q.difficulty,
+      xp_reward: q.xp_reward,
+      source: 'ai',
+    }))
+
+    const { data: insertedQuestions } = await supabase
+      .from('quiz_questions')
+      .insert(questionsToInsert)
+      .select()
 
     return NextResponse.json({
       sections: sectionsToReturn,
