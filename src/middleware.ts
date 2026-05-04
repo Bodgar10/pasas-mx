@@ -73,6 +73,11 @@ export async function middleware(request: NextRequest) {
 
     // Admin bypass: admins skip onboarding redirect on all protected routes
     if (profile?.role === 'admin') {
+      if (pathname === '/dashboard') {
+        const url = request.nextUrl.clone()
+        url.pathname = '/admin'
+        return NextResponse.redirect(url)
+      }
       return supabaseResponse
     }
 
