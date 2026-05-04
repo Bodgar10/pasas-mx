@@ -157,6 +157,8 @@ export default function TopicAdminClient({
   const [generating, setGenerating] = useState(false)
   const [themeChanging, setThemeChanging] = useState(false)
   const [generateError, setGenerateError] = useState<string | null>(null)
+  const [generatingDiagram, setGeneratingDiagram] = useState(false)
+  const [diagramError, setDiagramError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemeId)
   const [published, setPublished] = useState(topic.published && initialSections.length > 0)
@@ -278,7 +280,7 @@ export default function TopicAdminClient({
     setGenerateError(null)
     try {
       const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 110000)
+      const timeoutId = setTimeout(() => controller.abort(), 55000)
 
       const res = await fetch('/api/admin/generate-topic', {
         method: 'POST',
@@ -309,6 +311,50 @@ export default function TopicAdminClient({
       setGenerateError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
     } finally {
       setGenerating(false)
+    }
+  }
+
+  async function handleGenerateDiagram() {
+    setGeneratingDiagram(true)
+    setDiagramError(null)
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 55000)
+
+      const res = await fetch('/api/admin/generate-diagram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          topicId: topic.id,
+          topicName: topic.name,
+          subjectName: subject.name,
+          themeId: selectedThemeId,
+          themeName: themes.find((t) => t.id === selectedThemeId)?.name,
+          sections: sections.map((s) => ({ type: s.type, content: s.content })),
+        }),
+      })
+
+      clearTimeout(timeoutId)
+      const data = await res.json()
+
+      if (data.error) {
+        setDiagramError(`Error: ${data.error}`)
+        return
+      }
+
+      if (data.diagram) {
+        setSections((prev) => {
+          const filtered = prev.filter((s) => s.type !== 'diagram')
+          const newSection = { ...data.diagram }
+          const inserted = [...filtered, newSection]
+          return inserted.sort((a, b) => a.display_order - b.display_order)
+        })
+      }
+    } catch (err) {
+      setDiagramError(`Error: ${err instanceof Error ? err.message : 'unknown'}`)
+    } finally {
+      setGeneratingDiagram(false)
     }
   }
 
@@ -373,9 +419,7 @@ export default function TopicAdminClient({
             textAlign: 'center',
             lineHeight: 1.6,
           }}>
-            Fase 1: secciones y preguntas (~30s){'\n'}
-            Fase 2: diagrama visual (~30s más){'\n'}
-            Total estimado: ~60 segundos
+            Claude está creando las secciones y preguntas. Esto tarda unos 30 segundos.
           </div>
           <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
         </div>
@@ -908,6 +952,51 @@ export default function TopicAdminClient({
                 </div>
               )
             })
+          )}
+
+          {/* Generate diagram button */}
+          {sections.length > 0 && !sections.find((s) => s.type === 'diagram') && (
+            <div style={{
+              marginTop: 8,
+              padding: '20px 16px',
+              background: '#1a1035',
+              border: '2px dashed rgba(6,182,212,0.3)',
+              borderRadius: 14,
+              textAlign: 'center',
+            }}>
+              <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 12 }}>
+                El diagrama visual aún no fue generado para esta temática
+              </div>
+              <button
+                type="button"
+                onClick={handleGenerateDiagram}
+                disabled={generatingDiagram}
+                style={{
+                  background: 'linear-gradient(135deg, #06b6d4, #7c3aed)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: 12,
+                  padding: '10px 24px',
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: generatingDiagram ? 'not-allowed' : 'pointer',
+                  opacity: generatingDiagram ? 0.7 : 1,
+                }}
+              >
+                {generatingDiagram ? '⏳ Generando diagrama...' : '🎨 Generar diagrama visual'}
+              </button>
+              {diagramError && (
+                <div style={{
+                  marginTop: 10,
+                  color: '#fca5a5',
+                  fontSize: 13,
+                  fontWeight: 600,
+                }}>
+                  {diagramError}
+                </div>
+              )}
+            </div>
           )}
         </div>
 

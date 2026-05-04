@@ -166,19 +166,6 @@ Genera este JSON exacto con las secciones EN ESTE ORDEN (primero la analogía, l
 
 Genera 5 secciones (analogy, explanation, example, key_fact, tip) y 5 preguntas de quiz.`
 
-  const diagramPrompt = `Genera un diagrama SVG educativo que ilustre visualmente el concepto "${topicName}" de ${subjectName} usando elementos visuales de "${themeName}".
-
-REGLAS ESTRICTAS:
-- Responde ÚNICAMENTE con el código SVG — nada más, sin explicación, sin markdown
-- Empieza directamente con <svg y termina con </svg>
-- viewBox="0 0 560 300"
-- Fondo del SVG: rect fill="#0f0a1e" width="560" height="300"
-- Colores permitidos ÚNICAMENTE: #7c3aed #ec4899 #06b6d4 #fbbf24 #10b981 #e2d9f3 #a78bfa #1a1035 #0f0a1e
-- Incluir elementos visuales reconocibles de "${themeName}"
-- Mostrar el concepto con flechas, etiquetas y fórmulas
-- font-size mínimo 12 en todos los textos
-- Sin imágenes externas, sin URLs, solo SVG puro autocontenido`
-
   try {
     const message = await client.messages.create({
       model: 'claude-sonnet-4-6',
@@ -218,31 +205,6 @@ REGLAS ESTRICTAS:
       generated.quiz_questions = []
     }
 
-    // Second call — generate SVG diagram separately
-    let diagramSvg = null
-    console.log('Starting diagram generation...')
-    const diagramStart = Date.now()
-    try {
-      const diagramMessage = await client.messages.create({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 2000,
-        messages: [{ role: 'user', content: diagramPrompt }],
-      })
-      const rawSvg = diagramMessage.content[0].type === 'text'
-        ? diagramMessage.content[0].text.trim()
-        : ''
-      // Extract SVG if there's any extra text
-      const svgMatch = rawSvg.match(/<svg[\s\S]*<\/svg>/)
-      if (svgMatch) {
-        diagramSvg = svgMatch[0]
-      }
-    } catch (diagramError) {
-      console.error('Diagram generation error:', diagramError)
-      // Diagram is optional — continue without it
-    }
-    console.log('Diagram generation took:', Date.now() - diagramStart, 'ms')
-    console.log('Diagram SVG length:', diagramSvg?.length ?? 0)
-
     await supabase
       .from('topics')
       .update({ published: false })
@@ -267,24 +229,6 @@ REGLAS ESTRICTAS:
       display_order: s.display_order,
       interests_used: [themeName],
     }))
-
-    if (diagramSvg) {
-      sectionsToInsert.push({
-        topic_id: topicId,
-        theme_id: themeId,
-        user_id: null,
-        type: 'diagram',
-        title: `Diagrama — ${topicName}`,
-        content: diagramSvg,
-        display_order: 4,
-        interests_used: [themeName],
-      })
-      // Fix display_order for key_fact and tip
-      sectionsToInsert.forEach((s: Record<string, unknown>) => {
-        if (s.type === 'key_fact') s.display_order = 5
-        if (s.type === 'tip') s.display_order = 6
-      })
-    }
 
     const { data: insertedSections, error: sectionsError } = await supabase
       .from('sections')
