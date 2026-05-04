@@ -146,7 +146,7 @@ ${isExam ? 'Las preguntas deben simular el estilo real del COMIPEMS/UNAM — dis
 
     // If RLS blocks the insert, return the generated data directly
     // so the frontend can still show it (even if not persisted yet)
-    const sectionsToReturn = insertedSections ?? sectionsToInsert.map((s, i) => ({
+    const sectionsToReturn = insertedSections ?? sectionsToInsert.map((s: Record<string, unknown>, i: number) => ({
       ...s,
       id: `temp-${i}`,
     }))
