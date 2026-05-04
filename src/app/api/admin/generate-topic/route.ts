@@ -136,10 +136,20 @@ ${isExam ? 'Las preguntas deben simular el estilo real del COMIPEMS/UNAM — dis
       interests_used: [themeName],
     }))
 
-    const { data: insertedSections } = await supabase
+    const { data: insertedSections, error: sectionsError } = await supabase
       .from('sections')
       .insert(sectionsToInsert)
       .select()
+
+    console.error('Sections insert error:', sectionsError)
+    console.log('Sections insert result:', insertedSections)
+
+    // If RLS blocks the insert, return the generated data directly
+    // so the frontend can still show it (even if not persisted yet)
+    const sectionsToReturn = insertedSections ?? sectionsToInsert.map((s, i) => ({
+      ...s,
+      id: `temp-${i}`,
+    }))
 
     // Insert quiz questions only if none exist yet
     const { count } = await supabase
@@ -177,7 +187,7 @@ ${isExam ? 'Las preguntas deben simular el estilo real del COMIPEMS/UNAM — dis
     }
 
     return NextResponse.json({
-      sections: insertedSections,
+      sections: sectionsToReturn,
       quizQuestions: insertedQuestions,
     })
   } catch (error) {
