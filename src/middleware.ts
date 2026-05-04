@@ -43,6 +43,21 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
+  // If logged-in admin lands on a public route, send to /admin
+  if (user && !isProtected(pathname)) {
+    const { data: profile } = await supabase
+      .from('users')
+      .select('role')
+      .eq('id', user.id)
+      .single()
+
+    if (profile?.role === 'admin') {
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin'
+      return NextResponse.redirect(url)
+    }
+  }
+
   if (isProtected(pathname) && !user) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
