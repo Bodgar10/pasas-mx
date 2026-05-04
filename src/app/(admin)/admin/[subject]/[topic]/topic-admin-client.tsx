@@ -373,7 +373,7 @@ export default function TopicAdminClient({
             textAlign: 'center',
             lineHeight: 1.6,
           }}>
-            Claude está creando las secciones y preguntas. Esto tarda unos 30 segundos.
+            Claude está creando las secciones, preguntas y diagrama. Esto puede tardar hasta 50 segundos.
           </div>
           <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
         </div>
