@@ -43,6 +43,60 @@ export async function POST(request: Request) {
     await supabase.rpc('increment_xp', { uid: user.id, amount: 10 })
     await supabase.rpc('increment_subject_xp', { uid: user.id, sid: subject_id, amount: 10 })
 
+    // --- Streak logic ---
+    const { data: userRecord } = await supabase
+      .from('users')
+      .select('streak_days, last_active_at')
+      .eq('id', user.id)
+      .single()
+
+    const now = new Date()
+    const todayUTC = now.toISOString().split('T')[0]
+
+    let newStreak = 1
+    let streakEvent: 'continued' | 'started' | 'none' = 'none'
+
+    if (userRecord?.last_active_at) {
+      const lastActive = new Date(userRecord.last_active_at)
+      const lastActiveUTC = lastActive.toISOString().split('T')[0]
+
+      if (lastActiveUTC === todayUTC) {
+        newStreak = userRecord.streak_days ?? 1
+        streakEvent = 'none'
+      } else {
+        const yesterday = new Date(now)
+        yesterday.setUTCDate(yesterday.getUTCDate() - 1)
+        const yesterdayUTC = yesterday.toISOString().split('T')[0]
+
+        if (lastActiveUTC === yesterdayUTC) {
+          newStreak = (userRecord.streak_days ?? 0) + 1
+          streakEvent = 'continued'
+        } else {
+          newStreak = 1
+          streakEvent = 'started'
+        }
+      }
+    } else {
+      newStreak = 1
+      streakEvent = 'started'
+    }
+
+    if (streakEvent !== 'none') {
+      await supabase
+        .from('users')
+        .update({
+          streak_days: newStreak,
+          last_active_at: now.toISOString(),
+        })
+        .eq('id', user.id)
+    } else {
+      await supabase
+        .from('users')
+        .update({ last_active_at: now.toISOString() })
+        .eq('id', user.id)
+    }
+    // --- End streak logic ---
+
     // Count total sections for this topic
     const { count: totalSections } = await supabase
       .from('sections')
@@ -103,7 +157,15 @@ export async function POST(request: Request) {
     }
     // If status === 'completed' → do nothing, quiz score wins
 
-    return NextResponse.json({ xp_earned: 10, already_read: false, reading_percent: readingPercent })
+    return NextResponse.json({
+      xp_earned: 10,
+      already_read: false,
+      reading_percent: readingPercent,
+      streak: {
+        days: newStreak,
+        event: streakEvent,
+      },
+    })
   } catch (error) {
     console.error('section-read error:', error)
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })

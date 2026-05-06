@@ -187,6 +187,10 @@ export default function TopicClient({
     best_score: number
     perfect: boolean
   } | null>(null)
+  const [streakToast, setStreakToast] = useState<{
+    days: number
+    event: 'continued' | 'started'
+  } | null>(null)
 
   useEffect(() => {
     const check = () => setIsDesktop(window.innerWidth >= 768)
@@ -200,6 +204,12 @@ export default function TopicClient({
       setAttempt(initialProgress.attempts + 1)
     }
   }, [initialProgress])
+
+  useEffect(() => {
+    if (!streakToast) return
+    const timer = setTimeout(() => setStreakToast(null), 3500)
+    return () => clearTimeout(timer)
+  }, [streakToast])
 
   const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map())
 
@@ -233,6 +243,12 @@ export default function TopicClient({
                 .then((data) => {
                   if (!data.already_read && data.xp_earned > 0) {
                     setSessionXp((prev) => prev + data.xp_earned)
+                  }
+                  if (data.streak?.event === 'continued' || data.streak?.event === 'started') {
+                    setStreakToast({
+                      days: data.streak.days,
+                      event: data.streak.event,
+                    })
                   }
                 })
                 .catch(() => {})
@@ -610,6 +626,46 @@ export default function TopicClient({
             })}
           </div>
         )}
+
+        {/* CTA to go to Quiz — only shown when there are sections */}
+        {sections.length > 0 && (
+          <div style={{
+            margin: '8px 0 0',
+            background: 'rgba(124,58,237,0.08)',
+            border: '1px solid rgba(124,58,237,0.25)',
+            borderRadius: 16,
+            padding: '16px',
+            textAlign: 'center',
+          }}>
+            <div style={{
+              fontSize: 14,
+              color: '#a78bfa',
+              fontWeight: 600,
+              marginBottom: 10,
+            }}>
+              ¿Ya leíste todo? Pon a prueba lo que aprendiste
+            </div>
+            <button
+              type="button"
+              onClick={() => setActiveTab('quiz')}
+              style={{
+                width: '100%',
+                minHeight: 52,
+                background: '#7c3aed',
+                color: 'white',
+                border: 'none',
+                borderRadius: 14,
+                fontFamily: 'var(--font-orbitron)',
+                fontSize: 14,
+                fontWeight: 700,
+                cursor: 'pointer',
+                letterSpacing: 1,
+              }}
+            >
+              IR AL QUIZ →
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Tab: Quiz */}
@@ -951,12 +1007,14 @@ export default function TopicClient({
               marginBottom: 4,
             }}
           >
-            ✓ Listo por ahora
+            ✓ Tema dominado
           </div>
-          <div style={{ fontSize: 14, color: '#a78bfa' }}>Haz el Quiz para ganar XP</div>
+          <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 12 }}>
+            Continúa con el siguiente tema
+          </div>
           <button
             type="button"
-            onClick={() => setActiveTab('quiz')}
+            onClick={() => router.push(`/guia/${subject.slug}`)}
             style={{
               width: '100%',
               minHeight: 52,
@@ -969,15 +1027,68 @@ export default function TopicClient({
               fontWeight: 700,
               cursor: 'pointer',
               letterSpacing: 1,
-              marginTop: 12,
             }}
           >
-            IR AL QUIZ →
+            SIGUIENTE TEMA →
           </button>
         </div>
       </div>
 
       <div style={{ height: 32 }} />
+
+      {/* Streak toast */}
+      {streakToast && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 32,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 200,
+            background: 'linear-gradient(135deg, #1a1035, #1e1040)',
+            border: '1.5px solid rgba(251,191,36,0.4)',
+            borderRadius: 16,
+            padding: '14px 20px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            animation: 'slideUp 0.3s ease',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          <span style={{ fontSize: 28 }}>🔥</span>
+          <div>
+            <div style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 13,
+              fontWeight: 900,
+              color: '#fbbf24',
+              letterSpacing: 0.5,
+            }}>
+              {streakToast.event === 'continued'
+                ? `¡Racha de ${streakToast.days} días!`
+                : '¡Racha iniciada!'}
+            </div>
+            <div style={{
+              fontSize: 13,
+              color: '#a78bfa',
+              fontWeight: 600,
+              marginTop: 2,
+            }}>
+              {streakToast.event === 'continued'
+                ? 'Sigue así, no rompas la cadena 💪'
+                : 'Vuelve mañana para mantenerla'}
+            </div>
+          </div>
+          <style>{`
+            @keyframes slideUp {
+              from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+              to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+            }
+          `}</style>
+        </div>
+      )}
     </div>
   )
 }
