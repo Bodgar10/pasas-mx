@@ -75,6 +75,8 @@ export default async function TopicPage({
     .order('created_at', { ascending: true })
 
   let initialProgress = null
+  let readSectionIds: string[] = []
+
   if (user) {
     const { data } = await supabase
       .from('topic_progress')
@@ -83,6 +85,17 @@ export default async function TopicPage({
       .eq('topic_id', topic.id)
       .maybeSingle()
     initialProgress = data
+
+    const { data: readEvents } = await supabase
+      .from('progress')
+      .select('metadata')
+      .eq('user_id', user.id)
+      .eq('topic_id', topic.id)
+      .eq('event_type', 'section_read')
+
+    readSectionIds = (readEvents ?? [])
+      .map((e) => e.metadata?.section_id)
+      .filter(Boolean) as string[]
   }
 
   return (
@@ -98,6 +111,7 @@ export default async function TopicPage({
       sections={sections ?? []}
       quizQuestions={quizQuestions ?? []}
       initialProgress={initialProgress}
+      readSectionIds={readSectionIds}
     />
   )
 }

@@ -33,6 +33,7 @@ interface Props {
   sections: Section[]
   quizQuestions: QuizQuestion[]
   initialProgress: TopicProgress | null
+  readSectionIds: string[]
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -163,17 +164,23 @@ export default function TopicClient({
   sections,
   quizQuestions,
   initialProgress,
+  readSectionIds,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
-  const [sessionXp, setSessionXp] = useState(0)
+  // sessionXp starts at XP already earned from reading in previous visits
+  const [sessionXp, setSessionXp] = useState(
+    () => readSectionIds.length * 10
+  )
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [score, setScore] = useState(0)
   const [combo, setCombo] = useState(0)
   const [xpPerQuestion, setXpPerQuestion] = useState<Record<string, number>>({})
   const [comboAtAnswer, setComboAtAnswer] = useState<Record<string, number>>({})
   const [isDesktop, setIsDesktop] = useState(false)
-  const [readSections, setReadSections] = useState<Set<string>>(new Set())
+  const [readSections, setReadSections] = useState<Set<string>>(
+    () => new Set(readSectionIds)
+  )
   const [attempt, setAttempt] = useState(1)
   const [quizCompleted, setQuizCompleted] = useState(false)
   const [quizResult, setQuizResult] = useState<{
@@ -204,7 +211,8 @@ export default function TopicClient({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionId = (entry.target as HTMLElement).dataset.sectionId
-            if (!sectionId || readSections.has(sectionId)) return
+            // Skip sections already read in previous sessions
+            if (!sectionId || readSections.has(sectionId) || readSectionIds.includes(sectionId)) return
 
             const timer = setTimeout(() => {
               setReadSections((prev) => {
@@ -417,7 +425,7 @@ export default function TopicClient({
             flexShrink: 0,
           }}
         >
-          ⚡ +{sessionXp} XP
+          ⚡ +{sessionXp > 0 ? sessionXp : readSectionIds.length * 10} XP sesión
         </div>
       </div>
 

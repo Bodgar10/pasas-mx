@@ -7,6 +7,7 @@ import { createClient } from '@/utils/supabase/client'
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
 interface Subject {
+  id: string
   slug: string
   name: string
   display_order: number
@@ -27,11 +28,19 @@ interface Profile {
   interests: string[]
 }
 
+interface LastActiveTopic {
+  topicName: string
+  topicSlug: string
+  subjectName: string
+  subjectSlug: string
+}
+
 interface Props {
   profile: Profile
   subscriptionStatus: SubscriptionStatus
   subjects: Subject[]
   userSubjects: UserSubject[]
+  lastActiveTopic: LastActiveTopic | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -68,7 +77,7 @@ function xpToLevel(xp: number) {
   return { level, current, total: 500 }
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -427,8 +436,8 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               </div>
             )}
 
-            {/* Continue where you left off (active only) */}
-            {subscriptionStatus === 'active' && (
+            {/* Continue where you left off (active only, only if there's a last topic) */}
+            {subscriptionStatus === 'active' && lastActiveTopic && (
               <div
                 style={{
                   backgroundColor: '#1a1035',
@@ -458,14 +467,16 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     margin: '0 0 4px',
                   }}
                 >
-                  Matemáticas
+                  {lastActiveTopic.subjectName}
                 </p>
                 <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 16px' }}>
-                  Álgebra · Ecuaciones lineales
+                  {lastActiveTopic.topicName}
                 </p>
                 <button
                   type="button"
-                  onClick={() => router.push('/guia/matematicas')}
+                  onClick={() =>
+                    router.push(`/guia/${lastActiveTopic.subjectSlug}/${lastActiveTopic.topicSlug}`)
+                  }
                   style={{
                     width: '100%',
                     minHeight: 48,
@@ -555,7 +566,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               >
                 {subjects.map((subject) => {
                   const meta = SUBJECT_ICONS[subject.slug] ?? DEFAULT_SUBJECT
-                  const userSub = userSubjects.find((us) => us.subject_id === subject.slug)
+                  const userSub = userSubjects.find((us) => us.subject_id === subject.id)
                   const subXp = userSub?.xp ?? 0
                   const subProgress = Math.min((subXp % 500) / 500, 1)
                   const isLocked = subscriptionStatus !== 'active'
