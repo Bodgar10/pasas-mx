@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface Section {
@@ -164,7 +164,6 @@ export default function TopicClient({
   quizQuestions,
   initialProgress,
 }: Props) {
-  void initialProgress
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
   const [sessionXp, setSessionXp] = useState(0)
@@ -174,6 +173,13 @@ export default function TopicClient({
   const [xpPerQuestion, setXpPerQuestion] = useState<Record<string, number>>({})
   const [comboAtAnswer, setComboAtAnswer] = useState<Record<string, number>>({})
   const [isDesktop, setIsDesktop] = useState(false)
+  const [readSections, setReadSections] = useState<Set<string>>(new Set())
+  const [attempt, setAttempt] = useState(1)
+  const [quizCompleted, setQuizCompleted] = useState(false)
+  const [quizResult, setQuizResult] = useState<{
+    best_score: number
+    perfect: boolean
+  } | null>(null)
 
   useEffect(() => {
     const check = () => setIsDesktop(window.innerWidth >= 768)
@@ -182,19 +188,131 @@ export default function TopicClient({
     return () => window.removeEventListener('resize', check)
   }, [])
 
-  function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
+  useEffect(() => {
+    if (initialProgress?.attempts) {
+      setAttempt(initialProgress.attempts + 1)
+    }
+  }, [initialProgress])
+
+  const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map())
+
+  useEffect(() => {
+    if (sections.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = (entry.target as HTMLElement).dataset.sectionId
+            if (!sectionId || readSections.has(sectionId)) return
+
+            setReadSections((prev) => new Set([...prev, sectionId]))
+
+            fetch('/api/section-read', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                section_id: sectionId,
+                topic_id: topic.id,
+                subject_id: subject.id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (!data.already_read && data.xp_earned > 0) {
+                  setSessionXp((prev) => prev + data.xp_earned)
+                }
+              })
+              .catch(() => {})
+
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.75 }
+    )
+
+    sectionRefs.current.forEach((el) => {
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [sections, topic.id, subject.id, readSections])
+
+  async function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
     if (answers[questionId]) return
     const isCorrect = selectedLetter === question.correct_answer
     const newCombo = isCorrect ? combo + 1 : 0
     const multiplier = newCombo >= 3 ? 2 : newCombo >= 2 ? 1.5 : 1
     const xpEarned = isCorrect ? Math.round(question.xp_reward * multiplier) : 0
-    setAnswers((prev) => ({ ...prev, [questionId]: selectedLetter }))
+
+    const currentAnswerCount = Object.keys(answers).length
+    const isLastQuestion = currentAnswerCount === quizQuestions.length - 1
+
+    const newAnswers = { ...answers, [questionId]: selectedLetter }
+    setAnswers(newAnswers)
     setCombo(newCombo)
     setXpPerQuestion((prev) => ({ ...prev, [questionId]: xpEarned }))
     setComboAtAnswer((prev) => ({ ...prev, [questionId]: newCombo }))
     if (isCorrect) {
       setScore((prev) => prev + 1)
       setSessionXp((prev) => prev + xpEarned)
+    }
+
+    let finalScore: number | undefined
+    let totalCorrect: number | undefined
+    if (isLastQuestion) {
+      const correctCount = quizQuestions.filter(
+        (q) => newAnswers[q.id] === q.correct_answer
+      ).length
+      totalCorrect = correctCount
+      finalScore = Math.round((correctCount / quizQuestions.length) * 100)
+    }
+
+    const apiPayload = {
+      question_id: questionId,
+      topic_id: topic.id,
+      subject_id: subject.id,
+      selected_answer: selectedLetter,
+      is_correct: isCorrect,
+      xp_earned: xpEarned,
+      combo: newCombo,
+      attempt,
+      ...(isLastQuestion && {
+        is_last_question: true,
+        final_score: finalScore,
+        total_correct: totalCorrect,
+        total_questions: quizQuestions.length,
+      }),
+    }
+
+    if (isLastQuestion) {
+      try {
+        const res = await fetch('/api/quiz-answer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(apiPayload),
+        })
+        const data = await res.json()
+        if (data.topic_completed) {
+          setQuizCompleted(true)
+          setQuizResult({
+            best_score: data.best_score,
+            perfect: data.perfect,
+          })
+          if (data.perfect) {
+            setSessionXp((prev) => prev + 150)
+          }
+        }
+      } catch {
+        // Silent fail
+      }
+    } else {
+      fetch('/api/quiz-answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(apiPayload),
+      }).catch(() => {})
     }
   }
 
@@ -365,7 +483,15 @@ export default function TopicClient({
             {sections.map((section, index) => {
               const meta = SECTION_TYPE_CONFIG[section.type]
               return (
-                <div key={section.id} style={{ position: 'relative', marginBottom: 16 }}>
+                <div
+                  key={section.id}
+                  style={{ position: 'relative', marginBottom: 16 }}
+                  data-section-id={section.id}
+                  ref={(el) => {
+                    if (el) sectionRefs.current.set(section.id, el)
+                    else sectionRefs.current.delete(section.id)
+                  }}
+                >
                   {/* Dot */}
                   <div style={{
                     position: 'absolute',
@@ -374,17 +500,18 @@ export default function TopicClient({
                     width: 18,
                     height: 18,
                     borderRadius: '50%',
-                    border: `2px solid ${meta.color}`,
-                    background: '#0f0a1e',
+                    border: readSections.has(section.id) ? '2px solid #10b981' : `2px solid ${meta.color}`,
+                    background: readSections.has(section.id) ? 'rgba(16,185,129,0.15)' : '#0f0a1e',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: 10,
                     fontWeight: 800,
-                    color: meta.color,
+                    color: readSections.has(section.id) ? '#10b981' : meta.color,
                     fontFamily: 'var(--font-nunito)',
+                    transition: 'all 0.3s ease',
                   }}>
-                    {index + 1}
+                    {readSections.has(section.id) ? '✓' : index + 1}
                   </div>
 
                   {/* Card */}
@@ -656,6 +783,65 @@ export default function TopicClient({
                   </div>
                 )
               })}
+
+              {quizCompleted && quizResult && (
+                <div style={{
+                  marginTop: 16,
+                  background: quizResult.perfect
+                    ? 'rgba(251,191,36,0.08)'
+                    : 'rgba(16,185,129,0.08)',
+                  border: `1px solid ${quizResult.perfect ? 'rgba(251,191,36,0.3)' : 'rgba(16,185,129,0.25)'}`,
+                  borderRadius: 16,
+                  padding: '20px 16px',
+                  textAlign: 'center',
+                }}>
+                  <div style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 28,
+                    fontWeight: 900,
+                    color: quizResult.perfect ? '#fbbf24' : '#10b981',
+                    marginBottom: 4,
+                  }}>
+                    {quizResult.best_score}%
+                  </div>
+                  <div style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: quizResult.perfect ? '#fbbf24' : '#10b981',
+                    marginBottom: 8,
+                    letterSpacing: 1,
+                  }}>
+                    {quizResult.perfect ? '🔥 ¡PERFECTO! +150 XP' : '✓ Quiz completado'}
+                  </div>
+                  <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 16 }}>
+                    {quizResult.perfect
+                      ? 'Dominaste este tema al 100%'
+                      : 'Puedes repetir el quiz para mejorar tu puntaje'}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('resumen')}
+                    style={{
+                      width: '100%',
+                      minHeight: 52,
+                      background: quizResult.perfect
+                        ? 'linear-gradient(135deg, #fbbf24, #ec4899)'
+                        : 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: 14,
+                      fontFamily: 'var(--font-orbitron)',
+                      fontSize: 14,
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      letterSpacing: 1,
+                    }}
+                  >
+                    VER RESUMEN →
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}
