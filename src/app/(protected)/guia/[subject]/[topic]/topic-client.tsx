@@ -34,6 +34,7 @@ interface Props {
   quizQuestions: QuizQuestion[]
   initialProgress: TopicProgress | null
   readSectionIds: string[]
+  initialAnswers: Record<string, string>
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -59,44 +60,6 @@ function renderContent(text: string): React.ReactNode {
   )
 }
 
-const SECTION_TYPE_LABELS: Record<Section['type'], { label: string; bg: string; color: string; border: string }> = {
-  explanation: {
-    label: '📘 Explicación',
-    bg: 'rgba(124,58,237,0.15)',
-    color: '#c4b5fd',
-    border: 'rgba(124,58,237,0.3)',
-  },
-  analogy: {
-    label: '🎮 Analogía',
-    bg: 'rgba(236,72,153,0.12)',
-    color: '#ec4899',
-    border: 'rgba(236,72,153,0.3)',
-  },
-  example: {
-    label: '🔢 Ejemplo',
-    bg: 'rgba(6,182,212,0.1)',
-    color: '#06b6d4',
-    border: 'rgba(6,182,212,0.3)',
-  },
-  key_fact: {
-    label: '📌 Dato clave',
-    bg: 'rgba(251,191,36,0.1)',
-    color: '#fbbf24',
-    border: 'rgba(251,191,36,0.3)',
-  },
-  tip: {
-    label: '💡 Tip de examen',
-    bg: 'rgba(16,185,129,0.1)',
-    color: '#10b981',
-    border: 'rgba(16,185,129,0.3)',
-  },
-  diagram: {
-    label: '🎨 Diagrama',
-    bg: 'rgba(6,182,212,0.1)',
-    color: '#06b6d4',
-    border: 'rgba(6,182,212,0.3)',
-  },
-}
 
 const SECTION_ICONS: Record<Section['type'], string> = {
   explanation: '📘',
@@ -165,15 +128,21 @@ export default function TopicClient({
   quizQuestions,
   initialProgress,
   readSectionIds,
+  initialAnswers,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
   // sessionXp starts at XP already earned from reading in previous visits
-  const [sessionXp, setSessionXp] = useState(
-    () => readSectionIds.length * 10
+  const [sessionXp, setSessionXp] = useState(0)
+  const [answers, setAnswers] = useState<Record<string, string>>(
+    () => initialAnswers
   )
-  const [answers, setAnswers] = useState<Record<string, string>>({})
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(() => {
+    if (!quizQuestions || Object.keys(initialAnswers).length === 0) return 0
+    return quizQuestions.filter(
+      (q) => initialAnswers[q.id] === q.correct_answer
+    ).length
+  })
   const [combo, setCombo] = useState(0)
   const [xpPerQuestion, setXpPerQuestion] = useState<Record<string, number>>({})
   const [comboAtAnswer, setComboAtAnswer] = useState<Record<string, number>>({})
@@ -182,11 +151,27 @@ export default function TopicClient({
     () => new Set(readSectionIds)
   )
   const [attempt, setAttempt] = useState(1)
-  const [quizCompleted, setQuizCompleted] = useState(false)
+  const [quizCompleted, setQuizCompleted] = useState(
+    () =>
+      quizQuestions.length > 0 &&
+      Object.keys(initialAnswers).length === quizQuestions.length
+  )
   const [quizResult, setQuizResult] = useState<{
     best_score: number
     perfect: boolean
-  } | null>(null)
+  } | null>(() => {
+    if (
+      quizQuestions.length > 0 &&
+      Object.keys(initialAnswers).length === quizQuestions.length &&
+      initialProgress
+    ) {
+      return {
+        best_score: initialProgress.best_score ?? 0,
+        perfect: (initialProgress.best_score ?? 0) === 100,
+      }
+    }
+    return null
+  })
   const [streakToast, setStreakToast] = useState<{
     days: number
     event: 'continued' | 'started'
@@ -441,7 +426,7 @@ export default function TopicClient({
             flexShrink: 0,
           }}
         >
-          ⚡ +{sessionXp > 0 ? sessionXp : readSectionIds.length * 10} XP sesión
+          ⚡ +{sessionXp} XP sesión
         </div>
       </div>
 

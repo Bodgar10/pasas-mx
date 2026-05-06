@@ -96,6 +96,29 @@ export default async function TopicPage({
     readSectionIds = (readEvents ?? [])
       .map((e) => e.metadata?.section_id)
       .filter(Boolean) as string[]
+
+    // Fetch previous quiz answers for this topic (most recent attempt)
+  }
+
+  let initialAnswers: Record<string, string> = {}
+  if (user && quizQuestions && quizQuestions.length > 0) {
+    const { data: previousAnswers } = await supabase
+      .from('progress')
+      .select('question_id, metadata, attempt')
+      .eq('user_id', user.id)
+      .eq('topic_id', topic.id)
+      .eq('event_type', 'quiz_answered')
+      .order('attempt', { ascending: false })
+
+    if (previousAnswers && previousAnswers.length > 0) {
+      const maxAttempt = previousAnswers[0].attempt
+      const latestAnswers = previousAnswers.filter((a) => a.attempt === maxAttempt)
+      for (const row of latestAnswers) {
+        if (row.question_id && row.metadata?.selected_answer) {
+          initialAnswers[row.question_id] = row.metadata.selected_answer
+        }
+      }
+    }
   }
 
   return (
@@ -112,6 +135,7 @@ export default async function TopicPage({
       quizQuestions={quizQuestions ?? []}
       initialProgress={initialProgress}
       readSectionIds={readSectionIds}
+      initialAnswers={initialAnswers}
     />
   )
 }
