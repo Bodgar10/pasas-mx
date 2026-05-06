@@ -206,30 +206,43 @@ export default function TopicClient({
             const sectionId = (entry.target as HTMLElement).dataset.sectionId
             if (!sectionId || readSections.has(sectionId)) return
 
-            setReadSections((prev) => new Set([...prev, sectionId]))
-
-            fetch('/api/section-read', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                section_id: sectionId,
-                topic_id: topic.id,
-                subject_id: subject.id,
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (!data.already_read && data.xp_earned > 0) {
-                  setSessionXp((prev) => prev + data.xp_earned)
-                }
+            const timer = setTimeout(() => {
+              setReadSections((prev) => {
+                if (prev.has(sectionId)) return prev
+                return new Set([...prev, sectionId])
               })
-              .catch(() => {})
+
+              fetch('/api/section-read', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  section_id: sectionId,
+                  topic_id: topic.id,
+                  subject_id: subject.id,
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (!data.already_read && data.xp_earned > 0) {
+                    setSessionXp((prev) => prev + data.xp_earned)
+                  }
+                })
+                .catch(() => {})
+            }, 2000)
+
+            ;(entry.target as HTMLElement).dataset.timerId = String(timer)
 
             observer.unobserve(entry.target)
+          } else {
+            const timerId = (entry.target as HTMLElement).dataset.timerId
+            if (timerId) {
+              clearTimeout(Number(timerId))
+              delete (entry.target as HTMLElement).dataset.timerId
+            }
           }
         })
       },
-      { threshold: 0.75 }
+      { threshold: 0.6, rootMargin: '0px' }
     )
 
     sectionRefs.current.forEach((el) => {
@@ -571,9 +584,16 @@ export default function TopicClient({
                         fontSize: 12,
                         color: '#a78bfa',
                         fontWeight: 600,
+                        transition: 'opacity 0.4s ease',
                       }}>
-                        Leíste esto{' '}
-                        <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                        {readSections.has(section.id) ? (
+                          <>
+                            Leíste esto{' '}
+                            <span style={{ color: '#fbbf24' }}>+10 XP</span>
+                          </>
+                        ) : (
+                          <span style={{ color: 'rgba(167,139,250,0.4)' }}>Lee esta sección para ganar XP</span>
+                        )}
                       </span>
                     </div>
                   </div>
