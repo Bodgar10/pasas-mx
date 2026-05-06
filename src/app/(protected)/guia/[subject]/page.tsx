@@ -15,20 +15,19 @@ export default async function SubjectPage({
   } = await supabase.auth.getUser()
   if (!user) return notFound()
 
-  const { data: profile } = await supabase
-    .from('users')
-    .select('grade, education_level')
-    .eq('id', user.id)
-    .single()
-
-  const { data: subject } = await supabase
-    .from('subjects')
-    .select('*')
-    .eq('slug', subjectSlug)
-    .single()
+  // Batch 1: subject + profile in parallel
+  const [{ data: subject }, { data: profile }] = await Promise.all([
+    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
+    supabase
+      .from('users')
+      .select('grade, education_level')
+      .eq('id', user.id)
+      .single(),
+  ])
 
   if (!subject) return notFound()
 
+  // Batch 2: topics (needs subject.id + profile.grade)
   const { data: topics } = await supabase
     .from('topics')
     .select('*')
@@ -37,6 +36,7 @@ export default async function SubjectPage({
     .eq('grade', profile?.grade)
     .order('display_order', { ascending: true })
 
+  // Batch 3: topicProgress (needs topic ids)
   const topicIds = (topics ?? []).map((t) => t.id)
   const { data: topicProgress } = topicIds.length
     ? await supabase

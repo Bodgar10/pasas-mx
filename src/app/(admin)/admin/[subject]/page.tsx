@@ -21,14 +21,15 @@ export default async function SubjectAdminPage({
 
   const supabase = await createClient()
 
-  const { data: subject } = await supabase
-    .from('subjects')
-    .select('*')
-    .eq('slug', subjectSlug)
-    .single()
+  // Batch 1: subject + themes in parallel (independent)
+  const [{ data: subject }, { data: themes }] = await Promise.all([
+    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
+    supabase.from('themes').select('*').eq('active', true),
+  ])
 
   if (!subject) return notFound()
 
+  // Batch 2: topics (needs subject.id)
   const { data: topics } = await supabase
     .from('topics')
     .select('*')
@@ -37,11 +38,7 @@ export default async function SubjectAdminPage({
     .not('published', 'is', null)
     .order('display_order', { ascending: true })
 
-  const { data: themes } = await supabase
-    .from('themes')
-    .select('*')
-    .eq('active', true)
-
+  // Batch 3: sections for section counts (needs topic ids)
   const topicIds = (topics ?? []).map((t) => t.id)
   let sectionCounts: SectionCount[] = []
 

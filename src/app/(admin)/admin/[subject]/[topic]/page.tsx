@@ -15,14 +15,18 @@ export default async function TopicAdminPage({
 
   const supabase = await createClient()
 
-  const { data: subject } = await supabase
-    .from('subjects')
-    .select('*')
-    .eq('slug', subjectSlug)
-    .single()
+  // Batch 1: subject + themes in parallel (fully independent)
+  const [{ data: subject }, { data: themes }] = await Promise.all([
+    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
+    supabase.from('themes').select('*').eq('active', true),
+  ])
 
   if (!subject) return notFound()
 
+  const activeThemes = themes ?? []
+  const selectedThemeId = themeIdParam ?? activeThemes[0]?.id ?? ''
+
+  // Batch 2: topic (needs subject.id)
   const { data: topic } = await supabase
     .from('topics')
     .select('*')
@@ -32,33 +36,30 @@ export default async function TopicAdminPage({
 
   if (!topic) return notFound()
 
-  const { data: themes } = await supabase
-    .from('themes')
-    .select('*')
-    .eq('active', true)
-
-  const activeThemes = themes ?? []
-  const selectedThemeId = themeIdParam ?? activeThemes[0]?.id ?? ''
-
-  const { data: sections } = await supabase
-    .from('sections')
-    .select('*')
-    .eq('topic_id', topic.id)
-    .eq('theme_id', selectedThemeId)
-    .order('display_order', { ascending: true })
-
-  const { data: quizQuestions } = await supabase
-    .from('quiz_questions')
-    .select('*')
-    .eq('topic_id', topic.id)
-    .eq('theme_id', selectedThemeId)
-    .order('created_at', { ascending: true })
-
-  const { count: completedCount } = await supabase
-    .from('topic_progress')
-    .select('*', { count: 'exact', head: true })
-    .eq('topic_id', topic.id)
-    .eq('status', 'completed')
+  // Batch 3: sections + quiz + completedCount all in parallel (all need topic.id)
+  const [
+    { data: sections },
+    { data: quizQuestions },
+    { count: completedCount },
+  ] = await Promise.all([
+    supabase
+      .from('sections')
+      .select('*')
+      .eq('topic_id', topic.id)
+      .eq('theme_id', selectedThemeId)
+      .order('display_order', { ascending: true }),
+    supabase
+      .from('quiz_questions')
+      .select('*')
+      .eq('topic_id', topic.id)
+      .eq('theme_id', selectedThemeId)
+      .order('created_at', { ascending: true }),
+    supabase
+      .from('topic_progress')
+      .select('*', { count: 'exact', head: true })
+      .eq('topic_id', topic.id)
+      .eq('status', 'completed'),
+  ])
 
   return (
     <TopicAdminClient

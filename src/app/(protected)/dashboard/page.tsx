@@ -50,21 +50,33 @@ export default async function DashboardPage() {
     if (hasEverSubscribed) subscriptionStatus = 'expired'
   }
 
-  // Fetch subjects for this user's education level and grade
-  const { data: subjects } = await supabase
-    .from('subjects')
-    .select('id, slug, name, display_order')
-    .eq('education_level', profile.education_level)
-    .contains('grades', [profile.grade])
-    .order('display_order')
+  // Fetch subjects + userSubjects + lastActiveTopic all in parallel
+  const [
+    { data: subjects },
+    { data: userSubjects },
+    { data: lastProgress },
+  ] = await Promise.all([
+    supabase
+      .from('subjects')
+      .select('id, slug, name, display_order')
+      .eq('education_level', profile.education_level)
+      .contains('grades', [profile.grade])
+      .order('display_order'),
+    supabase
+      .from('user_subjects')
+      .select('subject_id, xp, theme_id')
+      .eq('user_id', user.id),
+    supabase
+      .from('topic_progress')
+      .select('topic_id, status, updated_at')
+      .eq('user_id', user.id)
+      .in('status', ['in_progress', 'completed'])
+      .order('updated_at', { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+  ])
 
-  // Fetch user's subject progress
-  const { data: userSubjects } = await supabase
-    .from('user_subjects')
-    .select('subject_id, xp, theme_id')
-    .eq('user_id', user.id)
-
-  // Fetch last active topic for "Continúa donde lo dejaste"
+  // Resolve lastActiveTopic from lastProgress
   let lastActiveTopic: {
     topicName: string
     topicSlug: string
@@ -72,34 +84,21 @@ export default async function DashboardPage() {
     subjectSlug: string
   } | null = null
 
-  const subjectIds = (subjects ?? []).map((s) => s.id)
+  if (lastProgress) {
+    const { data: lastTopic } = await supabase
+      .from('topics')
+      .select('id, name, slug, subject_id')
+      .eq('id', lastProgress.topic_id)
+      .single()
 
-  if (subjectIds.length > 0) {
-    const { data: lastProgress } = await supabase
-      .from('topic_progress')
-      .select('topic_id, status, updated_at')
-      .eq('user_id', user.id)
-      .in('status', ['in_progress', 'completed'])
-      .order('updated_at', { ascending: false })
-      .limit(1)
-      .maybeSingle()
-
-    if (lastProgress) {
-      const { data: lastTopic } = await supabase
-        .from('topics')
-        .select('id, name, slug, subject_id')
-        .eq('id', lastProgress.topic_id)
-        .single()
-
-      if (lastTopic) {
-        const parentSubject = (subjects ?? []).find((s) => s.id === lastTopic.subject_id)
-        if (parentSubject) {
-          lastActiveTopic = {
-            topicName: lastTopic.name,
-            topicSlug: lastTopic.slug,
-            subjectName: parentSubject.name,
-            subjectSlug: parentSubject.slug,
-          }
+    if (lastTopic) {
+      const parentSubject = (subjects ?? []).find((s) => s.id === lastTopic.subject_id)
+      if (parentSubject) {
+        lastActiveTopic = {
+          topicName: lastTopic.name,
+          topicSlug: lastTopic.slug,
+          subjectName: parentSubject.name,
+          subjectSlug: parentSubject.slug,
         }
       }
     }
