@@ -36,15 +36,26 @@ export default async function SubjectPage({
     .eq('grade', profile?.grade)
     .order('display_order', { ascending: true })
 
-  // Batch 3: topicProgress (needs topic ids)
+  // Batch 3: topicProgress + userSubjectXp in parallel (both need subject.id / user.id)
   const topicIds = (topics ?? []).map((t) => t.id)
-  const { data: topicProgress } = topicIds.length
-    ? await supabase
-        .from('topic_progress')
-        .select('*')
-        .eq('user_id', user.id)
-        .in('topic_id', topicIds)
-    : { data: [] }
+  const [
+    { data: topicProgress },
+    { data: userSubject },
+  ] = await Promise.all([
+    topicIds.length
+      ? supabase
+          .from('topic_progress')
+          .select('*')
+          .eq('user_id', user.id)
+          .in('topic_id', topicIds)
+      : Promise.resolve({ data: [] }),
+    supabase
+      .from('user_subjects')
+      .select('xp')
+      .eq('user_id', user.id)
+      .eq('subject_id', subject.id)
+      .maybeSingle(),
+  ])
 
   return (
     <SubjectClient
@@ -52,6 +63,7 @@ export default async function SubjectPage({
       topics={topics ?? []}
       topicProgress={topicProgress ?? []}
       profile={profile ?? { grade: 1, education_level: 'middle_school' }}
+      subjectXp={userSubject?.xp ?? 0}
     />
   )
 }

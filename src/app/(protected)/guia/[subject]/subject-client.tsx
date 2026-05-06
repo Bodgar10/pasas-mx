@@ -39,6 +39,7 @@ interface Props {
   topics: Topic[]
   topicProgress: TopicProgress[]
   profile: Profile
+  subjectXp: number
 }
 
 const GRADE_LABELS: Record<number, string> = { 1: '1°', 2: '2°', 3: '3°' }
@@ -58,7 +59,7 @@ function getStatus(
   return getProgress(topicId, topicProgress)?.status ?? 'not_started'
 }
 
-export default function SubjectClient({ subject, topics, topicProgress, profile }: Props) {
+export default function SubjectClient({ subject, topics, topicProgress, profile, subjectXp }: Props) {
   const router = useRouter()
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null)
   const [isDesktop, setIsDesktop] = useState(false)
@@ -73,7 +74,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile 
   const completedTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'completed')
   const inProgressTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'in_progress')
   const pendingTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'not_started')
-  const totalXpEarned = completedTopics.reduce((sum, t) => sum + t.xp_reward, 0)
+  const totalXpEarned = subjectXp
   const overallPercent =
     topics.length > 0 ? Math.round((completedTopics.length / topics.length) * 100) : 0
 

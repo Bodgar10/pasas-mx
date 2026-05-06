@@ -416,17 +416,27 @@ export default function TopicClient({
 
         <div
           style={{
-            background: 'rgba(251,191,36,0.1)',
-            border: '1px solid rgba(251,191,36,0.25)',
+            background: initialProgress?.status === 'completed' && sessionXp === 0
+              ? 'rgba(16,185,129,0.1)'
+              : 'rgba(251,191,36,0.1)',
+            border: `1px solid ${
+              initialProgress?.status === 'completed' && sessionXp === 0
+                ? 'rgba(16,185,129,0.3)'
+                : 'rgba(251,191,36,0.25)'
+            }`,
             borderRadius: 50,
             padding: '4px 10px',
             fontSize: 13,
             fontWeight: 800,
-            color: '#fbbf24',
+            color: initialProgress?.status === 'completed' && sessionXp === 0
+              ? '#10b981'
+              : '#fbbf24',
             flexShrink: 0,
           }}
         >
-          ⚡ +{sessionXp} XP sesión
+          {initialProgress?.status === 'completed' && sessionXp === 0
+            ? '✓ Completado'
+            : `⚡ +${sessionXp} XP sesión`}
         </div>
       </div>
 
