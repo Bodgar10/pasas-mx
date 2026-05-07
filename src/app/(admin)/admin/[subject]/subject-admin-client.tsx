@@ -120,7 +120,11 @@ export default function SubjectAdminClient({
     })
     setSavingTopic(false)
     if (error) {
-      alert('Error al guardar tema: ' + error.message)
+      if (error.message.includes('topics_slug_key') || error.message.includes('duplicate key')) {
+        alert(`El tema con slug "${topicSlug}" ya existe en esta materia. Usa un slug diferente, por ejemplo: ${topicSlug}-alt`)
+      } else {
+        alert('Error al guardar tema: ' + error.message)
+      }
       return
     }
     setTopicName('')
