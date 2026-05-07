@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       // New subscription created after successful checkout
       // -----------------------------------------------------------------------
       case 'checkout.session.completed': {
-        const session        = event.data.object as Stripe.CheckoutSession
+        const session        = event.data.object as Stripe.Checkout.Session
         const userId         = session.metadata?.user_id
         const subscriptionId = session.subscription as string
 
