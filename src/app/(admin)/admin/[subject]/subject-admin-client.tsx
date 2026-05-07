@@ -72,8 +72,36 @@ export default function SubjectAdminClient({
   const [topicIcon, setTopicIcon] = useState('')
   const [topicDifficulty, setTopicDifficulty] = useState(1)
   const [topicXp, setTopicXp] = useState(100)
-  const [topicOrder, setTopicOrder] = useState(0)
   const [savingTopic, setSavingTopic] = useState(false)
+  const [loadingEmoji, setLoadingEmoji] = useState(false)
+
+  async function suggestEmoji(name: string) {
+    if (!name.trim()) return
+    setLoadingEmoji(true)
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 10,
+          messages: [
+            {
+              role: 'user',
+              content: `Respond with only a single emoji that best represents this academic topic for Mexican high school students: "${name}". Only one emoji, nothing else.`,
+            },
+          ],
+        }),
+      })
+      const data = await res.json()
+      const emoji = data?.content?.[0]?.text?.trim()
+      if (emoji) setTopicIcon(emoji)
+    } catch {
+      // Silent fail — emoji is optional
+    } finally {
+      setLoadingEmoji(false)
+    }
+  }
 
   useEffect(() => {
     const check = () => setIsDesktop(window.innerWidth >= 768)
@@ -86,6 +114,8 @@ export default function SubjectAdminClient({
     if (!topicName || !topicSlug) return
     setSavingTopic(true)
     const supabase = createClient()
+    // Auto-calculate next display_order from existing topics
+    const maxOrder = topics.reduce((max, t) => Math.max(max, t.display_order ?? 0), 0)
     const { error } = await supabase.from('topics').insert({
       subject_id: subject.id,
       name: topicName,
@@ -93,7 +123,7 @@ export default function SubjectAdminClient({
       description: topicDescription || null,
       icon: topicIcon || null,
       grade,
-      display_order: topicOrder,
+      display_order: maxOrder + 1,
       difficulty: topicDifficulty,
       xp_reward: topicXp,
       is_diagnostic: false,
@@ -110,7 +140,6 @@ export default function SubjectAdminClient({
     setTopicIcon('')
     setTopicDifficulty(1)
     setTopicXp(100)
-    setTopicOrder(0)
     setShowAddTopic(false)
     router.refresh()
   }
@@ -334,6 +363,11 @@ export default function SubjectAdminClient({
                 <input
                   value={topicName}
                   onChange={(e) => setTopicName(e.target.value)}
+                  onBlur={(e) => {
+                    if (e.target.value.trim() && !topicIcon) {
+                      suggestEmoji(e.target.value.trim())
+                    }
+                  }}
                   placeholder="ej. Ecuaciones lineales"
                   style={{
                     width: '100%',
@@ -391,24 +425,31 @@ export default function SubjectAdminClient({
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
               <div>
-                <label style={LABEL_STYLE}>Ícono</label>
+                <label style={LABEL_STYLE}>
+                  Ícono {loadingEmoji && (
+                    <span style={{ color: '#7c3aed', fontSize: 11 }}>buscando...</span>
+                  )}
+                </label>
                 <input
                   value={topicIcon}
                   onChange={(e) => setTopicIcon(e.target.value)}
-                  placeholder="📚"
+                  placeholder={loadingEmoji ? '...' : '📚'}
                   maxLength={2}
                   style={{
                     width: '100%',
                     background: '#1C1033',
-                    border: '1.5px solid #2D2048',
+                    border: loadingEmoji
+                      ? '1.5px solid rgba(124,58,237,0.5)'
+                      : '1.5px solid #2D2048',
                     borderRadius: 10,
                     color: '#e2d9f3',
                     fontSize: 16,
                     padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)',
                     boxSizing: 'border-box',
+                    transition: 'border 0.2s',
                   }}
                 />
               </div>
@@ -441,25 +482,6 @@ export default function SubjectAdminClient({
                   type="number"
                   value={topicXp}
                   onChange={(e) => setTopicXp(Number(e.target.value))}
-                  style={{
-                    width: '100%',
-                    background: '#1C1033',
-                    border: '1.5px solid #2D2048',
-                    borderRadius: 10,
-                    color: '#e2d9f3',
-                    fontSize: 16,
-                    padding: '8px 12px',
-                    fontFamily: 'var(--font-nunito)',
-                    boxSizing: 'border-box',
-                  }}
-                />
-              </div>
-              <div>
-                <label style={LABEL_STYLE}>Orden</label>
-                <input
-                  type="number"
-                  value={topicOrder}
-                  onChange={(e) => setTopicOrder(Number(e.target.value))}
                   style={{
                     width: '100%',
                     background: '#1C1033',

@@ -59,8 +59,36 @@ export default function AdminHomeClient({ subjects }: Props) {
   const [newName, setNewName] = useState('')
   const [newSlug, setNewSlug] = useState('')
   const [newIcon, setNewIcon] = useState('')
-  const [newOrder, setNewOrder] = useState<number>(0)
   const [savingSubject, setSavingSubject] = useState(false)
+  const [loadingEmoji, setLoadingEmoji] = useState(false)
+
+  async function suggestEmoji(name: string) {
+    if (!name.trim()) return
+    setLoadingEmoji(true)
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 10,
+          messages: [
+            {
+              role: 'user',
+              content: `Respond with only a single emoji that best represents this academic subject for Mexican high school students: "${name}". Only one emoji, nothing else.`,
+            },
+          ],
+        }),
+      })
+      const data = await res.json()
+      const emoji = data?.content?.[0]?.text?.trim()
+      if (emoji) setNewIcon(emoji)
+    } catch {
+      // Silent fail — emoji is optional
+    } finally {
+      setLoadingEmoji(false)
+    }
+  }
 
   useEffect(() => {
     const check = () => setIsDesktop(window.innerWidth >= 768)
@@ -102,6 +130,8 @@ export default function AdminHomeClient({ subjects }: Props) {
       : selectedGrade !== null
       ? [selectedGrade]
       : [1]
+    // Auto-calculate next display_order from existing subjects
+    const maxOrder = subjects.reduce((max, s) => Math.max(max, s.display_order ?? 0), 0)
     const { error } = await supabase.from('subjects').insert({
       name: newName,
       slug: newSlug,
@@ -109,7 +139,7 @@ export default function AdminHomeClient({ subjects }: Props) {
       grades,
       plan_types: ['grade', 'exam'],
       icon: newIcon || null,
-      display_order: newOrder,
+      display_order: maxOrder + 1,
     })
     setSavingSubject(false)
     if (error) {
@@ -119,7 +149,6 @@ export default function AdminHomeClient({ subjects }: Props) {
     setNewName('')
     setNewSlug('')
     setNewIcon('')
-    setNewOrder(0)
     setShowAddSubject(false)
     router.refresh()
   }
@@ -372,6 +401,11 @@ export default function AdminHomeClient({ subjects }: Props) {
                   <input
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
+                    onBlur={(e) => {
+                      if (e.target.value.trim() && !newIcon) {
+                        suggestEmoji(e.target.value.trim())
+                      }
+                    }}
                     placeholder="ej. Física"
                     style={{
                       width: '100%',
@@ -430,54 +464,28 @@ export default function AdminHomeClient({ subjects }: Props) {
                         marginBottom: 6,
                       }}
                     >
-                      Ícono (emoji)
+                      Ícono {loadingEmoji && (
+                        <span style={{ color: '#7c3aed', fontSize: 11 }}>buscando...</span>
+                      )}
                     </label>
                     <input
                       value={newIcon}
                       onChange={(e) => setNewIcon(e.target.value)}
-                      placeholder="📚"
+                      placeholder={loadingEmoji ? '...' : '📚'}
                       maxLength={2}
                       style={{
                         width: '100%',
                         background: '#1C1033',
-                        border: '1.5px solid #2D2048',
+                        border: loadingEmoji
+                          ? '1.5px solid rgba(124,58,237,0.5)'
+                          : '1.5px solid #2D2048',
                         borderRadius: 10,
                         color: '#e2d9f3',
                         fontSize: 16,
                         padding: '8px 12px',
                         fontFamily: 'var(--font-nunito)',
                         boxSizing: 'border-box',
-                      }}
-                    />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <label
-                      style={{
-                        fontSize: 13,
-                        color: '#a78bfa',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: 1,
-                        display: 'block',
-                        marginBottom: 6,
-                      }}
-                    >
-                      Orden
-                    </label>
-                    <input
-                      type="number"
-                      value={newOrder}
-                      onChange={(e) => setNewOrder(Number(e.target.value))}
-                      style={{
-                        width: '100%',
-                        background: '#1C1033',
-                        border: '1.5px solid #2D2048',
-                        borderRadius: 10,
-                        color: '#e2d9f3',
-                        fontSize: 16,
-                        padding: '8px 12px',
-                        fontFamily: 'var(--font-nunito)',
-                        boxSizing: 'border-box',
+                        transition: 'border 0.2s',
                       }}
                     />
                   </div>
