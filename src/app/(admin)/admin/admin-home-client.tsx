@@ -102,7 +102,7 @@ export default function AdminHomeClient({ subjects }: Props) {
       : selectedGrade !== null
       ? [selectedGrade]
       : [1]
-    await supabase.from('subjects').insert({
+    const { error } = await supabase.from('subjects').insert({
       name: newName,
       slug: newSlug,
       education_level: educationLevel,
@@ -111,12 +111,16 @@ export default function AdminHomeClient({ subjects }: Props) {
       icon: newIcon || null,
       display_order: newOrder,
     })
+    setSavingSubject(false)
+    if (error) {
+      alert('Error al guardar: ' + error.message)
+      return
+    }
     setNewName('')
     setNewSlug('')
     setNewIcon('')
     setNewOrder(0)
     setShowAddSubject(false)
-    setSavingSubject(false)
     router.refresh()
   }
 
