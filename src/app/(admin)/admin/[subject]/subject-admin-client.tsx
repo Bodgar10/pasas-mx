@@ -86,7 +86,7 @@ export default function SubjectAdminClient({
     if (!topicName || !topicSlug) return
     setSavingTopic(true)
     const supabase = createClient()
-    await supabase.from('topics').insert({
+    const { error } = await supabase.from('topics').insert({
       subject_id: subject.id,
       name: topicName,
       slug: topicSlug,
@@ -99,6 +99,11 @@ export default function SubjectAdminClient({
       is_diagnostic: false,
       published: false,
     })
+    setSavingTopic(false)
+    if (error) {
+      alert('Error al guardar tema: ' + error.message)
+      return
+    }
     setTopicName('')
     setTopicSlug('')
     setTopicDescription('')
@@ -107,7 +112,6 @@ export default function SubjectAdminClient({
     setTopicXp(100)
     setTopicOrder(0)
     setShowAddTopic(false)
-    setSavingTopic(false)
     router.refresh()
   }
 
