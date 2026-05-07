@@ -61,6 +61,31 @@ export default function AdminHomeClient({ subjects }: Props) {
   const [newIcon, setNewIcon] = useState('')
   const [savingSubject, setSavingSubject] = useState(false)
   const [loadingEmoji, setLoadingEmoji] = useState(false)
+  const [editingSubject, setEditingSubject] = useState<Subject | null>(null)
+  const [editName, setEditName] = useState('')
+  const [editSlug, setEditSlug] = useState('')
+  const [editIcon, setEditIcon] = useState('')
+  const [savingEdit, setSavingEdit] = useState(false)
+  const [loadingEditEmoji, setLoadingEditEmoji] = useState(false)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
+
+  async function suggestEditEmoji(name: string) {
+    if (!name.trim()) return
+    setLoadingEditEmoji(true)
+    try {
+      const res = await fetch('/api/suggest-emoji', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, type: 'subject' }),
+      })
+      const data = await res.json()
+      if (data.emoji) setEditIcon(data.emoji)
+    } catch {
+    } finally {
+      setLoadingEditEmoji(false)
+    }
+  }
 
   async function suggestEmoji(name: string) {
     if (!name.trim()) return
@@ -106,6 +131,37 @@ export default function AdminHomeClient({ subjects }: Props) {
     setSelectedLevel(level)
     setSelectedGrade(null)
     setShowAddSubject(false)
+  }
+
+  async function handleEditSubject() {
+    if (!editingSubject || !editName || !editSlug) return
+    setSavingEdit(true)
+    const supabase = createClient()
+    const { error } = await supabase
+      .from('subjects')
+      .update({ name: editName, slug: editSlug, icon: editIcon || null })
+      .eq('id', editingSubject.id)
+    setSavingEdit(false)
+    if (error) {
+      alert('Error al guardar: ' + error.message)
+      return
+    }
+    setEditingSubject(null)
+    router.refresh()
+  }
+
+  async function handleDeleteSubject() {
+    if (!confirmDeleteId) return
+    setDeletingId(confirmDeleteId)
+    const supabase = createClient()
+    const { error } = await supabase.from('subjects').delete().eq('id', confirmDeleteId)
+    setDeletingId(null)
+    setConfirmDeleteId(null)
+    if (error) {
+      alert('Error al eliminar: ' + error.message)
+      return
+    }
+    router.refresh()
   }
 
   async function handleAddSubject() {
@@ -348,8 +404,56 @@ export default function AdminHomeClient({ subjects }: Props) {
                   >
                     {subject.icon ?? '📚'}
                   </div>
-                  <div style={{ fontSize: 17, fontWeight: 800, color: '#e2d9f3' }}>
+                  <div style={{ fontSize: 17, fontWeight: 800, color: '#e2d9f3', flex: 1 }}>
                     {subject.name}
+                  </div>
+                  <div
+                    style={{ display: 'flex', gap: 4, flexShrink: 0 }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingSubject(subject)
+                        setEditName(subject.name)
+                        setEditSlug(subject.slug)
+                        setEditIcon(subject.icon ?? '')
+                      }}
+                      style={{
+                        background: 'rgba(124,58,237,0.15)',
+                        border: '1px solid rgba(124,58,237,0.3)',
+                        borderRadius: 8,
+                        color: '#a78bfa',
+                        width: 30,
+                        height: 30,
+                        cursor: 'pointer',
+                        fontSize: 14,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      ✏️
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setConfirmDeleteId(subject.id)}
+                      style={{
+                        background: 'rgba(239,68,68,0.08)',
+                        border: '1px solid rgba(239,68,68,0.2)',
+                        borderRadius: 8,
+                        color: '#ef4444',
+                        width: 30,
+                        height: 30,
+                        cursor: 'pointer',
+                        fontSize: 14,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      🗑️
+                    </button>
                   </div>
                 </div>
               ))}
@@ -544,6 +648,270 @@ export default function AdminHomeClient({ subjects }: Props) {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Edit subject modal */}
+      {editingSubject && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.6)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: 16,
+          }}
+          onClick={() => setEditingSubject(null)}
+        >
+          <div
+            style={{
+              background: '#1a1035',
+              border: '1px solid rgba(124,58,237,0.35)',
+              borderRadius: 20,
+              padding: 28,
+              width: '100%',
+              maxWidth: 480,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                fontFamily: 'var(--font-orbitron)',
+                fontSize: 16,
+                fontWeight: 900,
+                color: '#e2d9f3',
+                marginBottom: 20,
+              }}
+            >
+              ✏️ Editar materia
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div>
+                <label
+                  style={{
+                    fontSize: 13,
+                    color: '#a78bfa',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: 1,
+                    display: 'block',
+                    marginBottom: 6,
+                  }}
+                >
+                  Nombre
+                </label>
+                <input
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  onBlur={(e) => {
+                    if (e.target.value.trim()) suggestEditEmoji(e.target.value.trim())
+                  }}
+                  style={{
+                    width: '100%',
+                    background: '#1C1033',
+                    border: '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 16,
+                    padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)',
+                    boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+              <div>
+                <label
+                  style={{
+                    fontSize: 13,
+                    color: '#a78bfa',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: 1,
+                    display: 'block',
+                    marginBottom: 6,
+                  }}
+                >
+                  Slug
+                </label>
+                <input
+                  value={editSlug}
+                  onChange={(e) => setEditSlug(e.target.value)}
+                  style={{
+                    width: '100%',
+                    background: '#1C1033',
+                    border: '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 16,
+                    padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)',
+                    boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+              <div>
+                <label
+                  style={{
+                    fontSize: 13,
+                    color: '#a78bfa',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: 1,
+                    display: 'block',
+                    marginBottom: 6,
+                  }}
+                >
+                  Ícono{' '}
+                  {loadingEditEmoji && (
+                    <span style={{ color: '#7c3aed', fontSize: 11 }}>buscando...</span>
+                  )}
+                </label>
+                <input
+                  value={editIcon}
+                  onChange={(e) => setEditIcon(e.target.value)}
+                  placeholder={loadingEditEmoji ? '...' : '📚'}
+                  maxLength={2}
+                  style={{
+                    width: '100%',
+                    background: '#1C1033',
+                    border: loadingEditEmoji
+                      ? '1.5px solid rgba(124,58,237,0.5)'
+                      : '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 16,
+                    padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)',
+                    boxSizing: 'border-box',
+                    transition: 'border 0.2s',
+                  }}
+                />
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: 8, marginTop: 20, justifyContent: 'flex-end' }}>
+              <button
+                type="button"
+                onClick={() => setEditingSubject(null)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid #2D2048',
+                  color: '#a78bfa',
+                  borderRadius: 10,
+                  padding: '10px 20px',
+                  fontSize: 14,
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={handleEditSubject}
+                disabled={savingEdit}
+                style={{
+                  background: '#7c3aed',
+                  color: 'white',
+                  borderRadius: 12,
+                  padding: '10px 20px',
+                  fontWeight: 800,
+                  border: 'none',
+                  cursor: savingEdit ? 'not-allowed' : 'pointer',
+                  fontSize: 14,
+                  fontFamily: 'var(--font-nunito)',
+                  opacity: savingEdit ? 0.7 : 1,
+                }}
+              >
+                {savingEdit ? 'Guardando...' : 'Guardar cambios'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete confirmation modal */}
+      {confirmDeleteId && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.6)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: 16,
+          }}
+          onClick={() => setConfirmDeleteId(null)}
+        >
+          <div
+            style={{
+              background: '#1a1035',
+              border: '1px solid rgba(239,68,68,0.3)',
+              borderRadius: 20,
+              padding: 28,
+              width: '100%',
+              maxWidth: 400,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                fontFamily: 'var(--font-orbitron)',
+                fontSize: 16,
+                fontWeight: 900,
+                color: '#ef4444',
+                marginBottom: 12,
+              }}
+            >
+              🗑️ Eliminar materia
+            </div>
+            <div style={{ color: '#e2d9f3', fontSize: 15, marginBottom: 20 }}>
+              ¿Seguro que quieres eliminar esta materia? Esta acción no se puede deshacer.
+            </div>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+              <button
+                type="button"
+                onClick={() => setConfirmDeleteId(null)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid #2D2048',
+                  color: '#a78bfa',
+                  borderRadius: 10,
+                  padding: '10px 20px',
+                  fontSize: 14,
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteSubject}
+                disabled={deletingId !== null}
+                style={{
+                  background: '#ef4444',
+                  color: 'white',
+                  borderRadius: 12,
+                  padding: '10px 20px',
+                  fontWeight: 800,
+                  border: 'none',
+                  cursor: deletingId !== null ? 'not-allowed' : 'pointer',
+                  fontSize: 14,
+                  fontFamily: 'var(--font-nunito)',
+                  opacity: deletingId !== null ? 0.7 : 1,
+                }}
+              >
+                {deletingId !== null ? 'Eliminando...' : 'Sí, eliminar'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

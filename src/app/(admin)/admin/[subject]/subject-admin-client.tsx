@@ -74,6 +74,31 @@ export default function SubjectAdminClient({
   const [topicXp, setTopicXp] = useState(100)
   const [savingTopic, setSavingTopic] = useState(false)
   const [loadingEmoji, setLoadingEmoji] = useState(false)
+  const [editingTopic, setEditingTopic] = useState<Topic | null>(null)
+  const [editName, setEditName] = useState('')
+  const [editSlug, setEditSlug] = useState('')
+  const [editIcon, setEditIcon] = useState('')
+  const [savingEdit, setSavingEdit] = useState(false)
+  const [loadingEditEmoji, setLoadingEditEmoji] = useState(false)
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
+
+  async function suggestEditEmoji(name: string) {
+    if (!name.trim()) return
+    setLoadingEditEmoji(true)
+    try {
+      const res = await fetch('/api/suggest-emoji', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, type: 'topic' }),
+      })
+      const data = await res.json()
+      if (data.emoji) setEditIcon(data.emoji)
+    } catch {
+    } finally {
+      setLoadingEditEmoji(false)
+    }
+  }
 
   async function suggestEmoji(name: string) {
     if (!name.trim()) return
@@ -98,6 +123,43 @@ export default function SubjectAdminClient({
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
   }, [])
+
+  async function handleEditTopic() {
+    if (!editingTopic || !editName || !editSlug) return
+    setSavingEdit(true)
+    const supabase = createClient()
+    const { error } = await supabase
+      .from('topics')
+      .update({
+        name: editName,
+        slug: editSlug,
+        icon: editIcon || null,
+      })
+      .eq('id', editingTopic.id)
+    setSavingEdit(false)
+    if (error) {
+      alert('Error al editar: ' + error.message)
+      return
+    }
+    setEditingTopic(null)
+    router.refresh()
+  }
+
+  async function handleDeleteTopic(id: string) {
+    setDeletingId(id)
+    const supabase = createClient()
+    const { error } = await supabase
+      .from('topics')
+      .delete()
+      .eq('id', id)
+    setDeletingId(null)
+    setConfirmDeleteId(null)
+    if (error) {
+      alert('Error al eliminar: ' + error.message)
+      return
+    }
+    router.refresh()
+  }
 
   async function handleAddTopic() {
     if (!topicName || !topicSlug) return
@@ -285,29 +347,56 @@ export default function SubjectAdminClient({
               })}
             </div>
 
-            {/* Right: manage button */}
-            <button
-              type="button"
-              onClick={() =>
-                router.push(
-                  `/admin/${subject.slug}/${topic.slug}?grade=${grade}&level=${level}`
-                )
-              }
-              style={{
-                background: '#7c3aed',
-                color: 'white',
-                border: 'none',
-                borderRadius: 10,
-                padding: '8px 16px',
-                fontSize: 14,
-                fontWeight: 800,
-                fontFamily: 'var(--font-nunito)',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Gestionar →
-            </button>
+            {/* Right: action buttons */}
+            <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+              <button
+                type="button"
+                onClick={() =>
+                  router.push(
+                    `/admin/${subject.slug}/${topic.slug}?grade=${grade}&level=${level}`
+                  )
+                }
+                style={{
+                  background: '#7c3aed', color: 'white', border: 'none',
+                  borderRadius: 10, padding: '8px 16px', fontSize: 14,
+                  fontWeight: 800, fontFamily: 'var(--font-nunito)',
+                  cursor: 'pointer', whiteSpace: 'nowrap',
+                }}
+              >
+                Gestionar →
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingTopic(topic)
+                  setEditName(topic.name)
+                  setEditSlug(topic.slug)
+                  setEditIcon(topic.icon ?? '')
+                }}
+                style={{
+                  background: 'rgba(124,58,237,0.15)',
+                  border: '1px solid rgba(124,58,237,0.3)',
+                  color: '#a78bfa', borderRadius: 8, padding: '8px 10px',
+                  fontSize: 13, fontWeight: 800, cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                ✏️
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirmDeleteId(topic.id)}
+                style={{
+                  background: 'rgba(239,68,68,0.08)',
+                  border: '1px solid rgba(239,68,68,0.2)',
+                  color: '#ef4444', borderRadius: 8, padding: '8px 10px',
+                  fontSize: 13, fontWeight: 800, cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                🗑️
+              </button>
+            </div>
           </div>
         ))
       )}
@@ -528,6 +617,184 @@ export default function SubjectAdminClient({
             >
               {savingTopic ? 'Guardando...' : 'Guardar tema'}
             </button>
+          </div>
+        </div>
+      )}
+      {/* Edit topic modal */}
+      {editingTopic && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 100,
+          background: 'rgba(15,10,30,0.85)',
+          display: 'flex', alignItems: 'center',
+          justifyContent: 'center', padding: 16,
+        }}>
+          <div style={{
+            background: '#1a1035',
+            border: '1px solid rgba(124,58,237,0.3)',
+            borderRadius: 20, padding: 24,
+            width: '100%', maxWidth: 480,
+          }}>
+            <div style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 15, fontWeight: 900,
+              color: '#e2d9f3', marginBottom: 20,
+            }}>
+              ✏️ Editar tema
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div>
+                <label style={{
+                  fontSize: 13, color: '#a78bfa', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: 1,
+                  display: 'block', marginBottom: 6,
+                }}>Nombre</label>
+                <input
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  onBlur={(e) => {
+                    if (e.target.value.trim() !== editingTopic.name) {
+                      suggestEditEmoji(e.target.value.trim())
+                    }
+                  }}
+                  style={{
+                    width: '100%', background: '#1C1033',
+                    border: '1.5px solid #2D2048', borderRadius: 10,
+                    color: '#e2d9f3', fontSize: 16, padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)', boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{
+                  fontSize: 13, color: '#a78bfa', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: 1,
+                  display: 'block', marginBottom: 6,
+                }}>Slug</label>
+                <input
+                  value={editSlug}
+                  onChange={(e) => setEditSlug(e.target.value)}
+                  style={{
+                    width: '100%', background: '#1C1033',
+                    border: '1.5px solid #2D2048', borderRadius: 10,
+                    color: '#e2d9f3', fontSize: 16, padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)', boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{
+                  fontSize: 13, color: '#a78bfa', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: 1,
+                  display: 'block', marginBottom: 6,
+                }}>
+                  Ícono {loadingEditEmoji && (
+                    <span style={{ color: '#7c3aed', fontSize: 11 }}>buscando...</span>
+                  )}
+                </label>
+                <input
+                  value={editIcon}
+                  onChange={(e) => setEditIcon(e.target.value)}
+                  maxLength={2}
+                  style={{
+                    width: '100%', background: '#1C1033',
+                    border: loadingEditEmoji
+                      ? '1.5px solid rgba(124,58,237,0.5)'
+                      : '1.5px solid #2D2048',
+                    borderRadius: 10, color: '#e2d9f3', fontSize: 16,
+                    padding: '8px 12px', fontFamily: 'var(--font-nunito)',
+                    boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: 8, marginTop: 20, justifyContent: 'flex-end' }}>
+              <button
+                type="button"
+                onClick={() => setEditingTopic(null)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048',
+                  color: '#a78bfa', borderRadius: 10, padding: '10px 20px',
+                  fontSize: 14, fontWeight: 800, cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={handleEditTopic}
+                disabled={savingEdit}
+                style={{
+                  background: '#7c3aed', color: 'white', borderRadius: 12,
+                  padding: '10px 20px', fontWeight: 800, border: 'none',
+                  cursor: savingEdit ? 'not-allowed' : 'pointer',
+                  fontSize: 14, fontFamily: 'var(--font-nunito)',
+                  opacity: savingEdit ? 0.7 : 1,
+                }}
+              >
+                {savingEdit ? 'Guardando...' : 'Guardar cambios'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete confirmation modal */}
+      {confirmDeleteId && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 100,
+          background: 'rgba(15,10,30,0.85)',
+          display: 'flex', alignItems: 'center',
+          justifyContent: 'center', padding: 16,
+        }}>
+          <div style={{
+            background: '#1a1035',
+            border: '1px solid rgba(239,68,68,0.3)',
+            borderRadius: 20, padding: 24,
+            width: '100%', maxWidth: 400,
+            textAlign: 'center',
+          }}>
+            <div style={{ fontSize: 32, marginBottom: 12 }}>🗑️</div>
+            <div style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 15, fontWeight: 900,
+              color: '#e2d9f3', marginBottom: 8,
+            }}>
+              ¿Eliminar tema?
+            </div>
+            <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 20, lineHeight: 1.6 }}>
+              Esta acción no se puede deshacer. Se eliminará todo el contenido generado para este tema.
+            </div>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
+              <button
+                type="button"
+                onClick={() => setConfirmDeleteId(null)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048',
+                  color: '#a78bfa', borderRadius: 10, padding: '10px 20px',
+                  fontSize: 14, fontWeight: 800, cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDeleteTopic(confirmDeleteId)}
+                disabled={!!deletingId}
+                style={{
+                  background: '#ef4444', color: 'white', borderRadius: 12,
+                  padding: '10px 20px', fontWeight: 800, border: 'none',
+                  cursor: deletingId ? 'not-allowed' : 'pointer',
+                  fontSize: 14, fontFamily: 'var(--font-nunito)',
+                  opacity: deletingId ? 0.7 : 1,
+                }}
+              >
+                {deletingId ? 'Eliminando...' : 'Sí, eliminar'}
+              </button>
+            </div>
           </div>
         </div>
       )}
