@@ -35,7 +35,6 @@ export default async function SubjectAdminPage({
     .select('*')
     .eq('subject_id', subject.id)
     .eq('grade', grade)
-    .not('published', 'is', null)
     .order('display_order', { ascending: true })
 
   // Batch 3: sections for section counts (needs topic ids)
