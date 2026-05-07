@@ -66,25 +66,14 @@ export default function AdminHomeClient({ subjects }: Props) {
     if (!name.trim()) return
     setLoadingEmoji(true)
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/suggest-emoji', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 10,
-          messages: [
-            {
-              role: 'user',
-              content: `Respond with only a single emoji that best represents this academic subject for Mexican high school students: "${name}". Only one emoji, nothing else.`,
-            },
-          ],
-        }),
+        body: JSON.stringify({ name, type: 'subject' }),
       })
       const data = await res.json()
-      const emoji = data?.content?.[0]?.text?.trim()
-      if (emoji) setNewIcon(emoji)
+      if (data.emoji) setNewIcon(data.emoji)
     } catch {
-      // Silent fail — emoji is optional
     } finally {
       setLoadingEmoji(false)
     }
