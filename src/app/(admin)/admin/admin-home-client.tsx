@@ -125,27 +125,50 @@ export default function AdminHomeClient({ subjects }: Props) {
     const supabase = createClient()
     const educationLevel =
       selectedLevel === 'middle_school' ? 'middle_school' : 'high_school'
-    const grades = isExamLevel
+    const newGrades = isExamLevel
       ? [1, 2, 3]
       : selectedGrade !== null
       ? [selectedGrade]
       : [1]
-    // Auto-calculate next display_order from existing subjects
-    const maxOrder = subjects.reduce((max, s) => Math.max(max, s.display_order ?? 0), 0)
-    const { error } = await supabase.from('subjects').insert({
-      name: newName,
-      slug: newSlug,
-      education_level: educationLevel,
-      grades,
-      plan_types: ['grade', 'exam'],
-      icon: newIcon || null,
-      display_order: maxOrder + 1,
-    })
-    setSavingSubject(false)
-    if (error) {
-      alert('Error al guardar: ' + error.message)
-      return
+
+    // Check if subject with this slug already exists
+    const { data: existing } = await supabase
+      .from('subjects')
+      .select('id, grades')
+      .eq('slug', newSlug)
+      .maybeSingle()
+
+    if (existing) {
+      // Merge grades — add new grades without duplicates
+      const mergedGrades = Array.from(new Set([...(existing.grades ?? []), ...newGrades])).sort()
+      const { error } = await supabase
+        .from('subjects')
+        .update({ grades: mergedGrades })
+        .eq('id', existing.id)
+      setSavingSubject(false)
+      if (error) {
+        alert('Error al actualizar materia: ' + error.message)
+        return
+      }
+    } else {
+      // Insert new subject
+      const maxOrder = subjects.reduce((max, s) => Math.max(max, s.display_order ?? 0), 0)
+      const { error } = await supabase.from('subjects').insert({
+        name: newName,
+        slug: newSlug,
+        education_level: educationLevel,
+        grades: newGrades,
+        plan_types: ['grade', 'exam'],
+        icon: newIcon || null,
+        display_order: maxOrder + 1,
+      })
+      setSavingSubject(false)
+      if (error) {
+        alert('Error al guardar: ' + error.message)
+        return
+      }
     }
+
     setNewName('')
     setNewSlug('')
     setNewIcon('')
