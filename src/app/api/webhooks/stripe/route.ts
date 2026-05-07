@@ -98,7 +98,7 @@ export async function POST(request: Request) {
       // -----------------------------------------------------------------------
       case 'invoice.paid': {
         const invoice        = event.data.object as Stripe.Invoice
-        const subscriptionId = invoice.subscription as string
+        const subscriptionId = (invoice as unknown as { subscription: string }).subscription
         if (!subscriptionId) break
 
         const subscription = await stripe.subscriptions.retrieve(subscriptionId) as Stripe.Subscription
