@@ -65,12 +65,12 @@ export async function POST(request: Request) {
         }
 
         // Fetch full subscription object from Stripe
-        const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId) as Stripe.Subscription
         const priceId      = subscription.items.data[0]?.price.id
         const planInfo     = PRICE_TO_PLAN[priceId] ?? { plan: 'grade', duration: 'monthly' }
 
-        const periodStart = new Date(subscription.current_period_start * 1000).toISOString()
-        const periodEnd   = new Date(subscription.current_period_end   * 1000).toISOString()
+        const periodStart = new Date((subscription as unknown as { current_period_start: number }).current_period_start * 1000).toISOString()
+        const periodEnd   = new Date((subscription as unknown as { current_period_end: number }).current_period_end * 1000).toISOString()
         const priceAmount = subscription.items.data[0]?.price.unit_amount ?? 0
 
         await supabase.from('subscriptions').insert({
@@ -101,9 +101,9 @@ export async function POST(request: Request) {
         const subscriptionId = invoice.subscription as string
         if (!subscriptionId) break
 
-        const subscription = await stripe.subscriptions.retrieve(subscriptionId)
-        const periodStart  = new Date(subscription.current_period_start * 1000).toISOString()
-        const periodEnd    = new Date(subscription.current_period_end   * 1000).toISOString()
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId) as Stripe.Subscription
+        const periodStart  = new Date((subscription as unknown as { current_period_start: number }).current_period_start * 1000).toISOString()
+        const periodEnd    = new Date((subscription as unknown as { current_period_end: number }).current_period_end * 1000).toISOString()
 
         await supabase
           .from('subscriptions')
