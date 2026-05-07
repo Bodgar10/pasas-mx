@@ -20,9 +20,17 @@
 
 import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/payments/stripe'
-import { createClient } from '@/utils/supabase/server'
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { PRICE_TO_PLAN } from '@/lib/payments/config'
 import Stripe from 'stripe'
+
+// Use service role client to bypass RLS in webhook handler
+function getServiceClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!
+  if (!url || !key) throw new Error('Missing Supabase service role credentials')
+  return createSupabaseClient(url, key)
+}
 
 export async function POST(request: Request) {
   // 1. Read raw body and signature
@@ -46,7 +54,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
-  const supabase = await createClient()
+  const supabase = getServiceClient()
 
   try {
     switch (event.type) {
