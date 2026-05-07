@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense, useState } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 const PLANS = {
   estandar: {
@@ -37,8 +37,7 @@ type Duration = 'monthly' | 'quarterly' | 'biannual'
 
 function PlanesContent() {
   const searchParams = useSearchParams()
-  const router = useRouter()
-  const planParam = searchParams.get('plan')
+const planParam = searchParams.get('plan')
   const isPersonalizado = planParam === 'personalizado'
 
   const [activePlan, setActivePlan] = useState<PlanKey>(
@@ -47,8 +46,27 @@ function PlanesContent() {
 
   const plan = PLANS[activePlan]
 
-  function handleCTA(duration: Duration) {
-    router.push(`/checkout?plan=${activePlan}&duration=${duration}`)
+  const [loadingCheckout, setLoadingCheckout] = useState<string | null>(null)
+
+  async function handleCTA(duration: Duration) {
+    setLoadingCheckout(duration)
+    try {
+      const res = await fetch('/api/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: activePlan, duration }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        alert('Error al iniciar el pago. Intenta de nuevo.')
+      }
+    } catch {
+      alert('Error al iniciar el pago. Intenta de nuevo.')
+    } finally {
+      setLoadingCheckout(null)
+    }
   }
 
   const cards = [
@@ -380,6 +398,7 @@ function PlanesContent() {
                   <button
                     type="button"
                     onClick={() => handleCTA(card.key)}
+                    disabled={loadingCheckout !== null}
                     style={{
                       width: '100%',
                       minHeight: 52,
@@ -390,11 +409,12 @@ function PlanesContent() {
                       fontSize: 17,
                       fontWeight: 900,
                       color: '#ffffff',
-                      cursor: 'pointer',
+                      cursor: loadingCheckout !== null ? 'not-allowed' : 'pointer',
                       marginTop: 'auto',
+                      opacity: loadingCheckout !== null && loadingCheckout !== card.key ? 0.6 : 1,
                     }}
                   >
-                    Elegir {card.label}
+                    {loadingCheckout === card.key ? 'Cargando...' : `Elegir ${card.label}`}
                   </button>
                 </div>
               </div>
