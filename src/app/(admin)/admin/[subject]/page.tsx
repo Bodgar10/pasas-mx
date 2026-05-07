@@ -30,17 +30,12 @@ export default async function SubjectAdminPage({
   if (!subject) return notFound()
 
   // Batch 2: topics (needs subject.id)
-  const { data: topics, error: topicsError } = await supabase
+  const { data: topics } = await supabase
     .from('topics')
     .select('*')
     .eq('subject_id', subject.id)
     .eq('grade', grade)
     .order('display_order', { ascending: true })
-
-  console.log('DEBUG subject.id:', subject.id)
-  console.log('DEBUG grade:', grade, typeof grade)
-  console.log('DEBUG topics:', topics)
-  console.log('DEBUG topicsError:', topicsError)
 
   // Batch 3: sections for section counts (needs topic ids)
   const topicIds = (topics ?? []).map((t) => t.id)
