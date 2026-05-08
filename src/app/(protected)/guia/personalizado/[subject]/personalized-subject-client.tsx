@@ -98,7 +98,7 @@ export default function PersonalizedSubjectClient({
         </div>
       </div>
 
-      <div style={{ padding: isDesktop ? '24px 0' : '16px' }}>
+      <div style={{ padding: isDesktop ? '24px 32px' : '16px' }}>
 
         {/* Banner */}
         <div style={{
