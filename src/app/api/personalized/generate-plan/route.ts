@@ -1,0 +1,259 @@
+export const maxDuration = 300
+
+import { NextRequest, NextResponse } from 'next/server'
+import Anthropic from '@anthropic-ai/sdk'
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
+
+function getServiceClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!
+  return createSupabaseClient(url, key)
+}
+
+export async function POST(req: NextRequest) {
+  const { userId, subjectId, themeId, weakTopicIds } = await req.json()
+
+  if (!userId || !subjectId || !themeId || !weakTopicIds?.length) {
+    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
+
+  const supabase = getServiceClient()
+
+  const [{ data: topics }, { data: subject }, { data: theme }, { data: userProfile }] = await Promise.all([
+    supabase.from('topics').select('id, name, slug, description, difficulty, grade').in('id', weakTopicIds),
+    supabase.from('subjects').select('id, name, slug').eq('id', subjectId).single(),
+    supabase.from('themes').select('id, name').eq('id', themeId).single(),
+    supabase.from('users').select('education_level, grade').eq('id', userId).single(),
+  ])
+
+  if (!topics || !subject || !theme || !userProfile) {
+    return NextResponse.json({ error: 'Failed to fetch required data' }, { status: 500 })
+  }
+
+  function getEducationContext(level: string, grade: number): string {
+    switch (level) {
+      case 'middle_school': return `${grade}° de secundaria`
+      case 'high_school': return `${grade}° de preparatoria`
+      case 'exam_prepa': return `preparación para examen de ingreso a preparatoria (COMIPEMS)`
+      case 'exam_uni': return `preparación para examen de ingreso a universidad (UNAM/IPN)`
+      default: return `${grade}° grado`
+    }
+  }
+
+  const educationContext = getEducationContext(userProfile.education_level, userProfile.grade)
+  const client = new Anthropic()
+  const results = []
+
+  for (const topic of topics) {
+    try {
+      const systemPrompt = `Eres un experto en educación mexicana y storytelling pedagógico.
+Tu tarea es generar contenido educativo inmersivo y EXTENSO para un alumno específico de ${educationContext} que necesita refuerzo en este tema.
+REGLA MÁS IMPORTANTE: La temática "${theme.name}" no es un adorno — es el MUNDO donde ocurre todo el contenido.
+El alumno debe sentir que está aprendiendo ${subject.name} DENTRO de ${theme.name}, no que alguien le menciona ${theme.name} de pasada.
+Cada sección debe usar personajes, situaciones, mecánicas o referencias MUY ESPECÍFICAS de "${theme.name}".
+Este es un plan PERSONALIZADO — el contenido debe ser más extenso, profundo y variado que el estándar.
+Adapta vocabulario y complejidad a ${educationContext}.
+Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
+
+      const userPrompt = `Genera contenido educativo PERSONALIZADO y EXTENSO para:
+- Tema: "${topic.name}"
+- Materia: "${subject.name}"
+- Nivel: ${educationContext}
+- Temática: "${theme.name}"
+- Este alumno FALLÓ en este tema en el diagnóstico — necesita explicación clara y múltiples ejemplos
+
+Genera este JSON con 8 secciones y 8 preguntas de quiz:
+
+{
+  "sections": [
+    {
+      "type": "analogy",
+      "title": "título con referencia específica de ${theme.name}",
+      "content": "Situación concreta y detallada de ${theme.name}. Mínimo 120 palabras. El concepto emerge naturalmente de la situación.",
+      "display_order": 1
+    },
+    {
+      "type": "explanation",
+      "title": "título que conecte la situación con el concepto formal",
+      "content": "Arranca con la situación anterior. Explica el concepto formal con **negritas**. Máximo 120 palabras.",
+      "display_order": 2
+    },
+    {
+      "type": "example",
+      "title": "Ejemplo resuelto 1 — situación de ${theme.name}",
+      "content": "Problema nuevo dentro de ${theme.name}. Resuelto paso a paso con **pasos numerados**. Máximo 150 palabras.",
+      "display_order": 3
+    },
+    {
+      "type": "analogy",
+      "title": "Segunda analogía — situación diferente de ${theme.name}",
+      "content": "Nueva situación de ${theme.name} que refuerza el concepto desde otro ángulo. Mínimo 100 palabras.",
+      "display_order": 4
+    },
+    {
+      "type": "example",
+      "title": "Ejemplo resuelto 2 — caso más complejo",
+      "content": "Problema más complejo dentro de ${theme.name}. Resuelto paso a paso. Máximo 150 palabras.",
+      "display_order": 5
+    },
+    {
+      "type": "key_fact",
+      "title": "Lo que debes recordar",
+      "content": "Definición formal del concepto en 1-2 oraciones con **negritas** en lo más crítico. Incluye fórmula o regla principal si aplica.",
+      "display_order": 6
+    },
+    {
+      "type": "tip",
+      "title": "Tip para no fallar en el examen",
+      "content": "Truco práctico para recordar el concepto o evitar el error más común. Máximo 60 palabras.",
+      "display_order": 7
+    },
+    {
+      "type": "example",
+      "title": "Ejemplo resuelto 3 — practica tú mismo",
+      "content": "Problema planteado con datos de ${theme.name}. Muestra solo el primer paso y da la respuesta final para que el alumno intente resolverlo. Máximo 120 palabras.",
+      "display_order": 8
+    }
+  ],
+  "quiz_questions": [
+    {
+      "question": "pregunta básica sobre el concepto",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "B",
+      "explanation": "explicación clara. Máximo 60 palabras.",
+      "difficulty": 1,
+      "xp_reward": 20
+    },
+    {
+      "question": "pregunta básica diferente",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "C",
+      "explanation": "explicación. Máximo 60 palabras.",
+      "difficulty": 1,
+      "xp_reward": 20
+    },
+    {
+      "question": "pregunta media — aplica el concepto",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "A",
+      "explanation": "explicación. Máximo 60 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta media — contexto de ${theme.name}",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "D",
+      "explanation": "explicación. Máximo 60 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta media — variación del concepto",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "B",
+      "explanation": "explicación. Máximo 60 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta difícil — razonamiento",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "C",
+      "explanation": "explicación con distractores plausibles. Máximo 60 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
+    },
+    {
+      "question": "pregunta difícil — combina conceptos",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "A",
+      "explanation": "explicación. Máximo 60 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
+    },
+    {
+      "question": "pregunta difícil — caso complejo de ${theme.name}",
+      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
+      "correct_answer": "D",
+      "explanation": "explicación. Máximo 60 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
+    }
+  ]
+}`
+
+      const message = await client.messages.create({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 6000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userPrompt }],
+      })
+
+      const rawText = message.content[0].type === 'text' ? message.content[0].text : ''
+      let clean = rawText.replace(/```json|```/g, '').trim()
+      const jsonMatch = clean.match(/\{[\s\S]*\}/)
+      if (jsonMatch) clean = jsonMatch[0]
+
+      const generated = JSON.parse(clean)
+
+      await supabase.from('sections').delete()
+        .eq('topic_id', topic.id)
+        .eq('theme_id', themeId)
+        .eq('user_id', userId)
+
+      const sectionsToInsert = generated.sections.map((s: {
+        type: string; title: string; content: string; display_order: number
+      }) => ({
+        topic_id: topic.id,
+        theme_id: themeId,
+        user_id: userId,
+        type: s.type,
+        title: s.title,
+        content: s.content,
+        display_order: s.display_order,
+        interests_used: [theme.name],
+      }))
+
+      await supabase.from('quiz_questions').delete()
+        .eq('topic_id', topic.id)
+        .eq('theme_id', themeId)
+
+      const questionsToInsert = generated.quiz_questions.map((q: {
+        question: string; options: {letter: string; text: string}[];
+        correct_answer: string; explanation: string; difficulty: number; xp_reward: number
+      }) => ({
+        topic_id: topic.id,
+        theme_id: themeId,
+        question: q.question,
+        options: q.options,
+        correct_answer: q.correct_answer,
+        explanation: q.explanation,
+        difficulty: q.difficulty,
+        xp_reward: q.xp_reward,
+        source: 'ai',
+      }))
+
+      const [{ error: sectionsError }, { error: quizError }] = await Promise.all([
+        supabase.from('sections').insert(sectionsToInsert),
+        supabase.from('quiz_questions').insert(questionsToInsert),
+      ])
+
+      results.push({
+        topicId: topic.id,
+        topicName: topic.name,
+        sectionsError: sectionsError?.message ?? null,
+        quizError: quizError?.message ?? null,
+        success: !sectionsError && !quizError,
+      })
+
+      console.log(`[generate-plan] Topic "${topic.name}" — sections: ${sectionsError?.message ?? 'OK'} | quiz: ${quizError?.message ?? 'OK'}`)
+
+    } catch (error) {
+      console.error(`[generate-plan] Error generating topic "${topic.name}":`, error)
+      results.push({ topicId: topic.id, topicName: topic.name, success: false, error: String(error) })
+    }
+  }
+
+  return NextResponse.json({ success: true, results })
+}

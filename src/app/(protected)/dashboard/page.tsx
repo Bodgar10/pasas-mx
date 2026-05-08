@@ -104,6 +104,8 @@ export default async function DashboardPage() {
     }
   }
 
+  const isPersonalized = subscription?.plan === 'ai_personalized' && subscriptionStatus === 'active'
+
   return (
     <DashboardClient
       profile={{
@@ -118,6 +120,7 @@ export default async function DashboardPage() {
       subjects={subjects ?? []}
       userSubjects={userSubjects ?? []}
       lastActiveTopic={lastActiveTopic}
+      isPersonalized={isPersonalized}
     />
   )
 }

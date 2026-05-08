@@ -41,6 +41,7 @@ interface Props {
   subjects: Subject[]
   userSubjects: UserSubject[]
   lastActiveTopic: LastActiveTopic | null
+  isPersonalized: boolean
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -77,7 +78,7 @@ function xpToLevel(xp: number) {
   return { level, current, total: 500 }
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -124,6 +125,15 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   const showBanner = subscriptionStatus === 'no_subscription' || subscriptionStatus === 'expired'
   const isExpiredBanner = subscriptionStatus === 'expired'
+
+  useEffect(() => {
+    if (isPersonalized && subscriptionStatus === 'active') {
+      const params = new URLSearchParams(window.location.search)
+      if (params.get('checkout') === 'success') {
+        router.push('/generando')
+      }
+    }
+  }, [isPersonalized, subscriptionStatus])
 
   const levelMeta = LEVEL_LABELS[profile.education_level]
   const showGrade =
@@ -382,6 +392,41 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               </div>
             </div>
 
+            {/* Personalized plan banner */}
+            {isPersonalized && subscriptionStatus === 'active' && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(236,72,153,0.1))',
+                border: '1.5px solid rgba(124,58,237,0.3)',
+                borderRadius: 20,
+                padding: '20px 16px',
+                marginBottom: 24,
+              }}>
+                <p style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 15, fontWeight: 900,
+                  color: '#e2d9f3', margin: '0 0 6px',
+                }}>
+                  ✨ Tu plan personalizado
+                </p>
+                <p style={{ fontSize: 14, color: '#a78bfa', margin: '0 0 14px', lineHeight: 1.6 }}>
+                  Tu guía está lista con los temas que más necesitas estudiar.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => router.push('/generando')}
+                  style={{
+                    width: '100%', minHeight: 48,
+                    background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                    color: '#ffffff', border: 'none', borderRadius: 12,
+                    fontFamily: 'var(--font-nunito)', fontSize: 16,
+                    fontWeight: 900, cursor: 'pointer',
+                  }}
+                >
+                  Ver mi plan personalizado →
+                </button>
+              </div>
+            )}
+
             {/* Banner */}
             {showBanner && (
               <div
@@ -554,7 +599,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                   margin: '0 0 12px',
                 }}
               >
-                {subscriptionStatus === 'active' ? 'Mis materias' : 'Materias disponibles'}
+                {isPersonalized && subscriptionStatus === 'active' ? 'Materias del sistema' : subscriptionStatus === 'active' ? 'Mis materias' : 'Materias disponibles'}
               </p>
 
               <div
