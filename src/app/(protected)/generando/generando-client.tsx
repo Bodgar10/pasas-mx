@@ -54,37 +54,40 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
 
   async function generatePlan() {
     try {
-      updateStep('generating', 'active', `Tema 1 de ${weakTopicIds.length} — ${weakTopicNames[0] ?? ''}`)
-      setCurrentTopic(0)
+      for (let i = 0; i < weakTopicIds.length; i++) {
+        const topicId = weakTopicIds[i]
+        const topicName = weakTopicNames[i] ?? `Tema ${i + 1}`
 
-      const res = await fetch('/api/personalized/generate-plan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId,
-          subjectId: subject.id,
-          themeId: theme.id,
-          weakTopicIds,
-        }),
-      })
+        updateStep('generating', 'active', `Tema ${i + 1} de ${weakTopicIds.length} — ${topicName}`)
+        setCurrentTopic(i)
 
-      if (!res.ok) {
-        const data = await res.json()
-        throw new Error(data.error ?? 'Error al generar el plan')
+        const res = await fetch('/api/personalized/generate-plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId,
+            subjectId: subject.id,
+            themeId: theme.id,
+            weakTopicIds,
+            topicId,
+          }),
+        })
+
+        if (!res.ok) {
+          const data = await res.json()
+          throw new Error(data.error ?? `Error generando ${topicName}`)
+        }
       }
 
       updateStep('generating', 'done')
       updateStep('quiz', 'active', 'Guardando preguntas...')
-
-      await new Promise(r => setTimeout(r, 800))
+      await new Promise(r => setTimeout(r, 600))
 
       updateStep('quiz', 'done')
       updateStep('saving', 'active', 'Finalizando...')
-
-      await new Promise(r => setTimeout(r, 600))
+      await new Promise(r => setTimeout(r, 500))
 
       updateStep('saving', 'done')
-
       await new Promise(r => setTimeout(r, 800))
 
       router.push(`/guia/personalizado/${subject.slug}`)

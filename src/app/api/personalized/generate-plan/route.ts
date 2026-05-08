@@ -1,4 +1,4 @@
-export const maxDuration = 300
+export const maxDuration = 60
 
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
@@ -11,9 +11,9 @@ function getServiceClient() {
 }
 
 export async function POST(req: NextRequest) {
-  const { userId, subjectId, themeId, weakTopicIds } = await req.json()
+  const { userId, subjectId, themeId, weakTopicIds, topicId } = await req.json()
 
-  if (!userId || !subjectId || !themeId || !weakTopicIds?.length) {
+  if (!userId || !subjectId || !themeId || !weakTopicIds?.length || !topicId) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -42,10 +42,15 @@ export async function POST(req: NextRequest) {
 
   const educationContext = getEducationContext(userProfile.education_level, userProfile.grade)
   const client = new Anthropic()
+  const topicToGenerate = topics.find(t => t.id === weakTopicIds[0])
+  if (!topicToGenerate) {
+    return NextResponse.json({ error: 'Topic not found' }, { status: 400 })
+  }
+
+  const topic = topicToGenerate
   const results = []
 
-  for (const topic of topics) {
-    try {
+  try {
       const systemPrompt = `Eres un experto en educación mexicana y storytelling pedagógico.
 Tu tarea es generar contenido educativo inmersivo y EXTENSO para un alumno específico de ${educationContext} que necesita refuerzo en este tema.
 REGLA MÁS IMPORTANTE: La temática "${theme.name}" no es un adorno — es el MUNDO donde ocurre todo el contenido.
@@ -249,11 +254,10 @@ Genera este JSON con 8 secciones y 8 preguntas de quiz:
 
       console.log(`[generate-plan] Topic "${topic.name}" — sections: ${sectionsError?.message ?? 'OK'} | quiz: ${quizError?.message ?? 'OK'}`)
 
-    } catch (error) {
-      console.error(`[generate-plan] Error generating topic "${topic.name}":`, error)
-      results.push({ topicId: topic.id, topicName: topic.name, success: false, error: String(error) })
-    }
+  } catch (error) {
+    console.error(`[generate-plan] Error generating topic "${topic.name}":`, error)
+    return NextResponse.json({ topicId: topic.id, topicName: topic.name, success: false, error: String(error) }, { status: 500 })
   }
 
-  return NextResponse.json({ success: true, results })
+  return NextResponse.json({ success: true, topicId: topic.id, topicName: topic.name })
 }
