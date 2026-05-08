@@ -10,113 +10,54 @@ export default async function TopicPage({
   const { subject: subjectSlug, topic: topicSlug } = await params
   const supabase = await createClient()
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser()
 
-  const { data: subject } = await supabase
-    .from('subjects')
-    .select('*')
-    .eq('slug', subjectSlug)
-    .single()
+  const [{ data: subject }, { data: topicBySlug }] = await Promise.all([
+    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
+    supabase.from('topics').select('id').eq('slug', topicSlug).single(),
+  ])
 
-  if (!subject) return notFound()
+  if (!subject || !topicBySlug) return notFound()
 
-  const { data: topic } = await supabase
-    .from('topics')
-    .select('*')
-    .eq('slug', topicSlug)
-    .eq('subject_id', subject.id)
-    .single()
+  const [{ data: topic }, { data: userSubject }] = await Promise.all([
+    supabase.from('topics').select('*').eq('id', topicBySlug.id).eq('subject_id', subject.id).single(),
+    supabase.from('user_subjects').select('theme_id').eq('user_id', user?.id ?? '').eq('subject_id', subject.id).maybeSingle(),
+  ])
 
   if (!topic) return notFound()
 
-  // First get user's theme for this subject
-  const { data: userSubject } = await supabase
-    .from('user_subjects')
-    .select('theme_id')
-    .eq('user_id', user?.id ?? '')
-    .eq('subject_id', subject.id)
-    .single()
+  const [
+    { data: themedSections },
+    { data: quizQuestions },
+    { data: initialProgressData },
+    { data: readEvents },
+    { data: previousAnswers },
+  ] = await Promise.all([
+    userSubject?.theme_id
+      ? supabase.from('sections').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).is('user_id', null).order('display_order', { ascending: true })
+      : Promise.resolve({ data: [] }),
+    supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject?.theme_id ?? '').order('created_at', { ascending: true }),
+    user ? supabase.from('topic_progress').select('*').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
+    user ? supabase.from('progress').select('metadata').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'section_read') : Promise.resolve({ data: [] }),
+    user ? supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }) : Promise.resolve({ data: [] }),
+  ])
 
-  // Fetch sections for user's theme, fallback to base content
-  let sections = null
-
-  if (userSubject?.theme_id) {
-    const { data: themedSections } = await supabase
-      .from('sections')
-      .select('*')
-      .eq('topic_id', topic.id)
-      .eq('theme_id', userSubject.theme_id)
-      .is('user_id', null)
-      .order('display_order', { ascending: true })
-
-    sections = themedSections
-  }
-
-  // Fallback to base content if no themed sections exist
-  if (!sections || sections.length === 0) {
+  let sections = themedSections ?? []
+  if (sections.length === 0) {
     const { data: baseSections } = await supabase
-      .from('sections')
-      .select('*')
-      .eq('topic_id', topic.id)
-      .is('theme_id', null)
-      .is('user_id', null)
-      .order('display_order', { ascending: true })
-
-    sections = baseSections
+      .from('sections').select('*').eq('topic_id', topic.id).is('theme_id', null).is('user_id', null).order('display_order', { ascending: true })
+    sections = baseSections ?? []
   }
 
-  const { data: quizQuestions } = await supabase
-    .from('quiz_questions')
-    .select('*')
-    .eq('topic_id', topic.id)
-    .eq('theme_id', userSubject?.theme_id)
-    .order('created_at', { ascending: true })
-
-  let initialProgress = null
-  let readSectionIds: string[] = []
-
-  if (user) {
-    const { data } = await supabase
-      .from('topic_progress')
-      .select('*')
-      .eq('user_id', user.id)
-      .eq('topic_id', topic.id)
-      .maybeSingle()
-    initialProgress = data
-
-    const { data: readEvents } = await supabase
-      .from('progress')
-      .select('metadata')
-      .eq('user_id', user.id)
-      .eq('topic_id', topic.id)
-      .eq('event_type', 'section_read')
-
-    readSectionIds = (readEvents ?? [])
-      .map((e) => e.metadata?.section_id)
-      .filter(Boolean) as string[]
-
-    // Fetch previous quiz answers for this topic (most recent attempt)
-  }
+  const readSectionIds = (readEvents ?? []).map((e) => e.metadata?.section_id).filter(Boolean) as string[]
 
   let initialAnswers: Record<string, string> = {}
-  if (user && quizQuestions && quizQuestions.length > 0) {
-    const { data: previousAnswers } = await supabase
-      .from('progress')
-      .select('question_id, metadata, attempt')
-      .eq('user_id', user.id)
-      .eq('topic_id', topic.id)
-      .eq('event_type', 'quiz_answered')
-      .order('attempt', { ascending: false })
-
-    if (previousAnswers && previousAnswers.length > 0) {
-      const maxAttempt = previousAnswers[0].attempt
-      const latestAnswers = previousAnswers.filter((a) => a.attempt === maxAttempt)
-      for (const row of latestAnswers) {
-        if (row.question_id && row.metadata?.selected_answer) {
-          initialAnswers[row.question_id] = row.metadata.selected_answer
-        }
+  if (previousAnswers && previousAnswers.length > 0) {
+    const maxAttempt = previousAnswers[0].attempt
+    const latestAnswers = previousAnswers.filter((a) => a.attempt === maxAttempt)
+    for (const row of latestAnswers) {
+      if (row.question_id && row.metadata?.selected_answer) {
+        initialAnswers[row.question_id] = row.metadata.selected_answer
       }
     }
   }
@@ -124,16 +65,10 @@ export default async function TopicPage({
   return (
     <TopicClient
       subject={{ id: subject.id, name: subject.name, slug: subject.slug }}
-      topic={{
-        id: topic.id,
-        name: topic.name,
-        slug: topic.slug,
-        difficulty: topic.difficulty,
-        xp_reward: topic.xp_reward,
-      }}
-      sections={sections ?? []}
+      topic={{ id: topic.id, name: topic.name, slug: topic.slug, difficulty: topic.difficulty, xp_reward: topic.xp_reward }}
+      sections={sections}
       quizQuestions={quizQuestions ?? []}
-      initialProgress={initialProgress}
+      initialProgress={initialProgressData ?? null}
       readSectionIds={readSectionIds}
       initialAnswers={initialAnswers}
     />

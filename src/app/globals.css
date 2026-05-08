@@ -10,3 +10,16 @@ body {
   color: #e2d9f3;
   font-family: var(--font-nunito), sans-serif;
 }
+
+button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active, [role="button"]:active {
+  transform: scale(0.96);
+  transition: transform 0.08s ease;
+}
+
+button {
+  transition: transform 0.08s ease, opacity 0.08s ease;
+}
