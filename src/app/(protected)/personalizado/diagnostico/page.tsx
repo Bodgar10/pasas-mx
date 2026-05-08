@@ -20,6 +20,7 @@ function DiagnosticoContent() {
   const router = useRouter()
   const level = searchParams.get('level') ?? ''
   const grade = searchParams.get('grade')
+  const gradeNumber = grade ? (parseInt(grade.replace(/[°º]/g, '').trim(), 10) || null) : null
   const theme = searchParams.get('theme') ?? ''
   const subject = searchParams.get('subject') ?? ''
   const subjectId = searchParams.get('subjectId') ?? ''
@@ -64,13 +65,13 @@ function DiagnosticoContent() {
   }, [subject, theme])
 
   async function loadQuizQuestions() {
-    if (!subjectId || !grade) return
+    if (!subjectId || !gradeNumber) return
     setLoadingQuiz(true)
     const { data, error } = await supabase
       .from('diagnostic_questions')
       .select('id, topic_id, topic_name, question, options, correct_answer, explanation, display_order')
       .eq('subject_id', subjectId)
-      .eq('grade', Number(grade))
+      .eq('grade', gradeNumber)
       .order('display_order', { ascending: true })
     setLoadingQuiz(false)
     if (error || !data || data.length === 0) {
