@@ -35,6 +35,7 @@ interface Props {
   initialProgress: TopicProgress | null
   readSectionIds: string[]
   initialAnswers: Record<string, string>
+  isPersonalized?: boolean
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -129,6 +130,7 @@ export default function TopicClient({
   initialProgress,
   readSectionIds,
   initialAnswers,
+  isPersonalized = false,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
@@ -367,7 +369,7 @@ export default function TopicClient({
       >
         <button
           type="button"
-          onClick={() => router.push(`/guia/${subject.slug}`)}
+          onClick={() => router.push(isPersonalized ? `/guia/personalizado/${subject.slug}` : `/guia/${subject.slug}`)}
           style={{
             width: 36,
             height: 36,
@@ -1009,7 +1011,7 @@ export default function TopicClient({
           </div>
           <button
             type="button"
-            onClick={() => router.push(`/guia/${subject.slug}`)}
+            onClick={() => router.push(isPersonalized ? `/guia/personalizado/${subject.slug}` : `/guia/${subject.slug}`)}
             style={{
               width: '100%',
               minHeight: 52,

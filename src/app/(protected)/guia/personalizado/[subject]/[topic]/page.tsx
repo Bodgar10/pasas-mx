@@ -122,6 +122,7 @@ export default async function PersonalizedTopicPage({
       initialProgress={initialProgressData}
       readSectionIds={readSectionIds}
       initialAnswers={initialAnswers}
+      isPersonalized={true}
     />
   )
 }

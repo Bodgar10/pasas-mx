@@ -70,7 +70,7 @@ export default function PersonalizedSubjectClient({
       <div style={{
         position: 'sticky', top: 0, background: '#0f0a1e',
         borderBottom: '1px solid rgba(124,58,237,0.15)',
-        padding: isDesktop ? '20px 0 16px' : '18px 16px 14px',
+        padding: isDesktop ? '20px 32px 16px' : '18px 16px 14px',
         display: 'flex', alignItems: 'center', gap: 10, zIndex: 10,
       }}>
         <button
