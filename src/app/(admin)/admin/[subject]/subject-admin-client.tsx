@@ -82,6 +82,9 @@ export default function SubjectAdminClient({
   const [loadingEditEmoji, setLoadingEditEmoji] = useState(false)
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
   const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [generatingDiagnostic, setGeneratingDiagnostic] = useState(false)
+  const [diagnosticError, setDiagnosticError] = useState<string | null>(null)
+  const [diagnosticSuccess, setDiagnosticSuccess] = useState<string | null>(null)
 
   async function suggestEditEmoji(name: string) {
     if (!name.trim()) return
@@ -143,6 +146,34 @@ export default function SubjectAdminClient({
     }
     setEditingTopic(null)
     router.refresh()
+  }
+
+  async function handleGenerateDiagnostic() {
+    setGeneratingDiagnostic(true)
+    setDiagnosticError(null)
+    setDiagnosticSuccess(null)
+    try {
+      const res = await fetch('/api/admin/generate-diagnostic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subjectId: subject.id,
+          subjectName: subject.name,
+          grade,
+          level,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok || data.error) {
+        setDiagnosticError(data.error ?? 'Error al generar el quiz diagnóstico')
+        return
+      }
+      setDiagnosticSuccess(`✓ Quiz diagnóstico creado — ${data.count} preguntas guardadas (1 por topic publicado)`)
+    } catch (err) {
+      setDiagnosticError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
+    } finally {
+      setGeneratingDiagnostic(false)
+    }
   }
 
   async function handleDeleteTopic(id: string) {
@@ -400,6 +431,84 @@ export default function SubjectAdminClient({
           </div>
         ))
       )}
+
+      {/* Diagnostic quiz button */}
+      <div style={{ marginTop: 24, marginBottom: 8 }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: 10,
+        }}>
+          <div>
+            <div style={{
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#a78bfa',
+              textTransform: 'uppercase' as const,
+              letterSpacing: 1,
+              marginBottom: 2,
+            }}>
+              Quiz diagnóstico
+            </div>
+            <div style={{ fontSize: 13, color: '#6b5fa0' }}>
+              1 pregunta por topic · dificultad media · para diagnóstico pre-pago
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={handleGenerateDiagnostic}
+            disabled={generatingDiagnostic || topics.filter(t => t.published).length === 0}
+            style={{
+              background: generatingDiagnostic ? 'rgba(124,58,237,0.3)' : 'linear-gradient(135deg, #7c3aed, #ec4899)',
+              color: 'white',
+              border: 'none',
+              borderRadius: 12,
+              padding: '10px 20px',
+              fontSize: 14,
+              fontWeight: 800,
+              cursor: (generatingDiagnostic || topics.filter(t => t.published).length === 0) ? 'not-allowed' : 'pointer',
+              fontFamily: 'var(--font-nunito)',
+              whiteSpace: 'nowrap' as const,
+              opacity: topics.filter(t => t.published).length === 0 ? 0.4 : 1,
+            }}
+          >
+            {generatingDiagnostic
+              ? '⏳ Generando...'
+              : `🎯 Crear quiz diagnóstico (${topics.filter(t => t.published).length} topics)`}
+          </button>
+        </div>
+
+        {diagnosticError && (
+          <div style={{
+            padding: '10px 14px',
+            background: 'rgba(239,68,68,0.1)',
+            border: '1px solid rgba(239,68,68,0.3)',
+            borderRadius: 10,
+            color: '#fca5a5',
+            fontSize: 13,
+            fontWeight: 600,
+            marginBottom: 8,
+          }}>
+            {diagnosticError}
+          </div>
+        )}
+
+        {diagnosticSuccess && (
+          <div style={{
+            padding: '10px 14px',
+            background: 'rgba(16,185,129,0.1)',
+            border: '1px solid rgba(16,185,129,0.3)',
+            borderRadius: 10,
+            color: '#10b981',
+            fontSize: 13,
+            fontWeight: 600,
+            marginBottom: 8,
+          }}>
+            {diagnosticSuccess}
+          </div>
+        )}
+      </div>
 
       {/* Add topic button */}
       <button

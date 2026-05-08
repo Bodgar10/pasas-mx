@@ -84,6 +84,14 @@ function MateriaContent() {
       return
     }
 
+    // Look up the subject UUID so the diagnostic quiz can query by subject_id
+    const { data: subjectRow } = await supabase
+      .from('subjects')
+      .select('id')
+      .ilike('name', subject)
+      .maybeSingle()
+    if (subjectRow?.id) params.set('subjectId', subjectRow.id)
+
     router.push(`/personalizado/diagnostico?${params.toString()}`)
   }
 
