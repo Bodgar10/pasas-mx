@@ -85,6 +85,17 @@ export default function SubjectAdminClient({
   const [generatingDiagnostic, setGeneratingDiagnostic] = useState(false)
   const [diagnosticError, setDiagnosticError] = useState<string | null>(null)
   const [diagnosticSuccess, setDiagnosticSuccess] = useState<string | null>(null)
+  const [showDiagnosticQuestions, setShowDiagnosticQuestions] = useState(false)
+  const [diagnosticQuestions, setDiagnosticQuestions] = useState<Array<{
+    id: string
+    topic_name: string
+    question: string
+    options: { letter: string; text: string }[]
+    correct_answer: string
+    explanation: string
+    display_order: number
+  }>>([])
+  const [loadingDiagnosticQuestions, setLoadingDiagnosticQuestions] = useState(false)
 
   async function suggestEditEmoji(name: string) {
     if (!name.trim()) return
@@ -174,6 +185,21 @@ export default function SubjectAdminClient({
     } finally {
       setGeneratingDiagnostic(false)
     }
+  }
+
+  async function handleViewDiagnosticQuestions() {
+    setLoadingDiagnosticQuestions(true)
+    setShowDiagnosticQuestions(true)
+    const supabase = createClient()
+    const { data, error } = await supabase
+      .from('diagnostic_questions')
+      .select('id, topic_name, question, options, correct_answer, explanation, display_order')
+      .eq('subject_id', subject.id)
+      .eq('grade', grade)
+      .order('display_order', { ascending: true })
+    setLoadingDiagnosticQuestions(false)
+    if (error || !data) return
+    setDiagnosticQuestions(data)
   }
 
   async function handleDeleteTopic(id: string) {
@@ -455,28 +481,48 @@ export default function SubjectAdminClient({
               1 pregunta por topic · dificultad media · para diagnóstico pre-pago
             </div>
           </div>
-          <button
-            type="button"
-            onClick={handleGenerateDiagnostic}
-            disabled={generatingDiagnostic || topics.filter(t => t.published).length === 0}
-            style={{
-              background: generatingDiagnostic ? 'rgba(124,58,237,0.3)' : 'linear-gradient(135deg, #7c3aed, #ec4899)',
-              color: 'white',
-              border: 'none',
-              borderRadius: 12,
-              padding: '10px 20px',
-              fontSize: 14,
-              fontWeight: 800,
-              cursor: (generatingDiagnostic || topics.filter(t => t.published).length === 0) ? 'not-allowed' : 'pointer',
-              fontFamily: 'var(--font-nunito)',
-              whiteSpace: 'nowrap' as const,
-              opacity: topics.filter(t => t.published).length === 0 ? 0.4 : 1,
-            }}
-          >
-            {generatingDiagnostic
-              ? '⏳ Generando...'
-              : `🎯 Crear quiz diagnóstico (${topics.filter(t => t.published).length} topics)`}
-          </button>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button
+              type="button"
+              onClick={handleViewDiagnosticQuestions}
+              style={{
+                background: 'rgba(6,182,212,0.1)',
+                color: '#06b6d4',
+                border: '1px solid rgba(6,182,212,0.3)',
+                borderRadius: 12,
+                padding: '10px 16px',
+                fontSize: 14,
+                fontWeight: 800,
+                cursor: 'pointer',
+                fontFamily: 'var(--font-nunito)',
+                whiteSpace: 'nowrap' as const,
+              }}
+            >
+              👁 Ver preguntas
+            </button>
+            <button
+              type="button"
+              onClick={handleGenerateDiagnostic}
+              disabled={generatingDiagnostic || topics.filter(t => t.published).length === 0}
+              style={{
+                background: generatingDiagnostic ? 'rgba(124,58,237,0.3)' : 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                color: 'white',
+                border: 'none',
+                borderRadius: 12,
+                padding: '10px 20px',
+                fontSize: 14,
+                fontWeight: 800,
+                cursor: (generatingDiagnostic || topics.filter(t => t.published).length === 0) ? 'not-allowed' : 'pointer',
+                fontFamily: 'var(--font-nunito)',
+                whiteSpace: 'nowrap' as const,
+                opacity: topics.filter(t => t.published).length === 0 ? 0.4 : 1,
+              }}
+            >
+              {generatingDiagnostic
+                ? '⏳ Generando...'
+                : `🎯 Crear quiz diagnóstico (${topics.filter(t => t.published).length} topics)`}
+            </button>
+          </div>
         </div>
 
         {diagnosticError && (
@@ -846,6 +892,98 @@ export default function SubjectAdminClient({
                 {savingEdit ? 'Guardando...' : 'Guardar cambios'}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Diagnostic questions modal */}
+      {showDiagnosticQuestions && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 100,
+          background: 'rgba(15,10,30,0.92)',
+          display: 'flex', alignItems: 'flex-start',
+          justifyContent: 'center', padding: '32px 16px',
+          overflowY: 'auto',
+        }}>
+          <div style={{
+            background: '#1a1035',
+            border: '1px solid rgba(124,58,237,0.3)',
+            borderRadius: 20, padding: 24,
+            width: '100%', maxWidth: 640,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <div>
+                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#e2d9f3' }}>
+                  🎯 Quiz diagnóstico — {subject.name} {grade}°
+                </div>
+                <div style={{ fontSize: 13, color: '#a78bfa', marginTop: 4 }}>
+                  {diagnosticQuestions.length} preguntas generadas
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowDiagnosticQuestions(false)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048',
+                  color: '#a78bfa', borderRadius: 10, padding: '8px 14px',
+                  fontSize: 14, fontWeight: 800, cursor: 'pointer',
+                  fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                Cerrar
+              </button>
+            </div>
+
+            {loadingDiagnosticQuestions ? (
+              <div style={{ textAlign: 'center', padding: '32px 0', color: '#a78bfa', fontSize: 15 }}>
+                Cargando preguntas...
+              </div>
+            ) : diagnosticQuestions.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: '32px 0', color: '#a78bfa', fontSize: 15 }}>
+                No hay preguntas generadas aún. Usa el botón "Crear quiz diagnóstico".
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                {diagnosticQuestions.map((q, index) => (
+                  <div key={q.id} style={{
+                    background: '#1e1040',
+                    border: '1px solid rgba(124,58,237,0.2)',
+                    borderRadius: 14,
+                    padding: 16,
+                  }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#7c3aed', textTransform: 'uppercase' as const, letterSpacing: 1, marginBottom: 6 }}>
+                      {index + 1}. {q.topic_name}
+                    </div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: '#e2d9f3', marginBottom: 12, lineHeight: 1.5 }}>
+                      {q.question}
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 10 }}>
+                      {q.options.map((opt) => (
+                        <div key={opt.letter} style={{
+                          padding: '8px 12px',
+                          borderRadius: 8,
+                          fontSize: 14,
+                          fontWeight: 600,
+                          background: opt.letter === q.correct_answer ? 'rgba(16,185,129,0.1)' : 'rgba(255,255,255,0.03)',
+                          border: opt.letter === q.correct_answer ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(124,58,237,0.1)',
+                          color: opt.letter === q.correct_answer ? '#10b981' : '#a78bfa',
+                        }}>
+                          <strong style={{ fontWeight: 800 }}>{opt.letter}.</strong> {opt.text}
+                          {opt.letter === q.correct_answer && <span style={{ marginLeft: 8, fontSize: 12 }}>✓ correcta</span>}
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{
+                      padding: '8px 12px', borderRadius: 8, fontSize: 13,
+                      background: 'rgba(167,139,250,0.06)', border: '1px solid rgba(167,139,250,0.15)',
+                      color: '#a78bfa', lineHeight: 1.5,
+                    }}>
+                      💡 {q.explanation}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}
