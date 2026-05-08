@@ -72,6 +72,8 @@ ${topicsList}
 
 Para cada tema genera UNA pregunta de dificultad media que evalúe si el alumno comprende el concepto principal.
 
+REGLA CRÍTICA SOBRE correct_answer: La respuesta correcta DEBE variar entre A, B, C y D de forma distribuida a lo largo de todas las preguntas. NUNCA pongas la misma letra como correcta más de 2 veces seguidas. El ejemplo de abajo usa "B" — no copies esa letra para todas las preguntas.
+
 Responde con este JSON exacto:
 {
   "questions": [
@@ -79,19 +81,19 @@ Responde con este JSON exacto:
       "topic_index": 0,
       "question": "pregunta clara y directa sobre el concepto principal del tema",
       "options": [
-        { "letter": "A", "text": "opción correcta" },
-        { "letter": "B", "text": "distractor plausible — error típico" },
+        { "letter": "A", "text": "distractor plausible — error típico" },
+        { "letter": "B", "text": "respuesta correcta aquí" },
         { "letter": "C", "text": "distractor plausible — confusión común" },
         { "letter": "D", "text": "distractor plausible — error de concepto" }
       ],
-      "correct_answer": "A",
-      "explanation": "Por qué A es correcta y cuál es el error conceptual de las otras opciones. Máximo 60 palabras."
+      "correct_answer": "B",
+      "explanation": "Por qué B es correcta y cuál es el error conceptual de las otras opciones. Máximo 60 palabras."
     }
   ]
 }
 
 Genera exactamente ${topics.length} objetos en el array "questions", uno por cada tema en el orden dado.
-La respuesta correcta debe variar entre A, B, C y D — no siempre la misma letra.`
+Distribuye las respuestas correctas: aproximadamente 25% A, 25% B, 25% C, 25% D a lo largo de todas las preguntas.`
 
   try {
     const message = await client.messages.create({
