@@ -45,8 +45,9 @@ export default async function GenerandoPage() {
 
   const generatedTopicIds = new Set((existingSections.data ?? []).map(s => s.topic_id))
   const alreadyGenerated = weakTopicIds.every(id => generatedTopicIds.has(id))
+  const hasAnySections = (existingSections.data ?? []).length > 0
 
-  if (alreadyGenerated && weakTopicIds.length > 0) {
+  if ((alreadyGenerated || hasAnySections) && weakTopicIds.length > 0) {
     redirect(`/guia/personalizado/${subject.slug}`)
   }
 

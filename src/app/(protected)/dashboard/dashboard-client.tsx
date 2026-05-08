@@ -589,145 +589,140 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
             {/* Subjects grid */}
             <div style={{ marginBottom: 16 }}>
-              <p
-                style={{
-                  fontSize: 13,
-                  color: '#a78bfa',
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  margin: '0 0 12px',
-                }}
-              >
-                {isPersonalized && subscriptionStatus === 'active' ? 'Materias del sistema' : subscriptionStatus === 'active' ? 'Mis materias' : 'Materias disponibles'}
+              <p style={{
+                fontSize: 13, color: '#a78bfa', fontWeight: 700,
+                letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 12px',
+              }}>
+                {isPersonalized && subscriptionStatus === 'active' ? 'Mi materia personalizada' : subscriptionStatus === 'active' ? 'Mis materias' : 'Materias disponibles'}
               </p>
 
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: 12,
-                }}
-              >
-                {subjects.map((subject) => {
-                  const meta = SUBJECT_ICONS[subject.slug] ?? DEFAULT_SUBJECT
-                  const userSub = userSubjects.find((us) => us.subject_id === subject.id)
-                  const subXp = userSub?.xp ?? 0
-                  const subProgress = Math.min((subXp % 500) / 500, 1)
-                  const isLocked = subscriptionStatus !== 'active'
-                  const isExpiredCard = subscriptionStatus === 'expired' && subXp > 0
-
-                  return (
-                    <div
-                      key={subject.slug}
-                      onClick={() => {
-                        if (!isLocked) router.push(`/guia/${subject.slug}`)
-                      }}
-                      style={{
-                        position: 'relative',
-                        backgroundColor: '#1a1035',
-                        borderRadius: 20,
-                        padding: 16,
-                        cursor: isLocked ? 'default' : 'pointer',
-                        opacity: isLocked ? 0.45 : 1,
-                        filter: isExpiredCard ? 'grayscale(0.6)' : 'none',
-                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                        overflow: 'hidden',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isLocked) {
+              {isPersonalized && subscriptionStatus === 'active' ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  {userSubjects.map((us) => {
+                    const subj = subjects.find(s => s.id === us.subject_id)
+                    if (!subj) return null
+                    const meta = SUBJECT_ICONS[subj.slug] ?? DEFAULT_SUBJECT
+                    const subXp = us.xp ?? 0
+                    const subProgress = Math.min((subXp % 500) / 500, 1)
+                    return (
+                      <div
+                        key={subj.slug}
+                        onClick={() => router.push(`/guia/personalizado/${subj.slug}`)}
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(124,58,237,0.12), rgba(236,72,153,0.08))',
+                          border: '1.5px solid rgba(124,58,237,0.3)',
+                          borderRadius: 20, padding: 16, cursor: 'pointer',
+                          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                        }}
+                        onMouseEnter={e => {
                           const el = e.currentTarget as HTMLDivElement
                           el.style.transform = 'translateY(-2px)'
-                          el.style.boxShadow = `0 8px 24px ${meta.color}44`
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!isLocked) {
+                          el.style.boxShadow = '0 8px 24px rgba(124,58,237,0.25)'
+                        }}
+                        onMouseLeave={e => {
                           const el = e.currentTarget as HTMLDivElement
                           el.style.transform = 'translateY(0)'
                           el.style.boxShadow = 'none'
-                        }
-                      }}
-                    >
-                      {/* Lock icon */}
-                      {isLocked && (
-                        <div
-                          style={{
-                            position: 'absolute',
-                            top: 8,
-                            right: 8,
-                            fontSize: 16,
-                            zIndex: 1,
-                          }}
-                        >
-                          🔒
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                          <div style={{
+                            width: 40, height: 40, borderRadius: 12,
+                            background: 'rgba(124,58,237,0.15)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontSize: 20, fontWeight: 900, color: meta.color,
+                            fontFamily: meta.icon.length <= 2 ? 'var(--font-orbitron)' : undefined,
+                          }}>
+                            {meta.icon}
+                          </div>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: 17, fontWeight: 800, color: '#e2d9f3', marginBottom: 2 }}>
+                              {subj.name}
+                            </div>
+                            <div style={{ fontSize: 13, color: '#ec4899', fontWeight: 700 }}>
+                              ✨ Plan personalizado
+                            </div>
+                          </div>
+                          <div style={{ fontSize: 13, color: '#a78bfa' }}>→</div>
                         </div>
-                      )}
-
-                      {/* Subject icon */}
-                      <div
-                        style={{
-                          width: 32,
-                          height: 32,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: 18,
-                          fontWeight: 900,
-                          color: meta.color,
-                          marginBottom: 10,
-                          fontFamily: meta.icon.length <= 2 ? 'var(--font-orbitron)' : undefined,
-                        }}
-                      >
-                        {meta.icon}
-                      </div>
-
-                      {/* Subject name */}
-                      <p
-                        style={{
-                          fontSize: 17,
-                          fontWeight: 800,
-                          color: '#e2d9f3',
-                          margin: '0 0 3px',
-                        }}
-                      >
-                        {subject.name}
-                      </p>
-
-                      {/* XP label */}
-                      <p
-                        style={{
-                          fontSize: 14,
-                          color: '#a78bfa',
-                          margin: '0 0 10px',
-                        }}
-                      >
-                        {subXp > 0 ? `${subXp} XP` : 'Sin progreso'}
-                      </p>
-
-                      {/* Progress bar */}
-                      <div
-                        style={{
-                          width: '100%',
-                          height: 4,
-                          backgroundColor: '#2D2048',
-                          borderRadius: 99,
-                          overflow: 'hidden',
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: `${subProgress * 100}%`,
-                            height: '100%',
-                            backgroundColor: meta.color,
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                          <span style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600 }}>Progreso</span>
+                          <span style={{ fontSize: 12, color: '#fbbf24', fontWeight: 800 }}>{subXp} XP</span>
+                        </div>
+                        <div style={{ width: '100%', height: 4, background: '#2D2048', borderRadius: 99, overflow: 'hidden' }}>
+                          <div style={{
+                            width: `${subProgress * 100}%`, height: '100%',
+                            background: 'linear-gradient(90deg, #7c3aed, #ec4899)',
                             borderRadius: 99,
-                          }}
-                        />
+                          }} />
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
-              </div>
+                    )
+                  })}
+                </div>
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
+                  {subjects.map((subject) => {
+                    const meta = SUBJECT_ICONS[subject.slug] ?? DEFAULT_SUBJECT
+                    const userSub = userSubjects.find((us) => us.subject_id === subject.id)
+                    const subXp = userSub?.xp ?? 0
+                    const subProgress = Math.min((subXp % 500) / 500, 1)
+                    const isLocked = subscriptionStatus !== 'active'
+                    const isExpiredCard = subscriptionStatus === 'expired' && subXp > 0
+                    return (
+                      <div
+                        key={subject.slug}
+                        onClick={() => { if (!isLocked) router.push(`/guia/${subject.slug}`) }}
+                        style={{
+                          position: 'relative', backgroundColor: '#1a1035', borderRadius: 20,
+                          padding: 16, cursor: isLocked ? 'default' : 'pointer',
+                          opacity: isLocked ? 0.45 : 1,
+                          filter: isExpiredCard ? 'grayscale(0.6)' : 'none',
+                          transition: 'transform 0.2s ease, box-shadow 0.2s ease', overflow: 'hidden',
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!isLocked) {
+                            const el = e.currentTarget as HTMLDivElement
+                            el.style.transform = 'translateY(-2px)'
+                            el.style.boxShadow = `0 8px 24px ${meta.color}44`
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!isLocked) {
+                            const el = e.currentTarget as HTMLDivElement
+                            el.style.transform = 'translateY(0)'
+                            el.style.boxShadow = 'none'
+                          }
+                        }}
+                      >
+                        {isLocked && (
+                          <div style={{ position: 'absolute', top: 8, right: 8, fontSize: 16, zIndex: 1 }}>🔒</div>
+                        )}
+                        <div style={{
+                          width: 32, height: 32, display: 'flex', alignItems: 'center',
+                          justifyContent: 'center', fontSize: 18, fontWeight: 900,
+                          color: meta.color, marginBottom: 10,
+                          fontFamily: meta.icon.length <= 2 ? 'var(--font-orbitron)' : undefined,
+                        }}>
+                          {meta.icon}
+                        </div>
+                        <p style={{ fontSize: 17, fontWeight: 800, color: '#e2d9f3', margin: '0 0 3px' }}>
+                          {subject.name}
+                        </p>
+                        <p style={{ fontSize: 14, color: '#a78bfa', margin: '0 0 10px' }}>
+                          {subXp > 0 ? `${subXp} XP` : 'Sin progreso'}
+                        </p>
+                        <div style={{ width: '100%', height: 4, backgroundColor: '#2D2048', borderRadius: 99, overflow: 'hidden' }}>
+                          <div style={{
+                            width: `${subProgress * 100}%`, height: '100%',
+                            backgroundColor: meta.color, borderRadius: 99,
+                          }} />
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
