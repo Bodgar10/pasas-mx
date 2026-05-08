@@ -71,10 +71,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Faltan datos requeridos' }, { status: 400 })
     }
 
+    let diagnosticoText = diagnostico
+    try {
+      const parsed = JSON.parse(diagnostico)
+      if (parsed.weak !== undefined) {
+        const weakList = parsed.weak.length > 0 ? parsed.weak.join(', ') : 'ninguno'
+        const strongList = parsed.strong.length > 0 ? parsed.strong.join(', ') : 'ninguno'
+        diagnosticoText = `El alumno respondió un quiz diagnóstico de ${parsed.total} preguntas. Temas donde necesita ayuda: ${weakList}. Temas que domina: ${strongList}.`
+      }
+    } catch {
+      // diagnostico is plain text, use as-is
+    }
+
     const userMessage = `Nivel educativo: ${level}
 Hobby/interés: ${theme}
 Materia: ${subject}
-Diagnóstico del estudiante: ${diagnostico}`
+Diagnóstico del estudiante: ${diagnosticoText}`
 
     const callAnthropic = async (retries = 1) => {
       try {
