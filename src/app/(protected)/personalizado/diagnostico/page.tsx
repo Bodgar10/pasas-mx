@@ -24,6 +24,7 @@ function DiagnosticoContent() {
   const theme = searchParams.get('theme') ?? ''
   const subject = searchParams.get('subject') ?? ''
   const subjectId = searchParams.get('subjectId') ?? ''
+  const themeParam = searchParams.get('theme') ?? ''
 
   const supabase = createClient()
 
@@ -130,6 +131,16 @@ function DiagnosticoContent() {
     const isNewDay = !existing || existing.last_reset !== today
     const newCount = isNewDay ? 1 : (existing.daily_count + 1)
 
+    let themeId: string | null = null
+    if (subjectId && path === 'quiz') {
+      const { data: themeRow } = await supabase
+        .from('themes')
+        .select('id')
+        .eq('name', themeParam)
+        .maybeSingle()
+      themeId = themeRow?.id ?? null
+    }
+
     await Promise.all([
       supabase
         .from('preview_cache')
@@ -144,12 +155,13 @@ function DiagnosticoContent() {
           updated_at: new Date().toISOString(),
         }, { onConflict: 'user_id,subject,theme' }),
 
-      subjectId && path === 'quiz'
+      subjectId && path === 'quiz' && themeId
         ? supabase
             .from('user_subjects')
             .upsert({
               user_id: user.id,
               subject_id: subjectId,
+              theme_id: themeId,
               initial_description: diagnostico,
               diagnostic_type: 'quiz',
               plan_type: 'ai_personalized',
