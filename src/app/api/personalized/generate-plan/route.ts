@@ -60,64 +60,46 @@ Este es un plan PERSONALIZADO — el contenido debe ser más extenso, profundo y
 Adapta vocabulario y complejidad a ${educationContext}.
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
 
-      const userPrompt = `Genera contenido educativo PERSONALIZADO y EXTENSO para:
+      const userPrompt = `Genera contenido educativo PERSONALIZADO para:
 - Tema: "${topic.name}"
 - Materia: "${subject.name}"
 - Nivel: ${educationContext}
 - Temática: "${theme.name}"
-- Este alumno FALLÓ en este tema en el diagnóstico — necesita explicación clara y múltiples ejemplos
+- Este alumno FALLÓ en este tema en el diagnóstico — necesita explicación clara y ejemplos concretos
 
-Genera este JSON con 8 secciones y 8 preguntas de quiz:
+Genera este JSON con 5 secciones y 5 preguntas de quiz:
 
 {
   "sections": [
     {
       "type": "analogy",
       "title": "título con referencia específica de ${theme.name}",
-      "content": "Situación concreta y detallada de ${theme.name}. Mínimo 120 palabras. El concepto emerge naturalmente de la situación.",
+      "content": "Situación concreta de ${theme.name}. El concepto emerge naturalmente de la situación. Máximo 100 palabras.",
       "display_order": 1
     },
     {
       "type": "explanation",
       "title": "título que conecte la situación con el concepto formal",
-      "content": "Arranca con la situación anterior. Explica el concepto formal con **negritas**. Máximo 120 palabras.",
+      "content": "Explica el concepto formal con **negritas** en lo más crítico. Incluye fórmula o regla principal si aplica. Máximo 100 palabras.",
       "display_order": 2
     },
     {
       "type": "example",
-      "title": "Ejemplo resuelto 1 — situación de ${theme.name}",
-      "content": "Problema nuevo dentro de ${theme.name}. Resuelto paso a paso con **pasos numerados**. Máximo 150 palabras.",
+      "title": "Ejemplo resuelto — situación de ${theme.name}",
+      "content": "Problema dentro de ${theme.name}. Resuelto paso a paso con **pasos numerados**. Máximo 120 palabras.",
       "display_order": 3
-    },
-    {
-      "type": "analogy",
-      "title": "Segunda analogía — situación diferente de ${theme.name}",
-      "content": "Nueva situación de ${theme.name} que refuerza el concepto desde otro ángulo. Mínimo 100 palabras.",
-      "display_order": 4
-    },
-    {
-      "type": "example",
-      "title": "Ejemplo resuelto 2 — caso más complejo",
-      "content": "Problema más complejo dentro de ${theme.name}. Resuelto paso a paso. Máximo 150 palabras.",
-      "display_order": 5
     },
     {
       "type": "key_fact",
       "title": "Lo que debes recordar",
-      "content": "Definición formal del concepto en 1-2 oraciones con **negritas** en lo más crítico. Incluye fórmula o regla principal si aplica.",
-      "display_order": 6
+      "content": "Definición formal en 1-2 oraciones con **negritas** en lo más crítico. Máximo 50 palabras.",
+      "display_order": 4
     },
     {
       "type": "tip",
       "title": "Tip para no fallar en el examen",
-      "content": "Truco práctico para recordar el concepto o evitar el error más común. Máximo 60 palabras.",
-      "display_order": 7
-    },
-    {
-      "type": "example",
-      "title": "Ejemplo resuelto 3 — practica tú mismo",
-      "content": "Problema planteado con datos de ${theme.name}. Muestra solo el primer paso y da la respuesta final para que el alumno intente resolverlo. Máximo 120 palabras.",
-      "display_order": 8
+      "content": "Truco práctico para recordar el concepto o evitar el error más común. Máximo 50 palabras.",
+      "display_order": 5
     }
   ],
   "quiz_questions": [
@@ -125,7 +107,7 @@ Genera este JSON con 8 secciones y 8 preguntas de quiz:
       "question": "pregunta básica sobre el concepto",
       "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
       "correct_answer": "B",
-      "explanation": "explicación clara. Máximo 60 palabras.",
+      "explanation": "explicación clara. Máximo 50 palabras.",
       "difficulty": 1,
       "xp_reward": 20
     },
@@ -133,55 +115,31 @@ Genera este JSON con 8 secciones y 8 preguntas de quiz:
       "question": "pregunta básica diferente",
       "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
       "correct_answer": "C",
-      "explanation": "explicación. Máximo 60 palabras.",
+      "explanation": "explicación. Máximo 50 palabras.",
       "difficulty": 1,
       "xp_reward": 20
     },
     {
-      "question": "pregunta media — aplica el concepto",
+      "question": "pregunta media — aplica el concepto en contexto de ${theme.name}",
       "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
       "correct_answer": "A",
-      "explanation": "explicación. Máximo 60 palabras.",
-      "difficulty": 2,
-      "xp_reward": 30
-    },
-    {
-      "question": "pregunta media — contexto de ${theme.name}",
-      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
-      "correct_answer": "D",
-      "explanation": "explicación. Máximo 60 palabras.",
+      "explanation": "explicación. Máximo 50 palabras.",
       "difficulty": 2,
       "xp_reward": 30
     },
     {
       "question": "pregunta media — variación del concepto",
       "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
-      "correct_answer": "B",
-      "explanation": "explicación. Máximo 60 palabras.",
+      "correct_answer": "D",
+      "explanation": "explicación. Máximo 50 palabras.",
       "difficulty": 2,
       "xp_reward": 30
     },
     {
-      "question": "pregunta difícil — razonamiento",
+      "question": "pregunta difícil — razonamiento o caso complejo de ${theme.name}",
       "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
       "correct_answer": "C",
-      "explanation": "explicación con distractores plausibles. Máximo 60 palabras.",
-      "difficulty": 3,
-      "xp_reward": 50
-    },
-    {
-      "question": "pregunta difícil — combina conceptos",
-      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
-      "correct_answer": "A",
-      "explanation": "explicación. Máximo 60 palabras.",
-      "difficulty": 3,
-      "xp_reward": 50
-    },
-    {
-      "question": "pregunta difícil — caso complejo de ${theme.name}",
-      "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}],
-      "correct_answer": "D",
-      "explanation": "explicación. Máximo 60 palabras.",
+      "explanation": "explicación con distractores plausibles. Máximo 50 palabras.",
       "difficulty": 3,
       "xp_reward": 50
     }
@@ -190,7 +148,7 @@ Genera este JSON con 8 secciones y 8 preguntas de quiz:
 
       const message = await client.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 6000,
+        max_tokens: 4000,
         system: systemPrompt,
         messages: [{ role: 'user', content: userPrompt }],
       })

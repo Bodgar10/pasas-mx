@@ -27,7 +27,7 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
   const [steps, setSteps] = useState<Step[]>([
     { id: 'analyzing', label: 'Analizando tu diagnóstico', sublabel: `${weakTopicIds.length} temas identificados`, status: 'done' },
     { id: 'generating', label: `Generando guías con ${theme.name}`, sublabel: 'Creando contenido personalizado...', status: 'active' },
-    { id: 'quiz', label: 'Creando quizzes personalizados', sublabel: '8 preguntas por tema', status: 'pending' },
+    { id: 'quiz', label: 'Creando quizzes personalizados', sublabel: '5 preguntas por tema', status: 'pending' },
     { id: 'saving', label: 'Guardando tu plan', sublabel: 'Listo para estudiar', status: 'pending' },
   ])
 
@@ -272,11 +272,11 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 16 }}>📚</span>
-              <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 600 }}>{weakTopicIds.length} temas · 8 secciones cada uno</span>
+              <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 600 }}>{weakTopicIds.length} temas · 5 secciones cada uno</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 16 }}>🎯</span>
-              <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 600 }}>{weakTopicIds.length * 8} preguntas de quiz personalizadas</span>
+              <span style={{ fontSize: 13, color: '#e2d9f3', fontWeight: 600 }}>{weakTopicIds.length * 5} preguntas de quiz personalizadas</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 16 }}>⚡</span>
