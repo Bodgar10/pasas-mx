@@ -39,7 +39,6 @@ function DiagnosticoContent() {
   const [quizStarted, setQuizStarted] = useState(false)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [quizCompleted, setQuizCompleted] = useState(false)
-  const [debugToast, setDebugToast] = useState<string | null>(null)
 
   const canProceed =
     (path === 'descripcion' && description.trim().length >= 10) ||
@@ -142,9 +141,7 @@ function DiagnosticoContent() {
       themeId = themeRow?.id ?? null
     }
 
-    setDebugToast(`path:${path} | subjectId:${subjectId ? subjectId.slice(0,8) : 'EMPTY'} | themeId:${themeId ? themeId.slice(0,8) : 'EMPTY'}`)
-
-    const [previewResult, userSubjectResult] = await Promise.all([
+    await Promise.all([
       supabase
         .from('preview_cache')
         .upsert({
@@ -172,11 +169,6 @@ function DiagnosticoContent() {
             }, { onConflict: 'user_id,subject_id' })
         : Promise.resolve(null),
     ])
-
-    const previewErr = previewResult?.error?.message ?? 'OK'
-    const upsertErr = userSubjectResult && 'error' in userSubjectResult ? (userSubjectResult.error?.message ?? 'OK') : 'skipped'
-    setDebugToast(`preview:${previewErr} | upsert:${upsertErr}`)
-    await new Promise(r => setTimeout(r, 3000))
 
     const params = new URLSearchParams({ level })
     if (grade) params.set('grade', grade)
@@ -494,17 +486,6 @@ function DiagnosticoContent() {
             >
               ← Regresar
             </button>
-          </div>
-        )}
-        {debugToast && (
-          <div style={{
-            position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
-            zIndex: 999, background: '#1a1035', border: '1.5px solid #7c3aed',
-            borderRadius: 12, padding: '12px 20px', fontSize: 13, fontWeight: 700,
-            color: '#e2d9f3', maxWidth: 360, textAlign: 'center',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
-          }}>
-            🔍 {debugToast}
           </div>
         )}
       </div>
