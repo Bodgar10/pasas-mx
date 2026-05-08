@@ -111,6 +111,46 @@ export async function POST(request: Request) {
         })
 
         console.log(`[webhooks/stripe] Subscription created for user ${userId}`)
+
+        // If ai_personalized plan, trigger content generation in background
+        if (planInfo.plan === 'ai_personalized') {
+          try {
+            const { data: userSubject } = await supabase
+              .from('user_subjects')
+              .select('subject_id, initial_description, theme_id')
+              .eq('user_id', userId)
+              .eq('plan_type', 'ai_personalized')
+              .order('purchased_at', { ascending: false })
+              .limit(1)
+              .maybeSingle()
+
+            if (userSubject?.subject_id && userSubject?.initial_description) {
+              let weakTopicIds: string[] = []
+              try {
+                const parsed = JSON.parse(userSubject.initial_description)
+                weakTopicIds = parsed.weak_topic_ids ?? []
+              } catch {}
+
+              if (weakTopicIds.length > 0) {
+                const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas-mx.vercel.app'
+                fetch(`${baseUrl}/api/personalized/generate-plan`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    userId,
+                    subjectId: userSubject.subject_id,
+                    themeId: userSubject.theme_id,
+                    weakTopicIds,
+                  }),
+                }).catch(err => console.error('[webhooks/stripe] generate-plan fetch error:', err))
+                console.log(`[webhooks/stripe] Triggered personalized plan generation for user ${userId}`)
+              }
+            }
+          } catch (err) {
+            console.error('[webhooks/stripe] Error triggering personalized plan:', err)
+          }
+        }
+
         break
       }
 
