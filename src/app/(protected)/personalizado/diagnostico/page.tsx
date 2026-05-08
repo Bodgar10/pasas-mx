@@ -92,13 +92,14 @@ function DiagnosticoContent() {
 
   function buildDiagnosticSummary(): string {
     if (quizQuestions.length === 0) return 'quiz'
-    const weak = quizQuestions
-      .filter(q => answers[q.id] !== q.correct_answer)
-      .map(q => q.topic_name)
-    const strong = quizQuestions
-      .filter(q => answers[q.id] === q.correct_answer)
-      .map(q => q.topic_name)
-    return JSON.stringify({ weak, strong, total: quizQuestions.length })
+    const weakQuestions = quizQuestions.filter(q => answers[q.id] !== q.correct_answer)
+    const strongQuestions = quizQuestions.filter(q => answers[q.id] === q.correct_answer)
+    return JSON.stringify({
+      weak: weakQuestions.map(q => q.topic_name),
+      weak_topic_ids: weakQuestions.map(q => q.topic_id),
+      strong: strongQuestions.map(q => q.topic_name),
+      total: quizQuestions.length,
+    })
   }
 
   function handleBack() {
@@ -129,23 +130,39 @@ function DiagnosticoContent() {
     const isNewDay = !existing || existing.last_reset !== today
     const newCount = isNewDay ? 1 : (existing.daily_count + 1)
 
-    await supabase
-      .from('preview_cache')
-      .upsert({
-        user_id: user.id,
-        subject,
-        theme,
-        diagnostico,
-        result_json: {},
-        daily_count: newCount,
-        last_reset: today,
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id,subject,theme' })
+    await Promise.all([
+      supabase
+        .from('preview_cache')
+        .upsert({
+          user_id: user.id,
+          subject,
+          theme,
+          diagnostico,
+          result_json: {},
+          daily_count: newCount,
+          last_reset: today,
+          updated_at: new Date().toISOString(),
+        }, { onConflict: 'user_id,subject,theme' }),
+
+      subjectId && path === 'quiz'
+        ? supabase
+            .from('user_subjects')
+            .upsert({
+              user_id: user.id,
+              subject_id: subjectId,
+              initial_description: diagnostico,
+              diagnostic_type: 'quiz',
+              plan_type: 'ai_personalized',
+              purchased_at: new Date().toISOString(),
+            }, { onConflict: 'user_id,subject_id' })
+        : Promise.resolve(),
+    ])
 
     const params = new URLSearchParams({ level })
     if (grade) params.set('grade', grade)
     params.set('theme', theme)
     params.set('subject', subject)
+    params.set('subjectId', subjectId)
     params.set('diagnostico', diagnostico)
     params.set('tipo', path)
     router.push(`/personalizado/preview-ia?${params.toString()}`)
