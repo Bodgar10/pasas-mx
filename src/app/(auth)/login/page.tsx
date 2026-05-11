@@ -4,6 +4,7 @@ import { useActionState, useState } from 'react'
 import Link from 'next/link'
 import { loginAction, type LoginState } from './actions'
 import { createClient } from '@/utils/supabase/client'
+import { trackLogin } from '@/components/posthog-events'
 
 function GoogleIcon() {
   return (
@@ -34,6 +35,7 @@ export default function LoginPage() {
 
   async function handleGoogleSignIn() {
     setGooglePending(true)
+    trackLogin('google')
     const supabase = createClient()
     await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -81,7 +83,7 @@ export default function LoginPage() {
       </div>
 
       {/* Form */}
-      <form action={formAction} className="space-y-4">
+      <form action={formAction} className="space-y-4" onSubmit={() => trackLogin('email')}>
         <div className="space-y-1">
           <label
             htmlFor="email"

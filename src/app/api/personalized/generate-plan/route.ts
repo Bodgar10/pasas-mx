@@ -213,8 +213,15 @@ Genera este JSON con 5 secciones y 5 preguntas de quiz:
       console.log(`[generate-plan] Topic "${topic.name}" — sections: ${sectionsError?.message ?? 'OK'} | quiz: ${quizError?.message ?? 'OK'}`)
 
   } catch (error) {
+    const errorMessage = String(error)
     console.error(`[generate-plan] Error generating topic "${topic.name}":`, error)
-    return NextResponse.json({ topicId: topic.id, topicName: topic.name, success: false, error: String(error) }, { status: 500 })
+    return NextResponse.json({
+      topicId: topic.id,
+      topicName: topic.name,
+      success: false,
+      error: errorMessage,
+      error_type: errorMessage.includes('timeout') || errorMessage.includes('AbortError') ? 'timeout' : 'generation_error',
+    }, { status: 500 })
   }
 
   return NextResponse.json({ success: true, topicId: topic.id, topicName: topic.name })

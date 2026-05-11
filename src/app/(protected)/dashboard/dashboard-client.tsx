@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import { trackCheckoutCompleted } from '@/components/posthog-events'
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -127,9 +128,10 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
   const isExpiredBanner = subscriptionStatus === 'expired'
 
   useEffect(() => {
-    if (isPersonalized && subscriptionStatus === 'active') {
-      const params = new URLSearchParams(window.location.search)
-      if (params.get('checkout') === 'success') {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('checkout') === 'success' && subscriptionStatus === 'active') {
+      trackCheckoutCompleted('ai_personalized', 0)
+      if (isPersonalized) {
         router.push('/generando')
       }
     }

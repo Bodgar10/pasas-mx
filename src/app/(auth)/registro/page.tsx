@@ -4,6 +4,7 @@ import { useActionState, useState } from 'react'
 import Link from 'next/link'
 import { registroAction, type RegistroState } from './actions'
 import { createClient } from '@/utils/supabase/client'
+import { trackSignup } from '@/components/posthog-events'
 
 function GoogleIcon() {
   return (
@@ -61,6 +62,7 @@ export default function RegistroPage() {
 
   async function handleGoogleSignIn() {
     setGooglePending(true)
+    trackSignup('google')
     const supabase = createClient()
     await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -107,7 +109,7 @@ export default function RegistroPage() {
       </div>
 
       {/* Form */}
-      <form action={formAction} className="space-y-4">
+      <form action={formAction} className="space-y-4" onSubmit={() => trackSignup('email')}>
         <div className="space-y-1">
           <label
             htmlFor="full_name"

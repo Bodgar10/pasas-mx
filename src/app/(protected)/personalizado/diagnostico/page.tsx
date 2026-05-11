@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import { trackDiagnosticCompleted } from '@/components/posthog-events'
 
 interface DiagnosticQuestion {
   id: string
@@ -88,6 +89,9 @@ function DiagnosticoContent() {
     setAnswers(newAnswers)
     if (Object.keys(newAnswers).length === quizQuestions.length) {
       setQuizCompleted(true)
+      const weakCount = quizQuestions.filter(q => newAnswers[q.id] !== q.correct_answer).length
+      const strongCount = quizQuestions.filter(q => newAnswers[q.id] === q.correct_answer).length
+      trackDiagnosticCompleted(subject, weakCount, strongCount)
     }
   }
 

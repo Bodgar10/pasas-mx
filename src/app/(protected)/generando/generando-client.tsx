@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { trackPersonalizedPlanGenerated } from '@/components/posthog-events'
 
 interface Props {
   userId: string
@@ -80,6 +81,7 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
       }
 
       updateStep('generating', 'done')
+      trackPersonalizedPlanGenerated(subject.name, weakTopicIds.length, theme.name)
       updateStep('quiz', 'active', 'Guardando preguntas...')
       await new Promise(r => setTimeout(r, 600))
 
@@ -93,7 +95,10 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
       router.push(`/guia/personalizado/${subject.slug}`)
 
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error desconocido')
+      const errorMessage = err instanceof Error ? err.message : 'Error desconocido'
+      setError(errorMessage)
+      const { trackError } = await import('@/components/posthog-events')
+      trackError('personalized_plan_generation', errorMessage, `subject:${subject.name} topics:${weakTopicIds.length}`)
     }
   }
 

@@ -2,6 +2,7 @@
 
 import { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { trackCheckoutStarted } from '@/components/posthog-events'
 
 const PLANS = {
   estandar: {
@@ -51,6 +52,7 @@ const planParam = searchParams.get('plan')
   async function handleCTA(duration: Duration) {
     setLoadingCheckout(duration)
     try {
+      trackCheckoutStarted(activePlan, duration)
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

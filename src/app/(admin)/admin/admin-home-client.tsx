@@ -248,7 +248,24 @@ export default function AdminHomeClient({ subjects }: Props) {
         <div style={{ fontSize: 15, color: '#a78bfa', marginLeft: 8 }}>
           Gestión de contenido
         </div>
-        <div style={{ marginLeft: 'auto' }}>
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 10 }}>
+          <button
+            type="button"
+            onClick={() => router.push('/admin/metricas')}
+            style={{
+              background: 'rgba(124,58,237,0.12)',
+              border: '1px solid rgba(124,58,237,0.3)',
+              color: '#a78bfa',
+              borderRadius: 10,
+              padding: '8px 16px',
+              fontSize: 15,
+              fontWeight: 800,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            📊 Métricas
+          </button>
           <button
             type="button"
             onClick={async () => {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
 
 interface Section {
   id: string
@@ -210,6 +211,12 @@ export default function TopicClient({
   }, [initialProgress])
 
   useEffect(() => {
+    if (sections.length > 0) {
+      trackTopicStarted(topic.name, subject.name, '')
+    }
+  }, [])
+
+  useEffect(() => {
     if (!streakToast) return
     const timer = setTimeout(() => setStreakToast(null), 3500)
     return () => clearTimeout(timer)
@@ -382,9 +389,12 @@ export default function TopicClient({
           if (data.perfect) {
             setSessionXp((prev) => prev + 150)
           }
+          trackTopicCompleted(topic.name, subject.name, data.best_score, data.perfect)
         }
-      } catch {
-        // Silent fail
+        trackQuizAnswered(topic.name, isCorrect, question.difficulty)
+      } catch (err) {
+        const { trackError } = await import('@/components/posthog-events')
+        trackError('quiz_answer_api', err instanceof Error ? err.message : 'unknown', `topic:${topic.name}`)
       }
     } else {
       fetch('/api/quiz-answer', {
@@ -392,6 +402,7 @@ export default function TopicClient({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(apiPayload),
       }).catch(() => {})
+      trackQuizAnswered(topic.name, isCorrect, question.difficulty)
     }
   }
 
