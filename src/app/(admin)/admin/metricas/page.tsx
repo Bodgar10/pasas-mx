@@ -22,10 +22,24 @@ export default async function MetricasPage() {
   )
 
   const now = new Date()
+
+  // 24h — rolling
   const last24h = new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()
-  const last30d = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString()
-  const last3m = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000).toISOString()
-  const last6m = new Date(now.getTime() - 180 * 24 * 60 * 60 * 1000).toISOString()
+
+  // Este mes — del 1 del mes actual a hoy
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
+
+  // Este trimestre — del 1 del primer mes del trimestre actual a hoy
+  const currentQuarter = Math.floor(now.getMonth() / 3)
+  const startOfQuarter = new Date(now.getFullYear(), currentQuarter * 3, 1).toISOString()
+
+  // Este semestre — del 1 de enero o 1 de julio (según mitad del año)
+  const currentSemester = now.getMonth() < 6 ? 0 : 6
+  const startOfSemester = new Date(now.getFullYear(), currentSemester, 1).toISOString()
+
+  const last30d = startOfMonth
+  const last3m = startOfQuarter
+  const last6m = startOfSemester
 
   const [
     { data: allUsers },

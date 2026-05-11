@@ -79,9 +79,9 @@ interface Props {
 
 const PERIOD_LABELS: Record<Period, string> = {
   '24h': 'Últimas 24h',
-  '30d': 'Últimos 30 días',
-  '3m': 'Últimos 3 meses',
-  '6m': 'Últimos 6 meses',
+  '30d': 'Este mes',
+  '3m': 'Este trimestre',
+  '6m': 'Este semestre',
 }
 
 const THEME_NAMES: Record<string, string> = {
