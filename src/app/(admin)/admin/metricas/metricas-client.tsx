@@ -114,6 +114,38 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 export default function MetricasClient({ allUsers, allSubscriptions, topicProgressData, progressEvents, allTopics, allSubjects, userSubjects, timestamps }: Props) {
   const router = useRouter()
   const [period, setPeriod] = useState<Period>('30d')
+  const [users, setUsers] = useState(allUsers)
+  const [confirmDeleteUserId, setConfirmDeleteUserId] = useState<string | null>(null)
+  const [confirmDeleteEmail, setConfirmDeleteEmail] = useState<string>('')
+  const [deletingUserId, setDeletingUserId] = useState<string | null>(null)
+  const [deleteSuccess, setDeleteSuccess] = useState<string | null>(null)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
+
+  async function handleDeleteUser(userId: string) {
+    setDeletingUserId(userId)
+    setDeleteError(null)
+    try {
+      const res = await fetch('/api/admin/delete-user', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setDeleteError(data.error ?? 'Error al eliminar usuario')
+        return
+      }
+      setUsers(prev => prev.filter(u => u.id !== userId))
+      setDeleteSuccess(`Usuario eliminado correctamente`)
+      setTimeout(() => setDeleteSuccess(null), 4000)
+    } catch (err) {
+      setDeleteError('Error de red al eliminar usuario')
+    } finally {
+      setDeletingUserId(null)
+      setConfirmDeleteUserId(null)
+      setConfirmDeleteEmail('')
+    }
+  }
   const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
@@ -341,6 +373,130 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
           ))}
         </div>
       </div>
+
+      {/* Warning Zone */}
+      <div style={{ marginTop: 40 }}>
+        <div style={{
+          background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.25)',
+          borderRadius: 16, padding: '20px 24px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+            <span style={{ fontSize: 18 }}>⚠️</span>
+            <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 14, fontWeight: 900, color: '#ef4444', letterSpacing: 1 }}>
+              WARNING ZONE
+            </div>
+          </div>
+          <div style={{ fontSize: 13, color: '#fca5a5', marginBottom: 20, lineHeight: 1.6 }}>
+            Eliminar un usuario borra permanentemente todo su contenido — suscripciones, progreso, secciones personalizadas y datos de autenticación. Esta acción no se puede deshacer.
+          </div>
+
+          {deleteSuccess && (
+            <div style={{
+              padding: '10px 14px', background: 'rgba(16,185,129,0.1)',
+              border: '1px solid rgba(16,185,129,0.3)', borderRadius: 10,
+              color: '#10b981', fontSize: 13, fontWeight: 600, marginBottom: 16,
+            }}>
+              ✓ {deleteSuccess}
+            </div>
+          )}
+
+          {deleteError && (
+            <div style={{
+              padding: '10px 14px', background: 'rgba(239,68,68,0.1)',
+              border: '1px solid rgba(239,68,68,0.3)', borderRadius: 10,
+              color: '#fca5a5', fontSize: 13, fontWeight: 600, marginBottom: 16,
+            }}>
+              {deleteError}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {users.map(u => (
+              <div key={u.id} style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: '10px 14px', background: '#1a1035',
+                border: '1px solid rgba(239,68,68,0.15)', borderRadius: 10,
+              }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#e2d9f3', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {u.id}
+                  </div>
+                  <div style={{ fontSize: 12, color: '#a78bfa', marginTop: 2 }}>
+                    {u.education_level ?? 'sin nivel'} · {u.onboarding_done ? 'onboarding ✓' : 'sin onboarding'} · creado {new Date(u.created_at).toLocaleDateString('es-MX')}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setConfirmDeleteUserId(u.id)
+                    setConfirmDeleteEmail(u.id)
+                  }}
+                  style={{
+                    background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)',
+                    color: '#ef4444', borderRadius: 8, padding: '6px 12px',
+                    fontSize: 13, fontWeight: 800, cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)', flexShrink: 0,
+                  }}
+                >
+                  🗑️ Eliminar
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Confirm delete modal */}
+      {confirmDeleteUserId && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 100,
+          background: 'rgba(15,10,30,0.92)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
+        }}>
+          <div style={{
+            background: '#1a1035', border: '1px solid rgba(239,68,68,0.4)',
+            borderRadius: 20, padding: 28, width: '100%', maxWidth: 440, textAlign: 'center',
+          }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>🗑️</div>
+            <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 16, fontWeight: 900, color: '#ef4444', marginBottom: 8 }}>
+              ¿Eliminar usuario?
+            </div>
+            <div style={{ fontSize: 13, color: '#fca5a5', marginBottom: 8, lineHeight: 1.6 }}>
+              UUID: <span style={{ fontFamily: 'monospace', color: '#e2d9f3' }}>{confirmDeleteUserId}</span>
+            </div>
+            <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 24, lineHeight: 1.6 }}>
+              Se borrará todo — suscripciones, progreso, secciones personalizadas y cuenta de autenticación. No hay vuelta atrás.
+            </div>
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+              <button
+                type="button"
+                onClick={() => { setConfirmDeleteUserId(null); setConfirmDeleteEmail('') }}
+                style={{
+                  background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048',
+                  color: '#a78bfa', borderRadius: 10, padding: '10px 20px',
+                  fontSize: 14, fontWeight: 800, cursor: 'pointer', fontFamily: 'var(--font-nunito)',
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDeleteUser(confirmDeleteUserId)}
+                disabled={deletingUserId !== null}
+                style={{
+                  background: '#ef4444', color: 'white', borderRadius: 12,
+                  padding: '10px 20px', fontWeight: 800, border: 'none',
+                  cursor: deletingUserId ? 'not-allowed' : 'pointer',
+                  fontSize: 14, fontFamily: 'var(--font-nunito)',
+                  opacity: deletingUserId ? 0.7 : 1,
+                }}
+              >
+                {deletingUserId ? 'Eliminando...' : 'Sí, eliminar todo'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div style={{ height: 40 }} />
     </div>
