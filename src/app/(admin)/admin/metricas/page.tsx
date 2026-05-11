@@ -36,7 +36,7 @@ export default async function MetricasPage() {
     { data: allSubjects },
     { data: userSubjects },
   ] = await Promise.all([
-    serviceSupabase.from('users').select('id, created_at, onboarding_done, education_level, grade, interests, xp_total, streak_days, last_active_at'),
+    serviceSupabase.from('users').select('id, email, created_at, onboarding_done, education_level, grade, interests, xp_total, streak_days, last_active_at'),
     serviceSupabase.from('subscriptions').select('id, user_id, plan, status, price_mxn, current_period_end, cancelled_at, created_at'),
     serviceSupabase.from('topic_progress').select('user_id, topic_id, status, best_score, completed_at, updated_at'),
     serviceSupabase.from('progress').select('user_id, event_type, xp_earned, created_at').gte('created_at', last30d),

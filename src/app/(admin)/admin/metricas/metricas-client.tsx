@@ -7,6 +7,7 @@ type Period = '24h' | '30d' | '3m' | '6m'
 
 interface User {
   id: string
+  email: string
   created_at: string
   onboarding_done: boolean
   education_level: string
@@ -267,10 +268,10 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
       {/* MRR */}
       <SectionTitle>💰 Ingresos</SectionTitle>
       <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: 12, marginBottom: 8 }}>
-        <StatCard label="MRR Total" value={`$${Math.round(mrr).toLocaleString('es-MX')}`} sub="MXN / mes" color="#10b981" />
+        <StatCard label="MRR Total" value={`$${Math.round(mrr).toLocaleString('es-MX')}`} sub={`${activeSubs.length} suscriptores activos`} color="#10b981" />
         <StatCard label="MRR Estándar" value={`$${Math.round(mrrStandard).toLocaleString('es-MX')}`} sub={`${standardSubs.length} suscriptores`} color="#06b6d4" />
         <StatCard label="MRR Personalizado" value={`$${Math.round(mrrPersonalized).toLocaleString('es-MX')}`} sub={`${personalizedSubs.length} suscriptores`} color="#ec4899" />
-        <StatCard label="Nuevas suscripciones" value={newSubs.length} sub={PERIOD_LABELS[period]} color="#fbbf24" />
+        <StatCard label="Ingresos nuevos" value={`$${Math.round(newSubs.reduce((sum, s) => sum + s.price_mxn / 100, 0)).toLocaleString('es-MX')}`} sub={`${newSubs.length} nuevas · ${PERIOD_LABELS[period]}`} color="#fbbf24" />
       </div>
 
       {/* Subscriptions */}
@@ -419,10 +420,13 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
               }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#e2d9f3', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {u.id}
+                    {u.email ?? u.id}
                   </div>
                   <div style={{ fontSize: 12, color: '#a78bfa', marginTop: 2 }}>
                     {u.education_level ?? 'sin nivel'} · {u.onboarding_done ? 'onboarding ✓' : 'sin onboarding'} · creado {new Date(u.created_at).toLocaleDateString('es-MX')}
+                  </div>
+                  <div style={{ fontSize: 11, color: '#4B3D6E', marginTop: 1, fontFamily: 'monospace' }}>
+                    {u.id}
                   </div>
                 </div>
                 <button
