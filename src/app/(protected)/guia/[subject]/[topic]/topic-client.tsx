@@ -27,6 +27,14 @@ interface TopicProgress {
   attempts: number
 }
 
+interface GenerationData {
+  userId: string
+  subjectId: string
+  themeId: string
+  topicId: string
+  weakTopicIds: string[]
+}
+
 interface Props {
   subject: { id: string; name: string; slug: string }
   topic: { id: string; name: string; slug: string; difficulty: number; xp_reward: number }
@@ -36,6 +44,8 @@ interface Props {
   readSectionIds: string[]
   initialAnswers: Record<string, string>
   isPersonalized?: boolean
+  needsGeneration?: boolean
+  generationData?: GenerationData
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -131,6 +141,8 @@ export default function TopicClient({
   readSectionIds,
   initialAnswers,
   isPersonalized = false,
+  needsGeneration = false,
+  generationData,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
@@ -174,6 +186,11 @@ export default function TopicClient({
     }
     return null
   })
+  const [generating, setGenerating] = useState(false)
+  const [generateError, setGenerateError] = useState<string | null>(null)
+  const [generateDots, setGenerateDots] = useState('.')
+  const [generationDone, setGenerationDone] = useState(false)
+
   const [streakToast, setStreakToast] = useState<{
     days: number
     event: 'continued' | 'started'
@@ -197,6 +214,44 @@ export default function TopicClient({
     const timer = setTimeout(() => setStreakToast(null), 3500)
     return () => clearTimeout(timer)
   }, [streakToast])
+
+  useEffect(() => {
+    if (!generating) return
+    const interval = setInterval(() => {
+      setGenerateDots(d => d.length >= 3 ? '.' : d + '.')
+    }, 500)
+    return () => clearInterval(interval)
+  }, [generating])
+
+  async function handleGenerate() {
+    if (!generationData) return
+    setGenerating(true)
+    setGenerateError(null)
+    try {
+      const res = await fetch('/api/personalized/generate-plan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: generationData.userId,
+          subjectId: generationData.subjectId,
+          themeId: generationData.themeId,
+          topicId: generationData.topicId,
+          weakTopicIds: generationData.weakTopicIds,
+        }),
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error ?? 'Error al generar')
+      }
+      setGenerationDone(true)
+      await new Promise(r => setTimeout(r, 800))
+      router.refresh()
+    } catch (err) {
+      setGenerateError(err instanceof Error ? err.message : 'Error desconocido')
+    } finally {
+      setGenerating(false)
+    }
+  }
 
   const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map())
 
@@ -353,6 +408,110 @@ export default function TopicClient({
         minHeight: '100vh',
       }}
     >
+
+      {/* Generation screen for personalized topics without content */}
+      {needsGeneration && !generationDone && (
+        <div style={{
+          minHeight: '100vh', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', padding: '32px 16px',
+        }}>
+          <style>{`
+            @keyframes spin { to { transform: rotate(360deg); } }
+            .gen-spin { animation: spin 1s linear infinite; }
+          `}</style>
+          <div style={{ width: '100%', maxWidth: 390 }}>
+            <div style={{
+              background: '#1a1035', border: '1px solid rgba(124,58,237,0.25)',
+              borderRadius: 20, padding: '32px 20px', textAlign: 'center',
+            }}>
+              {!generating && !generateError && (
+                <>
+                  <div style={{ fontSize: 48, marginBottom: 16 }}>✨</div>
+                  <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 16, fontWeight: 900, color: '#e2d9f3', marginBottom: 8 }}>
+                    {topic.name}
+                  </div>
+                  <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 24, lineHeight: 1.6 }}>
+                    Tu guía personalizada para este tema aún no está lista. Generamos contenido único basado en tu diagnóstico.
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleGenerate}
+                    style={{
+                      width: '100%', minHeight: 52,
+                      background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                      color: 'white', border: 'none', borderRadius: 14,
+                      fontFamily: 'var(--font-orbitron)', fontSize: 14,
+                      fontWeight: 700, cursor: 'pointer', letterSpacing: 1,
+                    }}
+                  >
+                    ✨ Generar mi guía →
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => router.push(`/guia/personalizado/${subject.slug}`)}
+                    style={{
+                      marginTop: 12, width: '100%', background: 'none',
+                      border: 'none', cursor: 'pointer', fontSize: 15,
+                      fontWeight: 600, color: '#a78bfa',
+                    }}
+                  >
+                    ← Regresar
+                  </button>
+                </>
+              )}
+
+              {generating && (
+                <>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+                    <div style={{
+                      width: 64, height: 64, borderRadius: '50%',
+                      border: '2px solid rgba(124,58,237,0.2)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <div className="gen-spin" style={{
+                        width: 46, height: 46, borderRadius: '50%',
+                        border: '3px solid rgba(124,58,237,0.15)',
+                        borderTop: '3px solid #7c3aed',
+                      }} />
+                    </div>
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#e2d9f3', marginBottom: 8 }}>
+                    Generando tu guía{generateDots}
+                  </div>
+                  <div style={{ fontSize: 13, color: '#a78bfa', lineHeight: 1.6 }}>
+                    Creando contenido personalizado para {topic.name}. No cierres esta ventana.
+                  </div>
+                </>
+              )}
+
+              {generateError && (
+                <div style={{ marginTop: 16 }}>
+                  <div style={{
+                    padding: '12px 14px', background: 'rgba(239,68,68,0.1)',
+                    border: '1px solid rgba(239,68,68,0.3)', borderRadius: 10,
+                    color: '#fca5a5', fontSize: 13, fontWeight: 600, marginBottom: 12,
+                  }}>
+                    {generateError}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleGenerate}
+                    style={{
+                      width: '100%', minHeight: 48, background: '#7c3aed',
+                      color: 'white', border: 'none', borderRadius: 12,
+                      fontFamily: 'var(--font-nunito)', fontSize: 15,
+                      fontWeight: 800, cursor: 'pointer',
+                    }}
+                  >
+                    Reintentar
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Top bar */}
       <div
         style={{
@@ -418,11 +577,11 @@ export default function TopicClient({
 
         <div
           style={{
-            background: initialProgress?.status === 'completed' && sessionXp === 0
+            background: initialProgress?.status === 'completed'
               ? 'rgba(16,185,129,0.1)'
               : 'rgba(251,191,36,0.1)',
             border: `1px solid ${
-              initialProgress?.status === 'completed' && sessionXp === 0
+              initialProgress?.status === 'completed'
                 ? 'rgba(16,185,129,0.3)'
                 : 'rgba(251,191,36,0.25)'
             }`,
@@ -430,15 +589,19 @@ export default function TopicClient({
             padding: '4px 10px',
             fontSize: 13,
             fontWeight: 800,
-            color: initialProgress?.status === 'completed' && sessionXp === 0
+            color: initialProgress?.status === 'completed'
               ? '#10b981'
               : '#fbbf24',
             flexShrink: 0,
           }}
         >
-          {initialProgress?.status === 'completed' && sessionXp === 0
+          {initialProgress?.status === 'completed'
             ? '✓ Completado'
-            : `⚡ +${sessionXp} XP sesión`}
+            : sessionXp > 0
+            ? `⚡ +${sessionXp} XP sesión`
+            : readSectionIds.length > 0
+            ? `⚡ +${readSectionIds.length * 10} XP ganados`
+            : '⚡ +0 XP sesión'}
         </div>
       </div>
 

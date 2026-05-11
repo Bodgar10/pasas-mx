@@ -41,8 +41,10 @@ export default async function PersonalizedTopicPage({
     supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }),
   ])
 
+  const needsGeneration = (personalizedSections ?? []).length === 0
+
   let sections = personalizedSections ?? []
-  if (sections.length === 0) {
+  if (!needsGeneration && sections.length === 0) {
     const { data: themedSections } = await supabase
       .from('sections').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).is('user_id', null).order('display_order', { ascending: true })
     sections = themedSections ?? []
@@ -71,6 +73,14 @@ export default async function PersonalizedTopicPage({
       readSectionIds={readSectionIds}
       initialAnswers={initialAnswers}
       isPersonalized={true}
+      needsGeneration={needsGeneration}
+      generationData={needsGeneration ? {
+        userId: user.id,
+        subjectId: subject.id,
+        themeId: userSubject.theme_id,
+        topicId: topic.id,
+        weakTopicIds: [topic.id],
+      } : undefined}
     />
   )
 }

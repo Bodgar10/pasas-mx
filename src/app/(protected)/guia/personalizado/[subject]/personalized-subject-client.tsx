@@ -179,11 +179,11 @@ export default function PersonalizedSubjectClient({
                   {isCompleted ? '✅' : (topic.icon ?? '📚')}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: '#e2d9f3', marginBottom: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: '#e2d9f3', marginBottom: 2, lineHeight: 1.3 }}>
                     {topic.name}
                   </div>
                   <div style={{ fontSize: 12, color: '#a78bfa' }}>
-                    {isCompleted ? `✓ Completado · ${progress?.best_score ?? 0}%` : isInProgress ? 'En progreso' : '8 secciones · 8 preguntas'}
+                    {isCompleted ? `✓ Completado · ${progress?.best_score ?? 0}%` : isInProgress ? 'En progreso' : '5 secciones · 5 preguntas'}
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
