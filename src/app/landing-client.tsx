@@ -11,14 +11,14 @@ const HERO_VARIANTS = {
     h1: 'Estudia sin estudiar.',
     sub: 'Mate con Minecraft. Historia con anime. Química con K-pop. Si la escuela fuera así, no la odiarías.',
     cta: 'Probar una semana gratis →',
-    micro: 'Sin tarjeta. Sin compromiso. Sin tarea.',
+    micro: '7 días gratis · Cancela cuando quieras.',
   },
   E: {
     id: 'E',
     h1: 'No es para todos.\nEs para ti.',
     sub: 'Si en clase te aburres pero en TikTok te clavas tres horas, no eres tú: es el método. Cámbialo.',
     cta: 'Quiero entrar →',
-    micro: 'Una semana gratis. Si no es lo tuyo, te sales y ya.',
+    micro: '7 días gratis. Si no es lo tuyo, cancelas y ya.',
   },
 } as const
 
@@ -140,7 +140,7 @@ const PLANS = [
       '❌ Sin contrato · Cancela cuando quieras',
     ],
     cta: 'Empezar gratis →',
-    note: 'Una semana gratis. Sin tarjeta.',
+    note: '7 días gratis · Requiere tarjeta · Cancela cuando quieras.',
     highlight: false,
   },
   {
@@ -239,7 +239,7 @@ export default function LandingClient() {
   function handleCTA(location: string) {
     track('hero_variant_converted', { variant, cta_location: location })
     track('landing_cta_clicked', { location, variant })
-    router.push('/registro')
+    router.push('/onboarding')
   }
 
   return (
