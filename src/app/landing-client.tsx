@@ -188,6 +188,38 @@ export default function LandingClient() {
   const [scrolled, setScrolled] = useState(false)
   const [activeTab, setActiveTab] = useState('kpop')
 
+  function track(event: string, props?: Record<string, any>) {
+    if (typeof window !== 'undefined' && (window as any).posthog) {
+      (window as any).posthog.capture(event, props)
+    }
+  }
+
+  useEffect(() => {
+    // Track time on page
+    const start = Date.now()
+    return () => {
+      const seconds = Math.round((Date.now() - start) / 1000)
+      track('landing_exit', { seconds_on_page: seconds })
+    }
+  }, [])
+
+  useEffect(() => {
+    // Track scroll depth
+    const checkpoints = [25, 50, 75, 100]
+    const reached = new Set<number>()
+    const onScroll = () => {
+      const scrolled = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100)
+      checkpoints.forEach(cp => {
+        if (scrolled >= cp && !reached.has(cp)) {
+          reached.add(cp)
+          track('landing_scroll_depth', { percent: cp })
+        }
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   useEffect(() => {
     const v = getOrAssignVariant()
     setVariant(v)
@@ -204,10 +236,9 @@ export default function LandingClient() {
 
   const hero = HERO_VARIANTS[variant]
 
-  function handleCTA() {
-    if (typeof window !== 'undefined' && (window as any).posthog) {
-      (window as any).posthog.capture('hero_variant_converted', { variant })
-    }
+  function handleCTA(location: string) {
+    track('hero_variant_converted', { variant, cta_location: location })
+    track('landing_cta_clicked', { location, variant })
     router.push('/registro')
   }
 
@@ -230,13 +261,13 @@ export default function LandingClient() {
         </span>
         <div style={{ display: 'flex', gap: 8 }}>
           <button
-            onClick={() => router.push('/login')}
+            onClick={() => { track('landing_login_clicked', { location: 'nav' }); router.push('/login') }}
             style={{ background: 'transparent', border: `1.5px solid ${COLORS.inputBorder}`, color: COLORS.muted, borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
           >
             Entrar
           </button>
           <button
-            onClick={handleCTA}
+            onClick={() => handleCTA('nav')}
             style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer' }}
           >
             Gratis →
@@ -259,8 +290,8 @@ export default function LandingClient() {
             {hero.sub}
           </p>
           <button
-            onClick={handleCTA}
             style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease' }}
+            onClick={() => handleCTA('hero')}
             onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
             onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
           >
@@ -340,7 +371,7 @@ export default function LandingClient() {
             {THEME_TABS.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => { setActiveTab(tab.id); track('landing_theme_tab_clicked', { theme: tab.id }) }}
                 style={{
                   background: activeTab === tab.id ? COLORS.primary : `${COLORS.primary}18`,
                   border: `1.5px solid ${activeTab === tab.id ? COLORS.primary : COLORS.inputBorder}`,
@@ -507,7 +538,7 @@ export default function LandingClient() {
                   ))}
                 </div>
                 <button
-                  onClick={handleCTA}
+                  onClick={() => handleCTA(`pricing_${plan.name.toLowerCase()}`)}
                   style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none' }}
                   onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
                   onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
@@ -520,7 +551,7 @@ export default function LandingClient() {
           </div>
           <p style={{ textAlign: 'center', marginTop: 24, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
             ¿Quieres pagar 3 o 6 meses?{' '}
-            <span onClick={() => router.push('/planes')} style={{ color: COLORS.primary, cursor: 'pointer', fontWeight: 700 }}>
+            <span onClick={() => { track('landing_ver_planes_clicked'); router.push('/planes') }} style={{ color: COLORS.primary, cursor: 'pointer', fontWeight: 700 }}>
               Ver todos los planes →
             </span>
           </p>
@@ -544,6 +575,7 @@ export default function LandingClient() {
             <button
               onClick={handleCTA}
               style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease' }}
+              onClick={() => handleCTA('cta_final')}
               onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
               onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
             >
