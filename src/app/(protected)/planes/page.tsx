@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { trackCheckoutStarted } from '@/components/posthog-events'
 
@@ -38,6 +38,19 @@ type Duration = 'monthly' | 'quarterly' | 'biannual'
 
 function PlanesContent() {
   const searchParams = useSearchParams()
+
+  // After registro, resume pending plan from sessionStorage
+  useEffect(() => {
+    const pendingPlan = sessionStorage.getItem('pasas_pending_plan') as PlanKey | null
+    const pendingDuration = sessionStorage.getItem('pasas_pending_duration') as Duration | null
+    if (pendingPlan && pendingDuration) {
+      sessionStorage.removeItem('pasas_pending_plan')
+      sessionStorage.removeItem('pasas_pending_duration')
+      setActivePlan(pendingPlan)
+      handleCTA(pendingDuration)
+    }
+  }, [])
+
 const planParam = searchParams.get('plan')
   const isPersonalizado = planParam === 'personalizado'
 
@@ -52,6 +65,19 @@ const planParam = searchParams.get('plan')
   async function handleCTA(duration: Duration) {
     setLoadingCheckout(duration)
     try {
+      // Check if user is anonymous — if so, redirect to registro first
+      const { createClient } = await import('@/utils/supabase/client')
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (!user || user.is_anonymous) {
+        // Save intended plan in sessionStorage so registro can redirect back
+        sessionStorage.setItem('pasas_pending_plan', activePlan)
+        sessionStorage.setItem('pasas_pending_duration', duration)
+        window.location.href = '/registro'
+        return
+      }
+
       trackCheckoutStarted(activePlan, duration)
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',

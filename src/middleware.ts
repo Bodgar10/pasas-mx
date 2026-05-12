@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-const PROTECTED_PREFIXES = ['/dashboard', '/guia', '/onboarding', '/perfil', '/admin']
+const PROTECTED_PREFIXES = ['/dashboard', '/guia', '/perfil', '/admin']
 
 function isProtected(pathname: string) {
   return PROTECTED_PREFIXES.some(
@@ -62,6 +62,21 @@ export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
+  }
+
+  // Redirect logged-in non-anonymous users away from onboarding
+  if (pathname.startsWith('/onboarding') && user && !user.is_anonymous) {
+    const { data: profile } = await supabase
+      .from('users')
+      .select('role, onboarding_done')
+      .eq('id', user.id)
+      .single()
+
+    if (profile?.onboarding_done) {
+      const url = request.nextUrl.clone()
+      url.pathname = profile?.role === 'admin' ? '/admin' : '/dashboard'
+      return NextResponse.redirect(url)
+    }
   }
 
   if (user && isProtected(pathname)) {

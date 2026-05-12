@@ -23,6 +23,36 @@ export async function registroAction(
 
   const supabase = await createClient()
 
+  // Check if current user is anonymous — if so, convert instead of creating new
+  const { data: { user: currentUser } } = await supabase.auth.getUser()
+
+  if (currentUser?.is_anonymous) {
+    // Convert anonymous user to permanent account
+    const { error: updateError } = await supabase.auth.updateUser({
+      email,
+      password,
+      data: { full_name: fullName },
+    })
+
+    if (updateError) {
+      if (updateError.message.toLowerCase().includes('already registered') ||
+          updateError.message.toLowerCase().includes('already been registered')) {
+        return { error: 'Este correo ya tiene una cuenta. Inicia sesión.' }
+      }
+      return { error: 'Ocurrió un error al crear tu cuenta. Inténtalo de nuevo.' }
+    }
+
+    // Update full_name in public.users (row already exists from anonymous session)
+    await supabase
+      .from('users')
+      .update({ full_name: fullName })
+      .eq('id', currentUser.id)
+
+    // Redirect to planes if there was a pending plan, otherwise to onboarding preview
+    redirect('/planes')
+  }
+
+  // No anonymous session — create brand new account
   const { error } = await supabase.auth.signUp({
     email,
     password,
