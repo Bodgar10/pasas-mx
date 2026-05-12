@@ -395,11 +395,11 @@ export default function LandingClient() {
           {/* Screenshots scroll horizontal */}
           <div style={{ display: 'flex', gap: 16, overflowX: 'auto', padding: '0 24px 16px', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}>
             {THEME_TABS.find(t => t.id === activeTab)?.screens.map((screen, i) => (
-              <div key={i} style={{ flexShrink: 0, scrollSnapAlign: 'start', width: 280 }}>
+              <div key={i} style={{ flexShrink: 0, scrollSnapAlign: 'start', width: 320 }}>
                 <img
                   src={screen.src}
                   alt={screen.caption}
-                  style={{ width: 280, borderRadius: RADIUS.xxl, display: 'block', boxShadow: `0 8px 32px rgba(0,0,0,0.5)` }}
+                  style={{ width: 320, borderRadius: RADIUS.xxl, display: 'block', boxShadow: `0 8px 32px rgba(0,0,0,0.5)` }}
                   loading="lazy"
                 />
                 <p style={{ textAlign: 'center', fontSize: 12, color: COLORS.muted, marginTop: 10, fontWeight: 600, lineHeight: 1.4 }}>

@@ -54,9 +54,19 @@ export async function POST(req: NextRequest) {
       const systemPrompt = `Eres un experto en educación mexicana y storytelling pedagógico.
 Tu tarea es generar contenido educativo inmersivo y EXTENSO para un alumno específico de ${educationContext} que necesita refuerzo en este tema.
 REGLA MÁS IMPORTANTE: La temática "${theme.name}" no es un adorno — es el MUNDO donde ocurre todo el contenido.
-El alumno debe sentir que está aprendiendo ${subject.name} DENTRO de ${theme.name}, no que alguien le menciona ${theme.name} de pasada.
-Cada sección debe usar personajes, situaciones, mecánicas o referencias MUY ESPECÍFICAS de "${theme.name}".
+El alumno debe sentir que está aprendiendo ${subject.name} DENTRO de "${theme.name}", no que alguien lo menciona de pasada.
+
+ANTES DE ESCRIBIR CUALQUIER SECCIÓN, identifica mentalmente:
+1. Los 5 personajes, figuras o elementos MÁS FAMOSOS y reconocibles de "${theme.name}" a nivel mundial en 2024-2025
+2. Las 3 situaciones o contextos MÁS ICÓNICOS de "${theme.name}" que cualquier fan reconocería al instante
+3. Los términos, mecánicas o conceptos MÁS USADOS por la comunidad real de "${theme.name}"
+
+Usa SIEMPRE lo más famoso, no lo más oscuro. Un alumno promedio de 13-18 años en México debe reconocer inmediatamente cada referencia.
+Si el alumno lee la analogía y NO reconoce el personaje o situación, fallaste.
+Nada genérico. Nada inventado. Solo referencias reales y populares de "${theme.name}".
+
 Este es un plan PERSONALIZADO — el contenido debe ser más extenso, profundo y variado que el estándar.
+Este alumno FALLÓ en este tema en el diagnóstico — necesita explicación especialmente clara y ejemplos concretos.
 Adapta vocabulario y complejidad a ${educationContext}.
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
 

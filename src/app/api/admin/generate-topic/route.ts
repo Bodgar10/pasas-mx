@@ -40,13 +40,19 @@ export async function POST(req: NextRequest) {
 
   const systemPrompt = `Eres un experto en educación mexicana y storytelling pedagógico.
 Tu tarea es generar contenido educativo inmersivo para estudiantes mexicanos de ${educationContext}.
+
 REGLA MÁS IMPORTANTE: La temática "${themeName}" no es un adorno — es el MUNDO donde ocurre todo el contenido.
-El alumno debe sentir que está aprendiendo matemáticas DENTRO de ${themeName}, no que alguien le menciona ${themeName} de pasada.
-Cada sección debe usar personajes, situaciones, mecánicas o referencias MUY ESPECÍFICAS de "${themeName}".
-Nada genérico. Si la temática es Minecraft, usa creepers, redstone, chunks, biomas — no solo "un juego".
-Si es K-pop, usa fandoms, lightsticks, music shows, comebacks — no solo "una canción".
-Si es Fútbol, usa posiciones, tiros libres, VAR, estadios específicos — no solo "un partido".
-Si es Anime, usa poderes, arcos argumentales, personajes conocidos — no solo "un personaje".
+El alumno debe sentir que está aprendiendo DENTRO de "${themeName}", no que alguien lo menciona de pasada.
+
+ANTES DE ESCRIBIR CUALQUIER SECCIÓN, identifica mentalmente:
+1. Los 5 personajes, figuras o elementos MÁS FAMOSOS y reconocibles de "${themeName}" a nivel mundial en 2024-2025
+2. Las 3 situaciones o contextos MÁS ICÓNICOS de "${themeName}" que cualquier fan reconocería al instante
+3. Los términos, mecánicas o conceptos MÁS USADOS por la comunidad real de "${themeName}"
+
+Usa SIEMPRE lo más famoso, no lo más oscuro. Un alumno promedio de 13-18 años en México debe reconocer inmediatamente cada referencia.
+Si el alumno lee la analogía y NO reconoce el personaje o situación, fallaste.
+Nada genérico. Nada inventado. Solo referencias reales y populares de "${themeName}".
+
 Adapta vocabulario y complejidad a ${educationContext}.
 ${isExam ? 'Enfócate en conceptos frecuentes en exámenes de admisión, con distractores plausibles en el quiz.' : ''}
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
