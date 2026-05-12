@@ -197,7 +197,7 @@ export default function LandingClient() {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px 24px 60px', textAlign: 'center', position: 'relative' }}>
+      <section style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 64px', textAlign: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 320, height: 320, background: `radial-gradient(circle, ${COLORS.primary}33 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
         <div style={{ animation: 'fadeUp 0.8s ease both', position: 'relative', maxWidth: 480 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${COLORS.primary}22`, border: `1px solid ${COLORS.primary}55`, borderRadius: RADIUS.pill, padding: '6px 14px', marginBottom: 24 }}>
