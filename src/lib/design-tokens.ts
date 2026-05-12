@@ -8,7 +8,7 @@ export const COLORS = {
   yellow: '#fbbf24',
   success: '#10b981',
   text: '#e2d9f3',
-  muted: '#a78bfa',
+  muted: '#c4b5fd',
   inputBg: '#1C1033',
   inputBorder: '#2D2048',
 } as const

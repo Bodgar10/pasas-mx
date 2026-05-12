@@ -63,11 +63,18 @@ const THEMES = [
   { emoji: '⚽', name: 'Fútbol', color: COLORS.success, desc: 'Estadística con la Liga MX. Geografía con el Mundial. Inglés con Premier League. Para los que sí ven los 90 minutos.' },
 ]
 
-const STATS = [
-  { value: '2,400+', label: 'chavos en lista de espera' },
-  { value: '8', label: 'estados de la República' },
-  { value: '3', label: 'escuelas piloteando' },
-  { value: '$199', label: 'al mes — menos que una pizza' },
+const TUTORIAL_STANDARD = [
+  { emoji: '🎮', step: '01', title: 'Elige tu temática', desc: 'Una sola: Videojuegos, K-pop, Anime o Fútbol. Todo tu contenido se genera dentro de ese mundo.' },
+  { emoji: '📚', step: '02', title: 'Elige tu grado', desc: 'Secundaria o prepa, el grado que cursas. El temario completo de todas tus materias te espera.' },
+  { emoji: '⚡', step: '03', title: 'Aprende con lo que ya te gusta', desc: 'Cada lección, ejemplo y quiz usa tu temática. Matemáticas con Minecraft. Historia con Anime. Siempre.' },
+  { emoji: '🏆', step: '04', title: 'Sube de nivel', desc: 'Gana XP, mantén tu racha diaria y desbloquea contenido. El progreso se siente porque se ve.' },
+]
+
+const TUTORIAL_PERSONALIZED = [
+  { emoji: '🎯', step: '01', title: 'Elige la materia que te cuesta', desc: 'Solo una. La que más te pesa, la que vas a reprobar, la que no entiendes por nada.' },
+  { emoji: '🧠', step: '02', title: 'Haz el diagnóstico', desc: 'Un quiz corto detecta exactamente dónde están tus huecos. No adivinamos — medimos.' },
+  { emoji: '✨', step: '03', title: 'Tu guía se genera solo para ti', desc: 'Con tu temática, tus puntos débiles y tu nivel. No es un temario genérico — es tuyo.' },
+  { emoji: '📈', step: '04', title: 'Avanza más rápido', desc: 'Sin perder tiempo en lo que ya sabes. El plan personalizado va directo a lo que necesitas.' },
 ]
 
 const PLANS = [
@@ -269,23 +276,92 @@ export default function LandingClient() {
         </section>
       </FadeSection>
 
-      {/* ── PRUEBA SOCIAL ── */}
+      {/* ── TUTORIAL ── */}
+      <FadeSection>
+        <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
+          <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>¿Cómo funciona exactamente?</p>
+          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
+            Elige tu camino.
+          </h2>
+          <p style={{ textAlign: 'center', fontSize: 15, color: '#c4b5fd', marginBottom: 48, lineHeight: 1.6, fontWeight: 600 }}>
+            Dos opciones según lo que necesitas.
+          </p>
+
+          {/* Plan Estándar */}
+          <div style={{ background: COLORS.card, borderRadius: RADIUS.xxl, padding: '24px 20px', border: `1.5px solid ${COLORS.primary}44`, marginBottom: 20, position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.cyan})` }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+              <span style={{ fontSize: 22 }}>🎮</span>
+              <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 13, color: COLORS.primary }}>Plan Estándar — $199/mes</span>
+            </div>
+            <p style={{ fontSize: 15, color: '#c4b5fd', fontWeight: 700, marginBottom: 24, lineHeight: 1.5 }}>
+              Eliges UNA temática y accedes al temario completo de todas tus materias dentro de ese mundo.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {TUTORIAL_STANDARD.map((item, i) => (
+                <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{ minWidth: 44, height: 44, borderRadius: RADIUS.lg, background: `${COLORS.primary}22`, border: `1px solid ${COLORS.primary}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+                    {item.emoji}
+                  </div>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                      <span style={{ fontFamily: FONTS.orbitron, fontSize: 10, fontWeight: 900, color: COLORS.primary }}>{item.step}</span>
+                      <p style={{ fontWeight: 800, fontSize: 15, color: COLORS.text }}>{item.title}</p>
+                    </div>
+                    <p style={{ fontSize: 14, color: '#c4b5fd', lineHeight: 1.6, fontWeight: 500 }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Plan Personalizado */}
+          <div style={{ background: COLORS.card, borderRadius: RADIUS.xxl, padding: '24px 20px', border: `1.5px solid ${COLORS.pink}44`, position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.pink}, ${COLORS.primary})` }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+              <span style={{ fontSize: 22 }}>✨</span>
+              <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 13, color: COLORS.pink }}>Plan Personalizado — $499/mes</span>
+            </div>
+            <p style={{ fontSize: 15, color: '#c4b5fd', fontWeight: 700, marginBottom: 24, lineHeight: 1.5 }}>
+              Eliges UNA materia, haces un diagnóstico y se genera un plan hecho solo para ti y tus puntos débiles.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {TUTORIAL_PERSONALIZED.map((item, i) => (
+                <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{ minWidth: 44, height: 44, borderRadius: RADIUS.lg, background: `${COLORS.pink}22`, border: `1px solid ${COLORS.pink}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+                    {item.emoji}
+                  </div>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                      <span style={{ fontFamily: FONTS.orbitron, fontSize: 10, fontWeight: 900, color: COLORS.pink }}>{item.step}</span>
+                      <p style={{ fontWeight: 800, fontSize: 15, color: COLORS.text }}>{item.title}</p>
+                    </div>
+                    <p style={{ fontSize: 14, color: '#c4b5fd', lineHeight: 1.6, fontWeight: 500 }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </FadeSection>
+
+      {/* ── COMUNIDAD ── */}
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>Comunidad</p>
-          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(20px, 5vw, 28px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
-            Apenas empezamos.<br />Pero ya somos varios.
+          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(20px, 5vw, 28px)', textAlign: 'center', marginBottom: 20, color: COLORS.text }}>
+            Recién salido del horno. 🇲🇽
           </h2>
-          <p style={{ textAlign: 'center', fontSize: 14, color: COLORS.muted, marginBottom: 40, lineHeight: 1.6 }}>
-            ¿Quieres ser de los primeros? Una semana gratis y tu opinión vale el doble.
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            {STATS.map((s, i) => (
-              <div key={i} style={{ background: COLORS.card, borderRadius: RADIUS.xl, padding: '20px 16px', textAlign: 'center', border: `1px solid ${COLORS.inputBorder}` }}>
-                <div style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 26, color: COLORS.primary, marginBottom: 4 }}>{s.value}</div>
-                <div style={{ fontSize: 12, color: COLORS.muted, fontWeight: 600, lineHeight: 1.4 }}>{s.label}</div>
-              </div>
-            ))}
+          <div style={{ background: COLORS.card, borderRadius: RADIUS.xxl, padding: '28px 24px', border: `1px solid ${COLORS.inputBorder}` }}>
+            <p style={{ fontSize: 16, color: '#c4b5fd', lineHeight: 1.8, fontWeight: 600, marginBottom: 20 }}>
+              No somos la plataforma con millones de usuarios. Somos la que alguien construyó porque le tocó estudiar con libros aburridos y dijo:
+            </p>
+            <p style={{ fontSize: 18, color: COLORS.text, lineHeight: 1.7, fontWeight: 800, marginBottom: 20, fontStyle: 'italic' }}>
+              "Tiene que haber una mejor forma."
+            </p>
+            <p style={{ fontSize: 15, color: '#c4b5fd', lineHeight: 1.7, fontWeight: 600, marginBottom: 0 }}>
+              Lanzamos en julio 2026. Si entras ahora, eres de los primeros — y tu opinión construye la plataforma. Una semana gratis, sin tarjeta.
+            </p>
           </div>
         </section>
       </FadeSection>
@@ -385,6 +461,10 @@ export default function LandingClient() {
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+        p, span, div {
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
         }
       `}</style>
     </div>
