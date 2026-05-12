@@ -63,6 +63,53 @@ const THEMES = [
   { emoji: '⚽', name: 'Fútbol', color: COLORS.success, desc: 'Estadística con la Liga MX. Geografía con el Mundial. Inglés con Premier League. Para los que sí ven los 90 minutos.' },
 ]
 
+const THEME_TABS = [
+  {
+    id: 'kpop',
+    emoji: '🎤',
+    label: 'K-pop',
+    screens: [
+      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
+      { src: '/screenshots/screen-leccion.png', caption: 'Matemáticas explicadas con ECLIPSE' },
+      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
+      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
+    ],
+  },
+  {
+    id: 'gaming',
+    emoji: '🎮',
+    label: 'Videojuegos',
+    screens: [
+      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
+      { src: '/screenshots/screen-leccion.png', caption: 'Matemáticas explicadas con Minecraft' },
+      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
+      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
+    ],
+  },
+  {
+    id: 'futbol',
+    emoji: '⚽',
+    label: 'Fútbol',
+    screens: [
+      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
+      { src: '/screenshots/screen-leccion.png', caption: 'Estadística con la Liga MX' },
+      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
+      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
+    ],
+  },
+  {
+    id: 'anime',
+    emoji: '⚔️',
+    label: 'Anime',
+    screens: [
+      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
+      { src: '/screenshots/screen-leccion.png', caption: 'Filosofía explicada con Death Note' },
+      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
+      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
+    ],
+  },
+]
+
 const TUTORIAL_STANDARD = [
   { emoji: '🎮', step: '01', title: 'Elige tu temática', desc: 'Una sola: Videojuegos, K-pop, Anime o Fútbol. Todo tu contenido se genera dentro de ese mundo.' },
   { emoji: '📚', step: '02', title: 'Elige tu grado', desc: 'Secundaria o prepa, el grado que cursas. El temario completo de todas tus materias te espera.' },
@@ -139,6 +186,7 @@ export default function LandingClient() {
   const router = useRouter()
   const [variant, setVariant] = useState<VariantKey>('D')
   const [scrolled, setScrolled] = useState(false)
+  const [activeTab, setActiveTab] = useState('kpop')
 
   useEffect(() => {
     const v = getOrAssignVariant()
@@ -273,6 +321,66 @@ export default function LandingClient() {
               </div>
             ))}
           </div>
+        </section>
+      </FadeSection>
+
+      {/* ── ASÍ SE VE POR DENTRO ── */}
+      <FadeSection>
+        <section style={{ padding: '72px 0', maxWidth: 520, margin: '0 auto' }}>
+          <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8, padding: '0 24px' }}>Vista previa</p>
+          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text, padding: '0 24px' }}>
+            Así se ve por dentro.
+          </h2>
+          <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 32, lineHeight: 1.6, fontWeight: 600, padding: '0 24px' }}>
+            Elige tu temática y ve cómo se vería tu experiencia.
+          </p>
+
+          {/* Tabs */}
+          <div style={{ display: 'flex', gap: 8, padding: '0 24px', marginBottom: 32, overflowX: 'auto', scrollbarWidth: 'none' }}>
+            {THEME_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  background: activeTab === tab.id ? COLORS.primary : `${COLORS.primary}18`,
+                  border: `1.5px solid ${activeTab === tab.id ? COLORS.primary : COLORS.inputBorder}`,
+                  color: activeTab === tab.id ? '#fff' : COLORS.muted,
+                  borderRadius: RADIUS.pill,
+                  padding: '8px 16px',
+                  fontFamily: FONTS.nunito,
+                  fontWeight: 800,
+                  fontSize: 14,
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0,
+                }}
+              >
+                {tab.emoji} {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Screenshots scroll horizontal */}
+          <div style={{ display: 'flex', gap: 16, overflowX: 'auto', padding: '0 24px 16px', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}>
+            {THEME_TABS.find(t => t.id === activeTab)?.screens.map((screen, i) => (
+              <div key={i} style={{ flexShrink: 0, scrollSnapAlign: 'start', width: 200 }}>
+                <img
+                  src={screen.src}
+                  alt={screen.caption}
+                  style={{ width: 200, borderRadius: RADIUS.xxl, display: 'block', boxShadow: `0 8px 32px rgba(0,0,0,0.5)` }}
+                  loading="lazy"
+                />
+                <p style={{ textAlign: 'center', fontSize: 12, color: COLORS.muted, marginTop: 10, fontWeight: 600, lineHeight: 1.4 }}>
+                  {screen.caption}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <style>{`
+            div::-webkit-scrollbar { display: none; }
+          `}</style>
         </section>
       </FadeSection>
 
