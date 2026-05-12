@@ -573,7 +573,6 @@ export default function LandingClient() {
               Si después de 7 días sigue sin gustarte estudiar, te devolvemos hasta las ganas.
             </p>
             <button
-              onClick={handleCTA}
               style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease' }}
               onClick={() => handleCTA('cta_final')}
               onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
