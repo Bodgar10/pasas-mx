@@ -42,11 +42,38 @@ export async function registroAction(
       return { error: 'Ocurrió un error al crear tu cuenta. Inténtalo de nuevo.' }
     }
 
-    // Ensure onboarding_done=true and full_name in public.users
-    // This is critical — middleware reads onboarding_done from DB as fallback
+    // Read onboarding data from the request headers (passed from client via form)
+    const onboardingRaw = formData.get('onboarding_data') as string | null
+    let educationLevel = 'middle_school'
+    let grade: number | null = null
+    let interests: string[] = []
+
+    if (onboardingRaw) {
+      try {
+        const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
+        const LEVEL_MAP: Record<string, string> = {
+          'Secundaria': 'middle_school',
+          'Preparatoria / Bachillerato': 'high_school',
+          'Examen de Preparatoria': 'high_school',
+          'Examen de Universidad': 'high_school',
+        }
+        const parsed = JSON.parse(onboardingRaw)
+        educationLevel = LEVEL_MAP[parsed.level] ?? 'middle_school'
+        grade = parsed.grade ? (GRADE_MAP[parsed.grade] ?? null) : null
+        interests = parsed.theme ? [parsed.theme] : []
+      } catch { /* ignore parse errors */ }
+    }
+
+    // Save all onboarding data + mark done in public.users
     await supabase
       .from('users')
-      .update({ full_name: fullName, onboarding_done: true })
+      .update({
+        full_name: fullName,
+        onboarding_done: true,
+        education_level: educationLevel,
+        grade,
+        interests,
+      })
       .eq('id', currentUser.id)
 
     redirect('/planes')

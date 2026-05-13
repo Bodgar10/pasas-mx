@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { saveOnboardingData } from './actions'
 
 type Step = 1 | 2 | 3 | 4
 
@@ -91,8 +90,7 @@ function ProgressBar({ step }: { step: Step }) {
 
 export default function OnboardingClient({ themes }: Props) {
   const [step, setStep] = useState<Step>(1)
-  const [saving, setSaving] = useState(false)
-  const [saveError, setSaveError] = useState<string | null>(null)
+
   const [level, setLevel] = useState<string | null>(null)
   const [grade, setGrade] = useState<string | null>(null)
   const [theme, setTheme] = useState<string | null>(null)
@@ -117,22 +115,8 @@ export default function OnboardingClient({ themes }: Props) {
       setStep(4)
     } else {
       if (!theme || !level) return
-      setSaving(true)
-      setSaveError(null)
-      try {
-        // Save onboarding data NOW — before navigating to preview
-        // This ensures the anonymous session is valid and data is persisted
-        const result = await saveOnboardingData({ level, grade, theme })
-        if ('error' in result) {
-          setSaveError(result.error)
-          setSaving(false)
-          return
-        }
-      } catch {
-        setSaveError('Error al guardar. Intenta de nuevo.')
-        setSaving(false)
-        return
-      }
+      // Save onboarding data in sessionStorage — will be persisted to DB after registration
+      sessionStorage.setItem('pasas_onboarding', JSON.stringify({ level, grade, theme }))
       const params = new URLSearchParams({ level })
       if (grade) params.set('grade', grade)
       params.set('theme', theme)
@@ -423,7 +407,7 @@ export default function OnboardingClient({ themes }: Props) {
           <button
             type="button"
             onClick={handleNext}
-            disabled={!canProceed || saving}
+            disabled={!canProceed}
             style={{
               marginTop: 20,
               width: '100%',
@@ -432,31 +416,14 @@ export default function OnboardingClient({ themes }: Props) {
               fontWeight: 900,
               fontSize: 16,
               border: 'none',
-              cursor: (canProceed && !saving) ? 'pointer' : 'not-allowed',
-              backgroundColor: (canProceed && !saving) ? '#7c3aed' : '#2D2048',
-              color: (canProceed && !saving) ? '#ffffff' : '#4B3D6E',
+              cursor: canProceed ? 'pointer' : 'not-allowed',
+              backgroundColor: canProceed ? '#7c3aed' : '#2D2048',
+              color: canProceed ? '#ffffff' : '#4B3D6E',
               transition: 'background-color 0.15s, color 0.15s',
             }}
           >
-            {saving ? 'Guardando...' : step === 3 ? '¡Empezar! ✨' : step === 4 ? 'Ver cómo estudiarías →' : 'Siguiente →'}
+            {step === 3 ? '¡Empezar! ✨' : step === 4 ? 'Ver cómo estudiarías →' : 'Siguiente →'}
           </button>
-
-          {/* Save error */}
-          {saveError && (
-            <p style={{
-              marginTop: 10,
-              padding: '10px 14px',
-              borderRadius: 10,
-              fontSize: 14,
-              fontWeight: 700,
-              backgroundColor: 'rgba(239,68,68,0.1)',
-              color: '#f87171',
-              border: '1px solid rgba(239,68,68,0.2)',
-              textAlign: 'center',
-            }}>
-              {saveError}
-            </p>
-          )}
 
           {/* Back link */}
           {step > 1 && (

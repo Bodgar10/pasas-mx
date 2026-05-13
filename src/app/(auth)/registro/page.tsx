@@ -110,6 +110,11 @@ export default function RegistroPage() {
 
       {/* Form */}
       <form action={formAction} className="space-y-4" onSubmit={() => trackSignup('email')}>
+        <input
+          type="hidden"
+          name="onboarding_data"
+          value={typeof window !== 'undefined' ? (sessionStorage.getItem('pasas_onboarding') ?? '') : ''}
+        />
         <div className="space-y-1">
           <label
             htmlFor="full_name"
