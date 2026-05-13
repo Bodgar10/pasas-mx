@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { createClient } from '@/utils/supabase/client'
 
@@ -259,7 +260,6 @@ export default function LandingClient() {
   function handleCTA(location: string) {
     track('hero_variant_converted', { variant, cta_location: location })
     track('landing_cta_clicked', { location, variant })
-    router.push('/onboarding')
   }
 
   return (
@@ -288,12 +288,14 @@ export default function LandingClient() {
           >
             Entrar
           </Link>
-          <button
+          <Link
+            href="/onboarding"
+            prefetch={true}
             onClick={() => handleCTA('nav')}
-            style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer' }}
+            style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
           >
             Gratis →
-          </button>
+          </Link>
         </div>
       </nav>
 
@@ -311,14 +313,14 @@ export default function LandingClient() {
           <p style={{ fontSize: 17, lineHeight: 1.6, color: COLORS.muted, marginBottom: 36, fontWeight: 600 }}>
             {hero.sub}
           </p>
-          <button
-            style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease' }}
+          <Link
+            href="/onboarding"
+            prefetch={true}
             onClick={() => handleCTA('hero')}
-            onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-            onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
+            style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
           >
             {hero.cta}
-          </button>
+          </Link>
           <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.7 }}>{hero.micro}</p>
           <div style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
             <span style={{ fontSize: 12, fontWeight: 600 }}>scroll</span>
@@ -559,14 +561,14 @@ export default function LandingClient() {
                     <p key={j} style={{ fontSize: 14, color: COLORS.text, fontWeight: 600 }}>{f}</p>
                   ))}
                 </div>
-                <button
+                <Link
+                  href="/onboarding"
+                  prefetch={true}
                   onClick={() => handleCTA(`pricing_${plan.name.toLowerCase()}`)}
-                  style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none' }}
-                  onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-                  onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
+                  style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   {plan.cta}
-                </button>
+                </Link>
                 <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.6 }}>{plan.note}</p>
               </div>
             ))}
@@ -594,14 +596,14 @@ export default function LandingClient() {
             <p style={{ fontSize: 14, color: COLORS.muted, marginBottom: 36, opacity: 0.7 }}>
               Si después de 7 días sigue sin gustarte estudiar, te devolvemos hasta las ganas.
             </p>
-            <button
-              style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease' }}
+            <Link
+              href="/onboarding"
+              prefetch={true}
+              style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => handleCTA('cta_final')}
-              onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.96)')}
-              onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
             >
               Empezar gratis →
-            </button>
+            </Link>
             <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.6 }}>
               Tarda menos que escoger qué ver en Netflix.
             </p>
