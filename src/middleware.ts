@@ -9,15 +9,6 @@ function isProtected(pathname: string) {
   )
 }
 
-// Read claims from JWT — no Supabase query needed
-function getClaimsFromSession(user: { app_metadata?: Record<string, unknown> } | null) {
-  if (!user) return { role: null, onboardingDone: false }
-  // Custom claims are in app_metadata after the hook runs
-  const role = (user.app_metadata?.user_role as string) ?? 'student'
-  const onboardingDone = (user.app_metadata?.onboarding_done as boolean) ?? false
-  return { role, onboardingDone }
-}
-
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
@@ -45,13 +36,42 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // Single auth call — reads from cookie, no extra DB query
   const { data: { user } } = await supabase.auth.getUser()
-
   const { pathname } = request.nextUrl
 
-  // Read role and onboarding_done from JWT claims — 0 extra queries
-  const { role, onboardingDone } = getClaimsFromSession(user)
+  // Try JWT claims first — if missing (token not yet renewed), fall back to DB
+  const jwtRole = user?.app_metadata?.user_role as string | undefined
+  const jwtOnboardingDone = user?.app_metadata?.onboarding_done as boolean | undefined
+  const claimsReady = !!jwtRole && jwtOnboardingDone !== undefined
+
+  let role = jwtRole ?? 'student'
+  let onboardingDone = jwtOnboardingDone ?? false
+
+  // Fallback: query DB if JWT claims not yet populated (existing users before hook)
+  if (user && !user.is_anonymous && !claimsReady && isProtected(pathname)) {
+    const { data: profile } = await supabase
+      .from('users')
+      .select('role, onboarding_done')
+      .eq('id', user.id)
+      .single()
+    if (profile) {
+      role = profile.role ?? 'student'
+      onboardingDone = profile.onboarding_done ?? false
+    }
+  }
+
+  // Same fallback for onboarding redirect check
+  if (user && !user.is_anonymous && !claimsReady && pathname.startsWith('/onboarding')) {
+    const { data: profile } = await supabase
+      .from('users')
+      .select('role, onboarding_done')
+      .eq('id', user.id)
+      .single()
+    if (profile) {
+      role = profile.role ?? 'student'
+      onboardingDone = profile.onboarding_done ?? false
+    }
+  }
 
   // Redirect logged-in admin from landing to /admin
   if (user && !user.is_anonymous && pathname === '/') {
@@ -104,10 +124,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Pass user_id to server components via header — avoids duplicate getUser() calls
+  // Pass user data to server components via headers
   if (user) {
     supabaseResponse.headers.set('x-user-id', user.id)
-    supabaseResponse.headers.set('x-user-role', role ?? 'student')
+    supabaseResponse.headers.set('x-user-role', role)
     supabaseResponse.headers.set('x-onboarding-done', String(onboardingDone))
   }
 
