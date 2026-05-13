@@ -10,25 +10,25 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  // Fetch user profile
-  const { data: profile } = await supabase
-    .from('users')
-    .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done, interests')
-    .eq('id', user.id)
-    .single()
+  // Fetch profile and active subscription in parallel — both only need user.id
+  const now = new Date().toISOString()
+  const [{ data: profile }, { data: subscription }] = await Promise.all([
+    supabase
+      .from('users')
+      .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done, interests')
+      .eq('id', user.id)
+      .single(),
+    supabase
+      .from('subscriptions')
+      .select('status, current_period_end, plan')
+      .eq('user_id', user.id)
+      .in('status', ['trialing', 'active', 'past_due'])
+      .order('current_period_end', { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+  ])
 
   if (!profile?.onboarding_done) redirect('/onboarding')
-
-  // Fetch active subscription
-  const now = new Date().toISOString()
-  const { data: subscription } = await supabase
-    .from('subscriptions')
-    .select('status, current_period_end, plan')
-    .eq('user_id', user.id)
-    .in('status', ['trialing', 'active', 'past_due'])
-    .order('current_period_end', { ascending: false })
-    .limit(1)
-    .maybeSingle()
 
   // Determine subscription status
   let subscriptionStatus: SubscriptionStatus = 'no_subscription'

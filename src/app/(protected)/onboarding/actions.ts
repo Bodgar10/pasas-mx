@@ -36,8 +36,6 @@ export async function saveOnboarding(data: OnboardingData): Promise<OnboardingRe
 
   const grade = data.grade ? (GRADE_MAP[data.grade] ?? null) : null
 
-  await supabase.from('themes').select('id').eq('name', data.theme).maybeSingle()
-
   const { error: updateError } = await supabase
     .from('users')
     .update({
@@ -78,8 +76,6 @@ export async function saveOnboardingData(data: OnboardingData): Promise<SaveResu
   const educationLevel = LEVEL_MAP[data.level] ?? 'high_school'
 
   const grade = data.grade ? (GRADE_MAP[data.grade] ?? null) : null
-
-  await supabase.from('themes').select('id').eq('name', data.theme).maybeSingle()
 
   const { error: updateError } = await supabase
     .from('users')
