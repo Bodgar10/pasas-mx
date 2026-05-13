@@ -300,7 +300,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
       >
         <button
           type="button"
-          onClick={() => router.push('/dashboard')}
+          onClick={() => { router.back(); setTimeout(() => router.refresh(), 100) }}
           style={{
             width: 36,
             height: 36,
