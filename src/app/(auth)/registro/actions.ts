@@ -129,7 +129,14 @@ export async function registroAction(
       const grade = parsed.grade ? (GRADE_MAP[parsed.grade] ?? null) : null
       const interests = parsed.theme ? [parsed.theme] : []
 
-      await supabase
+      // Use service role to bypass RLS and guarantee the update completes
+      const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+      const serviceClient = createServiceClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      )
+
+      await serviceClient
         .from('users')
         .update({
           full_name: fullName,
@@ -140,17 +147,24 @@ export async function registroAction(
         })
         .eq('id', user.id)
 
+      // Also update auth metadata so JWT claims reflect onboarding_done
+      await supabase.auth.updateUser({
+        data: { onboarding_done: true }
+      })
+
       redirect('/planes')
     } catch {
-      await supabase
-        .from('users')
-        .update({ full_name: fullName })
-        .eq('id', user.id)
       redirect('/onboarding')
     }
   }
 
-  await supabase
+  // No onboarding data — just save name and go to onboarding
+  const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+  const serviceClient = createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+  await serviceClient
     .from('users')
     .update({ full_name: fullName })
     .eq('id', user.id)
