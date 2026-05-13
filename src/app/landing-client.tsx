@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
+import { createClient } from '@/utils/supabase/client'
 
 // ── A/B hero variants ──────────────────────────────────────────────
 const HERO_VARIANTS = {
@@ -226,6 +227,24 @@ export default function LandingClient() {
     if (typeof window !== 'undefined' && (window as any).posthog) {
       (window as any).posthog.capture('hero_variant_seen', { variant: v })
     }
+
+    // Prefetch anonymous session in background while user reads the landing
+    // So when they tap CTA, the session already exists and onboarding loads instantly
+    const prefetchSession = async () => {
+      try {
+        const supabase = createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        if (!user) {
+          await supabase.auth.signInAnonymously()
+        }
+      } catch {
+        // Silent fail — if it fails, onboarding/page.tsx handles it as fallback
+      }
+    }
+
+    // Delay 2s so it doesn't compete with the initial page render
+    const timer = setTimeout(prefetchSession, 2000)
+    return () => clearTimeout(timer)
   }, [])
 
   useEffect(() => {

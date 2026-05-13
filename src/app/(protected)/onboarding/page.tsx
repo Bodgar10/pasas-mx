@@ -6,6 +6,8 @@ export default async function OnboardingPage() {
 
   // Create anonymous session if no user exists yet
   const { data: { user } } = await supabase.auth.getUser()
+  // signInAnonymously is called proactively from landing-client.tsx
+  // This is only a fallback in case the user navigates directly to /onboarding
   if (!user) {
     await supabase.auth.signInAnonymously()
   }
