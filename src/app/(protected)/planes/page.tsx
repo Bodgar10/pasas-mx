@@ -40,12 +40,19 @@ function PlanesContent() {
   const searchParams = useSearchParams()
 
   // After registro, resume pending plan from sessionStorage
+  // Only auto-trigger if coming from /registro (referrer check)
   useEffect(() => {
     const pendingPlan = sessionStorage.getItem('pasas_pending_plan') as PlanKey | null
     const pendingDuration = sessionStorage.getItem('pasas_pending_duration') as Duration | null
-    if (pendingPlan && pendingDuration) {
-      sessionStorage.removeItem('pasas_pending_plan')
-      sessionStorage.removeItem('pasas_pending_duration')
+
+    // Always clear pending data — avoids stale triggers on future visits
+    sessionStorage.removeItem('pasas_pending_plan')
+    sessionStorage.removeItem('pasas_pending_duration')
+    sessionStorage.removeItem('pasas_onboarding')
+
+    // Only auto-trigger checkout if coming directly from /registro
+    const fromRegistro = document.referrer.includes('/registro')
+    if (pendingPlan && pendingDuration && fromRegistro) {
       setActivePlan(pendingPlan)
       handleCTA(pendingDuration)
     }
