@@ -54,7 +54,7 @@ export default async function DashboardPage() {
   const [
     { data: subjects },
     { data: userSubjects },
-    { data: lastProgress },
+    { data: lastActiveRows },
   ] = await Promise.all([
     supabase
       .from('subjects')
@@ -66,43 +66,23 @@ export default async function DashboardPage() {
       .from('user_subjects')
       .select('subject_id, xp, theme_id')
       .eq('user_id', user.id),
-    supabase
-      .from('topic_progress')
-      .select('topic_id, status, updated_at')
-      .eq('user_id', user.id)
-      .in('status', ['in_progress', 'completed'])
-      .order('updated_at', { ascending: false })
-      .limit(1)
-      .maybeSingle(),
+    supabase.rpc('get_last_active_topic', { p_user_id: user.id }),
   ])
 
-  // Resolve lastActiveTopic from lastProgress
-  let lastActiveTopic: {
+  const lastActiveRow = lastActiveRows?.[0] ?? null
+  const lastActiveTopic: {
     topicName: string
     topicSlug: string
     subjectName: string
     subjectSlug: string
-  } | null = null
-
-  if (lastProgress) {
-    const { data: lastTopic } = await supabase
-      .from('topics')
-      .select('id, name, slug, subject_id')
-      .eq('id', lastProgress.topic_id)
-      .single()
-
-    if (lastTopic) {
-      const parentSubject = (subjects ?? []).find((s) => s.id === lastTopic.subject_id)
-      if (parentSubject) {
-        lastActiveTopic = {
-          topicName: lastTopic.name,
-          topicSlug: lastTopic.slug,
-          subjectName: parentSubject.name,
-          subjectSlug: parentSubject.slug,
-        }
+  } | null = lastActiveRow
+    ? {
+        topicName: lastActiveRow.topic_name,
+        topicSlug: lastActiveRow.topic_slug,
+        subjectName: lastActiveRow.subject_name,
+        subjectSlug: lastActiveRow.subject_slug,
       }
-    }
-  }
+    : null
 
   const isPersonalized = subscription?.plan === 'ai_personalized' && subscriptionStatus === 'active'
 

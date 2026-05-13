@@ -9,6 +9,15 @@ function isProtected(pathname: string) {
   )
 }
 
+// Read claims from JWT — no Supabase query needed
+function getClaimsFromSession(user: { app_metadata?: Record<string, unknown> } | null) {
+  if (!user) return { role: null, onboardingDone: false }
+  // Custom claims are in app_metadata after the hook runs
+  const role = (user.app_metadata?.user_role as string) ?? 'student'
+  const onboardingDone = (user.app_metadata?.onboarding_done as boolean) ?? false
+  return { role, onboardingDone }
+}
+
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
@@ -28,7 +37,7 @@ export async function middleware(request: NextRequest) {
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options)
           )
-          Object.entries(headers).forEach(([key, value]) =>
+          Object.entries(headers ?? {}).forEach(([key, value]) =>
             supabaseResponse.headers.set(key, value)
           )
         },
@@ -36,58 +45,42 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // Refresh session — must be called before any redirect logic.
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // Single auth call — reads from cookie, no extra DB query
+  const { data: { user } } = await supabase.auth.getUser()
 
   const { pathname } = request.nextUrl
 
-  // If logged-in admin lands on a public route, send to /admin
-  if (user && !isProtected(pathname) && pathname === '/') {
-    const { data: profile } = await supabase
-      .from('users')
-      .select('role')
-      .eq('id', user.id)
-      .single()
+  // Read role and onboarding_done from JWT claims — 0 extra queries
+  const { role, onboardingDone } = getClaimsFromSession(user)
 
-    if (profile?.role === 'admin') {
+  // Redirect logged-in admin from landing to /admin
+  if (user && !user.is_anonymous && pathname === '/') {
+    if (role === 'admin') {
       const url = request.nextUrl.clone()
       url.pathname = '/admin'
       return NextResponse.redirect(url)
     }
   }
 
+  // Block protected routes for unauthenticated users
   if (isProtected(pathname) && !user) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // Redirect logged-in non-anonymous users away from onboarding
+  // Redirect real users away from onboarding if already done
   if (pathname.startsWith('/onboarding') && user && !user.is_anonymous) {
-    const { data: profile } = await supabase
-      .from('users')
-      .select('role, onboarding_done')
-      .eq('id', user.id)
-      .single()
-
-    if (profile?.onboarding_done) {
+    if (onboardingDone) {
       const url = request.nextUrl.clone()
-      url.pathname = profile?.role === 'admin' ? '/admin' : '/dashboard'
+      url.pathname = role === 'admin' ? '/admin' : '/dashboard'
       return NextResponse.redirect(url)
     }
   }
 
   if (user && isProtected(pathname)) {
-    const { data: profile } = await supabase
-      .from('users')
-      .select('role, onboarding_done')
-      .eq('id', user.id)
-      .single()
-
-    // Admin bypass: admins skip onboarding redirect on all protected routes
-    if (profile?.role === 'admin') {
+    // Admin bypass
+    if (role === 'admin') {
       if (pathname === '/dashboard') {
         const url = request.nextUrl.clone()
         url.pathname = '/admin'
@@ -96,19 +89,26 @@ export async function middleware(request: NextRequest) {
       return supabaseResponse
     }
 
-    // Non-admin trying to access /admin → kick to dashboard
+    // Non-admin trying to access /admin
     if (pathname.startsWith('/admin')) {
       const url = request.nextUrl.clone()
       url.pathname = '/dashboard'
       return NextResponse.redirect(url)
     }
 
-    // Non-admin: enforce onboarding using public.users as source of truth
-    if (!profile?.onboarding_done && !pathname.startsWith('/onboarding')) {
+    // Enforce onboarding for non-admin users
+    if (!onboardingDone && !pathname.startsWith('/onboarding')) {
       const url = request.nextUrl.clone()
       url.pathname = '/onboarding'
       return NextResponse.redirect(url)
     }
+  }
+
+  // Pass user_id to server components via header — avoids duplicate getUser() calls
+  if (user) {
+    supabaseResponse.headers.set('x-user-id', user.id)
+    supabaseResponse.headers.set('x-user-role', role ?? 'student')
+    supabaseResponse.headers.set('x-onboarding-done', String(onboardingDone))
   }
 
   return supabaseResponse
