@@ -149,6 +149,16 @@ export default function LoginPage() {
         >
           {pending ? 'Entrando…' : 'Iniciar sesión'}
         </button>
+
+        <div className="text-right">
+          <Link
+            href="/recuperar"
+            className="text-sm font-semibold hover:brightness-125 transition-all"
+            style={{ color: '#a78bfa' }}
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </div>
       </form>
 
       {/* Divider */}

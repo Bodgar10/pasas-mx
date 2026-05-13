@@ -26,6 +26,14 @@ export async function registroAction(
   // Check if current user is anonymous — if so, convert instead of creating new
   const { data: { user: currentUser } } = await supabase.auth.getUser()
 
+  // TEMP DEBUG — remove after fixing
+  const debugOnboarding = formData.get('onboarding_data')
+  console.log('=== REGISTRO DEBUG ===')
+  console.log('is_anonymous:', currentUser?.is_anonymous)
+  console.log('onboarding_data raw:', debugOnboarding)
+  console.log('onboarding_data length:', String(debugOnboarding ?? '').length)
+  console.log('======================')
+
   if (currentUser?.is_anonymous) {
     // Convert anonymous user to permanent account
     const { error: updateError } = await supabase.auth.updateUser({
