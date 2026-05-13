@@ -294,7 +294,7 @@ export default function PerfilClient({ profile, subscription }: Props) {
                 {periodEnd && (
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ fontSize: 15, color: COLORS.muted, fontWeight: 600 }}>
-                      {isCancelled ? 'Acceso hasta' : 'Próximo cobro'}
+                      {isCancelled ? 'Acceso hasta' : 'Acceso hasta'}
                     </span>
                     <span style={{ fontSize: 15, color: COLORS.text, fontWeight: 700 }}>
                       {periodEnd}

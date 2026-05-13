@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useState } from 'react'
+import { useActionState, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { registroAction, type RegistroState } from './actions'
 import { createClient } from '@/utils/supabase/client'
@@ -59,6 +59,12 @@ export default function RegistroPage() {
   )
   const [password, setPassword] = useState('')
   const [googlePending, setGooglePending] = useState(false)
+  const [onboardingData, setOnboardingData] = useState('')
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem('pasas_onboarding') ?? ''
+    setOnboardingData(stored)
+  }, [])
 
   async function handleGoogleSignIn() {
     setGooglePending(true)
@@ -113,7 +119,7 @@ export default function RegistroPage() {
         <input
           type="hidden"
           name="onboarding_data"
-          value={typeof window !== 'undefined' ? (sessionStorage.getItem('pasas_onboarding') ?? '') : ''}
+          value={onboardingData}
         />
         <div className="space-y-1">
           <label

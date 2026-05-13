@@ -42,39 +42,52 @@ export async function registroAction(
       return { error: 'Ocurrió un error al crear tu cuenta. Inténtalo de nuevo.' }
     }
 
-    // Read onboarding data from the request headers (passed from client via form)
+    // Read onboarding data saved in sessionStorage during onboarding
     const onboardingRaw = formData.get('onboarding_data') as string | null
-    let educationLevel = 'middle_school'
-    let grade: number | null = null
-    let interests: string[] = []
+    const hasOnboardingData = !!onboardingRaw && onboardingRaw.length > 2
 
-    if (onboardingRaw) {
-      try {
-        const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
-        const LEVEL_MAP: Record<string, string> = {
-          'Secundaria': 'middle_school',
-          'Preparatoria / Bachillerato': 'high_school',
-          'Examen de Preparatoria': 'high_school',
-          'Examen de Universidad': 'high_school',
-        }
-        const parsed = JSON.parse(onboardingRaw)
-        educationLevel = LEVEL_MAP[parsed.level] ?? 'middle_school'
-        grade = parsed.grade ? (GRADE_MAP[parsed.grade] ?? null) : null
-        interests = parsed.theme ? [parsed.theme] : []
-      } catch { /* ignore parse errors */ }
+    if (!hasOnboardingData) {
+      // User registered without going through onboarding first
+      // Save name only, keep onboarding_done=false so middleware redirects to onboarding
+      await supabase
+        .from('users')
+        .update({ full_name: fullName })
+        .eq('id', currentUser.id)
+      redirect('/onboarding')
     }
 
-    // Save all onboarding data + mark done in public.users
-    await supabase
-      .from('users')
-      .update({
-        full_name: fullName,
-        onboarding_done: true,
-        education_level: educationLevel,
-        grade,
-        interests,
-      })
-      .eq('id', currentUser.id)
+    try {
+      const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
+      const LEVEL_MAP: Record<string, string> = {
+        'Secundaria': 'middle_school',
+        'Preparatoria / Bachillerato': 'high_school',
+        'Examen de Preparatoria': 'high_school',
+        'Examen de Universidad': 'high_school',
+      }
+      const parsed = JSON.parse(onboardingRaw!)
+      const educationLevel = LEVEL_MAP[parsed.level] ?? 'middle_school'
+      const grade = parsed.grade ? (GRADE_MAP[parsed.grade] ?? null) : null
+      const interests = parsed.theme ? [parsed.theme] : []
+
+      // Save all onboarding data + mark done in public.users
+      await supabase
+        .from('users')
+        .update({
+          full_name: fullName,
+          onboarding_done: true,
+          education_level: educationLevel,
+          grade,
+          interests,
+        })
+        .eq('id', currentUser.id)
+    } catch {
+      // Parse error — send to onboarding to complete it properly
+      await supabase
+        .from('users')
+        .update({ full_name: fullName })
+        .eq('id', currentUser.id)
+      redirect('/onboarding')
+    }
 
     redirect('/planes')
   }
