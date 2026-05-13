@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 import { trackCheckoutCompleted } from '@/components/posthog-events'
 
@@ -672,10 +673,13 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     const isLocked = subscriptionStatus !== 'active'
                     const isExpiredCard = subscriptionStatus === 'expired' && subXp > 0
                     return (
-                      <div
+                      <Link
                         key={subject.slug}
-                        onClick={() => { if (!isLocked) router.push(`/guia/${subject.slug}`) }}
+                        href={isLocked ? '#' : `/guia/${subject.slug}`}
+                        prefetch={!isLocked}
                         style={{
+                          display: 'block',
+                          textDecoration: 'none',
                           position: 'relative', backgroundColor: '#1a1035', borderRadius: 20,
                           padding: 16, cursor: isLocked ? 'default' : 'pointer',
                           opacity: isLocked ? 0.45 : 1,
@@ -684,14 +688,14 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                         }}
                         onMouseEnter={(e) => {
                           if (!isLocked) {
-                            const el = e.currentTarget as HTMLDivElement
+                            const el = e.currentTarget as HTMLAnchorElement
                             el.style.transform = 'translateY(-2px)'
                             el.style.boxShadow = `0 8px 24px ${meta.color}44`
                           }
                         }}
                         onMouseLeave={(e) => {
                           if (!isLocked) {
-                            const el = e.currentTarget as HTMLDivElement
+                            const el = e.currentTarget as HTMLAnchorElement
                             el.style.transform = 'translateY(0)'
                             el.style.boxShadow = 'none'
                           }
@@ -720,7 +724,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                             backgroundColor: meta.color, borderRadius: 99,
                           }} />
                         </div>
-                      </div>
+                      </Link>
                     )
                   })}
                 </div>

@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
 import DashboardClient from './dashboard-client'
 
@@ -50,22 +51,25 @@ export default async function DashboardPage() {
     if (hasEverSubscribed) subscriptionStatus = 'expired'
   }
 
-  // Fetch subjects + userSubjects + lastActiveTopic all in parallel
-  const [
-    { data: subjects },
-    { data: userSubjects },
-    { data: lastActiveRows },
-  ] = await Promise.all([
-    supabase
-      .from('subjects')
-      .select('id, slug, name, display_order')
-      .eq('education_level', profile.education_level)
-      .contains('grades', [profile.grade])
-      .order('display_order'),
-    supabase
-      .from('user_subjects')
-      .select('subject_id, xp, theme_id')
-      .eq('user_id', user.id),
+  // Cache subjects — they rarely change, safe to cache 5 minutes
+  const getCachedSubjects = unstable_cache(
+    async (educationLevel: string, grade: number) => {
+      const { data } = await supabase
+        .from('subjects')
+        .select('id, slug, name, display_order')
+        .eq('education_level', educationLevel)
+        .contains('grades', [grade])
+        .order('display_order')
+      return data ?? []
+    },
+    ['subjects'],
+    { revalidate: 300, tags: ['subjects'] }
+  )
+
+  // Fetch user-specific data + cached subjects in parallel
+  const [subjects, { data: userSubjects }, { data: lastActiveRows }] = await Promise.all([
+    getCachedSubjects(profile.education_level, profile.grade),
+    supabase.from('user_subjects').select('subject_id, xp, theme_id').eq('user_id', user.id),
     supabase.rpc('get_last_active_topic', { p_user_id: user.id }),
   ])
 

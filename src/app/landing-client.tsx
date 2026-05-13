@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { createClient } from '@/utils/supabase/client'
 
@@ -279,12 +280,14 @@ export default function LandingClient() {
           PASAS.MX
         </span>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button
-            onClick={() => { track('landing_login_clicked', { location: 'nav' }); router.push('/login') }}
-            style={{ background: 'transparent', border: `1.5px solid ${COLORS.inputBorder}`, color: COLORS.muted, borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 700, fontSize: 14, cursor: 'pointer' }}
+          <Link
+            href="/login"
+            prefetch={true}
+            onClick={() => track('landing_login_clicked', { location: 'nav' })}
+            style={{ background: 'transparent', border: `1.5px solid ${COLORS.inputBorder}`, color: COLORS.muted, borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 700, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
           >
             Entrar
-          </button>
+          </Link>
           <button
             onClick={() => handleCTA('nav')}
             style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer' }}
