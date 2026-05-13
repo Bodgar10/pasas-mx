@@ -40,19 +40,21 @@ function PlanesContent() {
   const searchParams = useSearchParams()
 
   // After registro, resume pending plan from sessionStorage
-  // Only auto-trigger if coming from /registro (referrer check)
   useEffect(() => {
     const pendingPlan = sessionStorage.getItem('pasas_pending_plan') as PlanKey | null
     const pendingDuration = sessionStorage.getItem('pasas_pending_duration') as Duration | null
+    const pendingTimestamp = sessionStorage.getItem('pasas_pending_timestamp')
 
-    // Always clear pending data — avoids stale triggers on future visits
+    // Always clear pending data
     sessionStorage.removeItem('pasas_pending_plan')
     sessionStorage.removeItem('pasas_pending_duration')
+    sessionStorage.removeItem('pasas_pending_timestamp')
     sessionStorage.removeItem('pasas_onboarding')
 
-    // Only auto-trigger checkout if coming directly from /registro
-    const fromRegistro = document.referrer.includes('/registro')
-    if (pendingPlan && pendingDuration && fromRegistro) {
+    // Only auto-trigger if data was saved less than 5 minutes ago
+    const isRecent = pendingTimestamp && (Date.now() - Number(pendingTimestamp)) < 5 * 60 * 1000
+
+    if (pendingPlan && pendingDuration && isRecent) {
       setActivePlan(pendingPlan)
       handleCTA(pendingDuration)
     }
@@ -78,9 +80,10 @@ const planParam = searchParams.get('plan')
       const { data: { user } } = await supabase.auth.getUser()
 
       if (!user || user.is_anonymous) {
-        // Save intended plan in sessionStorage so registro can redirect back
+        // Save intended plan + timestamp in sessionStorage so registro can redirect back
         sessionStorage.setItem('pasas_pending_plan', activePlan)
         sessionStorage.setItem('pasas_pending_duration', duration)
+        sessionStorage.setItem('pasas_pending_timestamp', String(Date.now()))
         window.location.href = '/registro'
         return
       }
