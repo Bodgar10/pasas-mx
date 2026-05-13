@@ -31,7 +31,7 @@ export async function registroAction(
     const { error: updateError } = await supabase.auth.updateUser({
       email,
       password,
-      data: { full_name: fullName },
+      data: { full_name: fullName, onboarding_done: true },
     })
 
     if (updateError) {
@@ -42,13 +42,13 @@ export async function registroAction(
       return { error: 'Ocurrió un error al crear tu cuenta. Inténtalo de nuevo.' }
     }
 
-    // Update full_name in public.users (row already exists from anonymous session)
+    // Ensure onboarding_done=true and full_name in public.users
+    // This is critical — middleware reads onboarding_done from DB as fallback
     await supabase
       .from('users')
-      .update({ full_name: fullName })
+      .update({ full_name: fullName, onboarding_done: true })
       .eq('id', currentUser.id)
 
-    // Redirect to planes if there was a pending plan, otherwise to onboarding preview
     redirect('/planes')
   }
 
