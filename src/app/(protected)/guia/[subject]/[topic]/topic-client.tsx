@@ -141,7 +141,7 @@ export default function TopicClient({
   initialProgress,
   readSectionIds,
   initialAnswers,
-  isPersonalized = false,
+  isPersonalized: _isPersonalized = false,
   needsGeneration = false,
   generationData,
 }: Props) {
@@ -459,7 +459,7 @@ export default function TopicClient({
                   </button>
                   <button
                     type="button"
-                    onClick={() => router.push(`/guia/personalizado/${subject.slug}`)}
+                    onClick={() => router.back()}
                     style={{
                       marginTop: 12, width: '100%', background: 'none',
                       border: 'none', cursor: 'pointer', fontSize: 15,
@@ -539,7 +539,7 @@ export default function TopicClient({
       >
         <button
           type="button"
-          onClick={() => router.push(isPersonalized ? `/guia/personalizado/${subject.slug}` : `/guia/${subject.slug}`)}
+          onClick={() => router.back()}
           style={{
             width: 36,
             height: 36,
@@ -1185,7 +1185,7 @@ export default function TopicClient({
           </div>
           <button
             type="button"
-            onClick={() => router.push(isPersonalized ? `/guia/personalizado/${subject.slug}` : `/guia/${subject.slug}`)}
+            onClick={() => router.back()}
             style={{
               width: '100%',
               minHeight: 52,
