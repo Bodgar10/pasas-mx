@@ -44,6 +44,7 @@ interface Props {
   userSubjects: UserSubject[]
   lastActiveTopic: LastActiveTopic | null
   isPersonalized: boolean
+  trialEndsAt: string | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -80,7 +81,7 @@ function xpToLevel(xp: number) {
   return { level, current, total: 500 }
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -394,6 +395,46 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 />
               </div>
             </div>
+
+            {/* Trial banner */}
+            {subscriptionStatus === 'active' && trialEndsAt && (() => {
+              const daysLeft = Math.max(0, Math.ceil((new Date(trialEndsAt).getTime() - Date.now()) / (1000 * 60 * 60 * 24)))
+              if (daysLeft === 0) return null
+              return (
+                <div style={{
+                  background: 'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(236,72,153,0.08))',
+                  border: '1.5px solid rgba(251,191,36,0.35)',
+                  borderRadius: 16,
+                  padding: '14px 16px',
+                  marginBottom: 20,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 12,
+                }}>
+                  <div>
+                    <p style={{ margin: 0, fontFamily: 'var(--font-orbitron)', fontSize: 13, fontWeight: 900, color: '#fbbf24' }}>
+                      🎯 Periodo de prueba
+                    </p>
+                    <p style={{ margin: '4px 0 0', fontSize: 14, color: '#a78bfa', fontWeight: 600 }}>
+                      Te quedan <strong style={{ color: '#fbbf24' }}>{daysLeft} día{daysLeft !== 1 ? 's' : ''}</strong> gratis
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => router.push('/planes?plan=estandar')}
+                    style={{
+                      background: '#fbbf24', color: '#0f0a1e', border: 'none',
+                      borderRadius: 10, padding: '8px 14px', fontSize: 13,
+                      fontWeight: 900, cursor: 'pointer', whiteSpace: 'nowrap',
+                      fontFamily: 'var(--font-nunito)',
+                    }}
+                  >
+                    Activar →
+                  </button>
+                </div>
+              )
+            })()}
 
             {/* Personalized plan banner */}
             {isPersonalized && subscriptionStatus === 'active' && (

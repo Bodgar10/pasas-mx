@@ -94,16 +94,25 @@ export async function POST(request: Request) {
         const periodStart = new Date(rawStart * 1000).toISOString()
         const periodEnd   = new Date(rawEnd   * 1000).toISOString()
 
+        const fullSub = subscription as unknown as {
+          status: string
+          trial_end: number | null
+        }
+        const isTrial = fullSub.status === 'trialing' || !!fullSub.trial_end
+        const trialEndsAt = fullSub.trial_end ? new Date(fullSub.trial_end * 1000).toISOString() : null
+        const subStatus = isTrial ? 'trialing' : 'active'
+
         await supabase.from('subscriptions').insert({
           user_id:              userId,
           plan:                 planInfo.plan,
-          status:               'active',
+          status:               subStatus,
           price_mxn:            priceAmount,
           payment_provider:     'stripe',
           provider_sub_id:      subscriptionId,
           provider_customer_id: subData.customer,
           current_period_start: periodStart,
           current_period_end:   periodEnd,
+          trial_ends_at:        trialEndsAt,
           metadata: {
             duration: planInfo.duration,
             price_id: priceId,
