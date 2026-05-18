@@ -56,7 +56,7 @@ function PlanesContent() {
 
     if (pendingPlan && pendingDuration && isRecent) {
       setActivePlan(pendingPlan)
-      handleCTA(pendingDuration)
+      handleCTA(pendingDuration, pendingPlan)
     }
   }, [])
 
@@ -71,7 +71,7 @@ const planParam = searchParams.get('plan')
 
   const [loadingCheckout, setLoadingCheckout] = useState<string | null>(null)
 
-  async function handleCTA(duration: Duration) {
+  async function handleCTA(duration: Duration, planKey: PlanKey = activePlan) {
     setLoadingCheckout(duration)
     try {
       // Check if user is anonymous — if so, redirect to registro first
@@ -81,18 +81,18 @@ const planParam = searchParams.get('plan')
 
       if (!user || user.is_anonymous) {
         // Save intended plan + timestamp in sessionStorage so registro can redirect back
-        sessionStorage.setItem('pasas_pending_plan', activePlan)
+        sessionStorage.setItem('pasas_pending_plan', planKey)
         sessionStorage.setItem('pasas_pending_duration', duration)
         sessionStorage.setItem('pasas_pending_timestamp', String(Date.now()))
         window.location.href = '/registro'
         return
       }
 
-      trackCheckoutStarted(activePlan, duration)
+      trackCheckoutStarted(planKey, duration)
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: activePlan, duration }),
+        body: JSON.stringify({ plan: planKey, duration }),
       })
       const data = await res.json()
       if (data.url) {

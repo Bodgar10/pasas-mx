@@ -3,7 +3,6 @@
 import { useActionState, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { registroAction, type RegistroState } from './actions'
-import { createClient } from '@/utils/supabase/client'
 import { trackSignup } from '@/components/posthog-events'
 
 function GoogleIcon() {
@@ -60,15 +59,30 @@ export default function RegistroPage() {
   const [password, setPassword] = useState('')
   const [googlePending, setGooglePending] = useState(false)
   const [onboardingData, setOnboardingData] = useState('')
+  const [pendingPlan, setPendingPlan] = useState('')
+  const [pendingDuration, setPendingDuration] = useState('')
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('pasas_onboarding') ?? ''
-    setOnboardingData(stored)
+    setOnboardingData(sessionStorage.getItem('pasas_onboarding') ?? '')
+    setPendingPlan(sessionStorage.getItem('pasas_pending_plan') ?? '')
+    setPendingDuration(sessionStorage.getItem('pasas_pending_duration') ?? '')
   }, [])
+
+  useEffect(() => {
+    if (state && 'stripeUrl' in state && state.stripeUrl) {
+      // Clear sessionStorage and redirect to Stripe or dashboard
+      sessionStorage.removeItem('pasas_onboarding')
+      sessionStorage.removeItem('pasas_pending_plan')
+      sessionStorage.removeItem('pasas_pending_duration')
+      sessionStorage.removeItem('pasas_pending_timestamp')
+      window.location.href = state.stripeUrl
+    }
+  }, [state])
 
   async function handleGoogleSignIn() {
     setGooglePending(true)
     trackSignup('google')
+    const { createClient } = await import('@/utils/supabase/client')
     const supabase = createClient()
     await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -116,11 +130,9 @@ export default function RegistroPage() {
 
       {/* Form */}
       <form action={formAction} className="space-y-4" onSubmit={() => trackSignup('email')}>
-        <input
-          type="hidden"
-          name="onboarding_data"
-          value={onboardingData}
-        />
+        <input type="hidden" name="onboarding_data" value={onboardingData} />
+        <input type="hidden" name="pending_plan" value={pendingPlan} />
+        <input type="hidden" name="pending_duration" value={pendingDuration} />
         <div className="space-y-1">
           <label
             htmlFor="full_name"

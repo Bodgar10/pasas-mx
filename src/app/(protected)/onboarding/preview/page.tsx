@@ -1,8 +1,7 @@
 'use client'
 
-import { Suspense, useEffect, useRef } from 'react'
+import { Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { saveOnboardingData } from '../actions'
 
 const THEME_EXAMPLES: Record<string, string> = {
   Videojuegos: 'Las derivadas explicadas con mecánicas de Minecraft',
@@ -40,13 +39,6 @@ function PreviewContent() {
   const level = searchParams.get('level') ?? ''
   const grade = searchParams.get('grade')
   const theme = searchParams.get('theme') ?? ''
-
-  const hasSaved = useRef(false)
-  useEffect(() => {
-    if (hasSaved.current || !level || !theme) return
-    hasSaved.current = true
-    saveOnboardingData({ level, grade, theme })
-  }, [level, grade, theme])
 
   const exampleTitle = getExampleTitle(theme)
   const isExam = level.startsWith('Examen')
