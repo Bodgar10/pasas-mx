@@ -197,7 +197,7 @@ export default function RegistroPage() {
           <StrengthBar password={password} />
         </div>
 
-        {state?.error && (
+        {state && 'error' in state && state.error && (
           <p
             role="alert"
             className="rounded-xl px-4 py-3 text-sm font-medium"
