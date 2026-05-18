@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 
 interface Topic {
@@ -270,7 +271,7 @@ export default function SubjectAdminClient({
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
         <button
           type="button"
-          onClick={() => router.push('/admin')}
+          onClick={() => router.back()}
           style={{
             width: 36,
             height: 36,
@@ -406,22 +407,19 @@ export default function SubjectAdminClient({
 
             {/* Right: action buttons */}
             <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
-              <button
-                type="button"
-                onClick={() =>
-                  router.push(
-                    `/admin/${subject.slug}/${topic.slug}?grade=${grade}&level=${level}`
-                  )
-                }
+              <Link
+                href={`/admin/${subject.slug}/${topic.slug}?grade=${grade}&level=${level}`}
+                prefetch={true}
                 style={{
                   background: '#7c3aed', color: 'white', border: 'none',
                   borderRadius: 10, padding: '8px 16px', fontSize: 14,
                   fontWeight: 800, fontFamily: 'var(--font-nunito)',
                   cursor: 'pointer', whiteSpace: 'nowrap',
+                  textDecoration: 'none', display: 'inline-flex', alignItems: 'center',
                 }}
               >
                 Gestionar →
-              </button>
+              </Link>
               <button
                 type="button"
                 onClick={() => {

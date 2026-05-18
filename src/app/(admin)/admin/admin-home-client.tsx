@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 
 interface Subject {
@@ -379,13 +380,10 @@ export default function AdminHomeClient({ subjects }: Props) {
               }}
             >
               {filteredSubjects.map((subject) => (
-                <div
+                <Link
                   key={subject.id}
-                  onClick={() =>
-                    router.push(
-                      `/admin/${subject.slug}?grade=${gradeParam}&level=${selectedLevel}`
-                    )
-                  }
+                  href={`/admin/${subject.slug}?grade=${gradeParam}&level=${selectedLevel}`}
+                  prefetch={true}
                   onMouseEnter={() => setHoveredSubject(subject.id)}
                   onMouseLeave={() => setHoveredSubject(null)}
                   style={{
@@ -403,6 +401,8 @@ export default function AdminHomeClient({ subjects }: Props) {
                       hoveredSubject === subject.id
                         ? '0 6px 20px rgba(124,58,237,0.2)'
                         : 'none',
+                    textDecoration: 'none',
+                    color: 'inherit',
                   }}
                 >
                   <div
@@ -426,7 +426,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                   </div>
                   <div
                     style={{ display: 'flex', gap: 4, flexShrink: 0 }}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
                   >
                     <button
                       type="button"
@@ -472,7 +472,7 @@ export default function AdminHomeClient({ subjects }: Props) {
                       🗑️
                     </button>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}

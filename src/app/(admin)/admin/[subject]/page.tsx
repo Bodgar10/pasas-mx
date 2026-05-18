@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
 import SubjectAdminClient from './subject-admin-client'
 
@@ -21,21 +22,46 @@ export default async function SubjectAdminPage({
 
   const supabase = await createClient()
 
-  // Batch 1: subject + themes in parallel (independent)
-  const [{ data: subject }, { data: themes }] = await Promise.all([
-    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
-    supabase.from('themes').select('*').eq('active', true),
+  const getCachedSubject = unstable_cache(
+    async (slug: string) => {
+      const { data } = await supabase.from('subjects').select('*').eq('slug', slug).single()
+      return data
+    },
+    ['admin-subject', subjectSlug],
+    { revalidate: 300, tags: ['subjects'] }
+  )
+
+  const getCachedThemes = unstable_cache(
+    async () => {
+      const { data } = await supabase.from('themes').select('*').eq('active', true)
+      return data ?? []
+    },
+    ['admin-themes'],
+    { revalidate: 300, tags: ['themes'] }
+  )
+
+  const [subject, themes] = await Promise.all([
+    getCachedSubject(subjectSlug),
+    getCachedThemes(),
   ])
 
   if (!subject) return notFound()
 
-  // Batch 2: topics (needs subject.id)
-  const { data: topics } = await supabase
-    .from('topics')
-    .select('*')
-    .eq('subject_id', subject.id)
-    .eq('grade', grade)
-    .order('display_order', { ascending: true })
+  const getCachedTopics = unstable_cache(
+    async (subjectId: string, g: number) => {
+      const { data } = await supabase
+        .from('topics')
+        .select('*')
+        .eq('subject_id', subjectId)
+        .eq('grade', g)
+        .order('display_order', { ascending: true })
+      return data ?? []
+    },
+    ['admin-topics', subject.id, String(grade)],
+    { revalidate: 300, tags: ['topics'] }
+  )
+
+  const topics = await getCachedTopics(subject.id, grade)
 
   // Batch 3: sections for section counts (needs topic ids)
   const topicIds = (topics ?? []).map((t) => t.id)

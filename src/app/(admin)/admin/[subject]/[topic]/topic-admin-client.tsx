@@ -494,9 +494,7 @@ export default function TopicAdminClient({
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10 }}>
           <button
             type="button"
-            onClick={() =>
-              router.push(`/admin/${subject.slug}?grade=${grade}&level=${level}`)
-            }
+            onClick={() => router.back()}
             style={{
               width: 32,
               height: 32,

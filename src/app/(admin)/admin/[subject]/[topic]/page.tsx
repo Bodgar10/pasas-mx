@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
 import TopicAdminClient from './topic-admin-client'
 
@@ -15,10 +16,27 @@ export default async function TopicAdminPage({
 
   const supabase = await createClient()
 
-  // Batch 1: subject + themes in parallel (fully independent)
-  const [{ data: subject }, { data: themes }] = await Promise.all([
-    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
-    supabase.from('themes').select('*').eq('active', true),
+  const getCachedSubject = unstable_cache(
+    async (slug: string) => {
+      const { data } = await supabase.from('subjects').select('*').eq('slug', slug).single()
+      return data
+    },
+    ['admin-subject', subjectSlug],
+    { revalidate: 300, tags: ['subjects'] }
+  )
+
+  const getCachedThemes = unstable_cache(
+    async () => {
+      const { data } = await supabase.from('themes').select('*').eq('active', true)
+      return data ?? []
+    },
+    ['admin-themes'],
+    { revalidate: 300, tags: ['themes'] }
+  )
+
+  const [subject, themes] = await Promise.all([
+    getCachedSubject(subjectSlug),
+    getCachedThemes(),
   ])
 
   if (!subject) return notFound()
