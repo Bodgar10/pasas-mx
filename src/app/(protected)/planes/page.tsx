@@ -301,8 +301,8 @@ const planParam = searchParams.get('plan')
         {/* 7-day trial banner */}
         {!deviceHadTrial && (
           <div style={{
-            background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(236,72,153,0.1))',
-            border: '1.5px solid rgba(124,58,237,0.4)',
+            background: 'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.06))',
+            border: '1.5px solid rgba(251,191,36,0.4)',
             borderRadius: 16,
             padding: '16px 20px',
             marginBottom: 24,
@@ -312,14 +312,15 @@ const planParam = searchParams.get('plan')
               fontFamily: 'var(--font-orbitron)',
               fontSize: 18,
               fontWeight: 900,
-              color: '#e2d9f3',
+              color: '#fbbf24',
               margin: '0 0 6px',
             }}>
               🎯 7 días gratis
             </p>
             <p style={{
               fontSize: 14,
-              color: '#a78bfa',
+              color: '#fbbf24',
+              opacity: 0.8,
               margin: 0,
               lineHeight: 1.6,
               fontWeight: 600,
