@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 type Step = 1 | 2 | 3 | 4
 
@@ -20,8 +21,10 @@ interface Props {
 const LEVELS = [
   { emoji: '📚', label: 'Secundaria', subtitle: '1°, 2° o 3° año', needsGrade: true },
   { emoji: '🚀', label: 'Preparatoria / Bachillerato', subtitle: '1°, 2° o 3° año', needsGrade: true },
-  { emoji: '📝', label: 'Examen de Preparatoria', subtitle: 'COMIPEMS · CCH · CECyT', needsGrade: false },
-  { emoji: '🏛️', label: 'Examen de Universidad', subtitle: 'UNAM · IPN · UAM', needsGrade: false },
+  ...(FEATURE_FLAGS.ENABLE_EXAM_PLANS ? [
+    { emoji: '📝', label: 'Examen de Preparatoria', subtitle: 'COMIPEMS · CCH · CECyT', needsGrade: false },
+    { emoji: '🏛️', label: 'Examen de Universidad', subtitle: 'UNAM · IPN · UAM', needsGrade: false },
+  ] : []),
 ]
 
 const GRADES = [
