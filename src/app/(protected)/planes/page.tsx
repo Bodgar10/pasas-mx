@@ -298,6 +298,37 @@ const planParam = searchParams.get('plan')
           </div>
         </div>
 
+        {/* 7-day trial banner */}
+        {!deviceHadTrial && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(236,72,153,0.1))',
+            border: '1.5px solid rgba(124,58,237,0.4)',
+            borderRadius: 16,
+            padding: '16px 20px',
+            marginBottom: 24,
+            textAlign: 'center',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 18,
+              fontWeight: 900,
+              color: '#e2d9f3',
+              margin: '0 0 6px',
+            }}>
+              🎯 7 días gratis
+            </p>
+            <p style={{
+              fontSize: 14,
+              color: '#a78bfa',
+              margin: 0,
+              lineHeight: 1.6,
+              fontWeight: 600,
+            }}>
+              Empieza hoy sin costo. Tu tarjeta se guarda pero no se cobra hasta el día 8. Cancela cuando quieras.
+            </p>
+          </div>
+        )}
+
         {/* Pricing cards */}
         <div className="planes-grid">
           {cards.map((card, idx) => {

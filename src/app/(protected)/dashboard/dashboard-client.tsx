@@ -409,7 +409,6 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                   marginBottom: 20,
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
                   gap: 12,
                 }}>
                   <div>
@@ -420,18 +419,6 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                       Te quedan <strong style={{ color: '#fbbf24' }}>{daysLeft} día{daysLeft !== 1 ? 's' : ''}</strong> gratis
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => router.push('/planes?plan=estandar')}
-                    style={{
-                      background: '#fbbf24', color: '#0f0a1e', border: 'none',
-                      borderRadius: 10, padding: '8px 14px', fontSize: 13,
-                      fontWeight: 900, cursor: 'pointer', whiteSpace: 'nowrap',
-                      fontFamily: 'var(--font-nunito)',
-                    }}
-                  >
-                    Activar →
-                  </button>
                 </div>
               )
             })()}
