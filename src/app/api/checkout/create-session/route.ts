@@ -52,6 +52,14 @@ export async function POST(request: Request) {
       .eq('id', user.id)
       .single()
 
+    // Check if user already had a trial — if so, no trial on new subscription
+    const { data: existingSubs } = await supabase
+      .from('subscriptions')
+      .select('id')
+      .eq('user_id', user.id)
+      .limit(1)
+    const hasHadSubscription = (existingSubs?.length ?? 0) > 0
+
     // 4. Build URLs
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas-mx.vercel.app'
     const successUrl = `${baseUrl}${CHECKOUT_CONFIG.successPath}`
@@ -76,7 +84,9 @@ export async function POST(request: Request) {
           plan,
           duration,
         },
+        ...(hasHadSubscription ? {} : { trial_period_days: 7 }),
       },
+      payment_method_collection: 'always',
       success_url: successUrl,
       cancel_url:  cancelUrl,
     })

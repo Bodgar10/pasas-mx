@@ -39,24 +39,11 @@ type Duration = 'monthly' | 'quarterly' | 'biannual'
 function PlanesContent() {
   const searchParams = useSearchParams()
 
-  // After registro, resume pending plan from sessionStorage
+  const [deviceHadTrial, setDeviceHadTrial] = useState(false)
+
   useEffect(() => {
-    const pendingPlan = sessionStorage.getItem('pasas_pending_plan') as PlanKey | null
-    const pendingDuration = sessionStorage.getItem('pasas_pending_duration') as Duration | null
-    const pendingTimestamp = sessionStorage.getItem('pasas_pending_timestamp')
-
-    // Always clear pending data
-    sessionStorage.removeItem('pasas_pending_plan')
-    sessionStorage.removeItem('pasas_pending_duration')
-    sessionStorage.removeItem('pasas_pending_timestamp')
-
-    // Only auto-trigger if data was saved less than 5 minutes ago
-    const isRecent = pendingTimestamp && (Date.now() - Number(pendingTimestamp)) < 5 * 60 * 1000
-
-    if (pendingPlan && pendingDuration && isRecent) {
-      setActivePlan(pendingPlan)
-      handleCTA(pendingDuration, pendingPlan)
-    }
+    const hadTrial = localStorage.getItem('pasas_trial_used') === 'true'
+    setDeviceHadTrial(hadTrial)
   }, [])
 
 const planParam = searchParams.get('plan')
@@ -70,7 +57,8 @@ const planParam = searchParams.get('plan')
 
   const [loadingCheckout, setLoadingCheckout] = useState<string | null>(null)
 
-  async function handleCTA(duration: Duration, planKey: PlanKey = activePlan) {
+  async function handleCTA(duration: Duration) {
+    const planKey = activePlan
     setLoadingCheckout(duration)
     try {
       // Check if user is anonymous — if so, redirect to registro first
@@ -79,13 +67,14 @@ const planParam = searchParams.get('plan')
       const { data: { user } } = await supabase.auth.getUser()
 
       if (!user || user.is_anonymous) {
-        // Save intended plan + timestamp in sessionStorage so registro can redirect back
         sessionStorage.setItem('pasas_pending_plan', planKey)
         sessionStorage.setItem('pasas_pending_duration', duration)
-        sessionStorage.setItem('pasas_pending_timestamp', String(Date.now()))
         window.location.href = '/registro'
         return
       }
+
+      // Mark trial as used on this device
+      localStorage.setItem('pasas_trial_used', 'true')
 
       trackCheckoutStarted(planKey, duration)
       const res = await fetch('/api/checkout/create-session', {
@@ -246,7 +235,7 @@ const planParam = searchParams.get('plan')
               lineHeight: 1.6,
             }}
           >
-            Sin contrato. Cancela cuando quieras.
+            {deviceHadTrial ? 'Sin contrato. Cancela cuando quieras.' : '7 días gratis · Sin contrato · Cancela cuando quieras.'}
           </p>
 
           {/* Tab switcher — only when plan=personalizado */}
@@ -451,7 +440,7 @@ const planParam = searchParams.get('plan')
                       opacity: loadingCheckout !== null && loadingCheckout !== card.key ? 0.6 : 1,
                     }}
                   >
-                    {loadingCheckout === card.key ? 'Cargando...' : `Elegir ${card.label}`}
+                    {loadingCheckout === card.key ? 'Cargando...' : deviceHadTrial ? `Elegir ${card.label}` : `Probar ${card.label} gratis →`}
                   </button>
                 </div>
               </div>

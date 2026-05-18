@@ -114,6 +114,11 @@ export async function registroAction(
           success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?checkout=success`,
           cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/planes`,
           metadata: { user_id: user.id, plan: pendingPlan },
+          subscription_data: {
+            trial_period_days: 7,
+            metadata: { user_id: user.id, plan: pendingPlan },
+          },
+          payment_method_collection: 'always',
         })
         if (session.url) {
           return { stripeUrl: session.url }

@@ -260,6 +260,7 @@ export default function LandingClient() {
   function handleCTA(location: string) {
     track('hero_variant_converted', { variant, cta_location: location })
     track('landing_cta_clicked', { location, variant })
+    localStorage.setItem('pasas_trial_used', 'true')
   }
 
   return (
