@@ -688,7 +688,7 @@ export default function TopicAdminClient({
               cursor: 'pointer',
               color: '#a78bfa',
               fontSize: 16,
-              display: 'flex',
+              display: 'none',
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
