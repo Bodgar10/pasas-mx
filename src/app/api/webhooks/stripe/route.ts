@@ -112,6 +112,56 @@ export async function POST(request: Request) {
 
         console.log(`[webhooks/stripe] Subscription created for user ${userId}`)
 
+        // For grade plan, create user_subjects for every subject matching the user's level and grade
+        if (planInfo.plan === 'grade') {
+          try {
+            const { data: userProfile } = await supabase
+              .from('users')
+              .select('education_level, grade, interests')
+              .eq('id', userId)
+              .single()
+
+            if (userProfile?.education_level && userProfile?.grade) {
+              const themeName = userProfile.interests?.[0] ?? null
+
+              // Resolve theme UUID from name
+              let themeId: string | null = null
+              if (themeName) {
+                const { data: themeRow } = await supabase
+                  .from('themes')
+                  .select('id')
+                  .eq('name', themeName)
+                  .single()
+                themeId = themeRow?.id ?? null
+              }
+
+              // Fetch all subjects for this education level and grade
+              const { data: subjects } = await supabase
+                .from('subjects')
+                .select('id')
+                .eq('education_level', userProfile.education_level)
+                .contains('grades', [userProfile.grade])
+
+              if (subjects && subjects.length > 0) {
+                const userSubjectsRows = subjects.map((subject) => ({
+                  user_id: userId,
+                  subject_id: subject.id,
+                  theme_id: themeId,
+                  plan_type: 'grade',
+                  xp: 0,
+                  streak_days: 0,
+                  purchased_at: new Date().toISOString(),
+                }))
+
+                await supabase.from('user_subjects').insert(userSubjectsRows)
+                console.log(`[webhooks/stripe] Created ${userSubjectsRows.length} user_subjects for user ${userId}`)
+              }
+            }
+          } catch (err) {
+            console.error('[webhooks/stripe] Error creating user_subjects:', err)
+          }
+        }
+
         // If ai_personalized plan, trigger content generation in background
         if (planInfo.plan === 'ai_personalized') {
           try {

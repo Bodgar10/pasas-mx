@@ -37,9 +37,6 @@ export async function registroAction(
   const pendingPlan = formData.get('pending_plan') as string | null
   const pendingDuration = formData.get('pending_duration') as string | null
 
-  console.log('[registro] onboarding_data:', onboardingRaw)
-  console.log('[registro] pending_plan:', pendingPlan)
-  console.log('[registro] pending_duration:', pendingDuration)
 
   if (password.length < 6) {
     return { error: 'La contraseña debe tener al menos 6 caracteres.' }
