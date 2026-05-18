@@ -49,7 +49,6 @@ function PlanesContent() {
     sessionStorage.removeItem('pasas_pending_plan')
     sessionStorage.removeItem('pasas_pending_duration')
     sessionStorage.removeItem('pasas_pending_timestamp')
-    sessionStorage.removeItem('pasas_onboarding')
 
     // Only auto-trigger if data was saved less than 5 minutes ago
     const isRecent = pendingTimestamp && (Date.now() - Number(pendingTimestamp)) < 5 * 60 * 1000
