@@ -80,6 +80,7 @@ export default function SubjectAdminClient({
   const [editSlug, setEditSlug] = useState('')
   const [editIcon, setEditIcon] = useState('')
   const [editDescription, setEditDescription] = useState('')
+  const [editDifficulty, setEditDifficulty] = useState(1)
   const [savingEdit, setSavingEdit] = useState(false)
   const [loadingEditEmoji, setLoadingEditEmoji] = useState(false)
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
@@ -151,6 +152,7 @@ export default function SubjectAdminClient({
         slug: editSlug,
         icon: editIcon || null,
         description: editDescription || null,
+        difficulty: editDifficulty,
       })
       .eq('id', editingTopic.id)
     setSavingEdit(false)
@@ -430,6 +432,7 @@ export default function SubjectAdminClient({
                   setEditSlug(topic.slug)
                   setEditIcon(topic.icon ?? '')
                   setEditDescription((topic as any).description ?? '')
+                  setEditDifficulty(topic.difficulty ?? 1)
                 }}
                 style={{
                   background: 'rgba(124,58,237,0.15)',
@@ -862,6 +865,33 @@ export default function SubjectAdminClient({
                     boxSizing: 'border-box',
                   }}
                 />
+              </div>
+              <div>
+                <label style={{
+                  fontSize: 13, color: '#a78bfa', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: 1,
+                  display: 'block', marginBottom: 6,
+                }}>Dificultad</label>
+                <select
+                  value={editDifficulty}
+                  onChange={(e) => setEditDifficulty(Number(e.target.value))}
+                  style={{
+                    width: '100%',
+                    background: '#1C1033',
+                    border: '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 15,
+                    padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)',
+                    cursor: 'pointer',
+                    boxSizing: 'border-box',
+                  }}
+                >
+                  <option value={1}>1 — Fácil</option>
+                  <option value={2}>2 — Media</option>
+                  <option value={3}>3 — Difícil</option>
+                </select>
               </div>
               <div>
                 <label style={{
