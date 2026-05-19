@@ -155,13 +155,38 @@ export default function AdminHomeClient({ subjects }: Props) {
     if (!confirmDeleteId) return
     setDeletingId(confirmDeleteId)
     const supabase = createClient()
-    const { error } = await supabase.from('subjects').delete().eq('id', confirmDeleteId)
-    setDeletingId(null)
-    setConfirmDeleteId(null)
-    if (error) {
-      alert('Error al eliminar: ' + error.message)
+
+    const subjectToDelete = subjects.find(s => s.id === confirmDeleteId)
+    if (!subjectToDelete) {
+      setDeletingId(null)
+      setConfirmDeleteId(null)
       return
     }
+
+    if (!isExamLevel && selectedGrade !== null && subjectToDelete.grades.length > 1) {
+      // Only remove the selected grade from the array
+      const newGrades = subjectToDelete.grades.filter(g => g !== gradeParam)
+      const { error } = await supabase
+        .from('subjects')
+        .update({ grades: newGrades })
+        .eq('id', confirmDeleteId)
+      setDeletingId(null)
+      setConfirmDeleteId(null)
+      if (error) {
+        alert('Error al eliminar: ' + error.message)
+        return
+      }
+    } else {
+      // Last grade or exam level — delete the entire record
+      const { error } = await supabase.from('subjects').delete().eq('id', confirmDeleteId)
+      setDeletingId(null)
+      setConfirmDeleteId(null)
+      if (error) {
+        alert('Error al eliminar: ' + error.message)
+        return
+      }
+    }
+
     router.refresh()
   }
 
@@ -887,8 +912,11 @@ export default function AdminHomeClient({ subjects }: Props) {
             >
               🗑️ Eliminar materia
             </div>
-            <div style={{ color: '#e2d9f3', fontSize: 15, marginBottom: 20 }}>
-              ¿Seguro que quieres eliminar esta materia? Esta acción no se puede deshacer.
+            <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 20 }}>
+              {!isExamLevel && selectedGrade !== null && (subjects.find(s => s.id === confirmDeleteId)?.grades.length ?? 0) > 1
+                ? `¿Seguro que quieres eliminar esta materia de ${GRADE_LABELS[gradeParam]}? Solo se eliminará de este grado, los otros grados se conservan.`
+                : '¿Seguro que quieres eliminar esta materia? Esta acción no se puede deshacer y eliminará todos los temas y contenido asociado.'
+              }
             </div>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
               <button
