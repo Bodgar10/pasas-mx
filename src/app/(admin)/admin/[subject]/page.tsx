@@ -22,15 +22,6 @@ export default async function SubjectAdminPage({
 
   const supabase = await createClient()
 
-  const getCachedSubject = unstable_cache(
-    async (slug: string) => {
-      const { data } = await supabase.from('subjects').select('*').eq('slug', slug).single()
-      return data
-    },
-    ['admin-subject', subjectSlug],
-    { revalidate: 300, tags: ['subjects'] }
-  )
-
   const getCachedThemes = unstable_cache(
     async () => {
       const { data } = await supabase.from('themes').select('*').eq('active', true)
@@ -40,8 +31,8 @@ export default async function SubjectAdminPage({
     { revalidate: 300, tags: ['themes'] }
   )
 
-  const [subject, themes] = await Promise.all([
-    getCachedSubject(subjectSlug),
+  const [{ data: subject }, themes] = await Promise.all([
+    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
     getCachedThemes(),
   ])
 
