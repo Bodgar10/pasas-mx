@@ -79,6 +79,7 @@ export default function SubjectAdminClient({
   const [editName, setEditName] = useState('')
   const [editSlug, setEditSlug] = useState('')
   const [editIcon, setEditIcon] = useState('')
+  const [editDescription, setEditDescription] = useState('')
   const [savingEdit, setSavingEdit] = useState(false)
   const [loadingEditEmoji, setLoadingEditEmoji] = useState(false)
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
@@ -149,6 +150,7 @@ export default function SubjectAdminClient({
         name: editName,
         slug: editSlug,
         icon: editIcon || null,
+        description: editDescription || null,
       })
       .eq('id', editingTopic.id)
     setSavingEdit(false)
@@ -427,6 +429,7 @@ export default function SubjectAdminClient({
                   setEditName(topic.name)
                   setEditSlug(topic.slug)
                   setEditIcon(topic.icon ?? '')
+                  setEditDescription((topic as any).description ?? '')
                 }}
                 style={{
                   background: 'rgba(124,58,237,0.15)',
@@ -832,6 +835,31 @@ export default function SubjectAdminClient({
                     border: '1.5px solid #2D2048', borderRadius: 10,
                     color: '#e2d9f3', fontSize: 16, padding: '8px 12px',
                     fontFamily: 'var(--font-nunito)', boxSizing: 'border-box',
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{
+                  fontSize: 13, color: '#a78bfa', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: 1,
+                  display: 'block', marginBottom: 6,
+                }}>Descripción</label>
+                <textarea
+                  value={editDescription}
+                  onChange={(e) => setEditDescription(e.target.value)}
+                  placeholder="Breve descripción del tema"
+                  style={{
+                    width: '100%',
+                    minHeight: 72,
+                    background: '#1C1033',
+                    border: '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 15,
+                    padding: '8px 12px',
+                    fontFamily: 'var(--font-nunito)',
+                    resize: 'vertical',
+                    boxSizing: 'border-box',
                   }}
                 />
               </div>
