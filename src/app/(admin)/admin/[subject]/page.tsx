@@ -47,21 +47,12 @@ export default async function SubjectAdminPage({
 
   if (!subject) return notFound()
 
-  const getCachedTopics = unstable_cache(
-    async (subjectId: string, g: number) => {
-      const { data } = await supabase
-        .from('topics')
-        .select('*')
-        .eq('subject_id', subjectId)
-        .eq('grade', g)
-        .order('display_order', { ascending: true })
-      return data ?? []
-    },
-    ['admin-topics', subject.id, String(grade)],
-    { revalidate: 300, tags: ['topics'] }
-  )
-
-  const topics = await getCachedTopics(subject.id, grade)
+  const { data: topics } = await supabase
+    .from('topics')
+    .select('*')
+    .eq('subject_id', subject.id)
+    .eq('grade', grade)
+    .order('display_order', { ascending: true })
 
   // Batch 3: sections for section counts (needs topic ids)
   const topicIds = (topics ?? []).map((t) => t.id)
