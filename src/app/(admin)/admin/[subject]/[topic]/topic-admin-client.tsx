@@ -167,6 +167,11 @@ export default function TopicAdminClient({
   const [generating, setGenerating] = useState(false)
   const [themeChanging, setThemeChanging] = useState(false)
   const [generateError, setGenerateError] = useState<string | null>(null)
+  const [showGenerateModal, setShowGenerateModal] = useState(false)
+  const [manualJson, setManualJson] = useState('')
+  const [manualJsonError, setManualJsonError] = useState<string | null>(null)
+  const [savingManual, setSavingManual] = useState(false)
+  const [copied, setCopied] = useState(false)
   const [generatingDiagram, setGeneratingDiagram] = useState(false)
   const [diagramError, setDiagramError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
@@ -285,7 +290,15 @@ export default function TopicAdminClient({
     setPublished((prev) => !prev)
   }
 
-  async function handleGenerate() {
+  function handleGenerate() {
+    setShowGenerateModal(true)
+    setManualJson('')
+    setManualJsonError(null)
+    setGenerateError(null)
+  }
+
+  async function handleGenerateInternal() {
+    setShowGenerateModal(false)
     setGenerating(true)
     setGenerateError(null)
     try {
@@ -321,6 +334,202 @@ export default function TopicAdminClient({
       setGenerateError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
     } finally {
       setGenerating(false)
+    }
+  }
+
+  function buildOpusPrompt(): string {
+    const educationContextLabel =
+      level === 'middle_school' ? `${grade}° de secundaria` :
+      level === 'high_school'   ? `${grade}° de preparatoria` :
+      level === 'exam_prepa'    ? `preparación para examen de ingreso a preparatoria (COMIPEMS)` :
+      level === 'exam_uni'      ? `preparación para examen de ingreso a universidad (UNAM/IPN)` :
+      `${grade}° grado`
+    const themeName = themes.find((t) => t.id === selectedThemeId)?.name ?? ''
+    const isExam = level === 'exam_prepa' || level === 'exam_uni'
+
+    return `Eres un experto en educación mexicana y storytelling pedagógico.
+Tu tarea es generar contenido educativo inmersivo para estudiantes mexicanos de ${educationContextLabel}.
+
+REGLA MÁS IMPORTANTE: La temática "${themeName}" no es un adorno — es el MUNDO donde ocurre todo el contenido.
+El alumno debe sentir que está aprendiendo DENTRO de "${themeName}", no que alguien lo menciona de pasada.
+
+ANTES DE ESCRIBIR CUALQUIER SECCIÓN, identifica mentalmente:
+1. Los 5 personajes, figuras o elementos MÁS FAMOSOS y reconocibles de "${themeName}" a nivel mundial en 2024-2025
+2. Las 3 situaciones o contextos MÁS ICÓNICOS de "${themeName}" que cualquier fan reconocería al instante
+3. Los términos, mecánicas o conceptos MÁS USADOS por la comunidad real de "${themeName}"
+
+Usa SIEMPRE lo más famoso, no lo más oscuro. Un alumno promedio de 13-18 años en México debe reconocer inmediatamente cada referencia.
+Nada genérico. Nada inventado. Solo referencias reales y populares de "${themeName}".
+
+Adapta vocabulario y complejidad a ${educationContextLabel}.
+${isExam ? 'Enfócate en conceptos frecuentes en exámenes de admisión, con distractores plausibles en el quiz.' : ''}
+Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.
+
+---
+
+Genera contenido educativo inmersivo para:
+- Tema: "${topic.name}"
+- Materia: "${subject.name}"
+- Nivel: ${educationContextLabel}
+- Temática: "${themeName}"
+
+INSTRUCCIÓN CRÍTICA: Cada sección debe desarrollar una situación REAL y ESPECÍFICA de "${themeName}".
+
+Genera este JSON exacto:
+
+{
+  "sections": [
+    {
+      "type": "analogy",
+      "title": "título que mencione algo específico de ${themeName}",
+      "content": "Empieza con una situación concreta y detallada de ${themeName}. Describe el escenario, los personajes o elementos involucrados. Plantea el problema que surge naturalmente en ese contexto. Usa detalles específicos de ${themeName} — nombres, mecánicas, situaciones reales del universo de ${themeName}. Mínimo 100 palabras. El concepto académico debe emerger naturalmente de la situación, no al revés.",
+      "display_order": 1
+    },
+    {
+      "type": "explanation",
+      "title": "título que conecte la situación anterior con el concepto formal",
+      "content": "Arranca con 'Lo que acabas de ver en [situación de ${themeName}] es exactamente [concepto].' Luego explica el concepto formal usando **negritas** para términos clave. Conecta cada parte del concepto con elementos de la situación anterior. Máximo 100 palabras.",
+      "display_order": 2
+    },
+    {
+      "type": "example",
+      "title": "Ejemplo resuelto — situación diferente de ${themeName}",
+      "content": "Plantea un problema NUEVO dentro de ${themeName}, diferente al de la analogía. Resuélvelo paso a paso con **pasos numerados**. Los datos del problema deben venir del universo de ${themeName}. Muestra la operación completa. Máximo 120 palabras.",
+      "display_order": 3
+    },
+    {
+      "type": "key_fact",
+      "title": "Lo que debes recordar",
+      "content": "La definición formal del concepto en 1-2 oraciones con **negritas** en lo más crítico. Incluye la fórmula o regla principal si aplica.",
+      "display_order": 4
+    },
+    {
+      "type": "tip",
+      "title": "${isExam ? 'Tip para el examen de admisión' : 'Tip para no fallar en el examen'}",
+      "content": "${isExam ? 'Consejo estratégico específico para resolver este tipo de pregunta rápido en COMIPEMS/UNAM. Menciona el tipo de trampa más común en las opciones.' : 'Truco práctico para recordar el concepto o evitar el error más común.'} Máximo 50 palabras.",
+      "display_order": 5
+    }
+  ],
+  "quiz_questions": [
+    {
+      "question": "pregunta de dificultad básica — puede tener contexto de ${themeName}",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "A",
+      "explanation": "por qué es correcta y cuál es el error típico de las otras opciones. Máximo 50 palabras.",
+      "difficulty": 1,
+      "xp_reward": 20
+    },
+    {
+      "question": "pregunta de dificultad media — requiere aplicar el concepto",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "B",
+      "explanation": "por qué es correcta. Máximo 50 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta difícil — requiere razonamiento, no memorización",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "C",
+      "explanation": "por qué es correcta y por qué los distractores son plausibles. Máximo 50 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
+    },
+    {
+      "question": "pregunta de dificultad media — aplica el concepto en contexto diferente de ${themeName}",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "D",
+      "explanation": "por qué es correcta y cuál es el error típico. Máximo 50 palabras.",
+      "difficulty": 2,
+      "xp_reward": 30
+    },
+    {
+      "question": "pregunta difícil — combina conceptos o requiere varios pasos de razonamiento",
+      "options": [
+        { "letter": "A", "text": "opción" },
+        { "letter": "B", "text": "opción" },
+        { "letter": "C", "text": "opción" },
+        { "letter": "D", "text": "opción" }
+      ],
+      "correct_answer": "A",
+      "explanation": "por qué es correcta y por qué los distractores son plausibles. Máximo 50 palabras.",
+      "difficulty": 3,
+      "xp_reward": 50
+    }
+  ]}`
+  }
+
+  async function handleSaveManualJson() {
+    setManualJsonError(null)
+    setSavingManual(true)
+
+    let parsed: { sections?: unknown[]; quiz_questions?: unknown[] }
+    try {
+      let clean = manualJson.replace(/```json|```/g, '').trim()
+      const jsonMatch = clean.match(/\{[\s\S]*\}/)
+      if (jsonMatch) clean = jsonMatch[0]
+      parsed = JSON.parse(clean)
+    } catch {
+      setManualJsonError('El JSON no es válido. Asegúrate de copiar todo el texto que te dio Opus, sin agregar nada.')
+      setSavingManual(false)
+      return
+    }
+
+    if (!parsed.sections || !Array.isArray(parsed.sections) || parsed.sections.length === 0) {
+      setManualJsonError('El JSON no tiene la estructura correcta — falta el array "sections".')
+      setSavingManual(false)
+      return
+    }
+
+    try {
+      const res = await fetch('/api/admin/save-generated-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          topicId: topic.id,
+          themeId: selectedThemeId,
+          themeName: themes.find((t) => t.id === selectedThemeId)?.name,
+          sections: parsed.sections,
+          quiz_questions: parsed.quiz_questions ?? [],
+        }),
+      })
+
+      const data = await res.json()
+      if (data.error) {
+        setManualJsonError(`Error al guardar: ${data.error}`)
+        setSavingManual(false)
+        return
+      }
+
+      if (data.sections) setSections(data.sections)
+      if (data.quizQuestions) setQuizQuestions(data.quizQuestions)
+      setPublished(false)
+      setShowGenerateModal(false)
+      setManualJson('')
+    } catch (err) {
+      setManualJsonError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
+    } finally {
+      setSavingManual(false)
     }
   }
 
@@ -476,6 +685,240 @@ export default function TopicAdminClient({
           <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
         </div>
       )}
+      {/* ─── MODAL: ELEGIR MODO DE GENERACIÓN ─── */}
+      {showGenerateModal && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 200,
+          background: 'rgba(15,10,30,0.95)',
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+          overflowY: 'auto',
+          padding: '24px 16px',
+        }}>
+          <div style={{
+            background: '#1a1035',
+            border: '1px solid rgba(124,58,237,0.4)',
+            borderRadius: 20,
+            padding: 24,
+            width: '100%',
+            maxWidth: 580,
+            marginTop: 16,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <div>
+                <div style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 15,
+                  fontWeight: 900,
+                  color: '#e2d9f3',
+                  marginBottom: 4,
+                }}>
+                  Generar contenido
+                </div>
+                <div style={{ fontSize: 13, color: '#a78bfa' }}>
+                  {topic.name} · {themes.find(t => t.id === selectedThemeId)?.name}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowGenerateModal(false)}
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid #2D2048',
+                  borderRadius: 10,
+                  color: '#a78bfa',
+                  fontSize: 18,
+                  width: 36,
+                  height: 36,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                ×
+              </button>
+            </div>
+
+            <div style={{
+              background: '#1C1033',
+              border: '1px solid rgba(124,58,237,0.25)',
+              borderRadius: 14,
+              padding: 18,
+              marginBottom: 12,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                <span style={{ fontSize: 20 }}>⚡</span>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: '#e2d9f3' }}>Claude Sonnet (automático)</div>
+                  <div style={{ fontSize: 13, color: '#a78bfa' }}>Genera y guarda en un clic. Más rápido.</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleGenerateInternal}
+                style={{
+                  width: '100%',
+                  minHeight: 44,
+                  background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: 12,
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  letterSpacing: 0.5,
+                }}
+              >
+                Generar con Sonnet →
+              </button>
+            </div>
+
+            <div style={{
+              background: '#1C1033',
+              border: '1px solid rgba(251,191,36,0.3)',
+              borderRadius: 14,
+              padding: 18,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                <span style={{ fontSize: 20 }}>👑</span>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: '#fbbf24' }}>Claude Opus (manual)</div>
+                  <div style={{ fontSize: 13, color: '#a78bfa' }}>Mejor calidad. Copia el prompt → pégalo en claude.ai → pega aquí el resultado.</div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 12 }}>
+                <div style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: '#a78bfa',
+                  textTransform: 'uppercase',
+                  letterSpacing: 1,
+                  marginBottom: 8,
+                }}>
+                  Paso 1 — Copia este prompt y pégalo en claude.ai con Opus
+                </div>
+                <div style={{
+                  background: '#0f0a1e',
+                  border: '1px solid #2D2048',
+                  borderRadius: 10,
+                  padding: '10px 12px',
+                  fontSize: 12,
+                  color: '#a78bfa',
+                  fontFamily: 'monospace',
+                  maxHeight: 120,
+                  overflowY: 'auto',
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                  lineHeight: 1.5,
+                  marginBottom: 8,
+                }}>
+                  {buildOpusPrompt().substring(0, 300)}...
+                </div>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(buildOpusPrompt())
+                    setCopied(true)
+                    setTimeout(() => setCopied(false), 2500)
+                  }}
+                  style={{
+                    width: '100%',
+                    minHeight: 40,
+                    background: copied ? 'rgba(16,185,129,0.15)' : 'rgba(251,191,36,0.1)',
+                    border: copied ? '1px solid rgba(16,185,129,0.4)' : '1px solid rgba(251,191,36,0.3)',
+                    borderRadius: 10,
+                    color: copied ? '#10b981' : '#fbbf24',
+                    fontSize: 14,
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  {copied ? '✓ Prompt copiado' : '📋 Copiar prompt completo'}
+                </button>
+              </div>
+
+              <div>
+                <div style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: '#a78bfa',
+                  textTransform: 'uppercase',
+                  letterSpacing: 1,
+                  marginBottom: 8,
+                }}>
+                  Paso 2 — Pega aquí el JSON que te dio Opus
+                </div>
+                <textarea
+                  value={manualJson}
+                  onChange={(e) => {
+                    setManualJson(e.target.value)
+                    setManualJsonError(null)
+                  }}
+                  placeholder={'{\n  "sections": [...],\n  "quiz_questions": [...]\n}'}
+                  style={{
+                    width: '100%',
+                    minHeight: 140,
+                    background: '#0f0a1e',
+                    border: manualJsonError ? '1.5px solid #ef4444' : '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 13,
+                    padding: '10px 12px',
+                    fontFamily: 'monospace',
+                    resize: 'vertical',
+                    boxSizing: 'border-box',
+                    lineHeight: 1.5,
+                  }}
+                />
+                {manualJsonError && (
+                  <div style={{
+                    marginTop: 8,
+                    padding: '8px 12px',
+                    background: 'rgba(239,68,68,0.1)',
+                    border: '1px solid rgba(239,68,68,0.3)',
+                    borderRadius: 8,
+                    color: '#fca5a5',
+                    fontSize: 13,
+                    fontWeight: 600,
+                  }}>
+                    {manualJsonError}
+                  </div>
+                )}
+                <button
+                  type="button"
+                  onClick={handleSaveManualJson}
+                  disabled={savingManual || manualJson.trim().length < 10}
+                  style={{
+                    width: '100%',
+                    minHeight: 44,
+                    marginTop: 10,
+                    background: 'rgba(251,191,36,0.15)',
+                    border: '1px solid rgba(251,191,36,0.4)',
+                    borderRadius: 12,
+                    color: '#fbbf24',
+                    fontSize: 14,
+                    fontWeight: 800,
+                    cursor: (savingManual || manualJson.trim().length < 10) ? 'not-allowed' : 'pointer',
+                    opacity: (savingManual || manualJson.trim().length < 10) ? 0.5 : 1,
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  {savingManual ? '⏳ Guardando...' : '💾 Guardar contenido de Opus'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ─── ADMIN TOP BANNER ─── */}
       <div
         style={{
