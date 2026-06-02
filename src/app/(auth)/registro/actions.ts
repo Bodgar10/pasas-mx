@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/utils/supabase/server'
+import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 
 export type RegistroState = { error: string } | { stripeUrl: string } | null
@@ -36,6 +37,7 @@ export async function registroAction(
   const onboardingRaw = formData.get('onboarding_data') as string | null
   const pendingPlan = formData.get('pending_plan') as string | null
   const pendingDuration = formData.get('pending_duration') as string | null
+  const utmRaw = formData.get('utm_data') as string | null
 
 
   if (password.length < 6) {
@@ -70,10 +72,24 @@ export async function registroAction(
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
+  // Parsear UTMs si vienen del formulario
+  let acquisitionSource = null
+  if (utmRaw) {
+    try {
+      const utmParsed = JSON.parse(utmRaw)
+      acquisitionSource = buildAcquisitionSource(
+        utmParsed,
+        utmParsed.referrer,
+        utmParsed.landing_url
+      )
+    } catch { /* UTM malformed — ignorar */ }
+  }
+
   // Parse onboarding data if available
   let profileUpdate: Record<string, unknown> = {
     full_name: fullName,
     onboarding_done: true,
+    ...(acquisitionSource ? { acquisition_source: acquisitionSource } : {}),
   }
 
   if (onboardingRaw && onboardingRaw.length > 2) {

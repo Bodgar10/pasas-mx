@@ -4,6 +4,7 @@ import "./globals.css";
 import Starfield from "@/components/starfield";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { Suspense } from "react";
+import UTMPersistence from "@/components/global/UTMPersistence";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" style={{ position: 'relative' }}>
         <Starfield />
         <Suspense>
+          <UTMPersistence />
           <PostHogProvider>
             <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column' }}>
               {children}
