@@ -253,6 +253,29 @@ export async function POST(request: Request) {
       case 'customer.subscription.deleted': {
         const subscription = event.data.object as Stripe.Subscription
 
+        // Buscar la suscripción en BD para verificar si tiene cancellation_reason
+        const { data: subRow } = await supabase
+          .from('subscriptions')
+          .select('id, user_id')
+          .eq('provider_sub_id', subscription.id)
+          .maybeSingle()
+
+        if (subRow) {
+          // Verificar si el usuario dejó feedback de cancelación
+          const { data: feedback } = await supabase
+            .from('cancellation_reasons')
+            .select('id')
+            .eq('user_id', subRow.user_id)
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (!feedback) {
+            // Sin feedback — notificar admin en consola (TODO: email cuando Resend esté listo)
+            console.warn(`[webhooks/stripe] Cancelación sin feedback para user ${subRow.user_id}`)
+          }
+        }
+
         await supabase
           .from('subscriptions')
           .update({
@@ -261,6 +284,8 @@ export async function POST(request: Request) {
             updated_at:   new Date().toISOString(),
           })
           .eq('provider_sub_id', subscription.id)
+
+        // TODO: Cuando Resend esté configurado, enviar email de confirmación de cancelación aquí
 
         console.log(`[webhooks/stripe] Subscription cancelled: ${subscription.id}`)
         break

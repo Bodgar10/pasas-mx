@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { createClient } from '@/utils/supabase/client'
 
@@ -23,9 +25,14 @@ const HERO_VARIANTS = {
     cta: 'Quiero entrar →',
     micro: '7 días gratis. Si no es lo tuyo, cancelas y ya.',
   },
+  PAPA: {
+    id: 'PAPA',
+    h1: 'Tu hijo no es flojo.\nLa escuela no le habla en su idioma.',
+    sub: 'Pasas.mx explica cada materia con lo que ya le gusta: Minecraft, anime, K-pop o fútbol. Deja de pelear por las tareas.',
+    cta: 'Prueba 7 días gratis →',
+    micro: '7 días gratis · Sin contrato · Cancela cuando quieras.',
+  },
 } as const
-
-type VariantKey = keyof typeof HERO_VARIANTS
 
 function getOrAssignVariant(): VariantKey {
   if (typeof window === 'undefined') return 'D'
@@ -187,6 +194,7 @@ function FadeSection({ children, style }: { children: React.ReactNode; style?: R
 // ── Main component ─────────────────────────────────────────────────
 export default function LandingClient() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [variant, setVariant] = useState<VariantKey>('D')
   const [scrolled, setScrolled] = useState(false)
   const [activeTab, setActiveTab] = useState('kpop')
@@ -224,10 +232,20 @@ export default function LandingClient() {
   }, [])
 
   useEffect(() => {
-    const v = getOrAssignVariant()
+    // Si hay utm_source, detectar audiencia y mostrar hero correspondiente
+    const utmSource = searchParams.get('utm_source')
+    const audience = detectAudience(utmSource)
+
+    let v: VariantKey
+    if (audience === 'papa') {
+      v = 'PAPA'
+    } else {
+      v = getOrAssignVariant()
+    }
+
     setVariant(v)
     if (typeof window !== 'undefined' && (window as any).posthog) {
-      (window as any).posthog.capture('hero_variant_seen', { variant: v })
+      (window as any).posthog.capture('hero_variant_seen', { variant: v, audience, utm_source: utmSource })
     }
 
     // Prefetch anonymous session in background while user reads the landing
