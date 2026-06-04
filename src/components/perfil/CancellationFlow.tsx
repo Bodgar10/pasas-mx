@@ -28,12 +28,32 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled }: Props) {
   const [detail, setDetail] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [pauseMonths, setPauseMonths] = useState(1)
 
   const dateFormatted = new Intl.DateTimeFormat('es-MX', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   }).format(periodEnd)
+
+  async function executePause() {
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/subscription/pause', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ months: pauseMonths }),
+      })
+      if (!res.ok) throw new Error('No se pudo pausar')
+      setStep(4)
+      onCancelled()
+    } catch {
+      setError('No se pudo pausar. Intenta de nuevo o escríbenos a hola@pasas.mx')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   async function executeCancellation() {
     setLoading(true)
@@ -165,15 +185,37 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled }: Props) {
             <h2 className="mb-2 text-lg font-bold text-white">
               ¿Vas de vacaciones?
             </h2>
-            <p className="mb-2 text-sm text-gray-400">
-              Puedes pausar tu cuenta y tu progreso te espera. Sin costo. Sin
-              cargos. Solo disponible para suscriptores activos.
+            <p className="mb-5 text-sm text-gray-400">
+              Pausa tu cuenta hasta 3 meses y tu progreso te espera. Sin costo.
+              Sin cargos adicionales. Solo disponible para suscriptores activos.
             </p>
-            <p className="mb-5 text-xs text-gray-500">
-              (Esta feature estará disponible pronto — puedes cancelar por ahora
-              y reactivar cuando regreses.)
-            </p>
+
+            {/* Opciones de pausa */}
+            <div className="mb-4 grid grid-cols-3 gap-2">
+              {[1, 2, 3].map((months) => (
+                <button
+                  key={months}
+                  type="button"
+                  onClick={() => setPauseMonths(months)}
+                  className={`rounded-lg border py-3 text-sm font-semibold transition-colors ${
+                    pauseMonths === months
+                      ? 'border-purple-500/60 bg-purple-500/15 text-white'
+                      : 'border-white/10 bg-white/5 text-gray-400 hover:border-white/20'
+                  }`}
+                >
+                  {months} {months === 1 ? 'mes' : 'meses'}
+                </button>
+              ))}
+            </div>
+
             <div className="flex flex-col gap-2">
+              <button
+                onClick={executePause}
+                disabled={loading}
+                className="w-full rounded-lg bg-purple-600 py-2.5 text-sm font-medium text-white hover:bg-purple-700 disabled:opacity-50"
+              >
+                {loading ? 'Pausando...' : `Pausar ${pauseMonths} ${pauseMonths === 1 ? 'mes' : 'meses'}`}
+              </button>
               <button
                 onClick={executeCancellation}
                 disabled={loading}
@@ -183,7 +225,7 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled }: Props) {
               </button>
               <button
                 onClick={onClose}
-                className="w-full rounded-lg bg-purple-600 py-2.5 text-sm font-medium text-white hover:bg-purple-700"
+                className="w-full rounded-lg py-2 text-xs text-gray-500 hover:text-gray-300"
               >
                 Mantener mi suscripción
               </button>

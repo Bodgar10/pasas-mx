@@ -18,14 +18,22 @@ export async function POST(req: NextRequest) {
       .limit(1)
       .maybeSingle()
 
-    if (!subscription?.provider_sub_id) {
+    if (!subscription) {
       return NextResponse.json({ error: 'No se encontró suscripción activa' }, { status: 404 })
     }
 
-    // Cancelar al final del período (PROFECO: usuario conserva acceso hasta fecha pagada)
-    await stripe.subscriptions.update(subscription.provider_sub_id, {
-      cancel_at_period_end: true,
-    })
+    // Si tiene suscripción real en Stripe, cancelar ahí
+    if (subscription.provider_sub_id) {
+      await stripe.subscriptions.update(subscription.provider_sub_id, {
+        cancel_at_period_end: true,
+      })
+    }
+
+    // Siempre actualizar BD (cubre cuentas de prueba sin Stripe)
+    await supabase
+      .from('subscriptions')
+      .update({ cancelled_at: new Date().toISOString() })
+      .eq('id', subscription.id)
 
     // TODO: Cuando Resend esté configurado, enviar email de confirmación aquí
 
