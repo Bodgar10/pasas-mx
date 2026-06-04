@@ -21,7 +21,7 @@ export default async function DashboardPage() {
       .single(),
     supabase
       .from('subscriptions')
-      .select('status, current_period_end, plan, trial_ends_at')
+      .select('status, current_period_end, plan, trial_ends_at, cancelled_at')
       .eq('user_id', user.id)
       .in('status', ['trialing', 'active', 'past_due'])
       .order('current_period_end', { ascending: false })
@@ -90,6 +90,8 @@ export default async function DashboardPage() {
 
   const isPersonalized = subscription?.plan === 'ai_personalized' && subscriptionStatus === 'active'
   const trialEndsAt = subscription?.trial_ends_at ?? null
+  const isCancelled = !!subscription?.cancelled_at
+  const periodEnd = subscription?.current_period_end ?? null
 
   return (
     <DashboardClient
@@ -107,6 +109,8 @@ export default async function DashboardPage() {
       lastActiveTopic={lastActiveTopic}
       isPersonalized={isPersonalized}
       trialEndsAt={trialEndsAt}
+      isCancelled={isCancelled}
+      periodEnd={periodEnd}
     />
   )
 }

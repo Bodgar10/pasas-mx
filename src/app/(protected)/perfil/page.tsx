@@ -9,7 +9,7 @@ export default async function PerfilPage() {
 
   const [{ data: profile }, { data: subscription }] = await Promise.all([
     supabase.from('users').select('full_name, email, xp_total, streak_days').eq('id', user.id).single(),
-    supabase.from('subscriptions').select('plan, status, current_period_end, cancelled_at').eq('user_id', user.id).in('status', ['active', 'trialing', 'past_due']).order('created_at', { ascending: false }).limit(1).single(),
+    supabase.from('subscriptions').select('plan, status, current_period_end, cancelled_at').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle(),
   ])
 
   return (

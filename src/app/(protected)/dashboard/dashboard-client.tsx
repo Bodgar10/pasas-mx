@@ -45,6 +45,8 @@ interface Props {
   lastActiveTopic: LastActiveTopic | null
   isPersonalized: boolean
   trialEndsAt: string | null
+  isCancelled: boolean
+  periodEnd: string | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -81,7 +83,7 @@ function xpToLevel(xp: number) {
   return { level, current, total: 500 }
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -128,6 +130,12 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   const showBanner = subscriptionStatus === 'no_subscription' || subscriptionStatus === 'expired'
   const isExpiredBanner = subscriptionStatus === 'expired'
+
+  const periodEndFormatted = periodEnd
+    ? new Date(periodEnd).toLocaleDateString('es-MX', {
+        day: 'numeric', month: 'long', year: 'numeric',
+      })
+    : null
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -395,6 +403,50 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 />
               </div>
             </div>
+
+            {/* Banner cancelación */}
+            {isCancelled && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(251,191,36,0.1), rgba(251,191,36,0.05))',
+                border: '1.5px solid rgba(251,191,36,0.35)',
+                borderRadius: 16,
+                padding: '16px 20px',
+                marginBottom: 16,
+              }}>
+                <p style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 15, fontWeight: 900,
+                  color: '#fbbf24', margin: '0 0 6px',
+                }}>
+                  ⚠️ Tu suscripción está cancelada
+                </p>
+                <p style={{
+                  fontSize: 14, color: '#fbbf24',
+                  opacity: 0.85, margin: '0 0 14px',
+                  lineHeight: 1.6, fontWeight: 600,
+                }}>
+                  Tienes acceso hasta el{' '}
+                  <strong>{periodEndFormatted}</strong>.
+                  Reactiva cuando quieras y sigue donde lo dejaste.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => router.push('/planes')}
+                  style={{
+                    backgroundColor: '#fbbf24',
+                    border: 'none',
+                    borderRadius: 10,
+                    padding: '10px 20px',
+                    fontSize: 14, fontWeight: 900,
+                    color: '#0a0a0f',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  Renovar mi plan →
+                </button>
+              </div>
+            )}
 
             {/* Trial banner */}
             {subscriptionStatus === 'active' && trialEndsAt && (() => {
