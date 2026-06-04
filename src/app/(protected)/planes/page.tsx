@@ -340,6 +340,76 @@ function PlanesContent() {
           </p>
         </div>
 
+        {/* Links de ayuda */}
+        <div style={{
+          display: 'flex',
+          gap: 10,
+          marginTop: 20,
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+          <a
+            href="/ayuda"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              backgroundColor: '#1a1035',
+              border: '1.5px solid #2D2048',
+              borderRadius: 999,
+              padding: '8px 16px',
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#a78bfa',
+              textDecoration: 'none',
+              transition: 'border-color 0.15s ease, color 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#7c3aed'
+              e.currentTarget.style.color = '#e2d9f3'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = '#2D2048'
+              e.currentTarget.style.color = '#a78bfa'
+            }}
+          >
+            <span style={{ fontSize: 14 }}>💬</span>
+            Preguntas frecuentes
+          </a>
+          <a
+            href="/como-cancelar"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              backgroundColor: '#1a1035',
+              border: '1.5px solid #2D2048',
+              borderRadius: 999,
+              padding: '8px 16px',
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#a78bfa',
+              textDecoration: 'none',
+              transition: 'border-color 0.15s ease, color 0.15s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#7c3aed'
+              e.currentTarget.style.color = '#e2d9f3'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = '#2D2048'
+              e.currentTarget.style.color = '#a78bfa'
+            }}
+          >
+            <span style={{ fontSize: 14 }}>✕</span>
+            ¿Cómo cancelo?
+          </a>
+        </div>
+
       </div>
     </div>
   )
