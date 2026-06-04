@@ -34,6 +34,8 @@ const HERO_VARIANTS = {
   },
 } as const
 
+type VariantKey = keyof typeof HERO_VARIANTS
+
 function getOrAssignVariant(): VariantKey {
   if (typeof window === 'undefined') return 'D'
   const stored = localStorage.getItem('pasas_hero_variant') as VariantKey | null
