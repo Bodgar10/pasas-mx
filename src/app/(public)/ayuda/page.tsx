@@ -68,11 +68,11 @@ const FAQS = [
       },
       {
         q: '¿Cuál es la diferencia entre el plan Estándar y el Personalizado?',
-        a: 'El plan Estándar cubre todas las materias del currículo oficial. El plan Personalizado agrega un diagnóstico inicial y genera una guía de estudio adaptada al nivel y estilo de aprendizaje de cada alumno con IA.',
+        a: 'El plan Estándar cubre todas las materias del currículo oficial. El plan Personalizado agrega un diagnóstico inicial y genera una guía de estudio única, adaptada al nivel y estilo de aprendizaje de cada alumno.',
       },
       {
         q: '¿Funciona para preparatoria también?',
-        a: 'Por ahora el contenido está enfocado en secundaria. Próximamente agregaremos preparatoria y contenido específico para COMIPEMS.',
+        a: 'Por ahora el contenido está enfocado en secundaria. Próximamente ampliaremos a más niveles educativos.',
       },
       {
         q: '¿Puedo usar Pasas desde el celular?',
