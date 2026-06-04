@@ -7,9 +7,9 @@ import {
   updateNameAction,
   updateEmailAction,
   updatePasswordAction,
-  cancelSubscriptionAction,
   type ActionState,
 } from './actions'
+import { CancellationFlow } from '@/components/perfil/CancellationFlow'
 
 interface Props {
   profile: {
@@ -132,8 +132,8 @@ export default function PerfilClient({ profile, subscription }: Props) {
   const [nameState, nameAction, namePending] = useActionState<ActionState, FormData>(updateNameAction, null)
   const [emailState, emailAction, emailPending] = useActionState<ActionState, FormData>(updateEmailAction, null)
   const [passwordState, passwordAction, passwordPending] = useActionState<ActionState, FormData>(updatePasswordAction, null)
-  const [cancelState, cancelAction, cancelPending] = useActionState<ActionState, FormData>(cancelSubscriptionAction, null)
-  const [showCancelConfirm, setShowCancelConfirm] = useState(false)
+  const [showCancelFlow, setShowCancelFlow] = useState(false)
+  const [wasCancelled, setWasCancelled] = useState(false)
 
   const periodEnd = subscription?.currentPeriodEnd
     ? new Date(subscription.currentPeriodEnd).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -303,7 +303,7 @@ export default function PerfilClient({ profile, subscription }: Props) {
                 )}
               </div>
 
-              {isCancelled ? (
+              {isCancelled || wasCancelled ? (
                 <div style={{
                   backgroundColor: 'rgba(251,191,36,0.08)',
                   border: `1px solid rgba(251,191,36,0.2)`,
@@ -313,10 +313,10 @@ export default function PerfilClient({ profile, subscription }: Props) {
                 }}>
                   ⚠️ Tu suscripción ya está cancelada. Tendrás acceso hasta {periodEnd}.
                 </div>
-              ) : !showCancelConfirm ? (
+              ) : (
                 <button
                   type="button"
-                  onClick={() => setShowCancelConfirm(true)}
+                  onClick={() => setShowCancelFlow(true)}
                   style={{
                     width: '100%', minHeight: 48,
                     backgroundColor: 'transparent',
@@ -329,55 +329,14 @@ export default function PerfilClient({ profile, subscription }: Props) {
                 >
                   Cancelar suscripción
                 </button>
-              ) : (
-                <div style={{
-                  backgroundColor: 'rgba(239,68,68,0.06)',
-                  border: `1px solid rgba(239,68,68,0.2)`,
-                  borderRadius: RADIUS.lg,
-                  padding: '16px',
-                }}>
-                  <p style={{ fontSize: 14, color: '#f87171', fontWeight: 700, margin: '0 0 12px' }}>
-                    ¿Seguro que quieres cancelar?
-                  </p>
-                  <p style={{ fontSize: 13, color: COLORS.muted, margin: '0 0 14px', lineHeight: 1.5 }}>
-                    Seguirás teniendo acceso hasta {periodEnd}. Tu progreso se guarda por si regresas.
-                  </p>
-                  <div style={{ display: 'flex', gap: 10 }}>
-                    <button
-                      type="button"
-                      onClick={() => setShowCancelConfirm(false)}
-                      style={{
-                        flex: 1, minHeight: 44,
-                        backgroundColor: COLORS.card,
-                        border: `1.5px solid ${COLORS.inputBorder}`,
-                        borderRadius: RADIUS.lg,
-                        fontSize: 14, fontWeight: 700,
-                        color: COLORS.muted, cursor: 'pointer',
-                        fontFamily: FONTS.nunito,
-                      }}
-                    >
-                      No, quedarme
-                    </button>
-                    <form action={cancelAction} style={{ flex: 1 }}>
-                      <button
-                        type="submit"
-                        disabled={cancelPending}
-                        style={{
-                          width: '100%', minHeight: 44,
-                          backgroundColor: cancelPending ? COLORS.inputBorder : 'rgba(239,68,68,0.15)',
-                          border: `1.5px solid rgba(239,68,68,0.3)`,
-                          borderRadius: RADIUS.lg,
-                          fontSize: 14, fontWeight: 700,
-                          color: '#f87171', cursor: cancelPending ? 'not-allowed' : 'pointer',
-                          fontFamily: FONTS.nunito,
-                        }}
-                      >
-                        {cancelPending ? 'Cancelando...' : 'Sí, cancelar'}
-                      </button>
-                    </form>
-                  </div>
-                  <FeedbackMessage state={cancelState} />
-                </div>
+              )}
+
+              {showCancelFlow && subscription?.currentPeriodEnd && (
+                <CancellationFlow
+                  periodEnd={new Date(subscription.currentPeriodEnd)}
+                  onClose={() => setShowCancelFlow(false)}
+                  onCancelled={() => setWasCancelled(true)}
+                />
               )}
             </SectionCard>
           )}

@@ -22,8 +22,6 @@ import { stripe } from '@/lib/payments/stripe'
 import {
   STRIPE_PRICES,
   CHECKOUT_CONFIG,
-  type PlanKey,
-  type DurationKey,
 } from '@/lib/payments/config'
 
 export async function POST(request: Request) {
@@ -37,13 +35,14 @@ export async function POST(request: Request) {
 
     // 2. Validate request body
     const body = await request.json()
-    const { plan, duration } = body as { plan: PlanKey; duration: DurationKey }
+    const { plan, duration } = body as { plan: string; duration: string }
 
-    if (!plan || !duration || !STRIPE_PRICES[plan]?.[duration]) {
+    const planPrices = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]
+    if (!plan || !duration || !planPrices?.[duration]) {
       return NextResponse.json({ error: 'Invalid plan or duration' }, { status: 400 })
     }
 
-    const priceId = STRIPE_PRICES[plan][duration]
+    const priceId = planPrices[duration]
 
     // 3. Get user profile for pre-filling checkout
     const { data: profile } = await supabase
