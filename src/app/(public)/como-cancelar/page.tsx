@@ -142,6 +142,7 @@ export default function ComoCancelarPage() {
             Si tienes algún problema al cancelar, escríbenos directamente:
           </p>
 
+          <a
             href="mailto:hola@pasas.mx"
             className="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700"
           >

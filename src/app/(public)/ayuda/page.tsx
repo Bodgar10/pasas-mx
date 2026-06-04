@@ -113,7 +113,7 @@ export default function AyudaPage() {
           </h1>
           <p className="mt-3 text-gray-400">
             ¿No encuentras lo que buscas?{' '}
-
+            <a
               href="mailto:hola@pasas.mx"
               className="text-purple-400 underline hover:text-purple-300"
             >
@@ -163,6 +163,7 @@ export default function AyudaPage() {
             Nuestro equipo responde en menos de 24 horas en días hábiles.
           </p>
 
+          <a
             href="mailto:hola@pasas.mx"
             className="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-purple-700"
           >

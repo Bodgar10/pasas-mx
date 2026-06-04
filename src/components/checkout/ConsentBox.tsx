@@ -50,7 +50,7 @@ export function ConsentBox({
         . Mi próximo cobro será el{' '}
         <strong className="text-white">{dateFormatted}</strong>. Puedo cancelar
         cuando quiera desde mi{' '}
-
+        <a
           href="/perfil"
           className="text-purple-400 underline hover:text-purple-300"
           target="_blank"
