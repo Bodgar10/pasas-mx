@@ -43,9 +43,12 @@ export async function POST(req: NextRequest) {
         })
 
         const latestInvoice = invoices.data[0]
-        if (latestInvoice?.payment_intent && typeof latestInvoice.payment_intent === 'string') {
+        const clientSecret = latestInvoice?.confirmation_secret?.client_secret
+        const paymentIntentId = clientSecret?.split('_secret_')[0]
+
+        if (paymentIntentId) {
           await stripe.refunds.create({
-            payment_intent: latestInvoice.payment_intent,
+            payment_intent: paymentIntentId,
             reason: 'requested_by_customer',
           })
         }
