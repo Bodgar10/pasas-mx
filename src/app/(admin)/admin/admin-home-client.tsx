@@ -156,35 +156,12 @@ export default function AdminHomeClient({ subjects }: Props) {
     setDeletingId(confirmDeleteId)
     const supabase = createClient()
 
-    const subjectToDelete = subjects.find(s => s.id === confirmDeleteId)
-    if (!subjectToDelete) {
-      setDeletingId(null)
-      setConfirmDeleteId(null)
+    const { error } = await supabase.from('subjects').delete().eq('id', confirmDeleteId)
+    setDeletingId(null)
+    setConfirmDeleteId(null)
+    if (error) {
+      alert('Error al eliminar: ' + error.message)
       return
-    }
-
-    if (!isExamLevel && selectedGrade !== null && subjectToDelete.grades.length > 1) {
-      // Only remove the selected grade from the array
-      const newGrades = subjectToDelete.grades.filter(g => g !== gradeParam)
-      const { error } = await supabase
-        .from('subjects')
-        .update({ grades: newGrades })
-        .eq('id', confirmDeleteId)
-      setDeletingId(null)
-      setConfirmDeleteId(null)
-      if (error) {
-        alert('Error al eliminar: ' + error.message)
-        return
-      }
-    } else {
-      // Last grade or exam level — delete the entire record
-      const { error } = await supabase.from('subjects').delete().eq('id', confirmDeleteId)
-      setDeletingId(null)
-      setConfirmDeleteId(null)
-      if (error) {
-        alert('Error al eliminar: ' + error.message)
-        return
-      }
     }
 
     router.refresh()
@@ -202,42 +179,24 @@ export default function AdminHomeClient({ subjects }: Props) {
       ? [selectedGrade]
       : [1]
 
-    // Check if subject with this slug already exists
-    const { data: existing } = await supabase
-      .from('subjects')
-      .select('id, grades')
-      .eq('slug', newSlug)
-      .maybeSingle()
-
-    if (existing) {
-      // Merge grades — add new grades without duplicates
-      const mergedGrades = Array.from(new Set([...(existing.grades ?? []), ...newGrades])).sort()
-      const { error } = await supabase
-        .from('subjects')
-        .update({ grades: mergedGrades })
-        .eq('id', existing.id)
-      setSavingSubject(false)
-      if (error) {
-        alert('Error al actualizar materia: ' + error.message)
-        return
-      }
-    } else {
-      // Insert new subject
-      const maxOrder = subjects.reduce((max, s) => Math.max(max, s.display_order ?? 0), 0)
-      const { error } = await supabase.from('subjects').insert({
-        name: newName,
-        slug: newSlug,
-        education_level: educationLevel,
-        grades: newGrades,
-        plan_types: ['grade', 'exam'],
-        icon: newIcon || null,
-        display_order: maxOrder + 1,
-      })
-      setSavingSubject(false)
-      if (error) {
+    const maxOrder = subjects.reduce((max, s) => Math.max(max, s.display_order ?? 0), 0)
+    const { error } = await supabase.from('subjects').insert({
+      name: newName,
+      slug: newSlug,
+      education_level: educationLevel,
+      grades: newGrades,
+      plan_types: ['grade', 'exam'],
+      icon: newIcon || null,
+      display_order: maxOrder + 1,
+    })
+    setSavingSubject(false)
+    if (error) {
+      if (error.message.includes('duplicate key') || error.message.includes('subjects_slug_key')) {
+        alert(`Ya existe una materia con el slug "${newSlug}". Usa un slug diferente, por ejemplo: ${newSlug}-2`)
+      } else {
         alert('Error al guardar: ' + error.message)
-        return
       }
+      return
     }
 
     setNewName('')
@@ -913,10 +872,7 @@ export default function AdminHomeClient({ subjects }: Props) {
               🗑️ Eliminar materia
             </div>
             <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 20 }}>
-              {!isExamLevel && selectedGrade !== null && (subjects.find(s => s.id === confirmDeleteId)?.grades.length ?? 0) > 1
-                ? `¿Seguro que quieres eliminar esta materia de ${GRADE_LABELS[gradeParam]}? Solo se eliminará de este grado, los otros grados se conservan.`
-                : '¿Seguro que quieres eliminar esta materia? Esta acción no se puede deshacer y eliminará todos los temas y contenido asociado.'
-              }
+              ¿Seguro que quieres eliminar esta materia? Esta acción no se puede deshacer y eliminará todos los temas y contenido asociado.
             </div>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
               <button
