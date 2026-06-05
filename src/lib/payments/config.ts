@@ -12,18 +12,6 @@
 // PRICE IDs — Replace these with your own Stripe price IDs
 // ---------------------------------------------------------------------------
 export const STRIPE_PRICES = {
-  // Planes legacy (mantener para suscripciones existentes — NO usar en UI)
-  estandar: {
-    monthly:   'price_1TUTXmC61EHnoMUsCTw1FOcH',
-    quarterly: 'price_1TUThlC61EHnoMUsOEZRxQ0L',
-    biannual:  'price_1TUTiIC61EHnoMUszAZ1DXQw',
-  },
-  personalizado: {
-    monthly:   'price_1TUTijC61EHnoMUsaksUSfwR',
-    quarterly: 'price_1TUTj5C61EHnoMUsohVLpLFn',
-    biannual:  'price_1TUTjTC61EHnoMUsvwLZnk4q',
-  },
-  // Planes v2 (agosto 2026 — usar estos en UI y nuevos checkouts)
   estandar_v2: {
     monthly:   process.env.STRIPE_PRICE_GRADE_MONTHLY_V2!,
     semestral: process.env.STRIPE_PRICE_GRADE_SEMESTRAL!,
@@ -37,7 +25,7 @@ export const STRIPE_PRICES = {
 } as const
 
 export type PlanKey = keyof typeof STRIPE_PRICES
-export type DurationKey = keyof typeof STRIPE_PRICES.estandar
+export type DurationKey = keyof typeof STRIPE_PRICES.estandar_v2
 
 // ---------------------------------------------------------------------------
 // PRICE → PLAN MAP
@@ -45,19 +33,12 @@ export type DurationKey = keyof typeof STRIPE_PRICES.estandar
 // Used by the webhook handler to know what to store in the DB.
 // ---------------------------------------------------------------------------
 export const PRICE_TO_PLAN: Record<string, { plan: string; duration: string }> = {
-  'price_1TUTXmC61EHnoMUsCTw1FOcH': { plan: 'grade',          duration: 'monthly'   },
-  'price_1TUThlC61EHnoMUsOEZRxQ0L': { plan: 'grade',          duration: 'quarterly' },
-  'price_1TUTiIC61EHnoMUszAZ1DXQw': { plan: 'grade',          duration: 'biannual'  },
-  'price_1TUTijC61EHnoMUsaksUSfwR': { plan: 'ai_personalized', duration: 'monthly'   },
-  'price_1TUTj5C61EHnoMUsohVLpLFn': { plan: 'ai_personalized', duration: 'quarterly' },
-  'price_1TUTjTC61EHnoMUsvwLZnk4q': { plan: 'ai_personalized', duration: 'biannual'  },
-  // v2
-  [process.env.STRIPE_PRICE_GRADE_MONTHLY_V2!]:         { plan: 'grade',          duration: 'monthly'   },
-  [process.env.STRIPE_PRICE_GRADE_SEMESTRAL!]:           { plan: 'grade',          duration: 'semestral' },
-  [process.env.STRIPE_PRICE_GRADE_ANNUAL!]:              { plan: 'grade',          duration: 'annual'    },
-  [process.env.STRIPE_PRICE_PERSONALIZADO_MONTHLY_V2!]:  { plan: 'ai_personalized', duration: 'monthly'   },
-  [process.env.STRIPE_PRICE_PERSONALIZADO_SEMESTRAL!]:   { plan: 'ai_personalized', duration: 'semestral' },
-  [process.env.STRIPE_PRICE_PERSONALIZADO_ANNUAL!]:      { plan: 'ai_personalized', duration: 'annual'    },
+  [process.env.STRIPE_PRICE_GRADE_MONTHLY_V2!]:        { plan: 'grade',           duration: 'monthly'   },
+  [process.env.STRIPE_PRICE_GRADE_SEMESTRAL!]:          { plan: 'grade',           duration: 'semestral' },
+  [process.env.STRIPE_PRICE_GRADE_ANNUAL!]:             { plan: 'grade',           duration: 'annual'    },
+  [process.env.STRIPE_PRICE_PERSONALIZADO_MONTHLY_V2!]: { plan: 'ai_personalized', duration: 'monthly'   },
+  [process.env.STRIPE_PRICE_PERSONALIZADO_SEMESTRAL!]:  { plan: 'ai_personalized', duration: 'semestral' },
+  [process.env.STRIPE_PRICE_PERSONALIZADO_ANNUAL!]:     { plan: 'ai_personalized', duration: 'annual'    },
 }
 
 // ---------------------------------------------------------------------------
@@ -66,8 +47,6 @@ export const PRICE_TO_PLAN: Record<string, { plan: string; duration: string }> =
 // ---------------------------------------------------------------------------
 export const DURATION_MONTHS: Record<string, number> = {
   monthly:   1,
-  quarterly: 3,
-  biannual:  6,
   semestral: 6,
   annual:    12,
 }

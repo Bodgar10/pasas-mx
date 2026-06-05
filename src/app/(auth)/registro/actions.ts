@@ -3,6 +3,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { STRIPE_PRICES } from '@/lib/payments/config'
 
 export type RegistroState = { error: string } | { stripeUrl: string } | null
 
@@ -14,18 +15,7 @@ const LEVEL_MAP: Record<string, string> = {
   'Examen de Universidad': 'high_school',
 }
 
-const PRICE_IDS: Record<string, Record<string, string>> = {
-  estandar: {
-    monthly: 'price_1TUTXmC61EHnoMUsCTw1FOcH',
-    quarterly: 'price_1TUThlC61EHnoMUsOEZRxQ0L',
-    biannual: 'price_1TUTiIC61EHnoMUszAZ1DXQw',
-  },
-  personalizado: {
-    monthly: 'price_1TUTijC61EHnoMUsaksUSfwR',
-    quarterly: 'price_1TUTj5C61EHnoMUsohVLpLFn',
-    biannual: 'price_1TUTjTC61EHnoMUsvwLZnk4q',
-  },
-}
+// Price IDs centralizados en src/lib/payments/config.ts
 
 export async function registroAction(
   _prevState: RegistroState,
@@ -118,7 +108,7 @@ export async function registroAction(
 
   // If user had a pending plan, create Stripe session and return the URL
   if (pendingPlan && pendingDuration) {
-    const priceId = PRICE_IDS[pendingPlan]?.[pendingDuration]
+    const priceId = (STRIPE_PRICES as Record<string, Record<string, string>>)[pendingPlan]?.[pendingDuration]
     if (priceId) {
       try {
         const stripe = (await import('stripe')).default
