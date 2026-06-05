@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
+import Stripe from 'stripe'
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-04-22.dahlia' })
 
 export async function DELETE(req: NextRequest) {
   const supabase = await createClient()
@@ -24,6 +27,24 @@ export async function DELETE(req: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
+
+  // Cancelar suscripción activa en Stripe antes de borrar
+  const { data: subscription } = await supabase
+    .from('subscriptions')
+    .select('stripe_subscription_id, status')
+    .eq('user_id', userId)
+    .in('status', ['active', 'trialing'])
+    .maybeSingle()
+
+  if (subscription?.stripe_subscription_id) {
+    try {
+      await stripe.subscriptions.cancel(subscription.stripe_subscription_id)
+      console.log(`[delete-user] Stripe sub ${subscription.stripe_subscription_id} cancelled`)
+    } catch (stripeError) {
+      console.error('[delete-user] Error cancelando Stripe sub:', stripeError)
+      // No bloqueamos el borrado si Stripe falla — seguimos adelante
+    }
+  }
 
   const { error } = await serviceSupabase.auth.admin.deleteUser(userId)
 
