@@ -4,7 +4,7 @@ import NotificacionesClient from './notificaciones-client'
 export default async function NotificacionesPage() {
   const supabase = await createClient()
 
-  const { data: requests } = await supabase
+  const { data: raw } = await supabase
     .from('topic_requests')
     .select(`
       id, topic_name, description, subject_name, grade,
@@ -13,5 +13,10 @@ export default async function NotificacionesPage() {
     `)
     .order('created_at', { ascending: false })
 
-  return <NotificacionesClient requests={requests ?? []} />
+  const requests = (raw ?? []).map((r) => ({
+    ...r,
+    users: Array.isArray(r.users) ? (r.users[0] ?? null) : r.users,
+  }))
+
+  return <NotificacionesClient requests={requests} />
 }
