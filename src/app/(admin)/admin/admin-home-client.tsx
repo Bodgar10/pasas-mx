@@ -253,6 +253,23 @@ export default function AdminHomeClient({ subjects }: Props) {
           </button>
           <button
             type="button"
+            onClick={() => router.push('/admin/notificaciones')}
+            style={{
+              background: 'rgba(124,58,237,0.12)',
+              border: '1px solid rgba(124,58,237,0.3)',
+              color: '#a78bfa',
+              borderRadius: 10,
+              padding: '8px 16px',
+              fontSize: 15,
+              fontWeight: 800,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            📩 Solicitudes
+          </button>
+          <button
+            type="button"
             onClick={async () => {
               const supabase = createClient()
               await supabase.auth.signOut()

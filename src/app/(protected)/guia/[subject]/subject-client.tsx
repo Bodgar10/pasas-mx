@@ -63,6 +63,40 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
   const router = useRouter()
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null)
   const [isDesktop, setIsDesktop] = useState(false)
+  const [showRequestModal, setShowRequestModal] = useState(false)
+  const [requestTopicName, setRequestTopicName] = useState('')
+  const [requestDescription, setRequestDescription] = useState('')
+  const [requestSending, setRequestSending] = useState(false)
+  const [requestSent, setRequestSent] = useState(false)
+
+  async function handleSendRequest() {
+    if (!requestTopicName.trim()) return
+    setRequestSending(true)
+    try {
+      const res = await fetch('/api/topic-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subject_id: subject.id,
+          subject_name: subject.name,
+          grade: profile.grade,
+          education_level: profile.education_level,
+          topic_name: requestTopicName.trim(),
+          description: requestDescription.trim() || null,
+        }),
+      })
+      if (res.ok) {
+        setRequestSent(true)
+        setRequestTopicName('')
+        setRequestDescription('')
+        setTimeout(() => {
+          setShowRequestModal(false)
+          setRequestSent(false)
+        }, 2000)
+      }
+    } catch {}
+    setRequestSending(false)
+  }
 
   useEffect(() => {
     const check = () => setIsDesktop(window.innerWidth >= 768)
@@ -466,7 +500,157 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
         )}
       </div>
 
+      {/* Banner: solicitar tema */}
+      <div style={{
+        margin: isDesktop ? '24px 32px 0' : '20px 16px 0',
+        background: 'rgba(124,58,237,0.06)',
+        border: '1px dashed rgba(124,58,237,0.3)',
+        borderRadius: 16,
+        padding: '16px 20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 12,
+        flexWrap: 'wrap',
+      }}>
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 800, color: '#e2d9f3', marginBottom: 2 }}>
+            ¿No encuentras el tema que buscas?
+          </div>
+          <div style={{ fontSize: 13, color: '#a78bfa' }}>
+            Dinos qué tema necesitas y lo agregamos pronto.
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => setShowRequestModal(true)}
+          style={{
+            background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+            color: 'white',
+            border: 'none',
+            borderRadius: 12,
+            padding: '10px 20px',
+            fontSize: 14,
+            fontWeight: 800,
+            cursor: 'pointer',
+            fontFamily: 'var(--font-nunito)',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          📩 Solicitar tema
+        </button>
+      </div>
+
       <div style={{ height: 32 }} />
+
+      {/* Modal solicitar tema */}
+      {showRequestModal && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 100,
+          background: 'rgba(15,10,30,0.85)',
+          display: 'flex', alignItems: 'center',
+          justifyContent: 'center', padding: 16,
+        }}
+          onClick={() => setShowRequestModal(false)}
+        >
+          <div style={{
+            background: '#1a1035',
+            border: '1px solid rgba(124,58,237,0.3)',
+            borderRadius: 20, padding: 24,
+            width: '100%', maxWidth: 440,
+          }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {requestSent ? (
+              <div style={{ textAlign: 'center', padding: '16px 0' }}>
+                <div style={{ fontSize: 40, marginBottom: 12 }}>✅</div>
+                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#10b981' }}>
+                  ¡Solicitud enviada!
+                </div>
+                <div style={{ fontSize: 14, color: '#a78bfa', marginTop: 8 }}>
+                  Lo revisamos y lo agregamos pronto.
+                </div>
+              </div>
+            ) : (
+              <>
+                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#e2d9f3', marginBottom: 4 }}>
+                  📩 Solicitar tema
+                </div>
+                <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 20 }}>
+                  Para <strong style={{ color: '#e2d9f3' }}>{subject.name}</strong>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <div>
+                    <label style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, display: 'block', marginBottom: 6 }}>
+                      Nombre del tema *
+                    </label>
+                    <input
+                      value={requestTopicName}
+                      onChange={(e) => setRequestTopicName(e.target.value)}
+                      placeholder="ej. Teorema de Pitágoras"
+                      style={{
+                        width: '100%', background: '#1C1033',
+                        border: '1.5px solid #2D2048', borderRadius: 10,
+                        color: '#e2d9f3', fontSize: 15, padding: '10px 12px',
+                        fontFamily: 'var(--font-nunito)', boxSizing: 'border-box',
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, display: 'block', marginBottom: 6 }}>
+                      ¿Para qué lo necesitas? (opcional)
+                    </label>
+                    <textarea
+                      value={requestDescription}
+                      onChange={(e) => setRequestDescription(e.target.value)}
+                      placeholder="ej. Lo vimos en clase y no está en la app"
+                      rows={3}
+                      style={{
+                        width: '100%', background: '#1C1033',
+                        border: '1.5px solid #2D2048', borderRadius: 10,
+                        color: '#e2d9f3', fontSize: 15, padding: '10px 12px',
+                        fontFamily: 'var(--font-nunito)', boxSizing: 'border-box',
+                        resize: 'none',
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: 8, marginTop: 20, justifyContent: 'flex-end' }}>
+                  <button
+                    type="button"
+                    onClick={() => setShowRequestModal(false)}
+                    style={{
+                      background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048',
+                      color: '#a78bfa', borderRadius: 10, padding: '10px 20px',
+                      fontSize: 14, fontWeight: 800, cursor: 'pointer',
+                      fontFamily: 'var(--font-nunito)',
+                    }}
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleSendRequest}
+                    disabled={requestSending || !requestTopicName.trim()}
+                    style={{
+                      background: requestTopicName.trim() ? 'linear-gradient(135deg, #7c3aed, #ec4899)' : 'rgba(124,58,237,0.3)',
+                      color: 'white', borderRadius: 12, padding: '10px 20px',
+                      fontWeight: 800, border: 'none',
+                      cursor: (requestSending || !requestTopicName.trim()) ? 'not-allowed' : 'pointer',
+                      fontSize: 14, fontFamily: 'var(--font-nunito)',
+                      opacity: requestSending ? 0.7 : 1,
+                    }}
+                  >
+                    {requestSending ? 'Enviando...' : 'Enviar solicitud'}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
