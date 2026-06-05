@@ -636,9 +636,50 @@ export default function LandingClient() {
       </FadeSection>
 
       {/* ── Footer ── */}
-      <footer style={{ padding: '24px', textAlign: 'center', borderTop: `1px solid ${COLORS.inputBorder}` }}>
-        <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 14, color: COLORS.muted, letterSpacing: 2 }}>PASAS.MX</span>
-        <p style={{ fontSize: 12, color: COLORS.muted, opacity: 0.4, marginTop: 8 }}>© 2026 Pasas.mx · Hecho en México 🇲🇽</p>
+      <footer style={{ padding: '32px 24px 40px', borderTop: `1px solid ${COLORS.inputBorder}` }}>
+        <div style={{ maxWidth: 520, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+          <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 14, color: COLORS.muted, letterSpacing: 2 }}>
+            PASAS.MX
+          </span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8 }}>
+            {[
+              { href: '/ayuda', label: '❓ Ayuda' },
+              { href: '/como-cancelar', label: '🚪 Cómo cancelar' },
+              { href: '/privacidad', label: 'Privacidad' },
+              { href: '/terminos', label: 'Términos' },
+              { href: '/reembolso', label: 'Reembolsos' },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  fontSize: 13,
+                  color: COLORS.muted,
+                  opacity: 0.6,
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  padding: '4px 10px',
+                  borderRadius: 8,
+                  border: `1px solid transparent`,
+                  transition: 'opacity 0.2s, border-color 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '1'
+                  e.currentTarget.style.borderColor = COLORS.inputBorder
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '0.6'
+                  e.currentTarget.style.borderColor = 'transparent'
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+          <p style={{ fontSize: 12, color: COLORS.muted, opacity: 0.35, margin: 0 }}>
+            © 2026 Pasas.mx · Hecho en México 🇲🇽
+          </p>
+        </div>
       </footer>
 
       <style>{`
