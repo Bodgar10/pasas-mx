@@ -62,7 +62,7 @@ export default async function DashboardPage() {
         .order('display_order')
       return data ?? []
     },
-    ['subjects'],
+    [`subjects-${profile.education_level}-${profile.grade}`],
     { revalidate: 300, tags: ['subjects'] }
   )
 
