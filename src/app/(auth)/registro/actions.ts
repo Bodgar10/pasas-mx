@@ -24,6 +24,8 @@ export async function registroAction(
   const email = formData.get('email') as string
   const password = formData.get('password') as string
   const fullName = (formData.get('full_name') as string)?.trim()
+  const parentName = (formData.get('parent_name') as string)?.trim()
+  const tosAccepted = formData.get('tos_accepted') === 'on'
   const onboardingRaw = formData.get('onboarding_data') as string | null
   const pendingPlan = formData.get('pending_plan') as string | null
   const pendingDuration = formData.get('pending_duration') as string | null
@@ -35,6 +37,12 @@ export async function registroAction(
   }
   if (!fullName) {
     return { error: 'Por favor escribe tu nombre o apodo.' }
+  }
+  if (!parentName) {
+    return { error: 'Por favor escribe el nombre del adulto responsable.' }
+  }
+  if (!tosAccepted) {
+    return { error: 'Debes aceptar los Términos y Condiciones para continuar.' }
   }
 
   const supabase = await createClient()
@@ -78,6 +86,9 @@ export async function registroAction(
   // Parse onboarding data if available
   let profileUpdate: Record<string, unknown> = {
     full_name: fullName,
+    parent_name: parentName || null,
+    tos_accepted_at: new Date().toISOString(),
+    tos_accepted_version: '1.0',
     onboarding_done: true,
     ...(acquisitionSource ? { acquisition_source: acquisitionSource } : {}),
   }

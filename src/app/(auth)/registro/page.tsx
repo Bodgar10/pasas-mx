@@ -61,11 +61,14 @@ export default function RegistroPage() {
   const [onboardingData, setOnboardingData] = useState('')
   const [pendingPlan, setPendingPlan] = useState('')
   const [pendingDuration, setPendingDuration] = useState('')
+  const [tosAccepted, setTosAccepted] = useState(false)
+  const [utmData, setUtmData] = useState('')
 
   useEffect(() => {
     setOnboardingData(sessionStorage.getItem('pasas_onboarding') ?? '')
     setPendingPlan(sessionStorage.getItem('pasas_pending_plan') ?? '')
     setPendingDuration(sessionStorage.getItem('pasas_pending_duration') ?? '')
+    setUtmData(sessionStorage.getItem('pasas_utm') ?? '')
   }, [])
 
   useEffect(() => {
@@ -133,6 +136,7 @@ export default function RegistroPage() {
         <input type="hidden" name="onboarding_data" value={onboardingData} />
         <input type="hidden" name="pending_plan" value={pendingPlan} />
         <input type="hidden" name="pending_duration" value={pendingDuration} />
+        <input type="hidden" name="utm_data" value={utmData} />
         <div className="space-y-1">
           <label
             htmlFor="full_name"
@@ -149,8 +153,31 @@ export default function RegistroPage() {
             required
             className={inputClass}
             style={{ ...inputStyle, minHeight: '52px' }}
-            placeholder="Tu nombre o apodo"
+            placeholder="Tu nombre o apodo (el estudiante)"
           />
+        </div>
+
+        <div className="space-y-1">
+          <label
+            htmlFor="parent_name"
+            className="block text-sm font-semibold"
+            style={{ color: '#9CA3AF' }}
+          >
+            Nombre completo del adulto responsable
+          </label>
+          <input
+            id="parent_name"
+            name="parent_name"
+            type="text"
+            autoComplete="name"
+            required
+            className={inputClass}
+            style={{ ...inputStyle, minHeight: '52px' }}
+            placeholder="Nombre del padre, madre o tutor"
+          />
+          <p className="text-xs mt-1" style={{ color: '#6B7280' }}>
+            Requerido para usuarios menores de 18 años.
+          </p>
         </div>
 
         <div className="space-y-1">
@@ -197,6 +224,54 @@ export default function RegistroPage() {
           <StrengthBar password={password} />
         </div>
 
+        {/* Checkbox T&C */}
+        <div
+          className="rounded-xl p-4 space-y-3"
+          style={{ background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)' }}
+        >
+          <label className="flex items-start gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              name="tos_accepted"
+              required
+              checked={tosAccepted}
+              onChange={(e) => setTosAccepted(e.target.checked)}
+              className="mt-1 shrink-0 accent-[#7c3aed] w-4 h-4"
+            />
+            <span className="text-sm" style={{ color: '#a78bfa' }}>
+              He leído y acepto los{' '}
+              <a
+                href="/terminos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-bold"
+                style={{ color: '#c4b5fd' }}
+              >
+                Términos y Condiciones
+              </a>
+              {' '}y el{' '}
+              <a
+                href="/privacidad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-bold"
+                style={{ color: '#c4b5fd' }}
+              >
+                Aviso de Privacidad
+              </a>
+              {' '}de Pasas.mx (Versión 1.0).
+            </span>
+          </label>
+
+          {/* Disclaimer mayoría de edad */}
+          <div
+            className="rounded-lg px-3 py-2 text-xs"
+            style={{ background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.2)', color: '#fbbf24' }}
+          >
+            ⚠️ Al completar este registro, el adulto responsable declara que tiene 18 años o más, o que cuenta con autorización del padre, madre o tutor del estudiante para suscribir este servicio y proporcionar los datos personales indicados. El adulto responsable asume plena responsabilidad por el uso de la plataforma por parte del menor.
+          </div>
+        </div>
+
         {state && 'error' in state && state.error && (
           <p
             role="alert"
@@ -213,10 +288,10 @@ export default function RegistroPage() {
 
         <button
           type="submit"
-          disabled={pending}
+          disabled={pending || !tosAccepted}
           className="w-full rounded-xl font-bold text-white text-base transition-all disabled:opacity-60 disabled:cursor-not-allowed"
           style={{
-            backgroundColor: '#7c3aed',
+            backgroundColor: tosAccepted ? '#7c3aed' : '#4B3D6E',
             minHeight: '52px',
           }}
         >

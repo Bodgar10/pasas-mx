@@ -426,6 +426,29 @@ function DiagnosticoContent() {
             {/* Path A — description */}
             {path === 'descripcion' && (
               <div>
+                {/* Disclaimer contenido */}
+                <div style={{
+                  background: 'rgba(124,58,237,0.06)',
+                  border: '1px solid rgba(124,58,237,0.2)',
+                  borderRadius: 10,
+                  padding: '10px 14px',
+                  marginBottom: 10,
+                  fontSize: 12,
+                  color: '#a78bfa',
+                  lineHeight: 1.6,
+                }}>
+                  📚 <strong style={{ color: '#e2d9f3' }}>Solo temas académicos.</strong> Escribe únicamente sobre los temas de la materia que te cuestan trabajo. Al usar este campo aceptas nuestros{' '}
+                  <a
+                    href="/terminos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#c4b5fd', textDecoration: 'underline', fontWeight: 700 }}
+                  >
+                    Términos y Condiciones
+                  </a>
+                  . Pasas.mx no se hace responsable del contenido que escribas fuera del contexto educativo.
+                </div>
+
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
