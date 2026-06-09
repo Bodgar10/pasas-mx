@@ -315,7 +315,7 @@ export async function POST(request: Request) {
             .eq('provider_sub_id', subscriptionId)
             .maybeSingle()
 
-          const user = subRow?.users as { full_name: string; email: string } | null
+          const user = (Array.isArray(subRow?.users) ? subRow?.users[0] : subRow?.users) as { full_name: string; email: string } | null
           if (user?.email) {
             const amount = Math.round((subRow?.price_mxn ?? 0) / 100)
             const cycleLabel = subRow?.billing_cycle === 'semestral' ? 'Semestral' : subRow?.billing_cycle === 'annual' ? 'Anual' : 'Mensual'
