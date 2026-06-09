@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
+import { PLAN_DISPLAY } from '@/lib/payments/config'
 import { createClient } from '@/utils/supabase/client'
 
 // ── A/B hero variants ──────────────────────────────────────────────
@@ -139,7 +140,7 @@ const TUTORIAL_PERSONALIZED = [
 const PLANS = [
   {
     name: 'Estándar',
-    price: '$199',
+    price: `$${PLAN_DISPLAY.estandar_v2.prices.mensual.amount}`,
     period: 'al mes',
     badge: null,
     color: COLORS.primary,
@@ -476,7 +477,7 @@ export default function LandingClient() {
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.cyan})` }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
               <span style={{ fontSize: 22 }}>🎮</span>
-              <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 13, color: COLORS.primary }}>Plan Estándar — $199/mes</span>
+              <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 13, color: COLORS.primary }}>Plan Estándar — ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount}/mes</span>
             </div>
             <p style={{ fontSize: 15, color: '#c4b5fd', fontWeight: 700, marginBottom: 24, lineHeight: 1.5 }}>
               Eliges UNA temática y accedes al temario completo de todas tus materias dentro de ese mundo.
@@ -504,7 +505,7 @@ export default function LandingClient() {
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.pink}, ${COLORS.primary})` }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
               <span style={{ fontSize: 22 }}>✨</span>
-              <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 13, color: COLORS.pink }}>Plan Personalizado — $499/mes</span>
+              <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 13, color: COLORS.pink }}>Plan Personalizado — ${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}/mes</span>
             </div>
             <p style={{ fontSize: 15, color: '#c4b5fd', fontWeight: 700, marginBottom: 24, lineHeight: 1.5 }}>
               Eliges UNA materia, haces un diagnóstico y se genera un plan hecho solo para ti y tus puntos débiles.
@@ -629,7 +630,7 @@ export default function LandingClient() {
               Tarda menos que escoger qué ver en Netflix.
             </p>
             <p style={{ marginTop: 20, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
-              $199 al mes · Sin contrato · Cancela cuando quieras
+              ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes · Sin contrato · Cancela cuando quieras
             </p>
           </div>
         </section>

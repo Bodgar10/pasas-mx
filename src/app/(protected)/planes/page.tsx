@@ -4,36 +4,7 @@ import { Suspense, useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { trackCheckoutStarted } from '@/components/posthog-events'
 import { BillingCycleToggle, type BillingCycle } from '@/components/planes/BillingCycleToggle'
-
-// ─── Precios v2 (en pesos MXN) ───────────────────────────────────────────────
-const PLANS = {
-  estandar_v2: {
-    label: 'Estándar',
-    badge: 'Curso por Grado — Todas las materias',
-    badgeColor: '#06b6d4',
-    badgeBg: '#06b6d420',
-    badgeBorder: '#06b6d440',
-    ctaColor: '#7c3aed',
-    prices: {
-      mensual:   { amount: 249, total: 249,  savings: null,  perMonth: 249  },
-      semestral: { amount: 799, total: 799,  savings: 695,   perMonth: 133  },
-      anual:     { amount: 1290, total: 1290, savings: 1698,  perMonth: 108  },
-    },
-  },
-  personalizado_v2: {
-    label: 'Personalizado',
-    badge: 'Guías Únicas con IA — Adaptado a tu hijo',
-    badgeColor: '#ec4899',
-    badgeBg: '#ec489920',
-    badgeBorder: '#ec489940',
-    ctaColor: '#ec4899',
-    prices: {
-      mensual:   { amount: 549,  total: 549,  savings: null,  perMonth: 549  },
-      semestral: { amount: 1990, total: 1990, savings: 1304,  perMonth: 332  },
-      anual:     { amount: 3290, total: 3290, savings: 3298,  perMonth: 274  },
-    },
-  },
-} as const
+import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
 
 type PlanKey = keyof typeof PLANS
 
