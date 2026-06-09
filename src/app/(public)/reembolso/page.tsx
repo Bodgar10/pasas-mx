@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function ReembolsoPage() {
@@ -10,6 +10,17 @@ export default function ReembolsoPage() {
   const [enviando, setEnviando] = useState(false)
   const [enviado, setEnviado] = useState(false)
   const [error, setError] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    async function checkSession() {
+      const { createClient } = await import('@/utils/supabase/client')
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      setIsLoggedIn(!!user && !user.is_anonymous)
+    }
+    checkSession()
+  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -137,6 +148,37 @@ export default function ReembolsoPage() {
           Llena el formulario y te respondemos en máximo 3 días hábiles.
         </p>
 
+        {isLoggedIn === null ? (
+          <div style={{ textAlign: 'center', padding: '24px 0', color: '#a78bfa', fontSize: 14 }}>
+            Cargando...
+          </div>
+        ) : isLoggedIn === false ? (
+          <div style={{ textAlign: 'center', padding: '16px 0' }}>
+            <div style={{ fontSize: 32, marginBottom: 12 }}>🔒</div>
+            <p style={{ fontSize: 15, color: '#a78bfa', marginBottom: 20, lineHeight: 1.6 }}>
+              Necesitas iniciar sesión para solicitar un reembolso.
+            </p>
+            <Link
+              href="/login"
+              style={{
+                display: 'inline-block',
+                background: '#7c3aed',
+                color: 'white',
+                borderRadius: 12,
+                padding: '12px 28px',
+                fontSize: 15,
+                fontWeight: 900,
+                textDecoration: 'none',
+                fontFamily: 'var(--font-nunito)',
+              }}
+            >
+              Iniciar sesión →
+            </Link>
+          </div>
+        ) : null}
+
+        {isLoggedIn === true && (
+        <>
         {enviado ? (
           <div style={{
             background: 'rgba(16,185,129,0.1)',
@@ -240,6 +282,8 @@ export default function ReembolsoPage() {
               {enviando ? 'Enviando...' : 'Enviar solicitud'}
             </button>
           </form>
+        )}
+        </>
         )}
       </div>
 
