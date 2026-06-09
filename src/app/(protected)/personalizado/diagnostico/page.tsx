@@ -21,7 +21,7 @@ function DiagnosticoContent() {
   const router = useRouter()
   const level = searchParams.get('level') ?? ''
   const grade = searchParams.get('grade')
-  const gradeNumber = grade ? (parseInt(grade.replace(/[°º]/g, '').trim(), 10) || null) : null
+  const gradeNumber = grade ? (parseInt(grade.replace(/[°º*]/g, '').trim(), 10) || null) : null
   const theme = searchParams.get('theme') ?? ''
   const subject = searchParams.get('subject') ?? ''
   const subjectId = searchParams.get('subjectId') ?? ''

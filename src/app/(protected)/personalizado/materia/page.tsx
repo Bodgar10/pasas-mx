@@ -18,7 +18,12 @@ const LEVEL_MAP: Record<string, string> = {
   'Examen de Universidad': 'high_school',
 }
 
-const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
+const GRADE_MAP: Record<string, number> = {
+  '1°': 1, '2°': 2, '3°': 3,
+  '1º': 1, '2º': 2, '3º': 3,
+  '1*': 1, '2*': 2, '3*': 3,
+  '1': 1, '2': 2, '3': 3,
+}
 
 function MateriaContent() {
   const searchParams = useSearchParams()
