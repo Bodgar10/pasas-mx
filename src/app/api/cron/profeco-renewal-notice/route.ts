@@ -3,12 +3,11 @@ import { sendEmail } from '@/lib/email/resend'
 import { renewalNoticeTemplate } from '@/lib/email/templates/renewal-notice'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
-
 export async function GET(req: Request) {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
   // Autenticar el cron con CRON_SECRET
   const auth = req.headers.get('authorization')
   if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
