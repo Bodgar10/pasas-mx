@@ -167,8 +167,8 @@ export async function POST(request: Request) {
             .single()
 
           if (userProfile?.email) {
-            const trialEndsAt = trialEndsAt
-              ? new Date(fullSub.trial_end! * 1000).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
+            const trialEndsAtFormatted = fullSub.trial_end
+              ? new Date(fullSub.trial_end * 1000).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
               : 'N/A'
 
             await sendEmail({
@@ -177,7 +177,7 @@ export async function POST(request: Request) {
               html: welcomeTemplate({
                 userName: userProfile.full_name?.split(' ')[0] ?? 'Estudiante',
                 planName: planInfo.plan === 'grade' ? 'Estándar' : 'Personalizado',
-                trialEndsAt,
+                trialEndsAt: trialEndsAtFormatted,
               }),
             })
           }
