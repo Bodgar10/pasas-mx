@@ -390,7 +390,8 @@ export async function POST(request: Request) {
               .single()
 
             if (userProfile?.email) {
-              const accessUntil = new Date(subscription.current_period_end * 1000).toLocaleDateString('es-MX', {
+              const subAny = subscription as any
+              const accessUntil = new Date((subAny.current_period_end ?? 0) * 1000).toLocaleDateString('es-MX', {
                 day: 'numeric', month: 'long', year: 'numeric',
               })
 
