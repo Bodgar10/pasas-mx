@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LandingClient from './landing-client'
+import { detectAudience } from '@/lib/audience-detection'
 
 export const metadata: Metadata = {
   title: 'Pasas.mx — Estudia sin estudiar',
@@ -19,6 +20,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default function LandingPage() {
+export default function LandingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ utm_source?: string }>
+}) {
   return <LandingClient />
 }
