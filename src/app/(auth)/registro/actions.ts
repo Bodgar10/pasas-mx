@@ -5,7 +5,7 @@ import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
 
-export type RegistroState = { error: string } | { stripeUrl: string } | null
+export type RegistroState = { error: string } | { stripeUrl: string } | { emailSent: true; email: string } | null
 
 const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
 const LEVEL_MAP: Record<string, string> = {
@@ -51,7 +51,10 @@ export async function registroAction(
   const { error: signUpError } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { full_name: fullName } },
+    options: {
+      data: { full_name: fullName },
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+    },
   })
 
   if (signUpError) {
@@ -146,6 +149,6 @@ export async function registroAction(
     }
   }
 
-  // No pending plan — go to dashboard
-  return { stripeUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard` }
+  // No pending plan — mostrar pantalla de verificación de email
+  return { emailSent: true, email }
 }

@@ -82,6 +82,42 @@ export default function RegistroPage() {
     }
   }, [state])
 
+  // Pantalla de verificación de email
+  if (state && 'emailSent' in state && state.emailSent) {
+    return (
+      <div
+        className="rounded-[20px] p-8 space-y-6 text-center"
+        style={{ backgroundColor: '#1a1035', border: '1px solid rgba(124,58,237,0.25)' }}
+      >
+        <div style={{ fontSize: 48 }}>📬</div>
+        <h1
+          className="text-2xl font-black"
+          style={{ fontFamily: 'var(--font-orbitron)', color: '#e2d9f3' }}
+        >
+          Revisa tu correo
+        </h1>
+        <p style={{ color: '#a78bfa', fontSize: 15, lineHeight: 1.6 }}>
+          Te enviamos un link de verificación a:
+        </p>
+        <p
+          className="rounded-xl px-4 py-3 font-bold text-sm"
+          style={{ background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', color: '#c4b5fd' }}
+        >
+          {state.email}
+        </p>
+        <p style={{ color: '#6B7280', fontSize: 13, lineHeight: 1.6 }}>
+          Haz clic en el link del correo para activar tu cuenta. Revisa también tu carpeta de spam si no lo ves en unos minutos.
+        </p>
+        <div
+          className="rounded-xl px-4 py-3 text-xs"
+          style={{ background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.15)', color: '#fbbf24' }}
+        >
+          El link expira en 24 horas.
+        </div>
+      </div>
+    )
+  }
+
   async function handleGoogleSignIn() {
     setGooglePending(true)
     trackSignup('google')
