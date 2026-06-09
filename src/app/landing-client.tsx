@@ -648,6 +648,7 @@ export default function LandingClient() {
               { href: '/privacidad', label: 'Privacidad' },
               { href: '/terminos', label: 'Términos' },
               { href: '/reembolso', label: 'Reembolsos' },
+              { href: '/status', label: '🟢 Status' },
             ].map(({ href, label }) => (
               <Link
                 key={href}

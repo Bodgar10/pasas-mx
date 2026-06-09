@@ -40,6 +40,7 @@ export default function ProtectedLayout({
           { href: '/privacidad', label: 'Privacidad' },
           { href: '/terminos', label: 'Términos' },
           { href: '/reembolso', label: 'Reembolsos' },
+          { href: '/status', label: '🟢 Status' },
         ].map(({ href, label }) => (
           <a
             key={href}
