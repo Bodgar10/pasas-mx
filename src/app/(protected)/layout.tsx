@@ -24,6 +24,42 @@ export default function ProtectedLayout({
       style={{ fontFamily: 'var(--font-nunito)' }}
     >
       {children}
+      <footer style={{
+        borderTop: '1px solid rgba(124,58,237,0.15)',
+        padding: '20px 24px',
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '6px 16px',
+        marginTop: 'auto',
+      }}>
+        {[
+          { href: '/ayuda', label: '❓ Ayuda' },
+          { href: '/como-cancelar', label: '🚪 Cómo cancelar' },
+          { href: '/privacidad', label: 'Privacidad' },
+          { href: '/terminos', label: 'Términos' },
+          { href: '/reembolso', label: 'Reembolsos' },
+        ].map(({ href, label }) => (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: 12,
+              color: 'rgba(167,139,250,0.5)',
+              fontWeight: 600,
+              textDecoration: 'none',
+            }}
+          >
+            {label}
+          </a>
+        ))}
+        <span style={{ fontSize: 12, color: 'rgba(167,139,250,0.3)', width: '100%', textAlign: 'center' }}>
+          © 2026 Pasas.mx · Hecho en México 🇲🇽
+        </span>
+      </footer>
     </div>
   )
 }
