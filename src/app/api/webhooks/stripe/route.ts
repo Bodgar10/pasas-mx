@@ -22,6 +22,10 @@ import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/payments/stripe'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { PRICE_TO_PLAN } from '@/lib/payments/config'
+import { sendEmail } from '@/lib/email/resend'
+import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
+import { welcomeTemplate } from '@/lib/email/templates/welcome'
+import { paymentReceiptTemplate } from '@/lib/email/templates/payment-receipt'
 import Stripe from 'stripe'
 
 // Use service role client to bypass RLS in webhook handler
@@ -120,6 +124,33 @@ export async function POST(request: Request) {
         })
 
         console.log(`[webhooks/stripe] Subscription created for user ${userId}`)
+
+        // Enviar email de bienvenida
+        try {
+          const { data: userProfile } = await supabase
+            .from('users')
+            .select('full_name, email')
+            .eq('id', userId)
+            .single()
+
+          if (userProfile?.email) {
+            const trialEndsAt = trialEndsAt
+              ? new Date(fullSub.trial_end! * 1000).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
+              : 'N/A'
+
+            await sendEmail({
+              to: userProfile.email,
+              subject: '¡Bienvenido a Pasas.mx! 🎮',
+              html: welcomeTemplate({
+                userName: userProfile.full_name?.split(' ')[0] ?? 'Estudiante',
+                planName: planInfo.plan === 'grade' ? 'Estándar' : 'Personalizado',
+                trialEndsAt,
+              }),
+            })
+          }
+        } catch (emailErr) {
+          console.error('[webhooks/stripe] Error sending welcome email:', emailErr)
+        }
 
         // For grade plan, create user_subjects for every subject matching the user's level and grade
         if (planInfo.plan === 'grade') {
@@ -243,6 +274,37 @@ export async function POST(request: Request) {
           })
           .eq('provider_sub_id', subscriptionId)
 
+        // Enviar email de recibo de pago
+        try {
+          const { data: subRow } = await supabase
+            .from('subscriptions')
+            .select('user_id, plan, billing_cycle, price_mxn, users(full_name, email)')
+            .eq('provider_sub_id', subscriptionId)
+            .maybeSingle()
+
+          const user = subRow?.users as { full_name: string; email: string } | null
+          if (user?.email) {
+            const amount = Math.round((subRow?.price_mxn ?? 0) / 100)
+            const cycleLabel = subRow?.billing_cycle === 'semestral' ? 'Semestral' : subRow?.billing_cycle === 'annual' ? 'Anual' : 'Mensual'
+            const nextRenewal = new Date(rawEnd * 1000).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
+
+            await sendEmail({
+              to: user.email,
+              subject: `Pago confirmado — Pasas.mx $${amount} MXN`,
+              html: paymentReceiptTemplate({
+                userName: user.full_name?.split(' ')[0] ?? 'Estudiante',
+                planName: subRow?.plan === 'grade' ? 'Estándar' : 'Personalizado',
+                amount,
+                billingCycle: cycleLabel,
+                nextRenewal,
+                invoiceId: (invoice as any).id ?? '',
+              }),
+            })
+          }
+        } catch (emailErr) {
+          console.error('[webhooks/stripe] Error sending receipt email:', emailErr)
+        }
+
         console.log(`[webhooks/stripe] Subscription renewed: ${subscriptionId}`)
         break
       }
@@ -285,7 +347,33 @@ export async function POST(request: Request) {
           })
           .eq('provider_sub_id', subscription.id)
 
-        // TODO: Cuando Resend esté configurado, enviar email de confirmación de cancelación aquí
+        // Enviar email de confirmación de cancelación
+        try {
+          if (subRow) {
+            const { data: userProfile } = await supabase
+              .from('users')
+              .select('full_name, email')
+              .eq('id', subRow.user_id)
+              .single()
+
+            if (userProfile?.email) {
+              const accessUntil = new Date(subscription.current_period_end * 1000).toLocaleDateString('es-MX', {
+                day: 'numeric', month: 'long', year: 'numeric',
+              })
+
+              await sendEmail({
+                to: userProfile.email,
+                subject: 'Cancelación confirmada — Pasas.mx',
+                html: cancellationConfirmedTemplate({
+                  userName: userProfile.full_name?.split(' ')[0] ?? 'Estudiante',
+                  accessUntil,
+                }),
+              })
+            }
+          }
+        } catch (emailErr) {
+          console.error('[webhooks/stripe] Error sending cancellation email:', emailErr)
+        }
 
         console.log(`[webhooks/stripe] Subscription cancelled: ${subscription.id}`)
         break

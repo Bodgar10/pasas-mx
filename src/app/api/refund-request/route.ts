@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
+import { sendEmail } from '@/lib/email/resend'
 
 const REFUND_WINDOW_DAYS = 14
 
@@ -80,7 +81,26 @@ export async function POST(req: NextRequest) {
 
     } else {
       // Fuera de 14 días: crear ticket para revisión manual
-      // TODO: Cuando Resend esté configurado, enviar email al admin aquí
+      // Notificar al admin por email
+      try {
+        await sendEmail({
+          to: 'soporte@pasas.mx',
+          subject: `⚠️ Solicitud de reembolso manual — ${user.email}`,
+          html: `
+            <h2>Solicitud de reembolso fuera de ventana</h2>
+            <p><strong>Usuario:</strong> ${user.email}</p>
+            <p><strong>User ID:</strong> ${user.id}</p>
+            <p><strong>Días desde creación:</strong> ${Math.floor(daysSinceCreation)}</p>
+            <p><strong>Plan:</strong> ${subscription.plan}</p>
+            <p><strong>Monto:</strong> $${Math.round(subscription.price_mxn / 100)} MXN</p>
+            <p><strong>Razón:</strong> ${reason ?? 'No especificada'}</p>
+            <p><strong>Subscription ID:</strong> ${subscription.provider_sub_id}</p>
+          `,
+        })
+      } catch (emailErr) {
+        console.error('[refund-request] Error sending admin email:', emailErr)
+      }
+
       console.log(`[refund-request] Ticket manual creado para user ${user.id}. Razón: ${reason}. Días desde creación: ${Math.floor(daysSinceCreation)}`)
 
       return NextResponse.json({
