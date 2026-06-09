@@ -54,7 +54,7 @@ export async function GET(req: Request) {
     const errors: string[] = []
 
     for (const sub of subscriptions) {
-      const user = sub.users as { full_name: string; email: string } | null
+      const user = (Array.isArray(sub.users) ? sub.users[0] : sub.users) as { full_name: string; email: string } | null
       if (!user?.email) continue
 
       // Calcular nombre del plan para mostrar
