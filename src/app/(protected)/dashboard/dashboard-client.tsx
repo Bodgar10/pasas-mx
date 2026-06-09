@@ -47,6 +47,7 @@ interface Props {
   trialEndsAt: string | null
   isCancelled: boolean
   periodEnd: string | null
+  billingCycle: string | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -83,7 +84,7 @@ function xpToLevel(xp: number) {
   return { level, current, total: 500 }
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -528,6 +529,108 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 </div>
               )
             })()}
+
+            {/* Upgrade Banner — solo para usuarios mensuales activos sin trial */}
+            {subscriptionStatus === 'active' && billingCycle === 'monthly' && !trialEndsAt && !isPersonalized && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06))',
+                border: '1.5px solid rgba(16,185,129,0.35)',
+                borderRadius: 16,
+                padding: '16px 20px',
+                marginBottom: 20,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 12,
+                flexWrap: 'wrap',
+              }}>
+                <div>
+                  <p style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 13, fontWeight: 900,
+                    color: '#10b981', margin: '0 0 4px',
+                  }}>
+                    💰 Ahorra $695 al año
+                  </p>
+                  <p style={{ fontSize: 13, color: '#a78bfa', margin: 0, lineHeight: 1.5 }}>
+                    Cámbiarte al plan semestral y paga solo $133/mes
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => router.push('/planes')}
+                  style={{
+                    background: '#10b981',
+                    border: 'none', borderRadius: 10,
+                    padding: '8px 16px',
+                    fontSize: 13, fontWeight: 900,
+                    color: '#fff', cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Ver semestral →
+                </button>
+              </div>
+            )}
+
+            {/* Support Button */}
+            {subscriptionStatus === 'active' && (
+              <div style={{
+                background: 'rgba(124,58,237,0.04)',
+                border: '1px solid rgba(124,58,237,0.15)',
+                borderRadius: 16,
+                padding: '14px 16px',
+                marginBottom: 20,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 12,
+                flexWrap: 'wrap',
+              }}>
+                <div>
+                  <p style={{ fontSize: 14, fontWeight: 800, color: '#e2d9f3', margin: '0 0 2px' }}>
+                    ¿Necesitas ayuda?
+                  </p>
+                  <p style={{ fontSize: 12, color: '#a78bfa', margin: 0 }}>
+                    L-V 9AM–8PM · Respondemos rápido
+                  </p>
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <a
+                    href="https://wa.me/521XXXXXXXXXX?text=Hola,%20necesito%20ayuda%20con%20Pasas.mx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: '#25D366',
+                      border: 'none', borderRadius: 10,
+                      padding: '8px 14px',
+                      fontSize: 13, fontWeight: 900,
+                      color: '#fff', cursor: 'pointer',
+                      textDecoration: 'none',
+                      display: 'inline-flex', alignItems: 'center', gap: 4,
+                    }}
+                  >
+                    💬 WhatsApp
+                  </a>
+                  <a
+                    href="mailto:soporte@pasas.mx?subject=Ayuda%20con%20Pasas.mx"
+                    style={{
+                      background: 'rgba(124,58,237,0.15)',
+                      border: '1px solid rgba(124,58,237,0.3)',
+                      borderRadius: 10,
+                      padding: '8px 14px',
+                      fontSize: 13, fontWeight: 900,
+                      color: '#a78bfa', cursor: 'pointer',
+                      textDecoration: 'none',
+                      display: 'inline-flex', alignItems: 'center', gap: 4,
+                    }}
+                  >
+                    ✉️ Email
+                  </a>
+                </div>
+              </div>
+            )}
 
             {/* Personalized plan banner */}
             {isPersonalized && subscriptionStatus === 'active' && (

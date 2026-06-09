@@ -26,6 +26,8 @@ import { sendEmail } from '@/lib/email/resend'
 import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
 import { welcomeTemplate } from '@/lib/email/templates/welcome'
 import { paymentReceiptTemplate } from '@/lib/email/templates/payment-receipt'
+import { sendMetaCapiEvent } from '@/lib/marketing/meta-capi'
+import { sendTikTokEvent } from '@/lib/marketing/tiktok-events'
 import Stripe from 'stripe'
 
 // Use service role client to bypass RLS in webhook handler
@@ -124,6 +126,37 @@ export async function POST(request: Request) {
         })
 
         console.log(`[webhooks/stripe] Subscription created for user ${userId}`)
+
+        // Disparar eventos server-side a Meta y TikTok
+        try {
+          const { data: userForTracking } = await supabase
+            .from('users')
+            .select('email')
+            .eq('id', userId)
+            .single()
+
+          if (userForTracking?.email) {
+            const amount = priceAmount / 100
+            await Promise.all([
+              sendMetaCapiEvent('Subscribe', {
+                email: userForTracking.email,
+                value: amount,
+                currency: 'MXN',
+                contentName: planInfo.plan,
+                eventSourceUrl: 'https://pasas.mx/planes',
+              }),
+              sendTikTokEvent('CompletePayment', {
+                email: userForTracking.email,
+                value: amount,
+                currency: 'MXN',
+                contentName: planInfo.plan,
+                eventUrl: 'https://pasas.mx/planes',
+              }),
+            ])
+          }
+        } catch (trackingErr) {
+          console.error('[webhooks/stripe] Tracking error:', trackingErr)
+        }
 
         // Enviar email de bienvenida
         try {
