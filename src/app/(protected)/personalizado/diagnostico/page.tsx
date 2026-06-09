@@ -49,7 +49,10 @@ function DiagnosticoContent() {
   useEffect(() => {
     async function checkLimit() {
       const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
+      if (!user) {
+        setLoadingLimit(false)
+        return
+      }
       const today = new Date().toISOString().split('T')[0]
       const { data: cache } = await supabase
         .from('preview_cache')
