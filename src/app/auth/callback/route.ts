@@ -80,24 +80,10 @@ export async function GET(request: NextRequest) {
             const priceId = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]?.[duration]
 
             if (priceId) {
-              const Stripe = (await import('stripe')).default
-              const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-              const session = await stripe.checkout.sessions.create({
-                mode: 'subscription',
-                line_items: [{ price: priceId, quantity: 1 }],
-                customer_email: user.email!,
-                success_url: `${origin}/dashboard?checkout=success`,
-                cancel_url: `${origin}/planes`,
-                metadata: { user_id: user.id, plan },
-                subscription_data: {
-                  trial_period_days: 7,
-                  metadata: { user_id: user.id, plan },
-                },
-                payment_method_collection: 'always',
-              })
-              if (session.url) {
-                return NextResponse.redirect(session.url)
-              }
+              // Redirigir a pantalla de bienvenida antes de Stripe
+              return NextResponse.redirect(
+                `${origin}/bienvenida?plan=${encodeURIComponent(plan)}&duration=${encodeURIComponent(duration)}`
+              )
             }
           } catch (err) {
             console.error('[auth/callback] Error creating Stripe session:', err)
