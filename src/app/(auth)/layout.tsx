@@ -1,4 +1,5 @@
 import { Nunito, Orbitron } from 'next/font/google'
+import WhatsAppButton from '@/components/global/WhatsAppButton'
  
 const nunito = Nunito({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ export default function AuthLayout({
       style={{ fontFamily: 'var(--font-nunito)' }}
     >
       <div className="w-full max-w-sm">{children}</div>
+      <WhatsAppButton />
     </div>
   )
 }

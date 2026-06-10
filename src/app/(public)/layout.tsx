@@ -1,3 +1,5 @@
+import WhatsAppButton from '@/components/global/WhatsAppButton'
+
 export default function PublicLayout({
   children,
 }: {
@@ -6,6 +8,7 @@ export default function PublicLayout({
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
       {children}
+      <WhatsAppButton />
     </div>
   )
 }

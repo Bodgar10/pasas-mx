@@ -1,4 +1,5 @@
 import { Nunito, Orbitron } from 'next/font/google'
+import WhatsAppButton from '@/components/global/WhatsAppButton'
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ export default function ProtectedLayout({
       style={{ fontFamily: 'var(--font-nunito)' }}
     >
       {children}
+      <WhatsAppButton />
       <footer style={{
         borderTop: '1px solid rgba(124,58,237,0.15)',
         padding: '20px 24px',
