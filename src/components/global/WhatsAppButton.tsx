@@ -1,3 +1,5 @@
+'use client'
+
 // Número de WhatsApp de soporte — cambiar SOLO aquí
 const WA_NUMBER = '521XXXXXXXXXX'
 const WA_MESSAGE = 'Hola,%20tengo%20una%20pregunta%20sobre%20Pasas.mx'
