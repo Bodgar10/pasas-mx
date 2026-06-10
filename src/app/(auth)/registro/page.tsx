@@ -140,7 +140,7 @@ export default function RegistroPage() {
       try {
         const { createClient } = await import('@/utils/supabase/client')
         const supabase = createClient()
-        const { error } = await supabase.auth.signInWithPassword({
+        await supabase.auth.signInWithPassword({
           email: (state as any)?.email ?? '',
           password: '',
         })
