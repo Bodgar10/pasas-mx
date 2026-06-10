@@ -114,6 +114,7 @@ export default function RegistroPage() {
         >
           El link expira en 24 horas.
         </div>
+        <VerifyButton />
       </div>
     )
   }
@@ -127,6 +128,78 @@ export default function RegistroPage() {
       provider: 'google',
       options: { redirectTo: `${window.location.origin}/auth/callback` },
     })
+  }
+
+  function VerifyButton() {
+    const [checking, setChecking] = useState(false)
+    const [notVerified, setNotVerified] = useState(false)
+
+    async function handleCheck() {
+      setChecking(true)
+      setNotVerified(false)
+      try {
+        const { createClient } = await import('@/utils/supabase/client')
+        const supabase = createClient()
+        const { error } = await supabase.auth.signInWithPassword({
+          email: (state as any)?.email ?? '',
+          password: '',
+        })
+        // Si el error es "Email not confirmed" → no verificado
+        // Si el error es "Invalid login credentials" → sí verificado (password vacío falla)
+        // Si no hay sesión activa, verificamos directo
+        const { data: { session } } = await supabase.auth.getSession()
+        if (session?.user?.email_confirmed_at) {
+          window.location.href = '/dashboard'
+          return
+        }
+        // Intentar refresh de sesión
+        const { data: refreshed } = await supabase.auth.refreshSession()
+        if (refreshed?.user?.email_confirmed_at) {
+          window.location.href = '/dashboard'
+          return
+        }
+        setNotVerified(true)
+      } catch {
+        setNotVerified(true)
+      } finally {
+        setChecking(false)
+      }
+    }
+
+    return (
+      <>
+        <button
+          type="button"
+          onClick={handleCheck}
+          disabled={checking}
+          className="w-full rounded-xl font-bold text-white text-base"
+          style={{
+            backgroundColor: checking ? '#4B3D6E' : '#7c3aed',
+            minHeight: '52px',
+            border: 'none',
+            cursor: checking ? 'not-allowed' : 'pointer',
+            fontFamily: 'var(--font-nunito)',
+            transition: 'background-color 0.15s ease',
+          }}
+        >
+          {checking ? 'Verificando...' : 'Ya verifiqué mi correo →'}
+        </button>
+        {notVerified && (
+          <div
+            className="rounded-xl px-4 py-3 text-sm"
+            style={{
+              background: 'rgba(239,68,68,0.08)',
+              border: '1px solid rgba(239,68,68,0.2)',
+              color: '#f87171',
+              textAlign: 'center',
+              lineHeight: 1.6,
+            }}
+          >
+            Aún no vemos tu verificación. Revisa tu correo — puede estar en spam o en la carpeta de "No deseado".
+          </div>
+        )}
+      </>
+    )
   }
 
   return (

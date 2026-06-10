@@ -67,29 +67,6 @@ export async function registroAction(
   const user = signUpData?.user
   if (!user) return { error: 'No pudimos crear tu cuenta. Inténtalo de nuevo.' }
 
-  // Si el email aún no está confirmado, mostrar pantalla de verificación
-  if (!user.email_confirmed_at) {
-    // Guardar datos básicos del perfil con service role aunque no esté confirmado
-    const serviceClientEarly = createServiceClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    )
-    await serviceClientEarly.from('users').update({
-      full_name: fullName,
-      parent_name: parentName || null,
-      tos_accepted_at: new Date().toISOString(),
-      tos_accepted_version: '1.0',
-    }).eq('id', user.id)
-
-    return { emailSent: true, email }
-  }
-
-  // Use service role to guarantee the update completes before redirect
-  const serviceClient = createServiceClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
-
   // Parsear UTMs si vienen del formulario
   let acquisitionSource = null
   if (utmRaw) {
@@ -102,6 +79,49 @@ export async function registroAction(
       )
     } catch { /* UTM malformed — ignorar */ }
   }
+
+  // Si el email aún no está confirmado, mostrar pantalla de verificación
+  if (!user.email_confirmed_at) {
+    const serviceClientEarly = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+
+    // Parsear onboarding data para guardar todo el perfil ya
+    let profileEarly: Record<string, unknown> = {
+      full_name: fullName,
+      parent_name: parentName || null,
+      tos_accepted_at: new Date().toISOString(),
+      tos_accepted_version: '1.0',
+      onboarding_done: false, // se completa en auth/callback al verificar
+    }
+
+    if (onboardingRaw && onboardingRaw.length > 2) {
+      try {
+        const parsed = JSON.parse(onboardingRaw)
+        profileEarly = {
+          ...profileEarly,
+          education_level: LEVEL_MAP[parsed.level] ?? 'middle_school',
+          grade: parsed.grade ? (GRADE_MAP[parsed.grade] ?? null) : null,
+          interests: parsed.theme ? [parsed.theme] : [],
+        }
+      } catch { /* ignorar */ }
+    }
+
+    if (acquisitionSource) {
+      profileEarly.acquisition_source = acquisitionSource
+    }
+
+    await serviceClientEarly.from('users').update(profileEarly).eq('id', user.id)
+
+    return { emailSent: true, email }
+  }
+
+  // Use service role to guarantee the update completes before redirect
+  const serviceClient = createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
 
   // Parse onboarding data if available
   let profileUpdate: Record<string, unknown> = {

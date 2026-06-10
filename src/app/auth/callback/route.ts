@@ -35,12 +35,30 @@ export async function GET(request: NextRequest) {
       if (user) {
         const { data: profile } = await supabase
           .from('users')
-          .select('role')
+          .select('role, onboarding_done, full_name')
           .eq('id', user.id)
           .single()
 
         if (profile?.role === 'admin') {
           return NextResponse.redirect(`${origin}/admin`)
+        }
+
+        // Si el perfil existe pero onboarding_done es false, completarlo
+        // Esto pasa cuando el usuario verificó email pero el onboarding_done no se guardó
+        if (profile && !profile.onboarding_done && profile.full_name) {
+          const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+          const serviceClient = createServiceClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+          )
+          await serviceClient
+            .from('users')
+            .update({ onboarding_done: true })
+            .eq('id', user.id)
+
+          await supabase.auth.updateUser({
+            data: { onboarding_done: true },
+          })
         }
       }
 
