@@ -270,6 +270,23 @@ export default function AdminHomeClient({ subjects }: Props) {
           </button>
           <button
             type="button"
+            onClick={() => router.push('/admin/insights')}
+            style={{
+              background: 'rgba(239,68,68,0.08)',
+              border: '1px solid rgba(239,68,68,0.2)',
+              color: '#ef4444',
+              borderRadius: 10,
+              padding: '8px 16px',
+              fontSize: 15,
+              fontWeight: 800,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            📉 Insights
+          </button>
+          <button
+            type="button"
             onClick={async () => {
               const supabase = createClient()
               await supabase.auth.signOut()
