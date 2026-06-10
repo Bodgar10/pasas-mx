@@ -69,6 +69,30 @@ function renderContent(text: string): React.ReactNode {
   )
 }
 
+function slugifyTheme(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+function resolveThemeKey(
+  key: string,
+  themeList: { id: string; name: string }[]
+): { themeId: string | null; themeName: string } | null {
+  const norm = key.trim().toLowerCase()
+  if (norm === 'base') return { themeId: null, themeName: 'base' }
+  const slug = slugifyTheme(key)
+  for (const t of themeList) {
+    if (t.id === key || t.name.toLowerCase() === norm || slugifyTheme(t.name) === slug) {
+      return { themeId: t.id, themeName: t.name }
+    }
+  }
+  return null
+}
+
 
 const SECTION_ICONS: Record<Section['type'], string> = {
   explanation: '📘',
@@ -172,6 +196,13 @@ export default function TopicAdminClient({
   const [manualJsonError, setManualJsonError] = useState<string | null>(null)
   const [savingManual, setSavingManual] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [batchJson, setBatchJson] = useState('')
+  const [batchError, setBatchError] = useState<string | null>(null)
+  const [savingBatch, setSavingBatch] = useState(false)
+  const [batchCopied, setBatchCopied] = useState(false)
+  const [batchResults, setBatchResults] = useState<
+    { theme: string; status: 'saved' | 'skipped' | 'error'; detail?: string }[]
+  >([])
   const [generatingDiagram, setGeneratingDiagram] = useState(false)
   const [diagramError, setDiagramError] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
@@ -530,6 +561,159 @@ Genera este JSON exacto:
       setManualJsonError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
     } finally {
       setSavingManual(false)
+    }
+  }
+
+  function buildOpusBatchPrompt(): string {
+    const educationContextLabel =
+      level === 'middle_school' ? `${grade}° de secundaria` :
+      level === 'high_school'   ? `${grade}° de preparatoria` :
+      level === 'exam_prepa'    ? `preparación para examen de ingreso a preparatoria (COMIPEMS)` :
+      level === 'exam_uni'      ? `preparación para examen de ingreso a universidad (UNAM/IPN)` :
+      `${grade}° grado`
+    const isExam = level === 'exam_prepa' || level === 'exam_uni'
+
+    const themeList = themes
+      .map((t) => `- key: "${slugifyTheme(t.name)}"  →  temática: "${t.name}"`)
+      .join('\n')
+
+    return `Eres un experto en educación mexicana y storytelling pedagógico.
+Vas a generar contenido educativo inmersivo para estudiantes mexicanos de ${educationContextLabel}.
+
+Vas a generar contenido para VARIAS temáticas a la vez. Para CADA temática, esa temática NO es un adorno — es el MUNDO donde ocurre todo el contenido. El alumno debe sentir que aprende DENTRO de esa temática, no que alguien la menciona de pasada.
+
+ANTES DE ESCRIBIR cada temática, identifica mentalmente:
+1. Los 5 personajes/elementos MÁS FAMOSOS de esa temática a nivel mundial (2024-2025)
+2. Las 3 situaciones MÁS ICÓNICAS que cualquier fan reconocería al instante
+3. Los términos/mecánicas MÁS USADOS por la comunidad real de esa temática
+
+Usa SIEMPRE lo más famoso, no lo más oscuro. Un alumno de 13-18 años en México debe reconocer cada referencia. Nada genérico. Nada inventado.
+Adapta vocabulario y complejidad a ${educationContextLabel}.
+${isExam ? 'Enfócate en conceptos frecuentes en exámenes de admisión, con distractores plausibles en el quiz.' : ''}
+
+TEMA A EXPLICAR (el mismo para todas las temáticas):
+- Tema: "${topic.name}"
+- Materia: "${subject.name}"
+- Nivel: ${educationContextLabel}
+
+TEMÁTICAS A GENERAR (genera un grupo por cada una, usando su "key" EXACTA en el campo "theme"):
+${themeList}
+
+Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional, con esta estructura EXACTA:
+
+{
+  "topic_slug": "${topic.slug}",
+  "groups": [
+    {
+      "theme": "<la key EXACTA de la temática, copiada de la lista de arriba>",
+      "sections": [
+        { "type": "analogy", "title": "título con algo específico de la temática", "content": "Situación concreta y detallada de la temática: escenario, personajes y el problema que surge naturalmente. Detalles reales (nombres, mecánicas). Mínimo 100 palabras. El concepto académico debe emerger de la situación, no al revés.", "display_order": 1 },
+        { "type": "explanation", "title": "conecta la situación con el concepto formal", "content": "Arranca con 'Lo que acabas de ver en [situación] es exactamente [concepto].' Explica el concepto formal con **negritas** en términos clave. Máximo 100 palabras.", "display_order": 2 },
+        { "type": "example", "title": "Ejemplo resuelto — situación diferente de la temática", "content": "Problema NUEVO dentro de la temática, distinto al de la analogía. Resuelto paso a paso con **pasos numerados**. Los datos vienen del universo de la temática. Máximo 120 palabras.", "display_order": 3 },
+        { "type": "key_fact", "title": "Lo que debes recordar", "content": "Definición formal en 1-2 oraciones con **negritas** en lo crítico. Incluye fórmula o regla si aplica.", "display_order": 4 },
+        { "type": "tip", "title": "${isExam ? 'Tip para el examen de admisión' : 'Tip para no fallar en el examen'}", "content": "${isExam ? 'Consejo estratégico para resolver rápido en COMIPEMS/UNAM. Menciona la trampa más común en las opciones.' : 'Truco práctico para recordar el concepto o evitar el error más común.'} Máximo 50 palabras.", "display_order": 5 }
+      ],
+      "quiz_questions": [
+        { "question": "básica — puede usar contexto de la temática", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "A", "explanation": "por qué es correcta y el error típico. Máx 50 palabras.", "difficulty": 1, "xp_reward": 20 },
+        { "question": "media — aplica el concepto", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "B", "explanation": "por qué es correcta. Máx 50 palabras.", "difficulty": 2, "xp_reward": 30 },
+        { "question": "difícil — requiere razonamiento, no memorización", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "C", "explanation": "por qué es correcta y por qué los distractores son plausibles. Máx 50 palabras.", "difficulty": 3, "xp_reward": 50 },
+        { "question": "media — aplica en contexto diferente de la temática", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "D", "explanation": "por qué es correcta y el error típico. Máx 50 palabras.", "difficulty": 2, "xp_reward": 30 },
+        { "question": "difícil — combina conceptos o varios pasos", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "A", "explanation": "por qué es correcta y por qué los distractores son plausibles. Máx 50 palabras.", "difficulty": 3, "xp_reward": 50 }
+      ]
+    }
+  ]
+}
+
+IMPORTANTE:
+- Genera EXACTAMENTE un grupo por cada temática de la lista (${themes.length} grupos en total).
+- Usa la key EXACTA de cada temática en el campo "theme". No inventes temáticas que no estén en la lista.
+- Cada grupo: 5 secciones (analogy, explanation, example, key_fact, tip) y 5 preguntas de quiz.
+- Mantén "topic_slug" tal cual: "${topic.slug}".`
+  }
+
+  async function handleSaveBatchJson() {
+    setBatchError(null)
+    setBatchResults([])
+    setSavingBatch(true)
+
+    let parsed: { topic_slug?: string; groups?: unknown[] }
+    try {
+      let clean = batchJson.replace(/```json|```/g, '').trim()
+      const jsonMatch = clean.match(/\{[\s\S]*\}/)
+      if (jsonMatch) clean = jsonMatch[0]
+      parsed = JSON.parse(clean)
+    } catch {
+      setBatchError('El JSON no es válido. Copia TODO el texto que te dio Opus, sin agregar nada.')
+      setSavingBatch(false)
+      return
+    }
+
+    if (!parsed.groups || !Array.isArray(parsed.groups) || parsed.groups.length === 0) {
+      setBatchError('El JSON no tiene la estructura correcta — falta el array "groups".')
+      setSavingBatch(false)
+      return
+    }
+
+    if (parsed.topic_slug && parsed.topic_slug !== topic.slug) {
+      setBatchError(`Este JSON es del tema "${parsed.topic_slug}", pero estás en "${topic.slug}". No se guardó nada.`)
+      setSavingBatch(false)
+      return
+    }
+
+    const results: { theme: string; status: 'saved' | 'skipped' | 'error'; detail?: string }[] = []
+
+    for (const rawGroup of parsed.groups) {
+      const group = rawGroup as { theme?: string; sections?: unknown[]; quiz_questions?: unknown[] }
+      const keyLabel = group.theme ?? '(sin theme)'
+
+      if (!group.theme || !group.sections || !Array.isArray(group.sections) || group.sections.length === 0) {
+        results.push({ theme: keyLabel, status: 'skipped', detail: 'sin theme o sin sections' })
+        continue
+      }
+
+      const resolved = resolveThemeKey(group.theme, themes)
+      if (!resolved) {
+        results.push({ theme: keyLabel, status: 'skipped', detail: 'temática no reconocida' })
+        continue
+      }
+
+      if (resolved.themeId === null) {
+        results.push({ theme: resolved.themeName, status: 'skipped', detail: 'base aún no soportado (pendiente endpoint)' })
+        continue
+      }
+
+      try {
+        const res = await fetch('/api/admin/save-generated-content', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            topicId: topic.id,
+            themeId: resolved.themeId,
+            themeName: resolved.themeName,
+            sections: group.sections,
+            quiz_questions: group.quiz_questions ?? [],
+          }),
+        })
+        const data = await res.json()
+        if (data.error) {
+          results.push({ theme: resolved.themeName, status: 'error', detail: data.error })
+        } else {
+          results.push({ theme: resolved.themeName, status: 'saved' })
+          if (resolved.themeId === selectedThemeId) {
+            if (data.sections) setSections(data.sections)
+            if (data.quizQuestions) setQuizQuestions(data.quizQuestions)
+            setPublished(false)
+          }
+        }
+      } catch (err) {
+        results.push({ theme: resolved.themeName, status: 'error', detail: err instanceof Error ? err.message : 'red' })
+      }
+    }
+
+    setBatchResults(results)
+    setSavingBatch(false)
+    if (results.filter((r) => r.status === 'saved').length === 0) {
+      setBatchError('No se guardó ninguna temática. Revisa el JSON.')
     }
   }
 
@@ -912,6 +1096,127 @@ Genera este JSON exacto:
                   }}
                 >
                   {savingManual ? '⏳ Guardando...' : '💾 Guardar contenido de Opus'}
+                </button>
+              </div>
+            </div>
+
+            {/* ─── CARD: OPUS LOTE (todas las temáticas) ─── */}
+            <div style={{
+              background: '#1C1033',
+              border: '1px solid rgba(6,182,212,0.3)',
+              borderRadius: 14,
+              padding: 18,
+              marginTop: 12,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                <span style={{ fontSize: 20 }}>🚀</span>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: '#67e8f9' }}>Opus — todas las temáticas (lote)</div>
+                  <div style={{ fontSize: 13, color: '#a78bfa' }}>Un solo prompt genera las {themes.length} temáticas de este tema. Pega el JSON y se guarda cada una en su lugar.</div>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 12 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>
+                  Paso 1 — Copia este prompt y pégalo en claude.ai con Opus
+                </div>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(buildOpusBatchPrompt())
+                    setBatchCopied(true)
+                    setTimeout(() => setBatchCopied(false), 2500)
+                  }}
+                  style={{
+                    width: '100%',
+                    minHeight: 40,
+                    background: batchCopied ? 'rgba(16,185,129,0.15)' : 'rgba(6,182,212,0.1)',
+                    border: batchCopied ? '1px solid rgba(16,185,129,0.4)' : '1px solid rgba(6,182,212,0.3)',
+                    borderRadius: 10,
+                    color: batchCopied ? '#10b981' : '#67e8f9',
+                    fontSize: 14,
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  {batchCopied ? '✓ Prompt de lote copiado' : `📋 Copiar prompt de lote (${themes.length} temáticas)`}
+                </button>
+              </div>
+
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>
+                  Paso 2 — Pega aquí el JSON de lote que te dio Opus
+                </div>
+                <textarea
+                  value={batchJson}
+                  onChange={(e) => {
+                    setBatchJson(e.target.value)
+                    setBatchError(null)
+                  }}
+                  placeholder={'{\n  "topic_slug": "...",\n  "groups": [ ... ]\n}'}
+                  style={{
+                    width: '100%',
+                    minHeight: 140,
+                    background: '#0f0a1e',
+                    border: batchError ? '1.5px solid #ef4444' : '1.5px solid #2D2048',
+                    borderRadius: 10,
+                    color: '#e2d9f3',
+                    fontSize: 13,
+                    padding: '10px 12px',
+                    fontFamily: 'monospace',
+                    resize: 'vertical',
+                    boxSizing: 'border-box',
+                    lineHeight: 1.5,
+                  }}
+                />
+                {batchError && (
+                  <div style={{
+                    marginTop: 8,
+                    padding: '8px 12px',
+                    background: 'rgba(239,68,68,0.1)',
+                    border: '1px solid rgba(239,68,68,0.3)',
+                    borderRadius: 8,
+                    color: '#fca5a5',
+                    fontSize: 13,
+                    fontWeight: 600,
+                  }}>
+                    {batchError}
+                  </div>
+                )}
+                {batchResults.length > 0 && (
+                  <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    {batchResults.map((r, i) => (
+                      <div key={i} style={{
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: r.status === 'saved' ? '#6ee7b7' : r.status === 'skipped' ? '#fbbf24' : '#fca5a5',
+                      }}>
+                        {r.status === 'saved' ? '✓' : r.status === 'skipped' ? '⚠️' : '✕'} {r.theme}{r.detail ? ` — ${r.detail}` : ''}
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <button
+                  type="button"
+                  onClick={handleSaveBatchJson}
+                  disabled={savingBatch || batchJson.trim().length < 10}
+                  style={{
+                    width: '100%',
+                    minHeight: 44,
+                    marginTop: 10,
+                    background: 'rgba(6,182,212,0.15)',
+                    border: '1px solid rgba(6,182,212,0.4)',
+                    borderRadius: 12,
+                    color: '#67e8f9',
+                    fontSize: 14,
+                    fontWeight: 800,
+                    cursor: (savingBatch || batchJson.trim().length < 10) ? 'not-allowed' : 'pointer',
+                    opacity: (savingBatch || batchJson.trim().length < 10) ? 0.5 : 1,
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  {savingBatch ? '⏳ Guardando temáticas...' : '💾 Guardar todas las temáticas'}
                 </button>
               </div>
             </div>
