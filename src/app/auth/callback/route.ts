@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
       if (user) {
         const { data: profile } = await supabase
           .from('users')
-          .select('role, onboarding_done, full_name')
+          .select('role, onboarding_done, full_name, pending_checkout')
           .eq('id', user.id)
           .single()
 
@@ -44,7 +44,6 @@ export async function GET(request: NextRequest) {
         }
 
         // Si el perfil existe pero onboarding_done es false, completarlo
-        // Esto pasa cuando el usuario verificó email pero el onboarding_done no se guardó
         if (profile && !profile.onboarding_done && profile.full_name) {
           const { createClient: createServiceClient } = await import('@supabase/supabase-js')
           const serviceClient = createServiceClient(
@@ -59,6 +58,51 @@ export async function GET(request: NextRequest) {
           await supabase.auth.updateUser({
             data: { onboarding_done: true },
           })
+        }
+
+        // Si hay pending_checkout, crear sesión de Stripe y redirigir
+        if (profile?.pending_checkout) {
+          const { plan, duration } = profile.pending_checkout as { plan: string; duration: string }
+          try {
+            const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+            const serviceClient = createServiceClient(
+              process.env.NEXT_PUBLIC_SUPABASE_URL!,
+              process.env.SUPABASE_SERVICE_ROLE_KEY!
+            )
+
+            // Limpiar pending_checkout inmediatamente
+            await serviceClient
+              .from('users')
+              .update({ pending_checkout: null })
+              .eq('id', user.id)
+
+            const { STRIPE_PRICES } = await import('@/lib/payments/config')
+            const priceId = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]?.[duration]
+
+            if (priceId) {
+              const Stripe = (await import('stripe')).default
+              const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+              const session = await stripe.checkout.sessions.create({
+                mode: 'subscription',
+                line_items: [{ price: priceId, quantity: 1 }],
+                customer_email: user.email!,
+                success_url: `${origin}/dashboard?checkout=success`,
+                cancel_url: `${origin}/planes`,
+                metadata: { user_id: user.id, plan },
+                subscription_data: {
+                  trial_period_days: 7,
+                  metadata: { user_id: user.id, plan },
+                },
+                payment_method_collection: 'always',
+              })
+              if (session.url) {
+                return NextResponse.redirect(session.url)
+              }
+            }
+          } catch (err) {
+            console.error('[auth/callback] Error creating Stripe session:', err)
+            // Si falla Stripe, continuar al dashboard normal
+          }
         }
       }
 

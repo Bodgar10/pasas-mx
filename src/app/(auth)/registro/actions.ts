@@ -112,6 +112,11 @@ export async function registroAction(
       profileEarly.acquisition_source = acquisitionSource
     }
 
+    // Guardar pending_checkout en BD para sobrevivir el redirect de verificación
+    if (pendingPlan && pendingDuration) {
+      profileEarly.pending_checkout = { plan: pendingPlan, duration: pendingDuration }
+    }
+
     await serviceClientEarly.from('users').update(profileEarly).eq('id', user.id)
 
     return { emailSent: true, email }
