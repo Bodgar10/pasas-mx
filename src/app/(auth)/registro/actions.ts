@@ -48,7 +48,7 @@ export async function registroAction(
   const supabase = await createClient()
 
   // Always create a brand new account — no anonymous session
-  const { error: signUpError } = await supabase.auth.signUp({
+  const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -64,8 +64,25 @@ export async function registroAction(
     return { error: 'Ocurrió un error al crear tu cuenta. Inténtalo de nuevo.' }
   }
 
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No pudimos verificar tu cuenta. Inténtalo de nuevo.' }
+  const user = signUpData?.user
+  if (!user) return { error: 'No pudimos crear tu cuenta. Inténtalo de nuevo.' }
+
+  // Si el email aún no está confirmado, mostrar pantalla de verificación
+  if (!user.email_confirmed_at) {
+    // Guardar datos básicos del perfil con service role aunque no esté confirmado
+    const serviceClientEarly = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+    await serviceClientEarly.from('users').update({
+      full_name: fullName,
+      parent_name: parentName || null,
+      tos_accepted_at: new Date().toISOString(),
+      tos_accepted_version: '1.0',
+    }).eq('id', user.id)
+
+    return { emailSent: true, email }
+  }
 
   // Use service role to guarantee the update completes before redirect
   const serviceClient = createServiceClient(
