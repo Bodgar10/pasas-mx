@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
+import { sendEmail } from '@/lib/email/resend'
+import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,7 +37,40 @@ export async function POST(req: NextRequest) {
       .update({ cancelled_at: new Date().toISOString() })
       .eq('id', subscription.id)
 
-    // TODO: Cuando Resend esté configurado, enviar email de confirmación aquí
+    // Enviar email de confirmación de cancelación
+    try {
+      const { data: userProfile } = await supabase
+        .from('users')
+        .select('full_name')
+        .eq('id', user.id)
+        .single()
+
+      const userEmail = user.email
+      if (userEmail) {
+        const { data: subData } = await supabase
+          .from('subscriptions')
+          .select('current_period_end')
+          .eq('id', subscription.id)
+          .single()
+
+        const accessUntil = subData?.current_period_end
+          ? new Date(subData.current_period_end).toLocaleDateString('es-MX', {
+              day: 'numeric', month: 'long', year: 'numeric',
+            })
+          : 'el fin del período actual'
+
+        await sendEmail({
+          to: userEmail,
+          subject: 'Cancelación confirmada — Pasas.mx',
+          html: cancellationConfirmedTemplate({
+            userName: userProfile?.full_name?.split(' ')[0] ?? 'Estudiante',
+            accessUntil,
+          }),
+        })
+      }
+    } catch (emailErr) {
+      console.error('[subscription/cancel] Error sending email:', emailErr)
+    }
 
     console.log(`[subscription/cancel] Cancelación programada para user ${user.id}`)
 
