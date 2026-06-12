@@ -39,10 +39,12 @@ export async function GET(req: Request) {
 
     for (const sub of pausedSubs) {
       try {
-        // Quitar pausa en Stripe — Stripe reactiva automáticamente
+        // Quitar pausa en Stripe + aplicar cupón de reactivación (50% off, una vez)
         if (sub.provider_sub_id) {
+          const reactivationCoupon = process.env.STRIPE_COUPON_REACTIVATION_50
           await stripe.subscriptions.update(sub.provider_sub_id, {
             pause_collection: '',
+            ...(reactivationCoupon ? { discounts: [{ coupon: reactivationCoupon }] } : {}),
           } as any)
         }
 

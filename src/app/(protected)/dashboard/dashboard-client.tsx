@@ -509,6 +509,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
             {subscriptionStatus === 'active' && trialEndsAt && (() => {
               const daysLeft = Math.max(0, Math.ceil((new Date(trialEndsAt).getTime() - Date.now()) / (1000 * 60 * 60 * 24)))
               if (daysLeft === 0) return null
+              const cycleLabel = billingCycle === 'annual' ? 'plan anual' : billingCycle === 'semestral' ? 'plan semestral' : billingCycle === 'monthly' ? 'plan mensual' : null
               return (
                 <div style={{
                   background: 'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(236,72,153,0.08))',
@@ -525,7 +526,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                       🎯 Periodo de prueba
                     </p>
                     <p style={{ margin: '4px 0 0', fontSize: 14, color: '#a78bfa', fontWeight: 600 }}>
-                      Te quedan <strong style={{ color: '#fbbf24' }}>{daysLeft} día{daysLeft !== 1 ? 's' : ''}</strong> gratis
+                      Te quedan <strong style={{ color: '#fbbf24' }}>{daysLeft} día{daysLeft !== 1 ? 's' : ''}</strong> gratis{cycleLabel ? <> · luego continúa tu <strong style={{ color: '#fbbf24' }}>{cycleLabel}</strong></> : ''}
                     </p>
                   </div>
                 </div>
