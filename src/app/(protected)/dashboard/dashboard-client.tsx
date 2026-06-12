@@ -48,6 +48,8 @@ interface Props {
   isCancelled: boolean
   periodEnd: string | null
   billingCycle: string | null
+  isPaused: boolean
+  pausedUntil: string | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -84,7 +86,7 @@ function xpToLevel(xp: number) {
   return { level, current, total: 500 }
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -570,6 +572,48 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                   }}
                 >
                   Ver semestral →
+                </button>
+              </div>
+            )}
+
+            {/* Pause Banner — cuando el usuario está en pausa */}
+            {isPaused && pausedUntil && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.06))',
+                border: '1.5px solid rgba(245,158,11,0.4)',
+                borderRadius: 16,
+                padding: '16px 20px',
+                marginBottom: 20,
+              }}>
+                <p style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 15, fontWeight: 900,
+                  color: '#f59e0b', margin: '0 0 6px',
+                }}>
+                  ⏸ Tu cuenta está pausada
+                </p>
+                <p style={{
+                  fontSize: 14, color: '#fbbf24',
+                  opacity: 0.85, margin: '0 0 14px',
+                  lineHeight: 1.6, fontWeight: 600,
+                }}>
+                  Se reactiva automáticamente el{' '}
+                  <strong>{new Date(pausedUntil).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>.
+                  Tu XP y progreso están guardados.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => router.push('/perfil')}
+                  style={{
+                    backgroundColor: '#f59e0b',
+                    border: 'none', borderRadius: 10,
+                    padding: '10px 20px',
+                    fontSize: 14, fontWeight: 900,
+                    color: '#0a0a0f', cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  Reactivar ahora →
                 </button>
               </div>
             )}

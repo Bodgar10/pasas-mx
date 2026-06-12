@@ -21,9 +21,9 @@ export default async function DashboardPage() {
       .single(),
     supabase
       .from('subscriptions')
-      .select('status, current_period_end, plan, trial_ends_at, cancelled_at, billing_cycle')
+      .select('status, current_period_end, plan, trial_ends_at, cancelled_at, billing_cycle, paused_until')
       .eq('user_id', user.id)
-      .in('status', ['trialing', 'active', 'past_due'])
+      .in('status', ['trialing', 'active', 'past_due', 'paused'])
       .order('current_period_end', { ascending: false })
       .limit(1)
       .maybeSingle(),
@@ -88,11 +88,13 @@ export default async function DashboardPage() {
       }
     : null
 
-  const isPersonalized = subscription?.plan === 'ai_personalized' && subscriptionStatus === 'active'
+  const isPaused = subscription?.status === 'paused'
+  const isPersonalized = subscription?.plan === 'ai_personalized' && subscriptionStatus === 'active' && !isPaused
   const trialEndsAt = subscription?.trial_ends_at ?? null
   const isCancelled = !!subscription?.cancelled_at
   const periodEnd = subscription?.current_period_end ?? null
   const billingCycle = subscription?.billing_cycle ?? null
+  const pausedUntil = subscription?.paused_until ?? null
 
   return (
     <DashboardClient
@@ -113,6 +115,8 @@ export default async function DashboardPage() {
       isCancelled={isCancelled}
       periodEnd={periodEnd}
       billingCycle={billingCycle}
+      isPaused={isPaused}
+      pausedUntil={pausedUntil}
     />
   )
 }
