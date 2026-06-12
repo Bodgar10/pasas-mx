@@ -24,6 +24,7 @@ interface Props {
     currentPeriodEnd: string
     cancelledAt: string | null
     pausedUntil: string | null
+    billingCycle: string | null
   } | null
 }
 
@@ -284,6 +285,14 @@ export default function PerfilClient({ profile, subscription }: Props) {
                     {PLAN_LABELS[subscription.plan] ?? subscription.plan}
                   </span>
                 </div>
+                {subscription.billingCycle && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: 15, color: COLORS.muted, fontWeight: 600 }}>Ciclo</span>
+                    <span style={{ fontSize: 15, color: COLORS.text, fontWeight: 700 }}>
+                      {subscription.billingCycle === 'monthly' ? '📅 Mensual' : subscription.billingCycle === 'semestral' ? '📅 Semestral' : '📅 Anual'}
+                    </span>
+                  </div>
+                )}
                 {statusMeta && (
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ fontSize: 15, color: COLORS.muted, fontWeight: 600 }}>Estado</span>
