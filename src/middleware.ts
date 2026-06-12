@@ -122,6 +122,27 @@ export async function middleware(request: NextRequest) {
       url.pathname = '/onboarding'
       return NextResponse.redirect(url)
     }
+
+    // Bloquear acceso durante pausa — solo permitir /perfil y /planes
+    const PAUSE_ALLOWED = ['/perfil', '/planes']
+    const allowedDuringPause = PAUSE_ALLOWED.some(
+      (p) => pathname === p || pathname.startsWith(p + '/')
+    )
+    if (!allowedDuringPause) {
+      const { data: sub } = await supabase
+        .from('subscriptions')
+        .select('status')
+        .eq('user_id', user.id)
+        .eq('status', 'paused')
+        .maybeSingle()
+
+      if (sub) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/perfil'
+        url.searchParams.set('paused', '1')
+        return NextResponse.redirect(url)
+      }
+    }
   }
 
   // Pass user data to server components via headers

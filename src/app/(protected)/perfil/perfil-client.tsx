@@ -23,6 +23,7 @@ interface Props {
     status: string
     currentPeriodEnd: string
     cancelledAt: string | null
+    pausedUntil: string | null
   } | null
 }
 
@@ -302,6 +303,53 @@ export default function PerfilClient({ profile, subscription }: Props) {
                   </div>
                 )}
               </div>
+
+              {/* Banner pausa activa */}
+              {subscription?.status === 'paused' && subscription.pausedUntil && (
+                <div style={{
+                  backgroundColor: 'rgba(245,158,11,0.08)',
+                  border: '1.5px solid rgba(245,158,11,0.3)',
+                  borderRadius: RADIUS.lg,
+                  padding: '16px',
+                  marginBottom: 12,
+                }}>
+                  <p style={{ fontSize: 14, fontWeight: 900, color: '#f59e0b', margin: '0 0 6px' }}>
+                    ⏸ Tu cuenta está pausada
+                  </p>
+                  <p style={{ fontSize: 13, color: '#fbbf24', opacity: 0.85, margin: '0 0 12px', lineHeight: 1.5 }}>
+                    Se reactiva automáticamente el{' '}
+                    <strong>{new Date(subscription.pausedUntil).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>.
+                    Tu XP y progreso están guardados.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      // Reactivar: quitar pausa en Stripe vía endpoint
+                      try {
+                        await fetch('/api/subscription/pause', {
+                          method: 'DELETE',
+                        })
+                        window.location.reload()
+                      } catch {
+                        alert('No se pudo reactivar. Escríbenos a soporte@pasas.mx')
+                      }
+                    }}
+                    style={{
+                      background: '#f59e0b',
+                      border: 'none',
+                      borderRadius: RADIUS.md,
+                      padding: '8px 16px',
+                      fontSize: 13,
+                      fontWeight: 900,
+                      color: '#0a0a0f',
+                      cursor: 'pointer',
+                      fontFamily: FONTS.nunito,
+                    }}
+                  >
+                    Reactivar ahora →
+                  </button>
+                </div>
+              )}
 
               {isCancelled || wasCancelled ? (
                 <div style={{
