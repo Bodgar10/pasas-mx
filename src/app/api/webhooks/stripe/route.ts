@@ -413,6 +413,63 @@ export async function POST(request: Request) {
         break
       }
 
+      // -----------------------------------------------------------------------
+      // Subscription paused by Stripe (pause_collection activated)
+      // -----------------------------------------------------------------------
+      case 'customer.subscription.paused': {
+        const subscription = event.data.object as Stripe.Subscription
+
+        await supabase
+          .from('subscriptions')
+          .update({
+            status: 'paused',
+            paused_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          })
+          .eq('provider_sub_id', subscription.id)
+
+        console.log(`[webhooks/stripe] Subscription paused: ${subscription.id}`)
+        break
+      }
+
+      // -----------------------------------------------------------------------
+      // Subscription updated — detectar reactivación de pausa
+      // -----------------------------------------------------------------------
+      case 'customer.subscription.updated': {
+        const subscription = event.data.object as Stripe.Subscription
+        const subAny = subscription as any
+
+        // Si pause_collection es null/undefined → se reactivó
+        const wasResumed = !subAny.pause_collection
+        const isNowActive = subscription.status === 'active' || subscription.status === 'trialing'
+
+        if (wasResumed && isNowActive) {
+          const subData = subscription as unknown as {
+            current_period_start?: number
+            current_period_end?: number
+            billing_cycle_anchor?: number
+          }
+          const now = Math.floor(Date.now() / 1000)
+          const rawStart = subData.current_period_start ?? subData.billing_cycle_anchor ?? now
+          const rawEnd = subData.current_period_end ?? (now + 30 * 24 * 60 * 60)
+
+          await supabase
+            .from('subscriptions')
+            .update({
+              status: 'active',
+              paused_at: null,
+              paused_until: null,
+              current_period_start: new Date(rawStart * 1000).toISOString(),
+              current_period_end: new Date(rawEnd * 1000).toISOString(),
+              updated_at: new Date().toISOString(),
+            })
+            .eq('provider_sub_id', subscription.id)
+
+          console.log(`[webhooks/stripe] Subscription resumed: ${subscription.id}`)
+        }
+        break
+      }
+
       default:
         // Unhandled event type — safe to ignore
         console.log(`[webhooks/stripe] Unhandled event type: ${event.type}`)
