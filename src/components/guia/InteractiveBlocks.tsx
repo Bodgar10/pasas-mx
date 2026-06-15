@@ -475,12 +475,29 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
                 cursor: isMatched ? 'default' : 'pointer',
                 transition: 'all 0.2s',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center',
-                background: isMatched ? 'rgba(16,185,129,0.18)' : isUp ? 'rgba(124,58,237,0.18)' : '#1C1033',
-                border: `1.5px solid ${isMatched ? '#10b981' : isUp ? '#7c3aed' : 'rgba(124,58,237,0.3)'}`,
-                color: isMatched ? '#6ee7b7' : isUp ? '#e2d9f3' : 'rgba(167,139,250,0.5)',
+                background: isMatched
+                  ? 'rgba(16,185,129,0.18)'
+                  : isUp
+                    ? 'rgba(124,58,237,0.18)'
+                    : 'linear-gradient(135deg, #2a1b4d 0%, #1C1033 100%)',
+                border: `1.5px solid ${isMatched ? '#10b981' : isUp ? '#7c3aed' : 'rgba(124,58,237,0.35)'}`,
+                color: isMatched ? '#6ee7b7' : isUp ? '#e2d9f3' : '#a78bfa',
+                boxShadow: isUp || isMatched ? 'none' : 'inset 0 0 0 4px rgba(124,58,237,0.10)',
               }}
             >
-              {isUp ? card.text : '🃏'}
+              {isUp ? (
+                card.text
+              ) : (
+                <span style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 22,
+                  fontWeight: 900,
+                  color: 'rgba(167,139,250,0.6)',
+                  textShadow: '0 0 12px rgba(124,58,237,0.4)',
+                }}>
+                  ?
+                </span>
+              )}
             </button>
           )
         })}
