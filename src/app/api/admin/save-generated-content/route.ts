@@ -32,6 +32,7 @@ export async function POST(req: NextRequest) {
     title?: string
     content: string
     display_order: number
+    data?: Record<string, unknown> | null
   }) => ({
     topic_id: topicId,
     theme_id: themeId,
@@ -40,6 +41,7 @@ export async function POST(req: NextRequest) {
     title: s.title ?? null,
     content: s.content,
     display_order: s.display_order,
+    data: s.data ?? null,
     interests_used: [themeName],
   }))
 

@@ -3,12 +3,18 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import { ScrubberBlock, StepsBlock, SortBlock } from '@/components/guia/InteractiveBlocks'
+
+type SectionType =
+  | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
+  | 'scrubber' | 'steps' | 'sort'
 
 interface Section {
   id: string
-  type: 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
+  type: SectionType
   title: string | null
   content: string
+  data: Record<string, unknown> | null
   display_order: number
 }
 
@@ -94,7 +100,7 @@ function resolveThemeKey(
 }
 
 
-const SECTION_ICONS: Record<Section['type'], string> = {
+const SECTION_ICONS: Partial<Record<Section['type'], string>> = {
   explanation: '📘',
   analogy: '🎮',
   example: '🔢',
@@ -151,6 +157,27 @@ const SECTION_TYPE_CONFIG: Record<string, {
     color: '#06b6d4',
     borderColor: 'rgba(6,182,212,0.25)',
     headerBg: 'rgba(6,182,212,0.06)',
+  },
+  scrubber: {
+    label: 'Pruébalo',
+    icon: '🎮',
+    color: '#ec4899',
+    borderColor: 'rgba(236,72,153,0.25)',
+    headerBg: 'rgba(236,72,153,0.06)',
+  },
+  steps: {
+    label: 'Resuélvelo conmigo',
+    icon: '🧩',
+    color: '#06b6d4',
+    borderColor: 'rgba(6,182,212,0.25)',
+    headerBg: 'rgba(6,182,212,0.06)',
+  },
+  sort: {
+    label: 'Clasifica',
+    icon: '📊',
+    color: '#fbbf24',
+    borderColor: 'rgba(251,191,36,0.25)',
+    headerBg: 'rgba(251,191,36,0.06)',
   },
 }
 
@@ -230,8 +257,18 @@ export default function TopicAdminClient({
     setQuizQuestions(initialQuizQuestions)
   }, [initialQuizQuestions])
 
-  const summaryItems = sections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
-  const resumenSections = summaryItems.length > 0 ? summaryItems : sections
+  const LESSON_ORDER: Record<string, number> = {
+    analogy: 1, scrubber: 2, explanation: 3, example: 4,
+    steps: 5, sort: 6, diagram: 7, key_fact: 8, tip: 9,
+  }
+  const orderedSections = [...sections].sort(
+    (a, b) =>
+      (LESSON_ORDER[a.type] ?? 99) - (LESSON_ORDER[b.type] ?? 99) ||
+      a.display_order - b.display_order
+  )
+
+  const summaryItems = orderedSections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
+  const resumenSections = summaryItems.length > 0 ? summaryItems : orderedSections
 
   // Student quiz handler
   function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
@@ -507,7 +544,17 @@ Genera este JSON exacto:
       "difficulty": 3,
       "xp_reward": 50
     }
-  ]}`
+  ]}
+
+ADEMÁS de las 5 secciones de texto, agrega al MISMO array "sections" entre 1 y 3 BLOQUES INTERACTIVOS sobre el mismo concepto, dentro del mundo de "${themeName}". No llevan texto largo: llevan un objeto "data". Continúa el display_order después de 5. Elige el tipo según el contenido y NO repitas el mismo tipo:
+- "steps": proceso paso a paso o acumulación de una cantidad. "visual":"bar" si hay un número que sube/baja (cada paso lleva "delta" numérico) más "start" inicial; "visual":"chain" para pasos narrativos (cada paso solo "text").
+- "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...).
+- "scrubber": un eje/continuo (recta numérica, línea del tiempo, escala). "min" < "max", "start" en rango, 2 a 5 "points" con valor "v" y etiqueta "l".
+
+No inventes datos ni números; si hay matemáticas, deben ser exactos. Formato EXACTO de cada bloque interactivo:
+{ "type": "scrubber", "title": "Pruébalo", "content": "frase corta de respaldo", "display_order": 6, "data": { "intro": "1-2 frases con la temática", "unit": "qué se mide", "min": -64, "max": 120, "start": 64, "points": [ { "v": 64, "l": "etiqueta" } ], "question": "opcional" } }
+{ "type": "sort", "title": "Clasifica", "content": "frase corta de respaldo", "display_order": 7, "data": { "prompt": "instrucción en una frase", "buckets": ["A","B"], "items": [ { "t": "texto", "b": 0 } ] } }
+{ "type": "steps", "title": "Resuélvelo conmigo", "content": "frase corta de respaldo", "display_order": 8, "data": { "intro": "1-2 frases con la temática", "visual": "bar", "start": 75, "steps": [ { "text": "qué pasa", "delta": -40 } ] } }`
   }
 
   async function handleSaveManualJson() {
@@ -619,7 +666,8 @@ Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional, con es
         { "question": "difícil — requiere razonamiento, no memorización", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "C", "explanation": "por qué es correcta y por qué los distractores son plausibles. Máx 50 palabras.", "difficulty": 3, "xp_reward": 50 },
         { "question": "media — aplica en contexto diferente de la temática", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "D", "explanation": "por qué es correcta y el error típico. Máx 50 palabras.", "difficulty": 2, "xp_reward": 30 },
         { "question": "difícil — combina conceptos o varios pasos", "options": [{"letter":"A","text":"opción"},{"letter":"B","text":"opción"},{"letter":"C","text":"opción"},{"letter":"D","text":"opción"}], "correct_answer": "A", "explanation": "por qué es correcta y por qué los distractores son plausibles. Máx 50 palabras.", "difficulty": 3, "xp_reward": 50 }
-      ]
+      ],
+      "interactive_note": "Agrega también de 1 a 3 bloques interactivos a este mismo array 'sections' (display_order 6,7,8), ver reglas abajo."
     }
   ]
 }
@@ -627,8 +675,18 @@ Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional, con es
 IMPORTANTE:
 - Genera EXACTAMENTE un grupo por cada temática de la lista (${themes.length} grupos en total).
 - Usa la key EXACTA de cada temática en el campo "theme". No inventes temáticas que no estén en la lista.
-- Cada grupo: 5 secciones (analogy, explanation, example, key_fact, tip) y 5 preguntas de quiz.
-- Mantén "topic_slug" tal cual: "${topic.slug}".`
+- Cada grupo: 5 secciones de texto (analogy, explanation, example, key_fact, tip) y 5 preguntas de quiz.
+- Mantén "topic_slug" tal cual: "${topic.slug}".
+
+BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
+- Agrega de 1 a 3 bloques interactivos al MISMO array "sections", con display_order 6, 7, 8. No repitas el mismo tipo dentro de un grupo. No inventes datos; si hay matemáticas, deben ser exactos. Mantén la temática.
+- "steps": proceso o acumulación. "visual":"bar" si un número sube/baja (cada paso con "delta") más "start"; "visual":"chain" para pasos narrativos (cada paso solo "text").
+- "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item con "b" = índice de cubeta correcta.
+- "scrubber": un eje/continuo. "min" < "max", "start" en rango, 2 a 5 "points" con "v" y "l".
+- Formato EXACTO de cada bloque interactivo:
+{ "type": "scrubber", "title": "Pruébalo", "content": "respaldo", "display_order": 6, "data": { "intro": "...", "unit": "...", "min": -64, "max": 120, "start": 64, "points": [ { "v": 64, "l": "etiqueta" } ], "question": "opcional" } }
+{ "type": "sort", "title": "Clasifica", "content": "respaldo", "display_order": 7, "data": { "prompt": "...", "buckets": ["A","B"], "items": [ { "t": "texto", "b": 0 } ] } }
+{ "type": "steps", "title": "Resuélvelo conmigo", "content": "respaldo", "display_order": 8, "data": { "intro": "...", "visual": "bar", "start": 75, "steps": [ { "text": "qué pasa", "delta": -40 } ] } }`
   }
 
   async function handleSaveBatchJson() {
@@ -1610,7 +1668,7 @@ IMPORTANTE:
                 background: 'rgba(124,58,237,0.2)',
               }} />
 
-              {sections.map((section, index) => {
+              {orderedSections.map((section, index) => {
                 const meta = SECTION_TYPE_CONFIG[section.type]
                 return (
                   <div key={section.id} style={{ position: 'relative', marginBottom: 16 }}>
@@ -1762,7 +1820,7 @@ IMPORTANTE:
 
                         {/* Content */}
                         <div style={{
-                          padding: section.type === 'diagram' ? '0' : '14px 16px',
+                          padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps') ? '0' : '14px 16px',
                           fontSize: 15,
                           lineHeight: 1.75,
                           color: '#e2d9f3',
@@ -1776,6 +1834,12 @@ IMPORTANTE:
                                 .replace('<svg ', '<svg style="width:100%;height:auto;display:block;" ')
                             }}
                             />
+                          ) : section.type === 'sort' ? (
+                            <SortBlock data={section.data} />
+                          ) : section.type === 'scrubber' ? (
+                            <ScrubberBlock data={section.data} />
+                          ) : section.type === 'steps' ? (
+                            <StepsBlock data={section.data} />
                           ) : renderContent(section.content)}
                         </div>
 
