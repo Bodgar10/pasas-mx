@@ -2,6 +2,69 @@
 
 import React, { useState } from 'react'
 
+function renderInline(text: string): React.ReactNode {
+  const parts = text.split('**')
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} style={{ fontWeight: 800, color: '#e2d9f3' }}>{part}</strong>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  )
+}
+
+export function CollapsibleText({ text, collapsedHeight = 78 }: { text: string; collapsedHeight?: number }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div style={{ padding: '14px 16px' }}>
+      <div style={{ position: 'relative' }}>
+        <div
+          style={{
+            maxHeight: open ? 9999 : collapsedHeight,
+            overflow: 'hidden',
+            fontSize: 15,
+            lineHeight: 1.75,
+            color: '#e2d9f3',
+            transition: 'max-height 0.3s ease',
+          }}
+        >
+          {renderInline(text)}
+        </div>
+        {!open && (
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: 40,
+              background: 'linear-gradient(to bottom, rgba(26,16,53,0), #1a1035)',
+              pointerEvents: 'none',
+            }}
+          />
+        )}
+      </div>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          marginTop: 8,
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          color: '#a78bfa',
+          fontSize: 13,
+          fontWeight: 800,
+          fontFamily: 'var(--font-nunito)',
+          padding: 0,
+        }}
+      >
+        {open ? 'Leer menos ↑' : 'Leer más ↓'}
+      </button>
+    </div>
+  )
+}
+
 interface ScrubberData {
   intro?: string
   unit: string

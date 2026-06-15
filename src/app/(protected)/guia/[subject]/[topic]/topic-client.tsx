@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
-import { ScrubberBlock, StepsBlock, SortBlock } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -850,6 +850,8 @@ export default function TopicClient({
                         <ScrubberBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
                       ) : section.type === 'steps' ? (
                         <StepsBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                      ) : (section.type === 'analogy' || section.type === 'example') ? (
+                        <CollapsibleText text={section.content} />
                       ) : renderContent(section.content)}
                     </div>
 

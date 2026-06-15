@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { ScrubberBlock, StepsBlock, SortBlock } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -1840,6 +1840,8 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
                             <ScrubberBlock data={section.data} />
                           ) : section.type === 'steps' ? (
                             <StepsBlock data={section.data} />
+                          ) : (section.type === 'analogy' || section.type === 'example') ? (
+                            <CollapsibleText text={section.content} />
                           ) : renderContent(section.content)}
                         </div>
 
