@@ -161,6 +161,19 @@ const SECTION_TYPE_CONFIG: Record<string, {
 
 const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps'])
 
+// Orden pedagógico: cada bloque interactivo cae junto al texto con el que se relaciona.
+const LESSON_ORDER: Record<string, number> = {
+  analogy: 1,
+  scrubber: 2,
+  explanation: 3,
+  example: 4,
+  steps: 5,
+  sort: 6,
+  diagram: 7,
+  key_fact: 8,
+  tip: 9,
+}
+
 interface SortData {
   prompt?: string
   buckets: string[]
@@ -748,8 +761,14 @@ export default function TopicClient({
       .catch(() => {})
   }
 
-  const summaryItems = sections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
-  const resumenSections = summaryItems.length > 0 ? summaryItems : sections
+  const orderedSections = [...sections].sort(
+    (a, b) =>
+      (LESSON_ORDER[a.type] ?? 99) - (LESSON_ORDER[b.type] ?? 99) ||
+      a.display_order - b.display_order
+  )
+
+  const summaryItems = orderedSections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
+  const resumenSections = summaryItems.length > 0 ? summaryItems : orderedSections
 
   return (
     <div
@@ -1030,7 +1049,7 @@ export default function TopicClient({
               background: 'rgba(124,58,237,0.2)',
             }} />
 
-            {sections.map((section, index) => {
+            {orderedSections.map((section, index) => {
               const meta = SECTION_TYPE_CONFIG[section.type]
               return (
                 <div

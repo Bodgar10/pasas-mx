@@ -20,7 +20,8 @@
  * Si te faltan dependencias del script:  npm i -D tsx dotenv
  */
 
-import 'dotenv/config'
+import { config } from 'dotenv'
+config({ path: '.env.local' })
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 
@@ -108,13 +109,25 @@ async function main() {
   const topicById = new Map((topics ?? []).map((t) => [t.id, t]))
   const themeById = new Map((themes ?? []).map((t) => [t.id, t]))
 
-  // Pares (tema, temática) que tienen contenido con temática
-  const { data: rows } = await supabase
-    .from('sections')
-    .select('topic_id, theme_id')
-    .not('theme_id', 'is', null)
+  // Pares (tema, temática) que tienen contenido con temática.
+  // Supabase corta a 1000 filas por consulta, así que paginamos con .range().
+  const rows: { topic_id: string; theme_id: string }[] = []
+  const PAGE = 1000
+  for (let from = 0; ; from += PAGE) {
+    const { data: page, error: pageError } = await supabase
+      .from('sections')
+      .select('topic_id, theme_id')
+      .not('theme_id', 'is', null)
+      .range(from, from + PAGE - 1)
+    if (pageError) { console.error('Error leyendo sections:', pageError.message); process.exit(1) }
+    if (!page || page.length === 0) break
+    rows.push(...(page as { topic_id: string; theme_id: string }[]))
+    if (page.length < PAGE) break
+  }
 
-  let pairs = [...new Map((rows ?? []).map((r) => [`${r.topic_id}|${r.theme_id}`, r])).values()]
+  console.log(`Secciones con temática leídas: ${rows.length}`)
+
+  let pairs = [...new Map(rows.map((r) => [`${r.topic_id}|${r.theme_id}`, r])).values()]
 
   // Filtro piloto
   if (PILOT_TOPIC) {
