@@ -393,4 +393,103 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
   )
 }
 
-export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps'])
+interface MatchData {
+  prompt?: string
+  pairs: { a: string; b: string }[]
+}
+
+export function MatchBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+  const md = data as unknown as MatchData | null
+
+  const [cards] = useState(() => {
+    if (!md || !Array.isArray(md.pairs)) return [] as { id: number; pairId: number; text: string }[]
+    const built: { id: number; pairId: number; text: string }[] = []
+    md.pairs.forEach((p, i) => {
+      built.push({ id: i * 2, pairId: i, text: p.a })
+      built.push({ id: i * 2 + 1, pairId: i, text: p.b })
+    })
+    for (let i = built.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[built[i], built[j]] = [built[j], built[i]]
+    }
+    return built
+  })
+
+  const [flipped, setFlipped] = useState<number[]>([])
+  const [matched, setMatched] = useState<number[]>([])
+  const [busy, setBusy] = useState(false)
+
+  if (!md || !Array.isArray(md.pairs) || md.pairs.length < 2) return null
+
+  const totalPairs = md.pairs.length
+
+  function tap(card: { id: number; pairId: number; text: string }) {
+    if (busy || matched.includes(card.pairId) || flipped.includes(card.id)) return
+    const next = [...flipped, card.id]
+    setFlipped(next)
+    if (next.length === 2) {
+      setBusy(true)
+      const c1 = cards.find((c) => c.id === next[0])!
+      const c2 = cards.find((c) => c.id === next[1])!
+      if (c1.pairId === c2.pairId) {
+        setTimeout(() => {
+          const nm = [...matched, c1.pairId]
+          setMatched(nm)
+          setFlipped([])
+          setBusy(false)
+          if (nm.length === totalPairs) onComplete?.()
+        }, 450)
+      } else {
+        setTimeout(() => { setFlipped([]); setBusy(false) }, 900)
+      }
+    }
+  }
+
+  const allMatched = matched.length === md.pairs.length
+
+  return (
+    <div style={{ padding: '14px 16px' }}>
+      {md.prompt && (
+        <div style={{ fontSize: 15, lineHeight: 1.7, color: '#e2d9f3', marginBottom: 14 }}>
+          {md.prompt}
+        </div>
+      )}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+        {cards.map((card) => {
+          const isMatched = matched.includes(card.pairId)
+          const isUp = isMatched || flipped.includes(card.id)
+          return (
+            <button
+              key={card.id}
+              type="button"
+              onClick={() => tap(card)}
+              disabled={isMatched}
+              style={{
+                minHeight: 64,
+                borderRadius: 12,
+                padding: '8px 10px',
+                fontSize: 13,
+                fontWeight: 700,
+                fontFamily: 'var(--font-nunito)',
+                lineHeight: 1.3,
+                cursor: isMatched ? 'default' : 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+                background: isMatched ? 'rgba(16,185,129,0.18)' : isUp ? 'rgba(124,58,237,0.18)' : '#1C1033',
+                border: `1.5px solid ${isMatched ? '#10b981' : isUp ? '#7c3aed' : 'rgba(124,58,237,0.3)'}`,
+                color: isMatched ? '#6ee7b7' : isUp ? '#e2d9f3' : 'rgba(167,139,250,0.5)',
+              }}
+            >
+              {isUp ? card.text : '🃏'}
+            </button>
+          )
+        })}
+      </div>
+      <div style={{ marginTop: 10, fontSize: 13, fontWeight: 700, textAlign: 'center', color: allMatched ? '#6ee7b7' : '#a78bfa' }}>
+        {allMatched ? '✓ ¡Todas las parejas!' : `${matched.length} / ${md.pairs.length} parejas`}
+      </div>
+    </div>
+  )
+}
+
+export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match'])

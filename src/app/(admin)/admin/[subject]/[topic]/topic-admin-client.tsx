@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText, RevealOnScroll } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, CollapsibleText, RevealOnScroll } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
-  | 'scrubber' | 'steps' | 'sort'
+  | 'scrubber' | 'steps' | 'sort' | 'match'
 
 interface Section {
   id: string
@@ -179,6 +179,13 @@ const SECTION_TYPE_CONFIG: Record<string, {
     borderColor: 'rgba(251,191,36,0.25)',
     headerBg: 'rgba(251,191,36,0.06)',
   },
+  match: {
+    label: 'Memorama',
+    icon: '🃏',
+    color: '#a78bfa',
+    borderColor: 'rgba(167,139,250,0.25)',
+    headerBg: 'rgba(167,139,250,0.06)',
+  },
 }
 
 export default function TopicAdminClient({
@@ -259,7 +266,7 @@ export default function TopicAdminClient({
 
   const LESSON_ORDER: Record<string, number> = {
     analogy: 1, scrubber: 2, explanation: 3, example: 4,
-    steps: 5, sort: 6, diagram: 7, key_fact: 8, tip: 9,
+    steps: 5, sort: 6, match: 7, diagram: 8, key_fact: 9, tip: 10,
   }
   const orderedSections = [...sections].sort(
     (a, b) =>
@@ -1821,7 +1828,7 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
 
                         {/* Content */}
                         <div style={{
-                          padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps') ? '0' : '14px 16px',
+                          padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match') ? '0' : '14px 16px',
                           fontSize: 15,
                           lineHeight: 1.75,
                           color: '#e2d9f3',
@@ -1841,6 +1848,8 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
                             <ScrubberBlock data={section.data} />
                           ) : section.type === 'steps' ? (
                             <StepsBlock data={section.data} />
+                          ) : section.type === 'match' ? (
+                            <MatchBlock data={section.data} />
                           ) : (section.type === 'analogy' || section.type === 'example') ? (
                             <CollapsibleText text={section.content} />
                           ) : renderContent(section.content)}
