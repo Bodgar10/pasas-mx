@@ -168,25 +168,64 @@ export default function SubjectAdminClient({
     setGeneratingDiagnostic(true)
     setDiagnosticError(null)
     setDiagnosticSuccess(null)
+
+    const BATCH_SIZE = 4
+    const publishedIds = topics.filter((t) => t.published).map((t) => t.id)
+
+    if (publishedIds.length === 0) {
+      setDiagnosticError('No hay topics publicados para generar el diagnóstico.')
+      setGeneratingDiagnostic(false)
+      return
+    }
+
+    // Split into batches of BATCH_SIZE
+    const batches: string[][] = []
+    for (let i = 0; i < publishedIds.length; i += BATCH_SIZE) {
+      batches.push(publishedIds.slice(i, i + BATCH_SIZE))
+    }
+
+    let totalSaved = 0
+
     try {
-      const res = await fetch('/api/admin/generate-diagnostic', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          subjectId: subject.id,
-          subjectName: subject.name,
-          grade,
-          level,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok || data.error) {
-        setDiagnosticError(data.error ?? 'Error al generar el quiz diagnóstico')
-        return
+      for (let i = 0; i < batches.length; i++) {
+        setDiagnosticSuccess(`Generando lote ${i + 1} de ${batches.length}…`)
+
+        const res = await fetch('/api/admin/generate-diagnostic', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            subjectId: subject.id,
+            subjectName: subject.name,
+            grade,
+            level,
+            topicIds: batches[i],
+            replaceExisting: i === 0, // only the first batch clears old questions
+          }),
+        })
+
+        // Read as text first so a non-JSON error (e.g. Vercel timeout) is shown clearly
+        const raw = await res.text()
+        let data: { count?: number; error?: string } = {}
+        try {
+          data = JSON.parse(raw)
+        } catch {
+          throw new Error(
+            res.status === 504
+              ? `El lote ${i + 1} tardó demasiado (timeout). Intenta con menos topics por lote.`
+              : `Respuesta no válida del servidor (lote ${i + 1}): ${raw.slice(0, 120)}`
+          )
+        }
+
+        if (!res.ok || data.error) {
+          throw new Error(data.error ?? `Error en el lote ${i + 1}`)
+        }
+
+        totalSaved += data.count ?? 0
       }
-      setDiagnosticSuccess(`✓ Quiz diagnóstico creado — ${data.count} preguntas guardadas (1 por topic publicado)`)
+
+      setDiagnosticSuccess(`✓ Quiz diagnóstico creado — ${totalSaved} preguntas guardadas (1 por topic publicado)`)
     } catch (err) {
-      setDiagnosticError(`Error de red: ${err instanceof Error ? err.message : 'unknown'}`)
+      setDiagnosticError(err instanceof Error ? err.message : 'Error desconocido al generar el diagnóstico')
     } finally {
       setGeneratingDiagnostic(false)
     }

@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   if (profile?.role !== 'admin')
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
-  const { subjectId, subjectName, grade, level } = await req.json()
+  const { subjectId, subjectName, grade, level, topicIds, replaceExisting } = await req.json()
 
   if (!subjectId || !subjectName || !grade || !level) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -40,6 +40,15 @@ export async function POST(req: NextRequest) {
     )
   }
 
+  // If a batch of topicIds is provided, generate only for those (preserving order)
+  const batchTopics = Array.isArray(topicIds) && topicIds.length > 0
+    ? topics.filter((t) => topicIds.includes(t.id))
+    : topics
+
+  if (batchTopics.length === 0) {
+    return NextResponse.json({ error: 'No matching topics in batch.' }, { status: 400 })
+  }
+
   function getEducationContext(level: string, grade: number): string {
     switch (level) {
       case 'middle_school': return `${grade}° de secundaria`
@@ -54,7 +63,7 @@ export async function POST(req: NextRequest) {
 
   const client = new Anthropic()
 
-  const topicsList = topics
+  const topicsList = batchTopics
     .map((t, i) => `${i + 1}. "${t.name}"${t.description ? ` — ${t.description}` : ''}`)
     .join('\n')
 
@@ -65,7 +74,7 @@ Cada pregunta debe evaluar la comprensión conceptual del tema, no memorización
 Los distractores deben ser plausibles — errores típicos que cometen los estudiantes.
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
 
-  const userPrompt = `Genera exactamente ${topics.length} preguntas diagnósticas para ${subjectName} — ${educationContext}.
+  const userPrompt = `Genera exactamente ${batchTopics.length} preguntas diagnósticas para ${subjectName} — ${educationContext}.
 
 Temas a evaluar (en este orden exacto):
 ${topicsList}
@@ -92,13 +101,13 @@ Responde con este JSON exacto:
   ]
 }
 
-Genera exactamente ${topics.length} objetos en el array "questions", uno por cada tema en el orden dado.
+Genera exactamente ${batchTopics.length} objetos en el array "questions", uno por cada tema en el orden dado.
 Distribuye las respuestas correctas: aproximadamente 25% A, 25% B, 25% C, 25% D a lo largo de todas las preguntas.`
 
   try {
     const message = await client.messages.create({
       model: 'claude-sonnet-4-6',
-      max_tokens: Math.min(500 * topics.length + 500, 8000),
+      max_tokens: Math.min(500 * batchTopics.length + 500, 8000),
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     })
@@ -126,17 +135,21 @@ Distribuye las respuestas correctas: aproximadamente 25% A, 25% B, 25% C, 25% D 
       return NextResponse.json({ error: 'Invalid response structure from Claude.' }, { status: 500 })
     }
 
-    // Delete existing diagnostic questions for this subject+grade
-    await supabase
-      .from('diagnostic_questions')
-      .delete()
-      .eq('subject_id', subjectId)
-      .eq('grade', grade)
-      .eq('education_level', level)
+    // Delete existing diagnostic questions only on the first batch
+    if (replaceExisting) {
+      await supabase
+        .from('diagnostic_questions')
+        .delete()
+        .eq('subject_id', subjectId)
+        .eq('grade', grade)
+        .eq('education_level', level)
+    }
 
     // Insert new diagnostic questions
     const questionsToInsert = generated.questions.map((q) => {
-      const topic = topics[q.topic_index] ?? topics[0]
+      const topic = batchTopics[q.topic_index] ?? batchTopics[0]
+      // Use the topic's global position so display_order is consistent across batches
+      const globalIndex = topics.findIndex((t) => t.id === topic.id)
       return {
         subject_id: subjectId,
         topic_id: topic.id,
@@ -147,7 +160,7 @@ Distribuye las respuestas correctas: aproximadamente 25% A, 25% B, 25% C, 25% D 
         explanation: q.explanation,
         education_level: level,
         grade,
-        display_order: q.topic_index,
+        display_order: globalIndex >= 0 ? globalIndex : q.topic_index,
       }
     })
 
