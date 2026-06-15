@@ -309,6 +309,7 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
     () => (sort?.items ?? []).map(() => -1)
   )
   const [checked, setChecked] = useState(false)
+  const downRef = useRef<{ x: number; y: number } | null>(null)
 
   if (!sort || !Array.isArray(sort.items) || !Array.isArray(sort.buckets)) {
     return null
@@ -336,11 +337,16 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
               key={i}
               type="button"
               disabled={checked}
-              onClick={() =>
+              onPointerDown={(e) => {
+                downRef.current = { x: e.clientX, y: e.clientY }
+              }}
+              onClick={(e) => {
+                const d = downRef.current
+                if (d && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 10) return
                 setAssign((arr) =>
                   arr.map((a, j) => (j === i ? (a + 1) % sort.buckets.length : a))
                 )
-              }
+              }}
               style={{
                 width: '100%', display: 'flex', alignItems: 'center',
                 justifyContent: 'space-between', gap: 10,
@@ -417,30 +423,37 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
 
   const [flipped, setFlipped] = useState<number[]>([])
   const [matched, setMatched] = useState<number[]>([])
-  const [busy, setBusy] = useState(false)
+  const busyRef = useRef(false)
+  const flippedRef = useRef<number[]>([])
 
   if (!md || !Array.isArray(md.pairs) || md.pairs.length < 2) return null
 
   const totalPairs = md.pairs.length
 
   function tap(card: { id: number; pairId: number; text: string }) {
-    if (busy || matched.includes(card.pairId) || flipped.includes(card.id)) return
-    const next = [...flipped, card.id]
+    if (busyRef.current || matched.includes(card.pairId) || flippedRef.current.includes(card.id)) return
+    const next = [...flippedRef.current, card.id]
+    flippedRef.current = next
     setFlipped(next)
     if (next.length === 2) {
-      setBusy(true)
+      busyRef.current = true
       const c1 = cards.find((c) => c.id === next[0])!
       const c2 = cards.find((c) => c.id === next[1])!
       if (c1.pairId === c2.pairId) {
         setTimeout(() => {
           const nm = [...matched, c1.pairId]
           setMatched(nm)
+          flippedRef.current = []
           setFlipped([])
-          setBusy(false)
+          busyRef.current = false
           if (nm.length === totalPairs) onComplete?.()
         }, 450)
       } else {
-        setTimeout(() => { setFlipped([]); setBusy(false) }, 900)
+        setTimeout(() => {
+          flippedRef.current = []
+          setFlipped([])
+          busyRef.current = false
+        }, 900)
       }
     }
   }
