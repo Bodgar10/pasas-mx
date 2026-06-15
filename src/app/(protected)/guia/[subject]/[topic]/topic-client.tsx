@@ -159,6 +159,8 @@ const SECTION_TYPE_CONFIG: Record<string, {
   },
 }
 
+const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps'])
+
 interface SortData {
   prompt?: string
   buckets: string[]
@@ -182,7 +184,7 @@ interface StepsData {
   steps: { text: string; delta?: number }[]
 }
 
-function StepsBlock({ data }: { data: Record<string, unknown> | null }) {
+function StepsBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
   const sd = data as unknown as StepsData | null
   const [step, setStep] = useState(0)
 
@@ -262,7 +264,11 @@ function StepsBlock({ data }: { data: Record<string, unknown> | null }) {
       {!done ? (
         <button
           type="button"
-          onClick={() => setStep((s) => s + 1)}
+          onClick={() => {
+            const next = step + 1
+            setStep(next)
+            if (next >= sd.steps.length) onComplete?.()
+          }}
           style={{
             width: '100%', minHeight: 44,
             background: 'rgba(6,182,212,0.15)', color: '#06b6d4',
@@ -284,9 +290,10 @@ function StepsBlock({ data }: { data: Record<string, unknown> | null }) {
   )
 }
 
-function ScrubberBlock({ data }: { data: Record<string, unknown> | null }) {
+function ScrubberBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
   const sc = data as unknown as ScrubberData | null
   const [val, setVal] = useState<number>(() => sc?.start ?? 0)
+  const [moved, setMoved] = useState(false)
 
   if (!sc || !Array.isArray(sc.points) || typeof sc.min !== 'number' || typeof sc.max !== 'number') {
     return null
@@ -331,7 +338,13 @@ function ScrubberBlock({ data }: { data: Record<string, unknown> | null }) {
         min={sc.min}
         max={sc.max}
         value={val}
-        onChange={(e) => setVal(Number(e.target.value))}
+        onChange={(e) => {
+          setVal(Number(e.target.value))
+          if (!moved) {
+            setMoved(true)
+            onComplete?.()
+          }
+        }}
         style={{ width: '100%', accentColor: '#ec4899' }}
       />
       {sc.question && (
@@ -343,7 +356,7 @@ function ScrubberBlock({ data }: { data: Record<string, unknown> | null }) {
   )
 }
 
-function SortBlock({ data }: { data: Record<string, unknown> | null }) {
+function SortBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
   const sort = data as unknown as SortData | null
   const [assign, setAssign] = useState<number[]>(
     () => (sort?.items ?? []).map(() => -1)
@@ -408,7 +421,10 @@ function SortBlock({ data }: { data: Record<string, unknown> | null }) {
         <button
           type="button"
           disabled={!allDone}
-          onClick={() => setChecked(true)}
+          onClick={() => {
+            setChecked(true)
+            if (correct) onComplete?.()
+          }}
           style={{
             width: '100%', minHeight: 44,
             background: allDone ? '#7c3aed' : 'rgba(124,58,237,0.2)',
@@ -616,7 +632,9 @@ export default function TopicClient({
     )
 
     sectionRefs.current.forEach((el) => {
-      if (el) observer.observe(el)
+      if (el && !INTERACTIVE_TYPES.has(el.dataset.sectionType ?? '')) {
+        observer.observe(el)
+      }
     })
 
     return () => observer.disconnect()
@@ -701,6 +719,33 @@ export default function TopicClient({
       }).catch(() => {})
       trackQuizAnswered(topic.name, isCorrect, question.difficulty)
     }
+  }
+
+  function handleInteractiveComplete(sectionId: string) {
+    if (readSections.has(sectionId) || readSectionIds.includes(sectionId)) return
+    setReadSections((prev) => {
+      if (prev.has(sectionId)) return prev
+      return new Set([...prev, sectionId])
+    })
+    fetch('/api/section-read', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        section_id: sectionId,
+        topic_id: topic.id,
+        subject_id: subject.id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.already_read && data.xp_earned > 0) {
+          setSessionXp((prev) => prev + data.xp_earned)
+        }
+        if (data.streak?.event === 'continued' || data.streak?.event === 'started') {
+          setStreakToast({ days: data.streak.days, event: data.streak.event })
+        }
+      })
+      .catch(() => {})
   }
 
   const summaryItems = sections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
@@ -992,6 +1037,7 @@ export default function TopicClient({
                   key={section.id}
                   style={{ position: 'relative', marginBottom: 16 }}
                   data-section-id={section.id}
+                  data-section-type={section.type}
                   ref={(el) => {
                     if (el) sectionRefs.current.set(section.id, el)
                     else sectionRefs.current.delete(section.id)
@@ -1064,11 +1110,11 @@ export default function TopicClient({
                           }}
                         />
                       ) : section.type === 'sort' ? (
-                        <SortBlock data={section.data} />
+                        <SortBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
                       ) : section.type === 'scrubber' ? (
-                        <ScrubberBlock data={section.data} />
+                        <ScrubberBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
                       ) : section.type === 'steps' ? (
-                        <StepsBlock data={section.data} />
+                        <StepsBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
                       ) : renderContent(section.content)}
                     </div>
 
