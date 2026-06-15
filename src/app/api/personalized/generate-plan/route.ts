@@ -68,6 +68,7 @@ Nada genérico. Nada inventado. Solo referencias reales y populares de "${theme.
 Este es un plan PERSONALIZADO — el contenido debe ser más extenso, profundo y variado que el estándar.
 Este alumno FALLÓ en este tema en el diagnóstico — necesita explicación especialmente clara y ejemplos concretos.
 Adapta vocabulario y complejidad a ${educationContext}.
+Para los bloques interactivos (sort, scrubber, steps): la respuesta correcta y los números deben ser exactos — no inventes datos ni fórmulas. Mantén la temática "${theme.name}" también en ellos.
 Responde ÚNICAMENTE con JSON válido, sin markdown, sin texto adicional.`
 
       const userPrompt = `Genera contenido educativo PERSONALIZADO para:
@@ -154,7 +155,17 @@ Genera este JSON con 5 secciones y 5 preguntas de quiz:
       "xp_reward": 50
     }
   ]
-}`
+}
+
+ADEMÁS de las 5 secciones de texto, agrega al MISMO array "sections" entre 1 y 3 BLOQUES INTERACTIVOS sobre el mismo concepto, dentro del mundo de "${theme.name}". Como este alumno falló el tema, los bloques deben reforzar lo básico. No llevan texto largo: llevan un objeto "data". Continúa el display_order después de 5. Elige el tipo según el contenido y NO repitas el mismo tipo:
+- "steps": proceso paso a paso o acumulación de una cantidad. "visual":"bar" si hay un número que sube/baja (cada paso lleva "delta" numérico) más "start" inicial; "visual":"chain" para pasos narrativos (cada paso solo "text").
+- "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...).
+- "scrubber": un eje/continuo (recta numérica, línea del tiempo, escala). "min" < "max", "start" en rango, 2 a 5 "points" con valor "v" y etiqueta "l".
+
+No inventes datos ni números; si hay matemáticas, deben ser exactos. Formato EXACTO de cada bloque interactivo:
+{ "type": "scrubber", "title": "Pruébalo", "content": "frase corta de respaldo", "display_order": 6, "data": { "intro": "1-2 frases con la temática", "unit": "qué se mide", "min": -64, "max": 120, "start": 64, "points": [ { "v": 64, "l": "etiqueta" } ], "question": "opcional" } }
+{ "type": "sort", "title": "Clasifica", "content": "frase corta de respaldo", "display_order": 7, "data": { "prompt": "instrucción en una frase", "buckets": ["A","B"], "items": [ { "t": "texto", "b": 0 } ] } }
+{ "type": "steps", "title": "Resuélvelo conmigo", "content": "frase corta de respaldo", "display_order": 8, "data": { "intro": "1-2 frases con la temática", "visual": "bar", "start": 75, "steps": [ { "text": "qué pasa", "delta": -40 } ] } }`
 
       const message = await client.messages.create({
         model: 'claude-sonnet-4-6',
@@ -176,7 +187,7 @@ Genera este JSON con 5 secciones y 5 preguntas de quiz:
         .eq('user_id', userId)
 
       const sectionsToInsert = generated.sections.map((s: {
-        type: string; title: string; content: string; display_order: number
+        type: string; title: string; content: string; display_order: number; data?: Record<string, unknown> | null
       }) => ({
         topic_id: topic.id,
         theme_id: themeId,
@@ -185,6 +196,7 @@ Genera este JSON con 5 secciones y 5 preguntas de quiz:
         title: s.title,
         content: s.content,
         display_order: s.display_order,
+        data: s.data ?? null,
         interests_used: [theme.name],
       }))
 

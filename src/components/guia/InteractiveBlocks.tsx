@@ -1,6 +1,42 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+
+export function RevealOnScroll({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true)
+            obs.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(16px)',
+        transition: 'opacity 0.5s ease, transform 0.5s ease',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
 
 function renderInline(text: string): React.ReactNode {
   const parts = text.split('**')
@@ -234,16 +270,23 @@ export function StepsBlock({ data, onComplete }: { data: Record<string, unknown>
             if (next >= sd.steps.length) onComplete?.()
           }}
           style={{
-            width: '100%', minHeight: 44,
-            background: 'rgba(6,182,212,0.15)', color: '#06b6d4',
-            border: '1px solid #06b6d4', borderRadius: 12,
+            width: '100%', minHeight: 52,
+            background: 'linear-gradient(135deg, #06b6d4, #7c3aed)', color: '#fff',
+            border: 'none', borderRadius: 12,
             fontFamily: 'var(--font-nunito)', fontSize: 15, fontWeight: 800,
             cursor: 'pointer',
+            boxShadow: '0 2px 12px rgba(6,182,212,0.3)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2,
           }}
         >
-          {isBar
-            ? `${sd.steps[step].text} ${(sd.steps[step].delta ?? 0) < 0 ? '−' : '+'}${Math.abs(sd.steps[step].delta ?? 0)} →`
-            : 'Siguiente paso →'}
+          <span>
+            {isBar
+              ? `${sd.steps[step].text} ${(sd.steps[step].delta ?? 0) < 0 ? '−' : '+'}${Math.abs(sd.steps[step].delta ?? 0)}`
+              : 'Siguiente paso'}
+          </span>
+          <span style={{ fontSize: 11, fontWeight: 700, opacity: 0.85 }}>
+            {step === 0 ? '👆 Toca para empezar' : `Paso ${step + 1} de ${sd.steps.length} · toca →`}
+          </span>
         </button>
       ) : (
         <div style={{ textAlign: 'center', fontSize: 14, fontWeight: 700, color: '#6ee7b7' }}>

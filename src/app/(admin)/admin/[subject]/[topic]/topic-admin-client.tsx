@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText, RevealOnScroll } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -1671,7 +1671,8 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
               {orderedSections.map((section, index) => {
                 const meta = SECTION_TYPE_CONFIG[section.type]
                 return (
-                  <div key={section.id} style={{ position: 'relative', marginBottom: 16 }}>
+                  <RevealOnScroll key={section.id}>
+                  <div style={{ position: 'relative', marginBottom: 16 }}>
                     {/* Numbered dot */}
                     <div style={{
                       position: 'absolute',
@@ -1859,6 +1860,7 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
                       </div>
                     )}
                   </div>
+                  </RevealOnScroll>
                 )
               })}
             </div>

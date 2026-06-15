@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
-import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, CollapsibleText, RevealOnScroll } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -768,8 +768,8 @@ export default function TopicClient({
             {orderedSections.map((section, index) => {
               const meta = SECTION_TYPE_CONFIG[section.type]
               return (
+                <RevealOnScroll key={section.id}>
                 <div
-                  key={section.id}
                   style={{ position: 'relative', marginBottom: 16 }}
                   data-section-id={section.id}
                   data-section-type={section.type}
@@ -879,6 +879,7 @@ export default function TopicClient({
                     </div>
                   </div>
                 </div>
+                </RevealOnScroll>
               )
             })}
           </div>
