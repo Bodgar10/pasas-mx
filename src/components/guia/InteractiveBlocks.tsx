@@ -2,6 +2,12 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 
+// Tipos de sección que llevan audio narrado (bloques de texto).
+export const AUDIO_TEXT_TYPES = new Set<string>(['explanation', 'analogy', 'example', 'key_fact', 'tip'])
+
+// Registro global para que solo un audio suene a la vez en toda la página.
+const audioRegistry = new Set<HTMLAudioElement>()
+
 export function RevealOnScroll({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -523,3 +529,99 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
 }
 
 export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match'])
+
+function formatTime(s: number): string {
+  if (!isFinite(s) || s < 0) s = 0
+  const m = Math.floor(s / 60)
+  const sec = Math.floor(s % 60)
+  return `${m}:${String(sec).padStart(2, '0')}`
+}
+
+export function AudioPlayer({ url, duration }: { url: string; duration?: number | null }) {
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const [playing, setPlaying] = useState(false)
+  const [current, setCurrent] = useState(0)
+  const [total, setTotal] = useState<number>(duration ?? 0)
+
+  useEffect(() => {
+    const el = audioRef.current
+    if (!el) return
+    audioRegistry.add(el)
+    const onTime = () => setCurrent(el.currentTime)
+    const onLoaded = () => { if (el.duration && isFinite(el.duration)) setTotal(el.duration) }
+    const onEnd = () => { setPlaying(false); setCurrent(0); el.currentTime = 0 }
+    const onPlay = () => setPlaying(true)
+    const onPause = () => setPlaying(false)
+    el.addEventListener('timeupdate', onTime)
+    el.addEventListener('loadedmetadata', onLoaded)
+    el.addEventListener('ended', onEnd)
+    el.addEventListener('play', onPlay)
+    el.addEventListener('pause', onPause)
+    return () => {
+      el.removeEventListener('timeupdate', onTime)
+      el.removeEventListener('loadedmetadata', onLoaded)
+      el.removeEventListener('ended', onEnd)
+      el.removeEventListener('play', onPlay)
+      el.removeEventListener('pause', onPause)
+      audioRegistry.delete(el)
+    }
+  }, [])
+
+  function toggle() {
+    const el = audioRef.current
+    if (!el) return
+    if (el.paused) {
+      // Detener cualquier otro audio que esté sonando
+      audioRegistry.forEach((other) => { if (other !== el) other.pause() })
+      el.play().catch(() => {})
+    } else {
+      el.pause()
+    }
+  }
+
+  function seek(e: React.MouseEvent<HTMLDivElement>) {
+    const el = audioRef.current
+    if (!el || !total) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width))
+    el.currentTime = ratio * total
+    setCurrent(el.currentTime)
+  }
+
+  const pct = total > 0 ? (current / total) * 100 : 0
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '4px 16px 14px' }}>
+      <audio ref={audioRef} src={url} preload="none" />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={playing ? 'Pausar audio' : 'Escuchar sección'}
+        style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
+          background: playing ? '#efc562' : '#e0b64a', color: '#1a1035',
+          border: 'none', cursor: 'pointer', fontSize: 16, transition: 'background 0.2s',
+        }}
+      >
+        {playing ? '⏸' : '▶'}
+      </button>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12, marginBottom: 6 }}>
+          <span style={{ color: '#efe9ff', fontWeight: 600 }}>
+            {playing ? 'Reproduciendo' : 'Escuchar sección'}
+          </span>
+          <span style={{ color: '#a78bfa', fontVariantNumeric: 'tabular-nums' }}>
+            {formatTime(current)} / {formatTime(total)}
+          </span>
+        </div>
+        <div
+          onClick={seek}
+          style={{ height: 6, background: '#2a1d52', borderRadius: 99, overflow: 'hidden', cursor: 'pointer' }}
+        >
+          <div style={{ height: '100%', width: `${pct}%`, background: '#e0b64a', borderRadius: 99 }} />
+        </div>
+      </div>
+    </div>
+  )
+}

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, CollapsibleText, RevealOnScroll } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -16,6 +16,8 @@ interface Section {
   content: string
   data: Record<string, unknown> | null
   display_order: number
+  audio_url: string | null
+  audio_duration: number | null
 }
 
 interface QuizQuestion {
@@ -1854,6 +1856,11 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
                             <CollapsibleText text={section.content} />
                           ) : renderContent(section.content)}
                         </div>
+
+                        {/* Audio narrado — solo bloques de texto con audio */}
+                        {section.audio_url && AUDIO_TEXT_TYPES.has(section.type) && (
+                          <AudioPlayer url={section.audio_url} duration={section.audio_duration} />
+                        )}
 
                         {/* Footer XP */}
                         <div style={{
