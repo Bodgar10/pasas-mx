@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     const hasHadSubscription = (existingSubs?.length ?? 0) > 0
 
     // 4. Build URLs
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas-mx.vercel.app'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas.mx'
     const successUrl = `${baseUrl}${CHECKOUT_CONFIG.successPath}`
     const cancelUrl  = `${baseUrl}${CHECKOUT_CONFIG.cancelPath}?plan=${plan}`
 

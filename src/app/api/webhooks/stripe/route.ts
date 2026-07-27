@@ -255,7 +255,7 @@ export async function POST(request: Request) {
               } catch {}
 
               if (weakTopicIds.length > 0) {
-                const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas-mx.vercel.app'
+                const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas.mx'
                 fetch(`${baseUrl}/api/personalized/generate-plan`, {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
