@@ -64,6 +64,14 @@ export default function HordaClient({
 
   const backHref = `/guia/${subjectSlug}/${topicSlug}`
 
+  function goToTopic() {
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back()
+    } else {
+      router.replace(backHref)
+    }
+  }
+
   async function startRun() {
     setLoading(true)
     setError(null)
@@ -194,7 +202,7 @@ export default function HordaClient({
           <PrimaryButton onClick={startRun} disabled={loading}>
             {loading ? 'Reintentando…' : 'Volver a empezar'}
           </PrimaryButton>
-          <GhostButton onClick={() => router.push(backHref)}>Volver al tema</GhostButton>
+          <GhostButton onClick={goToTopic}>Volver al tema</GhostButton>
         </div>
       </Shell>
     )
@@ -233,7 +241,7 @@ export default function HordaClient({
         <PrimaryButton onClick={startRun} disabled={loading}>
           {loading ? 'Preparando…' : '▶ Empezar horda'}
         </PrimaryButton>
-        <GhostButton onClick={() => router.push(backHref)}>Volver al tema</GhostButton>
+        <GhostButton onClick={goToTopic}>Volver al tema</GhostButton>
       </Shell>
     )
   }
@@ -321,7 +329,7 @@ export default function HordaClient({
               <PrimaryButton onClick={startRun} disabled={loading}>
                 {loading ? 'Preparando…' : '🔁 Intentar de nuevo'}
               </PrimaryButton>
-              <GhostButton onClick={() => router.push(backHref)}>Volver al tema</GhostButton>
+              <GhostButton onClick={goToTopic}>Volver al tema</GhostButton>
             </div>
           </div>
         </div>
@@ -340,7 +348,7 @@ export default function HordaClient({
           <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 24px', fontWeight: 600 }}>
             Limpiaste las {TOTAL_WAVES} oleadas de {topicName}
           </p>
-          <PrimaryButton onClick={() => router.push(backHref)}>Volver al tema</PrimaryButton>
+          <PrimaryButton onClick={goToTopic}>Volver al tema</PrimaryButton>
           <GhostButton onClick={startRun}>Jugar otra vez</GhostButton>
         </div>
       </Shell>
@@ -397,7 +405,7 @@ export default function HordaClient({
           <PrimaryButton onClick={startRun} disabled={loading}>
             Volver a empezar
           </PrimaryButton>
-          <GhostButton onClick={() => router.push(backHref)}>Volver al tema</GhostButton>
+          <GhostButton onClick={goToTopic}>Volver al tema</GhostButton>
         </div>
       </Shell>
     )
