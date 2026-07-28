@@ -67,8 +67,15 @@ ${contenido}
 
 Genera entre 1 y 3 bloques interactivos. Elige el tipo según el contenido:
 - "steps": procesos paso a paso o acumulación de una cantidad. "visual":"bar" si hay un número que sube/baja (cada paso lleva "delta" numérico) y "start" inicial; "visual":"chain" para pasos narrativos (cada paso solo "text").
-- "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...).
+- "sort": clasificar en 2 categorías (2 es lo ideal; máx 4). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...), siempre dentro del rango de "buckets".
+  · La etiqueta de cada cubeta debe ser CORTA: máximo ~20 caracteres de texto principal.
+  · Si el alumno necesita una pista para decidir, ponla entre paréntesis al final de la etiqueta.
+    OK: "Ácido (tornasol rojo, pH < 7)" · "Pendiente positiva (sube ↑)"
+    MAL: "Es ácido porque el tornasol se pone rojo y el pH es menor a 7"
+  · NUNCA uses una oración completa como nombre de cubeta.
 - "scrubber": un eje/continuo (recta numérica, línea del tiempo, escala). "min" < "max", "start" en rango, 2 a 5 "points" con valor "v" y etiqueta "l".
+
+NO repitas el mismo tipo dentro de la respuesta: si generas 2 o 3 bloques, cada uno debe ser de un tipo distinto.
 
 Si el tema no encaja con naturalidad, devuelve [].
 
@@ -77,7 +84,7 @@ Formato EXACTO de cada bloque (el campo "content" es una frase corta de respaldo
   { "type": "scrubber", "title": "Pruébalo", "content": "respaldo",
     "data": { "intro": "1-2 frases con la temática", "unit": "qué se mide", "min": -64, "max": 120, "start": 64, "points": [ { "v": 64, "l": "etiqueta" } ], "question": "opcional" } },
   { "type": "sort", "title": "Clasifica", "content": "respaldo",
-    "data": { "prompt": "instrucción en una frase", "buckets": ["A","B"], "items": [ { "t": "texto", "b": 0 } ] } },
+    "data": { "prompt": "instrucción en una frase", "buckets": ["Etiqueta corta (pista breve)","Otra etiqueta (pista breve)"], "items": [ { "t": "texto", "b": 0 } ] } },
   { "type": "steps", "title": "Resuélvelo conmigo", "content": "respaldo",
     "data": { "intro": "1-2 frases con la temática", "visual": "bar", "start": 75, "steps": [ { "text": "qué pasa", "delta": -40 } ] } }
 ]`

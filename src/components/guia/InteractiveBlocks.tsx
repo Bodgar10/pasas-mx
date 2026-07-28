@@ -321,9 +321,31 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
     return null
   }
 
+  const nb = sort.buckets.length
+  if (nb < 2 || nb > 4) return null
+  if (sort.items.length === 0) return null
+  if (assign.length !== sort.items.length) return null
+  const dataOk = sort.items.every(
+    (it) =>
+      it &&
+      typeof it.t === 'string' &&
+      typeof it.b === 'number' &&
+      it.b >= 0 &&
+      it.b < nb
+  )
+  if (!dataOk) return null
+
   const allDone = assign.every((a) => a !== -1)
   const correct = assign.every((a, i) => a === sort.items[i].b)
-  const bucketColors = ['#06b6d4', '#ec4899', '#fbbf24']
+  const bucketColors = ['#06b6d4', '#ec4899', '#fbbf24', '#a78bfa']
+
+  const parts = sort.buckets.map((b) => {
+    const s = String(b ?? '').trim()
+    const m = s.match(/^(.+?)\s*\(([^)]*)\)\s*$/)
+    return m ? { main: m[1].trim(), hint: m[2].trim() } : { main: s, hint: '' }
+  })
+  const maxMain = Math.max(...parts.map((p) => p.main.length))
+  const stacked = nb >= 4 || (nb === 3 ? maxMain > 12 : maxMain > 20)
 
   return (
     <div style={{ padding: '14px 16px' }}>
@@ -332,47 +354,97 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
           {sort.prompt}
         </div>
       )}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 14 }}>
         {sort.items.map((it, i) => {
           const bk = assign[i]
           const ok = checked && bk === it.b
           const bad = checked && bk !== it.b
           const borderC = ok ? '#10b981' : bad ? '#ef4444' : 'rgba(124,58,237,0.25)'
           return (
-            <button
+            <div
               key={i}
-              type="button"
-              disabled={checked}
-              onPointerDown={(e) => {
-                downRef.current = { x: e.clientX, y: e.clientY }
-              }}
-              onClick={(e) => {
-                const d = downRef.current
-                if (d && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 10) return
-                setAssign((arr) =>
-                  arr.map((a, j) => (j === i ? (a + 1) % sort.buckets.length : a))
-                )
-              }}
               style={{
-                width: '100%', display: 'flex', alignItems: 'center',
-                justifyContent: 'space-between', gap: 10,
                 background: 'rgba(255,255,255,0.04)',
-                border: `1px solid ${borderC}`, borderRadius: 10,
-                padding: '10px 14px', fontSize: 15, color: '#e2d9f3',
-                fontFamily: 'var(--font-nunito)', fontWeight: 600,
-                cursor: checked ? 'default' : 'pointer', textAlign: 'left',
+                border: `1px solid ${borderC}`,
+                borderRadius: 10,
+                padding: '11px 12px 12px',
               }}
             >
-              <span>{it.t}</span>
-              <span style={{
-                fontSize: 12, fontWeight: 700, padding: '3px 8px', borderRadius: 6,
-                whiteSpace: 'nowrap',
-                color: bk === -1 ? '#a78bfa' : bucketColors[bk % bucketColors.length],
-                border: `1px solid ${bk === -1 ? 'rgba(167,139,250,0.3)' : bucketColors[bk % bucketColors.length]}`,
-              }}>
-                {bk === -1 ? 'toca para elegir →' : sort.buckets[bk]}
-              </span>
-            </button>
+              <div
+                style={{
+                  fontSize: 15, color: '#e2d9f3', marginBottom: 9,
+                  fontFamily: 'var(--font-nunito)', fontWeight: 600, lineHeight: 1.4,
+                }}
+              >
+                {it.t}
+              </div>
+              <div
+                role="radiogroup"
+                aria-label={it.t}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: stacked ? '1fr' : `repeat(${nb}, 1fr)`,
+                  gap: 6,
+                }}
+              >
+                {sort.buckets.map((_, bi) => {
+                  const sel = bk === bi
+                  const c = bucketColors[bi % bucketColors.length]
+                  const isAnswer = checked && bad && it.b === bi
+                  return (
+                    <button
+                      key={bi}
+                      type="button"
+                      role="radio"
+                      aria-checked={sel}
+                      disabled={checked}
+                      onPointerDown={(e) => {
+                        downRef.current = { x: e.clientX, y: e.clientY }
+                      }}
+                      onClick={(e) => {
+                        const d = downRef.current
+                        if (d && Math.hypot(e.clientX - d.x, e.clientY - d.y) > 10) return
+                        setAssign((arr) => arr.map((a, j) => (j === i ? bi : a)))
+                      }}
+                      style={{
+                        minHeight: 42,
+                        padding: '8px 8px',
+                        borderRadius: 8,
+                        background: sel ? `${c}26` : 'rgba(255,255,255,0.03)',
+                        border: sel
+                          ? `1.5px solid ${c}`
+                          : isAnswer
+                            ? '1.5px dashed #10b981'
+                            : '1px solid rgba(255,255,255,0.10)',
+                        color: sel ? c : isAnswer ? '#6ee7b7' : '#b9aed4',
+                        fontFamily: 'var(--font-nunito)',
+                        fontSize: 13,
+                        fontWeight: sel ? 800 : 600,
+                        lineHeight: 1.25,
+                        cursor: checked ? 'default' : 'pointer',
+                        transition: 'background 120ms, border-color 120ms',
+                      }}
+                    >
+                      <span style={{ display: 'block' }}>{parts[bi].main}</span>
+                      {parts[bi].hint && (
+                        <span
+                          style={{
+                            display: 'block',
+                            fontSize: 11,
+                            fontWeight: 600,
+                            opacity: 0.72,
+                            marginTop: 2,
+                            lineHeight: 1.25,
+                          }}
+                        >
+                          {parts[bi].hint}
+                        </span>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
           )
         })}
       </div>
@@ -398,7 +470,7 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
         <div style={{ fontSize: 14, fontWeight: 700, color: correct ? '#6ee7b7' : '#fca5a5' }}>
           {correct
             ? '¡Todo bien clasificado!'
-            : 'Revisa los marcados en rojo e inténtalo de nuevo en el siguiente tema.'}
+            : 'Revisa los marcados en rojo — la respuesta correcta va con borde verde.'}
         </div>
       )}
     </div>

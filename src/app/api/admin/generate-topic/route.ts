@@ -176,7 +176,7 @@ Genera 5 secciones (analogy, explanation, example, key_fact, tip) y 5 preguntas 
 Además de las 5 secciones anteriores, agrega al MISMO array "sections" entre 1 y 3 BLOQUES INTERACTIVOS que refuercen el mismo concepto, dentro del mundo de ${themeName}. Estos bloques NO llevan texto largo: llevan un objeto "data" con su configuración. Elige el tipo según el contenido:
 
 - "steps": procesos paso a paso o acumulación de una cantidad. Usa "visual":"bar" cuando hay un número que sube/baja (vida, dinero, puntos) y cada paso lleva "delta" numérico; usa "visual":"chain" para pasos narrativos sin número (cada paso solo "text").
-- "sort": clasificar cosas en 2 categorías (máx 3). De 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...).
+- "sort": clasificar cosas en 2 categorías (2 es lo ideal; máx 4). De 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...), siempre dentro del rango de "buckets". Etiquetas de cubeta CORTAS: máx ~20 caracteres de texto principal. Si el alumno necesita una pista para decidir, va entre paréntesis al final. OK: "Ácido (tornasol rojo, pH < 7)". MAL: "Es ácido porque el tornasol se pone rojo". Nunca una oración completa como nombre de cubeta.
 - "scrubber": un eje o continuo (recta numérica, línea del tiempo, escala). "min" < "max", "start" dentro del rango, de 2 a 5 "points" con su valor "v" y etiqueta "l".
 
 Si el tema no encaja con naturalidad en ninguna mecánica, NO fuerces bloques interactivos.
@@ -203,7 +203,7 @@ Cada bloque interactivo sigue EXACTAMENTE este formato (continúa el display_ord
   "display_order": 7,
   "data": {
     "prompt": "instrucción en una frase",
-    "buckets": ["Etiqueta A", "Etiqueta B"],
+    "buckets": ["Etiqueta corta (pista breve)", "Otra etiqueta (pista breve)"],
     "items": [ { "t": "texto", "b": 0 } ]
   }
 }

@@ -557,12 +557,12 @@ Genera este JSON exacto:
 
 ADEMÁS de las 5 secciones de texto, agrega al MISMO array "sections" entre 1 y 3 BLOQUES INTERACTIVOS sobre el mismo concepto, dentro del mundo de "${themeName}". No llevan texto largo: llevan un objeto "data". Continúa el display_order después de 5. Elige el tipo según el contenido y NO repitas el mismo tipo:
 - "steps": proceso paso a paso o acumulación de una cantidad. "visual":"bar" si hay un número que sube/baja (cada paso lleva "delta" numérico) más "start" inicial; "visual":"chain" para pasos narrativos (cada paso solo "text").
-- "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...).
+- "sort": clasificar en 2 categorías (2 es lo ideal; máx 4). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...), siempre dentro del rango de "buckets". Etiquetas de cubeta CORTAS: máx ~20 caracteres de texto principal. Si el alumno necesita una pista para decidir, va entre paréntesis al final. OK: "Ácido (tornasol rojo, pH < 7)". MAL: "Es ácido porque el tornasol se pone rojo". Nunca una oración completa como nombre de cubeta.
 - "scrubber": un eje/continuo (recta numérica, línea del tiempo, escala). "min" < "max", "start" en rango, 2 a 5 "points" con valor "v" y etiqueta "l".
 
 No inventes datos ni números; si hay matemáticas, deben ser exactos. Formato EXACTO de cada bloque interactivo:
 { "type": "scrubber", "title": "Pruébalo", "content": "frase corta de respaldo", "display_order": 6, "data": { "intro": "1-2 frases con la temática", "unit": "qué se mide", "min": -64, "max": 120, "start": 64, "points": [ { "v": 64, "l": "etiqueta" } ], "question": "opcional" } }
-{ "type": "sort", "title": "Clasifica", "content": "frase corta de respaldo", "display_order": 7, "data": { "prompt": "instrucción en una frase", "buckets": ["A","B"], "items": [ { "t": "texto", "b": 0 } ] } }
+{ "type": "sort", "title": "Clasifica", "content": "frase corta de respaldo", "display_order": 7, "data": { "prompt": "instrucción en una frase", "buckets": ["Etiqueta corta (pista breve)","Otra etiqueta (pista breve)"], "items": [ { "t": "texto", "b": 0 } ] } }
 { "type": "steps", "title": "Resuélvelo conmigo", "content": "frase corta de respaldo", "display_order": 8, "data": { "intro": "1-2 frases con la temática", "visual": "bar", "start": 75, "steps": [ { "text": "qué pasa", "delta": -40 } ] } }`
   }
 
@@ -690,11 +690,11 @@ IMPORTANTE:
 BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
 - Agrega de 1 a 3 bloques interactivos al MISMO array "sections", con display_order 6, 7, 8. No repitas el mismo tipo dentro de un grupo. No inventes datos; si hay matemáticas, deben ser exactos. Mantén la temática.
 - "steps": proceso o acumulación. "visual":"bar" si un número sube/baja (cada paso con "delta") más "start"; "visual":"chain" para pasos narrativos (cada paso solo "text").
-- "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item con "b" = índice de cubeta correcta.
+- "sort": clasificar en 2 categorías (2 es lo ideal; máx 4). 4 a 6 items; cada item con "b" = índice de cubeta correcta, dentro del rango de "buckets". Etiquetas CORTAS: máx ~20 caracteres de texto principal; la pista para decidir va entre paréntesis al final. OK: "Pendiente positiva (sube ↑)". Nunca una oración completa como nombre de cubeta.
 - "scrubber": un eje/continuo. "min" < "max", "start" en rango, 2 a 5 "points" con "v" y "l".
 - Formato EXACTO de cada bloque interactivo:
 { "type": "scrubber", "title": "Pruébalo", "content": "respaldo", "display_order": 6, "data": { "intro": "...", "unit": "...", "min": -64, "max": 120, "start": 64, "points": [ { "v": 64, "l": "etiqueta" } ], "question": "opcional" } }
-{ "type": "sort", "title": "Clasifica", "content": "respaldo", "display_order": 7, "data": { "prompt": "...", "buckets": ["A","B"], "items": [ { "t": "texto", "b": 0 } ] } }
+{ "type": "sort", "title": "Clasifica", "content": "respaldo", "display_order": 7, "data": { "prompt": "...", "buckets": ["Etiqueta corta (pista breve)","Otra etiqueta (pista breve)"], "items": [ { "t": "texto", "b": 0 } ] } }
 { "type": "steps", "title": "Resuélvelo conmigo", "content": "respaldo", "display_order": 8, "data": { "intro": "...", "visual": "bar", "start": 75, "steps": [ { "text": "qué pasa", "delta": -40 } ] } }`
   }
 

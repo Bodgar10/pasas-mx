@@ -38,8 +38,8 @@ const VOICEBOX_URL = 'http://127.0.0.1:17493'
 const BODGAR_PROFILE_ID = '74ae963c-6ff2-4a44-b138-3050895e5441'
 const BUCKET = 'section-audio'
 const ALL_AUDIO_TEXT_TYPES = ['explanation', 'analogy', 'example', 'key_fact', 'tip']
-const POLL_INTERVAL_MS = 1500
-const POLL_TIMEOUT_MS = 120000 // 2 min por audio
+const POLL_INTERVAL_MS = 2000
+const POLL_TIMEOUT_MS = 300000 // 5 min por audio (analogías largas + carga inicial del modelo)
 
 // ─── Flags ───
 const args = process.argv.slice(2)
@@ -81,12 +81,14 @@ NO cambies el significado ni el contenido. NO agregues ni quites información. S
 REGLAS:
 - Quita el markdown: los **asteriscos** de negritas se eliminan (deja la palabra sin asteriscos).
 - Convierte URLs/dominios a fonético: "algo.mx" → "algo punto eme equis", "www" → "doble u doble u doble u".
-- ANGLICISMOS Y NOMBRES EN INGLÉS — escríbelos como SUENAN en español (el motor lee en español y pronunciaría mal los términos en inglés). Ejemplos:
-  · "K-drama" → "keydrama"   · "K-pop" → "keypop"   · Letras sueltas en inglés: K→"key", J→"yei", W→"dobliu", H→"eich", Y→"uai".
-  · Marcas/apps que se dicen en inglés: mantén su sonido inglés escrito en fonética española cuando el motor fallaría (ej. "streaming" → "estrímin", "gaming" → "guéimin", "highlight" → "jáilait", "speedrun" → "spídran").
-  · Nombres propios muy conocidos que ya se dicen "a la española" (Minecraft, Netflix, Spotify, Instagram, TikTok, Messi, Cristiano) → DÉJALOS igual, ya suenan bien.
-  · Regla general: si un término en inglés se pronunciaría MAL leído como español, reescríbelo fonéticamente en español. Si ya suena bien tal cual, no lo toques.
-  · Ante la duda, prioriza que SUENE correcto al oído de un mexicano, no la ortografía original.
+- ANGLICISMOS — REGLA CONSERVADORA. Sé MUY selectivo; en la duda, NO toques la palabra.
+  · NOMBRES PROPIOS DE MARCAS, GRUPOS, ARTISTAS, APPS, LUGARES (BTS, BLACKPINK, Billboard, Twitter, Netflix, Minecraft, Spotify, Fortnite, etc.): DÉJALOS TAL CUAL, escritos igual que el original. NO inventes su pronunciación fonética. El motor los dice aceptablemente y así garantizas consistencia entre audios.
+  · EXCEPCIÓN — solo reescribe fonéticamente estos casos concretos y bien conocidos:
+    - "K-drama" → "kdrama", "K-pop" → "kpop" (une la K sin guion; NO uses "key").
+    - Palabras COMUNES en inglés (no nombres propios) que el motor pronunciaría muy mal: "streaming" → "estrímin", "gaming" → "gueimin", "highlight" → "jailait", "comeback" → "cambak". Solo si son de uso común y el motor claramente fallaría.
+  · SIGLAS que se deletrean (no se leen como palabra): déjalas en mayúsculas tal cual (BTS, ARMY, BLINK). NO las escribas fonéticamente ("bítíes" está MAL).
+  · NO inventes pronunciaciones tipo "bléipink", "Jot Uan", "baiás". Si no estás 100% seguro de una forma fonética estándar, DEJA la palabra original.
+  · Prioridad absoluta: CONSISTENCIA. La misma palabra debe salir idéntica siempre.
 - Números en cifra → escríbelos con letra como se dicen: "10x10" → "diez por diez", "2024" → "dos mil veinticuatro".
 - Símbolos matemáticos → palabras: "+" → "más", "−"/"-" → "menos", "×"/"*" → "por", "=" → "igual a", "%" → "por ciento".
 - Puntuación para ritmo natural: usa ".." (dos puntos) para pausas medias entre ideas; usa "..." (tres puntos) SOLO en 1-2 remates de impacto por texto; usa "¡ !" donde haya énfasis o entusiasmo.
@@ -232,10 +234,9 @@ async function main() {
       continue
     }
 
-    try {
-      const voiceScript = await adaptToVoiceScript(section.content)
-
-      if (dryRun) {
+    if (dryRun) {
+      try {
+        const voiceScript = await adaptToVoiceScript(section.content)
         console.log(`\n   📝 ${tag}`)
         console.log(`   ─── ORIGINAL ───`)
         console.log(section.content.split('\n').map((l) => `   ${l}`).join('\n'))
@@ -243,32 +244,49 @@ async function main() {
         console.log(voiceScript.split('\n').map((l) => `   ${l}`).join('\n'))
         console.log(``)
         ok++
-        continue
+      } catch (err) {
+        console.error(`   ✕ ${tag} — ${err instanceof Error ? err.message : 'error'}`)
+        errors++
       }
+      continue
+    }
 
-      const genId = await voiceboxGenerate(voiceScript)
-      const duration = await voiceboxWait(genId)
+    const MAX_RETRIES = 3
+    let done = false
+    for (let attempt = 1; attempt <= MAX_RETRIES && !done; attempt++) {
+      try {
+        const voiceScript = await adaptToVoiceScript(section.content)
+        const genId = await voiceboxGenerate(voiceScript)
+        const duration = await voiceboxWait(genId)
 
-      const wavPath = join(tmp, `${section.id}.wav`)
-      const mp3Path = join(tmp, `${section.id}.mp3`)
-      await voiceboxDownloadWav(genId, wavPath)
-      await toMp3(wavPath, mp3Path)
-      const url = await uploadMp3(section.id, mp3Path)
+        const wavPath = join(tmp, `${section.id}.wav`)
+        const mp3Path = join(tmp, `${section.id}.mp3`)
+        await voiceboxDownloadWav(genId, wavPath)
+        await toMp3(wavPath, mp3Path)
+        const url = await uploadMp3(section.id, mp3Path)
 
-      const { error: upErr } = await supabase
-        .from('sections')
-        .update({ audio_url: url, audio_duration: duration })
-        .eq('id', section.id)
-      if (upErr) throw new Error(`Update section: ${upErr.message}`)
+        const { error: upErr } = await supabase
+          .from('sections')
+          .update({ audio_url: url, audio_duration: duration })
+          .eq('id', section.id)
+        if (upErr) throw new Error(`Update section: ${upErr.message}`)
 
-      await unlink(wavPath).catch(() => {})
-      await unlink(mp3Path).catch(() => {})
+        await unlink(wavPath).catch(() => {})
+        await unlink(mp3Path).catch(() => {})
 
-      console.log(`   ✓ ${tag} — ${duration.toFixed(1)}s`)
-      ok++
-    } catch (err) {
-      console.error(`   ✕ ${tag} — ${err instanceof Error ? err.message : 'error'}`)
-      errors++
+        console.log(`   ✓ ${tag} — ${duration.toFixed(1)}s${attempt > 1 ? ` (intento ${attempt})` : ''}`)
+        ok++
+        done = true
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'error'
+        if (attempt < MAX_RETRIES) {
+          console.warn(`   ↻ ${tag} — falló (${msg}), reintento ${attempt + 1}/${MAX_RETRIES} en ${attempt * 3}s`)
+          await new Promise((r) => setTimeout(r, attempt * 3000))
+        } else {
+          console.error(`   ✕ ${tag} — ${msg} (falló tras ${MAX_RETRIES} intentos)`)
+          errors++
+        }
+      }
     }
   }
 
