@@ -32,6 +32,7 @@ export default async function TopicPage({
     { data: initialProgressData },
     { data: readEvents },
     { data: previousAnswers },
+    { data: hordeRun },
   ] = await Promise.all([
     userSubject?.theme_id
       ? supabase.from('sections').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).is('user_id', null).order('display_order', { ascending: true })
@@ -40,6 +41,7 @@ export default async function TopicPage({
     user ? supabase.from('topic_progress').select('*').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
     user ? supabase.from('progress').select('metadata').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'section_read') : Promise.resolve({ data: [] }),
     user ? supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }) : Promise.resolve({ data: [] }),
+    user ? supabase.from('horde_runs').select('best_wave, attempts').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
   ])
 
   let sections = themedSections ?? []
@@ -71,6 +73,9 @@ export default async function TopicPage({
       initialProgress={initialProgressData ?? null}
       readSectionIds={readSectionIds}
       initialAnswers={initialAnswers}
+      hordeHasBank={topic.horde_ready === true}
+      hordeBestWave={hordeRun?.best_wave ?? 0}
+      hordeAttempts={hordeRun?.attempts ?? 0}
     />
   )
 }

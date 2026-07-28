@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
+import HordeEntryCard from '@/components/guia/HordeEntryCard'
 import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
@@ -55,6 +56,9 @@ interface Props {
   isPersonalized?: boolean
   needsGeneration?: boolean
   generationData?: GenerationData
+  hordeHasBank?: boolean
+  hordeBestWave?: number
+  hordeAttempts?: number
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -196,6 +200,9 @@ export default function TopicClient({
   isPersonalized: _isPersonalized = false,
   needsGeneration = false,
   generationData,
+  hordeHasBank = false,
+  hordeBestWave = 0,
+  hordeAttempts = 0,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
@@ -1201,6 +1208,13 @@ export default function TopicClient({
                   </button>
                 </div>
               )}
+
+              <HordeEntryCard
+                href={`/guia/${subject.slug}/${topic.slug}/horda`}
+                hasBank={hordeHasBank && !_isPersonalized}
+                bestWave={hordeBestWave}
+                attempts={hordeAttempts}
+              />
             </div>
           </div>
         )}
