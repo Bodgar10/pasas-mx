@@ -25,6 +25,8 @@ export async function POST(request: Request) {
     letter?: string
     wave?: number
     attempt?: number
+    round?: number
+    answeredSoFar?: number
   }
   try {
     body = await request.json()
@@ -33,6 +35,8 @@ export async function POST(request: Request) {
   }
 
   const { topicId, questionId, letter, wave, attempt } = body
+  const round = body.round ?? 1
+  const answeredSoFar = body.answeredSoFar ?? 0
   if (!topicId || !questionId || !letter || !wave || !attempt) {
     return NextResponse.json({ error: 'Faltan datos' }, { status: 400 })
   }
@@ -58,7 +62,7 @@ export async function POST(request: Request) {
 
   const isCorrect = question.correct_answer === letter
 
-  await admin.from('progress').insert({
+  const insertPromise = admin.from('progress').insert({
     user_id: user.id,
     topic_id: topicId,
     question_id: questionId,
@@ -66,8 +70,22 @@ export async function POST(request: Request) {
     result: isCorrect,
     xp_earned: 0,
     attempt,
-    metadata: { wave, selected_answer: letter },
+    metadata: { wave, round, selected_answer: letter },
   })
+
+  const answered = answeredSoFar + 1
+
+  if (answered < PER_WAVE) {
+    return NextResponse.json({
+      correct: isCorrect,
+      explanation: question.explanation,
+      hint: isCorrect ? null : question.hint,
+      answered,
+      waveComplete: false,
+    })
+  }
+
+  await insertPromise
 
   const { data: waveAnswers } = await admin
     .from('progress')
@@ -77,8 +95,9 @@ export async function POST(request: Request) {
     .eq('event_type', 'horde_answered')
     .eq('attempt', attempt)
 
-  const thisWave = (waveAnswers ?? []).filter((r) => r.metadata?.wave === wave)
-  const answered = thisWave.length
+  const thisWave = (waveAnswers ?? []).filter(
+    (r) => r.metadata?.wave === wave && (r.metadata?.round ?? 1) === round
+  )
   const correctCount = thisWave.filter((r) => r.result === true).length
 
   const base = {
@@ -87,10 +106,6 @@ export async function POST(request: Request) {
     hint: isCorrect ? null : question.hint,
     answered,
     correctCount,
-  }
-
-  if (answered < PER_WAVE) {
-    return NextResponse.json({ ...base, waveComplete: false })
   }
 
   const { data: run } = await admin
@@ -177,6 +192,7 @@ export async function POST(request: Request) {
       waveComplete: true,
       outcome,
       nextWave,
+      nextRound: round + 1,
       xpEarned,
       bestWave,
       questions: shuffle(next ?? []),
