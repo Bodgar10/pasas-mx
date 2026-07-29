@@ -171,6 +171,13 @@ const SECTION_TYPE_CONFIG: Record<string, {
     borderColor: 'rgba(167,139,250,0.25)',
     headerBg: 'rgba(167,139,250,0.06)',
   },
+  solve: {
+    label: 'Papel y lápiz',
+    icon: '📝',
+    color: '#10b981',
+    borderColor: 'rgba(16,185,129,0.25)',
+    headerBg: 'rgba(16,185,129,0.06)',
+  },
 }
 
 const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve'])
@@ -794,7 +801,19 @@ export default function TopicClient({
             }} />
 
             {orderedSections.map((section, index) => {
-              const meta = SECTION_TYPE_CONFIG[section.type]
+              // Sin este respaldo, un tipo nuevo en el enum sin entrada en
+              // SECTION_TYPE_CONFIG deja `meta` en undefined y el primer
+              // acceso a meta.color tira la leccion COMPLETA con error de
+              // servidor. Paso exactamente eso al agregar 'solve'.
+              // TypeScript no lo detecta: el acceso por indice a un Record
+              // se tipa como definido aunque la llave no exista.
+              const meta = SECTION_TYPE_CONFIG[section.type] ?? {
+                label: 'Sección',
+                icon: '📄',
+                color: '#a78bfa',
+                borderColor: 'rgba(167,139,250,0.25)',
+                headerBg: 'rgba(167,139,250,0.06)',
+              }
               return (
                 <RevealOnScroll key={section.id}>
                 <div
