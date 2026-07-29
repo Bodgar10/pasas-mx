@@ -60,6 +60,11 @@ export default function HordaClient({
     correctCount: number
     xpEarned: number
   } | null>(null)
+  const [pending, setPending] = useState<{
+    questions: Question[] | null
+    wave: number
+    round: number
+  } | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const backHref = `/guia/${subjectSlug}/${topicSlug}`
@@ -98,6 +103,7 @@ export default function HordaClient({
       setPicked(null)
       setFeedback(null)
       setWaveOutcome(null)
+      setPending(null)
       setPhase('playing')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'No se pudo iniciar')
@@ -145,11 +151,18 @@ export default function HordaClient({
           xpEarned: data.xpEarned ?? 0,
         })
         if (typeof data.bestWave === 'number') setBestWave(data.bestWave)
-        if (Array.isArray(data.questions) && data.questions.length > 0) {
-          setQuestions(data.questions)
-        }
-        if (data.nextWave) setWave(data.nextWave)
-        if (data.nextRound) setRound(data.nextRound)
+        // NO aplicar aqui las preguntas ni la oleada siguiente: el alumno
+        // sigue viendo la pregunta que acaba de responder. Si se reemplaza
+        // `questions` en este momento, questions[index] pasa a ser otra
+        // pregunta y el feedback queda encima de un enunciado distinto.
+        setPending({
+          questions:
+            Array.isArray(data.questions) && data.questions.length > 0
+              ? data.questions
+              : null,
+          wave: data.nextWave ?? wave,
+          round: data.nextRound ?? round,
+        })
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Error al responder')
@@ -177,6 +190,13 @@ export default function HordaClient({
     setWaveOutcome(null)
     setIndex(0)
     setCorrectInWave(0)
+
+    if (pending) {
+      if (pending.questions) setQuestions(pending.questions)
+      setWave(pending.wave)
+      setRound(pending.round)
+      setPending(null)
+    }
 
     if (o.outcome === 'finished') {
       setPhase('won')

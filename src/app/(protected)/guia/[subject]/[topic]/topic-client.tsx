@@ -206,6 +206,13 @@ export default function TopicClient({
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
+
+  // Los tabs se ocultan con display:none, no se desmontan, asi que cambiar
+  // de tab conserva la posicion de scroll. Sin esto, "IR AL QUIZ" desde el
+  // final de la guia deja al alumno a media lista de preguntas.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }, [activeTab])
   // sessionXp starts at XP already earned from reading in previous visits
   const [sessionXp, setSessionXp] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>(

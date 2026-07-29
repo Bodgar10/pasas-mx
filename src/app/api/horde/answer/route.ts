@@ -62,7 +62,11 @@ export async function POST(request: Request) {
 
   const isCorrect = question.correct_answer === letter
 
-  const insertPromise = admin.from('progress').insert({
+  // El insert SIEMPRE se espera. Los builders de Supabase son perezosos:
+  // sin await la peticion HTTP nunca se dispara y la respuesta no se guarda.
+  // Con fire-and-forget solo sobrevivia la 5a respuesta de cada oleada, el
+  // servidor contaba 1 acierto de 5 y mandaba a derrota siempre.
+  const { error: insertError } = await admin.from('progress').insert({
     user_id: user.id,
     topic_id: topicId,
     question_id: questionId,
@@ -72,6 +76,9 @@ export async function POST(request: Request) {
     attempt,
     metadata: { wave, round, selected_answer: letter },
   })
+  if (insertError) {
+    return NextResponse.json({ error: 'No se pudo guardar la respuesta' }, { status: 500 })
+  }
 
   const answered = answeredSoFar + 1
 
@@ -84,8 +91,6 @@ export async function POST(request: Request) {
       waveComplete: false,
     })
   }
-
-  await insertPromise
 
   const { data: waveAnswers } = await admin
     .from('progress')

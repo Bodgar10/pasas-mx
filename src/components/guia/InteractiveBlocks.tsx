@@ -337,7 +337,7 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
 
   const allDone = assign.every((a) => a !== -1)
   const correct = assign.every((a, i) => a === sort.items[i].b)
-  const bucketColors = ['#06b6d4', '#ec4899', '#fbbf24', '#a78bfa']
+  const pendingCount = assign.filter((a) => a === -1).length
 
   const parts = sort.buckets.map((b) => {
     const s = String(b ?? '').trim()
@@ -349,6 +349,22 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
 
   return (
     <div style={{ padding: '14px 16px' }}>
+      {!checked && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+          <span style={{ fontSize: 14 }} aria-hidden="true">👆</span>
+          <span
+            style={{
+              fontSize: 11,
+              color: '#fbbf24',
+              fontWeight: 700,
+              letterSpacing: '0.05em',
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            Toca dónde va cada uno, luego revisa
+          </span>
+        </div>
+      )}
       {sort.prompt && (
         <div style={{ fontSize: 15, lineHeight: 1.7, color: '#e2d9f3', marginBottom: 14 }}>
           {sort.prompt}
@@ -389,7 +405,6 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
               >
                 {sort.buckets.map((_, bi) => {
                   const sel = bk === bi
-                  const c = bucketColors[bi % bucketColors.length]
                   const isAnswer = checked && bad && it.b === bi
                   return (
                     <button
@@ -410,13 +425,13 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
                         minHeight: 42,
                         padding: '8px 8px',
                         borderRadius: 8,
-                        background: sel ? `${c}26` : 'rgba(255,255,255,0.03)',
+                        background: sel ? '#7c3aed' : 'rgba(255,255,255,0.03)',
                         border: sel
-                          ? `1.5px solid ${c}`
+                          ? '1.5px solid #7c3aed'
                           : isAnswer
                             ? '1.5px dashed #10b981'
                             : '1px solid rgba(255,255,255,0.10)',
-                        color: sel ? c : isAnswer ? '#6ee7b7' : '#b9aed4',
+                        color: sel ? '#ffffff' : isAnswer ? '#6ee7b7' : '#b9aed4',
                         fontFamily: 'var(--font-nunito)',
                         fontSize: 13,
                         fontWeight: sel ? 800 : 600,
@@ -464,7 +479,9 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
             cursor: allDone ? 'pointer' : 'default',
           }}
         >
-          Revisar
+          {allDone
+            ? 'Revisar respuestas'
+            : `Falta${pendingCount === 1 ? '' : 'n'} ${pendingCount} por clasificar`}
         </button>
       ) : (
         <div style={{ fontSize: 14, fontWeight: 700, color: correct ? '#6ee7b7' : '#fca5a5' }}>
