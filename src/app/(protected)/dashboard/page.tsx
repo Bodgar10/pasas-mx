@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
 import DashboardClient from './dashboard-client'
+import { xpToLevel } from '@/lib/gamification'
 
 export type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -16,7 +17,7 @@ export default async function DashboardPage() {
   const [{ data: profile }, { data: subscription }] = await Promise.all([
     supabase
       .from('users')
-      .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done, interests')
+      .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done, interests, last_level_seen')
       .eq('id', user.id)
       .single(),
     supabase
@@ -98,6 +99,14 @@ export default async function DashboardPage() {
 
   return (
     <DashboardClient
+      levelUp={
+        xpToLevel(profile?.xp_total ?? 0).level > (profile?.last_level_seen ?? 1)
+          ? {
+              from: profile?.last_level_seen ?? 1,
+              to: xpToLevel(profile?.xp_total ?? 0).level,
+            }
+          : null
+      }
       profile={{
         name: profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
         xp_total: profile.xp_total ?? 0,

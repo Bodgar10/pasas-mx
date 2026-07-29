@@ -1,5 +1,8 @@
 'use client'
 
+import LevelUpModal from '@/components/global/LevelUpModal'
+import { xpToLevel, levelProgress } from '@/lib/gamification'
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -50,6 +53,7 @@ interface Props {
   billingCycle: string | null
   isPaused: boolean
   pausedUntil: string | null
+  levelUp?: { from: number; to: number } | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -80,13 +84,7 @@ const THEME_EMOJIS: Record<string, string> = {
   'Anime & Manga': '⚔️',
 }
 
-function xpToLevel(xp: number) {
-  const level = Math.floor(xp / 500) + 1
-  const current = xp % 500
-  return { level, current, total: 500 }
-}
-
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil, levelUp = null }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -211,6 +209,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   return (
     <>
+    {levelUp && <LevelUpModal from={levelUp.from} to={levelUp.to} />}
     <div
       style={{
         minHeight: '100vh',
@@ -888,7 +887,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     if (!subj) return null
                     const meta = SUBJECT_ICONS[subj.slug] ?? DEFAULT_SUBJECT
                     const subXp = us.xp ?? 0
-                    const subProgress = Math.min((subXp % 500) / 500, 1)
+                    const subProgress = levelProgress(subXp)
                     return (
                       <div
                         key={subj.slug}
@@ -951,7 +950,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     const meta = SUBJECT_ICONS[subject.slug] ?? DEFAULT_SUBJECT
                     const userSub = userSubjects.find((us) => us.subject_id === subject.id)
                     const subXp = userSub?.xp ?? 0
-                    const subProgress = Math.min((subXp % 500) / 500, 1)
+                    const subProgress = levelProgress(subXp)
                     const isLocked = subscriptionStatus !== 'active'
                     const isExpiredCard = subscriptionStatus === 'expired' && subXp > 0
                     return (
