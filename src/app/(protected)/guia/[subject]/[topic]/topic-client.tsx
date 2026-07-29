@@ -189,12 +189,12 @@ const LESSON_ORDER: Record<string, number> = {
   explanation: 3,
   example: 4,
   steps: 5,
-  sort: 6,
-  match: 7,
-  diagram: 8,
-  key_fact: 9,
-  tip: 10,
-  solve: 11,
+  solve: 6,
+  sort: 7,
+  match: 8,
+  diagram: 9,
+  key_fact: 10,
+  tip: 11,
 }
 
 export default function TopicClient({
