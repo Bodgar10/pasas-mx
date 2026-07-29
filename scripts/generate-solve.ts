@@ -136,6 +136,11 @@ ENUNCIADO: una sola pregunta con una sola respuesta numerica.
 - BIEN: "cuanto mide cada angulo interior de un poligono cuyo angulo central es 36 grados?"
 Si necesitas escribir "escribe solo..." es senal de que el enunciado esta mal planteado.
 
+El enunciado NUNCA incluye la formula ni la sustitucion. Eso es trabajo de las pistas.
+- MAL: "cuanto mide cada lado? (usa que lado = 2 x 8 x sen(36))"
+- BIEN: "un pentagono regular esta inscrito en una circunferencia de radio 8 cm. Cuanto mide cada lado?"
+Si el alumno necesita una formula que no vio en la leccion, escoge otro ejercicio.
+
 LA SOLUCION:
 "solution" es un arreglo de 2 a 5 pasos que SI cierra la cuenta y llega al resultado.
 Solo se muestra si el alumno agota las pistas y pide verla. Aqui si puedes escribir "= 33".
@@ -144,8 +149,15 @@ OTRAS REGLAS:
 1. Espanol de Mexico, directo, para un adolescente. Contextos cotidianos mexicanos cuando ayude.
 2. NO uses analogias de videojuegos, K-pop ni ninguna tematica. Los ejercicios son neutros.
 3. "unit": la unidad se pinta fija junto al campo y el alumno NO la escribe. Usa cm2, m, kg, grados, etc. Omite el campo si el resultado no tiene unidad.
-4. "tolerance": usa 0 si el resultado es exacto. Usa 0.01 si es un decimal largo (pi, raices) para que 3.14 y 3.1416 cuenten igual.
-5. Los numeros del enunciado deben ser amables: evita que el resultado sea 7.3333333.
+4. "tolerance" es OBLIGATORIA cuando el resultado no es exacto. Reglas:
+   - Resultado entero o decimal exacto (20, -7, 4.5) -> tolerance: 0
+   - Resultado con decimales infinitos o irracional (1/6, pi, raices) -> tolerance: 0.01
+     y redondea "answer" a 2 decimales. Ejemplo: 1/6 -> answer: 0.17, tolerance: 0.01
+   NUNCA escribas answer con mas de 2 decimales. "answer": 0.1666666667 es un ERROR:
+   el alumno resuelve bien, escribe 0.17, y el sistema lo reprueba.
+5. PREFIERE numeros que den resultado exacto. Escoge los datos del enunciado para que
+   la respuesta sea entera o de un decimal. Solo usa tolerance cuando el tema lo exija
+   de verdad (trigonometria, raices, pi).
 6. Enunciado maximo 200 caracteres. Cada pista maximo 120. Cada paso de solucion maximo 120.
 7. Texto plano. Sin Markdown, sin LaTeX. Notacion con caracteres normales: x^2, raiz de 16, 3/4.
 8. Los 4 ejercicios deben ser distintos entre si, no variaciones del mismo numero.
@@ -193,6 +205,12 @@ function validate(list: Exercise[]): string | null {
 
     if (typeof e.answer !== 'number' || !Number.isFinite(e.answer)) {
       return `answer no es numerico en: ${e.q.slice(0, 40)}`
+    }
+    // Un answer con muchos decimales y tolerance 0 es un falso negativo
+    // garantizado: el alumno resuelve bien, redondea, y el sistema lo reprueba.
+    const decimals = (String(e.answer).split('.')[1] ?? '').length
+    if (decimals > 2 && !(e.tolerance && e.tolerance > 0)) {
+      return `answer con ${decimals} decimales y sin tolerance en: ${e.q.slice(0, 40)}`
     }
     if (!Array.isArray(e.hints) || e.hints.length < 2) {
       return `hints debe tener al menos 2 elementos en: ${e.q.slice(0, 40)}`
