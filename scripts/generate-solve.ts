@@ -109,19 +109,32 @@ Ejemplos de replanteo correcto:
 - En vez de "factoriza x^2 + 5x + 6" -> "cual es la raiz mas grande de x^2 + 5x + 6 = 0?" (respuesta: -2)
 
 LAS PISTAS — ESCALERA DE AYUDA:
-"hints" es un arreglo de 2 a 5 pistas que se revelan de una en una cuando el alumno falla o las pide.
-La cantidad la decides TU segun la dificultad: una suma de enteros lleva 2, un problema de varios pasos lleva 5.
+"hints" es un arreglo de pistas que se revelan de una en una cuando el alumno falla o las pide.
+LA CANTIDAD LA DECIDES TU: las que hagan falta para que un alumno atorado pueda resolverlo.
+Minimo 2, sin tope practico. Si un ejercicio de una division necesita 2, pon 2. Si una integral
+por partes necesita 9, pon 9. Es matematicas: lo que importa es que la escalera este completa,
+no que sea corta.
+Cuenta los pasos REALES del procedimiento y da una pista por paso.
+En un bloque de 3 ejercicios es NORMAL que uno tenga 2 pistas y otro 8. Si los 3 salen con la
+misma cantidad, no estas calibrando: revisa cuantos pasos tiene cada uno.
 - Pista 1: recuerda el concepto o la formula, sin numeros del ejercicio.
 - Pistas intermedias: identifica los datos y como se sustituyen.
 - ULTIMA pista: da la operacion COMPLETA con los numeros ya sustituidos, lista para meter en la calculadora.
   Ejemplo correcto de ultima pista: "Puedes hacer 2 x (12 + 4.5)"
   Esto es CORRECTO: el alumno tiene todo y solo calcula.
 
-PROHIBIDO ABSOLUTAMENTE: que cualquier pista contenga el RESULTADO ya calculado.
-- MAL: "16.5 x 2 = 33" (revela el 33)
+PROHIBIDO ABSOLUTAMENTE: que cualquier pista contenga un RESULTADO ya calculado, ni el final ni uno intermedio.
+- MAL: "16.5 x 2 = 33" (revela el resultado final)
 - MAL: "el area es 20"
+- MAL: "Ya sabes que n = 10" (revela un paso intermedio que el alumno debia calcular)
 - BIEN: "2 x (12 + 4.5)" (da la operacion, no el resultado)
-Ninguna pista debe contener un signo "=" seguido del valor de answer.
+- BIEN: "Despeja n dividiendo 360 entre el angulo central"
+Cada pista dice QUE operacion hacer, nunca CUANTO da.
+
+ENUNCIADO: una sola pregunta con una sola respuesta numerica.
+- MAL: "cuantos lados tiene y cuanto mide el angulo interior? Escribe solo el angulo"
+- BIEN: "cuanto mide cada angulo interior de un poligono cuyo angulo central es 36 grados?"
+Si necesitas escribir "escribe solo..." es senal de que el enunciado esta mal planteado.
 
 LA SOLUCION:
 "solution" es un arreglo de 2 a 5 pasos que SI cierra la cuenta y llega al resultado.
@@ -181,8 +194,8 @@ function validate(list: Exercise[]): string | null {
     if (typeof e.answer !== 'number' || !Number.isFinite(e.answer)) {
       return `answer no es numerico en: ${e.q.slice(0, 40)}`
     }
-    if (!Array.isArray(e.hints) || e.hints.length < 2 || e.hints.length > 5) {
-      return `hints debe tener 2 a 5 elementos en: ${e.q.slice(0, 40)}`
+    if (!Array.isArray(e.hints) || e.hints.length < 2) {
+      return `hints debe tener al menos 2 elementos en: ${e.q.slice(0, 40)}`
     }
     if (e.hints.some((h) => !h?.trim())) return `Pista vacia en: ${e.q.slice(0, 40)}`
     if (!Array.isArray(e.solution) || e.solution.length < 2) {
