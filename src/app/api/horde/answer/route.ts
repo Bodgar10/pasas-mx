@@ -66,17 +66,19 @@ export async function POST(request: Request) {
   // sin await la peticion HTTP nunca se dispara y la respuesta no se guarda.
   // Con fire-and-forget solo sobrevivia la 5a respuesta de cada oleada, el
   // servidor contaba 1 acierto de 5 y mandaba a derrota siempre.
+  // question_id NO se llena: tiene FK a quiz_questions y los ids de la
+  // horda vienen de horde_questions. El id real va en metadata.
   const { error: insertError } = await admin.from('progress').insert({
     user_id: user.id,
     topic_id: topicId,
-    question_id: questionId,
     event_type: 'horde_answered',
     result: isCorrect,
     xp_earned: 0,
     attempt,
-    metadata: { wave, round, selected_answer: letter },
+    metadata: { wave, round, selected_answer: letter, horde_question_id: questionId },
   })
   if (insertError) {
+    console.error('horde insert failed:', insertError)
     return NextResponse.json({ error: 'No se pudo guardar la respuesta' }, { status: 500 })
   }
 
