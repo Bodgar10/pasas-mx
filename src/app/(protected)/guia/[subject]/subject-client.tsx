@@ -20,6 +20,7 @@ interface Topic {
   display_order: number
   difficulty: number
   xp_reward: number
+  horde_ready?: boolean | null
 }
 
 interface TopicProgress {
@@ -168,6 +169,8 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
       badgeText = 'En progreso'
     }
 
+    const hasHorde = topic.horde_ready === true
+
     let diffBg = 'rgba(16,185,129,0.1)'
     let diffColor = '#10b981'
     let diffText = '🟢 Fácil'
@@ -268,6 +271,24 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
             >
               {badgeText}
             </span>
+            {hasHorde && (
+              <span
+                title="Este tema tiene Modo Horda"
+                style={{
+                  fontSize: 12,
+                  fontWeight: 800,
+                  borderRadius: 50,
+                  padding: '2px 8px',
+                  border: '1px solid rgba(236,72,153,0.4)',
+                  background: 'rgba(236,72,153,0.15)',
+                  color: '#ec4899',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                🧟 Horda
+              </span>
+            )}
             <span
               style={{
                 fontSize: 12,
@@ -477,6 +498,37 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
           />
         </div>
       </div>
+
+      {/* Banner: Modo Horda */}
+      {topics.filter((t) => t.horde_ready === true).length > 0 && (
+        <div
+          style={{
+            margin: isDesktop ? '4px 32px 18px' : '4px 16px 16px',
+            background: '#1a1035',
+            border: '1px solid rgba(236,72,153,0.45)',
+            borderRadius: 16,
+            padding: isDesktop ? '16px 18px' : '14px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 14,
+          }}
+        >
+          <div style={{ fontSize: isDesktop ? 34 : 30, lineHeight: 1, flexShrink: 0 }} aria-hidden="true">
+            🧟
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 800, marginBottom: 3 }}>
+              ¿Ya viene tu examen?
+            </div>
+            <div style={{ fontSize: 13, color: '#a78bfa', lineHeight: 1.45, fontWeight: 600 }}>
+              Sobrevive 6 oleadas de preguntas por tema y llega listo.{' '}
+              {topics.filter((t) => t.horde_ready === true).length} de {topics.length}{' '}
+              {topics.length === 1 ? 'tema ya tiene' : 'temas ya tienen'} su horda — búscala
+              dentro de cada tema.
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Topics sections */}
       <div style={{ padding: isDesktop ? '0 32px' : '0 16px' }}>

@@ -205,7 +205,7 @@ export default function TopicClient({
   hordeAttempts = 0,
 }: Props) {
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'resumen'>('guia')
+  const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'horda' | 'resumen'>('guia')
 
   // Los tabs se ocultan con display:none, no se desmontan, asi que cambiar
   // de tab conserva la posicion de scroll. Sin esto, "IR AL QUIZ" desde el
@@ -727,9 +727,12 @@ export default function TopicClient({
       >
         {(
           [
-            { key: 'guia', label: '📖 Guía' },
-            { key: 'quiz', label: '🎮 Quiz' },
-            { key: 'resumen', label: '⚡ Resumen' },
+            { key: 'guia', label: isDesktop ? '📖 Guía' : 'Guía' },
+            { key: 'quiz', label: isDesktop ? '🎮 Quiz' : 'Quiz' },
+            ...(hordeHasBank && !_isPersonalized
+              ? ([{ key: 'horda', label: isDesktop ? '🧟 Horda' : 'Horda' }] as const)
+              : []),
+            { key: 'resumen', label: isDesktop ? '⚡ Resumen' : 'Resumen' },
           ] as const
         ).map(({ key, label }) => (
           <button
@@ -1216,15 +1219,19 @@ export default function TopicClient({
                 </div>
               )}
 
-              <HordeEntryCard
-                href={`/guia/${subject.slug}/${topic.slug}/horda`}
-                hasBank={hordeHasBank && !_isPersonalized}
-                bestWave={hordeBestWave}
-                attempts={hordeAttempts}
-              />
             </div>
           </div>
         )}
+      </div>
+
+      {/* Tab: Horda */}
+      <div style={{ display: activeTab === 'horda' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
+        <HordeEntryCard
+          href={`/guia/${subject.slug}/${topic.slug}/horda`}
+          hasBank={hordeHasBank && !_isPersonalized}
+          bestWave={hordeBestWave}
+          attempts={hordeAttempts}
+        />
       </div>
 
       {/* Tab: Resumen */}
