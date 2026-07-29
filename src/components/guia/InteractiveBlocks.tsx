@@ -617,7 +617,391 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
   )
 }
 
-export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match'])
+interface SolveQuestion {
+  q: string
+  answer: number
+  unit?: string
+  tolerance?: number
+  /** Pistas progresivas. Cantidad variable (2 a 5) segun la dificultad
+   *  del ejercicio. NUNCA contienen el resultado final: la ultima deja al
+   *  alumno a una sola operacion de la respuesta. */
+  hints: string[]
+  /** Solucion completa, la unica que si cierra la cuenta. Solo se muestra
+   *  si el alumno agota las pistas y pide verla. */
+  solution: string[]
+}
+
+interface SolveData {
+  intro?: string
+  questions: SolveQuestion[]
+}
+
+/**
+ * Interpreta lo que el alumno escribio como numero.
+ *
+ * Devuelve TODAS las lecturas posibles porque la coma es ambigua: en Mexico
+ * se usa como separador de miles (1,234) pero muchos alumnos la escriben
+ * como decimal (0,5). En vez de adivinar, se aceptan las dos y basta con
+ * que una coincida. Un falso negativo — que resuelva bien y la app le diga
+ * que fallo — es mucho peor que aceptar de mas.
+ *
+ * Maneja: "0.5", "0,5", ".5", "1/2", "x = 12", "12 cm", "12cm", "-7".
+ */
+function parseAnswers(raw: string): number[] {
+  let s = String(raw ?? '').trim().toLowerCase()
+  if (!s) return []
+
+  s = s.replace(/^[a-z]?\s*=\s*/, '')
+  s = s.replace(/\s+/g, '')
+  s = s.replace(/[a-z°º²³%]+$/i, '')
+  if (!s) return []
+
+  const frac = s.replace(/,/g, '.').match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/)
+  if (frac) {
+    const den = parseFloat(frac[2])
+    if (den === 0) return []
+    const v = parseFloat(frac[1]) / den
+    return Number.isFinite(v) ? [v] : []
+  }
+
+  const out: number[] = []
+  const asDecimal = parseFloat(s.replace(/,/g, '.'))
+  if (Number.isFinite(asDecimal)) out.push(asDecimal)
+  const asThousands = parseFloat(s.replace(/,/g, ''))
+  if (Number.isFinite(asThousands) && !out.includes(asThousands)) out.push(asThousands)
+
+  return out
+}
+
+function isRightAnswer(raw: string, expected: number, tolerance = 0): boolean {
+  const tol = Math.max(tolerance ?? 0, 1e-9)
+  return parseAnswers(raw).some((v) => Math.abs(v - expected) <= tol)
+}
+
+export function SolveBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+  const sv = data as unknown as SolveData | null
+  const [index, setIndex] = useState(0)
+  const [value, setValue] = useState('')
+  const [state, setState] = useState<'typing' | 'right' | 'wrong' | 'solution'>('typing')
+  const [shown, setShown] = useState(0)
+  const [done, setDone] = useState(false)
+
+  if (!sv || !Array.isArray(sv.questions) || sv.questions.length === 0) return null
+  const valid = sv.questions.every(
+    (q) =>
+      q &&
+      typeof q.q === 'string' &&
+      typeof q.answer === 'number' &&
+      Array.isArray(q.hints) &&
+      q.hints.length > 0 &&
+      Array.isArray(q.solution) &&
+      q.solution.length > 0
+  )
+  if (!valid) return null
+
+  const total = sv.questions.length
+  const current = sv.questions[index]
+  if (!current) return null
+
+  const hintsLeft = current.hints.length - shown
+
+  function check() {
+    if (!value.trim()) return
+    if (isRightAnswer(value, current.answer, current.tolerance)) {
+      setState('right')
+      return
+    }
+    // Fallar revela la siguiente pista. Resolver con pistas cuenta igual
+    // que resolver solo: penalizar la ayuda ensena a no pedirla.
+    setState('wrong')
+    setShown((n) => Math.min(n + 1, current.hints.length))
+  }
+
+  function next() {
+    if (index + 1 >= total) {
+      setDone(true)
+      onComplete?.()
+      return
+    }
+    setIndex((i) => i + 1)
+    setValue('')
+    setState('typing')
+    setShown(0)
+  }
+
+  if (done) {
+    return (
+      <div style={{ padding: '18px 16px', textAlign: 'center' }}>
+        <div style={{ fontSize: 40, marginBottom: 8 }} aria-hidden="true">✏️</div>
+        <div style={{ fontSize: 16, color: '#6ee7b7', fontWeight: 800, fontFamily: 'var(--font-nunito)' }}>
+          Terminaste los {total} ejercicios
+        </div>
+      </div>
+    )
+  }
+
+  const locked = state === 'right' || state === 'solution'
+
+  return (
+    <div style={{ padding: '14px 16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+        <span style={{ fontSize: 14 }} aria-hidden="true">📝</span>
+        <span
+          style={{
+            fontSize: 11,
+            color: '#fbbf24',
+            fontWeight: 700,
+            letterSpacing: '0.05em',
+            fontFamily: 'var(--font-nunito)',
+          }}
+        >
+          {sv.intro ?? 'Resuélvelo en tu cuaderno y escribe el resultado'}
+        </span>
+      </div>
+
+      <div style={{ display: 'flex', gap: 4, marginBottom: 12 }}>
+        {sv.questions.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              flex: 1,
+              height: 5,
+              borderRadius: 3,
+              background: i < index ? '#7c3aed' : i === index ? '#ec4899' : '#2D2048',
+            }}
+          />
+        ))}
+      </div>
+
+      <div
+        style={{
+          fontSize: 15,
+          color: '#e2d9f3',
+          lineHeight: 1.6,
+          marginBottom: 14,
+          fontFamily: 'var(--font-nunito)',
+          fontWeight: 600,
+        }}
+      >
+        {current.q}
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+        <input
+          type="text"
+          inputMode="decimal"
+          value={value}
+          disabled={locked}
+          onChange={(e) => {
+            setValue(e.target.value)
+            if (state === 'wrong') setState('typing')
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') check()
+          }}
+          placeholder="Tu respuesta"
+          aria-label="Escribe tu respuesta"
+          style={{
+            flex: 1,
+            minWidth: 0,
+            minHeight: 48,
+            background: 'rgba(255,255,255,0.05)',
+            border: `1.5px solid ${
+              state === 'right' ? '#10b981' : state === 'wrong' ? '#ef4444' : 'rgba(124,58,237,0.35)'
+            }`,
+            borderRadius: 12,
+            padding: '0 14px',
+            fontSize: 18,
+            color: '#e2d9f3',
+            fontFamily: 'var(--font-nunito)',
+            fontWeight: 700,
+            outline: 'none',
+          }}
+        />
+        {current.unit && (
+          <span style={{ fontSize: 16, color: '#a78bfa', fontWeight: 700, flexShrink: 0 }}>
+            {current.unit}
+          </span>
+        )}
+      </div>
+
+      {state === 'typing' && (
+        <button
+          type="button"
+          onClick={check}
+          disabled={!value.trim()}
+          style={{
+            width: '100%',
+            minHeight: 46,
+            background: value.trim() ? '#7c3aed' : 'rgba(124,58,237,0.2)',
+            color: value.trim() ? '#fff' : '#a78bfa',
+            border: 'none',
+            borderRadius: 12,
+            fontFamily: 'var(--font-nunito)',
+            fontSize: 15,
+            fontWeight: 800,
+            cursor: value.trim() ? 'pointer' : 'default',
+          }}
+        >
+          Revisar
+        </button>
+      )}
+
+      {state === 'right' && (
+        <>
+          <div
+            style={{
+              padding: '11px 14px',
+              borderRadius: 10,
+              background: 'rgba(16,185,129,0.12)',
+              border: '1px solid rgba(16,185,129,0.3)',
+              color: '#6ee7b7',
+              fontSize: 14,
+              fontWeight: 800,
+              marginBottom: 10,
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            ✓ ¡Correcto!
+          </div>
+          <button type="button" onClick={next} style={nextBtnStyle}>
+            {index + 1 >= total ? 'Terminar' : 'Siguiente ejercicio'}
+          </button>
+        </>
+      )}
+
+      {shown > 0 && state !== 'right' && state !== 'solution' && (
+        <div style={{ marginBottom: 10 }}>
+          {current.hints.slice(0, shown).map((h, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                gap: 10,
+                alignItems: 'flex-start',
+                padding: '10px 12px',
+                borderRadius: 10,
+                background: 'rgba(251,191,36,0.08)',
+                border: '1px solid rgba(251,191,36,0.25)',
+                marginBottom: 6,
+                fontFamily: 'var(--font-nunito)',
+              }}
+            >
+              <span style={{ fontSize: 14, flexShrink: 0 }} aria-hidden="true">💡</span>
+              <span style={{ fontSize: 14, color: '#fbbf24', fontWeight: 600, lineHeight: 1.5 }}>{h}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {state === 'wrong' && (
+        <>
+          <div
+            style={{
+              padding: '10px 14px',
+              borderRadius: 10,
+              background: 'rgba(239,68,68,0.1)',
+              border: '1px solid rgba(239,68,68,0.3)',
+              color: '#fca5a5',
+              fontSize: 14,
+              fontWeight: 800,
+              marginBottom: 10,
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            {hintsLeft > 0
+              ? '✗ Todavía no. Te dejé una pista arriba — inténtalo otra vez.'
+              : '✗ No es esa. Ya viste todas las pistas.'}
+          </div>
+          <button
+            type="button"
+            onClick={check}
+            disabled={!value.trim()}
+            style={{
+              ...nextBtnStyle,
+              background: value.trim() ? '#7c3aed' : 'rgba(124,58,237,0.2)',
+              color: value.trim() ? '#fff' : '#a78bfa',
+              cursor: value.trim() ? 'pointer' : 'default',
+            }}
+          >
+            Volver a intentar
+          </button>
+          {hintsLeft === 0 && (
+            <button
+              type="button"
+              onClick={() => setState('solution')}
+              style={{ ...nextBtnStyle, background: 'transparent', color: '#a78bfa', minHeight: 40, marginTop: 6 }}
+            >
+              Ver la respuesta completa
+            </button>
+          )}
+        </>
+      )}
+
+      {state === 'solution' && (
+        <>
+          <div
+            style={{
+              padding: '14px',
+              borderRadius: 10,
+              background: 'rgba(124,58,237,0.12)',
+              border: '1px solid rgba(124,58,237,0.3)',
+              marginBottom: 10,
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 800, letterSpacing: '0.05em', marginBottom: 10 }}>
+              PASO A PASO
+            </div>
+            {current.solution.map((s, i) => (
+              <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 8, alignItems: 'flex-start' }}>
+                <div
+                  style={{
+                    minWidth: 22,
+                    height: 22,
+                    borderRadius: '50%',
+                    background: 'rgba(124,58,237,0.3)',
+                    color: '#c4b5fd',
+                    fontSize: 12,
+                    fontWeight: 800,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'var(--font-orbitron)',
+                  }}
+                >
+                  {i + 1}
+                </div>
+                <span style={{ fontSize: 14, color: '#e2d9f3', lineHeight: 1.5, fontWeight: 600 }}>{s}</span>
+              </div>
+            ))}
+            <div style={{ fontSize: 14, color: '#6ee7b7', fontWeight: 800, marginTop: 10 }}>
+              Resultado: {current.answer}{current.unit ? ` ${current.unit}` : ''}
+            </div>
+          </div>
+          <button type="button" onClick={next} style={nextBtnStyle}>
+            {index + 1 >= total ? 'Terminar' : 'Siguiente ejercicio'}
+          </button>
+        </>
+      )}
+    </div>
+  )
+}
+
+const nextBtnStyle: React.CSSProperties = {
+  width: '100%',
+  minHeight: 46,
+  background: '#7c3aed',
+  color: '#fff',
+  border: 'none',
+  borderRadius: 12,
+  fontFamily: 'var(--font-nunito)',
+  fontSize: 15,
+  fontWeight: 800,
+  cursor: 'pointer',
+}
+
+export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve'])
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) s = 0

@@ -4,11 +4,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
 import HordeEntryCard from '@/components/guia/HordeEntryCard'
-import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
-  | 'scrubber' | 'steps' | 'sort' | 'match'
+  | 'scrubber' | 'steps' | 'sort' | 'match' | 'solve'
 
 interface Section {
   id: string
@@ -173,7 +173,7 @@ const SECTION_TYPE_CONFIG: Record<string, {
   },
 }
 
-const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match'])
+const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve'])
 
 // Orden pedagógico: cada bloque interactivo cae junto al texto con el que se relaciona.
 const LESSON_ORDER: Record<string, number> = {
@@ -187,6 +187,7 @@ const LESSON_ORDER: Record<string, number> = {
   diagram: 8,
   key_fact: 9,
   tip: 10,
+  solve: 11,
 }
 
 export default function TopicClient({
@@ -879,6 +880,8 @@ export default function TopicClient({
                         <StepsBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
                       ) : section.type === 'match' ? (
                         <MatchBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                      ) : section.type === 'solve' ? (
+                        <SolveBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
                       ) : (section.type === 'analogy' || section.type === 'example') ? (
                         <CollapsibleText text={section.content} />
                       ) : renderContent(section.content)}

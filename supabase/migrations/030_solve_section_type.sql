@@ -1,0 +1,29 @@
+-- 030_solve_section_type.sql
+-- Bloque interactivo "Papel y Lapiz": ejercicios de respuesta abierta
+-- numerica, solo para materias de matematicas.
+--
+-- A diferencia del Modo Horda, esto NO lleva tabla propia: vive como un
+-- section_type mas, con su configuracion en sections.data, renderizado
+-- por SolveBlock en InteractiveBlocks.tsx y con XP via /api/section-read
+-- (idempotente por section_id). Implica que la respuesta correcta viaja
+-- al cliente, igual que en sort y match. Aceptable: es herramienta de
+-- estudio, no examen calificado.
+--
+-- Contrato de data:
+-- {
+--   "intro": "Resuelvelo en tu cuaderno y escribe el resultado",
+--   "questions": [{
+--     "q": "...",              -- enunciado
+--     "answer": 20,            -- SIEMPRE numerico, nunca expresion
+--     "unit": "cm2",           -- se pinta junto al campo; no se teclea
+--     "tolerance": 0,          -- margen para decimales largos
+--     "hints": ["...", "..."], -- 2 a 5, progresivas, NUNCA dan el resultado
+--     "solution": ["...", "..."] -- la unica que si cierra la cuenta
+--   }]
+-- }
+--
+-- La validacion normaliza antes de comparar: coma -> punto, quita
+-- espacios, quita "x=", convierte a/b a decimal, compara NUMERICAMENTE.
+-- Asi 1/2, 0,5 y .5 cuentan todas como correctas.
+
+ALTER TYPE section_type ADD VALUE IF NOT EXISTS 'solve';
