@@ -759,6 +759,17 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
         </span>
       </div>
 
+      <div
+        style={{
+          fontSize: 12,
+          color: '#a78bfa',
+          fontWeight: 700,
+          marginBottom: 6,
+          fontFamily: 'var(--font-nunito)',
+        }}
+      >
+        Ejercicio {index + 1} de {total}
+      </div>
       <div style={{ display: 'flex', gap: 4, marginBottom: 12 }}>
         {sv.questions.map((_, i) => (
           <div
@@ -826,25 +837,47 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
       </div>
 
       {state === 'typing' && (
-        <button
-          type="button"
-          onClick={check}
-          disabled={!value.trim()}
-          style={{
-            width: '100%',
-            minHeight: 46,
-            background: value.trim() ? '#7c3aed' : 'rgba(124,58,237,0.2)',
-            color: value.trim() ? '#fff' : '#a78bfa',
-            border: 'none',
-            borderRadius: 12,
-            fontFamily: 'var(--font-nunito)',
-            fontSize: 15,
-            fontWeight: 800,
-            cursor: value.trim() ? 'pointer' : 'default',
-          }}
-        >
-          Revisar
-        </button>
+        <>
+          <button
+            type="button"
+            onClick={check}
+            disabled={!value.trim()}
+            style={{
+              width: '100%',
+              minHeight: 46,
+              background: value.trim() ? '#7c3aed' : 'rgba(124,58,237,0.2)',
+              color: value.trim() ? '#fff' : '#a78bfa',
+              border: 'none',
+              borderRadius: 12,
+              fontFamily: 'var(--font-nunito)',
+              fontSize: 15,
+              fontWeight: 800,
+              cursor: value.trim() ? 'pointer' : 'default',
+            }}
+          >
+            Revisar
+          </button>
+          {hintsLeft > 0 && (
+            <button
+              type="button"
+              onClick={() => setShown((n) => Math.min(n + 1, current.hints.length))}
+              style={{
+                width: '100%',
+                minHeight: 40,
+                marginTop: 8,
+                background: 'transparent',
+                border: 'none',
+                color: '#fbbf24',
+                fontFamily: 'var(--font-nunito)',
+                fontSize: 14,
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+            >
+              💡 {shown === 0 ? 'Necesito una pista' : 'Dame otra pista'}
+            </button>
+          )}
+        </>
       )}
 
       {state === 'right' && (
