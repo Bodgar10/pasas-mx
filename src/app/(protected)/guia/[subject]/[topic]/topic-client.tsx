@@ -560,7 +560,7 @@ export default function TopicClient({
                   </button>
                   <button
                     type="button"
-                    onClick={() => router.back()}
+                    onClick={() => { router.back(); setTimeout(() => router.refresh(), 100) }}
                     style={{
                       marginTop: 12, width: '100%', background: 'none',
                       border: 'none', cursor: 'pointer', fontSize: 15,
@@ -640,7 +640,7 @@ export default function TopicClient({
       >
         <button
           type="button"
-          onClick={() => router.back()}
+          onClick={() => { router.back(); setTimeout(() => router.refresh(), 100) }}
           style={{
             width: 36,
             height: 36,
@@ -1317,7 +1317,7 @@ export default function TopicClient({
           </div>
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={() => { router.back(); setTimeout(() => router.refresh(), 100) }}
             style={{
               width: '100%',
               minHeight: 52,

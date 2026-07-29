@@ -158,15 +158,30 @@ export async function POST(request: Request) {
       .eq('topic_id', topicId)
 
     if (xpEarned > 0) {
-      await admin.from('progress').insert({
-        user_id: user.id,
-        topic_id: topicId,
-        event_type: finished ? 'horde_completed' : 'horde_wave_cleared',
-        result: true,
-        xp_earned: xpEarned,
-        attempt,
-        metadata: { wave },
-      })
+      const events = []
+      if (firstTime) {
+        events.push({
+          user_id: user.id,
+          topic_id: topicId,
+          event_type: 'horde_wave_cleared',
+          result: true,
+          xp_earned: XP_PER_WAVE,
+          attempt,
+          metadata: { wave },
+        })
+      }
+      if (finished && !run?.completed_at) {
+        events.push({
+          user_id: user.id,
+          topic_id: topicId,
+          event_type: 'horde_completed',
+          result: true,
+          xp_earned: XP_COMPLETE,
+          attempt,
+          metadata: { wave },
+        })
+      }
+      await admin.from('progress').insert(events)
       await admin.rpc('increment_xp', { uid: user.id, amount: xpEarned })
       if (topicRow?.subject_id) {
         await admin.rpc('increment_subject_xp', {

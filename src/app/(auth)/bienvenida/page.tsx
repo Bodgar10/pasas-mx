@@ -1,6 +1,7 @@
 'use client'
 
 import { Suspense, useEffect, useState } from 'react'
+import Confetti from '@/components/global/Confetti'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 
@@ -14,48 +15,6 @@ const DURATION_CYCLE: Record<string, 'mensual' | 'semestral' | 'anual'> = {
   monthly: 'mensual',
   semestral: 'semestral',
   annual: 'anual',
-}
-
-function Confetti() {
-  const [particles, setParticles] = useState<{ id: number; x: number; color: string; delay: number; duration: number }[]>([])
-
-  useEffect(() => {
-    const colors = ['#7c3aed', '#ec4899', '#06b6d4', '#10b981', '#fbbf24']
-    const p = Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      delay: Math.random() * 2,
-      duration: 2 + Math.random() * 2,
-    }))
-    setParticles(p)
-  }, [])
-
-  return (
-    <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 50, overflow: 'hidden' }}>
-      <style>{`
-        @keyframes confettiFall {
-          0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-          100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-      `}</style>
-      {particles.map(p => (
-        <div
-          key={p.id}
-          style={{
-            position: 'absolute',
-            left: `${p.x}%`,
-            top: -10,
-            width: 8,
-            height: 8,
-            backgroundColor: p.color,
-            borderRadius: Math.random() > 0.5 ? '50%' : '0',
-            animation: `confettiFall ${p.duration}s ease-in ${p.delay}s forwards`,
-          }}
-        />
-      ))}
-    </div>
-  )
 }
 
 function BienvenidaContent() {

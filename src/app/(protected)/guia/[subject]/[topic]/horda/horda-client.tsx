@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Confetti from '@/components/global/Confetti'
 
 interface Option {
   letter: string
@@ -360,6 +361,7 @@ export default function HordaClient({
   if (phase === 'won') {
     return (
       <Shell>
+        <Confetti />
         <div style={{ textAlign: 'center', padding: '20px 0' }}>
           <div style={{ fontSize: 64, marginBottom: 12 }} aria-hidden="true">
             🏆
