@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
       if (user) {
         const { data: profile } = await supabase
           .from('users')
-          .select('role, onboarding_done, full_name, pending_checkout')
+          .select('role, onboarding_done, full_name, education_level, grade, pending_checkout')
           .eq('id', user.id)
           .single()
 
@@ -43,8 +43,23 @@ export async function GET(request: NextRequest) {
           return NextResponse.redirect(`${origin}/admin`)
         }
 
-        // Si el perfil existe pero onboarding_done es false, completarlo
-        if (profile && !profile.onboarding_done && profile.full_name) {
+        // Si el perfil existe pero onboarding_done es false, completarlo.
+        //
+        // 🔴 La señal NO es `full_name`: ese campo siempre viene lleno porque
+        // /registro lo pide, así que la condición se cumplía siempre y marcaba
+        // el onboarding como hecho aunque el usuario nunca hubiera elegido
+        // nivel ni grado. Consecuencia: dashboard vacío, y checkout habilitado
+        // sobre un producto inusable.
+        //
+        // La señal real son los datos de estudio. Si faltan, el middleware
+        // manda al usuario a /onboarding, que es lo correcto.
+        if (
+          profile &&
+          !profile.onboarding_done &&
+          profile.full_name &&
+          profile.education_level &&
+          profile.grade
+        ) {
           const { createClient: createServiceClient } = await import('@supabase/supabase-js')
           const serviceClient = createServiceClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,

@@ -191,7 +191,7 @@ export default function LoginPage() {
       <p className="text-center text-sm" style={{ color: '#6B7280' }}>
         ¿No tienes cuenta?{' '}
         <Link
-          href="/registro"
+          href="/onboarding"
           className="font-bold hover:brightness-125 transition-all"
           style={{ color: '#a78bfa' }}
         >
