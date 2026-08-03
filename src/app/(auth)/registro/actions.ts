@@ -1,7 +1,10 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import { buildAcquisitionSource } from '@/lib/audience-detection'
+import { parseConsent } from '@/lib/legal'
+import { sendParentalConsentEmail } from '@/lib/email/templates/parental-consent'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
 
@@ -24,8 +27,6 @@ export async function registroAction(
   const email = formData.get('email') as string
   const password = formData.get('password') as string
   const fullName = (formData.get('full_name') as string)?.trim()
-  const parentName = (formData.get('parent_name') as string)?.trim()
-  const tosAccepted = formData.get('tos_accepted') === 'on'
   const onboardingRaw = formData.get('onboarding_data') as string | null
   const pendingPlan = formData.get('pending_plan') as string | null
   const pendingDuration = formData.get('pending_duration') as string | null
@@ -38,11 +39,17 @@ export async function registroAction(
   if (!fullName) {
     return { error: 'Por favor escribe tu nombre o apodo.' }
   }
-  if (!parentName) {
-    return { error: 'Por favor escribe el nombre del adulto responsable.' }
-  }
-  if (!tosAccepted) {
-    return { error: 'Debes aceptar los Términos y Condiciones para continuar.' }
+
+  // Consentimiento legal — validación y armado de campos en src/lib/legal.ts
+  const headersList = await headers()
+  const clientIp =
+    headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    headersList.get('x-real-ip') ||
+    null
+
+  const consent = parseConsent(formData, clientIp)
+  if (!consent.ok) {
+    return { error: consent.error }
   }
 
   const supabase = await createClient()
@@ -90,9 +97,7 @@ export async function registroAction(
     // Parsear onboarding data para guardar todo el perfil ya
     let profileEarly: Record<string, unknown> = {
       full_name: fullName,
-      parent_name: parentName || null,
-      tos_accepted_at: new Date().toISOString(),
-      tos_accepted_version: '1.0',
+      ...consent.fields,
       onboarding_done: false, // se completa en auth/callback al verificar
     }
 
@@ -117,7 +122,24 @@ export async function registroAction(
       profileEarly.pending_checkout = { plan: pendingPlan, duration: pendingDuration }
     }
 
-    await serviceClientEarly.from('users').update(profileEarly).eq('id', user.id)
+    const { error: earlyUpdateError } = await serviceClientEarly
+      .from('users')
+      .update(profileEarly)
+      .eq('id', user.id)
+
+    if (earlyUpdateError) {
+      console.error('[registro] No se pudo guardar el perfil:', earlyUpdateError)
+      return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
+    }
+
+    if (consent.esMenor && consent.token && consent.parentEmail) {
+      await sendParentalConsentEmail({
+        to: consent.parentEmail,
+        parentName: consent.fields.parent_name ?? '',
+        studentName: fullName,
+        token: consent.token,
+      })
+    }
 
     return { emailSent: true, email }
   }
@@ -131,9 +153,7 @@ export async function registroAction(
   // Parse onboarding data if available
   let profileUpdate: Record<string, unknown> = {
     full_name: fullName,
-    parent_name: parentName || null,
-    tos_accepted_at: new Date().toISOString(),
-    tos_accepted_version: '1.0',
+    ...consent.fields,
     onboarding_done: true,
     ...(acquisitionSource ? { acquisition_source: acquisitionSource } : {}),
   }
@@ -152,10 +172,24 @@ export async function registroAction(
     }
   }
 
-  await serviceClient
+  const { error: profileUpdateError } = await serviceClient
     .from('users')
     .update(profileUpdate)
     .eq('id', user.id)
+
+  if (profileUpdateError) {
+    console.error('[registro] No se pudo guardar el perfil:', profileUpdateError)
+    return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
+  }
+
+  if (consent.esMenor && consent.token && consent.parentEmail) {
+    await sendParentalConsentEmail({
+      to: consent.parentEmail,
+      parentName: consent.fields.parent_name ?? '',
+      studentName: fullName,
+      token: consent.token,
+    })
+  }
 
   // Update JWT metadata so middleware reads onboarding_done: true immediately
   await supabase.auth.updateUser({

@@ -47,29 +47,41 @@ export async function middleware(request: NextRequest) {
   let role = jwtRole ?? 'student'
   let onboardingDone = jwtOnboardingDone ?? false
 
-  // Fallback: query DB if JWT claims not yet populated (existing users before hook)
-  if (user && !user.is_anonymous && !claimsReady && isProtected(pathname)) {
-    const { data: profile } = await supabase
-      .from('users')
-      .select('role, onboarding_done')
-      .eq('id', user.id)
-      .single()
-    if (profile) {
-      role = profile.role ?? 'student'
-      onboardingDone = profile.onboarding_done ?? false
-    }
-  }
+  // Gate legal. Arranca en `true` a propósito: si la consulta al perfil falla,
+  // preferimos dejar pasar a un usuario que sí aceptó antes que encerrar a
+  // todos en /legal por un error transitorio de red. Solo se pone en false
+  // cuando SÍ leímos el perfil y el campo viene vacío.
+  let tosAccepted = true
+  let parentalPending = false
 
-  // Same fallback for onboarding redirect check
-  if (user && !user.is_anonymous && !claimsReady && pathname.startsWith('/onboarding')) {
+  // Perfil desde la BD. UNA sola consulta para las dos rutas que la necesitan.
+  // Antes eran dos bloques idénticos; como /onboarding no está en
+  // PROTECTED_PREFIXES, nunca corrían los dos a la vez.
+  //
+  // 🔴 `role` y `onboardingDone` solo se sobrescriben si el JWT no trae claims,
+  // pero `tosAccepted` y `parentalPending` se leen SIEMPRE, fuera de esa
+  // condición. Esos dos campos no viven en el token: si algún día se activa el
+  // Custom Access Token Hook en Supabase, `claimsReady` pasaría a true, este
+  // bloque dejaría de correr bajo la condición vieja y el gate legal se
+  // apagaría SIN NINGÚN ERROR VISIBLE. No vuelvas a meterlos dentro del
+  // `!claimsReady`.
+  if (
+    user &&
+    !user.is_anonymous &&
+    (isProtected(pathname) || pathname.startsWith('/onboarding'))
+  ) {
     const { data: profile } = await supabase
       .from('users')
-      .select('role, onboarding_done')
+      .select('role, onboarding_done, tos_accepted_at, parental_consent_status')
       .eq('id', user.id)
       .single()
     if (profile) {
-      role = profile.role ?? 'student'
-      onboardingDone = profile.onboarding_done ?? false
+      if (!claimsReady) {
+        role = profile.role ?? 'student'
+        onboardingDone = profile.onboarding_done ?? false
+      }
+      tosAccepted = !!profile.tos_accepted_at
+      parentalPending = profile.parental_consent_status === 'pending'
     }
   }
 
@@ -96,6 +108,42 @@ export async function middleware(request: NextRequest) {
       url.pathname = role === 'admin' ? '/admin' : '/dashboard'
       return NextResponse.redirect(url)
     }
+  }
+
+  // Gate legal: sin aceptación de T&C y Aviso no se entra ni al onboarding ni
+  // a las rutas protegidas. Cubre el alta con Google OAuth, que nunca pasa por
+  // el formulario de /registro.
+  //
+  // Va ANTES del gate de onboarding a propósito: el onboarding recolecta datos
+  // personales (grado, intereses) y el Aviso dice que el consentimiento se
+  // recaba "previo al tratamiento".
+  //
+  // Excluye usuarios anónimos: la landing crea una sesión anónima para que el
+  // onboarding pre-registro cargue rápido. Esos todavía no son titulares.
+  if (
+    user &&
+    !user.is_anonymous &&
+    !tosAccepted &&
+    !pathname.startsWith('/legal') &&
+    (isProtected(pathname) || pathname.startsWith('/onboarding'))
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/legal'
+    return NextResponse.redirect(url)
+  }
+
+  // Menor sin autorización del tutor: la cuenta existe pero no se usa.
+  // Cae en /legal, que en este estado muestra la pantalla de espera.
+  if (
+    user &&
+    !user.is_anonymous &&
+    parentalPending &&
+    !pathname.startsWith('/legal') &&
+    (isProtected(pathname) || pathname.startsWith('/onboarding'))
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/legal'
+    return NextResponse.redirect(url)
   }
 
   if (user && isProtected(pathname)) {

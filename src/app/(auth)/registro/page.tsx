@@ -4,6 +4,7 @@ import { useActionState, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
+import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 
 function GoogleIcon() {
   return (
@@ -61,7 +62,6 @@ export default function RegistroPage() {
   const [onboardingData, setOnboardingData] = useState('')
   const [pendingPlan, setPendingPlan] = useState('')
   const [pendingDuration, setPendingDuration] = useState('')
-  const [tosAccepted, setTosAccepted] = useState(false)
   const [utmData, setUtmData] = useState('')
 
   useEffect(() => {
@@ -268,29 +268,6 @@ export default function RegistroPage() {
 
         <div className="space-y-1">
           <label
-            htmlFor="parent_name"
-            className="block text-sm font-semibold"
-            style={{ color: '#9CA3AF' }}
-          >
-            Nombre completo del adulto responsable
-          </label>
-          <input
-            id="parent_name"
-            name="parent_name"
-            type="text"
-            autoComplete="name"
-            required
-            className={inputClass}
-            style={{ ...inputStyle, minHeight: '52px' }}
-            placeholder="Nombre del padre, madre o tutor"
-          />
-          <p className="text-xs mt-1" style={{ color: '#6B7280' }}>
-            Requerido para usuarios menores de 18 años.
-          </p>
-        </div>
-
-        <div className="space-y-1">
-          <label
             htmlFor="email"
             className="block text-sm font-semibold"
             style={{ color: '#9CA3AF' }}
@@ -338,39 +315,7 @@ export default function RegistroPage() {
           className="rounded-xl p-4 space-y-3"
           style={{ background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)' }}
         >
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              name="tos_accepted"
-              required
-              checked={tosAccepted}
-              onChange={(e) => setTosAccepted(e.target.checked)}
-              className="mt-1 shrink-0 accent-[#7c3aed] w-4 h-4"
-            />
-            <span className="text-sm" style={{ color: '#a78bfa' }}>
-              He leído y acepto los{' '}
-              <a
-                href="/terminos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-bold"
-                style={{ color: '#c4b5fd' }}
-              >
-                Términos y Condiciones
-              </a>
-              {' '}y el{' '}
-              <a
-                href="/privacidad"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-bold"
-                style={{ color: '#c4b5fd' }}
-              >
-                Aviso de Privacidad
-              </a>
-              {' '}de Pasas.mx (Versión 1.0).
-            </span>
-          </label>
+          <ConsentimientoLegal />
 
           {/* Disclaimer mayoría de edad */}
           <div
@@ -397,10 +342,10 @@ export default function RegistroPage() {
 
         <button
           type="submit"
-          disabled={pending || !tosAccepted}
+          disabled={pending}
           className="w-full rounded-xl font-bold text-white text-base transition-all disabled:opacity-60 disabled:cursor-not-allowed"
           style={{
-            backgroundColor: tosAccepted ? '#7c3aed' : '#4B3D6E',
+            backgroundColor: '#7c3aed',
             minHeight: '52px',
           }}
         >
