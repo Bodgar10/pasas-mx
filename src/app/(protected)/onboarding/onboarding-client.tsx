@@ -5,6 +5,37 @@ import { useRouter } from 'next/navigation'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 type Step = 1 | 2 | 3 | 4
+type Registrante = 'tutor' | 'alumno'
+
+/**
+ * FUENTE ÚNICA de los textos que cambian según quién registra.
+ * Si hay que reescribir una pregunta, se hace AQUÍ, no en el JSX.
+ */
+const COPY: Record<Registrante, {
+  nivel: string
+  grado: string
+  tema: string
+  listoSub: string
+  ctaFinal: string
+  hobbieLabel: string
+}> = {
+  tutor: {
+    nivel: '¿En qué está tu hijo o hija?',
+    grado: '¿Qué año cursa?',
+    tema: '¿Qué le gusta más?',
+    listoSub: 'La cuenta está personalizada',
+    ctaFinal: 'Ver cómo estudiaría →',
+    hobbieLabel: 'Le gusta',
+  },
+  alumno: {
+    nivel: '¿En qué estás?',
+    grado: '¿Qué año cursas?',
+    tema: '¿Cuál es tu hobbie principal?',
+    listoSub: 'Tu cuenta está personalizada',
+    ctaFinal: 'Ver cómo estudiarías →',
+    hobbieLabel: 'Hobbie',
+  },
+}
 
 interface Theme {
   id: string
@@ -94,10 +125,13 @@ function ProgressBar({ step }: { step: Step }) {
 export default function OnboardingClient({ themes }: Props) {
   const [step, setStep] = useState<Step>(1)
 
+  const [registrante, setRegistrante] = useState<Registrante>('tutor')
   const [level, setLevel] = useState<string | null>(null)
   const [grade, setGrade] = useState<string | null>(null)
   const [theme, setTheme] = useState<string | null>(null)
   const router = useRouter()
+
+  const copy = COPY[registrante]
 
   const selectedLevel = LEVELS.find((l) => l.label === level)
   const selectedTheme = themes.find((t) => t.name === theme)
@@ -119,10 +153,14 @@ export default function OnboardingClient({ themes }: Props) {
     } else {
       if (!theme || !level) return
       // Save onboarding data in sessionStorage — will be persisted to DB after registration
-      sessionStorage.setItem('pasas_onboarding', JSON.stringify({ level, grade, theme }))
+      sessionStorage.setItem(
+        'pasas_onboarding',
+        JSON.stringify({ level, grade, theme, registrante })
+      )
       const params = new URLSearchParams({ level })
       if (grade) params.set('grade', grade)
       params.set('theme', theme)
+      params.set('registrante', registrante)
       router.push(`/onboarding/preview?${params.toString()}`)
     }
   }
@@ -178,6 +216,67 @@ export default function OnboardingClient({ themes }: Props) {
           {/* Step 1 — Level */}
           {step === 1 && (
             <>
+              {/* Selector de quién registra. Solo en el paso 1: si se pudiera
+                  cambiar más adelante, el copy mutaría bajo los pies del
+                  usuario a media captura. Para cambiarlo se usa ← Regresar. */}
+              <div style={{ marginBottom: 24 }}>
+                <p
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 700,
+                    color: '#9CA3AF',
+                    margin: '0 0 10px',
+                  }}
+                >
+                  ¿Quién está creando la cuenta?
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {([
+                    { id: 'tutor' as const, label: 'Soy el padre, madre o tutor' },
+                    { id: 'alumno' as const, label: 'Soy el alumno y tengo 18 años o más' },
+                  ]).map((opt) => {
+                    const selected = registrante === opt.id
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => setRegistrante(opt.id)}
+                        style={{
+                          ...cardBase,
+                          ...(selected ? cardSelected : {}),
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 12,
+                          padding: '10px 14px',
+                          width: '100%',
+                          textAlign: 'left',
+                        }}
+                      >
+                        <Checkmark selected={selected} />
+                        <span style={{ fontWeight: 700, fontSize: 15, color: '#e2d9f3' }}>
+                          {opt.label}
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+                <p
+                  style={{
+                    fontSize: 13,
+                    lineHeight: 1.5,
+                    color: '#fbbf24',
+                    backgroundColor: 'rgba(251,191,36,0.08)',
+                    border: '1px solid rgba(251,191,36,0.2)',
+                    borderRadius: 10,
+                    padding: '8px 12px',
+                    margin: '10px 0 0',
+                  }}
+                >
+                  ⚠️ Si eres menor de edad, el registro lo debe realizar tu padre,
+                  madre o tutor.
+                </p>
+              </div>
+
               <h2
                 style={{
                   fontFamily: 'var(--font-orbitron)',
@@ -187,7 +286,7 @@ export default function OnboardingClient({ themes }: Props) {
                   marginBottom: 20,
                 }}
               >
-                ¿En qué estás?
+                {copy.nivel}
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {LEVELS.map((opt) => {
@@ -237,7 +336,7 @@ export default function OnboardingClient({ themes }: Props) {
                   marginBottom: 20,
                 }}
               >
-                ¿Qué año cursas?
+                {copy.grado}
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
                 {GRADES.map((g) => {
@@ -293,7 +392,7 @@ export default function OnboardingClient({ themes }: Props) {
                   marginBottom: 20,
                 }}
               >
-                ¿Cuál es tu hobbie principal?
+                {copy.tema}
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
                 {themes.map((t) => {
@@ -366,7 +465,7 @@ export default function OnboardingClient({ themes }: Props) {
                   ¡Todo listo!
                 </h2>
                 <p style={{ fontSize: 16, color: '#a78bfa', margin: 0 }}>
-                  Tu cuenta está personalizada
+                  {copy.listoSub}
                 </p>
               </div>
 
@@ -397,7 +496,7 @@ export default function OnboardingClient({ themes }: Props) {
                   </div>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Hobbie</span>
+                  <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>{copy.hobbieLabel}</span>
                   <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
                     {selectedTheme?.icon ?? '✨'} {theme}
                   </span>
@@ -425,7 +524,7 @@ export default function OnboardingClient({ themes }: Props) {
               transition: 'background-color 0.15s, color 0.15s',
             }}
           >
-            {step === 3 ? '¡Empezar! ✨' : step === 4 ? 'Ver cómo estudiarías →' : 'Siguiente →'}
+            {step === 3 ? '¡Empezar! ✨' : step === 4 ? copy.ctaFinal : 'Siguiente →'}
           </button>
 
           {/* Back link */}

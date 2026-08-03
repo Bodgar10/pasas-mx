@@ -53,6 +53,7 @@ export async function middleware(request: NextRequest) {
   // cuando SÍ leímos el perfil y el campo viene vacío.
   let tosAccepted = true
   let parentalPending = false
+  let parentalToken: string | null = null
 
   // Perfil desde la BD. UNA sola consulta para las dos rutas que la necesitan.
   // Antes eran dos bloques idénticos; como /onboarding no está en
@@ -72,7 +73,7 @@ export async function middleware(request: NextRequest) {
   ) {
     const { data: profile } = await supabase
       .from('users')
-      .select('role, onboarding_done, tos_accepted_at, parental_consent_status')
+      .select('role, onboarding_done, tos_accepted_at, parental_consent_status, parental_consent_token')
       .eq('id', user.id)
       .single()
     if (profile) {
@@ -82,6 +83,7 @@ export async function middleware(request: NextRequest) {
       }
       tosAccepted = !!profile.tos_accepted_at
       parentalPending = profile.parental_consent_status === 'pending'
+      parentalToken = profile.parental_consent_token ?? null
     }
   }
 
@@ -132,17 +134,23 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Menor sin autorización del tutor: la cuenta existe pero no se usa.
-  // Cae en /legal, que en este estado muestra la pantalla de espera.
+  // Tutor que confirmó su correo pero todavía no firmó la autorización.
+  // Se le manda a firmarla, no a una pantalla de espera: es él mismo quien
+  // tiene que dar el clic y ya está aquí.
+  //
+  // Sin token no hay a dónde mandarlo, así que se deja pasar en vez de
+  // encerrarlo en un ciclo de redirecciones sin salida.
   if (
     user &&
     !user.is_anonymous &&
     parentalPending &&
+    parentalToken &&
+    !pathname.startsWith('/autorizar-menor') &&
     !pathname.startsWith('/legal') &&
     (isProtected(pathname) || pathname.startsWith('/onboarding'))
   ) {
     const url = request.nextUrl.clone()
-    url.pathname = '/legal'
+    url.pathname = `/autorizar-menor/${parentalToken}`
     return NextResponse.redirect(url)
   }
 

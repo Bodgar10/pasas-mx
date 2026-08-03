@@ -2,6 +2,7 @@
 
 import { Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
+import { PLAN_DISPLAY } from '@/lib/payments/config'
 
 const THEME_EXAMPLES: Record<string, string> = {
   Videojuegos: 'Las derivadas explicadas con mecánicas de Minecraft',
@@ -39,6 +40,7 @@ function PreviewContent() {
   const level = searchParams.get('level') ?? ''
   const grade = searchParams.get('grade')
   const theme = searchParams.get('theme') ?? ''
+  const esTutor = searchParams.get('registrante') === 'tutor'
 
   const exampleTitle = getExampleTitle(theme)
   const isExam = level.startsWith('Examen')
@@ -161,7 +163,7 @@ function PreviewContent() {
               margin: '0 0 8px',
             }}
           >
-            Así aprenderías tú
+            {esTutor ? 'Así aprendería' : 'Así aprenderías tú'}
           </h2>
 
           <p
@@ -197,7 +199,7 @@ function PreviewContent() {
                 margin: '0 0 10px',
               }}
             >
-              LO QUE VERÍAS
+              {esTutor ? 'LO QUE VERÍA' : 'LO QUE VERÍAS'}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {topics.map((topic) => (
@@ -231,7 +233,7 @@ function PreviewContent() {
               color: '#10b981',
             }}
           >
-            🔒 Desbloquea todos los temas con tu plan
+            🔒 Desbloquea todos los temas con el plan
           </div>
         </div>
 
@@ -256,12 +258,12 @@ function PreviewContent() {
               Ver planes — todas las materias →
             </button>
             <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
-              Matemáticas, Español, Historia, Ciencias y más · Desde $199/mes
+              Matemáticas, Español, Historia, Ciencias y más · Desde ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount}/mes
             </p>
           </div>
 
           <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '16px 0' }}>
-            ¿Te falla solo una materia?
+            {esTutor ? '¿Le falla solo una materia?' : '¿Te falla solo una materia?'}
           </p>
 
           <div>
@@ -283,14 +285,14 @@ function PreviewContent() {
               Quiero guías solo de {subject} →
             </button>
             <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
-              Una sola materia, adaptada exactamente a lo que te falla · Desde $499/mes
+              Una sola materia, adaptada exactamente a lo que {esTutor ? 'le' : 'te'} falla · Desde ${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}/mes
             </p>
           </div>
         </div>
 
         {/* E) Trust line */}
         <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', marginTop: 20, marginBottom: 0 }}>
-          Sin tarjeta para empezar · Cancela cuando quieras
+          7 días gratis · No se cobra hasta el día 8 · Cancela cuando quieras
         </p>
 
       </div>

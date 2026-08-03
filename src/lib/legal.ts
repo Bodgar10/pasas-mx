@@ -47,6 +47,7 @@ export type ConsentResult =
   | {
       ok: true
       esMenor: boolean
+      registrante: 'tutor' | 'alumno'
       token: string | null
       parentEmail: string | null
       fields: ConsentFields
@@ -59,15 +60,29 @@ export type ConsentResult =
  * hace el componente en el cliente solo decide qué campos se muestran; no es
  * fuente de verdad y no se le hace caso.
  */
-export function parseConsent(formData: FormData, ip: string | null): ConsentResult {
+export function parseConsent(
+  formData: FormData,
+  ip: string | null,
+  cuentaEmail?: string | null
+): ConsentResult {
   const birthdate = ((formData.get('birthdate') as string | null) ?? '').trim()
   const tosAccepted = formData.get('tos_accepted') === 'on'
   const parentName = ((formData.get('parent_name') as string | null) ?? '').trim()
-  const parentEmail = ((formData.get('parent_email') as string | null) ?? '')
-    .trim()
-    .toLowerCase()
   const parentalDeclared = formData.get('parental_declaration') === 'on'
   const marketing = formData.get('marketing_consent') === 'on'
+
+  // Quién está llenando el formulario. Lo pone ConsentimientoLegal en un input
+  // oculto. Cualquier valor distinto de 'tutor' cae en 'alumno': el default
+  // seguro es pedir el correo del tutor explícitamente.
+  const registrante = formData.get('registrante') === 'tutor' ? 'tutor' : 'alumno'
+
+  // Si registra el tutor, el correo de la cuenta ES el suyo y no se pide aparte.
+  // Si registra el alumno (o entra por Google, donde el correo puede ser del
+  // menor), se pide explícitamente.
+  const parentEmail =
+    registrante === 'tutor'
+      ? (cuentaEmail ?? '').trim().toLowerCase()
+      : ((formData.get('parent_email') as string | null) ?? '').trim().toLowerCase()
 
   if (!tosAccepted) {
     return {
@@ -84,12 +99,32 @@ export function parseConsent(formData: FormData, ip: string | null): ConsentResu
 
   const esMenor = edad < 18
 
+  // Un menor no puede ser titular de su propia cuenta. El único camino válido
+  // es que registre el padre, madre o tutor.
+  //
+  // Esta comprobación va ANTES de crear la cuenta: `parseConsent` corre antes
+  // del signUp en registro/actions.ts, así que devolver error aquí significa
+  // que no queda ninguna fila huérfana en auth.users.
+  if (esMenor && registrante === 'alumno') {
+    return {
+      ok: false,
+      error:
+        'Marcaste que eres el alumno y tienes 18 años o más, pero la fecha de nacimiento indica que eres menor de edad. El registro lo debe hacer tu padre, madre o tutor.',
+    }
+  }
+
   if (esMenor) {
     if (!parentName) {
       return { ok: false, error: 'Escribe el nombre del padre, madre o tutor.' }
     }
     if (!parentEmail || !parentEmail.includes('@')) {
-      return { ok: false, error: 'Escribe un correo válido del padre, madre o tutor.' }
+      return {
+        ok: false,
+        error:
+          registrante === 'tutor'
+            ? 'Escribe un correo válido para tu cuenta.'
+            : 'Escribe un correo válido del padre, madre o tutor.',
+      }
     }
     if (!parentalDeclared) {
       return {
@@ -111,6 +146,7 @@ export function parseConsent(formData: FormData, ip: string | null): ConsentResu
   return {
     ok: true,
     esMenor,
+    registrante,
     token,
     parentEmail: esMenor ? parentEmail : null,
     fields: {

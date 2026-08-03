@@ -51,7 +51,7 @@ export async function registroAction(
     headersList.get('x-real-ip') ||
     null
 
-  const consent = parseConsent(formData, clientIp)
+  const consent = parseConsent(formData, clientIp, email)
   if (!consent.ok) {
     return { error: consent.error }
   }
@@ -136,7 +136,17 @@ export async function registroAction(
       return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
     }
 
-    if (consent.esMenor && consent.token && consent.parentEmail) {
+    // Solo cuando el tutor es OTRA persona. Si registró él mismo, su correo es
+    // el de la cuenta y ya va a recibir el de confirmación: mandarle un segundo
+    // al mismo buzón es ruido, y la pantalla acabaría hablándole como si fuera
+    // el menor. En ese caso el token igual se emite, y el callback lo lleva
+    // directo a la pantalla de autorización tras confirmar.
+    if (
+      consent.registrante === 'alumno' &&
+      consent.esMenor &&
+      consent.token &&
+      consent.parentEmail
+    ) {
       await sendParentalConsentEmail({
         to: consent.parentEmail,
         parentName: consent.fields.parent_name ?? '',
@@ -145,7 +155,11 @@ export async function registroAction(
       })
     }
 
-    return { emailSent: true, email, parentEmail: consent.parentEmail }
+    return {
+      emailSent: true,
+      email,
+      parentEmail: consent.registrante === 'alumno' ? consent.parentEmail : null,
+    }
   }
 
   // Use service role to guarantee the update completes before redirect
@@ -186,7 +200,12 @@ export async function registroAction(
     return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
   }
 
-  if (consent.esMenor && consent.token && consent.parentEmail) {
+  if (
+    consent.registrante === 'alumno' &&
+    consent.esMenor &&
+    consent.token &&
+    consent.parentEmail
+  ) {
     await sendParentalConsentEmail({
       to: consent.parentEmail,
       parentName: consent.fields.parent_name ?? '',
@@ -230,5 +249,9 @@ export async function registroAction(
   }
 
   // No pending plan — mostrar pantalla de verificación de email
-  return { emailSent: true, email, parentEmail: consent.parentEmail }
+  return {
+    emailSent: true,
+    email,
+    parentEmail: consent.registrante === 'alumno' ? consent.parentEmail : null,
+  }
 }

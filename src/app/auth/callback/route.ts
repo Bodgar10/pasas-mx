@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
       if (user) {
         const { data: profile } = await supabase
           .from('users')
-          .select('role, onboarding_done, full_name, education_level, grade, pending_checkout')
+          .select('role, onboarding_done, full_name, education_level, grade, pending_checkout, parent_email, parental_consent_status, parental_consent_token')
           .eq('id', user.id)
           .single()
 
@@ -73,6 +73,27 @@ export async function GET(request: NextRequest) {
           await supabase.auth.updateUser({
             data: { onboarding_done: true },
           })
+        }
+
+        // Menor cuyo tutor es el titular de la cuenta: acaba de confirmar su
+        // correo, así que lo llevamos directo a autorizar en vez de dejarlo
+        // en una pantalla de espera por un correo que no existe.
+        //
+        // La igualdad parent_email === email es la que distingue los dos
+        // caminos. En modo alumno el tutor es otra persona con otro buzón, no
+        // coincide, y este bloque NO dispara: ese flujo sigue siendo el del
+        // enlace por correo. Es importante que así sea — si disparara, el
+        // propio menor acabaría en la pantalla de autorización y podría
+        // autorizarse a sí mismo.
+        if (
+          profile?.parental_consent_status === 'pending' &&
+          profile.parental_consent_token &&
+          profile.parent_email &&
+          profile.parent_email === user.email
+        ) {
+          return NextResponse.redirect(
+            `${origin}/autorizar-menor/${profile.parental_consent_token}`
+          )
         }
 
         // Si hay pending_checkout, crear sesión de Stripe y redirigir

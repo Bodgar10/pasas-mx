@@ -63,12 +63,26 @@ export default function RegistroPage() {
   const [pendingPlan, setPendingPlan] = useState('')
   const [pendingDuration, setPendingDuration] = useState('')
   const [utmData, setUtmData] = useState('')
+  // Default 'tutor': quien entra a /registro por URL directa, sin pasar por el
+  // onboarding, cae en el caso más común y más protector. La edad real la
+  // decide `birthdate` en el servidor, no este valor.
+  const [registrante, setRegistrante] = useState<'tutor' | 'alumno'>('tutor')
 
   useEffect(() => {
-    setOnboardingData(sessionStorage.getItem('pasas_onboarding') ?? '')
+    const raw = sessionStorage.getItem('pasas_onboarding') ?? ''
+    setOnboardingData(raw)
     setPendingPlan(sessionStorage.getItem('pasas_pending_plan') ?? '')
     setPendingDuration(sessionStorage.getItem('pasas_pending_duration') ?? '')
     setUtmData(sessionStorage.getItem('pasas_utm') ?? '')
+
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw)
+        if (parsed?.registrante === 'alumno') setRegistrante('alumno')
+      } catch {
+        /* onboarding_data malformado — se queda el default 'tutor' */
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -248,7 +262,9 @@ export default function RegistroPage() {
           <span className="text-white">.mx</span>
         </h1>
         <p className="mt-1 text-sm" style={{ color: '#6B7280' }}>
-          Aprende con lo que ya te gusta
+          {registrante === 'tutor'
+            ? 'Aprende con lo que ya le gusta'
+            : 'Aprende con lo que ya te gusta'}
         </p>
       </div>
 
@@ -277,17 +293,21 @@ export default function RegistroPage() {
             className="block text-sm font-semibold"
             style={{ color: '#9CA3AF' }}
           >
-            ¿Cómo te llamas?
+            {registrante === 'tutor' ? '¿Cómo se llama el alumno?' : '¿Cómo te llamas?'}
           </label>
           <input
             id="full_name"
             name="full_name"
             type="text"
-            autoComplete="name"
+            autoComplete={registrante === 'tutor' ? 'off' : 'name'}
             required
             className={inputClass}
             style={{ ...inputStyle, minHeight: '52px' }}
-            placeholder="Tu nombre o apodo (el estudiante)"
+            placeholder={
+              registrante === 'tutor'
+                ? 'Nombre o apodo del estudiante'
+                : 'Tu nombre o apodo'
+            }
           />
         </div>
 
@@ -297,7 +317,9 @@ export default function RegistroPage() {
             className="block text-sm font-semibold"
             style={{ color: '#9CA3AF' }}
           >
-            Correo electrónico
+            {registrante === 'tutor'
+              ? 'Tu correo (padre, madre o tutor)'
+              : 'Correo electrónico'}
           </label>
           <input
             id="email"
@@ -309,6 +331,11 @@ export default function RegistroPage() {
             style={{ ...inputStyle, minHeight: '52px' }}
             placeholder="tu@correo.com"
           />
+          {registrante === 'tutor' && (
+            <p className="text-xs" style={{ color: '#6B7280' }}>
+              Aquí llegarán los avisos de la cuenta y el progreso del alumno.
+            </p>
+          )}
         </div>
 
         <div className="space-y-1">
@@ -340,14 +367,14 @@ export default function RegistroPage() {
           className="rounded-xl p-4 space-y-3"
           style={{ background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)' }}
         >
-          <ConsentimientoLegal />
+          <ConsentimientoLegal registrante={registrante} />
 
           {/* Disclaimer mayoría de edad */}
           <div
             className="rounded-lg px-3 py-2 text-xs"
             style={{ background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.2)', color: '#fbbf24' }}
           >
-            ⚠️ Al completar este registro, el adulto responsable declara que tiene 18 años o más, o que cuenta con autorización del padre, madre o tutor del estudiante para suscribir este servicio y proporcionar los datos personales indicados. El adulto responsable asume plena responsabilidad por el uso de la plataforma por parte del menor.
+            ⚠️ Si el alumno es menor de edad, el registro lo debe realizar su padre, madre o tutor. Al completar este registro, el adulto responsable declara que tiene 18 años o más y asume plena responsabilidad por el uso de la plataforma por parte del menor.
           </div>
         </div>
 

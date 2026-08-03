@@ -19,7 +19,19 @@ import { LEGAL_VERSION, calcularEdad } from '@/lib/legal'
  *   marketing_consent      'on' | ausente
  */
 
-export default function ConsentimientoLegal() {
+export default function ConsentimientoLegal({
+  registrante = 'alumno',
+}: {
+  /**
+   * Quién llena el formulario.
+   * 'tutor'  → el correo de la cuenta es el del tutor; no se pide aparte.
+   * 'alumno' → se pide el correo del tutor explícitamente. Es el default
+   *            porque es el caso que necesita más datos, y /legal (la red para
+   *            Google OAuth) siempre cae aquí: ahí el correo lo pone Google y
+   *            puede ser del menor.
+   */
+  registrante?: 'tutor' | 'alumno'
+}) {
   const [birthdate, setBirthdate] = useState('')
   const [tosAccepted, setTosAccepted] = useState(false)
   const [parentalDeclared, setParentalDeclared] = useState(false)
@@ -35,6 +47,8 @@ export default function ConsentimientoLegal() {
 
   return (
     <div className="space-y-5">
+      <input type="hidden" name="registrante" value={registrante} />
+
       {/* ── Fecha de nacimiento (age gate) ── */}
       <div>
         <label
@@ -63,14 +77,30 @@ export default function ConsentimientoLegal() {
         )}
         {esMenor && !fechaInvalida && (
           <p className="mt-2 text-sm" style={{ color: '#a78bfa' }}>
-            Como el alumno es menor de edad, necesitamos los datos de su padre,
-            madre o tutor.
+            {registrante === 'tutor'
+              ? 'Como el alumno es menor de edad, necesitamos tus datos como padre, madre o tutor.'
+              : 'Como el alumno es menor de edad, necesitamos los datos de su padre, madre o tutor.'}
           </p>
         )}
       </div>
 
-      {/* ── Datos del tutor (solo si es menor) ── */}
-      {esMenor && !fechaInvalida && (
+      {/* ── Menor intentando registrarse solo: camino inválido ── */}
+      {esMenor && !fechaInvalida && registrante === 'alumno' && (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5">
+          <p className="mb-2 text-sm font-bold" style={{ color: '#fbbf24' }}>
+            El registro lo debe hacer tu padre, madre o tutor
+          </p>
+          <p className="text-sm" style={{ color: '#c4b5fd' }}>
+            Marcaste que tienes 18 años o más, pero la fecha indica que eres
+            menor de edad. Pídele a tu padre, madre o tutor que haga el registro
+            desde el inicio: la cuenta queda a su nombre y tú la usas para
+            estudiar.
+          </p>
+        </div>
+      )}
+
+      {/* ── Datos del tutor (solo si es menor y registra el tutor) ── */}
+      {esMenor && !fechaInvalida && registrante === 'tutor' && (
         <div className="space-y-5 rounded-xl border border-white/10 bg-white/5 p-5">
           <div>
             <label
@@ -78,7 +108,9 @@ export default function ConsentimientoLegal() {
               className="mb-2 block text-sm font-medium"
               style={{ color: '#a78bfa' }}
             >
-              Nombre completo del padre, madre o tutor
+              {registrante === 'tutor'
+                ? 'Tu nombre completo (padre, madre o tutor)'
+                : 'Nombre completo del padre, madre o tutor'}
             </label>
             <input
               id="parent_name"
@@ -88,27 +120,6 @@ export default function ConsentimientoLegal() {
               autoComplete="name"
               className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-[#7c3aed]"
             />
-          </div>
-
-          <div>
-            <label
-              htmlFor="parent_email"
-              className="mb-2 block text-sm font-medium"
-              style={{ color: '#a78bfa' }}
-            >
-              Correo del padre, madre o tutor
-            </label>
-            <input
-              id="parent_email"
-              name="parent_email"
-              type="email"
-              required
-              autoComplete="email"
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-[#7c3aed]"
-            />
-            <p className="mt-2 text-xs" style={{ color: '#a78bfa' }}>
-              Le enviaremos un correo para que autorice la cuenta.
-            </p>
           </div>
 
           {/* Leyenda confirmada por el despacho. NO reescribir este texto. */}
@@ -124,6 +135,7 @@ export default function ConsentimientoLegal() {
             <span className="text-sm" style={{ color: '#a78bfa' }}>
               Bajo protesta de decir verdad, manifiesto que los datos asentados
               son verdaderos y que ejerzo la patria potestad o tutela del menor.
+              {registrante === 'tutor' && ' Usaré este correo para recibir avisos sobre la cuenta.'}
             </span>
           </label>
         </div>

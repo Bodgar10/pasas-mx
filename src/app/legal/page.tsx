@@ -40,7 +40,8 @@ export default async function LegalPage({
           <p className="mt-4 text-sm leading-relaxed text-gray-300">
             Le enviamos un correo a{' '}
             <strong className="text-white">{profile.parent_email}</strong> para
-            que autorice tu cuenta. En cuanto lo haga, puedes entrar a estudiar.
+            que autorice tu cuenta. Tiene que abrirlo desde su propio dispositivo
+            y dar clic en el enlace. En cuanto lo haga, puedes entrar a estudiar.
           </p>
           <div className="mt-6 rounded-xl border border-amber-500/20 bg-amber-500/5 p-5 text-sm text-gray-300">
             <p className="mb-2 font-medium text-white">¿No le llegó?</p>
