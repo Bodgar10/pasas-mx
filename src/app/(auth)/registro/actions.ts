@@ -4,14 +4,13 @@ import { headers } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { parseConsent } from '@/lib/legal'
-import { sendParentalConsentEmail } from '@/lib/email/templates/parental-consent'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
 
 export type RegistroState =
   | { error: string }
   | { stripeUrl: string }
-  | { emailSent: true; email: string; parentEmail?: string | null }
+  | { emailSent: true; email: string }
   | null
 
 const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
@@ -136,30 +135,7 @@ export async function registroAction(
       return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
     }
 
-    // Solo cuando el tutor es OTRA persona. Si registró él mismo, su correo es
-    // el de la cuenta y ya va a recibir el de confirmación: mandarle un segundo
-    // al mismo buzón es ruido, y la pantalla acabaría hablándole como si fuera
-    // el menor. En ese caso el token igual se emite, y el callback lo lleva
-    // directo a la pantalla de autorización tras confirmar.
-    if (
-      consent.registrante === 'alumno' &&
-      consent.esMenor &&
-      consent.token &&
-      consent.parentEmail
-    ) {
-      await sendParentalConsentEmail({
-        to: consent.parentEmail,
-        parentName: consent.fields.parent_name ?? '',
-        studentName: fullName,
-        token: consent.token,
-      })
-    }
-
-    return {
-      emailSent: true,
-      email,
-      parentEmail: consent.registrante === 'alumno' ? consent.parentEmail : null,
-    }
+    return { emailSent: true, email }
   }
 
   // Use service role to guarantee the update completes before redirect
@@ -200,20 +176,6 @@ export async function registroAction(
     return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
   }
 
-  if (
-    consent.registrante === 'alumno' &&
-    consent.esMenor &&
-    consent.token &&
-    consent.parentEmail
-  ) {
-    await sendParentalConsentEmail({
-      to: consent.parentEmail,
-      parentName: consent.fields.parent_name ?? '',
-      studentName: fullName,
-      token: consent.token,
-    })
-  }
-
   // Update JWT metadata so middleware reads onboarding_done: true immediately
   await supabase.auth.updateUser({
     data: { onboarding_done: true },
@@ -249,9 +211,5 @@ export async function registroAction(
   }
 
   // No pending plan — mostrar pantalla de verificación de email
-  return {
-    emailSent: true,
-    email,
-    parentEmail: consent.registrante === 'alumno' ? consent.parentEmail : null,
-  }
+  return { emailSent: true, email }
 }
