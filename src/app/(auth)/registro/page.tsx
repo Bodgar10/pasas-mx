@@ -105,8 +105,33 @@ export default function RegistroPage() {
         >
           {state.email}
         </p>
+        {state.parentEmail && (
+          <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 text-left">
+            <p className="mb-2 text-sm font-bold" style={{ color: '#fbbf24' }}>
+              Son dos correos, y hacen falta los dos
+            </p>
+            <ol className="space-y-2 text-sm" style={{ color: '#c4b5fd' }}>
+              <li>
+                <strong className="text-white">1.</strong> A ti, para confirmar tu
+                cuenta.
+              </li>
+              <li>
+                <strong className="text-white">2.</strong> A{' '}
+                <strong className="text-white">{state.parentEmail}</strong>, para que tu
+                padre, madre o tutor autorice la cuenta. Es obligatorio por ser menor de
+                edad.
+              </li>
+            </ol>
+            <p className="mt-3 text-xs" style={{ color: '#a78bfa' }}>
+              Puedes confirmar el tuyo ahora, pero no podrás entrar a estudiar hasta que
+              tu tutor autorice. Si no le llega, revisa su carpeta de correo no deseado.
+            </p>
+          </div>
+        )}
         <p style={{ color: '#6B7280', fontSize: 13, lineHeight: 1.6 }}>
-          Haz clic en el link del correo para activar tu cuenta. Revisa también tu carpeta de spam si no lo ves en unos minutos.
+          {state.parentEmail
+            ? 'Haz clic en el link de tu correo para confirmar tu cuenta. Revisa también tu carpeta de spam si no lo ves en unos minutos.'
+            : 'Haz clic en el link del correo para activar tu cuenta. Revisa también tu carpeta de spam si no lo ves en unos minutos.'}
         </p>
         <div
           className="rounded-xl px-4 py-3 text-xs"

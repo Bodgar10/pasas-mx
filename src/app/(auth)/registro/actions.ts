@@ -8,7 +8,11 @@ import { sendParentalConsentEmail } from '@/lib/email/templates/parental-consent
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
 
-export type RegistroState = { error: string } | { stripeUrl: string } | { emailSent: true; email: string } | null
+export type RegistroState =
+  | { error: string }
+  | { stripeUrl: string }
+  | { emailSent: true; email: string; parentEmail?: string | null }
+  | null
 
 const GRADE_MAP: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
 const LEVEL_MAP: Record<string, string> = {
@@ -141,7 +145,7 @@ export async function registroAction(
       })
     }
 
-    return { emailSent: true, email }
+    return { emailSent: true, email, parentEmail: consent.parentEmail }
   }
 
   // Use service role to guarantee the update completes before redirect
@@ -226,5 +230,5 @@ export async function registroAction(
   }
 
   // No pending plan — mostrar pantalla de verificación de email
-  return { emailSent: true, email }
+  return { emailSent: true, email, parentEmail: consent.parentEmail }
 }

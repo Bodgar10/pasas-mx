@@ -53,6 +53,7 @@ export default function ConsentimientoLegal() {
           max={hoyISO}
           min={minISO}
           onChange={(e) => setBirthdate(e.target.value)}
+          style={{ colorScheme: 'dark' }}
           className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-[#7c3aed]"
         />
         {fechaInvalida && (
