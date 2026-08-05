@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
+import Logo from '@/components/global/Logo'
 
 function GoogleIcon() {
   return (
@@ -226,6 +227,14 @@ export default function RegistroPage() {
     >
       {/* Brand */}
       <div className="text-center">
+        <div className="mb-3 flex justify-center">
+          <div
+            className="flex h-14 w-14 items-center justify-center rounded-2xl"
+            style={{ backgroundColor: '#7c3aed' }}
+          >
+            <Logo size={34} className="text-white" />
+          </div>
+        </div>
         <h1
           className="text-2xl font-black tracking-widest uppercase"
           style={{ fontFamily: 'var(--font-orbitron)' }}

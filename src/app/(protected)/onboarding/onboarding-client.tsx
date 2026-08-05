@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import Logo from '@/components/global/Logo'
 
 type Step = 1 | 2 | 3 | 4
 type Registrante = 'tutor' | 'alumno'
@@ -188,6 +189,9 @@ export default function OnboardingClient({ themes }: Props) {
       <div style={{ width: '100%', maxWidth: 390 }}>
         {/* Brand */}
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10, color: '#7c3aed' }}>
+            <Logo size={40} />
+          </div>
           <h1
             style={{
               fontFamily: 'var(--font-orbitron)',

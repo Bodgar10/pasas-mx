@@ -29,8 +29,8 @@ const MODEL = 'claude-sonnet-4-6'
 const MAX_TOKENS = 8000
 const EXERCISES = 3
 
-/** Materias de matematicas. Ninguna otra recibe bloques solve: en historia
- *  o espanol la respuesta no es un numero. */
+/** Materias que reciben bloques solve. Ninguna otra: en historia o espanol
+ *  la respuesta no es un numero. */
 const MATH_SLUGS = [
   'matematicas-sec-1',
   'matematicas-sec-2',
@@ -43,6 +43,20 @@ const MATH_SLUGS = [
   'calculo-integral',
   'probabilidad-estadistica',
 ]
+
+/** Ciencias: mismo bloque, pero la pista 1 SIEMPRE es la formula con sus
+ *  simbolos explicados. Memorizar formulas es la mitad del examen. */
+const SCIENCE_SLUGS = [
+  'fisica-sec',
+  'fisica-1',
+  'fisica-2',
+  'quimica-sec',
+  'quimica-1',
+  'quimica-2',
+]
+
+const SOLVE_SLUGS = [...MATH_SLUGS, ...SCIENCE_SLUGS]
+const isScience = (slug?: string) => SCIENCE_SLUGS.includes(slug ?? '')
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -89,6 +103,36 @@ function buildPrompt(topic: TopicRow): string {
   const ctx = topic.subjects
     ? gradeLabel(topic.subjects.education_level, topic.subjects.grades)
     : 'secundaria'
+
+  const scienceRules = isScience(topic.subjects?.slug)
+    ? `
+REGLAS EXTRA PARA CIENCIAS (fisica y quimica):
+En estas materias, memorizar la formula es la mitad del examen. Por eso la escalera
+de pistas tiene una estructura FIJA:
+- Pista 1: SIEMPRE el enunciado de la formula, con cada simbolo explicado.
+  Ejemplo: "La segunda ley de Newton es F = m x a, donde F es fuerza en newtons,
+  m es masa en kilogramos y a es aceleracion en m/s^2."
+  Esta pista NO menciona los numeros del ejercicio. Es la formula pura.
+- Pista 2: identifica que dato del enunciado corresponde a cada simbolo.
+  Ejemplo: "En este problema m = 4 kg y a = 3 m/s^2. Te falta encontrar F."
+- Pistas intermedias: si hay que despejar o convertir unidades, un paso por pista.
+- Ultima pista: la operacion completa con los numeros sustituidos.
+
+SI EL TEMA NO ADMITE EJERCICIOS NUMERICOS (nomenclatura organica, modelos atomicos,
+clasificacion de compuestos, historia de la ciencia), responde con un array VACIO: []
+Es preferible no generar nada a inventar ejercicios forzados.
+
+PROHIBIDO: ejercicios que necesiten un diagrama o figura para entenderse.
+- MAL: "en el circuito de la figura, cual es la resistencia total?"
+- MAL: "observa el diagrama de fuerzas y calcula..."
+- BIEN: "dos resistencias de 4 y 6 ohms estan en serie. Cual es la resistencia total?"
+El enunciado debe describir la situacion completa con palabras.
+
+UNIDADES: el resultado siempre lleva unidad (N, m/s, kg, mol, atm, grados C).
+Usala en el campo "unit". Cuida que las unidades del enunciado sean coherentes:
+si das masa en gramos y piden newtons, la conversion debe ser parte de las pistas.
+`
+    : ''
 
   return `Eres un profesor de matematicas mexicano que disena ejercicios de practica.
 
@@ -162,8 +206,10 @@ OTRAS REGLAS:
 7. Texto plano. Sin Markdown, sin LaTeX. Notacion con caracteres normales: x^2, raiz de 16, 3/4.
 8. Los 4 ejercicios deben ser distintos entre si, no variaciones del mismo numero.
 
+${scienceRules}
 FORMATO DE SALIDA:
 Responde UNICAMENTE con un array JSON de ${EXERCISES} objetos. Sin preambulo, sin backticks.
+Si el tema no admite ejercicios numericos, responde con un array vacio: []
 Cada objeto: { "q": "...", "answer": 20, "unit": "cm2", "tolerance": 0, "hints": ["...", "..."], "solution": ["...", "..."] }`
 }
 
@@ -221,10 +267,14 @@ function validate(list: Exercise[]): string | null {
     }
     if (e.solution.some((s) => !s?.trim())) return `Paso vacio en: ${e.q.slice(0, 40)}`
 
-    for (const h of e.hints) {
-      if (hintRevealsAnswer(h, e.answer)) {
-        return `Una pista revela el resultado (${e.answer}) en: ${e.q.slice(0, 40)}`
-      }
+    // Solo se revisa la ULTIMA pista. Las anteriores enuncian la formula e
+    // identifican datos, y en fisica los datos suelen ser numeros redondos
+    // (h = 10 m, g = 9.8) que coinciden con el resultado por casualidad.
+    // La operacion final vive en la ultima pista: ahi si importa.
+    const lastHint = e.hints[e.hints.length - 1]
+    if (hintRevealsAnswer(lastHint, e.answer)) {
+      console.log(`\n  [debug] answer=${e.answer} | ultima pista: "${lastHint}"`)
+      return `La ultima pista revela el resultado (${e.answer}) en: ${e.q.slice(0, 40)}`
     }
   }
   return null
@@ -242,7 +292,7 @@ async function fetchTopics(): Promise<TopicRow[]> {
   } else if (SUBJECT) {
     q = q.eq('subjects.slug', SUBJECT)
   } else {
-    q = q.in('subjects.slug', MATH_SLUGS)
+    q = q.in('subjects.slug', SOLVE_SLUGS)
     if (LEVEL) q = q.eq('subjects.education_level', LEVEL)
   }
 
@@ -346,6 +396,18 @@ async function main() {
         .join('\n')
 
       const exercises = parseResponse(text)
+
+      // El modelo devuelve [] cuando el tema no admite ejercicios numericos
+      // (nomenclatura, modelos atomicos). No es una falla: se salta.
+      if (Array.isArray(exercises) && exercises.length === 0) {
+        skipped++
+        console.log(`\r- SALTA  ${topic.name} (sin ejercicios numericos posibles)`)
+        // La llamada a la API ya se hizo, asi que la pausa de rate limit
+        // sigue siendo necesaria antes de la siguiente iteracion.
+        await new Promise((r) => setTimeout(r, 1200))
+        continue
+      }
+
       const problem = validate(exercises)
       if (problem) throw new Error(problem)
 

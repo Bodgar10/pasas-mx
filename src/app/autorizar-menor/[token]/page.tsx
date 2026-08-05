@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { autorizarMenor } from './actions'
+import Logo from '@/components/global/Logo'
 
 export const metadata: Metadata = {
   title: 'Autorizar cuenta | Pasas.mx',
@@ -10,7 +11,13 @@ export const metadata: Metadata = {
 function Marco({ children }: { children: React.ReactNode }) {
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white">
-      <div className="mx-auto max-w-md px-6 py-16">{children}</div>
+      <div className="mx-auto max-w-md px-6 py-16">
+        <div className="mb-6 flex items-center gap-2 text-purple-400">
+          <Logo size={26} />
+          <span className="text-sm font-bold tracking-widest">PASAS.MX</span>
+        </div>
+        {children}
+      </div>
     </main>
   )
 }

@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import { createClient } from '@/utils/supabase/server'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
+import Logo from '@/components/global/Logo'
 import { guardarConsentimiento } from './actions'
 
 export const metadata: Metadata = {
@@ -38,6 +39,10 @@ export default async function LegalPage({
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white">
       <div className="mx-auto max-w-md px-6 py-16">
+        <div className="mb-6 flex items-center gap-2 text-purple-400">
+          <Logo size={26} />
+          <span className="text-sm font-bold tracking-widest">PASAS.MX</span>
+        </div>
         <h1 className="text-2xl font-bold text-white">Antes de empezar</h1>
         <p className="mt-3 text-sm text-gray-400">
           Nos faltan un par de datos para poder abrirte la cuenta. Es rápido y

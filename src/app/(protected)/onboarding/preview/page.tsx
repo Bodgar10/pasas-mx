@@ -3,6 +3,7 @@
 import { Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
+import Logo from '@/components/global/Logo'
 
 const THEME_EXAMPLES: Record<string, string> = {
   Videojuegos: 'Las derivadas explicadas con mecánicas de Minecraft',
@@ -64,14 +65,14 @@ function PreviewContent() {
       <div style={{ width: '100%', maxWidth: 390 }}>
 
         {/* A) Header */}
-        <div style={{ textAlign: 'center', marginBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 20, color: '#a78bfa' }}>
+          <Logo size={22} />
           <p
             style={{
               fontFamily: 'var(--font-orbitron)',
               fontSize: 15,
               fontWeight: 700,
               letterSpacing: '0.2em',
-              color: '#a78bfa',
               margin: 0,
             }}
           >

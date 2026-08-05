@@ -9,6 +9,7 @@ import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
+import Logo from '@/components/global/Logo'
 import { createClient } from '@/utils/supabase/client'
 
 // ── A/B hero variants ──────────────────────────────────────────────
@@ -299,8 +300,11 @@ export default function LandingClient() {
         borderBottom: scrolled ? `1px solid ${COLORS.inputBorder}` : 'none',
         transition: 'background 0.3s ease, border 0.3s ease',
       }}>
-        <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 18, color: COLORS.text, letterSpacing: 2 }}>
-          PASAS.MX
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <Logo size={24} />
+          <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 18, color: COLORS.text, letterSpacing: 2 }}>
+            PASAS.MX
+          </span>
         </span>
         <div style={{ display: 'flex', gap: 8 }}>
           <Link
@@ -643,8 +647,11 @@ export default function LandingClient() {
       {/* ── Footer ── */}
       <footer style={{ padding: '32px 24px 40px', borderTop: `1px solid ${COLORS.inputBorder}` }}>
         <div style={{ maxWidth: 520, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
-          <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 14, color: COLORS.muted, letterSpacing: 2 }}>
-            PASAS.MX
+          <span style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 8, color: COLORS.muted }}>
+            <Logo size={28} />
+            <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 14, letterSpacing: 2 }}>
+              PASAS.MX
+            </span>
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8 }}>
             {[

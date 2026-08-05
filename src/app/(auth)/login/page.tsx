@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { loginAction, type LoginState } from './actions'
 import { createClient } from '@/utils/supabase/client'
 import { trackLogin } from '@/components/posthog-events'
+import Logo from '@/components/global/Logo'
 
 function GoogleIcon() {
   return (
@@ -57,12 +58,7 @@ export default function LoginPage() {
           className="w-14 h-14 rounded-2xl flex items-center justify-center"
           style={{ backgroundColor: '#7c3aed' }}
         >
-          <span
-            className="text-white text-2xl font-black"
-            style={{ fontFamily: 'var(--font-orbitron)' }}
-          >
-            P
-          </span>
+          <Logo size={34} className="text-white" />
         </div>
 
         <div className="text-center">

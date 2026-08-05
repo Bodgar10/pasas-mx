@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import Logo from '@/components/global/Logo'
 
 export const metadata: Metadata = {
   title: 'El registro lo debe hacer un adulto | Pasas.mx',
@@ -10,6 +11,10 @@ export default function RegistroBloqueadoPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white">
       <div className="mx-auto max-w-md px-6 py-16">
+        <div className="mb-6 flex items-center gap-2 text-purple-400">
+          <Logo size={26} />
+          <span className="text-sm font-bold tracking-widest">PASAS.MX</span>
+        </div>
         <h1 className="text-2xl font-bold">
           El registro lo debe hacer tu padre, madre o tutor
         </h1>

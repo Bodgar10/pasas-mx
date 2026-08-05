@@ -1,10 +1,49 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 // Número de WhatsApp de soporte — cambiar SOLO aquí
 const WA_NUMBER = '521XXXXXXXXXX'
 const WA_MESSAGE = 'Hola,%20tengo%20una%20pregunta%20sobre%20Pasas.mx'
 
+/**
+ * Rutas donde SÍ aparece el botón flotante.
+ *
+ * Solo el embudo de entrada: quien todavía no es usuario y puede tener dudas
+ * antes de decidirse. Una vez dentro de la plataforma estorba, y además ya hay
+ * soporte en el dashboard.
+ *
+ * El componente se monta en varios layouts a la vez —(public), (protected),
+ * (auth) y la landing—, así que la regla vive AQUÍ y no repartida entre ellos.
+ * Si algún día hay que agregar o quitar una pantalla, se toca esta lista y nada
+ * más.
+ *
+ * Los prefijos cubren sus subrutas: '/onboarding' incluye '/onboarding/preview'.
+ */
+const RUTAS_CON_WHATSAPP = [
+  '/',              // landing
+  '/onboarding',    // + /onboarding/preview
+  '/login',
+  '/registro',
+  '/planes',
+  '/personalizado', // embudo pre-pago: materia → diagnostico → preview-ia
+  '/ayuda',
+  '/como-cancelar',
+  '/bienvenida',          // decide activar el trial: máxima fricción del embudo
+  '/registro-bloqueado',  // callejón sin salida, y soporte@ solo recibe correo
+]
+
+function seMuestraEn(pathname: string): boolean {
+  return RUTAS_CON_WHATSAPP.some((ruta) =>
+    ruta === '/' ? pathname === '/' : pathname === ruta || pathname.startsWith(ruta + '/')
+  )
+}
+
 export default function WhatsAppButton({ onClick }: { onClick?: () => void } = {}) {
+  const pathname = usePathname()
+
+  if (!seMuestraEn(pathname)) return null
+
   return (
     <a
       href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
