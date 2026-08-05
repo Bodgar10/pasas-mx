@@ -483,15 +483,50 @@ export default function LandingClient() {
           <div style={{ display: 'flex', gap: 16, overflowX: 'auto', padding: '0 24px 16px', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}>
             {THEME_TABS.find(t => t.id === activeTab)?.screens.map((screen, i) => (
               <div key={i} style={{ flexShrink: 0, scrollSnapAlign: 'start', width: 320 }}>
-                <Image
-                  src={screen.src}
-                  alt={screen.caption}
-                  width={320}
-                  height={696}
-                  style={{ width: 320, height: 'auto', borderRadius: RADIUS.xxl, display: 'block', boxShadow: `0 8px 32px rgba(0,0,0,0.5)` }}
-                  loading="lazy"
-                />
-                <p style={{ textAlign: 'center', fontSize: 12, color: COLORS.muted, marginTop: 10, fontWeight: 600, lineHeight: 1.4 }}>
+                {/* Marco de teléfono.
+                    Las capturas tienen el mismo fondo #0a0a0f que la landing, así
+                    que sin marco se funden con la página y no se ve dónde empieza
+                    la pantalla. El borde las separa y de paso comunica que el
+                    producto es móvil. */}
+                <div
+                  style={{
+                    position: 'relative',
+                    padding: 8,
+                    borderRadius: 36,
+                    background: 'linear-gradient(160deg, #2a2140 0%, #15102a 100%)',
+                    border: `1px solid ${COLORS.primary}44`,
+                    boxShadow: `0 0 0 1px rgba(0,0,0,0.6), 0 18px 40px rgba(0,0,0,0.55), 0 0 60px ${COLORS.primary}18`,
+                  }}
+                >
+                  {/* Notch */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 14,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 86,
+                      height: 20,
+                      borderRadius: 999,
+                      background: '#000',
+                      zIndex: 2,
+                    }}
+                  />
+                  <Image
+                    src={screen.src}
+                    alt={screen.caption}
+                    width={320}
+                    height={696}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      borderRadius: 28,
+                      display: 'block',
+                    }}
+                    loading="lazy"
+                  />
+                </div>
+                <p style={{ textAlign: 'center', fontSize: 12, color: COLORS.muted, marginTop: 14, fontWeight: 600, lineHeight: 1.4 }}>
                   {screen.caption}
                 </p>
               </div>
