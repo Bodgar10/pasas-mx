@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 export const metadata: Metadata = {
   title: 'Ayuda y preguntas frecuentes | Pasas.mx',
@@ -21,7 +22,9 @@ const FAQS = [
       },
       {
         q: '¿Puedo cambiar de plan?',
-        a: 'Sí. Puedes cambiar entre plan Estándar y Personalizado, o entre ciclos de facturación, desde tu perfil en cualquier momento.',
+        a: FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN
+          ? 'Sí. Puedes cambiar entre plan Estándar y Personalizado, o entre ciclos de facturación, desde tu perfil en cualquier momento.'
+          : 'Sí. Puedes cambiar entre ciclos de facturación (mensual, semestral o anual) desde tu perfil en cualquier momento.',
       },
       {
         q: '¿Aceptan tarjetas de débito?',
@@ -66,10 +69,10 @@ const FAQS = [
         q: '¿Qué materias cubre Pasas?',
         a: 'Cubre las materias principales de secundaria en México: Matemáticas, Español, Historia, Geografía, Ciencias, Biología, Química y Física, entre otras.',
       },
-      {
+      ...(FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN ? [{
         q: '¿Cuál es la diferencia entre el plan Estándar y el Personalizado?',
         a: 'El plan Estándar cubre todas las materias del currículo oficial. El plan Personalizado agrega un diagnóstico inicial y genera una guía de estudio única, adaptada al nivel y estilo de aprendizaje de cada alumno.',
-      },
+      }] : []),
       {
         q: '¿Funciona para preparatoria también?',
         a: 'Por ahora el contenido está enfocado en secundaria. Próximamente ampliaremos a más niveles educativos.',

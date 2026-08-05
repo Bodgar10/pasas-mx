@@ -23,6 +23,7 @@ import {
   STRIPE_PRICES,
   CHECKOUT_CONFIG,
 } from '@/lib/payments/config'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 export async function POST(request: Request) {
   try {
@@ -40,6 +41,14 @@ export async function POST(request: Request) {
     const planPrices = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]
     if (!plan || !duration || !planPrices?.[duration]) {
       return NextResponse.json({ error: 'Invalid plan or duration' }, { status: 400 })
+    }
+
+    // El Personalizado está oculto de la venta. La UI ya no lo ofrece, pero
+    // el endpoint es público para cualquier usuario autenticado: sin este
+    // candado, un POST a mano abre un checkout de un producto que no vendemos.
+    // No afecta a suscripciones existentes — solo bloquea altas nuevas.
+    if (!FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN && plan === 'personalizado_v2') {
+      return NextResponse.json({ error: 'Plan no disponible' }, { status: 400 })
     }
 
     const priceId = planPrices[duration]

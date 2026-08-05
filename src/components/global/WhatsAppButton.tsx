@@ -26,7 +26,8 @@ const RUTAS_CON_WHATSAPP = [
   '/login',
   '/registro',
   '/planes',
-  '/personalizado', // embudo pre-pago: materia → diagnostico → preview-ia
+  // '/personalizado' se quitó al ocultar ese plan: la ruta ahora redirige
+  // a /planes, así que el botón solo alcanzaba a parpadear.
   '/ayuda',
   '/como-cancelar',
   '/bienvenida',          // decide activar el trial: máxima fricción del embudo

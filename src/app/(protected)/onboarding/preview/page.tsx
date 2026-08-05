@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import Logo from '@/components/global/Logo'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 type Stats = {
   materias: number
@@ -377,6 +378,8 @@ function PreviewContent() {
             </p>
           </div>
 
+          {FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN && (
+          <>
           <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '16px 0' }}>
             {esTutor ? '¿Le falla solo una materia?' : '¿Te falla solo una materia?'}
           </p>
@@ -403,6 +406,8 @@ function PreviewContent() {
               Una sola materia, adaptada exactamente a lo que {esTutor ? 'le' : 'te'} falla · Desde ${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}/mes
             </p>
           </div>
+          </>
+          )}
         </div>
 
         {/* E) Trust line */}

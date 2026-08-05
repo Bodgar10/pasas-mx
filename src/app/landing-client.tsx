@@ -8,6 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
 import Image from 'next/image'
@@ -149,9 +150,11 @@ const PLANS = [
     ],
     cta: 'Empezar gratis →',
     note: '7 días gratis · Requiere tarjeta · Cancela cuando quieras.',
-    highlight: false,
+    // Si el Personalizado está oculto, el Estándar es la única tarjeta:
+    // se destaca para que su CTA no quede como botón fantasma.
+    highlight: !FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN,
   },
-  {
+  ...(FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN ? [{
     name: 'Personalizado',
     price: `$${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}`,
     period: 'al mes',
@@ -168,7 +171,7 @@ const PLANS = [
     cta: 'Quiero el personalizado →',
     note: '7 días gratis · Requiere tarjeta · Cancela cuando quieras.',
     highlight: true,
-  },
+  }] : []),
 ]
 
 // ── Section wrapper with fade-in ───────────────────────────────────
@@ -544,10 +547,12 @@ export default function LandingClient() {
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>¿Cómo funciona exactamente?</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
-            Elige tu camino.
+            {FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN ? 'Elige tu camino.' : 'Así funciona.'}
           </h2>
           <p style={{ textAlign: 'center', fontSize: 15, color: '#c4b5fd', marginBottom: 48, lineHeight: 1.6, fontWeight: 600 }}>
-            Dos opciones según lo que necesitas.
+            {FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN
+              ? 'Dos opciones según lo que necesitas.'
+              : 'Cuatro pasos y ya estás dentro.'}
           </p>
 
           {/* Plan Estándar */}
@@ -578,7 +583,8 @@ export default function LandingClient() {
             </div>
           </div>
 
-          {/* Plan Personalizado */}
+          {/* Plan Personalizado — oculto mientras ENABLE_PERSONALIZED_PLAN sea false */}
+          {FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN && (
           <div style={{ background: COLORS.card, borderRadius: RADIUS.xxl, padding: '24px 20px', border: `1.5px solid ${COLORS.pink}44`, position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.pink}, ${COLORS.primary})` }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
@@ -605,6 +611,7 @@ export default function LandingClient() {
               ))}
             </div>
           </div>
+          )}
         </section>
       </FadeSection>
 

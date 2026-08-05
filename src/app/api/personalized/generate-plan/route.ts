@@ -3,6 +3,7 @@ export const maxDuration = 60
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 function getServiceClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -11,6 +12,17 @@ function getServiceClient() {
 }
 
 export async function POST(req: NextRequest) {
+  // Candado seco: se verificó en la base que no existe ninguna suscripción
+  // con plan 'ai_personalized' en ningún estatus, así que no hay cliente vivo
+  // cuya regeneración se rompa. El webhook de Stripe también invoca esta ruta,
+  // pero solo para ese plan — que ya no se puede comprar.
+  //
+  // ⚠️ Al reactivar el plan, arreglar antes: esta ruta usa service role, NO
+  // valida sesión y acepta cualquier userId del body. Hoy el flag la tapa.
+  if (!FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN) {
+    return NextResponse.json({ error: 'No disponible' }, { status: 404 })
+  }
+
   const { userId, subjectId, themeId, weakTopicIds, topicId } = await req.json()
 
   if (!userId || !subjectId || !themeId || !weakTopicIds?.length || !topicId) {

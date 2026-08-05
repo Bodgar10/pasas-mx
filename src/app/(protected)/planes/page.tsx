@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { trackCheckoutStarted } from '@/components/posthog-events'
 import { BillingCycleToggle, type BillingCycle } from '@/components/planes/BillingCycleToggle'
 import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 type PlanKey = keyof typeof PLANS
 
@@ -18,8 +19,12 @@ const CYCLE_TO_DURATION: Record<BillingCycle, string> = {
 function PlanesContent() {
   const searchParams = useSearchParams()
   const [deviceHadTrial, setDeviceHadTrial] = useState(false)
+  // Con el flag apagado, ?plan=personalizado se ignora: un enlace viejo
+  // o compartido no debe poder abrir un plan que no está a la venta.
   const [activePlan, setActivePlan] = useState<PlanKey>(
-    searchParams.get('plan') === 'personalizado' ? 'personalizado_v2' : 'estandar_v2'
+    FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN && searchParams.get('plan') === 'personalizado'
+      ? 'personalizado_v2'
+      : 'estandar_v2'
   )
   const [cycle, setCycle] = useState<BillingCycle>('semestral')
   const [loadingCheckout, setLoadingCheckout] = useState(false)
@@ -69,7 +74,8 @@ function PlanesContent() {
     }
   }
 
-  const isPersonalizado = searchParams.get('plan') === 'personalizado'
+  const isPersonalizado =
+    FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN && searchParams.get('plan') === 'personalizado'
 
   return (
     <div style={{ minHeight: '100vh', color: '#e2d9f3', fontFamily: 'var(--font-nunito)' }}>

@@ -1,5 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { NextResponse } from 'next/server'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 const ipRateLimit = new Map<string, { count: number; resetAt: number }>()
 
@@ -46,6 +47,14 @@ REGLAS:
 - NO uses caracteres especiales`
 
 export async function POST(request: Request) {
+  // Este endpoint no exige sesión: solo hay rate limit por IP (10/hora, en
+  // memoria del proceso, así que se reinicia en cada deploy). Con el plan
+  // oculto no debe gastar un solo token de Anthropic. Va ANTES del rate
+  // limit para no consumir cuota de una IP legítima.
+  if (!FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN) {
+    return NextResponse.json({ error: 'No disponible' }, { status: 404 })
+  }
+
   console.log('API Key exists:', !!process.env.ANTHROPIC_API_KEY)
 
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
