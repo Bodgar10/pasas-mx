@@ -6,6 +6,7 @@ import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { parseConsent } from '@/lib/legal'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 export type RegistroState =
   | { error: string }
@@ -182,7 +183,14 @@ export async function registroAction(
   })
 
   // If user had a pending plan, create Stripe session and return the URL
-  if (pendingPlan && pendingDuration) {
+  // Este camino crea la sesión de Stripe DIRECTO, sin pasar por
+  // /api/checkout/create-session, así que el candado de ese endpoint no
+  // lo cubre. El pendingPlan viene de sessionStorage: un navegador con
+  // un valor viejo todavía traería 'personalizado_v2'.
+  const planOculto =
+    !FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN && pendingPlan === 'personalizado_v2'
+
+  if (pendingPlan && pendingDuration && !planOculto) {
     const priceId = (STRIPE_PRICES as Record<string, Record<string, string>>)[pendingPlan]?.[pendingDuration]
     if (priceId) {
       try {

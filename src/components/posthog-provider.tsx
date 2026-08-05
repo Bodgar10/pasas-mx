@@ -5,8 +5,31 @@ import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react'
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import { COOKIE_CONSENT_EVENT, permiteAnalytics } from '@/lib/consent'
 
-if (typeof window !== 'undefined') {
+/**
+ * 🔴 El init NO puede volver al ámbito del módulo.
+ *
+ * Antes corría con solo importar el archivo, antes de que montara nada,
+ * así que era imposible condicionarlo al consentimiento. Ahora vive en
+ * un efecto que solo corre si la persona aceptó "Análisis de uso".
+ *
+ * Esto importa más aquí que en GA4 o Clarity: PostHog GRABA SESIONES,
+ * y una parte de los usuarios son menores de edad.
+ *
+ * Consecuencia asumida: quien rechaza no se mide. Los 18 eventos y los
+ * funnels dejan de cubrir el 100% del tráfico.
+ *
+ * `iniciado` es de MÓDULO, no de instancia: así Strict Mode en desarrollo
+ * no dispara dos init. El costo es que quien acepta y luego revoca sigue
+ * capturado hasta que recargue la página — misma limitación que GA4 y
+ * Clarity. Revocar surte efecto en la siguiente carga.
+ */
+let iniciado = false
+
+function iniciarPostHog() {
+  if (iniciado || typeof window === 'undefined') return
+  if (!permiteAnalytics()) return
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
     person_profiles: 'identified_only',
@@ -17,6 +40,7 @@ if (typeof window !== 'undefined') {
       maskInputOptions: { password: true },
     },
   })
+  iniciado = true
 }
 
 function PostHogPageView() {
@@ -25,7 +49,7 @@ function PostHogPageView() {
   const ph = usePostHog()
 
   useEffect(() => {
-    if (pathname && ph) {
+    if (iniciado && pathname && ph) {
       let url = window.origin + pathname
       if (searchParams?.toString()) url = url + '?' + searchParams.toString()
       ph.capture('$pageview', { $current_url: url })
@@ -33,6 +57,12 @@ function PostHogPageView() {
   }, [pathname, searchParams, ph])
 
   useEffect(() => {
+    // Sin consentimiento no se ejecuta nada de esto. La guarda va ANTES
+    // de createClient(), no dentro del .then(): más abajo ya se habrían
+    // disparado getUser() y las dos consultas a `users` y `subscriptions`
+    // de alguien que dijo que no.
+    if (!iniciado) return
+
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (user && ph) {
@@ -71,6 +101,13 @@ function PostHogPageView() {
 }
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    iniciarPostHog()
+    const alCambiar = () => iniciarPostHog()
+    window.addEventListener(COOKIE_CONSENT_EVENT, alCambiar)
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, alCambiar)
+  }, [])
+
   return (
     <PHProvider client={posthog}>
       <PostHogPageView />
