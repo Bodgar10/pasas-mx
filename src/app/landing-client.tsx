@@ -10,6 +10,7 @@ import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
+import Image from 'next/image'
 import DemoPistas from '@/components/landing/DemoPistas'
 import DemoHorda from '@/components/landing/DemoHorda'
 import { createClient } from '@/utils/supabase/client'
@@ -83,49 +84,36 @@ const THEMES = [
   { emoji: '⚽', name: 'Fútbol', color: COLORS.success, desc: 'Estadística con la Liga MX. Geografía con el Mundial. Inglés con Premier League. Para los que sí ven los 90 minutos.' },
 ]
 
+/**
+ * Capturas REALES, una por temática.
+ *
+ * Antes había cuatro pestañas mostrando las mismas cuatro imágenes con distinto
+ * pie de foto. Quien picaba dos se daba cuenta.
+ *
+ * Fútbol y Anime vuelven cuando existan sus capturas. Prefiero dos pestañas
+ * verdaderas que cuatro repetidas.
+ */
 const THEME_TABS = [
-  {
-    id: 'kpop',
-    emoji: '🎤',
-    label: 'K-pop',
-    screens: [
-      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
-      { src: '/screenshots/screen-leccion.png', caption: 'Matemáticas explicadas con ECLIPSE' },
-      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
-      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
-    ],
-  },
   {
     id: 'gaming',
     emoji: '🎮',
     label: 'Videojuegos',
     screens: [
-      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
-      { src: '/screenshots/screen-leccion.png', caption: 'Matemáticas explicadas con Minecraft' },
-      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
-      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
+      { src: '/screenshots/gaming-dashboard.png',   caption: 'Tu XP, tu racha y tus materias' },
+      { src: '/screenshots/gaming-interactivo.png', caption: 'Álgebra explicada con Genshin Impact' },
+      { src: '/screenshots/gaming-pistas.png',      caption: 'Papel y lápiz: fallas y salen las pistas' },
+      { src: '/screenshots/gaming-horda.png',       caption: 'Modo Horda: 6 oleadas de preguntas' },
     ],
   },
   {
-    id: 'futbol',
-    emoji: '⚽',
-    label: 'Fútbol',
+    id: 'kpop',
+    emoji: '🎤',
+    label: 'K-pop',
     screens: [
-      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
-      { src: '/screenshots/screen-leccion.png', caption: 'Estadística con la Liga MX' },
-      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
-      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
-    ],
-  },
-  {
-    id: 'anime',
-    emoji: '⚔️',
-    label: 'Anime',
-    screens: [
-      { src: '/screenshots/screen-dashboard.png', caption: 'Tu dashboard con XP y racha' },
-      { src: '/screenshots/screen-leccion.png', caption: 'Filosofía explicada con Death Note' },
-      { src: '/screenshots/screen-resumen.png', caption: 'Tema dominado ✓' },
-      { src: '/screenshots/screen-index.png', caption: 'Tu temario completo' },
+      { src: '/screenshots/kpop-dashboard.png',   caption: 'Tu XP, tu racha y tus materias' },
+      { src: '/screenshots/kpop-interactivo.png', caption: 'Las revoluciones explicadas con SEVENTEEN' },
+      { src: '/screenshots/kpop-pistas.png',      caption: 'Clasifica: arrastra y comprueba' },
+      { src: '/screenshots/kpop-horda.png',       caption: 'Modo Horda: 6 oleadas de preguntas' },
     ],
   },
 ]
@@ -207,7 +195,7 @@ export default function LandingClient() {
   const searchParams = useSearchParams()
   const [variant, setVariant] = useState<VariantKey>('D')
   const [scrolled, setScrolled] = useState(false)
-  const [activeTab, setActiveTab] = useState('kpop')
+  const [activeTab, setActiveTab] = useState('gaming')
 
   function track(event: string, props?: Record<string, any>) {
     if (typeof window !== 'undefined' && (window as any).posthog) {
@@ -462,7 +450,7 @@ export default function LandingClient() {
             Así se ve por dentro.
           </h2>
           <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 32, lineHeight: 1.6, fontWeight: 600, padding: '0 24px' }}>
-            Elige tu temática y ve cómo se vería tu experiencia.
+            Capturas reales de la plataforma. Dos temáticas, el mismo temario.
           </p>
 
           {/* Tabs */}
@@ -495,10 +483,12 @@ export default function LandingClient() {
           <div style={{ display: 'flex', gap: 16, overflowX: 'auto', padding: '0 24px 16px', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}>
             {THEME_TABS.find(t => t.id === activeTab)?.screens.map((screen, i) => (
               <div key={i} style={{ flexShrink: 0, scrollSnapAlign: 'start', width: 320 }}>
-                <img
+                <Image
                   src={screen.src}
                   alt={screen.caption}
-                  style={{ width: 320, borderRadius: RADIUS.xxl, display: 'block', boxShadow: `0 8px 32px rgba(0,0,0,0.5)` }}
+                  width={320}
+                  height={696}
+                  style={{ width: 320, height: 'auto', borderRadius: RADIUS.xxl, display: 'block', boxShadow: `0 8px 32px rgba(0,0,0,0.5)` }}
                   loading="lazy"
                 />
                 <p style={{ textAlign: 'center', fontSize: 12, color: COLORS.muted, marginTop: 10, fontWeight: 600, lineHeight: 1.4 }}>
