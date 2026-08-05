@@ -1106,11 +1106,21 @@ export function AudioPlayer({ url, duration }: { url: string; duration?: number 
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
-          background: playing ? '#efc562' : '#e0b64a', color: '#1a1035',
-          border: 'none', cursor: 'pointer', fontSize: 16, transition: 'background 0.2s',
+          background: playing ? '#8b5cf6' : '#7c3aed', color: '#ffffff',
+          border: 'none', cursor: 'pointer', transition: 'background 0.2s',
         }}
       >
-        {playing ? '⏸' : '▶'}
+        {/* SVG y no emoji: iOS pinta ▶ de azul por su cuenta y rompe la paleta */}
+        {playing ? (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <rect x="6" y="4" width="4" height="16" rx="1.5" />
+            <rect x="14" y="4" width="4" height="16" rx="1.5" />
+          </svg>
+        ) : (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5.14v13.72c0 .83.92 1.33 1.62.88l10.78-6.86c.65-.41.65-1.35 0-1.76L9.62 4.26C8.92 3.81 8 4.31 8 5.14z" />
+          </svg>
+        )}
       </button>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12, marginBottom: 6 }}>
@@ -1125,7 +1135,7 @@ export function AudioPlayer({ url, duration }: { url: string; duration?: number 
           onClick={seek}
           style={{ height: 6, background: '#2a1d52', borderRadius: 99, overflow: 'hidden', cursor: 'pointer' }}
         >
-          <div style={{ height: '100%', width: `${pct}%`, background: '#e0b64a', borderRadius: 99 }} />
+          <div style={{ height: '100%', width: `${pct}%`, background: '#7c3aed', borderRadius: 99 }} />
         </div>
       </div>
     </div>

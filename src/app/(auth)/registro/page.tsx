@@ -116,7 +116,14 @@ export default function RegistroPage() {
         </p>
         <p
           className="rounded-xl px-4 py-3 font-bold text-sm"
-          style={{ background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', color: '#c4b5fd' }}
+          style={{
+            background: 'rgba(124,58,237,0.1)',
+            border: '1px solid rgba(124,58,237,0.2)',
+            color: '#c4b5fd',
+            // Los correos largos no tienen dónde cortar. `anywhere` permite el
+            // salto en cualquier carácter en vez de desbordar el recuadro.
+            overflowWrap: 'anywhere',
+          }}
         >
           {state.email}
         </p>
