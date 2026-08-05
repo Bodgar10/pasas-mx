@@ -1,9 +1,30 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import Logo from '@/components/global/Logo'
+
+type Stats = {
+  materias: number
+  temas: number
+  bloques_leccion: number
+  interactivos: number
+  papel_lapiz: number
+  audios: number
+  horda_temas: number
+  horda_preguntas: number
+}
+
+// Los mismos mapeos que usa registro/actions.ts para traducir las etiquetas
+// del onboarding a los valores del enum de la base.
+const NIVEL_DB: Record<string, string> = {
+  Secundaria: 'middle_school',
+  'Preparatoria / Bachillerato': 'high_school',
+  'Examen de Preparatoria': 'high_school',
+  'Examen de Universidad': 'high_school',
+}
+const GRADO_DB: Record<string, number> = { '1°': 1, '2°': 2, '3°': 3 }
 
 const THEME_EXAMPLES: Record<string, string> = {
   Videojuegos: 'Las derivadas explicadas con mecánicas de Minecraft',
@@ -12,21 +33,43 @@ const THEME_EXAMPLES: Record<string, string> = {
   Anime: 'Ecuaciones lineales con el entrenamiento de Naruto',
 }
 
-const SCHOOL_TOPICS = [
-  '📐 Álgebra y ecuaciones',
-  '📊 Estadística básica',
-  '🔬 Ciencias naturales',
-]
-
-const EXAM_TOPICS = [
-  '🧮 Matemáticas COMIPEMS',
-  '📝 Comprensión lectora',
-  '🗺️ Historia de México',
-]
-
 function getExampleTitle(theme: string): string {
   const key = Object.keys(THEME_EXAMPLES).find((k) => theme.includes(k))
   return key ? THEME_EXAMPLES[key]! : `Aprende con ejemplos de ${theme}`
+}
+
+function Fila({
+  emoji,
+  titulo,
+  detalle,
+}: {
+  emoji: string
+  titulo: string
+  detalle: string
+}) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        gap: 10,
+        alignItems: 'flex-start',
+        backgroundColor: '#1a1035',
+        borderLeft: '2px solid #7c3aed',
+        borderRadius: 8,
+        padding: '10px 12px',
+      }}
+    >
+      <span style={{ fontSize: 20, lineHeight: 1.2 }}>{emoji}</span>
+      <div>
+        <p style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700, margin: 0 }}>
+          {titulo}
+        </p>
+        <p style={{ fontSize: 13, color: '#a78bfa', margin: '2px 0 0', lineHeight: 1.4 }}>
+          {detalle}
+        </p>
+      </div>
+    </div>
+  )
 }
 
 function getSubject(level: string): string {
@@ -44,9 +87,22 @@ function PreviewContent() {
   const esTutor = searchParams.get('registrante') === 'tutor'
 
   const exampleTitle = getExampleTitle(theme)
-  const isExam = level.startsWith('Examen')
-  const topics = isExam ? EXAM_TOPICS : SCHOOL_TOPICS
   const subject = getSubject(level)
+
+  const [stats, setStats] = useState<Stats | null>(null)
+
+  const nivelDb = NIVEL_DB[level]
+  const gradoDb = grade ? GRADO_DB[grade] : null
+
+  useEffect(() => {
+    if (!nivelDb || !gradoDb) return
+    let vivo = true
+    fetch(`/api/preview-stats?nivel=${nivelDb}&grado=${gradoDb}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (vivo && d && !d.error) setStats(d) })
+      .catch(() => { /* la pantalla funciona sin números */ })
+    return () => { vivo = false }
+  }, [nivelDb, gradoDb])
 
   const personalizedParams = new URLSearchParams({ level })
   if (grade) personalizedParams.set('grade', grade)
@@ -180,7 +236,7 @@ function PreviewContent() {
 
           <div style={{ height: 1, backgroundColor: '#2D2048', marginBottom: 16 }} />
 
-          {/* Inner dark card */}
+          {/* Lo que incluye — números reales de la base */}
           <div
             style={{
               backgroundColor: '#0f0a1e',
@@ -197,29 +253,87 @@ function PreviewContent() {
                 fontWeight: 700,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                margin: '0 0 10px',
+                margin: '0 0 12px',
               }}
             >
-              {esTutor ? 'LO QUE VERÍA' : 'LO QUE VERÍAS'}
+              {esTutor ? 'LO QUE VA A ENCONTRAR' : 'LO QUE VAS A ENCONTRAR'}
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {topics.map((topic) => (
+
+            {!stats ? (
+              /* Mientras cargan: espacio reservado del mismo alto, para que la
+                 tarjeta no dé un salto cuando llegan los datos. */
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {[0, 1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    style={{
+                      height: 46,
+                      backgroundColor: '#1a1035',
+                      borderRadius: 8,
+                      opacity: 0.5,
+                    }}
+                  />
+                ))}
+              </div>
+            ) : (
+              <>
+                {/* Cabecera con el alcance del grado */}
                 <div
-                  key={topic}
                   style={{
                     backgroundColor: '#1a1035',
-                    borderLeft: '2px solid #7c3aed',
-                    borderRadius: 8,
-                    padding: '8px 12px',
-                    fontSize: 16,
-                    color: '#e2d9f3',
-                    fontWeight: 600,
+                    borderRadius: 10,
+                    padding: '12px 14px',
+                    marginBottom: 10,
+                    textAlign: 'center',
                   }}
                 >
-                  {topic}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-orbitron)',
+                      fontSize: 22,
+                      fontWeight: 900,
+                      color: '#e2d9f3',
+                      margin: 0,
+                    }}
+                  >
+                    {stats.materias} materias · {stats.temas} temas
+                  </p>
+                  <p style={{ fontSize: 13, color: '#a78bfa', margin: '4px 0 0' }}>
+                    para {grade ? `${grade} de ` : ''}
+                    {level.startsWith('Examen') ? 'tu examen' : level.split(' / ')[0]}
+                  </p>
                 </div>
-              ))}
-            </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <Fila
+                    emoji="⚡"
+                    titulo="Lecciones interactivas"
+                    detalle={`${stats.interactivos.toLocaleString('es-MX')} ejercicios para arrastrar, ordenar y resolver`}
+                  />
+                  {stats.horda_preguntas > 0 && (
+                    <Fila
+                      emoji="🧟"
+                      titulo="Modo Horda"
+                      detalle={`${stats.horda_preguntas.toLocaleString('es-MX')} preguntas por oleadas en ${stats.horda_temas} temas`}
+                    />
+                  )}
+                  {stats.papel_lapiz > 0 && (
+                    <Fila
+                      emoji="✏️"
+                      titulo="Papel y Lápiz"
+                      detalle={`${stats.papel_lapiz.toLocaleString('es-MX')} ejercicios con pistas paso a paso`}
+                    />
+                  )}
+                  {stats.audios > 0 && (
+                    <Fila
+                      emoji="🎧"
+                      titulo="Audio"
+                      detalle={`${stats.audios.toLocaleString('es-MX')} lecciones narradas para escuchar`}
+                    />
+                  )}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Lock row */}
