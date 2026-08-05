@@ -10,6 +10,8 @@ import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
+import DemoPistas from '@/components/landing/DemoPistas'
+import DemoHorda from '@/components/landing/DemoHorda'
 import { createClient } from '@/utils/supabase/client'
 
 // ── A/B hero variants ──────────────────────────────────────────────
@@ -17,7 +19,7 @@ const HERO_VARIANTS = {
   D: {
     id: 'D',
     h1: 'Estudia sin estudiar.',
-    sub: 'Mate con Minecraft. Historia con anime. Química con K-pop. Si la escuela fuera así, no la odiarías.',
+    sub: 'Secundaria y prepa completas, convertidas en minijuegos. Con la temática que ya te gusta.',
     cta: 'Probar una semana gratis →',
     micro: '7 días gratis · Cancela cuando quieras.',
   },
@@ -65,10 +67,13 @@ function useInView(threshold = 0.15) {
 }
 
 // ── Data ───────────────────────────────────────────────────────────
-const HOW_STEPS = [
-  { emoji: '🌍', title: 'Eliges tu mundo', desc: 'Minecraft, K-pop, anime o fut. Lo que ya te gusta es lo que ya sabes.' },
-  { emoji: '⚡', title: 'Aprendes sin darte cuenta', desc: 'Lecciones de 10 minutos que se sienten más como ver un Reel que como abrir el cuaderno.' },
-  { emoji: '🏆', title: 'Subes de nivel (literal)', desc: 'Ganas puntos, desbloqueas contenido y de paso sacas mejores calificaciones.' },
+// Conteos reales de la base, medidos el 4 ago 2026. NO inventar cifras aquí.
+const MINIJUEGOS = [
+  { emoji: '🃏', title: 'Memorama',        desc: 'Empareja la regla con su caso. Suena fácil hasta que lo intentas.',           dato: '1,436 partidas' },
+  { emoji: '🎚️', title: 'Mueve la barrita', desc: 'Cambia un valor y mira cómo se mueve todo lo demás. Entiendes antes de que te expliquen.', dato: '1,073 simuladores' },
+  { emoji: '🧩', title: 'Ordena los pasos', desc: 'Un toque, un paso. El problema completo, en orden.',                          dato: '2,051 secuencias' },
+  { emoji: '🔀', title: 'Clasifica',        desc: 'Arrastra cada cosa a donde va. Si te equivocas, lo ves al instante.',        dato: '2,328 ejercicios' },
+  { emoji: '🎧', title: 'Escúchalo',        desc: 'Todo tiene audio. Estúdialo en el camión si quieres.',                        dato: '4,070 audios' },
 ]
 
 const THEMES = [
@@ -148,7 +153,7 @@ const PLANS = [
     color: COLORS.primary,
     description: 'Todo el contenido gamificado con la temática que elijas.',
     features: [
-      '🎮 Las 4 temáticas disponibles',
+      '🎮 Eliges 1 temática: Videojuegos, K-pop, Anime o Fútbol',
       '📚 Todas las materias de tu grado',
       '⚡ XP, rachas y sistema de niveles',
       '📊 Progreso por tema en tiempo real',
@@ -160,11 +165,11 @@ const PLANS = [
   },
   {
     name: 'Personalizado',
-    price: '$499',
+    price: `$${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}`,
     period: 'al mes',
     badge: '⚡ Recomendado',
     color: COLORS.pink,
-    description: 'Tu guía de estudio única, generada según tus puntos débiles y lo que más te gusta.',
+    description: 'Para cuando hay UNA materia que te está matando y necesitas ir directo a lo que no entiendes.',
     features: [
       '✅ Todo lo del plan Estándar',
       '🧠 Diagnóstico inicial de conocimientos',
@@ -173,7 +178,7 @@ const PLANS = [
       '📈 Avance más rápido, menos tiempo perdido',
     ],
     cta: 'Quiero el personalizado →',
-    note: 'Menos que una clase particular.',
+    note: '7 días gratis · Requiere tarjeta · Cancela cuando quieras.',
     highlight: true,
   },
 ]
@@ -332,7 +337,7 @@ export default function LandingClient() {
         <div style={{ animation: 'fadeUp 0.8s ease both', position: 'relative', maxWidth: 480 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${COLORS.primary}22`, border: `1px solid ${COLORS.primary}55`, borderRadius: RADIUS.pill, padding: '6px 14px', marginBottom: 24 }}>
             <span style={{ fontSize: 12 }}>✨</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: COLORS.muted }}>Lanzamiento Julio 2026 · Entra gratis hoy</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: COLORS.muted }}>Ya está en línea · Entra gratis hoy</span>
           </div>
           <h1 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(28px, 8vw, 42px)', lineHeight: 1.15, marginBottom: 20, whiteSpace: 'pre-line', background: `linear-gradient(135deg, ${COLORS.text} 0%, ${COLORS.muted} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             {hero.h1}
@@ -356,25 +361,68 @@ export default function LandingClient() {
         </div>
       </section>
 
-      {/* ── CÓMO FUNCIONA ── */}
+      {/* ── AQUÍ NO TE QUEDAS ATORADO — el argumento insustituible ── */}
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
-          <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.primary, textTransform: 'uppercase', marginBottom: 8 }}>Cómo funciona</p>
-          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 48, color: COLORS.text }}>
-            Así de fácil. Neta.
+          <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.primary, textTransform: 'uppercase', marginBottom: 8 }}>Papel y lápiz</p>
+          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
+            Aquí no te quedas atorado.
           </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-            {HOW_STEPS.map((step, i) => (
+          <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 32, lineHeight: 1.6, fontWeight: 600 }}>
+            Escribes tu respuesta. Si está mal, no te dice “incorrecto” y ya:
+            te suelta una pista. ¿Sigues sin salir? Otra. Hasta que lo sacas tú.
+          </p>
+
+          <DemoPistas onIntento={() => track('landing_demo_pistas')} />
+
+          <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
+            676 ejercicios así en matemáticas, con hasta 8 pistas cada uno.
+          </p>
+        </section>
+      </FadeSection>
+
+      {/* ── MODO HORDA ── */}
+      <FadeSection>
+        <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
+          <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8 }}>Modo Horda</p>
+          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
+            ¿Examen el viernes?
+          </h2>
+          <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 32, lineHeight: 1.6, fontWeight: 600 }}>
+            30 preguntas en 6 oleadas, cada una más difícil que la anterior.
+            Si fallas, te dice el truco para que no se te olvide.
+          </p>
+
+          <DemoHorda onAvanzar={() => track('landing_demo_horda')} />
+
+          <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
+            7,320 preguntas en 244 temas de secundaria. Prepa en camino.
+          </p>
+        </section>
+      </FadeSection>
+
+      {/* ── NO ES LEER, ES JUGAR ── */}
+      <FadeSection>
+        <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
+          <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>Dentro de cada tema</p>
+          <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
+            No es leer. Es jugar.
+          </h2>
+          <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 40, lineHeight: 1.6, fontWeight: 600 }}>
+            579 temas de secundaria y prepa, cada uno con estos.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {MINIJUEGOS.map((j, i) => (
               <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: COLORS.card, borderRadius: RADIUS.xxl, padding: '20px', border: `1px solid ${COLORS.inputBorder}` }}>
                 <div style={{ minWidth: 48, height: 48, borderRadius: RADIUS.xl, background: `${COLORS.primary}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>
-                  {step.emoji}
+                  {j.emoji}
                 </div>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                    <span style={{ fontFamily: FONTS.orbitron, fontSize: 11, fontWeight: 900, color: COLORS.primary }}>0{i + 1}</span>
-                    <p style={{ fontWeight: 800, fontSize: 15, color: COLORS.text }}>{step.title}</p>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                    <p style={{ fontWeight: 800, fontSize: 16, color: COLORS.text }}>{j.title}</p>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: COLORS.primary, opacity: 0.9 }}>{j.dato}</span>
                   </div>
-                  <p style={{ fontSize: 14, color: COLORS.muted, lineHeight: 1.6 }}>{step.desc}</p>
+                  <p style={{ fontSize: 14, color: COLORS.muted, lineHeight: 1.6 }}>{j.desc}</p>
                 </div>
               </div>
             ))}
@@ -387,7 +435,7 @@ export default function LandingClient() {
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8 }}>Temáticas</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 48, color: COLORS.text }}>
-            Escoge tu lado.
+            Escoge tu mundo.
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {THEMES.map((t, i) => (
@@ -550,7 +598,7 @@ export default function LandingClient() {
               "Tiene que haber una mejor forma."
             </p>
             <p style={{ fontSize: 15, color: '#c4b5fd', lineHeight: 1.7, fontWeight: 600, marginBottom: 0 }}>
-              Lanzamos en julio 2026. Si entras ahora, eres de los primeros — y tu opinión construye la plataforma. Una semana gratis, sin tarjeta.
+              Ya estamos en línea. Si entras ahora, eres de los primeros — y tu opinión construye la plataforma. Una semana gratis para probarlo todo.
             </p>
           </div>
         </section>
@@ -561,7 +609,7 @@ export default function LandingClient() {
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.yellow, textTransform: 'uppercase', marginBottom: 8 }}>Precios</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
-            Menos que una pizza.<br />Más que un maestro particular.
+            ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes.<br />Un maestro particular cobra eso por una hora.
           </h2>
           <p style={{ textAlign: 'center', fontSize: 14, color: COLORS.muted, marginBottom: 40, lineHeight: 1.6 }}>
             Sin contrato. Cancela cuando quieras. Sin letras chiquitas.
@@ -617,11 +665,8 @@ export default function LandingClient() {
             <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 32px)', marginBottom: 16, color: COLORS.text }}>
               Una semana gratis.<br />Si no te late, te sales y ya.
             </h2>
-            <p style={{ fontSize: 15, color: COLORS.muted, marginBottom: 12, lineHeight: 1.6 }}>
-              Sin tarjeta para empezar. Sin contratos raros. Sin letras chiquitas.
-            </p>
-            <p style={{ fontSize: 14, color: COLORS.muted, marginBottom: 36, opacity: 0.7 }}>
-              Si después de 7 días sigue sin gustarte estudiar, te devolvemos hasta las ganas.
+            <p style={{ fontSize: 15, color: COLORS.muted, marginBottom: 36, lineHeight: 1.6 }}>
+              Sin contratos raros. Sin letras chiquitas.
             </p>
             <Link
               href="/onboarding"
@@ -635,7 +680,7 @@ export default function LandingClient() {
               Tarda menos que escoger qué ver en Netflix.
             </p>
             <p style={{ marginTop: 20, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
-              ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes · Sin contrato · Cancela cuando quieras
+              ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes · 7 días gratis · No se cobra hasta el día 8
             </p>
           </div>
         </section>
