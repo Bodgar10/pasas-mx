@@ -14,7 +14,7 @@ export function renewalNoticeTemplate({ userName, planName, amount, renewalDate,
 <body style="margin:0;padding:0;background:#0f0a1e;font-family:Arial,sans-serif">
   <div style="max-width:520px;margin:0 auto;padding:40px 24px">
     <p style="font-size:20px;font-weight:900;color:#a78bfa;letter-spacing:2px;margin:0 0 32px">PASAS.MX</p>
-    <h1 style="font-size:22px;font-weight:900;color:#e2d9f3;margin:0 0 16px">Tu suscripción se renueva en 5 días</h1>
+    <h1 style="font-size:22px;font-weight:900;color:#e2d9f3;margin:0 0 16px">Tu suscripción se renueva pronto</h1>
     <p style="font-size:15px;color:#a78bfa;margin:0 0 24px">Hola ${userName}, te avisamos con tiempo para que no te tome por sorpresa.</p>
     <div style="background:#1a1035;border:1.5px solid #2D2048;border-radius:16px;padding:24px;margin-bottom:24px">
       <p style="font-size:13px;color:#a78bfa;margin:0 0 8px;text-transform:uppercase;letter-spacing:1px">Detalle de renovación</p>

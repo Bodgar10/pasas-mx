@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 import { trackCheckoutCompleted } from '@/components/posthog-events'
+import { waLink } from '@/lib/contacto'
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -642,7 +643,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 </div>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <a
-                    href="https://wa.me/521XXXXXXXXXX?text=Hola,%20necesito%20ayuda%20con%20Pasas.mx"
+                    href={waLink('Hola, necesito ayuda con Pasas.mx')}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

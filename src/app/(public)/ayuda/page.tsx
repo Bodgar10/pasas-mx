@@ -54,11 +54,11 @@ const FAQS = [
     items: [
       {
         q: '¿Tienen política de reembolso?',
-        a: 'Sí. Si cancelaste dentro de los primeros 14 días naturales desde tu primer pago real (no aplica para período de prueba), puedes solicitar reembolso completo.',
+        a: 'Sí. Si cancelaste dentro de los primeros 7 días naturales desde tu primer pago real (no aplica para período de prueba), puedes solicitar reembolso completo.',
       },
       {
         q: '¿Cómo solicito un reembolso?',
-        a: 'Desde la página de reembolso puedes solicitarlo en línea. Si el reembolso aplica (dentro de 14 días), se procesa automáticamente. Después de ese plazo lo revisamos caso por caso.',
+        a: 'Desde la página de reembolso puedes solicitarlo en línea. Si el reembolso aplica (dentro de 7 días), se procesa automáticamente. Después de ese plazo lo revisamos caso por caso.',
       },
     ],
   },

@@ -1,10 +1,11 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+// El número vive en @/lib/contacto, no aquí: el dashboard tiene su propio
+// enlace y los dos tienen que apuntar al mismo teléfono.
+import { waLink } from '@/lib/contacto'
 
-// Número de WhatsApp de soporte — cambiar SOLO aquí
-const WA_NUMBER = '521XXXXXXXXXX'
-const WA_MESSAGE = 'Hola,%20tengo%20una%20pregunta%20sobre%20Pasas.mx'
+const WA_MESSAGE = 'Hola, tengo una pregunta sobre Pasas.mx'
 
 /**
  * Rutas donde SÍ aparece el botón flotante.
@@ -47,7 +48,7 @@ export default function WhatsAppButton({ onClick }: { onClick?: () => void } = {
 
   return (
     <a
-      href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
+      href={waLink(WA_MESSAGE)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

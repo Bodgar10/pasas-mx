@@ -81,24 +81,35 @@ export async function POST(request: Request) {
         // Fetch full subscription object from Stripe
         const subscription = await stripe.subscriptions.retrieve(subscriptionId)
         const subData = subscription as unknown as {
-          items: { data: { price: { id: string; unit_amount: number } }[] }
+          items: {
+            data: {
+              price: { id: string; unit_amount: number }
+              // 🔴 Los periodos viven AQUÍ, no en la raíz de Subscription.
+              // Se movieron al item en la API 2026-04-22.dahlia, que es la
+              // que fija src/lib/payments/stripe.ts. Leerlos de la raíz
+              // devuelve undefined SIN error.
+              current_period_start: number
+              current_period_end: number
+            }[]
+          }
           customer: string
-          current_period_start?: number
-          current_period_end?: number
-          billing_cycle_anchor?: number
         }
 
         const priceId   = subData.items.data[0]?.price.id
         const planInfo  = PRICE_TO_PLAN[priceId] ?? { plan: 'grade', duration: 'monthly' }
         const priceAmount = subData.items.data[0]?.price.unit_amount ?? 0
 
-        // Calculate period dates — use billing_cycle_anchor as fallback
-        const now = Math.floor(Date.now() / 1000)
-        const rawStart = subData.current_period_start ?? subData.billing_cycle_anchor ?? now
-        const rawEnd   = subData.current_period_end   ?? (now + 30 * 24 * 60 * 60)
+        // Periodos desde el ITEM. Sin fallback a propósito: el `?? now + 30d`
+        // anterior escribió fechas inventadas durante meses sin un solo error
+        // en los logs. Si Stripe deja de mandar esto, queremos enterarnos.
+        const item = subData.items.data[0]
+        if (!item?.current_period_end) {
+          console.error('[webhooks/stripe] Sin periodo en el item', subscriptionId)
+          throw new Error('Subscription item sin current_period_end')
+        }
 
-        const periodStart = new Date(rawStart * 1000).toISOString()
-        const periodEnd   = new Date(rawEnd   * 1000).toISOString()
+        const periodStart = new Date(item.current_period_start * 1000).toISOString()
+        const periodEnd   = new Date(item.current_period_end   * 1000).toISOString()
 
         const fullSub = subscription as unknown as {
           status: string
@@ -113,6 +124,12 @@ export async function POST(request: Request) {
           plan:                 planInfo.plan,
           status:               subStatus,
           price_mxn:            priceAmount,
+          // 🔴 Sin esto la columna se queda en su DEFAULT 'monthly' y un
+          // cliente semestral recibe el aviso de renovación de la LFPC
+          // diciendo "Mensual" con el monto del semestre. Los valores de
+          // PRICE_TO_PLAN ya son 'monthly' | 'semestral' | 'annual', los
+          // mismos del enum de la base.
+          billing_cycle:        planInfo.duration,
           payment_provider:     'stripe',
           provider_sub_id:      subscriptionId,
           provider_customer_id: subData.customer,
@@ -131,11 +148,16 @@ export async function POST(request: Request) {
         try {
           const { data: userForTracking } = await supabase
             .from('users')
-            .select('email')
+            .select('email, cookie_consent_marketing')
             .eq('id', userId)
             .single()
 
-          if (userForTracking?.email) {
+          // 🔴 Meta y TikTok son TRANSFERENCIAS (art. 35 LFPDPPP). Sin el
+          // consentimiento del banner no sale nada, aunque el pago sí ocurra.
+          //
+          // Se exige === true a propósito: NULL significa "nunca contestó el
+          // banner", que NO es un sí. Fail-closed, igual que en el cliente.
+          if (userForTracking?.email && userForTracking.cookie_consent_marketing === true) {
             const amount = priceAmount / 100
             await Promise.all([
               sendMetaCapiEvent('Subscribe', {
@@ -287,15 +309,17 @@ export async function POST(request: Request) {
 
         const subscription = await stripe.subscriptions.retrieve(subscriptionId)
         const subData = subscription as unknown as {
-          current_period_start?: number
-          current_period_end?: number
-          billing_cycle_anchor?: number
+          items: { data: { current_period_start: number; current_period_end: number }[] }
         }
-        const now = Math.floor(Date.now() / 1000)
-        const rawStart = subData.current_period_start ?? subData.billing_cycle_anchor ?? now
-        const rawEnd   = subData.current_period_end   ?? (now + 30 * 24 * 60 * 60)
-        const periodStart = new Date(rawStart * 1000).toISOString()
-        const periodEnd   = new Date(rawEnd   * 1000).toISOString()
+        // Periodos desde el item (API 2026-04-22.dahlia). Ver el insert.
+        const item = subData.items.data[0]
+        if (!item?.current_period_end) {
+          console.error('[webhooks/stripe] Sin periodo en el item', subscriptionId)
+          throw new Error('Subscription item sin current_period_end')
+        }
+        const rawEnd = item.current_period_end
+        const periodStart = new Date(item.current_period_start * 1000).toISOString()
+        const periodEnd   = new Date(rawEnd * 1000).toISOString()
 
         await supabase
           .from('subscriptions')
@@ -318,7 +342,12 @@ export async function POST(request: Request) {
           const user = (Array.isArray(subRow?.users) ? subRow?.users[0] : subRow?.users) as { full_name: string; email: string } | null
           if (user?.email) {
             const amount = Math.round((subRow?.price_mxn ?? 0) / 100)
-            const cycleLabel = subRow?.billing_cycle === 'semestral' ? 'Semestral' : subRow?.billing_cycle === 'annual' ? 'Anual' : 'Mensual'
+            const CICLO_LABEL: Record<string, string> = {
+              monthly: 'Mensual',
+              semestral: 'Semestral',
+              annual: 'Anual',
+            }
+            const cycleLabel = CICLO_LABEL[subRow?.billing_cycle ?? 'monthly'] ?? 'Mensual'
             const nextRenewal = new Date(rawEnd * 1000).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
 
             await sendEmail({
@@ -445,13 +474,16 @@ export async function POST(request: Request) {
 
         if (wasResumed && isNowActive) {
           const subData = subscription as unknown as {
-            current_period_start?: number
-            current_period_end?: number
-            billing_cycle_anchor?: number
+            items: { data: { current_period_start: number; current_period_end: number }[] }
           }
-          const now = Math.floor(Date.now() / 1000)
-          const rawStart = subData.current_period_start ?? subData.billing_cycle_anchor ?? now
-          const rawEnd = subData.current_period_end ?? (now + 30 * 24 * 60 * 60)
+          // Periodos desde el item (API 2026-04-22.dahlia). Ver el insert.
+          const item = subData.items.data[0]
+          if (!item?.current_period_end) {
+            console.error('[webhooks/stripe] Sin periodo al reanudar', subscription.id)
+            break
+          }
+          const rawStart = item.current_period_start
+          const rawEnd = item.current_period_end
 
           await supabase
             .from('subscriptions')

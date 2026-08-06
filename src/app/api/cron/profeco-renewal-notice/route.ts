@@ -15,11 +15,30 @@ export async function GET(req: Request) {
   }
 
   try {
-    // Buscar suscripciones que renuevan en 5-6 días y no han recibido aviso
+    /**
+     * Ventana de 8-9 días NATURALES.
+     *
+     * Los T&C piden 5 días hábiles. Contar hábiles de verdad obligaría a
+     * mantener el calendario de festivos oficiales mexicanos y actualizarlo
+     * cada año. Ocho naturales contienen 5 hábiles en cualquier posición de
+     * la semana, así que se cumple el contrato sin calendario que mantener.
+     *
+     * ⚠️ La excepción son los ~8 festivos oficiales al año: si uno cae
+     * dentro de la ventana, quedan 4 hábiles. Se asume a sabiendas — el
+     * incumplimiento sería de un día y en fechas contadas. Si algún día
+     * deja de ser aceptable, la solución es el calendario de festivos.
+     *
+     * 🔴 NO bajar de 8: con 7 naturales, un aviso de jueves solo deja
+     * 4 hábiles antes del cobro.
+     *
+     * La ventana es de UN día de ancho (8 a 9) porque el cron corre a diario
+     * y así cada suscripción cae exactamente una vez. El filtro
+     * renewal_notice_sent_at cubre el resto.
+     */
     const in5Days = new Date()
-    in5Days.setDate(in5Days.getDate() + 5)
+    in5Days.setDate(in5Days.getDate() + 8)
     const in6Days = new Date()
-    in6Days.setDate(in6Days.getDate() + 6)
+    in6Days.setDate(in6Days.getDate() + 9)
 
     const { data: subscriptions, error } = await supabase
       .from('subscriptions')
@@ -58,9 +77,17 @@ export async function GET(req: Request) {
 
       // Calcular nombre del plan para mostrar
       const planKey = sub.plan === 'grade' ? 'estandar_v2' : 'personalizado_v2'
-      const cycleKey = (sub.billing_cycle ?? 'monthly') as 'mensual' | 'semestral' | 'anual'
+      // 🔴 Los valores REALES de la base son 'monthly' | 'semestral' | 'annual'.
+      // El casteo anterior los comparaba contra los nombres en español, así que
+      // 'monthly' caía al else y el aviso decía "Anual" a un cliente mensual.
+      // Si algún día se agrega un ciclo, va aquí y solo aquí.
+      const CICLO_LABEL: Record<string, string> = {
+        monthly: 'Mensual',
+        semestral: 'Semestral',
+        annual: 'Anual',
+      }
       const planLabel = PLAN_DISPLAY[planKey].label
-      const cycleLabel = cycleKey === 'mensual' ? 'Mensual' : cycleKey === 'semestral' ? 'Semestral' : 'Anual'
+      const cycleLabel = CICLO_LABEL[sub.billing_cycle ?? 'monthly'] ?? 'Mensual'
       const amount = Math.round(sub.price_mxn / 100)
 
       const renewalDate = new Date(sub.current_period_end).toLocaleDateString('es-MX', {

@@ -6,6 +6,7 @@ import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 import Logo from '@/components/global/Logo'
+import { leerConsentimiento } from '@/lib/consent'
 
 function GoogleIcon() {
   return (
@@ -64,6 +65,10 @@ export default function RegistroPage() {
   const [pendingPlan, setPendingPlan] = useState('')
   const [pendingDuration, setPendingDuration] = useState('')
   const [utmData, setUtmData] = useState('')
+  // Consentimiento de cookies. Vive en localStorage desde que la persona
+  // contestó el banner —posiblemente días antes— y aquí se vuelca a la base
+  // para que exista prueba. Va vacío si nunca contestó.
+  const [cookieConsent, setCookieConsent] = useState('')
   // Default 'tutor': quien entra a /registro por URL directa, sin pasar por el
   // onboarding, cae en el caso más común y más protector. La edad real la
   // decide `birthdate` en el servidor, no este valor.
@@ -75,6 +80,8 @@ export default function RegistroPage() {
     setPendingPlan(sessionStorage.getItem('pasas_pending_plan') ?? '')
     setPendingDuration(sessionStorage.getItem('pasas_pending_duration') ?? '')
     setUtmData(sessionStorage.getItem('pasas_utm') ?? '')
+    const consent = leerConsentimiento()
+    if (consent) setCookieConsent(JSON.stringify(consent))
 
     if (raw) {
       try {
@@ -278,6 +285,7 @@ export default function RegistroPage() {
         <input type="hidden" name="pending_plan" value={pendingPlan} />
         <input type="hidden" name="pending_duration" value={pendingDuration} />
         <input type="hidden" name="utm_data" value={utmData} />
+        <input type="hidden" name="cookie_consent" value={cookieConsent} />
         <div className="space-y-1">
           <label
             htmlFor="full_name"

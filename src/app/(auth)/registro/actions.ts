@@ -35,6 +35,7 @@ export async function registroAction(
   const pendingPlan = formData.get('pending_plan') as string | null
   const pendingDuration = formData.get('pending_duration') as string | null
   const utmRaw = formData.get('utm_data') as string | null
+  const cookieConsentRaw = formData.get('cookie_consent') as string | null
 
 
   if (password.length < 6) {
@@ -54,6 +55,34 @@ export async function registroAction(
   const consent = parseConsent(formData, clientIp, email)
   if (!consent.ok) {
     return { error: consent.error }
+  }
+
+  /**
+   * Consentimiento de cookies → base, para que haya prueba.
+   *
+   * 🔴 La IP se toma de `clientIp`, que ya se calculó arriba desde los
+   * headers. NO se acepta del cliente: sería falsificable y no probaría nada.
+   *
+   * `at` es la fecha del BANNER, no la del registro: es cuándo la persona
+   * realmente consintió, posiblemente días antes.
+   *
+   * Si nunca contestó el banner, las columnas quedan en NULL — que es
+   * distinto de `false` y hay que poder distinguirlo.
+   */
+  let cookieFields: Record<string, unknown> = {}
+  if (cookieConsentRaw) {
+    try {
+      const c = JSON.parse(cookieConsentRaw)
+      if (typeof c.analytics === 'boolean' && typeof c.marketing === 'boolean') {
+        cookieFields = {
+          cookie_consent_analytics: c.analytics,
+          cookie_consent_marketing: c.marketing,
+          cookie_consent_at: c.at ?? new Date().toISOString(),
+          cookie_consent_ip: clientIp,
+          cookie_consent_version: c.version ?? null,
+        }
+      }
+    } catch { /* malformado — se queda sin registrar, no se inventa */ }
   }
 
   const supabase = await createClient()
@@ -102,6 +131,7 @@ export async function registroAction(
     let profileEarly: Record<string, unknown> = {
       full_name: fullName,
       ...consent.fields,
+      ...cookieFields,
       onboarding_done: false, // se completa en auth/callback al verificar
     }
 
@@ -149,6 +179,7 @@ export async function registroAction(
   let profileUpdate: Record<string, unknown> = {
     full_name: fullName,
     ...consent.fields,
+    ...cookieFields,
     onboarding_done: true,
     ...(acquisitionSource ? { acquisition_source: acquisitionSource } : {}),
   }

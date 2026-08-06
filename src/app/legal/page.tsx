@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import { createClient } from '@/utils/supabase/server'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
+import CookieConsentInput from '@/components/legal/CookieConsentInput'
 import Logo from '@/components/global/Logo'
 import { guardarConsentimiento } from './actions'
 
@@ -57,6 +58,7 @@ export default async function LegalPage({
 
         <form action={guardarConsentimiento} className="mt-8 space-y-6">
           <ConsentimientoLegal />
+          <CookieConsentInput />
 
           <button
             type="submit"

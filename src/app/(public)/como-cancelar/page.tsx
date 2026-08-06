@@ -109,7 +109,7 @@ export default function ComoCancelarPage() {
             ¿Quieres reembolso?
           </h2>
           <p className="mb-4 text-sm text-gray-400">
-            Si cancelaste dentro de los primeros 14 días de tu primer pago
+            Si cancelaste dentro de los primeros 7 días de tu primer pago
             (no aplica para periodo de prueba), puedes solicitar reembolso completo
             desde tu perfil.
           </p>

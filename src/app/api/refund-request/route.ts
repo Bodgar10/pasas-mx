@@ -3,7 +3,15 @@ import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
 import { sendEmail } from '@/lib/email/resend'
 
-const REFUND_WINDOW_DAYS = 14
+/**
+ * Términos y Condiciones, cláusula 3.5.A: 7 días naturales desde el
+ * PRIMER COBRO, no desde el alta. Con trial de 7 días, `created_at` cae
+ * una semana antes de que se cobre nada.
+ *
+ * `current_period_start` es la fecha del periodo pagado en curso, que tras
+ * el trial coincide con el primer cobro. NO volver a `created_at`.
+ */
+const REFUND_WINDOW_DAYS = 7
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,7 +20,9 @@ export async function POST(req: NextRequest) {
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
     const body = await req.json()
-    const { reason } = body
+    // La página manda `motivo`. Se acepta `reason` también por si algún
+    // otro llamador lo usa, pero el nombre real del campo es el de la página.
+    const reason = body.motivo ?? body.reason
 
     // Buscar suscripción activa
     const { data: subscription } = await supabase
@@ -28,14 +38,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No se encontró suscripción activa' }, { status: 404 })
     }
 
-    // Verificar ventana de 14 días
-    const createdAt = new Date(subscription.created_at)
+    // Ventana contada desde el primer cobro (T&C 3.5.A)
+    const inicioCobro = new Date(
+      subscription.current_period_start ?? subscription.created_at
+    )
     const now = new Date()
-    const daysSinceCreation = (now.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24)
+    const daysSinceCreation = (now.getTime() - inicioCobro.getTime()) / (1000 * 60 * 60 * 24)
     const withinWindow = daysSinceCreation <= REFUND_WINDOW_DAYS
 
     if (withinWindow) {
-      // Dentro de 14 días: reembolso automático
+      // Dentro de la ventana: reembolso automático
       try {
         // Obtener el invoice más reciente de Stripe
         const invoices = await stripe.invoices.list({
@@ -80,7 +92,7 @@ export async function POST(req: NextRequest) {
       }
 
     } else {
-      // Fuera de 14 días: crear ticket para revisión manual
+      // Fuera de la ventana: ticket para revisión manual
       // Notificar al admin por email
       try {
         await sendEmail({
@@ -106,7 +118,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({
         ok: true,
         automatic: false,
-        message: 'Tu solicitud fue recibida. Nuestro equipo la revisará en máximo 2 días hábiles y te contactará por correo.',
+        message: 'Tu solicitud fue recibida. Nuestro equipo la revisará en máximo 5 días hábiles y te contactará por correo.',
       })
     }
 

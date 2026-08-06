@@ -90,19 +90,19 @@ export default function ReembolsoPage() {
       }}>
         <div>
           <div style={{ fontSize: 13, fontWeight: 800, color: '#7c3aed', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>
-            Reembolso automático — 14 días
+            Reembolso automático — 7 días
           </div>
           <p style={{ fontSize: 15, color: '#e2d9f3', lineHeight: 1.7, margin: 0 }}>
-            Si no estás satisfecho con Pasas.mx, puedes solicitar un reembolso completo dentro de los <strong>14 días naturales</strong> siguientes a tu primer pago. Sin preguntas, sin penalización.
+            Si no estás satisfecho con Pasas.mx, puedes solicitar un reembolso completo dentro de los <strong>7 días naturales</strong> siguientes a tu primer pago. Sin preguntas, sin penalización.
           </p>
         </div>
 
         <div>
           <div style={{ fontSize: 13, fontWeight: 800, color: '#7c3aed', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>
-            Después de 14 días
+            Después de 7 días
           </div>
           <p style={{ fontSize: 15, color: '#e2d9f3', lineHeight: 1.7, margin: 0 }}>
-            Fuera del período de 14 días los reembolsos son evaluados de forma manual caso por caso. Puedes solicitarlo usando el formulario de abajo y te respondemos en máximo 3 días hábiles.
+            Fuera del período de 7 días los reembolsos son evaluados de forma manual caso por caso. Puedes solicitarlo usando el formulario de abajo y te respondemos en máximo 5 días hábiles.
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export default function ReembolsoPage() {
           Solicitar reembolso
         </h2>
         <p style={{ fontSize: 14, color: '#a78bfa', marginBottom: 20, lineHeight: 1.6 }}>
-          Llena el formulario y te respondemos en máximo 3 días hábiles.
+          Llena el formulario y te respondemos en máximo 5 días hábiles.
         </p>
 
         {isLoggedIn === null ? (
@@ -192,7 +192,7 @@ export default function ReembolsoPage() {
               Solicitud recibida
             </div>
             <p style={{ fontSize: 14, color: '#a78bfa', margin: 0, lineHeight: 1.6 }}>
-              Te respondemos en máximo 3 días hábiles al correo que proporcionaste.
+              Te respondemos en máximo 5 días hábiles al correo que proporcionaste.
             </p>
           </div>
         ) : (

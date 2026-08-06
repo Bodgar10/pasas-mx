@@ -75,9 +75,38 @@ export async function guardarConsentimiento(formData: FormData) {
     redirect(`/legal?error=${encodeURIComponent(consent.error)}`)
   }
 
+  /**
+   * Consentimiento de cookies → base. Copia deliberada del bloque de
+   * registro/actions.ts: son los dos únicos caminos de alta y cada uno
+   * escribe el perfil por su lado.
+   *
+   * 🔴 Va DESPUÉS de la rama que borra la cuenta del menor: no tiene sentido
+   * calcular campos de un usuario que está por eliminarse.
+   *
+   * La IP sale de `clientIp`, calculado arriba desde los headers — nunca del
+   * cliente, que sería falsificable. `at` es la fecha del BANNER, no la de
+   * esta pantalla: la persona pudo contestarlo días antes.
+   */
+  const cookieConsentRaw = formData.get('cookie_consent') as string | null
+  let cookieFields: Record<string, unknown> = {}
+  if (cookieConsentRaw) {
+    try {
+      const c = JSON.parse(cookieConsentRaw)
+      if (typeof c.analytics === 'boolean' && typeof c.marketing === 'boolean') {
+        cookieFields = {
+          cookie_consent_analytics: c.analytics,
+          cookie_consent_marketing: c.marketing,
+          cookie_consent_at: c.at ?? new Date().toISOString(),
+          cookie_consent_ip: clientIp,
+          cookie_consent_version: c.version ?? null,
+        }
+      }
+    } catch { /* malformado — se queda sin registrar, no se inventa */ }
+  }
+
   const { error } = await serviceClient
     .from('users')
-    .update(consent.fields)
+    .update({ ...consent.fields, ...cookieFields })
     .eq('id', user.id)
 
   if (error) {
