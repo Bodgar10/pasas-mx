@@ -128,11 +128,29 @@ export async function registroAction(
     )
 
     // Parsear onboarding data para guardar todo el perfil ya
+    /**
+     * 🔴 `onboarding_done` va en TRUE aquí, no en auth/callback.
+     *
+     * En este punto el onboarding YA está completo: nivel, grado y temática
+     * se guardan unas líneas más abajo, en este mismo update. No queda nada
+     * que llenar.
+     *
+     * Esperar al callback es lo que rompía todo: el callback tiene varias
+     * salidas antes de llegar a escribir el flag —redirige a /autorizar-menor
+     * cuando falta la firma del tutor, o el enlace del correo se consume por
+     * el prefetch del cliente de correo—. Cualquiera de esas deja el flag en
+     * false PARA SIEMPRE, con los datos ya guardados, y el usuario entra en
+     * un ciclo entre /onboarding y /dashboard del que no sale ni pagando.
+     *
+     * No revertir a false "hasta verificar". Verificar el correo y completar
+     * el onboarding son dos cosas distintas: la primera la gobierna
+     * `email_confirmed_at` de Supabase, no esta columna.
+     */
     let profileEarly: Record<string, unknown> = {
       full_name: fullName,
       ...consent.fields,
       ...cookieFields,
-      onboarding_done: false, // se completa en auth/callback al verificar
+      onboarding_done: true,
     }
 
     if (onboardingRaw && onboardingRaw.length > 2) {

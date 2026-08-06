@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { sendEmail } from '@/lib/email/resend'
 import { renewalNoticeTemplate } from '@/lib/email/templates/renewal-notice'
-import { PLAN_DISPLAY } from '@/lib/payments/config'
+import { PLAN_DISPLAY, CICLO_LABEL } from '@/lib/payments/config'
 
 export async function GET(req: Request) {
   const supabase = createClient(
@@ -77,15 +77,10 @@ export async function GET(req: Request) {
 
       // Calcular nombre del plan para mostrar
       const planKey = sub.plan === 'grade' ? 'estandar_v2' : 'personalizado_v2'
-      // 🔴 Los valores REALES de la base son 'monthly' | 'semestral' | 'annual'.
-      // El casteo anterior los comparaba contra los nombres en español, así que
+      // 🔴 Las claves son los valores REALES de la base ('monthly' | ...).
+      // El casteo original los comparaba contra los nombres en español, así que
       // 'monthly' caía al else y el aviso decía "Anual" a un cliente mensual.
-      // Si algún día se agrega un ciclo, va aquí y solo aquí.
-      const CICLO_LABEL: Record<string, string> = {
-        monthly: 'Mensual',
-        semestral: 'Semestral',
-        annual: 'Anual',
-      }
+      // El mapa vive en @/lib/payments/config: no volver a copiarlo aquí.
       const planLabel = PLAN_DISPLAY[planKey].label
       const cycleLabel = CICLO_LABEL[sub.billing_cycle ?? 'monthly'] ?? 'Mensual'
       const amount = Math.round(sub.price_mxn / 100)

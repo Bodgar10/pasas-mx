@@ -21,7 +21,7 @@
 import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/payments/stripe'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
-import { PRICE_TO_PLAN } from '@/lib/payments/config'
+import { PRICE_TO_PLAN, CICLO_LABEL } from '@/lib/payments/config'
 import { sendEmail } from '@/lib/email/resend'
 import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
 import { welcomeTemplate } from '@/lib/email/templates/welcome'
@@ -184,7 +184,7 @@ export async function POST(request: Request) {
         try {
           const { data: userProfile } = await supabase
             .from('users')
-            .select('full_name, email')
+            .select('full_name, email, parent_name')
             .eq('id', userId)
             .single()
 
@@ -197,9 +197,13 @@ export async function POST(request: Request) {
               to: userProfile.email,
               subject: '¡Bienvenido a Pasas.mx! 🎮',
               html: welcomeTemplate({
-                userName: userProfile.full_name?.split(' ')[0] ?? 'Estudiante',
+                studentName: userProfile.full_name?.split(' ')[0] ?? 'Estudiante',
+                parentName: userProfile.parent_name?.split(' ')[0] ?? null,
                 planName: planInfo.plan === 'grade' ? 'Estándar' : 'Personalizado',
                 trialEndsAt: trialEndsAtFormatted,
+                // priceAmount viene en CENTAVOS de Stripe.
+                amount: Math.round(priceAmount / 100),
+                billingCycle: CICLO_LABEL[planInfo.duration] ?? 'Mensual',
               }),
             })
           }
@@ -342,11 +346,6 @@ export async function POST(request: Request) {
           const user = (Array.isArray(subRow?.users) ? subRow?.users[0] : subRow?.users) as { full_name: string; email: string } | null
           if (user?.email) {
             const amount = Math.round((subRow?.price_mxn ?? 0) / 100)
-            const CICLO_LABEL: Record<string, string> = {
-              monthly: 'Mensual',
-              semestral: 'Semestral',
-              annual: 'Anual',
-            }
             const cycleLabel = CICLO_LABEL[subRow?.billing_cycle ?? 'monthly'] ?? 'Mensual'
             const nextRenewal = new Date(rawEnd * 1000).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
 

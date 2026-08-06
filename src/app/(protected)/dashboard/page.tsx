@@ -30,7 +30,17 @@ export default async function DashboardPage() {
       .maybeSingle(),
   ])
 
-  if (!profile?.onboarding_done) redirect('/onboarding')
+  // 🔴 La MISMA derivación que hace el middleware. No leer el flag a secas.
+  //
+  // `onboarding_done` es una caché que puede nacer en false aunque los datos
+  // estén completos. Cuando este guardia leía solo el flag y el middleware
+  // sí derivaba, los dos discrepaban y el usuario rebotaba entre /dashboard
+  // y /onboarding sin fin: el middleware lo dejaba pasar, esta línea lo
+  // devolvía, y vuelta a empezar.
+  //
+  // Si algún día cambia la regla, cambia en los DOS sitios.
+  const datosCompletos = !!profile?.education_level && profile?.grade != null
+  if (!profile?.onboarding_done && !datosCompletos) redirect('/onboarding')
 
   // Determine subscription status
   let subscriptionStatus: SubscriptionStatus = 'no_subscription'

@@ -1,6 +1,7 @@
 'use client'
 
-import { useActionState, useState } from 'react'
+import { useActionState, useState, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { loginAction, type LoginState } from './actions'
 import { createClient } from '@/utils/supabase/client'
@@ -26,6 +27,38 @@ const inputStyle = {
 
 const inputClass =
   'w-full rounded-xl px-4 text-base placeholder-[#4B3D6E] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]/30 transition-all'
+
+/**
+ * Aviso para quien llega desde un enlace de correo que ya no sirve.
+ *
+ * El caso frecuente NO es que haya caducado: los clientes de correo hacen
+ * prefetch del enlace para previsualizarlo, y eso consume el token de un
+ * solo uso. Cuando la persona toca, ya está gastado — aunque hayan pasado
+ * diez segundos.
+ *
+ * Lo importante: su cuenta SÍ quedó confirmada, porque el prefetch ejecutó
+ * el callback. Solo tiene que iniciar sesión. De ahí el tono: no es un
+ * error suyo ni hay nada que reparar.
+ */
+function AvisoEnlace() {
+  const error = useSearchParams().get('error')
+  if (error !== 'link_usado' && error !== 'auth') return null
+
+  return (
+    <div
+      className="rounded-xl px-4 py-3 text-sm"
+      style={{
+        backgroundColor: 'rgba(251,191,36,0.08)',
+        color: '#fbbf24',
+        border: '1px solid rgba(251,191,36,0.2)',
+        lineHeight: 1.6,
+      }}
+    >
+      Ese enlace ya se usó. Tu cuenta quedó confirmada — entra aquí con tu
+      correo y contraseña y seguimos donde ibas.
+    </div>
+  )
+}
 
 export default function LoginPage() {
   const [state, formAction, pending] = useActionState<LoginState, FormData>(
@@ -77,6 +110,11 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
+
+      {/* Aviso de enlace gastado. En Suspense porque useSearchParams lo exige. */}
+      <Suspense fallback={null}>
+        <AvisoEnlace />
+      </Suspense>
 
       {/* Form */}
       <form action={formAction} className="space-y-4" onSubmit={() => trackLogin('email')}>

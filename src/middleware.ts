@@ -79,21 +79,28 @@ export async function middleware(request: NextRequest) {
     if (profile) {
       if (!claimsReady) {
         role = profile.role ?? 'student'
-
-        // 🔴 `onboarding_done` NO es la fuente de verdad: es una caché.
-        //
-        // Solo lo escribe auth/callback, y el callback puede salirse antes de
-        // llegar a esa rama —por ejemplo al redirigir a /autorizar-menor cuando
-        // falta la firma del tutor—. Si eso pasa, el flag se queda en false para
-        // siempre aunque los datos ya estén guardados, y el usuario entra en un
-        // ciclo: middleware → /onboarding → no hay nada que llenar → dashboard →
-        // middleware. Pasó con una cuenta que ya había pagado.
-        //
-        // La verdad son los datos. Si hay nivel y grado, el onboarding está
-        // hecho, lo diga el flag o no. No revertir esto a leer solo el flag.
-        const datosCompletos = !!profile.education_level && profile.grade != null
-        onboardingDone = (profile.onboarding_done ?? false) || datosCompletos
       }
+
+      // 🔴 `onboarding_done` NO es la fuente de verdad: es una caché.
+      //
+      // Solo lo escribe auth/callback, y el callback puede salirse antes de
+      // llegar a esa rama —por ejemplo al redirigir a /autorizar-menor cuando
+      // falta la firma del tutor—. Si eso pasa, el flag se queda en false para
+      // siempre aunque los datos ya estén guardados, y el usuario entra en un
+      // ciclo: middleware → /onboarding → no hay nada que llenar → dashboard →
+      // middleware. Pasó con una cuenta que ya había pagado.
+      //
+      // La verdad son los datos. Si hay nivel y grado, el onboarding está
+      // hecho, lo diga el flag o no.
+      //
+      // 🔴 VA FUERA DEL `!claimsReady`, igual que tosAccepted y parentalPending.
+      // Estaba DENTRO y por eso el arreglo de la s26 no servía: cuando el JWT
+      // trae claims, el bloque entero se salta y onboardingDone se queda con
+      // el `false` del token, sin llegar nunca a mirar los datos reales.
+      // El JWT puede traer un flag viejo; la base no.
+      const datosCompletos = !!profile.education_level && profile.grade != null
+      onboardingDone = (profile.onboarding_done ?? false) || datosCompletos
+
       tosAccepted = !!profile.tos_accepted_at
       parentalPending = profile.parental_consent_status === 'pending'
       parentalToken = profile.parental_consent_token ?? null

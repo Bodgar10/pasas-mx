@@ -5,7 +5,14 @@ import { NextResponse, type NextRequest } from 'next/server'
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/dashboard'
+  // 🔴 Solo rutas internas. `//evil.com` y `https://evil.com` son redirecciones
+  // externas que los navegadores siguen: un enlace de confirmación manipulado
+  // llevaría a un sitio ajeno con la sesión recién creada.
+  const nextRaw = searchParams.get('next')
+  const next =
+    nextRaw && nextRaw.startsWith('/') && !nextRaw.startsWith('//')
+      ? nextRaw
+      : '/dashboard'
 
   if (code) {
     const cookieStore = await cookies()
@@ -28,6 +35,17 @@ export async function GET(request: NextRequest) {
     )
 
     const { error } = await supabase.auth.exchangeCodeForSession(code)
+
+    if (error) {
+      // 🔴 Sin esto, seis causas distintas —enlace caducado, código YA
+      // CONSUMIDO por el prefetch del cliente de correo, red caída— caen
+      // en el mismo /login?error=auth y no queda rastro de cuál fue.
+      console.error('[auth/callback] exchangeCodeForSession falló:', {
+        code: error.code,
+        status: error.status,
+        message: error.message,
+      })
+    }
 
     if (!error) {
       const { data: { user } } = await supabase.auth.getUser()
@@ -132,5 +150,9 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  return NextResponse.redirect(`${origin}/login?error=auth`)
+  // El caso más común no es un error: el enlace ya se usó. Los clientes de
+  // correo hacen prefetch para previsualizar y eso consume el token de un
+  // solo uso, así que cuando la persona toca, ya está gastado. Se distingue
+  // para que /login pueda decir algo útil en vez de un login pelón.
+  return NextResponse.redirect(`${origin}/login?error=link_usado`)
 }

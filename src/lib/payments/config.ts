@@ -42,6 +42,18 @@ export const PRICE_TO_PLAN: Record<string, { plan: string; duration: string }> =
 }
 
 // ---------------------------------------------------------------------------
+// CICLO → ETIQUETA — FUENTE ÚNICA
+// Las claves son los valores del enum billing_cycle de la base y los que
+// produce PRICE_TO_PLAN. Estaba copiado a mano en el cron de PROFECO y en el
+// recibo de pago; al añadir el correo de bienvenida iba a ser la tercera copia.
+// ---------------------------------------------------------------------------
+export const CICLO_LABEL: Record<string, string> = {
+  monthly:   'Mensual',
+  semestral: 'Semestral',
+  annual:    'Anual',
+}
+
+// ---------------------------------------------------------------------------
 // DURATION IN MONTHS
 // Used to calculate period_end for one-time payments if needed.
 // ---------------------------------------------------------------------------
