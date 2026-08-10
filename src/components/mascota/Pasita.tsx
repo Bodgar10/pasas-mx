@@ -160,8 +160,12 @@ export default function Pasita({
           position: 'absolute',
           // El origen del rig es la esquina del cuerpo, pero el lienzo empieza
           // en -MARGEN para que quepan los brazos que sobresalen.
+          // 🔴 Los DOS ejes en % del ANCHO. Nunca % de la altura: si algo de
+          // fuera estira el contenedor (un minHeight, un flex que crece), los
+          // porcentajes verticales se estiran también y las piezas se
+          // desparraman. El ancho es lo único que este componente controla.
           left: `${((x + MARGEN.x) / VIEWBOX.w) * 100}%`,
-          top: `${((y + MARGEN.y) / VIEWBOX.h) * 100}%`,
+          top: `${((y + MARGEN.y) / VIEWBOX.w) * 100}%`,
           width: ancho ? `${(ancho / VIEWBOX.w) * 100}%` : undefined,
           height: 'auto',
           pointerEvents: 'none',
@@ -189,9 +193,16 @@ export default function Pasita({
       data-animacion={animacion}
       style={{
         position: 'relative',
+        // Medidas fijas y no negociables: las piezas se posicionan respecto a
+        // esta caja, así que si un flex o un grid de fuera la estiran, el
+        // personaje se desarma. minWidth/minHeight impiden que la encoja.
         width: size,
         height: alto,
+        minWidth: size,
+        minHeight: alto,
         flexShrink: 0,
+        flexGrow: 0,
+        alignSelf: 'center',
         display: 'inline-block',
       }}
     >
