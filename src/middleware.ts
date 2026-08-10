@@ -71,11 +71,22 @@ export async function middleware(request: NextRequest) {
     !user.is_anonymous &&
     (isProtected(pathname) || pathname.startsWith('/onboarding'))
   ) {
-    const { data: profile } = await supabase
-      .from('users')
-      .select('role, onboarding_done, tos_accepted_at, parental_consent_status, parental_consent_token, education_level, grade')
-      .eq('id', user.id)
-      .single()
+    const [{ data: profile }, { data: learner }] = await Promise.all([
+      supabase
+        .from('users')
+        .select('role, onboarding_done, tos_accepted_at, parental_consent_status, parental_consent_token')
+        .eq('id', user.id)
+        .single(),
+      // 🔴 Nivel y grado viven en `learners`, no en `users`. Las columnas
+      // de `users` quedaron como LEGACY tras la migracion 035 y ya no se
+      // escriben: leerlas aqui congelaria el gate en el valor del backfill.
+      supabase
+        .from('learners')
+        .select('education_level, grade')
+        .eq('account_user_id', user.id)
+        .eq('is_primary', true)
+        .maybeSingle(),
+    ])
     if (profile) {
       if (!claimsReady) {
         role = profile.role ?? 'student'
@@ -98,7 +109,9 @@ export async function middleware(request: NextRequest) {
       // trae claims, el bloque entero se salta y onboardingDone se queda con
       // el `false` del token, sin llegar nunca a mirar los datos reales.
       // El JWT puede traer un flag viejo; la base no.
-      const datosCompletos = !!profile.education_level && profile.grade != null
+      // `grade != null` con `!=` es a proposito: cubre null y undefined
+      // pero NO el 0.
+      const datosCompletos = !!learner?.education_level && learner?.grade != null
       onboardingDone = (profile.onboarding_done ?? false) || datosCompletos
 
       tosAccepted = !!profile.tos_accepted_at

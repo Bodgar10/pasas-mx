@@ -6,6 +6,7 @@ import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { parseConsent } from '@/lib/legal'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
+import { upsertPrimaryLearner } from '@/lib/learners'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 export type RegistroState =
@@ -184,6 +185,24 @@ export async function registroAction(
       return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
     }
 
+    // El alumno se crea AQUI, no en auth/callback. El callback tiene
+    // varias salidas antes de llegar al final —redirige a
+    // /autorizar-menor, o el enlace se consume por el prefetch del
+    // cliente de correo— y cualquiera dejaria la cuenta sin alumno.
+    // Es exactamente el error que costo cerrar el loop de onboarding.
+    const learnerEarly = await upsertPrimaryLearner(serviceClientEarly, {
+      userId: user.id,
+      displayName: fullName,
+      educationLevel: (profileEarly.education_level as string) ?? null,
+      grade: (profileEarly.grade as number) ?? null,
+      themeName: (profileEarly.interests as string[] | undefined)?.[0] ?? null,
+    })
+
+    if (!learnerEarly) {
+      console.error('[registro] No se pudo crear el alumno de', user.id)
+      return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
+    }
+
     return { emailSent: true, email }
   }
 
@@ -223,6 +242,19 @@ export async function registroAction(
 
   if (profileUpdateError) {
     console.error('[registro] No se pudo guardar el perfil:', profileUpdateError)
+    return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
+  }
+
+  const learnerConfirmado = await upsertPrimaryLearner(serviceClient, {
+    userId: user.id,
+    displayName: fullName,
+    educationLevel: (profileUpdate.education_level as string) ?? null,
+    grade: (profileUpdate.grade as number) ?? null,
+    themeName: (profileUpdate.interests as string[] | undefined)?.[0] ?? null,
+  })
+
+  if (!learnerConfirmado) {
+    console.error('[registro] No se pudo crear el alumno de', user.id)
     return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
   }
 

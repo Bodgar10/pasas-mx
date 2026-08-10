@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { createClient as createServerClient } from '@/utils/supabase/server'
+import { getActiveLearnerId } from '@/lib/learners'
 
 export const dynamic = 'force-dynamic'
 
@@ -33,6 +34,11 @@ export async function POST(request: Request) {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
+  const learnerId = await getActiveLearnerId(supabase, user.id)
+  if (!learnerId) {
+    return NextResponse.json({ error: 'Sin alumno activo' }, { status: 409 })
+  }
+
   const { data: topic } = await admin
     .from('topics')
     .select('id, horde_ready')
@@ -46,7 +52,7 @@ export async function POST(request: Request) {
   const { data: existing } = await admin
     .from('horde_runs')
     .select('best_wave, attempts, waves_cleared, completed_at')
-    .eq('user_id', user.id)
+    .eq('learner_id', learnerId)
     .eq('topic_id', topicId)
     .maybeSingle()
 
@@ -55,6 +61,7 @@ export async function POST(request: Request) {
   const { error: upsertError } = await admin.from('horde_runs').upsert(
     {
       user_id: user.id,
+      learner_id: learnerId,
       topic_id: topicId,
       best_wave: existing?.best_wave ?? 0,
       attempts,
@@ -62,10 +69,11 @@ export async function POST(request: Request) {
       completed_at: existing?.completed_at ?? null,
       last_played_at: new Date().toISOString(),
     },
-    { onConflict: 'user_id,topic_id' }
+    { onConflict: 'learner_id,topic_id' }
   )
 
   if (upsertError) {
+    console.error('horde run upsert failed:', upsertError)
     return NextResponse.json({ error: 'No se pudo iniciar la horda' }, { status: 500 })
   }
 

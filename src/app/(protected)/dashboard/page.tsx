@@ -14,12 +14,18 @@ export default async function DashboardPage() {
 
   // Fetch profile and active subscription in parallel — both only need user.id
   const now = new Date().toISOString()
-  const [{ data: profile }, { data: subscription }] = await Promise.all([
+  const [{ data: profile }, { data: learner }, { data: subscription }] = await Promise.all([
     supabase
       .from('users')
-      .select('full_name, xp_total, streak_days, education_level, grade, onboarding_done, interests, last_level_seen')
+      .select('full_name, onboarding_done, interests')
       .eq('id', user.id)
       .single(),
+    supabase
+      .from('learners')
+      .select('id, xp_total, streak_days, education_level, grade, last_level_seen')
+      .eq('account_user_id', user.id)
+      .eq('is_primary', true)
+      .maybeSingle(),
     supabase
       .from('subscriptions')
       .select('status, current_period_end, plan, trial_ends_at, cancelled_at, billing_cycle, paused_until')
@@ -39,8 +45,15 @@ export default async function DashboardPage() {
   // devolvía, y vuelta a empezar.
   //
   // Si algún día cambia la regla, cambia en los DOS sitios.
-  const datosCompletos = !!profile?.education_level && profile?.grade != null
-  if (!profile?.onboarding_done && !datosCompletos) redirect('/onboarding')
+  const datosCompletos = !!learner?.education_level && learner?.grade != null
+
+  // `!profile` va aparte y NO forma parte de la derivacion: la regla de
+  // `datosCompletos` tiene que seguir siendo identica a la del middleware,
+  // o los dos discrepan y vuelve el bucle entre /dashboard y /onboarding.
+  //
+  // Sin fila en `users` no hay nombre ni consentimiento registrado, asi que
+  // el dashboard no deberia pintarse aunque el alumno este completo.
+  if (!profile || (!profile.onboarding_done && !datosCompletos)) redirect('/onboarding')
 
   // Determine subscription status
   let subscriptionStatus: SubscriptionStatus = 'no_subscription'
@@ -73,16 +86,20 @@ export default async function DashboardPage() {
         .order('display_order')
       return data ?? []
     },
-    [`subjects-${profile.education_level}-${profile.grade}`],
+    [`subjects-${learner?.education_level}-${learner?.grade}`],
     { revalidate: 300, tags: ['subjects'] }
   )
 
   // Fetch user-specific data + cached subjects in parallel
-  const [subjects, { data: userSubjects }, { data: lastActiveRows }] = await Promise.all([
-    getCachedSubjects(profile.education_level, profile.grade),
-    supabase.from('user_subjects').select('subject_id, xp, theme_id').eq('user_id', user.id),
-    supabase.rpc('get_last_active_topic', { p_user_id: user.id }),
+  const [subjects, { data: userSubjects }, { data: lastActiveRows, error: lastActiveError }] = await Promise.all([
+    getCachedSubjects(learner?.education_level ?? 'middle_school', learner?.grade ?? 1),
+    supabase.from('user_subjects').select('subject_id, xp, theme_id').eq('learner_id', learner?.id ?? ''),
+    supabase.rpc('get_last_active_topic', { p_learner_id: learner?.id ?? null }),
   ])
+
+  if (lastActiveError) {
+    console.error('[dashboard] get_last_active_topic fallo:', lastActiveError)
+  }
 
   const lastActiveRow = lastActiveRows?.[0] ?? null
   const lastActiveTopic: {
@@ -110,19 +127,19 @@ export default async function DashboardPage() {
   return (
     <DashboardClient
       levelUp={
-        xpToLevel(profile?.xp_total ?? 0).level > (profile?.last_level_seen ?? 1)
+        xpToLevel(learner?.xp_total ?? 0).level > (learner?.last_level_seen ?? 1)
           ? {
-              from: profile?.last_level_seen ?? 1,
-              to: xpToLevel(profile?.xp_total ?? 0).level,
+              from: learner?.last_level_seen ?? 1,
+              to: xpToLevel(learner?.xp_total ?? 0).level,
             }
           : null
       }
       profile={{
         name: profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
-        xp_total: profile.xp_total ?? 0,
-        streak_days: profile.streak_days ?? 0,
-        education_level: profile.education_level,
-        grade: profile.grade,
+        xp_total: learner?.xp_total ?? 0,
+        streak_days: learner?.streak_days ?? 0,
+        education_level: learner?.education_level,
+        grade: learner?.grade,
         interests: (profile.interests as string[] | null) ?? [],
       }}
       subscriptionStatus={subscriptionStatus}

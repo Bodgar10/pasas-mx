@@ -27,6 +27,7 @@ import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellatio
 import { welcomeTemplate } from '@/lib/email/templates/welcome'
 import { paymentReceiptTemplate } from '@/lib/email/templates/payment-receipt'
 import { sendMetaCapiEvent } from '@/lib/marketing/meta-capi'
+import { getActiveLearnerId } from '@/lib/learners'
 import { sendTikTokEvent } from '@/lib/marketing/tiktok-events'
 import Stripe from 'stripe'
 
@@ -223,15 +224,34 @@ export async function POST(request: Request) {
             if (userProfile?.education_level && userProfile?.grade) {
               const themeName = userProfile.interests?.[0] ?? null
 
-              // Resolve theme UUID from name
+              // El alumno tiene que existir ANTES de comprarle materias.
+              // user_subjects.learner_id es NOT NULL: sin esto el insert
+              // truena, el catch lo traga, y el usuario paga sin recibir
+              // nada. Se aborta con throw para que Stripe reintente en
+              // vez de dar el pago por bueno.
+              const learnerId = await getActiveLearnerId(supabase, userId)
+              if (!learnerId) {
+                console.error('[webhooks/stripe] Usuario pago sin alumno:', userId)
+                throw new Error('Sin alumno activo al crear user_subjects')
+              }
+
+              // Resolve theme UUID from name.
+              // ilike, no eq: una diferencia de mayuscula devolvia NULL y
+              // el insert reventaba contra theme_id NOT NULL.
+              // maybeSingle, no single: cero filas no es un error aqui.
               let themeId: string | null = null
               if (themeName) {
                 const { data: themeRow } = await supabase
                   .from('themes')
                   .select('id')
-                  .eq('name', themeName)
-                  .single()
+                  .ilike('name', themeName)
+                  .maybeSingle()
                 themeId = themeRow?.id ?? null
+              }
+
+              if (!themeId) {
+                console.error('[webhooks/stripe] Tematica sin resolver:', themeName, userId)
+                throw new Error('No se pudo resolver la tematica')
               }
 
               // Fetch all subjects for this education level and grade
@@ -244,6 +264,7 @@ export async function POST(request: Request) {
               if (subjects && subjects.length > 0) {
                 const userSubjectsRows = subjects.map((subject) => ({
                   user_id: userId,
+                  learner_id: learnerId,
                   subject_id: subject.id,
                   theme_id: themeId,
                   plan_type: 'grade',
@@ -252,12 +273,32 @@ export async function POST(request: Request) {
                   purchased_at: new Date().toISOString(),
                 }))
 
-                await supabase.from('user_subjects').insert(userSubjectsRows)
+                const { error: subjectsError } = await supabase
+                  .from('user_subjects')
+                  .upsert(userSubjectsRows, { onConflict: 'learner_id,subject_id' })
+
+                if (subjectsError) {
+                  console.error('[webhooks/stripe] Error insertando user_subjects:', subjectsError)
+                  throw subjectsError
+                }
+
                 console.log(`[webhooks/stripe] Created ${userSubjectsRows.length} user_subjects for user ${userId}`)
               }
             }
           } catch (err) {
+            // Se re-lanza a proposito. El catch externo devuelve 500 y eso
+            // es lo que hace que Stripe reintente el webhook.
+            //
+            // Aqui ya se cobro el dinero. Tragarse el error significa un
+            // cliente pagando por un dashboard vacio, sin una sola alarma:
+            // exactamente el patron de los tres bugs de facturacion de s27,
+            // donde el fallo estaba en datos que nadie miraba.
+            //
+            // Los otros try/catch de este handler (correos, tracking) SI se
+            // tragan su error a proposito: un correo que no sale no invalida
+            // un pago. Este bloque es el acceso al producto.
             console.error('[webhooks/stripe] Error creating user_subjects:', err)
+            throw err
           }
         }
 

@@ -7,8 +7,9 @@ export default async function PerfilPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const [{ data: profile }, { data: subscription }] = await Promise.all([
-    supabase.from('users').select('full_name, email, xp_total, streak_days').eq('id', user.id).single(),
+  const [{ data: profile }, { data: learner }, { data: subscription }] = await Promise.all([
+    supabase.from('users').select('full_name, email').eq('id', user.id).single(),
+    supabase.from('learners').select('xp_total, streak_days').eq('account_user_id', user.id).eq('is_primary', true).maybeSingle(),
     supabase.from('subscriptions').select('plan, status, current_period_end, cancelled_at, paused_until, billing_cycle').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle(),
   ])
 
@@ -17,8 +18,8 @@ export default async function PerfilPage() {
       profile={{
         fullName: profile?.full_name ?? '',
         email: user.email ?? '',
-        xpTotal: profile?.xp_total ?? 0,
-        streakDays: profile?.streak_days ?? 0,
+        xpTotal: learner?.xp_total ?? 0,
+        streakDays: learner?.streak_days ?? 0,
       }}
       subscription={subscription ? {
         plan: subscription.plan,

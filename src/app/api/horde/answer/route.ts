@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { createClient as createServerClient } from '@/utils/supabase/server'
+import { getActiveLearnerId } from '@/lib/learners'
 
 export const dynamic = 'force-dynamic'
 
@@ -46,6 +47,11 @@ export async function POST(request: Request) {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
+  const learnerId = await getActiveLearnerId(supabase, user.id)
+  if (!learnerId) {
+    return NextResponse.json({ error: 'Sin alumno activo' }, { status: 409 })
+  }
+
   const [{ data: question }, { data: topicRow }] = await Promise.all([
     admin
       .from('horde_questions')
@@ -70,6 +76,7 @@ export async function POST(request: Request) {
   // horda vienen de horde_questions. El id real va en metadata.
   const { error: insertError } = await admin.from('progress').insert({
     user_id: user.id,
+    learner_id: learnerId,
     topic_id: topicId,
     event_type: 'horde_answered',
     result: isCorrect,
@@ -97,7 +104,7 @@ export async function POST(request: Request) {
   const { data: waveAnswers } = await admin
     .from('progress')
     .select('result, metadata')
-    .eq('user_id', user.id)
+    .eq('learner_id', learnerId)
     .eq('topic_id', topicId)
     .eq('event_type', 'horde_answered')
     .eq('attempt', attempt)
@@ -118,7 +125,7 @@ export async function POST(request: Request) {
   const { data: run } = await admin
     .from('horde_runs')
     .select('best_wave, waves_cleared, completed_at')
-    .eq('user_id', user.id)
+    .eq('learner_id', learnerId)
     .eq('topic_id', topicId)
     .maybeSingle()
 
@@ -154,7 +161,7 @@ export async function POST(request: Request) {
         completed_at: finished ? (run?.completed_at ?? new Date().toISOString()) : run?.completed_at ?? null,
         last_played_at: new Date().toISOString(),
       })
-      .eq('user_id', user.id)
+      .eq('learner_id', learnerId)
       .eq('topic_id', topicId)
 
     if (xpEarned > 0) {
@@ -162,6 +169,7 @@ export async function POST(request: Request) {
       if (firstTime) {
         events.push({
           user_id: user.id,
+          learner_id: learnerId,
           topic_id: topicId,
           event_type: 'horde_wave_cleared',
           result: true,
@@ -173,6 +181,7 @@ export async function POST(request: Request) {
       if (finished && !run?.completed_at) {
         events.push({
           user_id: user.id,
+          learner_id: learnerId,
           topic_id: topicId,
           event_type: 'horde_completed',
           result: true,
@@ -181,11 +190,14 @@ export async function POST(request: Request) {
           metadata: { wave },
         })
       }
-      await admin.from('progress').insert(events)
-      await admin.rpc('increment_xp', { uid: user.id, amount: xpEarned })
+      const { error: eventsError } = await admin.from('progress').insert(events)
+      if (eventsError) {
+        console.error('horde xp events insert failed:', eventsError)
+      }
+      await admin.rpc('increment_learner_xp', { lid: learnerId, amount: xpEarned })
       if (topicRow?.subject_id) {
         await admin.rpc('increment_subject_xp', {
-          uid: user.id,
+          lid: learnerId,
           sid: topicRow.subject_id,
           amount: xpEarned,
         })

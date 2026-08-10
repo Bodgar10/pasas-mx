@@ -29,7 +29,12 @@ export default async function SubjectPage({
   // Fetch subject + profile in parallel, subject is cached
   const [subject, { data: profile }] = await Promise.all([
     getCachedSubject(subjectSlug),
-    supabase.from('users').select('grade, education_level').eq('id', user.id).single(),
+    supabase
+      .from('learners')
+      .select('id, grade, education_level')
+      .eq('account_user_id', user.id)
+      .eq('is_primary', true)
+      .maybeSingle(),
   ])
 
   if (!subject) return notFound()
@@ -62,13 +67,13 @@ export default async function SubjectPage({
       ? supabase
           .from('topic_progress')
           .select('*')
-          .eq('user_id', user.id)
+          .eq('learner_id', profile?.id ?? '')
           .in('topic_id', topicIds)
       : Promise.resolve({ data: [] }),
     supabase
       .from('user_subjects')
       .select('xp')
-      .eq('user_id', user.id)
+      .eq('learner_id', profile?.id ?? '')
       .eq('subject_id', subject.id)
       .maybeSingle(),
   ])

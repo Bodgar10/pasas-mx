@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
+import { getActiveLearnerId } from '@/lib/learners'
 
 export async function POST(request: Request) {
   try {
@@ -17,11 +18,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
     }
 
+    const learnerId = await getActiveLearnerId(supabase, user.id)
+    if (!learnerId) {
+      return NextResponse.json({ error: 'Sin alumno activo' }, { status: 409 })
+    }
+
     // Idempotency check
     const { data: existing } = await supabase
       .from('progress')
       .select('id')
-      .eq('user_id', user.id)
+      .eq('learner_id', learnerId)
       .eq('event_type', 'section_read')
       .filter('metadata->>section_id', 'eq', section_id)
       .maybeSingle()
@@ -30,8 +36,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ xp_earned: 0, already_read: true })
     }
 
-    await supabase.from('progress').insert({
+    const { error: progressError } = await supabase.from('progress').insert({
       user_id: user.id,
+      learner_id: learnerId,
       topic_id,
       event_type: 'section_read',
       xp_earned: 10,
@@ -39,15 +46,19 @@ export async function POST(request: Request) {
       attempt: 1,
       metadata: { section_id },
     })
+    if (progressError) {
+      console.error('section-read progress insert failed:', progressError)
+      return NextResponse.json({ error: 'No se pudo guardar el avance' }, { status: 500 })
+    }
 
-    await supabase.rpc('increment_xp', { uid: user.id, amount: 10 })
-    await supabase.rpc('increment_subject_xp', { uid: user.id, sid: subject_id, amount: 10 })
+    await supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 10 })
+    await supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 10 })
 
     // --- Streak logic ---
     const { data: userRecord } = await supabase
-      .from('users')
+      .from('learners')
       .select('streak_days, last_active_at')
-      .eq('id', user.id)
+      .eq('id', learnerId)
       .single()
 
     const now = new Date()
@@ -83,17 +94,17 @@ export async function POST(request: Request) {
 
     if (streakEvent !== 'none') {
       await supabase
-        .from('users')
+        .from('learners')
         .update({
           streak_days: newStreak,
           last_active_at: now.toISOString(),
         })
-        .eq('id', user.id)
+        .eq('id', learnerId)
     } else {
       await supabase
-        .from('users')
+        .from('learners')
         .update({ last_active_at: now.toISOString() })
-        .eq('id', user.id)
+        .eq('id', learnerId)
     }
     // --- End streak logic ---
 
@@ -108,7 +119,7 @@ export async function POST(request: Request) {
     const { count: readCount } = await supabase
       .from('progress')
       .select('id', { count: 'exact', head: true })
-      .eq('user_id', user.id)
+      .eq('learner_id', learnerId)
       .eq('topic_id', topic_id)
       .eq('event_type', 'section_read')
 
@@ -121,13 +132,14 @@ export async function POST(request: Request) {
     const { data: topicProgress } = await supabase
       .from('topic_progress')
       .select('status, best_score')
-      .eq('user_id', user.id)
+      .eq('learner_id', learnerId)
       .eq('topic_id', topic_id)
       .maybeSingle()
 
     if (!topicProgress) {
       await supabase.from('topic_progress').insert({
         user_id: user.id,
+        learner_id: learnerId,
         topic_id,
         status: 'in_progress',
         best_score: readingPercent,
@@ -142,7 +154,7 @@ export async function POST(request: Request) {
           best_score: readingPercent,
           updated_at: new Date().toISOString(),
         })
-        .eq('user_id', user.id)
+        .eq('learner_id', learnerId)
         .eq('topic_id', topic_id)
     } else if (topicProgress.status === 'in_progress') {
       const newScore = Math.max(topicProgress.best_score ?? 0, readingPercent)
@@ -152,7 +164,7 @@ export async function POST(request: Request) {
           best_score: newScore,
           updated_at: new Date().toISOString(),
         })
-        .eq('user_id', user.id)
+        .eq('learner_id', learnerId)
         .eq('topic_id', topic_id)
     }
     // If status === 'completed' → do nothing, quiz score wins

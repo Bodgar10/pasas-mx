@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextResponse, type NextRequest } from 'next/server'
+import { upsertPrimaryLearner } from '@/lib/learners'
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url)
@@ -59,6 +60,38 @@ export async function GET(request: NextRequest) {
 
         if (profile?.role === 'admin') {
           return NextResponse.redirect(`${origin}/admin`)
+        }
+
+        // Red de seguridad para el alta con Google OAuth: no pasa por
+        // /registro ni por /onboarding, asi que sin esto la cuenta nace
+        // sin alumno y no puede escribir en ninguna tabla de progreso.
+        try {
+          const { createClient: createServiceClientLearner } = await import('@supabase/supabase-js')
+          const serviceLearner = createServiceClientLearner(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+          )
+
+          const { data: learnerExistente } = await serviceLearner
+            .from('learners')
+            .select('id')
+            .eq('account_user_id', user.id)
+            .eq('is_primary', true)
+            .maybeSingle()
+
+          if (!learnerExistente) {
+            await upsertPrimaryLearner(serviceLearner, {
+              userId: user.id,
+              displayName: profile?.full_name ?? user.email?.split('@')[0] ?? 'Alumno',
+              educationLevel: profile?.education_level ?? null,
+              grade: profile?.grade ?? null,
+              themeName: null,
+            })
+          }
+        } catch (err) {
+          // No se corta el flujo: la persona ya tiene sesion y /onboarding
+          // vuelve a intentarlo con el mismo helper.
+          console.error('[auth/callback] No se pudo crear el alumno:', err)
         }
 
         // Si el perfil existe pero onboarding_done es false, completarlo.

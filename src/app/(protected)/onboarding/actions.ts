@@ -2,6 +2,8 @@
 
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { upsertPrimaryLearner } from '@/lib/learners'
 
 type OnboardingData = {
   level: string
@@ -50,6 +52,28 @@ export async function saveOnboarding(data: OnboardingData): Promise<OnboardingRe
     return { error: 'No pudimos guardar tu información. Intenta de nuevo.' }
   }
 
+  const admin = createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+  const { data: perfil } = await admin
+    .from('users')
+    .select('full_name')
+    .eq('id', user.id)
+    .single()
+
+  const learnerId = await upsertPrimaryLearner(admin, {
+    userId: user.id,
+    displayName: perfil?.full_name ?? 'Alumno',
+    educationLevel: educationLevel,
+    grade,
+    themeName: data.theme,
+  })
+
+  if (!learnerId) {
+    return { error: 'No pudimos guardar tu información. Intenta de nuevo.' }
+  }
+
   await supabase.auth.updateUser({ data: { onboarding_done: true } })
 
   redirect('/dashboard')
@@ -88,6 +112,28 @@ export async function saveOnboardingData(data: OnboardingData): Promise<SaveResu
     .eq('id', user.id)
 
   if (updateError) {
+    return { error: 'No pudimos guardar tu información. Intenta de nuevo.' }
+  }
+
+  const admin = createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+  const { data: perfil } = await admin
+    .from('users')
+    .select('full_name')
+    .eq('id', user.id)
+    .single()
+
+  const learnerId = await upsertPrimaryLearner(admin, {
+    userId: user.id,
+    displayName: perfil?.full_name ?? 'Alumno',
+    educationLevel: educationLevel,
+    grade,
+    themeName: data.theme,
+  })
+
+  if (!learnerId) {
     return { error: 'No pudimos guardar tu información. Intenta de nuevo.' }
   }
 
