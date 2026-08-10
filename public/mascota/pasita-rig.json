@@ -1,0 +1,234 @@
+{
+  "_nota": "Coordenadas en unidades del SVG del cuerpo. El origen es la esquina superior izquierda del cuerpo; los valores negativos son correctos (un brazo a la izquierda del cuerpo tiene x negativa).",
+  "lienzo": [
+    113,
+    182
+  ],
+  "anclas_fijas": {
+    "boca-01.svg": {
+      "x": 41.9,
+      "y": 173.6,
+      "concuerdan": 6,
+      "mediciones": 8,
+      "rmse_min": 4.2
+    },
+    "boca-03.svg": {
+      "x": 43.2,
+      "y": 108.0,
+      "concuerdan": 3,
+      "mediciones": 8,
+      "rmse_min": 1.0
+    },
+    "ceja-der01.svg": {
+      "x": 64.8,
+      "y": 60.7,
+      "concuerdan": 2,
+      "mediciones": 3,
+      "rmse_min": 1.0
+    },
+    "ceja-der02.svg": {
+      "x": 65.2,
+      "y": 59.8,
+      "concuerdan": 4,
+      "mediciones": 7,
+      "rmse_min": 1.0
+    },
+    "ceja-izq01.svg": {
+      "x": 22.5,
+      "y": 60.7,
+      "concuerdan": 2,
+      "mediciones": 3,
+      "rmse_min": 1.0
+    },
+    "ceja-izq02.svg": {
+      "x": 22.2,
+      "y": 59.8,
+      "concuerdan": 4,
+      "mediciones": 7,
+      "rmse_min": 1.0
+    },
+    "ojo-der01.svg": {
+      "x": 62.9,
+      "y": 75.3,
+      "concuerdan": 2,
+      "mediciones": 2,
+      "rmse_min": 29.1
+    },
+    "ojo-der04.svg": {
+      "x": 20.0,
+      "y": 75.2,
+      "concuerdan": 2,
+      "mediciones": 3,
+      "rmse_min": 18.5
+    },
+    "ojo-izq01.svg": {
+      "x": 19.4,
+      "y": 73.6,
+      "concuerdan": 3,
+      "mediciones": 3,
+      "rmse_min": 33.5
+    },
+    "ojo-izq04.svg": {
+      "x": 20.0,
+      "y": 75.2,
+      "concuerdan": 2,
+      "mediciones": 3,
+      "rmse_min": 18.5
+    },
+    "pie-der01.svg": {
+      "x": 69.4,
+      "y": 170.7,
+      "concuerdan": 6,
+      "mediciones": 6,
+      "rmse_min": 33.3
+    },
+    "pie-izq01.svg": {
+      "x": -7.4,
+      "y": 170.7,
+      "concuerdan": 6,
+      "mediciones": 6,
+      "rmse_min": 35.4
+    },
+    "sombra-01.svg": {
+      "x": 10.1,
+      "y": 11.9,
+      "concuerdan": 8,
+      "mediciones": 8,
+      "rmse_min": 10.9
+    },
+    "sombra-02.svg": {
+      "x": 4.0,
+      "y": 3.0,
+      "concuerdan": 2,
+      "mediciones": 2,
+      "rmse_min": 34.4
+    }
+  },
+  "por_revisar": {
+    "boca-02.svg": {
+      "x": 42.5,
+      "y": 93.5,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 11.3
+    },
+    "boca-04.svg": {
+      "x": 40.0,
+      "y": 107.5,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 28.9
+    },
+    "ceja-izq03.svg": {
+      "x": 27.1,
+      "y": 59.6,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 58.8
+    },
+    "ojo-der02.svg": {
+      "x": 63.3,
+      "y": 71.3,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 20.6
+    },
+    "ojo-der03.svg": {
+      "x": 63.2,
+      "y": 66.1,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 36.5
+    },
+    "ojo-izq02.svg": {
+      "x": 63.3,
+      "y": 71.3,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 20.6
+    },
+    "ojo-izq03.svg": {
+      "x": 24.3,
+      "y": 64.6,
+      "concuerdan": 1,
+      "mediciones": 1,
+      "rmse_min": 26.3
+    }
+  },
+  "brazos_por_pagina": {
+    "pag-03": {
+      "brazo-der01.svg": {
+        "x": 102.5,
+        "y": 98.9,
+        "rmse": 30.7
+      },
+      "brazo-izq01.svg": {
+        "x": -26.2,
+        "y": 98.9,
+        "rmse": 57.7
+      }
+    },
+    "pag-08": {
+      "brazo-der01.svg": {
+        "x": 101.4,
+        "y": 100.4,
+        "rmse": 37.8
+      },
+      "brazo-izq05.svg": {
+        "x": -12.5,
+        "y": 99.6,
+        "rmse": 40.8
+      }
+    },
+    "pag-10": {
+      "brazo-der01.svg": {
+        "x": 101.1,
+        "y": 100.4,
+        "rmse": 37.8
+      },
+      "brazo-izq07.svg": {
+        "x": -47.5,
+        "y": 38.2,
+        "rmse": 54.1
+      }
+    },
+    "pag-04": {
+      "brazo-der02.svg": {
+        "x": 99.6,
+        "y": 19.6,
+        "rmse": 59.4
+      }
+    },
+    "pag-06": {
+      "brazo-der03.svg": {
+        "x": 95.4,
+        "y": 61.4,
+        "rmse": 52.9
+      },
+      "brazo-izq01.svg": {
+        "x": -25.4,
+        "y": 88.2,
+        "rmse": 36.6
+      }
+    },
+    "pag-09": {
+      "brazo-der06.svg": {
+        "x": 105.4,
+        "y": 106.8,
+        "rmse": 31.6
+      },
+      "brazo-izq06.svg": {
+        "x": -54.3,
+        "y": 94.6,
+        "rmse": 39.5
+      }
+    },
+    "pag-05": {
+      "brazo-izq03.svg": {
+        "x": -7.5,
+        "y": 102.1,
+        "rmse": 31.4
+      }
+    }
+  }
+}
