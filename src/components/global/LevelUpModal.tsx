@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Confetti from './Confetti'
+import Pasita from '@/components/mascota/Pasita'
 
 interface Props {
   from: number
@@ -69,8 +70,11 @@ export default function LevelUpModal({ from, to }: Props) {
           fontFamily: 'var(--font-nunito)',
         }}
       >
-        <div style={{ fontSize: 64, lineHeight: 1, marginBottom: 12 }} aria-hidden="true">
-          ⭐
+        {/* El momento más celebratorio del producto. 'saltar' se dispara una
+            vez al montar el modal, que es exactamente cuando ocurre.
+            <Pasita> directa y no diferida: el modal ya está en pantalla. */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+          <Pasita pose="celebrando" size={130} animacion="saltar" />
         </div>
         <div
           style={{

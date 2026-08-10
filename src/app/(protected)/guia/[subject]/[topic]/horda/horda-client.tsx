@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Confetti from '@/components/global/Confetti'
+import Pasita from '@/components/mascota/Pasita'
 
 interface Option {
   letter: string
@@ -233,8 +234,10 @@ export default function HordaClient({
     return (
       <Shell>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: 56, marginBottom: 8 }} aria-hidden="true">
-            🧟
+          {/* La pose zombie sustituye al emoji: cicatriz, tornillos y lengua
+              fuera. Cuenta de qué va el modo antes de leer las reglas. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+            <Pasita pose="zombie" size={130} animacion="flotar" />
           </div>
           <h1 style={h1Style}>Modo Horda</h1>
           <p style={{ fontSize: 14, color: '#a78bfa', margin: '0 0 24px', fontWeight: 600 }}>
@@ -363,8 +366,10 @@ export default function HordaClient({
       <Shell>
         <Confetti />
         <div style={{ textAlign: 'center', padding: '20px 0' }}>
-          <div style={{ fontSize: 64, marginBottom: 12 }} aria-hidden="true">
-            🏆
+          {/* Sobrevivir las 6 oleadas es el logro más grande del modo, así que
+              lleva la pose de celebración y no el trofeo genérico. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+            <Pasita pose="celebrando" size={140} animacion="saltar" />
           </div>
           <h1 style={{ ...h1Style, color: '#fbbf24' }}>¡Sobreviviste!</h1>
           <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 24px', fontWeight: 600 }}>

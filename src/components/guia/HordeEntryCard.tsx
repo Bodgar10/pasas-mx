@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Pasita from '@/components/mascota/Pasita'
 
 interface HordeEntryCardProps {
   href: string
@@ -51,17 +52,31 @@ export default function HordeEntryCard({
         </span>
       </div>
 
+      {/* La Pasita a la derecha del título, no encima: esta tarjeta vive
+          dentro de la página del tema, entre otro contenido, y un personaje
+          centrado a cuerpo entero rompería el ritmo de la lista.
+          A 64px la silueta se lee y la cicatriz todavía se distingue. */}
       <div
         style={{
-          fontFamily: 'var(--font-orbitron)',
-          fontSize: 19,
-          fontWeight: 900,
-          color: '#e2d9f3',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
           marginBottom: played ? 12 : 6,
-          lineHeight: 1.3,
         }}
       >
-        Modo Horda
+        <div
+          style={{
+            fontFamily: 'var(--font-orbitron)',
+            fontSize: 19,
+            fontWeight: 900,
+            color: '#e2d9f3',
+            lineHeight: 1.3,
+          }}
+        >
+          Modo Horda
+        </div>
+        <Pasita pose="zombie" size={64} />
       </div>
 
       {played ? (

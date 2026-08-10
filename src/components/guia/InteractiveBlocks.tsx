@@ -1,5 +1,7 @@
 'use client'
 
+import Pasita from '@/components/mascota/Pasita'
+
 import React, { useState, useEffect, useRef } from 'react'
 
 // Tipos de sección que llevan audio narrado (bloques de texto).
@@ -732,7 +734,12 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
   if (done) {
     return (
       <div style={{ padding: '18px 16px', textAlign: 'center' }}>
-        <div style={{ fontSize: 40, marginBottom: 8 }} aria-hidden="true">✏️</div>
+        {/* Terminar todos los ejercicios es el logro del bloque.
+            80px y no más: esto vive dentro de un contenedor estrecho, no en
+            una página completa. */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+          <Pasita pose="celebrando" size={80} animacion="saltar" />
+        </div>
         <div style={{ fontSize: 16, color: '#6ee7b7', fontWeight: 800, fontFamily: 'var(--font-nunito)' }}>
           Terminaste los {total} ejercicios
         </div>
@@ -882,8 +889,14 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
 
       {state === 'right' && (
         <>
+          {/* Pulgar arriba al acertar. A 64px y en fila con el texto: el
+              alumno está en mitad de una tanda de ejercicios y una
+              celebración a pantalla completa cada vez que acierta cansa. */}
           <div
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
               padding: '11px 14px',
               borderRadius: 10,
               background: 'rgba(16,185,129,0.12)',
@@ -895,6 +908,7 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
               fontFamily: 'var(--font-nunito)',
             }}
           >
+            <Pasita pose="aprobando" size={64} parpadea={false} />
             ✓ ¡Correcto!
           </div>
           <button type="button" onClick={next} style={nextBtnStyle}>

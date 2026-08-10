@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import Logo from '@/components/global/Logo'
+import Pasita from '@/components/mascota/Pasita'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
 type Stats = {
@@ -185,6 +186,13 @@ function PreviewContent() {
           >
             {theme}
           </span>
+        </div>
+
+        {/* La Pasita presentando lo que viene. Es el momento en que el
+            visitante ve por primera vez qué contiene su grado, así que la
+            pose confiada acompaña sin celebrar todavía. */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
+          <Pasita pose="confiada" size={100} animacion="flotar" />
         </div>
 
         {/* C) Main preview card */}

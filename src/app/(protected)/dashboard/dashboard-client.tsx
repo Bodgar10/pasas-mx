@@ -1,6 +1,7 @@
 'use client'
 
 import LevelUpModal from '@/components/global/LevelUpModal'
+import Pasita from '@/components/mascota/Pasita'
 import { xpToLevel, levelProgress } from '@/lib/gamification'
 
 import { useState, useEffect } from 'react'
@@ -256,21 +257,31 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 PASAS.MX
               </p>
 
-              {/* Greeting */}
-              <p style={{ fontSize: 16, color: '#a78bfa', margin: '0 0 4px', fontWeight: 600 }}>
-                Bienvenido de vuelta,
-              </p>
-              <p
-                style={{
-                  fontSize: 24,
-                  fontWeight: 900,
-                  color: '#e2d9f3',
-                  margin: 0,
-                  paddingRight: 56,
-                }}
-              >
-                {profile.name}
-              </p>
+              {/* Greeting.
+                  La Pasita a la izquierda del nombre, a 56px: es el tamaño en
+                  que la pose compacta se diseñó para leerse. Va con <Pasita>
+                  directa —no diferida— porque está por encima del pliegue.
+                  Sin parpadeo a este tamaño: a 56px los ojos son unos pocos
+                  píxeles y el cambio se lee como un fallo de la pantalla, no
+                  como algo vivo. */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingRight: 56 }}>
+                <Pasita pose="compacta" size={56} parpadea={false} />
+                <div>
+                  <p style={{ fontSize: 16, color: '#a78bfa', margin: '0 0 4px', fontWeight: 600 }}>
+                    Bienvenido de vuelta,
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 24,
+                      fontWeight: 900,
+                      color: '#e2d9f3',
+                      margin: 0,
+                    }}
+                  >
+                    {profile.name}
+                  </p>
+                </div>
+              </div>
 
               {/* Avatar with dropdown */}
               <div
@@ -556,7 +567,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     💰 Ahorra $695 al año
                   </p>
                   <p style={{ fontSize: 13, color: '#a78bfa', margin: 0, lineHeight: 1.5 }}>
-                    Cámbiarte al plan semestral y paga solo $133/mes
+                    Cámbiate al plan semestral y paga solo $133/mes
                   </p>
                 </div>
                 <button
@@ -723,6 +734,19 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                   marginBottom: 24,
                 }}
               >
+                {/* La Pasita solo en el banner de "aún no tienes plan", NO en
+                    el de plan vencido.
+                    A quien acaba de llegar, el dashboard se le ve vacío —sin
+                    XP, sin racha, sin progreso— y la mascota le pone cara a
+                    una pantalla que si no está muerta. A quien se le venció el
+                    plan, en cambio, un personaje animándolo mientras se le
+                    pide dinero se lee como presión, no como compañía. */}
+                {!isExpiredBanner && (
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+                    <Pasita pose="confiada" size={110} animacion="flotar" />
+                  </div>
+                )}
+
                 <p
                   style={{
                     fontFamily: 'var(--font-orbitron)',
@@ -731,6 +755,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     color: isExpiredBanner ? '#fbbf24' : '#e2d9f3',
                     margin: '0 0 8px',
                     lineHeight: 1.3,
+                    textAlign: isExpiredBanner ? 'left' : 'center',
                   }}
                 >
                   {isExpiredBanner ? EXPIRED_TITLE : NO_SUB_TITLE}

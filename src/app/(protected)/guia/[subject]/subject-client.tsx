@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Pasita from '@/components/mascota/Pasita'
 
 interface Subject {
   id: string
@@ -513,8 +514,13 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
             gap: 14,
           }}
         >
-          <div style={{ fontSize: isDesktop ? 34 : 30, lineHeight: 1, flexShrink: 0 }} aria-hidden="true">
-            🧟
+          {/* Mismo patrón que HordeEntryCard: la zombie a un lado, no centrada.
+              Este banner vive dentro de una lista larga y un personaje a cuerpo
+              entero en el centro rompería el ritmo de lectura.
+              NO ponerla en la cabecera de arriba: es position:sticky y la
+              dejaría fija en pantalla durante todo el scroll. */}
+          <div style={{ flexShrink: 0 }}>
+            <Pasita pose="zombie" size={isDesktop ? 56 : 50} parpadea={false} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 800, marginBottom: 3 }}>
