@@ -177,8 +177,11 @@ const PLANS = [
 ]
 
 /**
- * CTA intermedio. Deliberadamente MÁS DISCRETO que el del hero y el final:
- * borde en vez de relleno, sin degradado ni sombra.
+ * CTA intermedio. Morado sólido, un escalón por debajo del hero y el cierre,
+ * que llevan degradado a rosa y resplandor.
+ *
+ * Se probó primero con solo borde y se descartó: a media página, sin relleno,
+ * no se leía como una invitación — pasaba desapercibido.
  *
  * Si los cuatro botones de la página pesaran igual, se leería como un anuncio
  * y el del final —el que cierra— perdería su condición de remate. Estos dos
@@ -205,22 +208,25 @@ function CTAIntermedio({
         prefetch={true}
         onClick={() => onClick(location)}
         style={{
-          background: 'transparent',
-          border: `1.5px solid ${COLORS.primary}66`,
-          color: COLORS.primary,
+          background: COLORS.primary,
+          border: 'none',
+          color: '#fff',
           borderRadius: RADIUS.xl,
-          padding: '14px 24px',
+          padding: '16px 24px',
           fontFamily: FONTS.nunito,
-          fontWeight: 800,
-          fontSize: 15,
+          fontWeight: 900,
+          fontSize: 16,
           cursor: 'pointer',
           width: '100%',
-          minHeight: 52,
+          minHeight: 54,
+          // Sombra suave, no el resplandor de 32px de los CTAs principales:
+          // se lee como botón sin quitarle el remate al del cierre.
+          boxShadow: `0 4px 20px ${COLORS.primary}44`,
           textDecoration: 'none',
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'background 0.2s ease, border-color 0.2s ease',
+          transition: 'transform 0.15s ease, box-shadow 0.15s ease',
         }}
       >
         {texto}
