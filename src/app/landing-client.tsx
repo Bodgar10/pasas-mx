@@ -14,6 +14,7 @@ import Logo from '@/components/global/Logo'
 import Image from 'next/image'
 import DemoPistas from '@/components/landing/DemoPistas'
 import DemoHorda from '@/components/landing/DemoHorda'
+import Pasita from '@/components/mascota/Pasita'
 import { createClient } from '@/utils/supabase/client'
 
 // ── A/B hero variants ──────────────────────────────────────────────
@@ -333,9 +334,20 @@ export default function LandingClient() {
           <h1 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(28px, 8vw, 42px)', lineHeight: 1.15, marginBottom: 20, whiteSpace: 'pre-line', background: `linear-gradient(135deg, ${COLORS.text} 0%, ${COLORS.muted} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             {hero.h1}
           </h1>
-          <p style={{ fontSize: 17, lineHeight: 1.6, color: COLORS.muted, marginBottom: 36, fontWeight: 600 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.6, color: COLORS.muted, marginBottom: 24, fontWeight: 600 }}>
             {hero.sub}
           </p>
+
+          {/* La Pasita presentándose.
+              Va con <Pasita> y no con <PasitaLazy>: está por encima del pliegue
+              y diferirla la haría aparecer con retraso, justo donde el visitante
+              está mirando. Es la única de la landing que se carga de entrada.
+              'flotar' es lento y sutil — a esta altura de la página compite con
+              el CTA si se mueve demasiado. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+            <Pasita pose="confiada" size={140} animacion="flotar" />
+          </div>
+
           <Link
             href="/onboarding"
             prefetch={true}
