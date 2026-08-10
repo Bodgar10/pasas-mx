@@ -141,8 +141,13 @@ export default function Pasita({
           detrás; los que deben verse delante ya vienen dibujados con su propio
           contorno y funcionan igual. */}
       {receta.aura && pieza(receta.aura, -44, -37, 'aura')}
-      {receta.propias.map((p) => pieza(p.src, p.x, p.y, p.src))}
+      {receta.propias
+        .filter((p) => !p.delante)
+        .map((p) => pieza(p.src, p.x, p.y, p.src))}
       {pieza(receta.cuerpo, 0, 0, 'cuerpo')}
+      {receta.propias
+        .filter((p) => p.delante)
+        .map((p) => pieza(p.src, p.x, p.y, p.src))}
       {ancladas.map((src, i) => {
         const a = ANCLAS[src]
         if (!a) return null

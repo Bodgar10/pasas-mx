@@ -33,7 +33,20 @@ export const VIEWBOX = {
   h: LIENZO.h + MARGEN.y * 2,
 } as const
 
-type Pieza = { src: string; x: number; y: number }
+type Pieza = {
+  src: string
+  x: number
+  y: number
+  /**
+   * Se pinta DELANTE del cuerpo en vez de detrás.
+   *
+   * Por defecto los brazos van detrás, que es lo correcto para las manos en
+   * cintura: el brazo pasa por atrás y solo asoma la mano. Pero cuando el
+   * brazo cruza por encima del cuerpo —el de pensativa llega hasta la
+   * barbilla— quedar detrás lo hace desaparecer.
+   */
+  delante?: boolean
+}
 
 /**
  * Anclas fijas: viven siempre en el mismo punto del cuerpo.
@@ -135,7 +148,7 @@ export const POSES: Record<PoseId, Pose> = {
   },
   pensativa: {
     cuerpo: 'Cuerpo/cuerpo-01.svg',
-    propias: [{ src: 'Brazos/brazo-izq03.svg', x: -7.5, y: 102.1 }],
+    propias: [{ src: 'Brazos/brazo-izq03.svg', x: -7.5, y: 102.1, delante: true }],
     ancladas: [
       'pies/pie-der01.svg', 'pies/pie-izq01.svg',
       'Cejas/ceja-der02.svg', 'Cejas/ceja-izq02.svg',
@@ -160,8 +173,8 @@ export const POSES: Record<PoseId, Pose> = {
     cuerpo: 'Cuerpo/cuerpo-01.svg',
     aura: 'Aura/Aura-morado.svg',
     propias: [
-      { src: 'Brazos/brazo-der04.svg', x: 101.4, y: 100.4 },
-      { src: 'Brazos/brazo-izq05.svg', x: -12.5, y: 99.6 },
+      { src: 'Brazos/brazo-der04.svg', x: 101.4, y: 100.4, delante: true },
+      { src: 'Brazos/brazo-izq05.svg', x: -12.5, y: 99.6, delante: true },
     ],
     ancladas: [
       'pies/pie-der01.svg', 'pies/pie-izq01.svg',
