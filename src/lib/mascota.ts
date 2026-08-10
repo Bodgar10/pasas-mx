@@ -173,8 +173,8 @@ export const POSES: Record<PoseId, Pose> = {
     cuerpo: 'Cuerpo/cuerpo-01.svg',
     aura: 'Aura/Aura-morado.svg',
     propias: [
-      { src: 'Brazos/brazo-der04.svg', x: 101.4, y: 100.4, delante: true },
-      { src: 'Brazos/brazo-izq05.svg', x: -12.5, y: 99.6, delante: true },
+      { src: 'Brazos/brazo-der04.svg', x: 62.0, y: 99.6, delante: true },
+      { src: 'Brazos/brazo-izq05.svg', x: 9.0, y: 99.6, delante: true },
     ],
     ancladas: [
       'pies/pie-der01.svg', 'pies/pie-izq01.svg',
