@@ -15,6 +15,7 @@ import Image from 'next/image'
 import DemoPistas from '@/components/landing/DemoPistas'
 import DemoHorda from '@/components/landing/DemoHorda'
 import Pasita from '@/components/mascota/Pasita'
+import PasitaLazy from '@/components/mascota/PasitaLazy'
 import { createClient } from '@/utils/supabase/client'
 
 // ── A/B hero variants ──────────────────────────────────────────────
@@ -174,6 +175,62 @@ const PLANS = [
     highlight: true,
   }] : []),
 ]
+
+/**
+ * CTA intermedio. Deliberadamente MÁS DISCRETO que el del hero y el final:
+ * borde en vez de relleno, sin degradado ni sombra.
+ *
+ * Si los cuatro botones de la página pesaran igual, se leería como un anuncio
+ * y el del final —el que cierra— perdería su condición de remate. Estos dos
+ * solo están para que quien ya se convenció a media página no tenga que
+ * seguir bajando ni volver arriba.
+ *
+ * 🔴 Cada uno con su propio `location`: es lo que permite ver en PostHog cuál
+ * argumento convence. Si el de después de las demos gana, eso dice que lo
+ * jugable es lo que vende.
+ */
+function CTAIntermedio({
+  texto,
+  location,
+  onClick,
+}: {
+  texto: string
+  location: string
+  onClick: (location: string) => void
+}) {
+  return (
+    <div style={{ padding: '0 24px 64px', maxWidth: 520, margin: '0 auto' }}>
+      <Link
+        href="/onboarding"
+        prefetch={true}
+        onClick={() => onClick(location)}
+        style={{
+          background: 'transparent',
+          border: `1.5px solid ${COLORS.primary}66`,
+          color: COLORS.primary,
+          borderRadius: RADIUS.xl,
+          padding: '14px 24px',
+          fontFamily: FONTS.nunito,
+          fontWeight: 800,
+          fontSize: 15,
+          cursor: 'pointer',
+          width: '100%',
+          minHeight: 52,
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s ease, border-color 0.2s ease',
+        }}
+      >
+        {texto}
+      </Link>
+      <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.55 }}>
+        7 días gratis · Cancela cuando quieras
+      </p>
+    </div>
+  )
+}
 
 // ── Section wrapper with fade-in ───────────────────────────────────
 function FadeSection({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
@@ -368,6 +425,11 @@ export default function LandingClient() {
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.primary, textTransform: 'uppercase', marginBottom: 8 }}>Papel y lápiz</p>
+          {/* La pose del lápiz existe exactamente para esta sección. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+            <PasitaLazy pose="lapiz" size={110} />
+          </div>
+
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
             Aquí no te quedas atorado.
           </h2>
@@ -388,6 +450,12 @@ export default function LandingClient() {
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8 }}>Modo Horda</p>
+          {/* La zombie: cicatriz, tornillos y lengua fuera. Cuenta de qué va
+              el Modo Horda antes de leer una sola palabra. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+            <PasitaLazy pose="zombie" size={110} animacion="flotar" />
+          </div>
+
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
             ¿Examen el viernes?
           </h2>
@@ -404,10 +472,23 @@ export default function LandingClient() {
         </section>
       </FadeSection>
 
+      {/* Justo después de las dos demos jugables: ya probó el producto. */}
+      <FadeSection>
+        <CTAIntermedio
+          texto="Ya lo probaste. Entra gratis →"
+          location="post_demos"
+          onClick={handleCTA}
+        />
+      </FadeSection>
+
       {/* ── NO ES LEER, ES JUGAR ── */}
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>Dentro de cada tema</p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+            <PasitaLazy pose="celebrando" size={110} />
+          </div>
+
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
             No es leer. Es jugar.
           </h2>
@@ -554,6 +635,15 @@ export default function LandingClient() {
         </section>
       </FadeSection>
 
+      {/* Ya vio capturas reales de la plataforma: sabe exactamente qué compra. */}
+      <FadeSection>
+        <CTAIntermedio
+          texto="Así se va a ver tu cuenta. Empieza gratis →"
+          location="post_capturas"
+          onClick={handleCTA}
+        />
+      </FadeSection>
+
       {/* ── TUTORIAL ── */}
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
@@ -655,9 +745,14 @@ export default function LandingClient() {
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
             ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes.<br />Un maestro particular cobra eso por una hora.
           </h2>
-          <p style={{ textAlign: 'center', fontSize: 14, color: COLORS.muted, marginBottom: 40, lineHeight: 1.6 }}>
+          <p style={{ textAlign: 'center', fontSize: 14, color: COLORS.muted, marginBottom: 24, lineHeight: 1.6 }}>
             Sin contrato. Cancela cuando quieras. Sin letras chiquitas.
           </p>
+
+          {/* Pulgar arriba sobre el precio: es donde el visitante duda. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+            <PasitaLazy pose="aprobando" size={100} />
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             {PLANS.map((plan, i) => (
               <div key={i} style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.card} 0%, ${COLORS.card2} 100%)` : COLORS.card, borderRadius: RADIUS.xxl, padding: '28px 24px', border: `1.5px solid ${plan.highlight ? plan.color + '66' : COLORS.inputBorder}`, position: 'relative', overflow: 'hidden' }}>
@@ -706,6 +801,13 @@ export default function LandingClient() {
         <section style={{ padding: '80px 24px 100px', textAlign: 'center', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translateX(-50%)', width: 280, height: 280, background: `radial-gradient(circle, ${COLORS.pink}22 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
           <div style={{ position: 'relative', maxWidth: 440, margin: '0 auto' }}>
+            {/* El remate: la pose con aura, la más llamativa del kit.
+                Se guardó para el final a propósito — si apareciera antes,
+                el cierre no tendría nada que no se hubiera visto ya. */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+              <PasitaLazy pose="flexionando" size={150} animacion="flotar" />
+            </div>
+
             <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 32px)', marginBottom: 16, color: COLORS.text }}>
               Una semana gratis.<br />Si no te late, te sales y ya.
             </h2>
