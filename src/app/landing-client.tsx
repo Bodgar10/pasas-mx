@@ -473,7 +473,7 @@ export default function LandingClient() {
           <DemoHorda onAvanzar={() => track('landing_demo_horda')} />
 
           <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
-            7,320 preguntas en 244 temas de secundaria. Prepa en camino.
+            17,370 preguntas en los 579 temas. Secundaria y prepa completas.
           </p>
         </section>
       </FadeSection>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Pasita from '@/components/mascota/Pasita'
 import { POSES, type PoseId } from '@/lib/mascota'
+import { notFound } from 'next/navigation'
 
 /**
  * Taller de la Pasita. Solo desarrollo.
@@ -24,12 +25,15 @@ const FONDOS = [
 ]
 
 export default function TallerPasita() {
-  // ⚠️ Esta ruta está ABIERTA en producción a propósito: el ajuste del rig se
-  // hace en pasas.mx, no en local. No está enlazada desde ningún sitio, así
-  // que solo llega quien escribe la URL.
+  // En producción esta ruta no existe. Se comprueba en el cliente porque la
+  // página es 'use client'; con NODE_ENV el bundler la elimina del bundle.
   //
-  // 🔴 Pendiente de lanzamiento: volver a cerrarla. Va en la lista de
-  // bloqueadores junto a quitar el resto de rutas de desarrollo.
+  // Estuvo abierta el 10 ago 2026 para ajustar el rig contra pasas.mx, y se
+  // volvió a cerrar el mismo día. Si hace falta reabrirla —una pieza nueva de
+  // Samuel, una pose que no cuadra— basta con quitar esta línea, pero hay que
+  // acordarse de reponerla.
+  if (process.env.NODE_ENV === 'production') notFound()
+
   const [size, setSize] = useState(160)
   const [anim, setAnim] = useState<(typeof ANIMACIONES)[number]>('ninguna')
   const [fondo, setFondo] = useState(FONDOS[0].color)
