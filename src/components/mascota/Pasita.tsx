@@ -45,6 +45,56 @@ interface Props {
 
 const BASE = '/mascota/'
 
+/**
+ * Ancho natural de cada pieza, en las mismas unidades que el cuerpo (114x181).
+ * Sale del viewBox de cada SVG.
+ *
+ * Existe porque el navegador no conoce el tamaño de un SVG hasta cargarlo, y
+ * esperar a la carga para posicionar produciría un salto visible. Con el ancho
+ * declarado, la pasita aparece armada desde el primer fotograma.
+ *
+ * ⚠️ Si Samuel entrega una pieza nueva, hay que añadirla aquí. Sin su ancho la
+ * pieza se dibuja a tamaño intrínseco y queda descuadrada. Para obtener los
+ * valores: grep -o 'viewBox="[^"]*"' en la carpeta public/mascota.
+ */
+const ANCHOS: Record<string, number> = {
+  'Cuerpo/cuerpo-01.svg': 114, 'Cuerpo/cuerpo-02.svg': 114,
+
+  'Ojos/ojo-der01.svg': 31, 'Ojos/ojo-izq01.svg': 31,
+  'Ojos/ojo-der02.svg': 28, 'Ojos/ojo-izq02.svg': 28,
+  'Ojos/ojo-der03.svg': 26, 'Ojos/ojo-izq03.svg': 27,
+  'Ojos/ojo-der04.svg': 31, 'Ojos/ojo-izq04.svg': 31,
+
+  'Cejas/ceja-der01.svg': 26, 'Cejas/ceja-izq01.svg': 26,
+  'Cejas/ceja-der02.svg': 26, 'Cejas/ceja-izq02.svg': 26,
+  'Cejas/ceja-der03.svg': 24, 'Cejas/ceja-izq03.svg': 24,
+
+  'Boca/boca-01.svg': 30, 'Boca/boca-02.svg': 30,
+  'Boca/boca-03.svg': 28, 'Boca/boca-04.svg': 32,
+
+  'Brazos/brazo-der01.svg': 38, 'Brazos/brazo-izq01.svg': 37,
+  'Brazos/brazo-der02.svg': 55, 'Brazos/brazo-izq02.svg': 55,
+  'Brazos/brazo-der03.svg': 65, 'Brazos/brazo-izq03.svg': 64,
+  'Brazos/brazo-der04.svg': 52, 'Brazos/brazo-izq04.svg': 52,
+  'Brazos/brazo-izq05.svg': 43, 'Brazos/brazo-der06.svg': 47,
+  'Brazos/brazo-izq06.svg': 58, 'Brazos/brazo-izq07.svg': 52,
+
+  'pies/pie-der01.svg': 50, 'pies/pie-izq01.svg': 50,
+  'Sombra/sombra-01.svg': 100, 'Sombra/sombra-02.svg': 108,
+
+  'Aura/Aura-morado.svg': 202, 'Aura/Aura-fuego.svg': 202,
+
+  // Flamas sueltas. No se usan todavía: el aura ya viene como pieza única.
+  // Están aquí para cuando se quiera animarlas por separado en la racha.
+  'Aura/flama-1.svg': 9,  'Aura/flama-2.svg': 11, 'Aura/flama-3.svg': 8,
+  'Aura/flama-4.svg': 8,  'Aura/flama-5.svg': 7,  'Aura/flama-6.svg': 11,
+  'Aura/flama-7.svg': 10,
+  'Aura/flama-morada-1.svg': 9,  'Aura/flama-morada-2.svg': 11,
+  'Aura/flama-morada-3.svg': 8,  'Aura/flama-morada-4.svg': 8,
+  'Aura/flama-morada-5.svg': 7,  'Aura/flama-morada-6.svg': 11,
+  'Aura/flama-morada-7.svg': 10,
+}
+
 export default function Pasita({
   pose = 'compacta',
   size = 120,
@@ -86,31 +136,40 @@ export default function Pasita({
 
   const alto = Math.round((size * VIEWBOX.h) / VIEWBOX.w)
 
-  /** Coloca una pieza en coordenadas del lienzo del cuerpo. */
-  const pieza = (src: string, x: number, y: number, key: string) => (
-    <img
-      key={key}
-      src={BASE + src}
-      alt=""
-      aria-hidden="true"
-      draggable={false}
-      style={{
-        position: 'absolute',
-        // El origen del rig es la esquina del cuerpo, pero el lienzo empieza
-        // en -MARGEN para que quepan los brazos que sobresalen.
-        left: `${((x + MARGEN.x) / VIEWBOX.w) * 100}%`,
-        top: `${((y + MARGEN.y) / VIEWBOX.h) * 100}%`,
-        width: 'auto',
-        height: 'auto',
-        // Las piezas conservan su tamaño natural en unidades del rig; el
-        // factor de escala lo aplica el contenedor.
-        transform: `scale(${size / VIEWBOX.w})`,
-        transformOrigin: 'top left',
-        pointerEvents: 'none',
-        userSelect: 'none',
-      }}
-    />
-  )
+  /**
+   * Coloca una pieza en coordenadas del lienzo del cuerpo.
+   *
+   * 🔴 TODO en porcentaje del contenedor: posición Y tamaño. No usar
+   * transform: scale() — se aplica después de posicionar y sobre el tamaño
+   * intrínseco del archivo, así que posición y tamaño dejan de ir
+   * sincronizados: a 250 px se ve bien y a 80 px las piezas se separan.
+   *
+   * Al dar el ancho en %, el navegador escala el SVG solo y respeta su
+   * proporción. Por eso la altura va en 'auto'.
+   */
+  const pieza = (src: string, x: number, y: number, key: string) => {
+    const ancho = ANCHOS[src]
+    return (
+      <img
+        key={key}
+        src={BASE + src}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        style={{
+          position: 'absolute',
+          // El origen del rig es la esquina del cuerpo, pero el lienzo empieza
+          // en -MARGEN para que quepan los brazos que sobresalen.
+          left: `${((x + MARGEN.x) / VIEWBOX.w) * 100}%`,
+          top: `${((y + MARGEN.y) / VIEWBOX.h) * 100}%`,
+          width: ancho ? `${(ancho / VIEWBOX.w) * 100}%` : undefined,
+          height: 'auto',
+          pointerEvents: 'none',
+          userSelect: 'none',
+        }}
+      />
+    )
+  }
 
   // Sustitución de ojos durante el parpadeo. Solo afecta a las piezas de ojo:
   // las cejas y la boca se quedan como están, que es lo que hace una cara real.
