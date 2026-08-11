@@ -14,9 +14,15 @@ interface Props {
    * sin razon para el otro.
    */
   activeSlot?: number
+  /**
+   * Nombre del alumno que subio. Con varios alumnos, "SUBISTE DE NIVEL"
+   * en segunda persona hace que el titular —que suele ser el papa o la
+   * mama— lo lea como suyo.
+   */
+  learnerName?: string
 }
 
-export default function LevelUpModal({ from, to, activeSlot = 1 }: Props) {
+export default function LevelUpModal({ from, to, activeSlot = 1, learnerName }: Props) {
   const [open, setOpen] = useState(true)
   const [saving, setSaving] = useState(false)
 
@@ -97,7 +103,7 @@ export default function LevelUpModal({ from, to, activeSlot = 1 }: Props) {
             marginBottom: 6,
           }}
         >
-          SUBISTE DE NIVEL
+          {learnerName ? `${learnerName} SUBIÓ DE NIVEL` : 'SUBISTE DE NIVEL'}
         </div>
         <div
           style={{

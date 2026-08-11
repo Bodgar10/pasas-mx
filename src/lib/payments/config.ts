@@ -24,6 +24,27 @@ export const STRIPE_PRICES = {
   },
 } as const
 
+/**
+ * Prices exclusivos de los Lugares Adicionales.
+ *
+ * 🔴 Existen porque Stripe rechaza dos subscription items con el mismo
+ * price en una misma suscripcion: "A new item with Price X can't be
+ * added because an existing Subscription Item is already using that
+ * Price". El asiento no puede reusar el price del titular.
+ *
+ * Los MONTOS son identicos a los de lista. El 50% lo sigue poniendo el
+ * cupon SEAT_50, asi que `precioAsiento` no cambia y no hay un numero
+ * nuevo que pueda desincronizarse de lo que anuncia la pantalla.
+ *
+ * NO entran en PRICE_TO_PLAN: esa tabla la usa el webhook para decidir
+ * que plan guardar en `subscriptions`, y un asiento no crea suscripcion.
+ */
+export const STRIPE_SEAT_PRICES = {
+  monthly:   process.env.STRIPE_PRICE_SEAT_MONTHLY!,
+  semestral: process.env.STRIPE_PRICE_SEAT_SEMESTRAL!,
+  annual:    process.env.STRIPE_PRICE_SEAT_ANNUAL!,
+} as const
+
 export type PlanKey = keyof typeof STRIPE_PRICES
 export type DurationKey = keyof typeof STRIPE_PRICES.estandar_v2
 

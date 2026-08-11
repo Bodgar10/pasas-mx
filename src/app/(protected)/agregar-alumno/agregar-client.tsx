@@ -711,9 +711,10 @@ export default function AgregarClient({ alumnos, themes }: Props) {
                   <span style={{ fontSize: 13, color: '#e2d9f3', lineHeight: 1.6 }}>
                     Acepto que se cobre ${formatoMXN(preview.proratedNow)} a mi tarjeta hoy y que
                     mi cobro {ciclo} pase a ${formatoMXN(preview.recurringTotal)} a partir del{' '}
-                    {fechaLarga(preview.nextRenewal)}. Entiendo que el descuento del 50% aplica
-                    mientras mantenga activo el lugar principal: si lo cancelo, este lugar pasa a
-                    precio de lista en la siguiente renovación, con aviso previo.
+                    {fechaLarga(preview.nextRenewal)}. Entiendo que este lugar depende del
+                    principal: si cancelo mi suscripción se da de baja junto con ella, sin cobros
+                    posteriores. Si después quiero quitar solo a esta persona, puedo darla de baja
+                    desde mi perfil sin afectar las demás.
                   </span>
                 </label>
               </>

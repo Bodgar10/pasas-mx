@@ -603,6 +603,7 @@ export default function PerfilClient({ profile, alumnos, subscription }: Props) 
               {showCancelFlow && subscription?.currentPeriodEnd && (
                 <CancellationFlow
                   periodEnd={new Date(subscription.currentPeriodEnd)}
+                  totalLugares={alumnos.filter((a) => a.status === 'active').length}
                   onClose={() => setShowCancelFlow(false)}
                   onCancelled={() => setWasCancelled(true)}
                 />

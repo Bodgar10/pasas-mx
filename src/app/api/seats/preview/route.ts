@@ -21,7 +21,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
 import {
-  STRIPE_PRICES,
+  STRIPE_SEAT_PRICES,
   MAX_SEATS,
   SEAT_DISCOUNT_COUPON,
   PLAN_DB_A_STRIPE,
@@ -78,11 +78,15 @@ export async function GET() {
     )
   }
 
-  // 4. El price del asiento es el del titular. Mismo mapa que add.
+  // 4. El asiento usa su propio price. Mismo que add: si aqui se
+  //    previsualiza con uno y alla se cobra con otro, el monto que ve el
+  //    usuario deja de ser el que se cobra.
+  //
+  //    planStripe se conserva para dos cosas: validar que el plan admite
+  //    asientos ('exam' no esta en el mapa) y resolver el precio de
+  //    lista con precioAsiento mas abajo.
   const planStripe = PLAN_DB_A_STRIPE[sub.plan]
-  const priceId = planStripe
-    ? STRIPE_PRICES[planStripe][sub.billing_cycle as DurationKey]
-    : undefined
+  const priceId = STRIPE_SEAT_PRICES[sub.billing_cycle as DurationKey]
 
   if (!planStripe || !priceId) {
     console.error('[seats/preview] sin price para', sub.plan, sub.billing_cycle)

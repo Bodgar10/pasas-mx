@@ -184,8 +184,13 @@ export default function TerminosPage() {
               <li>
                 <strong className="text-white">Cuenta de Usuario:</strong>{' '}
                 Credencial de acceso y licencia obligatoria otorgada por
-                Pasas.mx que permitirá al alumno navegar por el portal educativo
-                y acceder de forma individual a sus lecciones y diagnósticos
+                Pasas.mx que permite el acceso al portal educativo. Una Cuenta
+                de Usuario comprende un Lugar principal y, en su caso, los
+                Lugares Adicionales que el Titular de la Cuenta contrate,
+                pudiendo cada uno de ellos corresponder a un Alumno distinto o a
+                un mismo Alumno cursando grados o niveles académicos diversos.
+                Cada Lugar conserva de forma independiente su grado, su temática
+                y su registro de avance, lecciones y diagnósticos
                 personalizados.
               </li>
               <li>
@@ -200,6 +205,18 @@ export default function TerminosPage() {
                 <strong className="text-white">Know-how:</strong> El término que
                 hace referencia al conjunto de habilidades, conocimientos
                 prácticos y experiencias acumuladas por Pasas.mx.
+              </li>
+              <li>
+                <strong className="text-white">Lugar Adicional:</strong>{' '}
+                Servicio complementario mediante el cual el Titular de la Cuenta
+                incorpora a una Cuenta de Usuario existente un Lugar de acceso
+                distinto del principal, destinado a un Alumno diverso o a un
+                mismo Alumno cursando otro grado o nivel académico. Cada Lugar
+                Adicional se contrata bajo la misma modalidad de pago del Lugar
+                principal, tiene su propio precio conforme a la cláusula 3.3 y
+                conserva de forma independiente su grado, temática y registro de
+                avance. Una Cuenta de Usuario admite un máximo de 3 (tres)
+                Lugares, incluido el principal.
               </li>
               <li>
                 <strong className="text-white">LFDA:</strong> Ley Federal del
@@ -580,6 +597,27 @@ export default function TerminosPage() {
               Pasas.mx no asume responsabilidad directa ni actúa como
               intermediario en el procesamiento de dichos pagos.
             </p>
+            <p>
+              El Titular de la Cuenta podrá contratar Lugares Adicionales en
+              cualquier momento durante la vigencia de su suscripción. Todo
+              Lugar Adicional se contrata bajo la misma modalidad de pago
+              —mensual, semestral o anual— que el Lugar principal, sin que sea
+              posible combinar modalidades distintas dentro de una misma Cuenta
+              de Usuario.
+            </p>
+            <p>
+              La contratación de un Lugar Adicional a mitad de un periodo ya
+              iniciado genera un cargo inmediato y proporcional, calculado
+              únicamente sobre los días que resten del periodo en curso. Dicho
+              importe, así como el monto que corresponderá a la siguiente
+              renovación, se informan de manera expresa, clara y desglosada al
+              Titular de la Cuenta antes de que confirme la contratación, y su
+              aceptación se recaba mediante consentimiento expreso, dejándose
+              constancia de la fecha y hora de dicha aceptación. A partir de la
+              renovación inmediata siguiente, el Lugar Adicional se cobra de
+              forma conjunta con el Lugar principal, en una sola exhibición y en
+              la misma fecha de corte.
+            </p>
 
             <h3 className="pt-2 font-medium text-white">3.3. Precios y moneda</h3>
             <p>
@@ -591,6 +629,27 @@ export default function TerminosPage() {
             <p>
               Los planes de suscripción semestral y anual cuentan con tarifas
               preferenciales respecto a la modalidad mensual.
+            </p>
+            <p>
+              Cada Lugar Adicional tiene un precio equivalente al 50% (cincuenta
+              por ciento) del precio vigente publicado para el plan y la
+              modalidad contratados. Esta reducción no constituye una promoción
+              temporal: se mantiene de forma permanente durante toda la vigencia
+              del Lugar Adicional, incluidas sus renovaciones sucesivas, y no
+              está sujeta a plazo de vencimiento.
+            </p>
+            <p>
+              El precio reducido del Lugar Adicional está condicionado a la
+              existencia de un Lugar principal vigente dentro de la misma Cuenta
+              de Usuario. Los Lugares Adicionales constituyen un servicio
+              accesorio del Lugar principal y no subsisten de forma
+              independiente: la cancelación de la suscripción produce la baja
+              simultánea de todos ellos, conforme al numeral 4 de la cláusula
+              3.4, sin que se genere cobro alguno posterior a dicha
+              cancelación. Si el Titular de la Cuenta desea prescindir
+              únicamente de uno de los Lugares conservando los demás, deberá
+              utilizar la baja individual prevista en dicho numeral, y no la
+              cancelación de la suscripción.
             </p>
             <p>
               Pasas.mx podrá, a su absoluta discreción, implementar promociones
@@ -612,7 +671,15 @@ export default function TerminosPage() {
                 elegida (mensual, semestral o anual). El monto del cobro será el
                 precio vigente publicado en el Sitio para el plan seleccionado.
                 Para las modalidades semestral o anual, el precio se mantendrá
-                fijo durante la vigencia del periodo contratado.
+                fijo durante la vigencia del periodo contratado. La contratación
+                de un Lugar Adicional no modifica el precio del plan previamente
+                contratado, el cual permanece invariable: constituye la
+                contratación de un servicio complementario, con su propio precio
+                y su propio consentimiento expreso, cuyo importe se suma al del
+                plan a partir de la renovación inmediata siguiente. El aviso de
+                renovación a que se refiere el numeral siguiente informará el
+                monto total a cobrar, desglosando el correspondiente al Lugar
+                principal y el de cada Lugar Adicional vigente.
               </li>
               <li>
                 Pasas.mx realizará el cobro de manera automática. Para ello,
@@ -636,6 +703,24 @@ export default function TerminosPage() {
                 automáticas subsecuentes y el Usuario mantendrá el derecho de
                 acceso al servicio hasta la conclusión del periodo previamente
                 pagado.
+              </li>
+              <li>
+                La baja de un Lugar Adicional constituye una operación distinta
+                de la cancelación de la suscripción y podrá realizarse en
+                cualquier momento desde el panel de control del Titular de la
+                Cuenta, mediante el mismo procedimiento simplificado. La baja
+                detendrá las renovaciones subsecuentes correspondientes a ese
+                Lugar, sin que ello afecte al Lugar principal ni a los demás
+                Lugares Adicionales vigentes. El Alumno correspondiente
+                conservará el derecho de acceso hasta la conclusión del periodo
+                previamente pagado, sin que proceda devolución alguna por dicho
+                periodo, en tanto el servicio permanece disponible. El registro
+                de avance del Alumno se conserva, de modo que la reactivación
+                del Lugar dentro del periodo señalado restituye el acceso en el
+                mismo estado en que se encontraba. La cancelación de la
+                suscripción produce la baja simultánea de todos los Lugares
+                Adicionales, cuyo acceso concluirá en la misma fecha que el del
+                Lugar principal.
               </li>
             </ol>
             <p>

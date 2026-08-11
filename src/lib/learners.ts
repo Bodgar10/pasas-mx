@@ -124,6 +124,8 @@ export type Learner = {
   xp_total: number
   streak_days: number
   last_level_seen: number
+  /** Ciclo escolar en que ya se le propuso pasar de grado. NULL = nunca. */
+  promocion_vista_ciclo: string | null
 }
 
 export async function getLearnerBySlot(
@@ -133,7 +135,7 @@ export async function getLearnerBySlot(
 ): Promise<Learner | null> {
   const { data, error } = await supabase
     .from('learners')
-    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen, promocion_vista_ciclo')
     .eq('account_user_id', userId)
     .eq('slot', slot)
     .maybeSingle()

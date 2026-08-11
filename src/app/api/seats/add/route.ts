@@ -28,7 +28,7 @@ import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { stripe } from '@/lib/payments/stripe'
 import {
-  STRIPE_PRICES,
+  STRIPE_SEAT_PRICES,
   MAX_SEATS,
   SEAT_DISCOUNT_COUPON,
   PLAN_DB_A_STRIPE,
@@ -137,20 +137,22 @@ export async function POST(request: Request) {
     )
   }
 
-  // 7. El price del asiento es EL MISMO del titular, segun su plan y su
-  //    ciclo. El 50% lo pone el cupon, no un price aparte: uno fijo de
-  //    asiento seria otro lugar donde el numero se desincroniza del que
-  //    anuncia la pantalla.
+  // 7. El asiento usa su PROPIO price, con el mismo monto de lista.
   //
-  //    El asiento hereda plan y ciclo sin opcion. Si un mensual pudiera
+  //    🔴 No puede reusar el del titular: Stripe rechaza dos items con
+  //    el mismo price en una suscripcion. El 50% lo sigue poniendo el
+  //    cupon, asi que el monto anunciado no cambia.
+  //
+  //    El asiento hereda el ciclo sin opcion. Si un mensual pudiera
   //    agregar asientos anuales al 50%, compraria el mensual barato,
   //    agregaria tres anuales y cancelaria el mensual al mes siguiente.
+  //
+  //    PLAN_DB_A_STRIPE se conserva solo para VALIDAR que el plan admite
+  //    asientos: 'exam' no esta en el mapa y cae aqui.
   const planStripe = PLAN_DB_A_STRIPE[sub.plan]
-  const priceId = planStripe
-    ? STRIPE_PRICES[planStripe][sub.billing_cycle as DurationKey]
-    : undefined
+  const priceId = STRIPE_SEAT_PRICES[sub.billing_cycle as DurationKey]
 
-  if (!priceId) {
+  if (!planStripe || !priceId) {
     console.error('[seats/add] sin price para', sub.plan, sub.billing_cycle)
     return NextResponse.json(
       { error: 'Tu plan no admite alumnos adicionales' },

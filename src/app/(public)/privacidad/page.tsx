@@ -198,6 +198,8 @@ export default function PrivacidadPage() {
             </p>
             <ol className="ml-5 list-decimal space-y-2">
               <li>Nombre completo*.</li>
+              <li>Fecha de nacimiento*.</li>
+              <li>Nivel y grado escolar en curso*.</li>
               <li>
                 Nombre del padre, madre o tutor* (en caso que el Usuario sea
                 menor de edad conforme la legislación vigente en la República
@@ -208,6 +210,15 @@ export default function PrivacidadPage() {
               <li>Clave del Registro Federal del Contribuyente.</li>
               <li>Dirección IP*.</li>
             </ol>
+            <p>
+              Una misma Cuenta de Usuario puede comprender más de un Lugar de
+              acceso y, en consecuencia, los datos personales de más de un
+              Alumno. En tal supuesto, los datos señalados en los numerales 1, 2
+              y 3 se recaban de forma independiente respecto de cada Alumno
+              incorporado a la Cuenta, y reciben en todos los casos el mismo
+              tratamiento y las mismas medidas de seguridad descritas en el
+              presente Aviso.
+            </p>
             <p>
               Los datos que se encuentran señalados con un (*) asterisco son
               indispensables para el control interno y para la prestación de los
@@ -245,7 +256,12 @@ export default function PrivacidadPage() {
               Asimismo, toda persona que ingrese datos personales de un menor de
               edad a través de la plataforma declara, bajo protesta de decir
               verdad, que cuenta con las facultades legales para otorgar el
-              consentimiento en representación del menor. En caso de no ser la
+              consentimiento en representación del menor. Dicha declaración se
+              entiende otorgada de forma individual respecto de cada menor de
+              edad cuyos datos se incorporen a la Cuenta de Usuario, con
+              independencia del número de Lugares que ésta comprenda, y se
+              recaba de nuevo en cada ocasión en que se incorpore a un menor
+              distinto. En caso de no ser la
               persona facultada para ello (padre, madre o tutor legal), quien
               realice el ingreso de los datos responderá de manera solidaria e
               ilimitada por cualquier responsabilidad, daño o perjuicio derivado
@@ -284,7 +300,10 @@ export default function PrivacidadPage() {
             <ol className="ml-5 list-decimal space-y-2">
               <li>
                 Efectuar la verificación, creación y administración de la cuenta
-                de acceso del usuario;
+                de acceso del usuario, así como de los distintos Lugares que
+                ésta comprenda, manteniendo separados entre sí los datos de
+                grado, temática y registro de avance correspondientes a cada
+                Alumno;
               </li>
               <li>
                 Obtención y registro del consentimiento respecto del tratamiento

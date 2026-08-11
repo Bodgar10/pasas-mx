@@ -19,9 +19,15 @@ interface Props {
   periodEnd: Date
   onClose: () => void
   onCancelled: () => void
+  /**
+   * Lugares que tiene la cuenta. Con mas de uno, el paso 1 advierte que
+   * la cancelacion se los lleva a todos: alguien con dos hijos puede
+   * cancelar creyendo que solo quita uno.
+   */
+  totalLugares?: number
 }
 
-export function CancellationFlow({ periodEnd, onClose, onCancelled }: Props) {
+export function CancellationFlow({ periodEnd, onClose, onCancelled, totalLugares = 1 }: Props) {
   const router = useRouter()
   const [step, setStep] = useState<Step>(1)
   const [reason, setReason] = useState('')
@@ -97,6 +103,15 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled }: Props) {
               <strong className="text-white">{dateFormatted}</strong>. No se
               cobrará nada más.
             </p>
+            {totalLugares > 1 && (
+              <div className="mb-6 rounded-lg border border-amber-500/30 bg-amber-500/5 p-4">
+                <p className="text-sm text-amber-200/90">
+                  Esto cancela los <strong className="text-amber-300">{totalLugares} lugares</strong> de
+                  tu cuenta, no solo uno. Si solo quieres quitar a una persona, cierra esto y usa
+                  “Dar de baja” en su tarjeta de la sección Alumnos.
+                </p>
+              </div>
+            )}
             <div className="flex flex-col gap-3">
               <button
                 onClick={() => setStep(2)}

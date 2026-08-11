@@ -4,6 +4,13 @@ import { createClient } from '@/utils/supabase/server'
 import DashboardClient from './dashboard-client'
 import { xpToLevel } from '@/lib/gamification'
 import { resolveLearner, getAccountLearners } from '@/lib/learners'
+import { cicloActual, enVentanaPromocion, siguienteGrado } from '@/lib/ciclo-escolar'
+
+/** Etiqueta legible del grado en curso, para el copy del modal. */
+const NIVEL_ETIQUETA: Record<string, string> = {
+  middle_school: 'Secundaria',
+  high_school: 'Preparatoria',
+}
 
 export type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -128,6 +135,25 @@ export default async function DashboardPage({
       }
     : null
 
+  // Aviso de cambio de grado. Solo dentro de la ventana julio-septiembre,
+  // una vez por ciclo escolar, si hay un grado siguiente dentro de la
+  // plataforma y la suscripcion esta activa: no se le propone un tramite
+  // a quien no puede usarlo.
+  const siguiente = siguienteGrado(learner?.education_level ?? null, learner?.grade ?? null)
+  const promocion =
+    learner &&
+    siguiente &&
+    subscriptionStatus === 'active' &&
+    enVentanaPromocion() &&
+    learner.promocion_vista_ciclo !== cicloActual()
+      ? {
+          learnerId: learner.id,
+          learnerName: learner.display_name,
+          gradoActual: `${learner.grade}° de ${NIVEL_ETIQUETA[learner.education_level ?? ''] ?? ''}`.trim(),
+          siguiente,
+        }
+      : null
+
   const isPaused = subscription?.status === 'paused'
   const isPersonalized = subscription?.plan === 'ai_personalized' && subscriptionStatus === 'active' && !isPaused
   const trialEndsAt = subscription?.trial_ends_at ?? null
@@ -161,6 +187,7 @@ export default async function DashboardPage({
       totalLearners={todosLosAlumnos.length}
       learners={todosLosAlumnos}
       activeSlot={learner?.slot ?? 1}
+      promocion={promocion}
       subjects={subjects ?? []}
       userSubjects={userSubjects ?? []}
       lastActiveTopic={lastActiveTopic}

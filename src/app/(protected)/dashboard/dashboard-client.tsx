@@ -1,6 +1,7 @@
 'use client'
 
 import LevelUpModal from '@/components/global/LevelUpModal'
+import PromocionCicloModal from '@/components/global/PromocionCicloModal'
 import Pasita from '@/components/mascota/Pasita'
 import { xpToLevel, levelProgress } from '@/lib/gamification'
 
@@ -60,6 +61,14 @@ interface Props {
   totalLearners: number
   learners?: LearnerResumen[]
   activeSlot?: number
+  promocion?: Promocion | null
+}
+
+interface Promocion {
+  learnerId: string
+  learnerName: string
+  gradoActual: string
+  siguiente: { education_level: string; grade: number; etiqueta: string }
 }
 
 interface LearnerResumen {
@@ -98,7 +107,7 @@ const THEME_EMOJIS: Record<string, string> = {
   'Anime & Manga': '⚔️',
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil, levelUp = null, totalLearners = 1, learners = [], activeSlot = 1 }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil, levelUp = null, totalLearners = 1, learners = [], activeSlot = 1, promocion = null }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -240,7 +249,27 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   return (
     <>
-    {levelUp && <LevelUpModal from={levelUp.from} to={levelUp.to} activeSlot={activeSlot} />}
+    {levelUp && (
+      <LevelUpModal
+        from={levelUp.from}
+        to={levelUp.to}
+        activeSlot={activeSlot}
+        learnerName={profile.name}
+      />
+    )}
+
+    {/* 🔴 Si los dos aplican, el de nivel gana: es una celebracion y el
+        otro es un tramite. Encimarlos convierte el logro en burocracia. */}
+    {!levelUp && promocion && (
+      <PromocionCicloModal
+        learnerId={promocion.learnerId}
+        learnerName={promocion.learnerName}
+        activeSlot={activeSlot}
+        gradoActual={promocion.gradoActual}
+        siguiente={promocion.siguiente}
+        onClose={() => {}}
+      />
+    )}
     <div
       style={{
         minHeight: '100vh',

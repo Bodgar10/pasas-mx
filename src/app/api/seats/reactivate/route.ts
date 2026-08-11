@@ -19,7 +19,7 @@ import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { stripe } from '@/lib/payments/stripe'
 import {
-  STRIPE_PRICES,
+  STRIPE_SEAT_PRICES,
   MAX_SEATS,
   SEAT_DISCOUNT_COUPON,
   PLAN_DB_A_STRIPE,
@@ -113,13 +113,15 @@ export async function POST(request: Request) {
       )
     }
 
-    // 6. El price del asiento es el del titular. Mismo mapa que add.
+    // 6. El asiento usa su propio price. Mismo que add: Stripe rechaza
+    //    dos items con el mismo price en una suscripcion.
+    //
+    //    PLAN_DB_A_STRIPE se conserva solo para VALIDAR que el plan
+    //    admite asientos: 'exam' no esta en el mapa y cae aqui.
     const planStripe = PLAN_DB_A_STRIPE[sub.plan]
-    const priceId = planStripe
-      ? STRIPE_PRICES[planStripe][sub.billing_cycle as DurationKey]
-      : undefined
+    const priceId = STRIPE_SEAT_PRICES[sub.billing_cycle as DurationKey]
 
-    if (!priceId) {
+    if (!planStripe || !priceId) {
       console.error('[seats/reactivate] sin price para', sub.plan, sub.billing_cycle)
       return NextResponse.json(
         { error: 'Tu plan no admite alumnos adicionales' },
