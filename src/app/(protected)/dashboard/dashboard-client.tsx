@@ -196,6 +196,10 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
   const EXPIRED_BODY =
     'Sin presión — tu progreso está guardado. Renueva cuando quieras y sigue donde lo dejaste.'
 
+  // 🔴 `trial_ends_at` conserva la fecha para siempre: no basta con
+  // preguntar si existe, hay que comparar contra hoy.
+  const enTrial = !!trialEndsAt && new Date(trialEndsAt).getTime() > Date.now()
+
   const showBanner = subscriptionStatus === 'no_subscription' || subscriptionStatus === 'expired'
   const isExpiredBanner = subscriptionStatus === 'expired'
 
@@ -610,7 +614,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
             })()}
 
             {/* Banner segundo lugar — ver comentario del prompt s29-08 */}
-            {subscriptionStatus === 'active' && !trialEndsAt && !isPaused && !isCancelled && totalLearners < 3 && (
+            {subscriptionStatus === 'active' && !enTrial && !isPaused && !isCancelled && totalLearners < 3 && (
               <div style={{
                 background: 'linear-gradient(135deg, rgba(124,58,237,0.12), rgba(236,72,153,0.08))',
                 border: '1.5px solid rgba(124,58,237,0.35)',
@@ -650,7 +654,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
             )}
 
             {/* Upgrade Banner — solo para usuarios mensuales activos sin trial */}
-            {subscriptionStatus === 'active' && billingCycle === 'monthly' && !trialEndsAt && !isPersonalized && (
+            {subscriptionStatus === 'active' && billingCycle === 'monthly' && !enTrial && !isPersonalized && (
               <div style={{
                 background: 'linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06))',
                 border: '1.5px solid rgba(16,185,129,0.35)',
