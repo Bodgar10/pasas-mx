@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 import { trackCheckoutCompleted } from '@/components/posthog-events'
 import { waLink } from '@/lib/contacto'
+import { rutaAlumno } from '@/lib/learners'
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -30,8 +31,8 @@ interface Profile {
   name: string
   xp_total: number
   streak_days: number
-  education_level: string
-  grade: number
+  education_level: string | null
+  grade: number | null
   interests: string[]
 }
 
@@ -56,6 +57,17 @@ interface Props {
   isPaused: boolean
   pausedUntil: string | null
   levelUp?: { from: number; to: number } | null
+  totalLearners: number
+  learners?: LearnerResumen[]
+  activeSlot?: number
+}
+
+interface LearnerResumen {
+  id: string
+  slot: number
+  display_name: string
+  education_level: string | null
+  grade: number | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -86,7 +98,7 @@ const THEME_EMOJIS: Record<string, string> = {
   'Anime & Manga': '⚔️',
 }
 
-export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil, levelUp = null }: Props) {
+export default function DashboardClient({ profile, subscriptionStatus, subjects, userSubjects, lastActiveTopic, isPersonalized, trialEndsAt, isCancelled, periodEnd, billingCycle, isPaused, pausedUntil, levelUp = null, totalLearners = 1, learners = [], activeSlot = 1 }: Props) {
   const router = useRouter()
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
@@ -203,7 +215,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
     }
   }, [isPersonalized, subscriptionStatus])
 
-  const levelMeta = LEVEL_LABELS[profile.education_level]
+  const levelMeta = profile.education_level ? LEVEL_LABELS[profile.education_level] : undefined
   const showGrade =
     profile.education_level === 'middle_school' || profile.education_level === 'high_school'
   const themeEmoji = profile.interests[0] ? THEME_EMOJIS[profile.interests[0]] ?? '' : ''
@@ -211,7 +223,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   return (
     <>
-    {levelUp && <LevelUpModal from={levelUp.from} to={levelUp.to} />}
+    {levelUp && <LevelUpModal from={levelUp.from} to={levelUp.to} activeSlot={activeSlot} />}
     <div
       style={{
         minHeight: '100vh',
@@ -377,6 +389,59 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               </div>
             </div>
 
+            {/* Selector de alumno. Solo con 2 o mas: la cuenta de un solo
+                alumno no paga ningun costo visual por una funcion que no
+                usa. La tematica de cada uno los distingue en su propio
+                dashboard; aqui basta el nombre y el grado. */}
+            {learners.length > 1 && (
+              <div style={{
+                display: 'flex', gap: 8, marginBottom: 20,
+                overflowX: 'auto', paddingBottom: 4,
+              }}>
+                {learners.map((l) => {
+                  const activo = l.slot === activeSlot
+                  const nivel = l.education_level === 'middle_school'
+                    ? 'Secundaria'
+                    : l.education_level === 'high_school' ? 'Prepa' : ''
+                  const grado = l.grade != null ? `${l.grade}°` : ''
+                  return (
+                    <button
+                      key={l.id}
+                      type="button"
+                      onClick={() => router.push(rutaAlumno('/dashboard', l.slot))}
+                      style={{
+                        flexShrink: 0,
+                        background: activo
+                          ? 'linear-gradient(135deg, #7c3aed, #ec4899)'
+                          : '#1a1035',
+                        border: activo ? 'none' : '1.5px solid #2D2048',
+                        borderRadius: 12,
+                        padding: '8px 14px',
+                        cursor: 'pointer',
+                        fontFamily: 'var(--font-nunito)',
+                        textAlign: 'left',
+                      }}
+                    >
+                      <div style={{
+                        fontSize: 14, fontWeight: 900,
+                        color: activo ? '#fff' : '#e2d9f3',
+                      }}>
+                        {l.display_name}
+                      </div>
+                      {(nivel || grado) && (
+                        <div style={{
+                          fontSize: 11, fontWeight: 600,
+                          color: activo ? 'rgba(255,255,255,0.75)' : '#a78bfa',
+                        }}>
+                          {nivel} {grado}
+                        </div>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+
             {/* Stats row */}
             <div style={{ display: 'flex', gap: 10, marginBottom: 20 }}>
               {/* XP pill */}
@@ -418,7 +483,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 <div>
                   <p style={{ margin: 0, fontSize: 13, color: '#a78bfa', fontWeight: 600 }}>Racha</p>
                   <p style={{ margin: 0, fontSize: 16, fontWeight: 900, color: '#ec4899' }}>
-                    {profile.streak_days} días
+                    {profile.streak_days} día{profile.streak_days !== 1 ? 's' : ''}
                   </p>
                 </div>
               </div>
@@ -544,6 +609,46 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               )
             })()}
 
+            {/* Banner segundo lugar — ver comentario del prompt s29-08 */}
+            {subscriptionStatus === 'active' && !trialEndsAt && !isPaused && !isCancelled && totalLearners < 3 && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(124,58,237,0.12), rgba(236,72,153,0.08))',
+                border: '1.5px solid rgba(124,58,237,0.35)',
+                borderRadius: 16,
+                padding: '16px 20px',
+                marginBottom: 20,
+              }}>
+                <p style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 14, fontWeight: 900,
+                  color: '#e2d9f3', margin: '0 0 6px',
+                }}>
+                  👥 Uno más entra a mitad de precio
+                </p>
+                <p style={{
+                  fontSize: 14, color: '#a78bfa',
+                  margin: '0 0 14px', lineHeight: 1.6,
+                }}>
+                  Dos personas en la misma cuenta, cada una con su propio grado,
+                  su temática y su avance por separado.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => router.push('/agregar-alumno')}
+                  style={{
+                    background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                    border: 'none', borderRadius: 10,
+                    padding: '10px 20px',
+                    fontSize: 14, fontWeight: 900,
+                    color: '#fff', cursor: 'pointer',
+                    fontFamily: 'var(--font-nunito)',
+                  }}
+                >
+                  Ver cómo funciona →
+                </button>
+              </div>
+            )}
+
             {/* Upgrade Banner — solo para usuarios mensuales activos sin trial */}
             {subscriptionStatus === 'active' && billingCycle === 'monthly' && !trialEndsAt && !isPersonalized && (
               <div style={{
@@ -627,64 +732,6 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 >
                   Reactivar ahora →
                 </button>
-              </div>
-            )}
-
-            {/* Support Button */}
-            {subscriptionStatus === 'active' && (
-              <div style={{
-                background: 'rgba(124,58,237,0.04)',
-                border: '1px solid rgba(124,58,237,0.15)',
-                borderRadius: 16,
-                padding: '14px 16px',
-                marginBottom: 20,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: 12,
-                flexWrap: 'wrap',
-              }}>
-                <div>
-                  <p style={{ fontSize: 14, fontWeight: 800, color: '#e2d9f3', margin: '0 0 2px' }}>
-                    ¿Necesitas ayuda?
-                  </p>
-                  <p style={{ fontSize: 12, color: '#a78bfa', margin: 0 }}>
-                    L-V 9AM–8PM · Respondemos rápido
-                  </p>
-                </div>
-                <div style={{ display: 'flex', gap: 8 }}>
-                  <a
-                    href={waLink('Hola, necesito ayuda con Pasas.mx')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      background: '#25D366',
-                      border: 'none', borderRadius: 10,
-                      padding: '8px 14px',
-                      fontSize: 13, fontWeight: 900,
-                      color: '#fff', cursor: 'pointer',
-                      textDecoration: 'none',
-                      display: 'inline-flex', alignItems: 'center', gap: 4,
-                    }}
-                  >
-                    💬 WhatsApp
-                  </a>
-                  <a
-                    href="mailto:soporte@pasas.mx?subject=Ayuda%20con%20Pasas.mx"
-                    style={{
-                      background: 'rgba(124,58,237,0.15)',
-                      border: '1px solid rgba(124,58,237,0.3)',
-                      borderRadius: 10,
-                      padding: '8px 14px',
-                      fontSize: 13, fontWeight: 900,
-                      color: '#a78bfa', cursor: 'pointer',
-                      textDecoration: 'none',
-                      display: 'inline-flex', alignItems: 'center', gap: 4,
-                    }}
-                  >
-                    ✉️ Email
-                  </a>
-                </div>
               </div>
             )}
 
@@ -830,7 +877,10 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 <button
                   type="button"
                   onClick={() =>
-                    router.push(`/guia/${lastActiveTopic.subjectSlug}/${lastActiveTopic.topicSlug}`)
+                    router.push(rutaAlumno(
+                      `/guia/${lastActiveTopic.subjectSlug}/${lastActiveTopic.topicSlug}`,
+                      activeSlot
+                    ))
                   }
                   style={{
                     width: '100%',
@@ -876,11 +926,11 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                 </div>
 
                 {/* Grade row — only for middle_school and high_school */}
-                {showGrade && GRADE_LABELS[profile.grade] && (
+                {showGrade && profile.grade != null && GRADE_LABELS[profile.grade] && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ fontSize: 15, color: '#a78bfa', fontWeight: 600 }}>Año</span>
                     <span style={{ fontSize: 15, color: '#e2d9f3', fontWeight: 700 }}>
-                      📅 {GRADE_LABELS[profile.grade]}
+                      📅 {GRADE_LABELS[profile.grade!]}
                     </span>
                   </div>
                 )}
@@ -917,7 +967,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     return (
                       <div
                         key={subj.slug}
-                        onClick={() => router.push(`/guia/personalizado/${subj.slug}`)}
+                        onClick={() => router.push(rutaAlumno(`/guia/personalizado/${subj.slug}`, activeSlot))}
                         style={{
                           background: 'linear-gradient(135deg, rgba(124,58,237,0.12), rgba(236,72,153,0.08))',
                           border: '1.5px solid rgba(124,58,237,0.3)',
@@ -982,7 +1032,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     return (
                       <Link
                         key={subject.slug}
-                        href={isLocked ? '#' : `/guia/${subject.slug}`}
+                        href={isLocked ? '#' : rutaAlumno(`/guia/${subject.slug}`, activeSlot)}
                         prefetch={!isLocked}
                         style={{
                           display: 'block',
@@ -1095,6 +1145,66 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               🐛 Reportar error
             </button>
           </div>
+
+          {/* Soporte — al final a proposito. Arriba competia con lo que el
+              usuario viene a hacer y le ofrecia ayuda antes de que tuviera
+              ningun problema. */}
+          {subscriptionStatus === 'active' && (
+            <div style={{
+              marginTop: 4,
+              background: 'rgba(124,58,237,0.04)',
+              border: '1px solid rgba(124,58,237,0.15)',
+              borderRadius: 16,
+              padding: '14px 16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 12,
+              flexWrap: 'wrap',
+            }}>
+              <div>
+                <p style={{ fontSize: 14, fontWeight: 800, color: '#e2d9f3', margin: '0 0 2px' }}>
+                  ¿Necesitas ayuda?
+                </p>
+                <p style={{ fontSize: 12, color: '#a78bfa', margin: 0 }}>
+                  L-V 9AM–8PM · Respondemos rápido
+                </p>
+              </div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <a
+                  href={waLink('Hola, necesito ayuda con Pasas.mx')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: '#25D366',
+                    border: 'none', borderRadius: 10,
+                    padding: '8px 14px',
+                    fontSize: 13, fontWeight: 900,
+                    color: '#fff', cursor: 'pointer',
+                    textDecoration: 'none',
+                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                  }}
+                >
+                  💬 WhatsApp
+                </a>
+                <a
+                  href="mailto:soporte@pasas.mx?subject=Ayuda%20con%20Pasas.mx"
+                  style={{
+                    background: 'rgba(124,58,237,0.15)',
+                    border: '1px solid rgba(124,58,237,0.3)',
+                    borderRadius: 10,
+                    padding: '8px 14px',
+                    fontSize: 13, fontWeight: 900,
+                    color: '#a78bfa', cursor: 'pointer',
+                    textDecoration: 'none',
+                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                  }}
+                >
+                  ✉️ Email
+                </a>
+              </div>
+            </div>
+          )}
         </div>
         </div>
       </div>

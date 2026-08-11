@@ -105,3 +105,131 @@ export async function upsertPrimaryLearner(
 
   return creado.id
 }
+
+/**
+ * Resuelve un alumno por su slot dentro de la cuenta.
+ *
+ * El slot es un numero corto (1, 2, 3) local a cada cuenta, no un uuid:
+ * el "1" de una cuenta y el "1" de otra son alumnos distintos. Va en la
+ * URL porque fuera de la sesion no significa nada, y ademas la RLS de
+ * `learners` impide leer alumnos de otra cuenta aunque se adivine.
+ */
+export type Learner = {
+  id: string
+  slot: number
+  display_name: string
+  education_level: string | null
+  grade: number | null
+  theme_id: string | null
+  xp_total: number
+  streak_days: number
+  last_level_seen: number
+}
+
+export async function getLearnerBySlot(
+  supabase: SupabaseClient,
+  userId: string,
+  slot: number
+): Promise<Learner | null> {
+  const { data, error } = await supabase
+    .from('learners')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen')
+    .eq('account_user_id', userId)
+    .eq('slot', slot)
+    .maybeSingle()
+
+  if (error) {
+    console.error('getLearnerBySlot failed:', error)
+    return null
+  }
+
+  return data
+}
+
+/**
+ * Todos los alumnos activos de una cuenta, ordenados por slot.
+ * El dashboard decide con esto si pinta una tarjeta o varias.
+ */
+export async function getAccountLearners(
+  supabase: SupabaseClient,
+  userId: string
+) {
+  const { data, error } = await supabase
+    .from('learners')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen')
+    .eq('account_user_id', userId)
+    .eq('status', 'active')
+    .order('slot', { ascending: true })
+
+  if (error) {
+    console.error('getAccountLearners failed:', error)
+    return []
+  }
+
+  return data ?? []
+}
+
+/**
+ * Resuelve el alumno de una peticion a partir del query param `?a=`.
+ *
+ * Sin param se asume el slot 1, que es el caso de casi todas las cuentas.
+ * Si el slot no existe en esta cuenta cae al primario en vez de fallar:
+ * un link viejo o manipulado manda al alumno de siempre, no a un error.
+ *
+ * NO devuelve alumnos de otra cuenta: la consulta filtra por
+ * account_user_id y la RLS lo refuerza.
+ */
+export async function resolveLearner(
+  supabase: SupabaseClient,
+  userId: string,
+  searchParams?: { a?: string | string[] }
+) {
+  const raw = Array.isArray(searchParams?.a) ? searchParams?.a[0] : searchParams?.a
+  const slot = raw ? Number.parseInt(raw, 10) : 1
+
+  if (Number.isFinite(slot) && slot > 0) {
+    const porSlot = await getLearnerBySlot(supabase, userId, slot)
+    if (porSlot) return porSlot
+  }
+
+  return getLearnerBySlot(supabase, userId, 1)
+}
+
+/**
+ * Construye una ruta conservando el alumno activo.
+ *
+ * 🔴 USAR SIEMPRE ESTO en lugar de concatenar rutas a mano. Un push que
+ * olvide el `?a=` manda al usuario al alumno equivocado sin ningun error
+ * visible: veria el avance de su hermano y creeria que se borro el suyo.
+ *
+ * El slot 1 no lleva param, para que las URLs de la mayoria queden limpias.
+ */
+export function rutaAlumno(path: string, slot: number): string {
+  if (slot === 1) return path
+  const sep = path.includes('?') ? '&' : '?'
+  return `${path}${sep}a=${slot}`
+}
+
+/**
+ * Resuelve el alumno de una peticion de API a partir del slot que manda
+ * el cliente en el body.
+ *
+ * Los endpoints de progreso no pueden usar getActiveLearnerId: devuelve
+ * siempre el primario, asi que el alumno 2 escribiria su avance en la
+ * fila del alumno 1.
+ *
+ * Cae al primario si el slot no viene o no existe en esta cuenta: un
+ * cliente viejo que no manda slot sigue funcionando como antes.
+ */
+export async function resolveLearnerFromBody(
+  supabase: SupabaseClient,
+  userId: string,
+  slot?: number | string | null
+): Promise<string | null> {
+  const n = typeof slot === 'string' ? Number.parseInt(slot, 10) : slot
+  if (typeof n === 'number' && Number.isFinite(n) && n > 0 && n !== 1) {
+    const porSlot = await getLearnerBySlot(supabase, userId, n)
+    if (porSlot) return porSlot.id
+  }
+  return getActiveLearnerId(supabase, userId)
+}

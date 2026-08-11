@@ -10,6 +10,20 @@ import {
   type ActionState,
 } from './actions'
 import { CancellationFlow } from '@/components/perfil/CancellationFlow'
+import { SeatRemovalFlow } from '@/components/perfil/SeatRemovalFlow'
+import { GradeChangeFlow } from '@/components/perfil/GradeChangeFlow'
+import { MAX_SEATS } from '@/lib/payments/config'
+
+interface Alumno {
+  id: string
+  slot: number
+  display_name: string
+  education_level: string | null
+  grade: number | null
+  is_primary: boolean
+  status: string
+  access_until: string | null
+}
 
 interface Props {
   profile: {
@@ -18,6 +32,7 @@ interface Props {
     xpTotal: number
     streakDays: number
   }
+  alumnos: Alumno[]
   subscription: {
     plan: string
     status: string
@@ -26,6 +41,23 @@ interface Props {
     pausedUntil: string | null
     billingCycle: string | null
   } | null
+}
+
+/** Etiquetas de pantalla. La columna guarda el enum, no esto. */
+const NIVEL_LABELS: Record<string, string> = {
+  middle_school: 'Secundaria',
+  high_school: 'Preparatoria',
+}
+
+function descripcionGrado(nivel: string | null, grado: number | null): string {
+  if (!nivel || grado == null) return 'Sin configurar'
+  return `${grado}° de ${NIVEL_LABELS[nivel] ?? nivel}`
+}
+
+function fechaCorta(iso: string): string {
+  return new Date(iso).toLocaleDateString('es-MX', {
+    day: 'numeric', month: 'long', year: 'numeric',
+  })
 }
 
 const PLAN_LABELS: Record<string, string> = {
@@ -129,13 +161,44 @@ function SubmitButton({ pending, label, pendingLabel }: { pending: boolean; labe
   )
 }
 
-export default function PerfilClient({ profile, subscription }: Props) {
+export default function PerfilClient({ profile, alumnos, subscription }: Props) {
   const router = useRouter()
   const [nameState, nameAction, namePending] = useActionState<ActionState, FormData>(updateNameAction, null)
   const [emailState, emailAction, emailPending] = useActionState<ActionState, FormData>(updateEmailAction, null)
   const [passwordState, passwordAction, passwordPending] = useActionState<ActionState, FormData>(updatePasswordAction, null)
   const [showCancelFlow, setShowCancelFlow] = useState(false)
   const [wasCancelled, setWasCancelled] = useState(false)
+
+  // Modales de alumno. Guardan el alumno completo, no solo el id: los
+  // modales necesitan nombre y grado actual para su copy.
+  const [bajaDe, setBajaDe] = useState<Alumno | null>(null)
+  const [gradoDe, setGradoDe] = useState<Alumno | null>(null)
+  const [reactivando, setReactivando] = useState<string | null>(null)
+  const [errorAlumno, setErrorAlumno] = useState<string | null>(null)
+
+  const suscripcionViva = subscription?.status === 'active' || subscription?.status === 'trialing'
+
+  async function reactivar(learnerId: string) {
+    setReactivando(learnerId)
+    setErrorAlumno(null)
+    try {
+      const res = await fetch('/api/seats/reactivate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ learnerId }),
+      })
+      const json = await res.json().catch(() => null)
+      if (!res.ok) {
+        setErrorAlumno(json?.error ?? 'No pudimos reactivar el lugar')
+        return
+      }
+      router.refresh()
+    } catch {
+      setErrorAlumno('No pudimos reactivar el lugar. Intenta de nuevo.')
+    } finally {
+      setReactivando(null)
+    }
+  }
 
   const periodEnd = subscription?.currentPeriodEnd
     ? new Date(subscription.currentPeriodEnd).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -272,6 +335,155 @@ export default function PerfilClient({ profile, subscription }: Props) {
               <SubmitButton pending={passwordPending} label="Cambiar contraseña" />
               <FeedbackMessage state={passwordState} />
             </form>
+          </SectionCard>
+
+          {/* Alumnos */}
+          <SectionCard>
+            <SectionTitle emoji="👥" title="Alumnos" />
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {alumnos.map((a) => {
+                const enBaja = a.status === 'ending'
+                return (
+                  <div
+                    key={a.id}
+                    style={{
+                      backgroundColor: COLORS.inputBg,
+                      border: `1.5px solid ${COLORS.inputBorder}`,
+                      borderRadius: RADIUS.lg,
+                      padding: '14px 16px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: 15, fontWeight: 800, color: COLORS.text }}>
+                        {a.display_name}
+                      </span>
+                      {a.is_primary && (
+                        <span style={{ fontSize: 11, fontWeight: 700, color: COLORS.muted, opacity: 0.8 }}>
+                          Principal
+                        </span>
+                      )}
+                    </div>
+
+                    <p style={{ fontSize: 13, color: COLORS.muted, margin: '4px 0 0' }}>
+                      {descripcionGrado(a.education_level, a.grade)}
+                    </p>
+
+                    {enBaja && a.access_until && (
+                      <p style={{
+                        fontSize: 13,
+                        color: COLORS.yellow,
+                        margin: '8px 0 0',
+                        lineHeight: 1.5,
+                      }}>
+                        Se da de baja el {fechaCorta(a.access_until)} · conserva acceso hasta entonces
+                      </p>
+                    )}
+
+                    <div style={{ display: 'flex', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        onClick={() => setGradoDe(a)}
+                        style={{
+                          backgroundColor: 'transparent',
+                          border: `1.5px solid ${COLORS.inputBorder}`,
+                          borderRadius: RADIUS.md,
+                          padding: '8px 14px',
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: COLORS.muted,
+                          cursor: 'pointer',
+                          fontFamily: FONTS.nunito,
+                        }}
+                      >
+                        Cambiar grado
+                      </button>
+
+                      {enBaja && (
+                        <button
+                          type="button"
+                          onClick={() => reactivar(a.id)}
+                          disabled={reactivando === a.id}
+                          style={{
+                            backgroundColor: COLORS.primary,
+                            border: 'none',
+                            borderRadius: RADIUS.md,
+                            padding: '8px 14px',
+                            fontSize: 13,
+                            fontWeight: 800,
+                            color: '#fff',
+                            cursor: reactivando === a.id ? 'not-allowed' : 'pointer',
+                            fontFamily: FONTS.nunito,
+                            opacity: reactivando === a.id ? 0.6 : 1,
+                          }}
+                        >
+                          {reactivando === a.id ? 'Reactivando...' : 'Reactivar'}
+                        </button>
+                      )}
+
+                      {/* El principal no lleva baja: se cancela la
+                          suscripcion completa desde la seccion de abajo. */}
+                      {!enBaja && !a.is_primary && (
+                        <button
+                          type="button"
+                          onClick={() => setBajaDe(a)}
+                          style={{
+                            backgroundColor: 'transparent',
+                            border: '1.5px solid rgba(239,68,68,0.3)',
+                            borderRadius: RADIUS.md,
+                            padding: '8px 14px',
+                            fontSize: 13,
+                            fontWeight: 700,
+                            color: '#f87171',
+                            cursor: 'pointer',
+                            fontFamily: FONTS.nunito,
+                          }}
+                        >
+                          Dar de baja
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {errorAlumno && (
+              <p style={{
+                marginTop: 12,
+                padding: '10px 14px',
+                borderRadius: RADIUS.md,
+                fontSize: 14,
+                fontWeight: 700,
+                backgroundColor: 'rgba(239,68,68,0.1)',
+                color: '#f87171',
+                border: '1px solid rgba(239,68,68,0.2)',
+              }}>
+                {errorAlumno}
+              </p>
+            )}
+
+            {alumnos.length < MAX_SEATS && suscripcionViva && (
+              <button
+                type="button"
+                onClick={() => router.push('/agregar-alumno')}
+                style={{
+                  width: '100%',
+                  minHeight: 48,
+                  marginTop: 14,
+                  backgroundColor: 'transparent',
+                  border: `1.5px dashed ${COLORS.primary}`,
+                  borderRadius: RADIUS.lg,
+                  fontSize: 15,
+                  fontWeight: 800,
+                  color: COLORS.muted,
+                  cursor: 'pointer',
+                  fontFamily: FONTS.nunito,
+                }}
+              >
+                + Agregar alumno
+              </button>
+            )}
           </SectionCard>
 
           {/* Suscripción */}
@@ -424,6 +636,31 @@ export default function PerfilClient({ profile, subscription }: Props) {
 
         </div>
       </div>
+
+      {bajaDe && (
+        <SeatRemovalFlow
+          learnerId={bajaDe.id}
+          learnerName={bajaDe.display_name}
+          accessUntil={
+            subscription?.currentPeriodEnd
+              ? new Date(subscription.currentPeriodEnd)
+              : new Date()
+          }
+          onClose={() => setBajaDe(null)}
+          onRemoved={() => router.refresh()}
+        />
+      )}
+
+      {gradoDe && (
+        <GradeChangeFlow
+          learnerId={gradoDe.id}
+          learnerName={gradoDe.display_name}
+          currentLevel={gradoDe.education_level}
+          currentGrade={gradoDe.grade}
+          onClose={() => setGradoDe(null)}
+          onChanged={() => router.refresh()}
+        />
+      )}
     </div>
   )
 }

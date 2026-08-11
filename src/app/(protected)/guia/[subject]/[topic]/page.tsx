@@ -1,16 +1,27 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import { resolveLearner } from '@/lib/learners'
 import TopicClient from './topic-client'
 
 export default async function TopicPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ subject: string; topic: string }>
+  searchParams: Promise<{ a?: string }>
 }) {
   const { subject: subjectSlug, topic: topicSlug } = await params
+  const sp = await searchParams
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser()
+
+  // 🔴 Las tablas de avance se llavean por learner_id desde la migracion
+  // 035. Filtrar por user_id matchea a TODOS los alumnos de la cuenta:
+  // con dos hermanos en el mismo tema, maybeSingle() LANZA, y el
+  // theme_id de user_subjects devolveria la tematica de cualquiera de
+  // los dos.
+  const learner = user ? await resolveLearner(supabase, user.id, sp) : null
 
   const [{ data: subject }, { data: topicBySlug }] = await Promise.all([
     supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
@@ -21,7 +32,7 @@ export default async function TopicPage({
 
   const [{ data: topic }, { data: userSubject }] = await Promise.all([
     supabase.from('topics').select('*').eq('id', topicBySlug.id).eq('subject_id', subject.id).single(),
-    supabase.from('user_subjects').select('theme_id').eq('user_id', user?.id ?? '').eq('subject_id', subject.id).maybeSingle(),
+    supabase.from('user_subjects').select('theme_id').eq('learner_id', learner?.id ?? '').eq('subject_id', subject.id).maybeSingle(),
   ])
 
   if (!topic) return notFound()
@@ -38,10 +49,10 @@ export default async function TopicPage({
       ? supabase.from('sections').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).is('user_id', null).order('display_order', { ascending: true })
       : Promise.resolve({ data: [] }),
     supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject?.theme_id ?? '').order('created_at', { ascending: true }),
-    user ? supabase.from('topic_progress').select('*').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
-    user ? supabase.from('progress').select('metadata').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'section_read') : Promise.resolve({ data: [] }),
-    user ? supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }) : Promise.resolve({ data: [] }),
-    user ? supabase.from('horde_runs').select('best_wave, attempts').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
+    learner ? supabase.from('topic_progress').select('*').eq('learner_id', learner.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
+    learner ? supabase.from('progress').select('metadata').eq('learner_id', learner.id).eq('topic_id', topic.id).eq('event_type', 'section_read') : Promise.resolve({ data: [] }),
+    learner ? supabase.from('progress').select('question_id, metadata, attempt').eq('learner_id', learner.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }) : Promise.resolve({ data: [] }),
+    learner ? supabase.from('horde_runs').select('best_wave, attempts').eq('learner_id', learner.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
   ])
 
   let sections = themedSections ?? []
@@ -76,6 +87,7 @@ export default async function TopicPage({
       hordeHasBank={topic.horde_ready === true}
       hordeBestWave={hordeRun?.best_wave ?? 0}
       hordeAttempts={hordeRun?.attempts ?? 0}
+      activeSlot={learner?.slot ?? 1}
     />
   )
 }

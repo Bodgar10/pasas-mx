@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { createClient as createServerClient } from '@/utils/supabase/server'
-import { getActiveLearnerId } from '@/lib/learners'
+import { resolveLearnerFromBody } from '@/lib/learners'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
   }
 
-  let body: { topicId?: string }
+  let body: { topicId?: string; slot?: number }
   try {
     body = await request.json()
   } catch {
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
-  const learnerId = await getActiveLearnerId(supabase, user.id)
+  const learnerId = await resolveLearnerFromBody(supabase, user.id, body?.slot)
   if (!learnerId) {
     return NextResponse.json({ error: 'Sin alumno activo' }, { status: 409 })
   }

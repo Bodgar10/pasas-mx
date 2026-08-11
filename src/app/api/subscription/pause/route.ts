@@ -64,6 +64,37 @@ export async function POST(req: NextRequest) {
       })
       .eq('id', subscription.id)
 
+    // Los asientos adicionales pasan a 'ending' hasta que la pausa
+    // termine. Sin esto quedaban 'active' con access_until en NULL
+    // mientras la suscripcion no cobra: seguian contando en
+    // occupied_seats y el estado decia que estaban vivos con la cuenta
+    // detenida.
+    //
+    // El primario NO se toca: su estado lo gobierna la suscripcion.
+    //
+    // Service role: learners no tiene politica de UPDATE para
+    // authenticated (migracion 036).
+    {
+      const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+      const admin = createServiceClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      )
+      const { error: asientosError } = await admin
+        .from('learners')
+        .update({
+          status: 'ending',
+          access_until: pausedUntil.toISOString(),
+        })
+        .eq('account_user_id', user.id)
+        .eq('is_primary', false)
+        .eq('status', 'active')
+
+      if (asientosError) {
+        console.error('[subscription/pause] no se marcaron los asientos:', asientosError)
+      }
+    }
+
     // Enviar email de confirmación
     try {
       const { data: userProfile } = await supabase
@@ -111,11 +142,15 @@ export async function DELETE(req: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
+    // paused_until se lee ANTES de limpiarlo: hace falta para saber que
+    // asientos se marcaron por esta pausa y no por una baja manual.
     const { data: subscription } = await supabase
       .from('subscriptions')
-      .select('id, provider_sub_id')
+      .select('id, provider_sub_id, paused_until')
       .eq('user_id', user.id)
       .eq('status', 'paused')
+      .order('created_at', { ascending: false })
+      .limit(1)
       .maybeSingle()
 
     if (!subscription) {
@@ -139,6 +174,34 @@ export async function DELETE(req: NextRequest) {
         updated_at: new Date().toISOString(),
       })
       .eq('id', subscription.id)
+
+    // Revertir los asientos que esta pausa marco.
+    //
+    // 🔴 Solo los que tienen access_until EXACTAMENTE igual al
+    // paused_until que se esta limpiando. Sin ese filtro, reactivar una
+    // pausa reviviria tambien un asiento que el usuario dio de baja a
+    // mano por otra razon.
+    if (subscription.paused_until) {
+      const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+      const admin = createServiceClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      )
+      const { error: asientosError } = await admin
+        .from('learners')
+        .update({
+          status: 'active',
+          access_until: null,
+        })
+        .eq('account_user_id', user.id)
+        .eq('is_primary', false)
+        .eq('status', 'ending')
+        .eq('access_until', subscription.paused_until)
+
+      if (asientosError) {
+        console.error('[subscription/pause] no se revirtieron los asientos:', asientosError)
+      }
+    }
 
     console.log(`[subscription/pause] Reactivación manual para user ${user.id}`)
     return NextResponse.json({ ok: true })

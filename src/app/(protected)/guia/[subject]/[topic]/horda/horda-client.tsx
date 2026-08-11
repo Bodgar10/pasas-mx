@@ -24,6 +24,7 @@ interface Props {
   topicSlug: string
   bestWave: number
   attempts: number
+  activeSlot?: number
 }
 
 type Phase = 'tutorial' | 'playing' | 'waveResult' | 'dead' | 'won' | 'broken'
@@ -38,6 +39,7 @@ export default function HordaClient({
   topicSlug,
   bestWave: initialBest,
   attempts: initialAttempts,
+  activeSlot = 1,
 }: Props) {
   const router = useRouter()
 
@@ -86,7 +88,7 @@ export default function HordaClient({
       const res = await fetch('/api/horde/run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topicId }),
+        body: JSON.stringify({ topicId, slot: activeSlot }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error ?? 'Error')
@@ -127,6 +129,7 @@ export default function HordaClient({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           topicId,
+          slot: activeSlot,
           questionId: current.id,
           letter,
           wave,

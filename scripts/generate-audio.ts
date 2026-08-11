@@ -89,6 +89,28 @@ REGLAS:
   · SIGLAS que se deletrean (no se leen como palabra): déjalas en mayúsculas tal cual (BTS, ARMY, BLINK). NO las escribas fonéticamente ("bítíes" está MAL).
   · NO inventes pronunciaciones tipo "bléipink", "Jot Uan", "baiás". Si no estás 100% seguro de una forma fonética estándar, DEJA la palabra original.
   · Prioridad absoluta: CONSISTENCIA. La misma palabra debe salir idéntica siempre.
+- TEXTO EN INGLÉS DENTRO DE CONTENIDO ESPAÑOL (materias de Inglés). El audio es en español con voz española; las frases/palabras en inglés hay que ESCRIBIRLAS FONÉTICAMENTE EN ESPAÑOL para que el motor las pronuncie bien:
+  · Identifica qué partes están en inglés (oraciones de ejemplo, vocabulario, frases a traducir) y transcríbelas a fonética española aproximada. Ejemplos:
+    - "The cat is black" → "de cat is blak"
+    - "How are you?" → "jau ar iu?"
+    - "I have a book" → "ai jav a buk"
+    - "She is running" → "shi is ránin"
+    - "Thank you very much" → "zenk iu veri moch"
+  · Las INSTRUCCIONES en español (ej. "Traduce la siguiente oración", "Completa el espacio") se dejan en español normal.
+  · Vocabulario/palabras sueltas en inglés → fonética española: "house"→"jaus", "water"→"uára", "friend"→"frend", "beautiful"→"biútiful".
+  · Objetivo: que un hispanohablante escuche el inglés pronunciado de forma reconocible y CLARA. El inglés debe sonar MÁS LENTO y SEPARADO que el español que lo rodea.
+  · RITMO DEL INGLÉS — crítico para que se entienda:
+    - Antes de una frase en inglés, mete una pausa media ("..") para separarla del español.
+    - Entre las palabras inglesas de una frase, separa con pausas cortas para que no se atropellen: "der is.. uan.. si dí" en vez de "der is uan si dí".
+    - Deletrea las siglas con guiones y pausa: "CD" → "si.. dí", "USA" → "iu.. es.. ei".
+    - Palabras clave del vocabulario que se enseñan, aíslalas con pausa a ambos lados para que resalten: ".. fader .. papá".
+  · Ejemplo de ritmo correcto:
+    - En vez de: "der is uan si dí"
+    - Escribe: "der is.. uan.. si dí"
+    - En vez de: "der ar faiv fótocards"
+    - Escribe: "der ar.. faiv.. fóto cards"
+  · Objetivo: como lo diría un buen maestro de inglés mexicano hablando DESPACIO y marcando cada palabra para que los alumnos la repitan.
+  · Mantén CONSISTENCIA: la misma palabra inglesa siempre con la misma fonética.
 - Números en cifra → escríbelos con letra como se dicen: "10x10" → "diez por diez", "2024" → "dos mil veinticuatro".
 - Símbolos matemáticos → palabras: "+" → "más", "−"/"-" → "menos", "×"/"*" → "por", "=" → "igual a", "%" → "por ciento".
 - Puntuación para ritmo natural: usa ".." (dos puntos) para pausas medias entre ideas; usa "..." (tres puntos) SOLO en 1-2 remates de impacto por texto; usa "¡ !" donde haya énfasis o entusiasmo.

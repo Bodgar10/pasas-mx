@@ -3,10 +3,16 @@ import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
 import DashboardClient from './dashboard-client'
 import { xpToLevel } from '@/lib/gamification'
+import { resolveLearner, getAccountLearners } from '@/lib/learners'
 
 export type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ a?: string }>
+}) {
+  const sp = await searchParams
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser()
@@ -14,18 +20,13 @@ export default async function DashboardPage() {
 
   // Fetch profile and active subscription in parallel — both only need user.id
   const now = new Date().toISOString()
-  const [{ data: profile }, { data: learner }, { data: subscription }] = await Promise.all([
+  const [{ data: profile }, learner, { data: subscription }, todosLosAlumnos] = await Promise.all([
     supabase
       .from('users')
       .select('full_name, onboarding_done, interests')
       .eq('id', user.id)
       .single(),
-    supabase
-      .from('learners')
-      .select('id, xp_total, streak_days, education_level, grade, last_level_seen')
-      .eq('account_user_id', user.id)
-      .eq('is_primary', true)
-      .maybeSingle(),
+    resolveLearner(supabase, user.id, sp),
     supabase
       .from('subscriptions')
       .select('status, current_period_end, plan, trial_ends_at, cancelled_at, billing_cycle, paused_until')
@@ -34,6 +35,7 @@ export default async function DashboardPage() {
       .order('current_period_end', { ascending: false })
       .limit(1)
       .maybeSingle(),
+    getAccountLearners(supabase, user.id),
   ])
 
   // 🔴 La MISMA derivación que hace el middleware. No leer el flag a secas.
@@ -138,11 +140,14 @@ export default async function DashboardPage() {
         name: profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
         xp_total: learner?.xp_total ?? 0,
         streak_days: learner?.streak_days ?? 0,
-        education_level: learner?.education_level,
-        grade: learner?.grade,
+        education_level: learner?.education_level ?? null,
+        grade: learner?.grade ?? null,
         interests: (profile.interests as string[] | null) ?? [],
       }}
       subscriptionStatus={subscriptionStatus}
+      totalLearners={todosLosAlumnos.length}
+      learners={todosLosAlumnos}
+      activeSlot={learner?.slot ?? 1}
       subjects={subjects ?? []}
       userSubjects={userSubjects ?? []}
       lastActiveTopic={lastActiveTopic}

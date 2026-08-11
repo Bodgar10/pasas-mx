@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     // Buscar suscripción activa
     const { data: subscription } = await supabase
       .from('subscriptions')
-      .select('id, provider_sub_id')
+      .select('id, provider_sub_id, current_period_end')
       .eq('user_id', user.id)
       .in('status', ['active', 'trialing'])
       .order('created_at', { ascending: false })
@@ -37,6 +37,44 @@ export async function POST(req: NextRequest) {
       .update({ cancelled_at: new Date().toISOString() })
       .eq('id', subscription.id)
 
+    // ⚠️ Si algun dia se agrega un endpoint para revertir la cancelacion
+    // dentro del periodo, tiene que devolver estos asientos a 'active'
+    // con access_until en null. Hoy no existe: el flujo manda a /planes.
+    //
+    // Los asientos adicionales pasan a 'ending' con la misma fecha de
+    // acceso que el titular: mueren cuando muere la suscripcion.
+    //
+    // Sin esto quedaban en 'active' para siempre y occupied_seats los
+    // seguia contando, dejando la cuenta bloqueada en el tope de 3
+    // aunque ya no hubiera nada activo.
+    //
+    // El primario NO se toca: su acceso lo gobierna la suscripcion.
+    //
+    // Service role a proposito: learners no tiene politica de UPDATE
+    // para authenticated (migracion 036). Este archivo escribe
+    // `subscriptions` con el cliente del usuario porque esa tabla si la
+    // tiene; learners no puede copiar ese patron.
+    if (subscription.current_period_end) {
+      const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+      const admin = createServiceClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      )
+      const { error: asientosError } = await admin
+        .from('learners')
+        .update({
+          status: 'ending',
+          access_until: subscription.current_period_end,
+        })
+        .eq('account_user_id', user.id)
+        .eq('is_primary', false)
+        .eq('status', 'active')
+
+      if (asientosError) {
+        console.error('[subscription/cancel] no se marcaron los asientos:', asientosError)
+      }
+    }
+
     // Enviar email de confirmación de cancelación
     try {
       const { data: userProfile } = await supabase
@@ -47,14 +85,8 @@ export async function POST(req: NextRequest) {
 
       const userEmail = user.email
       if (userEmail) {
-        const { data: subData } = await supabase
-          .from('subscriptions')
-          .select('current_period_end')
-          .eq('id', subscription.id)
-          .single()
-
-        const accessUntil = subData?.current_period_end
-          ? new Date(subData.current_period_end).toLocaleDateString('es-MX', {
+        const accessUntil = subscription.current_period_end
+          ? new Date(subscription.current_period_end).toLocaleDateString('es-MX', {
               day: 'numeric', month: 'long', year: 'numeric',
             })
           : 'el fin del período actual'

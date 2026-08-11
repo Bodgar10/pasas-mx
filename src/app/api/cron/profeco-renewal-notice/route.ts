@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { sendEmail } from '@/lib/email/resend'
 import { renewalNoticeTemplate } from '@/lib/email/templates/renewal-notice'
-import { PLAN_DISPLAY, CICLO_LABEL } from '@/lib/payments/config'
+import { PLAN_DISPLAY, CICLO_LABEL, precioAsiento, PLAN_DB_A_STRIPE, type BillingCycleDB } from '@/lib/payments/config'
 
 export async function GET(req: Request) {
   const supabase = createClient(
@@ -83,7 +83,29 @@ export async function GET(req: Request) {
       // El mapa vive en @/lib/payments/config: no volver a copiarlo aquí.
       const planLabel = PLAN_DISPLAY[planKey].label
       const cycleLabel = CICLO_LABEL[sub.billing_cycle ?? 'monthly'] ?? 'Mensual'
-      const amount = Math.round(sub.price_mxn / 100)
+      // 🔴 price_mxn es el precio del TITULAR. Los asientos adicionales
+      // son line items aparte en Stripe y no estan en esa columna.
+      // Anunciar solo el titular seria avisar un monto menor al que se
+      // cobra, que es justo lo que la LFPC prohibe.
+      //
+      // Se cuentan solo los que van a renovar: un asiento en 'ending'
+      // conserva acceso hasta access_until pero NO se factura de nuevo.
+      const { count: asientosExtra } = await supabase
+        .from('learners')
+        .select('id', { count: 'exact', head: true })
+        .eq('account_user_id', sub.user_id)
+        .eq('status', 'active')
+        .eq('is_primary', false)
+
+      const planKeyStripe = PLAN_DB_A_STRIPE[sub.plan]
+      const precioPorAsiento = planKeyStripe
+        ? precioAsiento(planKeyStripe, (sub.billing_cycle ?? 'monthly') as BillingCycleDB)
+        : 0
+
+      const montoTitular = sub.price_mxn / 100
+      const montoAsientos = (asientosExtra ?? 0) * precioPorAsiento
+      const amount = montoTitular + montoAsientos
+      const totalAlumnos = (asientosExtra ?? 0) + 1
 
       const renewalDate = new Date(sub.current_period_end).toLocaleDateString('es-MX', {
         day: 'numeric',
@@ -97,6 +119,9 @@ export async function GET(req: Request) {
         amount,
         renewalDate,
         billingCycle: cycleLabel,
+        totalAlumnos,
+        montoTitular,
+        montoAsientos,
       })
 
       const result = await sendEmail({

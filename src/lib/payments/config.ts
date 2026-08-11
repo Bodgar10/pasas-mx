@@ -106,3 +106,87 @@ export const CHECKOUT_CONFIG = {
   paymentMethods: ['card'] as const,
   mode: 'subscription' as const,
 }
+
+// ---------------------------------------------------------------------------
+// ASIENTOS ADICIONALES
+// Una cuenta puede tener mas de una persona estudiando. Cada persona
+// adicional cuesta la mitad del precio de lista de su plan.
+// ---------------------------------------------------------------------------
+
+/**
+ * Cupon OCULTO en Stripe. 50% off, duration: forever, sin promotion code.
+ * Nadie puede teclearlo en un checkout: solo lo aplica el servidor en el
+ * line item del asiento.
+ *
+ * `forever` es a proposito. Con `once` el asiento subiria a precio de
+ * lista en la primera renovacion, y anunciar un precio permanente que
+ * despues sube es materia de PROFECO.
+ */
+export const SEAT_DISCOUNT_COUPON = 'SEAT_50'
+
+/** Tope por cuenta. Mas de tres y un grupo de familias comparte un login. */
+export const MAX_SEATS = 3
+
+/**
+ * Unico punto de traduccion entre los dos vocabularios de ciclo.
+ *
+ * La base y STRIPE_PRICES usan monthly | semestral | annual.
+ * PLAN_DISPLAY.prices usa mensual | semestral | anual.
+ *
+ * Los llamadores SIEMPRE pasan el de la base. Nadie fuera de este
+ * archivo deberia escribir 'mensual' ni 'anual'.
+ */
+const CICLO_A_DISPLAY = {
+  monthly:   'mensual',
+  semestral: 'semestral',
+  annual:    'anual',
+} as const
+
+export type BillingCycleDB = keyof typeof CICLO_A_DISPLAY
+
+/**
+ * Precio de un asiento adicional: exactamente la mitad del precio de
+ * lista de ese plan y ese ciclo.
+ *
+ * 🔴 Devuelve DECIMALES a proposito: 124.5, 399.5, 645.
+ * El cupon de Stripe descuenta 50% real sobre el precio de lista, asi
+ * que el cargo trae centavos. Redondear a un entero "bonito" haria que
+ * la pantalla anuncie un numero distinto al que se cobra — que es
+ * justo el problema de PROFECO que ya costo dos correcciones.
+ *
+ * 🔴 El asiento SIEMPRE hereda plan y ciclo del titular, sin opcion.
+ * Si alguien con plan mensual pudiera agregar un asiento anual al 50%,
+ * compraria el mensual de $249, agregaria tres asientos anuales
+ * baratos y cancelaria el mensual al mes siguiente: se quedaria con
+ * tres accesos anuales sin el asiento de precio completo que justifica
+ * el descuento. Ademas evita dos fechas de renovacion en la misma
+ * suscripcion.
+ */
+export function precioAsiento(plan: PlanKey, billingCycle: BillingCycleDB): number {
+  const claveDisplay = CICLO_A_DISPLAY[billingCycle]
+  const lista = PLAN_DISPLAY[plan]?.prices?.[claveDisplay]?.amount
+  if (lista == null) return 0
+  return lista / 2
+}
+
+/** Formato de moneda para pantalla. Muestra centavos solo si los hay. */
+/**
+ * subscriptions.plan guarda el enum plan_type de la base (grade,
+ * ai_personalized, exam); STRIPE_PRICES y PLAN_DISPLAY se llavean por
+ * producto. PRICE_TO_PLAN solo traduce en el otro sentido.
+ *
+ * 'exam' no aparece a proposito: no tiene price en STRIPE_PRICES. Un
+ * titular con ese plan no puede comprar asientos.
+ */
+export const PLAN_DB_A_STRIPE: Record<string, PlanKey> = {
+  grade:           'estandar_v2',
+  ai_personalized: 'personalizado_v2',
+}
+
+export function formatoMXN(monto: number): string {
+  const tieneCentavos = monto % 1 !== 0
+  return monto.toLocaleString('es-MX', {
+    minimumFractionDigits: tieneCentavos ? 2 : 0,
+    maximumFractionDigits: 2,
+  })
+}

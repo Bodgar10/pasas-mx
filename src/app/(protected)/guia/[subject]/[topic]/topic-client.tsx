@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
 import HordeEntryCard from '@/components/guia/HordeEntryCard'
+import { rutaAlumno } from '@/lib/learners'
 import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
@@ -59,6 +60,7 @@ interface Props {
   hordeHasBank?: boolean
   hordeBestWave?: number
   hordeAttempts?: number
+  activeSlot?: number
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -211,6 +213,7 @@ export default function TopicClient({
   hordeHasBank = false,
   hordeBestWave = 0,
   hordeAttempts = 0,
+  activeSlot = 1,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'horda' | 'resumen'>('guia')
@@ -360,6 +363,7 @@ export default function TopicClient({
                   section_id: sectionId,
                   topic_id: topic.id,
                   subject_id: subject.id,
+                  slot: activeSlot,
                 }),
               })
                 .then((res) => res.json())
@@ -435,6 +439,7 @@ export default function TopicClient({
       question_id: questionId,
       topic_id: topic.id,
       subject_id: subject.id,
+      slot: activeSlot,
       selected_answer: selectedLetter,
       is_correct: isCorrect,
       xp_earned: xpEarned,
@@ -495,6 +500,7 @@ export default function TopicClient({
         section_id: sectionId,
         topic_id: topic.id,
         subject_id: subject.id,
+        slot: activeSlot,
       }),
     })
       .then((res) => res.json())
@@ -1249,7 +1255,7 @@ export default function TopicClient({
       {/* Tab: Horda */}
       <div style={{ display: activeTab === 'horda' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
         <HordeEntryCard
-          href={`/guia/${subject.slug}/${topic.slug}/horda`}
+          href={rutaAlumno(`/guia/${subject.slug}/${topic.slug}/horda`, activeSlot)}
           hasBank={hordeHasBank && !_isPersonalized}
           bestWave={hordeBestWave}
           attempts={hordeAttempts}

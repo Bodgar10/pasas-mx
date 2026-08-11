@@ -1,14 +1,18 @@
 import { notFound } from 'next/navigation'
 import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
+import { resolveLearner } from '@/lib/learners'
 import SubjectClient from './subject-client'
 
 export default async function SubjectPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ subject: string }>
+  searchParams: Promise<{ a?: string }>
 }) {
   const { subject: subjectSlug } = await params
+  const sp = await searchParams
   const supabase = await createClient()
 
   const {
@@ -27,14 +31,13 @@ export default async function SubjectPage({
   )
 
   // Fetch subject + profile in parallel, subject is cached
-  const [subject, { data: profile }] = await Promise.all([
+  //
+  // `profile` viene de `learners` pese al nombre. Sale de resolveLearner
+  // y NO de is_primary: con is_primary la pagina ignoraba el ?a= y
+  // siempre pintaba el avance del alumno 1.
+  const [subject, profile] = await Promise.all([
     getCachedSubject(subjectSlug),
-    supabase
-      .from('learners')
-      .select('id, grade, education_level')
-      .eq('account_user_id', user.id)
-      .eq('is_primary', true)
-      .maybeSingle(),
+    resolveLearner(supabase, user.id, sp),
   ])
 
   if (!subject) return notFound()
@@ -78,13 +81,24 @@ export default async function SubjectPage({
       .maybeSingle(),
   ])
 
+  // `Learner` declara grade y education_level nullables; SubjectClient los
+  // espera no-nulos. Se aplican los MISMOS defaults que ya tenia el caso
+  // "sin profile" de antes, para no cambiar el comportamiento: la
+  // nulabilidad siempre estuvo ahi, solo que el select sin tipar la
+  // hacia invisible.
+  const profileProps = {
+    grade: profile?.grade ?? 1,
+    education_level: profile?.education_level ?? 'middle_school',
+  }
+
   return (
     <SubjectClient
       subject={subject}
       topics={topics ?? []}
       topicProgress={topicProgress ?? []}
-      profile={profile ?? { grade: 1, education_level: 'middle_school' }}
+      profile={profileProps}
       subjectXp={userSubject?.xp ?? 0}
+      activeSlot={profile?.slot ?? 1}
     />
   )
 }

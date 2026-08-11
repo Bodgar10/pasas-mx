@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
-import { getActiveLearnerId } from '@/lib/learners'
+import { resolveLearnerFromBody } from '@/lib/learners'
 
 export async function POST(request: Request) {
   try {
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 })
     }
 
-    const learnerId = await getActiveLearnerId(supabase, user.id)
+    const learnerId = await resolveLearnerFromBody(supabase, user.id, body?.slot)
     if (!learnerId) {
       return NextResponse.json({ error: 'Sin alumno activo' }, { status: 409 })
     }

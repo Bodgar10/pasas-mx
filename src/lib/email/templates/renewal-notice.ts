@@ -1,12 +1,34 @@
+import { formatoMXN } from '@/lib/payments/config'
+
 interface RenewalNoticeProps {
   userName: string
   planName: string
   amount: number
   renewalDate: string
   billingCycle: string
+  /**
+   * Desglose por asientos. Opcionales a proposito: sin ellos —o con
+   * totalAlumnos en 1— el correo se ve exactamente igual que antes de
+   * que existieran los lugares adicionales.
+   */
+  totalAlumnos?: number
+  montoTitular?: number
+  montoAsientos?: number
 }
 
-export function renewalNoticeTemplate({ userName, planName, amount, renewalDate, billingCycle }: RenewalNoticeProps): string {
+export function renewalNoticeTemplate({ userName, planName, amount, renewalDate, billingCycle, totalAlumnos, montoTitular, montoAsientos }: RenewalNoticeProps): string {
+  const hayAsientos = (totalAlumnos ?? 1) > 1
+  const adicionales = (totalAlumnos ?? 1) - 1
+
+  // Los montos pueden traer centavos: un asiento cuesta la mitad exacta
+  // del precio de lista, y la mitad de $249 es $124.50.
+  const desglose = hayAsientos
+    ? `
+      <p style="font-size:15px;color:#e2d9f3;margin:0 0 6px"><strong>Alumnos:</strong> ${totalAlumnos}</p>
+      <p style="font-size:14px;color:#a78bfa;margin:0 0 4px;padding-left:12px">1 lugar principal: $${formatoMXN(montoTitular ?? 0)}</p>
+      <p style="font-size:14px;color:#a78bfa;margin:0 0 6px;padding-left:12px">${adicionales} lugar${adicionales === 1 ? '' : 'es'} adicional${adicionales === 1 ? '' : 'es'}: $${formatoMXN(montoAsientos ?? 0)}</p>`
+    : ''
+
   return `
 <!DOCTYPE html>
 <html>
@@ -18,8 +40,8 @@ export function renewalNoticeTemplate({ userName, planName, amount, renewalDate,
     <p style="font-size:15px;color:#a78bfa;margin:0 0 24px">Hola ${userName}, te avisamos con tiempo para que no te tome por sorpresa.</p>
     <div style="background:#1a1035;border:1.5px solid #2D2048;border-radius:16px;padding:24px;margin-bottom:24px">
       <p style="font-size:13px;color:#a78bfa;margin:0 0 8px;text-transform:uppercase;letter-spacing:1px">Detalle de renovación</p>
-      <p style="font-size:15px;color:#e2d9f3;margin:0 0 6px"><strong>Plan:</strong> ${planName}</p>
-      <p style="font-size:15px;color:#e2d9f3;margin:0 0 6px"><strong>Monto:</strong> $${amount} MXN</p>
+      <p style="font-size:15px;color:#e2d9f3;margin:0 0 6px"><strong>Plan:</strong> ${planName}</p>${desglose}
+      <p style="font-size:15px;color:#e2d9f3;margin:0 0 6px"><strong>${hayAsientos ? 'Total a cobrar' : 'Monto'}:</strong> $${formatoMXN(amount)} MXN</p>
       <p style="font-size:15px;color:#e2d9f3;margin:0 0 6px"><strong>Ciclo:</strong> ${billingCycle}</p>
       <p style="font-size:15px;color:#e2d9f3;margin:0"><strong>Fecha de cobro:</strong> ${renewalDate}</p>
     </div>

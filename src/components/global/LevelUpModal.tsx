@@ -7,9 +7,16 @@ import Pasita from '@/components/mascota/Pasita'
 interface Props {
   from: number
   to: number
+  /**
+   * Slot del alumno que subio de nivel. Sin esto, /api/level-seen cae al
+   * primario y el modal del alumno 2 marcaria como visto el nivel del
+   * alumno 1 — reapareciendo en cada visita para uno y desapareciendo
+   * sin razon para el otro.
+   */
+  activeSlot?: number
 }
 
-export default function LevelUpModal({ from, to }: Props) {
+export default function LevelUpModal({ from, to, activeSlot = 1 }: Props) {
   const [open, setOpen] = useState(true)
   const [saving, setSaving] = useState(false)
 
@@ -27,7 +34,11 @@ export default function LevelUpModal({ from, to }: Props) {
     setSaving(true)
     setOpen(false)
     try {
-      await fetch('/api/level-seen', { method: 'POST' })
+      await fetch('/api/level-seen', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slot: activeSlot }),
+      })
     } catch {
       // Si falla, el modal reaparece en la siguiente visita. Aceptable.
     }

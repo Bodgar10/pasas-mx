@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Pasita from '@/components/mascota/Pasita'
+import { rutaAlumno } from '@/lib/learners'
 
 interface Subject {
   id: string
@@ -42,6 +43,7 @@ interface Props {
   topicProgress: TopicProgress[]
   profile: Profile
   subjectXp: number
+  activeSlot?: number
 }
 
 const GRADE_LABELS: Record<number, string> = { 1: '1°', 2: '2°', 3: '3°' }
@@ -61,7 +63,7 @@ function getStatus(
   return getProgress(topicId, topicProgress)?.status ?? 'not_started'
 }
 
-export default function SubjectClient({ subject, topics, topicProgress, profile, subjectXp }: Props) {
+export default function SubjectClient({ subject, topics, topicProgress, profile, subjectXp, activeSlot = 1 }: Props) {
   const router = useRouter()
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null)
   const [isDesktop, setIsDesktop] = useState(false)
@@ -188,7 +190,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
     return (
       <div
         key={topic.id}
-        onClick={() => router.push(`/guia/${subject.slug}/${topic.slug}`)}
+        onClick={() => router.push(rutaAlumno(`/guia/${subject.slug}/${topic.slug}`, activeSlot))}
         onMouseEnter={() => setHoveredTopic(topic.id)}
         onMouseLeave={() => setHoveredTopic(null)}
         style={{
