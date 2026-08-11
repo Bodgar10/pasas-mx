@@ -20,6 +20,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { MAX_SEATS } from '@/lib/payments/config'
+import { calcularEdad } from '@/lib/legal'
 
 type Body = {
   displayName?: string
@@ -29,10 +30,6 @@ type Body = {
   grade?: number | null
   themeId?: string | null
 }
-
-/** Rango de edad plausible para un alumno de secundaria o prepa. */
-const EDAD_MIN = 4
-const EDAD_MAX = 100
 
 export async function POST(request: Request) {
   // 1. Auth
@@ -97,21 +94,26 @@ export async function POST(request: Request) {
         { status: 400 }
       )
     }
-    const fecha = new Date(raw)
-    if (Number.isNaN(fecha.getTime())) {
-      return NextResponse.json({ error: 'Fecha de nacimiento invalida' }, { status: 400 })
-    }
-    const ahora = new Date()
-    if (fecha > ahora) {
+    // Mismo criterio que el registro (@/lib/legal): un rango propio aqui
+    // significaria dos definiciones de "fecha valida" para lo mismo.
+    const edad = calcularEdad(raw)
+    if (edad === null || edad < 0 || edad > 120) {
       return NextResponse.json(
-        { error: 'La fecha de nacimiento no puede estar en el futuro' },
+        { error: 'Escribe una fecha de nacimiento válida.' },
         { status: 400 }
       )
     }
-    const edad = (ahora.getTime() - fecha.getTime()) / (1000 * 60 * 60 * 24 * 365.25)
-    if (edad < EDAD_MIN || edad > EDAD_MAX) {
-      return NextResponse.json({ error: 'Fecha de nacimiento invalida' }, { status: 400 })
+
+    // El rango de @/lib/legal (0-120) cubre el age gate de menores, no
+    // la plausibilidad escolar. El contenido mas bajo es 1° de
+    // secundaria: por debajo de 4 años no hay nada que estudiar aqui.
+    if (edad !== null && edad < 4) {
+      return NextResponse.json(
+        { error: 'La fecha no corresponde a un alumno en edad escolar.' },
+        { status: 400 }
+      )
     }
+
     birthdate = raw
   }
 

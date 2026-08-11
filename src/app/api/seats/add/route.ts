@@ -62,7 +62,7 @@ export async function POST(request: Request) {
   //    No se confia en el id del body.
   const { data: learner, error: learnerError } = await supabase
     .from('learners')
-    .select('id, status, access_until, account_user_id')
+    .select('id, status, access_until, account_user_id, education_level, grade, theme_id')
     .eq('id', learnerId)
     .eq('account_user_id', user.id)
     .maybeSingle()
@@ -291,6 +291,42 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
+  }
+
+  // El webhook de Stripe crea las materias del primer asiento al pagar.
+  // Los asientos adicionales no pasan por ese webhook, asi que las
+  // materias hay que crearlas aqui o el alumno entra a un dashboard
+  // donde todo dice "Contenido próximamente".
+  if (learner.education_level && learner.grade != null && learner.theme_id) {
+    const { data: materias } = await admin
+      .from('subjects')
+      .select('id')
+      .eq('education_level', learner.education_level)
+      .contains('grades', [learner.grade])
+
+    if (materias && materias.length > 0) {
+      const filas = materias.map((m) => ({
+        user_id: user.id,
+        learner_id: learnerId,
+        subject_id: m.id,
+        theme_id: learner.theme_id,
+        plan_type: 'grade',
+        xp: 0,
+        streak_days: 0,
+        purchased_at: new Date().toISOString(),
+      }))
+
+      const { error: materiasError } = await admin
+        .from('user_subjects')
+        .upsert(filas, { onConflict: 'learner_id,subject_id' })
+
+      if (materiasError) {
+        // El cobro ya salio y el alumno ya esta activo. No se revierte:
+        // se registra para conciliar, porque volver atras dejaria al
+        // usuario pagando sin alumno en vez de con alumno sin materias.
+        console.error('[seats/add] alumno activo SIN materias:', learnerId, materiasError)
+      }
+    }
   }
 
   return NextResponse.json({ ok: true, subscriptionItemId })

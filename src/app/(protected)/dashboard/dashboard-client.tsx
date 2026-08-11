@@ -113,6 +113,10 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   const [showMenu, setShowMenu] = useState(false)
 
+  // Slot que se esta cargando. El cambio de alumno tarda uno o dos
+  // segundos y sin senal el clic parece no haber respondido.
+  const [cambiando, setCambiando] = useState<number | null>(null)
+
   // Modales de feedback
   const [showSubjectModal, setShowSubjectModal] = useState(false)
   const [showBugModal, setShowBugModal] = useState(false)
@@ -404,6 +408,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               }}>
                 {learners.map((l) => {
                   const activo = l.slot === activeSlot
+                  const cargando = cambiando === l.slot
                   const nivel = l.education_level === 'middle_school'
                     ? 'Secundaria'
                     : l.education_level === 'high_school' ? 'Prepa' : ''
@@ -412,7 +417,8 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     <button
                       key={l.id}
                       type="button"
-                      onClick={() => router.push(rutaAlumno('/dashboard', l.slot))}
+                      onClick={() => { setCambiando(l.slot); router.push(rutaAlumno('/dashboard', l.slot)) }}
+                      disabled={cambiando !== null}
                       style={{
                         flexShrink: 0,
                         background: activo
@@ -421,16 +427,20 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                         border: activo ? 'none' : '1.5px solid #2D2048',
                         borderRadius: 12,
                         padding: '8px 14px',
-                        cursor: 'pointer',
+                        cursor: cambiando !== null ? 'wait' : 'pointer',
                         fontFamily: 'var(--font-nunito)',
                         textAlign: 'left',
+                        // Los que no se estan cargando se atenuan para que
+                        // la atencion quede en el que va a abrirse.
+                        opacity: cambiando !== null && !cargando ? 0.5 : 1,
+                        transition: 'opacity 0.15s',
                       }}
                     >
                       <div style={{
                         fontSize: 14, fontWeight: 900,
                         color: activo ? '#fff' : '#e2d9f3',
                       }}>
-                        {l.display_name}
+                        {cargando ? 'Cambiando…' : l.display_name}
                       </div>
                       {(nivel || grado) && (
                         <div style={{

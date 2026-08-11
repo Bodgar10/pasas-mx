@@ -93,10 +93,20 @@ export default async function DashboardPage({
   )
 
   // Fetch user-specific data + cached subjects in parallel
-  const [subjects, { data: userSubjects }, { data: lastActiveRows, error: lastActiveError }] = await Promise.all([
+  const [
+    subjects,
+    { data: userSubjects },
+    { data: lastActiveRows, error: lastActiveError },
+    { data: temaDelAlumno },
+  ] = await Promise.all([
     getCachedSubjects(learner?.education_level ?? 'middle_school', learner?.grade ?? 1),
     supabase.from('user_subjects').select('subject_id, xp, theme_id').eq('learner_id', learner?.id ?? ''),
     supabase.rpc('get_last_active_topic', { p_learner_id: learner?.id ?? null }),
+    // La tematica vive en el ALUMNO. `users.interests` es de la cuenta y
+    // pintaba la del titular en el dashboard de todos.
+    learner?.theme_id
+      ? supabase.from('themes').select('name').eq('id', learner.theme_id).maybeSingle()
+      : Promise.resolve({ data: null }),
   ])
 
   if (lastActiveError) {
@@ -137,12 +147,15 @@ export default async function DashboardPage({
           : null
       }
       profile={{
-        name: profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
+        name: learner?.display_name ?? profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
         xp_total: learner?.xp_total ?? 0,
         streak_days: learner?.streak_days ?? 0,
         education_level: learner?.education_level ?? null,
         grade: learner?.grade ?? null,
-        interests: (profile.interests as string[] | null) ?? [],
+        // El respaldo a `users.interests` es para el alumno primario de
+        // cuentas viejas, cuyo theme_id puede estar en null porque el
+        // onboarding guardaba el NOMBRE ahi y no el uuid.
+        interests: temaDelAlumno?.name ? [temaDelAlumno.name] : ((profile.interests as string[] | null) ?? []),
       }}
       subscriptionStatus={subscriptionStatus}
       totalLearners={todosLosAlumnos.length}

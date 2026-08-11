@@ -189,6 +189,11 @@ export default function AgregarClient({ alumnos, themes }: Props) {
   const [preview, setPreview] = useState<Preview | null>(null)
   const [previewError, setPreviewError] = useState<string | null>(null)
 
+  // Cotas del input: no se puede nacer mañana ni hace 120 años.
+  // Mismo patron que ConsentimientoLegal.
+  const hoyISO = new Date().toISOString().slice(0, 10)
+  const minISO = `${new Date().getFullYear() - 120}-01-01`
+
   // Paso 1
   const [quien, setQuien] = useState<string | null>(null)   // id del alumno, o 'otra'
   const [nombre, setNombre] = useState('')
@@ -437,8 +442,19 @@ export default function AgregarClient({ alumnos, themes }: Props) {
                   <input
                     type="date"
                     value={birthdate}
+                    max={hoyISO}
+                    min={minISO}
                     onChange={(e) => setBirthdate(e.target.value)}
-                    style={inputStyle}
+                    style={{
+                      ...inputStyle,
+                      colorScheme: 'dark',
+                      // iOS Safari dibuja su propia caja blanca dentro del
+                      // input aunque colorScheme sea dark. Estas tres lo
+                      // neutralizan.
+                      WebkitAppearance: 'none',
+                      appearance: 'none',
+                      minHeight: 48,
+                    }}
                   />
                 </div>
               </div>
