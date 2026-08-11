@@ -7,10 +7,11 @@ export default async function PerfilPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  // 🔴 NO se usa getAccountLearners aqui: esa funcion filtra por status
-  // 'active' y aqui hacen falta TAMBIEN los 'ending', o el usuario no
-  // puede reactivar un lugar que dio de baja. Se excluye solo
-  // 'inactive', que son filas a medio crear sin cobro ni acceso.
+  // La consulta va aparte de getAccountLearners a proposito: esa
+  // funcion excluye los 'ending' cuyo acceso YA vencio, porque el
+  // dashboard no debe ofrecer un alumno al que no se puede entrar.
+  // El perfil si los necesita: es donde se le dice al usuario que el
+  // acceso termino y desde donde puede volver a contratar.
   const [{ data: profile }, { data: learner }, { data: subscription }, { data: alumnos }] = await Promise.all([
     supabase.from('users').select('full_name, email').eq('id', user.id).single(),
     supabase.from('learners').select('xp_total, streak_days').eq('account_user_id', user.id).eq('is_primary', true).maybeSingle(),

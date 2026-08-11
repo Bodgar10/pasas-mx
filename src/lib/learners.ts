@@ -149,8 +149,16 @@ export async function getLearnerBySlot(
 }
 
 /**
- * Todos los alumnos activos de una cuenta, ordenados por slot.
- * El dashboard decide con esto si pinta una tarjeta o varias.
+ * Alumnos de una cuenta que tienen acceso vigente, ordenados por slot.
+ *
+ * 🔴 Incluye los que estan en 'ending': un alumno dado de baja conserva
+ * el acceso que ya pago hasta `access_until`, asi que debe seguir en el
+ * selector. Filtrar por `status = 'active'` a secas lo sacaba de la
+ * lista mientras todavia podia estudiar.
+ *
+ * El filtro de acceso vigente se hace despues en JS: PostgREST no
+ * permite expresar "activo O (terminando Y con fecha futura)" en un
+ * solo `.or()` legible.
  */
 export async function getAccountLearners(
   supabase: SupabaseClient,
@@ -158,9 +166,9 @@ export async function getAccountLearners(
 ) {
   const { data, error } = await supabase
     .from('learners')
-    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen, status, access_until')
     .eq('account_user_id', userId)
-    .eq('status', 'active')
+    .in('status', ['active', 'ending'])
     .order('slot', { ascending: true })
 
   if (error) {
@@ -168,7 +176,12 @@ export async function getAccountLearners(
     return []
   }
 
-  return data ?? []
+  const ahora = Date.now()
+  return (data ?? []).filter(
+    (l) =>
+      l.status === 'active' ||
+      (l.status === 'ending' && l.access_until && new Date(l.access_until).getTime() > ahora)
+  )
 }
 
 /**

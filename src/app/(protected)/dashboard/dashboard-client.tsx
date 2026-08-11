@@ -77,6 +77,8 @@ interface LearnerResumen {
   display_name: string
   education_level: string | null
   grade: number | null
+  status?: string
+  access_until?: string | null
 }
 
 const SUBJECT_ICONS: Record<string, { icon: string; color: string }> = {
@@ -486,6 +488,20 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                           color: activo ? 'rgba(255,255,255,0.75)' : '#a78bfa',
                         }}>
                           {nivel} {grado}
+                        </div>
+                      )}
+                      {/* Dado de baja pero con acceso vigente. Se puede
+                          seleccionar y se ve igual que los demas: su acceso
+                          sigue pagado. La linea solo explica por que sigue
+                          en la lista despues de haberlo quitado. */}
+                      {l.status === 'ending' && l.access_until && (
+                        <div style={{
+                          fontSize: 10, fontWeight: 600,
+                          color: '#fbbf24',
+                        }}>
+                          Hasta el {new Date(l.access_until).toLocaleDateString('es-MX', {
+                            day: 'numeric', month: 'long',
+                          })}
                         </div>
                       )}
                     </button>
