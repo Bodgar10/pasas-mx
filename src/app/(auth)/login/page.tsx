@@ -7,7 +7,11 @@ import { loginAction, type LoginState } from './actions'
 import { createClient } from '@/utils/supabase/client'
 import { trackLogin } from '@/components/posthog-events'
 import Logo from '@/components/global/Logo'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
 
+// Ver el comentario de ENABLE_GOOGLE_AUTH en src/lib/feature-flags.ts:
+// el alta con Google se salta el flujo legal del alta y por eso esta
+// apagada. El componente se conserva para poder reactivarla.
 function GoogleIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
@@ -195,31 +199,35 @@ export default function LoginPage() {
         </div>
       </form>
 
-      {/* Divider */}
-      <div className="flex items-center gap-3">
-        <div className="flex-1 h-px" style={{ backgroundColor: '#2D2048' }} />
-        <span className="text-xs" style={{ color: '#4B3D6E' }}>
-          o continúa con
-        </span>
-        <div className="flex-1 h-px" style={{ backgroundColor: '#2D2048' }} />
-      </div>
+      {FEATURE_FLAGS.ENABLE_GOOGLE_AUTH && (
+        <>
+          {/* Divider */}
+          <div className="flex items-center gap-3">
+            <div className="flex-1 h-px" style={{ backgroundColor: '#2D2048' }} />
+            <span className="text-xs" style={{ color: '#4B3D6E' }}>
+              o continúa con
+            </span>
+            <div className="flex-1 h-px" style={{ backgroundColor: '#2D2048' }} />
+          </div>
 
-      {/* Google button */}
-      <button
-        type="button"
-        onClick={handleGoogleSignIn}
-        disabled={googlePending}
-        className="w-full rounded-xl flex items-center justify-center gap-3 font-semibold text-base transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-        style={{
-          backgroundColor: '#1C1033',
-          border: '1.5px solid #2D2048',
-          color: '#e2d9f3',
-          minHeight: '52px',
-        }}
-      >
-        <GoogleIcon />
-        {googlePending ? 'Redirigiendo…' : 'Continuar con Google'}
-      </button>
+          {/* Google button */}
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            disabled={googlePending}
+            className="w-full rounded-xl flex items-center justify-center gap-3 font-semibold text-base transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{
+              backgroundColor: '#1C1033',
+              border: '1.5px solid #2D2048',
+              color: '#e2d9f3',
+              minHeight: '52px',
+            }}
+          >
+            <GoogleIcon />
+            {googlePending ? 'Redirigiendo…' : 'Continuar con Google'}
+          </button>
+        </>
+      )}
 
       {/* Register link */}
       <p className="text-center text-sm" style={{ color: '#6B7280' }}>
