@@ -117,6 +117,15 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
   // segundos y sin senal el clic parece no haber respondido.
   const [cambiando, setCambiando] = useState<number | null>(null)
 
+  // El loader del selector se apaga cuando `activeSlot` cambia, no
+  // cuando router.push retorna: push no espera a que el servidor
+  // responda, y como la ruta solo cambia en el query param el
+  // componente se reutiliza en vez de remontarse. Sin esto el boton se
+  // queda en "Cambiando…" indefinidamente.
+  useEffect(() => {
+    setCambiando(null)
+  }, [activeSlot])
+
   // Modales de feedback
   const [showSubjectModal, setShowSubjectModal] = useState(false)
   const [showBugModal, setShowBugModal] = useState(false)
