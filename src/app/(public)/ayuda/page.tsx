@@ -63,6 +63,23 @@ const FAQS = [
     ],
   },
   {
+    category: 'Facturación',
+    items: [
+      {
+        q: '¿Puedo pedir factura?',
+        a: 'Sí. Escríbenos a hola@pasas.mx dentro del mismo mes en que hiciste tu pago e incluye: RFC, nombre o razón social tal como aparece en tu Constancia de Situación Fiscal, código postal de tu domicilio fiscal, régimen fiscal y uso de CFDI. Te enviamos tu factura por correo.',
+      },
+      {
+        q: '¿Por qué tengo que pedirla en el mismo mes?',
+        a: 'Una vez que cierra el mes, tu pago queda incluido en la factura global que emitimos ante el SAT y ya no es posible generar una factura individual a tu nombre por esa operación.',
+      },
+      {
+        q: 'No necesito factura, ¿tengo que hacer algo?',
+        a: 'No. Si no la pides, tu pago se registra en la factura global de público en general que emitimos cada mes. No necesitas hacer nada.',
+      },
+    ],
+  },
+  {
     category: 'Contenido y funciones',
     items: [
       {
