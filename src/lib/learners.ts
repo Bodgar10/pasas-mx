@@ -93,6 +93,11 @@ export async function upsertPrimaryLearner(
     .insert({
       account_user_id: params.userId,
       is_primary: true,
+      // 🔴 slot es NOT NULL sin default. El primario es SIEMPRE 1: es el
+      // primer alumno de la cuenta y el que reciben todos los links sin `?a=`.
+      // No usar next_learner_slot aquí — con una fila huérfana daría 2 y
+      // las URLs limpias apuntarían a nadie.
+      slot: 1,
       ...campos,
     })
     .select('id')
