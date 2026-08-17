@@ -12,6 +12,7 @@ import { createClient } from '@/utils/supabase/client'
 import { trackCheckoutCompleted } from '@/components/posthog-events'
 import { waLink } from '@/lib/contacto'
 import { rutaAlumno } from '@/lib/learners'
+import { PLAN_DISPLAY } from '@/lib/payments/config'
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -717,7 +718,15 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
               </div>
             )}
 
-            {/* Upgrade Banner — solo para usuarios mensuales activos sin trial */}
+            {/* Upgrade Banner — solo para usuarios mensuales activos sin trial.
+
+                🔴 Las dos cifras salen de PLAN_DISPLAY. Estaban escritas a
+                mano, y la etiqueta decía "al año" sobre el `savings` del
+                ciclo semestral, que es el ahorro de UN SEMESTRE: mensual por
+                seis menos el pago semestral. El monto era correcto y la
+                unidad no, que es la peor combinación —nadie la detecta
+                leyendo—, así que la unidad va pegada al campo del que sale
+                el número. */}
             {subscriptionStatus === 'active' && billingCycle === 'monthly' && !enTrial && !isPersonalized && (
               <div style={{
                 background: 'linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.06))',
@@ -737,10 +746,10 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
                     fontSize: 13, fontWeight: 900,
                     color: '#10b981', margin: '0 0 4px',
                   }}>
-                    💰 Ahorra $695 al año
+                    💰 Ahorra ${PLAN_DISPLAY.estandar_v2.prices.semestral.savings} cada semestre
                   </p>
                   <p style={{ fontSize: 13, color: '#a78bfa', margin: 0, lineHeight: 1.5 }}>
-                    Cámbiate al plan semestral y paga solo $133/mes
+                    Cámbiate al plan semestral y paga solo ${PLAN_DISPLAY.estandar_v2.prices.semestral.perMonth}/mes
                   </p>
                 </div>
                 <button

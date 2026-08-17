@@ -8,6 +8,11 @@ import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { STRIPE_PRICES } from '@/lib/payments/config'
 import { upsertPrimaryLearner } from '@/lib/learners'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import {
+  MENSAJE_PROMO_NO_DISPONIBLE,
+  PromoNoDisponibleError,
+  resolvePromoParaCheckout,
+} from '@/lib/payments/promo-checkout'
 
 export type RegistroState =
   | { error: string }
@@ -37,6 +42,9 @@ export async function registroAction(
   const pendingDuration = formData.get('pending_duration') as string | null
   const utmRaw = formData.get('utm_data') as string | null
   const cookieConsentRaw = formData.get('cookie_consent') as string | null
+  // Slug de campaña que venía en sessionStorage. Sin validar: lo valida
+  // resolvePromoParaCheckout contra la fila y contra Stripe.
+  const promoSlugRaw = formData.get('promo_slug') as string | null
 
 
   if (password.length < 6) {
@@ -274,6 +282,41 @@ export async function registroAction(
   if (pendingPlan && pendingDuration && !planOculto) {
     const priceId = (STRIPE_PRICES as Record<string, Record<string, string>>)[pendingPlan]?.[pendingDuration]
     if (priceId) {
+      /**
+       * Promoción, resuelta FUERA del try/catch de abajo.
+       *
+       * 🔴 Ese catch se traga cualquier error para mandar al usuario a
+       * /planes. Si la resolución de la promo viviera dentro, un
+       * PromoNoDisponibleError se perdería ahí y se abriría el checkout a
+       * precio de lista después de que la persona leyó "$1".
+       *
+       * `pendingDuration` trae el vocabulario de la BASE ('monthly' |
+       * 'semestral' | 'annual') porque viene del sessionStorage que escribe
+       * /planes. La conversión a display vive dentro de
+       * resolvePromoParaCheckout — aquí no se traduce nada.
+       */
+      let promoResuelta: Awaited<ReturnType<typeof resolvePromoParaCheckout>> = null
+      try {
+        promoResuelta = await resolvePromoParaCheckout(promoSlugRaw, pendingPlan, pendingDuration)
+      } catch (promoError) {
+        if (promoError instanceof PromoNoDisponibleError) {
+          console.error('[registro]', promoError.message)
+          // La cuenta YA existe a estas alturas, así que el mensaje tiene que
+          // decirlo: sin esa frase la persona intentaría registrarse otra vez
+          // y chocaría con "este correo ya tiene una cuenta".
+          return {
+            error: `${MENSAJE_PROMO_NO_DISPONIBLE}. Tu cuenta ya quedó creada: inicia sesión y elige tu plan.`,
+          }
+        }
+        throw promoError
+      }
+
+      // Record<string, string> explícito: la rama `{}` del ternario inferiría
+      // `promo_slug?: undefined`, que no encaja en el MetadataParam de Stripe.
+      const metadataPromo: Record<string, string> = promoResuelta
+        ? { promo_slug: promoResuelta.promo.slug }
+        : {}
+
       try {
         const stripe = (await import('stripe')).default
         const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY!)
@@ -283,12 +326,21 @@ export async function registroAction(
           customer_email: email,
           success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?checkout=success`,
           cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/planes`,
-          metadata: { user_id: user.id, plan: pendingPlan },
+          metadata: { user_id: user.id, plan: pendingPlan, ...metadataPromo },
           subscription_data: {
             trial_period_days: 7,
-            metadata: { user_id: user.id, plan: pendingPlan },
+            metadata: { user_id: user.id, plan: pendingPlan, ...metadataPromo },
           },
           payment_method_collection: 'always',
+          // 🔴 Excluyentes: Stripe rechaza la sesión si van los dos. Mismo
+          // spread ternario que en /api/checkout/create-session.
+          //
+          // Esta puerta no tenía `allow_promotion_codes`, así que lo gana
+          // ahora cuando no hay campaña: el código de escuela tecleado a mano
+          // por fin funciona también en el alta de tráfico frío.
+          ...(promoResuelta
+            ? { discounts: [{ promotion_code: promoResuelta.promotionCodeId }] }
+            : { allow_promotion_codes: true }),
         })
         if (session.url) {
           return { stripeUrl: session.url }

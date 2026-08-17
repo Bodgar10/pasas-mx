@@ -15,6 +15,18 @@ export const trackOnboardingCompleted = (level: string, grade: string | null, th
 export const trackCheckoutStarted = (plan: string, duration: string) =>
   posthog.capture('checkout_started', { plan, duration })
 
+/**
+ * Se dispara junto a checkout_started, solo cuando hay una campaña que aplica
+ * a ese plan y ciclo.
+ *
+ * `ciclo` va en vocabulario de DISPLAY (mensual | semestral | anual), el mismo
+ * que guarda promo_campaigns.ciclos, para que el embudo se pueda cruzar contra
+ * la campaña sin traducir nada. `duration` de checkout_started usa el de la
+ * base: son eventos distintos y no se comparan entre sí.
+ */
+export const trackPromoCheckoutIniciado = (promoSlug: string, plan: string, ciclo: string) =>
+  posthog.capture('promo_checkout_iniciado', { promo_slug: promoSlug, plan, ciclo })
+
 export const trackCheckoutCompleted = (plan: string, price_mxn: number) =>
   posthog.capture('checkout_completed', { plan, price_mxn })
 

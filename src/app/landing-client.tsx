@@ -9,6 +9,8 @@ import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import { usePromo } from '@/hooks/usePromo'
+import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
 import Image from 'next/image'
@@ -135,8 +137,12 @@ const TUTORIAL_PERSONALIZED = [
   { emoji: '📈', step: '04', title: 'Avanza más rápido', desc: 'Sin perder tiempo en lo que ya sabes. El plan personalizado va directo a lo que necesitas.' },
 ]
 
+// `key` es la clave de PLAN_DISPLAY y la que guarda promo_campaigns.planes.
+// Sin ella habría que adivinar el plan desde `name`, y una promo se decidiría
+// comparando strings de UI.
 const PLANS = [
   {
+    key: 'estandar_v2',
     name: 'Estándar',
     price: `$${PLAN_DISPLAY.estandar_v2.prices.mensual.amount}`,
     period: 'al mes',
@@ -157,6 +163,7 @@ const PLANS = [
     highlight: !FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN,
   },
   ...(FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN ? [{
+    key: 'personalizado_v2',
     name: 'Personalizado',
     price: `$${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}`,
     period: 'al mes',
@@ -194,10 +201,13 @@ const PLANS = [
  */
 function CTAIntermedio({
   texto,
+  microcopy,
   location,
   onClick,
 }: {
   texto: string
+  /** REGLA D: con promo llega el sublabel de la campaña ya compuesto. */
+  microcopy: string
   location: string
   onClick: (location: string) => void
 }) {
@@ -232,7 +242,7 @@ function CTAIntermedio({
         {texto}
       </Link>
       <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.55 }}>
-        7 días gratis · Cancela cuando quieras
+        {microcopy}
       </p>
     </div>
   )
@@ -340,6 +350,53 @@ export default function LandingClient() {
 
   const hero = HERO_VARIANTS[variant]
 
+  /*
+    Promoción. Se resuelve UNA vez para toda la landing.
+
+    🔴 REGLA F: esto cambia el TEXTO de los CTA, no la variante. `variant`
+    sigue saliendo de getOrAssignVariant()/detectAudience como siempre y
+    HERO_VARIANTS queda intacto — el A/B mide lo mismo con y sin campaña.
+
+    🔴 Mientras usePromo() carga, `promo` es null y todo pinta normal: ni
+    placeholder ni precio a medias.
+
+    La landing solo vende el mensual del Estándar (el resto de ciclos vive en
+    /planes), así que aquí el ciclo es 'mensual' fijo. La tarjeta de precios
+    usa plan.key, por lo que la de Personalizado no se decora sola: no está en
+    promo.planes.
+  */
+  const { promo } = usePromo()
+  const CICLO_LANDING = 'mensual'
+  const aplicaPromoEstandar = promoAplica(promo, 'estandar_v2', CICLO_LANDING)
+  const leyendaEstandar = leyendaPromo(promo, 'estandar_v2', CICLO_LANDING)
+
+  // Nav: sin microcopy, solo label.
+  const ctaNav = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
+    label: 'Gratis →',
+    sublabel: null,
+  })
+
+  // Hero: el label y la micro de la variante activa son el fallback.
+  const ctaHero = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
+    label: hero.cta,
+    sublabel: hero.micro,
+  })
+
+  // CTAs intermedios: cada uno conserva su texto propio como fallback.
+  const ctaPostDemos = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
+    label: 'Ya lo probaste. Entra gratis →',
+    sublabel: '7 días gratis · Cancela cuando quieras',
+  })
+  const ctaPostCapturas = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
+    label: 'Así se va a ver tu cuenta. Empieza gratis →',
+    sublabel: '7 días gratis · Cancela cuando quieras',
+  })
+
+  const ctaFinal = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
+    label: 'Empezar gratis →',
+    sublabel: null,
+  })
+
   function handleCTA(location: string) {
     track('hero_variant_converted', { variant, cta_location: location })
     track('landing_cta_clicked', { location, variant })
@@ -381,7 +438,7 @@ export default function LandingClient() {
             onClick={() => handleCTA('nav')}
             style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
           >
-            Gratis →
+            {ctaNav.label}
           </Link>
         </div>
       </nav>
@@ -417,9 +474,13 @@ export default function LandingClient() {
             onClick={() => handleCTA('hero')}
             style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            {hero.cta}
+            {ctaHero.label}
           </Link>
-          <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.7 }}>{hero.micro}</p>
+          {/* REGLA D: con promo, su sublabel reemplaza la micro de la variante,
+              pero "Cancela cuando quieras" no se pierde. */}
+          <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.7 }}>
+            {microcopyPromo(ctaHero.sublabel, ['Cancela cuando quieras'])}
+          </p>
           <div style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
             <span style={{ fontSize: 12, fontWeight: 600 }}>scroll</span>
             <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${COLORS.muted}, transparent)` }} />
@@ -481,7 +542,8 @@ export default function LandingClient() {
       {/* Justo después de las dos demos jugables: ya probó el producto. */}
       <FadeSection>
         <CTAIntermedio
-          texto="Ya lo probaste. Entra gratis →"
+          texto={ctaPostDemos.label}
+          microcopy={microcopyPromo(ctaPostDemos.sublabel, ['Cancela cuando quieras'])}
           location="post_demos"
           onClick={handleCTA}
         />
@@ -644,7 +706,8 @@ export default function LandingClient() {
       {/* Ya vio capturas reales de la plataforma: sabe exactamente qué compra. */}
       <FadeSection>
         <CTAIntermedio
-          texto="Así se va a ver tu cuenta. Empieza gratis →"
+          texto={ctaPostCapturas.label}
+          microcopy={microcopyPromo(ctaPostCapturas.sublabel, ['Cancela cuando quieras'])}
           location="post_capturas"
           onClick={handleCTA}
         />
@@ -748,8 +811,26 @@ export default function LandingClient() {
       <FadeSection>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.yellow, textTransform: 'uppercase', marginBottom: 8 }}>Precios</p>
+          {/* REGLA C — con promo, los tres datos van en el encabezado: lista
+              tachada, primer cargo y lo que se cobra después. El argumento del
+              maestro particular sigue comparándose contra el precio de lista,
+              que es el que se paga a partir del segundo mes. */}
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
-            ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes.<br />Un maestro particular cobra eso por una hora.
+            {leyendaEstandar ? (
+              <>
+                <span style={{ textDecoration: 'line-through', color: COLORS.muted, opacity: 0.7 }}>
+                  {leyendaEstandar.listaTexto}
+                </span>{' '}
+                {leyendaEstandar.finalTexto}.<br />
+                <span style={{ fontSize: '0.6em', color: COLORS.muted }}>
+                  {leyendaEstandar.despuesTexto} — un maestro particular cobra eso por una hora.
+                </span>
+              </>
+            ) : (
+              <>
+                ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes.<br />Un maestro particular cobra eso por una hora.
+              </>
+            )}
           </h2>
           <p style={{ textAlign: 'center', fontSize: 14, color: COLORS.muted, marginBottom: 24, lineHeight: 1.6 }}>
             Sin contrato. Cancela cuando quieras. Sin letras chiquitas.
@@ -760,21 +841,62 @@ export default function LandingClient() {
             <PasitaLazy pose="aprobando" size={100} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {PLANS.map((plan, i) => (
+            {PLANS.map((plan, i) => {
+              /*
+                🔴 REGLA A — la decoración se decide por plan.key contra
+                promo.planes. PASAS1 solo trae 'estandar_v2', así que la
+                tarjeta Personalizado se queda intacta sin ningún `if` que
+                mencione su nombre: si mañana la campaña la incluye, se decora
+                sola.
+              */
+              const leyendaCard = leyendaPromo(promo, plan.key, CICLO_LANDING)
+              const ctaCard = copyCTA(promo, plan.key, CICLO_LANDING, {
+                label: plan.cta,
+                sublabel: plan.note,
+              })
+              const badgePromo = promoAplica(promo, plan.key, CICLO_LANDING)
+                ? promo?.badge_landing ?? null
+                : null
+
+              return (
               <div key={i} style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.card} 0%, ${COLORS.card2} 100%)` : COLORS.card, borderRadius: RADIUS.xxl, padding: '28px 24px', border: `1.5px solid ${plan.highlight ? plan.color + '66' : COLORS.inputBorder}`, position: 'relative', overflow: 'hidden' }}>
-                {plan.badge && (
+                {/* El badge de promo ocupa el mismo lugar que el de la tarjeta
+                    y tiene prioridad. En Estándar el slot está libre
+                    (plan.badge es null), así que no tapa nada. */}
+                {badgePromo ? (
+                  <div style={{ position: 'absolute', top: 16, right: 16, background: `${COLORS.success}22`, border: `1px solid ${COLORS.success}66`, borderRadius: RADIUS.pill, padding: '4px 12px', fontSize: 11, fontWeight: 800, color: COLORS.success }}>
+                    🎟️ {badgePromo}
+                  </div>
+                ) : plan.badge ? (
                   <div style={{ position: 'absolute', top: 16, right: 16, background: `${plan.color}22`, border: `1px solid ${plan.color}55`, borderRadius: RADIUS.pill, padding: '4px 12px', fontSize: 11, fontWeight: 800, color: plan.color }}>
                     {plan.badge}
                   </div>
-                )}
+                ) : null}
                 {plan.highlight && (
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.pink})` }} />
                 )}
                 <p style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 15, color: plan.color, marginBottom: 4 }}>{plan.name}</p>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
-                  <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 36, color: COLORS.text }}>{plan.price}</span>
-                  <span style={{ fontSize: 14, color: COLORS.muted, fontWeight: 600 }}>{plan.period}</span>
-                </div>
+                {leyendaCard ? (
+                  /* REGLA C — los tres juntos. */
+                  <div style={{ marginBottom: 8 }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: 20, color: COLORS.muted, textDecoration: 'line-through' }}>
+                        {leyendaCard.listaTexto}
+                      </span>
+                      <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 32, color: COLORS.text }}>
+                        {leyendaCard.finalTexto}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: 13, color: COLORS.muted, margin: '6px 0 0', fontWeight: 700 }}>
+                      {leyendaCard.despuesTexto}
+                    </p>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
+                    <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 36, color: COLORS.text }}>{plan.price}</span>
+                    <span style={{ fontSize: 14, color: COLORS.muted, fontWeight: 600 }}>{plan.period}</span>
+                  </div>
+                )}
                 <p style={{ fontSize: 14, color: COLORS.muted, marginBottom: 20, lineHeight: 1.5 }}>{plan.description}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
                   {plan.features.map((f, j) => (
@@ -787,11 +909,16 @@ export default function LandingClient() {
                   onClick={() => handleCTA(`pricing_${plan.name.toLowerCase()}`)}
                   style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                 >
-                  {plan.cta}
+                  {ctaCard.label}
                 </Link>
-                <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.6 }}>{plan.note}</p>
+                {/* REGLA D: "Requiere tarjeta" y "Cancela cuando quieras"
+                    estaban aquí y aquí se quedan, promo o no. */}
+                <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.6 }}>
+                  {microcopyPromo(ctaCard.sublabel, ['Requiere tarjeta', 'Cancela cuando quieras'])}
+                </p>
               </div>
-            ))}
+              )
+            })}
           </div>
           <p style={{ textAlign: 'center', marginTop: 24, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
             ¿Quieres pagar 3 o 6 meses?{' '}
@@ -814,8 +941,14 @@ export default function LandingClient() {
               <PasitaLazy pose="flexionando" size={150} animacion="flotar" />
             </div>
 
+            {/* Con promo se cae "Una semana gratis." y nada más: el CTA de
+                abajo ya dice la oferta. Sin promo, idéntico a como estaba. */}
             <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 32px)', marginBottom: 16, color: COLORS.text }}>
-              Una semana gratis.<br />Si no te late, te sales y ya.
+              {aplicaPromoEstandar ? (
+                <>Si no te late, te sales y ya.</>
+              ) : (
+                <>Una semana gratis.<br />Si no te late, te sales y ya.</>
+              )}
             </h2>
             <p style={{ fontSize: 15, color: COLORS.muted, marginBottom: 36, lineHeight: 1.6 }}>
               Sin contratos raros. Sin letras chiquitas.
@@ -826,14 +959,31 @@ export default function LandingClient() {
               style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => handleCTA('cta_final')}
             >
-              Empezar gratis →
+              {ctaFinal.label}
             </Link>
             <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.6 }}>
               Tarda menos que escoger qué ver en Netflix.
             </p>
+            {/* REGLA C — con promo esta línea es precio, y los tres datos van
+                juntos. La promesa del trial pasa a la línea de abajo, que es
+                el sublabel de la campaña: no se apilan, se reparten. */}
             <p style={{ marginTop: 20, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
-              ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes · 7 días gratis · No se cobra hasta el día 8
+              {leyendaEstandar ? (
+                <>
+                  <span style={{ textDecoration: 'line-through' }}>{leyendaEstandar.listaTexto}</span>
+                  {' '}{leyendaEstandar.finalTexto} · {leyendaEstandar.despuesTexto}
+                </>
+              ) : (
+                <>
+                  ${PLAN_DISPLAY.estandar_v2.prices.mensual.amount} al mes · 7 días gratis · No se cobra hasta el día 8
+                </>
+              )}
             </p>
+            {aplicaPromoEstandar && ctaFinal.sublabel && (
+              <p style={{ marginTop: 6, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
+                {microcopyPromo(ctaFinal.sublabel, ['Cancela cuando quieras'])}
+              </p>
+            )}
           </div>
         </section>
       </FadeSection>

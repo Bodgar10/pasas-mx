@@ -69,6 +69,9 @@ export default function RegistroPage() {
   const [pendingPlan, setPendingPlan] = useState('')
   const [pendingDuration, setPendingDuration] = useState('')
   const [utmData, setUtmData] = useState('')
+  // Slug de la campaña. Viaja como campo oculto igual que utm_data; el
+  // servidor es quien decide si aplica y cuánto descuenta.
+  const [promoSlug, setPromoSlug] = useState('')
   // Consentimiento de cookies. Vive en localStorage desde que la persona
   // contestó el banner —posiblemente días antes— y aquí se vuelca a la base
   // para que exista prueba. Va vacío si nunca contestó.
@@ -84,6 +87,7 @@ export default function RegistroPage() {
     setPendingPlan(sessionStorage.getItem('pasas_pending_plan') ?? '')
     setPendingDuration(sessionStorage.getItem('pasas_pending_duration') ?? '')
     setUtmData(sessionStorage.getItem('pasas_utm') ?? '')
+    setPromoSlug(sessionStorage.getItem('pasas_promo') ?? '')
     const consent = leerConsentimiento()
     if (consent) setCookieConsent(JSON.stringify(consent))
 
@@ -289,6 +293,7 @@ export default function RegistroPage() {
         <input type="hidden" name="pending_plan" value={pendingPlan} />
         <input type="hidden" name="pending_duration" value={pendingDuration} />
         <input type="hidden" name="utm_data" value={utmData} />
+        <input type="hidden" name="promo_slug" value={promoSlug} />
         <input type="hidden" name="cookie_consent" value={cookieConsent} />
         <div className="space-y-1">
           <label

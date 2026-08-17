@@ -12,7 +12,7 @@
  *   STRIPE_SECRET_KEY
  *   NEXT_PUBLIC_SITE_URL
  *
- * Request body: { plan: PlanKey, duration: DurationKey }
+ * Request body: { plan: PlanKey, duration: DurationKey, promo?: string }
  * Response:     { url: string } | { error: string }
  */
 
@@ -24,6 +24,11 @@ import {
   CHECKOUT_CONFIG,
 } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import {
+  MENSAJE_PROMO_NO_DISPONIBLE,
+  PromoNoDisponibleError,
+  resolvePromoParaCheckout,
+} from '@/lib/payments/promo-checkout'
 
 export async function POST(request: Request) {
   try {
@@ -36,7 +41,13 @@ export async function POST(request: Request) {
 
     // 2. Validate request body
     const body = await request.json()
-    const { plan, duration } = body as { plan: string; duration: string }
+    const { plan, duration, promo } = body as {
+      plan: string
+      duration: string
+      // El slug que trae el cliente. Se manda a validar tal cual: aquí no se
+      // le cree nada.
+      promo?: string
+    }
 
     const planPrices = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]
     if (!plan || !duration || !planPrices?.[duration]) {
@@ -68,12 +79,43 @@ export async function POST(request: Request) {
       .limit(1)
     const hasHadSubscription = (existingSubs?.length ?? 0) > 0
 
-    // 4. Build URLs
+    // 4. Promoción. El servidor decide: valida plan y ciclo contra la fila
+    //    ANTES de tocar Stripe.
+    //
+    //    🔴 Si la campaña aplica pero Stripe no reconoce el código, se corta
+    //    la venta. El usuario ya vio "$1"; abrir el checkout a $249 sería
+    //    anunciar un precio y cobrar otro.
+    let promoResuelta: Awaited<ReturnType<typeof resolvePromoParaCheckout>> = null
+    try {
+      promoResuelta = await resolvePromoParaCheckout(promo, plan, duration)
+    } catch (promoError) {
+      if (promoError instanceof PromoNoDisponibleError) {
+        console.error('[checkout/create-session]', promoError.message)
+        return NextResponse.json(
+          { error: MENSAJE_PROMO_NO_DISPONIBLE },
+          { status: 409 }
+        )
+      }
+      throw promoError
+    }
+
+    // 5. Build URLs
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas.mx'
     const successUrl = `${baseUrl}${CHECKOUT_CONFIG.successPath}`
     const cancelUrl  = `${baseUrl}${CHECKOUT_CONFIG.cancelPath}?plan=${plan}`
 
-    // 5. Create Stripe Checkout session
+    // 6. Create Stripe Checkout session
+    //
+    // `promo_slug` solo entra si se aplicó de verdad. El webhook lo lee de la
+    // metadata de la suscripción para escribirlo en subscriptions.promo_slug.
+    // El tipo explícito importa: sin él, la rama `{}` del ternario infiere
+    // `promo_slug?: undefined` y eso no encaja en el MetadataParam de Stripe,
+    // cuyo index signature es string | number | null. Con Record<string,
+    // string> la clave simplemente no existe cuando no hay promo.
+    const metadataPromo: Record<string, string> = promoResuelta
+      ? { promo_slug: promoResuelta.promo.slug }
+      : {}
+
     const session = await stripe.checkout.sessions.create({
       mode: CHECKOUT_CONFIG.mode,
       payment_method_types: [...CHECKOUT_CONFIG.paymentMethods],
@@ -85,17 +127,28 @@ export async function POST(request: Request) {
         user_id: user.id,
         plan,
         duration,
+        ...metadataPromo,
       },
       subscription_data: {
         metadata: {
           user_id: user.id,
           plan,
           duration,
+          ...metadataPromo,
         },
         ...(hasHadSubscription ? {} : { trial_period_days: 7 }),
       },
       payment_method_collection: 'always',
-      allow_promotion_codes: true,
+      // 🔴 `discounts` y `allow_promotion_codes` NO pueden coexistir en la
+      // misma Checkout Session: Stripe rechaza la llamada. Es uno o el otro,
+      // y por eso van en un solo spread ternario y no en dos campos sueltos
+      // que alguien pueda descuadrar después.
+      //
+      // Sin promo se conserva el campo de código: es el camino de las
+      // escuelas (DONBOSCO30 tecleado a mano en la caja).
+      ...(promoResuelta
+        ? { discounts: [{ promotion_code: promoResuelta.promotionCodeId }] }
+        : { allow_promotion_codes: true }),
       success_url: successUrl,
       cancel_url:  cancelUrl,
     })

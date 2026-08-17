@@ -5,6 +5,7 @@ import Starfield from "@/components/starfield";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { Suspense } from "react";
 import UTMPersistence from "@/components/global/UTMPersistence";
+import PromoPersistence from "@/components/global/PromoPersistence";
 import AnalyticsScripts from "@/components/global/AnalyticsScripts";
 import CookieConsent from "@/components/global/CookieConsent";
 
@@ -42,6 +43,7 @@ export default function RootLayout({
         <Starfield />
         <Suspense>
           <UTMPersistence />
+          <PromoPersistence />
           <PostHogProvider>
             <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column' }}>
               {children}

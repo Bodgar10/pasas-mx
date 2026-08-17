@@ -164,6 +164,25 @@ const CICLO_A_DISPLAY = {
 } as const
 
 export type BillingCycleDB = keyof typeof CICLO_A_DISPLAY
+export type CicloDisplay = (typeof CICLO_A_DISPLAY)[BillingCycleDB]
+
+/**
+ * ÚNICA traducción base → display. Antes vivía solo aquí y era privada, así
+ * que /bienvenida se había hecho su propio mapa local (DURATION_CYCLE) con
+ * los mismos tres pares. Dos mapas para lo mismo es cómo un ciclo acaba
+ * traduciéndose bien en una pantalla y mal en otra.
+ *
+ * 🔴 Importa porque `promo_campaigns.ciclos` guarda el vocabulario de DISPLAY
+ * y todo lo que venga de Stripe, de la base o de sessionStorage trae el de la
+ * base. Comparar 'annual' contra ['anual'] no falla: devuelve false y la
+ * promoción se apaga en silencio.
+ *
+ * El default 'mensual' conserva el comportamiento que ya tenían los
+ * llamadores (`?? 'mensual'`).
+ */
+export function cicloDisplay(billingCycle: string): CicloDisplay {
+  return CICLO_A_DISPLAY[billingCycle as BillingCycleDB] ?? 'mensual'
+}
 
 /**
  * Precio de un asiento adicional: exactamente la mitad del precio de

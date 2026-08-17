@@ -3,20 +3,17 @@
 import { Suspense, useEffect, useState } from 'react'
 import Confetti from '@/components/global/Confetti'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { PLAN_DISPLAY } from '@/lib/payments/config'
+import { PLAN_DISPLAY, cicloDisplay } from '@/lib/payments/config'
+import { usePromo } from '@/hooks/usePromo'
+import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
-const DURATION_LABELS: Record<string, string> = {
-  monthly: 'mensual',
-  semestral: 'semestral',
-  annual: 'anual',
-}
-
-const DURATION_CYCLE: Record<string, 'mensual' | 'semestral' | 'anual'> = {
-  monthly: 'mensual',
-  semestral: 'semestral',
-  annual: 'anual',
-}
-
+/*
+  Aquí vivían DURATION_LABELS y DURATION_CYCLE: dos mapas locales con los
+  MISMOS tres pares monthly→mensual, y un tercero privado en config.ts
+  (CICLO_A_DISPLAY). Ahora los tres son cicloDisplay() de
+  src/lib/payments/config.ts, que es el único lugar donde existe la
+  traducción base → display.
+*/
 function BienvenidaContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -27,11 +24,27 @@ function BienvenidaContent() {
   const duration = searchParams.get('duration') ?? 'monthly'
 
   const planKey = plan as keyof typeof PLAN_DISPLAY
-  const cycleKey = DURATION_CYCLE[duration] ?? 'mensual'
+  const cycleKey = cicloDisplay(duration)
   const planInfo = PLAN_DISPLAY[planKey] ?? PLAN_DISPLAY.estandar_v2
   const pricing = planInfo.prices[cycleKey]
-  const durationLabel = DURATION_LABELS[duration] ?? 'mensual'
+  const durationLabel = cycleKey
   const planLabel = planInfo.label
+
+  // 🔴 Última pantalla antes de Stripe: aquí el "después $249/mes" no es
+  // opcional. Es el último lugar donde la persona puede leer lo que se le va
+  // a cobrar antes de meter la tarjeta.
+  //
+  // `cycleKey` es el ciclo en vocabulario de PLAN_DISPLAY (mensual/semestral/
+  // anual), que es el mismo que guarda promo_campaigns.ciclos. `duration` de
+  // la URL viene en el de la base (monthly/annual) y NO sirve aquí.
+  const { promo } = usePromo()
+  const aplicaPromo = promoAplica(promo, plan, cycleKey)
+  const leyenda = leyendaPromo(promo, plan, cycleKey)
+
+  const cta = copyCTA(promo, plan, cycleKey, {
+    label: 'Activar mis 7 días gratis →',
+    sublabel: 'Sin contrato · Cancela cuando quieras · Sin cobro hasta el día 8',
+  })
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConfetti(true), 100)
@@ -44,12 +57,17 @@ function BienvenidaContent() {
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan, duration }),
+        // Solo el slug: el servidor decide si aplica y cuánto.
+        body: JSON.stringify({ plan, duration, promo: promo?.slug }),
       })
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
       } else {
+        // Si la promoción no se pudo aplicar hay que decirlo antes de mandar a
+        // /planes: esta persona acaba de leer "$1" y un redirect silencioso la
+        // dejaría creyendo que se cayó el sitio.
+        if (data.error) alert(data.error)
         router.push('/planes')
       }
     } catch {
@@ -121,39 +139,90 @@ function BienvenidaContent() {
             }}>
               {planLabel} · {durationLabel}
             </p>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
-              <span style={{
-                fontFamily: 'var(--font-orbitron)',
-                fontSize: 28,
-                fontWeight: 900,
-                color: '#e2d9f3',
-              }}>
-                ${pricing.perMonth}
-              </span>
-              <span style={{ fontSize: 14, color: '#a78bfa' }}>/mes</span>
-            </div>
-            {cycleKey !== 'mensual' && (
-              <p style={{ fontSize: 13, color: '#a78bfa', margin: 0 }}>
-                Un solo pago de <strong style={{ color: '#e2d9f3' }}>${pricing.amount}</strong> por {cycleKey === 'semestral' ? '6 meses' : '12 meses'}
-              </p>
+            {leyenda ? (
+              /* REGLA C — lista tachada, precio del primer cargo y lo que se
+                 cobra después. Los tres juntos, sin excepción. */
+              <>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 4 }}>
+                  <span style={{
+                    fontSize: 18,
+                    color: '#a78bfa',
+                    textDecoration: 'line-through',
+                  }}>
+                    {leyenda.listaTexto}
+                  </span>
+                  <span style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 28,
+                    fontWeight: 900,
+                    color: '#e2d9f3',
+                  }}>
+                    {leyenda.finalTexto}
+                  </span>
+                </div>
+                <p style={{ fontSize: 13, color: '#a78bfa', margin: 0, fontWeight: 700 }}>
+                  {leyenda.despuesTexto}
+                </p>
+              </>
+            ) : (
+              <>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
+                  <span style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 28,
+                    fontWeight: 900,
+                    color: '#e2d9f3',
+                  }}>
+                    ${pricing.perMonth}
+                  </span>
+                  <span style={{ fontSize: 14, color: '#a78bfa' }}>/mes</span>
+                </div>
+                {cycleKey !== 'mensual' && (
+                  <p style={{ fontSize: 13, color: '#a78bfa', margin: 0 }}>
+                    Un solo pago de <strong style={{ color: '#e2d9f3' }}>${pricing.amount}</strong> por {cycleKey === 'semestral' ? '6 meses' : '12 meses'}
+                  </p>
+                )}
+              </>
             )}
           </div>
 
-          {/* Info trial */}
-          <div style={{
-            background: 'rgba(251,191,36,0.08)',
-            border: '1px solid rgba(251,191,36,0.25)',
-            borderRadius: 12,
-            padding: '12px 16px',
-            marginBottom: 24,
-          }}>
-            <p style={{ fontSize: 13, color: '#fbbf24', fontWeight: 700, margin: '0 0 4px' }}>
-              🎯 7 días gratis incluidos
-            </p>
-            <p style={{ fontSize: 12, color: '#fbbf24', opacity: 0.8, margin: 0, lineHeight: 1.5 }}>
-              Tu tarjeta se guarda hoy pero no se cobra hasta el día 8. Cancela cuando quieras antes de eso y no pagas nada.
-            </p>
-          </div>
+          {/*
+            Info trial. REGLA D: con promo NO se pinta — su contenido queda
+            dicho entre el bloque de precio (regla C) y la microcopy del
+            botón, que conserva "Cancela cuando quieras" y "Sin cobro hasta el
+            día 8". Dejar los dos apilaría dos veces la promesa de los 7 días.
+          */}
+          {!aplicaPromo && (
+            <div style={{
+              background: 'rgba(251,191,36,0.08)',
+              border: '1px solid rgba(251,191,36,0.25)',
+              borderRadius: 12,
+              padding: '12px 16px',
+              marginBottom: 24,
+            }}>
+              <p style={{ fontSize: 13, color: '#fbbf24', fontWeight: 700, margin: '0 0 4px' }}>
+                🎯 7 días gratis incluidos
+              </p>
+              <p style={{ fontSize: 12, color: '#fbbf24', opacity: 0.8, margin: 0, lineHeight: 1.5 }}>
+                Tu tarjeta se guarda hoy pero no se cobra hasta el día 8. Cancela cuando quieras antes de eso y no pagas nada.
+              </p>
+            </div>
+          )}
+
+          {/* Banner de la campaña, donde estaba el de trial. */}
+          {aplicaPromo && promo?.banner_checkout && (
+            <div style={{
+              background: 'rgba(16,185,129,0.08)',
+              border: '1px solid rgba(16,185,129,0.3)',
+              borderRadius: 12,
+              padding: '12px 16px',
+              marginBottom: 24,
+            }}>
+              <p style={{ fontSize: 13, color: '#10b981', fontWeight: 700, margin: 0, lineHeight: 1.5 }}>
+                🎟️ {promo.banner_checkout}
+              </p>
+            </div>
+          )}
 
           {/* CTA */}
           <button
@@ -176,11 +245,13 @@ function BienvenidaContent() {
               marginBottom: 12,
             }}
           >
-            {loading ? 'Preparando tu plan...' : 'Activar mis 7 días gratis →'}
+            {loading ? 'Preparando tu plan...' : cta.label}
           </button>
 
+          {/* REGLA D: el sublabel de promo reemplaza esta línea, pero
+              "Cancela cuando quieras" y "Sin cobro hasta el día 8" siguen. */}
           <p style={{ fontSize: 12, color: '#6B7280', margin: 0, lineHeight: 1.5 }}>
-            Sin contrato · Cancela cuando quieras · Sin cobro hasta el día 8
+            {microcopyPromo(cta.sublabel, ['Cancela cuando quieras', 'Sin cobro hasta el día 8'])}
           </p>
 
           {/* Link cambiar plan */}

@@ -2,10 +2,12 @@
 
 import { Suspense, useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { trackCheckoutStarted } from '@/components/posthog-events'
+import { trackCheckoutStarted, trackPromoCheckoutIniciado } from '@/components/posthog-events'
 import { BillingCycleToggle, type BillingCycle } from '@/components/planes/BillingCycleToggle'
 import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import { usePromo } from '@/hooks/usePromo'
+import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
 type PlanKey = keyof typeof PLANS
 
@@ -36,6 +38,27 @@ function PlanesContent() {
   const plan = PLANS[activePlan]
   const pricing = plan.prices[cycle]
 
+  // 🔴 REGLA A: la promo se evalúa contra el ciclo ACTIVO del toggle, no
+  // contra "mensual" a secas. PASAS1 vale para estandar_v2 + mensual: al
+  // cambiar a Semestral o Anual todo esto se apaga solo y la pantalla vuelve
+  // a precio y copy normales, sin badge ni tachado.
+  const { promo } = usePromo()
+  const aplicaPromo = promoAplica(promo, activePlan, cycle)
+  const leyenda = leyendaPromo(promo, activePlan, cycle)
+
+  const cta = copyCTA(promo, activePlan, cycle, {
+    label: deviceHadTrial ? `Elegir ${cycle}` : 'Probar 7 días gratis →',
+    sublabel: 'Sin contrato · Cancela cuando quieras',
+  })
+
+  // 🔴 REGLA E: a quien ya usó el trial en este dispositivo no se le pinta el
+  // sublabel de la campaña — "Tus primeros 7 días son gratis" le promete algo
+  // que ya gastó. Solo el label.
+  const sublabelCTA =
+    aplicaPromo && deviceHadTrial
+      ? 'Sin contrato · Cancela cuando quieras'
+      : microcopyPromo(cta.sublabel, ['Cancela cuando quieras'])
+
   async function handleCTA() {
     setLoadingCheckout(true)
     try {
@@ -52,6 +75,9 @@ function PlanesContent() {
 
       localStorage.setItem('pasas_trial_used', 'true')
       trackCheckoutStarted(activePlan, CYCLE_TO_DURATION[cycle])
+      if (aplicaPromo && promo) {
+        trackPromoCheckoutIniciado(promo.slug, activePlan, cycle)
+      }
 
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
@@ -59,13 +85,21 @@ function PlanesContent() {
         body: JSON.stringify({
           plan: activePlan,
           duration: CYCLE_TO_DURATION[cycle],
+          // Solo el slug. El servidor decide si aplica y cuánto descuenta: se
+          // manda tal cual haya o no aplicado en pantalla, porque quien valida
+          // es resolvePromoParaCheckout, no esto.
+          promo: promo?.slug,
         }),
       })
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
       } else {
-        alert('Error al iniciar el pago. Intenta de nuevo.')
+        // El servidor devuelve un mensaje propio cuando la promoción no se
+        // pudo aplicar: se muestra ese, no el genérico. Corta la venta a
+        // propósito — cobrar lista después de anunciar el descuento sería
+        // anunciar un precio y cobrar otro.
+        alert(data.error ?? 'Error al iniciar el pago. Intenta de nuevo.')
       }
     } catch {
       alert('Error al iniciar el pago. Intenta de nuevo.')
@@ -114,7 +148,12 @@ function PlanesContent() {
             Elige tu plan
           </h1>
           <p style={{ fontSize: 16, color: '#a78bfa', margin: '0 0 24px', lineHeight: 1.6 }}>
-            {deviceHadTrial
+            {/* Con promo se quita "7 días gratis · " y nada más: competía con
+                el CTA de campaña, que ya promete los días en su sublabel.
+                Sin promo queda idéntico a como estaba. */}
+            {aplicaPromo
+              ? 'Sin contrato · Cancela cuando quieras.'
+              : deviceHadTrial
               ? 'Sin contrato. Cancela cuando quieras.'
               : '7 días gratis · Sin contrato · Cancela cuando quieras.'}
           </p>
@@ -167,8 +206,40 @@ function PlanesContent() {
           <BillingCycleToggle selected={cycle} onChange={setCycle} />
         </div>
 
+        {/*
+          Banner. Uno u otro, nunca los dos: si la campaña aplica al ciclo
+          activo se pinta el de promo; si no, el de trial de siempre.
+          Va exactamente donde estaba el de trial.
+
+          El de promo sí se pinta con deviceHadTrial: `banner_checkout` habla
+          de precio, no de días gratis, así que no promete nada ya gastado.
+        */}
+        {aplicaPromo && promo?.banner_checkout && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(16,185,129,0.14), rgba(16,185,129,0.06))',
+            border: '1.5px solid rgba(16,185,129,0.4)',
+            borderRadius: 16, padding: '16px 20px',
+            marginBottom: 24, textAlign: 'center',
+          }}>
+            <p style={{
+              fontFamily: 'var(--font-orbitron)',
+              fontSize: 16, fontWeight: 900,
+              color: '#10b981', margin: '0 0 6px',
+            }}>
+              🎟️ {promo.codigo_visible}
+            </p>
+            <p style={{
+              fontSize: 14, color: '#10b981',
+              opacity: 0.85, margin: 0,
+              lineHeight: 1.6, fontWeight: 600,
+            }}>
+              {promo.banner_checkout}
+            </p>
+          </div>
+        )}
+
         {/* Banner trial */}
-        {!deviceHadTrial && (
+        {!aplicaPromo && !deviceHadTrial && (
           <div style={{
             background: 'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.06))',
             border: '1.5px solid rgba(251,191,36,0.4)',
@@ -228,46 +299,78 @@ function PlanesContent() {
             </div>
           )}
 
-          {/* Precio por mes */}
-          <div style={{ marginBottom: 4, marginTop: cycle !== 'mensual' ? 16 : 0 }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4 }}>
-              <span style={{
-                fontFamily: 'var(--font-orbitron)',
-                fontSize: 48, fontWeight: 900,
-                color: '#e2d9f3', lineHeight: 1,
-              }}>
-                ${pricing.perMonth}
-              </span>
-              <span style={{ fontSize: 15, color: '#a78bfa', marginBottom: 6 }}>
-                /mes
-              </span>
-            </div>
-          </div>
-
-          {/* Total y ahorro */}
-          {cycle !== 'mensual' && (
-            <div style={{ marginBottom: 20 }}>
-              <p style={{ fontSize: 14, color: '#a78bfa', margin: '0 0 6px' }}>
-                Un solo pago de{' '}
-                <strong style={{ color: '#e2d9f3' }}>${pricing.total}</strong>
-                {' '}por {cycle === 'semestral' ? '6 meses' : '12 meses'}
-              </p>
-              {pricing.savings && (
+          {leyenda ? (
+            /*
+              REGLA C — lista tachada, precio del primer cargo y lo que se
+              cobra después. Reemplaza al bloque de precio normal completo: no
+              queda ningún monto escrito a mano junto a este, que es como se
+              acaba anunciando "$1/mes".
+            */
+            <div style={{ marginBottom: 20, marginTop: cycle !== 'mensual' ? 16 : 0 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10, flexWrap: 'wrap' }}>
                 <span style={{
-                  display: 'inline-block',
-                  backgroundColor: '#10b98120',
-                  color: '#10b981',
-                  border: '1px solid #10b98140',
-                  fontSize: 13, fontWeight: 700,
-                  borderRadius: 999, padding: '2px 10px',
+                  fontSize: 22, color: '#a78bfa',
+                  textDecoration: 'line-through',
+                  marginBottom: 6,
                 }}>
-                  Ahorras ${pricing.savings} vs mensual
+                  {leyenda.listaTexto}
                 </span>
-              )}
+                <span style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 40, fontWeight: 900,
+                  color: '#e2d9f3', lineHeight: 1,
+                }}>
+                  {leyenda.finalTexto}
+                </span>
+              </div>
+              <p style={{ fontSize: 14, color: '#a78bfa', margin: '10px 0 0', fontWeight: 700 }}>
+                {leyenda.despuesTexto}
+              </p>
             </div>
-          )}
+          ) : (
+            <>
+              {/* Precio por mes */}
+              <div style={{ marginBottom: 4, marginTop: cycle !== 'mensual' ? 16 : 0 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4 }}>
+                  <span style={{
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 48, fontWeight: 900,
+                    color: '#e2d9f3', lineHeight: 1,
+                  }}>
+                    ${pricing.perMonth}
+                  </span>
+                  <span style={{ fontSize: 15, color: '#a78bfa', marginBottom: 6 }}>
+                    /mes
+                  </span>
+                </div>
+              </div>
 
-          {cycle === 'mensual' && <div style={{ marginBottom: 20 }} />}
+              {/* Total y ahorro */}
+              {cycle !== 'mensual' && (
+                <div style={{ marginBottom: 20 }}>
+                  <p style={{ fontSize: 14, color: '#a78bfa', margin: '0 0 6px' }}>
+                    Un solo pago de{' '}
+                    <strong style={{ color: '#e2d9f3' }}>${pricing.total}</strong>
+                    {' '}por {cycle === 'semestral' ? '6 meses' : '12 meses'}
+                  </p>
+                  {pricing.savings && (
+                    <span style={{
+                      display: 'inline-block',
+                      backgroundColor: '#10b98120',
+                      color: '#10b981',
+                      border: '1px solid #10b98140',
+                      fontSize: 13, fontWeight: 700,
+                      borderRadius: 999, padding: '2px 10px',
+                    }}>
+                      Ahorras ${pricing.savings} vs mensual
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {cycle === 'mensual' && <div style={{ marginBottom: 20 }} />}
+            </>
+          )}
 
           {/* CTA */}
           <button
@@ -286,18 +389,14 @@ function PlanesContent() {
               transition: 'all 0.15s ease',
             }}
           >
-            {loadingCheckout
-              ? 'Cargando...'
-              : deviceHadTrial
-                ? `Elegir ${cycle}`
-                : `Probar 7 días gratis →`}
+            {loadingCheckout ? 'Cargando...' : cta.label}
           </button>
 
           <p style={{
             textAlign: 'center', marginTop: 12,
             fontSize: 12, color: '#a78bfa', opacity: 0.7,
           }}>
-            Sin contrato · Cancela cuando quieras
+            {sublabelCTA}
           </p>
         </div>
 

@@ -84,31 +84,21 @@ export function BillingCycleToggle({ selected, onChange }: Props) {
         </div>
       )}
 
-      {selected === 'anual' && (
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            backgroundColor: 'rgba(16,185,129,0.1)',
-            border: '1px solid rgba(16,185,129,0.25)',
-            borderRadius: 999,
-            padding: '4px 14px',
-          }}
-        >
-          <span style={{ fontSize: 12 }}>💰</span>
-          <span
-            style={{
-              fontSize: 12,
-              fontWeight: 700,
-              color: COLORS.success,
-              fontFamily: FONTS.nunito,
-            }}
-          >
-            Ahorras hasta $702 vs mensual
-          </span>
-        </div>
-      )}
+      {/*
+        🔴 Aquí NO va un badge de ahorro. Había uno, con el monto escrito a
+        mano: era un precio muerto de dos subidas de lista atrás y contradecía
+        al "Ahorras … vs mensual" que planes/page.tsx pinta en la tarjeta,
+        unos píxeles abajo y en la misma pantalla — dos ahorros distintos al
+        mismo tiempo, que es el bug de s26.
+
+        El ahorro ya se muestra por plan y por ciclo desde PLAN_DISPLAY en
+        planes/page.tsx. Este toggle solo elige el ciclo; un segundo número
+        aquí sería una copia que puede desincronizarse, y además tendría que
+        ser un máximo entre planes —cada plan ahorra distinto— o sea un
+        número que no le corresponde a nadie.
+
+        El badge de semestral sobrevive porque no lleva cifras.
+      */}
     </div>
   )
 }

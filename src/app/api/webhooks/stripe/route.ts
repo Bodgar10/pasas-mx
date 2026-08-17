@@ -137,6 +137,14 @@ export async function POST(request: Request) {
           current_period_start: periodStart,
           current_period_end:   periodEnd,
           trial_ends_at:        trialEndsAt,
+          // Campaña con la que se vendió. Sale de subscription_data.metadata,
+          // que ponen las dos puertas de checkout solo cuando la promoción se
+          // aplicó de verdad.
+          //
+          // 🔴 Sin fallback. Si no viene, queda NULL, y NULL significa "sin
+          // promoción" — es un dato correcto. Inventar un valor aquí es
+          // exactamente lo que se quitó en la s27 con los periodos.
+          promo_slug:           subscription.metadata?.promo_slug ?? null,
           metadata: {
             duration: planInfo.duration,
             price_id: priceId,
