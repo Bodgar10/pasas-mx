@@ -98,6 +98,20 @@ export const PROMO_COLUMNS =
  * la necesita tipada, y ese archivo importa @/lib/payments/stripe — que
  * revienta al cargarse sin STRIPE_SECRET_KEY.
  */
+/**
+ * Tope de canjes de UN nivel de Stripe.
+ *
+ * `restantes` en null significa "sin tope EN ESTE NIVEL", que NO es lo mismo
+ * que ilimitado: el otro nivel puede tenerlo. Quien quiera la respuesta a
+ * "¿cuántos quedan?" usa `canjes_restantes` de PromoVerificacion, que ya
+ * combina los dos.
+ */
+export type TopeCanjes = {
+  max_redemptions: number | null
+  times_redeemed: number | null
+  restantes: number | null
+}
+
 export type PromoVerificacion = {
   slug: string
   codigo_visible: string
@@ -113,9 +127,18 @@ export type PromoVerificacion = {
   stripe_moneda: string | null
   duracion: 'forever' | 'once' | 'repeating' | null
   duracion_meses: number | null
-  max_redemptions: number | null
-  times_redeemed: number | null
-  /** max_redemptions - times_redeemed. null = sin tope. */
+  /**
+   * 🔴 El tope de canjes vive en DOS niveles y Stripe aplica LOS DOS. En
+   * PASAS1 el promotion code no tiene tope propio y el límite real está en el
+   * cupón: leer solo el promotion code reportaba "∞" sobre una campaña que sí
+   * se agota, y el aviso de agotamiento nunca habría saltado.
+   */
+  tope_promotion_code: TopeCanjes
+  tope_cupon: TopeCanjes
+  /**
+   * El MÁS RESTRICTIVO de los dos niveles. null solo si los dos son null —
+   * ahí sí es ilimitado.
+   */
   canjes_restantes: number | null
   first_time_transaction: boolean | null
   expira_at: string | null

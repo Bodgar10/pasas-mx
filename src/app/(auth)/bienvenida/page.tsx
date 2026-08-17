@@ -5,6 +5,7 @@ import Confetti from '@/components/global/Confetti'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY, cicloDisplay } from '@/lib/payments/config'
 import { usePromo } from '@/hooks/usePromo'
+import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
 import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
 /*
@@ -37,7 +38,30 @@ function BienvenidaContent() {
   // `cycleKey` es el ciclo en vocabulario de PLAN_DISPLAY (mensual/semestral/
   // anual), que es el mismo que guarda promo_campaigns.ciclos. `duration` de
   // la URL viene en el de la base (monthly/annual) y NO sirve aquí.
-  const { promo } = usePromo()
+  const { promo: promoCampana } = usePromo()
+  const { yaTuvo } = useYaTuvoSuscripcion()
+
+  /**
+   * 🔴 UNA SOLA PUERTA PARA LA PROMO EN TODA LA PANTALLA.
+   *
+   * El promotion code es `first_time_transaction`. Un cliente que vuelve —y a
+   * esta pantalla se puede llegar con ?promo= desde el correo, no solo desde
+   * el embudo— no puede canjearlo: Stripe rechazaría el código y se caería la
+   * Checkout Session. create-session ya lo ignora en el servidor con
+   * hasHadSubscription; esto es para que la pantalla tampoco lo prometa.
+   *
+   * Se anula la promo ENTERA aquí en vez de añadir `&& !yaTuvo` a cada sitio
+   * que decora —leyenda, banner, CTA, microcopy y el body del POST—. Con
+   * `promo` en null no queda nada que decorar y todo cae solo a la pantalla
+   * sin campaña.
+   *
+   * `yaTuvo` arranca en true: mientras carga, esto es null y no se promete
+   * nada. Ver useYaTuvoSuscripcion.
+   */
+  const promo = yaTuvo ? null : promoCampana
+
+  // 🔴 El único booleano de promoción de la pantalla: trae dentro tanto el
+  // alcance de la campaña como la elegibilidad de la cuenta.
   const aplicaPromo = promoAplica(promo, plan, cycleKey)
   const leyenda = leyendaPromo(promo, plan, cycleKey)
 

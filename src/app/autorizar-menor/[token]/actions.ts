@@ -65,18 +65,29 @@ export async function autorizarMenor(formData: FormData) {
   const tutorEsTitular =
     !!usuario.parent_email && usuario.parent_email === usuario.email
   const checkout = usuario.pending_checkout as
-    | { plan?: string; duration?: string }
+    | { plan?: string; duration?: string; promo_slug?: string | null }
     | null
 
   if (tutorEsTitular && checkout?.plan && checkout?.duration) {
     // Se limpia aquí porque el callback ya no pasó por su propia limpieza.
+    // Se va el jsonb entero, promo_slug incluido: el registro permanente del
+    // canje es subscriptions.promo_slug, que escribe el webhook con lo que
+    // Stripe cobró de verdad.
     await serviceClient
       .from('users')
       .update({ pending_checkout: null })
       .eq('id', usuario.id)
 
+    // 🔴 Mismo transporte que en auth/callback: sin `&promo` el slug muere
+    // aquí. Este camino es todavía más frágil que el otro —el tutor pudo
+    // abrir el enlace en otro navegador—, así que sessionStorage no es
+    // siquiera una opción de respaldo.
+    const promoParam = checkout.promo_slug
+      ? `&promo=${encodeURIComponent(checkout.promo_slug)}`
+      : ''
+
     redirect(
-      `/bienvenida?plan=${encodeURIComponent(checkout.plan)}&duration=${encodeURIComponent(checkout.duration)}`
+      `/bienvenida?plan=${encodeURIComponent(checkout.plan)}&duration=${encodeURIComponent(checkout.duration)}${promoParam}`
     )
   }
 

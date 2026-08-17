@@ -149,7 +149,11 @@ export async function GET(request: NextRequest) {
 
         // Si hay pending_checkout, crear sesión de Stripe y redirigir
         if (profile?.pending_checkout) {
-          const { plan, duration } = profile.pending_checkout as { plan: string; duration: string }
+          const { plan, duration, promo_slug: promoSlug } = profile.pending_checkout as {
+            plan: string
+            duration: string
+            promo_slug?: string | null
+          }
           try {
             const { createClient: createServiceClient } = await import('@supabase/supabase-js')
             const serviceClient = createServiceClient(
@@ -167,9 +171,25 @@ export async function GET(request: NextRequest) {
             const priceId = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]?.[duration]
 
             if (priceId) {
-              // Redirigir a pantalla de bienvenida antes de Stripe
+              /**
+               * Redirigir a pantalla de bienvenida antes de Stripe.
+               *
+               * 🔴 `&promo` es el ÚNICO transporte del slug hasta aquí. Este
+               * enlace lo abre el cliente de correo en una pestaña nueva, y
+               * sessionStorage es por pestaña: lo que /registro guardó en la
+               * pestaña original no existe en esta. Sin el parámetro,
+               * /bienvenida pinta precio de lista, el POST a
+               * /api/checkout/create-session va sin promo y Stripe cobra
+               * completo con un "Add promotion code" vacío al lado.
+               *
+               * Va como parámetro y no en otra columna porque /bienvenida ya
+               * lo lee: usePromo mira ?promo antes que sessionStorage.
+               */
+              const promoParam = promoSlug
+                ? `&promo=${encodeURIComponent(promoSlug)}`
+                : ''
               return NextResponse.redirect(
-                `${origin}/bienvenida?plan=${encodeURIComponent(plan)}&duration=${encodeURIComponent(duration)}`
+                `${origin}/bienvenida?plan=${encodeURIComponent(plan)}&duration=${encodeURIComponent(duration)}${promoParam}`
               )
             }
           } catch (err) {

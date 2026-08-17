@@ -55,6 +55,10 @@ export class PromoNoDisponibleError extends Error {
  *                     | 'annual'). La conversión a display ocurre AQUÍ dentro,
  *                     una sola vez, para que ningún llamador pueda equivocarse
  *                     comparando 'annual' contra ['anual'].
+ * @param yaTuvoSuscripcion Si esta cuenta tuvo alguna suscripción antes.
+ *                     Obligatorio a propósito: no tiene default para que un
+ *                     tercer llamador tenga que ir a averiguarlo en vez de
+ *                     heredar un `false` cómodo y equivocado.
  *
  * @throws PromoNoDisponibleError si la campaña aplica pero Stripe no tiene el
  *         código.
@@ -62,8 +66,27 @@ export class PromoNoDisponibleError extends Error {
 export async function resolvePromoParaCheckout(
   slug: string | null | undefined,
   plan: string,
-  billingCycle: string
+  billingCycle: string,
+  yaTuvoSuscripcion: boolean
 ): Promise<{ promotionCodeId: string; promo: PromoCampaign } | null> {
+  /**
+   * 0. 🔴 CLIENTE QUE VUELVE.
+   *
+   * El promotion code de la campaña es `first_time_transaction`. Si se
+   * mandara igual, Stripe rechazaría el código y se caería la Checkout
+   * Session ENTERA: no es que se cobrara de más, es que la persona no podría
+   * pagar. Devolver null lo baja al camino normal —allow_promotion_codes y
+   * precio de lista—, que es exactamente lo que le toca.
+   *
+   * Va ANTES de leer la fila: para un cliente que vuelve no hay nada que
+   * resolver, gane o no la campaña.
+   *
+   * Esto NO es la razón de que la pantalla no prometa el descuento. La UI
+   * decora por su cuenta; que no prometa se resuelve aparte. Aquí solo se
+   * garantiza que el cobro sea correcto pase lo que pase en la pantalla.
+   */
+  if (yaTuvoSuscripcion) return null
+
   // 1. La campaña, ya filtrada por activa = true y por fechas.
   const promo = await getPromoActiva(slug ?? null)
   if (!promo) return null

@@ -178,9 +178,33 @@ export async function registroAction(
       profileEarly.acquisition_source = acquisitionSource
     }
 
-    // Guardar pending_checkout en BD para sobrevivir el redirect de verificación
+    /**
+     * pending_checkout en BD para sobrevivir el redirect de verificación.
+     *
+     * 🔴 EL SLUG DE LA CAMPAÑA VA AQUÍ DENTRO, no en sessionStorage. Esta rama
+     * devuelve { emailSent } y no llega nunca al sessions.create de abajo: el
+     * cobro ocurre después, cuando la persona vuelve desde el correo. Y el
+     * enlace del correo abre OTRA PESTAÑA — sessionStorage es por pestaña, así
+     * que ahí el slug no existe ni habiéndose guardado. La base es el único
+     * lugar que sobrevive a las dos cosas.
+     *
+     * 🔴 SOLO el slug. Nunca el precio, el descuento ni el copy: se resuelven
+     * contra promo_campaigns en el momento del cobro, para que apagar la
+     * campaña desde /admin surta efecto incluso en alguien que se registró
+     * mientras estaba prendida. Es la misma regla que PromoPersistence.
+     *
+     * Se normaliza igual que en PromoPersistence (trim + minúsculas) porque el
+     * slug es la PK de promo_campaigns y ahí vive en minúsculas. La clave no
+     * se escribe si no hay slug: un `promo_slug: ''` en el jsonb se leería
+     * como campaña vacía en vez de como ausencia.
+     */
     if (pendingPlan && pendingDuration) {
-      profileEarly.pending_checkout = { plan: pendingPlan, duration: pendingDuration }
+      const promoSlug = promoSlugRaw?.trim().toLowerCase() || null
+      profileEarly.pending_checkout = {
+        plan: pendingPlan,
+        duration: pendingDuration,
+        ...(promoSlug ? { promo_slug: promoSlug } : {}),
+      }
     }
 
     const { error: earlyUpdateError } = await serviceClientEarly
@@ -297,7 +321,15 @@ export async function registroAction(
        */
       let promoResuelta: Awaited<ReturnType<typeof resolvePromoParaCheckout>> = null
       try {
-        promoResuelta = await resolvePromoParaCheckout(promoSlugRaw, pendingPlan, pendingDuration)
+        // `false` fijo: la cuenta se acaba de crear tres líneas más arriba con
+        // signUp, así que no puede tener una suscripción previa. No es un
+        // atajo — es el único valor posible en esta rama.
+        promoResuelta = await resolvePromoParaCheckout(
+          promoSlugRaw,
+          pendingPlan,
+          pendingDuration,
+          false
+        )
       } catch (promoError) {
         if (promoError instanceof PromoNoDisponibleError) {
           console.error('[registro]', promoError.message)

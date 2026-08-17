@@ -85,9 +85,20 @@ export async function POST(request: Request) {
     //    🔴 Si la campaña aplica pero Stripe no reconoce el código, se corta
     //    la venta. El usuario ya vio "$1"; abrir el checkout a $249 sería
     //    anunciar un precio y cobrar otro.
+    //
+    //    `hasHadSubscription` —el mismo dato que decide el trial— entra aquí
+    //    porque el promotion code es de primera compra: mandárselo a un
+    //    cliente que vuelve hace que Stripe rechace el código y se caiga la
+    //    sesión entera. Con true, resolvePromoParaCheckout devuelve null y
+    //    esto baja solo a allow_promotion_codes.
     let promoResuelta: Awaited<ReturnType<typeof resolvePromoParaCheckout>> = null
     try {
-      promoResuelta = await resolvePromoParaCheckout(promo, plan, duration)
+      promoResuelta = await resolvePromoParaCheckout(
+        promo,
+        plan,
+        duration,
+        hasHadSubscription
+      )
     } catch (promoError) {
       if (promoError instanceof PromoNoDisponibleError) {
         console.error('[checkout/create-session]', promoError.message)

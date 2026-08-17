@@ -7,6 +7,7 @@ import { BillingCycleToggle, type BillingCycle } from '@/components/planes/Billi
 import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { usePromo } from '@/hooks/usePromo'
+import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
 import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
 type PlanKey = keyof typeof PLANS
@@ -16,6 +17,17 @@ const CYCLE_TO_DURATION: Record<BillingCycle, string> = {
   mensual:   'monthly',
   semestral: 'semestral',
   anual:     'annual',
+}
+
+/** El ciclo que se preselecciona cuando no hay campaña que diga otra cosa. */
+const CICLO_POR_DEFECTO: BillingCycle = 'semestral'
+
+/**
+ * `promo_campaigns.ciclos` es un text[]: la base no garantiza que sus valores
+ * sean ciclos válidos. Este guard es la puerta entre esa columna y el toggle.
+ */
+function esBillingCycle(ciclo: string): ciclo is BillingCycle {
+  return Object.prototype.hasOwnProperty.call(CYCLE_TO_DURATION, ciclo)
 }
 
 function PlanesContent() {
@@ -28,12 +40,62 @@ function PlanesContent() {
       ? 'personalizado_v2'
       : 'estandar_v2'
   )
-  const [cycle, setCycle] = useState<BillingCycle>('semestral')
+  // null = el usuario todavía no ha tocado el toggle. Se distingue del ciclo
+  // efectivo a propósito: mientras sea null manda el ciclo de la campaña, y en
+  // cuanto la persona elige algo, su elección gana para siempre.
+  const [cycleElegido, setCycleElegido] = useState<BillingCycle | null>(null)
   const [loadingCheckout, setLoadingCheckout] = useState(false)
 
   useEffect(() => {
     setDeviceHadTrial(localStorage.getItem('pasas_trial_used') === 'true')
   }, [])
+
+  const { promo: promoCampana } = usePromo()
+  const { yaTuvo } = useYaTuvoSuscripcion()
+
+  /**
+   * 🔴 UNA SOLA PUERTA PARA LA PROMO EN TODA LA PANTALLA.
+   *
+   * El promotion code es `first_time_transaction`: a un cliente que vuelve,
+   * Stripe le rechaza el código y se cae la Checkout Session entera. El
+   * servidor ya lo cubre (resolvePromoParaCheckout ignora la promo con
+   * hasHadSubscription), pero sin esto la pantalla le prometía el descuento y
+   * el checkout lo desmentía.
+   *
+   * 🔴 Se anula la promo ENTERA aquí arriba en vez de añadir `&& !yaTuvo` a
+   * cada sitio que decora. Abajo hay siete: el ciclo inicial, promoAplica, la
+   * leyenda de precio, el copy del CTA, la microcopy, el banner y el evento de
+   * PostHog. Siete condiciones sueltas es una que alguien se deja mañana; con
+   * `promo` en null no hay nada que decorar y todas las funciones de promos.ts
+   * caen solas a su camino sin campaña.
+   *
+   * `yaTuvo` arranca en true, así que mientras carga esto vale null: no se
+   * promete nada hasta que se confirma que aplica. Ver useYaTuvoSuscripcion.
+   */
+  const promo = yaTuvo ? null : promoCampana
+
+  /**
+   * 🔴 CICLO INICIAL — sale de la campaña, no de una constante.
+   *
+   * PASAS1 solo vale para el ciclo mensual, pero la pantalla abría en
+   * Semestral: quien llegaba del anuncio veía el precio semestral y ningún
+   * banner, porque promoAplica() es false para el ciclo equivocado. La promo
+   * existía y era invisible.
+   *
+   * Se toma el PRIMERO de promo.ciclos, no 'mensual' escrito a mano: una
+   * campaña semestral abrirá en Semestral sola, sin tocar este archivo. El
+   * `.find` con el type guard además ignora un valor basura en la columna en
+   * vez de romper el toggle.
+   *
+   * Sin promo aplicable al plan activo, el default de siempre queda intacto.
+   */
+  const cicloDeLaPromo: BillingCycle | null =
+    promo && promo.planes.includes(activePlan)
+      ? promo.ciclos.find(esBillingCycle) ?? null
+      : null
+
+  const cycle: BillingCycle = cycleElegido ?? cicloDeLaPromo ?? CICLO_POR_DEFECTO
+  const setCycle = setCycleElegido
 
   const plan = PLANS[activePlan]
   const pricing = plan.prices[cycle]
@@ -42,7 +104,11 @@ function PlanesContent() {
   // contra "mensual" a secas. PASAS1 vale para estandar_v2 + mensual: al
   // cambiar a Semestral o Anual todo esto se apaga solo y la pantalla vuelve
   // a precio y copy normales, sin badge ni tachado.
-  const { promo } = usePromo()
+  //
+  // 🔴 ESTE es el único booleano de promoción de la pantalla. Ya trae dentro
+  // las dos condiciones —que la campaña cubra plan y ciclo, y que la cuenta
+  // sea elegible— porque `promo` viene anulada arriba para quien no lo es.
+  // Nada más abajo vuelve a preguntar por `yaTuvo`.
   const aplicaPromo = promoAplica(promo, activePlan, cycle)
   const leyenda = leyendaPromo(promo, activePlan, cycle)
 

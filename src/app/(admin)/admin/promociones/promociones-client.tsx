@@ -11,6 +11,7 @@ import {
   precioConPromo,
   type PromoCampaign,
   type PromoVerificacion,
+  type TopeCanjes,
 } from '@/lib/promos'
 
 interface Props {
@@ -46,6 +47,29 @@ function textoDescuentoStripe(v: PromoVerificacion): string {
   if (v.stripe_descuento_valor == null) return '—'
   if (v.stripe_descuento_tipo === 'porcentaje') return `${v.stripe_descuento_valor}%`
   return `$${formatoMXN(v.stripe_descuento_valor)} ${(v.stripe_moneda ?? '').toUpperCase()}`.trim()
+}
+
+/** "812 de 1001" | "3 canjes, sin tope" | "sin tope". */
+function textoTope(t: TopeCanjes): string {
+  if (t.max_redemptions != null) {
+    return `${t.times_redeemed ?? 0} de ${t.max_redemptions}`
+  }
+  return t.times_redeemed != null && t.times_redeemed > 0
+    ? `${t.times_redeemed} canjes, sin tope`
+    : 'sin tope'
+}
+
+/**
+ * Los ids de Stripe. `wordBreak` parte la cadena dentro de su caja en vez de
+ * dejarla desbordar sobre la celda vecina, y como no se trunca, se copia
+ * completa de un triple clic.
+ */
+const ID_STRIPE_STYLE = {
+  fontSize: 13,
+  color: '#e2d9f3',
+  fontFamily: 'monospace',
+  display: 'block',
+  wordBreak: 'break-all' as const,
 }
 
 const LABEL_STYLE = {
@@ -424,17 +448,25 @@ export default function PromocionesClient({ campanas }: Props) {
                           gap: 14,
                         }}
                       >
-                        <div>
+                        {/*
+                          Los ids de Stripe (promo_1U42D6FgP0GDlD36NXnw…) son
+                          largos y no tienen espacios: dentro de una columna de
+                          160px se desbordaban encima de la celda vecina. Van
+                          en su propia fila a ancho completo —gridColumn 1/-1—
+                          y con wordBreak, que parte la cadena en vez de
+                          empujarla fuera.
+
+                          🔴 Se parte, NO se trunca con ellipsis: son ids que
+                          se copian y se pegan en el buscador de Stripe. Un
+                          "promo_1U42…" a medias obliga a abrir el inspector.
+                        */}
+                        <div style={{ gridColumn: '1 / -1' }}>
                           <span style={LABEL_STYLE}>Cupón</span>
-                          <span style={{ fontSize: 13, color: '#e2d9f3', fontFamily: 'monospace' }}>
-                            {v.cupon_id ?? '—'}
-                          </span>
+                          <span style={ID_STRIPE_STYLE}>{v.cupon_id ?? '—'}</span>
                         </div>
-                        <div>
+                        <div style={{ gridColumn: '1 / -1' }}>
                           <span style={LABEL_STYLE}>Promotion code</span>
-                          <span style={{ fontSize: 13, color: '#e2d9f3', fontFamily: 'monospace' }}>
-                            {v.promotion_code_id ?? '—'}
-                          </span>
+                          <span style={ID_STRIPE_STYLE}>{v.promotion_code_id ?? '—'}</span>
                         </div>
                         <div>
                           <span style={LABEL_STYLE}>Descuento en Stripe</span>
@@ -446,11 +478,33 @@ export default function PromocionesClient({ campanas }: Props) {
                           <span style={LABEL_STYLE}>Duración</span>
                           <span style={{ fontSize: 14, color: '#e2d9f3' }}>{textoDuracion(v)}</span>
                         </div>
-                        <div>
+                        {/*
+                          Los dos niveles, por separado y etiquetados. El tope
+                          de PASAS1 vive en el CUPÓN y su promotion code va sin
+                          tope: una sola línea "Canjes" no permitía ver cuál de
+                          los dos manda, y mostrando solo el promotion code
+                          decía "∞" sobre una campaña que sí se agota.
+                        */}
+                        <div style={{ gridColumn: '1 / -1' }}>
                           <span style={LABEL_STYLE}>Canjes</span>
-                          <span style={{ fontSize: 14, color: '#e2d9f3' }}>
-                            {v.times_redeemed ?? 0} de {v.max_redemptions ?? '∞'}
-                            {v.canjes_restantes != null && ` · ${v.canjes_restantes} restantes`}
+                          <span style={{ fontSize: 14, color: '#e2d9f3', display: 'block' }}>
+                            Cupón: {textoTope(v.tope_cupon)}
+                          </span>
+                          <span style={{ fontSize: 14, color: '#e2d9f3', display: 'block' }}>
+                            Promotion code: {textoTope(v.tope_promotion_code)}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: 14,
+                              fontWeight: 700,
+                              display: 'block',
+                              marginTop: 4,
+                              color: v.canjes_restantes === 0 ? '#ef4444' : '#10b981',
+                            }}
+                          >
+                            {v.canjes_restantes == null
+                              ? 'Sin tope en ningún nivel: ilimitado'
+                              : `${v.canjes_restantes} restantes`}
                           </span>
                         </div>
                         <div>

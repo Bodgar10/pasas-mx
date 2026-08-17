@@ -19,7 +19,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
-import type { DescuentoTipo, PromoVerificacion } from '@/lib/promos'
+import type { DescuentoTipo, PromoVerificacion, TopeCanjes } from '@/lib/promos'
 
 /** La moneda del negocio. Un cupón de amount_off en otra divisa es un desajuste. */
 const MONEDA = 'mxn'
@@ -31,6 +31,32 @@ const MONEDA = 'mxn'
  * falso sin dejar pasar una diferencia real.
  */
 const EPSILON = 0.005
+
+/** Tope vacío: ese nivel no impone límite. */
+const SIN_TOPE: TopeCanjes = {
+  max_redemptions: null,
+  times_redeemed: null,
+  restantes: null,
+}
+
+/**
+ * Normaliza el par max/times de UN nivel de Stripe.
+ *
+ * `times_redeemed` sin `max_redemptions` no es un tope: es un contador. Por
+ * eso `restantes` solo sale de un max presente.
+ */
+function leerTope(
+  max: number | null | undefined,
+  times: number | null | undefined
+): TopeCanjes {
+  const maxN = max ?? null
+  const timesN = times ?? null
+  return {
+    max_redemptions: maxN,
+    times_redeemed: timesN,
+    restantes: maxN == null ? null : Math.max(0, maxN - (timesN ?? 0)),
+  }
+}
 
 export async function POST(req: NextRequest) {
   // 1. Gate de admin — mismo patrón que el resto de /api/admin/*.
@@ -84,8 +110,8 @@ export async function POST(req: NextRequest) {
     stripe_moneda: null,
     duracion: null,
     duracion_meses: null,
-    max_redemptions: null,
-    times_redeemed: null,
+    tope_promotion_code: SIN_TOPE,
+    tope_cupon: SIN_TOPE,
     canjes_restantes: null,
     first_time_transaction: null,
     expira_at: null,
@@ -177,13 +203,36 @@ export async function POST(req: NextRequest) {
   // `once`— pero es el dato que decide si el copy es cierto, así que se
   // reporta para que se lea, no se compara automáticamente.
 
-  const canjesRestantes =
-    promo.max_redemptions == null
-      ? null
-      : Math.max(0, promo.max_redemptions - promo.times_redeemed)
+  /**
+   * 🔴 EL TOPE VIVE EN LOS DOS NIVELES Y STRIPE APLICA LOS DOS.
+   *
+   * Leer solo `promo.max_redemptions` reportaba "∞" para PASAS1: su promotion
+   * code no tiene tope propio y el límite real está en el CUPÓN. El aviso de
+   * agotamiento no habría saltado nunca, y el día que se acabara la campaña
+   * la pantalla habría seguido diciendo que quedaban canjes.
+   *
+   * Se reportan los dos niveles por separado —para poder ver cuál manda— y
+   * "canjes restantes" es el MÍNIMO de los que sí tienen tope. Ilimitado solo
+   * cuando ninguno de los dos lo tiene.
+   */
+  const topePromotionCode = leerTope(promo.max_redemptions, promo.times_redeemed)
+  const topeCupon = leerTope(cupon?.max_redemptions, cupon?.times_redeemed)
+
+  const restantesConTope = [topePromotionCode.restantes, topeCupon.restantes].filter(
+    (r): r is number => r != null
+  )
+  const canjesRestantes = restantesConTope.length === 0 ? null : Math.min(...restantesConTope)
 
   if (canjesRestantes === 0) {
-    motivos.push('Sin canjes restantes: el código ya alcanzó max_redemptions.')
+    // Se nombra el nivel agotado: "revisa el cupón" y "revisa el promotion
+    // code" mandan a pantallas distintas de Stripe.
+    const nivel =
+      topeCupon.restantes === 0 && topePromotionCode.restantes === 0
+        ? 'el cupón y el promotion code'
+        : topeCupon.restantes === 0
+        ? 'el cupón'
+        : 'el promotion code'
+    motivos.push(`Sin canjes restantes: ${nivel} ya alcanzó su max_redemptions.`)
   }
 
   const resultado: PromoVerificacion = {
@@ -197,8 +246,8 @@ export async function POST(req: NextRequest) {
     stripe_moneda: stripeMoneda,
     duracion: cupon?.duration ?? null,
     duracion_meses: cupon?.duration_in_months ?? null,
-    max_redemptions: promo.max_redemptions,
-    times_redeemed: promo.times_redeemed,
+    tope_promotion_code: topePromotionCode,
+    tope_cupon: topeCupon,
     canjes_restantes: canjesRestantes,
     first_time_transaction: promo.restrictions.first_time_transaction,
     expira_at: promo.expires_at ? new Date(promo.expires_at * 1000).toISOString() : null,
