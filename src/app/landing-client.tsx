@@ -648,11 +648,48 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             El "hasta 8 pistas" sí se queda fijo — es un tope del formato, no
             un volumen, y no cambia al generar contenido.
           */}
-          <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
-            {stats.papel_lapiz.toLocaleString('es-MX')} ejercicios así en
-            matemáticas, física y química, de secundaria a prepa. Hasta 8
-            pistas cada uno.
-          </p>
+          {/*
+            🔴 ERA UNA NOTA AL PIE. 13px grises al 70% de opacidad, debajo de
+            la tarjeta y más pequeños que el propio ejercicio — cuando es uno
+            de los argumentos más fuertes de la página.
+
+            Sube a tres niveles sin añadir un segundo H2: la sección ya tiene
+            el suyo arriba ("Aquí no te quedas atorado") y dos encabezados
+            compitiendo se leerían peor que la nota al pie.
+              1. la cifra, grande y en morado de marca
+              2. el alcance, en cuerpo normal y color de texto
+              3. las pistas, secundario: es el detalle, no el titular
+
+            📱 En móvil (~380px) la cifra y "ejercicios así" van en su propia
+            línea con `flexWrap` y alineados a la BASE, para que el número
+            grande y la palabra no se desalineen al partir. El alcance va
+            aparte: enumerar tres materias junto a un número de 40px se rompía
+            en dos líneas feas. El `clamp` da 38px a 380px de ancho.
+
+            🔴 La cifra sigue derivada de landing_stats().papel_lapiz.
+          */}
+          <div style={{ textAlign: 'center', marginTop: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <span style={{
+                fontFamily: FONTS.orbitron,
+                fontWeight: 900,
+                fontSize: 'clamp(32px, 10vw, 42px)',
+                color: COLORS.primary,
+                lineHeight: 1.1,
+              }}>
+                {stats.papel_lapiz.toLocaleString('es-MX')}
+              </span>
+              <span style={{ fontSize: 17, fontWeight: 800, color: COLORS.text }}>
+                ejercicios así
+              </span>
+            </div>
+            <p style={{ fontSize: 15, color: COLORS.text, margin: '8px 0 0', lineHeight: 1.5, fontWeight: 600 }}>
+              en matemáticas, física y química, de secundaria a prepa.
+            </p>
+            <p style={{ fontSize: 13, color: COLORS.muted, margin: '6px 0 0', opacity: 0.8 }}>
+              Hasta 8 pistas cada uno.
+            </p>
+          </div>
         </section>
       </FadeSection>
 
@@ -676,13 +713,46 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
 
           <DemoHorda onAvanzar={() => track('landing_demo_horda')} />
 
-          <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
-            {/* Derivado. Las "30 preguntas en 6 oleadas" de arriba NO: son la
-                mecánica del modo, no un volumen. */}
-            {stats.horda_preguntas.toLocaleString('es-MX')} preguntas en los{' '}
-            {stats.horda_temas.toLocaleString('es-MX')} temas. Secundaria y
-            prepa completas.
-          </p>
+          {/*
+            Misma receta que el conteo de Papel y Lápiz. Las dos secciones son
+            gemelas —rótulo → H2 → demo jugable → conteo— y tenerlas con
+            jerarquías distintas hacía que la página se leyera inconsistente
+            justo en el par que más se compara.
+
+            El acento es COLORS.pink porque es el color del rótulo "Modo
+            Horda", igual que allá la cifra toma el morado de "Papel y lápiz".
+            La receta es una; el color lo pone cada sección.
+
+            🔴 Las dos cifras derivadas de landing_stats(): horda_preguntas y
+            temas. Las "30 preguntas en 6 oleadas" de arriba NO se tocan: son
+            la mecánica del modo, no un volumen que crezca.
+
+            📱 Mismo clamp que el otro bloque, sin ajustar: "17,370" tiene un
+            carácter más que "2,040" pero la línea sigue siendo la más corta de
+            las dos, porque "preguntas" es bastante menor que "ejercicios así".
+            El flexWrap con alineación a la base es el seguro si algún día la
+            cifra llega a seis dígitos.
+          */}
+          <div style={{ textAlign: 'center', marginTop: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <span style={{
+                fontFamily: FONTS.orbitron,
+                fontWeight: 900,
+                fontSize: 'clamp(32px, 10vw, 42px)',
+                color: COLORS.pink,
+                lineHeight: 1.1,
+              }}>
+                {stats.horda_preguntas.toLocaleString('es-MX')}
+              </span>
+              <span style={{ fontSize: 17, fontWeight: 800, color: COLORS.text }}>
+                preguntas
+              </span>
+            </div>
+            <p style={{ fontSize: 15, color: COLORS.text, margin: '8px 0 0', lineHeight: 1.5, fontWeight: 600 }}>
+              en los {stats.horda_temas.toLocaleString('es-MX')} temas.
+              Secundaria y prepa completas.
+            </p>
+          </div>
         </section>
       </FadeSection>
 
@@ -1126,7 +1196,11 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             })}
           </div>
           <p style={{ textAlign: 'center', marginTop: 24, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
-            ¿Quieres pagar 3 o 6 meses?{' '}
+            {/* 🔴 Decía "¿Quieres pagar 3 o 6 meses?" y NO EXISTE plan de 3
+                meses: los ciclos son mensual, semestral (6) y anual (12).
+                Quien llegaba a /planes buscando el trimestral no lo
+                encontraba. Ver CYCLE_TO_DURATION en planes/page.tsx. */}
+            ¿Quieres pagar 6 meses o un año?{' '}
             <span onClick={() => { track('landing_ver_planes_clicked'); router.push('/planes') }} style={{ color: COLORS.primary, cursor: 'pointer', fontWeight: 700 }}>
               Ver todos los planes →
             </span>
