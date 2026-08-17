@@ -10,7 +10,7 @@ import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { usePromo } from '@/hooks/usePromo'
-import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
+import { conPromo, copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
 import Image from 'next/image'
@@ -203,18 +203,25 @@ function CTAIntermedio({
   texto,
   microcopy,
   location,
+  href,
   onClick,
 }: {
   texto: string
   /** REGLA D: con promo llega el sublabel de la campaña ya compuesto. */
   microcopy: string
   location: string
+  /**
+   * Destino ya compuesto por el padre con conPromo(). Llega por prop en vez de
+   * quedarse en '/onboarding' fijo porque el slug tiene que viajar en la URL:
+   * sessionStorage no sobrevive a una pestaña nueva ni a un enlace compartido.
+   */
+  href: string
   onClick: (location: string) => void
 }) {
   return (
     <div style={{ padding: '0 24px 64px', maxWidth: 520, margin: '0 auto' }}>
       <Link
-        href="/onboarding"
+        href={href}
         prefetch={true}
         onClick={() => onClick(location)}
         style={{
@@ -397,6 +404,25 @@ export default function LandingClient() {
     sublabel: null,
   })
 
+  /**
+   * 🔴 EL DESTINO DE TODOS LOS CTA DEL EMBUDO, con el slug pegado.
+   *
+   * Se calcula UNA vez y lo usan nav, hero, los dos CTAIntermedio y el CTA
+   * final. Antes cada uno tenía '/onboarding' escrito a mano y el slug solo
+   * viajaba en sessionStorage: bastaba una pestaña nueva, un enlace compartido
+   * o un navegador con el almacenamiento bloqueado —los de dentro de TikTok e
+   * Instagram, que son el origen del tráfico de campaña— para llegar a /planes
+   * sin promo y sin ninguna señal de que se perdió.
+   *
+   * Va condicionado a `aplicaPromoEstandar` y no solo a que exista `promo`:
+   * si la campaña no cubre estandar_v2 + mensual, la landing no la decora, y
+   * mandar el slug igual llevaría a /planes un param que no promete nada aquí.
+   */
+  const destinoOnboarding = conPromo(
+    '/onboarding',
+    aplicaPromoEstandar ? promo?.slug : null
+  )
+
   function handleCTA(location: string) {
     track('hero_variant_converted', { variant, cta_location: location })
     track('landing_cta_clicked', { location, variant })
@@ -433,7 +459,7 @@ export default function LandingClient() {
             Entrar
           </Link>
           <Link
-            href="/onboarding"
+            href={destinoOnboarding}
             prefetch={true}
             onClick={() => handleCTA('nav')}
             style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
@@ -469,7 +495,7 @@ export default function LandingClient() {
           </div>
 
           <Link
-            href="/onboarding"
+            href={destinoOnboarding}
             prefetch={true}
             onClick={() => handleCTA('hero')}
             style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
@@ -545,6 +571,7 @@ export default function LandingClient() {
           texto={ctaPostDemos.label}
           microcopy={microcopyPromo(ctaPostDemos.sublabel, ['Cancela cuando quieras'])}
           location="post_demos"
+          href={destinoOnboarding}
           onClick={handleCTA}
         />
       </FadeSection>
@@ -709,6 +736,7 @@ export default function LandingClient() {
           texto={ctaPostCapturas.label}
           microcopy={microcopyPromo(ctaPostCapturas.sublabel, ['Cancela cuando quieras'])}
           location="post_capturas"
+          href={destinoOnboarding}
           onClick={handleCTA}
         />
       </FadeSection>
@@ -854,9 +882,17 @@ export default function LandingClient() {
                 label: plan.cta,
                 sublabel: plan.note,
               })
-              const badgePromo = promoAplica(promo, plan.key, CICLO_LANDING)
-                ? promo?.badge_landing ?? null
-                : null
+              const aplicaEnTarjeta = promoAplica(promo, plan.key, CICLO_LANDING)
+              const badgePromo = aplicaEnTarjeta ? promo?.badge_landing ?? null : null
+
+              // El slug viaja por la MISMA condición que decide la decoración:
+              // la tarjeta que no se decora tampoco lo arrastra. Con PASAS1
+              // eso deja fuera a Personalizado sin nombrarla, igual que el
+              // badge y el precio de arriba.
+              const destinoTarjeta = conPromo(
+                '/onboarding',
+                aplicaEnTarjeta ? promo?.slug : null
+              )
 
               return (
               <div key={i} style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.card} 0%, ${COLORS.card2} 100%)` : COLORS.card, borderRadius: RADIUS.xxl, padding: '28px 24px', border: `1.5px solid ${plan.highlight ? plan.color + '66' : COLORS.inputBorder}`, position: 'relative', overflow: 'hidden' }}>
@@ -904,7 +940,7 @@ export default function LandingClient() {
                   ))}
                 </div>
                 <Link
-                  href="/onboarding"
+                  href={destinoTarjeta}
                   prefetch={true}
                   onClick={() => handleCTA(`pricing_${plan.name.toLowerCase()}`)}
                   style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
@@ -954,7 +990,7 @@ export default function LandingClient() {
               Sin contratos raros. Sin letras chiquitas.
             </p>
             <Link
-              href="/onboarding"
+              href={destinoOnboarding}
               prefetch={true}
               style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => handleCTA('cta_final')}

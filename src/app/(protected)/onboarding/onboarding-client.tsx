@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import Logo from '@/components/global/Logo'
 
@@ -131,6 +131,7 @@ export default function OnboardingClient({ themes }: Props) {
   const [grade, setGrade] = useState<string | null>(null)
   const [theme, setTheme] = useState<string | null>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const copy = COPY[registrante]
 
@@ -162,6 +163,11 @@ export default function OnboardingClient({ themes }: Props) {
       if (grade) params.set('grade', grade)
       params.set('theme', theme)
       params.set('registrante', registrante)
+      // 🔴 El slug de campaña se reenvía al siguiente paso. Esta URL se arma
+      // desde cero, así que sin esta línea el ?promo= de la landing muere
+      // aquí y /planes cobra precio de lista. Mismo trato que level/grade.
+      const promo = searchParams.get('promo')
+      if (promo) params.set('promo', promo)
       router.push(`/onboarding/preview?${params.toString()}`)
     }
   }

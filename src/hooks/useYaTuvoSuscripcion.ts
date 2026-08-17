@@ -14,8 +14,8 @@ import { useEffect, useState } from 'react'
  *
  * 🔴 FAIL-CLOSED, Y EL DEFAULT ES `true`.
  *
- * Arranca en true, se queda en true si el fetch falla o responde 401/500, y
- * solo baja a false cuando el servidor confirma que la cuenta no tiene NINGUNA
+ * Arranca en true, se queda en true si el fetch falla o responde 500, y solo
+ * baja a false cuando el servidor confirma que la cuenta no tiene NINGUNA
  * suscripción. Es al revés que el instinto, y es a propósito:
  *
  * Con default false, un cliente que regresa vería "$1" durante los ~200ms del
@@ -57,9 +57,24 @@ export function useYaTuvoSuscripcion(): { yaTuvo: boolean; cargando: boolean } {
       try {
         const res = await fetch('/api/subscription/estado')
 
-        // 401 (sin sesión) y 500 (lectura fallida) caen aquí y NO tocan el
-        // estado: se quedan en el default true. No hay rama que convierta un
-        // fallo en "es elegible".
+        /**
+         * 🔴 EL 401 ES LA ÚNICA EXCEPCIÓN, Y ES UNA RESPUESTA, NO UN FALLO.
+         *
+         * Sin sesión no hay usuario, y sin usuario no puede haber suscripción
+         * previa: es elegible. Tratarlo como "no sabemos" anulaba la promo
+         * para TODO visitante anónimo en /planes — justo el tráfico frío que
+         * la campaña paga por traer.
+         *
+         * NO se generaliza a `!res.ok`. Un 500 llega con sesión activa y
+         * significa que la consulta a subscriptions falló: ahí sí no se sabe,
+         * y no se promete. Por eso el `=== 401` y no un rango.
+         */
+        if (res.status === 401) {
+          if (vivo) setEstado({ yaTuvo: false, cargando: false })
+          return
+        }
+
+        // 500 y cualquier otro no-ok: incertidumbre real, se queda en true.
         if (!res.ok) {
           if (vivo) setEstado({ yaTuvo: true, cargando: false })
           return

@@ -6,6 +6,7 @@ import { PLAN_DISPLAY } from '@/lib/payments/config'
 import Logo from '@/components/global/Logo'
 import Pasita from '@/components/mascota/Pasita'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import { conPromo } from '@/lib/promos'
 
 type Stats = {
   materias: number
@@ -366,7 +367,7 @@ function PreviewContent() {
           <div style={{ marginBottom: 8 }}>
             <button
               type="button"
-              onClick={() => router.push('/planes?plan=estandar')}
+              onClick={() => router.push(conPromo('/planes?plan=estandar', searchParams.get('promo')))}
               style={{
                 width: '100%',
                 minHeight: 52,

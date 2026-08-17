@@ -8,7 +8,7 @@ import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { usePromo } from '@/hooks/usePromo'
 import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
-import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
+import { conPromo, copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
 type PlanKey = keyof typeof PLANS
 
@@ -135,7 +135,22 @@ function PlanesContent() {
       if (!user || user.is_anonymous) {
         sessionStorage.setItem('pasas_pending_plan', activePlan)
         sessionStorage.setItem('pasas_pending_duration', CYCLE_TO_DURATION[cycle])
-        window.location.href = '/registro'
+        /**
+         * 🔴 EL PUNTO EXACTO DEL TRÁFICO FRÍO: anónimo que ya eligió plan y se
+         * va a crear cuenta. El slug va en la URL además de en sessionStorage
+         * porque esto es `window.location.href`, una navegación dura, y porque
+         * /registro es donde el slug se convierte en pending_checkout: si se
+         * pierde aquí, se pierde para todo el resto del alta.
+         *
+         * 🔴 Aquí se usa `promoCampana` (sin filtrar por elegibilidad) y no
+         * `promo`. Esta rama es, por definición, alguien que todavía NO tiene
+         * cuenta real: la que va a crear será nueva y por tanto elegible,
+         * así que el filtro de "ya tuvo suscripción" no le aplica. Usar el
+         * `promo` filtrado además metía una carrera — si el CTA se toca antes
+         * de que useYaTuvoSuscripcion resuelva, `promo` todavía es null y el
+         * slug se habría perdido justo en el salto que más importa.
+         */
+        window.location.href = conPromo('/registro', promoCampana?.slug)
         return
       }
 

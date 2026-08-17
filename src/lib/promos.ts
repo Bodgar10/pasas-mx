@@ -369,6 +369,36 @@ export function copyCTA(
 }
 
 /**
+ * Pega `?promo=<slug>` a un destino interno, conservando lo que ya traiga.
+ *
+ * 🔴 EL SLUG TIENE QUE VIAJAR EN LOS ENLACES, no solo en sessionStorage.
+ * sessionStorage es por pestaña: se pierde en una pestaña nueva, en un enlace
+ * compartido y en cualquier navegador con el almacenamiento bloqueado (los
+ * navegadores dentro de apps —TikTok, Instagram— son justo el origen del
+ * tráfico de campaña). Y cuando se pierde no hay señal de error: la pantalla
+ * simplemente cobra precio de lista.
+ *
+ * El param es la red de seguridad; sessionStorage sigue siendo el respaldo
+ * para cualquier navegación que no pase por un enlace nuestro. usePromo lee
+ * los dos, con el param ganando.
+ *
+ * `slug` null/vacío devuelve el destino intacto: un `?promo=` vacío en la URL
+ * sería ruido que además viaja a analítica.
+ */
+export function conPromo(destino: string, slug: string | null | undefined): string {
+  const limpio = slug?.trim().toLowerCase()
+  if (!limpio) return destino
+
+  // URLSearchParams y no una concatenación con '?' o '&': es el mismo patrón
+  // con el que el embudo ya arma `?level=…&grade=…`, y resuelve solo el
+  // separador correcto según el destino ya traiga query o no.
+  const [ruta, queryExistente] = destino.split('?')
+  const params = new URLSearchParams(queryExistente ?? '')
+  params.set('promo', limpio)
+  return `${ruta}?${params.toString()}`
+}
+
+/**
  * REGLA D — la microcopy de promo reemplaza la de trial, pero no borra las
  * promesas que ya estaban.
  *

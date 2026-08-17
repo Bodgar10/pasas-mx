@@ -1,7 +1,8 @@
 'use client'
 
-import { useActionState, useState, useEffect } from 'react'
+import { Suspense, useActionState, useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
@@ -58,7 +59,8 @@ function StrengthBar({ password }: { password: string }) {
   )
 }
 
-export default function RegistroPage() {
+function RegistroContent() {
+  const searchParams = useSearchParams()
   const [state, formAction, pending] = useActionState<RegistroState, FormData>(
     registroAction,
     null
@@ -81,13 +83,33 @@ export default function RegistroPage() {
   // decide `birthdate` en el servidor, no este valor.
   const [registrante, setRegistrante] = useState<'tutor' | 'alumno'>('tutor')
 
+  // Fuera del efecto para que la dependencia sea el string y no el objeto
+  // de searchParams, que es nuevo en cada render. Mismo criterio que usePromo.
+  const promoUrl = searchParams.get('promo')
+
   useEffect(() => {
     const raw = sessionStorage.getItem('pasas_onboarding') ?? ''
     setOnboardingData(raw)
     setPendingPlan(sessionStorage.getItem('pasas_pending_plan') ?? '')
     setPendingDuration(sessionStorage.getItem('pasas_pending_duration') ?? '')
     setUtmData(sessionStorage.getItem('pasas_utm') ?? '')
-    setPromoSlug(sessionStorage.getItem('pasas_promo') ?? '')
+    /**
+     * 🔴 EL PARAM GANA SOBRE sessionStorage — mismo orden que usePromo.
+     *
+     * sessionStorage es por pestaña: no sobrevive a un enlace compartido, a
+     * una pestaña nueva ni a un navegador con el almacenamiento bloqueado
+     * (los de dentro de TikTok e Instagram). /planes ahora manda el slug en la
+     * URL al saltar aquí, y ese es el camino del tráfico frío: anónimo que
+     * eligió plan y viene a crear cuenta.
+     *
+     * Este es además el punto donde el slug deja de ser efímero: de aquí pasa
+     * a users.pending_checkout y sobrevive a la confirmación del correo.
+     */
+    setPromoSlug(
+      promoUrl?.trim().toLowerCase() ||
+        sessionStorage.getItem('pasas_promo') ||
+        ''
+    )
     const consent = leerConsentimiento()
     if (consent) setCookieConsent(JSON.stringify(consent))
 
@@ -99,7 +121,7 @@ export default function RegistroPage() {
         /* onboarding_data malformado — se queda el default 'tutor' */
       }
     }
-  }, [])
+  }, [promoUrl])
 
   useEffect(() => {
     if (state && 'stripeUrl' in state && state.stripeUrl) {
@@ -474,5 +496,16 @@ export default function RegistroPage() {
         </Link>
       </p>
     </div>
+  )
+}
+
+export default function RegistroPage() {
+  // <Suspense> obligatorio: useSearchParams en un componente de cliente de una
+  // página estática hace fallar el build de producción sin él. Mismo envoltorio
+  // que /planes y /bienvenida.
+  return (
+    <Suspense>
+      <RegistroContent />
+    </Suspense>
   )
 }
