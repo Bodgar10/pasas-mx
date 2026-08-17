@@ -33,11 +33,18 @@ const cache = new Map<string, PromoPublica | null>()
  * servidor, no esta función) o si el fetch falla. Sin respuesta se cobra
  * precio de lista. Nunca al revés.
  *
- * 🔴 Mientras `cargando` sea true, la pantalla pinta precio y copy NORMALES.
- * Por eso `promo` arranca en null y no en undefined: no hay estado
- * "indeciso" que invite a pintar un placeholder o un precio a medias.
+ * 🔴 `promo` arranca en null y no en undefined: no hay estado "indeciso" que
+ * invite a pintar un precio a medias. Lo que decide qué hacer mientras
+ * `cargando` es true NO es este hook, es `hayIndicio` + useEsperandoPromo:
+ * sin indicio de campaña la pantalla pinta normal de inmediato; con indicio
+ * reserva el hueco y no pinta precio ni CTA hasta saber. Pintar el precio de
+ * lista y reescribirlo a "$1" medio segundo después es anunciar dos precios.
  */
-export function usePromo(): { promo: PromoPublica | null; cargando: boolean } {
+export function usePromo(): {
+  promo: PromoPublica | null
+  cargando: boolean
+  hayIndicio: boolean
+} {
   const searchParams = useSearchParams()
   const [estado, setEstado] = useState<{ promo: PromoPublica | null; cargando: boolean }>({
     promo: null,
@@ -47,6 +54,42 @@ export function usePromo(): { promo: PromoPublica | null; cargando: boolean } {
   // Se lee fuera del efecto para que sea la dependencia: `searchParams` es un
   // objeto nuevo en cada render y dispararía el efecto en cada uno.
   const slugUrl = searchParams.get('promo')
+
+  /**
+   * ¿HAY MOTIVO PARA SOSPECHAR QUE ESTA VISITA TRAE CAMPAÑA?
+   *
+   * 🔴 Síncrono, en el PRIMER render y sin red. Es lo que permite decidir, ya
+   * en la primera pintada, si la pantalla debe esperar los datos antes de
+   * dibujar precio y CTA, o si puede pintar de inmediato.
+   *
+   * No dice que la promo exista ni que aplique —eso lo decide el servidor—,
+   * solo que hay un slug por el que preguntar. Es la MISMA fuente y el mismo
+   * orden que usa el efecto de abajo: no hay una segunda regla que pueda
+   * discrepar.
+   *
+   * 🔴 La inmensa mayoría del tráfico no trae promo y aquí devuelve false: esa
+   * gente no espera ni un milisegundo.
+   *
+   * `useState` con inicializador perezoso y no una lectura suelta en el
+   * cuerpo: así sessionStorage se toca UNA vez, en el primer render del
+   * cliente, y el valor no cambia después aunque el componente se re-renderice
+   * — que es justo lo que evita que la pantalla entre y salga del estado de
+   * espera. Las tres pantallas que lo usan viven bajo un <Suspense> y llaman a
+   * useSearchParams, así que su HTML prerenderizado es el fallback y no hay
+   * marcado de servidor contra el que desajustarse.
+   */
+  const [indicioStorage] = useState(() => {
+    if (typeof window === 'undefined') return false
+    try {
+      return !!window.sessionStorage.getItem('pasas_promo')?.trim()
+    } catch {
+      // Safari en privado y navegadores con almacenamiento bloqueado tiran
+      // aquí. Sin storage no hay indicio: se pinta normal, sin esperar.
+      return false
+    }
+  })
+
+  const hayIndicio = !!slugUrl?.trim() || indicioStorage
 
   useEffect(() => {
     let vivo = true
@@ -92,5 +135,5 @@ export function usePromo(): { promo: PromoPublica | null; cargando: boolean } {
     }
   }, [slugUrl])
 
-  return estado
+  return { ...estado, hayIndicio }
 }

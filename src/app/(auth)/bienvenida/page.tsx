@@ -6,6 +6,8 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY, cicloDisplay } from '@/lib/payments/config'
 import { usePromo } from '@/hooks/usePromo'
 import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
+import { useEsperandoPromo } from '@/hooks/useEsperandoPromo'
+import { Hueco } from '@/components/global/HuecoPromo'
 import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
 /*
@@ -38,8 +40,18 @@ function BienvenidaContent() {
   // `cycleKey` es el ciclo en vocabulario de PLAN_DISPLAY (mensual/semestral/
   // anual), que es el mismo que guarda promo_campaigns.ciclos. `duration` de
   // la URL viene en el de la base (monthly/annual) y NO sirve aquí.
-  const { promo: promoCampana } = usePromo()
-  const { yaTuvo } = useYaTuvoSuscripcion()
+  const { promo: promoCampana, cargando: promoCargando, hayIndicio } = usePromo()
+  const { yaTuvo, cargando: yaTuvoCargando } = useYaTuvoSuscripcion()
+
+  /**
+   * 🔴 Con indicio de campaña, precio y CTA NO se pintan hasta saber. Sin
+   * indicio esto es false ya en el primer render y la pantalla va como
+   * siempre, sin un milisegundo de espera.
+   */
+  const esperandoPromo = useEsperandoPromo(
+    hayIndicio,
+    promoCargando || yaTuvoCargando
+  )
 
   /**
    * 🔴 UNA SOLA PUERTA PARA LA PROMO EN TODA LA PANTALLA.
@@ -163,7 +175,21 @@ function BienvenidaContent() {
             }}>
               {planLabel} · {durationLabel}
             </p>
-            {leyenda ? (
+            {esperandoPromo ? (
+              /*
+                🔴 EL HUECO MIDE LO QUE MIDE LA VARIANTE CON PROMO, que es la
+                más alta de las dos: línea de precio (28px, alto de línea 34) +
+                4px + línea de "después" (13px, alto de línea 20). Si llega la
+                promo —el caso probable cuando hay indicio— el reemplazo es de
+                cero salto. Si resulta que no aplica, el bloque encoge esa
+                última línea; se prefiere ese encogimiento raro a que el caso
+                habitual empuje la pantalla hacia abajo.
+              */
+              <>
+                <Hueco alto={34} ancho={190} radio={8} margenAbajo={4} />
+                <Hueco alto={20} ancho={150} radio={6} />
+              </>
+            ) : leyenda ? (
               /* REGLA C — lista tachada, precio del primer cargo y lo que se
                  cobra después. Los tres juntos, sin excepción. */
               <>
@@ -216,7 +242,7 @@ function BienvenidaContent() {
             botón, que conserva "Cancela cuando quieras" y "Sin cobro hasta el
             día 8". Dejar los dos apilaría dos veces la promesa de los 7 días.
           */}
-          {!aplicaPromo && (
+          {!aplicaPromo && !esperandoPromo && (
             <div style={{
               background: 'rgba(251,191,36,0.08)',
               border: '1px solid rgba(251,191,36,0.25)',
@@ -233,6 +259,17 @@ function BienvenidaContent() {
             </div>
           )}
 
+          {/*
+            El slot del banner también se reserva. El banner "aparece o no
+            aparece", pero está ARRIBA del CTA: si se materializa después,
+            empuja el botón hacia abajo justo cuando la persona va a tocarlo.
+            El hueco mide el banner de campaña —12px de padding arriba y abajo,
+            una línea de 13px a 1.5, 1px de borde— que es el que se pinta
+            cuando hay promo, o sea el caso probable si hemos llegado a
+            esperar.
+          */}
+          {esperandoPromo && <Hueco alto={46} radio={12} margenAbajo={24} />}
+
           {/* Banner de la campaña, donde estaba el de trial. */}
           {aplicaPromo && promo?.banner_checkout && (
             <div style={{
@@ -248,7 +285,21 @@ function BienvenidaContent() {
             </div>
           )}
 
-          {/* CTA */}
+          {/*
+            🔴 CTA. El hueco copia las tres medidas del botón real —width
+            100%, minHeight 56, borderRadius 14, marginBottom 12—, así que el
+            reemplazo no mueve un píxel. La etiqueta es lo que cambia entre
+            "Activar mis 7 días gratis" y el cta_label de la campaña, y esa es
+            justo la promesa que no puede reescribirse a la vista.
+          */}
+          {esperandoPromo ? (
+            <>
+              <Hueco alto={56} radio={14} margenAbajo={12} />
+              {/* La microcopy: 12px a 1.5 de alto de línea = 18px. */}
+              <Hueco alto={18} ancho={260} radio={6} />
+            </>
+          ) : (
+          <>
           <button
             type="button"
             onClick={handleActivar}
@@ -277,6 +328,8 @@ function BienvenidaContent() {
           <p style={{ fontSize: 12, color: '#6B7280', margin: 0, lineHeight: 1.5 }}>
             {microcopyPromo(cta.sublabel, ['Cancela cuando quieras', 'Sin cobro hasta el día 8'])}
           </p>
+          </>
+          )}
 
           {/* Link cambiar plan */}
           <button

@@ -11,6 +11,8 @@ import { PLAN_DISPLAY } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { usePromo } from '@/hooks/usePromo'
 import { conPromo, copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
+import { useEsperandoPromo } from '@/hooks/useEsperandoPromo'
+import { Hueco } from '@/components/global/HuecoPromo'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
 import Image from 'next/image'
@@ -199,10 +201,32 @@ const PLANS = [
  * argumento convence. Si el de después de las demos gana, eso dice que lo
  * jugable es lo que vende.
  */
+/**
+ * La etiqueta de un CTA mientras no se sabe si hay campaña.
+ *
+ * 🔴 Sustituye SOLO el texto de dentro, no el botón. El contenedor —ancho,
+ * alto mínimo, padding, radio— es el mismo elemento de siempre, así que el
+ * reemplazo no puede mover el layout: no hay dos geometrías que cuadrar, hay
+ * una. Es también la razón de que no haga falta medir a mano los seis CTA de
+ * esta pantalla, que tienen tamaños distintos entre sí.
+ */
+function EtiquetaCTA({
+  esperando,
+  ancho,
+  children,
+}: {
+  esperando: boolean
+  ancho: number
+  children: React.ReactNode
+}) {
+  return esperando ? <Hueco alto={16} ancho={ancho} radio={5} /> : <>{children}</>
+}
+
 function CTAIntermedio({
   texto,
   microcopy,
   location,
+  esperando,
   href,
   onClick,
 }: {
@@ -210,6 +234,8 @@ function CTAIntermedio({
   /** REGLA D: con promo llega el sublabel de la campaña ya compuesto. */
   microcopy: string
   location: string
+  /** Mientras es true, ni la etiqueta ni la microcopy se pintan. */
+  esperando: boolean
   /**
    * Destino ya compuesto por el padre con conPromo(). Llega por prop en vez de
    * quedarse en '/onboarding' fijo porque el slug tiene que viajar en la URL:
@@ -246,10 +272,10 @@ function CTAIntermedio({
           transition: 'transform 0.15s ease, box-shadow 0.15s ease',
         }}
       >
-        {texto}
+        <EtiquetaCTA esperando={esperando} ancho={210}>{texto}</EtiquetaCTA>
       </Link>
-      <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.55 }}>
-        {microcopy}
+      <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.55, display: 'flex', justifyContent: 'center' }}>
+        {esperando ? <Hueco alto={18} ancho={230} radio={5} /> : microcopy}
       </p>
     </div>
   )
@@ -372,7 +398,17 @@ export default function LandingClient() {
     usa plan.key, por lo que la de Personalizado no se decora sola: no está en
     promo.planes.
   */
-  const { promo } = usePromo()
+  const { promo, cargando: promoCargando, hayIndicio } = usePromo()
+
+  /**
+   * 🔴 La landing es PÚBLICA: no usa useYaTuvoSuscripcion (no hay sesión que
+   * consultar), así que aquí solo cuenta lo que tarde usePromo.
+   *
+   * Sin indicio de campaña esto es false ya en el primer render: el tráfico
+   * normal, que es casi todo, ve la landing igual de rápido que antes.
+   */
+  const esperandoPromo = useEsperandoPromo(hayIndicio, promoCargando)
+
   const CICLO_LANDING = 'mensual'
   const aplicaPromoEstandar = promoAplica(promo, 'estandar_v2', CICLO_LANDING)
   const leyendaEstandar = leyendaPromo(promo, 'estandar_v2', CICLO_LANDING)
@@ -464,7 +500,7 @@ export default function LandingClient() {
             onClick={() => handleCTA('nav')}
             style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
           >
-            {ctaNav.label}
+            <EtiquetaCTA esperando={esperandoPromo} ancho={64}>{ctaNav.label}</EtiquetaCTA>
           </Link>
         </div>
       </nav>
@@ -500,12 +536,14 @@ export default function LandingClient() {
             onClick={() => handleCTA('hero')}
             style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            {ctaHero.label}
+            <EtiquetaCTA esperando={esperandoPromo} ancho={220}>{ctaHero.label}</EtiquetaCTA>
           </Link>
           {/* REGLA D: con promo, su sublabel reemplaza la micro de la variante,
               pero "Cancela cuando quieras" no se pierde. */}
-          <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.7 }}>
-            {microcopyPromo(ctaHero.sublabel, ['Cancela cuando quieras'])}
+          <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.7, display: 'flex', justifyContent: 'center' }}>
+            {esperandoPromo
+              ? <Hueco alto={20} ancho={250} radio={5} />
+              : microcopyPromo(ctaHero.sublabel, ['Cancela cuando quieras'])}
           </p>
           <div style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
             <span style={{ fontSize: 12, fontWeight: 600 }}>scroll</span>
@@ -571,6 +609,7 @@ export default function LandingClient() {
           texto={ctaPostDemos.label}
           microcopy={microcopyPromo(ctaPostDemos.sublabel, ['Cancela cuando quieras'])}
           location="post_demos"
+          esperando={esperandoPromo}
           href={destinoOnboarding}
           onClick={handleCTA}
         />
@@ -736,6 +775,7 @@ export default function LandingClient() {
           texto={ctaPostCapturas.label}
           microcopy={microcopyPromo(ctaPostCapturas.sublabel, ['Cancela cuando quieras'])}
           location="post_capturas"
+          esperando={esperandoPromo}
           href={destinoOnboarding}
           onClick={handleCTA}
         />
@@ -844,7 +884,19 @@ export default function LandingClient() {
               maestro particular sigue comparándose contra el precio de lista,
               que es el que se paga a partir del segundo mes. */}
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
-            {leyendaEstandar ? (
+            {esperandoPromo ? (
+              /*
+                🔴 Este encabezado ES un precio: dice "$249 al mes" o "$249 $1
+                primer mes · después $249/mes". El hueco reserva sus tres
+                líneas —dos de titular y la de 0.6em— para que el cambio no
+                empuje la tarjeta de precios que va debajo.
+              */
+              <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                <Hueco alto={30} ancho={280} radio={8} />
+                <Hueco alto={30} ancho={230} radio={8} />
+                <Hueco alto={18} ancho={300} radio={6} />
+              </span>
+            ) : leyendaEstandar ? (
               <>
                 <span style={{ textDecoration: 'line-through', color: COLORS.muted, opacity: 0.7 }}>
                   {leyendaEstandar.listaTexto}
@@ -912,7 +964,19 @@ export default function LandingClient() {
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.pink})` }} />
                 )}
                 <p style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 15, color: plan.color, marginBottom: 4 }}>{plan.name}</p>
-                {leyendaCard ? (
+                {esperandoPromo ? (
+                  /*
+                    El hueco imita la variante con promo: la fila del precio
+                    (32px de titular con el tachado de 20px alineado a la
+                    base) y la línea de "después". `marginBottom: 8` es el
+                    mismo de las dos variantes reales.
+                  */
+                  <div style={{ marginBottom: 8 }}>
+                    <Hueco alto={40} ancho={210} radio={10} />
+                    <div style={{ height: 6 }} />
+                    <Hueco alto={18} ancho={170} radio={6} />
+                  </div>
+                ) : leyendaCard ? (
                   /* REGLA C — los tres juntos. */
                   <div style={{ marginBottom: 8 }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
@@ -945,12 +1009,14 @@ export default function LandingClient() {
                   onClick={() => handleCTA(`pricing_${plan.name.toLowerCase()}`)}
                   style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                 >
-                  {ctaCard.label}
+                  <EtiquetaCTA esperando={esperandoPromo} ancho={190}>{ctaCard.label}</EtiquetaCTA>
                 </Link>
                 {/* REGLA D: "Requiere tarjeta" y "Cancela cuando quieras"
                     estaban aquí y aquí se quedan, promo o no. */}
-                <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.6 }}>
-                  {microcopyPromo(ctaCard.sublabel, ['Requiere tarjeta', 'Cancela cuando quieras'])}
+                <p style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: COLORS.muted, opacity: 0.6, display: 'flex', justifyContent: 'center' }}>
+                  {esperandoPromo
+                    ? <Hueco alto={18} ancho={215} radio={5} />
+                    : microcopyPromo(ctaCard.sublabel, ['Requiere tarjeta', 'Cancela cuando quieras'])}
                 </p>
               </div>
               )
@@ -980,7 +1046,14 @@ export default function LandingClient() {
             {/* Con promo se cae "Una semana gratis." y nada más: el CTA de
                 abajo ya dice la oferta. Sin promo, idéntico a como estaba. */}
             <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 32px)', marginBottom: 16, color: COLORS.text }}>
-              {aplicaPromoEstandar ? (
+              {esperandoPromo ? (
+                /* Con promo pierde la línea "Una semana gratis."; el hueco
+                   reserva las dos para no encoger al llegar los datos. */
+                <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                  <Hueco alto={32} ancho={260} radio={8} />
+                  <Hueco alto={32} ancho={300} radio={8} />
+                </span>
+              ) : aplicaPromoEstandar ? (
                 <>Si no te late, te sales y ya.</>
               ) : (
                 <>Una semana gratis.<br />Si no te late, te sales y ya.</>
@@ -995,7 +1068,7 @@ export default function LandingClient() {
               style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => handleCTA('cta_final')}
             >
-              {ctaFinal.label}
+              <EtiquetaCTA esperando={esperandoPromo} ancho={200}>{ctaFinal.label}</EtiquetaCTA>
             </Link>
             <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.6 }}>
               Tarda menos que escoger qué ver en Netflix.
@@ -1003,8 +1076,12 @@ export default function LandingClient() {
             {/* REGLA C — con promo esta línea es precio, y los tres datos van
                 juntos. La promesa del trial pasa a la línea de abajo, que es
                 el sublabel de la campaña: no se apilan, se reparten. */}
-            <p style={{ marginTop: 20, fontSize: 13, color: COLORS.muted, opacity: 0.5 }}>
-              {leyendaEstandar ? (
+            <p style={{ marginTop: 20, fontSize: 13, color: COLORS.muted, opacity: 0.5, display: 'flex', justifyContent: 'center' }}>
+              {esperandoPromo ? (
+                /* También es precio: "$249 al mes · 7 días gratis…" o la
+                   leyenda con tachado. Una sola línea en las dos variantes. */
+                <Hueco alto={20} ancho={320} radio={5} />
+              ) : leyendaEstandar ? (
                 <>
                   <span style={{ textDecoration: 'line-through' }}>{leyendaEstandar.listaTexto}</span>
                   {' '}{leyendaEstandar.finalTexto} · {leyendaEstandar.despuesTexto}

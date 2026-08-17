@@ -8,6 +8,8 @@ import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { usePromo } from '@/hooks/usePromo'
 import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
+import { useEsperandoPromo } from '@/hooks/useEsperandoPromo'
+import { Hueco } from '@/components/global/HuecoPromo'
 import { conPromo, copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 
 type PlanKey = keyof typeof PLANS
@@ -50,8 +52,19 @@ function PlanesContent() {
     setDeviceHadTrial(localStorage.getItem('pasas_trial_used') === 'true')
   }, [])
 
-  const { promo: promoCampana } = usePromo()
-  const { yaTuvo } = useYaTuvoSuscripcion()
+  const { promo: promoCampana, cargando: promoCargando, hayIndicio } = usePromo()
+  const { yaTuvo, cargando: yaTuvoCargando } = useYaTuvoSuscripcion()
+
+  /**
+   * 🔴 Con indicio de campaña, el precio y el botón no se pintan hasta saber:
+   * leer "$249 · Probar 7 días gratis" y que se reescriba a "$1 · Entra con un
+   * peso" es anunciar dos precios. Sin indicio esto es false desde el primer
+   * render y no espera nadie.
+   */
+  const esperandoPromo = useEsperandoPromo(
+    hayIndicio,
+    promoCargando || yaTuvoCargando
+  )
 
   /**
    * 🔴 UNA SOLA PUERTA PARA LA PROMO EN TODA LA PANTALLA.
@@ -295,6 +308,14 @@ function PlanesContent() {
           El de promo sí se pinta con deviceHadTrial: `banner_checkout` habla
           de precio, no de días gratis, así que no promete nada ya gastado.
         */}
+        {/*
+          El slot del banner se reserva mientras se espera. Está ARRIBA de la
+          tarjeta de precio: si apareciera después, empujaría precio y botón
+          hacia abajo justo cuando la persona va a tocarlos. El hueco mide el
+          banner de campaña, que es el que se pinta si hemos llegado a esperar.
+        */}
+        {esperandoPromo && <Hueco alto={64} radio={16} margenAbajo={20} />}
+
         {aplicaPromo && promo?.banner_checkout && (
           <div style={{
             background: 'linear-gradient(135deg, rgba(16,185,129,0.14), rgba(16,185,129,0.06))',
@@ -320,7 +341,7 @@ function PlanesContent() {
         )}
 
         {/* Banner trial */}
-        {!aplicaPromo && !deviceHadTrial && (
+        {!aplicaPromo && !deviceHadTrial && !esperandoPromo && (
           <div style={{
             background: 'linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.06))',
             border: '1.5px solid rgba(251,191,36,0.4)',
@@ -380,7 +401,21 @@ function PlanesContent() {
             </div>
           )}
 
-          {leyenda ? (
+          {esperandoPromo ? (
+            /*
+              🔴 El hueco mide la variante CON promo, la más alta: la fila de
+              precio (40px a lineHeight 1, con el tachado alineado abajo → 46
+              contando su margen) más 10px y la línea de "después" (14px a
+              ~1.4 → 20). Con `marginBottom: 20` y el mismo `marginTop`
+              condicional que las dos variantes reales, para que el badge de
+              ciclo de arriba no descuadre nada.
+            */
+            <div style={{ marginBottom: 20, marginTop: cycle !== 'mensual' ? 16 : 0 }}>
+              <Hueco alto={46} ancho={230} radio={10} />
+              <div style={{ height: 10 }} />
+              <Hueco alto={20} ancho={180} radio={6} />
+            </div>
+          ) : leyenda ? (
             /*
               REGLA C — lista tachada, precio del primer cargo y lo que se
               cobra después. Reemplaza al bloque de precio normal completo: no
@@ -453,7 +488,19 @@ function PlanesContent() {
             </>
           )}
 
-          {/* CTA */}
+          {/*
+            🔴 El hueco del CTA copia width 100%, minHeight 56 y borderRadius
+            14 del botón real: reemplazo sin un píxel de diferencia. Lo que
+            cambia es la etiqueta —"Probar 7 días gratis" vs el cta_label de la
+            campaña— y esa es la promesa que no puede reescribirse a la vista.
+          */}
+          {esperandoPromo ? (
+            <>
+              <Hueco alto={56} radio={14} margenAbajo={12} />
+              <Hueco alto={18} ancho={240} radio={6} />
+            </>
+          ) : (
+          <>
           <button
             type="button"
             onClick={handleCTA}
@@ -479,6 +526,8 @@ function PlanesContent() {
           }}>
             {sublabelCTA}
           </p>
+          </>
+          )}
         </div>
 
         {/* Disclaimer */}

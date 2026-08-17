@@ -415,9 +415,40 @@ export function microcopyPromo(
   obligatorias: string[]
 ): string {
   const base = (sublabel ?? '').trim()
-  const enMinusculas = base.toLowerCase()
 
-  const faltantes = obligatorias.filter((f) => !enMinusculas.includes(f.toLowerCase()))
+  /**
+   * 🔴 SE TRABAJA POR SEGMENTOS, NO POR SUBCADENAS.
+   *
+   * Antes la comprobación era `base.toLowerCase().includes(frase)`. Con un
+   * sublabel capturado desde /admin como
+   *   "Tus primeros 7 días son gratis.Cancela cuando quieras"
+   * esa frase SÍ aparece como subcadena, así que se daba por puesta y no se
+   * añadía nada — dejando el texto pegado en pantalla:
+   *   "…son gratis.Cancela cuando quieras · Sin cobro hasta el día 8"
+   *
+   * Al partir por el separador y despegar la frase obligatoria del segmento
+   * que la trae incrustada, la promesa queda como un segmento propio y el
+   * `join` le pone su ` · ` como a cualquier otro. El arreglo vive aquí y no
+   * en la fila: cualquier campaña futura capturada con el mismo descuido sale
+   * bien formada sin tener que editarla.
+   */
+  const segmentos = obligatorias.reduce<string[]>(
+    (acc, frase) =>
+      acc.flatMap((seg) => {
+        const i = seg.toLowerCase().indexOf(frase.toLowerCase())
+        // i < 0: no está. i === 0: ya es el segmento entero, nada que partir.
+        if (i <= 0) return [seg]
+        return [seg.slice(0, i).trim(), seg.slice(i).trim()].filter(Boolean)
+      }),
+    base
+      .split('·')
+      .map((s) => s.trim())
+      .filter(Boolean)
+  )
 
-  return [base, ...faltantes].filter(Boolean).join(' · ')
+  const faltantes = obligatorias.filter(
+    (f) => !segmentos.some((s) => s.toLowerCase() === f.toLowerCase())
+  )
+
+  return [...segmentos, ...faltantes].join(' · ')
 }
