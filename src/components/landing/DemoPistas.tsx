@@ -66,8 +66,19 @@ export default function DemoPistas({ onIntento }: { onIntento?: () => void }) {
         Pruébalo aquí
       </p>
 
+      {/*
+        🔴 SOLO CAMBIÓ EL CONTEXTO NARRATIVO: era "un cofre de Minecraft" y la
+        landing es material promocional público, donde citar la marca es uso
+        comercial ajeno.
+
+        Los números NO se tocaron —3 ranuras, 27 bloques, 15 sacados, 66 de
+        respuesta— y las tres PISTAS quedaron intactas palabra por palabra,
+        porque ninguna nombraba la marca. "Inventario", "ranuras" y "bloques"
+        son vocabulario genérico de videojuegos, no marca registrada, y
+        conservan el mismo referente mental sin apropiarse de nada.
+      */}
       <p style={{ fontSize: 16, color: COLORS.text, lineHeight: 1.6, margin: '0 0 18px', fontWeight: 600 }}>
-        Un cofre de Minecraft tiene 3 ranuras llenas y cada una guarda 27 bloques.
+        En tu inventario tienes 3 ranuras llenas y cada una guarda 27 bloques.
         Si sacas 15 bloques, ¿cuántos quedan?
       </p>
 

@@ -41,7 +41,7 @@ const HERO_VARIANTS = {
   PAPA: {
     id: 'PAPA',
     h1: 'Tu hijo no es flojo.\nLa escuela no le habla en su idioma.',
-    sub: 'Pasas.mx explica cada materia con lo que ya le gusta: Minecraft, anime, K-pop o fútbol. Deja de pelear por las tareas.',
+    sub: 'Pasas.mx explica cada materia con lo que ya le gusta: videojuegos, anime, K-pop o fútbol. Deja de pelear por las tareas.',
     cta: 'Prueba 7 días gratis →',
     micro: '7 días gratis · Sin contrato · Cancela cuando quieras.',
   },
@@ -84,11 +84,28 @@ const MINIJUEGOS = [
   { emoji: '🎧', title: 'Escúchalo',        desc: 'Todo tiene audio. Estúdialo en el camión si quieres.',                        dato: '4,070 audios' },
 ]
 
+/**
+ * 🔴 SIN MARCAS DE TERCEROS. La landing es material promocional público: citar
+ * Minecraft, BTS o la Premier League aquí es uso comercial de marca ajena, y
+ * hay una solicitud de marca propia en curso ante el IMPI. Las categorías
+ * genéricas dicen lo mismo sin apropiarse de nada.
+ *
+ * 🔴 Y NADA DE MATERIAS QUE NO EXISTEN. La versión anterior prometía
+ * "Programación con Roblox" y no hay materia de programación en el temario.
+ * Es la promesa vacía que se cerró en s26: si mañana existe, se anuncia
+ * entonces.
+ *
+ * El emoji del anime pasa de ⚔️ a 🌸 con el copy nuevo.
+ *
+ * Esto NO afecta al contenido de la plataforma: los topics y themes de la base
+ * siguen igual, y ahí las referencias son contenido editorial, no reclamo
+ * publicitario.
+ */
 const THEMES = [
-  { emoji: '🎮', name: 'Videojuegos', color: COLORS.primary, desc: 'Mate con Minecraft. Física con Free Fire. Programación con Roblox. Si ya le metes horas, que cuenten para algo.' },
-  { emoji: '🎤', name: 'K-pop', color: COLORS.pink, desc: 'Historia, geografía e inglés con BTS, Stray Kids y NewJeans. Aprende coreano de paso, sin querer queriendo.' },
-  { emoji: '⚔️', name: 'Anime', color: COLORS.cyan, desc: 'Filosofía con Death Note. Historia con Demon Slayer. Biología con Cells at Work. Sí, es real.' },
-  { emoji: '⚽', name: 'Fútbol', color: COLORS.success, desc: 'Estadística con la Liga MX. Geografía con el Mundial. Inglés con Premier League. Para los que sí ven los 90 minutos.' },
+  { emoji: '🎮', name: 'Videojuegos', color: COLORS.primary, desc: 'Matemáticas con mundos de bloques. Física con battle royale. Si le metes horas, que cuenten.' },
+  { emoji: '🎤', name: 'K-pop', color: COLORS.pink, desc: 'Historia, geografía e inglés con los grupos que te sabes de memoria. El coreano se te pega de paso.' },
+  { emoji: '🌸', name: 'Anime', color: COLORS.cyan, desc: 'Filosofía con thrillers psicológicos. Historia japonesa con espadas. Biología con células que hablan. Sí, es real.' },
+  { emoji: '⚽', name: 'Fútbol', color: COLORS.success, desc: 'Estadística con la liga que sigues. Geografía con el Mundial. Inglés con las ligas de allá. Para los que sí ven los 90 minutos.' },
 ]
 
 /**
@@ -128,7 +145,7 @@ const THEME_TABS = [
 const TUTORIAL_STANDARD = [
   { emoji: '🎮', step: '01', title: 'Elige tu temática', desc: 'Una sola: Videojuegos, K-pop, Anime o Fútbol. Todo tu contenido se genera dentro de ese mundo.' },
   { emoji: '📚', step: '02', title: 'Elige tu grado', desc: 'Secundaria o prepa, el grado que cursas. El temario completo de todas tus materias te espera.' },
-  { emoji: '⚡', step: '03', title: 'Aprende con lo que ya te gusta', desc: 'Cada lección, ejemplo y quiz usa tu temática. Matemáticas con Minecraft. Historia con Anime. Siempre.' },
+  { emoji: '⚡', step: '03', title: 'Aprende con lo que ya te gusta', desc: 'Cada lección, ejemplo y quiz usa tu temática. Matemáticas con videojuegos. Historia con anime. Siempre.' },
   { emoji: '🏆', step: '04', title: 'Sube de nivel', desc: 'Gana XP, mantén tu racha diaria y desbloquea contenido. El progreso se siente porque se ve.' },
 ]
 
@@ -430,8 +447,12 @@ export default function LandingClient() {
     label: 'Ya lo probaste. Entra gratis →',
     sublabel: '7 días gratis · Cancela cuando quieras',
   })
+  // La etiqueta era "Así se va a ver tu cuenta. Empieza gratis →". Ese "así"
+  // apuntaba a las capturas de arriba, que están apagadas tras
+  // ENABLE_LANDING_SCREENSHOTS: sin ellas señalaba a nada. La nueva se sostiene
+  // sola y sirve igual cuando las capturas vuelvan.
   const ctaPostCapturas = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
-    label: 'Así se va a ver tu cuenta. Empieza gratis →',
+    label: 'Empieza gratis →',
     sublabel: '7 días gratis · Cancela cuando quieras',
   })
 
@@ -672,7 +693,13 @@ export default function LandingClient() {
         </section>
       </FadeSection>
 
-      {/* ── ASÍ SE VE POR DENTRO ── */}
+      {/* ── ASÍ SE VE POR DENTRO ──
+          Apagado por ENABLE_LANDING_SCREENSHOTS (ver src/lib/feature-flags.ts):
+          las capturas traen marcas de terceros quemadas dentro del PNG. El
+          bloque entero —rótulo, título, bajada, pestañas y carrusel— vive
+          dentro de este condicional, así que al apagarlo no queda ningún
+          título huérfano. */}
+      {FEATURE_FLAGS.ENABLE_LANDING_SCREENSHOTS && (
       <FadeSection>
         <section style={{ padding: '72px 0', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8, padding: '0 24px' }}>Vista previa</p>
@@ -768,12 +795,25 @@ export default function LandingClient() {
           `}</style>
         </section>
       </FadeSection>
+      )}
 
-      {/* Ya vio capturas reales de la plataforma: sabe exactamente qué compra. */}
       <FadeSection>
         <CTAIntermedio
           texto={ctaPostCapturas.label}
           microcopy={microcopyPromo(ctaPostCapturas.sublabel, ['Cancela cuando quieras'])}
+          /*
+            🔴 `location` se conserva aunque el nombre ya no describa el sitio:
+            cortar la serie de PostHog cuesta más que la incoherencia.
+
+            DESDE AGOSTO 2026 ESTE CTA NO VA DESPUÉS DE LAS CAPTURAS. El bloque
+            "Así se ve por dentro" está apagado tras
+            ENABLE_LANDING_SCREENSHOTS, así que ahora cae justo después de las
+            cuatro temáticas ("Escoge tu mundo"). Quien compare la conversión
+            de `post_capturas` antes y después de esa fecha está comparando dos
+            posiciones distintas del embudo, con un argumento previo distinto
+            —temáticas en vez de capturas de producto—. No es el mismo CTA con
+            otro copy: es otro momento de la página.
+          */
           location="post_capturas"
           esperando={esperandoPromo}
           href={destinoOnboarding}
@@ -1071,7 +1111,7 @@ export default function LandingClient() {
               <EtiquetaCTA esperando={esperandoPromo} ancho={200}>{ctaFinal.label}</EtiquetaCTA>
             </Link>
             <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.6 }}>
-              Tarda menos que escoger qué ver en Netflix.
+              Tarda menos que escoger qué ver en la tele.
             </p>
             {/* REGLA C — con promo esta línea es precio, y los tres datos van
                 juntos. La promesa del trial pasa a la línea de abajo, que es

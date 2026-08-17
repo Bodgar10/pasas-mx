@@ -19,10 +19,10 @@ const PRECIO_DESDE = `Desde $${PLAN_DISPLAY.estandar_v2.prices.mensual.amount}/m
 
 export const metadata: Metadata = {
   title: 'Pasas.mx — Estudia sin estudiar',
-  description: `Guías de estudio gamificadas para estudiantes mexicanos. Aprende Matemáticas con Minecraft, Historia con Anime, Química con K-pop. ${PRECIO_DESDE}.`,
+  description: `Guías de estudio gamificadas para estudiantes mexicanos. Aprende Matemáticas con videojuegos, Historia con anime, Química con K-pop. ${PRECIO_DESDE}.`,
   openGraph: {
     title: 'Pasas.mx — Estudia sin estudiar',
-    description: `Aprende con lo que ya te gusta. Matemáticas con Minecraft. Historia con Anime. ${PRECIO_DESDE}.`,
+    description: `Aprende con lo que ya te gusta. Matemáticas con videojuegos. Historia con anime. ${PRECIO_DESDE}.`,
     url: 'https://pasas.mx',
     siteName: 'Pasas.mx',
     locale: 'es_MX',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Pasas.mx — Estudia sin estudiar',
-    description: `Aprende con lo que ya te gusta. Matemáticas con Minecraft. Historia con Anime. ${PRECIO_DESDE}.`,
+    description: `Aprende con lo que ya te gusta. Matemáticas con videojuegos. Historia con anime. ${PRECIO_DESDE}.`,
   },
 }
 

@@ -1,42 +1,22 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { unstable_cache } from 'next/cache'
-import { createClient } from '@supabase/supabase-js'
+import { esGrado, esNivel, leerStats, type Nivel } from '@/lib/preview-stats'
 
 /**
+ * GET /api/preview-stats?nivel=middle_school&grado=2
+ * ---------------------------------------------------------------------------
  * Conteos para /onboarding/preview.
  *
- * Corre con service role porque `horde_questions` no tiene RLS para `anon`
- * —protección anti-trampa, no se toca— y la función `preview_stats` tiene
- * EXECUTE revocado a `anon`. El cliente nunca habla con la base.
+ * 🔴 EL CONTRATO NO CAMBIÓ: misma URL, mismos parámetros, mismos códigos y
+ * mismo cuerpo de respuesta. Lo único que se movió es de dónde salen los
+ * números — ahora de @/lib/preview-stats, que la página también usa desde el
+ * servidor sin pasar por aquí.
+ *
+ * Se conserva aunque la página ya no lo llame: puede haber algo más que sí.
  *
  * Solo devuelve números. Ningún contenido, ninguna pregunta, ningún nombre de
  * tema. Si alguien llama este endpoint a mano, lo peor que obtiene es saber
  * cuántos ejercicios hay.
  */
-
-const NIVELES = ['middle_school', 'high_school'] as const
-type Nivel = (typeof NIVELES)[number]
-
-const leerStats = unstable_cache(
-  async (nivel: Nivel, grado: number) => {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    )
-
-    const { data, error } = await supabase
-      .rpc('preview_stats', { p_nivel: nivel, p_grado: grado })
-      .single()
-
-    if (error) {
-      console.error('[preview-stats] RPC falló:', error)
-      return null
-    }
-    return data
-  },
-  ['preview-stats'],
-  { revalidate: 3600, tags: ['preview-stats'] }
-)
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -45,10 +25,10 @@ export async function GET(request: NextRequest) {
 
   // Validación estricta: solo dos niveles y tres grados existen.
   // Sin esto, cualquiera podría sondear la función con valores arbitrarios.
-  if (!NIVELES.includes(nivelRaw as Nivel)) {
+  if (!esNivel(nivelRaw)) {
     return NextResponse.json({ error: 'nivel inválido' }, { status: 400 })
   }
-  if (![1, 2, 3].includes(gradoRaw)) {
+  if (!esGrado(gradoRaw)) {
     return NextResponse.json({ error: 'grado inválido' }, { status: 400 })
   }
 

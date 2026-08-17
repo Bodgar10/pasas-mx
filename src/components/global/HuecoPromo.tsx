@@ -1,7 +1,9 @@
 'use client'
 
 /**
- * El hueco que ocupa un precio o un CTA mientras se sabe si hay campaña.
+ * El hueco que ocupa un contenido que todavía no se puede pintar: un precio o
+ * un CTA mientras se sabe si hay campaña, o el bloque de conteos de
+ * /onboarding/preview mientras llegan los números.
  *
  * 🔴 SU ÚNICO TRABAJO ES MEDIR LO MISMO QUE EL CONTENIDO FINAL. Si mide
  * distinto, el flash de copy se cambia por un salto de layout y no se arregló
