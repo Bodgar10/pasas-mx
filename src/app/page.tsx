@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LandingClient from './landing-client'
+import { leerLandingStats, type LandingStats } from '@/lib/landing-stats'
 import { detectAudience } from '@/lib/audience-detection'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 
@@ -35,10 +36,42 @@ export const metadata: Metadata = {
   },
 }
 
-export default function LandingPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ utm_source?: string }>
-}) {
-  return <LandingClient />
+/**
+ * 🔴 ISR, NO RENDER POR VISITA. La landing es la página más visitada del sitio
+ * y hasta ahora era estática pura. Volverla dinámica habría hecho que TODO
+ * visitante pagara el render —~250ms de RPC— solo para que nueve cifras
+ * estuvieran frescas. Con `revalidate` sigue siendo HTML estático servido
+ * desde CDN, y Next la regenera en segundo plano como mucho una vez por hora.
+ *
+ * 3600 y no menos porque estas cifras solo se mueven al generar contenido, que
+ * es cosa de días, no de minutos. El mismo TTL que el unstable_cache de
+ * leerLandingStats: las dos capas caducan juntas y no hay una sirviendo algo
+ * más viejo que la otra.
+ */
+export const revalidate = 3600
+
+/**
+ * Valores de reserva si la lectura falla.
+ *
+ * 🔴 Son los ÚLTIMOS MEDIDOS (17 ago 2026), no ceros ni inventos: una landing
+ * que dice "0 ejercicios" vende peor que una con cifras de la semana pasada.
+ * Solo se usan si `landing_stats()` no responde durante una regeneración; el
+ * error queda en los logs de leerLandingStats.
+ */
+const STATS_RESERVA: LandingStats = {
+  materias: 65,
+  temas: 579,
+  horda_temas: 579,
+  horda_preguntas: 17370,
+  papel_lapiz: 2040,
+  audios: 6234,
+  memoramas: 1436,
+  simuladores: 1073,
+  secuencias: 2051,
+  clasificaciones: 2328,
+}
+
+export default async function LandingPage() {
+  const stats = (await leerLandingStats()) ?? STATS_RESERVA
+  return <LandingClient stats={stats} />
 }

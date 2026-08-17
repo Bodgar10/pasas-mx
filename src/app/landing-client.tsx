@@ -12,6 +12,7 @@ import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { usePromo } from '@/hooks/usePromo'
 import { conPromo, copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
 import { useEsperandoPromo } from '@/hooks/useEsperandoPromo'
+import type { LandingStats } from '@/lib/landing-stats'
 import { Hueco } from '@/components/global/HuecoPromo'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
@@ -75,14 +76,28 @@ function useInView(threshold = 0.15) {
 }
 
 // ── Data ───────────────────────────────────────────────────────────
-// Conteos reales de la base, medidos el 4 ago 2026. NO inventar cifras aquí.
-const MINIJUEGOS = [
-  { emoji: '🃏', title: 'Memorama',        desc: 'Empareja la regla con su caso. Suena fácil hasta que lo intentas.',           dato: '1,436 partidas' },
-  { emoji: '🎚️', title: 'Mueve la barrita', desc: 'Cambia un valor y mira cómo se mueve todo lo demás. Entiendes antes de que te expliquen.', dato: '1,073 simuladores' },
-  { emoji: '🧩', title: 'Ordena los pasos', desc: 'Un toque, un paso. El problema completo, en orden.',                          dato: '2,051 secuencias' },
-  { emoji: '🔀', title: 'Clasifica',        desc: 'Arrastra cada cosa a donde va. Si te equivocas, lo ves al instante.',        dato: '2,328 ejercicios' },
-  { emoji: '🎧', title: 'Escúchalo',        desc: 'Todo tiene audio. Estúdialo en el camión si quieres.',                        dato: '4,070 audios' },
-]
+/**
+ * 🔴 LAS CIFRAS YA NO SE ESCRIBEN AQUÍ. Salen de landing_stats() (migración
+ * 044) y llegan por props desde el server component. Antes decía "medidos el
+ * 4 ago 2026. NO inventar cifras aquí" — y aun así envejecieron: "4,070
+ * audios" contra 6,234 reales, un 35% por debajo en trece días.
+ *
+ * Cada `dato` usa la unidad que la UI del producto numera, que NO es la misma
+ * para todos: memoramas, simuladores, secuencias y clasificaciones se cuentan
+ * por sección porque cada sección ES una de esas cosas; los audios, por
+ * sección con audio. Solo Papel y Lápiz cuenta preguntas, y ese vive más
+ * abajo.
+ */
+function minijuegos(stats: LandingStats) {
+  const n = (v: number) => v.toLocaleString('es-MX')
+  return [
+    { emoji: '🃏', title: 'Memorama',        desc: 'Empareja la regla con su caso. Suena fácil hasta que lo intentas.',           dato: `${n(stats.memoramas)} partidas` },
+    { emoji: '🎚️', title: 'Mueve la barrita', desc: 'Cambia un valor y mira cómo se mueve todo lo demás. Entiendes antes de que te expliquen.', dato: `${n(stats.simuladores)} simuladores` },
+    { emoji: '🧩', title: 'Ordena los pasos', desc: 'Un toque, un paso. El problema completo, en orden.',                          dato: `${n(stats.secuencias)} secuencias` },
+    { emoji: '🔀', title: 'Clasifica',        desc: 'Arrastra cada cosa a donde va. Si te equivocas, lo ves al instante.',        dato: `${n(stats.clasificaciones)} ejercicios` },
+    { emoji: '🎧', title: 'Escúchalo',        desc: 'Todo tiene audio. Estúdialo en el camión si quieres.',                        dato: `${n(stats.audios)} audios` },
+  ]
+}
 
 /**
  * 🔴 SIN MARCAS DE TERCEROS. La landing es material promocional público: citar
@@ -125,6 +140,9 @@ const THEME_TABS = [
     screens: [
       { src: '/screenshots/gaming-dashboard.png',   caption: 'Tu XP, tu racha y tus materias' },
       { src: '/screenshots/gaming-interactivo.png', caption: 'Álgebra explicada con Genshin Impact' },
+      // ⚠️ AL VOLVER LAS CAPTURAS: este caption dice "fallas y salen las
+      // pistas" y describe media mecánica — también se puede pedir pista sin
+      // haber fallado. Reescribir junto con la captura nueva.
       { src: '/screenshots/gaming-pistas.png',      caption: 'Papel y lápiz: fallas y salen las pistas' },
       { src: '/screenshots/gaming-horda.png',       caption: 'Modo Horda: 6 oleadas de preguntas' },
     ],
@@ -317,7 +335,12 @@ function FadeSection({ children, style }: { children: React.ReactNode; style?: R
 }
 
 // ── Main component ─────────────────────────────────────────────────
-export default function LandingClient() {
+/**
+ * `stats` llega del server component (src/app/page.tsx), que lo lee de la base
+ * en build/regeneración. La página es ISR a 3600s: el visitante recibe HTML
+ * estático con las cifras ya dentro, sin pagar ni un fetch.
+ */
+export default function LandingClient({ stats }: { stats: LandingStats }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [variant, setVariant] = useState<VariantKey>('D')
@@ -585,15 +608,50 @@ export default function LandingClient() {
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
             Aquí no te quedas atorado.
           </h2>
+          {/*
+            🔴 Describía SOLO el camino del fallo: "si está mal… te suelta una
+            pista". El producto siempre tuvo un botón para pedirla ANTES de
+            equivocarse, así que el texto —igual que el demo de abajo— vendía
+            de menos y sugería que hay que fallar para recibir ayuda.
+
+            Ninguna pista trae el resultado: la última deja a una operación de
+            distancia. Eso es lo que sostiene el "lo sacas tú" del final, y por
+            eso se dice aquí en vez de dejarlo implícito.
+          */}
           <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 32, lineHeight: 1.6, fontWeight: 600 }}>
-            Escribes tu respuesta. Si está mal, no te dice “incorrecto” y ya:
-            te suelta una pista. ¿Sigues sin salir? Otra. Hasta que lo sacas tú.
+            Escribes tu respuesta. ¿La ves difícil? Pide una pista antes de
+            intentar. ¿Fallaste? Sale otra sola. Ninguna te da el resultado:
+            te dejan a un paso, y ese paso lo das tú.
           </p>
 
           <DemoPistas onIntento={() => track('landing_demo_pistas')} />
 
+          {/*
+            🔴 CIFRAS MEDIDAS CONTRA LA BASE — 17 ago 2026. NO estimar.
+
+            Decía "676 ejercicios así en matemáticas": mal por dos lados. El
+            676 era el conteo de secciones `solve` de TODAS las materias
+            medido meses atrás (hoy 680), y el alcance dejó de ser solo
+            matemáticas cuando se generó física y química.
+
+            🔴 LA UNIDAD ES LA PREGUNTA, NO LA SECCIÓN. Cada sección `solve`
+            trae 3 preguntas y la UI del producto las numera una por una
+            —"Ejercicio 1 de 3"—, así que 680 secciones son 2,040 ejercicios
+            para quien los resuelve. Contar secciones sería medir con la
+            unidad equivocada y vender de menos.
+
+            Sin aclaración sobre temática a propósito: los 2,040 son el
+            catálogo completo y cada alumno los ve todos en la suya. La
+            temática cambia el envoltorio, no el temario.
+
+            ✅ YA NO ESTÁ HARDCODEADO: sale de landing_stats().papel_lapiz.
+            El "hasta 8 pistas" sí se queda fijo — es un tope del formato, no
+            un volumen, y no cambia al generar contenido.
+          */}
           <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
-            676 ejercicios así en matemáticas, con hasta 8 pistas cada uno.
+            {stats.papel_lapiz.toLocaleString('es-MX')} ejercicios así en
+            matemáticas, física y química, de secundaria a prepa. Hasta 8
+            pistas cada uno.
           </p>
         </section>
       </FadeSection>
@@ -619,7 +677,11 @@ export default function LandingClient() {
           <DemoHorda onAvanzar={() => track('landing_demo_horda')} />
 
           <p style={{ textAlign: 'center', fontSize: 13, color: COLORS.muted, marginTop: 14, opacity: 0.7 }}>
-            17,370 preguntas en los 579 temas. Secundaria y prepa completas.
+            {/* Derivado. Las "30 preguntas en 6 oleadas" de arriba NO: son la
+                mecánica del modo, no un volumen. */}
+            {stats.horda_preguntas.toLocaleString('es-MX')} preguntas en los{' '}
+            {stats.horda_temas.toLocaleString('es-MX')} temas. Secundaria y
+            prepa completas.
           </p>
         </section>
       </FadeSection>
@@ -648,10 +710,11 @@ export default function LandingClient() {
             No es leer. Es jugar.
           </h2>
           <p style={{ textAlign: 'center', fontSize: 15, color: COLORS.muted, marginBottom: 40, lineHeight: 1.6, fontWeight: 600 }}>
-            579 temas de secundaria y prepa, cada uno con estos.
+            {stats.temas.toLocaleString('es-MX')} temas de secundaria y prepa,
+            cada uno con estos. Los recorres todos en tu temática.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {MINIJUEGOS.map((j, i) => (
+            {minijuegos(stats).map((j, i) => (
               <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: COLORS.card, borderRadius: RADIUS.xxl, padding: '20px', border: `1px solid ${COLORS.inputBorder}` }}>
                 <div style={{ minWidth: 48, height: 48, borderRadius: RADIUS.xl, background: `${COLORS.primary}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>
                   {j.emoji}
