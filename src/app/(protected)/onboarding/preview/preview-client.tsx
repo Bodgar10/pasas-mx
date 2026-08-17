@@ -8,22 +8,149 @@ import Pasita from '@/components/mascota/Pasita'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { conPromo } from '@/lib/promos'
 
-const THEME_EXAMPLES: Record<string, string> = {
-  Videojuegos: 'Las derivadas explicadas con mecánicas de Minecraft',
-  'K-pop': 'Factorización usando los ensayos de BTS',
-  Fútbol: 'El teorema de Pitágoras con tiros libres de la Liga MX',
-  Anime: 'Ecuaciones lineales con el entrenamiento de Naruto',
+/**
+ * LA FRASE DE "ASÍ APRENDERÍAS" — POR NIVEL, GRADO Y TEMÁTICA
+ * ---------------------------------------------------------------------------
+ * 🔴 ANTES ERA UNA SOLA FRASE POR TEMÁTICA, para las 21 combinaciones. A un
+ * alumno de 1° de secundaria se le prometía "las derivadas" —que son de 3° de
+ * prepa, tres años después— y a uno de 3° de prepa, "ecuaciones lineales", que
+ * son de 1° de secundaria. Ninguna de las cuatro frases era correcta para más
+ * de dos de las ocho casillas de su temática.
+ *
+ * Esta es la última pantalla antes de /planes: un padre que sabe de
+ * matemáticas leía "derivadas" en secundaria y concluía, con razón, que no
+ * conocemos el temario.
+ *
+ * 🔴 CADA FRASE ESTÁ VERIFICADA CONTRA LA BASE. No basta con que el tema sea
+ * del grado correcto: tiene que existir el `topic` de esa materia y ese grado,
+ * Y tener secciones publicadas en las cuatro temáticas. Se midió tema por tema
+ * (9-10 secciones por casilla, sin huecos). Si algún día se propone una frase
+ * nueva, se comprueba igual antes: una promesa concreta sin contenido detrás
+ * es el problema que preview_stats cerró en s26.
+ *
+ * 🔴 SIN MARCAS. Vocabulario genérico, el mismo de la landing: "mundo de
+ * bloques", "battle royale", "tu grupo favorito", "tu liga". Esta pantalla es
+ * pre-registro y accesible sin sesión, así que cuenta como material
+ * promocional.
+ */
+
+type TemaKey = 'videojuegos' | 'kpop' | 'futbol' | 'anime'
+type FrasesPorTema = Record<TemaKey, string>
+
+/**
+ * 🔴 EL MATCH DE TEMÁTICA ES EXPLÍCITO, NO POR SUBCADENA.
+ *
+ * Antes era `Object.keys(...).find((k) => theme.includes(k))`, y funcionaba de
+ * casualidad: en la base las temáticas se llaman "K-pop & K-dramas" y
+ * "Anime & Manga", y el `includes` las capturaba porque el nombre corto es
+ * prefijo del largo. Bastaba con que alguien renombrara una temática desde
+ * admin —"K-Pop", "Anime/Manga", "Fut"— para que la frase cayera al fallback
+ * sin un solo error visible.
+ *
+ * Ahora los alias se declaran a mano y se comparan normalizados (sin
+ * mayúsculas ni espacios de sobra). Lo que no esté aquí es desconocido, y lo
+ * desconocido va a la frase genérica — nunca a una promesa equivocada.
+ */
+const ALIAS_TEMA: Record<string, TemaKey> = {
+  'videojuegos': 'videojuegos',
+  'k-pop & k-dramas': 'kpop',
+  'k-pop': 'kpop',
+  'kpop': 'kpop',
+  'fútbol': 'futbol',
+  'futbol': 'futbol',
+  'anime & manga': 'anime',
+  'anime': 'anime',
 }
 
-function getExampleTitle(theme: string): string {
-  const key = Object.keys(THEME_EXAMPLES).find((k) => theme.includes(k))
-  return key ? THEME_EXAMPLES[key]! : `Aprende con ejemplos de ${theme}`
+function temaCanonico(theme: string): TemaKey | null {
+  return ALIAS_TEMA[theme.trim().toLowerCase()] ?? null
 }
 
-function getSubject(level: string): string {
-  if (level === 'Examen de Preparatoria') return 'Matemáticas COMIPEMS'
-  if (level === 'Examen de Universidad') return 'Cálculo'
-  return 'Matemáticas'
+/** Claves de nivel: las etiquetas que manda el onboarding, tal cual. */
+const EJEMPLOS: Record<string, Record<string, FrasesPorTema>> = {
+  Secundaria: {
+    // Ecuaciones lineales — Matemáticas 1°
+    '1°': {
+      videojuegos: 'Ecuaciones lineales con la economía de un mundo de bloques',
+      kpop:        'Ecuaciones lineales con los horarios de ensayo de tu grupo favorito',
+      futbol:      'Ecuaciones lineales con las estadísticas de tu equipo',
+      anime:       'Ecuaciones lineales con el entrenamiento de tu personaje favorito',
+    },
+    // Sistemas de dos ecuaciones — Matemáticas 2°
+    '2°': {
+      videojuegos: 'Sistemas de dos ecuaciones con el crafteo de un mundo de bloques',
+      kpop:        'Sistemas de dos ecuaciones con la gira de tu grupo favorito',
+      futbol:      'Sistemas de dos ecuaciones con los fichajes de tu liga',
+      anime:       'Sistemas de dos ecuaciones con los arcos de tu serie favorita',
+    },
+    // Teorema de Pitágoras — Matemáticas 3°
+    '3°': {
+      videojuegos: 'El teorema de Pitágoras con las diagonales de un mundo de bloques',
+      kpop:        'El teorema de Pitágoras con la coreografía en el escenario',
+      futbol:      'El teorema de Pitágoras con los tiros libres de tu liga',
+      anime:       'El teorema de Pitágoras con los cortes de espada de tu serie favorita',
+    },
+  },
+  'Preparatoria / Bachillerato': {
+    // Factorización — Matemáticas I (Álgebra)
+    '1°': {
+      videojuegos: 'Factorización con el inventario de un battle royale',
+      kpop:        'Factorización con los ensayos de tu grupo favorito',
+      futbol:      'Factorización con las tablas de posiciones de tu liga',
+      anime:       'Factorización con los poderes de tu personaje favorito',
+    },
+    // Funciones cuadráticas — Matemáticas IV (Funciones)
+    '2°': {
+      videojuegos: 'Funciones cuadráticas con la trayectoria de un proyectil en el juego',
+      kpop:        'Funciones cuadráticas con las ventas de un álbum semana a semana',
+      futbol:      'Funciones cuadráticas con la parábola de un tiro libre',
+      anime:       'Funciones cuadráticas con el salto de tu personaje favorito',
+    },
+    // La derivada: definición e interpretación — Cálculo Diferencial.
+    // La ÚNICA casilla donde "derivadas" es honesto.
+    '3°': {
+      videojuegos: 'Las derivadas explicadas con las mecánicas de un mundo de bloques',
+      kpop:        'Las derivadas con la curva de streams de un lanzamiento',
+      futbol:      'Las derivadas con la aceleración en un contragolpe',
+      anime:       'Las derivadas con la velocidad de un combate',
+    },
+  },
+}
+
+/**
+ * 🔴 FRASES DE RESERVA. No nombran ningún tema.
+ *
+ * Los niveles de examen entran SIN grado (needsGrade: false en el onboarding),
+ * así que no hay casilla que resolver; y sus materias —"Matemáticas COMIPEMS",
+ * "Cálculo"— no existen como `subjects` en la base. Es la única combinación
+ * sin respaldo, y ahí se prefiere no prometer nada concreto.
+ *
+ * El default cubre lo que todavía no existe: un grado nuevo, un nivel nuevo o
+ * una temática que alguien dé de alta desde admin. Agregar una temática NO
+ * puede romper esta pantalla ni producir una promesa falsa.
+ */
+const GENERICA_POR_NIVEL: Record<string, string> = {
+  'Examen de Preparatoria': 'Repaso de matemáticas para tu examen, con la temática que elegiste.',
+  'Examen de Universidad':  'Repaso de matemáticas para tu examen, con la temática que elegiste.',
+}
+const GENERICA_DEFAULT = 'Todo el temario de tu grado, con la temática que elegiste.'
+
+function frasePorDefecto(level: string): string {
+  return GENERICA_POR_NIVEL[level] ?? GENERICA_DEFAULT
+}
+
+/**
+ * La frase de la tarjeta. Cae a la genérica —nunca revienta, nunca inventa—
+ * si falta el nivel, el grado o la temática, o si alguno no está en la tabla.
+ */
+function getExampleTitle(level: string, grade: string | null, theme: string): string {
+  const tema = temaCanonico(theme)
+  if (!tema) return frasePorDefecto(level)
+
+  const porGrado = EJEMPLOS[level]?.[grade ?? '']
+  if (!porGrado) return frasePorDefecto(level)
+
+  return porGrado[tema] ?? frasePorDefecto(level)
 }
 
 /**
@@ -48,8 +175,7 @@ function PreviewContent({ bloqueStats }: { bloqueStats: React.ReactNode }) {
   const theme = searchParams.get('theme') ?? ''
   const esTutor = searchParams.get('registrante') === 'tutor'
 
-  const exampleTitle = getExampleTitle(theme)
-  const subject = getSubject(level)
+  const exampleTitle = getExampleTitle(level, grade, theme)
 
   const personalizedParams = new URLSearchParams({ level })
   if (grade) personalizedParams.set('grade', grade)
@@ -265,7 +391,21 @@ function PreviewContent({ bloqueStats }: { bloqueStats: React.ReactNode }) {
                 cursor: 'pointer',
               }}
             >
-              Quiero guías solo de {subject} →
+              {/*
+                🔴 Antes decía "Quiero guías solo de {subject} →", con subject
+                salido de getSubject(): 'Matemáticas COMIPEMS' o 'Cálculo' en
+                los niveles de examen. Ninguna de las dos existe como materia
+                en la base —las de prepa son "Cálculo Diferencial" y "Cálculo
+                Integral", y no hay nada llamado COMIPEMS—, así que el botón
+                nombraba un destino inexistente.
+
+                No se cambió por el nombre real de la base porque no hay UNO:
+                depende del grado, y en los niveles de examen no hay ninguno
+                que corresponda. Además el destino es /personalizado/materia,
+                que es precisamente el SELECTOR de materia: nombrarla aquí
+                adelanta una elección que el usuario todavía no ha hecho.
+              */}
+              Quiero guías de una sola materia →
             </button>
             <p style={{ fontSize: 14, color: '#a78bfa', textAlign: 'center', margin: '6px 0 0' }}>
               Una sola materia, adaptada exactamente a lo que {esTutor ? 'le' : 'te'} falla · Desde ${PLAN_DISPLAY.personalizado_v2.prices.mensual.amount}/mes
