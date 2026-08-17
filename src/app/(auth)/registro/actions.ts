@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase/server'
 import { buildAcquisitionSource } from '@/lib/audience-detection'
 import { parseConsent } from '@/lib/legal'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
-import { STRIPE_PRICES } from '@/lib/payments/config'
+import { CHECKOUT_CONFIG, STRIPE_PRICES } from '@/lib/payments/config'
 import { upsertPrimaryLearner } from '@/lib/learners'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import {
@@ -354,6 +354,13 @@ export async function registroAction(
         const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY!)
         const session = await stripeClient.checkout.sessions.create({
           mode: 'subscription',
+          // 🔴 El idioma sale de CHECKOUT_CONFIG, no de un literal. Esta puerta
+          // todavía tiene `mode`, las URLs y el trial escritos a mano —migrarla
+          // entera es otro trabajo—, pero el locale NO: si estuviera repetido
+          // aquí, un cambio de idioma dejaría el alta de tráfico frío en un
+          // idioma y el checkout desde /planes en otro, y nadie lo notaría
+          // hasta ver una captura de un usuario.
+          locale: CHECKOUT_CONFIG.locale,
           line_items: [{ price: priceId, quantity: 1 }],
           customer_email: email,
           success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?checkout=success`,

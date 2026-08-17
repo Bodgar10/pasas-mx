@@ -1,3 +1,5 @@
+import type Stripe from 'stripe'
+
 /**
  * PAYMENTS CONFIG
  * ---------------
@@ -121,11 +123,40 @@ export const PLAN_DISPLAY = {
 // URLs and settings used when creating Stripe Checkout sessions.
 // Change SUCCESS_PATH and CANCEL_PATH per project as needed.
 // ---------------------------------------------------------------------------
+/**
+ * Idioma de la caja de Stripe.
+ *
+ * 🔴 Sin esto Stripe usa `locale: 'auto'`, que detecta el idioma del NAVEGADOR
+ * y no el del negocio: un teléfono configurado en inglés —común en México—
+ * abría el checkout en inglés justo en la pantalla donde se mete la tarjeta.
+ *
+ * 'es-419' y no 'es': el primero es el español de Latinoamérica y el segundo
+ * el peninsular. Los dos existen en la unión de locales del SDK, así que la
+ * elección es de producto, no técnica.
+ *
+ * Tipado contra el SDK a propósito: un valor inventado revienta AQUÍ, en la
+ * definición, y no en las dos puertas que lo consumen. El `import type` se
+ * borra al compilar, así que no arrastra el SDK de Stripe al bundle del
+ * navegador — este archivo lo importan landing-client, /planes y /bienvenida,
+ * que son 'use client'.
+ *
+ * 🔴 Es acceso indexado y NO `Stripe.Checkout.SessionCreateParams.Locale`. En
+ * este SDK `Checkout.SessionCreateParams` se re-exporta como alias de tipo, no
+ * como namespace, así que la unión anidada no es alcanzable por esa ruta:
+ * `tsc` responde "has no exported member named 'SessionCreateParams'". El
+ * indexado sobre la propiedad llega igual y además sigue al SDK si algún día
+ * cambia de sitio.
+ */
+type LocaleCheckout = NonNullable<Stripe.Checkout.SessionCreateParams['locale']>
+
+const LOCALE_CHECKOUT: LocaleCheckout = 'es-419'
+
 export const CHECKOUT_CONFIG = {
   successPath: '/dashboard?checkout=success',
   cancelPath:  '/planes',
   paymentMethods: ['card'] as const,
   mode: 'subscription' as const,
+  locale: LOCALE_CHECKOUT,
 }
 
 // ---------------------------------------------------------------------------

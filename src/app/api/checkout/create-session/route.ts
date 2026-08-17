@@ -129,6 +129,10 @@ export async function POST(request: Request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: CHECKOUT_CONFIG.mode,
+      // Sin esto Stripe cae en 'auto' y sigue al idioma del navegador, no al
+      // del negocio. Sale de CHECKOUT_CONFIG para que la otra puerta —el alta
+      // en registro/actions.ts— no pueda quedarse en otro idioma.
+      locale: CHECKOUT_CONFIG.locale,
       payment_method_types: [...CHECKOUT_CONFIG.paymentMethods],
       line_items: [{ price: priceId, quantity: 1 }],
       customer_email: profile?.email ?? user.email,
