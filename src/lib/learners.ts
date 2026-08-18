@@ -153,6 +153,32 @@ export async function getLearnerBySlot(
   return data
 }
 
+/** Lo minimo que hace falta para decidir si un alumno sigue teniendo acceso. */
+export type AccesoLearner = {
+  status: string
+  access_until: string | null
+}
+
+/**
+ * ¿Este alumno todavia puede estudiar?
+ *
+ * 🔴 Es la MISMA regla que aplica `getAccountLearners` mas abajo, escrita
+ * aparte porque el admin la necesita sobre filas que NO vienen de esa
+ * funcion (las trae en bloque, de todas las cuentas). Si una cambia,
+ * cambian las DOS o el panel y el selector del alumno dejan de contar lo
+ * mismo — y esa discrepancia no da error, solo dos numeros distintos.
+ *
+ * 'ending' cuenta como vigente hasta `access_until`: un alumno dado de
+ * baja conserva el acceso que ya pago. Cualquier otro status es false.
+ */
+export function tieneAccesoVigente(l: AccesoLearner): boolean {
+  if (l.status === 'active') return true
+  if (l.status === 'ending' && l.access_until) {
+    return new Date(l.access_until).getTime() > Date.now()
+  }
+  return false
+}
+
 /**
  * Alumnos de una cuenta que tienen acceso vigente, ordenados por slot.
  *

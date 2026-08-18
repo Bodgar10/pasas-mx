@@ -2,20 +2,39 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { tieneAccesoVigente } from '@/lib/learners'
 
 type Period = '24h' | '30d' | '3m' | '6m'
 
+/**
+ * La CUENTA. Ya no trae nada del alumno: `education_level`, `grade`,
+ * `xp_total` y `streak_days` quedaron legacy en la migracion 035 y ahora
+ * viven en `learners`. Las tres ultimas ni siquiera se usaban aqui —
+ * viajaban por la red en cada carga para nada.
+ */
 interface User {
   id: string
   email: string
   created_at: string
   onboarding_done: boolean
-  education_level: string
-  grade: number
-  interests: string[]
+  is_test: boolean
+}
+
+/** El ALUMNO. Una cuenta puede tener varios. */
+interface Learner {
+  id: string
+  account_user_id: string
+  slot: number
+  display_name: string
+  is_primary: boolean
+  education_level: string | null
+  grade: number | null
+  theme_id: string | null
   xp_total: number
   streak_days: number
   last_active_at: string | null
+  status: string
+  access_until: string | null
 }
 
 interface Subscription {
@@ -27,10 +46,12 @@ interface Subscription {
   current_period_end: string
   cancelled_at: string | null
   created_at: string
+  is_test: boolean
 }
 
 interface TopicProgress {
   user_id: string
+  learner_id: string | null
   topic_id: string
   status: string
   best_score: number
@@ -40,6 +61,7 @@ interface TopicProgress {
 
 interface ProgressEvent {
   user_id: string
+  learner_id: string | null
   event_type: string
   xp_earned: number
   created_at: string
@@ -60,6 +82,7 @@ interface Subject {
 
 interface UserSubject {
   user_id: string
+  learner_id: string | null
   subject_id: string
   theme_id: string
   plan_type: string
@@ -68,13 +91,14 @@ interface UserSubject {
 
 interface Props {
   allUsers: User[]
+  allLearners: Learner[]
   allSubscriptions: Subscription[]
   topicProgressData: TopicProgress[]
   progressEvents: ProgressEvent[]
   allTopics: Topic[]
   allSubjects: Subject[]
   userSubjects: UserSubject[]
-  timestamps: { last24h: string; last30d: string; last3m: string; last6m: string }
+  timestamps: { last24h: string; last7d: string; last30d: string; last3m: string; last6m: string }
 }
 
 const PERIOD_LABELS: Record<Period, string> = {
@@ -82,6 +106,26 @@ const PERIOD_LABELS: Record<Period, string> = {
   '30d': 'Este mes',
   '3m': 'Este trimestre',
   '6m': 'Este semestre',
+}
+
+/**
+ * Clave sentinela para los alumnos sin nivel.
+ *
+ * `learners.education_level` es nullable y hay altas que se quedan a medias,
+ * asi que omitirlos de la grafica haria que los porcentajes no sumaran 100 y
+ * que nadie se enterara de que existen. Salen con etiqueta propia y al final.
+ */
+const SIN_NIVEL = '__sin_nivel__'
+
+/**
+ * El enum `education_level` tiene EXACTAMENTE dos valores
+ * (001_initial_schema.sql:49). `exam_prepa` y `exam_uni` no son valores que
+ * no se usen: son inalcanzables, la base los rechaza. No volver a ponerlos.
+ */
+const LEVEL_LABELS: Record<string, string> = {
+  middle_school: '📚 Secundaria',
+  high_school: '🎓 Preparatoria',
+  [SIN_NIVEL]: '⚠️ Sin nivel',
 }
 
 const THEME_NAMES: Record<string, string> = {
@@ -112,9 +156,12 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default function MetricasClient({ allUsers, allSubscriptions, topicProgressData, progressEvents, allTopics, allSubjects, userSubjects, timestamps }: Props) {
+export default function MetricasClient({ allUsers, allLearners, allSubscriptions, topicProgressData, progressEvents, allTopics, allSubjects, userSubjects, timestamps }: Props) {
   const router = useRouter()
   const [period, setPeriod] = useState<Period>('30d')
+  // Apagado por defecto: 24 de las 28 cuentas son de prueba, asi que sin
+  // filtro el tablero mide sobre todo nuestro propio testeo.
+  const [incluirPrueba, setIncluirPrueba] = useState(false)
   const [users, setUsers] = useState(allUsers)
   const [confirmDeleteUserId, setConfirmDeleteUserId] = useState<string | null>(null)
   const [confirmDeleteEmail, setConfirmDeleteEmail] = useState<string>('')
@@ -158,23 +205,118 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
 
   const periodStart = period === '24h' ? timestamps.last24h : period === '30d' ? timestamps.last30d : period === '3m' ? timestamps.last3m : timestamps.last6m
   const now = new Date()
-  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString()
+  const sevenDaysAgo = timestamps.last7d
 
-  // Users
-  const totalUsers = allUsers.length
-  const newUsers = allUsers.filter(u => u.created_at >= periodStart).length
-  const activeUsers = allUsers.filter(u => u.last_active_at && u.last_active_at >= sevenDaysAgo).length
-  const onboardingDone = allUsers.filter(u => u.onboarding_done).length
+  // ─────────────────────────────────────────────────────────────────────
+  // FILTRO DE CUENTAS DE PRUEBA — va antes que cualquier calculo.
+  //
+  // Una sola derivacion a partir de un unico useState. Todo lo de abajo usa
+  // las listas ya filtradas, para que no exista la posibilidad de que una
+  // tarjeta se quede leyendo la lista cruda.
+  //
+  // El encadenamiento es cuenta -> alumno -> fila de progreso, porque
+  // `is_test` solo existe en `users` y `subscriptions` (migracion 045).
+  // Las tablas de progreso se filtran por pertenencia a un alumno de una
+  // cuenta real, que es lo mismo pero sin duplicar la marca en cinco tablas.
+  // ─────────────────────────────────────────────────────────────────────
+  const usuarios = incluirPrueba ? allUsers : allUsers.filter(u => !u.is_test)
+  const idsCuenta = new Set(usuarios.map(u => u.id))
+  const alumnos = allLearners.filter(l => idsCuenta.has(l.account_user_id))
+  const idsAlumno = new Set(alumnos.map(l => l.id))
+
+  // `subscriptions.is_test` ya cubre las dos causas —cuenta de prueba y
+  // sandbox de Stripe antes del 13-ago— asi que no hace falta cruzarlo
+  // tambien contra `idsCuenta`.
+  const suscripciones = incluirPrueba ? allSubscriptions : allSubscriptions.filter(s => !s.is_test)
+
+  const progreso = progressEvents.filter(e => e.learner_id !== null && idsAlumno.has(e.learner_id))
+  const avanceTopics = topicProgressData.filter(tp => tp.learner_id !== null && idsAlumno.has(tp.learner_id))
+  const materiasAlumno = userSubjects.filter(us => us.learner_id !== null && idsAlumno.has(us.learner_id))
+
+  const cuentasDePrueba = allUsers.length - allUsers.filter(u => !u.is_test).length
+
+  // Cuentas
+  const totalUsers = usuarios.length
+  const newUsers = usuarios.filter(u => u.created_at >= periodStart).length
+  // 🔴 `onboarding_done` mide "se registró", NO "terminó el onboarding".
+  //
+  // Se escribe desde el alta (s27), antes de que la persona elija nivel,
+  // grado y materias. Verificado en la base: hay una cuenta con el flag en
+  // true, education_level y grade en null y cero filas en user_subjects.
+  //
+  // Se conserva —renombrado— junto a la condicion derivada de abajo, porque
+  // la BRECHA entre las dos es la senal de que el alta esta rota. Si esa
+  // brecha crece, es un bug del registro y tiene que verse aqui.
+  const onboardingDone = usuarios.filter(u => u.onboarding_done).length
   const conversionRate = totalUsers > 0 ? Math.round((onboardingDone / totalUsers) * 100) : 0
 
+  // Alumnos
+  //
+  // El headline son los alumnos con acceso VIGENTE, no todas las filas:
+  // un alumno dado de baja sigue en la tabla y contarlo inflaria el ratio
+  // de asientos ocupados, que es justo para lo que sirve esta tarjeta.
+  const alumnosVigentes = alumnos.filter(tieneAccesoVigente)
+  const totalAlumnos = alumnosVigentes.length
+  const alumnosPorCuenta = totalUsers > 0 ? (totalAlumnos / totalUsers).toFixed(1) : '0.0'
+  const alumnosDadosDeBaja = alumnos.length - totalAlumnos
+
+  // Onboarding REAL, derivado de los datos y no del flag: un alumno terminó
+  // el onboarding si sabe qué estudia (nivel + grado) y tiene con qué
+  // estudiarlo (al menos una materia comprada).
+  const alumnosConMateria = new Set(materiasAlumno.map(us => us.learner_id as string))
+  const estaCompleto = (l: Learner) =>
+    l.education_level !== null && l.grade !== null && alumnosConMateria.has(l.id)
+
+  const alumnosCompletos = alumnosVigentes.filter(estaCompleto)
+  const onboardingRealPct = totalAlumnos > 0 ? Math.round((alumnosCompletos.length / totalAlumnos) * 100) : 0
+
+  // La brecha: cuentas que el alta dio por buenas pero cuyo alumno primario
+  // no tiene los datos. Cada una es un usuario que puede pagar por un
+  // producto que no le sirve. Si esto no es 0, hay un bug en el registro.
+  const primarioPorCuenta = new Map<string, Learner>()
+  alumnos.forEach(l => {
+    if (l.is_primary) primarioPorCuenta.set(l.account_user_id, l)
+  })
+  const brechaAlta = usuarios.filter(u => {
+    if (!u.onboarding_done) return false
+    const primario = primarioPorCuenta.get(u.id)
+    return !primario || !estaCompleto(primario)
+  }).length
+
+  // Actividad — 🔴 NO se usa `learners.last_active_at`.
+  //
+  // Esa columna solo la escribe /api/section-read, asi que un alumno que
+  // solo contesta quizzes o juega la horda no la actualiza JAMAS y saldria
+  // como inactivo. `progress` recibe una fila por cada evento que da XP,
+  // sea del tipo que sea, y es la unica fuente que cubre toda la actividad.
+  //
+  // Se acota a los vigentes para que el denominador de "% alumnos activos"
+  // sea el mismo conjunto que "Total alumnos": si no, un alumno dado de baja
+  // con progreso reciente daria un porcentaje mayor a 100.
+  const idsVigentes = new Set(alumnosVigentes.map(l => l.id))
+  const alumnosActivosIds = new Set(
+    progreso
+      .filter(e => e.created_at >= sevenDaysAgo)
+      .map(e => e.learner_id as string)
+      .filter(id => idsVigentes.has(id))
+  )
+  const alumnosActivos = alumnosActivosIds.size
+
+  const cuentaDeAlumno = new Map(alumnos.map(l => [l.id, l.account_user_id]))
+  const cuentasActivas = new Set(
+    [...alumnosActivosIds]
+      .map(id => cuentaDeAlumno.get(id))
+      .filter((v): v is string => v !== undefined)
+  ).size
+
   // Subscriptions
-  const activeSubs = allSubscriptions.filter(s => s.status === 'active' && new Date(s.current_period_end) > now)
+  const activeSubs = suscripciones.filter(s => s.status === 'active' && new Date(s.current_period_end) > now)
   const expiringSoon = activeSubs.filter(s => {
     const daysLeft = (new Date(s.current_period_end).getTime() - now.getTime()) / (1000 * 60 * 60 * 24)
     return daysLeft <= 7
   })
-  const cancelledSubs = allSubscriptions.filter(s => s.status === 'cancelled' && s.cancelled_at && s.cancelled_at >= periodStart)
-  const newSubs = allSubscriptions.filter(s => s.created_at >= periodStart)
+  const cancelledSubs = suscripciones.filter(s => s.status === 'cancelled' && s.cancelled_at && s.cancelled_at >= periodStart)
+  const newSubs = suscripciones.filter(s => s.created_at >= periodStart)
   const standardSubs = activeSubs.filter(s => s.plan === 'grade')
   const personalizedSubs = activeSubs.filter(s => s.plan === 'ai_personalized')
 
@@ -187,8 +329,10 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
   const mrrStandard = standardSubs.reduce((total, sub) => total + sub.price_mxn / 100, 0)
   const mrrPersonalized = personalizedSubs.reduce((total, sub) => total + sub.price_mxn / 100, 0)
 
-  // Topic completions
-  const completedTopics = topicProgressData.filter(tp => tp.status === 'completed')
+  // Topic completions — la PK de topic_progress es (learner_id, topic_id)
+  // desde la migracion 035, asi que estas filas ya son POR ALUMNO. El codigo
+  // era correcto; lo que mentia eran los rotulos.
+  const completedTopics = avanceTopics.filter(tp => tp.status === 'completed')
   const completedInPeriod = completedTopics.filter(tp => tp.completed_at && tp.completed_at >= periodStart)
   const perfectQuizzes = completedTopics.filter(tp => tp.best_score === 100)
 
@@ -206,27 +350,53 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
       count,
     }))
 
-  // Most popular themes
+  // Most popular themes — la unidad es el ALUMNO, no la cuenta: la llave
+  // unica de user_subjects paso a (learner_id, subject_id) en la 035, asi
+  // que dos hermanos que eligen K-pop suman 2. La tematica manda desde
+  // user_subjects (NOT NULL) y no desde learners.theme_id (casi siempre nulo).
   const themeCount: Record<string, number> = {}
-  userSubjects.forEach(us => {
+  materiasAlumno.forEach(us => {
     if (us.theme_id) themeCount[us.theme_id] = (themeCount[us.theme_id] ?? 0) + 1
   })
   const topThemes = Object.entries(themeCount)
     .sort((a, b) => b[1] - a[1])
     .map(([themeId, count]) => ({ name: THEME_NAMES[themeId] ?? themeId, count }))
 
-  // Education level distribution
+  // Education level distribution — POR ALUMNO.
+  //
+  // Antes salia de `users.education_level`, que solo se escribe al
+  // registrarse: ignoraba todo cambio de grado (change-grade escribe solo en
+  // learners) y a los alumnos 2 y 3 por completo. No estaba parada como
+  // last_active_at, estaba dando numeros plausibles y equivocados.
+  //
+  // Los que no tienen nivel NO se omiten: se agrupan bajo SIN_NIVEL. Son
+  // altas incompletas y son justo lo que hay que ver — omitirlos dejaba los
+  // porcentajes sin sumar 100 sin que nada lo indicara.
   const levelCount: Record<string, number> = {}
-  allUsers.forEach(u => {
-    if (u.education_level) levelCount[u.education_level] = (levelCount[u.education_level] ?? 0) + 1
+  alumnosVigentes.forEach(l => {
+    const clave = l.education_level ?? SIN_NIVEL
+    levelCount[clave] = (levelCount[clave] ?? 0) + 1
   })
+  // "Sin nivel" siempre al final, sea cual sea su volumen.
+  const levelEntries = Object.entries(levelCount).sort(([a], [b]) =>
+    a === SIN_NIVEL ? 1 : b === SIN_NIVEL ? -1 : b.localeCompare(a)
+  )
 
   // XP events in period
-  const xpEvents = progressEvents.filter(e => e.created_at >= periodStart && e.xp_earned > 0)
+  const xpEvents = progreso.filter(e => e.created_at >= periodStart && e.xp_earned > 0)
   const totalXpAwarded = xpEvents.reduce((sum, e) => sum + e.xp_earned, 0)
-  const quizAnswers = progressEvents.filter(e => e.event_type === 'quiz_answered' && e.created_at >= periodStart)
-  const correctAnswers = progressEvents.filter(e => e.event_type === 'quiz_answered' && e.xp_earned > 0 && e.created_at >= periodStart)
+  const quizAnswers = progreso.filter(e => e.event_type === 'quiz_answered' && e.created_at >= periodStart)
+  const correctAnswers = progreso.filter(e => e.event_type === 'quiz_answered' && e.xp_earned > 0 && e.created_at >= periodStart)
   const accuracy = quizAnswers.length > 0 ? Math.round((correctAnswers.length / quizAnswers.length) * 100) : 0
+
+  // Alumnos por cuenta, para la Warning Zone: borrar una cuenta se lleva a
+  // todos sus alumnos por ON DELETE CASCADE (migracion 035).
+  const alumnosPorCuentaMap = new Map<string, Learner[]>()
+  allLearners.forEach(l => {
+    const lista = alumnosPorCuentaMap.get(l.account_user_id)
+    if (lista) lista.push(l)
+    else alumnosPorCuentaMap.set(l.account_user_id, [l])
+  })
 
   const gridCols = isDesktop ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)'
   const grid3Cols = isDesktop ? 'repeat(3, 1fr)' : '1fr'
@@ -265,6 +435,42 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
         ))}
       </div>
 
+      {/* Toggle de cuentas de prueba */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28, flexWrap: 'wrap' }}>
+        <button
+          type="button"
+          onClick={() => setIncluirPrueba(v => !v)}
+          role="switch"
+          aria-checked={incluirPrueba}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            padding: '8px 14px', borderRadius: 50, cursor: 'pointer',
+            fontFamily: 'var(--font-nunito)', fontSize: 14, fontWeight: 800,
+            background: incluirPrueba ? 'rgba(251,191,36,0.12)' : '#1a1035',
+            border: `1px solid ${incluirPrueba ? 'rgba(251,191,36,0.45)' : '#2D2048'}`,
+            color: incluirPrueba ? '#fbbf24' : '#a78bfa',
+          }}
+        >
+          <span style={{
+            width: 34, height: 20, borderRadius: 50, flexShrink: 0,
+            background: incluirPrueba ? '#fbbf24' : '#2D2048',
+            position: 'relative', transition: 'background 0.15s ease',
+          }}>
+            <span style={{
+              position: 'absolute', top: 3, left: incluirPrueba ? 17 : 3,
+              width: 14, height: 14, borderRadius: '50%', background: '#0f0a1e',
+              transition: 'left 0.15s ease',
+            }} />
+          </span>
+          Incluir cuentas de prueba
+        </button>
+        <span style={{ fontSize: 13, color: incluirPrueba ? '#fbbf24' : '#6b5fa0' }}>
+          {incluirPrueba
+            ? `⚠️ Incluyendo ${cuentasDePrueba} cuenta${cuentasDePrueba === 1 ? '' : 's'} de prueba — estos números no son reales`
+            : `${cuentasDePrueba} cuenta${cuentasDePrueba === 1 ? '' : 's'} de prueba excluida${cuentasDePrueba === 1 ? '' : 's'}`}
+        </span>
+      </div>
+
       {/* MRR */}
       <SectionTitle>💰 Ingresos</SectionTitle>
       <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: 12, marginBottom: 8 }}>
@@ -301,30 +507,67 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
         </div>
       </div>
 
-      {/* Users */}
-      <SectionTitle>👥 Usuarios</SectionTitle>
+      {/* Cuentas */}
+      <SectionTitle>👥 Cuentas</SectionTitle>
       <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: 12, marginBottom: 8 }}>
-        <StatCard label="Total usuarios" value={totalUsers} color="#7c3aed" />
-        <StatCard label="Nuevos" value={newUsers} sub={PERIOD_LABELS[period]} color="#a78bfa" />
-        <StatCard label="Activos (7 días)" value={activeUsers} sub="Con actividad reciente" color="#10b981" />
-        <StatCard label="Completaron onboarding" value={`${conversionRate}%`} sub={`${onboardingDone} de ${totalUsers}`} color="#fbbf24" />
+        <StatCard label="Total cuentas" value={totalUsers} color="#7c3aed" />
+        <StatCard label="Nuevas" value={newUsers} sub={PERIOD_LABELS[period]} color="#a78bfa" />
+        <StatCard label="Marcados onboarding_done" value={`${conversionRate}%`} sub={`${onboardingDone} de ${totalUsers} · el flag, no la realidad`} color="#fbbf24" />
+        <StatCard
+          label="Cuentas con ≥1 alumno activo (7d)"
+          value={cuentasActivas}
+          sub={totalUsers > 0 ? `${Math.round((cuentasActivas / totalUsers) * 100)}% de las cuentas` : 'Sin cuentas'}
+          color="#10b981"
+        />
+      </div>
+
+      {/* Alumnos */}
+      <SectionTitle>🎒 Alumnos</SectionTitle>
+      <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: 12, marginBottom: 8 }}>
+        <StatCard
+          label="Total alumnos"
+          value={totalAlumnos}
+          sub={alumnosDadosDeBaja > 0 ? `+${alumnosDadosDeBaja} sin acceso vigente` : 'Con acceso vigente'}
+          color="#7c3aed"
+        />
+        <StatCard label="Alumnos por cuenta" value={alumnosPorCuenta} sub="Asientos ocupados" color="#a78bfa" />
+        <StatCard label="Alumnos activos (7d)" value={alumnosActivos} sub="Con eventos de progreso" color="#10b981" />
+        <StatCard
+          label="% alumnos activos"
+          value={`${totalAlumnos > 0 ? Math.round((alumnosActivos / totalAlumnos) * 100) : 0}%`}
+          sub={`${alumnosActivos} de ${totalAlumnos}`}
+          color="#06b6d4"
+        />
+        <StatCard
+          label="Onboarding completo"
+          value={`${onboardingRealPct}%`}
+          sub={`${alumnosCompletos.length} de ${totalAlumnos} · nivel + grado + ≥1 materia`}
+          color="#10b981"
+        />
+        <StatCard
+          label="Brecha del alta"
+          value={brechaAlta}
+          sub={brechaAlta > 0 ? '⚠️ marcadas como listas, sin datos' : 'flag y datos coinciden'}
+          color={brechaAlta > 0 ? '#ef4444' : '#6b7280'}
+        />
       </div>
 
       {/* Education level distribution */}
       <div style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 16, padding: '16px 20px', marginBottom: 8 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>Distribución por nivel educativo</div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>Distribución por nivel educativo</div>
+        <div style={{ fontSize: 12, color: '#6b5fa0', marginBottom: 14 }}>por alumno</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {Object.entries(levelCount).map(([level, count]) => {
-            const pct = Math.round((count / totalUsers) * 100)
-            const labels: Record<string, string> = { middle_school: '📚 Secundaria', high_school: '🎓 Preparatoria', exam_prepa: '📝 Examen Prepa', exam_uni: '🏛️ Examen Universidad' }
+          {levelEntries.map(([level, count]) => {
+            const pct = totalAlumnos > 0 ? Math.round((count / totalAlumnos) * 100) : 0
+            const esSinNivel = level === SIN_NIVEL
             return (
               <div key={level}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                  <span style={{ fontSize: 14, color: '#e2d9f3', fontWeight: 600 }}>{labels[level] ?? level}</span>
-                  <span style={{ fontSize: 14, color: '#a78bfa', fontWeight: 700 }}>{count} ({pct}%)</span>
+                  <span style={{ fontSize: 14, color: esSinNivel ? '#fbbf24' : '#e2d9f3', fontWeight: 600 }}>{LEVEL_LABELS[level] ?? level}</span>
+                  <span style={{ fontSize: 14, color: esSinNivel ? '#fbbf24' : '#a78bfa', fontWeight: 700 }}>{count} ({pct}%)</span>
                 </div>
                 <div style={{ width: '100%', height: 6, background: '#2D2048', borderRadius: 99, overflow: 'hidden' }}>
-                  <div style={{ width: `${pct}%`, height: '100%', background: 'linear-gradient(90deg, #7c3aed, #ec4899)', borderRadius: 99 }} />
+                  <div style={{ width: `${pct}%`, height: '100%', background: esSinNivel ? '#fbbf24' : 'linear-gradient(90deg, #7c3aed, #ec4899)', borderRadius: 99 }} />
                 </div>
               </div>
             )
@@ -333,10 +576,13 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
       </div>
 
       {/* Learning */}
-      <SectionTitle>📚 Aprendizaje</SectionTitle>
+      <SectionTitle>📚 Aprendizaje — por alumno</SectionTitle>
+      <div style={{ fontSize: 12, color: '#6b5fa0', marginTop: -8, marginBottom: 14 }}>
+        Estas cifras cuentan alumnos, no cuentas: dos hermanos que completan el mismo topic son 2.
+      </div>
       <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: 12, marginBottom: 8 }}>
-        <StatCard label="Topics completados" value={completedInPeriod.length} sub={PERIOD_LABELS[period]} color="#10b981" />
-        <StatCard label="Quizzes perfectos" value={perfectQuizzes.length} sub="Score 100%" color="#fbbf24" />
+        <StatCard label="Topics completados" value={completedInPeriod.length} sub={`${PERIOD_LABELS[period]} · por alumno`} color="#10b981" />
+        <StatCard label="Quizzes perfectos" value={perfectQuizzes.length} sub="Score 100% · por alumno" color="#fbbf24" />
         <StatCard label="Precisión quiz" value={`${accuracy}%`} sub={`${correctAnswers.length}/${quizAnswers.length} correctas`} color="#06b6d4" />
         <StatCard label="XP otorgado" value={totalXpAwarded.toLocaleString('es-MX')} sub={PERIOD_LABELS[period]} color="#a78bfa" />
       </div>
@@ -346,7 +592,8 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
 
         {/* Top topics */}
         <div style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 16, padding: '16px 20px', gridColumn: isDesktop ? 'span 2' : 'span 1' }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>🏆 Topics más completados</div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>🏆 Topics más completados</div>
+          <div style={{ fontSize: 12, color: '#6b5fa0', marginBottom: 12 }}>alumnos que lo completaron</div>
           {topTopics.length === 0 ? (
             <div style={{ color: '#6b5fa0', fontSize: 14 }}>Sin datos aún</div>
           ) : topTopics.map((t, i) => (
@@ -363,7 +610,8 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
 
         {/* Top themes */}
         <div style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 16, padding: '16px 20px' }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>🎮 Temáticas populares</div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>🎮 Temáticas populares</div>
+          <div style={{ fontSize: 12, color: '#6b5fa0', marginBottom: 12 }}>alumnos por temática</div>
           {topThemes.length === 0 ? (
             <div style={{ color: '#6b5fa0', fontSize: 14 }}>Sin datos aún</div>
           ) : topThemes.map((t, i) => (
@@ -388,7 +636,9 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
             </div>
           </div>
           <div style={{ fontSize: 13, color: '#fca5a5', marginBottom: 20, lineHeight: 1.6 }}>
-            Eliminar un usuario borra permanentemente todo su contenido — suscripciones, progreso, secciones personalizadas y datos de autenticación. Esta acción no se puede deshacer.
+            Eliminar una cuenta borra permanentemente todo su contenido — <strong>todos sus alumnos</strong>, suscripciones, progreso, secciones personalizadas y datos de autenticación. Esta acción no se puede deshacer.
+            <br />
+            La lista muestra <strong>todas</strong> las cuentas, incluidas las de prueba, independientemente del filtro de arriba: es la herramienta para borrarlas.
           </div>
 
           {deleteSuccess && (
@@ -412,7 +662,14 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
           )}
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {users.map(u => (
+            {users.map(u => {
+              // 🔴 Se pinta a quién te llevas por delante. El FK de learners
+              // hacia users es ON DELETE CASCADE (migracion 035), asi que
+              // borrar la cuenta borra a TODOS sus alumnos y su progreso.
+              // Antes aqui salia `users.education_level`, una columna que
+              // dejo de reflejar la realidad en la 035.
+              const susAlumnos = alumnosPorCuentaMap.get(u.id) ?? []
+              return (
               <div key={u.id} style={{
                 display: 'flex', alignItems: 'center', gap: 12,
                 padding: '10px 14px', background: '#1a1035',
@@ -421,9 +678,23 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: 700, color: '#e2d9f3', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {u.email ?? u.id}
+                    {u.is_test && (
+                      <span style={{ marginLeft: 8, fontSize: 10, fontWeight: 900, background: 'rgba(251,191,36,0.15)', border: '1px solid rgba(251,191,36,0.35)', color: '#fbbf24', borderRadius: 50, padding: '2px 7px', letterSpacing: 0.5 }}>
+                        PRUEBA
+                      </span>
+                    )}
+                  </div>
+                  <div style={{ fontSize: 12, color: susAlumnos.length > 0 ? '#fca5a5' : '#6b5fa0', marginTop: 3 }}>
+                    {susAlumnos.length === 0
+                      ? '⚠️ sin alumnos'
+                      : `🎒 se llevará ${susAlumnos.length} alumno${susAlumnos.length === 1 ? '' : 's'}: ${susAlumnos
+                          .slice()
+                          .sort((a, b) => a.slot - b.slot)
+                          .map(l => `${l.display_name} (slot ${l.slot})`)
+                          .join(' · ')}`}
                   </div>
                   <div style={{ fontSize: 12, color: '#a78bfa', marginTop: 2 }}>
-                    {u.education_level ?? 'sin nivel'} · {u.onboarding_done ? 'onboarding ✓' : 'sin onboarding'} · creado {new Date(u.created_at).toLocaleDateString('es-MX')}
+                    {u.onboarding_done ? 'onboarding ✓' : 'sin onboarding'} · creado {new Date(u.created_at).toLocaleDateString('es-MX')}
                   </div>
                   <div style={{ fontSize: 11, color: '#4B3D6E', marginTop: 1, fontFamily: 'monospace' }}>
                     {u.id}
@@ -445,7 +716,8 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
                   🗑️ Eliminar
                 </button>
               </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
@@ -463,13 +735,33 @@ export default function MetricasClient({ allUsers, allSubscriptions, topicProgre
           }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🗑️</div>
             <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 16, fontWeight: 900, color: '#ef4444', marginBottom: 8 }}>
-              ¿Eliminar usuario?
+              ¿Eliminar cuenta?
             </div>
             <div style={{ fontSize: 13, color: '#fca5a5', marginBottom: 8, lineHeight: 1.6 }}>
               UUID: <span style={{ fontFamily: 'monospace', color: '#e2d9f3' }}>{confirmDeleteUserId}</span>
             </div>
+            {(() => {
+              const susAlumnos = alumnosPorCuentaMap.get(confirmDeleteUserId) ?? []
+              if (susAlumnos.length === 0) return null
+              return (
+                <div style={{
+                  fontSize: 13, color: '#fca5a5', marginBottom: 12, lineHeight: 1.6,
+                  background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)',
+                  borderRadius: 10, padding: '10px 14px', textAlign: 'left',
+                }}>
+                  Se llevará por delante {susAlumnos.length} alumno{susAlumnos.length === 1 ? '' : 's'}:
+                  <ul style={{ margin: '6px 0 0', paddingLeft: 18 }}>
+                    {susAlumnos.slice().sort((a, b) => a.slot - b.slot).map(l => (
+                      <li key={l.id} style={{ color: '#e2d9f3' }}>
+                        {l.display_name} <span style={{ color: '#a78bfa' }}>(slot {l.slot}{l.is_primary ? ' · primario' : ''})</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })()}
             <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 24, lineHeight: 1.6 }}>
-              Se borrará todo — suscripciones, progreso, secciones personalizadas y cuenta de autenticación. No hay vuelta atrás.
+              Se borrará todo — alumnos, suscripciones, progreso, secciones personalizadas y cuenta de autenticación. No hay vuelta atrás.
             </div>
             <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
               <button
