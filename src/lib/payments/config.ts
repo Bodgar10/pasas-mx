@@ -38,6 +38,35 @@ export const STRIPE_PRICES = {
  * cupon SEAT_50, asi que `precioAsiento` no cambia y no hay un numero
  * nuevo que pueda desincronizarse de lo que anuncia la pantalla.
  *
+ * 🔴 ESO DE ARRIBA ES CIERTO SOLO MIENTRAS SE VENDA UN SOLO PLAN. LEE
+ * ESTO ANTES DE REABRIR EL PERSONALIZADO.
+ *
+ * La aritmetica no cierra: este objeto tiene TRES prices, llaveados solo
+ * por ciclo, y hay SEIS combinaciones plan x ciclo. Tres no cubren seis.
+ *
+ * Lo que hace cada lado hoy:
+ *   - /api/seats/add y /api/seats/preview COBRAN con
+ *     STRIPE_SEAT_PRICES[ciclo], que no mira el plan. `PLAN_DB_A_STRIPE`
+ *     solo se usa ahi para validar que el plan admite asientos.
+ *   - `precioAsiento(plan, ciclo)` ANUNCIA la mitad del precio de lista
+ *     DEL PLAN DEL TITULAR, que si mira el plan.
+ *
+ * Con `grade` los dos coinciden porque estos montos son los de
+ * estandar_v2. Con `ai_personalized` NO: la pantalla anuncia $274.50
+ * (549/2) y el cargo sale del price mensual de aqui, $124.50 tras
+ * SEAT_50. Anunciar un numero y cobrar otro es justo el problema de
+ * PROFECO que este archivo persigue en todas partes.
+ *
+ * Hoy no afecta a nadie —el Personalizado esta oculto de la venta por
+ * FEATURE_FLAGS.ENABLE_PERSONALIZED_PLAN y no hay ninguna suscripcion
+ * con ese plan— asi que se deja como esta, a proposito y con los ojos
+ * abiertos.
+ *
+ * Quien reabra el plan tiene que resolverlo antes: o se agregan tres
+ * prices de asiento para el Personalizado y este objeto pasa a
+ * llavearse por plan x ciclo como STRIPE_PRICES, o `precioAsiento` deja
+ * de leer el plan del titular. Una de las dos, no las dos a medias.
+ *
  * NO entran en PRICE_TO_PLAN: esa tabla la usa el webhook para decidir
  * que plan guardar en `subscriptions`, y un asiento no crea suscripcion.
  */

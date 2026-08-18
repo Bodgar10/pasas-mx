@@ -33,6 +33,18 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# 🔴 EXCEPCIÓN: .env.test SÍ se versiona.
+#
+# Son seis price IDs ficticios (price_test_grade_monthly y compañía) que la
+# capa unitaria necesita para que PRICE_TO_PLAN se construya con seis claves
+# distintas en vez de colapsar todas en "undefined". No hay ningún secreto
+# dentro, y sin el archivo `npm test` no corre en otra máquina.
+!.env.test
+
+# playwright
+/test-results/
+/playwright-report/
+
 # vercel
 .vercel
 
