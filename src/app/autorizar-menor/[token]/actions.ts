@@ -3,16 +3,49 @@
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { destinoBienvenida, type CheckoutPendiente } from './destino'
 
 /**
  * Estampa el consentimiento parental. Solo con service role: el tutor NO tiene
  * sesión, llega por un enlace de correo.
  *
- * El token se limpia al usarlo, así que el enlace sirve una sola vez.
+ * 🔴 EL TOKEN NO SE LIMPIA AL USARLO. Aquí decía que sí y era falso: el UPDATE
+ * de abajo toca status, fecha e IP, y `parental_consent_token` se queda donde
+ * estaba. El enlace sigue resolviendo hasta que caduca a los 7 días.
+ *
+ * No es un agujero de seguridad —lo único que se puede hacer con él es volver
+ * a autorizar algo ya autorizado, y esa rama es idempotente— pero sí es la
+ * razón de que `page.tsx` tenga que redirigir cuando el estado ya es 'granted'
+ * en vez de volver a pintar el formulario. Si algún día se limpia de verdad,
+ * ese redirect deja de hacer falta pero tampoco estorba.
+ *
+ * 🔴 NINGUNA RAMA DE ÉXITO TERMINA EN UNA PANTALLA SIN SALIDA. Las únicas
+ * salidas que no van a /bienvenida son las de error —token ausente, token
+ * desconocido, vencido, declaración sin marcar y fallo al escribir—, y todas
+ * vuelven a la propia pantalla de autorización con un `?estado=` que explica
+ * qué pasó y con el formulario todavía ahí para reintentar.
+ *
+ * 🔴 NO METAS ESTE CUERPO EN UN try/catch. `redirect()` funciona lanzando una
+ * excepción: un catch se la comería y la redirección no ocurriría nunca, sin
+ * dar ningún error visible.
  */
 export async function autorizarMenor(formData: FormData) {
   const token = (formData.get('token') as string | null)?.trim()
   if (!token) redirect('/autorizar-menor/invalido')
+
+  /**
+   * 🔴 LA DECLARACIÓN SE VERIFICA EN EL SERVIDOR.
+   *
+   * El checkbox no tenía `name`, así que nunca llegaba al FormData: lo único
+   * que lo hacía obligatorio era el `required` de HTML, que es validación de
+   * navegador. Un POST armado a mano autorizaba la cuenta sin marcarlo.
+   *
+   * Es una manifestación bajo protesta de decir verdad sobre la patria
+   * potestad de un menor. Se guardaban la fecha y la IP como constancia, pero
+   * no la afirmación que constatan. Ahora sin ella no se estampa nada.
+   */
+  const declaracion = formData.get('declaracion') === 'on'
+  if (!declaracion) redirect(`/autorizar-menor/${token}?estado=falta_declaracion`)
 
   const headersList = await headers()
   const ip =
@@ -32,9 +65,19 @@ export async function autorizarMenor(formData: FormData) {
     .maybeSingle()
 
   if (!usuario) redirect(`/autorizar-menor/${token}?estado=invalido`)
+
+  const checkout = usuario.pending_checkout as CheckoutPendiente
+
+  /**
+   * Ya autorizada. Idempotente: no se vuelve a estampar la fecha ni la IP.
+   *
+   * 🔴 Va a /bienvenida, no a una pantalla de confirmación. Un reenvío —doble
+   * clic, Atrás y volver a mandar, reintento del navegador— tiene que acabar
+   * donde acaba el primer envío. Si no, el segundo clic castiga al usuario
+   * dejándolo en un sitio peor que el primero.
+   */
   if (usuario.parental_consent_status !== 'pending') {
-    // Ya autorizada. Idempotente: no se vuelve a estampar la fecha.
-    redirect(`/autorizar-menor/${token}`)
+    redirect(destinoBienvenida(checkout))
   }
 
   const vencido =
@@ -57,40 +100,28 @@ export async function autorizarMenor(formData: FormData) {
     redirect(`/autorizar-menor/${token}?estado=error`)
   }
 
-  // Si el tutor es el titular de la cuenta, ya tiene sesión y venía de elegir
-  // plan: se le lleva a activarlo en vez de dejarlo en una pantalla de "listo"
-  // sin salida. Si el tutor es otra persona (llegó por el enlace del correo),
-  // NO tiene sesión y mandarlo al checkout tronaría — ese caso ve la pantalla
-  // de confirmación de siempre.
-  const tutorEsTitular =
-    !!usuario.parent_email && usuario.parent_email === usuario.email
-  const checkout = usuario.pending_checkout as
-    | { plan?: string; duration?: string; promo_slug?: string | null }
-    | null
-
-  if (tutorEsTitular && checkout?.plan && checkout?.duration) {
-    // Se limpia aquí porque el callback ya no pasó por su propia limpieza.
-    // Se va el jsonb entero, promo_slug incluido: el registro permanente del
-    // canje es subscriptions.promo_slug, que escribe el webhook con lo que
-    // Stripe cobró de verdad.
+  /**
+   * Se limpia `pending_checkout` porque el callback ya no pasó por su propia
+   * limpieza. Se va el jsonb entero, promo_slug incluido: el registro
+   * permanente del canje es subscriptions.promo_slug, que escribe el webhook
+   * con lo que Stripe cobró de verdad.
+   *
+   * 🔴 Va DESPUÉS de haber leído `checkout` arriba: el destino ya está armado
+   * con esos valores. Y solo se limpia si había algo que limpiar.
+   */
+  if (checkout) {
     await serviceClient
       .from('users')
       .update({ pending_checkout: null })
       .eq('id', usuario.id)
-
-    // 🔴 Mismo transporte que en auth/callback: sin `&promo` el slug muere
-    // aquí. Este camino es todavía más frágil que el otro —el tutor pudo
-    // abrir el enlace en otro navegador—, así que sessionStorage no es
-    // siquiera una opción de respaldo.
-    const promoParam = checkout.promo_slug
-      ? `&promo=${encodeURIComponent(checkout.promo_slug)}`
-      : ''
-
-    redirect(
-      `/bienvenida?plan=${encodeURIComponent(checkout.plan)}&duration=${encodeURIComponent(checkout.duration)}${promoParam}`
-    )
   }
 
-  // Sin `?estado=listo`. La pantalla lee el estado de la base, no de la URL.
-  redirect(`/autorizar-menor/${token}`)
+  /**
+   * 🔴 SIEMPRE /bienvenida. Sin condición por quién sea el tutor.
+   *
+   * El tutor externo llega aquí sin sesión, y eso está contemplado: /bienvenida
+   * detecta que no hay sesión real y, en vez del botón de checkout, le ofrece
+   * entrar a /login. Ver la nota de (auth)/bienvenida/page.tsx.
+   */
+  redirect(destinoBienvenida(checkout))
 }

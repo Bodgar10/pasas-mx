@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { redirect } from 'next/navigation'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { autorizarMenor } from './actions'
+import { destinoBienvenida, type CheckoutPendiente } from './destino'
 import Logo from '@/components/global/Logo'
 
 export const metadata: Metadata = {
@@ -39,22 +41,28 @@ export default async function AutorizarMenorPage({
 
   const { data: usuario } = await serviceClient
     .from('users')
-    .select('full_name, parent_name, parental_consent_status, parental_consent_token_expires_at')
+    .select('full_name, parent_name, parental_consent_status, parental_consent_token_expires_at, pending_checkout')
     .eq('parental_consent_token', token)
     .maybeSingle()
 
-  // Éxito SOLO si la base lo dice. Antes esto se pintaba con un parámetro de
-  // la URL, así que cualquiera podía ver "autorizado" sin haberlo hecho.
+  /**
+   * 🔴 AQUÍ HABÍA UNA PANTALLA DE "Cuenta autorizada ✓". NO LA DEVUELVAS.
+   *
+   * Era un callejón sin salida: confirmaba la autorización y no ofrecía un solo
+   * enlace. El titular que se registró sin elegir plan aterrizaba ahí con
+   * sesión, siendo dueño de la cuenta, y sin ninguna puerta al producto.
+   *
+   * En su lugar, el mismo destino que usa el formulario: /bienvenida.
+   *
+   * 🔴 Y ESTE REDIRECT HACE FALTA DE VERDAD, no es simetría decorativa. El
+   * token NO se borra al usarse (ver la nota de actions.ts), así que la URL
+   * sigue resolviendo durante 7 días. Sin esto, quien vuelva —marcador, botón
+   * Atrás, segundo clic en el correo— se encontraría el formulario otra vez y
+   * se le pediría firmar de nuevo una manifestación bajo protesta de decir
+   * verdad que ya firmó. Eso es peor que la pantalla que acabamos de quitar.
+   */
   if (usuario?.parental_consent_status === 'granted') {
-    return (
-      <Marco>
-        <h1 className="text-2xl font-bold">Cuenta autorizada ✓</h1>
-        <p className="mt-3 text-sm text-gray-400">
-          Gracias. Ya puede entrar a estudiar. Guardamos la fecha y hora de tu
-          autorización como constancia.
-        </p>
-      </Marco>
-    )
+    redirect(destinoBienvenida(usuario.pending_checkout as CheckoutPendiente))
   }
 
   const vencido =
@@ -90,6 +98,16 @@ export default async function AutorizarMenorPage({
         </div>
       )}
 
+      {/* Solo se llega aquí con un POST que no traía la casilla marcada, que en
+          un navegador normal no ocurre: lo corta el `required`. El aviso existe
+          para que ese caso diga algo en vez de recargar en silencio. */}
+      {estado === 'falta_declaracion' && (
+        <div className="mt-6 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-sm text-amber-300">
+          Falta marcar la declaración. Sin ella no podemos registrar tu
+          autorización.
+        </div>
+      )}
+
       <p className="mt-4 text-sm leading-relaxed text-gray-300">
         {tutor ? `${tutor}: ` : ''}
         {alumno} registró una cuenta en Pasas.mx. Como es menor de edad,
@@ -117,8 +135,23 @@ export default async function AutorizarMenorPage({
         <input type="hidden" name="token" value={token} />
 
         <label className="flex cursor-pointer items-start gap-3">
+          {/*
+            🔴 EL `name` ES LO QUE HACE QUE ESTO LLEGUE AL SERVIDOR.
+
+            Sin él, la casilla no entra en el FormData y `autorizarMenor()` no
+            puede verificarla: lo único que la hacía obligatoria era el
+            `required`, que es validación de navegador y se salta con un POST
+            armado a mano. Es una manifestación bajo protesta de decir verdad
+            sobre la patria potestad de un menor — se guardaban la fecha y la IP
+            como constancia, pero no la afirmación que constatan.
+
+            El `required` se queda: corta el envío en el navegador antes de
+            llegar al servidor, que es mejor experiencia. La comprobación del
+            servidor es la que manda.
+          */}
           <input
             type="checkbox"
+            name="declaracion"
             required
             className="mt-1 h-4 w-4 shrink-0 accent-[#7c3aed]"
           />

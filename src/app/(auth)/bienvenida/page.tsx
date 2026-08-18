@@ -24,6 +24,46 @@ function BienvenidaContent() {
   const [loading, setLoading] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
 
+  /**
+   * 🔴 A ESTA PANTALLA SE PUEDE LLEGAR SIN SESIÓN.
+   *
+   * /autorizar-menor manda aquí SIEMPRE tras estampar el consentimiento, y el
+   * tutor externo —el que llegó por el enlace del correo, que no es el titular
+   * de la cuenta— no tiene sesión ninguna. Antes ese caso ni siquiera llegaba;
+   * ahora es un camino normal.
+   *
+   * Sin esto, ese tutor vería el botón de checkout, lo tocaría, y
+   * /api/checkout/create-session le devolvería 401: un `alert('Unauthorized')`
+   * y un empujón a /planes. Es exactamente el callejón sin salida que este
+   * cambio venía a quitar, movido una pantalla más adelante.
+   *
+   * `null` = todavía no se sabe. Arranca así y no en `false` para que el botón
+   * no parpadee de "entrar" a "activar" mientras se resuelve.
+   *
+   * Anónimo cuenta como SIN sesión: la landing crea una sesión anónima, así que
+   * un `user` a secas no significa que haya cuenta. Mismo criterio que
+   * /planes:215 y /reembolso:20.
+   */
+  const [tieneSesion, setTieneSesion] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    let vivo = true
+    void (async () => {
+      try {
+        const { createClient } = await import('@/utils/supabase/client')
+        const supabase = createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        if (vivo) setTieneSesion(!!user && !user.is_anonymous)
+      } catch {
+        // Fail-closed: sin poder confirmar sesión se ofrece entrar, que es la
+        // salida que funciona en los dos casos. Un checkout que revienta con
+        // 401 no la tiene.
+        if (vivo) setTieneSesion(false)
+      }
+    })()
+    return () => { vivo = false }
+  }, [])
+
   const plan = searchParams.get('plan') ?? 'estandar_v2'
   const duration = searchParams.get('duration') ?? 'monthly'
 
@@ -344,11 +384,50 @@ function BienvenidaContent() {
             "Activar mis 7 días gratis" y el cta_label de la campaña, y esa es
             justo la promesa que no puede reescribirse a la vista.
           */}
-          {esperandoPromo ? (
+          {/*
+            🔴 Tres estados, y el hueco cubre los dos de espera: mientras no se
+            sepa si hay sesión se reserva el mismo espacio que ocupa el botón,
+            así que la pantalla no salta cuando se resuelve.
+          */}
+          {esperandoPromo || tieneSesion === null ? (
             <>
               <Hueco alto={56} radio={14} margenAbajo={12} />
               {/* La microcopy: 12px a 1.5 de alto de línea = 18px. */}
               <Hueco alto={18} ancho={260} radio={6} />
+            </>
+          ) : tieneSesion === false ? (
+            /*
+              Tutor externo: autorizó desde el enlace del correo y no tiene
+              cuenta aquí. No se le ofrece checkout —no puede pagar sin sesión—
+              sino la entrada. El confetti y el "¡Tu cuenta está lista!" de
+              arriba siguen: acaba de completar lo que vino a hacer.
+            */
+            <>
+              <a
+                href="/login"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+                  minHeight: 56,
+                  background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                  borderRadius: 14,
+                  fontFamily: 'var(--font-nunito)',
+                  fontSize: 17,
+                  fontWeight: 900,
+                  color: '#fff',
+                  textDecoration: 'none',
+                  boxShadow: '0 0 32px rgba(124,58,237,0.4)',
+                  marginBottom: 12,
+                }}
+              >
+                Entrar a la cuenta →
+              </a>
+              <p style={{ fontSize: 12, color: '#6B7280', margin: 0, lineHeight: 1.5 }}>
+                Ya quedó registrada tu autorización, con la fecha y la hora, como
+                constancia.
+              </p>
             </>
           ) : (
           <>
@@ -383,7 +462,9 @@ function BienvenidaContent() {
           </>
           )}
 
-          {/* Link cambiar plan */}
+          {/* Link cambiar plan. Oculto sin sesión: /planes exige cuenta para
+              cobrar, así que ahí ese enlace sólo lleva a otro muro. */}
+          {tieneSesion !== false && (
           <button
             type="button"
             onClick={() => router.push('/planes')}
@@ -401,6 +482,7 @@ function BienvenidaContent() {
           >
             Cambiar de plan
           </button>
+          )}
         </div>
       </div>
     </>
