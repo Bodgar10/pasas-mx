@@ -27,6 +27,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { stripe } from '@/lib/payments/stripe'
+import { materiasParaGrado } from '@/lib/learners'
 import {
   STRIPE_SEAT_PRICES,
   MAX_SEATS,
@@ -300,34 +301,44 @@ export async function POST(request: Request) {
   // materias hay que crearlas aqui o el alumno entra a un dashboard
   // donde todo dice "Contenido próximamente".
   if (learner.education_level && learner.grade != null && learner.theme_id) {
-    const { data: materias } = await admin
-      .from('subjects')
-      .select('id')
-      .eq('education_level', learner.education_level)
-      .contains('grades', [learner.grade])
+    try {
+      // 🔴 s32 — Misma regla que el webhook y que change-grade, ya en
+      // una sola funcion: `materiasParaGrado`. Tres copias de "que
+      // materias le tocan a este alumno" fue justo lo que dejo a
+      // change-grade sin ninguna.
+      const materias = await materiasParaGrado(
+        admin,
+        learner.education_level,
+        learner.grade
+      )
 
-    if (materias && materias.length > 0) {
-      const filas = materias.map((m) => ({
-        user_id: user.id,
-        learner_id: learnerId,
-        subject_id: m.id,
-        theme_id: learner.theme_id,
-        plan_type: 'grade',
-        xp: 0,
-        streak_days: 0,
-        purchased_at: new Date().toISOString(),
-      }))
+      if (materias.length > 0) {
+        const filas = materias.map((m) => ({
+          user_id: user.id,
+          learner_id: learnerId,
+          subject_id: m.id,
+          theme_id: learner.theme_id,
+          plan_type: 'grade',
+          xp: 0,
+          streak_days: 0,
+          purchased_at: new Date().toISOString(),
+        }))
 
-      const { error: materiasError } = await admin
-        .from('user_subjects')
-        .upsert(filas, { onConflict: 'learner_id,subject_id' })
+        const { error: materiasError } = await admin
+          .from('user_subjects')
+          .upsert(filas, { onConflict: 'learner_id,subject_id' })
 
-      if (materiasError) {
-        // El cobro ya salio y el alumno ya esta activo. No se revierte:
-        // se registra para conciliar, porque volver atras dejaria al
-        // usuario pagando sin alumno en vez de con alumno sin materias.
-        console.error('[seats/add] alumno activo SIN materias:', learnerId, materiasError)
+        if (materiasError) throw materiasError
       }
+    } catch (materiasErr) {
+      // El cobro ya salio y el alumno ya esta activo. No se revierte:
+      // se registra para conciliar, porque volver atras dejaria al
+      // usuario pagando sin alumno en vez de con alumno sin materias.
+      //
+      // El try/catch es nuevo: `materiasParaGrado` lanza si la
+      // consulta de catalogo falla, y sin envolverlo ese error saldria
+      // del handler como un 500 despues de haber cobrado.
+      console.error('[seats/add] alumno activo SIN materias:', learnerId, materiasErr)
     }
   }
 

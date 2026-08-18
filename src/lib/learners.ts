@@ -1,5 +1,53 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 
+/** Una materia del catalogo. Los tres caminos que crean `user_subjects`
+ *  solo necesitan el id; si algun dia hace falta el nombre, se agrega
+ *  aqui y no en cada llamada. */
+export type MateriaDeGrado = { id: string }
+
+/**
+ * Materias del catalogo que le corresponden a un nivel y grado.
+ *
+ * 🔴 FUENTE UNICA de la regla "que materias le tocan a este alumno".
+ * La usan los TRES caminos que escriben `user_subjects`:
+ *   - webhooks/stripe      → primer pago
+ *   - api/seats/add        → asientos adicionales
+ *   - api/seats/change-grade → cambio de grado (s32)
+ *
+ * Estaba copiada en los dos primeros y al tercero se le olvido por
+ * completo: por eso un alumno que cambiaba de grado se quedaba con las
+ * materias del grado anterior y veia "Proximamente" en todo. Dos copias
+ * de una regla se desincronizan; tres ya lo hicieron.
+ *
+ * NO existe "materia publicada": `subjects` no tiene esa columna. Lo
+ * que se publica son los TEMAS (`topics.published`). Que un grado tenga
+ * materias y que esas materias tengan temas son DOS cosas distintas: la
+ * segunda se mide con `preview_stats`, no aqui.
+ *
+ * Lanza si la consulta falla. Un `[]` silencioso por error de red es
+ * indistinguible de "este grado no tiene catalogo", y quien llama toma
+ * decisiones opuestas en cada caso: una es un bug de infraestructura y
+ * la otra un hueco de catalogo que hay que reportarle al usuario.
+ */
+export async function materiasParaGrado(
+  supabase: SupabaseClient,
+  educationLevel: string,
+  grade: number
+): Promise<MateriaDeGrado[]> {
+  const { data, error } = await supabase
+    .from('subjects')
+    .select('id')
+    .eq('education_level', educationLevel)
+    .contains('grades', [grade])
+
+  if (error) {
+    console.error('materiasParaGrado failed:', error)
+    throw error
+  }
+
+  return data ?? []
+}
+
 /**
  * Devuelve el alumno activo de una cuenta.
  *
@@ -77,6 +125,19 @@ export async function upsertPrimaryLearner(
   }
 
   if (existing) {
+    // 🔴 s32 — ESTA RAMA TIENE EL MISMO BUG QUE TENIA change-grade.
+    // `campos` incluye education_level y grade: si el alumno ya tenia
+    // materias, este update le cambia el grado y NO resincroniza
+    // `user_subjects`, dejandolo con el catalogo del grado anterior y
+    // "Proximamente" en todas sus materias.
+    //
+    // Hoy no explota por accidente, no por diseno: solo la llaman
+    // onboarding y registro, siempre sobre cuentas recien creadas que
+    // todavia no tienen ninguna fila en `user_subjects`. En cuanto algo
+    // la llame sobre una cuenta con materias, reproduce el bug entero.
+    //
+    // NO se arregla aqui: ese camino se rehace completo en el prompt
+    // siguiente. Queda escrito para que no se pierda.
     const { error } = await admin
       .from('learners')
       .update(campos)
@@ -123,6 +184,12 @@ export type Learner = {
   id: string
   slot: number
   display_name: string
+  // 🔴 Cambiar `grade` o `education_level` de un learner OBLIGA a
+  // resincronizar `user_subjects`. Los temas se filtran por grado: un
+  // alumno con materias de otro grado ve "Proximamente" en todo, con el
+  // contenido existiendo. Usar la funcion de resincronizacion (la RPC
+  // `resync_learner_grade`, via /api/seats/change-grade), nunca un
+  // update suelto.
   education_level: string | null
   grade: number | null
   theme_id: string | null

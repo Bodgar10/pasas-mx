@@ -71,6 +71,12 @@ export default function PromocionCicloModal({
           learnerId,
           educationLevel: siguiente.education_level,
           grade: siguiente.grade,
+          // Este es el paso de ciclo escolar, no una correccion de un
+          // dato mal capturado. La bitacora tiene que poder separarlos:
+          // en septiembre entran de golpe cientos de promociones y,
+          // mezcladas con las correcciones, no se distingue una
+          // migracion masiva de un error de captura.
+          reason: 'promocion_ciclo',
         }),
       })
       const json = await res.json().catch(() => null)

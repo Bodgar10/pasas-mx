@@ -27,7 +27,7 @@ import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellatio
 import { welcomeTemplate } from '@/lib/email/templates/welcome'
 import { paymentReceiptTemplate } from '@/lib/email/templates/payment-receipt'
 import { sendMetaCapiEvent } from '@/lib/marketing/meta-capi'
-import { getActiveLearnerId } from '@/lib/learners'
+import { getActiveLearnerId, materiasParaGrado } from '@/lib/learners'
 import { sendTikTokEvent } from '@/lib/marketing/tiktok-events'
 import Stripe from 'stripe'
 
@@ -262,14 +262,23 @@ export async function POST(request: Request) {
                 throw new Error('No se pudo resolver la tematica')
               }
 
-              // Fetch all subjects for this education level and grade
-              const { data: subjects } = await supabase
-                .from('subjects')
-                .select('id')
-                .eq('education_level', userProfile.education_level)
-                .contains('grades', [userProfile.grade])
+              // 🔴 s32 — La regla "que materias le tocan a este alumno" vive
+              // en `materiasParaGrado`, compartida con /api/seats/add y con
+              // /api/seats/change-grade. Estaba copiada aqui y en add, y a
+              // change-grade se le olvido por completo: por eso un cambio de
+              // grado dejaba al alumno con el catalogo del grado anterior.
+              //
+              // La funcion LANZA si la consulta falla, en vez de devolver [].
+              // Antes ese error se ignoraba y el pago se daba por bueno sin
+              // crear una sola materia; ahora sube al catch de abajo, que
+              // devuelve 500 y hace que Stripe reintente.
+              const subjects = await materiasParaGrado(
+                supabase,
+                userProfile.education_level,
+                userProfile.grade
+              )
 
-              if (subjects && subjects.length > 0) {
+              if (subjects.length > 0) {
                 const userSubjectsRows = subjects.map((subject) => ({
                   user_id: userId,
                   learner_id: learnerId,

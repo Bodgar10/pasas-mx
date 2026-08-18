@@ -350,17 +350,35 @@ export default function MetricasClient({ allUsers, allLearners, allSubscriptions
       count,
     }))
 
-  // Most popular themes — la unidad es el ALUMNO, no la cuenta: la llave
-  // unica de user_subjects paso a (learner_id, subject_id) en la 035, asi
-  // que dos hermanos que eligen K-pop suman 2. La tematica manda desde
-  // user_subjects (NOT NULL) y no desde learners.theme_id (casi siempre nulo).
-  const themeCount: Record<string, number> = {}
+  // Most popular themes — DOS unidades distintas, porque una fila de
+  // user_subjects es (alumno × materia), no un alumno.
+  //
+  // 🔴 Contar filas a secas era lo que habia antes y estaba mal rotulado: un
+  // alumno con 8 materias en K-pop aportaba 8. Por eso los cuatro numeros
+  // sumaban 182 —el total de filas— y no 28, que es el total de alumnos.
+  //
+  // El ranking ordena por ALUMNOS distintos, que es la pregunta real: que
+  // tematica elige mas gente. Ordenar por materias premiaba a quien compro
+  // mas materias, no a la tematica mas popular.
+  //
+  // La tematica manda desde user_subjects (NOT NULL) y no desde
+  // learners.theme_id (casi siempre nulo).
+  const themeAlumnos: Record<string, Set<string>> = {}
+  const themeMaterias: Record<string, number> = {}
   materiasAlumno.forEach(us => {
-    if (us.theme_id) themeCount[us.theme_id] = (themeCount[us.theme_id] ?? 0) + 1
+    if (!us.theme_id) return
+    themeMaterias[us.theme_id] = (themeMaterias[us.theme_id] ?? 0) + 1
+    const set = themeAlumnos[us.theme_id] ?? new Set<string>()
+    set.add(us.learner_id as string)
+    themeAlumnos[us.theme_id] = set
   })
-  const topThemes = Object.entries(themeCount)
-    .sort((a, b) => b[1] - a[1])
-    .map(([themeId, count]) => ({ name: THEME_NAMES[themeId] ?? themeId, count }))
+  const topThemes = Object.entries(themeMaterias)
+    .map(([themeId, materias]) => ({
+      name: THEME_NAMES[themeId] ?? themeId,
+      alumnos: themeAlumnos[themeId]?.size ?? 0,
+      materias,
+    }))
+    .sort((a, b) => b.alumnos - a.alumnos || b.materias - a.materias)
 
   // Education level distribution — POR ALUMNO.
   //
@@ -611,13 +629,20 @@ export default function MetricasClient({ allUsers, allLearners, allSubscriptions
         {/* Top themes */}
         <div style={{ background: '#1a1035', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 16, padding: '16px 20px' }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>🎮 Temáticas populares</div>
-          <div style={{ fontSize: 12, color: '#6b5fa0', marginBottom: 12 }}>alumnos por temática</div>
+          <div style={{ fontSize: 12, color: '#6b5fa0', marginBottom: 12 }}>ordenado por alumnos distintos</div>
           {topThemes.length === 0 ? (
             <div style={{ color: '#6b5fa0', fontSize: 14 }}>Sin datos aún</div>
           ) : topThemes.map((t, i) => (
             <div key={t.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0', borderBottom: i < topThemes.length - 1 ? '1px solid rgba(124,58,237,0.1)' : 'none' }}>
               <div style={{ flex: 1, fontSize: 15, fontWeight: 700, color: '#e2d9f3' }}>{t.name}</div>
-              <div style={{ background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 50, padding: '2px 10px', fontSize: 13, fontWeight: 800, color: '#a78bfa' }}>{t.count}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                <div style={{ background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 50, padding: '2px 10px', fontSize: 13, fontWeight: 800, color: '#a78bfa' }}>
+                  {t.alumnos} <span style={{ fontWeight: 700, fontSize: 11, color: '#6b5fa0' }}>alumnos</span>
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: '#4B3D6E', whiteSpace: 'nowrap' }}>
+                  {t.materias} materias
+                </div>
+              </div>
             </div>
           ))}
         </div>
