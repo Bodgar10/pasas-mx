@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 import { sendEmail } from '@/lib/email/resend'
 import { renewalNoticeTemplate } from '@/lib/email/templates/renewal-notice'
 import { PLAN_DISPLAY, CICLO_LABEL, precioAsiento, PLAN_DB_A_STRIPE, type BillingCycleDB } from '@/lib/payments/config'
+import { trackServer } from '@/lib/analytics/track-server'
+import { iniciarCorrida, cerrarCorrida, resumirFallos } from '@/lib/cron-runs'
 
 export async function GET(req: Request) {
   const supabase = createClient(
@@ -13,6 +15,11 @@ export async function GET(req: Request) {
   if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
   }
+
+  // Bitácora. Va DESPUÉS del 401 —un atacante no debe poder llenar la
+  // tabla— y ANTES de la consulta, para que las salidas tempranas por
+  // error de BD y por lista vacía queden registradas.
+  const corridaId = await iniciarCorrida(supabase, 'profeco-renewal-notice')
 
   try {
     /**
@@ -51,7 +58,9 @@ export async function GET(req: Request) {
         user_id,
         users (
           full_name,
-          email
+          email,
+          cookie_consent_analytics,
+          cookie_consent_marketing
         )
       `)
       .in('status', ['active', 'trialing'])
@@ -61,10 +70,14 @@ export async function GET(req: Request) {
 
     if (error) {
       console.error('[PROFECO Cron] DB error:', error)
+      await cerrarCorrida(supabase, corridaId, { rowsProcessed: 0, error: `DB error: ${error.message}` })
       return Response.json({ error: 'DB error' }, { status: 500 })
     }
 
     if (!subscriptions || subscriptions.length === 0) {
+      // 🔴 La fila se cierra igual con 0. Es EXACTAMENTE el caso que antes
+      // no se distinguía de "el cron no corrió".
+      await cerrarCorrida(supabase, corridaId, { rowsProcessed: 0 })
       return Response.json({ ok: true, sent: 0, message: 'No renewals in 5 days' })
     }
 
@@ -72,6 +85,22 @@ export async function GET(req: Request) {
     const errors: string[] = []
 
     for (const sub of subscriptions) {
+      /**
+       * 🔴 UN AVISO QUE FALLA NO PUEDE DEJAR SIN AVISAR A LOS SIGUIENTES.
+       *
+       * Antes no había try/catch por iteración: el bucle se apoyaba en que
+       * `sendEmail` devuelve `{ ok }` en vez de lanzar. Pero el `.update()`
+       * de `renewal_notice_sent_at` sí lanza si la conexión se cae, y un
+       * `getTime()` sobre una fecha inválida también. Cualquiera de los dos
+       * salía al catch exterior y ABORTABA EL RESTO DE LA LISTA.
+       *
+       * Con la LFPC de por medio esa lista tiene que llegar entera: cada
+       * fila no avisada es un cobro sin preaviso. Mismo patrón que ya usa
+       * pauses-ending.
+       *
+       * No cambia a quién se avisa, ni qué se manda, ni cuándo.
+       */
+      try {
       const user = (Array.isArray(sub.users) ? sub.users[0] : sub.users) as { full_name: string; email: string } | null
       if (!user?.email) continue
 
@@ -137,12 +166,63 @@ export async function GET(req: Request) {
           .update({ renewal_notice_sent_at: new Date().toISOString() })
           .eq('id', sub.id)
         sent++
+
+        /**
+         * Solo cuando el correo SALIO de verdad (`result.ok`). Es el mismo
+         * criterio que `renewal_notice_sent_at`: se anuncia lo que ocurrio.
+         *
+         * `dias_antes` se calcula, no se escribe a mano: la ventana del cron
+         * es de 8 a 9 dias —no de 5, pese al nombre del archivo— y una
+         * constante aqui volveria a envejecer igual.
+         */
+        try {
+          const usuario = sub.users as unknown as {
+            cookie_consent_analytics?: boolean | null
+            cookie_consent_marketing?: boolean | null
+          } | null
+
+          await trackServer(
+            'aviso_profeco_enviado',
+            {
+              dias_antes: Math.round(
+                (new Date(sub.current_period_end).getTime() - Date.now()) / 86_400_000
+              ),
+              monto: sub.price_mxn,
+              plan: sub.plan,
+              ciclo: sub.billing_cycle,
+            },
+            {
+              consent: {
+                analytics: usuario?.cookie_consent_analytics,
+                marketing: usuario?.cookie_consent_marketing,
+              },
+              userId: sub.user_id as string,
+            }
+          )
+        } catch (err) {
+          console.error('[PROFECO Cron] analitica fallo:', err)
+        }
       } else {
         errors.push(`Failed for user ${sub.user_id}: ${JSON.stringify(result.error)}`)
+      }
+      } catch (err) {
+        // La fila queda SIN `renewal_notice_sent_at`, así que el cron de
+        // mañana la vuelve a intentar. Es el comportamiento correcto: el
+        // aviso se debe, no se descarta.
+        console.error(`[PROFECO Cron] Error procesando ${sub.user_id}:`, err)
+        errors.push(`Sub ${sub.id}: ${err instanceof Error ? err.message : String(err)}`)
       }
     }
 
     console.log(`[PROFECO Cron] Sent ${sent}/${subscriptions.length} renewal notices`)
+
+    // `rows_processed` son FILAS PROCESADAS (`total`), no correos enviados
+    // (`sent`). Con 10 suscripciones y 3 fallos, aquí van 10 y el detalle
+    // de los 3 va en `error`.
+    await cerrarCorrida(supabase, corridaId, {
+      rowsProcessed: subscriptions.length,
+      error: resumirFallos(errors, subscriptions.length),
+    })
 
     return Response.json({
       ok: true,
@@ -152,6 +232,10 @@ export async function GET(req: Request) {
     })
   } catch (err) {
     console.error('[PROFECO Cron] Unexpected error:', err)
+    await cerrarCorrida(supabase, corridaId, {
+      rowsProcessed: 0,
+      error: `Excepción: ${err instanceof Error ? err.message : String(err)}`,
+    })
     return Response.json({ error: 'Internal error' }, { status: 500 })
   }
 }

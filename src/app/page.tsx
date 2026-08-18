@@ -21,10 +21,14 @@ const PRECIO_DESDE = `Desde $${PLAN_DISPLAY.estandar_v2.prices.mensual.amount}/m
 export const metadata: Metadata = {
   title: 'Pasas.mx — Estudia sin estudiar',
   description: `Guías de estudio gamificadas para estudiantes mexicanos. Aprende Matemáticas con videojuegos, Historia con anime, Química con K-pop. ${PRECIO_DESDE}.`,
+  // Relativo, no 'https://pasas.mx': lo resuelve el metadataBase del layout
+  // raíz, que es el único sitio donde vive el dominio. Un dominio escrito a
+  // mano aquí es un dominio que algún día no coincide con el de allá.
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'Pasas.mx — Estudia sin estudiar',
     description: `Aprende con lo que ya te gusta. Matemáticas con videojuegos. Historia con anime. ${PRECIO_DESDE}.`,
-    url: 'https://pasas.mx',
+    url: '/',
     siteName: 'Pasas.mx',
     locale: 'es_MX',
     type: 'website',

@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import Logo from '@/components/global/Logo'
+import { track } from '@/lib/analytics/track'
 
 type Step = 1 | 2 | 3 | 4
 type Registrante = 'tutor' | 'alumno'
@@ -126,6 +127,51 @@ function ProgressBar({ step }: { step: Step }) {
 export default function OnboardingClient({ themes }: Props) {
   const [step, setStep] = useState<Step>(1)
 
+  // ── Analitica. Todo en refs: ni un re-render de mas. ────────────────
+  const inicioRef = useRef(0)
+  const inicioPasoRef = useRef(0)
+  const retrocesosRef = useRef(0)
+  /** Cuantas veces se ha ENTRADO a cada paso. Retroceder y volver suma. */
+  const visitasRef = useRef<Record<number, number>>({})
+
+  useEffect(() => {
+    const ahora = Date.now()
+    inicioRef.current = ahora
+    inicioPasoRef.current = ahora
+    visitasRef.current[1] = 1
+
+    // `signup_start` marca la entrada al embudo, no el envio del formulario.
+    // `origen` dice por que pantalla se entro: quien empieza en /onboarding
+    // viene del embudo completo, quien aterriza en /registro se lo salto.
+    track('signup_start', { origen: 'onboarding', registrante: 'tutor' })
+  }, [])
+
+  /**
+   * Segundos en el paso que se acaba de dejar, y arranque del siguiente.
+   * Enteros: `segundos` nunca lleva decimales ni milisegundos disfrazados.
+   */
+  function cerrarPaso(): number {
+    const ahora = Date.now()
+    const s = Math.round((ahora - inicioPasoRef.current) / 1000)
+    inicioPasoRef.current = ahora
+    return s
+  }
+
+  function entrarA(nuevo: number) {
+    visitasRef.current[nuevo] = (visitasRef.current[nuevo] ?? 0) + 1
+  }
+
+  /**
+   * 🔴 `pasos_totales` se CALCULA, no se escribe a mano.
+   *
+   * El paso 2 (grado) se salta cuando el nivel no lo necesita, y esos
+   * niveles solo existen con ENABLE_EXAM_PLANS. Una constante `4` mentiria
+   * en cuanto se encienda la flag, y nadie lo notaria.
+   */
+  function pasosTotales(): number {
+    return selectedLevel?.needsGrade === false ? 3 : 4
+  }
+
   const [registrante, setRegistrante] = useState<Registrante>('tutor')
   const [level, setLevel] = useState<string | null>(null)
   const [grade, setGrade] = useState<string | null>(null)
@@ -139,18 +185,51 @@ export default function OnboardingClient({ themes }: Props) {
   const selectedTheme = themes.find((t) => t.name === theme)
   const canProceed = step === 1 ? !!level : step === 2 ? !!grade : step === 3 ? !!theme : true
 
+  /**
+   * Un `onboarding_paso` por paso COMPLETADO.
+   *
+   * Se dispara mas de una vez por paso cuando alguien retrocede, y esta
+   * bien: `visita_n` distingue la primera pasada de las siguientes. Sin ese
+   * campo, dos visitas al paso 3 serian indistinguibles de dos personas.
+   */
+  function medirPaso(paso: number, valor: string | null) {
+    track('onboarding_paso', {
+      paso,
+      valor_elegido: valor ?? undefined,
+      segundos_en_paso: cerrarPaso(),
+      n_retrocesos: retrocesosRef.current,
+      visita_n: visitasRef.current[paso] ?? 1,
+    })
+  }
+
   async function handleNext() {
     if (step === 1) {
       if (!selectedLevel) return
+      // El nivel manda, pero `registrante` tambien se elige en este paso y
+      // no tiene paso propio: viaja como propiedad.
+      track('onboarding_paso', {
+        paso: 1,
+        valor_elegido: level ?? undefined,
+        registrante,
+        segundos_en_paso: cerrarPaso(),
+        n_retrocesos: retrocesosRef.current,
+        visita_n: visitasRef.current[1] ?? 1,
+      })
       setGrade(null)
       setTheme(null)
-      setStep(selectedLevel.needsGrade ? 2 : 3)
+      const siguiente = selectedLevel.needsGrade ? 2 : 3
+      entrarA(siguiente)
+      setStep(siguiente)
     } else if (step === 2) {
       if (!grade) return
+      medirPaso(2, grade)
       setTheme(null)
+      entrarA(3)
       setStep(3)
     } else if (step === 3) {
       if (!theme) return
+      medirPaso(3, theme)
+      entrarA(4)
       setStep(4)
     } else {
       if (!theme || !level) return
@@ -168,16 +247,35 @@ export default function OnboardingClient({ themes }: Props) {
       // aquí y /planes cobra precio de lista. Mismo trato que level/grade.
       const promo = searchParams.get('promo')
       if (promo) params.set('promo', promo)
+
+      medirPaso(4, 'continuar')
+      track('onboarding_completo', {
+        segundos_totales: Math.round((Date.now() - inicioRef.current) / 1000),
+        pasos_totales: pasosTotales(),
+        n_retrocesos_totales: retrocesosRef.current,
+      })
+
       router.push(`/onboarding/preview?${params.toString()}`)
     }
   }
 
   function handleBack() {
+    // El contador es GLOBAL, no por paso: mide cuanta duda hubo en todo el
+    // onboarding, que es la pregunta util.
+    retrocesosRef.current += 1
+    // El reloj del paso se reinicia al retroceder: los segundos de la
+    // segunda visita son suyos, no la suma de las dos.
+    cerrarPaso()
+
     if (step === 2) {
+      entrarA(1)
       setStep(1)
     } else if (step === 3) {
-      setStep(selectedLevel?.needsGrade ? 2 : 1)
+      const destino = selectedLevel?.needsGrade ? 2 : 1
+      entrarA(destino)
+      setStep(destino)
     } else if (step === 4) {
+      entrarA(3)
       setStep(3)
     }
   }

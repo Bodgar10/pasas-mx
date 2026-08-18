@@ -20,13 +20,15 @@
 
 import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/payments/stripe'
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'
+import { createClient as createSupabaseClient, type SupabaseClient } from '@supabase/supabase-js'
 import { PRICE_TO_PLAN, CICLO_LABEL } from '@/lib/payments/config'
 import { sendEmail } from '@/lib/email/resend'
 import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
 import { welcomeTemplate } from '@/lib/email/templates/welcome'
 import { paymentReceiptTemplate } from '@/lib/email/templates/payment-receipt'
 import { sendMetaCapiEvent } from '@/lib/marketing/meta-capi'
+import { CLAVES_ATRIBUCION } from '@/lib/payments/metadata-checkout'
+import { trackServer } from '@/lib/analytics/track-server'
 import { getActiveLearnerId, materiasParaGrado } from '@/lib/learners'
 import { sendTikTokEvent } from '@/lib/marketing/tiktok-events'
 import Stripe from 'stripe'
@@ -37,6 +39,75 @@ function getServiceClient() {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY!
   if (!url || !key) throw new Error('Missing Supabase service role credentials')
   return createSupabaseClient(url, key)
+}
+
+/**
+ * Cuantas renovaciones lleva la suscripcion, contando desde el alta.
+ *
+ * Derivado del tiempo transcurrido y del ciclo: no hay tabla de cobros, asi
+ * que este es el numero honesto disponible. 1 = primera renovacion.
+ */
+function cicloNumero(creadaIso: string | null | undefined, ciclo: string | null | undefined): number | undefined {
+  if (!creadaIso) return undefined
+  const meses: Record<string, number> = { monthly: 1, semestral: 6, annual: 12 }
+  const paso = meses[ciclo ?? 'monthly'] ?? 1
+  const transcurridos = (Date.now() - new Date(creadaIso).getTime()) / (30 * 86_400_000)
+  return Math.max(1, Math.floor(transcurridos / paso))
+}
+
+/**
+ * Resuelve a quien pertenece una suscripcion de Stripe y con que
+ * consentimiento cuenta, para los eventos que NO nacen de un checkout y por
+ * tanto no traen `user_id` en la metadata.
+ *
+ * Devuelve null si no hay fila: un evento de una suscripcion que no
+ * conocemos no se mide contra nadie.
+ */
+async function resolverDestinatario(
+  supabase: SupabaseClient,
+  providerSubId: string
+): Promise<{ userId: string; consent: { analytics: boolean | null; marketing: boolean | null } } | null> {
+  const { data: sub } = await supabase
+    .from('subscriptions')
+    .select('user_id')
+    .eq('provider_sub_id', providerSubId)
+    .maybeSingle()
+
+  if (!sub?.user_id) return null
+
+  const { data: usuario } = await supabase
+    .from('users')
+    .select('cookie_consent_analytics, cookie_consent_marketing')
+    .eq('id', sub.user_id)
+    .maybeSingle()
+
+  return {
+    userId: sub.user_id,
+    consent: {
+      analytics: usuario?.cookie_consent_analytics ?? null,
+      marketing: usuario?.cookie_consent_marketing ?? null,
+    },
+  }
+}
+
+/**
+ * Extrae el bloque de canal de la metadata de Stripe.
+ *
+ * Devuelve NULL —no `{}`— cuando no hay ni una clave: una fila con `{}` se
+ * lee como "se midio y no habia canal", que es distinto de "no se midio".
+ * Con NULL, `WHERE acquisition IS NULL` separa limpio lo viejo y lo organico
+ * de lo atribuido.
+ */
+function construirAcquisition(
+  metadata: Record<string, string> | null | undefined
+): Record<string, string> | null {
+  if (!metadata) return null
+  const bloque: Record<string, string> = {}
+  for (const clave of CLAVES_ATRIBUCION) {
+    const valor = metadata[clave]
+    if (valor) bloque[clave] = valor
+  }
+  return Object.keys(bloque).length > 0 ? bloque : null
 }
 
 export async function POST(request: Request) {
@@ -145,6 +216,18 @@ export async function POST(request: Request) {
           // promoción" — es un dato correcto. Inventar un valor aquí es
           // exactamente lo que se quitó en la s27 con los periodos.
           promo_slug:           subscription.metadata?.promo_slug ?? null,
+          // Canal de origen, rescatado de la metadata que pusieron las dos
+          // puertas de checkout (construirMetadataCheckout).
+          //
+          // 🔴 NULL si no viene, y NULL es un dato correcto: trafico organico,
+          // o un pago anterior a este cambio. No se inventa 'direct' — seria
+          // indistinguible de una atribucion real y ensuciaria todo reporte
+          // por canal desde el primer dia.
+          //
+          // `promo_slug` NO se mete aqui dentro: ya tiene su columna desde la
+          // migracion 043 y duplicarlo daria dos verdades que se pueden
+          // contradecir.
+          acquisition:          construirAcquisition(subscription.metadata),
           metadata: {
             duration: planInfo.duration,
             price_id: priceId,
@@ -152,6 +235,102 @@ export async function POST(request: Request) {
         })
 
         console.log(`[webhooks/stripe] Subscription created for user ${userId}`)
+
+        // ── pago_exitoso ────────────────────────────────────────────────
+        //
+        // 🔴 NACE AQUI, no en el dashboard. `checkout_completed` de
+        // dashboard-client.tsx se pierde si la persona cierra antes de volver
+        // del redirect de Stripe, se duplica al recargar, y manda plan y
+        // precio ESCRITOS A MANO. Este es el unico punto que ve todos los
+        // pagos y ninguno de mas. Aquel queda congelado; este es el bueno.
+        //
+        // `checkout_event_id` cierra el circulo con el `checkout_iniciado`
+        // que disparo el navegador: es lo que permite medir cuantos checkouts
+        // abiertos acaban en cobro, y no solo cuantas personas pagaron.
+        try {
+          const { data: consentPago } = await supabase
+            .from('users')
+            .select('cookie_consent_analytics, cookie_consent_marketing')
+            .eq('id', userId)
+            .single()
+
+          const totales = (session as unknown as {
+            amount_total?: number | null
+            total_details?: { amount_discount?: number | null } | null
+          })
+          const amountDiscount = totales.total_details?.amount_discount ?? 0
+          const amountTotal = totales.amount_total ?? 0
+
+          await trackServer(
+            'pago_exitoso',
+            {
+              plan: planInfo.plan,
+              ciclo: planInfo.duration,
+              // 🔴 Lo COBRADO por Stripe, no el precio de lista. Con trial de
+              // 7 dias esto es 0 y `es_trial` lo explica: sin esa distincion,
+              // "ingresos nuevos" cuenta pruebas gratuitas como ventas.
+              monto_cobrado: amountTotal,
+              amount_discount: amountDiscount,
+              es_trial: isTrial,
+              checkout_event_id: subscription.metadata?.checkout_event_id ?? undefined,
+            },
+            {
+              consent: {
+                analytics: consentPago?.cookie_consent_analytics,
+                marketing: consentPago?.cookie_consent_marketing,
+              },
+              userId,
+              // 🔴 NO se pasa el checkout_event_id como eventId.
+              //
+              // `pago_exitoso` esta mapeado a Subscribe/CompletePayment... y
+              // el bloque de abajo YA los manda. Reusar aqui el id del
+              // checkout haria que Meta recibiera dos eventos con el mismo
+              // eventID y descartara uno de los dos en silencio.
+              // Ver la nota de duplicacion mas abajo.
+            }
+          )
+
+          // ── cupon_aplicado / checkout_sin_cupon ──────────────────────
+          //
+          // Lo unico observable del cupon. El codigo se teclea DENTRO del
+          // Checkout de Stripe y el rechazo ocurre en su dominio: no hay
+          // webhook ni campo que diga "intento uno y no valia".
+          //
+          // La diferencia entre estos dos acota cuanta gente lo intento: si
+          // se abren 100 sesiones con el campo de codigo visible y solo 12
+          // acaban con descuento, las otras 88 o no lo intentaron o fallaron.
+          if (amountDiscount > 0) {
+            await trackServer(
+              'cupon_aplicado',
+              { monto_descuento: amountDiscount, plan: planInfo.plan },
+              {
+                consent: {
+                  analytics: consentPago?.cookie_consent_analytics,
+                  marketing: consentPago?.cookie_consent_marketing,
+                },
+                userId,
+              }
+            )
+          } else if (!subscription.metadata?.promo_slug) {
+            // Sin promo servida por nosotros y sin descuento: la sesion se
+            // abrio con `allow_promotion_codes: true` y se completo a precio
+            // completo.
+            await trackServer(
+              'checkout_sin_cupon',
+              { plan: planInfo.plan, ciclo: planInfo.duration },
+              {
+                consent: {
+                  analytics: consentPago?.cookie_consent_analytics,
+                  marketing: consentPago?.cookie_consent_marketing,
+                },
+                userId,
+              }
+            )
+          }
+        } catch (err) {
+          // Nunca tumba el webhook: la suscripcion ya esta escrita arriba.
+          console.error('[webhooks/stripe] pago_exitoso fallo:', err)
+        }
 
         // Disparar eventos server-side a Meta y TikTok
         try {
@@ -393,6 +572,104 @@ export async function POST(request: Request) {
           })
           .eq('provider_sub_id', subscriptionId)
 
+        /**
+         * `renovacion_exitosa` — el cobro que dice si el producto retiene.
+         *
+         * 🔴 `ciclo_n` distingue la PRIMERA renovacion de la decima. La
+         * primera es la unica que responde "¿aguanta el producto un ciclo
+         * completo?"; la decima ya solo confirma lo que se sabia. Sin este
+         * campo las dos son la misma fila.
+         *
+         * Se deriva de `billing_reason`: `subscription_create` es el alta,
+         * `subscription_cycle` es una renovacion. El numero sale de contar
+         * cuantos ciclos han pasado desde el alta de la suscripcion.
+         */
+        try {
+          const facturaRenov = invoice as unknown as {
+            billing_reason?: string | null
+            amount_paid?: number | null
+          }
+
+          if (facturaRenov.billing_reason === 'subscription_cycle') {
+            const { data: filaSub } = await supabase
+              .from('subscriptions')
+              .select('user_id, plan, billing_cycle, created_at')
+              .eq('provider_sub_id', subscriptionId)
+              .maybeSingle()
+
+            if (filaSub?.user_id) {
+              const { data: consentimientoRenov } = await supabase
+                .from('users')
+                .select('cookie_consent_analytics, cookie_consent_marketing')
+                .eq('id', filaSub.user_id)
+                .maybeSingle()
+
+              const { count: nAsientos } = await supabase
+                .from('learners')
+                .select('id', { count: 'exact', head: true })
+                .eq('account_user_id', filaSub.user_id)
+                .eq('status', 'active')
+
+              await trackServer(
+                'renovacion_exitosa',
+                {
+                  ciclo_n: cicloNumero(filaSub.created_at, filaSub.billing_cycle),
+                  plan: filaSub.plan,
+                  ciclo: filaSub.billing_cycle,
+                  monto: facturaRenov.amount_paid ?? undefined,
+                  n_asientos: nAsientos ?? undefined,
+                },
+                {
+                  consent: {
+                    analytics: consentimientoRenov?.cookie_consent_analytics,
+                    marketing: consentimientoRenov?.cookie_consent_marketing,
+                  },
+                  userId: filaSub.user_id,
+                }
+              )
+            }
+          }
+        } catch (err) {
+          console.error('[webhooks/stripe] renovacion_exitosa fallo:', err)
+        }
+
+        // ── pago_recuperado ─────────────────────────────────────────────
+        //
+        // `attempt_count > 1` significa que este cobro NO salio a la primera:
+        // Stripe reintento y esta vez funciono. Es dinero que estuvo a punto
+        // de perderse, y sin este evento es indistinguible de un cobro normal.
+        //
+        // No hace falta escuchar nada nuevo: `invoice.paid` ya llega.
+        try {
+          const facturaDatos = invoice as unknown as {
+            attempt_count?: number | null
+            created?: number | null
+            status_transitions?: { finalized_at?: number | null } | null
+          }
+          const intentos = facturaDatos.attempt_count ?? 1
+          if (intentos > 1) {
+            const destino = await resolverDestinatario(supabase, subscriptionId)
+            if (destino) {
+              const creada = facturaDatos.created ? facturaDatos.created * 1000 : null
+              await trackServer(
+                'pago_recuperado',
+                {
+                  intentos,
+                  // Dias desde que se emitio la factura hasta que se cobro.
+                  // Es lo mas cercano a "cuanto tardo en recuperarse" que se
+                  // puede saber sin guardar el momento del primer fallo.
+                  dias_desde_fallo: creada
+                    ? Math.round((Date.now() - creada) / 86_400_000)
+                    : undefined,
+                },
+                { consent: destino.consent, userId: destino.userId }
+              )
+            }
+          }
+        } catch (err) {
+          console.error('[webhooks/stripe] pago_recuperado fallo:', err)
+        }
+
         // Enviar email de recibo de pago
         try {
           const { data: subRow } = await supabase
@@ -556,6 +833,163 @@ export async function POST(request: Request) {
 
           console.log(`[webhooks/stripe] Subscription resumed: ${subscription.id}`)
         }
+        break
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // 🔴 LOS TRES DE ABAJO NO ESTAN ACTIVADOS EN STRIPE (s36).
+      //
+      // El codigo esta escrito y probado de tipos, pero Stripe NO los manda
+      // hasta que se marquen en el endpoint del dashboard. Mientras no se
+      // activen, estos `case` simplemente nunca entran — no rompen nada y no
+      // cambian lo que ya llega.
+      //
+      // Activarlos cambia lo que Stripe envia a PRODUCCION, asi que es una
+      // decision aparte. Los eventos exactos van listados en el reporte.
+      // ═══════════════════════════════════════════════════════════════
+
+      // Requiere activar `invoice.payment_failed`
+      case 'invoice.payment_failed': {
+        const invoice = event.data.object as Stripe.Invoice
+        const subscriptionId = (invoice as unknown as { subscription: string }).subscription
+        if (!subscriptionId) break
+
+        const destino = await resolverDestinatario(supabase, subscriptionId)
+        if (!destino) break
+
+        // El motivo del rechazo vive en el PaymentIntent, no en la factura.
+        const detalle = (invoice as unknown as {
+          attempt_count?: number | null
+          last_finalization_error?: { code?: string; message?: string } | null
+        })
+
+        await trackServer(
+          'pago_fallido',
+          {
+            decline_code: detalle.last_finalization_error?.code ?? undefined,
+            motivo: detalle.last_finalization_error?.message ?? undefined,
+            intento_n: detalle.attempt_count ?? 1,
+          },
+          { consent: destino.consent, userId: destino.userId }
+        )
+
+        /**
+         * `suscripcion_past_due` — sin `dias_en_past_due`, a proposito.
+         *
+         * 🔴 La base NUNCA entra en ese estado: nadie escribe `past_due`.
+         * La UI lo pinta (perfil-client) y el dashboard lo lee, pero no hay
+         * un solo UPDATE que lo ponga. Mandar `dias_en_past_due` seria
+         * inventar la duracion de un estado que no existe.
+         *
+         * Lo que si es real: el numero de intento y el motivo del rechazo.
+         */
+        try {
+          const { data: filaSub } = await supabase
+            .from('subscriptions')
+            .select('plan, price_mxn')
+            .eq('provider_sub_id', subscriptionId)
+            .maybeSingle()
+
+          await trackServer(
+            'suscripcion_past_due',
+            {
+              intento_n: detalle.attempt_count ?? 1,
+              decline_code: detalle.last_finalization_error?.code ?? undefined,
+              plan: filaSub?.plan,
+              monto: filaSub?.price_mxn,
+            },
+            { consent: destino.consent, userId: destino.userId }
+          )
+        } catch (err) {
+          console.error('[webhooks/stripe] suscripcion_past_due fallo:', err)
+        }
+
+        // 🔴 SOLO se mide. NO se toca `status` ni se manda correo: Stripe
+        // reintenta varias veces antes de rendirse, y marcar past_due al
+        // primer fallo cortaria el acceso de alguien a quien se le va a
+        // cobrar bien en dos dias. Ese comportamiento es otra decision.
+        console.log(`[webhooks/stripe] Pago fallido en ${subscriptionId}`)
+        break
+      }
+
+      // Requiere activar `checkout.session.expired`
+      case 'checkout.session.expired': {
+        const sesion = event.data.object as Stripe.Checkout.Session
+        const userId = sesion.metadata?.user_id
+        if (!userId) break
+
+        const { data: usuario } = await supabase
+          .from('users')
+          .select('cookie_consent_analytics, cookie_consent_marketing')
+          .eq('id', userId)
+          .maybeSingle()
+
+        const creada = sesion.created ? sesion.created * 1000 : null
+
+        // 🔴 EL UNICO RASTRO POSIBLE DE UN CHECKOUT ABANDONADO. La sesion
+        // vive solo en Stripe: sin este evento, alguien que abre el checkout
+        // y no paga no deja absolutamente nada en la base. Stripe la expira
+        // a las 24h.
+        await trackServer(
+          'checkout_abandonado',
+          {
+            plan: sesion.metadata?.plan ?? undefined,
+            ciclo: sesion.metadata?.duration ?? undefined,
+            minutos_desde_creacion: creada
+              ? Math.round((Date.now() - creada) / 60_000)
+              : undefined,
+            checkout_event_id: sesion.metadata?.checkout_event_id ?? undefined,
+          },
+          {
+            consent: {
+              analytics: usuario?.cookie_consent_analytics,
+              marketing: usuario?.cookie_consent_marketing,
+            },
+            userId,
+          }
+        )
+        break
+      }
+
+      // Requiere activar `charge.dispute.created`
+      case 'charge.dispute.created': {
+        const disputa = event.data.object as Stripe.Dispute
+        const cargoId = typeof disputa.charge === 'string' ? disputa.charge : disputa.charge?.id
+        if (!cargoId) break
+
+        // La disputa no trae la suscripcion: hay que subir por el cargo.
+        const cargo = await stripe.charges.retrieve(cargoId)
+        const customerId = typeof cargo.customer === 'string' ? cargo.customer : cargo.customer?.id
+        if (!customerId) break
+
+        const { data: sub } = await supabase
+          .from('subscriptions')
+          .select('user_id')
+          .eq('provider_customer_id', customerId)
+          .maybeSingle()
+        if (!sub?.user_id) break
+
+        const { data: usuario } = await supabase
+          .from('users')
+          .select('cookie_consent_analytics, cookie_consent_marketing')
+          .eq('id', sub.user_id)
+          .maybeSingle()
+
+        await trackServer(
+          'chargeback',
+          { monto: disputa.amount, motivo: disputa.reason },
+          {
+            consent: {
+              analytics: usuario?.cookie_consent_analytics,
+              marketing: usuario?.cookie_consent_marketing,
+            },
+            userId: sub.user_id,
+          }
+        )
+
+        // 🔴 SOLO se mide. Una disputa NO cancela la suscripcion aqui: si el
+        // caso se gana, habriamos cortado el acceso de un cliente legitimo.
+        console.error(`[webhooks/stripe] CONTRACARGO ${disputa.id} — ${disputa.reason}`)
         break
       }
 

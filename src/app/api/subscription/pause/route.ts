@@ -3,6 +3,35 @@ import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
 import { sendEmail } from '@/lib/email/resend'
 import { pauseConfirmedTemplate } from '@/lib/email/templates/pause-confirmed'
+import { trackServer } from '@/lib/analytics/track-server'
+
+/** Dias enteros desde una fecha ISO. Solo analitica. */
+function diasEntre(iso: string | null | undefined): number | undefined {
+  if (!iso) return undefined
+  const ms = Date.now() - new Date(iso).getTime()
+  return ms >= 0 ? Math.floor(ms / 86_400_000) : undefined
+}
+
+/** Meses aproximados (30 dias) desde una fecha ISO. Solo analitica. */
+function mesesEntre(iso: string | null | undefined): number | undefined {
+  const dias = diasEntre(iso)
+  return dias == null ? undefined : Math.round(dias / 30)
+}
+
+async function leerConsentimiento(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string
+) {
+  const { data } = await supabase
+    .from('users')
+    .select('cookie_consent_analytics, cookie_consent_marketing')
+    .eq('id', userId)
+    .maybeSingle()
+  return {
+    analytics: data?.cookie_consent_analytics,
+    marketing: data?.cookie_consent_marketing,
+  }
+}
 
 const MAX_PAUSES_PER_YEAR = 2
 const MAX_PAUSE_MONTHS = 3
@@ -19,7 +48,9 @@ export async function POST(req: NextRequest) {
     // Buscar suscripción activa
     const { data: subscription } = await supabase
       .from('subscriptions')
-      .select('id, provider_sub_id, status, pause_count_year, pause_count_lifetime, current_period_end')
+      // `current_period_start`, `plan`, `billing_cycle` y `price_mxn`: solo
+      // analitica. Sin el primero no hay `dia_del_ciclo`.
+      .select('id, provider_sub_id, status, pause_count_year, pause_count_lifetime, current_period_start, current_period_end, plan, billing_cycle, price_mxn')
       .eq('user_id', user.id)
       .in('status', ['active', 'trialing'])
       .order('created_at', { ascending: false })
@@ -121,6 +152,27 @@ export async function POST(req: NextRequest) {
       console.error('[subscription/pause] Error sending email:', emailErr)
     }
 
+    try {
+      const consentimiento = await leerConsentimiento(supabase, user.id)
+      await trackServer(
+        'pausa_iniciada',
+        {
+          meses: months,
+          dia_del_ciclo: diasEntre(subscription.current_period_start),
+          plan: subscription.plan,
+          ciclo: subscription.billing_cycle,
+          // Lo que deja de entrar mientras dura la pausa. No es perdido:
+          // vuelve al reanudar, y por eso es una metrica distinta de
+          // `mrr_perdido` de la cancelacion.
+          mrr_pausado: subscription.price_mxn,
+          pausa_n_lifetime: (subscription.pause_count_lifetime ?? 0) + 1,
+        },
+        { consent: consentimiento, userId: user.id }
+      )
+    } catch (err) {
+      console.error('[subscription/pause] analitica fallo:', err)
+    }
+
     console.log(`[subscription/pause] Usuario ${user.id} pausó ${months} mes(es) hasta ${pausedUntil.toISOString()}`)
 
     return NextResponse.json({
@@ -146,7 +198,7 @@ export async function DELETE(req: NextRequest) {
     // asientos se marcaron por esta pausa y no por una baja manual.
     const { data: subscription } = await supabase
       .from('subscriptions')
-      .select('id, provider_sub_id, paused_until')
+      .select('id, provider_sub_id, paused_until, paused_at, plan, billing_cycle')
       .eq('user_id', user.id)
       .eq('status', 'paused')
       .order('created_at', { ascending: false })
@@ -201,6 +253,38 @@ export async function DELETE(req: NextRequest) {
       if (asientosError) {
         console.error('[subscription/pause] no se revirtieron los asientos:', asientosError)
       }
+    }
+
+    /**
+     * Reactivacion MANUAL, desde el perfil y antes de que venza la pausa.
+     *
+     * 🔴 `via: 'manual'` y `con_cupon: false` a proposito. El cron
+     * `pauses-ending` reactiva a TODO el mundo cuando vence el plazo y
+     * ademas aplica STRIPE_COUPON_REACTIVATION_50; esta via no aplica
+     * ninguno. Quien vuelve solo, sin descuento y antes de tiempo, vale mas
+     * que quien vuelve porque se le acabo el plazo — y sin estos dos campos
+     * los dos casos serian el mismo evento.
+     */
+    try {
+      const consentimiento = await leerConsentimiento(supabase, user.id)
+      await trackServer(
+        'pausa_terminada',
+        {
+          meses_pausados: mesesEntre(subscription.paused_at),
+          via: 'manual',
+          con_cupon: false,
+          plan: subscription.plan,
+          ciclo: subscription.billing_cycle,
+          // Se reactivo ANTES de que venciera: es la señal mas fuerte de que
+          // el producto se echaba de menos.
+          anticipada: subscription.paused_until
+            ? new Date(subscription.paused_until).getTime() > Date.now()
+            : false,
+        },
+        { consent: consentimiento, userId: user.id }
+      )
+    } catch (err) {
+      console.error('[subscription/pause] analitica DELETE fallo:', err)
     }
 
     console.log(`[subscription/pause] Reactivación manual para user ${user.id}`)

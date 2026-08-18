@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { resolveLearnerFromBody } from '@/lib/learners'
+import { trackServer } from '@/lib/analytics/track-server'
 
 export async function POST(request: Request) {
   try {
@@ -57,7 +58,7 @@ export async function POST(request: Request) {
     // --- Streak logic ---
     const { data: userRecord } = await supabase
       .from('learners')
-      .select('streak_days, last_active_at')
+      .select('streak_days, last_active_at, max_streak_days, first_session_at')
       .eq('id', learnerId)
       .single()
 
@@ -92,21 +93,105 @@ export async function POST(request: Request) {
       streakEvent = 'started'
     }
 
+    /**
+     * Primera sesion del alumno. Guard de NULL: solo se escribe si no habia
+     * nada, para que la fecha sea la del PRIMER acto real y no la del ultimo.
+     *
+     * Va aqui y no en el cliente a proposito: localStorage miente al cambiar
+     * de dispositivo —tablet por la tarde, telefono por la noche daria dos
+     * "primeras sesiones"— y una consulta por carga para preguntarlo seria
+     * peor que una columna.
+     */
+    const primeraSesion = !userRecord?.first_session_at
+    const camposPrimeraSesion = primeraSesion
+      ? { first_session_at: now.toISOString() }
+      : {}
+
+    /**
+     * Racha maxima historica. Es un GREATEST sobre lo que ya se escribe: NO
+     * cambia la logica de rachas, solo recuerda el techo. Sin esta columna,
+     * `es_record` no se puede calcular — `learners` solo guardaba la actual.
+     */
+    const maximaPrevia = userRecord?.max_streak_days ?? 0
+    const nuevaMaxima = Math.max(maximaPrevia, newStreak)
+
     if (streakEvent !== 'none') {
       await supabase
         .from('learners')
         .update({
           streak_days: newStreak,
           last_active_at: now.toISOString(),
+          max_streak_days: nuevaMaxima,
+          ...camposPrimeraSesion,
         })
         .eq('id', learnerId)
     } else {
       await supabase
         .from('learners')
-        .update({ last_active_at: now.toISOString() })
+        .update({ last_active_at: now.toISOString(), ...camposPrimeraSesion })
         .eq('id', learnerId)
     }
     // --- End streak logic ---
+
+    // --- Eventos de servidor ---
+    //
+    // Nada de esto altera la logica de arriba: se lee lo que ya estaba en la
+    // mano y se emite. Van en su propio try/catch — un fallo de analitica no
+    // puede tumbar el registro del avance de un alumno.
+    try {
+      const { data: consentimiento } = await supabase
+        .from('users')
+        .select('cookie_consent_analytics, cookie_consent_marketing')
+        .eq('id', user.id)
+        .maybeSingle()
+
+      const ctx = {
+        consent: {
+          analytics: consentimiento?.cookie_consent_analytics,
+          marketing: consentimiento?.cookie_consent_marketing,
+        },
+        userId: user.id,
+      }
+
+      if (primeraSesion) {
+        await trackServer('primera_sesion', { fuente: 'section_read' }, ctx)
+      }
+
+      if (streakEvent !== 'none') {
+        await trackServer(
+          'racha_actualizada',
+          {
+            dias_actual: newStreak,
+            dias_maxima: nuevaMaxima,
+            es_record: newStreak > maximaPrevia && newStreak > 1,
+            evento: streakEvent,
+          },
+          ctx
+        )
+      }
+
+      /**
+       * 🔴 `racha_rota` — el unico sitio del codigo donde se sabe.
+       *
+       * `streakEvent === 'started'` cubre DOS casos que el codigo no
+       * distingue: "empieza por primera vez" y "rompio una de 12 dias". La
+       * diferencia esta en el valor viejo, que aqui todavia se tiene en la
+       * mano y despues se pierde — el UPDATE de arriba ya lo piso.
+       *
+       * `> 1` a proposito: una racha de 1 dia que se rompe no es una racha
+       * perdida, es un alumno que vino una vez.
+       */
+      const rachaVieja = userRecord?.streak_days ?? 0
+      if (streakEvent === 'started' && rachaVieja > 1) {
+        await trackServer(
+          'racha_rota',
+          { dias_perdidos: rachaVieja, dias_maxima: nuevaMaxima },
+          ctx
+        )
+      }
+    } catch (err) {
+      console.error('[section-read] analitica fallo:', err)
+    }
 
     // Count total sections for this topic
     const { count: totalSections } = await supabase

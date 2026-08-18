@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
+import { trackServer } from '@/lib/analytics/track-server'
 
 export async function POST(req: NextRequest) {
   try {
@@ -38,6 +39,45 @@ export async function POST(req: NextRequest) {
     if (error) {
       console.error('[cancellation-feedback] DB error:', error)
       return NextResponse.json({ error: 'Error al guardar feedback' }, { status: 500 })
+    }
+
+    /**
+     * `motivo_cancelacion` desde el SERVIDOR, no solo desde el cliente.
+     *
+     * El cliente tambien lo emite, pero este es el que cuenta: si la fila
+     * llego a `cancellation_reasons`, este evento existe. Sin el, el motivo
+     * viviria solo en PostHog y no habria forma de cuadrar el tablero de
+     * admin —que lee la tabla— contra el embudo.
+     *
+     * Va DESPUES del insert y solo si no hubo error: se anuncia lo que de
+     * verdad se guardo.
+     */
+    try {
+      const { data: consentimiento } = await supabase
+        .from('users')
+        .select('cookie_consent_analytics, cookie_consent_marketing')
+        .eq('id', user.id)
+        .maybeSingle()
+
+      await trackServer(
+        'motivo_cancelacion',
+        {
+          motivo: reason_category,
+          texto_libre: typeof reason_detail === 'string' && reason_detail.trim().length > 0,
+          pausa_ofrecida: pause_offered ?? false,
+          pausa_aceptada: pause_accepted ?? false,
+          origen: 'servidor',
+        },
+        {
+          consent: {
+            analytics: consentimiento?.cookie_consent_analytics,
+            marketing: consentimiento?.cookie_consent_marketing,
+          },
+          userId: user.id,
+        }
+      )
+    } catch (err) {
+      console.error('[cancellation-feedback] analitica fallo:', err)
     }
 
     return NextResponse.json({ ok: true })

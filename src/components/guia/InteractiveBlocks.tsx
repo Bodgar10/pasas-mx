@@ -10,6 +10,27 @@ export const AUDIO_TEXT_TYPES = new Set<string>(['explanation', 'analogy', 'exam
 // Registro global para que solo un audio suene a la vez en toda la página.
 const audioRegistry = new Set<HTMLAudioElement>()
 
+/**
+ * Callback de ANALITICA comun a los cinco bloques interactivos.
+ *
+ * 🔴 Solo informa. Ningun bloque cambia su mecanica, su XP ni su condicion
+ * de completado por esto: si `onProgreso` es undefined el bloque se comporta
+ * exactamente igual.
+ *
+ * Existe porque ninguno de los cinco se desmonta —viven dentro de la pestaña
+ * `guia` de topic-client, que se oculta con display:none— asi que el padre no
+ * tiene forma de saber por donde se quedo alguien que abandono. `paso` es lo
+ * que hace util a `interactivo_abandonado`.
+ */
+export type ProgresoInteractivo = {
+  /** Descripcion corta del punto alcanzado. Ej: 'paso_3', 'ejercicio_2'. */
+  paso: string
+  /** Intentos consumidos hasta aqui, cuando el bloque lleva la cuenta. */
+  intentos?: number
+}
+
+export type OnProgreso = (p: ProgresoInteractivo) => void
+
 export function RevealOnScroll({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -119,7 +140,15 @@ interface ScrubberData {
   question?: string
 }
 
-export function ScrubberBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+export function ScrubberBlock({
+  data,
+  onComplete,
+  onProgreso,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+}) {
   const sc = data as unknown as ScrubberData | null
   const [val, setVal] = useState<number>(() => sc?.start ?? 0)
   const [moved, setMoved] = useState(false)
@@ -171,6 +200,11 @@ export function ScrubberBlock({ data, onComplete }: { data: Record<string, unkno
           setVal(Number(e.target.value))
           if (!moved) {
             setMoved(true)
+            // 🔴 El scrubber se completa al PRIMER movimiento: no tiene
+            // estado intermedio ni condicion de acierto. Por eso `inicio` y
+            // `completado` ocurren a la vez, y por eso este bloque no puede
+            // abandonarse — o no lo tocaste, o lo completaste.
+            onProgreso?.({ paso: 'movido' })
             onComplete?.()
           }
         }}
@@ -192,7 +226,15 @@ interface StepsData {
   steps: { text: string; delta?: number }[]
 }
 
-export function StepsBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+export function StepsBlock({
+  data,
+  onComplete,
+  onProgreso,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+}) {
   const sd = data as unknown as StepsData | null
   const [step, setStep] = useState(0)
 
@@ -275,6 +317,9 @@ export function StepsBlock({ data, onComplete }: { data: Record<string, unknown>
           onClick={() => {
             const next = step + 1
             setStep(next)
+            // Cada avance deja constancia de por donde va. Es lo unico que
+            // permite saber en que paso se atasco quien no llego al final.
+            onProgreso?.({ paso: `paso_${next}` })
             if (next >= sd.steps.length) onComplete?.()
           }}
           style={{
@@ -311,8 +356,22 @@ interface SortData {
   items: { t: string; b: number }[]
 }
 
-export function SortBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+export function SortBlock({
+  data,
+  onComplete,
+  onProgreso,
+  onFallo,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+  /** Comprobo y NO acerto. Ver la nota de `check` mas abajo. */
+  onFallo?: (d: { intentos: number }) => void
+}) {
   const sort = data as unknown as SortData | null
+  // Solo para analitica: no entra en ningun render ni en la condicion de
+  // completado.
+  const intentosRef = useRef(0)
   const [assign, setAssign] = useState<number[]>(
     () => (sort?.items ?? []).map(() => -1)
   )
@@ -471,7 +530,27 @@ export function SortBlock({ data, onComplete }: { data: Record<string, unknown> 
           disabled={!allDone}
           onClick={() => {
             setChecked(true)
-            if (correct) onComplete?.()
+            intentosRef.current += 1
+
+            /**
+             * 🔴 `onComplete` SOLO SI ACIERTA. Es la mecanica existente y no
+             * se toca — pero tiene una consecuencia que hay que medir:
+             *
+             * `interactivo_completado` de `sort` mide "ACERTO", no
+             * "TERMINO". Quien comprueba y falla no completa, y como el
+             * IntersectionObserver de topic-client excluye los tipos
+             * interactivos, esa seccion NO se marca como leida y NO da XP.
+             *
+             * Sin `onFallo`, un alumno atascado en un sort es invisible: no
+             * completa, no gana XP, y no deja rastro de haberlo intentado.
+             */
+            if (correct) {
+              onProgreso?.({ paso: 'correcto', intentos: intentosRef.current })
+              onComplete?.()
+            } else {
+              onProgreso?.({ paso: 'fallo', intentos: intentosRef.current })
+              onFallo?.({ intentos: intentosRef.current })
+            }
           }}
           style={{
             width: '100%', minHeight: 44,
@@ -501,7 +580,15 @@ interface MatchData {
   pairs: { a: string; b: string }[]
 }
 
-export function MatchBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+export function MatchBlock({
+  data,
+  onComplete,
+  onProgreso,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+}) {
   const md = data as unknown as MatchData | null
 
   const [cards] = useState(() => {
@@ -522,6 +609,9 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
   const [matched, setMatched] = useState<number[]>([])
   const busyRef = useRef(false)
   const flippedRef = useRef<number[]>([])
+  // Volteos totales, solo para analitica. Mide cuanto costo el memorama:
+  // el minimo posible es 2 por pareja.
+  const volteosRef = useRef(0)
 
   if (!md || !Array.isArray(md.pairs) || md.pairs.length < 2) return null
 
@@ -529,6 +619,7 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
 
   function tap(card: { id: number; pairId: number; text: string }) {
     if (busyRef.current || matched.includes(card.pairId) || flippedRef.current.includes(card.id)) return
+    volteosRef.current += 1
     const next = [...flippedRef.current, card.id]
     flippedRef.current = next
     setFlipped(next)
@@ -543,6 +634,9 @@ export function MatchBlock({ data, onComplete }: { data: Record<string, unknown>
           flippedRef.current = []
           setFlipped([])
           busyRef.current = false
+          // `paso` es cuantas parejas lleva: es lo que dice donde se
+          // quedo quien abandona a medias.
+          onProgreso?.({ paso: `parejas_${nm.length}_de_${totalPairs}`, intentos: volteosRef.current })
           if (nm.length === totalPairs) onComplete?.()
         }, 450)
       } else {
@@ -680,13 +774,43 @@ function isRightAnswer(raw: string, expected: number, tolerance = 0): boolean {
   return parseAnswers(raw).some((v) => Math.abs(v - expected) <= tol)
 }
 
-export function SolveBlock({ data, onComplete }: { data: Record<string, unknown> | null; onComplete?: () => void }) {
+/** Eventos de analitica de SolveBlock (Papel y Lapiz). */
+export type EventosSolve = {
+  /**
+   * 🔴 SOLO el clic del boton de pista. NUNCA la pista que se revela al
+   * fallar: `check()` incrementa el MISMO contador `shown`, asi que contar
+   * esas como pedidas inflaria la metrica que valida el diferenciador —
+   * "cuanta gente usa las pistas" pasaria a ser "cuanta gente falla".
+   */
+  onPistaPedida?: (d: { ejercicioOrden: number; nPista: number; trasFallar: boolean }) => void
+  /** Acerto. `nPistasUsadas` incluye las reveladas por fallo. */
+  onResuelto?: (d: { ejercicioOrden: number; nPistasUsadas: number; intentos: number }) => void
+  /** Se rindio y pidio ver el paso a paso. Solo posible sin pistas restantes. */
+  onRevelada?: (d: { ejercicioOrden: number; nPistasUsadas: number }) => void
+}
+
+export function SolveBlock({
+  data,
+  onComplete,
+  onProgreso,
+  onPistaPedida,
+  onResuelto,
+  onRevelada,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+} & EventosSolve) {
   const sv = data as unknown as SolveData | null
   const [index, setIndex] = useState(0)
   const [value, setValue] = useState('')
   const [state, setState] = useState<'typing' | 'right' | 'wrong' | 'solution'>('typing')
   const [shown, setShown] = useState(0)
   const [done, setDone] = useState(false)
+  // Intentos y fallos del ejercicio ACTUAL. Se reinician en next(), igual
+  // que `shown`. Solo analitica.
+  const intentosRef = useRef(0)
+  const falloRef = useRef(false)
 
   if (!sv || !Array.isArray(sv.questions) || sv.questions.length === 0) return null
   const valid = sv.questions.every(
@@ -709,14 +833,26 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
 
   function check() {
     if (!value.trim()) return
+    intentosRef.current += 1
+
     if (isRightAnswer(value, current.answer, current.tolerance)) {
       setState('right')
+      // El momento que valida el producto: resolvio, y se sabe con cuantas
+      // pistas encima. `nPistasUsadas: 0` es "lo saco solo".
+      onResuelto?.({
+        ejercicioOrden: index,
+        nPistasUsadas: shown,
+        intentos: intentosRef.current,
+      })
+      onProgreso?.({ paso: `ejercicio_${index}_resuelto`, intentos: intentosRef.current })
       return
     }
     // Fallar revela la siguiente pista. Resolver con pistas cuenta igual
     // que resolver solo: penalizar la ayuda ensena a no pedirla.
     setState('wrong')
+    falloRef.current = true
     setShown((n) => Math.min(n + 1, current.hints.length))
+    onProgreso?.({ paso: `ejercicio_${index}_fallo`, intentos: intentosRef.current })
   }
 
   function next() {
@@ -729,6 +865,8 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
     setValue('')
     setState('typing')
     setShown(0)
+    intentosRef.current = 0
+    falloRef.current = false
   }
 
   if (done) {
@@ -867,7 +1005,17 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
           {hintsLeft > 0 && (
             <button
               type="button"
-              onClick={() => setShown((n) => Math.min(n + 1, current.hints.length))}
+              onClick={() => {
+                const siguiente = Math.min(shown + 1, current.hints.length)
+                setShown(siguiente)
+                // `trasFallar` distingue al que pide ayuda de entrada del que
+                // la pide despues de estrellarse: son dos alumnos distintos.
+                onPistaPedida?.({
+                  ejercicioOrden: index,
+                  nPista: siguiente,
+                  trasFallar: falloRef.current,
+                })
+              }}
               style={{
                 width: '100%',
                 minHeight: 40,
@@ -976,7 +1124,11 @@ export function SolveBlock({ data, onComplete }: { data: Record<string, unknown>
           {hintsLeft === 0 && (
             <button
               type="button"
-              onClick={() => setState('solution')}
+              onClick={() => {
+                setState('solution')
+                onRevelada?.({ ejercicioOrden: index, nPistasUsadas: shown })
+                onProgreso?.({ paso: `ejercicio_${index}_revelado`, intentos: intentosRef.current })
+              }}
               style={{ ...nextBtnStyle, background: 'transparent', color: '#a78bfa', minHeight: 40, marginTop: 6 }}
             >
               Ver la respuesta completa
@@ -1057,27 +1209,111 @@ function formatTime(s: number): string {
   return `${m}:${String(sec).padStart(2, '0')}`
 }
 
-export function AudioPlayer({ url, duration }: { url: string; duration?: number | null }) {
+/** Eventos de analitica del reproductor. Ninguno cambia la reproduccion. */
+export type EventosAudio = {
+  onAudioInicio?: (d: { duracionTotalSeg: number }) => void
+  onAudioProgreso?: (d: { pct: 25 | 50 | 75 | 100 }) => void
+  onAudioFin?: (d: { pctEscuchado: number; segundosEscuchados: number; motivo: 'fin' | 'pausa' }) => void
+}
+
+export function AudioPlayer({
+  url,
+  duration,
+  onAudioInicio,
+  onAudioProgreso,
+  onAudioFin,
+}: { url: string; duration?: number | null } & EventosAudio) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [playing, setPlaying] = useState(false)
   const [current, setCurrent] = useState(0)
   const [total, setTotal] = useState<number>(duration ?? 0)
 
+  // ── Estado de analitica. Todo en refs: ni un render de mas. ──────────
+  const hitosRef = useRef<Set<number>>(new Set())
+  const iniciadoRef = useRef(false)
+  const escuchadoRef = useRef(0)
+  const ultimoTiempoRef = useRef(0)
+  /**
+   * 🔴 Distingue el `pause` del USUARIO del que provoca `audioRegistry` al
+   * arrancar otro audio.
+   *
+   * `toggle()` pausa los demas antes de reproducir el suyo, y eso dispara un
+   * evento `pause` en cada uno. Sin esta marca, empezar a escuchar una
+   * seccion contaria como "abandono" de la anterior — y `audio_terminado`
+   * mediria interrupciones ajenas en vez de decisiones del alumno.
+   */
+  const pausaAjenaRef = useRef(false)
+
   useEffect(() => {
     const el = audioRef.current
     if (!el) return
     audioRegistry.add(el)
-    const onTime = () => setCurrent(el.currentTime)
+    const onTime = () => {
+      setCurrent(el.currentTime)
+
+      // Segundos REALMENTE escuchados: se acumula el avance entre ticks y se
+      // ignoran los saltos del seek. Sin esto, arrastrar la barra al final
+      // contaria como haberlo escuchado entero.
+      const delta = el.currentTime - ultimoTiempoRef.current
+      if (delta > 0 && delta < 2) escuchadoRef.current += delta
+      ultimoTiempoRef.current = el.currentTime
+
+      const dur = el.duration && isFinite(el.duration) ? el.duration : total
+      if (!dur) return
+      const pct = (el.currentTime / dur) * 100
+      for (const hito of [25, 50, 75, 100] as const) {
+        if (pct >= hito && !hitosRef.current.has(hito)) {
+          hitosRef.current.add(hito)
+          onAudioProgreso?.({ pct: hito })
+        }
+      }
+    }
     const onLoaded = () => { if (el.duration && isFinite(el.duration)) setTotal(el.duration) }
-    const onEnd = () => { setPlaying(false); setCurrent(0); el.currentTime = 0 }
-    const onPlay = () => setPlaying(true)
-    const onPause = () => setPlaying(false)
+    const onEnd = () => {
+      // 🔴 ANTES del reset. `onEnd` pone currentTime a 0, y emitir despues
+      // mandaria cero segundos escuchados en todos los audios completados.
+      const dur = el.duration && isFinite(el.duration) ? el.duration : total
+      onAudioFin?.({
+        pctEscuchado: dur ? Math.round((escuchadoRef.current / dur) * 100) : 0,
+        segundosEscuchados: Math.round(escuchadoRef.current),
+        motivo: 'fin',
+      })
+      setPlaying(false); setCurrent(0); el.currentTime = 0
+      ultimoTiempoRef.current = 0
+    }
+    const onPlay = () => {
+      setPlaying(true)
+      if (!iniciadoRef.current) {
+        iniciadoRef.current = true
+        const dur = el.duration && isFinite(el.duration) ? el.duration : total
+        onAudioInicio?.({ duracionTotalSeg: Math.round(dur) })
+      }
+    }
+    const onPause = () => {
+      setPlaying(false)
+      // Pausa provocada por otro audio: no es una decision del alumno.
+      if (pausaAjenaRef.current) {
+        pausaAjenaRef.current = false
+        return
+      }
+      // Ni tampoco la pausa que acompaña al final natural: `ended` ya emitio.
+      if (el.ended) return
+      const dur = el.duration && isFinite(el.duration) ? el.duration : total
+      onAudioFin?.({
+        pctEscuchado: dur ? Math.round((escuchadoRef.current / dur) * 100) : 0,
+        segundosEscuchados: Math.round(escuchadoRef.current),
+        motivo: 'pausa',
+      })
+    }
+    const onPausaAjena = () => { pausaAjenaRef.current = true }
+    el.addEventListener('pasas:pausa-ajena', onPausaAjena)
     el.addEventListener('timeupdate', onTime)
     el.addEventListener('loadedmetadata', onLoaded)
     el.addEventListener('ended', onEnd)
     el.addEventListener('play', onPlay)
     el.addEventListener('pause', onPause)
     return () => {
+      el.removeEventListener('pasas:pausa-ajena', onPausaAjena)
       el.removeEventListener('timeupdate', onTime)
       el.removeEventListener('loadedmetadata', onLoaded)
       el.removeEventListener('ended', onEnd)
@@ -1092,7 +1328,14 @@ export function AudioPlayer({ url, duration }: { url: string; duration?: number 
     if (!el) return
     if (el.paused) {
       // Detener cualquier otro audio que esté sonando
-      audioRegistry.forEach((other) => { if (other !== el) other.pause() })
+      audioRegistry.forEach((other) => {
+        if (other !== el) {
+          // Marca la pausa como AJENA antes de provocarla: el listener del
+          // otro reproductor la lee y no la cuenta como abandono.
+          other.dispatchEvent(new CustomEvent('pasas:pausa-ajena'))
+          other.pause()
+        }
+      })
       el.play().catch(() => {})
     } else {
       el.pause()

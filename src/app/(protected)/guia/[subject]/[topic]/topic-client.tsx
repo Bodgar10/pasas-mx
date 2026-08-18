@@ -1,10 +1,11 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useCallback, useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
 import HordeEntryCard from '@/components/guia/HordeEntryCard'
 import { rutaAlumno } from '@/lib/learners'
+import { ahoraMs, track } from '@/lib/analytics/track'
 import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
@@ -218,6 +219,109 @@ export default function TopicClient({
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'horda' | 'resumen'>('guia')
 
+  // ── ANALITICA ────────────────────────────────────────────────────────
+  //
+  // Todo en refs: ni un re-render de mas en la pantalla mas usada del
+  // producto. Nada de esto toca XP, progreso ni la mecanica de ningun bloque.
+
+  /** Reloj ACTIVO del tema. Se para si la pestaña pasa a segundo plano. */
+  const activoRef = useRef({ acumuladoMs: 0, desde: 0, activo: true })
+  const inicioTemaRef = useRef(0)
+  /** Momento en que cada seccion entro en pantalla, para segundos_en_seccion. */
+  const inicioSeccionRef = useRef<Map<string, number>>(new Map())
+  /** Estado por bloque interactivo, para poder derivar el abandono. */
+  const interactivosRef = useRef<Map<string, { inicio: number; ultimoPaso: string; intentos: number; completado: boolean }>>(new Map())
+  const inicioQuizRef = useRef(0)
+  const inicioPreguntaRef = useRef(0)
+  const quizIniciadoRef = useRef(false)
+  const salidaEnviadaRef = useRef(false)
+
+  const segundosActivos = useCallback(() => {
+    const a = activoRef.current
+    const ms = a.acumuladoMs + (a.activo ? Date.now() - a.desde : 0)
+    return Math.round(ms / 1000)
+  }, [])
+
+  useEffect(() => {
+    const ahora = Date.now()
+    inicioTemaRef.current = ahora
+    inicioSeccionRef.current.clear()
+    activoRef.current = { acumuladoMs: 0, desde: ahora, activo: true }
+  }, [])
+
+  /**
+   * 🔴 Tiempo ACTIVO, no tiempo abierto. Un alumno que deja la tablet abierta
+   * en una seccion no estuvo dos horas leyendola. El reloj se para al pasar a
+   * segundo plano y se reanuda al volver.
+   */
+  useEffect(() => {
+    const alCambiar = () => {
+      const a = activoRef.current
+      if (document.visibilityState === 'hidden') {
+        if (a.activo) {
+          a.acumuladoMs += Date.now() - a.desde
+          a.activo = false
+        }
+      } else if (!a.activo) {
+        a.desde = Date.now()
+        a.activo = true
+      }
+    }
+    document.addEventListener('visibilitychange', alCambiar)
+    return () => document.removeEventListener('visibilitychange', alCambiar)
+  }, [])
+
+  /**
+   * Abandono de bloques interactivos.
+   *
+   * 🔴 NO existe `sesion_abandonada` generico: PostHog ya cubre la salida de
+   * una pantalla con Session Replay y User Paths. Lo que PostHog NO sabe es
+   * en que PASO de un minijuego se quedo alguien, y para eso existe esto.
+   *
+   * `visibilitychange` + `pagehide` + desmontaje, una sola vez por montaje.
+   * Los tres hacen falta: en movil el sistema puede matar la pestaña sin
+   * avisar despues, y el desmontaje cubre la navegacion interna.
+   */
+  const emitirAbandonos = useCallback(() => {
+    if (salidaEnviadaRef.current) return
+    salidaEnviadaRef.current = true
+    for (const [id, est] of interactivosRef.current) {
+      if (est.completado) continue
+      const seccion = sections.find((sec) => sec.id === id)
+      track('interactivo_abandonado', {
+        tipo: seccion?.type,
+        topic: topic.name,
+        seccion_orden: seccion?.display_order,
+        segundos: Math.round((Date.now() - est.inicio) / 1000),
+        ultimo_paso: est.ultimoPaso,
+        n_intentos: est.intentos,
+      })
+    }
+  }, [sections, topic.name])
+
+  useEffect(() => {
+    const alOcultar = () => {
+      if (document.visibilityState === 'hidden') emitirAbandonos()
+    }
+    document.addEventListener('visibilitychange', alOcultar)
+    window.addEventListener('pagehide', emitirAbandonos)
+    return () => {
+      document.removeEventListener('visibilitychange', alOcultar)
+      window.removeEventListener('pagehide', emitirAbandonos)
+      emitirAbandonos()
+    }
+  }, [emitirAbandonos])
+
+  /** Estado de un bloque interactivo, creandolo al primer contacto. */
+  const estadoInteractivo = useCallback((sectionId: string, tipo: string, orden: number) => {
+    const actual = interactivosRef.current.get(sectionId)
+    if (actual) return actual
+    const nuevo = { inicio: Date.now(), ultimoPaso: 'inicio', intentos: 0, completado: false }
+    interactivosRef.current.set(sectionId, nuevo)
+    track('interactivo_iniciado', { tipo, topic: topic.name, seccion_orden: orden })
+    return nuevo
+  }, [topic.name])
+
   // Los tabs se ocultan con display:none, no se desmontan, asi que cambiar
   // de tab conserva la posicion de scroll. Sin esto, "IR AL QUIZ" desde el
   // final de la guia deja al alumno a media lista de preguntas.
@@ -291,6 +395,17 @@ export default function TopicClient({
     if (sections.length > 0) {
       trackTopicStarted(topic.name, subject.name, '')
     }
+    // `track()` es el camino nuevo; `trackTopicStarted` queda congelado y se
+    // retira cuando este lleve historico suficiente. Aqui si van las
+    // propiedades que aquel no tenia.
+    track('tema_abierto', {
+      topic: topic.name,
+      subject: subject.name,
+      es_primera_vez: !initialProgress,
+      n_secciones: sections.length,
+      n_preguntas_quiz: quizQuestions.length,
+      tiene_horda: hordeHasBank,
+    })
   }, [])
 
   useEffect(() => {
@@ -350,10 +465,25 @@ export default function TopicClient({
             // Skip sections already read in previous sessions
             if (!sectionId || readSections.has(sectionId) || readSectionIds.includes(sectionId)) return
 
+            // Momento en que la seccion entro en pantalla. El observer usa
+            // threshold 0.6, asi que esto es "empezo a verla de verdad".
+            if (!inicioSeccionRef.current.has(sectionId)) {
+              inicioSeccionRef.current.set(sectionId, Date.now())
+            }
+
             const timer = setTimeout(() => {
               setReadSections((prev) => {
                 if (prev.has(sectionId)) return prev
                 return new Set([...prev, sectionId])
+              })
+
+              const seccion = sections.find((sec) => sec.id === sectionId)
+              const desde = inicioSeccionRef.current.get(sectionId) ?? Date.now()
+              track('seccion_vista', {
+                tipo: seccion?.type,
+                orden: seccion?.display_order,
+                topic: topic.name,
+                segundos_en_seccion: Math.round((Date.now() - desde) / 1000),
               })
 
               fetch('/api/section-read', {
@@ -371,6 +501,13 @@ export default function TopicClient({
                   if (!data.already_read && data.xp_earned > 0) {
                     setSessionXp((prev) => prev + data.xp_earned)
                   }
+                  if (data.xp_earned > 0 && !data.already_read) {
+                    track('xp_ganado', {
+                      cantidad: data.xp_earned,
+                      fuente: 'seccion_leida',
+                      topic: topic.name,
+                    })
+                  }
                   if (data.streak?.event === 'continued' || data.streak?.event === 'started') {
                     setStreakToast({
                       days: data.streak.days,
@@ -378,7 +515,22 @@ export default function TopicClient({
                     })
                   }
                 })
-                .catch(() => {})
+                /**
+                 * 🔴 Antes era `.catch(() => {})`.
+                 *
+                 * Un fallo de red aqui BORRA progreso del alumno: la seccion
+                 * queda sin marcar, sin XP y sin racha, y la pantalla no dice
+                 * nada. El comportamiento no cambia —sigue sin romper nada—
+                 * pero ahora deja rastro.
+                 */
+                .catch((err) => {
+                  track('error_occurred', {
+                    error_type: 'section_read_api',
+                    error_message: err instanceof Error ? err.message : 'unknown',
+                    context: `topic:${topic.name}`,
+                    ruta: window.location.pathname,
+                  })
+                })
             }, 2000)
 
             ;(entry.target as HTMLElement).dataset.timerId = String(timer)
@@ -407,6 +559,20 @@ export default function TopicClient({
 
   async function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
     if (answers[questionId]) return
+
+    // Primera respuesta = arranque del quiz. No hay pantalla de "empezar":
+    // la pestaña ya esta montada desde el principio (display:none), asi que
+    // no existe un montaje del que colgarse.
+    if (!quizIniciadoRef.current) {
+      quizIniciadoRef.current = true
+      inicioQuizRef.current = ahoraMs()
+      inicioPreguntaRef.current = ahoraMs()
+      track('quiz_iniciado', { topic: topic.name, n_preguntas: quizQuestions.length, intento_n: attempt })
+    }
+
+    const segundosEnPregunta = Math.round((ahoraMs() - inicioPreguntaRef.current) / 1000)
+    inicioPreguntaRef.current = ahoraMs()
+
     const isCorrect = selectedLetter === question.correct_answer
     const newCombo = isCorrect ? combo + 1 : 0
     const multiplier = newCombo >= 3 ? 2 : newCombo >= 2 ? 1.5 : 1
@@ -433,6 +599,20 @@ export default function TopicClient({
       ).length
       totalCorrect = correctCount
       finalScore = Math.round((correctCount / quizQuestions.length) * 100)
+    }
+
+    track('quiz_pregunta', {
+      topic: topic.name,
+      es_correcta: isCorrect,
+      dificultad: question.difficulty,
+      segundos_en_pregunta: segundosEnPregunta,
+      intento_n: attempt,
+      combo: newCombo,
+      orden: currentAnswerCount + 1,
+    })
+
+    if (isCorrect && xpEarned > 0) {
+      track('xp_ganado', { cantidad: xpEarned, fuente: 'quiz', topic: topic.name, combo: newCombo })
     }
 
     const apiPayload = {
@@ -471,23 +651,78 @@ export default function TopicClient({
             setSessionXp((prev) => prev + 150)
           }
           trackTopicCompleted(topic.name, subject.name, data.best_score, data.perfect)
+
+          track('tema_completado', {
+            topic: topic.name,
+            subject: subject.name,
+            score: data.best_score,
+            es_perfecto: data.perfect,
+            minutos_totales: Math.round(segundosActivos() / 60),
+            n_secciones_vistas: readSections.size + readSectionIds.length,
+            n_secciones: sections.length,
+          })
+
+          if (data.perfect) {
+            track('xp_ganado', { cantidad: 150, fuente: 'quiz_perfecto', topic: topic.name })
+          }
         }
+
+        track('quiz_completado', {
+          topic: topic.name,
+          score: finalScore,
+          n_correctas: totalCorrect,
+          n_total: quizQuestions.length,
+          segundos_totales: Math.round((ahoraMs() - inicioQuizRef.current) / 1000),
+          intento_n: attempt,
+        })
+
         trackQuizAnswered(topic.name, isCorrect, question.difficulty)
       } catch (err) {
         const { trackError } = await import('@/components/posthog-events')
         trackError('quiz_answer_api', err instanceof Error ? err.message : 'unknown', `topic:${topic.name}`)
+        track('error_occurred', {
+          error_type: 'quiz_answer_api',
+          error_message: err instanceof Error ? err.message : 'unknown',
+          context: `topic:${topic.name}`,
+          ruta: window.location.pathname,
+        })
       }
     } else {
       fetch('/api/quiz-answer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(apiPayload),
-      }).catch(() => {})
+      })
+        /**
+         * 🔴 Antes era `.catch(() => {})`. Las respuestas intermedias que
+         * fallaban se perdian sin dejar nada: el alumno contestaba, la
+         * pantalla le decia que bien, y el XP no llegaba nunca. Sigue sin
+         * romper la pantalla — solo deja rastro.
+         */
+        .catch((err) => {
+          track('error_occurred', {
+            error_type: 'quiz_answer_api_intermedia',
+            error_message: err instanceof Error ? err.message : 'unknown',
+            context: `topic:${topic.name}`,
+            ruta: window.location.pathname,
+          })
+        })
       trackQuizAnswered(topic.name, isCorrect, question.difficulty)
     }
   }
 
   function handleInteractiveComplete(sectionId: string) {
+    const seccion = sections.find((sec) => sec.id === sectionId)
+    const est = interactivosRef.current.get(sectionId)
+    if (est) est.completado = true
+    track('interactivo_completado', {
+      tipo: seccion?.type,
+      topic: topic.name,
+      seccion_orden: seccion?.display_order,
+      segundos: est ? Math.round((ahoraMs() - est.inicio) / 1000) : undefined,
+      n_intentos: est?.intentos,
+    })
+
     if (readSections.has(sectionId) || readSectionIds.includes(sectionId)) return
     setReadSections((prev) => {
       if (prev.has(sectionId)) return prev
@@ -508,11 +743,23 @@ export default function TopicClient({
         if (!data.already_read && data.xp_earned > 0) {
           setSessionXp((prev) => prev + data.xp_earned)
         }
+        if (data.xp_earned > 0 && !data.already_read) {
+          track('xp_ganado', { cantidad: data.xp_earned, fuente: 'interactivo', topic: topic.name })
+        }
         if (data.streak?.event === 'continued' || data.streak?.event === 'started') {
           setStreakToast({ days: data.streak.days, event: data.streak.event })
         }
       })
-      .catch(() => {})
+      .catch((err) => {
+        // Mismo motivo que en el observer: sin esto, un fallo de red borra
+        // el avance del minijuego en silencio.
+        track('error_occurred', {
+          error_type: 'section_read_api_interactivo',
+          error_message: err instanceof Error ? err.message : 'unknown',
+          context: `topic:${topic.name}`,
+          ruta: window.location.pathname,
+        })
+      })
   }
 
   const orderedSections = [...sections].sort(
@@ -898,15 +1145,91 @@ export default function TopicClient({
                           }}
                         />
                       ) : section.type === 'sort' ? (
-                        <SortBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                        <SortBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'sort', section.display_order)
+                            e.ultimoPaso = pr.paso
+                            if (pr.intentos != null) e.intentos = pr.intentos
+                          }}
+                          onFallo={({ intentos }) =>
+                            track('sort_fallido', {
+                              topic: topic.name,
+                              seccion_orden: section.display_order,
+                              n_intentos: intentos,
+                            })
+                          }
+                        />
                       ) : section.type === 'scrubber' ? (
-                        <ScrubberBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                        <ScrubberBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'scrubber', section.display_order)
+                            e.ultimoPaso = pr.paso
+                          }}
+                        />
                       ) : section.type === 'steps' ? (
-                        <StepsBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                        <StepsBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'steps', section.display_order)
+                            e.ultimoPaso = pr.paso
+                          }}
+                        />
                       ) : section.type === 'match' ? (
-                        <MatchBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                        <MatchBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'match', section.display_order)
+                            e.ultimoPaso = pr.paso
+                            if (pr.intentos != null) e.intentos = pr.intentos
+                          }}
+                        />
                       ) : section.type === 'solve' ? (
-                        <SolveBlock data={section.data} onComplete={() => handleInteractiveComplete(section.id)} />
+                        <SolveBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'solve', section.display_order)
+                            e.ultimoPaso = pr.paso
+                            if (pr.intentos != null) e.intentos = pr.intentos
+                          }}
+                          onPistaPedida={({ ejercicioOrden, nPista, trasFallar }) => {
+                            const e = estadoInteractivo(section.id, 'solve', section.display_order)
+                            track('pista_pedida', {
+                              topic: topic.name,
+                              seccion_orden: section.display_order,
+                              ejercicio_orden: ejercicioOrden,
+                              n_pista: nPista,
+                              tras_fallar: trasFallar,
+                              segundos_desde_inicio: Math.round((Date.now() - e.inicio) / 1000),
+                            })
+                          }}
+                          onResuelto={({ ejercicioOrden, nPistasUsadas, intentos }) => {
+                            const e = estadoInteractivo(section.id, 'solve', section.display_order)
+                            track('resolvio_tras_pista', {
+                              topic: topic.name,
+                              seccion_orden: section.display_order,
+                              ejercicio_orden: ejercicioOrden,
+                              n_pistas_usadas: nPistasUsadas,
+                              correcto: true,
+                              n_intentos: intentos,
+                              segundos_totales: Math.round((Date.now() - e.inicio) / 1000),
+                            })
+                          }}
+                          onRevelada={({ ejercicioOrden, nPistasUsadas }) =>
+                            track('respuesta_revelada', {
+                              topic: topic.name,
+                              seccion_orden: section.display_order,
+                              ejercicio_orden: ejercicioOrden,
+                              n_pistas_usadas: nPistasUsadas,
+                            })
+                          }
+                        />
                       ) : (section.type === 'analogy' || section.type === 'example') ? (
                         <CollapsibleText text={section.content} />
                       ) : renderContent(section.content)}
@@ -914,7 +1237,33 @@ export default function TopicClient({
 
                     {/* Audio narrado — solo bloques de texto con audio */}
                     {section.audio_url && AUDIO_TEXT_TYPES.has(section.type) && (
-                      <AudioPlayer url={section.audio_url} duration={section.audio_duration} />
+                      <AudioPlayer
+                        url={section.audio_url}
+                        duration={section.audio_duration}
+                        onAudioInicio={({ duracionTotalSeg }) =>
+                          track('audio_iniciado', {
+                            topic: topic.name,
+                            seccion_orden: section.display_order,
+                            duracion_total_seg: duracionTotalSeg,
+                          })
+                        }
+                        onAudioProgreso={({ pct }) =>
+                          track('audio_progreso', {
+                            topic: topic.name,
+                            seccion_orden: section.display_order,
+                            pct,
+                          })
+                        }
+                        onAudioFin={({ pctEscuchado, segundosEscuchados, motivo }) =>
+                          track('audio_terminado', {
+                            topic: topic.name,
+                            seccion_orden: section.display_order,
+                            pct_escuchado: pctEscuchado,
+                            segundos_escuchados: segundosEscuchados,
+                            motivo,
+                          })
+                        }
+                      />
                     )}
 
                     {/* Footer XP */}

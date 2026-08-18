@@ -13,8 +13,9 @@
 
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
-import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js'
 import { stripe } from '@/lib/payments/stripe'
+import { trackServer } from '@/lib/analytics/track-server'
 
 export async function POST(request: Request) {
   try {
@@ -127,10 +128,51 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Internal error' }, { status: 500 })
     }
 
+    try {
+      const { count: nAsientos } = await admin
+        .from('learners')
+        .select('id', { count: 'exact', head: true })
+        .eq('account_user_id', user.id)
+        .eq('status', 'active')
+
+      await trackServer(
+        'asiento_removido',
+        {
+          n_asientos_despues: nAsientos ?? undefined,
+          // NO se reembolsa: el acceso sigue hasta el fin del periodo ya
+          // pagado, misma regla que la cancelacion. Esto mide cuanto tiempo
+          // pagado queda sin usar.
+          dias_de_acceso_restante: diasHasta(accessUntil),
+        },
+        { consent: await consentimientoDe(admin, user.id), userId: user.id }
+      )
+    } catch (err) {
+      console.error('[seats/remove] analitica fallo:', err)
+    }
+
     return NextResponse.json({ ok: true, accessUntil })
 
   } catch (err) {
     console.error('[seats/remove] Error:', err)
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
+  }
+}
+
+/** Dias enteros hasta una fecha ISO futura. Solo analitica. */
+function diasHasta(iso: string | null | undefined): number | undefined {
+  if (!iso) return undefined
+  const ms = new Date(iso).getTime() - Date.now()
+  return ms >= 0 ? Math.floor(ms / 86_400_000) : 0
+}
+
+async function consentimientoDe(cliente: SupabaseClient, userId: string) {
+  const { data } = await cliente
+    .from('users')
+    .select('cookie_consent_analytics, cookie_consent_marketing')
+    .eq('id', userId)
+    .maybeSingle()
+  return {
+    analytics: data?.cookie_consent_analytics as boolean | null | undefined,
+    marketing: data?.cookie_consent_marketing as boolean | null | undefined,
   }
 }

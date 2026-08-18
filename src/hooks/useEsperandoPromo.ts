@@ -22,6 +22,34 @@ const TOPE_ESPERA_MS = 2000
  * "Probar una semana gratis · $249" y medio segundo después "Entra con un peso
  * · $1". Un precio que parpadea es un precio anunciado.
  *
+ * ── 🔴 EXCEPCIÓN DECIDIDA: LA LANDING SÍ PARPADEA. NO LA "ARREGLES". ─────
+ *
+ * En `/` el primer render lo hace el SERVIDOR, y un HTML estático no puede
+ * conocer la query string. Así que quien llega con `?promo=` ve el precio de
+ * lista, luego el hueco, y luego el precio de campaña. Aquí eso es correcto.
+ *
+ * Por qué se aceptó: esta regla se escribió cuando el 100% del render era
+ * cliente, donde cumplirla era gratis. Dejó de serlo. Cumplirla ahora exige
+ * que la landing se renderice en cliente, y eso dejaba el HTML inicial de TODO
+ * el sitio sin una palabra de texto — sin H1, sin precios, sin conteos. El
+ * coste pasó de cero a la indexación del sitio entero. Ver src/app/layout.tsx.
+ *
+ * Y el daño real es menor de lo que suena: el precio BAJA. Se ve $249 y
+ * después "$1". Lo que esta regla existe para evitar es lo contrario —
+ * anunciar $1 y cobrar $249—, y eso sigue siendo imposible.
+ *
+ * 🔴 LO QUE SÍ SIGUE GARANTIZADO, y es la parte que no se puede romper: en ese
+ * primer render el precio de lista NUNCA va acompañado de un CTA de promo. No
+ * existe una pantalla que diga "Entra con un peso" junto a $249. Se cumple por
+ * construcción, no por cuidado: precio, leyenda y CTA salen todos de
+ * promoAplica(promo, …) sobre el MISMO valor `promo`, así que cambian juntos en
+ * el mismo render o no cambian. Si alguna vez separas esas fuentes, esta
+ * garantía se cae.
+ *
+ * Las demás pantallas del embudo —/planes, /onboarding/preview— siguen siendo
+ * cliente entero por su propio <Suspense> y NO parpadean: ahí usePromo lee el
+ * slug de forma síncrona en el primer render. Ver la nota de usePromo.
+ *
  * 🔴 Y LA CONTRAPARTE, IGUAL DE IMPORTANTE: sin indicio de campaña esto es
  * `false` desde el primer render y nadie espera nada. La inmensa mayoría del
  * tráfico no trae promo y no debe pagar ni un milisegundo por una campaña que

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 
 /**
@@ -20,9 +20,31 @@ const OLEADAS = [
   { n: 6, dif: 'Difícil', color: COLORS.pink },
 ]
 
-export default function DemoHorda({ onAvanzar }: { onAvanzar?: () => void }) {
+/** Igual que en DemoPistas: le pone nombre al contenido fijo que ya existe. */
+export const DEMO_HORDA_ID = 'horda_oleadas'
+
+/**
+ * Callbacks de ANALITICA. No cambian la mecanica ni lo que se pinta.
+ *
+ * 🔴 AQUI NO HAY RESPUESTAS NI CORRECCION. La escalera avanza pulsando, no
+ * acertando, asi que este demo NO emite nada parecido a `es_correcta`:
+ * fabricarlo seria inventar un dato que el componente no tiene. Lo que si
+ * dice, y es lo util, es en que oleada se queda la gente.
+ */
+type EventosDemoHorda = {
+  /** Primer avance. Se llama UNA vez por montaje. */
+  onInicio?: () => void
+  /** Cada avance. `oleada` es la que se acaba de dejar atras (1..6). */
+  onOleada?: (d: { oleada: number }) => void
+  /** Llegar al final de la escalera. */
+  onCompletado?: () => void
+}
+
+export default function DemoHorda({ onInicio, onOleada, onCompletado }: EventosDemoHorda = {}) {
   const [actual, setActual] = useState(1)
   const completada = actual > OLEADAS.length
+  // Solo para analitica: no entra en ningun render.
+  const yaEmpezoRef = useRef(false)
 
   return (
     <div
@@ -79,7 +101,18 @@ export default function DemoHorda({ onAvanzar }: { onAvanzar?: () => void }) {
 
           <button
             type="button"
-            onClick={() => { setActual((a) => a + 1); onAvanzar?.() }}
+            onClick={() => {
+              setActual((a) => a + 1)
+              if (!yaEmpezoRef.current) {
+                yaEmpezoRef.current = true
+                onInicio?.()
+              }
+              onOleada?.({ oleada: actual })
+              // La ultima pulsacion es la que despeja la horda. Se avisa aqui
+              // y no en un efecto sobre `completada` para no depender de un
+              // render intermedio.
+              if (actual === OLEADAS.length) onCompletado?.()
+            }}
             style={{
               width: '100%',
               minHeight: 48,

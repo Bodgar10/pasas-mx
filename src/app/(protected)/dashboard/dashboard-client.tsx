@@ -13,6 +13,7 @@ import { trackCheckoutCompleted } from '@/components/posthog-events'
 import { waLink } from '@/lib/contacto'
 import { rutaAlumno } from '@/lib/learners'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
+import { track } from '@/lib/analytics/track'
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -124,6 +125,51 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
   }, [])
 
   const [showMenu, setShowMenu] = useState(false)
+
+  /**
+   * `dashboard_visto` — una vez por montaje.
+   *
+   * `dias_desde_ultima_visita` sale de localStorage y NO de la base: es una
+   * medida de dispositivo, no de persona, y esta bien que lo sea — mide con
+   * que frecuencia se vuelve a ESTA pantalla en ESTE aparato. Un alumno que
+   * alterna tablet y telefono aparecera como dos cadencias distintas, que es
+   * exactamente lo que ocurre.
+   */
+  useEffect(() => {
+    let diasDesde: number | undefined
+    try {
+      const previa = localStorage.getItem('pasas_ultima_visita_dashboard')
+      if (previa) {
+        diasDesde = Math.floor((Date.now() - Number(previa)) / 86_400_000)
+      }
+      localStorage.setItem('pasas_ultima_visita_dashboard', String(Date.now()))
+    } catch {
+      // Safari en privado puede lanzar. El evento sale igual, sin el campo.
+    }
+
+    track('dashboard_visto', {
+      n_alumnos: totalLearners,
+      alumno_activo_slot: activeSlot,
+      dias_desde_ultima_visita: diasDesde,
+      subscription_status: subscriptionStatus,
+      n_materias: userSubjects.length,
+    })
+  }, [])
+
+  /**
+   * `nivel_alcanzado` — solo cuando el dashboard trae un `levelUp` que
+   * celebrar. Ese objeto lo calcula el servidor comparando el XP real contra
+   * `last_level_seen`, asi que es el unico punto donde se sabe que el alumno
+   * subio de nivel y todavia no lo ha visto.
+   */
+  useEffect(() => {
+    if (!levelUp) return
+    track('nivel_alcanzado', {
+      nivel: levelUp.to,
+      nivel_previo: levelUp.from,
+      xp_total: profile.xp_total,
+    })
+  }, [levelUp])
 
   // Slot que se esta cargando. El cambio de alumno tarda uno o dos
   // segundos y sin senal el clic parece no haber respondido.

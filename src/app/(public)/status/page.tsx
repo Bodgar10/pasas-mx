@@ -1,4 +1,12 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+// Solo el canonical. El title y la description de esta página son otro trabajo;
+// aquí lo único que hace falta es que no compita consigo misma si se sirve por
+// más de un host. Relativo: lo resuelve el metadataBase del layout raíz.
+export const metadata: Metadata = {
+  alternates: { canonical: '/status' },
+}
 
 const SERVICES = [
   { name: 'Plataforma web', description: 'pasas.mx y dashboard', status: 'operational' },

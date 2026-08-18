@@ -1,8 +1,9 @@
 'use client'
 
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { trackCheckoutStarted, trackPromoCheckoutIniciado } from '@/components/posthog-events'
+import { nuevoEventId, track } from '@/lib/analytics/track'
 import { BillingCycleToggle, type BillingCycle } from '@/components/planes/BillingCycleToggle'
 import { PLAN_DISPLAY as PLANS } from '@/lib/payments/config'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
@@ -10,7 +11,7 @@ import { usePromo } from '@/hooks/usePromo'
 import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
 import { useEsperandoPromo } from '@/hooks/useEsperandoPromo'
 import { Hueco } from '@/components/global/HuecoPromo'
-import { conPromo, copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
+import { conPromo, copyCTA, leyendaPromo, microcopyPromo, precioConPromo, promoAplica } from '@/lib/promos'
 
 type PlanKey = keyof typeof PLANS
 
@@ -50,6 +51,12 @@ function PlanesContent() {
 
   useEffect(() => {
     setDeviceHadTrial(localStorage.getItem('pasas_trial_used') === 'true')
+  }, [])
+
+  // Reloj de la pantalla, para `segundos_desde_planes` de checkout_iniciado.
+  const inicioPlanesRef = useRef(0)
+  useEffect(() => {
+    inicioPlanesRef.current = Date.now()
   }, [])
 
   const { promo: promoCampana, cargando: promoCargando, hayIndicio } = usePromo()
@@ -108,7 +115,23 @@ function PlanesContent() {
       : null
 
   const cycle: BillingCycle = cycleElegido ?? cicloDeLaPromo ?? CICLO_POR_DEFECTO
-  const setCycle = setCycleElegido
+
+  /**
+   * `ciclo_cambiado` solo cuando cambia DE VERDAD.
+   *
+   * El toggle llama a esto tambien al pulsar el ciclo ya activo; sin la
+   * guarda, cada toque repetido seria un cambio y la metrica de "cuanta
+   * gente compara ciclos" quedaria inflada.
+   *
+   * `de` es el ciclo VISIBLE, no `cycleElegido`: mientras nadie ha tocado el
+   * toggle ese es null y manda el de la campana o el default.
+   */
+  const setCycle = (nuevo: BillingCycle) => {
+    if (nuevo !== cycle) {
+      track('ciclo_cambiado', { de: cycle, a: nuevo, plan: activePlan })
+    }
+    setCycleElegido(nuevo)
+  }
 
   const plan = PLANS[activePlan]
   const pricing = plan.prices[cycle]
@@ -123,6 +146,50 @@ function PlanesContent() {
   // sea elegible— porque `promo` viene anulada arriba para quien no lo es.
   // Nada más abajo vuelve a preguntar por `yaTuvo`.
   const aplicaPromo = promoAplica(promo, activePlan, cycle)
+
+  /**
+   * `planes_vistos` — una vez por carga, y SOLO cuando ya se sabe que pintar.
+   *
+   * Se espera a que usePromo y useYaTuvoSuscripcion resuelvan: antes de eso
+   * `cycle` puede ser el default y cambiar a los 200ms al llegar la campana,
+   * y `ciclo_default` habria registrado un ciclo que el usuario nunca vio.
+   */
+  const yaMedidoRef = useRef(false)
+  useEffect(() => {
+    if (promoCargando || yaTuvoCargando || yaMedidoRef.current) return
+    yaMedidoRef.current = true
+    track('planes_vistos', {
+      ciclo_default: cycle,
+      ya_tuvo_suscripcion: yaTuvo,
+      plan: activePlan,
+    })
+  }, [promoCargando, yaTuvoCargando, cycle, yaTuvo, activePlan])
+
+  /**
+   * `planes_directo` — llegó aquí con un slug guardado que esta pantalla NO
+   * va a aplicar.
+   *
+   * Dos causas distintas y las dos importan: la campaña ya no cubre este plan
+   * o este ciclo, o la cuenta ya tuvo suscripción y el promotion code es de
+   * primera compra. En ambos casos la persona vio "$1" en la landing y aquí
+   * ve precio de lista.
+   *
+   * 🔴 Espera a que `usePromo` y `useYaTuvoSuscripcion` terminen. Durante la
+   * carga `promo` vale null por diseño, y disparar ahí marcaría como perdida
+   * toda campaña que simplemente no había resuelto todavía.
+   */
+  const slugGuardado =
+    typeof window !== 'undefined' ? sessionStorage.getItem('pasas_promo') : null
+  const resolviendo = promoCargando || yaTuvoCargando
+
+  useEffect(() => {
+    if (resolviendo || !slugGuardado || aplicaPromo) return
+    track('promo_perdida', {
+      promo_slug_esperado: slugGuardado,
+      punto: 'planes_directo',
+      tenia_utm: !!sessionStorage.getItem('pasas_utm'),
+    })
+  }, [resolviendo, slugGuardado, aplicaPromo])
   const leyenda = leyendaPromo(promo, activePlan, cycle)
 
   const cta = copyCTA(promo, activePlan, cycle, {
@@ -173,6 +240,33 @@ function PlanesContent() {
         trackPromoCheckoutIniciado(promo.slug, activePlan, cycle)
       }
 
+      /**
+       * 🔴 EL ID QUE CIERRA EL EMBUDO.
+       *
+       * Se genera AQUI, antes del POST, y viaja tres saltos: propiedad
+       * `event_id` de este `checkout_iniciado` → body de create-session →
+       * metadata de Stripe → `pago_exitoso` del webhook.
+       *
+       * Es lo que permite responder "de los checkouts que se abrieron,
+       * cuantos acabaron en cobro". Cruzarlo por usuario no vale: quien abre
+       * el checkout dos veces, o lo abandona y vuelve al dia siguiente,
+       * colapsa en una sola persona y el abandono desaparece.
+       */
+      const checkoutEventId = nuevoEventId()
+
+      track('checkout_iniciado', {
+        event_id: checkoutEventId,
+        plan: activePlan,
+        ciclo: cycle,
+        // 🔴 Lo que el usuario VIO en pantalla, no lo que Stripe vaya a
+        // cobrar. Con promo activa aqui va el precio promocional: cruzado
+        // contra `monto_cobrado` de pago_exitoso, delata cualquier
+        // desalineacion entre lo prometido y lo cobrado.
+        precio_mostrado: precioConPromo(promo, activePlan, cycle)?.final ?? pricing.amount,
+        camino: 'planes',
+        segundos_desde_planes: Math.round((Date.now() - inicioPlanesRef.current) / 1000),
+      })
+
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -183,10 +277,19 @@ function PlanesContent() {
           // manda tal cual haya o no aplicado en pantalla, porque quien valida
           // es resolvePromoParaCheckout, no esto.
           promo: promo?.slug,
+          checkout_event_id: checkoutEventId,
         }),
       })
       const data = await res.json()
       if (data.url) {
+        // La pantalla prometió descuento y la sesión salió sin él.
+        if (promo?.slug && !data.promo_aplicada) {
+          track('promo_perdida', {
+            promo_slug_esperado: promo.slug,
+            punto: 'checkout_sin_promo',
+            tenia_utm: !!sessionStorage.getItem('pasas_utm'),
+          })
+        }
         window.location.href = data.url
       } else {
         // El servidor devuelve un mensaje propio cuando la promoción no se

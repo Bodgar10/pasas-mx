@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: 'Cómo cancelar tu suscripción | Pasas.mx',
   description:
     'Puedes cancelar tu suscripción de Pasas.mx en cualquier momento, sin penalización y en máximo 2 pasos.',
+  // Relativo: lo resuelve el metadataBase del layout raíz.
+  alternates: { canonical: '/como-cancelar' },
 }
 
 export default function ComoCancelarPage() {

@@ -3,6 +3,14 @@ import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
 import { sendEmail } from '@/lib/email/resend'
 import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
+import { trackServer } from '@/lib/analytics/track-server'
+
+/** Dias enteros entre una fecha ISO y ahora. Solo analitica. */
+function diasEntre(iso: string | null | undefined): number | undefined {
+  if (!iso) return undefined
+  const ms = Date.now() - new Date(iso).getTime()
+  return ms >= 0 ? Math.floor(ms / 86_400_000) : undefined
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +21,13 @@ export async function POST(req: NextRequest) {
     // Buscar suscripción activa
     const { data: subscription } = await supabase
       .from('subscriptions')
-      .select('id, provider_sub_id, current_period_end')
+      // 🔴 `current_period_start` es solo para analitica, pero sin el no
+      // existe `dia_del_ciclo` — la metrica que separa el arrepentimiento
+      // (cancelar al dia siguiente de pagar) de la decision (cancelar justo
+      // antes de renovar). Son dos problemas distintos y se arreglan
+      // distinto. `price_mxn`, `plan`, `billing_cycle`, `promo_slug` y
+      // `created_at` van por lo mismo.
+      .select('id, provider_sub_id, current_period_start, current_period_end, plan, billing_cycle, price_mxn, promo_slug, created_at')
       .eq('user_id', user.id)
       .in('status', ['active', 'trialing'])
       .order('created_at', { ascending: false })
@@ -105,6 +119,50 @@ export async function POST(req: NextRequest) {
     }
 
     console.log(`[subscription/cancel] Cancelación programada para user ${user.id}`)
+
+    // Evento de servidor. Aparte y en su try/catch: la cancelacion ya esta
+    // hecha y un fallo de analitica no puede devolver un 500 a alguien que
+    // acaba de cancelar.
+    try {
+      const { data: consentimiento } = await supabase
+        .from('users')
+        .select('cookie_consent_analytics, cookie_consent_marketing')
+        .eq('id', user.id)
+        .maybeSingle()
+
+      const { count: nAlumnos } = await supabase
+        .from('learners')
+        .select('id', { count: 'exact', head: true })
+        .eq('account_user_id', user.id)
+        .eq('status', 'active')
+
+      await trackServer(
+        'cancelacion_completada',
+        {
+          plan: subscription.plan,
+          ciclo: subscription.billing_cycle,
+          dia_del_ciclo: diasEntre(subscription.current_period_start),
+          dias_desde_alta: diasEntre(subscription.created_at),
+          n_alumnos: nAlumnos ?? undefined,
+          // Lo que deja de entrar. `price_mxn` esta en centavos.
+          mrr_perdido: subscription.price_mxn,
+          tuvo_promo: !!subscription.promo_slug,
+          promo_slug: subscription.promo_slug ?? undefined,
+          // Cancela al FIN DEL PERIODO, no al momento: el acceso sigue vivo
+          // hasta esta fecha y la baja real la confirma el webhook.
+          acceso_hasta: subscription.current_period_end,
+        },
+        {
+          consent: {
+            analytics: consentimiento?.cookie_consent_analytics,
+            marketing: consentimiento?.cookie_consent_marketing,
+          },
+          userId: user.id,
+        }
+      )
+    } catch (err) {
+      console.error('[subscription/cancel] analitica fallo:', err)
+    }
 
     return NextResponse.json({
       ok: true,

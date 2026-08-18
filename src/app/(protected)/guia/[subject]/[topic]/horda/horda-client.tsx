@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Confetti from '@/components/global/Confetti'
 import Pasita from '@/components/mascota/Pasita'
+import { track } from '@/lib/analytics/track'
 
 interface Option {
   letter: string
@@ -71,6 +72,49 @@ export default function HordaClient({
   } | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+  // ── ANALITICA. Todo en refs; nada toca la mecanica del juego. ────────
+  const inicioRef = useRef(0)
+  const correctasRef = useRef(0)
+  const terminadaRef = useRef(false)
+  const oleadaRef = useRef(1)
+
+  const segundos = useCallback(
+    () => (inicioRef.current ? Math.round((Date.now() - inicioRef.current) / 1000) : 0),
+    []
+  )
+
+  /**
+   * Abandono de partida. Mismo mecanismo que en topic-client y por el mismo
+   * motivo: PostHog sabe que te fuiste, no en que oleada te quedaste.
+   *
+   * `terminadaRef` evita el doble evento cuando la partida ya acabo con
+   * victoria o reinicio.
+   */
+  const emitirAbandono = useCallback(() => {
+    if (terminadaRef.current || !inicioRef.current) return
+    terminadaRef.current = true
+    track('horda_terminada', {
+      topic: topicName,
+      oleada_final: oleadaRef.current,
+      motivo: 'abandono',
+      segundos_totales: segundos(),
+      n_correctas: correctasRef.current,
+    })
+  }, [topicName, segundos])
+
+  useEffect(() => {
+    const alOcultar = () => {
+      if (document.visibilityState === 'hidden') emitirAbandono()
+    }
+    document.addEventListener('visibilitychange', alOcultar)
+    window.addEventListener('pagehide', emitirAbandono)
+    return () => {
+      document.removeEventListener('visibilitychange', alOcultar)
+      window.removeEventListener('pagehide', emitirAbandono)
+      emitirAbandono()
+    }
+  }, [emitirAbandono])
+
   const backHref = `/guia/${subjectSlug}/${topicSlug}`
 
   function goToTopic() {
@@ -109,9 +153,32 @@ export default function HordaClient({
       setWaveOutcome(null)
       setPending(null)
       setPhase('playing')
+
+      inicioRef.current = Date.now()
+      correctasRef.current = 0
+      oleadaRef.current = 1
+      terminadaRef.current = false
+      track('horda_iniciada', {
+        topic: topicName,
+        // El componente recibe `subjectSlug`, no el nombre. Se manda el slug
+        // tal cual en vez de añadir una prop solo para analitica: el slug es
+        // estable y ademas no se rompe si alguien renombra la materia.
+        subject_slug: subjectSlug,
+        // `attempts` viene de horde_runs, que acumula por alumno-tema.
+        es_reintento: (data.attempt ?? 1) > 1,
+        mejor_oleada_previa: data.bestWave ?? 0,
+      })
     } catch (e) {
       setError(e instanceof Error ? e.message : 'No se pudo iniciar')
       setPhase('broken')
+      // 🔴 `broken` es un FALLO DE PRODUCTO, no un desenlace del juego. Va
+      // como evento propio para no contaminar `horda_terminada`: mezclarlos
+      // haria que una caida del endpoint pareciera gente rindiendose.
+      track('horda_error', {
+        topic: topicName,
+        punto: 'start_run',
+        motivo: e instanceof Error ? e.message : 'unknown',
+      })
     } finally {
       setLoading(false)
     }
@@ -146,7 +213,10 @@ export default function HordaClient({
         explanation: data.explanation,
         hint: data.hint,
       })
-      if (data.correct) setCorrectInWave((c) => c + 1)
+      if (data.correct) {
+        setCorrectInWave((c) => c + 1)
+        correctasRef.current += 1
+      }
 
       const isLast = index >= PER_WAVE - 1
       if (data.waveComplete || isLast) {
@@ -172,6 +242,12 @@ export default function HordaClient({
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Error al responder')
       setPicked(null)
+      track('error_occurred', {
+        error_type: 'horde_answer_api',
+        error_message: e instanceof Error ? e.message : 'unknown',
+        context: `topic:${topicName}`,
+        ruta: window.location.pathname,
+      })
     } finally {
       setLoading(false)
     }
@@ -203,14 +279,50 @@ export default function HordaClient({
       setPending(null)
     }
 
+    // `resultado` en el vocabulario REAL del juego. No hay vidas: se avanza
+    // con 4-5 aciertos, se repite con 3, y se vuelve a la oleada 1 con 2 o
+    // menos.
+    const resultado =
+      o.outcome === 'finished' ? 'avanza' : o.outcome === 'reset' ? 'reinicia' : 'repite'
+
+    track('horda_oleada', {
+      topic: topicName,
+      oleada: oleadaRef.current,
+      ronda: round,
+      n_correctas_en_oleada: o.correctCount,
+      resultado,
+      segundos_desde_inicio: segundos(),
+    })
+
     if (o.outcome === 'finished') {
+      terminadaRef.current = true
+      track('horda_terminada', {
+        topic: topicName,
+        oleada_final: oleadaRef.current,
+        motivo: 'victoria',
+        segundos_totales: segundos(),
+        n_correctas: correctasRef.current,
+      })
       setPhase('won')
     } else if (o.outcome === 'reset') {
+      terminadaRef.current = true
+      // 🔴 'reinicia', no 'derrota': volver a la oleada 1 NO termina la
+      // partida en el codigo — el alumno puede seguir. Llamarlo derrota
+      // seria inventar un desenlace que el juego no tiene.
+      track('horda_terminada', {
+        topic: topicName,
+        oleada_final: oleadaRef.current,
+        motivo: 'reinicio',
+        segundos_totales: segundos(),
+        n_correctas: correctasRef.current,
+      })
       setPhase('dead')
     } else {
       setWaveOutcome(o)
       setPhase('waveResult')
     }
+
+    if (pending) oleadaRef.current = pending.wave ?? oleadaRef.current
   }
 
   if (phase === 'broken') {

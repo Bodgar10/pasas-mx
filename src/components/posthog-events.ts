@@ -1,3 +1,21 @@
+/**
+ * ⛔ CONGELADO — s32. No agregar eventos aquí.
+ *
+ * El camino nuevo es `track()` de `src/lib/analytics/track.ts`: un solo
+ * punto de entrada que manda a PostHog, GA4, Meta y TikTok con las mismas
+ * propiedades, el mismo id de usuario y el mismo `event_id`. Estos helpers
+ * solo llegan a PostHog y no llevan ninguna propiedad automática.
+ *
+ * Los 13 eventos de abajo siguen funcionando y NO se migran en bloque: cada
+ * uno se reemplaza por su equivalente en `track()` cuando se reinstrumente
+ * su pantalla, en su propio prompt. Una migración masiva de analítica es
+ * imposible de verificar — se descubre rota semanas después, cuando alguien
+ * mira un embudo vacío.
+ *
+ * Dos de estos ya están muertos y nadie los importa: `onboarding_completed`
+ * y `streak_milestone`.
+ */
+
 import posthog from 'posthog-js'
 
 // Auth events

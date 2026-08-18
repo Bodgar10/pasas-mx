@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { track } from '@/lib/analytics/track'
 
 /**
  * Captura ?promo=slug y lo conserva durante la sesión.
@@ -35,7 +36,11 @@ export default function PromoPersistence() {
 
     // Minúsculas: el slug es la PK de promo_campaigns y ahí vive en
     // minúsculas. Un enlace compartido con ?promo=PASAS1 debe funcionar.
-    sessionStorage.setItem('pasas_promo', promo.trim().toLowerCase())
+    const slug = promo.trim().toLowerCase()
+    sessionStorage.setItem('pasas_promo', slug)
+
+    // Solo en la captura: la guarda de arriba corta las cargas siguientes.
+    track('promo_detectada', { promo_slug: slug, origen: 'url' })
   }, [searchParams])
 
   return null

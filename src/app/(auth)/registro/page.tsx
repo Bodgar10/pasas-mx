@@ -1,10 +1,11 @@
 'use client'
 
-import { Suspense, useActionState, useState, useEffect } from 'react'
+import { Suspense, useActionState, useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
+import { nuevoEventId, track } from '@/lib/analytics/track'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 import Logo from '@/components/global/Logo'
 import { leerConsentimiento } from '@/lib/consent'
@@ -83,6 +84,25 @@ function RegistroContent() {
   // decide `birthdate` en el servidor, no este valor.
   const [registrante, setRegistrante] = useState<'tutor' | 'alumno'>('tutor')
 
+  /**
+   * `checkout_event_id` del camino A — el alta con plan pendiente, que crea
+   * su propia Checkout Session dentro de registroAction.
+   *
+   * Se genera AQUI y viaja por el formulario como campo oculto, porque la
+   * action es de servidor y no puede emitir un `track()` de cliente. Es el
+   * mismo mecanismo que /planes y /bienvenida, con otro transporte.
+   */
+  const [checkoutEventId] = useState(nuevoEventId)
+
+  // Reloj del formulario, para `segundos_en_formulario`.
+  const inicioFormRef = useRef(0)
+  const intentosVerificacionRef = useRef(0)
+  const medidoRef = useRef({ inicio: false, enviada: false, completado: false })
+
+  useEffect(() => {
+    inicioFormRef.current = Date.now()
+  }, [])
+
   // Fuera del efecto para que la dependencia sea el string y no el objeto
   // de searchParams, que es nuevo en cada render. Mismo criterio que usePromo.
   const promoUrl = searchParams.get('promo')
@@ -113,15 +133,84 @@ function RegistroContent() {
     const consent = leerConsentimiento()
     if (consent) setCookieConsent(JSON.stringify(consent))
 
+    let quienRegistra: 'tutor' | 'alumno' = 'tutor'
     if (raw) {
       try {
         const parsed = JSON.parse(raw)
-        if (parsed?.registrante === 'alumno') setRegistrante('alumno')
+        if (parsed?.registrante === 'alumno') {
+          quienRegistra = 'alumno'
+          setRegistrante('alumno')
+        }
       } catch {
         /* onboarding_data malformado — se queda el default 'tutor' */
       }
     }
+
+    /**
+     * `signup_start` — entrada al embudo por ESTA pantalla.
+     *
+     * 🔴 Va AQUI y no en un efecto de montaje aparte, a proposito: se emite
+     * con `quienRegistra` ya resuelto desde sessionStorage. Emitido antes,
+     * todo el mundo saldria como 'tutor' —el default— y la unica propiedad
+     * util del evento seria una constante.
+     *
+     * Quien llega aqui sin pasar por /onboarding se salto el embudo entero,
+     * y `origen` es lo que lo distingue del `signup_start` que emite el
+     * onboarding.
+     */
+    if (!medidoRef.current.inicio) {
+      medidoRef.current.inicio = true
+      track('signup_start', { origen: 'registro', registrante: quienRegistra })
+    }
   }, [promoUrl])
+
+  /**
+   * `signup_completado` observando el `state` del useActionState.
+   *
+   * 🔴 NO sustituye a `signup`, que queda congelado en el `onSubmit`. Aquel
+   * mide "lo intento" —dispara antes de que el servidor valide contrasena,
+   * nombre o consentimiento, asi que cuenta los fallos—; este mide "lo
+   * logro". La brecha entre los dos es la tasa de error del formulario, que
+   * hoy no se ve en ningun sitio.
+   *
+   * Ninguna de las dos salidas exitosas de registroAction toca logica de
+   * negocio: solo se observa lo que ya devuelve.
+   */
+  useEffect(() => {
+    if (!state) return
+    const exito =
+      ('emailSent' in state && state.emailSent) || ('stripeUrl' in state && !!state.stripeUrl)
+    if (!exito || medidoRef.current.completado) return
+    medidoRef.current.completado = true
+
+    track('signup_completado', {
+      method: 'email',
+      segundos_en_formulario: Math.round((Date.now() - inicioFormRef.current) / 1000),
+      registrante,
+    })
+
+    if ('emailSent' in state && state.emailSent && !medidoRef.current.enviada) {
+      medidoRef.current.enviada = true
+      track('verificacion_enviada', {})
+    }
+
+    if ('stripeUrl' in state && state.stripeUrl) {
+      /**
+       * `checkout_iniciado` del camino A, con MENOS propiedades a proposito.
+       *
+       * Esta pantalla nunca vio /planes ni pinto un precio, asi que no hay
+       * `precio_mostrado` ni `segundos_desde_planes` que mandar. track()
+       * descarta las ausentes, asi que no quedan campos vacios — y media
+       * conversion sin evento de inicio es peor que un evento incompleto.
+       */
+      track('checkout_iniciado', {
+        event_id: checkoutEventId,
+        plan: pendingPlan,
+        ciclo: pendingDuration,
+        camino: 'registro_directo',
+      })
+    }
+  }, [state, registrante, checkoutEventId, pendingPlan, pendingDuration])
 
   useEffect(() => {
     if (state && 'stripeUrl' in state && state.stripeUrl) {
@@ -180,6 +269,10 @@ function RegistroContent() {
 
   async function handleGoogleSignIn() {
     setGooglePending(true)
+    // Al ELEGIR el metodo, antes de que se procese nada. `signup_completado`
+    // de Google no se emite aqui: esa cuenta se cierra en /auth/callback, no
+    // en esta pantalla.
+    track('signup_metodo', { method: 'google' })
     trackSignup('google')
     const { createClient } = await import('@/utils/supabase/client')
     const supabase = createClient()
@@ -192,6 +285,21 @@ function RegistroContent() {
   function VerifyButton() {
     const [checking, setChecking] = useState(false)
     const [notVerified, setNotVerified] = useState(false)
+
+    /**
+     * 🔴 Esto NO es un reenvio de correo — ese boton no existe en el repo.
+     * Es "ya verifique, comprueba": la persona vuelve de su bandeja y pide
+     * que se revise. `verificado` distingue las dos salidas, y `intentos`
+     * cuenta cuantas veces tuvo que insistir. Un promedio alto ahi significa
+     * que el correo tarda o cae en spam.
+     */
+    async function medir(verificado: boolean) {
+      intentosVerificacionRef.current += 1
+      track('verificacion_comprobada', {
+        intentos: intentosVerificacionRef.current,
+        verificado,
+      })
+    }
 
     async function handleCheck() {
       setChecking(true)
@@ -208,17 +316,21 @@ function RegistroContent() {
         // Si no hay sesión activa, verificamos directo
         const { data: { session } } = await supabase.auth.getSession()
         if (session?.user?.email_confirmed_at) {
+          await medir(true)
           window.location.href = '/dashboard'
           return
         }
         // Intentar refresh de sesión
         const { data: refreshed } = await supabase.auth.refreshSession()
         if (refreshed?.user?.email_confirmed_at) {
+          await medir(true)
           window.location.href = '/dashboard'
           return
         }
+        await medir(false)
         setNotVerified(true)
       } catch {
+        await medir(false)
         setNotVerified(true)
       } finally {
         setChecking(false)
@@ -310,12 +422,22 @@ function RegistroContent() {
       </div>
 
       {/* Form */}
-      <form action={formAction} className="space-y-4" onSubmit={() => trackSignup('email')}>
+      <form
+        action={formAction}
+        className="space-y-4"
+        onSubmit={() => {
+          track('signup_metodo', { method: 'email' })
+          trackSignup('email')
+        }}
+      >
         <input type="hidden" name="onboarding_data" value={onboardingData} />
         <input type="hidden" name="pending_plan" value={pendingPlan} />
         <input type="hidden" name="pending_duration" value={pendingDuration} />
         <input type="hidden" name="utm_data" value={utmData} />
         <input type="hidden" name="promo_slug" value={promoSlug} />
+        {/* Puente del camino A: la action lo pone en la metadata de Stripe y
+            el webhook lo devuelve en `pago_exitoso`. */}
+        <input type="hidden" name="checkout_event_id" value={checkoutEventId} />
         <input type="hidden" name="cookie_consent" value={cookieConsent} />
         <div className="space-y-1">
           <label

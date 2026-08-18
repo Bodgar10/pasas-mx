@@ -8,7 +8,8 @@ import { usePromo } from '@/hooks/usePromo'
 import { useYaTuvoSuscripcion } from '@/hooks/useYaTuvoSuscripcion'
 import { useEsperandoPromo } from '@/hooks/useEsperandoPromo'
 import { Hueco } from '@/components/global/HuecoPromo'
-import { copyCTA, leyendaPromo, microcopyPromo, promoAplica } from '@/lib/promos'
+import { copyCTA, leyendaPromo, microcopyPromo, precioConPromo, promoAplica } from '@/lib/promos'
+import { nuevoEventId, track } from '@/lib/analytics/track'
 
 /*
   Aquí vivían DURATION_LABELS y DURATION_CYCLE: dos mapas locales con los
@@ -87,17 +88,68 @@ function BienvenidaContent() {
     return () => clearTimeout(timer)
   }, [])
 
+  /**
+   * A esta pantalla se llega por el redirect que arman auth/callback y
+   * autorizar-menor desde `users.pending_checkout`. Si el slug viene en la
+   * URL, sobrevivio al correo — que es el salto donde mas facil se pierde,
+   * porque el enlace abre otra pestaña y sessionStorage no cruza.
+   */
+  const slugEnUrl = searchParams.get('promo')
+  useEffect(() => {
+    if (slugEnUrl) {
+      track('promo_detectada', {
+        promo_slug: slugEnUrl.trim().toLowerCase(),
+        origen: 'pending_checkout',
+      })
+    }
+  }, [slugEnUrl])
+
   async function handleActivar() {
     setLoading(true)
     try {
+      // Mismo puente que en /planes: id generado aquí, mandado en el evento
+      // y en el body, devuelto por el webhook en `pago_exitoso`.
+      const checkoutEventId = nuevoEventId()
+
+      track('checkout_iniciado', {
+        event_id: checkoutEventId,
+        plan,
+        ciclo: cycleKey,
+        // 🔴 Lo que el usuario VIO, no el precio de lista. Con promo activa
+        // la pantalla enseña el precio promocional, así que eso es lo que
+        // va: cruzado contra `monto_cobrado` de pago_exitoso delata que se
+        // anunció un precio y se cobró otro.
+        precio_mostrado: precioConPromo(promo, plan, cycleKey)?.final ?? pricing.amount,
+        camino: 'bienvenida',
+        // Sin `segundos_desde_planes`: a esta pantalla se llega desde el
+        // correo, no desde /planes. Inventar un cero diría que fue instantáneo.
+      })
+
       const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // Solo el slug: el servidor decide si aplica y cuánto.
-        body: JSON.stringify({ plan, duration, promo: promo?.slug }),
+        body: JSON.stringify({
+          plan,
+          duration,
+          promo: promo?.slug,
+          checkout_event_id: checkoutEventId,
+        }),
       })
       const data = await res.json()
       if (data.url) {
+        // 🔴 EL AGUJERO POR DONDE SE ESCAPA LA CAMPAÑA.
+        //
+        // La pantalla prometio un descuento y la sesion salio sin el. Antes
+        // esto era invisible: la persona llegaba a Stripe con precio de lista
+        // y nadie se enteraba salvo que se quejara.
+        if (promo?.slug && !data.promo_aplicada) {
+          track('promo_perdida', {
+            promo_slug_esperado: promo.slug,
+            punto: 'checkout_sin_promo',
+            tenia_utm: !!sessionStorage.getItem('pasas_utm'),
+          })
+        }
         window.location.href = data.url
       } else {
         // Si la promoción no se pudo aplicar hay que decirlo antes de mandar a

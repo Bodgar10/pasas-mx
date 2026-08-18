@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: 'Ayuda y preguntas frecuentes | Pasas.mx',
   description:
     'Respuestas a las preguntas más comunes sobre Pasas.mx: suscripción, cancelación, reembolsos, planes y más.',
+  // Relativo: lo resuelve el metadataBase del layout raíz.
+  alternates: { canonical: '/ayuda' },
 }
 
 const FAQS = [

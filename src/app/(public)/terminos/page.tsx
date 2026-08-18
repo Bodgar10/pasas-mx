@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: 'Términos y Condiciones | Pasas.mx',
   description:
     'Términos y Condiciones Generales de Uso de Pasas.mx: suscripciones, pagos, cancelación, reembolsos y propiedad intelectual.',
+  // Relativo: lo resuelve el metadataBase del layout raíz.
+  alternates: { canonical: '/terminos' },
 }
 
 const INDICE = [

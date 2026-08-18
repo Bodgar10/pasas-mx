@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useSearchParams } from 'next/navigation'
 import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
@@ -17,11 +16,12 @@ import { Hueco } from '@/components/global/HuecoPromo'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
 import Image from 'next/image'
-import DemoPistas from '@/components/landing/DemoPistas'
-import DemoHorda from '@/components/landing/DemoHorda'
+import DemoPistas, { DEMO_PISTAS_ID } from '@/components/landing/DemoPistas'
+import DemoHorda, { DEMO_HORDA_ID } from '@/components/landing/DemoHorda'
 import Pasita from '@/components/mascota/Pasita'
 import PasitaLazy from '@/components/mascota/PasitaLazy'
 import { createClient } from '@/utils/supabase/client'
+import { track } from '@/lib/analytics/track'
 
 // ── A/B hero variants ──────────────────────────────────────────────
 const HERO_VARIANTS = {
@@ -50,14 +50,36 @@ const HERO_VARIANTS = {
 
 type VariantKey = keyof typeof HERO_VARIANTS
 
-function getOrAssignVariant(): VariantKey {
-  if (typeof window === 'undefined') return 'D'
+/**
+ * Misma asignacion de siempre: 50/50 entre D y E, sticky en localStorage.
+ * Lo unico que cambia es que ahora dice TAMBIEN si la variante venia
+ * guardada o se sorteo en esta carga.
+ *
+ * 🔴 Sin ese dato el A/B se lee mal: PAPA nunca se persiste, asi que un
+ * papa que vuelve sin utm recibe D o E y su `hero_variant_seen` parece una
+ * visita nueva cuando es una reasignacion.
+ */
+function getOrAssignVariant(): { variant: VariantKey; persistida: boolean } {
+  if (typeof window === 'undefined') return { variant: 'D', persistida: false }
   const stored = localStorage.getItem('pasas_hero_variant') as VariantKey | null
-  if (stored === 'D' || stored === 'E') return stored
+  if (stored === 'D' || stored === 'E') return { variant: stored, persistida: true }
   const assigned: VariantKey = Math.random() < 0.5 ? 'D' : 'E'
   localStorage.setItem('pasas_hero_variant', assigned)
-  return assigned
+  return { variant: assigned, persistida: false }
 }
+
+/**
+ * Secciones que contienen un CTA del embudo. Alimenta `cta_visto` de
+ * landing_exit: distingue "se fue sin ver una sola oferta" de "la vio y no
+ * picó", que son dos problemas distintos y se arreglan de forma distinta.
+ */
+const SECCIONES_CON_CTA = new Set([
+  'hero',
+  'cta_post_demos',
+  'cta_pre_tutorial',
+  'precios',
+  'cta_final',
+])
 
 // ── Intersection Observer hook ─────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -73,6 +95,61 @@ function useInView(threshold = 0.15) {
     return () => obs.disconnect()
   }, [threshold])
   return { ref, inView }
+}
+
+/**
+ * Avisa UNA vez cuando la seccion lleva 1 segundo con al menos la mitad a la
+ * vista. Observer aparte del de `useInView`, que existe para la animacion:
+ * ese usa threshold 0.15 y se desconecta al primer roce, asi que contaria
+ * como vista una seccion que solo asomo.
+ *
+ * 🔴 La condicion tiene DOS ramas a proposito. Una seccion mas alta que la
+ * ventana —Precios lo es en movil— nunca alcanza el 50% de si misma, y con
+ * `threshold: 0.5` a secas no se reportaria JAMAS. La segunda rama la da por
+ * vista cuando lo visible llena medio viewport, que es lo que de verdad
+ * significa "la esta viendo".
+ *
+ * El temporizador se cancela si la seccion sale antes del segundo: pasar de
+ * largo con un scroll rapido no es haberla visto.
+ */
+function useSeccionVista<T extends HTMLElement>(
+  ref: React.RefObject<T | null>,
+  nombre: string | undefined,
+  onVista: ((nombre: string) => void) | undefined
+) {
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !nombre || !onVista) return
+
+    let temporizador: ReturnType<typeof setTimeout> | null = null
+    let avisado = false
+    const cancelar = () => {
+      if (temporizador) { clearTimeout(temporizador); temporizador = null }
+    }
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (avisado) return
+        const visible =
+          entry.intersectionRatio >= 0.5 ||
+          entry.intersectionRect.height >= window.innerHeight * 0.5
+
+        if (visible && !temporizador) {
+          temporizador = setTimeout(() => {
+            avisado = true
+            onVista(nombre)
+            obs.disconnect()
+          }, 1000)
+        } else if (!visible) {
+          cancelar()
+        }
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
+    )
+
+    obs.observe(el)
+    return () => { obs.disconnect(); cancelar() }
+  }, [ref, nombre, onVista])
 }
 
 // ── Data ───────────────────────────────────────────────────────────
@@ -317,8 +394,23 @@ function CTAIntermedio({
 }
 
 // ── Section wrapper with fade-in ───────────────────────────────────
-function FadeSection({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+function FadeSection({
+  children,
+  style,
+  nombre,
+  onVista,
+}: {
+  children: React.ReactNode
+  style?: React.CSSProperties
+  /** Identificador de la seccion para analitica. Sin el, no se mide. */
+  nombre?: string
+  onVista?: (nombre: string) => void
+}) {
   const { ref, inView } = useInView()
+  // Dos observadores sobre el MISMO nodo: el de la animacion (useInView, que
+  // se desconecta al primer roce) y el de la medicion. Comparten la ref en vez
+  // de fusionarse porque miden cosas distintas y con umbrales distintos.
+  useSeccionVista(ref, nombre, onVista)
   return (
     <div
       ref={ref}
@@ -342,59 +434,256 @@ function FadeSection({ children, style }: { children: React.ReactNode; style?: R
  */
 export default function LandingClient({ stats }: { stats: LandingStats }) {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [variant, setVariant] = useState<VariantKey>('D')
   const [scrolled, setScrolled] = useState(false)
   const [activeTab, setActiveTab] = useState('gaming')
 
-  function track(event: string, props?: Record<string, any>) {
-    if (typeof window !== 'undefined' && (window as any).posthog) {
-      (window as any).posthog.capture(event, props)
-    }
-  }
+  // ── ANALITICA ────────────────────────────────────────────────────
+  //
+  // El helper local que habia aqui (posthog.capture directo, sin
+  // propiedades comunes) desaparecio en s33: todo pasa por track().
+  //
+  // Todo el estado de medicion vive en refs y NO en useState, a proposito:
+  // un re-render por instrumentacion seria un cambio de comportamiento en
+  // la pagina mas visitada del sitio.
+
+  const inicioRef = useRef(0)
+
+  /**
+   * Tiempo ACTIVO, no tiempo abierto. El reloj se para cuando la pestaña
+   * pasa a segundo plano. Una pestaña olvidada ocho horas no es una sesion
+   * de ocho horas, y sin esto la media de permanencia no significaba nada.
+   */
+  const activoRef = useRef({ acumuladoMs: 0, desde: 0, activo: true })
+
+  const scrollMaxRef = useRef(0)
+  const ultimaSeccionRef = useRef<string | null>(null)
+  const ctaVistoRef = useRef(false)
+  const salidaEnviadaRef = useRef(false)
+  const primeraInteraccionRef = useRef(false)
+
+  /** Estado por demo, para poder derivar el abandono al salir. */
+  const demosRef = useRef<
+    Record<string, { inicioMs: number; ultimoPaso: string; completado: boolean; fallos: number }>
+  >({})
+
+  // 🔴 Los relojes se arrancan AQUI y no en el useRef: llamar a Date.now()
+  // durante el render es impuro y el compilador de React lo rechaza. Este
+  // efecto va el PRIMERO a proposito — los efectos corren en orden de
+  // declaracion, asi que cuando arrancan los de scroll y salida ya hay hora.
+  useEffect(() => {
+    const ahora = Date.now()
+    inicioRef.current = ahora
+    activoRef.current = { acumuladoMs: 0, desde: ahora, activo: true }
+  }, [])
+
+  const segundosActivos = useCallback(() => {
+    const a = activoRef.current
+    const ms = a.acumuladoMs + (a.activo ? Date.now() - a.desde : 0)
+    return Math.round(ms / 1000)
+  }, [])
+
+  const alVerSeccion = useCallback((nombre: string) => {
+    ultimaSeccionRef.current = nombre
+    if (SECCIONES_CON_CTA.has(nombre)) ctaVistoRef.current = true
+    track('landing_section_seen', {
+      section: nombre,
+      segundos_hasta_verla: Math.round((Date.now() - inicioRef.current) / 1000),
+    })
+  }, [])
+
+  const refHero = useRef<HTMLElement>(null)
+  useSeccionVista(refHero, 'hero', alVerSeccion)
+
+  // Estado de un demo, creandolo al vuelo la primera vez que se toca.
+  const demoEstado = useCallback((demo: string) => {
+    const actual = demosRef.current[demo]
+    if (actual) return actual
+    const nuevo = { inicioMs: Date.now(), ultimoPaso: 'inicio', completado: false, fallos: 0 }
+    demosRef.current[demo] = nuevo
+    return nuevo
+  }, [])
+
+  const segundosEnDemo = useCallback((demo: string) => {
+    const e = demosRef.current[demo]
+    return e ? Math.round((Date.now() - e.inicioMs) / 1000) : 0
+  }, [])
+
+  /**
+   * Salida. Una sola vez por carga, venga por donde venga.
+   *
+   * 🔴 Tres disparadores, y los tres hacen falta:
+   *   · `visibilitychange` a hidden — es lo unico fiable en movil, donde el
+   *     sistema puede matar la pestaña sin avisar despues.
+   *   · `pagehide` — cubre el bfcache y algunas navegaciones de iOS.
+   *   · el desmontaje — cubre a quien SI convierte y navega a /onboarding
+   *     con <Link>: ahi no hay ningun evento de visibilidad.
+   *
+   * `beforeunload` no esta y no debe estar: en movil no dispara, que es
+   * justo donde vive la mayoria del trafico.
+   *
+   * Se acepta un coste: quien manda la pestaña a segundo plano a los 10s y
+   * vuelve media hora, queda registrado con 10s. Es el precio de no perder
+   * la salida entera, y perderla es peor.
+   */
+  const enviarSalida = useCallback(
+    (motivo: string) => {
+      if (salidaEnviadaRef.current) return
+      salidaEnviadaRef.current = true
+
+      // Abandono de demo: DERIVADO, no observado. Ningun demo sabe cuando se
+      // van; lo que si se sabe aqui es que se empezo y no se completo.
+      for (const [demo, e] of Object.entries(demosRef.current)) {
+        if (e.completado) continue
+        track('demo_abandonado', {
+          demo,
+          ultimo_paso: e.ultimoPaso,
+          segundos_en_demo: Math.round((Date.now() - e.inicioMs) / 1000),
+        })
+      }
+
+      track('landing_exit', {
+        motivo,
+        segundos_en_pagina: segundosActivos(),
+        ultima_seccion: ultimaSeccionRef.current ?? undefined,
+        scroll_max_pct: scrollMaxRef.current,
+        cta_visto: ctaVistoRef.current,
+      })
+    },
+    [segundosActivos]
+  )
 
   useEffect(() => {
-    // Track time on page
-    const start = Date.now()
-    return () => {
-      const seconds = Math.round((Date.now() - start) / 1000)
-      track('landing_exit', { seconds_on_page: seconds })
+    const alCambiarVisibilidad = () => {
+      const a = activoRef.current
+      if (document.visibilityState === 'hidden') {
+        // Parar el reloj ANTES de enviar, o el tiempo incluiria el instante
+        // en que ya no estaba mirando.
+        if (a.activo) {
+          a.acumuladoMs += Date.now() - a.desde
+          a.activo = false
+        }
+        enviarSalida('hidden')
+      } else if (!a.activo) {
+        a.desde = Date.now()
+        a.activo = true
+      }
     }
+    const alOcultarPagina = () => enviarSalida('pagehide')
+
+    document.addEventListener('visibilitychange', alCambiarVisibilidad)
+    window.addEventListener('pagehide', alOcultarPagina)
+    return () => {
+      document.removeEventListener('visibilitychange', alCambiarVisibilidad)
+      window.removeEventListener('pagehide', alOcultarPagina)
+      enviarSalida('unmount')
+    }
+  }, [enviarSalida])
+
+  useEffect(() => {
+    const hitos = [25, 50, 75, 100]
+    const alcanzados = new Set<number>()
+    let pendiente = false
+
+    const medir = () => {
+      pendiente = false
+
+      // 🔴 Guarda contra la division. Si no hay recorrido posible, el
+      // denominador es 0: antes daba Infinity y los CUATRO hitos salian de
+      // golpe al primer scroll, sin que nada lo delatara.
+      const alcanzable = document.body.scrollHeight - window.innerHeight
+      if (alcanzable <= 0) return
+
+      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY / alcanzable) * 100)))
+
+      // MAXIMO alcanzado, no el actual: quien baja al 100% y vuelve arriba
+      // llego al 100%.
+      if (pct > scrollMaxRef.current) scrollMaxRef.current = pct
+
+      for (const h of hitos) {
+        if (pct >= h && !alcanzados.has(h)) {
+          alcanzados.add(h)
+          track('landing_scroll_depth', { percent: h })
+        }
+      }
+    }
+
+    // Throttle por frame: el handler viejo recalculaba y recorria los cuatro
+    // hitos en CADA evento de scroll, decenas por segundo en movil.
+    const alScroll = () => {
+      if (pendiente) return
+      pendiente = true
+      requestAnimationFrame(medir)
+    }
+
+    window.addEventListener('scroll', alScroll, { passive: true })
+    medir()
+    return () => window.removeEventListener('scroll', alScroll)
   }, [])
 
   useEffect(() => {
-    // Track scroll depth
-    const checkpoints = [25, 50, 75, 100]
-    const reached = new Set<number>()
-    const onScroll = () => {
-      const scrolled = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100)
-      checkpoints.forEach(cp => {
-        if (scrolled >= cp && !reached.has(cp)) {
-          reached.add(cp)
-          track('landing_scroll_depth', { percent: cp })
-        }
-      })
+    const quitar = () => {
+      document.removeEventListener('pointerdown', alInteractuar)
+      document.removeEventListener('keydown', alInteractuar)
     }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+
+    function alInteractuar(e: Event) {
+      if (primeraInteraccionRef.current) return
+      primeraInteraccionRef.current = true
+
+      const objetivo = e.target instanceof HTMLElement ? e.target : null
+      const accionable = objetivo?.closest('a, button, input, select, textarea')
+
+      track('landing_first_interaction', {
+        ms_desde_carga: Date.now() - inicioRef.current,
+        // Solo la etiqueta del nodo. NO su texto: seria contenido de la
+        // interfaz metido en una propiedad de analitica, que se parte sola
+        // al primer cambio de copy.
+        elemento: (accionable ?? objetivo)?.tagName.toLowerCase(),
+        seccion: ultimaSeccionRef.current ?? undefined,
+      })
+
+      quitar()
+    }
+
+    document.addEventListener('pointerdown', alInteractuar, { passive: true })
+    document.addEventListener('keydown', alInteractuar)
+    return quitar
   }, [])
 
   useEffect(() => {
     // Si hay utm_source, detectar audiencia y mostrar hero correspondiente
-    const utmSource = searchParams.get('utm_source')
+    //
+    // 🔴 window.location y NO useSearchParams. Ese hook obliga a Next a
+    // renderizar en CLIENTE todo el árbol hasta el <Suspense> más cercano, y
+    // aquí ese árbol es la landing completa: el HTML que recibía Google no
+    // tenía H1, ni precios, ni los conteos del catálogo. Ver la nota larga de
+    // src/app/layout.tsx.
+    //
+    // El cambio no altera NADA de lo que hace este efecto. Corre solo en
+    // cliente y una sola vez (deps []), que es justo cuando window.location
+    // está disponible y trae exactamente los mismos valores que el hook. La
+    // variante, su persistencia y el evento hero_variant_seen quedan igual.
+    const utmSource = new URLSearchParams(window.location.search).get('utm_source')
     const audience = detectAudience(utmSource)
 
     let v: VariantKey
+    let persistida: boolean
     if (audience === 'papa') {
+      // PAPA no se persiste nunca: depende del utm de esa visita.
       v = 'PAPA'
+      persistida = false
     } else {
-      v = getOrAssignVariant()
+      const asignacion = getOrAssignVariant()
+      v = asignacion.variant
+      persistida = asignacion.persistida
     }
 
     setVariant(v)
-    if (typeof window !== 'undefined' && (window as any).posthog) {
-      (window as any).posthog.capture('hero_variant_seen', { variant: v, audience, utm_source: utmSource })
-    }
+    // `utm_source` ya no se manda a mano: track() lo agrega solo desde el
+    // sessionStorage de UTMPersistence, con first-touch. `audience` SI se
+    // conserva porque no se puede derivar de ahi.
+    track('hero_variant_seen', { variant: v, audience, es_persistida: persistida })
 
     // Prefetch anonymous session in background while user reads the landing
     // So when they tap CTA, the session already exists and onboarding loads instantly
@@ -505,7 +794,15 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
 
   function handleCTA(location: string) {
     track('hero_variant_converted', { variant, cta_location: location })
-    track('landing_cta_clicked', { location, variant })
+    track('landing_cta_clicked', {
+      location,
+      variant,
+      // `promo_slug` lo agrega track() solo: es el de la URL, first-touch.
+      // Este otro es distinto y hace falta: la campaña que este CTA llevaba
+      // DE VERDAD pegada al destino. Puede ser ninguna aunque la URL traiga
+      // slug, si la campaña no cubre estandar_v2 + mensual.
+      promo_aplicada: aplicaPromoEstandar ? promo?.slug : undefined,
+    })
     localStorage.setItem('pasas_trial_used', 'true')
   }
 
@@ -550,7 +847,10 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 64px', textAlign: 'center', position: 'relative' }}>
+      {/* Observer propio en vez de <FadeSection>: envolverlo aqui le
+          añadiria el fundido de entrada de las demas secciones y eso SI se
+          veria. La medicion es la misma; el hero conserva su animacion. */}
+      <section ref={refHero} style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 64px', textAlign: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 320, height: 320, background: `radial-gradient(circle, ${COLORS.primary}33 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
         <div style={{ animation: 'fadeUp 0.8s ease both', position: 'relative', maxWidth: 480 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${COLORS.primary}22`, border: `1px solid ${COLORS.primary}55`, borderRadius: RADIUS.pill, padding: '6px 14px', marginBottom: 24 }}>
@@ -597,7 +897,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </section>
 
       {/* ── AQUÍ NO TE QUEDAS ATORADO — el argumento insustituible ── */}
-      <FadeSection>
+      <FadeSection nombre="papel_lapiz" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.primary, textTransform: 'uppercase', marginBottom: 8 }}>Papel y lápiz</p>
           {/* La pose del lápiz existe exactamente para esta sección. */}
@@ -624,7 +924,53 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             te dejan a un paso, y ese paso lo das tú.
           </p>
 
-          <DemoPistas onIntento={() => track('landing_demo_pistas')} />
+          <DemoPistas
+            onInicio={() => {
+              demoEstado('pistas').ultimoPaso = 'escribiendo'
+              track('demo_iniciado', { demo: 'pistas', ejercicio_id: DEMO_PISTAS_ID })
+            }}
+            onIntentoVacio={() =>
+              track('demo_intento_vacio', {
+                demo: 'pistas',
+                ejercicio_id: DEMO_PISTAS_ID,
+                segundos_desde_inicio: segundosEnDemo('pistas'),
+              })
+            }
+            onRespuesta={({ esCorrecta, intentoN, pistaReveladaPorFallo }) => {
+              const e = demoEstado('pistas')
+              if (!esCorrecta) e.fallos += 1
+              e.ultimoPaso = esCorrecta ? 'acierto' : `fallo_${intentoN}`
+              track('demo_respondido', {
+                demo: 'pistas',
+                es_correcta: esCorrecta,
+                intento_n: intentoN,
+                segundos_desde_inicio: segundosEnDemo('pistas'),
+                pista_revelada_por_fallo: pistaReveladaPorFallo,
+              })
+            }}
+            onPistaPedida={({ nPista }) => {
+              const e = demoEstado('pistas')
+              e.ultimoPaso = `pista_${nPista}`
+              track('demo_pista_pedida', {
+                demo: 'pistas',
+                n_pista: nPista,
+                // Se calcula AQUI y no en el componente: el demo no lleva la
+                // cuenta de fallos, y el unico sitio que la tiene es este.
+                tras_fallar: e.fallos > 0,
+                segundos_desde_inicio: segundosEnDemo('pistas'),
+              })
+            }}
+            onCompletado={({ nPistasUsadas }) => {
+              const e = demoEstado('pistas')
+              e.completado = true
+              e.ultimoPaso = 'completado'
+              track('demo_respuesta_completa', {
+                demo: 'pistas',
+                n_pistas_usadas: nPistasUsadas,
+                segundos_totales: segundosEnDemo('pistas'),
+              })
+            }}
+          />
 
           {/*
             🔴 CIFRAS MEDIDAS CONTRA LA BASE — 17 ago 2026. NO estimar.
@@ -694,7 +1040,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── MODO HORDA ── */}
-      <FadeSection>
+      <FadeSection nombre="horda" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8 }}>Modo Horda</p>
           {/* La zombie: cicatriz, tornillos y lengua fuera. Cuenta de qué va
@@ -711,7 +1057,32 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             Si fallas, te dice el truco para que no se te olvide.
           </p>
 
-          <DemoHorda onAvanzar={() => track('landing_demo_horda')} />
+          <DemoHorda
+            onInicio={() => {
+              demoEstado('horda').ultimoPaso = 'oleada_1'
+              track('demo_iniciado', { demo: 'horda', ejercicio_id: DEMO_HORDA_ID })
+            }}
+            onOleada={({ oleada }) => {
+              demoEstado('horda').ultimoPaso = `oleada_${oleada}`
+              track('demo_oleada', {
+                demo: 'horda',
+                oleada,
+                segundos_desde_inicio: segundosEnDemo('horda'),
+              })
+            }}
+            onCompletado={() => {
+              const e = demoEstado('horda')
+              e.completado = true
+              e.ultimoPaso = 'completado'
+              // Sin `n_pistas_usadas`: la horda no tiene pistas. Mandar 0
+              // seria afirmar que no uso ninguna, que es distinto de que no
+              // existan. track() descarta las propiedades ausentes.
+              track('demo_respuesta_completa', {
+                demo: 'horda',
+                segundos_totales: segundosEnDemo('horda'),
+              })
+            }}
+          />
 
           {/*
             Misma receta que el conteo de Papel y Lápiz. Las dos secciones son
@@ -757,7 +1128,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* Justo después de las dos demos jugables: ya probó el producto. */}
-      <FadeSection>
+      <FadeSection nombre="cta_post_demos" onVista={alVerSeccion}>
         <CTAIntermedio
           texto={ctaPostDemos.label}
           microcopy={microcopyPromo(ctaPostDemos.sublabel, ['Cancela cuando quieras'])}
@@ -769,7 +1140,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── NO ES LEER, ES JUGAR ── */}
-      <FadeSection>
+      <FadeSection nombre="minijuegos" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>Dentro de cada tema</p>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
@@ -803,7 +1174,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── TEMÁTICAS ── */}
-      <FadeSection>
+      <FadeSection nombre="tematicas" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8 }}>Temáticas</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 48, color: COLORS.text }}>
@@ -833,7 +1204,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
           dentro de este condicional, así que al apagarlo no queda ningún
           título huérfano. */}
       {FEATURE_FLAGS.ENABLE_LANDING_SCREENSHOTS && (
-      <FadeSection>
+      <FadeSection nombre="capturas" onVista={alVerSeccion}>
         <section style={{ padding: '72px 0', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.pink, textTransform: 'uppercase', marginBottom: 8, padding: '0 24px' }}>Vista previa</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text, padding: '0 24px' }}>
@@ -930,24 +1301,31 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
       )}
 
-      <FadeSection>
+      <FadeSection nombre="cta_pre_tutorial" onVista={alVerSeccion}>
         <CTAIntermedio
           texto={ctaPostCapturas.label}
           microcopy={microcopyPromo(ctaPostCapturas.sublabel, ['Cancela cuando quieras'])}
           /*
-            🔴 `location` se conserva aunque el nombre ya no describa el sitio:
-            cortar la serie de PostHog cuesta más que la incoherencia.
+            🔴 ERA `post_capturas`. Renombrado en s33.
 
-            DESDE AGOSTO 2026 ESTE CTA NO VA DESPUÉS DE LAS CAPTURAS. El bloque
+            ESTE CTA NO VA DESPUÉS DE LAS CAPTURAS DESDE AGOSTO 2026. El bloque
             "Así se ve por dentro" está apagado tras
-            ENABLE_LANDING_SCREENSHOTS, así que ahora cae justo después de las
-            cuatro temáticas ("Escoge tu mundo"). Quien compare la conversión
-            de `post_capturas` antes y después de esa fecha está comparando dos
-            posiciones distintas del embudo, con un argumento previo distinto
-            —temáticas en vez de capturas de producto—. No es el mismo CTA con
-            otro copy: es otro momento de la página.
+            ENABLE_LANDING_SCREENSHOTS, así que cae justo después de las cuatro
+            temáticas ("Escoge tu mundo"). El nombre viejo llevaba meses
+            describiendo un sitio que ya no existía.
+
+            `pre_tutorial` es el único nombre que sigue siendo cierto con el
+            flag encendido Y apagado: en los dos casos, este es el CTA que
+            precede al bloque de Tutorial.
+
+            🔴 LA SERIE SE PARTE AQUÍ, y es a propósito. Quien compare
+            `post_capturas` con `pre_tutorial` está comparando dos posiciones
+            distintas del embudo, con un argumento previo distinto —temáticas
+            en vez de capturas de producto—: no es el mismo CTA con otro copy,
+            es otro momento de la página. Ya eran incomparables antes del
+            renombre; ahora al menos se nota.
           */
-          location="post_capturas"
+          location="pre_tutorial"
           esperando={esperandoPromo}
           href={destinoOnboarding}
           onClick={handleCTA}
@@ -955,7 +1333,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── TUTORIAL ── */}
-      <FadeSection>
+      <FadeSection nombre="tutorial" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>¿Cómo funciona exactamente?</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(22px, 6vw, 30px)', textAlign: 'center', marginBottom: 12, color: COLORS.text }}>
@@ -1028,7 +1406,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── COMUNIDAD ── */}
-      <FadeSection>
+      <FadeSection nombre="comunidad" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.cyan, textTransform: 'uppercase', marginBottom: 8 }}>Comunidad</p>
           <h2 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(20px, 5vw, 28px)', textAlign: 'center', marginBottom: 20, color: COLORS.text }}>
@@ -1049,7 +1427,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── PRECIOS ── */}
-      <FadeSection>
+      <FadeSection nombre="precios" onVista={alVerSeccion}>
         <section style={{ padding: '72px 24px', maxWidth: 520, margin: '0 auto' }}>
           <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 800, letterSpacing: 3, color: COLORS.yellow, textTransform: 'uppercase', marginBottom: 8 }}>Precios</p>
           {/* REGLA C — con promo, los tres datos van en el encabezado: lista
@@ -1179,7 +1557,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
                 <Link
                   href={destinoTarjeta}
                   prefetch={true}
-                  onClick={() => handleCTA(`pricing_${plan.name.toLowerCase()}`)}
+                  onClick={() => handleCTA(`pricing_${plan.key}`)}
                   style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <EtiquetaCTA esperando={esperandoPromo} ancho={190}>{ctaCard.label}</EtiquetaCTA>
@@ -1209,7 +1587,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── CTA FINAL ── */}
-      <FadeSection>
+      <FadeSection nombre="cta_final" onVista={alVerSeccion}>
         <section style={{ padding: '80px 24px 100px', textAlign: 'center', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translateX(-50%)', width: 280, height: 280, background: `radial-gradient(circle, ${COLORS.pink}22 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
           <div style={{ position: 'relative', maxWidth: 440, margin: '0 auto' }}>
@@ -1279,7 +1657,13 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       </FadeSection>
 
       {/* ── WhatsApp flotante ── */}
-      <WhatsAppButton onClick={() => track('landing_whatsapp_clicked')} />
+      <WhatsAppButton
+        onClick={() =>
+          track('landing_whatsapp_clicked', {
+            seccion_visible: ultimaSeccionRef.current ?? undefined,
+          })
+        }
+      />
 
       {/* ── Footer ── */}
       <footer style={{ padding: '32px 24px 40px', borderTop: `1px solid ${COLORS.inputBorder}` }}>

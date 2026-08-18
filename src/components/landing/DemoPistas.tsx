@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 
 /**
@@ -43,9 +43,53 @@ const PISTAS = [
  */
 const SOLUCION = ['3 × 27 = 81 bloques en total', '81 − 15 = 66 bloques']
 
-export default function DemoPistas({ onIntento }: { onIntento?: () => void }) {
+/**
+ * Identificador del contenido de este demo. Es fijo y hardcodeado —hay UN
+ * ejercicio—, asi que esto solo le pone nombre a lo que ya existe. Cuando
+ * haya mas de uno, ya hay donde colgarlo.
+ */
+export const DEMO_PISTAS_ID = 'pistas_bloques'
+
+/**
+ * Callbacks de ANALITICA. Ninguno cambia la mecanica ni lo que se pinta: el
+ * componente se comporta exactamente igual con todos en undefined.
+ *
+ * Los tiempos NO se miden aqui. Los calcula quien escucha, que es el unico
+ * que sabe cuando cargo la pagina.
+ */
+type EventosDemoPistas = {
+  /** Primer cambio del input. Se llama UNA vez por montaje. */
+  onInicio?: () => void
+  /** Pulsar Revisar con el campo vacio o con algo que no es un numero. */
+  onIntentoVacio?: () => void
+  onRespuesta?: (d: {
+    esCorrecta: boolean
+    intentoN: number
+    /**
+     * Fallar consume una pista de la MISMA lista que consume el boton.
+     * Con esto se distingue una pista que el alumno pidio de una que le
+     * aparecio por equivocarse.
+     */
+    pistaReveladaPorFallo: boolean
+  }) => void
+  /** SOLO el clic del boton 💡. Nunca las pistas que salen al fallar. */
+  onPistaPedida?: (d: { nPista: number }) => void
+  /** Acertar. NO incluye "ver la respuesta completa": eso no es resolverlo. */
+  onCompletado?: (d: { nPistasUsadas: number }) => void
+}
+
+export default function DemoPistas({
+  onInicio,
+  onIntentoVacio,
+  onRespuesta,
+  onPistaPedida,
+  onCompletado,
+}: EventosDemoPistas = {}) {
   const [valor, setValor] = useState('')
   const [pistas, setPistas] = useState(0)
+  // Solo para analitica: no entra en ningun render.
+  const intentosRef = useRef(0)
+  const yaEmpezoRef = useRef(false)
   // Mismos cuatro estados que SolveBlock. `fallo` era un booleano suelto que
   // no sabía distinguir "fallaste y quedan pistas" de "fallaste y ya no".
   const [estado, setEstado] = useState<'escribiendo' | 'acierto' | 'fallo' | 'solucion'>('escribiendo')
@@ -55,20 +99,42 @@ export default function DemoPistas({ onIntento }: { onIntento?: () => void }) {
 
   function revisar() {
     const n = Number(valor.replace(',', '.'))
-    onIntento?.()
 
-    if (!valor.trim() || Number.isNaN(n)) return
+    // 🔴 El aviso va DESPUES de validar. Antes salia arriba del todo, asi que
+    // pulsar Revisar con el campo vacio contaba como intento y la tasa de
+    // acierto del demo salia hundida por clics que nunca fueron respuestas.
+    if (!valor.trim() || Number.isNaN(n)) {
+      onIntentoVacio?.()
+      return
+    }
+
+    intentosRef.current += 1
 
     if (n === RESPUESTA) {
       setEstado('acierto')
+      onRespuesta?.({
+        esCorrecta: true,
+        intentoN: intentosRef.current,
+        pistaReveladaPorFallo: false,
+      })
+      onCompletado?.({ nPistasUsadas: pistas })
       return
     }
 
     // 🔴 UN SOLO CONTADOR. Fallar consume la siguiente pista de la MISMA lista
     // que consume el botón de pedirla, en el mismo orden. No hay dos caminos:
     // es exactamente el `setShown` compartido de SolveBlock:719 y :870.
+    //
+    // Se lee ANTES del setPistas: si ya estaban todas vistas, este fallo no
+    // revela ninguna y decir lo contrario seria falso.
+    const revelaPista = pistas < PISTAS.length
     setEstado('fallo')
     setPistas((p) => Math.min(p + 1, PISTAS.length))
+    onRespuesta?.({
+      esCorrecta: false,
+      intentoN: intentosRef.current,
+      pistaReveladaPorFallo: revelaPista,
+    })
   }
 
   return (
@@ -116,6 +182,12 @@ export default function DemoPistas({ onIntento }: { onIntento?: () => void }) {
             value={valor}
             onChange={(e) => {
               setValor(e.target.value)
+              // Escribir es el primer acto real de juego: es lo que marca el
+              // inicio del demo, no que la seccion se vea.
+              if (!yaEmpezoRef.current) {
+                yaEmpezoRef.current = true
+                onInicio?.()
+              }
               // Editar la respuesta devuelve al estado de escritura, igual que
               // en SolveBlock:815. Es lo que hace reaparecer el botón de pista.
               if (estado === 'fallo') setEstado('escribiendo')
@@ -173,7 +245,10 @@ export default function DemoPistas({ onIntento }: { onIntento?: () => void }) {
       {estado === 'escribiendo' && pistasRestantes > 0 && (
         <button
           type="button"
-          onClick={() => setPistas((p) => Math.min(p + 1, PISTAS.length))}
+          onClick={() => {
+            setPistas((p) => Math.min(p + 1, PISTAS.length))
+            onPistaPedida?.({ nPista: Math.min(pistas + 1, PISTAS.length) })
+          }}
           style={{
             width: '100%',
             minHeight: 40,

@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import type { PromoPublica } from '@/lib/promos'
 
 /**
@@ -24,9 +23,36 @@ import type { PromoPublica } from '@/lib/promos'
 const cache = new Map<string, PromoPublica | null>()
 
 /**
- * Resuelve la promoción vigente para esta sesión.
+ * El slug de esta visita: `?promo=` → sessionStorage['pasas_promo'] → ''.
  *
- * Orden del slug: ?promo= → sessionStorage['pasas_promo'] → null.
+ * 🔴 SE LEE DE window.location, NO DE useSearchParams. Ese hook obliga a Next
+ * a renderizar en CLIENTE todo el árbol hasta el <Suspense> más cercano, y en
+ * la landing ese árbol es la página entera: el HTML que recibía Google no
+ * tenía H1, ni precios, ni conteos. Ver la nota de src/app/layout.tsx.
+ *
+ * Lo que se pierde al no usar el hook: este valor deja de reaccionar a una
+ * navegación de cliente que cambie el `?promo=` sin desmontar el componente.
+ * Eso hoy no ocurre — los enlaces con slug (conPromo) siempre van a OTRA ruta,
+ * que remonta. Si algún día se hace `router.push` al mismo pathname con otro
+ * slug, esto no se enteraría.
+ */
+function leerSlug(): string {
+  const enUrl = new URLSearchParams(window.location.search).get('promo')
+  let enStorage: string | null = null
+  try {
+    enStorage = window.sessionStorage.getItem('pasas_promo')
+  } catch {
+    // Safari en privado y navegadores con almacenamiento bloqueado tiran aquí.
+    // Sin storage no hay indicio: se pinta normal, sin esperar.
+  }
+  return (enUrl ?? enStorage ?? '').trim().toLowerCase()
+}
+
+/** El valor no cambia mientras el componente vive, así que nadie se suscribe. */
+const noSuscribirse = () => () => {}
+
+/**
+ * Resuelve la promoción vigente para esta sesión.
  *
  * 🔴 FAIL-CLOSED. Devuelve `promo: null` si no hay slug, si el servidor
  * responde { promo: null } (apagada o fuera de fechas — eso lo decide el
@@ -35,61 +61,54 @@ const cache = new Map<string, PromoPublica | null>()
  *
  * 🔴 `promo` arranca en null y no en undefined: no hay estado "indeciso" que
  * invite a pintar un precio a medias. Lo que decide qué hacer mientras
- * `cargando` es true NO es este hook, es `hayIndicio` + useEsperandoPromo:
- * sin indicio de campaña la pantalla pinta normal de inmediato; con indicio
- * reserva el hueco y no pinta precio ni CTA hasta saber. Pintar el precio de
- * lista y reescribirlo a "$1" medio segundo después es anunciar dos precios.
+ * `cargando` es true NO es este hook, es `hayIndicio` + useEsperandoPromo.
  */
 export function usePromo(): {
   promo: PromoPublica | null
   cargando: boolean
   hayIndicio: boolean
 } {
-  const searchParams = useSearchParams()
   const [estado, setEstado] = useState<{ promo: PromoPublica | null; cargando: boolean }>({
     promo: null,
     cargando: true,
   })
 
-  // Se lee fuera del efecto para que sea la dependencia: `searchParams` es un
-  // objeto nuevo en cada render y dispararía el efecto en cada uno.
-  const slugUrl = searchParams.get('promo')
-
   /**
    * ¿HAY MOTIVO PARA SOSPECHAR QUE ESTA VISITA TRAE CAMPAÑA?
    *
-   * 🔴 Síncrono, en el PRIMER render y sin red. Es lo que permite decidir, ya
-   * en la primera pintada, si la pantalla debe esperar los datos antes de
-   * dibujar precio y CTA, o si puede pintar de inmediato.
+   * 🔴 useSyncExternalStore Y NO UN useState PEREZOSO. La diferencia importa y
+   * no es estilo.
    *
-   * No dice que la promo exista ni que aplique —eso lo decide el servidor—,
-   * solo que hay un slug por el que preguntar. Es la MISMA fuente y el mismo
-   * orden que usa el efecto de abajo: no hay una segunda regla que pueda
-   * discrepar.
+   * Antes esto era `useState(() => leer sessionStorage)`. Funcionaba porque
+   * TODA la pantalla se renderizaba en cliente: no había HTML de servidor con
+   * el que desajustarse. Al arreglar el CSR de la landing, ese HTML ya existe,
+   * y un inicializador que devuelve `false` en servidor y `true` en cliente es
+   * un error de hidratación — React tira el árbol y lo vuelve a renderizar
+   * entero en cliente, que es exactamente lo que acabamos de quitar.
    *
-   * 🔴 La inmensa mayoría del tráfico no trae promo y aquí devuelve false: esa
-   * gente no espera ni un milisegundo.
+   * `getServerSnapshot` devuelve '' y es lo que se usa en la pasada de
+   * hidratación, así que no hay desajuste; React vuelve a preguntar por
+   * `getSnapshot` justo después y ahí aparece el slug real.
    *
-   * `useState` con inicializador perezoso y no una lectura suelta en el
-   * cuerpo: así sessionStorage se toca UNA vez, en el primer render del
-   * cliente, y el valor no cambia después aunque el componente se re-renderice
-   * — que es justo lo que evita que la pantalla entre y salga del estado de
-   * espera. Las tres pantallas que lo usan viven bajo un <Suspense> y llaman a
-   * useSearchParams, así que su HTML prerenderizado es el fallback y no hay
-   * marcado de servidor contra el que desajustarse.
+   * Y en las pantallas que SIGUEN siendo cliente entero por su propio
+   * <Suspense> —/planes, /onboarding/preview— no hay hidratación de este
+   * subárbol, así que se usa `getSnapshot` desde el primer render: el hueco se
+   * reserva igual de pronto que antes y esas pantallas no cambian nada.
+   *
+   * El ref hace que la lectura ocurra UNA vez por montaje. Es a propósito y es
+   * el mismo contrato que el useState perezoso de antes: PromoPersistence
+   * escribe en sessionStorage desde un efecto, y sin el ref `getSnapshot`
+   * empezaría a devolver un valor distinto sin que nadie notifique el cambio.
    */
-  const [indicioStorage] = useState(() => {
-    if (typeof window === 'undefined') return false
-    try {
-      return !!window.sessionStorage.getItem('pasas_promo')?.trim()
-    } catch {
-      // Safari en privado y navegadores con almacenamiento bloqueado tiran
-      // aquí. Sin storage no hay indicio: se pinta normal, sin esperar.
-      return false
-    }
-  })
+  const slugRef = useRef<string | null>(null)
+  const getSnapshot = useCallback(() => {
+    if (slugRef.current === null) slugRef.current = leerSlug()
+    return slugRef.current
+  }, [])
+  const getServerSnapshot = useCallback(() => '', [])
+  const slug = useSyncExternalStore(noSuscribirse, getSnapshot, getServerSnapshot)
 
-  const hayIndicio = !!slugUrl?.trim() || indicioStorage
+  const hayIndicio = slug !== ''
 
   useEffect(() => {
     let vivo = true
@@ -100,13 +119,6 @@ export function usePromo(): {
     // (renders en cascada). Aquí las escrituras de estado ocurren siempre
     // desde una continuación, nunca en la pasada síncrona del efecto.
     void (async () => {
-      // sessionStorage solo existe en el cliente, así que la lectura va
-      // dentro del efecto. Es también la razón de que `cargando` arranque en
-      // true: en el primer render (servidor e hidratación) no se sabe todavía.
-      const slug = (slugUrl ?? sessionStorage.getItem('pasas_promo') ?? '')
-        .trim()
-        .toLowerCase()
-
       if (!slug) {
         if (vivo) setEstado({ promo: null, cargando: false })
         return
@@ -133,7 +145,7 @@ export function usePromo(): {
     return () => {
       vivo = false
     }
-  }, [slugUrl])
+  }, [slug])
 
   return { ...estado, hayIndicio }
 }

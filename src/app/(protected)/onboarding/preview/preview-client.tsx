@@ -1,12 +1,13 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useEffect, useRef } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import Logo from '@/components/global/Logo'
 import Pasita from '@/components/mascota/Pasita'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { conPromo } from '@/lib/promos'
+import { track } from '@/lib/analytics/track'
 
 /**
  * LA FRASE DE "ASÍ APRENDERÍAS" — POR NIVEL, GRADO Y TEMÁTICA
@@ -349,7 +350,10 @@ function PreviewContent({ bloqueStats }: { bloqueStats: React.ReactNode }) {
           <div style={{ marginBottom: 8 }}>
             <button
               type="button"
-              onClick={() => router.push(conPromo('/planes?plan=estandar', searchParams.get('promo')))}
+              onClick={() => {
+                track('preview_cta_planes', { destino: 'planes' })
+                router.push(conPromo('/planes?plan=estandar', searchParams.get('promo')))
+              }}
               style={{
                 width: '100%',
                 minHeight: 52,
@@ -378,7 +382,10 @@ function PreviewContent({ bloqueStats }: { bloqueStats: React.ReactNode }) {
           <div>
             <button
               type="button"
-              onClick={() => router.push(`/personalizado/materia?${personalizedParams.toString()}`)}
+              onClick={() => {
+                track('preview_cta_planes', { destino: 'personalizado' })
+                router.push(`/personalizado/materia?${personalizedParams.toString()}`)
+              }}
               style={{
                 width: '100%',
                 minHeight: 52,
@@ -426,6 +433,27 @@ function PreviewContent({ bloqueStats }: { bloqueStats: React.ReactNode }) {
 }
 
 export default function PreviewClient({ bloqueStats }: { bloqueStats: React.ReactNode }) {
+  const inicioRef = useRef(0)
+
+  /**
+   * `preview_visto` se emite AL SALIR, no al entrar: la propiedad que
+   * interesa es cuanto tiempo estuvo, y eso solo se sabe al final.
+   *
+   * Va en la limpieza del efecto, asi que cubre tanto la navegacion a
+   * /planes como cualquier otra salida dentro de la app. Una salida dura
+   * —cerrar la pestaña— se pierde; el `landing_exit` de la landing usa
+   * pagehide para eso, pero aqui no aplica: esta pantalla es un paso
+   * intermedio y quien la cierra ya se fue del embudo de todas formas.
+   */
+  useEffect(() => {
+    inicioRef.current = Date.now()
+    return () => {
+      track('preview_visto', {
+        segundos_en_pantalla: Math.round((Date.now() - inicioRef.current) / 1000),
+      })
+    }
+  }, [])
+
   // <Suspense> por useSearchParams, igual que antes.
   return (
     <Suspense>

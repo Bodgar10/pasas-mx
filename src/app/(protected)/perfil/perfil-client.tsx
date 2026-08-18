@@ -37,10 +37,25 @@ interface Props {
     plan: string
     status: string
     currentPeriodEnd: string
+    /** Solo analitica. Ver perfil/page.tsx. */
+    currentPeriodStart?: string | null
+    createdAt?: string | null
     cancelledAt: string | null
     pausedUntil: string | null
     billingCycle: string | null
   } | null
+}
+
+/**
+ * Dias enteros transcurridos desde una fecha ISO. Solo analitica.
+ *
+ * A nivel de modulo y no dentro del componente: `Date.now()` en el cuerpo de
+ * un componente lo marca el compilador de React como impuro.
+ */
+function diasDesde(iso: string | null | undefined): number | undefined {
+  if (!iso) return undefined
+  const ms = Date.now() - new Date(iso).getTime()
+  return ms >= 0 ? Math.floor(ms / 86_400_000) : undefined
 }
 
 /** Etiquetas de pantalla. La columna guarda el enum, no esto. */
@@ -177,6 +192,7 @@ export default function PerfilClient({ profile, alumnos, subscription }: Props) 
   const [errorAlumno, setErrorAlumno] = useState<string | null>(null)
 
   const suscripcionViva = subscription?.status === 'active' || subscription?.status === 'trialing'
+
 
   async function reactivar(learnerId: string) {
     setReactivando(learnerId)
@@ -604,6 +620,10 @@ export default function PerfilClient({ profile, alumnos, subscription }: Props) 
                 <CancellationFlow
                   periodEnd={new Date(subscription.currentPeriodEnd)}
                   totalLugares={alumnos.filter((a) => a.status === 'active').length}
+                  plan={subscription.plan}
+                  ciclo={subscription.billingCycle ?? undefined}
+                  diaDelCiclo={diasDesde(subscription.currentPeriodStart)}
+                  diasDesdeAlta={diasDesde(subscription.createdAt)}
                   onClose={() => setShowCancelFlow(false)}
                   onCancelled={() => setWasCancelled(true)}
                 />

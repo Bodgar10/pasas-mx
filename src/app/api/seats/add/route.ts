@@ -25,7 +25,7 @@
 
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
-import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js'
 import { stripe } from '@/lib/payments/stripe'
 import { materiasParaGrado } from '@/lib/learners'
 import {
@@ -35,6 +35,7 @@ import {
   PLAN_DB_A_STRIPE,
   type DurationKey,
 } from '@/lib/payments/config'
+import { trackServer } from '@/lib/analytics/track-server'
 
 export async function POST(request: Request) {
   // 1. Auth
@@ -104,7 +105,8 @@ export async function POST(request: Request) {
   //    a mitad de precio a quien no ha pagado el primero.
   const { data: sub, error: subError } = await supabase
     .from('subscriptions')
-    .select('provider_sub_id, plan, billing_cycle, status')
+    // `current_period_start`: solo analitica, para `dia_del_ciclo`.
+    .select('provider_sub_id, plan, billing_cycle, status, current_period_start')
     .eq('user_id', user.id)
     .in('status', ['active', 'trialing'])
     .order('current_period_end', { ascending: false })
@@ -342,5 +344,51 @@ export async function POST(request: Request) {
     }
   }
 
+  try {
+    const { count: nAsientos } = await admin
+      .from('learners')
+      .select('id', { count: 'exact', head: true })
+      .eq('account_user_id', user.id)
+      .eq('status', 'active')
+
+    await trackServer(
+      'asiento_agregado',
+      {
+        n_asientos_despues: nAsientos ?? undefined,
+        dia_del_ciclo: diasDesdeIso(sub.current_period_start),
+        plan: sub.plan,
+        // 🔴 SIN `prorrateo_cobrado`. `subscriptionItems.create` devuelve el
+        // item, no la factura: sacarlo exigiria una llamada extra a Stripe
+        // DENTRO de un endpoint que acaba de cobrar — latencia y un punto de
+        // fallo mas en un camino de dinero, por un dato de analitica. El
+        // monto real queda en Stripe y en `invoice.paid`; si hace falta
+        // cruzarlo, se cruza por ahi.
+      },
+      { consent: await consentimientoDe(admin, user.id), userId: user.id }
+    )
+  } catch (err) {
+    console.error('[seats/add] analitica fallo:', err)
+  }
+
   return NextResponse.json({ ok: true, subscriptionItemId })
 }
+
+/** Dias enteros desde una fecha ISO pasada. Solo analitica. */
+function diasDesdeIso(iso: string | null | undefined): number | undefined {
+  if (!iso) return undefined
+  const ms = Date.now() - new Date(iso).getTime()
+  return ms >= 0 ? Math.floor(ms / 86_400_000) : undefined
+}
+
+async function consentimientoDe(cliente: SupabaseClient, userId: string) {
+  const { data } = await cliente
+    .from('users')
+    .select('cookie_consent_analytics, cookie_consent_marketing')
+    .eq('id', userId)
+    .maybeSingle()
+  return {
+    analytics: data?.cookie_consent_analytics as boolean | null | undefined,
+    marketing: data?.cookie_consent_marketing as boolean | null | undefined,
+  }
+}
+

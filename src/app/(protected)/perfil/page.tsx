@@ -15,7 +15,7 @@ export default async function PerfilPage() {
   const [{ data: profile }, { data: learner }, { data: subscription }, { data: alumnos }] = await Promise.all([
     supabase.from('users').select('full_name, email').eq('id', user.id).single(),
     supabase.from('learners').select('xp_total, streak_days').eq('account_user_id', user.id).eq('is_primary', true).maybeSingle(),
-    supabase.from('subscriptions').select('plan, status, current_period_end, cancelled_at, paused_until, billing_cycle').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle(),
+    supabase.from('subscriptions').select('plan, status, current_period_start, current_period_end, cancelled_at, paused_until, billing_cycle, created_at').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle(),
     supabase
       .from('learners')
       .select('id, slot, display_name, education_level, grade, is_primary, status, access_until')
@@ -37,6 +37,12 @@ export default async function PerfilPage() {
         plan: subscription.plan,
         status: subscription.status,
         currentPeriodEnd: subscription.current_period_end,
+        // Solo analitica: `dia_del_ciclo` de los eventos de cancelacion
+        // distingue arrepentimiento (cancelar al dia siguiente de pagar) de
+        // decision (cancelar justo antes de renovar). Son dos problemas
+        // distintos y sin esta fecha no se pueden separar.
+        currentPeriodStart: subscription.current_period_start,
+        createdAt: subscription.created_at,
         cancelledAt: subscription.cancelled_at,
         pausedUntil: subscription.paused_until ?? null,
         billingCycle: subscription.billing_cycle ?? null,

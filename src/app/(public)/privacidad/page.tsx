@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: 'Aviso de Privacidad | Pasas.mx',
   description:
     'Aviso de Privacidad de Pasas.mx: qué datos personales recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.',
+  // Relativo: lo resuelve el metadataBase del layout raíz.
+  alternates: { canonical: '/privacidad' },
 }
 
 const INDICE = [

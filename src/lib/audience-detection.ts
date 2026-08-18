@@ -25,6 +25,19 @@ export interface AcquisitionSource {
   first_touch_at?: string
 }
 
+/**
+ * 🔴 `first_touch_at` sale de `params.first_touch_at` si viene.
+ *
+ * Antes SIEMPRE era `new Date()`, es decir la fecha en que se construia el
+ * objeto y no la del toque. En el camino de /registro eso puede ser dias
+ * despues del clic en el anuncio: la columna decia "vino el martes" de
+ * alguien que llego el viernes anterior. UTMPersistence ahora sella la hora
+ * real en el momento de la captura y la manda aqui dentro.
+ *
+ * El `new Date()` se conserva como respaldo para los llamadores que no lo
+ * mandan —y para los datos viejos, que no lo traen—: es peor no tener fecha
+ * que tenerla aproximada, mientras se sepa cual es cual.
+ */
 export function buildAcquisitionSource(
   params: Record<string, string>,
   referrer?: string,
@@ -38,6 +51,6 @@ export function buildAcquisitionSource(
     utm_term: params.utm_term || undefined,
     referrer: referrer || undefined,
     landing_url: landingUrl || undefined,
-    first_touch_at: new Date().toISOString(),
+    first_touch_at: params.first_touch_at || new Date().toISOString(),
   }
 }

@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { track } from '@/lib/analytics/track'
 
 const CANCELLATION_REASONS = [
   { value: 'precio', label: 'Muy caro / no puedo seguir pagando' },
@@ -19,6 +20,12 @@ interface Props {
   periodEnd: Date
   onClose: () => void
   onCancelled: () => void
+  /** Solo analitica: dia del ciclo, plan y ciclo para los eventos. */
+  plan?: string
+  ciclo?: string
+  /** Dias transcurridos desde `current_period_start`. */
+  diaDelCiclo?: number
+  diasDesdeAlta?: number
   /**
    * Lugares que tiene la cuenta. Con mas de uno, el paso 1 advierte que
    * la cancelacion se los lleva a todos: alguien con dos hijos puede
@@ -27,7 +34,16 @@ interface Props {
   totalLugares?: number
 }
 
-export function CancellationFlow({ periodEnd, onClose, onCancelled, totalLugares = 1 }: Props) {
+export function CancellationFlow({
+  periodEnd,
+  onClose,
+  onCancelled,
+  totalLugares = 1,
+  plan,
+  ciclo,
+  diaDelCiclo,
+  diasDesdeAlta,
+}: Props) {
   const router = useRouter()
   const [step, setStep] = useState<Step>(1)
   const [reason, setReason] = useState('')
@@ -36,22 +52,125 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled, totalLugares
   const [error, setError] = useState('')
   const [pauseMonths, setPauseMonths] = useState(1)
 
+  // ── ANALITICA. Refs: ni un render de mas. ────────────────────────────
+  /** Se llego al paso 3, donde se ofrece la pausa. */
+  const pausaOfrecidaRef = useRef(false)
+  /** Salio por una via que NO es abandono (cancelo o pauso). */
+  const resueltoRef = useRef(false)
+  const pasoRef = useRef<Step>(1)
+  // Sincronizado en un efecto y no asignado durante el render: escribir una
+  // ref en el cuerpo del componente lo rechaza el compilador de React.
+  useEffect(() => {
+    pasoRef.current = step
+  }, [step])
+
+  const propsComunes = { plan, ciclo, dia_del_ciclo: diaDelCiclo, dias_desde_alta: diasDesdeAlta }
+
+  useEffect(() => {
+    // Al ABRIR el flujo, no al confirmar. Es el denominador de la retencion:
+    // sin el no se sabe a cuanta gente se convencio de quedarse.
+    track('cancelacion_iniciada', { ...propsComunes, n_alumnos: totalLugares })
+
+    /**
+     * `cancelacion_abandonada` — el que se quedo.
+     *
+     * Se emite al desmontar SI no hubo desenlace. El componente es un modal:
+     * cerrarlo lo desmonta, asi que la limpieza cubre tanto la X como el
+     * boton de "no, mejor no".
+     */
+    return () => {
+      if (resueltoRef.current) return
+      track('cancelacion_abandonada', {
+        ...propsComunes,
+        paso_alcanzado: pasoRef.current,
+        pausa_ofrecida: pausaOfrecidaRef.current,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const dateFormatted = new Intl.DateTimeFormat('es-MX', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   }).format(periodEnd)
 
+  /**
+   * 🔴 ARREGLO DEL CONTRATO — s38.
+   *
+   * Este cliente mandaba `{ reason, detail }` y el endpoint espera
+   * `{ reason_category, reason_detail, pause_offered, pause_accepted }`.
+   * Como `reason_category` llegaba undefined, /api/cancellation-feedback
+   * devolvia 400 y NO guardaba nada — y nadie miraba la respuesta, asi que
+   * la cancelacion seguia adelante en silencio y `cancellation_reasons`
+   * quedaba vacia.
+   *
+   * El contrato correcto es el del endpoint; el cliente era el que estaba
+   * mal, y por eso se arregla aqui y no alla.
+   */
+  async function guardarFeedback(pausaAceptada: boolean) {
+    try {
+      const res = await fetch('/api/cancellation-feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reason_category: reason,
+          reason_detail: detail || null,
+          pause_offered: pausaOfrecidaRef.current,
+          pause_accepted: pausaAceptada,
+        }),
+      })
+
+      // 5.2 — se COMPRUEBA la respuesta, pero NO se bloquea nada. Perder el
+      // feedback no puede impedir que alguien cancele; que se pierda en
+      // silencio, como hasta ahora, si es inaceptable.
+      if (!res.ok) {
+        track('error_occurred', {
+          error_type: 'cancellation_feedback_api',
+          error_message: `HTTP ${res.status}`,
+          context: `reason:${reason}`,
+          ruta: window.location.pathname,
+        })
+        return
+      }
+
+      track('motivo_cancelacion', {
+        motivo: reason,
+        texto_libre: detail.trim().length > 0,
+        pausa_ofrecida: pausaOfrecidaRef.current,
+        pausa_aceptada: pausaAceptada,
+      })
+    } catch (err) {
+      track('error_occurred', {
+        error_type: 'cancellation_feedback_api',
+        error_message: err instanceof Error ? err.message : 'unknown',
+        context: `reason:${reason}`,
+        ruta: window.location.pathname,
+      })
+    }
+  }
+
   async function executePause() {
     setLoading(true)
     setError('')
     try {
+      /**
+       * 🔴 EL FEEDBACK TAMBIEN SE GUARDA AL PAUSAR.
+       *
+       * Antes solo se guardaba en el camino de cancelar, asi que de quien
+       * aceptaba la oferta de pausa no quedaba ni el motivo ni constancia de
+       * que la oferta funciono. `pause_accepted: true` es justo lo que mide
+       * si la retencion sirve.
+       */
+      if (reason) await guardarFeedback(true)
+
       const res = await fetch('/api/subscription/pause', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ months: pauseMonths }),
       })
       if (!res.ok) throw new Error('No se pudo pausar')
+      resueltoRef.current = true
       setStep(4)
       onCancelled()
     } catch {
@@ -67,18 +186,13 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled, totalLugares
 
     try {
       // Guardar feedback si existe
-      if (reason) {
-        await fetch('/api/cancellation-feedback', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ reason, detail }),
-        })
-      }
+      if (reason) await guardarFeedback(false)
 
       // Cancelar suscripción
       const res = await fetch('/api/subscription/cancel', { method: 'POST' })
       if (!res.ok) throw new Error('No se pudo cancelar')
 
+      resueltoRef.current = true
       setStep(4)
       onCancelled()
     } catch {
@@ -175,7 +289,10 @@ export function CancellationFlow({ periodEnd, onClose, onCancelled, totalLugares
             )}
             <div className="flex flex-col gap-2">
               <button
-                onClick={() => setStep(3)}
+                onClick={() => {
+                  pausaOfrecidaRef.current = true
+                  setStep(3)
+                }}
                 className="w-full rounded-lg bg-purple-600 py-2.5 text-sm font-medium text-white hover:bg-purple-700"
               >
                 {reason ? 'Enviar y continuar' : 'Saltar y continuar'}

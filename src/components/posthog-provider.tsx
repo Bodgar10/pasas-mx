@@ -2,10 +2,11 @@
 
 import posthog from 'posthog-js'
 import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import { COOKIE_CONSENT_EVENT, permiteAnalytics } from '@/lib/consent'
+import { SUPER_PROPS_ANALITICA, type SuperPropAnalitica } from '@/lib/analytics/track'
 
 /**
  * 🔴 El init NO puede volver al ámbito del módulo.
@@ -56,6 +57,13 @@ function PostHogPageView() {
     }
   }, [pathname, searchParams, ph])
 
+  // Slot del alumno activo, leído del `?a=`. Mismo criterio que
+  // resolveLearner: sin param es el 1, que es el primario en toda cuenta
+  // (upsertPrimaryLearner siempre inserta slot: 1).
+  const slotCrudo = searchParams?.get('a')
+  const slotActivo = slotCrudo ? Number.parseInt(slotCrudo, 10) : 1
+  const slotPedido = Number.isFinite(slotActivo) && slotActivo > 0 ? slotActivo : 1
+
   useEffect(() => {
     // Sin consentimiento no se ejecuta nada de esto. La guarda va ANTES
     // de createClient(), no dentro del .then(): más abajo ya se habrían
@@ -74,25 +82,44 @@ function PostHogPageView() {
         // se escriben al registrarse y `change-grade` toca solo `learners`.
         const { data: profile } = await supabase
           .from('users')
-          .select('full_name')
+          .select('full_name, is_test')
           .eq('id', user.id)
           .single()
 
-        // 🔴 Esto describe al alumno PRIMARIO, no a la cuenta completa.
+        // 🔴 Esto describe al alumno ACTIVO, no a la cuenta completa.
         //
-        // En una cuenta con tres hijos, PostHog sigue viendo solo al
-        // primero. Es deliberado: `distinct_id` se queda en `user.id`, que
-        // es lo unico que conserva intacto el historico de eventos. Pasar a
-        // identificar por alumno partiria en dos todas las series previas,
-        // asi que es una decision de producto aparte, no un efecto colateral
-        // de esta migracion. `learners_count` de abajo es la senal de que
-        // esta persona tiene mas alumnos de los que se ven aqui.
-        const { data: alumno } = await supabase
+        // En una cuenta con tres hijos, PostHog ve al que esté seleccionado
+        // con `?a=`. `distinct_id` sigue siendo `user.id`, deliberadamente:
+        // es lo único que conserva intacto el histórico de eventos. Pasar a
+        // identificar por alumno partiría en dos todas las series previas,
+        // así que es una decisión de producto aparte. `learners_count` de
+        // abajo es la señal de que hay más alumnos de los que se ven aquí.
+        //
+        // s32: antes filtraba por `is_primary` y por eso ignoraba el `?a=`.
+        // Se resuelve por slot para que `learner_id` sea de verdad el del
+        // alumno activo. Sin `?a=` el resultado es idéntico al de antes:
+        // el slot 1 ES el primario en toda cuenta.
+        const COLUMNAS_ALUMNO = 'id, education_level, grade, xp_total, streak_days, theme_id, themes(name)'
+
+        let { data: alumno } = await supabase
           .from('learners')
-          .select('education_level, grade, xp_total, streak_days, theme_id, themes(name)')
+          .select(COLUMNAS_ALUMNO)
           .eq('account_user_id', user.id)
-          .eq('is_primary', true)
+          .eq('slot', slotPedido)
           .maybeSingle()
+
+        // Un `?a=` viejo o manipulado apunta a un slot que no existe en esta
+        // cuenta. Se cae al primario en vez de quedarse sin identidad, igual
+        // que hace resolveLearner en el resto de la app.
+        if (!alumno && slotPedido !== 1) {
+          const { data: primario } = await supabase
+            .from('learners')
+            .select(COLUMNAS_ALUMNO)
+            .eq('account_user_id', user.id)
+            .eq('slot', 1)
+            .maybeSingle()
+          alumno = primario
+        }
 
         const { count: learnersCount } = await supabase
           .from('learners')
@@ -131,10 +158,74 @@ function PostHogPageView() {
           learners_count: learnersCount ?? 0,
           plan: subscription?.plan ?? 'no_subscription',
           subscription_status: subscription?.status ?? 'none',
+          /**
+           * 🔴 LO QUE HACE QUE LOS DASHBOARDS NO MIENTAN.
+           *
+           * Sale de `users.is_test` (migracion 045). Es la fuente de verdad:
+           * la alternativa era una lista de correos en los ajustes del
+           * proyecto, y con 25 de 28 cuentas siendo de prueba, esa lista es
+           * exactamente lo que alguien olvida actualizar — y el coste de
+           * olvidarla es que todos los embudos mientan sin avisar.
+           *
+           * El "test account filter" del proyecto filtra por ESTA propiedad.
+           * Si se recrea el proyecto de PostHog hay que volver a ponerlo:
+           * queda anotado en scripts/seed-posthog.ts.
+           *
+           * Va SOLO en identify() y no como super-propiedad. Ver la nota de
+           * abajo.
+           */
+          is_test: profile?.is_test ?? false,
         })
+
+        // ── SUPER-PROPIEDADES para lib/analytics/track.ts ──────────────
+        //
+        // 🔴 Este es el ÚNICO sitio del cliente donde la cuenta y el alumno
+        // activo están resueltos. Las propiedades de `identify` son de
+        // PERSONA y no se pueden leer de vuelta desde un componente; las
+        // super-propiedades sí, con `get_property`.
+        //
+        // Dejarlas aquí es lo que evita que cada llamada a track() abra su
+        // propia consulta a Supabase para saber quién es el alumno activo.
+        // Además se pegan solas a todo evento de PostHog, que es justo lo
+        // que hacía falta para poder cruzar un evento entre plataformas.
+        //
+        // El tipo obliga a cubrir SUPER_PROPS_ANALITICA entera: si alguien
+        // agrega una clave a esa lista y se olvida de aquí, no compila.
+        //
+        // `learner_id` es el UUID, nunca el slot: el slot es local a la
+        // cuenta y no sirve para segmentar entre cuentas.
+        const resueltas: Record<SuperPropAnalitica, unknown> = {
+          user_id: user.id,
+          learner_id: alumno?.id,
+          plan: subscription?.plan,
+          subscription_status: subscription?.status,
+          education_level: alumno?.education_level,
+          grade: alumno?.grade,
+          theme: temaNombre,
+        }
+
+        // Las ausentes se DESREGISTRAN, no se omiten.
+        //
+        // Las super-propiedades son persistentes: si una clave se queda sin
+        // valor y no se toca, PostHog conserva el anterior. Al cambiar de
+        // alumno, el nuevo heredaría el grado del anterior y nada lo
+        // delataría — exactamente el tipo de dato falso que 2.2 prohíbe.
+        const aRegistrar: Partial<Record<SuperPropAnalitica, unknown>> = {}
+        for (const clave of SUPER_PROPS_ANALITICA) {
+          const valor = resueltas[clave]
+          if (valor === undefined || valor === null || valor === '') {
+            ph.unregister(clave)
+          } else {
+            aRegistrar[clave] = valor
+          }
+        }
+        ph.register(aRegistrar)
       }
     })
-  }, [ph])
+    // slotPedido en las dependencias: el provider vive en el layout raíz y
+    // navegar a `?a=2` NO lo vuelve a montar. Sin esto, cambiar de alumno
+    // dejaba las super-propiedades describiendo al anterior.
+  }, [ph, slotPedido])
 
   return null
 }
@@ -149,7 +240,23 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <PHProvider client={posthog}>
-      <PostHogPageView />
+      {/*
+        🔴 EL <Suspense> ES DE PostHogPageView SOLO, Y `children` VA FUERA.
+
+        PostHogPageView llama a useSearchParams —lo necesita para el
+        `$current_url` del $pageview y para el `?a=` del alumno activo—, y eso
+        hace que Next renderice en cliente todo lo que quede dentro del
+        <Suspense> más cercano. Antes el único boundary estaba en el layout
+        raíz y envolvía a `children`: el HTML inicial de todo el sitio salía
+        vacío. Ver la nota larga en src/app/layout.tsx.
+
+        Devuelve `null`, así que el bailout aquí no cuesta nada. `children`
+        sigue dentro de PHProvider —lo necesita para el contexto del cliente—
+        pero fuera del boundary, que es lo que importa.
+      */}
+      <Suspense fallback={null}>
+        <PostHogPageView />
+      </Suspense>
       {children}
     </PHProvider>
   )

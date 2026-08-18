@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Pasita from '@/components/mascota/Pasita'
 import { rutaAlumno } from '@/lib/learners'
+import { track } from '@/lib/analytics/track'
 
 interface Subject {
   id: string
@@ -73,9 +74,28 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
   const [requestSending, setRequestSending] = useState(false)
   const [requestSent, setRequestSent] = useState(false)
 
+  // `materia_abierta` — una vez por montaje. Los conteos salen de las props
+  // que la pantalla ya recibe: ni una consulta extra.
+  useEffect(() => {
+    track('materia_abierta', {
+      subject: subject.name,
+      n_temas_disponibles: topics.length,
+      n_temas_completados: topicProgress.filter((tp) => tp.status === 'completed').length,
+      n_temas_empezados: topicProgress.filter((tp) => tp.status === 'in_progress').length,
+      xp_materia: subjectXp,
+    })
+  }, [])
+
   async function handleSendRequest() {
     if (!requestTopicName.trim()) return
     setRequestSending(true)
+    track('solicitar_tema_click', {
+      materia: subject.name,
+      grado: profile.grade,
+      // `description` es opcional en el POST (`|| null`): esto distingue a
+      // quien solo pone el titulo de quien se molesta en explicar.
+      texto_libre: requestDescription.trim().length > 0,
+    })
     try {
       const res = await fetch('/api/topic-request', {
         method: 'POST',

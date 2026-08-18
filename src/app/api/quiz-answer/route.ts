@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { resolveLearnerFromBody } from '@/lib/learners'
+import { trackServer } from '@/lib/analytics/track-server'
 
 export async function POST(request: Request) {
   try {
@@ -98,6 +99,68 @@ export async function POST(request: Request) {
         })
         await supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 150 })
         await supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 150 })
+      }
+
+      /**
+       * ACTIVACION — el momento en que el producto demostro su valor.
+       *
+       * Abrio un tema Y completo un quiz. Se marca con guard de NULL para que
+       * sea el PRIMER quiz completado y no el ultimo.
+       *
+       * 🔴 Exige `first_session_at` ya escrito: sin sesion previa no hay
+       * "activado en X horas" que medir, y esa resta es justo para lo que
+       * existen las dos columnas. Si alguien llegara aqui sin primera sesion
+       * —un quiz sin haber leido nada— se escriben las dos a la vez, que es
+       * lo honesto: su primera sesion ES esta.
+       */
+      try {
+        const { data: alumno } = await supabase
+          .from('learners')
+          .select('first_session_at, activated_at')
+          .eq('id', learnerId)
+          .maybeSingle()
+
+        if (!alumno?.activated_at) {
+          const ahora = new Date().toISOString()
+          await supabase
+            .from('learners')
+            .update({
+              activated_at: ahora,
+              ...(alumno?.first_session_at ? {} : { first_session_at: ahora }),
+            })
+            .eq('id', learnerId)
+
+          const { data: consentimiento } = await supabase
+            .from('users')
+            .select('cookie_consent_analytics, cookie_consent_marketing')
+            .eq('id', user.id)
+            .maybeSingle()
+
+          await trackServer(
+            'activado',
+            {
+              // Horas desde la PRIMERA sesion, no desde el alta: mide cuanto
+              // tardo el producto en demostrar valor una vez que empezo.
+              horas_desde_primera_sesion: alumno?.first_session_at
+                ? Math.round(
+                    (Date.now() - new Date(alumno.first_session_at).getTime()) / 3_600_000
+                  )
+                : 0,
+              ruta: 'quiz',
+              score: final_score,
+            },
+            {
+              consent: {
+                analytics: consentimiento?.cookie_consent_analytics,
+                marketing: consentimiento?.cookie_consent_marketing,
+              },
+              userId: user.id,
+            }
+          )
+        }
+      } catch (err) {
+        // Nunca tumba el quiz: el progreso ya esta escrito arriba.
+        console.error('[quiz-answer] activacion fallo:', err)
       }
 
       return NextResponse.json({

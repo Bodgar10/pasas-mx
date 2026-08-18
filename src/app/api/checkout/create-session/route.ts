@@ -29,6 +29,9 @@ import {
   PromoNoDisponibleError,
   resolvePromoParaCheckout,
 } from '@/lib/payments/promo-checkout'
+import { construirMetadataCheckout } from '@/lib/payments/metadata-checkout'
+import type { AcquisitionSource } from '@/lib/audience-detection'
+import { trackServer } from '@/lib/analytics/track-server'
 
 export async function POST(request: Request) {
   try {
@@ -41,12 +44,19 @@ export async function POST(request: Request) {
 
     // 2. Validate request body
     const body = await request.json()
-    const { plan, duration, promo } = body as {
+    const { plan, duration, promo, checkout_event_id: checkoutEventId } = body as {
       plan: string
       duration: string
       // El slug que trae el cliente. Se manda a validar tal cual: aquí no se
       // le cree nada.
       promo?: string
+      /**
+       * `event_id` del `checkout_iniciado` que disparó el navegador. Viaja a
+       * Stripe en la metadata y vuelve en el webhook, y es lo que permite
+       * casar un checkout abierto con su cobro. Solo se usa como
+       * identificador: nada del cobro depende de él.
+       */
+      checkout_event_id?: string
     }
 
     const planPrices = (STRIPE_PRICES as Record<string, Record<string, string>>)[plan]
@@ -65,11 +75,19 @@ export async function POST(request: Request) {
     const priceId = planPrices[duration]
 
     // 3. Get user profile for pre-filling checkout
+    // 🔴 El canal sale de la BASE, no del cliente.
+    //
+    // `users.acquisition_source` ya guarda el first-touch y lo escribe el
+    // servidor. Pedirselo al navegador en el body seria dejar que cualquiera
+    // se autoatribuya a la campana que quisiera, y ademas se desincronizaria
+    // de lo que ya esta en la fila.
     const { data: profile } = await supabase
       .from('users')
-      .select('email, full_name')
+      .select('email, full_name, acquisition_source, cookie_consent_analytics, cookie_consent_marketing')
       .eq('id', user.id)
       .single()
+
+    const acquisition = (profile?.acquisition_source ?? null) as AcquisitionSource | null
 
     // Check if user already had a trial — if so, no trial on new subscription
     const { data: existingSubs } = await supabase
@@ -119,13 +137,18 @@ export async function POST(request: Request) {
     //
     // `promo_slug` solo entra si se aplicó de verdad. El webhook lo lee de la
     // metadata de la suscripción para escribirlo en subscriptions.promo_slug.
-    // El tipo explícito importa: sin él, la rama `{}` del ternario infiere
-    // `promo_slug?: undefined` y eso no encaja en el MetadataParam de Stripe,
-    // cuyo index signature es string | number | null. Con Record<string,
-    // string> la clave simplemente no existe cuando no hay promo.
-    const metadataPromo: Record<string, string> = promoResuelta
-      ? { promo_slug: promoResuelta.promo.slug }
-      : {}
+    //
+    // 🔴 El objeto lo arma construirMetadataCheckout, la MISMA función que
+    // usa el alta de registro/actions.ts. Antes cada puerta tenía el suyo y
+    // ya se habían separado: a la otra le faltaba `duration`.
+    const metadataCheckout = construirMetadataCheckout({
+      userId: user.id,
+      plan,
+      duration,
+      promoSlug: promoResuelta?.promo.slug ?? null,
+      acquisition,
+      checkoutEventId,
+    })
 
     const session = await stripe.checkout.sessions.create({
       mode: CHECKOUT_CONFIG.mode,
@@ -138,19 +161,9 @@ export async function POST(request: Request) {
       customer_email: profile?.email ?? user.email,
       client_reference_id: user.id,
       // Metadata is passed through to the webhook
-      metadata: {
-        user_id: user.id,
-        plan,
-        duration,
-        ...metadataPromo,
-      },
+      metadata: metadataCheckout,
       subscription_data: {
-        metadata: {
-          user_id: user.id,
-          plan,
-          duration,
-          ...metadataPromo,
-        },
+        metadata: metadataCheckout,
         ...(hasHadSubscription ? {} : { trial_period_days: 7 }),
       },
       payment_method_collection: 'always',
@@ -168,7 +181,35 @@ export async function POST(request: Request) {
       cancel_url:  cancelUrl,
     })
 
-    return NextResponse.json({ url: session.url })
+    // Evento de servidor. Va DESPUES de crear la sesion: solo se anuncia lo
+    // que de verdad ocurrio. Y no se espera —`void`— para no meter la
+    // latencia de PostHog entre el usuario y su redirect a Stripe; si falla,
+    // trackServer lo traga y loguea.
+    void trackServer(
+      'checkout_session_creada',
+      {
+        plan,
+        ciclo: duration,
+        camino: 'create_session',
+        con_promo: !!promoResuelta,
+      },
+      {
+        consent: {
+          analytics: profile?.cookie_consent_analytics,
+          marketing: profile?.cookie_consent_marketing,
+        },
+        userId: user.id,
+        eventId: checkoutEventId,
+      }
+    )
+
+    // `promo_aplicada` es informativo y no cambia el cobro: lo usa el
+    // cliente para detectar que traia slug y la sesion salio sin campana
+    // (evento `promo_perdida`). Sin esto, esa perdida es invisible.
+    return NextResponse.json({
+      url: session.url,
+      promo_aplicada: promoResuelta?.promo.slug ?? null,
+    })
 
   } catch (error) {
     console.error('[checkout/create-session] Error:', error)

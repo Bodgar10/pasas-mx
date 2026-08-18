@@ -16,8 +16,9 @@
 
 import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
-import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js'
 import { stripe } from '@/lib/payments/stripe'
+import { trackServer } from '@/lib/analytics/track-server'
 import {
   STRIPE_SEAT_PRICES,
   MAX_SEATS,
@@ -180,10 +181,42 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Internal error' }, { status: 500 })
     }
 
+    try {
+      const { count: nAsientos } = await admin
+        .from('learners')
+        .select('id', { count: 'exact', head: true })
+        .eq('account_user_id', user.id)
+        .eq('status', 'active')
+
+      await trackServer(
+        'asiento_reactivado',
+        {
+          n_asientos_despues: nAsientos ?? undefined,
+          // NO cobra: el periodo ya estaba pagado. Solo recrea el item en
+          // Stripe para que vuelva a renovarse.
+        },
+        { consent: await consentimientoDe(admin, user.id), userId: user.id }
+      )
+    } catch (err) {
+      console.error('[seats/reactivate] analitica fallo:', err)
+    }
+
     return NextResponse.json({ ok: true, subscriptionItemId })
 
   } catch (err) {
     console.error('[seats/reactivate] Error:', err)
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
+  }
+}
+
+async function consentimientoDe(cliente: SupabaseClient, userId: string) {
+  const { data } = await cliente
+    .from('users')
+    .select('cookie_consent_analytics, cookie_consent_marketing')
+    .eq('id', userId)
+    .maybeSingle()
+  return {
+    analytics: data?.cookie_consent_analytics as boolean | null | undefined,
+    marketing: data?.cookie_consent_marketing as boolean | null | undefined,
   }
 }

@@ -147,7 +147,20 @@ export async function GET(request: NextRequest) {
           )
         }
 
-        // Si hay pending_checkout, crear sesión de Stripe y redirigir
+        /**
+         * Si hay pending_checkout, redirigir a /bienvenida con el plan.
+         *
+         * 🔴 AQUÍ NO SE CREA NINGUNA SESIÓN DE STRIPE. Decía "crear sesión de
+         * Stripe y redirigir" y era falso: se redirige a /bienvenida, y es esa
+         * pantalla la que hace el POST a /api/checkout/create-session. Un
+         * comentario que miente sobre por dónde pasa el dinero cuesta caro la
+         * próxima vez que alguien depure un cobro.
+         *
+         * El canal NO viaja en esta URL y no hace falta que viaje:
+         * create-session lo lee de `users.acquisition_source`, del lado del
+         * servidor. Lo único que necesita transporte es el slug, porque el
+         * enlace del correo abre otra pestaña y sessionStorage no sobrevive.
+         */
         if (profile?.pending_checkout) {
           const { plan, duration, promo_slug: promoSlug } = profile.pending_checkout as {
             plan: string
@@ -193,8 +206,11 @@ export async function GET(request: NextRequest) {
               )
             }
           } catch (err) {
-            console.error('[auth/callback] Error creating Stripe session:', err)
-            // Si falla Stripe, continuar al dashboard normal
+            // No es un error de Stripe: aquí solo se lee pending_checkout, se
+            // limpia la columna y se arma un redirect. Lo que puede fallar es
+            // el service client o la lectura de STRIPE_PRICES.
+            console.error('[auth/callback] Error preparando el redirect a /bienvenida:', err)
+            // Si algo falla, continuar al dashboard normal
           }
         }
       }

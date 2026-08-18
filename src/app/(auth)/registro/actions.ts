@@ -13,6 +13,9 @@ import {
   PromoNoDisponibleError,
   resolvePromoParaCheckout,
 } from '@/lib/payments/promo-checkout'
+import { construirMetadataCheckout } from '@/lib/payments/metadata-checkout'
+import { trackServer } from '@/lib/analytics/track-server'
+import type { AcquisitionSource } from '@/lib/audience-detection'
 
 export type RegistroState =
   | { error: string }
@@ -45,6 +48,9 @@ export async function registroAction(
   // Slug de campaña que venía en sessionStorage. Sin validar: lo valida
   // resolvePromoParaCheckout contra la fila y contra Stripe.
   const promoSlugRaw = formData.get('promo_slug') as string | null
+  // Puente con el `checkout_iniciado` que emitio la pantalla. Solo es un
+  // identificador: nada del alta ni del cobro depende de el.
+  const checkoutEventId = (formData.get('checkout_event_id') as string | null) || null
 
 
   if (password.length < 6) {
@@ -117,7 +123,7 @@ export async function registroAction(
   if (!user) return { error: 'No pudimos crear tu cuenta. Inténtalo de nuevo.' }
 
   // Parsear UTMs si vienen del formulario
-  let acquisitionSource = null
+  let acquisitionSource: AcquisitionSource | null = null
   if (utmRaw) {
     try {
       const utmParsed = JSON.parse(utmRaw)
@@ -128,6 +134,29 @@ export async function registroAction(
       )
     } catch { /* UTM malformed — ignorar */ }
   }
+
+  /**
+   * 🔴 FIRST-TOUCH EN LOS DOS CAMINOS, O EN NINGUNO.
+   *
+   * /api/track-source ya protegia lo existente con `if
+   * (!existing?.acquisition_source)`, pero esta accion escribia dentro de un
+   * update masivo y lo pisaba sin mirar. Como las dos leen el mismo
+   * sessionStorage, el valor solia coincidir y la sobrescritura pasaba
+   * inadvertida — pero bastaba una sesion anonima ya atribuida para que el
+   * alta reescribiera el canal con el toque de ese momento.
+   *
+   * `acquisitionEfectiva` es lo que de verdad va a quedar en la fila, y es lo
+   * que se manda a Stripe: si ya habia canal, ese gana.
+   */
+  const { data: perfilPrevio } = await supabase
+    .from('users')
+    .select('acquisition_source')
+    .eq('id', user.id)
+    .maybeSingle()
+
+  const acquisitionYaGuardada = (perfilPrevio?.acquisition_source ?? null) as AcquisitionSource | null
+  const acquisitionEfectiva = acquisitionYaGuardada ?? acquisitionSource
+  const debeEscribirAcquisition = !acquisitionYaGuardada && !!acquisitionSource
 
   // Si el email aún no está confirmado, mostrar pantalla de verificación
   if (!user.email_confirmed_at) {
@@ -174,7 +203,7 @@ export async function registroAction(
       } catch { /* ignorar */ }
     }
 
-    if (acquisitionSource) {
+    if (debeEscribirAcquisition && acquisitionSource) {
       profileEarly.acquisition_source = acquisitionSource
     }
 
@@ -204,6 +233,18 @@ export async function registroAction(
         plan: pendingPlan,
         duration: pendingDuration,
         ...(promoSlug ? { promo_slug: promoSlug } : {}),
+        /**
+         * 🔴 El canal viaja al lado del slug. Mismo motivo: el enlace del
+         * correo abre OTRA pestaña y sessionStorage no sobrevive.
+         *
+         * No es el transporte que usa el cobro —create-session lee
+         * `users.acquisition_source`, que es la fuente autoritativa—, sino
+         * la FOTO del canal en el momento del alta. Sirve para auditar: con
+         * el first-touch ahora protegido, si la cuenta ya tenia canal el de
+         * este registro se descarta, y sin esta copia no quedaria rastro de
+         * por donde entro esta vez.
+         */
+        ...(acquisitionSource ? { acquisition: acquisitionSource } : {}),
       }
     }
 
@@ -250,7 +291,9 @@ export async function registroAction(
     ...consent.fields,
     ...cookieFields,
     onboarding_done: true,
-    ...(acquisitionSource ? { acquisition_source: acquisitionSource } : {}),
+    ...(debeEscribirAcquisition && acquisitionSource
+      ? { acquisition_source: acquisitionSource }
+      : {}),
   }
 
   if (onboardingRaw && onboardingRaw.length > 2) {
@@ -343,11 +386,17 @@ export async function registroAction(
         throw promoError
       }
 
-      // Record<string, string> explícito: la rama `{}` del ternario inferiría
-      // `promo_slug?: undefined`, que no encaja en el MetadataParam de Stripe.
-      const metadataPromo: Record<string, string> = promoResuelta
-        ? { promo_slug: promoResuelta.promo.slug }
-        : {}
+      // 🔴 MISMA función que /api/checkout/create-session. Este objeto ya se
+      // había separado del otro: le faltaba `duration`, así que la mitad de
+      // los pagos llegaba a Stripe sin ciclo. Ahora no hay dos que mantener.
+      const metadataCheckout = construirMetadataCheckout({
+        userId: user.id,
+        plan: pendingPlan,
+        duration: pendingDuration,
+        promoSlug: promoResuelta?.promo.slug ?? null,
+        acquisition: acquisitionEfectiva,
+        checkoutEventId,
+      })
 
       try {
         const stripe = (await import('stripe')).default
@@ -365,10 +414,10 @@ export async function registroAction(
           customer_email: email,
           success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?checkout=success`,
           cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/planes`,
-          metadata: { user_id: user.id, plan: pendingPlan, ...metadataPromo },
+          metadata: metadataCheckout,
           subscription_data: {
             trial_period_days: 7,
-            metadata: { user_id: user.id, plan: pendingPlan, ...metadataPromo },
+            metadata: metadataCheckout,
           },
           payment_method_collection: 'always',
           // 🔴 Excluyentes: Stripe rechaza la sesión si van los dos. Mismo
@@ -382,6 +431,31 @@ export async function registroAction(
             : { allow_promotion_codes: true }),
         })
         if (session.url) {
+          // Mismo evento que emite /api/checkout/create-session, con
+          // `camino` distinto: son las DOS puertas de cobro y el embudo
+          // tiene que poder separarlas.
+          //
+          // `cookieFields` trae el consentimiento del banner que se acaba de
+          // volcar a la fila mas arriba, asi que es el valor recien escrito y
+          // no hay que releerlo. Si el banner nunca se contesto queda vacio y
+          // trackServer lo trata como un no — fail-closed.
+          void trackServer(
+            'checkout_session_creada',
+            {
+              plan: pendingPlan,
+              ciclo: pendingDuration,
+              camino: 'registro_directo',
+              con_promo: !!promoResuelta,
+            },
+            {
+              consent: {
+                analytics: cookieFields.cookie_consent_analytics as boolean | null | undefined,
+                marketing: cookieFields.cookie_consent_marketing as boolean | null | undefined,
+              },
+              userId: user.id,
+              eventId: checkoutEventId ?? undefined,
+            }
+          )
           return { stripeUrl: session.url }
         }
       } catch {
