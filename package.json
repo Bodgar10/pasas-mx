@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
+    "test:int": "vitest run --config vitest.config.integracion.mts",
     "test:e2e": "playwright test",
     "check": "tsc --noEmit && vitest run"
   },
