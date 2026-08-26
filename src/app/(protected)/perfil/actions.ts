@@ -53,35 +53,3 @@ export async function updatePasswordAction(
 
   return { success: 'Contraseña actualizada correctamente.' }
 }
-
-export async function cancelSubscriptionAction(
-  _prev: ActionState,
-  _formData: FormData
-): Promise<ActionState> {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return { error: 'No autenticado.' }
-
-  const { data: subscription } = await supabase
-    .from('subscriptions')
-    .select('provider_sub_id')
-    .eq('user_id', user.id)
-    .in('status', ['active', 'trialing'])
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single()
-
-  if (!subscription?.provider_sub_id) return { error: 'No se encontró una suscripción activa.' }
-
-  try {
-    const Stripe = (await import('stripe')).default
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-    await stripe.subscriptions.update(subscription.provider_sub_id, {
-      cancel_at_period_end: true,
-    })
-    revalidatePath('/perfil')
-    return { success: 'Tu suscripción se cancelará al final del período actual. Seguirás teniendo acceso hasta entonces.' }
-  } catch {
-    return { error: 'Error al cancelar la suscripción. Intenta de nuevo.' }
-  }
-}

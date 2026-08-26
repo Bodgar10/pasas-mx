@@ -23,7 +23,6 @@ import { stripe } from '@/lib/payments/stripe'
 import { createClient as createSupabaseClient, type SupabaseClient } from '@supabase/supabase-js'
 import { PRICE_TO_PLAN, CICLO_LABEL } from '@/lib/payments/config'
 import { sendEmail } from '@/lib/email/resend'
-import { cancellationConfirmedTemplate } from '@/lib/email/templates/cancellation-confirmed'
 import { welcomeTemplate } from '@/lib/email/templates/welcome'
 import { paymentReceiptTemplate } from '@/lib/email/templates/payment-receipt'
 import { sendMetaCapiEvent } from '@/lib/marketing/meta-capi'
@@ -565,10 +564,19 @@ export async function POST(request: Request) {
         await supabase
           .from('subscriptions')
           .update({
-            status:               'active',
-            current_period_start: periodStart,
-            current_period_end:   periodEnd,
-            updated_at:           new Date().toISOString(),
+            status:                 'active',
+            current_period_start:   periodStart,
+            current_period_end:     periodEnd,
+            // 🔴 El aviso de la LFPC se debe UNA VEZ POR CICLO.
+            // El cron filtra por `renewal_notice_sent_at IS NULL`,
+            // así que sin este reset cada suscripción recibe un
+            // solo aviso en toda su vida y queda muda para siempre.
+            // Va aquí porque es el único punto donde el periodo
+            // avanza por renovación real. Con billing_reason
+            // 'subscription_create' el campo ya estaba NULL, así
+            // que el reset es inocuo y no hay que condicionarlo.
+            renewal_notice_sent_at: null,
+            updated_at:             new Date().toISOString(),
           })
           .eq('provider_sub_id', subscriptionId)
 
@@ -743,34 +751,21 @@ export async function POST(request: Request) {
           })
           .eq('provider_sub_id', subscription.id)
 
-        // Enviar email de confirmación de cancelación
-        try {
-          if (subRow) {
-            const { data: userProfile } = await supabase
-              .from('users')
-              .select('full_name, email')
-              .eq('id', subRow.user_id)
-              .single()
-
-            if (userProfile?.email) {
-              const subAny = subscription as any
-              const accessUntil = new Date((subAny.current_period_end ?? 0) * 1000).toLocaleDateString('es-MX', {
-                day: 'numeric', month: 'long', year: 'numeric',
-              })
-
-              await sendEmail({
-                to: userProfile.email,
-                subject: 'Cancelación confirmada — Pasas.mx',
-                html: cancellationConfirmedTemplate({
-                  userName: userProfile.full_name?.split(' ')[0] ?? 'Estudiante',
-                  accessUntil,
-                }),
-              })
-            }
-          }
-        } catch (emailErr) {
-          console.error('[webhooks/stripe] Error sending cancellation email:', emailErr)
-        }
+        /**
+         * 🔴 NO se manda correo de cancelación desde aquí.
+         *
+         * Este evento llega cuando el periodo YA VENCIÓ, así que
+         * "sigues teniendo acceso hasta X" es falso por definición.
+         * Además leía current_period_end de la raíz del objeto —
+         * undefined en la API 2026-04-22.dahlia — con un ?? 0 que
+         * lo convertía en el 1 de enero de 1970.
+         *
+         * La confirmación la manda /api/subscription/cancel en el
+         * momento en que el usuario cancela, con la fecha leída de
+         * Supabase y validada. Los otros dos disparadores de este
+         * evento (refund-request y admin/delete-user) no deben
+         * avisar nada.
+         */
 
         console.log(`[webhooks/stripe] Subscription cancelled: ${subscription.id}`)
         break

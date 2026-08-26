@@ -42,10 +42,10 @@ export async function GET(req: Request) {
      * y así cada suscripción cae exactamente una vez. El filtro
      * renewal_notice_sent_at cubre el resto.
      */
-    const in5Days = new Date()
-    in5Days.setDate(in5Days.getDate() + 8)
-    const in6Days = new Date()
-    in6Days.setDate(in6Days.getDate() + 9)
+    const en8Dias = new Date()
+    en8Dias.setDate(en8Dias.getDate() + 8)
+    const en9Dias = new Date()
+    en9Dias.setDate(en9Dias.getDate() + 9)
 
     const { data: subscriptions, error } = await supabase
       .from('subscriptions')
@@ -64,8 +64,11 @@ export async function GET(req: Request) {
         )
       `)
       .in('status', ['active', 'trialing'])
-      .gte('current_period_end', in5Days.toISOString())
-      .lte('current_period_end', in6Days.toISOString())
+      // Las filas de sandbox no reciben correos de la LFPC: no
+      // sirven a nadie y ensucian el conteo de la bitácora.
+      .eq('is_test', false)
+      .gte('current_period_end', en8Dias.toISOString())
+      .lte('current_period_end', en9Dias.toISOString())
       .is('renewal_notice_sent_at', null)
 
     if (error) {
@@ -78,7 +81,7 @@ export async function GET(req: Request) {
       // 🔴 La fila se cierra igual con 0. Es EXACTAMENTE el caso que antes
       // no se distinguía de "el cron no corrió".
       await cerrarCorrida(supabase, corridaId, { rowsProcessed: 0 })
-      return Response.json({ ok: true, sent: 0, message: 'No renewals in 5 days' })
+      return Response.json({ ok: true, sent: 0, message: 'No renewals in 8-9 days' })
     }
 
     let sent = 0

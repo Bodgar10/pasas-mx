@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
-import Stripe from 'stripe'
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-04-22.dahlia' })
+import { stripe } from '@/lib/payments/stripe'
 
 export async function DELETE(req: NextRequest) {
   const supabase = await createClient()
@@ -29,19 +27,42 @@ export async function DELETE(req: NextRequest) {
   )
 
   // Cancelar suscripción activa en Stripe antes de borrar
-  const { data: subscription } = await supabase
+  //
+  // 🔴 Las columnas son `provider_sub_id` / `provider_customer_id`.
+  // El `stripe_subscription_id` anterior NO existe en la tabla: el select
+  // fallaba, `subscription` quedaba en null y el `if` de abajo nunca
+  // entraba, asi que borrar la cuenta dejaba la suscripcion cobrando.
+  //
+  // 🔴 Se leen TODAS las filas, sin `maybeSingle()`. Un usuario puede
+  // tener mas de una suscripcion en 'active'/'trialing' a la vez: no hay
+  // UNIQUE parcial sobre user_id para esos estados. `maybeSingle()` lanzaba
+  // con dos filas —impidiendo cancelar incluso la primera— y un `limit(1)`
+  // habria dejado la otra cobrando.
+  const { data: subscriptions, error: subError } = await supabase
     .from('subscriptions')
-    .select('stripe_subscription_id, status')
+    .select('provider_sub_id, status')
     .eq('user_id', userId)
     .in('status', ['active', 'trialing'])
-    .maybeSingle()
 
-  if (subscription?.stripe_subscription_id) {
+  // 🔴 El error del select se tragaba en silencio. Un fallo aqui
+  // significa que no sabemos si hay algo que cancelar, y eso es dinero:
+  // tiene que quedar en los logs aunque el borrado siga adelante.
+  if (subError) {
+    console.error('[delete-user] Error leyendo la suscripcion:', subError)
+  }
+
+  // try/catch POR ITERACION: una cancelacion que falla no puede dejar sin
+  // cancelar a las siguientes, y ninguna bloquea el borrado de la cuenta.
+  for (const subscription of subscriptions ?? []) {
+    if (!subscription.provider_sub_id) continue
     try {
-      await stripe.subscriptions.cancel(subscription.stripe_subscription_id)
-      console.log(`[delete-user] Stripe sub ${subscription.stripe_subscription_id} cancelled`)
+      await stripe.subscriptions.cancel(subscription.provider_sub_id)
+      console.log(`[delete-user] Stripe sub ${subscription.provider_sub_id} cancelled`)
     } catch (stripeError) {
-      console.error('[delete-user] Error cancelando Stripe sub:', stripeError)
+      console.error(
+        `[delete-user] Error cancelando Stripe sub ${subscription.provider_sub_id}:`,
+        stripeError
+      )
       // No bloqueamos el borrado si Stripe falla — seguimos adelante
     }
   }
