@@ -30,16 +30,14 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# 🔴 EXCEPCIÓN: .env.test SÍ se versiona.
+# env files
 #
-# Son seis price IDs ficticios (price_test_grade_monthly y compañía) que la
-# capa unitaria necesita para que PRICE_TO_PLAN se construya con seis claves
-# distintas en vez de colapsar todas en "undefined". No hay ningún secreto
-# dentro, y sin el archivo `npm test` no corre en otra máquina.
-!.env.test
+# 🔴 SIN EXCEPCIONES. Aqui hubo un `!.env.test` porque el archivo solo
+# tenia price IDs ficticios; despues se le metieron SUPABASE_SERVICE_ROLE_KEY,
+# STRIPE_SECRET_KEY y STRIPE_WEBHOOK_SECRET y GitHub bloqueo el push. Ningun
+# archivo de entorno se versiona: los valores de prueba se documentan en el
+# README o se generan, no se commitean.
+.env*
 
 # playwright
 /test-results/
@@ -51,4 +49,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.env.test
