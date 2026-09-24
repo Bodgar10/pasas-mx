@@ -2,11 +2,12 @@
 
 import posthog from 'posthog-js'
 import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react'
-import { Suspense, useEffect } from 'react'
+import { Suspense, useEffect, useRef, useSyncExternalStore } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
 import { COOKIE_CONSENT_EVENT, permiteAnalytics } from '@/lib/consent'
 import { SUPER_PROPS_ANALITICA, type SuperPropAnalitica } from '@/lib/analytics/track'
+import { esInterno, sincronizarInterno } from '@/lib/analytics/interno'
 
 /**
  * 🔴 El init NO puede volver al ámbito del módulo.
@@ -28,6 +29,43 @@ import { SUPER_PROPS_ANALITICA, type SuperPropAnalitica } from '@/lib/analytics/
  */
 let iniciado = false
 
+/**
+ * 🔴 EL INIT TIENE QUE AVISAR, NO SOLO OCURRIR — s33.
+ *
+ * `iniciado` es una variable de modulo: cambiarla no re-renderiza nada.
+ * Y los efectos de React corren de HIJO a PADRE, asi que el efecto de
+ * PostHogPageView —que es hijo— ya habia corrido y se habia saltado con
+ * `if (!iniciado)` cuando el efecto del provider llamaba a este init.
+ *
+ * Consecuencia medida entre el 17-ago y el 23-sep: 31 de 38 sesiones que
+ * tocaron `/` NO tienen `$pageview`. El de la primera carga se perdia
+ * SIEMPRE, y el identify tambien; solo volvian a la vida al cambiar de
+ * ruta, que es lo que hacia que una visita entrada por la landing
+ * apareciera empezando en /onboarding.
+ *
+ * Este pequeño store arregla las dos: quien depende del init se suscribe
+ * con useSyncExternalStore y se entera en cuanto ocurre —en la primera
+ * carga con consentimiento previo, o en el instante en que la persona
+ * acepta el banner.
+ */
+const oyentesInit = new Set<() => void>()
+
+function suscribirInit(avisar: () => void): () => void {
+  oyentesInit.add(avisar)
+  return () => {
+    oyentesInit.delete(avisar)
+  }
+}
+
+function leerIniciado(): boolean {
+  return iniciado
+}
+
+/** En el servidor nunca hay init: sin esto, hidratacion desalineada. */
+function leerIniciadoEnServidor(): boolean {
+  return false
+}
+
 function iniciarPostHog() {
   if (iniciado || typeof window === 'undefined') return
   if (!permiteAnalytics()) return
@@ -36,12 +74,43 @@ function iniciarPostHog() {
     person_profiles: 'identified_only',
     capture_pageview: false,
     capture_pageleave: true,
+    // Explicito aunque sea el default: este archivo es el unico sitio
+    // donde se puede apagar, y dejarlo escrito evita que alguien lo
+    // apague creyendo que ya estaba apagado. Nada del codigo lo toca.
+    autocapture: true,
     session_recording: {
-      maskAllInputs: false,
+      /**
+       * 🔴 `true` desde s33, antes `false`.
+       *
+       * Una parte de los usuarios son MENORES y el embudo publico pide
+       * correo, contraseña, nombre y fecha de nacimiento. Con
+       * `maskAllInputs: false` todo eso quedaba legible en la grabacion.
+       *
+       * Va global y no por ruta a proposito: `posthog.init` corre una
+       * sola vez por carga, asi que "enmascarar solo en el embudo"
+       * exigiria un set_config en cada navegacion — mas piezas moviles
+       * para acabar protegiendo MENOS. El area protegida queda mas
+       * enmascarada que antes, nunca menos.
+       */
+      maskAllInputs: true,
       maskInputOptions: { password: true },
+      // Para el texto que NO es un input y aun asi no debe grabarse
+      // (un correo ya pintado en pantalla, el nombre del alumno).
+      maskTextSelector: '[data-ph-mask]',
     },
   })
+
+  /**
+   * Trafico interno. Va DESPUES del init —antes, `register` no existe— y
+   * antes de cualquier captura, para que hasta el $pageview de la primera
+   * carga salga marcado.
+   */
+  if (sincronizarInterno()) {
+    posthog.register({ interno: true })
+  }
+
   iniciado = true
+  for (const avisar of oyentesInit) avisar()
 }
 
 function PostHogPageView() {
@@ -49,13 +118,37 @@ function PostHogPageView() {
   const searchParams = useSearchParams()
   const ph = usePostHog()
 
+  /**
+   * `iniciado` como ESTADO, no como variable suelta. Es lo que hace que
+   * este efecto vuelva a correr cuando el init ocurre despues del primer
+   * render — el caso que perdia el $pageview de la primera carga.
+   */
+  const phIniciado = useSyncExternalStore(
+    suscribirInit,
+    leerIniciado,
+    leerIniciadoEnServidor
+  )
+
+  /**
+   * Ultima URL capturada. Sin esto, el efecto correria dos veces por la
+   * misma URL —una al montar y otra al enterarse del init— y cada carga
+   * dejaria dos $pageview identicos. La URL lleva los parametros
+   * (`utm_*`, `promo`, `fbclid`) porque de ahi sale el first-touch.
+   */
+  const ultimaUrl = useRef<string | null>(null)
+
   useEffect(() => {
-    if (iniciado && pathname && ph) {
-      let url = window.origin + pathname
-      if (searchParams?.toString()) url = url + '?' + searchParams.toString()
-      ph.capture('$pageview', { $current_url: url })
-    }
-  }, [pathname, searchParams, ph])
+    if (!phIniciado || !pathname || !ph) return
+
+    let url = window.origin + pathname
+    const query = searchParams?.toString()
+    if (query) url = url + '?' + query
+
+    if (ultimaUrl.current === url) return
+    ultimaUrl.current = url
+
+    ph.capture('$pageview', { $current_url: url })
+  }, [phIniciado, pathname, searchParams, ph])
 
   // Slot del alumno activo, leído del `?a=`. Mismo criterio que
   // resolveLearner: sin param es el 1, que es el primario en toda cuenta
@@ -69,7 +162,7 @@ function PostHogPageView() {
     // de createClient(), no dentro del .then(): más abajo ya se habrían
     // disparado getUser() y las dos consultas a `users` y `subscriptions`
     // de alguien que dijo que no.
-    if (!iniciado) return
+    if (!phIniciado) return
 
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
@@ -177,6 +270,23 @@ function PostHogPageView() {
           is_test: profile?.is_test ?? false,
         })
 
+        /**
+         * `is_test` tambien como propiedad de PERSONA explicita, y `interno`
+         * como super-propiedad — s33.
+         *
+         * No es lo mismo que la linea de arriba: las propiedades de
+         * `identify` se fijan al crear el perfil y el filtro de "internal
+         * and test users" de PostHog corta por persona, mientras que
+         * `interno` viaja EN CADA EVENTO, tambien en los que ocurren antes
+         * de que la sesion exista. Hacen falta las dos: una cubre a la
+         * cuenta, la otra al dispositivo.
+         */
+        const cuentaDePrueba = profile?.is_test === true
+        ph.setPersonProperties({ is_test: cuentaDePrueba })
+        if (cuentaDePrueba || esInterno()) {
+          ph.register({ interno: true })
+        }
+
         // ── SUPER-PROPIEDADES para lib/analytics/track.ts ──────────────
         //
         // 🔴 Este es el ÚNICO sitio del cliente donde la cuenta y el alumno
@@ -197,6 +307,11 @@ function PostHogPageView() {
         const resueltas: Record<SuperPropAnalitica, unknown> = {
           user_id: user.id,
           learner_id: alumno?.id,
+          // El slot NO sustituye a `learner_id` —el "1" de una cuenta y el
+          // "1" de otra son personas distintas— pero si dice si el evento
+          // viene del alumno principal o de un hermano, que es la unica
+          // pregunta que `learner_id` no contesta de un vistazo.
+          learner_slot: alumno ? slotPedido : undefined,
           plan: subscription?.plan,
           subscription_status: subscription?.status,
           education_level: alumno?.education_level,
@@ -225,7 +340,10 @@ function PostHogPageView() {
     // slotPedido en las dependencias: el provider vive en el layout raíz y
     // navegar a `?a=2` NO lo vuelve a montar. Sin esto, cambiar de alumno
     // dejaba las super-propiedades describiendo al anterior.
-  }, [ph, slotPedido])
+    // `phIniciado` en las dependencias por el mismo motivo que arriba: sin
+    // el, el identify de la primera carga no ocurria nunca y la persona se
+    // quedaba anonima hasta que cambiara de ruta.
+  }, [ph, slotPedido, phIniciado])
 
   return null
 }

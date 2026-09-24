@@ -18,6 +18,7 @@
  */
 
 import { permiteAnalytics, permiteMarketing } from '@/lib/consent'
+import { esInterno } from '@/lib/analytics/interno'
 import { cicloActual } from '@/lib/ciclo-escolar'
 
 export type PropiedadesEvento = Record<string, unknown>
@@ -119,6 +120,9 @@ export const MAPEO_TIKTOK: Record<string, string> = {
 export const SUPER_PROPS_ANALITICA = [
   'user_id',
   'learner_id',
+  // s33 — el slot del alumno activo. Dice si lo que se mide viene del
+  // alumno principal o de un hermano; `learner_id` solo dice cual.
+  'learner_slot',
   'plan',
   'subscription_status',
   'education_level',
@@ -390,6 +394,16 @@ function propiedadesAutomaticas(): PropiedadesEvento {
     ...desdeSession(),
     ciclo: cicloActual(),
     device: dispositivo(),
+    /**
+     * 🔴 `interno` va aqui ADEMAS de ser super-propiedad de PostHog — s33.
+     *
+     * PostHog la pega sola a sus eventos, pero GA4, Meta y TikTok no saben
+     * nada de super-propiedades: sin esta linea, el trafico propio se
+     * contaria como real en los otros tres destinos. `sinVacios` descarta
+     * el `false`... no: `false` NO es vacio, asi que se manda solo cuando
+     * es `true` para no ensuciar el 99% de los eventos con una constante.
+     */
+    ...(esInterno() ? { interno: true } : {}),
   }
 }
 
