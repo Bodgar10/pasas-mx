@@ -15,6 +15,7 @@ import {
 } from '@/lib/payments/promo-checkout'
 import { construirMetadataCheckout } from '@/lib/payments/metadata-checkout'
 import { trackServer } from '@/lib/analytics/track-server'
+import { motivoCheckoutError } from '@/lib/analytics/motivos'
 import type { AcquisitionSource } from '@/lib/audience-detection'
 
 export type RegistroState =
@@ -158,6 +159,31 @@ export async function registroAction(
   const acquisitionEfectiva = acquisitionYaGuardada ?? acquisitionSource
   const debeEscribirAcquisition = !acquisitionYaGuardada && !!acquisitionSource
 
+  /**
+   * Contexto de analitica de esta accion — s33.
+   *
+   * El consentimiento sale del input oculto `cookie_consent` que el
+   * formulario ya manda desde s27 (`cookieFields`), no de la fila: la fila
+   * se acaba de escribir con ese mismo valor y releerla seria una consulta
+   * de mas para el mismo dato. Si el banner nunca se contesto, `cookieFields`
+   * queda vacio y trackServer lo trata como un no — fail-closed.
+   */
+  const contextoAnalitica = {
+    consent: {
+      analytics: cookieFields.cookie_consent_analytics as boolean | null | undefined,
+      marketing: cookieFields.cookie_consent_marketing as boolean | null | undefined,
+    },
+    userId: user.id,
+  }
+
+  /** Lo que se sabe del alta y no cambia entre las dos salidas. */
+  const propsRegistro = {
+    es_menor: consent.esMenor,
+    registrante: consent.registrante,
+    plan: pendingPlan ?? undefined,
+    ciclo: pendingDuration ?? undefined,
+  }
+
   // Si el email aún no está confirmado, mostrar pantalla de verificación
   if (!user.email_confirmed_at) {
     const serviceClientEarly = createServiceClient(
@@ -276,6 +302,22 @@ export async function registroAction(
       return { error: 'No pudimos guardar tus datos. Inténtalo de nuevo.' }
     }
 
+    /**
+     * `registro_completado` — la cuenta y el alumno YA existen.
+     *
+     * Va aqui y no en el cliente porque esta rama devuelve { emailSent } y
+     * la persona puede cerrar la pestaña en el mismo segundo: el evento de
+     * navegador se perderia justo en el alta que mas importa medir.
+     *
+     * 🔴 Sin datos personales: `es_menor` es un booleano derivado de la
+     * fecha de nacimiento, nunca la fecha.
+     */
+    void trackServer(
+      'registro_completado',
+      { ...propsRegistro, requiere_confirmacion_correo: true },
+      contextoAnalitica
+    )
+
     return { emailSent: true, email }
   }
 
@@ -338,6 +380,14 @@ export async function registroAction(
     data: { onboarding_done: true },
   })
 
+  // Mismo evento que la rama de arriba, con la diferencia que separa los dos
+  // caminos del alta: aqui el correo ya estaba confirmado y no hay espera.
+  void trackServer(
+    'registro_completado',
+    { ...propsRegistro, requiere_confirmacion_correo: false },
+    contextoAnalitica
+  )
+
   // If user had a pending plan, create Stripe session and return the URL
   // Este camino crea la sesión de Stripe DIRECTO, sin pasar por
   // /api/checkout/create-session, así que el candado de ese endpoint no
@@ -379,6 +429,16 @@ export async function registroAction(
           // La cuenta YA existe a estas alturas, así que el mensaje tiene que
           // decirlo: sin esa frase la persona intentaría registrarse otra vez
           // y chocaría con "este correo ya tiene una cuenta".
+          void trackServer(
+            'checkout_error',
+            {
+              puerta: 'registro_directo',
+              motivo: 'promo_no_encontrada',
+              plan: pendingPlan,
+              ciclo: pendingDuration,
+            },
+            contextoAnalitica
+          )
           return {
             error: `${MENSAJE_PROMO_NO_DISPONIBLE}. Tu cuenta ya quedó creada: inicia sesión y elige tu plan.`,
           }
@@ -413,7 +473,11 @@ export async function registroAction(
           line_items: [{ price: priceId, quantity: 1 }],
           customer_email: email,
           success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?checkout=success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/planes`,
+          // `checkout=cancelado`, igual que en /api/checkout/create-session:
+          // es lo unico que distingue "volvio de la caja sin pagar" de
+          // "entro a /planes". Las DOS puertas o ninguna, o el dato mide
+          // solo la mitad del trafico.
+          cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/planes?plan=${pendingPlan}&ciclo=${pendingDuration}&checkout=cancelado`,
           metadata: metadataCheckout,
           subscription_data: {
             trial_period_days: 7,
@@ -447,19 +511,27 @@ export async function registroAction(
               camino: 'registro_directo',
               con_promo: !!promoResuelta,
             },
-            {
-              consent: {
-                analytics: cookieFields.cookie_consent_analytics as boolean | null | undefined,
-                marketing: cookieFields.cookie_consent_marketing as boolean | null | undefined,
-              },
-              userId: user.id,
-              eventId: checkoutEventId ?? undefined,
-            }
+            { ...contextoAnalitica, eventId: checkoutEventId ?? undefined }
           )
           return { stripeUrl: session.url }
         }
-      } catch {
-        // Stripe failed — send to planes so user can retry payment
+      } catch (stripeError) {
+        // Stripe failed — send to planes so user can retry payment.
+        //
+        // El catch sigue tragandose el error igual que antes: lo unico
+        // nuevo es que ahora deja constancia de POR QUE. Un alta que
+        // termina en /planes sin este evento es indistinguible de alguien
+        // que simplemente no eligio plan.
+        void trackServer(
+          'checkout_error',
+          {
+            puerta: 'registro_directo',
+            motivo: motivoCheckoutError(stripeError),
+            plan: pendingPlan,
+            ciclo: pendingDuration,
+          },
+          contextoAnalitica
+        )
       }
     }
   }

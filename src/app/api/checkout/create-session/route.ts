@@ -32,6 +32,7 @@ import {
 import { construirMetadataCheckout } from '@/lib/payments/metadata-checkout'
 import type { AcquisitionSource } from '@/lib/audience-detection'
 import { trackServer } from '@/lib/analytics/track-server'
+import { motivoCheckoutError } from '@/lib/analytics/motivos'
 
 export async function POST(request: Request) {
   try {
@@ -89,6 +90,18 @@ export async function POST(request: Request) {
 
     const acquisition = (profile?.acquisition_source ?? null) as AcquisitionSource | null
 
+    // Un solo contexto para los dos eventos de esta puerta —el de exito y
+    // el de error—, armado en cuanto el perfil esta en la mano. Repetirlo
+    // en cada sitio es como se desincronizan el consentimiento y el id.
+    const contextoAnalitica = {
+      consent: {
+        analytics: profile?.cookie_consent_analytics,
+        marketing: profile?.cookie_consent_marketing,
+      },
+      userId: user.id,
+      eventId: checkoutEventId,
+    }
+
     // Check if user already had a trial — if so, no trial on new subscription
     const { data: existingSubs } = await supabase
       .from('subscriptions')
@@ -120,6 +133,19 @@ export async function POST(request: Request) {
     } catch (promoError) {
       if (promoError instanceof PromoNoDisponibleError) {
         console.error('[checkout/create-session]', promoError.message)
+        // El checkout NO se abrio y la persona ya vio un precio con
+        // descuento. Sin este evento, esa venta perdida es invisible: el
+        // embudo solo veria un `checkout_iniciado` que nunca llego a pago.
+        void trackServer(
+          'checkout_error',
+          {
+            puerta: 'create_session',
+            motivo: 'promo_no_encontrada',
+            plan,
+            ciclo: duration,
+          },
+          contextoAnalitica
+        )
         return NextResponse.json(
           { error: MENSAJE_PROMO_NO_DISPONIBLE },
           { status: 409 }
@@ -131,7 +157,41 @@ export async function POST(request: Request) {
     // 5. Build URLs
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pasas.mx'
     const successUrl = `${baseUrl}${CHECKOUT_CONFIG.successPath}`
-    const cancelUrl  = `${baseUrl}${CHECKOUT_CONFIG.cancelPath}?plan=${plan}`
+    /**
+     * `checkout=cancelado` — s33.
+     *
+     * Sin este parametro, volver de Stripe sin pagar es indistinguible de
+     * entrar a /planes por primera vez: los dos son un `planes_vistos` a
+     * secas. Es la unica señal que tenemos de un abandono EN la caja, que
+     * es distinto de un abandono en la pantalla de precios.
+     */
+    const cancelUrl  = `${baseUrl}${CHECKOUT_CONFIG.cancelPath}?plan=${plan}&ciclo=${duration}&checkout=cancelado`
+
+    /**
+     * Envoltura del `sessions.create` que SOLO observa.
+     *
+     * Emite `checkout_error` con un motivo estable y vuelve a lanzar: el
+     * error sigue su camino al catch de abajo y la respuesta es la misma
+     * de siempre. Hoy los tres motivos mas comunes —cliente inexistente,
+     * tarjeta y red— acababan en el mismo 500 sin dejar rastro de cual fue.
+     */
+    const crearSesionStripe = async <T,>(crear: () => Promise<T>): Promise<T> => {
+      try {
+        return await crear()
+      } catch (err) {
+        void trackServer(
+          'checkout_error',
+          {
+            puerta: 'create_session',
+            motivo: motivoCheckoutError(err),
+            plan,
+            ciclo: duration,
+          },
+          contextoAnalitica
+        )
+        throw err
+      }
+    }
 
     // 6. Create Stripe Checkout session
     //
@@ -150,7 +210,7 @@ export async function POST(request: Request) {
       checkoutEventId,
     })
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await crearSesionStripe(() => stripe.checkout.sessions.create({
       mode: CHECKOUT_CONFIG.mode,
       // Sin esto Stripe cae en 'auto' y sigue al idioma del navegador, no al
       // del negocio. Sale de CHECKOUT_CONFIG para que la otra puerta —el alta
@@ -179,7 +239,7 @@ export async function POST(request: Request) {
         : { allow_promotion_codes: true }),
       success_url: successUrl,
       cancel_url:  cancelUrl,
-    })
+    }))
 
     // Evento de servidor. Va DESPUES de crear la sesion: solo se anuncia lo
     // que de verdad ocurrio. Y no se espera —`void`— para no meter la
@@ -193,14 +253,7 @@ export async function POST(request: Request) {
         camino: 'create_session',
         con_promo: !!promoResuelta,
       },
-      {
-        consent: {
-          analytics: profile?.cookie_consent_analytics,
-          marketing: profile?.cookie_consent_marketing,
-        },
-        userId: user.id,
-        eventId: checkoutEventId,
-      }
+      contextoAnalitica
     )
 
     // `promo_aplicada` es informativo y no cambia el cobro: lo usa el
