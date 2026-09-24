@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import PerfilClient from './perfil-client'
+import { rachaVisible } from '@/lib/gamification'
 
 export default async function PerfilPage() {
   const supabase = await createClient()
@@ -14,7 +15,7 @@ export default async function PerfilPage() {
   // acceso termino y desde donde puede volver a contratar.
   const [{ data: profile }, { data: learner }, { data: subscription }, { data: alumnos }] = await Promise.all([
     supabase.from('users').select('full_name, email').eq('id', user.id).single(),
-    supabase.from('learners').select('xp_total, streak_days').eq('account_user_id', user.id).eq('is_primary', true).maybeSingle(),
+    supabase.from('learners').select('xp_total, streak_days, last_active_at').eq('account_user_id', user.id).eq('is_primary', true).maybeSingle(),
     supabase.from('subscriptions').select('plan, status, current_period_start, current_period_end, cancelled_at, paused_until, billing_cycle, created_at').eq('user_id', user.id).order('created_at', { ascending: false }).limit(1).maybeSingle(),
     supabase
       .from('learners')
@@ -30,7 +31,9 @@ export default async function PerfilPage() {
         fullName: profile?.full_name ?? '',
         email: user.email ?? '',
         xpTotal: learner?.xp_total ?? 0,
-        streakDays: learner?.streak_days ?? 0,
+        // Misma regla que el dashboard: la racha se muestra solo si sigue
+        // viva (hoy o ayer, hora de México). Ver lib/gamification.
+        streakDays: rachaVisible(learner?.streak_days, learner?.last_active_at),
       }}
       alumnos={alumnos ?? []}
       subscription={subscription ? {

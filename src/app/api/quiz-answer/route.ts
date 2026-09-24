@@ -86,6 +86,20 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'No se pudo guardar el resultado' }, { status: 500 })
       }
 
+      /**
+       * Estado ANTES del insert — s33.
+       *
+       * `activated_at` lo escribe el trigger de la migración 050 en cuanto
+       * entra el `topic_completed`. Leerlo después diría siempre "ya estaba
+       * activado" y el evento `activado` no saldría nunca: hay que
+       * preguntarlo antes de insertar.
+       */
+      const { data: estadoPrevio } = await supabase
+        .from('learners')
+        .select('first_session_at, activated_at')
+        .eq('id', learnerId)
+        .maybeSingle()
+
       if (final_score === 100) {
         await supabase.from('progress').insert({
           user_id: user.id,
@@ -104,32 +118,23 @@ export async function POST(request: Request) {
       /**
        * ACTIVACION — el momento en que el producto demostro su valor.
        *
-       * Abrio un tema Y completo un quiz. Se marca con guard de NULL para que
-       * sea el PRIMER quiz completado y no el ultimo.
+       * 🔴 Esta ruta YA NO ESCRIBE `activated_at` (s33). La escribe el
+       * trigger `learner_activity_from_progress` sobre el insert de
+       * `topic_completed` que acaba de ocurrir arriba, con el mismo
+       * criterio. La app no podia escribirla de todos modos: la 036 revocó
+       * el UPDATE por columnas y la 048 no extendio el GRANT a
+       * `activated_at`, asi que este update fallaba con 42501 en silencio
+       * y por eso los 32 alumnos la tienen vacia.
        *
-       * 🔴 Exige `first_session_at` ya escrito: sin sesion previa no hay
-       * "activado en X horas" que medir, y esa resta es justo para lo que
-       * existen las dos columnas. Si alguien llegara aqui sin primera sesion
-       * —un quiz sin haber leido nada— se escriben las dos a la vez, que es
-       * lo honesto: su primera sesion ES esta.
+       * Lo que si queda aqui es el EVENTO: la base guarda el cuando, pero
+       * "cuantas horas tardo" y "por que ruta" solo se saben en este punto.
+       *
+       * Sale solo cuando el alumno NO estaba activado y el quiz fue
+       * perfecto — que es la unica condicion en la que el trigger acaba de
+       * marcarlo.
        */
       try {
-        const { data: alumno } = await supabase
-          .from('learners')
-          .select('first_session_at, activated_at')
-          .eq('id', learnerId)
-          .maybeSingle()
-
-        if (!alumno?.activated_at) {
-          const ahora = new Date().toISOString()
-          await supabase
-            .from('learners')
-            .update({
-              activated_at: ahora,
-              ...(alumno?.first_session_at ? {} : { first_session_at: ahora }),
-            })
-            .eq('id', learnerId)
-
+        if (!estadoPrevio?.activated_at && final_score === 100) {
           const { data: consentimiento } = await supabase
             .from('users')
             .select('cookie_consent_analytics, cookie_consent_marketing')
@@ -141,9 +146,9 @@ export async function POST(request: Request) {
             {
               // Horas desde la PRIMERA sesion, no desde el alta: mide cuanto
               // tardo el producto en demostrar valor una vez que empezo.
-              horas_desde_primera_sesion: alumno?.first_session_at
+              horas_desde_primera_sesion: estadoPrevio?.first_session_at
                 ? Math.round(
-                    (Date.now() - new Date(alumno.first_session_at).getTime()) / 3_600_000
+                    (Date.now() - new Date(estadoPrevio.first_session_at).getTime()) / 3_600_000
                   )
                 : 0,
               ruta: 'quiz',

@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import { unstable_cache } from 'next/cache'
 import { createClient } from '@/utils/supabase/server'
 import DashboardClient from './dashboard-client'
-import { xpToLevel } from '@/lib/gamification'
+import { xpToLevel, rachaVisible } from '@/lib/gamification'
 import { resolveLearner, getAccountLearners } from '@/lib/learners'
 import { cicloActual, enVentanaPromocion, siguienteGrado } from '@/lib/ciclo-escolar'
 
@@ -175,7 +175,10 @@ export default async function DashboardPage({
       profile={{
         name: learner?.display_name ?? profile.full_name ?? user.email?.split('@')[0] ?? 'Estudiante',
         xp_total: learner?.xp_total ?? 0,
-        streak_days: learner?.streak_days ?? 0,
+        // 🔴 `rachaVisible`, no `streak_days` a secas: la columna guarda el
+        // último valor alcanzado y una cuenta abandonada seguiría enseñando
+        // "12 días" para siempre. La regla vive en un solo helper.
+        streak_days: rachaVisible(learner?.streak_days, learner?.last_active_at),
         education_level: learner?.education_level ?? null,
         grade: learner?.grade ?? null,
         // El respaldo a `users.interests` es para el alumno primario de

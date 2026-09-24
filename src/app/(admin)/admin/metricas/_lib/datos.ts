@@ -123,6 +123,7 @@ export type Alumno = {
   xp_total: number
   streak_days: number
   max_streak_days: number
+  last_active_at: string | null
   first_session_at: string | null
   activated_at: string | null
 }
@@ -135,7 +136,7 @@ export async function idsVigentes(incluirPrueba: boolean) {
 
   const { data: alumnos } = await db
     .from('learners')
-    .select('id, account_user_id, status, access_until, education_level, grade, xp_total, streak_days, max_streak_days, first_session_at, activated_at')
+    .select('id, account_user_id, status, access_until, education_level, grade, xp_total, streak_days, max_streak_days, last_active_at, first_session_at, activated_at')
     .limit(TOPE)
 
   const suyos = ((alumnos ?? []) as Alumno[]).filter((l) => cuentas.has(l.account_user_id))

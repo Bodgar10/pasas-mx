@@ -2,6 +2,7 @@ import ComoSeLee from '@/components/admin/ComoSeLee'
 import { StatCard, SectionTitle, Panel, Barra, Nota, Vacio, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
 import { servicio, ventanas, idsVigentes, pct, dias } from '../_lib/datos'
 import { tieneAccesoVigente } from '@/lib/learners'
+import { rachaVisible } from '@/lib/gamification'
 
 const SIN_NIVEL = '__sin_nivel__'
 /** El enum tiene EXACTAMENTE dos valores (001_initial_schema.sql:49). */
@@ -57,7 +58,12 @@ export default async function Aprendizaje({ incluirPrueba }: { incluirPrueba: bo
   const xp = mios.reduce((t, p) => t + (p.xp_earned ?? 0), 0)
 
   // ── Rachas (max_streak_days, migración 048) ────────────────────────
-  const conRacha = vigentes.filter((l) => (l.streak_days ?? 0) > 0)
+  //
+  // 🔴 `rachaVisible`, la misma regla que ve el alumno en su dashboard: una
+  // racha cuya última actividad no es de hoy ni de ayer está rota, por más
+  // que la columna siga guardando el número. Contarlas como vivas inflaba
+  // "con racha viva" con cuentas abandonadas hace meses.
+  const conRacha = vigentes.filter((l) => rachaVisible(l.streak_days, l.last_active_at) > 0)
   const rachaMax = vigentes.reduce((m, l) => Math.max(m, l.max_streak_days ?? 0), 0)
 
   // ── Activación (migración 048) ─────────────────────────────────────
@@ -95,9 +101,10 @@ export default async function Aprendizaje({ incluirPrueba }: { incluirPrueba: bo
         <StatCard label="Materias por alumno" value={mediaMaterias.toFixed(1)} sub="distintas, en promedio" color={COLORES.rosa} />
       </div>
       <Nota>
-        🔴 <strong>Activo</strong> se mide con eventos de <code>progress</code>, no con
-        <code> last_active_at</code>: esa columna solo la escribe <code>section-read</code>, así que un
-        alumno que solo hace quizzes nunca la actualiza y saldría como inactivo.
+        🔴 <strong>Activo</strong> se mide con eventos de <code>progress</code>, que es la bitácora
+        completa. Desde la migración 050, <code>last_active_at</code> la escribe un trigger sobre esa
+        misma tabla —ya no solo <code>section-read</code>—, así que un alumno que solo hace quizzes o
+        juega la Horda también cuenta. Las dos fuentes deben coincidir; si no, mira el trigger.
       </Nota>
 
       <SectionTitle>Activación</SectionTitle>

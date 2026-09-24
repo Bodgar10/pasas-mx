@@ -195,6 +195,12 @@ export type Learner = {
   theme_id: string | null
   xp_total: number
   streak_days: number
+  /**
+   * Última actividad, en UTC. 🔴 Nunca se pinta `streak_days` sin esta
+   * columna al lado: la racha guardada es el último valor alcanzado, no el
+   * vigente. La regla de lectura vive en `rachaVisible` (lib/gamification).
+   */
+  last_active_at: string | null
   last_level_seen: number
   /** Ciclo escolar en que ya se le propuso pasar de grado. NULL = nunca. */
   promocion_vista_ciclo: string | null
@@ -207,7 +213,7 @@ export async function getLearnerBySlot(
 ): Promise<Learner | null> {
   const { data, error } = await supabase
     .from('learners')
-    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen, promocion_vista_ciclo')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_active_at, last_level_seen, promocion_vista_ciclo')
     .eq('account_user_id', userId)
     .eq('slot', slot)
     .maybeSingle()
@@ -264,7 +270,7 @@ export async function getAccountLearners(
 ) {
   const { data, error } = await supabase
     .from('learners')
-    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_level_seen, status, access_until')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_active_at, last_level_seen, status, access_until')
     .eq('account_user_id', userId)
     .in('status', ['active', 'ending'])
     .order('slot', { ascending: true })

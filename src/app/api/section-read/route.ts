@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { resolveLearnerFromBody } from '@/lib/learners'
 import { trackServer } from '@/lib/analytics/track-server'
+import { diaMexico } from '@/lib/gamification'
 
 export async function POST(request: Request) {
   try {
@@ -37,6 +38,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ xp_earned: 0, already_read: true })
     }
 
+    /**
+     * 🔴 SE LEE ANTES DEL INSERT, Y ESO ES LO IMPORTANTE — s33.
+     *
+     * Desde la migración 050 la racha la escribe un trigger AFTER INSERT
+     * sobre `progress`. Leer `learners` después del insert devolvería el
+     * estado YA actualizado y los tres eventos de abajo —primera_sesion,
+     * racha_actualizada, racha_rota— se volverían imposibles de calcular:
+     * el valor viejo es justo lo que el trigger acaba de pisar.
+     *
+     * Esta ruta NO escribe ninguna de esas columnas. Lo intentaba y no
+     * podía: la 036 revocó el UPDATE por columnas y la 048 añadió tres
+     * nuevas sin extender el GRANT, así que el UPDATE entero venía
+     * fallando con 42501 desde el 18-ago y nadie miraba el error.
+     */
+    const { data: estadoPrevio } = await supabase
+      .from('learners')
+      .select('streak_days, last_active_at, max_streak_days, first_session_at')
+      .eq('id', learnerId)
+      .single()
+
     const { error: progressError } = await supabase.from('progress').insert({
       user_id: user.id,
       learner_id: learnerId,
@@ -55,82 +76,52 @@ export async function POST(request: Request) {
     await supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 10 })
     await supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 10 })
 
-    // --- Streak logic ---
-    const { data: userRecord } = await supabase
-      .from('learners')
-      .select('streak_days, last_active_at, max_streak_days, first_session_at')
-      .eq('id', learnerId)
-      .single()
-
+    // --- Streak logic (solo LECTURA: escribe el trigger 050) ---
+    //
+    // Se replica el cálculo del trigger para poder emitir los eventos, no
+    // para escribir. Si algún día cambian las reglas de la racha, cambian
+    // en `learner_activity_from_progress` y esto se ajusta detrás — nunca
+    // al revés.
+    //
+    // 🔴 Días de MÉXICO, igual que el trigger. El código viejo cortaba en
+    // UTC: cualquier sesión después de las 18:00 de México contaba como del
+    // día siguiente, así que dos sesiones de la misma noche podían regalar
+    // un día de racha.
+    const userRecord = estadoPrevio
     const now = new Date()
-    const todayUTC = now.toISOString().split('T')[0]
+    const hoyMx = diaMexico(now)
+    const ultimoMx = diaMexico(userRecord?.last_active_at)
 
     let newStreak = 1
     let streakEvent: 'continued' | 'started' | 'none' = 'none'
 
-    if (userRecord?.last_active_at) {
-      const lastActive = new Date(userRecord.last_active_at)
-      const lastActiveUTC = lastActive.toISOString().split('T')[0]
-
-      if (lastActiveUTC === todayUTC) {
-        newStreak = userRecord.streak_days ?? 1
-        streakEvent = 'none'
-      } else {
-        const yesterday = new Date(now)
-        yesterday.setUTCDate(yesterday.getUTCDate() - 1)
-        const yesterdayUTC = yesterday.toISOString().split('T')[0]
-
-        if (lastActiveUTC === yesterdayUTC) {
-          newStreak = (userRecord.streak_days ?? 0) + 1
-          streakEvent = 'continued'
-        } else {
-          newStreak = 1
-          streakEvent = 'started'
-        }
-      }
-    } else {
+    if (!ultimoMx || !hoyMx) {
       newStreak = 1
       streakEvent = 'started'
+    } else if (ultimoMx === hoyMx) {
+      newStreak = Math.max(userRecord?.streak_days ?? 1, 1)
+      streakEvent = 'none'
+    } else {
+      const ayerMx = diaMexico(new Date(now.getTime() - 24 * 60 * 60 * 1000))
+      if (ultimoMx === ayerMx) {
+        newStreak = (userRecord?.streak_days ?? 0) + 1
+        streakEvent = 'continued'
+      } else {
+        newStreak = 1
+        streakEvent = 'started'
+      }
     }
 
     /**
-     * Primera sesion del alumno. Guard de NULL: solo se escribe si no habia
-     * nada, para que la fecha sea la del PRIMER acto real y no la del ultimo.
-     *
-     * Va aqui y no en el cliente a proposito: localStorage miente al cambiar
-     * de dispositivo —tablet por la tarde, telefono por la noche daria dos
-     * "primeras sesiones"— y una consulta por carga para preguntarlo seria
-     * peor que una columna.
+     * Primera sesión del alumno. La escribe el trigger con `coalesce`; aquí
+     * solo se mira si ANTES estaba vacía, que es lo que decide si el evento
+     * `primera_sesion` sale o no.
      */
     const primeraSesion = !userRecord?.first_session_at
-    const camposPrimeraSesion = primeraSesion
-      ? { first_session_at: now.toISOString() }
-      : {}
 
-    /**
-     * Racha maxima historica. Es un GREATEST sobre lo que ya se escribe: NO
-     * cambia la logica de rachas, solo recuerda el techo. Sin esta columna,
-     * `es_record` no se puede calcular — `learners` solo guardaba la actual.
-     */
+    /** Techo histórico previo. Sirve para `es_record` en el evento. */
     const maximaPrevia = userRecord?.max_streak_days ?? 0
     const nuevaMaxima = Math.max(maximaPrevia, newStreak)
-
-    if (streakEvent !== 'none') {
-      await supabase
-        .from('learners')
-        .update({
-          streak_days: newStreak,
-          last_active_at: now.toISOString(),
-          max_streak_days: nuevaMaxima,
-          ...camposPrimeraSesion,
-        })
-        .eq('id', learnerId)
-    } else {
-      await supabase
-        .from('learners')
-        .update({ last_active_at: now.toISOString(), ...camposPrimeraSesion })
-        .eq('id', learnerId)
-    }
     // --- End streak logic ---
 
     // --- Eventos de servidor ---
