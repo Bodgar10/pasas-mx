@@ -166,6 +166,29 @@ function PlanesContent() {
   }, [promoCargando, yaTuvoCargando, cycle, yaTuvo, activePlan])
 
   /**
+   * `checkout_cancelado` — volvio de la caja de Stripe sin pagar.
+   *
+   * Las dos puertas de cobro mandan a `/planes?...&checkout=cancelado`
+   * desde s33. Antes este regreso llegaba aqui indistinguible de una
+   * primera visita, asi que el abandono EN la caja —el mas caro del
+   * embudo, porque ya vio el formulario de tarjeta— no existia como dato.
+   *
+   * `plan` y `ciclo` salen de la URL, no del estado de la pantalla: son
+   * los que estaban en la sesion de Stripe que se abandono, que no tienen
+   * por que coincidir con lo que el toggle muestre ahora.
+   */
+  const cancelado = searchParams.get('checkout') === 'cancelado'
+  const canceladoMedidoRef = useRef(false)
+  useEffect(() => {
+    if (!cancelado || canceladoMedidoRef.current) return
+    canceladoMedidoRef.current = true
+    track('checkout_cancelado', {
+      plan: searchParams.get('plan') ?? undefined,
+      ciclo: searchParams.get('ciclo') ?? undefined,
+    })
+  }, [cancelado, searchParams])
+
+  /**
    * `planes_directo` — llegó aquí con un slug guardado que esta pantalla NO
    * va a aplicar.
    *

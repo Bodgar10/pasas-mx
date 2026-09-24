@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
 import { nuevoEventId, track } from '@/lib/analytics/track'
+import { motivoRegistroError } from '@/lib/analytics/motivos'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 import Logo from '@/components/global/Logo'
 import { leerConsentimiento } from '@/lib/consent'
@@ -98,6 +99,9 @@ function RegistroContent() {
   const inicioFormRef = useRef(0)
   const intentosVerificacionRef = useRef(0)
   const medidoRef = useRef({ inicio: false, enviada: false, completado: false })
+  /** Ultimo error ya medido. Un string, no un bool: el formulario puede
+   *  fallar dos veces seguidas por motivos distintos y las dos cuentan. */
+  const errorMedidoRef = useRef<string | null>(null)
 
   useEffect(() => {
     inicioFormRef.current = Date.now()
@@ -212,6 +216,30 @@ function RegistroContent() {
     }
   }, [state, registrante, checkoutEventId, pendingPlan, pendingDuration])
 
+  /**
+   * `registro_error` — el formulario se envio y volvio con un fallo.
+   *
+   * La brecha entre `signup` (lo intento) y `signup_completado` (lo logro)
+   * ya se veia, pero no POR QUE: los siete motivos distintos —correo ya
+   * registrado, validacion, menor sin tutor, promo caida— llegaban todos
+   * como el mismo hueco en el embudo.
+   *
+   * 🔴 Va el CODIGO, nunca el mensaje ni el correo. El texto cambia cada
+   * vez que alguien mejora una frase y partiria la serie en dos.
+   */
+  useEffect(() => {
+    if (!state || !('error' in state) || !state.error) return
+    if (errorMedidoRef.current === state.error) return
+    errorMedidoRef.current = state.error
+
+    track('registro_error', {
+      motivo: motivoRegistroError(state.error),
+      registrante,
+      plan: pendingPlan ?? undefined,
+      ciclo: pendingDuration ?? undefined,
+    })
+  }, [state, registrante, pendingPlan, pendingDuration])
+
   useEffect(() => {
     if (state && 'stripeUrl' in state && state.stripeUrl) {
       // Clear sessionStorage and redirect to Stripe or dashboard
@@ -250,6 +278,10 @@ function RegistroContent() {
             // salto en cualquier carácter en vez de desbordar el recuadro.
             overflowWrap: 'anywhere',
           }}
+          // `maskAllInputs` tapa lo que se ESCRIBE en un campo, no lo que
+          // se pinta despues. Este parrafo es texto normal con el correo
+          // dentro: sin la marca, la grabacion de sesion se lo lleva legible.
+          data-ph-mask
         >
           {state.email}
         </p>
