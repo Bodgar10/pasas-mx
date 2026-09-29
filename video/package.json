@@ -1,0 +1,15 @@
+{
+  "name": "pasas-arcade-video",
+  "private": true,
+  "type": "module",
+  "description": "Genera el reel y las stories diarias de PASAS Arcade",
+  "scripts": {
+    "manana": "node src/run.mjs --parte manana",
+    "noche": "node src/run.mjs --parte noche",
+    "ejemplo": "node src/run.mjs --data data/ejemplo-reto-12.json --parte manana && node src/run.mjs --data data/ejemplo-reto-12.json --parte noche"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "playwright": "1.56.0"
+  }
+}

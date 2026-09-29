@@ -1,0 +1,87 @@
+# Genera el reel y las stories de PASAS Arcade y los manda por correo.
+# Lee el reto del día de Supabase (migración 051). También se puede correr a mano:
+# Actions → "Videos de PASAS Arcade" → Run workflow.
+# El horario está comentado hasta confirmar la primera corrida manual.
+name: Videos de PASAS Arcade
+
+on:
+  workflow_dispatch:
+    inputs:
+      parte:
+        description: 'manana (reel + 2 stories) o noche (story de resultados)'
+        type: choice
+        options: [manana, noche]
+        default: manana
+      data:
+        description: 'JSON dentro de video/ para probar (vacío = leer de Supabase)'
+        type: string
+        default: ''
+      fecha:
+        description: 'AAAA-MM-DD (vacío = hoy en hora de México)'
+        type: string
+        default: ''
+      enviar:
+        description: 'Mandar el correo'
+        type: boolean
+        default: true
+  # schedule:
+  #   - cron: '10 6 * * *'   # 00:10 hora de México → parte mañana
+  #   - cron: '30 2 * * *'   # 20:30 hora de México → parte noche
+
+concurrency:
+  group: arcade-videos-${{ github.event.inputs.parte || github.event.schedule }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: video
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      - name: Instalar dependencias
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Decidir la parte
+        id: parte
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "${{ github.event.schedule }}" = "30 2 * * *" ]; then echo "parte=noche" >> "$GITHUB_OUTPUT"; else echo "parte=manana" >> "$GITHUB_OUTPUT"; fi
+          else
+            echo "parte=${{ inputs.parte }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generar y enviar
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ARCADE_EMAIL_TO: ${{ secrets.ARCADE_EMAIL_TO }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          ARGS="--parte ${{ steps.parte.outputs.parte }}"
+          if [ -n "${{ inputs.data }}" ]; then ARGS="$ARGS --data ${{ inputs.data }}"; fi
+          if [ -n "${{ inputs.fecha }}" ]; then ARGS="$ARGS --fecha ${{ inputs.fecha }}"; fi
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.enviar }}" = "true" ]; then ARGS="$ARGS --enviar"; fi
+          node src/run.mjs $ARGS
+
+      # Respaldo: si el correo falla, los archivos quedan descargables en la corrida
+      - name: Guardar archivos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: arcade-${{ steps.parte.outputs.parte }}-${{ github.run_id }}
+          path: video/salida/
+          retention-days: 7
+          if-no-files-found: ignore

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Instagram tapa arriba (perfil y barras) y abajo (responder). El contenido vive entre 16% y 84%. */
+.st{position:absolute;inset:0;padding:30cqw 8cqw 28cqw;display:none;flex-direction:column;gap:5cqw}
+.st.on{display:flex}
+.kicker{font-size:5.6cqw;font-weight:800;color:var(--muted)}
+.big{font-family:var(--font-brand);font-weight:900;font-size:17cqw;line-height:1}
+.q{font-size:11cqw;font-weight:900;line-height:1.05}
+.line{font-size:5.4cqw;font-weight:800;line-height:1.3;text-wrap:balance}
+#aviso{gap:4cqw;padding-bottom:18cqw}
+#aviso .big{font-size:15cqw}
+.sticker-zone{height:20cqw;flex:none}
+.mini4{display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw;margin-top:2cqw}
+.mini4 div{height:13cqw;border-radius:4cqw;background:var(--surface);border:.5cqw solid var(--line);display:grid;place-items:center;font-family:var(--font-brand);font-size:8cqw;color:var(--muted)}
+.spacer{flex:1}                 /* aquí se coloca el sticker en la app */
+.foot{font-size:4.6cqw;font-weight:800;color:var(--dim);text-align:center}
+.foot b{color:var(--fg)}
+.pct{color:var(--xp)}
+.arrow{align-self:center;width:9cqw;height:9cqw;flex:none;color:var(--muted)}
+</style></head>
+<body>
+<div class="frame">
+  <!-- 8 AM · aviso -->
+  <div class="st" id="aviso">
+    <div class="kicker">Ya salió el</div>
+    <div class="big" id="a-num">RETO<br>#12</div>
+    <div class="line" id="a-line">Historia · 5 rondas · 2 minutos</div>
+    <div class="mini4"><div>?</div><div>?</div><div>?</div><div>?</div></div>
+    <div class="spacer"></div>
+    <div class="foot">Toca el link para jugar</div>
+    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 12l7 7 7-7"/></svg>
+    <div class="sticker-zone"></div>
+  </div>
+
+  <!-- 2 PM · ronda extra -->
+  <div class="st" id="extra">
+    <div class="kicker">Ronda extra, solo aquí</div>
+    <div class="q">¿Cuál sobra?</div>
+    <div class="spacer"></div>
+    <div class="foot">El reto completo: <b>pasas.mx/arcade</b></div>
+  </div>
+
+  <!-- 9 PM · resultados -->
+  <div class="st" id="resultados">
+    <div class="kicker" id="r-kicker">Así les fue hoy · Reto #12</div>
+    <div class="big pct" id="r-pct">29%</div>
+    <div class="line" id="r-line"></div>
+    <div class="spacer"></div>
+    <div class="foot" id="r-foot"></div>
+  </div>
+</div>
+<script>
+window.setup = function(data, variant){
+  document.querySelectorAll('.st').forEach(function(el){ el.classList.toggle('on', el.id === variant); });
+  var n = data.numero;
+  document.getElementById('a-num').innerHTML = 'RETO<br>#' + n;
+  document.getElementById('a-line').textContent = (data.materia || 'Historia') + ' · 5 rondas · 2 minutos';
+  if (variant === 'resultados' && data.resultados){
+    var r = data.resultados;
+    document.getElementById('r-kicker').textContent = 'Así les fue hoy · Reto #' + n;
+    document.getElementById('r-pct').textContent = r.porcentaje + '%';
+    var line = 'acertó la ronda de ' + r.tema + '. Fue la más difícil del día.';
+    // el número de jugadores solo se presume cuando ya es respetable
+    if (typeof r.jugadores === 'number' && r.jugadores >= 30) line += ' Jugaron ' + r.jugadores.toLocaleString('es-MX') + ' personas.';
+    document.getElementById('r-line').textContent = line;
+    document.getElementById('r-foot').textContent = 'Mañana a las 00:00, reto #' + (n + 1);
+  }
+};
+</script>
+</body></html>

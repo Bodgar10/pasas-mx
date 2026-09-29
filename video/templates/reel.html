@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+.scene{position:absolute;inset:0;padding:12cqw 7cqw 32cqw;display:flex;flex-direction:column;gap:4cqw;opacity:0}
+.q-title{font-size:8.5cqw;font-weight:900;line-height:1.05}
+
+/* Respuesta de ayer */
+.list{display:flex;flex-direction:column;gap:2.4cqw;margin-top:2cqw}
+.li{background:var(--surface);border:.5cqw solid var(--line);border-radius:4cqw;padding:3cqw 4cqw;font-size:5cqw;font-weight:800;opacity:.45}
+.li.win{border-color:var(--ok);background:var(--ok-soft)}
+.stat{margin-top:auto;display:flex;flex-direction:column;gap:1cqw}
+.stat b{font-family:var(--font-brand);font-size:17cqw;line-height:1;color:var(--xp)}
+.stat span{font-size:5.4cqw;font-weight:800;text-wrap:balance}
+
+/* Título */
+.title-scene{justify-content:center;padding-bottom:40cqw}
+.big{font-family:var(--font-brand);font-weight:900;font-size:14.5cqw;line-height:1.02;transform-origin:left center}
+.big em{font-style:normal;color:var(--pink)}
+.sub{font-size:5.4cqw;font-weight:800;color:var(--muted);text-wrap:balance}
+
+/* Reto */
+#s2{justify-content:center;padding-bottom:36cqw}
+.q-head{display:flex;justify-content:space-between;align-items:center;gap:3cqw}
+.ring{position:relative;width:16cqw;height:16cqw;opacity:0;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .track{stroke:var(--line)} .ring .bar{stroke:var(--xp);stroke-linecap:round}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:7cqw;color:var(--xp)}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;margin-top:2cqw}
+.card{min-height:30cqw;border-radius:5cqw;background:var(--surface);border:.5cqw solid var(--line);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:3cqw;opacity:0;overflow:hidden}
+.card .l{display:block;font-size:3.4cqw;font-weight:900;color:var(--muted);letter-spacing:.1em;margin-bottom:1cqw}
+.card .t{display:block;font-size:6cqw;font-weight:900;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
+.card.year .t{font-family:var(--font-brand);font-weight:700;letter-spacing:.04em;font-size:8cqw}
+.hint{font-size:4.4cqw;font-weight:700;color:var(--dim)}
+
+/* Comenta */
+.comment-scene{justify-content:center;align-items:center;text-align:center;padding-bottom:36cqw}
+.bubble{background:var(--paper);color:var(--ink);border-radius:6cqw;padding:5cqw 6cqw;display:flex;flex-direction:column;gap:1.5cqw;box-shadow:0 3cqw 10cqw rgba(0,0,0,.5)}
+.bubble b{font-size:7.4cqw;font-weight:900;line-height:1.1}
+.bubble span{font-size:4.6cqw;font-weight:700;color:var(--ink-dim)}
+
+/* Cierre */
+.cta-scene{justify-content:center;gap:5cqw;padding-bottom:36cqw}
+.cta-scene .wordmark{font-size:6cqw}
+.cta-big{font-size:10cqw;font-weight:900;line-height:1.05}
+.url{align-self:flex-start;font-family:var(--font-brand);font-size:5.6cqw;font-weight:700;background:var(--brand);color:#fff;padding:3cqw 5cqw;border-radius:4cqw}
+.cta-sub{font-size:4.8cqw;font-weight:700;color:var(--muted)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="scene" id="s0">
+    <span class="tag" id="ayer-tag">Respuesta de ayer</span>
+    <div class="q-title">¿Cuál sobra?</div>
+    <div class="list" id="ayer-list"></div>
+    <div class="stat"><b id="pct"></b><span id="motivo"></span></div>
+  </div>
+  <div class="scene title-scene" id="s1">
+    <span class="tag" id="title-tag"></span>
+    <div class="big" id="big">¿CUÁL<br><em>SOBRA?</em></div>
+    <div class="sub">Tres tienen algo en común. Una no.</div>
+  </div>
+  <div class="scene" id="s2">
+    <div class="q-head">
+      <div class="q-title">¿Cuál sobra?</div>
+      <div class="ring" id="ring"><svg viewBox="0 0 40 40"><circle class="track" cx="20" cy="20" r="16"/><circle class="bar" id="ring-bar" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="0"/></svg><b id="ring-n">5</b></div>
+    </div>
+    <div class="grid4" id="grid"></div>
+    <div class="hint" id="hint"></div>
+  </div>
+  <div class="scene comment-scene" id="s3">
+    <div class="bubble" id="bubble"><b>Comenta cuál sobra</b><span>La respuesta, mañana en este mismo reel</span></div>
+  </div>
+  <div class="scene cta-scene" id="s4">
+    <div class="wordmark">PASAS<span>·</span>ARCADE</div>
+    <div class="cta-big">Te faltan 4 rondas</div>
+    <div class="url">pasas.mx/arcade</div>
+    <div class="cta-sub">Un reto nuevo cada día</div>
+  </div>
+</div>
+<script>
+var $ = function(id){ return document.getElementById(id); };
+var clamp = function(x){ return Math.max(0, Math.min(1, x)); };
+var easeOut = function(p){ return 1 - Math.pow(1-p, 3); };
+var back = function(p){ var c1=1.70158, c3=c1+1; return 1 + c3*Math.pow(p-1,3) + c1*Math.pow(p-1,2); };
+var F = 0.35;
+var T = null, D = null;
+
+function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+// Reduce la letra de una tarjeta hasta que el texto quepa sin cortarse
+function fit(el, box){
+  var size = parseFloat(getComputedStyle(el).fontSize);
+  for (var i=0; i<30 && (el.scrollWidth > box.clientWidth - 2 || box.scrollHeight > box.clientHeight + 1); i++){
+    size *= 0.94; el.style.fontSize = size + 'px';
+  }
+}
+
+window.setup = function(data){
+  D = data;
+  var o = data.ayer ? 3 : 0;               // sin "ayer" (reto #1) el video empieza en el título
+  T = {
+    s0:[0,3], s1:[o, o+1.7], s2:[o+1.7, o+10], s3:[o+8, o+10], s4:[o+10, o+13],
+    cards:o+2, ringOn:o+3.8, ringEnd:o+8, dim:o+8, end:o+13
+  };
+  if (data.ayer){
+    $('ayer-tag').textContent = 'Respuesta de ayer · Reto #' + data.ayer.numero;
+    $('ayer-list').innerHTML = data.ayer.opciones.map(function(x,i){
+      return '<div class="li' + (i===data.ayer.sobra?' win':'') + '"' + (i===data.ayer.sobra?' id="win"':'') + '>' + esc(x) + '</div>';
+    }).join('');
+    var hasPct = typeof data.ayer.porcentaje === 'number';
+    $('pct').style.display = hasPct ? '' : 'none';
+    $('motivo').textContent = hasPct ? 'le atinó. ' + data.ayer.motivo : data.ayer.motivo;
+    if (!hasPct) $('motivo').style.fontSize = '7cqw';   // sin porcentaje, el motivo es el remate
+  }
+  $('title-tag').textContent = 'Reto de ' + (data.materia_corta || 'Historia') + ' #' + data.numero;
+  var years = data.hoy.opciones.every(function(x){ return /^\d{3,4}$/.test(String(x).trim()); });
+  $('grid').innerHTML = data.hoy.opciones.map(function(x,i){
+    return '<div class="card' + (years?' year':'') + '"><span><span class="l">' + 'ABCD'[i] + '</span><span class="t">' + esc(x) + '</span></span></div>';
+  }).join('');
+  $('hint').textContent = 'Reto #' + data.numero + ' · Ronda 1 de 5';
+  // mostrar todo un momento para medir y ajustar
+  ['s2'].forEach(function(id){ $(id).style.opacity = 1; });
+  document.querySelectorAll('.card').forEach(function(c){ c.style.opacity = 1; fit(c.querySelector('.t'), c); });
+  window.render(0);
+  return T.end;
+};
+
+function win(t, a, b, fadeIn, fadeOut){
+  if (t < a || t >= b) return 0;
+  var i = fadeIn === false ? 1 : clamp((t-a)/F);
+  var o = fadeOut === false ? 1 : clamp((b-t)/F);
+  return Math.min(i, o);
+}
+
+window.render = function(t){
+  var sc = [
+    D.ayer ? [T.s0[0], T.s0[1], false, true] : [0,0,true,true],
+    [T.s1[0], T.s1[1], !!D.ayer, true],
+    [T.s2[0], T.s2[1], true, true],
+    [T.s3[0], T.s3[1], true, true],
+    [T.s4[0], T.end + 1, true, false]
+  ];
+  sc.forEach(function(s, i){
+    var a = win(t, s[0], s[1], s[2], s[3]), el = $('s'+i);
+    el.style.opacity = a; el.style.transform = 'translateY(' + ((1-easeOut(a))*3) + 'cqw)';
+  });
+  if (D.ayer){
+    var w = $('win'); if (w) w.style.opacity = 0.45 + 0.55*clamp((t-0.3)/0.3);
+    if (typeof D.ayer.porcentaje === 'number'){
+      $('pct').textContent = Math.round(D.ayer.porcentaje * easeOut(clamp((t-0.5)/0.9))) + '%';
+    }
+  }
+  $('big').style.transform = 'scale(' + (0.9 + 0.1*back(clamp((t-T.s1[0])/0.5))) + ')';
+  document.querySelectorAll('.card').forEach(function(c, i){
+    var q = clamp((t-(T.cards + i*0.45))/0.3);
+    c.style.opacity = q; c.style.transform = 'scale(' + (0.88 + 0.12*back(q)) + ')';
+  });
+  $('grid').style.opacity = 1 - 0.72*clamp((t-T.dim)/0.3);
+  var on = t >= T.ringOn && t < T.ringEnd + 0.2;
+  $('ring').style.opacity = on ? clamp((t-T.ringOn)/0.25) : 0;
+  if (on){
+    var span = T.ringEnd - T.ringOn, left = Math.max(0, T.ringEnd - t);
+    $('ring-n').textContent = Math.max(1, Math.ceil(left));
+    $('ring-bar').setAttribute('stroke-dashoffset', (100.5*(1 - left/span)).toFixed(1));
+  }
+  $('bubble').style.transform = 'scale(' + (0.85 + 0.15*back(clamp((t-T.s3[0])/0.35))) + ')';
+};
+</script>
+</body></html>
