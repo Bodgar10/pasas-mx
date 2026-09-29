@@ -10,9 +10,10 @@
   border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
 .tag{position:absolute;left:9cqw;top:300px;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:5cqw;letter-spacing:.06em;
   color:#fff;background:var(--pink);padding:1.2cqw 3.4cqw 1.4cqw;border-radius:2.4cqw;box-shadow:0 0 3cqw rgba(236,72,153,.55)}
-.title{position:absolute;left:9cqw;right:9cqw;top:372px;font-family:var(--font-title);font-weight:900;text-transform:uppercase;
+.title{position:absolute;left:9cqw;right:9cqw;top:320px;font-family:var(--font-title);font-weight:900;text-transform:uppercase;
   line-height:1.02;letter-spacing:-.01em;-webkit-text-stroke:1.3cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
 .title span{display:block;font-size:19cqw;white-space:nowrap}
+#t1{font-size:11cqw}
 .k-blanco{color:#fff}.k-cian{color:var(--cyan)}
 .pasita{position:absolute}
 /* Pizarrón limpio en la portada: lo escrito compite con el título */
@@ -30,8 +31,7 @@
 <div class="frame">
   <div class="fondo" id="fondo"></div>
   <div class="neon" id="neon" style="--c:var(--cyan)"></div>
-  <div class="tag" id="tag"></div>
-  <div class="title"><span class="k-blanco">¿Cuál</span><span class="k-cian">sobra?</span></div>
+  <div class="title"><span class="k-blanco" id="t1">Reto de hoy</span><span class="k-cian" id="t2"></span></div>
   <svg class="spark" style="left:150px;top:960px;width:86px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--xp)"/></svg>
   <svg class="spark" style="right:140px;top:880px;width:62px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--cyan)"/></svg>
   <svg class="spark" style="right:200px;top:1240px;width:46px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--pink)"/></svg>
@@ -45,8 +45,8 @@
 <script>
 window.setup = function (data) {
   buildFondo($('fondo'), data.fondo || 'salon', -160);
-  $('tag').textContent = 'Reto de ' + (data.materia_corta || 'Historia') + ' #' + data.numero;
-  fitLines([].slice.call(document.querySelectorAll('.title span')), 1080 - 2 * 97);
+  $('t2').textContent = data.materia_corta || 'Historia';
+  fitLines([$('t1')], 1080 - 2 * 97); fitLines([$('t2')], 1080 - 2 * 97);
   $('dur-t').textContent = Math.round(data.duracion || 16) + ' segundos';
   // La Pasita pensativa llena el espacio entre el título y el escritorio
   var bottom = document.querySelector('.title').getBoundingClientRect().bottom, floor = 1412;
