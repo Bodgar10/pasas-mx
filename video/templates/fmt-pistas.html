@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
+<style>
+.fig{width:100%;margin-top:2cqw}
+.fig svg{width:100%;height:auto;display:block}
+.recap{font-size:4.6cqw;font-weight:800;color:var(--dim);line-height:1.3;text-wrap:balance}
+.hints{display:flex;flex-direction:column;gap:3cqw}
+.hint{opacity:0}
+.answer{font-family:var(--font-brand);font-weight:900;font-size:24cqw;line-height:1;color:var(--xp)}
+.op{font-size:6cqw;font-weight:800;font-variant-numeric:tabular-nums}
+</style></head>
+<body>
+<div class="frame">
+  <div class="scene center" id="hook">
+    <span class="tag" id="h-tag"></span>
+    <div class="big" style="font-size:10.5cqw">¿LO<br><em>RESUELVES?</em></div>
+    <div class="sub">Sin calculadora. Si te atoras, hay pistas.</div>
+  </div>
+  <div class="scene" id="prob">
+    <div class="meta"><span class="tag">El problema</span><div class="ring" id="r0"></div></div>
+    <div class="q" id="p-text"></div>
+    <div class="fig" id="fig"></div>
+  </div>
+  <div class="scene" id="hints-s">
+    <div class="recap" id="recap"></div>
+    <div class="hints" id="hints"></div>
+  </div>
+  <div class="scene center" id="ans">
+    <span class="tag">La respuesta</span>
+    <div class="answer" id="a-val"></div>
+    <div class="op" id="a-op"></div>
+  </div>
+  <div class="scene center cta" id="end">
+    <div class="cta-big">Pistas, no respuestas copiadas.</div>
+    <div class="sub" id="e-sub">Más de 2,000 ejercicios de mate, física y química en Papel y Lápiz.</div>
+    <div class="wordmark">PASAS<span>·</span>MX</div>
+    <div class="url">pasas.mx</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, T;
+window.setup = function (data) {
+  D = data;
+  $('h-tag').textContent = data.materia + ' · ' + data.tema;
+  $('p-text').textContent = data.problema;
+  $('recap').textContent = data.resumen || data.problema;
+  if (data.figura) $('fig').innerHTML = data.figura;
+  $('r0').innerHTML = RING_SVG;
+  $('hints').innerHTML = data.pistas.map(function (h, i) {
+    return '<div class="paper hint" id="h' + i + '"><span class="k">Pista ' + (i + 1) + '</span><span class="v">' + esc(h) + '</span></div>';
+  }).join('');
+  $('a-val').textContent = data.respuesta;
+  $('a-op').textContent = data.operacion;
+  var P = 3.4, h0 = 8.8;
+  T = { hook: [0, 2.3], prob: [2.3, h0], ringA: 3.3, ringB: 8.3, hints: data.pistas.map(function (_, i) { return h0 + i * P; }) };
+  T.hintsEnd = h0 + data.pistas.length * P;
+  T.ans = [T.hintsEnd, T.hintsEnd + 3.2];
+  T.end = [T.ans[1], T.ans[1] + 3.6];
+  window.render(0);
+  return T.end[1];
+};
+window.render = function (t) {
+  show($('hook'), win(t, T.hook[0], T.hook[1], false, true));
+  show($('prob'), win(t, T.prob[0], T.prob[1], true, true));
+  var r = $('r0'); ring(r, r.querySelector('.bar'), r.querySelector('b'), t, T.ringA, T.ringB);
+  show($('hints-s'), win(t, T.hints[0], T.hintsEnd, true, true));
+  D.pistas.forEach(function (_, i) { pop($('h' + i), t, T.hints[i] + 0.1, 0.35); });
+  show($('ans'), win(t, T.ans[0], T.ans[1], true, true));
+  $('a-val').style.transform = 'scale(' + (0.85 + 0.15 * back(clamp((t - T.ans[0]) / 0.45))) + ')';
+  show($('end'), win(t, T.end[0], T.end[1] + 1, true, false));
+};
+</script>
+</body></html>

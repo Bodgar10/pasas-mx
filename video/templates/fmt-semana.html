@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
+<style>
+.chart{display:flex;flex-direction:column;gap:2cqw;margin-top:3cqw}
+.plot{height:88cqw;display:grid;grid-template-columns:repeat(6,1fr);gap:2.4cqw;align-items:end;border-bottom:.3cqw solid var(--line);padding-bottom:0}
+.col{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;height:100%;gap:1.4cqw}
+.val{text-align:center;font-size:4.6cqw;font-weight:900;font-variant-numeric:tabular-nums;opacity:0}
+.bar{height:0;border-radius:1.2cqw 1.2cqw 0 0;background:var(--brand)}
+.col.hi .bar{background:var(--pink)}
+.xs{display:grid;grid-template-columns:repeat(6,1fr);gap:2.4cqw;text-align:center;font-family:var(--font-brand);font-size:5cqw;font-weight:700;color:var(--muted)}
+.xcap{text-align:center;font-size:4cqw;font-weight:800;color:var(--dim)}
+.call{font-size:6.4cqw;font-weight:900;text-wrap:balance;opacity:0}
+.call b{color:var(--pink)}
+.hard{display:flex;flex-direction:column;gap:3cqw}
+.hpct{font-family:var(--font-brand);font-weight:900;font-size:16cqw;line-height:1;color:var(--xp)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="wm" id="wm">Cifras de ejemplo</div>
+  <div class="scene center" id="hook">
+    <span class="tag" id="h-tag"></span>
+    <div class="big">ASÍ LES<br><em>FUE</em></div>
+    <div class="sub" id="h-sub"></div>
+  </div>
+  <div class="scene" id="hist">
+    <span class="tag">Aciertos por jugador</span>
+    <div class="chart">
+      <div class="plot" id="plot"></div>
+      <div class="xs"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+      <div class="xcap">rondas acertadas de 5</div>
+    </div>
+    <div class="call" id="call"></div>
+  </div>
+  <div class="scene center" id="hard-s">
+    <span class="tag" id="d-tag"></span>
+    <div class="hard">
+      <div class="h">La ronda más difícil de la semana</div>
+      <div class="opts" id="d-opts"></div>
+      <div><span class="hpct" id="d-pct"></span> <span class="sub">acertó</span></div>
+    </div>
+  </div>
+  <div class="scene center cta" id="end">
+    <div class="cta-big">Nueva semana, nuevo reto.</div>
+    <div class="sub">¿Tú cuántas sacaste? Comenta.</div>
+    <div class="wordmark">PASAS<span>·</span>ARCADE</div>
+    <div class="url">pasas.mx/arcade</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, T, total, maxN;
+window.setup = function (data) {
+  D = data;
+  $('wm').hidden = !data.ejemplo;
+  total = data.dist.reduce(function (a, b) { return a + b; }, 0);
+  maxN = Math.max.apply(null, data.dist);
+  $('h-tag').textContent = 'Semana ' + data.semana + ' del reto';
+  $('h-sub').textContent = total.toLocaleString('es-MX') + ' partidas en 7 días';
+  $('plot').innerHTML = data.dist.map(function (n, i) {
+    var pct = Math.round(100 * n / total);
+    return '<div class="col' + (i === 5 ? ' hi' : '') + '"><div class="val" id="v' + i + '">' + pct + '%</div><div class="bar" id="b' + i + '"></div></div>';
+  }).join('');
+  var p5 = Math.round(100 * data.dist[5] / total);
+  $('call').innerHTML = 'Solo el <b>' + p5 + '%</b> sacó 5 de 5.';
+  $('d-tag').textContent = 'Reto #' + data.dificil.numero;
+  $('d-opts').innerHTML = data.dificil.opciones.map(function (o, j) {
+    return '<div class="opt' + (j === data.dificil.sobra ? ' right' : '') + '" style="opacity:' + (j === data.dificil.sobra ? 1 : .4) + '"><span class="l">' + 'ABCD'[j] + '</span><span>' + esc(o) + '</span></div>';
+  }).join('');
+  T = { hook: [0, 2.6], hist: [2.6, 9.4], grow: 3.2, hard: [9.4, 13.4], end: [13.4, 16.8] };
+  window.render(0);
+  return T.end[1];
+};
+window.render = function (t) {
+  show($('hook'), win(t, T.hook[0], T.hook[1], false, true));
+  show($('hist'), win(t, T.hist[0], T.hist[1], true, true));
+  D.dist.forEach(function (n, i) {
+    var g = easeOut(clamp((t - T.grow - i * 0.12) / 1));
+    $('b' + i).style.height = (80 * (n / maxN) * g) + 'cqw';   // escala lineal desde cero
+    $('v' + i).style.opacity = clamp((t - T.grow - 1 - i * 0.12) / 0.3);
+  });
+  pop($('call'), t, 6, 0.35);
+  show($('hard-s'), win(t, T.hard[0], T.hard[1], true, true));
+  $('d-pct').textContent = Math.round(D.dificil.pct * easeOut(clamp((t - T.hard[0] - 0.4) / 0.9))) + '%';
+  show($('end'), win(t, T.end[0], T.end[1] + 1, true, false));
+};
+</script>
+</body></html>

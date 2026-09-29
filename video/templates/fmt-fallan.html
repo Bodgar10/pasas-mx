@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
+<style>
+.bars{display:flex;flex-direction:column;gap:4.4cqw;margin-top:2cqw}
+.row{display:flex;flex-direction:column;gap:1.4cqw}
+.row .top{display:flex;justify-content:space-between;align-items:baseline;gap:3cqw;font-size:5.4cqw;font-weight:800}
+.row .pct{font-variant-numeric:tabular-nums;font-weight:900}
+.track{height:6cqw;border-radius:1.2cqw;background:var(--surface);overflow:hidden}
+.fill{height:100%;width:0;border-radius:0 1.2cqw 1.2cqw 0;background:var(--brand)}
+.row.right .fill{background:var(--ok)}
+.badge{align-self:flex-start;font-size:3.6cqw;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:.8cqw 2.4cqw;opacity:0}
+.badge.ok{background:var(--ok-soft);color:var(--ok)}
+.badge.trap{background:rgba(236,72,153,.16);color:var(--pink)}
+.name{display:flex;align-items:center;gap:2.4cqw;min-width:0}
+.hook-pct{font-family:var(--font-brand);font-weight:900;font-size:30cqw;line-height:.95;color:var(--xp)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="wm" id="wm">Cifras de ejemplo</div>
+  <div class="scene center" id="hook">
+    <span class="tag" id="h-tag"></span>
+    <div class="hook-pct" id="h-pct"></div>
+    <div class="h">eligió la misma respuesta equivocada.</div>
+  </div>
+  <div class="scene" id="bars-s">
+    <span class="tag">¿Cuál sobra?</span>
+    <div class="bars" id="bars"></div>
+  </div>
+  <div class="scene center" id="why">
+    <div class="paper"><span class="k">Por qué</span><span class="v" id="w-ok"></span></div>
+    <div class="paper"><span class="k">La trampa</span><span class="v" id="w-trap"></span></div>
+  </div>
+  <div class="scene center cta" id="end">
+    <div class="cta-big">¿Tú hubieras caído?</div>
+    <div class="sub">Hay un reto nuevo todos los días.</div>
+    <div class="wordmark">PASAS<span>·</span>ARCADE</div>
+    <div class="url">pasas.mx/arcade</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, T, trap;
+window.setup = function (data) {
+  D = data;
+  $('wm').hidden = !data.ejemplo;
+  // "La trampa": la opción equivocada que más gente eligió
+  trap = -1;
+  data.elegidas.forEach(function (p, i) { if (i !== data.sobra && (trap < 0 || p > data.elegidas[trap])) trap = i; });
+  $('h-tag').textContent = 'Reto de Historia #' + data.numero;
+  $('bars').innerHTML = data.opciones.map(function (o, i) {
+    var b = i === data.sobra ? '<span class="badge ok" id="b' + i + '">La que sobraba</span>' : (i === trap ? '<span class="badge trap" id="b' + i + '">La trampa</span>' : '');
+    return '<div class="row" id="row' + i + '"><div class="top"><span class="name">' + esc(o) + '</span><span class="pct" id="pc' + i + '">0%</span></div>' +
+      '<div class="track"><div class="fill" id="f' + i + '"></div></div>' + b + '</div>';
+  }).join('');
+  $('w-ok').textContent = data.motivo;
+  $('w-trap').textContent = data.trampa;
+  T = { hook: [0, 2.8], bars: [2.8, 10.4], grow: 3.4, reveal: 6.6, why: [10.4, 14.2], end: [14.2, 17.6] };
+  window.render(0);
+  return T.end[1];
+};
+window.render = function (t) {
+  show($('hook'), win(t, T.hook[0], T.hook[1], false, true));
+  $('h-pct').textContent = Math.round(D.elegidas[trap] * easeOut(clamp((t - 0.3) / 0.9))) + '%';
+  show($('bars-s'), win(t, T.bars[0], T.bars[1], true, true));
+  D.opciones.forEach(function (_, i) {
+    var g = easeOut(clamp((t - T.grow - i * 0.15) / 1.1));
+    $('f' + i).style.width = (D.elegidas[i] * g) + '%';
+    $('pc' + i).textContent = Math.round(D.elegidas[i] * g) + '%';
+    var rv = clamp((t - T.reveal) / 0.3);
+    $('row' + i).classList.toggle('right', t >= T.reveal && i === D.sobra);
+    $('row' + i).style.opacity = (i === D.sobra || i === trap) ? 1 : 1 - 0.55 * rv;
+    var b = $('b' + i); if (b) b.style.opacity = rv;
+  });
+  show($('why'), win(t, T.why[0], T.why[1], true, true));
+  show($('end'), win(t, T.end[0], T.end[1] + 1, true, false));
+};
+</script>
+</body></html>

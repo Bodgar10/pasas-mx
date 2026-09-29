@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
+<style>
+.fig{width:100%}
+.fig svg{width:100%;height:auto;display:block}
+.steps{display:flex;flex-direction:column;gap:2.2cqw}
+.step{font-size:7cqw;font-weight:800;font-variant-numeric:tabular-nums;opacity:0}
+.step.last{color:var(--xp);font-family:var(--font-brand);font-weight:900;font-size:9cqw}
+.small-fig{width:84%;align-self:center}
+.answer{font-family:var(--font-brand);font-weight:900;font-size:22cqw;line-height:1;color:var(--xp)}
+.h-a{opacity:0}
+</style></head>
+<body>
+<div class="frame">
+  <div class="scene center" id="hook">
+    <span class="tag" id="h-tag"></span>
+    <div class="big" style="font-size:11cqw">¿Y ESTO PARA QUÉ<br><em>ME SIRVE?</em></div>
+    <div class="sub" id="h-sub"></div>
+  </div>
+  <div class="scene" id="sit">
+    <span class="tag">La situación</span>
+    <div class="q" id="s-text"></div>
+    <div class="fig" id="fig1"></div>
+  </div>
+  <div class="scene" id="solve">
+    <span class="tag" id="f-tag"></span>
+    <div class="fig small-fig" id="fig2"></div>
+    <div class="steps" id="steps"></div>
+  </div>
+  <div class="scene center" id="res">
+    <span class="tag">Resultado</span>
+    <div class="answer" id="r-val"></div>
+    <div class="h" id="r-txt"></div>
+  </div>
+  <div class="scene center cta" id="end">
+    <div class="cta-big" id="e-big">Lo que ves en la escuela, explicado con ejemplos reales.</div>
+    <div class="sub">Cada lección de PASAS también se puede escuchar.</div>
+    <div class="wordmark">PASAS<span>·</span>MX</div>
+    <div class="url">pasas.mx</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, T;
+window.setup = function (data) {
+  D = data;
+  $('h-tag').textContent = data.tema + ' · ' + data.grado;
+  $('h-sub').textContent = data.gancho;
+  $('s-text').textContent = data.situacion;
+  $('fig1').innerHTML = data.figura;
+  $('fig2').innerHTML = data.figura;
+  $('f-tag').textContent = data.formula_nombre;
+  $('steps').innerHTML = data.pasos.map(function (p, i) {
+    return '<div class="step' + (i === data.pasos.length - 1 ? ' last' : '') + '" id="st' + i + '">' + esc(p) + '</div>';
+  }).join('');
+  $('r-val').textContent = data.resultado;
+  $('r-txt').textContent = data.remate;
+  var S = 1.5, s0 = 8.4;
+  T = { hook: [0, 2.8], sit: [2.8, s0], steps: data.pasos.map(function (_, i) { return s0 + 0.5 + i * S; }) };
+  T.solveEnd = s0 + 0.5 + data.pasos.length * S + 1.2;
+  T.res = [T.solveEnd, T.solveEnd + 3];
+  T.end = [T.res[1], T.res[1] + 3.6];
+  window.render(0);
+  return T.end[1];
+};
+window.render = function (t) {
+  show($('hook'), win(t, T.hook[0], T.hook[1], false, true));
+  show($('sit'), win(t, T.sit[0], T.sit[1], true, true));
+  show($('solve'), win(t, T.sit[1], T.solveEnd, true, true));
+  D.pasos.forEach(function (_, i) { pop($('st' + i), t, T.steps[i], 0.3); });
+  // En la figura pequeña, la "?" se vuelve el resultado al llegar al último paso
+  var solved = clamp((t - T.steps[T.steps.length - 1]) / 0.3);
+  document.querySelectorAll('#fig2 .h-q').forEach(function (e) { e.style.opacity = 1 - solved; });
+  document.querySelectorAll('#fig2 .h-a').forEach(function (e) { e.style.opacity = solved; });
+  show($('res'), win(t, T.res[0], T.res[1], true, true));
+  $('r-val').style.transform = 'scale(' + (0.85 + 0.15 * back(clamp((t - T.res[0]) / 0.45))) + ')';
+  show($('end'), win(t, T.end[0], T.end[1] + 1, true, false));
+};
+</script>
+</body></html>

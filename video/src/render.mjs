@@ -39,8 +39,9 @@ function ffmpeg(out) {
   return { proc, done };
 }
 
-export async function renderReel(browser, data, out, { log = () => {} } = {}) {
-  const page = await openPage(browser, 'reel.html');
+// Cualquier plantilla que exponga window.setup(data) → segundos y window.render(t).
+export async function renderVideo(browser, template, data, out, { log = () => {} } = {}) {
+  const page = await openPage(browser, template);
   const duration = await page.evaluate(d => window.setup(d), data);
   const frames = Math.round(duration * FPS);
   const { proc, done } = ffmpeg(out);
@@ -48,12 +49,16 @@ export async function renderReel(browser, data, out, { log = () => {} } = {}) {
     await page.evaluate(t => window.render(t), i / FPS);
     const png = await page.screenshot({ type: 'png' });
     if (!proc.stdin.write(png)) await new Promise(r => proc.stdin.once('drain', r));
-    if (i % 60 === 0) log(`  reel ${Math.round((i / frames) * 100)}%`);
+    if (i % 60 === 0) log(`  ${template} ${Math.round((i / frames) * 100)}%`);
   }
   proc.stdin.end();
   await done;
   await page.close();
   return { out, duration };
+}
+
+export function renderReel(browser, data, out, opts) {
+  return renderVideo(browser, 'reel.html', data, out, opts);
 }
 
 export async function renderStory(browser, data, variant, out) {
