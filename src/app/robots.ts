@@ -46,7 +46,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
        * lista de lo que SÍ queremos rastreado queda escrita, y no depende de
        * que los Disallow de abajo cubran todo lo demás.
        */
-      allow: ['/', '/ayuda', '/como-cancelar', '/reembolso', '/status', '/terminos', '/privacidad'],
+      allow: ['/', '/arcade', '/ayuda', '/como-cancelar', '/reembolso', '/status', '/terminos', '/privacidad'],
       /**
        * 🔴 Estas rutas llevan TAMBIÉN noindex en el layout de su grupo. Las dos
        * cosas hacen falta y no son la misma: Disallow evita el rastreo, noindex

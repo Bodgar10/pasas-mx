@@ -46,6 +46,7 @@ export const HOST_VERCEL = 'pasas-mx.vercel.app'
  */
 export const RUTAS_PUBLICAS = [
   { ruta: '/', prioridad: 1.0, frecuencia: 'weekly' },
+  { ruta: '/arcade', prioridad: 0.8, frecuencia: 'daily' },
   { ruta: '/ayuda', prioridad: 0.8, frecuencia: 'monthly' },
   { ruta: '/como-cancelar', prioridad: 0.5, frecuencia: 'yearly' },
   { ruta: '/reembolso', prioridad: 0.4, frecuencia: 'yearly' },

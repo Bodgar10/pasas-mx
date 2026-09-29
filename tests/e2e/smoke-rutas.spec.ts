@@ -34,6 +34,7 @@ const PUBLICAS: { ruta: string; h1: string | null }[] = [
   // La landing tiene tres variantes de hero según utm_source (detectAudience),
   // así que su H1 no es una constante.
   { ruta: '/', h1: null },
+  { ruta: '/arcade', h1: '¿Cuál sobra?' },
   { ruta: '/ayuda', h1: 'Preguntas frecuentes' },
   { ruta: '/como-cancelar', h1: 'Cómo cancelar tu suscripción' },
   { ruta: '/reembolso', h1: 'Política de Reembolso' },

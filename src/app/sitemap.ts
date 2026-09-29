@@ -2,18 +2,19 @@ import type { MetadataRoute } from 'next'
 import { RUTAS_PUBLICAS, urlAbsoluta } from '@/lib/seo'
 
 /**
- * Sitemap del sitio. Siete URLs, y ese número es correcto.
+ * Sitemap del sitio. Ocho URLs, y ese número es correcto.
  *
- * 🔴 TODO EL CONTENIDO ESTÁ TRAS LOGIN. Las guías, los temas y el catálogo
- * entero viven bajo /guia y /dashboard, que exigen sesión: no hay una sola
- * ruta pública dinámica que generar. El sitemap son las siete públicas y ya.
+ * 🔴 CASI TODO EL CONTENIDO ESTÁ TRAS LOGIN. Las guías, los temas y el catálogo
+ * entero viven bajo /guia y /dashboard, que exigen sesión. La única pieza de
+ * contenido pública es /arcade (reto diario), que es una sola URL. El sitemap
+ * son las ocho públicas y ya.
  * Si algún día se abre una parte del catálogo, se añade en RUTAS_PUBLICAS
  * (src/lib/seo.ts) y aparece aquí sola.
  *
  * 🔴 SIN `lastModified`, Y ES DELIBERADO.
  *
  * La única fecha que este archivo podría poner es `new Date()`, y eso diría que
- * las siete páginas cambiaron en el momento exacto en que Google pidió el
+ * las ocho páginas cambiaron en el momento exacto en que Google pidió el
  * sitemap — cada vez que lo pida. Un sitemap que afirma que todo cambió hoy no
  * es información, es ruido, y Google aprende a ignorar el campo.
  *
