@@ -24,6 +24,9 @@ import { createClient } from '@/utils/supabase/client'
 import { track } from '@/lib/analytics/track'
 
 // ── A/B hero variants ──────────────────────────────────────────────
+/** Alto del banner del Arcade que va encima de la nav. */
+const BANNER_ALTO = 40
+
 const HERO_VARIANTS = {
   D: {
     id: 'D',
@@ -809,16 +812,44 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
   return (
     <div style={{ fontFamily: FONTS.nunito, color: COLORS.text, minHeight: '100vh', overflowX: 'hidden' }}>
 
+      {/* ── Banner del Arcade ──
+          Encima de la nav y solo arriba de todo: al hacer scroll sube y la nav
+          ocupa su lugar, así no le quita pantalla a la landing mientras se lee.
+          🔴 Sin utm_source en el link: UTMPersistence guarda el PRIMER toque, y
+          un utm interno pisaría el canal real (orgánico) de quien lo toque. El
+          clic se mide con su propio evento. */}
+      <Link
+        href="/arcade"
+        onClick={() => track('landing_banner_arcade_clic', { variant })}
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 101,
+          height: BANNER_ALTO,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          padding: '0 16px',
+          background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.pink})`,
+          color: '#fff', textDecoration: 'none',
+          fontFamily: FONTS.nunito, fontSize: 14, fontWeight: 800,
+          whiteSpace: 'nowrap', overflow: 'hidden',
+          transform: scrolled ? `translateY(-${BANNER_ALTO}px)` : 'translateY(0)',
+          transition: 'transform 0.3s ease',
+        }}
+      >
+        <span style={{ fontWeight: 900 }}>¿Cuál sobra?</span>
+        <span className="banner-arcade-medio" style={{ opacity: 0.9 }}>· Reto diario de historia ·</span>
+        <span style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>Juega gratis →</span>
+      </Link>
+      <style>{`@media (max-width: 360px){ .banner-arcade-medio{ display:none } }`}</style>
+
       {/* ── Sticky nav ── */}
       <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        position: 'fixed', top: scrolled ? 0 : BANNER_ALTO, left: 0, right: 0, zIndex: 100,
         padding: '0 20px',
         height: 56,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         background: scrolled ? 'rgba(15,10,30,0.92)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? `1px solid ${COLORS.inputBorder}` : 'none',
-        transition: 'background 0.3s ease, border 0.3s ease',
+        transition: 'background 0.3s ease, border 0.3s ease, top 0.3s ease',
       }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
           <Logo size={24} />
@@ -850,7 +881,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       {/* Observer propio en vez de <FadeSection>: envolverlo aqui le
           añadiria el fundido de entrada de las demas secciones y eso SI se
           veria. La medicion es la misma; el hero conserva su animacion. */}
-      <section ref={refHero} style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 64px', textAlign: 'center', position: 'relative' }}>
+      <section ref={refHero} style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: `${100 + BANNER_ALTO}px 24px 64px`, textAlign: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 320, height: 320, background: `radial-gradient(circle, ${COLORS.primary}33 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
         <div style={{ animation: 'fadeUp 0.8s ease both', position: 'relative', maxWidth: 480 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${COLORS.primary}22`, border: `1px solid ${COLORS.primary}55`, borderRadius: RADIUS.pill, padding: '6px 14px', marginBottom: 24 }}>
