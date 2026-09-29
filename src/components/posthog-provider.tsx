@@ -101,6 +101,17 @@ function iniciarPostHog() {
   })
 
   /**
+   * 🔴 `window.posthog` ES LO QUE LEE track() (lib/analytics/track.ts →
+   * entregar), y posthog-js instalado por npm NO lo crea: solo el snippet
+   * <script> lo hace. Sin esta línea, desde 2026-08-18 ningún evento de
+   * track() —onboarding, registro, checkout, Arcade, Horda— llegó a PostHog:
+   * se encolaban esperando un global que nunca aparecía, mientras GA4 sí los
+   * recibía y $pageview/$autocapture (que usan esta instancia directo) sí
+   * llegaban. Los que siguen en la cola se entregan en el siguiente reintento.
+   */
+  ;(window as unknown as { posthog?: typeof posthog }).posthog = posthog
+
+  /**
    * Trafico interno. Va DESPUES del init —antes, `register` no existe— y
    * antes de cualquier captura, para que hasta el $pageview de la primera
    * carga salga marcado.
