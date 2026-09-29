@@ -14,6 +14,7 @@
   --font-brand:'Orbitron',sans-serif;--font-title:'Nunito',sans-serif;--font-ui:'Nunito',sans-serif;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--bg)}
 
 /* Lienzo vertical 1080×1920. Todo se mide en cqw (1cqw = 10.8px). */

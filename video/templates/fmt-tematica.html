@@ -2,76 +2,139 @@
 <html lang="es"><head><meta charset="utf-8">
 <link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
 <style>
-.lesson{padding-top:12cqw;gap:5cqw}
-.diagram{width:100%}
+/* "Así se explica en PASAS": una lección real con su temática (anime, videojuegos,
+   K-pop, fútbol), con subtítulos que siguen el audio de la lección.
+   Mismo estilo que los videos con la Pasita: fondo ilustrado, marco neón, Nunito Black. */
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--c,var(--cyan));z-index:8;pointer-events:none;
+  box-shadow:0 0 2.4cqw var(--c,var(--cyan)), inset 0 0 2.4cqw var(--c,var(--cyan))}
+.brand{position:absolute;left:0;right:0;top:6cqw;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5.4cqw;letter-spacing:.14em;z-index:9}
+.brand span{color:var(--pink)}
+.scene{padding:17cqw 9cqw 22cqw}
+.t{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
+  -webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill;text-shadow:0 .8cqw 0 rgba(0,0,0,.45)}
+.hook-t span{display:block;font-size:14cqw;white-space:nowrap}
+.k-blanco{color:#fff}.k-cian{color:var(--cyan)}.k-rosa{color:var(--pink)}.k-amarillo{color:var(--xp)}
+.pill{align-self:flex-start;font-size:4.2cqw;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#fff;
+  background:var(--pink);padding:1.2cqw 3.2cqw;border-radius:2.4cqw;box-shadow:0 0 2.4cqw rgba(236,72,153,.5)}
+.hsub{font-size:6cqw;font-weight:800;color:var(--fg);text-wrap:balance}
+.pasita{position:absolute;left:50%;transform-origin:50% 100%}
+
+.lesson{gap:3.4cqw}
+.diagram{width:100%;background:rgba(15,10,30,.72);border-radius:5cqw;border:.4cqw solid var(--line);padding:2cqw}
 .diagram svg{width:100%;height:auto;display:block}
-.cap{position:relative;min-height:64cqw}
-.line{position:absolute;inset:0;font-size:6.6cqw;font-weight:800;line-height:1.3;text-wrap:pretty;opacity:0}
-.line b{color:var(--xp);font-weight:900}
 .prog{height:1.2cqw;border-radius:1cqw;background:var(--line);overflow:hidden}
 .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--pink))}
+.capbox{position:relative;min-height:84cqw;background:rgba(15,10,30,.88);border-radius:5cqw;border:.4cqw solid var(--line)}
+.line{position:absolute;inset:5cqw;font-size:6.6cqw;font-weight:800;line-height:1.32;text-wrap:pretty;opacity:0}
+.line b{color:var(--xp);font-weight:900}
+.voice{display:flex;align-items:center;gap:2cqw;font-size:4.2cqw;font-weight:800;color:var(--muted)}
+.voice i{display:flex;gap:.8cqw;align-items:flex-end;height:5cqw}
+.voice i s{display:block;width:1.1cqw;background:var(--muted);border-radius:1cqw}
+
+.end-t{font-size:10cqw}
 .themes{display:flex;flex-wrap:wrap;gap:2.4cqw}
-.themes span{font-size:4.8cqw;font-weight:900;border:.4cqw solid var(--line);border-radius:999px;padding:1.6cqw 4cqw;opacity:0}
+.themes span{font-size:4.8cqw;font-weight:900;border:.4cqw solid var(--line);background:rgba(15,10,30,.8);border-radius:999px;padding:1.6cqw 4cqw;opacity:0}
 .themes span.on{border-color:var(--pink);color:var(--pink)}
 </style></head>
 <body>
 <div class="frame">
-  <div class="scene center" id="hook">
-    <span class="tag" id="h-tag"></span>
-    <div class="big" id="h-big" style="font-size:11.5cqw"></div>
-    <div class="sub" id="h-sub"></div>
+  <div class="fondo" id="fondo"></div>
+  <div class="neon" id="neon"></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+
+  <div class="scene" id="hook">
+    <span class="pill" id="h-tag"></span>
+    <div class="t hook-t" id="h-big"></div>
+    <div class="hsub" id="h-sub"></div>
   </div>
+  <div class="pasita" id="p-hook"></div>
+
   <div class="scene lesson" id="lesson">
-    <div class="meta"><span class="tag" id="l-tag"></span></div>
+    <span class="pill" id="l-tag"></span>
     <div class="diagram" id="diagram"></div>
     <div class="prog"><i id="prog"></i></div>
-    <div class="cap" id="cap"></div>
+    <div class="capbox" id="cap"></div>
+    <div class="voice" id="voice"><i><s></s><s></s><s></s><s></s><s></s></i><span>Así suena la lección en PASAS</span></div>
   </div>
-  <div class="scene center cta" id="end">
-    <div class="cta-big">Tú eliges con qué aprender.</div>
+
+  <div class="scene" id="end">
+    <div class="t end-t k-amarillo" id="e-big">Tú eliges con qué aprender</div>
+    <div class="hsub">La misma lección, explicada con lo que te gusta.</div>
     <div class="themes" id="themes"></div>
-    <div class="sub">La misma lección, explicada con lo que te gusta.</div>
-    <div class="wordmark">PASAS<span>·</span>MX</div>
-    <div class="url">pasas.mx</div>
   </div>
+  <div class="pasita" id="p-end"></div>
 </div>
 <script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script src="fondo.js"></script>
 <script>
 var D, T, lines, starts;
+var LINEA = ['k-blanco', 'k-rosa', 'k-cian', 'k-blanco'];
 function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); }
+function place(id, pose, w, floor, dx) {
+  var el = $(id), h = w * PASITA_VB.h / PASITA_VB.w;
+  buildPasita(el, pose, w);
+  el.style.top = (floor - h) + 'px'; el.style.marginLeft = (-w / 2 + (dx || 0)) + 'px'; el.style.width = w + 'px';
+}
 window.setup = function (data) {
   D = data;
+  buildFondo($('fondo'), data.fondo || 'cuarto', 0);
   $('h-tag').textContent = data.materia + ' · ' + data.nivel;
-  $('h-big').innerHTML = data.gancho;
+  $('h-big').innerHTML = data.gancho.map(function (l, i) { return '<span class="' + LINEA[i % 4] + '">' + esc(l) + '</span>'; }).join('');
+  fitLines([].slice.call($('h-big').querySelectorAll('span')), 1080 - 2 * 97);
   $('h-sub').textContent = data.subgancho;
-  $('l-tag').textContent = data.materia + ' · ' + data.tematica;
+  $('l-tag').textContent = data.tema;
   $('diagram').innerHTML = data.diagrama || '';
+  $('voice').hidden = !data.con_audio;
   // Una oración por pantalla; cada una dura en proporción a su largo (sigue a la voz)
   lines = data.texto.trim().split(/(?<=[a-záéíóúñü0-9)*]{2}\.)\s+/i);
-  var total = lines.reduce(function (a, l) { return a + l.length; }, 0), acc = 0, L0 = 2.8;
+  var total = lines.reduce(function (a, l) { return a + l.length; }, 0), acc = 0, L0 = 3.4;
   starts = lines.map(function (l) { var s = L0 + data.audio * acc / total; acc += l.length; return s; });
   starts.push(L0 + data.audio);
   $('cap').innerHTML = lines.map(function (l, i) { return '<div class="line" id="ln' + i + '">' + md(l) + '</div>'; }).join('');
+  // Cada subtítulo se achica solo si no cabe en el recuadro
+  var boxH = $('cap').clientHeight - 2 * 54;
+  document.querySelectorAll('.line').forEach(function (el) {
+    var size = parseFloat(getComputedStyle(el).fontSize);
+    el.style.bottom = 'auto';
+    for (var i = 0; i < 20 && el.scrollHeight > boxH; i++) { size *= 0.94; el.style.fontSize = size + 'px'; }
+  });
   $('themes').innerHTML = data.tematicas.map(function (x) { return '<span class="' + (x === data.tematica ? 'on' : '') + '">' + esc(x) + '</span>'; }).join('');
-  T = { hook: [0, L0], lesson: [L0, L0 + data.audio + 0.3] };
-  T.end = [T.lesson[1], T.lesson[1] + 4];
+  place('p-hook', 'pensativa', 600, 1580);
+  place('p-end', 'celebrando', 420, 1580, 210);
+  T = { hook: [0, L0], lesson: [L0, L0 + data.audio + 0.4] };
+  T.end = [T.lesson[1], T.lesson[1] + 4.2];
+  window.ready = pasitaReady();
   window.render(0);
   return T.end[1];
 };
+window.momentos = function () { return [1.6, starts[0] + 1.5, starts[Math.floor(lines.length / 2)] + 1.5, T.end[0] + 1.6]; };
+function hop(el, t, t0) {
+  var j = clamp((t - t0) / 0.5), up = Math.sin(j * Math.PI) * (1 - j) * 60, br = 1 + 0.012 * Math.sin(t * 2.4);
+  el.style.transform = 'translateY(' + (-up) + 'px) scale(' + (1 / br) + ',' + br + ')';
+}
 window.render = function (t) {
-  show($('hook'), win(t, T.hook[0], T.hook[1], false, true));
+  var a = win(t, T.hook[0], T.hook[1], false, true);
+  show($('hook'), a); $('p-hook').style.opacity = a; hop($('p-hook'), t, -1);
+  $('h-big').querySelectorAll('span').forEach(function (s, i) { pop(s, t, 0.1 + i * 0.22, 0.3); });
   show($('lesson'), win(t, T.lesson[0], T.lesson[1], true, true));
   lines.forEach(function (_, i) {
-    var el = $('ln' + i), a = win(t, starts[i], starts[i + 1] + (i === lines.length - 1 ? 0.3 : 0.12), true, i < lines.length - 1);
-    el.style.opacity = a; el.style.transform = 'translateY(' + ((1 - easeOut(a)) * 2) + 'cqw)';
+    var el = $('ln' + i), b = win(t, starts[i], starts[i + 1] + (i === lines.length - 1 ? 0.4 : 0.12), true, i < lines.length - 1);
+    el.style.opacity = b; el.style.transform = 'translateY(' + ((1 - easeOut(b)) * 2) + 'cqw)';
   });
   $('prog').style.width = (100 * clamp((t - T.lesson[0]) / D.audio)) + '%';
+  document.querySelectorAll('.voice s').forEach(function (s, i) { s.style.height = (1.2 + 3.6 * Math.abs(Math.sin(t * 7 + i * 1.3))) + 'cqw'; });
   // Diagrama: un punto da vueltas; otro recorre una parábola
   var c = document.getElementById('dot-c'), p = document.getElementById('dot-p');
-  if (c) { var a = t * 2 * Math.PI / 1.6; c.setAttribute('cx', 220 + 130 * Math.cos(a)); c.setAttribute('cy', 220 + 130 * Math.sin(a)); }
+  if (c) { var ang = t * 2 * Math.PI / 1.6; c.setAttribute('cx', 220 + 130 * Math.cos(ang)); c.setAttribute('cy', 220 + 130 * Math.sin(ang)); }
   if (p) { var u = (t % 2) / 2; p.setAttribute('cx', 500 + 340 * u); p.setAttribute('cy', 360 - 4 * 250 * u * (1 - u)); }
-  document.querySelectorAll('.themes span').forEach(function (s, i) { pop(s, t, T.end[0] + 0.3 + i * 0.12, 0.3); });
-  show($('end'), win(t, T.end[0], T.end[1] + 1, true, false));
+  var e = win(t, T.end[0], T.end[1] + 1, true, false);
+  show($('end'), e); $('p-end').style.opacity = e; hop($('p-end'), t, T.end[0]);
+  document.querySelectorAll('.themes span').forEach(function (s, i) { pop(s, t, T.end[0] + 0.4 + i * 0.12, 0.3); });
+  $('neon').style.setProperty('--c', t < T.lesson[0] ? 'var(--pink)' : (t < T.end[0] ? 'var(--cyan)' : 'var(--xp)'));
+  animFondo(t);
+  blinkAll(t);
 };
 </script>
 </body></html>
