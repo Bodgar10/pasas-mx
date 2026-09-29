@@ -30,7 +30,7 @@ var PASITA_POSES = {
     ancladas: PIES.concat(['Cejas/ceja-der01.svg', 'Cejas/ceja-izq01.svg', 'Ojos/ojo-der01.svg', 'Ojos/ojo-izq01.svg', 'Boca/boca-01.svg']) },
   celebrando: { propias: [['Brazos/brazo-der02.svg', 99.6, 19.6], ['Brazos/brazo-izq02.svg', -41.6, 19.6]],
     ancladas: PIES.concat(['Cejas/ceja-der02.svg', 'Cejas/ceja-izq02.svg', 'Ojos/ojo-der02.svg', 'Ojos/ojo-izq02.svg', 'Boca/boca-02.svg']) },
-  pensativa: { propias: [['Brazos/brazo-izq03.svg', -7.5, 102.1, true]],
+  pensativa: { propias: [['Brazos/brazo-der01.svg', 102.5, 98.9], ['Brazos/brazo-izq03.svg', -7.5, 102.1, true]],
     ancladas: PIES.concat(['Cejas/ceja-der02.svg', 'Cejas/ceja-izq02.svg', 'Ojos/ojo-der03.svg', 'Ojos/ojo-izq03.svg', 'Boca/boca-03.svg']) },
   aprobando: { propias: [['Brazos/brazo-der03.svg', 95.4, 61.4], ['Brazos/brazo-izq01.svg', -25.4, 88.2]],
     ancladas: PIES.concat(['Cejas/ceja-der02.svg', 'Cejas/ceja-izq02.svg', 'Ojos/ojo-der04.svg', 'Ojos/ojo-izq04.svg', 'Boca/boca-03.svg']) },
