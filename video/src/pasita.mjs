@@ -7,6 +7,7 @@
 // --revisar genera solo un cuadro por pantalla (PNG) para aprobar el texto
 // antes del video completo, que tarda unos 3 minutos.
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mjs';
@@ -14,6 +15,7 @@ import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mj
 export const TIPOS = ['gancho', 'grande', 'numero', 'texto', 'cierre'];
 export const POSES = ['pensativa', 'celebrando', 'aprobando', 'confiada', 'lapiz', 'flexionando'];
 export const COLORES = ['cian', 'rosa', 'amarillo', 'morado'];
+export const FONDOS = ['cuarto', 'salon', 'recamara', 'niveles', 'camion'];
 
 // Límites medidos a 1080×1920: más texto no cabe o no se alcanza a leer.
 const MAX = { linea: 18, grande: 14, cierre: 14, titulo: 30, texto: 170 };
@@ -40,6 +42,12 @@ export function validarPasita(d) {
     if (/\?/.test(todo) && !/¿/.test(todo)) avisos.push(`${n}: hay una pregunta sin "¿"`);
   });
   if (d.portada_cta) avisos.push('portada_cta ya no se usa: la portada muestra la duración real del video');
+  if (d.fondo && !FONDOS.includes(d.fondo) && !/^imagen:[\w.-]+\.(png|jpe?g|webp)$/i.test(d.fondo)) {
+    errores.push(`fondo "${d.fondo}" no existe (usa ${FONDOS.join(', ')} o "imagen:archivo.png" de video/fondos/)`);
+  }
+  if (d.fondo?.startsWith('imagen:') && !existsSync(new URL(`../fondos/${d.fondo.slice(7)}`, import.meta.url))) {
+    errores.push(`no encuentro video/fondos/${d.fondo.slice(7)}`);
+  }
   for (const k of ['portada_pose', 'portada_pose_b']) if (d[k] && !POSES.includes(d[k])) errores.push(`${k} "${d[k]}" no existe`);
   if (p?.length && p[0].tipo !== 'gancho') avisos.push('la primera pantalla no es un gancho: los primeros 2 segundos deciden si alguien se queda');
   if (p?.length && p[p.length - 1].tipo !== 'cierre') avisos.push('la última pantalla no es un cierre');

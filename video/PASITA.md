@@ -44,7 +44,7 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
   "nombre": "no es que seas lento",        // nombre del archivo
   "pantallas": [ … ],                       // de 3 a 10
   "post": "texto para la publicación",      // opcional
-  "fondo": "cuarto",                        // opcional: "cuarto" (por defecto) o "imagen:archivo.png" de video/fondos/
+  "fondo": "salon",                         // cuarto (por defecto), salon, recamara, niveles, camion o "imagen:archivo.png"
   "portada_pose": "celebrando",             // opcional: otra pose para la portada A
   "portada_pose_b": "confiada",             // opcional: otra pose para la portada B
   "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
@@ -53,13 +53,22 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
 
 ### Fondo
 
-Por defecto, un **cuarto de estudio de noche** dibujado en vectores (ventana con
-luna, librero, pila de libros de MATE/HISTORIA/BIOLOGÍA/LITERATURA, lámpara de
-lava, laptop), con movimiento sutil y la parte de arriba oscurecida para que se
-lea el texto. La Pasita queda parada sobre el escritorio.
+Cada video lleva una escena ilustrada que dice **dónde pasa** el tip. Todas
+tienen movimiento sutil, la parte de arriba oscurecida para que se lea el texto
+y un piso donde se para la Pasita.
 
-Para usar un fondo propio (por ejemplo, de ChatGPT), guárdalo en
-`video/fondos/` y usa `"fondo": "imagen:archivo.png"`. Ver `fondos/LEEME.md`.
+| fondo | La escena | Úsalo para |
+|---|---|---|
+| `cuarto` (por defecto) | Cuarto de estudio de noche: librero, libros de MATE/HISTORIA/BIOLOGÍA/LITERATURA, lámpara de lava, laptop | Estudiar en casa, tareas, organizarse, concentración, técnicas de estudio |
+| `salon` | Salón de clases: pizarrón, reloj, banderines, escritorio con manzana | Exposiciones, preguntar en clase, exámenes, maestros, participar |
+| `recamara` | Recámara de noche: ventana con luna, cama, buró con despertador (2:47) y celular | Dormir, desvelos, celular antes de dormir, descanso, estrés de noche |
+| `niveles` | Mundo de videojuego: plataformas NIVEL 1-2-3, trofeo, monedas, castillo | Metas, retos, avanzar poco a poco, rachas, motivación, "estudiar como juego" |
+| `camion` | Dentro del camión: ventanas con la ciudad pasando, agarraderas, asientos | Estudiar en el trayecto, aprovechar tiempos muertos, repasar en el celular |
+
+Si el tema no encaja claro en ninguna, usa `cuarto`.
+
+Para un fondo propio (por ejemplo, de ChatGPT), guárdalo en `video/fondos/` y
+usa `"fondo": "imagen:archivo.png"`. Ver `fondos/LEEME.md`.
 
 ### Tipos de pantalla
 
