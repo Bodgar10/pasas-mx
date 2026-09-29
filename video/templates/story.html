@@ -19,6 +19,14 @@
 .foot b{color:var(--fg)}
 .pct{color:var(--xp)}
 .arrow{align-self:center;width:9cqw;height:9cqw;flex:none;color:var(--muted)}
+/* TikTok tapa la columna derecha (botones) y la parte de abajo (texto): más margen a la derecha */
+#extra-tiktok{padding:26cqw 18cqw 30cqw 8cqw;gap:4cqw}
+.opts{display:flex;flex-direction:column;gap:2.6cqw}
+.opt{display:flex;align-items:center;gap:3.4cqw;background:var(--surface);border:.5cqw solid var(--line);border-radius:4.4cqw;padding:3cqw 4cqw}
+.opt i{font-style:normal;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:var(--brand);display:grid;place-items:center;font-size:4.6cqw;font-weight:900;color:#fff}
+.opt b{font-size:6cqw;font-weight:900;line-height:1.15}
+.ask{background:var(--pink);color:#fff;border-radius:4cqw;padding:3.4cqw 4.4cqw;font-size:5.6cqw;font-weight:900;line-height:1.2;text-wrap:balance;box-shadow:0 0 3cqw rgba(236,72,153,.5)}
+.ask small{display:block;font-size:4.2cqw;font-weight:800;opacity:.9;margin-top:.8cqw}
 </style></head>
 <body>
 <div class="frame">
@@ -42,6 +50,14 @@
     <div class="foot">El reto completo: <b>pasas.mx/arcade</b></div>
   </div>
 
+  <!-- 2 PM · ronda extra, versión TikTok (sin sticker de quiz: se responde en comentarios) -->
+  <div class="st" id="extra-tiktok">
+    <div class="kicker">Ronda extra</div>
+    <div class="q">¿Cuál sobra?</div>
+    <div class="opts" id="t-opts"></div>
+    <div class="ask">Escribe tu respuesta en los comentarios<small>A, B, C o D · Mañana te decimos cuál era</small></div>
+  </div>
+
   <!-- 9 PM · resultados -->
   <div class="st" id="resultados">
     <div class="kicker" id="r-kicker">Así les fue hoy · Reto #12</div>
@@ -57,6 +73,12 @@ window.setup = function(data, variant){
   var n = data.numero;
   document.getElementById('a-num').innerHTML = 'RETO<br>#' + n;
   document.getElementById('a-line').textContent = (data.materia || 'Historia') + ' · 5 rondas · 2 minutos';
+  if (variant === 'extra-tiktok' && data.extra){
+    document.getElementById('t-opts').innerHTML = data.extra.opciones.map(function (o, i) {
+      var d = document.createElement('b'); d.textContent = o;
+      return '<div class="opt"><i>' + 'ABCD'[i] + '</i>' + d.outerHTML + '</div>';
+    }).join('');
+  }
   if (variant === 'resultados' && data.resultados){
     var r = data.resultados;
     document.getElementById('r-kicker').textContent = 'Así les fue hoy · Reto #' + n;

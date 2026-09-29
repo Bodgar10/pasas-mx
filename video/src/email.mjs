@@ -35,7 +35,7 @@ export function buildEmail(data, parte) {
     return {
       subject: `Reto #${n} · reel y stories para hoy, ${dia}`,
       html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
-<p>Todo listo para el <b>reto #${n}</b> (${esc(dia)}). Van cuatro archivos adjuntos.</p>
+<p>Todo listo para el <b>reto #${n}</b> (${esc(dia)}). Van cinco archivos adjuntos.</p>
 
 <h3 style="${h}">1. Reel · en la mañana, en Instagram y TikTok</h3>
 <p>Archivo <b>reel.mp4</b>. Al subirlo, agrégale un sonido que esté en tendencia. Como portada usa <b>reel-portada.png</b>: en Instagram, <i>Editar portada → Agregar desde la galería</i>; en TikTok, <i>Editar portada → Subir</i>. Texto para copiar:</p>
@@ -44,11 +44,17 @@ export function buildEmail(data, parte) {
 <h3 style="${h}">2. Story · 8:00 AM</h3>
 <p>Archivo <b>story-1-aviso.png</b>. Agrega el sticker de <b>link</b> con <b>pasas.mx/arcade</b> en el espacio de abajo, bajo la flecha.</p>
 
-<h3 style="${h}">3. Story · 2:00 PM</h3>
-<p>Archivo <b>story-2-ronda-extra.png</b>. En el espacio vacío agrega el sticker de <b>quiz</b>:</p>
+<h3 style="${h}">3. Story · 2:00 PM · Instagram</h3>
+<p>Archivo <b>story-2-ronda-extra.png</b>. En el espacio vacío agrega el sticker de <b>quiz</b> y toca la bolita junto a la respuesta correcta para marcarla (se pone verde):</p>
 <pre style="${box}">Pregunta: ¿Cuál sobra?
 ${ex.opciones.map((o, i) => `${LETTERS[i]}. ${esc(o)}${i === ex.sobra ? '   ← correcta' : ''}`).join('\n')}</pre>
 ${ex.motivo ? `<p style="color:#6b6485;font-size:14px">Por si alguien pregunta: ${esc(ex.motivo)}</p>` : ''}
+
+<h3 style="${h}">4. Story · 2:00 PM · TikTok</h3>
+<p>Archivo <b>story-2-ronda-extra-tiktok.png</b>. Ya trae las cuatro opciones y pide responder en los comentarios; no necesita sticker. Súbela como historia o como publicación de foto. Texto para copiar:</p>
+<pre style="${box}">¿Cuál sobra? Comenta A, B, C o D 👇
+Mañana te decimos cuál era.</pre>
+<p style="color:#6b6485;font-size:14px">Mañana responde en los comentarios: la correcta es la <b>${LETTERS[ex.sobra]}</b> (${esc(ex.opciones[ex.sobra])}).</p>
 
 <p style="margin-top:28px;color:#6b6485;font-size:13px">La story de resultados llega en otro correo a las 8:30 PM.</p>
 </div>`,

@@ -63,8 +63,10 @@ async function main() {
       const s2 = path.join(dir, 'story-2-ronda-extra.png');
       await renderStory(browser, data, 'aviso', s1);
       await renderStory(browser, data, 'extra', s2);
+      const s2t = path.join(dir, 'story-2-ronda-extra-tiktok.png');
+      await renderStory(browser, data, 'extra-tiktok', s2t);
       log('  stories de la mañana listas');
-      return [reel, portada, s1, s2];
+      return [reel, portada, s1, s2, s2t];
     }
     const s3 = path.join(dir, 'story-3-resultados.png');
     await renderStory(browser, data, 'resultados', s3);
