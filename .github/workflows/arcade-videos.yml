@@ -1,7 +1,7 @@
 # Genera el reel y las stories de PASAS Arcade y los manda por correo.
 # Lee el reto del día de Supabase (migración 051). También se puede correr a mano:
 # Actions → "Videos de PASAS Arcade" → Run workflow.
-# El horario está comentado hasta confirmar la primera corrida manual.
+# Corre solo todos los días a las 00:10 y 20:30, hora de México.
 name: Videos de PASAS Arcade
 
 on:
@@ -24,9 +24,9 @@ on:
         description: 'Mandar el correo'
         type: boolean
         default: true
-  # schedule:
-  #   - cron: '10 6 * * *'   # 00:10 hora de México → parte mañana
-  #   - cron: '30 2 * * *'   # 20:30 hora de México → parte noche
+  schedule:
+    - cron: '10 6 * * *'   # 00:10 hora de México → parte mañana
+    - cron: '30 2 * * *'   # 20:30 hora de México → parte noche
 
 concurrency:
   group: arcade-videos-${{ github.event.inputs.parte || github.event.schedule }}
