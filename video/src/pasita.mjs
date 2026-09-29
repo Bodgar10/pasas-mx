@@ -39,7 +39,7 @@ export function validarPasita(d) {
     const todo = [...(s.lineas || []), s.titulo || '', s.texto || ''].join(' ');
     if (/\?/.test(todo) && !/¿/.test(todo)) avisos.push(`${n}: hay una pregunta sin "¿"`);
   });
-  if (d.portada_pose && !POSES.includes(d.portada_pose)) errores.push(`portada_pose "${d.portada_pose}" no existe`);
+  for (const k of ['portada_pose', 'portada_pose_b']) if (d[k] && !POSES.includes(d[k])) errores.push(`${k} "${d[k]}" no existe`);
   if (p?.length && p[0].tipo !== 'gancho') avisos.push('la primera pantalla no es un gancho: los primeros 2 segundos deciden si alguien se queda');
   if (p?.length && p[p.length - 1].tipo !== 'cierre') avisos.push('la última pantalla no es un cierre');
   return { errores, avisos };
@@ -64,9 +64,12 @@ async function main() {
   await mkdir(dir, { recursive: true });
 
   await withBrowser(async b => {
-    const portada = path.join(dir, `${nombre}-portada.png`);
-    await renderImage(b, 'portada.html', d, portada);
-    console.log(`Portada: ${portada}`);
+    // Dos propuestas de portada: A (título arriba, Pasita abajo) y B (Pasita arriba, título en panel)
+    for (const [v, tpl] of [['a', 'portada.html'], ['b', 'portada-b.html']]) {
+      const f = path.join(dir, `${nombre}-portada-${v}.png`);
+      await renderImage(b, tpl, d, f);
+      console.log(`Portada ${v.toUpperCase()}: ${f}`);
+    }
     if (a.revisar) {
       const files = await renderFrames(b, 'pasita.html', d, path.join(dir, nombre));
       console.log(`Cuadros para revisar:\n  ${files.join('\n  ')}`);

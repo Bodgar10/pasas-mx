@@ -12,15 +12,22 @@ node src/pasita.mjs --data mi-video.json --revisar   # un PNG por pantalla, para
 node src/pasita.mjs --data mi-video.json             # el video completo (~10 s de render por cada segundo de video)
 ```
 
-Deja en `salida/pasita/` el `.mp4`, la portada `-portada.png` y un `.txt` con
-el texto del post.
+Deja en `salida/pasita/` el `.mp4`, **dos portadas** (`-portada-a.png` y
+`-portada-b.png`) y un `.txt` con el texto del post.
 
-### La portada
+### Las dos portadas
 
-Se arma sola con el gancho (título grande), la pantalla `grande` si existe
-(etiqueta rosa) y la Pasita en la pose del gancho. Todo lo importante queda en
-el centro 3:4 (1080×1440), que es lo que muestra el grid de Instagram. Se sube
-al publicar: **Editar portada → Agregar desde la galería**.
+Se arman solas con el gancho, la pantalla `grande` (si existe) y la Pasita:
+
+- **A**: título grande arriba, promesa como etiqueta rosa y la Pasita abajo con
+  la pose del gancho. Marco del color del gancho.
+- **B**: la Pasita grande arriba con otra pose (la de la promesa, o celebrando),
+  la promesa como etiqueta amarilla y el título en un panel neón abajo. Marco
+  del color contrario, para que sean dos opciones de verdad.
+
+Todo lo importante queda en el centro 3:4 (1080×1440), que es lo que muestra
+el grid de Instagram. Se sube al publicar: **Editar portada → Agregar desde la
+galería**. Poses opcionales: `portada_pose` (A) y `portada_pose_b` (B).
 
 Los títulos se achican solos si no caben: Nunito Black es ancha.
 
@@ -31,7 +38,8 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
   "nombre": "no es que seas lento",        // nombre del archivo
   "pantallas": [ … ],                       // de 3 a 10
   "post": "texto para la publicación",      // opcional
-  "portada_pose": "celebrando",             // opcional: otra pose para la portada
+  "portada_pose": "celebrando",             // opcional: otra pose para la portada A
+  "portada_pose_b": "confiada",             // opcional: otra pose para la portada B
   "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
 }
 ```

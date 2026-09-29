@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Portada B (1080×1920): Pasita grande arriba y el título en un panel neón abajo.
+   Todo dentro del recorte 3:4 del grid (y=240 a y=1680). */
+.frame{background:
+  radial-gradient(48% 26% at 50% 38%, rgba(124,58,237,.85), transparent 72%),
+  radial-gradient(70% 40% at 0% 15%, rgba(6,182,212,.22), transparent 60%),
+  radial-gradient(70% 40% at 100% 70%, rgba(236,72,153,.28), transparent 60%), var(--bg)}
+.neon{position:absolute;left:3cqw;right:3cqw;top:calc(240px + 2.4cqw);bottom:calc(240px + 2.4cqw);border-radius:5cqw;
+  border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
+.rays{position:absolute;left:50%;top:640px;width:1400px;height:1400px;margin:-700px 0 0 -700px;opacity:.16;
+  background:repeating-conic-gradient(var(--muted) 0deg 6deg, transparent 6deg 18deg);
+  -webkit-mask:radial-gradient(circle, #000 20%, transparent 62%);mask:radial-gradient(circle, #000 20%, transparent 62%)}
+.pasita{position:absolute;left:50%;z-index:2}
+.panel{position:absolute;left:7cqw;right:7cqw;bottom:350px;z-index:3;background:rgba(15,10,30,.94);border-radius:5cqw;
+  border:.6cqw solid var(--c);box-shadow:0 0 3cqw var(--c);padding:5cqw 5cqw 5.5cqw;display:flex;flex-direction:column;align-items:center;gap:2.4cqw;text-align:center}
+.title{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
+  -webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill}
+.title span{display:block;font-size:12cqw;margin-inline:auto;white-space:nowrap}
+.sub{font-size:5.6cqw;font-weight:800;color:var(--fg)}
+.k-blanco{color:#fff}.k-amarillo{color:var(--xp)}.k-rosa{color:var(--pink)}.k-cian{color:var(--cyan)}
+.tag{position:absolute;left:9cqw;top:330px;z-index:4;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:8.5cqw;line-height:1;
+  color:var(--bg);background:var(--xp);padding:1.8cqw 4.4cqw 2.2cqw;border-radius:3cqw;transform:rotate(-5deg);box-shadow:0 0 3cqw rgba(251,191,36,.6)}
+.brand{position:absolute;left:0;right:0;top:1592px;z-index:4;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em}
+.brand span{color:var(--pink)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="neon" id="neon"></div>
+  <div class="rays"></div>
+  <div class="pasita" id="pasita"></div>
+  <div class="tag" id="tag" hidden></div>
+  <div class="panel" id="panel"><div class="title" id="title"></div><div class="sub" id="sub" hidden></div></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script>
+var COLOR = { cian: 'var(--cyan)', rosa: 'var(--pink)', amarillo: 'var(--xp)', morado: 'var(--brand)' };
+var LINEA = ['k-blanco', 'k-amarillo', 'k-blanco', 'k-rosa'];
+window.setup = function (data) {
+  var p = data.pantallas || [];
+  var g = p.find(function (x) { return x.tipo === 'gancho'; }) || { lineas: [p[0] && p[0].titulo || ''], pose: 'confiada', color: 'cian' };
+  var promesa = p.find(function (x) { return x.tipo === 'grande'; });
+  // Otra pose y otro color que la portada A, para que sean dos opciones de verdad
+  var pose = data.portada_pose_b || (promesa && promesa.pose !== g.pose ? promesa.pose : (g.pose === 'celebrando' ? 'confiada' : 'celebrando'));
+  var c = g.color === 'rosa' ? 'cian' : 'rosa';
+  $('neon').style.setProperty('--c', COLOR[c]);
+  $('panel').style.setProperty('--c', COLOR[c]);
+  $('title').innerHTML = g.lineas.map(function (l, i) { return '<span class="' + LINEA[i % 4] + '">' + esc(l) + '</span>'; }).join('');
+  fitLines([].slice.call($('title').querySelectorAll('span')), 790);
+  if (promesa) {
+    $('tag').textContent = promesa.titulo; $('tag').hidden = false;
+    if (promesa.texto) { $('sub').textContent = promesa.texto; $('sub').hidden = false; }
+  }
+  // La Pasita llena el espacio sobre el panel; los pies quedan detrás del panel
+  var panelTop = $('panel').getBoundingClientRect().top;
+  var top = promesa ? 360 : 300, feet = panelTop + 70;
+  var w = Math.min(980, (feet - top) * PASITA_VB.w / PASITA_VB.h);
+  buildPasita($('pasita'), pose, w);
+  var el = $('pasita');
+  el.style.top = (feet - w * PASITA_VB.h / PASITA_VB.w) + 'px'; el.style.marginLeft = (-w / 2) + 'px';
+  window.ready = pasitaReady();
+  return 0;
+};
+window.render = function () {};
+</script>
+</body></html>
