@@ -14,8 +14,8 @@
   background:repeating-conic-gradient(var(--muted) 0deg 6deg, transparent 6deg 18deg);
   -webkit-mask:radial-gradient(circle, #000 20%, transparent 62%);mask:radial-gradient(circle, #000 20%, transparent 62%)}
 .pasita{position:absolute;left:50%;z-index:2}
-.panel{position:absolute;left:7cqw;right:7cqw;bottom:420px;z-index:3;background:rgba(15,10,30,.94);border-radius:5cqw;
-  border:.6cqw solid var(--c);box-shadow:0 0 3cqw var(--c);padding:5cqw 5cqw 7cqw;display:flex;flex-direction:column;align-items:center;gap:2.4cqw;text-align:center}
+.panel{position:absolute;left:7cqw;right:7cqw;bottom:470px;z-index:3;background:rgba(15,10,30,.94);border-radius:5cqw;
+  border:.6cqw solid var(--c);box-shadow:0 0 3cqw var(--c);padding:5cqw 5cqw 5.5cqw;display:flex;flex-direction:column;align-items:center;gap:2.4cqw;text-align:center}
 .title{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
   -webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill}
 .title span{display:block;font-size:12cqw;margin-inline:auto;white-space:nowrap}
@@ -23,12 +23,12 @@
 .k-blanco{color:#fff}.k-amarillo{color:var(--xp)}.k-rosa{color:var(--pink)}.k-cian{color:var(--cyan)}
 .tag{position:absolute;left:9cqw;top:330px;z-index:4;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:8.5cqw;line-height:1;
   color:var(--bg);background:var(--xp);padding:1.8cqw 4.4cqw 2.2cqw;border-radius:3cqw;transform:rotate(-5deg);box-shadow:0 0 3cqw rgba(251,191,36,.6)}
-.cta{position:absolute;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:2.6cqw;white-space:nowrap;
-  background:#fff;color:var(--bg);border-radius:999px;padding:1.6cqw 5cqw 1.6cqw 1.6cqw;box-shadow:0 0 3.4cqw rgba(255,255,255,.35), 0 1.2cqw 0 rgba(0,0,0,.35)}
-.cta i{width:10cqw;height:10cqw;border-radius:50%;background:var(--pink);display:grid;place-items:center;flex:none}
-.cta i svg{width:4.4cqw;height:4.4cqw;margin-left:.8cqw}
-.cta b{font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:5.6cqw;letter-spacing:.01em}
-.cta{top:1436px}
+.dur{position:absolute;left:50%;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:2cqw;white-space:nowrap;
+  border:.4cqw solid rgba(226,217,243,.45);background:rgba(15,10,30,.7);color:var(--fg);border-radius:999px;padding:1.4cqw 4cqw 1.4cqw 1.6cqw}
+.dur i{width:7cqw;height:7cqw;border-radius:50%;border:.4cqw solid var(--fg);display:grid;place-items:center;flex:none}
+.dur i svg{width:2.8cqw;height:2.8cqw;margin-left:.5cqw}
+.dur b{font-size:4.6cqw;font-weight:800}
+.dur{top:1478px}
 .brand{position:absolute;left:0;right:0;top:1598px;z-index:4;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em}
 .brand span{color:var(--pink)}
 </style></head>
@@ -39,7 +39,7 @@
   <div class="pasita" id="pasita"></div>
   <div class="tag" id="tag" hidden></div>
   <div class="panel" id="panel"><div class="title" id="title"></div><div class="sub" id="sub" hidden></div></div>
-  <div class="cta" id="cta"><i><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12Z" style="fill:#fff"/></svg></i><b id="cta-t"></b></div>
+  <div class="dur" id="dur"><i><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12Z" style="fill:var(--fg)"/></svg></i><b id="dur-t"></b></div>
   <div class="brand">PASAS<span>.</span>MX</div>
 </div>
 <script src="anim.js"></script>
@@ -48,7 +48,7 @@
 var COLOR = { cian: 'var(--cyan)', rosa: 'var(--pink)', amarillo: 'var(--xp)', morado: 'var(--brand)' };
 var LINEA = ['k-blanco', 'k-amarillo', 'k-blanco', 'k-rosa'];
 window.setup = function (data) {
-  $('cta-t').textContent = data.portada_cta || 'Míralo hasta el final';
+  $('dur-t').textContent = etiquetaDuracion(data.pantallas || []);
   var p = data.pantallas || [];
   var g = p.find(function (x) { return x.tipo === 'gancho'; }) || { lineas: [p[0] && p[0].titulo || ''], pose: 'confiada', color: 'cian' };
   var promesa = p.find(function (x) { return x.tipo === 'grande'; });

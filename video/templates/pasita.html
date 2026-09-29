@@ -46,15 +46,6 @@ var LUGAR = { gancho: [680, 300, 0], grande: [640, 330, 0], numero: [520, 330, 1
 var LINEA = ['k-blanco', 'k-cian', 'k-blanco', 'k-rosa'];
 var S, T;
 
-// Cuánto dura cada pantalla: lo suficiente para leerla con calma
-function duracion(p) {
-  if (p.tipo === 'gancho') return 3.2;
-  if (p.tipo === 'grande') return 2.4;
-  if (p.tipo === 'cierre') return 4;
-  var n = (p.titulo || '').length + (p.texto || '').length;
-  return Math.max(3.5, Math.min(6.5, 2.2 + n * 0.042));
-}
-
 window.setup = function (data) {
   S = data.pantallas;
   var nums = S.filter(function (p) { return p.tipo === 'numero'; }).length, k = 0, html = '';
@@ -87,7 +78,7 @@ window.setup = function (data) {
 
   var t0 = 0;
   T = S.map(function (p, i) {
-    var d = duracion(p), l = LUGAR[p.tipo];
+    var d = duracionPantalla(p), l = LUGAR[p.tipo];
     buildPasita($('pa' + i), p.pose, l[0]);
     var el = $('pa' + i), h = l[0] * PASITA_VB.h / PASITA_VB.w;
     el.style.top = (1920 - l[1] - h) + 'px'; el.style.marginLeft = (-l[0] / 2 + l[2]) + 'px'; el.style.width = l[0] + 'px';

@@ -25,9 +25,11 @@ Se arman solas con el gancho, la pantalla `grande` (si existe) y la Pasita:
   la promesa como etiqueta amarilla y el título en un panel neón abajo. Marco
   del color contrario, para que sean dos opciones de verdad.
 
-Las dos llevan un botón de play con una llamada a seguir viendo. Por defecto
-dice "Míralo hasta el final"; se cambia con `portada_cta` (máx. 26 caracteres),
-por ejemplo "El 3 es el más fácil" o "El último te va a servir".
+Las dos llevan un indicador discreto con el ícono de play y la **duración real**
+del video ("▶ 30 segundos"). Es la única llamada a verlo: dice qué es y cuánto
+tiempo toma. **Nada de clickbait**: la portada no promete nada que el video no
+entregue ni crea intriga artificial ("espera al final", "el 3 te va a
+sorprender").
 
 Todo lo importante queda en el centro 3:4 (1080×1440), que es lo que muestra
 el grid de Instagram. Se sube al publicar: **Editar portada → Agregar desde la
@@ -44,7 +46,6 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
   "post": "texto para la publicación",      // opcional
   "portada_pose": "celebrando",             // opcional: otra pose para la portada A
   "portada_pose_b": "confiada",             // opcional: otra pose para la portada B
-  "portada_cta": "El 3 es el más fácil",    // opcional: texto del botón de play
   "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
 }
 ```
@@ -79,6 +80,8 @@ Todas llevan `pose` y `color`. Opcional: `"temblar": true` (la Pasita tiembla; v
 La duración de cada pantalla sale sola según el largo del texto (de 3.5 a 6.5 s).
 
 ## Reglas de contenido
+
+- **Sin clickbait**: el gancho plantea el tema real del video; la portada y el texto del post prometen solo lo que el video entrega.
 
 - **Ortografía impecable**: "¿" de apertura, acentos, sin errores. Es una marca educativa.
 - **Tuteo y frases cortas**, como en los carruseles. Sin emojis dentro del video (en el post sí).

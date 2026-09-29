@@ -65,3 +65,18 @@ function fitBlock(el) {
   var size = parseFloat(getComputedStyle(el).fontSize);
   for (var i = 0; i < 25 && el.scrollWidth > el.clientWidth + 1; i++) { size *= 0.94; el.style.fontSize = size + 'px'; }
 }
+
+// Cuánto dura cada pantalla de un video con la Pasita: lo suficiente para leerla con calma.
+function duracionPantalla(p) {
+  if (p.tipo === 'gancho') return 3.2;
+  if (p.tipo === 'grande') return 2.4;
+  if (p.tipo === 'cierre') return 4;
+  var n = (p.titulo || '').length + (p.texto || '').length;
+  return Math.max(3.5, Math.min(6.5, 2.2 + n * 0.042));
+}
+// "▶ 30 segundos": dato real del video, redondeado a 5 s. Sin ganchos ni promesas.
+function etiquetaDuracion(pantallas) {
+  var s = pantallas.reduce(function (a, p) { return a + duracionPantalla(p); }, 0);
+  s = Math.max(10, Math.round(s / 5) * 5);
+  return s < 60 ? s + ' segundos' : (s % 60 ? Math.floor(s / 60) + ' min ' + (s % 60) + ' s' : (s / 60) + ' min');
+}
