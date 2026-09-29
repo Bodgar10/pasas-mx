@@ -7,6 +7,7 @@ import {
   MIN_JUGADORES_CIFRAS,
   RONDAS_POR_RETO,
   calcularResultados,
+  codigoResultado,
   etiquetaPuntaje,
   fechaLarga,
   formatoReloj,
@@ -140,7 +141,44 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
     }
   }
 
-  const texto = textoCompartir(reto.number, resultados, dominio.replace(/^https?:\/\//, ''))
+  const perfecto = picks.length === RONDAS_POR_RETO && !resultados.includes(false)
+  const temaFallado =
+    picks.length === RONDAS_POR_RETO && !perfecto ? rondaDelPuente(reto, resultados).topic : null
+  const codigo = codigoResultado(reto.number, resultados)
+  const texto = textoCompartir(reto.number, resultados, dominio.replace(/^https?:\/\//, ''), temaFallado)
+
+  // Imagen para historias. Se descarga al llegar al resultado, no al tocar el
+  // botón: iOS exige que navigator.share se llame dentro del toque, y una
+  // descarga en medio rompe ese permiso. Solo en navegadores que pueden
+  // compartir archivos (celulares); en computadora el botón no aparece.
+  const [imagen, setImagen] = useState<File | null>(null)
+  useEffect(() => {
+    if (fase !== 'end' || picks.length !== RONDAS_POR_RETO) return
+    if (typeof navigator === 'undefined' || typeof navigator.canShare !== 'function') return
+    let vivo = true
+    void (async () => {
+      try {
+        const res = await fetch(`/arcade/r/${codigo}/historia`)
+        if (!res.ok) return
+        const blob = await res.blob()
+        const archivo = new File([blob], `pasas-reto-${reto.number}.png`, { type: 'image/png' })
+        if (vivo && navigator.canShare({ files: [archivo] })) setImagen(archivo)
+      } catch {}
+    })()
+    return () => {
+      vivo = false
+    }
+  }, [fase, picks.length, codigo, reto.number])
+
+  async function compartirImagen() {
+    if (!imagen) return
+    track('arcade_compartido', { reto_numero: reto.number, canal: 'imagen', aciertos })
+    try {
+      await navigator.share({ files: [imagen], text: texto })
+    } catch {
+      // Cancelado por la persona o rechazado por el navegador: no hay nada que avisar.
+    }
+  }
 
   async function copiar() {
     track('arcade_compartido', { reto_numero: reto.number, canal: 'copiar', aciertos })
@@ -267,6 +305,11 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
               <pre className={s.sharePreview} ref={refCompartir}>
                 {texto}
               </pre>
+              {imagen && (
+                <button className={`${s.btn} ${s.primary}`} type="button" onClick={compartirImagen}>
+                  Compartir imagen para historias
+                </button>
+              )}
               <div className={s.row}>
                 <a
                   className={`${s.btn} ${s.wa}`}

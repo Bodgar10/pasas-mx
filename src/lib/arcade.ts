@@ -107,11 +107,43 @@ export function calcularResultados(reto: RetoArcade, picks: number[]): boolean[]
   return reto.rounds.map((r, i) => picks[i] === r.odd)
 }
 
-/** El texto que se comparte. Sin spoilers: solo cuadros y puntaje. */
-export function textoCompartir(numero: number, resultados: boolean[], dominio: string): string {
+/**
+ * Código del resultado para el link que se comparte: "12-11011" = reto #12,
+ * aciertos por ronda. No identifica a nadie ni se guarda: solo alimenta la
+ * imagen de vista previa de `/arcade/r/[codigo]`.
+ */
+export function codigoResultado(numero: number, resultados: boolean[]): string {
+  return `${numero}-${resultados.map((ok) => (ok ? '1' : '0')).join('')}`
+}
+
+export function leerCodigo(codigo: string): { numero: number; resultados: boolean[] } | null {
+  const m = /^(\d{1,5})-([01]{5})$/.exec(codigo)
+  if (!m) return null
+  return { numero: Number(m[1]), resultados: [...m[2]].map((c) => c === '1') }
+}
+
+/**
+ * El texto que se comparte. En primera persona, como lo escribiría alguien a
+ * un amigo: el formato "MARCA #n + ¿Tú cuánto sacas? + link" se leía como
+ * cadena. Nombra el tema que falló, nunca la respuesta.
+ */
+export function textoCompartir(
+  numero: number,
+  resultados: boolean[],
+  dominio: string,
+  temaFallado?: string | null
+): string {
   const cuadros = resultados.map((ok) => (ok ? '🟩' : '🟥')).join('')
   const n = resultados.filter(Boolean).length
-  return `PASAS Historia #${numero}\n${cuadros} ${n}/${RONDAS_POR_RETO}\n¿Tú cuánto sacas? ${dominio}/arcade`
+  const link = `${dominio}/arcade/r/${codigoResultado(numero, resultados)}`
+  if (n === RONDAS_POR_RETO) {
+    return `${n}/${RONDAS_POR_RETO} en el reto de historia de hoy ${cuadros}\nA ver si me igualas.\n${link}`
+  }
+  if (n >= 3) {
+    const tema = temaFallado ? `Me ganó ${temaFallado}. ` : ''
+    return `Saqué ${n}/${RONDAS_POR_RETO} en el reto de historia de hoy ${cuadros}\n${tema}¿Tú?\n${link}`
+  }
+  return `Saqué ${n}/${RONDAS_POR_RETO} en el reto de historia ${cuadros}\nEstá más difícil de lo que parece. Inténtalo.\n${link}`
 }
 
 /**

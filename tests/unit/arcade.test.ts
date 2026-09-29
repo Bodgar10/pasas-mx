@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import {
   calcularResultados,
+  codigoResultado,
   etiquetaPuntaje,
+  leerCodigo,
   fechaLarga,
   formatoReloj,
   hoyMX,
@@ -72,9 +74,27 @@ describe('resultado y puente', () => {
     expect(calcularResultados(reto, [0, 1, 0, 3, 1])).toEqual([true, true, false, true, false])
   })
 
-  it('el texto para compartir no revela respuestas', () => {
-    const txt = textoCompartir(12, [true, true, false, true, true], 'pasas.mx')
-    expect(txt).toBe('PASAS Historia #12\n🟩🟩🟥🟩🟩 4/5\n¿Tú cuánto sacas? pasas.mx/arcade')
+  it('el texto para compartir va en primera persona, con el tema y sin la respuesta', () => {
+    const txt = textoCompartir(12, [true, true, false, true, true], 'pasas.mx', 'La Reforma')
+    expect(txt).toBe(
+      'Saqué 4/5 en el reto de historia de hoy 🟩🟩🟥🟩🟩\nMe ganó La Reforma. ¿Tú?\npasas.mx/arcade/r/12-11011'
+    )
+  })
+
+  it('texto de perfecto y de puntaje bajo', () => {
+    expect(textoCompartir(3, [true, true, true, true, true], 'pasas.mx')).toBe(
+      '5/5 en el reto de historia de hoy 🟩🟩🟩🟩🟩\nA ver si me igualas.\npasas.mx/arcade/r/3-11111'
+    )
+    expect(textoCompartir(3, [false, false, true, false, false], 'pasas.mx')).toContain(
+      'Está más difícil de lo que parece.'
+    )
+  })
+
+  it('el código del link ida y vuelta', () => {
+    expect(codigoResultado(12, [true, false, true, true, false])).toBe('12-10110')
+    expect(leerCodigo('12-10110')).toEqual({ numero: 12, resultados: [true, false, true, true, false] })
+    expect(leerCodigo('12-1011')).toBeNull()
+    expect(leerCodigo('abc')).toBeNull()
   })
 
   it('el puente lleva al primer tema fallado', () => {

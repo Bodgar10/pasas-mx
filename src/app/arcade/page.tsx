@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { leerRetoDeHoy } from '@/lib/arcade-server'
-import { SITIO } from '@/lib/seo'
-import ArcadeClient from './arcade-client'
-import s from './arcade.module.css'
+import ContenidoArcade from './contenido'
 
 /**
  * PASAS Arcade — reto diario público, sin login.
@@ -11,6 +7,9 @@ import s from './arcade.module.css'
  * 🔴 ISR de 60 s y no estático: el reto cambia a medianoche de la Ciudad de
  * México. En el peor caso alguien ve el de ayer un minuto; la cuenta
  * regresiva del cliente recarga sola al llegar a cero.
+ *
+ * La imagen de vista previa sale de ./opengraph-image.tsx, que Next agrega
+ * sola a og:image y twitter:image.
  */
 export const revalidate = 60
 
@@ -37,22 +36,6 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function ArcadePage() {
-  const reto = await leerRetoDeHoy()
-
-  if (!reto || !reto.rounds || reto.rounds.length === 0) {
-    return (
-      <main className={s.root}>
-        <div className={`${s.wrap} ${s.empty}`}>
-          <h2>El reto de hoy se está preparando</h2>
-          <p className={s.lead}>Vuelve en unos minutos.</p>
-          <Link className={s.link} href="/">
-            Ir a PASAS
-          </Link>
-        </div>
-      </main>
-    )
-  }
-
-  return <ArcadeClient reto={reto} dominio={SITIO} />
+export default function ArcadePage() {
+  return <ContenidoArcade />
 }
