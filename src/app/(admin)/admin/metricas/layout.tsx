@@ -11,7 +11,7 @@ import { COLORES } from '@/components/admin/Tarjetas'
  * fija incluida— vive dentro de cada página.
  *
  * Lo único que se consulta aquí es cuántas cuentas de prueba hay, que no
- * depende del toggle y evita repetir esa cuenta en las seis pestañas.
+ * depende del toggle y evita repetir esa cuenta en las siete pestañas.
  */
 export default async function MetricasLayout({ children }: { children: React.ReactNode }) {
   const { count } = await servicio()

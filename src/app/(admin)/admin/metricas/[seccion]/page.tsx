@@ -10,6 +10,7 @@ import Adquisicion from '../_secciones/Adquisicion'
 import Aprendizaje from '../_secciones/Aprendizaje'
 import Contenido from '../_secciones/Contenido'
 import Salud from '../_secciones/Salud'
+import Juegos from '../_secciones/Juegos'
 
 /**
  * Una ruta por pestaña, no estado de cliente.
@@ -19,14 +20,20 @@ import Salud from '../_secciones/Salud'
  * incluido el estado del toggle.
  */
 
-/** Qué dashboard de PostHog abre el botón de cada pestaña. */
-const DASHBOARD: Record<SlugSeccion, keyof typeof POSTHOG_DASHBOARDS> = {
-  dinero: 'pago',
-  suscripciones: 'retencion',
-  adquisicion: 'adquisicion',
-  aprendizaje: 'uso',
-  contenido: 'contenido',
-  salud: 'errores',
+/**
+ * Qué dashboard de PostHog abre el botón de cada pestaña.
+ *
+ * Juegos va con URL propia: posthog-links.ts lo GENERA scripts/seed-posthog.ts
+ * y no se edita a mano. El dashboard del Arcade se creó aparte (2150420).
+ */
+const DASHBOARD: Record<SlugSeccion, string> = {
+  dinero: POSTHOG_DASHBOARDS.pago,
+  suscripciones: POSTHOG_DASHBOARDS.retencion,
+  adquisicion: POSTHOG_DASHBOARDS.adquisicion,
+  aprendizaje: POSTHOG_DASHBOARDS.uso,
+  contenido: POSTHOG_DASHBOARDS.contenido,
+  juegos: 'https://us.posthog.com/project/419205/dashboard/2150420',
+  salud: POSTHOG_DASHBOARDS.errores,
 }
 
 const VALIDAS = new Set(SECCIONES.map((s) => s.slug))
@@ -53,7 +60,7 @@ export default async function SeccionPage(props: {
           {meta.emoji} {meta.label}
         </div>
         <Link
-          href={POSTHOG_DASHBOARDS[DASHBOARD[slug]]}
+          href={DASHBOARD[slug]}
           target="_blank"
           rel="noopener noreferrer"
           style={{ background: COLORES.fondo, border: `1px solid ${COLORES.borde}`, color: COLORES.suave, borderRadius: 10, padding: '8px 14px', fontSize: 13, fontWeight: 800, textDecoration: 'none' }}
@@ -67,6 +74,7 @@ export default async function SeccionPage(props: {
       {slug === 'adquisicion' && <Adquisicion incluirPrueba={incluirPrueba} />}
       {slug === 'aprendizaje' && <Aprendizaje incluirPrueba={incluirPrueba} />}
       {slug === 'contenido' && <Contenido incluirPrueba={incluirPrueba} />}
+      {slug === 'juegos' && <Juegos />}
       {slug === 'salud' && <Salud />}
     </>
   )

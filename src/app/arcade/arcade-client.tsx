@@ -10,6 +10,7 @@ import {
   codigoResultado,
   etiquetaPuntaje,
   fechaLarga,
+  anonIdJuegos,
   fijarOrigenArcade,
   leerOrigenArcade,
   formatoReloj,
@@ -27,7 +28,6 @@ type Fase = 'intro' | 'play' | 'end'
 
 // 🔴 localStorage puede no existir o lanzar (modo privado, datos bloqueados).
 // El juego tiene que funcionar igual; solo se pierde el "ya jugaste hoy".
-const LLAVE_ANON = 'pasas-arcade:anon'
 const llavePartida = (fecha: string) => `pasas-arcade:partida:${fecha}`
 
 function leerLocal(llave: string): string | null {
@@ -41,17 +41,6 @@ function escribirLocal(llave: string, valor: string) {
   try {
     window.localStorage.setItem(llave, valor)
   } catch {}
-}
-
-function anonId(): string {
-  const guardado = leerLocal(LLAVE_ANON)
-  if (guardado && guardado.length >= 8) return guardado
-  const nuevo =
-    typeof crypto !== 'undefined' && 'randomUUID' in crypto
-      ? crypto.randomUUID()
-      : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`
-  escribirLocal(LLAVE_ANON, nuevo)
-  return nuevo
 }
 
 export default function ArcadeClient({
@@ -99,7 +88,7 @@ export default function ArcadeClient({
         const res = await fetch('/api/arcade/play', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ date: reto.date, anonId: anonId(), picks: p }),
+          body: JSON.stringify({ date: reto.date, anonId: anonIdJuegos(), picks: p, origen: origenRef.current }),
         })
         const json = (await res.json()) as { cifras?: CifrasArcade | null }
         setCifras(json.cifras ?? null)

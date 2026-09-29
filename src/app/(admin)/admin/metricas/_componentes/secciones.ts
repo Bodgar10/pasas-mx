@@ -20,6 +20,7 @@ export const SECCIONES = [
   { slug: 'adquisicion', emoji: '📣', label: 'Adquisición' },
   { slug: 'aprendizaje', emoji: '📚', label: 'Aprendizaje' },
   { slug: 'contenido', emoji: '🧪', label: 'Contenido' },
+  { slug: 'juegos', emoji: '🎮', label: 'Juegos' },
   { slug: 'salud', emoji: '🩺', label: 'Salud' },
 ] as const
 

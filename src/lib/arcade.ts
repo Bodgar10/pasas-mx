@@ -196,6 +196,28 @@ export function fijarOrigenArcade(desde: string | null): OrigenArcade {
 }
 
 /**
+ * Id anónimo del navegador para los juegos gratis (Arcade y Horda pública).
+ * Sin datos personales: un UUID en localStorage. Es lo único que enlaza las
+ * partidas de una misma persona en `arcade_plays` y `horda_publica_avance`.
+ * Solo en el navegador; si localStorage no está, se genera uno por carga.
+ */
+const LLAVE_ANON = 'pasas-arcade:anon'
+export function anonIdJuegos(): string {
+  try {
+    const guardado = window.localStorage.getItem(LLAVE_ANON)
+    if (guardado && guardado.length >= 8) return guardado
+  } catch {}
+  const nuevo =
+    typeof crypto !== 'undefined' && 'randomUUID' in crypto
+      ? crypto.randomUUID()
+      : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`
+  try {
+    window.localStorage.setItem(LLAVE_ANON, nuevo)
+  } catch {}
+  return nuevo
+}
+
+/**
  * El puente va a la Horda PÚBLICA (oleadas 1 a 3 sin cuenta), no a la de
  * /guia, que pide login. Quien tiene cuenta juega la completa desde su guía.
  */

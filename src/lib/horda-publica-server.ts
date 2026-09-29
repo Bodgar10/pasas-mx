@@ -119,3 +119,35 @@ export async function temasPublicos(): Promise<{ subjectSlug: string; topicSlug:
     }))
     .filter((t) => esMateriaPublica(t.subjectSlug))
 }
+
+export type EventoAvance =
+  | { evento: 'inicio' }
+  | { evento: 'oleada'; oleada: number }
+  | { evento: 'eleccion'; eleccion: 'estudiante' | 'adulto' }
+
+/**
+ * Guarda el avance de un navegador en `horda_publica_avance` (migración 052).
+ * Es la medición que no depende de cookies: PostHog solo ve a quien las
+ * acepta. Sin datos personales; el id es el anónimo de los juegos.
+ */
+export async function registrarAvance(
+  anonId: string,
+  topicId: string,
+  e: EventoAvance,
+  origen: string | null
+): Promise<boolean> {
+  if (!(await esTemaPublico(topicId))) return false
+  const { data, error } = await admin().rpc('horda_publica_registrar', {
+    p_anon_id: anonId,
+    p_topic_id: topicId,
+    p_evento: e.evento,
+    p_oleada: e.evento === 'oleada' ? e.oleada : null,
+    p_eleccion: e.evento === 'eleccion' ? e.eleccion : null,
+    p_origen: origen,
+  })
+  if (error) {
+    console.error('[horda-publica] registrar avance falló:', error)
+    return false
+  }
+  return data === true
+}

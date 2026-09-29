@@ -6,7 +6,7 @@ import Pasita from '@/components/mascota/Pasita'
 import Confetti from '@/components/global/Confetti'
 import { track } from '@/lib/analytics/track'
 import { SITIO } from '@/lib/seo'
-import { fijarOrigenArcade, leerOrigenArcade, type OrigenArcade } from '@/lib/arcade'
+import { anonIdJuegos, fijarOrigenArcade, leerOrigenArcade, type OrigenArcade } from '@/lib/arcade'
 import {
   OLEADAS_GRATIS,
   OLEADAS_TOTALES,
@@ -72,6 +72,19 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
   const conOrigen = (evento: string, props: Record<string, unknown>) =>
     track(evento, { ...props, origen: origenRef.current })
 
+  // Medición en la base (horda_publica_avance), independiente de cookies.
+  // Fire-and-forget con keepalive: nunca frena el juego ni muestra errores.
+  const avance = (datos: { evento: 'inicio' } | { evento: 'oleada'; oleada: number } | { evento: 'eleccion'; eleccion: 'estudiante' | 'adulto' }) => {
+    try {
+      void fetch('/api/horda-publica/avance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({ topicId: tema.topicId, anonId: anonIdJuegos(), origen: origenRef.current, ...datos }),
+      }).catch(() => {})
+    } catch {}
+  }
+
   useEffect(() => {
     origenRef.current =
       leerOrigenArcade() ?? fijarOrigenArcade(new URLSearchParams(window.location.search).get('desde'))
@@ -127,6 +140,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
       es_reintento: partidasRef.current > 1,
       mejor_oleada_previa: record,
     })
+    avance({ evento: 'inicio' })
     void cargarOleada(1)
   }
 
@@ -168,6 +182,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
     conOrigen('horda_publica_oleada', { topic: tema.topicName, oleada, n_correctas_en_oleada: n, resultado: tipo })
 
     if (tipo === 'avanza') {
+      avance({ evento: 'oleada', oleada })
       guardarRecord(tema.topicId, oleada)
       setRecord((r) => Math.max(r, oleada))
       if (oleada >= OLEADAS_GRATIS) {
@@ -367,6 +382,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
             <ChoiceButton
               onClick={() => {
                 conOrigen('horda_publica_muro_eleccion', { topic: tema.topicName, quien: 'estudiante' })
+                avance({ evento: 'eleccion', eleccion: 'estudiante' })
                 setFase('papa')
               }}
               titulo="Soy estudiante"
@@ -376,6 +392,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
               primario
               onClick={() => {
                 conOrigen('horda_publica_muro_eleccion', { topic: tema.topicName, quien: 'adulto' })
+                avance({ evento: 'eleccion', eleccion: 'adulto' })
                 // Ruta con redirección del servidor: navegación completa, no router.push.
                 window.location.href = `${urlUnete(tema.subjectSlug, tema.topicSlug)}?quien=adulto`
               }}

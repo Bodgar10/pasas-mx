@@ -17,10 +17,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
 
-  const { date, anonId, picks } = (body ?? {}) as {
+  const { date, anonId, picks, origen } = (body ?? {}) as {
     date?: unknown
     anonId?: unknown
     picks?: unknown
+    origen?: unknown
   }
 
   const valido =
@@ -37,7 +38,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Datos inválidos' }, { status: 400 })
   }
 
-  const cifras = await registrarPartida(date, anonId, picks as number[])
+  // `origen` lo valida la base contra su lista; cualquier otra cosa queda NULL.
+  const cifras = await registrarPartida(date, anonId, picks as number[], typeof origen === 'string' ? origen : null)
   if (!cifras) {
     // Reto vencido o inexistente. No es un error del jugador que valga la pena mostrar.
     return NextResponse.json({ cifras: null }, { status: 200 })

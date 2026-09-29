@@ -33,12 +33,14 @@ export async function leerRetoDeHoy(): Promise<RetoArcade | null> {
 export async function registrarPartida(
   fecha: string,
   anonId: string,
-  picks: number[]
+  picks: number[],
+  origen: string | null = null
 ): Promise<CifrasArcade | null> {
   const { data, error } = await admin().rpc('arcade_registrar', {
     p_date: fecha,
     p_anon_id: anonId,
     p_picks: picks,
+    p_origen: origen,
   })
   if (error) {
     console.error('[arcade] arcade_registrar falló:', error)

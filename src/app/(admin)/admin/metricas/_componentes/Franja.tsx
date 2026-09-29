@@ -2,7 +2,7 @@ import { StatCard, COLORES } from '@/components/admin/Tarjetas'
 import { cargarFranja, pesos } from '../_lib/datos'
 
 /**
- * El estado del negocio en dos segundos, igual en las seis pestañas.
+ * El estado del negocio en dos segundos, igual en las siete pestañas.
  *
  * Es un componente de SERVIDOR con su propia consulta, y va dentro de cada
  * página en vez de en el layout: `layout.tsx` no recibe `searchParams`, así
