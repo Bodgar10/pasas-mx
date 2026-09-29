@@ -152,6 +152,16 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
   // descarga en medio rompe ese permiso. Solo en navegadores que pueden
   // compartir archivos (celulares); en computadora el botón no aparece.
   const [imagen, setImagen] = useState<File | null>(null)
+
+  // Calienta la vista previa del link en el CDN antes de que la persona toque
+  // WhatsApp. La primera petición de cada código tarda ~1.7 s en generarse, y
+  // esa primera suele ser la de WhatsApp, que se rinde rápido y manda la
+  // tarjeta sin foto. Desde este mismo teléfono cae en el mismo nodo del CDN.
+  useEffect(() => {
+    if (fase !== 'end' || picks.length !== RONDAS_POR_RETO) return
+    void fetch(`/arcade/r/${codigo}/imagen`).catch(() => {})
+  }, [fase, picks.length, codigo])
+
   useEffect(() => {
     if (fase !== 'end' || picks.length !== RONDAS_POR_RETO) return
     if (typeof navigator === 'undefined' || typeof navigator.canShare !== 'function') return
