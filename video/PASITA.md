@@ -2,7 +2,9 @@
 
 Convierte una lista de pantallas en un reel vertical (1080×1920, MP4) con la
 Pasita animada y el estilo del grid de @pasas.mx: marco neón que cambia de
-color, títulos en Anton y la Pasita cambiando de pose en cada pantalla.
+color, títulos en Nunito Black con contorno, texto en Nunito ExtraBold y la
+Pasita cambiando de pose en cada pantalla. Cada video sale con su **portada**
+lista (PNG 1080×1920).
 
 ```bash
 cd video
@@ -10,8 +12,17 @@ node src/pasita.mjs --data mi-video.json --revisar   # un PNG por pantalla, para
 node src/pasita.mjs --data mi-video.json             # el video completo (~10 s de render por cada segundo de video)
 ```
 
-Deja en `salida/pasita/` el `.mp4` y un `.txt` con el texto del post y el
-prompt de la portada.
+Deja en `salida/pasita/` el `.mp4`, la portada `-portada.png` y un `.txt` con
+el texto del post.
+
+### La portada
+
+Se arma sola con el gancho (título grande), la pantalla `grande` si existe
+(etiqueta rosa) y la Pasita en la pose del gancho. Todo lo importante queda en
+el centro 3:4 (1080×1440), que es lo que muestra el grid de Instagram. Se sube
+al publicar: **Editar portada → Agregar desde la galería**.
+
+Los títulos se achican solos si no caben: Nunito Black es ancha.
 
 ## El archivo
 
@@ -20,7 +31,8 @@ prompt de la portada.
   "nombre": "no es que seas lento",        // nombre del archivo
   "pantallas": [ … ],                       // de 3 a 10
   "post": "texto para la publicación",      // opcional
-  "portada": "prompt para ChatGPT"          // opcional
+  "portada_pose": "celebrando",             // opcional: otra pose para la portada
+  "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
 }
 ```
 

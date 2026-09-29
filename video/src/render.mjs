@@ -79,6 +79,16 @@ export async function renderFrames(browser, template, data, prefix) {
   return files;
 }
 
+// Una imagen fija (portada): setup + espera de imágenes + captura.
+export async function renderImage(browser, template, data, out) {
+  const page = await openPage(browser, template);
+  await page.evaluate(d => window.setup(d), data);
+  await page.evaluate(() => window.ready || null);
+  await page.screenshot({ path: out, type: 'png' });
+  await page.close();
+  return { out };
+}
+
 export function renderReel(browser, data, out, opts) {
   return renderVideo(browser, 'reel.html', data, out, opts);
 }

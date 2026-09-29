@@ -49,3 +49,19 @@ function fit(el, box) {
 }
 
 var RING_SVG = '<svg viewBox="0 0 40 40"><circle class="track" cx="20" cy="20" r="16"/><circle class="bar" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="0"/></svg><b>5</b>';
+
+// Achica por igual un grupo de líneas (título de varias líneas) para que la más
+// ancha quepa en `max` px. Nunca agranda.
+function fitLines(lines, max) {
+  var widest = 0;
+  lines.forEach(function (el) { el.style.width = 'max-content'; widest = Math.max(widest, el.getBoundingClientRect().width); el.style.width = ''; });
+  if (widest <= max) return 1;
+  var k = max / widest;
+  lines.forEach(function (el) { el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * k) + 'px'; });
+  return k;
+}
+// Achica un bloque que envuelve en varias líneas si una palabra sola no cabe.
+function fitBlock(el) {
+  var size = parseFloat(getComputedStyle(el).fontSize);
+  for (var i = 0; i < 25 && el.scrollWidth > el.clientWidth + 1; i++) { size *= 0.94; el.style.fontSize = size + 'px'; }
+}

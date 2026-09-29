@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Portada del reel (1080×1920). El grid de Instagram recorta al centro 3:4
+   (1080×1440, de y=240 a y=1680): todo lo importante vive ahí. */
+.frame{background:
+  radial-gradient(55% 32% at 50% 72%, rgba(124,58,237,.75), transparent 70%),
+  radial-gradient(80% 40% at 100% 10%, rgba(236,72,153,.28), transparent 60%),
+  radial-gradient(70% 35% at 0% 40%, rgba(6,182,212,.18), transparent 60%), var(--bg)}
+.neon{position:absolute;left:3cqw;right:3cqw;top:calc(240px + 2.4cqw);bottom:calc(240px + 2.4cqw);border-radius:5cqw;
+  border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
+.title{position:absolute;left:9cqw;right:9cqw;top:300px;font-family:var(--font-title);font-weight:900;text-transform:uppercase;
+  line-height:1.02;letter-spacing:-.01em;-webkit-text-stroke:1.3cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
+.title span{display:block;font-size:14cqw}
+.k-blanco{color:#fff}.k-cian{color:var(--cyan)}.k-rosa{color:var(--pink)}.k-amarillo{color:var(--xp)}
+.pill{position:absolute;left:9cqw;display:flex;flex-direction:column;align-items:flex-start;gap:1.4cqw;transform:rotate(-3deg);transform-origin:left center}
+.pill b{font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:8cqw;line-height:1;color:#fff;
+  background:var(--pink);padding:1.6cqw 4cqw 2cqw;border-radius:3cqw;box-shadow:0 0 3cqw rgba(236,72,153,.6)}
+.pill span{font-size:5.4cqw;font-weight:900;color:var(--fg);background:rgba(15,10,30,.75);padding:1cqw 3cqw;border-radius:2cqw}
+.pasita{position:absolute;left:50%}
+.spark{position:absolute;height:auto}
+.brand{position:absolute;left:0;right:0;top:1572px;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em}
+.brand span{color:var(--pink)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="neon" id="neon"></div>
+  <div class="title" id="title"></div>
+  <div class="pill" id="pill"></div>
+  <div class="pasita" id="pasita"></div>
+  <svg class="spark" style="left:140px;top:1060px;width:90px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--xp)"/></svg>
+  <svg class="spark" style="right:130px;top:990px;width:66px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--cyan)"/></svg>
+  <svg class="spark" style="right:180px;top:1320px;width:48px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--pink)"/></svg>
+  <div class="brand">PASAS<span>.</span>MX</div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script>
+var COLOR = { cian: 'var(--cyan)', rosa: 'var(--pink)', amarillo: 'var(--xp)', morado: 'var(--brand)' };
+var LINEA = ['k-blanco', 'k-cian', 'k-blanco', 'k-rosa'];
+window.setup = function (data) {
+  var p = data.pantallas || [];
+  var g = p.find(function (x) { return x.tipo === 'gancho'; }) || { lineas: [p[0] && p[0].titulo || ''], pose: 'confiada', color: 'cian' };
+  var promesa = p.find(function (x) { return x.tipo === 'grande'; });
+  var pose = data.portada_pose || g.pose;
+  $('neon').style.setProperty('--c', COLOR[g.color] || COLOR.cian);
+  $('title').innerHTML = g.lineas.map(function (l, i) { return '<span class="' + LINEA[i % 4] + '">' + esc(l) + '</span>'; }).join('');
+  fitLines([].slice.call($('title').querySelectorAll('span')), 1080 - 2 * 97);
+  var bottomTitle = $('title').getBoundingClientRect().bottom;
+  if (promesa) {
+    $('pill').innerHTML = '<b>' + esc(promesa.titulo) + '</b>' + (promesa.texto ? '<span>' + esc(promesa.texto) + '</span>' : '');
+    $('pill').style.top = (bottomTitle + 36) + 'px';
+    bottomTitle = $('pill').getBoundingClientRect().bottom;
+  }
+  // La Pasita llena el espacio que queda entre el título y la marca
+  var floor = 1530, room = Math.max(420, floor - bottomTitle - 40);
+  var w = Math.min(760, room * PASITA_VB.w / PASITA_VB.h);
+  buildPasita($('pasita'), pose, w);
+  var el = $('pasita');
+  el.style.top = (floor - w * PASITA_VB.h / PASITA_VB.w) + 'px'; el.style.marginLeft = (-w / 2) + 'px';
+  window.ready = pasitaReady();
+  return 0;
+};
+window.render = function () {};
+</script>
+</body></html>

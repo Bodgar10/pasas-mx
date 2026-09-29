@@ -9,7 +9,7 @@
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { withBrowser, renderVideo, renderFrames } from './render.mjs';
+import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mjs';
 
 export const TIPOS = ['gancho', 'grande', 'numero', 'texto', 'cierre'];
 export const POSES = ['pensativa', 'celebrando', 'aprobando', 'confiada', 'lapiz', 'flexionando'];
@@ -39,6 +39,7 @@ export function validarPasita(d) {
     const todo = [...(s.lineas || []), s.titulo || '', s.texto || ''].join(' ');
     if (/\?/.test(todo) && !/¿/.test(todo)) avisos.push(`${n}: hay una pregunta sin "¿"`);
   });
+  if (d.portada_pose && !POSES.includes(d.portada_pose)) errores.push(`portada_pose "${d.portada_pose}" no existe`);
   if (p?.length && p[0].tipo !== 'gancho') avisos.push('la primera pantalla no es un gancho: los primeros 2 segundos deciden si alguien se queda');
   if (p?.length && p[p.length - 1].tipo !== 'cierre') avisos.push('la última pantalla no es un cierre');
   return { errores, avisos };
@@ -63,6 +64,9 @@ async function main() {
   await mkdir(dir, { recursive: true });
 
   await withBrowser(async b => {
+    const portada = path.join(dir, `${nombre}-portada.png`);
+    await renderImage(b, 'portada.html', d, portada);
+    console.log(`Portada: ${portada}`);
     if (a.revisar) {
       const files = await renderFrames(b, 'pasita.html', d, path.join(dir, nombre));
       console.log(`Cuadros para revisar:\n  ${files.join('\n  ')}`);
@@ -74,7 +78,7 @@ async function main() {
     console.log(`Video listo: ${out} (${duration.toFixed(1)} s, en ${Math.round((Date.now() - t0) / 1000)} s)`);
     const notas = [
       d.post ? `TEXTO PARA LA PUBLICACIÓN\n${d.post}` : '',
-      d.portada ? `PROMPT PARA LA PORTADA (ChatGPT)\n${d.portada}` : '',
+      d.portada_prompt ? `PROMPT PARA UNA PORTADA ILUSTRADA (ChatGPT, opcional)\n${d.portada_prompt}` : '',
     ].filter(Boolean).join('\n\n');
     if (notas) {
       await writeFile(path.join(dir, `${nombre}.txt`), notas + '\n');

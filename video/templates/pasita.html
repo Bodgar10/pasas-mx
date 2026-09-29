@@ -3,22 +3,23 @@
 <link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
 <style>
 /* Carrusel animado con la Pasita. Estilo del grid de @pasas.mx:
-   marco neón que cambia de color por pantalla, títulos en Anton, Pasita protagonista. */
+   marco neón que cambia de color por pantalla, títulos en Nunito Black con contorno, Pasita protagonista. */
 .frame{background:
   radial-gradient(90% 50% at 50% 100%, rgba(124,58,237,.55), transparent 70%),
   radial-gradient(80% 40% at 100% 0%, rgba(236,72,153,.25), transparent 60%), var(--bg)}
 .neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--c,var(--cyan));z-index:8;pointer-events:none;
   box-shadow:0 0 2.4cqw var(--c,var(--cyan)), inset 0 0 2.4cqw var(--c,var(--cyan))}
 .scene{padding:17cqw 9cqw 22cqw}
-.t{font-family:var(--font-title);font-weight:400;text-transform:uppercase;line-height:.98;text-wrap:balance;text-shadow:0 .6cqw 0 rgba(0,0,0,.35)}
-.gancho{font-size:15cqw}
+.t{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;text-wrap:balance;
+  -webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill;text-shadow:0 .8cqw 0 rgba(0,0,0,.45)}
+.gancho{font-size:12.5cqw}
 .gancho span{display:block}
-.grande{font-size:24cqw;line-height:.9}
-.titulo{font-size:12cqw}
-.cierre{font-size:17cqw}
+.grande{font-size:19cqw;line-height:.95}
+.titulo{font-size:9.5cqw}
+.cierre{font-size:14cqw}
 .txt{font-size:6.2cqw;font-weight:800;line-height:1.3;text-wrap:pretty;max-width:92%}
 .sub{font-size:6.4cqw;font-weight:900;color:var(--fg)}
-.num{width:22cqw;height:22cqw;border-radius:50%;display:grid;place-items:center;font-family:var(--font-title);font-size:15cqw;
+.num{width:22cqw;height:22cqw;border-radius:50%;display:grid;place-items:center;font-family:var(--font-title);font-weight:900;font-size:13cqw;
   color:var(--bg);background:var(--xp);box-shadow:0 0 3cqw rgba(251,191,36,.6)}
 .dots{display:flex;gap:2cqw}
 .dots i{width:9cqw;height:1.8cqw;border-radius:1cqw;background:var(--line)}
@@ -75,6 +76,14 @@ window.setup = function (data) {
     html += '<div class="scene" id="sc' + i + '">' + body + '</div><div class="pasita" id="pa' + i + '"></div>';
   });
   $('stage').innerHTML = html;
+  // Nunito Black es ancha: cada título se ajusta para no salirse del marco
+  var MAXW = 1080 - 2 * 97;
+  S.forEach(function (p, i) {
+    var sc = $('sc' + i);
+    if (p.tipo === 'gancho') fitLines([].slice.call(sc.querySelectorAll('.gancho span')), MAXW);
+    sc.querySelectorAll('.grande, .cierre').forEach(function (el) { fitLines([el], MAXW); });
+    sc.querySelectorAll('.titulo').forEach(fitBlock);
+  });
 
   var t0 = 0;
   T = S.map(function (p, i) {
