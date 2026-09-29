@@ -30,6 +30,13 @@ const C = {
 
 const FONDO = `radial-gradient(circle at 100% 0%, rgba(236,72,153,0.38), rgba(21,12,46,0) 55%), radial-gradient(circle at 0% 100%, rgba(124,58,237,0.6), rgba(21,12,46,0) 60%)`
 
+/**
+ * Caché de CDN para las imágenes con código: la primera petición la genera y
+ * las siguientes salen de Vercel al instante. Una hora basta: el código ya
+ * fija el puntaje y lo único que envejece son las opciones del día.
+ */
+export const CACHE_IMAGEN = 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
+
 let cache: Promise<{ name: string; data: Buffer; weight: 800 | 900; style: 'normal' }[]> | null = null
 
 export function fuentesOG() {

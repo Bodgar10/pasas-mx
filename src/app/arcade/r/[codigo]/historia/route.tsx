@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import { leerRetoDeHoy } from '@/lib/arcade-server'
 import { leerCodigo, rondaDelPuente } from '@/lib/arcade'
 import { SITIO } from '@/lib/seo'
-import { TarjetaHistoria, fuentesOG } from '../../../_og/tarjetas'
+import { CACHE_IMAGEN, TarjetaHistoria, fuentesOG } from '../../../_og/tarjetas'
 
 /**
  * GET /arcade/r/[codigo]/historia — PNG 1080×1920 para historias de
@@ -33,6 +33,6 @@ export async function GET(_req: Request, { params }: { params: Promise<{ codigo:
         dominio={SITIO.replace(/^https?:\/\//, '')}
       />
     ),
-    { width: 1080, height: 1920, fonts: await fuentesOG() }
+    { width: 1080, height: 1920, fonts: await fuentesOG(), headers: { 'Cache-Control': CACHE_IMAGEN } }
   )
 }
