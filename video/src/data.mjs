@@ -56,9 +56,13 @@ function env(name) {
 async function api(path, { method = 'GET', body } = {}) {
   const url = `${env('NEXT_PUBLIC_SUPABASE_URL').replace(/\/$/, '')}/rest/v1/${path}`;
   const key = env('SUPABASE_SERVICE_ROLE_KEY');
+  // Llaves nuevas (sb_secret_…) no son JWT: van solo en "apikey".
+  // Las antiguas (service_role, eyJ…) van también como Bearer.
+  const headers = { apikey: key, 'Content-Type': 'application/json' };
+  if (!key.startsWith('sb_')) headers.Authorization = `Bearer ${key}`;
   const res = await fetch(url, {
     method,
-    headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    headers,
     body: body ? JSON.stringify(body) : undefined,
   });
   const text = await res.text();
