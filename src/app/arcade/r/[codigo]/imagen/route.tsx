@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { leerRetoDeHoy } from '@/lib/arcade-server'
 import { fechaLarga, leerCodigo } from '@/lib/arcade'
-import { CACHE_IMAGEN, TarjetaLink, fuentesOG } from '../../../_og/tarjetas'
+import { TarjetaLink, fuentesOG, pngCompleto } from '../../../_og/tarjetas'
 
 /**
  * GET /arcade/r/[codigo]/imagen — vista previa (1200×630) del resultado que
@@ -25,15 +25,17 @@ export async function GET(_req: Request, { params }: { params: Promise<{ codigo:
   const reto = await leerRetoDeHoy()
   const esDeHoy = !!reto && leido.numero === reto.number
 
-  return new ImageResponse(
-    (
-      <TarjetaLink
-        numero={leido.numero}
-        fecha={esDeHoy ? fechaLarga(reto.date) : null}
-        opciones={esDeHoy ? reto.rounds[0].options : null}
-        resultados={leido.resultados}
-      />
-    ),
-    { width: 1200, height: 630, fonts: await fuentesOG(), headers: { 'Cache-Control': CACHE_IMAGEN } }
+  return pngCompleto(
+    new ImageResponse(
+      (
+        <TarjetaLink
+          numero={leido.numero}
+          fecha={esDeHoy ? fechaLarga(reto.date) : null}
+          opciones={esDeHoy ? reto.rounds[0].options : null}
+          resultados={leido.resultados}
+        />
+      ),
+      { width: 1200, height: 630, fonts: await fuentesOG() }
+    )
   )
 }

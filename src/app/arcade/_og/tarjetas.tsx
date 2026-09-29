@@ -37,6 +37,26 @@ const FONDO = `radial-gradient(circle at 100% 0%, rgba(236,72,153,0.38), rgba(21
  */
 export const CACHE_IMAGEN = 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
 
+/**
+ * Convierte un ImageResponse en un PNG completo con Content-Length.
+ *
+ * 🔴 ImageResponse responde en streaming, sin Content-Length. La vista previa
+ * de WhatsApp descarta imágenes sin tamaño declarado: el link salía sin
+ * foto aunque la imagen respondía 200. La de /arcade (opengraph-image
+ * estática) sí lo traía, por eso esa funcionaba.
+ */
+export async function pngCompleto(res: Response): Promise<Response> {
+  const buf = await res.arrayBuffer()
+  return new Response(buf, {
+    status: 200,
+    headers: {
+      'Content-Type': 'image/png',
+      'Content-Length': String(buf.byteLength),
+      'Cache-Control': CACHE_IMAGEN,
+    },
+  })
+}
+
 let cache: Promise<{ name: string; data: Buffer; weight: 800 | 900; style: 'normal' }[]> | null = null
 
 export function fuentesOG() {
