@@ -52,5 +52,5 @@ export async function generateMetadata({
 }
 
 export default function ResultadoCompartido() {
-  return <ContenidoArcade />
+  return <ContenidoArcade origenRuta="resultado_compartido" />
 }

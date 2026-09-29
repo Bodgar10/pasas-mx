@@ -73,6 +73,12 @@ describe('microcopyPromo', () => {
     expect(resultado).toBe('Tus primeros 7 días son gratis. · Cancela cuando quieras')
   })
 
+  it('🔴 REGRESIÓN: la promesa con punto final no se repite (micro del hero de la landing)', () => {
+    expect(microcopyPromo('7 días gratis · Cancela cuando quieras.', ['Cancela cuando quieras'])).toBe(
+      '7 días gratis · Cancela cuando quieras.'
+    )
+  })
+
   it('las dos promesas ya presentes como segmentos: el texto no cambia ni crece', () => {
     const yaCompleto = 'Requiere tarjeta · Cancela cuando quieras'
 

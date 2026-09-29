@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { leerRetoDeHoy } from '@/lib/arcade-server'
 import { SITIO } from '@/lib/seo'
+import type { OrigenArcade } from '@/lib/arcade'
 import ArcadeClient from './arcade-client'
 import s from './arcade.module.css'
 
@@ -9,7 +10,7 @@ import s from './arcade.module.css'
  * resultado de alguien). Las dos rutas sirven el reto de hoy; solo cambia la
  * vista previa del link.
  */
-export default async function ContenidoArcade() {
+export default async function ContenidoArcade({ origenRuta = null }: { origenRuta?: OrigenArcade | null } = {}) {
   const reto = await leerRetoDeHoy()
 
   if (!reto || !reto.rounds || reto.rounds.length === 0) {
@@ -26,5 +27,5 @@ export default async function ContenidoArcade() {
     )
   }
 
-  return <ArcadeClient reto={reto} dominio={SITIO} />
+  return <ArcadeClient reto={reto} dominio={SITIO} origenRuta={origenRuta} />
 }

@@ -6,6 +6,7 @@ import Pasita from '@/components/mascota/Pasita'
 import Confetti from '@/components/global/Confetti'
 import { track } from '@/lib/analytics/track'
 import { SITIO } from '@/lib/seo'
+import { fijarOrigenArcade, leerOrigenArcade, type OrigenArcade } from '@/lib/arcade'
 import {
   OLEADAS_GRATIS,
   OLEADAS_TOTALES,
@@ -63,6 +64,24 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
   const correctasRef = useRef(0)
   const partidasRef = useRef(0)
 
+  // ── Origen de la visita (analítica), el mismo que usa el Arcade. Se
+  // CONSERVA el que ya traía la sesión: quien entró por el banner de la
+  // landing sigue contando como 'landing_banner' aunque el puente del Arcade
+  // traiga ?desde=arcade. Sin sesión previa, manda la URL (o 'directo').
+  const origenRef = useRef<OrigenArcade>('directo')
+  const conOrigen = (evento: string, props: Record<string, unknown>) =>
+    track(evento, { ...props, origen: origenRef.current })
+
+  useEffect(() => {
+    origenRef.current =
+      leerOrigenArcade() ?? fijarOrigenArcade(new URLSearchParams(window.location.search).get('desde'))
+    track('horda_publica_vista', {
+      origen: origenRef.current,
+      topic: tema.topicName,
+      subject_slug: tema.subjectSlug,
+    })
+  }, [tema.topicName, tema.subjectSlug])
+
   // Récord local. Desde la función async, como en el resto del repo
   // (react-hooks/set-state-in-effect).
   useEffect(() => {
@@ -94,7 +113,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
     } catch (e) {
       setError(e instanceof Error ? e.message : 'No se pudo cargar la oleada')
       setFase('broken')
-      track('horda_publica_error', { topic: tema.topicName, oleada: w })
+      conOrigen('horda_publica_error', { topic: tema.topicName, oleada: w })
     } finally {
       setCargando(false)
     }
@@ -102,7 +121,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
 
   function empezar() {
     partidasRef.current += 1
-    track('horda_publica_iniciada', {
+    conOrigen('horda_publica_iniciada', {
       topic: tema.topicName,
       subject_slug: tema.subjectSlug,
       es_reintento: partidasRef.current > 1,
@@ -146,13 +165,13 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
 
     const n = correctasRef.current
     const tipo = resultadoOleada(n)
-    track('horda_publica_oleada', { topic: tema.topicName, oleada, n_correctas_en_oleada: n, resultado: tipo })
+    conOrigen('horda_publica_oleada', { topic: tema.topicName, oleada, n_correctas_en_oleada: n, resultado: tipo })
 
     if (tipo === 'avanza') {
       guardarRecord(tema.topicId, oleada)
       setRecord((r) => Math.max(r, oleada))
       if (oleada >= OLEADAS_GRATIS) {
-        track('horda_publica_muro', { topic: tema.topicName, subject_slug: tema.subjectSlug })
+        conOrigen('horda_publica_muro', { topic: tema.topicName, subject_slug: tema.subjectSlug })
         setFase('muro')
         return
       }
@@ -175,7 +194,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
   const mensaje = mensajePapa(tema.topicName, `${dominio}${urlUnete(tema.subjectSlug, tema.topicSlug)}`)
 
   async function copiarMensaje() {
-    track('horda_publica_mensaje', { topic: tema.topicName, canal: 'copiar' })
+    conOrigen('horda_publica_mensaje', { topic: tema.topicName, canal: 'copiar' })
     try {
       await navigator.clipboard.writeText(mensaje)
       setAviso('Mensaje copiado. Pégalo en el chat de tu papá o mamá.')
@@ -347,7 +366,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
             </div>
             <ChoiceButton
               onClick={() => {
-                track('horda_publica_muro_eleccion', { topic: tema.topicName, quien: 'estudiante' })
+                conOrigen('horda_publica_muro_eleccion', { topic: tema.topicName, quien: 'estudiante' })
                 setFase('papa')
               }}
               titulo="Soy estudiante"
@@ -356,7 +375,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
             <ChoiceButton
               primario
               onClick={() => {
-                track('horda_publica_muro_eleccion', { topic: tema.topicName, quien: 'adulto' })
+                conOrigen('horda_publica_muro_eleccion', { topic: tema.topicName, quien: 'adulto' })
                 // Ruta con redirección del servidor: navegación completa, no router.push.
                 window.location.href = `${urlUnete(tema.subjectSlug, tema.topicSlug)}?quien=adulto`
               }}
@@ -413,7 +432,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
               href={`https://wa.me/?text=${encodeURIComponent(mensaje)}`}
               target="_blank"
               rel="noopener"
-              onClick={() => track('horda_publica_mensaje', { topic: tema.topicName, canal: 'whatsapp' })}
+              onClick={() => conOrigen('horda_publica_mensaje', { topic: tema.topicName, canal: 'whatsapp' })}
               style={{ ...btnBase, background: '#10b981', color: '#06241a', textDecoration: 'none' }}
             >
               WhatsApp

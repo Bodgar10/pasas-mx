@@ -10,12 +10,15 @@ import {
   codigoResultado,
   etiquetaPuntaje,
   fechaLarga,
+  fijarOrigenArcade,
+  leerOrigenArcade,
   formatoReloj,
   rondaDelPuente,
   segundosParaSiguienteReto,
   textoCompartir,
   urlHorda,
   type CifrasArcade,
+  type OrigenArcade,
   type RetoArcade,
 } from '@/lib/arcade'
 import s from './arcade.module.css'
@@ -51,7 +54,16 @@ function anonId(): string {
   return nuevo
 }
 
-export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; dominio: string }) {
+export default function ArcadeClient({
+  reto,
+  dominio,
+  origenRuta = null,
+}: {
+  reto: RetoArcade
+  dominio: string
+  /** Lo fija la ruta: /arcade/r/... es siempre 'resultado_compartido'. */
+  origenRuta?: OrigenArcade | null
+}) {
   const [fase, setFase] = useState<Fase>('intro')
   const [idx, setIdx] = useState(0)
   const [picks, setPicks] = useState<number[]>([])
@@ -59,6 +71,24 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
   const [aviso, setAviso] = useState('')
   const [reloj, setReloj] = useState<string | null>(null)
   const refCompartir = useRef<HTMLPreElement>(null)
+
+  // ── Origen de la visita (analítica). Ver fijarOrigenArcade en lib/arcade.
+  const origenRef = useRef<OrigenArcade>('directo')
+  const conOrigen = (evento: string, props: Record<string, unknown>) =>
+    track(evento, { ...props, origen: origenRef.current })
+
+  // `arcade_visto` es la entrada al embudo: sin él no se sabe cuántos de los
+  // que tocaron el banner llegaron a ver el juego. window.location y no
+  // useSearchParams: la página es ISR y no lleva <Suspense> para eso.
+  useEffect(() => {
+    const desde = origenRuta ?? new URLSearchParams(window.location.search).get('desde')
+    origenRef.current = fijarOrigenArcade(desde)
+    track('arcade_visto', {
+      origen: origenRef.current,
+      reto_numero: reto.number,
+      ya_jugo: !!leerLocal(llavePartida(reto.date)),
+    })
+  }, [origenRuta, reto.number, reto.date])
 
   const resultados = calcularResultados(reto, picks)
   const aciertos = resultados.filter(Boolean).length
@@ -118,7 +148,7 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
     setPicks([])
     setIdx(0)
     setFase('play')
-    track('arcade_iniciado', { reto_numero: reto.number })
+    conOrigen('arcade_iniciado', { reto_numero: reto.number })
   }
 
   function responder(i: number) {
@@ -137,7 +167,7 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
       window.scrollTo({ top: 0, behavior: 'instant' })
     } else {
       setFase('end')
-      track('arcade_completado', { reto_numero: reto.number, aciertos })
+      conOrigen('arcade_completado', { reto_numero: reto.number, aciertos })
     }
   }
 
@@ -182,7 +212,7 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
 
   async function compartirImagen() {
     if (!imagen) return
-    track('arcade_compartido', { reto_numero: reto.number, canal: 'imagen', aciertos })
+    conOrigen('arcade_compartido', { reto_numero: reto.number, canal: 'imagen', aciertos })
     try {
       await navigator.share({ files: [imagen], text: texto })
     } catch {
@@ -191,7 +221,7 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
   }
 
   async function copiar() {
-    track('arcade_compartido', { reto_numero: reto.number, canal: 'copiar', aciertos })
+    conOrigen('arcade_compartido', { reto_numero: reto.number, canal: 'copiar', aciertos })
     try {
       await navigator.clipboard.writeText(texto)
       setAviso('Resultado copiado. Pégalo en tu grupo.')
@@ -327,7 +357,7 @@ export default function ArcadeClient({ reto, dominio }: { reto: RetoArcade; domi
                   target="_blank"
                   rel="noopener"
                   onClick={() =>
-                    track('arcade_compartido', { reto_numero: reto.number, canal: 'whatsapp', aciertos })
+                    conOrigen('arcade_compartido', { reto_numero: reto.number, canal: 'whatsapp', aciertos })
                   }
                 >
                   WhatsApp
@@ -463,7 +493,7 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
               className={`${s.btn} ${s.primary}`}
               href={urlHorda(r)}
               onClick={() =>
-                track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto })
+                track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, origen: leerOrigenArcade() ?? undefined })
               }
             >
               Jugar la Horda de {r.topic}

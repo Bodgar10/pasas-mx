@@ -20,6 +20,7 @@
 import { permiteAnalytics, permiteMarketing } from '@/lib/consent'
 import { esInterno } from '@/lib/analytics/interno'
 import { cicloActual } from '@/lib/ciclo-escolar'
+import { LLAVE_ORIGEN_ARCADE } from '@/lib/arcade'
 
 export type PropiedadesEvento = Record<string, unknown>
 
@@ -339,6 +340,12 @@ function desdeSession(): PropiedadesEvento {
     }
     const promo = window.sessionStorage.getItem(CLAVE_PROMO)
     if (promo) out.promo_slug = promo
+    // Por dónde entró a los juegos gratis (banner de la landing, resultado
+    // compartido…). Viaja en TODOS los eventos de la pestaña —onboarding,
+    // registro, checkout— para seguir el embudo del Arcade hasta el cobro.
+    // Ver fijarOrigenArcade en lib/arcade.ts.
+    const arcade = window.sessionStorage.getItem(LLAVE_ORIGEN_ARCADE)
+    if (arcade) out.origen_arcade = arcade
   } catch {
     // Safari en navegacion privada puede lanzar al leer sessionStorage.
   }

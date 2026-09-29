@@ -136,6 +136,8 @@ export function textoCompartir(
   const cuadros = resultados.map((ok) => (ok ? '🟩' : '🟥')).join('')
   const n = resultados.filter(Boolean).length
   const link = `${dominio}/arcade/r/${codigoResultado(numero, resultados)}`
+  // El origen 'resultado_compartido' no necesita ?desde=: /arcade/r/... lo
+  // fija solo (ver ContenidoArcade).
   if (n === RONDAS_POR_RETO) {
     return `${n}/${RONDAS_POR_RETO} en el reto de historia de hoy ${cuadros}\nA ver si me igualas.\n${link}`
   }
@@ -156,9 +158,47 @@ export function rondaDelPuente(reto: RetoArcade, resultados: boolean[]): RondaAr
 }
 
 /**
+ * ORIGEN DE LA VISITA al Arcade: de dónde llegó (el banner de la landing, un
+ * link compartido, directo…). Se guarda en sessionStorage para que lo hereden
+ * los eventos de la Horda pública y del onboarding de la misma pestaña, y así
+ * seguir a quien entró por el banner hasta el registro.
+ *
+ * 🔴 No es un utm: UTMPersistence guarda el PRIMER toque y un utm interno
+ * pisaría el canal real (TikTok, orgánico…). Esto viaja aparte, con
+ * `?desde=`, y solo como propiedad de los eventos.
+ */
+export const LLAVE_ORIGEN_ARCADE = 'pasas_arcade_origen'
+export const ORIGENES_ARCADE = ['landing_banner', 'resultado_compartido', 'arcade', 'directo'] as const
+export type OrigenArcade = (typeof ORIGENES_ARCADE)[number]
+
+/** Lee el origen de la sesión. Nunca lanza (modo privado, SSR). */
+export function leerOrigenArcade(): OrigenArcade | null {
+  try {
+    const v = window.sessionStorage.getItem(LLAVE_ORIGEN_ARCADE)
+    return (ORIGENES_ARCADE as readonly string[]).includes(v ?? '') ? (v as OrigenArcade) : null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Fija el origen con lo que trae la URL, si trae algo válido. Sin `?desde=`
+ * se conserva el que ya había en la sesión; si no hay ninguno, 'directo'.
+ * Devuelve el origen vigente.
+ */
+export function fijarOrigenArcade(desde: string | null): OrigenArcade {
+  const valido = (ORIGENES_ARCADE as readonly string[]).includes(desde ?? '') ? (desde as OrigenArcade) : null
+  const vigente = valido ?? leerOrigenArcade() ?? 'directo'
+  try {
+    window.sessionStorage.setItem(LLAVE_ORIGEN_ARCADE, vigente)
+  } catch {}
+  return vigente
+}
+
+/**
  * El puente va a la Horda PÚBLICA (oleadas 1 a 3 sin cuenta), no a la de
  * /guia, que pide login. Quien tiene cuenta juega la completa desde su guía.
  */
 export function urlHorda(r: RondaArcade): string {
-  return `/horda/${r.subject_slug}/${r.topic_slug}`
+  return `/horda/${r.subject_slug}/${r.topic_slug}?desde=arcade`
 }

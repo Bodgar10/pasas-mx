@@ -446,8 +446,13 @@ export function microcopyPromo(
       .filter(Boolean)
   )
 
+  // 🔴 Se compara sin el punto final. La micro del hero de la landing es
+  // "7 días gratis · Cancela cuando quieras." —con punto— y la comparación
+  // exacta no la reconocía: se pintaba "…Cancela cuando quieras. · Cancela
+  // cuando quieras".
+  const norm = (s: string) => s.toLowerCase().replace(/[.!\s]+$/, '')
   const faltantes = obligatorias.filter(
-    (f) => !segmentos.some((s) => s.toLowerCase() === f.toLowerCase())
+    (f) => !segmentos.some((s) => norm(s) === norm(f))
   )
 
   return [...segmentos, ...faltantes].join(' · ')

@@ -817,9 +817,10 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
           ocupa su lugar, así no le quita pantalla a la landing mientras se lee.
           🔴 Sin utm_source en el link: UTMPersistence guarda el PRIMER toque, y
           un utm interno pisaría el canal real (orgánico) de quien lo toque. El
-          clic se mide con su propio evento. */}
+          clic se mide con su propio evento, y ?desde= marca el origen en los
+          eventos del Arcade, la Horda y el onboarding (lib/arcade.ts). */}
       <Link
-        href="/arcade"
+        href="/arcade?desde=landing_banner"
         onClick={() => track('landing_banner_arcade_clic', { variant })}
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 101,
