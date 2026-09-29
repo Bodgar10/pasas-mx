@@ -61,7 +61,12 @@ function buildPasita(el, pose, px) {
 }
 
 // Parpadeo determinista: ojos cerrados 0.13 s en los segundos indicados.
-var PARPADEOS = [1.7, 4.9, 7.4, 10.8, 13.1, 16.6, 19.2, 22.5, 25.8, 29.3];
+var PARPADEOS = (function () {
+  // Cada 2.5–4 s, con variación fija para que no parezca reloj y el video salga igual cada vez
+  var out = [], t = 1.7, j = [0.9, 1.6, 0.4, 1.2, 0.7, 1.4];
+  for (var i = 0; t < 180; i++) { out.push(t); t += 2.5 + j[i % j.length]; }
+  return out;
+})();
 function blinkAll(t) {
   var cerrado = PARPADEOS.some(function (b) { return t >= b && t < b + 0.13; });
   document.querySelectorAll('img[data-ojo]').forEach(function (img) {

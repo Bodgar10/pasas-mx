@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
+<style>
+/* Carrusel animado con la Pasita. Estilo del grid de @pasas.mx:
+   marco neón que cambia de color por pantalla, títulos en Anton, Pasita protagonista. */
+.frame{background:
+  radial-gradient(90% 50% at 50% 100%, rgba(124,58,237,.55), transparent 70%),
+  radial-gradient(80% 40% at 100% 0%, rgba(236,72,153,.25), transparent 60%), var(--bg)}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--c,var(--cyan));z-index:8;pointer-events:none;
+  box-shadow:0 0 2.4cqw var(--c,var(--cyan)), inset 0 0 2.4cqw var(--c,var(--cyan))}
+.scene{padding:17cqw 9cqw 22cqw}
+.t{font-family:var(--font-title);font-weight:400;text-transform:uppercase;line-height:.98;text-wrap:balance;text-shadow:0 .6cqw 0 rgba(0,0,0,.35)}
+.gancho{font-size:15cqw}
+.gancho span{display:block}
+.grande{font-size:24cqw;line-height:.9}
+.titulo{font-size:12cqw}
+.cierre{font-size:17cqw}
+.txt{font-size:6.2cqw;font-weight:800;line-height:1.3;text-wrap:pretty;max-width:92%}
+.sub{font-size:6.4cqw;font-weight:900;color:var(--fg)}
+.num{width:22cqw;height:22cqw;border-radius:50%;display:grid;place-items:center;font-family:var(--font-title);font-size:15cqw;
+  color:var(--bg);background:var(--xp);box-shadow:0 0 3cqw rgba(251,191,36,.6)}
+.dots{display:flex;gap:2cqw}
+.dots i{width:9cqw;height:1.8cqw;border-radius:1cqw;background:var(--line)}
+.dots i.on{background:var(--xp)}
+.k-blanco{color:#fff}.k-cian{color:var(--cyan)}.k-rosa{color:var(--pink)}.k-amarillo{color:var(--xp)}.k-morado{color:var(--muted)}
+.pasita{position:absolute;left:50%;transform-origin:50% 100%}
+.brand{position:absolute;left:0;right:0;top:6cqw;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5.4cqw;letter-spacing:.14em;z-index:9}
+.brand span{color:var(--pink)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="neon" id="neon"></div>
+  <div id="stage"></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script>
+var COLOR = { cian: 'var(--cyan)', rosa: 'var(--pink)', amarillo: 'var(--xp)', morado: 'var(--brand)' };
+// Color del título grande según el color de marco de la pantalla
+var TITULO = { cian: 'k-blanco', rosa: 'k-rosa', amarillo: 'k-amarillo', morado: 'k-blanco' };
+// Dónde se para la Pasita en cada tipo de pantalla: ancho, distancia al piso y corrimiento horizontal (px)
+var LUGAR = { gancho: [680, 300, 0], grande: [640, 330, 0], numero: [520, 330, 170], texto: [520, 330, 170], cierre: [680, 330, 0] };
+var LINEA = ['k-blanco', 'k-cian', 'k-blanco', 'k-rosa'];
+var S, T;
+
+// Cuánto dura cada pantalla: lo suficiente para leerla con calma
+function duracion(p) {
+  if (p.tipo === 'gancho') return 3.2;
+  if (p.tipo === 'grande') return 2.4;
+  if (p.tipo === 'cierre') return 4;
+  var n = (p.titulo || '').length + (p.texto || '').length;
+  return Math.max(3.5, Math.min(6.5, 2.2 + n * 0.042));
+}
+
+window.setup = function (data) {
+  S = data.pantallas;
+  var nums = S.filter(function (p) { return p.tipo === 'numero'; }).length, k = 0, html = '';
+  S.forEach(function (p, i) {
+    var body = '';
+    if (p.tipo === 'gancho') {
+      body = '<div class="t gancho">' + p.lineas.map(function (l, j) { return '<span class="' + LINEA[j % 4] + '">' + esc(l) + '</span>'; }).join('') + '</div>';
+    } else if (p.tipo === 'grande') {
+      body = '<div class="t grande ' + (p.color === 'cian' ? 'k-cian' : 'k-rosa') + '">' + esc(p.titulo) + '</div>' + (p.texto ? '<div class="sub">' + esc(p.texto) + '</div>' : '');
+    } else if (p.tipo === 'cierre') {
+      body = '<div class="t cierre k-amarillo">' + esc(p.titulo) + '</div>' + (p.texto ? '<div class="sub">' + esc(p.texto) + '</div>' : '');
+    } else {
+      if (p.tipo === 'numero') k++;
+      body = (p.tipo === 'numero' ? '<div class="num">' + (p.numero || k) + '</div>' : '') +
+        '<div class="t titulo ' + TITULO[p.color || 'cian'] + '">' + esc(p.titulo) + '</div>' +
+        (p.texto ? '<div class="txt">' + esc(p.texto) + '</div>' : '') +
+        (p.tipo === 'numero' && nums > 1 ? '<div class="dots">' + Array.apply(null, Array(nums)).map(function (_, j) { return '<i class="' + (j < k ? 'on' : '') + '"></i>'; }).join('') + '</div>' : '');
+    }
+    html += '<div class="scene" id="sc' + i + '">' + body + '</div><div class="pasita" id="pa' + i + '"></div>';
+  });
+  $('stage').innerHTML = html;
+
+  var t0 = 0;
+  T = S.map(function (p, i) {
+    var d = duracion(p), l = LUGAR[p.tipo];
+    buildPasita($('pa' + i), p.pose, l[0]);
+    var el = $('pa' + i), h = l[0] * PASITA_VB.h / PASITA_VB.w;
+    el.style.top = (1920 - l[1] - h) + 'px'; el.style.marginLeft = (-l[0] / 2 + l[2]) + 'px'; el.style.width = l[0] + 'px';
+    var r = [t0, t0 + d]; t0 += d; return r;
+  });
+  window.ready = pasitaReady();
+  window.render(0);
+  return t0;
+};
+
+function body(el, t, t0, extra) {
+  var j = clamp((t - t0) / 0.5), hop = Math.sin(j * Math.PI) * (1 - j) * 60;
+  var breathe = 1 + 0.012 * Math.sin(t * 2.4);
+  el.style.transform = 'translateY(' + (-hop) + 'px) scale(' + (1 / breathe) + ',' + breathe + ')' + (extra || '');
+}
+
+// Para revisar: un momento por pantalla, ya con las entradas terminadas.
+window.momentos = function () { return T.map(function (r) { return r[0] + Math.min(1.4, (r[1] - r[0]) * 0.6); }); };
+
+window.render = function (t) {
+  var last = S.length - 1, color = S[0].color;
+  S.forEach(function (p, i) {
+    var a = win(t, T[i][0], T[i][1] + (i === last ? 1 : 0), i > 0, i < last);
+    show($('sc' + i), a);
+    var pa = $('pa' + i);
+    pa.style.opacity = a;
+    var shake = p.temblar ? ' translateX(' + (Math.sin(t * 40) * 6 * clamp((t - T[i][0]) / 0.3)) + 'px)' : '';
+    body(pa, t, i === 0 ? -1 : T[i][0], shake);
+    var aura = pa.querySelector('[data-aura]'); if (aura) aura.style.transform = 'scale(' + (1 + 0.04 * Math.sin(t * 9)) + ')';
+    if (t >= T[i][0]) color = p.color;
+    // Entradas: líneas del gancho una por una; el título grande con rebote
+    if (p.tipo === 'gancho') $('sc' + i).querySelectorAll('span').forEach(function (s, j) { pop(s, t, T[i][0] + 0.1 + j * 0.22, 0.3); });
+    if (p.tipo === 'grande') $('sc' + i).querySelector('.grande').style.transform = 'scale(' + (0.7 + 0.3 * back(clamp((t - T[i][0]) / 0.45))) + ')';
+  });
+  $('neon').style.setProperty('--c', COLOR[color] || COLOR.cian);
+  blinkAll(t);
+};
+</script>
+</body></html>

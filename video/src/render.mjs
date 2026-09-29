@@ -60,6 +60,25 @@ export async function renderVideo(browser, template, data, out, { log = () => {}
   return { out, duration };
 }
 
+// Un PNG por pantalla, para aprobar el texto antes de generar el video completo.
+// La plantilla expone window.momentos() → segundos a capturar.
+export async function renderFrames(browser, template, data, prefix) {
+  const page = await openPage(browser, template);
+  await page.evaluate(d => window.setup(d), data);
+  await page.evaluate(() => window.ready || null);
+  await page.evaluate(() => document.fonts.load('400 10px Anton'));
+  const ts = await page.evaluate(() => (window.momentos ? window.momentos() : [0]));
+  const files = [];
+  for (const [i, t] of ts.entries()) {
+    await page.evaluate(x => window.render(x), t);
+    const f = `${prefix}-${String(i + 1).padStart(2, '0')}.png`;
+    await page.screenshot({ path: f, type: 'png' });
+    files.push(f);
+  }
+  await page.close();
+  return files;
+}
+
 export function renderReel(browser, data, out, opts) {
   return renderVideo(browser, 'reel.html', data, out, opts);
 }
