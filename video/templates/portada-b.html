@@ -2,6 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <link rel="stylesheet" href="base.css">
 <style>
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
 /* Portada B (1080×1920): Pasita grande arriba y el título en un panel neón abajo.
    Todo dentro del recorte 3:4 del grid (y=240 a y=1680). */
 .frame{background:
@@ -34,6 +35,7 @@
 </style></head>
 <body>
 <div class="frame">
+  <div class="fondo" id="fondo"></div>
   <div class="neon" id="neon"></div>
   <div class="rays"></div>
   <div class="pasita" id="pasita"></div>
@@ -44,10 +46,12 @@
 </div>
 <script src="anim.js"></script>
 <script src="pasita.js"></script>
+<script src="fondo.js"></script>
 <script>
 var COLOR = { cian: 'var(--cyan)', rosa: 'var(--pink)', amarillo: 'var(--xp)', morado: 'var(--brand)' };
 var LINEA = ['k-blanco', 'k-amarillo', 'k-blanco', 'k-rosa'];
 window.setup = function (data) {
+  buildFondo($('fondo'), data.fondo, -160);
   $('dur-t').textContent = etiquetaDuracion(data.pantallas || []);
   var p = data.pantallas || [];
   var g = p.find(function (x) { return x.tipo === 'gancho'; }) || { lineas: [p[0] && p[0].titulo || ''], pose: 'confiada', color: 'cian' };
@@ -70,6 +74,7 @@ window.setup = function (data) {
   buildPasita($('pasita'), pose, w);
   var el = $('pasita');
   el.style.top = (feet - w * PASITA_VB.h / PASITA_VB.w) + 'px'; el.style.marginLeft = (-w / 2) + 'px';
+  animFondo(1.5);
   window.ready = pasitaReady();
   return 0;
 };

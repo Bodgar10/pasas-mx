@@ -2,6 +2,7 @@
 <html lang="es"><head><meta charset="utf-8">
 <link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
 <style>
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
 /* Carrusel animado con la Pasita. Estilo del grid de @pasas.mx:
    marco neón que cambia de color por pantalla, títulos en Nunito Black con contorno, Pasita protagonista. */
 .frame{background:
@@ -31,12 +32,14 @@
 </style></head>
 <body>
 <div class="frame">
+  <div class="fondo" id="fondo"></div>
   <div class="neon" id="neon"></div>
   <div id="stage"></div>
   <div class="brand">PASAS<span>.</span>MX</div>
 </div>
 <script src="anim.js"></script>
 <script src="pasita.js"></script>
+<script src="fondo.js"></script>
 <script>
 var COLOR = { cian: 'var(--cyan)', rosa: 'var(--pink)', amarillo: 'var(--xp)', morado: 'var(--brand)' };
 // Color del título grande según el color de marco de la pantalla
@@ -47,6 +50,7 @@ var LINEA = ['k-blanco', 'k-cian', 'k-blanco', 'k-rosa'];
 var S, T;
 
 window.setup = function (data) {
+  buildFondo($('fondo'), data.fondo, 0);
   S = data.pantallas;
   var nums = S.filter(function (p) { return p.tipo === 'numero'; }).length, k = 0, html = '';
   S.forEach(function (p, i) {
@@ -114,6 +118,7 @@ window.render = function (t) {
     if (p.tipo === 'grande') $('sc' + i).querySelector('.grande').style.transform = 'scale(' + (0.7 + 0.3 * back(clamp((t - T[i][0]) / 0.45))) + ')';
   });
   $('neon').style.setProperty('--c', COLOR[color] || COLOR.cian);
+  animFondo(t);
   blinkAll(t);
 };
 </script>

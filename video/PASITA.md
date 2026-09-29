@@ -44,11 +44,22 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
   "nombre": "no es que seas lento",        // nombre del archivo
   "pantallas": [ … ],                       // de 3 a 10
   "post": "texto para la publicación",      // opcional
+  "fondo": "cuarto",                        // opcional: "cuarto" (por defecto) o "imagen:archivo.png" de video/fondos/
   "portada_pose": "celebrando",             // opcional: otra pose para la portada A
   "portada_pose_b": "confiada",             // opcional: otra pose para la portada B
   "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
 }
 ```
+
+### Fondo
+
+Por defecto, un **cuarto de estudio de noche** dibujado en vectores (ventana con
+luna, librero, pila de libros de MATE/HISTORIA/BIOLOGÍA/LITERATURA, lámpara de
+lava, laptop), con movimiento sutil y la parte de arriba oscurecida para que se
+lea el texto. La Pasita queda parada sobre el escritorio.
+
+Para usar un fondo propio (por ejemplo, de ChatGPT), guárdalo en
+`video/fondos/` y usa `"fondo": "imagen:archivo.png"`. Ver `fondos/LEEME.md`.
 
 ### Tipos de pantalla
 
