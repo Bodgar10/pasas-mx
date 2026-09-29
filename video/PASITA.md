@@ -86,7 +86,7 @@ Todas llevan `pose` y `color`. Opcional: `"temblar": true` (la Pasita tiembla; v
 
 | pose | Cuándo |
 |---|---|
-| `pensativa` | Preguntas, dudas, el problema |
+| `pensativa` | Preguntas, dudas, el problema (una mano en la barbilla y la otra en la cintura) |
 | `celebrando` | Promesas, buenas noticias, "¡sí se puede!" |
 | `aprobando` | Consejos, pasos, "haz esto" (pulgar arriba) |
 | `confiada` | Afirmaciones tranquilas, manos en la cintura |
