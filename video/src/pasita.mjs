@@ -11,6 +11,8 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mjs';
+import { leerAudios, tiemposDe, armarPista, ponerPista } from './voz.mjs';
+import { rename, rm } from 'node:fs/promises';
 
 export const TIPOS = ['gancho', 'grande', 'numero', 'texto', 'cierre'];
 export const POSES = ['pensativa', 'celebrando', 'aprobando', 'confiada', 'lapiz', 'flexionando'];
@@ -54,6 +56,17 @@ export function validarPasita(d) {
   return { errores, avisos };
 }
 
+// Lo que se dice en cada pantalla (se puede cambiar con "voz" en la pantalla)
+export function guionPasita(d) {
+  let k = 0;
+  return d.pantallas.map(p => {
+    if (p.voz) return p.voz;
+    if (p.tipo === 'gancho') return p.lineas.join(' ');
+    if (p.tipo === 'numero') { k++; return `${['Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis'][k - 1] || k}: ${p.titulo}. ${p.texto || ''}`.trim(); }
+    return `${p.titulo}${p.texto ? ' ' + p.texto : ''}`.trim();
+  });
+}
+
 function slug(s) {
   return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50) || 'video';
 }
@@ -61,6 +74,7 @@ function slug(s) {
 async function main() {
   const { values: a } = parseArgs({ options: {
     data: { type: 'string' }, salida: { type: 'string', default: 'salida/pasita' }, revisar: { type: 'boolean', default: false },
+    guion: { type: 'boolean', default: false }, audios: { type: 'string' },
   } });
   if (!a.data) throw new Error('Falta --data archivo.json');
   const d = JSON.parse(await readFile(a.data, 'utf8'));
@@ -71,6 +85,21 @@ async function main() {
   const nombre = slug(d.nombre || d.pantallas[0].lineas?.join(' ') || d.pantallas[0].titulo);
   const dir = path.resolve(a.salida);
   await mkdir(dir, { recursive: true });
+
+  if (a.guion) {
+    const g = guionPasita(d);
+    const txt = g.map((t, i) => `${String(i + 1).padStart(2, '0')} · ${d.pantallas[i].tipo}\n${t}`).join('\n\n');
+    const f = path.join(dir, `${nombre}-guion.txt`);
+    await writeFile(f, txt + '\n');
+    console.log(txt + `\n\nGuion: ${f}`);
+    return;
+  }
+  let voz = null;
+  if (a.audios) {
+    const files = await leerAudios(path.resolve(a.audios), d.pantallas.length);
+    tiemposDe(files).forEach((t, i) => { d.pantallas[i].dur = t; });
+    voz = { files, pista: path.join(dir, `${nombre}-voz.m4a`) };
+  }
 
   await withBrowser(async b => {
     // Dos propuestas de portada: A (título arriba, Pasita abajo) y B (Pasita arriba, título en panel)
@@ -87,6 +116,12 @@ async function main() {
     const out = path.join(dir, `${nombre}.mp4`);
     const t0 = Date.now();
     const { duration } = await renderVideo(b, 'pasita.html', d, out, { log: m => console.log(m) });
+    if (voz) {
+      armarPista(voz.files, d.pantallas.map(p => p.dur), voz.pista);
+      const tmp = out.replace(/\.mp4$/, '.tmp.mp4');
+      ponerPista(out, voz.pista, tmp); await rename(tmp, out); await rm(voz.pista, { force: true });
+      console.log('  voz propia unida al video');
+    }
     console.log(`Video listo: ${out} (${duration.toFixed(1)} s, en ${Math.round((Date.now() - t0) / 1000)} s)`);
     const notas = [
       d.post ? `TEXTO PARA LA PUBLICACIÓN\n${d.post}` : '',

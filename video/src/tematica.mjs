@@ -4,6 +4,8 @@
 //
 //   node src/tematica.mjs --data data/ejemplo-tematica-naruto.json --revisar
 //   node src/tematica.mjs --data data/ejemplo-tematica-naruto.json
+//   node src/tematica.mjs --data … --guion              → guion numerado, una línea por pantalla
+//   node src/tematica.mjs --data … --audios carpeta/    → video con la voz propia (un audio por pantalla)
 //
 // Si el archivo trae "audio_url" y se puede descargar, el video lleva la voz de
 // la lección y los subtítulos usan "texto_audio" (el texto tal cual suena). Si
@@ -15,6 +17,7 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mjs';
 import { FONDOS } from './pasita.mjs';
+import { leerAudios, tiemposDe, armarPista, ponerPista } from './voz.mjs';
 
 const TEMATICAS = ['Anime & Manga', 'Videojuegos', 'K-pop & K-dramas', 'Fútbol'];
 const INICIO = 3.4; // segundos del gancho antes de que empiece la lección
@@ -33,6 +36,22 @@ export function validarTematica(d) {
   const t = [...(d.gancho || []), d.subgancho || '', d.texto || ''].join(' ');
   if (/\?/.test(t) && !/¿/.test(t)) avisos.push('hay una pregunta sin "¿"');
   return { errores, avisos };
+}
+
+// Oraciones de la lección: una por pantalla. Mismo corte que la plantilla.
+export function oraciones(texto) {
+  return texto.trim().split(/(?<=[a-záéíóúñü0-9)*]{2}\.)\s+/i);
+}
+const limpio = s => s.replace(/\*\*/g, '');
+
+// Guion para grabar: lo que se dice en cada pantalla, en orden.
+export function guion(d) {
+  const lineas = oraciones(d.texto);
+  return [
+    { pantalla: 'Gancho', texto: d.voz_gancho || `${d.gancho.join(' ')} ${d.subgancho}` },
+    ...lineas.map((l, i) => ({ pantalla: `Lección ${i + 1} de ${lineas.length}`, texto: limpio(l) })),
+    { pantalla: 'Cierre', texto: d.voz_cierre || 'Tú eliges con qué aprender. La misma lección, explicada con lo que te gusta.' },
+  ];
 }
 
 function slug(s) {
@@ -62,6 +81,7 @@ function ponerAudio(video, audio) {
 async function main() {
   const { values: a } = parseArgs({ options: {
     data: { type: 'string' }, salida: { type: 'string', default: 'salida/tematica' }, revisar: { type: 'boolean', default: false },
+    guion: { type: 'boolean', default: false }, audios: { type: 'string' },
   } });
   if (!a.data) throw new Error('Falta --data archivo.json');
   const d = JSON.parse(await readFile(a.data, 'utf8'));
@@ -73,15 +93,38 @@ async function main() {
   const nombre = slug(d.nombre || d.portada_titulo.join(' '));
   const dir = path.resolve(a.salida);
   await mkdir(dir, { recursive: true });
-  const duracion = INICIO + d.audio + 0.4 + 4.2;
+
+  // Guion para que el equipo grabe un audio por pantalla
+  const g = guion(d);
+  if (a.guion) {
+    const txt = g.map((x, i) => `${String(i + 1).padStart(2, '0')} · ${x.pantalla}\n${x.texto}`).join('\n\n');
+    const f = path.join(dir, `${nombre}-guion.txt`);
+    await writeFile(f, txt + '\n');
+    console.log(txt + `\n\nGuion: ${f}`);
+    return;
+  }
+
+  // Voz propia: cada pantalla dura lo que su audio; los subtítulos son el guion
+  let voz = null;
+  if (a.audios) {
+    const files = await leerAudios(path.resolve(a.audios), g.length);
+    d.tiempos = tiemposDe(files);
+    d.audio_url = null;
+    voz = { files, pista: path.join(dir, `${nombre}-voz.m4a`) };
+    console.log(`  ${files.length} audios · ${d.tiempos.reduce((x, y) => x + y, 0).toFixed(1)} s en total`);
+  }
+  d.lineas = oraciones(d.texto);
+  const duracion = d.tiempos ? d.tiempos.reduce((x, y) => x + y, 0) : INICIO + d.audio + 0.4 + 4.2;
 
   // La voz se intenta antes del render: el video muestra el indicador solo si la hay.
   const mp3 = path.join(dir, `${nombre}.mp3`);
-  d.con_audio = !a.revisar && d.audio_url ? await bajarAudio(d.audio_url, mp3) : false;
+  d.con_audio = !a.revisar && !voz && d.audio_url ? await bajarAudio(d.audio_url, mp3) : false;
   // Con voz, los subtítulos dicen exactamente lo que dice la voz
   if (d.con_audio) {
+    d.lineas = null;
     if (!d.texto_audio) { d.con_audio = false; console.log('  aviso: hay voz pero falta "texto_audio" (el texto tal cual suena); sale sin voz'); }
     else d.texto = d.texto_audio;
+    d.lineas = oraciones(d.texto);
   }
   if (d.audio_url && !a.revisar) console.log(d.con_audio ? '  voz de la lección descargada' : '  aviso: no se pudo descargar la voz; el video sale sin audio');
 
@@ -97,7 +140,12 @@ async function main() {
     const out = path.join(dir, `${nombre}.mp4`);
     const t0 = Date.now();
     await renderVideo(b, 'fmt-tematica.html', d, out, { log: m => console.log(m) });
-    if (d.con_audio) { const tmp = ponerAudio(out, mp3); await rename(tmp, out); await rm(mp3, { force: true }); }
+    if (voz) {
+      armarPista(voz.files, d.tiempos, voz.pista);
+      const tmp = out.replace(/\.mp4$/, '.tmp.mp4');
+      ponerPista(out, voz.pista, tmp); await rename(tmp, out); await rm(voz.pista, { force: true });
+      console.log('  voz propia unida al video');
+    } else if (d.con_audio) { const tmp = ponerAudio(out, mp3); await rename(tmp, out); await rm(mp3, { force: true }); }
     console.log(`Video listo: ${out} (${duracion.toFixed(1)} s, en ${Math.round((Date.now() - t0) / 1000)} s)`);
     if (d.post) await writeFile(path.join(dir, `${nombre}.txt`), `TEXTO PARA LA PUBLICACIÓN\n${d.post}\n`);
   });

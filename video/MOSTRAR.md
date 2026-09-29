@@ -144,3 +144,26 @@ recuadro del texto ocupa su lugar.
   impecable, sin prometer resultados).
 - Personajes y marcas **solo como texto**: nunca imágenes, logos ni música de
   la serie, el juego o el grupo.
+
+## Voz propia (un audio por pantalla)
+
+El equipo puede ponerle su propia voz (hecha con IA) a cualquier video. Cada
+pantalla dura exactamente lo que dura su audio, así que voz y texto quedan
+sincronizados.
+
+```bash
+node src/tematica.mjs --data mi-leccion.json --guion             # guion numerado: una línea por pantalla
+node src/tematica.mjs --data mi-leccion.json --audios carpeta/   # video con esa voz
+```
+
+- El guion tiene: `01` gancho (el gancho + el subgancho), una línea por cada
+  oración de la lección y el cierre. Se pueden cambiar las frases del gancho y
+  del cierre con `voz_gancho` y `voz_cierre`.
+- Los audios van en una carpeta, **uno por pantalla**, numerados (`01.mp3`,
+  `02.mp3`… o "1 - gancho.m4a"): se ordenan por el número del nombre. Si falta
+  o sobra alguno, el comando se detiene y dice cuántos esperaba.
+- Formatos: mp3, wav, m4a, aac, ogg, opus. El volumen se normaliza solo.
+- Con voz propia, los subtítulos son el guion (el `texto` ajustado), no el
+  audio original de la lección.
+- Para los tips (`pasita.mjs`) funciona igual, con `--guion` y `--audios`; en
+  cada pantalla se puede cambiar lo que se dice con `"voz"`.

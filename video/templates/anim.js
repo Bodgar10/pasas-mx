@@ -68,6 +68,7 @@ function fitBlock(el) {
 
 // Cuánto dura cada pantalla de un video con la Pasita: lo suficiente para leerla con calma.
 function duracionPantalla(p) {
+  if (p.dur) return p.dur;            // voz propia: lo que dura su audio
   if (p.tipo === 'gancho') return 3.2;
   if (p.tipo === 'grande') return 2.4;
   if (p.tipo === 'cierre') return 4;

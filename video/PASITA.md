@@ -99,6 +99,13 @@ Todas llevan `pose` y `color`. Opcional: `"temblar": true` (la Pasita tiembla; v
 
 La duración de cada pantalla sale sola según el largo del texto (de 3.5 a 6.5 s).
 
+## Voz propia
+
+Con `--guion` sale el guion numerado (una línea por pantalla) y con
+`--audios carpeta/` el video con un audio por pantalla, sincronizado. Detalles
+en `MOSTRAR.md` → "Voz propia". En cada pantalla se puede cambiar lo que se
+dice con `"voz": "…"`.
+
 ## Reglas de contenido
 
 - **Sin clickbait**: el gancho plantea el tema real del video; la portada y el texto del post prometen solo lo que el video entrega.
