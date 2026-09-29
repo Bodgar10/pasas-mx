@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="base.css">
 <style>
 /* Portada del reel del reto diario (1080×1920). Mismo estilo que la portada A de
-   los videos con la Pasita. Muestra lo que trae el video: el número de reto y la
-   ronda con sus cuatro opciones, sin revelar cuál sobra. Todo dentro del 3:4. */
+   los videos con la Pasita: solo el título, la etiqueta del reto, la Pasita y la
+   duración. Nada de las opciones: la portada no es el video. Todo dentro del 3:4. */
 .fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
 .neon{position:absolute;left:3cqw;right:3cqw;top:calc(240px + 2.4cqw);bottom:calc(240px + 2.4cqw);border-radius:5cqw;
   border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
@@ -12,16 +12,12 @@
   color:#fff;background:var(--pink);padding:1.2cqw 3.4cqw 1.4cqw;border-radius:2.4cqw;box-shadow:0 0 3cqw rgba(236,72,153,.55)}
 .title{position:absolute;left:9cqw;right:9cqw;top:372px;font-family:var(--font-title);font-weight:900;text-transform:uppercase;
   line-height:1.02;letter-spacing:-.01em;-webkit-text-stroke:1.3cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
-.title span{display:block;font-size:15cqw;white-space:nowrap}
+.title span{display:block;font-size:19cqw;white-space:nowrap}
 .k-blanco{color:#fff}.k-cian{color:var(--cyan)}
-.sub{position:absolute;left:9cqw;top:708px;font-size:5cqw;font-weight:800;color:var(--fg);white-space:nowrap}
-.opts{position:absolute;left:9cqw;right:9cqw;top:790px;display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw}
-.opt{min-height:14cqw;border-radius:4cqw;background:rgba(26,16,53,.92);border:.5cqw solid var(--line);display:flex;align-items:center;gap:2.4cqw;
-  padding:2.2cqw 3cqw;box-shadow:0 1cqw 0 rgba(0,0,0,.3)}
-.opt i{font-style:normal;flex:none;width:7.4cqw;height:7.4cqw;border-radius:50%;background:var(--line);display:grid;place-items:center;
-  font-size:3.8cqw;font-weight:900;color:var(--muted)}
-.opt b{font-size:4.6cqw;font-weight:900;line-height:1.12;overflow-wrap:break-word;min-width:0}
 .pasita{position:absolute}
+/* Pizarrón limpio en la portada: lo escrito compite con el título */
+.fondo text[style*="e2e8f0"], .fondo path[style*="e2e8f0"]{display:none}
+.spark{position:absolute;height:auto}
 .dur{position:absolute;left:50%;top:1440px;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:2cqw;white-space:nowrap;
   border:.4cqw solid rgba(226,217,243,.45);background:rgba(15,10,30,.7);color:var(--fg);border-radius:999px;padding:1.4cqw 4cqw 1.4cqw 1.6cqw}
 .dur i{width:7cqw;height:7cqw;border-radius:50%;border:.4cqw solid var(--fg);display:grid;place-items:center;flex:none}
@@ -36,8 +32,9 @@
   <div class="neon" id="neon" style="--c:var(--cyan)"></div>
   <div class="tag" id="tag"></div>
   <div class="title"><span class="k-blanco">¿Cuál</span><span class="k-cian">sobra?</span></div>
-  <div class="sub" id="sub">Tres tienen algo en común. Una no.</div>
-  <div class="opts" id="opts"></div>
+  <svg class="spark" style="left:150px;top:960px;width:86px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--xp)"/></svg>
+  <svg class="spark" style="right:140px;top:880px;width:62px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--cyan)"/></svg>
+  <svg class="spark" style="right:200px;top:1240px;width:46px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--pink)"/></svg>
   <div class="pasita" id="pasita"></div>
   <div class="dur"><i><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12Z" style="fill:var(--fg)"/></svg></i><b id="dur-t"></b></div>
   <div class="brand">PASAS<span>.</span>MX</div>
@@ -49,16 +46,13 @@
 window.setup = function (data) {
   buildFondo($('fondo'), data.fondo || 'salon', -160);
   $('tag').textContent = 'Reto de ' + (data.materia_corta || 'Historia') + ' #' + data.numero;
-  $('opts').innerHTML = data.hoy.opciones.map(function (o, i) {
-    return '<div class="opt"><i>' + 'ABCD'[i] + '</i><b>' + esc(o) + '</b></div>';
-  }).join('');
-  document.querySelectorAll('.opt b').forEach(function (b) { fitBlock(b); });
-  fitLines([$('sub')], 1080 - 2 * 97);
+  fitLines([].slice.call(document.querySelectorAll('.title span')), 1080 - 2 * 97);
   $('dur-t').textContent = Math.round(data.duracion || 16) + ' segundos';
-  // La Pasita pensativa, a la derecha, parada sobre el escritorio
-  var w = 250, h = w * PASITA_VB.h / PASITA_VB.w;
+  // La Pasita pensativa llena el espacio entre el título y el escritorio
+  var bottom = document.querySelector('.title').getBoundingClientRect().bottom, floor = 1412;
+  var h = Math.min(640, floor - bottom - 50), w = h * PASITA_VB.w / PASITA_VB.h;
   buildPasita($('pasita'), 'pensativa', w);
-  $('pasita').style.left = '415px'; $('pasita').style.top = (1412 - h) + 'px';
+  $('pasita').style.left = (540 - w / 2) + 'px'; $('pasita').style.top = (floor - h) + 'px';
   animFondo(1.5);
   window.ready = pasitaReady();
   return 0;
