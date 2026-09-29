@@ -19,11 +19,15 @@ Deja en `salida/pasita/` el `.mp4`, **dos portadas** (`-portada-a.png` y
 
 Se arman solas con el gancho, la pantalla `grande` (si existe) y la Pasita:
 
-- **A**: título grande arriba, promesa como etiqueta rosa y la Pasita abajo con
-  la pose del gancho. Marco del color del gancho.
+- **A** (la preferida): título grande arriba, promesa como etiqueta rosa y la
+  Pasita abajo con la pose del gancho. Marco del color del gancho.
 - **B**: la Pasita grande arriba con otra pose (la de la promesa, o celebrando),
   la promesa como etiqueta amarilla y el título en un panel neón abajo. Marco
   del color contrario, para que sean dos opciones de verdad.
+
+Las dos llevan un botón de play con una llamada a seguir viendo. Por defecto
+dice "Míralo hasta el final"; se cambia con `portada_cta` (máx. 26 caracteres),
+por ejemplo "El 3 es el más fácil" o "El último te va a servir".
 
 Todo lo importante queda en el centro 3:4 (1080×1440), que es lo que muestra
 el grid de Instagram. Se sube al publicar: **Editar portada → Agregar desde la
@@ -40,6 +44,7 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
   "post": "texto para la publicación",      // opcional
   "portada_pose": "celebrando",             // opcional: otra pose para la portada A
   "portada_pose_b": "confiada",             // opcional: otra pose para la portada B
+  "portada_cta": "El 3 es el más fácil",    // opcional: texto del botón de play
   "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
 }
 ```

@@ -39,6 +39,7 @@ export function validarPasita(d) {
     const todo = [...(s.lineas || []), s.titulo || '', s.texto || ''].join(' ');
     if (/\?/.test(todo) && !/¿/.test(todo)) avisos.push(`${n}: hay una pregunta sin "¿"`);
   });
+  if (d.portada_cta && d.portada_cta.length > 26) errores.push(`portada_cta pasa de 26 caracteres: "${d.portada_cta}"`);
   for (const k of ['portada_pose', 'portada_pose_b']) if (d[k] && !POSES.includes(d[k])) errores.push(`${k} "${d[k]}" no existe`);
   if (p?.length && p[0].tipo !== 'gancho') avisos.push('la primera pantalla no es un gancho: los primeros 2 segundos deciden si alguien se queda');
   if (p?.length && p[p.length - 1].tipo !== 'cierre') avisos.push('la última pantalla no es un cierre');
