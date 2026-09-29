@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css"><link rel="stylesheet" href="formatos.css">
+<style>
+.lesson{padding-top:12cqw;gap:5cqw}
+.diagram{width:100%}
+.diagram svg{width:100%;height:auto;display:block}
+.cap{position:relative;min-height:64cqw}
+.line{position:absolute;inset:0;font-size:6.6cqw;font-weight:800;line-height:1.3;text-wrap:pretty;opacity:0}
+.line b{color:var(--xp);font-weight:900}
+.prog{height:1.2cqw;border-radius:1cqw;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--pink))}
+.themes{display:flex;flex-wrap:wrap;gap:2.4cqw}
+.themes span{font-size:4.8cqw;font-weight:900;border:.4cqw solid var(--line);border-radius:999px;padding:1.6cqw 4cqw;opacity:0}
+.themes span.on{border-color:var(--pink);color:var(--pink)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="scene center" id="hook">
+    <span class="tag" id="h-tag"></span>
+    <div class="big" id="h-big" style="font-size:11.5cqw"></div>
+    <div class="sub" id="h-sub"></div>
+  </div>
+  <div class="scene lesson" id="lesson">
+    <div class="meta"><span class="tag" id="l-tag"></span></div>
+    <div class="diagram" id="diagram"></div>
+    <div class="prog"><i id="prog"></i></div>
+    <div class="cap" id="cap"></div>
+  </div>
+  <div class="scene center cta" id="end">
+    <div class="cta-big">Tú eliges con qué aprender.</div>
+    <div class="themes" id="themes"></div>
+    <div class="sub">La misma lección, explicada con lo que te gusta.</div>
+    <div class="wordmark">PASAS<span>·</span>MX</div>
+    <div class="url">pasas.mx</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, T, lines, starts;
+function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); }
+window.setup = function (data) {
+  D = data;
+  $('h-tag').textContent = data.materia + ' · ' + data.nivel;
+  $('h-big').innerHTML = data.gancho;
+  $('h-sub').textContent = data.subgancho;
+  $('l-tag').textContent = data.materia + ' · ' + data.tematica;
+  $('diagram').innerHTML = data.diagrama || '';
+  // Una oración por pantalla; cada una dura en proporción a su largo (sigue a la voz)
+  lines = data.texto.trim().split(/(?<=[a-záéíóúñü0-9)*]{2}\.)\s+/i);
+  var total = lines.reduce(function (a, l) { return a + l.length; }, 0), acc = 0, L0 = 2.8;
+  starts = lines.map(function (l) { var s = L0 + data.audio * acc / total; acc += l.length; return s; });
+  starts.push(L0 + data.audio);
+  $('cap').innerHTML = lines.map(function (l, i) { return '<div class="line" id="ln' + i + '">' + md(l) + '</div>'; }).join('');
+  $('themes').innerHTML = data.tematicas.map(function (x) { return '<span class="' + (x === data.tematica ? 'on' : '') + '">' + esc(x) + '</span>'; }).join('');
+  T = { hook: [0, L0], lesson: [L0, L0 + data.audio + 0.3] };
+  T.end = [T.lesson[1], T.lesson[1] + 4];
+  window.render(0);
+  return T.end[1];
+};
+window.render = function (t) {
+  show($('hook'), win(t, T.hook[0], T.hook[1], false, true));
+  show($('lesson'), win(t, T.lesson[0], T.lesson[1], true, true));
+  lines.forEach(function (_, i) {
+    var el = $('ln' + i), a = win(t, starts[i], starts[i + 1] + (i === lines.length - 1 ? 0.3 : 0.12), true, i < lines.length - 1);
+    el.style.opacity = a; el.style.transform = 'translateY(' + ((1 - easeOut(a)) * 2) + 'cqw)';
+  });
+  $('prog').style.width = (100 * clamp((t - T.lesson[0]) / D.audio)) + '%';
+  // Diagrama: un punto da vueltas; otro recorre una parábola
+  var c = document.getElementById('dot-c'), p = document.getElementById('dot-p');
+  if (c) { var a = t * 2 * Math.PI / 1.6; c.setAttribute('cx', 220 + 130 * Math.cos(a)); c.setAttribute('cy', 220 + 130 * Math.sin(a)); }
+  if (p) { var u = (t % 2) / 2; p.setAttribute('cx', 500 + 340 * u); p.setAttribute('cy', 360 - 4 * 250 * u * (1 - u)); }
+  document.querySelectorAll('.themes span').forEach(function (s, i) { pop(s, t, T.end[0] + 0.3 + i * 0.12, 0.3); });
+  show($('end'), win(t, T.end[0], T.end[1] + 1, true, false));
+};
+</script>
+</body></html>
