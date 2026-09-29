@@ -43,6 +43,9 @@ function ffmpeg(out) {
 export async function renderVideo(browser, template, data, out, { log = () => {} } = {}) {
   const page = await openPage(browser, template);
   const duration = await page.evaluate(d => window.setup(d), data);
+  // Plantillas con imágenes (Pasita) exponen window.ready: se espera a que carguen.
+  await page.evaluate(() => window.ready || null);
+  await page.evaluate(() => document.fonts.load('400 10px Anton'));
   const frames = Math.round(duration * FPS);
   const { proc, done } = ffmpeg(out);
   for (let i = 0; i < frames; i++) {

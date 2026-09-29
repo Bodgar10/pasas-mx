@@ -3,14 +3,15 @@
 @font-face{font-family:'Nunito';font-weight:700;src:url(../fonts/nunito-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Nunito';font-weight:800;src:url(../fonts/nunito-latin-800-normal.woff2) format('woff2')}
 @font-face{font-family:'Nunito';font-weight:900;src:url(../fonts/nunito-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:'Anton';font-weight:400;src:url(../fonts/anton-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Orbitron';font-weight:700;src:url(../fonts/orbitron-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Orbitron';font-weight:900;src:url(../fonts/orbitron-latin-900-normal.woff2) format('woff2')}
 
 :root{
   --bg:#0f0a1e;--surface:#1a1035;--line:#2D2048;--fg:#e2d9f3;--muted:#a78bfa;--dim:#8f84b5;
-  --brand:#7c3aed;--pink:#ec4899;--xp:#fbbf24;--ok:#10b981;--ok-soft:rgba(16,185,129,.16);
+  --brand:#7c3aed;--pink:#ec4899;--cyan:#06b6d4;--xp:#fbbf24;--ok:#10b981;--ok-soft:rgba(16,185,129,.16);
   --paper:#fff;--ink:#1b1330;--ink-dim:#6b6485;
-  --font-brand:'Orbitron',sans-serif;--font-ui:'Nunito',sans-serif;
+  --font-brand:'Orbitron',sans-serif;--font-title:'Anton','Impact',sans-serif;--font-ui:'Nunito',sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg)}
