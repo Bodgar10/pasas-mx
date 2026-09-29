@@ -35,10 +35,10 @@ export function buildEmail(data, parte) {
     return {
       subject: `Reto #${n} · reel y stories para hoy, ${dia}`,
       html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
-<p>Todo listo para el <b>reto #${n}</b> (${esc(dia)}). Van tres archivos adjuntos.</p>
+<p>Todo listo para el <b>reto #${n}</b> (${esc(dia)}). Van cuatro archivos adjuntos.</p>
 
 <h3 style="${h}">1. Reel · en la mañana, en Instagram y TikTok</h3>
-<p>Archivo <b>reel.mp4</b>. Al subirlo, agrégale un sonido que esté en tendencia. Texto para copiar:</p>
+<p>Archivo <b>reel.mp4</b>. Al subirlo, agrégale un sonido que esté en tendencia. Como portada usa <b>reel-portada.png</b>: en Instagram, <i>Editar portada → Agregar desde la galería</i>; en TikTok, <i>Editar portada → Subir</i>. Texto para copiar:</p>
 <pre style="${box}">${esc(caption(data))}</pre>
 
 <h3 style="${h}">2. Story · 8:00 AM</h3>

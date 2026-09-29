@@ -8,7 +8,7 @@ import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { validate, loadFromFile, loadFromSupabase } from './data.mjs';
-import { withBrowser, renderReel, renderStory } from './render.mjs';
+import { withBrowser, renderReel, renderStory, renderImage } from './render.mjs';
 import { buildEmail, sendEmail } from './email.mjs';
 
 const { values: args } = parseArgs({
@@ -56,12 +56,15 @@ async function main() {
       const t0 = Date.now();
       const { duration } = await renderReel(browser, data, reel, { log });
       log(`  reel listo: ${duration}s de video en ${Math.round((Date.now() - t0) / 1000)}s`);
+      const portada = path.join(dir, 'reel-portada.png');
+      await renderImage(browser, 'portada-reto.html', { ...data, duracion: duration }, portada);
+      log('  portada del reel lista');
       const s1 = path.join(dir, 'story-1-aviso.png');
       const s2 = path.join(dir, 'story-2-ronda-extra.png');
       await renderStory(browser, data, 'aviso', s1);
       await renderStory(browser, data, 'extra', s2);
       log('  stories de la mañana listas');
-      return [reel, s1, s2];
+      return [reel, portada, s1, s2];
     }
     const s3 = path.join(dir, 'story-3-resultados.png');
     await renderStory(browser, data, 'resultados', s3);

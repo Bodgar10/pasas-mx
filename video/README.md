@@ -1,7 +1,7 @@
 # Videos de PASAS Arcade
 
-Genera cada día el reel y las tres stories del reto y los manda por correo,
-listos para publicar.
+Genera cada día el reel del reto con su portada y las tres stories, y los manda
+por correo listos para publicar.
 
 ```
 templates/   reel.html y story.html (diseño; reciben los datos del reto)
