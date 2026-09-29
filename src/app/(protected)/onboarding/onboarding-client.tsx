@@ -124,8 +124,40 @@ function ProgressBar({ step }: { step: Step }) {
   )
 }
 
+/**
+ * Prellenado desde el muro de la Horda pública (/unete/... → aquí).
+ *
+ * Solo se acepta con `desde=horda` y con valores que existan TAL CUAL en
+ * LEVELS y GRADES; si algo no cuadra, el onboarding arranca normal en el
+ * paso 1. Lo que sigue (vista previa → planes → registro → cobro) no cambia:
+ * el paso 4 guarda exactamente el mismo objeto de siempre.
+ */
+function leerPrefill(sp: URLSearchParams): {
+  level: string
+  grade: string
+  registrante: Registrante
+  tema: string | null
+} | null {
+  if (sp.get('desde') !== 'horda') return null
+  const level = sp.get('level')
+  const grade = sp.get('grade')
+  const reg = sp.get('registrante')
+  const nivel = LEVELS.find((l) => l.label === level)
+  if (!nivel || !nivel.needsGrade) return null
+  if (!grade || !GRADES.some((g) => g.num === grade)) return null
+  return {
+    level: nivel.label,
+    grade,
+    registrante: reg === 'alumno' ? 'alumno' : 'tutor',
+    tema: sp.get('tema'),
+  }
+}
+
 export default function OnboardingClient({ themes }: Props) {
-  const [step, setStep] = useState<Step>(1)
+  const searchParams = useSearchParams()
+  // Se lee una vez: si el usuario regresa al paso 1 y cambia algo, manda lo suyo.
+  const [prefill] = useState(() => leerPrefill(searchParams))
+  const [step, setStep] = useState<Step>(prefill ? 3 : 1)
 
   // ── Analitica. Todo en refs: ni un re-render de mas. ────────────────
   const inicioRef = useRef(0)
@@ -138,12 +170,18 @@ export default function OnboardingClient({ themes }: Props) {
     const ahora = Date.now()
     inicioRef.current = ahora
     inicioPasoRef.current = ahora
-    visitasRef.current[1] = 1
+    visitasRef.current[prefill ? 3 : 1] = 1
 
     // `signup_start` marca la entrada al embudo, no el envio del formulario.
     // `origen` dice por que pantalla se entro: quien empieza en /onboarding
-    // viene del embudo completo, quien aterriza en /registro se lo salto.
-    track('signup_start', { origen: 'onboarding', registrante: 'tutor' })
+    // viene del embudo completo, quien aterriza en /registro se lo salto, y
+    // 'horda' es quien llega del muro de la Horda pública con el paso 3 listo.
+    track('signup_start', {
+      origen: prefill ? 'horda' : 'onboarding',
+      registrante: prefill?.registrante ?? 'tutor',
+    })
+    // Solo al montar: el prefill se lee una vez.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   /**
@@ -172,12 +210,11 @@ export default function OnboardingClient({ themes }: Props) {
     return selectedLevel?.needsGrade === false ? 3 : 4
   }
 
-  const [registrante, setRegistrante] = useState<Registrante>('tutor')
-  const [level, setLevel] = useState<string | null>(null)
-  const [grade, setGrade] = useState<string | null>(null)
+  const [registrante, setRegistrante] = useState<Registrante>(prefill?.registrante ?? 'tutor')
+  const [level, setLevel] = useState<string | null>(prefill?.level ?? null)
+  const [grade, setGrade] = useState<string | null>(prefill?.grade ?? null)
   const [theme, setTheme] = useState<string | null>(null)
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   const copy = COPY[registrante]
 
@@ -309,6 +346,24 @@ export default function OnboardingClient({ themes }: Props) {
             Pa<span style={{ color: '#a78bfa' }}>s</span>a<span style={{ color: '#a78bfa' }}>s</span>.mx
           </h1>
         </div>
+
+        {prefill?.tema && step === 3 && (
+          <div
+            style={{
+              marginBottom: 16,
+              padding: '10px 14px',
+              borderRadius: 12,
+              background: 'rgba(16,185,129,0.1)',
+              border: '1px solid rgba(16,185,129,0.3)',
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#6ee7b7',
+              lineHeight: 1.45,
+            }}
+          >
+            Viene de la Horda de {prefill.tema}. Ya pusimos {level} · {grade}; puedes cambiarlo con ← Regresar.
+          </div>
+        )}
 
         <ProgressBar step={step} />
 

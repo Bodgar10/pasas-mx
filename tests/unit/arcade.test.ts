@@ -106,6 +106,6 @@ describe('resultado y puente', () => {
   })
 
   it('url de la horda del tema', () => {
-    expect(urlHorda(reto.rounds[0])).toBe('/guia/historia-mexico-2/a/horda')
+    expect(urlHorda(reto.rounds[0])).toBe('/horda/historia-mexico-2/a')
   })
 })

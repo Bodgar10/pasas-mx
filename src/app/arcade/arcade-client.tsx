@@ -450,14 +450,14 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
         <p>
           {perfecto
             ? `El reto diario es el calentamiento. En PASAS, ${r.topic} tiene su propio Modo Horda con preguntas más difíciles.`
-            : 'En PASAS este tema tiene su propio Modo Horda. Aguanta las seis oleadas y lo dominas.'}
+            : 'Este tema tiene su propio Modo Horda: oleadas de preguntas, cada una más difícil. Las primeras tres son gratis.'}
         </p>
         {r.horde_ready && (
           <>
             <div className={s.hordeStats}>
-              <span>6 oleadas</span>
-              <span>30 preguntas</span>
-              <span>+330 XP</span>
+              <span>3 oleadas gratis</span>
+              <span>15 preguntas</span>
+              <span>Sin registrarte</span>
             </div>
             <Link
               className={`${s.btn} ${s.primary}`}

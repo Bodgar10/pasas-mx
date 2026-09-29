@@ -155,6 +155,10 @@ export function rondaDelPuente(reto: RetoArcade, resultados: boolean[]): RondaAr
   return reto.rounds[fallo === -1 ? reto.rounds.length - 1 : fallo]
 }
 
+/**
+ * El puente va a la Horda PÚBLICA (oleadas 1 a 3 sin cuenta), no a la de
+ * /guia, que pide login. Quien tiene cuenta juega la completa desde su guía.
+ */
 export function urlHorda(r: RondaArcade): string {
-  return `/guia/${r.subject_slug}/${r.topic_slug}/horda`
+  return `/horda/${r.subject_slug}/${r.topic_slug}`
 }
