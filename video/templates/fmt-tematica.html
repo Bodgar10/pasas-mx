@@ -86,6 +86,7 @@ window.setup = function (data) {
   $('h-sub').textContent = data.subgancho;
   $('l-tag').textContent = data.tema;
   $('diagram').innerHTML = data.diagrama || '';
+  $('diagram').hidden = !data.diagrama;   // sin diagrama, el recuadro del texto ocupa su lugar
   $('voice').hidden = !data.con_audio;
   // Una oración por pantalla; cada una dura en proporción a su largo (sigue a la voz)
   lines = data.texto.trim().split(/(?<=[a-záéíóúñü0-9)*]{2}\.)\s+/i);
@@ -129,6 +130,10 @@ window.render = function (t) {
   var c = document.getElementById('dot-c'), p = document.getElementById('dot-p');
   if (c) { var ang = t * 2 * Math.PI / 1.6; c.setAttribute('cx', 220 + 130 * Math.cos(ang)); c.setAttribute('cy', 220 + 130 * Math.sin(ang)); }
   if (p) { var u = (t % 2) / 2; p.setAttribute('cx', 500 + 340 * u); p.setAttribute('cy', 360 - 4 * 250 * u * (1 - u)); }
+  // Animaciones genéricas para diagramas escritos a mano: clases anim-spin, anim-pulse, anim-float
+  document.querySelectorAll('#diagram .anim-spin').forEach(function (g) { var b = g.getBBox(); g.setAttribute('transform', 'rotate(' + (t * 90) + ' ' + (b.x + b.width / 2) + ' ' + (b.y + b.height / 2) + ')'); });
+  document.querySelectorAll('#diagram .anim-pulse').forEach(function (g, i) { g.style.transformBox = 'fill-box'; g.style.transformOrigin = 'center'; g.style.transform = 'scale(' + (1 + 0.12 * Math.sin(t * 3 + i)) + ')'; });
+  document.querySelectorAll('#diagram .anim-float').forEach(function (g, i) { g.style.transform = 'translateY(' + (Math.sin(t * 2 + i) * 10) + 'px)'; });
   var e = win(t, T.end[0], T.end[1] + 1, true, false);
   show($('end'), e); $('p-end').style.opacity = e; hop($('p-end'), t, T.end[0]);
   document.querySelectorAll('.themes span').forEach(function (s, i) { pop(s, t, T.end[0] + 0.4 + i * 0.12, 0.3); });

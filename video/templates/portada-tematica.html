@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Portada de "Así se explica en PASAS": solo el título ("FÍSICA / CON NARUTO"),
+   la Pasita, la duración real y la marca, sobre el mismo fondo del video.
+   Todo dentro del recorte 3:4 del grid (y=240 a y=1680). */
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
+.neon{position:absolute;left:3cqw;right:3cqw;top:calc(240px + 2.4cqw);bottom:calc(240px + 2.4cqw);border-radius:5cqw;
+  border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
+.title{position:absolute;left:9cqw;right:9cqw;top:320px;font-family:var(--font-title);font-weight:900;text-transform:uppercase;
+  line-height:1.02;letter-spacing:-.01em;-webkit-text-stroke:1.3cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
+.title span{display:block;font-size:19cqw;white-space:nowrap}
+.k-blanco{color:#fff}.k-cian{color:var(--cyan)}.k-rosa{color:var(--pink)}.k-amarillo{color:var(--xp)}
+.pasita{position:absolute}
+.spark{position:absolute;height:auto}
+.dur{position:absolute;left:50%;top:1440px;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:2cqw;white-space:nowrap;
+  border:.4cqw solid rgba(226,217,243,.45);background:rgba(15,10,30,.7);color:var(--fg);border-radius:999px;padding:1.4cqw 4cqw 1.4cqw 1.6cqw}
+.dur i{width:7cqw;height:7cqw;border-radius:50%;border:.4cqw solid var(--fg);display:grid;place-items:center;flex:none}
+.dur i svg{width:2.8cqw;height:2.8cqw;margin-left:.5cqw}
+.dur b{font-size:4.6cqw;font-weight:800}
+.brand{position:absolute;left:0;right:0;top:1594px;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em}
+.brand span{color:var(--pink)}
+</style></head>
+<body>
+<div class="frame">
+  <div class="fondo" id="fondo"></div>
+  <div class="neon" id="neon"></div>
+  <div class="title" id="title"></div>
+  <svg class="spark" style="left:120px;top:900px;width:78px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--xp)"/></svg>
+  <svg class="spark" style="right:140px;top:860px;width:60px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--cyan)"/></svg>
+  <svg class="spark" style="right:190px;top:1230px;width:44px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--pink)"/></svg>
+  <div class="pasita" id="pasita"></div>
+  <div class="dur"><i><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12Z" style="fill:var(--fg)"/></svg></i><b id="dur-t"></b></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script src="fondo.js"></script>
+<script>
+var COLOR = { cian: ['var(--cyan)', 'k-cian'], rosa: ['var(--pink)', 'k-rosa'], amarillo: ['var(--xp)', 'k-amarillo'] };
+window.setup = function (data) {
+  buildFondo($('fondo'), data.fondo || 'cuarto', -160);
+  var c = COLOR[data.portada_color || 'rosa'] || COLOR.rosa;
+  $('neon').style.setProperty('--c', c[0]);
+  // La primera línea en blanco y las demás en el color de la portada
+  $('title').innerHTML = data.portada_titulo.map(function (l, i) { return '<span class="' + (i ? c[1] : 'k-blanco') + '">' + esc(l) + '</span>'; }).join('');
+  fitLines([].slice.call($('title').querySelectorAll('span')), 1080 - 2 * 97);
+  var s = Math.round(data.duracion || 40);
+  $('dur-t').textContent = (s < 60 ? s + ' segundos' : Math.floor(s / 60) + ' min ' + (s % 60) + ' s');
+  var bottom = $('title').getBoundingClientRect().bottom, floor = 1412;
+  var h = Math.min(640, floor - bottom - 50), w = h * PASITA_VB.w / PASITA_VB.h;
+  buildPasita($('pasita'), data.portada_pose || 'celebrando', w);
+  $('pasita').style.left = (540 - w / 2) + 'px'; $('pasita').style.top = (floor - h) + 'px';
+  animFondo(1.5);
+  window.ready = pasitaReady();
+  return 0;
+};
+window.render = function () {};
+</script>
+</body></html>
