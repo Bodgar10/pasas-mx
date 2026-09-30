@@ -21,15 +21,15 @@ export async function generateMetadata({
   const n = leido ? leido.resultados.filter(Boolean).length : null
   const titulo =
     n === null
-      ? '¿Cuál sobra? · Reto diario de Historia'
-      : `Saqué ${n}/${RONDAS_POR_RETO} en el reto de historia de hoy`
+      ? '¿Cuál sobra? · Reto diario'
+      : `Saqué ${n}/${RONDAS_POR_RETO} en el reto de hoy`
   const descripcion = 'Cinco rondas, dos minutos. Tres tienen algo en común y una no. ¿Cuál sobra?'
   // La imagen sale de ./imagen/route.tsx (con caché de CDN); ver la nota ahí.
   const imagen = {
     url: leido ? `/arcade/r/${codigo}/imagen` : '/arcade/opengraph-image',
     width: 1200,
     height: 630,
-    alt: 'Resultado del reto diario de historia de PASAS',
+    alt: 'Resultado del reto diario de PASAS',
     type: 'image/png',
   }
 

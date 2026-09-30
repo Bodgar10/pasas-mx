@@ -30,6 +30,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ codigo:
       (
         <TarjetaLink
           numero={leido.numero}
+          materia={esDeHoy ? reto.materia : null}
           fecha={esDeHoy ? fechaLarga(reto.date) : null}
           opciones={esDeHoy ? reto.rounds[0].options : null}
           resultados={leido.resultados}

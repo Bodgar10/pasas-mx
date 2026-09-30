@@ -29,6 +29,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ codigo:
       (
         <TarjetaHistoria
           numero={leido.numero}
+          materia={esDeHoy ? reto.materia : null}
           resultados={leido.resultados}
           temaFallado={temaFallado}
           dominio={SITIO.replace(/^https?:\/\//, '')}

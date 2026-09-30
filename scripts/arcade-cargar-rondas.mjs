@@ -52,9 +52,20 @@ function revolver(r) {
   }
 }
 
-const { data: temas, error: e1 } = await supabase.from('topics').select('id, name')
+const { data: temas, error: e1 } = await supabase.from('topics').select('id, name, subjects!inner(slug)')
 if (e1) throw e1
 const nombreTema = new Map(temas.map((t) => [t.id, t.name]))
+
+// Materia del reto de cada tema: misma regla que arcade_materia_de_slug (056).
+function materiaDeSlug(s) {
+  if (s.startsWith('historia-')) return 'historia'
+  if (s.startsWith('biologia-') || ['temas-selectos-biologia', 'ecologia-medio-ambiente'].includes(s)) return 'biologia'
+  if (s === 'geografia' || s.startsWith('geografia-')) return 'geografia'
+  if (s.startsWith('quimica-') || s.startsWith('fisica-') || ['temas-selectos-quimica', 'temas-selectos-fisica'].includes(s)) return 'ciencias'
+  if (s.startsWith('espanol-') || s.startsWith('lengua-comunicacion-') || s.startsWith('literatura-')) return 'espanol'
+  return null
+}
+const materiaTema = new Map(temas.map((t) => [t.id, materiaDeSlug(t.subjects.slug)]))
 
 const { data: existentes, error: e2 } = await supabase
   .from('arcade_rounds')
@@ -73,6 +84,7 @@ const vistas = existentes.map((r) => ({ set: new Set(r.options.map(norm)), orige
 for (const r of nuevas) {
   const e = []
   if (!nombreTema.has(r.topic_id)) e.push('topic_id no existe')
+  else if (!materiaTema.get(r.topic_id)) e.push('el tema no es de ninguna materia del reto (056)')
   if (!Array.isArray(r.options) || r.options.length !== 4) e.push('no son 4 opciones')
   else {
     if (new Set(r.options.map(norm)).size !== 4) e.push('opciones repetidas')
@@ -111,6 +123,9 @@ for (const r of buenas) posiciones[r.odd_index]++
 console.log(`Leídas: ${nuevas.length} · válidas: ${buenas.length} · descartadas: ${errores.length}`)
 console.log(`Posición de la que sobra (antes de revolver): ${posiciones.join(' / ')}`)
 console.log(`Temas cubiertos: ${porTema.size}`)
+const porMateria = {}
+for (const r of buenas) { const m = materiaTema.get(r.topic_id); porMateria[m] = (porMateria[m] ?? 0) + 1 }
+console.log(`Por materia: ${JSON.stringify(porMateria)}`)
 if (avisos.length) console.log(`\nAvisos (${avisos.length}):\n  ` + avisos.join('\n  '))
 if (errores.length) console.log(`\nDescartadas (${errores.length}):\n  ` + errores.join('\n  '))
 
@@ -139,3 +154,9 @@ const { data: insertadas, error: e3 } = await supabase
   .select('id')
 if (e3) throw e3
 console.log(`\nInsertadas: ${insertadas.length} con status "${status}"`)
+
+// Los días futuros que cayeron a historia por falta de rondas de esta
+// materia se rearman con el calendario (057).
+const { data: dias, error: e4 } = await supabase.rpc('arcade_rearmar_calendario', { p_dias: 14 })
+if (e4) console.error('No se pudo rearmar el calendario:', e4.message)
+else console.log(`Calendario rearmado: ${dias} días con reto`)

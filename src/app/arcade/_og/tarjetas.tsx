@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { RONDAS_POR_RETO } from '@/lib/arcade'
+import { configMateria } from '@/lib/arcade/materias'
 
 /**
  * Imágenes del Arcade: la vista previa del link (1200×630) y la historia
@@ -130,11 +131,14 @@ function Opciones({ opciones }: { opciones: string[] }) {
  */
 export function TarjetaLink({
   numero,
+  materia,
   fecha,
   opciones,
   resultados,
 }: {
   numero: number
+  /** Materia del reto; sin ella la tarjeta dice solo "Reto #n". */
+  materia?: string | null
   fecha: string | null
   opciones: string[] | null
   resultados: boolean[] | null
@@ -158,7 +162,7 @@ export function TarjetaLink({
       <div style={{ display: 'flex', flexDirection: 'column', gap: 26, maxWidth: opciones ? 600 : 1040 }}>
         <Marca size={32} />
         <div style={{ display: 'flex', fontSize: 44, fontWeight: 900, color: C.suave }}>
-          {`¿Cuál sobra? · Reto #${numero}`}
+          {materia ? `¿Cuál sobra? · ${configMateria(materia).eyebrow(numero)}` : `¿Cuál sobra? · Reto #${numero}`}
         </div>
         {resultados ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
@@ -220,11 +224,13 @@ export function TarjetaLink({
 /** Historia para Instagram / estados de WhatsApp, 1080×1920. */
 export function TarjetaHistoria({
   numero,
+  materia,
   resultados,
   temaFallado,
   dominio,
 }: {
   numero: number
+  materia?: string | null
   resultados: boolean[]
   temaFallado: string | null
   dominio: string
@@ -250,7 +256,7 @@ export function TarjetaHistoria({
       <Marca size={56} />
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 56 }}>
         <div style={{ display: 'flex', fontSize: 58, fontWeight: 800, color: C.suave }}>
-          {`Reto de historia #${numero}`}
+          {materia ? configMateria(materia).eyebrow(numero) : `Reto #${numero}`}
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-end', fontFamily: 'Orbitron', fontWeight: 900, lineHeight: 1 }}>
           <span style={{ fontSize: 360 }}>{aciertos}</span>

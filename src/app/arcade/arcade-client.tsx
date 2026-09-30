@@ -25,6 +25,8 @@ import {
 import { atribucionJuegos, type Atribucion } from '@/lib/arcade/canal'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import RecordatorioForm from './recordatorio-form'
+import { configMateria, materiaDeManana, nombreParaManana } from '@/lib/arcade/materias'
+import { esMateriaPublica } from '@/lib/horda-publica'
 import s from './arcade.module.css'
 
 type Fase = 'intro' | 'play' | 'end'
@@ -203,7 +205,7 @@ export default function ArcadeClient({
   }
 
   const codigo = codigoResultado(reto.number, resultados)
-  const texto = textoCompartir(reto.number, resultados, dominio)
+  const texto = textoCompartir(reto.number, resultados, dominio, reto.materia)
 
   // ¿El navegador tiene menú nativo para compartir? Se decide en el cliente
   // (en el servidor no existe navigator) y desde la función async, como el
@@ -279,8 +281,14 @@ export default function ArcadeClient({
     }
   }
 
+  // Materia del día: colores y textos (lib/arcade/materias). El acento va
+  // como variable CSS para que el módulo lo use en botones y progreso.
+  const mat = configMateria(reto.materia)
+  const manana = nombreParaManana(materiaDeManana(reto.date))
+  const estiloMateria = { '--acento': mat.acento, '--sobre-acento': mat.sobreAcento } as React.CSSProperties
+
   return (
-    <main className={s.root}>
+    <main className={s.root} style={estiloMateria}>
       <div className={s.wrap}>
         <header className={s.top}>
           <Link href="/" className={s.wordmark}>
@@ -298,37 +306,37 @@ export default function ArcadeClient({
         {fase === 'intro' && (
           <section className={s.screen}>
             <div className={s.stack8}>
-              <div className={s.eyebrow}>Reto de Historia #{reto.number}</div>
+              <div className={s.eyebrow}>
+                <span aria-hidden="true">{mat.emoji}</span> {mat.eyebrow(reto.number)}
+              </div>
               <h1>¿Cuál sobra?</h1>
-              <p className={s.lead}>
-                Cinco rondas. En cada una, tres cosas tienen algo en común y una no. Toca la que sobra.
-              </p>
+              <p className={s.lead}>{mat.lead}</p>
             </div>
 
             <div className={s.card}>
               <div className={s.eyebrow}>Así se juega</div>
               <div className={s.example} aria-hidden="true">
-                <div className={s.chip}>Mercurio</div>
-                <div className={s.chip}>Venus</div>
-                <div className={`${s.chip} ${s.chipOdd}`}>Luna</div>
-                <div className={s.chip}>Marte</div>
+                {mat.ejemplo.opciones.map((o, i) => (
+                  <div key={o} className={`${s.chip} ${i === mat.ejemplo.sobra ? s.chipOdd : ''}`}>
+                    {o}
+                  </div>
+                ))}
               </div>
-              <p className={s.exampleNote}>
-                Sobra la <b>Luna</b>: es un satélite, los otros tres son planetas.
-              </p>
+              <p className={s.exampleNote}>{mat.ejemplo.nota}</p>
             </div>
 
             <div className={s.facts}>
               <span className={s.fact}>5 rondas</span>
               <span className={s.fact}>2 minutos</span>
-              <span className={s.fact}>Historia</span>
+              <span className={s.fact}>{mat.corto}</span>
             </div>
 
             <button className={`${s.btn} ${s.primary}`} type="button" onClick={empezar}>
               Jugar el reto de hoy
             </button>
             <p className={s.fine}>
-              Un reto nuevo cada día a las 00:00, hora del centro de México. El mismo para todos.
+              Un reto nuevo cada día a las 00:00, hora del centro de México, el mismo para todos. Mañana toca{' '}
+              {manana}.
             </p>
           </section>
         )}
@@ -346,7 +354,7 @@ export default function ArcadeClient({
         {fase === 'end' && (
           <section className={s.screen}>
             <div className={s.scoreBlock}>
-              <div className={s.eyebrow}>Reto de Historia #{reto.number} completado</div>
+              <div className={s.eyebrow}>{mat.eyebrow(reto.number)} completado</div>
               <div className={s.score}>
                 {aciertos}
                 <small>/{RONDAS_POR_RETO}</small>
@@ -420,7 +428,10 @@ export default function ArcadeClient({
             <Puente reto={reto} resultados={resultados} />
 
             <div className={s.next}>
-              <span>Siguiente reto en</span>
+              <span>
+                Siguiente reto en
+                <small className={s.nextMateria}>Mañana: {manana}</small>
+              </span>
               <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
             </div>
           </section>
@@ -506,6 +517,7 @@ function Ronda({
           <p>{r.explanation}</p>
           <p className={s.topic}>
             Del tema <b>{r.topic}</b>
+            {reto.materia === 'papas' && r.materia ? ` · ${configMateria(r.materia).corto}` : ''}
           </p>
           <button className={`${s.btn} ${s.primary}`} type="button" onClick={onSiguiente} autoFocus>
             {idx < RONDAS_POR_RETO - 1 ? 'Siguiente ronda' : 'Ver mi resultado'}
@@ -524,13 +536,15 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
     <div className={s.bridge}>
       <div className={s.bridgeInner}>
         <div className={s.eyebrow}>{perfecto ? 'Siguiente nivel' : 'Tu repaso de hoy'}</div>
-        <h3>{perfecto ? 'Cinco de cinco. ¿Aguantas la Horda?' : `Fallaste en ${r.topic}`}</h3>
+        <h3>{perfecto ? 'Cinco de cinco. ¿Aguantas más?' : `Fallaste en ${r.topic}`}</h3>
         <p>
-          {perfecto
-            ? `El reto diario es el calentamiento. En PASAS, ${r.topic} tiene su propio Modo Horda con preguntas más difíciles.`
-            : 'Este tema tiene su propio Modo Horda: oleadas de preguntas, cada una más difícil. Las primeras tres son gratis.'}
+          {r.horde_ready && esMateriaPublica(r.subject_slug)
+            ? perfecto
+              ? `El reto diario es el calentamiento. En PASAS, ${r.topic} tiene su propio Modo Horda con preguntas más difíciles.`
+              : 'Este tema tiene su propio Modo Horda: oleadas de preguntas, cada una más difícil. Las primeras tres son gratis.'
+            : `En PASAS, ${r.topic} se explica con lo que te gusta: anime, futbol, K-pop o videojuegos. Y cada tema tiene su Modo Horda.`}
         </p>
-        {r.horde_ready && (
+        {r.horde_ready && esMateriaPublica(r.subject_slug) && (
           <>
             <div className={s.hordeStats}>
               <span>3 oleadas gratis</span>
@@ -547,6 +561,19 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
               Jugar la Horda de {r.topic}
             </Link>
           </>
+        )}
+        {!(r.horde_ready && esMateriaPublica(r.subject_slug)) && (
+          // La Horda pública solo existe para historia (lib/horda-publica).
+          // En las demás materias el puente lleva a conocer PASAS.
+          <Link
+            className={`${s.btn} ${s.primary}`}
+            href="/"
+            onClick={() =>
+              track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, destino: 'landing', origen: leerOrigenArcade() ?? undefined, canal: atribucionJuegos().canal })
+            }
+          >
+            Conoce PASAS
+          </Link>
         )}
         <Link className={s.link} href="/">
           ¿Qué es PASAS?

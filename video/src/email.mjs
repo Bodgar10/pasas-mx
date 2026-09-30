@@ -17,7 +17,7 @@ export function fechaLarga(fecha) {
 
 export function caption(data) {
   return [
-    `Reto de ${data.materia_corta || 'Historia'} #${data.numero}. ¿Cuál sobra? Comenta tu respuesta.`,
+    `${data.reto_titulo || `Reto de ${data.materia_corta || 'Historia'}`} #${data.numero}. ¿Cuál sobra? Comenta tu respuesta.`,
     'Las otras 4 rondas están en pasas.mx/arcade (link en la bio).',
     'Mañana te decimos cuántos le atinaron.',
     '',

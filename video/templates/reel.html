@@ -114,7 +114,7 @@ window.setup = function(data){
     $('motivo').textContent = hasPct ? 'le atinó. ' + data.ayer.motivo : data.ayer.motivo;
     if (!hasPct) $('motivo').style.fontSize = '7cqw';   // sin porcentaje, el motivo es el remate
   }
-  $('title-tag').textContent = 'Reto de ' + (data.materia_corta || 'Historia') + ' #' + data.numero;
+  $('title-tag').textContent = (data.reto_titulo || ('Reto de ' + (data.materia_corta || 'Historia'))) + ' #' + data.numero;
   var years = data.hoy.opciones.every(function(x){ return /^\d{3,4}$/.test(String(x).trim()); });
   $('grid').innerHTML = data.hoy.opciones.map(function(x,i){
     return '<div class="card' + (years?' year':'') + '"><span><span class="l">' + 'ABCD'[i] + '</span><span class="t">' + esc(x) + '</span></span></div>';

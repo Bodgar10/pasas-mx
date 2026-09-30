@@ -9,7 +9,7 @@ import { TarjetaLink, fuentesOG } from './_og/tarjetas'
  * Se regenera cada minuto, igual que la página.
  */
 export const revalidate = 60
-export const alt = '¿Cuál sobra? Reto diario de historia de PASAS'
+export const alt = '¿Cuál sobra? Reto diario de PASAS'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -19,6 +19,7 @@ export default async function Image() {
     (
       <TarjetaLink
         numero={reto?.number ?? 1}
+        materia={reto?.materia ?? null}
         fecha={reto ? fechaLarga(reto.date) : null}
         opciones={reto?.rounds[0]?.options ?? null}
         resultados={null}

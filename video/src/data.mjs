@@ -84,8 +84,19 @@ export function motivoCorto(explicacion) {
   return partes[partes.length - 1];
 }
 
+// Nombres por materia del reto (migración 056). Espejo corto de
+// src/lib/arcade/materias.ts: si cambia un nombre allá, cámbialo aquí.
+const MATERIAS = {
+  historia: { materia: 'Historia', corta: 'Historia', titulo: 'Reto de Historia' },
+  biologia: { materia: 'Biología', corta: 'Biología', titulo: 'Reto de Biología' },
+  geografia: { materia: 'Geografía', corta: 'Geografía', titulo: 'Reto de Geografía' },
+  ciencias: { materia: 'Química y Física', corta: 'Química y Física', titulo: 'Reto de Química y Física' },
+  espanol: { materia: 'Español', corta: 'Español', titulo: 'Reto de Español' },
+  papas: { materia: 'Reto para papás', corta: 'Papás', titulo: 'Reto para papás' },
+};
+
 async function reto(fecha) {
-  const rows = await api(`arcade_challenges?challenge_date=eq.${fecha}&select=challenge_date,number,round_ids`);
+  const rows = await api(`arcade_challenges?challenge_date=eq.${fecha}&select=challenge_date,number,round_ids,materia`);
   return rows[0] || null;
 }
 
@@ -128,7 +139,8 @@ export async function loadFromSupabase(fecha, parte, { hoyMexico, log = () => {}
   }
   if (!c) throw new Error(`No hay reto programado para ${fecha}. Llena el calendario con arcade_llenar_calendario().`);
 
-  const base = { fecha: c.challenge_date, numero: c.number, materia: 'Historia', materia_corta: 'Historia' };
+  const m = MATERIAS[c.materia] || MATERIAS.historia;
+  const base = { fecha: c.challenge_date, numero: c.number, materia: m.materia, materia_corta: m.corta, reto_titulo: m.titulo };
   const mapa = await rondas(c.round_ids);
   const delDia = c.round_ids.map(id => mapa.get(id));
   if (delDia.some(r => !r)) throw new Error(`El reto #${c.number} apunta a una ronda que ya no existe`);

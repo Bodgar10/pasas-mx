@@ -74,6 +74,11 @@ describe('resultado y puente', () => {
     expect(calcularResultados(reto, [0, 1, 0, 3, 1])).toEqual([true, true, false, true, false])
   })
 
+  it('el texto para compartir lleva la materia del día', () => {
+    expect(textoCompartir(5, [true, true, true, true, true], 'https://pasas.mx', 'biologia').split('\n')[0]).toBe('¿Cuál sobra? #5 · Biología')
+    expect(textoCompartir(5, [true, true, true, true, true], 'https://pasas.mx', 'papas').split('\n')[0]).toBe('¿Cuál sobra? #5 · Reto para papás')
+  })
+
   it('el texto para compartir tiene el formato fijo y no revela nada', () => {
     const txt = textoCompartir(12, [true, true, false, true, false], 'https://pasas.mx')
     expect(txt).toBe('¿Cuál sobra? #12 · Historia\n🟩🟩🟥🟩🟥  3/5\n¿Tú cuántas sacas? https://pasas.mx/arcade/r/12-11010')

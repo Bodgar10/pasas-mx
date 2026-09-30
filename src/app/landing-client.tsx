@@ -825,7 +825,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
         }}
       >
         <span style={{ fontWeight: 900 }}>¿Cuál sobra?</span>
-        <span className="banner-arcade-medio" style={{ opacity: 0.9 }}>· Reto diario de historia ·</span>
+        <span className="banner-arcade-medio" style={{ opacity: 0.9 }}>· Un reto nuevo cada día ·</span>
         <span style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>Juega gratis →</span>
       </Link>
       <style>{`@media (max-width: 360px){ .banner-arcade-medio{ display:none } }`}</style>

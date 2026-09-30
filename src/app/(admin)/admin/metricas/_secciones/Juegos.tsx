@@ -1,3 +1,4 @@
+import { configMateria } from '@/lib/arcade/materias'
 import { StatCard, SectionTitle, Panel, Nota, Vacio, FilaRanking, Barra, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
 import { servicio, TOPE, pct } from '../_lib/datos'
 
@@ -49,7 +50,7 @@ export default async function Juegos() {
 
   const [{ data: partidasData }, { data: retosData }, { data: cifrasHoy }, { data: avanceData }] = await Promise.all([
     db.from('arcade_plays').select('challenge_date, anon_id, score, origen').gte('challenge_date', desde30).limit(TOPE),
-    db.from('arcade_challenges').select('challenge_date, number').gte('challenge_date', desde30).lte('challenge_date', hoy),
+    db.from('arcade_challenges').select('challenge_date, number, materia').gte('challenge_date', desde30).lte('challenge_date', hoy),
     db.rpc('arcade_cifras', { p_date: hoy }),
     db
       .from('horda_publica_avance')
@@ -60,6 +61,7 @@ export default async function Juegos() {
 
   const partidas = (partidasData ?? []) as Partida[]
   const numeroDe = new Map((retosData ?? []).map((r) => [r.challenge_date as string, r.number as number]))
+  const materiaDe = new Map((retosData ?? []).map((r) => [r.challenge_date as string, configMateria(r.materia as string).corto]))
   const avance = (avanceData ?? []) as unknown as Avance[]
 
   // ── Arcade ───────────────────────────────────────────────────────────
@@ -135,7 +137,7 @@ export default async function Juegos() {
               return (
                 <FilaRanking
                   key={d}
-                  nombre={`Reto #${numeroDe.get(d) ?? '—'} · ${new Date(`${d}T12:00:00Z`).toLocaleDateString('es-MX', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })}`}
+                  nombre={`Reto #${numeroDe.get(d) ?? '—'} · ${materiaDe.get(d) ?? ''} · ${new Date(`${d}T12:00:00Z`).toLocaleDateString('es-MX', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })}`}
                   sub={`promedio ${promedio(ps.map((p) => p.score))}/5 · ${pct(perfectos, ps.length)}% perfectos · ${banner} desde el banner`}
                   valor={jug}
                   valorSecundario="jugadores"

@@ -1,3 +1,5 @@
+import { configMateria } from '@/lib/arcade/materias'
+
 /**
  * PASAS Arcade — piezas puras del reto diario "¿Cuál sobra?".
  *
@@ -20,6 +22,8 @@ export type RondaArcade = {
   topic: string
   topic_slug: string
   subject_slug: string
+  /** Materia del reto a la que pertenece esta ronda (056). Útil en el de papás, que mezcla. */
+  materia?: string | null
   horde_ready: boolean
 }
 
@@ -27,6 +31,8 @@ export type RetoArcade = {
   /** YYYY-MM-DD, hora del centro de México. */
   date: string
   number: number
+  /** Materia que se usó de verdad ese día (arcade_challenges.materia, 056). */
+  materia?: string | null
   rounds: RondaArcade[]
 }
 
@@ -141,11 +147,11 @@ export function leerCodigo(codigo: string): { numero: number; resultados: boolea
  * `sitio` va con protocolo (SITIO de lib/seo): WhatsApp e Instagram solo
  * vuelven clicable de forma confiable un link con https://.
  */
-export function textoCompartir(numero: number, resultados: boolean[], sitio: string): string {
+export function textoCompartir(numero: number, resultados: boolean[], sitio: string, materia?: string | null): string {
   const cuadros = resultados.map((ok) => (ok ? '🟩' : '🟥')).join('')
   const n = resultados.filter(Boolean).length
   const link = `${sitio.replace(/\/+$/, '')}/arcade/r/${codigoResultado(numero, resultados)}`
-  return `¿Cuál sobra? #${numero} · Historia\n${cuadros}  ${n}/${RONDAS_POR_RETO}\n¿Tú cuántas sacas? ${link}`
+  return `¿Cuál sobra? #${numero} · ${configMateria(materia).corto}\n${cuadros}  ${n}/${RONDAS_POR_RETO}\n¿Tú cuántas sacas? ${link}`
 }
 
 /**

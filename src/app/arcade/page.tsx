@@ -13,16 +13,16 @@ import ContenidoArcade from './contenido'
  */
 export const revalidate = 60
 
-const TITULO = '¿Cuál sobra? · Reto diario de Historia | PASAS'
+const TITULO = '¿Cuál sobra? · Reto diario | PASAS'
 const DESCRIPCION =
-  'Cinco rondas, dos minutos. Tres cosas tienen algo en común y una no. Un reto nuevo de historia cada día, el mismo para todos.'
+  'Cinco rondas, dos minutos. Tres cosas tienen algo en común y una no. Cada día una materia: historia, biología, geografía, química y física, español y un reto para papás.'
 
 export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
   alternates: { canonical: '/arcade' },
   openGraph: {
-    title: '¿Cuál sobra? · Reto diario de Historia',
+    title: '¿Cuál sobra? · Reto diario',
     description: DESCRIPCION,
     url: '/arcade',
     siteName: 'Pasas.mx',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '¿Cuál sobra? · Reto diario de Historia',
+    title: '¿Cuál sobra? · Reto diario',
     description: DESCRIPCION,
   },
 }
