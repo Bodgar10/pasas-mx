@@ -22,6 +22,7 @@ import {
   type OrigenArcade,
   type RetoArcade,
 } from '@/lib/arcade'
+import { atribucionJuegos, type Atribucion } from '@/lib/arcade/canal'
 import s from './arcade.module.css'
 
 type Fase = 'intro' | 'play' | 'end'
@@ -61,10 +62,12 @@ export default function ArcadeClient({
   const [reloj, setReloj] = useState<string | null>(null)
   const refCompartir = useRef<HTMLPreElement>(null)
 
-  // ── Origen de la visita (analítica). Ver fijarOrigenArcade en lib/arcade.
+  // ── Origen (entrada dentro del producto) y canal (de dónde vino, fuera
+  // del producto). Ver fijarOrigenArcade en lib/arcade y lib/arcade/canal.
   const origenRef = useRef<OrigenArcade>('directo')
+  const atribRef = useRef<Atribucion>({ canal: 'directo', utm_source: null, utm_campaign: null })
   const conOrigen = (evento: string, props: Record<string, unknown>) =>
-    track(evento, { ...props, origen: origenRef.current })
+    track(evento, { ...props, origen: origenRef.current, canal: atribRef.current.canal })
 
   // `arcade_visto` es la entrada al embudo: sin él no se sabe cuántos de los
   // que tocaron el banner llegaron a ver el juego. window.location y no
@@ -72,8 +75,10 @@ export default function ArcadeClient({
   useEffect(() => {
     const desde = origenRuta ?? new URLSearchParams(window.location.search).get('desde')
     origenRef.current = fijarOrigenArcade(desde)
+    atribRef.current = atribucionJuegos()
     track('arcade_visto', {
       origen: origenRef.current,
+      canal: atribRef.current.canal,
       reto_numero: reto.number,
       ya_jugo: !!leerLocal(llavePartida(reto.date)),
     })
@@ -88,7 +93,13 @@ export default function ArcadeClient({
         const res = await fetch('/api/arcade/play', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ date: reto.date, anonId: anonIdJuegos(), picks: p, origen: origenRef.current }),
+          body: JSON.stringify({
+            date: reto.date,
+            anonId: anonIdJuegos(),
+            picks: p,
+            origen: origenRef.current,
+            ...atribRef.current,
+          }),
         })
         const json = (await res.json()) as { cifras?: CifrasArcade | null }
         setCifras(json.cifras ?? null)
@@ -133,11 +144,26 @@ export default function ArcadeClient({
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [fase])
 
+  /**
+   * 🔴 UN SOLO PUNTO DE DISPARO por evento (s34-F2):
+   *   - `arcade_iniciado` aquí, una vez por partida (la ref evita el doble
+   *     toque). Es el único camino a 'play': entrada directa, banner,
+   *     resultado compartido o link de la Horda, todos pasan por la portada.
+   *   - `arcade_completado` en `responder`, en el mismo instante en que se
+   *     guarda la partida. Antes salía al tocar "Ver mi resultado": quien
+   *     cerraba después de la 5ª respuesta quedaba guardado sin evento.
+   * Quien vuelve el mismo día ve su resultado guardado y solo dispara
+   * `arcade_visto` (con ya_jugo: true): no es una partida nueva.
+   */
+  const partidaIniciadaRef = useRef(false)
   function empezar() {
     setPicks([])
     setIdx(0)
     setFase('play')
-    conOrigen('arcade_iniciado', { reto_numero: reto.number })
+    if (!partidaIniciadaRef.current) {
+      partidaIniciadaRef.current = true
+      conOrigen('arcade_iniciado', { reto_numero: reto.number })
+    }
   }
 
   function responder(i: number) {
@@ -147,6 +173,8 @@ export default function ArcadeClient({
     if (nuevos.length === RONDAS_POR_RETO) {
       escribirLocal(llavePartida(reto.date), JSON.stringify(nuevos))
       void enviarPartida(nuevos)
+      const score = calcularResultados(reto, nuevos).filter(Boolean).length
+      conOrigen('arcade_completado', { reto_numero: reto.number, score, aciertos: score })
     }
   }
 
@@ -156,7 +184,6 @@ export default function ArcadeClient({
       window.scrollTo({ top: 0, behavior: 'instant' })
     } else {
       setFase('end')
-      conOrigen('arcade_completado', { reto_numero: reto.number, aciertos })
     }
   }
 
@@ -201,7 +228,7 @@ export default function ArcadeClient({
 
   async function compartirImagen() {
     if (!imagen) return
-    conOrigen('arcade_compartido', { reto_numero: reto.number, canal: 'imagen', aciertos })
+    conOrigen('arcade_compartido', { reto_numero: reto.number, metodo: 'imagen', aciertos })
     try {
       await navigator.share({ files: [imagen], text: texto })
     } catch {
@@ -210,7 +237,7 @@ export default function ArcadeClient({
   }
 
   async function copiar() {
-    conOrigen('arcade_compartido', { reto_numero: reto.number, canal: 'copiar', aciertos })
+    conOrigen('arcade_compartido', { reto_numero: reto.number, metodo: 'copiar', aciertos })
     try {
       await navigator.clipboard.writeText(texto)
       setAviso('Resultado copiado. Pégalo en tu grupo.')
@@ -346,7 +373,7 @@ export default function ArcadeClient({
                   target="_blank"
                   rel="noopener"
                   onClick={() =>
-                    conOrigen('arcade_compartido', { reto_numero: reto.number, canal: 'whatsapp', aciertos })
+                    conOrigen('arcade_compartido', { reto_numero: reto.number, metodo: 'whatsapp', aciertos })
                   }
                 >
                   WhatsApp
@@ -482,7 +509,7 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
               className={`${s.btn} ${s.primary}`}
               href={urlHorda(r)}
               onClick={() =>
-                track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, origen: leerOrigenArcade() ?? undefined })
+                track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, origen: leerOrigenArcade() ?? undefined, canal: atribucionJuegos().canal })
               }
             >
               Jugar la Horda de {r.topic}

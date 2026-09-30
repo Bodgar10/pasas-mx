@@ -17,7 +17,8 @@ export async function POST(req: Request) {
   } catch {
     return new NextResponse(null, { status: 204 })
   }
-  const { topicId, anonId, evento, oleada, eleccion, origen } = b
+  const { topicId, anonId, evento, oleada, eleccion, origen, canal, utm_source, utm_campaign } = b
+  const texto = (v: unknown) => (typeof v === 'string' ? v : null)
 
   let e: EventoAvance | null = null
   if (evento === 'inicio') e = { evento }
@@ -25,7 +26,11 @@ export async function POST(req: Request) {
   else if (evento === 'eleccion' && (eleccion === 'estudiante' || eleccion === 'adulto')) e = { evento, eleccion }
 
   if (e && typeof topicId === 'string' && typeof anonId === 'string') {
-    await registrarAvance(anonId, topicId, e, typeof origen === 'string' ? origen : null)
+    await registrarAvance(anonId, topicId, e, texto(origen), {
+      canal: texto(canal),
+      utm_source: texto(utm_source),
+      utm_campaign: texto(utm_campaign),
+    })
   }
   return new NextResponse(null, { status: 204 })
 }

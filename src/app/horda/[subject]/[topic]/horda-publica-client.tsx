@@ -7,6 +7,7 @@ import Confetti from '@/components/global/Confetti'
 import { track } from '@/lib/analytics/track'
 import { SITIO } from '@/lib/seo'
 import { anonIdJuegos, fijarOrigenArcade, leerOrigenArcade, type OrigenArcade } from '@/lib/arcade'
+import { atribucionJuegos, type Atribucion } from '@/lib/arcade/canal'
 import {
   OLEADAS_GRATIS,
   OLEADAS_TOTALES,
@@ -69,8 +70,9 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
   // landing sigue contando como 'landing_banner' aunque el puente del Arcade
   // traiga ?desde=arcade. Sin sesión previa, manda la URL (o 'directo').
   const origenRef = useRef<OrigenArcade>('directo')
+  const atribRef = useRef<Atribucion>({ canal: 'directo', utm_source: null, utm_campaign: null })
   const conOrigen = (evento: string, props: Record<string, unknown>) =>
-    track(evento, { ...props, origen: origenRef.current })
+    track(evento, { ...props, origen: origenRef.current, canal: atribRef.current.canal })
 
   // Medición en la base (horda_publica_avance), independiente de cookies.
   // Fire-and-forget con keepalive: nunca frena el juego ni muestra errores.
@@ -80,7 +82,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         keepalive: true,
-        body: JSON.stringify({ topicId: tema.topicId, anonId: anonIdJuegos(), origen: origenRef.current, ...datos }),
+        body: JSON.stringify({ topicId: tema.topicId, anonId: anonIdJuegos(), origen: origenRef.current, ...atribRef.current, ...datos }),
       }).catch(() => {})
     } catch {}
   }
@@ -88,8 +90,10 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
   useEffect(() => {
     origenRef.current =
       leerOrigenArcade() ?? fijarOrigenArcade(new URLSearchParams(window.location.search).get('desde'))
+    atribRef.current = atribucionJuegos()
     track('horda_publica_vista', {
       origen: origenRef.current,
+      canal: atribRef.current.canal,
       topic: tema.topicName,
       subject_slug: tema.subjectSlug,
     })

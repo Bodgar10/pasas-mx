@@ -108,9 +108,8 @@ export default function UTMPersistence() {
     void (async () => {
       if (await persistir()) return
 
-      // Sin sesión todavía. Se espera a que aparezca en vez de adelantar el
-      // signInAnonymously de la landing: ese retraso de 2s existe para no
-      // competir con el render inicial y no es nuestro para moverlo.
+      // Sin sesión todavía. Se espera a que aparezca (login o registro). La
+      // sesión anónima que antes creaba la landing se quitó en s34-F2.
       const supabase = createClient()
       const { data } = supabase.auth.onAuthStateChange(async (_evento, sesion) => {
         if (cancelado || !sesion) return

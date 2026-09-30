@@ -20,7 +20,6 @@ import DemoPistas, { DEMO_PISTAS_ID } from '@/components/landing/DemoPistas'
 import DemoHorda, { DEMO_HORDA_ID } from '@/components/landing/DemoHorda'
 import Pasita from '@/components/mascota/Pasita'
 import PasitaLazy from '@/components/mascota/PasitaLazy'
-import { createClient } from '@/utils/supabase/client'
 import { track } from '@/lib/analytics/track'
 
 // ── A/B hero variants ──────────────────────────────────────────────
@@ -688,23 +687,13 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
     // conserva porque no se puede derivar de ahi.
     track('hero_variant_seen', { variant: v, audience, es_persistida: persistida })
 
-    // Prefetch anonymous session in background while user reads the landing
-    // So when they tap CTA, the session already exists and onboarding loads instantly
-    const prefetchSession = async () => {
-      try {
-        const supabase = createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user) {
-          await supabase.auth.signInAnonymously()
-        }
-      } catch {
-        // Silent fail — if it fails, onboarding/page.tsx handles it as fallback
-      }
-    }
-
-    // Delay 2s so it doesn't compete with the initial page render
-    const timer = setTimeout(prefetchSession, 2000)
-    return () => clearTimeout(timer)
+    // 🔴 Aquí vivía un `supabase.auth.signInAnonymously()` a los 2 s (commit
+    // aee9a4c, mayo 2026) para "precalentar" una sesión antes del onboarding.
+    // El onboarding ya no la usa —guarda en sessionStorage y lee los temas con
+    // service role— y los inicios anónimos están APAGADOS en Supabase: cada
+    // visita a la landing, incluidos bots, dejaba un POST /auth/v1/signup con
+    // 422. Se quitó en s34-F2. No volver a ponerlo sin habilitar los inicios
+    // anónimos y sin un flujo que de verdad use esa sesión.
   }, [])
 
   useEffect(() => {

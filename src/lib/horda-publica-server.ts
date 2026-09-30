@@ -1,6 +1,7 @@
 import 'server-only'
 
 import { createClient } from '@supabase/supabase-js'
+import { faltaFirmaNueva, type AtribucionServidor } from '@/lib/arcade-server'
 import { NIVEL_ONBOARDING, OLEADAS_GRATIS, esMateriaPublica, gradoOnboarding } from '@/lib/horda-publica'
 
 /**
@@ -134,17 +135,28 @@ export async function registrarAvance(
   anonId: string,
   topicId: string,
   e: EventoAvance,
-  origen: string | null
+  origen: string | null,
+  atribucion: AtribucionServidor | null = null
 ): Promise<boolean> {
   if (!(await esTemaPublico(topicId))) return false
-  const { data, error } = await admin().rpc('horda_publica_registrar', {
+  const base = {
     p_anon_id: anonId,
     p_topic_id: topicId,
     p_evento: e.evento,
     p_oleada: e.evento === 'oleada' ? e.oleada : null,
     p_eleccion: e.evento === 'eleccion' ? e.eleccion : null,
     p_origen: origen,
+  }
+  // Firma nueva (053) con reintento a la vieja (052); ver faltaFirmaNueva.
+  let { data, error } = await admin().rpc('horda_publica_registrar', {
+    ...base,
+    p_canal: atribucion?.canal ?? null,
+    p_utm_source: atribucion?.utm_source ?? null,
+    p_utm_campaign: atribucion?.utm_campaign ?? null,
   })
+  if (faltaFirmaNueva(error)) {
+    ;({ data, error } = await admin().rpc('horda_publica_registrar', base))
+  }
   if (error) {
     console.error('[horda-publica] registrar avance falló:', error)
     return false
