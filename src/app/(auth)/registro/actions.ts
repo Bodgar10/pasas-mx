@@ -472,7 +472,8 @@ export async function registroAction(
           locale: CHECKOUT_CONFIG.locale,
           line_items: [{ price: priceId, quantity: 1 }],
           customer_email: email,
-          success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard?checkout=success`,
+          // Mismo destino que create-session, con session_id para Google Ads (s34-F7).
+          success_url: `${process.env.NEXT_PUBLIC_SITE_URL}${CHECKOUT_CONFIG.successPath}`,
           // `checkout=cancelado`, igual que en /api/checkout/create-session:
           // es lo unico que distingue "volvio de la caja sin pagar" de
           // "entro a /planes". Las DOS puertas o ninguna, o el dato mide

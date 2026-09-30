@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
 import { trackCheckoutCompleted } from '@/components/posthog-events'
+import { conversionPagoUnaVez } from '@/lib/analytics/google-ads'
 import { waLink } from '@/lib/contacto'
 import { rutaAlumno } from '@/lib/learners'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
@@ -282,6 +283,10 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
+    // Google Ads (s34-F7): regreso de Stripe con pago hecho. No espera a que
+    // el webhook marque 'active' (puede tardar); Stripe solo manda aquí tras
+    // un checkout completado. Deduplicado por session_id. Inerte sin ID.
+    if (params.get('checkout') === 'success') conversionPagoUnaVez(params.get('session_id'))
     if (params.get('checkout') === 'success' && subscriptionStatus === 'active') {
       trackCheckoutCompleted('ai_personalized', 0)
       if (isPersonalized) {

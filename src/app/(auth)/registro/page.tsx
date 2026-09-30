@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { registroAction, type RegistroState } from './actions'
 import { trackSignup } from '@/components/posthog-events'
 import { nuevoEventId, track } from '@/lib/analytics/track'
+import { conversionGoogleAds } from '@/lib/analytics/google-ads'
 import { motivoRegistroError } from '@/lib/analytics/motivos'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 import Logo from '@/components/global/Logo'
@@ -192,6 +193,10 @@ function RegistroContent() {
       segundos_en_formulario: Math.round((Date.now() - inicioFormRef.current) / 1000),
       registrante,
     })
+    // Google Ads (s34-F7): mismo punto y misma guarda (`medidoRef`) que
+    // signup_completado, así sale una vez por alta en las dos salidas del
+    // formulario (correo por confirmar y directo a Stripe). Inerte sin ID.
+    conversionGoogleAds('registro')
 
     if ('emailSent' in state && state.emailSent && !medidoRef.current.enviada) {
       medidoRef.current.enviada = true

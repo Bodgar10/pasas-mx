@@ -3,6 +3,7 @@
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { COOKIE_CONSENT_EVENT, permiteAnalytics, permiteMarketing } from '@/lib/consent'
+import { GOOGLE_ADS_ID } from '@/lib/analytics/google-ads'
 
 /**
  * GA4 y Clarity. Antes vivían sueltos en layout.tsx y cargaban SIEMPRE,
@@ -53,6 +54,8 @@ export default function AnalyticsScripts() {
 
   const ga4 = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID
   const clarity = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID
+  // Formato AW-XXXXXXXXX. Vacío = la etiqueta de Google Ads no existe.
+  const adsId = GOOGLE_ADS_ID
   const metaPixel = process.env.NEXT_PUBLIC_META_PIXEL_ID
   const tiktokPixel = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID
 
@@ -69,6 +72,28 @@ export default function AnalyticsScripts() {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${ga4}');
+          `}</Script>
+        </>
+      )}
+
+      {/* Google Ads (s34-F7). Solo con `marketing` y con el ID configurado.
+          Si GA4 ya cargó gtag.js, se REUSA: solo se agrega el `config` del
+          AW-ID. Si no (aceptó marketing pero no análisis), se carga gtag.js
+          con el AW-ID. Nunca dos veces el mismo script. */}
+      {okMarketing && adsId && ok && ga4 && (
+        <Script id="google-ads-config" strategy="afterInteractive">{`
+          window.gtag && window.gtag('config', '${adsId}');
+        `}</Script>
+      )}
+      {okMarketing && adsId && !(ok && ga4) && (
+        <>
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${adsId}`} strategy="afterInteractive" />
+          <Script id="google-ads" strategy="afterInteractive">{`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = window.gtag || gtag;
+            gtag('js', new Date());
+            gtag('config', '${adsId}');
           `}</Script>
         </>
       )}

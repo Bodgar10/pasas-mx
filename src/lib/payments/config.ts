@@ -181,7 +181,9 @@ type LocaleCheckout = NonNullable<Stripe.Checkout.SessionCreateParams['locale']>
 const LOCALE_CHECKOUT: LocaleCheckout = 'es-419'
 
 export const CHECKOUT_CONFIG = {
-  successPath: '/dashboard?checkout=success',
+  // `session_id={CHECKOUT_SESSION_ID}` lo rellena Stripe (s34-F7): deduplica
+  // la conversión de pago de Google Ads si el usuario recarga la página.
+  successPath: '/dashboard?checkout=success&session_id={CHECKOUT_SESSION_ID}',
   cancelPath:  '/planes',
   paymentMethods: ['card'] as const,
   mode: 'subscription' as const,
