@@ -7,7 +7,7 @@
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { validate, loadFromFile, loadFromSupabase, addDays } from './data.mjs';
+import { validate, loadFromFile, loadFromSupabase, addDays, MIN_JUGADORES } from './data.mjs';
 import { withBrowser, renderReel, renderStory, renderImage } from './render.mjs';
 import { buildEmail, sendEmail } from './email.mjs';
 
@@ -59,7 +59,7 @@ async function main() {
 
   // Pocos jugadores: no hay story de resultados, pero sí un aviso por correo.
   if (args.parte === 'noche' && data.sinResultados) {
-    log(`  hoy jugaron ${data.jugadores}; con menos de 20 no hay story de resultados`);
+    log(`  hoy jugaron ${data.jugadores}; con menos de ${MIN_JUGADORES} no hay story de resultados`);
     if (args.enviar) {
       const r = await sendEmail(buildEmail(data, 'noche'), []);
       log(`  correo enviado (${r.id})`);

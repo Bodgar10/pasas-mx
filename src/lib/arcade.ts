@@ -39,8 +39,15 @@ export type CifrasArcade = {
   dist: number[]
 }
 
-/** Debajo de esto las cifras son ruido y no se enseñan. */
-export const MIN_JUGADORES_CIFRAS = 20
+/**
+ * Debajo de esto las cifras son ruido y no se enseñan.
+ *
+ * 10 y no 20 desde el 30-sep-2026, a propósito: en el arranque el reto juntó
+ * 10 jugadores y sin cifras no hay "solo el X% acertó" para los reels. Con 10,
+ * cada persona mueve un porcentaje 10 puntos: subirlo a 20+ en cuanto el
+ * tráfico lo permita. El umbral del video (video/src/data.mjs) va igual.
+ */
+export const MIN_JUGADORES_CIFRAS = 10
 
 const ZONA_MX = 'America/Mexico_City'
 

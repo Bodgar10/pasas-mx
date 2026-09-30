@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 // Mismo umbral que la página (/arcade, MIN_JUGADORES_CIFRAS): con menos
 // jugadores un porcentaje no dice nada y no se presume.
-export const MIN_JUGADORES = 20;
+export const MIN_JUGADORES = 10;
 
 function fail(msg) { throw new Error(`Datos del reto inválidos: ${msg}`); }
 

@@ -26,7 +26,7 @@ Todo esto vive en `src/data.mjs → loadFromSupabase()`.
    hizo Cárdenas en 1938."* El reel muestra solo esa última oración. Las 38
    rondas de la tanda 01 ya cumplen. Si una tanda nueva no lo hace, el reel
    dirá algo sin sentido.
-2. **Porcentajes solo desde 20 jugadores**, igual que la página
+2. **Porcentajes solo desde 10 jugadores** (umbral de arranque; subirlo a 20+ con más tráfico), igual que la página
    (`MIN_JUGADORES_CIFRAS`). Con menos, el reel muestra el motivo sin cifra y
    esa noche no hay story de resultados (llega un correo avisándolo).
 3. **La ronda extra nunca sale de un reto de hoy o futuro**, porque el sticker

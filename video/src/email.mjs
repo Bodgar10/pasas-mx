@@ -1,6 +1,7 @@
 // Arma el correo con los archivos adjuntos y lo manda por Resend.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { MIN_JUGADORES } from './data.mjs';
 
 const LETTERS = 'ABCD';
 
@@ -65,7 +66,7 @@ Mañana te decimos cuál era.</pre>
       subject: `Reto #${n} · hoy no hay story de resultados`,
       html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
 <p>Hoy jugaron <b>${data.jugadores}</b> ${data.jugadores === 1 ? 'persona' : 'personas'} el reto #${n}.</p>
-<p>Con menos de 20 un porcentaje no dice mucho, así que esta noche no hay story de resultados. En cuanto el reto pase de 20 jugadores al día, llega sola.</p>
+<p>Con menos de ${MIN_JUGADORES} un porcentaje no dice mucho, así que esta noche no hay story de resultados. En cuanto el reto llegue a ${MIN_JUGADORES} jugadores al día, llega sola.</p>
 </div>`,
     };
   }
