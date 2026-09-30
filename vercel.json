@@ -7,6 +7,10 @@
     {
       "path": "/api/cron/pauses-ending",
       "schedule": "0 16 * * *"
+    },
+    {
+      "path": "/api/cron/arcade-recordatorio",
+      "schedule": "30 13 * * *"
     }
   ]
 }

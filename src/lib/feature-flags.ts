@@ -42,4 +42,12 @@ export const FEATURE_FLAGS = {
   // 🔴 Y habilitar tambien el proveedor en Supabase (Authentication →
   // Providers): el flag solo oculta el boton, no cierra el endpoint.
   ENABLE_GOOGLE_AUTH: process.env.NEXT_PUBLIC_ENABLE_GOOGLE_AUTH === 'true',
+
+  // s34-F5 — Recordatorio diario del reto por correo (formulario al final del
+  // Arcade, rutas /api/arcade/recordatorio/* y cron arcade-recordatorio).
+  // 🔴 APAGADO hasta que el aviso de privacidad incluya esta finalidad
+  // (envío del reto por correo: datos, finalidad y baja). Es tarea legal.
+  // Para encenderlo: aplicar la migración 055 y poner
+  // NEXT_PUBLIC_ENABLE_ARCADE_RECORDATORIO=true en Vercel + redeploy.
+  ENABLE_ARCADE_RECORDATORIO: process.env.NEXT_PUBLIC_ENABLE_ARCADE_RECORDATORIO === 'true',
 } as const

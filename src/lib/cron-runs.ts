@@ -25,7 +25,7 @@ import type { SupabaseClient } from '@supabase/supabase-js'
  * para observar el trabajo, no para condicionarlo.
  */
 
-export type NombreCron = 'profeco-renewal-notice' | 'pauses-ending'
+export type NombreCron = 'profeco-renewal-notice' | 'pauses-ending' | 'arcade-recordatorio'
 
 /**
  * Abre la fila. Devuelve su id, o null si no se pudo escribir —en cuyo

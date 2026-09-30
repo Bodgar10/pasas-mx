@@ -23,6 +23,8 @@ import {
   type RetoArcade,
 } from '@/lib/arcade'
 import { atribucionJuegos, type Atribucion } from '@/lib/arcade/canal'
+import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import RecordatorioForm from './recordatorio-form'
 import s from './arcade.module.css'
 
 type Fase = 'intro' | 'play' | 'end'
@@ -60,6 +62,19 @@ export default function ArcadeClient({
   const [cifras, setCifras] = useState<CifrasArcade | null>(null)
   const [aviso, setAviso] = useState('')
   const [reloj, setReloj] = useState<string | null>(null)
+  // Aviso al volver de confirmar o darse de baja del recordatorio (s34-F5).
+  const [avisoRecordatorio, setAvisoRecordatorio] = useState<string | null>(null)
+  useEffect(() => {
+    void (async () => {
+      const r = new URLSearchParams(window.location.search).get('recordatorio')
+      const textos: Record<string, string> = {
+        confirmado: 'Listo: te avisaremos cada mañana cuando salga el reto.',
+        baja: 'Listo: ya no recibirás el recordatorio.',
+        invalido: 'Ese enlace ya no es válido.',
+      }
+      if (r && textos[r]) setAvisoRecordatorio(textos[r])
+    })()
+  }, [])
   const refCompartir = useRef<HTMLPreElement>(null)
 
   // ── Origen (entrada dentro del producto) y canal (de dónde vino, fuera
@@ -274,6 +289,12 @@ export default function ArcadeClient({
           <div className={s.date}>{fechaLarga(reto.date)}</div>
         </header>
 
+        {avisoRecordatorio && (
+          <div className={s.aviso} role="status">
+            {avisoRecordatorio}
+          </div>
+        )}
+
         {fase === 'intro' && (
           <section className={s.screen}>
             <div className={s.stack8}>
@@ -373,6 +394,8 @@ export default function ArcadeClient({
                 {texto}
               </pre>
             </div>
+
+            {FEATURE_FLAGS.ENABLE_ARCADE_RECORDATORIO && <RecordatorioForm />}
 
             <ul className={s.recap}>
               {reto.rounds.map((r, i) => {

@@ -291,3 +291,21 @@
   .root h1 { font-size: 34px; }
   .opt { font-size: 15px; min-height: 84px; }
 }
+
+/* Recordatorio por correo (s34-F5) */
+.input {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--surface-2);
+  color: var(--fg);
+  font: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+}
+.input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.check { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; cursor: pointer; }
+.check input { width: 20px; height: 20px; accent-color: var(--brand); }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.aviso { border-radius: 14px; padding: 12px 14px; font-weight: 800; font-size: 14px; background: var(--ok-soft); color: var(--ok); }
