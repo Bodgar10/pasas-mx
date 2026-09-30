@@ -187,11 +187,20 @@ export default function ArcadeClient({
     }
   }
 
-  const perfecto = picks.length === RONDAS_POR_RETO && !resultados.includes(false)
-  const temaFallado =
-    picks.length === RONDAS_POR_RETO && !perfecto ? rondaDelPuente(reto, resultados).topic : null
   const codigo = codigoResultado(reto.number, resultados)
-  const texto = textoCompartir(reto.number, resultados, dominio.replace(/^https?:\/\//, ''), temaFallado)
+  const texto = textoCompartir(reto.number, resultados, dominio)
+
+  // ¿El navegador tiene menú nativo para compartir? Se decide en el cliente
+  // (en el servidor no existe navigator) y desde la función async, como el
+  // resto de efectos del archivo (react-hooks/set-state-in-effect).
+  const [puedeCompartir, setPuedeCompartir] = useState(false)
+  useEffect(() => {
+    void (async () => setPuedeCompartir(typeof navigator !== 'undefined' && typeof navigator.share === 'function'))()
+  }, [])
+
+  /** Un solo evento para los tres métodos (s34-F3). */
+  const compartirClic = (metodo: 'nativo' | 'whatsapp' | 'copiar') =>
+    conOrigen('arcade_compartir_clic', { metodo, score: aciertos, numero_reto: reto.number })
 
   // Imagen para historias. Se descarga al llegar al resultado, no al tocar el
   // botón: iOS exige que navigator.share se llame dentro del toque, y una
@@ -226,21 +235,22 @@ export default function ArcadeClient({
     }
   }, [fase, picks.length, codigo, reto.number])
 
-  async function compartirImagen() {
-    if (!imagen) return
-    conOrigen('arcade_compartido', { reto_numero: reto.number, metodo: 'imagen', aciertos })
+  /** Menú nativo del teléfono. Con la imagen para historias si ya está lista. */
+  async function compartirNativo() {
+    compartirClic('nativo')
     try {
-      await navigator.share({ files: [imagen], text: texto })
+      if (imagen) await navigator.share({ files: [imagen], text: texto })
+      else await navigator.share({ text: texto })
     } catch {
       // Cancelado por la persona o rechazado por el navegador: no hay nada que avisar.
     }
   }
 
   async function copiar() {
-    conOrigen('arcade_compartido', { reto_numero: reto.number, metodo: 'copiar', aciertos })
+    compartirClic('copiar')
     try {
       await navigator.clipboard.writeText(texto)
-      setAviso('Resultado copiado. Pégalo en tu grupo.')
+      setAviso('¡Copiado! Pégalo en tu grupo.')
     } catch {
       const el = refCompartir.current
       if (el) {
@@ -334,6 +344,36 @@ export default function ArcadeClient({
               )}
             </div>
 
+            {/* Compartir va ARRIBA (s34-F3): es el canal que más jugadores trae,
+                y en un celular de 375 px tiene que verse sin hacer scroll. */}
+            <div className={s.share}>
+              <div className={s.row3}>
+                {puedeCompartir && (
+                  <button className={`${s.btn} ${s.primary}`} type="button" onClick={compartirNativo}>
+                    Compartir
+                  </button>
+                )}
+                <a
+                  className={`${s.btn} ${s.wa}`}
+                  href={`https://wa.me/?text=${encodeURIComponent(texto)}`}
+                  target="_blank"
+                  rel="noopener"
+                  onClick={() => compartirClic('whatsapp')}
+                >
+                  WhatsApp
+                </a>
+                <button className={`${s.btn} ${s.ghost}`} type="button" onClick={copiar}>
+                  Copiar
+                </button>
+              </div>
+              <div className={s.toast} role="status" aria-live="polite">
+                {aviso}
+              </div>
+              <pre className={s.sharePreview} ref={refCompartir}>
+                {texto}
+              </pre>
+            </div>
+
             <ul className={s.recap}>
               {reto.rounds.map((r, i) => {
                 const pct =
@@ -355,37 +395,6 @@ export default function ArcadeClient({
             </ul>
 
             <Puente reto={reto} resultados={resultados} />
-
-            <div className={s.share}>
-              <h3>Reta a alguien</h3>
-              <pre className={s.sharePreview} ref={refCompartir}>
-                {texto}
-              </pre>
-              {imagen && (
-                <button className={`${s.btn} ${s.primary}`} type="button" onClick={compartirImagen}>
-                  Compartir imagen para historias
-                </button>
-              )}
-              <div className={s.row}>
-                <a
-                  className={`${s.btn} ${s.wa}`}
-                  href={`https://wa.me/?text=${encodeURIComponent(texto)}`}
-                  target="_blank"
-                  rel="noopener"
-                  onClick={() =>
-                    conOrigen('arcade_compartido', { reto_numero: reto.number, metodo: 'whatsapp', aciertos })
-                  }
-                >
-                  WhatsApp
-                </a>
-                <button className={`${s.btn} ${s.ghost}`} type="button" onClick={copiar}>
-                  Copiar
-                </button>
-              </div>
-              <div className={s.toast} role="status" aria-live="polite">
-                {aviso}
-              </div>
-            </div>
 
             <div className={s.next}>
               <span>Siguiente reto en</span>

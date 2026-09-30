@@ -200,7 +200,7 @@
 .score {
   font-family: var(--font-brand);
   font-weight: 900;
-  font-size: 76px;
+  font-size: 64px;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -261,6 +261,8 @@
   user-select: all;
 }
 .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.row3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; }
+.row3 .btn { font-size: 16px; padding-inline: 10px; }
 .toast { font-size: 14px; font-weight: 800; color: var(--ok); text-align: center; min-height: 21px; }
 
 .next {

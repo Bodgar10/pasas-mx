@@ -74,20 +74,9 @@ describe('resultado y puente', () => {
     expect(calcularResultados(reto, [0, 1, 0, 3, 1])).toEqual([true, true, false, true, false])
   })
 
-  it('el texto para compartir va en primera persona, con el tema y sin la respuesta', () => {
-    const txt = textoCompartir(12, [true, true, false, true, true], 'pasas.mx', 'La Reforma')
-    expect(txt).toBe(
-      'Saqué 4/5 en el reto de historia de hoy 🟩🟩🟥🟩🟩\nMe ganó La Reforma. ¿Tú?\npasas.mx/arcade/r/12-11011'
-    )
-  })
-
-  it('texto de perfecto y de puntaje bajo', () => {
-    expect(textoCompartir(3, [true, true, true, true, true], 'pasas.mx')).toBe(
-      '5/5 en el reto de historia de hoy 🟩🟩🟩🟩🟩\nA ver si me igualas.\npasas.mx/arcade/r/3-11111'
-    )
-    expect(textoCompartir(3, [false, false, true, false, false], 'pasas.mx')).toContain(
-      'Está más difícil de lo que parece.'
-    )
+  it('el texto para compartir tiene el formato fijo y no revela nada', () => {
+    const txt = textoCompartir(12, [true, true, false, true, false], 'https://pasas.mx')
+    expect(txt).toBe('¿Cuál sobra? #12 · Historia\n🟩🟩🟥🟩🟥  3/5\n¿Tú cuántas sacas? https://pasas.mx/arcade/r/12-11010')
   })
 
   it('el código del link ida y vuelta', () => {

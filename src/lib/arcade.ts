@@ -130,29 +130,22 @@ export function leerCodigo(codigo: string): { numero: number; resultados: boolea
 }
 
 /**
- * El texto que se comparte. En primera persona, como lo escribiría alguien a
- * un amigo: el formato "MARCA #n + ¿Tú cuánto sacas? + link" se leía como
- * cadena. Nombra el tema que falló, nunca la respuesta.
+ * El texto que se comparte (s34-F3, formato fijo):
+ *
+ *   ¿Cuál sobra? #12 · Historia
+ *   🟩🟩🟥🟩🟥  3/5
+ *   ¿Tú cuántas sacas? https://pasas.mx/arcade/r/12-11010
+ *
+ * 🔴 Nunca lleva preguntas, respuestas ni temas: sería spoiler para quien lo
+ * recibe. El link /arcade/r/... lleva su propia vista previa con el puntaje.
+ * `sitio` va con protocolo (SITIO de lib/seo): WhatsApp e Instagram solo
+ * vuelven clicable de forma confiable un link con https://.
  */
-export function textoCompartir(
-  numero: number,
-  resultados: boolean[],
-  dominio: string,
-  temaFallado?: string | null
-): string {
+export function textoCompartir(numero: number, resultados: boolean[], sitio: string): string {
   const cuadros = resultados.map((ok) => (ok ? '🟩' : '🟥')).join('')
   const n = resultados.filter(Boolean).length
-  const link = `${dominio}/arcade/r/${codigoResultado(numero, resultados)}`
-  // El origen 'resultado_compartido' no necesita ?desde=: /arcade/r/... lo
-  // fija solo (ver ContenidoArcade).
-  if (n === RONDAS_POR_RETO) {
-    return `${n}/${RONDAS_POR_RETO} en el reto de historia de hoy ${cuadros}\nA ver si me igualas.\n${link}`
-  }
-  if (n >= 3) {
-    const tema = temaFallado ? `Me ganó ${temaFallado}. ` : ''
-    return `Saqué ${n}/${RONDAS_POR_RETO} en el reto de historia de hoy ${cuadros}\n${tema}¿Tú?\n${link}`
-  }
-  return `Saqué ${n}/${RONDAS_POR_RETO} en el reto de historia ${cuadros}\nEstá más difícil de lo que parece. Inténtalo.\n${link}`
+  const link = `${sitio.replace(/\/+$/, '')}/arcade/r/${codigoResultado(numero, resultados)}`
+  return `¿Cuál sobra? #${numero} · Historia\n${cuadros}  ${n}/${RONDAS_POR_RETO}\n¿Tú cuántas sacas? ${link}`
 }
 
 /**
