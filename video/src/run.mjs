@@ -7,7 +7,7 @@
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { validate, loadFromFile, loadFromSupabase } from './data.mjs';
+import { validate, loadFromFile, loadFromSupabase, addDays } from './data.mjs';
 import { withBrowser, renderReel, renderStory, renderImage } from './render.mjs';
 import { buildEmail, sendEmail } from './email.mjs';
 
@@ -28,9 +28,26 @@ function hoyMexico() {
 
 const log = (...m) => console.log(...m);
 
+/**
+ * La fecha del reto para cada parte.
+ *
+ * 🔴 La NOCHE habla del reto que se jugó ESE día. GitHub puede correr el
+ * horario con horas de retraso: el 29-sep la noche arrancó a las 2:53 am y
+ * leyó el reto #2 (0 jugadores, recién empezado) en vez del #1 (10). Si la
+ * noche corre antes del mediodía, el reto es el de ayer.
+ */
+function fechaDeLaParte(parte) {
+  const hoy = hoyMexico();
+  if (parte !== 'noche') return hoy;
+  const hora = Number(
+    new Intl.DateTimeFormat('en-US', { timeZone: 'America/Mexico_City', hour: 'numeric', hourCycle: 'h23' }).format(new Date())
+  );
+  return hora < 12 ? addDays(hoy, -1) : hoy;
+}
+
 async function main() {
   if (!['manana', 'noche'].includes(args.parte)) throw new Error('--parte debe ser "manana" o "noche"');
-  const fecha = args.fecha || hoyMexico();
+  const fecha = args.fecha || fechaDeLaParte(args.parte);
   const raw = args.data
     ? await loadFromFile(args.data)
     : await loadFromSupabase(fecha, args.parte, { hoyMexico: hoyMexico(), log });

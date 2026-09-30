@@ -25,8 +25,11 @@ on:
         type: boolean
         default: true
   schedule:
-    - cron: '10 6 * * *'   # 00:10 hora de México → parte mañana
-    - cron: '30 2 * * *'   # 20:30 hora de México → parte noche
+    # Minutos "raros" a propósito: GitHub retrasa mucho los horarios en punto
+    # y en :30 (el 29-sep la noche corrió ~6 h tarde). El script ya no depende
+    # de la hora exacta: la noche se refiere al reto de la tarde anterior.
+    - cron: '13 6 * * *'   # ~00:13 hora de México → parte mañana
+    - cron: '41 1 * * *'   # ~19:41 hora de México → parte noche
 
 concurrency:
   group: arcade-videos-${{ github.event.inputs.parte || github.event.schedule }}
@@ -58,7 +61,7 @@ jobs:
         id: parte
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            if [ "${{ github.event.schedule }}" = "30 2 * * *" ]; then echo "parte=noche" >> "$GITHUB_OUTPUT"; else echo "parte=manana" >> "$GITHUB_OUTPUT"; fi
+            if [ "${{ github.event.schedule }}" = "41 1 * * *" ]; then echo "parte=noche" >> "$GITHUB_OUTPUT"; else echo "parte=manana" >> "$GITHUB_OUTPUT"; fi
           else
             echo "parte=${{ inputs.parte }}" >> "$GITHUB_OUTPUT"
           fi
