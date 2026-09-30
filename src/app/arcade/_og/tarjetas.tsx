@@ -178,7 +178,11 @@ export function TarjetaLink({
               Tres tienen algo en común. Una no.
             </div>
             <div style={{ display: 'flex', fontSize: 32, fontWeight: 800, color: C.suave }}>
-              Cinco rondas · dos minutos · historia
+              {materia === 'papas'
+                ? 'Cinco rondas · dos minutos · reto para papás'
+                : materia
+                  ? `Cinco rondas · dos minutos · ${configMateria(materia).nombre.toLowerCase()}`
+                  : 'Cinco rondas · dos minutos · un reto al día'}
             </div>
           </div>
         )}
