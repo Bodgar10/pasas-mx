@@ -43,23 +43,35 @@ carrusel y avísalo en el resumen para que se arregle en la base.
   (mira los nombres de archivo en `data/carruseles/`). Nunca repitas un tema.
 - Prefiere temas que estén viendo en clase este mes (calendario SEP) o de examen.
 - Prefiere analogías con una situación concreta y números que se puedan dibujar.
-- **Nombres**: series, juegos, personajes, grupos y clubes, sí y con su nombre
-  (Fortnite, Naruto, Stray Kids, Barça); es lo que hace que funcione. Solo como
-  texto: nunca logos, capturas ni imágenes de ellos.
-- **Personas reales**: si la analogía gira alrededor de un futbolista o idol en
-  particular, cámbialo por el equipo, el grupo o "un delantero", o escoge otra
-  temática para ese tema.
+- **Nombres**: con su nombre real y sin miedo: series, juegos, personajes,
+  grupos, clubes y también personas (BTS, Stray Kids, Lamine Yamal, Fortnite,
+  Naruto). Es lo que hace que funcione. Condiciones: solo como texto (nunca
+  fotos, logos, capturas ni su música); nada que suene a que nos patrocinan o
+  recomiendan ("BTS estudia con PASAS", "oficial"); nada que los ridiculice o
+  les atribuya algo falso o polémico. Las situaciones son claramente
+  imaginarias ("imagina que…", "en un concierto de…").
 
-## Estructura (8 o 9 láminas)
+## Estructura: primero el universo, al final lo real
+
+La regla de oro: **las primeras láminas viven 100% dentro del hobby**. Ahí no
+aparecen palabras de escuela (cateto, ecuación, tilde, criollos): se habla como
+se habla en el juego, la serie, el concierto o el partido, y aun así se entiende
+la idea completa. **Después** viene el puente ("eso que hiciste tiene nombre") y
+al final las reglas reales para guardar.
 
 1. `portada`: título del tema + "explicado con" + el hobby + un dibujo (svg).
-2. `escena`: la situación del hobby, con sus números, y su dibujo.
-3. `escena` o `mapa`: la pregunta / qué representa cada cosa del hobby en el tema.
-4. `ejemplo`: se resuelve paso a paso con los números del hobby.
-5. `escena` "¡Ya lo entendiste!": el momento wow; qué significa y cómo se usa en el examen.
-6. `reglas`: la regla o el error típico del examen.
-7. `reto`: una pregunta con 3 opciones, también con el hobby.
-8. `cierre`: la respuesta explicada, "Guárdalo para tu examen" y pasas.mx.
+2. `escena` — **universo**: la situación, con sus nombres, números y un dibujo.
+   La etiqueta habla como el hobby ("Partida en curso", "Misión rango C",
+   "En el concierto", "El club").
+3. `escena` — **universo**: el problema o la decisión ("¿Rodeas o cortas?").
+4. `ejemplo` o `escena` — **universo**: cómo se resuelve dentro del hobby
+   ("El truco de los pros", "El plan de Shikamaru"), con las cuentas reales.
+5. `escena` — **universo**: el resultado y el momento wow ("Le ganaste a la tormenta").
+6. `mapa` "Ahora, en el examen": cada cosa del hobby → su nombre real, con la
+   fórmula o el concepto.
+7. `reglas` (y si hace falta `mapa` o `ejemplo`): la regla real para el examen.
+8. `reto`: una pregunta con 3 opciones, otra vez dentro del hobby.
+9. `cierre`: la respuesta explicada, "Guárdalo para tu examen" y pasas.mx.
 
 Formato completo en `data/carruseles/2026-10-pitagoras-fortnite.json` (y los
 otros tres de octubre 2026). Tipos de lámina: `portada`, `escena` (texto + svg),
