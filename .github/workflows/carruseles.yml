@@ -1,0 +1,69 @@
+# Carruseles de "regalo": un tema real de PASAS explicado con un hobby, en láminas
+# 1080×1350 que llegan por correo listas para subir.
+# Corre solo cuando se sube un JSON nuevo a video/data/carruseles/ (los "ejemplo-*" no).
+# A mano: Actions → "Carruseles de PASAS" → Run workflow, con la ruta del JSON.
+name: Carruseles de PASAS
+
+on:
+  push:
+    branches: [main]
+    paths: ['video/data/carruseles/**.json', '!video/data/carruseles/ejemplo-*.json']
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'JSON dentro de video/ (ej. data/carruseles/2026-10-pitagoras-fortnite.json)'
+        type: string
+        required: true
+      enviar:
+        description: 'Mandar el correo'
+        type: boolean
+        default: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: video
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      - name: Instalar dependencias
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Generar y enviar
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ARCADE_EMAIL_TO: ${{ secrets.ARCADE_EMAIL_TO }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            FILES="${{ inputs.data }}"
+            ENVIAR=$([ "${{ inputs.enviar }}" = "true" ] && echo --enviar || true)
+          else
+            # Solo los JSON nuevos o cambiados en este push
+            FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'data/carruseles/*.json' | grep -v '/ejemplo-' | sed 's#^video/##' || true)
+            ENVIAR=--enviar
+          fi
+          if [ -z "$FILES" ]; then echo "No hay carruseles nuevos"; exit 0; fi
+          ARGS=""; for f in $FILES; do ARGS="$ARGS --data $f"; done
+          node src/carrusel.mjs $ARGS $ENVIAR
+
+      - name: Guardar archivos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: carruseles-${{ github.run_id }}
+          path: video/salida/
+          retention-days: 7
+          if-no-files-found: ignore

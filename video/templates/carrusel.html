@@ -52,6 +52,20 @@
 .opts{display:flex;flex-direction:column;gap:2.6cqw}
 .opts div{display:flex;align-items:center;gap:3.4cqw;background:rgba(26,16,53,.92);border:.4cqw solid var(--line);border-radius:4cqw;padding:2.6cqw 4cqw;font-size:6cqw;font-weight:900}
 .opts i{font-style:normal;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:var(--c);display:grid;place-items:center;font-size:4.6cqw;color:#fff}
+/* Con hobby: portada, escena y mapa */
+.hob{display:flex;flex-direction:column;gap:1cqw}
+.hob small{font-size:5cqw;font-weight:800;color:var(--fg)}
+.hob b{font-family:var(--font-title);font-weight:900;font-size:12cqw;line-height:1;text-transform:uppercase;color:var(--c);white-space:nowrap;
+  -webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill;text-shadow:0 0 4cqw var(--c)}
+.hob em{font-style:normal;font-size:4.4cqw;font-weight:800;color:var(--muted)}
+.svgbox{background:rgba(26,16,53,.92);border:.4cqw solid var(--line);border-radius:4cqw;padding:3cqw;display:flex;justify-content:center}
+.svgbox svg{width:100%;height:auto;max-height:520px}
+.svgbox.fill svg{width:auto;height:100%;max-height:none;max-width:100%}
+.mapa{display:flex;flex-direction:column;gap:2.4cqw}
+.mapa div{display:grid;grid-template-columns:1fr 7cqw 1fr;align-items:center;gap:1.4cqw}
+.mapa .l{background:rgba(26,16,53,.92);border:.4cqw solid var(--c);border-radius:3.4cqw;padding:2.6cqw 3cqw;font-size:4.4cqw;font-weight:900;color:var(--c);line-height:1.25}
+.mapa .r{background:rgba(251,191,36,.12);border:.4cqw solid rgba(251,191,36,.5);border-radius:3.4cqw;padding:2.6cqw 3cqw;font-size:4.4cqw;font-weight:900;color:var(--xp);line-height:1.25}
+.mapa i{font-style:normal;text-align:center;font-size:6cqw;font-weight:900;color:var(--fg)}
 /* Cierre */
 .resp{display:flex;align-items:baseline;gap:3cqw}
 .resp b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:var(--ok);text-shadow:0 0 3cqw rgba(16,185,129,.5)}
@@ -84,14 +98,25 @@ function triangulo(w) {
     '<text x="226" y="128" style="font:900 50px Nunito;fill:#fbbf24">c</text></svg>';
 }
 window.setup = function (data, i) {
-  var s = data.slides[i], c = COLORES[i % COLORES.length], fr = $('frame');
+  var s = data.slides[i], c = data.hobby ? data.hobby.color : COLORES[i % COLORES.length], fr = $('frame');
   fr.style.setProperty('--c', c);
   var st = '';
   for (var k = 0; k < 60; k++) st += '<i style="left:' + ((k * 173 + i * 61) % 1080) + 'px;top:' + ((k * 389 + i * 97) % 1350) + 'px;width:' + (1 + k % 3) + 'px;height:' + (1 + k % 3) + 'px;opacity:' + (0.15 + (k % 5) * 0.1) + '"></i>';
   $('stars').innerHTML = st;
   $('num').textContent = (i + 1) + '/' + data.slides.length;
   var h = '', pose = null, pw = 0, px = 0, py = 0;
-  if (s.tipo === 'portada') {
+  if (s.tipo === 'portada' && data.hobby) {
+    h = '<span class="tag">' + esc(data.materia + ' · ' + data.nivel) + '</span>' + titulo(s.titulo) +
+      '<div class="hob"><small>explicado con</small><b id="hobn">' + data.hobby.icono + ' ' + esc(data.hobby.nombre) + '</b>' + (data.hobby.detalle ? '<em>' + esc(data.hobby.detalle) + '</em>' : '') + '</div>' +
+      (s.svg ? '<div class="svgbox fill" style="flex:1;min-height:0">' + s.svg + '</div>' : '');
+  } else if (s.tipo === 'escena') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) + (s.texto ? '<div class="p">' + md(s.texto) + '</div>' : '') +
+      (s.svg ? '<div class="svgbox">' + s.svg + '</div>' : '') + (s.nota ? '<div class="p" style="font-size:4.6cqw;color:var(--muted)">' + md(s.nota) + '</div>' : '');
+  } else if (s.tipo === 'mapa') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) +
+      '<div class="mapa">' + s.pares.map(function (x) { return '<div><span class="l">' + md(x[0]) + '</span><i>→</i><span class="r">' + md(x[1]) + '</span></div>'; }).join('') + '</div>' +
+      (s.formula ? '<div class="box"><div class="f">' + esc(s.formula) + '</div></div>' : '') + (s.nota ? '<div class="p" style="font-size:4.6cqw;color:var(--muted)">' + md(s.nota) + '</div>' : '');
+  } else if (s.tipo === 'portada') {
     h = '<span class="tag">' + esc(data.materia + ' · ' + data.nivel) + '</span>' + titulo(s.titulo) +
       '<div class="p" style="color:var(--fg)">' + md(s.sub) + '</div>' +
       '<div class="box" style="display:flex;align-items:center;gap:4cqw;justify-content:space-between"><div class="f" style="font-size:8.6cqw;text-align:left">' + esc(s.formula) + '</div><div style="width:36cqw">' + triangulo('100%') + '</div></div>';
@@ -122,11 +147,16 @@ window.setup = function (data, i) {
       '<div class="p" style="font-size:4.8cqw;color:var(--muted)">Escribe tu respuesta en los comentarios.</div><div class="foot" style="margin-top:auto;text-align:left">' + esc(s.pie) + '</div>';
   } else if (s.tipo === 'cierre') {
     h = '<span class="tag" style="background:#10b981;box-shadow:0 0 2.6cqw #10b981">' + esc(s.etiqueta) + '</span>' +
-      '<div class="resp"><b>' + esc(s.respuesta) + '</b></div><div class="p" style="font-size:5.4cqw;font-weight:900;color:var(--muted)">' + md(s.explicacion) + '</div>' +
+      '<div class="resp"><b id="respb">' + esc(s.respuesta) + '</b></div><div class="p" style="font-size:5.4cqw;font-weight:900;color:var(--muted)">' + md(s.explicacion) + '</div>' +
       '<div style="height:2cqw"></div>' + titulo(s.titulo) + '<div class="cta">' + md(s.cta) + '</div>';
-    pose = 'celebrando'; pw = 230; px = 850; py = 470;
+    if (!data.hobby) { pose = 'celebrando'; pw = 230; px = 850; py = 470; }
   }
   $('body').innerHTML = h;
+  if ($('hobn')) fitLines([$('hobn')], 1080 - 2 * 86);
+  if ($('respb')) fitLines([$('respb')], 1080 - 2 * 86 - (data.hobby ? 0 : 250));   // deja lugar a la Pasita
+  // En la portada, el dibujo ocupa todo el espacio que queda
+  var fb = document.querySelector('.svgbox.fill');
+  if (fb) { var sv = fb.querySelector('svg'); sv.style.height = (fb.clientHeight - 2 * 32) + 'px'; sv.style.width = 'auto'; }
   var tt = document.querySelectorAll('#tt span');
   if (s.tipo === 'portada') tt.forEach(function (x) { x.style.fontSize = '13cqw'; });
   if (tt.length) fitLines([].slice.call(tt), 1080 - 2 * 86);
