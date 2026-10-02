@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Carrusel de "regalo" (1080×1350, 4:5): un tema real de PASAS en láminas para
+   guardar y compartir. Una lámina por render: window.setup(data, i). */
+.frame{height:1350px;background:radial-gradient(90% 50% at 100% 0%, rgba(236,72,153,.22), transparent 60%), radial-gradient(90% 55% at 0% 100%, rgba(124,58,237,.42), transparent 60%), #0f0a1e}
+.stars i{position:absolute;border-radius:50%;background:#fff}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.6cqw solid var(--c);box-shadow:0 0 2.2cqw var(--c), inset 0 0 2.2cqw var(--c);pointer-events:none}
+.top{position:absolute;left:8cqw;right:8cqw;top:7cqw;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--font-brand);font-weight:900;font-size:3.6cqw;letter-spacing:.14em}
+.brand span{color:var(--pink)}
+.num{font-family:var(--font-brand);font-weight:700;font-size:3.2cqw;color:var(--muted)}
+.body{position:absolute;left:8cqw;right:8cqw;top:15cqw;bottom:9cqw;display:flex;flex-direction:column;gap:3.4cqw}
+.tag{align-self:flex-start;font-family:var(--font-title);font-weight:900;font-size:3.6cqw;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;background:var(--c);padding:1cqw 3cqw 1.2cqw;border-radius:2.2cqw;box-shadow:0 0 2.6cqw var(--c)}
+.t{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;-webkit-text-stroke:1cqw var(--bg);paint-order:stroke fill;text-shadow:0 .7cqw 0 rgba(0,0,0,.45)}
+.t span{display:block;white-space:nowrap;font-size:9.6cqw}
+.t span:nth-child(2){color:var(--c)}
+.p{font-size:4.8cqw;font-weight:800;line-height:1.35;text-wrap:pretty}
+.p b{color:var(--xp);font-weight:900}
+.box{background:rgba(26,16,53,.92);border:.4cqw solid var(--line);border-radius:4cqw;padding:4cqw 4.4cqw}
+.f{font-family:var(--font-title);font-weight:900;font-size:8.4cqw;text-align:center;color:#fff;white-space:nowrap}
+.f.small{font-size:6.4cqw}
+.fig{display:flex;justify-content:center}
+.foot{font-size:4.2cqw;font-weight:800;color:var(--muted);text-align:center}
+.foot b{color:var(--fg)}
+.row{display:flex;gap:3cqw;align-items:center}
+.pasita{position:absolute}
+/* Reglas */
+.regla{display:flex;flex-direction:column;gap:1.4cqw}
+.regla .si{font-size:5cqw;font-weight:800}
+.regla .haz{display:flex;align-items:center;gap:3cqw}
+.regla .haz b{font-family:var(--font-title);font-weight:900;font-size:5cqw;color:var(--bg);background:var(--k);padding:.8cqw 2.6cqw;border-radius:2cqw}
+.regla .haz span{font-family:var(--font-title);font-weight:900;font-size:7cqw;color:var(--k);white-space:nowrap}
+/* Ejemplo */
+.pasos{display:flex;flex-direction:column;gap:2cqw}
+.pasos div{display:flex;gap:3cqw;align-items:center;font-family:var(--font-title);font-weight:900;font-size:6.4cqw}
+.pasos i{font-style:normal;flex:none;width:7.4cqw;height:7.4cqw;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-family:var(--font-title);font-weight:900;font-size:4cqw}
+.pasos b{color:var(--xp)}
+/* Lista */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
+.items div{background:rgba(26,16,53,.92);border:.4cqw solid var(--c);border-radius:4cqw;padding:3.4cqw 2cqw;text-align:center;font-family:var(--font-title);font-weight:900;font-size:7.4cqw;color:#fff;white-space:nowrap}
+/* Temáticas */
+.tarj{display:flex;flex-direction:column;gap:3cqw}
+.tarj .box{display:flex;gap:3.4cqw;align-items:flex-start;padding:3.4cqw 4cqw}
+.tarj .ic{flex:none;width:13cqw;height:13cqw;border-radius:3.4cqw;background:#2d1b69;display:grid;place-items:center;font-size:7cqw}
+.tarj .tn{font-size:3.8cqw;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--c);margin-bottom:1cqw}
+.tarj .tx{font-size:4.2cqw;font-weight:800;line-height:1.38}
+.tarj .tx b{color:var(--xp)}
+/* Reto */
+.opts{display:flex;flex-direction:column;gap:2.6cqw}
+.opts div{display:flex;align-items:center;gap:3.4cqw;background:rgba(26,16,53,.92);border:.4cqw solid var(--line);border-radius:4cqw;padding:2.6cqw 4cqw;font-size:6cqw;font-weight:900}
+.opts i{font-style:normal;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:var(--c);display:grid;place-items:center;font-size:4.6cqw;color:#fff}
+/* Cierre */
+.resp{display:flex;align-items:baseline;gap:3cqw}
+.resp b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:var(--ok);text-shadow:0 0 3cqw rgba(16,185,129,.5)}
+.cta{background:var(--brand);border-radius:4cqw;padding:4cqw 4.4cqw;font-size:5cqw;font-weight:800;line-height:1.35;box-shadow:0 0 4cqw rgba(124,58,237,.6)}
+.cta b{font-family:var(--font-brand);font-weight:900}
+</style></head>
+<body>
+<div class="frame" id="frame">
+  <div class="stars" id="stars"></div>
+  <div class="neon"></div>
+  <div class="top"><div class="brand">PASAS<span>.</span>MX</div><div class="num" id="num"></div></div>
+  <div class="body" id="body"></div>
+  <div class="pasita" id="pasita"></div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script>
+var COLORES = ['#7c3aed', '#ec4899', '#06b6d4', '#fbbf24', '#10b981'];
+// Negritas con **…** y sin cortar "24 m" o "8 cm" entre dos renglones
+function md(s) { return esc(s).replace(/(\d) (cm|m|km|kg|g|s|°|%)(?![a-záéíóúñ])/gi, '$1\u00a0$2').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); }
+function titulo(l) { return '<div class="t" id="tt">' + l.map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + '</div>'; }
+function triangulo(w) {
+  // Triángulo rectángulo con catetos a, b y la hipotenusa c resaltada
+  return '<svg viewBox="0 0 420 300" width="' + w + '" style="overflow:visible">' +
+    '<path d="M60 250 L360 250 L60 40 Z" style="fill:rgba(124,58,237,.18);stroke:#a78bfa;stroke-width:8;stroke-linejoin:round"/>' +
+    '<path d="M60 40 L360 250" style="stroke:#fbbf24;stroke-width:10;stroke-linecap:round"/>' +
+    '<path d="M60 210 h40 v40" style="fill:none;stroke:#ec4899;stroke-width:6"/>' +
+    '<text x="22" y="160" style="font:900 46px Nunito;fill:#e2d9f3">a</text>' +
+    '<text x="200" y="298" style="font:900 46px Nunito;fill:#e2d9f3">b</text>' +
+    '<text x="226" y="128" style="font:900 50px Nunito;fill:#fbbf24">c</text></svg>';
+}
+window.setup = function (data, i) {
+  var s = data.slides[i], c = COLORES[i % COLORES.length], fr = $('frame');
+  fr.style.setProperty('--c', c);
+  var st = '';
+  for (var k = 0; k < 60; k++) st += '<i style="left:' + ((k * 173 + i * 61) % 1080) + 'px;top:' + ((k * 389 + i * 97) % 1350) + 'px;width:' + (1 + k % 3) + 'px;height:' + (1 + k % 3) + 'px;opacity:' + (0.15 + (k % 5) * 0.1) + '"></i>';
+  $('stars').innerHTML = st;
+  $('num').textContent = (i + 1) + '/' + data.slides.length;
+  var h = '', pose = null, pw = 0, px = 0, py = 0;
+  if (s.tipo === 'portada') {
+    h = '<span class="tag">' + esc(data.materia + ' · ' + data.nivel) + '</span>' + titulo(s.titulo) +
+      '<div class="p" style="color:var(--fg)">' + md(s.sub) + '</div>' +
+      '<div class="box" style="display:flex;align-items:center;gap:4cqw;justify-content:space-between"><div class="f" style="font-size:8.6cqw;text-align:left">' + esc(s.formula) + '</div><div style="width:36cqw">' + triangulo('100%') + '</div></div>';
+    pose = 'pensativa'; pw = 300; px = 700; py = 1290;
+  } else if (s.tipo === 'idea') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) + '<div class="p">' + md(s.texto) + '</div>' +
+      '<div class="box"><div class="fig">' + triangulo('46%') + '</div><div class="f" style="margin-top:2cqw">' + esc(s.formula) + '</div></div>';
+  } else if (s.tipo === 'reglas') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) +
+      s.reglas.map(function (r, j) {
+        var k = j ? '#ec4899' : '#10b981';
+        return '<div class="box regla" style="--k:' + k + ';border-color:' + k + '"><div class="si">' + esc(r.si) + '</div><div class="haz"><b>' + esc(r.haz) + '</b><span>' + esc(r.formula) + '</span></div></div>';
+      }).join('') + '<div class="p" style="font-size:4.6cqw;color:var(--muted)">' + md(s.nota) + '</div>';
+  } else if (s.tipo === 'ejemplo') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) + '<div class="p">' + md(s.problema) + '</div>' +
+      '<div class="box pasos">' + s.pasos.map(function (p, j) { return '<div><i>' + (j + 1) + '</i><span>' + md(p) + '</span></div>'; }).join('') + '</div>';
+  } else if (s.tipo === 'lista') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) + '<div class="p">' + md(s.texto) + '</div>' +
+      '<div class="items">' + s.items.map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div>' +
+      '<div class="p" style="font-size:4.6cqw;color:var(--muted)">' + md(s.nota) + '</div>';
+  } else if (s.tipo === 'tematicas') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span>' + titulo(s.titulo) +
+      '<div class="tarj">' + s.tarjetas.map(function (x) { return '<div class="box"><div class="ic">' + x.icono + '</div><div><div class="tn">' + esc(x.tema) + '</div><div class="tx">' + md(x.texto) + '</div></div></div>'; }).join('') + '</div>' +
+      '<div class="foot">Cada alumno elige su temática: <b>anime, videojuegos, K-pop o fútbol</b></div>';
+  } else if (s.tipo === 'reto') {
+    h = '<span class="tag">' + esc(s.etiqueta) + '</span><div class="p" style="font-size:6.2cqw;line-height:1.25;font-weight:900">' + md(s.pregunta) + '</div>' +
+      '<div class="opts">' + s.opciones.map(function (o, j) { return '<div><i>' + 'ABCD'[j] + '</i>' + esc(o) + '</div>'; }).join('') + '</div>' +
+      '<div class="p" style="font-size:4.8cqw;color:var(--muted)">Escribe tu respuesta en los comentarios.</div><div class="foot" style="margin-top:auto;text-align:left">' + esc(s.pie) + '</div>';
+  } else if (s.tipo === 'cierre') {
+    h = '<span class="tag" style="background:#10b981;box-shadow:0 0 2.6cqw #10b981">' + esc(s.etiqueta) + '</span>' +
+      '<div class="resp"><b>' + esc(s.respuesta) + '</b></div><div class="p" style="font-size:5.4cqw;font-weight:900;color:var(--muted)">' + md(s.explicacion) + '</div>' +
+      '<div style="height:2cqw"></div>' + titulo(s.titulo) + '<div class="cta">' + md(s.cta) + '</div>';
+    pose = 'celebrando'; pw = 230; px = 850; py = 470;
+  }
+  $('body').innerHTML = h;
+  var tt = document.querySelectorAll('#tt span');
+  if (s.tipo === 'portada') tt.forEach(function (x) { x.style.fontSize = '13cqw'; });
+  if (tt.length) fitLines([].slice.call(tt), 1080 - 2 * 86);
+  // Si no cabe, se achica todo el contenido parejo (nunca se corta)
+  var b = $('body'), z = 1;
+  while (b.scrollHeight > b.clientHeight + 1 && z > 0.7) { z -= 0.03; b.style.zoom = z; }
+  if (pose) {
+    buildPasita($('pasita'), pose, pw);
+    var ph = pw * PASITA_VB.h / PASITA_VB.w;
+    $('pasita').style.left = (px - pw / 2) + 'px'; $('pasita').style.top = (py - ph) + 'px';
+  } else $('pasita').innerHTML = '';
+  window.ready = pasitaReady();
+  return 0;
+};
+window.render = function () {};
+</script>
+</body></html>

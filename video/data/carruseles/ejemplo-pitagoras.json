@@ -1,0 +1,22 @@
+{
+  "nombre": "teorema de pitagoras",
+  "materia": "Matemáticas",
+  "nivel": "Secundaria 3°",
+  "tema_slug": "teorema-pitagoras",
+  "post": "¿Pitágoras en el examen? Aquí está lo que necesitas: la fórmula, cuándo sumar y cuándo restar, un ejemplo resuelto y el atajo de las ternas. 📐\n\nGuárdalo para estudiar y mándaselo a quien tenga examen esta semana.\n\nEl tema completo, con ejercicios, quiz y Modo Horda, está en pasas.mx\n\n#matematicas #secundaria #teoremadepitagoras #examen #pasasmx",
+  "slides": [
+    { "tipo": "portada", "titulo": ["Teorema de", "Pitágoras"], "sub": "Lo que necesitas para tu examen", "formula": "a² + b² = c²", "figura": "triangulo" },
+    { "tipo": "idea", "etiqueta": "La idea clave", "titulo": ["Solo en triángulos", "rectángulos"], "texto": "En un triángulo con un ángulo de **90°**, el lado más largo se llama **hipotenusa** (c) y los otros dos, **catetos** (a y b).", "formula": "a² + b² = c²", "figura": "triangulo" },
+    { "tipo": "reglas", "etiqueta": "¿Sumo o resto?", "titulo": ["El error que", "más puntos cuesta"], "reglas": [
+        { "si": "¿Buscas la hipotenusa?", "haz": "SUMA", "formula": "c² = a² + b²" },
+        { "si": "¿Buscas un cateto?", "haz": "RESTA", "formula": "a² = c² − b²" } ],
+      "nota": "La hipotenusa siempre es el lado más largo." },
+    { "tipo": "ejemplo", "etiqueta": "Ejemplo resuelto", "titulo": ["La escalera"], "problema": "Una escalera de **5 m** se apoya en una pared. La base está a **3 m** de la pared. ¿Qué altura alcanza?", "pasos": ["5² = 3² + h²", "25 = 9 + h²", "h² = 25 − 9 = 16", "h = √16 = **4 m**"] },
+    { "tipo": "lista", "etiqueta": "Atajo para el examen", "titulo": ["Ternas", "pitagóricas"], "texto": "Si reconoces una, ya sabes la respuesta sin calcular raíces.", "items": ["3 · 4 · 5", "5 · 12 · 13", "8 · 15 · 17", "6 · 8 · 10"], "nota": "Sus múltiplos también funcionan: 6-8-10 es 3-4-5 por 2." },
+    { "tipo": "tematicas", "etiqueta": "Así se explica en PASAS", "titulo": ["El mismo tema,", "a tu manera"], "tarjetas": [
+        { "tema": "Anime & Manga", "icono": "⚔️", "texto": "El cable del equipo de maniobras: la torre mide **24 m** y Mikasa está a **7 m** de la base. El cable debe medir **25 m**." },
+        { "tema": "Videojuegos", "icono": "🎮", "texto": "La tormenta se cierra: la zona segura está **300 m** al este y **400 m** al norte. En diagonal son **500 m**, no 700." } ] },
+    { "tipo": "reto", "etiqueta": "Pruébate", "pregunta": "Un triángulo rectángulo tiene catetos de **6 cm** y **8 cm**. ¿Cuánto mide la hipotenusa?", "opciones": ["10 cm", "14 cm", "12 cm"], "pie": "La respuesta, en la siguiente →" },
+    { "tipo": "cierre", "etiqueta": "Respuesta", "respuesta": "10 cm", "explicacion": "6² + 8² = 36 + 64 = 100 → √100 = **10**", "titulo": ["Guárdalo para", "tu examen"], "cta": "El tema completo, con ejercicios, quiz y Modo Horda, en **pasas.mx**" }
+  ]
+}

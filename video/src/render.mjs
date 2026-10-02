@@ -8,8 +8,8 @@ const TEMPLATES = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 
 const FPS = 30;
 const SIZE = { width: 1080, height: 1920 };
 
-async function openPage(browser, template) {
-  const page = await browser.newPage({ viewport: SIZE });
+export async function openPage(browser, template, size = SIZE) {
+  const page = await browser.newPage({ viewport: size });
   await page.goto(pathToFileURL(path.join(TEMPLATES, template)).href);
   // El navegador solo descarga una fuente cuando algo visible la usa; aquí se fuerzan las seis.
   const fonts = await page.evaluate(async () => {
