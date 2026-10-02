@@ -100,10 +100,31 @@ async function reto(fecha) {
   return rows[0] || null;
 }
 
+// Espejo de arcade_materia_de_slug (migración 056): la materia de una ronda sale
+// del slug de su asignatura. Si cambia allá, cámbialo aquí.
+export function materiaDeSlug(slug = '') {
+  if (slug.startsWith('historia-')) return 'historia';
+  if (slug.startsWith('biologia-') || ['temas-selectos-biologia', 'ecologia-medio-ambiente'].includes(slug)) return 'biologia';
+  if (slug === 'geografia' || slug.startsWith('geografia-')) return 'geografia';
+  if (slug.startsWith('quimica-') || slug.startsWith('fisica-') || ['temas-selectos-quimica', 'temas-selectos-fisica'].includes(slug)) return 'ciencias';
+  if (slug.startsWith('espanol-') || slug.startsWith('lengua-comunicacion-') || slug.startsWith('literatura-')) return 'espanol';
+  return null;
+}
+
 async function rondas(ids) {
   if (!ids.length) return new Map();
-  const rows = await api(`arcade_rounds?id=in.(${ids.join(',')})&select=id,options,odd_index,explanation,kind,status,topic:topics(name)`);
-  return new Map(rows.map(r => [r.id, r]));
+  const rows = await api(`arcade_rounds?id=in.(${ids.join(',')})&select=id,options,odd_index,explanation,kind,status,topic:topics(name,subject:subjects(slug))`);
+  return new Map(rows.map(r => [r.id, { ...r, materia: materiaDeSlug(r.topic?.subject?.slug) }]));
+}
+
+// Materia de cada ronda aprobada (id → materia), en páginas de 1000 (tope de la API).
+async function materiasDelBanco() {
+  const out = new Map();
+  for (let desde = 0; ; desde += 1000) {
+    const rows = await api(`arcade_rounds?status=eq.aprobada&select=id,topic:topics(subject:subjects(slug))&order=id&limit=1000&offset=${desde}`);
+    rows.forEach(r => out.set(r.id, materiaDeSlug(r.topic?.subject?.slug)));
+    if (rows.length < 1000) return out;
+  }
 }
 
 async function cifras(fecha) {
@@ -116,17 +137,24 @@ function azar(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 // de retos que YA pasaron (su respuesta ya se vio en el juego), nunca de uno
 // de hoy o futuro. Al principio no hay pasados: entonces una aprobada que no
 // esté en ningún reto del calendario.
-async function rondaExtra(fecha, excluir, log) {
+// Va con la materia del día (el martes, una de biología); el sábado, cualquiera.
+async function rondaExtra(fecha, excluir, materia, log) {
   const todos = await api('arcade_challenges?select=challenge_date,round_ids');
   const pasados = todos.filter(c => c.challenge_date < fecha && c.challenge_date >= addDays(fecha, -180));
   const enCalendario = new Set(todos.flatMap(c => c.round_ids));
-  let ids = pasados.flatMap(c => c.round_ids).filter(id => !excluir.has(id));
-  if (!ids.length) {
-    const aprobadas = await api('arcade_rounds?status=eq.aprobada&select=id');
-    ids = aprobadas.map(r => r.id).filter(id => !enCalendario.has(id) && !excluir.has(id));
-    if (ids.length) log('  aviso: aún no hay retos pasados; la ronda extra sale del banco sin programar');
-  }
+  const banco = await materiasDelBanco();
+  const deLaMateria = id => materia === 'papas' || banco.get(id) === materia;
+  const usadas = pasados.flatMap(c => c.round_ids).filter(id => !excluir.has(id));
+  const sinProgramar = [...banco.keys()].filter(id => !enCalendario.has(id) && !excluir.has(id));
+  const opciones = [
+    [usadas.filter(deLaMateria), null],
+    [sinProgramar.filter(deLaMateria), 'aún no hay retos pasados de esta materia; la ronda extra sale del banco sin programar'],
+    [usadas, 'no hay rondas de esta materia para la ronda extra; sale de otra materia'],
+    [sinProgramar, 'no hay rondas de esta materia para la ronda extra; sale de otra materia, del banco sin programar'],
+  ];
+  const [ids, aviso] = opciones.find(([x]) => x.length) || [[], null];
   if (!ids.length) throw new Error('No hay ninguna ronda disponible para la story de ronda extra');
+  if (aviso) log(`  aviso: ${aviso}`);
   const r = (await rondas([azar(ids)])).values().next().value;
   return { opciones: r.options, sobra: r.odd_index, motivo: r.explanation };
 }
@@ -140,7 +168,7 @@ export async function loadFromSupabase(fecha, parte, { hoyMexico, log = () => {}
   if (!c) throw new Error(`No hay reto programado para ${fecha}. Llena el calendario con arcade_llenar_calendario().`);
 
   const m = MATERIAS[c.materia] || MATERIAS.historia;
-  const base = { fecha: c.challenge_date, numero: c.number, materia: m.materia, materia_corta: m.corta, reto_titulo: m.titulo };
+  const base = { fecha: c.challenge_date, numero: c.number, materia_key: MATERIAS[c.materia] ? c.materia : 'historia', materia: m.materia, materia_corta: m.corta, reto_titulo: m.titulo };
   const mapa = await rondas(c.round_ids);
   const delDia = c.round_ids.map(id => mapa.get(id));
   if (delDia.some(r => !r)) throw new Error(`El reto #${c.number} apunta a una ronda que ya no existe`);
@@ -160,7 +188,7 @@ export async function loadFromSupabase(fecha, parte, { hoyMexico, log = () => {}
   const r1 = delDia[0];
   const data = {
     ...base,
-    hoy: { opciones: r1.options, sobra: r1.odd_index, tema: r1.topic.name },
+    hoy: { opciones: r1.options, sobra: r1.odd_index, tema: r1.topic.name, materia_key: r1.materia },
     ayer: null,
   };
 
@@ -178,6 +206,6 @@ export async function loadFromSupabase(fecha, parte, { hoyMexico, log = () => {}
     };
   }
 
-  data.extra = await rondaExtra(fecha, new Set(c.round_ids), log);
+  data.extra = await rondaExtra(fecha, new Set(c.round_ids), base.materia_key, log);
   return data;
 }

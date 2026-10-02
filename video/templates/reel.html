@@ -2,22 +2,37 @@
 <html lang="es"><head><meta charset="utf-8">
 <link rel="stylesheet" href="base.css">
 <style>
+/* Cada día tiene su materia (materias.js): escena de fondo, color, pose y título. */
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
+.dim{position:absolute;inset:0;background:rgba(15,10,30,.72)}
+/* En el título y el cierre la escena se ve, pero detrás del texto sigue oscura */
+.dim-top{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.6) 0%, rgba(15,10,30,.55) 50%, rgba(15,10,30,0) 63%)}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--m);z-index:8;pointer-events:none;
+  box-shadow:0 0 2.4cqw var(--m), inset 0 0 2.4cqw var(--m)}
+.pasita{position:absolute;left:50%;transform-origin:50% 100%;opacity:0}
+.mtag{align-self:flex-start;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:4.4cqw;letter-spacing:.06em;
+  color:var(--ms);background:var(--m);padding:1.2cqw 3.4cqw 1.4cqw;border-radius:2.4cqw;box-shadow:0 0 3cqw var(--m)}
+.dia{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
+  -webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
+.dia span{display:block;white-space:nowrap}
+.dia .d1{font-size:10cqw;color:#fff}
+.dia .d2{font-size:18cqw;color:var(--m)}
 .scene{position:absolute;inset:0;padding:12cqw 7cqw 32cqw;display:flex;flex-direction:column;gap:4cqw;opacity:0}
 .q-title{font-size:8.5cqw;font-weight:900;line-height:1.05}
 
 /* Respuesta de ayer */
 .list{display:flex;flex-direction:column;gap:2.4cqw;margin-top:2cqw}
-.li{background:var(--surface);border:.5cqw solid var(--line);border-radius:4cqw;padding:3cqw 4cqw;font-size:5cqw;font-weight:800;opacity:.45}
+.li{background:rgba(26,16,53,.94);border:.5cqw solid var(--line);border-radius:4cqw;padding:3cqw 4cqw;font-size:5cqw;font-weight:800;opacity:.45}
 .li.win{border-color:var(--ok);background:var(--ok-soft)}
 .stat{margin-top:auto;display:flex;flex-direction:column;gap:1cqw}
 .stat b{font-family:var(--font-brand);font-size:17cqw;line-height:1;color:var(--xp)}
 .stat span{font-size:5.4cqw;font-weight:800;text-wrap:balance}
 
 /* Título */
-.title-scene{justify-content:center;padding-bottom:40cqw}
-.big{font-family:var(--font-brand);font-weight:900;font-size:14.5cqw;line-height:1.02;transform-origin:left center}
-.big em{font-style:normal;color:var(--pink)}
-.sub{font-size:5.4cqw;font-weight:800;color:var(--muted);text-wrap:balance}
+.title-scene{justify-content:flex-start;padding-top:22cqw;gap:3cqw}
+.big{font-family:var(--font-brand);font-weight:900;font-size:9cqw;line-height:1.02;transform-origin:left center;margin-top:2cqw}
+.big em{font-style:normal;color:var(--m)}
+.sub{font-size:5.4cqw;font-weight:800;color:var(--fg);text-wrap:balance;text-shadow:0 .4cqw 1.2cqw rgba(0,0,0,.8)}
 
 /* Reto */
 #s2{justify-content:center;padding-bottom:36cqw}
@@ -25,15 +40,15 @@
 .ring{position:relative;width:16cqw;height:16cqw;opacity:0;flex:none}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:5}
-.ring .track{stroke:var(--line)} .ring .bar{stroke:var(--xp);stroke-linecap:round}
-.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:7cqw;color:var(--xp)}
+.ring .track{stroke:var(--line)} .ring .bar{stroke:var(--m);stroke-linecap:round}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:7cqw;color:var(--m)}
 .grid4{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;margin-top:2cqw}
-.card{min-height:30cqw;border-radius:5cqw;background:var(--surface);border:.5cqw solid var(--line);
+.card{min-height:30cqw;border-radius:5cqw;background:rgba(26,16,53,.94);border:.5cqw solid color-mix(in srgb, var(--m) 45%, var(--line));
   display:flex;align-items:center;justify-content:center;text-align:center;padding:3cqw;opacity:0;overflow:hidden}
-.card .l{display:block;font-size:3.4cqw;font-weight:900;color:var(--muted);letter-spacing:.1em;margin-bottom:1cqw}
+.card .l{display:block;font-size:3.4cqw;font-weight:900;color:var(--m);letter-spacing:.1em;margin-bottom:1cqw}
 .card .t{display:block;font-size:6cqw;font-weight:900;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
 .card.year .t{font-family:var(--font-brand);font-weight:700;letter-spacing:.04em;font-size:8cqw}
-.hint{font-size:4.4cqw;font-weight:700;color:var(--dim)}
+.hint{font-size:4.4cqw;font-weight:800;color:var(--fg);opacity:.8}
 
 /* Comenta */
 .comment-scene{justify-content:center;align-items:center;text-align:center;padding-bottom:36cqw}
@@ -42,14 +57,21 @@
 .bubble span{font-size:4.6cqw;font-weight:700;color:var(--ink-dim)}
 
 /* Cierre */
-.cta-scene{justify-content:center;gap:5cqw;padding-bottom:36cqw}
+.cta-scene{justify-content:flex-start;gap:5cqw;padding-top:30cqw}
 .cta-scene .wordmark{font-size:6cqw}
 .cta-big{font-size:10cqw;font-weight:900;line-height:1.05}
-.url{align-self:flex-start;font-family:var(--font-brand);font-size:5.6cqw;font-weight:700;background:var(--brand);color:#fff;padding:3cqw 5cqw;border-radius:4cqw}
-.cta-sub{font-size:4.8cqw;font-weight:700;color:var(--muted)}
+.url{align-self:flex-start;font-family:var(--font-brand);font-size:5.6cqw;font-weight:700;background:var(--m);color:var(--ms);padding:3cqw 5cqw;border-radius:4cqw}
+.cta-sub{font-size:4.8cqw;font-weight:800;color:var(--fg);text-wrap:balance;text-shadow:0 .4cqw 1.2cqw rgba(0,0,0,.8)}
+.cta-sub b{color:var(--m)}
 </style></head>
 <body>
-<div class="frame">
+<div class="frame" id="frame">
+  <div class="fondo" id="fondo"></div>
+  <div class="dim-top"></div>
+  <div class="dim" id="dim"></div>
+  <div class="neon"></div>
+  <div class="pasita" id="p-title"></div>
+  <div class="pasita" id="p-cta"></div>
   <div class="scene" id="s0">
     <span class="tag" id="ayer-tag">Respuesta de ayer</span>
     <div class="q-title">¿Cuál sobra?</div>
@@ -57,9 +79,10 @@
     <div class="stat"><b id="pct"></b><span id="motivo"></span></div>
   </div>
   <div class="scene title-scene" id="s1">
-    <span class="tag" id="title-tag"></span>
-    <div class="big" id="big">¿CUÁL<br><em>SOBRA?</em></div>
-    <div class="sub">Tres tienen algo en común. Una no.</div>
+    <span class="mtag" id="title-tag"></span>
+    <div class="dia" id="dia"><span class="d1" id="d1"></span></div>
+    <div class="big" id="big">¿CUÁL <em>SOBRA?</em></div>
+    <div class="sub" id="sub">Tres tienen algo en común. Una no.</div>
   </div>
   <div class="scene" id="s2">
     <div class="q-head">
@@ -76,9 +99,12 @@
     <div class="wordmark">PASAS<span>·</span>ARCADE</div>
     <div class="cta-big">Te faltan 4 rondas</div>
     <div class="url">pasas.mx/arcade</div>
-    <div class="cta-sub">Un reto nuevo cada día</div>
+    <div class="cta-sub" id="cta-sub">Un reto nuevo cada día</div>
   </div>
 </div>
+<script src="pasita.js"></script>
+<script src="fondo.js"></script>
+<script src="materias.js"></script>
 <script>
 var $ = function(id){ return document.getElementById(id); };
 var clamp = function(x){ return Math.max(0, Math.min(1, x)); };
@@ -97,13 +123,37 @@ function fit(el, box){
   }
 }
 
+var TM = null;
+function place(id, pose, w, floor, dx){
+  var el = $(id), h = w * PASITA_VB.h / PASITA_VB.w;
+  buildPasita(el, pose, w);
+  el.style.top = (floor - h) + 'px'; el.style.marginLeft = (-w/2 + (dx||0)) + 'px'; el.style.width = w + 'px';
+}
 window.setup = function(data){
   D = data;
+  TM = temaReto(data);
+  var fr = $('frame');
+  fr.style.setProperty('--m', TM.c); fr.style.setProperty('--ms', TM.sobre);
+  buildFondo($('fondo'), TM.fondo, 0);
   var o = data.ayer ? 3 : 0;               // sin "ayer" (reto #1) el video empieza en el título
+  // El título del día dura un poco más: es lo que distingue cada día
   T = {
-    s0:[0,3], s1:[o, o+1.7], s2:[o+1.7, o+10], s3:[o+8, o+10], s4:[o+10, o+13],
-    cards:o+2, ringOn:o+3.8, ringEnd:o+8, dim:o+8, end:o+13
+    s0:[0,3], s1:[o, o+2.3], s2:[o+2.3, o+10.6], s3:[o+8.6, o+10.6], s4:[o+10.6, o+13.6],
+    cards:o+2.6, ringOn:o+4.4, ringEnd:o+8.6, dim:o+8.6, end:o+13.6
   };
+  // Título: "Viernes de / Español" (o "Reto para / Papás")
+  $('d1').textContent = TM.arriba;
+  TM.lineas.forEach(function(l){ var sp = document.createElement('span'); sp.className = 'd2'; sp.textContent = l; $('dia').appendChild(sp); });
+  fitLines([$('d1')], 1080 - 2*76); fitLines([].slice.call(document.querySelectorAll('.dia .d2')), 1080 - 2*76);
+  if (TM.esPapas) $('sub').textContent = '¿Sabes más que un alumno de secundaria? Una ronda de cada materia.';
+  place('p-title', TM.pose, 440, 1556, 230);
+  // Cierre: qué toca mañana (dato real del calendario, no una promesa)
+  var man = temaReto({ fecha: addDay(data.fecha, 1) });
+  place('p-cta', 'aprobando', 380, 1556, 250);
+  $('cta-sub').innerHTML = TM.esPapas
+    ? 'Juégalo con tus hijos. Mañana: <b>' + esc(man.arriba + ' ' + man.nombre) + '</b>'
+    : 'Un reto nuevo cada día. Mañana: <b>' + esc(man.esPapas ? 'reto para papás' : man.nombre) + '</b>';
+  window.ready = pasitaReady();
   if (data.ayer){
     $('ayer-tag').textContent = 'Respuesta de ayer · Reto #' + data.ayer.numero;
     $('ayer-list').innerHTML = data.ayer.opciones.map(function(x,i){
@@ -114,12 +164,14 @@ window.setup = function(data){
     $('motivo').textContent = hasPct ? 'le atinó. ' + data.ayer.motivo : data.ayer.motivo;
     if (!hasPct) $('motivo').style.fontSize = '7cqw';   // sin porcentaje, el motivo es el remate
   }
-  $('title-tag').textContent = (data.reto_titulo || ('Reto de ' + (data.materia_corta || 'Historia'))) + ' #' + data.numero;
+  $('title-tag').textContent = 'Reto #' + data.numero;
   var years = data.hoy.opciones.every(function(x){ return /^\d{3,4}$/.test(String(x).trim()); });
   $('grid').innerHTML = data.hoy.opciones.map(function(x,i){
     return '<div class="card' + (years?' year':'') + '"><span><span class="l">' + 'ABCD'[i] + '</span><span class="t">' + esc(x) + '</span></span></div>';
   }).join('');
-  $('hint').textContent = 'Reto #' + data.numero + ' · Ronda 1 de 5';
+  // Sábado (papás): cada ronda es de otra materia; se dice cuál
+  var rm = TM.esPapas && data.hoy.materia_key ? nombreMateriaRonda(data.hoy.materia_key) : '';
+  $('hint').textContent = rm ? 'Ronda de ' + rm + ' · 1 de 5' : 'Reto #' + data.numero + ' · Ronda 1 de 5';
   // mostrar todo un momento para medir y ajustar
   ['s2'].forEach(function(id){ $(id).style.opacity = 1; });
   document.querySelectorAll('.card').forEach(function(c){ c.style.opacity = 1; fit(c.querySelector('.t'), c); });
@@ -127,6 +179,19 @@ window.setup = function(data){
   return T.end;
 };
 
+// Achica por igual un grupo de líneas para que la más ancha quepa en `max` px (copia de anim.js)
+function fitLines(lines, max){
+  var widest = 0;
+  lines.forEach(function(el){ el.style.width = 'max-content'; widest = Math.max(widest, el.getBoundingClientRect().width); el.style.width = ''; });
+  if (widest <= max) return;
+  var k = max / widest;
+  lines.forEach(function(el){ el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * k) + 'px'; });
+}
+function addDay(f, n){ var d = new Date(f + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+function hop(el, t, t0){
+  var j = clamp((t - t0) / 0.5), up = Math.sin(j * Math.PI) * (1 - j) * 60, br = 1 + 0.012 * Math.sin(t * 2.4);
+  el.style.transform = 'translateY(' + (-up) + 'px) scale(' + (1 / br) + ',' + br + ')';
+}
 function win(t, a, b, fadeIn, fadeOut){
   if (t < a || t >= b) return 0;
   var i = fadeIn === false ? 1 : clamp((t-a)/F);
@@ -166,6 +231,18 @@ window.render = function(t){
     $('ring-bar').setAttribute('stroke-dashoffset', (100.5*(1 - left/span)).toFixed(1));
   }
   $('bubble').style.transform = 'scale(' + (0.85 + 0.15*back(clamp((t-T.s3[0])/0.35))) + ')';
+  // Pasita y escena: se ven completas en el título y el cierre; atenuadas mientras hay que leer
+  var aT = win(t, T.s1[0], T.s1[1], !!D.ayer, true), aC = win(t, T.s4[0], T.end + 1, true, false);
+  $('p-title').style.opacity = aT; hop($('p-title'), t, T.s1[0]);
+  $('p-cta').style.opacity = aC; hop($('p-cta'), t, T.s4[0]);
+  $('dim').style.opacity = 1 - Math.max(aT, aC);
+  document.querySelectorAll('.dia span').forEach(function(sp, i){
+    var q = clamp((t - (T.s1[0] + 0.05 + i*0.18)) / 0.3); sp.style.opacity = q;
+    sp.style.transform = 'scale(' + (0.88 + 0.12*back(q)) + ')'; sp.style.transformOrigin = 'left center';
+  });
+  animFondo(t);
+  blinkAll(t);
 };
+window.momentos = function(){ var o = D.ayer ? 3 : 0; return (D.ayer ? [1.6] : []).concat([o + 1.6, o + 5.5, o + 9.4, o + 12.4]); };
 </script>
 </body></html>

@@ -278,4 +278,5 @@ function animFondo(t) {
     var i = +d.dataset.i, y0 = (i * 311) % 1920;
     d.setAttribute('cy', ((y0 - t * (12 + i % 5 * 4)) % 1920 + 1920) % 1920);
   });
+  if (typeof animMaterias === 'function') animMaterias(t);   // escenas de materias.js
 }

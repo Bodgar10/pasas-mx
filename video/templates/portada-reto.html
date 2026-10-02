@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="base.css">
 <style>
 /* Portada del reel del reto diario (1080×1920). Mismo estilo que la portada A de
-   los videos con la Pasita. Para que el grid no se vea repetido, cada día cambia
-   sola según el número del reto: fondo, pose de la Pasita y color del marco y del
-   título. El número va grande en un distintivo. Todo dentro del 3:4. */
+   los videos con la Pasita. Cada día de la semana tiene su materia y su identidad
+   (materias.js): escena, color del marco y del título, pose de la Pasita y
+   "Viernes de / Español". El número va grande en un distintivo. Todo dentro del 3:4. */
 .fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
 .neon{position:absolute;left:3cqw;right:3cqw;top:calc(240px + 2.4cqw);bottom:calc(240px + 2.4cqw);border-radius:5cqw;
   border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
@@ -15,14 +15,15 @@
   line-height:1.02;letter-spacing:-.01em;-webkit-text-stroke:1.3cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
 .title span{display:block;font-size:19cqw;white-space:nowrap}
 #t1{font-size:11cqw}
+.title .km{color:var(--m)}
 .k-blanco{color:#fff}.k-cian{color:var(--cyan)}.k-rosa{color:var(--pink)}.k-amarillo{color:var(--xp)}
 .pasita{position:absolute}
 /* Pizarrón limpio en la portada: lo escrito compite con el título */
 .fondo text[style*="e2e8f0"], .fondo path[style*="e2e8f0"]{display:none}
 .spark{position:absolute;height:auto}
-.badge{position:absolute;left:8cqw;top:1000px;width:250px;height:250px;border-radius:50%;background:var(--xp);color:var(--bg);z-index:4;
+.badge{position:absolute;left:8cqw;top:1000px;width:250px;height:250px;border-radius:50%;background:var(--m,var(--xp));color:var(--ms,var(--bg));z-index:4;
   display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-8deg);
-  box-shadow:0 0 4cqw rgba(251,191,36,.55), 0 1.4cqw 0 rgba(0,0,0,.35);border:1cqw solid #fff}
+  box-shadow:0 0 4cqw var(--m,var(--xp)), 0 1.4cqw 0 rgba(0,0,0,.35);border:1cqw solid #fff}
 .badge small{font-family:var(--font-title);font-weight:900;font-size:4.6cqw;letter-spacing:.08em;line-height:1}
 .badge b{font-family:var(--font-title);font-weight:900;font-size:11cqw;line-height:1;letter-spacing:-.02em}
 
@@ -38,7 +39,7 @@
 <div class="frame">
   <div class="fondo" id="fondo"></div>
   <div class="neon" id="neon"></div>
-  <div class="title"><span class="k-blanco" id="t1">Reto de hoy</span><span class="k-cian" id="t2"></span></div>
+  <div class="title" id="title"><span class="k-blanco" id="t1">Reto de hoy</span></div>
   <svg class="spark" style="left:120px;top:780px;width:70px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--xp)"/></svg>
   <svg class="spark" style="right:140px;top:880px;width:62px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--cyan)"/></svg>
   <svg class="spark" style="right:200px;top:1240px;width:46px" viewBox="0 0 100 100"><path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" style="fill:var(--pink)"/></svg>
@@ -50,24 +51,20 @@
 <script src="anim.js"></script>
 <script src="pasita.js"></script>
 <script src="fondo.js"></script>
+<script src="materias.js"></script>
 <script>
-// Rotación diaria: cada lista tiene un largo distinto (5, 6, 4), así que las
-// combinaciones no se repiten igual en semanas.
-var ROT_FONDO = ['salon', 'cuarto', 'niveles', 'camion', 'recamara'];
-var ROT_POSE = ['pensativa', 'celebrando', 'confiada', 'lapiz', 'aprobando', 'flexionando'];
-var ROT_COLOR = [['var(--cyan)', 'k-cian'], ['var(--pink)', 'k-rosa'], ['var(--xp)', 'k-amarillo'], ['var(--brand)', 'k-cian']];
 window.setup = function (data) {
-  var n = data.numero || 1;
-  var fondo = data.fondo || ROT_FONDO[(n - 1) % ROT_FONDO.length];
-  var pose = ROT_POSE[(n - 1) % ROT_POSE.length];
-  var col = ROT_COLOR[(n - 1) % ROT_COLOR.length];
-  buildFondo($('fondo'), fondo, -160);
-  $('neon').style.setProperty('--c', col[0]);
-  $('t2').className = col[1];
+  var n = data.numero || 1, tema = temaReto(data), frame = document.querySelector('.frame');
+  buildFondo($('fondo'), data.fondo || tema.fondo, -160);
+  frame.style.setProperty('--m', tema.c); frame.style.setProperty('--ms', tema.sobre);
+  $('neon').style.setProperty('--c', tema.c);
   $('num').textContent = '#' + n;
   if (String(n).length > 2) $('num').style.fontSize = '8.5cqw';
-  $('t2').textContent = data.materia_corta || 'Historia';
-  fitLines([$('t1')], 1080 - 2 * 97); fitLines([$('t2')], 1080 - 2 * 97);
+  $('t1').textContent = tema.arriba;
+  tema.lineas.forEach(function (l) { var sp = document.createElement('span'); sp.className = 'km'; sp.textContent = l; $('title').appendChild(sp); });
+  fitLines([$('t1')], 1080 - 2 * 97);
+  fitLines([].slice.call(document.querySelectorAll('.title .km')), 1080 - 2 * 97);
+  var pose = data.pose || tema.pose;
   $('dur-t').textContent = Math.round(data.duracion || 16) + ' segundos';
   // La Pasita llena el espacio entre el título y el piso, un poco a la derecha del distintivo
   var bottom = document.querySelector('.title').getBoundingClientRect().bottom, floor = 1412;

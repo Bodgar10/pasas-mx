@@ -2,6 +2,18 @@
 <html lang="es"><head><meta charset="utf-8">
 <link rel="stylesheet" href="base.css">
 <style>
+/* Cada día con su materia (materias.js): escena de fondo atenuada, marco y acentos del color de la materia. */
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform:scale(1.04);transform-origin:50% 60%}
+.dim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.82) 0%, rgba(15,10,30,.7) 55%, rgba(15,10,30,.4) 100%)}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--m);box-shadow:0 0 2.4cqw var(--m), inset 0 0 2.4cqw var(--m)}
+.mhead{display:flex;align-items:center;gap:3cqw}
+.mhead svg{flex:none;filter:drop-shadow(0 0 1.6cqw var(--m))}
+.mname{font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:7.4cqw;line-height:1;color:var(--m);
+  -webkit-text-stroke:.9cqw var(--bg);paint-order:stroke fill}
+.mname{white-space:nowrap}
+#extra-tiktok .mhead{gap:2.4cqw}
+#extra-tiktok .mname{font-size:6cqw}
+.mname small{display:block;font-size:4.6cqw;color:#fff;letter-spacing:.04em;margin-bottom:.8cqw}
 /* Instagram tapa arriba (perfil y barras) y abajo (responder). El contenido vive entre 16% y 84%. */
 .st{position:absolute;inset:0;padding:30cqw 8cqw 28cqw;display:none;flex-direction:column;gap:5cqw}
 .st.on{display:flex}
@@ -13,25 +25,29 @@
 #aviso .big{font-size:15cqw}
 .sticker-zone{height:20cqw;flex:none}
 .mini4{display:grid;grid-template-columns:1fr 1fr;gap:2.6cqw;margin-top:2cqw}
-.mini4 div{height:13cqw;border-radius:4cqw;background:var(--surface);border:.5cqw solid var(--line);display:grid;place-items:center;font-family:var(--font-brand);font-size:8cqw;color:var(--muted)}
+.mini4 div{height:13cqw;border-radius:4cqw;background:rgba(26,16,53,.92);border:.5cqw solid var(--m);display:grid;place-items:center;font-family:var(--font-brand);font-size:8cqw;color:var(--m)}
 .spacer{flex:1}                 /* aquí se coloca el sticker en la app */
 .foot{font-size:4.6cqw;font-weight:800;color:var(--dim);text-align:center}
 .foot b{color:var(--fg)}
-.pct{color:var(--xp)}
+.pct{color:var(--m)}
 .arrow{align-self:center;width:9cqw;height:9cqw;flex:none;color:var(--muted)}
 /* TikTok tapa la columna derecha (botones) y la parte de abajo (texto): más margen a la derecha */
-#extra-tiktok{padding:26cqw 18cqw 30cqw 8cqw;gap:4cqw}
+#extra-tiktok{padding:20cqw 18cqw 30cqw 8cqw;gap:2.8cqw}
 .opts{display:flex;flex-direction:column;gap:2.6cqw}
-.opt{display:flex;align-items:center;gap:3.4cqw;background:var(--surface);border:.5cqw solid var(--line);border-radius:4.4cqw;padding:3cqw 4cqw}
-.opt i{font-style:normal;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:var(--brand);display:grid;place-items:center;font-size:4.6cqw;font-weight:900;color:#fff}
+.opt{display:flex;align-items:center;gap:3.4cqw;background:rgba(26,16,53,.92);border:.5cqw solid var(--line);border-radius:4.4cqw;padding:3cqw 4cqw}
+.opt i{font-style:normal;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:var(--m);display:grid;place-items:center;font-size:4.6cqw;font-weight:900;color:var(--ms)}
 .opt b{font-size:6cqw;font-weight:900;line-height:1.15}
-.ask{background:var(--pink);color:#fff;border-radius:4cqw;padding:3.4cqw 4.4cqw;font-size:5.6cqw;font-weight:900;line-height:1.2;text-wrap:balance;box-shadow:0 0 3cqw rgba(236,72,153,.5)}
+.ask{background:var(--m);color:var(--ms);border-radius:4cqw;padding:3.4cqw 4.4cqw;font-size:5.6cqw;font-weight:900;line-height:1.2;text-wrap:balance;box-shadow:0 0 3cqw var(--m)}
 .ask small{display:block;font-size:4.2cqw;font-weight:800;opacity:.9;margin-top:.8cqw}
 </style></head>
 <body>
-<div class="frame">
+<div class="frame" id="frame">
+  <div class="fondo" id="fondo"></div>
+  <div class="dim"></div>
+  <div class="neon"></div>
   <!-- 8 AM · aviso -->
   <div class="st" id="aviso">
+    <div class="mhead m-slot"></div>
     <div class="kicker">Ya salió el</div>
     <div class="big" id="a-num">RETO<br>#12</div>
     <div class="line" id="a-line">Historia · 5 rondas · 2 minutos</div>
@@ -44,6 +60,7 @@
 
   <!-- 2 PM · ronda extra -->
   <div class="st" id="extra">
+    <div class="mhead m-slot"></div>
     <div class="kicker">Ronda extra, solo aquí</div>
     <div class="q">¿Cuál sobra?</div>
     <div class="spacer"></div>
@@ -52,6 +69,7 @@
 
   <!-- 2 PM · ronda extra, versión TikTok (sin sticker de quiz: se responde en comentarios) -->
   <div class="st" id="extra-tiktok">
+    <div class="mhead m-slot"></div>
     <div class="kicker">Ronda extra</div>
     <div class="q">¿Cuál sobra?</div>
     <div class="opts" id="t-opts"></div>
@@ -60,6 +78,7 @@
 
   <!-- 9 PM · resultados -->
   <div class="st" id="resultados">
+    <div class="mhead m-slot"></div>
     <div class="kicker" id="r-kicker">Así les fue hoy · Reto #12</div>
     <div class="big pct" id="r-pct">29%</div>
     <div class="line" id="r-line"></div>
@@ -67,12 +86,29 @@
     <div class="foot" id="r-foot"></div>
   </div>
 </div>
+<script src="fondo.js"></script>
+<script src="materias.js"></script>
 <script>
 window.setup = function(data, variant){
   document.querySelectorAll('.st').forEach(function(el){ el.classList.toggle('on', el.id === variant); });
-  var n = data.numero;
+  var n = data.numero, tm = temaReto(data), fr = document.getElementById('frame');
+  fr.style.setProperty('--m', tm.c); fr.style.setProperty('--ms', tm.sobre);
+  buildFondo(document.getElementById('fondo'), tm.fondo, 0);
+  animFondo(1.5);
+  // Encabezado: ícono + "Viernes de / Español"
+  var head = iconoMateria(tm.icono, tm.c, 150) + '<div class="mname"><small>' + tm.arriba + '</small>' + tm.lineas.join(' ') + '</div>';
+  document.querySelectorAll('.m-slot').forEach(function (el) {
+    el.innerHTML = head;
+    if (el.closest('#extra-tiktok')) { var sv = el.querySelector('svg'); sv.setAttribute('width', 110); sv.setAttribute('height', 110); }
+  });
+  // El nombre de la materia en una sola línea: se achica si no cabe
+  var vis = document.querySelector('.st.on .mname');
+  if (vis) {
+    var box = vis.parentNode, max = box.clientWidth - box.querySelector('svg').getBoundingClientRect().width - 30, sz = parseFloat(getComputedStyle(vis).fontSize);
+    for (var i = 0; i < 20 && vis.getBoundingClientRect().width > max; i++) { sz *= 0.94; vis.style.fontSize = sz + 'px'; }
+  }
   document.getElementById('a-num').innerHTML = 'RETO<br>#' + n;
-  document.getElementById('a-line').textContent = (data.materia || 'Historia') + ' · 5 rondas · 2 minutos';
+  document.getElementById('a-line').textContent = tm.esPapas ? '5 rondas, una de cada materia · 2 minutos' : '5 rondas · 2 minutos';
   if (variant === 'extra-tiktok' && data.extra){
     document.getElementById('t-opts').innerHTML = data.extra.opciones.map(function (o, i) {
       var d = document.createElement('b'); d.textContent = o;
@@ -87,7 +123,9 @@ window.setup = function(data, variant){
     // el número de jugadores solo se presume cuando ya es respetable
     if (typeof r.jugadores === 'number' && r.jugadores >= 30) line += ' Jugaron ' + r.jugadores.toLocaleString('es-MX') + ' personas.';
     document.getElementById('r-line').textContent = line;
-    document.getElementById('r-foot').textContent = 'Mañana a las 00:00, reto #' + (n + 1);
+    var d = new Date(data.fecha + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + 1);
+    var man = temaReto({ fecha: d.toISOString().slice(0, 10) });
+    document.getElementById('r-foot').textContent = 'Mañana: ' + man.arriba.toLowerCase() + ' ' + (man.esPapas ? 'papás' : man.nombre) + ' · reto #' + (n + 1);
   }
 };
 </script>

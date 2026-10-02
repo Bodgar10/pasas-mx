@@ -15,13 +15,39 @@ export function fechaLarga(fecha) {
   return s.replace(',', '');   // "viernes 16 de octubre"
 }
 
+// Hashtags por materia (los mismos que TEMAS_RETO en templates/materias.js)
+const TAGS = {
+  historia: '#historia #historiademexico #secundaria #prepa #retodiario',
+  biologia: '#biologia #ciencia #secundaria #prepa #retodiario',
+  geografia: '#geografia #mapas #secundaria #prepa #retodiario',
+  ciencias: '#quimica #fisica #ciencia #secundaria #prepa #retodiario',
+  espanol: '#espanol #ortografia #lectura #secundaria #prepa #retodiario',
+  papas: '#papas #mamas #secundaria #tareas #retodiario',
+};
+
+// "Viernes de Español" · "Reto para papás"
+export function tituloDelDia(data) {
+  if (data.materia_key === 'papas') return 'Reto para papás';
+  const dia = fechaLarga(data.fecha).split(' ')[0];
+  return `${dia.charAt(0).toUpperCase()}${dia.slice(1)} de ${data.materia_corta || 'Historia'}`;
+}
+
+function etiqueta(data) {
+  return data.materia_key === 'papas' ? `Reto para papás #${data.numero}` : `${tituloDelDia(data)} · reto #${data.numero}`;
+}
+
 export function caption(data) {
+  const papas = data.materia_key === 'papas';
   return [
-    `${data.reto_titulo || `Reto de ${data.materia_corta || 'Historia'}`} #${data.numero}. ¿Cuál sobra? Comenta tu respuesta.`,
-    'Las otras 4 rondas están en pasas.mx/arcade (link en la bio).',
+    papas
+      ? `Reto para papás #${data.numero}. ¿Sabes más que un alumno de secundaria? ¿Cuál sobra? Comenta tu respuesta.`
+      : `${tituloDelDia(data)} · reto #${data.numero}. ¿Cuál sobra? Comenta tu respuesta.`,
+    papas
+      ? 'Las otras 4 rondas, una de cada materia, están en pasas.mx/arcade (link en la bio). Juégalo con tus hijos.'
+      : 'Las otras 4 rondas están en pasas.mx/arcade (link en la bio).',
     'Mañana te decimos cuántos le atinaron.',
     '',
-    '#historia #historiademexico #secundaria #prepa #retodiario',
+    TAGS[data.materia_key] || TAGS.historia,
   ].join('\n');
 }
 
@@ -34,9 +60,9 @@ export function buildEmail(data, parte) {
   if (parte === 'manana') {
     const ex = data.extra;
     return {
-      subject: `Reto #${n} · reel y stories para hoy, ${dia}`,
+      subject: `${etiqueta(data)} · reel y stories para hoy, ${dia}`,
       html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
-<p>Todo listo para el <b>reto #${n}</b> (${esc(dia)}). Van cinco archivos adjuntos.</p>
+<p>Todo listo para el <b>reto #${n}</b>, ${esc(tituloDelDia(data).replace(/^R/, 'r'))} (${esc(dia)}). Van cinco archivos adjuntos.</p>
 
 <h3 style="${h}">1. Reel · en la mañana, en Instagram y TikTok</h3>
 <p>Archivo <b>reel.mp4</b>. Al subirlo, agrégale un sonido que esté en tendencia. Como portada usa <b>reel-portada.png</b>: en Instagram, <i>Editar portada → Agregar desde la galería</i>; en TikTok, <i>Editar portada → Subir</i>. Texto para copiar:</p>
@@ -71,7 +97,7 @@ Mañana te decimos cuál era.</pre>
     };
   }
   return {
-    subject: `Reto #${n} · story de resultados para esta noche`,
+    subject: `${etiqueta(data)} · story de resultados para esta noche`,
     html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
 <h3 style="${h}">Story · 9:00 PM</h3>
 <p>Archivo <b>story-3-resultados.png</b>. En el espacio vacío agrega el sticker de <b>encuesta</b>:</p>
