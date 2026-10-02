@@ -45,7 +45,8 @@ jobs:
       - name: Generar y enviar
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          ARCADE_EMAIL_TO: ${{ secrets.ARCADE_EMAIL_TO }}
+          # Los carruseles van a CARRUSELES_EMAIL_TO; si no existe, al mismo correo de los retos
+          ARCADE_EMAIL_TO: ${{ secrets.CARRUSELES_EMAIL_TO || secrets.ARCADE_EMAIL_TO }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             FILES="${{ inputs.data }}"
