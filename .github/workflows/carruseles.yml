@@ -1,7 +1,13 @@
 # Carruseles de "regalo": un tema real de PASAS explicado con un hobby, en láminas
 # 1080×1350 que llegan por correo listas para subir.
+#
+# Flujo: JSON del carrusel (lo escribe la tarea de Claude lun/mié/vie) → ilustraciones
+# por lámina con OpenAI (si existe el secret OPENAI_API_KEY) → se guardan en
+# video/arte/<carrusel>/ → renderer HTML pone el texto exacto encima → PNG → correo.
+#
 # Corre solo cuando se sube un JSON nuevo a video/data/carruseles/ (los "ejemplo-*" no).
 # A mano: Actions → "Carruseles de PASAS" → Run workflow, con la ruta del JSON.
+# Para rehacer solo algunas ilustraciones: "solo" = 3,5 (números de lámina).
 name: Carruseles de PASAS
 
 on:
@@ -11,18 +17,37 @@ on:
   workflow_dispatch:
     inputs:
       data:
-        description: 'JSON dentro de video/ (ej. data/carruseles/2026-10-pitagoras-fortnite.json)'
+        description: 'JSON dentro de video/ (ej. data/carruseles/2026-10-ecuaciones-pasita-ninja.json)'
         type: string
         required: true
+      ilustrar:
+        description: 'Generar ilustraciones con OpenAI'
+        type: boolean
+        default: true
+      solo:
+        description: 'Solo estas láminas (ej. 3,5). Vacío = las que falten'
+        type: string
+        default: ''
+      forzar:
+        description: 'Rehacer ilustraciones aunque ya existan'
+        type: boolean
+        default: false
       enviar:
         description: 'Mandar el correo'
         type: boolean
         default: true
 
+permissions:
+  contents: write   # para guardar las ilustraciones en video/arte/
+
+concurrency:
+  group: carruseles
+  cancel-in-progress: false
+
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: video
@@ -41,23 +66,59 @@ jobs:
         run: |
           npm ci
           npx playwright install --with-deps chromium
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
+      - name: Qué carruseles
+        id: cual
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            FILES="${{ inputs.data }}"
+          else
+            # Solo los JSON nuevos o cambiados en este push
+            FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'data/carruseles/*.json' | grep -v '/ejemplo-' | sed 's#^video/##' | tr '\n' ' ' || true)
+          fi
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
+          [ -n "$FILES" ] || echo "No hay carruseles nuevos"
+
+      # Una ilustración por lámina. Si una falla, las demás siguen; esa lámina sale con
+      # el diseño sin ilustración y se reintenta con "solo".
+      - name: Ilustrar con OpenAI
+        if: steps.cual.outputs.files != '' && (github.event_name != 'workflow_dispatch' || inputs.ilustrar)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_IMAGE_MODEL: ${{ vars.OPENAI_IMAGE_MODEL }}
+          OPENAI_IMAGE_QUALITY: ${{ vars.OPENAI_IMAGE_QUALITY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then echo "Sin OPENAI_API_KEY: el carrusel sale sin ilustraciones"; exit 0; fi
+          [ -n "$OPENAI_IMAGE_MODEL" ] || unset OPENAI_IMAGE_MODEL
+          [ -n "$OPENAI_IMAGE_QUALITY" ] || unset OPENAI_IMAGE_QUALITY
+          ARGS=""; for f in ${{ steps.cual.outputs.files }}; do ARGS="$ARGS --data $f"; done
+          [ -n "${{ inputs.solo }}" ] && ARGS="$ARGS --solo ${{ inputs.solo }}"
+          [ "${{ inputs.forzar }}" = "true" ] && ARGS="$ARGS --forzar"
+          node src/ilustrar.mjs $ARGS
+
+      # Las ilustraciones quedan en el repo: un reintento no vuelve a pagar las que ya salieron
+      - name: Guardar ilustraciones
+        if: steps.cual.outputs.files != ''
+        run: |
+          [ -d arte ] || exit 0
+          git add arte/
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "pasas-bot"
+          git config user.email "hola@pasas.mx"
+          git commit -m "arte: ilustraciones de carrusel [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
 
       - name: Generar y enviar
+        if: steps.cual.outputs.files != ''
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           # Los carruseles van a CARRUSELES_EMAIL_TO; si no existe, al mismo correo de los retos
           ARCADE_EMAIL_TO: ${{ secrets.CARRUSELES_EMAIL_TO || secrets.ARCADE_EMAIL_TO }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            FILES="${{ inputs.data }}"
-            ENVIAR=$([ "${{ inputs.enviar }}" = "true" ] && echo --enviar || true)
-          else
-            # Solo los JSON nuevos o cambiados en este push
-            FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'data/carruseles/*.json' | grep -v '/ejemplo-' | sed 's#^video/##' || true)
-            ENVIAR=--enviar
-          fi
-          if [ -z "$FILES" ]; then echo "No hay carruseles nuevos"; exit 0; fi
-          ARGS=""; for f in $FILES; do ARGS="$ARGS --data $f"; done
+          ENVIAR=--enviar
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.enviar }}" != "true" ]; then ENVIAR=""; fi
+          ARGS=""; for f in ${{ steps.cual.outputs.files }}; do ARGS="$ARGS --data $f"; done
           node src/carrusel.mjs $ARGS $ENVIAR
 
       - name: Guardar archivos
@@ -65,6 +126,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: carruseles-${{ github.run_id }}
-          path: video/salida/
+          path: |
+            video/salida/
+            video/arte/
           retention-days: 7
           if-no-files-found: ignore

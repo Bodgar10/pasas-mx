@@ -85,9 +85,16 @@
 .resp b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:var(--ok);text-shadow:0 0 3cqw rgba(16,185,129,.5)}
 .cta{background:var(--brand);border-radius:4cqw;padding:4cqw 4.4cqw;font-size:5cqw;font-weight:800;line-height:1.35;box-shadow:0 0 4cqw rgba(124,58,237,.6)}
 .cta b{font-family:var(--font-brand);font-weight:900}
+/* Con ilustración de OpenAI: la escena de fondo y el texto exacto encima */
+.arte{position:absolute;inset:0;background-size:cover;background-position:center}
+.velo{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.9) 0%, rgba(15,10,30,.78) 38%, rgba(15,10,30,.22) 66%, rgba(15,10,30,.05) 82%, rgba(15,10,30,.4) 100%)}
+.frame.denso .velo{background:linear-gradient(180deg, rgba(15,10,30,.9) 0%, rgba(15,10,30,.8) 60%, rgba(15,10,30,.55) 100%)}
+.frame.con-arte .p, .frame.con-arte .foot, .frame.con-arte .hob small, .frame.con-arte .hob em{text-shadow:0 .3cqw 1.2cqw rgba(0,0,0,.95), 0 0 .4cqw rgba(0,0,0,.9)}
+.frame.con-arte .stars{display:none}
 </style></head>
 <body>
 <div class="frame" id="frame">
+  <div class="arte" id="arte" hidden></div><div class="velo" id="velo" hidden></div>
   <div class="stars" id="stars"></div>
   <div class="neon"></div>
   <div class="top"><div class="brand">PASAS<span>.</span>MX</div><div class="num" id="num"></div></div>
@@ -114,6 +121,15 @@ function triangulo(w) {
 window.setup = function (data, i) {
   var s = data.slides[i], c = data.hobby ? data.hobby.color : COLORES[i % COLORES.length], fr = $('frame');
   fr.style.setProperty('--c', c);
+  // Ilustración de fondo (OpenAI): reemplaza el dibujo vectorial y la Pasita vectorial de esa lámina
+  var conArte = !!s.fondo_img;
+  $('arte').hidden = $('velo').hidden = !conArte;
+  fr.classList.toggle('con-arte', conArte);
+  fr.classList.toggle('denso', conArte && ['portada', 'escena'].indexOf(s.tipo) < 0);
+  if (conArte) {
+    $('arte').style.backgroundImage = 'url("' + s.fondo_img + '")';
+    s = Object.assign({}, s, { svg: s.svg_con_arte ? s.svg : null });
+  }
   var st = '';
   for (var k = 0; k < 60; k++) st += '<i style="left:' + ((k * 173 + i * 61) % 1080) + 'px;top:' + ((k * 389 + i * 97) % 1350) + 'px;width:' + (1 + k % 3) + 'px;height:' + (1 + k % 3) + 'px;opacity:' + (0.15 + (k % 5) * 0.1) + '"></i>';
   $('stars').innerHTML = st;
@@ -188,12 +204,13 @@ window.setup = function (data, i) {
   var b = $('body'), inn = $('inner'), z = Math.min(1, b.clientHeight / inn.scrollHeight);
   if (z < 1) inn.style.zoom = Math.max(0.68, z);
   inn.style.minHeight = (b.clientHeight / (z < 1 ? Math.max(0.68, z) : 1)) + 'px';   // para que margin-top:auto llegue al fondo
+  if (conArte) pose = null;   // la Pasita ya viene en la ilustración
   if (pose) {
     buildPasita($('pasita'), pose, pw);
     var ph = pw * PASITA_VB.h / PASITA_VB.w;
     $('pasita').style.left = (px - pw / 2) + 'px'; $('pasita').style.top = (py - ph) + 'px';
   } else $('pasita').innerHTML = '';
-  window.ready = pasitaReady();
+  window.ready = Promise.all([pasitaReady(), conArte ? new Promise(function (ok) { var im = new Image(); im.onload = im.onerror = ok; im.src = s.fondo_img; }) : null]);
   return 0;
 };
 window.render = function () {};

@@ -43,13 +43,49 @@ carrusel y avísalo en el resumen para que se arregle en la base.
   (mira los nombres de archivo en `data/carruseles/`). Nunca repitas un tema.
 - Prefiere temas que estén viendo en clase este mes (calendario SEP) o de examen.
 - Prefiere analogías con una situación concreta y números que se puedan dibujar.
-- **Nombres**: con su nombre real y sin miedo: series, juegos, personajes,
-  grupos, clubes y también personas (BTS, Stray Kids, Lamine Yamal, Fortnite,
-  Naruto). Es lo que hace que funcione. Condiciones: solo como texto (nunca
-  fotos, logos, capturas ni su música); nada que suene a que nos patrocinan o
-  recomiendan ("BTS estudia con PASAS", "oficial"); nada que los ridiculice o
-  les atribuya algo falso o polémico. Las situaciones son claramente
-  imaginarias ("imagina que…", "en un concierto de…").
+- **La protagonista es siempre la Pasita, dentro del universo del hobby.** No
+  usamos personajes ni personas reales: la Pasita es la ninja, la idol, la
+  jugadora o la delantera. El universo se reconoce por sus elementos y su
+  vocabulario (aldea ninja, chakra, jutsu, sellos; zona segura, tormenta, botín;
+  concierto, fandom, beat drop, comeback; vestidor, cantera, jornada), no por
+  nombres propios. **Nunca** nombres de series, juegos, personajes, grupos,
+  idols, jugadores, clubes ni marcas en láminas, post o hashtags (en hashtags,
+  solo genéricos: #anime #kpop #videojuegos #futbol). La lección de la base
+  puede traer nombres (Naruto, Fortnite, BTS…): se traducen al universo con la
+  Pasita. Modelo: `2026-10-ecuaciones-pasita-ninja.json`.
+
+## Ilustraciones con OpenAI
+
+Cada lámina puede llevar una ilustración de fondo generada con OpenAI (la Pasita
+oficial en el universo del hobby). El texto exacto (cuentas, fechas, reglas)
+**nunca** va en la imagen: lo pone el renderer HTML encima. Lo hace el workflow
+solo si existe el secret `OPENAI_API_KEY`; si no, el carrusel sale con los dibujos
+vectoriales (`svg`), así que **siempre escribe los dos**.
+
+En el JSON:
+
+```jsonc
+"arte": { "universo": "A ninja village at night… (en inglés: lugar, época, luz, vestuario de la Pasita, objetos clave)" },
+"slides": [
+  { "tipo": "escena", …, "svg": "…", "arte": { "escena": "Qué se ve en esta lámina (en inglés)", "pose": "expresión de la Pasita" } }
+]
+```
+
+- `arte.universo` (una vez): el mundo, la luz y cómo va vestida la Pasita. Igual
+  en todas las láminas para que el carrusel se vea de una pieza.
+- `arte.escena` (por lámina, en las 9): una escena concreta que **muestre la
+  historia** de esa lámina (la puerta con la cuadrícula de sellos, los 6 clones).
+  En láminas de texto denso (reveal, regla, acordeón) pide una escena tranquila
+  con la Pasita en una esquina.
+- Prohibido en `arte`: texto, números, letras, logos, nombres de franquicias o
+  personas. El estilo, las reglas de composición (40 % de arriba libre para el
+  texto) y las referencias de la Pasita (`arte/referencias/`) las agrega
+  `src/ilustrar.mjs` solo.
+- Las ilustraciones se guardan en `video/arte/<carrusel>/NN.jpg` con
+  `estado.json`; si una falla, el correo lo dice y se rehace con "solo" en el
+  workflow sin pagar las demás. Modelo y calidad: variables de GitHub
+  `OPENAI_IMAGE_MODEL` (por defecto `gpt-image-2`) y `OPENAI_IMAGE_QUALITY`
+  (por defecto `high`).
 
 ## La fórmula PASAS
 
@@ -123,9 +159,11 @@ serviría para resolver un ejercicio del examen?** Si no, rehazla.
 `src/carrusel.mjs` rechaza el carrusel si la lámina 6 no es el reveal (`mapa`),
 si la última no es la chuleta o si la chuleta no trae la respuesta del reto.
 
-Modelos: `data/carruseles/2026-10-ecuaciones-naruto.json` (el más claro),
-`2026-10-pitagoras-fortnite.json`, `2026-10-acentuacion-kpop.json` y
-`2026-10-independencia-futbol.json`. Tipos de lámina: `portada`, `escena`
+Modelo: `data/carruseles/2026-10-ecuaciones-pasita-ninja.json` (completo, con
+ilustraciones y la Pasita como protagonista). `2026-10-pitagoras-fortnite.json`,
+`2026-10-acentuacion-kpop.json` y `2026-10-independencia-futbol.json` sirven solo
+de referencia de estructura: son anteriores a la regla de la Pasita y todavía
+usan nombres propios; **no copies esos nombres**. Tipos de lámina: `portada`, `escena`
 (texto + svg), `mapa` (pares hobby → concepto), `ejemplo` (pasos), `reglas`,
 `reto`, `chuleta` (y para otros formatos: `lista`, `idea`, `tematicas`, `cierre`).
 

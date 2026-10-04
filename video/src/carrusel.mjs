@@ -7,6 +7,8 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { withBrowser, openPage } from './render.mjs';
 import { sendEmail } from './email.mjs';
+import { existsSync, readFileSync } from 'node:fs';
+import { ARTE, slugCarrusel } from './ilustrar.mjs';
 
 export const TIPOS = ['portada', 'idea', 'escena', 'mapa', 'reglas', 'ejemplo', 'lista', 'tematicas', 'reto', 'cierre', 'chuleta'];
 
@@ -39,6 +41,12 @@ function slug(s) {
 export async function renderCarrusel(browser, d, dir) {
   await mkdir(dir, { recursive: true });
   const files = [];
+  // Si existe la ilustración de una lámina (video/arte/<carrusel>/NN.jpg), va de fondo
+  const arte = path.join(ARTE, slugCarrusel(d));
+  d = { ...d, slides: d.slides.map((s, i) => {
+    const f = path.join(arte, `${String(i + 1).padStart(2, '0')}.jpg`);
+    return existsSync(f) ? { ...s, fondo_img: `../arte/${slugCarrusel(d)}/${path.basename(f)}` } : s;
+  }) };
   for (let i = 0; i < d.slides.length; i++) {
     const page = await openPage(browser, 'carrusel.html', { width: 1080, height: 1350 });
     await page.evaluate(([x, k]) => window.setup(x, k), [d, i]);
@@ -52,7 +60,16 @@ export async function renderCarrusel(browser, d, dir) {
   return files;
 }
 
+// Láminas cuya ilustración falló (estado.json de ilustrar.mjs), para avisar en el correo
+function sinIlustrar(d) {
+  try {
+    const e = JSON.parse(readFileSync(path.join(ARTE, slugCarrusel(d), 'estado.json'), 'utf8'));
+    return Object.entries(e).filter(([, v]) => !v.ok).map(([k, v]) => `${Number(k)} (${v.error})`);
+  } catch { return []; }
+}
+
 function correo(d, n) {
+  const fallas = sinIlustrar(d);
   const titulo = d.slides[0].titulo.join(' ') + (d.hobby ? ` con ${d.hobby.nombre}` : '');
   const e = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   return {
@@ -61,6 +78,7 @@ function correo(d, n) {
 <p>Carrusel listo: <b>${e(titulo)}</b>. Van ${n} láminas en orden (01, 02…).</p>
 <p>Súbelas como <b>carrusel</b> en Instagram (máximo 20 fotos) y en TikTok en <b>modo foto</b>, con una canción en tendencia. Texto para copiar:</p>
 <pre style="background:#f5f3fa;border-radius:10px;padding:12px 14px;white-space:pre-wrap;font-family:inherit">${e(d.post || '')}</pre>
+${fallas.length ? `<p style="color:#b45309;font-size:14px">Estas láminas salieron sin ilustración porque falló OpenAI: ${e(fallas.join('; '))}. Se pueden rehacer en GitHub → Actions → "Carruseles de PASAS" → Run workflow, con "solo" = esos números.</p>` : ''}
 <p style="color:#6b6485;font-size:14px">Al día siguiente, responde en los comentarios con la respuesta del reto (está en la última lámina).</p>
 </div>`,
   };
