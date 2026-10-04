@@ -66,6 +66,20 @@
 .mapa .l{background:rgba(26,16,53,.92);border:.4cqw solid var(--c);border-radius:3.4cqw;padding:2.6cqw 3cqw;font-size:4.4cqw;font-weight:900;color:var(--c);line-height:1.25}
 .mapa .r{background:rgba(251,191,36,.12);border:.4cqw solid rgba(251,191,36,.5);border-radius:3.4cqw;padding:2.6cqw 3cqw;font-size:4.4cqw;font-weight:900;color:var(--xp);line-height:1.25}
 .mapa i{font-style:normal;text-align:center;font-size:6cqw;font-weight:900;color:var(--fg)}
+/* Chuleta: la última lámina, la que vale la pena guardar */
+.chu-f{background:rgba(26,16,53,.92);border:.4cqw solid var(--line);border-radius:4cqw;padding:2.6cqw 3cqw;text-align:center;font-family:var(--font-title);font-weight:900;font-size:7.6cqw;color:#fff;white-space:nowrap}
+.chu{display:flex;flex-direction:column;gap:2.2cqw}
+.chu > div{display:grid;grid-template-columns:8cqw 1fr;gap:2.4cqw;align-items:start}
+.chu i{font-style:normal;width:8cqw;height:8cqw;border-radius:50%;background:var(--c);color:var(--bg);display:grid;place-items:center;font-family:var(--font-title);font-weight:900;font-size:4.6cqw}
+.chu .st{font-size:4.6cqw;font-weight:900;line-height:1.3}
+.chu .st b{color:var(--xp)}
+.chu .fm{display:block;margin-top:.6cqw;font-family:var(--font-title);font-weight:900;font-size:5.4cqw;color:var(--xp)}
+.recuerdo{display:flex;gap:3cqw;align-items:center;border:.4cqw solid var(--c);background:color-mix(in srgb, var(--c) 14%, transparent);border-radius:4cqw;padding:2.6cqw 3.4cqw;font-size:4.4cqw;font-weight:800;line-height:1.35}
+.recuerdo span:first-child{font-size:7cqw;flex:none}
+.recuerdo b{color:var(--c)}
+.chu-foot{margin-top:auto;display:flex;flex-direction:column;gap:1.2cqw;font-size:4cqw;font-weight:800;color:var(--muted)}
+.chu-foot b{color:var(--fg)}
+.chu-save{font-family:var(--font-title);font-weight:900;font-size:4.8cqw;color:#fff}
 /* Cierre */
 .resp{display:flex;align-items:baseline;gap:3cqw}
 .resp b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:var(--ok);text-shadow:0 0 3cqw rgba(16,185,129,.5)}
@@ -144,14 +158,23 @@ window.setup = function (data, i) {
   } else if (s.tipo === 'reto') {
     h = '<span class="tag">' + esc(s.etiqueta) + '</span><div class="p" style="font-size:6.2cqw;line-height:1.25;font-weight:900">' + md(s.pregunta) + '</div>' +
       '<div class="opts">' + s.opciones.map(function (o, j) { return '<div><i>' + 'ABCD'[j] + '</i>' + esc(o) + '</div>'; }).join('') + '</div>' +
-      '<div class="p" style="font-size:4.8cqw;color:var(--muted)">Escribe tu respuesta en los comentarios.</div><div class="foot" style="margin-top:auto;text-align:left">' + esc(s.pie) + '</div>';
+      '<div class="p" style="font-size:4.8cqw;color:var(--muted)">Escribe tu respuesta en los comentarios.</div><div class="foot" style="margin-top:auto;text-align:left">' + esc(s.pie || 'La respuesta, en la última lámina →') + '</div>';
+  } else if (s.tipo === 'chuleta') {
+    h = '<span class="tag">' + esc(s.etiqueta || 'Acuérdate así en tu examen') + '</span>' + titulo(s.titulo) +
+      (s.formula ? '<div class="chu-f">' + esc(s.formula) + '</div>' : '') +
+      '<div class="chu">' + s.pasos.map(function (x, j) { return '<div><i>' + (j + 1) + '</i><span class="st">' + md(x.t) + (x.f ? '<span class="fm">' + md(x.f) + '</span>' : '') + '</span></div>'; }).join('') + '</div>' +
+      (s.recuerdo ? '<div class="recuerdo"><span>' + (data.hobby ? data.hobby.icono : '💡') + '</span><span>' + md(s.recuerdo) + '</span></div>' : '') +
+      (s.atajo ? '<div class="p" style="font-size:4.4cqw">' + md(s.atajo) + '</div>' : '') +
+      '<div class="chu-foot"><span class="chu-save">📌 Guarda esta lámina para repasar</span>' +
+      (s.respuesta_reto ? '<span>Respuesta del reto: <b>' + md(s.respuesta_reto) + '</b></span>' : '') +
+      '<span>Más temas explicados con lo que te gusta: <b>pasas.mx</b></span></div>';
   } else if (s.tipo === 'cierre') {
     h = '<span class="tag" style="background:#10b981;box-shadow:0 0 2.6cqw #10b981">' + esc(s.etiqueta) + '</span>' +
       '<div class="resp"><b id="respb">' + esc(s.respuesta) + '</b></div><div class="p" style="font-size:5.4cqw;font-weight:900;color:var(--muted)">' + md(s.explicacion) + '</div>' +
       '<div style="height:2cqw"></div>' + titulo(s.titulo) + '<div class="cta">' + md(s.cta) + '</div>';
     if (!data.hobby) { pose = 'celebrando'; pw = 230; px = 850; py = 470; }
   }
-  $('body').innerHTML = h;
+  $('body').innerHTML = '<div id="inner" style="display:flex;flex-direction:column;gap:3.4cqw">' + h + '</div>';
   if ($('hobn')) fitLines([$('hobn')], 1080 - 2 * 86);
   if ($('respb')) fitLines([$('respb')], 1080 - 2 * 86 - (data.hobby ? 0 : 250));   // deja lugar a la Pasita
   // En la portada, el dibujo ocupa todo el espacio que queda
@@ -161,8 +184,10 @@ window.setup = function (data, i) {
   if (s.tipo === 'portada') tt.forEach(function (x) { x.style.fontSize = '13cqw'; });
   if (tt.length) fitLines([].slice.call(tt), 1080 - 2 * 86);
   // Si no cabe, se achica todo el contenido parejo (nunca se corta)
-  var b = $('body'), z = 1;
-  while (b.scrollHeight > b.clientHeight + 1 && z > 0.7) { z -= 0.03; b.style.zoom = z; }
+  // (se escala el contenido, no la caja: así no se mueve de su lugar)
+  var b = $('body'), inn = $('inner'), z = Math.min(1, b.clientHeight / inn.scrollHeight);
+  if (z < 1) inn.style.zoom = Math.max(0.68, z);
+  inn.style.minHeight = (b.clientHeight / (z < 1 ? Math.max(0.68, z) : 1)) + 'px';   // para que margin-top:auto llegue al fondo
   if (pose) {
     buildPasita($('pasita'), pose, pw);
     var ph = pw * PASITA_VB.h / PASITA_VB.w;

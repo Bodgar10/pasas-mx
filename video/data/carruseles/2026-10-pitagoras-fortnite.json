@@ -10,7 +10,7 @@
   "color": "#22d3ee",
   "detalle": "la tormenta y la zona segura"
  },
- "post": "¿Pitágoras no te entra? Piénsalo como en Fortnite: la tormenta se cierra y tienes que llegar a la zona segura. ¿Rodeas o cortas en diagonal? 🎮📐\n\nAsí se explica en PASAS: cada tema con lo que te gusta (videojuegos, anime, K-pop o fútbol).\n\nGuárdalo para tu examen y mándaselo a tu dúo.\n\n#teoremadepitagoras #matematicas #secundaria #fortnite #pasasmx",
+ "post": "¿Pitágoras no te entra? Piénsalo como en Fortnite: la tormenta se cierra y tienes que llegar a la zona segura. ¿Rodeas o cortas en diagonal? 🎮📐\n\nAsí se explica en PASAS: cada tema con lo que te gusta (videojuegos, anime, K-pop o fútbol).\n\nLa última lámina es tu chuleta: guárdala para el examen y mándasela a tu dúo.\n\n#teoremadepitagoras #matematicas #secundaria #fortnite #pasasmx",
  "slides": [
   {
    "tipo": "portada",
@@ -95,7 +95,7 @@
   },
   {
    "tipo": "reglas",
-   "etiqueta": "La regla para el examen",
+   "etiqueta": "La regla general",
    "titulo": [
     "¿Sumo o resto?"
    ],
@@ -111,29 +111,43 @@
      "formula": "a² = c² − b²"
     }
    ],
-   "nota": "Confundir la suma con la resta es el error que más puntos cuesta en este tema."
+   "nota": "Funciona en **cualquier** triángulo con un ángulo de 90°: escaleras, rampas, pantallas, mapas."
   },
   {
    "tipo": "reto",
    "etiqueta": "Pruébate",
-   "pregunta": "Saltas del autobús y la zona está **6 casillas** al este y **8 casillas** al norte. ¿Cuántas casillas hay en diagonal?",
+   "pregunta": "La zona está **6 casillas** al este y **8 casillas** al norte. ¿Cuántas casillas hay en diagonal?",
    "opciones": [
     "10 casillas",
     "14 casillas",
     "12 casillas"
    ],
-   "pie": "La respuesta, en la siguiente →"
+   "pie": "La respuesta, en la última lámina →"
   },
   {
-   "tipo": "cierre",
-   "etiqueta": "Respuesta",
-   "respuesta": "10 casillas",
-   "explicacion": "6² + 8² = 36 + 64 = 100 → √100 = **10**",
+   "tipo": "chuleta",
+   "etiqueta": "Acuérdate así en tu examen",
    "titulo": [
-    "Guárdalo para",
-    "tu examen"
+    "Teorema de",
+    "Pitágoras"
    ],
-   "cta": "Este tema y cientos más, explicados con lo que te gusta, en **pasas.mx**"
+   "formula": "a² + b² = c²",
+   "pasos": [
+    {
+     "t": "Ubica la **hipotenusa**: el lado más largo, frente al ángulo de 90°."
+    },
+    {
+     "t": "¿Buscas la hipotenusa? **Suma** y saca raíz:",
+     "f": "c = √(a² + b²)"
+    },
+    {
+     "t": "¿Buscas un cateto? **Resta** y saca raíz:",
+     "f": "a = √(c² − b²)"
+    }
+   ],
+   "recuerdo": "La diagonal es el lado **más largo**, pero siempre es **más corta** que rodear en L.",
+   "atajo": "Ternas que salen mucho: **3-4-5 · 6-8-10 · 5-12-13**",
+   "respuesta_reto": "10 casillas (6² + 8² = 100 → √100)"
   }
  ]
 }

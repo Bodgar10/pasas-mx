@@ -8,7 +8,7 @@ import { parseArgs } from 'node:util';
 import { withBrowser, openPage } from './render.mjs';
 import { sendEmail } from './email.mjs';
 
-export const TIPOS = ['portada', 'idea', 'escena', 'mapa', 'reglas', 'ejemplo', 'lista', 'tematicas', 'reto', 'cierre'];
+export const TIPOS = ['portada', 'idea', 'escena', 'mapa', 'reglas', 'ejemplo', 'lista', 'tematicas', 'reto', 'cierre', 'chuleta'];
 
 export function validarCarrusel(d) {
   const e = [];
@@ -21,7 +21,14 @@ export function validarCarrusel(d) {
     if (/\?/.test(todo) && !/¿/.test(todo)) e.push(`lámina ${i + 1}: hay una pregunta sin "¿"`);
   });
   if (d.slides?.[0]?.tipo !== 'portada') e.push('la primera lámina debe ser la portada');
-  if (d.slides?.at(-1)?.tipo !== 'cierre') e.push('la última lámina debe ser el cierre');
+  const ultima = d.slides?.at(-1)?.tipo;
+  if (d.hobby) {
+    // Fórmula PASAS: la última lámina es la chuleta, la que vale la pena guardar
+    if (ultima !== 'chuleta') e.push('la última lámina debe ser la chuleta (lo que se guarda para el examen)');
+    const reto = d.slides?.find(s => s.tipo === 'reto');
+    if (reto && !d.slides.at(-1)?.respuesta_reto) e.push('la chuleta debe traer "respuesta_reto"');
+    if (d.slides?.[5]?.tipo !== 'mapa') e.push('la lámina 6 debe ser el reveal (tipo "mapa"): lo del hobby → su nombre real');
+  } else if (ultima !== 'cierre' && ultima !== 'chuleta') e.push('la última lámina debe ser el cierre o la chuleta');
   return e;
 }
 

@@ -51,32 +51,81 @@ carrusel y avísalo en el resumen para que se arregle en la base.
   les atribuya algo falso o polémico. Las situaciones son claramente
   imaginarias ("imagina que…", "en un concierto de…").
 
-## Estructura: primero el universo, al final lo real
+## La fórmula PASAS
 
-La regla de oro: **las primeras láminas viven 100% dentro del hobby**. Ahí no
-aparecen palabras de escuela (cateto, ecuación, tilde, criollos): se habla como
-se habla en el juego, la serie, el concierto o el partido, y aun así se entiende
-la idea completa. **Después** viene el puente ("eso que hiciste tiene nombre") y
-al final las reglas reales para guardar.
+**ENTRA POR EL HOBBY → ENTIENDE CON UNA HISTORIA → DESCUBRE EL CONCEPTO REAL → PRACTICA → LLÉVATE UNA CHULETA.**
+
+Cada carrusel tiene que dar **dos recompensas**:
+
+1. **"Ahora lo entendí"**: la primera mitad, 100% dentro del hobby.
+2. **"Esto me sirve después"**: la segunda mitad, contenido real que vale la pena
+   guardar y consultar una semana después.
+
+No pedimos "guárdalo": damos **una razón** para guardarlo. La última lámina es
+una chuleta que el alumno quiere tener el día del examen.
+
+Lo que nunca cambia: empezamos con una historia ("La trampa de los 28 sellos"),
+no con una definición ("¿Qué es una ecuación?"). La historia despierta "¿qué
+pasó?"; la definición se la salta cualquiera. No queremos ser una versión morada
+de las cuentas de "matemáticas básicas": tomamos de ellas lo práctico y
+guardable, y lo sumamos a lo nuestro: narrativa, analogías y mundos de interés.
+
+## Estructura: siempre 9 láminas
+
+**Láminas 1 a 5: el hobby al 100%.** Ahí no aparecen palabras de escuela
+(cateto, ecuación, tilde, criollos, x). Se habla como en el juego, la serie, el
+concierto o el partido, y el alumno resuelve el problema **sin sentir que lee
+una explicación de la escuela**. Las cuentas y los datos sí son los reales.
 
 1. `portada`: título del tema + "explicado con" + el hobby + un dibujo (svg).
-2. `escena` — **universo**: la situación, con sus nombres, números y un dibujo.
-   La etiqueta habla como el hobby ("Partida en curso", "Misión rango C",
-   "En el concierto", "El club").
-3. `escena` — **universo**: el problema o la decisión ("¿Rodeas o cortas?").
-4. `ejemplo` o `escena` — **universo**: cómo se resuelve dentro del hobby
-   ("El truco de los pros", "El plan de Shikamaru"), con las cuentas reales.
-5. `escena` — **universo**: el resultado y el momento wow ("Le ganaste a la tormenta").
-6. `mapa` "Ahora, en el examen": cada cosa del hobby → su nombre real, con la
-   fórmula o el concepto.
-7. `reglas` (y si hace falta `mapa` o `ejemplo`): la regla real para el examen.
-8. `reto`: una pregunta con 3 opciones, otra vez dentro del hobby.
-9. `cierre`: la respuesta explicada, "Guárdalo para tu examen" y pasas.mx.
+2. `escena` — la situación, con sus nombres, números y un dibujo. La etiqueta
+   habla como el hobby ("Partida en curso", "Misión rango C", "En el concierto", "El club").
+3. `escena` — el problema o la decisión ("¿Rodeas o cortas?", "¿Cuántos clones crea?").
+4. `ejemplo` o `escena` — cómo se resuelve dentro del hobby ("El truco de los
+   pros", "El plan de Shikamaru"), con las cuentas reales.
+5. `escena` — el resultado y el momento wow ("Le ganaste a la tormenta",
+   "6 clones, ni uno más").
 
-Formato completo en `data/carruseles/2026-10-pitagoras-fortnite.json` (y los
-otros tres de octubre 2026). Tipos de lámina: `portada`, `escena` (texto + svg),
-`mapa` (pares hobby → concepto), `ejemplo` (pasos), `reglas`, `lista`, `idea`,
-`tematicas`, `reto`, `cierre`.
+**Lámina 6: EL REVEAL.** `mapa` con etiqueta "El reveal" o "Ahora, en el
+examen": "Lo que acabas de resolver es esto". Cada cosa del hobby → su nombre
+real, y la fórmula o el concepto (`formula`). Es el momento "¡ah, era una ecuación!".
+
+**Lámina 7: LA REGLA GENERAL.** `reglas` (o `mapa` en historia): la regla que
+sirve para cualquier problema, no solo el del hobby ("Lo que le haces a un lado,
+se lo haces al otro", "¿Sumo o resto?").
+
+**Lámina 8: RETO.** `reto`: otro problema del mismo hobby, ahora **con menos
+ayuda** (sin pasos ni pistas), con 3 opciones. Pie: "La respuesta, en la última lámina →".
+
+**Lámina 9: CHULETA PARA EL EXAMEN.** `chuleta`, etiqueta "Acuérdate así en tu
+examen". Es la más importante para que lo guarden:
+
+- `titulo`: el nombre del tema, tal como viene en el examen.
+- `formula`: el caso modelo (opcional en temas sin fórmula).
+- `pasos`: de 3 a 4 pasos del procedimiento, en lenguaje de escuela, cada uno
+  con su cuenta (`f`) cuando aplique. Ejemplo:
+  ① Quita lo que está sumando → 4x = 28 − 4 ·
+  ② Deshaz lo que multiplica a x → x = 24 ÷ 4 ·
+  ③ Comprueba → 4(6) + 4 = 28 ✓.
+  En historia: las etapas con año y protagonista; en español: los pasos para decidir.
+- `recuerdo`: una frase que une la regla con la historia del hobby, para que el
+  recuerdo narrativo traiga la regla ("Los sellos que ya puso Naruto salen
+  primero. Después repartes los que quedan entre los clones.").
+- `atajo` (opcional): el dato extra que ahorra tiempo (ternas pitagóricas, causas).
+- `respuesta_reto`: la respuesta del reto de la lámina 8, con su cuenta.
+
+La lámina ya trae "📌 Guarda esta lámina para repasar" y pasas.mx al pie.
+Prueba de calidad: **si alguien solo viera la lámina 9 una semana después, ¿le
+serviría para resolver un ejercicio del examen?** Si no, rehazla.
+
+`src/carrusel.mjs` rechaza el carrusel si la lámina 6 no es el reveal (`mapa`),
+si la última no es la chuleta o si la chuleta no trae la respuesta del reto.
+
+Modelos: `data/carruseles/2026-10-ecuaciones-naruto.json` (el más claro),
+`2026-10-pitagoras-fortnite.json`, `2026-10-acentuacion-kpop.json` y
+`2026-10-independencia-futbol.json`. Tipos de lámina: `portada`, `escena`
+(texto + svg), `mapa` (pares hobby → concepto), `ejemplo` (pasos), `reglas`,
+`reto`, `chuleta` (y para otros formatos: `lista`, `idea`, `tematicas`, `cierre`).
 
 ### Dibujos (svg)
 
@@ -96,11 +145,12 @@ K-pop `#f472b6` 🎤 · Fútbol `#22c55e` ⚽.
 
 - Ortografía impecable con "¿" y acentos; tuteo; frases cortas.
 - Títulos de máximo 18 caracteres por línea (2 líneas).
-- Sin clickbait ni promesas de calificación. El cierre invita a guardar y menciona
-  pasas.mx una sola vez.
-- `post`: 3 o 4 líneas + hashtags (tema, materia, nivel, hobby, #pasasmx).
+- Sin clickbait ni promesas de calificación. pasas.mx aparece solo al pie de la chuleta.
+- `post`: 3 o 4 líneas + hashtags (tema, materia, nivel, hobby, #pasasmx). Que
+  diga que la última lámina es la chuleta para guardar.
 
 ## Revisar antes de subir
 
-Genera los PNG, míralos todos: nada cortado ni encimado, cuentas correctas,
-la respuesta del reto aparece en el cierre. Luego commit del JSON a `main`.
+Genera los PNG, míralos todos: nada cortado ni encimado, cuentas correctas, las
+láminas 1 a 5 sin palabras de escuela, la chuleta legible y útil por sí sola, y
+la respuesta del reto en la chuleta. Luego commit del JSON a `main`.
