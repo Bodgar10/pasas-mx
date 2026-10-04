@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Reel "con hobby" (20-25 s): una microhistoria con UN momento de revelación.
+   No enseña todas las reglas (eso es el carrusel): provoca "espera… ¿eso era una
+   ecuación?" y manda al carrusel del día.
+   Motor de "conteo": total de objetos, los que ya están, cuántos aporta cada
+   unidad → los objetos se llenan, el contador baja, las unidades aparecen una a
+   una y al final todo se convierte en la ecuación  a·x + b = total. */
+.frame{background:radial-gradient(90% 55% at 50% 42%, color-mix(in srgb, var(--c) 22%, transparent), transparent 65%),
+  radial-gradient(110% 60% at 0% 100%, rgba(124,58,237,.38), transparent 60%), #0f0a1e}
+.lines i{position:absolute;left:50%;top:42%;height:3px;width:46%;transform-origin:0 50%;background:linear-gradient(90deg,transparent,var(--c));opacity:.0}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--c);z-index:20;pointer-events:none;box-shadow:0 0 2.4cqw var(--c), inset 0 0 2.4cqw var(--c)}
+.brand{position:absolute;left:0;right:0;top:6cqw;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em;z-index:9}
+.brand span{color:var(--pink)}
+.hob{position:absolute;left:0;right:0;top:13cqw;text-align:center;font-size:4.2cqw;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+
+.cap{position:absolute;left:7cqw;right:7cqw;top:20cqw;text-align:center;opacity:0;z-index:5}
+.cap span{display:block;font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;white-space:nowrap;
+  -webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5);font-size:11cqw;color:#fff}
+.cap span.k{color:var(--c);font-size:17cqw}
+.cap span.s{font-size:7.4cqw}
+
+/* Tablero de objetos */
+#grid{position:absolute;left:50%;top:780px;transform:translateX(-50%);display:grid;gap:14px;z-index:4}
+.slot{width:104px;height:120px;border-radius:14px;border:4px dashed color-mix(in srgb, var(--c) 70%, transparent);display:grid;place-items:center;position:relative}
+.slot .it{position:absolute;inset:-4px;border-radius:14px;background:#fde68a;display:grid;place-items:center;opacity:0;box-shadow:0 0 18px rgba(253,230,138,.5)}
+.slot .it svg{width:70%;height:70%}
+.slot .it.mine{background:#fdba74}
+/* Contador y unidades */
+#count{position:absolute;left:0;right:0;top:1330px;text-align:center;z-index:4}
+#count small{display:block;font-size:4.6cqw;font-weight:900;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+#count b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:var(--c);text-shadow:0 0 4cqw var(--c)}
+#units{position:absolute;left:50%;top:1580px;transform:translateX(-50%);display:flex;gap:18px;z-index:4}
+.unit{width:110px;height:110px;border-radius:50%;border:5px solid var(--c);background:color-mix(in srgb, var(--c) 20%, #0f0a1e);display:grid;place-items:center;
+  font-family:var(--font-title);font-weight:900;font-size:5cqw;color:var(--c);opacity:0}
+.unit.me{border-style:solid;background:var(--c);color:var(--bg)}
+#nclones{position:absolute;left:0;right:0;top:20cqw;text-align:center;font-family:var(--font-title);font-weight:900;font-size:9cqw;text-transform:uppercase;color:#fff;opacity:0;z-index:5;
+  -webkit-text-stroke:1cqw var(--bg);paint-order:stroke fill}
+#nclones b{display:block;color:var(--c);font-size:24cqw;line-height:1}
+/* Pregunta: anillo de tiempo para pensar */
+#think{position:absolute;left:50%;top:1300px;width:220px;height:220px;margin-left:-110px;opacity:0;z-index:6}
+#think svg{width:100%;height:100%;transform:rotate(-90deg)}
+#think b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:12cqw;color:var(--c)}
+
+/* Revelación */
+#eq{position:absolute;left:0;right:0;top:860px;text-align:center;z-index:6;opacity:0}
+#eq .row{display:flex;justify-content:center;align-items:flex-start;gap:10px}
+#eq .term{display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0}
+#eq .term b{font-family:var(--font-title);font-weight:900;font-size:15cqw;line-height:1;color:#fff;-webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill}
+#eq .term.x b{color:var(--c)}
+#eq .term small{font-size:3.6cqw;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;text-align:center;width:230px;line-height:1.2}
+#eq .term.op small{display:none}
+#eq .op b{color:var(--muted)}
+#sol{position:absolute;left:0;right:0;top:1300px;text-align:center;z-index:6;opacity:0}
+#sol b{display:inline-block;font-family:var(--font-title);font-weight:900;font-size:20cqw;color:var(--bg);background:var(--c);border-radius:5cqw;padding:1cqw 7cqw;box-shadow:0 0 6cqw var(--c)}
+#sol small{display:block;margin-top:3cqw;font-size:7cqw;font-weight:900;color:#fff}
+
+/* Cierre */
+#cta{position:absolute;left:7cqw;right:7cqw;top:27cqw;text-align:center;z-index:7;opacity:0}
+#cta .q span{display:block;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:10cqw;line-height:1.04;color:#fff;white-space:nowrap;-webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill}
+#cta .q span + span{color:var(--c)}
+#cta .card{margin:6cqw auto 0;max-width:86cqw;background:rgba(26,16,53,.92);border:.5cqw solid var(--c);border-radius:5cqw;padding:5cqw;display:flex;flex-direction:column;gap:2cqw}
+#cta .card b{font-size:6.4cqw;font-weight:900}
+#cta .card span{font-size:5cqw;font-weight:800;color:var(--muted)}
+#cta .url{display:inline-block;margin-top:5cqw;font-family:var(--font-brand);font-weight:700;font-size:6cqw;background:var(--brand);color:#fff;padding:2.6cqw 6cqw;border-radius:4cqw}
+.pasita{position:absolute;left:50%;transform-origin:50% 100%;opacity:0;z-index:7}
+</style></head>
+<body>
+<div class="frame" id="frame">
+  <div class="lines" id="lines"></div>
+  <div class="neon"></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+  <div class="hob" id="hob"></div>
+
+  <div class="cap" id="c1"></div><div class="cap" id="c2"></div><div class="cap" id="c3"></div><div class="cap" id="c4"></div>
+  <div class="cap" id="c5"></div><div class="cap" id="c6"></div><div class="cap" id="c7"></div>
+
+  <div id="grid"></div>
+  <div id="count"><small id="count-l"></small><b id="count-n"></b></div>
+  <div id="nclones"></div>
+  <div id="units"></div>
+  <div id="think"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#2D2048" stroke-width="4"/><circle id="think-bar" cx="20" cy="20" r="16" fill="none" stroke="var(--c)" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="0"/></svg><b id="think-n">3</b></div>
+
+  <div id="eq"><div class="row" id="eq-row"></div></div>
+  <div id="sol"><b id="sol-x"></b><small id="sol-t"></small></div>
+
+  <div id="cta"><div class="q" id="cta-q"></div><div class="card"><b id="cta-b"></b><span id="cta-s"></span></div><div class="url">pasas.mx</div></div>
+  <div class="pasita" id="p-end"></div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script>
+var D, T, N, UNITS;
+var SELLO = '<svg viewBox="0 0 40 50"><path d="M8 12 h24 M8 22 h24 M8 32 h16" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/></svg>';
+function capHTML(lines) {
+  return lines.map(function (l) { var k = typeof l === 'string' ? '' : l[1]; var t = typeof l === 'string' ? l : l[0]; return '<span class="' + k + '">' + esc(t) + '</span>'; }).join('');
+}
+window.setup = function (data) {
+  D = data; var fr = $('frame'); fr.style.setProperty('--c', data.color);
+  $('hob').textContent = data.hobby;
+  N = data.total; UNITS = (data.total - data.inicial) / data.por_unidad;
+  // Líneas de velocidad (estilo anime), sutiles
+  var l = ''; for (var i = 0; i < 18; i++) l += '<i data-i="' + i + '" style="transform:rotate(' + (i * 20) + 'deg)"></i>'; $('lines').innerHTML = l;
+  // Tablero
+  var cols = data.columnas || 7;
+  $('grid').style.gridTemplateColumns = 'repeat(' + cols + ', 104px)';
+  var g = ''; for (var k = 0; k < N; k++) g += '<div class="slot"><div class="it' + (k < data.inicial ? ' mine' : '') + '" id="it' + k + '">' + (data.icono || SELLO) + '</div></div>';
+  $('grid').innerHTML = g;
+  $('count-l').textContent = data.faltan_label;   // "Faltan sellos"
+  // Unidades (clones): la primera la "propia" (quien ya puso) no cuenta
+  var u = ''; for (var j = 0; j < UNITS; j++) u += '<div class="unit" id="u' + j + '">' + (j + 1) + '</div>'; $('units').innerHTML = u;
+  // Textos
+  var t = data.textos;
+  ['c1','c2','c3','c4','c5','c6','c7'].forEach(function (id, i) { $(id).innerHTML = capHTML(t[i] || []); });
+  [].slice.call(document.querySelectorAll('.cap')).forEach(function (c) {
+    c.querySelectorAll('span').forEach(function (s) { fitLines([s], 1080 - 2 * 76); });
+  });
+  // Ecuación: términos con su etiqueta del hobby
+  $('eq-row').innerHTML = data.ecuacion.map(function (e) {
+    return '<div class="term ' + (e.cls || '') + '"><b>' + esc(e.t) + '</b>' + (e.l ? '<small>' + esc(e.l) + '</small>' : '') + '</div>';
+  }).join('');
+  $('sol-x').textContent = data.solucion; $('sol-t').textContent = data.solucion_texto;
+  $('cta-q').innerHTML = capHTML(data.cta.pregunta); $('cta-b').textContent = data.cta.linea; $('cta-s').textContent = data.cta.sub;
+  fitLines([].slice.call(document.querySelectorAll('#cta .q span')), 1080 - 2 * 76);
+  buildPasita($('p-end'), 'celebrando', 300); $('p-end').style.width = '300px'; $('p-end').style.marginLeft = '-150px';
+  $('p-end').style.top = (1570 - 300 * PASITA_VB.h / PASITA_VB.w) + 'px';
+  // Tiempos (s)
+  T = { c1: [0, 3.2], c2: [3.2, 5.8], c3: [5.8, 8.6], c4: [8.6, 11.4], c5: [11.4, 15.6], c6: [15.6, 19], c7: [19, 22.2], cta: [22.2, 26] };
+  T.mine = 3.5; T.unit1 = 6.3; T.units = 11.6; T.uStep = 0.68;
+  window.ready = pasitaReady();
+  window.render(0);
+  return T.cta[1];
+};
+window.momentos = function () { return [1.6, 4.6, 7.6, 10, 14.2, 17.8, 21, 24.5]; };
+
+// ¿Cuándo se llena cada objeto? los propios primero, luego de a "por_unidad" por clon
+function fillTime(k) {
+  if (k < D.inicial) return T.mine + k * 0.22;
+  var u = Math.floor((k - D.inicial) / D.por_unidad), j = (k - D.inicial) % D.por_unidad;
+  var t0 = u === 0 ? T.unit1 + 0.35 : T.units + (u - 1) * T.uStep + 0.2;
+  return t0 + j * (u === 0 ? 0.22 : 0.09);
+}
+function unitTime(u) { return u === 0 ? T.unit1 : T.units + (u - 1) * T.uStep; }
+
+window.render = function (t) {
+  ['c1','c2','c3','c4','c5','c6','c7'].forEach(function (id) {
+    var a = win(t, T[id][0], T[id][1], id !== 'c1', true);
+    show($(id), a);
+    $(id).querySelectorAll('span').forEach(function (s, i) { var q = clamp((t - T[id][0] - 0.05 - i * 0.22) / 0.3); s.style.opacity = q; s.style.transform = 'scale(' + (0.86 + 0.14 * back(q)) + ')'; });
+  });
+  // Tablero y contador (hasta la revelación)
+  var board = win(t, 0.3, T.c6[0] + 0.5, true, true);
+  $('grid').style.opacity = board; $('count').style.opacity = t < T.c4[0] || t >= T.c4[1] ? board : 0;
+  var filled = 0;
+  for (var k = 0; k < N; k++) {
+    var q = clamp((t - fillTime(k)) / 0.18), it = $('it' + k);
+    it.style.opacity = q; it.style.transform = 'scale(' + (0.5 + 0.5 * back(q)) + ')';
+    if (t >= fillTime(k)) filled++;
+  }
+  $('count-n').textContent = N - filled;
+  // Clones
+  $('units').style.opacity = board;
+  for (var u = 0; u < UNITS; u++) {
+    var qu = clamp((t - unitTime(u)) / 0.25), el = $('u' + u);
+    el.style.opacity = qu; el.style.transform = 'scale(' + (0.4 + 0.6 * back(qu)) + ')';
+  }
+  var shown = 0; for (var v = 0; v < UNITS; v++) if (t >= unitTime(v)) shown++;
+  $('nclones').innerHTML = D.unidad_label + '<b>' + shown + '</b>';
+  var nc = win(t, T.c5[0], T.c5[1], true, true); $('nclones').style.opacity = nc;
+  var lastU = unitTime(Math.max(0, shown - 1)), qn = clamp((t - lastU) / 0.25);
+  $('nclones').querySelector('b').style.transform = 'scale(' + (0.8 + 0.2 * back(qn)) + ')';
+  // Pausa para pensar
+  var th = win(t, T.c4[0] + 0.3, T.c4[1], true, true), left = Math.max(0, T.c4[1] - 0.2 - t), span = T.c4[1] - 0.5 - T.c4[0];
+  $('think').style.opacity = th; $('think-n').textContent = Math.max(1, Math.ceil(left));
+  $('think-bar').setAttribute('stroke-dashoffset', (100.5 * (1 - clamp(left / span))).toFixed(1));
+  document.querySelectorAll('.slot').forEach(function (s, i) {
+    s.style.transform = th > 0 && i >= filled ? 'scale(' + (1 + 0.05 * Math.sin(t * 8 + i)) + ')' : '';
+  });
+  // Revelación: la ecuación se arma término por término
+  var e = win(t, T.c6[0] + 0.6, T.cta[0], true, true);
+  $('eq').style.opacity = e;
+  document.querySelectorAll('#eq .term').forEach(function (el, i) { pop(el, t, T.c6[0] + 0.8 + i * 0.32, 0.3); });
+  var so = win(t, T.c7[0] + 0.3, T.cta[0], true, true);
+  $('sol').style.opacity = so; $('sol').style.transform = 'scale(' + (0.8 + 0.2 * back(clamp((t - T.c7[0] - 0.3) / 0.35))) + ')';
+  // Cierre
+  var c = win(t, T.cta[0], T.cta[1] + 1, true, false);
+  show($('cta'), c); $('p-end').style.opacity = c;
+  var jj = clamp((t - T.cta[0] - 0.4) / 0.5); $('p-end').style.transform = 'translateY(' + (-Math.sin(jj * Math.PI) * (1 - jj) * 70) + 'px)';
+  // Líneas de velocidad: pulsan en los momentos clave (pregunta y revelación)
+  var hit = Math.max(win(t, T.c4[0], T.c4[0] + 0.8, true, true), win(t, T.c6[0] + 0.6, T.c6[0] + 1.6, true, true), win(t, T.c7[0] + 0.3, T.c7[0] + 1.2, true, true));
+  document.querySelectorAll('#lines i').forEach(function (x, i) { x.style.opacity = hit * (0.25 + 0.25 * Math.abs(Math.sin(t * 9 + i))); });
+  blinkAll(t);
+};
+</script>
+</body></html>
