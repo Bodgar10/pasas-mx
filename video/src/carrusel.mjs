@@ -45,18 +45,11 @@ export async function renderCarrusel(browser, d, dir) {
   const arte = path.join(ARTE, slugCarrusel(d));
   d = { ...d, slides: d.slides.map((s, i) => {
     const f = path.join(arte, `${String(i + 1).padStart(2, '0')}.jpg`);
-    if (!existsSync(f)) return s;
-    // Lámina completa hecha por OpenAI (con sus textos): va tal cual
-    if ((d.arte?.modo || 'completa') === 'completa') return { ...s, lamina_img: `../arte/${slugCarrusel(d)}/${path.basename(f)}` };
-    return { ...s, fondo_img: `../arte/${slugCarrusel(d)}/${path.basename(f)}` };
+    return existsSync(f) ? { ...s, fondo_img: `../arte/${slugCarrusel(d)}/${path.basename(f)}` } : s;
   }) };
   for (let i = 0; i < d.slides.length; i++) {
     const page = await openPage(browser, 'carrusel.html', { width: 1080, height: 1350 });
     await page.evaluate(([x, k]) => window.setup(x, k), [d, i]);
-    if (d.slides[i].lamina_img) await page.evaluate(src => new Promise(ok => {
-      document.body.innerHTML = '<img id="L" style="position:fixed;inset:0;width:1080px;height:1350px;object-fit:cover">';
-      const im = document.getElementById('L'); im.onload = im.onerror = ok; im.src = src;
-    }), d.slides[i].lamina_img);
     await page.evaluate(() => window.ready || null);
     const f = path.join(dir, `${String(i + 1).padStart(2, '0')}.png`);
     await page.screenshot({ path: f, type: 'png' });
