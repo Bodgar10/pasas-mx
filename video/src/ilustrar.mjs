@@ -77,7 +77,8 @@ async function llamarOpenAI(prompt) {
   const body = await res.json().catch(() => ({}));
   if (!res.ok) {
     const e = new Error(`OpenAI ${res.status}: ${body?.error?.message || JSON.stringify(body).slice(0, 300)}`);
-    e.reintentable = res.status === 429 || res.status >= 500;
+    // 429 por saldo agotado no se arregla reintentando; 429 por límite de velocidad sí
+    e.reintentable = (res.status === 429 && body?.error?.code !== 'insufficient_quota' && !/credits|quota|billing/i.test(body?.error?.message || '')) || res.status >= 500;
     throw e;
   }
   const b64 = body?.data?.[0]?.b64_json;
