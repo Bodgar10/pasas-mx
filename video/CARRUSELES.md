@@ -229,3 +229,39 @@ K-pop `#f472b6` 🎤 · Fútbol `#22c55e` ⚽.
 Genera los PNG, míralos todos: nada cortado ni encimado, cuentas correctas, las
 láminas 1 a 5 sin palabras de escuela, la chuleta legible y útil por sí sola, y
 la respuesta del reto en la chuleta. Luego commit del JSON a `main`.
+
+## Reel del mismo tema (va en el mismo correo)
+
+**Reel = me descubre. Carrusel = me enseña y lo guardo.** El reel (20-30 s) cuenta la
+microhistoria del carrusel con UN momento de revelación ("¿eso era una ecuación?") y
+manda al carrusel del día. No enseña todas las reglas.
+
+Se define en el mismo JSON, en `"reel"` (modelo: `2026-10-mrua-pasita-piloto.json`):
+
+```jsonc
+"reel": {
+  "post": "texto para publicar el reel",
+  "portada": { "titulo": [["¿Qué tan rápido",""],["va a los",""],["6 segundos?","k"]], "sub": "Física explicada con **carreras de karts**", "fondo": 3 },
+  "escenas": [   // 7 u 8 escenas, 25-30 s en total
+    { "tipo": "texto",    "dur": 3.0, "lineas": [["La Pasita arranca","s"],["desde cero","k"]], "arte": { "escena": { … como en las láminas … } } },
+    { "tipo": "contador", "dur": 4.4, "lineas": […], "contador": { "etiquetas": ["Segundo 1","Segundo 2","Segundo 3"], "valores": ["4 m/s","8 m/s","12 m/s"] }, "arte": { … } },
+    { "tipo": "pregunta", "dur": 3.4, "lineas": [["¿Qué tan rápido va","s"],["a los 6 segundos?","k"]], "arte": { … } },
+    { "tipo": "texto",    "dur": 2.4, "lineas": [["Parece un juego…","s"],["pero es física","k"]], "arte": { … } },
+    { "tipo": "formula",  "dur": 5.0, "fondo_de": 4, "lineas": […], "formula": { "terminos": [{ "t": "vf", "cls": "k", "l": "lo que marca el velocímetro" }, { "t": "=", "cls": "op" }, …], "resultado": "0 + 4 × 6 = 24 m/s", "resultado_texto": "Eso es un MRUA" } },
+    { "tipo": "cta",      "dur": 3.6, "lineas": [["¿Quieres el","s"],["acordeón?","k"]], "cta": { "linea": "El paso a paso para tu examen está en el **carrusel de hoy**", "sub": "Guárdalo y practica" }, "arte": { … } }
+  ]
+}
+```
+
+- Arco fijo: situación del hobby → el dato que cambia (contador) → pregunta con 3 s
+  para pensar → la respuesta → "parece X… pero es [materia]" → la fórmula o el
+  concepto armándose → cierre al carrusel.
+- Cada escena con `arte.escena` lleva un fondo de OpenAI **sin texto** (9:16); el texto,
+  el contador, el anillo y la fórmula los anima `templates/reel-ilustrado.html`.
+  `fondo_de` reutiliza el fondo de otra escena (índice desde 0).
+- Líneas cortas: `s` = línea chica, `k` = línea grande en el color de acento. Valores
+  del contador cortos (máx. ~12 caracteres).
+- Portada: `templates/portada-reel.html` con el gancho grande sobre el fondo
+  `portada.fondo`. Va sin clickbait: una pregunta real del reel.
+- Envíos ya hechos: `data/programados.json` (fecha → JSON) los manda al equipo a las
+  ~6:17 am sin volver a llamar a OpenAI.
