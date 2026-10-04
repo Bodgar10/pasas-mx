@@ -91,7 +91,9 @@ TEXT ZONE (keep calm, no key elements): ${ZONAS[zonaDe(s)] || ZONAS.arriba}.`.tr
 
 // ─── Modo "completa": OpenAI dibuja la lámina entera, con sus textos ───
 // El texto se le da EXACTO, lámina por lámina; ** marca lo que va resaltado en color.
-const limpio = t => String(t || '').replace(/\*\*(.+?)\*\*/g, '«$1»');
+// Sin marcas en el texto (OpenAI las dibujaba tal cual); lo resaltado va en una lista aparte
+const limpio = t => String(t || '').replace(/\*\*(.+?)\*\*/g, '$1');
+const resaltados = s => [...JSON.stringify(s).matchAll(/\*\*(.+?)\*\*/g)].map(m => m[1].replace(/\\"/g, '"'));
 export function textosDe(d, s, i) {
   const L = [];
   const add = (k, v) => { if (v) L.push(`${k}: ${limpio(v)}`); };
@@ -153,7 +155,7 @@ Same character on every slide — identical body shape, color, face, eyes, eyebr
 TEXT RULES (very important):
 - Write ONLY the texts listed below, in Spanish, EXACTLY as written, with all accents (á é í ó ú ñ ¿ ¡). Do not add,
   translate, shorten or invent any other words, numbers or labels.
-- Text between « » is highlighted in the accent color (do not draw the « » marks).
+- Words listed under HIGHLIGHT go in the accent color. Never draw quotation marks, guillemets or asterisks that are not in the text.
 - Every word perfectly spelled and fully legible on a phone screen.
 - No other logos, no watermarks, no real brands, no existing copyrighted characters or real people, no franchise
   symbols (use abstract symbols).`.trim();
@@ -173,7 +175,7 @@ ${escena}
 TEXTS TO WRITE (and nothing else):
 PASAS.MX
 ${i + 1}/${d.slides.length}
-${textosDe(d, s, i)}`.trim();
+${textosDe(d, s, i)}${resaltados({ ...s, arte: undefined, svg: undefined }).length ? `\n\nHIGHLIGHT (accent color): ${[...new Set(resaltados({ ...s, arte: undefined, svg: undefined }))].join(' · ')}` : ''}`.trim();
 }
 
 const hash = s => createHash('sha256').update(s).digest('hex').slice(0, 16);
