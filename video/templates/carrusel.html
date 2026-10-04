@@ -88,7 +88,12 @@
 /* Con ilustración de OpenAI: la escena de fondo y el texto exacto encima */
 .arte{position:absolute;inset:0;background-size:cover;background-position:center}
 .velo{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.9) 0%, rgba(15,10,30,.78) 38%, rgba(15,10,30,.22) 66%, rgba(15,10,30,.05) 82%, rgba(15,10,30,.4) 100%)}
-.frame.denso .velo{background:linear-gradient(180deg, rgba(15,10,30,.9) 0%, rgba(15,10,30,.8) 60%, rgba(15,10,30,.55) 100%)}
+.frame.denso .velo{background:linear-gradient(180deg, rgba(15,10,30,.88) 0%, rgba(15,10,30,.62) 32%, rgba(15,10,30,.28) 100%)}
+/* En láminas de texto, los recuadros llevan su propio fondo y dejan ver la ilustración alrededor */
+.frame.denso .box, .frame.denso .opts div, .frame.denso .mapa .l, .frame.denso .chu-f, .frame.denso .regla{background:rgba(15,10,30,.86);backdrop-filter:blur(3px)}
+.frame.denso .recuerdo{background:rgba(40,22,10,.9);backdrop-filter:blur(3px)}
+.frame.denso .chu-foot{background:rgba(15,10,30,.82);border-radius:3cqw;padding:2cqw 3cqw;margin-left:-3cqw;margin-right:-3cqw}
+.frame.denso .mapa .r{background:rgba(40,28,8,.88);backdrop-filter:blur(3px)}
 .frame.con-arte .p, .frame.con-arte .foot, .frame.con-arte .hob small, .frame.con-arte .hob em{text-shadow:0 .3cqw 1.2cqw rgba(0,0,0,.95), 0 0 .4cqw rgba(0,0,0,.9)}
 .frame.con-arte .stars{display:none}
 </style></head>
