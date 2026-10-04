@@ -117,35 +117,45 @@ export function textosDe(d, s, i) {
 }
 
 const ESTILO_COMPLETA = `
-Create ONE finished slide of an Instagram educational carousel for PASAS.MX (Mexican learning platform for teens),
-in EXACTLY the same art direction and layout language as the attached example sheet (the 3×3 grid of slides):
-dark night scene with purple/indigo palette and warm lantern lights, thick-outline polished cartoon illustration,
-rounded neon purple frame around the whole slide, "PASAS.MX" wordmark top-left in white geometric font,
-small rounded counter pill top-right showing the slide number, small orange rounded tag pill, very big bold rounded
-sans-serif title in white with the second line in orange-yellow, readable body text in white, information panels as
-dark rounded boxes with thin neon borders, numbered orange circles for steps. Text sits on the left/top, the
-character and scene fill the rest, like the example.
+Create ONE finished slide of an Instagram educational carousel for PASAS.MX (a Mexican learning platform for teens 13-18).
+Match the art direction, text styling and creative freedom of the attached EXAMPLE SHEET (the 3×3 grid of finished slides):
+polished cinematic 2D cartoon illustration, thick confident outlines, rich color, depth (foreground, midground,
+background), lighting integrated in the set, atmosphere (smoke, particles, glow). Use the example for principles of
+composition, text styling and density, not to copy its exact scenes.
 
-CHARACTER: the protagonist is "la Pasita", the PASAS.MX mascot (the purple raisin in the other reference images:
-purple wrinkled raisin body, big white cartoon eyes, thick eyebrows, thin arms and legs, white sneakers with purple and
-yellow). Same character on every slide. She may wear costume accessories of the universe.
+LAYOUT AND TEXT DESIGN (creative freedom, like the example):
+- Rounded neon frame around the whole slide in the ACCENT COLOR given below (not pink/fuchsia unless that is the accent).
+- "PASAS.MX" wordmark small in the top-left corner (white, geometric) and a small rounded counter pill top-right.
+- Place the texts wherever the composition works best for THIS slide (left column, top, beside the character, inside
+  rounded panels, on a scroll, in a speech bubble, as a badge). Vary placement between slides. Big bold rounded
+  sans-serif titles (white, with the second line or key words in the accent color), short readable body text, small
+  orange tag pills, dark rounded info panels with thin neon borders, numbered circles for steps, letter badges for options.
+- You MAY integrate a key number or phrase from the texts into the scene (e.g. painted on a giant door or a scroll)
+  as long as it is written exactly as listed.
+
+CHARACTER: the protagonist is "la Pasita", the PASAS.MX mascot (the purple raisin in the reference images: wrinkled
+purple raisin body, big white cartoon eyes, thick eyebrows, thin arms and legs, white sneakers with purple and yellow).
+Same character on every slide, varying pose, scale and position. She may wear costume accessories of the universe.
 
 TEXT RULES (very important):
 - Write ONLY the texts listed below, in Spanish, EXACTLY as written, with all accents (á é í ó ú ñ ¿ ¡). Do not add,
-  translate, shorten or invent any other words, numbers or labels anywhere in the image.
-- Text between « » must be highlighted in orange-yellow (do not draw the « » marks).
-- Every word must be perfectly spelled and fully legible; large enough to read on a phone.
+  translate, shorten or invent any other words, numbers or labels.
+- Text between « » is highlighted in the accent color (do not draw the « » marks).
+- Every word perfectly spelled and fully legible on a phone screen.
 - No other logos, no watermarks, no real brands, no existing copyrighted characters or real people, no franchise
-  symbols (use abstract swirl symbols on talismans).`.trim();
+  symbols (use abstract symbols).`.trim();
 
 export function promptCompleta(d, s, i) {
+  const e = s.arte.escena;
+  const escena = typeof e === 'string' ? `SCENE: ${e}${s.arte.pose ? `\nPasita pose/expression: ${s.arte.pose}.` : ''}`
+    : CAMPOS.filter(([k]) => e[k]).map(([k, n]) => `${n}: ${e[k]}`).join('\n');
   return `${ESTILO_COMPLETA}
 
+ACCENT COLOR OF THIS CAROUSEL: ${d.hobby?.color || '#7c3aed'}
 UNIVERSE: ${d.arte?.universo || ''}
 
 THIS IS SLIDE ${i + 1} OF ${d.slides.length} (counter pill shows "${i + 1}/${d.slides.length}").
-SCENE: ${s.arte.escena}
-${s.arte.pose ? `Pasita pose/expression: ${s.arte.pose}.` : ''}
+${escena}
 
 TEXTS TO WRITE (and nothing else):
 PASAS.MX
