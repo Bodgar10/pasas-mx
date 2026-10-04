@@ -85,7 +85,7 @@ En el JSON:
   `estado.json`; si una falla, el correo lo dice y se rehace con "solo" en el
   workflow sin pagar las demás. Modelo y calidad: variables de GitHub
   `OPENAI_IMAGE_MODEL` (por defecto `gpt-image-2`) y `OPENAI_IMAGE_QUALITY`
-  (por defecto `high`).
+  (por defecto `medium`; `high` si se quiere más detalle).
 
 ## La fórmula PASAS
 

@@ -20,7 +20,7 @@ const VIDEO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const ARTE = path.join(VIDEO, 'arte');
 const REFS = ['pasita-confiada.png', 'pasita-pensativa.png', 'pasita-celebrando.png'].map(f => path.join(ARTE, 'referencias', f));
 const MODEL = process.env.OPENAI_IMAGE_MODEL || 'gpt-image-2';
-const QUALITY = process.env.OPENAI_IMAGE_QUALITY || 'high';
+const QUALITY = process.env.OPENAI_IMAGE_QUALITY || 'medium';
 
 export function slugCarrusel(d) {
   return (d.nombre || d.slides[0].titulo.join(' ')).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
