@@ -53,7 +53,9 @@ carrusel y avísalo en el resumen para que se arregle en la base.
 
 ## La fórmula PASAS
 
-**ENTRA POR EL HOBBY → ENTIENDE CON UNA HISTORIA → DESCUBRE EL CONCEPTO REAL → PRACTICA → LLÉVATE UNA CHULETA.**
+**ENTRA POR EL HOBBY → ENTIENDE CON UNA HISTORIA → DESCUBRE EL CONCEPTO REAL → PRACTICA → LLÉVATE TU ACORDEÓN.**
+
+> En el código la última lámina se llama `chuleta`, pero **en todo texto que vea el público se dice "acordeón"** (así se le dice en México). Nunca escribas "chuleta" en láminas, posts ni reels.
 
 Cada carrusel tiene que dar **dos recompensas**:
 
@@ -62,7 +64,7 @@ Cada carrusel tiene que dar **dos recompensas**:
    guardar y consultar una semana después.
 
 No pedimos "guárdalo": damos **una razón** para guardarlo. La última lámina es
-una chuleta que el alumno quiere tener el día del examen.
+un acordeón que el alumno quiere tener el día del examen.
 
 Lo que nunca cambia: empezamos con una historia ("La trampa de los 28 sellos"),
 no con una definición ("¿Qué es una ecuación?"). La historia despierta "¿qué
@@ -147,7 +149,7 @@ K-pop `#f472b6` 🎤 · Fútbol `#22c55e` ⚽.
 - Títulos de máximo 18 caracteres por línea (2 líneas).
 - Sin clickbait ni promesas de calificación. pasas.mx aparece solo al pie de la chuleta.
 - `post`: 3 o 4 líneas + hashtags (tema, materia, nivel, hobby, #pasasmx). Que
-  diga que la última lámina es la chuleta para guardar.
+  diga que la última lámina es su acordeón para guardar.
 
 ## Revisar antes de subir
 
