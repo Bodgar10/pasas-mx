@@ -24,16 +24,16 @@
 .cap span.s{font-size:7.2cqw}
 
 /* Contador: una pastilla que va cambiando de valor */
-.cont{position:absolute;left:50%;top:860px;transform:translateX(-50%);z-index:6;opacity:0;display:flex;flex-direction:column;align-items:center;gap:1.6cqw}
+.cont{position:absolute;left:50%;top:560px;transform:translateX(-50%);z-index:6;opacity:0;display:flex;flex-direction:column;align-items:center;gap:1.6cqw}
 .cont .lab{font-size:5.4cqw;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.04em;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
-.cont .val{font-family:var(--font-title);font-weight:900;font-size:19cqw;line-height:1;color:var(--c);background:rgba(15,10,30,.82);border:.6cqw solid var(--c);
+.cont .val{max-width:none;font-family:var(--font-title);font-weight:900;font-size:19cqw;line-height:1;color:var(--c);background:rgba(15,10,30,.82);border:.6cqw solid var(--c);
   border-radius:6cqw;padding:2cqw 7cqw;box-shadow:0 0 5cqw var(--c);white-space:nowrap}
 .cont .dots{display:flex;gap:2cqw}
 .cont .dots i{width:3.4cqw;height:3.4cqw;border-radius:50%;background:rgba(255,255,255,.25);border:.4cqw solid #fff}
 .cont .dots i.on{background:var(--c);box-shadow:0 0 2cqw var(--c)}
 
 /* Pregunta: anillo de tiempo para pensar */
-.ring{position:absolute;left:50%;top:880px;width:240px;height:240px;margin-left:-120px;z-index:6;opacity:0}
+.ring{position:absolute;left:50%;top:570px;width:210px;height:210px;margin-left:-105px;z-index:6;opacity:0}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
 .ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:13cqw;color:var(--c);text-shadow:0 0 3cqw var(--c)}
 .ring .disc{position:absolute;inset:14px;border-radius:50%;background:rgba(15,10,30,.75)}
@@ -100,7 +100,18 @@ window.setup = function (data) {
     return h;
   }).join('');
   document.querySelectorAll('.cap').forEach(function (c) { c.querySelectorAll('span').forEach(function (s) { fitLines([s], 1080 - 2 * 76); }); });
-  document.querySelectorAll('.form .row').forEach(function (r) { var w = r.scrollWidth; if (w > 1000) r.style.zoom = 1000 / w; });
+  // Fórmula: si no cabe, se achican los términos (no las etiquetas)
+  document.querySelectorAll('.form .row').forEach(function (r) {
+    var bs = [].slice.call(r.querySelectorAll('.term b')), f = parseFloat(getComputedStyle(bs[0]).fontSize);
+    for (var k = 0; k < 30 && r.scrollWidth > 1000; k++) { f *= 0.94; bs.forEach(function (b) { b.style.fontSize = f + 'px'; }); }
+  });
+  // Contador: el valor más largo define el tamaño de todos
+  E.forEach(function (e, i) {
+    if (e.tipo !== 'contador') return;
+    var v = $('cv' + i), f = parseFloat(getComputedStyle(v).fontSize), largo = e.contador.valores.reduce(function (a, b) { return b.length > a.length ? b : a; }, '');
+    v.textContent = largo;
+    for (var k = 0; k < 30 && v.getBoundingClientRect().width > 900; k++) { f *= 0.94; v.style.fontSize = f + 'px'; }
+  });
   // El resultado nunca se sale del cuadro: se achica hasta caber en 920 px
   document.querySelectorAll('.form .res b').forEach(function (b) { var f = parseFloat(getComputedStyle(b).fontSize); for (var k = 0; k < 30 && b.getBoundingClientRect().width > 920; k++) { f *= 0.94; b.style.fontSize = f + 'px'; } });
   window.ready = Promise.all([].map.call(document.querySelectorAll('.bg:not(.vacio)'), function (el) {
