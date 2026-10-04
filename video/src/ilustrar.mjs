@@ -19,6 +19,8 @@ import { parseArgs } from 'node:util';
 const VIDEO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const ARTE = path.join(VIDEO, 'arte');
 const REFS = ['pasita-confiada.png', 'pasita-pensativa.png', 'pasita-celebrando.png'].map(f => path.join(ARTE, 'referencias', f));
+// Ejemplo aprobado por el equipo: dirección de arte y acomodo de los textos (modo "completa")
+const REF_ESTILO = path.join(ARTE, 'referencias', 'estilo-lamina.png');
 const MODEL = process.env.OPENAI_IMAGE_MODEL || 'gpt-image-2';
 const QUALITY = process.env.OPENAI_IMAGE_QUALITY || 'medium';
 
@@ -60,19 +62,85 @@ SLIDE ${i + 1} of ${d.slides.length}. SCENE: ${s.arte.escena}
 ${s.arte.pose ? `Pasita pose/expression: ${s.arte.pose}.` : ''}`.trim();
 }
 
+// ─── Modo "completa": OpenAI dibuja la lámina entera, con sus textos ───
+// El texto se le da EXACTO, lámina por lámina; ** marca lo que va resaltado en color.
+const limpio = t => String(t || '').replace(/\*\*(.+?)\*\*/g, '«$1»');
+export function textosDe(d, s, i) {
+  const L = [];
+  const add = (k, v) => { if (v) L.push(`${k}: ${limpio(v)}`); };
+  if (s.tipo === 'portada') {
+    add('SMALL TAG (pill)', `${d.materia} · ${d.nivel}`.toUpperCase());
+    add('BIG TITLE (2 lines)', s.titulo.join(' / '));
+    if (d.hobby) { add('SMALL LINE', 'explicado con'); add('HANDWRITTEN-STYLE BIG LABEL', d.hobby.nombre); }
+  } else {
+    add('SMALL TAG (pill)', (s.etiqueta || '').toUpperCase());
+    if (s.titulo) add('BIG TITLE (2 lines)', s.titulo.join(' / '));
+  }
+  if (s.tipo === 'escena') add('BODY TEXT', s.texto);
+  if (s.tipo === 'ejemplo') { add('BODY TEXT', s.problema); s.pasos.forEach((p, k) => add(`NUMBERED STEP ${k + 1} (inside a rounded panel)`, p)); }
+  if (s.tipo === 'mapa') { s.pares.forEach(p => add('ROW (left box → right box)', `${p[0]} → ${p[1]}`)); add('BIG FORMULA PANEL', s.formula); add('SMALL NOTE', s.nota); }
+  if (s.tipo === 'reglas') { s.reglas.forEach(r => add('RULE PANEL', `${r.si} | badge: ${r.haz} | ${r.formula}`)); add('SMALL NOTE', s.nota); }
+  if (s.tipo === 'reto') { add('QUESTION', s.pregunta); s.opciones.forEach((o, k) => add(`OPTION ${'ABC'[k]} (round letter badge + pill)`, o)); add('SMALL LINE', 'Escribe tu respuesta en los comentarios.'); }
+  if (s.tipo === 'chuleta') {
+    add('FORMULA PANEL', s.formula);
+    s.pasos.forEach((p, k) => add(`NUMBERED STEP ${k + 1}`, p.t + (p.f ? ' — ' + p.f : '')));
+    add('MEMORY NOTE (on a small paper scroll)', s.recuerdo);
+    add('SMALL CORNER BADGE', 'Guárdala para tu examen');
+    add('TINY FOOTER', 'Respuesta del reto: ' + limpio(s.respuesta_reto));
+  }
+  return L.join('\n');
+}
+
+const ESTILO_COMPLETA = `
+Create ONE finished slide of an Instagram educational carousel for PASAS.MX (Mexican learning platform for teens),
+in EXACTLY the same art direction and layout language as the attached example sheet (the 3×3 grid of slides):
+dark night scene with purple/indigo palette and warm lantern lights, thick-outline polished cartoon illustration,
+rounded neon purple frame around the whole slide, "PASAS.MX" wordmark top-left in white geometric font,
+small rounded counter pill top-right showing the slide number, small orange rounded tag pill, very big bold rounded
+sans-serif title in white with the second line in orange-yellow, readable body text in white, information panels as
+dark rounded boxes with thin neon borders, numbered orange circles for steps. Text sits on the left/top, the
+character and scene fill the rest, like the example.
+
+CHARACTER: the protagonist is "la Pasita", the PASAS.MX mascot (the purple raisin in the other reference images:
+purple wrinkled raisin body, big white cartoon eyes, thick eyebrows, thin arms and legs, white sneakers with purple and
+yellow). Same character on every slide. She may wear costume accessories of the universe.
+
+TEXT RULES (very important):
+- Write ONLY the texts listed below, in Spanish, EXACTLY as written, with all accents (á é í ó ú ñ ¿ ¡). Do not add,
+  translate, shorten or invent any other words, numbers or labels anywhere in the image.
+- Text between « » must be highlighted in orange-yellow (do not draw the « » marks).
+- Every word must be perfectly spelled and fully legible; large enough to read on a phone.
+- No other logos, no watermarks, no real brands, no existing copyrighted characters or real people, no franchise
+  symbols (use abstract swirl symbols on talismans).`.trim();
+
+export function promptCompleta(d, s, i) {
+  return `${ESTILO_COMPLETA}
+
+UNIVERSE: ${d.arte?.universo || ''}
+
+THIS IS SLIDE ${i + 1} OF ${d.slides.length} (counter pill shows "${i + 1}/${d.slides.length}").
+SCENE: ${s.arte.escena}
+${s.arte.pose ? `Pasita pose/expression: ${s.arte.pose}.` : ''}
+
+TEXTS TO WRITE (and nothing else):
+PASAS.MX
+${i + 1}/${d.slides.length}
+${textosDe(d, s, i)}`.trim();
+}
+
 const hash = s => createHash('sha256').update(s).digest('hex').slice(0, 16);
 const dormir = ms => new Promise(r => setTimeout(r, ms));
 
-async function llamarOpenAI(prompt) {
+async function llamarOpenAI(prompt, { refs = REFS, size = '1024x1536', calidad = QUALITY } = {}) {
   const key = process.env.OPENAI_API_KEY;
   if (!key) throw new Error('Falta OPENAI_API_KEY');
   const fd = new FormData();
   fd.append('model', MODEL);
   fd.append('prompt', prompt);
-  fd.append('size', '1024x1536');
-  fd.append('quality', QUALITY);
+  fd.append('size', size);
+  fd.append('quality', calidad);
   fd.append('n', '1');
-  for (const r of REFS) fd.append('image[]', new Blob([await readFile(r)], { type: 'image/png' }), path.basename(r));
+  for (const r of refs) fd.append('image[]', new Blob([await readFile(r)], { type: 'image/png' }), path.basename(r));
   const res = await fetch('https://api.openai.com/v1/images/edits', { method: 'POST', headers: { Authorization: `Bearer ${key}` }, body: fd });
   const body = await res.json().catch(() => ({}));
   if (!res.ok) {
@@ -87,10 +155,10 @@ async function llamarOpenAI(prompt) {
 }
 
 // 1024×1536 (2:3) → 1080×1350 (4:5) recortando arriba y abajo por igual
-function aJpg(png, destino) {
+function aJpg(png, destino, vf = 'scale=1080:-2,crop=1080:1350') {
   const tmp = destino + '.src.png';
   return writeFile(tmp, png).then(() => {
-    const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', tmp, '-vf', 'scale=1080:-2,crop=1080:1350', '-q:v', '3', destino]);
+    const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', tmp, '-vf', vf, '-q:v', '3', destino]);
     return rm(tmp, { force: true }).then(() => { if (r.status !== 0) throw new Error('ffmpeg: ' + r.stderr); });
   });
 }
@@ -104,14 +172,24 @@ export async function ilustrar(d, { solo = null, forzar = false, log = console.l
   if (!tareas.length) { log('  este carrusel no trae escenas para ilustrar ("arte.escena")'); return { dir, estado }; }
 
   async function una({ s, i }) {
-    const n = String(i + 1).padStart(2, '0'), prompt = promptDe(d, s, i), h = hash(prompt + MODEL + QUALITY);
+    const completa = (d.arte?.modo || 'completa') === 'completa';
+    const calidad = completa ? (process.env.OPENAI_IMAGE_QUALITY_COMPLETA || QUALITY) : QUALITY;
+    const n = String(i + 1).padStart(2, '0'), prompt = completa ? promptCompleta(d, s, i) : promptDe(d, s, i), h = hash(prompt + MODEL + calidad);
     const archivo = path.join(dir, `${n}.jpg`);
     if (!forzar && estado[n]?.ok && estado[n].hash === h && existsSync(archivo)) { log(`  ${n}: ya estaba`); return; }
     for (let intento = 1; intento <= 3; intento++) {
       try {
         const t0 = Date.now();
-        await aJpg(await llamarOpenAI(prompt), archivo);
-        estado[n] = { ok: true, hash: h, modelo: MODEL, calidad: QUALITY, segundos: Math.round((Date.now() - t0) / 1000), fecha: new Date().toISOString() };
+        if (completa) {
+          // Lámina 4:5 completa; si el modelo no acepta ese tamaño, 2:3 y se rellena sin recortar texto
+          let png;
+          try { png = await llamarOpenAI(prompt, { refs: [REF_ESTILO, ...REFS], size: '1024x1280', calidad }); }
+          catch (e) { if (!/size/i.test(e.message)) throw e; png = await llamarOpenAI(prompt + '\nKeep every text inside the central 4:5 area.', { refs: [REF_ESTILO, ...REFS], calidad }); }
+          await aJpg(png, archivo, 'scale=1080:1350:force_original_aspect_ratio=increase,crop=1080:1350');
+        } else {
+          await aJpg(await llamarOpenAI(prompt), archivo);
+        }
+        estado[n] = { ok: true, hash: h, modo: completa ? 'completa' : 'fondo', modelo: MODEL, calidad, segundos: Math.round((Date.now() - t0) / 1000), fecha: new Date().toISOString() };
         log(`  ${n}: lista (${estado[n].segundos} s)`);
         return;
       } catch (e) {
