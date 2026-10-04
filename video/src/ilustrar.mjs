@@ -21,6 +21,8 @@ export const ARTE = path.join(VIDEO, 'arte');
 const REFS = ['pasita-confiada.png', 'pasita-pensativa.png', 'pasita-celebrando.png'].map(f => path.join(ARTE, 'referencias', f));
 // Ejemplo aprobado por el equipo: dirección de arte y acomodo de los textos (modo "completa")
 const REF_ESTILO = path.join(ARTE, 'referencias', 'estilo-lamina.png');
+// Láminas propias aprobadas por el equipo: el nivel a mantener (riqueza narrativa, texto, Pasita)
+const REF_APROBADAS = ['aprobada-1.jpg', 'aprobada-2.jpg'].map(f => path.join(ARTE, 'referencias', f)).filter(f => existsSync(f));
 const MODEL = process.env.OPENAI_IMAGE_MODEL || 'gpt-image-2';
 const QUALITY = process.env.OPENAI_IMAGE_QUALITY || 'medium';
 
@@ -118,7 +120,10 @@ export function textosDe(d, s, i) {
 
 const ESTILO_COMPLETA = `
 Create ONE finished slide of an Instagram educational carousel for PASAS.MX (a Mexican learning platform for teens 13-18).
-Match the art direction, text styling and creative freedom of the attached EXAMPLE SHEET (the 3×3 grid of finished slides):
+REFERENCE IMAGES, in order: (1-2) two APPROVED slides from PASAS.MX itself: this is the quality bar to keep (narrative
+richness, cinematic depth, text styling, and the exact look of the Pasita); (3) an EXAMPLE SHEET (3×3 grid of finished
+slides) for composition and text-design principles; (4+) the official Pasita character sheet.
+Match the art direction, text styling and creative freedom of those references:
 polished cinematic 2D cartoon illustration, thick confident outlines, rich color, depth (foreground, midground,
 background), lighting integrated in the set, atmosphere (smoke, particles, glow). Use the example for principles of
 composition, text styling and density, not to copy its exact scenes.
@@ -133,9 +138,17 @@ LAYOUT AND TEXT DESIGN (creative freedom, like the example):
 - You MAY integrate a key number or phrase from the texts into the scene (e.g. painted on a giant door or a scroll)
   as long as it is written exactly as listed.
 
-CHARACTER: the protagonist is "la Pasita", the PASAS.MX mascot (the purple raisin in the reference images: wrinkled
+THE IMAGE MUST TEACH ON ITS OWN: even if all text were removed, the scene must communicate the idea of this slide
+through its protagonist object and action. When the scene specifies a quantity (e.g. exactly 4 lit seals, exactly 6
+clones), draw EXACTLY that quantity, countable at a glance.
+
+ORIGINAL PASAS SYMBOLS ONLY: on headbands, talismans, banners, jerseys or props use only the PASAS emblem = a simple
+raisin silhouette (rounded wrinkled oval) inside a circle, or plain abstract geometric marks. NEVER spirals, leaves,
+swirls or any symbol that resembles an existing franchise, team, band or brand.
+
+CHARACTER (strict consistency): the protagonist is "la Pasita", the PASAS.MX mascot (the purple raisin in the reference images: wrinkled
 purple raisin body, big white cartoon eyes, thick eyebrows, thin arms and legs, white sneakers with purple and yellow).
-Same character on every slide, varying pose, scale and position. She may wear costume accessories of the universe.
+Same character on every slide — identical body shape, color, face, eyes, eyebrows, limbs and sneakers as in the approved slides and the character sheet — varying only pose, scale, position, expression and costume accessories. She may wear costume accessories of the universe.
 
 TEXT RULES (very important):
 - Write ONLY the texts listed below, in Spanish, EXACTLY as written, with all accents (á é í ó ú ñ ¿ ¡). Do not add,
@@ -175,7 +188,7 @@ async function llamarOpenAI(prompt, { refs = REFS, size = '1024x1536', calidad =
   fd.append('size', size);
   fd.append('quality', calidad);
   fd.append('n', '1');
-  for (const r of refs) fd.append('image[]', new Blob([await readFile(r)], { type: 'image/png' }), path.basename(r));
+  for (const r of refs) fd.append('image[]', new Blob([await readFile(r)], { type: /\.jpe?g$/i.test(r) ? 'image/jpeg' : 'image/png' }), path.basename(r));
   const res = await fetch('https://api.openai.com/v1/images/edits', { method: 'POST', headers: { Authorization: `Bearer ${key}` }, body: fd });
   const body = await res.json().catch(() => ({}));
   if (!res.ok) {
@@ -218,8 +231,8 @@ export async function ilustrar(d, { solo = null, forzar = false, log = console.l
         if (completa) {
           // Lámina 4:5 completa; si el modelo no acepta ese tamaño, 2:3 y se rellena sin recortar texto
           let png;
-          try { png = await llamarOpenAI(prompt, { refs: [REF_ESTILO, ...REFS], size: '1024x1280', calidad }); }
-          catch (e) { if (!/size/i.test(e.message)) throw e; png = await llamarOpenAI(prompt + '\nKeep every text inside the central 4:5 area.', { refs: [REF_ESTILO, ...REFS], calidad }); }
+          try { png = await llamarOpenAI(prompt, { refs: [...REF_APROBADAS, REF_ESTILO, ...REFS], size: '1024x1280', calidad }); }
+          catch (e) { if (!/size/i.test(e.message)) throw e; png = await llamarOpenAI(prompt + '\nKeep every text inside the central 4:5 area.', { refs: [...REF_APROBADAS, REF_ESTILO, ...REFS], calidad }); }
           await aJpg(png, archivo, 'scale=1080:1350:force_original_aspect_ratio=increase,crop=1080:1350');
         } else {
           await aJpg(await llamarOpenAI(prompt), archivo);
