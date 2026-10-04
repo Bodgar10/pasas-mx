@@ -54,13 +54,26 @@ carrusel y avísalo en el resumen para que se arregle en la base.
   puede traer nombres (Naruto, Fortnite, BTS…): se traducen al universo con la
   Pasita. Modelo: `2026-10-ecuaciones-pasita-ninja.json`.
 
-## Ilustraciones con OpenAI
+## Ilustraciones con OpenAI (dirección aprobada el 4-oct-2026)
 
-Cada lámina puede llevar una ilustración de fondo generada con OpenAI (la Pasita
-oficial en el universo del hobby). El texto exacto (cuentas, fechas, reglas)
-**nunca** va en la imagen: lo pone el renderer HTML encima. Lo hace el workflow
-solo si existe el secret `OPENAI_API_KEY`; si no, el carrusel sale con los dibujos
-vectoriales (`svg`), así que **siempre escribe los dos**.
+**OpenAI dibuja la lámina completa, con sus textos** (`arte.modo` = `completa`, el
+valor por defecto): ilustración, títulos, paneles, opciones y acordeón, con libertad
+para acomodarlos en cada lámina. Nosotros le damos el texto **exacto** de cada
+lámina (sale de los campos `titulo`, `texto`, `pasos`, `pares`, `reglas`,
+`opciones`… del JSON), el color de acento y la escena. Las referencias que recibe:
+las dos láminas aprobadas (`arte/referencias/aprobada-1.jpg` y `aprobada-2.jpg`,
+el nivel a mantener), la hoja de ejemplo (`estilo-lamina.png`) y la Pasita oficial.
+Si una ilustración falla, esa lámina sale con el diseño HTML de respaldo. Con
+`"modo": "fondo"` se vuelve al esquema anterior (imagen sin texto + HTML encima).
+
+Reglas que ya van en el prompt (`src/ilustrar.mjs`): la imagen enseña aunque se le
+quite el texto; las cantidades de la escena se dibujan exactas; la Pasita es
+idéntica en todas las láminas; solo símbolos originales PASAS (la silueta de una
+pasa dentro de un círculo), nunca espirales ni símbolos parecidos a franquicias.
+
+**Revisión obligatoria:** OpenAI escribe bien, pero no siempre. Después de generar,
+alguien (la tarea automática) mira las 9 láminas y compara cada texto y cada
+cantidad contra el JSON; la que salga mal se rehace sola con `solo` = su número.
 
 **Filosofía: la escena enseña, no decora.** Cada lámina es una composición
 ilustrada distinta con un **objeto pedagógico protagonista** (la puerta con 28
