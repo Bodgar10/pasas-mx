@@ -87,9 +87,21 @@
 .cta b{font-family:var(--font-brand);font-weight:900}
 /* Con ilustración de OpenAI: la escena de fondo y el texto exacto encima */
 .arte{position:absolute;inset:0;background-size:cover;background-position:center}
-.velo{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.9) 0%, rgba(15,10,30,.78) 38%, rgba(15,10,30,.22) 66%, rgba(15,10,30,.05) 82%, rgba(15,10,30,.4) 100%)}
-.frame.denso .velo{background:linear-gradient(180deg, rgba(15,10,30,.88) 0%, rgba(15,10,30,.62) 32%, rgba(15,10,30,.28) 100%)}
-/* En láminas de texto, los recuadros llevan su propio fondo y dejan ver la ilustración alrededor */
+.velo{position:absolute;inset:0;pointer-events:none}
+/* Sin velo uniforme: solo se protege la zona del texto (zona_texto de cada lámina) y la franja del logo */
+.velo::before{content:"";position:absolute;left:0;right:0;top:0;height:16%;background:linear-gradient(180deg, rgba(15,10,30,.75), rgba(15,10,30,0))}
+.velo::after{content:"";position:absolute;inset:0}
+.z-arriba .velo::after{background:linear-gradient(180deg, rgba(15,10,30,.82) 0%, rgba(15,10,30,.62) 30%, rgba(15,10,30,0) 52%)}
+.z-arriba-grande .velo::after{background:linear-gradient(180deg, rgba(15,10,30,.84) 0%, rgba(15,10,30,.6) 55%, rgba(15,10,30,0) 76%)}
+.z-abajo .velo::after{background:linear-gradient(0deg, rgba(15,10,30,.85) 0%, rgba(15,10,30,.6) 30%, rgba(15,10,30,0) 50%)}
+.z-izquierda .velo::after{background:linear-gradient(90deg, rgba(15,10,30,.85) 0%, rgba(15,10,30,.62) 42%, rgba(15,10,30,0) 64%)}
+.z-derecha .velo::after{background:linear-gradient(270deg, rgba(15,10,30,.85) 0%, rgba(15,10,30,.62) 42%, rgba(15,10,30,0) 64%)}
+/* La caja de texto se acomoda a la zona que la ilustración dejó libre */
+.z-arriba .body{bottom:46%}
+.z-arriba-grande .body{bottom:24%}
+.z-abajo .body{top:58%}
+.z-izquierda .body{right:42%}
+.z-derecha .body{left:42%}
 .frame.denso .box, .frame.denso .opts div, .frame.denso .mapa .l, .frame.denso .chu-f, .frame.denso .regla{background:rgba(15,10,30,.86);backdrop-filter:blur(3px)}
 .frame.denso .recuerdo{background:rgba(40,22,10,.9);backdrop-filter:blur(3px)}
 .frame.denso .chu-foot{background:rgba(15,10,30,.82);border-radius:3cqw;padding:2cqw 3cqw;margin-left:-3cqw;margin-right:-3cqw}
@@ -131,6 +143,8 @@ window.setup = function (data, i) {
   $('arte').hidden = $('velo').hidden = !conArte;
   fr.classList.toggle('con-arte', conArte);
   fr.classList.toggle('denso', conArte && ['portada', 'escena'].indexOf(s.tipo) < 0);
+  ['arriba', 'arriba-grande', 'abajo', 'izquierda', 'derecha'].forEach(function (z) { fr.classList.remove('z-' + z); });
+  if (conArte) fr.classList.add('z-' + ((s.arte && s.arte.zona_texto) || 'arriba'));
   if (conArte) {
     $('arte').style.backgroundImage = 'url("' + s.fondo_img + '")';
     s = Object.assign({}, s, { svg: s.svg_con_arte ? s.svg : null });
@@ -196,14 +210,14 @@ window.setup = function (data, i) {
     if (!data.hobby) { pose = 'celebrando'; pw = 230; px = 850; py = 470; }
   }
   $('body').innerHTML = '<div id="inner" style="display:flex;flex-direction:column;gap:3.4cqw">' + h + '</div>';
-  if ($('hobn')) fitLines([$('hobn')], 1080 - 2 * 86);
-  if ($('respb')) fitLines([$('respb')], 1080 - 2 * 86 - (data.hobby ? 0 : 250));   // deja lugar a la Pasita
+  if ($('hobn')) fitLines([$('hobn')], $('body').clientWidth);
+  if ($('respb')) fitLines([$('respb')], $('body').clientWidth - (data.hobby ? 0 : 250));   // deja lugar a la Pasita
   // En la portada, el dibujo ocupa todo el espacio que queda
   var fb = document.querySelector('.svgbox.fill');
   if (fb) { var sv = fb.querySelector('svg'); sv.style.height = (fb.clientHeight - 2 * 32) + 'px'; sv.style.width = 'auto'; }
   var tt = document.querySelectorAll('#tt span');
   if (s.tipo === 'portada') tt.forEach(function (x) { x.style.fontSize = '13cqw'; });
-  if (tt.length) fitLines([].slice.call(tt), 1080 - 2 * 86);
+  if (tt.length) fitLines([].slice.call(tt), $('body').clientWidth);
   // Si no cabe, se achica todo el contenido parejo (nunca se corta)
   // (se escala el contenido, no la caja: así no se mueve de su lugar)
   var b = $('body'), inn = $('inner'), z = Math.min(1, b.clientHeight / inn.scrollHeight);

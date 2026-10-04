@@ -28,36 +28,61 @@ export function slugCarrusel(d) {
 }
 
 // Biblia de estilo: igual para todas las láminas para que el carrusel se vea de una sola pieza.
+// Filosofía: la escena ENSEÑA. Cada lámina es una composición ilustrada distinta cuyo objeto
+// protagonista comunica la idea de esa lámina; no es un fondo oscuro detrás de una plantilla.
 const ESTILO = `
-STYLE (always the same): polished 2D cartoon illustration for an Instagram educational carousel, thick dark outlines,
-rich saturated colors, night-time scene, deep purple/indigo palette (#0f0a1e, #1a1035, #2d1b69) with warm accent lights
-and soft neon purple glow (#7c3aed). Expressive, friendly, for Mexican teenagers (13-18). Vertical 4:5 composition.
+ART DIRECTION: cinematic 2D cartoon illustration for an Instagram educational carousel aimed at Mexican teenagers
+(13-18). Polished, expressive, thick confident outlines, rich saturated color, painterly lighting. Each slide is a
+DIFFERENT illustrated composition that TEACHES the idea of that slide through a protagonist object (not a generic
+backdrop). The world feels alive and specific to the analogy: atmosphere, smoke, particles, glowing light sources
+integrated in the set (lanterns, screens, stage lights, moon), reflections and rim light on the character.
 
-MAIN CHARACTER: "la Pasita", the PASAS.MX mascot, exactly as in the reference images: a purple raisin (#7C3AED, darker
-#4C1D95 wrinkles), big white cartoon eyes with dark pupils, thick eyebrows, small smile, thin purple arms with 4-finger
-hands, thin purple legs, white sneakers with purple and orange-yellow details. Keep her proportions, colors and face
-consistent with the references. She can wear costume accessories of the universe (headband, cape, jersey, microphone)
-but must stay clearly recognizable. Copies/clones of her are allowed when the scene needs it.
+DEPTH: always build clear cinematic depth with a foreground layer (props or elements close to camera, slightly
+blurred or dark), a midground (the character and the protagonist object) and a background (environment, sky,
+architecture), with atmospheric perspective and light haze between layers.
 
-COMPOSITION: the TOP 40% of the image must be calm and dark (sky, wall, shadow, soft bokeh) with no important details,
-because large white text will be placed there. Put the main action and the character in the lower 60%. Keep important
-elements away from the outer 6% border.
+COMPOSITION: vary shot types across slides as requested (close-up, medium shot, character at the side, giant object,
+crowd of clones, wide establishing shot). The character's scale, pose and position change from slide to slide; never
+default to "small character at the bottom". Leave the specific TEXT ZONE described for this slide visually calm
+(simple sky, wall, shadow or soft bokeh, no faces or key props there) so text can be placed on top later; the rest of
+the frame can be rich and detailed. Keep key elements away from the outer 5% border. Vertical 4:5 framing.
+
+MAIN CHARACTER: "la Pasita", the PASAS.MX mascot, exactly as in the reference images: a purple raisin (#7C3AED with
+darker #4C1D95 wrinkles), big white cartoon eyes with dark pupils, thick eyebrows, small mouth, thin purple arms with
+4-finger hands, thin purple legs, white sneakers with purple and orange-yellow details. Same proportions, colors and
+face on every slide, clearly recognizable. She may wear costume accessories of the universe (headband, scarf, jersey,
+microphone, headset). Copies/clones of her only when the scene asks for them.
 
 STRICT RULES:
-- ABSOLUTELY NO TEXT in the image: no letters, numbers, words, signs, captions, logos or watermarks. Symbols on props
-  must be abstract shapes (no kanji, no letters, no digits). Numbers will be added later by the layout.
-- NO existing copyrighted characters, real people, celebrities, team crests, band logos or brand logos. Evoke the
-  universe only through generic setting elements (architecture, costumes, props, lighting).
+- ABSOLUTELY NO TEXT in the image: no letters, numbers, digits, words, signs, captions, labels, logos or watermarks.
+  Symbols on props must be abstract shapes. Exact numbers and words are added later by the layout.
+- NO existing copyrighted characters, real people, celebrities, team crests, band logos, brand logos or franchise
+  symbols. Evoke the universe only through generic setting elements (architecture, costumes, props, lighting).
 - No violence beyond cartoon action, nothing scary or suggestive.`.trim();
 
+// arte.escena puede ser un texto o, mejor, un objeto con todos sus campos (ver CARRUSELES.md)
+const CAMPOS = [
+  ['accion', 'MAIN ACTION'], ['protagonista', 'PROTAGONIST'], ['objeto', 'PROTAGONIST TEACHING OBJECT'],
+  ['foreground', 'FOREGROUND'], ['midground', 'MIDGROUND'], ['background', 'BACKGROUND'],
+  ['iluminacion', 'LIGHTING'], ['emocion', 'EMOTION'], ['composicion', 'COMPOSITION / SHOT'],
+];
+const ZONAS = {
+  arriba: 'the upper ~45% of the frame', 'arriba-grande': 'the upper ~70% of the frame (keep the action in the bottom 30%)',
+  abajo: 'the lower ~40% of the frame', izquierda: 'the left ~55% of the frame, full height', derecha: 'the right ~55% of the frame, full height',
+};
+export function zonaDe(s) { return s.arte?.zona_texto || 'arriba'; }
+
 export function promptDe(d, s, i) {
-  const u = d.arte?.universo || '';
+  const u = d.arte?.universo || '', e = s.arte.escena;
+  const escena = typeof e === 'string' ? `SCENE: ${e}${s.arte.pose ? `\nPasita pose/expression: ${s.arte.pose}.` : ''}`
+    : CAMPOS.filter(([k]) => e[k]).map(([k, n]) => `${n}: ${e[k]}`).join('\n');
   return `${ESTILO}
 
 UNIVERSE OF THIS CAROUSEL: ${u}
 
-SLIDE ${i + 1} of ${d.slides.length}. SCENE: ${s.arte.escena}
-${s.arte.pose ? `Pasita pose/expression: ${s.arte.pose}.` : ''}`.trim();
+SLIDE ${i + 1} of ${d.slides.length}.
+${escena}
+TEXT ZONE (keep calm, no key elements): ${ZONAS[zonaDe(s)] || ZONAS.arriba}.`.trim();
 }
 
 const hash = s => createHash('sha256').update(s).digest('hex').slice(0, 16);

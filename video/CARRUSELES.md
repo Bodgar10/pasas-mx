@@ -62,25 +62,47 @@ oficial en el universo del hobby). El texto exacto (cuentas, fechas, reglas)
 solo si existe el secret `OPENAI_API_KEY`; si no, el carrusel sale con los dibujos
 vectoriales (`svg`), así que **siempre escribe los dos**.
 
+**Filosofía: la escena enseña, no decora.** Cada lámina es una composición
+ilustrada distinta con un **objeto pedagógico protagonista** (la puerta con 28
+huecos y solo 4 sellos, los 4 sellos en la mano, el pergamino con el plan, los 6
+clones, la balanza, el foco del reveal). La Pasita es protagonista y **cambia de
+pose, escala y posición** en cada lámina; nunca "Pasita chiquita abajo" por
+defecto. Se alternan planos: primer plano, plano medio, personaje lateral, objeto
+gigante, grupo, plano abierto. Siempre hay profundidad: foreground, midground y
+background, con luz integrada al escenario (linternas, pantallas, luces de
+estadio, luna), humo y partículas.
+
 En el JSON:
 
 ```jsonc
-"arte": { "universo": "A ninja village at night… (en inglés: lugar, época, luz, vestuario de la Pasita, objetos clave)" },
-"slides": [
-  { "tipo": "escena", …, "svg": "…", "arte": { "escena": "Qué se ve en esta lámina (en inglés)", "pose": "expresión de la Pasita" } }
-]
+"hobby": { …, "color": "#fb923c" },   // UN color de acento por carrusel (borde y resaltados); cambia entre publicaciones
+"arte": { "universo": "El mundo en inglés: lugar, época, luz, paleta, vestuario de la Pasita, objetos clave" },
+"slides": [{ …, "arte": {
+  "zona_texto": "izquierda",          // arriba | arriba-grande | abajo | izquierda | derecha
+  "escena": {                          // en inglés, todo concreto
+    "accion": "qué pasa",
+    "protagonista": "la Pasita: dónde está, de qué tamaño, pose y gesto",
+    "objeto": "el objeto que enseña la idea de esta lámina",
+    "foreground": "…", "midground": "…", "background": "…",
+    "iluminacion": "fuentes de luz y colores",
+    "emocion": "…",
+    "composicion": "tipo de plano y dónde va cada cosa"
+  }
+}}]
 ```
 
-- `arte.universo` (una vez): el mundo, la luz y cómo va vestida la Pasita. Igual
-  en todas las láminas para que el carrusel se vea de una pieza.
-- `arte.escena` (por lámina, en las 9): una escena concreta que **muestre la
-  historia** de esa lámina (la puerta con la cuadrícula de sellos, los 6 clones).
-  En láminas de texto denso (reveal, regla, acordeón) pide una escena tranquila
-  con la Pasita en una esquina.
+- `zona_texto` es el lugar que la ilustración deja tranquilo para el texto; el
+  renderer pone ahí el texto y oscurece **solo esa zona** (no hay velo en toda la
+  imagen). Elige según la composición y la cantidad de texto: láminas con mucho
+  texto (pasos, reveal, acordeón) → `arriba-grande`; escenas con objeto grande a un
+  lado → `izquierda` o `derecha`; escenas abiertas → `arriba`. Varíala.
+- El color de acento **no es fucsia por regla**: es uno por carrusel, el que
+  combine con el universo (ninja: naranja; el mundo conserva morados y azules).
 - Prohibido en `arte`: texto, números, letras, logos, nombres de franquicias o
-  personas. El estilo, las reglas de composición (40 % de arriba libre para el
-  texto) y las referencias de la Pasita (`arte/referencias/`) las agrega
-  `src/ilustrar.mjs` solo.
+  personas. El estilo y las referencias de la Pasita (`arte/referencias/`) los
+  agrega `src/ilustrar.mjs`.
+- Antes de ilustrar las 9 de un universo nuevo, conviene probar 2 o 3 láminas
+  (`solo`) y revisarlas.
 - Las ilustraciones se guardan en `video/arte/<carrusel>/NN.jpg` con
   `estado.json`; si una falla, el correo lo dice y se rehace con "solo" en el
   workflow sin pagar las demás. Modelo y calidad: variables de GitHub
