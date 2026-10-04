@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Portada del reel ilustrado (1080×1920): la escena de OpenAI de fondo y el gancho grande.
+   Todo lo importante dentro del 3:4 central (y 240–1680), que es lo que muestra el grid. */
+.frame{background:#0f0a1e}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06)}
+.sh{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.92) 0%, rgba(15,10,30,.78) 30%, rgba(15,10,30,.15) 55%, rgba(15,10,30,0) 70%, rgba(15,10,30,.75) 92%)}
+.neon{position:absolute;left:3cqw;right:3cqw;top:calc(240px + 2cqw);bottom:calc(240px + 2cqw);border-radius:5cqw;border:.8cqw solid var(--c);box-shadow:0 0 3cqw var(--c), inset 0 0 3cqw var(--c)}
+.wrap{position:absolute;left:9cqw;right:9cqw;top:300px;display:flex;flex-direction:column;align-items:flex-start;gap:2.6cqw}
+.tag{font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:4.4cqw;letter-spacing:.06em;color:var(--bg);background:var(--c);
+  padding:1.2cqw 3.4cqw 1.4cqw;border-radius:2.4cqw;box-shadow:0 0 3cqw var(--c)}
+.t span{display:block;font-family:var(--font-title);font-weight:900;line-height:1.02;white-space:nowrap;font-size:15cqw;color:#fff;
+  -webkit-text-stroke:1.4cqw var(--bg);paint-order:stroke fill;text-shadow:0 1.2cqw 0 rgba(0,0,0,.55)}
+.t span.k{color:var(--c)}
+.sub{font-size:5.4cqw;font-weight:900;color:#fff;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.95)}
+.sub b{color:var(--c)}
+.foot{position:absolute;left:9cqw;right:9cqw;top:1530px;display:flex;justify-content:space-between;align-items:center}
+.dur{display:flex;align-items:center;gap:2cqw;border:.4cqw solid rgba(255,255,255,.5);background:rgba(15,10,30,.75);border-radius:99px;padding:1.4cqw 4cqw 1.4cqw 1.6cqw;font-size:4.6cqw;font-weight:800}
+.dur i{width:7cqw;height:7cqw;border-radius:50%;border:.4cqw solid #fff;display:grid;place-items:center}
+.dur i svg{width:2.8cqw;height:2.8cqw;margin-left:.5cqw}
+.brand{font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
+.brand span{color:var(--pink)}
+</style></head>
+<body>
+<div class="frame" id="frame">
+  <div class="bg" id="bg"></div>
+  <div class="sh"></div>
+  <div class="neon"></div>
+  <div class="wrap">
+    <span class="tag" id="tag"></span>
+    <div class="t" id="t"></div>
+    <div class="sub" id="sub"></div>
+  </div>
+  <div class="foot"><div class="dur"><i><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12Z" fill="#fff"/></svg></i><span id="dur"></span></div><div class="brand">PASAS<span>.</span>MX</div></div>
+</div>
+<script src="anim.js"></script>
+<script>
+window.setup = function (d) {
+  var p = d.reel.portada || {}, fr = $('frame');
+  fr.style.setProperty('--c', (d.hobby && d.hobby.color) || '#fbbf24');
+  if (d.portada_fondo) $('bg').style.backgroundImage = 'url("' + d.portada_fondo + '")';
+  $('tag').textContent = d.materia + ' · ' + d.nivel;
+  $('t').innerHTML = (p.titulo || []).map(function (l) { var t = typeof l === 'string' ? l : l[0], k = typeof l === 'string' ? '' : l[1]; return '<span class="' + k + '">' + esc(t) + '</span>'; }).join('');
+  fitLines([].slice.call($('t').querySelectorAll('span')), 1080 - 2 * 97);
+  $('sub').innerHTML = esc(p.sub || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  $('dur').textContent = Math.max(10, Math.round((d.duracion || 25) / 5) * 5) + ' segundos';
+  window.ready = new Promise(function (ok) { if (!d.portada_fondo) return ok(); var im = new Image(); im.onload = im.onerror = ok; im.src = d.portada_fondo; });
+  return 0;
+};
+window.render = function () {};
+</script>
+</body></html>

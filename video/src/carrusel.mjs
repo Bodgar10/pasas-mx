@@ -5,7 +5,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { withBrowser, openPage, renderVideo } from './render.mjs';
+import { withBrowser, openPage, renderVideo, renderImage } from './render.mjs';
 import { spawnSync } from 'node:child_process';
 import { sendEmail } from './email.mjs';
 import { existsSync, readFileSync } from 'node:fs';
@@ -79,11 +79,10 @@ export async function renderReel(browser, d, dir, log = () => {}) {
   });
   const out = path.join(dir, 'reel.mp4');
   const { duration } = await renderVideo(browser, 'reel-ilustrado.html', { ...d, reel_fondos: fondos }, out, { log });
-  // Portada: el momento de la revelación (escena "formula") o la primera escena
-  let t = 1.6, acc = 0;
-  for (const e of d.reel.escenas) { if (e.tipo === 'formula') { t = acc + (e.dur || 3.5) - 0.4; break; } acc += e.dur || 3.5; }
-  const portada = path.join(dir, 'reel-portada.jpg');
-  spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', String(Math.min(t, duration - 0.2)), '-i', out, '-frames:v', '1', '-q:v', '2', portada]);
+  // Portada propia: la escena de OpenAI de fondo (reel.portada.fondo, por defecto la 1) y el gancho grande
+  const portada = path.join(dir, 'reel-portada.jpg'), png = portada.replace(/\.jpg$/, '.png');
+  await renderImage(browser, 'portada-reel.html', { ...d, duracion: duration, portada_fondo: fondos[d.reel.portada?.fondo ?? 0] }, png);
+  spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', png, '-q:v', '2', portada]);
   if (d.reel.post) await writeFile(path.join(dir, 'reel.txt'), d.reel.post + '\n');
   return [out, portada];
 }

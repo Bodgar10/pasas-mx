@@ -45,7 +45,7 @@
 .form .term b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:#fff;-webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill}
 .form .term.k b{color:var(--c)}
 .form .term.op b{color:rgba(255,255,255,.7)}
-.form .term small{font-size:3.4cqw;font-weight:900;color:#fff;background:rgba(15,10,30,.8);border-radius:2cqw;padding:.8cqw 2cqw;text-transform:uppercase;letter-spacing:.03em;text-align:center;line-height:1.2;max-width:24cqw}
+.form .term small{font-size:3.4cqw;font-weight:900;color:#fff;background:rgba(15,10,30,.8);border-radius:2cqw;padding:.8cqw 2cqw;letter-spacing:.01em;text-align:center;line-height:1.2;max-width:26cqw;font-size:3.8cqw}
 .form .res{opacity:0;display:flex;flex-direction:column;align-items:center;gap:2cqw}
 .form .res b{font-family:var(--font-title);font-weight:900;font-size:13cqw;color:var(--bg);background:var(--c);border-radius:5cqw;padding:1cqw 6cqw;box-shadow:0 0 6cqw var(--c);white-space:nowrap}
 .form .res small{font-size:6cqw;font-weight:900;color:#fff;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
@@ -101,6 +101,8 @@ window.setup = function (data) {
   }).join('');
   document.querySelectorAll('.cap').forEach(function (c) { c.querySelectorAll('span').forEach(function (s) { fitLines([s], 1080 - 2 * 76); }); });
   document.querySelectorAll('.form .row').forEach(function (r) { var w = r.scrollWidth; if (w > 1000) r.style.zoom = 1000 / w; });
+  // El resultado nunca se sale del cuadro: se achica hasta caber en 920 px
+  document.querySelectorAll('.form .res b').forEach(function (b) { var f = parseFloat(getComputedStyle(b).fontSize); for (var k = 0; k < 30 && b.getBoundingClientRect().width > 920; k++) { f *= 0.94; b.style.fontSize = f + 'px'; } });
   window.ready = Promise.all([].map.call(document.querySelectorAll('.bg:not(.vacio)'), function (el) {
     return new Promise(function (ok) { var im = new Image(); im.onload = im.onerror = ok; im.src = el.style.backgroundImage.slice(5, -2); });
   }));

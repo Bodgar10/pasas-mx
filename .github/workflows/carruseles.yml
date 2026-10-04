@@ -11,6 +11,10 @@
 name: Carruseles de PASAS
 
 on:
+  schedule:
+    # Carruseles programados (video/data/programados.json): 12:17 UTC = 6:17 am en México.
+    # Minuto "raro" a propósito: GitHub retrasa más los horarios en punto.
+    - cron: '17 12 * * *'
   push:
     branches: [main]
     paths: ['video/data/carruseles/**.json', '!video/data/carruseles/ejemplo-*.json']
@@ -76,7 +80,10 @@ jobs:
       - name: Qué carruseles
         id: cual
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            HOY=$(TZ=America/Mexico_City date +%F)
+            FILES=$(node -e "const p=require('./data/programados.json');process.stdout.write(p['$HOY']||'')")
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             FILES="${{ inputs.data }}"
           else
             # Solo los JSON nuevos o cambiados en este push
@@ -88,7 +95,7 @@ jobs:
       # Una ilustración por lámina. Si una falla, las demás siguen; esa lámina sale con
       # el diseño sin ilustración y se reintenta con "solo".
       - name: Ilustrar con OpenAI
-        if: steps.cual.outputs.files != '' && (github.event_name != 'workflow_dispatch' || inputs.ilustrar)
+        if: steps.cual.outputs.files != '' && github.event_name != 'schedule' && (github.event_name != 'workflow_dispatch' || inputs.ilustrar)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_IMAGE_MODEL: ${{ vars.OPENAI_IMAGE_MODEL }}
