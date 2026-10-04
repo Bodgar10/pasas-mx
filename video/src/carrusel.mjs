@@ -5,7 +5,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
-import { withBrowser, openPage } from './render.mjs';
+import { withBrowser, openPage, renderVideo } from './render.mjs';
+import { spawnSync } from 'node:child_process';
 import { sendEmail } from './email.mjs';
 import { existsSync, readFileSync } from 'node:fs';
 import { ARTE, slugCarrusel } from './ilustrar.mjs';
@@ -58,8 +59,8 @@ export async function renderCarrusel(browser, d, dir) {
       const im = document.getElementById('L'); im.onload = im.onerror = ok; im.src = src;
     }), d.slides[i].lamina_img);
     await page.evaluate(() => window.ready || null);
-    const f = path.join(dir, `${String(i + 1).padStart(2, '0')}.png`);
-    await page.screenshot({ path: f, type: 'png' });
+    const f = path.join(dir, `${String(i + 1).padStart(2, '0')}.jpg`);
+    await page.screenshot({ path: f, type: 'jpeg', quality: 92 });
     await page.close();
     files.push(f);
   }
@@ -67,21 +68,45 @@ export async function renderCarrusel(browser, d, dir) {
   return files;
 }
 
+// Reel (descubrir) del mismo tema: fondos de OpenAI + texto animado. Deja reel.mp4 y reel-portada.jpg
+export async function renderReel(browser, d, dir, log = () => {}) {
+  if (!d.reel?.escenas?.length) return [];
+  await mkdir(dir, { recursive: true });
+  const slugC = slugCarrusel(d);
+  const fondos = d.reel.escenas.map((_, i) => {
+    const f = path.join(ARTE, slugC, `reel-${String(i + 1).padStart(2, '0')}.jpg`);
+    return existsSync(f) ? `../arte/${slugC}/${path.basename(f)}` : null;
+  });
+  const out = path.join(dir, 'reel.mp4');
+  const { duration } = await renderVideo(browser, 'reel-ilustrado.html', { ...d, reel_fondos: fondos }, out, { log });
+  // Portada: el momento de la revelación (escena "formula") o la primera escena
+  let t = 1.6, acc = 0;
+  for (const e of d.reel.escenas) { if (e.tipo === 'formula') { t = acc + (e.dur || 3.5) - 0.4; break; } acc += e.dur || 3.5; }
+  const portada = path.join(dir, 'reel-portada.jpg');
+  spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-ss', String(Math.min(t, duration - 0.2)), '-i', out, '-frames:v', '1', '-q:v', '2', portada]);
+  if (d.reel.post) await writeFile(path.join(dir, 'reel.txt'), d.reel.post + '\n');
+  return [out, portada];
+}
+
 // Láminas cuya ilustración falló (estado.json de ilustrar.mjs), para avisar en el correo
 function sinIlustrar(d) {
   try {
     const e = JSON.parse(readFileSync(path.join(ARTE, slugCarrusel(d), 'estado.json'), 'utf8'));
-    return Object.entries(e).filter(([, v]) => !v.ok).map(([k, v]) => `${Number(k)} (${v.error})`);
+    return Object.entries(e).filter(([, v]) => !v.ok).map(([k, v]) => `${k.startsWith('reel') ? 'fondo ' + k : 'lámina ' + Number(k)} (${v.error})`);
   } catch { return []; }
 }
 
-function correo(d, n) {
+function correo(d, n, conReel) {
   const fallas = sinIlustrar(d);
   const titulo = d.slides[0].titulo.join(' ') + (d.hobby ? ` con ${d.hobby.nombre}` : '');
   const e = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   return {
-    subject: `Carrusel · ${titulo} (${d.materia}, ${d.nivel})`,
+    subject: `${conReel ? 'Reel + carrusel' : 'Carrusel'} · ${titulo} (${d.materia}, ${d.nivel})`,
     html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
+${conReel ? `<h3 style="font-size:16px;margin:8px 0 4px">1. Reel · me descubre</h3>
+<p>Archivo <b>reel.mp4</b> (con <b>reel-portada.jpg</b> de portada: en Instagram, <i>Editar portada → Agregar desde la galería</i>; en TikTok, <i>Editar portada → Subir</i>). Va sin audio: agrégale una canción en tendencia. Publícalo primero; el carrusel unas horas después. Texto para copiar:</p>
+<pre style="background:#f5f3fa;border-radius:10px;padding:12px 14px;white-space:pre-wrap;font-family:inherit">${e(d.reel.post || '')}</pre>
+<h3 style="font-size:16px;margin:20px 0 4px">2. Carrusel · me enseña y lo guardo</h3>` : ''}
 <p>Carrusel listo: <b>${e(titulo)}</b>. Van ${n} láminas en orden (01, 02…).</p>
 <p>Súbelas como <b>carrusel</b> en Instagram (máximo 20 fotos) y en TikTok en <b>modo foto</b>, con una canción en tendencia. Texto para copiar:</p>
 <pre style="background:#f5f3fa;border-radius:10px;padding:12px 14px;white-space:pre-wrap;font-family:inherit">${e(d.post || '')}</pre>
@@ -101,10 +126,10 @@ async function main() {
     const errores = validarCarrusel(d);
     if (errores.length) throw new Error(`${file}: el carrusel no se generó:\n  - ` + errores.join('\n  - '));
     const dir = path.resolve(a.salida, slug(d.nombre || d.slides[0].titulo.join(' ')));
-    const files = await withBrowser(b => renderCarrusel(b, d, dir));
-    console.log(`Carrusel listo (${files.length} láminas): ${dir}`);
+    const [files, reel] = await withBrowser(async b => [await renderCarrusel(b, d, dir), await renderReel(b, d, dir, m => console.log(m))]);
+    console.log(`Carrusel listo (${files.length} láminas)${reel.length ? ' + reel' : ''}: ${dir}`);
     if (a.enviar) {
-      const r = await sendEmail(correo(d, files.length), files);
+      const r = await sendEmail(correo(d, files.length, reel.length > 0), [...reel, ...files]);
       console.log(`  correo enviado (${r.id})`);
     }
   }

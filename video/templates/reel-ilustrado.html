@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Reel ilustrado (20-30 s, 1080×1920): la microhistoria del carrusel con UN momento de
+   revelación. Reel = me descubre; carrusel = me enseña y lo guardo.
+   Fondos: escenas de OpenAI sin texto (video/arte/<carrusel>/reel-NN.jpg); el texto exacto,
+   los contadores y la fórmula se animan aquí encima. */
+.frame{background:#0f0a1e}
+.bg{position:absolute;inset:-40px;background-size:cover;background-position:center;opacity:0;will-change:transform,opacity}
+.bg.vacio{background:radial-gradient(80% 50% at 50% 45%, color-mix(in srgb, var(--c) 30%, transparent), transparent 70%), radial-gradient(110% 60% at 0% 100%, rgba(124,58,237,.45), transparent 60%), #0f0a1e}
+.top{position:absolute;left:0;right:0;top:0;height:46%;background:linear-gradient(180deg, rgba(15,10,30,.85) 0%, rgba(15,10,30,.6) 55%, rgba(15,10,30,0) 100%);pointer-events:none}
+.dim{position:absolute;inset:0;background:rgba(15,10,30,.62);opacity:0}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--c);z-index:20;pointer-events:none;box-shadow:0 0 2.4cqw var(--c), inset 0 0 2.4cqw var(--c)}
+.brand{position:absolute;left:7cqw;top:6cqw;font-family:var(--font-brand);font-weight:900;font-size:4.4cqw;letter-spacing:.14em;z-index:9;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.8)}
+.brand span{color:var(--pink)}
+.hob{position:absolute;right:7cqw;top:5.6cqw;font-size:3.6cqw;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--bg);background:var(--c);
+  padding:1cqw 3cqw;border-radius:99px;z-index:9;box-shadow:0 0 3cqw var(--c)}
+
+.cap{position:absolute;left:7cqw;right:7cqw;top:20cqw;text-align:center;z-index:6;opacity:0}
+.cap span{display:block;font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.03;white-space:nowrap;
+  -webkit-text-stroke:1.3cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.55);font-size:10.5cqw;color:#fff;text-transform:none}
+.cap span.k{color:var(--c);font-size:15cqw}
+.cap span.s{font-size:7.2cqw}
+
+/* Contador: una pastilla que va cambiando de valor */
+.cont{position:absolute;left:50%;top:860px;transform:translateX(-50%);z-index:6;opacity:0;display:flex;flex-direction:column;align-items:center;gap:1.6cqw}
+.cont .lab{font-size:5.4cqw;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.04em;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
+.cont .val{font-family:var(--font-title);font-weight:900;font-size:19cqw;line-height:1;color:var(--c);background:rgba(15,10,30,.82);border:.6cqw solid var(--c);
+  border-radius:6cqw;padding:2cqw 7cqw;box-shadow:0 0 5cqw var(--c);white-space:nowrap}
+.cont .dots{display:flex;gap:2cqw}
+.cont .dots i{width:3.4cqw;height:3.4cqw;border-radius:50%;background:rgba(255,255,255,.25);border:.4cqw solid #fff}
+.cont .dots i.on{background:var(--c);box-shadow:0 0 2cqw var(--c)}
+
+/* Pregunta: anillo de tiempo para pensar */
+.ring{position:absolute;left:50%;top:880px;width:240px;height:240px;margin-left:-120px;z-index:6;opacity:0}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:13cqw;color:var(--c);text-shadow:0 0 3cqw var(--c)}
+.ring .disc{position:absolute;inset:14px;border-radius:50%;background:rgba(15,10,30,.75)}
+
+/* Fórmula: se arma término por término */
+.form{position:absolute;left:0;right:0;top:760px;z-index:6;opacity:0;display:flex;flex-direction:column;align-items:center;gap:5cqw}
+.form .row{display:flex;justify-content:center;align-items:flex-start;gap:1.6cqw}
+.form .term{display:flex;flex-direction:column;align-items:center;gap:1.6cqw;opacity:0}
+.form .term b{font-family:var(--font-title);font-weight:900;font-size:16cqw;line-height:1;color:#fff;-webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill}
+.form .term.k b{color:var(--c)}
+.form .term.op b{color:rgba(255,255,255,.7)}
+.form .term small{font-size:3.4cqw;font-weight:900;color:#fff;background:rgba(15,10,30,.8);border-radius:2cqw;padding:.8cqw 2cqw;text-transform:uppercase;letter-spacing:.03em;text-align:center;line-height:1.2;max-width:24cqw}
+.form .res{opacity:0;display:flex;flex-direction:column;align-items:center;gap:2cqw}
+.form .res b{font-family:var(--font-title);font-weight:900;font-size:13cqw;color:var(--bg);background:var(--c);border-radius:5cqw;padding:1cqw 6cqw;box-shadow:0 0 6cqw var(--c);white-space:nowrap}
+.form .res small{font-size:6cqw;font-weight:900;color:#fff;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
+
+/* Cierre */
+.cta{position:absolute;left:7cqw;right:7cqw;top:880px;z-index:7;opacity:0;display:flex;flex-direction:column;align-items:center;gap:4cqw}
+.cta .card{background:rgba(15,10,30,.88);border:.6cqw solid var(--c);border-radius:5cqw;padding:5cqw;display:flex;flex-direction:column;gap:2cqw;text-align:center;box-shadow:0 0 5cqw rgba(0,0,0,.6)}
+.cta .card b{font-size:6.6cqw;font-weight:900;line-height:1.2}
+.cta .card span{font-size:5cqw;font-weight:800;color:var(--c)}
+.cta .url{font-family:var(--font-brand);font-weight:700;font-size:6.4cqw;background:var(--brand);color:#fff;padding:2.6cqw 6cqw;border-radius:4cqw;box-shadow:0 0 4cqw rgba(124,58,237,.7)}
+.bar{position:absolute;left:7cqw;right:7cqw;top:14.6cqw;height:.9cqw;border-radius:1cqw;background:rgba(255,255,255,.18);z-index:9;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--c)}
+</style></head>
+<body>
+<div class="frame" id="frame">
+  <div id="bgs"></div>
+  <div class="dim" id="dim"></div>
+  <div class="top"></div>
+  <div class="neon"></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+  <div class="hob" id="hob"></div>
+  <div class="bar"><i id="bar"></i></div>
+  <div id="scenes"></div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, E, T0, TOTAL;
+function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<b style="color:var(--c)">$1</b>'); }
+function capHTML(lines) {
+  return (lines || []).map(function (l) { var t = typeof l === 'string' ? l : l[0], k = typeof l === 'string' ? '' : l[1]; return '<span class="' + k + '">' + esc(t) + '</span>'; }).join('');
+}
+window.setup = function (data) {
+  D = data; E = data.reel.escenas;
+  var fr = $('frame'); fr.style.setProperty('--c', (data.hobby && data.hobby.color) || '#fbbf24');
+  $('hob').textContent = (data.hobby ? data.hobby.icono + ' ' : '') + data.materia;
+  // Tiempos
+  T0 = []; var t = 0; E.forEach(function (e) { T0.push(t); t += e.dur || 3.5; }); TOTAL = t;
+  // Fondos (uno por escena; "fondo_de" reutiliza el de otra escena)
+  $('bgs').innerHTML = E.map(function (e, i) {
+    var src = (data.reel_fondos || [])[e.fondo_de != null ? e.fondo_de : i];
+    return '<div class="bg' + (src ? '' : ' vacio') + '" id="bg' + i + '"' + (src ? ' style="background-image:url(\'' + src + '\')"' : '') + '></div>';
+  }).join('');
+  // Escenas
+  $('scenes').innerHTML = E.map(function (e, i) {
+    var h = '<div class="cap" id="cap' + i + '">' + capHTML(e.lineas) + '</div>';
+    if (e.tipo === 'contador') h += '<div class="cont" id="cont' + i + '"><div class="lab" id="cl' + i + '"></div><div class="val" id="cv' + i + '"></div><div class="dots">' + e.contador.valores.map(function (_, k) { return '<i id="cd' + i + '_' + k + '"></i>'; }).join('') + '</div></div>';
+    if (e.tipo === 'pregunta') h += '<div class="ring" id="ring' + i + '"><div class="disc"></div><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3.4"/><circle id="rb' + i + '" cx="20" cy="20" r="17" fill="none" stroke="var(--c)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="0"/></svg><b id="rn' + i + '">3</b></div>';
+    if (e.tipo === 'formula') h += '<div class="form" id="form' + i + '"><div class="row">' + e.formula.terminos.map(function (x, k) {
+      return '<div class="term ' + (x.cls || '') + '" id="ft' + i + '_' + k + '"><b>' + esc(x.t) + '</b>' + (x.l ? '<small>' + esc(x.l) + '</small>' : '') + '</div>'; }).join('') + '</div>' +
+      (e.formula.resultado ? '<div class="res" id="fr' + i + '"><b>' + esc(e.formula.resultado) + '</b>' + (e.formula.resultado_texto ? '<small>' + esc(e.formula.resultado_texto) + '</small>' : '') + '</div>' : '') + '</div>';
+    if (e.tipo === 'cta') h += '<div class="cta" id="cta' + i + '"><div class="card"><b>' + md(e.cta.linea) + '</b>' + (e.cta.sub ? '<span>' + esc(e.cta.sub) + '</span>' : '') + '</div><div class="url">pasas.mx</div></div>';
+    return h;
+  }).join('');
+  document.querySelectorAll('.cap').forEach(function (c) { c.querySelectorAll('span').forEach(function (s) { fitLines([s], 1080 - 2 * 76); }); });
+  document.querySelectorAll('.form .row').forEach(function (r) { var w = r.scrollWidth; if (w > 1000) r.style.zoom = 1000 / w; });
+  window.ready = Promise.all([].map.call(document.querySelectorAll('.bg:not(.vacio)'), function (el) {
+    return new Promise(function (ok) { var im = new Image(); im.onload = im.onerror = ok; im.src = el.style.backgroundImage.slice(5, -2); });
+  }));
+  window.render(0);
+  return TOTAL;
+};
+window.momentos = function () { return E.map(function (e, i) { return T0[i] + Math.min((e.dur || 3.5) - 0.3, 2.2); }); };
+
+window.render = function (t) {
+  var on = 0; for (var i = 0; i < E.length; i++) if (t >= T0[i]) on = i;
+  $('bar').style.width = (100 * clamp(t / TOTAL)) + '%';
+  E.forEach(function (e, i) {
+    var a = T0[i], b = a + (e.dur || 3.5), last = i === E.length - 1;
+    // Fondo: fundido cruzado + zoom lento (Ken Burns) que alterna dirección
+    var bg = $('bg' + i), vis = clamp((t - a + 0.35) / 0.35) * (last ? 1 : clamp((b + 0.35 - t) / 0.35));
+    if (t < a - 0.35 || t > b + 0.35) vis = 0;
+    bg.style.opacity = vis;
+    var p = clamp((t - a) / (b - a)), z = 1.1 - 0.08 * p, dx = (i % 2 ? -1 : 1) * 20 * (p - 0.5);
+    bg.style.transform = 'translate(' + dx + 'px,' + (-10 * p) + 'px) scale(' + z + ')';
+    // Textos
+    var c = $('cap' + i), w = win(t, a, b, i > 0, !last);
+    c.style.opacity = w;
+    c.querySelectorAll('span').forEach(function (s, k) { var q = clamp((t - a - 0.05 - k * 0.2) / 0.28); s.style.opacity = q; s.style.transform = 'scale(' + (0.85 + 0.15 * back(q)) + ')'; });
+    if (e.tipo === 'contador') {
+      var C = e.contador, n = C.valores.length, step = (b - a - 0.6) / n, k = Math.min(n - 1, Math.max(0, Math.floor((t - a - 0.4) / step)));
+      var el = $('cont' + i); el.style.opacity = t >= a + 0.3 ? w : 0;
+      $('cl' + i).textContent = C.etiquetas[k]; $('cv' + i).textContent = C.valores[k];
+      var q = clamp((t - a - 0.4 - k * step) / 0.25); $('cv' + i).style.transform = 'scale(' + (0.8 + 0.2 * back(q)) + ')';
+      for (var j = 0; j < n; j++) $('cd' + i + '_' + j).classList.toggle('on', j <= k && t >= a + 0.4);
+    }
+    if (e.tipo === 'pregunta') {
+      var r = $('ring' + i); r.style.opacity = w; var left = Math.max(0, b - 0.15 - t), span = b - a - 0.5;
+      $('rn' + i).textContent = Math.max(1, Math.ceil(left)); $('rb' + i).setAttribute('stroke-dashoffset', (106.8 * (1 - clamp(left / span))).toFixed(1));
+    }
+    if (e.tipo === 'formula') {
+      $('form' + i).style.opacity = w;
+      e.formula.terminos.forEach(function (_, k) { pop($('ft' + i + '_' + k), t, a + 0.7 + k * 0.38, 0.3); });
+      var rs = $('fr' + i); if (rs) { var tr = a + 0.9 + e.formula.terminos.length * 0.38; rs.style.opacity = clamp((t - tr) / 0.3); rs.style.transform = 'scale(' + (0.8 + 0.2 * back(clamp((t - tr) / 0.35))) + ')'; }
+    }
+    if (e.tipo === 'cta') { var ct = $('cta' + i); show(ct, clamp((t - a - 0.5) / 0.4)); }
+  });
+  var ef = E[on];
+  $('dim').style.opacity = ef.tipo === 'formula' ? clamp((t - T0[on] - 0.4) / 0.4) : (ef.tipo === 'cta' ? 0.35 : 0);
+};
+</script>
+</body></html>

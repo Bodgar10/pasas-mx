@@ -25,7 +25,7 @@ on:
         type: boolean
         default: true
       solo:
-        description: 'Solo estas láminas (ej. 3,5). Vacío = las que falten'
+        description: 'Solo estas láminas (ej. 3,5; "r" = fondos del reel). Vacío = lo que falte'
         type: string
         default: ''
       forzar:
@@ -36,6 +36,11 @@ on:
         description: 'Mandar el correo'
         type: boolean
         default: true
+      destinatario:
+        description: 'A quién: equipo (CARRUSELES_EMAIL_TO) o retos (ARCADE_EMAIL_TO, para pruebas)'
+        type: choice
+        options: [equipo, retos]
+        default: equipo
 
 permissions:
   contents: write   # para guardar las ilustraciones en video/arte/
@@ -47,7 +52,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     defaults:
       run:
         working-directory: video
@@ -114,7 +119,7 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           # Los carruseles van a CARRUSELES_EMAIL_TO; si no existe, al mismo correo de los retos
-          ARCADE_EMAIL_TO: ${{ secrets.CARRUSELES_EMAIL_TO || secrets.ARCADE_EMAIL_TO }}
+          ARCADE_EMAIL_TO: ${{ inputs.destinatario == 'retos' && secrets.ARCADE_EMAIL_TO || secrets.CARRUSELES_EMAIL_TO || secrets.ARCADE_EMAIL_TO }}
         run: |
           ENVIAR=--enviar
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.enviar }}" != "true" ]; then ENVIAR=""; fi

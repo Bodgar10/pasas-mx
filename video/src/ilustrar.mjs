@@ -256,15 +256,61 @@ export async function ilustrar(d, { solo = null, forzar = false, log = console.l
   return { dir, estado };
 }
 
+// ─── Reel: un fondo por escena (sin texto), 9:16 ───
+// El reel es la microhistoria del carrusel (descubrir); el texto y la animación los pone
+// templates/reel-ilustrado.html encima. Fondos en arte/<carrusel>/reel-NN.jpg.
+export function promptReel(d, e, i) {
+  const s = { arte: { escena: e.arte.escena, zona_texto: 'arriba' } };
+  return promptDe(d, s, i)
+    .replace('Vertical 4:5 framing.', 'Vertical 9:16 framing for a phone reel (Instagram/TikTok).')
+    .replace(/SLIDE \d+ of \d+\./, `REEL SCENE ${i + 1} of ${d.reel.escenas.length}. This is a background for an animated video: big captions will be animated on the upper part, so keep the upper 40% calm; the action and the Pasita live in the middle and lower part (but keep the bottom 12% free of key elements, the app UI covers it).`);
+}
+
+export async function ilustrarReel(d, { forzar = false, log = console.log } = {}) {
+  if (!d.reel?.escenas?.length) return { estado: {} };
+  const dir = path.join(ARTE, slugCarrusel(d));
+  await mkdir(dir, { recursive: true });
+  const fEstado = path.join(dir, 'estado.json');
+  const estado = existsSync(fEstado) ? JSON.parse(await readFile(fEstado, 'utf8')) : {};
+  const tareas = d.reel.escenas.map((e, i) => ({ e, i })).filter(({ e }) => e.arte?.escena);
+  async function una({ e, i }) {
+    const n = `reel-${String(i + 1).padStart(2, '0')}`, prompt = promptReel(d, e, i), h = hash(prompt + MODEL + QUALITY);
+    const archivo = path.join(dir, `${n}.jpg`);
+    if (!forzar && estado[n]?.ok && estado[n].hash === h && existsSync(archivo)) { log(`  ${n}: ya estaba`); return; }
+    for (let intento = 1; intento <= 3; intento++) {
+      try {
+        const t0 = Date.now();
+        await aJpg(await llamarOpenAI(prompt), archivo, 'scale=-2:1920,crop=1080:1920');
+        estado[n] = { ok: true, hash: h, modo: 'reel', modelo: MODEL, calidad: QUALITY, segundos: Math.round((Date.now() - t0) / 1000), fecha: new Date().toISOString() };
+        log(`  ${n}: lista (${estado[n].segundos} s)`);
+        return;
+      } catch (err) {
+        estado[n] = { ok: false, hash: h, error: err.message, intento, fecha: new Date().toISOString() };
+        log(`  ${n}: falló (intento ${intento}): ${err.message}`);
+        if (!err.reintentable && !/fetch failed|ECONN|timeout/i.test(err.message)) return;
+        await dormir(5000 * intento);
+      }
+    }
+  }
+  for (let k = 0; k < tareas.length; k += 3) await Promise.all(tareas.slice(k, k + 3).map(una));
+  await writeFile(fEstado, JSON.stringify(estado, null, 2) + '\n');
+  return { estado };
+}
+
 async function main() {
-  const { values: a } = parseArgs({ options: { data: { type: 'string', multiple: true }, solo: { type: 'string' }, forzar: { type: 'boolean', default: false } } });
+  const { values: a } = parseArgs({ options: { data: { type: 'string', multiple: true }, solo: { type: 'string' }, forzar: { type: 'boolean', default: false }, reel: { type: 'boolean' } } });
   if (!a.data?.length) throw new Error('Falta --data');
   const solo = a.solo ? a.solo.split(',').map(Number) : null;
   let fallas = 0;
   for (const f of a.data) {
     const d = JSON.parse(await readFile(f, 'utf8'));
     console.log(`Ilustrando ${f} con ${MODEL} (${QUALITY})`);
-    const { estado } = await ilustrar(d, { solo, forzar: a.forzar });
+    // "solo" = números de lámina; "r" en solo (o --reel) = rehacer los fondos del reel
+    const soloL = solo ? solo.filter(n => !Number.isNaN(n)) : null;
+    const conReel = a.reel ?? (!solo || /r/i.test(a.solo));
+    if (!solo || soloL.length) await ilustrar(d, { solo: soloL, forzar: a.forzar });
+    if (conReel) await ilustrarReel(d, { forzar: a.forzar && /r/i.test(a.solo || 'r') });
+    const estado = JSON.parse(await readFile(path.join(ARTE, slugCarrusel(d), 'estado.json'), 'utf8').catch(() => '{}'));
     fallas += Object.values(estado).filter(e => !e.ok).length;
   }
   if (fallas) console.log(`⚠ ${fallas} lámina(s) sin ilustración: saldrán con el diseño sin ilustración y se pueden reintentar con --solo`);

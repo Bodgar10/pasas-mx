@@ -275,5 +275,243 @@
     }
    }
   }
- ]
+ ],
+ "reel": {
+  "post": "La Pasita arranca desde cero y cada segundo su velocímetro sube 4 m/s. ¿Qué tan rápido va a los 6 segundos? 🏎️\n\nSin darte cuenta, acabas de usar una fórmula de física. El paso a paso y el acordeón para tu examen están en el carrusel de hoy.\n\n#fisica #mrua #prepa #videojuegos #pasasmx",
+  "escenas": [
+   {
+    "tipo": "texto",
+    "dur": 3.0,
+    "lineas": [
+     [
+      "La Pasita arranca",
+      "s"
+     ],
+     [
+      "desde cero",
+      "k"
+     ]
+    ],
+    "arte": {
+     "escena": {
+      "accion": "The Pasita sits in her kart on the starting line as the starting lights turn green, tires smoking",
+      "protagonista": "The Pasita in her kart, center-lower, big, focused face, helmet and goggles",
+      "objeto": "Starting light gantry glowing green above the track and the start line",
+      "foreground": "Tire smoke and a traffic cone",
+      "midground": "The Pasita's kart",
+      "background": "Grandstands at sunset",
+      "iluminacion": "Green glow from the start lights, golden sunset",
+      "emocion": "Anticipation",
+      "composicion": "Front three-quarter low shot, kart in the middle-lower part"
+     }
+    }
+   },
+   {
+    "tipo": "contador",
+    "dur": 4.4,
+    "lineas": [
+     [
+      "Cada segundo,",
+      "s"
+     ],
+     [
+      "4 m/s más",
+      "k"
+     ]
+    ],
+    "contador": {
+     "etiquetas": [
+      "Segundo 1",
+      "Segundo 2",
+      "Segundo 3"
+     ],
+     "valores": [
+      "4 m/s",
+      "8 m/s",
+      "12 m/s"
+     ]
+    },
+    "arte": {
+     "escena": {
+      "accion": "Over-the-shoulder view from behind the Pasita driving fast, a big glowing holographic speedometer floating ahead of the kart with its needle climbing",
+      "protagonista": "The Pasita seen from behind, lower part of the frame, helmet and goggles",
+      "objeto": "Big round glowing speedometer hologram (no digits)",
+      "foreground": "Steering wheel and her hands",
+      "midground": "The speedometer hologram",
+      "background": "Track with motion blur and grandstands",
+      "iluminacion": "Golden hologram glow and sunset",
+      "emocion": "Rising speed",
+      "composicion": "POV over-the-shoulder, speedometer in the middle of the frame"
+     }
+    }
+   },
+   {
+    "tipo": "pregunta",
+    "dur": 3.4,
+    "lineas": [
+     [
+      "¿Qué tan rápido va",
+      "s"
+     ],
+     [
+      "a los 6 segundos?",
+      "k"
+     ]
+    ],
+    "arte": {
+     "escena": {
+      "accion": "The Pasita speeds down a long straight with a glowing speed trail, glancing at a stopwatch hologram",
+      "protagonista": "The Pasita in her kart, side view, middle of the frame",
+      "objeto": "A glowing stopwatch hologram floating next to the kart",
+      "foreground": "Track curb blurred by speed",
+      "midground": "The kart racing",
+      "background": "Mountains and sunset sky",
+      "iluminacion": "Golden trail light and rim light",
+      "emocion": "Suspense",
+      "composicion": "Dynamic side tracking shot"
+     }
+    }
+   },
+   {
+    "tipo": "contador",
+    "dur": 3.4,
+    "lineas": [
+     [
+      "Sigue sumando",
+      "s"
+     ],
+     [
+      "lo mismo",
+      "k"
+     ]
+    ],
+    "contador": {
+     "etiquetas": [
+      "Segundo 4",
+      "Segundo 5",
+      "Segundo 6"
+     ],
+     "valores": [
+      "16 m/s",
+      "20 m/s",
+      "24 m/s"
+     ]
+    },
+    "arte": {
+     "escena": {
+      "accion": "The Pasita overtakes a rival kart at full speed right before the finish line, confetti beginning to fly",
+      "protagonista": "The Pasita in her kart, big, one fist raised",
+      "objeto": "The overtaking moment at the checkered finish line",
+      "foreground": "Checkered line and confetti",
+      "midground": "Two karts side by side, the Pasita ahead with a long speed trail",
+      "background": "Cheering grandstands and fireworks",
+      "iluminacion": "Fireworks and golden light",
+      "emocion": "Triumph",
+      "composicion": "Low front shot at the finish line"
+     }
+    }
+   },
+   {
+    "tipo": "texto",
+    "dur": 2.4,
+    "lineas": [
+     [
+      "Parece un juego…",
+      "s"
+     ],
+     [
+      "pero es física",
+      "k"
+     ]
+    ],
+    "arte": {
+     "escena": {
+      "accion": "The Pasita stands on her kart in the pit lane taking off her goggles, amazed, a big glowing light bulb appearing above her head",
+      "protagonista": "The Pasita, medium shot, center-lower, pointing up",
+      "objeto": "A big glowing light bulb above her",
+      "foreground": "Tire stack",
+      "midground": "The Pasita on her kart",
+      "background": "Pit garage lights blurred",
+      "iluminacion": "Golden eureka glow",
+      "emocion": "Eureka",
+      "composicion": "Medium shot, character in the middle-lower part"
+     }
+    }
+   },
+   {
+    "tipo": "formula",
+    "dur": 5.0,
+    "fondo_de": 4,
+    "lineas": [
+     [
+      "Acabas de usar",
+      "s"
+     ],
+     [
+      "una fórmula",
+      "k"
+     ]
+    ],
+    "formula": {
+     "terminos": [
+      {
+       "t": "vf",
+       "cls": "k",
+       "l": "lo que marca el velocímetro"
+      },
+      {
+       "t": "=",
+       "cls": "op"
+      },
+      {
+       "t": "vi",
+       "l": "arranca en 0"
+      },
+      {
+       "t": "+",
+       "cls": "op"
+      },
+      {
+       "t": "a·t",
+       "cls": "k",
+       "l": "4 m/s cada segundo"
+      }
+     ],
+     "resultado": "0 + 4 × 6 = 24 m/s",
+     "resultado_texto": "Eso es un MRUA"
+    }
+   },
+   {
+    "tipo": "cta",
+    "dur": 3.6,
+    "lineas": [
+     [
+      "¿Quieres el",
+      "s"
+     ],
+     [
+      "acordeón?",
+      "k"
+     ]
+    ],
+    "cta": {
+     "linea": "El paso a paso para tu examen está en el **carrusel de hoy**",
+     "sub": "Guárdalo y practica"
+    },
+    "arte": {
+     "escena": {
+      "accion": "The Pasita celebrates on the podium holding a trophy, winking at the camera",
+      "protagonista": "The Pasita, medium-close, lower half, winking, trophy raised",
+      "objeto": "A trophy with the PASAS raisin emblem",
+      "foreground": "Confetti",
+      "midground": "The Pasita on the podium",
+      "background": "Stadium lights bokeh at night",
+      "iluminacion": "Warm golden light",
+      "emocion": "Celebration",
+      "composicion": "Medium-close, character in the lower half"
+     }
+    }
+   }
+  ]
+ }
 }
