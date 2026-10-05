@@ -18,13 +18,13 @@ import { parseArgs } from 'node:util';
 
 const VIDEO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const ARTE = path.join(VIDEO, 'arte');
-const REFS = ['pasita-confiada.png', 'pasita-pensativa.png', 'pasita-celebrando.png'].map(f => path.join(ARTE, 'referencias', f));
+export const REFS = ['pasita-confiada.png', 'pasita-pensativa.png', 'pasita-celebrando.png'].map(f => path.join(ARTE, 'referencias', f));
 // Ejemplo aprobado por el equipo: dirección de arte y acomodo de los textos (modo "completa")
 const REF_ESTILO = path.join(ARTE, 'referencias', 'estilo-lamina.png');
 // Láminas propias aprobadas por el equipo: el nivel a mantener (riqueza narrativa, texto, Pasita)
-const REF_APROBADAS = ['aprobada-1.jpg', 'aprobada-2.jpg'].map(f => path.join(ARTE, 'referencias', f)).filter(f => existsSync(f));
-const MODEL = process.env.OPENAI_IMAGE_MODEL || 'gpt-image-2';
-const QUALITY = process.env.OPENAI_IMAGE_QUALITY || 'medium';
+export const REF_APROBADAS = ['aprobada-1.jpg', 'aprobada-2.jpg'].map(f => path.join(ARTE, 'referencias', f)).filter(f => existsSync(f));
+export const MODEL = process.env.OPENAI_IMAGE_MODEL || 'gpt-image-2';
+export const QUALITY = process.env.OPENAI_IMAGE_QUALITY || 'medium';
 
 export function slugCarrusel(d) {
   return (d.nombre || d.slides[0].titulo.join(' ')).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -65,7 +65,7 @@ STRICT RULES:
 - No violence beyond cartoon action, nothing scary or suggestive.`.trim();
 
 // arte.escena puede ser un texto o, mejor, un objeto con todos sus campos (ver CARRUSELES.md)
-const CAMPOS = [
+export const CAMPOS = [
   ['accion', 'MAIN ACTION'], ['protagonista', 'PROTAGONIST'], ['objeto', 'PROTAGONIST TEACHING OBJECT'],
   ['foreground', 'FOREGROUND'], ['midground', 'MIDGROUND'], ['background', 'BACKGROUND'],
   ['iluminacion', 'LIGHTING'], ['emocion', 'EMOTION'], ['composicion', 'COMPOSITION / SHOT'],
@@ -178,10 +178,10 @@ ${i + 1}/${d.slides.length}
 ${textosDe(d, s, i)}${resaltados({ ...s, arte: undefined, svg: undefined }).length ? `\n\nHIGHLIGHT (accent color): ${[...new Set(resaltados({ ...s, arte: undefined, svg: undefined }))].join(' · ')}` : ''}`.trim();
 }
 
-const hash = s => createHash('sha256').update(s).digest('hex').slice(0, 16);
-const dormir = ms => new Promise(r => setTimeout(r, ms));
+export const hash = s => createHash('sha256').update(s).digest('hex').slice(0, 16);
+export const dormir = ms => new Promise(r => setTimeout(r, ms));
 
-async function llamarOpenAI(prompt, { refs = REFS, size = '1024x1536', calidad = QUALITY } = {}) {
+export async function llamarOpenAI(prompt, { refs = REFS, size = '1024x1536', calidad = QUALITY } = {}) {
   const key = process.env.OPENAI_API_KEY;
   if (!key) throw new Error('Falta OPENAI_API_KEY');
   const fd = new FormData();
@@ -205,7 +205,7 @@ async function llamarOpenAI(prompt, { refs = REFS, size = '1024x1536', calidad =
 }
 
 // 1024×1536 (2:3) → 1080×1350 (4:5) recortando arriba y abajo por igual
-function aJpg(png, destino, vf = 'scale=1080:-2,crop=1080:1350') {
+export function aJpg(png, destino, vf = 'scale=1080:-2,crop=1080:1350') {
   const tmp = destino + '.src.png';
   return writeFile(tmp, png).then(() => {
     const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', tmp, '-vf', vf, '-q:v', '3', destino]);

@@ -17,6 +17,7 @@ import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mjs';
 import { FONDOS } from './pasita.mjs';
+import { archivoPortadaIA, slugVideo } from './portada-ia.mjs';
 import { leerAudios, tiemposDe, armarPista, ponerPista } from './voz.mjs';
 
 const TEMATICAS = ['Anime & Manga', 'Videojuegos', 'K-pop & K-dramas', 'Fútbol'];
@@ -132,6 +133,13 @@ async function main() {
     const portada = path.join(dir, `${nombre}-portada.png`);
     await renderImage(b, 'portada-tematica.html', { ...d, duracion }, portada);
     console.log(`Portada: ${portada}`);
+    if (d.portada_ia) {
+      if (existsSync(archivoPortadaIA(d))) {
+        const f = path.join(dir, `${nombre}-portada-ia.png`);
+        await renderImage(b, 'portada-ia.html', { ...d, duracion, portada_ia_img: `../arte/portadas/${slugVideo(d)}.jpg` }, f);
+        console.log(`Portada con ChatGPT: ${f}`);
+      } else console.log(`  aviso: falta la portada con ChatGPT (arte/portadas/${slugVideo(d)}.jpg): corre el workflow "Portada con OpenAI" y haz git pull`);
+    }
     if (a.revisar) {
       const files = await renderFrames(b, 'fmt-tematica.html', d, path.join(dir, nombre));
       console.log(`Cuadros para revisar:\n  ${files.join('\n  ')}`);

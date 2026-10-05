@@ -13,6 +13,7 @@ import { parseArgs } from 'node:util';
 import { withBrowser, renderVideo, renderFrames, renderImage } from './render.mjs';
 import { leerAudios, tiemposDe, armarPista, ponerPista } from './voz.mjs';
 import { rename, rm } from 'node:fs/promises';
+import { archivoPortadaIA, slugVideo } from './portada-ia.mjs';
 
 export const TIPOS = ['gancho', 'grande', 'numero', 'texto', 'cierre'];
 export const POSES = ['pensativa', 'celebrando', 'aprobando', 'confiada', 'lapiz', 'flexionando'];
@@ -107,6 +108,14 @@ async function main() {
       const f = path.join(dir, `${nombre}-portada-${v}.png`);
       await renderImage(b, tpl, d, f);
       console.log(`Portada ${v.toUpperCase()}: ${f}`);
+    }
+    // Portada hecha con OpenAI (workflow "Portada con OpenAI"), con la duración real encima
+    if (d.portada_ia) {
+      if (existsSync(archivoPortadaIA(d))) {
+        const f = path.join(dir, `${nombre}-portada-ia.png`);
+        await renderImage(b, 'portada-ia.html', { ...d, portada_ia_img: `../arte/portadas/${slugVideo(d)}.jpg` }, f);
+        console.log(`Portada con ChatGPT: ${f}`);
+      } else console.log(`  aviso: falta la portada con ChatGPT (arte/portadas/${slugVideo(d)}.jpg): corre el workflow "Portada con OpenAI" y haz git pull`);
     }
     if (a.revisar) {
       const files = await renderFrames(b, 'pasita.html', d, path.join(dir, nombre));

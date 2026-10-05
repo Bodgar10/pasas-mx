@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Portada hecha por OpenAI (src/portada-ia.mjs) + lo que solo se sabe al armar el video:
+   la duración real y PASAS.MX, abajo pero dentro del 3:4 que muestra el grid (y 240–1680). */
+.frame{background:#0f0a1e}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.sh{position:absolute;left:0;right:0;bottom:0;height:560px;background:linear-gradient(180deg, rgba(15,10,30,0) 0%, rgba(15,10,30,.55) 45%, rgba(15,10,30,.85) 100%)}
+.foot{position:absolute;left:9cqw;right:9cqw;top:1545px;display:flex;justify-content:space-between;align-items:center}
+.dur{display:flex;align-items:center;gap:2cqw;border:.4cqw solid rgba(255,255,255,.55);background:rgba(15,10,30,.8);border-radius:99px;padding:1.4cqw 4cqw 1.4cqw 1.6cqw;font-size:4.6cqw;font-weight:800}
+.dur i{width:7cqw;height:7cqw;border-radius:50%;border:.4cqw solid #fff;display:grid;place-items:center}
+.dur i svg{width:2.8cqw;height:2.8cqw;margin-left:.5cqw}
+.brand{font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
+.brand span{color:var(--pink)}
+</style></head>
+<body>
+<div class="frame" id="frame">
+  <div class="bg" id="bg"></div>
+  <div class="sh"></div>
+  <div class="foot"><div class="dur"><i><svg viewBox="0 0 10 12"><path d="M0 0 L10 6 L0 12Z" fill="#fff"/></svg></i><span id="dur"></span></div><div class="brand">PASAS<span>.</span>MX</div></div>
+</div>
+<script src="anim.js"></script>
+<script>
+window.setup = function (d) {
+  $('bg').style.backgroundImage = 'url("' + d.portada_ia_img + '")';
+  // Lecciones (tematica.mjs) pasan la duración real; los tips la calculan de sus pantallas
+  $('dur').textContent = d.duracion ? Math.max(10, Math.round(d.duracion / 5) * 5) + ' segundos' : etiquetaDuracion(d.pantallas || []);
+  window.ready = new Promise(function (ok) { var im = new Image(); im.onload = im.onerror = ok; im.src = d.portada_ia_img; });
+  return 0;
+};
+window.render = function () {};
+</script>
+</body></html>

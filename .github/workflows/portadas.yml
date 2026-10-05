@@ -1,0 +1,69 @@
+# Portada ilustrada con OpenAI ("hazla con ChatGPT") para un video de la Pasita.
+# La dispara Claude desde la skill de videos cuando alguien del equipo la pide:
+#   gh api -X POST repos/Bodgar10/pasas-mx/actions/workflows/portadas.yml/dispatches \
+#     -f ref=main -f "inputs[data]=data/publicados/<video>.json"
+# Lee el bloque "portada_ia" del JSON, dibuja la portada (1 imagen, ~$0.09 USD) y la
+# guarda en video/arte/portadas/<video>.jpg. Luego la sesión hace git pull y
+# pasita.mjs / tematica.mjs le ponen encima la duración real y PASAS.MX.
+name: Portada con OpenAI
+
+on:
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'JSON del video dentro de video/ (ej. data/publicados/2026-10-06-bullying.json)'
+        type: string
+        required: true
+      forzar:
+        description: 'Rehacerla aunque ya exista'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # para guardar la portada en video/arte/portadas/
+
+concurrency:
+  group: portadas
+  cancel-in-progress: false
+
+jobs:
+  portada:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: video
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar ffmpeg
+        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
+      - name: Dibujar portada con OpenAI
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_IMAGE_MODEL: ${{ vars.OPENAI_IMAGE_MODEL }}
+          OPENAI_IMAGE_QUALITY: ${{ vars.OPENAI_IMAGE_QUALITY }}
+        run: |
+          [ -n "$OPENAI_API_KEY" ] || { echo "Falta el secret OPENAI_API_KEY"; exit 1; }
+          [ -n "$OPENAI_IMAGE_MODEL" ] || unset OPENAI_IMAGE_MODEL
+          [ -n "$OPENAI_IMAGE_QUALITY" ] || unset OPENAI_IMAGE_QUALITY
+          ARGS="--data ${{ inputs.data }}"
+          [ "${{ inputs.forzar }}" = "true" ] && ARGS="$ARGS --forzar"
+          node src/portada-ia.mjs $ARGS
+
+      # Se guarda aunque falle: estado.json dice por qué
+      - name: Guardar portada
+        if: always()
+        run: |
+          [ -d arte/portadas ] || exit 0
+          git add arte/portadas/
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "pasas-bot"
+          git config user.email "hola@pasas.mx"
+          git commit -m "arte: portada con OpenAI [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
