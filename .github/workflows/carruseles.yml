@@ -11,10 +11,9 @@
 name: Carruseles de PASAS
 
 on:
-  schedule:
-    # Carruseles programados (video/data/programados.json): 12:17 UTC = 6:17 am en México.
-    # Minuto "raro" a propósito: GitHub retrasa más los horarios en punto.
-    - cron: '17 12 * * *'
+  # Sin "schedule": el cron de GitHub se saltó el envío del 5 oct. Los programados
+  # (video/data/programados.json) los dispara la tarea de Claude lun/mié/vie 6:50 am
+  # con workflow_dispatch (ilustrar=false).
   push:
     branches: [main]
     paths: ['video/data/carruseles/**.json', '!video/data/carruseles/ejemplo-*.json']

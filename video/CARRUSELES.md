@@ -263,5 +263,5 @@ Se define en el mismo JSON, en `"reel"` (modelo: `2026-10-mrua-pasita-piloto.jso
   del contador cortos (máx. ~12 caracteres).
 - Portada: `templates/portada-reel.html` con el gancho grande sobre el fondo
   `portada.fondo`. Va sin clickbait: una pregunta real del reel.
-- Envíos ya hechos: `data/programados.json` (fecha → JSON) los manda al equipo a las
-  ~6:17 am sin volver a llamar a OpenAI.
+- Envíos ya hechos: `data/programados.json` (fecha → JSON) los manda al equipo la tarea de Claude
+  (lun/mié/vie ~6:50 am) con workflow_dispatch, sin volver a llamar a OpenAI.
