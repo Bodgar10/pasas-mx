@@ -11,6 +11,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 import { ARTE, REFS, REF_APROBADAS, MODEL, QUALITY, CAMPOS, hash, llamarOpenAI, aJpg, dormir } from './ilustrar.mjs';
 
@@ -50,11 +51,12 @@ const ESTILO_PORTADA = `
 Create the COVER IMAGE of a vertical reel (Instagram / TikTok) for PASAS.MX, a Mexican learning platform for teens 13-18.
 REFERENCE IMAGES, in order: (1-2) two APPROVED images from PASAS.MX itself: the quality bar to keep (cinematic 2D
 cartoon illustration, rich color, depth, lighting, text styling) and the exact look of the Pasita; (3+) the official
-Pasita character sheet.
+Pasita character sheet. References 1-2 belong to a ninja-themed carousel: take their QUALITY and the Pasita's look
+from them, but NOT their costume, setting or symbols (no headband, no scarf, no ninja elements) unless the scene asks.
 
-FORMAT: vertical 9:16. SAFE ZONE (very important): the Instagram profile grid crops the cover to its central 3:4 area,
-so put ALL the text and the Pasita's face between 14% and 84% of the image height. Keep the bottom 16% free of text and
-key elements (a duration badge and the PASAS.MX wordmark are added there later); top and bottom edges are background only.
+FORMAT: vertical poster. Keep a calm margin of background (ceiling, sky or wall) above the title: the title starts
+around 10% from the top, never touching the top edge. Keep the bottom 15% free of text and key elements (a duration
+badge and the PASAS.MX wordmark are added there later). Nothing important near the left or right edges.
 
 LAYOUT: a big bold rounded sans-serif TITLE in the upper half of the safe zone (white, key words in the ACCENT COLOR,
 dark outline or shadow so it reads on a phone at thumbnail size). If there is a TAG, a rounded pill in the accent color
@@ -72,7 +74,7 @@ original cute raisins or generic cartoon teens, never real people.
 CHARACTER (strict consistency): the protagonist is "la Pasita", the PASAS.MX mascot exactly as in the references: wrinkled
 purple raisin body (#7C3AED with darker #4C1D95 wrinkles), big white cartoon eyes, thick eyebrows, small mouth, thin
 purple arms with 4-finger hands, thin legs, white sneakers with purple and yellow details. Identical body, color, face,
-limbs and sneakers; only pose, expression and accessories change. If she is thinking, she has BOTH hands visible: one on
+limbs and sneakers; only pose and expression change. NO costume or accessories unless the scene asks for them. If she is thinking, she has BOTH hands visible: one on
 her chin and the other on her waist.
 
 TEXT RULES:
@@ -101,18 +103,29 @@ TITLE (${titulo.length} lines): ${titulo.map(l => l.replace(/\*\*/g, '')).join('
 HIGHLIGHT (accent color): ${resaltar.join(' · ')}`.trim();
 }
 
+// OpenAI entrega 2:3; el reel es 9:16 y el grid del perfil recorta a 3:4 (deja fuera 240 px arriba y abajo).
+// La imagen va completa (sin recortar los lados) y bajada 150 px, con bandas que estiran sus bordes, para que el
+// título quede dentro del 3:4. Se guarda también el original: cambiar este acomodo no vuelve a costar.
+export function componer(original, archivo) {
+  const vf = '[0]split=3[a][b][c];[a]crop=iw:12:0:8,scale=1080:150,boxblur=20:2[t];[c]crop=iw:12:0:ih-20,scale=1080:150,boxblur=20:2[u];[t][b][u]vstack=3';
+  const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', original, '-filter_complex', vf, '-q:v', '3', archivo]);
+  if (r.status !== 0) throw new Error('ffmpeg: ' + r.stderr);
+}
+
 export async function portadaIA(d, { forzar = false, log = console.log } = {}) {
   const errores = validarPortadaIA(d);
   if (errores.length) throw new Error('La portada no se generó:\n  - ' + errores.join('\n  - '));
   await mkdir(PORTADAS, { recursive: true });
   const fEstado = path.join(PORTADAS, 'estado.json');
   const estado = existsSync(fEstado) ? JSON.parse(await readFile(fEstado, 'utf8')) : {};
-  const n = slugVideo(d), archivo = archivoPortadaIA(d), prompt = promptPortada(d), h = hash(prompt + MODEL + QUALITY);
+  const n = slugVideo(d), archivo = archivoPortadaIA(d), original = archivo.replace(/\.jpg$/, '-original.jpg'), prompt = promptPortada(d), h = hash(prompt + MODEL + QUALITY);
   if (!forzar && estado[n]?.ok && estado[n].hash === h && existsSync(archivo)) { log(`  ${n}: ya estaba`); return { archivo, ok: true }; }
   for (let intento = 1; intento <= 3; intento++) {
     try {
       const t0 = Date.now();
-      await aJpg(await llamarOpenAI(prompt, { refs: [...REF_APROBADAS, ...REFS] }), archivo, 'scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920');
+      const png = await llamarOpenAI(prompt, { refs: [...REF_APROBADAS, ...REFS] });
+      await aJpg(png, original, 'scale=1080:1620');
+      componer(original, archivo);
       estado[n] = { ok: true, hash: h, modelo: MODEL, calidad: QUALITY, segundos: Math.round((Date.now() - t0) / 1000), fecha: new Date().toISOString() };
       log(`  ${n}: lista (${estado[n].segundos} s)`);
       break;
@@ -128,8 +141,9 @@ export async function portadaIA(d, { forzar = false, log = console.log } = {}) {
 }
 
 async function main() {
-  const { values: a } = parseArgs({ options: { data: { type: 'string', multiple: true }, forzar: { type: 'boolean', default: false }, prompt: { type: 'boolean', default: false } } });
+  const { values: a } = parseArgs({ options: { data: { type: 'string', multiple: true }, forzar: { type: 'boolean', default: false }, prompt: { type: 'boolean', default: false }, componer: { type: 'boolean', default: false } } });
   if (!a.data?.length) throw new Error('Falta --data archivo.json');
+  if (a.componer) { for (const f of a.data) { const d = JSON.parse(await readFile(f, 'utf8')), o = archivoPortadaIA(d).replace(/\.jpg$/, '-original.jpg'); componer(o, archivoPortadaIA(d)); console.log('  recompuesta: ' + archivoPortadaIA(d)); } return; }
   let fallas = 0;
   for (const f of a.data) {
     const d = JSON.parse(await readFile(f, 'utf8'));
