@@ -37,6 +37,42 @@ galería**. Poses opcionales: `portada_pose` (A) y `portada_pose_b` (B).
 
 Los títulos se achican solos si no caben: Nunito Black es ancha.
 
+### Portada con ChatGPT (OpenAI)
+
+Cuando piden "haz la portada con ChatGPT" (o "ilustrada"), OpenAI dibuja la
+portada completa con su título, en el mismo estilo aprobado de los carruseles.
+Sirve para tips (`pasita.mjs`) y lecciones (`tematica.mjs`). Solo la portada:
+las pantallas del video siguen con los fondos del catálogo.
+
+1. Agrega al JSON del video el bloque `portada_ia`:
+   ```jsonc
+   "portada_ia": {
+     "tema": "bullying awareness: how a classmate can help",   // en inglés, de qué trata
+     "escena": "…",          // en inglés y SIN texto: qué se ve (o el objeto con campos de CARRUSELES.md)
+     "titulo": ["¿Ves que molestan", "a **alguien?**"],   // opcional: por defecto el gancho; ** = color
+     "etiqueta": "Puedes ayudar sin pelear",               // opcional: por defecto la pantalla "grande"
+     "color": "#ec4899"                                    // opcional: por defecto el color del gancho
+   }
+   ```
+   La escena muestra el tema de un vistazo con la Pasita de protagonista, sin
+   disfraz salvo que el tema lo pida. En temas delicados (bullying, ansiedad,
+   familia) la escena es de apoyo (alguien que se acerca, una mano, un grupo que
+   hace espacio), nunca la agresión. Modelo: `data/ejemplo-portada-ia-bullying.json`.
+2. Haz commit del JSON y push a `main`. Luego dispara el workflow (1 imagen, ~$0.09 USD):
+   `gh api -X POST repos/Bodgar10/pasas-mx/actions/workflows/portadas.yml/dispatches -f ref=main -f "inputs[data]=data/publicados/<video>.json"`
+   Para rehacerla: agrega `-F "inputs[forzar]=true"`.
+3. Espera a que termine (~1 minuto: `gh api "repos/Bodgar10/pasas-mx/actions/workflows/portadas.yml/runs?per_page=1"`)
+   y haz `git pull --rebase`. Queda en `arte/portadas/<video>.jpg` (y `arte/portadas/estado.json`
+   dice si falló y por qué).
+4. Corre `pasita.mjs` (o `tematica.mjs`) como siempre: además de las portadas A y B
+   sale `<nombre>-portada-ia.png`, con la duración real y PASAS.MX encima. Esa es la
+   que se entrega como portada. Revisa que el título esté completo y bien escrito
+   y que la Pasita sea la de siempre; si no, rehazla con `forzar` (máximo 2 veces).
+
+La imagen de OpenAI va bajada 150 px para que el título quede dentro del 3:4 del
+grid; también se guarda `<video>-original.jpg`, así que cambiar ese acomodo
+(`node src/portada-ia.mjs --data … --componer`) no vuelve a costar.
+
 ## El archivo
 
 ```jsonc
@@ -47,7 +83,7 @@ Los títulos se achican solos si no caben: Nunito Black es ancha.
   "fondo": "salon",                         // cuarto (por defecto), salon, recamara, niveles, camion o "imagen:archivo.png"
   "portada_pose": "celebrando",             // opcional: otra pose para la portada A
   "portada_pose_b": "confiada",             // opcional: otra pose para la portada B
-  "portada_prompt": "prompt para ChatGPT"   // opcional: si quieren una portada ilustrada
+  "portada_ia": { "escena": "…" }           // opcional: portada dibujada por OpenAI (ver "Portada con ChatGPT")
 }
 ```
 
