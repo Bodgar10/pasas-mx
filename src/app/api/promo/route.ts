@@ -1,7 +1,12 @@
 /**
- * GET /api/promo?slug=pasas1
+ * GET /api/promo?slug=pasas1   ·   GET /api/promo
  * ---------------------------------------------------------------------------
  * Devuelve la campaña de promoción vigente, o { promo: null }.
+ *
+ * 🔴 SIN `slug` devuelve la CAMPAÑA DE LA CASA (getPromoPorDefecto): la que
+ * ve quien llega a pasas.mx sin enlace de campaña. Antes, sin slug no se
+ * llamaba a este endpoint siquiera, así que prender una campaña desde /admin
+ * no se veía en el tráfico orgánico ni directo.
  *
  * Existe porque /planes y /bienvenida son 'use client' de arriba a abajo: no
  * pueden hacer `await getPromoActiva()` en el render. Un server component
@@ -22,12 +27,15 @@
  */
 
 import { NextResponse } from 'next/server'
-import { getPromoActiva, type PromoPublica } from '@/lib/promos'
+import { getPromoActiva, getPromoPorDefecto, type PromoPublica } from '@/lib/promos'
 
 export async function GET(request: Request) {
   try {
-    const slug = new URL(request.url).searchParams.get('slug')
-    const promo = await getPromoActiva(slug)
+    const slug = new URL(request.url).searchParams.get('slug')?.trim()
+
+    // Con slug manda el slug: una campaña de canal se sigue pudiendo pedir
+    // por su nombre aunque no sea la de la casa.
+    const promo = slug ? await getPromoActiva(slug) : await getPromoPorDefecto()
 
     if (!promo) {
       return NextResponse.json({ promo: null })

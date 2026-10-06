@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import type { PromoPublica } from '@/lib/promos'
+import { track } from '@/lib/analytics/track'
 
 /**
  * Caché a nivel de módulo, por slug.
@@ -21,6 +22,12 @@ import type { PromoPublica } from '@/lib/promos'
  * aplica, no un cobro sorpresa.
  */
 const cache = new Map<string, PromoPublica | null>()
+
+/**
+ * Clave del caché para "esta visita no trae slug". Es la campaña de la casa,
+ * la que sirve /api/promo sin parámetros.
+ */
+const CLAVE_DEFECTO = ''
 
 /**
  * El slug de esta visita: `?promo=` → sessionStorage['pasas_promo'] → ''.
@@ -46,6 +53,34 @@ function leerSlug(): string {
     // Sin storage no hay indicio: se pinta normal, sin esperar.
   }
   return (enUrl ?? enStorage ?? '').trim().toLowerCase()
+}
+
+/**
+ * Deja el slug de la campaña de la casa en sessionStorage.
+ *
+ * 🔴 ESTO ES LO QUE HACE QUE EL DESCUENTO SE COBRE, no solo que se pinte.
+ *
+ * El embudo arrastra el slug de dos formas: pegado a los enlaces internos
+ * (`conPromo`) y en sessionStorage. La primera cubre a quien pulsa un CTA
+ * nuestro; la segunda, todo lo demás — y es la única fuente de
+ * `/registro`, que lee `promo_slug` del formulario y lo manda al servidor.
+ * Sin esta línea, alguien que llegara a pasas.mx, viera "$1" y navegara a
+ * /registro por su cuenta acabaría pagando $249. Anunciar un precio y
+ * cobrar otro es exactamente lo que todo este módulo existe para impedir.
+ *
+ * Mismo contrato que PromoPersistence: FIRST TOUCH WINS. Si ya hay un slug
+ * guardado —el de la campaña de canal con la que entró— no se pisa.
+ */
+function persistirSlug(slug: string): void {
+  try {
+    if (window.sessionStorage.getItem('pasas_promo')) return
+    window.sessionStorage.setItem('pasas_promo', slug)
+    track('promo_detectada', { promo_slug: slug, origen: 'default' })
+  } catch {
+    // Safari en privado y navegadores con almacenamiento bloqueado tiran
+    // aquí. Los enlaces internos siguen llevando el slug en la URL, que es
+    // justo la red de seguridad para estos navegadores.
+  }
 }
 
 /** El valor no cambia mientras el componente vive, así que nadie se suscribe. */
@@ -108,6 +143,21 @@ export function usePromo(): {
   const getServerSnapshot = useCallback(() => '', [])
   const slug = useSyncExternalStore(noSuscribirse, getSnapshot, getServerSnapshot)
 
+  /**
+   * 🔴 Sigue siendo "hay slug", NO "puede haber promo".
+   *
+   * Es lo que decide si la pantalla reserva hueco y se calla el precio hasta
+   * 2s (useEsperandoPromo). Ponerlo en `true` siempre haría que TODA visita
+   * —incluida la que llega sin campaña posible— pagara esa espera en la
+   * página más visitada del sitio.
+   *
+   * Lo que se acepta a cambio: quien llega sin slug ve el precio de lista y
+   * un instante después el de campaña. Es el mismo parpadeo que la landing ya
+   * tiene documentado en useEsperandoPromo, y va en la dirección segura — el
+   * precio BAJA. La garantía que no se puede romper sigue en pie: precio,
+   * leyenda y CTA salen todos del mismo `promo`, así que nunca aparece $249
+   * junto a un CTA de promoción.
+   */
   const hayIndicio = slug !== ''
 
   useEffect(() => {
@@ -119,23 +169,33 @@ export function usePromo(): {
     // (renders en cascada). Aquí las escrituras de estado ocurren siempre
     // desde una continuación, nunca en la pasada síncrona del efecto.
     void (async () => {
-      if (!slug) {
-        if (vivo) setEstado({ promo: null, cargando: false })
-        return
-      }
+      /**
+       * 🔴 SIN SLUG TAMBIÉN SE PREGUNTA. Esto era el bug.
+       *
+       * Antes aquí se devolvía `promo: null` sin tocar la red, así que
+       * prender una campaña desde /admin solo la hacía visible para quien
+       * llegaba con `?promo=`. Todo el tráfico orgánico y directo —la
+       * mayoría— veía precio de lista con la campaña encendida.
+       *
+       * El endpoint sin slug responde la campaña de la casa, y sigue siendo
+       * fail-closed: si hay cero o más de una vigente, devuelve null.
+       */
+      const clave = slug || CLAVE_DEFECTO
 
-      if (cache.has(slug)) {
-        if (vivo) setEstado({ promo: cache.get(slug) ?? null, cargando: false })
+      if (cache.has(clave)) {
+        if (vivo) setEstado({ promo: cache.get(clave) ?? null, cargando: false })
         return
       }
 
       try {
-        const res = await fetch(`/api/promo?slug=${encodeURIComponent(slug)}`)
+        const url = slug ? `/api/promo?slug=${encodeURIComponent(slug)}` : '/api/promo'
+        const res = await fetch(url)
         // El endpoint responde 200 incluso sin promo; un status raro se trata
         // como "sin promo", no como excepción.
         const data = res.ok ? await res.json() : { promo: null }
         const promo = (data?.promo ?? null) as PromoPublica | null
-        cache.set(slug, promo)
+        cache.set(clave, promo)
+        if (!slug && promo) persistirSlug(promo.slug)
         if (vivo) setEstado({ promo, cargando: false })
       } catch {
         if (vivo) setEstado({ promo: null, cargando: false })

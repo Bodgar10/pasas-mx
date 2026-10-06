@@ -22,7 +22,7 @@ import 'server-only'
 
 import { stripe } from '@/lib/payments/stripe'
 import { cicloDisplay } from '@/lib/payments/config'
-import { getPromoActiva, promoAplica, type PromoCampaign } from '@/lib/promos'
+import { getPromoActiva, getPromoPorDefecto, promoAplica, type PromoCampaign } from '@/lib/promos'
 
 /**
  * La fila dice que la campaña está viva y aplica, pero Stripe no reconoce el
@@ -49,7 +49,8 @@ export class PromoNoDisponibleError extends Error {
 /**
  * Resuelve el descuento a aplicar, o null si no hay ninguno.
  *
- * @param slug         Lo que mandó el cliente. Sin validar.
+ * @param slug         Lo que mandó el cliente. Sin validar. Vacío o nulo =
+ *                     se usa la campaña de la casa (ver paso 1).
  * @param plan         Clave de PLAN_DISPLAY: 'estandar_v2' | 'personalizado_v2'.
  * @param billingCycle Ciclo en vocabulario de la BASE ('monthly' | 'semestral'
  *                     | 'annual'). La conversión a display ocurre AQUÍ dentro,
@@ -87,8 +88,29 @@ export async function resolvePromoParaCheckout(
    */
   if (yaTuvoSuscripcion) return null
 
-  // 1. La campaña, ya filtrada por activa = true y por fechas.
-  const promo = await getPromoActiva(slug ?? null)
+  /**
+   * 1. La campaña, ya filtrada por activa = true y por fechas.
+   *
+   * 🔴 SIN SLUG SE CAE A LA CAMPAÑA DE LA CASA, y eso es parte del arreglo,
+   * no una comodidad.
+   *
+   * La pantalla ahora anuncia la campaña vigente a todo el mundo, con slug o
+   * sin él. El slug viaja hasta aquí pegado a los enlaces internos y en
+   * sessionStorage, pero las dos cosas se pueden perder: una pestaña nueva,
+   * un enlace copiado a mano, un navegador con el almacenamiento bloqueado
+   * —los de dentro de TikTok e Instagram, que son justo el tráfico de
+   * campaña—. Cuando se perdía, la caja cobraba precio de lista sobre una
+   * pantalla que había prometido $1.
+   *
+   * Resolverla aquí también cierra ese hueco por construcción: "la campaña
+   * está encendida" significa lo mismo en la pantalla y en el cobro, sin
+   * depender de que el navegador conserve nada.
+   *
+   * No abre ningún agujero: el candado del paso 2 sigue exigiendo que la
+   * campaña cubra ESE plan y ESE ciclo, y el paso 0 ya sacó del camino a
+   * quien ya tuvo suscripción.
+   */
+  const promo = slug?.trim() ? await getPromoActiva(slug) : await getPromoPorDefecto()
   if (!promo) return null
 
   // 2. 🔴 EL CANDADO CENTRAL, y va ANTES de hablarle a Stripe.
