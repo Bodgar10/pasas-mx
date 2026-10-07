@@ -19,6 +19,7 @@
 
 import { permiteAnalytics, permiteMarketing } from '@/lib/consent'
 import { esInterno } from '@/lib/analytics/interno'
+import { contarAnonimo } from '@/lib/analytics/conteo'
 import { cicloActual } from '@/lib/ciclo-escolar'
 import { LLAVE_ORIGEN_ARCADE } from '@/lib/arcade'
 
@@ -437,6 +438,13 @@ function propiedadesAutomaticas(): PropiedadesEvento {
 export function track(evento: string, propiedades?: PropiedadesEvento): void {
   try {
     if (typeof window === 'undefined') return
+
+    // s37 — conteo anónimo, ANTES del consentimiento y a propósito: no lleva
+    // id, IP ni cookies, así que no hay nada que consentir. Solo cuenta los
+    // eventos de su lista (lib/analytics/conteo.ts) y descarta las
+    // propiedades que no estén en la suya. Lo demás sigue igual: PostHog,
+    // GA4, Meta y TikTok solo reciben si la persona aceptó.
+    contarAnonimo(evento, propiedades)
 
     const idExplicito = propiedades?.event_id
     const eventId =
