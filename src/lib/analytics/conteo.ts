@@ -61,6 +61,7 @@ export const EVENTOS_CONTEO = [
   'arcade_completado',
   'arcade_compartir_clic',
   'arcade_puente_clic',
+  'arcade_reto_hoy_clic',
   'horda_publica_vista',
   'horda_publica_iniciada',
 
@@ -111,6 +112,8 @@ export const PROPS_CONTEO = [
   // Entrada dentro del producto a los juegos gratis (banner, resultado
   // compartido…). No es el canal externo: ese lo calcula este módulo.
   'origen',
+  // s39: el reto que se jugó era el de una materia (?materia=), no el de hoy.
+  'por_materia',
 ] as const
 
 const PROPS = new Set<string>(PROPS_CONTEO)
