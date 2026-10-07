@@ -31,6 +31,18 @@ import s from './arcade.module.css'
 
 type Fase = 'intro' | 'play' | 'end'
 
+/**
+ * s39 — El reto de hoy, cuando la página sirve OTRO: el más reciente de una
+ * materia (/arcade?materia=historia, ver contenido.tsx). Con él, la portada
+ * aclara que no es el de hoy y el resultado invita a jugar el de hoy.
+ */
+export type RetoDeHoy = { number: number; materia: string | null }
+
+/** "Geografía" o "el reto para papás", para frases como "Hoy toca …". */
+function nombreDeMateria(m: string | null | undefined): string {
+  return m === 'papas' ? 'el reto para papás' : configMateria(m).nombre
+}
+
 // 🔴 localStorage puede no existir o lanzar (modo privado, datos bloqueados).
 // El juego tiene que funcionar igual; solo se pierde el "ya jugaste hoy".
 const llavePartida = (fecha: string) => `pasas-arcade:partida:${fecha}`
@@ -52,11 +64,14 @@ export default function ArcadeClient({
   reto,
   dominio,
   origenRuta = null,
+  retoDeHoy = null,
 }: {
   reto: RetoArcade
   dominio: string
   /** Lo fija la ruta: /arcade/r/... es siempre 'resultado_compartido'. */
   origenRuta?: OrigenArcade | null
+  /** Solo cuando `reto` NO es el de hoy (reto por materia). */
+  retoDeHoy?: RetoDeHoy | null
 }) {
   const [fase, setFase] = useState<Fase>('intro')
   const [idx, setIdx] = useState(0)
@@ -84,7 +99,7 @@ export default function ArcadeClient({
   const origenRef = useRef<OrigenArcade>('directo')
   const atribRef = useRef<Atribucion>({ canal: 'directo', utm_source: null, utm_campaign: null })
   const conOrigen = (evento: string, props: Record<string, unknown>) =>
-    track(evento, { ...props, origen: origenRef.current, canal: atribRef.current.canal })
+    track(evento, { ...props, origen: origenRef.current, canal: atribRef.current.canal, por_materia: !!retoDeHoy })
 
   // `arcade_visto` es la entrada al embudo: sin él no se sabe cuántos de los
   // que tocaron el banner llegaron a ver el juego. window.location y no
@@ -98,7 +113,10 @@ export default function ArcadeClient({
       canal: atribRef.current.canal,
       reto_numero: reto.number,
       ya_jugo: !!leerLocal(llavePartida(reto.date)),
+      por_materia: !!retoDeHoy,
     })
+    // retoDeHoy viene del servidor y no cambia mientras la página vive.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [origenRuta, reto.number, reto.date])
 
   const resultados = calcularResultados(reto, picks)
@@ -334,10 +352,17 @@ export default function ArcadeClient({
             <button className={`${s.btn} ${s.primary}`} type="button" onClick={empezar}>
               Jugar el reto de hoy
             </button>
-            <p className={s.fine}>
-              Un reto nuevo cada día a las 00:00, hora del centro de México, el mismo para todos. Mañana toca{' '}
-              {manana}.
-            </p>
+            {retoDeHoy ? (
+              <p className={s.fine}>
+                Es el reto de {mat.corto} más reciente. Hoy toca {nombreDeMateria(retoDeHoy.materia)}: lo juegas al
+                terminar este.
+              </p>
+            ) : (
+              <p className={s.fine}>
+                Un reto nuevo cada día a las 00:00, hora del centro de México, el mismo para todos. Mañana toca{' '}
+                {manana}.
+              </p>
+            )}
           </section>
         )}
 
@@ -367,11 +392,13 @@ export default function ArcadeClient({
               <div className={s.scoreLabel}>{etiquetaPuntaje(aciertos)}</div>
               {cifras && cifras.players >= MIN_JUGADORES_CIFRAS && cifras.avg !== null && (
                 <p className={s.crowd}>
-                  Hoy jugaron {cifras.players.toLocaleString('es-MX')} · promedio{' '}
+                  {retoDeHoy ? 'Lo jugaron' : 'Hoy jugaron'} {cifras.players.toLocaleString('es-MX')} · promedio{' '}
                   {Number(cifras.avg).toLocaleString('es-MX', { maximumFractionDigits: 1 })}/5
                 </p>
               )}
             </div>
+
+            {retoDeHoy && <SigueConHoy reto={reto} retoDeHoy={retoDeHoy} />}
 
             {/* Compartir va ARRIBA (s34-F3): es el canal que más jugadores trae,
                 y en un celular de 375 px tiene que verse sin hacer scroll. */}
@@ -427,13 +454,15 @@ export default function ArcadeClient({
 
             <Puente reto={reto} resultados={resultados} />
 
-            <div className={s.next}>
-              <span>
-                Siguiente reto en
-                <small className={s.nextMateria}>Mañana: {manana}</small>
-              </span>
-              <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
-            </div>
+            {!retoDeHoy && (
+              <div className={s.next}>
+                <span>
+                  Siguiente reto en
+                  <small className={s.nextMateria}>Mañana: {manana}</small>
+                </span>
+                <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
+              </div>
+            )}
           </section>
         )}
       </div>
@@ -525,6 +554,38 @@ function Ronda({
         </div>
       )}
     </section>
+  )
+}
+
+/**
+ * s39 — Al terminar un reto por materia que no es el de hoy: invitación a
+ * jugar el de hoy. Va justo debajo del puntaje porque es la forma más directa
+ * de seguir jugando. /arcade sin ?materia= sirve siempre el reto de hoy.
+ */
+function SigueConHoy({ reto, retoDeHoy }: { reto: RetoArcade; retoDeHoy: RetoDeHoy }) {
+  const nombre = nombreDeMateria(retoDeHoy.materia)
+  return (
+    <div className={s.bridge}>
+      <div className={s.bridgeInner}>
+        <div className={s.eyebrow}>Hoy toca {nombre}</div>
+        <h3>¿Le sigues con el reto de hoy?</h3>
+        <p>Cinco rondas nuevas de {nombre}, el mismo reto para todos hoy.</p>
+        <Link
+          className={`${s.btn} ${s.primary}`}
+          href="/arcade?desde=arcade"
+          onClick={() =>
+            track('arcade_reto_hoy_clic', {
+              reto_numero: reto.number,
+              reto_hoy: retoDeHoy.number,
+              origen: leerOrigenArcade() ?? undefined,
+              canal: atribucionJuegos().canal,
+            })
+          }
+        >
+          Jugar el reto de hoy
+        </Link>
+      </div>
+    </div>
   )
 }
 

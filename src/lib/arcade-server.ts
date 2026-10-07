@@ -29,6 +29,21 @@ export async function leerRetoDeHoy(): Promise<RetoArcade | null> {
   return (data as RetoArcade | null) ?? null
 }
 
+/**
+ * s39 — El reto más reciente de una materia (hoy o hasta 7 días atrás). Lo usa
+ * /arcade?materia=historia: quien llega de un anuncio de Historia juega
+ * Historia aunque hoy toque otra materia. null si no hay ninguno o si la
+ * materia no existe; la página cae entonces al reto de hoy.
+ */
+export async function leerRetoDeMateria(materia: string): Promise<RetoArcade | null> {
+  const { data, error } = await admin().rpc('arcade_reto_materia', { p_materia: materia })
+  if (error) {
+    console.error('[arcade] arcade_reto_materia falló:', error)
+    return null
+  }
+  return (data as RetoArcade | null) ?? null
+}
+
 /** Canal y UTMs de primer contacto (lib/arcade/canal.ts). La base valida los valores. */
 export type AtribucionServidor = {
   canal: string | null
