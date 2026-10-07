@@ -1,0 +1,129 @@
+{
+  "_nota": "Anuncio pagado para papás (Meta/TikTok) que lleva al reto diario en pasas.mx/arcade. Fondos con OpenAI: workflow 'Fondos de anuncios' → video/arte/<slug>/reel-NN.jpg. Render: node src/anuncio.mjs --data data/anuncios/2026-10-reto-historia-papas.json",
+  "nombre": "anuncio reto historia papas",
+  "materia": "Historia",
+  "color": "#fbbf24",
+  "slides": [],
+  "arte": {
+    "universo": "Ancient Tenochtitlan at golden hour, original and respectful, like a museum diorama come to life: the great twin-temple pyramid of the Templo Mayor with its stairs, white plastered buildings, canals with small wooden canoes, floating chinampa gardens full of flowers and corn, the two snowy volcanoes on the horizon, warm sunset sky turning purple, glowing lanterns, flower petals and golden particles in the air. Stone tablets, codex-like painted panels and feathers appear as props, but every symbol on them is an abstract geometric shape (no letters, no glyphs that read as text). No warriors, no weapons, no battles, no real historical people: the only character is the Pasita, a curious explorer with a small backpack."
+  },
+  "reel": {
+    "escenas": [
+      {
+        "tipo": "texto",
+        "dur": 3.0,
+        "lineas": [["¿Tu hijo se aburre", "s"], ["con Historia?", "k"]],
+        "arte": {
+          "escena": {
+            "accion": "The Pasita sits at a teenager's desk at night, chin resting on one hand, completely bored in front of a giant closed history textbook; behind her, through the bedroom window, a warm glowing view of ancient Tenochtitlan appears like a dream",
+            "protagonista": "The Pasita, middle-lower part of the frame, big, bored half-closed eyes, slumped pose",
+            "objeto": "A huge thick closed textbook on the desk (blank cover, no letters) with a sleepy cloud of dust",
+            "foreground": "Desk lamp, pencils and a mug, slightly blurred",
+            "midground": "The Pasita at the desk with the giant book",
+            "background": "Bedroom window opening onto a glowing golden-hour Tenochtitlan with the twin-temple pyramid and volcanoes",
+            "iluminacion": "Cold blue desk lamp in the room versus warm golden light pouring through the window",
+            "emocion": "Boredom, with a hint of something exciting outside",
+            "composicion": "Medium shot from the front, window centered behind her"
+          }
+        }
+      },
+      {
+        "tipo": "texto",
+        "dur": 2.6,
+        "lineas": [["Que lo juegue", "s"], ["2 minutos", "k"]],
+        "arte": {
+          "escena": {
+            "accion": "The Pasita holds up a smartphone whose glowing screen opens like a portal, and golden light, flower petals and a tiny Templo Mayor burst out of it",
+            "protagonista": "The Pasita, center, excited wide eyes, holding the phone with both hands",
+            "objeto": "Smartphone with a glowing portal effect (screen shows only light and abstract shapes, no text)",
+            "foreground": "Flower petals and golden sparks flying toward the camera",
+            "midground": "The Pasita and the phone portal",
+            "background": "Soft blurred bedroom turning into a sunset sky",
+            "iluminacion": "Strong warm golden glow from the phone lighting her face",
+            "emocion": "Surprise and excitement",
+            "composicion": "Close-medium shot, phone slightly toward the camera"
+          }
+        }
+      },
+      {
+        "tipo": "opciones",
+        "dur": 6.4,
+        "lineas": [["¿Cuál sobra?", "k"]],
+        "opciones": ["Moctezuma II", "Hernán Cortés", "Cuitláhuac", "Cuauhtémoc"],
+        "sobra": 1,
+        "arte": {
+          "escena": {
+            "accion": "The Pasita stands on a stone terrace in front of the Templo Mayor, thinking hard with one hand on her chin and the other on her hip",
+            "protagonista": "The Pasita, lower-right area, pensive pose with both hands visible (one on the chin, one on the hip)",
+            "objeto": "The great twin-temple pyramid of the Templo Mayor glowing in the sunset",
+            "foreground": "Stone edge of the terrace with flowers and a lantern",
+            "midground": "The Pasita on the terrace",
+            "background": "Templo Mayor, canals and the two volcanoes under a purple-gold sky",
+            "iluminacion": "Golden hour rim light, lantern glow",
+            "emocion": "Curiosity, concentration",
+            "composicion": "Wide shot; keep the central band of the frame (from 30% to 75% of the height) calm and slightly dark because four big answer buttons will be placed there"
+          }
+        }
+      },
+      {
+        "tipo": "explica",
+        "dur": 4.6,
+        "lineas": [["¡Sobra", "s"], ["Hernán Cortés!", "k"]],
+        "texto": "Moctezuma II, Cuitláhuac y Cuauhtémoc fueron **tlatoanis mexicas**. Cortés dirigió la Conquista.",
+        "arte": {
+          "escena": {
+            "accion": "The Pasita celebrates on top of the pyramid stairs with a glowing lightbulb above her head, confetti of flower petals around",
+            "protagonista": "The Pasita, lower-middle, jumping with both arms up, happy face",
+            "objeto": "A big glowing lightbulb above her head",
+            "foreground": "Flower petals and golden sparks",
+            "midground": "The Pasita on the pyramid stairs",
+            "background": "Tenochtitlan canals and volcanoes at sunset",
+            "iluminacion": "Warm golden light from the bulb and the sunset",
+            "emocion": "Joy of getting it right",
+            "composicion": "Medium-wide shot from slightly below; keep the band from 35% to 70% of the height calm for a text card"
+          }
+        }
+      },
+      {
+        "tipo": "materias",
+        "dur": 3.8,
+        "lineas": [["Un reto nuevo", "s"], ["cada día", "k"]],
+        "materias": ["Historia", "Biología", "Geografía", "Química y Física", "Español"],
+        "arte": {
+          "escena": {
+            "accion": "The Pasita walks into a magical hall with five tall glowing arched doors, each door glowing a different color (violet, teal, sky blue, yellow, pink) and showing an abstract hint of a different world (a pyramid, a leaf, a globe, a flask, an open book) drawn only as simple shapes",
+            "protagonista": "The Pasita, lower-middle, seen from behind three-quarters, backpack on, looking up at the doors",
+            "objeto": "Five glowing arched doors in a row",
+            "foreground": "Shiny floor reflections",
+            "midground": "The Pasita",
+            "background": "The five doors and a starry purple ceiling",
+            "iluminacion": "Colored glow from each door",
+            "emocion": "Wonder",
+            "composicion": "Wide symmetrical shot; doors in the upper-middle part, keep the band from 40% to 70% of the height calm for text chips"
+          }
+        }
+      },
+      {
+        "tipo": "cta",
+        "dur": 4.6,
+        "lineas": [["Juéguenlo", "s"], ["juntos hoy", "k"]],
+        "cta": { "linea": "**Gratis** y sin registrarse", "sub": "5 rondas · 2 minutos" },
+        "url": "pasas.mx/arcade",
+        "arte": {
+          "escena": {
+            "accion": "The Pasita celebrates on a flower-covered trajinera-style canoe floating on a Tenochtitlan canal at sunset, waving at the camera",
+            "protagonista": "The Pasita, lower part of the frame, big smile, both arms up",
+            "objeto": "A colorful canoe full of flowers with the PASAS raisin emblem painted on the side",
+            "foreground": "Water reflections and floating flowers",
+            "midground": "The Pasita on the canoe",
+            "background": "Templo Mayor and volcanoes under a purple-gold sky with lanterns",
+            "iluminacion": "Golden sunset and warm lanterns",
+            "emocion": "Celebration, invitation",
+            "composicion": "Medium-wide shot; keep the band from 40% to 72% of the height calm for a big card and a button"
+          }
+        }
+      }
+    ]
+  },
+  "post": "¿Tu hijo se aburre con Historia? Que juegue el reto de hoy: 5 rondas, 2 minutos, gratis y sin registrarse. Un reto nuevo cada día de Historia, Biología, Geografía, Química y Física y Español. ¿Ustedes cuál dirían que sobra?\n\npasas.mx/arcade"
+}

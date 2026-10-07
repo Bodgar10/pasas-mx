@@ -1,0 +1,69 @@
+# Fondos con OpenAI para los anuncios pagados (video/data/anuncios/*.json).
+# Dibuja un fondo SIN texto por escena (~$0.09 USD cada uno) y los guarda en
+# video/arte/<anuncio>/reel-NN.jpg. El video se arma después con:
+#   node src/anuncio.mjs --data data/anuncios/<anuncio>.json
+# Disparo:
+#   gh api -X POST repos/Bodgar10/pasas-mx/actions/workflows/anuncios.yml/dispatches \
+#     -f ref=main -f "inputs[data]=data/anuncios/<anuncio>.json"
+name: Fondos de anuncios
+
+on:
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'JSON del anuncio dentro de video/ (ej. data/anuncios/2026-10-reto-historia-papas.json)'
+        type: string
+        required: true
+      forzar:
+        description: 'Rehacer los fondos aunque ya existan'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # para guardar los fondos en video/arte/
+
+concurrency:
+  group: anuncios
+  cancel-in-progress: false
+
+jobs:
+  fondos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: video
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar ffmpeg
+        run: which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
+      - name: Dibujar fondos con OpenAI
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_IMAGE_MODEL: ${{ vars.OPENAI_IMAGE_MODEL }}
+          OPENAI_IMAGE_QUALITY: ${{ vars.OPENAI_IMAGE_QUALITY }}
+        run: |
+          [ -n "$OPENAI_API_KEY" ] || { echo "Falta el secret OPENAI_API_KEY"; exit 1; }
+          [ -n "$OPENAI_IMAGE_MODEL" ] || unset OPENAI_IMAGE_MODEL
+          [ -n "$OPENAI_IMAGE_QUALITY" ] || unset OPENAI_IMAGE_QUALITY
+          ARGS="--data ${{ inputs.data }} --solo r"
+          [ "${{ inputs.forzar }}" = "true" ] && ARGS="$ARGS --forzar"
+          node src/ilustrar.mjs $ARGS
+
+      # Se guarda aunque alguno falle: estado.json dice por qué
+      - name: Guardar fondos
+        if: always()
+        run: |
+          [ -d arte ] || exit 0
+          git add arte/
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "pasas-bot"
+          git config user.email "hola@pasas.mx"
+          git commit -m "arte: fondos de anuncio con OpenAI [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
