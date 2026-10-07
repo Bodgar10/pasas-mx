@@ -874,10 +874,9 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
       <section ref={refHero} style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: `${100 + BANNER_ALTO}px 24px 64px`, textAlign: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 320, height: 320, background: `radial-gradient(circle, ${COLORS.primary}33 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
         <div style={{ animation: 'fadeUp 0.8s ease both', position: 'relative', maxWidth: 480 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${COLORS.primary}22`, border: `1px solid ${COLORS.primary}55`, borderRadius: RADIUS.pill, padding: '6px 14px', marginBottom: 24 }}>
-            <span style={{ fontSize: 12 }}>✨</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: COLORS.muted }}>Ya está en línea · Entra gratis hoy</span>
-          </div>
+          {/* s38 — Aquí iba la insignia "Ya está en línea · Entra gratis hoy".
+              Se quitó: era la tercera oferta de la primera pantalla junto con
+              el reto y la suscripción. Ver el comentario del CTA del hero. */}
           <h1 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(28px, 8vw, 42px)', lineHeight: 1.15, marginBottom: 20, whiteSpace: 'pre-line', background: `linear-gradient(135deg, ${COLORS.text} 0%, ${COLORS.muted} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             {hero.h1}
           </h1>
@@ -885,32 +884,69 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             {hero.sub}
           </p>
 
-          {/* La Pasita presentándose.
-              Va con <Pasita> y no con <PasitaLazy>: está por encima del pliegue
-              y diferirla la haría aparecer con retraso, justo donde el visitante
-              está mirando. Es la única de la landing que se carga de entrada.
-              'flotar' es lento y sutil — a esta altura de la página compite con
-              el CTA si se mueve demasiado. */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-            <Pasita pose="confiada" size={140} animacion="flotar" />
-          </div>
+          {/*
+            🔴 s38 — CAMBIO 2 DE LANDING (7 oct 2026): UN SOLO BOTÓN PRINCIPAL.
 
+            Medido con el conteo propio (eventos_anonimos) en las primeras 20 h
+            de anuncios: 520 visitas, 69% se fue en menos de 5 s, mediana de
+            1 segundo y 97% nunca bajó del hero. Los anuncios muestran contenido
+            (un reel, un carrusel) y la primera pantalla ofrecía tres cosas a la
+            vez: la insignia "Entra gratis hoy", la prueba de la suscripción y
+            el banner del reto.
+
+            Ahora el botón grande lleva al reto del día, gratis y sin cuenta, y
+            la suscripción queda como enlace secundario debajo, con el mismo
+            texto y la misma promo de siempre (copyCTA / destinoOnboarding).
+            El A/B de HERO_VARIANTS sigue igual: solo cambia el H1 y el sub.
+
+            `?desde=landing_banner` y no un origen nuevo: los orígenes del
+            Arcade están amarrados a un CHECK y a las funciones de la base
+            (migraciones 052 y 053). Para la base ambos son "llegó desde la
+            landing"; cuál botón fue se distingue con landing_cta_clicked
+            { location: 'hero_reto' } contra landing_banner_arcade_clic.
+          */}
+          <Link
+            href="/arcade?desde=landing_banner"
+            prefetch={true}
+            onClick={() => track('landing_cta_clicked', { location: 'hero_reto', variant })}
+            style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 20px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            Juega el reto de hoy, gratis →
+          </Link>
+          <p style={{ marginTop: 10, fontSize: 13, color: COLORS.muted, opacity: 0.8 }}>
+            5 rondas · 2 minutos · Sin registrarte
+          </p>
+
+          {/* Secundario: la suscripción, con su texto y promo de siempre.
+              REGLA D: con promo, su sublabel reemplaza la micro de la
+              variante, pero "Cancela cuando quieras" no se pierde. */}
           <Link
             href={destinoOnboarding}
             prefetch={true}
             onClick={() => handleCTA('hero')}
-            style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ marginTop: 20, background: 'transparent', border: `1.5px solid ${COLORS.inputBorder}`, color: COLORS.text, borderRadius: RADIUS.xl, padding: '10px 20px', fontFamily: FONTS.nunito, fontWeight: 800, fontSize: 15, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 44, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            <EtiquetaCTA esperando={esperandoPromo} ancho={220}>{ctaHero.label}</EtiquetaCTA>
+            <EtiquetaCTA esperando={esperandoPromo} ancho={200}>{ctaHero.label}</EtiquetaCTA>
           </Link>
-          {/* REGLA D: con promo, su sublabel reemplaza la micro de la variante,
-              pero "Cancela cuando quieras" no se pierde. */}
-          <p style={{ marginTop: 12, fontSize: 13, color: COLORS.muted, opacity: 0.7, display: 'flex', justifyContent: 'center' }}>
+          <p style={{ marginTop: 8, fontSize: 12, color: COLORS.muted, opacity: 0.7, display: 'flex', justifyContent: 'center' }}>
             {esperandoPromo
-              ? <Hueco alto={20} ancho={250} radio={5} />
+              ? <Hueco alto={18} ancho={230} radio={5} />
               : microcopyPromo(ctaHero.sublabel, ['Cancela cuando quieras'])}
           </p>
-          <div style={{ marginTop: 48, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
+
+          {/* La Pasita presentándose.
+              🔴 s38: va DEBAJO de los botones. Arriba de ellos empujaba el
+              botón del reto bajo el aviso de cookies en celulares chicos y en
+              los navegadores de Instagram y TikTok, que quitan alto a la
+              pantalla — justo el tráfico de los anuncios.
+              Va con <Pasita> y no con <PasitaLazy>: sigue cerca del pliegue y
+              diferirla la haría aparecer con retraso. 'flotar' es lento y
+              sutil para no competir con el CTA. */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
+            <Pasita pose="confiada" size={140} animacion="flotar" />
+          </div>
+
+          <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
             <span style={{ fontSize: 12, fontWeight: 600 }}>scroll</span>
             <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${COLORS.muted}, transparent)` }} />
           </div>
