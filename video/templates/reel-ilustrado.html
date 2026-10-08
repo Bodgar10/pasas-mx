@@ -136,7 +136,7 @@ window.render = function (t) {
   E.forEach(function (e, i) {
     var a = T0[i], b = a + (e.dur || 3.5), last = i === E.length - 1;
     // Fondo: fundido cruzado + zoom lento (Ken Burns) que alterna dirección
-    var bg = $('bg' + i), vis = clamp((t - a + 0.35) / 0.35) * (last ? 1 : clamp((b + 0.35 - t) / 0.35));
+    var bg = $('bg' + i), vis = (i === 0 ? 1 : clamp((t - a + 0.35) / 0.35)) * (last ? 1 : clamp((b + 0.35 - t) / 0.35));
     if (t < a - 0.35 || t > b + 0.35) vis = 0;
     bg.style.opacity = vis;
     var p = clamp((t - a) / (b - a)), z = 1.1 - 0.08 * p, dx = (i % 2 ? -1 : 1) * 20 * (p - 0.5);
@@ -144,7 +144,9 @@ window.render = function (t) {
     // Textos
     var c = $('cap' + i), w = win(t, a, b, i > 0, !last);
     c.style.opacity = w;
-    c.querySelectorAll('span').forEach(function (s, k) { var q = clamp((t - a - 0.05 - k * 0.2) / 0.28); s.style.opacity = q; s.style.transform = 'scale(' + (0.85 + 0.15 * back(q)) + ')'; });
+    // La escena 1 (el gancho) se ve completa desde el cuadro 0: en el video del 2 de octubre,
+    // el texto que entraba poco a poco hizo que casi todos se fueran en el segundo 2
+    c.querySelectorAll('span').forEach(function (s, k) { var q = i === 0 ? 1 : clamp((t - a - 0.05 - k * 0.2) / 0.28); s.style.opacity = q; s.style.transform = 'scale(' + (0.85 + 0.15 * back(q)) + ')'; });
     if (e.tipo === 'contador') {
       var C = e.contador, n = C.valores.length, step = (b - a - 0.6) / n, k = Math.min(n - 1, Math.max(0, Math.floor((t - a - 0.4) / step)));
       var el = $('cont' + i); el.style.opacity = t >= a + 0.3 ? w : 0;

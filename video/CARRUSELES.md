@@ -263,5 +263,9 @@ Se define en el mismo JSON, en `"reel"` (modelo: `2026-10-mrua-pasita-piloto.jso
   del contador cortos (máx. ~12 caracteres).
 - Portada: `templates/portada-reel.html` con el gancho grande sobre el fondo
   `portada.fondo`. Va sin clickbait: una pregunta real del reel.
+- **Lo que aprendimos del video del 2 de octubre** (el mejor orgánico; ver `HISTORIAS.md`): el
+  gancho de la escena 1 se ve completo desde el cuadro 0 (ya lo hace la plantilla), le habla a
+  quien lo ve ("tenían tu edad", "tu hijo", "tú también…") y el reel dura 20-30 s. En el post,
+  las palabras que la gente busca (el tema tal cual) y una pregunta que se conteste en una línea.
 - Envíos ya hechos: `data/programados.json` (fecha → JSON) los manda al equipo la tarea de Claude
   (lun/mié/vie ~6:50 am) con workflow_dispatch, sin volver a llamar a OpenAI.
