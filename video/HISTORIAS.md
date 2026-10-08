@@ -1,6 +1,6 @@
 # Historias y efemérides (martes, jueves y fechas icónicas)
 
-Reel de **25-35 s** que cuenta la historia real detrás de un tema, en el formato del video del
+Reel de **30-42 s** que cuenta la historia real detrás de un tema, en el formato del video del
 **2 de octubre de 1968**, el que mejor le ha ido a @pasas.mx sin pagar (730 vistas, 135 likes =
 18 %, cuando lo normal es 4-8 %).
 
@@ -30,7 +30,10 @@ Lo hace la tarea automática de Claude (diario a las 6:12 am) y le llega por cor
 
 - **Duraba 1:45 y el promedio de vista fue 6 s (0.5 % lo terminó).** El texto se escribía letra
   por letra: en el segundo 2 solo decía "TENÍAN" y ahí se iba casi todo el mundo.
-  → El gancho se ve **completo desde el cuadro 0**, cada escena dura 3-4.5 s y el total, 25-35 s.
+  → El gancho se ve **completo desde el cuadro 0** y el total es de 30-42 s.
+- **Primera versión nuestra (8 oct): "es demasiado texto y muy rápido, no se alcanza a leer".**
+  → Poco texto por escena (título de 2-3 líneas + UNA frase corta, máx. 16 palabras) y tiempo
+  para leerlo con calma: **1.2 s + 0.33 s por palabra** (lo revisa el validador), unos 5 s por escena.
 - **0 comentarios.** → El cierre hace una pregunta honesta que se contesta en una línea
   ("¿Qué no comerías hoy sin esa fecha?").
 - **La Pasita del original no era la oficial** (salió rosa y peluda). → Las escenas usan la hoja
@@ -59,11 +62,11 @@ Cada escena:
 
 ```jsonc
 {
-  "dur": 3.8,                                   // 3-4.5 s; la 1 máximo 3.4
+  "dur": 5.2,                                   // 1.2 s + 0.33 s por palabra (≈5 s); la 1 máximo 3.4
   "titulo": ["Pero también", "**llegó la viruela.**"],  // 1-3 líneas, máx. 18 caracteres; ** = verde
   "marcador": "Se encontraron.",                // opcional: marcatexto verde, máx. 26
   "fecha": "12 de octubre de 1492",             // opcional: línea chica espaciada
-  "cuerpo": ["Millones de personas… **no tenían defensas**…"],  // máx. 130 en total; [[x]] = resaltado
+  "cuerpo": ["Murieron **millones** de personas…"],  // UNA frase, máx. 70 caracteres; [[x]] = resaltado
   "arte": { "escena": { … campos de CARRUSELES.md … }, "carteles": ["ESTUDIANTES UNIDOS"] },
   "fondo_de": 3                                 // en vez de "arte": reusa la imagen de otra escena (ahorra)
 }

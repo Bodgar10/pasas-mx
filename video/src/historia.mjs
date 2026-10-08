@@ -26,7 +26,7 @@ export function validarHistoria(d) {
   if (d.arte?.estilo !== 'documental' || !d.arte?.universo) e.push('"arte" lleva "estilo": "documental" y "universo" (época y lugar, en inglés)');
   if (E.length < 6 || E.length > 9) e.push('el reel lleva de 6 a 9 escenas');
   const total = E.reduce((a, x) => a + (x.dur || 3.5), 0);
-  if (total < 20 || total > 38) e.push(`dura ${total.toFixed(1)} s: debe quedar entre 20 y 38 s (el del 2 de octubre duraba 1:45 y casi todos se iban en el segundo 2)`);
+  if (total < 25 || total > 45) e.push(`dura ${total.toFixed(1)} s: debe quedar entre 25 y 45 s (el del 2 de octubre duraba 1:45 y casi todos se iban en el segundo 2)`);
   E.forEach((x, i) => {
     const n = `escena ${i + 1}`;
     if (x.tipo && x.tipo !== 'cierre') e.push(`${n}: tipo "${x.tipo}" no existe (omítelo, o "cierre" en la última)`);
@@ -34,7 +34,13 @@ export function validarHistoria(d) {
     (x.titulo || []).forEach(l => { if (plano(l).length > 18) e.push(`${n}: "${plano(l)}" es muy larga para un título (máx. 18)`); });
     if (x.marcador && plano(x.marcador).length > 26) e.push(`${n}: el marcador pasa de 26 caracteres`);
     const cuerpo = (x.cuerpo || []).map(plano).join(' ');
-    if (cuerpo.length > 130) e.push(`${n}: el cuerpo pasa de 130 caracteres (se lee en ${x.dur || 3.5} s)`);
+    if (cuerpo.length > 70) e.push(`${n}: el cuerpo pasa de 70 caracteres: una sola frase corta`);
+    if ((x.cuerpo || []).length > 1) e.push(`${n}: el cuerpo lleva una sola frase`);
+    // Tiempo para leer con calma: 1.2 s + 0.33 s por palabra (el equipo: "no se alcanza a leer")
+    const palabras = [...(x.titulo || []), x.marcador || '', ...(x.cuerpo || [])].map(plano).join(' ').split(/\s+/).filter(Boolean).length;
+    const minimo = Math.round((1.2 + 0.33 * palabras) * 10) / 10;
+    if (i > 0 && (x.dur || 3.5) < minimo) e.push(`${n}: ${palabras} palabras necesitan al menos ${minimo} s (tiene ${x.dur || 3.5}); alarga o recorta texto`);
+    if (i > 0 && palabras > 16) e.push(`${n}: ${palabras} palabras es demasiado texto (máx. 16 por escena)`);
     if (x.tipo !== 'cierre' && x.fondo_de == null && !x.arte?.escena) e.push(`${n}: falta "arte.escena" (o "fondo_de" para reusar otro fondo)`);
     const todo = JSON.stringify({ ...x, arte: undefined });
     if (/\?/.test(todo) && !/¿/.test(todo)) e.push(`${n}: hay una pregunta sin "¿"`);
