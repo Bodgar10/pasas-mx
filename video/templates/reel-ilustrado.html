@@ -23,6 +23,11 @@
 .cap span.k{color:var(--c);font-size:15cqw}
 .cap span.s{font-size:7.2cqw}
 
+/* Relato: 1-2 frases debajo del título (historias y efemérides) */
+.txt{position:absolute;left:8cqw;right:8cqw;top:560px;z-index:6;opacity:0;background:rgba(15,10,30,.86);border:.5cqw solid color-mix(in srgb, var(--c) 70%, transparent);
+  border-radius:4.4cqw;padding:4.4cqw 5.4cqw;font-size:6.2cqw;font-weight:800;line-height:1.28;text-align:center;color:#fff;box-shadow:0 0 4cqw rgba(0,0,0,.55)}
+.txt b{color:var(--c);font-weight:900}
+
 /* Contador: una pastilla que va cambiando de valor */
 .cont{position:absolute;left:50%;top:560px;transform:translateX(-50%);z-index:6;opacity:0;display:flex;flex-direction:column;align-items:center;gap:1.6cqw}
 .cont .lab{font-size:5.4cqw;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.04em;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.9)}
@@ -80,7 +85,7 @@ function capHTML(lines) {
 window.setup = function (data) {
   D = data; E = data.reel.escenas;
   var fr = $('frame'); fr.style.setProperty('--c', (data.hobby && data.hobby.color) || '#fbbf24');
-  $('hob').textContent = (data.hobby ? data.hobby.icono + ' ' : '') + data.materia;
+  $('hob').textContent = (data.hobby && data.hobby.icono ? data.hobby.icono + ' ' : '') + data.materia;
   // Tiempos
   T0 = []; var t = 0; E.forEach(function (e) { T0.push(t); t += e.dur || 3.5; }); TOTAL = t;
   // Fondos (uno por escena; "fondo_de" reutiliza el de otra escena)
@@ -91,6 +96,7 @@ window.setup = function (data) {
   // Escenas
   $('scenes').innerHTML = E.map(function (e, i) {
     var h = '<div class="cap" id="cap' + i + '">' + capHTML(e.lineas) + '</div>';
+    if (e.texto) h += '<div class="txt" id="txt' + i + '">' + md(e.texto) + '</div>';
     if (e.tipo === 'contador') h += '<div class="cont" id="cont' + i + '"><div class="lab" id="cl' + i + '"></div><div class="val" id="cv' + i + '"></div><div class="dots">' + e.contador.valores.map(function (_, k) { return '<i id="cd' + i + '_' + k + '"></i>'; }).join('') + '</div></div>';
     if (e.tipo === 'pregunta') h += '<div class="ring" id="ring' + i + '"><div class="disc"></div><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3.4"/><circle id="rb' + i + '" cx="20" cy="20" r="17" fill="none" stroke="var(--c)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="0"/></svg><b id="rn' + i + '">3</b></div>';
     if (e.tipo === 'formula') h += '<div class="form" id="form' + i + '"><div class="row">' + e.formula.terminos.map(function (x, k) {
@@ -100,6 +106,8 @@ window.setup = function (data) {
     return h;
   }).join('');
   document.querySelectorAll('.cap').forEach(function (c) { c.querySelectorAll('span').forEach(function (s) { fitLines([s], 1080 - 2 * 76); }); });
+  // El relato va justo debajo de su título
+  E.forEach(function (e, i) { if (e.texto) $('txt' + i).style.top = ($('cap' + i).getBoundingClientRect().bottom + 30) + 'px'; });
   // Fórmula: si no cabe, se achican los términos (no las etiquetas)
   document.querySelectorAll('.form .row').forEach(function (r) {
     var bs = [].slice.call(r.querySelectorAll('.term b')), f = parseFloat(getComputedStyle(bs[0]).fontSize);
@@ -153,6 +161,7 @@ window.render = function (t) {
       e.formula.terminos.forEach(function (_, k) { pop($('ft' + i + '_' + k), t, a + 0.7 + k * 0.38, 0.3); });
       var rs = $('fr' + i); if (rs) { var tr = a + 0.9 + e.formula.terminos.length * 0.38; rs.style.opacity = clamp((t - tr) / 0.3); rs.style.transform = 'scale(' + (0.8 + 0.2 * back(clamp((t - tr) / 0.35))) + ')'; }
     }
+    if (e.texto) { var tx = $('txt' + i); tx.style.opacity = Math.min(w, clamp((t - a - 0.45) / 0.35)); tx.style.transform = 'translateY(' + (20 * (1 - clamp((t - a - 0.45) / 0.35))) + 'px)'; }
     if (e.tipo === 'cta') { var ct = $('cta' + i); show(ct, clamp((t - a - 0.5) / 0.4)); }
   });
   var ef = E[on];

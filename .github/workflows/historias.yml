@@ -1,0 +1,124 @@
+# Historias (martes y jueves) y efemérides (fechas icónicas): reel de ~30 s en el formato del
+# video del 2 de octubre. Guía: video/HISTORIAS.md.
+#
+# Flujo: JSON en video/data/historias/ → OpenAI dibuja las escenas (estilo documental,
+# ~$0.09 USD c/u; las que ya existen no se vuelven a pagar) → se guardan en video/arte/<historia>/
+# → render del video + portada → correo al equipo.
+# Al subir un JSON, el correo solo sale si su fecha (AAAA-MM-DD del nombre) es HOY o ya pasó;
+# los de días futuros solo se dibujan y se mandan ese día (lo dispara la tarea de Claude).
+name: Historias de PASAS
+
+on:
+  push:
+    branches: [main]
+    paths: ['video/data/historias/**.json']
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'JSON dentro de video/ (ej. data/historias/2026-10-12-12-de-octubre-1492.json)'
+        type: string
+        required: true
+      forzar:
+        description: 'Rehacer las escenas aunque ya existan (cobra de nuevo)'
+        type: boolean
+        default: false
+      solo_dibujar:
+        description: 'Solo dibujar (sin video ni correo)'
+        type: boolean
+        default: false
+      destinatario:
+        description: 'A quién: equipo (CARRUSELES_EMAIL_TO) o retos (ARCADE_EMAIL_TO, para pruebas)'
+        type: choice
+        options: [equipo, retos]
+        default: equipo
+
+permissions:
+  contents: write   # para guardar las escenas en video/arte/
+
+concurrency:
+  group: historias
+  cancel-in-progress: false
+
+jobs:
+  historia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: video
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      - name: Instalar dependencias
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
+      - name: Qué historias
+        id: cual
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            FILES="${{ inputs.data }}"
+          else
+            FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'data/historias/*.json' | sed 's#^video/##' | tr '\n' ' ' || true)
+          fi
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
+          [ -n "$FILES" ] || echo "No hay historias nuevas"
+
+      - name: Dibujar escenas con OpenAI
+        if: steps.cual.outputs.files != ''
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_IMAGE_MODEL: ${{ vars.OPENAI_IMAGE_MODEL }}
+          OPENAI_IMAGE_QUALITY: ${{ vars.OPENAI_IMAGE_QUALITY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then echo "Sin OPENAI_API_KEY: el video sale con fondo de respaldo"; exit 0; fi
+          [ -n "$OPENAI_IMAGE_MODEL" ] || unset OPENAI_IMAGE_MODEL
+          [ -n "$OPENAI_IMAGE_QUALITY" ] || unset OPENAI_IMAGE_QUALITY
+          ARGS=""; for f in ${{ steps.cual.outputs.files }}; do ARGS="$ARGS --data $f"; done
+          [ "${{ inputs.forzar }}" = "true" ] && ARGS="$ARGS --forzar"
+          node src/ilustrar.mjs $ARGS --solo r
+
+      - name: Guardar escenas
+        if: always() && steps.cual.outputs.files != ''
+        run: |
+          [ -d arte ] || exit 0
+          git add arte/
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "pasas-bot"
+          git config user.email "hola@pasas.mx"
+          git commit -m "arte: escenas de historia [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+
+      - name: Video y correo
+        if: steps.cual.outputs.files != '' && inputs.solo_dibujar != true
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ARCADE_EMAIL_TO: ${{ inputs.destinatario == 'retos' && secrets.ARCADE_EMAIL_TO || secrets.CARRUSELES_EMAIL_TO || secrets.ARCADE_EMAIL_TO }}
+        run: |
+          HOY=$(TZ=America/Mexico_City date +%F)
+          for f in ${{ steps.cual.outputs.files }}; do
+            FECHA=$(basename "$f" | cut -c1-10)
+            ENVIAR=--enviar
+            # En un push, los de días futuros no se mandan todavía (se mandan ese día)
+            if [ "${{ github.event_name }}" = "push" ] && [[ "$FECHA" > "$HOY" ]]; then ENVIAR=""; echo "$f es del $FECHA: se dibujó, se manda ese día"; fi
+            node src/historia.mjs --data "$f" $ENVIAR
+          done
+
+      - name: Guardar archivos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historias-${{ github.run_id }}
+          path: video/salida/historias/
+          retention-days: 7
+          if-no-files-found: ignore

@@ -259,6 +259,47 @@ export async function ilustrar(d, { solo = null, forzar = false, log = console.l
 // ─── Reel: un fondo por escena (sin texto), 9:16 ───
 // El reel es la microhistoria del carrusel (descubrir); el texto y la animación los pone
 // templates/reel-ilustrado.html encima. Fondos en arte/<carrusel>/reel-NN.jpg.
+// ─── Estilo "documental" (historias y efemérides): el del video del 2 de octubre ───
+// Ilustración oscura y con grano, casi fotográfica, con la Pasita como testigo (muchas veces
+// de espaldas, con su mochila). 2:3 vertical: el texto lo pone templates/historia.html encima.
+const REF_DOC = path.join(ARTE, 'referencias', 'estilo-documental.jpg');
+const ESTILO_DOC = `
+ART DIRECTION: a dark, cinematic documentary illustration, like a frame of a graphic-novel documentary or an editorial
+poster: semi-realistic painted environment and people, high contrast, desaturated cold palette (charcoal, slate blue,
+sepia), dramatic sky, film grain and slight print texture, period-accurate architecture, clothing and objects. The ONLY
+saturated element is the Pasita (purple) and, at most, a small lime-green (#c6f432) accent light. The FIRST reference
+image shows this mood, palette, grit and lighting: copy the mood, NOT that character (its pink fuzzy creature is wrong).
+
+MAIN CHARACTER: "la Pasita", the PASAS.MX mascot exactly as in the character-sheet references (smooth wrinkled purple
+raisin body #7C3AED with darker #4C1D95 wrinkles, big white cartoon eyes, thick eyebrows, thin purple arms and legs,
+white sneakers with purple and yellow). She is a quiet WITNESS of history, not a hero: small to medium size in the frame,
+often seen from behind or in three-quarter view, wearing a small dark school backpack with a simple raisin emblem. Her
+emotion matches the scene. She is the only cartoon element.
+
+PEOPLE: anonymous people of the era, seen from behind, at a distance or in silhouette; never recognizable real
+historical figures, never portraits of real people.
+
+RESPECT: no blood, no wounds, no weapons aimed at people, no bodies, nothing graphic. Show what happened through
+places, objects and absence (empty squares, candles, scattered papers, shoes, newspapers, flowers, smoke, light).
+
+TEXT IN THE IMAGE: none, except the exact short Spanish phrases listed under SIGN TEXTS (if any), written on period
+banners, signs or newspaper headlines, perfectly spelled with accents. Any other sign, page or poster is blank or
+illegible. No logos, no watermarks.
+
+COMPOSITION: vertical 2:3. The upper 42% of the frame is calm and dark (night sky, wall, shadow, haze) because big
+titles go there; the action and the Pasita live in the lower 58%. Clear depth: foreground, midground, background.`.trim();
+
+export function promptDocumental(d, e, i) {
+  const x = e.arte.escena;
+  const escena = typeof x === 'string' ? `SCENE: ${x}` : CAMPOS.filter(([k]) => x[k]).map(([k, n]) => `${n}: ${x[k]}`).join('\n');
+  const carteles = e.arte.carteles?.length ? `\nSIGN TEXTS (exactly as written): ${e.arte.carteles.map(t => `"${t}"`).join(' · ')}` : '\nSIGN TEXTS: none';
+  return `${ESTILO_DOC}
+
+TOPIC AND ERA: ${d.arte?.universo || ''}
+SCENE ${i + 1} of ${d.reel.escenas.length} of a short documentary reel.
+${escena}${carteles}`.trim();
+}
+
 export function promptReel(d, e, i) {
   const s = { arte: { escena: e.arte.escena, zona_texto: 'arriba' } };
   return promptDe(d, s, i)
@@ -274,14 +315,16 @@ export async function ilustrarReel(d, { forzar = false, log = console.log } = {}
   const estado = existsSync(fEstado) ? JSON.parse(await readFile(fEstado, 'utf8')) : {};
   const tareas = d.reel.escenas.map((e, i) => ({ e, i })).filter(({ e }) => e.arte?.escena);
   async function una({ e, i }) {
-    const n = `reel-${String(i + 1).padStart(2, '0')}`, prompt = promptReel(d, e, i), h = hash(prompt + MODEL + QUALITY);
+    const doc = d.arte?.estilo === 'documental';
+    const n = `reel-${String(i + 1).padStart(2, '0')}`, prompt = doc ? promptDocumental(d, e, i) : promptReel(d, e, i), h = hash(prompt + MODEL + QUALITY);
     const archivo = path.join(dir, `${n}.jpg`);
     if (!forzar && estado[n]?.ok && estado[n].hash === h && existsSync(archivo)) { log(`  ${n}: ya estaba`); return; }
     for (let intento = 1; intento <= 3; intento++) {
       try {
         const t0 = Date.now();
-        await aJpg(await llamarOpenAI(prompt), archivo, 'scale=-2:1920,crop=1080:1920');
-        estado[n] = { ok: true, hash: h, modo: 'reel', modelo: MODEL, calidad: QUALITY, segundos: Math.round((Date.now() - t0) / 1000), fecha: new Date().toISOString() };
+        if (doc) await aJpg(await llamarOpenAI(prompt, { refs: [REF_DOC, ...REFS].filter(f => existsSync(f)) }), archivo, 'scale=1080:1620');
+        else await aJpg(await llamarOpenAI(prompt), archivo, 'scale=-2:1920,crop=1080:1920');
+        estado[n] = { ok: true, hash: h, modo: doc ? 'documental' : 'reel', modelo: MODEL, calidad: QUALITY, segundos: Math.round((Date.now() - t0) / 1000), fecha: new Date().toISOString() };
         log(`  ${n}: lista (${estado[n].segundos} s)`);
         return;
       } catch (err) {

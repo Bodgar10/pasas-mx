@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Historias y efemérides (25-35 s, 1080×1920): el formato del video del 2 de octubre.
+   Ilustración documental 2:3 de OpenAI (video/arte/<historia>/reel-NN.jpg) dentro de una tarjeta
+   con borde de acento, su copia desenfocada detrás, títulos Anton con marcatexto y la Pasita testigo.
+   Diferencia clave con el original: el gancho se ve COMPLETO desde el cuadro 0 (en el original,
+   en el segundo 2 solo decía "TENÍAN" y ahí se iba casi todo el mundo). */
+.frame{background:#07060a;--c:#c6f432;--ink:#0b0b0b}
+.blur{position:absolute;inset:-80px;background-size:cover;background-position:center;filter:blur(42px) brightness(.38) saturate(.7);opacity:0}
+.card{position:absolute;left:55px;top:188px;width:970px;height:1455px;border-radius:34px;overflow:hidden;background:#111;
+  box-shadow:0 0 0 7px var(--c), 0 30px 80px rgba(0,0,0,.7)}
+.img{position:absolute;inset:-30px;background-size:cover;background-position:center;opacity:0;will-change:transform,opacity}
+.img.vacio{background:radial-gradient(70% 50% at 50% 70%, rgba(124,58,237,.35), transparent 70%), linear-gradient(#1a1a22,#0b0b10)}
+.shade{position:absolute;left:0;right:0;top:0;height:62%;background:linear-gradient(180deg, rgba(5,5,8,.88) 0%, rgba(5,5,8,.62) 55%, rgba(5,5,8,0) 100%)}
+.grain{position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;pointer-events:none}
+
+.txt{position:absolute;left:60px;right:60px;top:70px;opacity:0;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.txt.centro{align-items:center;text-align:center}
+.t{font-family:'Anton',sans-serif;text-transform:uppercase;line-height:1.0;font-size:132px;color:#f2f2ee;letter-spacing:.005em;white-space:nowrap;
+  text-shadow:0 6px 0 rgba(0,0,0,.55), 0 0 30px rgba(0,0,0,.6)}
+.t b{color:var(--c);font-weight:400}
+.mk{display:inline-block;margin:18px 0 4px;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:66px;line-height:1.02;color:var(--ink);
+  background:var(--c);padding:6px 22px 8px;transform:rotate(-1.4deg);filter:url(#roto);white-space:nowrap}
+.fecha{margin-top:34px;font-size:30px;font-weight:800;letter-spacing:.32em;color:#e9e9e4;text-transform:uppercase;text-shadow:0 2px 10px #000}
+.fecha:after{content:'';display:block;width:90px;height:5px;border-radius:3px;background:var(--c);margin:16px auto 0}
+.txt:not(.centro) .fecha:after{margin-left:0}
+.cu{margin-top:22px;max-width:600px;font-size:40px;font-weight:800;line-height:1.24;color:#f4f4f0;text-shadow:0 2px 12px rgba(0,0,0,.95)}
+.txt.centro .cu{max-width:820px}
+.cu b{color:var(--c);font-weight:900}
+.cu i{font-style:normal;color:var(--ink);background:var(--c);padding:0 10px;border-radius:4px}
+.cu + .cu{margin-top:12px}
+.marca{position:absolute;right:46px;bottom:38px;font-family:var(--font-brand);font-weight:900;font-size:26px;letter-spacing:.14em;color:#fff;opacity:.85;text-shadow:0 2px 10px #000}
+.marca span{color:var(--c)}
+
+/* Cierre: fuera de la tarjeta, centrado */
+.cierre{position:absolute;left:60px;right:60px;top:560px;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0}
+.cierre .t{font-size:124px}
+.cierre .logo{margin-top:60px;font-family:var(--font-brand);font-weight:900;font-size:76px;letter-spacing:.06em;color:#fff}
+.cierre .logo span{color:var(--c)}
+.cierre .firma{margin-top:18px;font-size:30px;font-weight:800;letter-spacing:.3em;color:#cfcfc8;text-transform:uppercase}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><filter id="roto"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter>
+<filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+<div class="frame" id="frame">
+  <div id="blurs"></div>
+  <div class="card" id="card">
+    <div id="imgs"></div>
+    <div class="shade"></div>
+    <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#ruido)"/></svg>
+    <div id="txts"></div>
+    <div class="marca">PASAS<span>.</span>MX</div>
+  </div>
+  <div id="cierres"></div>
+</div>
+<script src="anim.js"></script>
+<script>
+var D, E, T0, TOTAL;
+// **x** → color de acento · [[x]] → marcatexto
+function md(s) { return esc(s).replace(/\[\[(.+?)\]\]/g, '<i>$1</i>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); }
+function bloque(e, i, cierre) {
+  var h = (e.titulo || []).map(function (l, k) { return '<div class="t" id="t' + i + '_' + k + '">' + md(l) + '</div>'; }).join('');
+  if (e.marcador) h += '<div class="mk" id="m' + i + '">' + esc(e.marcador) + '</div>';
+  if (e.fecha) h += '<div class="fecha" id="f' + i + '">' + esc(e.fecha) + '</div>';
+  (e.cuerpo || []).forEach(function (c, k) { h += '<div class="cu" id="c' + i + '_' + k + '">' + md(c) + '</div>'; });
+  if (cierre) h += '<div class="logo" id="lg' + i + '">PASAS<span>.</span>MX</div>' + (e.firma ? '<div class="firma" id="fi' + i + '">' + esc(e.firma) + '</div>' : '');
+  return h;
+}
+window.setup = function (data) {
+  D = data; E = data.reel.escenas;
+  if (data.hobby && data.hobby.color) $('frame').style.setProperty('--c', data.hobby.color);
+  T0 = []; var t = 0; E.forEach(function (e) { T0.push(t); t += e.dur || 3.5; }); TOTAL = t;
+  var src = function (i) { var e = E[i]; return (data.reel_fondos || [])[e.fondo_de != null ? e.fondo_de : i]; };
+  $('imgs').innerHTML = E.map(function (e, i) { var s = src(i); return '<div class="img' + (s ? '' : ' vacio') + '" id="im' + i + '"' + (s ? ' style="background-image:url(\'' + s + '\')"' : '') + '></div>'; }).join('');
+  $('blurs').innerHTML = E.map(function (e, i) { var s = src(i); return '<div class="blur" id="bl' + i + '"' + (s ? ' style="background-image:url(\'' + s + '\')"' : '') + '></div>'; }).join('');
+  $('txts').innerHTML = E.map(function (e, i) { return e.tipo === 'cierre' ? '' : '<div class="txt' + (e.centro || i === 0 ? ' centro' : '') + '" id="x' + i + '">' + bloque(e, i) + '</div>'; }).join('');
+  $('cierres').innerHTML = E.map(function (e, i) { return e.tipo === 'cierre' ? '<div class="cierre" id="x' + i + '">' + bloque(e, i, true) + '</div>' : ''; }).join('');
+  // Ningún título se sale: se achica la línea hasta caber
+  document.querySelectorAll('.t').forEach(function (el) { fitLines([el], el.closest('.cierre') ? 960 : 850); });
+  document.querySelectorAll('.mk').forEach(function (el) { fitLines([el], 830); });
+  window.ready = Promise.all([].map.call(document.querySelectorAll('.img:not(.vacio)'), function (el) {
+    return new Promise(function (ok) { var im = new Image(); im.onload = im.onerror = ok; im.src = el.style.backgroundImage.slice(5, -2); });
+  }));
+  window.render(0);
+  return TOTAL;
+};
+window.momentos = function () { return E.map(function (e, i) { return T0[i] + Math.min((e.dur || 3.5) - 0.3, 2.4); }); };
+
+window.render = function (t) {
+  var on = 0; for (var i = 0; i < E.length; i++) if (t >= T0[i]) on = i;
+  var enCierre = E[on].tipo === 'cierre';
+  $('card').style.opacity = enCierre ? clamp(1 - (t - T0[on]) / 0.4) : 1;
+  E.forEach(function (e, i) {
+    var a = T0[i], b = a + (e.dur || 3.5), last = i === E.length - 1, first = i === 0;
+    // Imagen: fundido cruzado + zoom lento que alterna dirección
+    var vis = first ? 1 : clamp((t - a + 0.3) / 0.3);
+    if (!last) vis *= clamp((b + 0.3 - t) / 0.3);
+    if (t < a - 0.3 || t > b + 0.3) vis = 0;
+    if (first && t > b + 0.3) vis = 0;
+    var im = $('im' + i), bl = $('bl' + i), p = clamp((t - a) / (b - a));
+    im.style.opacity = vis; bl.style.opacity = vis;
+    im.style.transform = 'translate(' + ((i % 2 ? -1 : 1) * 14 * (p - 0.5)) + 'px,' + (-12 * p) + 'px) scale(' + (1.06 - 0.05 * p) + ')';
+    // Texto: la escena 1 completa desde el cuadro 0; las demás entran rápido, línea por línea
+    var x = $('x' + i), w = first ? (t > b ? clamp(1 - (t - b) / 0.25) : 1) : win(t, a, b, true, !last);
+    x.style.opacity = w;
+    var k0 = first ? -99 : a + 0.12, n = 0;
+    x.querySelectorAll('.t,.mk,.fecha,.cu,.logo,.firma').forEach(function (el) {
+      var at = k0 + n * (el.classList.contains('cu') ? 0.32 : 0.14); n++;
+      var q = clamp((t - at) / 0.22);
+      el.style.opacity = q;
+      el.style.transform = (el.classList.contains('mk') ? 'rotate(-1.4deg) ' : '') + 'translateY(' + (16 * (1 - easeOut(q))) + 'px)';
+    });
+  });
+};
+</script>
+</body></html>
