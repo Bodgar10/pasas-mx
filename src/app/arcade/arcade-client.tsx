@@ -508,23 +508,67 @@ export default function ArcadeClient({
               )}
             </div>
 
+            {/* s41 — Orden pensado para quien viene de un anuncio y ya está en
+                modo juego: primero una SEGUNDA partida (la Horda del tema que
+                falló, o el reto de hoy si vino por materia), luego el repaso
+                plegado, el hábito (mañana), y hasta después PASAS y compartir. */}
+            <Puente reto={reto} resultados={resultados} hayOferta={!!ofertaPapa} />
+
             {retoDeHoy && <SigueConHoy reto={reto} retoDeHoy={retoDeHoy} />}
 
-            <Puente reto={reto} resultados={resultados} />
+            <details className={s.respuestas}>
+              <summary>Ver mis {RONDAS_POR_RETO} respuestas</summary>
+              <ul className={s.recap}>
+                {reto.rounds.map((r, i) => {
+                  const pct =
+                    cifras && cifras.players >= MIN_JUGADORES_CIFRAS ? cifras.per_round[i] : null
+                  return (
+                    <li key={r.id}>
+                      <span className={`${s.dot} ${resultados[i] ? s.dotOk : s.dotBad}`} />
+                      <div>
+                        <div className={s.recapT}>{r.topic}</div>
+                        <div className={s.recapS}>
+                          Sobraba {r.options[r.odd]}
+                          {resultados[i] ? '' : ` · tú elegiste ${r.options[picks[i]]}`}
+                          {pct !== null && pct !== undefined ? ` · acertó el ${pct}%` : ''}
+                        </div>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+            </details>
+
+            {/* Mañana: con reto por materia no se sabe la fecha de hoy aquí, y
+                el "mañana" saldría de la fecha del reto viejo. */}
+            {!retoDeHoy && (
+              <div className={s.manana}>
+                <div className={s.mananaTitulo}>
+                  Mañana toca {manana} <span aria-hidden="true">{configMateria(materiaDeManana(reto.date)).emoji}</span>
+                </div>
+                <div className={s.mananaReloj}>
+                  Nuevo reto en <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
+                </div>
+              </div>
+            )}
+
+            {FEATURE_FLAGS.ENABLE_ARCADE_RECORDATORIO && <RecordatorioForm />}
 
             {ofertaPapa && <Oferta oferta={ofertaPapa} reto={reto} aciertos={aciertos} />}
 
-            {/* Compartir va justo después de seguir jugando (s34-F3 lo puso
-                arriba de todo; s40 le antepone la Horda). */}
+            {/* Compartir al final y con menos peso que el siguiente juego. */}
             <div className={s.share}>
+              <p className={s.shareTitulo}>
+                ¿Le ganaste a tus amigos? Comparte tu {aciertos}/{RONDAS_POR_RETO}
+              </p>
               <div className={s.row3}>
                 {puedeCompartir && (
-                  <button className={`${s.btn} ${s.primary}`} type="button" onClick={compartirNativo}>
+                  <button className={`${s.btn} ${s.ghost} ${s.btnChico}`} type="button" onClick={compartirNativo}>
                     Compartir
                   </button>
                 )}
                 <a
-                  className={`${s.btn} ${s.wa}`}
+                  className={`${s.btn} ${s.wa} ${s.btnChico}`}
                   href={`https://wa.me/?text=${encodeURIComponent(texto)}`}
                   target="_blank"
                   rel="noopener"
@@ -532,49 +576,18 @@ export default function ArcadeClient({
                 >
                   WhatsApp
                 </a>
-                <button className={`${s.btn} ${s.ghost}`} type="button" onClick={copiar}>
+                <button className={`${s.btn} ${s.ghost} ${s.btnChico}`} type="button" onClick={copiar}>
                   Copiar
                 </button>
               </div>
               <div className={s.toast} role="status" aria-live="polite">
                 {aviso}
               </div>
-              <pre className={s.sharePreview} ref={refCompartir}>
+              {/* Fuera de la vista: es lo que se copia si el portapapeles falla. */}
+              <pre className={`${s.sharePreview} ${s.srOnly}`} ref={refCompartir}>
                 {texto}
               </pre>
             </div>
-
-            {FEATURE_FLAGS.ENABLE_ARCADE_RECORDATORIO && <RecordatorioForm />}
-
-            <ul className={s.recap}>
-              {reto.rounds.map((r, i) => {
-                const pct =
-                  cifras && cifras.players >= MIN_JUGADORES_CIFRAS ? cifras.per_round[i] : null
-                return (
-                  <li key={r.id}>
-                    <span className={`${s.dot} ${resultados[i] ? s.dotOk : s.dotBad}`} />
-                    <div>
-                      <div className={s.recapT}>{r.topic}</div>
-                      <div className={s.recapS}>
-                        Sobraba {r.options[r.odd]}
-                        {resultados[i] ? '' : ` · tú elegiste ${r.options[picks[i]]}`}
-                        {pct !== null && pct !== undefined ? ` · acertó el ${pct}%` : ''}
-                      </div>
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
-
-            {!retoDeHoy && (
-              <div className={s.next}>
-                <span>
-                  Siguiente reto en
-                  <small className={s.nextMateria}>Mañana: {manana}</small>
-                </span>
-                <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
-              </div>
-            )}
           </section>
         )}
       </div>
@@ -702,9 +715,9 @@ function SigueConHoy({ reto, retoDeHoy }: { reto: RetoArcade; retoDeHoy: RetoDeH
 }
 
 /**
- * s41 — Oferta para el papá o la mamá, después de "seguir jugando". Quien
- * juega puede ser el hijo o el papá; el texto le habla al que paga sin
- * excluir al otro. Lleva al registro con el slug de la campaña pegado
+ * s41 — Oferta de PASAS al terminar, después de "seguir jugando" y del
+ * reto de mañana. Le habla al que juega (casi siempre el alumno) y deja una
+ * línea para el papá o la mamá, que es quien paga. Lleva al registro con el slug de la campaña pegado
  * (conPromo), así el descuento llega aunque el navegador de la app no guarde
  * nada.
  */
@@ -717,10 +730,9 @@ function Oferta({ oferta, reto, aciertos }: { oferta: OfertaPapa; reto: RetoArca
   }, [reto.number, aciertos, oferta.slug])
   return (
     <div className={s.oferta}>
-      <div className={s.eyebrow}>Para mamá o papá</div>
-      <h3>Que practique así todas sus materias</h3>
+      <h3>¿Quieres practicar así todas tus materias?</h3>
       <p>
-        Secundaria y prepa completas en minijuegos, explicadas con lo que le gusta: anime, videojuegos, K-pop o
+        Secundaria y prepa completas con minijuegos, quizzes y explicaciones desde anime, videojuegos, K-pop o
         fútbol.
       </p>
       {oferta.listaTexto && oferta.finalTexto && (
@@ -748,13 +760,18 @@ function Oferta({ oferta, reto, aciertos }: { oferta: OfertaPapa; reto: RetoArca
         {oferta.cta}
       </Link>
       <p className={s.ofertaMicro}>{oferta.micro}</p>
+      <p className={s.ofertaPapas}>¿Eres mamá o papá? Desde tu cuenta ves su avance en cada materia.</p>
     </div>
   )
 }
 
-function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] }) {
+function Puente({ reto, resultados, hayOferta = false }: { reto: RetoArcade; resultados: boolean[]; hayOferta?: boolean }) {
   const r = rondaDelPuente(reto, resultados)
   const perfecto = !resultados.includes(false)
+  const conHorda = r.horde_ready && esMateriaPublica(r.subject_slug)
+  // s41: sin Horda gratis para este tema, el puente solo llevaba a "Conoce
+  // PASAS", que ahora hace la oferta de abajo. No se repite.
+  if (!conHorda && hayOferta) return null
 
   return (
     <div className={s.bridge}>
@@ -765,7 +782,7 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
           {r.horde_ready && esMateriaPublica(r.subject_slug)
             ? perfecto
               ? `El reto diario es el calentamiento. En PASAS, ${r.topic} tiene su propio Modo Horda con preguntas más difíciles.`
-              : 'Este tema tiene su propio Modo Horda: oleadas de preguntas, cada una más difícil. Las primeras tres son gratis.'
+              : '¿Quieres practicar justo eso? Oleadas de preguntas del tema, cada una más difícil.'
             : `En PASAS, ${r.topic} se explica con lo que te gusta: anime, futbol, K-pop o videojuegos. Y cada tema tiene su Modo Horda.`}
         </p>
         {r.horde_ready && esMateriaPublica(r.subject_slug) && (
@@ -799,9 +816,11 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
             Conoce PASAS
           </Link>
         )}
-        <Link className={s.link} href="/">
-          ¿Qué es PASAS?
-        </Link>
+        {!hayOferta && (
+          <Link className={s.link} href="/">
+            ¿Qué es PASAS?
+          </Link>
+        )}
       </div>
     </div>
   )

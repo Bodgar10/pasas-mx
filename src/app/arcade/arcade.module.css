@@ -362,3 +362,36 @@
 .ofertaBtn { background: var(--xp); color: #1a1035; }
 .ofertaBtn:hover { filter: brightness(1.05); }
 .ofertaMicro { font-size: 13px; color: var(--dim); text-align: center; opacity: 1 !important; }
+
+/* s41 · Resultado: repaso plegado, mañana más visible, compartir ligero. */
+.respuestas { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 4px; }
+.respuestas summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 900;
+  color: var(--muted);
+  padding-block: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.respuestas summary::-webkit-details-marker { display: none; }
+.respuestas summary::after { content: '↓'; }
+.respuestas[open] summary::after { content: '↑'; }
+.respuestas .recap { border-top: none; }
+.manana {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+.mananaTitulo { font-size: 19px; font-weight: 900; }
+.mananaReloj { font-size: 14px; font-weight: 800; color: var(--dim); }
+.mananaReloj b { font-family: var(--font-brand); font-size: 22px; color: var(--fg); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; margin-left: 6px; }
+.shareTitulo { font-weight: 900; text-align: center; }
+.btnChico { min-height: 44px; font-size: 15px; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: pre; }
+.ofertaPapas { font-size: 13px; color: var(--dim); text-align: center; }
