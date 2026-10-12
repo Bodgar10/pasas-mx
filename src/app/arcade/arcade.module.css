@@ -331,3 +331,34 @@
 .compacto .prompt p { font-size: 15px; }
 .bHead { display: flex; flex-direction: column; gap: 4px; }
 .bFacts { font-size: 14px; font-weight: 800; color: var(--dim); }
+
+/* s41 · Oferta para el papá al terminar el reto. Va en amarillo (--xp) para
+   no confundirse con "seguir jugando", que usa el acento de la materia. */
+.oferta {
+  background: var(--surface);
+  border: 1.5px solid rgba(251, 191, 36, 0.55);
+  border-radius: var(--r-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.oferta h3 { font-size: 21px; }
+.oferta p { opacity: 0.86; }
+.ofertaPrecio { display: flex; flex-direction: column; gap: 4px; }
+.ofertaBadge {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 900;
+  color: #1a1035;
+  background: var(--xp);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.ofertaMonto { font-size: 22px; font-weight: 900; }
+.ofertaMonto s { color: var(--dim); font-weight: 800; font-size: 18px; }
+.ofertaMonto b { color: var(--xp); }
+.ofertaDespues { font-size: 14px; font-weight: 800; color: var(--dim); }
+.ofertaBtn { background: var(--xp); color: #1a1035; }
+.ofertaBtn:hover { filter: brightness(1.05); }
+.ofertaMicro { font-size: 13px; color: var(--dim); text-align: center; opacity: 1 !important; }

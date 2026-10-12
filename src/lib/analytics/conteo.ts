@@ -64,6 +64,9 @@ export const EVENTOS_CONTEO = [
   'arcade_compartir_clic',
   'arcade_puente_clic',
   'arcade_reto_hoy_clic',
+  // s41: oferta para el papá al terminar el reto.
+  'arcade_oferta_vista',
+  'arcade_oferta_clic',
   'horda_publica_vista',
   'horda_publica_iniciada',
 

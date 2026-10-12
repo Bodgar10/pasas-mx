@@ -27,6 +27,7 @@ import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import RecordatorioForm from './recordatorio-form'
 import { configMateria, materiaDeManana, nombreParaManana } from '@/lib/arcade/materias'
 import { esMateriaPublica } from '@/lib/horda-publica'
+import { conPromo } from '@/lib/promos'
 import s from './arcade.module.css'
 
 /**
@@ -68,6 +69,22 @@ function leerVariante(): Variante {
  */
 export type RetoDeHoy = { number: number; materia: string | null }
 
+/**
+ * s41 — Lo que pinta la oferta para el papá al terminar. Lo arma el servidor
+ * (contenido.tsx) con los helpers de lib/promos, igual que la landing: el
+ * cliente no decide precios ni textos. Con `listaTexto` null no hay campaña
+ * y se ofrece la prueba de siempre.
+ */
+export type OfertaPapa = {
+  slug: string | null
+  badge: string | null
+  listaTexto: string | null
+  finalTexto: string | null
+  despuesTexto: string | null
+  cta: string
+  micro: string
+}
+
 /** "Geografía" o "el reto para papás", para frases como "Hoy toca …". */
 function nombreDeMateria(m: string | null | undefined): string {
   return m === 'papas' ? 'el reto para papás' : configMateria(m).nombre
@@ -95,6 +112,7 @@ export default function ArcadeClient({
   dominio,
   origenRuta = null,
   retoDeHoy = null,
+  ofertaPapa = null,
 }: {
   reto: RetoArcade
   dominio: string
@@ -102,6 +120,8 @@ export default function ArcadeClient({
   origenRuta?: OrigenArcade | null
   /** Solo cuando `reto` NO es el de hoy (reto por materia). */
   retoDeHoy?: RetoDeHoy | null
+  /** Oferta para el papá al terminar (s41). Sin ella, no se pinta. */
+  ofertaPapa?: OfertaPapa | null
 }) {
   const [fase, setFase] = useState<Fase>('inicio')
   const [idx, setIdx] = useState(0)
@@ -492,6 +512,8 @@ export default function ArcadeClient({
 
             <Puente reto={reto} resultados={resultados} />
 
+            {ofertaPapa && <Oferta oferta={ofertaPapa} reto={reto} aciertos={aciertos} />}
+
             {/* Compartir va justo después de seguir jugando (s34-F3 lo puso
                 arriba de todo; s40 le antepone la Horda). */}
             <div className={s.share}>
@@ -675,6 +697,57 @@ function SigueConHoy({ reto, retoDeHoy }: { reto: RetoArcade; retoDeHoy: RetoDeH
           Jugar el reto de hoy
         </Link>
       </div>
+    </div>
+  )
+}
+
+/**
+ * s41 — Oferta para el papá o la mamá, después de "seguir jugando". Quien
+ * juega puede ser el hijo o el papá; el texto le habla al que paga sin
+ * excluir al otro. Lleva al registro con el slug de la campaña pegado
+ * (conPromo), así el descuento llega aunque el navegador de la app no guarde
+ * nada.
+ */
+function Oferta({ oferta, reto, aciertos }: { oferta: OfertaPapa; reto: RetoArcade; aciertos: number }) {
+  const vista = useRef(false)
+  useEffect(() => {
+    if (vista.current) return
+    vista.current = true
+    track('arcade_oferta_vista', { reto_numero: reto.number, score: aciertos, promo: oferta.slug ?? undefined })
+  }, [reto.number, aciertos, oferta.slug])
+  return (
+    <div className={s.oferta}>
+      <div className={s.eyebrow}>Para mamá o papá</div>
+      <h3>Que practique así todas sus materias</h3>
+      <p>
+        Secundaria y prepa completas en minijuegos, explicadas con lo que le gusta: anime, videojuegos, K-pop o
+        fútbol.
+      </p>
+      {oferta.listaTexto && oferta.finalTexto && (
+        <div className={s.ofertaPrecio}>
+          {oferta.badge && <span className={s.ofertaBadge}>{oferta.badge}</span>}
+          <div className={s.ofertaMonto}>
+            <s>{oferta.listaTexto}</s> <b>{oferta.finalTexto}</b>
+          </div>
+          <div className={s.ofertaDespues}>{oferta.despuesTexto}</div>
+        </div>
+      )}
+      <Link
+        className={`${s.btn} ${s.ofertaBtn}`}
+        href={conPromo('/onboarding', oferta.slug)}
+        onClick={() =>
+          track('arcade_oferta_clic', {
+            reto_numero: reto.number,
+            score: aciertos,
+            promo: oferta.slug ?? undefined,
+            origen: leerOrigenArcade() ?? undefined,
+            canal: atribucionJuegos().canal,
+          })
+        }
+      >
+        {oferta.cta}
+      </Link>
+      <p className={s.ofertaMicro}>{oferta.micro}</p>
     </div>
   )
 }
