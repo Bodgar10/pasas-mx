@@ -21,6 +21,13 @@ describe('detectarCanal', () => {
     expect(detectarCanal({ ...base, search: '?utm_source=boletin' }).canal).toBe('otro')
   })
 
+  it('s40: utm_source con la variable sin reemplazar se ignora y cae al navegador de la app', () => {
+    const ig = 'Mozilla/5.0 (iPhone) Instagram 300.0'
+    expect(detectarCanal({ ...base, userAgent: ig, search: '?utm_source={{site_source_name}}&utm_campaign=reto-historia' }).canal).toBe('instagram')
+    expect(detectarCanal({ ...base, userAgent: ig, search: '?utm_source=%7B%7Bsite_source_name%7D%7D' }).canal).toBe('instagram')
+    expect(detectarCanal({ ...base, search: '?utm_source={{site_source_name}}' }).canal).toBe('directo')
+  })
+
   it('referrer externo: l.instagram.com es instagram (el caso que quedaba como "directo")', () => {
     expect(detectarCanal({ ...base, referrer: 'https://l.instagram.com/' }).canal).toBe('instagram')
     expect(detectarCanal({ ...base, referrer: 'https://lm.facebook.com/l.php' }).canal).toBe('facebook')

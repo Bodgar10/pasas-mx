@@ -65,7 +65,11 @@ export function detectarCanal(entrada: {
   propioHost?: string
 }): Atribucion {
   const q = new URLSearchParams(entrada.search)
-  const src = q.get('utm_source')?.trim() || null
+  // s40: si la plataforma no reemplazó su variable (llega literal
+  // "{{site_source_name}}"), ese utm_source no sirve: se ignora y el canal se
+  // saca del referrer o del navegador de la app, como si no trajera utm.
+  const crudo = q.get('utm_source')?.trim() || null
+  const src = crudo && !/[{}]|%7b|%7d/i.test(crudo) ? crudo : null
   const camp = q.get('utm_campaign')?.trim() || null
   const corto = (v: string | null) => (v ? v.slice(0, 64) : null)
 
