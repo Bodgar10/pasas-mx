@@ -95,6 +95,20 @@ describe('resultado y puente', () => {
     expect(rondaDelPuente(reto, [true, true, false, false, true]).topic).toBe('C')
   })
 
+  it('si un tema se falló más veces, gana ese aunque no sea el primero', () => {
+    const conRepetido: RetoArcade = {
+      ...reto,
+      rounds: [ronda(0, 'A'), ronda(1, 'B'), ronda(2, 'C'), ronda(3, 'B'), ronda(0, 'E')],
+    }
+    expect(rondaDelPuente(conRepetido, [false, false, true, false, true]).topic).toBe('B')
+    // Y devuelve la PRIMERA ronda fallada de ese tema.
+    expect(rondaDelPuente(conRepetido, [false, false, true, false, true]).odd).toBe(1)
+  })
+
+  it('en empate de errores, el que se falló primero', () => {
+    expect(rondaDelPuente(reto, [true, false, true, false, false]).topic).toBe('B')
+  })
+
   it('si fue perfecto, lleva a la última ronda (la más difícil)', () => {
     expect(rondaDelPuente(reto, [true, true, true, true, true]).topic).toBe('E')
   })

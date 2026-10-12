@@ -155,12 +155,23 @@ export function textoCompartir(numero: number, resultados: boolean[], sitio: str
 }
 
 /**
- * El tema del puente a la Horda: el primero que falló; si fue perfecto, la
- * ronda más difícil (la última, porque el reto va de fácil a difícil).
+ * El tema del puente: el tema con MÁS errores; si empatan, el que falló
+ * primero (s42). Casi siempre las 5 rondas son de temas distintos, así que en
+ * la práctica es el primer error. Si fue perfecto, la ronda más difícil (la
+ * última, porque el reto va de fácil a difícil).
  */
 export function rondaDelPuente(reto: RetoArcade, resultados: boolean[]): RondaArcade {
-  const fallo = resultados.indexOf(false)
-  return reto.rounds[fallo === -1 ? reto.rounds.length - 1 : fallo]
+  const errores = new Map<string, number>()
+  reto.rounds.forEach((r, i) => {
+    if (resultados[i] === false) errores.set(r.topic_slug, (errores.get(r.topic_slug) ?? 0) + 1)
+  })
+  let elegida = -1
+  reto.rounds.forEach((r, i) => {
+    if (resultados[i] !== false) return
+    // `>` estricto y recorriendo en orden: en empate gana el que falló primero.
+    if (elegida === -1 || errores.get(r.topic_slug)! > errores.get(reto.rounds[elegida].topic_slug)!) elegida = i
+  })
+  return reto.rounds[elegida === -1 ? reto.rounds.length - 1 : elegida]
 }
 
 /**
