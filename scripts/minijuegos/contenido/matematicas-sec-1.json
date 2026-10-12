@@ -698,8 +698,30 @@
           }
         },
         "Videojuegos": {
-          "connect": null,
-          "order_steps": null
+          "connect": {
+            "prompt": "¿Qué nombre algebraico tiene cada parte del cofre?",
+            "left_label": "Minecraft",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La letra d en lugar de los diamantes",
+                "right": "Variable"
+              },
+              {
+                "left": "d + 9",
+                "right": "Expresión algebraica"
+              },
+              {
+                "left": "d + 9 = 24",
+                "right": "Ecuación"
+              },
+              {
+                "left": "Descubrir cuántos dejó tu amigo",
+                "right": "Resolver la ecuación"
+              }
+            ],
+            "completion_feedback": "Ponerle una letra a los diamantes que no ves es hacer **álgebra**. Veamos qué significa cada nombre."
+          }
         }
       }
     },
@@ -768,8 +790,30 @@
           }
         },
         "K-pop & K-dramas": {
-          "connect": null,
-          "order_steps": null
+          "connect": {
+            "prompt": "¿Qué ángulo forma tu brazo en cada parte de la coreografía?",
+            "left_label": "BLACKPINK",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Brazo apenas levantado",
+                "right": "Ángulo agudo"
+              },
+              {
+                "left": "Brazo horizontal, en L",
+                "right": "Ángulo recto"
+              },
+              {
+                "left": "Brazo en diagonal hacia arriba",
+                "right": "Ángulo obtuso"
+              },
+              {
+                "left": "Brazos extendidos de mano a mano",
+                "right": "Ángulo llano"
+              }
+            ],
+            "completion_feedback": "Cada posición del brazo abre un **ángulo** distinto desde tu hombro. Veamos cómo se miden y se nombran."
+          }
         },
         "Videojuegos": {
           "connect": {
