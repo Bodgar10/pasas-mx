@@ -54,5 +54,14 @@ describe('prellenado del onboarding', () => {
     const m = mensajePapa('La Revolución Mexicana', 'pasas.mx/unete/a/b')
     expect(m).toContain('3 de 6 oleadas de La Revolución Mexicana')
     expect(m).toContain('pasas.mx/unete/a/b')
+    expect(m).not.toContain('$')
+  })
+
+  it('con promo, el mensaje lleva el precio y el de después', () => {
+    const m = mensajePapa('La Revolución Mexicana', 'pasas.mx/unete/a/b', {
+      finalTexto: '$1 primer mes',
+      despuesTexto: 'después $249/mes',
+    })
+    expect(m).toContain('7 días gratis y luego $1 primer mes (después $249/mes):')
   })
 })

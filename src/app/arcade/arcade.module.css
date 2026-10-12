@@ -395,3 +395,7 @@
 .btnChico { min-height: 44px; font-size: 15px; }
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: pre; }
 .ofertaPapas { font-size: 13px; color: var(--dim); text-align: center; }
+
+/* s41 · Salida para menores de 18 dentro de la oferta. */
+.ofertaMenor { border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.ofertaMenor p { font-size: 14px; font-weight: 700; color: var(--dim); opacity: 1; text-align: center; }

@@ -554,7 +554,7 @@ export default function ArcadeClient({
 
             {FEATURE_FLAGS.ENABLE_ARCADE_RECORDATORIO && <RecordatorioForm />}
 
-            {ofertaPapa && <Oferta oferta={ofertaPapa} reto={reto} aciertos={aciertos} />}
+            {ofertaPapa && <Oferta oferta={ofertaPapa} reto={reto} aciertos={aciertos} dominio={dominio} />}
 
             {/* Compartir al final y con menos peso que el siguiente juego. */}
             <div className={s.share}>
@@ -721,7 +721,33 @@ function SigueConHoy({ reto, retoDeHoy }: { reto: RetoArcade; retoDeHoy: RetoDeH
  * (conPromo), así el descuento llega aunque el navegador de la app no guarde
  * nada.
  */
-function Oferta({ oferta, reto, aciertos }: { oferta: OfertaPapa; reto: RetoArcade; aciertos: number }) {
+function Oferta({
+  oferta,
+  reto,
+  aciertos,
+  dominio,
+}: {
+  oferta: OfertaPapa
+  reto: RetoArcade
+  aciertos: number
+  dominio: string
+}) {
+  // Menores de 18: la cuenta la abre un adulto (el registro lo exige). El
+  // alumno le manda el mensaje armado; el link va a la landing, que le
+  // explica PASAS al papá, con la campaña pegada.
+  const sitio = dominio.replace(/\/+$/, '')
+  const linkPapa = `${sitio}/?${new URLSearchParams({
+    ...(oferta.slug ? { promo: oferta.slug } : {}),
+    utm_source: 'whatsapp',
+    utm_campaign: 'pidele-a-papa',
+  }).toString()}`
+  const precio =
+    oferta.finalTexto && oferta.despuesTexto
+      ? `Tiene 7 días gratis y luego ${oferta.finalTexto.replace(' primer mes', '')} el primer mes (${oferta.despuesTexto}).`
+      : 'Tiene 7 días gratis.'
+  const mensajePapa =
+    `Hola, encontré PASAS para estudiar todas mis materias con minijuegos. ` +
+    `Hoy saqué ${aciertos}/${RONDAS_POR_RETO} en su reto diario. ${precio} ¿Me abres la cuenta?\n${linkPapa}`
   const vista = useRef(false)
   useEffect(() => {
     if (vista.current) return
@@ -730,11 +756,8 @@ function Oferta({ oferta, reto, aciertos }: { oferta: OfertaPapa; reto: RetoArca
   }, [reto.number, aciertos, oferta.slug])
   return (
     <div className={s.oferta}>
-      <h3>¿Quieres practicar así todas tus materias?</h3>
-      <p>
-        Secundaria y prepa completas con minijuegos, quizzes y explicaciones desde anime, videojuegos, K-pop o
-        fútbol.
-      </p>
+      <h3>Practica así todas las materias de secundaria y prepa</h3>
+      <p>Minijuegos, quizzes y explicaciones con anime, videojuegos, K-pop o fútbol.</p>
       {oferta.listaTexto && oferta.finalTexto && (
         <div className={s.ofertaPrecio}>
           {oferta.badge && <span className={s.ofertaBadge}>{oferta.badge}</span>}
@@ -760,7 +783,25 @@ function Oferta({ oferta, reto, aciertos }: { oferta: OfertaPapa; reto: RetoArca
         {oferta.cta}
       </Link>
       <p className={s.ofertaMicro}>{oferta.micro}</p>
-      <p className={s.ofertaPapas}>¿Eres mamá o papá? Desde tu cuenta ves su avance en cada materia.</p>
+      <div className={s.ofertaMenor}>
+        <p>¿Tienes menos de 18? La cuenta la abre tu mamá, papá o tutor. Te dejamos el mensaje listo:</p>
+        <a
+          className={`${s.btn} ${s.ghost} ${s.btnChico}`}
+          href={`https://wa.me/?text=${encodeURIComponent(mensajePapa)}`}
+          target="_blank"
+          rel="noopener"
+          onClick={() =>
+            track('arcade_pedir_papa_clic', {
+              reto_numero: reto.number,
+              score: aciertos,
+              promo: oferta.slug ?? undefined,
+              canal: atribucionJuegos().canal,
+            })
+          }
+        >
+          Pedírselo por WhatsApp
+        </a>
+      </div>
     </div>
   )
 }
@@ -782,7 +823,7 @@ function Puente({ reto, resultados, hayOferta = false }: { reto: RetoArcade; res
           {r.horde_ready && esMateriaPublica(r.subject_slug)
             ? perfecto
               ? `El reto diario es el calentamiento. En PASAS, ${r.topic} tiene su propio Modo Horda con preguntas más difíciles.`
-              : '¿Quieres practicar justo eso? Oleadas de preguntas del tema, cada una más difícil.'
+              : '¿Quieres mejorar justo ese tema? El Modo Horda te lleva de preguntas fáciles a difíciles hasta dominarlo.'
             : `En PASAS, ${r.topic} se explica con lo que te gusta: anime, futbol, K-pop o videojuegos. Y cada tema tiene su Modo Horda.`}
         </p>
         {r.horde_ready && esMateriaPublica(r.subject_slug) && (
@@ -799,7 +840,7 @@ function Puente({ reto, resultados, hayOferta = false }: { reto: RetoArcade; res
                 track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, origen: leerOrigenArcade() ?? undefined, canal: atribucionJuegos().canal })
               }
             >
-              Jugar la Horda de {r.topic}
+              {perfecto ? `Jugar la Horda de ${r.topic}` : `Practicar ${r.topic} gratis`}
             </Link>
           </>
         )}
