@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { track } from '@/lib/analytics/track'
 import {
@@ -28,6 +28,7 @@ import RecordatorioForm from './recordatorio-form'
 import { configMateria, materiaDeManana, nombreParaManana } from '@/lib/arcade/materias'
 import { esMateriaPublica } from '@/lib/horda-publica'
 import { conPromo } from '@/lib/promos'
+import { urlTemaMuestra } from '@/lib/tema-muestra'
 import s from './arcade.module.css'
 
 /**
@@ -123,6 +124,7 @@ export default function ArcadeClient({
   /** Oferta para el papá al terminar (s41). Sin ella, no se pinta. */
   ofertaPapa?: OfertaPapa | null
 }) {
+  const conCuenta = useConCuenta()
   const [fase, setFase] = useState<Fase>('inicio')
   const [idx, setIdx] = useState(0)
   const [picks, setPicks] = useState<number[]>([])
@@ -512,7 +514,7 @@ export default function ArcadeClient({
                 modo juego: primero una SEGUNDA partida (la Horda del tema que
                 falló, o el reto de hoy si vino por materia), luego el repaso
                 plegado, el hábito (mañana), y hasta después PASAS y compartir. */}
-            <Puente reto={reto} resultados={resultados} hayOferta={!!ofertaPapa} />
+            <Puente reto={reto} resultados={resultados} hayOferta={!!ofertaPapa && !conCuenta} />
 
             {retoDeHoy && <SigueConHoy reto={reto} retoDeHoy={retoDeHoy} />}
 
@@ -554,7 +556,7 @@ export default function ArcadeClient({
 
             {FEATURE_FLAGS.ENABLE_ARCADE_RECORDATORIO && <RecordatorioForm />}
 
-            {ofertaPapa && <Oferta oferta={ofertaPapa} reto={reto} aciertos={aciertos} dominio={dominio} />}
+            {ofertaPapa && !conCuenta && <Oferta oferta={ofertaPapa} reto={reto} aciertos={aciertos} dominio={dominio} />}
 
             {/* Compartir al final y con menos peso que el siguiente juego. */}
             <div className={s.share}>
@@ -806,56 +808,81 @@ function Oferta({
   )
 }
 
+/**
+ * s42 — ¿Hay sesión de PASAS en este navegador? Quien ya tiene cuenta no ve la
+ * oferta de $1. Se mira la cookie de Supabase y nada más: meter el cliente de
+ * Supabase al bundle del reto para esto costaría más carga que lo que ahorra.
+ * Si la cookie engaña (sesión vencida), lo peor es no ver la oferta.
+ */
+const SIN_SUSCRIPCION = () => () => {}
+function useConCuenta(): boolean {
+  return useSyncExternalStore(
+    SIN_SUSCRIPCION,
+    () => /(?:^|;\s*)sb-[^=]+-auth-token/.test(document.cookie),
+    () => false
+  )
+}
+
 function Puente({ reto, resultados, hayOferta = false }: { reto: RetoArcade; resultados: boolean[]; hayOferta?: boolean }) {
   const r = rondaDelPuente(reto, resultados)
   const perfecto = !resultados.includes(false)
+  const aciertos = resultados.filter(Boolean).length
   const conHorda = r.horde_ready && esMateriaPublica(r.subject_slug)
-  // s41: sin Horda gratis para este tema, el puente solo llevaba a "Conoce
-  // PASAS", que ahora hace la oferta de abajo. No se repite.
-  if (!conHorda && hayOferta) return null
+  // s42: el siguiente paso es el TEMA exacto (explicación, minijuegos, quiz),
+  // sin cuenta. La Horda queda como opción secundaria. Con 5/5 no hay error
+  // que reforzar: manda la Horda (si la hay) para subir de nivel.
+  const urlTema = urlTemaMuestra(r.subject_slug, r.topic_slug, { perfecto })
+  const hordaPrimero = perfecto && conHorda
+  const medir = (destino: 'tema' | 'horda') => {
+    const props = {
+      reto_numero: reto.number,
+      tema: r.topic,
+      perfecto,
+      materia: r.materia ?? undefined,
+      score: aciertos,
+      destino,
+      origen: leerOrigenArcade() ?? undefined,
+      canal: atribucionJuegos().canal,
+    }
+    track(destino === 'tema' ? 'arcade_tema_clic' : 'arcade_puente_clic', props)
+  }
+
+  const botonTema = (
+    <Link className={`${s.btn} ${hordaPrimero ? s.ghost : s.primary}`} href={urlTema} onClick={() => medir('tema')}>
+      {perfecto ? 'Ver el tema completo' : 'Aprender este tema →'}
+    </Link>
+  )
+  const botonHorda = conHorda && (
+    <Link className={`${s.btn} ${hordaPrimero ? s.primary : s.ghost}`} href={urlHorda(r)} onClick={() => medir('horda')}>
+      {perfecto ? `Subir de nivel: Horda de ${r.topic}` : 'Practicar en Horda'}
+    </Link>
+  )
 
   return (
     <div className={s.bridge}>
       <div className={s.bridgeInner}>
-        <div className={s.eyebrow}>{perfecto ? 'Siguiente nivel' : 'Sigue jugando'}</div>
-        <h3>{perfecto ? 'Cinco de cinco. ¿Aguantas más?' : `Fallaste en ${r.topic}`}</h3>
+        <div className={s.eyebrow}>{perfecto ? 'Siguiente nivel' : 'Tu siguiente paso'}</div>
+        <h3>{perfecto ? 'Lo sacaste completo 🔥' : `Fallaste en ${r.topic}`}</h3>
         <p>
-          {r.horde_ready && esMateriaPublica(r.subject_slug)
-            ? perfecto
-              ? `El reto diario es el calentamiento. En PASAS, ${r.topic} tiene su propio Modo Horda con preguntas más difíciles.`
-              : '¿Quieres mejorar justo ese tema? El Modo Horda te lleva de preguntas fáciles a difíciles hasta dominarlo.'
-            : `En PASAS, ${r.topic} se explica con lo que te gusta: anime, futbol, K-pop o videojuegos. Y cada tema tiene su Modo Horda.`}
+          {perfecto
+            ? `¿Quieres probar algo más difícil? ${r.topic} tiene su tema completo en PASAS${conHorda ? ' y su propio Modo Horda' : ''}.`
+            : 'Te lo explicamos y luego lo practicas: explicación con audio, minijuegos y quiz.'}
         </p>
-        {r.horde_ready && esMateriaPublica(r.subject_slug) && (
+        <div className={s.hordeStats}>
+          <span>Gratis</span>
+          <span>Sin registrarte</span>
+          <span>Con anime, videojuegos, K-pop o fútbol</span>
+        </div>
+        {hordaPrimero ? (
           <>
-            <div className={s.hordeStats}>
-              <span>3 oleadas gratis</span>
-              <span>15 preguntas</span>
-              <span>Sin registrarte</span>
-            </div>
-            <Link
-              className={`${s.btn} ${s.primary}`}
-              href={urlHorda(r)}
-              onClick={() =>
-                track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, origen: leerOrigenArcade() ?? undefined, canal: atribucionJuegos().canal })
-              }
-            >
-              {perfecto ? `Jugar la Horda de ${r.topic}` : `Practicar ${r.topic} gratis`}
-            </Link>
+            {botonHorda}
+            {botonTema}
           </>
-        )}
-        {!(r.horde_ready && esMateriaPublica(r.subject_slug)) && (
-          // La Horda pública solo existe para historia (lib/horda-publica).
-          // En las demás materias el puente lleva a conocer PASAS.
-          <Link
-            className={`${s.btn} ${s.primary}`}
-            href="/"
-            onClick={() =>
-              track('arcade_puente_clic', { reto_numero: reto.number, tema: r.topic, perfecto, destino: 'landing', origen: leerOrigenArcade() ?? undefined, canal: atribucionJuegos().canal })
-            }
-          >
-            Conoce PASAS
-          </Link>
+        ) : (
+          <>
+            {botonTema}
+            {botonHorda}
+          </>
         )}
         {!hayOferta && (
           <Link className={s.link} href="/">
