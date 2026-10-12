@@ -96,6 +96,8 @@ export const EVENTOS_CONTEO = [
   // Embudo de cuenta
   'onboarding_paso',
   'onboarding_completo',
+  // s42: con prellenado, ¿el grado del tema era el suyo? (resultado si/no)
+  'onboarding_confirmar_grado',
   'preview_visto',
   'preview_cta_planes',
   'planes_vistos',
