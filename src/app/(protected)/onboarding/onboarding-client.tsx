@@ -230,6 +230,32 @@ export default function OnboardingClient({ themes }: Props) {
 
   const copy = COPY[registrante]
 
+  /**
+   * s42 — Con prellenado (Horda pública o muestra del tema), nivel y grado
+   * salen del TEMA que jugó, no de la persona: un tema de 2° de prepa lo
+   * puede estar repasando alguien de 3° o de secundaria. Antes de seguir se
+   * pregunta. "No" lleva al paso 1 con todo lo demás conservado.
+   */
+  const [gradoConfirmado, setGradoConfirmado] = useState(!prefill)
+  const preguntandoGrado = !!prefill && !gradoConfirmado && step === 3
+
+  function confirmarGrado(si: boolean) {
+    track('onboarding_confirmar_grado', { resultado: si ? 'si' : 'no', origen: prefill?.desde })
+    setGradoConfirmado(true)
+    if (!si) {
+      cerrarPaso()
+      entrarA(1)
+      setStep(1)
+      return
+    }
+    // Con la temática ya elegida en la muestra, directo al resumen.
+    if (theme) {
+      medirPaso(3, theme)
+      entrarA(4)
+      setStep(4)
+    }
+  }
+
   const selectedLevel = LEVELS.find((l) => l.label === level)
   const selectedTheme = themes.find((t) => t.name === theme)
   const canProceed = step === 1 ? !!level : step === 2 ? !!grade : step === 3 ? !!theme : true
@@ -265,14 +291,12 @@ export default function OnboardingClient({ themes }: Props) {
         visita_n: visitasRef.current[1] ?? 1,
       })
       setGrade(null)
-      setTheme(null)
       const siguiente = selectedLevel.needsGrade ? 2 : 3
       entrarA(siguiente)
       setStep(siguiente)
     } else if (step === 2) {
       if (!grade) return
       medirPaso(2, grade)
-      setTheme(null)
       entrarA(3)
       setStep(3)
     } else if (step === 3) {
@@ -359,7 +383,7 @@ export default function OnboardingClient({ themes }: Props) {
           </h1>
         </div>
 
-        {prefill?.tema && step === 3 && (
+        {prefill?.tema && step === 3 && gradoConfirmado && (
           <div
             style={{
               marginBottom: 16,
@@ -555,8 +579,69 @@ export default function OnboardingClient({ themes }: Props) {
             </>
           )}
 
+          {/* Paso 3, antes: ¿el grado del tema es el suyo? (s42) */}
+          {preguntandoGrado && (
+            <>
+              {prefill?.tema && (
+                <p style={{ fontSize: 14, color: '#a78bfa', fontWeight: 700, margin: '0 0 6px' }}>
+                  Viene de {prefill.tema}
+                </p>
+              )}
+              <h2
+                style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 20,
+                  fontWeight: 900,
+                  color: '#e2d9f3',
+                  margin: '0 0 8px',
+                  lineHeight: 1.3,
+                }}
+              >
+                ¿El estudiante va en {grade} de {level === 'Secundaria' ? 'secundaria' : 'prepa'}?
+              </h2>
+              <p style={{ fontSize: 15, color: '#a78bfa', margin: '0 0 18px', lineHeight: 1.5 }}>
+                Ese tema es de {level} · {grade}. Si va en otro año, cámbialo y armamos sus materias de su año.
+              </p>
+              <button
+                type="button"
+                onClick={() => confirmarGrado(true)}
+                style={{
+                  width: '100%',
+                  minHeight: 52,
+                  borderRadius: 12,
+                  fontWeight: 900,
+                  fontSize: 16,
+                  border: 'none',
+                  cursor: 'pointer',
+                  backgroundColor: '#7c3aed',
+                  color: '#ffffff',
+                }}
+              >
+                Sí, va en {grade} de {level === 'Secundaria' ? 'secundaria' : 'prepa'}
+              </button>
+              <button
+                type="button"
+                onClick={() => confirmarGrado(false)}
+                style={{
+                  marginTop: 10,
+                  width: '100%',
+                  minHeight: 52,
+                  borderRadius: 12,
+                  fontWeight: 800,
+                  fontSize: 16,
+                  cursor: 'pointer',
+                  background: 'transparent',
+                  border: '1.5px solid #2D2048',
+                  color: '#e2d9f3',
+                }}
+              >
+                No, cambiar nivel y año
+              </button>
+            </>
+          )}
+
           {/* Step 3 — Theme */}
-          {step === 3 && (
+          {step === 3 && !preguntandoGrado && (
             <>
               <h2
                 style={{
@@ -681,6 +766,7 @@ export default function OnboardingClient({ themes }: Props) {
           )}
 
           {/* Primary button */}
+          {!preguntandoGrado && (
           <button
             type="button"
             onClick={handleNext}
@@ -701,9 +787,10 @@ export default function OnboardingClient({ themes }: Props) {
           >
             {step === 3 ? '¡Empezar! ✨' : step === 4 ? copy.ctaFinal : 'Siguiente →'}
           </button>
+          )}
 
           {/* Back link */}
-          {step > 1 && (
+          {step > 1 && !preguntandoGrado && (
             <button
               type="button"
               onClick={handleBack}
