@@ -58,6 +58,8 @@ export const EVENTOS_CONTEO = [
   // Juegos gratis
   'arcade_visto',
   'arcade_iniciado',
+  // s40: una por respuesta, con `paso` (1-5): en qué ronda se va la gente.
+  'arcade_ronda',
   'arcade_completado',
   'arcade_compartir_clic',
   'arcade_puente_clic',
@@ -114,6 +116,8 @@ export const PROPS_CONTEO = [
   'origen',
   // s39: el reto que se jugó era el de una materia (?materia=), no el de hoy.
   'por_materia',
+  // s40: si acertó esa ronda (arcade_ronda).
+  'acierto',
 ] as const
 
 const PROPS = new Set<string>(PROPS_CONTEO)

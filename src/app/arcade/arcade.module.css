@@ -312,3 +312,22 @@
 .aviso { border-radius: 14px; padding: 12px 14px; font-weight: 800; font-size: 14px; background: var(--ok-soft); color: var(--ok); }
 
 .nextMateria { display: block; font-size: 12px; font-weight: 800; color: var(--muted); margin-top: 2px; }
+
+/* s40 · Prueba A/B de la entrada (arcade-client: scriptVariante). En el
+   primer render se pintan las dos; la B nace escondida y el script, si toca
+   B, la muestra y esconde la A. Sin script (bloqueado) se ve la A. */
+.soloB { display: none; }
+
+/* s40 · Resultado compacto: lo primero que sigue es "seguir jugando". */
+.scoreCompact { gap: 8px; padding-block: 0; }
+.scoreCompact .score { font-size: 44px; }
+.scoreCompact .score small { font-size: 24px; }
+.scoreCompact .sq { width: 22px; height: 22px; border-radius: 6px; }
+.scoreCompact .scoreLabel { font-size: 17px; }
+
+/* s40 · Versión B, ronda 1 compacta (ver arcade-client). */
+.compacto { gap: 14px; }
+.compacto .screen { gap: 14px; }
+.compacto .prompt p { font-size: 15px; }
+.bHead { display: flex; flex-direction: column; gap: 4px; }
+.bFacts { font-size: 14px; font-weight: 800; color: var(--dim); }

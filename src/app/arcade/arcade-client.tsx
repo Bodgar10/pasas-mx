@@ -29,7 +29,37 @@ import { configMateria, materiaDeManana, nombreParaManana } from '@/lib/arcade/m
 import { esMateriaPublica } from '@/lib/horda-publica'
 import s from './arcade.module.css'
 
-type Fase = 'intro' | 'play' | 'end'
+/**
+ * 'inicio' = el primer render (servidor e hidratación): pinta la portada (A)
+ * Y la ronda 1 (B) a la vez. La B nace escondida por CSS; el script de abajo,
+ * si toca B, agrega un <style> que esconde la A y muestra la B antes de
+ * pintar. Así nadie ve un parpadeo de la otra versión. Después de montar,
+ * pasa a 'intro' (A) o 'play' (B).
+ */
+type Fase = 'inicio' | 'intro' | 'play' | 'end'
+type Variante = 'A' | 'B'
+
+/**
+ * s40 — PRUEBA A/B de la entrada al reto.
+ *   A: portada con "Así se juega" y botón "Jugar el reto de hoy" (la de siempre).
+ *   B: la ronda 1 de entrada, sin portada ni botón.
+ * 50/50, fija por navegador (localStorage). ?v=a o ?v=b la fuerza (pruebas).
+ * Corre antes de pintar: es un <script> en línea del HTML del servidor, como
+ * el truco del modo oscuro. Si localStorage falla, se sortea en cada visita.
+ * Todos los eventos del Arcade llevan `variant` para comparar las dos.
+ *
+ * 🔴 No toca atributos de <html> ni de nada que pinte React: eso rompe la
+ * hidratación. Deja la versión en window.__pasasArcadeV y, solo en B, mete un
+ * <style> con las clases ya resueltas del módulo CSS.
+ */
+function scriptVariante(claseA: string, claseB: string): string {
+  const css = `.${claseA}{display:none!important}.${claseB}{display:flex!important}`
+  return `(function(){var v=null;try{var q=new URLSearchParams(location.search).get('v');if(q==='a'||q==='b'){v=q}}catch(e){}try{var k='pasas_arcade_v';if(!v){v=localStorage.getItem(k)}if(v!=='a'&&v!=='b'){v=Math.random()<0.5?'a':'b'}localStorage.setItem(k,v)}catch(e){if(v!=='a'&&v!=='b'){v=Math.random()<0.5?'a':'b'}}window.__pasasArcadeV=v;if(v==='b'){var st=document.createElement('style');st.textContent=${JSON.stringify(css)};document.head.appendChild(st)}})();`
+}
+
+function leerVariante(): Variante {
+  return typeof window !== 'undefined' && (window as unknown as { __pasasArcadeV?: string }).__pasasArcadeV === 'b' ? 'B' : 'A'
+}
 
 /**
  * s39 — El reto de hoy, cuando la página sirve OTRO: el más reciente de una
@@ -73,7 +103,7 @@ export default function ArcadeClient({
   /** Solo cuando `reto` NO es el de hoy (reto por materia). */
   retoDeHoy?: RetoDeHoy | null
 }) {
-  const [fase, setFase] = useState<Fase>('intro')
+  const [fase, setFase] = useState<Fase>('inicio')
   const [idx, setIdx] = useState(0)
   const [picks, setPicks] = useState<number[]>([])
   const [cifras, setCifras] = useState<CifrasArcade | null>(null)
@@ -98,8 +128,28 @@ export default function ArcadeClient({
   // del producto). Ver fijarOrigenArcade en lib/arcade y lib/arcade/canal.
   const origenRef = useRef<OrigenArcade>('directo')
   const atribRef = useRef<Atribucion>({ canal: 'directo', utm_source: null, utm_campaign: null })
+  const varianteRef = useRef<Variante>('A')
+  const [variante, setVariante] = useState<Variante>('A')
   const conOrigen = (evento: string, props: Record<string, unknown>) =>
-    track(evento, { ...props, origen: origenRef.current, canal: atribRef.current.canal, por_materia: !!retoDeHoy })
+    track(evento, {
+      ...props,
+      origen: origenRef.current,
+      canal: atribRef.current.canal,
+      por_materia: !!retoDeHoy,
+      variant: varianteRef.current,
+    })
+
+  // s40: la versión ya está en <html> (el script corrió antes de pintar). Se
+  // pasa de 'inicio' a la fase de esa versión; si mientras tanto el efecto de
+  // "ya jugó hoy" la llevó a 'end', se respeta.
+  useEffect(() => {
+    void (async () => {
+      const v = leerVariante()
+      varianteRef.current = v
+      setVariante(v)
+      setFase((f) => (f === 'inicio' ? (v === 'B' ? 'play' : 'intro') : f))
+    })()
+  }, [])
 
   // `arcade_visto` es la entrada al embudo: sin él no se sabe cuántos de los
   // que tocaron el banner llegaron a ver el juego. window.location y no
@@ -114,6 +164,7 @@ export default function ArcadeClient({
       reto_numero: reto.number,
       ya_jugo: !!leerLocal(llavePartida(reto.date)),
       por_materia: !!retoDeHoy,
+      variant: leerVariante(),
     })
     // retoDeHoy viene del servidor y no cambia mientras la página vive.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -189,6 +240,11 @@ export default function ArcadeClient({
    *     cerraba después de la 5ª respuesta quedaba guardado sin evento.
    * Quien vuelve el mismo día ve su resultado guardado y solo dispara
    * `arcade_visto` (con ya_jugo: true): no es una partida nueva.
+   *
+   * s40: en la versión B no hay botón de empezar, así que `arcade_iniciado`
+   * sale con la PRIMERA respuesta (mismo significado: empezó a jugar). Y cada
+   * respuesta dispara `arcade_ronda` { paso } para ver en qué ronda se va la
+   * gente: visto → ronda 1 → ronda 2 → … → completado.
    */
   const partidaIniciadaRef = useRef(false)
   function empezar() {
@@ -205,6 +261,12 @@ export default function ArcadeClient({
     if (picks.length > idx) return
     const nuevos = [...picks, i]
     setPicks(nuevos)
+    if (fase === 'inicio') setFase('play')
+    if (!partidaIniciadaRef.current) {
+      partidaIniciadaRef.current = true
+      conOrigen('arcade_iniciado', { reto_numero: reto.number })
+    }
+    conOrigen('arcade_ronda', { reto_numero: reto.number, paso: nuevos.length, acierto: i === reto.rounds[idx].odd })
     if (nuevos.length === RONDAS_POR_RETO) {
       escribirLocal(llavePartida(reto.date), JSON.stringify(nuevos))
       void enviarPartida(nuevos)
@@ -303,6 +365,10 @@ export default function ArcadeClient({
   // como variable CSS para que el módulo lo use en botones y progreso.
   const mat = configMateria(reto.materia)
   const manana = nombreParaManana(materiaDeManana(reto.date))
+  // En 'inicio' la ronda 1 es de la versión B por definición (el CSS la
+  // esconde en A). En 'play' se mira la versión real: en A, la ronda 1 no
+  // lleva la cabecera de B.
+  const varianteVisible = (f: Fase): Variante => (f === 'inicio' ? 'B' : variante)
   const estiloMateria = { '--acento': mat.acento, '--sobre-acento': mat.sobreAcento } as React.CSSProperties
 
   return (
@@ -321,8 +387,10 @@ export default function ArcadeClient({
           </div>
         )}
 
-        {fase === 'intro' && (
-          <section className={s.screen}>
+        <script dangerouslySetInnerHTML={{ __html: scriptVariante(s.soloA, s.soloB) }} />
+
+        {(fase === 'intro' || fase === 'inicio') && (
+          <section className={`${s.screen} ${fase === 'inicio' ? s.soloA : ''}`}>
             <div className={s.stack8}>
               <div className={s.eyebrow}>
                 <span aria-hidden="true">{mat.emoji}</span> {mat.eyebrow(reto.number)}
@@ -366,19 +434,41 @@ export default function ArcadeClient({
           </section>
         )}
 
-        {fase === 'play' && (
-          <Ronda
-            reto={reto}
-            idx={idx}
-            picks={picks}
-            onResponder={responder}
-            onSiguiente={siguiente}
-          />
+        {(fase === 'play' || fase === 'inicio') && (
+          <div
+            className={`${s.screen} ${fase === 'inicio' ? s.soloB : ''} ${
+              idx === 0 && varianteVisible(fase) === 'B' ? s.compacto : ''
+            }`}
+          >
+            {/* Versión B, ronda 1: lo mínimo para saber qué es, y a jugar.
+                Compacta a propósito: en el navegador de Instagram (~600 px de
+                alto, con el aviso de cookies abajo) las 4 opciones tienen que
+                verse sin hacer scroll. */}
+            {idx === 0 && varianteVisible(fase) === 'B' && (
+              <div className={s.bHead}>
+                <div className={s.eyebrow}>
+                  <span aria-hidden="true">{mat.emoji}</span> {mat.eyebrow(reto.number)}
+                </div>
+                <div className={s.bFacts}>5 rondas · 2 min · gratis · sin registro</div>
+              </div>
+            )}
+            <Ronda reto={reto} idx={idx} picks={picks} onResponder={responder} onSiguiente={siguiente} />
+            {idx === 0 && picks.length === 0 && varianteVisible(fase) === 'B' && retoDeHoy && (
+              <p className={s.fine}>
+                Es el reto de {mat.corto} más reciente. Hoy toca {nombreDeMateria(retoDeHoy.materia)}: lo juegas al
+                terminar este.
+              </p>
+            )}
+          </div>
         )}
 
         {fase === 'end' && (
           <section className={s.screen}>
-            <div className={s.scoreBlock}>
+            {/* s40: el resultado va COMPACTO y arriba de todo lo que sigue va
+                "seguir jugando" (el reto de hoy y la Horda). Antes, compartir,
+                el repaso y el puntaje grande empujaban la Horda hasta el final
+                y nadie llegaba a verla. */}
+            <div className={`${s.scoreBlock} ${s.scoreCompact}`}>
               <div className={s.eyebrow}>{mat.eyebrow(reto.number)} completado</div>
               <div className={s.score}>
                 {aciertos}
@@ -400,8 +490,10 @@ export default function ArcadeClient({
 
             {retoDeHoy && <SigueConHoy reto={reto} retoDeHoy={retoDeHoy} />}
 
-            {/* Compartir va ARRIBA (s34-F3): es el canal que más jugadores trae,
-                y en un celular de 375 px tiene que verse sin hacer scroll. */}
+            <Puente reto={reto} resultados={resultados} />
+
+            {/* Compartir va justo después de seguir jugando (s34-F3 lo puso
+                arriba de todo; s40 le antepone la Horda). */}
             <div className={s.share}>
               <div className={s.row3}>
                 {puedeCompartir && (
@@ -451,8 +543,6 @@ export default function ArcadeClient({
                 )
               })}
             </ul>
-
-            <Puente reto={reto} resultados={resultados} />
 
             {!retoDeHoy && (
               <div className={s.next}>
@@ -596,7 +686,7 @@ function Puente({ reto, resultados }: { reto: RetoArcade; resultados: boolean[] 
   return (
     <div className={s.bridge}>
       <div className={s.bridgeInner}>
-        <div className={s.eyebrow}>{perfecto ? 'Siguiente nivel' : 'Tu repaso de hoy'}</div>
+        <div className={s.eyebrow}>{perfecto ? 'Siguiente nivel' : 'Sigue jugando'}</div>
         <h3>{perfecto ? 'Cinco de cinco. ¿Aguantas más?' : `Fallaste en ${r.topic}`}</h3>
         <p>
           {r.horde_ready && esMateriaPublica(r.subject_slug)
