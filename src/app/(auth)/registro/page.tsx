@@ -8,6 +8,7 @@ import { trackSignup } from '@/components/posthog-events'
 import { nuevoEventId, track } from '@/lib/analytics/track'
 import { conversionGoogleAds } from '@/lib/analytics/google-ads'
 import { motivoRegistroError } from '@/lib/analytics/motivos'
+import { campoLleno, campoRegistro } from '@/lib/analytics/registro-campos'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 import Logo from '@/components/global/Logo'
 import { leerConsentimiento } from '@/lib/consent'
@@ -106,6 +107,55 @@ function RegistroContent() {
 
   useEffect(() => {
     inicioFormRef.current = Date.now()
+  }, [])
+
+  /**
+   * s44 — Medición campo por campo. Delegada en el <form>: cubre también los
+   * campos de ConsentimientoLegal sin tocarlo. Solo nombres, nunca valores.
+   *
+   *  - registro_campo: el campo quedó lleno (una vez por campo).
+   *  - registro_invalido: el navegador frenó el envío por ese campo.
+   *  - registro_salida: cerró sin enviar; `elemento` = último campo lleno.
+   */
+  const camposRef = useRef<{ llenos: Set<string>; ultimo: string | null; enviado: boolean; invalidos: Set<string> }>({
+    llenos: new Set(),
+    ultimo: null,
+    enviado: false,
+    invalidos: new Set(),
+  })
+
+  function medirCampo(target: EventTarget | null) {
+    const el = target as HTMLInputElement | null
+    const elemento = campoRegistro(el?.name)
+    if (!el || !elemento || !campoLleno(el)) return
+    const c = camposRef.current
+    c.ultimo = elemento
+    if (c.llenos.has(elemento)) return
+    c.llenos.add(elemento)
+    track('registro_campo', { elemento, paso: c.llenos.size, quien: registrante })
+  }
+
+  function medirInvalido(target: EventTarget | null) {
+    const elemento = campoRegistro((target as HTMLInputElement | null)?.name)
+    const c = camposRef.current
+    if (!elemento || c.invalidos.has(elemento)) return
+    c.invalidos.add(elemento)
+    track('registro_invalido', { elemento, quien: registrante })
+  }
+
+  useEffect(() => {
+    const alSalir = () => {
+      const c = camposRef.current
+      if (c.enviado) return
+      c.enviado = true // una sola salida por visita
+      track('registro_salida', {
+        elemento: c.ultimo ?? 'ninguno',
+        paso: c.llenos.size,
+        segundos_en_pagina: Math.round((Date.now() - inicioFormRef.current) / 1000),
+      })
+    }
+    window.addEventListener('pagehide', alSalir)
+    return () => window.removeEventListener('pagehide', alSalir)
   }, [])
 
   // Fuera del efecto para que la dependencia sea el string y no el objeto
@@ -236,6 +286,8 @@ function RegistroContent() {
     if (!state || !('error' in state) || !state.error) return
     if (errorMedidoRef.current === state.error) return
     errorMedidoRef.current = state.error
+    // Volvió con error: sigue en el formulario, su salida vuelve a contar.
+    camposRef.current.enviado = false
 
     track('registro_error', {
       motivo: motivoRegistroError(state.error),
@@ -463,9 +515,19 @@ function RegistroContent() {
         action={formAction}
         className="space-y-4"
         onSubmit={() => {
+          camposRef.current.enviado = true
+          camposRef.current.invalidos.clear()
           track('signup_metodo', { method: 'email' })
           trackSignup('email')
         }}
+        onBlurCapture={(e) => medirCampo(e.target)}
+        onChangeCapture={(e) => {
+          // Casillas y fecha no siempre pasan por blur (iOS cierra el
+          // selector de fecha sin desenfocar).
+          const t = e.target as unknown as HTMLInputElement
+          if (t.type === 'checkbox' || t.type === 'date') medirCampo(t)
+        }}
+        onInvalidCapture={(e) => medirInvalido(e.target)}
       >
         <input type="hidden" name="onboarding_data" value={onboardingData} />
         <input type="hidden" name="pending_plan" value={pendingPlan} />

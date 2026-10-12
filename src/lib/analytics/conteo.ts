@@ -104,6 +104,10 @@ export const EVENTOS_CONTEO = [
   'signup_start',
   'signup_completado',
   'registro_error',
+  // s44: el formulario de /registro campo por campo (solo nombres de campo).
+  'registro_campo',
+  'registro_invalido',
+  'registro_salida',
   'checkout_iniciado',
   'checkout_cancelado',
 ] as const
