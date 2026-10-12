@@ -1,0 +1,44 @@
+-- 061_minijuegos_conecta_arma.sql
+-- s43 — Dos minijuegos dentro de la guía: Conecta 🔗 y Arma los pasos 🧩.
+--
+-- Mismo patrón que 030 (solve): NO hay tabla nueva. Son dos section_type más,
+-- con su configuración en sections.data, pintados por ConnectBlock y
+-- OrderStepsBlock (components/guia/InteractiveBlocks.tsx), con XP vía
+-- /api/section-read (idempotente por section_id), y su lugar en la lección lo
+-- da LESSON_ORDER de topic-client:
+--
+--   Analogía → Pruébalo → CONECTA → Explicación → ARMA LOS PASOS → Ejemplo
+--
+-- Contratos y límites: src/lib/minijuegos.ts (la misma función valida al
+-- cargar y decide si el bloque se pinta).
+--
+-- connect — UNA fila por (tema × temática): depende de la analogía del hobby.
+-- {
+--   "prompt": "Une cada momento de la pelea con su idea matemática",  -- opcional
+--   "left_label": "Goku vs Jiren",   -- opcional, def. "Analogía"
+--   "right_label": "En la clase",    -- opcional, def. "Concepto"
+--   "pairs": [ { "left": "...", "right": "..." } ],   -- 2 a 4, ≤ 42 caracteres
+--   "completion_feedback": "Una frase que lleva a la Explicación"
+-- }
+--
+-- order_steps — también por (tema × temática), aunque el contenido puede
+-- repetirse entre temáticas cuando el procedimiento es académico.
+-- {
+--   "prompt": "Ordena cómo se suman dos enteros",     -- opcional
+--   "steps": ["...", "..."],      -- 3 a 5, YA en orden correcto, ≤ 80 car.
+--   "completion_feedback": "Por qué ese orden + transición al ejemplo"
+-- }
+--
+-- 🔴 Igual que sort/match/solve, la respuesta correcta viaja al cliente.
+-- Aceptable: es herramienta de estudio, no examen calificado.
+--
+-- 🔴 "No aplica" = no hay fila. Un tema sin buena relación para Conecta o
+-- sin proceso para Arma simplemente no lleva ese bloque.
+--
+-- ⚠️ Regenerar un tema desde el admin (generate-topic / save-generated-content)
+-- borra TODAS las secciones de (tema × temática), estas incluidas — igual que
+-- hoy pasa con solve y match. Hay que volver a cargarlas con
+-- scripts/minijuegos/cargar.ts.
+
+ALTER TYPE section_type ADD VALUE IF NOT EXISTS 'connect';
+ALTER TYPE section_type ADD VALUE IF NOT EXISTS 'order_steps';

@@ -6,13 +6,14 @@ import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/com
 import HordeEntryCard from '@/components/guia/HordeEntryCard'
 import { rutaAlumno } from '@/lib/learners'
 import { ahoraMs, track } from '@/lib/analytics/track'
-import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, ConnectBlock, OrderStepsBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 import type { MuestraTema } from '@/lib/tema-muestra'
 import { EntradaDesdeReto, OfertaMuestra } from '@/components/guia/MuestraTema'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
   | 'scrubber' | 'steps' | 'sort' | 'match' | 'solve'
+  | 'connect' | 'order_steps'
 
 interface Section {
   id: string
@@ -167,7 +168,9 @@ const SECTION_TYPE_CONFIG: Record<string, {
   },
   steps: {
     label: 'Resuélvelo conmigo',
-    icon: '🧩',
+    // s43: era 🧩, que ahora es el ícono de "Arma los pasos". Dos bloques con
+    // el mismo ícono en la misma lección se confunden.
+    icon: '🤝',
     color: '#06b6d4',
     borderColor: 'rgba(6,182,212,0.25)',
     headerBg: 'rgba(6,182,212,0.06)',
@@ -193,15 +196,40 @@ const SECTION_TYPE_CONFIG: Record<string, {
     borderColor: 'rgba(16,185,129,0.25)',
     headerBg: 'rgba(16,185,129,0.06)',
   },
+  // s43 — Rosa como la Analogía: es su continuación.
+  connect: {
+    label: 'Conecta',
+    icon: '🔗',
+    color: '#ec4899',
+    borderColor: 'rgba(236,72,153,0.25)',
+    headerBg: 'rgba(236,72,153,0.06)',
+  },
+  // s43 — Morado como la Explicación: ordena lo que acaba de explicar.
+  order_steps: {
+    label: 'Arma los pasos',
+    icon: '🧩',
+    color: '#a78bfa',
+    borderColor: 'rgba(167,139,250,0.25)',
+    headerBg: 'rgba(167,139,250,0.06)',
+  },
 }
 
-const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve'])
+const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve', 'connect', 'order_steps'])
 
 // Orden pedagógico: cada bloque interactivo cae junto al texto con el que se relaciona.
+//
+// s43 — Los dos minijuegos ocupan los tramos más pasivos de la guía:
+//   Analogía → Pruébalo → CONECTA → Explicación → ARMA LOS PASOS → Ejemplo
+// Conecta va justo ANTES de la Explicación (que abre con "Lo que acabas de
+// ver en… es exactamente…"): el alumno hace el salto antes de que se lo den.
+// Arma va justo ANTES del Ejemplo resuelto: ordena el razonamiento y luego
+// lo ve aplicado completo. Fracciones para no renumerar nada existente.
 const LESSON_ORDER: Record<string, number> = {
   analogy: 1,
   scrubber: 2,
+  connect: 2.5,
   explanation: 3,
+  order_steps: 3.5,
   example: 4,
   steps: 5,
   solve: 6,
@@ -1236,7 +1264,7 @@ export default function TopicClient({
 
                     {/* Content */}
                     <div style={{
-                      padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match') ? '0' : '14px 16px',
+                      padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match' || section.type === 'connect' || section.type === 'order_steps') ? '0' : '14px 16px',
                       fontSize: 15,
                       lineHeight: 1.75,
                       color: '#e2d9f3',
@@ -1333,6 +1361,44 @@ export default function TopicClient({
                               seccion_orden: section.display_order,
                               ejercicio_orden: ejercicioOrden,
                               n_pistas_usadas: nPistasUsadas,
+                            })
+                          }
+                        />
+                      ) : section.type === 'connect' ? (
+                        <ConnectBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'connect', section.display_order)
+                            e.ultimoPaso = pr.paso
+                            if (pr.intentos != null) e.intentos = pr.intentos
+                          }}
+                          onFallo={({ intentos, par }) =>
+                            track('minijuego_fallido', {
+                              tipo: 'connect',
+                              topic: topic.name,
+                              seccion_orden: section.display_order,
+                              n_intentos: intentos,
+                              par,
+                            })
+                          }
+                        />
+                      ) : section.type === 'order_steps' ? (
+                        <OrderStepsBlock
+                          data={section.data}
+                          onComplete={() => handleInteractiveComplete(section.id)}
+                          onProgreso={(pr) => {
+                            const e = estadoInteractivo(section.id, 'order_steps', section.display_order)
+                            e.ultimoPaso = pr.paso
+                            if (pr.intentos != null) e.intentos = pr.intentos
+                          }}
+                          onFallo={({ intentos, posicion }) =>
+                            track('minijuego_fallido', {
+                              tipo: 'order_steps',
+                              topic: topic.name,
+                              seccion_orden: section.display_order,
+                              n_intentos: intentos,
+                              posicion,
                             })
                           }
                         />

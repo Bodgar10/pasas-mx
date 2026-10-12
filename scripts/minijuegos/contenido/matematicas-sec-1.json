@@ -1,0 +1,95 @@
+{
+  "subject": "matematicas-sec-1",
+  "topics": {
+    "numeros-enteros-suma-resta": {
+      "order_steps": {
+        "prompt": "Ordena cómo se resuelve (−9) + (+4)",
+        "steps": [
+          "Revisa los signos: uno −, otro +. Son distintos",
+          "Ubica el de mayor valor absoluto: 9 > 4",
+          "Resta el menor del mayor: 9 − 4 = 5",
+          "Ponle el signo del mayor: el resultado es −5"
+        ],
+        "completion_feedback": "Los signos deciden si sumas o restas, y el de **mayor valor absoluto** decide el signo final. Ahora míralo aplicado en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea matemática hay detrás de cada momento de la pelea?",
+            "left_label": "Goku vs Jiren",
+            "right_label": "En mate",
+            "pairs": [
+              { "left": "Goku esquiva y recupera ki (+3)", "right": "Entero positivo" },
+              { "left": "El golpe de Jiren le drena ki (−5)", "right": "Entero negativo" },
+              { "left": "El termómetro de energía", "right": "Recta numérica" },
+              { "left": "Juntar todos los sube y baja del ki", "right": "Sumar enteros" }
+            ],
+            "completion_feedback": "La pelea de Goku era una **suma de enteros** sobre una recta numérica. Ahora veamos la regla exacta para no perder un signo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea matemática hay detrás de la tabla de la Liga MX?",
+            "left_label": "Liga MX",
+            "right_label": "En mate",
+            "pairs": [
+              { "left": "Los 4 goles a favor del América (+4)", "right": "Entero positivo" },
+              { "left": "El gol que le metió Cruz Azul (−1)", "right": "Entero negativo" },
+              { "left": "Juntar la noche de +3 y la de −2", "right": "Suma con signos distintos" },
+              { "left": "La columna DG de la tabla", "right": "Recta numérica" }
+            ],
+            "completion_feedback": "La diferencia de goles ya hacía cuentas con **enteros**. Ahora veamos la regla para juntar positivos y negativos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué operación hay detrás de cada movimiento del chart?",
+            "left_label": "Billboard",
+            "right_label": "En mate",
+            "pairs": [
+              { "left": "BTS baja 8 lugares desde el 1", "right": "Sumar: 1 + 8 = 9" },
+              { "left": "BLACKPINK sube 11 desde el 15", "right": "Restar: 15 − 11 = 4" },
+              { "left": "Hacia dónde se mueve la canción", "right": "El signo (+ o −)" },
+              { "left": "Los puestos del Hot 100 en orden", "right": "Recta numérica" }
+            ],
+            "completion_feedback": "En el chart, subir **resta** y bajar **suma**: el signo marca la dirección. Ahora vamos a ponerle nombre a todo esto."
+          },
+          "order_steps": {
+            "prompt": "Una canción está en el puesto 12 y sube 5. Ordena cómo sacas su nuevo puesto",
+            "steps": [
+              "Lee el movimiento: sube 5 lugares",
+              "Subir mejora el puesto, así que el número baja",
+              "Eso es restar: parte del 12 y quita 5",
+              "12 − 5 = 7: queda en el puesto 7"
+            ],
+            "completion_feedback": "Primero lees la **dirección**, luego eliges la operación y al final calculas. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea matemática hay detrás de las coordenadas de Minecraft?",
+            "left_label": "Minecraft",
+            "right_label": "En mate",
+            "pairs": [
+              { "left": "Construir hacia el cielo (Y = +320)", "right": "Entero positivo" },
+              { "left": "Excavar hasta el bedrock (Y = −64)", "right": "Entero negativo" },
+              { "left": "Y = 0, donde antes acababa el mundo", "right": "El cero, punto de referencia" },
+              { "left": "El eje Y que ves con F3", "right": "Recta numérica" }
+            ],
+            "completion_feedback": "El eje Y de Minecraft es una **recta numérica**: positivos arriba, cero en medio y negativos abajo. Vamos a formalizarlo."
+          },
+          "order_steps": {
+            "prompt": "Estás en Y = 5 y bajas 8 bloques. Ordena cómo sacas tu nueva coordenada",
+            "steps": [
+              "Parte de tu coordenada actual: Y = 5",
+              "Bajar es restar: 5 − 8",
+              "Bajas 5 bloques y llegas a Y = 0",
+              "Bajas los 3 que faltan y cruzas el cero: Y = −3"
+            ],
+            "completion_feedback": "Cruzar el cero es solo **seguir bajando** en la recta: del otro lado los números son negativos. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    }
+  }
+}

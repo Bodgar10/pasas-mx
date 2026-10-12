@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
+import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, ConnectBlock, OrderStepsBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
   | 'scrubber' | 'steps' | 'sort' | 'match'
+  | 'connect' | 'order_steps'
 
 interface Section {
   id: string
@@ -188,6 +189,21 @@ const SECTION_TYPE_CONFIG: Record<string, {
     borderColor: 'rgba(167,139,250,0.25)',
     headerBg: 'rgba(167,139,250,0.06)',
   },
+  // s43 — mismos colores que en la guía del alumno.
+  connect: {
+    label: 'Conecta',
+    icon: '🔗',
+    color: '#ec4899',
+    borderColor: 'rgba(236,72,153,0.25)',
+    headerBg: 'rgba(236,72,153,0.06)',
+  },
+  order_steps: {
+    label: 'Arma los pasos',
+    icon: '🧩',
+    color: '#a78bfa',
+    borderColor: 'rgba(167,139,250,0.25)',
+    headerBg: 'rgba(167,139,250,0.06)',
+  },
 }
 
 export default function TopicAdminClient({
@@ -267,7 +283,7 @@ export default function TopicAdminClient({
   }, [initialQuizQuestions])
 
   const LESSON_ORDER: Record<string, number> = {
-    analogy: 1, scrubber: 2, explanation: 3, example: 4,
+    analogy: 1, scrubber: 2, connect: 2.5, explanation: 3, order_steps: 3.5, example: 4,
     steps: 5, sort: 6, match: 7, diagram: 8, key_fact: 9, tip: 10,
   }
   const orderedSections = [...sections].sort(
@@ -1678,7 +1694,15 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
               }} />
 
               {orderedSections.map((section, index) => {
-                const meta = SECTION_TYPE_CONFIG[section.type]
+                // s43 — mismo respaldo que topic-client: un tipo sin entrada
+                // (hoy 'solve') dejaba meta en undefined y tiraba el admin.
+                const meta = SECTION_TYPE_CONFIG[section.type] ?? {
+                  label: 'Sección',
+                  icon: '📄',
+                  color: '#a78bfa',
+                  borderColor: 'rgba(167,139,250,0.25)',
+                  headerBg: 'rgba(167,139,250,0.06)',
+                }
                 return (
                   <RevealOnScroll key={section.id}>
                   <div style={{ position: 'relative', marginBottom: 16 }}>
@@ -1830,7 +1854,7 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
 
                         {/* Content */}
                         <div style={{
-                          padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match') ? '0' : '14px 16px',
+                          padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match' || section.type === 'connect' || section.type === 'order_steps') ? '0' : '14px 16px',
                           fontSize: 15,
                           lineHeight: 1.75,
                           color: '#e2d9f3',
@@ -1852,6 +1876,10 @@ BLOQUES INTERACTIVOS (además de las 5 secciones de texto, en CADA grupo):
                             <StepsBlock data={section.data} />
                           ) : section.type === 'match' ? (
                             <MatchBlock data={section.data} />
+                          ) : section.type === 'connect' ? (
+                            <ConnectBlock data={section.data} />
+                          ) : section.type === 'order_steps' ? (
+                            <OrderStepsBlock data={section.data} />
                           ) : (section.type === 'analogy' || section.type === 'example') ? (
                             <CollapsibleText text={section.content} />
                           ) : renderContent(section.content)}

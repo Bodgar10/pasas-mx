@@ -3,6 +3,15 @@
 import Pasita from '@/components/mascota/Pasita'
 
 import React, { useState, useEffect, useRef } from 'react'
+import {
+  permutacionSinFijos,
+  primerError,
+  semillaDe,
+  validarConnect,
+  validarOrderSteps,
+  type ConnectData,
+  type OrderStepsData,
+} from '@/lib/minijuegos'
 
 // Tipos de sección que llevan audio narrado (bloques de texto).
 export const AUDIO_TEXT_TYPES = new Set<string>(['explanation', 'analogy', 'example', 'key_fact', 'tip'])
@@ -1200,7 +1209,662 @@ const nextBtnStyle: React.CSSProperties = {
   cursor: 'pointer',
 }
 
-export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve'])
+// ═════════════════════════════════════════════════════════════════════════
+// s43 — CONECTA 🔗 y ARMA LOS PASOS 🧩
+//
+// Contratos, límites y barajado viven en lib/minijuegos.ts (lógica pura que
+// también usa el cargador). Aquí solo la mecánica y el pintado.
+//
+// Reglas del documento de producto que este código respeta:
+//   - Sin drag & drop. Todo es tap.
+//   - Conecta: la línea se dibuja SOLO tras validar que el par es correcto.
+//     El error no deja línea: sacude la tarjeta y conserva la primera
+//     selección para probar otra pareja.
+//   - Arma los pasos: cada tap ocupa el siguiente número; tocar un paso
+//     colocado lo regresa; al revisar se señala SOLO el primer error.
+//   - Datos inválidos → el bloque no se pinta (return null), igual que los
+//     otros cinco. Nunca tumba la lección.
+// ═════════════════════════════════════════════════════════════════════════
+
+/** Sacudida y trazo. Un solo <style> por bloque; respeta reduced-motion. */
+const MINIJUEGO_CSS = `
+@keyframes pasas-mj-shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-3px)} 80%{transform:translateX(3px)} }
+@keyframes pasas-mj-draw { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }
+@keyframes pasas-mj-pop { 0%{transform:scale(1)} 45%{transform:scale(1.035)} 100%{transform:scale(1)} }
+.pasas-mj-shake { animation: pasas-mj-shake 0.42s ease; }
+.pasas-mj-pop { animation: pasas-mj-pop 0.32s ease; }
+.pasas-mj-line { stroke-dasharray: 1; stroke-dashoffset: 0; animation: pasas-mj-draw 0.38s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .pasas-mj-shake, .pasas-mj-pop, .pasas-mj-line { animation: none !important; }
+}
+`
+
+/** Vibración corta al fallar, donde exista (Android). iOS la ignora. */
+function vibrar() {
+  try {
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) navigator.vibrate(35)
+  } catch {
+    /* sin vibración no pasa nada */
+  }
+}
+
+function InstruccionMinijuego({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6, marginBottom: 8 }}>
+      <span style={{ fontSize: 14, lineHeight: 1.2 }} aria-hidden="true">👆</span>
+      <span
+        style={{
+          fontSize: 11.5,
+          color: '#fbbf24',
+          fontWeight: 700,
+          letterSpacing: '0.03em',
+          lineHeight: 1.35,
+          fontFamily: 'var(--font-nunito)',
+        }}
+      >
+        {children}
+      </span>
+    </div>
+  )
+}
+
+function CierreMinijuego({ titulo, texto }: { titulo: string; texto?: string }) {
+  return (
+    <div
+      role="status"
+      className="pasas-mj-pop"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 10,
+        marginTop: 14,
+        padding: '10px 12px',
+        borderRadius: 12,
+        background: 'rgba(16,185,129,0.12)',
+        border: '1px solid rgba(16,185,129,0.32)',
+        fontFamily: 'var(--font-nunito)',
+      }}
+    >
+      {/* 56px: misma lógica que el acierto de Papel y lápiz — celebra sin
+          tapar la lección. */}
+      <div style={{ flexShrink: 0 }}>
+        <Pasita pose="aprobando" size={56} parpadea={false} />
+      </div>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ fontSize: 14, fontWeight: 800, color: '#6ee7b7' }}>{titulo}</div>
+        {texto && (
+          <div style={{ fontSize: 13.5, color: '#d1fae5', lineHeight: 1.5, marginTop: 2, fontWeight: 600 }}>
+            {renderInline(texto)}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── CONECTA 🔗 ───────────────────────────────────────────────────────────
+
+/**
+ * Un color por par, en el orden en que se aciertan. Con 3-4 pares las líneas
+ * se cruzan (el barajado no deja ninguna alineada): si todas fueran verdes el
+ * final sería una maraña. Así cada línea se sigue por su color y casa con el
+ * borde de sus dos tarjetas.
+ */
+const COLORES_PAR = ['#10b981', '#06b6d4', '#fbbf24', '#f472b6'] as const
+
+/** Para analítica: qué par costó. Se manda el texto de la izquierda. */
+export type OnFalloConecta = (d: { intentos: number; par: string }) => void
+
+export function ConnectBlock({
+  data,
+  onComplete,
+  onProgreso,
+  onFallo,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+  onFallo?: OnFalloConecta
+}) {
+  const valido = validarConnect(data).errores.length === 0
+  const cd = (valido ? data : null) as unknown as ConnectData | null
+  const pairs = cd?.pairs ?? []
+  const n = pairs.length
+
+  // Fila k de la columna derecha muestra el par `derecha[k]`.
+  // La semilla es un string: comparar por valor basta para memoizar.
+  const semillaC = semillaDe(pairs.map((p) => `${p.left}|${p.right}`))
+  const derecha = React.useMemo(() => permutacionSinFijos(n, semillaC), [n, semillaC])
+
+  const [sel, setSel] = useState<{ lado: 'L' | 'R'; par: number } | null>(null)
+  const [hechos, setHechos] = useState<number[]>([])
+  const [error, setError] = useState<{ lado: 'L' | 'R'; par: number; k: number } | null>(null)
+  const [aviso, setAviso] = useState<'ok' | 'mal' | null>(null)
+  const intentosRef = useRef(0)
+
+  const contRef = useRef<HTMLDivElement>(null)
+  const izqRefs = useRef<Map<number, HTMLButtonElement>>(new Map())
+  const derRefs = useRef<Map<number, HTMLButtonElement>>(new Map())
+  const [lineas, setLineas] = useState<{ par: number; x1: number; y1: number; x2: number; y2: number }[]>([])
+
+  // Geometría de las líneas: se mide contra el contenedor y se rehace si
+  // cambia el ancho (rotar el teléfono, abrir el teclado, etc.).
+  useEffect(() => {
+    const cont = contRef.current
+    if (!cont) return
+    const medir = () => {
+      const base = cont.getBoundingClientRect()
+      const out: typeof lineas = []
+      for (const par of hechos) {
+        const a = izqRefs.current.get(par)?.getBoundingClientRect()
+        const b = derRefs.current.get(par)?.getBoundingClientRect()
+        if (!a || !b) continue
+        out.push({
+          par,
+          x1: a.right - base.left,
+          y1: a.top + a.height / 2 - base.top,
+          x2: b.left - base.left,
+          y2: b.top + b.height / 2 - base.top,
+        })
+      }
+      setLineas(out)
+    }
+    medir()
+    if (typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(medir)
+    ro.observe(cont)
+    return () => ro.disconnect()
+  }, [hechos])
+
+  useEffect(() => {
+    if (!aviso) return
+    const t = setTimeout(() => setAviso(null), 1400)
+    return () => clearTimeout(t)
+  }, [aviso])
+
+  if (!cd) return null
+
+  const completo = hechos.length === n
+
+  function tocar(lado: 'L' | 'R', par: number) {
+    if (completo || hechos.includes(par)) return
+    // Primera selección, o cambio de opinión dentro de la misma columna.
+    if (!sel || sel.lado === lado) {
+      setSel(sel && sel.lado === lado && sel.par === par ? null : { lado, par })
+      setError(null)
+      return
+    }
+    intentosRef.current += 1
+    if (sel.par === par) {
+      const nuevos = [...hechos, par]
+      setHechos(nuevos)
+      setSel(null)
+      setError(null)
+      setAviso('ok')
+      onProgreso?.({ paso: `pares_${nuevos.length}_de_${n}`, intentos: intentosRef.current })
+      if (nuevos.length === n) onComplete?.()
+    } else {
+      // 🔴 La PRIMERA selección se conserva: el alumno prueba otra pareja
+      // sin volver a empezar. Solo la segunda tarjeta se sacude.
+      setError({ lado, par, k: intentosRef.current })
+      setAviso('mal')
+      vibrar()
+      onProgreso?.({ paso: `fallo_par_${hechos.length + 1}_de_${n}`, intentos: intentosRef.current })
+      onFallo?.({ intentos: intentosRef.current, par: pairs[sel.lado === 'L' ? sel.par : par].left })
+    }
+  }
+
+  const tarjeta = (lado: 'L' | 'R', par: number, texto: string) => {
+    const hecho = hechos.includes(par)
+    const colorPar = COLORES_PAR[hechos.indexOf(par) % COLORES_PAR.length]
+    const seleccionada = sel?.lado === lado && sel.par === par
+    const mal = error?.lado === lado && error.par === par
+    const esIzq = lado === 'L'
+    const acento = esIzq ? '#ec4899' : '#7c3aed'
+    return (
+      <button
+        key={`${lado}-${par}-${mal ? error!.k : 0}`}
+        type="button"
+        ref={(el) => {
+          const m = esIzq ? izqRefs.current : derRefs.current
+          if (el) m.set(par, el)
+          else m.delete(par)
+        }}
+        onClick={() => tocar(lado, par)}
+        disabled={hecho || completo}
+        aria-pressed={seleccionada}
+        className={mal ? 'pasas-mj-shake' : hecho ? 'pasas-mj-pop' : undefined}
+        style={{
+          position: 'relative',
+          width: '100%',
+          minHeight: 48,
+          padding: '9px 10px',
+          borderRadius: 12,
+          fontFamily: 'var(--font-nunito)',
+          fontSize: 13.5,
+          fontWeight: 700,
+          lineHeight: 1.3,
+          textAlign: 'center',
+          overflowWrap: 'anywhere',
+          cursor: hecho || completo ? 'default' : 'pointer',
+          transition: 'background 140ms, border-color 140ms, color 140ms, box-shadow 140ms',
+          WebkitTapHighlightColor: 'transparent',
+          background: hecho
+            ? `${colorPar}1f`
+            : seleccionada
+              ? acento
+              : esIzq
+                ? 'rgba(236,72,153,0.07)'
+                : 'rgba(124,58,237,0.09)',
+          border: `1.5px solid ${
+            hecho ? colorPar : mal ? '#ef4444' : seleccionada ? acento : esIzq ? 'rgba(236,72,153,0.38)' : 'rgba(167,139,250,0.38)'
+          }`,
+          color: hecho ? '#ecfdf5' : seleccionada ? '#ffffff' : esIzq ? '#fbcfe8' : '#e2d9f3',
+          boxShadow: seleccionada ? `0 0 0 3px ${esIzq ? 'rgba(236,72,153,0.25)' : 'rgba(124,58,237,0.3)'}` : 'none',
+        }}
+      >
+        {texto}
+      </button>
+    )
+  }
+
+  const etiqueta = (txt: string, color: string) => (
+    <div
+      style={{
+        fontSize: 10.5,
+        fontWeight: 800,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color,
+        textAlign: 'center',
+        fontFamily: 'var(--font-nunito)',
+        paddingBottom: 2,
+      }}
+    >
+      {txt}
+    </div>
+  )
+
+  return (
+    <div style={{ padding: '14px 16px' }}>
+      <style>{MINIJUEGO_CSS}</style>
+      {!completo && <InstruccionMinijuego>Toca una idea de la izquierda y luego su pareja de la derecha</InstruccionMinijuego>}
+      {cd.prompt && (
+        <div style={{ fontSize: 15, lineHeight: 1.6, color: '#e2d9f3', marginBottom: 12 }}>{cd.prompt}</div>
+      )}
+
+      <div
+        ref={contRef}
+        style={{
+          position: 'relative',
+          display: 'grid',
+          // Columna central vacía: ahí corren las líneas. 34px dejan ver los
+          // cruces a 360px sin robar demasiado ancho a las tarjetas.
+          gridTemplateColumns: 'minmax(0,1fr) 34px minmax(0,1fr)',
+          rowGap: 8,
+          alignItems: 'stretch',
+        }}
+      >
+        {etiqueta(cd.left_label ?? 'Analogía', '#f472b6')}
+        <div />
+        {etiqueta(cd.right_label ?? 'Concepto', '#a78bfa')}
+
+        {pairs.map((p, k) => (
+          <React.Fragment key={k}>
+            {tarjeta('L', k, p.left)}
+            <div aria-hidden="true" />
+            {tarjeta('R', derecha[k], pairs[derecha[k]].right)}
+          </React.Fragment>
+        ))}
+
+        <svg
+          aria-hidden="true"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', overflow: 'visible' }}
+        >
+          {lineas.map((l) => {
+            const color = COLORES_PAR[hechos.indexOf(l.par) % COLORES_PAR.length]
+            return (
+            <g key={l.par}>
+              <path
+                className="pasas-mj-line"
+                pathLength={1}
+                d={`M ${l.x1} ${l.y1} L ${l.x2} ${l.y2}`}
+                stroke={color}
+                strokeWidth={3}
+                strokeLinecap="round"
+                fill="none"
+              />
+              <circle cx={l.x1} cy={l.y1} r={4} fill={color} />
+              <circle cx={l.x2} cy={l.y2} r={4} fill={color} />
+            </g>
+            )
+          })}
+        </svg>
+      </div>
+
+      {completo ? (
+        <CierreMinijuego titulo="¡Todo conectado!" texto={cd.completion_feedback} />
+      ) : (
+        <div
+          aria-live="polite"
+          style={{
+            marginTop: 10,
+            fontSize: 13,
+            fontWeight: 700,
+            textAlign: 'center',
+            fontFamily: 'var(--font-nunito)',
+            color: aviso === 'mal' ? '#fca5a5' : aviso === 'ok' ? '#6ee7b7' : '#a78bfa',
+          }}
+        >
+          {aviso === 'mal'
+            ? 'Esa no es su pareja — prueba otra'
+            : aviso === 'ok'
+              ? '✓ ¡Conectado!'
+              : `${hechos.length} / ${n} conectadas`}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── ARMA LOS PASOS 🧩 ────────────────────────────────────────────────────
+
+export type OnFalloArma = (d: { intentos: number; posicion: number }) => void
+
+export function OrderStepsBlock({
+  data,
+  onComplete,
+  onProgreso,
+  onFallo,
+}: {
+  data: Record<string, unknown> | null
+  onComplete?: () => void
+  onProgreso?: OnProgreso
+  onFallo?: OnFalloArma
+}) {
+  const valido = validarOrderSteps(data).errores.length === 0
+  const od = (valido ? data : null) as unknown as OrderStepsData | null
+  const steps = od?.steps ?? []
+  const n = steps.length
+
+  // Posición k de las opciones muestra el paso `opciones[k]`. Sin puntos
+  // fijos: tocar de arriba abajo nunca resuelve el juego.
+  const semillaO = semillaDe(steps)
+  const opciones = React.useMemo(() => permutacionSinFijos(n, semillaO), [n, semillaO])
+
+  /** colocados[k] = índice (en orden correcto) del paso puesto en el slot k. */
+  const [colocados, setColocados] = useState<number[]>([])
+  /** Slots 0..fijos-1 ya validados como correctos: no se pueden quitar. */
+  const [fijos, setFijos] = useState(0)
+  const [estado, setEstado] = useState<'armando' | 'error' | 'correcto'>('armando')
+  const [slotMal, setSlotMal] = useState(-1)
+  const [fallosPorSlot, setFallosPorSlot] = useState<Record<number, number>>({})
+  const intentosRef = useRef(0)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
+  }, [])
+
+  if (!od) return null
+
+  const correcto = estado === 'correcto'
+  const lleno = colocados.length === n
+  // Pista suave tras DOS fallos en el mismo punto: se resalta el paso que va
+  // ahí. El documento pide que el error no frustre; esto evita que alguien
+  // se quede dando vueltas sin salida.
+  const pistaPara = !correcto && (fallosPorSlot[fijos] ?? 0) >= 2 ? fijos : -1
+
+  function colocar(paso: number) {
+    if (correcto || estado === 'error' || colocados.includes(paso) || lleno) return
+    const nuevos = [...colocados, paso]
+    setColocados(nuevos)
+    setSlotMal(-1)
+    onProgreso?.({ paso: `slot_${nuevos.length}_de_${n}`, intentos: intentosRef.current })
+  }
+
+  function quitar(k: number) {
+    if (correcto || estado === 'error' || k < fijos || k >= colocados.length) return
+    setColocados(colocados.filter((_, i) => i !== k))
+    setSlotMal(-1)
+  }
+
+  function revisar() {
+    if (!lleno || correcto || estado === 'error') return
+    intentosRef.current += 1
+    const e = primerError(colocados)
+    if (e === -1) {
+      setEstado('correcto')
+      setFijos(n)
+      onProgreso?.({ paso: 'correcto', intentos: intentosRef.current })
+      onComplete?.()
+      return
+    }
+    // Lo anterior al error queda fijo (verde); del error en adelante regresa
+    // a las opciones tras un instante para que se vea DÓNDE se rompió.
+    setEstado('error')
+    setSlotMal(e)
+    setFijos(e)
+    setFallosPorSlot((f) => ({ ...f, [e]: (f[e] ?? 0) + 1 }))
+    vibrar()
+    onProgreso?.({ paso: `fallo_slot_${e + 1}`, intentos: intentosRef.current })
+    onFallo?.({ intentos: intentosRef.current, posicion: e + 1 })
+    timerRef.current = setTimeout(() => {
+      setColocados((c) => c.slice(0, e))
+      setEstado('armando')
+    }, 1100)
+  }
+
+  const disponibles = opciones.filter((p) => !colocados.includes(p))
+
+  return (
+    <div style={{ padding: '14px 16px' }}>
+      <style>{MINIJUEGO_CSS}</style>
+      {!correcto && <InstruccionMinijuego>Toca los pasos en el orden correcto · toca uno colocado para regresarlo</InstruccionMinijuego>}
+      {od.prompt && (
+        <div style={{ fontSize: 15, lineHeight: 1.6, color: '#e2d9f3', marginBottom: 12 }}>{od.prompt}</div>
+      )}
+
+      {/* Slots numerados */}
+      <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {Array.from({ length: n }, (_, k) => {
+          const paso = colocados[k]
+          const lleno_k = paso != null
+          const verde = correcto || k < fijos
+          const rojo = estado === 'error' && k === slotMal
+          const quitable = lleno_k && !verde && estado !== 'error'
+          return (
+            <li key={k}>
+              <button
+                type="button"
+                onClick={() => quitar(k)}
+                disabled={!quitable}
+                aria-label={lleno_k ? `Paso ${k + 1}: ${steps[paso]}${quitable ? '. Toca para regresarlo' : ''}` : `Paso ${k + 1}: vacío`}
+                className={rojo ? 'pasas-mj-shake' : undefined}
+                style={{
+                  width: '100%',
+                  minHeight: lleno_k ? 46 : 40,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '7px 10px',
+                  borderRadius: 11,
+                  textAlign: 'left',
+                  fontFamily: 'var(--font-nunito)',
+                  cursor: quitable ? 'pointer' : 'default',
+                  WebkitTapHighlightColor: 'transparent',
+                  transition: 'background 140ms, border-color 140ms',
+                  background: verde
+                    ? 'rgba(16,185,129,0.12)'
+                    : rojo
+                      ? 'rgba(239,68,68,0.12)'
+                      : lleno_k
+                        ? 'rgba(6,182,212,0.10)'
+                        : 'transparent',
+                  border: verde
+                    ? '1.5px solid #10b981'
+                    : rojo
+                      ? '1.5px solid #ef4444'
+                      : lleno_k
+                        ? '1.5px solid rgba(6,182,212,0.55)'
+                        : '1.5px dashed rgba(167,139,250,0.28)',
+                }}
+              >
+                <span
+                  style={{
+                    flexShrink: 0,
+                    width: 24,
+                    height: 24,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 11.5,
+                    fontWeight: 900,
+                    background: verde ? '#10b981' : rojo ? '#ef4444' : lleno_k ? '#06b6d4' : 'rgba(167,139,250,0.14)',
+                    color: lleno_k || verde ? '#0f0a1e' : '#a78bfa',
+                  }}
+                >
+                  {verde && lleno_k ? '✓' : k + 1}
+                </span>
+                <span
+                  style={{
+                    flex: 1,
+                    minWidth: 0,
+                    fontSize: 14,
+                    fontWeight: lleno_k ? 700 : 600,
+                    lineHeight: 1.35,
+                    color: verde ? '#d1fae5' : rojo ? '#fecaca' : lleno_k ? '#e2d9f3' : 'rgba(167,139,250,0.45)',
+                  }}
+                >
+                  {lleno_k ? steps[paso] : '—'}
+                </span>
+                {quitable && (
+                  <span aria-hidden="true" style={{ flexShrink: 0, fontSize: 13, color: '#67e8f9', opacity: 0.8 }}>↩</span>
+                )}
+              </button>
+            </li>
+          )
+        })}
+      </ol>
+
+      {/* Opciones */}
+      {!correcto && disponibles.length > 0 && (
+        <>
+          <div
+            style={{
+              marginTop: 14,
+              marginBottom: 6,
+              fontSize: 10.5,
+              fontWeight: 800,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: '#a78bfa',
+              fontFamily: 'var(--font-nunito)',
+            }}
+          >
+            Opciones
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {disponibles.map((p) => {
+              const pista = p === pistaPara
+              return (
+                <button
+                  key={p}
+                  type="button"
+                  onClick={() => colocar(p)}
+                  disabled={estado === 'error'}
+                  style={{
+                    width: '100%',
+                    minHeight: 46,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    padding: '8px 12px',
+                    borderRadius: 11,
+                    textAlign: 'left',
+                    fontFamily: 'var(--font-nunito)',
+                    fontSize: 14,
+                    fontWeight: 700,
+                    lineHeight: 1.35,
+                    color: '#e2d9f3',
+                    cursor: estado === 'error' ? 'default' : 'pointer',
+                    opacity: estado === 'error' ? 0.55 : 1,
+                    WebkitTapHighlightColor: 'transparent',
+                    background: pista ? 'rgba(16,185,129,0.08)' : 'rgba(255,255,255,0.04)',
+                    border: pista ? '1.5px dashed #10b981' : '1px solid rgba(124,58,237,0.32)',
+                  }}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      flexShrink: 0,
+                      width: 16,
+                      height: 16,
+                      borderRadius: 5,
+                      border: `1.5px solid ${pista ? '#10b981' : 'rgba(167,139,250,0.6)'}`,
+                    }}
+                  />
+                  <span style={{ flex: 1, minWidth: 0 }}>{steps[p]}</span>
+                  {pista && (
+                    <span style={{ flexShrink: 0, fontSize: 11, fontWeight: 800, color: '#6ee7b7' }}>💡 va aquí</span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+        </>
+      )}
+
+      {correcto ? (
+        <CierreMinijuego titulo="¡Orden correcto!" texto={od.completion_feedback} />
+      ) : estado === 'error' ? (
+        <div
+          role="status"
+          style={{
+            marginTop: 12,
+            padding: '10px 12px',
+            borderRadius: 10,
+            background: 'rgba(239,68,68,0.10)',
+            border: '1px solid rgba(239,68,68,0.3)',
+            color: '#fca5a5',
+            fontSize: 13.5,
+            fontWeight: 800,
+            fontFamily: 'var(--font-nunito)',
+          }}
+        >
+          {slotMal === 0
+            ? '✗ El paso 1 no va ahí. ¿Qué tiene que pasar primero?'
+            : `✗ El paso ${slotMal + 1} no va ahí. Lo de antes está bien ✓`}
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={revisar}
+          disabled={!lleno}
+          style={{
+            width: '100%',
+            minHeight: 46,
+            marginTop: 12,
+            background: lleno ? '#7c3aed' : 'rgba(124,58,237,0.2)',
+            color: lleno ? '#fff' : '#a78bfa',
+            border: 'none',
+            borderRadius: 12,
+            fontFamily: 'var(--font-nunito)',
+            fontSize: 15,
+            fontWeight: 800,
+            cursor: lleno ? 'pointer' : 'default',
+          }}
+        >
+          {lleno ? 'Revisar orden' : `Falta${n - colocados.length === 1 ? '' : 'n'} ${n - colocados.length} por colocar`}
+        </button>
+      )}
+    </div>
+  )
+}
+
+export const INTERACTIVE_TYPES = new Set<string>(['sort', 'scrubber', 'steps', 'match', 'solve', 'connect', 'order_steps'])
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) s = 0
