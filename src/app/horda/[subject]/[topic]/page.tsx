@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { temaPorSlugs } from '@/lib/horda-publica-server'
 import { OLEADAS_GRATIS, urlHordaPublica } from '@/lib/horda-publica'
+import { getPromoPorDefecto, leyendaPromo } from '@/lib/promos'
 import HordaPublicaClient from './horda-publica-client'
 
 /**
@@ -10,10 +11,12 @@ import HordaPublicaClient from './horda-publica-client'
  * Solo temas de historia (MATERIAS_PUBLICAS). La Horda completa, con récord
  * y XP, sigue en /guia/.../horda para quien tiene cuenta.
  *
- * ISR bajo demanda (generateStaticParams vacío): la página solo cambia si
- * cambia el tema, y las preguntas llegan por /api/horda-publica.
+ * ISR bajo demanda (generateStaticParams vacío): las preguntas llegan por
+ * /api/horda-publica. Se revalida cada 5 min porque el muro pinta el precio
+ * de la campaña vigente (s41): si se apaga la promo, que deje de anunciarse
+ * pronto. El checkout revalida contra Stripe de todas formas.
  */
-export const revalidate = 3600
+export const revalidate = 300
 
 export async function generateStaticParams() {
   return []
@@ -45,7 +48,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function HordaPublicaPage({ params }: { params: Params }) {
   const { subject, topic } = await params
-  const tema = await temaPorSlugs(subject, topic)
+  const [tema, promo] = await Promise.all([temaPorSlugs(subject, topic), getPromoPorDefecto()])
   if (!tema) notFound()
-  return <HordaPublicaClient tema={tema} />
+  // El muro manda al onboarding del plan Estándar mensual, el mismo de la
+  // oferta del reto. Sin campaña que aplique, null: el muro de siempre.
+  const leyenda = leyendaPromo(promo, 'estandar_v2', 'mensual')
+  const promoMuro = leyenda
+    ? { finalTexto: leyenda.finalTexto, despuesTexto: leyenda.despuesTexto, badge: promo?.badge_landing ?? null }
+    : null
+  return <HordaPublicaClient tema={tema} promoMuro={promoMuro} />
 }

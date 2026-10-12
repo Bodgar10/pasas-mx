@@ -331,3 +331,71 @@
 .compacto .prompt p { font-size: 15px; }
 .bHead { display: flex; flex-direction: column; gap: 4px; }
 .bFacts { font-size: 14px; font-weight: 800; color: var(--dim); }
+
+/* s41 · Oferta para el papá al terminar el reto. Va en amarillo (--xp) para
+   no confundirse con "seguir jugando", que usa el acento de la materia. */
+.oferta {
+  background: var(--surface);
+  border: 1.5px solid rgba(251, 191, 36, 0.55);
+  border-radius: var(--r-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.oferta h3 { font-size: 21px; }
+.oferta p { opacity: 0.86; }
+.ofertaPrecio { display: flex; flex-direction: column; gap: 4px; }
+.ofertaBadge {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 900;
+  color: #1a1035;
+  background: var(--xp);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.ofertaMonto { font-size: 22px; font-weight: 900; }
+.ofertaMonto s { color: var(--dim); font-weight: 800; font-size: 18px; }
+.ofertaMonto b { color: var(--xp); }
+.ofertaDespues { font-size: 14px; font-weight: 800; color: var(--dim); }
+.ofertaBtn { background: var(--xp); color: #1a1035; }
+.ofertaBtn:hover { filter: brightness(1.05); }
+.ofertaMicro { font-size: 13px; color: var(--dim); text-align: center; opacity: 1 !important; }
+
+/* s41 · Resultado: repaso plegado, mañana más visible, compartir ligero. */
+.respuestas { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 4px; }
+.respuestas summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 900;
+  color: var(--muted);
+  padding-block: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.respuestas summary::-webkit-details-marker { display: none; }
+.respuestas summary::after { content: '↓'; }
+.respuestas[open] summary::after { content: '↑'; }
+.respuestas .recap { border-top: none; }
+.manana {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+.mananaTitulo { font-size: 19px; font-weight: 900; }
+.mananaReloj { font-size: 14px; font-weight: 800; color: var(--dim); }
+.mananaReloj b { font-family: var(--font-brand); font-size: 22px; color: var(--fg); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; margin-left: 6px; }
+.shareTitulo { font-weight: 900; text-align: center; }
+.btnChico { min-height: 44px; font-size: 15px; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: pre; }
+.ofertaPapas { font-size: 13px; color: var(--dim); text-align: center; }
+
+/* s41 · Salida para menores de 18 dentro de la oferta. */
+.ofertaMenor { border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.ofertaMenor p { font-size: 14px; font-weight: 700; color: var(--dim); opacity: 1; text-align: center; }

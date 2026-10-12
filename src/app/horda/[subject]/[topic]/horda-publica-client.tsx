@@ -49,7 +49,15 @@ function guardarRecord(topicId: string, oleada: number) {
   } catch {}
 }
 
-export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
+export type PromoMuro = { finalTexto: string; despuesTexto: string; badge: string | null }
+
+export default function HordaPublicaClient({
+  tema,
+  promoMuro = null,
+}: {
+  tema: TemaPublico
+  promoMuro?: PromoMuro | null
+}) {
   const [fase, setFase] = useState<Fase>('tutorial')
   const [oleada, setOleada] = useState(1)
   const [preguntas, setPreguntas] = useState<PreguntaPublica[]>([])
@@ -210,7 +218,7 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
   }
 
   const dominio = SITIO.replace(/^https?:\/\//, '')
-  const mensaje = mensajePapa(tema.topicName, `${dominio}${urlUnete(tema.subjectSlug, tema.topicSlug)}`)
+  const mensaje = mensajePapa(tema.topicName, `${dominio}${urlUnete(tema.subjectSlug, tema.topicSlug)}`, promoMuro)
 
   async function copiarMensaje() {
     conOrigen('horda_publica_mensaje', { topic: tema.topicName, canal: 'copiar' })
@@ -403,8 +411,15 @@ export default function HordaPublicaClient({ tema }: { tema: TemaPublico }) {
               titulo="Soy papá, mamá o tutor"
               sub="O soy estudiante con 18 años o más"
             />
+            {promoMuro?.badge && (
+              <div style={{ alignSelf: 'center', fontSize: 12, fontWeight: 900, color: '#1a1035', background: '#fbbf24', borderRadius: 999, padding: '3px 10px' }}>
+                {promoMuro.badge}
+              </div>
+            )}
             <p style={{ fontSize: 12, fontWeight: 700, color: '#8f84b5', textAlign: 'center', margin: 0 }}>
-              7 días gratis · Requiere tarjeta · Cancela cuando quieras
+              {promoMuro
+                ? `7 días gratis · ${promoMuro.finalTexto} · ${promoMuro.despuesTexto} · Requiere tarjeta · Cancela cuando quieras`
+                : '7 días gratis · Requiere tarjeta · Cancela cuando quieras'}
             </p>
           </div>
 

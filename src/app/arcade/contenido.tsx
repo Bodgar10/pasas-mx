@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { leerRetoDeHoy, leerRetoDeMateria } from '@/lib/arcade-server'
+import { copyCTA, getPromoPorDefecto, leyendaPromo, microcopyPromo } from '@/lib/promos'
 import { SITIO } from '@/lib/seo'
 import type { OrigenArcade } from '@/lib/arcade'
-import ArcadeClient, { type RetoDeHoy } from './arcade-client'
+import ArcadeClient, { type OfertaPapa, type RetoDeHoy } from './arcade-client'
 import s from './arcade.module.css'
 
 /**
@@ -18,7 +19,11 @@ export default async function ContenidoArcade({
   origenRuta = null,
   materia = null,
 }: { origenRuta?: OrigenArcade | null; materia?: string | null } = {}) {
-  const [hoy, deMateria] = await Promise.all([leerRetoDeHoy(), materia ? leerRetoDeMateria(materia) : null])
+  const [hoy, deMateria, promo] = await Promise.all([
+    leerRetoDeHoy(),
+    materia ? leerRetoDeMateria(materia) : null,
+    getPromoPorDefecto(),
+  ])
   const usarMateria = !!deMateria?.rounds?.length && deMateria.date !== hoy?.date
   const reto = usarMateria ? deMateria : hoy
   const retoDeHoy: RetoDeHoy | null =
@@ -38,5 +43,34 @@ export default async function ContenidoArcade({
     )
   }
 
-  return <ArcadeClient reto={reto} dominio={SITIO} origenRuta={origenRuta} retoDeHoy={retoDeHoy} />
+  // s41 — Oferta para el papá al terminar el reto. Usa la campaña de la casa
+  // (hoy PASAS1) con los MISMOS helpers que la landing: mismo botón, misma
+  // micro y el precio de después siempre al lado (REGLA C, PROFECO). Sin
+  // campaña vigente, la prueba de 7 días de siempre.
+  const PLAN = 'estandar_v2'
+  const CICLO = 'mensual'
+  const leyenda = leyendaPromo(promo, PLAN, CICLO)
+  const cta = copyCTA(promo, PLAN, CICLO, {
+    label: 'Prueba 7 días gratis',
+    sublabel: '7 días gratis · Sin contrato',
+  })
+  const ofertaPapa: OfertaPapa = {
+    slug: leyenda ? (promo?.slug ?? null) : null,
+    badge: leyenda ? (promo?.badge_landing ?? null) : null,
+    listaTexto: leyenda?.listaTexto ?? null,
+    finalTexto: leyenda?.finalTexto ?? null,
+    despuesTexto: leyenda?.despuesTexto ?? null,
+    cta: cta.label,
+    micro: microcopyPromo(cta.sublabel, ['Cancela cuando quieras']),
+  }
+
+  return (
+    <ArcadeClient
+      reto={reto}
+      dominio={SITIO}
+      origenRuta={origenRuta}
+      retoDeHoy={retoDeHoy}
+      ofertaPapa={ofertaPapa}
+    />
+  )
 }

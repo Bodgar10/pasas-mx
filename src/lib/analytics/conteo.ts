@@ -64,6 +64,18 @@ export const EVENTOS_CONTEO = [
   'arcade_compartir_clic',
   'arcade_puente_clic',
   'arcade_reto_hoy_clic',
+  // s41: oferta para el papá al terminar el reto.
+  'arcade_oferta_vista',
+  'arcade_oferta_clic',
+  'arcade_pedir_papa_clic',
+  // s41: el resto del embudo hasta el pago, para verlo completo sin cookies.
+  'horda_publica_oleada',
+  'horda_publica_muro',
+  'horda_publica_muro_eleccion',
+  'horda_publica_mensaje',
+  'signup_metodo',
+  'verificacion_enviada',
+  'verificacion_comprobada',
   'horda_publica_vista',
   'horda_publica_iniciada',
 
@@ -118,6 +130,13 @@ export const PROPS_CONTEO = [
   'por_materia',
   // s40: si acertó esa ronda (arcade_ronda).
   'acierto',
+  // s41: embudo Horda → registro.
+  'oleada',
+  'resultado',
+  'quien',
+  'destino',
+  'method',
+  'verificado',
 ] as const
 
 const PROPS = new Set<string>(PROPS_CONTEO)

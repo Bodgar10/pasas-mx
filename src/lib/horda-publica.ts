@@ -79,10 +79,20 @@ export function urlHordaPublica(subjectSlug: string, topicSlug: string): string 
   return `/horda/${subjectSlug}/${topicSlug}`
 }
 
-/** El mensaje que el alumno le manda a su papá o mamá. Le habla al adulto. */
-export function mensajePapa(tema: string, link: string): string {
+/**
+ * El mensaje que el alumno le manda a su papá o mamá. Le habla al adulto.
+ *
+ * `promo` (s41): la leyenda de la campaña vigente, ya con el precio de después
+ * (REGLA C). Sin campaña que aplique, el mensaje de siempre.
+ */
+export function mensajePapa(
+  tema: string,
+  link: string,
+  promo?: { finalTexto: string; despuesTexto: string } | null
+): string {
+  const precio = promo ? ` y luego ${promo.finalTexto} (${promo.despuesTexto})` : ''
   return (
     `¿Me ayudas? Estoy estudiando historia en PASAS y ya pasé ${OLEADAS_GRATIS} de ${OLEADAS_TOTALES} oleadas de ${tema} 💪\n` +
-    `Para desbloquear las difíciles necesito cuenta. Tiene 7 días gratis:\n${link}`
+    `Para desbloquear las difíciles necesito cuenta. Tiene 7 días gratis${precio}:\n${link}`
   )
 }
