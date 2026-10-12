@@ -7,7 +7,7 @@ import {
   validarOrderSteps,
   CONNECT_MAX_CHARS,
 } from '@/lib/minijuegos'
-import { planear, generarSQL, TEMATICAS } from '../../scripts/minijuegos/cargar'
+import { planear, generarSQL, generarSQLCompacto, TEMATICAS } from '../../scripts/minijuegos/cargar'
 
 /** s43 — Conecta 🔗 y Arma los pasos 🧩. */
 
@@ -152,5 +152,14 @@ describe('cargador', () => {
     expect(sql).toContain("RAISE EXCEPTION 'tema no encontrado")
     expect(sql).toMatch(/DELETE FROM public\.sections WHERE user_id IS NULL AND type IN \('connect','order_steps'\)/)
     expect(sql.match(/INSERT INTO/g)).toHaveLength(8)
+  })
+
+  it('el SQL compacto manda una sola vez el Arma compartido y aborta si falta un slug', () => {
+    const sql = generarSQLCompacto('matematicas-sec-1', planear(archivo))
+    // 4 Conecta iguales + 1 Arma compartido = 2 datos distintos, aunque sean 8 filas.
+    expect(sql.split('Resta los valores absolutos').length - 1).toBe(1)
+    expect(sql).toContain("'FALTA: '")
+    expect(sql).toContain("type IN ('connect','order_steps')")
+    expect(sql.match(/INSERT INTO/g)).toHaveLength(1)
   })
 })

@@ -19,10 +19,22 @@
             "left_label": "Goku vs Jiren",
             "right_label": "En mate",
             "pairs": [
-              { "left": "Goku esquiva y recupera ki (+3)", "right": "Entero positivo" },
-              { "left": "El golpe de Jiren le drena ki (−5)", "right": "Entero negativo" },
-              { "left": "El termómetro de energía", "right": "Recta numérica" },
-              { "left": "Juntar todos los sube y baja del ki", "right": "Sumar enteros" }
+              {
+                "left": "Goku esquiva y recupera ki (+3)",
+                "right": "Entero positivo"
+              },
+              {
+                "left": "El golpe de Jiren le drena ki (−5)",
+                "right": "Entero negativo"
+              },
+              {
+                "left": "El termómetro de energía",
+                "right": "Recta numérica"
+              },
+              {
+                "left": "Juntar todos los sube y baja del ki",
+                "right": "Sumar enteros"
+              }
             ],
             "completion_feedback": "La pelea de Goku era una **suma de enteros** sobre una recta numérica. Ahora veamos la regla exacta para no perder un signo."
           }
@@ -33,10 +45,22 @@
             "left_label": "Liga MX",
             "right_label": "En mate",
             "pairs": [
-              { "left": "Los 4 goles a favor del América (+4)", "right": "Entero positivo" },
-              { "left": "El gol que le metió Cruz Azul (−1)", "right": "Entero negativo" },
-              { "left": "Juntar la noche de +3 y la de −2", "right": "Suma con signos distintos" },
-              { "left": "La columna DG de la tabla", "right": "Recta numérica" }
+              {
+                "left": "Los 4 goles a favor del América (+4)",
+                "right": "Entero positivo"
+              },
+              {
+                "left": "El gol que le metió Cruz Azul (−1)",
+                "right": "Entero negativo"
+              },
+              {
+                "left": "Juntar la noche de +3 y la de −2",
+                "right": "Suma con signos distintos"
+              },
+              {
+                "left": "La columna DG de la tabla",
+                "right": "Recta numérica"
+              }
             ],
             "completion_feedback": "La diferencia de goles ya hacía cuentas con **enteros**. Ahora veamos la regla para juntar positivos y negativos."
           }
@@ -47,10 +71,22 @@
             "left_label": "Billboard",
             "right_label": "En mate",
             "pairs": [
-              { "left": "BTS baja 8 lugares desde el 1", "right": "Sumar: 1 + 8 = 9" },
-              { "left": "BLACKPINK sube 11 desde el 15", "right": "Restar: 15 − 11 = 4" },
-              { "left": "Hacia dónde se mueve la canción", "right": "El signo (+ o −)" },
-              { "left": "Los puestos del Hot 100 en orden", "right": "Recta numérica" }
+              {
+                "left": "BTS baja 8 lugares desde el 1",
+                "right": "Sumar: 1 + 8 = 9"
+              },
+              {
+                "left": "BLACKPINK sube 11 desde el 15",
+                "right": "Restar: 15 − 11 = 4"
+              },
+              {
+                "left": "Hacia dónde se mueve la canción",
+                "right": "El signo (+ o −)"
+              },
+              {
+                "left": "Los puestos del Hot 100 en orden",
+                "right": "Recta numérica"
+              }
             ],
             "completion_feedback": "En el chart, subir **resta** y bajar **suma**: el signo marca la dirección. Ahora vamos a ponerle nombre a todo esto."
           },
@@ -71,10 +107,22 @@
             "left_label": "Minecraft",
             "right_label": "En mate",
             "pairs": [
-              { "left": "Construir hacia el cielo (Y = +320)", "right": "Entero positivo" },
-              { "left": "Excavar hasta el bedrock (Y = −64)", "right": "Entero negativo" },
-              { "left": "Y = 0, donde antes acababa el mundo", "right": "El cero, punto de referencia" },
-              { "left": "El eje Y que ves con F3", "right": "Recta numérica" }
+              {
+                "left": "Construir hacia el cielo (Y = +320)",
+                "right": "Entero positivo"
+              },
+              {
+                "left": "Excavar hasta el bedrock (Y = −64)",
+                "right": "Entero negativo"
+              },
+              {
+                "left": "Y = 0, donde antes acababa el mundo",
+                "right": "El cero, punto de referencia"
+              },
+              {
+                "left": "El eje Y que ves con F3",
+                "right": "Recta numérica"
+              }
             ],
             "completion_feedback": "El eje Y de Minecraft es una **recta numérica**: positivos arriba, cero en medio y negativos abajo. Vamos a formalizarlo."
           },
@@ -87,6 +135,1477 @@
               "Bajas los 3 que faltan y cruzas el cero: Y = −3"
             ],
             "completion_feedback": "Cruzar el cero es solo **seguir bajando** en la recta: del otro lado los números son negativos. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "fracciones-y-decimales": {
+      "order_steps": {
+        "prompt": "¿Qué es mayor, 3/4 o 0.7? Ordena cómo lo averiguas",
+        "steps": [
+          "Ubica numerador (3) y denominador (4)",
+          "Divide el numerador entre el denominador: 3 ÷ 4",
+          "Obtienes el decimal 0.75",
+          "Compara: 0.75 > 0.7, así que 3/4 es mayor"
+        ],
+        "completion_feedback": "Para comparar, primero pasas todo al mismo idioma: **divides numerador entre denominador** y luego comparas decimales. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de una fracción es cada cosa del poder de Deku?",
+            "left_label": "One For All",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Todo el poder de One For All",
+                "right": "El entero (1)"
+              },
+              {
+                "left": "Las 100 partes en que se divide el poder",
+                "right": "Denominador"
+              },
+              {
+                "left": "Las 8 partes que Deku ya controla",
+                "right": "Numerador"
+              },
+              {
+                "left": "Su 8% escrito como 0.08",
+                "right": "Decimal"
+              }
+            ],
+            "completion_feedback": "El poder de Deku es una **fracción** de un entero, y se puede escribir como decimal. Veamos cómo se hace la conversión."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea matemática hay detrás de la tanda de penales?",
+            "left_label": "Penales",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Los 5 penales que patea México",
+                "right": "Denominador"
+              },
+              {
+                "left": "Los 3 que terminan en gol",
+                "right": "Numerador"
+              },
+              {
+                "left": "Escribir 3/5 como 0.6",
+                "right": "Decimal equivalente"
+              },
+              {
+                "left": "Ver quién va ganando: 0.6 o 0.8",
+                "right": "Comparar decimales"
+              }
+            ],
+            "completion_feedback": "Penales metidos sobre penales pateados: eso es una **fracción**, y su decimal sirve para comparar. Veamos la regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de una fracción es cada cosa del reparto de líneas?",
+            "left_label": "BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La canción completa",
+                "right": "El entero (1)"
+              },
+              {
+                "left": "Los 7 integrantes del grupo",
+                "right": "Denominador"
+              },
+              {
+                "left": "Las 2 partes que canta Jungkook",
+                "right": "Numerador"
+              },
+              {
+                "left": "Saber si 2/7 es más o menos que 0.5",
+                "right": "Convertir a decimal"
+              }
+            ],
+            "completion_feedback": "Repartir la canción es trabajar con **fracciones**, y el decimal te dice si es más o menos de la mitad. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea matemática hay detrás de tu barra de vida?",
+            "left_label": "Minecraft",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Los 10 corazones de la barra llena",
+                "right": "Denominador"
+              },
+              {
+                "left": "Los 5 corazones que te quedan",
+                "right": "Numerador"
+              },
+              {
+                "left": "5/10 es lo mismo que 1/2",
+                "right": "Fracciones equivalentes"
+              },
+              {
+                "left": "Tu vida de 3/10 escrita como 0.3",
+                "right": "Número decimal"
+              }
+            ],
+            "completion_feedback": "Tu barra de vida es una **fracción**: corazones que quedan sobre corazones totales. Veamos cómo pasarla a decimal."
+          }
+        }
+      }
+    },
+    "numeros-positivos-y-negativos-y-su-orden": {
+      "order_steps": {
+        "prompt": "¿Cuál es mayor, −3 o −8? Ordena cómo lo decides",
+        "steps": [
+          "Revisa los signos: los dos son negativos",
+          "Mide qué tan lejos está cada uno del 0: 3 y 8",
+          "El más cercano al 0 queda más a la derecha",
+          "Entonces −3 es mayor que −8"
+        ],
+        "completion_feedback": "Entre negativos no gana el número que se ve más grande, sino el **más cercano al cero**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué número representa cada zona del termómetro de poder?",
+            "left_label": "Demon Slayer",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Sin ninguna técnica activa",
+                "right": "Cero"
+              },
+              {
+                "left": "La Llama de Rengoku (+50)",
+                "right": "Número positivo"
+              },
+              {
+                "left": "El demonio de hielo (−40)",
+                "right": "Número negativo"
+              },
+              {
+                "left": "Ordenar de lo más frío a lo más caliente",
+                "right": "De menor a mayor"
+              }
+            ],
+            "completion_feedback": "Las temperaturas de las respiraciones son **positivos y negativos** con el cero en medio. Veamos la regla para ordenarlos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué número representa cada equipo en la columna DG?",
+            "left_label": "Liga MX",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Pumas, que mete lo mismo que recibe",
+                "right": "Cero"
+              },
+              {
+                "left": "América, con DG de +15",
+                "right": "Número positivo"
+              },
+              {
+                "left": "Mazatlán, con DG de −12",
+                "right": "Número negativo"
+              },
+              {
+                "left": "Ordenar del peor al mejor equipo",
+                "right": "De menor a mayor"
+              }
+            ],
+            "completion_feedback": "La columna DG mezcla **positivos, cero y negativos**. Veamos cómo se ordenan en la recta."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué número representa cada movimiento del chart?",
+            "left_label": "Billboard",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "BLACKPINK se queda en su lugar",
+                "right": "Cero"
+              },
+              {
+                "left": "'APT.' de Rosé sube 7 lugares",
+                "right": "Número positivo"
+              },
+              {
+                "left": "La de BTS cae 10 lugares",
+                "right": "Número negativo"
+              },
+              {
+                "left": "De la que más cayó a la que más subió",
+                "right": "De menor a mayor"
+              }
+            ],
+            "completion_feedback": "Subir, quedarse y bajar en el chart son **positivos, cero y negativos**. Veamos cómo ordenarlos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué número representa cada altura en Minecraft?",
+            "left_label": "Minecraft",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Caminar sobre el suelo",
+                "right": "Cero"
+              },
+              {
+                "left": "Construir en la torre (+50)",
+                "right": "Número positivo"
+              },
+              {
+                "left": "Minar buscando tesoros (−30)",
+                "right": "Número negativo"
+              },
+              {
+                "left": "Quién está más abajo y quién arriba",
+                "right": "De menor a mayor"
+              }
+            ],
+            "completion_feedback": "La coordenada Y tiene **positivos arriba y negativos abajo** del cero. Veamos la regla para ordenarlos."
+          }
+        }
+      }
+    },
+    "operaciones-y-sus-relaciones-inversas": {
+      "order_steps": {
+        "prompt": "Un número multiplicado por 6 da 42. Ordena cómo lo encuentras",
+        "steps": [
+          "Reconoce la operación que se hizo: × 6",
+          "Elige su inversa: la división",
+          "Aplícala al resultado: 42 ÷ 6 = 7",
+          "Comprueba: 7 × 6 = 42 ✓"
+        ],
+        "completion_feedback": "Para deshacer una operación la reconoces, eliges su **inversa** y al final **compruebas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué operación hay detrás de cada parte del jutsu?",
+            "left_label": "Naruto",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Crear clones: de 1 a 8 Narutos",
+                "right": "Multiplicación"
+              },
+              {
+                "left": "Los clones vuelven a ser uno solo",
+                "right": "División"
+              },
+              {
+                "left": "Una acción que deshace a la otra",
+                "right": "Operaciones inversas"
+              },
+              {
+                "left": "Saber cuántos clones había por el total",
+                "right": "Encontrar un dato desconocido"
+              }
+            ],
+            "completion_feedback": "Crear y deshacer clones es multiplicar y dividir: **operaciones inversas**. Veamos cómo usarlas para encontrar datos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea matemática hay detrás del desempate?",
+            "left_label": "Liga MX",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "A favor − en contra = diferencia",
+                "right": "Resta"
+              },
+              {
+                "left": "La diferencia de +12 que ya conoces",
+                "right": "Resultado de la operación"
+              },
+              {
+                "left": "Los goles en contra que nadie sabe",
+                "right": "Dato desconocido"
+              },
+              {
+                "left": "Deshacer la resta para hallarlos",
+                "right": "Suma, su operación inversa"
+              }
+            ],
+            "completion_feedback": "La diferencia se arma con una resta y se deshace con una suma: **operaciones inversas**. Veamos cómo funcionan."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué operación hay detrás de cada paso con los ARMY Bombs?",
+            "left_label": "Concierto BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "8 secciones con 50 light sticks cada una",
+                "right": "Multiplicación"
+              },
+              {
+                "left": "Repartir los 400 entre 8 secciones",
+                "right": "División"
+              },
+              {
+                "left": "Repartir y juntar son acciones opuestas",
+                "right": "Operaciones inversas"
+              },
+              {
+                "left": "Cuántos había en cada sección",
+                "right": "Dato desconocido"
+              }
+            ],
+            "completion_feedback": "Multiplicar para repartir y dividir para regresar: son **operaciones inversas**. Veamos la regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué operación hay detrás de construir y picar?",
+            "left_label": "Fortnite",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Levantar una pared: −10 de madera",
+                "right": "Resta"
+              },
+              {
+                "left": "Picarla y recuperar la madera",
+                "right": "Suma"
+              },
+              {
+                "left": "Construir y picar se cancelan",
+                "right": "Operaciones inversas"
+              }
+            ],
+            "completion_feedback": "Gastar y recuperar madera es restar y sumar: una **deshace** a la otra. Veamos la regla completa."
+          }
+        }
+      }
+    },
+    "regularidades-y-patrones": {
+      "order_steps": {
+        "prompt": "¿Qué sigue en 5, 9, 13, 17…? Ordena cómo lo predices",
+        "steps": [
+          "Toma dos términos seguidos: 5 y 9",
+          "Calcula cuánto cambia: 9 − 5 = 4",
+          "Comprueba que se repite: 13 − 9 = 4 ✓",
+          "Aplica la regla al último: 17 + 4 = 21"
+        ],
+        "completion_feedback": "Primero **descubres la regla**, luego **compruebas** que se repite y solo entonces predices. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de un patrón es cada cosa del entrenamiento de Naruto?",
+            "left_label": "Naruto",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La lista 2, 4, 6, 8 clones",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Cada intento crea 2 clones más",
+                "right": "Regla: sumar 2"
+              },
+              {
+                "left": "Los 6 clones del tercer intento",
+                "right": "Un término"
+              },
+              {
+                "left": "El quinto intento que pregunta Sasuke",
+                "right": "Siguiente término"
+              }
+            ],
+            "completion_feedback": "Los clones de Naruto forman un **patrón** con una regla fija. Veamos cómo se llama cada parte y cómo predecir."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de un patrón es cada cosa de la tabla del América?",
+            "left_label": "Liga MX",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La lista 3, 6, 9, 12 puntos",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Cada victoria suma 3 puntos",
+                "right": "Regla: sumar 3"
+              },
+              {
+                "left": "Los 9 puntos tras la jornada 3",
+                "right": "Un término"
+              },
+              {
+                "left": "Los puntos tras la jornada 5",
+                "right": "Siguiente término"
+              }
+            ],
+            "completion_feedback": "Los puntos del América forman un **patrón** con una regla fija. Veamos cómo se llama cada parte y cómo predecir."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de un patrón es cada cosa de la coreografía?",
+            "left_label": "BLACKPINK",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La lista 4, 8, 12, 16 bailarinas",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Cada figura entra con 4 más",
+                "right": "Regla: sumar 4"
+              },
+              {
+                "left": "Las 12 de la tercera formación",
+                "right": "Un término"
+              },
+              {
+                "left": "La quinta formación del MV",
+                "right": "Siguiente término"
+              }
+            ],
+            "completion_feedback": "Las formaciones del MV siguen un **patrón** con una regla fija. Veamos cómo se llama cada parte y cómo predecir."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de un patrón es cada cosa del combo de Mario?",
+            "left_label": "Smash Bros",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "El daño 6, 12, 18, 24 del combo",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Cada golpe hace 6 más que el anterior",
+                "right": "Regla: sumar 6"
+              },
+              {
+                "left": "Los 18 de daño del tercer golpe",
+                "right": "Un término"
+              },
+              {
+                "left": "El quinto golpe del combo",
+                "right": "Siguiente término"
+              }
+            ],
+            "completion_feedback": "El daño del combo sigue un **patrón** con una regla fija. Veamos cómo se llama cada parte y cómo predecir."
+          }
+        }
+      }
+    },
+    "introduccion-al-algebra": {
+      "order_steps": {
+        "prompt": "«Un número por 4, más 10, da 50». Ordena cómo lo escribes en álgebra",
+        "steps": [
+          "Ubica el dato que no conoces: el número",
+          "Nómbralo con una letra: x",
+          "Escribe lo que le pasa: 4x + 10",
+          "Iguálalo al total: 4x + 10 = 50"
+        ],
+        "completion_feedback": "Primero nombras lo desconocido con una **variable**, luego escribes la **expresión** y al final la **igualas** para tener una ecuación. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué nombre algebraico tiene cada parte del scouter dañado?",
+            "left_label": "Dragon Ball",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La letra p en lugar del poder oculto",
+                "right": "Variable"
+              },
+              {
+                "left": "p + 500",
+                "right": "Expresión algebraica"
+              },
+              {
+                "left": "p + 500 = 1500",
+                "right": "Ecuación"
+              },
+              {
+                "left": "Descubrir el poder base de Goku",
+                "right": "Resolver la ecuación"
+              }
+            ],
+            "completion_feedback": "Ponerle una letra al poder oculto de Goku es hacer **álgebra**. Veamos qué significa cada nombre."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué nombre algebraico tiene cada parte del dato del comentarista?",
+            "left_label": "Messi",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La letra g de los goles de liga",
+                "right": "Variable"
+              },
+              {
+                "left": "g + 5",
+                "right": "Expresión algebraica"
+              },
+              {
+                "left": "g + 5 = 30",
+                "right": "Ecuación"
+              },
+              {
+                "left": "Averiguar cuántos metió en la liga",
+                "right": "Resolver la ecuación"
+              }
+            ],
+            "completion_feedback": "Ponerle una letra a los goles que no sabes es hacer **álgebra**. Veamos qué significa cada nombre."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué nombre algebraico tiene cada parte de tu compra?",
+            "left_label": "Álbumes BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "x, el precio de cada álbum",
+                "right": "Variable"
+              },
+              {
+                "left": "El 3 de 3x: tres álbumes iguales",
+                "right": "Coeficiente"
+              },
+              {
+                "left": "3x + 50 = 800",
+                "right": "Ecuación"
+              },
+              {
+                "left": "Descubrir cuánto costó cada álbum",
+                "right": "Resolver la ecuación"
+              }
+            ],
+            "completion_feedback": "Ponerle una letra al precio que no recuerdas es hacer **álgebra**. Veamos qué significa cada nombre."
+          }
+        },
+        "Videojuegos": {
+          "connect": null,
+          "order_steps": null
+        }
+      }
+    },
+    "rectas-y-angulos": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas un ángulo que abre 135°",
+        "steps": [
+          "Ubica el vértice donde se juntan las dos líneas",
+          "Mide la abertura en grados: 135°",
+          "Ubícalo en su rango: entre 90° y 180°",
+          "Nómbralo: es un ángulo obtuso"
+        ],
+        "completion_feedback": "Para clasificar un ángulo primero lo **mides** desde su **vértice** y luego lo ubicas en su rango. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de línea o ángulo forma cada movimiento de la katana?",
+            "left_label": "Tanjiro",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La espada horizontal, paralela al suelo",
+                "right": "Recta"
+              },
+              {
+                "left": "Levantarla solo un poco",
+                "right": "Ángulo agudo"
+              },
+              {
+                "left": "Dejarla perfectamente vertical",
+                "right": "Ángulo recto"
+              },
+              {
+                "left": "Seguir girándola hacia atrás",
+                "right": "Ángulo obtuso"
+              }
+            ],
+            "completion_feedback": "Cada corte de Tanjiro abre un **ángulo** distinto desde la misma línea. Veamos cómo se miden y se nombran."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea geométrica hay detrás del tiro libre?",
+            "left_label": "Messi",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "El césped por donde rueda el balón",
+                "right": "Recta"
+              },
+              {
+                "left": "El punto donde Messi le pega al balón",
+                "right": "Vértice"
+              },
+              {
+                "left": "Elevar el balón solo un poco",
+                "right": "Ángulo agudo"
+              },
+              {
+                "left": "Qué tanto inclina el disparo",
+                "right": "Medida en grados (°)"
+              }
+            ],
+            "completion_feedback": "El tiro de Messi forma un **ángulo** con el césped, y se mide en grados. Veamos cómo se clasifica."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": null,
+          "order_steps": null
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué ángulo formas con cada giro de tu personaje?",
+            "left_label": "Fortnite",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Mira y enemigo en línea recta",
+                "right": "Ángulo llano"
+              },
+              {
+                "left": "Girar un cuarto de vuelta",
+                "right": "Ángulo recto"
+              },
+              {
+                "left": "Girar solo un poquito",
+                "right": "Ángulo agudo"
+              },
+              {
+                "left": "Girar casi media vuelta",
+                "right": "Ángulo obtuso"
+              }
+            ],
+            "completion_feedback": "Cada giro abre un **ángulo** distinto. Veamos cuánto mide cada uno en grados."
+          }
+        }
+      }
+    },
+    "ecuaciones-lineales": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves x + 35 = 90",
+        "steps": [
+          "Ubica qué le hicieron a la x: le sumaron 35",
+          "Elige la operación inversa: restar 35",
+          "Resta 35 en ambos lados de la igualdad",
+          "Queda x = 55; comprueba: 55 + 35 = 90 ✓"
+        ],
+        "completion_feedback": "Despejar es **deshacer** lo que le hicieron a la x, **en ambos lados**, para que la balanza siga en equilibrio. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la ecuación es cada dato del scouter?",
+            "left_label": "Dragon Ball",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "El poder actual de Goku, oculto",
+                "right": "Incógnita (x)"
+              },
+              {
+                "left": "Los 700 que gana al transformarse",
+                "right": "Lo que se le suma a x"
+              },
+              {
+                "left": "El total de 1500",
+                "right": "Resultado conocido"
+              },
+              {
+                "left": "Deshacer lo que le sumaron",
+                "right": "Operación inversa"
+              }
+            ],
+            "completion_feedback": "El scouter te dio una **ecuación lineal**: un lado con la incógnita y otro con el resultado. Veamos cómo se despeja."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la ecuación es cada dato de la tabla de goleo?",
+            "left_label": "Messi",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Los goles que lleva Messi hoy",
+                "right": "Incógnita (x)"
+              },
+              {
+                "left": "Los 9 goles que le faltan",
+                "right": "Lo que se le suma a x"
+              },
+              {
+                "left": "Los 25 del líder de goleo",
+                "right": "Resultado conocido"
+              },
+              {
+                "left": "Deshacer lo que le sumaron",
+                "right": "Operación inversa"
+              }
+            ],
+            "completion_feedback": "La pelea por el goleo es una **ecuación lineal**: un lado con la incógnita y otro con el resultado. Veamos cómo se despeja."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la ecuación es cada dato de tu compra?",
+            "left_label": "Álbum BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Tus ahorros, que no recuerdas",
+                "right": "Incógnita (x)"
+              },
+              {
+                "left": "Los 250 que te prestó tu hermana",
+                "right": "Lo que se le suma a x"
+              },
+              {
+                "left": "Los 600 que cuesta el álbum",
+                "right": "Resultado conocido"
+              },
+              {
+                "left": "Deshacer el préstamo para saber",
+                "right": "Operación inversa"
+              }
+            ],
+            "completion_feedback": "Tu compra es una **ecuación lineal**: un lado con la incógnita y otro con el resultado. Veamos cómo se despeja."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la ecuación es cada dato de tu compra?",
+            "left_label": "Fortnite",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Tus V-Bucks ahorrados",
+                "right": "Incógnita (x)"
+              },
+              {
+                "left": "Los 800 que te regaló tu mamá",
+                "right": "Lo que se le suma a x"
+              },
+              {
+                "left": "Los 2000 de la skin de John Wick",
+                "right": "Resultado conocido"
+              },
+              {
+                "left": "Deshacer el regalo para saber",
+                "right": "Operación inversa"
+              }
+            ],
+            "completion_feedback": "Tu compra es una **ecuación lineal**: un lado con la incógnita y otro con el resultado. Veamos cómo se despeja."
+          }
+        }
+      }
+    },
+    "figuras-planas-y-cuerpos": {
+      "order_steps": {
+        "prompt": "¿Una caja de cereal es figura plana o cuerpo? Ordena cómo lo decides",
+        "steps": [
+          "Revisa si tiene alto además de largo y ancho",
+          "Sí lo tiene: son 3 dimensiones",
+          "Por eso ocupa volumen y no cabe en una hoja",
+          "Es un cuerpo geométrico, no una figura plana"
+        ],
+        "completion_feedback": "Lo que decide es **cuántas dimensiones** tiene: 2 es figura plana, 3 es cuerpo geométrico. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea geométrica hay detrás del manga y la figura?",
+            "left_label": "Demon Slayer",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Una viñeta rectangular del manga",
+                "right": "Figura plana"
+              },
+              {
+                "left": "La figura de Tanjiro en tu repisa",
+                "right": "Cuerpo geométrico"
+              },
+              {
+                "left": "Largo y ancho, sin salir de la hoja",
+                "right": "2 dimensiones"
+              },
+              {
+                "left": "Tiene frente, espalda y costados",
+                "right": "3 dimensiones"
+              }
+            ],
+            "completion_feedback": "El manga y la figura se separan por sus **dimensiones**. Veamos cómo se llaman las partes de cada uno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué figura o cuerpo es cada parte del balón?",
+            "left_label": "El balón",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Un parche negro de 5 lados",
+                "right": "Pentágono"
+              },
+              {
+                "left": "Un parche blanco de 6 lados",
+                "right": "Hexágono"
+              },
+              {
+                "left": "El balón completo que rueda",
+                "right": "Esfera"
+              }
+            ],
+            "completion_feedback": "Los parches son **figuras planas** y el balón es un **cuerpo geométrico**. Veamos qué los distingue."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea geométrica hay detrás de tu álbum de BTS?",
+            "left_label": "Álbum BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La photocard de Jungkook",
+                "right": "Rectángulo"
+              },
+              {
+                "left": "El álbum completo, como caja",
+                "right": "Prisma rectangular"
+              },
+              {
+                "left": "La tapa, el fondo y los costados",
+                "right": "Caras"
+              },
+              {
+                "left": "Cabe en tu cartera, casi sin grosor",
+                "right": "2 dimensiones"
+              }
+            ],
+            "completion_feedback": "La photocard es una **figura plana** y el álbum un **cuerpo geométrico**. Veamos cómo se llaman sus partes."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea geométrica hay detrás de la pieza «O» de Tetris?",
+            "left_label": "Tetris",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La pieza «O» completa",
+                "right": "Cuadrado"
+              },
+              {
+                "left": "Sus 4 esquinas",
+                "right": "Vértices"
+              },
+              {
+                "left": "Las 4 orillas que la rodean",
+                "right": "Lados"
+              },
+              {
+                "left": "Una pieza sin grosor ni profundidad",
+                "right": "Figura plana"
+              }
+            ],
+            "completion_feedback": "Las piezas de Tetris son **figuras planas** con lados y vértices. Veamos cómo se distinguen de los cuerpos."
+          }
+        }
+      }
+    },
+    "circunferencia-circulo-y-esfera": {
+      "order_steps": {
+        "prompt": "Una mesa redonda tiene 40 cm de radio. Ordena cómo sacas su diámetro",
+        "steps": [
+          "Ubica el centro de la mesa",
+          "Del centro al borde mide el radio: 40 cm",
+          "El diámetro cruza de borde a borde por el centro",
+          "Por eso mide dos radios: 2 × 40 = 80 cm"
+        ],
+        "completion_feedback": "Todo se mide **desde el centro**: el radio llega al borde y el diámetro son **dos radios**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué elemento redondo es cada parte de la Genkidama?",
+            "left_label": "Genkidama",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La bola de energía completa",
+                "right": "Esfera"
+              },
+              {
+                "left": "El contorno de la bola",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "El punto desde donde todo mide igual",
+                "right": "Centro"
+              },
+              {
+                "left": "Del centro hasta la orilla",
+                "right": "Radio"
+              }
+            ],
+            "completion_feedback": "La Genkidama es una **esfera** que se mide desde su **centro**. Veamos la diferencia con la circunferencia y el círculo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué elemento de la circunferencia es cada marca de la cancha?",
+            "left_label": "Cancha",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La curva blanca de la medialuna",
+                "right": "Arco de circunferencia"
+              },
+              {
+                "left": "El punto penal",
+                "right": "Centro"
+              },
+              {
+                "left": "Del punto penal a la medialuna",
+                "right": "Radio"
+              }
+            ],
+            "completion_feedback": "La medialuna es parte de una **circunferencia** medida desde el punto penal. Veamos cada elemento con su nombre."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué elemento redondo es cada parte de la mesa?",
+            "left_label": "K-drama",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "El borde de madera de la mesa",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "Toda la tabla de la mesa",
+                "right": "Círculo"
+              },
+              {
+                "left": "El plato giratorio en medio",
+                "right": "Centro"
+              },
+              {
+                "left": "Del plato hasta la orilla",
+                "right": "Radio"
+              }
+            ],
+            "completion_feedback": "El borde es la **circunferencia** y la tabla entera el **círculo**. Veamos cómo se mide desde el centro."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué elemento redondo es cada parte de la tormenta?",
+            "left_label": "Fortnite",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La línea azul de la tormenta",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "Toda la zona segura",
+                "right": "Círculo"
+              },
+              {
+                "left": "El punto que no se mueve al cerrarse",
+                "right": "Centro"
+              },
+              {
+                "left": "Del centro al borde de la zona",
+                "right": "Radio"
+              }
+            ],
+            "completion_feedback": "El borde de la tormenta es la **circunferencia** y la zona segura el **círculo**. Veamos cómo se mide desde el centro."
+          }
+        }
+      }
+    },
+    "medicion-y-calculo-en-distintos-contextos": {
+      "order_steps": {
+        "prompt": "Vas a cercar un jardín de 6 m × 4 m. Ordena cómo calculas la cerca",
+        "steps": [
+          "Decide qué buscas: el borde, no la superficie",
+          "Elige la fórmula: P = 2 × (largo + ancho)",
+          "Sustituye las medidas: 2 × (6 + 4)",
+          "Calcula y pon la unidad: 20 m de cerca"
+        ],
+        "completion_feedback": "Primero decides si buscas **borde o relleno**: eso elige la fórmula. Después sustituyes y calculas con su unidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué medida necesitas para cada encargo del comandante?",
+            "left_label": "Muro María",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La cuerda para bordear la zona",
+                "right": "Perímetro"
+              },
+              {
+                "left": "La piedra para tapar el muro",
+                "right": "Área"
+              },
+              {
+                "left": "50 m de largo por 8 m de alto",
+                "right": "Medidas de los lados"
+              },
+              {
+                "left": "La forma de la sección dañada",
+                "right": "Rectángulo"
+              }
+            ],
+            "completion_feedback": "La cuerda mide el **contorno** y la piedra la **superficie**. Veamos la fórmula de cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué medida necesitas para cada tarea en el Azteca?",
+            "left_label": "Estadio Azteca",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La línea blanca de todo el borde",
+                "right": "Perímetro"
+              },
+              {
+                "left": "El pasto que hay que regar",
+                "right": "Área"
+              },
+              {
+                "left": "100 m de largo por 64 m de ancho",
+                "right": "Medidas de los lados"
+              },
+              {
+                "left": "La forma del terreno de juego",
+                "right": "Rectángulo"
+              }
+            ],
+            "completion_feedback": "La línea del borde es el **perímetro** y el pasto el **área**. Veamos la fórmula de cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué medida necesitas para cada parte del escenario?",
+            "left_label": "Concierto BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Las luces LED del contorno",
+                "right": "Perímetro"
+              },
+              {
+                "left": "El piso de tarima",
+                "right": "Área"
+              },
+              {
+                "left": "30 m de largo por 12 m de ancho",
+                "right": "Medidas de los lados"
+              },
+              {
+                "left": "La forma del escenario",
+                "right": "Rectángulo"
+              }
+            ],
+            "completion_feedback": "Las luces van en el **perímetro** y la tarima cubre el **área**. Veamos la fórmula de cada una."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué medida necesitas para cada parte de tu base?",
+            "left_label": "Minecraft",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "La valla para cercar el contorno",
+                "right": "Perímetro"
+              },
+              {
+                "left": "Los bloques del piso",
+                "right": "Área"
+              },
+              {
+                "left": "8 bloques de largo por 5 de ancho",
+                "right": "Medidas de los lados"
+              },
+              {
+                "left": "Cada bloque mide 1 m de lado",
+                "right": "Unidad de medida"
+              }
+            ],
+            "completion_feedback": "La valla mide el **perímetro** y el piso el **área**. Veamos la fórmula de cada una."
+          }
+        }
+      }
+    },
+    "obtencion-y-representacion-de-datos": {
+      "order_steps": {
+        "prompt": "Ordena cómo pasas de una encuesta a una conclusión",
+        "steps": [
+          "Haz la pregunta y recolecta las respuestas",
+          "Cuenta cuántas veces se repite cada respuesta",
+          "Acomoda los conteos en una tabla de frecuencias",
+          "Dibuja una barra por respuesta según su frecuencia",
+          "Lee la gráfica: la barra más alta es la más votada"
+        ],
+        "completion_feedback": "Recolectar, contar, organizar, graficar y **luego** concluir: cada paso necesita el anterior. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué paso de la estadística es cada parte de tu encuesta?",
+            "left_label": "Encuesta anime",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Preguntar banca por banca",
+                "right": "Obtención de datos"
+              },
+              {
+                "left": "Cada rayita en tu cuaderno",
+                "right": "Un dato"
+              },
+              {
+                "left": "Cuántas rayitas tiene cada anime",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "Barras de colores por anime",
+                "right": "Gráfica de barras"
+              }
+            ],
+            "completion_feedback": "Tu encuesta del salón es **obtener y representar datos**. Veamos cómo se organiza cada parte."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué paso de la estadística es cada parte de la tabla de goleo?",
+            "left_label": "Tabla de goleo",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Anotar goles partido por partido",
+                "right": "Obtención de datos"
+              },
+              {
+                "left": "Un gol anotado",
+                "right": "Un dato"
+              },
+              {
+                "left": "El total de goles de cada jugador",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "La lista ordenada de mayor a menor",
+                "right": "Tabla de frecuencias"
+              }
+            ],
+            "completion_feedback": "La tabla de goleo es **obtener y representar datos**. Veamos cómo se organiza cada parte."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué paso de la estadística es cada parte de tu votación?",
+            "left_label": "Fanbase BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Lanzar la votación «¿Quién es tu bias?»",
+                "right": "Obtención de datos"
+              },
+              {
+                "left": "El voto de una ARMY",
+                "right": "Un dato"
+              },
+              {
+                "left": "Cuántos votos lleva cada miembro",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "La barra más alta, la del más votado",
+                "right": "Gráfica de barras"
+              }
+            ],
+            "completion_feedback": "Tu votación del bias es **obtener y representar datos**. Veamos cómo se organiza cada parte."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué paso de la estadística es cada parte de tu encuesta?",
+            "left_label": "Encuesta gamer",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Preguntar banca por banca",
+                "right": "Obtención de datos"
+              },
+              {
+                "left": "Cada rayita en tu cuaderno",
+                "right": "Un dato"
+              },
+              {
+                "left": "Cuántas rayitas tiene cada juego",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "Los conteos acomodados por juego",
+                "right": "Tabla de frecuencias"
+              }
+            ],
+            "completion_feedback": "Tu encuesta del recreo es **obtener y representar datos**. Veamos cómo se organiza cada parte."
+          }
+        }
+      }
+    },
+    "medidas-de-tendencia-central-y-dispersion-sec": {
+      "order_steps": {
+        "prompt": "Datos: 6, 9, 7, 10, 8. Ordena cómo sacas la media",
+        "steps": [
+          "Suma todos los datos: 6 + 9 + 7 + 10 + 8 = 40",
+          "Cuenta cuántos datos sumaste: 5",
+          "Reparte la suma en partes iguales: 40 ÷ 5",
+          "La media es 8: el valor típico"
+        ],
+        "completion_feedback": "La media es **sumar todo y repartirlo en partes iguales**. Ahora míralo en un ejemplo completo, junto con la mediana, la moda y el rango."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué medida es cada idea de Bulma?",
+            "left_label": "Dragon Ball",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Los niveles 8, 10, 9, 8 y 10",
+                "right": "Datos"
+              },
+              {
+                "left": "Sumarlos y repartirlos entre 5",
+                "right": "Media"
+              },
+              {
+                "left": "Del 8 más bajo al 10 más alto",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "Bulma buscaba la **media** y el **rango** del poder de Goku. Veamos cómo se calcula cada medida."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué medida es cada idea sobre los goles de Messi?",
+            "left_label": "Messi",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Los goles de sus 5 temporadas",
+                "right": "Datos"
+              },
+              {
+                "left": "Sumarlos y repartirlos entre 5",
+                "right": "Media"
+              },
+              {
+                "left": "El 35, que sale tres veces",
+                "right": "Moda"
+              },
+              {
+                "left": "De 30 goles a 40 goles",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "Para resumir a Messi se usan la **media**, la **moda** y el **rango**. Veamos cómo se calcula cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué medida es cada idea sobre las notas del jurado?",
+            "left_label": "Survival show",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Las calificaciones de los 5 jueces",
+                "right": "Datos"
+              },
+              {
+                "left": "Sumar las notas y repartirlas",
+                "right": "Media"
+              },
+              {
+                "left": "El 8, que dieron tres jueces",
+                "right": "Moda"
+              },
+              {
+                "left": "De 7 puntos a 9 puntos",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "El puntaje final es una **media**, y el rango dice si el jurado coincidió. Veamos cada medida."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué medida es cada idea sobre tus kills?",
+            "left_label": "Fortnite",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Tus kills de las últimas 5 partidas",
+                "right": "Datos"
+              },
+              {
+                "left": "Sumarlas y repartirlas entre 5",
+                "right": "Media"
+              },
+              {
+                "left": "De 3 kills a 7 kills",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "Tu número típico de kills es la **media**, y el **rango** muestra cuánto varías. Veamos cómo se calculan."
+          }
+        }
+      }
+    },
+    "azar-y-probabilidad": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la probabilidad de sacar 5 con un dado",
+        "steps": [
+          "Identifica el experimento: lanzar un dado",
+          "Arma el espacio muestral: 1, 2, 3, 4, 5, 6",
+          "Marca dentro de él el caso favorable: el 5",
+          "Divide favorables entre posibles: 1 ÷ 6 ≈ 0.17"
+        ],
+        "completion_feedback": "Sin el **espacio muestral** no sabes cuántos casos posibles hay, y sin eso no hay división. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada parte de la bolsa mágica?",
+            "left_label": "Esferas",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Sacar una esfera sin ver",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Las 7 esferas de la bolsa",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "La esfera de 4 estrellas",
+                "right": "Caso favorable"
+              },
+              {
+                "left": "Medir qué tan posible es sacarla",
+                "right": "Probabilidad"
+              }
+            ],
+            "completion_feedback": "Sacar una esfera a ciegas es un **experimento aleatorio** que se puede medir. Veamos la fórmula."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada parte del volado?",
+            "left_label": "Clásico",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Lanzar la moneda al aire",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Águila y sol",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "Que caiga águila, como pidió el América",
+                "right": "Caso favorable"
+              },
+              {
+                "left": "Medir qué tan posible es águila",
+                "right": "Probabilidad"
+              }
+            ],
+            "completion_feedback": "El volado es un **experimento aleatorio** que se puede medir. Veamos la fórmula."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada parte del álbum sellado?",
+            "left_label": "Álbum BTS",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Abrir el álbum sellado",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Las 7 photocards posibles",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "La photocard de Jungkook",
+                "right": "Caso favorable"
+              },
+              {
+                "left": "Calcular qué tan posible es tu bias",
+                "right": "Probabilidad"
+              }
+            ],
+            "completion_feedback": "Abrir el álbum es un **experimento aleatorio** que se puede medir. Veamos la fórmula."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada parte del cofre?",
+            "left_label": "Clash Royale",
+            "right_label": "En mate",
+            "pairs": [
+              {
+                "left": "Abrir el cofre",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Las 10 cartas que pueden salir",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "La carta legendaria",
+                "right": "Caso favorable"
+              },
+              {
+                "left": "Medir qué tan posible es la legendaria",
+                "right": "Probabilidad"
+              }
+            ],
+            "completion_feedback": "Abrir el cofre es un **experimento aleatorio** que se puede medir. Veamos la fórmula."
           }
         }
       }

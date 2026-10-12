@@ -14,6 +14,7 @@
  * Uso:
  *   npx tsx scripts/minijuegos/cargar.ts scripts/minijuegos/contenido/matematicas-sec-1.json --dry-run
  *   npx tsx scripts/minijuegos/cargar.ts <archivo> --sql salida.sql   (genera SQL transaccional, no escribe)
+ *   npx tsx scripts/minijuegos/cargar.ts <archivo> --sql-compacto salida.sql   (una sola sentencia, ~3x más ligera)
  *   npx tsx scripts/minijuegos/cargar.ts <archivo>                    (escribe con la service key)
  *
  * Requiere en .env.local (solo el modo directo): NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
@@ -158,13 +159,92 @@ export function generarSQL(subject: string, plan: ReturnType<typeof planear>): s
   return out.join('\n') + '\n'
 }
 
+/**
+ * Misma operación que `generarSQL`, en UNA sentencia: las filas viajan como
+ * un solo JSON y se resuelven con un JOIN. Pesa ~3 veces menos, que importa
+ * cuando el SQL se pega en un conector en vez de correrse con psql.
+ *
+ * Es atómica por ser una sola sentencia; si un tema o temática no existe,
+ * la verificación del CTE `faltan` tira la sentencia completa.
+ */
+export function generarSQLCompacto(subject: string, plan: ReturnType<typeof planear>): string {
+  const pares = plan.pares.map((p) => ({ t: p.topic, m: p.tema }))
+  // Un Arma compartido se repite en las 4 temáticas: se manda UNA vez y las
+  // filas lo referencian por índice.
+  const datos: string[] = []
+  const indice = new Map<string, number>()
+  const filas = plan.filas.map((f) => {
+    const clave = JSON.stringify(f.data)
+    if (!indice.has(clave)) {
+      indice.set(clave, datos.length)
+      datos.push(clave)
+    }
+    return { t: f.topic, m: f.tema, y: f.type, i: indice.get(clave) }
+  })
+  const titulos = JSON.stringify(TITULO)
+  const ordenes = JSON.stringify(ORDEN)
+  return `-- Minijuegos s43 · ${subject} · ${plan.filas.length} filas (compacto)
+WITH
+pares AS (
+  SELECT x->>'t' AS topic_slug, x->>'m' AS tema
+  FROM jsonb_array_elements(${lit(JSON.stringify(pares))}::jsonb) x
+),
+resueltos AS (
+  SELECT p.topic_slug, p.tema, t.id AS topic_id, th.id AS theme_id
+  FROM pares p
+  LEFT JOIN public.subjects s ON s.slug = ${lit(subject)}
+  LEFT JOIN public.topics t ON t.subject_id = s.id AND t.slug = p.topic_slug
+  LEFT JOIN public.themes th ON th.name = p.tema
+),
+-- 🔴 Un tema o temática que no resuelve aborta TODO. No con 1/0: Postgres
+-- puede plegar esa constante al planear y tronar aunque no falte nada. El
+-- cast de un texto que depende de los datos solo falla en ejecución, y el
+-- mensaje de error trae los slugs que faltan.
+faltan AS (
+  SELECT coalesce((
+    SELECT ('FALTA: ' || string_agg(topic_slug || ' · ' || tema, ', '))::int
+    FROM resueltos WHERE topic_id IS NULL OR theme_id IS NULL
+    HAVING count(*) > 0
+  ), 0) AS ok
+),
+borrados AS (
+  DELETE FROM public.sections se
+  USING resueltos r, faltan
+  WHERE faltan.ok = 0 AND se.user_id IS NULL AND se.type IN ('connect','order_steps')
+    AND se.topic_id = r.topic_id AND se.theme_id = r.theme_id
+  RETURNING se.id
+),
+datos AS (
+  SELECT (n - 1)::int AS i, d AS data
+  FROM jsonb_array_elements(${lit(`[${datos.join(',')}]`)}::jsonb) WITH ORDINALITY AS z(d, n)
+),
+filas AS (
+  SELECT x->>'t' AS topic_slug, x->>'m' AS tema, x->>'y' AS tipo,
+         ${lit(titulos)}::jsonb->>(x->>'y') AS titulo,
+         coalesce(nullif(trim(d.data->>'prompt'), ''), ${lit(titulos)}::jsonb->>(x->>'y')) AS contenido,
+         (${lit(ordenes)}::jsonb->>(x->>'y'))::int AS orden,
+         d.data
+  FROM jsonb_array_elements(${lit(JSON.stringify(filas))}::jsonb) x
+  JOIN datos d ON d.i = (x->>'i')::int
+)
+INSERT INTO public.sections (topic_id, theme_id, user_id, type, title, content, display_order, data)
+SELECT r.topic_id, r.theme_id, NULL, f.tipo::section_type, f.titulo, f.contenido, f.orden, f.data
+FROM filas f
+JOIN resueltos r ON r.topic_slug = f.topic_slug AND r.tema = f.tema
+CROSS JOIN faltan
+WHERE faltan.ok = 0 AND (SELECT count(*) FROM borrados) >= 0
+RETURNING type, topic_id;
+`
+}
+
 // ── CLI ──────────────────────────────────────────────────────────────────
 
 async function main() {
   const args = process.argv.slice(2)
   const archivo = args.find((a) => !a.startsWith('--'))
   const dry = args.includes('--dry-run')
-  const iSql = args.indexOf('--sql')
+  const compacto = args.includes('--sql-compacto')
+  const iSql = args.findIndex((a) => a === '--sql' || a === '--sql-compacto')
   const salidaSql = iSql >= 0 ? args[iSql + 1] : null
 
   if (!archivo) {
@@ -186,7 +266,7 @@ async function main() {
   if (dry) return
 
   if (salidaSql) {
-    writeFileSync(salidaSql, generarSQL(arch.subject, plan))
+    writeFileSync(salidaSql, (compacto ? generarSQLCompacto : generarSQL)(arch.subject, plan))
     console.log(`  📝 SQL en ${salidaSql}`)
     return
   }
