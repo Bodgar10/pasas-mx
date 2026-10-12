@@ -1,0 +1,2649 @@
+{
+  "subject": "biologia-sec",
+  "topics": {
+    "la-biologia-como-ciencia-y-los-seres-vivos": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides si un hongo es un ser vivo",
+        "steps": [
+          "Recuerda las características de la vida",
+          "Revisa el hongo contra cada una",
+          "Comprueba que cumple todas, no solo una",
+          "Concluye: el hongo es un ser vivo"
+        ],
+        "completion_feedback": "Se decide con **la lista completa**: si cumple todas las características, está vivo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué característica de la vida muestra cada cosa?",
+            "left_label": "Dragon Ball",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Goku come para recuperar energía",
+                "right": "Metabolismo"
+              },
+              {
+                "left": "Gohan se hace cada vez más grande",
+                "right": "Crecimiento"
+              },
+              {
+                "left": "Goku tuvo a su hijo Gohan",
+                "right": "Reproducción"
+              },
+              {
+                "left": "La nube Kinton: solo vuela si la llaman",
+                "right": "No es un ser vivo"
+              }
+            ],
+            "completion_feedback": "Moverse o brillar no basta: un ser vivo cumple **el conjunto** de características de la vida. Veamos cuáles son."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué característica de la vida muestra cada cosa?",
+            "left_label": "Qatar 2022",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Messi bebe agua en cada pausa",
+                "right": "Metabolismo"
+              },
+              {
+                "left": "Reacciona en milésimas al ver el hueco",
+                "right": "Irritabilidad"
+              },
+              {
+                "left": "El césped crece y hay que cortarlo",
+                "right": "Crecimiento"
+              },
+              {
+                "left": "El balón solo se mueve si lo patean",
+                "right": "No es un ser vivo"
+              }
+            ],
+            "completion_feedback": "Moverse o brillar no basta: un ser vivo cumple **el conjunto** de características de la vida. Veamos cuáles son."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué característica de la vida muestra cada cosa?",
+            "left_label": "BTS",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Los trainees comen para tener energía",
+                "right": "Metabolismo"
+              },
+              {
+                "left": "Crecen físicamente con los años",
+                "right": "Crecimiento"
+              },
+              {
+                "left": "Responden a sus fans en los lives",
+                "right": "Irritabilidad"
+              },
+              {
+                "left": "El lightstick brilla pero no come",
+                "right": "No es un ser vivo"
+              }
+            ],
+            "completion_feedback": "Moverse o brillar no basta: un ser vivo cumple **el conjunto** de características de la vida. Veamos cuáles son."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué característica de la vida muestra cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Las vacas comen pasto",
+                "right": "Metabolismo"
+              },
+              {
+                "left": "Nace una vaquita bebé",
+                "right": "Reproducción"
+              },
+              {
+                "left": "Huyen cuando se acerca un creeper",
+                "right": "Irritabilidad"
+              },
+              {
+                "left": "El bloque de piedra",
+                "right": "No es un ser vivo"
+              }
+            ],
+            "completion_feedback": "Moverse o brillar no basta: un ser vivo cumple **el conjunto** de características de la vida. Veamos cuáles son."
+          }
+        }
+      }
+    },
+    "biodiversidad-genetica-especies-y-ecosistemas": {
+      "order_steps": {
+        "prompt": "Ordena los niveles de la biodiversidad, del más pequeño al más grande",
+        "steps": [
+          "Diferencias dentro de una misma especie (genética)",
+          "Distintas especies que conviven (especies)",
+          "Ambientes que reúnen muchas especies (ecosistemas)"
+        ],
+        "completion_feedback": "Cada nivel **contiene** al anterior: individuos distintos forman especies, y las especies forman ecosistemas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué nivel de biodiversidad es cada cosa del mundo Pokémon?",
+            "left_label": "Pokémon",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Un Pikachu normal y uno shiny",
+                "right": "Diversidad genética"
+              },
+              {
+                "left": "Pikachu, Charizard y Gengar",
+                "right": "Diversidad de especies"
+              },
+              {
+                "left": "Mares, cuevas y bosques de cada región",
+                "right": "Diversidad de ecosistemas"
+              },
+              {
+                "left": "Toda la variedad del mundo Pokémon",
+                "right": "Biodiversidad"
+              }
+            ],
+            "completion_feedback": "Esa variedad se organiza en **tres niveles**: dentro de una especie, entre especies y entre ecosistemas. Veamos cada uno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué nivel de biodiversidad es cada cosa del fútbol?",
+            "left_label": "Fútbol",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Altos, bajitos y zurdos en el Madrid",
+                "right": "Diversidad genética"
+              },
+              {
+                "left": "Madrid, Barça y Atlético",
+                "right": "Diversidad de especies"
+              },
+              {
+                "left": "Liga MX, LaLiga y Premier",
+                "right": "Diversidad de ecosistemas"
+              },
+              {
+                "left": "Toda la variedad del fútbol mundial",
+                "right": "Biodiversidad"
+              }
+            ],
+            "completion_feedback": "Esa variedad se organiza en **tres niveles**: dentro de una especie, entre especies y entre ecosistemas. Veamos cada uno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué nivel de biodiversidad es cada cosa del K-pop?",
+            "left_label": "K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Los 7 integrantes de BTS",
+                "right": "Diversidad genética"
+              },
+              {
+                "left": "BTS, BLACKPINK y TWICE",
+                "right": "Diversidad de especies"
+              },
+              {
+                "left": "HYBE, JYP y YG",
+                "right": "Diversidad de ecosistemas"
+              },
+              {
+                "left": "Toda la variedad del K-pop",
+                "right": "Biodiversidad"
+              }
+            ],
+            "completion_feedback": "Esa variedad se organiza en **tres niveles**: dentro de una especie, entre especies y entre ecosistemas. Veamos cada uno."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué nivel de biodiversidad es cada cosa de Minecraft?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Lobos grises y lobos domesticables",
+                "right": "Diversidad genética"
+              },
+              {
+                "left": "Vacas, ocelotes, zorros y loros",
+                "right": "Diversidad de especies"
+              },
+              {
+                "left": "Pradera, desierto, jungla y taiga",
+                "right": "Diversidad de ecosistemas"
+              },
+              {
+                "left": "Toda la variedad de vida del juego",
+                "right": "Biodiversidad"
+              }
+            ],
+            "completion_feedback": "Esa variedad se organiza en **tres niveles**: dentro de una especie, entre especies y entre ecosistemas. Veamos cada uno."
+          }
+        }
+      }
+    },
+    "mexico-como-pais-megadiverso": {
+      "order_steps": {
+        "prompt": "Ordena por qué México es un país megadiverso",
+        "steps": [
+          "Tiene montañas, dos océanos y está entre el norte y el trópico",
+          "Eso crea muchos climas distintos",
+          "Cada clima forma su propio ecosistema",
+          "Cada ecosistema tiene sus propias especies",
+          "Por eso México concentra muchísimas especies"
+        ],
+        "completion_feedback": "Del **relieve y la ubicación** salen los climas, de los climas los ecosistemas y de ahí las especies. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la megadiversidad hay detrás de tu catálogo?",
+            "left_label": "Catálogo anime",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cada anime con su propio mundo",
+                "right": "Un ecosistema distinto"
+              },
+              {
+                "left": "Las criaturas propias de cada anime",
+                "right": "Especies de ese ecosistema"
+              },
+              {
+                "left": "Un catálogo que los reúne a todos",
+                "right": "País megadiverso"
+              }
+            ],
+            "completion_feedback": "Más ambientes distintos reunidos significa **más especies**: eso es ser **megadiverso**. Veamos por qué México lo es."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la megadiversidad hay detrás del Mundial?",
+            "left_label": "Mundial",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cada selección con su propio estilo",
+                "right": "Un ecosistema distinto"
+              },
+              {
+                "left": "Los cracks de cada selección",
+                "right": "Especies de ese ecosistema"
+              },
+              {
+                "left": "Un Mundial que las reúne a todas",
+                "right": "País megadiverso"
+              }
+            ],
+            "completion_feedback": "Más ambientes distintos reunidos significa **más especies**: eso es ser **megadiverso**. Veamos por qué México lo es."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la megadiversidad hay detrás de tu playlist?",
+            "left_label": "Playlist K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cada grupo con su propio concepto",
+                "right": "Un ecosistema distinto"
+              },
+              {
+                "left": "Los integrantes de cada grupo",
+                "right": "Especies de ese ecosistema"
+              },
+              {
+                "left": "Una playlist que los reúne a todos",
+                "right": "País megadiverso"
+              }
+            ],
+            "completion_feedback": "Más ambientes distintos reunidos significa **más especies**: eso es ser **megadiverso**. Veamos por qué México lo es."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la megadiversidad hay detrás de Teyvat?",
+            "left_label": "Genshin",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Selva y desierto juntos en Sumeru",
+                "right": "Ecosistemas distintos"
+              },
+              {
+                "left": "Frutas que solo hay en la selva",
+                "right": "Especies de ese ecosistema"
+              },
+              {
+                "left": "Un continente con casi todo ambiente",
+                "right": "País megadiverso"
+              }
+            ],
+            "completion_feedback": "Más ambientes distintos reunidos significa **más especies**: eso es ser **megadiverso**. Veamos por qué México lo es."
+          }
+        }
+      }
+    },
+    "perdida-de-biodiversidad-causas-y-consecuencias": {
+      "order_steps": {
+        "prompt": "Ordena la reacción en cadena cuando se tala un bosque",
+        "steps": [
+          "Se tala el bosque",
+          "Las especies que vivían ahí pierden su hábitat",
+          "Esas especies desaparecen o se van",
+          "Las especies que dependían de ellas también se afectan",
+          "El ecosistema se vuelve frágil y puede colapsar"
+        ],
+        "completion_feedback": "Una sola causa **arrastra** a muchas especies: por eso la pérdida de biodiversidad es tan grave. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué causa o consecuencia es cada cosa del ataque?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Bosques y campos pisoteados",
+                "right": "Destrucción de hábitats"
+              },
+              {
+                "left": "Se pierden cultivos, ganado y animales",
+                "right": "Pérdida de especies"
+              },
+              {
+                "left": "Un páramo vacío y silencioso",
+                "right": "Ecosistema colapsado"
+              }
+            ],
+            "completion_feedback": "Cuando un ambiente se destruye, la vida desaparece **en cadena**. Veamos las causas y consecuencias con su nombre."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la pérdida de biodiversidad hay en cada baja?",
+            "left_label": "El equipo",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Pierden piezas únicas una a una",
+                "right": "Desaparición de especies"
+              },
+              {
+                "left": "Sin central, la defensa se desploma",
+                "right": "Efecto en cadena"
+              },
+              {
+                "left": "El equipo desciende de categoría",
+                "right": "Ecosistema que colapsa"
+              }
+            ],
+            "completion_feedback": "Cuando un ambiente se destruye, la vida desaparece **en cadena**. Veamos las causas y consecuencias con su nombre."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la pérdida de biodiversidad hay en cada salida?",
+            "left_label": "SEVENTEEN",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Miembros que se van por agotamiento",
+                "right": "Sobreexplotación"
+              },
+              {
+                "left": "Sin bailarín, la coreografía se cae",
+                "right": "Efecto en cadena"
+              },
+              {
+                "left": "Roles que no se reemplazan fácil",
+                "right": "Especies únicas"
+              },
+              {
+                "left": "El grupo podría desaparecer",
+                "right": "Ecosistema que colapsa"
+              }
+            ],
+            "completion_feedback": "Cuando un ambiente se destruye, la vida desaparece **en cadena**. Veamos las causas y consecuencias con su nombre."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué causa o consecuencia es cada cosa en tu mundo?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Talar bosques completos",
+                "right": "Destrucción de hábitats"
+              },
+              {
+                "left": "Llenar todo de fábricas",
+                "right": "Contaminación"
+              },
+              {
+                "left": "Minar y pescar de más",
+                "right": "Sobreexplotación"
+              },
+              {
+                "left": "Sin abejas, no crecen tus flores",
+                "right": "Reacción en cadena"
+              }
+            ],
+            "completion_feedback": "Cuando un ambiente se destruye, la vida desaparece **en cadena**. Veamos las causas y consecuencias con su nombre."
+          }
+        }
+      }
+    },
+    "clasificacion-de-los-seres-vivos-taxonomia": {
+      "order_steps": {
+        "prompt": "Ordena estos niveles taxonómicos, del más general al más específico",
+        "steps": [
+          "Dominio",
+          "Reino",
+          "Clase",
+          "Género",
+          "Especie"
+        ],
+        "completion_feedback": "Cada nivel cabe **dentro** del anterior. Entre ellos hay más (Filo, Orden, Familia), pero el orden nunca cambia. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la taxonomía es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Toda la gente del mar de One Piece",
+                "right": "Dominio: el nivel más general"
+              },
+              {
+                "left": "Luffy, el personaje exacto",
+                "right": "Especie: el nivel más específico"
+              },
+              {
+                "left": "Ordenar por niveles para ubicar a Luffy",
+                "right": "Taxonomía"
+              },
+              {
+                "left": "Su nombre completo y único",
+                "right": "Nomenclatura binomial"
+              }
+            ],
+            "completion_feedback": "Para ubicar a uno entre millones se necesitan **niveles ordenados**, de lo general a lo específico. Eso es la taxonomía; veamos sus 8 niveles."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la taxonomía es cada cosa?",
+            "left_label": "Fútbol",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La FIFA: todo el fútbol del mundo",
+                "right": "Dominio: el nivel más general"
+              },
+              {
+                "left": "Lamine Yamal, el jugador exacto",
+                "right": "Especie: el nivel más específico"
+              },
+              {
+                "left": "Ir de FIFA a liga, club y jugador",
+                "right": "Taxonomía"
+              },
+              {
+                "left": "Su nombre completo y único",
+                "right": "Nomenclatura binomial"
+              }
+            ],
+            "completion_feedback": "Para ubicar a uno entre millones se necesitan **niveles ordenados**, de lo general a lo específico. Eso es la taxonomía; veamos sus 8 niveles."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la taxonomía es cada cosa?",
+            "left_label": "K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Toda la industria del K-pop",
+                "right": "Dominio: el nivel más general"
+              },
+              {
+                "left": "Tu bias, el miembro exacto",
+                "right": "Especie: el nivel más específico"
+              },
+              {
+                "left": "Industria → agencia → grupo → unidad",
+                "right": "Taxonomía"
+              },
+              {
+                "left": "El nombre completo de tu bias",
+                "right": "Nomenclatura binomial"
+              }
+            ],
+            "completion_feedback": "Para ubicar a uno entre millones se necesitan **niveles ordenados**, de lo general a lo específico. Eso es la taxonomía; veamos sus 8 niveles."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la taxonomía es cada cosa?",
+            "left_label": "Pokémon",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Un tipo grande: fuego, agua o planta",
+                "right": "Reino: un grupo muy general"
+              },
+              {
+                "left": "Charizard, la criatura exacta",
+                "right": "Especie: el nivel más específico"
+              },
+              {
+                "left": "Ordenar la Pokédex de grande a chico",
+                "right": "Taxonomía"
+              }
+            ],
+            "completion_feedback": "Para ubicar a uno entre millones se necesitan **niveles ordenados**, de lo general a lo específico. Eso es la taxonomía; veamos sus 8 niveles."
+          }
+        }
+      }
+    },
+    "tipos-de-nutricion-autotrofa-y-heterotrofa": {
+      "order_steps": {
+        "prompt": "Ordena cómo llega la energía del sol a un ser que no puede fabricar su alimento",
+        "steps": [
+          "La planta capta luz, agua y CO₂",
+          "Fabrica su propio alimento por fotosíntesis",
+          "Un heterótrofo se come la planta",
+          "Obtiene materia y energía para vivir"
+        ],
+        "completion_feedback": "Sin autótrofos no hay comida para nadie: **los heterótrofos dependen de lo que las plantas fabrican**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo consigue su alimento cada uno?",
+            "left_label": "Demon Slayer",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "Árboles glicina que crecen sin comer",
+                "right": "Autótrofo: fabrica su alimento"
+              },
+              {
+                "left": "Tanjiro come onigiris para seguir",
+                "right": "Heterótrofo: come a otros seres"
+              },
+              {
+                "left": "Luz del sol, agua y aire del bosque",
+                "right": "Ingredientes de la fotosíntesis"
+              }
+            ],
+            "completion_feedback": "Unos **fabrican** su alimento con luz y otros **lo obtienen** comiendo a otros. Esa es la diferencia que vamos a ver a fondo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo consigue su alimento cada uno?",
+            "left_label": "Bernabéu",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "El césped del estadio",
+                "right": "Autótrofo: fabrica su alimento"
+              },
+              {
+                "left": "Bellingham con su pasta y pollo",
+                "right": "Heterótrofo: come a otros seres"
+              },
+              {
+                "left": "Sol, agua del riego y CO₂",
+                "right": "Ingredientes de la fotosíntesis"
+              }
+            ],
+            "completion_feedback": "Unos **fabrican** su alimento con luz y otros **lo obtienen** comiendo a otros. Esa es la diferencia que vamos a ver a fondo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo consigue su alimento cada uno?",
+            "left_label": "BTS",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "RM crea su música él solo",
+                "right": "Autótrofo: fabrica su alimento"
+              },
+              {
+                "left": "Bailarines comen kimbap tras el show",
+                "right": "Heterótrofo: come a otros seres"
+              },
+              {
+                "left": "Lo que significa 'auto'",
+                "right": "Uno mismo"
+              },
+              {
+                "left": "Lo que significa 'hetero'",
+                "right": "Otro"
+              }
+            ],
+            "completion_feedback": "Unos **fabrican** su alimento con luz y otros **lo obtienen** comiendo a otros. Esa es la diferencia que vamos a ver a fondo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo consigue su alimento cada uno?",
+            "left_label": "Minecraft",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "Tu trigo, zanahorias y papas",
+                "right": "Autótrofo: fabrica su alimento"
+              },
+              {
+                "left": "Vacas, zombis y Steve",
+                "right": "Heterótrofo: come a otros seres"
+              },
+              {
+                "left": "Sol o antorchas, y agua cerca",
+                "right": "Ingredientes de la fotosíntesis"
+              }
+            ],
+            "completion_feedback": "Unos **fabrican** su alimento con luz y otros **lo obtienen** comiendo a otros. Esa es la diferencia que vamos a ver a fondo."
+          }
+        }
+      }
+    },
+    "fotosintesis": {
+      "order_steps": {
+        "prompt": "Ordena cómo una planta convierte la luz en alimento",
+        "steps": [
+          "Recibe la luz del sol",
+          "La clorofila de sus hojas la captura",
+          "Con esa energía une agua y CO₂",
+          "Obtiene glucosa y libera oxígeno"
+        ],
+        "completion_feedback": "Primero la luz, al final el alimento: **agua + CO₂ + luz → glucosa + oxígeno**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la fotosíntesis es cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "Fotosíntesis",
+            "pairs": [
+              {
+                "left": "El sol que buscan las hojas de glicina",
+                "right": "Luz: la energía que usa"
+              },
+              {
+                "left": "Lo verde de esas hojas",
+                "right": "Clorofila: atrapa la luz"
+              },
+              {
+                "left": "Glicina gigante sin comer nada",
+                "right": "Glucosa: el alimento que fabrica"
+              }
+            ],
+            "completion_feedback": "Luz, agua y aire convertidos en alimento: eso es la **fotosíntesis**. Veamos qué toma la planta y qué produce."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la fotosíntesis es cada cosa?",
+            "left_label": "Camp Nou",
+            "right_label": "Fotosíntesis",
+            "pairs": [
+              {
+                "left": "Lámparas gigantes sobre la cancha",
+                "right": "Luz: la energía que usa"
+              },
+              {
+                "left": "El verde intenso del césped",
+                "right": "Clorofila: atrapa la luz"
+              },
+              {
+                "left": "El agua del riego",
+                "right": "Agua: uno de sus ingredientes"
+              },
+              {
+                "left": "Césped amarillo bajo el techo",
+                "right": "Sin luz no hay fotosíntesis"
+              }
+            ],
+            "completion_feedback": "Luz, agua y aire convertidos en alimento: eso es la **fotosíntesis**. Veamos qué toma la planta y qué produce."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la fotosíntesis es cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "Fotosíntesis",
+            "pairs": [
+              {
+                "left": "Plantas que usan luz en vez de pilas",
+                "right": "Luz: la energía que usa"
+              },
+              {
+                "left": "Lo verde de sus hojas",
+                "right": "Clorofila: atrapa la luz"
+              },
+              {
+                "left": "Se alimentan sin comer ni enchufarse",
+                "right": "Glucosa: el alimento que fabrica"
+              }
+            ],
+            "completion_feedback": "Luz, agua y aire convertidos en alimento: eso es la **fotosíntesis**. Veamos qué toma la planta y qué produce."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la fotosíntesis es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "Fotosíntesis",
+            "pairs": [
+              {
+                "left": "Antorchas o sol sobre el cultivo",
+                "right": "Luz: la energía que usa"
+              },
+              {
+                "left": "Agua cerca de la tierra arada",
+                "right": "Agua: uno de sus ingredientes"
+              },
+              {
+                "left": "Trigo a oscuras que nunca crece",
+                "right": "Sin luz no hay fotosíntesis"
+              }
+            ],
+            "completion_feedback": "Luz, agua y aire convertidos en alimento: eso es la **fotosíntesis**. Veamos qué toma la planta y qué produce."
+          }
+        }
+      }
+    },
+    "dieta-correcta-y-plato-del-bien-comer": {
+      "order_steps": {
+        "prompt": "Ordena cómo corregir un plato que solo tiene pasta",
+        "steps": [
+          "Identifica que la pasta es del grupo de cereales",
+          "Nota que faltan los otros dos grupos",
+          "Agrega verdura o fruta, y frijoles o pollo",
+          "Revisa que estén los tres grupos"
+        ],
+        "completion_feedback": "Se revisa por **grupos**, no por alimentos sueltos: si están los tres, vas bien. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la dieta correcta es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "Un once que solo sabe disparar",
+                "right": "Plato con un solo grupo"
+              },
+              {
+                "left": "Disparo, velocidad, pase y visión",
+                "right": "Dieta completa: los 3 grupos"
+              },
+              {
+                "left": "Cada arma en la proporción justa",
+                "right": "Dieta equilibrada: en proporción"
+              }
+            ],
+            "completion_feedback": "Un buen resultado necesita **varias piezas en equilibrio**. En la comida, esas piezas son los 3 grupos del Plato del Bien Comer; veámoslos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la dieta correcta es cada cosa?",
+            "left_label": "Tu alineación",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "Once delanteros: te meten cinco",
+                "right": "Plato con un solo grupo"
+              },
+              {
+                "left": "Portero, defensas, medios y delanteros",
+                "right": "Dieta completa: los 3 grupos"
+              },
+              {
+                "left": "Cada línea en su proporción",
+                "right": "Dieta equilibrada: en proporción"
+              }
+            ],
+            "completion_feedback": "Un buen resultado necesita **varias piezas en equilibrio**. En la comida, esas piezas son los 3 grupos del Plato del Bien Comer; veámoslos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la dieta correcta es cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "Los 13 bailan y nadie canta",
+                "right": "Plato con un solo grupo"
+              },
+              {
+                "left": "Vocal, hip-hop y performance",
+                "right": "Dieta completa: los 3 grupos"
+              },
+              {
+                "left": "Cada unidad en su justa medida",
+                "right": "Dieta equilibrada: en proporción"
+              }
+            ],
+            "completion_feedback": "Un buen resultado necesita **varias piezas en equilibrio**. En la comida, esas piezas son los 3 grupos del Plato del Bien Comer; veámoslos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la dieta correcta es cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "Nutrición",
+            "pairs": [
+              {
+                "left": "Todo en un Operator, sin escudo",
+                "right": "Plato con un solo grupo"
+              },
+              {
+                "left": "Arma, escudo y habilidad",
+                "right": "Dieta completa: los 3 grupos"
+              },
+              {
+                "left": "Créditos repartidos con cabeza",
+                "right": "Dieta equilibrada: en proporción"
+              }
+            ],
+            "completion_feedback": "Un buen resultado necesita **varias piezas en equilibrio**. En la comida, esas piezas son los 3 grupos del Plato del Bien Comer; veámoslos."
+          }
+        }
+      }
+    },
+    "trastornos-alimenticios": {
+      "order_steps": {
+        "prompt": "Ordena cómo avanza un trastorno alimenticio y qué se necesita",
+        "steps": [
+          "La mente distorsiona la imagen del propio cuerpo",
+          "La relación con la comida se vuelve dañina",
+          "El cuerpo se debilita aunque la persona no lo note",
+          "Se necesita ayuda profesional para recuperarse"
+        ],
+        "completion_feedback": "Empieza **en la mente** y termina dañando el cuerpo; por eso no se resuelve solo con fuerza de voluntad. Si te pasa a ti o a alguien cercano, habla con un adulto de confianza."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea del tema es cada cosa?",
+            "left_label": "My Hero Academia",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La voz que dice 'aún no es suficiente'",
+                "right": "Percepción distorsionada"
+              },
+              {
+                "left": "Al inicio nadie notaría nada",
+                "right": "Daño en silencio"
+              },
+              {
+                "left": "Su cuerpo falla al salvar a alguien",
+                "right": "Consecuencia real en el cuerpo"
+              }
+            ],
+            "completion_feedback": "La mente puede **mentir sobre el propio cuerpo** y ocultar el daño. Eso pasa en un trastorno alimenticio: es una enfermedad, no una decisión."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea del tema es cada cosa?",
+            "left_label": "Mbappé",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "'Comer menos me hará mejor'",
+                "right": "Percepción distorsionada"
+              },
+              {
+                "left": "Al principio nadie nota nada",
+                "right": "Daño en silencio"
+              },
+              {
+                "left": "Minuto 80: las piernas le tiemblan",
+                "right": "Consecuencia real en el cuerpo"
+              }
+            ],
+            "completion_feedback": "La mente puede **mentir sobre el propio cuerpo** y ocultar el daño. Eso pasa en un trastorno alimenticio: es una enfermedad, no una decisión."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea del tema es cada cosa?",
+            "left_label": "TXT",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Un espejo de feria que deforma",
+                "right": "Percepción distorsionada"
+              },
+              {
+                "left": "Bailar agotado creyendo que falta",
+                "right": "Ignorar las alarmas del cuerpo"
+              },
+              {
+                "left": "La pared de espejos fieles",
+                "right": "Ver tu salud real"
+              }
+            ],
+            "completion_feedback": "La mente puede **mentir sobre el propio cuerpo** y ocultar el daño. Eso pasa en un trastorno alimenticio: es una enfermedad, no una decisión."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea del tema es cada cosa?",
+            "left_label": "Zelda",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Barra con corazones llenos, falsa",
+                "right": "Percepción distorsionada"
+              },
+              {
+                "left": "La alarma de vida silenciada",
+                "right": "Ignorar las alarmas del cuerpo"
+              },
+              {
+                "left": "Link se desploma de golpe",
+                "right": "Consecuencia real en el cuerpo"
+              }
+            ],
+            "completion_feedback": "La mente puede **mentir sobre el propio cuerpo** y ocultar el daño. Eso pasa en un trastorno alimenticio: es una enfermedad, no una decisión."
+          }
+        }
+      }
+    },
+    "respiracion-celular-y-aerobica": {
+      "order_steps": {
+        "prompt": "Ordena cómo tus células sacan energía de la comida",
+        "steps": [
+          "La comida se digiere y da glucosa",
+          "La sangre lleva glucosa y oxígeno a la célula",
+          "La célula combina la glucosa con el oxígeno",
+          "Se libera energía, y quedan CO₂ y agua",
+          "El CO₂ sale de tu cuerpo al exhalar"
+        ],
+        "completion_feedback": "**Glucosa + oxígeno → energía + CO₂ + agua.** Por eso respiras más fuerte cuando te esfuerzas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la respiración celular es cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Inhalar profundo antes del ataque",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "Músculos llenos de fuerza",
+                "right": "Energía liberada"
+              },
+              {
+                "left": "Sin aire, técnicas débiles",
+                "right": "Sin oxígeno, poca energía"
+              }
+            ],
+            "completion_feedback": "Combustible + oxígeno = energía. Tus células hacen eso cada segundo: se llama **respiración celular**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la respiración celular es cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El 'combustible' de la comida",
+                "right": "Glucosa: el combustible"
+              },
+              {
+                "left": "Bocanadas de aire en el sprint",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "Piernas que corren 40 metros",
+                "right": "Energía liberada"
+              }
+            ],
+            "completion_feedback": "Combustible + oxígeno = energía. Tus células hacen eso cada segundo: se llama **respiración celular**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la respiración celular es cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El 'combustible' de la comida",
+                "right": "Glucosa: el combustible"
+              },
+              {
+                "left": "Respirar rápido al bailar",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "Saltos y caídas sin parar",
+                "right": "Energía liberada"
+              }
+            ],
+            "completion_feedback": "Combustible + oxígeno = energía. Tus células hacen eso cada segundo: se llama **respiración celular**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la respiración celular es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El carbón del horno",
+                "right": "Glucosa: el combustible"
+              },
+              {
+                "left": "El aire que mantiene el fuego",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "El calor que funde el hierro",
+                "right": "Energía liberada"
+              },
+              {
+                "left": "Fuego tapado que se apaga",
+                "right": "Sin oxígeno, poca energía"
+              }
+            ],
+            "completion_feedback": "Combustible + oxígeno = energía. Tus células hacen eso cada segundo: se llama **respiración celular**."
+          }
+        }
+      }
+    },
+    "sistema-respiratorio-y-enfermedades": {
+      "order_steps": {
+        "prompt": "Ordena el camino del aire, desde que entra hasta que pasa a la sangre",
+        "steps": [
+          "Entra por la nariz",
+          "Baja por la faringe y la laringe",
+          "Recorre la tráquea",
+          "Se divide en los dos bronquios",
+          "Llega a los alvéolos y pasa a la sangre"
+        ],
+        "completion_feedback": "Nariz → faringe → laringe → tráquea → bronquios → alvéolos. **Un bloqueo en cualquier punto** frena todo lo que sigue. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema respiratorio es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Isagi metiendo más aire al pecho",
+                "right": "Pulmones: se llenan de aire"
+              },
+              {
+                "left": "Sus vías respiratorias bloqueadas",
+                "right": "Vía dañada u obstruida"
+              },
+              {
+                "left": "Oxígeno que llega a sus músculos",
+                "right": "Alvéolos: el O₂ pasa a la sangre"
+              }
+            ],
+            "completion_feedback": "El aire hace un **recorrido exacto** hasta llegar a la sangre, y si una parte falla, el oxígeno no llega. Veamos ese camino."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema respiratorio es cada cosa?",
+            "left_label": "Fútbol en altura",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El aire 'delgado' de La Paz",
+                "right": "Menos O₂ en cada bocanada"
+              },
+              {
+                "left": "Equipo 'fundido' al medio tiempo",
+                "right": "Fatiga por falta de O₂"
+              },
+              {
+                "left": "Pecho jalando aire sin parar",
+                "right": "Pulmones: se llenan de aire"
+              }
+            ],
+            "completion_feedback": "El aire hace un **recorrido exacto** hasta llegar a la sangre, y si una parte falla, el oxígeno no llega. Veamos ese camino."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema respiratorio es cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Donde nace la voz del vocalista",
+                "right": "Laringe: cuerdas vocales"
+              },
+              {
+                "left": "Donde guarda el aire para la nota",
+                "right": "Pulmones: se llenan de aire"
+              },
+              {
+                "left": "Garganta irritada por ensayar",
+                "right": "Vía dañada u obstruida"
+              }
+            ],
+            "completion_feedback": "El aire hace un **recorrido exacto** hasta llegar a la sangre, y si una parte falla, el oxígeno no llega. Veamos ese camino."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema respiratorio es cada cosa?",
+            "left_label": "La nave",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La toma de aire de la nave",
+                "right": "Nariz: entrada del aire"
+              },
+              {
+                "left": "La tubería principal",
+                "right": "Tráquea: conducto principal"
+              },
+              {
+                "left": "El tanque que reparte a cada cuarto",
+                "right": "Alvéolos: el O₂ pasa a la sangre"
+              },
+              {
+                "left": "Tubería perforada o filtro tapado",
+                "right": "Vía dañada u obstruida"
+              }
+            ],
+            "completion_feedback": "El aire hace un **recorrido exacto** hasta llegar a la sangre, y si una parte falla, el oxígeno no llega. Veamos ese camino."
+          }
+        }
+      }
+    },
+    "reproduccion-asexual-y-sexual": {
+      "order_steps": {
+        "prompt": "Ordena cómo se forma una cría por reproducción sexual",
+        "steps": [
+          "Cada progenitor produce sus gametos",
+          "Un gameto de cada uno se une",
+          "Se mezcla la información de los dos",
+          "Nace una cría distinta a ambos padres"
+        ],
+        "completion_feedback": "Dos gametos, una mezcla: por eso **ningún hijo es copia de sus padres**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de reproducción muestra cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Naruto solo, juntando chakra",
+                "right": "Un solo progenitor"
+              },
+              {
+                "left": "Decenas de copias exactas",
+                "right": "Clones idénticos"
+              },
+              {
+                "left": "Naruto y Hinata",
+                "right": "Dos progenitores"
+              },
+              {
+                "left": "Boruto, distinto a sus papás",
+                "right": "Variabilidad genética"
+              }
+            ],
+            "completion_feedback": "Uno solo hace **copias**; dos hacen **algo nuevo**. Esa es la diferencia entre reproducción asexual y sexual."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de reproducción muestra cada cosa?",
+            "left_label": "Fútbol",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La Masia como única fuente",
+                "right": "Un solo progenitor"
+              },
+              {
+                "left": "El mismo estilo, repetido",
+                "right": "Clones idénticos"
+              },
+              {
+                "left": "La Masia más otra escuela",
+                "right": "Dos progenitores"
+              },
+              {
+                "left": "El estilo nuevo de Yamal",
+                "right": "Variabilidad genética"
+              }
+            ],
+            "completion_feedback": "Uno solo hace **copias**; dos hacen **algo nuevo**. Esa es la diferencia entre reproducción asexual y sexual."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de reproducción muestra cada cosa?",
+            "left_label": "K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Un solo molde de impresión",
+                "right": "Un solo progenitor"
+              },
+              {
+                "left": "Miles de álbumes idénticos",
+                "right": "Clones idénticos"
+              },
+              {
+                "left": "Dos artistas en un collab",
+                "right": "Dos progenitores"
+              },
+              {
+                "left": "La canción nueva y única",
+                "right": "Variabilidad genética"
+              }
+            ],
+            "completion_feedback": "Uno solo hace **copias**; dos hacen **algo nuevo**. Esa es la diferencia entre reproducción asexual y sexual."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de reproducción muestra cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Un solo árbol del que sacas retoños",
+                "right": "Un solo progenitor"
+              },
+              {
+                "left": "Retoños iguales al original",
+                "right": "Clones idénticos"
+              },
+              {
+                "left": "Dos vacas con trigo",
+                "right": "Dos progenitores"
+              },
+              {
+                "left": "Cría que mezcla a sus padres",
+                "right": "Variabilidad genética"
+              }
+            ],
+            "completion_feedback": "Uno solo hace **copias**; dos hacen **algo nuevo**. Esa es la diferencia entre reproducción asexual y sexual."
+          }
+        }
+      }
+    },
+    "sistema-reproductor-femenino-y-masculino": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido del óvulo en el sistema femenino",
+        "steps": [
+          "El ovario produce el óvulo",
+          "El óvulo viaja por la trompa de Falopio",
+          "Llega al útero, donde puede desarrollarse un nuevo ser"
+        ],
+        "completion_feedback": "Ovario → trompa de Falopio → útero: **cada órgano hace su parte del camino**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "Como cada sombra de Jin-Woo, cada órgano tiene un rol. ¿Cuál es el de cada uno?",
+            "left_label": "Órgano",
+            "right_label": "Su rol",
+            "pairs": [
+              {
+                "left": "Testículos",
+                "right": "Producen espermatozoides"
+              },
+              {
+                "left": "Ovarios",
+                "right": "Producen óvulos"
+              },
+              {
+                "left": "Trompas de Falopio",
+                "right": "Camino del óvulo"
+              },
+              {
+                "left": "Útero",
+                "right": "Donde se desarrolla un nuevo ser"
+              }
+            ],
+            "completion_feedback": "Cada órgano tiene **una tarea única**, como cada rol de un equipo. Veamos cómo trabajan juntos los dos sistemas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "Como cada posición del Madrid, cada órgano tiene una tarea. ¿Cuál es la de cada uno?",
+            "left_label": "Órgano",
+            "right_label": "Su tarea",
+            "pairs": [
+              {
+                "left": "Testículos",
+                "right": "Producen espermatozoides"
+              },
+              {
+                "left": "Ovarios",
+                "right": "Producen óvulos"
+              },
+              {
+                "left": "Trompas de Falopio",
+                "right": "Camino del óvulo"
+              },
+              {
+                "left": "Útero",
+                "right": "Donde se desarrolla un nuevo ser"
+              }
+            ],
+            "completion_feedback": "Cada órgano tiene **una tarea única**, como cada rol de un equipo. Veamos cómo trabajan juntos los dos sistemas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "Como cada posición de ENHYPEN, cada órgano tiene una tarea. ¿Cuál es la de cada uno?",
+            "left_label": "Órgano",
+            "right_label": "Su posición",
+            "pairs": [
+              {
+                "left": "Testículos",
+                "right": "Producen espermatozoides"
+              },
+              {
+                "left": "Ovarios",
+                "right": "Producen óvulos"
+              },
+              {
+                "left": "Trompas de Falopio",
+                "right": "Camino del óvulo"
+              },
+              {
+                "left": "Útero",
+                "right": "Donde se desarrolla un nuevo ser"
+              }
+            ],
+            "completion_feedback": "Cada órgano tiene **una tarea única**, como cada rol de un equipo. Veamos cómo trabajan juntos los dos sistemas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "Como cada brawler, cada órgano tiene un rol. ¿Cuál es el de cada uno?",
+            "left_label": "Órgano",
+            "right_label": "Su rol",
+            "pairs": [
+              {
+                "left": "Testículos",
+                "right": "Producen espermatozoides"
+              },
+              {
+                "left": "Ovarios",
+                "right": "Producen óvulos"
+              },
+              {
+                "left": "Trompas de Falopio",
+                "right": "Camino del óvulo"
+              },
+              {
+                "left": "Útero",
+                "right": "Donde se desarrolla un nuevo ser"
+              }
+            ],
+            "completion_feedback": "Cada órgano tiene **una tarea única**, como cada rol de un equipo. Veamos cómo trabajan juntos los dos sistemas."
+          }
+        }
+      }
+    },
+    "salud-sexual-y-reproductiva-en-la-adolescencia": {
+      "order_steps": {
+        "prompt": "Ordena cómo tomar una decisión importante sobre tu salud",
+        "steps": [
+          "Notas que tienes una duda o que te presionan",
+          "Te detienes: no decides por impulso",
+          "Buscas información confiable y a un adulto de confianza",
+          "Decides informado y sin presión"
+        ],
+        "completion_feedback": "Primero **frenar**, luego **informarte**, al final **decidir**. Nadie más decide por ti. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de cuidar tu salud sexual muestra cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "Tu salud",
+            "pairs": [
+              {
+                "left": "Saber cuándo NO lanzarse a pelear",
+                "right": "Conocer y poner tus límites"
+              },
+              {
+                "left": "Consultar a sus maestros",
+                "right": "Apoyarte en gente de confianza"
+              },
+              {
+                "left": "No actuar por presión de otros",
+                "right": "Decidir sin presión"
+              },
+              {
+                "left": "Estar bien de cuerpo y de mente",
+                "right": "Bienestar físico, mental y social"
+              }
+            ],
+            "completion_feedback": "Cuidarte es **informarte, poner límites y decidir sin presión**. Eso es la salud sexual y reproductiva; veámosla con calma."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de cuidar tu salud sexual muestra cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "Tu salud",
+            "pairs": [
+              {
+                "left": "Médicos que lo cuidan y orientan",
+                "right": "Apoyarte en gente de confianza"
+              },
+              {
+                "left": "No es solo 'no estar lesionado'",
+                "right": "Bienestar físico, mental y social"
+              },
+              {
+                "left": "Sigue indicaciones, no improvisa",
+                "right": "Informarte antes de decidir"
+              },
+              {
+                "left": "Límites claros para crecer sano",
+                "right": "Conocer y poner tus límites"
+              }
+            ],
+            "completion_feedback": "Cuidarte es **informarte, poner límites y decidir sin presión**. Eso es la salud sexual y reproductiva; veámosla con calma."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de cuidar tu salud sexual muestra cada cosa?",
+            "left_label": "NewJeans",
+            "right_label": "Tu salud",
+            "pairs": [
+              {
+                "left": "Decir 'esto no' sin culpa",
+                "right": "Conocer y poner tus límites"
+              },
+              {
+                "left": "Un equipo de confianza",
+                "right": "Apoyarte en gente de confianza"
+              },
+              {
+                "left": "Decidir por sí mismas",
+                "right": "Decidir sin presión"
+              },
+              {
+                "left": "Sentirse segura en cuerpo y emoción",
+                "right": "Bienestar físico, mental y social"
+              }
+            ],
+            "completion_feedback": "Cuidarte es **informarte, poner límites y decidir sin presión**. Eso es la salud sexual y reproductiva; veámosla con calma."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de cuidar tu salud sexual muestra cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "Tu salud",
+            "pairs": [
+              {
+                "left": "La fase de compra antes de la ronda",
+                "right": "Informarte antes de decidir"
+              },
+              {
+                "left": "No correr al sitio 'a lo loco'",
+                "right": "Decidir sin presión"
+              },
+              {
+                "left": "Comunicarse con el equipo",
+                "right": "Apoyarte en gente de confianza"
+              }
+            ],
+            "completion_feedback": "Cuidarte es **informarte, poner límites y decidir sin presión**. Eso es la salud sexual y reproductiva; veámosla con calma."
+          }
+        }
+      }
+    },
+    "metodos-anticonceptivos": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de los métodos anticonceptivos muestra cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Barrera que se alza antes del daño",
+                "right": "Prevenir antes de que ocurra"
+              },
+              {
+                "left": "Unas barreras más fuertes que otras",
+                "right": "No todos son igual de efectivos"
+              },
+              {
+                "left": "Elegir la barrera según la amenaza",
+                "right": "Saber cuál protege de qué"
+              },
+              {
+                "left": "No improvisar sin información",
+                "right": "Informarse en fuentes confiables"
+              }
+            ],
+            "completion_feedback": "Hay **varios métodos** para prevenir, y no todos protegen de lo mismo ni igual de bien. Veamos cuáles son."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de los métodos anticonceptivos muestra cada cosa?",
+            "left_label": "Fútbol",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Defensa que evita que te anoten",
+                "right": "Prevenir antes de que ocurra"
+              },
+              {
+                "left": "Marca floja vs. defensa ordenada",
+                "right": "No todos son igual de efectivos"
+              },
+              {
+                "left": "Táctica estudiada antes del partido",
+                "right": "Informarse en fuentes confiables"
+              }
+            ],
+            "completion_feedback": "Hay **varios métodos** para prevenir, y no todos protegen de lo mismo ni igual de bien. Veamos cuáles son."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de los métodos anticonceptivos muestra cada cosa?",
+            "left_label": "BLACKPINK",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Barreras que frenan un problema",
+                "right": "Prevenir antes de que ocurra"
+              },
+              {
+                "left": "Unas protecciones más completas",
+                "right": "No todos son igual de efectivos"
+              },
+              {
+                "left": "Informarse antes de cada concierto",
+                "right": "Informarse en fuentes confiables"
+              }
+            ],
+            "completion_feedback": "Hay **varios métodos** para prevenir, y no todos protegen de lo mismo ni igual de bien. Veamos cuáles son."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de los métodos anticonceptivos muestra cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Defensas listas antes de la noche",
+                "right": "Prevenir antes de que ocurra"
+              },
+              {
+                "left": "Muro de tierra vs. obsidiana",
+                "right": "No todos son igual de efectivos"
+              },
+              {
+                "left": "Cada defensa frena un peligro distinto",
+                "right": "Saber cuál protege de qué"
+              }
+            ],
+            "completion_feedback": "Hay **varios métodos** para prevenir, y no todos protegen de lo mismo ni igual de bien. Veamos cuáles son."
+          }
+        }
+      }
+    },
+    "its-infecciones-de-transmision-sexual": {
+      "order_steps": {
+        "prompt": "Ordena por qué una ITS puede pasar inadvertida y cómo se frena",
+        "steps": [
+          "Un microorganismo pasa por contacto sexual",
+          "Al inicio no da síntomas",
+          "La persona puede transmitirla sin saberlo",
+          "La prevención y la revisión médica la frenan"
+        ],
+        "completion_feedback": "Lo peligroso es **el silencio del inicio**: por eso se previene antes, no cuando ya duele. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué característica de las ITS muestra cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Las ITS",
+            "pairs": [
+              {
+                "left": "'Infectado' sin que se note",
+                "right": "Sin síntomas al inicio"
+              },
+              {
+                "left": "Energía maldita que pasa por contacto",
+                "right": "Se transmite por contacto"
+              },
+              {
+                "left": "Protegerse antes de que crezca",
+                "right": "Prevenir: la mejor estrategia"
+              },
+              {
+                "left": "Detectar el peligro a tiempo",
+                "right": "Atención médica a tiempo"
+              }
+            ],
+            "completion_feedback": "Una ITS puede estar presente **sin que se note**. Por eso la prevención y la atención médica importan tanto; veamos cuáles son."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué característica de las ITS muestra cada cosa?",
+            "left_label": "Santi Giménez",
+            "right_label": "Las ITS",
+            "pairs": [
+              {
+                "left": "Juega bien con la lesión por dentro",
+                "right": "Sin síntomas al inicio"
+              },
+              {
+                "left": "Revisiones médicas constantes",
+                "right": "Atención médica a tiempo"
+              },
+              {
+                "left": "Confiarse por 'cómo se ve'",
+                "right": "No se ve en la apariencia"
+              }
+            ],
+            "completion_feedback": "Una ITS puede estar presente **sin que se note**. Por eso la prevención y la atención médica importan tanto; veamos cuáles son."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué característica de las ITS muestra cada cosa?",
+            "left_label": "TXT",
+            "right_label": "Las ITS",
+            "pairs": [
+              {
+                "left": "Sonríe en ensayos; nadie sospecha",
+                "right": "Sin síntomas al inicio"
+              },
+              {
+                "left": "Pasa de persona a persona",
+                "right": "Se transmite por contacto"
+              },
+              {
+                "left": "Revisiones médicas de la agencia",
+                "right": "Atención médica a tiempo"
+              },
+              {
+                "left": "No basta con 'cómo se ve' alguien",
+                "right": "No se ve en la apariencia"
+              }
+            ],
+            "completion_feedback": "Una ITS puede estar presente **sin que se note**. Por eso la prevención y la atención médica importan tanto; veamos cuáles son."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué característica de las ITS muestra cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "Las ITS",
+            "pairs": [
+              {
+                "left": "Pierdes HP sin notarlo",
+                "right": "Sin síntomas al inicio"
+              },
+              {
+                "left": "Zona contaminada que te afecta",
+                "right": "Se transmite por contacto"
+              },
+              {
+                "left": "Evitar las zonas de riesgo",
+                "right": "Prevenir: la mejor estrategia"
+              },
+              {
+                "left": "Curarte a tiempo con Barbara",
+                "right": "Atención médica a tiempo"
+              }
+            ],
+            "completion_feedback": "Una ITS puede estar presente **sin que se note**. Por eso la prevención y la atención médica importan tanto; veamos cuáles son."
+          }
+        }
+      }
+    },
+    "herencia-mendel-adn-y-genes": {
+      "order_steps": {
+        "prompt": "Ordena cómo se decide un rasgo que hereda un hijo",
+        "steps": [
+          "Cada progenitor aporta un gen para ese rasgo",
+          "El hijo junta esos dos genes en su ADN",
+          "El dominante se nota; el recesivo, solo si vienen dos"
+        ],
+        "completion_feedback": "Dos genes, uno de cada padre, y **el dominante manda**. Por eso un rasgo puede 'saltar' generaciones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la herencia muestra cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El Sharingan pasa de padres a hijos",
+                "right": "Herencia"
+              },
+              {
+                "left": "Lo que Sasuke trae 'en la sangre'",
+                "right": "ADN: el código heredado"
+              },
+              {
+                "left": "Rasgos del clan que se ven más",
+                "right": "Rasgo dominante"
+              }
+            ],
+            "completion_feedback": "Recibes **un código de cada padre**, y no todos sus rasgos se notan igual. Eso descubrió Mendel; veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la herencia muestra cada cosa?",
+            "left_label": "Sagas futboleras",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Abuelo, papá e hijo futbolistas",
+                "right": "Herencia"
+              },
+              {
+                "left": "El 'código' de papá y mamá",
+                "right": "ADN: el código heredado"
+              },
+              {
+                "left": "Un hijo que se parece más al papá",
+                "right": "Rasgo dominante"
+              }
+            ],
+            "completion_feedback": "Recibes **un código de cada padre**, y no todos sus rasgos se notan igual. Eso descubrió Mendel; veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la herencia muestra cada cosa?",
+            "left_label": "Familia idol",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "'Tiene los ojos de su mamá'",
+                "right": "Herencia"
+              },
+              {
+                "left": "Rasgo que 'salta' una generación",
+                "right": "Rasgo recesivo"
+              },
+              {
+                "left": "El 'código' de papá y mamá",
+                "right": "ADN: el código heredado"
+              }
+            ],
+            "completion_feedback": "Recibes **un código de cada padre**, y no todos sus rasgos se notan igual. Eso descubrió Mendel; veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la herencia muestra cada cosa?",
+            "left_label": "Caballos de Zelda",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cría con rasgos de ambos padres",
+                "right": "Un gen de cada progenitor"
+              },
+              {
+                "left": "Colores que tienden a salir más",
+                "right": "Rasgo dominante"
+              },
+              {
+                "left": "El 'código' de cada caballo",
+                "right": "ADN: el código heredado"
+              }
+            ],
+            "completion_feedback": "Recibes **un código de cada padre**, y no todos sus rasgos se notan igual. Eso descubrió Mendel; veamos cómo."
+          }
+        }
+      }
+    },
+    "evolucion-darwin-y-seleccion-natural-biologia-sec": {
+      "order_steps": {
+        "prompt": "Ordena cómo actúa la selección natural",
+        "steps": [
+          "En la población hay variabilidad",
+          "El ambiente favorece ciertos rasgos",
+          "Los más adaptados sobreviven y se reproducen más",
+          "Heredan esos rasgos a sus crías",
+          "Con las generaciones, la especie cambia"
+        ],
+        "completion_feedback": "El ambiente **no crea** los rasgos: solo elige entre los que ya había. Repetido por generaciones, eso es la evolución. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la selección natural es cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cazadores con habilidades distintas",
+                "right": "Variabilidad"
+              },
+              {
+                "left": "La mazmorra brutal",
+                "right": "El ambiente que selecciona"
+              },
+              {
+                "left": "Jin-Woo sale vivo y más fuerte",
+                "right": "Más adaptado: sobrevive más"
+              },
+              {
+                "left": "Otra mazmorra, otras habilidades",
+                "right": "La ventaja depende del ambiente"
+              }
+            ],
+            "completion_feedback": "Nadie elige a mano: **el ambiente selecciona** a los que mejor encajan. Darwin lo llamó selección natural; veamos cómo funciona."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la selección natural es cada cosa?",
+            "left_label": "Fútbol moderno",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El fútbol rápido y físico de hoy",
+                "right": "El ambiente que selecciona"
+              },
+              {
+                "left": "Yamal encaja y triunfa",
+                "right": "Más adaptado: sobrevive más"
+              },
+              {
+                "left": "Perfiles que van quedando fuera",
+                "right": "Menos adaptado: deja menos"
+              }
+            ],
+            "completion_feedback": "Nadie elige a mano: **el ambiente selecciona** a los que mejor encajan. Darwin lo llamó selección natural; veamos cómo funciona."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la selección natural es cada cosa?",
+            "left_label": "K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Decenas de grupos que debutan",
+                "right": "Variabilidad"
+              },
+              {
+                "left": "Público, tendencias e industria",
+                "right": "El ambiente que selecciona"
+              },
+              {
+                "left": "Grupos que conectan y crecen",
+                "right": "Más adaptado: sobrevive más"
+              },
+              {
+                "left": "Nuevos grupos que copian la fórmula",
+                "right": "Más descendencia con ese rasgo"
+              }
+            ],
+            "completion_feedback": "Nadie elige a mano: **el ambiente selecciona** a los que mejor encajan. Darwin lo llamó selección natural; veamos cómo funciona."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la selección natural es cada cosa?",
+            "left_label": "Brawl Stars",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Brawlers que dominan el meta",
+                "right": "Más adaptado: sobrevive más"
+              },
+              {
+                "left": "Brawlers que casi desaparecen",
+                "right": "Menos adaptado: deja menos"
+              },
+              {
+                "left": "Mapa abierto: gana el largo alcance",
+                "right": "La ventaja depende del ambiente"
+              }
+            ],
+            "completion_feedback": "Nadie elige a mano: **el ambiente selecciona** a los que mejor encajan. Darwin lo llamó selección natural; veamos cómo funciona."
+          }
+        }
+      }
+    },
+    "evidencias-evolutivas-fosiles-y-anatomia-comparada": {
+      "order_steps": {
+        "prompt": "Ordena cómo los fósiles revelan que una especie cambió",
+        "steps": [
+          "Un ser vivo deja restos o huellas",
+          "Quedan conservados en las rocas",
+          "Se encuentran y se ordenan por antigüedad",
+          "Al compararlos, se ve cómo cambió la especie"
+        ],
+        "completion_feedback": "Un fósil solo no dice mucho: **ordenados en el tiempo** cuentan la historia de una especie. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué evidencia de la evolución es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "Evidencia",
+            "pairs": [
+              {
+                "left": "Los tomos viejos del manga",
+                "right": "Fósil: registro del pasado"
+              },
+              {
+                "left": "Los tomos puestos en orden",
+                "right": "Ordenarlos por antigüedad"
+              },
+              {
+                "left": "Plan base: dos brazos, dos piernas",
+                "right": "Estructuras homólogas"
+              },
+              {
+                "left": "El diseño original de Oda",
+                "right": "Antepasado común"
+              }
+            ],
+            "completion_feedback": "El pasado deja **pruebas**: registros congelados y estructuras compartidas. Así demuestran los científicos que las especies evolucionaron."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué evidencia de la evolución es cada cosa?",
+            "left_label": "Playeras del Tri",
+            "right_label": "Evidencia",
+            "pairs": [
+              {
+                "left": "Las playeras viejas del museo",
+                "right": "Fósil: registro del pasado"
+              },
+              {
+                "left": "Las playeras en fila por época",
+                "right": "Ordenarlos por antigüedad"
+              },
+              {
+                "left": "Mangas, escudo y número en todas",
+                "right": "Estructuras homólogas"
+              },
+              {
+                "left": "El diseño original del uniforme",
+                "right": "Antepasado común"
+              }
+            ],
+            "completion_feedback": "El pasado deja **pruebas**: registros congelados y estructuras compartidas. Así demuestran los científicos que las especies evolucionaron."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué evidencia de la evolución es cada cosa?",
+            "left_label": "K-pop",
+            "right_label": "Evidencia",
+            "pairs": [
+              {
+                "left": "Videos antiguos guardados en internet",
+                "right": "Fósil: registro del pasado"
+              },
+              {
+                "left": "Esos videos ordenados por año",
+                "right": "Ordenarlos por antigüedad"
+              },
+              {
+                "left": "Center y rapero en todos los grupos",
+                "right": "Estructuras homólogas"
+              },
+              {
+                "left": "La fórmula de los grupos pioneros",
+                "right": "Antepasado común"
+              }
+            ],
+            "completion_feedback": "El pasado deja **pruebas**: registros congelados y estructuras compartidas. Así demuestran los científicos que las especies evolucionaron."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué evidencia de la evolución es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "Evidencia",
+            "pairs": [
+              {
+                "left": "Archivos de la alpha y la beta",
+                "right": "Fósil: registro del pasado"
+              },
+              {
+                "left": "Versiones en orden de antigüedad",
+                "right": "Ordenarlos por antigüedad"
+              },
+              {
+                "left": "Bloques viejos que siguen, cambiados",
+                "right": "Estructuras homólogas"
+              }
+            ],
+            "completion_feedback": "El pasado deja **pruebas**: registros congelados y estructuras compartidas. Así demuestran los científicos que las especies evolucionaron."
+          }
+        }
+      }
+    },
+    "adaptacion-de-los-seres-vivos": {
+      "order_steps": {
+        "prompt": "Ordena cómo surgió el pelaje grueso del oso polar",
+        "steps": [
+          "Algunos osos nacen con pelaje más grueso",
+          "En el frío, esos osos sobreviven más",
+          "Se reproducen y heredan ese pelaje",
+          "Tras muchas generaciones, casi todos lo tienen"
+        ],
+        "completion_feedback": "Nadie 'decide' adaptarse: **la selección natural** acumula el rasgo que encaja, generación tras generación. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la adaptación muestra cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Zenitsu y su velocidad del Trueno",
+                "right": "Adaptación: rasgo que da ventaja"
+              },
+              {
+                "left": "Zenitsu peleando como Inosuke",
+                "right": "Fuera de su ambiente, sin ventaja"
+              },
+              {
+                "left": "A cada cazador, su Respiración",
+                "right": "Cada ambiente pide rasgos propios"
+              }
+            ],
+            "completion_feedback": "Rasgos **hechos a la medida** de un ambiente: eso es una adaptación. Veamos cómo surge y algunos ejemplos reales."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la adaptación muestra cada cosa?",
+            "left_label": "Posiciones",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La aceleración de Yamal en la banda",
+                "right": "Adaptación: rasgo que da ventaja"
+              },
+              {
+                "left": "Un portero jugando de extremo",
+                "right": "Fuera de su ambiente, sin ventaja"
+              },
+              {
+                "left": "Cada posición pide algo distinto",
+                "right": "Cada ambiente pide rasgos propios"
+              }
+            ],
+            "completion_feedback": "Rasgos **hechos a la medida** de un ambiente: eso es una adaptación. Veamos cómo surge y algunos ejemplos reales."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la adaptación muestra cada cosa?",
+            "left_label": "Conceptos K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El concepto fresco de NewJeans",
+                "right": "Adaptación: rasgo que da ventaja"
+              },
+              {
+                "left": "Ese concepto en otro grupo",
+                "right": "Fuera de su ambiente, sin ventaja"
+              },
+              {
+                "left": "A cada público, su concepto",
+                "right": "Cada ambiente pide rasgos propios"
+              }
+            ],
+            "completion_feedback": "Rasgos **hechos a la medida** de un ambiente: eso es una adaptación. Veamos cómo surge y algunos ejemplos reales."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la adaptación muestra cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Agente de largo alcance en mapa abierto",
+                "right": "Adaptación: rasgo que da ventaja"
+              },
+              {
+                "left": "Ese agente en un mapa de pasillos",
+                "right": "Fuera de su ambiente, sin ventaja"
+              },
+              {
+                "left": "Ajustar tu selección a cada mapa",
+                "right": "Cada ambiente pide rasgos propios"
+              }
+            ],
+            "completion_feedback": "Rasgos **hechos a la medida** de un ambiente: eso es una adaptación. Veamos cómo surge y algunos ejemplos reales."
+          }
+        }
+      }
+    },
+    "ecosistemas-y-cadenas-troficas": {
+      "order_steps": {
+        "prompt": "Ordena el camino de la energía en una cadena trófica",
+        "steps": [
+          "El sol aporta la energía",
+          "Los productores la captan por fotosíntesis",
+          "Los consumidores primarios comen productores",
+          "Los consumidores secundarios comen herbívoros",
+          "Los descomponedores reciclan los restos"
+        ],
+        "completion_feedback": "Sol → productores → herbívoros → carnívoros → descomponedores. **Si quitas un eslabón, todo se desequilibra.** Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del ecosistema es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Árboles frutales al sol tropical",
+                "right": "Productor"
+              },
+              {
+                "left": "Herbívoros gigantes que comen fruta",
+                "right": "Consumidor primario"
+              },
+              {
+                "left": "Depredadores que cazan herbívoros",
+                "right": "Consumidor secundario"
+              },
+              {
+                "left": "La isla con todos sus seres",
+                "right": "Ecosistema"
+              }
+            ],
+            "completion_feedback": "Quién se come a quién, y **la energía siempre empieza en las plantas**. Eso es una cadena trófica; veamos sus eslabones."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del ecosistema es cada cosa?",
+            "left_label": "El estadio",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El pasto de la cancha",
+                "right": "Productor"
+              },
+              {
+                "left": "Grillos y saltamontes",
+                "right": "Consumidor primario"
+              },
+              {
+                "left": "Pájaros que entran al estadio",
+                "right": "Consumidor secundario"
+              },
+              {
+                "left": "Insecticida: los pájaros se van",
+                "right": "Quitar un eslabón"
+              }
+            ],
+            "completion_feedback": "Quién se come a quién, y **la energía siempre empieza en las plantas**. Eso es una cadena trófica; veamos sus eslabones."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del ecosistema es cada cosa?",
+            "left_label": "Industria K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Compositores que crean la música",
+                "right": "Productor"
+              },
+              {
+                "left": "Niveles que dependen del de abajo",
+                "right": "Cadena trófica"
+              },
+              {
+                "left": "Sin compositores, todo se cae",
+                "right": "Quitar un eslabón"
+              }
+            ],
+            "completion_feedback": "Quién se come a quién, y **la energía siempre empieza en las plantas**. Eso es una cadena trófica; veamos sus eslabones."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del ecosistema es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El pasto de la llanura",
+                "right": "Productor"
+              },
+              {
+                "left": "Vacas y ovejas",
+                "right": "Consumidor primario"
+              },
+              {
+                "left": "Lobos",
+                "right": "Consumidor secundario"
+              },
+              {
+                "left": "El bioma con su clima y su agua",
+                "right": "Ecosistema"
+              }
+            ],
+            "completion_feedback": "Quién se come a quién, y **la energía siempre empieza en las plantas**. Eso es una cadena trófica; veamos sus eslabones."
+          }
+        }
+      }
+    },
+    "ciclos-biogeoquimicos-agua-carbono-y-nitrogeno": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo del agua, empezando por el sol que calienta el mar",
+        "steps": [
+          "El sol calienta el agua del mar",
+          "El agua se evapora y sube como vapor",
+          "El vapor se enfría y forma nubes",
+          "Cae como lluvia o nieve",
+          "Escurre y regresa a ríos y mares"
+        ],
+        "completion_feedback": "Evaporación → condensación → precipitación, y vuelta a empezar: **la misma agua da vueltas para siempre**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de los ciclos de la materia es cada cosa?",
+            "left_label": "Totoro",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Charcos que el sol sube al cielo",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Nubes nuevas que se forman",
+                "right": "Condensación"
+              },
+              {
+                "left": "Gotas sobre el paraguas",
+                "right": "Precipitación"
+              },
+              {
+                "left": "El árbol alcanfor creciendo con luz",
+                "right": "Fotosíntesis: toma CO₂"
+              }
+            ],
+            "completion_feedback": "Nada se gasta: **el agua, el carbono y el nitrógeno dan vueltas** sin parar. Eso es un ciclo biogeoquímico; veamos cada uno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de los ciclos de la materia es cada cosa?",
+            "left_label": "Partido con lluvia",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Lluvia que empapa la cancha",
+                "right": "Precipitación"
+              },
+              {
+                "left": "La cancha que se seca con el calor",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Césped que toma CO₂ con el sol",
+                "right": "Fotosíntesis: toma CO₂"
+              },
+              {
+                "left": "Fertilizante para el pasto",
+                "right": "Ciclo del nitrógeno"
+              }
+            ],
+            "completion_feedback": "Nada se gasta: **el agua, el carbono y el nitrógeno dan vueltas** sin parar. Eso es un ciclo biogeoquímico; veamos cada uno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de los ciclos de la materia es cada cosa?",
+            "left_label": "K-drama",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El sol calentando los mares de Corea",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Nubes grises sobre Seúl",
+                "right": "Condensación"
+              },
+              {
+                "left": "La lluvia sobre la pareja",
+                "right": "Precipitación"
+              },
+              {
+                "left": "Agua que escurre por las calles",
+                "right": "Regreso a ríos y mares"
+              }
+            ],
+            "completion_feedback": "Nada se gasta: **el agua, el carbono y el nitrógeno dan vueltas** sin parar. Eso es un ciclo biogeoquímico; veamos cada uno."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de los ciclos de la materia es cada cosa?",
+            "left_label": "Hyrule",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Vapor que sube con el sol",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Nubes sobre las montañas",
+                "right": "Condensación"
+              },
+              {
+                "left": "Lluvia que no deja escalar a Link",
+                "right": "Precipitación"
+              },
+              {
+                "left": "Agua que baja por los ríos",
+                "right": "Regreso a ríos y mares"
+              }
+            ],
+            "completion_feedback": "Nada se gasta: **el agua, el carbono y el nitrógeno dan vueltas** sin parar. Eso es un ciclo biogeoquímico; veamos cada uno."
+          }
+        }
+      }
+    },
+    "impacto-humano-en-el-ambiente": {
+      "order_steps": {
+        "prompt": "Ordena cómo una actividad humana termina dañando un ecosistema",
+        "steps": [
+          "Una actividad humana usa recursos o genera desechos",
+          "Contamina o destruye el hábitat",
+          "Las especies pierden alimento o refugio",
+          "Se pierde biodiversidad y se rompe el equilibrio"
+        ],
+        "completion_feedback": "El daño **se encadena**: empieza en una actividad y termina en todo el ecosistema. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de impacto humano es cada cosa?",
+            "left_label": "Laputa",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Extraer mineral sin límite",
+                "right": "Sobreexplotación de recursos"
+              },
+              {
+                "left": "Máquinas e industria de Laputa",
+                "right": "Contaminación"
+              },
+              {
+                "left": "Raíces que cubren las ruinas",
+                "right": "Naturaleza que se recupera"
+              }
+            ],
+            "completion_feedback": "Cada actividad humana **deja una marca** en los ecosistemas, y puede ser negativa o positiva. Veamos qué tipos de impacto hay."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de impacto humano es cada cosa?",
+            "left_label": "Un Mundial",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Estadios donde había vegetación",
+                "right": "Pérdida de hábitat"
+              },
+              {
+                "left": "Vuelos de miles de aficionados",
+                "right": "Huella de carbono"
+              },
+              {
+                "left": "Vasos y botellas en las gradas",
+                "right": "Residuos"
+              },
+              {
+                "left": "Regar el césped sin parar",
+                "right": "Gasto de un recurso limitado"
+              }
+            ],
+            "completion_feedback": "Cada actividad humana **deja una marca** en los ecosistemas, y puede ser negativa o positiva. Veamos qué tipos de impacto hay."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de impacto humano es cada cosa?",
+            "left_label": "Álbumes K-pop",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Petróleo para el plástico del CD",
+                "right": "Recurso no renovable"
+              },
+              {
+                "left": "Envíos en avión por el mundo",
+                "right": "Huella de carbono"
+              },
+              {
+                "left": "CDs nuevos en la basura",
+                "right": "Residuos"
+              },
+              {
+                "left": "Comprar menos o en digital",
+                "right": "Impacto positivo"
+              }
+            ],
+            "completion_feedback": "Cada actividad humana **deja una marca** en los ecosistemas, y puede ser negativa o positiva. Veamos qué tipos de impacto hay."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de impacto humano es cada cosa?",
+            "left_label": "Fortnite",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Refinería que ensucia el lago",
+                "right": "Contaminación del agua"
+              },
+              {
+                "left": "Fábricas que llenan el cielo de humo",
+                "right": "Contaminación del aire"
+              },
+              {
+                "left": "El bosque que ya no está",
+                "right": "Deforestación"
+              },
+              {
+                "left": "Peces que desaparecen",
+                "right": "Pérdida de biodiversidad"
+              }
+            ],
+            "completion_feedback": "Cada actividad humana **deja una marca** en los ecosistemas, y puede ser negativa o positiva. Veamos qué tipos de impacto hay."
+          }
+        }
+      }
+    },
+    "desarrollo-sostenible": {
+      "order_steps": {
+        "prompt": "Ordena cómo usar un recurso renovable sin agotarlo",
+        "steps": [
+          "Usa solo lo que necesitas hoy",
+          "Repón lo que tomaste",
+          "Dale tiempo para regenerarse",
+          "El recurso sigue ahí para el futuro"
+        ],
+        "completion_feedback": "Tomar y **dejar que se recupere**: así el presente no le roba al futuro. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea del desarrollo sostenible es cada cosa?",
+            "left_label": "Mononoke",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El trabajo de la Ciudad del Hierro",
+                "right": "Pilar económico"
+              },
+              {
+                "left": "El bosque de los espíritus",
+                "right": "Pilar ambiental"
+              },
+              {
+                "left": "El pueblo que defiende Eboshi",
+                "right": "Pilar social"
+              },
+              {
+                "left": "Que humanos y bosque coexistan",
+                "right": "Desarrollo sostenible"
+              }
+            ],
+            "completion_feedback": "Usar lo que necesitas hoy **sin quitárselo a mañana**: eso es el desarrollo sostenible. Veamos sus tres pilares."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea del desarrollo sostenible es cada cosa?",
+            "left_label": "Estadio verde",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Paneles solares en el techo",
+                "right": "Energía renovable"
+              },
+              {
+                "left": "Agua de lluvia para regar",
+                "right": "Conservar un recurso"
+              },
+              {
+                "left": "Asientos de plástico reciclado",
+                "right": "Menor huella ecológica"
+              },
+              {
+                "left": "Un planeta sano para mañana",
+                "right": "Generaciones futuras"
+              }
+            ],
+            "completion_feedback": "Usar lo que necesitas hoy **sin quitárselo a mañana**: eso es el desarrollo sostenible. Veamos sus tres pilares."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea del desarrollo sostenible es cada cosa?",
+            "left_label": "Álbum eco",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Tener tu álbum hoy",
+                "right": "Necesidades del presente"
+              },
+              {
+                "left": "Menos basura para mañana",
+                "right": "Generaciones futuras"
+              },
+              {
+                "left": "Papel reciclado, sin plástico",
+                "right": "Menor huella ecológica"
+              },
+              {
+                "left": "La empresa sigue vendiendo",
+                "right": "Pilar económico"
+              }
+            ],
+            "completion_feedback": "Usar lo que necesitas hoy **sin quitárselo a mañana**: eso es el desarrollo sostenible. Veamos sus tres pilares."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea del desarrollo sostenible es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La madera de los árboles",
+                "right": "Recurso renovable"
+              },
+              {
+                "left": "Talar todo a lo loco",
+                "right": "Agotar el recurso"
+              },
+              {
+                "left": "Replantar cada árbol talado",
+                "right": "Dejar que se regenere"
+              }
+            ],
+            "completion_feedback": "Usar lo que necesitas hoy **sin quitárselo a mañana**: eso es el desarrollo sostenible. Veamos sus tres pilares."
+          }
+        }
+      }
+    }
+  }
+}
