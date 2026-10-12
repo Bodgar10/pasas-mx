@@ -1,0 +1,1068 @@
+{
+  "subject": "ingles-sec-1",
+  "topics": {
+    "verb-to-be-y-pronombres": {
+      "order_steps": {
+        "prompt": "«Mi amiga Ana ___ my classmate». Ordena cómo eliges am, is o are",
+        "steps": [
+          "Ubica quién es el sujeto: mi amiga Ana",
+          "Cámbialo por su pronombre: Ana → she",
+          "Busca la forma de ese pronombre: she → is",
+          "Escribe la oración: She is my classmate"
+        ],
+        "completion_feedback": "Primero encuentras el **pronombre** del sujeto y él te dice la forma: **am, is o are**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué completa cada frase sobre Jujutsu Kaisen?",
+            "left_label": "La frase",
+            "right_label": "Va",
+            "pairs": [
+              {
+                "left": "I ___ a JJK fan",
+                "right": "am"
+              },
+              {
+                "left": "Gojo ___ super strong",
+                "right": "is"
+              },
+              {
+                "left": "They ___ first-year students",
+                "right": "are"
+              },
+              {
+                "left": "Nobara, en una sola palabra",
+                "right": "She"
+              }
+            ],
+            "completion_feedback": "Cada sujeto pide su forma del **verbo to be**: I → am, he/she/it → is, you/we/they → are. Veamos la regla completa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué completa cada frase de la alineación?",
+            "left_label": "La frase",
+            "right_label": "Va",
+            "pairs": [
+              {
+                "left": "I ___ a fan of Messi",
+                "right": "am"
+              },
+              {
+                "left": "Lamine Yamal ___ young",
+                "right": "is"
+              },
+              {
+                "left": "They ___ ready for the match",
+                "right": "are"
+              },
+              {
+                "left": "Santiago Giménez, en una palabra",
+                "right": "He"
+              }
+            ],
+            "completion_feedback": "Cada sujeto pide su forma del **verbo to be**: I → am, he/she/it → is, you/we/they → are. Veamos la regla completa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué completa cada frase del fanmeeting?",
+            "left_label": "La frase",
+            "right_label": "Va",
+            "pairs": [
+              {
+                "left": "I ___ a STAY",
+                "right": "am"
+              },
+              {
+                "left": "Bang Chan ___ the leader",
+                "right": "is"
+              },
+              {
+                "left": "They ___ all boys",
+                "right": "are"
+              },
+              {
+                "left": "Felix, en una sola palabra",
+                "right": "He"
+              }
+            ],
+            "completion_feedback": "Cada sujeto pide su forma del **verbo to be**: I → am, he/she/it → is, you/we/they → are. Veamos la regla completa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué completa cada callout de Valorant?",
+            "left_label": "La frase",
+            "right_label": "Va",
+            "pairs": [
+              {
+                "left": "I ___ Jett, the duelist",
+                "right": "am"
+              },
+              {
+                "left": "Sage ___ our healer",
+                "right": "is"
+              },
+              {
+                "left": "They ___ full duelists",
+                "right": "are"
+              },
+              {
+                "left": "Sage, en una sola palabra",
+                "right": "She"
+              }
+            ],
+            "completion_feedback": "Cada sujeto pide su forma del **verbo to be**: I → am, he/she/it → is, you/we/they → are. Veamos la regla completa."
+          }
+        }
+      }
+    },
+    "saludos-y-presentaciones": {
+      "order_steps": {
+        "prompt": "Te dicen «Hi! How are you?». Ordena tu respuesta",
+        "steps": [
+          "Devuelve el saludo: Hi!",
+          "Responde la pregunta: I'm fine, thanks",
+          "Preséntate: My name is Diego",
+          "Cierra: Nice to meet you!"
+        ],
+        "completion_feedback": "Primero respondes lo que te preguntaron y luego te presentas: así la conversación fluye. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Para qué sirve cada frase en tu primer día en la U.A.?",
+            "left_label": "La frase",
+            "right_label": "Sirve para",
+            "pairs": [
+              {
+                "left": "«Hello!» frente a la clase 1-A",
+                "right": "Saludar"
+              },
+              {
+                "left": "«How are you?» de Uraraka",
+                "right": "Preguntar cómo estás"
+              },
+              {
+                "left": "«My name is Diego»",
+                "right": "Decir tu nombre"
+              },
+              {
+                "left": "«I'm from Mexico»",
+                "right": "Decir de dónde eres"
+              }
+            ],
+            "completion_feedback": "Saludar, decir tu nombre, tu origen y cerrar: cada parte tiene su **frase fija**. Veamos cómo se dice cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Para qué sirve cada frase con Mbappé?",
+            "left_label": "La frase",
+            "right_label": "Sirve para",
+            "pairs": [
+              {
+                "left": "«Hello!» al cambiar playeras",
+                "right": "Saludar"
+              },
+              {
+                "left": "«How are you?» de Mbappé",
+                "right": "Preguntar cómo estás"
+              },
+              {
+                "left": "«My name is Diego»",
+                "right": "Decir tu nombre"
+              },
+              {
+                "left": "«I'm from Mexico»",
+                "right": "Decir de dónde eres"
+              }
+            ],
+            "completion_feedback": "Saludar, decir tu nombre, tu origen y cerrar: cada parte tiene su **frase fija**. Veamos cómo se dice cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Para qué sirve cada frase en el hi-touch?",
+            "left_label": "La frase",
+            "right_label": "Sirve para",
+            "pairs": [
+              {
+                "left": "«Hello!» frente a Heeseung",
+                "right": "Saludar"
+              },
+              {
+                "left": "«How are you?» de Jay",
+                "right": "Preguntar cómo estás"
+              },
+              {
+                "left": "«My name is Renata»",
+                "right": "Decir tu nombre"
+              },
+              {
+                "left": "«I'm from Mexico»",
+                "right": "Decir de dónde eres"
+              }
+            ],
+            "completion_feedback": "Saludar, decir tu nombre, tu origen y cerrar: cada parte tiene su **frase fija**. Veamos cómo se dice cada una."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Para qué sirve cada frase en el lobby?",
+            "left_label": "La frase",
+            "right_label": "Sirve para",
+            "pairs": [
+              {
+                "left": "«Hi! I'm Leo»",
+                "right": "Saludar y decir tu nombre"
+              },
+              {
+                "left": "«How are you?»",
+                "right": "Preguntar cómo estás"
+              },
+              {
+                "left": "«I'm from Mexico»",
+                "right": "Decir de dónde eres"
+              },
+              {
+                "left": "«Nice to meet you!»",
+                "right": "Cerrar al conocer a alguien"
+              }
+            ],
+            "completion_feedback": "Saludar, decir tu nombre, tu origen y cerrar: cada parte tiene su **frase fija**. Veamos cómo se dice cada una."
+          }
+        }
+      }
+    },
+    "articulos-plurales-y-posesivos": {
+      "order_steps": {
+        "prompt": "¿«a album» o «an album»? Ordena cómo lo decides",
+        "steps": [
+          "Fíjate en la palabra que sigue: album",
+          "Escucha cómo empieza: con sonido de vocal",
+          "Un sonido de vocal pide «an»",
+          "Escribe: an album"
+        ],
+        "completion_feedback": "No importa la letra, importa el **sonido**: si empieza con sonido de vocal, va **an**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo se dice en inglés cada cosa de tu repisa?",
+            "left_label": "Tu repisa",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Una figura cualquiera",
+                "right": "a figure"
+              },
+              {
+                "left": "Un episodio cualquiera",
+                "right": "an episode"
+              },
+              {
+                "left": "Tres figuras",
+                "right": "three figures"
+              },
+              {
+                "left": "El sombrero de Luffy",
+                "right": "Luffy's hat"
+              }
+            ],
+            "completion_feedback": "Cada palabrita dice algo: **a/an** = uno cualquiera, **-s** = varios y **'s** = de quién es. Veamos las reglas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo se dice en inglés cada cosa de tu vitrina?",
+            "left_label": "Tu vitrina",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Un trofeo cualquiera",
+                "right": "a trophy"
+              },
+              {
+                "left": "Un premio cualquiera",
+                "right": "an award"
+              },
+              {
+                "left": "Tres medallas",
+                "right": "three medals"
+              },
+              {
+                "left": "La camiseta de Santi",
+                "right": "Santi's jersey"
+              }
+            ],
+            "completion_feedback": "Cada palabrita dice algo: **a/an** = uno cualquiera, **-s** = varios y **'s** = de quién es. Veamos las reglas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo se dice en inglés cada cosa de tu colección?",
+            "left_label": "Tu colección",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Un póster cualquiera",
+                "right": "a poster"
+              },
+              {
+                "left": "Un álbum cualquiera",
+                "right": "an album"
+              },
+              {
+                "left": "Tres photocards",
+                "right": "three photocards"
+              },
+              {
+                "left": "La photocard de Mingyu",
+                "right": "Mingyu's photocard"
+              }
+            ],
+            "completion_feedback": "Cada palabrita dice algo: **a/an** = uno cualquiera, **-s** = varios y **'s** = de quién es. Veamos las reglas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo se dice en inglés cada cosa de tu inventario?",
+            "left_label": "Tu inventario",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Una espada cualquiera",
+                "right": "a sword"
+              },
+              {
+                "left": "Un artefacto cualquiera",
+                "right": "an artifact"
+              },
+              {
+                "left": "Tres pociones",
+                "right": "three potions"
+              },
+              {
+                "left": "El arco de Tartaglia",
+                "right": "Tartaglia's bow"
+              }
+            ],
+            "completion_feedback": "Cada palabrita dice algo: **a/an** = uno cualquiera, **-s** = varios y **'s** = de quién es. Veamos las reglas."
+          }
+        }
+      }
+    },
+    "present-simple-ingles-sec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo corriges «She play soccer every day»",
+        "steps": [
+          "Ubica el sujeto: she",
+          "She es una sola persona (he/she/it)",
+          "Por eso el verbo lleva -s: play → plays",
+          "Queda: She plays soccer every day"
+        ],
+        "completion_feedback": "El **sujeto** decide: si es he, she o it, el verbo se lleva la **-s**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase sobre Tanjiro?",
+            "left_label": "La frase",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Tanjiro trains every day",
+                "right": "he/she/it: verbo + s"
+              },
+              {
+                "left": "They fight demons together",
+                "right": "I/you/we/they: verbo sin s"
+              },
+              {
+                "left": "He doesn't sleep at night",
+                "right": "Negativo con he/she/it"
+              },
+              {
+                "left": "They don't stop training",
+                "right": "Negativo con I/you/we/they"
+              }
+            ],
+            "completion_feedback": "Con **he, she, it** el verbo lleva **-s**; con los demás va normal. Veamos la regla completa y cómo se niega."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase sobre Lamine?",
+            "left_label": "La frase",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Lamine trains every day",
+                "right": "he/she/it: verbo + s"
+              },
+              {
+                "left": "They train hard",
+                "right": "I/you/we/they: verbo sin s"
+              },
+              {
+                "left": "He doesn't skip practice",
+                "right": "Negativo con he/she/it"
+              },
+              {
+                "left": "We don't miss a match",
+                "right": "Negativo con I/you/we/they"
+              }
+            ],
+            "completion_feedback": "Con **he, she, it** el verbo lleva **-s**; con los demás va normal. Veamos la regla completa y cómo se niega."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase sobre el trainee?",
+            "left_label": "La frase",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "The trainee practices every day",
+                "right": "he/she/it: verbo + s"
+              },
+              {
+                "left": "They train for hours",
+                "right": "I/you/we/they: verbo sin s"
+              },
+              {
+                "left": "She doesn't sleep much",
+                "right": "Negativo con he/she/it"
+              },
+              {
+                "left": "They don't stop dancing",
+                "right": "Negativo con I/you/we/they"
+              }
+            ],
+            "completion_feedback": "Con **he, she, it** el verbo lleva **-s**; con los demás va normal. Veamos la regla completa y cómo se niega."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase sobre tus brawlers?",
+            "left_label": "La frase",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Poco heals the team",
+                "right": "he/she/it: verbo + s"
+              },
+              {
+                "left": "They defend the mine",
+                "right": "I/you/we/they: verbo sin s"
+              },
+              {
+                "left": "Leon doesn't attack first",
+                "right": "Negativo con he/she/it"
+              },
+              {
+                "left": "We don't lose the gems",
+                "right": "Negativo con I/you/we/they"
+              }
+            ],
+            "completion_feedback": "Con **he, she, it** el verbo lleva **-s**; con los demás va normal. Veamos la regla completa y cómo se niega."
+          }
+        }
+      }
+    },
+    "there-is-there-are-ingles-sec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo eliges: «___ many books on the table»",
+        "steps": [
+          "Mira lo que va después de «hay»: many books",
+          "Cuenta cuántos son: varios",
+          "Varios es plural, así que va «there are»",
+          "Escribe: There are many books on the table"
+        ],
+        "completion_feedback": "Lo que decide es **lo que viene después**: si es uno, there is; si son varios, there are. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo va cada frase sobre la escena del cuartel?",
+            "left_label": "La escena",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un titán afuera del muro",
+                "right": "There is a titan"
+              },
+              {
+                "left": "Hay tres soldados en el techo",
+                "right": "There are three soldiers"
+              },
+              {
+                "left": "«There is three soldiers»",
+                "right": "Error: varios con is"
+              },
+              {
+                "left": "«There are a titan»",
+                "right": "Error: uno con are"
+              }
+            ],
+            "completion_feedback": "Uno solo pide **there is**; dos o más, **there are**. Veamos la regla y por qué fallan las mezclas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo va cada frase sobre el estadio?",
+            "left_label": "El estadio",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un trofeo en la cancha",
+                "right": "There is a trophy"
+              },
+              {
+                "left": "Hay dos porterías",
+                "right": "There are two goals"
+              },
+              {
+                "left": "«There is two goals»",
+                "right": "Error: varios con is"
+              },
+              {
+                "left": "«There are a trophy»",
+                "right": "Error: uno con are"
+              }
+            ],
+            "completion_feedback": "Uno solo pide **there is**; dos o más, **there are**. Veamos la regla y por qué fallan las mezclas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo va cada frase sobre el escenario?",
+            "left_label": "El escenario",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay una pasarela enorme",
+                "right": "There is a stage"
+              },
+              {
+                "left": "Hay nueve micrófonos",
+                "right": "There are nine microphones"
+              },
+              {
+                "left": "«There is nine microphones»",
+                "right": "Error: varios con is"
+              },
+              {
+                "left": "«There are a stage»",
+                "right": "Error: uno con are"
+              }
+            ],
+            "completion_feedback": "Uno solo pide **there is**; dos o más, **there are**. Veamos la regla y por qué fallan las mezclas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo va cada frase sobre el mapa?",
+            "left_label": "El mapa",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un dron en el rooftop",
+                "right": "There is a drone"
+              },
+              {
+                "left": "Hay tres autos en la calle",
+                "right": "There are three cars"
+              },
+              {
+                "left": "«There is three cars»",
+                "right": "Error: varios con is"
+              },
+              {
+                "left": "«There are a drone»",
+                "right": "Error: uno con are"
+              }
+            ],
+            "completion_feedback": "Uno solo pide **there is**; dos o más, **there are**. Veamos la regla y por qué fallan las mezclas."
+          }
+        }
+      }
+    },
+    "preposiciones-de-lugar-y-tiempo": {
+      "order_steps": {
+        "prompt": "Ordena cómo eliges la preposición en «___ Saturday»",
+        "steps": [
+          "Decide si dice dónde o cuándo: cuándo",
+          "Mira qué tipo de tiempo es: un día",
+          "Un día pide «on»",
+          "Escribe: on Saturday"
+        ],
+        "completion_feedback": "Primero separas **dónde** de **cuándo**; luego el tipo de tiempo (hora, día o mes) elige la palabra. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla usa cada dato del maratón?",
+            "left_label": "El maratón",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Empiezan a las 4",
+                "right": "at + hora"
+              },
+              {
+                "left": "El maratón es el sábado",
+                "right": "on + día"
+              },
+              {
+                "left": "El estreno es en abril",
+                "right": "in + mes"
+              },
+              {
+                "left": "El cojín junto al sillón",
+                "right": "next to: junto a"
+              }
+            ],
+            "completion_feedback": "Para **cuándo**: at + hora, on + día, in + mes. Para **dónde**: in, on, next to. Veamos cada uso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla usa cada dato del partido?",
+            "left_label": "El partido",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "El estadio abre a las 6",
+                "right": "at + hora"
+              },
+              {
+                "left": "El partido es el domingo",
+                "right": "on + día"
+              },
+              {
+                "left": "La final es en mayo",
+                "right": "in + mes"
+              },
+              {
+                "left": "Tu lugar junto al pasillo",
+                "right": "next to: junto a"
+              }
+            ],
+            "completion_feedback": "Para **cuándo**: at + hora, on + día, in + mes. Para **dónde**: in, on, next to. Veamos cada uso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla usa cada dato del fanmeeting?",
+            "left_label": "Fanmeeting",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Las puertas abren a las 5",
+                "right": "at + hora"
+              },
+              {
+                "left": "El evento es el sábado",
+                "right": "on + día"
+              },
+              {
+                "left": "Todo pasa en marzo",
+                "right": "in + mes"
+              },
+              {
+                "left": "Tu asiento junto al pasillo",
+                "right": "next to: junto a"
+              }
+            ],
+            "completion_feedback": "Para **cuándo**: at + hora, on + día, in + mes. Para **dónde**: in, on, next to. Veamos cada uso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué preposición usa cada dato del botín?",
+            "left_label": "Genshin",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "La espada dentro del cofre",
+                "right": "in: dentro de"
+              },
+              {
+                "left": "El cofre junto a la estatua",
+                "right": "next to: junto a"
+              },
+              {
+                "left": "La poción encima de la mesa",
+                "right": "on: sobre"
+              },
+              {
+                "left": "Verse a las 8",
+                "right": "at + hora"
+              }
+            ],
+            "completion_feedback": "Para **cuándo**: at + hora, on + día, in + mes. Para **dónde**: in, on, next to. Veamos cada uso."
+          }
+        }
+      }
+    },
+    "wh-questions-ingles-sec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo armas en inglés «¿Dónde vive tu amigo?»",
+        "steps": [
+          "Elige la Wh- word: Where",
+          "Agrega el auxiliar: does",
+          "Pon el sujeto: your friend",
+          "Cierra con el verbo: live?"
+        ],
+        "completion_feedback": "La pregunta sigue un molde: **Wh- + auxiliar + sujeto + verbo**: Where does your friend live? Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Con qué palabra empieza cada pregunta del examen Chunin?",
+            "left_label": "Examen Chunin",
+            "right_label": "Wh- word",
+            "pairs": [
+              {
+                "left": "¿Dónde está el pergamino?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Quién es tu líder?",
+                "right": "Who"
+              },
+              {
+                "left": "¿Cuándo empieza la fase 2?",
+                "right": "When"
+              },
+              {
+                "left": "¿Por qué quieres ser Hokage?",
+                "right": "Why"
+              }
+            ],
+            "completion_feedback": "Cada pregunta pide un tipo de información, y la **Wh- word** va siempre al inicio. Veamos cómo se arman."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Con qué palabra empieza cada pregunta a Bellingham?",
+            "left_label": "Rueda de prensa",
+            "right_label": "Wh- word",
+            "pairs": [
+              {
+                "left": "¿Cómo se siente?",
+                "right": "How"
+              },
+              {
+                "left": "¿Quién le dio el pase?",
+                "right": "Who"
+              },
+              {
+                "left": "¿Dónde celebrará?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Por qué eligió ese festejo?",
+                "right": "Why"
+              }
+            ],
+            "completion_feedback": "Cada pregunta pide un tipo de información, y la **Wh- word** va siempre al inicio. Veamos cómo se arman."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Con qué palabra empieza cada pregunta a aespa?",
+            "left_label": "Entrevista",
+            "right_label": "Wh- word",
+            "pairs": [
+              {
+                "left": "¿Cuál es su concepto favorito?",
+                "right": "What"
+              },
+              {
+                "left": "¿Dónde grabaron el MV?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Quién escribe las letras?",
+                "right": "Who"
+              },
+              {
+                "left": "¿Cuándo sale el comeback?",
+                "right": "When"
+              }
+            ],
+            "completion_feedback": "Cada pregunta pide un tipo de información, y la **Wh- word** va siempre al inicio. Veamos cómo se arman."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Con qué palabra empieza cada pregunta de tu amigo?",
+            "left_label": "Zelda",
+            "right_label": "Wh- word",
+            "pairs": [
+              {
+                "left": "¿Dónde está Link?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Qué objeto tienes?",
+                "right": "What"
+              },
+              {
+                "left": "¿Quién te dio la misión?",
+                "right": "Who"
+              },
+              {
+                "left": "¿Cómo subiste ahí?",
+                "right": "How"
+              }
+            ],
+            "completion_feedback": "Cada pregunta pide un tipo de información, y la **Wh- word** va siempre al inicio. Veamos cómo se arman."
+          }
+        }
+      }
+    },
+    "vocabulario-familia-escuela-y-rutina": {
+      "order_steps": {
+        "prompt": "Ordena la rutina de un día de escuela",
+        "steps": [
+          "wake up",
+          "have breakfast",
+          "go to school",
+          "do homework",
+          "go to bed"
+        ],
+        "completion_feedback": "Con estos verbos ya puedes contar **tu rutina** en inglés de la mañana a la noche. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué palabra en inglés va con cada parte de la familia Forger?",
+            "left_label": "Spy x Family",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Loid, el papá de Anya",
+                "right": "father"
+              },
+              {
+                "left": "Anya, para Loid y Yor",
+                "right": "daughter"
+              },
+              {
+                "left": "La persona que da clases en Eden",
+                "right": "teacher"
+              },
+              {
+                "left": "Lo que Anya hace al irse a dormir",
+                "right": "go to bed"
+              }
+            ],
+            "completion_feedback": "Familia, escuela y rutina tienen su **vocabulario** propio. Veamos las palabras de cada grupo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué palabra en inglés va con cada parte del día en La Masia?",
+            "left_label": "La Masia",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "El papá del canterano",
+                "right": "father"
+              },
+              {
+                "left": "Su hermana",
+                "right": "sister"
+              },
+              {
+                "left": "Levantarse temprano",
+                "right": "wake up"
+              },
+              {
+                "left": "La tarea después de clases",
+                "right": "homework"
+              }
+            ],
+            "completion_feedback": "Familia, escuela y rutina tienen su **vocabulario** propio. Veamos las palabras de cada grupo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué palabra en inglés va con cada parte de la vida en el dorm?",
+            "left_label": "SEVENTEEN",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "El hyung que cuida a los menores",
+                "right": "older brother"
+              },
+              {
+                "left": "Levantarse temprano",
+                "right": "wake up"
+              },
+              {
+                "left": "Ensayar la coreografía",
+                "right": "practice"
+              },
+              {
+                "left": "Lo que hacen poco antes del comeback",
+                "right": "sleep"
+              }
+            ],
+            "completion_feedback": "Familia, escuela y rutina tienen su **vocabulario** propio. Veamos las palabras de cada grupo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué palabra en inglés va con cada rol de la base?",
+            "left_label": "Minecraft",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "El que administra los cofres",
+                "right": "father"
+              },
+              {
+                "left": "La que reparte la comida",
+                "right": "mother"
+              },
+              {
+                "left": "Levantarse al amanecer del juego",
+                "right": "wake up"
+              },
+              {
+                "left": "Dormir para evitar a los zombies",
+                "right": "sleep"
+              }
+            ],
+            "completion_feedback": "Familia, escuela y rutina tienen su **vocabulario** propio. Veamos las palabras de cada grupo."
+          }
+        }
+      }
+    },
+    "adjetivos-y-descripciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo escribes «un delantero rápido» en inglés",
+        "steps": [
+          "Separa las palabras: «delantero» y «rápido»",
+          "Pásalas al inglés: striker y fast",
+          "Pon el adjetivo antes del sustantivo: fast striker",
+          "Agrega el artículo al inicio: a fast striker"
+        ],
+        "completion_feedback": "En inglés el orden se **invierte**: primero cómo es (adjetivo) y luego qué es (sustantivo). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada descripción de Jujutsu Kaisen?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "a strong sorcerer",
+                "right": "Adjetivo antes del sustantivo"
+              },
+              {
+                "left": "Yuji is strong",
+                "right": "Adjetivo después de to be"
+              },
+              {
+                "left": "two strong characters",
+                "right": "El adjetivo no cambia en plural"
+              },
+              {
+                "left": "«a sorcerer strong»",
+                "right": "Error: adjetivo después del sustantivo"
+              }
+            ],
+            "completion_feedback": "El adjetivo va **antes del sustantivo** o **después de to be**, y nunca lleva -s. Veamos la regla completa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase de la ficha de Santi?",
+            "left_label": "Scouting",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "a fast striker",
+                "right": "Adjetivo antes del sustantivo"
+              },
+              {
+                "left": "Santi is fast",
+                "right": "Adjetivo después de to be"
+              },
+              {
+                "left": "two fast players",
+                "right": "El adjetivo no cambia en plural"
+              },
+              {
+                "left": "«a striker dangerous»",
+                "right": "Error: adjetivo después del sustantivo"
+              }
+            ],
+            "completion_feedback": "El adjetivo va **antes del sustantivo** o **después de to be**, y nunca lleva -s. Veamos la regla completa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada descripción de TXT?",
+            "left_label": "TXT",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "a tall member",
+                "right": "Adjetivo antes del sustantivo"
+              },
+              {
+                "left": "Soobin is tall",
+                "right": "Adjetivo después de to be"
+              },
+              {
+                "left": "two catchy songs",
+                "right": "El adjetivo no cambia en plural"
+              },
+              {
+                "left": "«a member tall»",
+                "right": "Error: adjetivo después del sustantivo"
+              }
+            ],
+            "completion_feedback": "El adjetivo va **antes del sustantivo** o **después de to be**, y nunca lleva -s. Veamos la regla completa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada descripción de los agentes?",
+            "left_label": "Valorant",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "a fast agent",
+                "right": "Adjetivo antes del sustantivo"
+              },
+              {
+                "left": "Jett is fast",
+                "right": "Adjetivo después de to be"
+              },
+              {
+                "left": "two fast agents",
+                "right": "El adjetivo no cambia en plural"
+              },
+              {
+                "left": "«an agent fast»",
+                "right": "Error: adjetivo después del sustantivo"
+              }
+            ],
+            "completion_feedback": "El adjetivo va **antes del sustantivo** o **después de to be**, y nunca lleva -s. Veamos la regla completa."
+          }
+        }
+      }
+    }
+  }
+}
