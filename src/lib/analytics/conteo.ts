@@ -78,6 +78,20 @@ export const EVENTOS_CONTEO = [
   'verificacion_comprobada',
   'horda_publica_vista',
   'horda_publica_iniciada',
+  // s42: resultado del reto → el tema exacto que falló, en muestra sin cuenta
+  // (/tema/...). Uno por paso, para ver dónde se va la gente dentro del tema.
+  'arcade_tema_clic',
+  'tema_muestra_entrada',
+  'tema_muestra_tematica',
+  'tema_muestra_vista',
+  'tema_muestra_interaccion',
+  'tema_muestra_audio',
+  'tema_muestra_minijuego',
+  'tema_muestra_quiz',
+  'tema_muestra_quiz_fin',
+  'tema_muestra_horda_clic',
+  'tema_muestra_cta_vista',
+  'tema_muestra_cta_clic',
 
   // Embudo de cuenta
   'onboarding_paso',
@@ -137,6 +151,8 @@ export const PROPS_CONTEO = [
   'destino',
   'method',
   'verificado',
+  // s42: materia del tema (historia, biologia…). Nunca datos de la persona.
+  'materia',
 ] as const
 
 const PROPS = new Set<string>(PROPS_CONTEO)

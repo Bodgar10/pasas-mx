@@ -7,6 +7,8 @@ import HordeEntryCard from '@/components/guia/HordeEntryCard'
 import { rutaAlumno } from '@/lib/learners'
 import { ahoraMs, track } from '@/lib/analytics/track'
 import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
+import type { MuestraTema } from '@/lib/tema-muestra'
+import { EntradaDesdeReto, OfertaMuestra } from '@/components/guia/MuestraTema'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -62,6 +64,16 @@ interface Props {
   hordeBestWave?: number
   hordeAttempts?: number
   activeSlot?: number
+  /**
+   * s42 — Modo muestra (/tema/..., sin cuenta, desde el reto). No escribe
+   * progreso ni XP, cierra con la oferta en vez de "siguiente tema" y mide
+   * cada paso. Sin esta prop, la guía de siempre.
+   */
+  muestra?: MuestraTema | null
+  /** s42 — Llegó desde el reto (?from=arcade): pinta la entrada guiada. */
+  desdeArcade?: boolean
+  /** s42 — Sacó 5/5 en el reto (?r=5): la entrada no habla de un error. */
+  retoPerfecto?: boolean
 }
 
 function renderContent(text: string): React.ReactNode {
@@ -215,9 +227,49 @@ export default function TopicClient({
   hordeBestWave = 0,
   hordeAttempts = 0,
   activeSlot = 1,
+  muestra = null,
+  desdeArcade = false,
+  retoPerfecto = false,
 }: Props) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState<'guia' | 'quiz' | 'horda' | 'resumen'>('guia')
+
+  // ── MUESTRA (s42) ───────────────────────────────────────────────────
+  // Solo mide si hay muestra: quien tiene cuenta no manda ninguno de estos.
+  const interaccionRef = useRef(false)
+  const contarMuestra = useCallback(
+    (evento: string, props: Record<string, unknown> = {}) => {
+      if (!muestra) return
+      track(evento, { materia: muestra.materia ?? undefined, theme: muestra.tematica, ...props })
+    },
+    [muestra]
+  )
+  /** Primera interacción con el tema (audio, minijuego, quiz, pestañas). Una vez. */
+  const primeraInteraccion = useCallback(
+    (elemento: string) => {
+      if (!muestra || interaccionRef.current) return
+      interaccionRef.current = true
+      contarMuestra('tema_muestra_interaccion', { elemento })
+    },
+    [muestra, contarMuestra]
+  )
+  const irAPaso = useCallback(
+    (paso: 'idea' | 'minijuego' | 'quiz' | 'horda') => {
+      primeraInteraccion(`paso_${paso}`)
+      if (paso === 'quiz' || paso === 'horda') {
+        setActiveTab(paso)
+        return
+      }
+      setActiveTab('guia')
+      const buscado = paso === 'minijuego' ? INTERACTIVE_TYPES : null
+      const el = [...sectionRefs.current.values()]
+        .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)
+        .find((x) => (buscado ? buscado.has(x.dataset.sectionType ?? '') : true))
+      // Después del scrollTo del cambio de pestaña.
+      setTimeout(() => el?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60)
+    },
+    [primeraInteraccion]
+  )
 
   // ── ANALITICA ────────────────────────────────────────────────────────
   //
@@ -319,8 +371,10 @@ export default function TopicClient({
     const nuevo = { inicio: Date.now(), ultimoPaso: 'inicio', intentos: 0, completado: false }
     interactivosRef.current.set(sectionId, nuevo)
     track('interactivo_iniciado', { tipo, topic: topic.name, seccion_orden: orden })
+    primeraInteraccion('minijuego')
+    contarMuestra('tema_muestra_minijuego', { elemento: tipo })
     return nuevo
-  }, [topic.name])
+  }, [topic.name, primeraInteraccion, contarMuestra])
 
   // Los tabs se ocultan con display:none, no se desmontan, asi que cambiar
   // de tab conserva la posicion de scroll. Sin esto, "IR AL QUIZ" desde el
@@ -406,6 +460,9 @@ export default function TopicClient({
       n_preguntas_quiz: quizQuestions.length,
       tiene_horda: hordeHasBank,
     })
+    contarMuestra('tema_muestra_vista', { elemento: desdeArcade ? 'arcade' : 'directo' })
+    // Solo al montar.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -486,6 +543,9 @@ export default function TopicClient({
                 segundos_en_seccion: Math.round((Date.now() - desde) / 1000),
               })
 
+              // La muestra no tiene cuenta: no hay a quién guardarle avance.
+              if (muestra) return
+
               fetch('/api/section-read', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -555,7 +615,7 @@ export default function TopicClient({
     })
 
     return () => observer.disconnect()
-  }, [sections, topic.id, subject.id, readSections])
+  }, [sections, topic.id, subject.id, readSections, muestra])
 
   async function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
     if (answers[questionId]) return
@@ -568,6 +628,8 @@ export default function TopicClient({
       inicioQuizRef.current = ahoraMs()
       inicioPreguntaRef.current = ahoraMs()
       track('quiz_iniciado', { topic: topic.name, n_preguntas: quizQuestions.length, intento_n: attempt })
+      primeraInteraccion('quiz')
+      contarMuestra('tema_muestra_quiz')
     }
 
     const segundosEnPregunta = Math.round((ahoraMs() - inicioPreguntaRef.current) / 1000)
@@ -631,6 +693,16 @@ export default function TopicClient({
         total_correct: totalCorrect,
         total_questions: quizQuestions.length,
       }),
+    }
+
+    // Muestra: el resultado se calcula aquí, sin API (no hay cuenta).
+    if (muestra) {
+      if (isLastQuestion && finalScore != null) {
+        setQuizCompleted(true)
+        setQuizResult({ best_score: finalScore, perfect: finalScore === 100 })
+        contarMuestra('tema_muestra_quiz_fin', { score: finalScore })
+      }
+      return
     }
 
     if (isLastQuestion) {
@@ -728,6 +800,7 @@ export default function TopicClient({
       if (prev.has(sectionId)) return prev
       return new Set([...prev, sectionId])
     })
+    if (muestra) return
     fetch('/api/section-read', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -901,7 +974,11 @@ export default function TopicClient({
       >
         <button
           type="button"
-          onClick={() => { router.back(); setTimeout(() => router.refresh(), 100) }}
+          aria-label="Regresar"
+          onClick={() => {
+            if (muestra) { router.push(muestra.volverHref); return }
+            router.back(); setTimeout(() => router.refresh(), 100)
+          }}
           style={{
             width: 36,
             height: 36,
@@ -948,6 +1025,22 @@ export default function TopicClient({
           </div>
         </div>
 
+        {muestra ? (
+          <div
+            style={{
+              background: 'rgba(251,191,36,0.1)',
+              border: '1px solid rgba(251,191,36,0.25)',
+              borderRadius: 50,
+              padding: '4px 10px',
+              fontSize: 13,
+              fontWeight: 800,
+              color: '#fbbf24',
+              flexShrink: 0,
+            }}
+          >
+            Prueba gratis
+          </div>
+        ) : (
         <div
           style={{
             background: initialProgress?.status === 'completed'
@@ -976,6 +1069,7 @@ export default function TopicClient({
             ? `⚡ +${readSectionIds.length * 10} XP ganados`
             : '⚡ +0 XP sesión'}
         </div>
+        )}
       </div>
 
       {/* Tabs row */}
@@ -990,7 +1084,7 @@ export default function TopicClient({
           [
             { key: 'guia', label: isDesktop ? '📖 Guía' : 'Guía' },
             { key: 'quiz', label: isDesktop ? '🎮 Quiz' : 'Quiz' },
-            ...(hordeHasBank && !_isPersonalized
+            ...((muestra ? !!muestra.hordaHref : hordeHasBank && !_isPersonalized)
               ? ([{ key: 'horda', label: isDesktop ? '🧟 Horda' : 'Horda' }] as const)
               : []),
             { key: 'resumen', label: isDesktop ? '⚡ Resumen' : 'Resumen' },
@@ -999,7 +1093,10 @@ export default function TopicClient({
           <button
             key={key}
             type="button"
-            onClick={() => setActiveTab(key)}
+            onClick={() => {
+              if (key !== activeTab) primeraInteraccion(`pestana_${key}`)
+              setActiveTab(key)
+            }}
             style={{
               flex: isDesktop ? undefined : 1,
               justifyContent: 'center',
@@ -1027,6 +1124,15 @@ export default function TopicClient({
 
       {/* Tab: Guía */}
       <div style={{ display: activeTab === 'guia' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
+        {(muestra || desdeArcade) && sections.length > 0 && (
+          <EntradaDesdeReto
+            perfecto={retoPerfecto}
+            tieneHorda={muestra ? !!muestra.hordaHref : hordeHasBank && !_isPersonalized}
+            tematicaCorta={muestra?.tematicaCorta ?? null}
+            cambiarTematicaHref={muestra?.cambiarTematicaHref ?? null}
+            onPaso={irAPaso}
+          />
+        )}
         {sections.length === 0 ? (
           <div
             style={{
@@ -1240,13 +1346,15 @@ export default function TopicClient({
                       <AudioPlayer
                         url={section.audio_url}
                         duration={section.audio_duration}
-                        onAudioInicio={({ duracionTotalSeg }) =>
+                        onAudioInicio={({ duracionTotalSeg }) => {
                           track('audio_iniciado', {
                             topic: topic.name,
                             seccion_orden: section.display_order,
                             duracion_total_seg: duracionTotalSeg,
                           })
-                        }
+                          primeraInteraccion('audio')
+                          contarMuestra('tema_muestra_audio', { elemento: section.type })
+                        }}
                         onAudioProgreso={({ pct }) =>
                           track('audio_progreso', {
                             topic: topic.name,
@@ -1266,7 +1374,8 @@ export default function TopicClient({
                       />
                     )}
 
-                    {/* Footer XP */}
+                    {/* Footer XP (la muestra no guarda XP: no se promete) */}
+                    {!muestra && (
                     <div style={{
                       padding: '8px 16px 12px',
                       display: 'flex',
@@ -1288,6 +1397,7 @@ export default function TopicClient({
                         )}
                       </span>
                     </div>
+                    )}
                   </div>
                 </div>
                 </RevealOnScroll>
@@ -1517,7 +1627,7 @@ export default function TopicClient({
                         }}
                       >
                         {question.explanation}
-                        {isCorrectAnswer && earnedXp > 0 && (
+                        {isCorrectAnswer && earnedXp > 0 && !muestra && (
                           <span
                             style={{
                               background: 'rgba(251,191,36,0.15)',
@@ -1565,13 +1675,18 @@ export default function TopicClient({
                     marginBottom: 8,
                     letterSpacing: 1,
                   }}>
-                    {quizResult.perfect ? '🔥 ¡PERFECTO! +150 XP' : '✓ Quiz completado'}
+                    {quizResult.perfect ? (muestra ? '🔥 ¡PERFECTO!' : '🔥 ¡PERFECTO! +150 XP') : '✓ Quiz completado'}
                   </div>
                   <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 16 }}>
                     {quizResult.perfect
                       ? 'Dominaste este tema al 100%'
+                      : muestra
+                      ? 'Ya viste cómo funciona PASAS con un tema'
                       : 'Puedes repetir el quiz para mejorar tu puntaje'}
                   </div>
+                  {muestra ? (
+                    <OfertaMuestra muestra={muestra} lugar="quiz" topicName={topic.name} contar={contarMuestra} />
+                  ) : (
                   <button
                     type="button"
                     onClick={() => setActiveTab('resumen')}
@@ -1593,6 +1708,7 @@ export default function TopicClient({
                   >
                     VER RESUMEN →
                   </button>
+                  )}
                 </div>
               )}
 
@@ -1603,12 +1719,20 @@ export default function TopicClient({
 
       {/* Tab: Horda */}
       <div style={{ display: activeTab === 'horda' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
+        {muestra ? (
+          muestra.hordaHref && (
+            <div onClickCapture={() => contarMuestra('tema_muestra_horda_clic')}>
+              <HordeEntryCard href={muestra.hordaHref} hasBank bestWave={0} attempts={0} />
+            </div>
+          )
+        ) : (
         <HordeEntryCard
           href={rutaAlumno(`/guia/${subject.slug}/${topic.slug}/horda`, activeSlot)}
           hasBank={hordeHasBank && !_isPersonalized}
           bestWave={hordeBestWave}
           attempts={hordeAttempts}
         />
+        )}
       </div>
 
       {/* Tab: Resumen */}
@@ -1667,7 +1791,12 @@ export default function TopicClient({
           ))}
         </div>
 
-        {/* Completion card */}
+        {/* Completion card. En la muestra, la oferta en su lugar. */}
+        {muestra ? (
+          <div style={{ marginTop: 16 }}>
+            <OfertaMuestra muestra={muestra} lugar="resumen" topicName={topic.name} contar={contarMuestra} />
+          </div>
+        ) : (
         <div
           style={{
             marginTop: 16,
@@ -1712,6 +1841,7 @@ export default function TopicClient({
             SIGUIENTE TEMA →
           </button>
         </div>
+        )}
       </div>
 
       <div style={{ height: 32 }} />

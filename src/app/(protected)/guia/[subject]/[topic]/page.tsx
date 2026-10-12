@@ -8,7 +8,7 @@ export default async function TopicPage({
   searchParams,
 }: {
   params: Promise<{ subject: string; topic: string }>
-  searchParams: Promise<{ a?: string }>
+  searchParams: Promise<{ a?: string; from?: string; r?: string }>
 }) {
   const { subject: subjectSlug, topic: topicSlug } = await params
   const sp = await searchParams
@@ -88,6 +88,8 @@ export default async function TopicPage({
       hordeBestWave={hordeRun?.best_wave ?? 0}
       hordeAttempts={hordeRun?.attempts ?? 0}
       activeSlot={learner?.slot ?? 1}
+      desdeArcade={sp.from === 'arcade'}
+      retoPerfecto={sp.r === '5'}
     />
   )
 }
