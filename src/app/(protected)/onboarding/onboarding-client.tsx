@@ -137,8 +137,14 @@ function leerPrefill(sp: URLSearchParams): {
   grade: string
   registrante: Registrante
   tema: string | null
+  /** s42: temática ya elegida en la muestra del tema. Se valida al usarla. */
+  theme: string | null
+  desde: 'horda' | 'tema'
 } | null {
-  if (sp.get('desde') !== 'horda') return null
+  // 'horda': el muro de la Horda pública. 'tema' (s42): la muestra del tema
+  // que llega desde el reto, que además ya sabe la temática.
+  const desde = sp.get('desde')
+  if (desde !== 'horda' && desde !== 'tema') return null
   const level = sp.get('level')
   const grade = sp.get('grade')
   const reg = sp.get('registrante')
@@ -150,6 +156,8 @@ function leerPrefill(sp: URLSearchParams): {
     grade,
     registrante: reg === 'alumno' ? 'alumno' : 'tutor',
     tema: sp.get('tema'),
+    theme: desde === 'tema' ? sp.get('theme') : null,
+    desde,
   }
 }
 
@@ -177,7 +185,7 @@ export default function OnboardingClient({ themes }: Props) {
     // viene del embudo completo, quien aterriza en /registro se lo salto, y
     // 'horda' es quien llega del muro de la Horda pública con el paso 3 listo.
     track('signup_start', {
-      origen: prefill ? 'horda' : 'onboarding',
+      origen: prefill ? prefill.desde : 'onboarding',
       registrante: prefill?.registrante ?? 'tutor',
     })
     // Solo al montar: el prefill se lee una vez.
@@ -213,7 +221,11 @@ export default function OnboardingClient({ themes }: Props) {
   const [registrante, setRegistrante] = useState<Registrante>(prefill?.registrante ?? 'tutor')
   const [level, setLevel] = useState<string | null>(prefill?.level ?? null)
   const [grade, setGrade] = useState<string | null>(prefill?.grade ?? null)
-  const [theme, setTheme] = useState<string | null>(null)
+  // s42: la temática que ya eligió en la muestra del tema viene marcada, solo
+  // si es una de las activas. Un nombre que no existe se ignora.
+  const [theme, setTheme] = useState<string | null>(() =>
+    prefill?.theme && themes.some((t) => t.name === prefill.theme) ? prefill.theme : null
+  )
   const router = useRouter()
 
   const copy = COPY[registrante]
@@ -361,7 +373,7 @@ export default function OnboardingClient({ themes }: Props) {
               lineHeight: 1.45,
             }}
           >
-            Viene de la Horda de {prefill.tema}. Ya pusimos {level} · {grade}; puedes cambiarlo con ← Regresar.
+            {prefill.desde === 'tema' ? `Viene de ${prefill.tema}.` : `Viene de la Horda de ${prefill.tema}.`} Ya pusimos {level} · {grade}; puedes cambiarlo con ← Regresar.
           </div>
         )}
 
