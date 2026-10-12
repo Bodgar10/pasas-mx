@@ -226,14 +226,18 @@ filas AS (
          d.data
   FROM jsonb_array_elements(${lit(JSON.stringify(filas))}::jsonb) x
   JOIN datos d ON d.i = (x->>'i')::int
+),
+ins AS (
+  INSERT INTO public.sections (topic_id, theme_id, user_id, type, title, content, display_order, data)
+  SELECT r.topic_id, r.theme_id, NULL, f.tipo::section_type, f.titulo, f.contenido, f.orden, f.data
+  FROM filas f
+  JOIN resueltos r ON r.topic_slug = f.topic_slug AND r.tema = f.tema
+  CROSS JOIN faltan
+  WHERE faltan.ok = 0 AND (SELECT count(*) FROM borrados) >= 0
+  RETURNING type
 )
-INSERT INTO public.sections (topic_id, theme_id, user_id, type, title, content, display_order, data)
-SELECT r.topic_id, r.theme_id, NULL, f.tipo::section_type, f.titulo, f.contenido, f.orden, f.data
-FROM filas f
-JOIN resueltos r ON r.topic_slug = f.topic_slug AND r.tema = f.tema
-CROSS JOIN faltan
-WHERE faltan.ok = 0 AND (SELECT count(*) FROM borrados) >= 0
-RETURNING type, topic_id;
+-- Resumen en vez de una fila por inserción: es lo que se compara contra el dry-run.
+SELECT type, count(*) FROM ins GROUP BY type;
 `
 }
 

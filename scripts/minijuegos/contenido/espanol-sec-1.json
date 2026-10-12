@@ -1,0 +1,1393 @@
+{
+  "subject": "espanol-sec-1",
+  "topics": {
+    "la-diversidad-de-lenguas-y-su-uso": {
+      "order_steps": {
+        "prompt": "Un fan mexicano dice «¡qué chido!». Ordena cómo identificas qué tipo de variante es",
+        "steps": [
+          "Confirma que es la misma lengua: es español",
+          "Ubica lo que la hace distinta: una palabra regional",
+          "Pregúntate de dónde sale esa diferencia: del lugar",
+          "Es una variante geográfica del español"
+        ],
+        "completion_feedback": "Primero separas **lengua** de **variante**, y luego buscas la causa: lugar, grupo o situación. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la lengua hay detrás de cada parte del episodio?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "La misma escena vivida en varios idiomas",
+                "right": "Diversidad lingüística"
+              },
+              {
+                "left": "«Qué chido» vs «menudo episodio»",
+                "right": "Variante geográfica"
+              },
+              {
+                "left": "El doblaje latino del episodio",
+                "right": "Traducción a otra lengua"
+              }
+            ],
+            "completion_feedback": "Ver anime ya es convivir con **muchas lenguas y variantes**. Veamos cómo se llama cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la lengua hay detrás del vestidor y la tribuna?",
+            "left_label": "Real Madrid",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Mbappé en francés, Vinícius en portugués",
+                "right": "Lenguas distintas"
+              },
+              {
+                "left": "«¡Échale ganas!» vs «¡Dale, dale!»",
+                "right": "Variante geográfica"
+              },
+              {
+                "left": "«Presionen arriba, cierren las bandas»",
+                "right": "Variante social"
+              },
+              {
+                "left": "Charla técnica vs grito en la tribuna",
+                "right": "Variante situacional"
+              }
+            ],
+            "completion_feedback": "En un estadio conviven **lenguas** y **variantes** del mismo español. Veamos cómo se distinguen."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la lengua hay detrás del live de TWICE?",
+            "left_label": "TWICE",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Hangul, hiragana y español en el chat",
+                "right": "Diversidad lingüística"
+              },
+              {
+                "left": "Nayeon cambia a japonés con Sana",
+                "right": "Elegir la lengua según con quién hablas"
+              },
+              {
+                "left": "Fans que se llaman a sí mismas ONCE",
+                "right": "Variante social"
+              }
+            ],
+            "completion_feedback": "En un solo live se cruzan **varias lenguas**, y cada quien elige cuál usar. Veamos los nombres de cada idea."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la lengua hay detrás del chat de tu escuadra?",
+            "left_label": "Free Fire",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Español, portugués e inglés en el chat",
+                "right": "Lenguas distintas"
+              },
+              {
+                "left": "«Vale, tío» vs «caigan en Pochinki»",
+                "right": "Variante geográfica"
+              },
+              {
+                "left": "Decir «push» y «loot» entre gamers",
+                "right": "Variante social"
+              }
+            ],
+            "completion_feedback": "Tu escuadra mezcla **lenguas** y **variantes** del mismo español. Veamos cómo se distinguen."
+          }
+        }
+      }
+    },
+    "diversidad-etnica-cultural-y-linguistica-de-mexico": {
+      "order_steps": {
+        "prompt": "Ordena el razonamiento: ¿por qué México es una nación pluricultural?",
+        "steps": [
+          "En México viven pueblos de orígenes distintos",
+          "Cada pueblo trae costumbres y lengua propias",
+          "Esa mezcla hace de México un país pluricultural",
+          "La Constitución lo reconoce en su Artículo 2°"
+        ],
+        "completion_feedback": "Los **pueblos** traen su cultura y su lengua; esa suma es lo **pluricultural**, y la ley lo reconoce. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de diversidad ves en cada parte de la fila?",
+            "left_label": "La Mole",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Cosplayers de Oaxaca, Mérida y el norte",
+                "right": "Diversidad étnica"
+              },
+              {
+                "left": "Marquesitas, acentos y apodos",
+                "right": "Diversidad cultural"
+              },
+              {
+                "left": "Zapoteco y maya en la fila",
+                "right": "Diversidad lingüística"
+              },
+              {
+                "left": "En una sola fila cabe el país entero",
+                "right": "Nación pluricultural"
+              }
+            ],
+            "completion_feedback": "La fila de La Mole es un México **pluricultural** en miniatura. Veamos cada tipo de diversidad."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de diversidad ves en cada parte de la cascarita?",
+            "left_label": "Cascarita",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "El Oaxaco, el regio y el Yuca",
+                "right": "Diversidad étnica"
+              },
+              {
+                "left": "Carne asada, tlayudas y cochinita",
+                "right": "Diversidad cultural"
+              },
+              {
+                "left": "Zapoteco en casa, maya al emocionarse",
+                "right": "Diversidad lingüística"
+              },
+              {
+                "left": "En una cancha cabe el país entero",
+                "right": "Nación pluricultural"
+              }
+            ],
+            "completion_feedback": "La cascarita del barrio es un México **pluricultural** en miniatura. Veamos cada tipo de diversidad."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de diversidad ves en cada parte de la fila?",
+            "left_label": "Stray Kids",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "STAYs de Oaxaca, Monterrey y Mérida",
+                "right": "Diversidad étnica"
+              },
+              {
+                "left": "Marquesitas y porras con acento norteño",
+                "right": "Diversidad cultural"
+              },
+              {
+                "left": "Zapoteco y maya entre las fans",
+                "right": "Diversidad lingüística"
+              },
+              {
+                "left": "En una sola fila cabe todo México",
+                "right": "Nación pluricultural"
+              }
+            ],
+            "completion_feedback": "La fila del concierto es un México **pluricultural** en miniatura. Veamos cada tipo de diversidad."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de diversidad ves en cada parte de tu squad?",
+            "left_label": "Free Fire",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Amigos del norte, del sur y del centro",
+                "right": "Diversidad étnica"
+              },
+              {
+                "left": "Tlayudas y la discusión de la torta",
+                "right": "Diversidad cultural"
+              },
+              {
+                "left": "«¿Ba'ax ka wa'alik?» y el zapoteco",
+                "right": "Diversidad lingüística"
+              },
+              {
+                "left": "En un solo squad cabe todo México",
+                "right": "Nación pluricultural"
+              }
+            ],
+            "completion_feedback": "Tu squad es un México **pluricultural** en miniatura. Veamos cada tipo de diversidad."
+          }
+        }
+      }
+    },
+    "recursos-esteticos-de-la-lengua": {
+      "order_steps": {
+        "prompt": "«Corre como un rayo»: ¿símil o metáfora? Ordena cómo lo decides",
+        "steps": [
+          "Nota que no es literal: nadie es un rayo",
+          "Ubica las dos cosas comparadas: la persona y el rayo",
+          "Revisa qué las une: aparece la palabra «como»",
+          "Con «como» es símil; sin él, sería metáfora"
+        ],
+        "completion_feedback": "La pista está en la palabra **«como»**: si une las dos cosas es **símil**; si las iguala directo, **metáfora**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada frase del manga?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Su poder era infinito»",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "«El aire temblaba de miedo»",
+                "right": "Personificación"
+              },
+              {
+                "left": "«Rápido como un relámpago»",
+                "right": "Símil"
+              },
+              {
+                "left": "«Ese hombre era un monstruo»",
+                "right": "Metáfora"
+              }
+            ],
+            "completion_feedback": "El mangaka usó **figuras retóricas** para que la pelea se sintiera épica. Veamos qué hace cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada frase del narrador?",
+            "left_label": "Narración",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Dribla como si fueran estatuas»",
+                "right": "Símil"
+              },
+              {
+                "left": "«Messi es una pulga imparable»",
+                "right": "Metáfora"
+              },
+              {
+                "left": "«El balón besa la red»",
+                "right": "Personificación"
+              },
+              {
+                "left": "«He visto mil golazos suyos»",
+                "right": "Hipérbole"
+              }
+            ],
+            "completion_feedback": "El narrador usó **figuras retóricas** para que el gol se sintiera gigante. Veamos qué hace cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada tuit del fandom?",
+            "left_label": "Comeback",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Bailan como si flotaran»",
+                "right": "Símil"
+              },
+              {
+                "left": "«Su voz es puro terciopelo»",
+                "right": "Metáfora"
+              },
+              {
+                "left": "«Lloré un océano»",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "«Mi corazón hizo BOOM»",
+                "right": "Onomatopeya"
+              }
+            ],
+            "completion_feedback": "Los fans usaron **figuras retóricas** sin saberlo, como los poetas. Veamos qué hace cada una."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada frase del caster?",
+            "left_label": "Free Fire",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Se mueve como un rayo»",
+                "right": "Símil"
+              },
+              {
+                "left": "«Es un dios del gatillo»",
+                "right": "Metáfora"
+              },
+              {
+                "left": "«La cancha entera tiembla»",
+                "right": "Personificación"
+              },
+              {
+                "left": "«¡PUM!» «¡BOOM!»",
+                "right": "Onomatopeya"
+              }
+            ],
+            "completion_feedback": "El caster usó **figuras retóricas** para volver épico el clip. Veamos qué hace cada una."
+          }
+        }
+      }
+    },
+    "el-dinamismo-de-las-lenguas": {
+      "order_steps": {
+        "prompt": "Ordena cómo nació la palabra «spoilear»",
+        "steps": [
+          "Llega del inglés la palabra «spoiler»",
+          "Se usa tal cual en español: es un préstamo",
+          "Los hablantes le agregan la terminación -ear",
+          "Nace un verbo nuevo, un neologismo: «spoilear»"
+        ],
+        "completion_feedback": "Primero se **toma prestada** la palabra y luego el español la **adapta** hasta crear una nueva. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿De dónde sale cada palabra del Discord del club?",
+            "left_label": "Club de anime",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "«Kawaii», «nakama», «sensei»",
+                "right": "Préstamos del japonés"
+              },
+              {
+                "left": "«Spoiler», «cosplay», «sub»",
+                "right": "Préstamos del inglés"
+              },
+              {
+                "left": "«Spoilear» y «shippear»",
+                "right": "Neologismos"
+              }
+            ],
+            "completion_feedback": "El español del fandom **toma y crea** palabras todo el tiempo. Veamos cómo se llama cada fenómeno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué le pasó a cada palabra del futbol?",
+            "left_label": "Tu abuelo y tú",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "«Gol» viene de «goal»",
+                "right": "Anglicismo"
+              },
+              {
+                "left": "«Orsái», que ya casi nadie dice",
+                "right": "Arcaísmo"
+              },
+              {
+                "left": "«Shutazo», de shoot más -azo",
+                "right": "Neologismo"
+              },
+              {
+                "left": "El futbol se narra distinto que antes",
+                "right": "La lengua cambia con el tiempo"
+              }
+            ],
+            "completion_feedback": "El idioma del futbol **cambió** de la época de tu abuelo a la tuya. Veamos cómo se llama cada cambio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿De dónde sale cada palabra que no entendió tu mamá?",
+            "left_label": "Fandom",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "«Bias», «comeback», «stan»",
+                "right": "Préstamos del inglés"
+              },
+              {
+                "left": "«Oppa», «saranghae», «aegyo»",
+                "right": "Préstamos del coreano"
+              },
+              {
+                "left": "«Shippear» y «stanear»",
+                "right": "Neologismos"
+              },
+              {
+                "left": "Palabras que no existían a su edad",
+                "right": "La lengua cambia con el tiempo"
+              }
+            ],
+            "completion_feedback": "El español del fandom **toma y crea** palabras todo el tiempo. Veamos cómo se llama cada fenómeno."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿De dónde sale cada palabra que gritaste jugando?",
+            "left_label": "Fortnite",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "«Lag», «OP», «GG»",
+                "right": "Anglicismos"
+              },
+              {
+                "left": "«Banear» y «lootear»",
+                "right": "Neologismos"
+              },
+              {
+                "left": "Palabras que hace 20 años nadie usaba",
+                "right": "La lengua cambia con el tiempo"
+              }
+            ],
+            "completion_feedback": "El español gamer **toma y crea** palabras todo el tiempo. Veamos cómo se llama cada fenómeno."
+          }
+        }
+      }
+    },
+    "las-lenguas-y-la-identidad": {
+      "order_steps": {
+        "prompt": "Ordena por qué perder una lengua es perder identidad",
+        "steps": [
+          "Aprendes una lengua en tu familia: tu lengua materna",
+          "Esa lengua carga la cultura de tu pueblo",
+          "Al hablarla, muestras de dónde vienes",
+          "Si se pierde, se pierde parte de esa identidad"
+        ],
+        "completion_feedback": "Una lengua no es solo para comunicarse: **dice quién eres**. Por eso cuidarla protege la identidad de un pueblo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de identidad muestra cada forma de hablar?",
+            "left_label": "Club de anime",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Ver One Piece en japonés original",
+                "right": "Identidad cultural de la obra"
+              },
+              {
+                "left": "«Waifu», «arco» y «filler» en el club",
+                "right": "Identidad de grupo"
+              },
+              {
+                "left": "El zapoteco de la abuela",
+                "right": "Lengua materna"
+              }
+            ],
+            "completion_feedback": "Cada forma de hablar del club **dice algo de quiénes son**. Veamos cómo se relacionan lengua e identidad."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de identidad muestra cada momento del partido?",
+            "left_label": "El Tri",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Todo el estadio canta el himno",
+                "right": "Identidad nacional"
+              },
+              {
+                "left": "Las porras y cánticos de cada afición",
+                "right": "Identidad de grupo"
+              },
+              {
+                "left": "El saludo en maya a su comunidad",
+                "right": "Lengua materna"
+              }
+            ],
+            "completion_feedback": "El himno, las porras y el maya **dicen de dónde viene cada quien**. Veamos cómo se relacionan lengua e identidad."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada decisión sobre la lengua?",
+            "left_label": "BTS",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "BTS canta en coreano en EE. UU.",
+                "right": "Identidad cultural"
+              },
+              {
+                "left": "ARMY toma clases de coreano",
+                "right": "Sentido de pertenencia"
+              }
+            ],
+            "completion_feedback": "Cantar en coreano y aprenderlo son formas de **decir quién eres**. Veamos cómo se relacionan lengua e identidad."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de identidad muestra cada parte del directo?",
+            "left_label": "Minecraft",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Narrar el directo en náhuatl",
+                "right": "Lengua materna"
+              },
+              {
+                "left": "Saludos de su región en la misma lengua",
+                "right": "Identidad de un pueblo"
+              },
+              {
+                "left": "Apodos y lema que nadie más entiende",
+                "right": "Identidad de grupo"
+              }
+            ],
+            "completion_feedback": "El náhuatl y la jerga del squad **dicen quiénes son**. Veamos cómo se relacionan lengua e identidad."
+          }
+        }
+      }
+    },
+    "comunicacion-asertiva-contra-la-violencia-sec": {
+      "order_steps": {
+        "prompt": "Te insultan. Ordena cómo respondes de forma asertiva",
+        "steps": [
+          "Frena el impulso de contestar con otro insulto",
+          "Di cómo te sientes desde el «yo»",
+          "Con eso claro, marca el límite: «no me hables así»",
+          "Cierra proponiendo una solución sin pelear"
+        ],
+        "completion_feedback": "Primero **frenas**, luego hablas **desde el yo**, marcas el **límite** y propones salida: firme, pero sin agredir. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de comunicación es cada respuesta de Naruto?",
+            "left_label": "Naruto",
+            "right_label": "Comunicación",
+            "pairs": [
+              {
+                "left": "Quedarse callado y tragarse el dolor",
+                "right": "Pasiva"
+              },
+              {
+                "left": "Lanzarse a los golpes",
+                "right": "Agresiva"
+              },
+              {
+                "left": "«No me gusta que me hables así»",
+                "right": "Asertiva"
+              }
+            ],
+            "completion_feedback": "Solo la tercera respuesta **rompe el círculo de violencia**. Veamos por qué se llama asertiva."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de comunicación es cada respuesta tras el penal?",
+            "left_label": "Cascarita",
+            "right_label": "Comunicación",
+            "pairs": [
+              {
+                "left": "Irte enojado a tu casa sin decir nada",
+                "right": "Pasiva"
+              },
+              {
+                "left": "Responderle con un insulto igual",
+                "right": "Agresiva"
+              },
+              {
+                "left": "«Fallé, pero gritarme no cambia nada»",
+                "right": "Asertiva"
+              }
+            ],
+            "completion_feedback": "Solo la tercera respuesta **calma el conflicto**. Veamos por qué se llama asertiva."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de comunicación es cada camino de la fan?",
+            "left_label": "Guerra de fandoms",
+            "right_label": "Comunicación",
+            "pairs": [
+              {
+                "left": "Borrar su comentario y callarse",
+                "right": "Pasiva"
+              },
+              {
+                "left": "«Ustedes son unos amargados»",
+                "right": "Agresiva"
+              },
+              {
+                "left": "«Respeto su gusto, pero defiendo el mío»",
+                "right": "Asertiva"
+              }
+            ],
+            "completion_feedback": "Solo la tercera respuesta **apaga la pelea**. Veamos por qué se llama asertiva."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de comunicación es cada camino en el chat de voz?",
+            "left_label": "Free Fire",
+            "right_label": "Comunicación",
+            "pairs": [
+              {
+                "left": "Quedarte callado mientras lo humillan",
+                "right": "Pasiva"
+              },
+              {
+                "left": "Responder con más insultos",
+                "right": "Agresiva"
+              },
+              {
+                "left": "«Tranquilo, todos fallamos a veces»",
+                "right": "Asertiva"
+              }
+            ],
+            "completion_feedback": "Solo la tercera respuesta **detiene la agresión**. Veamos por qué se llama asertiva."
+          }
+        }
+      }
+    },
+    "generos-periodisticos-sec": {
+      "order_steps": {
+        "prompt": "Un texto trae preguntas al creador de un juego. Ordena cómo identificas su género",
+        "steps": [
+          "Pregúntate si da hechos o puntos de vista",
+          "Da hechos: pertenece a los informativos",
+          "Fíjate en su forma: preguntas y respuestas",
+          "Es una entrevista"
+        ],
+        "completion_feedback": "Primero ubicas la **familia** (informar u opinar) y luego la **forma** del texto. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada publicación?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "«Se estrena en octubre por Crunchyroll»",
+                "right": "Noticia"
+              },
+              {
+                "left": "Le pone 9/10 al primer episodio",
+                "right": "Reseña"
+              },
+              {
+                "left": "Preguntas y respuestas al estudio",
+                "right": "Entrevista"
+              },
+              {
+                "left": "Narra la fila, los cosplay y los aplausos",
+                "right": "Crónica"
+              }
+            ],
+            "completion_feedback": "Todos hablan de lo mismo, pero unos **informan**, otros **opinan** y otros **narran**. Veamos cada género."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto de la sección deportiva?",
+            "left_label": "Final del Mundial",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "«México venció 2-1 anoche»",
+                "right": "Noticia"
+              },
+              {
+                "left": "El partido narrado minuto a minuto",
+                "right": "Crónica"
+              },
+              {
+                "left": "Preguntas al autor del gol",
+                "right": "Entrevista"
+              },
+              {
+                "left": "«A mi juicio, el técnico tardó»",
+                "right": "Columna de opinión"
+              }
+            ],
+            "completion_feedback": "Todos hablan del mismo partido, pero unos **informan**, otros **opinan** y otros **narran**. Veamos cada género."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada publicación?",
+            "left_label": "Stray Kids",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "Fechas y sedes de la gira",
+                "right": "Noticia"
+              },
+              {
+                "left": "Un 9/10 al nuevo álbum",
+                "right": "Reseña"
+              },
+              {
+                "left": "Preguntas a los integrantes",
+                "right": "Entrevista"
+              },
+              {
+                "left": "Cómo se vivió la noche del concierto",
+                "right": "Crónica"
+              }
+            ],
+            "completion_feedback": "Todos hablan del mismo grupo, pero unos **informan**, otros **opinan** y otros **narran**. Veamos cada género."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada publicación?",
+            "left_label": "EA Sports FC 26",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "«Sale en septiembre: precio y novedades»",
+                "right": "Noticia"
+              },
+              {
+                "left": "Un 8.5 de 10 tras jugarlo horas",
+                "right": "Reseña"
+              },
+              {
+                "left": "Preguntas y respuestas al desarrollador",
+                "right": "Entrevista"
+              },
+              {
+                "left": "La fila y la euforia del estreno",
+                "right": "Crónica"
+              }
+            ],
+            "completion_feedback": "Todos hablan del mismo juego, pero unos **informan**, otros **opinan** y otros **narran**. Veamos cada género."
+          }
+        }
+      }
+    },
+    "la-funcion-creativa-del-espanol": {
+      "order_steps": {
+        "prompt": "Ordena cómo una palabra inventada crea una realidad nueva",
+        "steps": [
+          "Alguien imagina algo que no existe",
+          "Inventa una palabra para nombrarlo",
+          "Otras personas empiezan a usar esa palabra",
+          "La idea ya existe para toda una comunidad"
+        ],
+        "completion_feedback": "Nombrar es **crear**: sin la palabra, esa realidad solo vivía en una cabeza. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": null
+        },
+        "Fútbol": {
+          "connect": null
+        },
+        "K-pop & K-dramas": {
+          "connect": null
+        },
+        "Videojuegos": {
+          "connect": null
+        }
+      }
+    },
+    "textos-literarios-en-espanol-o-traducidos": {
+      "order_steps": {
+        "prompt": "Ordena cómo una historia escrita en otro idioma llega a tus manos",
+        "steps": [
+          "Un autor crea la historia en su idioma",
+          "La obra se publica en su país",
+          "Un traductor la pasa al español",
+          "Tú la lees y sientes lo que sienten los personajes"
+        ],
+        "completion_feedback": "Sin la **traducción**, la historia se quedaría en su idioma; con ella, la emoción viaja contigo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada parte del manga?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Tanjiro, que busca salvar a Nezuko",
+                "right": "Personaje"
+              },
+              {
+                "left": "La familia asesinada y su promesa",
+                "right": "Trama"
+              },
+              {
+                "left": "Su dolor y su llanto",
+                "right": "Emociones"
+              },
+              {
+                "left": "Del japonés de Gotouge al español",
+                "right": "Traducción"
+              }
+            ],
+            "completion_feedback": "El manga es un **texto literario** que llegó a ti **traducido**. Veamos qué los define."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada parte del libro?",
+            "left_label": "Vida de Messi",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Messi, de niño en Rosario",
+                "right": "Personaje"
+              },
+              {
+                "left": "Su viaje a Barcelona tras su sueño",
+                "right": "Trama"
+              },
+              {
+                "left": "Sus miedos y sus lágrimas",
+                "right": "Emociones"
+              },
+              {
+                "left": "La biografía de CR7, desde el portugués",
+                "right": "Traducción"
+              }
+            ],
+            "completion_feedback": "La vida de Messi contada así es un **texto literario**, y muchos llegan **traducidos**. Veamos qué los define."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada parte de Squid Game?",
+            "left_label": "Squid Game",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Gi-hun, un hombre lleno de deudas",
+                "right": "Personaje"
+              },
+              {
+                "left": "Un juego mortal por dinero",
+                "right": "Trama"
+              },
+              {
+                "left": "Su miedo y su esperanza",
+                "right": "Emociones"
+              },
+              {
+                "left": "Los subtítulos en español",
+                "right": "Traducción"
+              }
+            ],
+            "completion_feedback": "Squid Game cuenta una historia **literaria** que te llega **traducida**. Veamos qué la define."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada parte de God of War?",
+            "left_label": "God of War",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Kratos y su hijo Atreus",
+                "right": "Personajes"
+              },
+              {
+                "left": "Llevar las cenizas a la montaña",
+                "right": "Trama"
+              },
+              {
+                "left": "Por qué Kratos llora",
+                "right": "Emociones"
+              },
+              {
+                "left": "Diálogos pasados del inglés al español",
+                "right": "Traducción"
+              }
+            ],
+            "completion_feedback": "God of War cuenta una historia **literaria** que te llega **traducida**. Veamos qué la define."
+          }
+        }
+      }
+    },
+    "creaciones-literarias-tradicionales-y-contemporaneas": {
+      "order_steps": {
+        "prompt": "La leyenda de la Llorona: ordena cómo decides si es tradicional o contemporánea",
+        "steps": [
+          "Busca su origen: ¿quién la inventó y cuándo?",
+          "No tiene autor conocido y se cuenta desde hace siglos",
+          "Llegó a ti contada de generación en generación",
+          "Es una creación tradicional"
+        ],
+        "completion_feedback": "La clave es el **origen**: antiguo, anónimo y heredado es **tradicional**; actual y de autor conocido es **contemporáneo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": null
+        },
+        "Fútbol": {
+          "connect": null
+        },
+        "K-pop & K-dramas": {
+          "connect": null
+        },
+        "Videojuegos": {
+          "connect": null
+        }
+      }
+    },
+    "recursos-literarios-para-expresar-emociones": {
+      "order_steps": {
+        "prompt": "Ordena cómo conviertes «estaba triste» en una frase literaria",
+        "steps": [
+          "Identifica la emoción: tristeza",
+          "Busca algo que se sienta igual: un invierno helado",
+          "Únelos con «como»: «triste como un invierno» (símil)",
+          "Quita «como» y di que lo ES: «mi tristeza es un invierno»"
+        ],
+        "completion_feedback": "Una emoción se vuelve imagen al **compararla**; quitar el «como» la convierte en **metáfora**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo expresa la emoción cada frase sobre Tanjiro?",
+            "left_label": "Demon Slayer",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Su corazón se rompió como un cristal»",
+                "right": "Símil"
+              },
+              {
+                "left": "«Hasta el cielo parecía llorar con él»",
+                "right": "Personificación"
+              },
+              {
+                "left": "«Tanjiro estaba muy triste»",
+                "right": "Lenguaje directo, sin recurso"
+              }
+            ],
+            "completion_feedback": "La obra no dice solo «estaba triste»: usa **recursos literarios** para que lo sientas. Veamos cada uno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada frase del narrador?",
+            "left_label": "Qatar 2022",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Voló como una flecha encendida»",
+                "right": "Símil"
+              },
+              {
+                "left": "«El estadio es un volcán de lágrimas»",
+                "right": "Metáfora"
+              },
+              {
+                "left": "«El destino abrazó a su hijo»",
+                "right": "Personificación"
+              }
+            ],
+            "completion_feedback": "El narrador usó **recursos literarios** para que sintieras la euforia. Veamos cada uno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada imagen de «Spring Day»?",
+            "left_label": "BTS",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Corazón como una mañana de invierno",
+                "right": "Símil"
+              },
+              {
+                "left": "«La espera es un invierno eterno»",
+                "right": "Metáfora"
+              },
+              {
+                "left": "«El tiempo es cruel»",
+                "right": "Personificación"
+              }
+            ],
+            "completion_feedback": "La letra usa **recursos literarios** para que sientas la tristeza y la esperanza. Veamos cada uno."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué recurso usa cada frase del streamer?",
+            "left_label": "Fortnite",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "«Latía como mil tambores de guerra»",
+                "right": "Símil"
+              },
+              {
+                "left": "«Esa partida fue una pesadilla helada»",
+                "right": "Metáfora"
+              },
+              {
+                "left": "«¡Hasta el muro lloró conmigo!»",
+                "right": "Personificación"
+              }
+            ],
+            "completion_feedback": "El streamer usó **recursos literarios** para que sintieras su emoción. Veamos cada uno."
+          }
+        }
+      }
+    },
+    "mensajes-para-una-vida-saludable": {
+      "order_steps": {
+        "prompt": "Ordena qué hace un buen mensaje saludable, de la idea al efecto",
+        "steps": [
+          "Detecta un mal hábito: no tomar agua",
+          "Propón el hábito contrario: hidratarte",
+          "Dilo claro y con emoción para convencer",
+          "El lector cambia su hábito"
+        ],
+        "completion_feedback": "Un mensaje saludable no solo informa: busca **persuadir** para que alguien cambie un hábito. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué hábito saludable hay detrás de cada cosa que hace Goku?",
+            "left_label": "Goku",
+            "right_label": "Hábito",
+            "pairs": [
+              {
+                "left": "Devorar comida para recuperar energía",
+                "right": "Alimentarse bien"
+              },
+              {
+                "left": "Descansar después de la batalla",
+                "right": "Dormir y reposar"
+              },
+              {
+                "left": "Entrenar con gravedad aumentada",
+                "right": "Hacer ejercicio"
+              },
+              {
+                "left": "Mensajes que te recuerden cuidarte",
+                "right": "Persuadir"
+              }
+            ],
+            "completion_feedback": "Ni Goku aguanta sin **comer, descansar y entrenar**. Veamos cómo un mensaje convence de esos hábitos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué hábito saludable hay detrás de la rutina de Cristiano?",
+            "left_label": "Cristiano",
+            "right_label": "Hábito",
+            "pairs": [
+              {
+                "left": "Pescado, verduras y comida balanceada",
+                "right": "Alimentación balanceada"
+              },
+              {
+                "left": "Varias siestas al día",
+                "right": "Dormir bien"
+              },
+              {
+                "left": "Mucha agua y cero refrescos",
+                "right": "Hidratación"
+              },
+              {
+                "left": "Entrenar con disciplina",
+                "right": "Hacer ejercicio"
+              }
+            ],
+            "completion_feedback": "La rutina de Cristiano junta los **hábitos** que promueve un mensaje saludable. Veamos cómo se escribe uno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué hábito saludable hay detrás de cada consejo a los idols?",
+            "left_label": "Trainees",
+            "right_label": "Hábito",
+            "pairs": [
+              {
+                "left": "Dormir bien antes de un concierto",
+                "right": "Descanso"
+              },
+              {
+                "left": "Comer balanceado, sin dietas extremas",
+                "right": "Alimentación sana"
+              },
+              {
+                "left": "Hablar de su salud mental",
+                "right": "Cuidar las emociones"
+              },
+              {
+                "left": "Los consejos de sus entrenadores",
+                "right": "Mensaje que busca persuadir"
+              }
+            ],
+            "completion_feedback": "Detrás de cada idol hay **mensajes saludables** que lo convencen de cuidarse. Veamos cómo se escriben."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué hábito saludable hay detrás de cada barra de Minecraft?",
+            "left_label": "Minecraft",
+            "right_label": "Hábito",
+            "pairs": [
+              {
+                "left": "Comer pan para llenar la barra",
+                "right": "Alimentarse"
+              },
+              {
+                "left": "Jugar toda la noche sin dormir",
+                "right": "Falta de descanso"
+              },
+              {
+                "left": "Pararte de la silla y moverte",
+                "right": "Hacer ejercicio"
+              },
+              {
+                "left": "Mensajes que te recuerden cuidarte",
+                "right": "Persuadir"
+              }
+            ],
+            "completion_feedback": "Igual que tu personaje, tu cuerpo necesita **energía y cuidado**. Veamos cómo un mensaje te convence de dárselos."
+          }
+        }
+      }
+    },
+    "textos-de-divulgacion-cientifica": {
+      "order_steps": {
+        "prompt": "Ordena cómo se arma un video de divulgación científica",
+        "steps": [
+          "Elige una pregunta de ciencia que dé curiosidad",
+          "Investiga datos confiables para responderla",
+          "Explícalos con palabras claras y ejemplos",
+          "Compártelo para el público general"
+        ],
+        "completion_feedback": "La divulgación toma algo **complejo y real** y lo vuelve **claro** para cualquiera. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la divulgación tiene cada parte del video?",
+            "left_label": "Kamehameha",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "«¿Podrías lanzar un Kamehameha?»",
+                "right": "Pregunta que da curiosidad"
+              },
+              {
+                "left": "Compararlo con una linterna o el Sol",
+                "right": "Comparación"
+              },
+              {
+                "left": "Datos reales de física",
+                "right": "Información confiable"
+              },
+              {
+                "left": "Explicado para cualquier fan",
+                "right": "Público general"
+              }
+            ],
+            "completion_feedback": "Ese video es un **texto de divulgación científica**. Veamos qué rasgos lo definen."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la divulgación tiene cada parte del video?",
+            "left_label": "El chanfle",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "«¿Por qué la pelota hace chanfle?»",
+                "right": "Pregunta que da curiosidad"
+              },
+              {
+                "left": "Un esquema con flechitas",
+                "right": "Apoyo visual"
+              },
+              {
+                "left": "El nombre «efecto Magnus»",
+                "right": "Concepto científico"
+              },
+              {
+                "left": "Sin fórmulas imposibles",
+                "right": "Lenguaje claro"
+              }
+            ],
+            "completion_feedback": "Ese video es un **texto de divulgación científica**. Veamos qué rasgos lo definen."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la divulgación tiene cada parte del video?",
+            "left_label": "Gusano musical",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "«¿Por qué se te pega una canción?»",
+                "right": "Pregunta que da curiosidad"
+              },
+              {
+                "left": "Canciones que ya conoces",
+                "right": "Ejemplos"
+              },
+              {
+                "left": "Cómo el cerebro guarda sonidos",
+                "right": "Tema de ciencia"
+              },
+              {
+                "left": "Sin términos imposibles",
+                "right": "Lenguaje claro"
+              }
+            ],
+            "completion_feedback": "Ese video es un **texto de divulgación científica**. Veamos qué rasgos lo definen."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la divulgación tiene cada parte del video?",
+            "left_label": "Los FPS",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "«¿Por qué se ve movimiento en el juego?»",
+                "right": "Pregunta que da curiosidad"
+              },
+              {
+                "left": "Como un flipbook de dibujos",
+                "right": "Comparación"
+              },
+              {
+                "left": "Cómo el cerebro une las imágenes",
+                "right": "Tema de ciencia"
+              },
+              {
+                "left": "Sin fórmulas imposibles",
+                "right": "Lenguaje claro"
+              }
+            ],
+            "completion_feedback": "Ese video es un **texto de divulgación científica**. Veamos qué rasgos lo definen."
+          }
+        }
+      }
+    },
+    "manifestaciones-culturales-y-artisticas-incluyentes": {
+      "order_steps": {
+        "prompt": "Ordena cómo vuelves incluyente un evento cultural",
+        "steps": [
+          "Piensa quién podría quedarse fuera",
+          "Detecta su barrera: no oye, no ve o no camina",
+          "Agrega un apoyo: lengua de señas, rampa o subtítulos",
+          "Ahora todas las personas pueden participar"
+        ],
+        "completion_feedback": "Incluir empieza por ver **quién se queda fuera** y quitar su **barrera**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué hace incluyente cada cosa de la convención?",
+            "left_label": "La Mole",
+            "right_label": "Inclusión",
+            "pairs": [
+              {
+                "left": "Intérprete de lengua de señas",
+                "right": "Accesibilidad"
+              },
+              {
+                "left": "Cosplay de todos los cuerpos y géneros",
+                "right": "Representar la diversidad"
+              },
+              {
+                "left": "Cero burlas entre fans",
+                "right": "Respeto"
+              },
+              {
+                "left": "El anime y su fandom",
+                "right": "Manifestación cultural"
+              }
+            ],
+            "completion_feedback": "La Mole es una **manifestación cultural incluyente**. Veamos qué la hace serlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué hace incluyente cada cosa del estadio?",
+            "left_label": "El Tri",
+            "right_label": "Inclusión",
+            "pairs": [
+              {
+                "left": "Balón con cascabeles para ciegos",
+                "right": "Accesibilidad"
+              },
+              {
+                "left": "La femenil con el mismo apoyo",
+                "right": "Representar la diversidad"
+              },
+              {
+                "left": "«No al racismo»",
+                "right": "Respeto"
+              },
+              {
+                "left": "El futbol como fiesta de todos",
+                "right": "Manifestación cultural"
+              }
+            ],
+            "completion_feedback": "El futbol así es una **manifestación cultural incluyente**. Veamos qué la hace serlo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué hace incluyente cada cosa del concierto?",
+            "left_label": "BLACKPINK",
+            "right_label": "Inclusión",
+            "pairs": [
+              {
+                "left": "Intérprete de lengua de señas",
+                "right": "Accesibilidad"
+              },
+              {
+                "left": "Fans de todas las edades y países",
+                "right": "Representar la diversidad"
+              },
+              {
+                "left": "La música y los K-dramas",
+                "right": "Manifestación artística"
+              }
+            ],
+            "completion_feedback": "El concierto es una **manifestación artística incluyente**. Veamos qué la hace serlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué hace incluyente cada cosa del juego?",
+            "left_label": "Fortnite",
+            "right_label": "Inclusión",
+            "pairs": [
+              {
+                "left": "Modo daltónico y subtítulos",
+                "right": "Accesibilidad"
+              },
+              {
+                "left": "Skins de muchos tonos de piel",
+                "right": "Representar la diversidad"
+              },
+              {
+                "left": "El videojuego como obra",
+                "right": "Manifestación artística"
+              }
+            ],
+            "completion_feedback": "Un videojuego así es una **manifestación artística incluyente**. Veamos qué lo hace serlo."
+          }
+        }
+      }
+    }
+  }
+}
