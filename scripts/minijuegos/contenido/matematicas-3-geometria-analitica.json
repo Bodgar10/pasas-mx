@@ -1,0 +1,1185 @@
+{
+  "subject": "matematicas-3-geometria-analitica",
+  "topics": {
+    "plano-cartesiano-y-ubicacion-de-puntos": {
+      "order_steps": {
+        "prompt": "Ordena cómo ubicas el punto (3, −5)",
+        "steps": [
+          "Parte del origen (0, 0)",
+          "Lee x = 3: muévete 3 a la derecha",
+          "Lee y = −5: desde ahí baja 5",
+          "Identifica el cuadrante: x positiva, y negativa → IV"
+        ],
+        "completion_feedback": "Siempre **x primero, y después**: si los inviertes, el punto cae en otro lugar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Dónde cae cada posición?",
+            "left_label": "Mapa del Gate",
+            "right_label": "Ubicación",
+            "pairs": [
+              {
+                "left": "Jin-Woo en (6, 8)",
+                "right": "Cuadrante I"
+              },
+              {
+                "left": "Cha Hae-In en (−5, 3)",
+                "right": "Cuadrante II"
+              },
+              {
+                "left": "Monstruo en (−3, −7)",
+                "right": "Cuadrante III"
+              },
+              {
+                "left": "Igris en (0, −4)",
+                "right": "Sobre el eje Y"
+              }
+            ],
+            "completion_feedback": "Cada punto se ubica con un **par ordenado (x, y)**: primero el movimiento horizontal y luego el vertical; los signos dicen el **cuadrante**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Dónde cae cada posición?",
+            "left_label": "Tracking del Barça",
+            "right_label": "Ubicación",
+            "pairs": [
+              {
+                "left": "Lamine en (30, 5)",
+                "right": "Cuadrante I"
+              },
+              {
+                "left": "Jugador en (−25, 10)",
+                "right": "Cuadrante II"
+              },
+              {
+                "left": "Lamine en (10, −20)",
+                "right": "Cuadrante IV"
+              },
+              {
+                "left": "El círculo central (0, 0)",
+                "right": "Origen"
+              }
+            ],
+            "completion_feedback": "Cada punto se ubica con un **par ordenado (x, y)**: primero el movimiento horizontal y luego el vertical; los signos dicen el **cuadrante**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Dónde cae cada posición?",
+            "left_label": "Formación SVT",
+            "right_label": "Ubicación",
+            "pairs": [
+              {
+                "left": "S.Coups en (3, 2)",
+                "right": "Cuadrante I"
+              },
+              {
+                "left": "Hoshi en (−4, 1)",
+                "right": "Cuadrante II"
+              },
+              {
+                "left": "Miembro en (−2, −4)",
+                "right": "Cuadrante III"
+              },
+              {
+                "left": "Woozi en (0, −3)",
+                "right": "Sobre el eje Y"
+              }
+            ],
+            "completion_feedback": "Cada punto se ubica con un **par ordenado (x, y)**: primero el movimiento horizontal y luego el vertical; los signos dicen el **cuadrante**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Dónde cae cada posición o qué indica?",
+            "left_label": "Minimapa",
+            "right_label": "Ubicación",
+            "pairs": [
+              {
+                "left": "Enemigo en (4, 3)",
+                "right": "Cuadrante I"
+              },
+              {
+                "left": "Enemigo en (−5, 2)",
+                "right": "Cuadrante II"
+              },
+              {
+                "left": "Enemigo en (4, −3)",
+                "right": "Cuadrante IV"
+              },
+              {
+                "left": "Primer número del par",
+                "right": "Abscisa: horizontal"
+              }
+            ],
+            "completion_feedback": "Cada punto se ubica con un **par ordenado (x, y)**: primero el movimiento horizontal y luego el vertical; los signos dicen el **cuadrante**."
+          }
+        }
+      }
+    },
+    "distancia-entre-dos-puntos": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la distancia de (1, 1) a (7, 9)",
+        "steps": [
+          "Resta las coordenadas: Δx = 6 y Δy = 8",
+          "Eleva al cuadrado: 36 y 64",
+          "Suma: 36 + 64 = 100",
+          "Saca la raíz: d = 10"
+        ],
+        "completion_feedback": "Es **Pitágoras** con coordenadas: las restas son los catetos y la distancia, la hipotenusa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Gojo vs. Sukuna",
+            "right_label": "Distancia",
+            "pairs": [
+              {
+                "left": "Δx entre (3, 4) y (9, 12)",
+                "right": "6 m"
+              },
+              {
+                "left": "Δy entre (3, 4) y (9, 12)",
+                "right": "8 m"
+              },
+              {
+                "left": "√(6² + 8²)",
+                "right": "10 m"
+              },
+              {
+                "left": "La distancia en diagonal",
+                "right": "Hipotenusa"
+              }
+            ],
+            "completion_feedback": "La **distancia** entre dos puntos es la hipotenusa de un triángulo: restas coordenadas, elevas al cuadrado, sumas y sacas raíz."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Pase diagonal",
+            "right_label": "Distancia",
+            "pairs": [
+              {
+                "left": "De (10, 5) a (40, 45)",
+                "right": "50 m"
+              },
+              {
+                "left": "Centro de (5, 10) a (17, 15)",
+                "right": "13 m"
+              },
+              {
+                "left": "30² + 40²",
+                "right": "2500"
+              },
+              {
+                "left": "La fórmula sale de…",
+                "right": "Pitágoras"
+              }
+            ],
+            "completion_feedback": "La **distancia** entre dos puntos es la hipotenusa de un triángulo: restas coordenadas, elevas al cuadrado, sumas y sacas raíz."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Formación SKZ",
+            "right_label": "Distancia",
+            "pairs": [
+              {
+                "left": "Bang Chan (1, 2) y Felix (5, 5)",
+                "right": "5 m"
+              },
+              {
+                "left": "De (2, 1) a (10, 7)",
+                "right": "10 m"
+              },
+              {
+                "left": "Δx = 4 y Δy = 3",
+                "right": "Catetos"
+              },
+              {
+                "left": "4² + 3²",
+                "right": "25"
+              }
+            ],
+            "completion_feedback": "La **distancia** entre dos puntos es la hipotenusa de un triángulo: restas coordenadas, elevas al cuadrado, sumas y sacas raíz."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Enemigo lejano",
+            "right_label": "Distancia",
+            "pairs": [
+              {
+                "left": "De (2, 3) a (8, 11)",
+                "right": "10 unidades"
+              },
+              {
+                "left": "De (1, 2) a (4, 6)",
+                "right": "5 unidades"
+              },
+              {
+                "left": "Las restas de coordenadas",
+                "right": "Catetos del triángulo"
+              },
+              {
+                "left": "√[(x₂ − x₁)² + (y₂ − y₁)²]",
+                "right": "Fórmula de distancia"
+              }
+            ],
+            "completion_feedback": "La **distancia** entre dos puntos es la hipotenusa de un triángulo: restas coordenadas, elevas al cuadrado, sumas y sacas raíz."
+          }
+        }
+      }
+    },
+    "punto-medio-y-division-de-un-segmento": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el punto medio de (2, 8) y (10, 4)",
+        "steps": [
+          "Suma las x: 2 + 10 = 12",
+          "Divide entre 2: la x del centro es 6",
+          "Haz lo mismo con las y: (8 + 4) ÷ 2 = 6",
+          "El punto medio es M(6, 6)"
+        ],
+        "completion_feedback": "Promedias **cada coordenada por separado**: x con x, y con y. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué punto o idea corresponde?",
+            "left_label": "Apoyo del gremio",
+            "right_label": "Punto medio",
+            "pairs": [
+              {
+                "left": "Entre (4, 6) y (12, 14)",
+                "right": "M(8, 10)"
+              },
+              {
+                "left": "Entre (2, 9) y (10, 3)",
+                "right": "M(6, 6)"
+              },
+              {
+                "left": "(4 + 12) ÷ 2",
+                "right": "8: la x del centro"
+              },
+              {
+                "left": "A igual distancia de ambos",
+                "right": "Equidistante"
+              }
+            ],
+            "completion_feedback": "El **punto medio** es el promedio de las coordenadas, M = ((x₁ + x₂)/2, (y₁ + y₂)/2), y queda a la misma distancia de los dos extremos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué punto o idea corresponde?",
+            "left_label": "Enlace del medio",
+            "right_label": "Punto medio",
+            "pairs": [
+              {
+                "left": "Entre (10, 20) y (30, 40)",
+                "right": "M(20, 30)"
+              },
+              {
+                "left": "Entre (4, 10) y (4, 2)",
+                "right": "M(4, 6)"
+              },
+              {
+                "left": "Promediar las x",
+                "right": "Sumar y dividir entre 2"
+              },
+              {
+                "left": "Mediocampista de enlace",
+                "right": "Se para en el punto medio"
+              }
+            ],
+            "completion_feedback": "El **punto medio** es el promedio de las coordenadas, M = ((x₁ + x₂)/2, (y₁ + y₂)/2), y queda a la misma distancia de los dos extremos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué punto o idea corresponde?",
+            "left_label": "Formación SKZ",
+            "right_label": "Punto medio",
+            "pairs": [
+              {
+                "left": "Entre (1, 8) y (7, 2)",
+                "right": "M(4, 5)"
+              },
+              {
+                "left": "Entre (2, 6) y (8, 2)",
+                "right": "M(5, 4)"
+              },
+              {
+                "left": "Entre (2, 3) y (8, 9)",
+                "right": "M(5, 6)"
+              },
+              {
+                "left": "Han justo a la mitad",
+                "right": "Formación balanceada"
+              }
+            ],
+            "completion_feedback": "El **punto medio** es el promedio de las coordenadas, M = ((x₁ + x₂)/2, (y₁ + y₂)/2), y queda a la misma distancia de los dos extremos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué punto o idea corresponde?",
+            "left_label": "Aterrizaje",
+            "right_label": "Punto medio",
+            "pairs": [
+              {
+                "left": "Entre (2, 4) y (10, 12)",
+                "right": "M(6, 8)"
+              },
+              {
+                "left": "Entre (3, 7) y (9, 1)",
+                "right": "M(6, 4)"
+              },
+              {
+                "left": "(7 + 1) ÷ 2",
+                "right": "4: la y del centro"
+              },
+              {
+                "left": "Llegar igual de rápido a ambos",
+                "right": "Caer en el punto medio"
+              }
+            ],
+            "completion_feedback": "El **punto medio** es el promedio de las coordenadas, M = ((x₁ + x₂)/2, (y₁ + y₂)/2), y queda a la misma distancia de los dos extremos."
+          }
+        }
+      }
+    },
+    "la-recta-pendiente-y-angulo-de-inclinacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el ángulo de la recta de (1, 2) a (5, 14)",
+        "steps": [
+          "Resta: subida 14 − 2 = 12 y avance 5 − 1 = 4",
+          "Divide: m = 12 ÷ 4 = 3",
+          "Relaciona con el ángulo: tan θ = 3",
+          "Despeja: θ = tan⁻¹(3) ≈ 71.6°"
+        ],
+        "completion_feedback": "Primero la **pendiente** y después el **ángulo**: la tangente es el puente entre los dos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué pendiente o idea corresponde?",
+            "left_label": "Salto de Jin-Woo",
+            "right_label": "Pendiente",
+            "pairs": [
+              {
+                "left": "De (2, 3) a (6, 11)",
+                "right": "m = 2"
+              },
+              {
+                "left": "De (1, 2) a (4, 11)",
+                "right": "m = 3"
+              },
+              {
+                "left": "Subida entre avance",
+                "right": "Pendiente"
+              },
+              {
+                "left": "m positiva",
+                "right": "El salto sube"
+              }
+            ],
+            "completion_feedback": "La **pendiente** m = (y₂ − y₁)/(x₂ − x₁) mide cuánto sube la recta por cada unidad que avanza; su ángulo cumple **tan θ = m**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué pendiente o idea corresponde?",
+            "left_label": "Disparo de Lamine",
+            "right_label": "Pendiente",
+            "pairs": [
+              {
+                "left": "De (10, 5) a (30, 15)",
+                "right": "m = 0.5"
+              },
+              {
+                "left": "De (4, 3) a (10, 15)",
+                "right": "m = 2"
+              },
+              {
+                "left": "Mayor pendiente",
+                "right": "Mayor ángulo con el eje x"
+              },
+              {
+                "left": "tan θ = m",
+                "right": "Ángulo de inclinación"
+              }
+            ],
+            "completion_feedback": "La **pendiente** m = (y₂ − y₁)/(x₂ − x₁) mide cuánto sube la recta por cada unidad que avanza; su ángulo cumple **tan θ = m**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué pendiente o idea corresponde?",
+            "left_label": "Pasarela de SKZ",
+            "right_label": "Pendiente",
+            "pairs": [
+              {
+                "left": "De (1, 2) a (4, 8)",
+                "right": "m = 2"
+              },
+              {
+                "left": "De (2, 1) a (6, 13)",
+                "right": "m = 3"
+              },
+              {
+                "left": "Rampa muy tendida",
+                "right": "Pendiente pequeña"
+              },
+              {
+                "left": "Rampa muy empinada",
+                "right": "Pendiente grande"
+              }
+            ],
+            "completion_feedback": "La **pendiente** m = (y₂ − y₁)/(x₂ − x₁) mide cuánto sube la recta por cada unidad que avanza; su ángulo cumple **tan θ = m**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué pendiente o idea corresponde?",
+            "left_label": "Rampa en Fortnite",
+            "right_label": "Pendiente",
+            "pairs": [
+              {
+                "left": "De (2, 1) a (6, 9)",
+                "right": "m = 2"
+              },
+              {
+                "left": "Sube 8 y avanza 4",
+                "right": "8 ÷ 4"
+              },
+              {
+                "left": "m = 0",
+                "right": "Recta horizontal"
+              },
+              {
+                "left": "m negativa",
+                "right": "La recta baja"
+              }
+            ],
+            "completion_feedback": "La **pendiente** m = (y₂ − y₁)/(x₂ − x₁) mide cuánto sube la recta por cada unidad que avanza; su ángulo cumple **tan θ = m**."
+          }
+        }
+      }
+    },
+    "ecuaciones-de-la-recta-punto-pendiente-general": {
+      "order_steps": {
+        "prompt": "Ordena cómo pasas a forma general la recta por (2, 5) con m = 3",
+        "steps": [
+          "Escribe y − 5 = 3(x − 2)",
+          "Desarrolla: y − 5 = 3x − 6",
+          "Pasa todo a un lado: 0 = 3x − 6 − y + 5",
+          "Simplifica: 3x − y − 1 = 0"
+        ],
+        "completion_feedback": "Punto-pendiente, desarrollar e **igualar a cero**: así llegas a la forma general. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué ecuación o paso corresponde?",
+            "left_label": "Ataque recto",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Punto (3, 4) y m = 2",
+                "right": "y − 4 = 2(x − 3)"
+              },
+              {
+                "left": "y − 4 = 2x − 6",
+                "right": "Desarrollo"
+              },
+              {
+                "left": "2x − y − 2 = 0",
+                "right": "Forma general"
+              },
+              {
+                "left": "Punto (1, 3) y m = 5",
+                "right": "5x − y − 2 = 0"
+              }
+            ],
+            "completion_feedback": "Con **un punto y la pendiente** escribes y − y₁ = m(x − x₁); al pasar todo a un lado obtienes la **forma general** Ax + By + C = 0."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué ecuación o forma corresponde?",
+            "left_label": "Pase raso",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Punto (2, 3) y m = 4",
+                "right": "4x − y − 5 = 0"
+              },
+              {
+                "left": "Punto (3, 1) y m = 2",
+                "right": "2x − y − 5 = 0"
+              },
+              {
+                "left": "y − y₁ = m(x − x₁)",
+                "right": "Punto-pendiente"
+              },
+              {
+                "left": "Ax + By + C = 0",
+                "right": "Forma general"
+              }
+            ],
+            "completion_feedback": "Con **un punto y la pendiente** escribes y − y₁ = m(x − x₁); al pasar todo a un lado obtienes la **forma general** Ax + By + C = 0."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué ecuación o coeficiente corresponde?",
+            "left_label": "Foco de Felix",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Punto (2, 1) y m = 2",
+                "right": "2x − y − 3 = 0"
+              },
+              {
+                "left": "Punto (3, 2) y m = 3",
+                "right": "3x − y − 7 = 0"
+              },
+              {
+                "left": "A en 3x − y − 7 = 0",
+                "right": "3"
+              },
+              {
+                "left": "C en 3x − y − 7 = 0",
+                "right": "−7"
+              }
+            ],
+            "completion_feedback": "Con **un punto y la pendiente** escribes y − y₁ = m(x − x₁); al pasar todo a un lado obtienes la **forma general** Ax + By + C = 0."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué ecuación o idea corresponde?",
+            "left_label": "Cohete",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Punto (2, 3) y m = 2",
+                "right": "2x − y − 1 = 0"
+              },
+              {
+                "left": "Punto (1, 2) y m = 3",
+                "right": "3x − y − 1 = 0"
+              },
+              {
+                "left": "−2x + y + 1 = 0",
+                "right": "Multiplicar por −1"
+              },
+              {
+                "left": "Un punto y la pendiente",
+                "right": "Definen toda la recta"
+              }
+            ],
+            "completion_feedback": "Con **un punto y la pendiente** escribes y − y₁ = m(x − x₁); al pasar todo a un lado obtienes la **forma general** Ax + By + C = 0."
+          }
+        }
+      }
+    },
+    "rectas-paralelas-y-perpendiculares": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas la pendiente perpendicular a m = 2/3",
+        "steps": [
+          "Escribe la condición: m₁ · m₂ = −1",
+          "Invierte la fracción: 2/3 → 3/2",
+          "Cambia el signo: m₂ = −3/2",
+          "Verifica: (2/3) · (−3/2) = −1 ✓"
+        ],
+        "completion_feedback": "Perpendicular es **invertir y cambiar el signo**; el producto −1 te confirma que acertaste. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué relación o pendiente corresponde?",
+            "left_label": "Sombras de Jin-Woo",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Igris y Tank a la par",
+                "right": "Paralelas: misma m"
+              },
+              {
+                "left": "m = 2 y m = −1/2",
+                "right": "Perpendiculares"
+              },
+              {
+                "left": "Perpendicular a m = 4",
+                "right": "m = −1/4"
+              },
+              {
+                "left": "Perpendicular a m = 3",
+                "right": "m = −1/3"
+              }
+            ],
+            "completion_feedback": "**Paralelas**: misma pendiente. **Perpendiculares**: pendientes inversas y de signo contrario, con m₁ · m₂ = −1."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué relación o pendiente corresponde?",
+            "left_label": "Líneas del campo",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Las dos bandas",
+                "right": "Paralelas"
+              },
+              {
+                "left": "Medio campo y banda",
+                "right": "Perpendiculares"
+              },
+              {
+                "left": "Paralela a m = 5",
+                "right": "m = 5"
+              },
+              {
+                "left": "Perpendicular a m = 5",
+                "right": "m = −1/5"
+              }
+            ],
+            "completion_feedback": "**Paralelas**: misma pendiente. **Perpendiculares**: pendientes inversas y de signo contrario, con m₁ · m₂ = −1."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué relación o pendiente corresponde?",
+            "left_label": "Filas de SKZ",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Filas con m = 1 y m = 1",
+                "right": "Nunca se cruzan"
+              },
+              {
+                "left": "Filas con m = 1 y m = −1",
+                "right": "Se cruzan a 90°"
+              },
+              {
+                "left": "Perpendicular a m = 2",
+                "right": "m = −1/2"
+              },
+              {
+                "left": "m₁ · m₂ = −1",
+                "right": "Condición de perpendicular"
+              }
+            ],
+            "completion_feedback": "**Paralelas**: misma pendiente. **Perpendiculares**: pendientes inversas y de signo contrario, con m₁ · m₂ = −1."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué relación o pendiente corresponde?",
+            "left_label": "Rampas y paredes",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Dos rampas con m = 2",
+                "right": "Paralelas"
+              },
+              {
+                "left": "Rampas con m = 2 y m = −1/2",
+                "right": "Perpendiculares"
+              },
+              {
+                "left": "Perpendicular a m = 3",
+                "right": "m = −1/3"
+              },
+              {
+                "left": "Pared vertical y piso",
+                "right": "Forman 90°"
+              }
+            ],
+            "completion_feedback": "**Paralelas**: misma pendiente. **Perpendiculares**: pendientes inversas y de signo contrario, con m₁ · m₂ = −1."
+          }
+        }
+      }
+    },
+    "la-circunferencia": {
+      "order_steps": {
+        "prompt": "Ordena cómo verificas si (7, 6) está en la circunferencia de centro (3, 3) y radio 5",
+        "steps": [
+          "Escribe la ecuación: (x − 3)² + (y − 3)² = 25",
+          "Sustituye el punto: (7 − 3)² + (6 − 3)²",
+          "Calcula: 16 + 9 = 25",
+          "Compara con r²: 25 = 25, está en el borde"
+        ],
+        "completion_feedback": "Si el resultado es **igual** a r², el punto está en el borde; menor, adentro; mayor, afuera. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué ecuación o ubicación corresponde?",
+            "left_label": "Dominio de Gojo",
+            "right_label": "Circunferencia",
+            "pairs": [
+              {
+                "left": "Centro (2, 4) y radio 5",
+                "right": "(x − 2)² + (y − 4)² = 25"
+              },
+              {
+                "left": "Enemigo en (5, 8)",
+                "right": "Justo en el borde"
+              },
+              {
+                "left": "A 9 m con radio de 12 m",
+                "right": "Atrapado dentro"
+              },
+              {
+                "left": "A 15 m con radio de 12 m",
+                "right": "Fuera del dominio"
+              }
+            ],
+            "completion_feedback": "Una **circunferencia** son todos los puntos a la misma distancia **r** de un centro (h, k): (x − h)² + (y − k)² = r²."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué ecuación o dato corresponde?",
+            "left_label": "Círculo central",
+            "right_label": "Circunferencia",
+            "pairs": [
+              {
+                "left": "Centro (3, 1) y radio 5",
+                "right": "(x − 3)² + (y − 1)² = 25"
+              },
+              {
+                "left": "El punto (6, 5)",
+                "right": "25 = 25: en el borde"
+              },
+              {
+                "left": "Radio reglamentario",
+                "right": "9.15 m"
+              },
+              {
+                "left": "Lado derecho de la ecuación",
+                "right": "r², no r"
+              }
+            ],
+            "completion_feedback": "Una **circunferencia** son todos los puntos a la misma distancia **r** de un centro (h, k): (x − h)² + (y − k)² = r²."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué ecuación o ubicación corresponde?",
+            "left_label": "Escenario de SKZ",
+            "right_label": "Circunferencia",
+            "pairs": [
+              {
+                "left": "Centro (1, 2) y radio 5",
+                "right": "(x − 1)² + (y − 2)² = 25"
+              },
+              {
+                "left": "Cámara a 8 m con radio de 8 m",
+                "right": "En la orilla"
+              },
+              {
+                "left": "Cámara a 6 m con radio de 8 m",
+                "right": "Sobre el escenario"
+              },
+              {
+                "left": "Cámara a 10 m con radio de 8 m",
+                "right": "Entre el público"
+              }
+            ],
+            "completion_feedback": "Una **circunferencia** son todos los puntos a la misma distancia **r** de un centro (h, k): (x − h)² + (y − k)² = r²."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué ecuación o ubicación corresponde?",
+            "left_label": "Zona de tormenta",
+            "right_label": "Circunferencia",
+            "pairs": [
+              {
+                "left": "Centro (2, 3) y radio 5",
+                "right": "(x − 2)² + (y − 3)² = 25"
+              },
+              {
+                "left": "A 8 unidades con radio de 10",
+                "right": "A salvo dentro"
+              },
+              {
+                "left": "A 12 unidades con radio de 10",
+                "right": "En la tormenta"
+              },
+              {
+                "left": "Todos los puntos del borde",
+                "right": "Misma distancia al centro"
+              }
+            ],
+            "completion_feedback": "Una **circunferencia** son todos los puntos a la misma distancia **r** de un centro (h, k): (x − h)² + (y − k)² = r²."
+          }
+        }
+      }
+    },
+    "la-parabola": {
+      "order_steps": {
+        "prompt": "Ordena cómo analizas y = −(x − 4)² + 9",
+        "steps": [
+          "Compara con y = a(x − h)² + k",
+          "Lee el vértice: (4, 9)",
+          "Revisa el signo de a = −1: abre hacia abajo",
+          "Concluye: el vértice es el punto máximo"
+        ],
+        "completion_feedback": "El **vértice** sale de h y k, y el **signo de a** decide si es máximo o mínimo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué vértice o propiedad corresponde?",
+            "left_label": "Flecha maldita",
+            "right_label": "Parábola",
+            "pairs": [
+              {
+                "left": "y = −(x − 5)² + 8",
+                "right": "Vértice (5, 8)"
+              },
+              {
+                "left": "a = −1",
+                "right": "Abre hacia abajo"
+              },
+              {
+                "left": "y = 2(x − 3)² − 5",
+                "right": "Vértice (3, −5): mínimo"
+              },
+              {
+                "left": "Línea vertical por el vértice",
+                "right": "Eje de simetría"
+              }
+            ],
+            "completion_feedback": "En y = a(x − h)² + k el **vértice** es (h, k); si **a < 0** la parábola abre hacia abajo y el vértice es el **máximo**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué vértice o propiedad corresponde?",
+            "left_label": "Penal picado",
+            "right_label": "Parábola",
+            "pairs": [
+              {
+                "left": "y = −(x − 3)² + 3",
+                "right": "Vértice (3, 3)"
+              },
+              {
+                "left": "El punto más alto del balón",
+                "right": "Vértice: máximo"
+              },
+              {
+                "left": "a negativa",
+                "right": "Abre hacia abajo"
+              },
+              {
+                "left": "a positiva",
+                "right": "Abre hacia arriba"
+              }
+            ],
+            "completion_feedback": "En y = a(x − h)² + k el **vértice** es (h, k); si **a < 0** la parábola abre hacia abajo y el vértice es el **máximo**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué vértice o propiedad corresponde?",
+            "left_label": "Cañón de confeti",
+            "right_label": "Parábola",
+            "pairs": [
+              {
+                "left": "y = −(x − 8)² + 20",
+                "right": "Vértice (8, 20)"
+              },
+              {
+                "left": "y = −2(x − 5)² + 18",
+                "right": "Vértice (5, 18)"
+              },
+              {
+                "left": "(x − 5) en el paréntesis",
+                "right": "h = 5: signo cambiado"
+              },
+              {
+                "left": "Cae igual a cada lado",
+                "right": "Simetría"
+              }
+            ],
+            "completion_feedback": "En y = a(x − h)² + k el **vértice** es (h, k); si **a < 0** la parábola abre hacia abajo y el vértice es el **máximo**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué vértice o propiedad corresponde?",
+            "left_label": "Botella de Barley",
+            "right_label": "Parábola",
+            "pairs": [
+              {
+                "left": "y = −(x − 7)² + 12",
+                "right": "Vértice (7, 12)"
+              },
+              {
+                "left": "La altura máxima del proyectil",
+                "right": "k = 12"
+              },
+              {
+                "left": "Distancia al punto más alto",
+                "right": "h = 7"
+              },
+              {
+                "left": "La curva de todo proyectil",
+                "right": "Parábola"
+              }
+            ],
+            "completion_feedback": "En y = a(x − h)² + k el **vértice** es (h, k); si **a < 0** la parábola abre hacia abajo y el vértice es el **máximo**."
+          }
+        }
+      }
+    },
+    "la-elipse": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas los focos de x²/25 + y²/16 = 1",
+        "steps": [
+          "Identifica a² = 25 (el mayor) y b² = 16",
+          "Saca raíces: a = 5 y b = 4",
+          "Usa c² = a² − b² = 25 − 16 = 9",
+          "c = 3: los focos están en (±3, 0)"
+        ],
+        "completion_feedback": "En la elipse se **resta**: el foco siempre queda dentro, más cerca del centro que el vértice. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Barrera de Gojo",
+            "right_label": "Elipse",
+            "pairs": [
+              {
+                "left": "x²/64 + y²/28 = 1",
+                "right": "a = 8"
+              },
+              {
+                "left": "c² = 64 − 28",
+                "right": "c = 6"
+              },
+              {
+                "left": "Suma de distancias a los focos",
+                "right": "Siempre constante"
+              },
+              {
+                "left": "Focos más separados",
+                "right": "Elipse más alargada"
+              }
+            ],
+            "completion_feedback": "En la **elipse**, la **suma** de distancias a los dos focos es constante; a² es el denominador mayor y c² = a² − b²."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor corresponde?",
+            "left_label": "Estadio ovalado",
+            "right_label": "Elipse",
+            "pairs": [
+              {
+                "left": "x²/144 + y²/100 = 1",
+                "right": "a = 12 y b = 10"
+              },
+              {
+                "left": "c² = 144 − 100",
+                "right": "c ≈ 6.6"
+              },
+              {
+                "left": "Eje mayor: 2a",
+                "right": "24"
+              },
+              {
+                "left": "Eje menor: 2b",
+                "right": "20"
+              }
+            ],
+            "completion_feedback": "En la **elipse**, la **suma** de distancias a los dos focos es constante; a² es el denominador mayor y c² = a² − b²."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o regla corresponde?",
+            "left_label": "Pista de SVT",
+            "right_label": "Elipse",
+            "pairs": [
+              {
+                "left": "x²/100 + y²/36 = 1",
+                "right": "c = 8"
+              },
+              {
+                "left": "x²/169 + y²/144 = 1",
+                "right": "c = 5"
+              },
+              {
+                "left": "El denominador mayor",
+                "right": "Es a²"
+              },
+              {
+                "left": "En la elipse, c² = …",
+                "right": "a² − b²"
+              }
+            ],
+            "completion_feedback": "En la **elipse**, la **suma** de distancias a los dos focos es constante; a² es el denominador mayor y c² = a² − b²."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o parte corresponde?",
+            "left_label": "Isla flotante",
+            "right_label": "Elipse",
+            "pairs": [
+              {
+                "left": "x²/25 + y²/9 = 1",
+                "right": "a = 5, b = 3, c = 4"
+              },
+              {
+                "left": "Eje mayor de esa órbita",
+                "right": "10"
+              },
+              {
+                "left": "Eje menor de esa órbita",
+                "right": "6"
+              },
+              {
+                "left": "Los dos puntos especiales",
+                "right": "Focos"
+              }
+            ],
+            "completion_feedback": "En la **elipse**, la **suma** de distancias a los dos focos es constante; a² es el denominador mayor y c² = a² − b²."
+          }
+        }
+      }
+    },
+    "la-hiperbola": {
+      "order_steps": {
+        "prompt": "Ordena cómo analizas x²/16 − y²/9 = 1",
+        "steps": [
+          "Identifica a² = 16 (término positivo) y b² = 9",
+          "Saca raíces: a = 4 y b = 3",
+          "Usa c² = a² + b² = 25: c = 5",
+          "Escribe las asíntotas: y = ±(3/4)x"
+        ],
+        "completion_feedback": "En la hipérbola se **suma**: el foco queda más lejos del centro que el vértice. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Corte doble",
+            "right_label": "Hipérbola",
+            "pairs": [
+              {
+                "left": "x²/144 − y²/25 = 1",
+                "right": "c = 13"
+              },
+              {
+                "left": "Pendiente de sus asíntotas",
+                "right": "±5/12"
+              },
+              {
+                "left": "Diferencia de distancias a focos",
+                "right": "Siempre constante"
+              },
+              {
+                "left": "Líneas guía que nunca toca",
+                "right": "Asíntotas"
+              }
+            ],
+            "completion_feedback": "En la **hipérbola**, la **diferencia** de distancias a los focos es constante; tiene dos ramas, asíntotas y c² = a² + b²."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o regla corresponde?",
+            "left_label": "Extremos abiertos",
+            "right_label": "Hipérbola",
+            "pairs": [
+              {
+                "left": "x²/64 − y²/36 = 1",
+                "right": "c = 10"
+              },
+              {
+                "left": "Asíntotas de esa ruta",
+                "right": "±3/4"
+              },
+              {
+                "left": "x²/25 − y²/144 = 1",
+                "right": "c = 13"
+              },
+              {
+                "left": "En la hipérbola, c² = …",
+                "right": "a² + b²"
+              }
+            ],
+            "completion_feedback": "En la **hipérbola**, la **diferencia** de distancias a los focos es constante; tiene dos ramas, asíntotas y c² = a² + b²."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Láser de SVT",
+            "right_label": "Hipérbola",
+            "pairs": [
+              {
+                "left": "x²/36 − y²/64 = 1",
+                "right": "Asíntotas ±4/3"
+              },
+              {
+                "left": "x²/25 − y²/144 = 1",
+                "right": "Asíntotas ±12/5"
+              },
+              {
+                "left": "Dos curvas abiertas y opuestas",
+                "right": "Ramas"
+              },
+              {
+                "left": "Signo menos entre los términos",
+                "right": "Es hipérbola"
+              }
+            ],
+            "completion_feedback": "En la **hipérbola**, la **diferencia** de distancias a los focos es constante; tiene dos ramas, asíntotas y c² = a² + b²."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o regla corresponde?",
+            "left_label": "Onda de choque",
+            "right_label": "Cónica",
+            "pairs": [
+              {
+                "left": "x²/9 − y²/16 = 1",
+                "right": "a = 3, b = 4, c = 5"
+              },
+              {
+                "left": "Elipse: c² = a² − b²",
+                "right": "Se resta"
+              },
+              {
+                "left": "Hipérbola: c² = a² + b²",
+                "right": "Se suma"
+              },
+              {
+                "left": "Asíntotas con a = 3 y b = 4",
+                "right": "y = ±(4/3)x"
+              }
+            ],
+            "completion_feedback": "En la **hipérbola**, la **diferencia** de distancias a los focos es constante; tiene dos ramas, asíntotas y c² = a² + b²."
+          }
+        }
+      }
+    }
+  }
+}
