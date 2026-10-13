@@ -1,0 +1,772 @@
+{
+  "subject": "ingles-2",
+  "topics": {
+    "present-continuous": {
+      "order_steps": {
+        "prompt": "Arma una oración en present continuous",
+        "steps": [
+          "Identifica el sujeto: Gojo",
+          "Elige am, is o are: Gojo → is",
+          "Agrega -ing al verbo: activate → activating",
+          "Completa: 'Gojo is activating his Domain.'"
+        ],
+        "completion_feedback": "**Present continuous** = sujeto + **am/is/are** + verbo-**ing**. Se usa para acciones que pasan **ahora mismo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Present continuous",
+            "pairs": [
+              {
+                "left": "Yuji ___ (punch) the curse",
+                "right": "is punching"
+              },
+              {
+                "left": "The sorcerers ___ (fight)",
+                "right": "are fighting"
+              },
+              {
+                "left": "I ___ (freak) out right now",
+                "right": "am freaking"
+              }
+            ],
+            "completion_feedback": "El **present continuous** narra lo que pasa **ahora mismo**: sujeto + **am/is/are** + verbo-**ing**. Ojo con la ortografía: run → running, dance → dancing."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Narras en vivo",
+            "right_label": "Present continuous",
+            "pairs": [
+              {
+                "left": "Santi ___ (run) to the goal",
+                "right": "is running"
+              },
+              {
+                "left": "The fans ___ (celebrate)",
+                "right": "are celebrating"
+              },
+              {
+                "left": "I ___ (watch) the match",
+                "right": "am watching"
+              }
+            ],
+            "completion_feedback": "El **present continuous** narra lo que pasa **ahora mismo**: sujeto + **am/is/are** + verbo-**ing**. Ojo con la ortografía: run → running, dance → dancing."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Live de TXT",
+            "right_label": "Present continuous",
+            "pairs": [
+              {
+                "left": "Yeonjun ___ (eat) ramen",
+                "right": "is eating"
+              },
+              {
+                "left": "They ___ (show) the new album",
+                "right": "are showing"
+              },
+              {
+                "left": "I ___ (cry) right now",
+                "right": "am crying"
+              }
+            ],
+            "completion_feedback": "El **present continuous** narra lo que pasa **ahora mismo**: sujeto + **am/is/are** + verbo-**ing**. Ojo con la ortografía: run → running, dance → dancing."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Stream de Fortnite",
+            "right_label": "Present continuous",
+            "pairs": [
+              {
+                "left": "I ___ (land) at Tilted Towers",
+                "right": "am landing"
+              },
+              {
+                "left": "The storm ___ (close) in",
+                "right": "is closing"
+              },
+              {
+                "left": "My teammates ___ (revive) me",
+                "right": "are reviving"
+              }
+            ],
+            "completion_feedback": "El **present continuous** narra lo que pasa **ahora mismo**: sujeto + **am/is/are** + verbo-**ing**. Ojo con la ortografía: run → running, dance → dancing."
+          }
+        }
+      }
+    },
+    "past-simple-regular-and-irregular": {
+      "order_steps": {
+        "prompt": "Forma el past simple de un verbo",
+        "steps": [
+          "Identifica el verbo: win",
+          "Decide si es regular o irregular: win es irregular",
+          "Regular → agrega -ed. Irregular → usa su forma propia",
+          "Escribe la oración: 'Madrid won the match.'"
+        ],
+        "completion_feedback": "En **past simple**, los **regulares** agregan **-ed** (played) y los **irregulares** cambian de forma (win → **won**). La forma es igual para todos los sujetos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "Past simple",
+            "pairs": [
+              {
+                "left": "Tanjiro ___ (fight) all night",
+                "right": "fought"
+              },
+              {
+                "left": "Nezuko ___ (protect) him",
+                "right": "protected"
+              },
+              {
+                "left": "Inosuke ___ (run) into battle",
+                "right": "ran"
+              },
+              {
+                "left": "He ___ (win) the battle",
+                "right": "won"
+              }
+            ],
+            "completion_feedback": "El **past simple** cuenta acciones **terminadas**. Regulares: + **-ed** (trained, scored). Irregulares: forma propia (fight → fought, win → won, buy → bought, sing → sang)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ayer en el Madrid",
+            "right_label": "Past simple",
+            "pairs": [
+              {
+                "left": "Mbappé ___ (score) a goal",
+                "right": "scored"
+              },
+              {
+                "left": "Madrid ___ (win) the match",
+                "right": "won"
+              },
+              {
+                "left": "The coach ___ (make) changes",
+                "right": "made"
+              }
+            ],
+            "completion_feedback": "El **past simple** cuenta acciones **terminadas**. Regulares: + **-ed** (trained, scored). Irregulares: forma propia (fight → fought, win → won, buy → bought, sing → sang)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto de SKZ",
+            "right_label": "Past simple",
+            "pairs": [
+              {
+                "left": "Felix ___ (sing) his part",
+                "right": "sang"
+              },
+              {
+                "left": "Han ___ (write) the lyrics",
+                "right": "wrote"
+              },
+              {
+                "left": "I ___ (cry) during the ballad",
+                "right": "cried"
+              }
+            ],
+            "completion_feedback": "El **past simple** cuenta acciones **terminadas**. Regulares: + **-ed** (trained, scored). Irregulares: forma propia (fight → fought, win → won, buy → bought, sing → sang)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ronda de Valorant",
+            "right_label": "Past simple",
+            "pairs": [
+              {
+                "left": "I ___ (buy) the Operator",
+                "right": "bought"
+              },
+              {
+                "left": "I ___ (plant) the Spike",
+                "right": "planted"
+              },
+              {
+                "left": "Our duelist ___ (get) an ace",
+                "right": "got"
+              }
+            ],
+            "completion_feedback": "El **past simple** cuenta acciones **terminadas**. Regulares: + **-ed** (trained, scored). Irregulares: forma propia (fight → fought, win → won, buy → bought, sing → sang)."
+          }
+        }
+      }
+    },
+    "comparatives-and-superlatives": {
+      "order_steps": {
+        "prompt": "Elige la forma correcta del adjetivo",
+        "steps": [
+          "Decide si comparas a dos o eliges al número uno",
+          "Cuenta las sílabas del adjetivo",
+          "Corto: -er o -est. Largo: more o most",
+          "Revisa los irregulares: good → better → the best"
+        ],
+        "completion_feedback": "Comparas a **dos** con -er/more + **than** y eliges al **#1** con the -est/the most. Irregulares: good → better → **the best**, bad → worse → **the worst**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate de anime",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Gojo vs. otro hechicero: strong",
+                "right": "stronger than"
+              },
+              {
+                "left": "El #1 de la serie: strong",
+                "right": "the strongest"
+              },
+              {
+                "left": "Sukuna vs. Gojo: dangerous",
+                "right": "more dangerous than"
+              },
+              {
+                "left": "El mejor anime del año: good",
+                "right": "the best"
+              }
+            ],
+            "completion_feedback": "**Comparative** (dos): -er + than o more + than. **Superlative** (el #1): the -est o the most. Irregulares: good → better → best, bad → worse → worst. Nunca 'more faster'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate de cracks",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Mbappé vs. Lamine: fast",
+                "right": "faster than"
+              },
+              {
+                "left": "El más alto de los tres: tall",
+                "right": "the tallest"
+              },
+              {
+                "left": "Lamine vs. otro extremo: skillful",
+                "right": "more skillful than"
+              },
+              {
+                "left": "El peor partido: bad",
+                "right": "the worst"
+              }
+            ],
+            "completion_feedback": "**Comparative** (dos): -er + than o more + than. **Superlative** (el #1): the -est o the most. Irregulares: good → better → best, bad → worse → worst. Nunca 'more faster'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chat de K-pop",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Este álbum vs. el anterior: good",
+                "right": "better than"
+              },
+              {
+                "left": "La canción más pegajosa: catchy",
+                "right": "the catchiest"
+              },
+              {
+                "left": "El grupo más famoso: famous",
+                "right": "the most famous"
+              }
+            ],
+            "completion_feedback": "**Comparative** (dos): -er + than o more + than. **Superlative** (el #1): the -est o the most. Irregulares: good → better → best, bad → worse → worst. Nunca 'more faster'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Armas de Fortnite",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Escopeta vs. pistola: powerful",
+                "right": "more powerful than"
+              },
+              {
+                "left": "La más precisa de todas: accurate",
+                "right": "the most accurate"
+              },
+              {
+                "left": "SMG vs. rifle: fast",
+                "right": "faster than"
+              }
+            ],
+            "completion_feedback": "**Comparative** (dos): -er + than o more + than. **Superlative** (el #1): the -est o the most. Irregulares: good → better → best, bad → worse → worst. Nunca 'more faster'."
+          }
+        }
+      }
+    },
+    "countable-and-uncountable-nouns": {
+      "order_steps": {
+        "prompt": "Decide entre many y much",
+        "steps": [
+          "Mira el sustantivo",
+          "¿Se puede contar con números? Entonces es countable",
+          "Countable → many o a few. Uncountable → much o a little",
+          "Completa: 'I don't have much time.'"
+        ],
+        "completion_feedback": "Si el sustantivo se **cuenta**, usa **many** o **a few**. Si solo se **mide** (time, water, money), usa **much** o **a little**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "Palabra correcta",
+            "pairs": [
+              {
+                "left": "Tanjiro used ___ techniques",
+                "right": "many"
+              },
+              {
+                "left": "He didn't have ___ time",
+                "right": "much"
+              },
+              {
+                "left": "Only ___ demons survived",
+                "right": "a few"
+              },
+              {
+                "left": "He drank ___ water",
+                "right": "a little"
+              }
+            ],
+            "completion_feedback": "**Countable** (se cuentan, tienen plural): many, a few, números. **Uncountable** (solo se miden): much, a little. **Some** y **a lot of** sirven para los dos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La Masia",
+            "right_label": "Palabra correcta",
+            "pairs": [
+              {
+                "left": "We have ___ players",
+                "right": "many"
+              },
+              {
+                "left": "We don't have ___ time",
+                "right": "much"
+              },
+              {
+                "left": "___ coaches are watching us",
+                "right": "A few"
+              },
+              {
+                "left": "We only have ___ energy left",
+                "right": "a little"
+              }
+            ],
+            "completion_feedback": "**Countable** (se cuentan, tienen plural): many, a few, números. **Uncountable** (solo se miden): much, a little. **Some** y **a lot of** sirven para los dos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Merch de IVE",
+            "right_label": "Palabra correcta",
+            "pairs": [
+              {
+                "left": "I bought ___ photocards",
+                "right": "many"
+              },
+              {
+                "left": "I didn't spend ___ money",
+                "right": "much"
+              },
+              {
+                "left": "I have ___ glitter left",
+                "right": "a little"
+              }
+            ],
+            "completion_feedback": "**Countable** (se cuentan, tienen plural): many, a few, números. **Uncountable** (solo se miden): much, a little. **Some** y **a lot of** sirven para los dos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Palabra correcta",
+            "pairs": [
+              {
+                "left": "I have ___ chests",
+                "right": "many"
+              },
+              {
+                "left": "There is ___ lava near the cave",
+                "right": "a little"
+              },
+              {
+                "left": "I only have ___ diamonds left",
+                "right": "a few"
+              },
+              {
+                "left": "I don't have ___ wood",
+                "right": "much"
+              }
+            ],
+            "completion_feedback": "**Countable** (se cuentan, tienen plural): many, a few, números. **Uncountable** (solo se miden): much, a little. **Some** y **a lot of** sirven para los dos."
+          }
+        }
+      }
+    },
+    "modal-verbs-can-must-should": {
+      "order_steps": {
+        "prompt": "Arma una oración con un modal verb",
+        "steps": [
+          "Identifica la idea: es un consejo",
+          "Elige el modal: consejo → should",
+          "Agrega el verbo base, sin 'to'",
+          "Completa: 'You should rest before the mission.'"
+        ],
+        "completion_feedback": "Modal + **verbo base** sin 'to': **can** (habilidad o permiso), **must** (obligación), **should** (consejo). El modal no cambia con el sujeto. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "Modal",
+            "pairs": [
+              {
+                "left": "Puede usar Respiración de Agua",
+                "right": "can"
+              },
+              {
+                "left": "Obligatorio cortarle el cuello",
+                "right": "must"
+              },
+              {
+                "left": "Buena idea descansar",
+                "right": "should"
+              },
+              {
+                "left": "Mala idea ir solo vs. una Luna",
+                "right": "shouldn't"
+              }
+            ],
+            "completion_feedback": "**Can** = habilidad o permiso. **Must** = obligación (mustn't = prohibido). **Should** = consejo (shouldn't = mala idea). Siempre van con el verbo base y sin 'to'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reglas del futbol",
+            "right_label": "Modal",
+            "pairs": [
+              {
+                "left": "El portero puede usar las manos",
+                "right": "can"
+              },
+              {
+                "left": "Debe salir tras una roja",
+                "right": "must"
+              },
+              {
+                "left": "Mala idea simular faltas",
+                "right": "shouldn't"
+              },
+              {
+                "left": "Prohibido salir sin avisar",
+                "right": "mustn't"
+              }
+            ],
+            "completion_feedback": "**Can** = habilidad o permiso. **Must** = obligación (mustn't = prohibido). **Should** = consejo (shouldn't = mala idea). Siempre van con el verbo base y sin 'to'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Audición",
+            "right_label": "Modal",
+            "pairs": [
+              {
+                "left": "Puedes cantar o rapear",
+                "right": "can"
+              },
+              {
+                "left": "Debes traer tu identificación",
+                "right": "must"
+              },
+              {
+                "left": "Deberías ensayar a diario",
+                "right": "should"
+              }
+            ],
+            "completion_feedback": "**Can** = habilidad o permiso. **Must** = obligación (mustn't = prohibido). **Should** = consejo (shouldn't = mala idea). Siempre van con el verbo base y sin 'to'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "Modal",
+            "pairs": [
+              {
+                "left": "Puedes planear con el viento",
+                "right": "can"
+              },
+              {
+                "left": "Deberías subir tus armas",
+                "right": "should"
+              },
+              {
+                "left": "Mala idea malgastar resina",
+                "right": "shouldn't"
+              }
+            ],
+            "completion_feedback": "**Can** = habilidad o permiso. **Must** = obligación (mustn't = prohibido). **Should** = consejo (shouldn't = mala idea). Siempre van con el verbo base y sin 'to'."
+          }
+        }
+      }
+    },
+    "future-will-and-going-to": {
+      "order_steps": {
+        "prompt": "Arma una oración con going to",
+        "steps": [
+          "Elige el sujeto: Madrid",
+          "Agrega am, is o are: Madrid is",
+          "Agrega going to: Madrid is going to",
+          "Cierra con el verbo base: 'Madrid is going to win.'"
+        ],
+        "completion_feedback": "**Going to** = am/is/are + going to + verbo base, para **planes** y predicciones con **evidencia**. **Will** + verbo base, para decisiones del momento y **promesas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "Uso",
+            "pairs": [
+              {
+                "left": "'They're going to release a movie'",
+                "right": "Plan ya anunciado"
+              },
+              {
+                "left": "'I will not spoil it, I promise'",
+                "right": "Promesa"
+              },
+              {
+                "left": "'OK, I'll marathon it tonight!'",
+                "right": "Decisión del momento"
+              }
+            ],
+            "completion_feedback": "**Going to**: planes ya decididos y predicciones con evidencia. **Will**: decisiones del momento, promesas y predicciones sin evidencia. Ambos van con el verbo base."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Real Madrid",
+            "right_label": "Uso",
+            "pairs": [
+              {
+                "left": "Va 3-0 al 80': 'Madrid is going to win'",
+                "right": "Predicción con evidencia"
+              },
+              {
+                "left": "'OK, I will bet on a 2-0!'",
+                "right": "Decisión del momento"
+              },
+              {
+                "left": "'I will go to the stadium, I promise'",
+                "right": "Promesa"
+              }
+            ],
+            "completion_feedback": "**Going to**: planes ya decididos y predicciones con evidencia. **Will**: decisiones del momento, promesas y predicciones sin evidencia. Ambos van con el verbo base."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback de SKZ",
+            "right_label": "Uso",
+            "pairs": [
+              {
+                "left": "'I'm going to buy three versions'",
+                "right": "Plan ya decidido"
+              },
+              {
+                "left": "'Sure, I will design the banner!'",
+                "right": "Decisión del momento"
+              },
+              {
+                "left": "Teaser oscuro: 'It's going to be dark'",
+                "right": "Predicción con evidencia"
+              }
+            ],
+            "completion_feedback": "**Going to**: planes ya decididos y predicciones con evidencia. **Will**: decisiones del momento, promesas y predicciones sin evidencia. Ambos van con el verbo base."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de Brawl",
+            "right_label": "Uso",
+            "pairs": [
+              {
+                "left": "'I'm going to grind all weekend'",
+                "right": "Plan ya decidido"
+              },
+              {
+                "left": "'Cool, I will join you tonight!'",
+                "right": "Decisión del momento"
+              },
+              {
+                "left": "'I will carry the team, I promise'",
+                "right": "Promesa"
+              },
+              {
+                "left": "Tormenta encima: 'It's going to close'",
+                "right": "Predicción con evidencia"
+              }
+            ],
+            "completion_feedback": "**Going to**: planes ya decididos y predicciones con evidencia. **Will**: decisiones del momento, promesas y predicciones sin evidencia. Ambos van con el verbo base."
+          }
+        }
+      }
+    },
+    "vocabulary-travel-food-and-health": {
+      "order_steps": {
+        "prompt": "Ordena los pasos de un viaje en inglés",
+        "steps": [
+          "Book a flight and a hotel",
+          "Pack your luggage",
+          "Take the flight to your destination",
+          "Check into the hotel",
+          "Try the local food"
+        ],
+        "completion_feedback": "Un viaje en inglés: **book** (reservar), **pack** (empacar), **take a flight** (tomar un vuelo), **check in** (registrarse) y **try** (probar). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Sanji prepara la cena",
+                "right": "cook"
+              },
+              {
+                "left": "Navegan a una isla nueva",
+                "right": "sail"
+              },
+              {
+                "left": "Zoro sale herido",
+                "right": "injured"
+              },
+              {
+                "left": "Chopper lo atiende",
+                "right": "treat"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **travel** (trip, flight, hotel, explore), **food** (meal, dish, cook, delicious) y **health** (injured, tired, rest, heal, doctor)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La Selección viaja",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Viajan al extranjero",
+                "right": "travel abroad"
+              },
+              {
+                "left": "Se hospedan cerca del estadio",
+                "right": "stay at a hotel"
+              },
+              {
+                "left": "Dieta sana antes del partido",
+                "right": "healthy food"
+              },
+              {
+                "left": "El lesionado descansa",
+                "right": "rest"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **travel** (trip, flight, hotel, explore), **food** (meal, dish, cook, delicious) y **health** (injured, tired, rest, heal, doctor)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "NANA TOUR",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Reservan un hotel en Roma",
+                "right": "book a hotel"
+              },
+              {
+                "left": "Mingyu prepara la cena",
+                "right": "cook dinner"
+              },
+              {
+                "left": "Hoshi está agotado",
+                "right": "tired"
+              },
+              {
+                "left": "Prueban pasta italiana",
+                "right": "try local food"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **travel** (trip, flight, hotel, explore), **food** (meal, dish, cook, delicious) y **health** (injured, tired, rest, heal, doctor)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Recorrer una región nueva",
+                "right": "explore"
+              },
+              {
+                "left": "Comer para recuperar HP",
+                "right": "heal"
+              },
+              {
+                "left": "Platillo de Liyue",
+                "right": "dish"
+              },
+              {
+                "left": "Punto de teletransporte",
+                "right": "waypoint"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **travel** (trip, flight, hotel, explore), **food** (meal, dish, cook, delicious) y **health** (injured, tired, rest, heal, doctor)."
+          }
+        }
+      }
+    }
+  }
+}
