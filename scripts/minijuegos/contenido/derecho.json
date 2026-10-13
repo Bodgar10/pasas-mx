@@ -1,0 +1,677 @@
+{
+  "subject": "derecho",
+  "topics": {
+    "concepto-de-derecho-y-norma-juridica": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de una norma jurídica",
+        "steps": [
+          "La autoridad crea la norma",
+          "La norma obliga a todos, estén o no de acuerdo",
+          "Alguien comete la conducta prohibida",
+          "La autoridad aplica la sanción por la fuerza"
+        ],
+        "completion_feedback": "La norma jurídica la dicta una **autoridad**, regula **conductas externas** y se impone por la **fuerza** si no se cumple. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ley del Gobierno",
+            "right_label": "Característica",
+            "pairs": [
+              {
+                "left": "La dicta el Gobierno, no los piratas",
+                "right": "Heteronomía"
+              },
+              {
+                "left": "Castiga leer Poneglyphs, no pensarlo",
+                "right": "Exterioridad"
+              },
+              {
+                "left": "La Marina la impone por la fuerza",
+                "right": "Coercibilidad"
+              },
+              {
+                "left": "Recompensa por Robin",
+                "right": "Sanción"
+              }
+            ],
+            "completion_feedback": "La **norma jurídica** es **heterónoma** (la dicta otro), **exterior** (regula actos), **bilateral** (da derechos y deberes) y **coercible** (se impone por la fuerza)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reglamento IFAB",
+            "right_label": "Característica",
+            "pairs": [
+              {
+                "left": "La IFAB la escribe, no el jugador",
+                "right": "Heteronomía"
+              },
+              {
+                "left": "Sanciona la falta, no la intención",
+                "right": "Exterioridad"
+              },
+              {
+                "left": "El árbitro expulsa aunque protestes",
+                "right": "Coercibilidad"
+              },
+              {
+                "left": "Derecho a jugar y deber de respetar",
+                "right": "Bilateralidad"
+              }
+            ],
+            "completion_feedback": "La **norma jurídica** es **heterónoma** (la dicta otro), **exterior** (regula actos), **bilateral** (da derechos y deberes) y **coercible** (se impone por la fuerza)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Contrato de JYP",
+            "right_label": "Característica",
+            "pairs": [
+              {
+                "left": "Lo redactó la empresa",
+                "right": "Heteronomía"
+              },
+              {
+                "left": "Un tribunal puede hacerlo cumplir",
+                "right": "Coercibilidad"
+              },
+              {
+                "left": "Derechos y deberes para ambos",
+                "right": "Bilateralidad"
+              },
+              {
+                "left": "Horas, redes y ganancias",
+                "right": "Conductas reguladas"
+              }
+            ],
+            "completion_feedback": "La **norma jurídica** es **heterónoma** (la dicta otro), **exterior** (regula actos), **bilateral** (da derechos y deberes) y **coercible** (se impone por la fuerza)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Términos de Riot",
+            "right_label": "Característica",
+            "pairs": [
+              {
+                "left": "Riot dicta la regla, no tú",
+                "right": "Heteronomía"
+              },
+              {
+                "left": "Castiga usar cheats, no pensarlo",
+                "right": "Exterioridad"
+              },
+              {
+                "left": "Ban permanente sin preguntar",
+                "right": "Coercibilidad"
+              },
+              {
+                "left": "Juegas si respetas las reglas",
+                "right": "Bilateralidad"
+              }
+            ],
+            "completion_feedback": "La **norma jurídica** es **heterónoma** (la dicta otro), **exterior** (regula actos), **bilateral** (da derechos y deberes) y **coercible** (se impone por la fuerza)."
+          }
+        }
+      }
+    },
+    "fuentes-del-derecho": {
+      "order_steps": {
+        "prompt": "Ordena a qué fuente acude un juez ante un caso dudoso",
+        "steps": [
+          "Revisa la ley escrita: la legislación",
+          "Busca cómo se resolvieron casos iguales: la jurisprudencia",
+          "Considera la costumbre que todos aceptan",
+          "Se apoya en la opinión de expertos: la doctrina"
+        ],
+        "completion_feedback": "La **legislación** manda primero; las demás fuentes ayudan a interpretarla o a llenar sus huecos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reglas de Konoha",
+            "right_label": "Fuente",
+            "pairs": [
+              {
+                "left": "Ley del Hokage y del Consejo",
+                "right": "Legislación"
+              },
+              {
+                "left": "Proteger a tu equipo de tres",
+                "right": "Costumbre"
+              },
+              {
+                "left": "Cómo se trató a otros desertores",
+                "right": "Jurisprudencia"
+              },
+              {
+                "left": "Enseñanzas de Kakashi",
+                "right": "Doctrina"
+              }
+            ],
+            "completion_feedback": "Las **fuentes formales** del derecho son la **legislación** (ley escrita), la **costumbre**, la **jurisprudencia** (criterios de casos resueltos) y la **doctrina** (opinión de expertos)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol de Giménez",
+            "right_label": "Fuente",
+            "pairs": [
+              {
+                "left": "Reglas de Juego de la IFAB",
+                "right": "Legislación"
+              },
+              {
+                "left": "Sacar el balón si hay un lesionado",
+                "right": "Costumbre"
+              },
+              {
+                "left": "Criterios de jugadas previas con VAR",
+                "right": "Jurisprudencia"
+              },
+              {
+                "left": "Exárbitros que explican la regla",
+                "right": "Doctrina"
+              }
+            ],
+            "completion_feedback": "Las **fuentes formales** del derecho son la **legislación** (ley escrita), la **costumbre**, la **jurisprudencia** (criterios de casos resueltos) y la **doctrina** (opinión de expertos)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Votos de MAMA",
+            "right_label": "Fuente",
+            "pairs": [
+              {
+                "left": "Reglamento oficial de Mnet",
+                "right": "Legislación"
+              },
+              {
+                "left": "Streaming parties de los fandoms",
+                "right": "Costumbre"
+              },
+              {
+                "left": "Anular bots como en otra edición",
+                "right": "Jurisprudencia"
+              },
+              {
+                "left": "Columna de Soompi",
+                "right": "Doctrina"
+              }
+            ],
+            "completion_feedback": "Las **fuentes formales** del derecho son la **legislación** (ley escrita), la **costumbre**, la **jurisprudencia** (criterios de casos resueltos) y la **doctrina** (opinión de expertos)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Servidor SMP",
+            "right_label": "Fuente",
+            "pairs": [
+              {
+                "left": "Panel escrito de reglas",
+                "right": "Legislación"
+              },
+              {
+                "left": "No robar de un cofre abierto",
+                "right": "Costumbre"
+              },
+              {
+                "left": "Baneo igual al del mes pasado",
+                "right": "Jurisprudencia"
+              },
+              {
+                "left": "Guías de la wiki de Minecraft",
+                "right": "Doctrina"
+              }
+            ],
+            "completion_feedback": "Las **fuentes formales** del derecho son la **legislación** (ley escrita), la **costumbre**, la **jurisprudencia** (criterios de casos resueltos) y la **doctrina** (opinión de expertos)."
+          }
+        }
+      }
+    },
+    "ramas-del-derecho": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas un conflicto en su rama",
+        "steps": [
+          "Identifica qué pasó",
+          "Identifica quiénes son las partes",
+          "Decide si son iguales o si el Estado se impone",
+          "Asigna la rama: privado, público o social"
+        ],
+        "completion_feedback": "La clave es la **relación**: entre iguales es privado; con el Estado imponiéndose, público; protegiendo al débil, social. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mundo de JJK",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Los Altos Mandos ordenan una ejecución",
+                "right": "Derecho público"
+              },
+              {
+                "left": "Alianza entre dos clanes",
+                "right": "Derecho privado"
+              },
+              {
+                "left": "Indemnización a hechiceros heridos",
+                "right": "Derecho social"
+              }
+            ],
+            "completion_feedback": "El **derecho público** regula al Estado imponiéndose, el **privado** a particulares iguales y el **social** protege a la parte más débil, como el trabajador."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Caso Mbappé",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Patrocinio con Nike",
+                "right": "Derecho privado"
+              },
+              {
+                "left": "Aficionado que agrede a un jugador",
+                "right": "Derecho público (penal)"
+              },
+              {
+                "left": "Reclamo de salarios al PSG",
+                "right": "Derecho social (laboral)"
+              }
+            ],
+            "completion_feedback": "El **derecho público** regula al Estado imponiéndose, el **privado** a particulares iguales y el **social** protege a la parte más débil, como el trabajador."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mundo de IVE",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Contrato de exclusividad",
+                "right": "Derecho privado"
+              },
+              {
+                "left": "Sasaeng procesado por acoso",
+                "right": "Derecho público"
+              },
+              {
+                "left": "Jornada de idols menores",
+                "right": "Derecho social"
+              }
+            ],
+            "completion_feedback": "El **derecho público** regula al Estado imponiéndose, el **privado** a particulares iguales y el **social** protege a la parte más débil, como el trabajador."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ciudad Roblox",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Estafa en un trade de pets",
+                "right": "Privado (civil)"
+              },
+              {
+                "left": "Ban por usar exploits",
+                "right": "Público"
+              },
+              {
+                "left": "Reparto de Robux entre estudios",
+                "right": "Privado (mercantil)"
+              }
+            ],
+            "completion_feedback": "El **derecho público** regula al Estado imponiéndose, el **privado** a particulares iguales y el **social** protege a la parte más débil, como el trabajador."
+          }
+        }
+      }
+    },
+    "garantias-individuales-y-derechos-humanos": {
+      "order_steps": {
+        "prompt": "Ordena el proceso justo antes de quitarte un derecho",
+        "steps": [
+          "Te notifican de qué se te acusa",
+          "Te dan oportunidad de defenderte (audiencia)",
+          "Revisa tu caso una autoridad competente",
+          "La resolución cita la regla y explica el porqué"
+        ],
+        "completion_feedback": "Sin **notificación**, **audiencia** y **resolución fundada** se viola la seguridad jurídica (arts. 14 y 16). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Híbridos y diablos",
+            "right_label": "Derecho",
+            "pairs": [
+              {
+                "left": "Eliminar a alguien sin escucharlo",
+                "right": "Viola el debido proceso"
+              },
+              {
+                "left": "Tratar a Denji como herramienta",
+                "right": "Viola la dignidad"
+              },
+              {
+                "left": "Nadie pierde la vida sin juicio",
+                "right": "Derecho a la vida"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por su **dignidad**: universales e irrenunciables. Las **garantías** (arts. 1°, 14 y 16) son los medios para protegerlos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Caso Vinícius",
+            "right_label": "Derecho",
+            "pairs": [
+              {
+                "left": "Insultos por color de piel",
+                "right": "Discriminación racial"
+              },
+              {
+                "left": "Art. 1° constitucional",
+                "right": "Igualdad"
+              },
+              {
+                "left": "La fiscalía investiga",
+                "right": "El Estado protege"
+              },
+              {
+                "left": "Menor pago a futbolistas",
+                "right": "Discriminación por género"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por su **dignidad**: universales e irrenunciables. Las **garantías** (arts. 1°, 14 y 16) son los medios para protegerlos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Contratos esclavo",
+            "right_label": "Derecho",
+            "pairs": [
+              {
+                "left": "Sin descanso ni pago justo",
+                "right": "Viola derechos laborales"
+              },
+              {
+                "left": "No puede renunciar a su salud",
+                "right": "Irrenunciables"
+              },
+              {
+                "left": "Caso TVXQ",
+                "right": "Límites legales a contratos"
+              },
+              {
+                "left": "Ser tratada como producto",
+                "right": "Viola su dignidad"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por su **dignidad**: universales e irrenunciables. Las **garantías** (arts. 1°, 14 y 16) son los medios para protegerlos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ban sin aviso",
+            "right_label": "Garantía",
+            "pairs": [
+              {
+                "left": "Saber de qué te acusan",
+                "right": "Notificación"
+              },
+              {
+                "left": "Defenderte antes del castigo",
+                "right": "Audiencia, art. 14"
+              },
+              {
+                "left": "Decir qué regla violaste",
+                "right": "Fundamentación, art. 16"
+              },
+              {
+                "left": "Castigo justo para la falta",
+                "right": "Proporcionalidad"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por su **dignidad**: universales e irrenunciables. Las **garantías** (arts. 1°, 14 y 16) son los medios para protegerlos."
+          }
+        }
+      }
+    },
+    "estructura-del-estado-mexicano": {
+      "order_steps": {
+        "prompt": "Ordena el camino de una ley federal",
+        "steps": [
+          "Alguien presenta una iniciativa de ley",
+          "El Congreso la discute y la aprueba",
+          "El Presidente la promulga y se publica",
+          "Los jueces la aplican al resolver casos"
+        ],
+        "completion_feedback": "Cada poder entra en un momento distinto: **crear** (Legislativo), **promulgar y ejecutar** (Ejecutivo) y **juzgar** (Judicial). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gobierno Mundial",
+            "right_label": "Poder",
+            "pairs": [
+              {
+                "left": "Prohibir investigar el Siglo Vacío",
+                "right": "Legislativo"
+              },
+              {
+                "left": "Akainu moviliza la flota",
+                "right": "Ejecutivo"
+              },
+              {
+                "left": "Condenan a un prisionero",
+                "right": "Judicial"
+              },
+              {
+                "left": "Ninguno hace todo",
+                "right": "Pesos y contrapesos"
+              }
+            ],
+            "completion_feedback": "El Estado mexicano divide su poder en **Legislativo**, **Ejecutivo** y **Judicial** (art. 49), y se organiza en **Federación**, **estados** y **municipios**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Partido del Barça",
+            "right_label": "Poder",
+            "pairs": [
+              {
+                "left": "La IFAB cambia el fuera de juego",
+                "right": "Legislativo"
+              },
+              {
+                "left": "El DT hace tres cambios",
+                "right": "Ejecutivo"
+              },
+              {
+                "left": "El VAR resuelve un penal",
+                "right": "Judicial"
+              },
+              {
+                "left": "El árbitro no inventa reglas",
+                "right": "División de poderes"
+              }
+            ],
+            "completion_feedback": "El Estado mexicano divide su poder en **Legislativo**, **Ejecutivo** y **Judicial** (art. 49), y se organiza en **Federación**, **estados** y **municipios**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Niveles de HYBE",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "Estrategia global de la matriz",
+                "right": "Federación"
+              },
+              {
+                "left": "Concepto del álbum de la label",
+                "right": "Estados"
+              },
+              {
+                "left": "Hora del teaser en un país",
+                "right": "Municipio"
+              },
+              {
+                "left": "Cada nivel con su ámbito",
+                "right": "Reparto de competencias"
+              }
+            ],
+            "completion_feedback": "El Estado mexicano divide su poder en **Legislativo**, **Ejecutivo** y **Judicial** (art. 49), y se organiza en **Federación**, **estados** y **municipios**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ranked de Valorant",
+            "right_label": "Poder",
+            "pairs": [
+              {
+                "left": "Riot publica un parche",
+                "right": "Legislativo"
+              },
+              {
+                "left": "El equipo ejecuta el rush B",
+                "right": "Ejecutivo"
+              },
+              {
+                "left": "Se revisa un reporte y se castiga",
+                "right": "Judicial"
+              },
+              {
+                "left": "Nadie crea, juega y juzga a la vez",
+                "right": "Pesos y contrapesos"
+              }
+            ],
+            "completion_feedback": "El Estado mexicano divide su poder en **Legislativo**, **Ejecutivo** y **Judicial** (art. 49), y se organiza en **Federación**, **estados** y **municipios**."
+          }
+        }
+      }
+    },
+    "derecho-civil-penal-y-mercantil-introduccion": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides la rama de un conflicto",
+        "steps": [
+          "Describe qué pasó",
+          "¿Hubo un delito? Entonces es penal",
+          "¿Es un negocio con fin de lucro? Es mercantil",
+          "Si es un acuerdo o un daño entre particulares, es civil"
+        ],
+        "completion_feedback": "Primero descarta el **delito** (penal); luego distingue el **lucro comercial** (mercantil) del trato entre particulares (civil). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cazadores",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Gremio que no paga el botín",
+                "right": "Civil"
+              },
+              {
+                "left": "Asesinar por un artefacto",
+                "right": "Penal"
+              },
+              {
+                "left": "Venta de artefactos con lucro",
+                "right": "Mercantil"
+              }
+            ],
+            "completion_feedback": "**Civil**: acuerdos, bienes y daños entre particulares. **Mercantil**: actos de comercio con lucro. **Penal**: delitos que el Estado persigue y castiga."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fichaje de Mbappé",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Patrocinio millonario",
+                "right": "Mercantil"
+              },
+              {
+                "left": "Usar su imagen sin permiso",
+                "right": "Civil"
+              },
+              {
+                "left": "Lesionar a otro aficionado",
+                "right": "Penal"
+              }
+            ],
+            "completion_feedback": "**Civil**: acuerdos, bienes y daños entre particulares. **Mercantil**: actos de comercio con lucro. **Penal**: delitos que el Estado persigue y castiga."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mundo K-pop",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Disputa por el contrato del grupo",
+                "right": "Civil"
+              },
+              {
+                "left": "Sasaeng con cámara oculta",
+                "right": "Penal"
+              },
+              {
+                "left": "Renovación con regalías",
+                "right": "Mercantil"
+              }
+            ],
+            "completion_feedback": "**Civil**: acuerdos, bienes y daños entre particulares. **Mercantil**: actos de comercio con lucro. **Penal**: delitos que el Estado persigue y castiga."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tres casos Roblox",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "Reparto de ganancias entre creadores",
+                "right": "Mercantil"
+              },
+              {
+                "left": "Romper un intercambio de items",
+                "right": "Civil"
+              },
+              {
+                "left": "Estafa masiva con Robux falsos",
+                "right": "Penal"
+              }
+            ],
+            "completion_feedback": "**Civil**: acuerdos, bienes y daños entre particulares. **Mercantil**: actos de comercio con lucro. **Penal**: delitos que el Estado persigue y castiga."
+          }
+        }
+      }
+    }
+  }
+}
