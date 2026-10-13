@@ -45,10 +45,13 @@ type Variante = 'A' | 'B'
  * s40 — PRUEBA A/B de la entrada al reto.
  *   A: portada con "Así se juega" y botón "Jugar el reto de hoy" (la de siempre).
  *   B: la ronda 1 de entrada, sin portada ni botón.
- * 50/50, fija por navegador (localStorage). ?v=a o ?v=b la fuerza (pruebas).
  * Corre antes de pintar: es un <script> en línea del HTML del servidor, como
- * el truco del modo oscuro. Si localStorage falla, se sortea en cada visita.
- * Todos los eventos del Arcade llevan `variant` para comparar las dos.
+ * el truco del modo oscuro. Todos los eventos del Arcade llevan `variant`.
+ *
+ * s46 — PRUEBA CERRADA el 13 oct: empataron (A 16% y B 14% respondieron la
+ * primera, 4 de 5 terminaron en las dos). Se queda B para TODOS, por ser una
+ * pantalla menos. ?v=a sigue mostrando la portada vieja, solo para revisarla.
+ * Ya no se sortea ni se lee localStorage: quien tenía 'a' guardado ve B.
  *
  * 🔴 No toca atributos de <html> ni de nada que pinte React: eso rompe la
  * hidratación. Deja la versión en window.__pasasArcadeV y, solo en B, mete un
@@ -56,7 +59,7 @@ type Variante = 'A' | 'B'
  */
 function scriptVariante(claseA: string, claseB: string): string {
   const css = `.${claseA}{display:none!important}.${claseB}{display:flex!important}`
-  return `(function(){var v=null;try{var q=new URLSearchParams(location.search).get('v');if(q==='a'||q==='b'){v=q}}catch(e){}try{var k='pasas_arcade_v';if(!v){v=localStorage.getItem(k)}if(v!=='a'&&v!=='b'){v=Math.random()<0.5?'a':'b'}localStorage.setItem(k,v)}catch(e){if(v!=='a'&&v!=='b'){v=Math.random()<0.5?'a':'b'}}window.__pasasArcadeV=v;if(v==='b'){var st=document.createElement('style');st.textContent=${JSON.stringify(css)};document.head.appendChild(st)}})();`
+  return `(function(){var v='b';try{if(new URLSearchParams(location.search).get('v')==='a'){v='a'}}catch(e){}window.__pasasArcadeV=v;if(v==='b'){var st=document.createElement('style');st.textContent=${JSON.stringify(css)};document.head.appendChild(st)}})();`
 }
 
 function leerVariante(): Variante {
