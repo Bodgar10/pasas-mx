@@ -1,0 +1,713 @@
+{
+  "subject": "temas-selectos-fisica",
+  "topics": {
+    "movimiento-ondulatorio": {
+      "order_steps": {
+        "prompt": "Ordena cómo se analiza una onda que avanza",
+        "steps": [
+          "Obtén la rapidez: distancia ÷ tiempo",
+          "Con la rapidez y λ, calcula f = v ÷ λ",
+          "Con la frecuencia, calcula el periodo T = 1 ÷ f",
+          "Interpreta: cada punto completa un ciclo en T segundos"
+        ],
+        "completion_feedback": "Primero la **rapidez** (v = d ÷ t), luego la **frecuencia** (f = v ÷ λ) y al final el **periodo** (T = 1 ÷ f). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estela de Tanjiro",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Parte más alta de la estela",
+                "right": "Cresta"
+              },
+              {
+                "left": "Parte más baja de la estela",
+                "right": "Valle"
+              },
+              {
+                "left": "Ondulaciones por segundo",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "Tiempo de una ondulación",
+                "right": "Periodo"
+              }
+            ],
+            "completion_feedback": "**Cresta** y **valle** son los puntos más alto y más bajo. La **frecuencia** cuenta ciclos por segundo y el **periodo** es lo que dura uno: **T = 1/f**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La ola del Azteca",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Cada aficionado se para y se sienta",
+                "right": "Oscilación"
+              },
+              {
+                "left": "Lo que sí recorre el estadio",
+                "right": "Energía"
+              },
+              {
+                "left": "Distancia entre dos zonas de pie",
+                "right": "Longitud de onda"
+              },
+              {
+                "left": "Qué tan rápido avanza la ola",
+                "right": "Rapidez"
+              }
+            ],
+            "completion_feedback": "Cada aficionado solo **oscila** en su lugar y lo que viaja es la **energía**. La **longitud de onda** va de cresta a cresta y la **rapidez** cumple v = λf."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ola de lightsticks",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Brazo arriba y abajo, ola de lado",
+                "right": "Onda transversal"
+              },
+              {
+                "left": "Qué tan alto sube tu brazo",
+                "right": "Amplitud"
+              },
+              {
+                "left": "De lo más alto a lo más bajo",
+                "right": "Dos amplitudes (2A)"
+              },
+              {
+                "left": "Entre dos brazos en lo más alto",
+                "right": "Longitud de onda"
+              }
+            ],
+            "completion_feedback": "Si la vibración es **perpendicular** al avance, la onda es **transversal**. La **amplitud** se mide desde el reposo, y de cresta a valle hay **2A**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pasos en Valorant",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Aire apretado por los pasos",
+                "right": "Compresión"
+              },
+              {
+                "left": "Aire más separado",
+                "right": "Rarefacción"
+              },
+              {
+                "left": "Vibra en la dirección del avance",
+                "right": "Onda longitudinal"
+              },
+              {
+                "left": "Lo que necesita el sonido para viajar",
+                "right": "Un medio"
+              }
+            ],
+            "completion_feedback": "El sonido es una onda **longitudinal**: el aire se aprieta (**compresión**) y se separa (**rarefacción**). Como es mecánica, necesita **un medio**."
+          }
+        }
+      }
+    },
+    "sonido-y-acustica": {
+      "order_steps": {
+        "prompt": "Ordena cómo se calcula una distancia con el eco",
+        "steps": [
+          "Mide el tiempo entre el sonido y su eco",
+          "Multiplica la rapidez del sonido por ese tiempo",
+          "Ese resultado es el camino de ida y vuelta",
+          "Divide entre 2 para obtener la distancia a la pared"
+        ],
+        "completion_feedback": "En el eco, **v · t** es el camino de **ida y vuelta**. Por eso la distancia a la pared es **d = v · t ÷ 2**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rugido de Denji",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Rugido que rebota en la pared",
+                "right": "Eco"
+              },
+              {
+                "left": "Tiempo que se mide en el eco",
+                "right": "Ida y vuelta"
+              },
+              {
+                "left": "Rapidez del sonido en el aire",
+                "right": "≈ 340 m/s"
+              },
+              {
+                "left": "Distancia a la pared",
+                "right": "d = v·t ÷ 2"
+              }
+            ],
+            "completion_feedback": "El **eco** es sonido reflejado. Como el tiempo medido es de **ida y vuelta**, la distancia es **d = v·t ÷ 2**, con v ≈ 340 m/s en el aire."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Silbatazo",
+            "right_label": "Qué oyes",
+            "pairs": [
+              {
+                "left": "El silbato se acerca",
+                "right": "Más agudo"
+              },
+              {
+                "left": "El silbato se aleja",
+                "right": "Más grave"
+              },
+              {
+                "left": "Justo frente a ti",
+                "right": "Tono real"
+              },
+              {
+                "left": "Cambio de tono por movimiento",
+                "right": "Efecto Doppler"
+              }
+            ],
+            "completion_feedback": "Si la fuente **se acerca**, oyes más agudo, y si **se aleja**, más grave. La fuente nunca cambia de tono: eso es el **efecto Doppler**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Voces de TXT",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Nota aguda de Beomgyu",
+                "right": "Alta frecuencia"
+              },
+              {
+                "left": "Voz grave de Soobin",
+                "right": "Baja frecuencia"
+              },
+              {
+                "left": "Qué tan fuerte suena",
+                "right": "Intensidad"
+              },
+              {
+                "left": "Rango del oído humano",
+                "right": "20 a 20 000 Hz"
+              }
+            ],
+            "completion_feedback": "La **frecuencia** decide el tono: más alta, más agudo. El volumen es la **intensidad**. El oído humano capta de **20 a 20 000 Hz**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lethal Company",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Escala para medir el volumen",
+                "right": "Decibeles"
+              },
+              {
+                "left": "Al alejarte de la fuente",
+                "right": "Baja la intensidad"
+              },
+              {
+                "left": "Duplicar la distancia",
+                "right": "≈ 6 dB menos"
+              },
+              {
+                "left": "Más amplitud en la onda",
+                "right": "Sonido más fuerte"
+              }
+            ],
+            "completion_feedback": "La intensidad se mide en **decibeles**, en escala logarítmica. **Baja al alejarte**: cada vez que duplicas la distancia pierdes unos 6 dB."
+          }
+        }
+      }
+    },
+    "optica-reflexion-y-refraccion": {
+      "order_steps": {
+        "prompt": "Ordena cómo se resuelve un problema de refracción",
+        "steps": [
+          "Mide el ángulo de incidencia desde la normal",
+          "Escribe la Ley de Snell: n₁·sen θ₁ = n₂·sen θ₂",
+          "Sustituye los índices y el seno del ángulo",
+          "Despeja sen θ₂ y obtén el ángulo con arcsen"
+        ],
+        "completion_feedback": "Mide desde la **normal**, aplica **Snell** y despeja **sen θ₂**. Si pasa a un medio con mayor **n**, el rayo se acerca a la normal. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Haz de Gojo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Haz que llega a la pared",
+                "right": "Rayo incidente"
+              },
+              {
+                "left": "Haz que sale rebotado",
+                "right": "Rayo reflejado"
+              },
+              {
+                "left": "Línea perpendicular a la pared",
+                "right": "Normal"
+              },
+              {
+                "left": "θᵢ igual a θᵣ",
+                "right": "Ley de la reflexión"
+              }
+            ],
+            "completion_feedback": "El **rayo incidente** llega, el **reflejado** sale y los dos forman el mismo ángulo con la **normal**: eso es la **ley de la reflexión**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Espejo del túnel",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Parece estar detrás del espejo",
+                "right": "Imagen virtual"
+              },
+              {
+                "left": "Ni más grande ni más chica",
+                "right": "Mismo tamaño"
+              },
+              {
+                "left": "El número de la espalda al revés",
+                "right": "Izquierda-derecha invertida"
+              },
+              {
+                "left": "Superficie lisa y pulida",
+                "right": "Reflexión especular"
+              }
+            ],
+            "completion_feedback": "El **espejo plano** da una imagen **virtual**, derecha, del **mismo tamaño** y con izquierda y derecha **invertidas**, gracias a la reflexión **especular**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Café del K-drama",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Popote que se ve quebrado",
+                "right": "Refracción"
+              },
+              {
+                "left": "Qué tan lenta va la luz en un medio",
+                "right": "Índice de refracción"
+              },
+              {
+                "left": "Pasa a un medio con mayor n",
+                "right": "Se acerca a la normal"
+              },
+              {
+                "left": "Pasa a un medio con menor n",
+                "right": "Se aleja de la normal"
+              }
+            ],
+            "completion_feedback": "La **refracción** dobla la luz al cambiar de medio. Si el **índice de refracción** aumenta, el rayo se acerca a la normal, y si disminuye, se aleja."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Charcos de Miles",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Línea perpendicular al charco",
+                "right": "Normal"
+              },
+              {
+                "left": "Ángulo con que llega la luz",
+                "right": "Incidencia"
+              },
+              {
+                "left": "Ángulo con que rebota",
+                "right": "Reflexión"
+              },
+              {
+                "left": "Te dan 50° con la superficie",
+                "right": "Usa 40° con la normal"
+              }
+            ],
+            "completion_feedback": "Los ángulos se miden desde la **normal**. Si te dan el ángulo con la superficie, réstalo de 90°. La **incidencia** siempre es igual a la **reflexión**."
+          }
+        }
+      }
+    },
+    "electromagnetismo": {
+      "order_steps": {
+        "prompt": "Ordena cómo se induce una corriente",
+        "steps": [
+          "Un imán se mueve cerca de una bobina",
+          "Cambia el flujo magnético que la atraviesa",
+          "Se induce un voltaje (Ley de Faraday)",
+          "Si el circuito está cerrado, circula corriente"
+        ],
+        "completion_feedback": "Sin **cambio de flujo** no hay inducción. Al cambiar el flujo se induce un **voltaje**, y con el circuito cerrado aparece una **corriente**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chidori de Kakashi",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El 'empuje' del chakra",
+                "right": "Voltaje"
+              },
+              {
+                "left": "Flujo de carga por segundo",
+                "right": "Corriente"
+              },
+              {
+                "left": "Lo que frena el flujo",
+                "right": "Resistencia"
+              },
+              {
+                "left": "V = I · R",
+                "right": "Ley de Ohm"
+              }
+            ],
+            "completion_feedback": "El **voltaje** empuja, la **corriente** fluye y la **resistencia** se opone. Las tres se relacionan con la **Ley de Ohm**: V = I·R."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Línea de gol",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El balón cruza y altera el campo",
+                "right": "Cambio de flujo"
+              },
+              {
+                "left": "Aparece una señal eléctrica",
+                "right": "Voltaje inducido"
+              },
+              {
+                "left": "La corriente se opone al cambio",
+                "right": "Ley de Lenz"
+              },
+              {
+                "left": "Imán quieto junto a la bobina",
+                "right": "No induce nada"
+              }
+            ],
+            "completion_feedback": "Solo un **flujo que cambia** induce **voltaje** (Faraday), y el signo menos de **Lenz** dice que la corriente se opone al cambio. Un imán quieto no induce nada."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lightsticks de IVE",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Señal que enciende el lightstick",
+                "right": "Onda de radio"
+              },
+              {
+                "left": "No necesita aire para viajar",
+                "right": "Sin medio"
+              },
+              {
+                "left": "Rapidez de toda onda EM",
+                "right": "3×10⁸ m/s"
+              },
+              {
+                "left": "Radio, luz y rayos X juntos",
+                "right": "Espectro electromagnético"
+              }
+            ],
+            "completion_feedback": "Las ondas **electromagnéticas** viajan **sin medio** a **3×10⁸ m/s**. La radio, la luz y los rayos X forman el **espectro electromagnético**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Campo de Raiden",
+            "right_label": "Qué pasa",
+            "pairs": [
+              {
+                "left": "Dos cargas positivas",
+                "right": "Se repelen"
+              },
+              {
+                "left": "Una positiva y una negativa",
+                "right": "Se atraen"
+              },
+              {
+                "left": "Duplicas la distancia",
+                "right": "La fuerza baja a ¼"
+              },
+              {
+                "left": "F = k·q₁·q₂ / r²",
+                "right": "Ley de Coulomb"
+              }
+            ],
+            "completion_feedback": "Cargas iguales **se repelen** y opuestas **se atraen**. Por la **Ley de Coulomb**, si duplicas la distancia la fuerza baja a la **cuarta parte**."
+          }
+        }
+      }
+    },
+    "circuitos-electricos": {
+      "order_steps": {
+        "prompt": "Ordena el cálculo de resistencias en paralelo",
+        "steps": [
+          "Escribe 1/R_total = 1/R₁ + 1/R₂",
+          "Sustituye el valor de cada resistencia",
+          "Suma las fracciones con común denominador",
+          "Invierte el resultado para obtener R_total"
+        ],
+        "completion_feedback": "En **paralelo** se suman los **inversos** y al final se **invierte**. La resistencia total siempre sale **menor** que la más chica. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Maná de Jinwoo",
+            "right_label": "Qué pasa",
+            "pairs": [
+              {
+                "left": "Sube el voltaje, R igual",
+                "right": "Más corriente"
+              },
+              {
+                "left": "Sube la resistencia, V igual",
+                "right": "Menos corriente"
+              },
+              {
+                "left": "Unidad de la resistencia",
+                "right": "Ohm (Ω)"
+              },
+              {
+                "left": "Unidad de la corriente",
+                "right": "Ampere (A)"
+              }
+            ],
+            "completion_feedback": "Con la misma R, más **voltaje** da más corriente. Con el mismo V, más **resistencia** da menos. La resistencia se mide en **ohms** y la corriente en **amperes**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reflectores",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Cada reflector en su propia rama",
+                "right": "Paralelo"
+              },
+              {
+                "left": "Lo que reciben todas las ramas",
+                "right": "Mismo voltaje"
+              },
+              {
+                "left": "Se funde un reflector",
+                "right": "Los demás siguen"
+              },
+              {
+                "left": "R_total en paralelo",
+                "right": "Menor que la más chica"
+              }
+            ],
+            "completion_feedback": "En **paralelo** cada rama recibe el **mismo voltaje** y, si una falla, las demás siguen. La resistencia total es **menor** que la más chica."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Foquitos navideños",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Foquitos en una sola fila",
+                "right": "Serie"
+              },
+              {
+                "left": "Se funde uno y todo se apaga",
+                "right": "Camino único"
+              },
+              {
+                "left": "Lo que es igual en todos",
+                "right": "Misma corriente"
+              },
+              {
+                "left": "4 Ω + 8 Ω",
+                "right": "12 Ω"
+              }
+            ],
+            "completion_feedback": "En **serie** hay un **solo camino**: la **misma corriente** pasa por todo y las resistencias se suman. Si un foco se funde, se apagan todos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Redstone",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Palanca que da la energía",
+                "right": "Fuente"
+              },
+              {
+                "left": "Línea de redstone completa",
+                "right": "Circuito cerrado"
+              },
+              {
+                "left": "Rompes un bloque de la línea",
+                "right": "Circuito abierto"
+              },
+              {
+                "left": "Pistón o lámpara",
+                "right": "Carga"
+              }
+            ],
+            "completion_feedback": "La **fuente** da la energía y la **carga** la usa. Con el camino completo, el circuito está **cerrado**. Si se corta, queda **abierto** y no hay corriente."
+          }
+        }
+      }
+    },
+    "fisica-moderna-relatividad-y-cuantica-introduccion": {
+      "order_steps": {
+        "prompt": "Ordena cómo la luz arranca un electrón",
+        "steps": [
+          "La luz llega en paquetes llamados fotones",
+          "La energía de cada fotón depende de su frecuencia",
+          "Si supera la energía mínima, arranca un electrón",
+          "Se produce corriente: la luz actúa como partícula"
+        ],
+        "completion_feedback": "En el **efecto fotoeléctrico** importa la **frecuencia** de cada **fotón**, no el brillo. Si supera el umbral, arranca electrones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Levi y la luz",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Posición y velocidad exactas a la vez",
+                "right": "Imposible (Heisenberg)"
+              },
+              {
+                "left": "Paquete de energía de la luz",
+                "right": "Fotón"
+              },
+              {
+                "left": "Luz roja muy intensa sobre metal",
+                "right": "No arranca electrones"
+              },
+              {
+                "left": "Luz UV tenue sobre metal",
+                "right": "Sí arranca electrones"
+              }
+            ],
+            "completion_feedback": "Según **Heisenberg**, no puedes conocer a la vez posición y velocidad exactas. En el efecto fotoeléctrico, la **frecuencia** del **fotón**, y no el brillo, decide si arranca electrones."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Velocidad límite",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Límite de velocidad del universo",
+                "right": "c ≈ 3×10⁸ m/s"
+              },
+              {
+                "left": "Masa y energía son equivalentes",
+                "right": "E = mc²"
+              },
+              {
+                "left": "Lo que haría falta para llegar a c",
+                "right": "Energía infinita"
+              },
+              {
+                "left": "Energía de 0.45 kg de masa",
+                "right": "4.05×10¹⁶ J"
+              }
+            ],
+            "completion_feedback": "Nada con masa alcanza **c**: haría falta **energía infinita**. Con **E = mc²**, hasta 0.45 kg equivalen a **4.05×10¹⁶ J**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Photocard sellada",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Sobre cerrado, varias opciones",
+                "right": "Superposición"
+              },
+              {
+                "left": "Abrir y mirar la carta",
+                "right": "Medición"
+              },
+              {
+                "left": "Sale un integrante concreto",
+                "right": "Colapso"
+              },
+              {
+                "left": "1 entre 6 integrantes",
+                "right": "Probabilidad"
+              }
+            ],
+            "completion_feedback": "Antes de medir hay **superposición**: solo probabilidades. Al **medir**, el sistema **colapsa** en un resultado concreto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Nave del juego",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "La luz va igual para todos",
+                "right": "Postulado de Einstein"
+              },
+              {
+                "left": "El reloj de la nave va más lento",
+                "right": "Dilatación del tiempo"
+              },
+              {
+                "left": "El viajero envejece menos",
+                "right": "Viaje al futuro"
+              },
+              {
+                "left": "Solo se nota cerca de c",
+                "right": "Efecto relativista"
+              }
+            ],
+            "completion_feedback": "Como la **luz** va igual para todos, el reloj de lo que se mueve muy rápido va más lento: **dilatación del tiempo**. Solo se nota cerca de **c**."
+          }
+        }
+      }
+    }
+  }
+}
