@@ -1,0 +1,719 @@
+{
+  "subject": "ingles-4",
+  "topics": {
+    "second-and-third-conditional": {
+      "order_steps": {
+        "prompt": "Arma una oración en third conditional",
+        "steps": [
+          "Detecta que la acción ya pasó: usa third conditional",
+          "Parte del if: If + past perfect (had + participio)",
+          "Resultado: would have + participio",
+          "Une: 'If we had defended, we would have won.'"
+        ],
+        "completion_feedback": "**Second**: If + past simple, would + verbo (presente imaginario). **Third**: If + past perfect, would have + participio (pasado que ya no cambia). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Los 'hubieras'",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I had Gojo's power,",
+                "right": "I would beat any curse."
+              },
+              {
+                "left": "If Yuji had used Black Flash,",
+                "right": "he would have won the duel."
+              },
+              {
+                "left": "If Megumi had rested,",
+                "right": "he would have had more energy."
+              }
+            ],
+            "completion_feedback": "**Second conditional** (presente irreal): If I had…, I would… **Third conditional** (pasado sin vuelta atrás): If I had used…, I would have won. La parte del if decide cuál es."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tras la final",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I were the coach,",
+                "right": "I would change the lineup."
+              },
+              {
+                "left": "If the keeper had saved it,",
+                "right": "we would have won the final."
+              },
+              {
+                "left": "If Mbappé played for us,",
+                "right": "we would win everything."
+              }
+            ],
+            "completion_feedback": "**Second conditional** (presente irreal): If I had…, I would… **Third conditional** (pasado sin vuelta atrás): If I had used…, I would have won. La parte del if decide cuál es."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sin boletos",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I had more money,",
+                "right": "I would buy VIP tickets."
+              },
+              {
+                "left": "If I had joined the presale,",
+                "right": "I would have gotten a ticket."
+              },
+              {
+                "left": "If I met the idols,",
+                "right": "I would ask for a photo."
+              }
+            ],
+            "completion_feedback": "**Second conditional** (presente irreal): If I had…, I would… **Third conditional** (pasado sin vuelta atrás): If I had used…, I would have won. La parte del if decide cuál es."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tras el clutch",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I had better aim,",
+                "right": "I would win more clutches."
+              },
+              {
+                "left": "If you had used your smoke,",
+                "right": "we would have won the round."
+              },
+              {
+                "left": "If we had defended the site,",
+                "right": "they wouldn't have planted."
+              }
+            ],
+            "completion_feedback": "**Second conditional** (presente irreal): If I had…, I would… **Third conditional** (pasado sin vuelta atrás): If I had used…, I would have won. La parte del if decide cuál es."
+          }
+        }
+      }
+    },
+    "passive-voice": {
+      "order_steps": {
+        "prompt": "Pasa una oración a voz pasiva",
+        "steps": [
+          "Busca el objeto que recibe la acción",
+          "Ponlo como sujeto al inicio",
+          "Agrega to be en el mismo tiempo + participio",
+          "Si importa, agrega by + quien la hizo"
+        ],
+        "completion_feedback": "**Passive voice**: el objeto pasa al frente + **to be** (mismo tiempo) + **participio** + by (opcional). Se usa cuando importa lo que recibe la acción. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Activa",
+            "right_label": "Pasiva",
+            "pairs": [
+              {
+                "left": "Luffy defeated the enemy",
+                "right": "The enemy was defeated"
+              },
+              {
+                "left": "The attack destroyed the island",
+                "right": "The island was destroyed"
+              },
+              {
+                "left": "The crew repaired the ship",
+                "right": "The ship was repaired"
+              }
+            ],
+            "completion_feedback": "En **passive voice**, el que recibe la acción es el sujeto: to be + participio. 'The VAR disallowed the goal' → 'The goal was disallowed (by the VAR)'. El agente es opcional."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Activa",
+            "right_label": "Pasiva",
+            "pairs": [
+              {
+                "left": "The VAR disallowed the goal",
+                "right": "The goal was disallowed"
+              },
+              {
+                "left": "The captain lifted the trophy",
+                "right": "The trophy was lifted"
+              },
+              {
+                "left": "The rain stopped the match",
+                "right": "The match was stopped"
+              }
+            ],
+            "completion_feedback": "En **passive voice**, el que recibe la acción es el sujeto: to be + participio. 'The VAR disallowed the goal' → 'The goal was disallowed (by the VAR)'. El agente es opcional."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Activa",
+            "right_label": "Pasiva",
+            "pairs": [
+              {
+                "left": "The label released the album",
+                "right": "The album was released"
+              },
+              {
+                "left": "They filmed the MV in Seoul",
+                "right": "The MV was filmed in Seoul"
+              },
+              {
+                "left": "Fans bought every version",
+                "right": "Every version was bought"
+              }
+            ],
+            "completion_feedback": "En **passive voice**, el que recibe la acción es el sujeto: to be + participio. 'The VAR disallowed the goal' → 'The goal was disallowed (by the VAR)'. El agente es opcional."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Activa",
+            "right_label": "Pasiva",
+            "pairs": [
+              {
+                "left": "A creeper destroyed the house",
+                "right": "The house was destroyed"
+              },
+              {
+                "left": "The devs added a new mode",
+                "right": "A new mode was added"
+              },
+              {
+                "left": "Epic updated the map",
+                "right": "The map was updated"
+              }
+            ],
+            "completion_feedback": "En **passive voice**, el que recibe la acción es el sujeto: to be + participio. 'The VAR disallowed the goal' → 'The goal was disallowed (by the VAR)'. El agente es opcional."
+          }
+        }
+      }
+    },
+    "reported-speech": {
+      "order_steps": {
+        "prompt": "Pasa una frase a reported speech",
+        "steps": [
+          "Pon el verbo introductorio en pasado: said",
+          "Quita las comillas y agrega that",
+          "Retrocede el tiempo: will → would",
+          "Cambia pronombre y tiempo: I → she, tomorrow → the next day"
+        ],
+        "completion_feedback": "En **reported speech**: verbo en pasado (said), sin comillas, el tiempo **retrocede** (will → would) y cambian pronombres y palabras de tiempo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dijo:",
+            "right_label": "He/She said that…",
+            "pairs": [
+              {
+                "left": "'I am protecting my sister'",
+                "right": "he was protecting his sister"
+              },
+              {
+                "left": "'I will fight tonight'",
+                "right": "she would fight that night"
+              },
+              {
+                "left": "'We are ready now'",
+                "right": "they were ready then"
+              }
+            ],
+            "completion_feedback": "En **reported speech** el verbo retrocede un tiempo (am → was, will → would), cambian los pronombres (I → he/she) y las palabras de tiempo (tomorrow → the next day, now → then)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dijo:",
+            "right_label": "He said that…",
+            "pairs": [
+              {
+                "left": "'I am happy with the win'",
+                "right": "he was happy with the win"
+              },
+              {
+                "left": "'I will score tomorrow'",
+                "right": "he would score the next day"
+              },
+              {
+                "left": "'We are playing well now'",
+                "right": "they were playing well then"
+              }
+            ],
+            "completion_feedback": "En **reported speech** el verbo retrocede un tiempo (am → was, will → would), cambian los pronombres (I → he/she) y las palabras de tiempo (tomorrow → the next day, now → then)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dijo:",
+            "right_label": "He/She said that…",
+            "pairs": [
+              {
+                "left": "'I am preparing a new song'",
+                "right": "he was preparing a new song"
+              },
+              {
+                "left": "'I will perform tomorrow'",
+                "right": "she would perform the next day"
+              },
+              {
+                "left": "'We are recording now'",
+                "right": "they were recording then"
+              }
+            ],
+            "completion_feedback": "En **reported speech** el verbo retrocede un tiempo (am → was, will → would), cambian los pronombres (I → he/she) y las palabras de tiempo (tomorrow → the next day, now → then)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dijo:",
+            "right_label": "He/She said that…",
+            "pairs": [
+              {
+                "left": "'I am building a mega base'",
+                "right": "he was building a mega base"
+              },
+              {
+                "left": "'I will play Roblox tonight'",
+                "right": "she would play Roblox that night"
+              },
+              {
+                "left": "'I will add a portal tomorrow'",
+                "right": "he would add a portal the next day"
+              }
+            ],
+            "completion_feedback": "En **reported speech** el verbo retrocede un tiempo (am → was, will → would), cambian los pronombres (I → he/she) y las palabras de tiempo (tomorrow → the next day, now → then)."
+          }
+        }
+      }
+    },
+    "modals-of-deduction": {
+      "order_steps": {
+        "prompt": "Deduce con un modal",
+        "steps": [
+          "Junta las pistas que tienes",
+          "Mide qué tan seguro estás",
+          "Elige: must (seguro), might (quizá), can't (imposible)",
+          "Arma modal + verbo base: 'He must be injured.'"
+        ],
+        "completion_feedback": "**Must** = casi seguro que sí. **Might/could** = posible. **Can't** = casi seguro que no. Siempre + verbo base, sin 'to'. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pista",
+            "right_label": "Deducción",
+            "pairs": [
+              {
+                "left": "Siempre aparece antes del ataque",
+                "right": "He must be involved"
+              },
+              {
+                "left": "Quizá sabe algo",
+                "right": "He might know something"
+              },
+              {
+                "left": "Casi muere salvando a todos",
+                "right": "He can't be the villain"
+              }
+            ],
+            "completion_feedback": "Los **modals of deduction** dicen qué tan seguro estás según la evidencia: **must** (casi seguro que sí), **might/could** (quizá), **can't** (imposible). Van con el verbo base."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pista",
+            "right_label": "Deducción",
+            "pairs": [
+              {
+                "left": "Salió cojeando el partido pasado",
+                "right": "He must be injured"
+              },
+              {
+                "left": "Quizá solo está descansando",
+                "right": "He might be resting"
+              },
+              {
+                "left": "Ya fichó por otro club",
+                "right": "He can't be on this team"
+              }
+            ],
+            "completion_feedback": "Los **modals of deduction** dicen qué tan seguro estás según la evidencia: **must** (casi seguro que sí), **might/could** (quizá), **can't** (imposible). Van con el verbo base."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pista",
+            "right_label": "Deducción",
+            "pairs": [
+              {
+                "left": "Teaser con fecha, como siempre",
+                "right": "It must be a comeback"
+              },
+              {
+                "left": "Tal vez es solo un MV",
+                "right": "It might be a single MV"
+              },
+              {
+                "left": "Está de gira en otro país",
+                "right": "He can't be here today"
+              }
+            ],
+            "completion_feedback": "Los **modals of deduction** dicen qué tan seguro estás según la evidencia: **must** (casi seguro que sí), **might/could** (quizá), **can't** (imposible). Van con el verbo base."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pista",
+            "right_label": "Deducción",
+            "pairs": [
+              {
+                "left": "Siempre desaparece cuando alguien muere",
+                "right": "He must be the traitor"
+              },
+              {
+                "left": "No estoy seguro de él",
+                "right": "He might be the traitor"
+              },
+              {
+                "left": "Estuvo conmigo toda la ronda",
+                "right": "He can't be the traitor"
+              }
+            ],
+            "completion_feedback": "Los **modals of deduction** dicen qué tan seguro estás según la evidencia: **must** (casi seguro que sí), **might/could** (quizá), **can't** (imposible). Van con el verbo base."
+          }
+        }
+      }
+    },
+    "future-perfect-and-future-continuous": {
+      "order_steps": {
+        "prompt": "Arma una oración en future perfect",
+        "steps": [
+          "¿Estará terminada antes de un momento? → future perfect",
+          "Marca el límite con by: By Friday",
+          "Usa will have + participio",
+          "Une: 'By Friday I will have finished.'"
+        ],
+        "completion_feedback": "**Future continuous** (will be + -ing): en progreso en un momento futuro. **Future perfect** (will have + participio): terminado **antes** de un momento, busca **by**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Capítulo nuevo",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "A las 10 estaré leyendo el capítulo",
+                "right": "I will be reading"
+              },
+              {
+                "left": "Para mañana ya lo habré terminado",
+                "right": "I will have finished"
+              },
+              {
+                "left": "A la medianoche estaremos debatiendo",
+                "right": "We will be debating"
+              }
+            ],
+            "completion_feedback": "**Future continuous** = will be + -ing (en progreso en ese momento). **Future perfect** = will have + participio (ya terminado antes de ese momento, suele ir con **by**)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Día de final",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "A las 3 estaré viendo el partido",
+                "right": "I will be watching"
+              },
+              {
+                "left": "Para las 2 ya habré llegado",
+                "right": "I will have arrived"
+              },
+              {
+                "left": "Para mayo habrán jugado 38",
+                "right": "They will have played"
+              }
+            ],
+            "completion_feedback": "**Future continuous** = will be + -ing (en progreso en ese momento). **Future perfect** = will have + participio (ya terminado antes de ese momento, suele ir con **by**)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "A las 8 estaré gritando",
+                "right": "I will be screaming"
+              },
+              {
+                "left": "Para las 6 ya habré comprado merch",
+                "right": "I will have bought"
+              },
+              {
+                "left": "Para mañana habré oído el álbum",
+                "right": "I will have listened"
+              }
+            ],
+            "completion_feedback": "**Future continuous** = will be + -ing (en progreso en ese momento). **Future perfect** = will have + participio (ya terminado antes de ese momento, suele ir con **by**)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sábado gamer",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "A las 5 estaré jugando Blox Fruits",
+                "right": "I will be playing"
+              },
+              {
+                "left": "Para las 8 habré hecho mis misiones",
+                "right": "I will have finished"
+              },
+              {
+                "left": "A las 3 estaré compitiendo",
+                "right": "I will be competing"
+              }
+            ],
+            "completion_feedback": "**Future continuous** = will be + -ing (en progreso en ese momento). **Future perfect** = will have + participio (ya terminado antes de ese momento, suele ir con **by**)."
+          }
+        }
+      }
+    },
+    "phrasal-verbs": {
+      "order_steps": {
+        "prompt": "Descifra un phrasal verb",
+        "steps": [
+          "Localiza el phrasal verb en la frase",
+          "No lo traduzcas palabra por palabra",
+          "Usa el contexto de la oración",
+          "Deduce el significado: call off = cancelar"
+        ],
+        "completion_feedback": "Un **phrasal verb** es verbo + partícula con significado nuevo. No se traduce literal: se deduce por el **contexto**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "Gojo shows up just in time",
+                "right": "aparecer"
+              },
+              {
+                "left": "Yuji never gives up",
+                "right": "rendirse"
+              },
+              {
+                "left": "Hold on, help is coming!",
+                "right": "resistir"
+              }
+            ],
+            "completion_feedback": "Un **phrasal verb** es verbo + partícula con significado nuevo: give up (rendirse), show up (aparecer), call off (cancelar), find out (enterarse), run out (agotarse). Se deducen por el contexto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la cancha",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "The match was called off",
+                "right": "cancelar"
+              },
+              {
+                "left": "They came back and won 3-2",
+                "right": "remontar"
+              },
+              {
+                "left": "He went off injured",
+                "right": "salir de la cancha"
+              }
+            ],
+            "completion_feedback": "Un **phrasal verb** es verbo + partícula con significado nuevo: give up (rendirse), show up (aparecer), call off (cancelar), find out (enterarse), run out (agotarse). Se deducen por el contexto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fandom",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "I can't wait to find out",
+                "right": "enterarse"
+              },
+              {
+                "left": "I look forward to the MV",
+                "right": "esperar con ganas"
+              },
+              {
+                "left": "They dropped out of the show",
+                "right": "retirarse"
+              }
+            ],
+            "completion_feedback": "Un **phrasal verb** es verbo + partícula con significado nuevo: give up (rendirse), show up (aparecer), call off (cancelar), find out (enterarse), run out (agotarse). Se deducen por el contexto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Valorant",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "We ran out of bullets",
+                "right": "agotarse"
+              },
+              {
+                "left": "Log in before you join",
+                "right": "iniciar sesión"
+              },
+              {
+                "left": "Calm down, don't push alone",
+                "right": "calmarse"
+              }
+            ],
+            "completion_feedback": "Un **phrasal verb** es verbo + partícula con significado nuevo: give up (rendirse), show up (aparecer), call off (cancelar), find out (enterarse), run out (agotarse). Se deducen por el contexto."
+          }
+        }
+      }
+    },
+    "formal-and-academic-writing": {
+      "order_steps": {
+        "prompt": "Escribe un texto formal",
+        "steps": [
+          "Piensa quién lo va a leer: un maestro o soporte",
+          "Elige un registro formal, no el del chat",
+          "Reescribe sin jerga, emojis ni contracciones",
+          "Revisa que el tono sea objetivo y cortés"
+        ],
+        "completion_feedback": "**Formal writing**: piensa en el lector, escribe sin jerga, emojis ni contracciones, con vocabulario preciso y tono **objetivo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Informal",
+            "right_label": "Formal",
+            "pairs": [
+              {
+                "left": "this arc is peak",
+                "right": "this arc stands out"
+              },
+              {
+                "left": "the villain's so cool",
+                "right": "the antagonist is compelling"
+              },
+              {
+                "left": "the animation is insane",
+                "right": "the animation is remarkable"
+              }
+            ],
+            "completion_feedback": "Para pasar a **formal**: quita jerga (lol, bro, insane), emojis y contracciones (it's → it is), cambia la exageración por una afirmación objetiva y usa vocabulario preciso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Informal",
+            "right_label": "Formal",
+            "pairs": [
+              {
+                "left": "he's the GOAT lol",
+                "right": "he is one of the best"
+              },
+              {
+                "left": "the ref is so bad",
+                "right": "the referee made several errors"
+              },
+              {
+                "left": "he didn't see it",
+                "right": "he did not notice it"
+              }
+            ],
+            "completion_feedback": "Para pasar a **formal**: quita jerga (lol, bro, insane), emojis y contracciones (it's → it is), cambia la exageración por una afirmación objetiva y usa vocabulario preciso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Informal",
+            "right_label": "Formal",
+            "pairs": [
+              {
+                "left": "this comeback slaps",
+                "right": "this release is impressive"
+              },
+              {
+                "left": "they're the best ever",
+                "right": "they are widely praised"
+              },
+              {
+                "left": "omg I cried 😭",
+                "right": "it was very moving"
+              }
+            ],
+            "completion_feedback": "Para pasar a **formal**: quita jerga (lol, bro, insane), emojis y contracciones (it's → it is), cambia la exageración por una afirmación objetiva y usa vocabulario preciso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Informal",
+            "right_label": "Formal",
+            "pairs": [
+              {
+                "left": "the game keeps crashing lol",
+                "right": "the game continues to crash"
+              },
+              {
+                "left": "u guys gotta fix this asap",
+                "right": "please fix this as soon as possible"
+              },
+              {
+                "left": "that guy's hacking fr",
+                "right": "the player appears to be cheating"
+              }
+            ],
+            "completion_feedback": "Para pasar a **formal**: quita jerga (lol, bro, insane), emojis y contracciones (it's → it is), cambia la exageración por una afirmación objetiva y usa vocabulario preciso."
+          }
+        }
+      }
+    }
+  }
+}
