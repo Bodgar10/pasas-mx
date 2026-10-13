@@ -1,0 +1,708 @@
+{
+  "subject": "sociologia",
+  "topics": {
+    "objeto-de-estudio-de-la-sociologia": {
+      "order_steps": {
+        "prompt": "Ordena cómo una costumbre se vuelve hecho social",
+        "steps": [
+          "Alguien propone una forma de actuar",
+          "Otros la copian porque les funciona",
+          "Se vuelve 'lo normal' para todo el grupo",
+          "Quien llega nuevo ya la encuentra hecha",
+          "Si alguien la rompe, el grupo lo sanciona"
+        ],
+        "completion_feedback": "Una costumbre se vuelve **hecho social** cuando es **colectiva**, ya existía **antes** de ti (exterior) y **presiona** a quien la rompe (coerción). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bounties",
+            "right_label": "Qué muestra",
+            "pairs": [
+              {
+                "left": "Toda la sociedad reconoce el bounty",
+                "right": "Colectivo"
+              },
+              {
+                "left": "El sistema existía antes de Luffy",
+                "right": "Exterior"
+              },
+              {
+                "left": "Los marines persiguen al de bounty alto",
+                "right": "Coerción"
+              },
+              {
+                "left": "La fuerza personal de Luffy",
+                "right": "Individual"
+              }
+            ],
+            "completion_feedback": "Un **hecho social** es **colectivo** (necesita al grupo), **exterior** (ya existía antes que tú) y ejerce **coerción** (te presiona). Lo que depende de una sola persona es **individual**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la grada",
+            "right_label": "Qué muestra",
+            "pairs": [
+              {
+                "left": "Miles hacen la ola a la vez",
+                "right": "Colectivo"
+              },
+              {
+                "left": "Los cánticos existían antes que tú",
+                "right": "Exterior"
+              },
+              {
+                "left": "Te presionan si no te levantas",
+                "right": "Coerción"
+              },
+              {
+                "left": "El regate de Lamine Yamal",
+                "right": "Individual"
+              }
+            ],
+            "completion_feedback": "Un **hecho social** es **colectivo** (necesita al grupo), **exterior** (ya existía antes que tú) y ejerce **coerción** (te presiona). Lo que depende de una sola persona es **individual**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fandom STAY",
+            "right_label": "Qué muestra",
+            "pairs": [
+              {
+                "left": "Miles gritan el fanchant juntos",
+                "right": "Colectivo"
+              },
+              {
+                "left": "El fanchant ya existía al llegar",
+                "right": "Exterior"
+              },
+              {
+                "left": "Señalan a quien spoilea la coreo",
+                "right": "Coerción"
+              },
+              {
+                "left": "Tu canción favorita de SKZ",
+                "right": "Individual"
+              }
+            ],
+            "completion_feedback": "Un **hecho social** es **colectivo** (necesita al grupo), **exterior** (ya existía antes que tú) y ejerce **coerción** (te presiona). Lo que depende de una sola persona es **individual**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Adopt Me",
+            "right_label": "Qué muestra",
+            "pairs": [
+              {
+                "left": "El valor que acuerda la comunidad",
+                "right": "Colectivo"
+              },
+              {
+                "left": "Las reglas de trade ya existían",
+                "right": "Exterior"
+              },
+              {
+                "left": "Marcan como scammer al que estafa",
+                "right": "Coerción"
+              },
+              {
+                "left": "Tu mascota favorita",
+                "right": "Individual"
+              }
+            ],
+            "completion_feedback": "Un **hecho social** es **colectivo** (necesita al grupo), **exterior** (ya existía antes que tú) y ejerce **coerción** (te presiona). Lo que depende de una sola persona es **individual**."
+          }
+        }
+      }
+    },
+    "teoricos-clasicos-comte-durkheim-marx-weber": {
+      "order_steps": {
+        "prompt": "Ordena las tres etapas de Comte",
+        "steps": [
+          "Teológica: todo se explica con dioses o fuerzas sobrenaturales",
+          "Metafísica: todo se explica con ideas abstractas o esencias",
+          "Positiva: todo se explica con observación y datos"
+        ],
+        "completion_feedback": "Para **Comte**, el conocimiento pasa por tres etapas: **teológica** (dioses), **metafísica** (ideas abstractas) y **positiva** (ciencia). La sociología nace en la positiva. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "Teórico",
+            "pairs": [
+              {
+                "left": "Nobles en Sina, pobres en María",
+                "right": "Marx"
+              },
+              {
+                "left": "Obedecen al rey por tradición",
+                "right": "Weber"
+              },
+              {
+                "left": "La Legión unida por un fin común",
+                "right": "Durkheim"
+              },
+              {
+                "left": "Hange experimenta con titanes",
+                "right": "Comte"
+              }
+            ],
+            "completion_feedback": "**Comte**: ciencia (positivismo). **Durkheim**: unión y normas (solidaridad). **Marx**: clases y dinero. **Weber**: quién manda y por qué (autoridad)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Noche de Champions",
+            "right_label": "Teórico",
+            "pairs": [
+              {
+                "left": "Solo un club rico paga a Mbappé",
+                "right": "Marx"
+              },
+              {
+                "left": "El VAR decide según el reglamento",
+                "right": "Weber"
+              },
+              {
+                "left": "Cada posición cumple su función",
+                "right": "Durkheim"
+              },
+              {
+                "left": "El analista estudia el xG",
+                "right": "Comte"
+              }
+            ],
+            "completion_feedback": "**Comte**: ciencia (positivismo). **Durkheim**: unión y normas (solidaridad). **Marx**: clases y dinero. **Weber**: quién manda y por qué (autoridad)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "Teórico",
+            "pairs": [
+              {
+                "left": "Tres unidades que se necesitan",
+                "right": "Durkheim"
+              },
+              {
+                "left": "La agencia es dueña del negocio",
+                "right": "Marx"
+              },
+              {
+                "left": "Siguen a S.Coups por confianza",
+                "right": "Weber"
+              },
+              {
+                "left": "Miden vistas para entender al fandom",
+                "right": "Comte"
+              }
+            ],
+            "completion_feedback": "**Comte**: ciencia (positivismo). **Durkheim**: unión y normas (solidaridad). **Marx**: clases y dinero. **Weber**: quién manda y por qué (autoridad)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de Brawl",
+            "right_label": "Teórico",
+            "pairs": [
+              {
+                "left": "El presidente manda por su cargo",
+                "right": "Weber"
+              },
+              {
+                "left": "Los que pagan dominan a los F2P",
+                "right": "Marx"
+              },
+              {
+                "left": "Todos respetan las normas del club",
+                "right": "Durkheim"
+              },
+              {
+                "left": "Estudias tus stats para mejorar",
+                "right": "Comte"
+              }
+            ],
+            "completion_feedback": "**Comte**: ciencia (positivismo). **Durkheim**: unión y normas (solidaridad). **Marx**: clases y dinero. **Weber**: quién manda y por qué (autoridad)."
+          }
+        }
+      }
+    },
+    "socializacion-e-instituciones-sociales": {
+      "order_steps": {
+        "prompt": "Ordena cómo alguien se socializa en un grupo",
+        "steps": [
+          "Llega al grupo sin conocer sus reglas",
+          "Un agente le enseña cómo se hacen las cosas",
+          "Practica las normas y el rol que le toca",
+          "Las interioriza: ya actúa así sin pensarlo"
+        ],
+        "completion_feedback": "La **socialización** va de no saber nada a **interiorizar** normas y roles, gracias a **agentes** que enseñan. La **institución** es la estructura estable donde ocurre. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Anya en Eden",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Anya aprende los modales de élite",
+                "right": "Socialización"
+              },
+              {
+                "left": "Loid le enseña a saludar",
+                "right": "Agente"
+              },
+              {
+                "left": "La Academia Eden y sus Stellas",
+                "right": "Institución"
+              },
+              {
+                "left": "No faltarle al respeto a un profesor",
+                "right": "Norma"
+              }
+            ],
+            "completion_feedback": "**Socialización**: el proceso de aprender. **Agente**: quien te enseña. **Institución**: la estructura estable de reglas. **Norma**: lo que se espera. **Rol**: el papel que te toca."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fuerzas básicas",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El niño aprende a ser profesional",
+                "right": "Socialización"
+              },
+              {
+                "left": "El entrenador de fuerzas básicas",
+                "right": "Agente"
+              },
+              {
+                "left": "La federación y sus reglamentos",
+                "right": "Institución"
+              },
+              {
+                "left": "Jugar de lateral izquierdo",
+                "right": "Rol"
+              }
+            ],
+            "completion_feedback": "**Socialización**: el proceso de aprender. **Agente**: quien te enseña. **Institución**: la estructura estable de reglas. **Norma**: lo que se espera. **Rol**: el papel que te toca."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Volverte MOA",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Te vuelves MOA poco a poco",
+                "right": "Socialización"
+              },
+              {
+                "left": "La fan que te explica qué es un bias",
+                "right": "Agente"
+              },
+              {
+                "left": "La agencia que organiza comebacks",
+                "right": "Institución"
+              },
+              {
+                "left": "No spoilear antes del estreno",
+                "right": "Norma"
+              }
+            ],
+            "completion_feedback": "**Socialización**: el proceso de aprender. **Agente**: quien te enseña. **Institución**: la estructura estable de reglas. **Norma**: lo que se espera. **Rol**: el papel que te toca."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Novato en Valorant",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Aprendes a jugar como la comunidad",
+                "right": "Socialización"
+              },
+              {
+                "left": "El compa que te enseña el eco round",
+                "right": "Agente"
+              },
+              {
+                "left": "Riot y sus reglas contra trampas",
+                "right": "Institución"
+              },
+              {
+                "left": "Curar al equipo con Sage",
+                "right": "Rol"
+              }
+            ],
+            "completion_feedback": "**Socialización**: el proceso de aprender. **Agente**: quien te enseña. **Institución**: la estructura estable de reglas. **Norma**: lo que se espera. **Rol**: el papel que te toca."
+          }
+        }
+      }
+    },
+    "estratificacion-y-clases-sociales": {
+      "order_steps": {
+        "prompt": "Ordena una historia de movilidad ascendente",
+        "steps": [
+          "Nace en un estrato con pocos recursos",
+          "Accede a estudios o a una oportunidad nueva",
+          "Aumentan sus ingresos y su prestigio",
+          "Queda en un estrato más alto que el de origen"
+        ],
+        "completion_feedback": "La **movilidad ascendente** es pasar a un estrato más alto. Depende del acceso a **recursos** y **oportunidades**, que la estratificación reparte de forma **desigual**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Todo el sistema de rangos de E a S",
+                "right": "Estratificación"
+              },
+              {
+                "left": "Los cazadores del mismo rango",
+                "right": "Clase social"
+              },
+              {
+                "left": "Jin-Woo pasa de rango E a S",
+                "right": "Movilidad ascendente"
+              },
+              {
+                "left": "Los rango S ganan fortunas",
+                "right": "Desigualdad"
+              }
+            ],
+            "completion_feedback": "**Estratificación**: toda la jerarquía. **Clase social**: quienes comparten posición. **Movilidad**: subir o bajar de estrato. **Desigualdad**: acceso distinto a los recursos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fútbol de clubes",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La pirámide de clubes completa",
+                "right": "Estratificación"
+              },
+              {
+                "left": "Clubes con presupuesto parecido",
+                "right": "Clase social"
+              },
+              {
+                "left": "Un club grande quiebra y desciende",
+                "right": "Movilidad descendente"
+              },
+              {
+                "left": "Solo el Madrid puede pagar a Mbappé",
+                "right": "Desigualdad"
+              }
+            ],
+            "completion_feedback": "**Estratificación**: toda la jerarquía. **Clase social**: quienes comparten posición. **Movilidad**: subir o bajar de estrato. **Desigualdad**: acceso distinto a los recursos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Survival show",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El ranking completo del show",
+                "right": "Estratificación"
+              },
+              {
+                "left": "Trainees del mismo nivel",
+                "right": "Clase social"
+              },
+              {
+                "left": "Del fondo al top gracias a los votos",
+                "right": "Movilidad ascendente"
+              },
+              {
+                "left": "Más cámara para los del top",
+                "right": "Desigualdad"
+              }
+            ],
+            "completion_feedback": "**Estratificación**: toda la jerarquía. **Clase social**: quienes comparten posición. **Movilidad**: subir o bajar de estrato. **Desigualdad**: acceso distinto a los recursos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "FC 26 Ultimate",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Todas las divisiones ordenadas",
+                "right": "Estratificación"
+              },
+              {
+                "left": "Jugadores de la misma división",
+                "right": "Clase social"
+              },
+              {
+                "left": "Una mala racha te baja de división",
+                "right": "Movilidad descendente"
+              },
+              {
+                "left": "Quien paga packs tiene a Mbappé",
+                "right": "Desigualdad"
+              }
+            ],
+            "completion_feedback": "**Estratificación**: toda la jerarquía. **Clase social**: quienes comparten posición. **Movilidad**: subir o bajar de estrato. **Desigualdad**: acceso distinto a los recursos."
+          }
+        }
+      }
+    },
+    "cambio-social-y-movimientos-sociales": {
+      "order_steps": {
+        "prompt": "Ordena cómo nace un movimiento social",
+        "steps": [
+          "Surge un malestar que muchos comparten",
+          "El malestar se organiza en un grupo con un objetivo",
+          "El grupo actúa de forma sostenida: marchas, peticiones",
+          "La presión logra o frena un cambio duradero"
+        ],
+        "completion_feedback": "Un **movimiento social** es acción **colectiva, organizada y sostenida**. El **cambio social** es la **transformación duradera** que logra o impide. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Paradis",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los Jaegeristas organizados",
+                "right": "Movimiento social"
+              },
+              {
+                "left": "Cae el viejo orden de las murallas",
+                "right": "Cambio social"
+              },
+              {
+                "left": "Transformar la sociedad de la isla",
+                "right": "Objetivo común"
+              },
+              {
+                "left": "Un soldado inconforme y solo",
+                "right": "Queja aislada"
+              }
+            ],
+            "completion_feedback": "**Movimiento**: la gente organizada actuando. **Cambio social**: el resultado duradero. **Repertorio**: las formas de protestar. Una **queja aislada** no es movimiento: le falta organización."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La Superliga",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Aficionados unidos contra la Superliga",
+                "right": "Movimiento social"
+              },
+              {
+                "left": "Marchas y pancartas en estadios",
+                "right": "Repertorio de acción"
+              },
+              {
+                "left": "Impedir un torneo cerrado",
+                "right": "Objetivo común"
+              },
+              {
+                "left": "Un hincha que se queja solo en redes",
+                "right": "Queja aislada"
+              }
+            ],
+            "completion_feedback": "**Movimiento**: la gente organizada actuando. **Cambio social**: el resultado duradero. **Repertorio**: las formas de protestar. Una **queja aislada** no es movimiento: le falta organización."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fandom en acción",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Camiones LED y hashtags",
+                "right": "Repertorio de acción"
+              },
+              {
+                "left": "El fandom organizado durante meses",
+                "right": "Movimiento social"
+              },
+              {
+                "left": "Nuevas reglas que protegen a idols",
+                "right": "Cambio social"
+              },
+              {
+                "left": "Proteger a las idols",
+                "right": "Objetivo común"
+              }
+            ],
+            "completion_feedback": "**Movimiento**: la gente organizada actuando. **Cambio social**: el resultado duradero. **Repertorio**: las formas de protestar. Una **queja aislada** no es movimiento: le falta organización."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Miles de jugadores organizados",
+                "right": "Movimiento social"
+              },
+              {
+                "left": "Mojang revierte la actualización",
+                "right": "Cambio social"
+              },
+              {
+                "left": "Videos, hashtags y peticiones",
+                "right": "Repertorio de acción"
+              },
+              {
+                "left": "Un jugador que se queja solo",
+                "right": "Queja aislada"
+              }
+            ],
+            "completion_feedback": "**Movimiento**: la gente organizada actuando. **Cambio social**: el resultado duradero. **Repertorio**: las formas de protestar. Una **queja aislada** no es movimiento: le falta organización."
+          }
+        }
+      }
+    },
+    "cultura-y-sociedad": {
+      "order_steps": {
+        "prompt": "Ordena las normas de la más leve a la más fuerte",
+        "steps": [
+          "Uso o costumbre: romperla solo da pena",
+          "Costumbre moral: romperla causa rechazo fuerte",
+          "Ley: romperla trae un castigo oficial"
+        ],
+        "completion_feedback": "Las **normas** pesan distinto: un **uso** solo da pena, una **costumbre moral** causa rechazo y una **ley** trae **sanción oficial**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Spy x Family",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Usar bien los cubiertos en la cena",
+                "right": "Uso"
+              },
+              {
+                "left": "No traicionar a un compañero",
+                "right": "Costumbre moral"
+              },
+              {
+                "left": "Expulsión por romper el reglamento",
+                "right": "Sanción formal"
+              },
+              {
+                "left": "Miradas de reproche en la mesa",
+                "right": "Sanción informal"
+              }
+            ],
+            "completion_feedback": "**Uso**: norma leve. **Costumbre moral**: norma con peso ético. La **sanción formal** viene de una autoridad oficial, y la **informal**, de la gente que te rodea."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Clásico Nacional",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Mi afición, el 'nosotros'",
+                "right": "Endogrupo"
+              },
+              {
+                "left": "La afición rival, el 'ellos'",
+                "right": "Exogrupo"
+              },
+              {
+                "left": "El escudo y los colores",
+                "right": "Símbolos"
+              },
+              {
+                "left": "Afición con cánticos y ritos propios",
+                "right": "Subcultura"
+              }
+            ],
+            "completion_feedback": "**Endogrupo**: 'nosotros'. **Exogrupo**: 'ellos'. Los **símbolos** marcan la pertenencia, y una afición con normas y ritos propios dentro de la sociedad es una **subcultura**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ola coreana",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El K-pop llega de Corea a México",
+                "right": "Difusión cultural"
+              },
+              {
+                "left": "Internet conecta al mundo entero",
+                "right": "Globalización"
+              },
+              {
+                "left": "Tteokbokki con salsa Valentina",
+                "right": "Sincretismo"
+              }
+            ],
+            "completion_feedback": "**Difusión**: rasgos que viajan entre culturas. **Globalización**: el mundo conectado que acelera ese viaje. **Sincretismo**: lo coreano y lo mexicano mezclados en algo nuevo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de Brawl",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Skins y pines de tu perfil",
+                "right": "Cultura material"
+              },
+              {
+                "left": "El argot 'rushear'",
+                "right": "Lenguaje"
+              },
+              {
+                "left": "No abandonar partidas",
+                "right": "Norma"
+              },
+              {
+                "left": "Jugar en equipo, no por ego",
+                "right": "Valor"
+              }
+            ],
+            "completion_feedback": "Lo **material** son objetos, como skins y pines. Lo **no material** son ideas compartidas: el **lenguaje**, las **normas** y los **valores** del grupo."
+          }
+        }
+      }
+    }
+  }
+}
