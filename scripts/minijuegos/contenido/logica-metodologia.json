@@ -1,0 +1,901 @@
+{
+  "subject": "logica-metodologia",
+  "topics": {
+    "conocimiento-y-tipos-de-conocimiento": {
+      "order_steps": {
+        "prompt": "Clasifica un conocimiento según cómo se obtuvo",
+        "steps": [
+          "Lee la afirmación completa",
+          "¿Viene solo de ver o practicar? Entonces es empírico",
+          "Si no, ¿usa método, datos y pruebas? Entonces es científico",
+          "Si no, ¿reflexiona sobre valores o sentido? Es filosófico"
+        ],
+        "completion_feedback": "Pregunta clave: **¿cómo se obtuvo?** Experiencia sin método → **empírico**. Método y pruebas → **científico**. Reflexión sobre valores o sentido → **filosófico**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fans de MHA",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "'Lo vi en cada pelea'",
+                "right": "Empírico"
+              },
+              {
+                "left": "'Los Quirks se estudian con método'",
+                "right": "Científico"
+              },
+              {
+                "left": "'¿Qué hace a alguien un héroe?'",
+                "right": "Filosófico"
+              }
+            ],
+            "completion_feedback": "**Empírico**: por experiencia y observación, sin método. **Científico**: con método, datos y comprobación. **Filosófico**: reflexión sobre valores, sentido y verdad."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Mbappé",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "'Lo vi dejar atrás a todos'",
+                "right": "Empírico"
+              },
+              {
+                "left": "GPS: velocidad punta de 36 km/h",
+                "right": "Científico"
+              },
+              {
+                "left": "'¿Por qué el futbol nos une?'",
+                "right": "Filosófico"
+              }
+            ],
+            "completion_feedback": "**Empírico**: por experiencia y observación, sin método. **Científico**: con método, datos y comprobación. **Filosófico**: reflexión sobre valores, sentido y verdad."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre el baile",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Coreo aprendida a fuerza de repetir",
+                "right": "Empírico"
+              },
+              {
+                "left": "Estudio que mide BPM y baile",
+                "right": "Científico"
+              },
+              {
+                "left": "'¿Por qué el arte nos conmueve?'",
+                "right": "Filosófico"
+              }
+            ],
+            "completion_feedback": "**Empírico**: por experiencia y observación, sin método. **Científico**: con método, datos y comprobación. **Filosófico**: reflexión sobre valores, sentido y verdad."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Valorant",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Spray aprendido a fuerza de jugar",
+                "right": "Empírico"
+              },
+              {
+                "left": "Datos: primer duelo y ronda ganada",
+                "right": "Científico"
+              },
+              {
+                "left": "'¿Es ético usar trucos?'",
+                "right": "Filosófico"
+              }
+            ],
+            "completion_feedback": "**Empírico**: por experiencia y observación, sin método. **Científico**: con método, datos y comprobación. **Filosófico**: reflexión sobre valores, sentido y verdad."
+          }
+        }
+      }
+    },
+    "el-metodo-cientifico": {
+      "order_steps": {
+        "prompt": "Ordena los pasos del método científico",
+        "steps": [
+          "Observación: notas algo curioso",
+          "Pregunta: ¿de verdad pasa eso?",
+          "Hipótesis: propones una respuesta tentativa",
+          "Experimento: cambias una sola variable y mides",
+          "Análisis y conclusión: los datos apoyan o rechazan"
+        ],
+        "completion_feedback": "El **método científico**: observación, pregunta, **hipótesis**, **experimento** controlado (una variable a la vez) y una conclusión con datos que apoya o rechaza la hipótesis. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudiar con OST",
+            "right_label": "Paso",
+            "pairs": [
+              {
+                "left": "'Parece que recuerdo más con el OST'",
+                "right": "Observación"
+              },
+              {
+                "left": "'El OST me ayuda a memorizar'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "5 días con OST y 5 en silencio",
+                "right": "Experimento"
+              },
+              {
+                "left": "12/20 con OST vs. 13/20 sin él",
+                "right": "Análisis de datos"
+              }
+            ],
+            "completion_feedback": "**Observación** → **pregunta** → **hipótesis** (respuesta tentativa) → **experimento** (cambia una variable) → **análisis** → **conclusión**. Los datos pueden rechazar la hipótesis."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tacos nuevos",
+            "right_label": "Paso",
+            "pairs": [
+              {
+                "left": "'Parecen correr más rápido'",
+                "right": "Observación"
+              },
+              {
+                "left": "'Los tacos ligeros dan velocidad'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "Cronometrar 50 m con ambos tacos",
+                "right": "Experimento"
+              },
+              {
+                "left": "Medio segundo más rápido: se confirma",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Observación** → **pregunta** → **hipótesis** (respuesta tentativa) → **experimento** (cambia una variable) → **análisis** → **conclusión**. Los datos pueden rechazar la hipótesis."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Likes de noche",
+            "right_label": "Paso",
+            "pairs": [
+              {
+                "left": "'¿Mis posts ganan más likes de noche?'",
+                "right": "Pregunta"
+              },
+              {
+                "left": "'De noche hay más STAYs conectadas'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "Una semana a las 3 PM, otra a las 9 PM",
+                "right": "Experimento"
+              },
+              {
+                "left": "La hora de publicación",
+                "right": "Variable que cambias"
+              }
+            ],
+            "completion_feedback": "**Observación** → **pregunta** → **hipótesis** (respuesta tentativa) → **experimento** (cambia una variable) → **análisis** → **conclusión**. Los datos pueden rechazar la hipótesis."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ping y agentes",
+            "right_label": "Paso",
+            "pairs": [
+              {
+                "left": "'¿Mi ping baja con este agente?'",
+                "right": "Pregunta"
+              },
+              {
+                "left": "10 partidas con cada agente",
+                "right": "Experimento"
+              },
+              {
+                "left": "Mismo mapa y mismo internet",
+                "right": "Variables controladas"
+              },
+              {
+                "left": "Ping casi idéntico: idea falsa",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Observación** → **pregunta** → **hipótesis** (respuesta tentativa) → **experimento** (cambia una variable) → **análisis** → **conclusión**. Los datos pueden rechazar la hipótesis."
+          }
+        }
+      }
+    },
+    "conceptos-juicios-y-razonamientos": {
+      "order_steps": {
+        "prompt": "Sube del concepto al razonamiento",
+        "steps": [
+          "Concepto: 'extremo', una idea suelta",
+          "Juicio: 'Lamine juega de extremo'",
+          "Razonamiento: 'los extremos desbordan, Lamine es extremo, así que desborda'"
+        ],
+        "completion_feedback": "El pensamiento sube de nivel: **concepto** (idea suelta), **juicio** (afirma algo, verdadero o falso) y **razonamiento** (encadena juicios para sacar una conclusión). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase de MHA",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "'Villano'",
+                "right": "Concepto"
+              },
+              {
+                "left": "'Shigaraki es un villano'",
+                "right": "Juicio"
+              },
+              {
+                "left": "'Los villanos atacan… entonces ataca'",
+                "right": "Razonamiento"
+              }
+            ],
+            "completion_feedback": "**Concepto**: idea suelta que nombra algo. **Juicio**: afirma algo y puede ser verdadero o falso. **Razonamiento**: encadena juicios (premisas) para llegar a una conclusión."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase futbolera",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "'Penalti'",
+                "right": "Concepto"
+              },
+              {
+                "left": "'El portero usa las manos en el área'",
+                "right": "Juicio"
+              },
+              {
+                "left": "'Para tiros, recibió uno, lo paró'",
+                "right": "Razonamiento"
+              }
+            ],
+            "completion_feedback": "**Concepto**: idea suelta que nombra algo. **Juicio**: afirma algo y puede ser verdadero o falso. **Razonamiento**: encadena juicios (premisas) para llegar a una conclusión."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase de fandom",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "'Maknae'",
+                "right": "Concepto"
+              },
+              {
+                "left": "'Dino es el maknae de SEVENTEEN'",
+                "right": "Juicio"
+              },
+              {
+                "left": "'El maknae es el menor… Dino lo es'",
+                "right": "Razonamiento"
+              }
+            ],
+            "completion_feedback": "**Concepto**: idea suelta que nombra algo. **Juicio**: afirma algo y puede ser verdadero o falso. **Razonamiento**: encadena juicios (premisas) para llegar a una conclusión."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase en ranked",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "'Vandal'",
+                "right": "Concepto"
+              },
+              {
+                "left": "'El humo cubre la entrada B'",
+                "right": "Juicio"
+              },
+              {
+                "left": "'Humo en B, no nos ven: plantemos'",
+                "right": "Razonamiento"
+              }
+            ],
+            "completion_feedback": "**Concepto**: idea suelta que nombra algo. **Juicio**: afirma algo y puede ser verdadero o falso. **Razonamiento**: encadena juicios (premisas) para llegar a una conclusión."
+          }
+        }
+      }
+    },
+    "argumentos-premisas-y-conclusiones": {
+      "order_steps": {
+        "prompt": "Analiza un argumento",
+        "steps": [
+          "Lee el argumento completo",
+          "Busca el conector: 'por lo tanto' o 'entonces'",
+          "Lo que sigue al conector es la conclusión",
+          "Lo que la sostiene son las premisas"
+        ],
+        "completion_feedback": "Para analizar un argumento, ubica el **conector** ('por lo tanto', 'entonces'): lo que sigue es la **conclusión** y las razones que la sostienen son las **premisas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Sukuna",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Los de Expansión son grado especial'",
+                "right": "Premisa general"
+              },
+              {
+                "left": "'Sukuna tiene Expansión de Dominio'",
+                "right": "Premisa particular"
+              },
+              {
+                "left": "'Por lo tanto'",
+                "right": "Conector"
+              },
+              {
+                "left": "'Sukuna es de grado especial'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Premisas**: las razones. **Conclusión**: lo que se quiere probar. **Conector** ('por lo tanto', 'entonces'): anuncia la conclusión. Si las premisas son ciertas, la conclusión se sostiene."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre el Madrid",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Quien mete más goles gana más'",
+                "right": "Premisa general"
+              },
+              {
+                "left": "'El Madrid mete muchos goles'",
+                "right": "Premisa particular"
+              },
+              {
+                "left": "'Por lo tanto'",
+                "right": "Conector"
+              },
+              {
+                "left": "'El Madrid gana muchos partidos'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Premisas**: las razones. **Conclusión**: lo que se quiere probar. **Conector** ('por lo tanto', 'entonces'): anuncia la conclusión. Si las premisas son ciertas, la conclusión se sostiene."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Stray Kids",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Las giras mundiales dan muchos fans'",
+                "right": "Premisa general"
+              },
+              {
+                "left": "'Stray Kids hace giras mundiales'",
+                "right": "Premisa particular"
+              },
+              {
+                "left": "'Por lo tanto'",
+                "right": "Conector"
+              },
+              {
+                "left": "'Stray Kids tiene muchos fans'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Premisas**: las razones. **Conclusión**: lo que se quiere probar. **Conector** ('por lo tanto', 'entonces'): anuncia la conclusión. Si las premisas son ciertas, la conclusión se sostiene."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Jett",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Todos los duelistas entran primero'",
+                "right": "Premisa general"
+              },
+              {
+                "left": "'Jett es duelista'",
+                "right": "Premisa particular"
+              },
+              {
+                "left": "'Entonces'",
+                "right": "Conector"
+              },
+              {
+                "left": "'Jett debe entrar primero'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Premisas**: las razones. **Conclusión**: lo que se quiere probar. **Conector** ('por lo tanto', 'entonces'): anuncia la conclusión. Si las premisas son ciertas, la conclusión se sostiene."
+          }
+        }
+      }
+    },
+    "falacias-logicas": {
+      "order_steps": {
+        "prompt": "Responde a una falacia",
+        "steps": [
+          "Detecta el truco: 'tú ni terminaste el manga'",
+          "Nómbralo: es un ad hominem",
+          "Regresa al tema: pide razones del manga",
+          "Sostén tu idea con tus propias pruebas"
+        ],
+        "completion_feedback": "Ante una falacia: **detéctala**, **nómbrala** (ad hominem, falso dilema, apelación a la autoridad), regresa al tema y pide **razones reales**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Foro de JJK",
+            "right_label": "Falacia",
+            "pairs": [
+              {
+                "left": "'Tú ni terminaste el manga, cállate'",
+                "right": "Ad hominem"
+              },
+              {
+                "left": "'O es invencible o es sobrevalorado'",
+                "right": "Falso dilema"
+              },
+              {
+                "left": "'Lo dijo un youtuber famoso'",
+                "right": "Apelación a la autoridad"
+              }
+            ],
+            "completion_feedback": "**Ad hominem**: ataca a la persona, no a la idea. **Falso dilema**: solo dos opciones cuando hay más. **Apelación a la autoridad**: 'es cierto porque lo dijo alguien famoso'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobremesa",
+            "right_label": "Falacia",
+            "pairs": [
+              {
+                "left": "'Tú ni juegas futbol, ¿qué sabes?'",
+                "right": "Ad hominem"
+              },
+              {
+                "left": "'O es el mejor o es un fraude'",
+                "right": "Falso dilema"
+              },
+              {
+                "left": "'Lo dijo un comentarista famoso'",
+                "right": "Apelación a la autoridad"
+              }
+            ],
+            "completion_feedback": "**Ad hominem**: ataca a la persona, no a la idea. **Falso dilema**: solo dos opciones cuando hay más. **Apelación a la autoridad**: 'es cierto porque lo dijo alguien famoso'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fanwar",
+            "right_label": "Falacia",
+            "pairs": [
+              {
+                "left": "'Tú ni eres fan de verdad'",
+                "right": "Ad hominem"
+              },
+              {
+                "left": "'O la amas o eres hater'",
+                "right": "Falso dilema"
+              },
+              {
+                "left": "'Lo tuiteó un productor famoso'",
+                "right": "Apelación a la autoridad"
+              }
+            ],
+            "completion_feedback": "**Ad hominem**: ataca a la persona, no a la idea. **Falso dilema**: solo dos opciones cuando hay más. **Apelación a la autoridad**: 'es cierto porque lo dijo alguien famoso'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chat de ranked",
+            "right_label": "Falacia",
+            "pairs": [
+              {
+                "left": "'Tú eres oro, ¿qué vas a saber?'",
+                "right": "Ad hominem"
+              },
+              {
+                "left": "'O compras el rifle o pierdes'",
+                "right": "Falso dilema"
+              },
+              {
+                "left": "'La usa el streamer más famoso'",
+                "right": "Apelación a la autoridad"
+              }
+            ],
+            "completion_feedback": "**Ad hominem**: ataca a la persona, no a la idea. **Falso dilema**: solo dos opciones cuando hay más. **Apelación a la autoridad**: 'es cierto porque lo dijo alguien famoso'."
+          }
+        }
+      }
+    },
+    "razonamiento-deductivo-e-inductivo": {
+      "order_steps": {
+        "prompt": "Arma un razonamiento inductivo",
+        "steps": [
+          "Caso 1: el rival fue por las gemas del centro en la ronda 1",
+          "Caso 2: volvió al centro en la ronda 2",
+          "Caso 3: otra vez al centro en la ronda 3",
+          "Regla probable: seguramente siempre va al centro"
+        ],
+        "completion_feedback": "El **inductivo** junta casos particulares para proponer una regla **probable**, no segura. El **deductivo** va al revés: de una regla general saca una conclusión **segura**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Las sombras obedecen. Beru es sombra'",
+                "right": "Deductivo"
+              },
+              {
+                "left": "'Tres jefes ya son sombras, así que…'",
+                "right": "Inductivo"
+              },
+              {
+                "left": "Conclusión de un deductivo",
+                "right": "Segura"
+              },
+              {
+                "left": "Conclusión de un inductivo",
+                "right": "Probable"
+              }
+            ],
+            "completion_feedback": "**Deductivo**: de lo general a lo particular, conclusión **segura** si las premisas son ciertas. **Inductivo**: de casos particulares a una regla general **probable**, que podría fallar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Razonamiento",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Doble amarilla expulsa. X la recibió'",
+                "right": "Deductivo"
+              },
+              {
+                "left": "'Ganó 4 en casa: siempre gana en casa'",
+                "right": "Inductivo"
+              },
+              {
+                "left": "De la regla al caso",
+                "right": "General → particular"
+              },
+              {
+                "left": "De los casos a la regla",
+                "right": "Particular → general"
+              }
+            ],
+            "completion_feedback": "**Deductivo**: de lo general a lo particular, conclusión **segura** si las premisas son ciertas. **Inductivo**: de casos particulares a una regla general **probable**, que podría fallar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Razonamiento",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Todo grupo tiene líder. Este es grupo'",
+                "right": "Deductivo"
+              },
+              {
+                "left": "'3 comebacks récord: el próximo también'",
+                "right": "Inductivo"
+              },
+              {
+                "left": "Si las premisas son ciertas, no falla",
+                "right": "Rasgo deductivo"
+              },
+              {
+                "left": "Puede fallar con un caso nuevo",
+                "right": "Rasgo inductivo"
+              }
+            ],
+            "completion_feedback": "**Deductivo**: de lo general a lo particular, conclusión **segura** si las premisas son ciertas. **Inductivo**: de casos particulares a una regla general **probable**, que podría fallar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gem Grab",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Los tanques aguantan. El Primo es tanque'",
+                "right": "Deductivo"
+              },
+              {
+                "left": "'Gané 5 con Spike: siempre gano'",
+                "right": "Inductivo"
+              },
+              {
+                "left": "'El rival fue al centro 3 rondas'",
+                "right": "Casos particulares"
+              },
+              {
+                "left": "'Probablemente siempre va al centro'",
+                "right": "Regla probable"
+              }
+            ],
+            "completion_feedback": "**Deductivo**: de lo general a lo particular, conclusión **segura** si las premisas son ciertas. **Inductivo**: de casos particulares a una regla general **probable**, que podría fallar."
+          }
+        }
+      }
+    },
+    "el-proceso-de-investigacion-problema-e-hipotesis": {
+      "order_steps": {
+        "prompt": "Arranca una investigación",
+        "steps": [
+          "Observa un patrón: la audiencia baja tras el capítulo 5",
+          "Plantea el problema: ¿por qué baja después del 5?",
+          "Propón la hipótesis: el relleno aleja a la gente",
+          "Verifica que la hipótesis se pueda comprobar con datos"
+        ],
+        "completion_feedback": "Toda investigación arranca con un **problema** (pregunta clara y delimitada) y una **hipótesis** (respuesta tentativa que se puede **comprobar** con datos). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudio de anime",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'¿Por qué baja tras el capítulo 5?'",
+                "right": "Problema"
+              },
+              {
+                "left": "'Baja por el relleno sin acción'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "'¿Por qué no le gusta a la gente?'",
+                "right": "Problema demasiado vago"
+              },
+              {
+                "left": "Revisar el relleno por episodio",
+                "right": "Forma de comprobar"
+              }
+            ],
+            "completion_feedback": "**Problema**: pregunta clara y delimitada. **Hipótesis**: respuesta tentativa y **comprobable**, no una verdad probada. Una pregunta vaga ('¿por qué soy malo?') no sirve."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuerpo técnico",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'¿Por qué fallamos más en el 2.º tiempo?'",
+                "right": "Problema"
+              },
+              {
+                "left": "'Por el cansancio de los lanzadores'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "'¿Por qué jugamos mal?'",
+                "right": "Problema demasiado vago"
+              },
+              {
+                "left": "Medir la distancia recorrida",
+                "right": "Forma de comprobar"
+              }
+            ],
+            "completion_feedback": "**Problema**: pregunta clara y delimitada. **Hipótesis**: respuesta tentativa y **comprobable**, no una verdad probada. Una pregunta vaga ('¿por qué soy malo?') no sirve."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuenta de fans",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'¿Por qué mi cuenta no gana seguidores?'",
+                "right": "Problema"
+              },
+              {
+                "left": "'Publico cuando nadie está conectado'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "'¿Por qué no soy popular?'",
+                "right": "Problema demasiado vago"
+              },
+              {
+                "left": "Revisar estadísticas por horario",
+                "right": "Forma de comprobar"
+              }
+            ],
+            "completion_feedback": "**Problema**: pregunta clara y delimitada. **Hipótesis**: respuesta tentativa y **comprobable**, no una verdad probada. Una pregunta vaga ('¿por qué soy malo?') no sirve."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Squad de Fortnite",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'¿Por qué perdemos en la fase final?'",
+                "right": "Problema"
+              },
+              {
+                "left": "'No construimos rápido al ser atacados'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "'¿Por qué soy malo?'",
+                "right": "Problema demasiado vago"
+              },
+              {
+                "left": "Revisar repeticiones de partidas",
+                "right": "Forma de comprobar"
+              }
+            ],
+            "completion_feedback": "**Problema**: pregunta clara y delimitada. **Hipótesis**: respuesta tentativa y **comprobable**, no una verdad probada. Una pregunta vaga ('¿por qué soy malo?') no sirve."
+          }
+        }
+      }
+    },
+    "fuentes-de-informacion-y-fichas-de-trabajo": {
+      "order_steps": {
+        "prompt": "Arma una ficha de trabajo",
+        "steps": [
+          "Consulta la fuente y decide si es primaria o secundaria",
+          "Escribe el tema arriba de la tarjeta",
+          "Anota el contenido: el dato resumido",
+          "Registra la referencia completa de la fuente"
+        ],
+        "completion_feedback": "Una **ficha de trabajo** tiene tres partes: **tema**, **contenido** (el dato) y **referencia**. Antes, clasifica la fuente: **primaria** (original) o **secundaria** (la comenta). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de anime",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El tomo original de Oda",
+                "right": "Fuente primaria"
+              },
+              {
+                "left": "Video que analiza teorías",
+                "right": "Fuente secundaria"
+              },
+              {
+                "left": "'Reclutamiento de Nami'",
+                "right": "Tema de la ficha"
+              },
+              {
+                "left": "'Oda, E. (1999). One Piece, tomo 11'",
+                "right": "Referencia"
+              }
+            ],
+            "completion_feedback": "**Fuente primaria**: original, de primera mano. **Fuente secundaria**: analiza o comenta la original. **Ficha de trabajo**: tema + contenido + referencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Lamine",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Base de datos oficial de LaLiga",
+                "right": "Fuente primaria"
+              },
+              {
+                "left": "Artículo de Marca que lo analiza",
+                "right": "Fuente secundaria"
+              },
+              {
+                "left": "'Goles por temporada'",
+                "right": "Tema de la ficha"
+              },
+              {
+                "left": "LaLiga y fecha de consulta",
+                "right": "Referencia"
+              }
+            ],
+            "completion_feedback": "**Fuente primaria**: original, de primera mano. **Fuente secundaria**: analiza o comenta la original. **Ficha de trabajo**: tema + contenido + referencia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Trabajo de SKZ",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Créditos oficiales de JYP",
+                "right": "Fuente primaria"
+              },
+              {
+                "left": "Reseña de Billboard",
+                "right": "Fuente secundaria"
+              },
+              {
+                "left": "'Concepto del álbum MAXIDENT'",
+                "right": "Tema de la ficha"
+              },
+              {
+                "left": "'Lanzado el 7 de octubre de 2022'",
+                "right": "Contenido"
+              }
+            ],
+            "completion_feedback": "**Fuente primaria**: original, de primera mano. **Fuente secundaria**: analiza o comenta la original. **Ficha de trabajo**: tema + contenido + referencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Guía de Valorant",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Página oficial de Riot Games",
+                "right": "Fuente primaria"
+              },
+              {
+                "left": "Video de un analista famoso",
+                "right": "Fuente secundaria"
+              },
+              {
+                "left": "'Habilidades de Jett'",
+                "right": "Tema de la ficha"
+              },
+              {
+                "left": "'valorant.com, sección Agentes'",
+                "right": "Referencia"
+              }
+            ],
+            "completion_feedback": "**Fuente primaria**: original, de primera mano. **Fuente secundaria**: analiza o comenta la original. **Ficha de trabajo**: tema + contenido + referencia."
+          }
+        }
+      }
+    }
+  }
+}
