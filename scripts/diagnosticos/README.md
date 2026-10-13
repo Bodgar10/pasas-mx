@@ -2,7 +2,8 @@
 
 `agregados-s43.json` guarda, por materia, las preguntas de `diagnostic_questions`
 que se escribieron a mano en s43 para los temas publicados que no tenían ninguna
-(37 materias, 224 preguntas: 30 de prepa completas y 7 temas sueltos de secundaria).
+(37 materias, 227 preguntas: 30 de prepa completas, 7 temas sueltos de secundaria
+y los 3 temas que se publicaron en s43: Mesoamérica, Present perfect y Ciclo celular).
 Ya están cargadas en Supabase; este archivo es respaldo y referencia.
 
 Formato por pregunta: `slug` del tema, `question`, `options` [{letter,text}],
