@@ -16,6 +16,23 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // s47 — "Verdadero o mentira": /arcade?juego=vom (con o sin materia)
+        // va a su propia ruta ISR. Así el servidor ya sabe qué juego pintar y
+        // no hay parpadeo de "¿Cuál sobra?" antes de cambiar. Van PRIMERO:
+        // gana la primera regla que coincide.
+        {
+          source: "/arcade",
+          has: [
+            { type: "query", key: "juego", value: "vom" },
+            { type: "query", key: "materia", value: "(?<materia>[^&]{1,40})" },
+          ],
+          destination: "/arcade/vom/materia/:materia",
+        },
+        {
+          source: "/arcade",
+          has: [{ type: "query", key: "juego", value: "vom" }],
+          destination: "/arcade/vom",
+        },
         {
           source: "/arcade",
           has: [{ type: "query", key: "materia", value: "(?<materia>[^&]{1,40})" }],

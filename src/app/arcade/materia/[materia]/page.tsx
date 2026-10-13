@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ContenidoArcade from '../../contenido'
+import { normalizarMateria as normalizar } from '@/lib/arcade/alias-materia'
 
 /**
  * /arcade/materia/[materia] — el reto más reciente de una materia. s39.
@@ -13,29 +14,6 @@ import ContenidoArcade from '../../contenido'
  * página con otro reto.
  */
 export const revalidate = 60
-
-/** Lo que puede venir en ?materia= → la clave de la base. Lo demás cae al reto de hoy. */
-const ALIAS: Record<string, string> = {
-  historia: 'historia',
-  biologia: 'biologia',
-  geografia: 'geografia',
-  ciencias: 'ciencias',
-  ciencia: 'ciencias',
-  quimica: 'ciencias',
-  fisica: 'ciencias',
-  espanol: 'espanol',
-  papas: 'papas',
-  papa: 'papas',
-}
-
-function normalizar(crudo: string): string | null {
-  let t = crudo
-  try {
-    t = decodeURIComponent(crudo)
-  } catch {}
-  const clave = t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim()
-  return ALIAS[clave] ?? null
-}
 
 export const metadata: Metadata = {
   title: '¿Cuál sobra? · Reto diario | PASAS',

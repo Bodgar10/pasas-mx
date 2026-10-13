@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { registrarPartida } from '@/lib/arcade-server'
+import { registrarPartida, registrarPartidaVom } from '@/lib/arcade-server'
 import { RONDAS_POR_RETO } from '@/lib/arcade'
 
 /**
@@ -17,7 +17,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
 
-  const { date, anonId, picks, origen, canal, utm_source, utm_campaign } = (body ?? {}) as {
+  const { date, anonId, picks, origen, canal, utm_source, utm_campaign, juego } = (body ?? {}) as {
+    juego?: unknown
     date?: unknown
     anonId?: unknown
     picks?: unknown
@@ -35,7 +36,8 @@ export async function POST(req: Request) {
     anonId.length <= 64 &&
     Array.isArray(picks) &&
     picks.length === RONDAS_POR_RETO &&
-    picks.every((p) => Number.isInteger(p) && p >= 0 && p <= 3)
+    // s47: "Verdadero o mentira" solo tiene dos botones (0 = Verdad, 1 = Mentira).
+    picks.every((p) => Number.isInteger(p) && p >= 0 && p <= (juego === 'vom' ? 1 : 3))
 
   if (!valido) {
     return NextResponse.json({ error: 'Datos inválidos' }, { status: 400 })
@@ -43,7 +45,8 @@ export async function POST(req: Request) {
 
   // `origen` lo valida la base contra su lista; cualquier otra cosa queda NULL.
   const texto = (v: unknown) => (typeof v === 'string' ? v : null)
-  const cifras = await registrarPartida(date, anonId, picks as number[], texto(origen), {
+  const registrar = juego === 'vom' ? registrarPartidaVom : registrarPartida
+  const cifras = await registrar(date, anonId, picks as number[], texto(origen), {
     canal: texto(canal),
     utm_source: texto(utm_source),
     utm_campaign: texto(utm_campaign),

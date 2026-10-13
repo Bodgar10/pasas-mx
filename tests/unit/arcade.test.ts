@@ -84,6 +84,11 @@ describe('resultado y puente', () => {
     expect(txt).toBe('¿Cuál sobra? #12 · Historia\n🟩🟩🟥🟩🟥  3/5\n¿Tú cuántas sacas? https://pasas.mx/arcade/r/12-11010')
   })
 
+  it('el texto para compartir de Verdadero o mentira invita a ese juego', () => {
+    const txt = textoCompartir(12, [true, true, false, true, false], 'https://pasas.mx', null, 'vom')
+    expect(txt).toBe('¿Verdadero o mentira? #12 · Historia\n🟩🟩🟥🟩🟥  3/5\n¿Tú cuántas sacas? https://pasas.mx/arcade?juego=vom')
+  })
+
   it('el código del link ida y vuelta', () => {
     expect(codigoResultado(12, [true, false, true, true, false])).toBe('12-10110')
     expect(leerCodigo('12-10110')).toEqual({ numero: 12, resultados: [true, false, true, true, false] })
