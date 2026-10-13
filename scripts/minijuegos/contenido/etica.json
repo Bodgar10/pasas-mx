@@ -1,0 +1,741 @@
+{
+  "subject": "etica",
+  "topics": {
+    "etica-y-moral-diferencias": {
+      "order_steps": {
+        "prompt": "Ordena cómo la ética puede mejorar una costumbre moral",
+        "steps": [
+          "Un grupo sigue una costumbre heredada (moral)",
+          "Alguien se pregunta si esa costumbre es correcta",
+          "Analiza con razones a quién beneficia o daña",
+          "Concluye que es injusta y propone cambiarla",
+          "El grupo adopta una norma más justa"
+        ],
+        "completion_feedback": "La **moral** son las normas que un grupo practica; la **ética** reflexiona sobre ellas y puede **mejorarlas**. No son enemigas: trabajan juntas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Konoha",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Código ninja que se enseña a todos",
+                "right": "Moral"
+              },
+              {
+                "left": "Naruto razona si es justo",
+                "right": "Ética"
+              },
+              {
+                "left": "Mos, moris (latín)",
+                "right": "Costumbre"
+              },
+              {
+                "left": "Ethos (griego)",
+                "right": "Carácter o modo de ser"
+              }
+            ],
+            "completion_feedback": "La **moral** (del latín *mos*, costumbre) son las normas concretas que practica un grupo y cambian entre grupos. La **ética** (del griego *ethos*, carácter) es la reflexión racional sobre por qué algo es bueno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la cancha",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "El reglamento escrito",
+                "right": "Normas que ya existen"
+              },
+              {
+                "left": "Tirar el balón fuera por un lesionado",
+                "right": "Juego limpio más allá de la regla"
+              },
+              {
+                "left": "Cuestionar la novatada al nuevo",
+                "right": "La ética mejora la moral"
+              }
+            ],
+            "completion_feedback": "La **moral** (del latín *mos*, costumbre) son las normas concretas que practica un grupo y cambian entre grupos. La **ética** (del griego *ethos*, carácter) es la reflexión racional sobre por qué algo es bueno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fandom",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Acampar o no, según cada fandom",
+                "right": "Moral: varía entre grupos"
+              },
+              {
+                "left": "Buscar el principio que lo justifique",
+                "right": "Ética: busca lo universal"
+              },
+              {
+                "left": "No difundir rumores porque 'así es'",
+                "right": "Seguir la norma por costumbre"
+              },
+              {
+                "left": "Razonar qué daño causa un rumor",
+                "right": "Fundamentar la norma"
+              }
+            ],
+            "completion_feedback": "La **moral** (del latín *mos*, costumbre) son las normas concretas que practica un grupo y cambian entre grupos. La **ética** (del griego *ethos*, carácter) es la reflexión racional sobre por qué algo es bueno."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Servidor de Roblox",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Regla publicada: no usar exploits",
+                "right": "Moral: dice QUÉ hacer"
+              },
+              {
+                "left": "Preguntarte por qué está mal",
+                "right": "Ética: pregunta POR QUÉ"
+              },
+              {
+                "left": "Baneo si rompes la regla",
+                "right": "Sanción por romper la norma"
+              }
+            ],
+            "completion_feedback": "La **moral** (del latín *mos*, costumbre) son las normas concretas que practica un grupo y cambian entre grupos. La **ética** (del griego *ethos*, carácter) es la reflexión racional sobre por qué algo es bueno."
+          }
+        }
+      }
+    },
+    "valores-y-antivalores": {
+      "order_steps": {
+        "prompt": "Ordena cómo identificas el valor en una conducta",
+        "steps": [
+          "Observa la conducta concreta",
+          "Identifica el valor que expresa",
+          "Busca su antivalor opuesto",
+          "Revisa si actuar bien le costó algo: ahí se prueba el valor"
+        ],
+        "completion_feedback": "Cada **valor** tiene un **antivalor** opuesto, y tu **escala de valores** se nota cuando eliges uno aunque te cueste. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Valor",
+            "right_label": "Antivalor",
+            "pairs": [
+              {
+                "left": "Valentía de Deku",
+                "right": "Cobardía"
+              },
+              {
+                "left": "Solidaridad con los civiles",
+                "right": "Egoísmo"
+              },
+              {
+                "left": "Justicia de los héroes",
+                "right": "Injusticia"
+              }
+            ],
+            "completion_feedback": "Los **valores** son cualidades que orientan al bien y mejoran la convivencia; los **antivalores**, sus opuestos, la dañan. Tu **escala de valores** es el orden en que los priorizas al decidir."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fair play",
+            "right_label": "Juego sucio",
+            "pairs": [
+              {
+                "left": "Reconocer que el balón salió",
+                "right": "Fingir para engañar al árbitro"
+              },
+              {
+                "left": "Ayudar a un rival lesionado",
+                "right": "Agredir a escondidas"
+              },
+              {
+                "left": "Felicitar al ganador",
+                "right": "Armar escándalo al perder"
+              }
+            ],
+            "completion_feedback": "Los **valores** son cualidades que orientan al bien y mejoran la convivencia; los **antivalores**, sus opuestos, la dañan. Tu **escala de valores** es el orden en que los priorizas al decidir."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En SEVENTEEN",
+            "right_label": "Su opuesto tóxico",
+            "pairs": [
+              {
+                "left": "Defender a un compañero",
+                "right": "Traicionarlo"
+              },
+              {
+                "left": "Compartir el crédito",
+                "right": "Acaparar el protagonismo"
+              },
+              {
+                "left": "Respetar ideas distintas",
+                "right": "Despreciar a quien opina diferente"
+              }
+            ],
+            "completion_feedback": "Los **valores** son cualidades que orientan al bien y mejoran la convivencia; los **antivalores**, sus opuestos, la dañan. Tu **escala de valores** es el orden en que los priorizas al decidir."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Compañero",
+            "right_label": "Muestra…",
+            "pairs": [
+              {
+                "left": "Comparte su rifle",
+                "right": "Solidaridad"
+              },
+              {
+                "left": "Admite su error",
+                "right": "Honestidad"
+              },
+              {
+                "left": "Anima al equipo",
+                "right": "Respeto"
+              },
+              {
+                "left": "Abandona a media partida",
+                "right": "Antivalor: egoísmo"
+              }
+            ],
+            "completion_feedback": "Los **valores** son cualidades que orientan al bien y mejoran la convivencia; los **antivalores**, sus opuestos, la dañan. Tu **escala de valores** es el orden en que los priorizas al decidir."
+          }
+        }
+      }
+    },
+    "autonomia-y-heteronomia": {
+      "order_steps": {
+        "prompt": "Ordena el paso de la moral heterónoma a la autónoma",
+        "steps": [
+          "De niño obedece las reglas por miedo al castigo",
+          "Empieza a preguntarse por qué existen las reglas",
+          "Entiende el sentido de las normas",
+          "Las cumple por convicción propia"
+        ],
+        "completion_feedback": "**Piaget** describió el paso de la moral **heterónoma** (obedecer por miedo o premio) a la **autónoma** (actuar por convicción). Autonomía no es capricho: es decidir con razón. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Soldado",
+            "right_label": "Actúa con…",
+            "pairs": [
+              {
+                "left": "'Solo cumplía órdenes'",
+                "right": "Heteronomía"
+              },
+              {
+                "left": "Se niega tras reflexionar",
+                "right": "Autonomía"
+              },
+              {
+                "left": "Asume el castigo por negarse",
+                "right": "Responsabilidad"
+              }
+            ],
+            "completion_feedback": "**Heteronomía** es actuar por normas impuestas desde fuera: miedo, premio u órdenes. **Autonomía** es actuar según la ley que uno mismo se da con la razón, como planteó **Kant**, y responder por ello."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jugador",
+            "right_label": "Moral",
+            "pairs": [
+              {
+                "left": "Respeta reglas por miedo a la roja",
+                "right": "Heterónoma"
+              },
+              {
+                "left": "Respeta reglas porque hacen justo el juego",
+                "right": "Autónoma"
+              },
+              {
+                "left": "Piaget",
+                "right": "Describió el paso de una a otra"
+              }
+            ],
+            "completion_feedback": "**Heteronomía** es actuar por normas impuestas desde fuera: miedo, premio u órdenes. **Autonomía** es actuar según la ley que uno mismo se da con la razón, como planteó **Kant**, y responder por ello."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Idol",
+            "right_label": "Decide por…",
+            "pairs": [
+              {
+                "left": "Sigue la tendencia por miedo a perder fans",
+                "right": "Presión externa"
+              },
+              {
+                "left": "Se niega porque va contra sus valores",
+                "right": "Convicción propia"
+              },
+              {
+                "left": "Kant",
+                "right": "La ley moral que uno se da"
+              }
+            ],
+            "completion_feedback": "**Heteronomía** es actuar por normas impuestas desde fuera: miedo, premio u órdenes. **Autonomía** es actuar según la ley que uno mismo se da con la razón, como planteó **Kant**, y responder por ello."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jugador",
+            "right_label": "Motivo",
+            "pairs": [
+              {
+                "left": "No hace trampa por miedo al baneo",
+                "right": "Obedece por castigo"
+              },
+              {
+                "left": "No hace trampa porque arruina el juego",
+                "right": "Decide por convicción"
+              },
+              {
+                "left": "Copia un tutorial bloque por bloque",
+                "right": "Otro decide por él"
+              }
+            ],
+            "completion_feedback": "**Heteronomía** es actuar por normas impuestas desde fuera: miedo, premio u órdenes. **Autonomía** es actuar según la ley que uno mismo se da con la razón, como planteó **Kant**, y responder por ello."
+          }
+        }
+      }
+    },
+    "libertad-y-responsabilidad": {
+      "order_steps": {
+        "prompt": "Ordena por qué la libertad no justifica una patada violenta",
+        "steps": [
+          "El jugador elige libremente dar la patada",
+          "La patada lesiona a un rival",
+          "Su libertad choca con el derecho del rival a no ser dañado",
+          "Es responsable del daño y debe responder por él"
+        ],
+        "completion_feedback": "La **libertad** tiene **límites**: termina donde empiezan los derechos de los demás, y por eso quien elige libremente **responde** por las consecuencias. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Capitán pirata",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Elige ir a una isla peligrosa",
+                "right": "Libertad"
+              },
+              {
+                "left": "Responde por sus propias heridas",
+                "right": "Responsabilidad individual"
+              },
+              {
+                "left": "Responde por la tripulación herida",
+                "right": "Responsabilidad social"
+              }
+            ],
+            "completion_feedback": "**Libertad** es poder elegir; **responsabilidad**, responder por lo elegido. Hay responsabilidad plena cuando se actúa con **libertad, conocimiento y voluntad**, y puede ser **individual** o **social**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Patada violenta",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Nadie lo obligó a darla",
+                "right": "Libertad"
+              },
+              {
+                "left": "Lesiona la integridad del rival",
+                "right": "Límite de la libertad"
+              },
+              {
+                "left": "Debe responder por el daño",
+                "right": "Responsabilidad"
+              }
+            ],
+            "completion_feedback": "**Libertad** es poder elegir; **responsabilidad**, responder por lo elegido. Hay responsabilidad plena cuando se actúa con **libertad, conocimiento y voluntad**, y puede ser **individual** o **social**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Idol publica",
+            "right_label": "Condición",
+            "pairs": [
+              {
+                "left": "Nadie lo obligó",
+                "right": "Libertad"
+              },
+              {
+                "left": "Sabía lo que escribía",
+                "right": "Conocimiento"
+              },
+              {
+                "left": "Lo hizo a propósito",
+                "right": "Voluntad"
+              }
+            ],
+            "completion_feedback": "**Libertad** es poder elegir; **responsabilidad**, responder por lo elegido. Hay responsabilidad plena cuando se actúa con **libertad, conocimiento y voluntad**, y puede ser **individual** o **social**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jugador de Roblox",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Elige estafar a su aliado",
+                "right": "Libertad"
+              },
+              {
+                "left": "El aliado pierde sus recursos",
+                "right": "Consecuencia"
+              },
+              {
+                "left": "'No es mi culpa'",
+                "right": "Evadir la responsabilidad"
+              }
+            ],
+            "completion_feedback": "**Libertad** es poder elegir; **responsabilidad**, responder por lo elegido. Hay responsabilidad plena cuando se actúa con **libertad, conocimiento y voluntad**, y puede ser **individual** o **social**."
+          }
+        }
+      }
+    },
+    "dilemas-eticos": {
+      "order_steps": {
+        "prompt": "Ordena los pasos para resolver un dilema ético",
+        "steps": [
+          "Identifica el problema y las opciones",
+          "Reconoce los valores en conflicto",
+          "Analiza las consecuencias de cada opción",
+          "Pondera principios y decide de forma razonada",
+          "Asume la responsabilidad de tu decisión"
+        ],
+        "completion_feedback": "Un dilema no tiene salida perfecta; lo que sí puedes hacer es decidir con **argumentos** y no por impulso. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tanjiro",
+            "right_label": "En juego",
+            "pairs": [
+              {
+                "left": "Eliminar al demonio y proteger víctimas",
+                "right": "Deber de cazador"
+              },
+              {
+                "left": "Perdonarlo por su pasado humano",
+                "right": "Compasión"
+              },
+              {
+                "left": "Ninguna opción es del todo correcta",
+                "right": "Dilema ético"
+              }
+            ],
+            "completion_feedback": "Un **dilema ético** obliga a elegir entre valores en conflicto sin salida totalmente buena. La **deontología** mira el deber, el **consecuencialismo** los resultados y la **ética de la virtud**, qué haría alguien bueno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol con la mano",
+            "right_label": "Enfoque",
+            "pairs": [
+              {
+                "left": "Confesar porque mentir está mal",
+                "right": "Deontología (deber)"
+              },
+              {
+                "left": "¿La final compensa la injusticia?",
+                "right": "Consecuencialismo"
+              },
+              {
+                "left": "¿Qué haría un jugador honesto?",
+                "right": "Ética de la virtud"
+              }
+            ],
+            "completion_feedback": "Un **dilema ético** obliga a elegir entre valores en conflicto sin salida totalmente buena. La **deontología** mira el deber, el **consecuencialismo** los resultados y la **ética de la virtud**, qué haría alguien bueno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Amigo tramposo",
+            "right_label": "Valor en juego",
+            "pairs": [
+              {
+                "left": "Denunciarlo ante la universidad",
+                "right": "Justicia"
+              },
+              {
+                "left": "Callar para protegerlo",
+                "right": "Lealtad"
+              },
+              {
+                "left": "Pensar en quienes sí estudiaron",
+                "right": "Bien común"
+              }
+            ],
+            "completion_feedback": "Un **dilema ético** obliga a elegir entre valores en conflicto sin salida totalmente buena. La **deontología** mira el deber, el **consecuencialismo** los resultados y la **ética de la virtud**, qué haría alguien bueno."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dilema",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "El profe lo inventa para debatir",
+                "right": "Hipotético"
+              },
+              {
+                "left": "Te pasa de verdad en tu gremio",
+                "right": "Real"
+              },
+              {
+                "left": "Debes decidir qué harías",
+                "right": "Abierto"
+              },
+              {
+                "left": "Juzgas lo que otro ya decidió",
+                "right": "Cerrado"
+              }
+            ],
+            "completion_feedback": "Un **dilema ético** obliga a elegir entre valores en conflicto sin salida totalmente buena. La **deontología** mira el deber, el **consecuencialismo** los resultados y la **ética de la virtud**, qué haría alguien bueno."
+          }
+        }
+      }
+    },
+    "derechos-humanos": {
+      "order_steps": {
+        "prompt": "Ordena el reconocimiento de los derechos humanos en el tiempo",
+        "steps": [
+          "Declaración de los Derechos del Hombre y del Ciudadano (1789)",
+          "Declaración Universal de los Derechos Humanos de la ONU (1948)",
+          "Se crea la CNDH en México (1990)",
+          "Reforma constitucional de derechos humanos en México (2011)"
+        ],
+        "completion_feedback": "Los derechos humanos se reconocieron **poco a poco**, gracias a luchas sociales: por eso se dice que son **progresivos**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Eldianos",
+            "right_label": "Derecho negado",
+            "pairs": [
+              {
+                "left": "Perseguidos por nacer eldianos",
+                "right": "No discriminación"
+              },
+              {
+                "left": "Encerrados tras las murallas",
+                "right": "Libertad"
+              },
+              {
+                "left": "Tratados con crueldad",
+                "right": "Dignidad humana"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por el solo hecho de serlo: **universales**, **inalienables** e iguales para todos. Se agrupan en generaciones y en México los defiende la **CNDH**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el fútbol",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Insultos racistas desde la grada",
+                "right": "Discriminación"
+              },
+              {
+                "left": "Mismo respeto para todo jugador",
+                "right": "Igualdad"
+              },
+              {
+                "left": "Organismo que defiende derechos",
+                "right": "CNDH"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por el solo hecho de serlo: **universales**, **inalienables** e iguales para todos. Se agrupan en generaciones y en México los defiende la **CNDH**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Derecho",
+            "right_label": "Generación",
+            "pairs": [
+              {
+                "left": "Descanso y salario justo del idol",
+                "right": "2ª: sociales y económicos"
+              },
+              {
+                "left": "Votar y expresarse",
+                "right": "1ª: civiles y políticos"
+              },
+              {
+                "left": "Paz y medio ambiente sano",
+                "right": "3ª: de los pueblos"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por el solo hecho de serlo: **universales**, **inalienables** e iguales para todos. Se agrupan en generaciones y en México los defiende la **CNDH**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Moderador injusto",
+            "right_label": "Se viola…",
+            "pairs": [
+              {
+                "left": "Quita derechos a jugadores nuevos",
+                "right": "Inalienables"
+              },
+              {
+                "left": "Niega reportar a un país",
+                "right": "Universales"
+              },
+              {
+                "left": "Da más derechos a quien paga",
+                "right": "Igualdad"
+              }
+            ],
+            "completion_feedback": "Los **derechos humanos** son de toda persona por el solo hecho de serlo: **universales**, **inalienables** e iguales para todos. Se agrupan en generaciones y en México los defiende la **CNDH**."
+          }
+        }
+      }
+    },
+    "etica-frente-a-la-ciencia-y-la-tecnologia": {
+      "order_steps": {
+        "prompt": "Ordena cómo evalúas éticamente una nueva tecnología",
+        "steps": [
+          "Identifica qué puede hacer (lo técnico)",
+          "Identifica a quién beneficia y a quién podría dañar",
+          "Revisa si respeta la dignidad, la privacidad y el consentimiento",
+          "Decide si debe usarse y con qué límites"
+        ],
+        "completion_feedback": "Que algo sea **técnicamente posible** no significa que **deba** hacerse: la ética pone los límites que la técnica sola no pone. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Alquimia",
+            "right_label": "Principio",
+            "pairs": [
+              {
+                "left": "Efectos desconocidos: esperar",
+                "right": "Precaución"
+              },
+              {
+                "left": "Saber hacerlo no obliga a hacerlo",
+                "right": "Poder no es deber"
+              },
+              {
+                "left": "Edward pierde su pierna al intentarlo",
+                "right": "Consecuencias irreversibles"
+              }
+            ],
+            "completion_feedback": "La ética frente a la ciencia distingue lo que se **puede** de lo que se **debe** hacer. Pide **precaución** ante riesgos inciertos, **consentimiento informado** y respeto a la **privacidad** y la **dignidad**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tecnología",
+            "right_label": "Tema ético",
+            "pairs": [
+              {
+                "left": "Pulsera que vigila 24/7",
+                "right": "Privacidad"
+              },
+              {
+                "left": "Chip implantado sin permiso",
+                "right": "Consentimiento"
+              },
+              {
+                "left": "VAR que decide por milímetros",
+                "right": "Justicia contra lo humano"
+              }
+            ],
+            "completion_feedback": "La ética frente a la ciencia distingue lo que se **puede** de lo que se **debe** hacer. Pide **precaución** ante riesgos inciertos, **consentimiento informado** y respeto a la **privacidad** y la **dignidad**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "IA",
+            "right_label": "Uso",
+            "pairs": [
+              {
+                "left": "Homenaje autorizado por la familia",
+                "right": "Uso responsable"
+              },
+              {
+                "left": "Canciones falsas para estafar",
+                "right": "Uso irresponsable"
+              },
+              {
+                "left": "Deepfake de un idol sin permiso",
+                "right": "Viola su dignidad"
+              },
+              {
+                "left": "Misma IA, fines opuestos",
+                "right": "Ambivalencia"
+              }
+            ],
+            "completion_feedback": "La ética frente a la ciencia distingue lo que se **puede** de lo que se **debe** hacer. Pide **precaución** ante riesgos inciertos, **consentimiento informado** y respeto a la **privacidad** y la **dignidad**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudio de juegos",
+            "right_label": "Problema",
+            "pairs": [
+              {
+                "left": "Detecta a vulnerables para que gasten",
+                "right": "Manipulación"
+              },
+              {
+                "left": "Usa datos de menores sin permiso",
+                "right": "Privacidad"
+              },
+              {
+                "left": "Loot boxes con premios al azar",
+                "right": "Riesgo de apuesta"
+              }
+            ],
+            "completion_feedback": "La ética frente a la ciencia distingue lo que se **puede** de lo que se **debe** hacer. Pide **precaución** ante riesgos inciertos, **consentimiento informado** y respeto a la **privacidad** y la **dignidad**."
+          }
+        }
+      }
+    }
+  }
+}
