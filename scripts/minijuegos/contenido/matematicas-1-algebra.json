@@ -1,0 +1,1421 @@
+{
+  "subject": "matematicas-1-algebra",
+  "topics": {
+    "numeros-reales-y-sus-operaciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves 20 − 2 × (1 + 3)²",
+        "steps": [
+          "Resuelve el paréntesis: 1 + 3 = 4",
+          "Calcula la potencia: 4² = 16",
+          "Multiplica: 2 × 16 = 32",
+          "Resta al final: 20 − 32 = −12"
+        ],
+        "completion_feedback": "Paréntesis, exponentes, multiplicaciones y al final sumas y restas: si cambias el orden, cambia el resultado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Dónde va cada medida en la recta numérica?",
+            "left_label": "Ruta de Nami",
+            "right_label": "Recta numérica",
+            "pairs": [
+              {
+                "left": "−200 m de profundidad",
+                "right": "El menor: hasta la izquierda"
+              },
+              {
+                "left": "0: el nivel del mar",
+                "right": "El centro de la recta"
+              },
+              {
+                "left": "3/4 de día = 0.75",
+                "right": "Entre 0 y 1"
+              },
+              {
+                "left": "√2 ≈ 1.41",
+                "right": "El mayor de los cuatro"
+              }
+            ],
+            "completion_feedback": "Naturales, enteros, racionales e irracionales forman los **reales**: todos caben en la recta y se operan con **reglas de signos** y **jerarquía**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cuál es el resultado de cada operación?",
+            "left_label": "Diferencia de gol",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "−7 + (−3)",
+                "right": "−10: mismo signo, se suman"
+              },
+              {
+                "left": "−5 + 4",
+                "right": "−1: manda el signo de −5"
+              },
+              {
+                "left": "(−2) × (−3)",
+                "right": "+6: signos iguales"
+              },
+              {
+                "left": "(−12) ÷ 4",
+                "right": "−3: signos distintos"
+              }
+            ],
+            "completion_feedback": "Naturales, enteros, racionales e irracionales forman los **reales**: todos caben en la recta y se operan con **reglas de signos** y **jerarquía**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué paso de la jerarquía es cada cálculo?",
+            "left_label": "Comeback de BTS",
+            "right_label": "Jerarquía",
+            "pairs": [
+              {
+                "left": "(10 − 4) = 6",
+                "right": "1. Paréntesis"
+              },
+              {
+                "left": "6² = 36",
+                "right": "2. Exponente"
+              },
+              {
+                "left": "3 × 36 = 108",
+                "right": "3. Multiplicación"
+              },
+              {
+                "left": "2 + 108 = 110",
+                "right": "4. Suma al final"
+              }
+            ],
+            "completion_feedback": "Naturales, enteros, racionales e irracionales forman los **reales**: todos caben en la recta y se operan con **reglas de signos** y **jerarquía**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿A qué conjunto pertenece cada valor?",
+            "left_label": "Ronda de Valorant",
+            "right_label": "Conjunto",
+            "pairs": [
+              {
+                "left": "5 kills en la ronda",
+                "right": "Natural"
+              },
+              {
+                "left": "−2900 al comprar la Vandal",
+                "right": "Entero negativo"
+              },
+              {
+                "left": "Precisión de 0.75 = 3/4",
+                "right": "Racional"
+              },
+              {
+                "left": "√2 en la diagonal del mapa",
+                "right": "Irracional"
+              }
+            ],
+            "completion_feedback": "Naturales, enteros, racionales e irracionales forman los **reales**: todos caben en la recta y se operan con **reglas de signos** y **jerarquía**."
+          }
+        }
+      }
+    },
+    "lenguaje-algebraico-y-expresiones-algebraicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo traduces 'el doble de un número, disminuido en 7'",
+        "steps": [
+          "Llama x al número desconocido",
+          "'El doble de x' se escribe 2x",
+          "'Disminuido en 7' significa restar 7",
+          "La expresión queda 2x − 7"
+        ],
+        "completion_feedback": "Primero nombras lo desconocido y luego traduces cada parte de la frase en su orden. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la expresión 15n + 40 es cada cosa?",
+            "left_label": "Clones de Naruto",
+            "right_label": "Expresión",
+            "pairs": [
+              {
+                "left": "n",
+                "right": "Variable: número de clones"
+              },
+              {
+                "left": "15",
+                "right": "Coeficiente: daño por clon"
+              },
+              {
+                "left": "+ 40",
+                "right": "Término independiente"
+              },
+              {
+                "left": "15(8) + 40 = 160",
+                "right": "Evaluar con n = 8"
+              }
+            ],
+            "completion_feedback": "Una **variable** guarda lo que no sabes o lo que cambia; con números y operaciones armas una **expresión** que sirve para cualquier caso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué representa cada cosa en 3v + e?",
+            "left_label": "Puntos del Barça",
+            "right_label": "Álgebra",
+            "pairs": [
+              {
+                "left": "v y e",
+                "right": "Variables: victorias y empates"
+              },
+              {
+                "left": "El 3 de 3v",
+                "right": "Puntos por victoria"
+              },
+              {
+                "left": "12 ganados y 6 empatados",
+                "right": "42 puntos"
+              },
+              {
+                "left": "8 ganados y 5 empatados",
+                "right": "29 puntos"
+              }
+            ],
+            "completion_feedback": "Una **variable** guarda lo que no sabes o lo que cambia; con números y operaciones armas una **expresión** que sirve para cualquier caso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es cada parte al simplificar 5x + 3 + 2x + 4?",
+            "left_label": "Photocards",
+            "right_label": "Álgebra",
+            "pairs": [
+              {
+                "left": "5x y 2x",
+                "right": "Términos semejantes"
+              },
+              {
+                "left": "5x + 2x",
+                "right": "7x"
+              },
+              {
+                "left": "3 + 4",
+                "right": "Constantes: 7"
+              },
+              {
+                "left": "7x + 7",
+                "right": "Binomio simplificado"
+              }
+            ],
+            "completion_feedback": "Una **variable** guarda lo que no sabes o lo que cambia; con números y operaciones armas una **expresión** que sirve para cualquier caso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo se escribe cada frase en álgebra?",
+            "left_label": "Tycoon de Roblox",
+            "right_label": "Expresión",
+            "pairs": [
+              {
+                "left": "80 Robux por cada pase",
+                "right": "80x"
+              },
+              {
+                "left": "El triple de x, más 50",
+                "right": "3x + 50"
+              },
+              {
+                "left": "El doble de x, más 30",
+                "right": "2x + 30"
+              },
+              {
+                "left": "El cuadrado de x",
+                "right": "x²"
+              }
+            ],
+            "completion_feedback": "Una **variable** guarda lo que no sabes o lo que cambia; con números y operaciones armas una **expresión** que sirve para cualquier caso."
+          }
+        }
+      }
+    },
+    "leyes-de-los-exponentes-y-radicales": {
+      "order_steps": {
+        "prompt": "Ordena cómo simplificas √50",
+        "steps": [
+          "Busca el mayor cuadrado perfecto que divide a 50: 25",
+          "Separa el radical: √50 = √25 · √2",
+          "Saca la raíz exacta: √25 = 5",
+          "El resultado es 5√2"
+        ],
+        "completion_feedback": "Sacas del radical solo el factor que es **cuadrado perfecto**; lo demás se queda dentro. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o parte corresponde a cada cosa?",
+            "left_label": "Gear de Luffy",
+            "right_label": "Potencias y raíces",
+            "pairs": [
+              {
+                "left": "Cubo de aire de lado 4",
+                "right": "Volumen 4³ = 64"
+              },
+              {
+                "left": "Ataque de volumen 27",
+                "right": "Lado ³√27 = 3"
+              },
+              {
+                "left": "El 3 de ³√27",
+                "right": "Índice"
+              },
+              {
+                "left": "√72",
+                "right": "6√2"
+              }
+            ],
+            "completion_feedback": "Con la **misma base**, las leyes de los exponentes ahorran cuentas; la **raíz** deshace la potencia y te regresa al número original."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o parte corresponde a cada cosa?",
+            "left_label": "Cancha juvenil",
+            "right_label": "Potencias y raíces",
+            "pairs": [
+              {
+                "left": "Área de 144 m²",
+                "right": "Lado √144 = 12 m"
+              },
+              {
+                "left": "Área de 81 m²",
+                "right": "Lado √81 = 9 m"
+              },
+              {
+                "left": "El 81 dentro de √81",
+                "right": "Radicando"
+              },
+              {
+                "left": "√a",
+                "right": "a^(1/2)"
+              }
+            ],
+            "completion_feedback": "Con la **misma base**, las leyes de los exponentes ahorran cuentas; la **raíz** deshace la potencia y te regresa al número original."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿A qué equivale cada potencia?",
+            "left_label": "MV viral",
+            "right_label": "Potencias de 10",
+            "pairs": [
+              {
+                "left": "10 multiplicado 6 veces",
+                "right": "10⁶ = 1 000 000"
+              },
+              {
+                "left": "10⁵ ÷ 10⁸",
+                "right": "10⁻³"
+              },
+              {
+                "left": "10⁻³",
+                "right": "0.001: positivo y pequeño"
+              },
+              {
+                "left": "10⁰",
+                "right": "1"
+              }
+            ],
+            "completion_feedback": "Con la **misma base**, las leyes de los exponentes ahorran cuentas; la **raíz** deshace la potencia y te regresa al número original."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué ley se aplica en cada caso?",
+            "left_label": "Encantamientos",
+            "right_label": "Ley de exponentes",
+            "pairs": [
+              {
+                "left": "2³ · 2²",
+                "right": "2⁵: se suman"
+              },
+              {
+                "left": "3⁶ ÷ 3³",
+                "right": "3³: se restan"
+              },
+              {
+                "left": "(2³)²",
+                "right": "2⁶: se multiplican"
+              },
+              {
+                "left": "3² · 3⁴ ÷ 3³",
+                "right": "27"
+              }
+            ],
+            "completion_feedback": "Con la **misma base**, las leyes de los exponentes ahorran cuentas; la **raíz** deshace la potencia y te regresa al número original."
+          }
+        }
+      }
+    },
+    "productos-notables": {
+      "order_steps": {
+        "prompt": "Ordena cómo desarrollas (x + 4)²",
+        "steps": [
+          "Cuadrado del primero: x²",
+          "Doble del primero por el segundo: 2 · x · 4 = 8x",
+          "Cuadrado del segundo: 4² = 16",
+          "Une los tres términos: x² + 8x + 16"
+        ],
+        "completion_feedback": "Cuadrado, **doble producto** y cuadrado: si te saltas el de en medio, el resultado sale incompleto. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué término de (x + 2)³ sale de cada cálculo?",
+            "left_label": "Poder de Luffy",
+            "right_label": "Binomio al cubo",
+            "pairs": [
+              {
+                "left": "Cubo del primero",
+                "right": "x³"
+              },
+              {
+                "left": "3 · x² · 2",
+                "right": "6x²"
+              },
+              {
+                "left": "3 · x · 2²",
+                "right": "12x"
+              },
+              {
+                "left": "Cubo del segundo",
+                "right": "8"
+              }
+            ],
+            "completion_feedback": "Un **producto notable** es una multiplicación que siempre sale con el mismo patrón: con su fórmula te ahorras desarrollar término por término."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del producto es cada cosa?",
+            "left_label": "Fichajes del Barça",
+            "right_label": "Término común",
+            "pairs": [
+              {
+                "left": "x · x en (x + 6)(x + 3)",
+                "right": "x²"
+              },
+              {
+                "left": "(6 + 3) por x",
+                "right": "9x"
+              },
+              {
+                "left": "6 · 3",
+                "right": "18"
+              },
+              {
+                "left": "(x + 2)(x + 5)",
+                "right": "x² + 7x + 10"
+              }
+            ],
+            "completion_feedback": "Un **producto notable** es una multiplicación que siempre sale con el mismo patrón: con su fórmula te ahorras desarrollar término por término."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuál es el resultado de cada producto?",
+            "left_label": "Tienda BLACKPINK",
+            "right_label": "Conjugados",
+            "pairs": [
+              {
+                "left": "(x + 4)(x − 4)",
+                "right": "x² − 16"
+              },
+              {
+                "left": "(x + 7)(x − 7)",
+                "right": "x² − 49"
+              },
+              {
+                "left": "+4x y −4x",
+                "right": "Se cancelan"
+              },
+              {
+                "left": "(a + b)(a − b)",
+                "right": "a² − b²"
+              }
+            ],
+            "completion_feedback": "Un **producto notable** es una multiplicación que siempre sale con el mismo patrón: con su fórmula te ahorras desarrollar término por término."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué zona de la granja (x + 3)² es cada término?",
+            "left_label": "Granja ampliada",
+            "right_label": "En la granja",
+            "pairs": [
+              {
+                "left": "x²",
+                "right": "El cuadrado original"
+              },
+              {
+                "left": "6x",
+                "right": "Los dos rectángulos nuevos"
+              },
+              {
+                "left": "9",
+                "right": "El cuadradito de la esquina"
+              },
+              {
+                "left": "(x + 5)²",
+                "right": "x² + 10x + 25"
+              }
+            ],
+            "completion_feedback": "Un **producto notable** es una multiplicación que siempre sale con el mismo patrón: con su fórmula te ahorras desarrollar término por término."
+          }
+        }
+      }
+    },
+    "factorizacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo factorizas x² + 7x + 12",
+        "steps": [
+          "Identifica b = 7 (la suma) y c = 12 (el producto)",
+          "Busca dos números que cumplan ambas: 3 y 4",
+          "Escribe los binomios: (x + 3)(x + 4)",
+          "Comprueba multiplicando: x² + 7x + 12"
+        ],
+        "completion_feedback": "Los dos números deben cumplir **las dos condiciones** a la vez; la comprobación te dice si acertaste. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cuál es la factorización de cada trinomio?",
+            "left_label": "Firma del TCP",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "x² + 6x + 9",
+                "right": "(x + 3)²"
+              },
+              {
+                "left": "x² + 10x + 25",
+                "right": "(x + 5)²"
+              },
+              {
+                "left": "x² + 16x + 64",
+                "right": "(x + 8)²"
+              },
+              {
+                "left": "2 · x · 3 = 6x",
+                "right": "Doble producto: sí es TCP"
+              }
+            ],
+            "completion_feedback": "Factorizar es **multiplicar al revés**: reconoces el patrón (factor común, TCP, diferencia de cuadrados o trinomio) y lo escribes como producto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué factorización o números corresponden?",
+            "left_label": "Marcador al revés",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "x² + 7x + 10",
+                "right": "(x + 2)(x + 5)"
+              },
+              {
+                "left": "x² + 9x + 20",
+                "right": "(x + 4)(x + 5)"
+              },
+              {
+                "left": "Suman 9 y multiplicados dan 20",
+                "right": "4 y 5"
+              },
+              {
+                "left": "Suman 7 y multiplicados dan 10",
+                "right": "2 y 5"
+              }
+            ],
+            "completion_feedback": "Factorizar es **multiplicar al revés**: reconoces el patrón (factor común, TCP, diferencia de cuadrados o trinomio) y lo escribes como producto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuál es la factorización de cada expresión?",
+            "left_label": "Precio secreto",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "x² − 25",
+                "right": "(x + 5)(x − 5)"
+              },
+              {
+                "left": "x² − 49",
+                "right": "(x + 7)(x − 7)"
+              },
+              {
+                "left": "x² − 16",
+                "right": "(x + 4)(x − 4)"
+              },
+              {
+                "left": "x² + 49",
+                "right": "No es diferencia de cuadrados"
+              }
+            ],
+            "completion_feedback": "Factorizar es **multiplicar al revés**: reconoces el patrón (factor común, TCP, diferencia de cuadrados o trinomio) y lo escribes como producto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa al sacar factor común?",
+            "left_label": "Materiales",
+            "right_label": "Factor común",
+            "pairs": [
+              {
+                "left": "6x + 9",
+                "right": "3(2x + 3)"
+              },
+              {
+                "left": "8x² + 12x",
+                "right": "4x(2x + 3)"
+              },
+              {
+                "left": "4x en 8x² + 12x",
+                "right": "Máximo factor común"
+              },
+              {
+                "left": "4x · 2x + 4x · 3",
+                "right": "Comprobación"
+              }
+            ],
+            "completion_feedback": "Factorizar es **multiplicar al revés**: reconoces el patrón (factor común, TCP, diferencia de cuadrados o trinomio) y lo escribes como producto."
+          }
+        }
+      }
+    },
+    "operaciones-con-polinomios": {
+      "order_steps": {
+        "prompt": "Ordena cómo divides (12x³ + 8x²) ÷ 4x",
+        "steps": [
+          "Reparte cada término entre 4x: 12x³ ÷ 4x y 8x² ÷ 4x",
+          "Divide coeficientes y resta exponentes: 3x² y 2x",
+          "Une los resultados: 3x² + 2x",
+          "Comprueba: 4x(3x² + 2x) = 12x³ + 8x²"
+        ],
+        "completion_feedback": "Al dividir entre un monomio, **cada término** se reparte por separado y los exponentes **se restan**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resulta al sumar (4x² + 2x + 6) + (3x² + 5x + 1)?",
+            "left_label": "Recompensas",
+            "right_label": "Suma",
+            "pairs": [
+              {
+                "left": "4x² + 3x²",
+                "right": "7x²"
+              },
+              {
+                "left": "2x + 5x",
+                "right": "7x"
+              },
+              {
+                "left": "6 + 1",
+                "right": "7"
+              },
+              {
+                "left": "4x² con 2x",
+                "right": "No se juntan: distinto grado"
+              }
+            ],
+            "completion_feedback": "Sumas y restas juntando solo **términos semejantes**; multiplicas **cada término por cada término** y divides término por término."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resulta en cada división?",
+            "left_label": "Reparto del Barça",
+            "right_label": "División",
+            "pairs": [
+              {
+                "left": "6x² ÷ 3x",
+                "right": "2x"
+              },
+              {
+                "left": "9x ÷ 3x",
+                "right": "3"
+              },
+              {
+                "left": "(6x² + 9x) ÷ 3x",
+                "right": "2x + 3"
+              },
+              {
+                "left": "x³ ÷ x",
+                "right": "x²: se restan exponentes"
+              }
+            ],
+            "completion_feedback": "Sumas y restas juntando solo **términos semejantes**; multiplicas **cada término por cada término** y divides término por término."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué producto sale al multiplicar (x + 4)(x + 5)?",
+            "left_label": "Merch de BTS",
+            "right_label": "Multiplicación",
+            "pairs": [
+              {
+                "left": "x · x",
+                "right": "x²"
+              },
+              {
+                "left": "x · 5",
+                "right": "5x"
+              },
+              {
+                "left": "4 · 5",
+                "right": "20"
+              },
+              {
+                "left": "5x + 4x",
+                "right": "9x"
+              }
+            ],
+            "completion_feedback": "Sumas y restas juntando solo **términos semejantes**; multiplicas **cada término por cada término** y divides término por término."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resulta en cada paso de la resta?",
+            "left_label": "Inventario Brawl",
+            "right_label": "Resta",
+            "pairs": [
+              {
+                "left": "−(2x² + 3x)",
+                "right": "−2x² − 3x"
+              },
+              {
+                "left": "5x² − 2x²",
+                "right": "3x²"
+              },
+              {
+                "left": "8x − 3x",
+                "right": "5x"
+              },
+              {
+                "left": "(5x² + 8x) − (2x² + 3x)",
+                "right": "3x² + 5x"
+              }
+            ],
+            "completion_feedback": "Sumas y restas juntando solo **términos semejantes**; multiplicas **cada término por cada término** y divides término por término."
+          }
+        }
+      }
+    },
+    "fracciones-algebraicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras el valor prohibido de (x + 5)/(x − 2)",
+        "steps": [
+          "Fíjate solo en el denominador: x − 2",
+          "Iguálalo a cero: x − 2 = 0",
+          "Resuelve: x = 2",
+          "Concluye: la fracción vale para todo x ≠ 2"
+        ],
+        "completion_feedback": "Las restricciones salen **solo del denominador**: buscas el valor que lo vuelve cero y lo excluyes. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cuál es el valor prohibido en cada caso?",
+            "left_label": "Reparto de tesoro",
+            "right_label": "Restricción",
+            "pairs": [
+              {
+                "left": "Tesoro/(x − 5)",
+                "right": "x ≠ 5"
+              },
+              {
+                "left": "(x + 1)/(x − 3)",
+                "right": "x ≠ 3"
+              },
+              {
+                "left": "(x + 2)/(x − 4)",
+                "right": "x ≠ 4"
+              },
+              {
+                "left": "¿De dónde salen las restricciones?",
+                "right": "Solo del denominador"
+              }
+            ],
+            "completion_feedback": "Una **fracción algebraica** se simplifica, suma o multiplica como cualquier fracción, pero su **denominador nunca puede valer cero**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resulta en cada paso de la multiplicación?",
+            "left_label": "Índices del Barça",
+            "right_label": "Multiplicación",
+            "pairs": [
+              {
+                "left": "2x · 5",
+                "right": "10x: el numerador"
+              },
+              {
+                "left": "3 · 4x",
+                "right": "12x: el denominador"
+              },
+              {
+                "left": "10x/12x simplificada",
+                "right": "5/6"
+              },
+              {
+                "left": "(3x/5) · (10/9x)",
+                "right": "2/3"
+              }
+            ],
+            "completion_feedback": "Una **fracción algebraica** se simplifica, suma o multiplica como cualquier fracción, pero su **denominador nunca puede valer cero**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuánto da o qué se hace en cada suma?",
+            "left_label": "Sobres de BTS",
+            "right_label": "Suma",
+            "pairs": [
+              {
+                "left": "2/x + 3/x",
+                "right": "5/x"
+              },
+              {
+                "left": "7/x + 4/x",
+                "right": "11/x"
+              },
+              {
+                "left": "Denominadores iguales",
+                "right": "Se suman solo los de arriba"
+              },
+              {
+                "left": "Denominadores distintos",
+                "right": "Primero se igualan"
+              }
+            ],
+            "completion_feedback": "Una **fracción algebraica** se simplifica, suma o multiplica como cualquier fracción, pero su **denominador nunca puede valer cero**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo queda cada fracción o qué se anota?",
+            "left_label": "Receta de hierro",
+            "right_label": "Fracción",
+            "pairs": [
+              {
+                "left": "6x/9",
+                "right": "2x/3"
+              },
+              {
+                "left": "4x²/8x",
+                "right": "x/2"
+              },
+              {
+                "left": "x²/x",
+                "right": "x"
+              },
+              {
+                "left": "8x en el denominador",
+                "right": "Restricción: x ≠ 0"
+              }
+            ],
+            "completion_feedback": "Una **fracción algebraica** se simplifica, suma o multiplica como cualquier fracción, pero su **denominador nunca puede valer cero**."
+          }
+        }
+      }
+    },
+    "ecuaciones-de-primer-grado": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves 6x − 8 = 40",
+        "steps": [
+          "Identifica qué le hacen a x: se multiplica por 6 y se le resta 8",
+          "Deshaz la resta: suma 8 en ambos lados → 6x = 48",
+          "Deshaz la multiplicación: divide entre 6 → x = 8",
+          "Comprueba: 6(8) − 8 = 40 ✓"
+        ],
+        "completion_feedback": "Se deshace en **orden inverso**: primero lo que se sumó o restó, al final lo que multiplica. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es o qué da cada cosa?",
+            "left_label": "Sellos de Naruto",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "4x + 4 = 28",
+                "right": "x = 6 clones"
+              },
+              {
+                "left": "7x − 3 = 25",
+                "right": "x = 4"
+              },
+              {
+                "left": "Restar 4 en ambos lados",
+                "right": "Deshacer la suma"
+              },
+              {
+                "left": "4(6) + 4 = 28",
+                "right": "Comprobación"
+              }
+            ],
+            "completion_feedback": "Resolver una ecuación es **deshacer** lo que le hicieron a x con operaciones inversas, igual en **ambos lados**, y comprobar al final."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o qué da cada cosa?",
+            "left_label": "Goles de Yamal",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "x + 6 = 18",
+                "right": "x = 12"
+              },
+              {
+                "left": "x/4 = 5",
+                "right": "x = 20"
+              },
+              {
+                "left": "x está dividida entre 4",
+                "right": "Multiplicar ambos lados"
+              },
+              {
+                "left": "Lo mismo en los dos lados",
+                "right": "Balanza en equilibrio"
+              }
+            ],
+            "completion_feedback": "Resolver una ecuación es **deshacer** lo que le hicieron a x con operaciones inversas, igual en **ambos lados**, y comprobar al final."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuál es la solución de cada ecuación?",
+            "left_label": "Valla de BTS",
+            "right_label": "Solución",
+            "pairs": [
+              {
+                "left": "200x + 800 = 3000",
+                "right": "x = 11 fans"
+              },
+              {
+                "left": "x + 12 = 30",
+                "right": "x = 18 photocards"
+              },
+              {
+                "left": "150x + 500 = 2000",
+                "right": "x = 10 rifas"
+              },
+              {
+                "left": "3000 − 800",
+                "right": "Lo que falta: 2200"
+              }
+            ],
+            "completion_feedback": "Resolver una ecuación es **deshacer** lo que le hicieron a x con operaciones inversas, igual en **ambos lados**, y comprobar al final."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es o qué da cada cosa?",
+            "left_label": "Cofres de Roblox",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "3x + 50 = 200",
+                "right": "x = 50 Robux"
+              },
+              {
+                "left": "5x − 20 = 30",
+                "right": "x = 10"
+              },
+              {
+                "left": "Quitar los 50 de comisión",
+                "right": "3x = 150"
+              },
+              {
+                "left": "150 ÷ 3",
+                "right": "Precio de un cofre"
+              }
+            ],
+            "completion_feedback": "Resolver una ecuación es **deshacer** lo que le hicieron a x con operaciones inversas, igual en **ambos lados**, y comprobar al final."
+          }
+        }
+      }
+    },
+    "sistemas-de-ecuaciones-lineales": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves x + y = 9 y x − y = 3 por eliminación",
+        "steps": [
+          "Suma las ecuaciones: se cancela y → 2x = 12",
+          "Despeja: x = 6",
+          "Sustituye en la primera: 6 + y = 9 → y = 3",
+          "Comprueba en la segunda: 6 − 3 = 3 ✓"
+        ],
+        "completion_feedback": "Eliminar una incógnita convierte el sistema en **una sola ecuación**; con ese valor encuentras la otra. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué significa cada caso en el mapa?",
+            "left_label": "Rutas de Nami",
+            "right_label": "Sistema",
+            "pairs": [
+              {
+                "left": "Rutas que se cruzan una vez",
+                "right": "Una solución"
+              },
+              {
+                "left": "Rutas paralelas",
+                "right": "Sin solución"
+              },
+              {
+                "left": "Las dos rutas son la misma",
+                "right": "Infinitas soluciones"
+              },
+              {
+                "left": "(2, 3) cumple las dos",
+                "right": "Punto de intersección"
+              }
+            ],
+            "completion_feedback": "Un **sistema** junta dos pistas: la solución es la pareja de valores que cumple **las dos ecuaciones a la vez**, donde se cruzan sus rectas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada parte del sistema?",
+            "left_label": "Invicto del Barça",
+            "right_label": "Sistema",
+            "pairs": [
+              {
+                "left": "v + e = 10",
+                "right": "Ecuación de partidos"
+              },
+              {
+                "left": "3v + e = 24",
+                "right": "Ecuación de puntos"
+              },
+              {
+                "left": "Restar las ecuaciones",
+                "right": "Se cancela e: 2v = 14"
+              },
+              {
+                "left": "7 victorias y 3 empates",
+                "right": "Solución del sistema"
+              }
+            ],
+            "completion_feedback": "Un **sistema** junta dos pistas: la solución es la pareja de valores que cumple **las dos ecuaciones a la vez**, donde se cruzan sus rectas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué paso de la sustitución es cada cosa?",
+            "left_label": "Tienda de BTS",
+            "right_label": "Sustitución",
+            "pairs": [
+              {
+                "left": "2a + l = 1100",
+                "right": "La compra de tu amiga"
+              },
+              {
+                "left": "l = 750 − a",
+                "right": "Despeje"
+              },
+              {
+                "left": "2a + (750 − a) = 1100",
+                "right": "Sustitución"
+              },
+              {
+                "left": "a = 350 y l = 400",
+                "right": "Precios de álbum y lightstick"
+              }
+            ],
+            "completion_feedback": "Un **sistema** junta dos pistas: la solución es la pareja de valores que cumple **las dos ecuaciones a la vez**, donde se cruzan sus rectas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada parte del sistema?",
+            "left_label": "Compras Valorant",
+            "right_label": "Eliminación",
+            "pairs": [
+              {
+                "left": "2v + e = 6800",
+                "right": "Primera ronda"
+              },
+              {
+                "left": "v + e = 3900",
+                "right": "Segunda ronda"
+              },
+              {
+                "left": "v = 2900",
+                "right": "Precio de la Vandal"
+              },
+              {
+                "left": "e = 1000",
+                "right": "Precio del escudo"
+              }
+            ],
+            "completion_feedback": "Un **sistema** junta dos pistas: la solución es la pareja de valores que cumple **las dos ecuaciones a la vez**, donde se cruzan sus rectas."
+          }
+        }
+      }
+    },
+    "ecuaciones-de-segundo-grado-cuadraticas": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves x² − 6x + 8 = 0 con la fórmula general",
+        "steps": [
+          "Identifica a = 1, b = −6 y c = 8",
+          "Calcula el discriminante: 36 − 32 = 4",
+          "Sustituye: x = (6 ± 2) / 2",
+          "Obtén las dos soluciones: x = 4 y x = 2"
+        ],
+        "completion_feedback": "El **±** es el que te da las dos soluciones: una sumando y otra restando la raíz del discriminante. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada parte al resolver x² − 5x + 6 = 0?",
+            "left_label": "Arma definitiva",
+            "right_label": "Fórmula general",
+            "pairs": [
+              {
+                "left": "a = 1, b = −5, c = 6",
+                "right": "Coeficientes"
+              },
+              {
+                "left": "(−5)² − 4 · 1 · 6 = 1",
+                "right": "Discriminante"
+              },
+              {
+                "left": "(5 + 1) / 2",
+                "right": "x = 3"
+              },
+              {
+                "left": "(5 − 1) / 2",
+                "right": "x = 2"
+              }
+            ],
+            "completion_feedback": "Una **cuadrática** puede tener dos soluciones: las sacas **factorizando**, despejando x² con **±** o, si nada sale fácil, con la **fórmula general**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué da cada paso de la factorización?",
+            "left_label": "Tiro libre",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "(t − 2)(t − 5) = 0",
+                "right": "t = 2 y t = 5"
+              },
+              {
+                "left": "x² + 3x − 10 = 0",
+                "right": "(x + 5)(x − 2) = 0"
+              },
+              {
+                "left": "Suman 3 y multiplicados dan −10",
+                "right": "5 y −2"
+              },
+              {
+                "left": "Un producto que vale cero",
+                "right": "Algún factor vale cero"
+              }
+            ],
+            "completion_feedback": "Una **cuadrática** puede tener dos soluciones: las sacas **factorizando**, despejando x² con **±** o, si nada sale fácil, con la **fórmula general**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué soluciones o qué regla corresponden?",
+            "left_label": "Escenario cuadrado",
+            "right_label": "Soluciones",
+            "pairs": [
+              {
+                "left": "x² = 64",
+                "right": "x = 8 y x = −8"
+              },
+              {
+                "left": "x² − 49 = 0",
+                "right": "x = 7 y x = −7"
+              },
+              {
+                "left": "Lado de un escenario de 64 m²",
+                "right": "8 m: se descarta el −8"
+              },
+              {
+                "left": "Sacar raíz en ambos lados",
+                "right": "Se escribe ±"
+              }
+            ],
+            "completion_feedback": "Una **cuadrática** puede tener dos soluciones: las sacas **factorizando**, despejando x² con **±** o, si nada sale fácil, con la **fórmula general**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada parte de la ecuación?",
+            "left_label": "Tiro de granada",
+            "right_label": "Cuadrática",
+            "pairs": [
+              {
+                "left": "El 2 de 2x² − 7x + 3",
+                "right": "a: coeficiente cuadrático"
+              },
+              {
+                "left": "El −7 de 2x² − 7x + 3",
+                "right": "b: va con su signo"
+              },
+              {
+                "left": "El 3 de 2x² − 7x + 3",
+                "right": "c: término independiente"
+              },
+              {
+                "left": "−5t² + 20t = 0",
+                "right": "Toca el suelo en t = 0 y t = 4"
+              }
+            ],
+            "completion_feedback": "Una **cuadrática** puede tener dos soluciones: las sacas **factorizando**, despejando x² con **±** o, si nada sale fácil, con la **fórmula general**."
+          }
+        }
+      }
+    },
+    "desigualdades-e-inecuaciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves −2x + 4 > 10",
+        "steps": [
+          "Resta 4 en ambos lados: −2x > 6",
+          "Divide entre −2: el signo se invierte",
+          "Solución: x < −3",
+          "Grafica: círculo abierto en −3 y flecha a la izquierda"
+        ],
+        "completion_feedback": "Dividir entre un **negativo** voltea la desigualdad; y como no es 'o igual', el círculo va **abierto**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo se grafica cada desigualdad?",
+            "left_label": "Mapa de Nami",
+            "right_label": "Recta numérica",
+            "pairs": [
+              {
+                "left": "x < 30",
+                "right": "Círculo abierto, flecha a la izquierda"
+              },
+              {
+                "left": "x ≤ 30",
+                "right": "Círculo cerrado, flecha a la izquierda"
+              },
+              {
+                "left": "x ≥ 4",
+                "right": "Círculo cerrado, flecha a la derecha"
+              },
+              {
+                "left": "x > 4",
+                "right": "Círculo abierto, flecha a la derecha"
+              }
+            ],
+            "completion_feedback": "Una **inecuación** se resuelve como una ecuación, pero su respuesta es un **rango**; si multiplicas o divides entre un **negativo**, el signo se invierte."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o qué da cada cosa?",
+            "left_label": "Pase a Champions",
+            "right_label": "Inecuación",
+            "pairs": [
+              {
+                "left": "Al menos 78 puntos",
+                "right": "x ≥ 78"
+              },
+              {
+                "left": "60 + 3v ≥ 78",
+                "right": "v ≥ 6"
+              },
+              {
+                "left": "50 + 3v ≥ 71",
+                "right": "v ≥ 7"
+              },
+              {
+                "left": "Terminar con 77 puntos",
+                "right": "No clasifica"
+              }
+            ],
+            "completion_feedback": "Una **inecuación** se resuelve como una ecuación, pero su respuesta es un **rango**; si multiplicas o divides entre un **negativo**, el signo se invierte."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resulta o qué pasa con el signo?",
+            "left_label": "Streaming ARMY",
+            "right_label": "Inecuación",
+            "pairs": [
+              {
+                "left": "40 + 2x ≥ 100",
+                "right": "x ≥ 30 horas"
+              },
+              {
+                "left": "3x − 5 < 16",
+                "right": "x < 7"
+              },
+              {
+                "left": "Dividir entre un positivo",
+                "right": "El signo se queda igual"
+              },
+              {
+                "left": "Dividir entre un negativo",
+                "right": "El signo se invierte"
+              }
+            ],
+            "completion_feedback": "Una **inecuación** se resuelve como una ecuación, pero su respuesta es un **rango**; si multiplicas o divides entre un **negativo**, el signo se invierte."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué desigualdad o qué conclusión corresponde?",
+            "left_label": "Comprar la Vandal",
+            "right_label": "Desigualdad",
+            "pairs": [
+              {
+                "left": "Créditos para la Vandal",
+                "right": "x ≥ 2900"
+              },
+              {
+                "left": "Nivel mínimo 20 para ranked",
+                "right": "x ≥ 20"
+              },
+              {
+                "left": "Tener 2800 créditos",
+                "right": "No alcanza para la Vandal"
+              },
+              {
+                "left": "Con x > 20",
+                "right": "El nivel 20 no entra"
+              }
+            ],
+            "completion_feedback": "Una **inecuación** se resuelve como una ecuación, pero su respuesta es un **rango**; si multiplicas o divides entre un **negativo**, el signo se invierte."
+          }
+        }
+      }
+    },
+    "razones-proporciones-y-variacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves: si 5 boletos cuestan $400, ¿cuánto cuestan 8?",
+        "steps": [
+          "Reconoce que es directa: más boletos, más dinero",
+          "Plantea la proporción: 5/400 = 8/x",
+          "Producto cruzado: 5x = 3200",
+          "Despeja: x = 640 pesos"
+        ],
+        "completion_feedback": "Antes de plantear, decide si es **directa** o **inversa**: eso define cómo armas la proporción. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o paso corresponde?",
+            "left_label": "Mapa a escala",
+            "right_label": "Escala",
+            "pairs": [
+              {
+                "left": "Escala 1 cm : 50 km, 4 cm",
+                "right": "200 km reales"
+              },
+              {
+                "left": "Escala 1 cm : 80 km, 6 cm",
+                "right": "480 km reales"
+              },
+              {
+                "left": "1/80 = 6/x",
+                "right": "Proporción"
+              },
+              {
+                "left": "1 · x = 80 · 6",
+                "right": "Producto cruzado"
+              }
+            ],
+            "completion_feedback": "Una **razón** compara dos cantidades y una **proporción** iguala dos razones; en la **directa** crecen juntas y en la **inversa** su producto es constante."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Rotación del Barça",
+            "right_label": "Variación",
+            "pairs": [
+              {
+                "left": "90 min entre 3 jugadores",
+                "right": "30 min cada uno"
+              },
+              {
+                "left": "90 min entre 6 jugadores",
+                "right": "15 min cada uno"
+              },
+              {
+                "left": "Jugadores × minutos",
+                "right": "Siempre 90: constante"
+              },
+              {
+                "left": "Más jugadores, menos minutos",
+                "right": "Variación inversa"
+              }
+            ],
+            "completion_feedback": "Una **razón** compara dos cantidades y una **proporción** iguala dos razones; en la **directa** crecen juntas y en la **inversa** su producto es constante."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Álbumes de BTS",
+            "right_label": "Regla de tres",
+            "pairs": [
+              {
+                "left": "3 álbumes cuestan $750",
+                "right": "7 cuestan $1,750"
+              },
+              {
+                "left": "4 photocards cuestan $200",
+                "right": "10 cuestan $500"
+              },
+              {
+                "left": "Más álbumes, más dinero",
+                "right": "Variación directa"
+              },
+              {
+                "left": "750 ÷ 3",
+                "right": "$250 por álbum"
+              }
+            ],
+            "completion_feedback": "Una **razón** compara dos cantidades y una **proporción** iguala dos razones; en la **directa** crecen juntas y en la **inversa** su producto es constante."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa en la tienda del servidor?",
+            "left_label": "Tienda del server",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Pólvora : carbón = 2 : 6",
+                "right": "Razón"
+              },
+              {
+                "left": "2/6 = 4/12",
+                "right": "Proporción"
+              },
+              {
+                "left": "3/9 = 7/x",
+                "right": "x = 21 flechas"
+              },
+              {
+                "left": "2 · 12 = 6 · 4",
+                "right": "Producto cruzado"
+              }
+            ],
+            "completion_feedback": "Una **razón** compara dos cantidades y una **proporción** iguala dos razones; en la **directa** crecen juntas y en la **inversa** su producto es constante."
+          }
+        }
+      }
+    }
+  }
+}
