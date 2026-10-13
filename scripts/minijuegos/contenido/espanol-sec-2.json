@@ -1,0 +1,1074 @@
+{
+  "subject": "espanol-sec-2",
+  "topics": {
+    "analisis-de-textos-literarios-sec": {
+      "order_steps": {
+        "prompt": "Ordena cómo analizar una figura dentro de un texto",
+        "steps": [
+          "Localiza una frase que no sea literal",
+          "Identifica la figura: metáfora o símil",
+          "Explica lo que significa en realidad",
+          "Conéctala con el tema central del texto"
+        ],
+        "completion_feedback": "Analizar no es opinar: es **demostrar con frases del texto** cómo funciona. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Isagi piensa 'soy…' en su cabeza",
+                "right": "Narrador en primera persona"
+              },
+              {
+                "left": "'Soy un depredador en la cancha'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "El deseo de ser el mejor delantero",
+                "right": "Tema"
+              }
+            ],
+            "completion_feedback": "Quién narra, qué figuras usa y de qué trata: separar eso **es analizar**. Veamos cómo hacerlo con evidencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada cosa?",
+            "left_label": "Crónica de Yamal",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "El cronista cuenta desde afuera",
+                "right": "Narrador en tercera persona"
+              },
+              {
+                "left": "'Voló como una flecha'",
+                "right": "Símil"
+              },
+              {
+                "left": "'Su zurda era un pincel'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "El talento joven que asombra",
+                "right": "Tema"
+              }
+            ],
+            "completion_feedback": "Quién narra, qué figuras usa y de qué trata: separar eso **es analizar**. Veamos cómo hacerlo con evidencia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Una voz que habla de sí misma",
+                "right": "Narrador en primera persona"
+              },
+              {
+                "left": "'Soy una luz que se apaga'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "La presión de cumplir expectativas",
+                "right": "Tema"
+              }
+            ],
+            "completion_feedback": "Quién narra, qué figuras usa y de qué trata: separar eso **es analizar**. Veamos cómo hacerlo con evidencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué elemento del texto literario es cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "El viajero cuenta su propia historia",
+                "right": "Narrador en primera persona"
+              },
+              {
+                "left": "'Mi corazón era una espada sin filo'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "El miedo a fallar",
+                "right": "Tema"
+              }
+            ],
+            "completion_feedback": "Quién narra, qué figuras usa y de qué trata: separar eso **es analizar**. Veamos cómo hacerlo con evidencia."
+          }
+        }
+      }
+    },
+    "figuras-retoricas-espanol-sec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo identificar una figura retórica",
+        "steps": [
+          "Detecta que la frase no es literal",
+          "Revisa si compara, exagera o le da vida a algo",
+          "Nómbrala: metáfora, símil, hipérbole o personificación",
+          "Explica qué efecto busca"
+        ],
+        "completion_feedback": "No basta con nombrarla: **cada figura busca un efecto**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Su poder era una tormenta sin fin'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'La sombra se traga el campo'",
+                "right": "Personificación"
+              },
+              {
+                "left": "Ojos que no son agujeros de verdad",
+                "right": "Lenguaje figurado"
+              }
+            ],
+            "completion_feedback": "Exagerar, comparar o dar vida a las cosas: eso son las **figuras retóricas**. Veamos cada una y su efecto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "El relator",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Bellingham es un huracán'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Corre más que el viento'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'Rugió como una sola bestia'",
+                "right": "Símil"
+              }
+            ],
+            "completion_feedback": "Exagerar, comparar o dar vida a las cosas: eso son las **figuras retóricas**. Veamos cada una y su efecto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "K-drama",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Tú eres mi primavera'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Te esperaré mil inviernos'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'Qué intenso, pero no es literal'",
+                "right": "Lenguaje figurado"
+              }
+            ],
+            "completion_feedback": "Exagerar, comparar o dar vida a las cosas: eso son las **figuras retóricas**. Veamos cada una y su efecto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "Chat de Valorant",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Su Sova es un dios'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'La bala voló más rápido que la luz'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "Nadie lo dice en sentido literal",
+                "right": "Lenguaje figurado"
+              }
+            ],
+            "completion_feedback": "Exagerar, comparar o dar vida a las cosas: eso son las **figuras retóricas**. Veamos cada una y su efecto."
+          }
+        }
+      }
+    },
+    "textos-argumentativos-y-expositivos": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del texto es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Luffy es el mejor protagonista'",
+                "right": "Tesis: la postura"
+              },
+              {
+                "left": "'…porque nunca se rinde'",
+                "right": "Argumento"
+              },
+              {
+                "left": "Ficha: fruta Gomu Gomu y su sueño",
+                "right": "Texto expositivo"
+              },
+              {
+                "left": "Mensaje que quiere convencer",
+                "right": "Texto argumentativo"
+              }
+            ],
+            "completion_feedback": "Uno quiere **convencerte**, el otro solo **informarte**. Esa intención separa al texto argumentativo del expositivo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del texto es cada cosa?",
+            "left_label": "Santi Giménez",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Santi debe ser titular'",
+                "right": "Tesis: la postura"
+              },
+              {
+                "left": "'…porque mete goles en Europa'",
+                "right": "Argumento"
+              },
+              {
+                "left": "Ficha: nació en 2001, delantero",
+                "right": "Texto expositivo"
+              },
+              {
+                "left": "El comentarista apasionado",
+                "right": "Texto argumentativo"
+              }
+            ],
+            "completion_feedback": "Uno quiere **convencerte**, el otro solo **informarte**. Esa intención separa al texto argumentativo del expositivo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del texto es cada cosa?",
+            "left_label": "K-drama",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Es el mejor drama del año'",
+                "right": "Tesis: la postura"
+              },
+              {
+                "left": "'…la trama te atrapa'",
+                "right": "Argumento"
+              },
+              {
+                "left": "16 episodios, romance-suspenso",
+                "right": "Texto expositivo"
+              },
+              {
+                "left": "La reseña de la fan",
+                "right": "Texto argumentativo"
+              }
+            ],
+            "completion_feedback": "Uno quiere **convencerte**, el otro solo **informarte**. Esa intención separa al texto argumentativo del expositivo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del texto es cada cosa?",
+            "left_label": "Foro Brawl Stars",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Spike es el mejor brawler'",
+                "right": "Tesis: la postura"
+              },
+              {
+                "left": "'…su súper controla zonas'",
+                "right": "Argumento"
+              },
+              {
+                "left": "Hilo 'Datos del último update'",
+                "right": "Texto expositivo"
+              },
+              {
+                "left": "'Deberían banearlo' con razones",
+                "right": "Texto argumentativo"
+              }
+            ],
+            "completion_feedback": "Uno quiere **convencerte**, el otro solo **informarte**. Esa intención separa al texto argumentativo del expositivo."
+          }
+        }
+      }
+    },
+    "generos-periodisticos-sec-espanol-sec-2": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "Final de AoT",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Llegó hoy a su capítulo final'",
+                "right": "Noticia"
+              },
+              {
+                "left": "Trayectoria con entrevistas",
+                "right": "Reportaje"
+              },
+              {
+                "left": "'Desde mi punto de vista…'",
+                "right": "Artículo de opinión"
+              }
+            ],
+            "completion_feedback": "Informar, investigar u opinar: cada **género periodístico** tiene su intención. Veamos cómo distinguirlos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "Fichaje de Mbappé",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Es nuevo jugador, confirmado hoy'",
+                "right": "Noticia"
+              },
+              {
+                "left": "Meses de negociación investigados",
+                "right": "Reportaje"
+              },
+              {
+                "left": "'Para mí, este fichaje fue un error'",
+                "right": "Artículo de opinión"
+              }
+            ],
+            "completion_feedback": "Informar, investigar u opinar: cada **género periodístico** tiene su intención. Veamos cómo distinguirlos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "Comeback SKZ",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Regresa el viernes con nuevo álbum'",
+                "right": "Noticia"
+              },
+              {
+                "left": "Un año de preparación y entrevista",
+                "right": "Reportaje"
+              },
+              {
+                "left": "'A mi parecer, es su mejor concepto'",
+                "right": "Artículo de opinión"
+              }
+            ],
+            "completion_feedback": "Informar, investigar u opinar: cada **género periodístico** tiene su intención. Veamos cómo distinguirlos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "Nuevo Zelda",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Nintendo lanzó hoy el nuevo Zelda'",
+                "right": "Noticia"
+              },
+              {
+                "left": "Entrevista a los desarrolladores",
+                "right": "Reportaje"
+              },
+              {
+                "left": "'En mi opinión, es una obra maestra'",
+                "right": "Artículo de opinión"
+              }
+            ],
+            "completion_feedback": "Informar, investigar u opinar: cada **género periodístico** tiene su intención. Veamos cómo distinguirlos."
+          }
+        }
+      }
+    },
+    "uso-normativo-del-espanol": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo se escribe correctamente cada palabra?",
+            "left_label": "Lo escribieron",
+            "right_label": "Según la norma",
+            "pairs": [
+              {
+                "left": "izo",
+                "right": "hizo"
+              },
+              {
+                "left": "huvo",
+                "right": "hubo"
+              },
+              {
+                "left": "savia (del verbo saber)",
+                "right": "sabía"
+              },
+              {
+                "left": "aci",
+                "right": "así"
+              }
+            ],
+            "completion_feedback": "Escribir respetando la **norma** hace que tu mensaje se entienda y se vea confiable. Veamos las reglas detrás."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo se escribe correctamente cada palabra?",
+            "left_label": "Lo escribieron",
+            "right_label": "Según la norma",
+            "pairs": [
+              {
+                "left": "BIENBENIDO",
+                "right": "Bienvenido"
+              },
+              {
+                "left": "AGAS (del verbo hacer)",
+                "right": "Hagas"
+              },
+              {
+                "left": "TU ERES (pronombre)",
+                "right": "Tú eres"
+              },
+              {
+                "left": "La tilde que separa tú de tu",
+                "right": "Acento diacrítico"
+              }
+            ],
+            "completion_feedback": "Escribir respetando la **norma** hace que tu mensaje se entienda y se vea confiable. Veamos las reglas detrás."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo se escribe correctamente cada palabra?",
+            "left_label": "Lo escribieron",
+            "right_label": "Según la norma",
+            "pairs": [
+              {
+                "left": "mui",
+                "right": "muy"
+              },
+              {
+                "left": "increible",
+                "right": "increíble"
+              },
+              {
+                "left": "exelente",
+                "right": "excelente"
+              },
+              {
+                "left": "valla (de asombro)",
+                "right": "¡vaya!"
+              }
+            ],
+            "completion_feedback": "Escribir respetando la **norma** hace que tu mensaje se entienda y se vea confiable. Veamos las reglas detrás."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo se escribe correctamente cada palabra?",
+            "left_label": "Lo escribieron",
+            "right_label": "Según la norma",
+            "pairs": [
+              {
+                "left": "ay viene un creeper",
+                "right": "ahí viene"
+              },
+              {
+                "left": "un cofre aya",
+                "right": "allá"
+              },
+              {
+                "left": "ve por carbon",
+                "right": "carbón"
+              },
+              {
+                "left": "ke se acaba",
+                "right": "que"
+              }
+            ],
+            "completion_feedback": "Escribir respetando la **norma** hace que tu mensaje se entienda y se vea confiable. Veamos las reglas detrás."
+          }
+        }
+      }
+    },
+    "comunicacion-asertiva-contra-la-violencia-sec-espanol-sec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo responder de forma asertiva a una ofensa",
+        "steps": [
+          "Detente: no respondas con un insulto",
+          "Di lo que sientes en primera persona",
+          "Pon un límite claro o propón una salida"
+        ],
+        "completion_feedback": "Primero frenar, luego **hablar desde ti** y al final marcar el límite: así no te pisan ni pisas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué estilo de comunicación es cada respuesta?",
+            "left_label": "Tanjiro",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Tragarse la humillación",
+                "right": "Comunicación pasiva"
+              },
+              {
+                "left": "Gritar y retarlo a golpes",
+                "right": "Comunicación agresiva"
+              },
+              {
+                "left": "'No permitiré que me hables así'",
+                "right": "Comunicación asertiva"
+              }
+            ],
+            "completion_feedback": "Ni callarte ni atacar: **defender lo tuyo con respeto**. Eso es la comunicación asertiva."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué estilo de comunicación es cada respuesta?",
+            "left_label": "La cascarita",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Seguir jugando, humillado",
+                "right": "Comunicación pasiva"
+              },
+              {
+                "left": "'¡Ven, a ver si te aguantas tú!'",
+                "right": "Comunicación agresiva"
+              },
+              {
+                "left": "'Esa entrada me lastimó'",
+                "right": "Mensaje en primera persona"
+              },
+              {
+                "left": "'Juguemos rudo, pero sin agredir'",
+                "right": "Comunicación asertiva"
+              }
+            ],
+            "completion_feedback": "Ni callarte ni atacar: **defender lo tuyo con respeto**. Eso es la comunicación asertiva."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué estilo de comunicación es cada respuesta?",
+            "left_label": "Grupo de K-pop",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Borrar tu mensaje y callar",
+                "right": "Comunicación pasiva"
+              },
+              {
+                "left": "'Tu grupo favorito es basura'",
+                "right": "Comunicación agresiva"
+              },
+              {
+                "left": "'A mí me hace feliz su música'",
+                "right": "Mensaje en primera persona"
+              },
+              {
+                "left": "'Podemos tener gustos distintos'",
+                "right": "Comunicación asertiva"
+              }
+            ],
+            "completion_feedback": "Ni callarte ni atacar: **defender lo tuyo con respeto**. Eso es la comunicación asertiva."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué estilo de comunicación es cada respuesta?",
+            "left_label": "Dúo de Fortnite",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Aguantar el insulto callado",
+                "right": "Comunicación pasiva"
+              },
+              {
+                "left": "'¡Cállate tú, noob de cuarta!'",
+                "right": "Comunicación agresiva"
+              },
+              {
+                "left": "'No me gusta que me hables así'",
+                "right": "Mensaje en primera persona"
+              },
+              {
+                "left": "'Mejor coordinémonos'",
+                "right": "Comunicación asertiva"
+              }
+            ],
+            "completion_feedback": "Ni callarte ni atacar: **defender lo tuyo con respeto**. Eso es la comunicación asertiva."
+          }
+        }
+      }
+    },
+    "textos-de-divulgacion-cientifica-y-tecnologica": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué característica de la divulgación muestra cada cosa?",
+            "left_label": "Ciencia de Gojo",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Sumar infinitas mitades: el límite",
+                "right": "Concepto científico real"
+              },
+              {
+                "left": "Comparar con cosas cotidianas",
+                "right": "Recurso para explicar"
+              },
+              {
+                "left": "Para cualquier fan, no solo físicos",
+                "right": "Público general"
+              },
+              {
+                "left": "No inventa ni se burla",
+                "right": "Veracidad"
+              }
+            ],
+            "completion_feedback": "Ciencia real contada **para todos**: eso es un texto de divulgación. Veamos sus características."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué característica de la divulgación muestra cada cosa?",
+            "left_label": "El VAR por dentro",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Software que traza el fuera de lugar",
+                "right": "Tema tecnológico"
+              },
+              {
+                "left": "Palabras fáciles, no un manual",
+                "right": "Lenguaje accesible"
+              },
+              {
+                "left": "Jugadas que ya viste",
+                "right": "Ejemplos"
+              },
+              {
+                "left": "Para cualquier aficionado",
+                "right": "Público general"
+              }
+            ],
+            "completion_feedback": "Ciencia real contada **para todos**: eso es un texto de divulgación. Veamos sus características."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué característica de la divulgación muestra cada cosa?",
+            "left_label": "K-pop y cerebro",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Dopamina y ritmos repetitivos",
+                "right": "Tema científico"
+              },
+              {
+                "left": "Entrevista a neurocientíficos",
+                "right": "Fuente experta"
+              },
+              {
+                "left": "Canciones que ya conoces",
+                "right": "Ejemplos"
+              },
+              {
+                "left": "Para cualquier fan",
+                "right": "Público general"
+              }
+            ],
+            "completion_feedback": "Ciencia real contada **para todos**: eso es un texto de divulgación. Veamos sus características."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué característica de la divulgación muestra cada cosa?",
+            "left_label": "Spider-Man",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "La gravedad y el péndulo",
+                "right": "Tema científico"
+              },
+              {
+                "left": "Telaraña comparada con una cuerda",
+                "right": "Comparación"
+              },
+              {
+                "left": "Sin dejar de ser verdad",
+                "right": "Veracidad"
+              },
+              {
+                "left": "Para cualquier jugador",
+                "right": "Público general"
+              }
+            ],
+            "completion_feedback": "Ciencia real contada **para todos**: eso es un texto de divulgación. Veamos sus características."
+          }
+        }
+      }
+    },
+    "la-lengua-como-identidad-y-patrimonio": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la lengua muestra cada cosa?",
+            "left_label": "Sub vs dub",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Honoríficos como -san y -sama",
+                "right": "Cultura reflejada en la lengua"
+              },
+              {
+                "left": "Ver doblado: entiendes la trama",
+                "right": "Traducir: se gana comprensión"
+              },
+              {
+                "left": "'Nakama' pierde fuerza en español",
+                "right": "Traducir: se pierde un matiz"
+              },
+              {
+                "left": "Cuidar cada idioma como herencia",
+                "right": "Patrimonio cultural"
+              }
+            ],
+            "completion_feedback": "La lengua no solo comunica: dice **quién eres** y guarda la herencia de un pueblo. Veamos por qué es identidad y patrimonio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la lengua muestra cada cosa?",
+            "left_label": "Porras del Azteca",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Porras que te hacen sentir parte",
+                "right": "Identidad"
+              },
+              {
+                "left": "Cánticos heredados de papás a hijos",
+                "right": "Patrimonio cultural"
+              },
+              {
+                "left": "Cada país grita a su manera",
+                "right": "Variantes igual de válidas"
+              }
+            ],
+            "completion_feedback": "La lengua no solo comunica: dice **quién eres** y guarda la herencia de un pueblo. Veamos por qué es identidad y patrimonio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la lengua muestra cada cosa?",
+            "left_label": "BLACKPINK",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Cantar en coreano: 'es quiénes somos'",
+                "right": "Identidad"
+              },
+              {
+                "left": "Corea cuida su idioma ante el inglés",
+                "right": "Patrimonio que se protege"
+              },
+              {
+                "left": "Fans de México corean 'saranghae'",
+                "right": "Lengua que se fortalece al difundirse"
+              },
+              {
+                "left": "Un idioma que ya nadie habla",
+                "right": "Riesgo de desaparecer"
+              }
+            ],
+            "completion_feedback": "La lengua no solo comunica: dice **quién eres** y guarda la herencia de un pueblo. Veamos por qué es identidad y patrimonio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la lengua muestra cada cosa?",
+            "left_label": "Doblaje de Genshin",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Me siento en casa si habla como yo'",
+                "right": "Identidad"
+              },
+              {
+                "left": "Español de México, Argentina o España",
+                "right": "Variantes igual de válidas"
+              },
+              {
+                "left": "Herencia que recibes y transmites",
+                "right": "Patrimonio cultural"
+              }
+            ],
+            "completion_feedback": "La lengua no solo comunica: dice **quién eres** y guarda la herencia de un pueblo. Veamos por qué es identidad y patrimonio."
+          }
+        }
+      }
+    },
+    "manifestaciones-culturales-incluyentes": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la inclusión?",
+            "left_label": "My Hero Academia",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Burlas a Deku por no tener Quirk",
+                "right": "Exclusión"
+              },
+              {
+                "left": "Deku, sin Quirk, es el protagonista",
+                "right": "Dar voz a quien era excluido"
+              },
+              {
+                "left": "Fans que se sintieron 'menos' se ven en él",
+                "right": "Sentirse representado"
+              },
+              {
+                "left": "Un anime que transmite valores",
+                "right": "Manifestación cultural"
+              }
+            ],
+            "completion_feedback": "Una expresión cultural es **incluyente** cuando nadie queda fuera por ser distinto. Veamos qué la hace incluyente."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la inclusión?",
+            "left_label": "Partido incluyente",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Audio-relato para quien no ve",
+                "right": "Quitar barreras de comunicación"
+              },
+              {
+                "left": "Guías que llevan hasta el asiento",
+                "right": "Quitar barreras de acceso"
+              },
+              {
+                "left": "Estadio pensado solo para quien ve",
+                "right": "Exclusión"
+              },
+              {
+                "left": "El fútbol como fiesta que une",
+                "right": "Manifestación cultural"
+              }
+            ],
+            "completion_feedback": "Una expresión cultural es **incluyente** cuando nadie queda fuera por ser distinto. Veamos qué la hace incluyente."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la inclusión?",
+            "left_label": "Concierto de IVE",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Plataformas y rampas en el recinto",
+                "right": "Quitar barreras físicas"
+              },
+              {
+                "left": "Intérpretes de lengua de señas",
+                "right": "Quitar barreras de comunicación"
+              },
+              {
+                "left": "Un recinto solo con escaleras",
+                "right": "Exclusión"
+              },
+              {
+                "left": "Un concierto que une a una comunidad",
+                "right": "Manifestación cultural"
+              }
+            ],
+            "completion_feedback": "Una expresión cultural es **incluyente** cuando nadie queda fuera por ser distinto. Veamos qué la hace incluyente."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la inclusión?",
+            "left_label": "Skins Brawl Stars",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Mexicanos felices con su skin",
+                "right": "Sentirse representado"
+              },
+              {
+                "left": "Skins de culturas de todo el mundo",
+                "right": "Diversidad con igual valor"
+              },
+              {
+                "left": "Un juego con una sola cultura",
+                "right": "Exclusión"
+              },
+              {
+                "left": "Un juego que transmite valores",
+                "right": "Manifestación cultural"
+              }
+            ],
+            "completion_feedback": "Una expresión cultural es **incluyente** cuando nadie queda fuera por ser distinto. Veamos qué la hace incluyente."
+          }
+        }
+      }
+    },
+    "medios-y-mensajes-para-una-vida-saludable": {
+      "order_steps": {
+        "prompt": "Ordena cómo analizar un mensaje de los medios sobre salud",
+        "steps": [
+          "Identifica quién manda el mensaje",
+          "Descubre qué quiere lograr: vender o entretener",
+          "Verifica si la información es veraz y confiable",
+          "Decide con criterio qué hábito te conviene"
+        ],
+        "completion_feedback": "Primero **quién** lo dice, luego **para qué**, después si es **verdad**: solo así decides tú y no la publicidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los mensajes de los medios muestra cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Entrenamientos imposibles en pantalla",
+                "right": "Exageración de la ficción"
+              },
+              {
+                "left": "Una serie hecha para emocionarte",
+                "right": "Propósito: entretener"
+              },
+              {
+                "left": "'Entrenaré así, sin descanso'",
+                "right": "Confundir ficción con consejo"
+              },
+              {
+                "left": "Disfrutarla sin copiar lo dañino",
+                "right": "Receptor crítico"
+              }
+            ],
+            "completion_feedback": "Los medios **persuaden**: venden, entretienen o exageran. Ser receptor crítico te deja decidir tú. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los mensajes de los medios muestra cada cosa?",
+            "left_label": "Anuncio del crack",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Un crack famoso anuncia la hamburguesa",
+                "right": "Testimonial"
+              },
+              {
+                "left": "'¡La comida de los campeones!'",
+                "right": "Asociar el producto con éxito"
+              },
+              {
+                "left": "El fin real: que lo compres",
+                "right": "Propósito: vender"
+              },
+              {
+                "left": "Los cracks comen con nutriólogo",
+                "right": "Dato real que desmiente el anuncio"
+              }
+            ],
+            "completion_feedback": "Los medios **persuaden**: venden, entretienen o exageran. Ser receptor crítico te deja decidir tú. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los mensajes de los medios muestra cada cosa?",
+            "left_label": "Video viral",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Millones de vistas, ningún médico",
+                "right": "Fuente no confiable"
+              },
+              {
+                "left": "'Así se ven perfectos los idols'",
+                "right": "Estereotipo de belleza"
+              },
+              {
+                "left": "Promete cambiar tu cuerpo rapidísimo",
+                "right": "Información falsa"
+              },
+              {
+                "left": "No seguirlo solo porque es viral",
+                "right": "Receptor crítico"
+              }
+            ],
+            "completion_feedback": "Los medios **persuaden**: venden, entretienen o exageran. Ser receptor crítico te deja decidir tú. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los mensajes de los medios muestra cada cosa?",
+            "left_label": "Anuncio en Twitch",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Tu streamer favorito con la lata",
+                "right": "Figura famosa que persuade"
+              },
+              {
+                "left": "Jugadas épicas al tomar la bebida",
+                "right": "Asociar el producto con éxito"
+              },
+              {
+                "left": "Mucha azúcar y cafeína",
+                "right": "Hábito no saludable"
+              },
+              {
+                "left": "Sus reflejos vienen de la práctica",
+                "right": "Dato real que desmiente el anuncio"
+              }
+            ],
+            "completion_feedback": "Los medios **persuaden**: venden, entretienen o exageran. Ser receptor crítico te deja decidir tú. Veamos cómo."
+          }
+        }
+      }
+    }
+  }
+}
