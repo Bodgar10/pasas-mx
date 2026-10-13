@@ -1,0 +1,1179 @@
+{
+  "subject": "quimica-sec",
+  "topics": {
+    "mezclas-y-metodos-de-separacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo eliges un método de separación",
+        "steps": [
+          "Identifica los componentes de la mezcla",
+          "Busca la propiedad que los hace distintos",
+          "Elige el método que aprovecha esa propiedad",
+          "Separa: cada componente sigue siendo lo que era"
+        ],
+        "completion_feedback": "La **propiedad que los diferencia** decide el método; como es una mezcla, nada cambia su naturaleza al separarla. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué método separa cada mezcla?",
+            "left_label": "Bolsa de Tanjiro",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Piedritas imantadas entre hierbas",
+                "right": "Separación magnética"
+              },
+              {
+                "left": "Polvo de raíz con hojas grandes",
+                "right": "Tamizado"
+              },
+              {
+                "left": "Sales disueltas en agua",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Pétalos flotando en agua",
+                "right": "Filtración"
+              }
+            ],
+            "completion_feedback": "Cada método aprovecha una **propiedad física**: magnetismo, tamaño, peso o estar disuelto. Encuentra la diferencia y el método sale solo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué método separa cada mezcla?",
+            "left_label": "Agua del campo",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Tierra pesada que se va al fondo",
+                "right": "Decantación"
+              },
+              {
+                "left": "Pasto flotando que no se asienta",
+                "right": "Filtración"
+              },
+              {
+                "left": "Sales disueltas que no se ven",
+                "right": "Evaporación"
+              }
+            ],
+            "completion_feedback": "Cada método aprovecha una **propiedad física**: magnetismo, tamaño, peso o estar disuelto. Encuentra la diferencia y el método sale solo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo limpias el agua lodosa del campo",
+            "steps": [
+              "Deja reposar la cubeta para que la tierra se asiente",
+              "Vierte con cuidado el agua de arriba",
+              "Pasa esa agua por una malla para atrapar el pasto"
+            ],
+            "completion_feedback": "Primero **decantas** lo pesado y luego **filtras** lo que flota: cada paso aprovecha una propiedad distinta. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué método separa cada mezcla?",
+            "left_label": "Merch de BTS",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Pins metálicos con stickers",
+                "right": "Separación magnética"
+              },
+              {
+                "left": "Glitter fino con confeti grande",
+                "right": "Tamizado"
+              },
+              {
+                "left": "Photocards flotando en agua",
+                "right": "Filtración"
+              },
+              {
+                "left": "Tinte disuelto en agua",
+                "right": "Evaporación"
+              }
+            ],
+            "completion_feedback": "Cada método aprovecha una **propiedad física**: magnetismo, tamaño, peso o estar disuelto. Encuentra la diferencia y el método sale solo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre las mezclas?",
+            "left_label": "Cofre de Fortnite",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Distingues cada material a simple vista",
+                "right": "Mezcla heterogénea"
+              },
+              {
+                "left": "Poción donde el tinte ya no se ve",
+                "right": "Mezcla homogénea"
+              },
+              {
+                "left": "Nada cambió su naturaleza química",
+                "right": "Se separa con métodos físicos"
+              }
+            ],
+            "completion_feedback": "Cada método aprovecha una **propiedad física**: magnetismo, tamaño, peso o estar disuelto. Encuentra la diferencia y el método sale solo."
+          }
+        }
+      }
+    },
+    "modelos-atomicos": {
+      "order_steps": {
+        "prompt": "Ordena los modelos atómicos del más antiguo al más nuevo",
+        "steps": [
+          "Dalton: esfera maciza e indivisible",
+          "Thomson: esfera con electrones incrustados",
+          "Rutherford: núcleo denso y átomo casi vacío",
+          "Bohr: electrones en órbitas definidas",
+          "Modelo actual: zonas de probabilidad"
+        ],
+        "completion_feedback": "Cada modelo sumó una pieza que faltaba: **electrones, núcleo, órbitas** y, al final, **probabilidad**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué aportó cada modelo?",
+            "left_label": "Rasengan",
+            "right_label": "Aportó",
+            "pairs": [
+              {
+                "left": "Dalton",
+                "right": "Esfera maciza e indivisible"
+              },
+              {
+                "left": "Thomson",
+                "right": "Electrones: budín con pasas"
+              },
+              {
+                "left": "Rutherford",
+                "right": "Núcleo denso, átomo casi vacío"
+              },
+              {
+                "left": "Bohr",
+                "right": "Electrones en órbitas definidas"
+              }
+            ],
+            "completion_feedback": "Cada modelo **conservó lo válido** del anterior y **corrigió** lo que no explicaba. Así avanza la ciencia: experimento tras experimento."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué modelo hizo cada corrección?",
+            "left_label": "Ajustes tácticos",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Descubrió los electrones",
+                "right": "Thomson"
+              },
+              {
+                "left": "Halló el núcleo central",
+                "right": "Rutherford"
+              },
+              {
+                "left": "Electrones en niveles de energía",
+                "right": "Bohr"
+              },
+              {
+                "left": "Electrones en zonas de probabilidad",
+                "right": "Modelo actual"
+              }
+            ],
+            "completion_feedback": "Cada modelo **conservó lo válido** del anterior y **corrigió** lo que no explicaba. Así avanza la ciencia: experimento tras experimento."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿A qué modelo corresponde cada idea?",
+            "left_label": "Ensayos de SKZ",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Budín con pasas",
+                "right": "Thomson"
+              },
+              {
+                "left": "Esfera indivisible",
+                "right": "Dalton"
+              },
+              {
+                "left": "Átomo casi vacío",
+                "right": "Rutherford"
+              },
+              {
+                "left": "Órbitas como carriles fijos",
+                "right": "Bohr"
+              }
+            ],
+            "completion_feedback": "Cada modelo **conservó lo válido** del anterior y **corrigió** lo que no explicaba. Así avanza la ciencia: experimento tras experimento."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿A qué modelo corresponde cada descripción?",
+            "left_label": "Updates Minecraft",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Esfera positiva con electrones",
+                "right": "Thomson"
+              },
+              {
+                "left": "Núcleo pequeño con electrones alrededor",
+                "right": "Rutherford"
+              },
+              {
+                "left": "Niveles definidos de energía",
+                "right": "Bohr"
+              },
+              {
+                "left": "Zonas donde es probable el electrón",
+                "right": "Modelo actual"
+              }
+            ],
+            "completion_feedback": "Cada modelo **conservó lo válido** del anterior y **corrigió** lo que no explicaba. Así avanza la ciencia: experimento tras experimento."
+          }
+        }
+      }
+    },
+    "enlace-quimico": {
+      "order_steps": {
+        "prompt": "Ordena qué hace un átomo con 7 electrones de valencia",
+        "steps": [
+          "Cuenta sus electrones de valencia: 7",
+          "Ve cuántos le faltan para el octeto: 1",
+          "Gana ese electrón en vez de perder 7",
+          "Queda con carga negativa: un anión"
+        ],
+        "completion_feedback": "Conviene **ganar o perder los menos electrones posibles** para completar el octeto. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto del enlace es cada cosa?",
+            "left_label": "Sombrero de Paja",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Electrones de la última capa",
+                "right": "Electrones de valencia"
+              },
+              {
+                "left": "Completar 8 electrones",
+                "right": "Regla del octeto"
+              },
+              {
+                "left": "Un átomo cede y otro recibe",
+                "right": "Enlace iónico"
+              },
+              {
+                "left": "Los átomos comparten electrones",
+                "right": "Enlace covalente"
+              }
+            ],
+            "completion_feedback": "Los átomos se unen para **completar su última capa** y ser estables: **ceden** electrones (iónico) o los **comparten** (covalente)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué enlace forma cada compuesto?",
+            "left_label": "Sociedades",
+            "right_label": "Enlace",
+            "pairs": [
+              {
+                "left": "NaCl (sodio + cloro)",
+                "right": "Iónico: metal + no metal"
+              },
+              {
+                "left": "H₂O (oxígeno + hidrógeno)",
+                "right": "Covalente: entre no metales"
+              },
+              {
+                "left": "¿Por qué se unen los átomos?",
+                "right": "Para ser más estables"
+              }
+            ],
+            "completion_feedback": "Los átomos se unen para **completar su última capa** y ser estables: **ceden** electrones (iónico) o los **comparten** (covalente)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resulta en cada caso?",
+            "left_label": "Subunits",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Átomo que cede un electrón",
+                "right": "Ion positivo (catión)"
+              },
+              {
+                "left": "Átomo que gana un electrón",
+                "right": "Ion negativo (anión)"
+              },
+              {
+                "left": "Cargas opuestas que se atraen",
+                "right": "Enlace iónico"
+              },
+              {
+                "left": "Comparten dos pares de electrones",
+                "right": "Enlace doble"
+              }
+            ],
+            "completion_feedback": "Los átomos se unen para **completar su última capa** y ser estables: **ceden** electrones (iónico) o los **comparten** (covalente)."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se forma un enlace iónico",
+            "steps": [
+              "Un átomo cede un electrón",
+              "Otro átomo gana ese electrón",
+              "Quedan con cargas opuestas: + y −",
+              "Se atraen y forman el enlace iónico"
+            ],
+            "completion_feedback": "La **transferencia** de electrones crea iones de carga opuesta, y su **atracción** es el enlace. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de unión es cada una?",
+            "left_label": "Equipos de Roblox",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Uno dona un recurso, otro lo recibe",
+                "right": "Transferir: iónico"
+              },
+              {
+                "left": "Comparten un recurso entre los dos",
+                "right": "Compartir: covalente"
+              },
+              {
+                "left": "Quedar completos con 8",
+                "right": "Regla del octeto"
+              }
+            ],
+            "completion_feedback": "Los átomos se unen para **completar su última capa** y ser estables: **ceden** electrones (iónico) o los **comparten** (covalente)."
+          }
+        }
+      }
+    },
+    "reacciones-quimicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo sabes si el horno hizo una reacción química",
+        "steps": [
+          "Identifica lo que entra: la madera",
+          "Observa lo que sale: el carbón",
+          "Compara sus propiedades: color, textura, cómo arde",
+          "Si son nuevas y no hay vuelta atrás, es reacción"
+        ],
+        "completion_feedback": "**Propiedades nuevas** y sin vuelta atrás: esa es la huella de una reacción química, no de una mezcla. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de reacción es cada patrón?",
+            "left_label": "Chakra de Naruto",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "A + B → AB",
+                "right": "Síntesis"
+              },
+              {
+                "left": "AB → A + B",
+                "right": "Descomposición"
+              },
+              {
+                "left": "Un elemento toma el lugar de otro",
+                "right": "Sustitución"
+              }
+            ],
+            "completion_feedback": "En una reacción los **reactivos** se transforman en **productos** nuevos; la masa se conserva y puede liberarse o absorberse energía."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada situación?",
+            "left_label": "Energía en juego",
+            "right_label": "Muestra",
+            "pairs": [
+              {
+                "left": "Fogata que suelta calor y luz",
+                "right": "Exotérmica: libera"
+              },
+              {
+                "left": "Cocinar con calor constante",
+                "right": "Endotérmica: absorbe"
+              },
+              {
+                "left": "Cambio de color, gas o luz",
+                "right": "Señales de reacción"
+              }
+            ],
+            "completion_feedback": "En una reacción los **reactivos** se transforman en **productos** nuevos; la masa se conserva y puede liberarse o absorberse energía."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la conservación muestra cada cosa?",
+            "left_label": "Comeback",
+            "right_label": "Idea",
+            "pairs": [
+              {
+                "left": "20 g + 12 g de reactivos",
+                "right": "32 g de productos"
+              },
+              {
+                "left": "Nada se crea ni se destruye",
+                "right": "Ley de Lavoisier"
+              },
+              {
+                "left": "Mismos átomos antes y después",
+                "right": "Ecuación balanceada"
+              }
+            ],
+            "completion_feedback": "En una reacción los **reactivos** se transforman en **productos** nuevos; la masa se conserva y puede liberarse o absorberse energía."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas la masa del producto",
+            "steps": [
+              "Ubica la masa de cada reactivo: 20 g y 12 g",
+              "Súmalas: 32 g",
+              "Aplica Lavoisier: los productos pesan lo mismo",
+              "Concluye: se obtienen 32 g de producto"
+            ],
+            "completion_feedback": "Lo que entra es lo que sale: la **masa total se conserva**, aunque las sustancias cambien. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué papel tiene cada cosa en el horno?",
+            "left_label": "Horno de Minecraft",
+            "right_label": "Papel",
+            "pairs": [
+              {
+                "left": "Tronco de madera",
+                "right": "Reactivo"
+              },
+              {
+                "left": "Carbón vegetal",
+                "right": "Producto"
+              },
+              {
+                "left": "La flecha →",
+                "right": "Se transforma en"
+              },
+              {
+                "left": "Espada con lingotes y palo",
+                "right": "No es reacción: solo armas"
+              }
+            ],
+            "completion_feedback": "En una reacción los **reactivos** se transforman en **productos** nuevos; la masa se conserva y puede liberarse o absorberse energía."
+          }
+        }
+      }
+    },
+    "velocidad-de-reaccion": {
+      "order_steps": {
+        "prompt": "Ordena por qué subir la temperatura acelera una reacción",
+        "steps": [
+          "Subes la temperatura",
+          "Las partículas se mueven más rápido",
+          "Chocan más seguido y con más energía",
+          "Hay más choques efectivos: la reacción se acelera"
+        ],
+        "completion_feedback": "La **teoría de choques** explica todo: lo que aumenta los choques efectivos, acelera la reacción. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué factor acelera cada situación?",
+            "left_label": "Fuego cazademonios",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Astillas finas en vez de un tronco",
+                "right": "Superficie de contacto"
+              },
+              {
+                "left": "Soplar aire a las llamas",
+                "right": "Concentración"
+              },
+              {
+                "left": "Ambiente caluroso de verano",
+                "right": "Temperatura"
+              },
+              {
+                "left": "Sustancia que acelera sin gastarse",
+                "right": "Catalizador"
+              }
+            ],
+            "completion_feedback": "Temperatura, concentración, superficie y catalizadores aceleran la reacción porque aumentan los **choques efectivos** entre partículas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué factor acelera cada situación?",
+            "left_label": "Ataque del Barça",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Equipo a máxima intensidad",
+                "right": "Temperatura"
+              },
+              {
+                "left": "Más jugadores en el área rival",
+                "right": "Concentración"
+              },
+              {
+                "left": "Abrir la cancha a todo lo ancho",
+                "right": "Superficie de contacto"
+              },
+              {
+                "left": "Yamal potencia y sigue ahí al final",
+                "right": "Catalizador"
+              }
+            ],
+            "completion_feedback": "Temperatura, concentración, superficie y catalizadores aceleran la reacción porque aumentan los **choques efectivos** entre partículas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo aumenta los choques cada factor?",
+            "left_label": "Venta del álbum",
+            "right_label": "Efecto",
+            "pairs": [
+              {
+                "left": "Más fans comprando a la vez",
+                "right": "Más partículas: más choques"
+              },
+              {
+                "left": "Fandom súper energizado",
+                "right": "Choques con más energía"
+              },
+              {
+                "left": "Más servidores abiertos",
+                "right": "Más área para chocar"
+              },
+              {
+                "left": "Influencer que impulsa sin gastarse",
+                "right": "Catalizador"
+              }
+            ],
+            "completion_feedback": "Temperatura, concentración, superficie y catalizadores aceleran la reacción porque aumentan los **choques efectivos** entre partículas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué factor acelera cada situación?",
+            "left_label": "Fundir hierro",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Blast furnace más caliente",
+                "right": "Temperatura"
+              },
+              {
+                "left": "Mineral molido en polvo",
+                "right": "Superficie de contacto"
+              },
+              {
+                "left": "Más reactivo en el mismo espacio",
+                "right": "Concentración"
+              }
+            ],
+            "completion_feedback": "Temperatura, concentración, superficie y catalizadores aceleran la reacción porque aumentan los **choques efectivos** entre partículas."
+          }
+        }
+      }
+    },
+    "acidos-bases-y-neutralizacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo corriges un suelo demasiado ácido",
+        "steps": [
+          "Mide el pH: 4, es ácido",
+          "Decide qué necesitas: una base",
+          "Agrega cal al suelo",
+          "El pH sube hacia 7: suelo neutralizado"
+        ],
+        "completion_feedback": "Para un ácido, **lo opuesto**: una base. Juntos se neutralizan y el pH se acerca a 7. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué papel cumple cada cosa?",
+            "left_label": "Isla de cultivo",
+            "right_label": "Papel",
+            "pairs": [
+              {
+                "left": "Suelo de cultivo con pH 4",
+                "right": "Ácido: necesita base"
+              },
+              {
+                "left": "Cal que se agrega al suelo",
+                "right": "Base que neutraliza"
+              },
+              {
+                "left": "Ácido + base",
+                "right": "Sal + agua"
+              },
+              {
+                "left": "pH final cercano a 7",
+                "right": "Neutro"
+              }
+            ],
+            "completion_feedback": "El **pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es base. Ácido + base se **neutralizan** en sal + agua."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fuerzas opuestas",
+            "right_label": "Corresponde",
+            "pairs": [
+              {
+                "left": "Iones H⁺",
+                "right": "Los aporta el ácido"
+              },
+              {
+                "left": "Iones OH⁻",
+                "right": "Los aporta la base"
+              },
+              {
+                "left": "H⁺ + OH⁻",
+                "right": "Agua (H₂O)"
+              },
+              {
+                "left": "Antiácido para el estómago",
+                "right": "Base que neutraliza ácido"
+              }
+            ],
+            "completion_feedback": "El **pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es base. Ácido + base se **neutralizan** en sal + agua."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué color toma cada indicador?",
+            "left_label": "Foco del reality",
+            "right_label": "Color",
+            "pairs": [
+              {
+                "left": "Ácido en papel tornasol",
+                "right": "Rojo"
+              },
+              {
+                "left": "Base en papel tornasol",
+                "right": "Azul"
+              },
+              {
+                "left": "Base con fenolftaleína",
+                "right": "Rosa"
+              },
+              {
+                "left": "Ácido con fenolftaleína",
+                "right": "Incolora"
+              }
+            ],
+            "completion_feedback": "El **pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es base. Ácido + base se **neutralizan** en sal + agua."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo identificas una sustancia con papel tornasol",
+            "steps": [
+              "Moja una tira de papel tornasol en la sustancia",
+              "Observa el color que toma",
+              "Interpreta: rojo es ácido, azul es base"
+            ],
+            "completion_feedback": "El indicador **revela** el carácter de la sustancia sin probarla: así se trabaja **seguro**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo es cada poción según su pH?",
+            "left_label": "Pociones",
+            "right_label": "Es",
+            "pairs": [
+              {
+                "left": "Poción con pH 2",
+                "right": "Ácida"
+              },
+              {
+                "left": "Poción con pH 7",
+                "right": "Neutra"
+              },
+              {
+                "left": "Poción con pH 12",
+                "right": "Básica"
+              }
+            ],
+            "completion_feedback": "El **pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es base. Ácido + base se **neutralizan** en sal + agua."
+          }
+        }
+      }
+    },
+    "reacciones-de-oxido-reduccion-quimica-sec": {
+      "order_steps": {
+        "prompt": "Ordena cómo sabes si un átomo se oxidó o se redujo",
+        "steps": [
+          "Anota su número de oxidación inicial",
+          "Anota su número de oxidación final",
+          "Compara: ¿subió o bajó?",
+          "Si subió, se oxidó; si bajó, se redujo"
+        ],
+        "completion_feedback": "El **número de oxidación** delata quién perdió y quién ganó electrones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada caso?",
+            "left_label": "Chakra compartido",
+            "right_label": "Corresponde",
+            "pairs": [
+              {
+                "left": "Pierde electrones",
+                "right": "Se oxida"
+              },
+              {
+                "left": "Gana electrones",
+                "right": "Se reduce"
+              },
+              {
+                "left": "Madera ardiendo en la fogata",
+                "right": "Redox: combustión"
+              },
+              {
+                "left": "Azúcar disuelta en agua",
+                "right": "No es redox"
+              }
+            ],
+            "completion_feedback": "En una redox los electrones **cambian de dueño**: quien los pierde se **oxida** y quien los gana se **reduce**, siempre al mismo tiempo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué le pasó a cada átomo?",
+            "left_label": "Pase y pared",
+            "right_label": "Le pasó",
+            "pairs": [
+              {
+                "left": "Número de oxidación de 0 a +2",
+                "right": "Se oxidó"
+              },
+              {
+                "left": "Número de oxidación de 0 a −2",
+                "right": "Se redujo"
+              },
+              {
+                "left": "Oxidación sin reducción",
+                "right": "No existe: van en pareja"
+              }
+            ],
+            "completion_feedback": "En una redox los electrones **cambian de dueño**: quien los pierde se **oxida** y quien los gana se **reduce**, siempre al mismo tiempo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué papel tiene cada cosa?",
+            "left_label": "Lightstick de TXT",
+            "right_label": "Papel",
+            "pairs": [
+              {
+                "left": "Metal que pierde electrones",
+                "right": "Agente reductor"
+              },
+              {
+                "left": "Oxígeno que gana electrones",
+                "right": "Agente oxidante"
+              },
+              {
+                "left": "Contactos opacos y manchados",
+                "right": "Corrosión"
+              }
+            ],
+            "completion_feedback": "En una redox los electrones **cambian de dueño**: quien los pierde se **oxida** y quien los gana se **reduce**, siempre al mismo tiempo."
+          },
+          "order_steps": {
+            "prompt": "Ordena qué les pasó a los contactos de tu lightstick",
+            "steps": [
+              "El metal queda expuesto al aire y la humedad",
+              "El metal cede electrones al oxígeno",
+              "El oxígeno los gana y se reduce",
+              "Se forma una capa de óxido: corrosión"
+            ],
+            "completion_feedback": "El metal se **oxida** (agente reductor) y el oxígeno se **reduce** (agente oxidante): eso es la corrosión. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada caso?",
+            "left_label": "Compra en Valorant",
+            "right_label": "Corresponde",
+            "pairs": [
+              {
+                "left": "El átomo A pierde electrones",
+                "right": "Oxidación"
+              },
+              {
+                "left": "El átomo B gana electrones",
+                "right": "Reducción"
+              },
+              {
+                "left": "Pila que alimenta un control",
+                "right": "Redox que da energía"
+              }
+            ],
+            "completion_feedback": "En una redox los electrones **cambian de dueño**: quien los pierde se **oxida** y quien los gana se **reduce**, siempre al mismo tiempo."
+          }
+        }
+      }
+    },
+    "quimica-organica": {
+      "order_steps": {
+        "prompt": "Ordena cómo nombras un hidrocarburo simple",
+        "steps": [
+          "Cuenta los carbonos de la fórmula",
+          "Elige el prefijo: met- 1, et- 2, prop- 3",
+          "Agrega la terminación -ano"
+        ],
+        "completion_feedback": "El **prefijo** dice cuántos carbonos hay y **-ano** que es un hidrocarburo simple. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué biomolécula es cada cosa?",
+            "left_label": "Cocina de Sanji",
+            "right_label": "Biomolécula",
+            "pairs": [
+              {
+                "left": "Arroz y pan",
+                "right": "Carbohidratos"
+              },
+              {
+                "left": "Aceite para cocinar",
+                "right": "Lípidos"
+              },
+              {
+                "left": "Carne y pescado",
+                "right": "Proteínas"
+              },
+              {
+                "left": "El ADN de cada pirata",
+                "right": "Ácidos nucleicos"
+              }
+            ],
+            "completion_feedback": "El carbono forma **4 enlaces** y se une consigo mismo en cadenas y anillos: por eso es la base de la vida y de millones de compuestos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada hidrocarburo?",
+            "left_label": "Autobús del Barça",
+            "right_label": "Es",
+            "pairs": [
+              {
+                "left": "CH₄",
+                "right": "Metano: 1 carbono"
+              },
+              {
+                "left": "C₂H₆",
+                "right": "Etano: 2 carbonos"
+              },
+              {
+                "left": "C₃H₈",
+                "right": "Propano: 3 carbonos"
+              },
+              {
+                "left": "Gasolina del autobús",
+                "right": "Hidrocarburos del petróleo"
+              }
+            ],
+            "completion_feedback": "El carbono forma **4 enlaces** y se une consigo mismo en cadenas y anillos: por eso es la base de la vida y de millones de compuestos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué estructura es cada una?",
+            "left_label": "Formaciones",
+            "right_label": "Estructura",
+            "pairs": [
+              {
+                "left": "Carbonos uno tras otro en fila",
+                "right": "Cadena lineal"
+              },
+              {
+                "left": "Un carbono sale como brazo",
+                "right": "Cadena ramificada"
+              },
+              {
+                "left": "Carbonos en un anillo cerrado",
+                "right": "Cadena cíclica"
+              },
+              {
+                "left": "Mismos átomos, otro acomodo",
+                "right": "Isómeros"
+              }
+            ],
+            "completion_feedback": "El carbono forma **4 enlaces** y se une consigo mismo en cadenas y anillos: por eso es la base de la vida y de millones de compuestos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bloque base",
+            "right_label": "Corresponde",
+            "pairs": [
+              {
+                "left": "Enlaces que forma el carbono",
+                "right": "4"
+              },
+              {
+                "left": "Solo carbono e hidrógeno",
+                "right": "Hidrocarburo"
+              },
+              {
+                "left": "Plástico de una botella",
+                "right": "Orgánico hecho por humanos"
+              },
+              {
+                "left": "El subíndice 4 en CH₄",
+                "right": "4 átomos de hidrógeno"
+              }
+            ],
+            "completion_feedback": "El carbono forma **4 enlaces** y se une consigo mismo en cadenas y anillos: por eso es la base de la vida y de millones de compuestos."
+          }
+        }
+      }
+    },
+    "los-alimentos-como-fuente-de-energia": {
+      "order_steps": {
+        "prompt": "Ordena el camino del arroz hasta volverse energía",
+        "steps": [
+          "Luffy come arroz, rico en carbohidratos",
+          "La digestión lo descompone en glucosa",
+          "La glucosa llega a las células",
+          "Reacciona con oxígeno y libera energía"
+        ],
+        "completion_feedback": "Alimento, glucosa y **respiración celular**: el oxígeno 'quema' la glucosa para soltar su energía. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada paso del camino?",
+            "left_label": "Apetito de Luffy",
+            "right_label": "Es",
+            "pairs": [
+              {
+                "left": "Arroz que come Luffy",
+                "right": "Carbohidratos"
+              },
+              {
+                "left": "Lo que deja la digestión",
+                "right": "Glucosa"
+              },
+              {
+                "left": "Glucosa + oxígeno en la célula",
+                "right": "Respiración celular"
+              },
+              {
+                "left": "Lo que sale además de energía",
+                "right": "CO₂ y agua"
+              }
+            ],
+            "completion_feedback": "Los alimentos son el **combustible**: el cuerpo los digiere y, con oxígeno, libera su energía para moverse, pensar y vivir."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Para qué sirve cada alimento?",
+            "left_label": "Dieta del Barça",
+            "right_label": "Aporta",
+            "pairs": [
+              {
+                "left": "Pasta y arroz antes del partido",
+                "right": "Energía rápida"
+              },
+              {
+                "left": "Aguacate y aceite de oliva",
+                "right": "Energía de reserva"
+              },
+              {
+                "left": "Pollo y pescado después",
+                "right": "Reparar el músculo"
+              }
+            ],
+            "completion_feedback": "Los alimentos son el **combustible**: el cuerpo los digiere y, con oxígeno, libera su energía para moverse, pensar y vivir."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Gira de BLACKPINK",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Energía para respirar y latir",
+                "right": "Metabolismo basal"
+              },
+              {
+                "left": "Unidad de energía de la comida",
+                "right": "Kilocaloría (kcal)"
+              },
+              {
+                "left": "Lo que comes equilibra lo que gastas",
+                "right": "Balance energético"
+              }
+            ],
+            "completion_feedback": "Los alimentos son el **combustible**: el cuerpo los digiere y, con oxígeno, libera su energía para moverse, pensar y vivir."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuánta energía aporta cada cosa?",
+            "left_label": "Barra de hambre",
+            "right_label": "Aporta",
+            "pairs": [
+              {
+                "left": "1 g de carbohidratos",
+                "right": "4 kcal"
+              },
+              {
+                "left": "1 g de grasa",
+                "right": "9 kcal"
+              },
+              {
+                "left": "10 g de carbohidratos + 5 g de grasa",
+                "right": "85 kcal"
+              }
+            ],
+            "completion_feedback": "Los alimentos son el **combustible**: el cuerpo los digiere y, con oxígeno, libera su energía para moverse, pensar y vivir."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas las kcal de un alimento",
+            "steps": [
+              "Anota los gramos de cada nutrimento",
+              "Multiplica cada uno por sus kcal por gramo",
+              "Suma todo: esa es la energía total"
+            ],
+            "completion_feedback": "Carbohidratos y proteínas dan **4 kcal/g**; la grasa, **9 kcal/g**. Multiplica y suma. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "quimica-sociedad-y-sustentabilidad": {
+      "order_steps": {
+        "prompt": "Ordena las 3R de la más a la menos efectiva",
+        "steps": [
+          "Reducir: evita el residuo desde el inicio",
+          "Reutilizar: dale otro uso a lo que ya tienes",
+          "Reciclar: transforma el residuo en algo nuevo"
+        ],
+        "completion_feedback": "**Reducir** va primero porque el mejor residuo es el que nunca se genera. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del dilema es cada cosa?",
+            "left_label": "Princess Mononoke",
+            "right_label": "Es",
+            "pairs": [
+              {
+                "left": "Empleo y metal para la gente",
+                "right": "Beneficio social"
+              },
+              {
+                "left": "Humo y bosque talado",
+                "right": "Problema ambiental"
+              },
+              {
+                "left": "Filtros, tratar agua y reforestar",
+                "right": "Solución sustentable"
+              }
+            ],
+            "completion_feedback": "Ser **sustentable** es aprovechar lo que la química ofrece hoy **sin agotar** ni dañar lo que necesitarán las futuras generaciones."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo evalúas una fábrica de forma sustentable",
+            "steps": [
+              "Identifica el beneficio social: empleo y materiales",
+              "Identifica el daño ambiental: humo y agua sucia",
+              "Propón soluciones: filtros, tratar agua, reforestar",
+              "Conserva el beneficio reduciendo el daño"
+            ],
+            "completion_feedback": "Lo sustentable no es cerrar la industria: es **producir reduciendo el impacto**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué logra cada medida del estadio?",
+            "left_label": "Futbol sustentable",
+            "right_label": "Logra",
+            "pairs": [
+              {
+                "left": "Jerseys de botellas recicladas",
+                "right": "Reaprovechar residuos"
+              },
+              {
+                "left": "Paneles solares en el estadio",
+                "right": "Energía limpia"
+              },
+              {
+                "left": "Plástico nuevo del petróleo",
+                "right": "Gasta un recurso no renovable"
+              },
+              {
+                "left": "Llegar en transporte público",
+                "right": "Menos contaminación"
+              }
+            ],
+            "completion_feedback": "Ser **sustentable** es aprovechar lo que la química ofrece hoy **sin agotar** ni dañar lo que necesitarán las futuras generaciones."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué R aplica cada acción?",
+            "left_label": "Merch de BLINK",
+            "right_label": "Aplica",
+            "pairs": [
+              {
+                "left": "Comprar una sola versión del álbum",
+                "right": "Reducir"
+              },
+              {
+                "left": "Usar la caja como organizador",
+                "right": "Reutilizar"
+              },
+              {
+                "left": "Separar plástico y cartón",
+                "right": "Reciclar"
+              }
+            ],
+            "completion_feedback": "Ser **sustentable** es aprovechar lo que la química ofrece hoy **sin agotar** ni dañar lo que necesitarán las futuras generaciones."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo es cada recurso o acción?",
+            "left_label": "Mundo de Minecraft",
+            "right_label": "Es",
+            "pairs": [
+              {
+                "left": "Madera, si replantas",
+                "right": "Renovable"
+              },
+              {
+                "left": "Carbón mineral",
+                "right": "No renovable"
+              },
+              {
+                "left": "Replantar retoños al talar",
+                "right": "Uso sustentable"
+              }
+            ],
+            "completion_feedback": "Ser **sustentable** es aprovechar lo que la química ofrece hoy **sin agotar** ni dañar lo que necesitarán las futuras generaciones."
+          }
+        }
+      }
+    }
+  }
+}
