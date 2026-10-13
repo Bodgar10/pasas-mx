@@ -1,0 +1,933 @@
+{
+  "subject": "ecologia-medio-ambiente",
+  "topics": {
+    "conceptos-basicos-de-ecologia": {
+      "order_steps": {
+        "prompt": "Ordena los niveles de organización, del más pequeño al más grande",
+        "steps": [
+          "Individuo: un solo organismo",
+          "Población: varios individuos de la misma especie",
+          "Comunidad: varias especies que conviven en un lugar",
+          "Ecosistema: la comunidad más su medio físico",
+          "Biósfera: todos los ecosistemas del planeta"
+        ],
+        "completion_feedback": "Cada nivel **contiene** al anterior y le suma algo: más individuos, más especies o el medio físico. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la isla",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "Un solo Rey del Mar",
+                "right": "Individuo"
+              },
+              {
+                "left": "Un cardumen de Reyes del Mar",
+                "right": "Población"
+              },
+              {
+                "left": "Reyes del Mar, aves y monos juntos",
+                "right": "Comunidad"
+              },
+              {
+                "left": "Todos ellos + el mar, la luz y el clima",
+                "right": "Ecosistema"
+              }
+            ],
+            "completion_feedback": "La ecología estudia a los seres vivos y su ambiente por niveles: **individuo → población → comunidad → ecosistema → biósfera**. Lo vivo es **biótico**; agua, luz y temperatura son **abióticos**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el partido",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Un solo jugador",
+                "right": "Individuo"
+              },
+              {
+                "left": "Los once de un mismo club",
+                "right": "Población"
+              },
+              {
+                "left": "Ambos equipos, árbitros y afición",
+                "right": "Comunidad"
+              },
+              {
+                "left": "Todo eso + césped, lluvia y altitud",
+                "right": "Ecosistema"
+              }
+            ],
+            "completion_feedback": "La ecología estudia a los seres vivos y su ambiente por niveles: **individuo → población → comunidad → ecosistema → biósfera**. Lo vivo es **biótico**; agua, luz y temperatura son **abióticos**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el K-pop",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "Karina, de aespa",
+                "right": "Individuo"
+              },
+              {
+                "left": "Las cuatro de aespa",
+                "right": "Población"
+              },
+              {
+                "left": "aespa, IVE y Stray Kids juntos",
+                "right": "Comunidad"
+              },
+              {
+                "left": "Todos + escenario, luces y clima",
+                "right": "Ecosistema"
+              }
+            ],
+            "completion_feedback": "La ecología estudia a los seres vivos y su ambiente por niveles: **individuo → población → comunidad → ecosistema → biósfera**. Lo vivo es **biótico**; agua, luz y temperatura son **abióticos**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Un lobo solo en el bosque",
+                "right": "Individuo"
+              },
+              {
+                "left": "Una manada de lobos",
+                "right": "Población"
+              },
+              {
+                "left": "Lobos, ovejas y abejas juntos",
+                "right": "Comunidad"
+              },
+              {
+                "left": "Agua, luz y temperatura del bioma",
+                "right": "Factores abióticos"
+              }
+            ],
+            "completion_feedback": "La ecología estudia a los seres vivos y su ambiente por niveles: **individuo → población → comunidad → ecosistema → biósfera**. Lo vivo es **biótico**; agua, luz y temperatura son **abióticos**."
+          }
+        }
+      }
+    },
+    "ecosistemas-estructura-y-funcion": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de la energía y la materia en un ecosistema",
+        "steps": [
+          "El productor capta la luz del sol por fotosíntesis",
+          "El consumidor primario (herbívoro) se come al productor",
+          "El consumidor secundario (carnívoro) caza al herbívoro",
+          "Los descomponedores degradan los restos",
+          "Los nutrientes regresan al suelo y los vuelven a usar los productores"
+        ],
+        "completion_feedback": "La **energía** fluye en un solo sentido (sol → productores → consumidores) y la **materia** se recicla gracias a los descomponedores. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Especie",
+            "right_label": "Isla donde vive",
+            "pairs": [
+              {
+                "left": "Reno resistente al frío",
+                "right": "Drum Island"
+              },
+              {
+                "left": "Dinosaurio de jungla húmeda",
+                "right": "Little Garden"
+              },
+              {
+                "left": "Cactus tolerante a la sequía",
+                "right": "Alabasta"
+              }
+            ],
+            "completion_feedback": "Un ecosistema une lo **biótico** y lo **abiótico**. Sus especies se relacionan por **mutualismo** (ambos ganan), **competencia** (mismo recurso), **comensalismo** (uno gana, al otro le da igual) y **parasitismo**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el fútbol",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Dos clubes pelean el mismo fichaje",
+                "right": "Competencia"
+              },
+              {
+                "left": "Pasador y goleador ganan los dos",
+                "right": "Mutualismo"
+              },
+              {
+                "left": "Taquero afuera: el club ni lo nota",
+                "right": "Comensalismo"
+              },
+              {
+                "left": "Revendedor que exprime a la afición",
+                "right": "Parasitismo"
+              }
+            ],
+            "completion_feedback": "Un ecosistema une lo **biótico** y lo **abiótico**. Sus especies se relacionan por **mutualismo** (ambos ganan), **competencia** (mismo recurso), **comensalismo** (uno gana, al otro le da igual) y **parasitismo**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Con Stray Kids",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "3RACHA y los vocalistas sacan el tema",
+                "right": "Mutualismo"
+              },
+              {
+                "left": "Dos grupos por el #1 el mismo día",
+                "right": "Competencia"
+              },
+              {
+                "left": "Telonero que gana fans sin afectarlos",
+                "right": "Comensalismo"
+              }
+            ],
+            "completion_feedback": "Un ecosistema une lo **biótico** y lo **abiótico**. Sus especies se relacionan por **mutualismo** (ambos ganan), **competencia** (mismo recurso), **comensalismo** (uno gana, al otro le da igual) y **parasitismo**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Mondstadt",
+            "right_label": "Papel",
+            "pairs": [
+              {
+                "left": "Flores Cecilia y pasto",
+                "right": "Productor"
+              },
+              {
+                "left": "Jabalí del bosque",
+                "right": "Consumidor primario"
+              },
+              {
+                "left": "Lobo de Wolvendom",
+                "right": "Consumidor secundario"
+              },
+              {
+                "left": "Hongos y bacterias del suelo",
+                "right": "Descomponedor"
+              }
+            ],
+            "completion_feedback": "Un ecosistema une lo **biótico** y lo **abiótico**. Sus especies se relacionan por **mutualismo** (ambos ganan), **competencia** (mismo recurso), **comensalismo** (uno gana, al otro le da igual) y **parasitismo**."
+          }
+        }
+      }
+    },
+    "flujo-de-energia-y-cadenas-troficas": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la energía de cada nivel con la regla del 10%",
+        "steps": [
+          "Anota la energía de los productores: 10,000 unidades",
+          "Multiplica por 0.1 para el herbívoro: 1,000",
+          "Vuelve a multiplicar por 0.1 para el carnívoro: 100",
+          "Una vez más para el depredador tope: 10"
+        ],
+        "completion_feedback": "En cada salto pasa solo cerca del **10%**: el resto se pierde como calor, movimiento y desechos. Por eso hay tan pocos depredadores tope. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En los Muros",
+            "right_label": "Papel",
+            "pairs": [
+              {
+                "left": "Trigo y pastizales",
+                "right": "Productor"
+              },
+              {
+                "left": "Vaca que come pasto",
+                "right": "Consumidor primario"
+              },
+              {
+                "left": "Humano que come carne de vaca",
+                "right": "Consumidor secundario"
+              },
+              {
+                "left": "Titán que devora humanos",
+                "right": "Depredador tope"
+              }
+            ],
+            "completion_feedback": "Una **cadena trófica** dice quién come a quién; varias cruzadas forman una **red trófica**. La energía va en un solo sentido y a cada nivel pasa cerca del **10%**: pirámide ancha abajo, angosta arriba."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Nivel de la jugada",
+            "right_label": "Llegan",
+            "pairs": [
+              {
+                "left": "Defensa (la base)",
+                "right": "1,000 acciones"
+              },
+              {
+                "left": "Mediocampo",
+                "right": "100 acciones"
+              },
+              {
+                "left": "Último tercio",
+                "right": "10 acciones"
+              },
+              {
+                "left": "Mbappé frente al portero",
+                "right": "1 acción"
+              }
+            ],
+            "completion_feedback": "Una **cadena trófica** dice quién come a quién; varias cruzadas forman una **red trófica**. La energía va en un solo sentido y a cada nivel pasa cerca del **10%**: pirámide ancha abajo, angosta arriba."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback",
+            "right_label": "Unidades",
+            "pairs": [
+              {
+                "left": "Producción del tema",
+                "right": "10,000"
+              },
+              {
+                "left": "Ensayos de las cinco",
+                "right": "1,000"
+              },
+              {
+                "left": "Performance en el escenario",
+                "right": "100"
+              },
+              {
+                "left": "Momento viral para las fans",
+                "right": "10"
+              }
+            ],
+            "completion_feedback": "Una **cadena trófica** dice quién come a quién; varias cruzadas forman una **red trófica**. La energía va en un solo sentido y a cada nivel pasa cerca del **10%**: pirámide ancha abajo, angosta arriba."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Papel",
+            "pairs": [
+              {
+                "left": "Trigo que crece con el sol",
+                "right": "Productor"
+              },
+              {
+                "left": "Vaca que come trigo",
+                "right": "Consumidor primario"
+              },
+              {
+                "left": "Steve que come la carne",
+                "right": "Consumidor secundario"
+              },
+              {
+                "left": "Varias cadenas cruzadas",
+                "right": "Red trófica"
+              }
+            ],
+            "completion_feedback": "Una **cadena trófica** dice quién come a quién; varias cruzadas forman una **red trófica**. La energía va en un solo sentido y a cada nivel pasa cerca del **10%**: pirámide ancha abajo, angosta arriba."
+          }
+        }
+      }
+    },
+    "ciclos-biogeoquimicos-ecologia": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de un átomo de carbono",
+        "steps": [
+          "El carbono está en el aire como CO₂",
+          "Una planta lo capta por fotosíntesis y lo guarda en su tejido",
+          "Un herbívoro come la planta y el carbono pasa a su cuerpo",
+          "Al morir, los descomponedores lo regresan al aire como CO₂"
+        ],
+        "completion_feedback": "En un ciclo biogeoquímico la materia **no se crea ni se destruye**: cambia de **reservorio** (aire, seres vivos, suelo, agua) y de forma química. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Nitrógeno (Nen)",
+            "right_label": "Proceso",
+            "pairs": [
+              {
+                "left": "Se desbloquea: N₂ pasa a amonio",
+                "right": "Fijación"
+              },
+              {
+                "left": "El amonio se vuelve nitrato",
+                "right": "Nitrificación"
+              },
+              {
+                "left": "Las plantas lo usan en proteínas",
+                "right": "Asimilación"
+              },
+              {
+                "left": "Vuelve al aire como N₂",
+                "right": "Desnitrificación"
+              }
+            ],
+            "completion_feedback": "Los **ciclos biogeoquímicos** mueven la materia entre ambiente y seres vivos sin perderla: el agua se **evapora**, se **condensa** y **precipita**; el carbono entra por **fotosíntesis**; el nitrógeno, por **fijación**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agua del estadio",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "La presa se calienta y sube vapor",
+                "right": "Evaporación"
+              },
+              {
+                "left": "El pasto de la cancha libera vapor",
+                "right": "Transpiración"
+              },
+              {
+                "left": "El vapor se enfría y forma nubes",
+                "right": "Condensación"
+              },
+              {
+                "left": "Llueve sobre la ciudad",
+                "right": "Precipitación"
+              }
+            ],
+            "completion_feedback": "Los **ciclos biogeoquímicos** mueven la materia entre ambiente y seres vivos sin perderla: el agua se **evapora**, se **condensa** y **precipita**; el carbono entra por **fotosíntesis**; el nitrógeno, por **fijación**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Como el CARAT Bong",
+            "right_label": "Proceso",
+            "pairs": [
+              {
+                "left": "CO₂ del aire entra a una planta",
+                "right": "Fotosíntesis"
+              },
+              {
+                "left": "El carbono pasa al herbívoro",
+                "right": "Alimentación"
+              },
+              {
+                "left": "El animal exhala CO₂",
+                "right": "Respiración"
+              },
+              {
+                "left": "Hongos lo liberan de los restos",
+                "right": "Descomposición"
+              }
+            ],
+            "completion_feedback": "Los **ciclos biogeoquímicos** mueven la materia entre ambiente y seres vivos sin perderla: el agua se **evapora**, se **condensa** y **precipita**; el carbono entra por **fotosíntesis**; el nitrógeno, por **fijación**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Atrapagemas",
+            "right_label": "Ciclo del oxígeno",
+            "pairs": [
+              {
+                "left": "La gema sale de la mina",
+                "right": "O₂ disponible en el aire"
+              },
+              {
+                "left": "Tu brawler recoge la gema",
+                "right": "Un ser vivo respira O₂"
+              },
+              {
+                "left": "Te derrotan y la gema cae",
+                "right": "Se libera como CO₂"
+              },
+              {
+                "left": "Las gemas en juego no se pierden",
+                "right": "La materia se conserva"
+              }
+            ],
+            "completion_feedback": "Los **ciclos biogeoquímicos** mueven la materia entre ambiente y seres vivos sin perderla: el agua se **evapora**, se **condensa** y **precipita**; el carbono entra por **fotosíntesis**; el nitrógeno, por **fijación**."
+          }
+        }
+      }
+    },
+    "poblaciones-y-comunidades": {
+      "order_steps": {
+        "prompt": "Ordena las fases del crecimiento de una población con recursos limitados",
+        "steps": [
+          "Pocos individuos: la población crece lento",
+          "Sobran recursos: la población crece rapidísimo",
+          "Los recursos empiezan a escasear: el crecimiento se frena",
+          "La población se estabiliza en la capacidad de carga (K)"
+        ],
+        "completion_feedback": "Es el **crecimiento logístico** (curva en S): la población no crece para siempre porque los recursos limitados la frenan en la **capacidad de carga (K)**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la isla",
+            "right_label": "Distribución",
+            "pairs": [
+              {
+                "left": "Reyes Marinos alrededor de un banco",
+                "right": "Agrupada"
+              },
+              {
+                "left": "Aves territoriales a igual distancia",
+                "right": "Uniforme"
+              },
+              {
+                "left": "Semillas que el viento tira al azar",
+                "right": "Aleatoria"
+              }
+            ],
+            "completion_feedback": "Una **población** es una sola especie en un lugar; varias forman una **comunidad**. Cambia por **natalidad, mortalidad, inmigración y emigración**, y no puede rebasar su **capacidad de carga (K)**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Afición del Madrid",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Nacen hijos de madridistas",
+                "right": "Natalidad"
+              },
+              {
+                "left": "Socios veteranos que fallecen",
+                "right": "Mortalidad"
+              },
+              {
+                "left": "Fans de otro club que llegan",
+                "right": "Inmigración"
+              },
+              {
+                "left": "Fans que se van a otro club",
+                "right": "Emigración"
+              }
+            ],
+            "completion_feedback": "Una **población** es una sola especie en un lugar; varias forman una **comunidad**. Cambia por **natalidad, mortalidad, inmigración y emigración**, y no puede rebasar su **capacidad de carga (K)**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el KCON",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "Un solo STAY",
+                "right": "Individuo"
+              },
+              {
+                "left": "Todos los ENGENEs en su sección",
+                "right": "Población"
+              },
+              {
+                "left": "ENGENEs, MOAs y STAYs juntos",
+                "right": "Comunidad"
+              },
+              {
+                "left": "Fandoms + escenario, luces y sonido",
+                "right": "Ecosistema"
+              }
+            ],
+            "completion_feedback": "Una **población** es una sola especie en un lugar; varias forman una **comunidad**. Cambia por **natalidad, mortalidad, inmigración y emigración**, y no puede rebasar su **capacidad de carga (K)**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Valorant",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Máximo de 10 jugadores por partida",
+                "right": "Capacidad de carga (K)"
+              },
+              {
+                "left": "600 jugadores ÷ 30 servidores",
+                "right": "Densidad: 20 por servidor"
+              },
+              {
+                "left": "Más jugadores que lugares",
+                "right": "Cola y lag (competencia)"
+              },
+              {
+                "left": "Jugadores que se salen de la cola",
+                "right": "Emigración"
+              }
+            ],
+            "completion_feedback": "Una **población** es una sola especie en un lugar; varias forman una **comunidad**. Cambia por **natalidad, mortalidad, inmigración y emigración**, y no puede rebasar su **capacidad de carga (K)**."
+          }
+        }
+      }
+    },
+    "impacto-ambiental-y-contaminacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo se concentra el mercurio en una cadena marina",
+        "steps": [
+          "Una fábrica vierte mercurio al mar",
+          "El fitoplancton lo absorbe en poca cantidad",
+          "Los peces pequeños comen mucho fitoplancton y lo acumulan",
+          "El atún come muchos peces pequeños y lo concentra más",
+          "El tiburón alcanza la concentración más alta"
+        ],
+        "completion_feedback": "La **bioacumulación** ocurre dentro de un organismo y la **biomagnificación** multiplica la concentración en cada nivel trófico: el de más arriba recibe la dosis más alta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tóxico en el mar",
+            "right_label": "Qué pasa",
+            "pairs": [
+              {
+                "left": "Se acumula dentro de un pez",
+                "right": "Bioacumulación"
+              },
+              {
+                "left": "Se concentra más en cada nivel",
+                "right": "Biomagnificación"
+              },
+              {
+                "left": "El tiburón, depredador tope",
+                "right": "Recibe la dosis más alta"
+              },
+              {
+                "left": "El fitoplancton, en la base",
+                "right": "Recibe la dosis más baja"
+              }
+            ],
+            "completion_feedback": "El **impacto ambiental** incluye deforestación, contaminación, residuos y pérdida de biodiversidad. La **huella de carbono** mide los gases que emite una actividad, y las **3R** empiezan por **reducir**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Viaje de 1,000 km",
+            "right_label": "CO₂ por persona",
+            "pairs": [
+              {
+                "left": "En avión (0.25 kg/km)",
+                "right": "250 kg"
+              },
+              {
+                "left": "En autobús (0.03 kg/km)",
+                "right": "30 kg"
+              },
+              {
+                "left": "Avión menos autobús",
+                "right": "220 kg de diferencia"
+              },
+              {
+                "left": "Avión entre autobús",
+                "right": "Más de 8 veces"
+              }
+            ],
+            "completion_feedback": "El **impacto ambiental** incluye deforestación, contaminación, residuos y pérdida de biodiversidad. La **huella de carbono** mide los gases que emite una actividad, y las **3R** empiezan por **reducir**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Haul de 40 álbumes",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Copias que sí escucha",
+                "right": "1"
+              },
+              {
+                "left": "Copias desperdiciadas",
+                "right": "39"
+              },
+              {
+                "left": "Empaque de cada copia",
+                "right": "200 g"
+              },
+              {
+                "left": "Basura total de una fan",
+                "right": "7.8 kg"
+              }
+            ],
+            "completion_feedback": "El **impacto ambiental** incluye deforestación, contaminación, residuos y pérdida de biodiversidad. La **huella de carbono** mide los gases que emite una actividad, y las **3R** empiezan por **reducir**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tu megabase",
+            "right_label": "Impacto",
+            "pairs": [
+              {
+                "left": "Talar todo el bosque",
+                "right": "Deforestación"
+              },
+              {
+                "left": "Humo de hornos sin parar",
+                "right": "Contaminación del aire"
+              },
+              {
+                "left": "Animales que huyen o desaparecen",
+                "right": "Pérdida de biodiversidad"
+              },
+              {
+                "left": "Replantar árboles",
+                "right": "Reforestación (positivo)"
+              }
+            ],
+            "completion_feedback": "El **impacto ambiental** incluye deforestación, contaminación, residuos y pérdida de biodiversidad. La **huella de carbono** mide los gases que emite una actividad, y las **3R** empiezan por **reducir**."
+          }
+        }
+      }
+    },
+    "cambio-climatico-ecologia": {
+      "order_steps": {
+        "prompt": "Ordena cómo el efecto invernadero reforzado calienta el planeta",
+        "steps": [
+          "La radiación solar llega y calienta la superficie",
+          "La Tierra devuelve ese calor como radiación infrarroja",
+          "Los gases de efecto invernadero atrapan parte de ese calor",
+          "Quemar combustibles fósiles agrega más gases y se atrapa más calor",
+          "La temperatura media sube: calentamiento global"
+        ],
+        "completion_feedback": "El **efecto invernadero** es natural y mantiene la Tierra habitable; el problema es **reforzarlo** con el CO₂ de los combustibles fósiles, lo que causa el **cambio climático**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El tiempo contigo",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Lluvia de un solo día en Tokio",
+                "right": "Tiempo atmosférico"
+              },
+              {
+                "left": "Promedio de lluvia de 30 años",
+                "right": "Clima"
+              },
+              {
+                "left": "Ese promedio cambia por décadas",
+                "right": "Cambio climático"
+              }
+            ],
+            "completion_feedback": "**Tiempo** es un momento; **clima**, el promedio de años. El **cambio climático** altera ese promedio. La **mitigación** ataca la causa (emisiones) y la **adaptación** convive con los efectos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club sustentable",
+            "right_label": "Tipo de acción",
+            "pairs": [
+              {
+                "left": "Paneles solares en el estadio",
+                "right": "Mitigación: menos emisiones"
+              },
+              {
+                "left": "Reforestar para capturar CO₂",
+                "right": "Mitigación: captura de carbono"
+              },
+              {
+                "left": "Techos para jugar con ola de calor",
+                "right": "Adaptación al calor"
+              },
+              {
+                "left": "Barreras contra inundaciones",
+                "right": "Adaptación a inundaciones"
+              }
+            ],
+            "completion_feedback": "**Tiempo** es un momento; **clima**, el promedio de años. El **cambio climático** altera ese promedio. La **mitigación** ataca la causa (emisiones) y la **adaptación** convive con los efectos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gira de festivales",
+            "right_label": "Consecuencia",
+            "pairs": [
+              {
+                "left": "Show movido por calor récord",
+                "right": "Ola de calor"
+              },
+              {
+                "left": "Fecha en Asia cancelada por viento",
+                "right": "Tifón más intenso"
+              },
+              {
+                "left": "Sede costera inundada",
+                "right": "Aumento del nivel del mar"
+              },
+              {
+                "left": "Restricciones de agua en la ciudad",
+                "right": "Sequía prolongada"
+              }
+            ],
+            "completion_feedback": "**Tiempo** es un momento; **clima**, el promedio de años. El **cambio climático** altera ese promedio. La **mitigación** ataca la causa (emisiones) y la **adaptación** convive con los efectos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Teyvat",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Hoy llueve en Liyue",
+                "right": "Tiempo atmosférico"
+              },
+              {
+                "left": "Mondstadt es templado año tras año",
+                "right": "Clima"
+              },
+              {
+                "left": "Mondstadt se calienta por décadas",
+                "right": "Cambio climático"
+              },
+              {
+                "left": "Las Cristalmoscas migran o desaparecen",
+                "right": "Impacto en las especies"
+              }
+            ],
+            "completion_feedback": "**Tiempo** es un momento; **clima**, el promedio de años. El **cambio climático** altera ese promedio. La **mitigación** ataca la causa (emisiones) y la **adaptación** convive con los efectos."
+          }
+        }
+      }
+    },
+    "desarrollo-sustentable": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides cuánto talar para que un bosque sea sustentable",
+        "steps": [
+          "Cuenta cuántos árboles tiene el bosque: 100",
+          "Mide cuántos crecen cada año: 20",
+          "Fija tu tala máxima igual a lo que crece: 20",
+          "Revisa al año siguiente que el bosque siga en 100"
+        ],
+        "completion_feedback": "La regla de oro: **no extraer más de lo que el recurso regenera**. Así cubres el presente sin quitarle recursos al futuro. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Recurso de Konoha",
+            "right_label": "Cómo es",
+            "pairs": [
+              {
+                "left": "Bosque que rodea la aldea",
+                "right": "Renovable si se replanta"
+              },
+              {
+                "left": "Minerales de las minas",
+                "right": "No renovable"
+              },
+              {
+                "left": "Talar solo lo que vuelve a crecer",
+                "right": "Uso sustentable"
+              },
+              {
+                "left": "Talar todo para la guerra",
+                "right": "Uso insostenible"
+              }
+            ],
+            "completion_feedback": "El **desarrollo sustentable** cubre el presente sin quitarle al futuro. Tiene tres pilares: **ambiental, económico y social**. Lo **renovable** se usa al ritmo en que se regenera; lo **no renovable**, con moderación."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estadio solar",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Consumo de una jornada",
+                "right": "5,000 unidades"
+              },
+              {
+                "left": "Emisión por unidad fósil",
+                "right": "0.4 kg de CO₂"
+              },
+              {
+                "left": "CO₂ total con energía fósil",
+                "right": "2,000 kg"
+              },
+              {
+                "left": "CO₂ con energía solar",
+                "right": "Casi 0 kg"
+              }
+            ],
+            "completion_feedback": "El **desarrollo sustentable** cubre el presente sin quitarle al futuro. Tiene tres pilares: **ambiental, económico y social**. Lo **renovable** se usa al ritmo en que se regenera; lo **no renovable**, con moderación."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback de IVE",
+            "right_label": "Pilar",
+            "pairs": [
+              {
+                "left": "Empaque de papel reciclado",
+                "right": "Ambiental"
+              },
+              {
+                "left": "Ventas y streaming con ganancias",
+                "right": "Económico"
+              },
+              {
+                "left": "Versiones accesibles para las fans",
+                "right": "Social"
+              }
+            ],
+            "completion_feedback": "El **desarrollo sustentable** cubre el presente sin quitarle al futuro. Tiene tres pilares: **ambiental, económico y social**. Lo **renovable** se usa al ritmo en que se regenera; lo **no renovable**, con moderación."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bosque en Stardew",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Talas 20 y crecen 20 al año",
+                "right": "Sigue en 100: sustentable"
+              },
+              {
+                "left": "Talas 50 y crecen 20 al año",
+                "right": "Pierde 30 al año"
+              },
+              {
+                "left": "Tres años talando 50",
+                "right": "Quedan 10 árboles"
+              },
+              {
+                "left": "No extraer más de lo que se repone",
+                "right": "Regla de oro"
+              }
+            ],
+            "completion_feedback": "El **desarrollo sustentable** cubre el presente sin quitarle al futuro. Tiene tres pilares: **ambiental, económico y social**. Lo **renovable** se usa al ritmo en que se regenera; lo **no renovable**, con moderación."
+          }
+        }
+      }
+    }
+  }
+}
