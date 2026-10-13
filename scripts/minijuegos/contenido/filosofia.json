@@ -1,0 +1,887 @@
+{
+  "subject": "filosofia",
+  "topics": {
+    "origen-y-disciplinas-de-la-filosofia": {
+      "order_steps": {
+        "prompt": "Ordena el paso del mito al logos",
+        "steps": [
+          "La gente explica el mundo con mitos y dioses",
+          "Alguien se asombra ante lo que ve",
+          "Se pregunta si hay otra explicación",
+          "Busca razones que se puedan argumentar",
+          "Nace una explicación racional: el logos"
+        ],
+        "completion_feedback": "La filosofía nació en Grecia hacia el **siglo VI a.C.**, cuando el **asombro** llevó a cambiar el **mito** por el **logos**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pregunta",
+            "right_label": "Disciplina",
+            "pairs": [
+              {
+                "left": "¿El One Piece existe de verdad?",
+                "right": "Metafísica"
+              },
+              {
+                "left": "¿Cómo sé que los poneglyphs no mienten?",
+                "right": "Gnoseología"
+              },
+              {
+                "left": "¿Está bien borrar el Siglo Vacío?",
+                "right": "Ética"
+              },
+              {
+                "left": "¿Por qué el Sunny se ve tan hermoso?",
+                "right": "Estética"
+              }
+            ],
+            "completion_feedback": "Cada pregunta abre una disciplina: **metafísica** (qué es real), **gnoseología** (cómo conocemos), **lógica** (razonar bien), **ética** (qué debo hacer), **estética** (lo bello) y **axiología** (los valores)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tras el gol",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "'Fue destino, así lo quiso el cielo'",
+                "right": "Mito"
+              },
+              {
+                "left": "¿Qué hace bello un gol agónico?",
+                "right": "Estética"
+              },
+              {
+                "left": "¿Es justo cargarle todo a un jugador?",
+                "right": "Ética"
+              },
+              {
+                "left": "¿Cómo sabemos que fue el mejor?",
+                "right": "Gnoseología"
+              }
+            ],
+            "completion_feedback": "Cada pregunta abre una disciplina: **metafísica** (qué es real), **gnoseología** (cómo conocemos), **lógica** (razonar bien), **ética** (qué debo hacer), **estética** (lo bello) y **axiología** (los valores)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el concierto",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Sentir algo que no sabes nombrar",
+                "right": "Asombro (thaumazein)"
+              },
+              {
+                "left": "¿Qué hace arte a una coreografía?",
+                "right": "Estética"
+              },
+              {
+                "left": "¿Lo que siento es real o es la multitud?",
+                "right": "Gnoseología"
+              },
+              {
+                "left": "¿Está bien gastar un mes de sueldo?",
+                "right": "Ética"
+              }
+            ],
+            "completion_feedback": "Cada pregunta abre una disciplina: **metafísica** (qué es real), **gnoseología** (cómo conocemos), **lógica** (razonar bien), **ética** (qué debo hacer), **estética** (lo bello) y **axiología** (los valores)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Teyvat",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "'Los Arcontes deciden quién tiene Visión'",
+                "right": "Mito"
+              },
+              {
+                "left": "¿Qué es en el fondo un Arconte?",
+                "right": "Metafísica"
+              },
+              {
+                "left": "Si todo Arconte tiene Gnosis…",
+                "right": "Lógica"
+              },
+              {
+                "left": "Buscar razones que puedas comprobar",
+                "right": "Logos"
+              }
+            ],
+            "completion_feedback": "Cada pregunta abre una disciplina: **metafísica** (qué es real), **gnoseología** (cómo conocemos), **lógica** (razonar bien), **ética** (qué debo hacer), **estética** (lo bello) y **axiología** (los valores)."
+          }
+        }
+      }
+    },
+    "filosofia-presocratica": {
+      "order_steps": {
+        "prompt": "Ordena cómo Demócrito llegó a la idea de átomo",
+        "steps": [
+          "Tomas un trozo de materia",
+          "Lo partes en pedazos más pequeños",
+          "Sigues partiendo una y otra vez",
+          "Llegas a una partícula que ya no se puede partir",
+          "Demócrito la llama átomo: lo indivisible"
+        ],
+        "completion_feedback": "Para **Demócrito**, la realidad está hecha de **átomos** indivisibles y vacío: otra respuesta a la pregunta por el **arché**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Naturaleza",
+            "right_label": "Presocrático",
+            "pairs": [
+              {
+                "left": "Suiton: agua",
+                "right": "Tales"
+              },
+              {
+                "left": "Fūton: viento",
+                "right": "Anaxímenes"
+              },
+              {
+                "left": "Katon: fuego que todo lo cambia",
+                "right": "Heráclito"
+              },
+              {
+                "left": "Varios elementos combinados",
+                "right": "Empédocles"
+              }
+            ],
+            "completion_feedback": "Los **presocráticos** buscaron el **arché**: agua (**Tales**), ápeiron (**Anaximandro**), aire (**Anaxímenes**), número (**Pitágoras**). Y debatieron si todo cambia (**Heráclito**) o nada cambia (**Parménides**)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Aficionado",
+            "right_label": "Presocrático",
+            "pairs": [
+              {
+                "left": "Ningún partido se repite igual",
+                "right": "Heráclito"
+              },
+              {
+                "left": "Todo es posesión, xG y porcentajes",
+                "right": "Pitágoras"
+              },
+              {
+                "left": "El principio del juego es indefinible",
+                "right": "Anaximandro"
+              },
+              {
+                "left": "La esencia del gol nunca cambia",
+                "right": "Parménides"
+              }
+            ],
+            "completion_feedback": "Los **presocráticos** buscaron el **arché**: agua (**Tales**), ápeiron (**Anaximandro**), aire (**Anaxímenes**), número (**Pitágoras**). Y debatieron si todo cambia (**Heráclito**) o nada cambia (**Parménides**)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "DIVE dice…",
+            "right_label": "Piensa como…",
+            "pairs": [
+              {
+                "left": "Cada comeback IVE es otro grupo",
+                "right": "Heráclito"
+              },
+              {
+                "left": "Cambie lo que cambie, IVE es IVE",
+                "right": "Parménides"
+              },
+              {
+                "left": "Confío en lo que veo cambiar",
+                "right": "Los sentidos"
+              },
+              {
+                "left": "Confío en lo estable tras la apariencia",
+                "right": "La razón"
+              }
+            ],
+            "completion_feedback": "Los **presocráticos** buscaron el **arché**: agua (**Tales**), ápeiron (**Anaximandro**), aire (**Anaxímenes**), número (**Pitágoras**). Y debatieron si todo cambia (**Heráclito**) o nada cambia (**Parménides**)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "Presocrático",
+            "pairs": [
+              {
+                "left": "Todo nace del agua del mapa",
+                "right": "Tales"
+              },
+              {
+                "left": "El aire comprimido forma todo",
+                "right": "Anaxímenes"
+              },
+              {
+                "left": "Stacks de 64 y coordenadas",
+                "right": "Pitágoras"
+              },
+              {
+                "left": "El bloque mínimo que ya no se parte",
+                "right": "Demócrito"
+              }
+            ],
+            "completion_feedback": "Los **presocráticos** buscaron el **arché**: agua (**Tales**), ápeiron (**Anaximandro**), aire (**Anaxímenes**), número (**Pitágoras**). Y debatieron si todo cambia (**Heráclito**) o nada cambia (**Parménides**)."
+          }
+        }
+      }
+    },
+    "socrates-platon-y-aristoteles": {
+      "order_steps": {
+        "prompt": "Ordena cómo funciona la mayéutica de Sócrates",
+        "steps": [
+          "Alguien da una definición apresurada",
+          "Sócrates hace una pregunta que la pone a prueba",
+          "La persona descubre que su definición falla",
+          "Reconoce que no sabía tanto como creía",
+          "Juntos llegan a una definición mejor"
+        ],
+        "completion_feedback": "La **mayéutica** no da respuestas: con preguntas ayuda al otro a 'dar a luz' la verdad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Forger",
+            "right_label": "Filósofo",
+            "pairs": [
+              {
+                "left": "Loid saca la verdad con preguntas",
+                "right": "Sócrates"
+              },
+              {
+                "left": "Yor sigue el modelo de 'asesina perfecta'",
+                "right": "Platón"
+              },
+              {
+                "left": "Anya mejora formando el hábito",
+                "right": "Aristóteles"
+              }
+            ],
+            "completion_feedback": "**Sócrates** enseñaba preguntando (**mayéutica**); **Platón** puso lo real en el **mundo de las Ideas**; **Aristóteles** lo buscó en las cosas concretas y definió la virtud como **término medio**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Delantero",
+            "right_label": "Para Aristóteles",
+            "pairs": [
+              {
+                "left": "Nunca tira, siempre la pasa",
+                "right": "Vicio por defecto"
+              },
+              {
+                "left": "Tira aunque esté rodeado",
+                "right": "Vicio por exceso"
+              },
+              {
+                "left": "Tira o pasa según convenga",
+                "right": "Término medio: virtud"
+              },
+              {
+                "left": "Lamine se formó repitiendo en La Masia",
+                "right": "Virtud por hábito"
+              }
+            ],
+            "completion_feedback": "**Sócrates** enseñaba preguntando (**mayéutica**); **Platón** puso lo real en el **mundo de las Ideas**; **Aristóteles** lo buscó en las cosas concretas y definió la virtud como **término medio**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Productor dice…",
+            "right_label": "Filósofo",
+            "pairs": [
+              {
+                "left": "El grupo perfecto existe como Idea",
+                "right": "Platón"
+              },
+              {
+                "left": "La esencia está en los miembros reales",
+                "right": "Aristóteles"
+              },
+              {
+                "left": "¿Qué es un buen grupo? Te pregunto…",
+                "right": "Sócrates"
+              }
+            ],
+            "completion_feedback": "**Sócrates** enseñaba preguntando (**mayéutica**); **Platón** puso lo real en el **mundo de las Ideas**; **Aristóteles** lo buscó en las cosas concretas y definió la virtud como **término medio**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la partida",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El IGL pregunta hasta que ves tu error",
+                "right": "Mayéutica"
+              },
+              {
+                "left": "'Solo sé que no sé nada'",
+                "right": "Ironía socrática"
+              },
+              {
+                "left": "El rango ideal del que tu elo es copia",
+                "right": "Mundo de las Ideas"
+              },
+              {
+                "left": "Mejorar viendo partidas reales",
+                "right": "Experiencia (Aristóteles)"
+              }
+            ],
+            "completion_feedback": "**Sócrates** enseñaba preguntando (**mayéutica**); **Platón** puso lo real en el **mundo de las Ideas**; **Aristóteles** lo buscó en las cosas concretas y definió la virtud como **término medio**."
+          }
+        }
+      }
+    },
+    "filosofia-medieval": {
+      "order_steps": {
+        "prompt": "Ordena la vía de la causa primera de Santo Tomás",
+        "steps": [
+          "Observas que todo efecto tiene una causa",
+          "Esa causa, a su vez, fue causada por otra",
+          "No puede haber una cadena infinita de causas",
+          "Debe existir una causa primera no causada",
+          "Tomás la identifica con Dios"
+        ],
+        "completion_feedback": "Es una de las **cinco vías** de **Santo Tomás**: usar la **razón** para llegar a Dios, porque para él **fe y razón** no se contradicen. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ante las murallas",
+            "right_label": "Postura",
+            "pairs": [
+              {
+                "left": "Cree primero y luego comprenderás",
+                "right": "San Agustín"
+              },
+              {
+                "left": "Investiguemos: la razón aclara la fe",
+                "right": "Santo Tomás"
+              },
+              {
+                "left": "Discutir el texto con lógica rigurosa",
+                "right": "Escolástica"
+              }
+            ],
+            "completion_feedback": "La filosofía medieval buscó unir **fe y razón**: **San Agustín** dijo 'cree para comprender'; **Santo Tomás**, que la razón también llega a Dios. **Ockham** defendió el **nominalismo** y su **navaja**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate de barra",
+            "right_label": "Postura",
+            "pairs": [
+              {
+                "left": "'El mejor' existe como realidad",
+                "right": "Realismo"
+              },
+              {
+                "left": "'El mejor' es solo una palabra",
+                "right": "Nominalismo"
+              },
+              {
+                "left": "Elige la explicación más simple",
+                "right": "Navaja de Ockham"
+              }
+            ],
+            "completion_feedback": "La filosofía medieval buscó unir **fe y razón**: **San Agustín** dijo 'cree para comprender'; **Santo Tomás**, que la razón también llega a Dios. **Ockham** defendió el **nominalismo** y su **navaja**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dolor de Kim Shin",
+            "right_label": "Idea medieval",
+            "pairs": [
+              {
+                "left": "El mal es falta de bien",
+                "right": "Mal como privación"
+              },
+              {
+                "left": "Sufre por decisiones libres",
+                "right": "Libre albedrío"
+              },
+              {
+                "left": "Primero creer, luego entender",
+                "right": "Cree para comprender"
+              }
+            ],
+            "completion_feedback": "La filosofía medieval buscó unir **fe y razón**: **San Agustín** dijo 'cree para comprender'; **Santo Tomás**, que la razón también llega a Dios. **Ockham** defendió el **nominalismo** y su **navaja**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Código del juego",
+            "right_label": "Filósofo",
+            "pairs": [
+              {
+                "left": "Crees en el creador y entiendes el juego",
+                "right": "San Agustín"
+              },
+              {
+                "left": "Deduces al programador observando",
+                "right": "Santo Tomás"
+              },
+              {
+                "left": "No multipliques causas sin necesidad",
+                "right": "Ockham"
+              }
+            ],
+            "completion_feedback": "La filosofía medieval buscó unir **fe y razón**: **San Agustín** dijo 'cree para comprender'; **Santo Tomás**, que la razón también llega a Dios. **Ockham** defendió el **nominalismo** y su **navaja**."
+          }
+        }
+      }
+    },
+    "racionalismo-y-empirismo": {
+      "order_steps": {
+        "prompt": "Ordena la duda metódica de Descartes",
+        "steps": [
+          "Duda de todo lo que te enseñaron",
+          "Duda incluso de tus sentidos: a veces engañan",
+          "Descubre algo que no puede dudar: que está dudando",
+          "Si duda, entonces piensa",
+          "Concluye: 'pienso, luego existo'"
+        ],
+        "completion_feedback": "La **duda metódica** de **Descartes** busca una verdad indudable usando solo la **razón**: el **cogito** es su primera certeza. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Caso Kira",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Light deduce todo desde su cuarto",
+                "right": "Razón pura"
+              },
+              {
+                "left": "L reta a Kira con un falso L en TV",
+                "right": "Experimento"
+              },
+              {
+                "left": "Sin pruebas observadas no afirmo nada",
+                "right": "Empirismo"
+              },
+              {
+                "left": "Los sentidos engañan",
+                "right": "Duda racionalista"
+              }
+            ],
+            "completion_feedback": "El **racionalismo** (**Descartes**) confía en la **razón** y en **ideas innatas**; el **empirismo** (**Locke**, **Hume**) dice que todo conocimiento viene de la **experiencia**: la mente nace como **tabula rasa**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Evaluar un fichaje",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "Analista que deduce con datos",
+                "right": "Racionalismo"
+              },
+              {
+                "left": "Ojeador que lo ve en vivo",
+                "right": "Empirismo"
+              },
+              {
+                "left": "Que anotara siempre no garantiza más",
+                "right": "Hume: la causalidad es hábito"
+              }
+            ],
+            "completion_feedback": "El **racionalismo** (**Descartes**) confía en la **razón** y en **ideas innatas**; el **empirismo** (**Locke**, **Hume**) dice que todo conocimiento viene de la **experiencia**: la mente nace como **tabula rasa**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "MOA",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Deduce el éxito sin escuchar",
+                "right": "Racionalismo"
+              },
+              {
+                "left": "Opina tras escuchar el álbum",
+                "right": "Empirismo"
+              },
+              {
+                "left": "Verdades musicales que ya traes",
+                "right": "Ideas innatas"
+              },
+              {
+                "left": "Mente en blanco que llena cada canción",
+                "right": "Tabula rasa"
+              }
+            ],
+            "completion_feedback": "El **racionalismo** (**Descartes**) confía en la **razón** y en **ideas innatas**; el **empirismo** (**Locke**, **Hume**) dice que todo conocimiento viene de la **experiencia**: la mente nace como **tabula rasa**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Aprender a Spike",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Calcula la build sin jugar",
+                "right": "Razón"
+              },
+              {
+                "left": "Juega cientos de partidas",
+                "right": "Experiencia"
+              },
+              {
+                "left": "Dudo de lo que veo: ¿y si es lag?",
+                "right": "Duda metódica"
+              },
+              {
+                "left": "Si dudo, estoy pensando",
+                "right": "Cogito"
+              }
+            ],
+            "completion_feedback": "El **racionalismo** (**Descartes**) confía en la **razón** y en **ideas innatas**; el **empirismo** (**Locke**, **Hume**) dice que todo conocimiento viene de la **experiencia**: la mente nace como **tabula rasa**."
+          }
+        }
+      }
+    },
+    "kant-y-el-idealismo-aleman": {
+      "order_steps": {
+        "prompt": "Ordena cómo aplicas el imperativo categórico",
+        "steps": [
+          "Formula la regla de tu acción (máxima)",
+          "Imagina que todos la siguieran siempre",
+          "Revisa si esa ley universal se destruiría a sí misma",
+          "Si se contradice, la acción es inmoral"
+        ],
+        "completion_feedback": "El **imperativo categórico** pide actuar solo según reglas que podrías querer como **ley universal**, por **deber** y no por conveniencia. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Denji y Makima",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La Makima que Denji ve",
+                "right": "Fenómeno"
+              },
+              {
+                "left": "La Makima tal como es en sí",
+                "right": "Noúmeno"
+              },
+              {
+                "left": "Espacio y tiempo con que la ubica",
+                "right": "Formas a priori"
+              }
+            ],
+            "completion_feedback": "Para **Kant** solo conocemos el **fenómeno** (la cosa como se nos aparece), no el **noúmeno** (la cosa en sí), y la mente aporta **espacio y tiempo**. En ética propuso el **imperativo categórico**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "No fingir penal",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "'Fingiré cuando me convenga'",
+                "right": "Máxima"
+              },
+              {
+                "left": "¿Y si todos fingieran siempre?",
+                "right": "Universalizar"
+              },
+              {
+                "left": "El fútbol dejaría de existir",
+                "right": "Se contradice"
+              },
+              {
+                "left": "No finge aunque no lo vean",
+                "right": "Actuar por deber"
+              }
+            ],
+            "completion_feedback": "Para **Kant** solo conocemos el **fenómeno** (la cosa como se nos aparece), no el **noúmeno** (la cosa en sí), y la mente aporta **espacio y tiempo**. En ética propuso el **imperativo categórico**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "ENHYPEN",
+            "right_label": "Prueba de Kant",
+            "pairs": [
+              {
+                "left": "Usar bots para inflar views",
+                "right": "No puede ser ley universal"
+              },
+              {
+                "left": "Competir con streams reales",
+                "right": "Sí puede ser ley universal"
+              },
+              {
+                "left": "Hacerlo aunque no convenga",
+                "right": "Por deber"
+              }
+            ],
+            "completion_feedback": "Para **Kant** solo conocemos el **fenómeno** (la cosa como se nos aparece), no el **noúmeno** (la cosa en sí), y la mente aporta **espacio y tiempo**. En ética propuso el **imperativo categórico**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Teyvat",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El dragón como sale en tu pantalla",
+                "right": "Fenómeno"
+              },
+              {
+                "left": "El dragón fuera de todo render",
+                "right": "Noúmeno"
+              },
+              {
+                "left": "Tu mente ordena lo que percibes",
+                "right": "Giro copernicano"
+              }
+            ],
+            "completion_feedback": "Para **Kant** solo conocemos el **fenómeno** (la cosa como se nos aparece), no el **noúmeno** (la cosa en sí), y la mente aporta **espacio y tiempo**. En ética propuso el **imperativo categórico**."
+          }
+        }
+      }
+    },
+    "filosofia-contemporanea-existencialismo-marxismo-etc": {
+      "order_steps": {
+        "prompt": "Ordena cómo se llega a la alienación, según Marx",
+        "steps": [
+          "El trabajador no posee los medios de producción",
+          "Vende su fuerza de trabajo por un salario",
+          "Hace una tarea repetitiva que no decide",
+          "El valor extra que produce se lo queda el dueño",
+          "Deja de reconocerse en su trabajo: alienación"
+        ],
+        "completion_feedback": "Para **Marx**, el trabajo debería realizar a la persona; cuando le resulta **ajeno y mecánico**, hay **alienación**, y el valor extra que se queda el dueño es la **plusvalía**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Eren",
+            "right_label": "Concepto (Sartre)",
+            "pairs": [
+              {
+                "left": "'El destino me obligó'",
+                "right": "Mala fe"
+              },
+              {
+                "left": "'Cada paso lo elijo yo'",
+                "right": "Libertad"
+              },
+              {
+                "left": "Carga la culpa de sus actos",
+                "right": "Responsabilidad"
+              },
+              {
+                "left": "El peso de elegir sin excusas",
+                "right": "Angustia"
+              }
+            ],
+            "completion_feedback": "Para **Sartre**, la **existencia precede a la esencia**: eres libre y responsable, y negarlo es **mala fe**. **Marx** analizó la **alienación** y la **plusvalía**; **Nietzsche** anunció la **muerte de Dios**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mediocampista",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Solo repite el pase corto",
+                "right": "Trabajo mecánico"
+              },
+              {
+                "left": "El club es dueño de todo",
+                "right": "Medios de producción"
+              },
+              {
+                "left": "Ya no se reconoce en su juego",
+                "right": "Alienación"
+              }
+            ],
+            "completion_feedback": "Para **Sartre**, la **existencia precede a la esencia**: eres libre y responsable, y negarlo es **mala fe**. **Marx** analizó la **alienación** y la **plusvalía**; **Nietzsche** anunció la **muerte de Dios**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agencia e idols",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La agencia, dueña de estudios",
+                "right": "Burguesía"
+              },
+              {
+                "left": "Idols que venden su talento",
+                "right": "Proletariado"
+              },
+              {
+                "left": "Ganancia que se queda la agencia",
+                "right": "Plusvalía"
+              }
+            ],
+            "completion_feedback": "Para **Sartre**, la **existencia precede a la esencia**: eres libre y responsable, y negarlo es **mala fe**. **Marx** analizó la **alienación** y la **plusvalía**; **Nietzsche** anunció la **muerte de Dios**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Roblox",
+            "right_label": "Idea",
+            "pairs": [
+              {
+                "left": "Entras sin rol: primero existes",
+                "right": "Existencia precede a esencia"
+              },
+              {
+                "left": "Te defines con lo que eliges",
+                "right": "Te haces a ti mismo"
+              },
+              {
+                "left": "'El juego me hizo tóxico'",
+                "right": "Mala fe"
+              }
+            ],
+            "completion_feedback": "Para **Sartre**, la **existencia precede a la esencia**: eres libre y responsable, y negarlo es **mala fe**. **Marx** analizó la **alienación** y la **plusvalía**; **Nietzsche** anunció la **muerte de Dios**."
+          }
+        }
+      }
+    },
+    "epistemologia-etica-y-estetica": {
+      "order_steps": {
+        "prompt": "Ordena cómo una creencia se vuelve conocimiento",
+        "steps": [
+          "Crees algo que leíste en redes",
+          "Buscas pruebas y fuentes confiables",
+          "Confirmas que es verdad",
+          "Tienes una creencia verdadera y justificada: conocimiento"
+        ],
+        "completion_feedback": "La **epistemología** distingue **opinión** de **conocimiento**: saber exige que la creencia sea **verdadera** y esté **justificada**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Caso Kira",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "¿Qué pruebas justifican acusar a Light?",
+                "right": "Epistemología"
+              },
+              {
+                "left": "¿Está bien hacerse juez y verdugo?",
+                "right": "Ética"
+              },
+              {
+                "left": "La estética gótica del anime",
+                "right": "Estética"
+              }
+            ],
+            "completion_feedback": "La **epistemología** pregunta cómo sabemos que algo es verdad; la **ética**, qué es correcto hacer; la **estética**, qué es bello y qué es arte. Un mismo hecho puede abrir las tres preguntas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol polémico",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "¿El VAR prueba dónde estaba el pie?",
+                "right": "Epistemología"
+              },
+              {
+                "left": "¿Es justo que cuente?",
+                "right": "Ética"
+              },
+              {
+                "left": "Qué curva tan bella del balón",
+                "right": "Estética"
+              }
+            ],
+            "completion_feedback": "La **epistemología** pregunta cómo sabemos que algo es verdad; la **ética**, qué es correcto hacer; la **estética**, qué es bello y qué es arte. Un mismo hecho puede abrir las tres preguntas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Leak del comeback",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "¿La captura es real o editada?",
+                "right": "Epistemología"
+              },
+              {
+                "left": "¿Está bien difundir el spoiler?",
+                "right": "Ética"
+              },
+              {
+                "left": "Qué hermosa paleta del teaser",
+                "right": "Estética"
+              }
+            ],
+            "completion_feedback": "La **epistemología** pregunta cómo sabemos que algo es verdad; la **ética**, qué es correcto hacer; la **estética**, qué es bello y qué es arte. Un mismo hecho puede abrir las tres preguntas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Spider-Man 2",
+            "right_label": "Rama",
+            "pairs": [
+              {
+                "left": "¿El traje me mejora o me engaña?",
+                "right": "Epistemología"
+              },
+              {
+                "left": "¿Está bien usarlo si daño a otros?",
+                "right": "Ética"
+              },
+              {
+                "left": "La belleza oscura del traje negro",
+                "right": "Estética"
+              }
+            ],
+            "completion_feedback": "La **epistemología** pregunta cómo sabemos que algo es verdad; la **ética**, qué es correcto hacer; la **estética**, qué es bello y qué es arte. Un mismo hecho puede abrir las tres preguntas."
+          }
+        }
+      }
+    }
+  }
+}
