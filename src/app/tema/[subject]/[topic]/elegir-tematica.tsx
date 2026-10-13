@@ -92,7 +92,7 @@ export default function ElegirTematica({
                 justifyContent: 'center',
                 gap: 4,
                 background: '#1a1035',
-                border: '1.5px solid rgba(124,58,237,0.45)',
+                border: '1.5px solid rgba(13,148,136,0.6)',
                 borderRadius: 16,
                 color: '#f0e6ff',
                 textDecoration: 'none',

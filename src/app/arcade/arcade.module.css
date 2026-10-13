@@ -399,3 +399,27 @@
 /* s41 · Salida para menores de 18 dentro de la oferta. */
 .ofertaMenor { border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 10px; }
 .ofertaMenor p { font-size: 14px; font-weight: 700; color: var(--dim); opacity: 1; text-align: center; }
+
+/* s45 · "¿Quieres jugar más?": un hobby = un toque al tema explicado con él. */
+.hobbies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.hobby {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 8px;
+  border-radius: var(--r-btn);
+  background: var(--acento, var(--brand));
+  color: var(--sobre-acento, #fff);
+  font-size: 16px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform 0.12s ease, filter 0.15s ease;
+}
+.hobby span { font-size: 22px; }
+.hobby:hover { filter: brightness(1.08); }
+.hobby:active { transform: scale(0.98); }
+.hobbyNota { font-size: 13px; font-weight: 700; color: var(--dim); text-align: center; }
+.bridgeInner h3 { margin: 0; font-size: 22px; line-height: 1.2; }
+.bridgeInner p { margin: 0; }

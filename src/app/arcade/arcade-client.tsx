@@ -25,10 +25,10 @@ import {
 import { atribucionJuegos, type Atribucion } from '@/lib/arcade/canal'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import RecordatorioForm from './recordatorio-form'
-import { configMateria, materiaDeManana, nombreParaManana } from '@/lib/arcade/materias'
+import { MATERIAS, configMateria, materiaDeManana, nombreParaManana } from '@/lib/arcade/materias'
 import { esMateriaPublica } from '@/lib/horda-publica'
 import { conPromo } from '@/lib/promos'
-import { urlTemaMuestra } from '@/lib/tema-muestra'
+import { TEMATICAS, urlTemaMuestra } from '@/lib/tema-muestra'
 import s from './arcade.module.css'
 
 /**
@@ -391,7 +391,10 @@ export default function ArcadeClient({
   // esconde en A). En 'play' se mira la versión real: en A, la ronda 1 no
   // lleva la cabecera de B.
   const varianteVisible = (f: Fase): Variante => (f === 'inicio' ? 'B' : variante)
-  const estiloMateria = { '--acento': mat.acento, '--sobre-acento': mat.sobreAcento } as React.CSSProperties
+  // s45 — Un solo acento para todas las materias: el verde azulado del reto
+  // de Biología, que se lee mejor como "toca aquí". La materia sigue en
+  // textos y emoji; mat.acento queda para lo que se comparte (imágenes).
+  const estiloMateria = { '--acento': ACENTO_ARCADE.acento, '--sobre-acento': ACENTO_ARCADE.sobreAcento } as React.CSSProperties
 
   return (
     <main className={s.root} style={estiloMateria}>
@@ -808,6 +811,9 @@ function Oferta({
   )
 }
 
+/** s45 — El acento del Arcade, igual en todas las materias (ver estiloMateria). */
+const ACENTO_ARCADE = { acento: MATERIAS.biologia.acento, sobreAcento: MATERIAS.biologia.sobreAcento }
+
 /**
  * s42 — ¿Hay sesión de PASAS en este navegador? Quien ya tiene cuenta no ve la
  * oferta de $1. Se mira la cookie de Supabase y nada más: meter el cliente de
@@ -828,61 +834,50 @@ function Puente({ reto, resultados, hayOferta = false }: { reto: RetoArcade; res
   const perfecto = !resultados.includes(false)
   const aciertos = resultados.filter(Boolean).length
   const conHorda = r.horde_ready && esMateriaPublica(r.subject_slug)
-  // s42: el siguiente paso es el TEMA exacto (explicación, minijuegos, quiz),
-  // sin cuenta. La Horda queda como opción secundaria. Con 5/5 no hay error
-  // que reforzar: manda la Horda (si la hay) para subir de nivel.
-  const urlTema = urlTemaMuestra(r.subject_slug, r.topic_slug, { perfecto })
-  const hordaPrimero = perfecto && conHorda
-  const medir = (destino: 'tema' | 'horda') => {
-    const props = {
+  /**
+   * s45 — "¿Quieres jugar más?": poco texto y un toque. Cada hobby entra
+   * DIRECTO al tema ya explicado con él (sin la pantalla de elegir temática,
+   * donde se quedaba gente). La Horda queda como liga secundaria.
+   */
+  const medir = (destino: 'tema' | 'horda', theme?: string) =>
+    track(destino === 'tema' ? 'arcade_tema_clic' : 'arcade_puente_clic', {
       reto_numero: reto.number,
       tema: r.topic,
       perfecto,
       materia: r.materia ?? undefined,
       score: aciertos,
       destino,
+      theme,
       origen: leerOrigenArcade() ?? undefined,
       canal: atribucionJuegos().canal,
-    }
-    track(destino === 'tema' ? 'arcade_tema_clic' : 'arcade_puente_clic', props)
-  }
-
-  const botonTema = (
-    <Link className={`${s.btn} ${hordaPrimero ? s.ghost : s.primary}`} href={urlTema} onClick={() => medir('tema')}>
-      {perfecto ? 'Ver el tema completo' : 'Aprender este tema →'}
-    </Link>
-  )
-  const botonHorda = conHorda && (
-    <Link className={`${s.btn} ${hordaPrimero ? s.primary : s.ghost}`} href={urlHorda(r)} onClick={() => medir('horda')}>
-      {perfecto ? `Subir de nivel: Horda de ${r.topic}` : 'Practicar en Horda'}
-    </Link>
-  )
+    })
 
   return (
     <div className={s.bridge}>
       <div className={s.bridgeInner}>
-        <div className={s.eyebrow}>{perfecto ? 'Siguiente nivel' : 'Tu siguiente paso'}</div>
-        <h3>{perfecto ? 'Lo sacaste completo 🔥' : `Fallaste en ${r.topic}`}</h3>
+        <h3>{perfecto ? '¡5 de 5! ¿Quieres jugar más?' : '¿Quieres jugar más?'}</h3>
         <p>
-          {perfecto
-            ? `¿Quieres probar algo más difícil? ${r.topic} tiene su tema completo en PASAS${conHorda ? ' y su propio Modo Horda' : ''}.`
-            : 'Te lo explicamos y luego lo practicas: explicación con audio, minijuegos y quiz.'}
+          {perfecto ? 'Aprende' : 'Fallaste en'} <b>{r.topic}</b>
+          {perfecto ? ' con lo que te gusta:' : '. Apréndelo con lo que te gusta:'}
         </p>
-        <div className={s.hordeStats}>
-          <span>Gratis</span>
-          <span>Sin registrarte</span>
-          <span>Con anime, videojuegos, K-pop o fútbol</span>
+        <div className={s.hobbies}>
+          {TEMATICAS.map((t) => (
+            <Link
+              key={t.clave}
+              className={s.hobby}
+              href={urlTemaMuestra(r.subject_slug, r.topic_slug, { tematica: t.clave, perfecto })}
+              onClick={() => medir('tema', t.clave)}
+            >
+              <span aria-hidden="true">{t.emoji}</span>
+              {t.corto}
+            </Link>
+          ))}
         </div>
-        {hordaPrimero ? (
-          <>
-            {botonHorda}
-            {botonTema}
-          </>
-        ) : (
-          <>
-            {botonTema}
-            {botonHorda}
-          </>
+        <div className={s.hobbyNota}>Gratis · sin registrarte · con audio, minijuegos y quiz</div>
+        {conHorda && (
+          <Link className={s.link} href={urlHorda(r)} onClick={() => medir('horda')}>
+            {perfecto ? `O sube de nivel en la Horda de ${r.topic}` : 'O practica en la Horda'}
+          </Link>
         )}
         {!hayOferta && (
           <Link className={s.link} href="/">
