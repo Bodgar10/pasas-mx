@@ -1,0 +1,1070 @@
+{
+  "subject": "biologia-1",
+  "topics": {
+    "caracteristicas-de-los-seres-vivos": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides si un cristal de sal que 'crece' está vivo",
+        "steps": [
+          "Anota lo que parece vida: el cristal crece",
+          "Repasa la lista: células, nutrición, respuesta, reproducción",
+          "Encuentra lo que falta: no tiene células ni se nutre",
+          "Concluye: crecer solo no basta, no está vivo"
+        ],
+        "completion_feedback": "Un rasgo suelto engaña: un ser vivo cumple **todas** las características a la vez. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué característica o conclusión corresponde?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Un titán persigue a los humanos",
+                "right": "Irritabilidad"
+              },
+              {
+                "left": "Sus tejidos se ven al microscopio",
+                "right": "Está hecho de células"
+              },
+              {
+                "left": "Virus: sin células ni metabolismo",
+                "right": "No es un ser vivo pleno"
+              },
+              {
+                "left": "Revisar toda la lista",
+                "right": "Así se decide"
+              }
+            ],
+            "completion_feedback": "Un ser vivo cumple **el conjunto** de características: células, nutrición, respuesta a estímulos, crecimiento, reproducción y homeostasis."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué función vital muestra cada cosa?",
+            "left_label": "Cuerpo de Mbappé",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Come pasta antes del partido",
+                "right": "Nutrición"
+              },
+              {
+                "left": "Esquiva a un rival en décimas",
+                "right": "Relación"
+              },
+              {
+                "left": "Suda para no sobrecalentarse",
+                "right": "Homeostasis"
+              },
+              {
+                "left": "Creció desde niño hasta adulto",
+                "right": "Crecimiento"
+              }
+            ],
+            "completion_feedback": "Un ser vivo cumple **el conjunto** de características: células, nutrición, respuesta a estímulos, crecimiento, reproducción y homeostasis."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué característica muestra cada cosa?",
+            "left_label": "NewJeans",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Suda bajo los focos calientes",
+                "right": "Homeostasis"
+              },
+              {
+                "left": "Come antes del ensayo",
+                "right": "Nutrición"
+              },
+              {
+                "left": "Responde a la música y al público",
+                "right": "Irritabilidad"
+              },
+              {
+                "left": "El grupo 'nació' al debutar",
+                "right": "Solo es una metáfora"
+              }
+            ],
+            "completion_feedback": "Un ser vivo cumple **el conjunto** de características: células, nutrición, respuesta a estímulos, crecimiento, reproducción y homeostasis."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué característica muestra cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Dos vacas con trigo tienen un becerro",
+                "right": "Reproducción"
+              },
+              {
+                "left": "El becerro se vuelve vaca adulta",
+                "right": "Crecimiento"
+              },
+              {
+                "left": "La vaca huye si la golpeas",
+                "right": "Irritabilidad"
+              },
+              {
+                "left": "Un bloque de piedra",
+                "right": "No es un ser vivo"
+              }
+            ],
+            "completion_feedback": "Un ser vivo cumple **el conjunto** de características: células, nutrición, respuesta a estímulos, crecimiento, reproducción y homeostasis."
+          }
+        }
+      }
+    },
+    "la-celula-teoria-celular": {
+      "order_steps": {
+        "prompt": "Ordena cómo se construyó la teoría celular",
+        "steps": [
+          "Hooke nombra 'células' al ver corcho (1665)",
+          "Leeuwenhoek observa microorganismos vivos",
+          "Schleiden y Schwann: todo ser vivo está hecho de células",
+          "Virchow: toda célula viene de otra célula (1855)"
+        ],
+        "completion_feedback": "La teoría se armó **por partes**: primero se vio la célula, luego se generalizó y al final se explicó su origen. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la teoría celular muestra?",
+            "left_label": "Cells at Work",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El glóbulo blanco forma parte del cuerpo",
+                "right": "Unidad estructural"
+              },
+              {
+                "left": "El glóbulo blanco combate bacterias",
+                "right": "Unidad funcional"
+              },
+              {
+                "left": "Una célula nueva nace de otra",
+                "right": "Toda célula viene de otra"
+              },
+              {
+                "left": "Al dividirse, copia su ADN",
+                "right": "Herencia a las hijas"
+              }
+            ],
+            "completion_feedback": "La **teoría celular**: todo ser vivo está hecho de células, la célula es su unidad de estructura y función, y toda célula viene de otra."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Real Madrid",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cada jugador del equipo",
+                "right": "La célula"
+              },
+              {
+                "left": "Una bacteria del pasto",
+                "right": "Unicelular"
+              },
+              {
+                "left": "Mbappé, con billones de células",
+                "right": "Pluricelular"
+              },
+              {
+                "left": "Ningún jugador sale de la nada",
+                "right": "Toda célula viene de otra"
+              }
+            ],
+            "completion_feedback": "La **teoría celular**: todo ser vivo está hecho de células, la célula es su unidad de estructura y función, y toda célula viene de otra."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué aportó cada científico?",
+            "left_label": "Formación",
+            "right_label": "Su aporte",
+            "pairs": [
+              {
+                "left": "Robert Hooke",
+                "right": "Nombró la célula en el corcho"
+              },
+              {
+                "left": "Anton van Leeuwenhoek",
+                "right": "Vio microorganismos vivos"
+              },
+              {
+                "left": "Schleiden y Schwann",
+                "right": "Todo ser vivo tiene células"
+              },
+              {
+                "left": "Rudolf Virchow",
+                "right": "Toda célula viene de otra"
+              }
+            ],
+            "completion_feedback": "La **teoría celular**: todo ser vivo está hecho de células, la célula es su unidad de estructura y función, y toda célula viene de otra."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué postulado corresponde?",
+            "left_label": "Minecraft",
+            "right_label": "Postulado",
+            "pairs": [
+              {
+                "left": "Todo el mundo está hecho de bloques",
+                "right": "Todo ser vivo tiene células"
+              },
+              {
+                "left": "El bloque, la pieza más pequeña",
+                "right": "Unidad de estructura y función"
+              },
+              {
+                "left": "Ningún bloque aparece de la nada",
+                "right": "Toda célula viene de otra"
+              },
+              {
+                "left": "El truco para recordarlos",
+                "right": "Todos, unidad, provienen"
+              }
+            ],
+            "completion_feedback": "La **teoría celular**: todo ser vivo está hecho de células, la célula es su unidad de estructura y función, y toda célula viene de otra."
+          }
+        }
+      }
+    },
+    "bioelementos-y-biomoleculas": {
+      "order_steps": {
+        "prompt": "Ordena de lo más simple a lo más complejo",
+        "steps": [
+          "Átomos sueltos: C, H, O y N",
+          "Monómeros: aminoácidos",
+          "Polímero: una proteína",
+          "Célula: muchas biomoléculas trabajando juntas"
+        ],
+        "completion_feedback": "Pocos **bioelementos** forman monómeros, y muchos monómeros unidos forman las **biomoléculas** grandes. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Aminoácidos",
+                "right": "Monómeros"
+              },
+              {
+                "left": "Proteína",
+                "right": "Polímero"
+              },
+              {
+                "left": "Carbono",
+                "right": "Forma 4 enlaces"
+              },
+              {
+                "left": "Pocos componentes, muchas técnicas",
+                "right": "Pocos bioelementos, muchas moléculas"
+              }
+            ],
+            "completion_feedback": "Los **bioelementos** (sobre todo C, H, O, N) se combinan en **biomoléculas**: carbohidratos, lípidos, proteínas, ácidos nucleicos, agua y sales."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué biomolécula aporta cada alimento?",
+            "left_label": "Dieta de Mbappé",
+            "right_label": "Biomolécula",
+            "pairs": [
+              {
+                "left": "Pasta y arroz",
+                "right": "Carbohidratos"
+              },
+              {
+                "left": "Pollo y pescado",
+                "right": "Proteínas"
+              },
+              {
+                "left": "Aguacate y aceite de oliva",
+                "right": "Lípidos"
+              },
+              {
+                "left": "Agua",
+                "right": "Biomolécula inorgánica"
+              }
+            ],
+            "completion_feedback": "Los **bioelementos** (sobre todo C, H, O, N) se combinan en **biomoléculas**: carbohidratos, lípidos, proteínas, ácidos nucleicos, agua y sales."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Canción de IVE",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "ADN y ARN",
+                "right": "Ácidos nucleicos"
+              },
+              {
+                "left": "Guardar la información genética",
+                "right": "Función del ADN"
+              },
+              {
+                "left": "Dar energía rápida",
+                "right": "Carbohidratos"
+              },
+              {
+                "left": "Construir y reparar tejidos",
+                "right": "Proteínas"
+              }
+            ],
+            "completion_feedback": "Los **bioelementos** (sobre todo C, H, O, N) se combinan en **biomoléculas**: carbohidratos, lípidos, proteínas, ácidos nucleicos, agua y sales."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Materiales",
+            "right_label": "Bioelemento",
+            "pairs": [
+              {
+                "left": "Carbono (C)",
+                "right": "Bioelemento primario"
+              },
+              {
+                "left": "Hierro (Fe)",
+                "right": "Oligoelemento"
+              },
+              {
+                "left": "Madera y piedra: las usas siempre",
+                "right": "Como C, H, O y N"
+              },
+              {
+                "left": "Redstone: poca pero esencial",
+                "right": "Como el hierro"
+              }
+            ],
+            "completion_feedback": "Los **bioelementos** (sobre todo C, H, O, N) se combinan en **biomoléculas**: carbohidratos, lípidos, proteínas, ácidos nucleicos, agua y sales."
+          }
+        }
+      }
+    },
+    "celula-procariota-y-eucariota": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas una célula al microscopio",
+        "steps": [
+          "Busca dónde está el ADN",
+          "Revisa si una membrana lo rodea",
+          "Busca organelos con membrana, como mitocondrias",
+          "Concluye: sin núcleo ni organelos, es procariota"
+        ],
+        "completion_feedback": "La pregunta clave es **si hay membrana nuclear**: sin ella el ADN queda en el nucleoide y la célula es procariota. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Konoha",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Ninja errante que hace todo solo",
+                "right": "Procariota"
+              },
+              {
+                "left": "Konoha con áreas especializadas",
+                "right": "Eucariota"
+              },
+              {
+                "left": "Oficina del Hokage con los pergaminos",
+                "right": "Núcleo"
+              },
+              {
+                "left": "ADN sin membrana alrededor",
+                "right": "Nucleoide"
+              }
+            ],
+            "completion_feedback": "La **procariota** es pequeña, sin núcleo y con el ADN en el nucleoide; la **eucariota** tiene núcleo y organelos con membrana."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dos equipos",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Equipo de barrio: todo mezclado",
+                "right": "Procariota"
+              },
+              {
+                "left": "Real Madrid: áreas separadas",
+                "right": "Eucariota"
+              },
+              {
+                "left": "Célula de 2 micras sin núcleo",
+                "right": "Bacteria"
+              },
+              {
+                "left": "Célula de 20 micras con núcleo",
+                "right": "Animal, vegetal u hongo"
+              }
+            ],
+            "completion_feedback": "La **procariota** es pequeña, sin núcleo y con el ADN en el nucleoide; la **eucariota** tiene núcleo y organelos con membrana."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué organelo es cada departamento?",
+            "left_label": "Agencia de SVT",
+            "right_label": "Organelo",
+            "pairs": [
+              {
+                "left": "Oficina que guarda los planes",
+                "right": "Núcleo"
+              },
+              {
+                "left": "Planta de energía",
+                "right": "Mitocondria"
+              },
+              {
+                "left": "Área que empaca y envía",
+                "right": "Aparato de Golgi"
+              },
+              {
+                "left": "Lo que también tiene la procariota",
+                "right": "Ribosomas"
+              }
+            ],
+            "completion_feedback": "La **procariota** es pequeña, sin núcleo y con el ADN en el nucleoide; la **eucariota** tiene núcleo y organelos con membrana."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Base Minecraft",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Primera base: todo tirado",
+                "right": "Procariota"
+              },
+              {
+                "left": "Base con cofres y salas",
+                "right": "Eucariota"
+              },
+              {
+                "left": "Cuarto cerrado de los diamantes",
+                "right": "Núcleo"
+              },
+              {
+                "left": "Salas separadas con su función",
+                "right": "Organelos con membrana"
+              }
+            ],
+            "completion_feedback": "La **procariota** es pequeña, sin núcleo y con el ADN en el nucleoide; la **eucariota** tiene núcleo y organelos con membrana."
+          }
+        }
+      }
+    },
+    "membrana-celular-y-transporte": {
+      "order_steps": {
+        "prompt": "Ordena cómo identificas el tipo de transporte",
+        "steps": [
+          "Revisa si la partícula cabe por la membrana",
+          "Si cabe, ubica de dónde a dónde se mueve",
+          "Compara con el gradiente: ¿va a favor o en contra?",
+          "Revisa si la célula gasta ATP",
+          "Concluye: en contra y con ATP es transporte activo"
+        ],
+        "completion_feedback": "Pasivo va **a favor** del gradiente y sin energía; activo va **en contra** y gasta ATP. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de transporte es cada cosa?",
+            "left_label": "Muralla de Konoha",
+            "right_label": "Transporte",
+            "pairs": [
+              {
+                "left": "Aldeanos que pasan sin trámite",
+                "right": "Difusión simple"
+              },
+              {
+                "left": "Glucosa por una proteína, sin chakra",
+                "right": "Difusión facilitada"
+              },
+              {
+                "left": "Escoltar a un prisionero",
+                "right": "Transporte activo"
+              },
+              {
+                "left": "Englobar una partícula enorme",
+                "right": "Endocitosis"
+              }
+            ],
+            "completion_feedback": "La **membrana** es una bicapa de fosfolípidos con proteínas que deja pasar sustancias de forma **selectiva**: unas solas, otras con energía."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué le pasa a la célula?",
+            "left_label": "Bebida de Mbappé",
+            "right_label": "Ósmosis",
+            "pairs": [
+              {
+                "left": "Solo agua pura en exceso",
+                "right": "Se hincha"
+              },
+              {
+                "left": "Bebida muy salada",
+                "right": "Se arruga"
+              },
+              {
+                "left": "Bebida deportiva isotónica",
+                "right": "Queda en equilibrio"
+              },
+              {
+                "left": "Hacia dónde va el agua",
+                "right": "Donde hay más solutos"
+              }
+            ],
+            "completion_feedback": "La **membrana** es una bicapa de fosfolípidos con proteínas que deja pasar sustancias de forma **selectiva**: unas solas, otras con energía."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de transporte es cada cosa?",
+            "left_label": "Concierto de aespa",
+            "right_label": "Transporte",
+            "pairs": [
+              {
+                "left": "Fans que fluyen a zonas vacías",
+                "right": "Transporte pasivo"
+              },
+              {
+                "left": "Staff que llena la zona VIP",
+                "right": "Transporte activo"
+              },
+              {
+                "left": "De menos a más concentración",
+                "right": "En contra del gradiente"
+              },
+              {
+                "left": "La energía del staff",
+                "right": "ATP"
+              }
+            ],
+            "completion_feedback": "La **membrana** es una bicapa de fosfolípidos con proteínas que deja pasar sustancias de forma **selectiva**: unas solas, otras con energía."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Muro Minecraft",
+            "right_label": "En la membrana",
+            "pairs": [
+              {
+                "left": "Doble hilera de bloques",
+                "right": "Bicapa de fosfolípidos"
+              },
+              {
+                "left": "Puertas y trampillas",
+                "right": "Proteínas de membrana"
+              },
+              {
+                "left": "Agua y luz pasan solas",
+                "right": "Transporte pasivo"
+              },
+              {
+                "left": "Activar la redstone",
+                "right": "Transporte activo con ATP"
+              }
+            ],
+            "completion_feedback": "La **membrana** es una bicapa de fosfolípidos con proteínas que deja pasar sustancias de forma **selectiva**: unas solas, otras con energía."
+          }
+        }
+      }
+    },
+    "metabolismo-anabolismo-y-catabolismo": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas un proceso del metabolismo",
+        "steps": [
+          "Observa las moléculas del inicio y del final",
+          "Decide si se construyó algo grande o se rompió",
+          "Revisa si se gastó o se liberó energía",
+          "Concluye: construir gastando ATP es anabolismo"
+        ],
+        "completion_feedback": "**Anabolismo** construye y gasta energía; **catabolismo** rompe y la libera. Uno financia al otro. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Forjar armas con materiales",
+                "right": "Anabolismo"
+              },
+              {
+                "left": "Fundir equipo para recuperar materiales",
+                "right": "Catabolismo"
+              },
+              {
+                "left": "Reptil en el frío",
+                "right": "Metabolismo lento"
+              },
+              {
+                "left": "Fiebre después de la batalla",
+                "right": "Metabolismo acelerado"
+              }
+            ],
+            "completion_feedback": "El **metabolismo** tiene dos caras acopladas: el **catabolismo** rompe moléculas y libera ATP; el **anabolismo** usa ese ATP para construir."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Temporada de Yamal",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Pretemporada: gana músculo",
+                "right": "Anabolismo"
+              },
+              {
+                "left": "Partido: quema glucógeno",
+                "right": "Catabolismo"
+              },
+              {
+                "left": "Entrenar sin comer ni descansar",
+                "right": "Pierde masa muscular"
+              },
+              {
+                "left": "Descanso y buena comida",
+                "right": "Predomina el anabolismo"
+              }
+            ],
+            "completion_feedback": "El **metabolismo** tiene dos caras acopladas: el **catabolismo** rompe moléculas y libera ATP; el **anabolismo** usa ese ATP para construir."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudio NewJeans",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Armar la canción capa por capa",
+                "right": "Anabolismo"
+              },
+              {
+                "left": "Desarmar la canción para un remix",
+                "right": "Catabolismo"
+              },
+              {
+                "left": "Romper glucosa en la respiración",
+                "right": "Libera ATP"
+              },
+              {
+                "left": "Usar ATP para hacer proteínas",
+                "right": "Consume ATP"
+              }
+            ],
+            "completion_feedback": "El **metabolismo** tiene dos caras acopladas: el **catabolismo** rompe moléculas y libera ATP; el **anabolismo** usa ese ATP para construir."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Economía Valorant",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Comprar armas y escudos",
+                "right": "Gastar para construir"
+              },
+              {
+                "left": "Unir aminoácidos en una proteína",
+                "right": "Anabolismo"
+              },
+              {
+                "left": "Romper glucosa",
+                "right": "Catabolismo"
+              },
+              {
+                "left": "ATP",
+                "right": "Moneda de energía"
+              }
+            ],
+            "completion_feedback": "El **metabolismo** tiene dos caras acopladas: el **catabolismo** rompe moléculas y libera ATP; el **anabolismo** usa ese ATP para construir."
+          }
+        }
+      }
+    },
+    "fotosintesis-biologia": {
+      "order_steps": {
+        "prompt": "Ordena la fotosíntesis paso a paso",
+        "steps": [
+          "La clorofila capta la luz del sol",
+          "La luz rompe el agua y se libera oxígeno",
+          "Se forman ATP y NADPH: termina la fase luminosa",
+          "El ciclo de Calvin fija el CO₂",
+          "Se fabrica glucosa"
+        ],
+        "completion_feedback": "Primero la **fase luminosa** capta energía; luego el **ciclo de Calvin** la usa para fabricar glucosa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Planta que fabrica su alimento",
+                "right": "Autótrofa"
+              },
+              {
+                "left": "Humano que come a otros seres",
+                "right": "Heterótrofo"
+              },
+              {
+                "left": "La luz del sol",
+                "right": "Fuente de energía"
+              },
+              {
+                "left": "Planta sin sol",
+                "right": "Se marchita"
+              }
+            ],
+            "completion_feedback": "En la **fotosíntesis**, CO₂ + agua + luz se convierten en glucosa + O₂ dentro del cloroplasto: así los autótrofos fabrican su alimento."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pasto del Bernabéu",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "El verde del pasto",
+                "right": "Clorofila"
+              },
+              {
+                "left": "Lámparas en zonas de sombra",
+                "right": "Le dan la luz que falta"
+              },
+              {
+                "left": "Fotosíntesis",
+                "right": "Guarda energía en glucosa"
+              },
+              {
+                "left": "Respiración celular",
+                "right": "Libera esa energía"
+              }
+            ],
+            "completion_feedback": "En la **fotosíntesis**, CO₂ + agua + luz se convierten en glucosa + O₂ dentro del cloroplasto: así los autótrofos fabrican su alimento."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Luces de IVE",
+            "right_label": "Fotosíntesis",
+            "pairs": [
+              {
+                "left": "Captar la luz del escenario",
+                "right": "Fase luminosa"
+              },
+              {
+                "left": "Fijar el CO₂ del aire",
+                "right": "Ciclo de Calvin"
+              },
+              {
+                "left": "Energía guardada tras la luz",
+                "right": "ATP y NADPH"
+              },
+              {
+                "left": "Producto final",
+                "right": "Glucosa"
+              }
+            ],
+            "completion_feedback": "En la **fotosíntesis**, CO₂ + agua + luz se convierten en glucosa + O₂ dentro del cloroplasto: así los autótrofos fabrican su alimento."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cultivos Minecraft",
+            "right_label": "Fotosíntesis",
+            "pairs": [
+              {
+                "left": "Lo que entra del aire",
+                "right": "CO₂"
+              },
+              {
+                "left": "Lo que hidratas",
+                "right": "Agua"
+              },
+              {
+                "left": "Lo que sale al aire",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "El alimento de la planta",
+                "right": "Glucosa"
+              }
+            ],
+            "completion_feedback": "En la **fotosíntesis**, CO₂ + agua + luz se convierten en glucosa + O₂ dentro del cloroplasto: así los autótrofos fabrican su alimento."
+          }
+        }
+      }
+    },
+    "respiracion-celular": {
+      "order_steps": {
+        "prompt": "Ordena las etapas de la respiración celular",
+        "steps": [
+          "Glucólisis: la glucosa se rompe en el citoplasma",
+          "El piruvato entra a la mitocondria",
+          "Ciclo de Krebs: salen CO₂ y portadores de electrones",
+          "Cadena de electrones: se produce casi todo el ATP"
+        ],
+        "completion_feedback": "La glucosa se rompe **por etapas**: casi toda la energía sale al final, en la cadena de transporte de electrones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cells at Work",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Centrales de energía de la célula",
+                "right": "Mitocondrias"
+              },
+              {
+                "left": "Lo que llevan los glóbulos rojos",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "El desecho que se llevan",
+                "right": "CO₂"
+              },
+              {
+                "left": "Célula del corazón",
+                "right": "Muchas mitocondrias"
+              }
+            ],
+            "completion_feedback": "En la **respiración celular**, glucosa + O₂ se convierten en CO₂ + agua + ATP, sobre todo dentro de las **mitocondrias**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sprint de Mbappé",
+            "right_label": "Respiración",
+            "pairs": [
+              {
+                "left": "Trote con oxígeno suficiente",
+                "right": "Aerobia"
+              },
+              {
+                "left": "Sprint máximo sin oxígeno",
+                "right": "Anaerobia"
+              },
+              {
+                "left": "El ardor en las piernas",
+                "right": "Ácido láctico"
+              },
+              {
+                "left": "Rendimiento de la anaerobia",
+                "right": "Poco ATP"
+              }
+            ],
+            "completion_feedback": "En la **respiración celular**, glucosa + O₂ se convierten en CO₂ + agua + ATP, sobre todo dentro de las **mitocondrias**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Show de Stray Kids",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Meter y sacar aire",
+                "right": "Respiración pulmonar"
+              },
+              {
+                "left": "Quemar glucosa en las células",
+                "right": "Respiración celular"
+              },
+              {
+                "left": "Glucólisis",
+                "right": "Ocurre en el citoplasma"
+              },
+              {
+                "left": "Cadena de electrones",
+                "right": "Unos 32 ATP"
+              }
+            ],
+            "completion_feedback": "En la **respiración celular**, glucosa + O₂ se convierten en CO₂ + agua + ATP, sobre todo dentro de las **mitocondrias**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Motor en Roblox",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Combustible",
+                "right": "Glucosa"
+              },
+              {
+                "left": "Aire del motor",
+                "right": "Oxígeno"
+              },
+              {
+                "left": "Gases de escape",
+                "right": "CO₂ y agua"
+              },
+              {
+                "left": "Energía para moverse",
+                "right": "ATP"
+              }
+            ],
+            "completion_feedback": "En la **respiración celular**, glucosa + O₂ se convierten en CO₂ + agua + ATP, sobre todo dentro de las **mitocondrias**."
+          }
+        }
+      }
+    },
+    "ciclo-celular-mitosis-y-meiosis": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo de los cromosomas en humanos",
+        "steps": [
+          "Célula del cuerpo: 46 cromosomas (2n)",
+          "Meiosis: gametos con 23 cromosomas (n)",
+          "Fecundación: se unen óvulo y espermatozoide",
+          "Cigoto: otra vez 46 cromosomas (2n)",
+          "Mitosis: el cigoto se divide y forma el cuerpo"
+        ],
+        "completion_feedback": "La **meiosis** reduce a la mitad, la **fecundación** restaura el número y la **mitosis** copia sin cambiarlo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Kage Bunshin: copias exactas",
+                "right": "Mitosis"
+              },
+              {
+                "left": "Hijo que mezcla a sus padres",
+                "right": "Meiosis y fecundación"
+              },
+              {
+                "left": "Gameto humano",
+                "right": "23 cromosomas"
+              },
+              {
+                "left": "Célula del cuerpo humano",
+                "right": "46 cromosomas"
+              }
+            ],
+            "completion_feedback": "La **mitosis** da 2 células idénticas con los mismos cromosomas; la **meiosis** da 4 gametos distintos con la mitad."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué fase de la mitosis es cada momento?",
+            "left_label": "Partido",
+            "right_label": "Fase",
+            "pairs": [
+              {
+                "left": "Se concentra en el túnel",
+                "right": "Profase"
+              },
+              {
+                "left": "Se forman al centro del campo",
+                "right": "Metafase"
+              },
+              {
+                "left": "Cada equipo a su portería",
+                "right": "Anafase"
+              },
+              {
+                "left": "Silbatazo final",
+                "right": "Telofase"
+              }
+            ],
+            "completion_feedback": "La **mitosis** da 2 células idénticas con los mismos cromosomas; la **meiosis** da 4 gametos distintos con la mitad."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Coreos de SVT",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Bailarines que copian igualito",
+                "right": "Mitosis"
+              },
+              {
+                "left": "Subgrupo que mezcla estilos",
+                "right": "Meiosis"
+              },
+              {
+                "left": "Intercambiar fragmentos de ADN",
+                "right": "Entrecruzamiento"
+              },
+              {
+                "left": "Gametos todos distintos",
+                "right": "Variabilidad genética"
+              }
+            ],
+            "completion_feedback": "La **mitosis** da 2 células idénticas con los mismos cromosomas; la **meiosis** da 4 gametos distintos con la mitad."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mascotas",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Mitosis de una célula con 8",
+                "right": "2 células con 8"
+              },
+              {
+                "left": "Meiosis de una célula con 8",
+                "right": "4 células con 4"
+              },
+              {
+                "left": "Clonar tu mascota",
+                "right": "Copia idéntica"
+              },
+              {
+                "left": "Criar dos mascotas distintas",
+                "right": "Mezcla de los padres"
+              }
+            ],
+            "completion_feedback": "La **mitosis** da 2 células idénticas con los mismos cromosomas; la **meiosis** da 4 gametos distintos con la mitad."
+          }
+        }
+      }
+    }
+  }
+}
