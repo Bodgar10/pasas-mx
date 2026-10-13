@@ -1,0 +1,949 @@
+{
+  "subject": "ingles-sec-3",
+  "topics": {
+    "present-perfect-ingles-sec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo dices «Ella ha ganado diez partidas hoy»",
+        "steps": [
+          "Ubica el sujeto: she",
+          "Elige el auxiliar que le toca: has",
+          "Pon el participio de win: won",
+          "Queda: She has won ten games today"
+        ],
+        "completion_feedback": "El **sujeto** decide entre have o has, y después va el **participio**, no el pasado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Fan de One Piece",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "I have read it for three years",
+                "right": "for + duración"
+              },
+              {
+                "left": "She has been a fan since 2020",
+                "right": "since + punto de inicio"
+              },
+              {
+                "left": "I have been an otaku",
+                "right": "been: participio de be"
+              }
+            ],
+            "completion_feedback": "**have/has + participio** une el pasado con el presente: experiencias, logros y cosas que siguen. Veamos cómo se arma."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo eliges entre for y since",
+            "steps": [
+              "Lee lo que va después: 'three years' o '2020'",
+              "Decide si es un periodo o un punto de inicio",
+              "Usa for para el periodo y since para el inicio"
+            ],
+            "completion_feedback": "**for** mide cuánto tiempo y **since** marca desde cuándo; las dos dicen que la situación **sigue hoy**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Logros de Yamal",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "He has just scored!",
+                "right": "just: acaba de"
+              },
+              {
+                "left": "He has already won three titles",
+                "right": "already: ya"
+              },
+              {
+                "left": "He hasn't lost a match yet",
+                "right": "yet: todavía, al final"
+              },
+              {
+                "left": "He scored 20 goals last season",
+                "right": "Periodo cerrado: past simple"
+              }
+            ],
+            "completion_feedback": "**have/has + participio** une el pasado con el presente: experiencias, logros y cosas que siguen. Veamos cómo se arma."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo dices «No ha perdido un partido todavía»",
+            "steps": [
+              "Sujeto: He",
+              "Auxiliar negativo: hasn't",
+              "Participio de lose: lost",
+              "Complemento: a match",
+              "Al final de todo: yet"
+            ],
+            "completion_feedback": "**just** y **already** van entre el auxiliar y el participio; **yet** se va hasta el **final**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Fan de BTS",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Have you ever met them?",
+                "right": "Pregunta: Have + sujeto"
+              },
+              {
+                "left": "Yes, I have.",
+                "right": "Respuesta corta: sí"
+              },
+              {
+                "left": "No, I haven't.",
+                "right": "Respuesta corta: no"
+              },
+              {
+                "left": "I have never been to Korea",
+                "right": "never: nunca"
+              }
+            ],
+            "completion_feedback": "**have/has + participio** une el pasado con el presente: experiencias, logros y cosas que siguen. Veamos cómo se arma."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo preguntas «¿Alguna vez has visto un concierto de K-pop?»",
+            "steps": [
+              "Empieza con el auxiliar: Have",
+              "Sigue el sujeto: you",
+              "Agrega ever",
+              "Pon el participio de see: seen",
+              "Cierra: a K-pop concert?"
+            ],
+            "completion_feedback": "En preguntas, el **auxiliar va antes del sujeto** y **ever** se mete justo antes del participio. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuál es el past participle de cada verbo?",
+            "left_label": "Logros en Roblox",
+            "right_label": "Participio",
+            "pairs": [
+              {
+                "left": "unlock",
+                "right": "unlocked"
+              },
+              {
+                "left": "win",
+                "right": "won"
+              },
+              {
+                "left": "buy",
+                "right": "bought"
+              },
+              {
+                "left": "do",
+                "right": "done"
+              }
+            ],
+            "completion_feedback": "**have/has + participio** une el pasado con el presente: experiencias, logros y cosas que siguen. Veamos cómo se arma."
+          }
+        }
+      }
+    },
+    "present-perfect-vs-past-simple-ingles-sec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides entre past simple y present perfect",
+        "steps": [
+          "Busca el marcador de tiempo de la oración",
+          "Decide si ese periodo ya terminó o sigue abierto",
+          "Elige: cerrado → past simple; abierto o sin fecha → present perfect"
+        ],
+        "completion_feedback": "El **marcador de tiempo** decide: un momento cerrado pide past simple; sin fecha o abierto, present perfect. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tiempo pide cada oración y por qué?",
+            "left_label": "Fan de Naruto",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "I saw that episode yesterday",
+                "right": "yesterday → past simple"
+              },
+              {
+                "left": "I have read manga for five years",
+                "right": "for + duración → pres. perfect"
+              },
+              {
+                "left": "I have seen every episode",
+                "right": "Sin fecha → present perfect"
+              }
+            ],
+            "completion_feedback": "Si hay un **momento cerrado** (yesterday, last season), va past simple; si **no hay fecha** o el periodo sigue abierto, present perfect."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tiempo pide cada oración y por qué?",
+            "left_label": "Carrera de Yamal",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "He scored 20 goals last season",
+                "right": "last season: periodo cerrado"
+              },
+              {
+                "left": "He has scored 15 goals this season",
+                "right": "this season: periodo abierto"
+              },
+              {
+                "left": "The team won the cup in 2024",
+                "right": "in 2024: fecha exacta"
+              },
+              {
+                "left": "He has won several trophies",
+                "right": "Sin fecha: logro vigente"
+              }
+            ],
+            "completion_feedback": "Si hay un **momento cerrado** (yesterday, last season), va past simple; si **no hay fecha** o el periodo sigue abierto, present perfect."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tiempo pide cada oración y por qué?",
+            "left_label": "STAY",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "I went to their concert last month",
+                "right": "last month → past simple"
+              },
+              {
+                "left": "I have seen them live three times",
+                "right": "Cuántas veces → pres. perfect"
+              },
+              {
+                "left": "They released an album in 2023",
+                "right": "in 2023 → past simple"
+              }
+            ],
+            "completion_feedback": "Si hay un **momento cerrado** (yesterday, last season), va past simple; si **no hay fecha** o el periodo sigue abierto, present perfect."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tiempo pide cada oración y por qué?",
+            "left_label": "Duo de Valorant",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "I got an ace yesterday",
+                "right": "yesterday: past simple"
+              },
+              {
+                "left": "We won the match last night",
+                "right": "last night: past simple"
+              },
+              {
+                "left": "We have won five matches today",
+                "right": "today sigue: present perfect"
+              },
+              {
+                "left": "I have never played Deathmatch",
+                "right": "never, sin fecha: pres. perfect"
+              }
+            ],
+            "completion_feedback": "Si hay un **momento cerrado** (yesterday, last season), va past simple; si **no hay fecha** o el periodo sigue abierto, present perfect."
+          }
+        }
+      }
+    },
+    "first-conditional-ingles-sec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo armas «Si comes carne podrida, te dará hambre»",
+        "steps": [
+          "Abre con la condición en presente: If you eat rotten flesh",
+          "Pon coma porque la condición va primero",
+          "Agrega el resultado con will: you will get hungry"
+        ],
+        "completion_feedback": "Condición en **presente**, coma, y resultado con **will + verbo base**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla del first conditional muestra cada frase?",
+            "left_label": "Solo Leveling",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "If he enters, he will level up",
+                "right": "If + presente, will + verbo"
+              },
+              {
+                "left": "If he doesn't heal…",
+                "right": "Negativa: doesn't + base"
+              },
+              {
+                "left": "He will win if he trains",
+                "right": "if al final: sin coma"
+              },
+              {
+                "left": "If he will enter… ✗",
+                "right": "Error: will tras if"
+              }
+            ],
+            "completion_feedback": "**If + presente, will + verbo base**: una condición posible y su consecuencia. Nunca va 'will' después de if. Veamos la fórmula completa."
+          },
+          "order_steps": {
+            "prompt": "Ordena «Si no usa a sus soldados, perderá la pelea»",
+            "steps": [
+              "Abre con If y el sujeto: If he",
+              "Niega con doesn't + verbo base: doesn't use his soldiers",
+              "Pon coma",
+              "Resultado con will: he will lose the fight"
+            ],
+            "completion_feedback": "La condición negativa usa **doesn't + verbo base** (sin -s), y el resultado va con **will**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla del first conditional muestra cada frase?",
+            "left_label": "Predicción Barça",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "If Yamal scores, Barça will win",
+                "right": "If + presente, will + verbo"
+              },
+              {
+                "left": "Unless they defend, they will lose",
+                "right": "unless = if not"
+              },
+              {
+                "left": "Barça will win if Yamal scores",
+                "right": "if al final: sin coma"
+              },
+              {
+                "left": "If the referee gives a penalty…",
+                "right": "-s de tercera persona"
+              }
+            ],
+            "completion_feedback": "**If + presente, will + verbo base**: una condición posible y su consecuencia. Nunca va 'will' después de if. Veamos la fórmula completa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo termina cada condición?",
+            "left_label": "Comeback",
+            "right_label": "Resultado con",
+            "pairs": [
+              {
+                "left": "If I buy the album, I will get a card",
+                "right": "will"
+              },
+              {
+                "left": "If you see them, take a photo!",
+                "right": "Imperativo"
+              },
+              {
+                "left": "If we save, we can go to the show",
+                "right": "can"
+              }
+            ],
+            "completion_feedback": "**If + presente, will + verbo base**: una condición posible y su consecuencia. Nunca va 'will' después de if. Veamos la fórmula completa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué regla del first conditional muestra cada frase?",
+            "left_label": "Minecraft",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "If you dig down, you will fall",
+                "right": "Con coma: if primero"
+              },
+              {
+                "left": "You will fall if you dig down",
+                "right": "Sin coma: if al final"
+              },
+              {
+                "left": "If you don't build a shelter…",
+                "right": "Condición negativa"
+              },
+              {
+                "left": "If you will eat… ✗",
+                "right": "Error: will tras if"
+              }
+            ],
+            "completion_feedback": "**If + presente, will + verbo base**: una condición posible y su consecuencia. Nunca va 'will' después de if. Veamos la fórmula completa."
+          }
+        }
+      }
+    },
+    "modales-de-deduccion-y-consejo": {
+      "order_steps": {
+        "prompt": "Ordena cómo eliges el modal para deducir",
+        "steps": [
+          "Mira la evidencia que tienes",
+          "Decide qué tan seguro estás: sí, no o quizá",
+          "Elige el modal: must, can't o might",
+          "Agrega el verbo base: must be"
+        ],
+        "completion_feedback": "La **evidencia** te dice qué tan seguro estás, y eso decide el **modal**. Después, siempre verbo base. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué expresa cada modal?",
+            "left_label": "Attack on Titan",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "They must be coming for the wall",
+                "right": "Casi seguro que sí"
+              },
+              {
+                "left": "They might attack at dawn",
+                "right": "Es posible"
+              },
+              {
+                "left": "It can't be a normal titan",
+                "right": "Casi seguro que no"
+              },
+              {
+                "left": "We should use the maneuver gear",
+                "right": "Consejo"
+              }
+            ],
+            "completion_feedback": "**must** y **can't** deducen con casi certeza, **might/may/could** dejan abierta la posibilidad y **should** aconseja. Siempre con verbo base."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué expresa cada modal?",
+            "left_label": "Análisis del Barça",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "They must be playing defensively",
+                "right": "Casi seguro que sí"
+              },
+              {
+                "left": "He might bring on a striker",
+                "right": "Es posible"
+              },
+              {
+                "left": "He can't be tired, he just came on",
+                "right": "Casi seguro que no"
+              },
+              {
+                "left": "They shouldn't waste time",
+                "right": "Consejo de no hacerlo"
+              }
+            ],
+            "completion_feedback": "**must** y **can't** deducen con casi certeza, **might/may/could** dejan abierta la posibilidad y **should** aconseja. Siempre con verbo base."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué expresa cada modal?",
+            "left_label": "Comeback de TXT",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "It must be really popular",
+                "right": "Casi seguro que sí"
+              },
+              {
+                "left": "There might be more in another store",
+                "right": "Es posible"
+              },
+              {
+                "left": "It can't be sold out everywhere",
+                "right": "Casi seguro que no"
+              },
+              {
+                "left": "Should I buy the deluxe version?",
+                "right": "Pedir consejo"
+              }
+            ],
+            "completion_feedback": "**must** y **can't** deducen con casi certeza, **might/may/could** dejan abierta la posibilidad y **should** aconseja. Siempre con verbo base."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué expresa cada modal?",
+            "left_label": "Valorant",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "They must be at B site",
+                "right": "Casi seguro que sí"
+              },
+              {
+                "left": "The spike might be planted",
+                "right": "Es posible"
+              },
+              {
+                "left": "It can't be a 5-man push",
+                "right": "Casi seguro que no"
+              },
+              {
+                "left": "You should buy armor",
+                "right": "Consejo"
+              }
+            ],
+            "completion_feedback": "**must** y **can't** deducen con casi certeza, **might/may/could** dejan abierta la posibilidad y **should** aconseja. Siempre con verbo base."
+          }
+        }
+      }
+    },
+    "voz-pasiva-intro": {
+      "order_steps": {
+        "prompt": "Ordena cómo pasas «The referee gave a red card» a pasiva",
+        "steps": [
+          "Ubica el objeto: a red card",
+          "Ponlo al inicio de la oración",
+          "Agrega be en pasado + participio: was given",
+          "Cierra con el agente si hace falta: by the referee"
+        ],
+        "completion_feedback": "El **objeto** se vuelve sujeto, el verbo pasa a **be + participio** y el agente es opcional. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cuál es la versión en voz pasiva?",
+            "left_label": "Voz activa",
+            "right_label": "Voz pasiva",
+            "pairs": [
+              {
+                "left": "Oda created One Piece",
+                "right": "One Piece was created by Oda"
+              },
+              {
+                "left": "People read the manga everywhere",
+                "right": "The manga is read everywhere"
+              },
+              {
+                "left": "They destroyed the Going Merry",
+                "right": "The Going Merry was destroyed"
+              }
+            ],
+            "completion_feedback": "En la pasiva, **lo que recibe la acción** pasa al inicio y el verbo se vuelve **be + participio**; quien la hizo va con **by** o desaparece."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cuál es la versión en voz pasiva?",
+            "left_label": "Voz activa",
+            "right_label": "Voz pasiva",
+            "pairs": [
+              {
+                "left": "Yamal scored the goal",
+                "right": "The goal was scored by Yamal"
+              },
+              {
+                "left": "The referee gave a red card",
+                "right": "A red card was given"
+              },
+              {
+                "left": "The captain lifted the trophy",
+                "right": "The trophy was lifted"
+              }
+            ],
+            "completion_feedback": "En la pasiva, **lo que recibe la acción** pasa al inicio y el verbo se vuelve **be + participio**; quien la hizo va con **by** o desaparece."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuál es la versión en voz pasiva?",
+            "left_label": "Voz activa",
+            "right_label": "Voz pasiva",
+            "pairs": [
+              {
+                "left": "RM wrote this song",
+                "right": "This song was written by RM"
+              },
+              {
+                "left": "Millions watched the MV",
+                "right": "The MV was watched by millions"
+              },
+              {
+                "left": "Fans buy the albums",
+                "right": "The albums are bought by fans"
+              }
+            ],
+            "completion_feedback": "En la pasiva, **lo que recibe la acción** pasa al inicio y el verbo se vuelve **be + participio**; quien la hizo va con **by** o desaparece."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuál es la versión en voz pasiva?",
+            "left_label": "Voz activa",
+            "right_label": "Voz pasiva",
+            "pairs": [
+              {
+                "left": "Notch created Minecraft",
+                "right": "Minecraft was created by Notch"
+              },
+              {
+                "left": "Someone hacked the server",
+                "right": "The server was hacked"
+              },
+              {
+                "left": "Players download maps",
+                "right": "Maps are downloaded"
+              }
+            ],
+            "completion_feedback": "En la pasiva, **lo que recibe la acción** pasa al inicio y el verbo se vuelve **be + participio**; quien la hizo va con **by** o desaparece."
+          }
+        }
+      }
+    },
+    "estilo-indirecto-intro": {
+      "order_steps": {
+        "prompt": "Ordena cómo reportas lo que ella dijo: «I will defend B site»",
+        "steps": [
+          "Abre con el verbo que reporta: She said",
+          "Agrega el conector: that",
+          "Pon el nuevo sujeto: she (antes era I)",
+          "Retrocede el verbo: would defend B site"
+        ],
+        "completion_feedback": "**said (that)** + pronombre cambiado + verbo **un tiempo atrás**: will se vuelve would. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo se reporta cada frase?",
+            "left_label": "Estilo directo",
+            "right_label": "Estilo indirecto",
+            "pairs": [
+              {
+                "left": "'I will become Hokage'",
+                "right": "He said he would become Hokage"
+              },
+              {
+                "left": "'I can protect my friends'",
+                "right": "He said he could protect his friends"
+              },
+              {
+                "left": "'I train every day'",
+                "right": "He said he trained every day"
+              }
+            ],
+            "completion_feedback": "Al reportar, el verbo **retrocede un tiempo** (am → was, will → would, can → could) y los **pronombres** cambian según quién habla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo se reporta cada frase?",
+            "left_label": "Estilo directo",
+            "right_label": "Estilo indirecto",
+            "pairs": [
+              {
+                "left": "'I am very happy'",
+                "right": "He said he was very happy"
+              },
+              {
+                "left": "'We will win the league'",
+                "right": "He said they would win the league"
+              },
+              {
+                "left": "'We are playing well'",
+                "right": "He said they were playing well"
+              }
+            ],
+            "completion_feedback": "Al reportar, el verbo **retrocede un tiempo** (am → was, will → would, can → could) y los **pronombres** cambian según quién habla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo se reporta cada frase?",
+            "left_label": "Estilo directo",
+            "right_label": "Estilo indirecto",
+            "pairs": [
+              {
+                "left": "'We are preparing a comeback'",
+                "right": "He said they were preparing a comeback"
+              },
+              {
+                "left": "'I love all CARATs'",
+                "right": "He said he loved all CARATs"
+              },
+              {
+                "left": "'I write the lyrics'",
+                "right": "She said she wrote the lyrics"
+              }
+            ],
+            "completion_feedback": "Al reportar, el verbo **retrocede un tiempo** (am → was, will → would, can → could) y los **pronombres** cambian según quién habla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo se reporta cada frase?",
+            "left_label": "Estilo directo",
+            "right_label": "Estilo indirecto",
+            "pairs": [
+              {
+                "left": "'I am planting the spike'",
+                "right": "He said he was planting the spike"
+              },
+              {
+                "left": "'I will defend B'",
+                "right": "She said she would defend B"
+              },
+              {
+                "left": "'I can clutch this'",
+                "right": "He said he could clutch that"
+              }
+            ],
+            "completion_feedback": "Al reportar, el verbo **retrocede un tiempo** (am → was, will → would, can → could) y los **pronombres** cambian según quién habla."
+          }
+        }
+      }
+    },
+    "conectores-del-discurso": {
+      "order_steps": {
+        "prompt": "Ordena la narración del gol con conectores de secuencia",
+        "steps": [
+          "First, the goalkeeper threw the ball",
+          "Then, Yamal received it on the wing",
+          "After that, he dribbled past two defenders",
+          "Finally, he scored an amazing goal"
+        ],
+        "completion_feedback": "**first → then → after that → finally**: los conectores de secuencia marcan el orden y hacen la historia fácil de seguir. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué relación marca cada conector?",
+            "left_label": "Blue Lock",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "Although he looks weak, he's a genius",
+                "right": "Contraste fuerte"
+              },
+              {
+                "left": "He will score if he gets the ball",
+                "right": "Condición"
+              },
+              {
+                "left": "Rin trains because he wants to win",
+                "right": "Causa"
+              },
+              {
+                "left": "They scored, so they won",
+                "right": "Consecuencia"
+              }
+            ],
+            "completion_feedback": "Cada conector marca una **relación**: sumar, contrastar, dar causa, consecuencia, condición o ejemplo. Elige según lo que une."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué relación marca cada conector?",
+            "left_label": "Análisis de Yamal",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "Yamal is fast and skillful",
+                "right": "Añadir"
+              },
+              {
+                "left": "They played well, but they lost",
+                "right": "Contrastar"
+              },
+              {
+                "left": "They scored because of his assist",
+                "right": "Causa"
+              },
+              {
+                "left": "He got injured, so the coach changed him",
+                "right": "Consecuencia"
+              }
+            ],
+            "completion_feedback": "Cada conector marca una **relación**: sumar, contrastar, dar causa, consecuencia, condición o ejemplo. Elige según lo que une."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué relación marca cada conector?",
+            "left_label": "BLACKPINK",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "Rosé also plays guitar",
+                "right": "Añadir"
+              },
+              {
+                "left": "However, they release few songs",
+                "right": "Contraste formal"
+              },
+              {
+                "left": "Big hits; for example, 'Kill This Love'",
+                "right": "Ejemplificar"
+              },
+              {
+                "left": "I'm a BLINK because of their shows",
+                "right": "Causa"
+              }
+            ],
+            "completion_feedback": "Cada conector marca una **relación**: sumar, contrastar, dar causa, consecuencia, condición o ejemplo. Elige según lo que une."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué relación marca cada conector?",
+            "left_label": "Genshin Impact",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "Zhongli is strong and has a shield",
+                "right": "Añadir"
+              },
+              {
+                "left": "I like Venti, but I don't have him",
+                "right": "Contrastar"
+              },
+              {
+                "left": "I farm because I want better stats",
+                "right": "Causa"
+              },
+              {
+                "left": "My team is weak, so I lost",
+                "right": "Consecuencia"
+              }
+            ],
+            "completion_feedback": "Cada conector marca una **relación**: sumar, contrastar, dar causa, consecuencia, condición o ejemplo. Elige según lo que une."
+          }
+        }
+      }
+    },
+    "vocabulario-y-comprension-de-lectura": {
+      "order_steps": {
+        "prompt": "Ordena cómo deduces una palabra que no conoces",
+        "steps": [
+          "Ubica la palabra desconocida",
+          "Busca pistas alrededor: ejemplos o reacciones",
+          "Relaciona las pistas con una idea",
+          "Deduce el significado y compruébalo en la oración"
+        ],
+        "completion_feedback": "Las **pistas del contexto** te llevan al significado sin diccionario; al final, revisa que tenga sentido. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra según el contexto?",
+            "left_label": "Attack on Titan",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "gigantic",
+                "right": "gigantesco (cognado)"
+              },
+              {
+                "left": "devastated",
+                "right": "destrozada"
+              },
+              {
+                "left": "realize",
+                "right": "darse cuenta (falso amigo)"
+              },
+              {
+                "left": "creature",
+                "right": "criatura"
+              }
+            ],
+            "completion_feedback": "No necesitas traducir todo: el **contexto**, los **ejemplos** y los **cognados** te dan el significado. Veamos cómo deducirlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué pregunta responde cada dato de la nota?",
+            "left_label": "Nota de Yamal",
+            "right_label": "Responde a",
+            "pairs": [
+              {
+                "left": "Yamal scored the winning goal",
+                "right": "What happened?"
+              },
+              {
+                "left": "Yesterday",
+                "right": "When?"
+              },
+              {
+                "left": "At Camp Nou",
+                "right": "Where?"
+              },
+              {
+                "left": "Because they needed three points",
+                "right": "Why?"
+              }
+            ],
+            "completion_feedback": "No necesitas traducir todo: el **contexto**, los **ejemplos** y los **cognados** te dan el significado. Veamos cómo deducirlo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo respondes «Why?» con scanning",
+            "steps": [
+              "Lee la pregunta y ubica qué dato pide: la razón",
+              "Recorre el texto buscando 'because'",
+              "Toma la razón que viene después"
+            ],
+            "completion_feedback": "Con **scanning** no lees todo: vas directo al dato. La razón casi siempre viene después de **because**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra según el contexto?",
+            "left_label": "Entrevista de BTS",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "obstacles",
+                "right": "dificultades"
+              },
+              {
+                "left": "accolades",
+                "right": "reconocimientos"
+              },
+              {
+                "left": "skimming",
+                "right": "leer rápido: idea general"
+              },
+              {
+                "left": "scanning",
+                "right": "buscar un dato específico"
+              }
+            ],
+            "completion_feedback": "No necesitas traducir todo: el **contexto**, los **ejemplos** y los **cognados** te dan el significado. Veamos cómo deducirlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra según el contexto?",
+            "left_label": "Guía de Minecraft",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "durable",
+                "right": "resistente"
+              },
+              {
+                "left": "tough",
+                "right": "difícil de vencer"
+              },
+              {
+                "left": "extract",
+                "right": "extraer (cognado)"
+              },
+              {
+                "left": "health",
+                "right": "vida, en un juego"
+              }
+            ],
+            "completion_feedback": "No necesitas traducir todo: el **contexto**, los **ejemplos** y los **cognados** te dan el significado. Veamos cómo deducirlo."
+          }
+        }
+      }
+    }
+  }
+}
