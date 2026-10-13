@@ -1,0 +1,1736 @@
+{
+  "subject": "matematicas-sec-3",
+  "topics": {
+    "ecuaciones-factorizacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves una cuadrática por factorización",
+        "steps": [
+          "Iguala la ecuación a cero",
+          "Busca dos números: producto c y suma b",
+          "Escribe los dos binomios",
+          "Iguala cada factor a cero y despeja"
+        ],
+        "completion_feedback": "Si un producto da **cero**, uno de los factores es cero: por eso cada binomio te da una raíz. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la factorización es cada cosa?",
+            "left_label": "Transmutación",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "Dos números que multiplicados dan 6",
+                "right": "p · q = c"
+              },
+              {
+                "left": "…y que sumados dan 5",
+                "right": "p + q = b"
+              },
+              {
+                "left": "x² + 5x + 6",
+                "right": "Trinomio cuadrático"
+              },
+              {
+                "left": "(x + 2)(x + 3)",
+                "right": "Forma factorizada"
+              }
+            ],
+            "completion_feedback": "Dos números que **multiplicados dan c** y **sumados dan b**: con ellos armas los binomios y encuentras las raíces. Veamos el método."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la factorización es cada cosa?",
+            "left_label": "Disparo de Henry",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "x² − 5x + 6 = 0",
+                "right": "Ecuación cuadrática"
+              },
+              {
+                "left": "(x − 2)(x − 3) = 0",
+                "right": "Forma factorizada"
+              },
+              {
+                "left": "x = 2 y x = 3",
+                "right": "Raíces: las dos posiciones"
+              },
+              {
+                "left": "Un factor tiene que valer cero",
+                "right": "Propiedad del producto cero"
+              }
+            ],
+            "completion_feedback": "Dos números que **multiplicados dan c** y **sumados dan b**: con ellos armas los binomios y encuentras las raíces. Veamos el método."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la factorización es cada cosa?",
+            "left_label": "Escenario de BTS",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "(x + 1)(x − 1) = 15",
+                "right": "Área del escenario"
+              },
+              {
+                "left": "x² − 16 = 0",
+                "right": "Ecuación a factorizar"
+              },
+              {
+                "left": "(x + 4)(x − 4) = 0",
+                "right": "Forma factorizada"
+              },
+              {
+                "left": "x = 4",
+                "right": "Raíz válida: lados 5 y 3"
+              }
+            ],
+            "completion_feedback": "Dos números que **multiplicados dan c** y **sumados dan b**: con ellos armas los binomios y encuentras las raíces. Veamos el método."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la factorización es cada cosa?",
+            "left_label": "Base de Steve",
+            "right_label": "Factorización",
+            "pairs": [
+              {
+                "left": "x(x + 1) = 12",
+                "right": "Área de la base"
+              },
+              {
+                "left": "(x + 4)(x − 3) = 0",
+                "right": "Forma factorizada"
+              },
+              {
+                "left": "x = −4",
+                "right": "Raíz no válida: medida negativa"
+              },
+              {
+                "left": "x = 3",
+                "right": "Ancho de la base"
+              }
+            ],
+            "completion_feedback": "Dos números que **multiplicados dan c** y **sumados dan b**: con ellos armas los binomios y encuentras las raíces. Veamos el método."
+          }
+        }
+      }
+    },
+    "ecuaciones-formula-general": {
+      "order_steps": {
+        "prompt": "Ordena cómo aplicas la fórmula general",
+        "steps": [
+          "Iguala la ecuación a cero",
+          "Identifica a, b y c con sus signos",
+          "Calcula el discriminante b² − 4ac",
+          "Sustituye en x = (−b ± √(b² − 4ac)) / 2a",
+          "Elige la solución que tiene sentido"
+        ],
+        "completion_feedback": "El **discriminante** va antes que todo lo demás: te dice cuántas soluciones vas a encontrar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la fórmula general es cada cosa?",
+            "left_label": "Campo de Tanjiro",
+            "right_label": "Fórmula general",
+            "pairs": [
+              {
+                "left": "x(x + 5) = 84",
+                "right": "Área del campo"
+              },
+              {
+                "left": "a = 1, b = 5, c = −84",
+                "right": "Coeficientes"
+              },
+              {
+                "left": "b² − 4ac = 361",
+                "right": "Discriminante"
+              },
+              {
+                "left": "x = 7",
+                "right": "Solución positiva: el ancho"
+              }
+            ],
+            "completion_feedback": "Identificas **a, b y c**, calculas el **discriminante** y la fórmula te da las dos soluciones. Veamos cómo aplicarla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué te dice el discriminante en cada caso?",
+            "left_label": "Tiro de Yamal",
+            "right_label": "Soluciones",
+            "pairs": [
+              {
+                "left": "Discriminante positivo",
+                "right": "Dos soluciones: sube y baja"
+              },
+              {
+                "left": "Discriminante igual a cero",
+                "right": "Una solución: el punto más alto"
+              },
+              {
+                "left": "Discriminante negativo",
+                "right": "Sin solución real"
+              },
+              {
+                "left": "t = 1 y t = 3",
+                "right": "Los dos instantes a 6 m"
+              }
+            ],
+            "completion_feedback": "Identificas **a, b y c**, calculas el **discriminante** y la fórmula te da las dos soluciones. Veamos cómo aplicarla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la fórmula general es cada cosa?",
+            "left_label": "Escenario de SKZ",
+            "right_label": "Fórmula general",
+            "pairs": [
+              {
+                "left": "x² + 3x − 40 = 0",
+                "right": "Ecuación del escenario"
+              },
+              {
+                "left": "b² − 4ac = 169",
+                "right": "Discriminante"
+              },
+              {
+                "left": "x = −8",
+                "right": "Se descarta: es negativa"
+              },
+              {
+                "left": "x = 5",
+                "right": "Ancho del escenario"
+              }
+            ],
+            "completion_feedback": "Identificas **a, b y c**, calculas el **discriminante** y la fórmula te da las dos soluciones. Veamos cómo aplicarla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la fórmula general es cada cosa?",
+            "left_label": "Salto de Spidey",
+            "right_label": "Fórmula general",
+            "pairs": [
+              {
+                "left": "h = −5t² + 20t",
+                "right": "Ecuación cuadrática"
+              },
+              {
+                "left": "El arco del salto",
+                "right": "Parábola"
+              },
+              {
+                "left": "a, b y c",
+                "right": "Coeficientes"
+              },
+              {
+                "left": "t = 0 y t = 4",
+                "right": "Las dos raíces"
+              }
+            ],
+            "completion_feedback": "Identificas **a, b y c**, calculas el **discriminante** y la fórmula te da las dos soluciones. Veamos cómo aplicarla."
+          }
+        }
+      }
+    },
+    "sistemas-ecuaciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves un sistema por reducción",
+        "steps": [
+          "Busca una incógnita con el mismo coeficiente en ambas",
+          "Resta las ecuaciones para eliminarla",
+          "Despeja la incógnita que quedó",
+          "Sustituye ese valor para hallar la otra"
+        ],
+        "completion_feedback": "Restar **elimina** una incógnita: de dos ecuaciones pasas a una sola. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Ranking de Isagi",
+            "right_label": "Sistema",
+            "pairs": [
+              {
+                "left": "Goles + asistencias = 14",
+                "right": "x + y = 14"
+              },
+              {
+                "left": "3 por gol, 2 por asistencia: 34",
+                "right": "3x + 2y = 34"
+              },
+              {
+                "left": "Despejar y = 14 − x",
+                "right": "Método de sustitución"
+              },
+              {
+                "left": "6 goles y 8 asistencias",
+                "right": "Solución del sistema"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos ecuaciones**; la solución es la que cumple **ambas** a la vez. Veamos los métodos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo resuelves el sistema de Isagi por sustitución",
+            "steps": [
+              "Despeja y en la primera: y = 14 − x",
+              "Sustitúyela en la segunda: 3x + 2(14 − x) = 34",
+              "Resuelve: x = 6 goles",
+              "Regresa y calcula y = 8 asistencias"
+            ],
+            "completion_feedback": "Despejar y **sustituir** convierte dos ecuaciones en una sola con una incógnita. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Racha del Barça",
+            "right_label": "Sistema",
+            "pairs": [
+              {
+                "left": "12 partidos sin perder",
+                "right": "x + y = 12"
+              },
+              {
+                "left": "26 puntos",
+                "right": "3x + y = 26"
+              },
+              {
+                "left": "Restar ambas ecuaciones",
+                "right": "Método de reducción"
+              },
+              {
+                "left": "7 ganados y 5 empatados",
+                "right": "Solución del sistema"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos ecuaciones**; la solución es la que cumple **ambas** a la vez. Veamos los métodos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Merch de SVT",
+            "right_label": "Sistema",
+            "pairs": [
+              {
+                "left": "2 boletos y 3 lightsticks",
+                "right": "2x + 3y = 4300"
+              },
+              {
+                "left": "2 boletos y 1 lightstick",
+                "right": "2x + y = 3100"
+              },
+              {
+                "left": "Restar para cancelar el 2x",
+                "right": "Método de reducción"
+              },
+              {
+                "left": "Lightstick $600, boleto $1,250",
+                "right": "Solución del sistema"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos ecuaciones**; la solución es la que cumple **ambas** a la vez. Veamos los métodos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Tienda de Genshin",
+            "right_label": "Sistema",
+            "pairs": [
+              {
+                "left": "3 Fates y 2 mejoras",
+                "right": "3x + 2y = 980"
+              },
+              {
+                "left": "1 Fate y 2 mejoras",
+                "right": "x + 2y = 540"
+              },
+              {
+                "left": "Un Fate: 220 cristales",
+                "right": "Valor de x"
+              },
+              {
+                "left": "Una mejora: 160 cristales",
+                "right": "Valor de y"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos ecuaciones**; la solución es la que cumple **ambas** a la vez. Veamos los métodos."
+          }
+        }
+      }
+    },
+    "sucesiones-cuadraticas": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras la regla de una sucesión cuadrática",
+        "steps": [
+          "Calcula las primeras diferencias",
+          "Calcula las segundas diferencias",
+          "Divide la segunda diferencia entre 2: ese es a",
+          "Compara an² con la sucesión y halla bn + c"
+        ],
+        "completion_feedback": "La **segunda diferencia** te da **a**; lo que falta para llegar a la sucesión es bn + c. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Cofres de Nami",
+            "right_label": "Sucesión",
+            "pairs": [
+              {
+                "left": "2, 6, 12, 20…",
+                "right": "Sucesión cuadrática"
+              },
+              {
+                "left": "+4, +6, +8",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "Siempre +2",
+                "right": "Segunda diferencia constante"
+              },
+              {
+                "left": "2 ÷ 2 = 1",
+                "right": "Coeficiente a de n²"
+              }
+            ],
+            "completion_feedback": "Si la **segunda diferencia es constante**, la sucesión es cuadrática y su regla lleva **n²**. Veamos cómo encontrarla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Mural de figuritas",
+            "right_label": "Sucesión",
+            "pairs": [
+              {
+                "left": "1, 4, 9, 16…",
+                "right": "aₙ = n²"
+              },
+              {
+                "left": "+3, +5, +7",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "Siempre +2",
+                "right": "Segunda diferencia constante"
+              },
+              {
+                "left": "La jornada 15",
+                "right": "15² = 225 figuritas"
+              }
+            ],
+            "completion_feedback": "Si la **segunda diferencia es constante**, la sucesión es cuadrática y su regla lleva **n²**. Veamos cómo encontrarla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Sillas de TXT",
+            "right_label": "Sucesión",
+            "pairs": [
+              {
+                "left": "3, 8, 15, 24…",
+                "right": "aₙ = n² + 2n"
+              },
+              {
+                "left": "5, 7, 9",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "Siempre 2",
+                "right": "Segunda diferencia constante"
+              },
+              {
+                "left": "El evento 12",
+                "right": "168 sillas"
+              }
+            ],
+            "completion_feedback": "Si la **segunda diferencia es constante**, la sucesión es cuadrática y su regla lleva **n²**. Veamos cómo encontrarla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Pirámide Roblox",
+            "right_label": "Sucesión",
+            "pairs": [
+              {
+                "left": "1, 4, 9, 16 bloques",
+                "right": "aₙ = n²"
+              },
+              {
+                "left": "+3, +5, +7",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "De 2 en 2",
+                "right": "Segunda diferencia constante"
+              },
+              {
+                "left": "El nivel 10",
+                "right": "100 bloques"
+              }
+            ],
+            "completion_feedback": "Si la **segunda diferencia es constante**, la sucesión es cuadrática y su regla lleva **n²**. Veamos cómo encontrarla."
+          }
+        }
+      }
+    },
+    "congruencia-semejanza": {
+      "order_steps": {
+        "prompt": "Ordena cómo compruebas si dos figuras son semejantes",
+        "steps": [
+          "Empareja los lados correspondientes",
+          "Divide cada lado grande entre su pareja chica",
+          "Si todas las divisiones dan lo mismo, son semejantes"
+        ],
+        "completion_feedback": "Si todas las razones son **iguales**, los lados son proporcionales y las figuras son semejantes. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de semejanza o congruencia es cada cosa?",
+            "left_label": "Llavero y figura",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "Misma pose, mismas proporciones",
+                "right": "Misma forma"
+              },
+              {
+                "left": "La figura, 5 veces más alta",
+                "right": "Razón de semejanza: 5"
+              },
+              {
+                "left": "Dos figuras del mismo molde y tamaño",
+                "right": "Congruentes"
+              },
+              {
+                "left": "El llavero y la figura de Tanjiro",
+                "right": "Semejantes"
+              }
+            ],
+            "completion_feedback": "**Semejantes**: misma forma, distinto tamaño. **Congruentes**: misma forma y mismo tamaño. Veamos cómo distinguirlas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de semejanza o congruencia es cada cosa?",
+            "left_label": "Cancha y pizarra",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "105 × 68 m y 21 × 13.6 cm",
+                "right": "Semejantes"
+              },
+              {
+                "left": "500 veces más larga y más ancha",
+                "right": "Razón de semejanza"
+              },
+              {
+                "left": "Ángulos rectos en las dos",
+                "right": "Ángulos iguales"
+              },
+              {
+                "left": "Dos canchas con medidas idénticas",
+                "right": "Congruentes"
+              }
+            ],
+            "completion_feedback": "**Semejantes**: misma forma, distinto tamaño. **Congruentes**: misma forma y mismo tamaño. Veamos cómo distinguirlas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de semejanza o congruencia es cada cosa?",
+            "left_label": "Photocard y póster",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "El póster, 8 veces mayor",
+                "right": "Factor de escala: 8"
+              },
+              {
+                "left": "Misma foto, distinto tamaño",
+                "right": "Semejantes"
+              },
+              {
+                "left": "Estirarla solo a lo ancho",
+                "right": "Ya no es semejante"
+              },
+              {
+                "left": "Dos photocards idénticas",
+                "right": "Congruentes"
+              }
+            ],
+            "completion_feedback": "**Semejantes**: misma forma, distinto tamaño. **Congruentes**: misma forma y mismo tamaño. Veamos cómo distinguirlas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de semejanza o congruencia es cada cosa?",
+            "left_label": "Minimapa Ascent",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "El minimapa y el mapa real",
+                "right": "Semejantes"
+              },
+              {
+                "left": "Distancias reducidas en igual medida",
+                "right": "Lados proporcionales"
+              },
+              {
+                "left": "Los ángulos de los pasillos",
+                "right": "Ángulos iguales"
+              },
+              {
+                "left": "Factor de escala igual a 1",
+                "right": "Congruentes"
+              }
+            ],
+            "completion_feedback": "**Semejantes**: misma forma, distinto tamaño. **Congruentes**: misma forma y mismo tamaño. Veamos cómo distinguirlas."
+          }
+        }
+      }
+    },
+    "teorema-pitagoras": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la hipotenusa",
+        "steps": [
+          "Identifica los dos catetos y la hipotenusa",
+          "Eleva cada cateto al cuadrado",
+          "Suma los dos cuadrados",
+          "Saca la raíz cuadrada del resultado"
+        ],
+        "completion_feedback": "La **raíz cuadrada** va al final: deshace el cuadrado de la hipotenusa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del Teorema de Pitágoras es cada cosa?",
+            "left_label": "Cable de Mikasa",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "La torre de 24 m",
+                "right": "Cateto vertical"
+              },
+              {
+                "left": "Los 7 m hasta la base",
+                "right": "Cateto horizontal"
+              },
+              {
+                "left": "El cable disparado",
+                "right": "Hipotenusa: 25 m"
+              },
+              {
+                "left": "24² + 7² = 625",
+                "right": "Suma de los cuadrados"
+              }
+            ],
+            "completion_feedback": "**c² = a² + b²**: los cuadrados de los catetos suman el cuadrado de la hipotenusa. Veamos cómo usarlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del Teorema de Pitágoras es cada cosa?",
+            "left_label": "Pase de Yamal",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "30 m adelante y 16 m al centro",
+                "right": "Catetos"
+              },
+              {
+                "left": "El pase en diagonal",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "900 + 256 = 1156",
+                "right": "Suma de los cuadrados"
+              },
+              {
+                "left": "√1156",
+                "right": "34 m de pase"
+              }
+            ],
+            "completion_feedback": "**c² = a² + b²**: los cuadrados de los catetos suman el cuadrado de la hipotenusa. Veamos cómo usarlo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del Teorema de Pitágoras es cada cosa?",
+            "left_label": "Rampa de IVE",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "Altura de 6 m y distancia de 8 m",
+                "right": "Catetos"
+              },
+              {
+                "left": "La tabla de la rampa",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "36 + 64 = 100",
+                "right": "Suma de los cuadrados"
+              },
+              {
+                "left": "√100",
+                "right": "10 m de rampa"
+              }
+            ],
+            "completion_feedback": "**c² = a² + b²**: los cuadrados de los catetos suman el cuadrado de la hipotenusa. Veamos cómo usarlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del Teorema de Pitágoras es cada cosa?",
+            "left_label": "Zona en Fortnite",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "300 m al este y 400 m al norte",
+                "right": "Catetos"
+              },
+              {
+                "left": "Ir en línea recta",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "90,000 + 160,000",
+                "right": "Suma de los cuadrados"
+              },
+              {
+                "left": "√250,000",
+                "right": "500 m"
+              }
+            ],
+            "completion_feedback": "**c² = a² + b²**: los cuadrados de los catetos suman el cuadrado de la hipotenusa. Veamos cómo usarlo."
+          }
+        }
+      }
+    },
+    "teorema-tales-homotecia": {
+      "order_steps": {
+        "prompt": "Ordena cómo usas el Teorema de Tales para hallar un segmento",
+        "steps": [
+          "Verifica que las rectas sean paralelas",
+          "Escribe la igualdad de razones entre segmentos",
+          "Sustituye las medidas que conoces",
+          "Despeja el segmento que falta"
+        ],
+        "completion_feedback": "Sin **paralelas** no hay Tales; con ellas, las razones son **iguales** y despejas lo que falta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del teorema o la transformación es cada cosa?",
+            "left_label": "Carteles SE BUSCA",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "La esquina desde donde se agranda",
+                "right": "Centro de homotecia"
+              },
+              {
+                "left": "De 5 cm a 15 cm",
+                "right": "Razón k = 3"
+              },
+              {
+                "left": "k mayor que 1",
+                "right": "La figura crece"
+              },
+              {
+                "left": "El cartel chico y el grande",
+                "right": "Figuras semejantes"
+              }
+            ],
+            "completion_feedback": "Rectas **paralelas** cortan segmentos **proporcionales**; una homotecia agranda o reduce desde un centro. Veamos ambos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo aplicas una homotecia",
+            "steps": [
+              "Elige el centro de homotecia",
+              "Mide la distancia del centro a cada punto",
+              "Multiplica cada distancia por k",
+              "Une los puntos nuevos"
+            ],
+            "completion_feedback": "Todo sale del **centro**: cada punto se aleja (o se acerca) **k veces** su distancia. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del teorema o la transformación es cada cosa?",
+            "left_label": "Sombras de Yamal",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "Los rayos del sol",
+                "right": "Rectas paralelas"
+              },
+              {
+                "left": "Yamal y la torre con sus sombras",
+                "right": "Triángulos semejantes"
+              },
+              {
+                "left": "1.8 / 1.2 = h / 30",
+                "right": "Igualdad de razones"
+              },
+              {
+                "left": "h = 45 m",
+                "right": "Altura de la torre"
+              }
+            ],
+            "completion_feedback": "Rectas **paralelas** cortan segmentos **proporcionales**; una homotecia agranda o reduce desde un centro. Veamos ambos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas la altura de la torre",
+            "steps": [
+              "Plantea: estatura / sombra = altura / sombra",
+              "Sustituye: 1.8 / 1.2 = h / 30",
+              "Despeja: h = 1.5 × 30",
+              "La torre mide 45 m"
+            ],
+            "completion_feedback": "Como los rayos son **paralelos**, las razones son iguales y basta despejar. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del teorema o la transformación es cada cosa?",
+            "left_label": "Formación en V",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "Las dos líneas de luces",
+                "right": "Rectas paralelas"
+              },
+              {
+                "left": "Las diagonales de bailarines",
+                "right": "Rectas transversales"
+              },
+              {
+                "left": "1/3 en ambas diagonales",
+                "right": "Segmentos proporcionales"
+              },
+              {
+                "left": "AB/BC = A'B'/B'C'",
+                "right": "Teorema de Tales"
+              }
+            ],
+            "completion_feedback": "Rectas **paralelas** cortan segmentos **proporcionales**; una homotecia agranda o reduce desde un centro. Veamos ambos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del teorema o la transformación es cada cosa?",
+            "left_label": "Zoom en Genshin",
+            "right_label": "Geometría",
+            "pairs": [
+              {
+                "left": "El centro del zoom",
+                "right": "Centro de homotecia"
+              },
+              {
+                "left": "Todo se aleja al doble",
+                "right": "Razón k = 2"
+              },
+              {
+                "left": "Acercar la cámara",
+                "right": "k > 1: se agranda"
+              },
+              {
+                "left": "Alejar la cámara",
+                "right": "0 < k < 1: se reduce"
+              }
+            ],
+            "completion_feedback": "Rectas **paralelas** cortan segmentos **proporcionales**; una homotecia agranda o reduce desde un centro. Veamos ambos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo aplicas una homotecia",
+            "steps": [
+              "Elige el centro de homotecia",
+              "Mide la distancia del centro a cada punto",
+              "Multiplica cada distancia por k",
+              "Une los puntos nuevos"
+            ],
+            "completion_feedback": "Todo sale del **centro**: cada punto se aleja (o se acerca) **k veces** su distancia. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "transformaciones-geometricas": {
+      "order_steps": {
+        "prompt": "Ordena cómo reflejas una figura",
+        "steps": [
+          "Traza el eje de simetría",
+          "Mide la distancia de cada punto al eje",
+          "Marca esa misma distancia del otro lado",
+          "Une los puntos reflejados"
+        ],
+        "completion_feedback": "Cada punto queda **a la misma distancia** del eje, pero del lado contrario. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué transformación geométrica es cada movimiento?",
+            "left_label": "Clones de sombra",
+            "right_label": "Transformación",
+            "pairs": [
+              {
+                "left": "Un clon corre en línea recta",
+                "right": "Traslación"
+              },
+              {
+                "left": "Girar sobre un punto",
+                "right": "Rotación"
+              },
+              {
+                "left": "Un clon volteado como espejo",
+                "right": "Reflexión"
+              },
+              {
+                "left": "Un clon que creciera de tamaño",
+                "right": "Homotecia, no isometría"
+              }
+            ],
+            "completion_feedback": "Trasladar, girar o reflejar **no cambia el tamaño ni la forma**: la figura queda congruente. Veamos cada transformación."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué transformación geométrica es cada movimiento?",
+            "left_label": "Pizarra táctica",
+            "right_label": "Transformación",
+            "pairs": [
+              {
+                "left": "Adelantar toda la defensa",
+                "right": "Traslación"
+              },
+              {
+                "left": "Girar la formación en el córner",
+                "right": "Rotación"
+              },
+              {
+                "left": "Pasar la jugada al otro lado",
+                "right": "Reflexión"
+              },
+              {
+                "left": "Imanes que no cambian de distancia",
+                "right": "Isometría: figura congruente"
+              }
+            ],
+            "completion_feedback": "Trasladar, girar o reflejar **no cambia el tamaño ni la forma**: la figura queda congruente. Veamos cada transformación."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué transformación geométrica es cada movimiento?",
+            "left_label": "Formaciones SVT",
+            "right_label": "Transformación",
+            "pairs": [
+              {
+                "left": "Deslizarse de lado a lado",
+                "right": "Traslación"
+              },
+              {
+                "left": "Una fila que gira sobre un integrante",
+                "right": "Rotación"
+              },
+              {
+                "left": "Mitades que bailan en espejo",
+                "right": "Reflexión"
+              },
+              {
+                "left": "El integrante que se queda fijo",
+                "right": "Centro de rotación"
+              }
+            ],
+            "completion_feedback": "Trasladar, girar o reflejar **no cambia el tamaño ni la forma**: la figura queda congruente. Veamos cada transformación."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué transformación geométrica es cada movimiento?",
+            "left_label": "Tu brawler",
+            "right_label": "Transformación",
+            "pairs": [
+              {
+                "left": "Caminar con el joystick",
+                "right": "Traslación"
+              },
+              {
+                "left": "Girar para apuntar",
+                "right": "Rotación"
+              },
+              {
+                "left": "El sprite volteado a la izquierda",
+                "right": "Reflexión"
+              },
+              {
+                "left": "Nunca cambia de tamaño",
+                "right": "Figura congruente"
+              }
+            ],
+            "completion_feedback": "Trasladar, girar o reflejar **no cambia el tamaño ni la forma**: la figura queda congruente. Veamos cada transformación."
+          }
+        }
+      }
+    },
+    "razones-trigonometricas": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas un ángulo con la tangente",
+        "steps": [
+          "Ubica el ángulo que buscas",
+          "Identifica el cateto opuesto y el adyacente",
+          "Divide opuesto entre adyacente",
+          "Usa la tangente inversa para hallar el ángulo"
+        ],
+        "completion_feedback": "Todo depende del **ángulo**: primero lo ubicas y desde él decides qué lado es opuesto y cuál adyacente. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la trigonometría es cada cosa?",
+            "left_label": "Cable de Levi",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "La altura de 15 m",
+                "right": "Cateto opuesto"
+              },
+              {
+                "left": "Los 20 m de distancia",
+                "right": "Cateto adyacente"
+              },
+              {
+                "left": "El cable diagonal",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "15 ÷ 20",
+                "right": "Tangente del ángulo"
+              }
+            ],
+            "completion_feedback": "**Seno, coseno y tangente** relacionan los lados con el ángulo: con dos lados encuentras el ángulo. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la trigonometría es cada cosa?",
+            "left_label": "Volea de Yamal",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "La altura de la escuadra",
+                "right": "Cateto opuesto"
+              },
+              {
+                "left": "La distancia a la portería",
+                "right": "Cateto adyacente"
+              },
+              {
+                "left": "La trayectoria del balón",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "Opuesto ÷ adyacente",
+                "right": "Tangente"
+              }
+            ],
+            "completion_feedback": "**Seno, coseno y tangente** relacionan los lados con el ángulo: con dos lados encuentras el ángulo. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la trigonometría es cada cosa?",
+            "left_label": "Reflector de TXT",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "Opuesto ÷ hipotenusa",
+                "right": "Seno"
+              },
+              {
+                "left": "Adyacente ÷ hipotenusa",
+                "right": "Coseno"
+              },
+              {
+                "left": "Opuesto ÷ adyacente",
+                "right": "Tangente"
+              },
+              {
+                "left": "El haz de luz",
+                "right": "Hipotenusa"
+              }
+            ],
+            "completion_feedback": "**Seno, coseno y tangente** relacionan los lados con el ángulo: con dos lados encuentras el ángulo. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la trigonometría es cada cosa?",
+            "left_label": "Telaraña",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "El edificio de 30 m",
+                "right": "Cateto opuesto"
+              },
+              {
+                "left": "Los 40 m hasta la base",
+                "right": "Cateto adyacente"
+              },
+              {
+                "left": "La telaraña de 50 m",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "30 ÷ 50",
+                "right": "Seno del ángulo"
+              }
+            ],
+            "completion_feedback": "**Seno, coseno y tangente** relacionan los lados con el ángulo: con dos lados encuentras el ángulo. Veamos cómo."
+          }
+        }
+      }
+    },
+    "volumen-cilindros-conos": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas el volumen de un cilindro",
+        "steps": [
+          "Mide el radio de la base",
+          "Calcula el área de la base: π·r²",
+          "Multiplica por la altura",
+          "Escribe el resultado en unidades cúbicas"
+        ],
+        "completion_feedback": "Es como **apilar** el círculo de la base hasta la altura del cilindro. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del volumen es cada cosa?",
+            "left_label": "Cono de Sanji",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "La abertura ancha de arriba",
+                "right": "Base circular"
+              },
+              {
+                "left": "La punta de abajo",
+                "right": "Vértice"
+              },
+              {
+                "left": "Cabe un tercio del barril",
+                "right": "V = (1/3)·π·r²·h"
+              },
+              {
+                "left": "El lado inclinado del cono",
+                "right": "Generatriz, no la altura"
+              }
+            ],
+            "completion_feedback": "Cilindro: **área de la base × altura**. Cono: lo mismo, pero **entre 3**. Veamos cómo calcularlos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas el volumen de un cono",
+            "steps": [
+              "Mide el radio de la base",
+              "Calcula el área de la base: π·r²",
+              "Multiplica por la altura",
+              "Divide entre 3 porque es un cono"
+            ],
+            "completion_feedback": "Es el volumen del **cilindro** dividido entre **3**: el cono se cierra en punta. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del volumen es cada cosa?",
+            "left_label": "Termo del Barça",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Qué tan ancha es la base",
+                "right": "Radio"
+              },
+              {
+                "left": "Área del círculo × altura",
+                "right": "V = π·r²·h"
+              },
+              {
+                "left": "1,000 cm³",
+                "right": "1 litro"
+              },
+              {
+                "left": "Te dan el diámetro",
+                "right": "Divídelo entre 2"
+              }
+            ],
+            "completion_feedback": "Cilindro: **área de la base × altura**. Cono: lo mismo, pero **entre 3**. Veamos cómo calcularlos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del volumen es cada cosa?",
+            "left_label": "Cono de luz",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "El círculo iluminado en el piso",
+                "right": "Base del cono"
+              },
+              {
+                "left": "El reflector",
+                "right": "Vértice"
+              },
+              {
+                "left": "Del piso al reflector",
+                "right": "Altura"
+              },
+              {
+                "left": "Tres conos llenan un cilindro",
+                "right": "El factor 1/3"
+              }
+            ],
+            "completion_feedback": "Cilindro: **área de la base × altura**. Cono: lo mismo, pero **entre 3**. Veamos cómo calcularlos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas el volumen de un cono",
+            "steps": [
+              "Mide el radio de la base",
+              "Calcula el área de la base: π·r²",
+              "Multiplica por la altura",
+              "Divide entre 3 porque es un cono"
+            ],
+            "completion_feedback": "Es el volumen del **cilindro** dividido entre **3**: el cono se cierra en punta. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del volumen es cada cosa?",
+            "left_label": "Tanque Minecraft",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "El piso circular del tanque",
+                "right": "Área de la base: π·r²"
+              },
+              {
+                "left": "Apilar círculos hasta arriba",
+                "right": "Multiplicar por la altura"
+              },
+              {
+                "left": "Tanque bajito pero muy ancho",
+                "right": "El radio va al cuadrado"
+              },
+              {
+                "left": "m³ o cm³",
+                "right": "Unidades cúbicas"
+              }
+            ],
+            "completion_feedback": "Cilindro: **área de la base × altura**. Cono: lo mismo, pero **entre 3**. Veamos cómo calcularlos."
+          }
+        }
+      }
+    },
+    "proporcionalidad-funciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras la regla de una proporcionalidad directa",
+        "steps": [
+          "Divide y entre x en un par de datos",
+          "Comprueba que el cociente se repita",
+          "Ese cociente es la constante k",
+          "Escribe la regla: y = kx"
+        ],
+        "completion_feedback": "Si el cociente **no cambia**, encontraste k y con ella la regla completa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la función es cada cosa?",
+            "left_label": "Daño de Jinwoo",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "Daño ÷ nivel = 25",
+                "right": "Constante k"
+              },
+              {
+                "left": "Daño = 25 × nivel",
+                "right": "y = kx"
+              },
+              {
+                "left": "El nivel que tú eliges",
+                "right": "Variable independiente"
+              },
+              {
+                "left": "Nivel 0, daño 0",
+                "right": "Recta que pasa por el origen"
+              }
+            ],
+            "completion_feedback": "Si el **cociente** es constante, la relación es directa: **y = kx**, una recta que pasa por el origen. Veamos cómo funciona."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la función es cada cosa?",
+            "left_label": "Sprint de Yamal",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "8 metros por segundo",
+                "right": "Constante: la velocidad"
+              },
+              {
+                "left": "Distancia = 8 × tiempo",
+                "right": "y = kx"
+              },
+              {
+                "left": "En 5 segundos",
+                "right": "40 m"
+              },
+              {
+                "left": "Correr más rápido",
+                "right": "Recta más empinada"
+              }
+            ],
+            "completion_feedback": "Si el **cociente** es constante, la relación es directa: **y = kx**, una recta que pasa por el origen. Veamos cómo funciona."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la función es cada cosa?",
+            "left_label": "Photocards de IVE",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "Más personas, menos photocards",
+                "right": "Proporcionalidad inversa"
+              },
+              {
+                "left": "Personas × photocards = 120",
+                "right": "Producto constante"
+              },
+              {
+                "left": "y = 120 / x",
+                "right": "Regla de la función"
+              },
+              {
+                "left": "Una curva que no toca los ejes",
+                "right": "Hipérbola"
+              }
+            ],
+            "completion_feedback": "Si el **producto** es constante, la relación es inversa: **y = k / x**, una curva. Veamos cómo funciona."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo encuentras la regla de una proporcionalidad inversa",
+            "steps": [
+              "Multiplica x por y en un par de datos",
+              "Comprueba que el producto se repita",
+              "Ese producto es la constante k",
+              "Escribe la regla: y = k / x"
+            ],
+            "completion_feedback": "En la inversa lo que se mantiene es el **producto**, no el cociente. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la función es cada cosa?",
+            "left_label": "Tycoon de Roblox",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "50 monedas por minuto",
+                "right": "Constante k = 50"
+              },
+              {
+                "left": "Monedas = 50 × minutos",
+                "right": "y = kx"
+              },
+              {
+                "left": "10 minutos de juego",
+                "right": "500 monedas"
+              },
+              {
+                "left": "0 minutos, 0 monedas",
+                "right": "Pasa por el origen"
+              }
+            ],
+            "completion_feedback": "Si el **cociente** es constante, la relación es directa: **y = kx**, una recta que pasa por el origen. Veamos cómo funciona."
+          }
+        }
+      }
+    },
+    "probabilidad": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas una probabilidad con la regla de Laplace",
+        "steps": [
+          "Escribe el espacio muestral completo",
+          "Marca en él los casos favorables",
+          "Divide favorables entre totales",
+          "Exprésalo como fracción, decimal o porcentaje"
+        ],
+        "completion_feedback": "Sin el **espacio muestral** no sabes cuál es el total; con él, solo divides. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada cosa?",
+            "left_label": "Dado de Isagi",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "{1, 2, 3, 4, 5, 6}",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "Sacar el 2 para enfrentar a Rin",
+                "right": "Evento simple: 1/6"
+              },
+              {
+                "left": "Sacar un número par",
+                "right": "Evento compuesto: 3/6"
+              },
+              {
+                "left": "No sacar el 2",
+                "right": "Complemento: 5/6"
+              }
+            ],
+            "completion_feedback": "**Favorables ÷ totales**: un número de 0 a 1 que mide qué tan posible es algo. Veamos cómo calcularlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada cosa?",
+            "left_label": "Penales de Yamal",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "16 goles en 20 penales",
+                "right": "Probabilidad frecuencial"
+              },
+              {
+                "left": "16 ÷ 20",
+                "right": "0.8 = 80%"
+              },
+              {
+                "left": "Lo que pasó ÷ total de intentos",
+                "right": "Fórmula empírica"
+              },
+              {
+                "left": "Anotar y fallar no pesan igual",
+                "right": "No son equiprobables"
+              }
+            ],
+            "completion_feedback": "**Favorables ÷ totales**: un número de 0 a 1 que mide qué tan posible es algo. Veamos cómo calcularlo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas la probabilidad frecuencial",
+            "steps": [
+              "Reúne el historial de intentos",
+              "Cuenta en cuántos ocurrió el evento",
+              "Divide entre el total de intentos",
+              "Exprésalo en porcentaje: 80%"
+            ],
+            "completion_feedback": "Aquí no cuentas casos posibles: cuentas lo que **ya pasó**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada cosa?",
+            "left_label": "Photocard de Felix",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Las 8 photocards posibles",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "La photocard de Felix",
+                "right": "Caso favorable"
+              },
+              {
+                "left": "1 ÷ 8",
+                "right": "12.5%"
+              },
+              {
+                "left": "Todos con la misma posibilidad",
+                "right": "Equiprobables"
+              }
+            ],
+            "completion_feedback": "**Favorables ÷ totales**: un número de 0 a 1 que mide qué tan posible es algo. Veamos cómo calcularlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de probabilidad es cada cosa?",
+            "left_label": "Gacha de Genshin",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Sacar un 5 estrellas",
+                "right": "Evento"
+              },
+              {
+                "left": "0.6% por deseo",
+                "right": "0.006"
+              },
+              {
+                "left": "Probabilidad igual a 0",
+                "right": "Imposible"
+              },
+              {
+                "left": "Probabilidad igual a 1",
+                "right": "Seguro"
+              }
+            ],
+            "completion_feedback": "**Favorables ÷ totales**: un número de 0 a 1 que mide qué tan posible es algo. Veamos cómo calcularlo."
+          }
+        }
+      }
+    },
+    "estadistica-desviacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la desviación media",
+        "steps": [
+          "Calcula la media de los datos",
+          "Resta la media a cada dato",
+          "Quita el signo: valor absoluto",
+          "Promedia esas distancias"
+        ],
+        "completion_feedback": "Sin la **media** no hay contra qué medir la distancia de cada dato. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la desviación media es cada cosa?",
+            "left_label": "Recompensas",
+            "right_label": "Estadística",
+            "pairs": [
+              {
+                "left": "3, 4, 3, 4",
+                "right": "Datos homogéneos"
+              },
+              {
+                "left": "7, 1, 6, 0",
+                "right": "Datos heterogéneos"
+              },
+              {
+                "left": "3.5 en las dos tripulaciones",
+                "right": "Misma media"
+              },
+              {
+                "left": "|7 − 3.5| = 3.5",
+                "right": "Distancia absoluta a la media"
+              }
+            ],
+            "completion_feedback": "Dos grupos con **la misma media** pueden ser muy distintos: la desviación media mide qué tan **dispersos** están. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la desviación media es cada cosa?",
+            "left_label": "Goles por mes",
+            "right_label": "Estadística",
+            "pairs": [
+              {
+                "left": "2, 3, 2, 3",
+                "right": "DM = 0.5: constante"
+              },
+              {
+                "left": "6, 0, 4, 0",
+                "right": "DM = 2.5: irregular"
+              },
+              {
+                "left": "2.5 goles en los dos",
+                "right": "Misma media"
+              },
+              {
+                "left": "Σ|xᵢ − media| ÷ n",
+                "right": "Fórmula de la DM"
+              }
+            ],
+            "completion_feedback": "Dos grupos con **la misma media** pueden ser muy distintos: la desviación media mide qué tan **dispersos** están. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la desviación media es cada cosa?",
+            "left_label": "Vistas de NJ",
+            "right_label": "Estadística",
+            "pairs": [
+              {
+                "left": "50, 52, 48, 50",
+                "right": "DM = 1: consistente"
+              },
+              {
+                "left": "90, 10, 70, 30",
+                "right": "DM = 30: muy disperso"
+              },
+              {
+                "left": "50 millones en los dos",
+                "right": "Misma media"
+              },
+              {
+                "left": "La distancia sin signo",
+                "right": "Valor absoluto"
+              }
+            ],
+            "completion_feedback": "Dos grupos con **la misma media** pueden ser muy distintos: la desviación media mide qué tan **dispersos** están. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la desviación media es cada cosa?",
+            "left_label": "Shelly y Edgar",
+            "right_label": "Estadística",
+            "pairs": [
+              {
+                "left": "Shelly: 4, 5, 4, 5, 4",
+                "right": "Poca dispersión"
+              },
+              {
+                "left": "Edgar: 8, 1, 7, 0, 4",
+                "right": "Mucha dispersión"
+              },
+              {
+                "left": "El promedio de victorias",
+                "right": "Media"
+              },
+              {
+                "left": "El promedio de las distancias",
+                "right": "Desviación media"
+              }
+            ],
+            "completion_feedback": "Dos grupos con **la misma media** pueden ser muy distintos: la desviación media mide qué tan **dispersos** están. Veamos cómo."
+          }
+        }
+      }
+    },
+    "variacion-cuadratica": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas el efecto de agrandar la variable",
+        "steps": [
+          "Fíjate cuántas veces crece la variable: n",
+          "Eleva ese factor al cuadrado: n²",
+          "Multiplica el resultado original por n²"
+        ],
+        "completion_feedback": "Duplicar no duplica: **cuadruplica**, porque el 2 se eleva al cuadrado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la variación cuadrática?",
+            "left_label": "Rasengan",
+            "right_label": "Variación",
+            "pairs": [
+              {
+                "left": "Área = π·r²",
+                "right": "y = ax²"
+              },
+              {
+                "left": "Radio por 2",
+                "right": "Área por 4"
+              },
+              {
+                "left": "Radio por 3",
+                "right": "Área por 9"
+              },
+              {
+                "left": "Su gráfica",
+                "right": "Parábola"
+              }
+            ],
+            "completion_feedback": "Si la variable va **al cuadrado**, multiplicarla por n multiplica el resultado por **n²**. Veamos por qué."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la variación cuadrática?",
+            "left_label": "Tiro libre",
+            "right_label": "Variación",
+            "pairs": [
+              {
+                "left": "h = −5t² + 20t",
+                "right": "Variación cuadrática"
+              },
+              {
+                "left": "a = −5, negativo",
+                "right": "Parábola que abre hacia abajo"
+              },
+              {
+                "left": "La altura máxima del balón",
+                "right": "Vértice"
+              },
+              {
+                "left": "El arco en la gráfica",
+                "right": "Parábola, no recta"
+              }
+            ],
+            "completion_feedback": "Si la variable va **al cuadrado**, multiplicarla por n multiplica el resultado por **n²**. Veamos por qué."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la variación cuadrática?",
+            "left_label": "Pantalla LED",
+            "right_label": "Variación",
+            "pairs": [
+              {
+                "left": "Lado de 3 m",
+                "right": "9 m² de paneles"
+              },
+              {
+                "left": "Lado de 6 m",
+                "right": "36 m² de paneles"
+              },
+              {
+                "left": "Lado de 9 m",
+                "right": "81 m² de paneles"
+              },
+              {
+                "left": "Paneles = lado²",
+                "right": "y = ax² con a = 1"
+              }
+            ],
+            "completion_feedback": "Si la variable va **al cuadrado**, multiplicarla por n multiplica el resultado por **n²**. Veamos por qué."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la variación cuadrática?",
+            "left_label": "Red de Spidey",
+            "right_label": "Variación",
+            "pairs": [
+              {
+                "left": "Lado 2",
+                "right": "Área 4"
+              },
+              {
+                "left": "Lado 4",
+                "right": "Área 16"
+              },
+              {
+                "left": "Lado 6",
+                "right": "Área 36"
+              },
+              {
+                "left": "Duplicar el lado",
+                "right": "Cuadruplicar el área"
+              }
+            ],
+            "completion_feedback": "Si la variable va **al cuadrado**, multiplicarla por n multiplica el resultado por **n²**. Veamos por qué."
+          }
+        }
+      }
+    }
+  }
+}
