@@ -1,0 +1,1067 @@
+{
+  "subject": "matematicas-4-funciones",
+  "topics": {
+    "concepto-de-funcion-dominio-y-rango": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras el dominio de f(x) = 12/(x − 3)",
+        "steps": [
+          "Fíjate en el denominador: x − 3",
+          "Iguálalo a cero: x − 3 = 0",
+          "Despeja el valor prohibido: x = 3",
+          "Dominio: todos los reales excepto 3"
+        ],
+        "completion_feedback": "El dominio se recorta donde la operación **no está definida**, como al dividir entre cero. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa?",
+            "left_label": "Sistema de Jinwoo",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "{(1, 50), (2, 100), (3, 150)}",
+                "right": "Es función"
+              },
+              {
+                "left": "Los niveles {1, 2, 3, 4}",
+                "right": "Dominio"
+              },
+              {
+                "left": "Los poderes {50, …, 200}",
+                "right": "Rango"
+              },
+              {
+                "left": "Un nivel con dos poderes",
+                "right": "No sería función"
+              }
+            ],
+            "completion_feedback": "Una **función** asigna a cada entrada **una sola** salida; las entradas posibles forman el **dominio** y las salidas, el **rango**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa?",
+            "left_label": "Tabla de goleo",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "Cada jugador con un solo total",
+                "right": "Es función"
+              },
+              {
+                "left": "f(x) = 20/x",
+                "right": "x ≠ 0"
+              },
+              {
+                "left": "Los jugadores de la lista",
+                "right": "Dominio"
+              },
+              {
+                "left": "Las cifras de goles",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "Una **función** asigna a cada entrada **una sola** salida; las entradas posibles forman el **dominio** y las salidas, el **rango**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto da cada cosa?",
+            "left_label": "Máquina de SKZ",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "Cada botón da un solo producto",
+                "right": "Es función"
+              },
+              {
+                "left": "f(x) = 50x + 100 con x = 3",
+                "right": "250"
+              },
+              {
+                "left": "Los botones que puedes presionar",
+                "right": "Dominio"
+              },
+              {
+                "left": "Los productos que pueden salir",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "Una **función** asigna a cada entrada **una sola** salida; las entradas posibles forman el **dominio** y las salidas, el **rango**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto da cada cosa?",
+            "left_label": "Mesa de crafteo",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "f(x) = 2x con niveles 1 a 5",
+                "right": "Rango {2, 4, 6, 8, 10}"
+              },
+              {
+                "left": "Los niveles del arma",
+                "right": "Dominio"
+              },
+              {
+                "left": "f(3) = 2 · 3",
+                "right": "6 de daño"
+              },
+              {
+                "left": "Mismas tablas, a veces otra cosa",
+                "right": "No sería función"
+              }
+            ],
+            "completion_feedback": "Una **función** asigna a cada entrada **una sola** salida; las entradas posibles forman el **dominio** y las salidas, el **rango**."
+          }
+        }
+      }
+    },
+    "funciones-lineales": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas la recta que pasa por (1, 7) y (3, 13)",
+        "steps": [
+          "Calcula la pendiente: (13 − 7)/(3 − 1) = 3",
+          "Sustituye un punto en y = 3x + b: 7 = 3 + b",
+          "Despeja: b = 4",
+          "Escribe la función: y = 3x + 4"
+        ],
+        "completion_feedback": "Con **dos puntos** sacas la pendiente, y con uno de ellos despejas **b**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte o resultado corresponde?",
+            "left_label": "Fuerza de Deku",
+            "right_label": "Lineal",
+            "pairs": [
+              {
+                "left": "Los 20 kg iniciales",
+                "right": "b: ordenada al origen"
+              },
+              {
+                "left": "15 kg más por semana",
+                "right": "m: pendiente"
+              },
+              {
+                "left": "y = 15x + 20",
+                "right": "Función de Deku"
+              },
+              {
+                "left": "110 = 15x + 20",
+                "right": "Semana 6"
+              }
+            ],
+            "completion_feedback": "Una **función lineal** y = mx + b crece siempre lo mismo: **m** es el aumento por unidad y **b**, el valor inicial. Su gráfica es una recta."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte o función corresponde?",
+            "left_label": "Puntos del Madrid",
+            "right_label": "Lineal",
+            "pairs": [
+              {
+                "left": "y = 3x + 6",
+                "right": "Puntos del Madrid"
+              },
+              {
+                "left": "3 puntos por victoria",
+                "right": "Pendiente"
+              },
+              {
+                "left": "6 puntos de bonificación",
+                "right": "Ordenada al origen"
+              },
+              {
+                "left": "Pasa por (2, 10) y (4, 16)",
+                "right": "y = 3x + 4"
+              }
+            ],
+            "completion_feedback": "Una **función lineal** y = mx + b crece siempre lo mismo: **m** es el aumento por unidad y **b**, el valor inicial. Su gráfica es una recta."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte o resultado corresponde?",
+            "left_label": "Ahorro para IVE",
+            "right_label": "Lineal",
+            "pairs": [
+              {
+                "left": "200 pesos iniciales",
+                "right": "b = 200"
+              },
+              {
+                "left": "150 pesos por semana",
+                "right": "m = 150"
+              },
+              {
+                "left": "Ahorro en la semana 3",
+                "right": "650 pesos"
+              },
+              {
+                "left": "La gráfica de tu ahorro",
+                "right": "Una recta"
+              }
+            ],
+            "completion_feedback": "Una **función lineal** y = mx + b crece siempre lo mismo: **m** es el aumento por unidad y **b**, el valor inicial. Su gráfica es una recta."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte o resultado corresponde?",
+            "left_label": "XP por partida",
+            "right_label": "Lineal",
+            "pairs": [
+              {
+                "left": "100 XP de bono inicial",
+                "right": "Ordenada al origen"
+              },
+              {
+                "left": "200 XP fijos por partida",
+                "right": "Pendiente"
+              },
+              {
+                "left": "50 monedas + 30 por nivel",
+                "right": "y = 30x + 50"
+              },
+              {
+                "left": "Nivel 4 con y = 30x + 50",
+                "right": "170 monedas"
+              }
+            ],
+            "completion_feedback": "Una **función lineal** y = mx + b crece siempre lo mismo: **m** es el aumento por unidad y **b**, el valor inicial. Su gráfica es una recta."
+          }
+        }
+      }
+    },
+    "funciones-cuadraticas": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el máximo de f(x) = −x² + 8x",
+        "steps": [
+          "Identifica a = −1 y b = 8: abre hacia abajo",
+          "Calcula x = −b/(2a) = 4",
+          "Evalúa: f(4) = −16 + 32 = 16",
+          "El vértice (4, 16) es el máximo"
+        ],
+        "completion_feedback": "Si **a < 0** hay un máximo: la x del vértice es −b/(2a) y la altura sale de evaluar ahí. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Jutsu cargado",
+            "right_label": "Cuadrática",
+            "pairs": [
+              {
+                "left": "P(t) = −2t² + 12t",
+                "right": "Máximo en t = 3"
+              },
+              {
+                "left": "P(3)",
+                "right": "18 de poder"
+              },
+              {
+                "left": "a = −2",
+                "right": "Abre hacia abajo"
+              },
+              {
+                "left": "t = −b/(2a)",
+                "right": "x del vértice"
+              }
+            ],
+            "completion_feedback": "Una **función cuadrática** dibuja una parábola: el **vértice** marca su máximo o mínimo y las **raíces**, dónde corta el eje x."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Tiro libre",
+            "right_label": "Cuadrática",
+            "pairs": [
+              {
+                "left": "h(x) = −x² + 4x",
+                "right": "Raíces 0 y 4"
+              },
+              {
+                "left": "h(x) = −x² + 6x",
+                "right": "Raíces 0 y 6"
+              },
+              {
+                "left": "El punto más alto del balón",
+                "right": "Vértice"
+              },
+              {
+                "left": "Donde el balón toca el suelo",
+                "right": "Raíces"
+              }
+            ],
+            "completion_feedback": "Una **función cuadrática** dibuja una parábola: el **vértice** marca su máximo o mínimo y las **raíces**, dónde corta el eje x."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Hype del comeback",
+            "right_label": "Cuadrática",
+            "pairs": [
+              {
+                "left": "f(x) = −x² + 6x + 1",
+                "right": "Vértice (3, 10)"
+              },
+              {
+                "left": "El día del estreno del MV",
+                "right": "Punto máximo"
+              },
+              {
+                "left": "Subida y bajada parejas",
+                "right": "Simetría"
+              },
+              {
+                "left": "Curva con forma de montaña",
+                "right": "Parábola"
+              }
+            ],
+            "completion_feedback": "Una **función cuadrática** dibuja una parábola: el **vértice** marca su máximo o mínimo y las **raíces**, dónde corta el eje x."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Salto",
+            "right_label": "Cuadrática",
+            "pairs": [
+              {
+                "left": "h(t) = −2t² + 8t",
+                "right": "Máximo en t = 2"
+              },
+              {
+                "left": "h(2)",
+                "right": "8 de altura"
+              },
+              {
+                "left": "h(4) = 0",
+                "right": "Aterriza"
+              },
+              {
+                "left": "a negativa",
+                "right": "Abre hacia abajo"
+              }
+            ],
+            "completion_feedback": "Una **función cuadrática** dibuja una parábola: el **vértice** marca su máximo o mínimo y las **raíces**, dónde corta el eje x."
+          }
+        }
+      }
+    },
+    "funciones-polinomiales": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas las raíces de f(x) = x³ − 9x",
+        "steps": [
+          "Iguala a cero: x³ − 9x = 0",
+          "Saca factor común: x(x² − 9) = 0",
+          "Factoriza la diferencia de cuadrados: x(x − 3)(x + 3) = 0",
+          "Raíces: x = 0, 3 y −3"
+        ],
+        "completion_feedback": "Factorizar convierte el polinomio en **factores lineales**, y cada uno te da una raíz. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o concepto corresponde?",
+            "left_label": "Arcos de JJK",
+            "right_label": "Polinomio",
+            "pairs": [
+              {
+                "left": "f(2) con x³ − 2x² + 3",
+                "right": "3"
+              },
+              {
+                "left": "f(3) con x³ − 2x² + 3",
+                "right": "12"
+              },
+              {
+                "left": "Curva con varios picos",
+                "right": "Polinomial"
+              },
+              {
+                "left": "El mayor exponente de x",
+                "right": "Grado"
+              }
+            ],
+            "completion_feedback": "Un **polinomio** suma potencias de x; su **grado** es el exponente mayor y limita cuántas **raíces** puede tener."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o concepto corresponde?",
+            "left_label": "Forma de Mbappé",
+            "right_label": "Polinomio",
+            "pairs": [
+              {
+                "left": "(x − 1)(x − 4)(x + 2)",
+                "right": "Raíces 1, 4 y −2"
+              },
+              {
+                "left": "Tres factores lineales",
+                "right": "Grado 3"
+              },
+              {
+                "left": "El factor (x + 2)",
+                "right": "Raíz −2: signo invertido"
+              },
+              {
+                "left": "Las raíces en la gráfica",
+                "right": "Cortes con el eje x"
+              }
+            ],
+            "completion_feedback": "Un **polinomio** suma potencias de x; su **grado** es el exponente mayor y limita cuántas **raíces** puede tener."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o paso corresponde?",
+            "left_label": "Carrera de BTS",
+            "right_label": "Polinomio",
+            "pairs": [
+              {
+                "left": "x³ − 4x = 0",
+                "right": "x = 0, 2 y −2"
+              },
+              {
+                "left": "Un polinomio de grado 3",
+                "right": "Hasta 3 raíces"
+              },
+              {
+                "left": "x(x² − 4)",
+                "right": "Factor común"
+              },
+              {
+                "left": "(x − 2)(x + 2)",
+                "right": "Diferencia de cuadrados"
+              }
+            ],
+            "completion_feedback": "Un **polinomio** suma potencias de x; su **grado** es el exponente mayor y limita cuántas **raíces** puede tener."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del polinomio es cada cosa?",
+            "left_label": "Dificultad Genshin",
+            "right_label": "Polinomio",
+            "pairs": [
+              {
+                "left": "Grado de 2x³ − 5x² + x − 7",
+                "right": "3"
+              },
+              {
+                "left": "El 2 de 2x³",
+                "right": "Coeficiente principal"
+              },
+              {
+                "left": "El −7",
+                "right": "Término independiente"
+              },
+              {
+                "left": "Las potencias x, x², x³",
+                "right": "Exponentes enteros"
+              }
+            ],
+            "completion_feedback": "Un **polinomio** suma potencias de x; su **grado** es el exponente mayor y limita cuántas **raíces** puede tener."
+          }
+        }
+      }
+    },
+    "funciones-racionales": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el dominio de f(x) = (x − 4)/(x + 1)",
+        "steps": [
+          "Iguala el denominador a cero: x + 1 = 0",
+          "Despeja el valor prohibido: x = −1",
+          "Ahí va la asíntota vertical: x = −1",
+          "Dominio: todos los reales excepto −1"
+        ],
+        "completion_feedback": "El valor que **anula el denominador** sale del dominio y se convierte en asíntota vertical. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Raid del gremio",
+            "right_label": "Racional",
+            "pairs": [
+              {
+                "left": "9000/x con 6 cazadores",
+                "right": "1500 de EXP"
+              },
+              {
+                "left": "9000/x con 9 cazadores",
+                "right": "1000 de EXP"
+              },
+              {
+                "left": "Más cazadores en el raid",
+                "right": "Menos EXP para cada uno"
+              },
+              {
+                "left": "Repartir entre 0",
+                "right": "No está definido"
+              }
+            ],
+            "completion_feedback": "Una **función racional** es un cociente con x **abajo**: los valores que anulan el denominador quedan fuera y ahí aparecen **asíntotas**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Promedio de gol",
+            "right_label": "Racional",
+            "pairs": [
+              {
+                "left": "20/x con 10 partidos",
+                "right": "2 goles por partido"
+              },
+              {
+                "left": "(x − 3)/(x + 2)",
+                "right": "Asíntota en x = −2"
+              },
+              {
+                "left": "Raíz de (x − 3)/(x + 2)",
+                "right": "x = 3"
+              },
+              {
+                "left": "Promedio con 0 partidos",
+                "right": "Imposible"
+              }
+            ],
+            "completion_feedback": "Una **función racional** es un cociente con x **abajo**: los valores que anulan el denominador quedan fuera y ahí aparecen **asíntotas**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Paquete de SVT",
+            "right_label": "Racional",
+            "pairs": [
+              {
+                "left": "3000/x con 5 fans",
+                "right": "600 por fan"
+              },
+              {
+                "left": "3000/x con 10 fans",
+                "right": "300 por fan"
+              },
+              {
+                "left": "Muchísimos fans",
+                "right": "El costo tiende a 0"
+              },
+              {
+                "left": "y = 0 en 3000/x",
+                "right": "Asíntota horizontal"
+              }
+            ],
+            "completion_feedback": "Una **función racional** es un cociente con x **abajo**: los valores que anulan el denominador quedan fuera y ahí aparecen **asíntotas**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Jefe de 12,000",
+            "right_label": "Racional",
+            "pairs": [
+              {
+                "left": "12000/x con 4 jugadores",
+                "right": "3000 de daño"
+              },
+              {
+                "left": "600/(x − 1)",
+                "right": "x ≠ 1"
+              },
+              {
+                "left": "En x = 1 de 600/(x − 1)",
+                "right": "Asíntota vertical"
+              },
+              {
+                "left": "La variable en el denominador",
+                "right": "Función racional"
+              }
+            ],
+            "completion_feedback": "Una **función racional** es un cociente con x **abajo**: los valores que anulan el denominador quedan fuera y ahí aparecen **asíntotas**."
+          }
+        }
+      }
+    },
+    "funciones-exponenciales": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas f(3) en f(x) = 5 · 2ˣ",
+        "steps": [
+          "Identifica a = 5 y la base b = 2",
+          "Sustituye x = 3: 5 · 2³",
+          "Resuelve la potencia: 2³ = 8",
+          "Multiplica: 5 · 8 = 40"
+        ],
+        "completion_feedback": "Primero la **potencia** y después el coeficiente: 5 · 2³ no es 10³. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o tipo de crecimiento corresponde?",
+            "left_label": "Multiclones",
+            "right_label": "Crecimiento",
+            "pairs": [
+              {
+                "left": "2ˣ en el turno 5",
+                "right": "32 clones"
+              },
+              {
+                "left": "2x en el turno 5",
+                "right": "10 clones"
+              },
+              {
+                "left": "Multiplicar por 2 cada turno",
+                "right": "Exponencial"
+              },
+              {
+                "left": "Sumar lo mismo cada turno",
+                "right": "Lineal"
+              }
+            ],
+            "completion_feedback": "En una **función exponencial** la cantidad se **multiplica** por la misma base en cada paso: base mayor que 1 crece; entre 0 y 1, decae."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Torneo de copa",
+            "right_label": "Exponencial",
+            "pairs": [
+              {
+                "left": "64 · (1/2)³",
+                "right": "8 equipos"
+              },
+              {
+                "left": "Base 1/2",
+                "right": "Decaimiento"
+              },
+              {
+                "left": "Lo que pasa en cada ronda",
+                "right": "Se va la mitad"
+              },
+              {
+                "left": "Ronda con 32 equipos",
+                "right": "Dieciseisavos de final"
+              }
+            ],
+            "completion_feedback": "En una **función exponencial** la cantidad se **multiplica** por la misma base en cada paso: base mayor que 1 crece; entre 0 y 1, decae."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "MV viral",
+            "right_label": "Exponencial",
+            "pairs": [
+              {
+                "left": "2 · 2⁰",
+                "right": "2 millones"
+              },
+              {
+                "left": "2 · 2⁵",
+                "right": "64 millones"
+              },
+              {
+                "left": "Se duplica cada día",
+                "right": "Base 2"
+              },
+              {
+                "left": "El valor en x = 0",
+                "right": "Valor inicial a"
+              }
+            ],
+            "completion_feedback": "En una **función exponencial** la cantidad se **multiplica** por la misma base en cada paso: base mayor que 1 crece; entre 0 y 1, decae."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Oleadas",
+            "right_label": "Exponencial",
+            "pairs": [
+              {
+                "left": "3 · 2⁴",
+                "right": "48 enemigos"
+              },
+              {
+                "left": "3 · 2⁰",
+                "right": "3 enemigos"
+              },
+              {
+                "left": "XP de 100, 200, 400, 800",
+                "right": "Se duplica"
+              },
+              {
+                "left": "Primero la potencia",
+                "right": "Luego el coeficiente"
+              }
+            ],
+            "completion_feedback": "En una **función exponencial** la cantidad se **multiplica** por la misma base en cada paso: base mayor que 1 crece; entre 0 y 1, decae."
+          }
+        }
+      }
+    },
+    "funciones-logaritmicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves 2ˣ = 32",
+        "steps": [
+          "Reconoce que x está en el exponente",
+          "Reescríbelo como logaritmo: x = log₂ 32",
+          "Busca la potencia: 2⁵ = 32",
+          "Resultado: x = 5"
+        ],
+        "completion_feedback": "El logaritmo **deshace** la exponencial: te devuelve el exponente que buscabas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Grados de JJK",
+            "right_label": "Logaritmo",
+            "pairs": [
+              {
+                "left": "log₁₀ 10,000",
+                "right": "4: grado especial"
+              },
+              {
+                "left": "log₁₀ 100",
+                "right": "2: grado 2"
+              },
+              {
+                "left": "Diferencia de 2 niveles",
+                "right": "10² = 100 veces"
+              },
+              {
+                "left": "Cuántas veces multiplicar",
+                "right": "Logaritmo"
+              }
+            ],
+            "completion_feedback": "El **logaritmo** responde cuántas veces multiplicar la base para llegar a un número: log_b(x) = y significa que bʸ = x."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o forma corresponde?",
+            "left_label": "Cartas de Mbappé",
+            "right_label": "Logaritmo",
+            "pairs": [
+              {
+                "left": "3ˣ = 243",
+                "right": "x = 5"
+              },
+              {
+                "left": "81,000 monedas desde 1,000",
+                "right": "Nivel 4"
+              },
+              {
+                "left": "x = log₃ 243",
+                "right": "Forma logarítmica"
+              },
+              {
+                "left": "3⁴",
+                "right": "81"
+              }
+            ],
+            "completion_feedback": "El **logaritmo** responde cuántas veces multiplicar la base para llegar a un número: log_b(x) = y significa que bʸ = x."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuánto vale cada logaritmo?",
+            "left_label": "Votos CARAT",
+            "right_label": "Logaritmo",
+            "pairs": [
+              {
+                "left": "log₅ 3125",
+                "right": "5 rondas"
+              },
+              {
+                "left": "log₅ 5",
+                "right": "1"
+              },
+              {
+                "left": "log₅ 1",
+                "right": "0"
+              },
+              {
+                "left": "log₅ 625",
+                "right": "4"
+              }
+            ],
+            "completion_feedback": "El **logaritmo** responde cuántas veces multiplicar la base para llegar a un número: log_b(x) = y significa que bʸ = x."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tier o idea corresponde?",
+            "left_label": "Tiers de prestigio",
+            "right_label": "Logaritmo",
+            "pairs": [
+              {
+                "left": "log₄ 64",
+                "right": "Tier 3"
+              },
+              {
+                "left": "log₄ 256",
+                "right": "Tier 4"
+              },
+              {
+                "left": "log₄ 16",
+                "right": "Tier 2"
+              },
+              {
+                "left": "El logaritmo devuelve…",
+                "right": "El exponente"
+              }
+            ],
+            "completion_feedback": "El **logaritmo** responde cuántas veces multiplicar la base para llegar a un número: log_b(x) = y significa que bʸ = x."
+          }
+        }
+      }
+    },
+    "funciones-trigonometricas": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas tan 45° con el círculo unitario",
+        "steps": [
+          "Ubica 45° en el círculo unitario",
+          "Lee el punto: (√2/2, √2/2)",
+          "Divide el seno entre el coseno",
+          "Resultado: tan 45° = 1"
+        ],
+        "completion_feedback": "En el círculo unitario, **x es el coseno** y **y es el seno**; la tangente es su cociente. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Respiración",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "sen θ = 0.6 y cos θ = 0.8",
+                "right": "tan θ = 0.75"
+              },
+              {
+                "left": "Inhalar y exhalar en ciclos",
+                "right": "Función periódica"
+              },
+              {
+                "left": "tan θ = sen θ ÷ cos θ",
+                "right": "Definición de tangente"
+              },
+              {
+                "left": "cos θ = 0",
+                "right": "Tangente no definida"
+              }
+            ],
+            "completion_feedback": "**Seno y coseno** son funciones **periódicas**: la **amplitud** dice qué tan alto oscilan y el **periodo** (2π/B), cada cuánto se repiten."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Ángulo del saque",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "sen 90°",
+                "right": "1"
+              },
+              {
+                "left": "cos 90°",
+                "right": "0"
+              },
+              {
+                "left": "Saque a 0°",
+                "right": "Totalmente rasante"
+              },
+              {
+                "left": "Saque a 90°",
+                "right": "Totalmente vertical"
+              }
+            ],
+            "completion_feedback": "**Seno y coseno** son funciones **periódicas**: la **amplitud** dice qué tan alto oscilan y el **periodo** (2π/B), cada cuánto se repiten."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué periodo o idea corresponde?",
+            "left_label": "Luces de IVE",
+            "right_label": "Periodo",
+            "pairs": [
+              {
+                "left": "Periodo de sen(2x)",
+                "right": "π"
+              },
+              {
+                "left": "Periodo de sen(4x)",
+                "right": "π/2"
+              },
+              {
+                "left": "Periodo de sen(x)",
+                "right": "2π"
+              },
+              {
+                "left": "B más grande",
+                "right": "Pulsa más seguido"
+              }
+            ],
+            "completion_feedback": "**Seno y coseno** son funciones **periódicas**: la **amplitud** dice qué tan alto oscilan y el **periodo** (2π/B), cada cuánto se repiten."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Plataforma obby",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "3 · sen(t)",
+                "right": "Amplitud 3"
+              },
+              {
+                "left": "5 · sen(t)",
+                "right": "Oscila de −5 a 5"
+              },
+              {
+                "left": "Repite su ciclo cada 4 s",
+                "right": "Periodo de 4 s"
+              },
+              {
+                "left": "El seno básico",
+                "right": "Va de −1 a 1"
+              }
+            ],
+            "completion_feedback": "**Seno y coseno** son funciones **periódicas**: la **amplitud** dice qué tan alto oscilan y el **periodo** (2π/B), cada cuánto se repiten."
+          }
+        }
+      }
+    },
+    "operaciones-y-composicion-de-funciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas (f∘g)(2) con f(x) = x² y g(x) = x + 4",
+        "steps": [
+          "Empieza por la función de adentro: g",
+          "Calcula g(2) = 2 + 4 = 6",
+          "Mete ese resultado en f: f(6)",
+          "Resultado: 6² = 36"
+        ],
+        "completion_feedback": "Se trabaja **de adentro hacia afuera**: primero g, y su salida entra a f. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Golpe de Deku",
+            "right_label": "Composición",
+            "pairs": [
+              {
+                "left": "(f∘g)(3) con f = x² y g = x + 5",
+                "right": "64"
+              },
+              {
+                "left": "(g∘f)(3) con esas mismas",
+                "right": "14"
+              },
+              {
+                "left": "La función que va primero",
+                "right": "La de adentro: g"
+              },
+              {
+                "left": "f∘g distinto de g∘f",
+                "right": "El orden importa"
+              }
+            ],
+            "completion_feedback": "En la **composición** (f∘g)(x) = f(g(x)) la salida de g entra a f: se trabaja **de adentro hacia afuera** y el orden cambia el resultado."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Sueldo de Mbappé",
+            "right_label": "Composición",
+            "pairs": [
+              {
+                "left": "f(x) = 2x + 10 con x = 20",
+                "right": "50"
+              },
+              {
+                "left": "(g∘f)(20) con su inversa",
+                "right": "20: regresa al inicio"
+              },
+              {
+                "left": "Bonos y luego impuestos",
+                "right": "Composición"
+              },
+              {
+                "left": "Sueldo de dos jugadores juntos",
+                "right": "Suma de funciones"
+              }
+            ],
+            "completion_feedback": "En la **composición** (f∘g)(x) = f(g(x)) la salida de g entra a f: se trabaja **de adentro hacia afuera** y el orden cambia el resultado."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Álbum con envío",
+            "right_label": "Composición",
+            "pairs": [
+              {
+                "left": "f(g(x)), g = x − 100 y f = x + 50",
+                "right": "x − 50"
+              },
+              {
+                "left": "(f∘g)(500)",
+                "right": "450"
+              },
+              {
+                "left": "(f∘g)(600) con descuento de 120",
+                "right": "530"
+              },
+              {
+                "left": "Primero descuento, luego envío",
+                "right": "g adentro, f afuera"
+              }
+            ],
+            "completion_feedback": "En la **composición** (f∘g)(x) = f(g(x)) la salida de g entra a f: se trabaja **de adentro hacia afuera** y el orden cambia el resultado."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Buffs en cadena",
+            "right_label": "Composición",
+            "pairs": [
+              {
+                "left": "(f∘g)(5) con f = 2x y g = x + 3",
+                "right": "16"
+              },
+              {
+                "left": "(f∘g)(7) con esas mismas",
+                "right": "20"
+              },
+              {
+                "left": "Maestría que da daño de reacción",
+                "right": "Una alimenta a la otra"
+              },
+              {
+                "left": "Daño base + daño elemental",
+                "right": "Suma de funciones"
+              }
+            ],
+            "completion_feedback": "En la **composición** (f∘g)(x) = f(g(x)) la salida de g entra a f: se trabaja **de adentro hacia afuera** y el orden cambia el resultado."
+          }
+        }
+      }
+    }
+  }
+}
