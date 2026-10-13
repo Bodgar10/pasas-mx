@@ -1,0 +1,1074 @@
+{
+  "subject": "biologia-2",
+  "topics": {
+    "genetica-leyes-de-mendel": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves el cruce Bb × bb",
+        "steps": [
+          "Escribe los gametos: B y b de uno; b y b del otro",
+          "Arma el cuadro de Punnett de 4 casillas",
+          "Cuenta genotipos: 2 Bb y 2 bb",
+          "Traduce a fenotipos: 50% dominante y 50% recesivo"
+        ],
+        "completion_feedback": "El cuadro de Punnett solo **combina gametos**; la proporción sale de contar las casillas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Quirks de MHA",
+            "right_label": "Genética",
+            "pairs": [
+              {
+                "left": "Héroe Qq que no muestra el Quirk",
+                "right": "Portador"
+              },
+              {
+                "left": "Hijo qq",
+                "right": "Muestra el Quirk oculto"
+              },
+              {
+                "left": "Qq × Qq: genotipos",
+                "right": "1:2:1"
+              },
+              {
+                "left": "Qq × Qq: fenotipos",
+                "right": "3:1"
+              }
+            ],
+            "completion_feedback": "Cada hijo recibe **un alelo de cada padre**; el dominante tapa al recesivo, que solo se ve en **homocigoto** (aa)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Uniformes",
+            "right_label": "Genética",
+            "pairs": [
+              {
+                "left": "Club heterocigoto Aa",
+                "right": "Azulgrana que porta el blanco"
+              },
+              {
+                "left": "Club homocigoto aa",
+                "right": "Uniforme blanco"
+              },
+              {
+                "left": "Primera generación idéntica",
+                "right": "El dominante tapa"
+              },
+              {
+                "left": "Aa × Aa: clubes blancos",
+                "right": "25%"
+              }
+            ],
+            "completion_feedback": "Cada hijo recibe **un alelo de cada padre**; el dominante tapa al recesivo, que solo se ve en **homocigoto** (aa)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Photocards",
+            "right_label": "Genética",
+            "pairs": [
+              {
+                "left": "Miembro y marco salen por separado",
+                "right": "Segregación independiente"
+              },
+              {
+                "left": "Gametos de AaBb",
+                "right": "AB, Ab, aB y ab"
+              },
+              {
+                "left": "Casillas de AaBb × AaBb",
+                "right": "16"
+              },
+              {
+                "left": "Proporción de fenotipos",
+                "right": "9:3:3:1"
+              }
+            ],
+            "completion_feedback": "Cada hijo recibe **un alelo de cada padre**; el dominante tapa al recesivo, que solo se ve en **homocigoto** (aa)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dragones",
+            "right_label": "Genética",
+            "pairs": [
+              {
+                "left": "Dragón heterocigoto Rr",
+                "right": "Rojo que porta el azul"
+              },
+              {
+                "left": "Dragón recesivo rr",
+                "right": "Azul"
+              },
+              {
+                "left": "Dragón dominante RR",
+                "right": "Rojo puro"
+              },
+              {
+                "left": "Rr × Rr: crías azules",
+                "right": "1 de cada 4"
+              }
+            ],
+            "completion_feedback": "Cada hijo recibe **un alelo de cada padre**; el dominante tapa al recesivo, que solo se ve en **homocigoto** (aa)."
+          }
+        }
+      }
+    },
+    "adn-arn-y-sintesis-de-proteinas": {
+      "order_steps": {
+        "prompt": "Ordena cómo pasa la información del gen a la proteína",
+        "steps": [
+          "El ADN guarda el gen en el núcleo",
+          "La ARN polimerasa copia el gen en ARNm",
+          "El ARNm sale del núcleo al ribosoma",
+          "El ribosoma lee codones y el ARNt trae aminoácidos",
+          "En un codón de paro, la proteína se libera"
+        ],
+        "completion_feedback": "Primero **transcripción** (ADN → ARNm) y luego **traducción** (ARNm → proteína). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Manga de One Piece",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Manga original guardado",
+                "right": "ADN"
+              },
+              {
+                "left": "Copia del guion que viaja",
+                "right": "ARNm"
+              },
+              {
+                "left": "Estudio de animación",
+                "right": "Ribosoma"
+              },
+              {
+                "left": "Animador que trae su pieza",
+                "right": "ARNt"
+              }
+            ],
+            "completion_feedback": "El **ADN** se queda en el núcleo, el **ARNm** lleva una copia al ribosoma y ahí se **traduce** en una cadena de aminoácidos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Vestidor",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Pizarra maestra",
+                "right": "ADN"
+              },
+              {
+                "left": "Tarjeta de cada jugador",
+                "right": "ARNm"
+              },
+              {
+                "left": "AUG",
+                "right": "Inicio: metionina"
+              },
+              {
+                "left": "UGA",
+                "right": "Codón de paro"
+              }
+            ],
+            "completion_feedback": "El **ADN** se queda en el núcleo, el **ARNm** lleva una copia al ribosoma y ahí se **traduce** en una cadena de aminoácidos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué base o cadena corresponde?",
+            "left_label": "Cover de TXT",
+            "right_label": "Bases",
+            "pairs": [
+              {
+                "left": "A en el ADN",
+                "right": "T"
+              },
+              {
+                "left": "G en el ADN",
+                "right": "C"
+              },
+              {
+                "left": "ATGCCA",
+                "right": "TACGGT"
+              },
+              {
+                "left": "A del molde, en el ARNm",
+                "right": "U"
+              }
+            ],
+            "completion_feedback": "El **ADN** se queda en el núcleo, el **ARNm** lleva una copia al ribosoma y ahí se **traduce** en una cadena de aminoácidos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Código de Genshin",
+            "right_label": "En la célula",
+            "pairs": [
+              {
+                "left": "Molde TAC",
+                "right": "Codón AUG"
+              },
+              {
+                "left": "CCU",
+                "right": "Prolina"
+              },
+              {
+                "left": "AAG",
+                "right": "Lisina"
+              },
+              {
+                "left": "Copiar ADN a ARNm",
+                "right": "Transcripción"
+              }
+            ],
+            "completion_feedback": "El **ADN** se queda en el núcleo, el **ARNm** lleva una copia al ribosoma y ahí se **traduce** en una cadena de aminoácidos."
+          }
+        }
+      }
+    },
+    "biotecnologia": {
+      "order_steps": {
+        "prompt": "Ordena un ciclo de PCR",
+        "steps": [
+          "Calienta: las dos cadenas del ADN se separan",
+          "Enfría: los cebadores se pegan a cada cadena",
+          "La ADN polimerasa copia cada cadena",
+          "Repite el ciclo: las copias se duplican cada vez"
+        ],
+        "completion_feedback": "Cada ciclo **duplica** las copias: en unos 30 ciclos una muestra mínima se vuelve millones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Clonar un titán",
+            "right_label": "Clonación",
+            "pairs": [
+              {
+                "left": "Célula del cuerpo del donante",
+                "right": "Aporta el ADN"
+              },
+              {
+                "left": "Óvulo sin núcleo",
+                "right": "Recibe el núcleo"
+              },
+              {
+                "left": "Descarga eléctrica",
+                "right": "Inicia la división"
+              },
+              {
+                "left": "Primer mamífero clonado así",
+                "right": "La oveja Dolly"
+              }
+            ],
+            "completion_feedback": "La **biotecnología** usa seres vivos o sus moléculas para fabricar algo: desde el yogur y el pan hasta la PCR, la clonación y los transgénicos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Laboratorio",
+            "right_label": "Técnica",
+            "pairs": [
+              {
+                "left": "Copiar millones de veces el ADN",
+                "right": "PCR"
+              },
+              {
+                "left": "Separar fragmentos por tamaño",
+                "right": "Electroforesis"
+              },
+              {
+                "left": "Patrón único de bandas",
+                "right": "Huella genética"
+              },
+              {
+                "left": "Tras 3 ciclos de PCR",
+                "right": "8 copias"
+              }
+            ],
+            "completion_feedback": "La **biotecnología** usa seres vivos o sus moléculas para fabricar algo: desde el yogur y el pan hasta la PCR, la clonación y los transgénicos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Café de K-drama",
+            "right_label": "Biotecnología",
+            "pairs": [
+              {
+                "left": "Levaduras en la masa madre",
+                "right": "El pan se esponja"
+              },
+              {
+                "left": "Bacterias lácticas en la leche",
+                "right": "Yogur"
+              },
+              {
+                "left": "Azúcar de la leche",
+                "right": "Lactosa"
+              },
+              {
+                "left": "Sin modificar genes",
+                "right": "Tradicional"
+              }
+            ],
+            "completion_feedback": "La **biotecnología** usa seres vivos o sus moléculas para fabricar algo: desde el yogur y el pan hasta la PCR, la clonación y los transgénicos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mod de Minecraft",
+            "right_label": "Transgénico",
+            "pairs": [
+              {
+                "left": "Tijeras moleculares",
+                "right": "Enzimas de restricción"
+              },
+              {
+                "left": "Anillo de ADN bacteriano",
+                "right": "Plásmido"
+              },
+              {
+                "left": "Bacteria que recibe el gen",
+                "right": "E. coli"
+              },
+              {
+                "left": "Lo que fabrica la bacteria",
+                "right": "Insulina humana"
+              }
+            ],
+            "completion_feedback": "La **biotecnología** usa seres vivos o sus moléculas para fabricar algo: desde el yogur y el pan hasta la PCR, la clonación y los transgénicos."
+          }
+        }
+      }
+    },
+    "origen-de-la-vida": {
+      "order_steps": {
+        "prompt": "Ordena cómo evalúas una hipótesis sobre el origen de la vida",
+        "steps": [
+          "Nombra la hipótesis y quién la propuso",
+          "Busca la evidencia a favor",
+          "Revisa qué parte del problema explica",
+          "Revisa qué parte deja sin explicar",
+          "Compárala con las hipótesis rivales"
+        ],
+        "completion_feedback": "Una hipótesis vale por **cuánta evidencia explica**, no por lo convincente que suene. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Teorías del fandom",
+            "right_label": "Hipótesis",
+            "pairs": [
+              {
+                "left": "La vida llegó en un meteorito",
+                "right": "Panspermia"
+              },
+              {
+                "left": "Svante Arrhenius, 1903",
+                "right": "Propuso la panspermia"
+              },
+              {
+                "left": "Meteorito de Murchison",
+                "right": "Traía aminoácidos"
+              },
+              {
+                "left": "Lo que no explica",
+                "right": "Cómo surgió allá afuera"
+              }
+            ],
+            "completion_feedback": "Hoy se acepta la **biogénesis**: la vida viene de vida. Para el primer origen hay hipótesis, como la **química prebiótica** de Oparin y Miller."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Quién o qué corresponde?",
+            "left_label": "Garrafones",
+            "right_label": "Experimento",
+            "pairs": [
+              {
+                "left": "Frascos con gasa y moscas",
+                "right": "Redi, 1668"
+              },
+              {
+                "left": "Caldos mal sellados",
+                "right": "Needham"
+              },
+              {
+                "left": "Matraz de cuello de cisne",
+                "right": "Pasteur, 1861"
+              },
+              {
+                "left": "La vida viene de otra vida",
+                "right": "Biogénesis"
+              }
+            ],
+            "completion_feedback": "Hoy se acepta la **biogénesis**: la vida viene de vida. Para el primer origen hay hipótesis, como la **química prebiótica** de Oparin y Miller."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debut del grupo",
+            "right_label": "Origen",
+            "pairs": [
+              {
+                "left": "Trainees sueltos",
+                "right": "Moléculas orgánicas"
+              },
+              {
+                "left": "Grupo con frontera",
+                "right": "Protobionte"
+              },
+              {
+                "left": "Coacervado sin herencia",
+                "right": "Aún no es célula"
+              },
+              {
+                "left": "Copiar material genético",
+                "right": "El verdadero debut"
+              }
+            ],
+            "completion_feedback": "Hoy se acepta la **biogénesis**: la vida viene de vida. Para el primer origen hay hipótesis, como la **química prebiótica** de Oparin y Miller."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ruta de crafteo",
+            "right_label": "Origen",
+            "pairs": [
+              {
+                "left": "Metano, amoniaco, hidrógeno, agua",
+                "right": "Atmósfera primitiva"
+              },
+              {
+                "left": "Descargas eléctricas en gases",
+                "right": "Miller y Urey, 1953"
+              },
+              {
+                "left": "Lo que obtuvo Miller",
+                "right": "Aminoácidos"
+              },
+              {
+                "left": "Gota con frontera",
+                "right": "Protobionte"
+              }
+            ],
+            "completion_feedback": "Hoy se acepta la **biogénesis**: la vida viene de vida. Para el primer origen hay hipótesis, como la **química prebiótica** de Oparin y Miller."
+          }
+        }
+      }
+    },
+    "clasificacion-de-los-seres-vivos-taxonomia-biologia": {
+      "order_steps": {
+        "prompt": "Ordena la clasificación del jaguar, de lo amplio a lo específico",
+        "steps": [
+          "Reino: Animalia",
+          "Clase: Mammalia",
+          "Familia: Felidae",
+          "Género: Panthera",
+          "Especie: Panthera onca"
+        ],
+        "completion_feedback": "Cada nivel **achica el grupo**: arriba caben millones de especies y al final queda una sola. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Clanes de Naruto",
+            "right_label": "Taxonomía",
+            "pairs": [
+              {
+                "left": "Hongo: ¿tiene núcleo?",
+                "right": "Eukarya"
+              },
+              {
+                "left": "Pared de quitina",
+                "right": "Reino Fungi"
+              },
+              {
+                "left": "Pared de celulosa",
+                "right": "Reino Plantae"
+              },
+              {
+                "left": "Se es Uchiha por linaje",
+                "right": "Clasificar por origen"
+              }
+            ],
+            "completion_feedback": "La **taxonomía** agrupa por **parentesco**, no por parecido: dominio, reino, filo, clase, orden, familia, género y especie."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Clubes",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Clubes rojiblancos sin relación",
+                "right": "Parecido engañoso"
+              },
+              {
+                "left": "Tapatío, filial de Chivas",
+                "right": "Origen común"
+              },
+              {
+                "left": "Delfín y tiburón",
+                "right": "Analogía"
+              },
+              {
+                "left": "La evidencia más fuerte",
+                "right": "El ADN"
+              }
+            ],
+            "completion_feedback": "La **taxonomía** agrupa por **parentesco**, no por parecido: dominio, reino, filo, clase, orden, familia, género y especie."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El Jin de BTS",
+            "right_label": "Nombre científico",
+            "pairs": [
+              {
+                "left": "El grupo en 'el Jin de BTS'",
+                "right": "Como el género"
+              },
+              {
+                "left": "El nombre en 'el Jin de BTS'",
+                "right": "Como el epíteto"
+              },
+              {
+                "left": "Cómo va el género",
+                "right": "Mayúscula inicial"
+              },
+              {
+                "left": "Cómo va el epíteto",
+                "right": "Todo en minúscula"
+              }
+            ],
+            "completion_feedback": "La **taxonomía** agrupa por **parentesco**, no por parecido: dominio, reino, filo, clase, orden, familia, género y especie."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué nivel es cada nombre?",
+            "left_label": "Pokédex",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "Eukarya",
+                "right": "Dominio"
+              },
+              {
+                "left": "Mammalia",
+                "right": "Clase"
+              },
+              {
+                "left": "Canidae",
+                "right": "Familia"
+              },
+              {
+                "left": "Canis lupus",
+                "right": "Especie"
+              }
+            ],
+            "completion_feedback": "La **taxonomía** agrupa por **parentesco**, no por parecido: dominio, reino, filo, clase, orden, familia, género y especie."
+          }
+        }
+      }
+    },
+    "ecologia-ecosistemas-y-cadenas-troficas": {
+      "order_steps": {
+        "prompt": "Ordena el camino de la energía en un ecosistema",
+        "steps": [
+          "El sol aporta la energía",
+          "Los productores la captan con fotosíntesis",
+          "Los herbívoros reciben cerca del 10%",
+          "Los carnívoros reciben el 10% de eso",
+          "Los descomponedores reciclan los restos"
+        ],
+        "completion_feedback": "En cada salto se pierde cerca del **90%** como calor: por eso hay tan pocos depredadores tope. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Muros de AoT",
+            "right_label": "Ecología",
+            "pairs": [
+              {
+                "left": "1,200,000 kcal ÷ 2,000 kcal",
+                "right": "600 personas"
+              },
+              {
+                "left": "Límite que sostiene el territorio",
+                "right": "Capacidad de carga"
+              },
+              {
+                "left": "Comida, agua, espacio",
+                "right": "Factores limitantes"
+              },
+              {
+                "left": "Población que rebasa el límite",
+                "right": "Desciende"
+              }
+            ],
+            "completion_feedback": "Un **ecosistema** une seres vivos y factores abióticos; la energía fluye por las cadenas tróficas y se pierde en cada nivel."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Equipo",
+            "right_label": "Ecología",
+            "pairs": [
+              {
+                "left": "Se lesiona el de contención",
+                "right": "Desaparece una especie"
+              },
+              {
+                "left": "Todo el equipo se desacomoda",
+                "right": "Cascada trófica"
+              },
+              {
+                "left": "Sin lobos, más venados",
+                "right": "Herbívoros sin control"
+              },
+              {
+                "left": "Once nombres conectados",
+                "right": "Red trófica"
+              }
+            ],
+            "completion_feedback": "Un **ecosistema** une seres vivos y factores abióticos; la energía fluye por las cadenas tróficas y se pierde en cada nivel."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuánta energía llega a cada nivel?",
+            "left_label": "Embudo de trainees",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Productores",
+                "right": "10,000 kcal"
+              },
+              {
+                "left": "Herbívoros",
+                "right": "1,000 kcal"
+              },
+              {
+                "left": "Consumidores secundarios",
+                "right": "100 kcal"
+              },
+              {
+                "left": "Consumidores terciarios",
+                "right": "10 kcal"
+              }
+            ],
+            "completion_feedback": "Un **ecosistema** une seres vivos y factores abióticos; la energía fluye por las cadenas tróficas y se pierde en cada nivel."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Biomas",
+            "right_label": "Ecología",
+            "pairs": [
+              {
+                "left": "Ocelotes y loros",
+                "right": "Bióticos"
+              },
+              {
+                "left": "Lluvia y luz",
+                "right": "Abióticos"
+              },
+              {
+                "left": "Bióticos + abióticos + relaciones",
+                "right": "Ecosistema"
+              },
+              {
+                "left": "Bioma de Minecraft",
+                "right": "Región con su clima"
+              }
+            ],
+            "completion_feedback": "Un **ecosistema** une seres vivos y factores abióticos; la energía fluye por las cadenas tróficas y se pierde en cada nivel."
+          }
+        }
+      }
+    },
+    "ciclos-biogeoquimicos": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo del agua",
+        "steps": [
+          "El agua del mar se evapora con el sol",
+          "El vapor sube, se enfría y forma nubes",
+          "Las nubes sueltan precipitación",
+          "El agua escurre o se infiltra al subsuelo",
+          "Ríos y acuíferos la regresan al mar"
+        ],
+        "completion_feedback": "En un ciclo **nada se crea ni se destruye**: la materia solo cambia de forma y de lugar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Alquimia de FMA",
+            "right_label": "Ciclos",
+            "pairs": [
+              {
+                "left": "Lo libera la erosión de la roca",
+                "right": "Fosfato"
+              },
+              {
+                "left": "Lo usan en ADN y ATP",
+                "right": "Plantas y animales"
+              },
+              {
+                "left": "Exceso de fosfatos en un lago",
+                "right": "Eutrofización"
+              },
+              {
+                "left": "Intercambio equivalente",
+                "right": "Conservación de la materia"
+              }
+            ],
+            "completion_feedback": "En los **ciclos biogeoquímicos** la materia da vueltas entre aire, agua, suelo y seres vivos: nunca se crea ni se pierde."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agua del estadio",
+            "right_label": "Ciclo del agua",
+            "pairs": [
+              {
+                "left": "Sube con el calor",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Sale por las hojas del pasto",
+                "right": "Transpiración"
+              },
+              {
+                "left": "Recarga el manto acuífero",
+                "right": "Infiltración"
+              },
+              {
+                "left": "Agua dulce líquida del planeta",
+                "right": "Cerca del 1%"
+              }
+            ],
+            "completion_feedback": "En los **ciclos biogeoquímicos** la materia da vueltas entre aire, agua, suelo y seres vivos: nunca se crea ni se pierde."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué etapa del ciclo es cada cosa?",
+            "left_label": "Talento crudo",
+            "right_label": "Nitrógeno",
+            "pairs": [
+              {
+                "left": "N₂ → amonio",
+                "right": "Fijación"
+              },
+              {
+                "left": "Amonio → nitratos",
+                "right": "Nitrificación"
+              },
+              {
+                "left": "La planta arma proteínas",
+                "right": "Asimilación"
+              },
+              {
+                "left": "Regresa N₂ al aire",
+                "right": "Desnitrificación"
+              }
+            ],
+            "completion_feedback": "En los **ciclos biogeoquímicos** la materia da vueltas entre aire, agua, suelo y seres vivos: nunca se crea ni se pierde."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hierro Minecraft",
+            "right_label": "Carbono",
+            "pairs": [
+              {
+                "left": "CO₂ que capta la planta",
+                "right": "Fotosíntesis"
+              },
+              {
+                "left": "CO₂ que suelta el animal",
+                "right": "Respiración"
+              },
+              {
+                "left": "Restos enterrados millones de años",
+                "right": "Combustible fósil"
+              },
+              {
+                "left": "Lo que libera al quemarse",
+                "right": "CO₂ al aire"
+              }
+            ],
+            "completion_feedback": "En los **ciclos biogeoquímicos** la materia da vueltas entre aire, agua, suelo y seres vivos: nunca se crea ni se pierde."
+          }
+        }
+      }
+    },
+    "biodiversidad-y-conservacion": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa cuando una carretera parte un bosque",
+        "steps": [
+          "El hábitat queda partido en fragmentos",
+          "Cada fragmento sostiene una población más chica",
+          "Sin cruzarse, se pierde diversidad genética",
+          "Un incendio o enfermedad puede borrar un fragmento",
+          "Solución: corredores biológicos que los reconecten"
+        ],
+        "completion_feedback": "La **fragmentación** no mata de golpe: achica las poblaciones y les quita el margen para aguantar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mononoke",
+            "right_label": "Conservación",
+            "pairs": [
+              {
+                "left": "Restaurar canales de Xochimilco",
+                "right": "In situ"
+              },
+              {
+                "left": "Ajolotes en acuarios",
+                "right": "Ex situ"
+              },
+              {
+                "left": "Solo vive en Xochimilco",
+                "right": "Endémico"
+              },
+              {
+                "left": "Devolverlos al hábitat sano",
+                "right": "Reintroducción"
+              }
+            ],
+            "completion_feedback": "La **biodiversidad** tiene tres niveles: genética, de especies y de ecosistemas. Perder el hábitat los borra a los tres."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Llano del barrio",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "La barda parte el llano",
+                "right": "Fragmentación"
+              },
+              {
+                "left": "Pasos que unen los pedazos",
+                "right": "Corredores biológicos"
+              },
+              {
+                "left": "Cruzarse solo entre parientes",
+                "right": "Menos diversidad genética"
+              },
+              {
+                "left": "Desaparece de la zona",
+                "right": "Extinción local"
+              }
+            ],
+            "completion_feedback": "La **biodiversidad** tiene tres niveles: genética, de especies y de ecosistemas. Perder el hábitat los borra a los tres."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Todos suenan igual",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Una sola variedad sembrada",
+                "right": "Monocultivo"
+              },
+              {
+                "left": "Muchas razas de maíz",
+                "right": "Diversidad genética"
+              },
+              {
+                "left": "Papa en Irlanda, siglo XIX",
+                "right": "Hambruna por uniformidad"
+              },
+              {
+                "left": "Genes de razas resistentes",
+                "right": "Reserva para mejorar"
+              }
+            ],
+            "completion_feedback": "La **biodiversidad** tiene tres niveles: genética, de especies y de ecosistemas. Perder el hábitat los borra a los tres."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué nivel de biodiversidad es?",
+            "left_label": "Minecraft",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "Ajolotes de cinco colores",
+                "right": "Diversidad genética"
+              },
+              {
+                "left": "Lobos, pandas y tortugas",
+                "right": "Diversidad de especies"
+              },
+              {
+                "left": "Jungla, desierto y pantano",
+                "right": "Diversidad de ecosistemas"
+              },
+              {
+                "left": "Talar toda la jungla",
+                "right": "Se pierden los tres"
+              }
+            ],
+            "completion_feedback": "La **biodiversidad** tiene tres niveles: genética, de especies y de ecosistemas. Perder el hábitat los borra a los tres."
+          }
+        }
+      }
+    },
+    "evolucion-darwin-y-seleccion-natural": {
+      "order_steps": {
+        "prompt": "Ordena cómo las bacterias se vuelven resistentes a un antibiótico",
+        "steps": [
+          "En la población hay bacterias con distinta resistencia",
+          "Llega el antibiótico y mata a las más débiles",
+          "Sobreviven las pocas que ya eran resistentes",
+          "Se reproducen y heredan esa resistencia",
+          "La población entera termina siendo resistente"
+        ],
+        "completion_feedback": "La variación **ya existía**: el antibiótico no crea la resistencia, solo elige a las que la traían. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Entrenamiento",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Técnica que aprende Goku",
+                "right": "No se hereda"
+              },
+              {
+                "left": "Poder de sangre del clan",
+                "right": "Se hereda"
+              },
+              {
+                "left": "8 crías que sobreviven",
+                "right": "Mayor aptitud"
+              },
+              {
+                "left": "El más fuerte, sin hijos",
+                "right": "Aptitud cero"
+              }
+            ],
+            "completion_feedback": "**Darwin**: hay variación heredable y los que dejan más descendencia pasan sus rasgos. Lo adquirido en vida no se hereda."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hijo del delantero",
+            "right_label": "En Bio",
+            "pairs": [
+              {
+                "left": "Cuádriceps de tanto entrenar",
+                "right": "Adquirido: no se hereda"
+              },
+              {
+                "left": "Patas veloces de tanto correr",
+                "right": "Lamarckismo"
+              },
+              {
+                "left": "Guepardos rápidos que cazan más",
+                "right": "Selección natural"
+              },
+              {
+                "left": "Cuellos largos que ya existían",
+                "right": "Variación previa"
+              }
+            ],
+            "completion_feedback": "**Darwin**: hay variación heredable y los que dejan más descendencia pasan sus rasgos. Lo adquirido en vida no se hereda."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dos filtros",
+            "right_label": "Selección",
+            "pairs": [
+              {
+                "left": "La agencia elige quién debuta",
+                "right": "Selección artificial"
+              },
+              {
+                "left": "El público decide sin plan",
+                "right": "Selección natural"
+              },
+              {
+                "left": "Teosinte que se volvió maíz",
+                "right": "Domesticación"
+              },
+              {
+                "left": "Picos gruesos tras la sequía",
+                "right": "Adaptación al ambiente"
+              }
+            ],
+            "completion_feedback": "**Darwin**: hay variación heredable y los que dejan más descendencia pasan sus rasgos. Lo adquirido en vida no se hereda."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Meta del juego",
+            "right_label": "Evolución",
+            "pairs": [
+              {
+                "left": "Llega un parche",
+                "right": "Cambia el ambiente"
+              },
+              {
+                "left": "Lo eligen más seguido",
+                "right": "Sube su frecuencia"
+              },
+              {
+                "left": "Quién evoluciona",
+                "right": "La población"
+              },
+              {
+                "left": "La condición que más se olvida",
+                "right": "La herencia"
+              }
+            ],
+            "completion_feedback": "**Darwin**: hay variación heredable y los que dejan más descendencia pasan sus rasgos. Lo adquirido en vida no se hereda."
+          }
+        }
+      }
+    }
+  }
+}
