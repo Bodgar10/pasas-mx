@@ -1,0 +1,706 @@
+{
+  "subject": "psicologia",
+  "topics": {
+    "la-psicologia-como-ciencia": {
+      "order_steps": {
+        "prompt": "Comprueba una idea como psicólogo",
+        "steps": [
+          "Observa algo que te intriga",
+          "Formula una hipótesis comprobable",
+          "Define variables y controla las demás",
+          "Recoge y analiza los datos",
+          "Concluye y pide que otros lo repliquen"
+        ],
+        "completion_feedback": "La psicología es **ciencia** porque no se queda en corazonadas: plantea **hipótesis**, controla **variables**, mide **datos** y busca que otros **repliquen** el resultado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reto del cazador",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Meditar mejora mi enfoque'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "Meditar o no meditar",
+                "right": "Variable independiente"
+              },
+              {
+                "left": "Errores en el test de atención",
+                "right": "Variable dependiente"
+              },
+              {
+                "left": "Misma hora y mismo test, 20 días",
+                "right": "Control"
+              }
+            ],
+            "completion_feedback": "**Hipótesis**: idea comprobable. **Variable independiente**: lo que cambias. **Variable dependiente**: lo que mides. **Control**: lo que mantienes igual. **Replicar**: que otros lo comprueben."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Análisis de Lamine",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Con más afición, regatea más'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "Estadio lleno o media entrada",
+                "right": "Variable independiente"
+              },
+              {
+                "left": "Regates completados",
+                "right": "Variable dependiente"
+              },
+              {
+                "left": "Que otro analista lo compruebe",
+                "right": "Replicación"
+              }
+            ],
+            "completion_feedback": "**Hipótesis**: idea comprobable. **Variable independiente**: lo que cambias. **Variable dependiente**: lo que mides. **Control**: lo que mantienes igual. **Replicar**: que otros lo comprueben."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reto de STAY",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Bailar reduce mi ansiedad'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "Bailar o no bailar",
+                "right": "Variable independiente"
+              },
+              {
+                "left": "Ansiedad del 1 al 10",
+                "right": "Variable dependiente"
+              },
+              {
+                "left": "Recordar solo los viernes que pegaron",
+                "right": "Sesgo de confirmación"
+              }
+            ],
+            "completion_feedback": "**Hipótesis**: idea comprobable. **Variable independiente**: lo que cambias. **Variable dependiente**: lo que mides. **Control**: lo que mantienes igual. **Replicar**: que otros lo comprueben."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jett o Reyna",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Con Jett gano más rondas'",
+                "right": "Hipótesis"
+              },
+              {
+                "left": "El agente: Jett o Reyna",
+                "right": "Variable independiente"
+              },
+              {
+                "left": "Rondas ganadas por partida",
+                "right": "Variable dependiente"
+              },
+              {
+                "left": "Mismo mapa y mismo rango",
+                "right": "Control"
+              }
+            ],
+            "completion_feedback": "**Hipótesis**: idea comprobable. **Variable independiente**: lo que cambias. **Variable dependiente**: lo que mides. **Control**: lo que mantienes igual. **Replicar**: que otros lo comprueben."
+          }
+        }
+      }
+    },
+    "corrientes-psicologicas": {
+      "order_steps": {
+        "prompt": "Ordena el surgimiento de tres corrientes",
+        "steps": [
+          "Psicoanálisis: Freud y el inconsciente (hacia 1900)",
+          "Conductismo: Watson y la conducta observable (1913)",
+          "Humanismo: Maslow y Rogers y la autorrealización (años 50)"
+        ],
+        "completion_feedback": "Primero llegó el **psicoanálisis** (inconsciente), luego el **conductismo** (premios y castigos) y después el **humanismo** y el **cognitivismo**. Cada uno es una lente distinta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Isagi en Blue Lock",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "Ego lo premia y lo elimina",
+                "right": "Conductismo"
+              },
+              {
+                "left": "Un 'hambre' que ni él entendía",
+                "right": "Psicoanálisis"
+              },
+              {
+                "left": "La metavisión procesa la jugada",
+                "right": "Cognitivismo"
+              },
+              {
+                "left": "Se vuelve su mejor versión",
+                "right": "Humanismo"
+              }
+            ],
+            "completion_feedback": "**Conductismo**: premios y castigos. **Psicoanálisis**: impulsos inconscientes. **Cognitivismo**: cómo pensamos. **Humanismo**: autorrealización. **Gestalt**: percibimos el todo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobremesa",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "El tío: fama y dinero lo empujan",
+                "right": "Conductismo"
+              },
+              {
+                "left": "La prima: un hambre de la infancia",
+                "right": "Psicoanálisis"
+              },
+              {
+                "left": "El papá: piensa la jugada antes",
+                "right": "Cognitivismo"
+              },
+              {
+                "left": "La abuela: busca su máximo",
+                "right": "Humanismo"
+              }
+            ],
+            "completion_feedback": "**Conductismo**: premios y castigos. **Psicoanálisis**: impulsos inconscientes. **Cognitivismo**: cómo pensamos. **Humanismo**: autorrealización. **Gestalt**: percibimos el todo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Una CARAT",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "La figura completa de los 13",
+                "right": "Gestalt"
+              },
+              {
+                "left": "Premios y contenido cada semana",
+                "right": "Conductismo"
+              },
+              {
+                "left": "Proyecta algo que no entiende",
+                "right": "Psicoanálisis"
+              },
+              {
+                "left": "Pertenecer y crecer como persona",
+                "right": "Humanismo"
+              }
+            ],
+            "completion_feedback": "**Conductismo**: premios y castigos. **Psicoanálisis**: impulsos inconscientes. **Cognitivismo**: cómo pensamos. **Humanismo**: autorrealización. **Gestalt**: percibimos el todo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Banner de Genshin",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "Destellos y sonidos que la premian",
+                "right": "Conductismo"
+              },
+              {
+                "left": "Llena un vacío que no reconoce",
+                "right": "Psicoanálisis"
+              },
+              {
+                "left": "Calcula mal el 0.6% del banner",
+                "right": "Cognitivismo"
+              },
+              {
+                "left": "Su build perfecta para realizarse",
+                "right": "Humanismo"
+              }
+            ],
+            "completion_feedback": "**Conductismo**: premios y castigos. **Psicoanálisis**: impulsos inconscientes. **Cognitivismo**: cómo pensamos. **Humanismo**: autorrealización. **Gestalt**: percibimos el todo."
+          }
+        }
+      }
+    },
+    "procesos-cognitivos-percepcion-memoria-atencion": {
+      "order_steps": {
+        "prompt": "Sigue el viaje de un recuerdo",
+        "steps": [
+          "Memoria sensorial: captas los símbolos un instante",
+          "Atención: lo importante pasa al corto plazo",
+          "Repaso y chunking: lo mantienes y lo agrupas",
+          "Largo plazo: queda guardado para recuperarlo"
+        ],
+        "completion_feedback": "La información viaja así: **memoria sensorial** → (con **atención**) **corto plazo** → (con **repaso** y **chunking**) **largo plazo**, de donde la **recuperas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Haki de Luffy",
+            "right_label": "Proceso",
+            "pairs": [
+              {
+                "left": "Enfocarse solo en Katakuri",
+                "right": "Atención"
+              },
+              {
+                "left": "Leer un giro de hombro",
+                "right": "Percepción"
+              },
+              {
+                "left": "Recordar choques anteriores",
+                "right": "Memoria"
+              },
+              {
+                "left": "Agrupar a los Mugiwara en bloques",
+                "right": "Chunking"
+              }
+            ],
+            "completion_feedback": "**Atención**: enfoca y filtra. **Percepción**: interpreta lo que captan los sentidos. **Memoria**: guarda y recupera. **Chunking**: agrupar en bloques. **Primacía y recencia**: inicio y final."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol del Bebote",
+            "right_label": "Proceso",
+            "pairs": [
+              {
+                "left": "Ver solo el espacio libre",
+                "right": "Atención selectiva"
+              },
+              {
+                "left": "Calcular dónde caerá el balón",
+                "right": "Percepción"
+              },
+              {
+                "left": "Un remate entrenado mil veces",
+                "right": "Memoria procedimental"
+              },
+              {
+                "left": "Saber hacia dónde suele tirar",
+                "right": "Memoria de largo plazo"
+              }
+            ],
+            "completion_feedback": "**Atención**: enfoca y filtra. **Percepción**: interpreta lo que captan los sentidos. **Memoria**: guarda y recupera. **Chunking**: agrupar en bloques. **Primacía y recencia**: inicio y final."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fancam de IVE",
+            "right_label": "Proceso",
+            "pairs": [
+              {
+                "left": "Solo viste a Wonyoung",
+                "right": "Atención selectiva"
+              },
+              {
+                "left": "Recordar el inicio y el final",
+                "right": "Primacía y recencia"
+              },
+              {
+                "left": "Dos bloques de 3 voces",
+                "right": "Chunking"
+              },
+              {
+                "left": "Practicar varios días",
+                "right": "Repaso espaciado"
+              }
+            ],
+            "completion_feedback": "**Atención**: enfoca y filtra. **Percepción**: interpreta lo que captan los sentidos. **Memoria**: guarda y recupera. **Chunking**: agrupar en bloques. **Primacía y recencia**: inicio y final."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Zelda: TotK",
+            "right_label": "Proceso",
+            "pairs": [
+              {
+                "left": "Notar el brillo de un cofre",
+                "right": "Percepción"
+              },
+              {
+                "left": "Solo esquivar al Bokoblin",
+                "right": "Atención"
+              },
+              {
+                "left": "Símbolos vistos un instante",
+                "right": "Memoria sensorial"
+              },
+              {
+                "left": "Olvidar una receta vista una vez",
+                "right": "Falta de repaso"
+              }
+            ],
+            "completion_feedback": "**Atención**: enfoca y filtra. **Percepción**: interpreta lo que captan los sentidos. **Memoria**: guarda y recupera. **Chunking**: agrupar en bloques. **Primacía y recencia**: inicio y final."
+          }
+        }
+      }
+    },
+    "etapas-del-desarrollo-humano": {
+      "order_steps": {
+        "prompt": "Ordena las crisis de Erikson",
+        "steps": [
+          "Niñez: laboriosidad vs. inferioridad",
+          "Adolescencia: identidad vs. confusión",
+          "Adultez temprana: intimidad vs. aislamiento",
+          "Adultez media: generatividad vs. estancamiento",
+          "Vejez: integridad vs. desesperación"
+        ],
+        "completion_feedback": "Erikson propone crisis en orden: **laboriosidad** (niñez), **identidad** (adolescencia), **intimidad** (adultez temprana), **generatividad** (adultez media) e **integridad** (vejez). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "Reto de Erikson",
+            "pairs": [
+              {
+                "left": "Aprender jutsus en la academia",
+                "right": "Laboriosidad"
+              },
+              {
+                "left": "Demostrar quién es tras el timeskip",
+                "right": "Identidad"
+              },
+              {
+                "left": "Formar familia con Hinata",
+                "right": "Intimidad"
+              },
+              {
+                "left": "Guiar la aldea como Hokage",
+                "right": "Generatividad"
+              }
+            ],
+            "completion_feedback": "Etapas: **niñez**, **adolescencia**, **adultez temprana**, **adultez media** y **vejez**, cada una con su reto (Erikson). El desarrollo es **físico**, **cognitivo** y **socioemocional**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Un mediocampista",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Corre menos a los 35",
+                "right": "Dimensión física"
+              },
+              {
+                "left": "Lee mejor el juego de veterano",
+                "right": "Dimensión cognitiva"
+              },
+              {
+                "left": "De capitán maneja la presión",
+                "right": "Dimensión socioemocional"
+              },
+              {
+                "left": "Pico de velocidad y potencia",
+                "right": "Adultez temprana"
+              }
+            ],
+            "completion_feedback": "Etapas: **niñez**, **adolescencia**, **adultez temprana**, **adultez media** y **vejez**, cada una con su reto (Erikson). El desarrollo es **físico**, **cognitivo** y **socioemocional**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Vida de un idol",
+            "right_label": "Reto de Erikson",
+            "pairs": [
+              {
+                "left": "Años de trainee y disciplina",
+                "right": "Laboriosidad"
+              },
+              {
+                "left": "Rookie que busca su concepto",
+                "right": "Identidad"
+              },
+              {
+                "left": "Lazos profundos y amistades",
+                "right": "Intimidad"
+              },
+              {
+                "left": "Veterano que forma a otros",
+                "right": "Generatividad"
+              }
+            ],
+            "completion_feedback": "Etapas: **niñez**, **adolescencia**, **adultez temprana**, **adultez media** y **vejez**, cada una con su reto (Erikson). El desarrollo es **físico**, **cognitivo** y **socioemocional**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Plantel en FC 26",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Canterano de 8 años",
+                "right": "Niñez"
+              },
+              {
+                "left": "Promesa de 17 años",
+                "right": "Adolescencia"
+              },
+              {
+                "left": "Titular de 27 años",
+                "right": "Adultez temprana"
+              },
+              {
+                "left": "Capitán de 35 años",
+                "right": "Adultez media"
+              }
+            ],
+            "completion_feedback": "Etapas: **niñez**, **adolescencia**, **adultez temprana**, **adultez media** y **vejez**, cada una con su reto (Erikson). El desarrollo es **físico**, **cognitivo** y **socioemocional**."
+          }
+        }
+      }
+    },
+    "la-personalidad": {
+      "order_steps": {
+        "prompt": "Distingue un rasgo de un estado",
+        "steps": [
+          "Observa una conducta: hoy tu amigo está enojado",
+          "Revisa si se repite en el tiempo y en distintas situaciones",
+          "Si se repite, es un rasgo. Si no, es un estado pasajero"
+        ],
+        "completion_feedback": "Un **rasgo** se repite en el tiempo y en distintas situaciones. Un **estado** es una reacción pasajera. La **personalidad** se arma con rasgos estables. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Freud en batalla",
+            "right_label": "Instancia",
+            "pairs": [
+              {
+                "left": "'Huye ya, no quiero morir'",
+                "right": "Ello"
+              },
+              {
+                "left": "'Sería traicionar mi deber'",
+                "right": "Superyó"
+              },
+              {
+                "left": "Decide quedarse con un plan seguro",
+                "right": "Yo"
+              },
+              {
+                "left": "El trauma oculto de Eren",
+                "right": "Inconsciente"
+              }
+            ],
+            "completion_feedback": "**Personalidad**: forma estable de ser. **Temperamento**: lo innato. **Carácter**: lo aprendido. **Rasgo**: estable. **Estado**: pasajero. Freud: **Ello**, **Yo** y **Superyó**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Un futbolista",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Inquieto y arriesgado desde niño",
+                "right": "Temperamento"
+              },
+              {
+                "left": "Disciplina aprendida en la academia",
+                "right": "Carácter"
+              },
+              {
+                "left": "Audacia en cada partido",
+                "right": "Rasgo de personalidad"
+              },
+              {
+                "left": "Temperamento + carácter",
+                "right": "Personalidad"
+              }
+            ],
+            "completion_feedback": "**Personalidad**: forma estable de ser. **Temperamento**: lo innato. **Carácter**: lo aprendido. **Rasgo**: estable. **Estado**: pasajero. Freud: **Ello**, **Yo** y **Superyó**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "Rasgo (Big Five)",
+            "pairs": [
+              {
+                "left": "Bang Chan organiza y cumple",
+                "right": "Responsabilidad"
+              },
+              {
+                "left": "Han, sociable y lleno de energía",
+                "right": "Extraversión"
+              },
+              {
+                "left": "Felix, cálido y amable",
+                "right": "Amabilidad"
+              },
+              {
+                "left": "Probar nuevos estilos musicales",
+                "right": "Apertura a la experiencia"
+              }
+            ],
+            "completion_feedback": "**Personalidad**: forma estable de ser. **Temperamento**: lo innato. **Carácter**: lo aprendido. **Rasgo**: estable. **Estado**: pasajero. Freud: **Ello**, **Yo** y **Superyó**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tu squad",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Agresivo con cualquier agente",
+                "right": "Rasgo"
+              },
+              {
+                "left": "Nervioso en su primera ranked",
+                "right": "Estado"
+              },
+              {
+                "left": "Un estilo que se repite siempre",
+                "right": "Parte de su personalidad"
+              }
+            ],
+            "completion_feedback": "**Personalidad**: forma estable de ser. **Temperamento**: lo innato. **Carácter**: lo aprendido. **Rasgo**: estable. **Estado**: pasajero. Freud: **Ello**, **Yo** y **Superyó**."
+          }
+        }
+      }
+    },
+    "emociones-y-motivacion": {
+      "order_steps": {
+        "prompt": "Sube la pirámide de Maslow de Bellingham",
+        "steps": [
+          "Fisiológicas: dormir y comer bien",
+          "Seguridad: un contrato estable",
+          "Afiliación: sentirse parte del vestidor",
+          "Reconocimiento: ganar el Balón de Oro",
+          "Autorrealización: ser su mejor versión"
+        ],
+        "completion_feedback": "La pirámide de **Maslow** va de abajo hacia arriba: **fisiológicas**, **seguridad**, **afiliación**, **reconocimiento** y **autorrealización**. Sin las básicas, no se sube. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hechicero furioso",
+            "right_label": "Paso de la IE",
+            "pairs": [
+              {
+                "left": "Reconoce 'estoy cegado por la rabia'",
+                "right": "Autoconciencia"
+              },
+              {
+                "left": "Respira y baja la intensidad",
+                "right": "Autorregulación"
+              },
+              {
+                "left": "Recuerda su meta: proteger",
+                "right": "Automotivación"
+              },
+              {
+                "left": "Entiende el miedo de sus aliados",
+                "right": "Empatía"
+              }
+            ],
+            "completion_feedback": "**Emoción**: componentes fisiológico, cognitivo y conductual. **Inteligencia emocional**: reconocer y regular lo que sientes. **Motivación intrínseca**: por gusto. **Extrínseca**: por premio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Un jugador",
+            "right_label": "Nivel de Maslow",
+            "pairs": [
+              {
+                "left": "Dieta y horas de sueño",
+                "right": "Fisiológica"
+              },
+              {
+                "left": "Contrato largo y estable",
+                "right": "Seguridad"
+              },
+              {
+                "left": "Sentirse parte del equipo",
+                "right": "Afiliación"
+              },
+              {
+                "left": "Ganar el premio al mejor jugador",
+                "right": "Reconocimiento"
+              }
+            ],
+            "completion_feedback": "**Emoción**: componentes fisiológico, cognitivo y conductual. **Inteligencia emocional**: reconocer y regular lo que sientes. **Motivación intrínseca**: por gusto. **Extrínseca**: por premio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fans de IVE",
+            "right_label": "Motivación",
+            "pairs": [
+              {
+                "left": "Bailar por puro gusto",
+                "right": "Intrínseca"
+              },
+              {
+                "left": "Subir covers por los likes",
+                "right": "Extrínseca"
+              },
+              {
+                "left": "'¿Lo haría aunque nadie me premiara?'",
+                "right": "Pregunta clave"
+              }
+            ],
+            "completion_feedback": "**Emoción**: componentes fisiológico, cognitivo y conductual. **Inteligencia emocional**: reconocer y regular lo que sientes. **Motivación intrínseca**: por gusto. **Extrínseca**: por premio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Victoria Magistral",
+            "right_label": "Componente",
+            "pairs": [
+              {
+                "left": "Pulso acelerado y manos sudorosas",
+                "right": "Fisiológico"
+              },
+              {
+                "left": "Pensar 'puedo ganar esto'",
+                "right": "Cognitivo"
+              },
+              {
+                "left": "Gritar y celebrar",
+                "right": "Conductual"
+              },
+              {
+                "left": "'Es solo un juego, no es real'",
+                "right": "Reinterpretar la emoción"
+              }
+            ],
+            "completion_feedback": "**Emoción**: componentes fisiológico, cognitivo y conductual. **Inteligencia emocional**: reconocer y regular lo que sientes. **Motivación intrínseca**: por gusto. **Extrínseca**: por premio."
+          }
+        }
+      }
+    }
+  }
+}
