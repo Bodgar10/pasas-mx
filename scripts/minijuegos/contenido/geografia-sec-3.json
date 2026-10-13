@@ -1,0 +1,1131 @@
+{
+  "subject": "geografia-sec-3",
+  "topics": {
+    "recursos-naturales-y-su-distribucion": {
+      "order_steps": {
+        "prompt": "Ordena cómo aprovechar un bosque de forma sustentable",
+        "steps": [
+          "Identifica el recurso: un bosque renovable",
+          "Tala solo una parte, no todo de golpe",
+          "Reforesta lo que cortaste",
+          "Deja que se regenere para el futuro"
+        ],
+        "completion_feedback": "Usar **sin agotar**: así un recurso renovable alcanza también para las futuras generaciones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los recursos muestra cada cosa?",
+            "left_label": "Grand Line",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Isla de invierno",
+                "right": "Hielo y pieles"
+              },
+              {
+                "left": "Isla de verano",
+                "right": "Frutas tropicales"
+              },
+              {
+                "left": "Isla volcánica",
+                "right": "Minerales raros"
+              },
+              {
+                "left": "Ninguna isla tiene de todo",
+                "right": "Distribución desigual"
+              }
+            ],
+            "completion_feedback": "Los recursos están **repartidos de forma desigual** según el clima, el relieve y el suelo; por eso los países comercian y deben cuidarlos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los recursos muestra cada cosa?",
+            "left_label": "Canteras del mundo",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Lo que a un país le sobra",
+                "right": "Se exporta"
+              },
+              {
+                "left": "Lo que a un país le falta",
+                "right": "Se importa"
+              },
+              {
+                "left": "Países que se necesitan",
+                "right": "Interdependencia"
+              },
+              {
+                "left": "Disputas por petróleo o agua",
+                "right": "Conflictos por recursos"
+              }
+            ],
+            "completion_feedback": "Los recursos están **repartidos de forma desigual** según el clima, el relieve y el suelo; por eso los países comercian y deben cuidarlos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los recursos muestra cada cosa?",
+            "left_label": "Merch de BLACKPINK",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Petróleo del plástico",
+                "right": "No renovable"
+              },
+              {
+                "left": "Algodón de las camisetas",
+                "right": "Renovable"
+              },
+              {
+                "left": "Papel de los bosques",
+                "right": "Renovable si se reforesta"
+              }
+            ],
+            "completion_feedback": "Los recursos están **repartidos de forma desigual** según el clima, el relieve y el suelo; por eso los países comercian y deben cuidarlos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea sobre los recursos muestra cada cosa?",
+            "left_label": "Biomas",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Bosque",
+                "right": "Madera"
+              },
+              {
+                "left": "Capas más profundas",
+                "right": "Diamantes"
+              },
+              {
+                "left": "Desierto",
+                "right": "Arena y cactus"
+              },
+              {
+                "left": "Bioma frío",
+                "right": "Hielo"
+              }
+            ],
+            "completion_feedback": "Los recursos están **repartidos de forma desigual** según el clima, el relieve y el suelo; por eso los países comercian y deben cuidarlos."
+          }
+        }
+      }
+    },
+    "sectores-economicos-en-el-mundo": {
+      "order_steps": {
+        "prompt": "Ordena la cadena de una camiseta de BLACKPINK",
+        "steps": [
+          "Se cultiva el algodón en el campo",
+          "Se hila y se teje la tela",
+          "Se corta, se cose y se estampa",
+          "Se vende en la tienda y se envía"
+        ],
+        "completion_feedback": "Del **primario** (cultivar) al **secundario** (fabricar) y al **terciario** (vender y enviar): cada eslabón es un sector. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿A qué sector económico pertenece cada actividad?",
+            "left_label": "Sombrero de Paja",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Pescar y cultivar",
+                "right": "Sector primario"
+              },
+              {
+                "left": "Franky fabrica el barco",
+                "right": "Sector secundario"
+              },
+              {
+                "left": "Sanji cocina para todos",
+                "right": "Sector terciario"
+              }
+            ],
+            "completion_feedback": "¿Obtiene de la naturaleza, transforma o da un servicio? Esa pregunta te dice el **sector**: primario, secundario o terciario."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿A qué sector económico pertenece cada actividad?",
+            "left_label": "Detrás del partido",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Ganadero que cría reses",
+                "right": "Primario"
+              },
+              {
+                "left": "Obrero que fabrica balones",
+                "right": "Secundario"
+              },
+              {
+                "left": "Comentarista y taquillero",
+                "right": "Terciario"
+              },
+              {
+                "left": "Analista de datos con software",
+                "right": "Cuaternario"
+              }
+            ],
+            "completion_feedback": "¿Obtiene de la naturaleza, transforma o da un servicio? Esa pregunta te dice el **sector**: primario, secundario o terciario."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿A qué sector económico pertenece cada actividad?",
+            "left_label": "Camiseta oficial",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Cultivar el algodón",
+                "right": "Primario: obtener"
+              },
+              {
+                "left": "Coser la camiseta",
+                "right": "Secundario: transformar"
+              },
+              {
+                "left": "Enviarla a tu casa",
+                "right": "Terciario: servicio"
+              }
+            ],
+            "completion_feedback": "¿Obtiene de la naturaleza, transforma o da un servicio? Esa pregunta te dice el **sector**: primario, secundario o terciario."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿A qué sector económico pertenece cada actividad?",
+            "left_label": "Servidor Minecraft",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Minar hierro y talar",
+                "right": "Primario"
+              },
+              {
+                "left": "Fundir y craftear espadas",
+                "right": "Secundario"
+              },
+              {
+                "left": "Montar una tienda",
+                "right": "Terciario"
+              }
+            ],
+            "completion_feedback": "¿Obtiene de la naturaleza, transforma o da un servicio? Esa pregunta te dice el **sector**: primario, secundario o terciario."
+          }
+        }
+      }
+    },
+    "comercio-internacional-y-bloques-economicos": {
+      "order_steps": {
+        "prompt": "Ordena cómo un bloque económico cambia el comercio",
+        "steps": [
+          "Sin acuerdo, cada producto paga arancel",
+          "Varios países forman un bloque",
+          "Eliminan los aranceles entre ellos",
+          "Comercian más y más barato entre socios"
+        ],
+        "completion_feedback": "Quitar **aranceles** entre socios abarata y multiplica el comercio, pero los de fuera quedan en desventaja. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto del comercio internacional es cada cosa?",
+            "left_label": "Alianza de islas",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Comparte el euro",
+                "right": "Unión Europea"
+              },
+              {
+                "left": "México, EE.UU. y Canadá",
+                "right": "T-MEC"
+              },
+              {
+                "left": "Bloque de Sudamérica",
+                "right": "Mercosur"
+              },
+              {
+                "left": "Cuenca del Pacífico",
+                "right": "APEC"
+              }
+            ],
+            "completion_feedback": "Los países **exportan** lo que les sobra e **importan** lo que les falta; los **bloques** quitan aranceles entre socios."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto del comercio internacional es cada cosa?",
+            "left_label": "Clubes asociados",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Vender sin aranceles a socios",
+                "right": "Mercado más grande"
+              },
+              {
+                "left": "Importados más baratos",
+                "right": "Ventaja al consumidor"
+              },
+              {
+                "left": "Negocios locales que no compiten",
+                "right": "Riesgo a empresas pequeñas"
+              },
+              {
+                "left": "Depender de los socios",
+                "right": "Dependencia económica"
+              }
+            ],
+            "completion_feedback": "Los países **exportan** lo que les sobra e **importan** lo que les falta; los **bloques** quitan aranceles entre socios."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto del comercio internacional es cada cosa?",
+            "left_label": "Merch de BTS",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Vender discos al extranjero",
+                "right": "Exportar"
+              },
+              {
+                "left": "Comprar lo que no produces",
+                "right": "Importar"
+              },
+              {
+                "left": "Exportar más que importar",
+                "right": "Superávit"
+              },
+              {
+                "left": "Importar más que exportar",
+                "right": "Déficit"
+              }
+            ],
+            "completion_feedback": "Los países **exportan** lo que les sobra e **importan** lo que les falta; los **bloques** quitan aranceles entre socios."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto del comercio internacional es cada cosa?",
+            "left_label": "Estudios aliados",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Impuesto a lo importado",
+                "right": "Arancel"
+              },
+              {
+                "left": "Quitar aranceles entre socios",
+                "right": "Bloque económico"
+              },
+              {
+                "left": "Los de fuera siguen pagando",
+                "right": "Desventaja externa"
+              }
+            ],
+            "completion_feedback": "Los países **exportan** lo que les sobra e **importan** lo que les falta; los **bloques** quitan aranceles entre socios."
+          }
+        }
+      }
+    },
+    "desigualdad-economica-mundial": {
+      "order_steps": {
+        "prompt": "Ordena cómo se forma la brecha entre países",
+        "steps": [
+          "Un país es colonia explotada por siglos",
+          "Al independizarse solo exporta materias primas baratas",
+          "Importa productos caros y se endeuda",
+          "Paga intereses y le falta para invertir"
+        ],
+        "completion_feedback": "La brecha se **acumula**: el pasado colonial, la dependencia y la deuda se encadenan. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la desigualdad muestra cada cosa?",
+            "left_label": "Islas desiguales",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Isla rica junto a isla pobre",
+                "right": "Desigualdad entre países"
+              },
+              {
+                "left": "Oro y hambre en la misma isla",
+                "right": "Desigualdad interna"
+              },
+              {
+                "left": "Metas de la ONU contra la pobreza",
+                "right": "ODS"
+              },
+              {
+                "left": "Escuelas y hospitales para todos",
+                "right": "Educación y salud"
+              }
+            ],
+            "completion_feedback": "La desigualdad existe **entre países y dentro de ellos**; tiene causas históricas y actuales, y se mide con el **PIB per cápita** y el **IDH**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la desigualdad muestra cada cosa?",
+            "left_label": "Clubes gigantes",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "No cubrir comida ni vivienda",
+                "right": "Pobreza"
+              },
+              {
+                "left": "Irse a un país más rico",
+                "right": "Migración"
+              },
+              {
+                "left": "Sin escuela ni médico",
+                "right": "Falta de servicios"
+              },
+              {
+                "left": "Tensión por las diferencias",
+                "right": "Conflicto social"
+              }
+            ],
+            "completion_feedback": "La desigualdad existe **entre países y dentro de ellos**; tiene causas históricas y actuales, y se mide con el **PIB per cápita** y el **IDH**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la desigualdad muestra cada cosa?",
+            "left_label": "Dos fans",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Siglos como colonia explotada",
+                "right": "Pasado colonial"
+              },
+              {
+                "left": "Vender minerales sin procesar",
+                "right": "Depender de materias primas"
+              },
+              {
+                "left": "Pagar intereses enormes",
+                "right": "Deuda externa"
+              },
+              {
+                "left": "Poca escuela y tecnología",
+                "right": "Falta de acceso"
+              }
+            ],
+            "completion_feedback": "La desigualdad existe **entre países y dentro de ellos**; tiene causas históricas y actuales, y se mide con el **PIB per cápita** y el **IDH**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea sobre la desigualdad muestra cada cosa?",
+            "left_label": "Skins y V-Bucks",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Riqueza por habitante",
+                "right": "PIB per cápita"
+              },
+              {
+                "left": "Ingreso, educación y salud",
+                "right": "IDH"
+              },
+              {
+                "left": "Países con mucha riqueza",
+                "right": "Países desarrollados"
+              },
+              {
+                "left": "Países con poca riqueza",
+                "right": "Países en desarrollo"
+              }
+            ],
+            "completion_feedback": "La desigualdad existe **entre países y dentro de ellos**; tiene causas históricas y actuales, y se mide con el **PIB per cápita** y el **IDH**."
+          }
+        }
+      }
+    },
+    "problemas-ambientales-globales": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa cuando arrasas un bosque",
+        "steps": [
+          "Talas todos los árboles",
+          "Los animales pierden su hábitat",
+          "Desaparecen especies: se pierde biodiversidad"
+        ],
+        "completion_feedback": "Un daño **arrastra** a otro: sin bosque no hay hábitat, y sin hábitat se pierden especies. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué problema o solución ambiental es cada cosa?",
+            "left_label": "Isla sanada",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Energía solar y eólica",
+                "right": "Energías limpias"
+              },
+              {
+                "left": "Plantar árboles",
+                "right": "Reforestación"
+              },
+              {
+                "left": "Reducir la basura",
+                "right": "Reciclaje"
+              },
+              {
+                "left": "Países que se comprometen",
+                "right": "Acuerdo de París"
+              }
+            ],
+            "completion_feedback": "Los problemas ambientales son **globales** y están conectados; enfrentarlos requiere energías limpias, reforestar, reciclar y **cooperación**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué problema o solución ambiental es cada cosa?",
+            "left_label": "Basura del estadio",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Humo de los autos",
+                "right": "Contaminación del aire"
+              },
+              {
+                "left": "Botellas en el río",
+                "right": "Contaminación del agua"
+              },
+              {
+                "left": "Basura en el piso",
+                "right": "Contaminación del suelo"
+              }
+            ],
+            "completion_feedback": "Los problemas ambientales son **globales** y están conectados; enfrentarlos requiere energías limpias, reforestar, reciclar y **cooperación**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué problema o solución ambiental es cada cosa?",
+            "left_label": "Gira mundial",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Aviones y camiones de la gira",
+                "right": "Queman combustibles fósiles"
+              },
+              {
+                "left": "CO₂ en la atmósfera",
+                "right": "Gas de efecto invernadero"
+              },
+              {
+                "left": "CO₂ que genera una actividad",
+                "right": "Huella de carbono"
+              },
+              {
+                "left": "Polos que se derriten",
+                "right": "Efecto del calentamiento"
+              }
+            ],
+            "completion_feedback": "Los problemas ambientales son **globales** y están conectados; enfrentarlos requiere energías limpias, reforestar, reciclar y **cooperación**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué problema o solución ambiental es cada cosa?",
+            "left_label": "Mundo arrasado",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Talar todo el bosque",
+                "right": "Deforestación"
+              },
+              {
+                "left": "Animales sin hábitat",
+                "right": "Pérdida de biodiversidad"
+              },
+              {
+                "left": "Aire y agua sucios",
+                "right": "Contaminación"
+              },
+              {
+                "left": "Clima alterado",
+                "right": "Cambio climático"
+              }
+            ],
+            "completion_feedback": "Los problemas ambientales son **globales** y están conectados; enfrentarlos requiere energías limpias, reforestar, reciclar y **cooperación**."
+          }
+        }
+      }
+    },
+    "cambio-climatico": {
+      "order_steps": {
+        "prompt": "Ordena por qué el planeta se está calentando",
+        "steps": [
+          "Quemamos combustibles fósiles y talamos bosques",
+          "Aumentan el CO₂ y el metano en la atmósfera",
+          "Esos gases atrapan más calor del Sol",
+          "Sube la temperatura y el clima cambia"
+        ],
+        "completion_feedback": "Causas **humanas**, más gases y más calor atrapado: por eso el cambio actual es tan rápido. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio climático es cada cosa?",
+            "left_label": "Punk Hazard",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Cambiar a energía solar",
+                "right": "Mitigación"
+              },
+              {
+                "left": "Ciudades listas para inundaciones",
+                "right": "Adaptación"
+              },
+              {
+                "left": "Países que limitan el calentamiento",
+                "right": "Acuerdo de París"
+              }
+            ],
+            "completion_feedback": "El cambio climático es una alteración **duradera** del clima por los gases que liberamos; se enfrenta **mitigando** sus causas y **adaptándonos** a sus efectos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio climático es cada cosa?",
+            "left_label": "Calor en la cancha",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Autos y aviones",
+                "right": "Quema de combustibles fósiles"
+              },
+              {
+                "left": "Talar bosques",
+                "right": "Deforestación"
+              },
+              {
+                "left": "Vacas y reses en masa",
+                "right": "Ganadería intensiva"
+              },
+              {
+                "left": "Cambio rápido causado por humanos",
+                "right": "Origen antropogénico"
+              }
+            ],
+            "completion_feedback": "El cambio climático es una alteración **duradera** del clima por los gases que liberamos; se enfrenta **mitigando** sus causas y **adaptándonos** a sus efectos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio climático es cada cosa?",
+            "left_label": "Gira bajo el clima",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Conciertos con calor récord",
+                "right": "Olas de calor"
+              },
+              {
+                "left": "Fechas pospuestas por lluvias",
+                "right": "Tormentas e inundaciones"
+              },
+              {
+                "left": "Ciudades sin agua",
+                "right": "Sequías"
+              },
+              {
+                "left": "Sedes costeras en riesgo",
+                "right": "Sube el nivel del mar"
+              }
+            ],
+            "completion_feedback": "El cambio climático es una alteración **duradera** del clima por los gases que liberamos; se enfrenta **mitigando** sus causas y **adaptándonos** a sus efectos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio climático es cada cosa?",
+            "left_label": "Reglas de Valorant",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Una ronda que sale mal",
+                "right": "Tiempo: un momento"
+              },
+              {
+                "left": "Calurosa desde hace décadas",
+                "right": "Clima: largo plazo"
+              },
+              {
+                "left": "Reglas que cambian para siempre",
+                "right": "Cambio climático"
+              }
+            ],
+            "completion_feedback": "El cambio climático es una alteración **duradera** del clima por los gases que liberamos; se enfrenta **mitigando** sus causas y **adaptándonos** a sus efectos."
+          }
+        }
+      }
+    },
+    "gestion-de-riesgos-y-desastres": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo de gestión de riesgos",
+        "steps": [
+          "Antes: prevenir y hacer simulacros",
+          "Durante: evacuar y rescatar",
+          "Después: reconstruir y restablecer servicios",
+          "Analizar qué falló para prevenir mejor"
+        ],
+        "completion_feedback": "Es un **ciclo**: lo que aprendes después de un desastre mejora la prevención del siguiente. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de la gestión de riesgos es cada cosa?",
+            "left_label": "Las murallas",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Sismo que sacude una ciudad",
+                "right": "Amenaza natural"
+              },
+              {
+                "left": "Incendio por un descuido",
+                "right": "Amenaza antrópica"
+              },
+              {
+                "left": "Muralla y plan de evacuación",
+                "right": "Reducir vulnerabilidad"
+              },
+              {
+                "left": "Amenaza que golpea y daña",
+                "right": "Desastre"
+              }
+            ],
+            "completion_feedback": "El **riesgo** combina la amenaza con la vulnerabilidad; se reduce **antes**, se responde **durante** y se reconstruye **después**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de la gestión de riesgos es cada cosa?",
+            "left_label": "Plan por etapas",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Simulacros y construir seguro",
+                "right": "Antes: prevención"
+              },
+              {
+                "left": "Evacuar y rescatar",
+                "right": "Durante: respuesta"
+              },
+              {
+                "left": "Reconstruir casas",
+                "right": "Después: recuperación"
+              }
+            ],
+            "completion_feedback": "El **riesgo** combina la amenaza con la vulnerabilidad; se reduce **antes**, se responde **durante** y se reconstruye **después**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de la gestión de riesgos es cada cosa?",
+            "left_label": "Concierto seguro",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Elegir un recinto seguro",
+                "right": "Prevención"
+              },
+              {
+                "left": "Reforzar estructuras",
+                "right": "Mitigación"
+              },
+              {
+                "left": "Ensayar la evacuación",
+                "right": "Simulacro"
+              },
+              {
+                "left": "Quien coordina en México",
+                "right": "Protección Civil"
+              }
+            ],
+            "completion_feedback": "El **riesgo** combina la amenaza con la vulnerabilidad; se reduce **antes**, se responde **durante** y se reconstruye **después**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de la gestión de riesgos es cada cosa?",
+            "left_label": "Noche en Minecraft",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "La noche con monstruos",
+                "right": "Amenaza"
+              },
+              {
+                "left": "Sin refugio ni armadura",
+                "right": "Vulnerabilidad"
+              },
+              {
+                "left": "Probabilidad de morir",
+                "right": "Riesgo"
+              },
+              {
+                "left": "Los monstruos te alcanzan",
+                "right": "Desastre"
+              }
+            ],
+            "completion_feedback": "El **riesgo** combina la amenaza con la vulnerabilidad; se reduce **antes**, se responde **durante** y se reconstruye **después**."
+          }
+        }
+      }
+    },
+    "desarrollo-sustentable-y-agenda-2030": {
+      "order_steps": {
+        "prompt": "Ordena cómo funciona la Agenda 2030",
+        "steps": [
+          "En 2015, los países de la ONU la acuerdan",
+          "Fijan 17 Objetivos de Desarrollo Sostenible",
+          "Gobiernos, empresas y personas actúan",
+          "Se revisan los avances rumbo a 2030"
+        ],
+        "completion_feedback": "Un **acuerdo mundial** con metas claras y una fecha: todos aportan y se mide el avance. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del desarrollo sustentable es cada cosa?",
+            "left_label": "Mundo mejor",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Lema de la Agenda 2030",
+                "right": "No dejar a nadie atrás"
+              },
+              {
+                "left": "Agua limpia para tener salud",
+                "right": "ODS conectados"
+              },
+              {
+                "left": "Cuidar los mares",
+                "right": "Vida submarina"
+              },
+              {
+                "left": "Pensar en quienes vienen",
+                "right": "Futuras generaciones"
+              }
+            ],
+            "completion_feedback": "Desarrollo sustentable es cubrir lo de **hoy sin quitarle al futuro**; la Agenda 2030 lo concreta en **17 ODS** para no dejar a nadie atrás."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del desarrollo sustentable es cada cosa?",
+            "left_label": "Club a largo plazo",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Leyes de energía renovable",
+                "right": "Gobierno"
+              },
+              {
+                "left": "Producir sin contaminar",
+                "right": "Empresas"
+              },
+              {
+                "left": "Reciclar y ahorrar agua",
+                "right": "Ciudadanos"
+              },
+              {
+                "left": "Cuidar la cantera",
+                "right": "Pensar a largo plazo"
+              }
+            ],
+            "completion_feedback": "Desarrollo sustentable es cubrir lo de **hoy sin quitarle al futuro**; la Agenda 2030 lo concreta en **17 ODS** para no dejar a nadie atrás."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del desarrollo sustentable es cada cosa?",
+            "left_label": "Lista de metas",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Gente que pasa hambre",
+                "right": "Hambre Cero"
+              },
+              {
+                "left": "Niños sin escuela",
+                "right": "Educación de Calidad"
+              },
+              {
+                "left": "Falta de agua potable",
+                "right": "Agua Limpia"
+              },
+              {
+                "left": "Trato desigual a las mujeres",
+                "right": "Igualdad de Género"
+              }
+            ],
+            "completion_feedback": "Desarrollo sustentable es cubrir lo de **hoy sin quitarle al futuro**; la Agenda 2030 lo concreta en **17 ODS** para no dejar a nadie atrás."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del desarrollo sustentable es cada cosa?",
+            "left_label": "Granja sustentable",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Los aldeanos comercian y prosperan",
+                "right": "Pilar económico"
+              },
+              {
+                "left": "Todos tienen comida y casa",
+                "right": "Pilar social"
+              },
+              {
+                "left": "Replantan y no agotan las minas",
+                "right": "Pilar ambiental"
+              }
+            ],
+            "completion_feedback": "Desarrollo sustentable es cubrir lo de **hoy sin quitarle al futuro**; la Agenda 2030 lo concreta en **17 ODS** para no dejar a nadie atrás."
+          }
+        }
+      }
+    },
+    "organizacion-politica-del-mundo": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la organización política es cada cosa?",
+            "left_label": "Reinos de OP",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Alabasta o Dressrosa",
+                "right": "Estado soberano"
+              },
+              {
+                "left": "El Gobierno Mundial",
+                "right": "Organismo que los agrupa"
+              },
+              {
+                "left": "Una colonia se independiza",
+                "right": "Nace un país nuevo"
+              },
+              {
+                "left": "Fronteras movidas por guerras",
+                "right": "Límites que cambian"
+              }
+            ],
+            "completion_feedback": "El mundo se divide en **casi 200 Estados soberanos**, con distintas formas de gobierno, que cooperan en organismos como la **ONU**; el mapa cambia con el tiempo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la organización política es cada cosa?",
+            "left_label": "Selecciones",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Selección de cada país",
+                "right": "Estado soberano"
+              },
+              {
+                "left": "UEFA para Europa",
+                "right": "Organismo regional"
+              },
+              {
+                "left": "FIFA para todos",
+                "right": "Organismo mundial: ONU"
+              },
+              {
+                "left": "Salud a nivel mundial",
+                "right": "OMS"
+              }
+            ],
+            "completion_feedback": "El mundo se divide en **casi 200 Estados soberanos**, con distintas formas de gobierno, que cooperan en organismos como la **ONU**; el mapa cambia con el tiempo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la organización política es cada cosa?",
+            "left_label": "Gira de BTS",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "México y EE.UU.",
+                "right": "República"
+              },
+              {
+                "left": "Reino Unido y Japón",
+                "right": "Monarquía constitucional"
+              },
+              {
+                "left": "Jefe de Estado que se elige",
+                "right": "Presidente"
+              },
+              {
+                "left": "Jefe de Estado hereditario",
+                "right": "Rey o emperador"
+              }
+            ],
+            "completion_feedback": "El mundo se divide en **casi 200 Estados soberanos**, con distintas formas de gobierno, que cooperan en organismos como la **ONU**; el mapa cambia con el tiempo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la organización política es cada cosa?",
+            "left_label": "Juegos de Roblox",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "El mapa del juego",
+                "right": "Territorio"
+              },
+              {
+                "left": "Jugadores que lo habitan",
+                "right": "Población"
+              },
+              {
+                "left": "El admin que manda",
+                "right": "Gobierno"
+              },
+              {
+                "left": "Nadie de fuera manda adentro",
+                "right": "Soberanía"
+              }
+            ],
+            "completion_feedback": "El mundo se divide en **casi 200 Estados soberanos**, con distintas formas de gobierno, que cooperan en organismos como la **ONU**; el mapa cambia con el tiempo."
+          }
+        }
+      }
+    },
+    "migraciones-internacionales": {
+      "order_steps": {
+        "prompt": "Ordena el viaje de un migrante",
+        "steps": [
+          "Le falta empleo en su país de origen",
+          "Decide irse a donde pagan mejor",
+          "Emigra: cruza la frontera y sale",
+          "Inmigra: se establece en el destino"
+        ],
+        "completion_feedback": "Un factor lo **expulsa**, otro lo **atrae**: emigra de su país e inmigra al de destino. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de la migración es cada cosa?",
+            "left_label": "Huida tras el muro",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Estudiar una carrera fuera",
+                "right": "Migración voluntaria"
+              },
+              {
+                "left": "Huir de la guerra",
+                "right": "Migración forzada"
+              },
+              {
+                "left": "Pedir protección en otro país",
+                "right": "Refugiado"
+              },
+              {
+                "left": "Organismo que los protege",
+                "right": "ACNUR"
+              }
+            ],
+            "completion_feedback": "Migrar es dejar tu lugar por otro: a veces por **elección** y a veces **forzado**; hay factores que **expulsan** y que **atraen**, con efectos en origen y destino."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de la migración es cada cosa?",
+            "left_label": "Fichajes",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "El país pierde a su crack",
+                "right": "Fuga de talento"
+              },
+              {
+                "left": "Dinero a la familia",
+                "right": "Remesas"
+              },
+              {
+                "left": "La liga suma talento",
+                "right": "Ganancia del destino"
+              },
+              {
+                "left": "Insultos al jugador extranjero",
+                "right": "Discriminación"
+              }
+            ],
+            "completion_feedback": "Migrar es dejar tu lugar por otro: a veces por **elección** y a veces **forzado**; hay factores que **expulsan** y que **atraen**, con efectos en origen y destino."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de la migración es cada cosa?",
+            "left_label": "Aprendices",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Falta de empleo en su país",
+                "right": "Expulsión: economía"
+              },
+              {
+                "left": "Violencia en su ciudad",
+                "right": "Expulsión: inseguridad"
+              },
+              {
+                "left": "Mejores salarios en otro país",
+                "right": "Atracción: empleo"
+              },
+              {
+                "left": "Reunirse con su familia",
+                "right": "Atracción: familia"
+              }
+            ],
+            "completion_feedback": "Migrar es dejar tu lugar por otro: a veces por **elección** y a veces **forzado**; hay factores que **expulsan** y que **atraen**, con efectos en origen y destino."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de la migración es cada cosa?",
+            "left_label": "Tormenta Fortnite",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Sale de su país",
+                "right": "Emigrante"
+              },
+              {
+                "left": "Entra a otro país",
+                "right": "Inmigrante"
+              },
+              {
+                "left": "Cruzar fronteras entre países",
+                "right": "Migración internacional"
+              }
+            ],
+            "completion_feedback": "Migrar es dejar tu lugar por otro: a veces por **elección** y a veces **forzado**; hay factores que **expulsan** y que **atraen**, con efectos en origen y destino."
+          }
+        }
+      }
+    }
+  }
+}
