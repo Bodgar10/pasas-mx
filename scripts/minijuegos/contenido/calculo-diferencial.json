@@ -1,0 +1,1067 @@
+{
+  "subject": "calculo-diferencial",
+  "topics": {
+    "limites-concepto-y-propiedades": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas lim(x→6) (x² − 36)/(x − 6)",
+        "steps": [
+          "Sustituye x = 6: da 0/0, indeterminado",
+          "Factoriza: (x − 6)(x + 6)",
+          "Cancela (x − 6): queda x + 6",
+          "Sustituye x = 6: el límite es 12"
+        ],
+        "completion_feedback": "Un **0/0** no es la respuesta: es la señal de que hay que simplificar antes de sustituir. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Barra de Jinwoo",
+            "right_label": "Límite",
+            "pairs": [
+              {
+                "left": "Barra: 80%, 90%, 95%, 97.5%…",
+                "right": "Tiende a 100%"
+              },
+              {
+                "left": "(x² − 25)/(x − 5) con x → 5",
+                "right": "10"
+              },
+              {
+                "left": "Sustituir y obtener 0/0",
+                "right": "Indeterminado"
+              },
+              {
+                "left": "El hueco en x = 5",
+                "right": "No impide el límite"
+              }
+            ],
+            "completion_feedback": "Un **límite** es el valor al que **se dirige** la función cuando x se acerca a un punto, aunque justo ahí haya un hueco o un 0/0."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Promedio de Santi",
+            "right_label": "Límite",
+            "pairs": [
+              {
+                "left": "Un promedio que se estabiliza",
+                "right": "Límite"
+              },
+              {
+                "left": "(x² − 16)/(x − 4) con x → 4",
+                "right": "8"
+              },
+              {
+                "left": "Un hat-trick suelto",
+                "right": "No cambia la tendencia"
+              },
+              {
+                "left": "Hacia dónde va, no dónde está",
+                "right": "Idea de límite"
+              }
+            ],
+            "completion_feedback": "Un **límite** es el valor al que **se dirige** la función cuando x se acerca a un punto, aunque justo ahí haya un hueco o un 0/0."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o propiedad corresponde?",
+            "left_label": "Ensayos de SVT",
+            "right_label": "Límite",
+            "pairs": [
+              {
+                "left": "Desfase 0.5, 0.3, 0.18, 0.09…",
+                "right": "Tiende a 0"
+              },
+              {
+                "left": "3x² − 5x + 1 con x → 2",
+                "right": "3"
+              },
+              {
+                "left": "Límite de un polinomio",
+                "right": "Sustitución directa"
+              },
+              {
+                "left": "Límite de una suma",
+                "right": "Suma de los límites"
+              }
+            ],
+            "completion_feedback": "Un **límite** es el valor al que **se dirige** la función cuando x se acerca a un punto, aunque justo ahí haya un hueco o un 0/0."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Aim de Valorant",
+            "right_label": "Límite",
+            "pairs": [
+              {
+                "left": "68.5%, 68.9%, 69.4%…",
+                "right": "Tiende a 70%"
+              },
+              {
+                "left": "(x² − 9)/(x − 3) con x → 3",
+                "right": "6"
+              },
+              {
+                "left": "x² − 9",
+                "right": "(x − 3)(x + 3)"
+              },
+              {
+                "left": "En x = 3 la función no existe",
+                "right": "El límite sí: 6"
+              }
+            ],
+            "completion_feedback": "Un **límite** es el valor al que **se dirige** la función cuando x se acerca a un punto, aunque justo ahí haya un hueco o un 0/0."
+          }
+        }
+      }
+    },
+    "calculo-de-limites": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas lim(x→0) (√(x + 16) − 4)/x",
+        "steps": [
+          "Sustituye x = 0: da 0/0",
+          "Multiplica por el conjugado (√(x + 16) + 4)",
+          "Simplifica arriba: (x + 16) − 16 = x",
+          "Cancela x y sustituye: 1/(4 + 4) = 1/8"
+        ],
+        "completion_feedback": "Con una **raíz** que provoca 0/0, el **conjugado** la elimina y deja algo que sí se puede cancelar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o técnica corresponde?",
+            "left_label": "Gear 5",
+            "right_label": "Técnica",
+            "pairs": [
+              {
+                "left": "(√(x + 4) − 2)/x con x → 0",
+                "right": "1/4"
+              },
+              {
+                "left": "(√(x + 9) − 3)/x con x → 0",
+                "right": "1/6"
+              },
+              {
+                "left": "0/0 con una raíz",
+                "right": "Usa el conjugado"
+              },
+              {
+                "left": "√(x + 9) + 3",
+                "right": "Conjugado"
+              }
+            ],
+            "completion_feedback": "Para calcular límites: **sustituye** primero; si sale 0/0, **factoriza** o usa el **conjugado**; al infinito, compara los términos que **dominan**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Promedio de Mbappé",
+            "right_label": "Al infinito",
+            "pairs": [
+              {
+                "left": "(6x² − x)/(2x² + 5) con x → ∞",
+                "right": "3"
+              },
+              {
+                "left": "1/x cuando x → ∞",
+                "right": "Tiende a 0"
+              },
+              {
+                "left": "Mismo grado arriba y abajo",
+                "right": "Cociente de coeficientes"
+              },
+              {
+                "left": "Muchísimos partidos jugados",
+                "right": "Límite al infinito"
+              }
+            ],
+            "completion_feedback": "Para calcular límites: **sustituye** primero; si sale 0/0, **factoriza** o usa el **conjugado**; al infinito, compara los términos que **dominan**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o técnica corresponde?",
+            "left_label": "Drop de Baddie",
+            "right_label": "Técnica",
+            "pairs": [
+              {
+                "left": "3x² + 2x − 5 con x → 3",
+                "right": "28"
+              },
+              {
+                "left": "Curva limpia, sin huecos",
+                "right": "Sustitución directa"
+              },
+              {
+                "left": "x² con x → 3",
+                "right": "9"
+              },
+              {
+                "left": "La energía justo en el drop",
+                "right": "Valor del límite"
+              }
+            ],
+            "completion_feedback": "Para calcular límites: **sustituye** primero; si sale 0/0, **factoriza** o usa el **conjugado**; al infinito, compara los términos que **dominan**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o técnica corresponde?",
+            "left_label": "Daño de Shelly",
+            "right_label": "Técnica",
+            "pairs": [
+              {
+                "left": "(x² − 64)/(x − 8) con x → 8",
+                "right": "16"
+              },
+              {
+                "left": "(x² − 81)/(x − 9) con x → 9",
+                "right": "18"
+              },
+              {
+                "left": "0/0 sin raíces",
+                "right": "Factorizar y cancelar"
+              },
+              {
+                "left": "Acercarse por 7.9 y por 8.1",
+                "right": "Límites laterales"
+              }
+            ],
+            "completion_feedback": "Para calcular límites: **sustituye** primero; si sale 0/0, **factoriza** o usa el **conjugado**; al infinito, compara los términos que **dominan**."
+          }
+        }
+      }
+    },
+    "continuidad-de-funciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo verificas si f es continua en x = a",
+        "steps": [
+          "Revisa que f(a) exista",
+          "Calcula los límites laterales",
+          "Comprueba que coincidan: el límite existe",
+          "Verifica que el límite sea igual a f(a)"
+        ],
+        "completion_feedback": "Son **tres condiciones** en cadena: si falla una, ya hay discontinuidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de comportamiento es cada cosa?",
+            "left_label": "Dominio de Gojo",
+            "right_label": "Continuidad",
+            "pairs": [
+              {
+                "left": "Pelea fluida, sin cortes",
+                "right": "Continua"
+              },
+              {
+                "left": "Activar el dominio de golpe",
+                "right": "Discontinuidad de salto"
+              },
+              {
+                "left": "Laterales 8 y 9 en x = 4",
+                "right": "El límite no existe"
+              },
+              {
+                "left": "Dibujar sin levantar el lápiz",
+                "right": "Función continua"
+              }
+            ],
+            "completion_feedback": "Una función es **continua** en a si f(a) existe, el límite existe y **ambos coinciden**: se dibuja sin levantar el lápiz."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o qué pasa en cada caso?",
+            "left_label": "Frames del VAR",
+            "right_label": "Continuidad",
+            "pairs": [
+              {
+                "left": "(x² − 16)/(x − 4) en x = 4",
+                "right": "Hueco: evitable"
+              },
+              {
+                "left": "El límite en ese hueco",
+                "right": "8"
+              },
+              {
+                "left": "f(4) = 0/0",
+                "right": "No está definida"
+              },
+              {
+                "left": "Cronómetro que corre sin parar",
+                "right": "Continua"
+              }
+            ],
+            "completion_feedback": "Una función es **continua** en a si f(a) existe, el límite existe y **ambos coinciden**: se dibuja sin levantar el lápiz."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es o qué pasa en cada caso?",
+            "left_label": "Time-skip",
+            "right_label": "Continuidad",
+            "pairs": [
+              {
+                "left": "Plano-secuencia sin cortes",
+                "right": "Continua"
+              },
+              {
+                "left": "'3 años después'",
+                "right": "Salto"
+              },
+              {
+                "left": "Tramos x + 2 y 2x − 1 en x = 3",
+                "right": "Continua: ambos dan 5"
+              },
+              {
+                "left": "lim = f(a)",
+                "right": "Tercera condición"
+              }
+            ],
+            "completion_feedback": "Una función es **continua** en a si f(a) existe, el límite existe y **ambos coinciden**: se dibuja sin levantar el lápiz."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es o qué pasa en cada caso?",
+            "left_label": "Viaje de Link",
+            "right_label": "Continuidad",
+            "pairs": [
+              {
+                "left": "Caminar por Hyrule",
+                "right": "Continua"
+              },
+              {
+                "left": "Viaje rápido a las islas",
+                "right": "Salto"
+              },
+              {
+                "left": "(x² − 4)/(x − 2) en x = 2",
+                "right": "Hueco: límite 4"
+              },
+              {
+                "left": "f(2) no existe",
+                "right": "Falla la condición 1"
+              }
+            ],
+            "completion_feedback": "Una función es **continua** en a si f(a) existe, el límite existe y **ambos coinciden**: se dibuja sin levantar el lápiz."
+          }
+        }
+      }
+    },
+    "la-derivada-definicion-e-interpretacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo derivas f(x) = x² en x = 3 con la definición",
+        "steps": [
+          "Arma el cociente: [f(3 + h) − f(3)] / h",
+          "Expande y resta: (9 + 6h + h²) − 9 = 6h + h²",
+          "Divide entre h: 6 + h",
+          "Toma h → 0: f'(3) = 6"
+        ],
+        "completion_feedback": "Achicar h hasta **cero** convierte la rapidez promedio en rapidez **instantánea**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto vale cada cosa?",
+            "left_label": "Entreno de Deku",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "Rapidez de subida en un instante",
+                "right": "Derivada"
+              },
+              {
+                "left": "x² + 2x en x = 4",
+                "right": "f'(4) = 10"
+              },
+              {
+                "left": "Promedio de 2 semanas",
+                "right": "Razón de cambio promedio"
+              },
+              {
+                "left": "Achicar el intervalo a cero",
+                "right": "Límite h → 0"
+              }
+            ],
+            "completion_feedback": "La **derivada** es la rapidez de cambio **instantánea**: el límite de [f(x + h) − f(x)]/h cuando h → 0; es la pendiente de la tangente."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto vale cada cosa?",
+            "left_label": "Velocidad punta",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "Velocidad en un instante exacto",
+                "right": "Derivada"
+              },
+              {
+                "left": "x² + 3x en x = 2",
+                "right": "7 m/s"
+              },
+              {
+                "left": "35 m en toda la jugada",
+                "right": "Total, no rapidez"
+              },
+              {
+                "left": "Interpretación geométrica",
+                "right": "Pendiente de la tangente"
+              }
+            ],
+            "completion_feedback": "La **derivada** es la rapidez de cambio **instantánea**: el límite de [f(x + h) − f(x)]/h cuando h → 0; es la pendiente de la tangente."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto vale cada cosa?",
+            "left_label": "Boletos de TXT",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "3x² en x = 2",
+                "right": "12"
+              },
+              {
+                "left": "Boletos por minuto ahora mismo",
+                "right": "Razón instantánea"
+              },
+              {
+                "left": "Boletos de una hora ÷ 60",
+                "right": "Razón promedio"
+              },
+              {
+                "left": "[f(x + h) − f(x)] / h",
+                "right": "Cociente de diferencias"
+              }
+            ],
+            "completion_feedback": "La **derivada** es la rapidez de cambio **instantánea**: el límite de [f(x + h) − f(x)]/h cuando h → 0; es la pendiente de la tangente."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto vale cada cosa?",
+            "left_label": "Sprint de Mbappé",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "x² en x = 4",
+                "right": "8 m/s"
+              },
+              {
+                "left": "Medir frame a frame",
+                "right": "Intervalo cada vez menor"
+              },
+              {
+                "left": "Metros totales del sprint",
+                "right": "Posición, no rapidez"
+              },
+              {
+                "left": "Rapidez justo al rebasar",
+                "right": "Velocidad instantánea"
+              }
+            ],
+            "completion_feedback": "La **derivada** es la rapidez de cambio **instantánea**: el límite de [f(x + h) − f(x)]/h cuando h → 0; es la pendiente de la tangente."
+          }
+        }
+      }
+    },
+    "reglas-de-derivacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo derivas f(x) = x² · (3x + 1) con la regla del producto",
+        "steps": [
+          "Identifica u = x² y v = 3x + 1",
+          "Deriva cada una: u' = 2x y v' = 3",
+          "Aplica u'v + uv': 2x(3x + 1) + x² · 3",
+          "Simplifica: f'(x) = 9x² + 2x"
+        ],
+        "completion_feedback": "En un producto **no** basta derivar cada factor y multiplicar: se usa **u'v + uv'**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cuál es la derivada de cada término?",
+            "left_label": "Formas de Tanjiro",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "4x³",
+                "right": "12x²"
+              },
+              {
+                "left": "2x²",
+                "right": "4x"
+              },
+              {
+                "left": "−7x",
+                "right": "−7"
+              },
+              {
+                "left": "5",
+                "right": "0"
+              }
+            ],
+            "completion_feedback": "Las **reglas** ahorran el límite: xⁿ → n·xⁿ⁻¹, las constantes se vuelven 0 y una suma se deriva **término por término**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cuál es la derivada o la regla?",
+            "left_label": "Penal practicado",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "2x³",
+                "right": "6x²"
+              },
+              {
+                "left": "4x²",
+                "right": "8x"
+              },
+              {
+                "left": "xⁿ",
+                "right": "n·xⁿ⁻¹"
+              },
+              {
+                "left": "Una constante como 9",
+                "right": "0"
+              }
+            ],
+            "completion_feedback": "Las **reglas** ahorran el límite: xⁿ → n·xⁿ⁻¹, las constantes se vuelven 0 y una suma se deriva **término por término**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Plantillas SVT",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "7x² + 4x − 6",
+                "right": "14x + 4"
+              },
+              {
+                "left": "7x²",
+                "right": "14x"
+              },
+              {
+                "left": "Derivar término por término",
+                "right": "Regla de la suma"
+              },
+              {
+                "left": "Definición con límite",
+                "right": "Editar desde cero"
+              }
+            ],
+            "completion_feedback": "Las **reglas** ahorran el límite: xⁿ → n·xⁿ⁻¹, las constantes se vuelven 0 y una suma se deriva **término por término**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuál es la derivada?",
+            "left_label": "Recetas guardadas",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "5x³ − 3x² + 2x − 12",
+                "right": "15x² − 6x + 2"
+              },
+              {
+                "left": "−3x²",
+                "right": "−6x"
+              },
+              {
+                "left": "2x",
+                "right": "2"
+              },
+              {
+                "left": "−12",
+                "right": "0"
+              }
+            ],
+            "completion_feedback": "Las **reglas** ahorran el límite: xⁿ → n·xⁿ⁻¹, las constantes se vuelven 0 y una suma se deriva **término por término**."
+          }
+        }
+      }
+    },
+    "regla-de-la-cadena": {
+      "order_steps": {
+        "prompt": "Ordena cómo derivas f(x) = (4x − 1)³",
+        "steps": [
+          "Identifica afuera ( )³ y adentro u = 4x − 1",
+          "Deriva afuera sin tocar adentro: 3(4x − 1)²",
+          "Deriva adentro: u' = 4",
+          "Multiplica: f'(x) = 12(4x − 1)²"
+        ],
+        "completion_feedback": "El último eslabón, **multiplicar por la derivada de adentro**, es el que casi todos olvidan. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Hollow Purple",
+            "right_label": "Cadena",
+            "pairs": [
+              {
+                "left": "(x² + 4)³",
+                "right": "6x(x² + 4)²"
+              },
+              {
+                "left": "Derivada de x² + 4",
+                "right": "2x: no es constante"
+              },
+              {
+                "left": "Energía → técnica → daño",
+                "right": "Eslabones"
+              },
+              {
+                "left": "Rapidez total de la cadena",
+                "right": "Producto de rapideces"
+              }
+            ],
+            "completion_feedback": "**Regla de la cadena**: derivas lo de **afuera** dejando igual lo de adentro y **multiplicas** por la derivada de lo de **adentro**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la derivada es cada cosa?",
+            "left_label": "Remate de Jude",
+            "right_label": "Cadena",
+            "pairs": [
+              {
+                "left": "(2x + 7)⁵",
+                "right": "10(2x + 7)⁴"
+              },
+              {
+                "left": "Derivar afuera",
+                "right": "5(2x + 7)⁴"
+              },
+              {
+                "left": "Derivar adentro",
+                "right": "2"
+              },
+              {
+                "left": "Olvidar el · 2",
+                "right": "Error común"
+              }
+            ],
+            "completion_feedback": "**Regla de la cadena**: derivas lo de **afuera** dejando igual lo de adentro y **multiplicas** por la derivada de lo de **adentro**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué derivada o parte corresponde?",
+            "left_label": "Trend de NewJeans",
+            "right_label": "Cadena",
+            "pairs": [
+              {
+                "left": "(5x − 2)³",
+                "right": "15(5x − 2)²"
+              },
+              {
+                "left": "Fans por vista × vistas por reel",
+                "right": "Multiplicar eslabones"
+              },
+              {
+                "left": "u = 5x − 2",
+                "right": "Función de adentro"
+              },
+              {
+                "left": "( )³",
+                "right": "Función de afuera"
+              }
+            ],
+            "completion_feedback": "**Regla de la cadena**: derivas lo de **afuera** dejando igual lo de adentro y **multiplicas** por la derivada de lo de **adentro**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Sensibilidad",
+            "right_label": "Cadena",
+            "pairs": [
+              {
+                "left": "(3x + 1)⁴",
+                "right": "12(3x + 1)³"
+              },
+              {
+                "left": "Mano → cuentas → giro",
+                "right": "Dos eslabones"
+              },
+              {
+                "left": "DPI × sensibilidad",
+                "right": "Producto de razones"
+              },
+              {
+                "left": "Derivada de 3x + 1",
+                "right": "3"
+              }
+            ],
+            "completion_feedback": "**Regla de la cadena**: derivas lo de **afuera** dejando igual lo de adentro y **multiplicas** por la derivada de lo de **adentro**."
+          }
+        }
+      }
+    },
+    "derivadas-de-funciones-trigonometricas-exponenciales-y-logaritmicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo derivas f(x) = e^(3x²)",
+        "steps": [
+          "Identifica la externa eᵘ y la interna u = 3x²",
+          "Deriva la externa: e^(3x²)",
+          "Deriva la interna: 6x",
+          "Multiplica: f'(x) = 6x · e^(3x²)"
+        ],
+        "completion_feedback": "Aunque **eˣ se deriva en sí misma**, si hay algo en el exponente aplicas la cadena. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Poder de Jinwoo",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "eˣ",
+                "right": "eˣ: ella misma"
+              },
+              {
+                "left": "e^(6x)",
+                "right": "6e^(6x)"
+              },
+              {
+                "left": "Crece según lo que ya tiene",
+                "right": "Exponencial"
+              },
+              {
+                "left": "ln x",
+                "right": "1/x"
+              }
+            ],
+            "completion_feedback": "**(sen x)' = cos x**, **(cos x)' = −sen x**, **(eˣ)' = eˣ** y **(ln x)' = 1/x**; si hay algo adentro, multiplica por su derivada."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Tiro con comba",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "sen x",
+                "right": "cos x"
+              },
+              {
+                "left": "cos x",
+                "right": "−sen x"
+              },
+              {
+                "left": "cos(5x)",
+                "right": "−5 sen(5x)"
+              },
+              {
+                "left": "En los extremos de la desviación",
+                "right": "Rapidez cero"
+              }
+            ],
+            "completion_feedback": "**(sen x)' = cos x**, **(cos x)' = −sen x**, **(eˣ)' = eˣ** y **(ln x)' = 1/x**; si hay algo adentro, multiplica por su derivada."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Seguidores de IVE",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "ln(2x)",
+                "right": "1/x"
+              },
+              {
+                "left": "e^(2x)",
+                "right": "2e^(2x)"
+              },
+              {
+                "left": "Más fans, más rápido crecen",
+                "right": "Exponencial"
+              },
+              {
+                "left": "Derivada de ln(u)",
+                "right": "u' / u"
+              }
+            ],
+            "completion_feedback": "**(sen x)' = cos x**, **(cos x)' = −sen x**, **(eˣ)' = eˣ** y **(ln x)' = 1/x**; si hay algo adentro, multiplica por su derivada."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Geometry Dash",
+            "right_label": "Derivada",
+            "pairs": [
+              {
+                "left": "sen(4x)",
+                "right": "4 cos(4x)"
+              },
+              {
+                "left": "Derivada del seno",
+                "right": "El coseno"
+              },
+              {
+                "left": "Plataforma en su punto más alto",
+                "right": "Velocidad cero"
+              },
+              {
+                "left": "Plataforma cruzando el centro",
+                "right": "Velocidad máxima"
+              }
+            ],
+            "completion_feedback": "**(sen x)' = cos x**, **(cos x)' = −sen x**, **(eˣ)' = eˣ** y **(ln x)' = 1/x**; si hay algo adentro, multiplica por su derivada."
+          }
+        }
+      }
+    },
+    "maximos-y-minimos-optimizacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras el máximo de f(x) = −x² + 6x",
+        "steps": [
+          "Deriva: f'(x) = −2x + 6",
+          "Iguala a cero: x = 3",
+          "Segunda derivada: −2 < 0, es máximo",
+          "Evalúa: f(3) = 9"
+        ],
+        "completion_feedback": "Donde la derivada vale **cero** la curva deja de subir o bajar; la segunda derivada dice si es cima o valle. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Sangre de Power",
+            "right_label": "Optimización",
+            "pairs": [
+              {
+                "left": "−6x + 18 = 0",
+                "right": "x = 3"
+              },
+              {
+                "left": "f''(x) = −6",
+                "right": "Es un máximo"
+              },
+              {
+                "left": "f(3) con −3x² + 18x + 4",
+                "right": "31"
+              },
+              {
+                "left": "Ni poca ni mucha sangre",
+                "right": "Punto óptimo"
+              }
+            ],
+            "completion_feedback": "Para **optimizar**: deriva, iguala a **cero** para hallar el punto crítico y usa la **segunda derivada**: negativa es máximo; positiva, mínimo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Costo de la jugada",
+            "right_label": "Optimización",
+            "pairs": [
+              {
+                "left": "x² − 10x + 40",
+                "right": "Mínimo en x = 5"
+              },
+              {
+                "left": "f''(x) = 2",
+                "right": "Es un mínimo"
+              },
+              {
+                "left": "f(5)",
+                "right": "15"
+              },
+              {
+                "left": "Donde f'(x) = 0",
+                "right": "Punto crítico"
+              }
+            ],
+            "completion_feedback": "Para **optimizar**: deriva, iguala a **cero** para hallar el punto crítico y usa la **segunda derivada**: negativa es máximo; positiva, mínimo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Estreno de SKZ",
+            "right_label": "Optimización",
+            "pairs": [
+              {
+                "left": "−2x² + 12x + 3",
+                "right": "Máximo en la hora 3"
+              },
+              {
+                "left": "Interacciones máximas",
+                "right": "21"
+              },
+              {
+                "left": "Antes de la hora ideal",
+                "right": "Las vistas suben"
+              },
+              {
+                "left": "Después de la hora ideal",
+                "right": "Las vistas bajan"
+              }
+            ],
+            "completion_feedback": "Para **optimizar**: deriva, iguala a **cero** para hallar el punto crítico y usa la **segunda derivada**: negativa es máximo; positiva, mínimo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Build de Hu Tao",
+            "right_label": "Optimización",
+            "pairs": [
+              {
+                "left": "−x² + 8x + 5",
+                "right": "Máximo en x = 4"
+              },
+              {
+                "left": "DPS máximo",
+                "right": "21"
+              },
+              {
+                "left": "Todo en CRIT Rate",
+                "right": "Extremo que no conviene"
+              },
+              {
+                "left": "Pendiente de mejora igual a 0",
+                "right": "Punto óptimo"
+              }
+            ],
+            "completion_feedback": "Para **optimizar**: deriva, iguala a **cero** para hallar el punto crítico y usa la **segunda derivada**: negativa es máximo; positiva, mínimo."
+          }
+        }
+      }
+    },
+    "razon-de-cambio-y-problemas-de-aplicacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas dA/dt si el radio crece 2 m/s cuando r = 5 m",
+        "steps": [
+          "Escribe la fórmula: A = πr²",
+          "Deriva respecto a t: dA/dt = 2πr · dr/dt",
+          "Sustituye: 2π(5)(2)",
+          "Resultado: 20π ≈ 62.8 m²/s"
+        ],
+        "completion_feedback": "Primero se **deriva** la fórmula general y **al final** se sustituyen los valores del instante. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Carga del Rasengan",
+            "right_label": "Razón de cambio",
+            "pairs": [
+              {
+                "left": "C(t) = 2t³ − 3t² + 7",
+                "right": "C'(t) = 6t² − 6t"
+              },
+              {
+                "left": "C'(2)",
+                "right": "12 unidades/s"
+              },
+              {
+                "left": "El +7 al derivar",
+                "right": "Desaparece"
+              },
+              {
+                "left": "El chakra acumulado",
+                "right": "C(t): el total"
+              }
+            ],
+            "completion_feedback": "La **razón de cambio** es la derivada respecto al tiempo; si dos cantidades están ligadas por una fórmula, sus rapideces se relacionan con la **cadena**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Balón y sombra",
+            "right_label": "Razón de cambio",
+            "pairs": [
+              {
+                "left": "V = (4/3)πr³",
+                "right": "dV/dt = 4πr² · dr/dt"
+              },
+              {
+                "left": "r = 6 cm y dr/dt = 0.5",
+                "right": "72π cm³/s"
+              },
+              {
+                "left": "La punta de la sombra",
+                "right": "Más rápida que él"
+              },
+              {
+                "left": "Poste, jugador y sombra",
+                "right": "Triángulos semejantes"
+              }
+            ],
+            "completion_feedback": "La **razón de cambio** es la derivada respecto al tiempo; si dos cantidades están ligadas por una fórmula, sus rapideces se relacionan con la **cadena**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Vistas de NewJeans",
+            "right_label": "Razón de cambio",
+            "pairs": [
+              {
+                "left": "S(t) = t³ − 2t² + 50",
+                "right": "S'(t) = 3t² − 4t"
+              },
+              {
+                "left": "S'(4)",
+                "right": "32 mil por día"
+              },
+              {
+                "left": "V(t)",
+                "right": "Total de vistas"
+              },
+              {
+                "left": "V'(t)",
+                "right": "Velocidad del contador"
+              }
+            ],
+            "completion_feedback": "La **razón de cambio** es la derivada respecto al tiempo; si dos cantidades están ligadas por una fórmula, sus rapideces se relacionan con la **cadena**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué derivada o idea corresponde?",
+            "left_label": "Tormenta",
+            "right_label": "Razón de cambio",
+            "pairs": [
+              {
+                "left": "A = πr²",
+                "right": "dA/dt = 2πr · dr/dt"
+              },
+              {
+                "left": "r = 10 m y dr/dt = 3",
+                "right": "60π m²/s"
+              },
+              {
+                "left": "Con el radio grande",
+                "right": "El área cae más rápido"
+              },
+              {
+                "left": "Radio y área ligados",
+                "right": "Razones relacionadas"
+              }
+            ],
+            "completion_feedback": "La **razón de cambio** es la derivada respecto al tiempo; si dos cantidades están ligadas por una fórmula, sus rapideces se relacionan con la **cadena**."
+          }
+        }
+      }
+    }
+  }
+}
