@@ -1,0 +1,711 @@
+{
+  "subject": "ciencias-comunicacion",
+  "topics": {
+    "el-proceso-de-la-comunicacion": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de un mensaje",
+        "steps": [
+          "El emisor tiene una idea que comunicar",
+          "La codifica en un mensaje: palabras, gestos o señas",
+          "El mensaje viaja por un canal",
+          "El receptor lo recibe y lo decodifica",
+          "El receptor responde: eso es la retroalimentación"
+        ],
+        "completion_feedback": "Si falla un solo paso, o el **ruido** interfiere, el mensaje llega mal. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Den Den Mushi",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Nami da el aviso",
+                "right": "Emisor"
+              },
+              {
+                "left": "'¡Viene la Marina!'",
+                "right": "Mensaje"
+              },
+              {
+                "left": "El caracol-teléfono",
+                "right": "Canal"
+              },
+              {
+                "left": "Estática por la tormenta",
+                "right": "Ruido"
+              }
+            ],
+            "completion_feedback": "En el **proceso de la comunicación**, un **emisor** codifica un **mensaje** que viaja por un **canal** hasta un **receptor**, que lo decodifica y responde."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Señas del árbitro",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Las señas oficiales",
+                "right": "Código"
+              },
+              {
+                "left": "La vista de todo el estadio",
+                "right": "Canal visual"
+              },
+              {
+                "left": "Jugadores y afición",
+                "right": "Receptores"
+              },
+              {
+                "left": "Mbappé va a cobrar",
+                "right": "Retroalimentación"
+              }
+            ],
+            "completion_feedback": "En el **proceso de la comunicación**, un **emisor** codifica un **mensaje** que viaja por un **canal** hasta un **receptor**, que lo decodifica y responde."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Texto del K-drama",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "La protagonista nerviosa",
+                "right": "Emisora"
+              },
+              {
+                "left": "'Eres especial...' ambiguo",
+                "right": "Mensaje mal codificado"
+              },
+              {
+                "left": "Su mal humor al leerlo",
+                "right": "Ruido"
+              },
+              {
+                "left": "Un frío 'De nada'",
+                "right": "Retroalimentación"
+              }
+            ],
+            "completion_feedback": "En el **proceso de la comunicación**, un **emisor** codifica un **mensaje** que viaja por un **canal** hasta un **receptor**, que lo decodifica y responde."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Call de Valorant",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Sova ve a los enemigos",
+                "right": "Emisor"
+              },
+              {
+                "left": "Micrófono y audífonos",
+                "right": "Canal"
+              },
+              {
+                "left": "El grito de tu hermano",
+                "right": "Ruido"
+              },
+              {
+                "left": "Rotas para ayudar",
+                "right": "Retroalimentación"
+              }
+            ],
+            "completion_feedback": "En el **proceso de la comunicación**, un **emisor** codifica un **mensaje** que viaja por un **canal** hasta un **receptor**, que lo decodifica y responde."
+          }
+        }
+      }
+    },
+    "modelos-de-comunicacion": {
+      "order_steps": {
+        "prompt": "Ordena las cinco preguntas del modelo de Lasswell",
+        "steps": [
+          "¿Quién? El emisor",
+          "¿Dice qué? El mensaje",
+          "¿Por qué canal? El medio",
+          "¿A quién? El receptor",
+          "¿Con qué efecto? El resultado"
+        ],
+        "completion_feedback": "Lasswell sigue el **recorrido del mensaje**, del emisor al efecto: por eso el orden importa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tráiler o diálogo",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Tráiler para millones de fans",
+                "right": "Modelo lineal"
+              },
+              {
+                "left": "Gojo aclara las dudas de Yuji",
+                "right": "Modelo interactivo"
+              },
+              {
+                "left": "Pregunta clave para distinguirlos",
+                "right": "¿Hay retroalimentación?"
+              }
+            ],
+            "completion_feedback": "El modelo **lineal** (Lasswell, Shannon y Weaver) va en una dirección; el **circular** de Schramm suma retroalimentación y campo de experiencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Orden del DT",
+            "right_label": "Lasswell",
+            "pairs": [
+              {
+                "left": "El DT",
+                "right": "¿Quién?"
+              },
+              {
+                "left": "'Presionen más arriba'",
+                "right": "¿Dice qué?"
+              },
+              {
+                "left": "Grito y cadena del capitán",
+                "right": "¿Por qué canal?"
+              },
+              {
+                "left": "El equipo cambia la presión",
+                "right": "¿Con qué efecto?"
+              }
+            ],
+            "completion_feedback": "El modelo **lineal** (Lasswell, Shannon y Weaver) va en una dirección; el **circular** de Schramm suma retroalimentación y campo de experiencia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Weverse y lives",
+            "right_label": "Schramm",
+            "pairs": [
+              {
+                "left": "Fans que comentan",
+                "right": "Retroalimentación"
+              },
+              {
+                "left": "Wonyoung lee y responde",
+                "right": "Roles que se intercambian"
+              },
+              {
+                "left": "Bromas internas del fandom",
+                "right": "Campo de experiencia"
+              },
+              {
+                "left": "Ida y vuelta constante",
+                "right": "Modelo circular"
+              }
+            ],
+            "completion_feedback": "El modelo **lineal** (Lasswell, Shannon y Weaver) va en una dirección; el **circular** de Schramm suma retroalimentación y campo de experiencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fortnite",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Aviso de mantenimiento",
+                "right": "Lineal"
+              },
+              {
+                "left": "Chat de voz con tu squad",
+                "right": "Interactivo"
+              },
+              {
+                "left": "Shannon y Weaver",
+                "right": "Incluye el ruido"
+              },
+              {
+                "left": "Schramm",
+                "right": "Campo de experiencia"
+              }
+            ],
+            "completion_feedback": "El modelo **lineal** (Lasswell, Shannon y Weaver) va en una dirección; el **circular** de Schramm suma retroalimentación y campo de experiencia."
+          }
+        }
+      }
+    },
+    "medios-masivos-de-comunicacion": {
+      "order_steps": {
+        "prompt": "Ordena los medios masivos según su aparición",
+        "steps": [
+          "Prensa: periódicos impresos",
+          "Cine",
+          "Radio",
+          "Televisión",
+          "Internet y redes sociales"
+        ],
+        "completion_feedback": "Cada medio nuevo sumó algo: imagen en movimiento, sonido a distancia, imagen y sonido en casa y, al final, **interactividad**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "JJK en medios",
+            "right_label": "Medio",
+            "pairs": [
+              {
+                "left": "Capítulos en revista",
+                "right": "Impreso"
+              },
+              {
+                "left": "Episodios en Crunchyroll",
+                "right": "Streaming digital"
+              },
+              {
+                "left": "Película en sala",
+                "right": "Cine"
+              },
+              {
+                "left": "Memes de los fans",
+                "right": "Redes sociales"
+              }
+            ],
+            "completion_feedback": "Los **medios masivos** llevan un mismo mensaje a públicos enormes: impresos, auditivos, audiovisuales y digitales, cada uno con su lenguaje."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Penal polémico",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Decidir de qué se hablará hoy",
+                "right": "Agenda-setting"
+              },
+              {
+                "left": "'Robo' vs. 'decisión correcta'",
+                "right": "Encuadre"
+              },
+              {
+                "left": "Fans furiosos por su canal",
+                "right": "Influencia en la opinión"
+              },
+              {
+                "left": "Leer varios medios",
+                "right": "Pensamiento crítico"
+              }
+            ],
+            "completion_feedback": "Los **medios masivos** llevan un mismo mensaje a públicos enormes: impresos, auditivos, audiovisuales y digitales, cada uno con su lenguaje."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "BLACKPINK",
+            "right_label": "Naturaleza",
+            "pairs": [
+              {
+                "left": "Entrevista en revista",
+                "right": "Impreso"
+              },
+              {
+                "left": "Canción en la radio",
+                "right": "Auditivo"
+              },
+              {
+                "left": "Show en TV musical",
+                "right": "Audiovisual"
+              },
+              {
+                "left": "MV en YouTube con comentarios",
+                "right": "Digital"
+              }
+            ],
+            "completion_feedback": "Los **medios masivos** llevan un mismo mensaje a públicos enormes: impresos, auditivos, audiovisuales y digitales, cada uno con su lenguaje."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tráiler de GTA",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Spot en televisión",
+                "right": "Audiovisual masivo"
+              },
+              {
+                "left": "Mensaje privado a un amigo",
+                "right": "Interpersonal"
+              },
+              {
+                "left": "Artículo en portal de noticias",
+                "right": "Masivo digital"
+              },
+              {
+                "left": "Mención en la radio",
+                "right": "Masivo auditivo"
+              }
+            ],
+            "completion_feedback": "Los **medios masivos** llevan un mismo mensaje a públicos enormes: impresos, auditivos, audiovisuales y digitales, cada uno con su lenguaje."
+          }
+        }
+      }
+    },
+    "lenguaje-audiovisual": {
+      "order_steps": {
+        "prompt": "Ordena los planos del más abierto al más cerrado",
+        "steps": [
+          "Plano general: todo el escenario",
+          "Plano medio: de la cintura hacia arriba",
+          "Primer plano: el rostro",
+          "Plano detalle: un objeto o una parte pequeña"
+        ],
+        "completion_feedback": "Entre más **cerrado** el plano, más **emoción e intimidad**; entre más abierto, más **contexto**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gojo sin venda",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Sus ojos azules en pantalla",
+                "right": "Primer plano"
+              },
+              {
+                "left": "Golpes con cortes veloces",
+                "right": "Montaje rápido"
+              },
+              {
+                "left": "La acción se detiene al impacto",
+                "right": "Plano congelado"
+              },
+              {
+                "left": "Música épica que sube",
+                "right": "Sonido"
+              }
+            ],
+            "completion_feedback": "El **lenguaje audiovisual** combina planos, ángulos, color, montaje y sonido para transmitir emociones sin necesidad de palabras."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Golazo de Lamine",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Toda la cancha a la vista",
+                "right": "Plano general"
+              },
+              {
+                "left": "Su cara al celebrar",
+                "right": "Primer plano"
+              },
+              {
+                "left": "Repetición despacio",
+                "right": "Cámara lenta"
+              },
+              {
+                "left": "Toma desde abajo",
+                "right": "Contrapicado"
+              }
+            ],
+            "completion_feedback": "El **lenguaje audiovisual** combina planos, ángulos, color, montaje y sonido para transmitir emociones sin necesidad de palabras."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "MV de SKZ",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Cámara desde abajo en el rap",
+                "right": "Contrapicado"
+              },
+              {
+                "left": "Los 8 en la coreo completa",
+                "right": "Plano general"
+              },
+              {
+                "left": "Cortes al ritmo del beat",
+                "right": "Montaje rítmico"
+              },
+              {
+                "left": "Luz cálida en el puente",
+                "right": "Color e iluminación"
+              }
+            ],
+            "completion_feedback": "El **lenguaje audiovisual** combina planos, ángulos, color, montaje y sonido para transmitir emociones sin necesidad de palabras."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cinemáticas",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Hyrule entero en pantalla",
+                "right": "Plano general"
+              },
+              {
+                "left": "La angustia de Zelda",
+                "right": "Primer plano"
+              },
+              {
+                "left": "Spider-Man visto desde arriba",
+                "right": "Picado"
+              },
+              {
+                "left": "Luz oscura y rojiza",
+                "right": "Color: peligro"
+              }
+            ],
+            "completion_feedback": "El **lenguaje audiovisual** combina planos, ángulos, color, montaje y sonido para transmitir emociones sin necesidad de palabras."
+          }
+        }
+      }
+    },
+    "comunicacion-digital-y-redes-sociales": {
+      "order_steps": {
+        "prompt": "Ordena cómo cambió la forma de comunicarnos",
+        "steps": [
+          "Uno a uno: una carta o una llamada",
+          "Uno a muchos: la TV y la radio",
+          "Muchos a muchos: las redes sociales"
+        ],
+        "completion_feedback": "Las redes no borran a los medios: suman que **cualquiera puede emitir** y responder. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fandom anime",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "Fan que dibuja y sube su arte",
+                "right": "Prosumidor"
+              },
+              {
+                "left": "Fans de México y Filipinas a la vez",
+                "right": "Ubicuidad"
+              },
+              {
+                "left": "El clip se comparte miles de veces",
+                "right": "Viralidad"
+              },
+              {
+                "left": "Tendencia en minutos",
+                "right": "Inmediatez"
+              }
+            ],
+            "completion_feedback": "La **comunicación digital** es de **muchos a muchos**: el usuario es **prosumidor** y todo es interactivo, viral, inmediato y global."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol en redes",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "Meme hecho por un aficionado",
+                "right": "Prosumidor"
+              },
+              {
+                "left": "Respuestas y citas al tuit",
+                "right": "Interactividad"
+              },
+              {
+                "left": "Antes de acabar la repetición",
+                "right": "Inmediatez"
+              },
+              {
+                "left": "Cuentas de otros idiomas",
+                "right": "Alcance global"
+              }
+            ],
+            "completion_feedback": "La **comunicación digital** es de **muchos a muchos**: el usuario es **prosumidor** y todo es interactivo, viral, inmediato y global."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bunnies en X",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "Hilos analizando cada frame",
+                "right": "Interactividad"
+              },
+              {
+                "left": "Hashtag en tendencia mundial",
+                "right": "Viralidad"
+              },
+              {
+                "left": "Fans traducen del coreano",
+                "right": "Prosumidores"
+              },
+              {
+                "left": "Teaser a medianoche, visto al instante",
+                "right": "Inmediatez"
+              }
+            ],
+            "completion_feedback": "La **comunicación digital** es de **muchos a muchos**: el usuario es **prosumidor** y todo es interactivo, viral, inmediato y global."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Clip de Fortnite",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "El clip llega a gente afín",
+                "right": "Algoritmo"
+              },
+              {
+                "left": "Stitch de otros usuarios",
+                "right": "Interactividad"
+              },
+              {
+                "left": "Miles de vistas en horas",
+                "right": "Viralidad"
+              },
+              {
+                "left": "Tú creas y también consumes",
+                "right": "Prosumidor"
+              }
+            ],
+            "completion_feedback": "La **comunicación digital** es de **muchos a muchos**: el usuario es **prosumidor** y todo es interactivo, viral, inmediato y global."
+          }
+        }
+      }
+    },
+    "etica-y-responsabilidad-en-los-medios": {
+      "order_steps": {
+        "prompt": "Ordena el filtro ético antes de publicar",
+        "steps": [
+          "Revisa la fuente: ¿es confiable?",
+          "Verifica que el hecho sea cierto",
+          "Piensa en el daño a las personas involucradas",
+          "Decide: publicar, aclarar que es rumor o no publicar"
+        ],
+        "completion_feedback": "**Verificar antes de publicar** protege a tu audiencia y a las personas de las que hablas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuentas de anime",
+            "right_label": "Falta o acierto",
+            "pairs": [
+              {
+                "left": "Subir capítulos filtrados",
+                "right": "Daña a los creadores"
+              },
+              {
+                "left": "Borrar la firma del fan art",
+                "right": "Plagio"
+              },
+              {
+                "left": "'LO QUE NADIE QUIERE QUE VEAS'",
+                "right": "Sensacionalismo"
+              },
+              {
+                "left": "Lo correcto con el fan art",
+                "right": "Dar crédito al autor"
+              }
+            ],
+            "completion_feedback": "La **ética** en los medios exige **veracidad**, respeto a la **dignidad** y la **privacidad**, y dar **crédito**; la **responsabilidad** es asumir las consecuencias."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bombas falsas",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Inventar el fichaje de Mbappé",
+                "right": "Falta de veracidad"
+              },
+              {
+                "left": "Otros medios copian sin revisar",
+                "right": "No verificar"
+              },
+              {
+                "left": "Foto editada de un gesto",
+                "right": "Manipulación"
+              },
+              {
+                "left": "Etiquetarlo como rumor",
+                "right": "Decisión responsable"
+              }
+            ],
+            "completion_feedback": "La **ética** en los medios exige **veracidad**, respeto a la **dignidad** y la **privacidad**, y dar **crédito**; la **responsabilidad** es asumir las consecuencias."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Portal de K-pop",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Nadie revisó quién era el hombre",
+                "right": "Falta de verificación"
+              },
+              {
+                "left": "Titular bomba para clics",
+                "right": "Sensacionalismo"
+              },
+              {
+                "left": "Exhibir su vida personal",
+                "right": "Falta a la privacidad"
+              },
+              {
+                "left": "Dañar su reputación con mentiras",
+                "right": "Difamación"
+              }
+            ],
+            "completion_feedback": "La **ética** en los medios exige **veracidad**, respeto a la **dignidad** y la **privacidad**, y dar **crédito**; la **responsabilidad** es asumir las consecuencias."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Clip del streamer",
+            "right_label": "Principio",
+            "pairs": [
+              {
+                "left": "Recortar sin el contexto",
+                "right": "Veracidad"
+              },
+              {
+                "left": "Humillar al jugador",
+                "right": "Dignidad"
+              },
+              {
+                "left": "Subirlo sin preguntar",
+                "right": "Consentimiento"
+              },
+              {
+                "left": "'EL PEOR JUGADOR DE LA HISTORIA'",
+                "right": "Clickbait"
+              }
+            ],
+            "completion_feedback": "La **ética** en los medios exige **veracidad**, respeto a la **dignidad** y la **privacidad**, y dar **crédito**; la **responsabilidad** es asumir las consecuencias."
+          }
+        }
+      }
+    }
+  }
+}
