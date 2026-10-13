@@ -1,0 +1,952 @@
+{
+  "subject": "cultura-digital",
+  "topics": {
+    "hardware-y-software": {
+      "order_steps": {
+        "prompt": "Ordena lo que necesita una PC recién armada para jugar Valorant",
+        "steps": [
+          "Conectar las piezas físicas: el hardware",
+          "Instalar el sistema operativo (Windows)",
+          "Instalar los drivers de la tarjeta gráfica",
+          "Instalar el Riot Client y Valorant"
+        ],
+        "completion_feedback": "El **hardware** no hace nada solo: el **software** le dice qué hacer, empezando por el sistema operativo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estación de dibujo",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Tableta y lápiz óptico",
+                "right": "Hardware"
+              },
+              {
+                "left": "Clip Studio Paint",
+                "right": "Software de dibujo"
+              },
+              {
+                "left": "Sistema de la laptop",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": "Drivers de la tableta",
+                "right": "Hacen que el SO la reconozca"
+              }
+            ],
+            "completion_feedback": "El **hardware** es lo físico que se puede tocar; el **software** son los programas e instrucciones que lo hacen funcionar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "VAR del estadio",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Cámaras de alta velocidad",
+                "right": "Hardware"
+              },
+              {
+                "left": "Programa que traza la línea",
+                "right": "Software"
+              },
+              {
+                "left": "Prueba para distinguirlos",
+                "right": "¿Se puede tocar?"
+              },
+              {
+                "left": "Sistema de la Smart TV",
+                "right": "Sistema operativo"
+              }
+            ],
+            "completion_feedback": "El **hardware** es lo físico que se puede tocar; el **software** son los programas e instrucciones que lo hacen funcionar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dance cover",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Cámara, tripié y luces",
+                "right": "Hardware"
+              },
+              {
+                "left": "CapCut para editar",
+                "right": "Software"
+              },
+              {
+                "left": "Android del celular",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": "Equipo sin programas",
+                "right": "No logra publicar nada"
+              }
+            ],
+            "completion_feedback": "El **hardware** es lo físico que se puede tocar; el **software** son los programas e instrucciones que lo hacen funcionar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "PC gamer",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "GPU, RAM y monitor",
+                "right": "Hardware"
+              },
+              {
+                "left": "Valorant y el Riot Client",
+                "right": "Software"
+              },
+              {
+                "left": "Windows 11",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": "Drivers de la GPU",
+                "right": "Software que la hace rendir"
+              }
+            ],
+            "completion_feedback": "El **hardware** es lo físico que se puede tocar; el **software** son los programas e instrucciones que lo hacen funcionar."
+          }
+        }
+      }
+    },
+    "sistemas-operativos-y-gestion-de-archivos": {
+      "order_steps": {
+        "prompt": "Ordena cómo guardas una tarea en su lugar",
+        "steps": [
+          "Crea la carpeta principal 'Escuela'",
+          "Dentro, crea la subcarpeta 'Matemáticas'",
+          "Revisa la extensión del archivo: .pdf",
+          "Muévelo: la ruta queda Escuela → Matemáticas → tarea1.pdf"
+        ],
+        "completion_feedback": "Carpeta, subcarpeta y archivo forman la **ruta**: la dirección exacta donde vive cada archivo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Laptop de fan",
+            "right_label": "Archivo",
+            "pairs": [
+              {
+                "left": "Capítulo del manga",
+                "right": ".pdf"
+              },
+              {
+                "left": "Episodio descargado",
+                "right": ".mp4"
+              },
+              {
+                "left": "Fanart de Luffy",
+                "right": ".png"
+              },
+              {
+                "left": "One Piece → Manga → cap1050.pdf",
+                "right": "Ruta"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** controla la computadora y te deja crear, mover y borrar **archivos**, que se ordenan en **carpetas** formando una **ruta**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Carpeta del scout",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Video del gol",
+                "right": ".mp4"
+              },
+              {
+                "left": "Currículum deportivo",
+                "right": ".pdf"
+              },
+              {
+                "left": "'Goles' dentro de 'Scout 2025'",
+                "right": "Subcarpeta"
+              },
+              {
+                "left": "Windows",
+                "right": "Sistema operativo"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** controla la computadora y te deja crear, mover y borrar **archivos**, que se ordenan en **carpetas** formando una **ruta**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Galería de IVE",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Photocard de Rei",
+                "right": ".jpg"
+              },
+              {
+                "left": "Fancam de Gaeul",
+                "right": ".mp4"
+              },
+              {
+                "left": "Canción 'I AM'",
+                "right": ".mp3"
+              },
+              {
+                "left": "Android o iOS",
+                "right": "Sistema operativo"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** controla la computadora y te deja crear, mover y borrar **archivos**, que se ordenan en **carpetas** formando una **ruta**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Archivos Minecraft",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Captura de tu base",
+                "right": ".png"
+              },
+              {
+                "left": "Clip del Ender Dragon",
+                "right": ".mp4"
+              },
+              {
+                "left": "Shader descargado",
+                "right": ".zip"
+              },
+              {
+                "left": "Mods → Shaders → shader.zip",
+                "right": "Ruta"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** controla la computadora y te deja crear, mover y borrar **archivos**, que se ordenan en **carpetas** formando una **ruta**."
+          }
+        }
+      }
+    },
+    "procesador-de-texto": {
+      "order_steps": {
+        "prompt": "Ordena cómo le das formato al título de tu documento",
+        "steps": [
+          "Escribe el título 'CONVOCATORIA'",
+          "Selecciona el título",
+          "Aplica negritas y céntralo",
+          "Guarda el archivo como convocatoria.docx"
+        ],
+        "completion_feedback": "Para dar formato primero **seleccionas** el texto y luego aplicas la herramienta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reseña de JJK",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Título que resalte",
+                "right": "Negritas"
+              },
+              {
+                "left": "Top 3 de arcos en orden",
+                "right": "Lista numerada"
+              },
+              {
+                "left": "Corregir 'Sukana' en todo",
+                "right": "Buscar y reemplazar"
+              },
+              {
+                "left": "Título en medio de la hoja",
+                "right": "Alineación centrada"
+              }
+            ],
+            "completion_feedback": "Un **procesador de texto** (Word, Google Docs) crea, edita y da **formato**: negritas, alineación, listas y **Buscar y reemplazar**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Convocatoria",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Indicaciones sin orden",
+                "right": "Lista con viñetas"
+              },
+              {
+                "left": "Jugadores convocados",
+                "right": "Lista numerada"
+              },
+              {
+                "left": "Hora de citación destacada",
+                "right": "Subrayado"
+              },
+              {
+                "left": "Archivo de Word",
+                "right": ".docx"
+              }
+            ],
+            "completion_feedback": "Un **procesador de texto** (Word, Google Docs) crea, edita y da **formato**: negritas, alineación, listas y **Buscar y reemplazar**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Plan del concierto",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Que todas editen a la vez",
+                "right": "Google Docs"
+              },
+              {
+                "left": "Agenda con horas en orden",
+                "right": "Lista numerada"
+              },
+              {
+                "left": "Ropa que hay que llevar",
+                "right": "Viñetas"
+              },
+              {
+                "left": "Corregir 'SATY' en todo",
+                "right": "Buscar y reemplazar"
+              }
+            ],
+            "completion_feedback": "Un **procesador de texto** (Word, Google Docs) crea, edita y da **formato**: negritas, alineación, listas y **Buscar y reemplazar**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reglas del torneo",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Pasos de inscripción",
+                "right": "Lista numerada"
+              },
+              {
+                "left": "Brawlers prohibidos",
+                "right": "Viñetas"
+              },
+              {
+                "left": "Fecha límite destacada",
+                "right": "Subrayado"
+              },
+              {
+                "left": "'gemmas' → 'gemas' en todo",
+                "right": "Buscar y reemplazar"
+              }
+            ],
+            "completion_feedback": "Un **procesador de texto** (Word, Google Docs) crea, edita y da **formato**: negritas, alineación, listas y **Buscar y reemplazar**."
+          }
+        }
+      }
+    },
+    "hoja-de-calculo-formulas-basicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo sacas el total de puntos con una fórmula",
+        "steps": [
+          "Escribe los datos en B2, C2 y D2",
+          "Selecciona la celda E2",
+          "Escribe =SUMA(B2:D2)",
+          "Presiona Enter: aparece el total",
+          "Arrastra la fórmula a las demás filas"
+        ],
+        "completion_feedback": "Toda fórmula empieza con **=**, y si cambias un dato, el resultado se **recalcula solo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Votación del club",
+            "right_label": "Fórmula",
+            "pairs": [
+              {
+                "left": "Total de un anime",
+                "right": "=SUMA(B2:D2)"
+              },
+              {
+                "left": "Media de calificaciones",
+                "right": "=PROMEDIO(B2:D2)"
+              },
+              {
+                "left": "Anime ganador",
+                "right": "=MAX(E2:E5)"
+              },
+              {
+                "left": "Anime con menos puntos",
+                "right": "=MIN(E2:E5)"
+              }
+            ],
+            "completion_feedback": "En una **hoja de cálculo** las fórmulas empiezan con **=**: SUMA, PROMEDIO, MAX y MIN trabajan con **celdas** y **rangos**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tabla de goleo",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "8 + 5 + 11 + 6",
+                "right": "30 goles"
+              },
+              {
+                "left": "30 ÷ 4",
+                "right": "7.5 de promedio"
+              },
+              {
+                "left": "Campeón de goleo",
+                "right": "=MAX: 11"
+              },
+              {
+                "left": "Goleo más bajo",
+                "right": "=MIN: 5"
+              }
+            ],
+            "completion_feedback": "En una **hoja de cálculo** las fórmulas empiezan con **=**: SUMA, PROMEDIO, MAX y MIN trabajan con **celdas** y **rangos**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gastos de CARAT",
+            "right_label": "Fórmula",
+            "pairs": [
+              {
+                "left": "Total gastado",
+                "right": "=SUMA(B2:B5)"
+              },
+              {
+                "left": "Gasto promedio",
+                "right": "=PROMEDIO(B2:B5)"
+              },
+              {
+                "left": "Compra más cara",
+                "right": "=MAX(B2:B5)"
+              },
+              {
+                "left": "El rango B2:B5",
+                "right": "De B2 hasta B5"
+              }
+            ],
+            "completion_feedback": "En una **hoja de cálculo** las fórmulas empiezan con **=**: SUMA, PROMEDIO, MAX y MIN trabajan con **celdas** y **rangos**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Puntos del squad",
+            "right_label": "Fórmula",
+            "pairs": [
+              {
+                "left": "Signo con que inicia",
+                "right": "="
+              },
+              {
+                "left": "Total de tres partidas",
+                "right": "=SUMA(B2:D2)"
+              },
+              {
+                "left": "Arrastrar la fórmula",
+                "right": "Ajusta el rango por fila"
+              },
+              {
+                "left": "El MVP del torneo",
+                "right": "=MAX(E2:E5)"
+              }
+            ],
+            "completion_feedback": "En una **hoja de cálculo** las fórmulas empiezan con **=**: SUMA, PROMEDIO, MAX y MIN trabajan con **celdas** y **rangos**."
+          }
+        }
+      }
+    },
+    "presentaciones-electronicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo armas una presentación",
+        "steps": [
+          "Crea el archivo y la portada",
+          "Agrega diapositivas con texto e imágenes",
+          "Aplica una plantilla para el diseño",
+          "Agrega transiciones y animaciones",
+          "Presiona Presentar para exponer"
+        ],
+        "completion_feedback": "La **transición** ocurre entre diapositivas; la **animación**, sobre un elemento dentro de una diapositiva. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Expo de One Piece",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Efecto al pasar de diapositiva",
+                "right": "Transición"
+              },
+              {
+                "left": "Nombres que aparecen uno a uno",
+                "right": "Animación"
+              },
+              {
+                "left": "Colores en todas las diapositivas",
+                "right": "Plantilla"
+              },
+              {
+                "left": "Pantalla completa",
+                "right": "Modo Presentar"
+              }
+            ],
+            "completion_feedback": "Una **presentación electrónica** es una secuencia de **diapositivas** con texto e imágenes, con **plantilla**, **transiciones** y **animaciones**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Charla táctica",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Flechas que aparecen una por una",
+                "right": "Animación"
+              },
+              {
+                "left": "Colores del equipo",
+                "right": "Plantilla"
+              },
+              {
+                "left": "Imagen de la cancha",
+                "right": "Imagen insertada"
+              },
+              {
+                "left": "Archivo guardado",
+                "right": ".pptx"
+              }
+            ],
+            "completion_feedback": "Una **presentación electrónica** es una secuencia de **diapositivas** con texto e imágenes, con **plantilla**, **transiciones** y **animaciones**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Expo de SKZ",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Fotos de los 8, una por una",
+                "right": "Animación"
+              },
+              {
+                "left": "Cambio suave entre diapositivas",
+                "right": "Transición"
+              },
+              {
+                "left": "Negro y amarillo en todas",
+                "right": "Plantilla"
+              },
+              {
+                "left": "Programa en línea",
+                "right": "Google Slides"
+              }
+            ],
+            "completion_feedback": "Una **presentación electrónica** es una secuencia de **diapositivas** con texto e imágenes, con **plantilla**, **transiciones** y **animaciones**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Guía de Genshin",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Tips que salen al dar clic",
+                "right": "Animación"
+              },
+              {
+                "left": "Desvanecer al cambiar",
+                "right": "Transición"
+              },
+              {
+                "left": "Azul y dorado en todas",
+                "right": "Plantilla"
+              },
+              {
+                "left": "Portada con Paimon",
+                "right": "Texto e imagen"
+              }
+            ],
+            "completion_feedback": "Una **presentación electrónica** es una secuencia de **diapositivas** con texto e imágenes, con **plantilla**, **transiciones** y **animaciones**."
+          }
+        }
+      }
+    },
+    "internet-navegadores-y-buscadores": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa cuando buscas algo en la web",
+        "steps": [
+          "Tu dispositivo se conecta a Internet",
+          "Abres el navegador",
+          "Escribes palabras clave en el buscador",
+          "Eliges un resultado y el navegador abre su URL"
+        ],
+        "completion_feedback": "Internet es la **carretera**, el navegador el **coche** y el buscador el **GPS**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Capítulo de OP",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Red que conecta todo",
+                "right": "Internet"
+              },
+              {
+                "left": "Mozilla Firefox",
+                "right": "Navegador"
+              },
+              {
+                "left": "Google",
+                "right": "Buscador"
+              },
+              {
+                "left": "https:// con candadito",
+                "right": "URL segura"
+              }
+            ],
+            "completion_feedback": "**Internet** es la red mundial, el **navegador** abre páginas (Chrome, Safari) y el **buscador** las encuentra (Google, Bing)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Horario del Madrid",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Microsoft Edge",
+                "right": "Navegador"
+              },
+              {
+                "left": "Módem encendido",
+                "right": "Conexión a Internet"
+              },
+              {
+                "left": "'horario Real Madrid'",
+                "right": "Palabras clave"
+              },
+              {
+                "left": "Dirección de ESPN",
+                "right": "URL"
+              }
+            ],
+            "completion_feedback": "**Internet** es la red mundial, el **navegador** abre páginas (Chrome, Safari) y el **buscador** las encuentra (Google, Bing)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "MV de NewJeans",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Safari del iPhone",
+                "right": "Navegador"
+              },
+              {
+                "left": "Wi-Fi de tu casa",
+                "right": "Conexión a Internet"
+              },
+              {
+                "left": "Google",
+                "right": "Buscador"
+              },
+              {
+                "left": "youtube.com/...",
+                "right": "URL"
+              }
+            ],
+            "completion_feedback": "**Internet** es la red mundial, el **navegador** abre páginas (Chrome, Safari) y el **buscador** las encuentra (Google, Bing)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Trucos de Valorant",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Google Chrome",
+                "right": "Programa que abre páginas"
+              },
+              {
+                "left": "Google",
+                "right": "Servicio que encuentra páginas"
+              },
+              {
+                "left": "Red mundial",
+                "right": "Internet"
+              },
+              {
+                "left": "'cómo contrar a Clove'",
+                "right": "Palabras clave"
+              }
+            ],
+            "completion_feedback": "**Internet** es la red mundial, el **navegador** abre páginas (Chrome, Safari) y el **buscador** las encuentra (Google, Bing)."
+          }
+        }
+      }
+    },
+    "ciudadania-digital-y-seguridad-en-linea": {
+      "order_steps": {
+        "prompt": "Ordena cómo reaccionas ante un mensaje sospechoso",
+        "steps": [
+          "Revisa quién lo manda y a dónde lleva el link",
+          "Detecta las señales: urgencia y premio falso",
+          "No piques ni compartas tu contraseña",
+          "Reporta y bloquea la cuenta",
+          "Activa la verificación en dos pasos"
+        ],
+        "completion_feedback": "Ningún premio real te pide tu **contraseña**: detenerte a revisar es la primera defensa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sitio pirata",
+            "right_label": "Acción o riesgo",
+            "pairs": [
+              {
+                "left": "Pide tu contraseña para leer",
+                "right": "Robo de datos"
+              },
+              {
+                "left": "'Tu dispositivo está infectado'",
+                "right": "Anuncio falso"
+              },
+              {
+                "left": "Manga Plus",
+                "right": "Fuente oficial y legal"
+              },
+              {
+                "left": "Acoso en un foro",
+                "right": "Reportar"
+              }
+            ],
+            "completion_feedback": "La **ciudadanía digital** es actuar en internet de forma segura y respetuosa: evitar el **phishing**, usar **contraseñas fuertes**, **2FA** y reportar abusos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Boletos falsos",
+            "right_label": "Acción o riesgo",
+            "pairs": [
+              {
+                "left": "80% de descuento, solo hoy",
+                "right": "Phishing"
+              },
+              {
+                "left": "https y candado",
+                "right": "Sitio verificado"
+              },
+              {
+                "left": "Comentarios racistas",
+                "right": "Reportar"
+              },
+              {
+                "left": "Clave extra al entrar",
+                "right": "2FA"
+              }
+            ],
+            "completion_feedback": "La **ciudadanía digital** es actuar en internet de forma segura y respetuosa: evitar el **phishing**, usar **contraseñas fuertes**, **2FA** y reportar abusos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "DM falso de SKZ",
+            "right_label": "Acción o riesgo",
+            "pairs": [
+              {
+                "left": "Videollamada si mandas tu contraseña",
+                "right": "Phishing"
+              },
+              {
+                "left": "Contraseña '12345'",
+                "right": "Contraseña débil"
+              },
+              {
+                "left": "Cuenta sin verificar",
+                "right": "Señal de alerta"
+              },
+              {
+                "left": "Código extra al entrar",
+                "right": "Verificación en dos pasos"
+              }
+            ],
+            "completion_feedback": "La **ciudadanía digital** es actuar en internet de forma segura y respetuosa: evitar el **phishing**, usar **contraseñas fuertes**, **2FA** y reportar abusos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "V-Bucks gratis",
+            "right_label": "Acción o riesgo",
+            "pairs": [
+              {
+                "left": "Link raro lleno de números",
+                "right": "Phishing"
+              },
+              {
+                "left": "Contraseña '123456'",
+                "right": "Contraseña débil"
+              },
+              {
+                "left": "Insultos en el chat de voz",
+                "right": "Reportar y bloquear"
+              },
+              {
+                "left": "Código además de la contraseña",
+                "right": "2FA"
+              }
+            ],
+            "completion_feedback": "La **ciudadanía digital** es actuar en internet de forma segura y respetuosa: evitar el **phishing**, usar **contraseñas fuertes**, **2FA** y reportar abusos."
+          }
+        }
+      }
+    },
+    "identificacion-de-fuentes-confiables": {
+      "order_steps": {
+        "prompt": "Ordena cómo verificas una noticia antes de compartirla",
+        "steps": [
+          "Revisa quién la publica",
+          "Busca pruebas: un link o un comunicado",
+          "Contrasta en al menos dos fuentes confiables",
+          "Decide si la compartes"
+        ],
+        "completion_feedback": "Autor identificable, pruebas y **dos fuentes** que coincidan: si falta algo, no lo compartas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Spoiler falso",
+            "right_label": "Señal",
+            "pairs": [
+              {
+                "left": "Cuenta anónima sin escaneos",
+                "right": "Poco confiable"
+              },
+              {
+                "left": "Shueisha",
+                "right": "Editorial oficial"
+              },
+              {
+                "left": "Título en mayúsculas",
+                "right": "Busca alarmar"
+              },
+              {
+                "left": "Dos fuentes que coinciden",
+                "right": "Información verificada"
+              }
+            ],
+            "completion_feedback": "Una **fuente confiable** tiene autor identificable, es oficial o reconocida y da pruebas; contrasta en **al menos dos fuentes** antes de compartir."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bomba de fichaje",
+            "right_label": "Señal",
+            "pairs": [
+              {
+                "left": "@FichajesBomba",
+                "right": "Cuenta de rumores"
+              },
+              {
+                "left": "Fabrizio Romano",
+                "right": "Periodista reconocido"
+              },
+              {
+                "left": "Cuenta oficial del club",
+                "right": "Fuente oficial"
+              },
+              {
+                "left": "Solo una captura",
+                "right": "Sin pruebas"
+              }
+            ],
+            "completion_feedback": "Una **fuente confiable** tiene autor identificable, es oficial o reconocida y da pruebas; contrasta en **al menos dos fuentes** antes de compartir."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rumor de SVT",
+            "right_label": "Señal",
+            "pairs": [
+              {
+                "left": "PLEDIS/HYBE",
+                "right": "Agencia oficial"
+              },
+              {
+                "left": "Soompi",
+                "right": "Medio de K-pop reconocido"
+              },
+              {
+                "left": "Cuenta de fans anónima",
+                "right": "Poco confiable"
+              },
+              {
+                "left": "Texto sin comunicado",
+                "right": "Sin pruebas"
+              }
+            ],
+            "completion_feedback": "Una **fuente confiable** tiene autor identificable, es oficial o reconocida y da pruebas; contrasta en **al menos dos fuentes** antes de compartir."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "'Cierra Valorant'",
+            "right_label": "Señal",
+            "pairs": [
+              {
+                "left": "Cuenta oficial de Riot",
+                "right": "Fuente oficial"
+              },
+              {
+                "left": "IGN",
+                "right": "Medio reconocido"
+              },
+              {
+                "left": "Cuenta anónima en X",
+                "right": "Poco confiable"
+              },
+              {
+                "left": "Captura sin fecha ni link",
+                "right": "Sin pruebas"
+              }
+            ],
+            "completion_feedback": "Una **fuente confiable** tiene autor identificable, es oficial o reconocida y da pruebas; contrasta en **al menos dos fuentes** antes de compartir."
+          }
+        }
+      }
+    }
+  }
+}
