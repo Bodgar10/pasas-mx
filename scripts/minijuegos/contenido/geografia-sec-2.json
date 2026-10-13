@@ -1,0 +1,1177 @@
+{
+  "subject": "geografia-sec-2",
+  "topics": {
+    "el-espacio-geografico": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué componente del espacio geográfico es cada cosa?",
+            "left_label": "Water 7",
+            "right_label": "Componente",
+            "pairs": [
+              {
+                "left": "Canales y Yagara",
+                "right": "Componente natural"
+              },
+              {
+                "left": "Galley-La construye barcos",
+                "right": "Componente económico"
+              },
+              {
+                "left": "El alcalde Iceburg",
+                "right": "Componente político"
+              },
+              {
+                "left": "Su forma de vivir sobre el agua",
+                "right": "Componente cultural"
+              }
+            ],
+            "completion_feedback": "Naturaleza + sociedad: un lugar se vuelve **espacio geográfico** cuando la gente lo transforma. Veamos sus cinco componentes."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué componente del espacio geográfico es cada cosa?",
+            "left_label": "Día de partido",
+            "right_label": "Componente",
+            "pairs": [
+              {
+                "left": "El Mediterráneo y las colinas",
+                "right": "Componente natural"
+              },
+              {
+                "left": "Miles de culés en la grada",
+                "right": "Componente social"
+              },
+              {
+                "left": "El himno y la senyera",
+                "right": "Componente cultural"
+              },
+              {
+                "left": "Playeras con el dorsal de Lamine",
+                "right": "Componente económico"
+              }
+            ],
+            "completion_feedback": "Naturaleza + sociedad: un lugar se vuelve **espacio geográfico** cuando la gente lo transforma. Veamos sus cinco componentes."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué componente del espacio geográfico es cada cosa?",
+            "left_label": "Concierto de SKZ",
+            "right_label": "Componente",
+            "pairs": [
+              {
+                "left": "El río y los cerros alrededor",
+                "right": "Componente natural"
+              },
+              {
+                "left": "Fanchants y lightsticks",
+                "right": "Componente cultural"
+              },
+              {
+                "left": "Puestos de photocards",
+                "right": "Componente económico"
+              },
+              {
+                "left": "Permisos de la ciudad",
+                "right": "Componente político"
+              }
+            ],
+            "completion_feedback": "Naturaleza + sociedad: un lugar se vuelve **espacio geográfico** cuando la gente lo transforma. Veamos sus cinco componentes."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué componente del espacio geográfico es cada cosa?",
+            "left_label": "Puerto de Liyue",
+            "right_label": "Componente",
+            "pairs": [
+              {
+                "left": "Montañas y mar",
+                "right": "Componente natural"
+              },
+              {
+                "left": "El Festival de los Faroles",
+                "right": "Componente cultural"
+              },
+              {
+                "left": "Comercio con mora",
+                "right": "Componente económico"
+              },
+              {
+                "left": "Los Qixing gobernando",
+                "right": "Componente político"
+              }
+            ],
+            "completion_feedback": "Naturaleza + sociedad: un lugar se vuelve **espacio geográfico** cuando la gente lo transforma. Veamos sus cinco componentes."
+          }
+        }
+      }
+    },
+    "dinamica-de-la-poblacion-mundial": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la dinámica de población es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "Población",
+            "pairs": [
+              {
+                "left": "Los eliminados en cada selección",
+                "right": "Salidas: mortalidad y emigración"
+              },
+              {
+                "left": "Los que entran por la wild card",
+                "right": "Entradas: natalidad e inmigración"
+              },
+              {
+                "left": "El total que sube y baja",
+                "right": "Crecimiento de la población"
+              },
+              {
+                "left": "Cuántos jóvenes y veteranos hay",
+                "right": "Estructura por edades"
+              }
+            ],
+            "completion_feedback": "Una población cambia por los que **nacen**, los que **mueren** y los que **se mueven**. Veamos cómo se mide."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la densidad?",
+            "left_label": "Bellingham",
+            "right_label": "Densidad",
+            "pairs": [
+              {
+                "left": "Estadio lleno en día de partido",
+                "right": "Alta densidad"
+              },
+              {
+                "left": "Pueblo con pocas familias",
+                "right": "Baja densidad"
+              },
+              {
+                "left": "Personas ÷ superficie",
+                "right": "Fórmula de la densidad"
+              },
+              {
+                "left": "hab/km²",
+                "right": "Unidad de la densidad"
+              }
+            ],
+            "completion_feedback": "La **densidad** no es cuánta gente hay, sino **cuánta cabe en cada km²**. Veamos cómo se calcula."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas la densidad de población",
+            "steps": [
+              "Anota los habitantes y la superficie",
+              "Escribe la fórmula: habitantes ÷ km²",
+              "Haz la división",
+              "Expresa el resultado en hab/km²"
+            ],
+            "completion_feedback": "Dividir entre la superficie te deja **comparar lugares** de cualquier tamaño. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué movimiento de población es cada cosa?",
+            "left_label": "CARAT",
+            "right_label": "Población",
+            "pairs": [
+              {
+                "left": "CARAT de otros países llegan a México",
+                "right": "Inmigración"
+              },
+              {
+                "left": "CARAT mexicanos viajan a Corea",
+                "right": "Emigración"
+              },
+              {
+                "left": "Los que llegan menos los que se van",
+                "right": "Saldo migratorio"
+              },
+              {
+                "left": "Fans nuevos tras un comeback",
+                "right": "Como la natalidad"
+              }
+            ],
+            "completion_feedback": "Una población cambia por los que **nacen**, los que **mueren** y los que **se mueven**. Veamos cómo se mide."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas el saldo migratorio",
+            "steps": [
+              "Reúne cuántos llegan y cuántos se van",
+              "Resta: inmigrantes − emigrantes",
+              "Si sale positivo, el lugar gana población"
+            ],
+            "completion_feedback": "El saldo dice si un lugar **gana o pierde** gente por la migración. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del crecimiento natural es cada cosa?",
+            "left_label": "Lista de brawlers",
+            "right_label": "Población",
+            "pairs": [
+              {
+                "left": "Brawlers nuevos como Kenji",
+                "right": "Natalidad"
+              },
+              {
+                "left": "Brawlers que salen de rotación",
+                "right": "Mortalidad"
+              },
+              {
+                "left": "Entran 8, salen 2: creció 6",
+                "right": "Crecimiento natural"
+              },
+              {
+                "left": "Por cada 1,000 habitantes",
+                "right": "Cómo se mide la natalidad"
+              }
+            ],
+            "completion_feedback": "Una población cambia por los que **nacen**, los que **mueren** y los que **se mueven**. Veamos cómo se mide."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo calculas el crecimiento natural",
+            "steps": [
+              "Escribe la fórmula: natalidad − mortalidad",
+              "Sustituye los datos: 8 − 2",
+              "El resultado es 6: la población creció"
+            ],
+            "completion_feedback": "Si nacen **más** de los que mueren, la población crece; si no, decrece. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "migracion-y-sus-consecuencias": {
+      "order_steps": {
+        "prompt": "Ordena cómo ocurre una migración",
+        "steps": [
+          "Hay malas condiciones en el lugar de origen",
+          "Otro lugar ofrece mejores oportunidades",
+          "La persona decide irse",
+          "Llega al destino y ambos lugares cambian"
+        ],
+        "completion_feedback": "Algo **empuja** a salir, algo **jala** a llegar, y al final cambian los dos lugares. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de migración es cada cosa?",
+            "left_label": "Portales",
+            "right_label": "Migración",
+            "pairs": [
+              {
+                "left": "Cruzar a otro mundo",
+                "right": "Migración internacional"
+              },
+              {
+                "left": "Moverse entre ciudades del país",
+                "right": "Migración interna"
+              },
+              {
+                "left": "Huir de una mazmorra mortal",
+                "right": "Migración forzada"
+              },
+              {
+                "left": "Elegir un portal mejor",
+                "right": "Migración voluntaria"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro siempre tiene **causas** y deja **consecuencias** en ambos lados. Veamos cómo funciona la migración."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la migración es cada cosa?",
+            "left_label": "Fichaje de Mbappé",
+            "right_label": "Migración",
+            "pairs": [
+              {
+                "left": "Mbappé deja Francia",
+                "right": "Emigración"
+              },
+              {
+                "left": "Llega a España",
+                "right": "Inmigración"
+              },
+              {
+                "left": "El PSG pierde a su estrella",
+                "right": "Consecuencia en el origen"
+              },
+              {
+                "left": "El Madrid gana un refuerzo",
+                "right": "Consecuencia en el destino"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro siempre tiene **causas** y deja **consecuencias** en ambos lados. Veamos cómo funciona la migración."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la migración es cada cosa?",
+            "left_label": "Trainees en Corea",
+            "right_label": "Migración",
+            "pairs": [
+              {
+                "left": "Jóvenes que dejan su país",
+                "right": "Emigración"
+              },
+              {
+                "left": "Llegan a Corea a entrenar",
+                "right": "Inmigración"
+              },
+              {
+                "left": "Su país pierde talento joven",
+                "right": "Fuga de cerebros"
+              },
+              {
+                "left": "Corea gana diversidad",
+                "right": "Consecuencia en el destino"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro siempre tiene **causas** y deja **consecuencias** en ambos lados. Veamos cómo funciona la migración."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la migración es cada cosa?",
+            "left_label": "Cambio de servidor",
+            "right_label": "Migración",
+            "pairs": [
+              {
+                "left": "El lag horrible",
+                "right": "Factor de expulsión"
+              },
+              {
+                "left": "Un servidor estable",
+                "right": "Factor de atracción"
+              },
+              {
+                "left": "El servidor que se vacía",
+                "right": "Lugar de origen"
+              },
+              {
+                "left": "El servidor que se llena",
+                "right": "Lugar de destino"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro siempre tiene **causas** y deja **consecuencias** en ambos lados. Veamos cómo funciona la migración."
+          }
+        }
+      }
+    },
+    "urbanizacion-y-ciudades": {
+      "order_steps": {
+        "prompt": "Ordena cómo crece una ciudad",
+        "steps": [
+          "Las personas dejan el campo",
+          "Llegan a la ciudad buscando empleo y servicios",
+          "La ciudad construye más vivienda y transporte",
+          "La ciudad crece y se urbaniza más"
+        ],
+        "completion_feedback": "La gente **llega** por los servicios y la ciudad **crece** para recibirla. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la ciudad o de la urbanización es cada cosa?",
+            "left_label": "Berlint",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "La Academia Eden y los hospitales",
+                "right": "Servicios concentrados"
+              },
+              {
+                "left": "Transporte y edificios",
+                "right": "Infraestructura"
+              },
+              {
+                "left": "Calles llenas de gente",
+                "right": "Alta densidad"
+              },
+              {
+                "left": "Una aldea perdida en el campo",
+                "right": "Zona rural: baja densidad"
+              }
+            ],
+            "completion_feedback": "Mucha gente, **servicios** e **infraestructura** concentrados: eso hace a una ciudad, y su crecimiento es la **urbanización**. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la ciudad o de la urbanización es cada cosa?",
+            "left_label": "Final de Champions",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Metro y trenes al estadio",
+                "right": "Infraestructura"
+              },
+              {
+                "left": "Hoteles y restaurantes",
+                "right": "Servicios"
+              },
+              {
+                "left": "Millones de habitantes alrededor",
+                "right": "Mucha población"
+              },
+              {
+                "left": "Un pueblo de 2,000 personas",
+                "right": "Zona rural: pocas funciones"
+              }
+            ],
+            "completion_feedback": "Mucha gente, **servicios** e **infraestructura** concentrados: eso hace a una ciudad, y su crecimiento es la **urbanización**. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la ciudad o de la urbanización es cada cosa?",
+            "left_label": "Seúl en K-drama",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Millones de personas y rascacielos",
+                "right": "Megaciudad"
+              },
+              {
+                "left": "Llegar del pueblo a Seúl",
+                "right": "Éxodo rural"
+              },
+              {
+                "left": "Buscar estudio y trabajo",
+                "right": "Causa: empleo y servicios"
+              },
+              {
+                "left": "El pueblo natal casi vacío",
+                "right": "El campo pierde población"
+              }
+            ],
+            "completion_feedback": "Mucha gente, **servicios** e **infraestructura** concentrados: eso hace a una ciudad, y su crecimiento es la **urbanización**. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la ciudad o de la urbanización es cada cosa?",
+            "left_label": "Tu mundo Minecraft",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "La primera casita de dirt",
+                "right": "Primer asentamiento"
+              },
+              {
+                "left": "Calles, biblioteca y rieles",
+                "right": "Infraestructura y servicios"
+              },
+              {
+                "left": "Aldeanos comerciando",
+                "right": "Actividades no agrícolas"
+              },
+              {
+                "left": "Un pueblo enorme y organizado",
+                "right": "Urbanización"
+              }
+            ],
+            "completion_feedback": "Mucha gente, **servicios** e **infraestructura** concentrados: eso hace a una ciudad, y su crecimiento es la **urbanización**. Veamos cómo."
+          }
+        }
+      }
+    },
+    "diversidad-cultural-en-el-mundo": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la diversidad cultural?",
+            "left_label": "Islas de One Piece",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Kimonos y samuráis en Wano",
+                "right": "Cultura propia de cada región"
+              },
+              {
+                "left": "El desierto de Alabasta",
+                "right": "El medio natural influye"
+              },
+              {
+                "left": "Respetar las reglas de cada isla",
+                "right": "Respeto cultural"
+              },
+              {
+                "left": "Tantas islas tan distintas",
+                "right": "Diversidad cultural"
+              }
+            ],
+            "completion_feedback": "Cada pueblo tiene su **cultura**, ninguna es superior, y convivir con **respeto** es una riqueza. Veamos la diversidad del mundo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la diversidad cultural?",
+            "left_label": "Vestidor de Santi",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Un compañero que ayuna en Ramadán",
+                "right": "Diversidad religiosa"
+              },
+              {
+                "left": "Idiomas distintos en el vestidor",
+                "right": "Diversidad de lenguas"
+              },
+              {
+                "left": "Respetar la oración del otro",
+                "right": "Tolerancia"
+              },
+              {
+                "left": "Una misma camiseta para todos",
+                "right": "Multiculturalidad que une"
+              }
+            ],
+            "completion_feedback": "Cada pueblo tiene su **cultura**, ninguna es superior, y convivir con **respeto** es una riqueza. Veamos la diversidad del mundo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la diversidad cultural?",
+            "left_label": "Bunnies en México",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Fans mexicanos que dicen «saranghae»",
+                "right": "Intercambio cultural"
+              },
+              {
+                "left": "Seguir comiendo tacos",
+                "right": "Conservar tu identidad"
+              },
+              {
+                "left": "Coreanos y mexicanos en un fandom",
+                "right": "Multiculturalidad"
+              },
+              {
+                "left": "Despreciar otra cultura",
+                "right": "Discriminación"
+              }
+            ],
+            "completion_feedback": "Cada pueblo tiene su **cultura**, ninguna es superior, y convivir con **respeto** es una riqueza. Veamos la diversidad del mundo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la diversidad cultural?",
+            "left_label": "Modo selecciones",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "El jogo bonito de Brasil",
+                "right": "Cultura propia"
+              },
+              {
+                "left": "Himnos y cánticos distintos",
+                "right": "Tradiciones"
+              },
+              {
+                "left": "Cada país a su manera",
+                "right": "Diversidad cultural"
+              },
+              {
+                "left": "Ningún estilo es mejor",
+                "right": "Ninguna cultura es superior"
+              }
+            ],
+            "completion_feedback": "Cada pueblo tiene su **cultura**, ninguna es superior, y convivir con **respeto** es una riqueza. Veamos la diversidad del mundo."
+          }
+        }
+      }
+    },
+    "agua-distribucion-y-uso": {
+      "order_steps": {
+        "prompt": "Ordena cómo se agota el agua de un lugar",
+        "steps": [
+          "Llueve poco o crece la población",
+          "Se usa más agua de la que se renueva",
+          "El pozo o el río baja de nivel",
+          "Aparece la escasez de agua"
+        ],
+        "completion_feedback": "Si sale **más** de la que entra, el agua se acaba: por eso el uso responsable importa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el agua?",
+            "left_label": "Pozo de la aldea",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Poca lluvia este año",
+                "right": "Sequía"
+              },
+              {
+                "left": "Más cazadores sacando agua",
+                "right": "Aumento de población"
+              },
+              {
+                "left": "Usarla sin medida",
+                "right": "Desperdicio"
+              },
+              {
+                "left": "Repartirla según necesidades",
+                "right": "Uso responsable"
+              }
+            ],
+            "completion_feedback": "Hay mucha agua, pero poca **dulce**, mal **repartida** y fácil de **agotar**: por eso hay que cuidarla. Veamos cómo se distribuye y usa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el agua?",
+            "left_label": "Hidratación",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Beber, cocinar y asearse",
+                "right": "Uso doméstico"
+              },
+              {
+                "left": "Regar los cultivos",
+                "right": "Uso agrícola: el mayor"
+              },
+              {
+                "left": "Fábricas y energía",
+                "right": "Uso industrial"
+              },
+              {
+                "left": "Cada botella con un propósito",
+                "right": "Uso responsable"
+              }
+            ],
+            "completion_feedback": "Hay mucha agua, pero poca **dulce**, mal **repartida** y fácil de **agotar**: por eso hay que cuidarla. Veamos cómo se distribuye y usa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el agua?",
+            "left_label": "Photocards de IVE",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "La amiga con 20 álbumes",
+                "right": "Región con abundancia"
+              },
+              {
+                "left": "La fan con un solo álbum",
+                "right": "Región con escasez"
+              },
+              {
+                "left": "Repartidas nada parejo",
+                "right": "Distribución desigual"
+              },
+              {
+                "left": "Clima, relieve y ríos",
+                "right": "Lo que decide quién tiene agua"
+              }
+            ],
+            "completion_feedback": "Hay mucha agua, pero poca **dulce**, mal **repartida** y fácil de **agotar**: por eso hay que cuidarla. Veamos cómo se distribuye y usa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el agua?",
+            "left_label": "Isla en Roblox",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "El mar que te rodea",
+                "right": "Agua salada: cerca del 97%"
+              },
+              {
+                "left": "El charco junto a la cascada",
+                "right": "Agua dulce: cerca del 3%"
+              },
+              {
+                "left": "Tarda en rellenarse",
+                "right": "Recurso limitado"
+              },
+              {
+                "left": "Compartirlo con el servidor",
+                "right": "Cuidarla entre todos"
+              }
+            ],
+            "completion_feedback": "Hay mucha agua, pero poca **dulce**, mal **repartida** y fácil de **agotar**: por eso hay que cuidarla. Veamos cómo se distribuye y usa."
+          }
+        }
+      }
+    },
+    "procesos-productivos-en-el-mundo": {
+      "order_steps": {
+        "prompt": "Ordena la cadena productiva de un producto",
+        "steps": [
+          "Se extrae la materia prima: sector primario",
+          "Se transforma en una fábrica: sector secundario",
+          "Se transporta y se vende: sector terciario"
+        ],
+        "completion_feedback": "Primero se **extrae**, luego se **transforma** y al final se **distribuye**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué sector económico es cada etapa?",
+            "left_label": "Spy x Family",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "El guion y el diseño de personajes",
+                "right": "Sector cuaternario"
+              },
+              {
+                "left": "Dibujar y animar los cuadros",
+                "right": "Sector secundario"
+              },
+              {
+                "left": "Streaming, subtítulos y figuras",
+                "right": "Sector terciario"
+              }
+            ],
+            "completion_feedback": "Extraer, **transformar** y **vender**: cada etapa es un sector y le suma valor al producto. Veamos la cadena productiva."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué sector económico es cada etapa?",
+            "left_label": "Balón de Lamine",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "El caucho de los árboles",
+                "right": "Sector primario"
+              },
+              {
+                "left": "Coser el balón en Pakistán",
+                "right": "Sector secundario"
+              },
+              {
+                "left": "Barcos, tiendas y anuncios",
+                "right": "Sector terciario"
+              },
+              {
+                "left": "Hecho en un país, vendido en otros",
+                "right": "Globalización"
+              }
+            ],
+            "completion_feedback": "Extraer, **transformar** y **vender**: cada etapa es un sector y le suma valor al producto. Veamos la cadena productiva."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué sector económico es cada etapa?",
+            "left_label": "Álbum de ENHYPEN",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "El papel y el plástico",
+                "right": "Sector primario"
+              },
+              {
+                "left": "Imprimir el photobook y el CD",
+                "right": "Sector secundario"
+              },
+              {
+                "left": "La paquetería hasta México",
+                "right": "Sector terciario"
+              }
+            ],
+            "completion_feedback": "Extraer, **transformar** y **vender**: cada etapa es un sector y le suma valor al producto. Veamos la cadena productiva."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué sector económico es cada etapa?",
+            "left_label": "Minecraft",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "Golpear un árbol por madera",
+                "right": "Sector primario"
+              },
+              {
+                "left": "Craftear un pico de diamante",
+                "right": "Sector secundario"
+              },
+              {
+                "left": "Vender diamantes al aldeano",
+                "right": "Sector terciario"
+              },
+              {
+                "left": "Extraer, transformar y vender",
+                "right": "Cadena productiva"
+              }
+            ],
+            "completion_feedback": "Extraer, **transformar** y **vender**: cada etapa es un sector y le suma valor al producto. Veamos la cadena productiva."
+          }
+        }
+      }
+    },
+    "desigualdad-economica-y-regional": {
+      "order_steps": {
+        "prompt": "Ordena cómo se profundiza la desigualdad en una región",
+        "steps": [
+          "La región tiene pocos recursos y servicios",
+          "Hay poco empleo y poca educación",
+          "La gente vive en pobreza o emigra",
+          "La región se queda cada vez más rezagada"
+        ],
+        "completion_feedback": "Sin **servicios** no hay oportunidades, y sin oportunidades la brecha **crece**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la desigualdad?",
+            "left_label": "Las murallas",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Muralla Sina: la nobleza",
+                "right": "Región desarrollada"
+              },
+              {
+                "left": "Muralla Maria: los pobres",
+                "right": "Región marginada"
+              },
+              {
+                "left": "Comida y seguridad solo al centro",
+                "right": "Causa: recursos mal repartidos"
+              },
+              {
+                "left": "Shiganshina lo pierde todo",
+                "right": "Consecuencia: pobreza"
+              }
+            ],
+            "completion_feedback": "La riqueza y los servicios **no se reparten igual** en el territorio, y esa brecha tiene causas y consecuencias. Veamos cuáles."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la desigualdad?",
+            "left_label": "Madrid y el barrio",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "El Real Madrid",
+                "right": "País desarrollado"
+              },
+              {
+                "left": "El equipo de barrio",
+                "right": "País en desarrollo"
+              },
+              {
+                "left": "El presupuesto del club",
+                "right": "PIB"
+              },
+              {
+                "left": "Médicos, salud y gimnasios",
+                "right": "Calidad de vida (IDH)"
+              }
+            ],
+            "completion_feedback": "La riqueza y los servicios **no se reparten igual** en el territorio, y esa brecha tiene causas y consecuencias. Veamos cuáles."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la desigualdad?",
+            "left_label": "Parasite",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "La mansión de los Park",
+                "right": "Región desarrollada"
+              },
+              {
+                "left": "El semisótano de los Kim",
+                "right": "Región marginada"
+              },
+              {
+                "left": "La misma ciudad, dos mundos",
+                "right": "Desigualdad regional"
+              },
+              {
+                "left": "La lluvia que inunda a los pobres",
+                "right": "Consecuencia de la desigualdad"
+              }
+            ],
+            "completion_feedback": "La riqueza y los servicios **no se reparten igual** en el territorio, y esa brecha tiene causas y consecuencias. Veamos cuáles."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre la desigualdad?",
+            "left_label": "Pagadores y F2P",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Jugadores con todas las gemas",
+                "right": "Concentración de riqueza"
+              },
+              {
+                "left": "Free-to-play que avanzan lento",
+                "right": "Pobreza"
+              },
+              {
+                "left": "Mismo juego, distintas oportunidades",
+                "right": "Acceso disparejo"
+              },
+              {
+                "left": "Pocos con mucho, muchos con poco",
+                "right": "Brecha económica"
+              }
+            ],
+            "completion_feedback": "La riqueza y los servicios **no se reparten igual** en el territorio, y esa brecha tiene causas y consecuencias. Veamos cuáles."
+          }
+        }
+      }
+    },
+    "globalizacion-y-territorio": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué cara de la globalización es cada cosa?",
+            "left_label": "One Piece global",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Traducido a decenas de idiomas",
+                "right": "Globalización cultural"
+              },
+              {
+                "left": "Figuras vendidas en México",
+                "right": "Globalización económica"
+              },
+              {
+                "left": "Netflix e internet",
+                "right": "Tecnología que borra fronteras"
+              },
+              {
+                "left": "Comentarlo el mismo día en tres países",
+                "right": "Mundo interconectado"
+              }
+            ],
+            "completion_feedback": "Economía, cultura y tecnología **conectadas** por todo el planeta: eso es la globalización. Veamos cómo cambia el territorio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué cara de la globalización es cada cosa?",
+            "left_label": "Final del Mundial",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Botines alemanes, balón de Pakistán",
+                "right": "Globalización económica"
+              },
+              {
+                "left": "Fans sin idioma común, misma emoción",
+                "right": "Globalización cultural"
+              },
+              {
+                "left": "Transmisión por satélite",
+                "right": "Tecnología"
+              },
+              {
+                "left": "Ciudades sede conectadas al mundo",
+                "right": "Nodos globales"
+              }
+            ],
+            "completion_feedback": "Economía, cultura y tecnología **conectadas** por todo el planeta: eso es la globalización. Veamos cómo cambia el territorio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué cara de la globalización es cada cosa?",
+            "left_label": "BLACKPINK",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Una canción coreana, tendencia mundial",
+                "right": "Globalización cultural"
+              },
+              {
+                "left": "Aprender coreano en México",
+                "right": "Intercambio cultural"
+              },
+              {
+                "left": "Todos consumiendo lo mismo",
+                "right": "Homogeneización cultural"
+              },
+              {
+                "left": "Las redes sociales",
+                "right": "Medio de difusión"
+              }
+            ],
+            "completion_feedback": "Economía, cultura y tecnología **conectadas** por todo el planeta: eso es la globalización. Veamos cómo cambia el territorio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué cara de la globalización es cada cosa?",
+            "left_label": "Lobby de Valorant",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Tu duo en Brasil y tú en México",
+                "right": "Personas interconectadas"
+              },
+              {
+                "left": "Riot, empresa estadounidense",
+                "right": "Empresa global"
+              },
+              {
+                "left": "La actualización llega a todos a la vez",
+                "right": "Tecnología y comunicaciones"
+              },
+              {
+                "left": "Mismas skins y estrategias",
+                "right": "Cultura compartida"
+              }
+            ],
+            "completion_feedback": "Economía, cultura y tecnología **conectadas** por todo el planeta: eso es la globalización. Veamos cómo cambia el territorio."
+          }
+        }
+      }
+    },
+    "medio-ambiente-y-desarrollo-sustentable": {
+      "order_steps": {
+        "prompt": "Ordena cómo usar un recurso de forma sustentable",
+        "steps": [
+          "Toma solo lo que necesitas",
+          "Repón lo que tomaste",
+          "Deja que la naturaleza se recupere",
+          "El recurso sigue disponible en el futuro"
+        ],
+        "completion_feedback": "Si tomas **menos** de lo que la naturaleza repone, el recurso **dura** para siempre. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el desarrollo sustentable?",
+            "left_label": "Princess Mononoke",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "La Ciudad del Hierro prospera",
+                "right": "Pilar económico"
+              },
+              {
+                "left": "Trabajo y comida para la gente",
+                "right": "Pilar social"
+              },
+              {
+                "left": "El bosque y sus dioses",
+                "right": "Pilar ambiental"
+              },
+              {
+                "left": "Ashitaka busca el equilibrio",
+                "right": "Desarrollo sustentable"
+              }
+            ],
+            "completion_feedback": "Satisfacer las necesidades de hoy **sin agotar** las de mañana, equilibrando economía, sociedad y ambiente. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el desarrollo sustentable?",
+            "left_label": "Estadios verdes",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Paneles solares en el techo",
+                "right": "Energía renovable"
+              },
+              {
+                "left": "Recolectar agua de lluvia",
+                "right": "Ahorro de agua"
+              },
+              {
+                "left": "Asientos de plástico reciclado",
+                "right": "Reciclaje"
+              },
+              {
+                "left": "Aviones de millones de fans",
+                "right": "Impacto ambiental"
+              }
+            ],
+            "completion_feedback": "Satisfacer las necesidades de hoy **sin agotar** las de mañana, equilibrando economía, sociedad y ambiente. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el desarrollo sustentable?",
+            "left_label": "Álbumes de NJ",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Comprar 50 copias del álbum",
+                "right": "Consumo excesivo"
+              },
+              {
+                "left": "Álbumes en la basura",
+                "right": "Residuos"
+              },
+              {
+                "left": "Intercambiar photocards",
+                "right": "Reutilizar"
+              },
+              {
+                "left": "Envíos en avión y barco",
+                "right": "Emisiones"
+              }
+            ],
+            "completion_feedback": "Satisfacer las necesidades de hoy **sin agotar** las de mañana, equilibrando economía, sociedad y ambiente. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena las 3 R, de la más a la menos importante",
+            "steps": [
+              "Reduce: compra solo lo que necesitas",
+              "Reutiliza: intercambia photocards",
+              "Recicla lo que ya no sirve"
+            ],
+            "completion_feedback": "Lo mejor es **no generar** basura; reciclar es el último recurso. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre el desarrollo sustentable?",
+            "left_label": "Bosque Minecraft",
+            "right_label": "Geografía",
+            "pairs": [
+              {
+                "left": "Talar todo sin replantar",
+                "right": "Uso insostenible"
+              },
+              {
+                "left": "Talar y replantar saplings",
+                "right": "Uso sustentable"
+              },
+              {
+                "left": "Madera para tus partidas futuras",
+                "right": "Generaciones futuras"
+              },
+              {
+                "left": "Un páramo pelón sin animales",
+                "right": "Recurso agotado"
+              }
+            ],
+            "completion_feedback": "Satisfacer las necesidades de hoy **sin agotar** las de mañana, equilibrando economía, sociedad y ambiente. Veamos cómo."
+          }
+        }
+      }
+    }
+  }
+}
