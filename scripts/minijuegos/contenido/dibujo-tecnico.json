@@ -1,0 +1,713 @@
+{
+  "subject": "dibujo-tecnico",
+  "topics": {
+    "instrumentos-y-normalizacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo preparas una hoja para dibujar un plano",
+        "steps": [
+          "Elige el formato normalizado: A4 o A3",
+          "Traza el margen: 20 mm a la izquierda y 10 mm en los demás lados",
+          "Dibuja el cuadro de rotulación",
+          "Traza la pieza con los tipos de línea correctos"
+        ],
+        "completion_feedback": "La **normalización** hace que cualquiera lea tu plano igual: mismos formatos, márgenes y líneas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pizarrón táctico",
+            "right_label": "Línea",
+            "pairs": [
+              {
+                "left": "Contorno visible del balón",
+                "right": "Continua gruesa"
+              },
+              {
+                "left": "Hueco interior oculto",
+                "right": "De trazos"
+              },
+              {
+                "left": "Eje de simetría",
+                "right": "Trazo y punto"
+              },
+              {
+                "left": "Cotas y medidas",
+                "right": "Continua fina"
+              }
+            ],
+            "completion_feedback": "La **normalización** fija formatos (A4, A3), tipos de línea y escalas para que todos lean un plano igual; con las **escuadras** trazas ángulos de 15° en 15°."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cancha oficial",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Ancho de la portería",
+                "right": "7.32 m"
+              },
+              {
+                "left": "Alto de la portería",
+                "right": "2.44 m"
+              },
+              {
+                "left": "Punto de penal",
+                "right": "A 11 m de la portería"
+              },
+              {
+                "left": "7.32 m a escala 1:100",
+                "right": "73.2 mm"
+              }
+            ],
+            "completion_feedback": "La **normalización** fija formatos (A4, A3), tipos de línea y escalas para que todos lean un plano igual; con las **escuadras** trazas ángulos de 15° en 15°."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Formación de SVT",
+            "right_label": "Ángulo",
+            "pairs": [
+              {
+                "left": "Escuadra",
+                "right": "45°"
+              },
+              {
+                "left": "Cartabón",
+                "right": "30° y 60°"
+              },
+              {
+                "left": "45° + 30°",
+                "right": "75°"
+              },
+              {
+                "left": "60° + 45°",
+                "right": "105°"
+              }
+            ],
+            "completion_feedback": "La **normalización** fija formatos (A4, A3), tipos de línea y escalas para que todos lean un plano igual; con las **escuadras** trazas ángulos de 15° en 15°."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Torre de Minecraft",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "8 m a escala 1:50",
+                "right": "160 mm"
+              },
+              {
+                "left": "Hoja A4",
+                "right": "210 × 297 mm"
+              },
+              {
+                "left": "Ancho de una A3",
+                "right": "420 mm"
+              },
+              {
+                "left": "A3 menos márgenes de 20 y 10",
+                "right": "390 mm útiles"
+              }
+            ],
+            "completion_feedback": "La **normalización** fija formatos (A4, A3), tipos de línea y escalas para que todos lean un plano igual; con las **escuadras** trazas ángulos de 15° en 15°."
+          }
+        }
+      }
+    },
+    "trazos-geometricos-basicos": {
+      "order_steps": {
+        "prompt": "Ordena cómo trazas la mediatriz de un segmento AB",
+        "steps": [
+          "Abre el compás a más de la mitad de AB",
+          "Con centro en A, traza arcos arriba y abajo",
+          "Con la misma abertura y centro en B, corta esos arcos",
+          "Une los dos cruces con una recta"
+        ],
+        "completion_feedback": "La **mediatriz** corta al segmento en su **punto medio** y a **90°**, sin medir con regla. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sello de Jinwoo",
+            "right_label": "Trazo",
+            "pairs": [
+              {
+                "left": "6 runas repartidas",
+                "right": "60° entre cada una"
+              },
+              {
+                "left": "8 símbolos repartidos",
+                "right": "45° entre cada uno"
+              },
+              {
+                "left": "Unir los 6 puntos seguidos",
+                "right": "Hexágono regular"
+              },
+              {
+                "left": "Unir los 6 puntos alternos",
+                "right": "Estrella de seis puntas"
+              }
+            ],
+            "completion_feedback": "Con **compás** y **escuadras** se trazan circunferencias, mediatrices y polígonos regulares; el ángulo central es **360° ÷ número de lados**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Círculo central",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Radio reglamentario",
+                "right": "9.15 m"
+              },
+              {
+                "left": "Diámetro: 2 × 9.15",
+                "right": "18.3 m"
+              },
+              {
+                "left": "La estaca en el centro",
+                "right": "Centro del compás"
+              },
+              {
+                "left": "La cuerda tensa",
+                "right": "Radio"
+              }
+            ],
+            "completion_feedback": "Con **compás** y **escuadras** se trazan circunferencias, mediatrices y polígonos regulares; el ángulo central es **360° ÷ número de lados**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Formaciones TXT",
+            "right_label": "Ángulo central",
+            "pairs": [
+              {
+                "left": "Pentágono con los 5",
+                "right": "72°"
+              },
+              {
+                "left": "Octágono",
+                "right": "45°"
+              },
+              {
+                "left": "Triángulo equilátero",
+                "right": "120°"
+              },
+              {
+                "left": "Cuadrado",
+                "right": "90°"
+              }
+            ],
+            "completion_feedback": "Con **compás** y **escuadras** se trazan circunferencias, mediatrices y polígonos regulares; el ángulo central es **360° ÷ número de lados**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lineups de Sova",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Recta que corta AB a la mitad y a 90°",
+                "right": "Mediatriz"
+              },
+              {
+                "left": "35° + 55°",
+                "right": "Complementarios"
+              },
+              {
+                "left": "Punto exacto entre dos sitios",
+                "right": "Punto medio"
+              },
+              {
+                "left": "Ángulo de 90°",
+                "right": "Ángulo recto"
+              }
+            ],
+            "completion_feedback": "Con **compás** y **escuadras** se trazan circunferencias, mediatrices y polígonos regulares; el ángulo central es **360° ÷ número de lados**."
+          }
+        }
+      }
+    },
+    "escalas-y-acotacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo pasas al plano un casco de 30 m a escala 1:200",
+        "steps": [
+          "Convierte la medida real a mm: 30000 mm",
+          "Divide entre 200: 30000 ÷ 200",
+          "Traza 150 mm en el papel",
+          "Escribe en la cota la medida real: 30 m"
+        ],
+        "completion_feedback": "La **escala** achica el dibujo, pero la **cota** siempre dice la medida **real**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Planos de Franky",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Mástil de 20 m a 1:200",
+                "right": "100 mm en el papel"
+              },
+              {
+                "left": "Casco de 30 m a 1:200",
+                "right": "150 mm en el papel"
+              },
+              {
+                "left": "Lo que se escribe en la cota",
+                "right": "La medida real"
+              },
+              {
+                "left": "1:200",
+                "right": "Escala de reducción"
+              }
+            ],
+            "completion_feedback": "La **escala** (E = dibujo ÷ realidad) reduce o amplía el dibujo; la **acotación** escribe sobre él las medidas **reales** del objeto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Plano del estadio",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "105 m a escala 1:1000",
+                "right": "105 mm en el papel"
+              },
+              {
+                "left": "68 m a escala 1:1000",
+                "right": "68 mm en el papel"
+              },
+              {
+                "left": "Cota del largo",
+                "right": "105 m"
+              },
+              {
+                "left": "Cota del ancho",
+                "right": "68 m"
+              }
+            ],
+            "completion_feedback": "La **escala** (E = dibujo ÷ realidad) reduce o amplía el dibujo; la **acotación** escribe sobre él las medidas **reales** del objeto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escenario de IVE",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Pantalla de 12 m a 1:100",
+                "right": "120 mm en el papel"
+              },
+              {
+                "left": "Cota de la pantalla",
+                "right": "12000 mm"
+              },
+              {
+                "left": "Pasarela de 8 m a 1:100",
+                "right": "80 mm en el papel"
+              },
+              {
+                "left": "Cota de la pasarela",
+                "right": "8000 mm"
+              }
+            ],
+            "completion_feedback": "La **escala** (E = dibujo ÷ realidad) reduce o amplía el dibujo; la **acotación** escribe sobre él las medidas **reales** del objeto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Minimapa",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "800 m reales en 40 mm",
+                "right": "Escala 1:20000"
+              },
+              {
+                "left": "1 mm del minimapa",
+                "right": "20 m reales"
+              },
+              {
+                "left": "Distancias proporcionales",
+                "right": "Escala constante"
+              },
+              {
+                "left": "Dibujo ÷ realidad",
+                "right": "Fórmula de la escala"
+              }
+            ],
+            "completion_feedback": "La **escala** (E = dibujo ÷ realidad) reduce o amplía el dibujo; la **acotación** escribe sobre él las medidas **reales** del objeto."
+          }
+        }
+      }
+    },
+    "proyecciones-ortogonales": {
+      "order_steps": {
+        "prompt": "Ordena las vistas en el sistema europeo",
+        "steps": [
+          "Coloca el alzado en el centro",
+          "Pon la planta debajo del alzado",
+          "Pon la vista lateral izquierda a la derecha del alzado",
+          "Revisa que anchos y alturas coincidan entre vistas"
+        ],
+        "completion_feedback": "En el **sistema europeo** cada vista va del lado **opuesto** al que se mira, y todas se alinean por **correspondencia**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudio del titán",
+            "right_label": "Dimensiones",
+            "pairs": [
+              {
+                "left": "Alzado 50 × 60",
+                "right": "Ancho y alto"
+              },
+              {
+                "left": "Planta 50 × 40",
+                "right": "Ancho y fondo"
+              },
+              {
+                "left": "Lateral 40 × 60",
+                "right": "Fondo y alto"
+              },
+              {
+                "left": "Mismo ancho en alzado y planta",
+                "right": "Correspondencia"
+              }
+            ],
+            "completion_feedback": "Las **proyecciones ortogonales** miran el objeto de forma **perpendicular** desde varias direcciones; cada vista muestra dos de sus tres dimensiones."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cámaras del VAR",
+            "right_label": "Línea",
+            "pairs": [
+              {
+                "left": "Agujero visible de frente",
+                "right": "Línea continua"
+              },
+              {
+                "left": "Agujero tapado en planta",
+                "right": "Línea de trazos"
+              },
+              {
+                "left": "Centro del agujero",
+                "right": "Trazo y punto"
+              },
+              {
+                "left": "Una sola cámara",
+                "right": "Información incompleta"
+              }
+            ],
+            "completion_feedback": "Las **proyecciones ortogonales** miran el objeto de forma **perpendicular** desde varias direcciones; cada vista muestra dos de sus tres dimensiones."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cubo de utilería",
+            "right_label": "Posición",
+            "pairs": [
+              {
+                "left": "Alzado",
+                "right": "Al centro"
+              },
+              {
+                "left": "Planta",
+                "right": "Debajo del alzado"
+              },
+              {
+                "left": "Lateral izquierda",
+                "right": "A la derecha del alzado"
+              },
+              {
+                "left": "Lateral derecha",
+                "right": "A la izquierda del alzado"
+              }
+            ],
+            "completion_feedback": "Las **proyecciones ortogonales** miran el objeto de forma **perpendicular** desde varias direcciones; cada vista muestra dos de sus tres dimensiones."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Replay de FC 26",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Alzado de la caja",
+                "right": "40 × 20 mm"
+              },
+              {
+                "left": "Planta de la caja",
+                "right": "40 × 30 mm"
+              },
+              {
+                "left": "Lateral deducida",
+                "right": "30 × 20 mm"
+              },
+              {
+                "left": "La caja completa",
+                "right": "40 × 30 × 20 mm"
+              }
+            ],
+            "completion_feedback": "Las **proyecciones ortogonales** miran el objeto de forma **perpendicular** desde varias direcciones; cada vista muestra dos de sus tres dimensiones."
+          }
+        }
+      }
+    },
+    "vistas-planta-alzado-perfil": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides cuántas vistas necesita una pieza",
+        "steps": [
+          "Dibuja el alzado, la vista principal",
+          "Revisa si queda alguna duda sobre la forma",
+          "Agrega la planta o el perfil que la resuelva",
+          "Detente cuando la pieza quede definida"
+        ],
+        "completion_feedback": "Se dibujan las vistas **necesarias**: ni de más ni de menos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Model sheet",
+            "right_label": "Vistas",
+            "pairs": [
+              {
+                "left": "Placa plana delgada",
+                "right": "1 vista"
+              },
+              {
+                "left": "Mango cilíndrico",
+                "right": "2 vistas"
+              },
+              {
+                "left": "Pieza con escalones",
+                "right": "3 vistas"
+              },
+              {
+                "left": "Rectángulo más círculo",
+                "right": "Es un cilindro"
+              }
+            ],
+            "completion_feedback": "**Alzado** (de frente), **planta** (desde arriba) y **perfil** (de lado) definen una pieza; solo se dibujan las vistas necesarias."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poste de portería",
+            "right_label": "Vista",
+            "pairs": [
+              {
+                "left": "Alzado del poste",
+                "right": "Rectángulo 0.12 × 2.44 m"
+              },
+              {
+                "left": "Planta del poste",
+                "right": "Círculo de 0.12 m"
+              },
+              {
+                "left": "Eje del poste",
+                "right": "Trazo y punto"
+              },
+              {
+                "left": "Portería de frente",
+                "right": "7.32 × 2.44 m"
+              }
+            ],
+            "completion_feedback": "**Alzado** (de frente), **planta** (desde arriba) y **perfil** (de lado) definen una pieza; solo se dibujan las vistas necesarias."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Plataforma",
+            "right_label": "Vista",
+            "pairs": [
+              {
+                "left": "Alzado",
+                "right": "80 × 30"
+              },
+              {
+                "left": "Planta",
+                "right": "80 × 60"
+              },
+              {
+                "left": "Perfil",
+                "right": "60 × 30"
+              },
+              {
+                "left": "Mismo ancho en alzado y planta",
+                "right": "Correspondencia"
+              }
+            ],
+            "completion_feedback": "**Alzado** (de frente), **planta** (desde arriba) y **perfil** (de lado) definen una pieza; solo se dibujan las vistas necesarias."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Torre de bloques",
+            "right_label": "Vista",
+            "pairs": [
+              {
+                "left": "Vista de frente",
+                "right": "Alzado"
+              },
+              {
+                "left": "Vista desde arriba",
+                "right": "Planta"
+              },
+              {
+                "left": "Vista de lado",
+                "right": "Perfil"
+              },
+              {
+                "left": "Planta de la torre",
+                "right": "Cuadrado 20 × 20"
+              }
+            ],
+            "completion_feedback": "**Alzado** (de frente), **planta** (desde arriba) y **perfil** (de lado) definen una pieza; solo se dibujan las vistas necesarias."
+          }
+        }
+      }
+    },
+    "perspectivas-isometricas": {
+      "order_steps": {
+        "prompt": "Ordena cómo dibujas un cubo en isométrica",
+        "steps": [
+          "Traza el eje vertical",
+          "Traza los otros dos ejes a 30° de la horizontal",
+          "Lleva la medida real sobre cada eje",
+          "Completa las aristas paralelas a los ejes"
+        ],
+        "completion_feedback": "En isométrica **no hay punto de fuga**: las medidas sobre los ejes se conservan. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escritorio de Anya",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "120 × 60 × 75 cm",
+                "right": "Caja envolvente"
+              },
+              {
+                "left": "Ángulo entre ejes",
+                "right": "120°"
+              },
+              {
+                "left": "Ejes horizontales",
+                "right": "A 30°"
+              },
+              {
+                "left": "Cajones y patas",
+                "right": "Se miden paralelo a los ejes"
+              }
+            ],
+            "completion_feedback": "La **perspectiva isométrica** muestra tres caras a la vez con ejes a **120°** (los horizontales a **30°**) y conserva las medidas reales sobre los ejes."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pizarra en 3D",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "8 m sobre el eje lateral",
+                "right": "Medida real"
+              },
+              {
+                "left": "Diagonal entre jugadores",
+                "right": "Línea no isométrica"
+              },
+              {
+                "left": "Jugador al fondo",
+                "right": "Mismo tamaño"
+              },
+              {
+                "left": "Líneas paralelas del campo",
+                "right": "Siguen paralelas"
+              }
+            ],
+            "completion_feedback": "La **perspectiva isométrica** muestra tres caras a la vez con ejes a **120°** (los horizontales a **30°**) y conserva las medidas reales sobre los ejes."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escenario de TXT",
+            "right_label": "Representación",
+            "pairs": [
+              {
+                "left": "Construir con medidas exactas",
+                "right": "Isométrica"
+              },
+              {
+                "left": "Póster realista",
+                "right": "Cónica"
+              },
+              {
+                "left": "Vigas del fondo más cortas",
+                "right": "Punto de fuga"
+              },
+              {
+                "left": "Vigas del mismo grosor",
+                "right": "Sin reducción"
+              }
+            ],
+            "completion_feedback": "La **perspectiva isométrica** muestra tres caras a la vez con ejes a **120°** (los horizontales a **30°**) y conserva las medidas reales sobre los ejes."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Aldea de Clash",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Vista desde una esquina",
+                "right": "Diagonal fija"
+              },
+              {
+                "left": "Muro de 30 mm",
+                "right": "30 mm en cada eje"
+              },
+              {
+                "left": "360° ÷ 3",
+                "right": "120°"
+              },
+              {
+                "left": "Edificio al fondo",
+                "right": "No se encoge"
+              }
+            ],
+            "completion_feedback": "La **perspectiva isométrica** muestra tres caras a la vez con ejes a **120°** (los horizontales a **30°**) y conserva las medidas reales sobre los ejes."
+          }
+        }
+      }
+    }
+  }
+}
