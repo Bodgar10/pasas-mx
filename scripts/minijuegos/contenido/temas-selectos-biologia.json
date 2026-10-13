@@ -1,0 +1,718 @@
+{
+  "subject": "temas-selectos-biologia",
+  "topics": {
+    "anatomia-y-fisiologia-humana": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de un arco reflejo",
+        "steps": [
+          "Un receptor capta el estímulo",
+          "La neurona sensitiva lleva el impulso",
+          "El centro integrador (la médula) procesa la señal",
+          "La neurona motora lleva la orden",
+          "El efector (un músculo) responde"
+        ],
+        "completion_feedback": "El **arco reflejo** siempre sigue este orden: **receptor → neurona sensitiva → centro integrador → neurona motora → efector**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gear de Luffy",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El diafragma se contrae y baja",
+                "right": "Inspiración"
+              },
+              {
+                "left": "El diafragma se relaja y sube",
+                "right": "Espiración"
+              },
+              {
+                "left": "Donde el O₂ pasa a la sangre",
+                "right": "Alvéolos"
+              },
+              {
+                "left": "Tubo que lleva el aire al pecho",
+                "right": "Tráquea"
+              }
+            ],
+            "completion_feedback": "Al **inspirar**, el diafragma baja y entra aire. Al **espirar**, sube y sale. El aire baja por la **tráquea** y el intercambio de gases ocurre en los **alvéolos**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sprint de Mbappé",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Trote largo y suave",
+                "right": "Respiración aerobia"
+              },
+              {
+                "left": "Sprint explosivo de 5 segundos",
+                "right": "Glucólisis anaerobia"
+              },
+              {
+                "left": "Ardor en los muslos tras el sprint",
+                "right": "Ácido láctico"
+              },
+              {
+                "left": "La 'moneda' que gasta el músculo",
+                "right": "ATP"
+              }
+            ],
+            "completion_feedback": "Esfuerzo largo = **aerobia** (con oxígeno, mucho **ATP**). Sprint = **anaerobia** (sin oxígeno, poco ATP pero rápido) y deja **ácido láctico**, que arde."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Coreo de SKZ",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El corazón se contrae y expulsa",
+                "right": "Sístole"
+              },
+              {
+                "left": "El corazón se relaja y se llena",
+                "right": "Diástole"
+              },
+              {
+                "left": "Latidos por minuto",
+                "right": "Frecuencia cardiaca"
+              },
+              {
+                "left": "Sangre bombeada por minuto",
+                "right": "Gasto cardiaco"
+              }
+            ],
+            "completion_feedback": "**Sístole**: el corazón expulsa sangre. **Diástole**: se llena. **Gasto cardiaco** = **frecuencia cardiaca** × volumen sistólico."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Flick en Valorant",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Tu retina capta al enemigo",
+                "right": "Receptor"
+              },
+              {
+                "left": "Lleva la señal hacia el cerebro",
+                "right": "Neurona sensitiva"
+              },
+              {
+                "left": "El paso de señal entre neuronas",
+                "right": "Sinapsis"
+              },
+              {
+                "left": "El músculo de tu dedo",
+                "right": "Efector"
+              }
+            ],
+            "completion_feedback": "El **receptor** capta el estímulo, la **neurona sensitiva** lo lleva, la señal cruza la **sinapsis** con neurotransmisores y el **efector** (el músculo) responde."
+          }
+        }
+      }
+    },
+    "sistemas-del-cuerpo-humano": {
+      "order_steps": {
+        "prompt": "Ordena el viaje de la comida",
+        "steps": [
+          "Boca: dientes y saliva trituran el alimento",
+          "Esófago: el bolo baja por peristaltismo",
+          "Estómago: los jugos gástricos forman una papilla",
+          "Intestino delgado: se absorben los nutrientes",
+          "Intestino grueso: se reabsorbe agua y se forman desechos"
+        ],
+        "completion_feedback": "La ruta es **boca → esófago → estómago → intestino delgado → intestino grueso**. La **absorción** de nutrientes ocurre sobre todo en el **delgado**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sombras de Jinwoo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El monstruo que cruza el Gate",
+                "right": "Patógeno"
+              },
+              {
+                "left": "Soldado que 'traga' al invasor",
+                "right": "Fagocitosis"
+              },
+              {
+                "left": "Arma hecha a la medida del invasor",
+                "right": "Anticuerpo"
+              },
+              {
+                "left": "Recordar al monstruo ya vencido",
+                "right": "Memoria inmunológica"
+              }
+            ],
+            "completion_feedback": "El **patógeno** es el invasor. Los glóbulos blancos lo 'tragan' por **fagocitosis**, los linfocitos fabrican **anticuerpos** y la **memoria inmunológica** acelera la siguiente defensa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Regate de Lamine",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Une el músculo con el hueso",
+                "right": "Tendón"
+              },
+              {
+                "left": "Une un hueso con otro hueso",
+                "right": "Ligamento"
+              },
+              {
+                "left": "Estira la rodilla al rematar",
+                "right": "Cuádriceps"
+              },
+              {
+                "left": "Rodilla, tobillo y cadera",
+                "right": "Articulaciones"
+              }
+            ],
+            "completion_feedback": "**Tendón**: músculo con hueso. **Ligamento**: hueso con hueso. El **cuádriceps** jala para estirar la rodilla, y las **articulaciones** son los puntos donde giran los huesos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sincronía de SVT",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Mensajero químico en la sangre",
+                "right": "Hormona"
+              },
+              {
+                "left": "'Líder' que dirige a las glándulas",
+                "right": "Hipófisis"
+              },
+              {
+                "left": "Liberan adrenalina antes del show",
+                "right": "Suprarrenales"
+              },
+              {
+                "left": "Regula el metabolismo",
+                "right": "Tiroides"
+              }
+            ],
+            "completion_feedback": "Las **hormonas** viajan por la sangre. La **hipófisis** dirige a otras glándulas, las **suprarrenales** liberan adrenalina y la **tiroides** regula el metabolismo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sándwich de Klee",
+            "right_label": "Dónde pasa",
+            "pairs": [
+              {
+                "left": "Dientes y saliva trituran",
+                "right": "Boca"
+              },
+              {
+                "left": "Jugos gástricos hacen papilla",
+                "right": "Estómago"
+              },
+              {
+                "left": "Se absorben los nutrientes",
+                "right": "Intestino delgado"
+              },
+              {
+                "left": "Se reabsorbe el agua",
+                "right": "Intestino grueso"
+              }
+            ],
+            "completion_feedback": "La digestión arranca en la **boca**, el **estómago** forma una papilla, el **intestino delgado** absorbe los nutrientes y el **grueso** reabsorbe agua."
+          }
+        }
+      }
+    },
+    "genetica-avanzada": {
+      "order_steps": {
+        "prompt": "Ordena cómo se resuelve una cruza",
+        "steps": [
+          "Escribe el genotipo de cada padre",
+          "Separa los alelos que lleva cada gameto",
+          "Combina los gametos en el cuadro de Punnett",
+          "Cuenta los genotipos resultantes",
+          "Traduce los genotipos a fenotipos"
+        ],
+        "completion_feedback": "Para predecir la descendencia: **genotipos** de los padres → **gametos** → **cuadro de Punnett** → conteo de **genotipos** → **fenotipos**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "Genética",
+            "pairs": [
+              {
+                "left": "Tipo AB de Nagi",
+                "right": "IᴬIᴮ"
+              },
+              {
+                "left": "Tipo O de Rin",
+                "right": "ii"
+              },
+              {
+                "left": "Iᴬ e Iᴮ se expresan juntos",
+                "right": "Codominancia"
+              },
+              {
+                "left": "Tipo A heterocigoto",
+                "right": "Iᴬi"
+              }
+            ],
+            "completion_feedback": "El tipo **AB** es IᴬIᴮ porque Iᴬ e Iᴮ son **codominantes**. El tipo **O** siempre es **ii**, y un tipo A puede ser IᴬIᴬ o **Iᴬi**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Vestidor",
+            "right_label": "Genotipo",
+            "pairs": [
+              {
+                "left": "Hombre daltónico",
+                "right": "XᵃY"
+              },
+              {
+                "left": "Mujer portadora",
+                "right": "XᴬXᵃ"
+              },
+              {
+                "left": "Mujer daltónica",
+                "right": "XᵃXᵃ"
+              },
+              {
+                "left": "Hombre con visión normal",
+                "right": "XᴬY"
+              }
+            ],
+            "completion_feedback": "Al hombre (**XY**) le basta un solo Xᵃ para ser daltónico. La mujer necesita **dos**: con una sola copia es **portadora** sana."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hoyuelos",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tener hoyuelos (lo que se ve)",
+                "right": "Fenotipo"
+              },
+              {
+                "left": "Los alelos que porta la idol",
+                "right": "Genotipo"
+              },
+              {
+                "left": "Dos alelos iguales: HH",
+                "right": "Homocigoto"
+              },
+              {
+                "left": "Un alelo de cada tipo: Hh",
+                "right": "Heterocigoto"
+              }
+            ],
+            "completion_feedback": "**Fenotipo**: lo que se ve. **Genotipo**: los alelos que se tienen. **HH** es homocigoto y **Hh** heterocigoto: los dos dan hoyuelos si H es dominante."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fusión en Zelda",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Alelo que 'manda' (B)",
+                "right": "Dominante"
+              },
+              {
+                "left": "Alelo que queda oculto (b)",
+                "right": "Recesivo"
+              },
+              {
+                "left": "Fenotipos de Bb × Bb",
+                "right": "3 : 1"
+              },
+              {
+                "left": "Genotipos de Bb × Bb",
+                "right": "1 : 2 : 1"
+              }
+            ],
+            "completion_feedback": "El **dominante** oculta al **recesivo**. En Bb × Bb salen genotipos **1 BB : 2 Bb : 1 bb** y fenotipos **3 : 1**."
+          }
+        }
+      }
+    },
+    "inmunologia-basica": {
+      "order_steps": {
+        "prompt": "Ordena las defensas del cuerpo",
+        "steps": [
+          "Primera línea: piel y mucosas bloquean la entrada",
+          "Segunda línea: inflamación y fagocitos atacan a cualquiera",
+          "Tercera línea: los linfocitos reconocen el antígeno",
+          "Se forman anticuerpos y células de memoria"
+        ],
+        "completion_feedback": "El cuerpo se defiende por capas: **barreras**, luego la respuesta **innata** (inflamación y fagocitos) y al final la **adaptativa**, específica y con **memoria**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Muralla María",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "La piel intacta, como muralla",
+                "right": "Barrera física"
+              },
+              {
+                "left": "Ácido del estómago y lágrimas",
+                "right": "Barrera química"
+              },
+              {
+                "left": "Zona roja y caliente tras la brecha",
+                "right": "Inflamación"
+              },
+              {
+                "left": "Soldados que atacan a cualquier titán",
+                "right": "Fagocitos"
+              }
+            ],
+            "completion_feedback": "La piel es **barrera física**, y las lágrimas o el ácido gástrico, **barrera química**. Si se rompen, llegan la **inflamación** y los **fagocitos**: todo es innato."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Marcar a CR7",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Lo que identifica al rival",
+                "right": "Antígeno"
+              },
+              {
+                "left": "Marcador hecho a su medida",
+                "right": "Anticuerpo"
+              },
+              {
+                "left": "Estudiar videos antes del partido",
+                "right": "Vacuna"
+              },
+              {
+                "left": "Reconocerlo rápido en la revancha",
+                "right": "Memoria inmunológica"
+              }
+            ],
+            "completion_feedback": "El **antígeno** identifica al invasor y el **anticuerpo** encaja con él como llave y cerradura. La **vacuna** entrena esa defensa y deja **memoria** sin enfermarte."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto de IVE",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Revisión rápida e igual para todos",
+                "right": "Inmunidad innata"
+              },
+              {
+                "left": "Pase con nombre y foto exactos",
+                "right": "Inmunidad adaptativa"
+              },
+              {
+                "left": "Lista para reconocer al intruso",
+                "right": "Memoria"
+              },
+              {
+                "left": "La cara fichada del intruso",
+                "right": "Antígeno"
+              }
+            ],
+            "completion_feedback": "La **innata** es rápida e igual para todos. La **adaptativa** reconoce un **antígeno** concreto y guarda **memoria** para la siguiente vez."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Atrapagemas",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Paredes y arbustos del mapa",
+                "right": "Primera línea"
+              },
+              {
+                "left": "El Primo ataca a quien entre",
+                "right": "Segunda línea"
+              },
+              {
+                "left": "El counter exacto contra Crow",
+                "right": "Tercera línea"
+              },
+              {
+                "left": "Ya sabes cómo juega Crow",
+                "right": "Memoria"
+              }
+            ],
+            "completion_feedback": "**Primera línea**: barreras. **Segunda**: defensa innata contra cualquier invasor. **Tercera**: defensa adaptativa, específica y con **memoria**."
+          }
+        }
+      }
+    },
+    "microbiologia": {
+      "order_steps": {
+        "prompt": "Ordena cómo la levadura infla el pan",
+        "steps": [
+          "Se añade levadura a la masa",
+          "La levadura consume los azúcares de la harina",
+          "Sin oxígeno, fermenta y libera CO₂",
+          "Las burbujas de CO₂ inflan la masa",
+          "El horno mata la levadura y fija la forma"
+        ],
+        "completion_feedback": "En la **fermentación alcohólica**, la **levadura** consume azúcares sin oxígeno y libera **CO₂**, que infla la masa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gota de agua",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Se mueve con muchos 'pelitos'",
+                "right": "Cilios"
+              },
+              {
+                "left": "Avanza con una cola tipo látigo",
+                "right": "Flagelo"
+              },
+              {
+                "left": "Extiende 'falsos pies'",
+                "right": "Pseudópodos"
+              },
+              {
+                "left": "Unicelular con núcleo verdadero",
+                "right": "Eucarionte"
+              }
+            ],
+            "completion_feedback": "Los **protozoarios** son **eucariontes** unicelulares. Se mueven con **cilios** (Paramecium), **flagelos** o **pseudópodos** (Amoeba)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Enfermería del Tri",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Causa la gripe de Santi",
+                "right": "Virus"
+              },
+              {
+                "left": "Infecta la rodilla raspada",
+                "right": "Bacteria"
+              },
+              {
+                "left": "Funciona contra bacterias",
+                "right": "Antibiótico"
+              },
+              {
+                "left": "Se usa contra algunos virus",
+                "right": "Antiviral"
+              }
+            ],
+            "completion_feedback": "Las **bacterias** son células y se combaten con **antibióticos**. Los **virus** no son células: los antibióticos no les hacen nada, por eso existen los **antivirales**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cocina del K-drama",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Kimchi agrio",
+                "right": "Fermentación láctica"
+              },
+              {
+                "left": "Pan que se infla",
+                "right": "Fermentación alcohólica"
+              },
+              {
+                "left": "Producen el ácido del yogur",
+                "right": "Bacterias lácticas"
+              },
+              {
+                "left": "Libera CO₂ en la masa",
+                "right": "Levadura"
+              }
+            ],
+            "completion_feedback": "La **láctica** la hacen **bacterias** y produce ácido (kimchi, yogur). La **alcohólica** la hace la **levadura** y libera CO₂ (pan)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cofre de Steve",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Manchas verdes y peludas",
+                "right": "Moho (hongo)"
+              },
+              {
+                "left": "Una bacteria se parte en dos",
+                "right": "Fisión binaria"
+              },
+              {
+                "left": "1 → 2 → 4 → 8",
+                "right": "Crecimiento exponencial"
+              },
+              {
+                "left": "Guardarlo frío y seco",
+                "right": "Freno al crecimiento"
+              }
+            ],
+            "completion_feedback": "El **moho** es un hongo. Las bacterias se dividen por **fisión binaria** y crecen de forma **exponencial**, salvo que el frío y la sequedad las frenen."
+          }
+        }
+      }
+    },
+    "salud-y-enfermedad": {
+      "order_steps": {
+        "prompt": "Ordena cómo se llega a un diagnóstico",
+        "steps": [
+          "Escucha los síntomas que siente el paciente",
+          "Observa y mide los signos",
+          "Investiga el agente causal",
+          "Reúne todo y hace el diagnóstico",
+          "Trata la causa, no solo la señal"
+        ],
+        "completion_feedback": "Primero **síntomas** (lo que se siente) y **signos** (lo que se mide), luego el **agente causal**, el **diagnóstico** y un tratamiento que ataque la **causa**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Con Shoko",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Estoy mareado' (lo que siente)",
+                "right": "Síntoma"
+              },
+              {
+                "left": "Fiebre medida con termómetro",
+                "right": "Signo"
+              },
+              {
+                "left": "La toxina de la maldición",
+                "right": "Agente causal"
+              },
+              {
+                "left": "Unir signos y síntomas",
+                "right": "Diagnóstico"
+              }
+            ],
+            "completion_feedback": "El **síntoma** se siente, el **signo** se ve o se mide, el **agente causal** provoca la enfermedad y el **diagnóstico** junta todas las pistas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rutina de Lamine",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Dormir 8 horas",
+                "right": "Factor protector"
+              },
+              {
+                "left": "Desvelarse y comer chatarra",
+                "right": "Factor de riesgo"
+              },
+              {
+                "left": "Predisposición genética",
+                "right": "No modificable"
+              },
+              {
+                "left": "Tus hábitos diarios",
+                "right": "Modificable"
+              }
+            ],
+            "completion_feedback": "Los **factores protectores** bajan el riesgo y los **de riesgo** lo suben. Los hábitos son **modificables**, y la genética **no**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hiatus del grupo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Gripe que pasa entre el staff",
+                "right": "Transmisible"
+              },
+              {
+                "left": "Burnout tras una gira",
+                "right": "No transmisible"
+              },
+              {
+                "left": "Un virus o una bacteria",
+                "right": "Patógeno"
+              },
+              {
+                "left": "Pausa para descansar y dormir",
+                "right": "Prevención"
+              }
+            ],
+            "completion_feedback": "Si la causa un **patógeno** y se contagia, es **transmisible**. El burnout **no se contagia**: se previene con descanso y buenos hábitos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Modo Carrera FC 26",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Bienestar físico, mental y social",
+                "right": "Salud según la OMS"
+              },
+              {
+                "left": "Rotar antes de que se lesione",
+                "right": "Prevención primaria"
+              },
+              {
+                "left": "Detectar a tiempo una molestia",
+                "right": "Prevención secundaria"
+              },
+              {
+                "left": "Fatiga por no descansar",
+                "right": "Factor de riesgo"
+              }
+            ],
+            "completion_feedback": "La **salud** es bienestar físico, mental y social. La prevención **primaria** actúa antes del daño, y la **secundaria** lo detecta a tiempo."
+          }
+        }
+      }
+    }
+  }
+}
