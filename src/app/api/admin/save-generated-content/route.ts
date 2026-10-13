@@ -2,6 +2,7 @@ export const maxDuration = 30
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
+import { barajarOpciones } from '@/lib/barajar-opciones'
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
@@ -59,7 +60,7 @@ export async function POST(req: NextRequest) {
 
   let insertedQuestions = null
   if (quiz_questions && Array.isArray(quiz_questions) && quiz_questions.length > 0) {
-    const questionsToInsert = quiz_questions.map((q: {
+    const questionsToInsert = barajarOpciones(quiz_questions).map((q: {
       question: string
       options: { letter: string; text: string }[]
       correct_answer: string

@@ -3,6 +3,7 @@ export const maxDuration = 60
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/utils/supabase/server'
+import { barajarOpciones } from '@/lib/barajar-opciones'
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
@@ -308,7 +309,7 @@ Cada bloque interactivo sigue EXACTAMENTE este formato (continúa el display_ord
       .eq('topic_id', topicId)
       .eq('theme_id', themeId)
 
-    const questionsToInsert = generated.quiz_questions.map((q: {
+    const questionsToInsert = barajarOpciones(generated.quiz_questions.map((q: {
       question: string
       options: { letter: string; text: string }[]
       correct_answer: string
@@ -325,7 +326,7 @@ Cada bloque interactivo sigue EXACTAMENTE este formato (continúa el display_ord
       difficulty: q.difficulty,
       xp_reward: q.xp_reward,
       source: 'ai',
-    }))
+    })))
 
     const { data: insertedQuestions, error: quizError } = await supabase
       .from('quiz_questions')

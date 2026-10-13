@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
+import { barajarOpciones } from '@/lib/barajar-opciones'
 
 function getServiceClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -216,7 +217,7 @@ No inventes datos ni números; si hay matemáticas, deben ser exactos. Formato E
         .eq('topic_id', topic.id)
         .eq('theme_id', themeId)
 
-      const questionsToInsert = generated.quiz_questions.map((q: {
+      const questionsToInsert = barajarOpciones(generated.quiz_questions.map((q: {
         question: string; options: {letter: string; text: string}[];
         correct_answer: string; explanation: string; difficulty: number; xp_reward: number
       }) => ({
@@ -229,7 +230,7 @@ No inventes datos ni números; si hay matemáticas, deben ser exactos. Formato E
         difficulty: q.difficulty,
         xp_reward: q.xp_reward,
         source: 'ai',
-      }))
+      })))
 
       const [{ error: sectionsError }, { error: quizError }] = await Promise.all([
         supabase.from('sections').insert(sectionsToInsert),

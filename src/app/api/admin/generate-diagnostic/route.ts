@@ -3,6 +3,7 @@ export const maxDuration = 60
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/utils/supabase/server'
+import { barajarOpciones } from '@/lib/barajar-opciones'
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
@@ -146,7 +147,7 @@ Distribuye las respuestas correctas: aproximadamente 25% A, 25% B, 25% C, 25% D 
     }
 
     // Insert new diagnostic questions
-    const questionsToInsert = generated.questions.map((q) => {
+    const questionsToInsert = barajarOpciones(generated.questions).map((q) => {
       const topic = batchTopics[q.topic_index] ?? batchTopics[0]
       // Use the topic's global position so display_order is consistent across batches
       const globalIndex = topics.findIndex((t) => t.id === topic.id)

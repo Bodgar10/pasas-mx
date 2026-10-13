@@ -48,7 +48,7 @@ export default async function TopicPage({
     userSubject?.theme_id
       ? supabase.from('sections').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).is('user_id', null).order('display_order', { ascending: true })
       : Promise.resolve({ data: [] }),
-    supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject?.theme_id ?? '').order('created_at', { ascending: true }),
+    supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject?.theme_id ?? '').order('created_at', { ascending: true }).order('id', { ascending: true }),
     learner ? supabase.from('topic_progress').select('*').eq('learner_id', learner.id).eq('topic_id', topic.id).maybeSingle() : Promise.resolve({ data: null }),
     learner ? supabase.from('progress').select('metadata').eq('learner_id', learner.id).eq('topic_id', topic.id).eq('event_type', 'section_read') : Promise.resolve({ data: [] }),
     learner ? supabase.from('progress').select('question_id, metadata, attempt').eq('learner_id', learner.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }) : Promise.resolve({ data: [] }),

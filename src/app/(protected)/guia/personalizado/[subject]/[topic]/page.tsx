@@ -35,7 +35,7 @@ export default async function PersonalizedTopicPage({
     { data: previousAnswers },
   ] = await Promise.all([
     supabase.from('sections').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).eq('user_id', user.id).order('display_order', { ascending: true }),
-    supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).order('created_at', { ascending: true }),
+    supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).order('created_at', { ascending: true }).order('id', { ascending: true }),
     supabase.from('topic_progress').select('*').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle(),
     supabase.from('progress').select('metadata').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'section_read'),
     supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }),
