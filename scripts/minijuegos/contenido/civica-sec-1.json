@@ -1,0 +1,979 @@
+{
+  "subject": "civica-sec-1",
+  "topics": {
+    "grupos-sociales-y-la-identidad-juvenil": {
+      "order_steps": {
+        "prompt": "Ordena cómo alguien nuevo se vuelve parte de un grupo",
+        "steps": [
+          "Llega como alguien nuevo",
+          "Aprende los objetivos y las normas del grupo",
+          "Las adopta y participa",
+          "Siente que pertenece y eso moldea su identidad"
+        ],
+        "completion_feedback": "Pertenecer **cambia cómo te ves y cómo actúas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué rasgo de un grupo social es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Sobrevivir y avanzar juntos",
+                "right": "Objetivo común"
+              },
+              {
+                "left": "Confiar en los pases de Bachira",
+                "right": "Norma del grupo"
+              },
+              {
+                "left": "'Somos el Team Z'",
+                "right": "Sentido de pertenencia"
+              },
+              {
+                "left": "Isagi descubre qué jugador quiere ser",
+                "right": "Identidad"
+              }
+            ],
+            "completion_feedback": "Metas, reglas y pertenencia: eso convierte a varias personas en un **grupo social**. Veamos cómo te moldea."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué rasgo de un grupo social es cada cosa?",
+            "left_label": "El Barça",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Ganar títulos juntos",
+                "right": "Objetivo común"
+              },
+              {
+                "left": "Presionar arriba como todos",
+                "right": "Norma del grupo"
+              },
+              {
+                "left": "Llevar el escudo con orgullo",
+                "right": "Sentido de pertenencia"
+              }
+            ],
+            "completion_feedback": "Metas, reglas y pertenencia: eso convierte a varias personas en un **grupo social**. Veamos cómo te moldea."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué rasgo de un grupo social es cada cosa?",
+            "left_label": "STAY",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Votar por Stray Kids en los awards",
+                "right": "Objetivo común"
+              },
+              {
+                "left": "No spoilear los conciertos",
+                "right": "Norma del grupo"
+              },
+              {
+                "left": "Decir con orgullo 'soy STAY'",
+                "right": "Sentido de pertenencia"
+              },
+              {
+                "left": "Cómo te vistes y qué escuchas",
+                "right": "Identidad"
+              }
+            ],
+            "completion_feedback": "Metas, reglas y pertenencia: eso convierte a varias personas en un **grupo social**. Veamos cómo te moldea."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué rasgo de un grupo social es cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Ganar la partida",
+                "right": "Objetivo común"
+              },
+              {
+                "left": "Comunicar todo y comprar armadura",
+                "right": "Norma del grupo"
+              },
+              {
+                "left": "Ya no es 'un random'",
+                "right": "Sentido de pertenencia"
+              }
+            ],
+            "completion_feedback": "Metas, reglas y pertenencia: eso convierte a varias personas en un **grupo social**. Veamos cómo te moldea."
+          }
+        }
+      }
+    },
+    "los-derechos-humanos-en-mexico-y-el-mundo": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de los derechos humanos muestra cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Gyojin esclavizados por humanos",
+                "right": "Se viola la libertad"
+              },
+              {
+                "left": "Odiarlos por ser distintos",
+                "right": "Discriminación"
+              },
+              {
+                "left": "Humanos y gyojin iguales",
+                "right": "Igualdad"
+              },
+              {
+                "left": "Vivir sin ser tratado como cosa",
+                "right": "Dignidad"
+              }
+            ],
+            "completion_feedback": "Hay derechos que tienes **solo por ser persona**, y nadie te los puede quitar. Veamos cuáles son."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de los derechos humanos muestra cada cosa?",
+            "left_label": "Mbappé",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Insultos por su color de piel",
+                "right": "Racismo"
+              },
+              {
+                "left": "El protocolo 'racismo cero'",
+                "right": "Regla contra la discriminación"
+              },
+              {
+                "left": "Vale para todos, no solo el famoso",
+                "right": "Derecho universal"
+              }
+            ],
+            "completion_feedback": "Hay derechos que tienes **solo por ser persona**, y nadie te los puede quitar. Veamos cuáles son."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de los derechos humanos muestra cada cosa?",
+            "left_label": "Los CARAT",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Votar solo si pagas membresía",
+                "right": "Exclusión por dinero"
+              },
+              {
+                "left": "Que todos los CARAT puedan votar",
+                "right": "Igualdad de oportunidades"
+              },
+              {
+                "left": "Campaña por votación gratis",
+                "right": "Defensa de un derecho"
+              }
+            ],
+            "completion_feedback": "Hay derechos que tienes **solo por ser persona**, y nadie te los puede quitar. Veamos cuáles son."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de los derechos humanos muestra cada cosa?",
+            "left_label": "Roblox",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Baneado sin pruebas",
+                "right": "Trato injusto"
+              },
+              {
+                "left": "Apelar y explicar lo que pasó",
+                "right": "Derecho a defenderse"
+              },
+              {
+                "left": "Sin importar sus Robux",
+                "right": "Iguales para todos"
+              }
+            ],
+            "completion_feedback": "Hay derechos que tienes **solo por ser persona**, y nadie te los puede quitar. Veamos cuáles son."
+          }
+        }
+      }
+    },
+    "movimientos-por-los-derechos-humanos": {
+      "order_steps": {
+        "prompt": "Ordena cómo un movimiento conquista un derecho",
+        "steps": [
+          "Se detecta una injusticia",
+          "Muchas personas se unen con un mismo objetivo",
+          "Hacen campañas, peticiones y presión pública",
+          "Se logra el cambio"
+        ],
+        "completion_feedback": "Los derechos **casi nunca se regalan: se conquistan** organizándose. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de un movimiento por los derechos es cada cosa?",
+            "left_label": "My Hero Academia",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Burlas a Deku por no tener Quirk",
+                "right": "Discriminación"
+              },
+              {
+                "left": "All Might: nadie vale menos",
+                "right": "Alzar la voz"
+              },
+              {
+                "left": "La sociedad empieza a aceptar a todos",
+                "right": "Cambio de mentalidad"
+              },
+              {
+                "left": "Valer sin importar cómo naciste",
+                "right": "Igualdad y dignidad"
+              }
+            ],
+            "completion_feedback": "Una voz sola casi no se oye; **muchas, organizadas, cambian las cosas**. Así funcionan los movimientos por los derechos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se combate la discriminación",
+            "steps": [
+              "Se trata peor a alguien por cómo nació",
+              "Alguien alza la voz contra esa injusticia",
+              "Cambia la forma de pensar de la sociedad",
+              "Se reconoce la igualdad de todos"
+            ],
+            "completion_feedback": "No basta con leyes: también hay que **cambiar cómo piensa la sociedad**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de un movimiento por los derechos es cada cosa?",
+            "left_label": "Fútbol femenil",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Ganar diez veces menos",
+                "right": "Injusticia"
+              },
+              {
+                "left": "Bellingham alza la voz",
+                "right": "Liderazgo"
+              },
+              {
+                "left": "Jugadoras, fans y asociaciones",
+                "right": "Personas organizadas"
+              },
+              {
+                "left": "Un plan para cerrar la brecha",
+                "right": "Cambio conquistado"
+              }
+            ],
+            "completion_feedback": "Una voz sola casi no se oye; **muchas, organizadas, cambian las cosas**. Así funcionan los movimientos por los derechos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de un movimiento por los derechos es cada cosa?",
+            "left_label": "Los MOA",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Cada MOA respondiendo solo",
+                "right": "Esfuerzo individual"
+              },
+              {
+                "left": "Un mismo hashtag de apoyo",
+                "right": "Organización colectiva"
+              },
+              {
+                "left": "Reportes masivos a las cuentas",
+                "right": "Presión pública"
+              },
+              {
+                "left": "Acciones legales de HYBE",
+                "right": "Cambio logrado"
+              }
+            ],
+            "completion_feedback": "Una voz sola casi no se oye; **muchas, organizadas, cambian las cosas**. Así funcionan los movimientos por los derechos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de un movimiento por los derechos es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Cobrar por /tp y /give",
+                "right": "Injusticia"
+              },
+              {
+                "left": "Peticiones y videos de youtubers",
+                "right": "Presión pública"
+              },
+              {
+                "left": "Miles con un mismo mensaje",
+                "right": "Acción colectiva"
+              },
+              {
+                "left": "Mojang da marcha atrás",
+                "right": "Cambio conquistado"
+              }
+            ],
+            "completion_feedback": "Una voz sola casi no se oye; **muchas, organizadas, cambian las cosas**. Así funcionan los movimientos por los derechos."
+          }
+        }
+      }
+    },
+    "consecuencias-de-la-desigualdad": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué consecuencia de la desigualdad muestra cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Rango E: mazmorras por casi nada",
+                "right": "Explotación"
+              },
+              {
+                "left": "Rango S: fama y fortunas",
+                "right": "Riqueza concentrada"
+              },
+              {
+                "left": "Dos mundos que casi no se tocan",
+                "right": "Brecha social"
+              },
+              {
+                "left": "Muertes que se podían evitar",
+                "right": "Riesgo para quien tiene menos"
+              }
+            ],
+            "completion_feedback": "La desigualdad no se queda quieta: **excluye, frustra y divide**. Veamos sus consecuencias."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo la desigualdad extrema rompe una sociedad",
+            "steps": [
+              "Unos acumulan todo y otros casi nada",
+              "Los que tienen más abusan de los que tienen menos",
+              "Crece el resentimiento entre los grupos",
+              "La tensión rompe la convivencia"
+            ],
+            "completion_feedback": "La brecha **no solo es injusta: vuelve insegura a toda la sociedad**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué consecuencia de la desigualdad muestra cada cosa?",
+            "left_label": "Dos niños",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Academia con pasto y nutriólogo",
+                "right": "Más oportunidades"
+              },
+              {
+                "left": "Cancha de tierra y balón gastado",
+                "right": "Menos oportunidades"
+              },
+              {
+                "left": "Mismo talento, distinto destino",
+                "right": "Sin movilidad social"
+              },
+              {
+                "left": "Nunca lo ve un cazatalentos",
+                "right": "Talento desperdiciado"
+              }
+            ],
+            "completion_feedback": "La desigualdad no se queda quieta: **excluye, frustra y divide**. Veamos sus consecuencias."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo el origen decide el destino",
+            "steps": [
+              "Dos niños tienen el mismo talento",
+              "Nacen con recursos muy distintos",
+              "Uno recibe muchas más oportunidades",
+              "El otro no avanza aunque se esfuerce"
+            ],
+            "completion_feedback": "Cuando el origen pesa más que el mérito, **se desperdicia talento**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué consecuencia de la desigualdad muestra cada cosa?",
+            "left_label": "Boletos NewJeans",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Revendedores con bots",
+                "right": "Acceso según el dinero"
+              },
+              {
+                "left": "Sofía queda fuera otra vez",
+                "right": "Exclusión"
+              },
+              {
+                "left": "Paquetes VIP para quien paga",
+                "right": "Privilegio"
+              },
+              {
+                "left": "'Nunca tendré esa oportunidad'",
+                "right": "Desmotivación"
+              }
+            ],
+            "completion_feedback": "La desigualdad no se queda quieta: **excluye, frustra y divide**. Veamos sus consecuencias."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo la desigualdad apaga las ganas",
+            "steps": [
+              "El acceso depende solo del dinero",
+              "Quien tiene menos queda fuera una y otra vez",
+              "Crecen la frustración y el desánimo",
+              "Deja de intentarlo"
+            ],
+            "completion_feedback": "La desigualdad **no solo excluye: también rompe sueños**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué consecuencia de la desigualdad muestra cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Gastar en Génesis Crystals",
+                "right": "Ventaja inicial"
+              },
+              {
+                "left": "Más recompensas, más fuerza",
+                "right": "Ventajas que se acumulan"
+              },
+              {
+                "left": "El jugador gratis se atora",
+                "right": "Rezago"
+              },
+              {
+                "left": "Pensar en dejar el juego",
+                "right": "Frustración y abandono"
+              }
+            ],
+            "completion_feedback": "La desigualdad no se queda quieta: **excluye, frustra y divide**. Veamos sus consecuencias."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo crece una desigualdad",
+            "steps": [
+              "Uno empieza con más recursos",
+              "Consigue más ventajas gracias a ellos",
+              "La distancia con el otro crece",
+              "El que va atrás se frustra o abandona"
+            ],
+            "completion_feedback": "La ventaja **se acumula**: por eso la brecha se agranda en vez de cerrarse. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "leyes-e-instituciones-que-protegen-tus-derechos": {
+      "order_steps": {
+        "prompt": "Ordena cómo una ley protege un derecho",
+        "steps": [
+          "Una ley escrita protege un derecho",
+          "Alguien la incumple",
+          "Se acude a la institución encargada",
+          "La institución revisa el caso y sanciona"
+        ],
+        "completion_feedback": "Una ley sola es papel: **la institución la vuelve exigible**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la protección de derechos es cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Las reglas dentro de los Muros",
+                "right": "Ley: regla escrita"
+              },
+              {
+                "left": "El tribunal que juzga a Eren",
+                "right": "Institución: la hace cumplir"
+              },
+              {
+                "left": "Escuchar argumentos antes de decidir",
+                "right": "Debido proceso"
+              },
+              {
+                "left": "No decidir a gritos en la calle",
+                "right": "Sin capricho del poderoso"
+              }
+            ],
+            "completion_feedback": "Reglas escritas **y** alguien que las haga cumplir: así se protegen tus derechos. Veamos cómo funcionan."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la protección de derechos es cada cosa?",
+            "left_label": "Santi Giménez",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Las Reglas de Juego de la FIFA",
+                "right": "Ley: regla escrita"
+              },
+              {
+                "left": "El árbitro y el VAR",
+                "right": "Institución: la hace cumplir"
+              },
+              {
+                "left": "Penal por la falta a Santi",
+                "right": "Sanción"
+              },
+              {
+                "left": "Reglas sin árbitro",
+                "right": "Letra muerta"
+              }
+            ],
+            "completion_feedback": "Reglas escritas **y** alguien que las haga cumplir: así se protegen tus derechos. Veamos cómo funcionan."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la protección de derechos es cada cosa?",
+            "left_label": "El contrato de IVE",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Leyes laborales de Corea",
+                "right": "Ley: regla escrita"
+              },
+              {
+                "left": "La autoridad que vigila agencias",
+                "right": "Institución: la hace cumplir"
+              },
+              {
+                "left": "Horarios y pago justo",
+                "right": "Derechos protegidos"
+              },
+              {
+                "left": "Denunciar si la agencia abusa",
+                "right": "Hacer valer tus derechos"
+              }
+            ],
+            "completion_feedback": "Reglas escritas **y** alguien que las haga cumplir: así se protegen tus derechos. Veamos cómo funcionan."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la protección de derechos es cada cosa?",
+            "left_label": "Brawl Stars",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Los términos de servicio",
+                "right": "Ley: regla escrita"
+              },
+              {
+                "left": "El equipo anti-fraude",
+                "right": "Institución: la hace cumplir"
+              },
+              {
+                "left": "Reportar al tramposo",
+                "right": "Denuncia"
+              },
+              {
+                "left": "El baneo al tramposo",
+                "right": "Sanción"
+              }
+            ],
+            "completion_feedback": "Reglas escritas **y** alguien que las haga cumplir: así se protegen tus derechos. Veamos cómo funcionan."
+          }
+        }
+      }
+    },
+    "el-conflicto-y-la-cultura-de-paz": {
+      "order_steps": {
+        "prompt": "Ordena cómo se resuelve un conflicto con cultura de paz",
+        "steps": [
+          "Surge un desacuerdo",
+          "Los ánimos se calientan y puede escalar",
+          "Alguien pide calma y propone dialogar",
+          "Baja la tensión y se resuelve sin violencia"
+        ],
+        "completion_feedback": "El desacuerdo no desaparece: **se resuelve hablando** en vez de pelear. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del conflicto y la cultura de paz es cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Demonios que mataron a su familia",
+                "right": "Conflicto grave"
+              },
+              {
+                "left": "Tomar la mano del demonio vencido",
+                "right": "Empatía"
+              },
+              {
+                "left": "Pelear para proteger, sin rencor",
+                "right": "Defenderse sin crueldad"
+              },
+              {
+                "left": "No responder al odio con más odio",
+                "right": "Romper el círculo de violencia"
+              }
+            ],
+            "completion_feedback": "El conflicto es normal; lo que importa es **cómo lo resuelves**. Eso es la cultura de paz."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se rompe el círculo de violencia",
+            "steps": [
+              "Alguien sufre un daño grave",
+              "Nace el deseo de responder con odio",
+              "Elige defenderse sin crueldad ni rencor",
+              "Así se rompe el círculo de violencia"
+            ],
+            "completion_feedback": "La verdadera fuerza es **no volverte como aquello que combates**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del conflicto y la cultura de paz es cada cosa?",
+            "left_label": "El clásico",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "La entrada fuerte a Bellingham",
+                "right": "Conflicto"
+              },
+              {
+                "left": "Empujones entre los equipos",
+                "right": "Escalada"
+              },
+              {
+                "left": "Capitanes que separan y calman",
+                "right": "Mediación"
+              },
+              {
+                "left": "Darle la mano y disculparse",
+                "right": "Respeto al rival"
+              }
+            ],
+            "completion_feedback": "El conflicto es normal; lo que importa es **cómo lo resuelves**. Eso es la cultura de paz."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del conflicto y la cultura de paz es cada cosa?",
+            "left_label": "Fanwar",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "'Copiaron la coreografía'",
+                "right": "Desacuerdo"
+              },
+              {
+                "left": "Insultos y hashtags de odio",
+                "right": "Escalada"
+              },
+              {
+                "left": "Cuentas que piden calma",
+                "right": "Mediación"
+              },
+              {
+                "left": "Apoyar la música, no atacar",
+                "right": "Cultura de paz"
+              }
+            ],
+            "completion_feedback": "El conflicto es normal; lo que importa es **cómo lo resuelves**. Eso es la cultura de paz."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del conflicto y la cultura de paz es cada cosa?",
+            "left_label": "Pro Clubs",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "El delantero culpa al portero",
+                "right": "Conflicto"
+              },
+              {
+                "left": "Insultos por el chat de voz",
+                "right": "Escalada"
+              },
+              {
+                "left": "Cada quien dice qué le molestó",
+                "right": "Diálogo y escucha"
+              },
+              {
+                "left": "Repartir mejor los roles",
+                "right": "Acuerdo"
+              }
+            ],
+            "completion_feedback": "El conflicto es normal; lo que importa es **cómo lo resuelves**. Eso es la cultura de paz."
+          }
+        }
+      }
+    },
+    "ambientes-de-respeto-a-la-vida-y-la": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea del respeto a la vida y la dignidad muestra cada cosa?",
+            "left_label": "Spy x Family",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Espía, asesina y lectora de mentes",
+                "right": "Diferencias"
+              },
+              {
+                "left": "Loid cuida a Anya sin ser su hija",
+                "right": "Cariño e inclusión"
+              },
+              {
+                "left": "Nadie rechazado por ser raro",
+                "right": "Aceptación"
+              },
+              {
+                "left": "Un hogar donde se sienten seguros",
+                "right": "Ambiente de respeto"
+              }
+            ],
+            "completion_feedback": "Toda persona vale **por el solo hecho de existir**. Un ambiente de respeto es donde nadie lo olvida."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea del respeto a la vida y la dignidad muestra cada cosa?",
+            "left_label": "El partido",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Jugador inmóvil tras el choque",
+                "right": "Una vida en riesgo"
+              },
+              {
+                "left": "Rivales que paran el juego",
+                "right": "Solidaridad"
+              },
+              {
+                "left": "Más importante que cualquier trofeo",
+                "right": "La vida, el derecho mayor"
+              }
+            ],
+            "completion_feedback": "Toda persona vale **por el solo hecho de existir**. Un ambiente de respeto es donde nadie lo olvida."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea del respeto a la vida y la dignidad muestra cada cosa?",
+            "left_label": "NewJeans",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Comentarios crueles sobre su cuerpo",
+                "right": "Cyberbullying"
+              },
+              {
+                "left": "Daño a su salud mental",
+                "right": "Riesgo para la vida"
+              },
+              {
+                "left": "Reportar los mensajes de odio",
+                "right": "Frenar el ataque"
+              },
+              {
+                "left": "'Eres valiosa como persona'",
+                "right": "Dignidad"
+              }
+            ],
+            "completion_feedback": "Toda persona vale **por el solo hecho de existir**. Un ambiente de respeto es donde nadie lo olvida."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se pasa de un ambiente dañino a uno de respeto",
+            "steps": [
+              "Alguien recibe ataques o burlas",
+              "Se daña su dignidad y su bienestar",
+              "Otros frenan el ataque y lo apoyan",
+              "El ambiente se vuelve seguro para todos"
+            ],
+            "completion_feedback": "Cada quien, **con sus palabras y actos**, hace un espacio sano o dañino. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea del respeto a la vida y la dignidad muestra cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "'Desinstala el juego'",
+                "right": "Humillación"
+              },
+              {
+                "left": "El nuevo se queda callado",
+                "right": "Ambiente hostil"
+              },
+              {
+                "left": "La jugadora pide que paren",
+                "right": "Defender la dignidad"
+              },
+              {
+                "left": "Consejos para mejorar la puntería",
+                "right": "Corregir sin ofender"
+              }
+            ],
+            "completion_feedback": "Toda persona vale **por el solo hecho de existir**. Un ambiente de respeto es donde nadie lo olvida."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se pasa de un ambiente dañino a uno de respeto",
+            "steps": [
+              "Alguien recibe ataques o burlas",
+              "Se daña su dignidad y su bienestar",
+              "Otros frenan el ataque y lo apoyan",
+              "El ambiente se vuelve seguro para todos"
+            ],
+            "completion_feedback": "Cada quien, **con sus palabras y actos**, hace un espacio sano o dañino. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "quienes-promueven-la-cultura-de-paz": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué papel tiene cada uno en la cultura de paz?",
+            "left_label": "My Hero Academia",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "All Might, Símbolo de la Paz",
+                "right": "Modelo a seguir"
+              },
+              {
+                "left": "Deku decide ser héroe",
+                "right": "Nueva generación"
+              },
+              {
+                "left": "Ayudar sin esperar nada a cambio",
+                "right": "Valores de paz"
+              },
+              {
+                "left": "Miles que siguen su camino",
+                "right": "Efecto en cadena"
+              }
+            ],
+            "completion_feedback": "La paz no se da sola: **alguien trabaja para construirla**. Veamos quiénes la promueven."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se multiplica la cultura de paz",
+            "steps": [
+              "Una persona actúa con valores de paz",
+              "Otros ven su ejemplo",
+              "Lo imitan y aprenden esos valores",
+              "Ellos inspiran a más personas"
+            ],
+            "completion_feedback": "Cada persona que inspira **puede inspirar a muchas más**: así se multiplica la paz. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué papel tiene cada uno en la cultura de paz?",
+            "left_label": "Say No to Racism",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "La manta contra el racismo",
+                "right": "Campaña de prevención"
+              },
+              {
+                "left": "La FIFA y las grandes ligas",
+                "right": "Institución"
+              },
+              {
+                "left": "Jugador que pide respetar al rival",
+                "right": "Figura influyente"
+              },
+              {
+                "left": "Canchas en comunidades pobres",
+                "right": "Ayuda social"
+              }
+            ],
+            "completion_feedback": "La paz no se da sola: **alguien trabaja para construirla**. Veamos quiénes la promueven."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué papel tiene cada uno en la cultura de paz?",
+            "left_label": "BTS en la ONU",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "El discurso de RM en la ONU",
+                "right": "Figura pública"
+              },
+              {
+                "left": "UNICEF",
+                "right": "Organismo que protege a la niñez"
+              },
+              {
+                "left": "La campaña 'Love Myself'",
+                "right": "Campaña contra la violencia"
+              },
+              {
+                "left": "ARMY difundiendo el mensaje",
+                "right": "Multiplicar el mensaje"
+              }
+            ],
+            "completion_feedback": "La paz no se da sola: **alguien trabaja para construirla**. Veamos quiénes la promueven."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué papel tiene cada uno en la cultura de paz?",
+            "left_label": "Hypixel",
+            "right_label": "En Cívica",
+            "pairs": [
+              {
+                "left": "Moderadores del servidor",
+                "right": "Promotores de paz"
+              },
+              {
+                "left": "Reglas claras y eventos en equipo",
+                "right": "Fomentar la convivencia"
+              },
+              {
+                "left": "Escuchar a los dos que pelean",
+                "right": "Mediación"
+              },
+              {
+                "left": "Griefing e insultos en el chat",
+                "right": "Problemas de convivencia"
+              }
+            ],
+            "completion_feedback": "La paz no se da sola: **alguien trabaja para construirla**. Veamos quiénes la promueven."
+          }
+        }
+      }
+    }
+  }
+}
