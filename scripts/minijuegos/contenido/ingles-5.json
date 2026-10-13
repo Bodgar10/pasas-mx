@@ -1,0 +1,720 @@
+{
+  "subject": "ingles-5",
+  "topics": {
+    "review-of-advanced-tenses": {
+      "order_steps": {
+        "prompt": "Arma una oración en present perfect continuous",
+        "steps": [
+          "Sujeto: Denji",
+          "Auxiliar: has been",
+          "Verbo en -ing: hunting devils",
+          "Conector y punto de inicio: since he met Makima"
+        ],
+        "completion_feedback": "**Past perfect** (had + participio): antes de otro pasado. **Present perfect continuous** (has been + -ing): empezó antes y sigue. **Future perfect**: will have + participio. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chainsaw Man",
+            "right_label": "Tiempo",
+            "pairs": [
+              {
+                "left": "Denji had lived in poverty",
+                "right": "Past perfect"
+              },
+              {
+                "left": "He has been fighting devils",
+                "right": "Present perfect continuous"
+              },
+              {
+                "left": "He will have faced his enemy",
+                "right": "Future perfect"
+              }
+            ],
+            "completion_feedback": "Tiempos avanzados: **past perfect** = had + participio (antes de otro pasado), **present perfect continuous** = have/has been + -ing (empezó y sigue), **future perfect** = will have + participio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Narración",
+            "right_label": "Tiempo",
+            "pairs": [
+              {
+                "left": "His teammate had drawn two defenders",
+                "right": "Past perfect"
+              },
+              {
+                "left": "Yamal has scored again",
+                "right": "Present perfect"
+              },
+              {
+                "left": "Barça will have dominated the game",
+                "right": "Future perfect"
+              }
+            ],
+            "completion_feedback": "Tiempos avanzados: **past perfect** = had + participio (antes de otro pasado), **present perfect continuous** = have/has been + -ing (empezó y sigue), **future perfect** = will have + participio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Squid Game",
+            "right_label": "Tiempo",
+            "pairs": [
+              {
+                "left": "They had signed before reading",
+                "right": "Past perfect"
+              },
+              {
+                "left": "Only one will have survived",
+                "right": "Future perfect"
+              },
+              {
+                "left": "He has been playing for hours",
+                "right": "Present perfect continuous"
+              }
+            ],
+            "completion_feedback": "Tiempos avanzados: **past perfect** = had + participio (antes de otro pasado), **present perfect continuous** = have/has been + -ing (empezó y sigue), **future perfect** = will have + participio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Zelda: TotK",
+            "right_label": "Tiempo",
+            "pairs": [
+              {
+                "left": "Zelda had already vanished",
+                "right": "Past perfect"
+              },
+              {
+                "left": "Link has been exploring for hours",
+                "right": "Present perfect continuous"
+              },
+              {
+                "left": "He will have gathered the sages",
+                "right": "Future perfect"
+              }
+            ],
+            "completion_feedback": "Tiempos avanzados: **past perfect** = had + participio (antes de otro pasado), **present perfect continuous** = have/has been + -ing (empezó y sigue), **future perfect** = will have + participio."
+          }
+        }
+      }
+    },
+    "mixed-conditionals": {
+      "order_steps": {
+        "prompt": "Arma un condicional mixto",
+        "steps": [
+          "Empieza con If + condición pasada: If Jinwoo…",
+          "Usa past perfect: hadn't trained so hard",
+          "Resultado presente con would + verbo: he wouldn't be",
+          "Cierra con la pista de presente: this strong now"
+        ],
+        "completion_feedback": "**Condicional mixto**: If + past perfect, would + verbo (pasado → presente). Al revés: If + past simple, would have + participio (presente → pasado). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I hadn't survived the dungeon,",
+                "right": "I wouldn't have the System now."
+              },
+              {
+                "left": "If I weren't so determined,",
+                "right": "I would have given up."
+              },
+              {
+                "left": "If Jinwoo hadn't trained so hard,",
+                "right": "he wouldn't be this strong now."
+              }
+            ],
+            "completion_feedback": "Los **mixed conditionals** cruzan tiempos: If + **past perfect**, would + verbo (un pasado cambia el presente) o If + **past simple**, would have + participio (un rasgo actual explica el pasado)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El penal fallado",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I had scored that penalty,",
+                "right": "I would be a legend today."
+              },
+              {
+                "left": "If I weren't so nervous,",
+                "right": "I would have scored it."
+              },
+              {
+                "left": "If the club had signed him,",
+                "right": "they would lead the league now."
+              }
+            ],
+            "completion_feedback": "Los **mixed conditionals** cruzan tiempos: If + **past perfect**, would + verbo (un pasado cambia el presente) o If + **past simple**, would have + participio (un rasgo actual explica el pasado)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "K-drama",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I had accepted his confession,",
+                "right": "we would be together now."
+              },
+              {
+                "left": "If I weren't so afraid of change,",
+                "right": "I would have told him years ago."
+              },
+              {
+                "left": "If she hadn't missed the audition,",
+                "right": "she would be famous today."
+              }
+            ],
+            "completion_feedback": "Los **mixed conditionals** cruzan tiempos: If + **past perfect**, would + verbo (un pasado cambia el presente) o If + **past simple**, would have + participio (un rasgo actual explica el pasado)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Spider-Man 2",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If Peter hadn't used the symbiote,",
+                "right": "he wouldn't fear himself now."
+              },
+              {
+                "left": "If I weren't Spider-Man,",
+                "right": "I would have ignored that call."
+              },
+              {
+                "left": "If Miles had trained harder,",
+                "right": "he would be more confident now."
+              }
+            ],
+            "completion_feedback": "Los **mixed conditionals** cruzan tiempos: If + **past perfect**, would + verbo (un pasado cambia el presente) o If + **past simple**, would have + participio (un rasgo actual explica el pasado)."
+          }
+        }
+      }
+    },
+    "wish-and-if-only": {
+      "order_steps": {
+        "prompt": "Arma una oración con wish",
+        "steps": [
+          "Empieza con I wish…",
+          "Pon el sujeto del deseo: my mother…",
+          "Es arrepentimiento pasado → had + participio: hadn't died",
+          "Cierra con la pista de tiempo: that day"
+        ],
+        "completion_feedback": "Con **wish**: presente → past simple (I wish I lived…), pasado → past perfect (I wish I had bought…), molestia con otros → would (I wish he would stop…). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Eren piensa",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Ojalá mi madre no hubiera muerto",
+                "right": "I wish my mother hadn't died"
+              },
+              {
+                "left": "Ojalá fuéramos libres",
+                "right": "I wish we were free"
+              },
+              {
+                "left": "Ojalá dejaran de esconderse",
+                "right": "I wish they would stop hiding"
+              }
+            ],
+            "completion_feedback": "**Wish / If only**: deseo presente = past simple (I wish I were…), arrepentimiento pasado = past perfect (I wish I had…), molestia con alguien = would (I wish he would stop…)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Eliminados",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Ojalá lo hubiera metido antes",
+                "right": "If only the coach had subbed him"
+              },
+              {
+                "left": "Ojalá estuviéramos en la final",
+                "right": "I wish we were in the final"
+              },
+              {
+                "left": "Ojalá el árbitro decidiera ya",
+                "right": "I wish the ref would decide"
+              }
+            ],
+            "completion_feedback": "**Wish / If only**: deseo presente = past simple (I wish I were…), arrepentimiento pasado = past perfect (I wish I had…), molestia con alguien = would (I wish he would stop…)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sin boletos",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Ojalá hubiera comprado boletos",
+                "right": "I wish I had bought tickets"
+              },
+              {
+                "left": "Ojalá viviera en Seúl",
+                "right": "I wish I lived in Seoul"
+              },
+              {
+                "left": "Ojalá bajaran los precios",
+                "right": "I wish they would lower prices"
+              }
+            ],
+            "completion_feedback": "**Wish / If only**: deseo presente = past simple (I wish I were…), arrepentimiento pasado = past perfect (I wish I had…), molestia con alguien = would (I wish he would stop…)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "EA Sports FC",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Ojalá hubiera defendido esa",
+                "right": "I wish I had defended that"
+              },
+              {
+                "left": "Ojalá tuviera mejor delantero",
+                "right": "I wish I had a better striker"
+              },
+              {
+                "left": "Ojalá dejara de hacer fintas",
+                "right": "I wish he would stop skilling"
+              }
+            ],
+            "completion_feedback": "**Wish / If only**: deseo presente = past simple (I wish I were…), arrepentimiento pasado = past perfect (I wish I had…), molestia con alguien = would (I wish he would stop…)."
+          }
+        }
+      }
+    },
+    "causative-have-get-something-done": {
+      "order_steps": {
+        "prompt": "Arma una oración causativa",
+        "steps": [
+          "Sujeto + have o get en el tiempo correcto: Jinwoo had",
+          "Agrega el objeto: his dagger",
+          "Agrega el participio: reforged",
+          "Si importa, el agente con by: by the blacksmith"
+        ],
+        "completion_feedback": "**Causative**: have/get + **objeto** + **participio** (+ by agente). Dice que **otro** hizo la acción por ti. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Le reforjaron la daga a Jinwoo",
+                "right": "He had his dagger reforged"
+              },
+              {
+                "left": "Le encantaron la armadura",
+                "right": "He got his armor enchanted"
+              },
+              {
+                "left": "Le curaron las heridas",
+                "right": "He had his wounds healed"
+              }
+            ],
+            "completion_feedback": "El **causative** dice que otro hizo algo por ti: have/get + objeto + participio. 'I fixed my PC' (lo hice yo) ≠ 'I had my PC fixed' (alguien lo arregló)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mbappé",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Le personalizan los botines",
+                "right": "He has his boots customized"
+              },
+              {
+                "left": "Le revisaron la rodilla",
+                "right": "He got his knee examined"
+              },
+              {
+                "left": "Le planean la dieta",
+                "right": "He has his diet planned"
+              }
+            ],
+            "completion_feedback": "El **causative** dice que otro hizo algo por ti: have/get + objeto + participio. 'I fixed my PC' (lo hice yo) ≠ 'I had my PC fixed' (alguien lo arregló)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Les grabaron el MV en Seúl",
+                "right": "They had their MV filmed in Seoul"
+              },
+              {
+                "left": "Les diseñaron la coreografía",
+                "right": "They got their choreo designed"
+              },
+              {
+                "left": "Les arreglaron el cabello",
+                "right": "They had their hair done"
+              }
+            ],
+            "completion_feedback": "El **causative** dice que otro hizo algo por ti: have/get + objeto + participio. 'I fixed my PC' (lo hice yo) ≠ 'I had my PC fixed' (alguien lo arregló)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Setup gamer",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Me arreglaron la PC",
+                "right": "I got my PC fixed"
+              },
+              {
+                "left": "Me diseñaron el logo",
+                "right": "I had my logo designed"
+              },
+              {
+                "left": "Arreglé la PC yo solo",
+                "right": "I fixed my PC myself"
+              }
+            ],
+            "completion_feedback": "El **causative** dice que otro hizo algo por ti: have/get + objeto + participio. 'I fixed my PC' (lo hice yo) ≠ 'I had my PC fixed' (alguien lo arregló)."
+          }
+        }
+      }
+    },
+    "connectors-and-discourse-markers": {
+      "order_steps": {
+        "prompt": "Une dos ideas con un conector",
+        "steps": [
+          "Lee las dos ideas",
+          "Identifica su relación: suma, contraste o resultado",
+          "Elige el conector: moreover, however o therefore",
+          "Puntúa: punto y coma antes, coma después"
+        ],
+        "completion_feedback": "**Moreover** suma, **however** contrasta, **therefore** concluye. Entre dos oraciones: punto y coma antes y coma después. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate de Gojo",
+            "right_label": "Conector",
+            "pairs": [
+              {
+                "left": "Tiene el Infinito y, aparte, Seis Ojos",
+                "right": "moreover"
+              },
+              {
+                "left": "Parece invencible, pero lo sellaron",
+                "right": "however"
+              },
+              {
+                "left": "Nadie lo iguala, por eso es el #1",
+                "right": "therefore"
+              }
+            ],
+            "completion_feedback": "Conectores: **adición** (moreover, in addition, furthermore), **contraste** (however, nevertheless) y **resultado** (therefore, thus). Se elige según la relación entre las ideas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bellingham",
+            "right_label": "Conector",
+            "pairs": [
+              {
+                "left": "Lee el juego y, aparte, llega al área",
+                "right": "moreover"
+              },
+              {
+                "left": "Es ofensivo, pero baja a defender",
+                "right": "however"
+              },
+              {
+                "left": "Lo hace todo, así que vale su precio",
+                "right": "therefore"
+              }
+            ],
+            "completion_feedback": "Conectores: **adición** (moreover, in addition, furthermore), **contraste** (however, nevertheless) y **resultado** (therefore, thus). Se elige según la relación entre las ideas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reseña de IVE",
+            "right_label": "Conector",
+            "pairs": [
+              {
+                "left": "Gran coreo y, aparte, mejores voces",
+                "right": "moreover"
+              },
+              {
+                "left": "Concepto atrevido, pero repetitivo",
+                "right": "however"
+              },
+              {
+                "left": "Pegajosa y bien hecha: merece el #1",
+                "right": "therefore"
+              }
+            ],
+            "completion_feedback": "Conectores: **adición** (moreover, in addition, furthermore), **contraste** (however, nevertheless) y **resultado** (therefore, thus). Se elige según la relación entre las ideas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Brawl Stars",
+            "right_label": "Conector",
+            "pairs": [
+              {
+                "left": "Pam cura y, aparte, hace daño",
+                "right": "in addition"
+              },
+              {
+                "left": "Spike pega fuerte, pero de cerca sufre",
+                "right": "however"
+              },
+              {
+                "left": "Ya estamos listos: vamos a la mina",
+                "right": "therefore"
+              }
+            ],
+            "completion_feedback": "Conectores: **adición** (moreover, in addition, furthermore), **contraste** (however, nevertheless) y **resultado** (therefore, thus). Se elige según la relación entre las ideas."
+          }
+        }
+      }
+    },
+    "academic-reading-comprehension": {
+      "order_steps": {
+        "prompt": "Lee un texto académico paso a paso",
+        "steps": [
+          "Haz skimming: título, primer y último párrafo",
+          "Identifica la idea principal",
+          "Haz scanning para buscar un dato concreto",
+          "Infiere las palabras nuevas por el contexto"
+        ],
+        "completion_feedback": "Lectura académica: **skimming** (idea general), **scanning** (dato concreto) e **inferencia** (deducir por contexto). Distingue **hecho** de **opinión**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo de AoT",
+            "right_label": "Estrategia",
+            "pairs": [
+              {
+                "left": "Leer el primer y último párrafo",
+                "right": "Skimming"
+              },
+              {
+                "left": "Buscar el nombre del autor",
+                "right": "Scanning"
+              },
+              {
+                "left": "Deducir qué es 'ambiguous'",
+                "right": "Inferencia"
+              }
+            ],
+            "completion_feedback": "Estrategias de lectura: **skimming** = leer rápido para la idea general, **scanning** = buscar un dato, **inferir** = deducir por contexto. Un hecho se verifica, una opinión valora."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Crónica",
+            "right_label": "Estrategia",
+            "pairs": [
+              {
+                "left": "Leer titular y primer párrafo",
+                "right": "Skimming"
+              },
+              {
+                "left": "¿En qué minuto fue el gol?",
+                "right": "Scanning"
+              },
+              {
+                "left": "La expulsión provocó los goles",
+                "right": "Causa y efecto"
+              }
+            ],
+            "completion_feedback": "Estrategias de lectura: **skimming** = leer rápido para la idea general, **scanning** = buscar un dato, **inferir** = deducir por contexto. Un hecho se verifica, una opinión valora."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Artículo de K-pop",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "'BLACKPINK headlined Coachella'",
+                "right": "Hecho"
+              },
+              {
+                "left": "'The greatest girl group ever'",
+                "right": "Opinión"
+              },
+              {
+                "left": "'You must watch this K-drama!'",
+                "right": "Texto para persuadir"
+              }
+            ],
+            "completion_feedback": "Estrategias de lectura: **skimming** = leer rápido para la idea general, **scanning** = buscar un dato, **inferir** = deducir por contexto. Un hecho se verifica, una opinión valora."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Patch notes",
+            "right_label": "Estrategia",
+            "pairs": [
+              {
+                "left": "Ver solo los títulos en negrita",
+                "right": "Skimming"
+              },
+              {
+                "left": "Buscar el nombre de tu main",
+                "right": "Scanning"
+              },
+              {
+                "left": "Deducir 'riddled with glitches'",
+                "right": "Inferencia"
+              }
+            ],
+            "completion_feedback": "Estrategias de lectura: **skimming** = leer rápido para la idea general, **scanning** = buscar un dato, **inferir** = deducir por contexto. Un hecho se verifica, una opinión valora."
+          }
+        }
+      }
+    },
+    "argumentative-essay-writing": {
+      "order_steps": {
+        "prompt": "Ordena las partes de un ensayo argumentativo",
+        "steps": [
+          "Hook: una frase que atrape al lector",
+          "Thesis statement: tu postura y tus razones",
+          "Body paragraphs con evidencia",
+          "Counterargument y rebuttal",
+          "Conclusion: reformula y cierra con fuerza"
+        ],
+        "completion_feedback": "Un **ensayo argumentativo**: hook, **tesis** con razones, párrafos con **evidencia**, objeción refutada y **conclusión** que reformula. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo sobre anime",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Ghibli ha ganado el Óscar, pero…'",
+                "right": "Hook"
+              },
+              {
+                "left": "'Anime is art because…'",
+                "right": "Thesis"
+              },
+              {
+                "left": "Reformular y cerrar con fuerza",
+                "right": "Conclusion"
+              }
+            ],
+            "completion_feedback": "Partes del ensayo: **hook** (atrapa), **thesis** (postura + razones), **evidence** (datos), **counterargument + rebuttal** (objeción y respuesta) y **conclusion** (reformula sin repetir)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "¿Messi el mejor?",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Messi has 8 Ballon d'Or awards'",
+                "right": "Evidence"
+              },
+              {
+                "left": "'Admittedly, Cristiano scored more'",
+                "right": "Counterargument"
+              },
+              {
+                "left": "'However, Messi's impact is bigger'",
+                "right": "Rebuttal"
+              }
+            ],
+            "completion_feedback": "Partes del ensayo: **hook** (atrapa), **thesis** (postura + razones), **evidence** (datos), **counterargument + rebuttal** (objeción y respuesta) y **conclusion** (reformula sin repetir)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo sobre K-pop",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'BTS addressed the United Nations'",
+                "right": "Hook"
+              },
+              {
+                "left": "Tres razones que mapean el cuerpo",
+                "right": "Thesis statement"
+              },
+              {
+                "left": "'Critics say K-pop is shallow'",
+                "right": "Counterargument"
+              }
+            ],
+            "completion_feedback": "Partes del ensayo: **hook** (atrapa), **thesis** (postura + razones), **evidence** (datos), **counterargument + rebuttal** (objeción y respuesta) y **conclusion** (reformula sin repetir)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo de esports",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Esports require intense training'",
+                "right": "Topic sentence"
+              },
+              {
+                "left": "'Pros practice up to 12 hours'",
+                "right": "Evidence"
+              },
+              {
+                "left": "'Therefore, it can't be ignored'",
+                "right": "Link"
+              }
+            ],
+            "completion_feedback": "Partes del ensayo: **hook** (atrapa), **thesis** (postura + razones), **evidence** (datos), **counterargument + rebuttal** (objeción y respuesta) y **conclusion** (reformula sin repetir)."
+          }
+        }
+      }
+    }
+  }
+}
