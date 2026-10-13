@@ -1,0 +1,1303 @@
+{
+  "subject": "matematicas-2-geometria-trigonometria",
+  "topics": {
+    "angulos-y-su-clasificacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas 130° y hallas su suplementario",
+        "steps": [
+          "Compara con 90° y 180°: 90° < 130° < 180°",
+          "Clasifícalo: es obtuso",
+          "Resta para llegar a 180°: 180° − 130° = 50°",
+          "Verifica: 130° + 50° = 180° ✓"
+        ],
+        "completion_feedback": "Primero ubicas el ángulo entre las medidas clave (**90° y 180°**) y luego completas lo que falta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de ángulo es cada medida?",
+            "left_label": "Visión de Isagi",
+            "right_label": "Tipo de ángulo",
+            "pairs": [
+              {
+                "left": "160°: el disparo de Nagi",
+                "right": "Obtuso"
+              },
+              {
+                "left": "20°: el ángulo del otro lado",
+                "right": "Agudo"
+              },
+              {
+                "left": "90°: una esquina perfecta",
+                "right": "Recto"
+              },
+              {
+                "left": "180°: el piso en línea recta",
+                "right": "Llano"
+              }
+            ],
+            "completion_feedback": "Los ángulos se clasifican por su **abertura**: agudo, recto, obtuso y llano; los **complementarios** suman 90° y los **suplementarios**, 180°."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo, medida o regla corresponde?",
+            "left_label": "Centro de Jude",
+            "right_label": "Ángulos",
+            "pairs": [
+              {
+                "left": "Centro de Bellingham a 40°",
+                "right": "Agudo"
+              },
+              {
+                "left": "Suplementario de 40°",
+                "right": "140°"
+              },
+              {
+                "left": "Ángulos suplementarios",
+                "right": "Suman 180°"
+              },
+              {
+                "left": "Ángulos complementarios",
+                "right": "Suman 90°"
+              }
+            ],
+            "completion_feedback": "Los ángulos se clasifican por su **abertura**: agudo, recto, obtuso y llano; los **complementarios** suman 90° y los **suplementarios**, 180°."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué ángulo forma el brazo en cada pose?",
+            "left_label": "Coreo de SVT",
+            "right_label": "Tipo de ángulo",
+            "pairs": [
+              {
+                "left": "Brazo casi pegado al cuerpo",
+                "right": "Agudo"
+              },
+              {
+                "left": "Brazo horizontal al torso",
+                "right": "Recto"
+              },
+              {
+                "left": "Brazo pasado de la horizontal",
+                "right": "Obtuso"
+              },
+              {
+                "left": "Ambos brazos en una sola línea",
+                "right": "Llano"
+              }
+            ],
+            "completion_feedback": "Los ángulos se clasifican por su **abertura**: agudo, recto, obtuso y llano; los **complementarios** suman 90° y los **suplementarios**, 180°."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo o medida corresponde?",
+            "left_label": "Flecha de Sova",
+            "right_label": "Ángulos",
+            "pairs": [
+              {
+                "left": "Mira a 35° del suelo",
+                "right": "Agudo"
+              },
+              {
+                "left": "Complemento de 35°",
+                "right": "55°"
+              },
+              {
+                "left": "Suplemento de 35°",
+                "right": "145°"
+              },
+              {
+                "left": "Girar la mira 270°",
+                "right": "Cóncavo: más de 180°"
+              }
+            ],
+            "completion_feedback": "Los ángulos se clasifican por su **abertura**: agudo, recto, obtuso y llano; los **complementarios** suman 90° y los **suplementarios**, 180°."
+          }
+        }
+      }
+    },
+    "triangulos-propiedades-y-rectas-notables": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el tercer ángulo si dos miden 70° y 45°",
+        "steps": [
+          "Recuerda que los tres ángulos suman 180°",
+          "Suma los conocidos: 70° + 45° = 115°",
+          "Resta: 180° − 115° = 65°",
+          "Clasifica: los tres miden menos de 90°, es acutángulo"
+        ],
+        "completion_feedback": "Con la regla de los **180°** encuentras el ángulo faltante, y el **mayor** de los tres te dice cómo se clasifica. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué recta, punto o medida corresponde?",
+            "left_label": "Sello de 3 puntas",
+            "right_label": "Rectas notables",
+            "pairs": [
+              {
+                "left": "Del vértice al punto medio de enfrente",
+                "right": "Mediana"
+              },
+              {
+                "left": "Donde se cruzan las tres medianas",
+                "right": "Baricentro"
+              },
+              {
+                "left": "Mediana de 27 cm",
+                "right": "Baricentro a 18 cm del vértice"
+              },
+              {
+                "left": "Colgar el triángulo de ese punto",
+                "right": "Queda en equilibrio"
+              }
+            ],
+            "completion_feedback": "Los ángulos de un triángulo suman **180°**, y cada familia de rectas notables se cruza en su punto: **baricentro**, **incentro** u **ortocentro**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué ángulo o clasificación corresponde?",
+            "left_label": "Triángulo de Messi",
+            "right_label": "Triángulo",
+            "pairs": [
+              {
+                "left": "95° + 35° + x = 180°",
+                "right": "x = 50°"
+              },
+              {
+                "left": "Uno de sus ángulos mide 95°",
+                "right": "Obtusángulo"
+              },
+              {
+                "left": "Ángulos de 78°, 62° y 40°",
+                "right": "Acutángulo"
+              },
+              {
+                "left": "Suma de los tres ángulos",
+                "right": "Siempre 180°"
+              }
+            ],
+            "completion_feedback": "Los ángulos de un triángulo suman **180°**, y cada familia de rectas notables se cruza en su punto: **baricentro**, **incentro** u **ortocentro**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es o qué hace cada cosa?",
+            "left_label": "Reflector de TXT",
+            "right_label": "Rectas notables",
+            "pairs": [
+              {
+                "left": "Bisectriz",
+                "right": "Parte el ángulo a la mitad"
+              },
+              {
+                "left": "Incentro",
+                "right": "Cruce de las tres bisectrices"
+              },
+              {
+                "left": "Bisectriz de un ángulo de 80°",
+                "right": "Dos ángulos de 40°"
+              },
+              {
+                "left": "¿Por qué el foco va en el incentro?",
+                "right": "Equidista de los tres lados"
+              }
+            ],
+            "completion_feedback": "Los ángulos de un triángulo suman **180°**, y cada familia de rectas notables se cruza en su punto: **baricentro**, **incentro** u **ortocentro**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué recta, punto o medida corresponde?",
+            "left_label": "Techo en Minecraft",
+            "right_label": "Rectas notables",
+            "pairs": [
+              {
+                "left": "Columna perpendicular al lado opuesto",
+                "right": "Altura"
+              },
+              {
+                "left": "Donde se cruzan las tres alturas",
+                "right": "Ortocentro"
+              },
+              {
+                "left": "Ángulos de 55° y 35°",
+                "right": "El tercero mide 90°"
+              },
+              {
+                "left": "Ortocentro de un triángulo rectángulo",
+                "right": "En el vértice del ángulo recto"
+              }
+            ],
+            "completion_feedback": "Los ángulos de un triángulo suman **180°**, y cada familia de rectas notables se cruza en su punto: **baricentro**, **incentro** u **ortocentro**."
+          }
+        }
+      }
+    },
+    "congruencia-y-semejanza-de-triangulos": {
+      "order_steps": {
+        "prompt": "Ordena cómo mides un poste con su sombra",
+        "steps": [
+          "Mide al mismo tiempo tu sombra y la del poste",
+          "Reconoce triángulos semejantes: mismo ángulo del sol",
+          "Plantea: 1.5 / 2 = h / 8",
+          "Despeja: h = 1.5 × 8 ÷ 2 = 6 m"
+        ],
+        "completion_feedback": "Si el sol pega con el **mismo ángulo**, los triángulos son semejantes y sus lados guardan la misma **proporción**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué relación o resultado corresponde?",
+            "left_label": "Cortes de Zoro",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Corte idéntico del rival",
+                "right": "Congruentes"
+              },
+              {
+                "left": "Puño gigante con la misma forma",
+                "right": "Semejantes"
+              },
+              {
+                "left": "Lados 4, 6 y 8 con razón 2.5",
+                "right": "10, 15 y 20"
+              },
+              {
+                "left": "Al agrandar con semejanza",
+                "right": "Los ángulos no cambian"
+              }
+            ],
+            "completion_feedback": "**Congruentes**: misma forma y mismo tamaño. **Semejantes**: misma forma, ángulos iguales y lados **proporcionales**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué relación o resultado corresponde?",
+            "left_label": "Sombras del Barça",
+            "right_label": "Semejanza",
+            "pairs": [
+              {
+                "left": "Mismo ángulo del sol",
+                "right": "Triángulos semejantes"
+              },
+              {
+                "left": "1.80 / 1.2 = h / 8",
+                "right": "Grada de 12 m"
+              },
+              {
+                "left": "1.80 / 1 = h / 1.33",
+                "right": "Portería de 2.4 m"
+              },
+              {
+                "left": "Dos ángulos iguales",
+                "right": "Criterio AA"
+              }
+            ],
+            "completion_feedback": "**Congruentes**: misma forma y mismo tamaño. **Semejantes**: misma forma, ángulos iguales y lados **proporcionales**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué relación o resultado corresponde?",
+            "left_label": "Photocards de IVE",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Dos photocards del mismo set",
+                "right": "Congruentes"
+              },
+              {
+                "left": "Photocard y póster de Wonyoung",
+                "right": "Semejantes"
+              },
+              {
+                "left": "Lados 5, 7 y 8 con razón 4",
+                "right": "20, 28 y 32"
+              },
+              {
+                "left": "Lados 4, 6 y 9 con razón 3",
+                "right": "12, 18 y 27"
+              }
+            ],
+            "completion_feedback": "**Congruentes**: misma forma y mismo tamaño. **Semejantes**: misma forma, ángulos iguales y lados **proporcionales**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué relación o resultado corresponde?",
+            "left_label": "Mapa de Brawl",
+            "right_label": "Relación",
+            "pairs": [
+              {
+                "left": "Coberturas espejo del mapa",
+                "right": "Congruentes"
+              },
+              {
+                "left": "Ícono y modelo gigante de Shelly",
+                "right": "Semejantes"
+              },
+              {
+                "left": "Lados 3, 4 y 5 con razón 3",
+                "right": "9, 12 y 15"
+              },
+              {
+                "left": "Tres lados iguales en ambos",
+                "right": "Criterio LLL"
+              }
+            ],
+            "completion_feedback": "**Congruentes**: misma forma y mismo tamaño. **Semejantes**: misma forma, ángulos iguales y lados **proporcionales**."
+          }
+        }
+      }
+    },
+    "teorema-de-pitagoras": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la hipotenusa con catetos de 5 y 12",
+        "steps": [
+          "Identifica los catetos: a = 5 y b = 12",
+          "Eleva cada uno al cuadrado: 25 y 144",
+          "Suma los cuadrados: c² = 169",
+          "Saca la raíz: c = 13"
+        ],
+        "completion_feedback": "Primero cuadrados, luego suma y **al final la raíz**: si sacas raíz antes de sumar, el resultado sale mal. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Salto de Yor",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "Catetos de 20 y 15 m",
+                "right": "Cuchilla: 25 m"
+              },
+              {
+                "left": "Catetos de 12 y 9 m",
+                "right": "Salto: 15 m"
+              },
+              {
+                "left": "El salto en diagonal",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "Donde se cruzan altura y calle",
+                "right": "Ángulo recto"
+              }
+            ],
+            "completion_feedback": "En un triángulo **rectángulo**, el cuadrado de la **hipotenusa** es igual a la suma de los cuadrados de los **catetos**: c² = a² + b²."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Pase de Jude",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "Banda de 30 m y fondo de 40 m",
+                "right": "Pase de 50 m"
+              },
+              {
+                "left": "Despeje de 24 m y 7 m",
+                "right": "25 m en diagonal"
+              },
+              {
+                "left": "30² + 40²",
+                "right": "2500"
+              },
+              {
+                "left": "El pase en diagonal",
+                "right": "Hipotenusa"
+              }
+            ],
+            "completion_feedback": "En un triángulo **rectángulo**, el cuadrado de la **hipotenusa** es igual a la suma de los cuadrados de los **catetos**: c² = a² + b²."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Rampa de ENHYPEN",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "Altura de 6 m y base de 8 m",
+                "right": "Rampa de 10 m"
+              },
+              {
+                "left": "Pantalla de 12 × 9 m",
+                "right": "Diagonal de 15 m"
+              },
+              {
+                "left": "La rampa inclinada",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "La altura y el piso",
+                "right": "Catetos"
+              }
+            ],
+            "completion_feedback": "En un triángulo **rectángulo**, el cuadrado de la **hipotenusa** es igual a la suma de los cuadrados de los **catetos**: c² = a² + b²."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es o cuánto mide cada cosa?",
+            "left_label": "Waypoint",
+            "right_label": "Pitágoras",
+            "pairs": [
+              {
+                "left": "9 al este y 12 al norte",
+                "right": "Diagonal de 15"
+              },
+              {
+                "left": "Planeo de 8 m y 6 m",
+                "right": "10 m en diagonal"
+              },
+              {
+                "left": "Rodear: 9 + 12",
+                "right": "21: más largo"
+              },
+              {
+                "left": "c² = a² + b²",
+                "right": "Solo con ángulo recto"
+              }
+            ],
+            "completion_feedback": "En un triángulo **rectángulo**, el cuadrado de la **hipotenusa** es igual a la suma de los cuadrados de los **catetos**: c² = a² + b²."
+          }
+        }
+      }
+    },
+    "poligonos-perimetro-y-area": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas el área de un hexágono regular de lado 4 m",
+        "steps": [
+          "Cuenta los lados: 6 lados de 4 m",
+          "Perímetro: 6 × 4 = 24 m",
+          "Multiplica por la apotema: 24 × 3.46 = 83.04",
+          "Divide entre 2: A ≈ 41.52 m²"
+        ],
+        "completion_feedback": "En un polígono regular, el área usa el **perímetro** y la **apotema**: A = (P × a) ÷ 2. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué medida o fórmula corresponde?",
+            "left_label": "Sello de Jinwoo",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Lados de 10, 7 y 9 m",
+                "right": "Perímetro: 26 m"
+              },
+              {
+                "left": "Base 12 m y altura 8 m",
+                "right": "Área: 48 m²"
+              },
+              {
+                "left": "Base 10 m y altura 6 m",
+                "right": "Área: 30 m²"
+              },
+              {
+                "left": "Runas alrededor del sello",
+                "right": "Perímetro"
+              }
+            ],
+            "completion_feedback": "El **perímetro** recorre el borde (en m) y el **área** cubre la superficie (en m²): son dos cálculos distintos para la misma figura."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cuánto mide cada cosa?",
+            "left_label": "Áreas de la cancha",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Cal del área grande (40 × 16.5)",
+                "right": "113 m de perímetro"
+              },
+              {
+                "left": "Césped del área grande",
+                "right": "660 m² de área"
+              },
+              {
+                "left": "Cal del área chica (18.3 × 5.5)",
+                "right": "47.6 m de perímetro"
+              },
+              {
+                "left": "Césped del área chica",
+                "right": "100.65 m² de área"
+              }
+            ],
+            "completion_feedback": "El **perímetro** recorre el borde (en m) y el **área** cubre la superficie (en m²): son dos cálculos distintos para la misma figura."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué medida o fórmula corresponde?",
+            "left_label": "Escenario NewJeans",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Tira LED del hexágono de lado 3 m",
+                "right": "P = 18 m"
+              },
+              {
+                "left": "Paneles del hexágono",
+                "right": "A = 23.4 m²"
+              },
+              {
+                "left": "Pasarela pentagonal de lado 4 m",
+                "right": "P = 20 m"
+              },
+              {
+                "left": "A = (P × apotema) ÷ 2",
+                "right": "Polígono regular"
+              }
+            ],
+            "completion_feedback": "El **perímetro** recorre el borde (en m) y el **área** cubre la superficie (en m²): son dos cálculos distintos para la misma figura."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuántos bloques necesitas?",
+            "left_label": "Base en Roblox",
+            "right_label": "Bloques",
+            "pairs": [
+              {
+                "left": "Valla del terreno de 15 × 10",
+                "right": "50 de valla"
+              },
+              {
+                "left": "Pasto del terreno de 15 × 10",
+                "right": "150 de pasto"
+              },
+              {
+                "left": "Valla de la plataforma de 8 × 8",
+                "right": "32 de valla"
+              },
+              {
+                "left": "Pasto de la plataforma de 8 × 8",
+                "right": "64 de pasto"
+              }
+            ],
+            "completion_feedback": "El **perímetro** recorre el borde (en m) y el **área** cubre la superficie (en m²): son dos cálculos distintos para la misma figura."
+          }
+        }
+      }
+    },
+    "circunferencia-y-circulo": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas el área de un círculo de 10 m de diámetro",
+        "steps": [
+          "Saca el radio: r = 10 ÷ 2 = 5 m",
+          "Eleva el radio al cuadrado: 5² = 25",
+          "Multiplica por π: 3.14 × 25",
+          "Resultado: A ≈ 78.5 m²"
+        ],
+        "completion_feedback": "La fórmula pide el **radio**, no el diámetro: si te dan el diámetro, primero lo divides entre 2. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del círculo es cada cosa?",
+            "left_label": "Dominio de Gojo",
+            "right_label": "Partes",
+            "pairs": [
+              {
+                "left": "Gojo en el punto medio",
+                "right": "Centro"
+              },
+              {
+                "left": "De Gojo hasta el borde",
+                "right": "Radio"
+              },
+              {
+                "left": "De borde a borde pasando por Gojo",
+                "right": "Diámetro"
+              },
+              {
+                "left": "La línea de energía del límite",
+                "right": "Circunferencia"
+              }
+            ],
+            "completion_feedback": "La **circunferencia** es la línea del borde (L = 2πr) y el **círculo**, la superficie que encierra (A = πr²); el diámetro mide dos radios."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte o medida corresponde?",
+            "left_label": "Círculo central",
+            "right_label": "Círculo",
+            "pairs": [
+              {
+                "left": "Donde se coloca el balón",
+                "right": "Centro"
+              },
+              {
+                "left": "9.15 m del centro a la línea",
+                "right": "Radio"
+              },
+              {
+                "left": "Cal para toda la línea",
+                "right": "≈ 57.46 m"
+              },
+              {
+                "left": "Césped dentro del círculo",
+                "right": "≈ 262.9 m²"
+              }
+            ],
+            "completion_feedback": "La **circunferencia** es la línea del borde (L = 2πr) y el **círculo**, la superficie que encierra (A = πr²); el diámetro mide dos radios."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del círculo es cada cosa?",
+            "left_label": "Lightstick de IVE",
+            "right_label": "Partes",
+            "pairs": [
+              {
+                "left": "Tu hombro al girar",
+                "right": "Centro"
+              },
+              {
+                "left": "Del hombro a la punta",
+                "right": "Radio"
+              },
+              {
+                "left": "La trayectoria de la luz",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "Lo que barres con la luz",
+                "right": "Círculo: la superficie"
+              }
+            ],
+            "completion_feedback": "La **circunferencia** es la línea del borde (L = 2πr) y el **círculo**, la superficie que encierra (A = πr²); el diámetro mide dos radios."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte o medida corresponde?",
+            "left_label": "Zona segura",
+            "right_label": "Círculo",
+            "pairs": [
+              {
+                "left": "200 m del centro al borde",
+                "right": "Radio"
+              },
+              {
+                "left": "400 m de borde a borde",
+                "right": "Diámetro"
+              },
+              {
+                "left": "Borde del radar de radio 7 cm",
+                "right": "≈ 43.96 cm"
+              },
+              {
+                "left": "Superficie del radar de radio 7 cm",
+                "right": "≈ 153.86 cm²"
+              }
+            ],
+            "completion_feedback": "La **circunferencia** es la línea del borde (L = 2πr) y el **círculo**, la superficie que encierra (A = πr²); el diámetro mide dos radios."
+          }
+        }
+      }
+    },
+    "razones-trigonometricas-seno-coseno-tangente": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas una altura con un ángulo de elevación",
+        "steps": [
+          "Ubica los lados: la altura es el opuesto y la distancia el adyacente",
+          "Elige la razón que une opuesto y adyacente: tangente",
+          "Despeja: altura = distancia × tan θ",
+          "Sustituye: 20 × 0.75 = 15 m"
+        ],
+        "completion_feedback": "La razón se elige por los **lados que tienes y el que buscas**, nunca al revés. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué razón o resultado corresponde?",
+            "left_label": "Cañones de Franky",
+            "right_label": "Razón",
+            "pairs": [
+              {
+                "left": "Opuesto entre hipotenusa",
+                "right": "Seno"
+              },
+              {
+                "left": "Adyacente entre hipotenusa",
+                "right": "Coseno"
+              },
+              {
+                "left": "Opuesto entre adyacente",
+                "right": "Tangente"
+              },
+              {
+                "left": "Cuerda de 26 m a 67°: altura",
+                "right": "26 × sen 67° ≈ 23.9 m"
+              }
+            ],
+            "completion_feedback": "**SOH-CAH-TOA**: seno = opuesto/hipotenusa, coseno = adyacente/hipotenusa, tangente = opuesto/adyacente. El ángulo decide cuánto mide cada lado."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué lado, razón o resultado corresponde?",
+            "left_label": "Poste de Vini",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "Altura y distancia al poste",
+                "right": "Se usa tangente"
+              },
+              {
+                "left": "20 × tan 37°",
+                "right": "15 m de altura"
+              },
+              {
+                "left": "La altura del poste",
+                "right": "Cateto opuesto"
+              },
+              {
+                "left": "Los 20 m hasta el poste",
+                "right": "Cateto adyacente"
+              }
+            ],
+            "completion_feedback": "**SOH-CAH-TOA**: seno = opuesto/hipotenusa, coseno = adyacente/hipotenusa, tangente = opuesto/adyacente. El ángulo decide cuánto mide cada lado."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué lado o resultado corresponde?",
+            "left_label": "Grúa de SKZ",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "El brazo de la grúa",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "La altura de la cámara",
+                "right": "Cateto opuesto"
+              },
+              {
+                "left": "10 × sen 30°",
+                "right": "5 m de altura"
+              },
+              {
+                "left": "Soporte de 10 m a 53°: horizontal",
+                "right": "10 × cos 53° = 6 m"
+              }
+            ],
+            "completion_feedback": "**SOH-CAH-TOA**: seno = opuesto/hipotenusa, coseno = adyacente/hipotenusa, tangente = opuesto/adyacente. El ángulo decide cuánto mide cada lado."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué lado, razón o resultado corresponde?",
+            "left_label": "Web-swing",
+            "right_label": "Trigonometría",
+            "pairs": [
+              {
+                "left": "Telaraña de 50 m",
+                "right": "Hipotenusa"
+              },
+              {
+                "left": "Altura a 30°: 50 × sen 30°",
+                "right": "25 m"
+              },
+              {
+                "left": "Avance a 30°: 50 × cos 30°",
+                "right": "≈ 43.3 m"
+              },
+              {
+                "left": "Busco el opuesto y tengo hipotenusa",
+                "right": "Uso seno"
+              }
+            ],
+            "completion_feedback": "**SOH-CAH-TOA**: seno = opuesto/hipotenusa, coseno = adyacente/hipotenusa, tangente = opuesto/adyacente. El ángulo decide cuánto mide cada lado."
+          }
+        }
+      }
+    },
+    "funciones-trigonometricas-y-circulo-unitario": {
+      "order_steps": {
+        "prompt": "Ordena cómo ubicas 150° en el círculo unitario",
+        "steps": [
+          "Ubica el cuadrante: 150° está en el II",
+          "Saca el ángulo de referencia: 180° − 150° = 30°",
+          "Usa los valores de 30°: cos ≈ 0.87 y sen = 0.5",
+          "Aplica los signos del II cuadrante: (−0.87, 0.5)"
+        ],
+        "completion_feedback": "El **ángulo de referencia** te da los números y el **cuadrante** te da los signos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿En qué punto está el chakra en cada ángulo?",
+            "left_label": "Rasengan",
+            "right_label": "Coordenadas",
+            "pairs": [
+              {
+                "left": "Chakra a 0°",
+                "right": "(1, 0)"
+              },
+              {
+                "left": "Chakra a 90°",
+                "right": "(0, 1)"
+              },
+              {
+                "left": "Chakra a 45°",
+                "right": "(0.71, 0.71)"
+              },
+              {
+                "left": "Chakra a 180°",
+                "right": "(−1, 0)"
+              }
+            ],
+            "completion_feedback": "En el **círculo unitario** (radio 1), cada ángulo θ cae en el punto **(cos θ, sen θ)**, y esos valores se repiten cada **360°**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o conclusión corresponde?",
+            "left_label": "Pase de Lamine",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "cos 60°",
+                "right": "0.5"
+              },
+              {
+                "left": "sen 60°",
+                "right": "≈ 0.87"
+              },
+              {
+                "left": "Pase a 30° del frente",
+                "right": "Más frontal que lateral"
+              },
+              {
+                "left": "Pase a 60° del frente",
+                "right": "Más lateral que frontal"
+              }
+            ],
+            "completion_feedback": "En el **círculo unitario** (radio 1), cada ángulo θ cae en el punto **(cos θ, sen θ)**, y esos valores se repiten cada **360°**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Riel de cámara",
+            "right_label": "Idea",
+            "pairs": [
+              {
+                "left": "sen 30° = sen 150°",
+                "right": "Simetría del seno"
+              },
+              {
+                "left": "sen 60°",
+                "right": "≈ 0.87"
+              },
+              {
+                "left": "Cada vuelta de 360°",
+                "right": "Los valores se repiten"
+              },
+              {
+                "left": "La altura de la cámara",
+                "right": "El seno del ángulo"
+              }
+            ],
+            "completion_feedback": "En el **círculo unitario** (radio 1), cada ángulo θ cae en el punto **(cos θ, sen θ)**, y esos valores se repiten cada **360°**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿En qué punto queda el stick?",
+            "left_label": "Stick de Jett",
+            "right_label": "Coordenadas",
+            "pairs": [
+              {
+                "left": "A la derecha: 0°",
+                "right": "(1, 0)"
+              },
+              {
+                "left": "Arriba: 90°",
+                "right": "(0, 1)"
+              },
+              {
+                "left": "A la izquierda: 180°",
+                "right": "(−1, 0)"
+              },
+              {
+                "left": "Abajo: 270°",
+                "right": "(0, −1)"
+              }
+            ],
+            "completion_feedback": "En el **círculo unitario** (radio 1), cada ángulo θ cae en el punto **(cos θ, sen θ)**, y esos valores se repiten cada **360°**."
+          }
+        }
+      }
+    },
+    "ley-de-senos-y-ley-de-cosenos": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves un triángulo con dos lados y el ángulo entre ellos",
+        "steps": [
+          "Revisa qué conoces: dos lados y el ángulo entre ellos",
+          "Elige la ley de cosenos: no hay ángulo opuesto conocido",
+          "Calcula c² = a² + b² − 2ab · cos C",
+          "Saca la raíz para obtener c"
+        ],
+        "completion_feedback": "Lo que **conoces** decide la ley: sin una pareja lado-ángulo opuesto, la de senos no arranca. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué ley o resultado corresponde?",
+            "left_label": "Maniobras 3D",
+            "right_label": "Ley o resultado",
+            "pairs": [
+              {
+                "left": "30 m, 40 m y 60° entre ellos",
+                "right": "Ley de cosenos"
+              },
+              {
+                "left": "c² = 900 + 1600 − 1200",
+                "right": "c ≈ 36.1 m"
+              },
+              {
+                "left": "Eren: 9 m, 12 m y 60°",
+                "right": "≈ 10.8 m"
+              },
+              {
+                "left": "Triángulo sin ángulo recto",
+                "right": "Pitágoras no sirve"
+              }
+            ],
+            "completion_feedback": "En triángulos **oblicuos**: con un lado y su ángulo opuesto usa la **ley de senos**; con dos lados y el ángulo entre ellos, la **ley de cosenos**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué ley, paso o resultado corresponde?",
+            "left_label": "Pedri y Raphinha",
+            "right_label": "Ley de senos",
+            "pairs": [
+              {
+                "left": "Un lado y dos ángulos",
+                "right": "Se usa ley de senos"
+              },
+              {
+                "left": "PR / sen 50° = 15 / sen 70°",
+                "right": "Proporción"
+              },
+              {
+                "left": "15 × 0.77 ÷ 0.94",
+                "right": "≈ 12.3 m"
+              },
+              {
+                "left": "En la ley de senos, cada lado va con…",
+                "right": "Su ángulo opuesto"
+              }
+            ],
+            "completion_feedback": "En triángulos **oblicuos**: con un lado y su ángulo opuesto usa la **ley de senos**; con dos lados y el ángulo entre ellos, la **ley de cosenos**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué ley o resultado corresponde?",
+            "left_label": "Escenario aespa",
+            "right_label": "Ley o resultado",
+            "pairs": [
+              {
+                "left": "6 m, 8 m y 60° en Giselle",
+                "right": "Ley de cosenos"
+              },
+              {
+                "left": "100 − 48 = 52",
+                "right": "c² de Karina a Winter"
+              },
+              {
+                "left": "√52",
+                "right": "≈ 7.21 m"
+              },
+              {
+                "left": "5 m, 7 m y 60°",
+                "right": "≈ 6.24 m"
+              }
+            ],
+            "completion_feedback": "En triángulos **oblicuos**: con un lado y su ángulo opuesto usa la **ley de senos**; con dos lados y el ángulo entre ellos, la **ley de cosenos**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué ley, paso o resultado corresponde?",
+            "left_label": "Juego de terror",
+            "right_label": "Ley o resultado",
+            "pairs": [
+              {
+                "left": "Base de 10 m con ángulos de 40° y 60°",
+                "right": "Ley de senos"
+              },
+              {
+                "left": "180° − 40° − 60°",
+                "right": "80° en el monstruo"
+              },
+              {
+                "left": "10 × sen 60° ÷ sen 80°",
+                "right": "≈ 8.8 m"
+              },
+              {
+                "left": "Triángulo sin ángulo de 90°",
+                "right": "Oblicuo"
+              }
+            ],
+            "completion_feedback": "En triángulos **oblicuos**: con un lado y su ángulo opuesto usa la **ley de senos**; con dos lados y el ángulo entre ellos, la **ley de cosenos**."
+          }
+        }
+      }
+    },
+    "identidades-trigonometricas": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas cos θ si sen θ = 0.8 y θ es agudo",
+        "steps": [
+          "Escribe la identidad: sen²θ + cos²θ = 1",
+          "Despeja y sustituye: cos²θ = 1 − 0.64",
+          "Resta: cos²θ = 0.36",
+          "Saca la raíz positiva: cos θ = 0.6"
+        ],
+        "completion_feedback": "Despejas de la identidad pitagórica y eliges el signo según el **cuadrante**: agudo, positivo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o identidad corresponde?",
+            "left_label": "One For All",
+            "right_label": "Identidad",
+            "pairs": [
+              {
+                "left": "sen²θ + cos²θ",
+                "right": "1"
+              },
+              {
+                "left": "cos θ = 0.6 con θ agudo",
+                "right": "sen θ = 0.8"
+              },
+              {
+                "left": "sen θ ÷ cos θ",
+                "right": "tan θ"
+              },
+              {
+                "left": "0.8 ÷ 0.6",
+                "right": "tan θ ≈ 1.33"
+              }
+            ],
+            "completion_feedback": "Una **identidad** es una igualdad que se cumple para **cualquier ángulo**; la principal es sen²θ + cos²θ = 1, y de ella salen las demás."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es o a qué equivale cada cosa?",
+            "left_label": "Revisión del VAR",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "1 − cos²θ",
+                "right": "sen²θ"
+              },
+              {
+                "left": "sen²θ ÷ sen θ",
+                "right": "sen θ"
+              },
+              {
+                "left": "Se cumple con cualquier ángulo",
+                "right": "Identidad"
+              },
+              {
+                "left": "Solo vale para ciertos ángulos",
+                "right": "Ecuación"
+              }
+            ],
+            "completion_feedback": "Una **identidad** es una igualdad que se cumple para **cualquier ángulo**; la principal es sen²θ + cos²θ = 1, y de ella salen las demás."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿A qué equivale cada expresión?",
+            "left_label": "Coreo de ITZY",
+            "right_label": "Identidad",
+            "pairs": [
+              {
+                "left": "sen²θ + cos²θ",
+                "right": "Siempre vale 1"
+              },
+              {
+                "left": "1 + tan²θ",
+                "right": "sec²θ"
+              },
+              {
+                "left": "1 ÷ cos θ",
+                "right": "sec θ"
+              },
+              {
+                "left": "1 ÷ sen θ",
+                "right": "csc θ"
+              }
+            ],
+            "completion_feedback": "Una **identidad** es una igualdad que se cumple para **cualquier ángulo**; la principal es sen²θ + cos²θ = 1, y de ella salen las demás."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o identidad corresponde?",
+            "left_label": "Ataque en Genshin",
+            "right_label": "Identidad",
+            "pairs": [
+              {
+                "left": "sen θ = 0.6 con θ agudo",
+                "right": "cos θ = 0.8"
+              },
+              {
+                "left": "cos²θ = 1 − sen²θ",
+                "right": "Identidad despejada"
+              },
+              {
+                "left": "(0.6)²",
+                "right": "0.36"
+              },
+              {
+                "left": "cos θ ÷ sen θ",
+                "right": "cot θ"
+              }
+            ],
+            "completion_feedback": "Una **identidad** es una igualdad que se cumple para **cualquier ángulo**; la principal es sen²θ + cos²θ = 1, y de ella salen las demás."
+          }
+        }
+      }
+    },
+    "geometria-del-espacio-cuerpos-y-volumen": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas el volumen de un cono de radio 3 cm y altura 10 cm",
+        "steps": [
+          "Eleva el radio al cuadrado: 3² = 9",
+          "Multiplica por π: base ≈ 28.26 cm²",
+          "Multiplica por la altura: 28.26 × 10 = 282.6",
+          "Divide entre 3: V ≈ 94.2 cm³"
+        ],
+        "completion_feedback": "Base por altura te daría un **cilindro**; el cono ocupa solo **un tercio** de ese espacio. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué volumen o regla corresponde?",
+            "left_label": "Tesoro de Nami",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Pirámide: base 6 × 6 m, altura 9 m",
+                "right": "108 m³"
+              },
+              {
+                "left": "Cono de radio 3 cm y altura 12 cm",
+                "right": "113.04 cm³"
+              },
+              {
+                "left": "Cuerpos que se afinan en punta",
+                "right": "Se divide entre 3"
+              },
+              {
+                "left": "Prisma de igual base y altura",
+                "right": "Triple que la pirámide"
+              }
+            ],
+            "completion_feedback": "El **volumen** es el espacio interior en 3D (unidades³): prismas y cilindros son **base × altura**; pirámides y conos, eso mismo **entre 3**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué volumen o regla corresponde?",
+            "left_label": "Balón de Lamine",
+            "right_label": "Esfera",
+            "pairs": [
+              {
+                "left": "Balón de radio 11 cm",
+                "right": "≈ 5572 cm³"
+              },
+              {
+                "left": "Balón de radio 6 cm",
+                "right": "≈ 904 cm³"
+              },
+              {
+                "left": "Fórmula de la esfera",
+                "right": "V = (4/3)πr³"
+              },
+              {
+                "left": "En la esfera, el radio va…",
+                "right": "Al cubo"
+              }
+            ],
+            "completion_feedback": "El **volumen** es el espacio interior en 3D (unidades³): prismas y cilindros son **base × altura**; pirámides y conos, eso mismo **entre 3**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué volumen o regla corresponde?",
+            "left_label": "Candy Bong",
+            "right_label": "Cilindro",
+            "pairs": [
+              {
+                "left": "Mango de radio 4 cm y altura 8 cm",
+                "right": "≈ 401.92 cm³"
+              },
+              {
+                "left": "Vaso de radio 3 cm y altura 10 cm",
+                "right": "282.6 cm³"
+              },
+              {
+                "left": "Fórmula del cilindro",
+                "right": "V = πr²h"
+              },
+              {
+                "left": "Área de la tapa por la altura",
+                "right": "Volumen del cilindro"
+              }
+            ],
+            "completion_feedback": "El **volumen** es el espacio interior en 3D (unidades³): prismas y cilindros son **base × altura**; pirámides y conos, eso mismo **entre 3**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuántos bloques caben o qué mide cada cosa?",
+            "left_label": "Cuarto inundado",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Cuarto de 6 × 4 × 3",
+                "right": "72 bloques³"
+              },
+              {
+                "left": "Solo el piso: 6 × 4",
+                "right": "24: es el área"
+              },
+              {
+                "left": "Cofre de 5 × 2 × 4",
+                "right": "40 bloques³"
+              },
+              {
+                "left": "Mazmorra de 5 × 3 × 4",
+                "right": "60 bloques³"
+              }
+            ],
+            "completion_feedback": "El **volumen** es el espacio interior en 3D (unidades³): prismas y cilindros son **base × altura**; pirámides y conos, eso mismo **entre 3**."
+          }
+        }
+      }
+    }
+  }
+}
