@@ -1,0 +1,1068 @@
+{
+  "subject": "quimica-2",
+  "topics": {
+    "reacciones-quimicas-y-ecuaciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo balanceas la reacción del hidrógeno con el oxígeno",
+        "steps": [
+          "Escribe la ecuación: H₂ + O₂ → H₂O",
+          "Cuenta átomos: a la derecha falta un O",
+          "Pon 2 al agua: H₂ + O₂ → 2H₂O",
+          "Ajusta el hidrógeno: 2H₂ + O₂ → 2H₂O",
+          "Verifica: 4 H y 2 O de cada lado"
+        ],
+        "completion_feedback": "Solo se cambian los **coeficientes**, nunca los subíndices: la materia se conserva. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fusión de Jinwoo",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Materiales que entran",
+                "right": "Reactivos"
+              },
+              {
+                "left": "Arma nueva que sale",
+                "right": "Producto"
+              },
+              {
+                "left": "Cantidades exactas de la receta",
+                "right": "Coeficientes"
+              },
+              {
+                "left": "Nada se pierde en la fusión",
+                "right": "Conservación de la masa"
+              }
+            ],
+            "completion_feedback": "Una **reacción química** transforma reactivos en productos, y la ecuación se balancea porque la **materia se conserva**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cambios en el once",
+            "right_label": "Reacción",
+            "pairs": [
+              {
+                "left": "Patrón A + BC → AC + B",
+                "right": "Sustitución simple"
+              },
+              {
+                "left": "Fe + CuSO₄: lo que sale libre",
+                "right": "El cobre"
+              },
+              {
+                "left": "Zn + 2HCl: gas que se libera",
+                "right": "H₂"
+              },
+              {
+                "left": "11 jugadores antes y después",
+                "right": "Los átomos se conservan"
+              }
+            ],
+            "completion_feedback": "Una **reacción química** transforma reactivos en productos, y la ecuación se balancea porque la **materia se conserva**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debut de IVE",
+            "right_label": "Reacción",
+            "pairs": [
+              {
+                "left": "Trainees antes del debut",
+                "right": "Reactivos"
+              },
+              {
+                "left": "2H₂ + O₂ → 2H₂O",
+                "right": "Síntesis: A + B → AB"
+              },
+              {
+                "left": "AB → A + B",
+                "right": "Descomposición"
+              },
+              {
+                "left": "Las mismas seis integrantes",
+                "right": "Conservación de la masa"
+              }
+            ],
+            "completion_feedback": "Una **reacción química** transforma reactivos en productos, y la ecuación se balancea porque la **materia se conserva**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Crafteo Minecraft",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "4 tablas en la cuadrícula",
+                "right": "Reactivos"
+              },
+              {
+                "left": "Mesa de trabajo que sale",
+                "right": "Producto"
+              },
+              {
+                "left": "La flecha →",
+                "right": "Se transforma en"
+              },
+              {
+                "left": "Hierro + oxígeno, fuera del juego",
+                "right": "Óxido de hierro"
+              }
+            ],
+            "completion_feedback": "Una **reacción química** transforma reactivos en productos, y la ecuación se balancea porque la **materia se conserva**."
+          }
+        }
+      }
+    },
+    "balanceo-de-ecuaciones-tanteo-y-redox": {
+      "order_steps": {
+        "prompt": "Ordena cómo balanceas por tanteo CH₄ + O₂ → CO₂ + H₂O",
+        "steps": [
+          "Revisa el carbono: 1 y 1, ya cuadra",
+          "Iguala el hidrógeno: pon 2 al H₂O",
+          "Cuenta el oxígeno de los productos: 2 + 2 = 4",
+          "Pon 2 al O₂ y verifica: 1 C, 4 H y 4 O"
+        ],
+        "completion_feedback": "En el tanteo conviene dejar el **oxígeno al final**, porque aparece en varias sustancias. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chakra de Naruto",
+            "right_label": "Redox",
+            "pairs": [
+              {
+                "left": "Na: de 0 a +1",
+                "right": "Se oxida"
+              },
+              {
+                "left": "Cl: de 0 a −1",
+                "right": "Se reduce"
+              },
+              {
+                "left": "Electrones que ceden los 2 Na",
+                "right": "2"
+              },
+              {
+                "left": "Chakra cedido = recibido",
+                "right": "e⁻ cedidos = e⁻ captados"
+              }
+            ],
+            "completion_feedback": "Balancear es igualar átomos con **coeficientes**; en redox además se iguala lo que se **cede** con lo que se **capta**: los electrones."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Trato entre clubes",
+            "right_label": "Redox",
+            "pairs": [
+              {
+                "left": "Zn → Zn²⁺",
+                "right": "Pierde 2 electrones"
+              },
+              {
+                "left": "Cu²⁺ → Cu",
+                "right": "Gana 2 electrones"
+              },
+              {
+                "left": "Zn metálico, sin ceder nada",
+                "right": "Número de oxidación 0"
+              },
+              {
+                "left": "Trato equilibrado",
+                "right": "e⁻ cedidos = e⁻ ganados"
+              }
+            ],
+            "completion_feedback": "Balancear es igualar átomos con **coeficientes**; en redox además se iguala lo que se **cede** con lo que se **capta**: los electrones."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Líneas de TWICE",
+            "right_label": "Tanteo",
+            "pairs": [
+              {
+                "left": "Carbono del CH₄",
+                "right": "Ya está igual"
+              },
+              {
+                "left": "4 H en el CH₄",
+                "right": "Coeficiente 2 al H₂O"
+              },
+              {
+                "left": "4 O en los productos",
+                "right": "Coeficiente 2 al O₂"
+              },
+              {
+                "left": "No cambiar la voz de nadie",
+                "right": "No tocar subíndices"
+              }
+            ],
+            "completion_feedback": "Balancear es igualar átomos con **coeficientes**; en redox además se iguala lo que se **cede** con lo que se **capta**: los electrones."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Equipos de Brawl",
+            "right_label": "Tanteo",
+            "pairs": [
+              {
+                "left": "Fe + O₂ → Fe₂O₃",
+                "right": "Sin balancear"
+              },
+              {
+                "left": "Mínimo común de 2 y 3",
+                "right": "6 oxígenos"
+              },
+              {
+                "left": "Coeficientes finales",
+                "right": "4, 3 y 2"
+              },
+              {
+                "left": "Habilidades fijas del brawler",
+                "right": "Subíndices: no se tocan"
+              }
+            ],
+            "completion_feedback": "Balancear es igualar átomos con **coeficientes**; en redox además se iguala lo que se **cede** con lo que se **capta**: los electrones."
+          }
+        }
+      }
+    },
+    "estequiometria-mol-y-masa-molar": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas los átomos que hay en 24 g de carbono",
+        "steps": [
+          "Busca la masa molar: C = 12 g/mol",
+          "Pasa a moles: 24 ÷ 12 = 2 mol",
+          "Multiplica por Avogadro: 2 × 6.022 × 10²³",
+          "Resultado: 1.2 × 10²⁴ átomos"
+        ],
+        "completion_feedback": "El **mol** es el puente: gramos → moles → partículas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Legiones de Jinwoo",
+            "right_label": "Mol",
+            "pairs": [
+              {
+                "left": "Sombras en una legión",
+                "right": "Partículas en un mol"
+              },
+              {
+                "left": "Número fijo por legión",
+                "right": "6.022 × 10²³"
+              },
+              {
+                "left": "Igris pesa más que otra sombra",
+                "right": "Masa molar distinta"
+              },
+              {
+                "left": "48 g de carbono",
+                "right": "4 moles"
+              }
+            ],
+            "completion_feedback": "Un **mol** son 6.022 × 10²³ partículas, y la **masa molar** dice cuántos gramos pesa un mol."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sectores Bernabéu",
+            "right_label": "Mol",
+            "pairs": [
+              {
+                "left": "112 g de hierro",
+                "right": "2 moles"
+              },
+              {
+                "left": "Masa molar del Fe",
+                "right": "56 g/mol"
+              },
+              {
+                "left": "De gramos a moles",
+                "right": "Dividir entre masa molar"
+              },
+              {
+                "left": "De moles a gramos",
+                "right": "Multiplicar por masa molar"
+              }
+            ],
+            "completion_feedback": "Un **mol** son 6.022 × 10²³ partículas, y la **masa molar** dice cuántos gramos pesa un mol."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cajas de álbumes",
+            "right_label": "Masa molar",
+            "pairs": [
+              {
+                "left": "H₂O: 2 × 1 + 16",
+                "right": "18 g/mol"
+              },
+              {
+                "left": "NaCl: 23 + 35.5",
+                "right": "58.5 g/mol"
+              },
+              {
+                "left": "Versión photobook más pesada",
+                "right": "Masa molar mayor"
+              },
+              {
+                "left": "Álbumes por caja",
+                "right": "Partículas por mol"
+              }
+            ],
+            "completion_feedback": "Un **mol** son 6.022 × 10²³ partículas, y la **masa molar** dice cuántos gramos pesa un mol."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Stacks Minecraft",
+            "right_label": "Mol",
+            "pairs": [
+              {
+                "left": "Un stack de 64",
+                "right": "Un mol"
+              },
+              {
+                "left": "Masa de 1 mol de carbono",
+                "right": "12 g"
+              },
+              {
+                "left": "36 g de carbono",
+                "right": "3 moles"
+              },
+              {
+                "left": "2 moles de carbono",
+                "right": "24 g"
+              }
+            ],
+            "completion_feedback": "Un **mol** son 6.022 × 10²³ partículas, y la **masa molar** dice cuántos gramos pesa un mol."
+          }
+        }
+      }
+    },
+    "calculos-estequiometricos": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas los gramos de agua que salen de 8 g de O₂",
+        "steps": [
+          "Pasa O₂ a moles: 8 ÷ 32 = 0.25 mol",
+          "Usa la relación O₂ : H₂O = 1 : 2",
+          "Obtén 0.5 mol de H₂O",
+          "Pasa a gramos: 0.5 × 18 = 9 g"
+        ],
+        "completion_feedback": "Siempre se cruza por **moles**: gramos → moles → relación molar → gramos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Forja Nichirin",
+            "right_label": "Cálculo",
+            "pairs": [
+              {
+                "left": "Lo que la receta permite",
+                "right": "Rendimiento teórico"
+              },
+              {
+                "left": "Lo que Hotaru obtiene",
+                "right": "Rendimiento real"
+              },
+              {
+                "left": "40 g de 50 g posibles",
+                "right": "80%"
+              },
+              {
+                "left": "Mineral que se acaba primero",
+                "right": "Reactivo limitante"
+              }
+            ],
+            "completion_feedback": "Los **coeficientes** dan la relación molar; con ella calculas cuánto producto sale y qué **reactivo limitante** se acaba primero."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Logística",
+            "right_label": "Cálculo",
+            "pairs": [
+              {
+                "left": "4 mol de H₂ darían",
+                "right": "4 mol de H₂O"
+              },
+              {
+                "left": "1 mol de O₂ daría",
+                "right": "2 mol de H₂O"
+              },
+              {
+                "left": "Se acaba primero",
+                "right": "O₂, el limitante"
+              },
+              {
+                "left": "Sobra al final",
+                "right": "H₂, en exceso"
+              }
+            ],
+            "completion_feedback": "Los **coeficientes** dan la relación molar; con ella calculas cuánto producto sale y qué **reactivo limitante** se acaba primero."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Merch de SVT",
+            "right_label": "Cálculo",
+            "pairs": [
+              {
+                "left": "8 g de O₂",
+                "right": "0.25 mol"
+              },
+              {
+                "left": "Relación O₂ : H₂O",
+                "right": "1 : 2"
+              },
+              {
+                "left": "0.5 mol de H₂O",
+                "right": "9 g"
+              },
+              {
+                "left": "Receta del paquete VIP",
+                "right": "Coeficientes"
+              }
+            ],
+            "completion_feedback": "Los **coeficientes** dan la relación molar; con ella calculas cuánto producto sale y qué **reactivo limitante** se acaba primero."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pociones",
+            "right_label": "Cálculo",
+            "pairs": [
+              {
+                "left": "Relación H₂ : H₂O",
+                "right": "1 : 1"
+              },
+              {
+                "left": "6 mol de H₂",
+                "right": "6 mol de H₂O"
+              },
+              {
+                "left": "Verruga + melón → 3 pociones",
+                "right": "Proporción fija"
+              },
+              {
+                "left": "Ecuación sin balancear",
+                "right": "No sirve para calcular"
+              }
+            ],
+            "completion_feedback": "Los **coeficientes** dan la relación molar; con ella calculas cuánto producto sale y qué **reactivo limitante** se acaba primero."
+          }
+        }
+      }
+    },
+    "soluciones-y-unidades-de-concentracion": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la molaridad de 117 g de NaCl en 2 L de solución",
+        "steps": [
+          "Busca la masa molar: NaCl = 58.5 g/mol",
+          "Pasa a moles: 117 ÷ 58.5 = 2 mol",
+          "Divide entre los litros: 2 ÷ 2",
+          "Resultado: 1 M"
+        ],
+        "completion_feedback": "La **molaridad** es moles de soluto entre litros de **solución**, no solo de agua. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pociones de Sakura",
+            "right_label": "Concentración",
+            "pairs": [
+              {
+                "left": "Las hierbas",
+                "right": "Soluto"
+              },
+              {
+                "left": "El agua",
+                "right": "Disolvente"
+              },
+              {
+                "left": "6 M de 100 a 300 mL",
+                "right": "Queda en 2 M"
+              },
+              {
+                "left": "Agregar agua sin más hierba",
+                "right": "Dilución"
+              }
+            ],
+            "completion_feedback": "La **concentración** dice cuánto soluto hay en cierta cantidad de solución: g/L, % m/m o molaridad (mol/L)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bebida isotónica",
+            "right_label": "Concentración",
+            "pairs": [
+              {
+                "left": "60 g en 3 L",
+                "right": "20 g/L"
+              },
+              {
+                "left": "Polvo de electrolitos",
+                "right": "Soluto"
+              },
+              {
+                "left": "Mismos 60 g en más litros",
+                "right": "Más diluida"
+              },
+              {
+                "left": "Fórmula de g/L",
+                "right": "Gramos ÷ litros"
+              }
+            ],
+            "completion_feedback": "La **concentración** dice cuánto soluto hay en cierta cantidad de solución: g/L, % m/m o molaridad (mol/L)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Café del K-drama",
+            "right_label": "Concentración",
+            "pairs": [
+              {
+                "left": "0.5 mol en 2 L",
+                "right": "0.25 M"
+              },
+              {
+                "left": "Café en polvo",
+                "right": "Soluto"
+              },
+              {
+                "left": "Mucho café en poca agua",
+                "right": "Concentrada"
+              },
+              {
+                "left": "Molaridad",
+                "right": "Moles ÷ litros"
+              }
+            ],
+            "completion_feedback": "La **concentración** dice cuánto soluto hay en cierta cantidad de solución: g/L, % m/m o molaridad (mol/L)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tintes en Roblox",
+            "right_label": "Concentración",
+            "pairs": [
+              {
+                "left": "15 g en 60 g de solución",
+                "right": "25% m/m"
+              },
+              {
+                "left": "20 g en 100 g de solución",
+                "right": "20% m/m"
+              },
+              {
+                "left": "Mucho tinte, poca agua",
+                "right": "Color intenso"
+              },
+              {
+                "left": "Denominador del % m/m",
+                "right": "Masa de la solución"
+              }
+            ],
+            "completion_feedback": "La **concentración** dice cuánto soluto hay en cierta cantidad de solución: g/L, % m/m o molaridad (mol/L)."
+          }
+        }
+      }
+    },
+    "acidos-y-bases-escala-de-ph": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa al mezclar HCl con NaOH",
+        "steps": [
+          "HCl aporta H⁺ y NaOH aporta OH⁻",
+          "H⁺ y OH⁻ se unen y forman H₂O",
+          "Na⁺ y Cl⁻ quedan juntos: NaCl",
+          "Resultado: sal + agua, pH cerca de 7"
+        ],
+        "completion_feedback": "Ácido + base → **sal + agua**: eso es una **neutralización**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Energía maldita",
+            "right_label": "pH",
+            "pairs": [
+              {
+                "left": "pH 2 contra pH 4",
+                "right": "100 veces más ácido"
+              },
+              {
+                "left": "pH 1 contra pH 4",
+                "right": "1000 veces más ácido"
+              },
+              {
+                "left": "El 7 del medidor",
+                "right": "Neutro"
+              },
+              {
+                "left": "Cerca de 14",
+                "right": "Muy básico"
+              }
+            ],
+            "completion_feedback": "La **escala de pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es básico; cada unidad vale 10 veces."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Barra del partido",
+            "right_label": "pH",
+            "pairs": [
+              {
+                "left": "HCl",
+                "right": "Ácido: aporta H⁺"
+              },
+              {
+                "left": "NaOH",
+                "right": "Base: aporta OH⁻"
+              },
+              {
+                "left": "HCl + NaOH",
+                "right": "NaCl + H₂O"
+              },
+              {
+                "left": "Árbitro que equilibra",
+                "right": "Neutralización"
+              }
+            ],
+            "completion_feedback": "La **escala de pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es básico; cada unidad vale 10 veces."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Barra de hype",
+            "right_label": "Indicador",
+            "pairs": [
+              {
+                "left": "Jugo de limón",
+                "right": "Tornasol rojo"
+              },
+              {
+                "left": "Agua jabonosa",
+                "right": "Tornasol azul"
+              },
+              {
+                "left": "Agua destilada",
+                "right": "No cambia de color"
+              },
+              {
+                "left": "Papel tornasol",
+                "right": "Indicador de pH"
+              }
+            ],
+            "completion_feedback": "La **escala de pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es básico; cada unidad vale 10 veces."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pozas de Teyvat",
+            "right_label": "pH",
+            "pairs": [
+              {
+                "left": "Poza con pH 2",
+                "right": "Muy ácida"
+              },
+              {
+                "left": "Poza con pH 7",
+                "right": "Neutra"
+              },
+              {
+                "left": "Poza con pH 11",
+                "right": "Básica"
+              },
+              {
+                "left": "Poza con pH 4",
+                "right": "Ácido débil"
+              }
+            ],
+            "completion_feedback": "La **escala de pH** va de 0 a 14: menos de 7 es ácido, 7 es neutro y más de 7 es básico; cada unidad vale 10 veces."
+          }
+        }
+      }
+    },
+    "reacciones-de-oxido-reduccion": {
+      "order_steps": {
+        "prompt": "Ordena cómo analizas la redox de Zn + 2HCl → ZnCl₂ + H₂",
+        "steps": [
+          "Asigna números de oxidación antes: Zn = 0, H = +1",
+          "Asígnalos después: Zn = +2, H = 0",
+          "Compara: el Zn sube y el H baja",
+          "Concluye: el Zn se oxida y el H se reduce"
+        ],
+        "completion_feedback": "Si sube el número de oxidación es **oxidación**; si baja, **reducción**. Siempre ocurren juntas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Energía de Luffy",
+            "right_label": "Redox",
+            "pairs": [
+              {
+                "left": "Aliado que cede energía",
+                "right": "Pierde electrones"
+              },
+              {
+                "left": "Luffy recibe la energía",
+                "right": "Gana electrones"
+              },
+              {
+                "left": "Zn libre",
+                "right": "Número de oxidación 0"
+              },
+              {
+                "left": "Zn en ZnCl₂",
+                "right": "Número de oxidación +2"
+              }
+            ],
+            "completion_feedback": "En una **redox** uno pierde electrones (**se oxida**) y otro los gana (**se reduce**); lo cedido es igual a lo captado."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Portería oxidada",
+            "right_label": "Redox",
+            "pairs": [
+              {
+                "left": "Fe en la portería nueva",
+                "right": "0"
+              },
+              {
+                "left": "Fe en la herrumbre",
+                "right": "+3"
+              },
+              {
+                "left": "O en el Fe₂O₃",
+                "right": "−2"
+              },
+              {
+                "left": "Pintura de la portería",
+                "right": "Evita la oxidación"
+              }
+            ],
+            "completion_feedback": "En una **redox** uno pierde electrones (**se oxida**) y otro los gana (**se reduce**); lo cedido es igual a lo captado."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Líneas de SKZ",
+            "right_label": "Redox",
+            "pairs": [
+              {
+                "left": "Na: de 0 a +1",
+                "right": "Se oxida"
+              },
+              {
+                "left": "Cl: de 0 a −1",
+                "right": "Se reduce"
+              },
+              {
+                "left": "Bang Chan da 3 líneas",
+                "right": "Han recibe 3"
+              },
+              {
+                "left": "e⁻ que ceden 2 Na",
+                "right": "Los 2 que capta el Cl₂"
+              }
+            ],
+            "completion_feedback": "En una **redox** uno pierde electrones (**se oxida**) y otro los gana (**se reduce**); lo cedido es igual a lo captado."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Drops de Valorant",
+            "right_label": "Redox",
+            "pairs": [
+              {
+                "left": "Jett suelta el arma",
+                "right": "Pierde electrones"
+              },
+              {
+                "left": "Sage recoge el arma",
+                "right": "Gana electrones"
+              },
+              {
+                "left": "Mg neutro",
+                "right": "Número de oxidación 0"
+              },
+              {
+                "left": "Mg²⁺",
+                "right": "Número de oxidación +2"
+              }
+            ],
+            "completion_feedback": "En una **redox** uno pierde electrones (**se oxida**) y otro los gana (**se reduce**); lo cedido es igual a lo captado."
+          }
+        }
+      }
+    },
+    "quimica-del-carbono-hidrocarburos": {
+      "order_steps": {
+        "prompt": "Ordena la serie de los alcanos de menor a mayor",
+        "steps": [
+          "Metano, CH₄",
+          "Etano, C₂H₆",
+          "Propano, C₃H₈",
+          "Butano, C₄H₁₀"
+        ],
+        "completion_feedback": "Cada miembro agrega un **–CH₂–** al anterior: eso es una **serie homóloga**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cadena de Gyomei",
+            "right_label": "Hidrocarburo",
+            "pairs": [
+              {
+                "left": "Eslabón que se agrega",
+                "right": "–CH₂–"
+              },
+              {
+                "left": "Cadena de 4 eslabones",
+                "right": "Butano, C₄H₁₀"
+              },
+              {
+                "left": "Cadena de 3 eslabones",
+                "right": "Propano, C₃H₈"
+              },
+              {
+                "left": "Familia que crece de uno en uno",
+                "right": "Serie homóloga"
+              }
+            ],
+            "completion_feedback": "Los **hidrocarburos** solo tienen C e H: alcanos (enlaces simples), alquenos (dobles) y alquinos (triples)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Autobús y cocina",
+            "right_label": "Hidrocarburo",
+            "pairs": [
+              {
+                "left": "CH₄ + 2O₂",
+                "right": "CO₂ + 2H₂O"
+              },
+              {
+                "left": "Origen de gasolina y gas LP",
+                "right": "El petróleo"
+              },
+              {
+                "left": "Combustión con poco O₂",
+                "right": "Forma CO tóxico"
+              },
+              {
+                "left": "Lo que libera al arder",
+                "right": "Energía en forma de calor"
+              }
+            ],
+            "completion_feedback": "Los **hidrocarburos** solo tienen C e H: alcanos (enlaces simples), alquenos (dobles) y alquinos (triples)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Coreo de SVT",
+            "right_label": "Hidrocarburo",
+            "pairs": [
+              {
+                "left": "Prefijo 'prop-'",
+                "right": "3 carbonos"
+              },
+              {
+                "left": "Prefijo 'but-'",
+                "right": "4 carbonos"
+              },
+              {
+                "left": "Formación en círculo",
+                "right": "Hidrocarburo cíclico"
+              },
+              {
+                "left": "Agarre doble",
+                "right": "Enlace doble C=C"
+              }
+            ],
+            "completion_feedback": "Los **hidrocarburos** solo tienen C e H: alcanos (enlaces simples), alquenos (dobles) y alquinos (triples)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rieles Minecraft",
+            "right_label": "Hidrocarburo",
+            "pairs": [
+              {
+                "left": "C₂H₆, solo enlaces simples",
+                "right": "Alcano"
+              },
+              {
+                "left": "C₃H₆",
+                "right": "Alqueno"
+              },
+              {
+                "left": "C₃H₄",
+                "right": "Alquino"
+              },
+              {
+                "left": "Ramal que sale de la vía",
+                "right": "Ramificación"
+              }
+            ],
+            "completion_feedback": "Los **hidrocarburos** solo tienen C e H: alcanos (enlaces simples), alquenos (dobles) y alquinos (triples)."
+          }
+        }
+      }
+    },
+    "grupos-funcionales-organicos": {
+      "order_steps": {
+        "prompt": "Ordena cómo identificas el grupo funcional del CH₃–COOH",
+        "steps": [
+          "Separa la cadena base: CH₃–",
+          "Ubica el grupo del final: –COOH",
+          "Reconócelo: es el grupo carboxilo",
+          "Concluye: es un ácido carboxílico"
+        ],
+        "completion_feedback": "La cadena es la base; el **grupo funcional** decide la familia y cómo se comporta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frutas del Diablo",
+            "right_label": "Grupo funcional",
+            "pairs": [
+              {
+                "left": "CH₃–NH₂",
+                "right": "Amina"
+              },
+              {
+                "left": "CH₃–CH₂–OH",
+                "right": "Alcohol"
+              },
+              {
+                "left": "Grupo –NH₂",
+                "right": "Le da carácter básico"
+              },
+              {
+                "left": "Cuerpo antes de la fruta",
+                "right": "Cadena de carbonos"
+              }
+            ],
+            "completion_feedback": "Un **grupo funcional** es el conjunto de átomos que define la familia de un compuesto: –OH alcohol, –COOH ácido, –NH₂ amina."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Distintivos",
+            "right_label": "Grupo funcional",
+            "pairs": [
+              {
+                "left": "CH₃–COOH",
+                "right": "Ácido carboxílico"
+              },
+              {
+                "left": "Grupo –COOH",
+                "right": "Carboxilo"
+              },
+              {
+                "left": "–OH solo",
+                "right": "Alcohol"
+              },
+              {
+                "left": "Camiseta base de todos",
+                "right": "Cadena de carbonos"
+              }
+            ],
+            "completion_feedback": "Un **grupo funcional** es el conjunto de átomos que define la familia de un compuesto: –OH alcohol, –COOH ácido, –NH₂ amina."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Conceptos de SKZ",
+            "right_label": "Grupo funcional",
+            "pairs": [
+              {
+                "left": "CH₃–CHO",
+                "right": "Aldehído"
+              },
+              {
+                "left": "CH₃–CO–CH₃",
+                "right": "Cetona"
+              },
+              {
+                "left": "C=O",
+                "right": "Grupo carbonilo"
+              },
+              {
+                "left": "Mismo grupo, otro concepto",
+                "right": "Cambia la posición del C=O"
+              }
+            ],
+            "completion_feedback": "Un **grupo funcional** es el conjunto de átomos que define la familia de un compuesto: –OH alcohol, –COOH ácido, –NH₂ amina."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Avatar de Roblox",
+            "right_label": "Grupo funcional",
+            "pairs": [
+              {
+                "left": "Cuerpo base del avatar",
+                "right": "Cadena de carbonos"
+              },
+              {
+                "left": "Accesorio –OH",
+                "right": "Hidroxilo: alcohol"
+              },
+              {
+                "left": "CH₃–CH₂–OH",
+                "right": "Etanol"
+              },
+              {
+                "left": "Accesorio –NH₂",
+                "right": "Amino: amina"
+              }
+            ],
+            "completion_feedback": "Un **grupo funcional** es el conjunto de átomos que define la familia de un compuesto: –OH alcohol, –COOH ácido, –NH₂ amina."
+          }
+        }
+      }
+    }
+  }
+}
