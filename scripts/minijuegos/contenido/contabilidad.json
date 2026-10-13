@@ -1,0 +1,717 @@
+{
+  "subject": "contabilidad",
+  "topics": {
+    "concepto-y-objetivos-de-la-contabilidad": {
+      "order_steps": {
+        "prompt": "Ordena lo que hace la contabilidad con cada operación",
+        "steps": [
+          "Registrar la operación cuando ocurre",
+          "Clasificarla por concepto",
+          "Resumirla en reportes",
+          "Informar para tomar decisiones"
+        ],
+        "completion_feedback": "Primero se **registra**, luego se **clasifica** y se **resume**: solo así la información sirve para decidir. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Misión de Loid",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Fondos que da WISE",
+                "right": "Ingreso"
+              },
+              {
+                "left": "Colegiatura de Anya",
+                "right": "Gasto"
+              },
+              {
+                "left": "Justificar gastos ante WISE",
+                "right": "Rendir cuentas"
+              },
+              {
+                "left": "¿Alcanza para un gasto extra?",
+                "right": "Tomar decisiones"
+              }
+            ],
+            "completion_feedback": "La **contabilidad** registra, clasifica y resume las operaciones en dinero para **informar**, **decidir** y **rendir cuentas**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuentas del Madrid",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Derechos de TV y patrocinios",
+                "right": "Ingresos"
+              },
+              {
+                "left": "Salarios y fichajes",
+                "right": "Gastos"
+              },
+              {
+                "left": "800 − 500 − 200",
+                "right": "100 millones de ganancia"
+              },
+              {
+                "left": "¿Fichar o vender?",
+                "right": "Decisión informada"
+              }
+            ],
+            "completion_feedback": "La **contabilidad** registra, clasifica y resume las operaciones en dinero para **informar**, **decidir** y **rendir cuentas**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Proyecto de valla",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Venta de photocards",
+                "right": "Ingreso"
+              },
+              {
+                "left": "Pago a la imprenta",
+                "right": "Gasto"
+              },
+              {
+                "left": "Resumen publicado a los fans",
+                "right": "Transparencia"
+              },
+              {
+                "left": "8000 − 3000 − 2000",
+                "right": "3000 de sobrante"
+              }
+            ],
+            "completion_feedback": "La **contabilidad** registra, clasifica y resume las operaciones en dinero para **informar**, **decidir** y **rendir cuentas**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Aldea de Clash",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Oro ganado en ataques",
+                "right": "Entrada"
+              },
+              {
+                "left": "Mejorar un cañón",
+                "right": "Salida"
+              },
+              {
+                "left": "500 + 300 − 200",
+                "right": "600 de oro"
+              },
+              {
+                "left": "¿Alcanza para la mejora?",
+                "right": "Tomar decisiones"
+              }
+            ],
+            "completion_feedback": "La **contabilidad** registra, clasifica y resume las operaciones en dinero para **informar**, **decidir** y **rendir cuentas**."
+          }
+        }
+      }
+    },
+    "la-cuenta-cargo-y-abono": {
+      "order_steps": {
+        "prompt": "Ordena cómo registras un movimiento en una cuenta de activo",
+        "steps": [
+          "Identifica el tipo de cuenta: activo",
+          "Decide el lado: si aumenta, va al DEBE",
+          "Regístralo como cargo o abono",
+          "Suma cada columna",
+          "Calcula el saldo: DEBE − HABER"
+        ],
+        "completion_feedback": "En un **activo**, cargar es **aumentar** y abonar es **disminuir**: el lado depende del tipo de cuenta. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tesoro de Nami",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Botín de 5000 Berries",
+                "right": "Cargo"
+              },
+              {
+                "left": "Pagar 2000 en provisiones",
+                "right": "Abono"
+              },
+              {
+                "left": "Columna izquierda",
+                "right": "DEBE"
+              },
+              {
+                "left": "8000 − 2000",
+                "right": "Saldo: 6000"
+              }
+            ],
+            "completion_feedback": "Una **cuenta** tiene **DEBE** (izquierda, cargos) y **HABER** (derecha, abonos); en el activo, los aumentos se cargan. **Saldo = DEBE − HABER**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuenta de goles",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Mete 3 goles",
+                "right": "Cargo de 3"
+              },
+              {
+                "left": "El VAR anula 1 gol",
+                "right": "Abono de 1"
+              },
+              {
+                "left": "Columna derecha",
+                "right": "HABER"
+              },
+              {
+                "left": "(3 + 2) − 1",
+                "right": "Saldo: 4 goles"
+              }
+            ],
+            "completion_feedback": "Una **cuenta** tiene **DEBE** (izquierda, cargos) y **HABER** (derecha, abonos); en el activo, los aumentos se cargan. **Saldo = DEBE − HABER**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Photocards",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Ganas 3 cards en un sorteo",
+                "right": "Cargo"
+              },
+              {
+                "left": "Tradeas 2 repetidas",
+                "right": "Abono"
+              },
+              {
+                "left": "Anotar en el DEBE",
+                "right": "Cargar"
+              },
+              {
+                "left": "Anotar en el HABER",
+                "right": "Abonar"
+              }
+            ],
+            "completion_feedback": "Una **cuenta** tiene **DEBE** (izquierda, cargos) y **HABER** (derecha, abonos); en el activo, los aumentos se cargan. **Saldo = DEBE − HABER**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Créditos",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Ganas la ronda: 3000",
+                "right": "Cargo"
+              },
+              {
+                "left": "Compras un Vandal: 2900",
+                "right": "Abono"
+              },
+              {
+                "left": "Columna izquierda",
+                "right": "DEBE"
+              },
+              {
+                "left": "3400 − 2900",
+                "right": "Saldo: 500"
+              }
+            ],
+            "completion_feedback": "Una **cuenta** tiene **DEBE** (izquierda, cargos) y **HABER** (derecha, abonos); en el activo, los aumentos se cargan. **Saldo = DEBE − HABER**."
+          }
+        }
+      }
+    },
+    "la-ecuacion-contable": {
+      "order_steps": {
+        "prompt": "Ordena cómo compruebas la ecuación tras comprar un horno a crédito",
+        "steps": [
+          "Suma el horno al activo: 30,000 + 8,000 = 38,000",
+          "Registra la deuda nueva: pasivo de 8,000",
+          "Revisa el capital: sigue en 30,000",
+          "Comprueba: 38,000 = 8,000 + 30,000"
+        ],
+        "completion_feedback": "Toda operación mueve **al menos dos** partes de la ecuación, y la igualdad **nunca se rompe**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El Baratie",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Barco, cocinas e ingredientes",
+                "right": "Activo"
+              },
+              {
+                "left": "Lo que se debe a proveedores",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Lo que puso Zeff",
+                "right": "Capital"
+              },
+              {
+                "left": "Horno a crédito de 8,000",
+                "right": "Sube activo y pasivo"
+              }
+            ],
+            "completion_feedback": "**Activo = Pasivo + Capital**: lo que se posee siempre equivale a lo que se debe más lo que aportaron los dueños."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de fútbol",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Estadio y derechos de jugadores",
+                "right": "Activo"
+              },
+              {
+                "left": "Préstamo para el estadio",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Lo que es de los socios",
+                "right": "Capital"
+              },
+              {
+                "left": "Fichaje a plazos",
+                "right": "Sube activo y pasivo"
+              }
+            ],
+            "completion_feedback": "**Activo = Pasivo + Capital**: lo que se posee siempre equivale a lo que se debe más lo que aportaron los dueños."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Colección de SKZ",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Cards, álbumes y lightstick",
+                "right": "Activo: $4,000"
+              },
+              {
+                "left": "Lo que le debes a tu mamá",
+                "right": "Pasivo: $1,200"
+              },
+              {
+                "left": "Tus ahorros",
+                "right": "Capital: $2,800"
+              },
+              {
+                "left": "4,000 = 1,200 + 2,800",
+                "right": "La ecuación cuadra"
+              }
+            ],
+            "completion_feedback": "**Activo = Pasivo + Capital**: lo que se posee siempre equivale a lo que se debe más lo que aportaron los dueños."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuenta de Genshin",
+            "right_label": "Ecuación",
+            "pairs": [
+              {
+                "left": "Personajes, armas y gemas",
+                "right": "Activo"
+              },
+              {
+                "left": "Préstamo de un amigo",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Tu aporte propio",
+                "right": "Capital"
+              },
+              {
+                "left": "Pagar $500 de la deuda",
+                "right": "Bajan activo y pasivo"
+              }
+            ],
+            "completion_feedback": "**Activo = Pasivo + Capital**: lo que se posee siempre equivale a lo que se debe más lo que aportaron los dueños."
+          }
+        }
+      }
+    },
+    "estado-de-situacion-financiera-balance": {
+      "order_steps": {
+        "prompt": "Ordena cómo armas un balance",
+        "steps": [
+          "Fija la fecha de corte",
+          "Suma todo el activo",
+          "Suma todo el pasivo",
+          "Calcula el capital: activo − pasivo",
+          "Verifica: activo = pasivo + capital"
+        ],
+        "completion_feedback": "El balance es una **foto** de un solo día: lo que se tiene, lo que se debe y lo que es de los dueños. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Corte del gremio",
+            "right_label": "Balance",
+            "pairs": [
+              {
+                "left": "Arsenal, pociones y edificio",
+                "right": "Activo"
+              },
+              {
+                "left": "Préstamo de la Asociación",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Aporte del maestro del gremio",
+                "right": "Capital"
+              },
+              {
+                "left": "Último día del mes",
+                "right": "Fecha de corte"
+              }
+            ],
+            "completion_feedback": "El **estado de situación financiera** (balance) muestra, **en una fecha**, el activo, el pasivo y el capital, y siempre cuadra."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cierre del Barça",
+            "right_label": "Balance",
+            "pairs": [
+              {
+                "left": "Estadio y ciudad deportiva",
+                "right": "Activo"
+              },
+              {
+                "left": "Fichajes a plazos",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Lo que es de los socios",
+                "right": "Capital"
+              },
+              {
+                "left": "30 de junio",
+                "right": "Fecha de corte"
+              }
+            ],
+            "completion_feedback": "El **estado de situación financiera** (balance) muestra, **en una fecha**, el activo, el pasivo y el capital, y siempre cuadra."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Covers de TXT",
+            "right_label": "Balance",
+            "pairs": [
+              {
+                "left": "Equipo de sonido y cámaras",
+                "right": "Activo"
+              },
+              {
+                "left": "Cámara a meses",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Lo que aportó cada integrante",
+                "right": "Capital"
+              },
+              {
+                "left": "15,000 − 5,000",
+                "right": "Capital de 10,000"
+              }
+            ],
+            "completion_feedback": "El **estado de situación financiera** (balance) muestra, **en una fecha**, el activo, el pasivo y el capital, y siempre cuadra."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuenta de Valorant",
+            "right_label": "Balance",
+            "pairs": [
+              {
+                "left": "Skins y VP sin gastar",
+                "right": "Activo"
+              },
+              {
+                "left": "VP que le debes a tu hermano",
+                "right": "Pasivo"
+              },
+              {
+                "left": "Lo que pagaste con tu dinero",
+                "right": "Capital"
+              },
+              {
+                "left": "Captura del día exacto",
+                "right": "Fecha de corte"
+              }
+            ],
+            "completion_feedback": "El **estado de situación financiera** (balance) muestra, **en una fecha**, el activo, el pasivo y el capital, y siempre cuadra."
+          }
+        }
+      }
+    },
+    "estado-de-resultados": {
+      "order_steps": {
+        "prompt": "Ordena cómo armas el estado de resultados",
+        "steps": [
+          "Define el periodo: un mes o un año",
+          "Suma todos los ingresos",
+          "Suma todos los gastos",
+          "Calcula: utilidad = ingresos − gastos",
+          "Interpreta: positivo es utilidad, negativo es pérdida"
+        ],
+        "completion_feedback": "El estado de resultados es una **película** de todo el periodo, no una foto de un día. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cafetería de Loid",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Venta de cafés y pasteles",
+                "right": "Ingresos"
+              },
+              {
+                "left": "Ingredientes, sueldos y renta",
+                "right": "Gastos"
+              },
+              {
+                "left": "55,000 − 40,000",
+                "right": "Utilidad de 15,000"
+              },
+              {
+                "left": "Todo un mes de ventas",
+                "right": "Periodo"
+              }
+            ],
+            "completion_feedback": "El **estado de resultados** muestra, **durante un periodo**, ingresos, gastos y la **utilidad o pérdida**: Utilidad = Ingresos − Gastos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Temporada del club",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Boletos, TV y patrocinios",
+                "right": "Ingresos"
+              },
+              {
+                "left": "Salarios y mantenimiento",
+                "right": "Gastos"
+              },
+              {
+                "left": "700 − 580",
+                "right": "Utilidad de 120M"
+              },
+              {
+                "left": "Gastos mayores que ingresos",
+                "right": "Pérdida"
+              }
+            ],
+            "completion_feedback": "El **estado de resultados** muestra, **durante un periodo**, ingresos, gastos y la **utilidad o pérdida**: Utilidad = Ingresos − Gastos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto de SVT",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Boletos y merch",
+                "right": "Ingresos"
+              },
+              {
+                "left": "Renta, staff y montaje",
+                "right": "Gastos"
+              },
+              {
+                "left": "1,000,000 − 650,000",
+                "right": "Utilidad de 350,000"
+              },
+              {
+                "left": "Ingresos menos gastos",
+                "right": "Fórmula de la utilidad"
+              }
+            ],
+            "completion_feedback": "El **estado de resultados** muestra, **durante un periodo**, ingresos, gastos y la **utilidad o pérdida**: Utilidad = Ingresos − Gastos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Canal de Brawl",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Monetización de YouTube",
+                "right": "Ingreso"
+              },
+              {
+                "left": "Internet para grabar",
+                "right": "Gasto"
+              },
+              {
+                "left": "7,000 − 2,800",
+                "right": "Utilidad de 4,200"
+              },
+              {
+                "left": "Resultado negativo",
+                "right": "Pérdida"
+              }
+            ],
+            "completion_feedback": "El **estado de resultados** muestra, **durante un periodo**, ingresos, gastos y la **utilidad o pérdida**: Utilidad = Ingresos − Gastos."
+          }
+        }
+      }
+    },
+    "registro-de-operaciones-asientos": {
+      "order_steps": {
+        "prompt": "Ordena cómo registras un asiento",
+        "steps": [
+          "Identifica la operación",
+          "Identifica las dos cuentas afectadas",
+          "Carga al Debe la cuenta que recibe",
+          "Abona al Haber la cuenta que entrega",
+          "Verifica: total del Debe = total del Haber"
+        ],
+        "completion_feedback": "**Partida doble**: toda operación toca al menos dos cuentas y el Debe siempre iguala al Haber. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuentas del barco",
+            "right_label": "Asiento",
+            "pairs": [
+              {
+                "left": "Provisiones que entran",
+                "right": "Cargo a Provisiones"
+              },
+              {
+                "left": "Efectivo que sale",
+                "right": "Abono a Efectivo"
+              },
+              {
+                "left": "Origen de la recompensa",
+                "right": "Abono a Ingresos"
+              },
+              {
+                "left": "Debe = Haber",
+                "right": "El asiento cuadra"
+              }
+            ],
+            "completion_feedback": "Un **asiento** registra cada operación por **partida doble**: lo que entra se carga al **Debe**, su origen se abona al **Haber**, y ambos suman igual."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fichajes y deudas",
+            "right_label": "Asiento",
+            "pairs": [
+              {
+                "left": "Derechos del jugador que entran",
+                "right": "Cargo a Derechos del jugador"
+              },
+              {
+                "left": "Dinero del banco que sale",
+                "right": "Abono a Banco"
+              },
+              {
+                "left": "Autobús comprado a crédito",
+                "right": "Cargo a Autobús"
+              },
+              {
+                "left": "Deuda por el autobús",
+                "right": "Abono a Documentos por pagar"
+              }
+            ],
+            "completion_feedback": "Un **asiento** registra cada operación por **partida doble**: lo que entra se carga al **Debe**, su origen se abona al **Haber**, y ambos suman igual."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuaderno de fan",
+            "right_label": "Asiento",
+            "pairs": [
+              {
+                "left": "Álbum que entra a tu colección",
+                "right": "Cargo a Álbumes"
+              },
+              {
+                "left": "Efectivo que sale",
+                "right": "Abono a Efectivo"
+              },
+              {
+                "left": "Lightstick con tarjeta",
+                "right": "Cargo a Lightstick"
+              },
+              {
+                "left": "Deuda de la tarjeta",
+                "right": "Abono a Deuda por pagar"
+              }
+            ],
+            "completion_feedback": "Un **asiento** registra cada operación por **partida doble**: lo que entra se carga al **Debe**, su origen se abona al **Haber**, y ambos suman igual."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Robux",
+            "right_label": "Asiento",
+            "pairs": [
+              {
+                "left": "Gamepass que recibes",
+                "right": "Cargo a Gamepass"
+              },
+              {
+                "left": "400 Robux que salen",
+                "right": "Abono a Robux"
+              },
+              {
+                "left": "Recarga: efectivo que sale",
+                "right": "Abono a Efectivo"
+              },
+              {
+                "left": "Debe = Haber",
+                "right": "Partida doble"
+              }
+            ],
+            "completion_feedback": "Un **asiento** registra cada operación por **partida doble**: lo que entra se carga al **Debe**, su origen se abona al **Haber**, y ambos suman igual."
+          }
+        }
+      }
+    }
+  }
+}
