@@ -1,0 +1,1877 @@
+{
+  "subject": "matematicas-sec-2",
+  "topics": {
+    "construccion-de-poligonos-regulares": {
+      "order_steps": {
+        "prompt": "Ordena cómo construir un polígono regular",
+        "steps": [
+          "Decide cuántos lados tendrá: n",
+          "Calcula el ángulo central: 360° ÷ n",
+          "Marca en una circunferencia puntos separados por ese ángulo",
+          "Une los puntos consecutivos con rectas"
+        ],
+        "completion_feedback": "Sin el ángulo central no sabes dónde marcar: **primero calculas, luego trazas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del polígono regular es cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El sello de 5 puntas",
+                "right": "n = 5"
+              },
+              {
+                "left": "Separación entre dos puntas",
+                "right": "72° = 360° ÷ 5"
+              },
+              {
+                "left": "El círculo de energía maldita",
+                "right": "Circunferencia de 360°"
+              },
+              {
+                "left": "Cada punta del sello",
+                "right": "Vértice"
+              }
+            ],
+            "completion_feedback": "Repartir la vuelta completa en partes iguales: **360° ÷ n** es el secreto de todo polígono regular. Veamos cómo construirlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del polígono regular es cada cosa?",
+            "left_label": "La barrera",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "La vuelta completa al balón",
+                "right": "360°"
+              },
+              {
+                "left": "Cada jugador de la barrera",
+                "right": "Vértice"
+              },
+              {
+                "left": "Distancia entre dos jugadores",
+                "right": "Lado"
+              },
+              {
+                "left": "El mismo giro entre uno y otro",
+                "right": "Ángulo central"
+              }
+            ],
+            "completion_feedback": "Repartir la vuelta completa en partes iguales: **360° ÷ n** es el secreto de todo polígono regular. Veamos cómo construirlo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del polígono regular es cada cosa?",
+            "left_label": "BLACKPINK",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Las 4 integrantes en las esquinas",
+                "right": "Vértices de un cuadrado"
+              },
+              {
+                "left": "Giro de luz entre dos chicas",
+                "right": "90° = 360° ÷ 4"
+              },
+              {
+                "left": "Distancia entre dos integrantes",
+                "right": "Lado"
+              },
+              {
+                "left": "Formación simétrica perfecta",
+                "right": "Polígono regular"
+              }
+            ],
+            "completion_feedback": "Repartir la vuelta completa en partes iguales: **360° ÷ n** es el secreto de todo polígono regular. Veamos cómo construirlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del polígono regular es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "La torre como panal de abejas",
+                "right": "Hexágono: n = 6"
+              },
+              {
+                "left": "El giro entre dos esquinas",
+                "right": "60° = 360° ÷ 6"
+              },
+              {
+                "left": "Seis lados exactamente iguales",
+                "right": "Polígono regular"
+              }
+            ],
+            "completion_feedback": "Repartir la vuelta completa en partes iguales: **360° ÷ n** es el secreto de todo polígono regular. Veamos cómo construirlo."
+          }
+        }
+      }
+    },
+    "representacion-algebraica-de-areas": {
+      "order_steps": {
+        "prompt": "Ordena cómo escribir el área de un rectángulo con un lado desconocido",
+        "steps": [
+          "Llama x al lado que no conoces",
+          "Escribe el otro lado en términos de x",
+          "Multiplica base por altura",
+          "Desarrolla el producto: x² + …"
+        ],
+        "completion_feedback": "Base × altura, aunque una medida sea letra: así el área sirve **para cualquier valor de x**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué expresión corresponde a cada cosa?",
+            "left_label": "Dojo",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El ancho que aún no se decide",
+                "right": "x"
+              },
+              {
+                "left": "Largo: 7 m más que el ancho",
+                "right": "x + 7"
+              },
+              {
+                "left": "Tatamis para todo el piso",
+                "right": "x(x + 7)"
+              },
+              {
+                "left": "El área ya desarrollada",
+                "right": "x² + 7x"
+              }
+            ],
+            "completion_feedback": "Cuando una medida es desconocida, **la letra la sustituye** y el área se escribe como expresión. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué expresión corresponde a cada cosa?",
+            "left_label": "Área grande",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El ancho sin confirmar",
+                "right": "x"
+              },
+              {
+                "left": "Largo: 10 m más que el ancho",
+                "right": "x + 10"
+              },
+              {
+                "left": "Pintura para toda el área",
+                "right": "x(x + 10)"
+              },
+              {
+                "left": "El área ya desarrollada",
+                "right": "x² + 10x"
+              }
+            ],
+            "completion_feedback": "Cuando una medida es desconocida, **la letra la sustituye** y el área se escribe como expresión. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué expresión corresponde a cada cosa?",
+            "left_label": "Escenario SKZ",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El ancho de cada estadio",
+                "right": "x"
+              },
+              {
+                "left": "Largo: 8 m más por la pasarela",
+                "right": "x + 8"
+              },
+              {
+                "left": "Paneles LED para todo el piso",
+                "right": "x(x + 8)"
+              },
+              {
+                "left": "El área ya desarrollada",
+                "right": "x² + 8x"
+              }
+            ],
+            "completion_feedback": "Cuando una medida es desconocida, **la letra la sustituye** y el área se escribe como expresión. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué expresión corresponde a cada cosa?",
+            "left_label": "Serenitea",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El lado que depende de tu energía",
+                "right": "x"
+              },
+              {
+                "left": "Lado con 5 bloques extra",
+                "right": "x + 5"
+              },
+              {
+                "left": "Losas de pasto para todo el jardín",
+                "right": "x(x + 5)"
+              },
+              {
+                "left": "El área ya desarrollada",
+                "right": "x² + 5x"
+              }
+            ],
+            "completion_feedback": "Cuando una medida es desconocida, **la letra la sustituye** y el área se escribe como expresión. Veamos cómo."
+          }
+        }
+      }
+    },
+    "propiedades-de-los-exponentes": {
+      "order_steps": {
+        "prompt": "Ordena cómo simplificar 2⁵ · 2³",
+        "steps": [
+          "Revisa que las bases sean iguales: ambas son 2",
+          "Como se multiplican, los exponentes se suman",
+          "Suma: 5 + 3 = 8",
+          "Escribe una sola potencia: 2⁸"
+        ],
+        "completion_feedback": "La base **nunca se multiplica**: solo operas los exponentes. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la propiedad de los exponentes es cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Los clones que se duplican",
+                "right": "Base: 2"
+              },
+              {
+                "left": "2⁵ × 2³",
+                "right": "2⁸"
+              },
+              {
+                "left": "Total de clones, contados uno a uno",
+                "right": "256"
+              },
+              {
+                "left": "Lo que haces con 5 y 3",
+                "right": "Se suman"
+              }
+            ],
+            "completion_feedback": "Misma base al multiplicar: **la base se queda y los exponentes se suman**. Veamos las demás reglas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la propiedad de los exponentes es cada cosa?",
+            "left_label": "Torneo",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Llaves que se duplican",
+                "right": "Base: 2"
+              },
+              {
+                "left": "2⁵ × 2²",
+                "right": "2⁷"
+              },
+              {
+                "left": "Total de duelos, contados uno a uno",
+                "right": "128"
+              },
+              {
+                "left": "Lo que haces con 5 y 2",
+                "right": "Se suman"
+              }
+            ],
+            "completion_feedback": "Misma base al multiplicar: **la base se queda y los exponentes se suman**. Veamos las demás reglas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la propiedad de los exponentes es cada cosa?",
+            "left_label": "NewJeans",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada fan reta a 3 más",
+                "right": "Base: 3"
+              },
+              {
+                "left": "3⁴ × 3²",
+                "right": "3⁶"
+              },
+              {
+                "left": "Total de videos, contados uno a uno",
+                "right": "729"
+              },
+              {
+                "left": "Lo que haces con 4 y 2",
+                "right": "Se suman"
+              }
+            ],
+            "completion_feedback": "Misma base al multiplicar: **la base se queda y los exponentes se suman**. Veamos las demás reglas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la propiedad de los exponentes es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cofres y stacks en potencias",
+                "right": "Base: 2"
+              },
+              {
+                "left": "2³ × 2⁴",
+                "right": "2⁷"
+              },
+              {
+                "left": "Total de stacks, contados uno a uno",
+                "right": "128"
+              },
+              {
+                "left": "Lo que haces con 3 y 4",
+                "right": "Se suman"
+              }
+            ],
+            "completion_feedback": "Misma base al multiplicar: **la base se queda y los exponentes se suman**. Veamos las demás reglas."
+          }
+        }
+      }
+    },
+    "desigualdades-algebraicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo resolver una desigualdad",
+        "steps": [
+          "Escribe la condición con <, >, ≤ o ≥",
+          "Despeja la incógnita como en una ecuación",
+          "Si divides entre un negativo, invierte el signo",
+          "Escribe la solución como un rango de valores"
+        ],
+        "completion_feedback": "Se despeja casi igual que una ecuación, pero **la respuesta es un rango**, no un solo número. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la desigualdad es cada cosa?",
+            "left_label": "Chainsaw Man",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada transformación cuesta 15",
+                "right": "15t"
+              },
+              {
+                "left": "No rebasar 120 puntos",
+                "right": "≤ 120"
+              },
+              {
+                "left": "La condición completa",
+                "right": "15t ≤ 120"
+              },
+              {
+                "left": "Todas las veces posibles",
+                "right": "t ≤ 8"
+              }
+            ],
+            "completion_feedback": "Cuando hay un **límite** en vez de un valor exacto, usas una desigualdad y la respuesta es un **rango**. Veamos cómo resolverla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la desigualdad es cada cosa?",
+            "left_label": "Mbappé",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "2 goles por jornada",
+                "right": "2j"
+              },
+              {
+                "left": "Superar los 25 goles",
+                "right": "> 25"
+              },
+              {
+                "left": "La condición completa",
+                "right": "13 + 2j > 25"
+              },
+              {
+                "left": "Las jornadas que le bastan",
+                "right": "j > 6"
+              }
+            ],
+            "completion_feedback": "Cuando hay un **límite** en vez de un valor exacto, usas una desigualdad y la respuesta es un **rango**. Veamos cómo resolverla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la desigualdad es cada cosa?",
+            "left_label": "ENGENE",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada reproducción: 4 minutos",
+                "right": "4v"
+              },
+              {
+                "left": "Máximo 8 horas al día",
+                "right": "≤ 480"
+              },
+              {
+                "left": "La condición completa",
+                "right": "4v ≤ 480"
+              },
+              {
+                "left": "Todas las veces posibles",
+                "right": "v ≤ 120"
+              }
+            ],
+            "completion_feedback": "Cuando hay un **límite** en vez de un valor exacto, usas una desigualdad y la respuesta es un **rango**. Veamos cómo resolverla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la desigualdad es cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada reclamo: 20 de Resina",
+                "right": "20x"
+              },
+              {
+                "left": "No pasar de 200 de Resina",
+                "right": "≤ 200"
+              },
+              {
+                "left": "La condición completa",
+                "right": "20x ≤ 200"
+              },
+              {
+                "left": "Todos los reclamos posibles",
+                "right": "x ≤ 10"
+              }
+            ],
+            "completion_feedback": "Cuando hay un **límite** en vez de un valor exacto, usas una desigualdad y la respuesta es un **rango**. Veamos cómo resolverla."
+          }
+        }
+      }
+    },
+    "sucesiones-cuadraticas-sec": {
+      "order_steps": {
+        "prompt": "Ordena cómo saber si una sucesión es cuadrática",
+        "steps": [
+          "Escribe los primeros términos",
+          "Calcula las primeras diferencias",
+          "Calcula las diferencias de esas diferencias",
+          "Si son constantes, la sucesión es cuadrática"
+        ],
+        "completion_feedback": "Primeras diferencias que cambian, **segundas constantes**: esa es la huella de una cuadrática. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Goles: 4, 9, 16, 25",
+                "right": "Términos de la sucesión"
+              },
+              {
+                "left": "Saltos de 5, 7 y 9 goles",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "El salto crece de 2 en 2",
+                "right": "Segunda diferencia: siempre 2"
+              },
+              {
+                "left": "La regla de los goles de Isagi",
+                "right": "aₙ = (n + 1)²"
+              }
+            ],
+            "completion_feedback": "Si el salto crece **siempre lo mismo**, la sucesión es cuadrática. Veamos cómo encontrar su regla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Bellingham",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Pases: 3, 8, 15, 24",
+                "right": "Términos de la sucesión"
+              },
+              {
+                "left": "Saltos de 5, 7 y 9 pases",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "El salto crece de 2 en 2",
+                "right": "Segunda diferencia: siempre 2"
+              },
+              {
+                "left": "La regla de sus pases",
+                "right": "aₙ = n² + 2n"
+              }
+            ],
+            "completion_feedback": "Si el salto crece **siempre lo mismo**, la sucesión es cuadrática. Veamos cómo encontrar su regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Banners MOA",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Banners: 2, 6, 12, 20",
+                "right": "Términos de la sucesión"
+              },
+              {
+                "left": "4, 6 y 8 banners más",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "El salto crece de 2 en 2",
+                "right": "Segunda diferencia: siempre 2"
+              },
+              {
+                "left": "La regla de los banners",
+                "right": "aₙ = n² + n"
+              }
+            ],
+            "completion_feedback": "Si el salto crece **siempre lo mismo**, la sucesión es cuadrática. Veamos cómo encontrar su regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la sucesión cuadrática es cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Puntos: 2, 6, 12, 20",
+                "right": "Términos de la sucesión"
+              },
+              {
+                "left": "4, 6 y 8 puntos más",
+                "right": "Primeras diferencias"
+              },
+              {
+                "left": "El salto crece de 2 en 2",
+                "right": "Segunda diferencia: siempre 2"
+              },
+              {
+                "left": "La regla del grind",
+                "right": "aₙ = n² + n"
+              }
+            ],
+            "completion_feedback": "Si el salto crece **siempre lo mismo**, la sucesión es cuadrática. Veamos cómo encontrar su regla."
+          }
+        }
+      }
+    },
+    "sistemas-de-dos-ecuaciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo resolver un sistema por sustitución",
+        "steps": [
+          "Despeja una incógnita en una de las ecuaciones",
+          "Sustitúyela en la otra ecuación",
+          "Resuelve para hallar la otra incógnita",
+          "Usa ese valor para hallar la primera",
+          "Comprueba el par en ambas ecuaciones"
+        ],
+        "completion_feedback": "Sustituir convierte dos ecuaciones en **una sola con una incógnita**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Spy x Family",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Puntos de una misión de Loid",
+                "right": "x"
+              },
+              {
+                "left": "Puntos de una misión de Yor",
+                "right": "y"
+              },
+              {
+                "left": "Semana 1: 2 de Loid y 1 de Yor",
+                "right": "2x + y = 17"
+              },
+              {
+                "left": "Semana 2: 1 de Loid y 4 de Yor",
+                "right": "x + 4y = 23"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos pistas**: la solución es el par que cumple las dos ecuaciones a la vez. Veamos cómo hallarlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Puntos por un gol",
+                "right": "x"
+              },
+              {
+                "left": "Puntos por una asistencia",
+                "right": "y"
+              },
+              {
+                "left": "2 goles y 1 asistencia",
+                "right": "2x + y = 11"
+              },
+              {
+                "left": "1 gol y 3 asistencias",
+                "right": "x + 3y = 13"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos pistas**: la solución es el par que cumple las dos ecuaciones a la vez. Veamos cómo hallarlo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "Merch de IVE",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Precio de un álbum",
+                "right": "x"
+              },
+              {
+                "left": "Precio de una photocard",
+                "right": "y"
+              },
+              {
+                "left": "2 álbumes y 3 photocards",
+                "right": "2x + 3y = 1100"
+              },
+              {
+                "left": "1 álbum y 5 photocards",
+                "right": "x + 5y = 950"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos pistas**: la solución es el par que cumple las dos ecuaciones a la vez. Veamos cómo hallarlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de ecuaciones es cada cosa?",
+            "left_label": "FC 26",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Precio de una carta oro",
+                "right": "x"
+              },
+              {
+                "left": "Precio de una carta plata",
+                "right": "y"
+              },
+              {
+                "left": "2 oro y 3 plata",
+                "right": "2x + 3y = 13000"
+              },
+              {
+                "left": "1 oro y 4 plata",
+                "right": "x + 4y = 14000"
+              }
+            ],
+            "completion_feedback": "Dos incógnitas necesitan **dos pistas**: la solución es el par que cumple las dos ecuaciones a la vez. Veamos cómo hallarlo."
+          }
+        }
+      }
+    },
+    "proporcionalidad-inversa": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallar un dato en una proporcionalidad inversa",
+        "steps": [
+          "Multiplica un par de valores que conoces",
+          "Ese producto es la constante k",
+          "Para el nuevo valor de x, calcula y = k ÷ x",
+          "Comprueba que x · y siga dando k"
+        ],
+        "completion_feedback": "El producto **siempre es el mismo**: por eso dividir entre k te da el dato faltante. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor corresponde a cada caso?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "10 soldados",
+                "right": "120 raciones c/u"
+              },
+              {
+                "left": "20 soldados",
+                "right": "60 raciones c/u"
+              },
+              {
+                "left": "60 soldados",
+                "right": "20 raciones c/u"
+              },
+              {
+                "left": "Soldados × raciones",
+                "right": "k = 1 200"
+              }
+            ],
+            "completion_feedback": "Una sube, la otra baja, y **su producto no cambia**: eso es la proporcionalidad inversa. Veamos cómo usarla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor corresponde a cada caso?",
+            "left_label": "Bono del Madrid",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "5 jugadores",
+                "right": "360 000 c/u"
+              },
+              {
+                "left": "6 jugadores",
+                "right": "300 000 c/u"
+              },
+              {
+                "left": "12 jugadores",
+                "right": "150 000 c/u"
+              },
+              {
+                "left": "Jugadores × pago",
+                "right": "k = 1 800 000"
+              }
+            ],
+            "completion_feedback": "Una sube, la otra baja, y **su producto no cambia**: eso es la proporcionalidad inversa. Veamos cómo usarla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor corresponde a cada caso?",
+            "left_label": "CARAT",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "2 fans empacando",
+                "right": "300 minutos"
+              },
+              {
+                "left": "4 fans empacando",
+                "right": "150 minutos"
+              },
+              {
+                "left": "10 fans empacando",
+                "right": "60 minutos"
+              },
+              {
+                "left": "Fans × minutos",
+                "right": "k = 600"
+              }
+            ],
+            "completion_feedback": "Una sube, la otra baja, y **su producto no cambia**: eso es la proporcionalidad inversa. Veamos cómo usarla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor corresponde a cada caso?",
+            "left_label": "Raid de Roblox",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "2 jugadores",
+                "right": "6 minutos"
+              },
+              {
+                "left": "3 jugadores",
+                "right": "4 minutos"
+              },
+              {
+                "left": "4 jugadores",
+                "right": "3 minutos"
+              },
+              {
+                "left": "Jugadores × tiempo",
+                "right": "k = 12"
+              }
+            ],
+            "completion_feedback": "Una sube, la otra baja, y **su producto no cambia**: eso es la proporcionalidad inversa. Veamos cómo usarla."
+          }
+        }
+      }
+    },
+    "construcciones-a-escala": {
+      "order_steps": {
+        "prompt": "Ordena cómo pasar medidas reales a una figura a escala",
+        "steps": [
+          "Identifica la escala, por ejemplo 1:8",
+          "Toma una medida real",
+          "Divídela entre el factor de escala",
+          "Repite con cada medida, siempre con el mismo factor"
+        ],
+        "completion_feedback": "Mismo factor para todo: así **los ángulos y las proporciones no cambian**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Figura de Gojo",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Gojo: 192 cm reales",
+                "right": "24 cm en la figura"
+              },
+              {
+                "left": "Su brazo: 80 cm reales",
+                "right": "10 cm en la figura"
+              },
+              {
+                "left": "Lo que dice la caja",
+                "right": "Escala 1:8"
+              },
+              {
+                "left": "Todo se divide entre 8",
+                "right": "Factor de escala"
+              }
+            ],
+            "completion_feedback": "Todo se reduce **con el mismo número**: por eso la copia conserva la forma. Eso es una construcción a escala."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Estadio Azteca",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada cm del plano",
+                "right": "7 m reales"
+              },
+              {
+                "left": "Cancha de 105 m de largo",
+                "right": "15 cm en el plano"
+              },
+              {
+                "left": "Todo se divide entre 7",
+                "right": "Factor de escala"
+              },
+              {
+                "left": "Áreas y porterías proporcionadas",
+                "right": "Se conserva la forma"
+              }
+            ],
+            "completion_feedback": "Todo se reduce **con el mismo número**: por eso la copia conserva la forma. Eso es una construcción a escala."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Maqueta",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada cm de la maqueta",
+                "right": "2 m reales"
+              },
+              {
+                "left": "Escenario de 40 m de ancho",
+                "right": "20 cm en la maqueta"
+              },
+              {
+                "left": "Pasarela de 24 m",
+                "right": "12 cm en la maqueta"
+              },
+              {
+                "left": "Todo se divide entre 2",
+                "right": "Factor de escala"
+              }
+            ],
+            "completion_feedback": "Todo se reduce **con el mismo número**: por eso la copia conserva la forma. Eso es una construcción a escala."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Cada bloque",
+                "right": "4 m reales"
+              },
+              {
+                "left": "Torre de 180 m de alto",
+                "right": "45 bloques"
+              },
+              {
+                "left": "Base de 28 m de ancho",
+                "right": "7 bloques"
+              },
+              {
+                "left": "Todo se divide entre 4",
+                "right": "Factor de escala"
+              }
+            ],
+            "completion_feedback": "Todo se reduce **con el mismo número**: por eso la copia conserva la forma. Eso es una construcción a escala."
+          }
+        }
+      }
+    },
+    "teselaciones-con-figuras-geometricas": {
+      "order_steps": {
+        "prompt": "Ordena cómo saber si un polígono regular tesela solo",
+        "steps": [
+          "Identifica el ángulo interior del polígono",
+          "Divide 360° entre ese ángulo",
+          "Revisa si el resultado es un número entero",
+          "Si es entero, tesela sin huecos ni traslapes"
+        ],
+        "completion_feedback": "60°, 90° y 120° caben exacto en 360°; **108° no**: por eso el pentágono deja huecos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué pasa con cada figura al cubrir el plano?",
+            "left_label": "Fire Force",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Azulejos cuadrados del dojo",
+                "right": "Cuadrado: 4 × 90° = 360°"
+              },
+              {
+                "left": "Azulejos de pentágono regular",
+                "right": "Deja huecos: no tesela"
+              },
+              {
+                "left": "Piso cubierto sin huecos ni encimarse",
+                "right": "Teselación"
+              }
+            ],
+            "completion_feedback": "Los ángulos que rodean cada vértice deben sumar **exactamente 360°**. Por eso no cualquier figura tesela."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué pasa con cada figura al cubrir el plano?",
+            "left_label": "El balón",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Solo hexágonos sobre el pasto",
+                "right": "Hexágono: 3 × 120° = 360°"
+              },
+              {
+                "left": "Solo pentágonos sobre el pasto",
+                "right": "Deja huecos: no tesela"
+              },
+              {
+                "left": "Pentágonos y hexágonos del balón",
+                "right": "Teselación de varias figuras"
+              }
+            ],
+            "completion_feedback": "Los ángulos que rodean cada vértice deben sumar **exactamente 360°**. Por eso no cualquier figura tesela."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué pasa con cada figura al cubrir el plano?",
+            "left_label": "ARMY ocean",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Asientos cuadrados en la grada",
+                "right": "Cuadrado: 4 × 90° = 360°"
+              },
+              {
+                "left": "Asientos en forma de círculo",
+                "right": "Deja huecos: no tesela"
+              },
+              {
+                "left": "Luces que cubren toda la grada",
+                "right": "Teselación"
+              }
+            ],
+            "completion_feedback": "Los ángulos que rodean cada vértice deben sumar **exactamente 360°**. Por eso no cualquier figura tesela."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué pasa con cada figura al cubrir el plano?",
+            "left_label": "Brawl Stars",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Fondo de hexágonos tipo panal",
+                "right": "Hexágono: 3 × 120° = 360°"
+              },
+              {
+                "left": "Fondo de pentágonos regulares",
+                "right": "Deja huecos: no tesela"
+              },
+              {
+                "left": "Cubrir todo el mapa sin encimarse",
+                "right": "Teselación"
+              }
+            ],
+            "completion_feedback": "Los ángulos que rodean cada vértice deben sumar **exactamente 360°**. Por eso no cualquier figura tesela."
+          }
+        }
+      }
+    },
+    "intersecciones-entre-circulos-y-figuras": {
+      "order_steps": {
+        "prompt": "Ordena cómo saber cuántas veces una recta toca un círculo",
+        "steps": [
+          "Mide la distancia del centro del círculo a la recta",
+          "Compara esa distancia con el radio",
+          "Concluye: 0, 1 o 2 puntos de intersección"
+        ],
+        "completion_feedback": "Mayor que el radio: 0; igual: 1; menor: 2. **Todo depende de esa comparación.** Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cuántas veces toca la recta al círculo en cada caso?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El borde del dominio de Gojo",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "Corte que pasa lejos del dominio",
+                "right": "0 puntos: recta exterior"
+              },
+              {
+                "left": "Corte que roza el borde",
+                "right": "1 punto: recta tangente"
+              },
+              {
+                "left": "Corte directo hacia el centro",
+                "right": "2 puntos: recta secante"
+              }
+            ],
+            "completion_feedback": "Una recta y un círculo se tocan en **0, 1 o 2 puntos**, nunca más. Veamos cómo saber cuántos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cuántas veces toca la recta al círculo en cada caso?",
+            "left_label": "El Bernabéu",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El círculo central",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "La línea del área grande",
+                "right": "0 puntos: recta exterior"
+              },
+              {
+                "left": "Banda que roza el círculo",
+                "right": "1 punto: recta tangente"
+              },
+              {
+                "left": "La línea de medio campo",
+                "right": "2 puntos: recta secante"
+              }
+            ],
+            "completion_feedback": "Una recta y un círculo se tocan en **0, 1 o 2 puntos**, nunca más. Veamos cómo saber cuántos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cuántas veces toca la recta al círculo en cada caso?",
+            "left_label": "Spotlight",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Spotlight al fondo del escenario",
+                "right": "0 puntos: recta exterior"
+              },
+              {
+                "left": "Borde que roza la pasarela",
+                "right": "1 punto: recta tangente"
+              },
+              {
+                "left": "Luz que cruza la pasarela",
+                "right": "2 puntos: recta secante"
+              }
+            ],
+            "completion_feedback": "Una recta y un círculo se tocan en **0, 1 o 2 puntos**, nunca más. Veamos cómo saber cuántos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cuántas veces toca la recta al círculo en cada caso?",
+            "left_label": "Fortnite",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "La zona segura",
+                "right": "Circunferencia"
+              },
+              {
+                "left": "Zona lejos de tu muro",
+                "right": "0 puntos: recta exterior"
+              },
+              {
+                "left": "Borde que roza el muro",
+                "right": "1 punto: recta tangente"
+              },
+              {
+                "left": "Borde que cruza el muro",
+                "right": "2 puntos: recta secante"
+              }
+            ],
+            "completion_feedback": "Una recta y un círculo se tocan en **0, 1 o 2 puntos**, nunca más. Veamos cómo saber cuántos."
+          }
+        }
+      }
+    },
+    "multiplos-y-submultiplos-de-medidas": {
+      "order_steps": {
+        "prompt": "Ordena cómo convertir 3 km a centímetros",
+        "steps": [
+          "Ve de unidad grande a chica: vas a multiplicar",
+          "Pasa a metros: 3 × 1 000 = 3 000 m",
+          "Pasa a centímetros: 3 000 × 100",
+          "Resultado: 300 000 cm"
+        ],
+        "completion_feedback": "De grande a chica **siempre multiplicas**, unidad por unidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué unidad o equivalencia corresponde a cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Distancia de la expedición",
+                "right": "Kilómetro: múltiplo"
+              },
+              {
+                "left": "Altura del Titán colosal",
+                "right": "Metro: unidad base"
+              },
+              {
+                "left": "Marca de garra en el muro",
+                "right": "Centímetro: submúltiplo"
+              },
+              {
+                "left": "1 km",
+                "right": "1 000 m"
+              }
+            ],
+            "completion_feedback": "Unidades grandes, base y chicas, **de 10 en 10**: de grande a chica multiplicas; de chica a grande divides."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué unidad o equivalencia corresponde a cada cosa?",
+            "left_label": "La cancha",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Largo de la cancha: 105",
+                "right": "Metro: unidad base"
+              },
+              {
+                "left": "Grosor de las líneas: 12",
+                "right": "Centímetro: submúltiplo"
+              },
+              {
+                "left": "1 m",
+                "right": "100 cm"
+              },
+              {
+                "left": "1 km",
+                "right": "1 000 m"
+              }
+            ],
+            "completion_feedback": "Unidades grandes, base y chicas, **de 10 en 10**: de grande a chica multiplicas; de chica a grande divides."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué unidad o equivalencia corresponde a cada cosa?",
+            "left_label": "Envío Bunnies",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Caja de álbumes: 4",
+                "right": "Kilogramo: múltiplo"
+              },
+              {
+                "left": "Un álbum: 350",
+                "right": "Gramo: unidad base"
+              },
+              {
+                "left": "Photocards extra: 80",
+                "right": "Miligramo: submúltiplo"
+              },
+              {
+                "left": "1 kg",
+                "right": "1 000 g"
+              }
+            ],
+            "completion_feedback": "Unidades grandes, base y chicas, **de 10 en 10**: de grande a chica multiplicas; de chica a grande divides."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo convertir 4 kg a miligramos",
+            "steps": [
+              "Ve de unidad grande a chica: vas a multiplicar",
+              "Pasa a gramos: 4 × 1 000 = 4 000 g",
+              "Pasa a miligramos: 4 000 × 1 000",
+              "Resultado: 4 000 000 mg"
+            ],
+            "completion_feedback": "De grande a chica **siempre multiplicas**, unidad por unidad. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué unidad o equivalencia corresponde a cada cosa?",
+            "left_label": "Zelda",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "3 000 metros",
+                "right": "3 kilómetros"
+              },
+              {
+                "left": "250 centímetros",
+                "right": "2.5 metros"
+              },
+              {
+                "left": "De km a m",
+                "right": "Multiplicas por 1 000"
+              },
+              {
+                "left": "De cm a m",
+                "right": "Divides entre 100"
+              }
+            ],
+            "completion_feedback": "Unidades grandes, base y chicas, **de 10 en 10**: de grande a chica multiplicas; de chica a grande divides."
+          }
+        }
+      }
+    },
+    "perimetro-y-area-de-figuras-compuestas": {
+      "order_steps": {
+        "prompt": "Ordena cómo calcular el área de una figura compuesta",
+        "steps": [
+          "Divide la figura en figuras que conoces",
+          "Calcula el área de cada parte",
+          "Suma las áreas, o resta si hay un hueco"
+        ],
+        "completion_feedback": "Descomponer es el truco: **cada parte con su fórmula** y luego juntas los resultados. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado corresponde a cada parte?",
+            "left_label": "Fire Force",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Rectángulo grande de 14 × 9",
+                "right": "126 m²"
+              },
+              {
+                "left": "Zona de fuego de 5 × 4",
+                "right": "20 m²"
+              },
+              {
+                "left": "Todo el patio en L",
+                "right": "146 m²"
+              },
+              {
+                "left": "La reja alrededor del patio",
+                "right": "Perímetro"
+              }
+            ],
+            "completion_feedback": "Si no hay fórmula para la figura, **pártela en figuras que sí conoces**. Así se calculan perímetro y área."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado corresponde a cada parte?",
+            "left_label": "Zona de tiro",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "El área grande de 40 × 16.5",
+                "right": "660 m²"
+              },
+              {
+                "left": "La media luna",
+                "right": "Semicírculo: π·r² ÷ 2"
+              },
+              {
+                "left": "Repintar la orilla de la zona",
+                "right": "Perímetro"
+              },
+              {
+                "left": "Resembrar todo el pasto",
+                "right": "Sumar las dos áreas"
+              }
+            ],
+            "completion_feedback": "Si no hay fórmula para la figura, **pártela en figuras que sí conoces**. Así se calculan perímetro y área."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado corresponde a cada parte?",
+            "left_label": "Escenario de IVE",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Escenario principal de 15 × 10",
+                "right": "150 m²"
+              },
+              {
+                "left": "Pasarela de 8 × 3",
+                "right": "24 m²"
+              },
+              {
+                "left": "Todo el escenario en L",
+                "right": "174 m²"
+              },
+              {
+                "left": "La tira LED del borde",
+                "right": "Perímetro"
+              }
+            ],
+            "completion_feedback": "Si no hay fórmula para la figura, **pártela en figuras que sí conoces**. Así se calculan perímetro y área."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado corresponde a cada parte?",
+            "left_label": "Valorant",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Rectángulo de 12 × 8",
+                "right": "96 m²"
+              },
+              {
+                "left": "La esquina recortada de 4 × 4",
+                "right": "16 m² que se restan"
+              },
+              {
+                "left": "El sitio en L",
+                "right": "80 m²"
+              },
+              {
+                "left": "El muro que lo rodea",
+                "right": "Perímetro"
+              }
+            ],
+            "completion_feedback": "Si no hay fórmula para la figura, **pártela en figuras que sí conoces**. Así se calculan perímetro y área."
+          }
+        }
+      }
+    },
+    "recoleccion-registro-y-analisis-de-datos": {
+      "order_steps": {
+        "prompt": "Ordena el proceso para estudiar datos",
+        "steps": [
+          "Recolecta: pregunta u observa y anota",
+          "Registra: ordena todo en una tabla de frecuencias",
+          "Analiza: calcula la moda o el promedio",
+          "Concluye algo sobre el grupo"
+        ],
+        "completion_feedback": "Sin un buen registro, **el análisis no es confiable**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del manejo de datos es cada cosa?",
+            "left_label": "Club de One Piece",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Preguntar a 30 compañeros",
+                "right": "Recolección"
+              },
+              {
+                "left": "Tabla con rayitas por arco",
+                "right": "Registro en tabla"
+              },
+              {
+                "left": "Wano salió 11 veces",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "Wano, el arco más elegido",
+                "right": "Moda"
+              }
+            ],
+            "completion_feedback": "Juntar, ordenar y leer: así **los datos se vuelven conclusiones**. Veamos cada paso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del manejo de datos es cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Anotar los goles de cada partido",
+                "right": "Recolección"
+              },
+              {
+                "left": "¿En cuántos partidos metió 1?",
+                "right": "Tabla de frecuencias"
+              },
+              {
+                "left": "Su promedio de goles",
+                "right": "Media"
+              },
+              {
+                "left": "Los 10 partidos observados",
+                "right": "Muestra"
+              }
+            ],
+            "completion_feedback": "Juntar, ordenar y leer: así **los datos se vuelven conclusiones**. Veamos cada paso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del manejo de datos es cada cosa?",
+            "left_label": "STAY del salón",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Preguntar a 24 compañeros",
+                "right": "Recolección"
+              },
+              {
+                "left": "Felix salió 8 veces",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "Felix, el bias más popular",
+                "right": "Moda"
+              },
+              {
+                "left": "Las 24 personas encuestadas",
+                "right": "Muestra"
+              }
+            ],
+            "completion_feedback": "Juntar, ordenar y leer: así **los datos se vuelven conclusiones**. Veamos cada paso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del manejo de datos es cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "'¿Quién es tu main?' a 20",
+                "right": "Recolección"
+              },
+              {
+                "left": "Rayitas en una tabla",
+                "right": "Registro en tabla"
+              },
+              {
+                "left": "Hu Tao salió 7 veces",
+                "right": "Frecuencia"
+              },
+              {
+                "left": "Hu Tao, la más elegida",
+                "right": "Moda"
+              }
+            ],
+            "completion_feedback": "Juntar, ordenar y leer: así **los datos se vuelven conclusiones**. Veamos cada paso."
+          }
+        }
+      }
+    },
+    "medidas-de-tendencia-central-y-dispersion-sec-matematicas-sec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo comparar dos series con el mismo promedio",
+        "steps": [
+          "Calcula la media de cada serie",
+          "Nota que las medias son iguales",
+          "Calcula el rango de cada serie: mayor − menor",
+          "La de rango menor es la más constante"
+        ],
+        "completion_feedback": "Mismo promedio no es mismo comportamiento: **el rango revela la diferencia**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Calificaciones 8, 9, 8, 9, 9 ÷ 5",
+                "right": "Media: 8.6"
+              },
+              {
+                "left": "La nota que más se repite",
+                "right": "Moda: 9"
+              },
+              {
+                "left": "Nota mayor menos nota menor",
+                "right": "Rango: 1"
+              },
+              {
+                "left": "Notas que brincan mucho",
+                "right": "Mucha dispersión"
+              }
+            ],
+            "completion_feedback": "El promedio dice **dónde están** los datos; el rango dice **qué tan regados**. Necesitas los dos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Dos delanteros",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "7 goles ÷ 5 partidos",
+                "right": "Media: 1.4"
+              },
+              {
+                "left": "Mbappé: 2 − 1",
+                "right": "Rango: 1"
+              },
+              {
+                "left": "Su compañero: 5 − 0",
+                "right": "Rango: 5"
+              },
+              {
+                "left": "Mbappé, siempre parejo",
+                "right": "Poca dispersión"
+              }
+            ],
+            "completion_feedback": "El promedio dice **dónde están** los datos; el rango dice **qué tan regados**. Necesitas los dos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Ventas",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Venta promedio de ambos grupos",
+                "right": "Media: 41 mil"
+              },
+              {
+                "left": "NewJeans: 43 − 39",
+                "right": "Rango: 4"
+              },
+              {
+                "left": "El otro grupo: 80 − 10",
+                "right": "Rango: 70"
+              },
+              {
+                "left": "Ventas que saltan muchísimo",
+                "right": "Mucha dispersión"
+              }
+            ],
+            "completion_feedback": "El promedio dice **dónde están** los datos; el rango dice **qué tan regados**. Necesitas los dos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué medida corresponde a cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Kills promedio de ambos",
+                "right": "Media: 20"
+              },
+              {
+                "left": "Tú: 22 − 18",
+                "right": "Rango: 4"
+              },
+              {
+                "left": "Tu amigo: 35 − 5",
+                "right": "Rango: 30"
+              },
+              {
+                "left": "Tú, siempre parejo",
+                "right": "Poca dispersión"
+              }
+            ],
+            "completion_feedback": "El promedio dice **dónde están** los datos; el rango dice **qué tan regados**. Necesitas los dos."
+          }
+        }
+      }
+    },
+    "tendencias-en-los-datos": {
+      "order_steps": {
+        "prompt": "Ordena cómo usar una tendencia para predecir",
+        "steps": [
+          "Registra los datos en orden de tiempo",
+          "Grafícalos con una línea",
+          "Observa si la línea sube, baja o se mantiene",
+          "Usa esa dirección para predecir el siguiente valor"
+        ],
+        "completion_feedback": "La inclinación de la línea **revela el patrón**, y el patrón te deja anticipar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la tendencia es cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Niveles 10, 25, 45, 70 y 100",
+                "right": "Datos a lo largo del tiempo"
+              },
+              {
+                "left": "Unir los puntos con una línea",
+                "right": "Gráfica de líneas"
+              },
+              {
+                "left": "La línea sube sin parar",
+                "right": "Tendencia creciente"
+              },
+              {
+                "left": "Pasará el nivel 130",
+                "right": "Predicción"
+              }
+            ],
+            "completion_feedback": "La **dirección general** de los datos te deja anticipar lo que viene. Eso es una tendencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la tendencia es cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Goles: 2, 5, 9, 14 y 20",
+                "right": "Datos a lo largo del tiempo"
+              },
+              {
+                "left": "Unir los puntos mes a mes",
+                "right": "Gráfica de líneas"
+              },
+              {
+                "left": "La línea apunta hacia arriba",
+                "right": "Tendencia creciente"
+              },
+              {
+                "left": "Pasará los 25 en febrero",
+                "right": "Predicción"
+              }
+            ],
+            "completion_feedback": "La **dirección general** de los datos te deja anticipar lo que viene. Eso es una tendencia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la tendencia es cada cosa?",
+            "left_label": "IVE",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "12, 15, 19, 24 y 30 millones",
+                "right": "Datos a lo largo del tiempo"
+              },
+              {
+                "left": "Unir los puntos mes a mes",
+                "right": "Gráfica de líneas"
+              },
+              {
+                "left": "Los seguidores no dejan de subir",
+                "right": "Tendencia creciente"
+              },
+              {
+                "left": "Pasará de 30 millones",
+                "right": "Predicción"
+              }
+            ],
+            "completion_feedback": "La **dirección general** de los datos te deja anticipar lo que viene. Eso es una tendencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la tendencia es cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Niveles 30, 33, 36, 39, 42 y 45",
+                "right": "Datos a lo largo del tiempo"
+              },
+              {
+                "left": "Unir los puntos semana a semana",
+                "right": "Gráfica de líneas"
+              },
+              {
+                "left": "Sube 3 niveles cada semana",
+                "right": "Tendencia creciente"
+              },
+              {
+                "left": "Cerca del nivel 48",
+                "right": "Predicción"
+              }
+            ],
+            "completion_feedback": "La **dirección general** de los datos te deja anticipar lo que viene. Eso es una tendencia."
+          }
+        }
+      }
+    },
+    "experimentos-aleatorios-y-probabilidad": {
+      "order_steps": {
+        "prompt": "Ordena cómo calcular una probabilidad",
+        "steps": [
+          "Lista todos los resultados posibles",
+          "Cuenta los casos favorables y los totales",
+          "Divide favorables entre totales"
+        ],
+        "completion_feedback": "**P = favorables ÷ totales**, y siempre queda entre 0 y 1. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la probabilidad es cada cosa?",
+            "left_label": "Gacha One Piece",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Hacer un pull en el banner",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Todos los personajes del banner",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "Que salga Luffy Gear 5",
+                "right": "Evento"
+              },
+              {
+                "left": "1 de 20 personajes",
+                "right": "P = 1/20 = 5%"
+              }
+            ],
+            "completion_feedback": "No sabes qué saldrá, pero **sí puedes medir qué tan probable es**. Veamos cómo con la regla de Laplace."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la probabilidad es cada cosa?",
+            "left_label": "El volado",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Lanzar la moneda",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Águila o sol",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "Que caiga águila",
+                "right": "P = 1/2"
+              },
+              {
+                "left": "Misma posibilidad de cada lado",
+                "right": "Equiprobables"
+              }
+            ],
+            "completion_feedback": "No sabes qué saldrá, pero **sí puedes medir qué tan probable es**. Veamos cómo con la regla de Laplace."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la probabilidad es cada cosa?",
+            "left_label": "Álbum de SKZ",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Abrir el álbum sellado",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Los 8 miembros",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "Que te toque Felix",
+                "right": "Evento"
+              },
+              {
+                "left": "1 de 8 miembros",
+                "right": "P = 1/8"
+              }
+            ],
+            "completion_feedback": "No sabes qué saldrá, pero **sí puedes medir qué tan probable es**. Veamos cómo con la regla de Laplace."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la probabilidad es cada cosa?",
+            "left_label": "Brawl Stars",
+            "right_label": "En Mate",
+            "pairs": [
+              {
+                "left": "Abrir una Starr Drop",
+                "right": "Experimento aleatorio"
+              },
+              {
+                "left": "Todos los premios posibles",
+                "right": "Espacio muestral"
+              },
+              {
+                "left": "Sacar la legendaria",
+                "right": "Evento"
+              },
+              {
+                "left": "1 de cada 100",
+                "right": "P = 1/100 = 1%"
+              }
+            ],
+            "completion_feedback": "No sabes qué saldrá, pero **sí puedes medir qué tan probable es**. Veamos cómo con la regla de Laplace."
+          }
+        }
+      }
+    }
+  }
+}
