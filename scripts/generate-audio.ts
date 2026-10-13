@@ -16,6 +16,12 @@
  * Uso:
  *   npx tsx scripts/generate-audio.ts --subject=<slug> [--limit=N] [--dry-run]
  *   caffeinate -i npx tsx scripts/generate-audio.ts --subject=matematicas-1
+ *   caffeinate -i npx tsx scripts/generate-audio.ts --all --exclude=ingles
+ *
+ *   --all            recorre todas las materias (en orden alfabético)
+ *   --exclude=a,b    con --all, salta las materias cuyo slug empiece con a o b
+ *   --types=...      tipos a narrar. Por defecto explanation,analogy,example
+ *                    (key_fact y tip nunca se han narrado: pásalos explícitos si los quieres)
  *
  * Requiere: Voicebox ABIERTO en la Mac (API local en 127.0.0.1:17493) + ffmpeg.
  */
@@ -38,6 +44,7 @@ const VOICEBOX_URL = 'http://127.0.0.1:17493'
 const BODGAR_PROFILE_ID = '74ae963c-6ff2-4a44-b138-3050895e5441'
 const BUCKET = 'section-audio'
 const ALL_AUDIO_TEXT_TYPES = ['explanation', 'analogy', 'example', 'key_fact', 'tip']
+const DEFAULT_AUDIO_TEXT_TYPES = ['explanation', 'analogy', 'example']
 const POLL_INTERVAL_MS = 2000
 const POLL_TIMEOUT_MS = 300000 // 5 min por audio (analogías largas + carga inicial del modelo)
 
@@ -48,15 +55,17 @@ const getFlag = (name: string): string | undefined => {
   return a ? a.split('=').slice(1).join('=') : undefined
 }
 const subjectSlug = getFlag('subject')
+const allSubjects = args.includes('--all')
+const excludes = (getFlag('exclude') ?? '').split(',').map((x) => x.trim()).filter(Boolean)
 const limit = getFlag('limit') ? parseInt(getFlag('limit')!, 10) : undefined
 const dryRun = args.includes('--dry-run')
 const typesFlag = getFlag('types')
 const AUDIO_TEXT_TYPES = typesFlag
   ? typesFlag.split(',').map((t) => t.trim()).filter((t) => ALL_AUDIO_TEXT_TYPES.includes(t))
-  : ALL_AUDIO_TEXT_TYPES
+  : DEFAULT_AUDIO_TEXT_TYPES
 
-if (!subjectSlug) {
-  console.error('❌ Falta --subject=<slug>. Ej: --subject=matematicas-1')
+if (!subjectSlug && !allSubjects) {
+  console.error('❌ Falta --subject=<slug> o --all. Ej: --subject=matematicas-1')
   process.exit(1)
 }
 
@@ -194,16 +203,38 @@ async function uploadMp3(sectionId: string, mp3Path: string): Promise<string> {
 }
 
 // ─── Main ───
+type Totales = { ok: number; skipped: number; errors: number }
+
 async function main() {
-  console.log(`\n🎙️  Generate Audio — piloto`)
-  console.log(`   Materia: ${subjectSlug}${limit ? ` · límite ${limit}` : ''}${dryRun ? ' · DRY RUN' : ''}\n`)
+  let slugs: string[]
+  if (allSubjects) {
+    const { data, error } = await supabase.from('subjects').select('slug').order('slug')
+    if (error) throw new Error(`Query subjects: ${error.message}`)
+    slugs = (data ?? []).map((s) => s.slug as string).filter((s) => !excludes.some((e) => s.startsWith(e)))
+  } else {
+    slugs = [subjectSlug!]
+  }
+  console.log(`\n🎙️  Generate Audio — ${slugs.length} materia(s) · tipos: ${AUDIO_TEXT_TYPES.join(', ')}`)
+  const total: Totales = { ok: 0, skipped: 0, errors: 0 }
+  for (const slug of slugs) {
+    const r = await processSubject(slug)
+    total.ok += r.ok; total.skipped += r.skipped; total.errors += r.errors
+  }
+  if (slugs.length > 1) {
+    console.log(`\n═════ TOTAL ═════`)
+    console.log(`   ✓ Generados: ${total.ok}   ⏭  Saltados: ${total.skipped}   ✕ Errores: ${total.errors}\n`)
+  }
+}
+
+async function processSubject(subjectSlug: string): Promise<Totales> {
+  console.log(`\n   Materia: ${subjectSlug}${limit ? ` · límite ${limit}` : ''}${dryRun ? ' · DRY RUN' : ''}`)
 
   // 1. Resolver subject
   const { data: subject, error: subErr } = await supabase
     .from('subjects').select('id, name, slug').eq('slug', subjectSlug).single()
   if (subErr || !subject) {
     console.error(`❌ No encontré la materia "${subjectSlug}". ¿El slug es correcto?`)
-    process.exit(1)
+    return { ok: 0, skipped: 0, errors: 1 }
   }
 
   // 2. Traer topics de la materia
@@ -212,7 +243,7 @@ async function main() {
   const topicIds = (topics ?? []).map((t) => t.id)
   if (topicIds.length === 0) {
     console.log('   No hay topics en esta materia.')
-    return
+    return { ok: 0, skipped: 0, errors: 0 }
   }
 
   // 3. Traer secciones de texto sin audio (paginado, Supabase corta a 1000)
@@ -238,8 +269,8 @@ async function main() {
 
   console.log(`   ${sections.length} secciones de texto sin audio.\n`)
   if (sections.length === 0) {
-    console.log('✓ Nada que hacer. Todas ya tienen audio.')
-    return
+    console.log('   ✓ Nada que hacer. Todas ya tienen audio.')
+    return { ok: 0, skipped: 0, errors: 0 }
   }
 
   // 4. Procesar
@@ -317,6 +348,7 @@ async function main() {
   console.log(`   ⏭  Saltados:  ${skipped}`)
   console.log(`   ✕ Errores:   ${errors}`)
   console.log(`─────────────────────────────\n`)
+  return { ok, skipped, errors }
 }
 
 main().catch((err) => {
