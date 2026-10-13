@@ -1,0 +1,1470 @@
+{
+  "subject": "historia-sec-1",
+  "topics": {
+    "los-albores-de-la-humanidad": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué etapa de la vida humana es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Cazar y pescar en cada isla",
+                "right": "Caza y recolección"
+              },
+              {
+                "left": "Sembrar y cosechar en la isla",
+                "right": "Agricultura"
+              },
+              {
+                "left": "Criar animales para carne y leche",
+                "right": "Ganadería"
+              },
+              {
+                "left": "Quedarse a vivir en un lugar fijo",
+                "right": "Sedentarismo"
+              }
+            ],
+            "completion_feedback": "Así empezó todo: los primeros humanos **cambiaron su forma de vivir** paso a paso. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo pasó el ser humano a la Revolución Neolítica",
+            "steps": [
+              "Vive de cazar y recolectar lo que encuentra",
+              "Aprende a cultivar plantas y criar animales",
+              "Ya no necesita migrar: se vuelve sedentario",
+              "Forma las primeras aldeas"
+            ],
+            "completion_feedback": "Producir su comida **lo dejó quedarse en un lugar**, y de ahí nacieron las aldeas. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "Como los botines de Santi, cada invento dio una ventaja. ¿Cuál?",
+            "left_label": "Invento",
+            "right_label": "Su ventaja",
+            "pairs": [
+              {
+                "left": "Piedra tallada en punta",
+                "right": "Cazar con más fuerza"
+              },
+              {
+                "left": "Fuego para alumbrar la noche",
+                "right": "Luz y protección"
+              },
+              {
+                "left": "Fuego para cocinar la carne",
+                "right": "Comida más fácil de digerir"
+              }
+            ],
+            "completion_feedback": "Así empezó todo: los primeros humanos **cambiaron su forma de vivir** paso a paso. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo una piedra se convertía en comida en el Paleolítico",
+            "steps": [
+              "Golpean una piedra para tallarla",
+              "Obtienen hachas y puntas de lanza",
+              "Cazan mejor y consiguen alimento",
+              "Cocinan la carne en el fuego"
+            ],
+            "completion_feedback": "Herramienta, caza y fuego: **cada tecnología ayudaba a sobrevivir**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la evolución humana muestra cada cosa?",
+            "left_label": "NewJeans",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Años de comebacks, no un solo día",
+                "right": "Millones de años de cambio"
+              },
+              {
+                "left": "Cada versión más capaz que la anterior",
+                "right": "Homínidos con más capacidades"
+              },
+              {
+                "left": "El NewJeans de hoy",
+                "right": "Homo sapiens"
+              }
+            ],
+            "completion_feedback": "Así empezó todo: los primeros humanos **cambiaron su forma de vivir** paso a paso. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena estas especies de homínidos, de la más antigua a la más reciente",
+            "steps": [
+              "Australopithecus: ya camina erguido",
+              "Homo habilis: fabrica herramientas",
+              "Homo erectus: domina el fuego",
+              "Homo sapiens: nuestra especie"
+            ],
+            "completion_feedback": "Nadie apareció de golpe: **cada especie sumó una capacidad nueva**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué rasgo del Paleolítico muestra cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Sin casa propia, siempre de viaje",
+                "right": "Nómadas"
+              },
+              {
+                "left": "Recoger flores y frutas",
+                "right": "Recolección"
+              },
+              {
+                "left": "Pescar en ríos y cazar animales",
+                "right": "Caza y pesca"
+              },
+              {
+                "left": "Zona sin materiales: a otra región",
+                "right": "Migrar si se agotan recursos"
+              }
+            ],
+            "completion_feedback": "Así empezó todo: los primeros humanos **cambiaron su forma de vivir** paso a paso. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena el ciclo de vida de un grupo nómada, empezando al llegar a una zona",
+            "steps": [
+              "Llegan a una zona con recursos",
+              "Cazan, pescan y recolectan ahí",
+              "Los recursos se agotan",
+              "Migran a otra zona"
+            ],
+            "completion_feedback": "Dependían de **lo que había en cada lugar**: por eso nunca se quedaban. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "las-revoluciones-modernas-sec": {
+      "order_steps": {
+        "prompt": "Ordena cómo estalló la Revolución Francesa",
+        "steps": [
+          "Crecen la desigualdad y el descontento del pueblo",
+          "El pueblo se levanta contra el rey",
+          "Termina el poder absoluto del rey",
+          "Se proclaman libertad, igualdad y fraternidad"
+        ],
+        "completion_feedback": "Primero el **descontento**, luego la caída del viejo orden y al final **uno nuevo con más derechos**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de una revolución es cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Lujo en el centro, hambre afuera",
+                "right": "Desigualdad"
+              },
+              {
+                "left": "El rey que miente y lo controla todo",
+                "right": "Monarquía absoluta"
+              },
+              {
+                "left": "El golpe que derroca al rey falso",
+                "right": "Revolución"
+              },
+              {
+                "left": "Se revela la verdad y el pueblo habla",
+                "right": "Nuevo orden con derechos"
+              }
+            ],
+            "completion_feedback": "Cuando un orden injusto se derrumba y nace otro distinto, eso es una **revolución**. Veamos las que cambiaron el mundo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de una revolución es cada cosa?",
+            "left_label": "Bellingham",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El estilo 'de toda la vida'",
+                "right": "El orden anterior"
+              },
+              {
+                "left": "No un ajuste: un cambio total",
+                "right": "Revolución"
+              },
+              {
+                "left": "Todo el equipo reorganizado",
+                "right": "La sociedad se transforma"
+              }
+            ],
+            "completion_feedback": "Cuando un orden injusto se derrumba y nace otro distinto, eso es una **revolución**. Veamos las que cambiaron el mundo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo ocurrió la Revolución Industrial",
+            "steps": [
+              "Todo se produce a mano en talleres",
+              "Se inventan máquinas como la de vapor",
+              "La producción pasa a las fábricas",
+              "La sociedad entera se transforma"
+            ],
+            "completion_feedback": "Cambió **la forma de producir**, y con ella cambió todo lo demás. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la independencia muestra cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "La disquera que decide todo",
+                "right": "Un rey lejano que manda"
+              },
+              {
+                "left": "Idols que solo obedecen",
+                "right": "Colonias sin voz"
+              },
+              {
+                "left": "SEVENTEEN compone su propia música",
+                "right": "Gobernarse a sí mismos"
+              },
+              {
+                "left": "Un camino nuevo para los artistas",
+                "right": "Revolución"
+              }
+            ],
+            "completion_feedback": "Cuando un orden injusto se derrumba y nace otro distinto, eso es una **revolución**. Veamos las que cambiaron el mundo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se independizaron las Trece Colonias",
+            "steps": [
+              "Un rey lejano las gobierna sin escucharlas",
+              "Crece el descontento y llegan ideas de libertad",
+              "Dejan de obedecer al rey",
+              "Se gobiernan a sí mismas"
+            ],
+            "completion_feedback": "Las ideas de la Ilustración **convirtieron el descontento en independencia**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de una revolución es cada cosa?",
+            "left_label": "Roblox",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El admin-rey que abusa del poder",
+                "right": "Monarquía absoluta"
+              },
+              {
+                "left": "Robux solo para el rey y sus amigos",
+                "right": "Desigualdad"
+              },
+              {
+                "left": "Quejas que crecen en el chat",
+                "right": "Descontento social"
+              },
+              {
+                "left": "Reglas nuevas que todos votan",
+                "right": "Nuevo orden: igualdad"
+              }
+            ],
+            "completion_feedback": "Cuando un orden injusto se derrumba y nace otro distinto, eso es una **revolución**. Veamos las que cambiaron el mundo."
+          }
+        }
+      }
+    },
+    "las-metropolis-y-los-sistemas-de-dominacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo funciona un sistema colonial",
+        "steps": [
+          "La metrópoli domina un territorio",
+          "La colonia trabaja y produce recursos",
+          "Los recursos se envían a la metrópoli",
+          "La metrópoli se enriquece; la colonia, no"
+        ],
+        "completion_feedback": "El trabajo se queda abajo y **la riqueza sube al centro**: esa es la desigualdad del colonialismo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de dominación es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El proyecto Blue Lock",
+                "right": "Metrópoli: el centro que manda"
+              },
+              {
+                "left": "Isagi, Bachira y Rin",
+                "right": "Colonia: territorio sometido"
+              },
+              {
+                "left": "Goles para la gloria del proyecto",
+                "right": "Producir para el centro"
+              },
+              {
+                "left": "El proyecto decide su destino",
+                "right": "Sin control de su destino"
+              }
+            ],
+            "completion_feedback": "Un centro que manda y se enriquece, y territorios que trabajan para él: eso es una **metrópoli** con sus **colonias**. Veamos cómo funcionaba."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de dominación es cada cosa?",
+            "left_label": "Clubes satélite",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El club gigante de Mbappé",
+                "right": "Metrópoli: el centro que manda"
+              },
+              {
+                "left": "Los clubes satélite",
+                "right": "Colonia: territorio sometido"
+              },
+              {
+                "left": "Llevarse a la promesa pagando poco",
+                "right": "Tomar sus recursos"
+              },
+              {
+                "left": "Cortarles el dinero si se rebelan",
+                "right": "Control por dependencia"
+              }
+            ],
+            "completion_feedback": "Un centro que manda y se enriquece, y territorios que trabajan para él: eso es una **metrópoli** con sus **colonias**. Veamos cómo funcionaba."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de dominación es cada cosa?",
+            "left_label": "Agencias K-pop",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "La agencia dueña de IVE",
+                "right": "Metrópoli: el centro que manda"
+              },
+              {
+                "left": "Agencias chicas y grupos novatos",
+                "right": "Colonia: territorio sometido"
+              },
+              {
+                "left": "Ganancias que suben a la grande",
+                "right": "La riqueza va al centro"
+              },
+              {
+                "left": "Sin promoción si se quejan",
+                "right": "Control por dependencia"
+              }
+            ],
+            "completion_feedback": "Un centro que manda y se enriquece, y territorios que trabajan para él: eso es una **metrópoli** con sus **colonias**. Veamos cómo funcionaba."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema de dominación es cada cosa?",
+            "left_label": "Brawl Stars",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El club de brawlers maxeados",
+                "right": "Metrópoli: el centro que manda"
+              },
+              {
+                "left": "Los clubes pequeños y débiles",
+                "right": "Colonia: territorio sometido"
+              },
+              {
+                "left": "Gemas y Power Points al grande",
+                "right": "Entregar sus recursos"
+              },
+              {
+                "left": "Expulsión si se rebelan",
+                "right": "Control por la fuerza"
+              }
+            ],
+            "completion_feedback": "Un centro que manda y se enriquece, y territorios que trabajan para él: eso es una **metrópoli** con sus **colonias**. Veamos cómo funcionaba."
+          }
+        }
+      }
+    },
+    "resistencias-y-movimientos-independentistas": {
+      "order_steps": {
+        "prompt": "Ordena cómo nace un movimiento independentista",
+        "steps": [
+          "Un poder opresor domina al pueblo",
+          "Crece el descontento por la falta de libertad",
+          "Líderes unen y organizan a la gente",
+          "El pueblo resiste al opresor",
+          "Se liberan y se gobiernan solos"
+        ],
+        "completion_feedback": "Sin **unión y líderes**, el descontento se queda en queja; con ellos, se vuelve independencia. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de una resistencia es cada cosa?",
+            "left_label": "My Hero Academia",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "All For One y su Liga de Villanos",
+                "right": "Poder opresor"
+              },
+              {
+                "left": "Deku, All Might y Bakugo unidos",
+                "right": "Resistencia organizada"
+              },
+              {
+                "left": "Cada héroe que se suma",
+                "right": "Unión que fortalece"
+              },
+              {
+                "left": "Devolverle a la gente su libertad",
+                "right": "Meta: la libertad"
+              }
+            ],
+            "completion_feedback": "Cuando los dominados **se unen y se organizan**, nace una resistencia; si buscan liberarse del todo, es un movimiento independentista."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de una resistencia es cada cosa?",
+            "left_label": "El club pequeño",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El club gigante que manda",
+                "right": "Poder opresor"
+              },
+              {
+                "left": "Messi uniendo al vestidor",
+                "right": "Líder que une a la gente"
+              },
+              {
+                "left": "Romper con el club gigante",
+                "right": "Independencia"
+              },
+              {
+                "left": "Dueños de sus propias decisiones",
+                "right": "Soberanía: decidir por sí mismos"
+              }
+            ],
+            "completion_feedback": "Cuando los dominados **se unen y se organizan**, nace una resistencia; si buscan liberarse del todo, es un movimiento independentista."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de una resistencia es cada cosa?",
+            "left_label": "Squid Game",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El Front Man y los VIP",
+                "right": "Poder opresor"
+              },
+              {
+                "left": "Jugadores sin voz ni derechos",
+                "right": "Pueblo oprimido"
+              },
+              {
+                "left": "Gi-hun convence a los demás",
+                "right": "Líder que une a la gente"
+              },
+              {
+                "left": "El levantamiento contra los guardias",
+                "right": "Resistencia organizada"
+              }
+            ],
+            "completion_feedback": "Cuando los dominados **se unen y se organizan**, nace una resistencia; si buscan liberarse del todo, es un movimiento independentista."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de una resistencia es cada cosa?",
+            "left_label": "Spider-Man 2",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Kraven se adueña de Nueva York",
+                "right": "Poder opresor"
+              },
+              {
+                "left": "Peter y Miles animan a la gente",
+                "right": "Líder que une a la gente"
+              },
+              {
+                "left": "Liberar la ciudad zona por zona",
+                "right": "Resistencia organizada"
+              },
+              {
+                "left": "Expulsar al invasor",
+                "right": "Independencia"
+              }
+            ],
+            "completion_feedback": "Cuando los dominados **se unen y se organizan**, nace una resistencia; si buscan liberarse del todo, es un movimiento independentista."
+          }
+        }
+      }
+    },
+    "las-tensiones-del-siglo-xx": {
+      "order_steps": {
+        "prompt": "Ordena por qué la Guerra Fría nunca fue una guerra directa",
+        "steps": [
+          "Dos superpotencias tienen armas poderosísimas",
+          "Un ataque directo sería destrucción total",
+          "Ambas evitan pelear de frente",
+          "Compiten con espionaje, carreras y aliados"
+        ],
+        "completion_feedback": "El **miedo a destruirlo todo** las frenó, y la rivalidad se fue a otros terrenos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la Guerra Fría muestra cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Bijū guardados como arma final",
+                "right": "Armas nucleares"
+              },
+              {
+                "left": "Nadie ataca: sería devastador",
+                "right": "Disuasión"
+              },
+              {
+                "left": "Ninjas infiltrados",
+                "right": "Espionaje"
+              },
+              {
+                "left": "Competir por más bestias con cola",
+                "right": "Carrera armamentista"
+              }
+            ],
+            "completion_feedback": "Dos potencias que **se miden sin atacarse de frente**: eso fue la Guerra Fría. Veamos cómo se vivió."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la Guerra Fría muestra cada cosa?",
+            "left_label": "Dos gigantes",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Los dos nunca se enfrentan",
+                "right": "Sin guerra directa"
+              },
+              {
+                "left": "Reforzar la plantilla sin parar",
+                "right": "Carrera armamentista"
+              },
+              {
+                "left": "Patrocinadores y fichajes de su lado",
+                "right": "Buscar aliados"
+              }
+            ],
+            "completion_feedback": "Dos potencias que **se miden sin atacarse de frente**: eso fue la Guerra Fría. Veamos cómo se vivió."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la Guerra Fría muestra cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "STAY contra el otro fandom",
+                "right": "Dos bloques rivales"
+              },
+              {
+                "left": "Nunca un pleito de frente",
+                "right": "Sin guerra directa"
+              },
+              {
+                "left": "Colaboraciones y marcas",
+                "right": "Buscar aliados"
+              },
+              {
+                "left": "Más premios para probar quién manda",
+                "right": "Probar que su modelo es mejor"
+              }
+            ],
+            "completion_feedback": "Dos potencias que **se miden sin atacarse de frente**: eso fue la Guerra Fría. Veamos cómo se vivió."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se vivió la Guerra Fría",
+            "steps": [
+              "Dos superpotencias defienden sistemas opuestos",
+              "Cada una quiere probar que el suyo es mejor",
+              "Evitan pelear de frente",
+              "Compiten con propaganda, espionaje y aliados"
+            ],
+            "completion_feedback": "**Capitalismo contra comunismo**, sin choque abierto: la rivalidad se libró por otros medios. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué rasgo de la Guerra Fría muestra cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Dos equipos armados con Vandals",
+                "right": "Superpotencias armadas"
+              },
+              {
+                "left": "Nadie dispara primero",
+                "right": "Disuasión"
+              },
+              {
+                "left": "Drones que espían al rival",
+                "right": "Espionaje"
+              },
+              {
+                "left": "Comprar más escudos y armas",
+                "right": "Carrera armamentista"
+              }
+            ],
+            "completion_feedback": "Dos potencias que **se miden sin atacarse de frente**: eso fue la Guerra Fría. Veamos cómo se vivió."
+          }
+        }
+      }
+    },
+    "la-idea-de-juventud-e-infancia-en-la": {
+      "order_steps": {
+        "prompt": "Ordena cómo cambió la idea de infancia a lo largo de la historia",
+        "steps": [
+          "Muchos niños trabajan como adultos desde pequeños",
+          "La sociedad empieza a ver la niñez como etapa especial",
+          "Se le da protección, educación y juego"
+        ],
+        "completion_feedback": "La infancia como hoy la conocemos **es una idea reciente**: la sociedad la fue construyendo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la infancia y la juventud muestra cada cosa?",
+            "left_label": "Spy x Family",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Anya va a la escuela Eden",
+                "right": "Educación"
+              },
+              {
+                "left": "Juega y se emociona como niña",
+                "right": "Juego"
+              },
+              {
+                "left": "Loid y Yor la cuidan",
+                "right": "Protección"
+              },
+              {
+                "left": "Misiones y peligros de espías",
+                "right": "Mundo adulto"
+              }
+            ],
+            "completion_feedback": "Lo que significa ser niño o joven **lo decide cada época**, y ha cambiado mucho. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la infancia y la juventud muestra cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Límite de minutos por ser menor",
+                "right": "Normas que protegen"
+              },
+              {
+                "left": "Obligación de seguir estudiando",
+                "right": "Derecho a la educación"
+              },
+              {
+                "left": "Hace décadas no había esas reglas",
+                "right": "La idea cambió con el tiempo"
+              }
+            ],
+            "completion_feedback": "Lo que significa ser niño o joven **lo decide cada época**, y ha cambiado mucho. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo se ganó la protección de los jóvenes",
+            "steps": [
+              "Los jóvenes casi no tienen derechos",
+              "La sociedad reconoce que merecen otro trato",
+              "Se crean leyes y normas para protegerlos"
+            ],
+            "completion_feedback": "Los derechos de la niñez **son recientes**: se fueron construyendo. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la infancia y la juventud muestra cada cosa?",
+            "left_label": "TXT",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Trainees con horarios de estudio",
+                "right": "Educación"
+              },
+              {
+                "left": "La agencia los cuida y prepara",
+                "right": "Protección"
+              },
+              {
+                "left": "El idol veterano y sus deberes",
+                "right": "Responsabilidades adultas"
+              },
+              {
+                "left": "La industria decide cada etapa",
+                "right": "Construcción social"
+              }
+            ],
+            "completion_feedback": "Lo que significa ser niño o joven **lo decide cada época**, y ha cambiado mucho. Veamos cómo."
+          },
+          "order_steps": null
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la infancia y la juventud muestra cada cosa?",
+            "left_label": "FC 26",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Desarrollar al juvenil con cuidado",
+                "right": "Protección"
+              },
+              {
+                "left": "El capitán de 30 y su liderazgo",
+                "right": "Mundo adulto"
+              },
+              {
+                "left": "El juego separa cada etapa",
+                "right": "Construcción social"
+              }
+            ],
+            "completion_feedback": "Lo que significa ser niño o joven **lo decide cada época**, y ha cambiado mucho. Veamos cómo."
+          }
+        }
+      }
+    },
+    "las-mujeres-y-sus-historias": {
+      "order_steps": {
+        "prompt": "Ordena cómo las mujeres quedaron fuera de la historia y cómo se recupera",
+        "steps": [
+          "Las mujeres participan activamente en su época",
+          "Los relatos destacan solo a los hombres",
+          "Ellas quedan invisibles en la historia",
+          "La historia de las mujeres recupera su papel"
+        ],
+        "completion_feedback": "Ellas **sí estuvieron**; lo que faltaba era contarlo. Eso corrige la historia de las mujeres. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea de la historia de las mujeres muestra cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Nezuko, decisiva en cada batalla",
+                "right": "Mujeres que sí participaron"
+              },
+              {
+                "left": "Contar la serie solo con Tanjiro",
+                "right": "Relato que las invisibiliza"
+              },
+              {
+                "left": "Reconocer a Nezuko y a Shinobu",
+                "right": "Historia de las mujeres"
+              }
+            ],
+            "completion_feedback": "Las mujeres **siempre estuvieron ahí**, pero el relato y las normas las dejaron atrás. Veamos cómo se recupera su historia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de la historia de las mujeres muestra cada cosa?",
+            "left_label": "Fútbol femenil",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Poca tele y poquísimo dinero",
+                "right": "Menos oportunidades"
+              },
+              {
+                "left": "Aitana y Alexia, Balón de Oro",
+                "right": "Mismo talento"
+              },
+              {
+                "left": "Estadios llenos en el Mundial",
+                "right": "Reconocimiento ganado"
+              },
+              {
+                "left": "La igualdad aún en construcción",
+                "right": "Una lucha que sigue"
+              }
+            ],
+            "completion_feedback": "Las mujeres **siempre estuvieron ahí**, pero el relato y las normas las dejaron atrás. Veamos cómo se recupera su historia."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo nació la desigualdad que vivieron las mujeres",
+            "steps": [
+              "Tienen el mismo talento que los hombres",
+              "Las normas sociales les dan menos oportunidades",
+              "Reciben menos derechos y reconocimiento",
+              "Se lucha por reconocerlas y lograr la igualdad"
+            ],
+            "completion_feedback": "No era falta de capacidad: **eran las normas**. Por eso la desigualdad se puede cambiar. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de la historia de las mujeres muestra cada cosa?",
+            "left_label": "BLACKPINK",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Menos espacio para grupos de chicas",
+                "right": "Desigualdad de género"
+              },
+              {
+                "left": "BLACKPINK encabeza Coachella",
+                "right": "Mismo talento"
+              },
+              {
+                "left": "Abren camino a otros grupos",
+                "right": "Lucha por la equidad"
+              }
+            ],
+            "completion_feedback": "Las mujeres **siempre estuvieron ahí**, pero el relato y las normas las dejaron atrás. Veamos cómo se recupera su historia."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo nació la desigualdad que vivieron las mujeres",
+            "steps": [
+              "Tienen el mismo talento que los hombres",
+              "Las normas sociales les dan menos oportunidades",
+              "Reciben menos derechos y reconocimiento",
+              "Se lucha por reconocerlas y lograr la igualdad"
+            ],
+            "completion_feedback": "No era falta de capacidad: **eran las normas**. Por eso la desigualdad se puede cambiar. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de la historia de las mujeres muestra cada cosa?",
+            "left_label": "Horizon",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Aloy salva comunidades enteras",
+                "right": "Mujeres que sí participaron"
+              },
+              {
+                "left": "Contar Horizon sin nombrar a Aloy",
+                "right": "Relato que las invisibiliza"
+              },
+              {
+                "left": "Una aventura contada a medias",
+                "right": "Un pasado incompleto"
+              }
+            ],
+            "completion_feedback": "Las mujeres **siempre estuvieron ahí**, pero el relato y las normas las dejaron atrás. Veamos cómo se recupera su historia."
+          }
+        }
+      }
+    },
+    "las-luchas-de-las-mujeres-por-sus-derechos": {
+      "order_steps": {
+        "prompt": "Ordena cómo las mujeres conquistaron sus derechos",
+        "steps": [
+          "Leyes injustas les niegan derechos",
+          "Las mujeres se organizan",
+          "Protestan y exigen igualdad de forma pacífica",
+          "Logran cambiar las leyes"
+        ],
+        "completion_feedback": "Una sola tenía poco poder; **organizadas, cambiaron las leyes**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la lucha por los derechos es cada cosa?",
+            "left_label": "My Hero Academia",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Torneos solo para héroes hombres",
+                "right": "Norma o ley injusta"
+              },
+              {
+                "left": "Ochaco y Tsuyu se organizan",
+                "right": "Organización colectiva"
+              },
+              {
+                "left": "Exigir con argumentos, sin violencia",
+                "right": "Protesta pacífica"
+              },
+              {
+                "left": "Las mismas oportunidades, no ventajas",
+                "right": "Igualdad de oportunidades"
+              }
+            ],
+            "completion_feedback": "Los derechos **no se regalaron: se conquistaron** organizándose. Así fue la lucha de las mujeres; veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la lucha por los derechos es cada cosa?",
+            "left_label": "Fútbol femenil",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Prohibido jugar en estadios oficiales",
+                "right": "Norma o ley injusta"
+              },
+              {
+                "left": "Organizarse como equipo",
+                "right": "Organización colectiva"
+              },
+              {
+                "left": "Llevar su caso a juicio",
+                "right": "Usar las leyes a su favor"
+              },
+              {
+                "left": "Mismo trabajo, mismo pago",
+                "right": "Igualdad de derechos"
+              }
+            ],
+            "completion_feedback": "Los derechos **no se regalaron: se conquistaron** organizándose. Así fue la lucha de las mujeres; veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la lucha por los derechos es cada cosa?",
+            "left_label": "Las DIVE",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Una DIVE sola",
+                "right": "Poco poder individual"
+              },
+              {
+                "left": "Miles de DIVE unidas",
+                "right": "Organización colectiva"
+              },
+              {
+                "left": "Hashtags y truck protests",
+                "right": "Protesta pacífica"
+              },
+              {
+                "left": "Firmas en peticiones online",
+                "right": "Peticiones"
+              }
+            ],
+            "completion_feedback": "Los derechos **no se regalaron: se conquistaron** organizándose. Así fue la lucha de las mujeres; veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la lucha por los derechos es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Solo algunos pueden votar",
+                "right": "Norma o ley injusta"
+              },
+              {
+                "left": "Se reúnen y hacen equipo",
+                "right": "Organización colectiva"
+              },
+              {
+                "left": "Carteles y firmas en el chat",
+                "right": "Protesta pacífica"
+              },
+              {
+                "left": "Los admins cambian las reglas",
+                "right": "La ley cambia"
+              }
+            ],
+            "completion_feedback": "Los derechos **no se regalaron: se conquistaron** organizándose. Así fue la lucha de las mujeres; veamos cómo."
+          }
+        }
+      }
+    },
+    "lucha-por-los-derechos-de-grupos-discriminados": {
+      "order_steps": {
+        "prompt": "Ordena cómo un grupo discriminado lucha por sus derechos",
+        "steps": [
+          "Se juzga a un grupo por su origen o apariencia",
+          "Se le trata peor que a los demás",
+          "El grupo y quienes lo apoyan alzan la voz",
+          "Exigen respeto y los mismos derechos"
+        ],
+        "completion_feedback": "La discriminación **se aprende y se combate**: alzando la voz y con aliados. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la discriminación y la lucha contra ella es cada cosa?",
+            "left_label": "Naruto",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Kurama sellado: una etiqueta injusta",
+                "right": "Prejuicio"
+              },
+              {
+                "left": "Padres que alejan a sus hijos",
+                "right": "Discriminación"
+              },
+              {
+                "left": "Iruka lo acepta como es",
+                "right": "Aliados"
+              },
+              {
+                "left": "Ser juzgado por lo que hace",
+                "right": "Igualdad"
+              }
+            ],
+            "completion_feedback": "Juzgar a alguien por **una etiqueta** es discriminar; la respuesta histórica ha sido **unirse y exigir igualdad**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la discriminación y la lucha contra ella es cada cosa?",
+            "left_label": "Vinícius Jr.",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Insultos por su color de piel",
+                "right": "Racismo"
+              },
+              {
+                "left": "Denunciar y pedir castigo",
+                "right": "Alzar la voz"
+              },
+              {
+                "left": "Carteles de 'No al racismo'",
+                "right": "Unión de la gente"
+              },
+              {
+                "left": "Ser respetado como cualquiera",
+                "right": "Igualdad y dignidad"
+              }
+            ],
+            "completion_feedback": "Juzgar a alguien por **una etiqueta** es discriminar; la respuesta histórica ha sido **unirse y exigir igualdad**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la discriminación y la lucha contra ella es cada cosa?",
+            "left_label": "Idol extranjero",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Burlas por su acento",
+                "right": "Xenofobia"
+              },
+              {
+                "left": "Menos líneas sin razón justa",
+                "right": "Discriminación"
+              },
+              {
+                "left": "Fans que lo defienden en redes",
+                "right": "Aliados"
+              },
+              {
+                "left": "Valorarlo por su talento",
+                "right": "Igualdad"
+              }
+            ],
+            "completion_feedback": "Juzgar a alguien por **una etiqueta** es discriminar; la respuesta histórica ha sido **unirse y exigir igualdad**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la discriminación y la lucha contra ella es cada cosa?",
+            "left_label": "Roblox",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Prohibido entrar a las mejores zonas",
+                "right": "Discriminación"
+              },
+              {
+                "left": "Jugadores que apoyan sin sufrirlo",
+                "right": "Aliados"
+              },
+              {
+                "left": "Firmas al creador del juego",
+                "right": "Lucha por derechos civiles"
+              },
+              {
+                "left": "Mismas oportunidades sin importar avatar",
+                "right": "Igualdad"
+              }
+            ],
+            "completion_feedback": "Juzgar a alguien por **una etiqueta** es discriminar; la respuesta histórica ha sido **unirse y exigir igualdad**."
+          }
+        }
+      }
+    },
+    "discriminacion-y-racismo-como-construcciones-historicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo se construye el racismo y cómo se desmonta",
+        "steps": [
+          "Una sociedad inventa una jerarquía entre grupos",
+          "La usa para justificar un trato desigual",
+          "Se repite por generaciones hasta parecer normal",
+          "Al ver que no es natural, se puede desmontar"
+        ],
+        "completion_feedback": "Lo que se construyó **se puede deshacer**: por eso importa saber que el racismo es un invento. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué idea del racismo como construcción histórica muestra cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Los rangos de la E a la S",
+                "right": "Jerarquía inventada"
+              },
+              {
+                "left": "Despreciar a los de rango E",
+                "right": "Discriminación"
+              },
+              {
+                "left": "Jinwoo, de rango E al más fuerte",
+                "right": "La etiqueta no define el valor"
+              },
+              {
+                "left": "Un sistema que todos aceptaban",
+                "right": "Parece normal, pero no lo es"
+              }
+            ],
+            "completion_feedback": "Nadie nace creyendo que un grupo vale más: **esa idea se inventó y se repitió**. Por eso se puede desmontar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea del racismo como construcción histórica muestra cada cosa?",
+            "left_label": "Prejuicios",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "'Los de ese país no saben defender'",
+                "right": "Estereotipo"
+              },
+              {
+                "left": "Repetido por generaciones",
+                "right": "Construcción histórica"
+              },
+              {
+                "left": "Un crack que rompe el molde",
+                "right": "Los hechos lo desmienten"
+              },
+              {
+                "left": "El talento no depende del país",
+                "right": "Sin base real"
+              }
+            ],
+            "completion_feedback": "Nadie nace creyendo que un grupo vale más: **esa idea se inventó y se repitió**. Por eso se puede desmontar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea del racismo como construcción histórica muestra cada cosa?",
+            "left_label": "K-pop",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "'La piel clara es más bonita'",
+                "right": "Creencia aprendida"
+              },
+              {
+                "left": "Transmitida por generaciones",
+                "right": "Construcción social"
+              },
+              {
+                "left": "Idols que defienden todo tono de piel",
+                "right": "Desaprender el prejuicio"
+              }
+            ],
+            "completion_feedback": "Nadie nace creyendo que un grupo vale más: **esa idea se inventó y se repitió**. Por eso se puede desmontar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea del racismo como construcción histórica muestra cada cosa?",
+            "left_label": "Fortnite",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Skin cara = mejor jugador",
+                "right": "Jerarquía inventada"
+              },
+              {
+                "left": "Burlarse de los 'defaults'",
+                "right": "Discriminación"
+              },
+              {
+                "left": "La skin no cambia tu puntería",
+                "right": "Sin base real"
+              },
+              {
+                "left": "Repetirlo hasta volverlo 'normal'",
+                "right": "Construcción social"
+              }
+            ],
+            "completion_feedback": "Nadie nace creyendo que un grupo vale más: **esa idea se inventó y se repitió**. Por eso se puede desmontar."
+          }
+        }
+      }
+    },
+    "migraciones-y-nuevos-escenarios-de-vida": {
+      "order_steps": {
+        "prompt": "Ordena el camino de una persona que migra",
+        "steps": [
+          "Algo la empuja o la atrae a dejar su lugar",
+          "Sale de su lugar de origen",
+          "Llega a vivir a otro lugar",
+          "Se adapta a otro idioma y cultura"
+        ],
+        "completion_feedback": "Causa, salida, llegada y **adaptación**: toda migración pasa por esas etapas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de una migración es cada cosa?",
+            "left_label": "Spy x Family",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "La guerra entre Westalis y Ostania",
+                "right": "Factor de expulsión"
+              },
+              {
+                "left": "Cruzar la frontera hacia Ostania",
+                "right": "Migración"
+              },
+              {
+                "left": "Una vida nueva desde cero",
+                "right": "Nuevo escenario de vida"
+              },
+              {
+                "left": "Cuidar cada palabra para encajar",
+                "right": "Adaptación"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro para vivir, **empujado o atraído**, y adaptarse al llegar: eso es migrar. Veamos sus causas."
+          },
+          "order_steps": {
+            "prompt": "Ordena el camino de una migración forzada",
+            "steps": [
+              "Estalla una guerra o una persecución",
+              "La persona se ve obligada a huir",
+              "Busca protección en otro país como refugiada",
+              "Se adapta a una cultura nueva"
+            ],
+            "completion_feedback": "No migra por gusto, sino **por necesidad de sobrevivir**: eso es una migración forzada. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de una migración es cada cosa?",
+            "left_label": "Santi Giménez",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Mejores ligas y sueldos en Europa",
+                "right": "Factor de atracción"
+              },
+              {
+                "left": "Santi deja México",
+                "right": "Emigrante"
+              },
+              {
+                "left": "Otro idioma, otro clima, otro estilo",
+                "right": "Nuevo escenario de vida"
+              },
+              {
+                "left": "Acostumbrarse rápido para triunfar",
+                "right": "Adaptación"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro para vivir, **empujado o atraído**, y adaptarse al llegar: eso es migrar. Veamos sus causas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de una migración es cada cosa?",
+            "left_label": "Felix",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "El sueño de ser idol en Corea",
+                "right": "Factor de atracción"
+              },
+              {
+                "left": "Felix llega a vivir a Corea",
+                "right": "Inmigrante"
+              },
+              {
+                "left": "Aprender coreano casi desde cero",
+                "right": "Adaptación"
+              },
+              {
+                "left": "Extrañar su casa y costarle encajar",
+                "right": "Retos de migrar"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro para vivir, **empujado o atraído**, y adaptarse al llegar: eso es migrar. Veamos sus causas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de una migración es cada cosa?",
+            "left_label": "Among Us",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Sabotajes sin fin en el Skeld",
+                "right": "Factor de expulsión"
+              },
+              {
+                "left": "Un mapa más seguro",
+                "right": "Factor de atracción"
+              },
+              {
+                "left": "Mudarse a Polus",
+                "right": "Migración"
+              },
+              {
+                "left": "Aprender salas y tareas nuevas",
+                "right": "Adaptación"
+              }
+            ],
+            "completion_feedback": "Moverse de un lugar a otro para vivir, **empujado o atraído**, y adaptarse al llegar: eso es migrar. Veamos sus causas."
+          }
+        }
+      }
+    },
+    "amor-amistad-y-familias-en-la-historia": {
+      "order_steps": {
+        "prompt": "Ordena cómo se forma una familia elegida",
+        "steps": [
+          "Personas de orígenes distintos se encuentran",
+          "Conviven y comparten experiencias",
+          "Se cuidan y se apoyan",
+          "Forman lazos tan fuertes como los de sangre"
+        ],
+        "completion_feedback": "La convivencia y el cariño **también hacen familia**, no solo el nacimiento. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de lazo muestra cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Sombreros de Paja sin la misma sangre",
+                "right": "Familia elegida"
+              },
+              {
+                "left": "Ir por Nami sin dudarlo",
+                "right": "Lealtad"
+              },
+              {
+                "left": "Un hogar a bordo del barco",
+                "right": "Convivencia"
+              }
+            ],
+            "completion_feedback": "Una familia se puede formar **por sangre o por afecto**, y cada época la ha vivido distinto. Veamos cómo ha cambiado."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de lazo muestra cada cosa?",
+            "left_label": "El vestidor",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Abrazar al que falló el penal",
+                "right": "Amistad: apoyo y confianza"
+              },
+              {
+                "left": "Veteranos que guían a los nuevos",
+                "right": "Cuidarse y cooperar"
+              },
+              {
+                "left": "'El vestidor es una familia'",
+                "right": "Comunidad unida por afecto"
+              }
+            ],
+            "completion_feedback": "Una familia se puede formar **por sangre o por afecto**, y cada época la ha vivido distinto. Veamos cómo ha cambiado."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de lazo muestra cada cosa?",
+            "left_label": "ENHYPEN",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Vivir juntos en el dorm",
+                "right": "Convivencia"
+              },
+              {
+                "left": "Cuidar al que se enferma",
+                "right": "Afecto y cuidado"
+              },
+              {
+                "left": "Sin la misma sangre, son familia",
+                "right": "Familia elegida"
+              }
+            ],
+            "completion_feedback": "Una familia se puede formar **por sangre o por afecto**, y cada época la ha vivido distinto. Veamos cómo ha cambiado."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de lazo muestra cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Historia",
+            "pairs": [
+              {
+                "left": "Paimon, compañera inseparable",
+                "right": "Amistad"
+              },
+              {
+                "left": "Buscar a su hermano perdido",
+                "right": "Lazo de sangre"
+              },
+              {
+                "left": "Nadie es su pariente, y lo cuidan",
+                "right": "Lazo de afecto"
+              },
+              {
+                "left": "Acudir si uno está en peligro",
+                "right": "Apoyo mutuo"
+              }
+            ],
+            "completion_feedback": "Una familia se puede formar **por sangre o por afecto**, y cada época la ha vivido distinto. Veamos cómo ha cambiado."
+          }
+        }
+      }
+    }
+  }
+}
