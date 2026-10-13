@@ -1,0 +1,2128 @@
+{
+  "subject": "fisica-sec",
+  "topics": {
+    "sistemas-de-referencia-y-trayectoria": {
+      "order_steps": {
+        "prompt": "Ordena cómo describes un movimiento",
+        "steps": [
+          "Elige el punto fijo desde donde observas",
+          "Mira cómo cambia la posición respecto a ese punto",
+          "Dibuja el camino que sigue: su trayectoria"
+        ],
+        "completion_feedback": "Sin un **punto fijo** no puedes decir si algo se mueve; con él, ya puedes trazar su **trayectoria**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento es cada cosa?",
+            "left_label": "Visión de Isagi",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La cancha, vista desde las gradas",
+                "right": "Sistema de referencia"
+              },
+              {
+                "left": "Líneas que Isagi imagina para el balón",
+                "right": "Trayectoria"
+              },
+              {
+                "left": "Diagonal para unos, directo para Isagi",
+                "right": "Movimiento relativo"
+              }
+            ],
+            "completion_feedback": "El mismo movimiento se ve distinto según **desde dónde** lo mires: por eso necesitas un **sistema de referencia**. Veamos cómo funciona."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento es cada cosa?",
+            "left_label": "Falta de Yamal",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La curva que dibuja el balón",
+                "right": "Trayectoria"
+              },
+              {
+                "left": "El lugar desde donde lo ves",
+                "right": "Sistema de referencia"
+              },
+              {
+                "left": "Curvo para el fan, recto para el portero",
+                "right": "Movimiento relativo"
+              },
+              {
+                "left": "Líneas de la cancha y la portería",
+                "right": "Puntos fijos para medir"
+              }
+            ],
+            "completion_feedback": "El mismo movimiento se ve distinto según **desde dónde** lo mires: por eso necesitas un **sistema de referencia**. Veamos cómo funciona."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento es cada cosa?",
+            "left_label": "God's Menu",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El escenario visto desde la butaca",
+                "right": "Sistema de referencia"
+              },
+              {
+                "left": "La línea que Felix recorre en el piso",
+                "right": "Trayectoria"
+              },
+              {
+                "left": "Felix se mueve o no, según quién mire",
+                "right": "Movimiento relativo"
+              }
+            ],
+            "completion_feedback": "El mismo movimiento se ve distinto según **desde dónde** lo mires: por eso necesitas un **sistema de referencia**. Veamos cómo funciona."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento es cada cosa?",
+            "left_label": "Spider-Man 2",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La banqueta del peatón",
+                "right": "Sistema de referencia"
+              },
+              {
+                "left": "El arco de Miles en el aire",
+                "right": "Trayectoria"
+              },
+              {
+                "left": "Rápido para el peatón, quieto para Peter",
+                "right": "Movimiento relativo"
+              }
+            ],
+            "completion_feedback": "El mismo movimiento se ve distinto según **desde dónde** lo mires: por eso necesitas un **sistema de referencia**. Veamos cómo funciona."
+          }
+        }
+      }
+    },
+    "velocidad-rapidez-y-aceleracion": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Dash de Jinwoo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Qué tan rápido va, solo el número",
+                "right": "Rapidez"
+              },
+              {
+                "left": "Rápido y directo hacia el monstruo",
+                "right": "Velocidad"
+              },
+              {
+                "left": "De quieto a máxima en un instante",
+                "right": "Aceleración"
+              },
+              {
+                "left": "Frenar en seco al esquivar",
+                "right": "Frenar: también es acelerar"
+              }
+            ],
+            "completion_feedback": "Rapidez es el número, velocidad le suma la **dirección** y aceleración es **cómo cambia** la velocidad. Veamos la diferencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Contragolpe de CR7",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Qué tan rápido corre, sin dirección",
+                "right": "Rapidez"
+              },
+              {
+                "left": "Rápido hacia la portería rival",
+                "right": "Velocidad"
+              },
+              {
+                "left": "Su arranque desde cero",
+                "right": "Aceleración"
+              },
+              {
+                "left": "Frenar en seco ante un defensa",
+                "right": "Frenar: también es acelerar"
+              }
+            ],
+            "completion_feedback": "Rapidez es el número, velocidad le suma la **dirección** y aceleración es **cómo cambia** la velocidad. Veamos la diferencia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Kalgunmu de SVT",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Qué tan rápido cruza Hoshi",
+                "right": "Rapidez"
+              },
+              {
+                "left": "Cruzar rápido hacia el centro",
+                "right": "Velocidad"
+              },
+              {
+                "left": "De lento a rapidísimo en el drop",
+                "right": "Aceleración"
+              },
+              {
+                "left": "Frenar en seco para la pose",
+                "right": "Frenar: también es acelerar"
+              }
+            ],
+            "completion_feedback": "Rapidez es el número, velocidad le suma la **dirección** y aceleración es **cómo cambia** la velocidad. Veamos la diferencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Mario Kart World",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "30 km/h, sin importar hacia dónde",
+                "right": "Rapidez"
+              },
+              {
+                "left": "30 km/h rumbo a la meta",
+                "right": "Velocidad"
+              },
+              {
+                "left": "El jalón del hongo",
+                "right": "Aceleración"
+              },
+              {
+                "left": "Toad: arranca volado, tope bajo",
+                "right": "Buena aceleración, poca velocidad tope"
+              }
+            ],
+            "completion_feedback": "Rapidez es el número, velocidad le suma la **dirección** y aceleración es **cómo cambia** la velocidad. Veamos la diferencia."
+          }
+        }
+      }
+    },
+    "graficas-de-movimiento": {
+      "order_steps": {
+        "prompt": "Ordena cómo haces la gráfica de un recorrido",
+        "steps": [
+          "Anota la distancia en cada instante",
+          "Pon el tiempo abajo y la distancia a un lado",
+          "Marca cada dato como un punto",
+          "Une los puntos y lee la pendiente"
+        ],
+        "completion_feedback": "Primero los **datos**, luego los **ejes** y al final la **línea**, cuya inclinación te dice la rapidez. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo se ve cada momento en la gráfica distancia-tiempo?",
+            "left_label": "Bitácora de Nami",
+            "right_label": "En la gráfica",
+            "pairs": [
+              {
+                "left": "Calma chicha: el Sunny no avanza",
+                "right": "Línea horizontal: en reposo"
+              },
+              {
+                "left": "Viento normal, avanza tranquilo",
+                "right": "Poca pendiente: rapidez baja"
+              },
+              {
+                "left": "Clima-Tact y viento fuerte",
+                "right": "Muy empinada: rapidez alta"
+              },
+              {
+                "left": "Las horas que anota Nami",
+                "right": "Eje horizontal: tiempo"
+              }
+            ],
+            "completion_feedback": "La **pendiente** es la rapidez: plana es quieto y entre más empinada, más rápido. Veamos cómo leer la gráfica."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo se ve cada momento en la gráfica distancia-tiempo?",
+            "left_label": "GPS de Mbappé",
+            "right_label": "En la gráfica",
+            "pairs": [
+              {
+                "left": "Parado en posición adelantada",
+                "right": "Línea horizontal: en reposo"
+              },
+              {
+                "left": "Camina esperando el pase",
+                "right": "Poca pendiente: rapidez baja"
+              },
+              {
+                "left": "Sprint a la espalda de la defensa",
+                "right": "Muy empinada: rapidez alta"
+              },
+              {
+                "left": "Metros que lleva recorridos",
+                "right": "Eje vertical: distancia"
+              }
+            ],
+            "completion_feedback": "La **pendiente** es la rapidez: plana es quieto y entre más empinada, más rápido. Veamos cómo leer la gráfica."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo se ve cada momento en la gráfica distancia-tiempo?",
+            "left_label": "Hanni en Super Shy",
+            "right_label": "En la gráfica",
+            "pairs": [
+              {
+                "left": "Se queda quieta en el coro",
+                "right": "Línea horizontal: en reposo"
+              },
+              {
+                "left": "Camina despacio al centro",
+                "right": "Poca pendiente: rapidez baja"
+              },
+              {
+                "left": "Cruza corriendo en el dance break",
+                "right": "Muy empinada: rapidez alta"
+              },
+              {
+                "left": "Los segundos de la canción",
+                "right": "Eje horizontal: tiempo"
+              }
+            ],
+            "completion_feedback": "La **pendiente** es la rapidez: plana es quieto y entre más empinada, más rápido. Veamos cómo leer la gráfica."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo se ve cada momento en la gráfica distancia-tiempo?",
+            "left_label": "Aether en Teyvat",
+            "right_label": "En la gráfica",
+            "pairs": [
+              {
+                "left": "Se detiene a abrir un cofre",
+                "right": "Línea horizontal: en reposo"
+              },
+              {
+                "left": "Corre normal por la llanura",
+                "right": "Poca pendiente: rapidez baja"
+              },
+              {
+                "left": "Activa el sprint",
+                "right": "Muy empinada: rapidez alta"
+              },
+              {
+                "left": "Qué tan lejos está del inicio",
+                "right": "Eje vertical: distancia"
+              }
+            ],
+            "completion_feedback": "La **pendiente** es la rapidez: plana es quieto y entre más empinada, más rápido. Veamos cómo leer la gráfica."
+          }
+        }
+      }
+    },
+    "movimiento-ondulatorio-ondas-frecuencia-y-amplitud": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué propiedad de la onda es cada cosa?",
+            "left_label": "Present Mic",
+            "right_label": "Propiedad",
+            "pairs": [
+              {
+                "left": "Su alarido súper agudo",
+                "right": "Alta frecuencia: agudo"
+              },
+              {
+                "left": "Su voz grave de locutor",
+                "right": "Baja frecuencia: grave"
+              },
+              {
+                "left": "Un grito a todo lo que da",
+                "right": "Gran amplitud: fuerte"
+              },
+              {
+                "left": "El grito que derriba villanos",
+                "right": "La onda transporta energía"
+              }
+            ],
+            "completion_feedback": "La **frecuencia** decide si suena agudo o grave; la **amplitud**, si suena fuerte o bajito. Veamos cómo funciona una onda."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué propiedad de la onda es cada cosa?",
+            "left_label": "La ola mexicana",
+            "right_label": "Propiedad",
+            "pairs": [
+              {
+                "left": "Cada fan sube y baja en su lugar",
+                "right": "La materia no viaja"
+              },
+              {
+                "left": "El levantón que recorre las gradas",
+                "right": "Lo que viaja es la energía"
+              },
+              {
+                "left": "Todos se paran por completo",
+                "right": "Gran amplitud: fuerte"
+              },
+              {
+                "left": "Repetir la ola muy seguido",
+                "right": "Alta frecuencia"
+              }
+            ],
+            "completion_feedback": "La **frecuencia** decide si suena agudo o grave; la **amplitud**, si suena fuerte o bajito. Veamos cómo funciona una onda."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué propiedad de la onda es cada cosa?",
+            "left_label": "Concierto de TXT",
+            "right_label": "Propiedad",
+            "pairs": [
+              {
+                "left": "El bajo que retumba en el drop",
+                "right": "Baja frecuencia: grave"
+              },
+              {
+                "left": "El ad-lib picudo de Yeonjun",
+                "right": "Alta frecuencia: agudo"
+              },
+              {
+                "left": "Subir el volumen del celular",
+                "right": "Más amplitud, mismo tono"
+              },
+              {
+                "left": "Cuántas ondas pasan por segundo",
+                "right": "Frecuencia, en hertz (Hz)"
+              }
+            ],
+            "completion_feedback": "La **frecuencia** decide si suena agudo o grave; la **amplitud**, si suena fuerte o bajito. Veamos cómo funciona una onda."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué propiedad de la onda es cada cosa?",
+            "left_label": "Audio en Valorant",
+            "right_label": "Propiedad",
+            "pairs": [
+              {
+                "left": "Disparo agudo de la Sheriff",
+                "right": "Alta frecuencia: agudo"
+              },
+              {
+                "left": "Explosión grave de la Spike",
+                "right": "Baja frecuencia: grave"
+              },
+              {
+                "left": "Pasos fuertes: enemigo cerca",
+                "right": "Gran amplitud: fuerte"
+              },
+              {
+                "left": "Pasos bajitos: enemigo lejos",
+                "right": "Poca amplitud: bajito"
+              }
+            ],
+            "completion_feedback": "La **frecuencia** decide si suena agudo o grave; la **amplitud**, si suena fuerte o bajito. Veamos cómo funciona una onda."
+          }
+        }
+      }
+    },
+    "concepto-de-fuerza-y-suma-vectorial": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras la fuerza resultante",
+        "steps": [
+          "Dibuja cada fuerza como una flecha",
+          "Agrupa las fuerzas según su sentido",
+          "Resta el total de un lado menos el del otro",
+          "La resultante apunta hacia el lado mayor"
+        ],
+        "completion_feedback": "Las que van **juntas se suman**, las **opuestas se restan**; si sale cero, hay equilibrio. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de fuerza es cada cosa?",
+            "left_label": "Choque en JJK",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cuánta energía maldita mete Yuji",
+                "right": "Magnitud"
+              },
+              {
+                "left": "Hacia el rival",
+                "right": "Dirección"
+              },
+              {
+                "left": "Mismo empuje, choque trabado",
+                "right": "Resultante cero: equilibrio"
+              },
+              {
+                "left": "Yuji empuja más y gana",
+                "right": "Resultante hacia el más fuerte"
+              }
+            ],
+            "completion_feedback": "Toda fuerza tiene **tamaño y dirección**, y lo que pasa lo decide la **suma de todas**. Veamos cómo se combinan."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de fuerza es cada cosa?",
+            "left_label": "Penal de Lamine",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Qué tan fuerte le pega",
+                "right": "Magnitud"
+              },
+              {
+                "left": "Al palo derecho o a la escuadra",
+                "right": "Dirección"
+              },
+              {
+                "left": "Una flecha con largo y punta",
+                "right": "Vector"
+              },
+              {
+                "left": "Pie, viento y pasto combinados",
+                "right": "Fuerza resultante"
+              }
+            ],
+            "completion_feedback": "Toda fuerza tiene **tamaño y dirección**, y lo que pasa lo decide la **suma de todas**. Veamos cómo se combinan."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de fuerza es cada cosa?",
+            "left_label": "Lift de SVT",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Brazos de Mingyu y Wonwoo",
+                "right": "Fuerzas hacia arriba"
+              },
+              {
+                "left": "El peso de Dino",
+                "right": "Fuerza hacia abajo"
+              },
+              {
+                "left": "Dino flota quieto",
+                "right": "Resultante cero: equilibrio"
+              },
+              {
+                "left": "Sumar arriba y restar abajo",
+                "right": "Suma vectorial"
+              }
+            ],
+            "completion_feedback": "Toda fuerza tiene **tamaño y dirección**, y lo que pasa lo decide la **suma de todas**. Veamos cómo se combinan."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de fuerza es cada cosa?",
+            "left_label": "Duelo de hombros",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Empujes iguales y opuestos",
+                "right": "Resultante cero: equilibrio"
+              },
+              {
+                "left": "Tu compañero empuja contigo",
+                "right": "Fuerzas que se suman"
+              },
+              {
+                "left": "Cada empujón: tamaño y dirección",
+                "right": "Vector"
+              },
+              {
+                "left": "El rival sale despedido",
+                "right": "Resultante hacia tu lado"
+              }
+            ],
+            "completion_feedback": "Toda fuerza tiene **tamaño y dirección**, y lo que pasa lo decide la **suma de todas**. Veamos cómo se combinan."
+          }
+        }
+      }
+    },
+    "leyes-de-newton": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué ley de Newton explica cada cosa?",
+            "left_label": "Gear 5",
+            "right_label": "Ley",
+            "pairs": [
+              {
+                "left": "Empuja la pared y sale disparado",
+                "right": "3ª ley: acción y reacción"
+              },
+              {
+                "left": "Sigue volando hasta chocar",
+                "right": "1ª ley: inercia"
+              },
+              {
+                "left": "Más fuerza, más acelera su puño",
+                "right": "2ª ley: F = m·a"
+              }
+            ],
+            "completion_feedback": "Inercia, **F = m·a** y acción-reacción: las tres leyes explican cada empujón y cada frenón. Veamos cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué ley de Newton explica cada cosa?",
+            "left_label": "Cabezazo de Jude",
+            "right_label": "Ley",
+            "pairs": [
+              {
+                "left": "El balón seguía su camino",
+                "right": "1ª ley: inercia"
+              },
+              {
+                "left": "Cabezazo más fuerte, más acelera",
+                "right": "2ª ley: F = m·a"
+              },
+              {
+                "left": "Jude siente el golpe en la frente",
+                "right": "3ª ley: acción y reacción"
+              }
+            ],
+            "completion_feedback": "Inercia, **F = m·a** y acción-reacción: las tres leyes explican cada empujón y cada frenón. Veamos cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué ley de Newton explica cada cosa?",
+            "left_label": "Frenón de K-drama",
+            "right_label": "Ley",
+            "pairs": [
+              {
+                "left": "Al frenar, tu cuerpo sigue adelante",
+                "right": "Inercia: lo que se mueve sigue"
+              },
+              {
+                "left": "Al arrancar, te pegas al asiento",
+                "right": "Inercia: lo quieto quiere seguir"
+              },
+              {
+                "left": "El cinturón te detiene",
+                "right": "Fuerza que cambia el movimiento"
+              }
+            ],
+            "completion_feedback": "Inercia, **F = m·a** y acción-reacción: las tres leyes explican cada empujón y cada frenón. Veamos cada una."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué ley de Newton explica cada cosa?",
+            "left_label": "Recoil en Roblox",
+            "right_label": "Ley",
+            "pairs": [
+              {
+                "left": "La bala sale y tú retrocedes",
+                "right": "3ª ley: acción y reacción"
+              },
+              {
+                "left": "Quieto si nada te empuja",
+                "right": "1ª ley: inercia"
+              },
+              {
+                "left": "Más fuerza, más aceleración",
+                "right": "2ª ley: F = m·a"
+              }
+            ],
+            "completion_feedback": "Inercia, **F = m·a** y acción-reacción: las tres leyes explican cada empujón y cada frenón. Veamos cada una."
+          }
+        }
+      }
+    },
+    "energia-cinetica-y-potencial": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa con la energía cuando algo cae",
+        "steps": [
+          "Arriba y quieto: toda la energía es potencial",
+          "Mientras cae, la potencial se vuelve cinética",
+          "Abajo, a máxima velocidad: casi toda es cinética"
+        ],
+        "completion_feedback": "La energía no se pierde: la **altura** se va cambiando por **velocidad**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué pasa con la energía en cada momento?",
+            "left_label": "Corte de Tanjiro",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Katana en alto, quieta",
+                "right": "Potencial máxima"
+              },
+              {
+                "left": "Katana bajando rapidísimo",
+                "right": "Potencial → cinética"
+              },
+              {
+                "left": "El impacto, a máxima velocidad",
+                "right": "Cinética máxima"
+              },
+              {
+                "left": "½·m·v²",
+                "right": "Fórmula de la cinética"
+              }
+            ],
+            "completion_feedback": "La altura guarda **energía potencial** y el movimiento es **energía cinética**: una se convierte en la otra. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué pasa con la energía en cada momento?",
+            "left_label": "Globito de Santi",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Punto más alto, casi detenido",
+                "right": "Potencial máxima"
+              },
+              {
+                "left": "Va cayendo y acelera",
+                "right": "Potencial → cinética"
+              },
+              {
+                "left": "Cruza la línea cerca del piso",
+                "right": "Cinética máxima"
+              },
+              {
+                "left": "La energía total del balón",
+                "right": "Se conserva"
+              }
+            ],
+            "completion_feedback": "La altura guarda **energía potencial** y el movimiento es **energía cinética**: una se convierte en la otra. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué pasa con la energía en cada momento?",
+            "left_label": "Salto en Bite Me",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Lo más alto del salto",
+                "right": "Potencial máxima"
+              },
+              {
+                "left": "Cayendo cada vez más rápido",
+                "right": "Potencial → cinética"
+              },
+              {
+                "left": "Justo al tocar el piso",
+                "right": "Cinética máxima"
+              },
+              {
+                "left": "No se pierde, cambia de forma",
+                "right": "Se conserva"
+              }
+            ],
+            "completion_feedback": "La altura guarda **energía potencial** y el movimiento es **energía cinética**: una se convierte en la otra. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué pasa con la energía en cada momento?",
+            "left_label": "La resortera",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Elástico jalado y quieto",
+                "right": "Potencial: energía almacenada"
+              },
+              {
+                "left": "En el instante de soltar",
+                "right": "Potencial → cinética"
+              },
+              {
+                "left": "El proyectil ya volando",
+                "right": "Energía cinética"
+              },
+              {
+                "left": "Depende de masa y velocidad",
+                "right": "Ec = ½·m·v²"
+              }
+            ],
+            "completion_feedback": "La altura guarda **energía potencial** y el movimiento es **energía cinética**: una se convierte en la otra. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena qué pasa con la energía de la resortera",
+            "steps": [
+              "Jalas el elástico: guardas energía potencial",
+              "Lo sueltas: la energía guardada se libera",
+              "El proyectil vuela: ahora es energía cinética"
+            ],
+            "completion_feedback": "Lo que guardaste al **tensar** el elástico es lo que sale como **movimiento**. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "conservacion-de-la-energia": {
+      "order_steps": {
+        "prompt": "Ordena cómo cambia la energía en un columpio, de un lado al otro",
+        "steps": [
+          "Arriba de un lado: máxima potencial",
+          "Bajando: la potencial se vuelve cinética",
+          "Abajo: máxima cinética",
+          "Subiendo del otro lado: vuelve a ser potencial"
+        ],
+        "completion_feedback": "Va y viene entre **potencial** y **cinética**, pero la **suma** se mantiene. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada momento sobre la energía?",
+            "left_label": "Azul de Gojo",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "La esfera quieta y concentrada",
+                "right": "Energía acumulada"
+              },
+              {
+                "left": "La ráfaga que arrasa",
+                "right": "Energía cinética"
+              },
+              {
+                "left": "Gojo no fabrica energía nueva",
+                "right": "No se crea ni se destruye"
+              },
+              {
+                "left": "La misma antes y después",
+                "right": "Energía total constante"
+              }
+            ],
+            "completion_feedback": "La energía **no se crea ni se destruye**: solo cambia de potencial a cinética y de regreso. Veamos el principio completo."
+          },
+          "order_steps": {
+            "prompt": "Ordena qué pasa con la energía en la técnica de Gojo",
+            "steps": [
+              "La energía se acumula en la esfera quieta",
+              "Gojo la libera de golpe",
+              "Se convierte en una ráfaga en movimiento",
+              "La energía total sigue siendo la misma"
+            ],
+            "completion_feedback": "Gojo no **crea** energía: solo **transforma** la que acumuló. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué muestra cada momento sobre la energía?",
+            "left_label": "Despeje de portero",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Sale del pasto a toda velocidad",
+                "right": "Cinética máxima"
+              },
+              {
+                "left": "Arriba, casi flotando",
+                "right": "Potencial máxima"
+              },
+              {
+                "left": "Cae y gana velocidad",
+                "right": "Potencial → cinética"
+              },
+              {
+                "left": "Potencial + cinética",
+                "right": "Energía mecánica total"
+              }
+            ],
+            "completion_feedback": "La energía **no se crea ni se destruye**: solo cambia de potencial a cinética y de regreso. Veamos el principio completo."
+          },
+          "order_steps": {
+            "prompt": "Ordena qué pasa con la energía del despeje",
+            "steps": [
+              "Sale del pasto: máxima cinética",
+              "Sube: la cinética se vuelve potencial",
+              "Arriba: máxima potencial",
+              "Cae: vuelve a ser cinética"
+            ],
+            "completion_feedback": "Sube cambiando **velocidad por altura** y baja haciendo lo contrario; la suma no cambia. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué muestra cada momento sobre la energía?",
+            "left_label": "Micro de Karina",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Arriba de un lado, quieto",
+                "right": "Potencial máxima"
+              },
+              {
+                "left": "En el punto más bajo",
+                "right": "Cinética máxima"
+              },
+              {
+                "left": "Sube casi igual del otro lado",
+                "right": "La energía total se conserva"
+              },
+              {
+                "left": "Lo que lo frena un poquito",
+                "right": "Fricción del aire"
+              }
+            ],
+            "completion_feedback": "La energía **no se crea ni se destruye**: solo cambia de potencial a cinética y de regreso. Veamos el principio completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada momento sobre la energía?",
+            "left_label": "Carrito de Link",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "En lo alto de la isla",
+                "right": "Potencial máxima"
+              },
+              {
+                "left": "Al fondo de la rampa",
+                "right": "Cinética máxima"
+              },
+              {
+                "left": "Sube casi tan alto como empezó",
+                "right": "La energía total se conserva"
+              },
+              {
+                "left": "Lo que no lo deja subir igual",
+                "right": "Fricción"
+              }
+            ],
+            "completion_feedback": "La energía **no se crea ni se destruye**: solo cambia de potencial a cinética y de regreso. Veamos el principio completo."
+          }
+        }
+      }
+    },
+    "modelo-cinetico-corpuscular-de-la-materia": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa con las partículas al calentar hielo hasta volverlo vapor",
+        "steps": [
+          "Muy juntas, solo vibran: sólido",
+          "Se mueven más y se deslizan: líquido",
+          "Se separan y van rapidísimo: gas"
+        ],
+        "completion_feedback": "A más **temperatura**, más **movimiento**: las partículas se separan cada vez más. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué estado de la materia representa cada momento?",
+            "left_label": "Ninjas de Konoha",
+            "right_label": "Estado",
+            "pairs": [
+              {
+                "left": "Formación cerrada, hombro con hombro",
+                "right": "Sólido: juntas y solo vibran"
+              },
+              {
+                "left": "Patrulla saltando por los techos",
+                "right": "Líquido: se deslizan"
+              },
+              {
+                "left": "Dispersos por todo el bosque",
+                "right": "Gas: separadas y rapidísimo"
+              },
+              {
+                "left": "Siempre son los mismos ninjas",
+                "right": "Mismas partículas, otro estado"
+              }
+            ],
+            "completion_feedback": "Sólido, líquido y gas tienen las **mismas partículas**: solo cambia qué tan **juntas** están y qué tanto **se mueven**. Veamos el modelo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué estado de la materia representa cada momento?",
+            "left_label": "Once jugadores",
+            "right_label": "Estado",
+            "pairs": [
+              {
+                "left": "La barrera, apretadísima",
+                "right": "Sólido: juntas y solo vibran"
+              },
+              {
+                "left": "Moviéndose en el medio campo",
+                "right": "Líquido: se deslizan"
+              },
+              {
+                "left": "Contragolpe, cada quien por su lado",
+                "right": "Gas: separadas y rapidísimo"
+              },
+              {
+                "left": "Son los mismos once",
+                "right": "Mismas partículas, otro estado"
+              }
+            ],
+            "completion_feedback": "Sólido, líquido y gas tienen las **mismas partículas**: solo cambia qué tan **juntas** están y qué tanto **se mueven**. Veamos el modelo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué estado de la materia representa cada momento?",
+            "left_label": "Concierto de IVE",
+            "right_label": "Estado",
+            "pairs": [
+              {
+                "left": "El pit, todos pegados",
+                "right": "Sólido: juntas y solo vibran"
+              },
+              {
+                "left": "Gente yendo y viniendo en gradas",
+                "right": "Líquido: se deslizan"
+              },
+              {
+                "left": "La salida, dispersos por la ciudad",
+                "right": "Gas: separadas y rapidísimo"
+              },
+              {
+                "left": "Es la misma gente siempre",
+                "right": "Mismas partículas, otro estado"
+              }
+            ],
+            "completion_feedback": "Sólido, líquido y gas tienen las **mismas partículas**: solo cambia qué tan **juntas** están y qué tanto **se mueven**. Veamos el modelo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué estado de la materia representa cada momento?",
+            "left_label": "Aldeanos",
+            "right_label": "Estado",
+            "pairs": [
+              {
+                "left": "Encerrados en una casita",
+                "right": "Sólido: juntas y solo vibran"
+              },
+              {
+                "left": "Caminando en un patio cercado",
+                "right": "Líquido: se deslizan"
+              },
+              {
+                "left": "Sueltos en una llanura enorme",
+                "right": "Gas: separadas y rapidísimo"
+              },
+              {
+                "left": "Son los mismos aldeanos",
+                "right": "Mismas partículas, otro estado"
+              }
+            ],
+            "completion_feedback": "Sólido, líquido y gas tienen las **mismas partículas**: solo cambia qué tan **juntas** están y qué tanto **se mueven**. Veamos el modelo."
+          }
+        }
+      }
+    },
+    "estados-de-agregacion-y-cambios-de-estado": {
+      "order_steps": {
+        "prompt": "Ordena el viaje del agua de hielo a vapor",
+        "steps": [
+          "Empiezas con hielo: estado sólido",
+          "Le das calor y se funde: agua líquida",
+          "Sigues calentando y el agua hierve",
+          "Se vuelve vapor: estado gaseoso"
+        ],
+        "completion_feedback": "Cada vez que **agregas calor**, el agua sube un estado: sólido, líquido y gas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué cambio de estado ocurre en cada momento?",
+            "left_label": "Fogata de Tanjiro",
+            "right_label": "Cambio",
+            "pairs": [
+              {
+                "left": "Derrite el hielo en la olla",
+                "right": "Fusión"
+              },
+              {
+                "left": "El agua hierve y sale vapor",
+                "right": "Evaporación"
+              },
+              {
+                "left": "El vapor forma gotitas en el frío",
+                "right": "Condensación"
+              },
+              {
+                "left": "El frío de la montaña congela el agua",
+                "right": "Solidificación"
+              }
+            ],
+            "completion_feedback": "Agregar calor **funde** y **evapora**; quitarlo **condensa** y **solidifica**. La sustancia es la misma. Veamos cada cambio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué cambio de estado ocurre en cada momento?",
+            "left_label": "Hielo de Lamine",
+            "right_label": "Cambio",
+            "pairs": [
+              {
+                "left": "El hielo de la bolsa se derrite",
+                "right": "Fusión"
+              },
+              {
+                "left": "El agua vuelve al congelador",
+                "right": "Solidificación"
+              },
+              {
+                "left": "El agua se pone a hervir",
+                "right": "Evaporación"
+              },
+              {
+                "left": "El vapor se enfría y gotea",
+                "right": "Condensación"
+              }
+            ],
+            "completion_feedback": "Agregar calor **funde** y **evapora**; quitarlo **condensa** y **solidifica**. La sustancia es la misma. Veamos cada cambio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué cambio de estado ocurre en cada momento?",
+            "left_label": "El bingsu",
+            "right_label": "Cambio",
+            "pairs": [
+              {
+                "left": "El bingsu se derrite en el tazón",
+                "right": "Fusión"
+              },
+              {
+                "left": "El tazón vuelve al congelador",
+                "right": "Solidificación"
+              },
+              {
+                "left": "El agua se pone a hervir",
+                "right": "Evaporación"
+              },
+              {
+                "left": "El vapor pierde calor y gotea",
+                "right": "Condensación"
+              }
+            ],
+            "completion_feedback": "Agregar calor **funde** y **evapora**; quitarlo **condensa** y **solidifica**. La sustancia es la misma. Veamos cada cambio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué cambio de estado ocurre en cada momento?",
+            "left_label": "Cryo y Pyro",
+            "right_label": "Cambio",
+            "pairs": [
+              {
+                "left": "Ganyu congela el charco",
+                "right": "Solidificación"
+              },
+              {
+                "left": "Diluc derrite el hielo",
+                "right": "Fusión"
+              },
+              {
+                "left": "Diluc hierve el charco",
+                "right": "Evaporación"
+              },
+              {
+                "left": "El vapor se enfría en gotas",
+                "right": "Condensación"
+              }
+            ],
+            "completion_feedback": "Agregar calor **funde** y **evapora**; quitarlo **condensa** y **solidifica**. La sustancia es la misma. Veamos cada cambio."
+          }
+        }
+      }
+    },
+    "temperatura-calor-y-presion": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa al juntar algo caliente con algo frío",
+        "steps": [
+          "El calor sale de lo que está más caliente",
+          "Pasa hacia lo que está más frío",
+          "Lo caliente se enfría y lo frío se calienta",
+          "Quedan a la misma temperatura: equilibrio"
+        ],
+        "completion_feedback": "El calor siempre viaja **de lo caliente a lo frío** hasta que se emparejan. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Todoroki",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Qué tan ardiente está su llama",
+                "right": "Temperatura"
+              },
+              {
+                "left": "Energía que pasa de la llama al hielo",
+                "right": "Calor"
+              },
+              {
+                "left": "Del fuego al hielo, nunca al revés",
+                "right": "De lo caliente a lo frío"
+              },
+              {
+                "left": "Llama y hielo a la misma temperatura",
+                "right": "Equilibrio térmico"
+              }
+            ],
+            "completion_feedback": "La **temperatura** es el nivel; el **calor** es la energía que viaja de lo caliente a lo frío. Veamos la diferencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Balón al sol",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El sol calienta el aire de adentro",
+                "right": "Calor: energía transferida"
+              },
+              {
+                "left": "Las partículas van más rápido",
+                "right": "Sube la temperatura"
+              },
+              {
+                "left": "Golpean más fuerte las paredes",
+                "right": "Sube la presión"
+              },
+              {
+                "left": "Amanece blandito tras una noche fría",
+                "right": "Menos temperatura, menos presión"
+              }
+            ],
+            "completion_feedback": "La **temperatura** es el nivel; el **calor** es la energía que viaja de lo caliente a lo frío. Veamos la diferencia."
+          },
+          "order_steps": {
+            "prompt": "Ordena por qué el balón al sol se pone duro",
+            "steps": [
+              "El sol le transfiere calor al balón",
+              "El aire de adentro sube de temperatura",
+              "Sus partículas chocan más fuerte con las paredes",
+              "Sube la presión y el balón se endurece"
+            ],
+            "completion_feedback": "**Calor** → más **temperatura** → más **presión**: así se encadenan en un gas encerrado. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Café en Seúl",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Qué tan caliente está el café",
+                "right": "Temperatura"
+              },
+              {
+                "left": "Energía que pasa a sus manos",
+                "right": "Calor"
+              },
+              {
+                "left": "Del café a las manos, no al revés",
+                "right": "De lo caliente a lo frío"
+              },
+              {
+                "left": "Café tibio y manos tibias",
+                "right": "Equilibrio térmico"
+              }
+            ],
+            "completion_feedback": "La **temperatura** es el nivel; el **calor** es la energía que viaja de lo caliente a lo frío. Veamos la diferencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Zelda: BotW",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La barra azul o roja de Link",
+                "right": "Temperatura: un nivel"
+              },
+              {
+                "left": "La fogata calienta a Link",
+                "right": "Calor: energía que fluye"
+              },
+              {
+                "left": "Se mide en grados °C",
+                "right": "Unidad de temperatura"
+              },
+              {
+                "left": "Se mide en joules",
+                "right": "Unidad del calor"
+              }
+            ],
+            "completion_feedback": "La **temperatura** es el nivel; el **calor** es la energía que viaja de lo caliente a lo frío. Veamos la diferencia."
+          }
+        }
+      }
+    },
+    "principio-de-pascal-y-de-arquimedes": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides si algo flota",
+        "steps": [
+          "Mira cuánta agua desaloja el objeto",
+          "Ese peso de agua es el empuje hacia arriba",
+          "Compara el empuje con el peso del objeto",
+          "Si el empuje gana, flota; si no, se hunde"
+        ],
+        "completion_feedback": "No importa solo qué tan pesado es: importa **cuánta agua desaloja**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué principio explica cada cosa?",
+            "left_label": "Sunny vs Luffy",
+            "right_label": "Principio",
+            "pairs": [
+              {
+                "left": "El Thousand Sunny, hueco y enorme",
+                "right": "Empuje mayor que su peso: flota"
+              },
+              {
+                "left": "Luffy sin fuerzas en el mar",
+                "right": "Empuje menor que su peso: se hunde"
+              },
+              {
+                "left": "El agua que el barco hace a un lado",
+                "right": "Fluido desalojado"
+              },
+              {
+                "left": "Prensa que reparte la presión",
+                "right": "Principio de Pascal"
+              }
+            ],
+            "completion_feedback": "El agua empuja hacia arriba con el **peso del agua desalojada**: si ese empuje vence al peso, flota. Veamos ambos principios."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué principio explica cada cosa?",
+            "left_label": "Balón en alberca",
+            "right_label": "Principio",
+            "pairs": [
+              {
+                "left": "El balón sale disparado arriba",
+                "right": "Empuje mayor que su peso: flota"
+              },
+              {
+                "left": "El silbato metálico",
+                "right": "Empuje menor que su peso: se hunde"
+              },
+              {
+                "left": "Lo que regresa el balón arriba",
+                "right": "Empuje del fluido hacia arriba"
+              },
+              {
+                "left": "Gato hidráulico que sube un auto",
+                "right": "Principio de Pascal"
+              }
+            ],
+            "completion_feedback": "El agua empuja hacia arriba con el **peso del agua desalojada**: si ese empuje vence al peso, flota. Veamos ambos principios."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué principio explica cada cosa?",
+            "left_label": "Paseo a la playa",
+            "right_label": "Principio",
+            "pairs": [
+              {
+                "left": "Ella con su chaleco salvavidas",
+                "right": "Empuje mayor que su peso: flota"
+              },
+              {
+                "left": "El celular que cae al agua",
+                "right": "Empuje menor que su peso: se hunde"
+              },
+              {
+                "left": "Lo que la mantiene arriba",
+                "right": "Empuje del fluido hacia arriba"
+              },
+              {
+                "left": "Frenos hidráulicos",
+                "right": "Principio de Pascal"
+              }
+            ],
+            "completion_feedback": "El agua empuja hacia arriba con el **peso del agua desalojada**: si ese empuje vence al peso, flota. Veamos ambos principios."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué principio explica cada cosa?",
+            "left_label": "Física de fluidos",
+            "right_label": "Principio",
+            "pairs": [
+              {
+                "left": "La balsa de madera",
+                "right": "Empuje mayor que su peso: flota"
+              },
+              {
+                "left": "Lo que sostiene la balsa",
+                "right": "Empuje del fluido hacia arriba"
+              },
+              {
+                "left": "Presión que viaja por un líquido",
+                "right": "Principio de Pascal"
+              }
+            ],
+            "completion_feedback": "El agua empuja hacia arriba con el **peso del agua desalojada**: si ese empuje vence al peso, flota. Veamos ambos principios."
+          }
+        }
+      }
+    },
+    "electricidad-y-magnetismo-cargas-corriente-y-voltaje": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa al encender un aparato",
+        "steps": [
+          "La fuente da el empuje: voltaje",
+          "Ese empuje mueve las cargas: corriente",
+          "La corriente recorre el circuito hasta el foco",
+          "El foco se enciende"
+        ],
+        "completion_feedback": "Primero el **empuje**, luego el **flujo**: sin voltaje, la corriente nunca arranca. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto eléctrico es cada cosa?",
+            "left_label": "Chidori",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El empuje con que lanza su chakra",
+                "right": "Voltaje (volts)"
+              },
+              {
+                "left": "Electricidad que recorre su brazo",
+                "right": "Corriente (amperes)"
+              },
+              {
+                "left": "Positiva o negativa",
+                "right": "Carga eléctrica"
+              },
+              {
+                "left": "Iguales se repelen, distintas se atraen",
+                "right": "Regla de las cargas"
+              }
+            ],
+            "completion_feedback": "El **voltaje** empuja, la **corriente** es el flujo de **cargas**: sin empuje no hay flujo. Veamos cada concepto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto eléctrico es cada cosa?",
+            "left_label": "Luces del estadio",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El empuje de la subestación",
+                "right": "Voltaje (volts)"
+              },
+              {
+                "left": "Cargas fluyendo por los cables",
+                "right": "Corriente (amperes)"
+              },
+              {
+                "left": "Falla el empuje y todo se apaga",
+                "right": "Sin voltaje no hay corriente"
+              },
+              {
+                "left": "Positiva o negativa",
+                "right": "Carga eléctrica"
+              }
+            ],
+            "completion_feedback": "El **voltaje** empuja, la **corriente** es el flujo de **cargas**: sin empuje no hay flujo. Veamos cada concepto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto eléctrico es cada cosa?",
+            "left_label": "Lightstick de SVT",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La batería que empuja",
+                "right": "Voltaje (volts)"
+              },
+              {
+                "left": "Lo que circula hasta el LED",
+                "right": "Corriente (amperes)"
+              },
+              {
+                "left": "Batería casi muerta: luz tenue",
+                "right": "Menos voltaje, menos brillo"
+              },
+              {
+                "left": "Positiva o negativa",
+                "right": "Carga eléctrica"
+              }
+            ],
+            "completion_feedback": "El **voltaje** empuja, la **corriente** es el flujo de **cargas**: sin empuje no hay flujo. Veamos cada concepto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto eléctrico es cada cosa?",
+            "left_label": "Puerta en Roblox",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El generador potente",
+                "right": "Voltaje (volts)"
+              },
+              {
+                "left": "Jugadores que pasan por segundo",
+                "right": "Corriente (amperes)"
+              },
+              {
+                "left": "Cada jugador de la fila",
+                "right": "Carga eléctrica"
+              },
+              {
+                "left": "Generador débil: no abre",
+                "right": "Sin voltaje no hay corriente"
+              }
+            ],
+            "completion_feedback": "El **voltaje** empuja, la **corriente** es el flujo de **cargas**: sin empuje no hay flujo. Veamos cada concepto."
+          }
+        }
+      }
+    },
+    "induccion-electromagnetica": {
+      "order_steps": {
+        "prompt": "Ordena cómo un generador produce electricidad",
+        "steps": [
+          "Algo hace girar la bobina",
+          "La bobina se mueve entre imanes",
+          "El campo magnético sobre ella cambia",
+          "Se induce una corriente eléctrica"
+        ],
+        "completion_feedback": "El **movimiento** hace que el campo **cambie**, y ese cambio **induce** la corriente. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la inducción es cada cosa?",
+            "left_label": "Katana de Zenitsu",
+            "right_label": "Inducción",
+            "pairs": [
+              {
+                "left": "La katana gira entre imanes",
+                "right": "Movimiento en un campo magnético"
+              },
+              {
+                "left": "El campo cambia respecto a la hoja",
+                "right": "Campo magnético que cambia"
+              },
+              {
+                "left": "Aparece electricidad en el metal",
+                "right": "Corriente inducida"
+              },
+              {
+                "left": "Zenitsu se detiene por completo",
+                "right": "Quieto: no hay corriente"
+              }
+            ],
+            "completion_feedback": "Si el **campo magnético cambia** junto a un conductor, aparece **corriente**: así funcionan los generadores. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo la katana de Zenitsu generaría electricidad",
+            "steps": [
+              "Zenitsu hace girar la katana",
+              "La hoja corta las líneas del campo magnético",
+              "El campo cambia respecto a la hoja",
+              "Se induce corriente en el metal"
+            ],
+            "completion_feedback": "Sin **giro** no hay **cambio** de campo, y sin cambio no hay corriente. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la inducción es cada cosa?",
+            "left_label": "Planta del estadio",
+            "right_label": "Inducción",
+            "pairs": [
+              {
+                "left": "La turbina hace girar la bobina",
+                "right": "Movimiento en un campo magnético"
+              },
+              {
+                "left": "El campo sobre la bobina varía",
+                "right": "Campo magnético que cambia"
+              },
+              {
+                "left": "Luz de respaldo para el estadio",
+                "right": "Corriente inducida"
+              },
+              {
+                "left": "El generador se detiene",
+                "right": "Quieto: no hay corriente"
+              }
+            ],
+            "completion_feedback": "Si el **campo magnético cambia** junto a un conductor, aparece **corriente**: así funcionan los generadores. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la inducción es cada cosa?",
+            "left_label": "Micro de Karina",
+            "right_label": "Inducción",
+            "pairs": [
+              {
+                "left": "Su voz hace vibrar la bobina",
+                "right": "Movimiento en un campo magnético"
+              },
+              {
+                "left": "El campo sobre la bobina varía",
+                "right": "Campo magnético que cambia"
+              },
+              {
+                "left": "Señal que copia su voz",
+                "right": "Corriente inducida"
+              },
+              {
+                "left": "Bobina e imán quietos",
+                "right": "Quieto: no hay corriente"
+              }
+            ],
+            "completion_feedback": "Si el **campo magnético cambia** junto a un conductor, aparece **corriente**: así funcionan los generadores. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo el micrófono convierte la voz en electricidad",
+            "steps": [
+              "Karina canta y su voz vibra la membrana",
+              "La membrana mueve la bobina frente al imán",
+              "El campo sobre la bobina cambia",
+              "Se induce una corriente que copia su voz"
+            ],
+            "completion_feedback": "**Sonido** → **movimiento** → **campo que cambia** → **corriente**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la inducción es cada cosa?",
+            "left_label": "Base de carga",
+            "right_label": "Inducción",
+            "pairs": [
+              {
+                "left": "La bobina de la base",
+                "right": "Crea un campo que cambia"
+              },
+              {
+                "left": "La bobina del control",
+                "right": "Siente ese campo"
+              },
+              {
+                "left": "La pila se recarga sin cable",
+                "right": "Corriente inducida"
+              },
+              {
+                "left": "Quien descubrió el fenómeno",
+                "right": "Michael Faraday"
+              }
+            ],
+            "completion_feedback": "Si el **campo magnético cambia** junto a un conductor, aparece **corriente**: así funcionan los generadores. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo la base carga el control sin cables",
+            "steps": [
+              "La base hace pasar corriente por su bobina",
+              "Esa bobina crea un campo magnético cambiante",
+              "La bobina del control siente ese campo",
+              "Se induce corriente y la pila se recarga"
+            ],
+            "completion_feedback": "La energía **salta** por el magnetismo: un campo que **cambia** induce corriente en la otra bobina. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "ley-de-ohm-y-circuitos-electricos": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la corriente si V = 12 V y R = 4 Ω",
+        "steps": [
+          "Escribe la Ley de Ohm: V = I × R",
+          "Despeja la corriente: I = V ÷ R",
+          "Sustituye: I = 12 V ÷ 4 Ω",
+          "Resultado: I = 3 A"
+        ],
+        "completion_feedback": "Primero la **fórmula**, luego **despejas** lo que buscas y al final **sustituyes**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la Ley de Ohm es cada cosa?",
+            "left_label": "Energía de Megumi",
+            "right_label": "Ley de Ohm",
+            "pairs": [
+              {
+                "left": "El empuje de su poder",
+                "right": "Voltaje (V)"
+              },
+              {
+                "left": "Energía que llega a su mano",
+                "right": "Corriente (I)"
+              },
+              {
+                "left": "Canales bloqueados",
+                "right": "Resistencia (R)"
+              },
+              {
+                "left": "Más bloqueo, menos energía llega",
+                "right": "Más resistencia, menos corriente"
+              }
+            ],
+            "completion_feedback": "**V = I × R**: más empuje, más flujo; más estorbo, menos flujo. Veamos cómo se usa la fórmula."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la Ley de Ohm es cada cosa?",
+            "left_label": "La manguera",
+            "right_label": "Ley de Ohm",
+            "pairs": [
+              {
+                "left": "La presión de la llave",
+                "right": "Voltaje (V)"
+              },
+              {
+                "left": "El agua que sale",
+                "right": "Corriente (I)"
+              },
+              {
+                "left": "El nudo en la manguera",
+                "right": "Resistencia (R)"
+              },
+              {
+                "left": "Abrir más la llave",
+                "right": "Más voltaje, más corriente"
+              }
+            ],
+            "completion_feedback": "**V = I × R**: más empuje, más flujo; más estorbo, menos flujo. Veamos cómo se usa la fórmula."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la Ley de Ohm es cada cosa?",
+            "left_label": "Estudio de NJ",
+            "right_label": "Ley de Ohm",
+            "pairs": [
+              {
+                "left": "El empuje del enchufe",
+                "right": "Voltaje (V)"
+              },
+              {
+                "left": "Electricidad que llega a las luces",
+                "right": "Corriente (I)"
+              },
+              {
+                "left": "Cable viejo o con mal contacto",
+                "right": "Resistencia (R)"
+              },
+              {
+                "left": "Luces tenues por un cable malo",
+                "right": "Más resistencia, menos corriente"
+              }
+            ],
+            "completion_feedback": "**V = I × R**: más empuje, más flujo; más estorbo, menos flujo. Veamos cómo se usa la fórmula."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la Ley de Ohm es cada cosa?",
+            "left_label": "Pilar de Sumeru",
+            "right_label": "Ley de Ohm",
+            "pairs": [
+              {
+                "left": "El pilar de poder",
+                "right": "Voltaje (V)"
+              },
+              {
+                "left": "Energía que llega a la puerta",
+                "right": "Corriente (I)"
+              },
+              {
+                "left": "Cristales que tapan el canal",
+                "right": "Resistencia (R)"
+              },
+              {
+                "left": "Un pilar más potente",
+                "right": "Más voltaje, más corriente"
+              }
+            ],
+            "completion_feedback": "**V = I × R**: más empuje, más flujo; más estorbo, menos flujo. Veamos cómo se usa la fórmula."
+          }
+        }
+      }
+    },
+    "espectro-electromagnetico-luz-y-ondas": {
+      "order_steps": {
+        "prompt": "Ordena estas ondas de menor a mayor frecuencia",
+        "steps": [
+          "Ondas de radio",
+          "Infrarrojo",
+          "Luz visible",
+          "Rayos X",
+          "Rayos gamma"
+        ],
+        "completion_feedback": "A mayor **frecuencia**, mayor **energía**: por eso los rayos X y gamma son los más peligrosos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de onda electromagnética es cada cosa?",
+            "left_label": "Luz en MHA",
+            "right_label": "Tipo de onda",
+            "pairs": [
+              {
+                "left": "El láser de Aoyama",
+                "right": "Luz visible"
+              },
+              {
+                "left": "El calor de un cuerpo escondido",
+                "right": "Infrarrojo"
+              },
+              {
+                "left": "Los radios de los héroes",
+                "right": "Ondas de radio"
+              },
+              {
+                "left": "La radiografía en el hospital de UA",
+                "right": "Rayos X"
+              }
+            ],
+            "completion_feedback": "Todas son la misma familia de ondas; cambia su **frecuencia**, y la **luz visible** es solo una franja pequeña. Veamos el espectro."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de onda electromagnética es cada cosa?",
+            "left_label": "La transmisión",
+            "right_label": "Tipo de onda",
+            "pairs": [
+              {
+                "left": "La imagen en tu pantalla",
+                "right": "Luz visible"
+              },
+              {
+                "left": "La señal de la transmisión",
+                "right": "Ondas de radio"
+              },
+              {
+                "left": "El enlace con los satélites",
+                "right": "Microondas"
+              },
+              {
+                "left": "La radiografía de una fractura",
+                "right": "Rayos X"
+              }
+            ],
+            "completion_feedback": "Todas son la misma familia de ondas; cambia su **frecuencia**, y la **luz visible** es solo una franja pequeña. Veamos el espectro."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de onda electromagnética es cada cosa?",
+            "left_label": "Show de SKZ",
+            "right_label": "Tipo de onda",
+            "pairs": [
+              {
+                "left": "Los focos de colores",
+                "right": "Luz visible"
+              },
+              {
+                "left": "Luz negra que hace brillar lo blanco",
+                "right": "Ultravioleta"
+              },
+              {
+                "left": "El calor de luces y cuerpos",
+                "right": "Infrarrojo"
+              },
+              {
+                "left": "Los videos que suben los fans",
+                "right": "Ondas de radio"
+              }
+            ],
+            "completion_feedback": "Todas son la misma familia de ondas; cambia su **frecuencia**, y la **luz visible** es solo una franja pequeña. Veamos el espectro."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de onda electromagnética es cada cosa?",
+            "left_label": "Visión especial",
+            "right_label": "Tipo de onda",
+            "pairs": [
+              {
+                "left": "Los colores del juego en pantalla",
+                "right": "Luz visible"
+              },
+              {
+                "left": "Cámara térmica que ve el calor",
+                "right": "Infrarrojo"
+              },
+              {
+                "left": "El WiFi y los datos del celular",
+                "right": "Ondas de radio"
+              },
+              {
+                "left": "A mayor frecuencia…",
+                "right": "…mayor energía"
+              }
+            ],
+            "completion_feedback": "Todas son la misma familia de ondas; cambia su **frecuencia**, y la **luz visible** es solo una franja pequeña. Veamos el espectro."
+          }
+        }
+      }
+    },
+    "movimiento-circular-y-parabolico": {
+      "order_steps": {
+        "prompt": "Ordena el vuelo de un objeto lanzado en diagonal",
+        "steps": [
+          "Sale lanzado en diagonal hacia arriba",
+          "Sube mientras la gravedad lo frena",
+          "Llega a su punto más alto",
+          "Baja acelerando hasta el suelo"
+        ],
+        "completion_feedback": "La **gravedad** frena la subida y acelera la bajada: así se dibuja la **parábola**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento curvo es cada cosa?",
+            "left_label": "Rasengan y kunai",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El chakra girando en el Rasengan",
+                "right": "Movimiento circular"
+              },
+              {
+                "left": "El kunai lanzado al enemigo",
+                "right": "Movimiento parabólico"
+              },
+              {
+                "left": "Lo que tarda el chakra en dar una vuelta",
+                "right": "Periodo"
+              },
+              {
+                "left": "Lo que hace bajar al kunai",
+                "right": "Gravedad"
+              }
+            ],
+            "completion_feedback": "Girar en círculo es una trayectoria **cerrada**; un lanzamiento en diagonal dibuja una **parábola** por la gravedad. Veamos ambos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento curvo es cada cosa?",
+            "left_label": "Tiro libre de CR7",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El balón por encima de la barrera",
+                "right": "Movimiento parabólico"
+              },
+              {
+                "left": "El avance hacia la portería",
+                "right": "Horizontal: constante"
+              },
+              {
+                "left": "Sube frenándose y baja acelerando",
+                "right": "Vertical: la cambia la gravedad"
+              },
+              {
+                "left": "Pegarle muy raso",
+                "right": "Ángulo bajo: choca en la barrera"
+              }
+            ],
+            "completion_feedback": "Girar en círculo es una trayectoria **cerrada**; un lanzamiento en diagonal dibuja una **parábola** por la gravedad. Veamos ambos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento curvo es cada cosa?",
+            "left_label": "Show de IVE",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los spins sobre su propio eje",
+                "right": "Movimiento circular"
+              },
+              {
+                "left": "La gorra lanzada al público",
+                "right": "Movimiento parabólico"
+              },
+              {
+                "left": "Lo que tarda en dar un giro completo",
+                "right": "Periodo"
+              },
+              {
+                "left": "Lo que hace bajar la gorra",
+                "right": "Gravedad"
+              }
+            ],
+            "completion_feedback": "Girar en círculo es una trayectoria **cerrada**; un lanzamiento en diagonal dibuja una **parábola** por la gravedad. Veamos ambos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto del movimiento curvo es cada cosa?",
+            "left_label": "Poción en Fortnite",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La línea curva que marca el juego",
+                "right": "Parábola"
+              },
+              {
+                "left": "Lanzar con poca fuerza",
+                "right": "Arco corto"
+              },
+              {
+                "left": "Más fuerza y buen ángulo",
+                "right": "Arco largo y alto"
+              },
+              {
+                "left": "Lo que la frena al subir",
+                "right": "Gravedad"
+              }
+            ],
+            "completion_feedback": "Girar en círculo es una trayectoria **cerrada**; un lanzamiento en diagonal dibuja una **parábola** por la gravedad. Veamos ambos."
+          }
+        }
+      }
+    },
+    "energias-renovables-y-no-renovables": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de energía o fuente es cada cosa?",
+            "left_label": "Chakra y píldoras",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Chakra que el cuerpo regenera",
+                "right": "Renovable: se repone"
+              },
+              {
+                "left": "Píldoras del soldado",
+                "right": "No renovable: se agota"
+              },
+              {
+                "left": "Sol, viento y agua",
+                "right": "Fuentes renovables"
+              },
+              {
+                "left": "Carbón, petróleo y gas",
+                "right": "Combustibles fósiles"
+              }
+            ],
+            "completion_feedback": "Las **renovables** se reponen solas; las **no renovables** se gastan y tardan millones de años en formarse. Veamos la diferencia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de energía o fuente es cada cosa?",
+            "left_label": "Estadio solar",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Paneles solares del techo",
+                "right": "Renovable: se repone"
+              },
+              {
+                "left": "Generador de diésel",
+                "right": "No renovable: se agota"
+              },
+              {
+                "left": "El humo del generador",
+                "right": "Contaminación"
+              },
+              {
+                "left": "Tardó millones de años en formarse",
+                "right": "Combustible fósil"
+              }
+            ],
+            "completion_feedback": "Las **renovables** se reponen solas; las **no renovables** se gastan y tardan millones de años en formarse. Veamos la diferencia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de energía o fuente es cada cosa?",
+            "left_label": "Gira de NewJeans",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Luz del Sol que vuelve cada día",
+                "right": "Renovable: se repone"
+              },
+              {
+                "left": "Carbón, petróleo y gas",
+                "right": "No renovable: se agota"
+              },
+              {
+                "left": "Gases al quemar fósiles",
+                "right": "Contaminación"
+              },
+              {
+                "left": "Viento, agua y calor de la Tierra",
+                "right": "Eólica, hidráulica, geotérmica"
+              }
+            ],
+            "completion_feedback": "Las **renovables** se reponen solas; las **no renovables** se gastan y tardan millones de años en formarse. Veamos la diferencia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de energía o fuente es cada cosa?",
+            "left_label": "Horno de Minecraft",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Carbón de una veta en la cueva",
+                "right": "No renovable: se agota"
+              },
+              {
+                "left": "Panel solar de un mod",
+                "right": "Renovable: se repone"
+              },
+              {
+                "left": "Humo de quemar carbón",
+                "right": "Contaminación"
+              },
+              {
+                "left": "Sol, viento, agua y geotermia",
+                "right": "Fuentes renovables"
+              }
+            ],
+            "completion_feedback": "Las **renovables** se reponen solas; las **no renovables** se gastan y tardan millones de años en formarse. Veamos la diferencia."
+          }
+        }
+      }
+    }
+  }
+}

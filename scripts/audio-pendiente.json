@@ -1,21 +1,117 @@
 {
-  "_nota": "Secciones base cuyo texto hablado se corrigió en s43 y a las que se les puso audio_url/audio_duration = NULL. generate-audio.ts ya salta las que tienen audio, así que basta con correrlo por materia con --types=analogy,explanation,example (sin --types también generaría key_fact y tip, que hoy no tienen audio en ninguna materia). Se agregan aquí cada vez que se quita un audio.",
+  "_nota": "Secciones base cuyo texto hablado se corrigió en s43 y a las que se les puso audio_url/audio_duration = NULL. generate-audio.ts ya salta las que tienen audio, así que basta con correrlo por materia con --types=analogy,explanation,example (sin --types también generaría key_fact y tip, que hoy no tienen audio en ninguna materia). Se agregan aquí cada vez que se quita un audio. Ojo: las materias ingles-* (726 secciones) no tienen audio en analogy/explanation/example; si no se quieren narrar con la voz en español, excluirlas de la corrida.",
   "pendientes": [
-    { "id": "65b42616-a3c8-46b0-9c9a-d3ad549fb7a0", "subject": "matematicas-sec-1", "topic": "introduccion-al-algebra", "tema": "Videojuegos", "type": "analogy", "motivo": "Cofre de Minecraft reescrito (d + 9 = 24)" },
-    { "id": "da94cbf5-a2c8-445f-90c7-8f3295bc927f", "subject": "matematicas-sec-1", "topic": "introduccion-al-algebra", "tema": "Videojuegos", "type": "explanation", "motivo": "Cofre de Minecraft reescrito (d + 9 = 24)" },
-    { "id": "37707766-c738-441a-9333-2e02640d1ee1", "subject": "matematicas-sec-1", "topic": "introduccion-al-algebra", "tema": "Videojuegos", "type": "example", "motivo": "Ejemplo de gestos de Fortnite (5g = 1500)" },
-    { "id": "168389c3-018f-4160-a90e-cc00cbee5ad3", "subject": "matematicas-sec-1", "topic": "rectas-y-angulos", "tema": "K-pop & K-dramas", "type": "analogy", "motivo": "Coreografía de Pink Venom reescrita" },
-    { "id": "65d80103-c94f-4d2d-a404-c934a006d045", "subject": "matematicas-sec-1", "topic": "rectas-y-angulos", "tema": "K-pop & K-dramas", "type": "explanation", "motivo": "Coreografía de Pink Venom reescrita" },
-    { "id": "de33e372-de28-4638-aa19-9e38e6f15f51", "subject": "matematicas-sec-1", "topic": "rectas-y-angulos", "tema": "K-pop & K-dramas", "type": "example", "motivo": "Giro de Felix de 180°" },
-    { "id": "cd5f778d-1371-46dd-9f9f-9f1e0bc3e6a0", "subject": "matematicas-sec-2", "topic": "sistemas-de-dos-ecuaciones", "tema": "Anime & Manga", "type": "analogy", "motivo": "Sistema corregido a 2x+y=13, x+4y=17" },
-    { "id": "1eb6a3e5-59e2-413f-aced-3a03d388e9a0", "subject": "matematicas-sec-2", "topic": "sistemas-de-dos-ecuaciones", "tema": "Anime & Manga", "type": "explanation", "motivo": "Sistema corregido a 2x+y=13, x+4y=17" },
-    { "id": "f2864332-e344-4a02-b0e0-242243d52ca5", "subject": "matematicas-sec-2", "topic": "sistemas-de-dos-ecuaciones", "tema": "K-pop & K-dramas", "type": "analogy", "motivo": "Total 950 → 900" },
-    { "id": "01faad09-6df9-43cd-bf79-62f69ec7c990", "subject": "matematicas-sec-2", "topic": "sistemas-de-dos-ecuaciones", "tema": "K-pop & K-dramas", "type": "explanation", "motivo": "Total 950 → 900" },
-    { "id": "2894849e-92d4-4b22-b597-bbe3b1836d09", "subject": "matematicas-sec-2", "topic": "medidas-de-tendencia-central-y-dispersion-sec-matematicas-sec-2", "tema": "Anime & Manga", "type": "analogy", "motivo": "Segunda serie cambiada a 10, 5, 10, 8 y 10 (promedio 8.6)" },
-    { "id": "2368c840-cf5d-4553-b285-7a07b8315001", "subject": "espanol-sec-2", "topic": "analisis-de-textos-literarios-sec", "tema": "K-pop & K-dramas", "type": "analogy", "motivo": "'Eres ARMY de varios grupos' → 'Eres fan' (ARMY es solo de BTS; la analogía es de Stray Kids)" },
-    { "id": "36eed213-98c0-4a2e-b631-4f830ac4535f", "subject": "espanol-sec-2", "topic": "uso-normativo-del-espanol", "tema": "K-pop & K-dramas", "type": "analogy", "motivo": "'Una ARMY escribe' → 'Una fan' (MV de NewJeans)" }
-  ],
-  "opcional_audio_conservado": [
-    { "id": "f14ec1c6-ae7a-4a18-baa7-381adc283449", "subject": "matematicas-sec-2", "topic": "propiedades-de-los-exponentes", "tema": "Fútbol", "type": "analogy", "motivo": "Errata corregida a 'el doble del doble de'. El audio se dejó; dice la versión vieja. Para regenerarlo hay que poner audio_url = NULL primero." }
+    {
+      "id": "65b42616-a3c8-46b0-9c9a-d3ad549fb7a0",
+      "subject": "matematicas-sec-1",
+      "topic": "introduccion-al-algebra",
+      "tema": "Videojuegos",
+      "type": "analogy",
+      "motivo": "Cofre de Minecraft reescrito (d + 9 = 24)"
+    },
+    {
+      "id": "da94cbf5-a2c8-445f-90c7-8f3295bc927f",
+      "subject": "matematicas-sec-1",
+      "topic": "introduccion-al-algebra",
+      "tema": "Videojuegos",
+      "type": "explanation",
+      "motivo": "Cofre de Minecraft reescrito (d + 9 = 24)"
+    },
+    {
+      "id": "37707766-c738-441a-9333-2e02640d1ee1",
+      "subject": "matematicas-sec-1",
+      "topic": "introduccion-al-algebra",
+      "tema": "Videojuegos",
+      "type": "example",
+      "motivo": "Ejemplo de gestos de Fortnite (5g = 1500)"
+    },
+    {
+      "id": "168389c3-018f-4160-a90e-cc00cbee5ad3",
+      "subject": "matematicas-sec-1",
+      "topic": "rectas-y-angulos",
+      "tema": "K-pop & K-dramas",
+      "type": "analogy",
+      "motivo": "Coreografía de Pink Venom reescrita"
+    },
+    {
+      "id": "65d80103-c94f-4d2d-a404-c934a006d045",
+      "subject": "matematicas-sec-1",
+      "topic": "rectas-y-angulos",
+      "tema": "K-pop & K-dramas",
+      "type": "explanation",
+      "motivo": "Coreografía de Pink Venom reescrita"
+    },
+    {
+      "id": "de33e372-de28-4638-aa19-9e38e6f15f51",
+      "subject": "matematicas-sec-1",
+      "topic": "rectas-y-angulos",
+      "tema": "K-pop & K-dramas",
+      "type": "example",
+      "motivo": "Giro de Felix de 180°"
+    },
+    {
+      "id": "cd5f778d-1371-46dd-9f9f-9f1e0bc3e6a0",
+      "subject": "matematicas-sec-2",
+      "topic": "sistemas-de-dos-ecuaciones",
+      "tema": "Anime & Manga",
+      "type": "analogy",
+      "motivo": "Sistema corregido a 2x+y=13, x+4y=17"
+    },
+    {
+      "id": "1eb6a3e5-59e2-413f-aced-3a03d388e9a0",
+      "subject": "matematicas-sec-2",
+      "topic": "sistemas-de-dos-ecuaciones",
+      "tema": "Anime & Manga",
+      "type": "explanation",
+      "motivo": "Sistema corregido a 2x+y=13, x+4y=17"
+    },
+    {
+      "id": "f2864332-e344-4a02-b0e0-242243d52ca5",
+      "subject": "matematicas-sec-2",
+      "topic": "sistemas-de-dos-ecuaciones",
+      "tema": "K-pop & K-dramas",
+      "type": "analogy",
+      "motivo": "Total 950 → 900"
+    },
+    {
+      "id": "01faad09-6df9-43cd-bf79-62f69ec7c990",
+      "subject": "matematicas-sec-2",
+      "topic": "sistemas-de-dos-ecuaciones",
+      "tema": "K-pop & K-dramas",
+      "type": "explanation",
+      "motivo": "Total 950 → 900"
+    },
+    {
+      "id": "2894849e-92d4-4b22-b597-bbe3b1836d09",
+      "subject": "matematicas-sec-2",
+      "topic": "medidas-de-tendencia-central-y-dispersion-sec-matematicas-sec-2",
+      "tema": "Anime & Manga",
+      "type": "analogy",
+      "motivo": "Segunda serie cambiada a 10, 5, 10, 8 y 10 (promedio 8.6)"
+    },
+    {
+      "id": "2368c840-cf5d-4553-b285-7a07b8315001",
+      "subject": "espanol-sec-2",
+      "topic": "analisis-de-textos-literarios-sec",
+      "tema": "K-pop & K-dramas",
+      "type": "analogy",
+      "motivo": "'Eres ARMY de varios grupos' → 'Eres fan' (ARMY es solo de BTS; la analogía es de Stray Kids)"
+    },
+    {
+      "id": "36eed213-98c0-4a2e-b631-4f830ac4535f",
+      "subject": "espanol-sec-2",
+      "topic": "uso-normativo-del-espanol",
+      "tema": "K-pop & K-dramas",
+      "type": "analogy",
+      "motivo": "'Una ARMY escribe' → 'Una fan' (MV de NewJeans)"
+    },
+    {
+      "id": "f14ec1c6-ae7a-4a18-baa7-381adc283449",
+      "subject": "matematicas-sec-2",
+      "topic": "propiedades-de-los-exponentes",
+      "tema": "Fútbol",
+      "type": "analogy",
+      "motivo": "Errata corregida a 'el doble del doble de' (audio viejo leía la errata)"
+    }
   ]
 }
