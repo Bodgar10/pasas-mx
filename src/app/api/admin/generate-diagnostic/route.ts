@@ -84,6 +84,8 @@ Para cada tema genera UNA pregunta de dificultad media que evalúe si el alumno 
 
 REGLA CRÍTICA SOBRE correct_answer: La respuesta correcta DEBE variar entre A, B, C y D de forma distribuida a lo largo de todas las preguntas. NUNCA pongas la misma letra como correcta más de 2 veces seguidas. El ejemplo de abajo usa "B" — no copies esa letra para todas las preguntas.
 
+REGLA PARA LAS EXPLICACIONES: nunca menciones las opciones por su letra. Las opciones se revuelven al guardarse, así que nómbralas por su contenido.
+
 Responde con este JSON exacto:
 {
   "questions": [
@@ -97,7 +99,7 @@ Responde con este JSON exacto:
         { "letter": "D", "text": "distractor plausible — error de concepto" }
       ],
       "correct_answer": "B",
-      "explanation": "Por qué B es correcta y cuál es el error conceptual de las otras opciones. Máximo 60 palabras."
+      "explanation": "Por qué la respuesta correcta lo es y cuál es el error conceptual de las otras opciones, sin mencionar letras. Máximo 60 palabras."
     }
   ]
 }

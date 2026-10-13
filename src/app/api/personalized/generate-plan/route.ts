@@ -170,6 +170,8 @@ Genera este JSON con 5 secciones y 5 preguntas de quiz:
   ]
 }
 
+En las explicaciones del quiz nunca menciones las opciones por su letra: se revuelven al guardarse.
+
 ADEMÁS de las 5 secciones de texto, agrega al MISMO array "sections" entre 1 y 3 BLOQUES INTERACTIVOS sobre el mismo concepto, dentro del mundo de "${theme.name}". Como este alumno falló el tema, los bloques deben reforzar lo básico. No llevan texto largo: llevan un objeto "data". Continúa el display_order después de 5. Elige el tipo según el contenido y NO repitas el mismo tipo:
 - "steps": proceso paso a paso o acumulación de una cantidad. "visual":"bar" si hay un número que sube/baja (cada paso lleva "delta" numérico) más "start" inicial; "visual":"chain" para pasos narrativos (cada paso solo "text").
 - "sort": clasificar en 2 categorías (máx 3). 4 a 6 items; cada item lleva "b" = índice de la cubeta correcta (0,1,...).

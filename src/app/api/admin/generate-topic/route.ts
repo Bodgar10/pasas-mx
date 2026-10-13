@@ -174,6 +174,8 @@ Genera este JSON exacto con las secciones EN ESTE ORDEN (primero la analogía, l
 
 Genera 5 secciones (analogy, explanation, example, key_fact, tip) y 5 preguntas de quiz.
 
+REGLA PARA LAS EXPLICACIONES DEL QUIZ: nunca menciones las opciones por su letra (nada de "la B confunde…" o "A es correcta"). Las opciones se revuelven al guardarse, así que nómbralas por su contenido.
+
 Además de las 5 secciones anteriores, agrega al MISMO array "sections" entre 1 y 3 BLOQUES INTERACTIVOS que refuercen el mismo concepto, dentro del mundo de ${themeName}. Estos bloques NO llevan texto largo: llevan un objeto "data" con su configuración. Elige el tipo según el contenido:
 
 - "steps": procesos paso a paso o acumulación de una cantidad. Usa "visual":"bar" cuando hay un número que sube/baja (vida, dinero, puntos) y cada paso lleva "delta" numérico; usa "visual":"chain" para pasos narrativos sin número (cada paso solo "text").

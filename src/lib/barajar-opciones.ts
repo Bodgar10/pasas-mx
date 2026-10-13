@@ -27,7 +27,10 @@ type Pregunta = {
 
 const LETRAS = ['A', 'B', 'C', 'D']
 
-const REF_LETRA = /(opci[oó]n|inciso|respuesta|letra)(es|s)?\s+\(?[A-D]\b/
+const REF_LETRA = /([Oo]pci[oó]n|[Ii]nciso|[Rr]espuesta|[Ll]etra|[Oo]ption)(es|s)?\s+\(?[A-D]\b/
+// Letra suelta usada como sujeto: "B confunde…", "A y C…", "Correcta B:", "la D".
+const REF_SUELTA =
+  /(^|[\s(,;:¿¡"])[A-D](,? (y|o|e|and|or) [A-D]\b|\s+(es|son|confunde|ignora|describe|usa|invierte|aplica|omite|olvida|reduce|niega|mezcla|corresponde|atribuye|correctly|incorrectly|is|uses|are)\b)|\b(Correcta|Incorrecta|Error) [A-D]\b|\b(La|la|Las|las) [B-D]\b/
 const REF_PAREN = /\b[A-D]\)/
 const REF_ORDINAL = /(primera|segunda|tercera|cuarta|[uú]ltima) opci/i
 const OPC_POSICIONAL = /todas las anteriores|ninguna de las anteriores|all of the above|none of the above/i
@@ -35,7 +38,7 @@ const OPC_PAR = /\b[A-D] (y|and|e) [A-D]\b/
 
 function dependeDePosicion(p: Pregunta): boolean {
   const texto = `${p.question} ${p.explanation ?? ''} ${p.hint ?? ''}`
-  if (REF_LETRA.test(texto) || REF_PAREN.test(texto) || REF_ORDINAL.test(texto)) return true
+  if (REF_LETRA.test(texto) || REF_SUELTA.test(texto) || REF_PAREN.test(texto) || REF_ORDINAL.test(texto)) return true
   const opciones = (p.options ?? []).map((o) => o.text).join(' | ')
   return OPC_POSICIONAL.test(opciones) || OPC_PAR.test(opciones)
 }
