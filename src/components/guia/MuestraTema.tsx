@@ -91,7 +91,7 @@ export function EntradaDesdeReto({
                   width: 22,
                   height: 22,
                   borderRadius: '50%',
-                  background: '#7c3aed',
+                  background: '#0d9488',
                   color: 'white',
                   fontSize: 12,
                   fontWeight: 900,
@@ -114,7 +114,7 @@ export function EntradaDesdeReto({
         style={{
           width: '100%',
           minHeight: 48,
-          background: '#7c3aed',
+          background: '#0d9488',
           color: 'white',
           border: 'none',
           borderRadius: 12,
