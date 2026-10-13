@@ -1,0 +1,667 @@
+{
+  "subject": "historia-arte",
+  "topics": {
+    "concepto-de-arte-y-estetica": {
+      "order_steps": {
+        "prompt": "Ordena cómo vives una experiencia estética",
+        "steps": [
+          "Percibes la obra con los sentidos",
+          "Reconoces su forma: ritmo, armonía, color",
+          "Sientes una emoción sin buscar utilidad",
+          "Reflexionas sobre lo que te comunicó",
+          "Formulas un juicio estético"
+        ],
+        "completion_feedback": "La **experiencia estética** une percepción, emoción y reflexión; el **juicio estético** combina rasgos de la obra con tu sensibilidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el anime",
+            "right_label": "Categoría",
+            "pairs": [
+              {
+                "left": "Fondos cuidados de Spy x Family",
+                "right": "Lo bello"
+              },
+              {
+                "left": "Villano de diseño monstruoso",
+                "right": "Lo grotesco"
+              },
+              {
+                "left": "Sacrificio que te hace llorar",
+                "right": "Lo trágico"
+              },
+              {
+                "left": "Las caras de Anya",
+                "right": "Lo cómico"
+              }
+            ],
+            "completion_feedback": "La **estética** estudia la belleza y el arte. Además de lo **bello** hay otras categorías estéticas: lo **sublime**, lo **grotesco**, lo **trágico** y lo **cómico**. Lo bello no es lo único con valor artístico."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol de 20 pases",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Ves el ritmo y la fluidez",
+                "right": "Percepción"
+              },
+              {
+                "left": "Te emociona aunque sea del rival",
+                "right": "Emoción estética"
+              },
+              {
+                "left": "'Fue una obra de arte'",
+                "right": "Juicio estético"
+              },
+              {
+                "left": "Sumar tres puntos",
+                "right": "Fin utilitario"
+              }
+            ],
+            "completion_feedback": "La **estética** estudia la belleza y el arte. Además de lo **bello** hay otras categorías estéticas: lo **sublime**, lo **grotesco**, lo **trágico** y lo **cómico**. Lo bello no es lo único con valor artístico."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "MV de SEVENTEEN",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "'Los 13 sincronizan perfecto'",
+                "right": "Rasgo objetivo de la obra"
+              },
+              {
+                "left": "'A mí me hace llorar'",
+                "right": "Reacción subjetiva"
+              },
+              {
+                "left": "Danza, música, moda y video juntos",
+                "right": "Obra que une varias artes"
+              }
+            ],
+            "completion_feedback": "La **estética** estudia la belleza y el arte. Además de lo **bello** hay otras categorías estéticas: lo **sublime**, lo **grotesco**, lo **trágico** y lo **cómico**. Lo bello no es lo único con valor artístico."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Arte en juegos",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ruinas gigantes de Elden Ring",
+                "right": "Lo sublime"
+              },
+              {
+                "left": "Dirección de arte con intención",
+                "right": "Valor estético"
+              },
+              {
+                "left": "'Solo es un gacha para vender'",
+                "right": "Fin comercial"
+              }
+            ],
+            "completion_feedback": "La **estética** estudia la belleza y el arte. Además de lo **bello** hay otras categorías estéticas: lo **sublime**, lo **grotesco**, lo **trágico** y lo **cómico**. Lo bello no es lo único con valor artístico."
+          }
+        }
+      }
+    },
+    "arte-de-la-antiguedad-egipto-grecia-roma": {
+      "order_steps": {
+        "prompt": "Ordena la evolución de las columnas clásicas",
+        "steps": [
+          "Orden dórico: columna sobria y sin base",
+          "Orden jónico: capitel con volutas en espiral",
+          "Orden corintio: capitel con hojas de acanto",
+          "Roma retoma los órdenes y les suma el arco"
+        ],
+        "completion_feedback": "Los **órdenes griegos** van de lo más sobrio (**dórico**) a lo más decorado (**corintio**); Roma los heredó y sumó el **arco** y el **hormigón**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "JoJo y Egipto",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Figura plana, de perfil y ojo de frente",
+                "right": "Ley de la frontalidad"
+              },
+              {
+                "left": "Pose imposible y músculos exagerados",
+                "right": "Estilo manga moderno"
+              },
+              {
+                "left": "Anubis con cabeza de chacal",
+                "right": "Iconografía egipcia"
+              }
+            ],
+            "completion_feedback": "**Egipto** hizo un arte rígido y simbólico al servicio de la religión; **Grecia** buscó la belleza ideal con proporciones (**canon**); **Roma** sumó ingeniería: **arco**, **bóveda** y **hormigón**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estadio romano",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Coliseo para unos 50 mil",
+                "right": "Monumentalidad"
+              },
+              {
+                "left": "Reparte el peso sobre los vanos",
+                "right": "Arco de medio punto"
+              },
+              {
+                "left": "Pasillos y túneles techados",
+                "right": "Bóveda"
+              },
+              {
+                "left": "Material para varios pisos",
+                "right": "Hormigón romano"
+              }
+            ],
+            "completion_feedback": "**Egipto** hizo un arte rígido y simbólico al servicio de la religión; **Grecia** buscó la belleza ideal con proporciones (**canon**); **Roma** sumó ingeniería: **arco**, **bóveda** y **hormigón**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Proporción ideal",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Tratado de proporciones de Policleto",
+                "right": "El Canon"
+              },
+              {
+                "left": "Estatua que lo demuestra",
+                "right": "El Doríforo"
+              },
+              {
+                "left": "Peso del cuerpo en una pierna",
+                "right": "Contrapposto"
+              },
+              {
+                "left": "Templo griego de Atenas",
+                "right": "El Partenón"
+              }
+            ],
+            "completion_feedback": "**Egipto** hizo un arte rígido y simbólico al servicio de la religión; **Grecia** buscó la belleza ideal con proporciones (**canon**); **Roma** sumó ingeniería: **arco**, **bóveda** y **hormigón**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "AC Origins",
+            "right_label": "Rasgo egipcio",
+            "pairs": [
+              {
+                "left": "Faraón el doble de grande",
+                "right": "Perspectiva jerárquica"
+              },
+              {
+                "left": "Cabeza de perfil, torso de frente",
+                "right": "Ley de la frontalidad"
+              },
+              {
+                "left": "Pirámides de Guiza",
+                "right": "Arquitectura funeraria"
+              },
+              {
+                "left": "Ofrendas a un dios en el muro",
+                "right": "Arte religioso"
+              }
+            ],
+            "completion_feedback": "**Egipto** hizo un arte rígido y simbólico al servicio de la religión; **Grecia** buscó la belleza ideal con proporciones (**canon**); **Roma** sumó ingeniería: **arco**, **bóveda** y **hormigón**."
+          }
+        }
+      }
+    },
+    "arte-medieval": {
+      "order_steps": {
+        "prompt": "Ordena cómo el gótico superó al románico",
+        "steps": [
+          "El románico sostiene el techo con muros gruesos",
+          "Por eso sus ventanas son pequeñas y hay poca luz",
+          "El gótico usa arcos apuntados y bóvedas de crucería",
+          "Los arbotantes sostienen el peso desde fuera",
+          "Los muros se abren en grandes vitrales llenos de luz"
+        ],
+        "completion_feedback": "Al pasar el peso a los **arbotantes**, el **gótico** liberó los muros para llenarlos de **vitrales**: más altura y más luz que el **románico**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ciudad amurallada",
+            "right_label": "Representa",
+            "pairs": [
+              {
+                "left": "Murallas exteriores",
+                "right": "Defensa"
+              },
+              {
+                "left": "Iglesia de los Muros",
+                "right": "Poder religioso"
+              },
+              {
+                "left": "Nobles a salvo en el centro",
+                "right": "Jerarquía feudal"
+              }
+            ],
+            "completion_feedback": "El arte medieval fue sobre todo **religioso**: el **bizantino** usó fondos de oro e íconos; el **románico**, muros gruesos y arcos de medio punto; el **gótico**, arcos apuntados, **arbotantes** y **vitrales**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escudo",
+            "right_label": "Significado",
+            "pairs": [
+              {
+                "left": "Rojo en heráldica",
+                "right": "Valor"
+              },
+              {
+                "left": "Azul en heráldica",
+                "right": "Lealtad"
+              },
+              {
+                "left": "León en el centro",
+                "right": "Fuerza"
+              },
+              {
+                "left": "Identificar al caballero en batalla",
+                "right": "Función del escudo"
+              }
+            ],
+            "completion_feedback": "El arte medieval fue sobre todo **religioso**: el **bizantino** usó fondos de oro e íconos; el **románico**, muros gruesos y arcos de medio punto; el **gótico**, arcos apuntados, **arbotantes** y **vitrales**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concepto bizantino",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "Fondo de oro liso",
+                "right": "Lo divino y eterno"
+              },
+              {
+                "left": "Halo detrás de la cabeza",
+                "right": "Santidad"
+              },
+              {
+                "left": "Pose frontal y sin sombras",
+                "right": "Lo simbólico, no lo real"
+              }
+            ],
+            "completion_feedback": "El arte medieval fue sobre todo **religioso**: el **bizantino** usó fondos de oro e íconos; el **románico**, muros gruesos y arcos de medio punto; el **gótico**, arcos apuntados, **arbotantes** y **vitrales**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Iglesia del RPG",
+            "right_label": "Estilo",
+            "pairs": [
+              {
+                "left": "Muros gruesos y poca luz",
+                "right": "Románico"
+              },
+              {
+                "left": "Arcos apuntados y vitrales",
+                "right": "Gótico"
+              },
+              {
+                "left": "Soportes que empujan desde fuera",
+                "right": "Arbotantes"
+              },
+              {
+                "left": "Ventana circular de colores",
+                "right": "Rosetón"
+              }
+            ],
+            "completion_feedback": "El arte medieval fue sobre todo **religioso**: el **bizantino** usó fondos de oro e íconos; el **románico**, muros gruesos y arcos de medio punto; el **gótico**, arcos apuntados, **arbotantes** y **vitrales**."
+          }
+        }
+      }
+    },
+    "renacimiento-y-barroco": {
+      "order_steps": {
+        "prompt": "Ordena cómo se dibuja con perspectiva lineal",
+        "steps": [
+          "Traza la línea del horizonte",
+          "Marca un punto de fuga sobre ella",
+          "Dirige las líneas del suelo hacia ese punto",
+          "Dibuja los objetos más pequeños mientras más se alejan"
+        ],
+        "completion_feedback": "La **perspectiva lineal**, sistematizada por **Brunelleschi**, permitió a los pintores del **Renacimiento** crear profundidad realista. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escena del anime",
+            "right_label": "Estilo",
+            "pairs": [
+              {
+                "left": "Calma, simetría y luz pareja",
+                "right": "Renacimiento"
+              },
+              {
+                "left": "Haz de luz sobre fondo negro",
+                "right": "Claroscuro barroco"
+              },
+              {
+                "left": "Poses retorcidas en pleno combate",
+                "right": "Movimiento barroco"
+              }
+            ],
+            "completion_feedback": "El **Renacimiento** buscó equilibrio, proporción y **perspectiva** mirando a Grecia y Roma; el **Barroco** buscó drama, movimiento y **claroscuro** para conmover al espectador."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estilo de juego",
+            "right_label": "Evoca",
+            "pairs": [
+              {
+                "left": "Tiki-taka de pases medidos",
+                "right": "Orden renacentista"
+              },
+              {
+                "left": "Remate que hace estallar la grada",
+                "right": "Emoción barroca"
+              },
+              {
+                "left": "Regate que tuerce todo el cuerpo",
+                "right": "Movimiento barroco"
+              }
+            ],
+            "completion_feedback": "El **Renacimiento** buscó equilibrio, proporción y **perspectiva** mirando a Grecia y Roma; el **Barroco** buscó drama, movimiento y **claroscuro** para conmover al espectador."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Era del grupo",
+            "right_label": "Estilo",
+            "pairs": [
+              {
+                "left": "Fondos blancos y poses serenas",
+                "right": "Renacimiento"
+              },
+              {
+                "left": "Foco dramático y penumbra",
+                "right": "Tenebrismo barroco"
+              },
+              {
+                "left": "Vestuario recargado y poses intensas",
+                "right": "Exceso barroco"
+              }
+            ],
+            "completion_feedback": "El **Renacimiento** buscó equilibrio, proporción y **perspectiva** mirando a Grecia y Roma; el **Barroco** buscó drama, movimiento y **claroscuro** para conmover al espectador."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Florencia de AC II",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Cúpula de la catedral de Florencia",
+                "right": "Brunelleschi"
+              },
+              {
+                "left": "Inventor que ayuda a Ezio",
+                "right": "Leonardo da Vinci"
+              },
+              {
+                "left": "Líneas hacia un punto de fuga",
+                "right": "Perspectiva lineal"
+              },
+              {
+                "left": "El ser humano al centro",
+                "right": "Humanismo"
+              }
+            ],
+            "completion_feedback": "El **Renacimiento** buscó equilibrio, proporción y **perspectiva** mirando a Grecia y Roma; el **Barroco** buscó drama, movimiento y **claroscuro** para conmover al espectador."
+          }
+        }
+      }
+    },
+    "arte-moderno-y-las-vanguardias": {
+      "order_steps": {
+        "prompt": "Ordena estas rupturas del arte moderno",
+        "steps": [
+          "Impresionismo: Monet pinta la luz (1874)",
+          "Cubismo: Picasso fragmenta las formas (1907)",
+          "Dadaísmo: Duchamp expone un urinario (1917)",
+          "Surrealismo: Dalí pinta relojes blandos (1931)"
+        ],
+        "completion_feedback": "Cada movimiento rompió con el anterior: del **Impresionismo** a las **vanguardias** del siglo XX, el arte dejó de copiar la realidad para experimentar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Si fuera manga…",
+            "right_label": "Vanguardia",
+            "pairs": [
+              {
+                "left": "Personajes hechos de cubos y ángulos",
+                "right": "Cubismo"
+              },
+              {
+                "left": "Sueños con relojes derretidos",
+                "right": "Surrealismo"
+              },
+              {
+                "left": "Colores intensos para gritar angustia",
+                "right": "Expresionismo"
+              },
+              {
+                "left": "Puro color y forma, sin personajes",
+                "right": "Abstracción"
+              }
+            ],
+            "completion_feedback": "Las **vanguardias** rompieron con el arte académico: el **cubismo** fragmentó las formas, el **surrealismo** pintó los sueños, el **dadaísmo** se burló del arte y la **abstracción** dejó de representar objetos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Obra",
+            "right_label": "Autor",
+            "pairs": [
+              {
+                "left": "El grito",
+                "right": "Munch"
+              },
+              {
+                "left": "Las señoritas de Avignon",
+                "right": "Picasso"
+              },
+              {
+                "left": "La persistencia de la memoria",
+                "right": "Dalí"
+              },
+              {
+                "left": "Fuente (un urinario)",
+                "right": "Duchamp"
+              }
+            ],
+            "completion_feedback": "Las **vanguardias** rompieron con el arte académico: el **cubismo** fragmentó las formas, el **surrealismo** pintó los sueños, el **dadaísmo** se burló del arte y la **abstracción** dejó de representar objetos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concepto de MV",
+            "right_label": "Vanguardia",
+            "pairs": [
+              {
+                "left": "Escenas de sueño imposibles",
+                "right": "Surrealismo"
+              },
+              {
+                "left": "Rostros partidos en planos geométricos",
+                "right": "Cubismo"
+              },
+              {
+                "left": "Formas y colores sin historia",
+                "right": "Abstracción"
+              },
+              {
+                "left": "Velocidad, máquinas y luces",
+                "right": "Futurismo"
+              }
+            ],
+            "completion_feedback": "Las **vanguardias** rompieron con el arte académico: el **cubismo** fragmentó las formas, el **surrealismo** pintó los sueños, el **dadaísmo** se burló del arte y la **abstracción** dejó de representar objetos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el juego",
+            "right_label": "Eco de…",
+            "pairs": [
+              {
+                "left": "Mundo hecho de bloques geométricos",
+                "right": "Cubismo"
+              },
+              {
+                "left": "Paisajes de pinceladas de luz",
+                "right": "Impresionismo"
+              },
+              {
+                "left": "Niveles de sueño imposibles",
+                "right": "Surrealismo"
+              }
+            ],
+            "completion_feedback": "Las **vanguardias** rompieron con el arte académico: el **cubismo** fragmentó las formas, el **surrealismo** pintó los sueños, el **dadaísmo** se burló del arte y la **abstracción** dejó de representar objetos."
+          }
+        }
+      }
+    },
+    "arte-mexicano-muralismo-y-siglo-xx": {
+      "order_steps": {
+        "prompt": "Ordena cómo nació el muralismo mexicano",
+        "steps": [
+          "Termina la lucha armada de la Revolución",
+          "Vasconcelos, desde la SEP, encarga murales públicos (1921)",
+          "Rivera, Orozco y Siqueiros pintan la historia del pueblo",
+          "El arte público educa a la población y forja identidad"
+        ],
+        "completion_feedback": "El **muralismo** nació para un país en reconstrucción: arte **público** y **gratuito** que contaba la historia de México incluso a quien no sabía leer. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Obra social",
+            "right_label": "Rasgo muralista",
+            "pairs": [
+              {
+                "left": "Llega a millones en pantalla",
+                "right": "Alcance masivo"
+              },
+              {
+                "left": "Narra la lucha de un pueblo",
+                "right": "Tema social e histórico"
+              },
+              {
+                "left": "Busca que no se olvide",
+                "right": "Memoria e identidad"
+              }
+            ],
+            "completion_feedback": "El **muralismo mexicano** fue arte público con función social: **Rivera**, **Orozco** y **Siqueiros** pintaron la historia y las luchas del pueblo. **Frida Kahlo** y **Tamayo** siguieron caminos más personales."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mural del estadio",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "Pintado afuera y gratis",
+                "right": "Arte público"
+              },
+              {
+                "left": "Afición obrera y fundadores humildes",
+                "right": "Exalta al pueblo"
+              },
+              {
+                "left": "Orgullo del barrio",
+                "right": "Identidad"
+              }
+            ],
+            "completion_feedback": "El **muralismo mexicano** fue arte público con función social: **Rivera**, **Orozco** y **Siqueiros** pintaron la historia y las luchas del pueblo. **Frida Kahlo** y **Tamayo** siguieron caminos más personales."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Artista",
+            "right_label": "Obra",
+            "pairs": [
+              {
+                "left": "Diego Rivera",
+                "right": "Murales del Palacio Nacional"
+              },
+              {
+                "left": "José Clemente Orozco",
+                "right": "Hospicio Cabañas"
+              },
+              {
+                "left": "David Alfaro Siqueiros",
+                "right": "Poliforum Cultural"
+              },
+              {
+                "left": "Frida Kahlo",
+                "right": "Autorretratos"
+              }
+            ],
+            "completion_feedback": "El **muralismo mexicano** fue arte público con función social: **Rivera**, **Orozco** y **Siqueiros** pintaron la historia y las luchas del pueblo. **Frida Kahlo** y **Tamayo** siguieron caminos más personales."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mapa de Roblox",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "Gratis para cualquier jugador",
+                "right": "Arte público"
+              },
+              {
+                "left": "Obreros y campesinos al centro",
+                "right": "Tema social"
+              },
+              {
+                "left": "Enseña historia a quien pasa",
+                "right": "Función educativa"
+              }
+            ],
+            "completion_feedback": "El **muralismo mexicano** fue arte público con función social: **Rivera**, **Orozco** y **Siqueiros** pintaron la historia y las luchas del pueblo. **Frida Kahlo** y **Tamayo** siguieron caminos más personales."
+          }
+        }
+      }
+    }
+  }
+}
