@@ -1,0 +1,785 @@
+{
+  "subject": "economia",
+  "topics": {
+    "conceptos-basicos-de-economia": {
+      "order_steps": {
+        "prompt": "Ordena cómo encuentras el costo de oportunidad de una decisión",
+        "steps": [
+          "Identifica el recurso escaso que tienes",
+          "Enlista las opciones en que podrías usarlo",
+          "Elige una de las opciones",
+          "La mejor opción que dejaste es tu costo de oportunidad"
+        ],
+        "completion_feedback": "El **costo de oportunidad** no es lo que pagas, sino la **mejor alternativa a la que renuncias**: por eso toda elección con recursos escasos tiene uno. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Nami y sus Berries",
+            "right_label": "Función del dinero",
+            "pairs": [
+              {
+                "left": "Paga comida y medicinas en el pueblo",
+                "right": "Medio de intercambio"
+              },
+              {
+                "left": "Ve que la espada cuesta más que el mapa",
+                "right": "Unidad de cuenta"
+              },
+              {
+                "left": "Guarda Berries para emergencias",
+                "right": "Depósito de valor"
+              }
+            ],
+            "completion_feedback": "La economía estudia cómo usar **recursos escasos** frente a deseos ilimitados. Elegir implica un **costo de oportunidad**, y el dinero sirve como **medio de intercambio**, **unidad de cuenta** y **depósito de valor**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Real Madrid",
+            "right_label": "Fase",
+            "pairs": [
+              {
+                "left": "El club fabrica la nueva camiseta",
+                "right": "Producción"
+              },
+              {
+                "left": "Paga sueldos a jugadores y staff",
+                "right": "Distribución"
+              },
+              {
+                "left": "Un aficionado compra la camiseta",
+                "right": "Consumo"
+              }
+            ],
+            "completion_feedback": "La economía estudia cómo usar **recursos escasos** frente a deseos ilimitados. Elegir implica un **costo de oportunidad**, y el dinero sirve como **medio de intercambio**, **unidad de cuenta** y **depósito de valor**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lightstick",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Solo se fabrican 500 piezas",
+                "right": "Oferta"
+              },
+              {
+                "left": "5000 fans lo quieren",
+                "right": "Demanda"
+              },
+              {
+                "left": "Faltan 4500 lightsticks",
+                "right": "Escasez"
+              },
+              {
+                "left": "En reventa cuesta el triple",
+                "right": "Sube el precio"
+              }
+            ],
+            "completion_feedback": "La economía estudia cómo usar **recursos escasos** frente a deseos ilimitados. Elegir implica un **costo de oportunidad**, y el dinero sirve como **medio de intercambio**, **unidad de cuenta** y **depósito de valor**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Genshin",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Solo tienes 1600 Cristales Génesis",
+                "right": "Recurso escaso"
+              },
+              {
+                "left": "Quieres a Raiden y a Nahida",
+                "right": "Deseos ilimitados"
+              },
+              {
+                "left": "Vas por Raiden y dejas a Nahida",
+                "right": "Costo de oportunidad"
+              }
+            ],
+            "completion_feedback": "La economía estudia cómo usar **recursos escasos** frente a deseos ilimitados. Elegir implica un **costo de oportunidad**, y el dinero sirve como **medio de intercambio**, **unidad de cuenta** y **depósito de valor**."
+          }
+        }
+      }
+    },
+    "oferta-y-demanda": {
+      "order_steps": {
+        "prompt": "Ordena cómo un mercado con escasez llega al equilibrio",
+        "steps": [
+          "El precio está bajo: la demanda supera a la oferta",
+          "Hay escasez: muchos compradores se quedan sin producto",
+          "Los vendedores suben el precio",
+          "Al subir el precio, baja la demanda y sube la oferta",
+          "Se igualan: el mercado llega al precio de equilibrio"
+        ],
+        "completion_feedback": "Cuando falta producto el precio **sube**; cuando sobra, **baja**. Ese ajuste empuja al mercado hacia el **precio de equilibrio**, donde oferta = demanda. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Productos de JJK",
+            "right_label": "Qué pasa",
+            "pairs": [
+              {
+                "left": "3000 figuras de Gojo para miles de fans",
+                "right": "Escasez: se agotan en minutos"
+              },
+              {
+                "left": "Figura de un secundario que nadie pide",
+                "right": "Excedente: se queda en el estante"
+              },
+              {
+                "left": "La editorial reimprime 50 000 tomos",
+                "right": "Más oferta: el precio baja"
+              }
+            ],
+            "completion_feedback": "La **demanda** baja cuando sube el precio y la **oferta** sube con él. Si la demanda supera a la oferta hay **escasez** y el precio sube; si sobra producto, baja. En el **equilibrio** se igualan."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fichajes",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Tres clubes gigantes quieren al goleador",
+                "right": "El precio sube por la puja"
+              },
+              {
+                "left": "Ningún club busca al jugador",
+                "right": "Sale gratis o barato"
+              },
+              {
+                "left": "Solo hay un talento así",
+                "right": "Oferta escasísima"
+              }
+            ],
+            "completion_feedback": "La **demanda** baja cuando sube el precio y la **oferta** sube con él. Si la demanda supera a la oferta hay **escasez** y el precio sube; si sobra producto, baja. En el **equilibrio** se igualan."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gira de Stray Kids",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "200 000 STAY intentan comprar",
+                "right": "Demanda"
+              },
+              {
+                "left": "20 000 lugares en el estadio",
+                "right": "Oferta"
+              },
+              {
+                "left": "Abren 5 fechas en vez de 1",
+                "right": "100 000 boletos"
+              },
+              {
+                "left": "Más fechas, misma demanda",
+                "right": "Baja la reventa"
+              }
+            ],
+            "completion_feedback": "La **demanda** baja cuando sube el precio y la **oferta** sube con él. Si la demanda supera a la oferta hay **escasez** y el precio sube; si sobra producto, baja. En el **equilibrio** se igualan."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Emote de Fortnite",
+            "right_label": "Situación",
+            "pairs": [
+              {
+                "left": "A 200 paVos",
+                "right": "Escasez: demanda > oferta"
+              },
+              {
+                "left": "A 800 paVos",
+                "right": "Excedente: oferta > demanda"
+              },
+              {
+                "left": "A 500 paVos",
+                "right": "Equilibrio: 7000 y 7000"
+              }
+            ],
+            "completion_feedback": "La **demanda** baja cuando sube el precio y la **oferta** sube con él. Si la demanda supera a la oferta hay **escasez** y el precio sube; si sobra producto, baja. En el **equilibrio** se igualan."
+          }
+        }
+      }
+    },
+    "el-mercado-y-sus-tipos": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa cuando una sola empresa controla un producto",
+        "steps": [
+          "Una empresa es la única que vende un producto sin sustituto",
+          "El comprador no tiene con quién más ir",
+          "La empresa sube el precio sin perder clientes",
+          "El Estado regula o abre el mercado para proteger al consumidor"
+        ],
+        "completion_feedback": "Sin **competencia** ni **sustitutos**, el **monopolio** fija el precio; por eso el Estado vigila a los mercados con mucho poder. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mazmorras",
+            "right_label": "Mercado",
+            "pairs": [
+              {
+                "left": "Rango E: cientos de cazadores",
+                "right": "Competencia"
+              },
+              {
+                "left": "Rango S: 3 o 4 gremios de élite",
+                "right": "Oligopolio"
+              },
+              {
+                "left": "Trabajo que solo Jinwoo puede hacer",
+                "right": "Monopolio"
+              }
+            ],
+            "completion_feedback": "El tipo de mercado depende de **cuántos venden**: muchos con productos parecidos = **competencia**; pocos que dominan = **oligopolio**; uno solo sin sustituto = **monopolio**. Menos vendedores, más poder sobre el precio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Día de clásico",
+            "right_label": "Mercado",
+            "pairs": [
+              {
+                "left": "Decenas de ambulantes con bufandas",
+                "right": "Competencia"
+              },
+              {
+                "left": "Único puesto de comida adentro",
+                "right": "Monopolio"
+              },
+              {
+                "left": "Dos o tres cadenas con los derechos",
+                "right": "Oligopolio"
+              }
+            ],
+            "completion_feedback": "El tipo de mercado depende de **cuántos venden**: muchos con productos parecidos = **competencia**; pocos que dominan = **oligopolio**; uno solo sin sustituto = **monopolio**. Menos vendedores, más poder sobre el precio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Industria K-pop",
+            "right_label": "Mercado",
+            "pairs": [
+              {
+                "left": "HYBE, SM, JYP y YG",
+                "right": "Oligopolio"
+              },
+              {
+                "left": "Miles de fans revenden photocards",
+                "right": "Competencia"
+              },
+              {
+                "left": "Una sola app con todos los conciertos",
+                "right": "Monopolio"
+              }
+            ],
+            "completion_feedback": "El tipo de mercado depende de **cuántos venden**: muchos con productos parecidos = **competencia**; pocos que dominan = **oligopolio**; uno solo sin sustituto = **monopolio**. Menos vendedores, más poder sobre el precio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mundo gamer",
+            "right_label": "Mercado",
+            "pairs": [
+              {
+                "left": "Miles de juegos dentro de Roblox",
+                "right": "Competencia"
+              },
+              {
+                "left": "Solo Roblox vende Robux",
+                "right": "Monopolio"
+              },
+              {
+                "left": "PlayStation, Xbox y Nintendo",
+                "right": "Oligopolio"
+              }
+            ],
+            "completion_feedback": "El tipo de mercado depende de **cuántos venden**: muchos con productos parecidos = **competencia**; pocos que dominan = **oligopolio**; uno solo sin sustituto = **monopolio**. Menos vendedores, más poder sobre el precio."
+          }
+        }
+      }
+    },
+    "factores-de-la-produccion": {
+      "order_steps": {
+        "prompt": "Ordena cómo se forma el capital de una empresa",
+        "steps": [
+          "Alguien ahorra parte de su ingreso",
+          "Ese ahorro se presta o se invierte",
+          "Con él se compran máquinas y herramientas",
+          "Las máquinas permiten producir más",
+          "Más producción genera más ingreso para volver a ahorrar"
+        ],
+        "completion_feedback": "El **capital** son bienes hechos para producir otros bienes; nace del **ahorro** y la **inversión**, y por eso su pago es el **interés**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudio de anime",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Terreno donde está el estudio",
+                "right": "Tierra"
+              },
+              {
+                "left": "Tabletas gráficas y servidores",
+                "right": "Capital"
+              },
+              {
+                "left": "Animadores y seiyuus",
+                "right": "Trabajo"
+              },
+              {
+                "left": "Productor que invierte y coordina",
+                "right": "Organización"
+              }
+            ],
+            "completion_feedback": "Los factores son **tierra** (recursos naturales), **trabajo** (esfuerzo humano), **capital** (máquinas y herramientas) y **organización** (quien coordina y arriesga). Se pagan con renta, salario, interés y ganancia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de fútbol",
+            "right_label": "Pago que recibe",
+            "pairs": [
+              {
+                "left": "Futbolista por jugar",
+                "right": "Salario"
+              },
+              {
+                "left": "Banco que prestó para el estadio",
+                "right": "Interés"
+              },
+              {
+                "left": "Dueño del terreno que el club renta",
+                "right": "Renta"
+              },
+              {
+                "left": "Dueños del club si hay utilidades",
+                "right": "Ganancia"
+              }
+            ],
+            "completion_feedback": "Los factores son **tierra** (recursos naturales), **trabajo** (esfuerzo humano), **capital** (máquinas y herramientas) y **organización** (quien coordina y arriesga). Se pagan con renta, salario, interés y ganancia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback de TXT",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Terreno donde está el set",
+                "right": "Tierra"
+              },
+              {
+                "left": "Cámaras, luces y software",
+                "right": "Capital"
+              },
+              {
+                "left": "Miembros, coreógrafos y estilistas",
+                "right": "Trabajo"
+              },
+              {
+                "left": "Agencia que decide e invierte",
+                "right": "Organización"
+              }
+            ],
+            "completion_feedback": "Los factores son **tierra** (recursos naturales), **trabajo** (esfuerzo humano), **capital** (máquinas y herramientas) y **organización** (quien coordina y arriesga). Se pagan con renta, salario, interés y ganancia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estudio indie",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Terreno donde está la oficina",
+                "right": "Tierra"
+              },
+              {
+                "left": "Computadoras y motor del juego",
+                "right": "Capital"
+              },
+              {
+                "left": "Programadores y artistas",
+                "right": "Trabajo"
+              },
+              {
+                "left": "Fundador que arriesga su dinero",
+                "right": "Organización"
+              }
+            ],
+            "completion_feedback": "Los factores son **tierra** (recursos naturales), **trabajo** (esfuerzo humano), **capital** (máquinas y herramientas) y **organización** (quien coordina y arriesga). Se pagan con renta, salario, interés y ganancia."
+          }
+        }
+      }
+    },
+    "dinero-banca-e-inflacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la inflación si una torta pasó de $40 a $50",
+        "steps": [
+          "Resta precio nuevo menos viejo: 50 − 40 = 10",
+          "Divide el aumento entre el precio viejo: 10 ÷ 40 = 0.25",
+          "Multiplica por 100: 0.25 × 100 = 25",
+          "La inflación de la torta fue de 25%"
+        ],
+        "completion_feedback": "La **inflación** se mide contra el **precio viejo**: si los precios suben 25%, tu dinero compra menos y **pierde poder adquisitivo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Berries",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Vale porque todos lo aceptan",
+                "right": "Dinero fiduciario"
+              },
+              {
+                "left": "El Gobierno emite sin parar",
+                "right": "Más dinero en circulación"
+              },
+              {
+                "left": "La manzana pasa de 100 a 500",
+                "right": "Inflación"
+              },
+              {
+                "left": "Nami compra menos carne que antes",
+                "right": "Pierde poder adquisitivo"
+              }
+            ],
+            "completion_feedback": "El dinero vale por **confianza** (es fiduciario). Los **bancos** guardan ahorros, prestan y ganan con la diferencia de **intereses**. Si se emite demasiado dinero, los precios suben: **inflación**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fichajes",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "De 40 a 50 millones",
+                "right": "25% de inflación"
+              },
+              {
+                "left": "De 20 a 60 millones",
+                "right": "200% de aumento"
+              },
+              {
+                "left": "Precios que se disparan mes con mes",
+                "right": "Hiperinflación"
+              },
+              {
+                "left": "Presupuesto que ya no alcanza",
+                "right": "Menos poder adquisitivo"
+              }
+            ],
+            "completion_feedback": "El dinero vale por **confianza** (es fiduciario). Los **bancos** guardan ahorros, prestan y ganan con la diferencia de **intereses**. Si se emite demasiado dinero, los precios suben: **inflación**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ahorro de SVT",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Depósito inicial",
+                "right": "1 000 000 de pesos"
+              },
+              {
+                "left": "Interés anual del 4%",
+                "right": "40 000 pesos"
+              },
+              {
+                "left": "Total en un año",
+                "right": "1 040 000 pesos"
+              },
+              {
+                "left": "Cobra 12% y paga 4%",
+                "right": "Ganancia del banco"
+              }
+            ],
+            "completion_feedback": "El dinero vale por **confianza** (es fiduciario). Los **bancos** guardan ahorros, prestan y ganan con la diferencia de **intereses**. Si se emite demasiado dinero, los precios suben: **inflación**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Servidor",
+            "right_label": "Qué pasa",
+            "pairs": [
+              {
+                "left": "Dupe glitch de diamantes",
+                "right": "Más dinero en circulación"
+              },
+              {
+                "left": "Poción de 10 a 13 diamantes",
+                "right": "30% de inflación"
+              },
+              {
+                "left": "Tu cofre compra menos que antes",
+                "right": "Pierde poder adquisitivo"
+              },
+              {
+                "left": "El admin borra los duplicados",
+                "right": "Menos dinero en circulación"
+              }
+            ],
+            "completion_feedback": "El dinero vale por **confianza** (es fiduciario). Los **bancos** guardan ahorros, prestan y ganan con la diferencia de **intereses**. Si se emite demasiado dinero, los precios suben: **inflación**."
+          }
+        }
+      }
+    },
+    "macroeconomia-pib-e-indicadores": {
+      "order_steps": {
+        "prompt": "Ordena cómo comparas el nivel de vida de dos países",
+        "steps": [
+          "Anota el PIB y la población de cada país",
+          "Divide el PIB entre la población de cada uno",
+          "Compara los resultados por persona",
+          "El de mayor PIB per cápita tiene mejor nivel de vida promedio"
+        ],
+        "completion_feedback": "Un **PIB total** grande puede engañar si hay mucha población; el **PIB per cápita** compara por persona, aunque sigue siendo un **promedio** que oculta la desigualdad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reinos",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "Reino A: 100 000 entre 50",
+                "right": "2 000 por héroe"
+              },
+              {
+                "left": "Reino B: 80 000 entre 20",
+                "right": "4 000 por héroe"
+              },
+              {
+                "left": "Mayor PIB total",
+                "right": "Reino A"
+              },
+              {
+                "left": "Mejor nivel de vida promedio",
+                "right": "Reino B"
+              }
+            ],
+            "completion_feedback": "El **PIB** suma lo producido **dentro** de un país; el **PNB**, lo producido por **sus ciudadanos** donde sea. El **PIB per cápita** lo reparte por persona, y la **inflación** y el **desempleo** completan el diagnóstico."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Stat del equipo",
+            "right_label": "Indicador del país",
+            "pairs": [
+              {
+                "left": "Goles a favor en la temporada",
+                "right": "PIB: lo que produce"
+              },
+              {
+                "left": "Promedio de goles por jugador",
+                "right": "PIB per cápita"
+              },
+              {
+                "left": "Jugadores sin minutos en la banca",
+                "right": "Desempleo"
+              },
+              {
+                "left": "Cuánto sube el precio del boleto",
+                "right": "Inflación"
+              }
+            ],
+            "completion_feedback": "El **PIB** suma lo producido **dentro** de un país; el **PNB**, lo producido por **sus ciudadanos** donde sea. El **PIB per cápita** lo reparte por persona, y la **inflación** y el **desempleo** completan el diagnóstico."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto",
+            "right_label": "Cuenta en",
+            "pairs": [
+              {
+                "left": "IVE en Seúl",
+                "right": "PIB y PNB coreanos"
+              },
+              {
+                "left": "BLACKPINK en París",
+                "right": "Solo PNB coreano"
+              },
+              {
+                "left": "Banda de EE.UU. en Seúl",
+                "right": "Solo PIB coreano"
+              }
+            ],
+            "completion_feedback": "El **PIB** suma lo producido **dentro** de un país; el **PNB**, lo producido por **sus ciudadanos** donde sea. El **PIB per cápita** lo reparte por persona, y la **inflación** y el **desempleo** completan el diagnóstico."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Economía Valorant",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "PIB del año pasado",
+                "right": "200 millones"
+              },
+              {
+                "left": "PIB de este año",
+                "right": "230 millones"
+              },
+              {
+                "left": "Crecimiento",
+                "right": "15%"
+              },
+              {
+                "left": "Si el PIB hubiera bajado",
+                "right": "Contracción"
+              }
+            ],
+            "completion_feedback": "El **PIB** suma lo producido **dentro** de un país; el **PNB**, lo producido por **sus ciudadanos** donde sea. El **PIB per cápita** lo reparte por persona, y la **inflación** y el **desempleo** completan el diagnóstico."
+          }
+        }
+      }
+    },
+    "comercio-internacional": {
+      "order_steps": {
+        "prompt": "Ordena cómo un arancel cambia el precio de un jersey importado",
+        "steps": [
+          "Toma el precio del jersey importado: $1000",
+          "Calcula el arancel del 20%: 1000 × 0.20 = $200",
+          "Súmalo al precio: 1000 + 200 = $1200",
+          "Compara con el nacional de $1100: ahora el importado es más caro"
+        ],
+        "completion_feedback": "El **arancel** encarece lo importado para proteger a los productores nacionales o para recaudar: eso es **proteccionismo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Japón",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Vende anime y manga al mundo",
+                "right": "Exportación"
+              },
+              {
+                "left": "Compra materias primas fuera",
+                "right": "Importación"
+              },
+              {
+                "left": "Se especializa en lo que hace mejor",
+                "right": "Ventaja comparativa"
+              }
+            ],
+            "completion_feedback": "**Exportar** es vender a otros países e **importar**, comprarles. La **balanza comercial** = exportaciones − importaciones: negativa es **déficit**, positiva es **superávit**. El **arancel** grava lo importado."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jersey importado",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Precio antes de impuestos",
+                "right": "$1000"
+              },
+              {
+                "left": "Arancel del 20%",
+                "right": "$200"
+              },
+              {
+                "left": "Precio final",
+                "right": "$1200"
+              },
+              {
+                "left": "Jersey nacional a $1100",
+                "right": "Ahora es la opción barata"
+              }
+            ],
+            "completion_feedback": "**Exportar** es vender a otros países e **importar**, comprarles. La **balanza comercial** = exportaciones − importaciones: negativa es **déficit**, positiva es **superávit**. El **arancel** grava lo importado."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Fans en el extranjero: 200 millones",
+                "right": "Exportación"
+              },
+              {
+                "left": "Fans dentro de Corea: 50 millones",
+                "right": "Consumo interno"
+              },
+              {
+                "left": "Dólares que entran a Corea",
+                "right": "Divisas"
+              },
+              {
+                "left": "Hallyu",
+                "right": "Ola Coreana"
+              }
+            ],
+            "completion_feedback": "**Exportar** es vender a otros países e **importar**, comprarles. La **balanza comercial** = exportaciones − importaciones: negativa es **déficit**, positiva es **superávit**. El **arancel** grava lo importado."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Balanza gamer",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Exportó juegos por",
+                "right": "500 millones"
+              },
+              {
+                "left": "Importó juegos por",
+                "right": "800 millones"
+              },
+              {
+                "left": "Exportaciones − importaciones",
+                "right": "−300 millones"
+              },
+              {
+                "left": "Resultado negativo",
+                "right": "Déficit comercial"
+              }
+            ],
+            "completion_feedback": "**Exportar** es vender a otros países e **importar**, comprarles. La **balanza comercial** = exportaciones − importaciones: negativa es **déficit**, positiva es **superávit**. El **arancel** grava lo importado."
+          }
+        }
+      }
+    }
+  }
+}
