@@ -1,0 +1,710 @@
+{
+  "subject": "temas-selectos-quimica",
+  "topics": {
+    "cinetica-quimica": {
+      "order_steps": {
+        "prompt": "Ordena cómo ocurre una reacción según la teoría de colisiones",
+        "steps": [
+          "Las partículas de reactivo se acercan y chocan",
+          "El choque supera la energía de activación con buena orientación",
+          "Se rompen los enlaces de los reactivos",
+          "Se forman los enlaces de los productos"
+        ],
+        "completion_feedback": "Solo hay reacción si el **choque** trae **energía suficiente** (≥ Ea) y **orientación correcta**. Entonces se rompen enlaces y se forman **productos**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dungeon de Jinwoo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Subir el mana del combate",
+                "right": "Temperatura"
+              },
+              {
+                "left": "Llenar el gate de monstruos",
+                "right": "Concentración"
+              },
+              {
+                "left": "Energía mínima para un golpe útil",
+                "right": "Energía de activación"
+              },
+              {
+                "left": "Monstruos derrotados por minuto",
+                "right": "Velocidad de reacción"
+              }
+            ],
+            "completion_feedback": "Subir la **temperatura** o la **concentración** aumenta los choques útiles. La **energía de activación** es la barrera mínima y la **velocidad** mide cuánto cambia por segundo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bloque bajo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "La defensa metida atrás",
+                "right": "Energía de activación"
+              },
+              {
+                "left": "El pase que abre el camino",
+                "right": "Catalizador"
+              },
+              {
+                "left": "Lamine sigue en la cancha",
+                "right": "No se consume"
+              },
+              {
+                "left": "Los goles caen más seguido",
+                "right": "Mayor velocidad"
+              }
+            ],
+            "completion_feedback": "El **catalizador** ofrece una ruta con menor **energía de activación**, aumenta la velocidad y **no se consume**. No cambia los productos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo de SVT",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Subir el tempo un nivel",
+                "right": "+10 °C"
+              },
+              {
+                "left": "20 → 40 sincronías por minuto",
+                "right": "Velocidad ×2"
+              },
+              {
+                "left": "Subir dos niveles de tempo",
+                "right": "Velocidad ×4"
+              },
+              {
+                "left": "Los 13 pegados, sin huecos",
+                "right": "Más concentración"
+              }
+            ],
+            "completion_feedback": "Como regla aproximada, cada **+10 °C** duplica la velocidad: dos saltos la multiplican **×4**. Juntar más partículas sube la **concentración** y los choques."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Vaporización",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Hydro y Pyro se tocan",
+                "right": "Choque"
+              },
+              {
+                "left": "Golpe con fuerza suficiente",
+                "right": "Energía ≥ Ea"
+              },
+              {
+                "left": "Pyro sobre el aura correcta",
+                "right": "Orientación"
+              },
+              {
+                "left": "Pyro tarde, el aura ya se fue",
+                "right": "Sin reacción"
+              }
+            ],
+            "completion_feedback": "Un choque es **efectivo** solo con **energía** suficiente y la **orientación** correcta. Si falta una condición, **no hay reacción**."
+          }
+        }
+      }
+    },
+    "equilibrio-quimico": {
+      "order_steps": {
+        "prompt": "Ordena cómo responde un equilibrio al agregar reactivo",
+        "steps": [
+          "El sistema está en equilibrio: directa = inversa",
+          "Agregas más reactivo",
+          "La reacción directa se acelera y gana",
+          "Se forma más producto hasta igualar las velocidades",
+          "Se alcanza un nuevo equilibrio"
+        ],
+        "completion_feedback": "Por **Le Chatelier**, al agregar reactivo el sistema se desplaza hacia **productos** hasta que las velocidades vuelven a igualarse en un **nuevo equilibrio**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Muro María",
+            "right_label": "Qué significa",
+            "pairs": [
+              {
+                "left": "Kc = 0.25",
+                "right": "Favorece reactivos"
+              },
+              {
+                "left": "Kc = 4",
+                "right": "Favorece productos"
+              },
+              {
+                "left": "Lo único que cambia Kc",
+                "right": "La temperatura"
+              },
+              {
+                "left": "Titanes entran y salen igual",
+                "right": "Equilibrio dinámico"
+              }
+            ],
+            "completion_feedback": "**Kc > 1** favorece productos y **Kc < 1**, reactivos. Kc solo cambia con la **temperatura**. En equilibrio, ambos sentidos van igual de rápido."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mediocampo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Recupera 5 y pierde 5 por minuto",
+                "right": "Directa = inversa"
+              },
+              {
+                "left": "La posesión se queda en 50/50",
+                "right": "Constante"
+              },
+              {
+                "left": "El balón nunca deja de moverse",
+                "right": "Dinámico"
+              },
+              {
+                "left": "Meten otro mediocampista",
+                "right": "Se desplaza"
+              }
+            ],
+            "completion_feedback": "En el **equilibrio dinámico**, la velocidad **directa** iguala a la **inversa**: lo observable queda constante, pero el proceso nunca se detiene."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Trades de STAY",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Entran muchas repetidas",
+                "right": "Agregar reactivo"
+              },
+              {
+                "left": "Se cierran más trades",
+                "right": "Desplaza a productos"
+              },
+              {
+                "left": "El ritmo se estabiliza",
+                "right": "Nuevo equilibrio"
+              },
+              {
+                "left": "El sistema compensa el cambio",
+                "right": "Le Chatelier"
+              }
+            ],
+            "completion_feedback": "Si **agregas reactivo**, el sistema lo consume y se **desplaza a productos** hasta un **nuevo equilibrio**: eso dice **Le Chatelier**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Control de mid",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Atacantes entrando a mid",
+                "right": "Velocidad directa"
+              },
+              {
+                "left": "Defensores que los repelen",
+                "right": "Velocidad inversa"
+              },
+              {
+                "left": "Mid sin cambio neto",
+                "right": "Equilibrio"
+              },
+              {
+                "left": "El IGL manda dos más",
+                "right": "Perturbación"
+              }
+            ],
+            "completion_feedback": "La **directa** y la **inversa** se igualan y el control de mid ya no cambia: **equilibrio**. Una **perturbación** lo desplaza hasta otro."
+          }
+        }
+      }
+    },
+    "termoquimica": {
+      "order_steps": {
+        "prompt": "Ordena cómo se clasifica un proceso con ΔH",
+        "steps": [
+          "Identifica la entalpía de productos y de reactivos",
+          "Resta: ΔH = H(productos) − H(reactivos)",
+          "Revisa el signo del resultado",
+          "Negativo es exotérmico, positivo es endotérmico"
+        ],
+        "completion_feedback": "Calcula **ΔH = H(productos) − H(reactivos)** y lee el signo: **negativo** = exotérmico (libera), **positivo** = endotérmico (absorbe). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Quirk de Todoroki",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Llamarada del lado izquierdo",
+                "right": "Exotérmico"
+              },
+              {
+                "left": "Le roba calor al aire para congelar",
+                "right": "Endotérmico"
+              },
+              {
+                "left": "Signo de ΔH del fuego",
+                "right": "Negativo"
+              },
+              {
+                "left": "Signo de ΔH del hielo",
+                "right": "Positivo"
+              }
+            ],
+            "completion_feedback": "El **fuego** libera calor: **exotérmico**, ΔH **negativo**. El lado de **hielo** absorbe calor del entorno: **endotérmico**, ΔH **positivo**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El Bebote",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "El agua del baño de hielo",
+                "right": "Absorbe calor"
+              },
+              {
+                "left": "Quemar nutrientes al correr",
+                "right": "Libera calor"
+              },
+              {
+                "left": "4 sprints de −60 kJ cada uno",
+                "right": "−240 kJ"
+              },
+              {
+                "left": "H(productos) − H(reactivos)",
+                "right": "Cambio de entalpía"
+              }
+            ],
+            "completion_feedback": "El agua del baño **absorbe calor** y quemar nutrientes lo **libera**. Los ΔH se suman: 4 × (−60 kJ) = **−240 kJ**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Show de TXT",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Pirotecnia en el clímax",
+                "right": "Exotérmica"
+              },
+              {
+                "left": "Pack frío en la nuca",
+                "right": "Endotérmico"
+              },
+              {
+                "left": "5 packs de +25 kJ",
+                "right": "+125 kJ"
+              },
+              {
+                "left": "Energía a presión constante",
+                "right": "Entalpía"
+              }
+            ],
+            "completion_feedback": "La pirotecnia es **exotérmica** y el pack frío, **endotérmico**. Los ΔH se suman: 5 × 25 kJ = **+125 kJ**. La **entalpía** es la energía a presión constante."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Horno de Minecraft",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Carbón ardiendo en el horno",
+                "right": "ΔH < 0"
+              },
+              {
+                "left": "Hielo que se derrite",
+                "right": "ΔH > 0"
+              },
+              {
+                "left": "3 carbones de −40 kJ",
+                "right": "−120 kJ"
+              }
+            ],
+            "completion_feedback": "Quemar carbón libera energía (**ΔH < 0**) y derretir hielo la absorbe (**ΔH > 0**). Para varias unidades, multiplica: 3 × (−40 kJ) = **−120 kJ**."
+          }
+        }
+      }
+    },
+    "electroquimica": {
+      "order_steps": {
+        "prompt": "Ordena cómo se balancea una reacción redox",
+        "steps": [
+          "Separa la reacción en dos semirreacciones",
+          "Cuenta los electrones de cada una",
+          "Iguala los electrones con el mínimo común múltiplo",
+          "Suma las semirreacciones y cancela los electrones"
+        ],
+        "completion_feedback": "Separa en **semirreacciones**, iguala los **electrones** con el mínimo común múltiplo y suma. Los electrones perdidos siempre igualan a los ganados. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poder de Denji",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Pierde electrones",
+                "right": "Oxidación"
+              },
+              {
+                "left": "Gana electrones",
+                "right": "Reducción"
+              },
+              {
+                "left": "Se oxida y reduce al otro",
+                "right": "Agente reductor"
+              },
+              {
+                "left": "Se reduce y oxida al otro",
+                "right": "Agente oxidante"
+              }
+            ],
+            "completion_feedback": "**Oxidación** es perder electrones y **reducción**, ganarlos. El que se oxida es el **agente reductor** y el que se reduce, el **agente oxidante**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Trofeo de plata",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Pila que da corriente sola",
+                "right": "Celda galvánica"
+              },
+              {
+                "left": "Bañar en plata el trofeo",
+                "right": "Celda electrolítica"
+              },
+              {
+                "left": "Donde ocurre la oxidación",
+                "right": "Ánodo"
+              },
+              {
+                "left": "Donde se deposita la plata",
+                "right": "Cátodo"
+              }
+            ],
+            "completion_feedback": "La **galvánica** genera corriente sola y la **electrolítica** la necesita para forzar la reacción. La oxidación ocurre en el **ánodo** y la reducción en el **cátodo**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lightstick",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Mg → Mg²⁺ + 2e⁻",
+                "right": "Oxidación"
+              },
+              {
+                "left": "Ag⁺ + e⁻ → Ag",
+                "right": "Reducción"
+              },
+              {
+                "left": "Iones de plata por cada Mg",
+                "right": "2"
+              },
+              {
+                "left": "Mg + 2Ag⁺ → Mg²⁺ + 2Ag",
+                "right": "Reacción global"
+              }
+            ],
+            "completion_feedback": "El magnesio se **oxida** soltando 2 e⁻ y cada ion de plata se **reduce** con 1 e⁻. Por eso se necesitan **2 Ag⁺** por cada Mg."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pila Zn–Cu",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Zn → Zn²⁺ + 2e⁻",
+                "right": "Ánodo"
+              },
+              {
+                "left": "Cu²⁺ + 2e⁻ → Cu",
+                "right": "Cátodo"
+              },
+              {
+                "left": "Camino de los electrones",
+                "right": "Del ánodo al cátodo"
+              },
+              {
+                "left": "Redox que ocurre sola",
+                "right": "Celda galvánica"
+              }
+            ],
+            "completion_feedback": "En la **celda galvánica**, el zinc se oxida en el **ánodo** y el cobre se reduce en el **cátodo**. Los electrones viajan **del ánodo al cátodo**."
+          }
+        }
+      }
+    },
+    "quimica-organica-avanzada": {
+      "order_steps": {
+        "prompt": "Ordena cómo se nombra un compuesto con grupo funcional",
+        "steps": [
+          "Localiza el grupo funcional",
+          "Identifica la familia del compuesto",
+          "Numera la cadena desde el extremo más cercano al grupo",
+          "Escribe el nombre con el número de posición"
+        ],
+        "completion_feedback": "Primero el **grupo funcional**, que decide la **familia**. Luego numera la cadena por el extremo más cercano al grupo y escribe su **posición** en el nombre. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sombras espejo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Carbono con cuatro grupos distintos",
+                "right": "Carbono quiral"
+              },
+              {
+                "left": "Imágenes espejo no superponibles",
+                "right": "Enantiómeros"
+              },
+              {
+                "left": "No encajar con su reflejo",
+                "right": "Quiralidad"
+              },
+              {
+                "left": "Lo que desvían en sentidos opuestos",
+                "right": "Luz polarizada"
+              }
+            ],
+            "completion_feedback": "Un **carbono quiral** tiene cuatro grupos distintos y da **enantiómeros**: imágenes espejo no superponibles que desvían la **luz polarizada** en sentidos opuestos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bellingham 8 o 10",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "−OH en el carbono 1",
+                "right": "1-propanol"
+              },
+              {
+                "left": "−OH en el carbono 2",
+                "right": "2-propanol"
+              },
+              {
+                "left": "Misma fórmula, otro carbono",
+                "right": "Isómeros de posición"
+              },
+              {
+                "left": "Fórmula de ambos",
+                "right": "C₃H₇OH"
+              }
+            ],
+            "completion_feedback": "**1-propanol** y **2-propanol** comparten **C₃H₇OH** y el grupo −OH, pero en distinto carbono: son **isómeros de posición**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El center de IVE",
+            "right_label": "Familia",
+            "pairs": [
+              {
+                "left": "−OH",
+                "right": "Alcohol"
+              },
+              {
+                "left": "−COOH",
+                "right": "Ácido carboxílico"
+              },
+              {
+                "left": "−CHO",
+                "right": "Aldehído"
+              },
+              {
+                "left": "−NH₂",
+                "right": "Amina"
+              }
+            ],
+            "completion_feedback": "El **grupo funcional** decide la familia: **−OH** alcohol, **−COOH** ácido carboxílico, **−CHO** aldehído y **−NH₂** amina."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Build battle",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "4 carbonos en fila",
+                "right": "Butano"
+              },
+              {
+                "left": "3 en fila y 1 de rama",
+                "right": "Isobutano"
+              },
+              {
+                "left": "Fórmula de ambos",
+                "right": "C₄H₁₀"
+              },
+              {
+                "left": "Misma fórmula, distinta conexión",
+                "right": "Isómeros estructurales"
+              }
+            ],
+            "completion_feedback": "**Butano** e **isobutano** usan el mismo inventario, **C₄H₁₀**, pero conectado distinto: son **isómeros estructurales** con propiedades distintas."
+          }
+        }
+      }
+    },
+    "polimeros-y-bioquimica": {
+      "order_steps": {
+        "prompt": "Ordena de lo más pequeño a lo más grande",
+        "steps": [
+          "Aminoácido: el monómero",
+          "Enlace peptídico entre dos aminoácidos",
+          "Cadena con una secuencia específica",
+          "Proteína con una función en el cuerpo"
+        ],
+        "completion_feedback": "Los **aminoácidos** se unen por **enlaces peptídicos** en una **secuencia** específica, y esa secuencia define la **proteína** y su función. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poneglyph de ADN",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Pareja de la adenina (A)",
+                "right": "Timina (T)"
+              },
+              {
+                "left": "Pareja de la citosina (C)",
+                "right": "Guanina (G)"
+              },
+              {
+                "left": "Monómero del ADN",
+                "right": "Nucleótido"
+              },
+              {
+                "left": "Complementaria de G–C–A",
+                "right": "C–G–T"
+              }
+            ],
+            "completion_feedback": "El ADN se arma con **nucleótidos** y sus bases se aparean fijo: **A–T** y **C–G**. Por eso de una hebra sale su complementaria."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pasta de Lamine",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Unidad de azúcar",
+                "right": "Glucosa"
+              },
+              {
+                "left": "Reserva de energía en la pasta",
+                "right": "Almidón"
+              },
+              {
+                "left": "Reserva en tus músculos",
+                "right": "Glucógeno"
+              },
+              {
+                "left": "500 glucosas × 4 unidades",
+                "right": "2 000 unidades"
+              }
+            ],
+            "completion_feedback": "La **glucosa** es el monómero. Unidas forman **almidón** (plantas) y **glucógeno** (músculo), reservas que el cuerpo rompe para obtener energía."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pulsera de STAY",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Cada cuenta de la pulsera",
+                "right": "Aminoácido"
+              },
+              {
+                "left": "Cada nudito entre cuentas",
+                "right": "Enlace peptídico"
+              },
+              {
+                "left": "Enlaces para 6 aminoácidos",
+                "right": "5"
+              },
+              {
+                "left": "La pulsera completa",
+                "right": "Proteína"
+              }
+            ],
+            "completion_feedback": "Los **aminoácidos** se unen por **enlaces peptídicos**: para n aminoácidos hay **n − 1** enlaces. La cadena completa es la **proteína**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Telaraña",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Unidad que se repite",
+                "right": "Monómero"
+              },
+              {
+                "left": "El hilo completo",
+                "right": "Polímero"
+              },
+              {
+                "left": "Unir unidades en cadena",
+                "right": "Polimerización"
+              },
+              {
+                "left": "300 unidades de 50 u",
+                "right": "15 000 u"
+              }
+            ],
+            "completion_feedback": "El **monómero** se repite y, por **polimerización**, forma el **polímero**. Su masa es la del monómero por el número de unidades: 300 × 50 = **15 000 u**."
+          }
+        }
+      }
+    }
+  }
+}
