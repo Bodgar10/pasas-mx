@@ -1,0 +1,1056 @@
+{
+  "subject": "lengua-comunicacion-1",
+  "topics": {
+    "el-proceso-comunicativo-y-sus-elementos": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de un mensaje",
+        "steps": [
+          "El emisor tiene una idea y decide comunicarla",
+          "La convierte en mensaje usando un código (el idioma)",
+          "El mensaje viaja por un canal: voz, papel o internet",
+          "El receptor lo recibe y lo descifra",
+          "El receptor responde: eso es la retroalimentación"
+        ],
+        "completion_feedback": "El **emisor** codifica un **mensaje** que viaja por un **canal** hasta el **receptor**, quien lo descifra y puede responder con **retroalimentación**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Llamada de Nami",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Nami, que avisa por el caracol",
+                "right": "Emisor"
+              },
+              {
+                "left": "Luffy, que escucha en otra isla",
+                "right": "Receptor"
+              },
+              {
+                "left": "El Den Den Mushi",
+                "right": "Canal"
+              },
+              {
+                "left": "'¡La Marina se acerca!'",
+                "right": "Mensaje"
+              }
+            ],
+            "completion_feedback": "Elementos: **emisor**, **receptor**, **mensaje**, **código** (idioma o señas), **canal** (medio) y **contexto**. El **ruido** estorba y la **retroalimentación** cierra el ciclo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el estadio",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "El DT que da la indicación",
+                "right": "Emisor"
+              },
+              {
+                "left": "Las señas practicadas en entreno",
+                "right": "Código"
+              },
+              {
+                "left": "El grito de 80,000 aficionados",
+                "right": "Ruido"
+              },
+              {
+                "left": "Mbappé, que ve las señas",
+                "right": "Receptor"
+              }
+            ],
+            "completion_feedback": "Elementos: **emisor**, **receptor**, **mensaje**, **código** (idioma o señas), **canal** (medio) y **contexto**. El **ruido** estorba y la **retroalimentación** cierra el ciclo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chan's Room",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "Bang Chan hablando a cámara",
+                "right": "Emisor"
+              },
+              {
+                "left": "Coreano e inglés",
+                "right": "Código"
+              },
+              {
+                "left": "Internet y la plataforma del live",
+                "right": "Canal"
+              },
+              {
+                "left": "Un STAY le responde en el chat",
+                "right": "Retroalimentación"
+              }
+            ],
+            "completion_feedback": "Elementos: **emisor**, **receptor**, **mensaje**, **código** (idioma o señas), **canal** (medio) y **contexto**. El **ruido** estorba y la **retroalimentación** cierra el ciclo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Callout",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "'¡Uno en mid, low health!'",
+                "right": "Mensaje"
+              },
+              {
+                "left": "Tu dúo con audífonos",
+                "right": "Receptor"
+              },
+              {
+                "left": "El micro y la conexión",
+                "right": "Canal"
+              },
+              {
+                "left": "La ronda en Ascent",
+                "right": "Contexto"
+              }
+            ],
+            "completion_feedback": "Elementos: **emisor**, **receptor**, **mensaje**, **código** (idioma o señas), **canal** (medio) y **contexto**. El **ruido** estorba y la **retroalimentación** cierra el ciclo."
+          }
+        }
+      }
+    },
+    "funciones-de-la-lengua": {
+      "order_steps": {
+        "prompt": "Identifica la función de '¡Pushen ya, vamos!'",
+        "steps": [
+          "Lee la frase completa: '¡Pushen ya, vamos!'",
+          "Descarta: no informa un dato ni expresa una emoción propia",
+          "Detecta el foco: busca que el receptor haga algo",
+          "Conclusión: predomina la función apelativa"
+        ],
+        "completion_feedback": "Cada función mira un elemento: **referencial** → contexto, **emotiva** → emisor, **apelativa** → receptor, **fática** → canal, **metalingüística** → código, **poética** → mensaje. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "'El enemigo está en el ala este'",
+                "right": "Referencial"
+              },
+              {
+                "left": "'¡No voy a perder!'",
+                "right": "Emotiva"
+              },
+              {
+                "left": "'¡Retrocedan ahora!'",
+                "right": "Apelativa"
+              },
+              {
+                "left": "'¿Me oyes? ¿Sigues consciente?'",
+                "right": "Fática"
+              }
+            ],
+            "completion_feedback": "**Referencial** informa, **emotiva** expresa, **apelativa** pide una acción, **fática** revisa el canal, **metalingüística** explica el idioma y **poética** cuida la forma del mensaje."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el partido",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "'Mbappé define al primer poste'",
+                "right": "Referencial"
+              },
+              {
+                "left": "'¡Suban la línea, presionen!'",
+                "right": "Apelativa"
+              },
+              {
+                "left": "'Fuera de juego significa…'",
+                "right": "Metalingüística"
+              },
+              {
+                "left": "Una rima ingeniosa de la porra",
+                "right": "Poética"
+              }
+            ],
+            "completion_feedback": "**Referencial** informa, **emotiva** expresa, **apelativa** pide una acción, **fática** revisa el canal, **metalingüística** explica el idioma y **poética** cuida la forma del mensaje."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "'El álbum sale el 14 de mayo'",
+                "right": "Referencial"
+              },
+              {
+                "left": "'Estoy nervioso pero feliz'",
+                "right": "Emotiva"
+              },
+              {
+                "left": "'¡Voten por nosotros!'",
+                "right": "Apelativa"
+              },
+              {
+                "left": "'¿Se escucha bien? ¿Están ahí?'",
+                "right": "Fática"
+              }
+            ],
+            "completion_feedback": "**Referencial** informa, **emotiva** expresa, **apelativa** pide una acción, **fática** revisa el canal, **metalingüística** explica el idioma y **poética** cuida la forma del mensaje."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ranked",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "'¡Nooo, qué coraje!'",
+                "right": "Emotiva"
+              },
+              {
+                "left": "'Flanquear es atacar por un costado'",
+                "right": "Metalingüística"
+              },
+              {
+                "left": "'¿Me escuchas bien por el micro?'",
+                "right": "Fática"
+              },
+              {
+                "left": "'¡Dos en B!'",
+                "right": "Referencial"
+              }
+            ],
+            "completion_feedback": "**Referencial** informa, **emotiva** expresa, **apelativa** pide una acción, **fática** revisa el canal, **metalingüística** explica el idioma y **poética** cuida la forma del mensaje."
+          }
+        }
+      }
+    },
+    "ortografia-acentuacion-y-reglas": {
+      "order_steps": {
+        "prompt": "Decide cómo se escribe 'arbitro'",
+        "steps": [
+          "Divide en sílabas: ar-bi-tro",
+          "Pronuncia y ubica la fuerza: AR-bi-tro",
+          "Cuenta desde el final: cae en la antepenúltima",
+          "Es esdrújula y lleva tilde siempre: árbitro"
+        ],
+        "completion_feedback": "Ubica la **sílaba tónica** y aplica la regla: **agudas** con tilde en n, s o vocal, **graves** en cualquier otra letra y **esdrújulas** siempre. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase",
+            "right_label": "Palabra",
+            "pairs": [
+              {
+                "left": "'___ sabes pelear, Zoro.'",
+                "right": "tú"
+              },
+              {
+                "left": "'Afila ___ espada.'",
+                "right": "tu"
+              },
+              {
+                "left": "'___ entrena de noche.'",
+                "right": "él"
+              },
+              {
+                "left": "'Quiere ___ fuerza.'",
+                "right": "más"
+              }
+            ],
+            "completion_feedback": "**Agudas**: tilde si terminan en n, s o vocal. **Graves**: tilde si NO terminan así. **Esdrújulas**: siempre. La **diacrítica** separa palabras iguales: tú/tu, él/el, más/mas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Palabra",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "rá-pi-do (fuerza en RÁ)",
+                "right": "Esdrújula: siempre tilde"
+              },
+              {
+                "left": "fut-bo-LIS-ta",
+                "right": "Grave en vocal: sin tilde"
+              },
+              {
+                "left": "ju-ga-DOR",
+                "right": "Aguda en r: sin tilde"
+              },
+              {
+                "left": "CÉS-ped",
+                "right": "Grave en d: con tilde"
+              }
+            ],
+            "completion_feedback": "**Agudas**: tilde si terminan en n, s o vocal. **Graves**: tilde si NO terminan así. **Esdrújulas**: siempre. La **diacrítica** separa palabras iguales: tú/tu, él/el, más/mas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Palabra",
+            "right_label": "¿Lleva tilde?",
+            "pairs": [
+              {
+                "left": "con-CIER-to",
+                "right": "Grave en vocal: no"
+              },
+              {
+                "left": "LÁ-piz",
+                "right": "Grave en z: sí"
+              },
+              {
+                "left": "a-de-MÁS",
+                "right": "Aguda en s: sí"
+              },
+              {
+                "left": "MÚ-si-ca",
+                "right": "Esdrújula: siempre"
+              }
+            ],
+            "completion_feedback": "**Agudas**: tilde si terminan en n, s o vocal. **Graves**: tilde si NO terminan así. **Esdrújulas**: siempre. La **diacrítica** separa palabras iguales: tú/tu, él/el, más/mas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Palabra",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "crítico",
+                "right": "Esdrújula"
+              },
+              {
+                "left": "personaje",
+                "right": "Grave o llana"
+              },
+              {
+                "left": "jugador",
+                "right": "Aguda"
+              },
+              {
+                "left": "pásamelo (el loot)",
+                "right": "Sobresdrújula"
+              }
+            ],
+            "completion_feedback": "**Agudas**: tilde si terminan en n, s o vocal. **Graves**: tilde si NO terminan así. **Esdrújulas**: siempre. La **diacrítica** separa palabras iguales: tú/tu, él/el, más/mas."
+          }
+        }
+      }
+    },
+    "signos-de-puntuacion": {
+      "order_steps": {
+        "prompt": "Escribe en tu crónica la orden del DT",
+        "steps": [
+          "Narra quién habla: El DT gritó",
+          "Pon dos puntos para anunciar la cita: El DT gritó:",
+          "Abre comillas y exclamación: \"¡Presiona",
+          "Coma vocativa y cierre: , Giménez!\"."
+        ],
+        "completion_feedback": "Los **dos puntos** anuncian la cita, las **comillas** encierran las palabras exactas, **¡!** y **¿?** se abren y se cierran, y la **coma vocativa** separa el nombre. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Uso",
+            "right_label": "Signo",
+            "pairs": [
+              {
+                "left": "Anunciar lo que dice el Sistema",
+                "right": "Dos puntos (:)"
+              },
+              {
+                "left": "Encerrar las palabras exactas",
+                "right": "Comillas (\" \")"
+              },
+              {
+                "left": "Dar fuerza a 'Levántate'",
+                "right": "Exclamación (¡!)"
+              },
+              {
+                "left": "Separar a Igris en 'Levántate, Igris'",
+                "right": "Coma vocativa"
+              }
+            ],
+            "completion_feedback": "**Punto**: cierra una idea. **Coma**: enumera o separa el vocativo. **Punto y coma**: separa grupos que ya llevan coma. **Dos puntos**: anuncian cita o lista. **¡! ¿?**: se abren y se cierran."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Uso",
+            "right_label": "Signo",
+            "pairs": [
+              {
+                "left": "Cerrar 'Giménez recibe'",
+                "right": "Punto (.)"
+              },
+              {
+                "left": "Separar grupos que ya llevan coma",
+                "right": "Punto y coma (;)"
+              },
+              {
+                "left": "Introducir la lista de convocados",
+                "right": "Dos puntos (:)"
+              },
+              {
+                "left": "Separar nombres en una enumeración",
+                "right": "Coma (,)"
+              }
+            ],
+            "completion_feedback": "**Punto**: cierra una idea. **Coma**: enumera o separa el vocativo. **Punto y coma**: separa grupos que ya llevan coma. **Dos puntos**: anuncian cita o lista. **¡! ¿?**: se abren y se cierran."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Caption",
+            "right_label": "Signo",
+            "pairs": [
+              {
+                "left": "'¿Felix se ve bien?'",
+                "right": "¿ y ? en pareja"
+              },
+              {
+                "left": "'¡Qué comeback!'",
+                "right": "¡ y ! en pareja"
+              },
+              {
+                "left": "'Mis favoritas: MANIAC…'",
+                "right": "Dos puntos antes de una lista"
+              },
+              {
+                "left": "'MANIAC, S-Class y LALALALA'",
+                "right": "Comas entre elementos"
+              }
+            ],
+            "completion_feedback": "**Punto**: cierra una idea. **Coma**: enumera o separa el vocativo. **Punto y coma**: separa grupos que ya llevan coma. **Dos puntos**: anuncian cita o lista. **¡! ¿?**: se abren y se cierran."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mensaje",
+            "right_label": "Significado",
+            "pairs": [
+              {
+                "left": "'No, espera.'",
+                "right": "Le pide que espere"
+              },
+              {
+                "left": "'No espera.'",
+                "right": "No hay que esperar"
+              },
+              {
+                "left": "'Cubre, Jett.'",
+                "right": "Jett debe cubrir"
+              },
+              {
+                "left": "'Cubre Jett.'",
+                "right": "Hay que cubrir a Jett"
+              }
+            ],
+            "completion_feedback": "**Punto**: cierra una idea. **Coma**: enumera o separa el vocativo. **Punto y coma**: separa grupos que ya llevan coma. **Dos puntos**: anuncian cita o lista. **¡! ¿?**: se abren y se cierran."
+          }
+        }
+      }
+    },
+    "propiedades-del-texto-coherencia-y-cohesion": {
+      "order_steps": {
+        "prompt": "Revisa y corrige un texto",
+        "steps": [
+          "Identifica el tema central del texto",
+          "Revisa que cada oración hable de ese tema",
+          "Elimina la idea fuera de tema o contradictoria",
+          "Une las oraciones que quedan con conectores"
+        ],
+        "completion_feedback": "Primero la **coherencia** (un solo tema, sin contradicciones ni ideas sueltas) y después la **cohesión** (conectores y pronombres que enlazan las oraciones). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el texto",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'por eso' entre dos ideas",
+                "right": "Conector de consecuencia"
+              },
+              {
+                "left": "'él' en vez de repetir 'Naruto'",
+                "right": "Referencia (pronombre)"
+              },
+              {
+                "left": "Luffy aparece en otro planeta sin razón",
+                "right": "Falla de coherencia"
+              },
+              {
+                "left": "'Naruto… Naruto… Naruto…'",
+                "right": "Falla de cohesión"
+              }
+            ],
+            "completion_feedback": "**Coherencia**: el texto tiene sentido global, sin contradicciones ni ideas fuera de tema. **Cohesión**: las partes se enlazan con **conectores** y **referencias** (pronombres, sinónimos)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ejemplo",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Siempre marca' y 'nunca anotó'",
+                "right": "Contradicción"
+              },
+              {
+                "left": "Un plan táctico con sentido",
+                "right": "Coherencia"
+              },
+              {
+                "left": "Pases que unen a los jugadores",
+                "right": "Cohesión"
+              },
+              {
+                "left": "'por lo tanto' entre dos ideas",
+                "right": "Conector"
+              }
+            ],
+            "completion_feedback": "**Coherencia**: el texto tiene sentido global, sin contradicciones ni ideas fuera de tema. **Cohesión**: las partes se enlazan con **conectores** y **referencias** (pronombres, sinónimos)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el texto",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "'El grupo' en vez de 'TWICE'",
+                "right": "Sinónimo (referencia)"
+              },
+              {
+                "left": "'Sus fans' en vez de 'fans de TWICE'",
+                "right": "Posesivo (referencia)"
+              },
+              {
+                "left": "'Ensayó mucho, por lo tanto, ganó'",
+                "right": "Conector de consecuencia"
+              },
+              {
+                "left": "Un álbum con un concepto que lo une",
+                "right": "Coherencia"
+              }
+            ],
+            "completion_feedback": "**Coherencia**: el texto tiene sentido global, sin contradicciones ni ideas fuera de tema. **Cohesión**: las partes se enlazan con **conectores** y **referencias** (pronombres, sinónimos)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Guía de Minecraft",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Los cerdos dropean chuletas'",
+                "right": "Idea fuera de tema"
+              },
+              {
+                "left": "'Luego' entre dos pasos",
+                "right": "Conector de orden"
+              },
+              {
+                "left": "'colócala' en vez de repetir 'cama'",
+                "right": "Referencia (pronombre)"
+              },
+              {
+                "left": "Todo trata de sobrevivir la noche",
+                "right": "Coherencia"
+              }
+            ],
+            "completion_feedback": "**Coherencia**: el texto tiene sentido global, sin contradicciones ni ideas fuera de tema. **Cohesión**: las partes se enlazan con **conectores** y **referencias** (pronombres, sinónimos)."
+          }
+        }
+      }
+    },
+    "etimologias-prefijos-y-sufijos-grecolatinos": {
+      "order_steps": {
+        "prompt": "Descifra la palabra 'cronómetro'",
+        "steps": [
+          "Separa la primera pieza: crono- = tiempo",
+          "Separa la segunda pieza: -metro = medida",
+          "Une los sentidos: medir el tiempo",
+          "Comprueba: el cronómetro mide el tiempo del partido"
+        ],
+        "completion_feedback": "Para descifrar una palabra separa **prefijo**, **raíz** y **sufijo**, busca qué significa cada pieza griega o latina y une los sentidos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pieza",
+            "right_label": "Significado",
+            "pairs": [
+              {
+                "left": "proto- (protagonista)",
+                "right": "Primero, principal"
+              },
+              {
+                "left": "anti- (antagonista)",
+                "right": "En contra"
+              },
+              {
+                "left": "arqueo- (arqueóloga)",
+                "right": "Antiguo"
+              },
+              {
+                "left": "-logía (arqueología)",
+                "right": "Estudio, tratado"
+              }
+            ],
+            "completion_feedback": "Piezas grecolatinas: **bi-/tri-/penta-** cuentan, **auto-** = uno mismo, **-grafía** = escribir, **-logía** = estudio, **piro-** = fuego, **hidro-** = agua, **geo-** = tierra."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Prefijo",
+            "right_label": "Número",
+            "pairs": [
+              {
+                "left": "bi- (bicampeón)",
+                "right": "Dos"
+              },
+              {
+                "left": "tri- (tricampeón)",
+                "right": "Tres"
+              },
+              {
+                "left": "tetra- (tetracampeón)",
+                "right": "Cuatro"
+              },
+              {
+                "left": "penta- (pentacampeón)",
+                "right": "Cinco"
+              }
+            ],
+            "completion_feedback": "Piezas grecolatinas: **bi-/tri-/penta-** cuentan, **auto-** = uno mismo, **-grafía** = escribir, **-logía** = estudio, **piro-** = fuego, **hidro-** = agua, **geo-** = tierra."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pieza",
+            "right_label": "Significado",
+            "pairs": [
+              {
+                "left": "auto- (autógrafo)",
+                "right": "Uno mismo"
+              },
+              {
+                "left": "-grafía (coreografía)",
+                "right": "Escribir, trazar"
+              },
+              {
+                "left": "foto- (fotografía)",
+                "right": "Luz"
+              },
+              {
+                "left": "bio- (biografía)",
+                "right": "Vida"
+              }
+            ],
+            "completion_feedback": "Piezas grecolatinas: **bi-/tri-/penta-** cuentan, **auto-** = uno mismo, **-grafía** = escribir, **-logía** = estudio, **piro-** = fuego, **hidro-** = agua, **geo-** = tierra."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Elemento",
+            "right_label": "Raíz griega",
+            "pairs": [
+              {
+                "left": "Pyro (pyr)",
+                "right": "Fuego"
+              },
+              {
+                "left": "Hydro (hydor)",
+                "right": "Agua"
+              },
+              {
+                "left": "Cryo (kryos)",
+                "right": "Frío"
+              },
+              {
+                "left": "Dendro (dendron)",
+                "right": "Árbol"
+              }
+            ],
+            "completion_feedback": "Piezas grecolatinas: **bi-/tri-/penta-** cuentan, **auto-** = uno mismo, **-grafía** = escribir, **-logía** = estudio, **piro-** = fuego, **hidro-** = agua, **geo-** = tierra."
+          }
+        }
+      }
+    },
+    "prototipos-textuales-narracion-descripcion-exposicion-argumentacion": {
+      "order_steps": {
+        "prompt": "Arma un texto argumentativo sobre Isagi",
+        "steps": [
+          "Tesis: Isagi es el mejor protagonista de Blue Lock",
+          "Argumento: su meta-visión lo hace crecer en cada partido",
+          "Ejemplo: en el partido decisivo leyó el campo y anotó",
+          "Conclusión: por eso es el que más evoluciona"
+        ],
+        "completion_feedback": "La **argumentación** sigue un orden: **tesis** (postura), **argumentos** (razones), **ejemplos** que los prueban y **conclusión**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Rin",
+            "right_label": "Prototipo",
+            "pairs": [
+              {
+                "left": "'Recibió, encaró y anotó de volea'",
+                "right": "Narración"
+              },
+              {
+                "left": "'Frío, de ojos afilados'",
+                "right": "Descripción"
+              },
+              {
+                "left": "'Se especializa en el remate'",
+                "right": "Exposición"
+              },
+              {
+                "left": "'Merece ser el número uno porque…'",
+                "right": "Argumentación"
+              }
+            ],
+            "completion_feedback": "**Narración**: hechos en orden. **Descripción**: cómo es algo. **Exposición**: informa con datos objetivos. **Argumentación**: defiende una postura con razones. Clave: ¿para qué se escribió?"
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El clásico",
+            "right_label": "Prototipo",
+            "pairs": [
+              {
+                "left": "'Al minuto 7, Vinícius escapó y marcó'",
+                "right": "Narración"
+              },
+              {
+                "left": "'Posesión 55%-45%, 14 remates'",
+                "right": "Exposición"
+              },
+              {
+                "left": "'Bajito, técnico, con pausa'",
+                "right": "Descripción"
+              },
+              {
+                "left": "'Fue superior porque presionó mejor'",
+                "right": "Argumentación"
+              }
+            ],
+            "completion_feedback": "**Narración**: hechos en orden. **Descripción**: cómo es algo. **Exposición**: informa con datos objetivos. **Argumentación**: defiende una postura con razones. Clave: ¿para qué se escribió?"
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hilo de ENGENE",
+            "right_label": "Prototipo",
+            "pairs": [
+              {
+                "left": "'Salió el teaser, lo vi y grité'",
+                "right": "Narración"
+              },
+              {
+                "left": "'Abrigos borgoña, cuellos de encaje'",
+                "right": "Descripción"
+              },
+              {
+                "left": "'Un comeback es volver con música nueva'",
+                "right": "Exposición"
+              },
+              {
+                "left": "'Hay que apoyarlo porque sube en charts'",
+                "right": "Argumentación"
+              }
+            ],
+            "completion_feedback": "**Narración**: hechos en orden. **Descripción**: cómo es algo. **Exposición**: informa con datos objetivos. **Argumentación**: defiende una postura con razones. Clave: ¿para qué se escribió?"
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "Prototipo",
+            "pairs": [
+              {
+                "left": "'Un Creeper explotó y casi pierdo todo'",
+                "right": "Narración"
+              },
+              {
+                "left": "'Muros de obsidiana y portal morado'",
+                "right": "Descripción"
+              },
+              {
+                "left": "'El encantamiento usa lapislázuli'",
+                "right": "Exposición"
+              },
+              {
+                "left": "'Mina en la capa -59 porque hay más'",
+                "right": "Argumentación"
+              }
+            ],
+            "completion_feedback": "**Narración**: hechos en orden. **Descripción**: cómo es algo. **Exposición**: informa con datos objetivos. **Argumentación**: defiende una postura con razones. Clave: ¿para qué se escribió?"
+          }
+        }
+      }
+    },
+    "textos-expositivos": {
+      "order_steps": {
+        "prompt": "Arma un párrafo expositivo sobre los Quirks",
+        "steps": [
+          "Introducción: define el tema (un Quirk es…)",
+          "Desarrollo: clasifica (emisión, transformación, mutación)",
+          "Ejemplo: el One For All es un Quirk transferible",
+          "Conclusión: así funciona el sistema de Quirks"
+        ],
+        "completion_feedback": "El **expositivo** va de la **introducción** (presenta el tema) al **desarrollo** (define, clasifica, da datos y ejemplos) y cierra con la **conclusión**, siempre en tono objetivo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Wiki de MHA",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "'Un Quirk es una habilidad especial'",
+                "right": "Definición"
+              },
+              {
+                "left": "'Emisión, transformación y mutación'",
+                "right": "Clasificación"
+              },
+              {
+                "left": "'El 80% de la población tiene uno'",
+                "right": "Dato"
+              },
+              {
+                "left": "'Por ejemplo, el One For All'",
+                "right": "Ejemplo"
+              }
+            ],
+            "completion_feedback": "El **texto expositivo** informa con datos objetivos, sin opinar. Usa **definición**, **clasificación**, **ejemplos** y conectores de **orden** y **consecuencia**. Puede ser **divulgativo** o **especializado**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ficha del Madrid",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "'En primer lugar'",
+                "right": "Conector de orden"
+              },
+              {
+                "left": "'Por ejemplo'",
+                "right": "Conector de ejemplificación"
+              },
+              {
+                "left": "'Por lo tanto'",
+                "right": "Conector de consecuencia"
+              },
+              {
+                "left": "'Fundado en 1902'",
+                "right": "Dato comprobable"
+              }
+            ],
+            "completion_feedback": "El **texto expositivo** informa con datos objetivos, sin opinar. Usa **definición**, **clasificación**, **ejemplos** y conectores de **orden** y **consecuencia**. Puede ser **divulgativo** o **especializado**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase",
+            "right_label": "Tipo de texto",
+            "pairs": [
+              {
+                "left": "'El K-pop es el pop de Corea del Sur'",
+                "right": "Expositivo divulgativo"
+              },
+              {
+                "left": "'Usa síncopas y modulaciones'",
+                "right": "Expositivo especializado"
+              },
+              {
+                "left": "'Stray Kids es el mejor grupo'",
+                "right": "Opinión: argumentativo"
+              },
+              {
+                "left": "'Lloré toda la noche con su MV'",
+                "right": "Emoción personal"
+              }
+            ],
+            "completion_feedback": "El **texto expositivo** informa con datos objetivos, sin opinar. Usa **definición**, **clasificación**, **ejemplos** y conectores de **orden** y **consecuencia**. Puede ser **divulgativo** o **especializado**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase",
+            "right_label": "Qué hace",
+            "pairs": [
+              {
+                "left": "'Pyro + Hydro produce Vaporizar'",
+                "right": "Informa: expositivo"
+              },
+              {
+                "left": "'Los Guardianes son frustrantes'",
+                "right": "Opina: argumentativo"
+              },
+              {
+                "left": "'Entré al santuario y vencí al jefe'",
+                "right": "Cuenta: narrativo"
+              },
+              {
+                "left": "'Su armadura es dorada y brillante'",
+                "right": "Pinta: descriptivo"
+              }
+            ],
+            "completion_feedback": "El **texto expositivo** informa con datos objetivos, sin opinar. Usa **definición**, **clasificación**, **ejemplos** y conectores de **orden** y **consecuencia**. Puede ser **divulgativo** o **especializado**."
+          }
+        }
+      }
+    },
+    "comprension-lectora-y-estrategias": {
+      "order_steps": {
+        "prompt": "Ordena las estrategias de lectura",
+        "steps": [
+          "Antes: revisa título e imágenes y predice el tema",
+          "Durante: lee subrayando las ideas clave",
+          "Después: resume con tus palabras",
+          "Verifica: si no puedes resumirlo, relee lo que falló"
+        ],
+        "completion_feedback": "Leer bien tiene tres momentos: **antes** (predecir, activar lo que sabes), **durante** (subrayar, monitorear) y **después** (resumir y verificar). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Leyendo JJK",
+            "right_label": "Paso del monitoreo",
+            "pairs": [
+              {
+                "left": "Notar que no entendiste la página",
+                "right": "Detectar"
+              },
+              {
+                "left": "Ver que 'Malevolent Shrine' era nuevo",
+                "right": "Identificar la causa"
+              },
+              {
+                "left": "Releer con calma la explicación",
+                "right": "Aplicar un remedio"
+              },
+              {
+                "left": "Explicarlo con tus palabras",
+                "right": "Parafrasear"
+              }
+            ],
+            "completion_feedback": "**Idea principal**: lo esencial. **Literal**: lo dicho. **Inferencial**: lo que deduces. **Crítico**: tu valoración. **Monitorear**: notar que no entendiste y releer. Estrategias: antes, durante y después."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reporte táctico",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "La oración que no puedes eliminar",
+                "right": "Idea principal"
+              },
+              {
+                "left": "Datos y ejemplos que la apoyan",
+                "right": "Ideas secundarias"
+              },
+              {
+                "left": "Preguntarte de qué trata sobre todo",
+                "right": "Estrategia para hallarla"
+              }
+            ],
+            "completion_feedback": "**Idea principal**: lo esencial. **Literal**: lo dicho. **Inferencial**: lo que deduces. **Crítico**: tu valoración. **Monitorear**: notar que no entendiste y releer. Estrategias: antes, durante y después."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escena de Ji-ho",
+            "right_label": "Nivel",
+            "pairs": [
+              {
+                "left": "'Ji-ho apagó las luces'",
+                "right": "Literal"
+              },
+              {
+                "left": "'Ji-ho estaba frustrado'",
+                "right": "Inferencial"
+              },
+              {
+                "left": "'El autor critica la presión a idols'",
+                "right": "Crítico"
+              }
+            ],
+            "completion_feedback": "**Idea principal**: lo esencial. **Literal**: lo dicho. **Inferencial**: lo que deduces. **Crítico**: tu valoración. **Monitorear**: notar que no entendiste y releer. Estrategias: antes, durante y después."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fortnite",
+            "right_label": "Momento",
+            "pairs": [
+              {
+                "left": "Ver el mapa antes de saltar",
+                "right": "Antes de leer"
+              },
+              {
+                "left": "Revisar cada cofre con atención",
+                "right": "Durante la lectura"
+              },
+              {
+                "left": "Recordar qué zonas sirvieron",
+                "right": "Después de leer"
+              }
+            ],
+            "completion_feedback": "**Idea principal**: lo esencial. **Literal**: lo dicho. **Inferencial**: lo que deduces. **Crítico**: tu valoración. **Monitorear**: notar que no entendiste y releer. Estrategias: antes, durante y después."
+          }
+        }
+      }
+    }
+  }
+}
