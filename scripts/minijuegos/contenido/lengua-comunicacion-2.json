@@ -1,0 +1,931 @@
+{
+  "subject": "lengua-comunicacion-2",
+  "topics": {
+    "textos-argumentativos-tesis-y-argumentos": {
+      "order_steps": {
+        "prompt": "Arma un texto argumentativo sobre Edgar",
+        "steps": [
+          "Tesis: Edgar es el mejor brawler para principiantes",
+          "Argumento: se cura al golpear y perdona errores",
+          "Contraargumento: algunos dicen que Shelly es más fácil",
+          "Refutación: Shelly no escapa de emboscadas y Edgar sí",
+          "Conclusión: por eso Edgar es la mejor opción para empezar"
+        ],
+        "completion_feedback": "Un texto argumentativo va de la **tesis** a los **argumentos**, reconoce el **contraargumento**, lo **refuta** y cierra con una **conclusión** que reafirma la postura. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate Hashira",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Giyu es el Pilar más completo'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'Creó una undécima forma propia'",
+                "right": "Argumento"
+              },
+              {
+                "left": "'Rengoku y punto'",
+                "right": "Afirmación sin razones"
+              },
+              {
+                "left": "'Por eso Giyu es el más completo'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Tesis**: la postura que defiendes. **Argumento**: la razón que la apoya. **Contraargumento**: la objeción del otro lado. **Conclusión**: reafirma la tesis. Opinar sin razones no es argumentar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate Lamine",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Lamine será el mejor del mundo'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'Fue clave en la Euro que ganó España'",
+                "right": "Argumento"
+              },
+              {
+                "left": "'No, está sobrevalorado'",
+                "right": "Opinión sin argumento"
+              },
+              {
+                "left": "'Dicen que aún es muy joven'",
+                "right": "Contraargumento"
+              }
+            ],
+            "completion_feedback": "**Tesis**: la postura que defiendes. **Argumento**: la razón que la apoya. **Contraargumento**: la objeción del otro lado. **Conclusión**: reafirma la tesis. Opinar sin razones no es argumentar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debate DIVE",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Love Dive es el mejor título de IVE'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'Ganó varios premios en programas'",
+                "right": "Argumento"
+              },
+              {
+                "left": "'No, I AM es mejor'",
+                "right": "Afirmación sin razones"
+              },
+              {
+                "left": "'Por eso Love Dive definió al grupo'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "**Tesis**: la postura que defiendes. **Argumento**: la razón que la apoya. **Contraargumento**: la objeción del otro lado. **Conclusión**: reafirma la tesis. Opinar sin razones no es argumentar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Roblox",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Roblox enseña a programar'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'Roblox Studio usa código Lua'",
+                "right": "Argumento"
+              },
+              {
+                "left": "'Pero es solo un juego'",
+                "right": "Contraargumento"
+              },
+              {
+                "left": "'Crear un juego exige programarlo'",
+                "right": "Refutación"
+              }
+            ],
+            "completion_feedback": "**Tesis**: la postura que defiendes. **Argumento**: la razón que la apoya. **Contraargumento**: la objeción del otro lado. **Conclusión**: reafirma la tesis. Opinar sin razones no es argumentar."
+          }
+        }
+      }
+    },
+    "el-ensayo": {
+      "order_steps": {
+        "prompt": "Arma un ensayo sobre Luffy",
+        "steps": [
+          "Elige un tema que te importe: Luffy como capitán",
+          "Introducción: presenta tu postura personal",
+          "Desarrollo: argumenta con ejemplos del manga",
+          "Conclusión: reafirma tu postura con tu propia voz"
+        ],
+        "completion_feedback": "El **ensayo** es prosa con voz propia: **introducción** con tu postura, **desarrollo** con argumentos y reflexión, y **conclusión** que la reafirma. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo de Valeria",
+            "right_label": "Rasgo o parte",
+            "pairs": [
+              {
+                "left": "'Yo opino que Luffy une a su tripulación'",
+                "right": "Postura personal"
+              },
+              {
+                "left": "Cómo recluta a Zoro, Nami y Chopper",
+                "right": "Argumento"
+              },
+              {
+                "left": "'Admito que es impulsivo'",
+                "right": "Reconoce un contrapunto"
+              },
+              {
+                "left": "'Por eso su liderazgo es único'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "Rasgos del **ensayo**: está en **prosa**, tiene **postura personal** (subjetividad), **argumentos** que la desarrollan y una **conclusión** que la reafirma. No es reporte ni crónica."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sobre Bellingham",
+            "right_label": "Rasgo",
+            "pairs": [
+              {
+                "left": "'Para mí, Bellingham es el más completo'",
+                "right": "Postura personal"
+              },
+              {
+                "left": "'Llega al área y marca goles clave'",
+                "right": "Argumento"
+              },
+              {
+                "left": "'Considero que vale cada euro'",
+                "right": "Conclusión"
+              },
+              {
+                "left": "Párrafos continuos en primera persona",
+                "right": "Prosa con voz propia"
+              }
+            ],
+            "completion_feedback": "Rasgos del **ensayo**: está en **prosa**, tiene **postura personal** (subjetividad), **argumentos** que la desarrollan y una **conclusión** que la reafirma. No es reporte ni crónica."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ensayo de Renata",
+            "right_label": "Rasgo o parte",
+            "pairs": [
+              {
+                "left": "'En mi opinión, 3RACHA los hace únicos'",
+                "right": "Postura personal"
+              },
+              {
+                "left": "'Escribieron God's Menu y Thunderous'",
+                "right": "Argumento con ejemplo"
+              },
+              {
+                "left": "'Su estilo no le gusta a todos'",
+                "right": "Reconoce un contrapunto"
+              },
+              {
+                "left": "'Por eso su autoproducción es única'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "Rasgos del **ensayo**: está en **prosa**, tiene **postura personal** (subjetividad), **argumentos** que la desarrollan y una **conclusión** que la reafirma. No es reporte ni crónica."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Texto sobre TotK",
+            "right_label": "Tipo de texto",
+            "pairs": [
+              {
+                "left": "Mateo opina con 'a mí me parece'",
+                "right": "Ensayo"
+              },
+              {
+                "left": "Wiki con datos fríos del juego",
+                "right": "Reporte"
+              },
+              {
+                "left": "Relato de cómo se vivió el estreno",
+                "right": "Crónica"
+              },
+              {
+                "left": "Ficha, valoración y recomendación",
+                "right": "Reseña"
+              }
+            ],
+            "completion_feedback": "Rasgos del **ensayo**: está en **prosa**, tiene **postura personal** (subjetividad), **argumentos** que la desarrollan y una **conclusión** que la reafirma. No es reporte ni crónica."
+          }
+        }
+      }
+    },
+    "textos-persuasivos-y-publicidad": {
+      "order_steps": {
+        "prompt": "Arma un anuncio persuasivo de la Brawl Pass",
+        "steps": [
+          "Atención: animación épica del nuevo brawler",
+          "Deseo: skins exclusivas que nadie más tiene",
+          "Urgencia: '¡Últimas horas!' con cuenta regresiva",
+          "Acción: 'Consigue la Brawl Pass ya'"
+        ],
+        "completion_feedback": "Muchos anuncios siguen el modelo **AIDA**: captan la **atención**, despiertan **interés** y **deseo**, y cierran con un llamado a la **acción**, a veces con **urgencia**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Anuncio de Anya",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "'Solo 500 piezas en México'",
+                "right": "Escasez"
+              },
+              {
+                "left": "'¡Apártala!'",
+                "right": "Imperativo"
+              },
+              {
+                "left": "La cara '¡waku waku!' de Anya",
+                "right": "Apelación a la emoción"
+              },
+              {
+                "left": "'¿Te atreves a ser Yor por un día?'",
+                "right": "Pregunta retórica"
+              }
+            ],
+            "completion_feedback": "Recursos persuasivos: **imperativo** (ordena actuar), **pregunta retórica**, **escasez** o **urgencia**, **hipérbole** (exagera) y **apelación a la emoción** o a una figura famosa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comercial",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Mbappé anotando en cámara lenta",
+                "right": "Figura famosa"
+              },
+              {
+                "left": "'Juega 90 minutos sin cansarte'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'Toma PowerGoal'",
+                "right": "Imperativo"
+              },
+              {
+                "left": "'¿Eres delantero o espectador?'",
+                "right": "Pregunta retórica"
+              }
+            ],
+            "completion_feedback": "Recursos persuasivos: **imperativo** (ordena actuar), **pregunta retórica**, **escasez** o **urgencia**, **hipérbole** (exagera) y **apelación a la emoción** o a una figura famosa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Teaser de IVE",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "'Solo las primeras 10,000 copias'",
+                "right": "Escasez"
+              },
+              {
+                "left": "'Pre-order NOW'",
+                "right": "Imperativo"
+              },
+              {
+                "left": "'Photocard exclusiva de tu bias'",
+                "right": "Exclusividad"
+              },
+              {
+                "left": "'Una experiencia inolvidable'",
+                "right": "Hipérbole"
+              }
+            ],
+            "completion_feedback": "Recursos persuasivos: **imperativo** (ordena actuar), **pregunta retórica**, **escasez** o **urgencia**, **hipérbole** (exagera) y **apelación a la emoción** o a una figura famosa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pantalla de oferta",
+            "right_label": "Recurso",
+            "pairs": [
+              {
+                "left": "Reloj en cuenta regresiva",
+                "right": "Urgencia"
+              },
+              {
+                "left": "'Miles de jugadores ya la tienen'",
+                "right": "Presión de grupo"
+              },
+              {
+                "left": "'Compra el Battle Pass'",
+                "right": "Imperativo"
+              },
+              {
+                "left": "'Vive el fútbol como nunca'",
+                "right": "Hipérbole"
+              }
+            ],
+            "completion_feedback": "Recursos persuasivos: **imperativo** (ordena actuar), **pregunta retórica**, **escasez** o **urgencia**, **hipérbole** (exagera) y **apelación a la emoción** o a una figura famosa."
+          }
+        }
+      }
+    },
+    "textos-funcionales-curriculum-oficio-solicitud": {
+      "order_steps": {
+        "prompt": "Arma una solicitud formal",
+        "steps": [
+          "Lugar y fecha: Ciudad de México, 10 de marzo",
+          "Destinatario: nombre y cargo de quien recibe",
+          "Cuerpo: explica qué pides y por qué",
+          "Despedida cordial y firma"
+        ],
+        "completion_feedback": "Los **textos funcionales** tienen forma fija: **lugar y fecha**, **destinatario**, **cuerpo** con el propósito (presentar, comunicar o pedir) y **despedida con firma**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Familia Forger",
+            "right_label": "Documento",
+            "pairs": [
+              {
+                "left": "Yor resume su experiencia para un empleo",
+                "right": "Currículum"
+              },
+              {
+                "left": "Eden avisa a las familias, con número",
+                "right": "Oficio"
+              },
+              {
+                "left": "Loid pide visitar la academia",
+                "right": "Solicitud"
+              }
+            ],
+            "completion_feedback": "**Currículum**: presenta tus datos y experiencia. **Oficio**: comunicación formal entre instituciones, con número y asunto. **Solicitud**: pide algo con respeto. Todos llevan fecha y destinatario."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el club",
+            "right_label": "Documento",
+            "pairs": [
+              {
+                "left": "Trayectoria y certificaciones del DT",
+                "right": "Currículum"
+              },
+              {
+                "left": "El club avisa a la federación, con folio",
+                "right": "Oficio"
+              },
+              {
+                "left": "Un juvenil pide permiso por un examen",
+                "right": "Solicitud"
+              }
+            ],
+            "completion_feedback": "**Currículum**: presenta tus datos y experiencia. **Oficio**: comunicación formal entre instituciones, con número y asunto. **Solicitud**: pide algo con respeto. Todos llevan fecha y destinatario."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Audición BELIFT",
+            "right_label": "Documento",
+            "pairs": [
+              {
+                "left": "Tus datos, idiomas y años de baile",
+                "right": "Currículum"
+              },
+              {
+                "left": "La agencia avisa a tu escuela con sello",
+                "right": "Oficio"
+              },
+              {
+                "left": "Pides audicionar en México, no en Seúl",
+                "right": "Solicitud"
+              }
+            ],
+            "completion_feedback": "**Currículum**: presenta tus datos y experiencia. **Oficio**: comunicación formal entre instituciones, con número y asunto. **Solicitud**: pide algo con respeto. Todos llevan fecha y destinatario."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Oficio del club",
+            "right_label": "Para qué sirve",
+            "pairs": [
+              {
+                "left": "Membrete con logo del club",
+                "right": "Identifica al emisor"
+              },
+              {
+                "left": "Número de oficio y fecha",
+                "right": "Registro oficial"
+              },
+              {
+                "left": "Nombre, cargo e institución",
+                "right": "Destinatario"
+              },
+              {
+                "left": "Firma y cargo del remitente",
+                "right": "Valida el documento"
+              }
+            ],
+            "completion_feedback": "**Currículum**: presenta tus datos y experiencia. **Oficio**: comunicación formal entre instituciones, con número y asunto. **Solicitud**: pide algo con respeto. Todos llevan fecha y destinatario."
+          }
+        }
+      }
+    },
+    "textos-periodisticos-nota-cronica-reportaje-entrevista": {
+      "order_steps": {
+        "prompt": "Arma una nota informativa",
+        "steps": [
+          "Titular: el dato más importante en una línea",
+          "Entrada: qué, quién, cuándo y dónde",
+          "Cuerpo: detalles y contexto del hecho",
+          "Cierre: datos secundarios, los menos importantes"
+        ],
+        "completion_feedback": "La **nota informativa** usa la **pirámide invertida**: lo más importante primero (titular y entrada con qué, quién, cuándo, dónde) y los detalles después. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Solo Leveling",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "'La T2 se estrena el 4 de enero'",
+                "right": "Nota informativa"
+              },
+              {
+                "left": "Los gritos al invocar las sombras",
+                "right": "Crónica"
+              },
+              {
+                "left": "Auge de webtoons, con cifras y fuentes",
+                "right": "Reportaje"
+              },
+              {
+                "left": "Preguntas y respuestas a un cosplayer",
+                "right": "Entrevista"
+              }
+            ],
+            "completion_feedback": "**Nota informativa**: datos duros y breves. **Crónica**: relata cómo se vivió, con orden y emoción. **Reportaje**: investiga a fondo con varias fuentes. **Entrevista**: preguntas y respuestas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "México vs Brasil",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "'México empata 1-1 con Brasil'",
+                "right": "Nota informativa"
+              },
+              {
+                "left": "El rugido del Azteca en el 89'",
+                "right": "Crónica"
+              },
+              {
+                "left": "Diez años de duelos y tres analistas",
+                "right": "Reportaje"
+              },
+              {
+                "left": "Raúl Jiménez responde en el vestidor",
+                "right": "Entrevista"
+              }
+            ],
+            "completion_feedback": "**Nota informativa**: datos duros y breves. **Crónica**: relata cómo se vivió, con orden y emoción. **Reportaje**: investiga a fondo con varias fuentes. **Entrevista**: preguntas y respuestas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "'El sencillo sale el viernes, 6 p.m.'",
+                "right": "Nota informativa"
+              },
+              {
+                "left": "Cómo vibró el público en el showcase",
+                "right": "Crónica"
+              },
+              {
+                "left": "El K-pop en México, con cifras",
+                "right": "Reportaje"
+              },
+              {
+                "left": "Preguntas a una idol sobre su proceso",
+                "right": "Entrevista"
+              }
+            ],
+            "completion_feedback": "**Nota informativa**: datos duros y breves. **Crónica**: relata cómo se vivió, con orden y emoción. **Reportaje**: investiga a fondo con varias fuentes. **Entrevista**: preguntas y respuestas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Valorant Champions",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "'Equipo X gana 3-2 en Lotus'",
+                "right": "Nota informativa"
+              },
+              {
+                "left": "El grito del público en el clutch",
+                "right": "Crónica"
+              },
+              {
+                "left": "Por qué dominó: estadísticas y fuentes",
+                "right": "Reportaje"
+              },
+              {
+                "left": "Pregunta y respuesta con el MVP",
+                "right": "Entrevista"
+              }
+            ],
+            "completion_feedback": "**Nota informativa**: datos duros y breves. **Crónica**: relata cómo se vivió, con orden y emoción. **Reportaje**: investiga a fondo con varias fuentes. **Entrevista**: preguntas y respuestas."
+          }
+        }
+      }
+    },
+    "la-resena-critica": {
+      "order_steps": {
+        "prompt": "Ordena la reseña de Chainsaw Man",
+        "steps": [
+          "Ficha: título, autor, género y editorial",
+          "Resumen: la premisa de Denji, sin spoilers",
+          "Valoración: aciertos y fallos, con PORQUE",
+          "Recomendación: para quién sí y para quién no"
+        ],
+        "completion_feedback": "La **reseña crítica** va de la **ficha** al **resumen** sin spoilers, luego a la **valoración** con argumentos y cierra con una **recomendación** para un público. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reseña de CSM",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'Tatsuki Fujimoto · Shueisha · acción'",
+                "right": "Ficha"
+              },
+              {
+                "left": "Denji caza demonios con Pochita",
+                "right": "Resumen"
+              },
+              {
+                "left": "'Impacta PORQUE la acción es caótica'",
+                "right": "Valoración"
+              },
+              {
+                "left": "'Para lectores de manga maduro'",
+                "right": "Recomendación"
+              }
+            ],
+            "completion_feedback": "Partes de la **reseña crítica**: **ficha** (datos de la obra), **resumen** breve sin spoilers, **valoración** con argumentos (lo bueno Y lo malo) y **recomendación** final."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reseña de playera",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "Marca, colores, material y temporada",
+                "right": "Descripción"
+              },
+              {
+                "left": "'Transpira mejor que la anterior'",
+                "right": "Valoración positiva"
+              },
+              {
+                "left": "'Casi idéntica, no justifica el precio'",
+                "right": "Valoración negativa"
+              },
+              {
+                "left": "'Vale la pena para coleccionistas'",
+                "right": "Veredicto"
+              }
+            ],
+            "completion_feedback": "Partes de la **reseña crítica**: **ficha** (datos de la obra), **resumen** breve sin spoilers, **valoración** con argumentos (lo bueno Y lo malo) y **recomendación** final."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reseña de I've IVE",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "'IVE · 11 tracks · abril 2023'",
+                "right": "Ficha"
+              },
+              {
+                "left": "Concepto de empoderamiento e 'I AM'",
+                "right": "Resumen"
+              },
+              {
+                "left": "'Destaca PORQUE la voz de Liz luce'",
+                "right": "Valoración"
+              },
+              {
+                "left": "'Ideal para DIVEs'",
+                "right": "Recomendación"
+              }
+            ],
+            "completion_feedback": "Partes de la **reseña crítica**: **ficha** (datos de la obra), **resumen** breve sin spoilers, **valoración** con argumentos (lo bueno Y lo malo) y **recomendación** final."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Frase",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "'Está padrísimo, cómprenlo'",
+                "right": "Opinión sin razones"
+              },
+              {
+                "left": "'Fluye PORQUE el swing es rápido'",
+                "right": "Juicio argumentado"
+              },
+              {
+                "left": "'Imprescindible si te gusta explorar'",
+                "right": "Recomendación"
+              },
+              {
+                "left": "'TotK · Nintendo · Switch'",
+                "right": "Ficha"
+              }
+            ],
+            "completion_feedback": "Partes de la **reseña crítica**: **ficha** (datos de la obra), **resumen** breve sin spoilers, **valoración** con argumentos (lo bueno Y lo malo) y **recomendación** final."
+          }
+        }
+      }
+    },
+    "citas-y-referencias-formato-apa-basico": {
+      "order_steps": {
+        "prompt": "Arma una referencia APA de libro",
+        "steps": [
+          "Apellido e inicial: Sato, A.",
+          "Año entre paréntesis: (2022).",
+          "Título en cursiva: Cultura otaku global.",
+          "Editorial: Manga Press."
+        ],
+        "completion_feedback": "Referencia APA de libro: **Apellido, Inicial.** **(Año).** ***Título en cursiva.*** **Editorial.** En el texto basta la cita corta: (Apellido, año). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Referencia",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Sato, A.",
+                "right": "Autora"
+              },
+              {
+                "left": "(2022)",
+                "right": "Año"
+              },
+              {
+                "left": "Cultura otaku global",
+                "right": "Título"
+              },
+              {
+                "left": "Manga Press",
+                "right": "Editorial"
+              }
+            ],
+            "completion_feedback": "En APA hay dos momentos: la **cita en el texto** (Apellido, año) donde usas la idea, y la **referencia completa** al final. Usar ideas ajenas sin citarlas es **plagio**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Momento",
+            "right_label": "Qué escribes",
+            "pairs": [
+              {
+                "left": "Donde usas el dato",
+                "right": "(Torres, 2021)"
+              },
+              {
+                "left": "Lista al final del trabajo",
+                "right": "Referencia completa"
+              },
+              {
+                "left": "Copiar sin citar",
+                "right": "Plagio"
+              }
+            ],
+            "completion_feedback": "En APA hay dos momentos: la **cita en el texto** (Apellido, año) donde usas la idea, y la **referencia completa** al final. Usar ideas ajenas sin citarlas es **plagio**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hilo de X",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "'Según Kim, 2022' en el hilo",
+                "right": "Cita en el texto"
+              },
+              {
+                "left": "Fuente completa al final",
+                "right": "Referencia"
+              },
+              {
+                "left": "Usar ideas ajenas como tuyas",
+                "right": "Plagio"
+              }
+            ],
+            "completion_feedback": "En APA hay dos momentos: la **cita en el texto** (Apellido, año) donde usas la idea, y la **referencia completa** al final. Usar ideas ajenas sin citarlas es **plagio**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fuente web",
+            "right_label": "Dato APA",
+            "pairs": [
+              {
+                "left": "Torres, J.",
+                "right": "Autor"
+              },
+              {
+                "left": "(2021)",
+                "right": "Año"
+              },
+              {
+                "left": "Diseño indie y creatividad",
+                "right": "Título"
+              },
+              {
+                "left": "GameStudies.mx",
+                "right": "Sitio web"
+              }
+            ],
+            "completion_feedback": "En APA hay dos momentos: la **cita en el texto** (Apellido, año) donde usas la idea, y la **referencia completa** al final. Usar ideas ajenas sin citarlas es **plagio**."
+          }
+        }
+      }
+    },
+    "el-reporte-de-investigacion": {
+      "order_steps": {
+        "prompt": "Ordena tu reporte sobre Roblox y el sueño",
+        "steps": [
+          "Introducción: la pregunta y por qué importa",
+          "Metodología: encuesta a 30 compañeros gamers",
+          "Resultados: tabla de horas de juego y de sueño",
+          "Conclusiones: respondes la pregunta con los datos",
+          "Fuentes: referencias en formato APA"
+        ],
+        "completion_feedback": "El **reporte de investigación** sigue un orden fijo: **introducción** (pregunta), **metodología** (cómo), **resultados** (qué encontraste), **conclusiones** y **fuentes**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Reporte de cosplay",
+            "right_label": "Sección",
+            "pairs": [
+              {
+                "left": "'¿Cuánto se invierte en cosplay?'",
+                "right": "Introducción"
+              },
+              {
+                "left": "Encuesta en convenciones",
+                "right": "Metodología"
+              },
+              {
+                "left": "Gasto promedio en pelucas y telas",
+                "right": "Resultados"
+              },
+              {
+                "left": "Lista de fuentes en APA",
+                "right": "Fuentes"
+              }
+            ],
+            "completion_feedback": "**Introducción**: la pregunta y por qué importa. **Metodología**: cómo investigaste. **Resultados**: los datos. **Conclusiones**: la respuesta. **Fuentes**: referencias en APA."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Afición femenil",
+            "right_label": "Sección",
+            "pairs": [
+              {
+                "left": "Por qué importa la igualdad",
+                "right": "Introducción"
+              },
+              {
+                "left": "Encuesta y cifras de la Liga MX Femenil",
+                "right": "Metodología"
+              },
+              {
+                "left": "Más asistencia en los últimos años",
+                "right": "Resultados"
+              },
+              {
+                "left": "La afición femenil sí está creciendo",
+                "right": "Conclusiones"
+              }
+            ],
+            "completion_feedback": "**Introducción**: la pregunta y por qué importa. **Metodología**: cómo investigaste. **Resultados**: los datos. **Conclusiones**: la respuesta. **Fuentes**: referencias en APA."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "K-pop en México",
+            "right_label": "Sección",
+            "pairs": [
+              {
+                "left": "'¿Por qué el K-pop atrapa a los teens?'",
+                "right": "Introducción"
+              },
+              {
+                "left": "Encuesta a 40 compañeros",
+                "right": "Metodología"
+              },
+              {
+                "left": "Redes y dance covers, la entrada",
+                "right": "Resultados"
+              },
+              {
+                "left": "Artículos sobre Hallyu en APA",
+                "right": "Fuentes"
+              }
+            ],
+            "completion_feedback": "**Introducción**: la pregunta y por qué importa. **Metodología**: cómo investigaste. **Resultados**: los datos. **Conclusiones**: la respuesta. **Fuentes**: referencias en APA."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Roblox y sueño",
+            "right_label": "Sección",
+            "pairs": [
+              {
+                "left": "Encuesta a 30 compañeros gamers",
+                "right": "Metodología"
+              },
+              {
+                "left": "Tras medianoche, duermen menos",
+                "right": "Resultados"
+              },
+              {
+                "left": "Jugar de noche sí afecta el sueño",
+                "right": "Conclusiones"
+              },
+              {
+                "left": "Estudios sobre pantallas y sueño",
+                "right": "Fuentes"
+              }
+            ],
+            "completion_feedback": "**Introducción**: la pregunta y por qué importa. **Metodología**: cómo investigaste. **Resultados**: los datos. **Conclusiones**: la respuesta. **Fuentes**: referencias en APA."
+          }
+        }
+      }
+    }
+  }
+}
