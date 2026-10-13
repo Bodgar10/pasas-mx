@@ -1,0 +1,698 @@
+{
+  "subject": "administracion",
+  "topics": {
+    "concepto-y-origen-de-la-administracion": {
+      "order_steps": {
+        "prompt": "Ordena cómo surgió la administración",
+        "steps": [
+          "Civilizaciones antiguas coordinan obras y ejércitos",
+          "Revolución Industrial: fábricas con cientos de obreros",
+          "Inicios del siglo XX: Taylor y Fayol la estudian como disciplina",
+          "Hoy se aplica en empresas, gobiernos y equipos"
+        ],
+        "completion_feedback": "La administración existe desde que hubo grupos que coordinar, pero se volvió **disciplina formal** con Taylor y Fayol. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Proyecto de Ego",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Crear al mejor delantero",
+                "right": "Objetivo"
+              },
+              {
+                "left": "Jugadores, canchas y staff",
+                "right": "Recursos"
+              },
+              {
+                "left": "Llegar a la meta",
+                "right": "Eficacia"
+              },
+              {
+                "left": "Llegar sin desperdiciar recursos",
+                "right": "Eficiencia"
+              }
+            ],
+            "completion_feedback": "**Administrar** es planear, organizar, dirigir y controlar recursos para lograr una meta con **eficacia** (lograrla) y **eficiencia** (sin desperdiciar)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Trabajo del DT",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "Analiza al rival semanas antes",
+                "right": "Planeación"
+              },
+              {
+                "left": "Decide alineación y funciones",
+                "right": "Organización"
+              },
+              {
+                "left": "Da instrucciones desde la banda",
+                "right": "Dirección"
+              },
+              {
+                "left": "Corrige al medio tiempo",
+                "right": "Control"
+              }
+            ],
+            "completion_feedback": "**Administrar** es planear, organizar, dirigir y controlar recursos para lograr una meta con **eficacia** (lograrla) y **eficiencia** (sin desperdiciar)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comeback de SVT",
+            "right_label": "Función",
+            "pairs": [
+              {
+                "left": "Fija fecha y concepto",
+                "right": "Planeación"
+              },
+              {
+                "left": "Reparte tareas entre los equipos",
+                "right": "Organización"
+              },
+              {
+                "left": "Motiva al grupo en los ensayos",
+                "right": "Dirección"
+              },
+              {
+                "left": "Revisa el MV y corrige",
+                "right": "Control"
+              }
+            ],
+            "completion_feedback": "**Administrar** es planear, organizar, dirigir y controlar recursos para lograr una meta con **eficacia** (lograrla) y **eficiencia** (sin desperdiciar)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "IGL de Valorant",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ganar la ronda",
+                "right": "Objetivo"
+              },
+              {
+                "left": "Créditos, armas y agentes",
+                "right": "Recursos"
+              },
+              {
+                "left": "Ganar la ronda gastando de más",
+                "right": "Eficaz, no eficiente"
+              },
+              {
+                "left": "Ganar gastando solo lo justo",
+                "right": "Eficaz y eficiente"
+              }
+            ],
+            "completion_feedback": "**Administrar** es planear, organizar, dirigir y controlar recursos para lograr una meta con **eficacia** (lograrla) y **eficiencia** (sin desperdiciar)."
+          }
+        }
+      }
+    },
+    "proceso-administrativo-planear-organizar-dirigir-controlar": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo del proceso administrativo",
+        "steps": [
+          "Planear: fijar la meta y la estrategia",
+          "Organizar: asignar personas y recursos",
+          "Dirigir: liderar la ejecución",
+          "Controlar: medir el resultado contra la meta",
+          "Volver a planear con lo aprendido"
+        ],
+        "completion_feedback": "Las etapas van en **secuencia** y el control **retroalimenta** la siguiente planeación: es un ciclo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Operación Strix",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Formar una familia falsa como estrategia",
+                "right": "Planear"
+              },
+              {
+                "left": "Conseguir a Yor y a Anya",
+                "right": "Organizar"
+              },
+              {
+                "left": "Instruir a Anya antes del examen",
+                "right": "Dirigir"
+              },
+              {
+                "left": "Revisar si cada fase se cumple",
+                "right": "Controlar"
+              }
+            ],
+            "completion_feedback": "El **proceso administrativo** es planear, organizar, dirigir y controlar, en ese orden y como un **ciclo** que se repite."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Barça en temporada",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Ganar LaLiga y definir el estilo",
+                "right": "Planear"
+              },
+              {
+                "left": "Asignar posiciones y cargas",
+                "right": "Organizar"
+              },
+              {
+                "left": "Hacer cambios en el partido",
+                "right": "Dirigir"
+              },
+              {
+                "left": "Revisar datos tras cada jornada",
+                "right": "Controlar"
+              }
+            ],
+            "completion_feedback": "El **proceso administrativo** es planear, organizar, dirigir y controlar, en ese orden y como un **ciclo** que se repite."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debut de IVE",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Fecha, concepto y meta de ventas",
+                "right": "Planear"
+              },
+              {
+                "left": "Formar equipos y repartir estudios",
+                "right": "Organizar"
+              },
+              {
+                "left": "Liderar los ensayos diarios",
+                "right": "Dirigir"
+              },
+              {
+                "left": "Medir vistas y ventas del MV",
+                "right": "Controlar"
+              }
+            ],
+            "completion_feedback": "El **proceso administrativo** es planear, organizar, dirigir y controlar, en ese orden y como un **ciclo** que se repite."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ultimate Team",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Elegir meta y formación 4-3-3",
+                "right": "Planear"
+              },
+              {
+                "left": "Armar la plantilla y la química",
+                "right": "Organizar"
+              },
+              {
+                "left": "Cambiar jugadores cansados",
+                "right": "Dirigir"
+              },
+              {
+                "left": "Revisar tiros y posesión",
+                "right": "Controlar"
+              }
+            ],
+            "completion_feedback": "El **proceso administrativo** es planear, organizar, dirigir y controlar, en ese orden y como un **ciclo** que se repite."
+          }
+        }
+      }
+    },
+    "escuelas-del-pensamiento-administrativo": {
+      "order_steps": {
+        "prompt": "Ordena las escuelas según su aparición",
+        "steps": [
+          "Taylor publica sus principios de administración científica (1911)",
+          "Fayol publica Administración industrial y general (1916)",
+          "Los estudios Hawthorne, con Mayo, revelan el factor humano",
+          "La administración moderna combina los tres enfoques"
+        ],
+        "completion_feedback": "Cada escuela sumó una mirada: la **tarea** (Taylor), la **estructura** (Fayol) y las **personas** (Mayo). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Legión de AoT",
+            "right_label": "Autor",
+            "pairs": [
+              {
+                "left": "Levi perfecciona el corte exacto",
+                "right": "Taylor"
+              },
+              {
+                "left": "Erwin define rangos y escuadrones",
+                "right": "Fayol"
+              },
+              {
+                "left": "Una tropa motivada pelea mejor",
+                "right": "Mayo"
+              }
+            ],
+            "completion_feedback": "La escuela **científica** (Taylor) optimiza la tarea, la **clásica** (Fayol) ordena la estructura y la de **relaciones humanas** (Mayo) atiende a las personas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tres DT",
+            "right_label": "Escuela",
+            "pairs": [
+              {
+                "left": "GPS para medir sprints",
+                "right": "Científica"
+              },
+              {
+                "left": "Sistema fijo y capitanes",
+                "right": "Clásica"
+              },
+              {
+                "left": "Convivencias para unir al grupo",
+                "right": "Relaciones humanas"
+              }
+            ],
+            "completion_feedback": "La escuela **científica** (Taylor) optimiza la tarea, la **clásica** (Fayol) ordena la estructura y la de **relaciones humanas** (Mayo) atiende a las personas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Entrenadores",
+            "right_label": "Enfoque",
+            "pairs": [
+              {
+                "left": "Cronometra pasos de baile por hora",
+                "right": "La tarea"
+              },
+              {
+                "left": "Rangos y horarios estrictos",
+                "right": "La estructura"
+              },
+              {
+                "left": "Cuida descanso y ánimo",
+                "right": "Las personas"
+              }
+            ],
+            "completion_feedback": "La escuela **científica** (Taylor) optimiza la tarea, la **clásica** (Fayol) ordena la estructura y la de **relaciones humanas** (Mayo) atiende a las personas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Granja Minecraft",
+            "right_label": "Autor",
+            "pairs": [
+              {
+                "left": "Cronometra cuánto tarda cada bloque",
+                "right": "Taylor"
+              },
+              {
+                "left": "Jerarquías y reglas del servidor",
+                "right": "Fayol"
+              },
+              {
+                "left": "Equipo motivado rinde más",
+                "right": "Mayo"
+              }
+            ],
+            "completion_feedback": "La escuela **científica** (Taylor) optimiza la tarea, la **clásica** (Fayol) ordena la estructura y la de **relaciones humanas** (Mayo) atiende a las personas."
+          }
+        }
+      }
+    },
+    "areas-funcionales-de-la-empresa": {
+      "order_steps": {
+        "prompt": "Ordena cómo participan las áreas en lanzar una camiseta nueva",
+        "steps": [
+          "Dirección aprueba lanzar la nueva camiseta",
+          "Finanzas asigna el presupuesto",
+          "Producción fabrica las camisetas",
+          "Mercadotecnia las promociona y las vende"
+        ],
+        "completion_feedback": "Las áreas son **interdependientes**: cada una necesita lo que hizo la anterior. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sombrero de Paja",
+            "right_label": "Área",
+            "pairs": [
+              {
+                "left": "Sanji cocina para todos",
+                "right": "Producción"
+              },
+              {
+                "left": "Nami cuida el tesoro",
+                "right": "Finanzas"
+              },
+              {
+                "left": "Robin consigue contactos",
+                "right": "Mercadotecnia"
+              },
+              {
+                "left": "Luffy decide el rumbo",
+                "right": "Dirección General"
+              }
+            ],
+            "completion_feedback": "Las **áreas funcionales** son Producción, Finanzas, Mercadotecnia y Recursos Humanos; la **Dirección General** las coordina."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Departamentos",
+            "right_label": "Área",
+            "pairs": [
+              {
+                "left": "Derechos de TV y salarios",
+                "right": "Finanzas"
+              },
+              {
+                "left": "Venta de camisetas y patrocinios",
+                "right": "Mercadotecnia"
+              },
+              {
+                "left": "Contratar scouts y staff",
+                "right": "Recursos Humanos"
+              },
+              {
+                "left": "Cuerpo técnico y jugadores",
+                "right": "Producción"
+              }
+            ],
+            "completion_feedback": "Las **áreas funcionales** son Producción, Finanzas, Mercadotecnia y Recursos Humanos; la **Dirección General** las coordina."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agencia de TXT",
+            "right_label": "Área",
+            "pairs": [
+              {
+                "left": "Música, coreos y MV",
+                "right": "Producción"
+              },
+              {
+                "left": "Presupuesto del comeback",
+                "right": "Finanzas"
+              },
+              {
+                "left": "Campaña en redes",
+                "right": "Mercadotecnia"
+              },
+              {
+                "left": "Bienestar de los integrantes",
+                "right": "Recursos Humanos"
+              }
+            ],
+            "completion_feedback": "Las **áreas funcionales** son Producción, Finanzas, Mercadotecnia y Recursos Humanos; la **Dirección General** las coordina."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Equipos de Roblox",
+            "right_label": "Área",
+            "pairs": [
+              {
+                "left": "Desarrolladores de juegos",
+                "right": "Producción"
+              },
+              {
+                "left": "Cuentas de Robux",
+                "right": "Finanzas"
+              },
+              {
+                "left": "Eventos y colaboraciones",
+                "right": "Mercadotecnia"
+              },
+              {
+                "left": "Contratar moderadores",
+                "right": "Recursos Humanos"
+              }
+            ],
+            "completion_feedback": "Las **áreas funcionales** son Producción, Finanzas, Mercadotecnia y Recursos Humanos; la **Dirección General** las coordina."
+          }
+        }
+      }
+    },
+    "toma-de-decisiones": {
+      "order_steps": {
+        "prompt": "Ordena las etapas de una buena decisión",
+        "steps": [
+          "Identificar el problema",
+          "Buscar información",
+          "Generar alternativas",
+          "Evaluar las opciones y elegir la mejor",
+          "Aplicarla y evaluar el resultado"
+        ],
+        "completion_feedback": "Saltarse etapas es decidir **al azar**; seguir el orden reduce el riesgo de equivocarse. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jugadas de Light",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "L se acerca a su identidad",
+                "right": "Identificar el problema"
+              },
+              {
+                "left": "Observa qué sabe L",
+                "right": "Buscar información"
+              },
+              {
+                "left": "Dejar de matar o cambiar el patrón",
+                "right": "Generar alternativas"
+              },
+              {
+                "left": "Ve cómo reacciona L",
+                "right": "Evaluar el resultado"
+              }
+            ],
+            "completion_feedback": "**Tomar decisiones** es elegir la mejor alternativa: identificar el problema, informarse, generar opciones, evaluar, elegir y revisar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cambio en la final",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Un solo cambio disponible",
+                "right": "Identificar el problema"
+              },
+              {
+                "left": "El rival se cansa por la derecha",
+                "right": "Buscar información"
+              },
+              {
+                "left": "Extremo, volante o delantero",
+                "right": "Generar alternativas"
+              },
+              {
+                "left": "Mete al extremo veloz",
+                "right": "Elegir"
+              }
+            ],
+            "completion_feedback": "**Tomar decisiones** es elegir la mejor alternativa: identificar el problema, informarse, generar opciones, evaluar, elegir y revisar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Title track",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Solo una puede ser la principal",
+                "right": "Identificar el problema"
+              },
+              {
+                "left": "Qué pegó en comebacks pasados",
+                "right": "Buscar información"
+              },
+              {
+                "left": "Comparar pros y contras",
+                "right": "Evaluar alternativas"
+              },
+              {
+                "left": "Medir ventas tras el lanzamiento",
+                "right": "Evaluar el resultado"
+              }
+            ],
+            "completion_feedback": "**Tomar decisiones** es elegir la mejor alternativa: identificar el problema, informarse, generar opciones, evaluar, elegir y revisar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Abismo de Genshin",
+            "right_label": "Etapa",
+            "pairs": [
+              {
+                "left": "Solo alcanza para un personaje",
+                "right": "Identificar el problema"
+              },
+              {
+                "left": "Revisar los enemigos del piso",
+                "right": "Buscar información"
+              },
+              {
+                "left": "Furina, Nahida o Arlecchino",
+                "right": "Generar alternativas"
+              },
+              {
+                "left": "Entrar al Abismo y ver si funcionó",
+                "right": "Evaluar el resultado"
+              }
+            ],
+            "completion_feedback": "**Tomar decisiones** es elegir la mejor alternativa: identificar el problema, informarse, generar opciones, evaluar, elegir y revisar."
+          }
+        }
+      }
+    },
+    "liderazgo-y-motivacion": {
+      "order_steps": {
+        "prompt": "Ordena los estilos de liderazgo del que más controla al que menos",
+        "steps": [
+          "Autocrático: el líder decide todo solo",
+          "Democrático: decide consultando al grupo",
+          "Liberal: deja que cada quien decida"
+        ],
+        "completion_feedback": "Del **autocrático** al **liberal**, el líder va cediendo control; ningún estilo sirve igual en todas las situaciones. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cazadores",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ordena a gritos y castiga",
+                "right": "Autocrático"
+              },
+              {
+                "left": "Escucha miedos y deciden juntos",
+                "right": "Democrático"
+              },
+              {
+                "left": "Cada quien pelea por su cuenta",
+                "right": "Liberal"
+              },
+              {
+                "left": "Tanjiro anima a Zenitsu",
+                "right": "Motivación"
+              }
+            ],
+            "completion_feedback": "**Liderazgo** es influir en un grupo hacia una meta; **motivación** es lo que impulsa a esforzarse. Estilos: autocrático, democrático y liberal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Medio tiempo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Capitán que inspira sin el brazalete",
+                "right": "Liderazgo por influencia"
+              },
+              {
+                "left": "Devolver la confianza al grupo",
+                "right": "Motivación"
+              },
+              {
+                "left": "A uno lo calma, a otro lo enciende",
+                "right": "Liderazgo situacional"
+              },
+              {
+                "left": "Explotar a gritos echando culpas",
+                "right": "Estilo autocrático"
+              }
+            ],
+            "completion_feedback": "**Liderazgo** es influir en un grupo hacia una meta; **motivación** es lo que impulsa a esforzarse. Estilos: autocrático, democrático y liberal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Liderazgo de Chan",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Chan escucha antes de decidir",
+                "right": "Democrático"
+              },
+              {
+                "left": "Impone el concepto sin escuchar",
+                "right": "Autocrático"
+              },
+              {
+                "left": "Cada miembro hace lo que quiere",
+                "right": "Liberal"
+              },
+              {
+                "left": "Chan's Room levanta el ánimo",
+                "right": "Motivación"
+              }
+            ],
+            "completion_feedback": "**Liderazgo** es influir en un grupo hacia una meta; **motivación** es lo que impulsa a esforzarse. Estilos: autocrático, democrático y liberal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "IGL en Haven",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Decide todo y exige obediencia",
+                "right": "Autocrático"
+              },
+              {
+                "left": "Pregunta qué estrategia prefieren",
+                "right": "Democrático"
+              },
+              {
+                "left": "Cada quien juega como quiere",
+                "right": "Liberal"
+              },
+              {
+                "left": "Reconoce las buenas jugadas",
+                "right": "Motivación"
+              }
+            ],
+            "completion_feedback": "**Liderazgo** es influir en un grupo hacia una meta; **motivación** es lo que impulsa a esforzarse. Estilos: autocrático, democrático y liberal."
+          }
+        }
+      }
+    }
+  }
+}
