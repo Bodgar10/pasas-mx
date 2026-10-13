@@ -1,0 +1,913 @@
+{
+  "subject": "geografia",
+  "topics": {
+    "la-tierra-movimientos-y-coordenadas-geograficas": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la diferencia horaria entre dos lugares",
+        "steps": [
+          "Anota la longitud de cada lugar",
+          "Resta para obtener los grados de diferencia",
+          "Divide entre 15°: cada 15° equivale a una hora",
+          "Al este es más tarde y al oeste más temprano"
+        ],
+        "completion_feedback": "La Tierra gira **360° en 24 horas**, o sea **15° por hora**: por eso cada huso horario abarca unos 15° de longitud. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En One Piece",
+            "right_label": "En la Tierra",
+            "pairs": [
+              {
+                "left": "Grand Line y Red Line cruzados",
+                "right": "Ecuador y meridiano de Greenwich"
+              },
+              {
+                "left": "North Blue y South Blue",
+                "right": "Hemisferios norte y sur"
+              },
+              {
+                "left": "Día y noche en el barco",
+                "right": "Rotación"
+              },
+              {
+                "left": "Isla a 10° S y 150° E",
+                "right": "Hemisferios sur y oriental"
+              }
+            ],
+            "completion_feedback": "La **rotación** (24 h) causa el día y la noche; la **traslación** (365 días) y la inclinación del eje, las estaciones. La **latitud** se mide desde el **Ecuador** y la **longitud**, desde **Greenwich**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mundial 2026",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Partido a las 12:00 en la CDMX",
+                "right": "20:00 en España"
+              },
+              {
+                "left": "Diferencia CDMX-España en verano",
+                "right": "8 horas"
+              },
+              {
+                "left": "15° de longitud",
+                "right": "1 hora de diferencia"
+              },
+              {
+                "left": "Estadio Azteca: 19° N, 99° O",
+                "right": "Hemisferios norte y occidental"
+              }
+            ],
+            "completion_feedback": "La **rotación** (24 h) causa el día y la noche; la **traslación** (365 días) y la inclinación del eje, las estaciones. La **latitud** se mide desde el **Ecuador** y la **longitud**, desde **Greenwich**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto en Seúl",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "6:00 p.m. en Seúl",
+                "right": "3:00 a.m. en la CDMX"
+              },
+              {
+                "left": "Seúl: 37° N, 127° E",
+                "right": "Hemisferios norte y oriental"
+              },
+              {
+                "left": "Diferencia Seúl-CDMX",
+                "right": "15 horas"
+              }
+            ],
+            "completion_feedback": "La **rotación** (24 h) causa el día y la noche; la **traslación** (365 días) y la inclinación del eje, las estaciones. La **latitud** se mide desde el **Ecuador** y la **longitud**, desde **Greenwich**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "En la Tierra",
+            "pairs": [
+              {
+                "left": "Ciclo de día y noche",
+                "right": "Rotación"
+              },
+              {
+                "left": "Coordenada Z (norte-sur)",
+                "right": "Latitud"
+              },
+              {
+                "left": "Coordenada X (este-oeste)",
+                "right": "Longitud"
+              },
+              {
+                "left": "Coordenada Y (altura)",
+                "right": "Altitud"
+              }
+            ],
+            "completion_feedback": "La **rotación** (24 h) causa el día y la noche; la **traslación** (365 días) y la inclinación del eje, las estaciones. La **latitud** se mide desde el **Ecuador** y la **longitud**, desde **Greenwich**."
+          }
+        }
+      }
+    },
+    "estructura-interna-de-la-tierra": {
+      "order_steps": {
+        "prompt": "Ordena las capas de la Tierra de la superficie al centro",
+        "steps": [
+          "Corteza: capa delgada y sólida",
+          "Discontinuidad de Mohorovičić: límite corteza-manto",
+          "Manto: la capa más gruesa, de roca caliente",
+          "Discontinuidad de Gutenberg: límite manto-núcleo",
+          "Núcleo: externo líquido e interno sólido"
+        ],
+        "completion_feedback": "Las capas se separan por **discontinuidades**, donde las ondas sísmicas cambian de velocidad: así conocemos el interior sin haberlo visto. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mazmorra",
+            "right_label": "Capa",
+            "pairs": [
+              {
+                "left": "Entrada delgada y tranquila",
+                "right": "Corteza"
+              },
+              {
+                "left": "Niveles enormes que ocupan casi todo",
+                "right": "Manto"
+              },
+              {
+                "left": "Ríos de lava en lo profundo",
+                "right": "Núcleo externo"
+              },
+              {
+                "left": "Cámara del jefe, en el centro",
+                "right": "Núcleo interno"
+              }
+            ],
+            "completion_feedback": "La Tierra tiene **corteza** (delgada), **manto** (la capa más gruesa), **núcleo externo** (líquido, genera el campo magnético) y **núcleo interno** (sólido por la presión). A más profundidad, más calor y presión."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Balón por dentro",
+            "right_label": "Capa",
+            "pairs": [
+              {
+                "left": "Cubierta delgada de paneles",
+                "right": "Corteza"
+              },
+              {
+                "left": "Capa gruesa de espuma",
+                "right": "Manto"
+              },
+              {
+                "left": "Cámara central a presión",
+                "right": "Núcleo"
+              }
+            ],
+            "completion_feedback": "La Tierra tiene **corteza** (delgada), **manto** (la capa más gruesa), **núcleo externo** (líquido, genera el campo magnético) y **núcleo interno** (sólido por la presión). A más profundidad, más calor y presión."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Álbum de SEVENTEEN",
+            "right_label": "Capa",
+            "pairs": [
+              {
+                "left": "Funda de cartón delgada",
+                "right": "Corteza"
+              },
+              {
+                "left": "Caja gruesa con el fotolibro",
+                "right": "Manto"
+              },
+              {
+                "left": "CD y photocard en el centro",
+                "right": "Núcleo"
+              }
+            ],
+            "completion_feedback": "La Tierra tiene **corteza** (delgada), **manto** (la capa más gruesa), **núcleo externo** (líquido, genera el campo magnético) y **núcleo interno** (sólido por la presión). A más profundidad, más calor y presión."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "En la Tierra",
+            "pairs": [
+              {
+                "left": "Pasto y tierra de tu base",
+                "right": "Corteza"
+              },
+              {
+                "left": "Piedra que ocupa casi todo",
+                "right": "Manto"
+              },
+              {
+                "left": "Profundidades con lava",
+                "right": "Núcleo externo"
+              },
+              {
+                "left": "Más calor cuanto más cavas",
+                "right": "Gradiente geotérmico"
+              }
+            ],
+            "completion_feedback": "La Tierra tiene **corteza** (delgada), **manto** (la capa más gruesa), **núcleo externo** (líquido, genera el campo magnético) y **núcleo interno** (sólido por la presión). A más profundidad, más calor y presión."
+          }
+        }
+      }
+    },
+    "tectonica-de-placas-y-sismicidad": {
+      "order_steps": {
+        "prompt": "Ordena cómo se origina un sismo",
+        "steps": [
+          "Dos placas se empujan y sus bordes se traban",
+          "La tensión se acumula durante años",
+          "La roca se rompe y libera la energía de golpe",
+          "Las ondas sísmicas salen del hipocentro",
+          "Llegan a la superficie: el epicentro está justo arriba"
+        ],
+        "completion_feedback": "El **hipocentro** está bajo tierra y el **epicentro**, en la superficie justo encima. México tiembla porque la **placa de Cocos** se hunde bajo la **Norteamericana**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lo que pasa",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Presión que crece sin verse",
+                "right": "Acumulación de tensión"
+              },
+              {
+                "left": "El suelo se parte de golpe",
+                "right": "Sismo"
+              },
+              {
+                "left": "Punto bajo tierra donde se rompe",
+                "right": "Hipocentro"
+              },
+              {
+                "left": "Punto en superficie justo encima",
+                "right": "Epicentro"
+              }
+            ],
+            "completion_feedback": "En los **límites convergentes** las placas chocan (subducción), en los **divergentes** se separan y en los **transformantes** se deslizan de lado. Un sismo nace en el **hipocentro** y arriba está el **epicentro**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Choque",
+            "right_label": "Límite",
+            "pairs": [
+              {
+                "left": "Chocan de frente y uno queda abajo",
+                "right": "Convergente"
+              },
+              {
+                "left": "Se separan dejando un hueco",
+                "right": "Divergente"
+              },
+              {
+                "left": "Se cruzan rozándose de lado",
+                "right": "Transformante"
+              }
+            ],
+            "completion_feedback": "En los **límites convergentes** las placas chocan (subducción), en los **divergentes** se separan y en los **transformantes** se deslizan de lado. Un sismo nace en el **hipocentro** y arriba está el **epicentro**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sismo en Tokio",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La sacudida que llega primero",
+                "right": "Ondas P"
+              },
+              {
+                "left": "La sacudida fuerte que llega después",
+                "right": "Ondas S"
+              },
+              {
+                "left": "Japón tiembla muy seguido",
+                "right": "Cinturón de Fuego"
+              }
+            ],
+            "completion_feedback": "En los **límites convergentes** las placas chocan (subducción), en los **divergentes** se separan y en los **transformantes** se deslizan de lado. Un sismo nace en el **hipocentro** y arriba está el **epicentro**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Plataformas",
+            "right_label": "Límite",
+            "pairs": [
+              {
+                "left": "Una se mete bajo la otra",
+                "right": "Convergente (subducción)"
+              },
+              {
+                "left": "Se alejan y sube lava nueva",
+                "right": "Divergente"
+              },
+              {
+                "left": "Se rozan en sentidos contrarios",
+                "right": "Transformante"
+              },
+              {
+                "left": "El centro casi nunca tiembla",
+                "right": "Sismos en los bordes"
+              }
+            ],
+            "completion_feedback": "En los **límites convergentes** las placas chocan (subducción), en los **divergentes** se separan y en los **transformantes** se deslizan de lado. Un sismo nace en el **hipocentro** y arriba está el **epicentro**."
+          }
+        }
+      }
+    },
+    "clima-y-factores-climaticos": {
+      "order_steps": {
+        "prompt": "Ordena cómo cambia la temperatura al subir una montaña",
+        "steps": [
+          "Al nivel del mar hace 30 °C",
+          "Subes 1,000 m: baja unos 6 °C",
+          "Subes otros 2,000 m: baja otros 12 °C",
+          "A 3,000 m de altitud hace unos 12 °C"
+        ],
+        "completion_feedback": "La temperatura baja unos **6 °C por cada 1,000 m** de altitud: por eso La Paz o el Nevado de Toluca son fríos aunque estén en zona tropical. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Isla",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Skypiea, sobre las nubes, es fría",
+                "right": "Altitud"
+              },
+              {
+                "left": "Isla tropical cerca del ecuador",
+                "right": "Latitud baja"
+              },
+              {
+                "left": "Isla rodeada de mar: clima suave",
+                "right": "Cercanía al mar"
+              },
+              {
+                "left": "Isla tras montañas: poca lluvia",
+                "right": "Relieve"
+              }
+            ],
+            "completion_feedback": "El **tiempo** es lo de hoy; el **clima**, el promedio de muchos años. Lo moldean **factores** como la **latitud**, la **altitud**, el **relieve**, la cercanía al mar y las **corrientes marinas**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estadio",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "La Paz, a más de 3,600 m",
+                "right": "Altitud"
+              },
+              {
+                "left": "Estadio de costa húmedo",
+                "right": "Cercanía al mar"
+              },
+              {
+                "left": "Cancha junto al ecuador",
+                "right": "Latitud baja"
+              },
+              {
+                "left": "Ciudad lejos del mar con noches frías",
+                "right": "Continentalidad"
+              }
+            ],
+            "completion_feedback": "El **tiempo** es lo de hoy; el **clima**, el promedio de muchos años. Lo moldean **factores** como la **latitud**, la **altitud**, el **relieve**, la cercanía al mar y las **corrientes marinas**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Corea",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cuatro estaciones marcadas",
+                "right": "Latitud media"
+              },
+              {
+                "left": "Nevó el día de la cita",
+                "right": "Tiempo atmosférico"
+              },
+              {
+                "left": "Inviernos fríos año tras año",
+                "right": "Clima"
+              },
+              {
+                "left": "Lluvias intensas del verano",
+                "right": "Monzón"
+              }
+            ],
+            "completion_feedback": "El **tiempo** es lo de hoy; el **clima**, el promedio de muchos años. Lo moldean **factores** como la **latitud**, la **altitud**, el **relieve**, la cercanía al mar y las **corrientes marinas**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Teyvat",
+            "right_label": "Factor",
+            "pairs": [
+              {
+                "left": "Dragonspine, montaña helada",
+                "right": "Altitud"
+              },
+              {
+                "left": "Desierto de Sumeru, lejos del mar",
+                "right": "Continentalidad"
+              },
+              {
+                "left": "Costa templada y húmeda",
+                "right": "Cercanía al mar"
+              },
+              {
+                "left": "Valle sin viento entre montañas",
+                "right": "Relieve"
+              }
+            ],
+            "completion_feedback": "El **tiempo** es lo de hoy; el **clima**, el promedio de muchos años. Lo moldean **factores** como la **latitud**, la **altitud**, el **relieve**, la cercanía al mar y las **corrientes marinas**."
+          }
+        }
+      }
+    },
+    "hidrografia": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de un río",
+        "steps": [
+          "El agua brota en la naciente",
+          "Los afluentes se unen al río principal",
+          "El río corre por su cauce",
+          "Llega a la desembocadura en el mar"
+        ],
+        "completion_feedback": "Todo el territorio que manda su agua a un mismo río es su **cuenca**; en México, el sistema **Grijalva-Usumacinta** es el de mayor caudal. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Río de la isla",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "Manantial en la cima del volcán",
+                "right": "Naciente"
+              },
+              {
+                "left": "Arroyos que se le unen",
+                "right": "Afluentes"
+              },
+              {
+                "left": "Ladera que le aporta agua",
+                "right": "Cuenca"
+              },
+              {
+                "left": "Donde llega al mar",
+                "right": "Desembocadura"
+              }
+            ],
+            "completion_feedback": "Un río nace en la **naciente**, recibe **afluentes**, corre por su **cauce** y termina en la **desembocadura**. Todo el territorio que le aporta agua es su **cuenca**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jugada del agua",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "Arranque en lo alto de la montaña",
+                "right": "Naciente"
+              },
+              {
+                "left": "Extremos que le pasan el balón",
+                "right": "Afluentes"
+              },
+              {
+                "left": "La 'portería': el mar",
+                "right": "Desembocadura"
+              },
+              {
+                "left": "Todo el campo que aporta agua",
+                "right": "Cuenca"
+              }
+            ],
+            "completion_feedback": "Un río nace en la **naciente**, recibe **afluentes**, corre por su **cauce** y termina en la **desembocadura**. Todo el territorio que le aporta agua es su **cuenca**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Río Han",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ríos de montaña que se le unen",
+                "right": "Afluentes"
+              },
+              {
+                "left": "Territorio que lo alimenta",
+                "right": "Cuenca"
+              },
+              {
+                "left": "Donde entrega su agua al mar",
+                "right": "Desembocadura"
+              }
+            ],
+            "completion_feedback": "Un río nace en la **naciente**, recibe **afluentes**, corre por su **cauce** y termina en la **desembocadura**. Todo el territorio que le aporta agua es su **cuenca**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Parte",
+            "pairs": [
+              {
+                "left": "Cubo de agua en la cima",
+                "right": "Naciente"
+              },
+              {
+                "left": "Canal por donde baja el agua",
+                "right": "Cauce"
+              },
+              {
+                "left": "Lago del valle que recibe todo",
+                "right": "Desembocadura"
+              },
+              {
+                "left": "Terreno que junta toda el agua",
+                "right": "Cuenca"
+              }
+            ],
+            "completion_feedback": "Un río nace en la **naciente**, recibe **afluentes**, corre por su **cauce** y termina en la **desembocadura**. Todo el territorio que le aporta agua es su **cuenca**."
+          }
+        }
+      }
+    },
+    "recursos-naturales": {
+      "order_steps": {
+        "prompt": "Ordena cómo se formó el petróleo",
+        "steps": [
+          "Plancton y plantas mueren y quedan en el fondo",
+          "Se cubren de sedimentos durante millones de años",
+          "La presión y el calor los transforman en petróleo",
+          "Lo extraemos y lo quemamos en pocas décadas",
+          "No se repone a escala humana: es no renovable"
+        ],
+        "completion_feedback": "El **petróleo** tardó **millones de años** en formarse y lo gastamos en décadas: por eso es **no renovable**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Recurso de la isla",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Madera del bosque",
+                "right": "Renovable si se replanta"
+              },
+              {
+                "left": "Oro de la mina",
+                "right": "No renovable"
+              },
+              {
+                "left": "Viento en las velas",
+                "right": "Renovable e inagotable"
+              },
+              {
+                "left": "Talar más rápido de lo que crece",
+                "right": "Sobreexplotación"
+              }
+            ],
+            "completion_feedback": "Los recursos **renovables** se reponen en poco tiempo (sol, viento, agua, bosques) si no se sobreexplotan; los **no renovables** tardaron millones de años en formarse y se agotan (petróleo, carbón, minerales)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estadio",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Paneles solares en el techo",
+                "right": "Energía renovable"
+              },
+              {
+                "left": "Gasolina del autobús",
+                "right": "Combustible fósil"
+              },
+              {
+                "left": "Acero de las gradas",
+                "right": "Mineral no renovable"
+              },
+              {
+                "left": "Césped que vuelve a crecer",
+                "right": "Recurso renovable"
+              }
+            ],
+            "completion_feedback": "Los recursos **renovables** se reponen en poco tiempo (sol, viento, agua, bosques) si no se sobreexplotan; los **no renovables** tardaron millones de años en formarse y se agotan (petróleo, carbón, minerales)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gira mundial",
+            "right_label": "Viene de…",
+            "pairs": [
+              {
+                "left": "Plástico del merch",
+                "right": "Petróleo"
+              },
+              {
+                "left": "Luces con paneles solares",
+                "right": "El Sol"
+              },
+              {
+                "left": "Turbinas para el escenario",
+                "right": "El viento"
+              },
+              {
+                "left": "Papel del fotolibro",
+                "right": "Árboles"
+              }
+            ],
+            "completion_feedback": "Los recursos **renovables** se reponen en poco tiempo (sol, viento, agua, bosques) si no se sobreexplotan; los **no renovables** tardaron millones de años en formarse y se agotan (petróleo, carbón, minerales)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Tipo",
+            "pairs": [
+              {
+                "left": "Diamantes que no reaparecen",
+                "right": "No renovable: mineral"
+              },
+              {
+                "left": "Carbón de la mina",
+                "right": "No renovable: combustible"
+              },
+              {
+                "left": "Árbol replantado",
+                "right": "Renovable: bosque"
+              },
+              {
+                "left": "Trigo de tu granja",
+                "right": "Renovable: cultivo"
+              }
+            ],
+            "completion_feedback": "Los recursos **renovables** se reponen en poco tiempo (sol, viento, agua, bosques) si no se sobreexplotan; los **no renovables** tardaron millones de años en formarse y se agotan (petróleo, carbón, minerales)."
+          }
+        }
+      }
+    },
+    "geografia-de-la-poblacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la densidad de población",
+        "steps": [
+          "Anota la población: 900,000 habitantes",
+          "Anota la superficie: 300 km²",
+          "Divide población entre superficie",
+          "La densidad es de 3,000 hab/km²"
+        ],
+        "completion_feedback": "La **densidad** no es la población total: es cuántas personas hay **por km²**. Un país enorme puede tener mucha gente y poca densidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Muros de AoT",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Interior: 900,000 en 300 km²",
+                "right": "3,000 hab/km²"
+              },
+              {
+                "left": "Exterior: 50,000 en 500 km²",
+                "right": "100 hab/km²"
+              },
+              {
+                "left": "Interior contra exterior",
+                "right": "30 veces más denso"
+              }
+            ],
+            "completion_feedback": "La **densidad de población** es población ÷ superficie y la **distribución** casi nunca es pareja. La población cambia por **natalidad**, **mortalidad** y **migración**, y se concentra en las ciudades."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Grada",
+            "right_label": "Densidad",
+            "pairs": [
+              {
+                "left": "4,000 aficionados en 1,000 m²",
+                "right": "4 por m²"
+              },
+              {
+                "left": "300 aficionados en 600 m²",
+                "right": "0.5 por m²"
+              },
+              {
+                "left": "Animación contra VIP",
+                "right": "8 veces más densa"
+              }
+            ],
+            "completion_feedback": "La **densidad de población** es población ÷ superficie y la **distribución** casi nunca es pareja. La población cambia por **natalidad**, **mortalidad** y **migración**, y se concentra en las ciudades."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Corea del Sur",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Casi todos viven en Seúl y alrededores",
+                "right": "Distribución desigual"
+              },
+              {
+                "left": "El pueblo de la abuela, casi vacío",
+                "right": "Baja densidad"
+              },
+              {
+                "left": "Jóvenes que se mudan a Seúl",
+                "right": "Migración campo-ciudad"
+              },
+              {
+                "left": "10 millones en 600 km²",
+                "right": "Unos 16,667 hab/km²"
+              }
+            ],
+            "completion_feedback": "La **densidad de población** es población ÷ superficie y la **distribución** casi nunca es pareja. La población cambia por **natalidad**, **mortalidad** y **migración**, y se concentra en las ciudades."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mapa de Roblox",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Plaza: 600 jugadores en 3 km²",
+                "right": "200 por km²"
+              },
+              {
+                "left": "Montaña: 20 jugadores en 10 km²",
+                "right": "2 por km²"
+              },
+              {
+                "left": "Jugadores que se van a otro servidor",
+                "right": "Emigración"
+              },
+              {
+                "left": "Llegan jugadores nuevos al mapa",
+                "right": "Inmigración"
+              }
+            ],
+            "completion_feedback": "La **densidad de población** es población ÷ superficie y la **distribución** casi nunca es pareja. La población cambia por **natalidad**, **mortalidad** y **migración**, y se concentra en las ciudades."
+          }
+        }
+      }
+    },
+    "problemas-ambientales-globales-geografia": {
+      "order_steps": {
+        "prompt": "Ordena cómo el plástico del mar regresa a nosotros",
+        "steps": [
+          "Se tiran botellas y bolsas al océano",
+          "El sol y las olas las rompen en microplásticos",
+          "El plancton y los peces pequeños los ingieren",
+          "Los peces grandes los acumulan al comer",
+          "Las personas comen esos peces"
+        ],
+        "completion_feedback": "El plástico no desaparece: se **fragmenta** en microplásticos que suben por la **cadena alimentaria** hasta nosotros. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el Grand Line",
+            "right_label": "Problema",
+            "pairs": [
+              {
+                "left": "Mar cubierto de botellas y redes",
+                "right": "Contaminación marina"
+              },
+              {
+                "left": "Plástico roto en pedacitos",
+                "right": "Microplásticos"
+              },
+              {
+                "left": "Rey Marino con basura en el estómago",
+                "right": "Daño a la biodiversidad"
+              }
+            ],
+            "completion_feedback": "Los **problemas ambientales globales** incluyen la contaminación del mar y del aire, la **escasez de agua dulce**, la **deforestación** y el **cambio climático**. Ninguno respeta fronteras."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agua del planeta",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Agua salada",
+                "right": "97%"
+              },
+              {
+                "left": "Agua dulce",
+                "right": "3%"
+              },
+              {
+                "left": "Dulce y accesible para usar",
+                "right": "Menos del 1%"
+              },
+              {
+                "left": "Ciudad con tandeo y pipas",
+                "right": "Escasez de agua"
+              }
+            ],
+            "completion_feedback": "Los **problemas ambientales globales** incluyen la contaminación del mar y del aire, la **escasez de agua dulce**, la **deforestación** y el **cambio climático**. Ninguno respeta fronteras."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Aire de Seúl",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Índice de calidad del aire de 160",
+                "right": "Dañino para la salud"
+              },
+              {
+                "left": "Partículas finas de autos y fábricas",
+                "right": "PM2.5"
+              },
+              {
+                "left": "Cubrebocas en días grises",
+                "right": "Protección de la salud"
+              }
+            ],
+            "completion_feedback": "Los **problemas ambientales globales** incluyen la contaminación del mar y del aire, la **escasez de agua dulce**, la **deforestación** y el **cambio climático**. Ninguno respeta fronteras."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Selva del tycoon",
+            "right_label": "Dato",
+            "pairs": [
+              {
+                "left": "Talan 800 y reforestan 300",
+                "right": "−500 parcelas al año"
+              },
+              {
+                "left": "6 años a ese ritmo",
+                "right": "−3,000 parcelas"
+              },
+              {
+                "left": "3,000 de 10,000 parcelas",
+                "right": "30% de la selva"
+              },
+              {
+                "left": "Río turbio sin raíces",
+                "right": "Erosión del suelo"
+              }
+            ],
+            "completion_feedback": "Los **problemas ambientales globales** incluyen la contaminación del mar y del aire, la **escasez de agua dulce**, la **deforestación** y el **cambio climático**. Ninguno respeta fronteras."
+          }
+        }
+      }
+    }
+  }
+}
