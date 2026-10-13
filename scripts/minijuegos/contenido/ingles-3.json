@@ -1,0 +1,723 @@
+{
+  "subject": "ingles-3",
+  "topics": {
+    "present-perfect": {
+      "order_steps": {
+        "prompt": "Arma una oración en present perfect",
+        "steps": [
+          "Identifica el sujeto: Yuji (he)",
+          "Elige has o have: he → has",
+          "Pon el verbo en past participle: eat → eaten",
+          "Completa: 'Yuji has eaten a cursed finger.'"
+        ],
+        "completion_feedback": "**Present perfect** = **have/has** + **past participle**. Habla de algo que ya pasó, sin decir cuándo, y que importa **ahora**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Wiki de JJK",
+            "right_label": "Present perfect",
+            "pairs": [
+              {
+                "left": "Yuji ___ (eat) a cursed finger",
+                "right": "has eaten"
+              },
+              {
+                "left": "The sorcerers ___ (fight) curses",
+                "right": "have fought"
+              },
+              {
+                "left": "I ___ (watch) every episode",
+                "right": "have watched"
+              }
+            ],
+            "completion_feedback": "**Present perfect** = have/has + past participle (eaten, won, played). Para logros o experiencias sin fecha exacta. Suele ir con **already**, **yet**, **ever**, **never**, **for** y **since**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ficha de Mbappé",
+            "right_label": "Present perfect",
+            "pairs": [
+              {
+                "left": "Mbappé ___ (score) over 300 goals",
+                "right": "has scored"
+              },
+              {
+                "left": "He ___ (win) several titles",
+                "right": "has won"
+              },
+              {
+                "left": "We ___ (see) him play live",
+                "right": "have seen"
+              }
+            ],
+            "completion_feedback": "**Present perfect** = have/has + past participle (eaten, won, played). Para logros o experiencias sin fecha exacta. Suele ir con **already**, **yet**, **ever**, **never**, **for** y **since**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Carrera de IVE",
+            "right_label": "Present perfect",
+            "pairs": [
+              {
+                "left": "IVE ___ (win) many music shows",
+                "right": "have won"
+              },
+              {
+                "left": "Wonyoung ___ (become) an icon",
+                "right": "has become"
+              },
+              {
+                "left": "I ___ (listen) to the new album",
+                "right": "have listened"
+              }
+            ],
+            "completion_feedback": "**Present perfect** = have/has + past participle (eaten, won, played). Para logros o experiencias sin fecha exacta. Suele ir con **already**, **yet**, **ever**, **never**, **for** y **since**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Perfil de Valorant",
+            "right_label": "Present perfect",
+            "pairs": [
+              {
+                "left": "You ___ (reach) Immortal",
+                "right": "have reached"
+              },
+              {
+                "left": "My duo ___ (play) 200 hours",
+                "right": "has played"
+              },
+              {
+                "left": "I ___ (not try) the new agent yet",
+                "right": "haven't tried"
+              }
+            ],
+            "completion_feedback": "**Present perfect** = have/has + past participle (eaten, won, played). Para logros o experiencias sin fecha exacta. Suele ir con **already**, **yet**, **ever**, **never**, **for** y **since**."
+          }
+        }
+      }
+    },
+    "present-perfect-vs-past-simple": {
+      "order_steps": {
+        "prompt": "Elige entre present perfect y past simple",
+        "steps": [
+          "Lee la oración: 'They ___ (win) the award in 2024.'",
+          "Busca el marcador de tiempo: in 2024",
+          "Es un momento ya terminado → past simple",
+          "Escribe: 'They won the award in 2024.'"
+        ],
+        "completion_feedback": "El **marcador de tiempo** decide: fecha terminada (yesterday, last week, in 2024) → **past simple**. Sin fecha o periodo abierto (ever, yet, this season) → **present perfect**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Eren ___ (become) a titan (sin fecha)",
+                "right": "has become"
+              },
+              {
+                "left": "He ___ (become) a titan in that battle",
+                "right": "became"
+              },
+              {
+                "left": "Mikasa ___ (save) him in the last minute",
+                "right": "saved"
+              },
+              {
+                "left": "She ___ (save) him many times",
+                "right": "has saved"
+              }
+            ],
+            "completion_feedback": "**Past simple** con tiempo terminado: yesterday, last month, in 2024, on Sunday. **Present perfect** sin fecha o con periodo abierto: ever, never, already, yet, this season."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bellingham",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "He ___ (score) twice on Sunday",
+                "right": "scored"
+              },
+              {
+                "left": "He ___ (score) 20 goals this season",
+                "right": "has scored"
+              },
+              {
+                "left": "He ___ (win) LaLiga in 2024",
+                "right": "won"
+              }
+            ],
+            "completion_feedback": "**Past simple** con tiempo terminado: yesterday, last month, in 2024, on Sunday. **Present perfect** sin fecha o con periodo abierto: ever, never, already, yet, this season."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "SKZ ___ (release) many albums",
+                "right": "have released"
+              },
+              {
+                "left": "They ___ (release) it last month",
+                "right": "released"
+              },
+              {
+                "left": "Last Saturday they ___ (perform)",
+                "right": "performed"
+              }
+            ],
+            "completion_feedback": "**Past simple** con tiempo terminado: yesterday, last month, in 2024, on Sunday. **Present perfect** sin fecha o con periodo abierto: ever, never, already, yet, this season."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Brawl Stars",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "I ___ (unlock) him last week",
+                "right": "unlocked"
+              },
+              {
+                "left": "I ___ (unlock) 30 brawlers",
+                "right": "have unlocked"
+              },
+              {
+                "left": "Yesterday we ___ (lose) the final",
+                "right": "lost"
+              }
+            ],
+            "completion_feedback": "**Past simple** con tiempo terminado: yesterday, last month, in 2024, on Sunday. **Present perfect** sin fecha o con periodo abierto: ever, never, already, yet, this season."
+          }
+        }
+      }
+    },
+    "past-continuous": {
+      "order_steps": {
+        "prompt": "Une dos acciones del pasado",
+        "steps": [
+          "Identifica la acción larga que estaba en progreso",
+          "Ponla en past continuous: was o were + -ing",
+          "Pon la acción corta que interrumpe en past simple",
+          "Únelas con when: 'I was playing when it froze.'"
+        ],
+        "completion_feedback": "Acción larga en progreso → **was/were + -ing**. Acción corta que la interrumpe → **past simple**. Se unen con **when** o **while**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Tanjiro ___ (protect) Nezuko…",
+                "right": "was protecting"
+              },
+              {
+                "left": "The others ___ (fight)…",
+                "right": "were fighting"
+              },
+              {
+                "left": "…when the demon ___ (appear)",
+                "right": "appeared"
+              }
+            ],
+            "completion_feedback": "**Past continuous** = was/were + verbo-ing: acción en progreso en un momento del pasado. La interrupción va en past simple: 'I was playing **when** the game froze'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gol de Lamine",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Yamal ___ (dribble) past two…",
+                "right": "was dribbling"
+              },
+              {
+                "left": "The fans ___ (sing)…",
+                "right": "were singing"
+              },
+              {
+                "left": "…when the referee ___ (blow)",
+                "right": "blew"
+              }
+            ],
+            "completion_feedback": "**Past continuous** = was/were + verbo-ing: acción en progreso en un momento del pasado. La interrupción va en past simple: 'I was playing **when** the game froze'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Live de SEVENTEEN",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Hoshi ___ (practice) the choreo…",
+                "right": "was practicing"
+              },
+              {
+                "left": "Mingyu and Wonwoo ___ (cook)…",
+                "right": "were cooking"
+              },
+              {
+                "left": "…when the camera ___ (turn) on",
+                "right": "turned"
+              }
+            ],
+            "completion_feedback": "**Past continuous** = was/were + verbo-ing: acción en progreso en un momento del pasado. La interrupción va en past simple: 'I was playing **when** the game froze'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Roblox se cayó",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "I ___ (build) my base…",
+                "right": "was building"
+              },
+              {
+                "left": "My friends ___ (trade) items…",
+                "right": "were trading"
+              },
+              {
+                "left": "…when the server ___ (crash)",
+                "right": "crashed"
+              }
+            ],
+            "completion_feedback": "**Past continuous** = was/were + verbo-ing: acción en progreso en un momento del pasado. La interrupción va en past simple: 'I was playing **when** the game froze'."
+          }
+        }
+      }
+    },
+    "used-to": {
+      "order_steps": {
+        "prompt": "Convierte una oración con used to en pregunta",
+        "steps": [
+          "Parte de: 'They used to train together.'",
+          "Pon el auxiliar Did al inicio",
+          "Agrega el sujeto: Did they…",
+          "Quita la d: 'Did they use to train together?'"
+        ],
+        "completion_feedback": "**Used to** = hábitos o estados del pasado que ya no son. En negativo y pregunta, **did** ya marca el pasado, así que se escribe **use to** (sin d). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Antes en JJK",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Antes era débil",
+                "right": "He used to be weak"
+              },
+              {
+                "left": "Antes no era tan fuerte",
+                "right": "He didn't use to be so strong"
+              },
+              {
+                "left": "¿Antes entrenaban juntos?",
+                "right": "Did they use to train together?"
+              }
+            ],
+            "completion_feedback": "**Used to** + verbo base: lo que antes era hábito o realidad y ya no. Afirmativo: used to. Negativo: **didn't use to**. Pregunta: **Did… use to…?**"
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Antes y ahora",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Lamine antes era desconocido",
+                "right": "He used to be unknown"
+              },
+              {
+                "left": "¿Mbappé jugaba en el Mónaco?",
+                "right": "Did he use to play for Monaco?"
+              },
+              {
+                "left": "Antes no tenía fans",
+                "right": "He didn't use to have fans"
+              }
+            ],
+            "completion_feedback": "**Used to** + verbo base: lo que antes era hábito o realidad y ya no. Afirmativo: used to. Negativo: **didn't use to**. Pregunta: **Did… use to…?**"
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "IVE antes",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Antes eran trainees",
+                "right": "They used to be trainees"
+              },
+              {
+                "left": "Antes no tenían fans",
+                "right": "They didn't use to have fans"
+              },
+              {
+                "left": "¿Ensayaban en salas chicas?",
+                "right": "Did they use to practice in small rooms?"
+              }
+            ],
+            "completion_feedback": "**Used to** + verbo base: lo que antes era hábito o realidad y ya no. Afirmativo: used to. Negativo: **didn't use to**. Pregunta: **Did… use to…?**"
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Antes hacía casas de tierra",
+                "right": "I used to build dirt houses"
+              },
+              {
+                "left": "Antes no peleaba con el dragón",
+                "right": "I didn't use to fight the dragon"
+              },
+              {
+                "left": "¿Antes cerrabas el juego enojado?",
+                "right": "Did you use to rage quit?"
+              }
+            ],
+            "completion_feedback": "**Used to** + verbo base: lo que antes era hábito o realidad y ya no. Afirmativo: used to. Negativo: **didn't use to**. Pregunta: **Did… use to…?**"
+          }
+        }
+      }
+    },
+    "first-conditional": {
+      "order_steps": {
+        "prompt": "Arma una oración en first conditional",
+        "steps": [
+          "Escribe la condición con if",
+          "Pon el verbo del if en present simple",
+          "Escribe el resultado con will + verbo base",
+          "Completa: 'If Gojo arrives, we will win.'"
+        ],
+        "completion_feedback": "**First conditional** = **If** + present simple, **will** + verbo base. Para situaciones **posibles** en el futuro. Nunca pongas will en la parte del if. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Yuji planea",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If Yuji uses Black Flash,",
+                "right": "he will deal more damage."
+              },
+              {
+                "left": "If Nobara helps us,",
+                "right": "we will win the fight."
+              },
+              {
+                "left": "If the curse escapes,",
+                "right": "people will get hurt."
+              }
+            ],
+            "completion_feedback": "**First conditional**: If + present simple → will + verbo base, para resultados **reales y posibles**. 'If I score, I will break my record.' Nunca 'If I will score…'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Antes del partido",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If we win this match,",
+                "right": "we will reach the next round."
+              },
+              {
+                "left": "If I score today,",
+                "right": "I will break my record."
+              },
+              {
+                "left": "If he fouls me in the box,",
+                "right": "the referee will give a penalty."
+              }
+            ],
+            "completion_feedback": "**First conditional**: If + present simple → will + verbo base, para resultados **reales y posibles**. 'If I score, I will break my record.' Nunca 'If I will score…'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Planes de STAY",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If the album drops on Friday,",
+                "right": "I will stream it all weekend."
+              },
+              {
+                "left": "If I save enough money,",
+                "right": "I will buy the photocards."
+              },
+              {
+                "left": "If they announce a tour,",
+                "right": "we will buy tickets together."
+              }
+            ],
+            "completion_feedback": "**First conditional**: If + present simple → will + verbo base, para resultados **reales y posibles**. 'If I score, I will break my record.' Nunca 'If I will score…'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Fortnite",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "If I land at Tilted Towers,",
+                "right": "I will find good loot."
+              },
+              {
+                "left": "If the storm closes,",
+                "right": "we will lose health."
+              },
+              {
+                "left": "If you build a ramp,",
+                "right": "I will cover you."
+              }
+            ],
+            "completion_feedback": "**First conditional**: If + present simple → will + verbo base, para resultados **reales y posibles**. 'If I score, I will break my record.' Nunca 'If I will score…'."
+          }
+        }
+      }
+    },
+    "relative-clauses": {
+      "order_steps": {
+        "prompt": "Une dos oraciones con una relative clause",
+        "steps": [
+          "Busca el sustantivo que se repite",
+          "Decide qué es: persona, cosa o lugar",
+          "Elige el relativo: who, which/that o where",
+          "Une las ideas: 'Luffy is the pirate who…'"
+        ],
+        "completion_feedback": "Para unir dos ideas: localiza la palabra repetida y cámbiala por **who** (personas), **which/that** (cosas), **where** (lugares) o **whose** (posesión). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "Relativo",
+            "pairs": [
+              {
+                "left": "Luffy is the pirate ___ wants to be king",
+                "right": "who"
+              },
+              {
+                "left": "The island ___ the gyojin live",
+                "right": "where"
+              },
+              {
+                "left": "Wado is the sword ___ Zoro carries",
+                "right": "which"
+              }
+            ],
+            "completion_feedback": "Pronombres relativos: **who** (personas), **which/that** (cosas), **where** (lugares), **whose** (posesión). Si el relativo es objeto, se puede omitir: 'the goal (that) he scored'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Real Madrid",
+            "right_label": "Relativo",
+            "pairs": [
+              {
+                "left": "The player ___ scored was Mbappé",
+                "right": "who"
+              },
+              {
+                "left": "The stadium ___ Real Madrid plays",
+                "right": "where"
+              },
+              {
+                "left": "The ball ___ he kicked hit the post",
+                "right": "which"
+              }
+            ],
+            "completion_feedback": "Pronombres relativos: **who** (personas), **which/that** (cosas), **where** (lugares), **whose** (posesión). Si el relativo es objeto, se puede omitir: 'the goal (that) he scored'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "Relativo",
+            "pairs": [
+              {
+                "left": "The idol ___ dance went viral",
+                "right": "whose"
+              },
+              {
+                "left": "Woozi is the member ___ composes",
+                "right": "who"
+              },
+              {
+                "left": "The album ___ they released is great",
+                "right": "that"
+              }
+            ],
+            "completion_feedback": "Pronombres relativos: **who** (personas), **which/that** (cosas), **where** (lugares), **whose** (posesión). Si el relativo es objeto, se puede omitir: 'the goal (that) he scored'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Relativo",
+            "pairs": [
+              {
+                "left": "The pickaxe ___ I found in a dungeon",
+                "right": "that"
+              },
+              {
+                "left": "The player ___ beat the game",
+                "right": "who"
+              },
+              {
+                "left": "The biome ___ I built my base",
+                "right": "where"
+              }
+            ],
+            "completion_feedback": "Pronombres relativos: **who** (personas), **which/that** (cosas), **where** (lugares), **whose** (posesión). Si el relativo es objeto, se puede omitir: 'the goal (that) he scored'."
+          }
+        }
+      }
+    },
+    "gerunds-and-infinitives": {
+      "order_steps": {
+        "prompt": "Decide entre -ing y to + verbo",
+        "steps": [
+          "Lee el primer verbo: enjoy",
+          "Recuerda qué forma pide: enjoy → -ing",
+          "Transforma la segunda acción: train → training",
+          "Completa: 'Zoro enjoys training.'"
+        ],
+        "completion_feedback": "El **primer verbo** manda: enjoy, keep, finish, avoid → **-ing**. Want, decide, hope, need → **to + verbo**. Like, love y hate aceptan los dos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Luffy wants ___ (become) king",
+                "right": "to become"
+              },
+              {
+                "left": "Zoro keeps ___ (train)",
+                "right": "training"
+              },
+              {
+                "left": "They enjoy ___ (sail)",
+                "right": "sailing"
+              }
+            ],
+            "completion_feedback": "Después de **enjoy, keep, finish, avoid, practice** va **-ing**. Después de **want, decide, hope, need** va **to + verbo**. Para propósito ('para') usa to: 'He trains to improve'."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mbappé",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "He practices ___ (shoot) penalties",
+                "right": "shooting"
+              },
+              {
+                "left": "He wants ___ (win) the Champions",
+                "right": "to win"
+              },
+              {
+                "left": "He avoids ___ (get) injured",
+                "right": "getting"
+              }
+            ],
+            "completion_feedback": "Después de **enjoy, keep, finish, avoid, practice** va **-ing**. Después de **want, decide, hope, need** va **to + verbo**. Para propósito ('para') usa to: 'He trains to improve'."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fan de SKZ",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "I hope ___ (see) them live",
+                "right": "to see"
+              },
+              {
+                "left": "I enjoy ___ (listen) to SKZ",
+                "right": "listening"
+              },
+              {
+                "left": "I want ___ (learn) the choreo",
+                "right": "to learn"
+              }
+            ],
+            "completion_feedback": "Después de **enjoy, keep, finish, avoid, practice** va **-ing**. Después de **want, decide, hope, need** va **to + verbo**. Para propósito ('para') usa to: 'He trains to improve'."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "I enjoy ___ (mine) diamonds",
+                "right": "mining"
+              },
+              {
+                "left": "I decided ___ (build) a base",
+                "right": "to build"
+              },
+              {
+                "left": "I finished ___ (craft) my tools",
+                "right": "crafting"
+              }
+            ],
+            "completion_feedback": "Después de **enjoy, keep, finish, avoid, practice** va **-ing**. Después de **want, decide, hope, need** va **to + verbo**. Para propósito ('para') usa to: 'He trains to improve'."
+          }
+        }
+      }
+    }
+  }
+}
