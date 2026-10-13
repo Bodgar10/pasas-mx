@@ -1,0 +1,899 @@
+{
+  "subject": "estructura-socioeconomica-mexico",
+  "topics": {
+    "conceptos-crecimiento-y-desarrollo": {
+      "order_steps": {
+        "prompt": "Ordena cómo un país pasa del crecimiento al desarrollo",
+        "steps": [
+          "Sube el PIB del país: hay crecimiento económico",
+          "Ese ingreso se invierte en escuelas, hospitales y empleo",
+          "Mejora la calidad de vida de la mayoría",
+          "El país pasó del crecimiento al desarrollo"
+        ],
+        "completion_feedback": "El **crecimiento** es cuantitativo (sube el PIB); el **desarrollo** es cualitativo: ese crecimiento se vuelve **bienestar** repartido. Puede haber crecimiento sin desarrollo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cazadores",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Nivel altísimo sin técnica",
+                "right": "Crecimiento sin desarrollo"
+              },
+              {
+                "left": "Nivel medio con estrategia y sombras",
+                "right": "Desarrollo real"
+              },
+              {
+                "left": "El número de nivel",
+                "right": "PIB: mide cantidad"
+              },
+              {
+                "left": "Técnica y buen uso de recursos",
+                "right": "Calidad y bienestar"
+              }
+            ],
+            "completion_feedback": "El **crecimiento** mide cuánto aumenta la producción (**PIB**); el **desarrollo** mide si mejora la vida de la gente: salud, educación, ingreso y su reparto (**IDH**). Crecer no garantiza desarrollarse."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "Facturación récord",
+                "right": "Crecimiento"
+              },
+              {
+                "left": "Cantera, canchas y sueldos dignos",
+                "right": "Desarrollo"
+              },
+              {
+                "left": "Gastar más sin mejorar la base",
+                "right": "Crecimiento sin desarrollo"
+              }
+            ],
+            "completion_feedback": "El **crecimiento** mide cuánto aumenta la producción (**PIB**); el **desarrollo** mide si mejora la vida de la gente: salud, educación, ingreso y su reparto (**IDH**). Crecer no garantiza desarrollarse."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agencia",
+            "right_label": "Mide…",
+            "pairs": [
+              {
+                "left": "Ventas récord del grupo",
+                "right": "Crecimiento (PIB)"
+              },
+              {
+                "left": "Idols sanos y bien pagados",
+                "right": "Desarrollo (bienestar)"
+              },
+              {
+                "left": "Ganancias bien repartidas",
+                "right": "Distribución del ingreso"
+              }
+            ],
+            "completion_feedback": "El **crecimiento** mide cuánto aumenta la producción (**PIB**); el **desarrollo** mide si mejora la vida de la gente: salud, educación, ingreso y su reparto (**IDH**). Crecer no garantiza desarrollarse."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cuenta de Genshin",
+            "right_label": "Es…",
+            "pairs": [
+              {
+                "left": "AR 55 con personajes sin armar",
+                "right": "Crecimiento sin desarrollo"
+              },
+              {
+                "left": "Builds optimizadas y equipo equilibrado",
+                "right": "Desarrollo"
+              },
+              {
+                "left": "El número de AR",
+                "right": "Como el PIB: solo tamaño"
+              }
+            ],
+            "completion_feedback": "El **crecimiento** mide cuánto aumenta la producción (**PIB**); el **desarrollo** mide si mejora la vida de la gente: salud, educación, ingreso y su reparto (**IDH**). Crecer no garantiza desarrollarse."
+          }
+        }
+      }
+    },
+    "modelos-economicos-de-mexico": {
+      "order_steps": {
+        "prompt": "Ordena los modelos económicos de México en el tiempo",
+        "steps": [
+          "Arranca la sustitución de importaciones (1940)",
+          "Desarrollo estabilizador: el 'milagro mexicano' (1954–1970)",
+          "Desarrollo compartido con gasto público alto (1970–1982)",
+          "Crisis de la deuda y giro al modelo neoliberal (1982)",
+          "Entra en vigor el TLCAN (1994)"
+        ],
+        "completion_feedback": "México pasó de un modelo **cerrado y protegido**, con el Estado al frente, a uno **abierto al comercio mundial** tras la crisis de 1982. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La isla",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Produce todo y prohíbe lo extranjero",
+                "right": "Sustitución de importaciones"
+              },
+              {
+                "left": "Su gobierno invierte y crece estable",
+                "right": "Desarrollo estabilizador"
+              },
+              {
+                "left": "Abre sus puertos al Grand Line",
+                "right": "Neoliberal"
+              },
+              {
+                "left": "Firma libre comercio con otras islas",
+                "right": "Tratado como el TLCAN"
+              }
+            ],
+            "completion_feedback": "La **sustitución de importaciones** cerró la economía para producir en casa; el **desarrollo estabilizador** fue su etapa de crecimiento estable; el **modelo neoliberal** abrió, privatizó y firmó el **TLCAN**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Etapa del club",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Solo canteranos, nada de fuera",
+                "right": "Sustitución de importaciones"
+              },
+              {
+                "left": "Época dorada estable",
+                "right": "Desarrollo estabilizador"
+              },
+              {
+                "left": "Ficha estrellas y recibe fondos de fuera",
+                "right": "Neoliberal"
+              }
+            ],
+            "completion_feedback": "La **sustitución de importaciones** cerró la economía para producir en casa; el **desarrollo estabilizador** fue su etapa de crecimiento estable; el **modelo neoliberal** abrió, privatizó y firmó el **TLCAN**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agencia",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Todo interno y solo mercado coreano",
+                "right": "Sustitución de importaciones"
+              },
+              {
+                "left": "Se abre a plataformas globales",
+                "right": "Neoliberal"
+              },
+              {
+                "left": "Firma acuerdos con otros países",
+                "right": "Tratado como el TLCAN"
+              }
+            ],
+            "completion_feedback": "La **sustitución de importaciones** cerró la economía para producir en casa; el **desarrollo estabilizador** fue su etapa de crecimiento estable; el **modelo neoliberal** abrió, privatizó y firmó el **TLCAN**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Línea del tiempo",
+            "right_label": "Hito",
+            "pairs": [
+              {
+                "left": "1940",
+                "right": "Arranca la sustitución de importaciones"
+              },
+              {
+                "left": "1954–1970",
+                "right": "Desarrollo estabilizador"
+              },
+              {
+                "left": "1982",
+                "right": "Crisis de la deuda"
+              },
+              {
+                "left": "1994",
+                "right": "Entra en vigor el TLCAN"
+              }
+            ],
+            "completion_feedback": "La **sustitución de importaciones** cerró la economía para producir en casa; el **desarrollo estabilizador** fue su etapa de crecimiento estable; el **modelo neoliberal** abrió, privatizó y firmó el **TLCAN**."
+          }
+        }
+      }
+    },
+    "modelo-de-sustitucion-de-importaciones": {
+      "order_steps": {
+        "prompt": "Ordena cómo funcionó y se agotó la sustitución de importaciones",
+        "steps": [
+          "El país importa casi todos sus productos manufacturados",
+          "Pone aranceles y permisos a lo importado",
+          "Surgen fábricas nacionales de bienes de consumo",
+          "Intenta producir también bienes intermedios y maquinaria",
+          "Sin competencia, la industria se vuelve poco eficiente y el modelo se agota"
+        ],
+        "completion_feedback": "La **sustitución de importaciones** protegió a la industria nacional con **aranceles** y un **Estado** fuerte; sin competencia, con el tiempo se volvió poco eficiente. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La isla",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Compraba barcos a otros reinos",
+                "right": "Dependencia de importaciones"
+              },
+              {
+                "left": "Construye sus propios astilleros",
+                "right": "Producción nacional"
+              },
+              {
+                "left": "Limita lo extranjero",
+                "right": "Proteccionismo"
+              },
+              {
+                "left": "Su gobierno financia los talleres",
+                "right": "Estado protagonista"
+              }
+            ],
+            "completion_feedback": "En la **sustitución de importaciones** el país deja de comprar fuera para producir en casa: el **Estado** protege a la industria con **aranceles** y permisos, y el crecimiento se apoya en el **mercado interno**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "El club",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Fichaba extranjeros carísimos",
+                "right": "Dependencia de importaciones"
+              },
+              {
+                "left": "Forma canteranos en su academia",
+                "right": "Producción nacional"
+              },
+              {
+                "left": "Tope a fichajes de fuera",
+                "right": "Como un arancel"
+              },
+              {
+                "left": "Ya no necesita comprar afuera",
+                "right": "Autosuficiencia"
+              }
+            ],
+            "completion_feedback": "En la **sustitución de importaciones** el país deja de comprar fuera para producir en casa: el **Estado** protege a la industria con **aranceles** y permisos, y el crecimiento se apoya en el **mercado interno**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agencia",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Contrataba productores de EE.UU.",
+                "right": "Dependencia de importaciones"
+              },
+              {
+                "left": "Escuela interna de productores",
+                "right": "Producción nacional"
+              },
+              {
+                "left": "Prioriza su talento sobre el de fuera",
+                "right": "Proteccionismo"
+              }
+            ],
+            "completion_feedback": "En la **sustitución de importaciones** el país deja de comprar fuera para producir en casa: el **Estado** protege a la industria con **aranceles** y permisos, y el crecimiento se apoya en el **mercado interno**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tu base",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Comprabas todo a los aldeanos",
+                "right": "Dependencia de importaciones"
+              },
+              {
+                "left": "Granja de trigo para tu pan",
+                "right": "Producción nacional"
+              },
+              {
+                "left": "Ya no compras lo que fabricas",
+                "right": "Sustitución de importaciones"
+              },
+              {
+                "left": "Tú organizas y financias todo",
+                "right": "Estado protagonista"
+              }
+            ],
+            "completion_feedback": "En la **sustitución de importaciones** el país deja de comprar fuera para producir en casa: el **Estado** protege a la industria con **aranceles** y permisos, y el crecimiento se apoya en el **mercado interno**."
+          }
+        }
+      }
+    },
+    "modelo-neoliberal": {
+      "order_steps": {
+        "prompt": "Ordena el giro de México hacia el modelo neoliberal",
+        "steps": [
+          "Estalla la crisis de la deuda (1982)",
+          "México entra al GATT y abre su comercio (1986)",
+          "Se privatizan Telmex y la banca (1990–1992)",
+          "Entra en vigor el TLCAN (1994)"
+        ],
+        "completion_feedback": "El **modelo neoliberal** respondió a la crisis con **apertura**, **privatización** y **desregulación**: menos Estado en la economía y más mercado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La Asociación",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Vende sus empresas de armas a gremios",
+                "right": "Privatización"
+              },
+              {
+                "left": "Deja entrar cazadores de fuera",
+                "right": "Apertura"
+              },
+              {
+                "left": "Quita reglas a los contratos",
+                "right": "Desregulación"
+              },
+              {
+                "left": "La competencia fija los precios",
+                "right": "Libre mercado"
+              }
+            ],
+            "completion_feedback": "El **modelo neoliberal** reduce la intervención del Estado: **privatiza** empresas públicas, **abre** la economía al comercio y la inversión extranjera, **desregula** y deja que el **libre mercado** fije precios."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La liga",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Clubes vendidos a dueños privados",
+                "right": "Privatización"
+              },
+              {
+                "left": "Fondos extranjeros sin límite",
+                "right": "Apertura a la inversión"
+              },
+              {
+                "left": "Sin topes de gasto ni fichajes",
+                "right": "Desregulación"
+              },
+              {
+                "left": "El organismo casi no interviene",
+                "right": "Menos Estado"
+              }
+            ],
+            "completion_feedback": "El **modelo neoliberal** reduce la intervención del Estado: **privatiza** empresas públicas, **abre** la economía al comercio y la inversión extranjera, **desregula** y deja que el **libre mercado** fije precios."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "La agencia",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Vende sus tiendas a empresas privadas",
+                "right": "Privatización"
+              },
+              {
+                "left": "Su música compite en todo el mundo",
+                "right": "Apertura comercial"
+              },
+              {
+                "left": "Quita reglas internas",
+                "right": "Desregulación"
+              }
+            ],
+            "completion_feedback": "El **modelo neoliberal** reduce la intervención del Estado: **privatiza** empresas públicas, **abre** la economía al comercio y la inversión extranjera, **desregula** y deja que el **libre mercado** fije precios."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Skins (hipotético)",
+            "right_label": "Medida",
+            "pairs": [
+              {
+                "left": "Riot cede el control a los jugadores",
+                "right": "Privatización"
+              },
+              {
+                "left": "Skins entran y salen sin barreras",
+                "right": "Apertura comercial"
+              },
+              {
+                "left": "Casi sin reglas de intercambio",
+                "right": "Desregulación"
+              },
+              {
+                "left": "Oferta y demanda fijan los precios",
+                "right": "Libre mercado"
+              }
+            ],
+            "completion_feedback": "El **modelo neoliberal** reduce la intervención del Estado: **privatiza** empresas públicas, **abre** la economía al comercio y la inversión extranjera, **desregula** y deja que el **libre mercado** fije precios."
+          }
+        }
+      }
+    },
+    "tratados-comerciales-tlcan-t-mec": {
+      "order_steps": {
+        "prompt": "Ordena la historia del tratado de América del Norte",
+        "steps": [
+          "México, EE.UU. y Canadá firman el TLCAN (1992)",
+          "Entra en vigor el TLCAN (1994)",
+          "Los tres países renegocian el tratado (2017–2018)",
+          "Entra en vigor el T-MEC (2020)"
+        ],
+        "completion_feedback": "El **T-MEC** sustituyó al **TLCAN** con reglas nuevas: más contenido regional en autos, normas laborales y comercio digital. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Alianza de islas",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Las tres islas que firman",
+                "right": "México, EE.UU. y Canadá"
+              },
+              {
+                "left": "Quitar peajes de puerto",
+                "right": "Eliminar aranceles"
+              },
+              {
+                "left": "Mercancías que circulan libres",
+                "right": "Libre comercio"
+              },
+              {
+                "left": "Renovar la alianza con reglas nuevas",
+                "right": "Del TLCAN al T-MEC"
+              }
+            ],
+            "completion_feedback": "Un **tratado de libre comercio** reduce o elimina **aranceles** entre países. El **TLCAN** (1994) unió a México, EE.UU. y Canadá, y el **T-MEC** (2020) lo actualizó con nuevas reglas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pacto de ligas",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Impuesto por cada transferencia",
+                "right": "Arancel"
+              },
+              {
+                "left": "Jugadores que se mueven sin cobro",
+                "right": "Libre comercio"
+              },
+              {
+                "left": "Cada liga aporta su especialidad",
+                "right": "Especialización"
+              },
+              {
+                "left": "Actualizan las reglas de fichajes",
+                "right": "Del TLCAN al T-MEC"
+              }
+            ],
+            "completion_feedback": "Un **tratado de libre comercio** reduce o elimina **aranceles** entre países. El **TLCAN** (1994) unió a México, EE.UU. y Canadá, y el **T-MEC** (2020) lo actualizó con nuevas reglas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pacto de agencias",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Comisiones por colaborar",
+                "right": "Aranceles"
+              },
+              {
+                "left": "Artistas que circulan entre agencias",
+                "right": "Libre comercio"
+              },
+              {
+                "left": "Tres agencias que firman",
+                "right": "Tres países socios"
+              }
+            ],
+            "completion_feedback": "Un **tratado de libre comercio** reduce o elimina **aranceles** entre países. El **TLCAN** (1994) unió a México, EE.UU. y Canadá, y el **T-MEC** (2020) lo actualizó con nuevas reglas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Servidores",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Peaje de esmeraldas en la frontera",
+                "right": "Arancel"
+              },
+              {
+                "left": "Items que fluyen sin cobro",
+                "right": "Libre comercio"
+              },
+              {
+                "left": "Servidor experto en redstone",
+                "right": "Especialización"
+              }
+            ],
+            "completion_feedback": "Un **tratado de libre comercio** reduce o elimina **aranceles** entre países. El **TLCAN** (1994) unió a México, EE.UU. y Canadá, y el **T-MEC** (2020) lo actualizó con nuevas reglas."
+          }
+        }
+      }
+    },
+    "sectores-economicos": {
+      "order_steps": {
+        "prompt": "Ordena el recorrido de una barra de chocolate por los sectores",
+        "steps": [
+          "Se cosecha el cacao en Tabasco (primario)",
+          "Una fábrica lo convierte en chocolate (secundario)",
+          "Un camión lo lleva a las tiendas (terciario)",
+          "Una tienda te lo vende (terciario)"
+        ],
+        "completion_feedback": "Un mismo producto recorre los tres sectores: el **primario** extrae, el **secundario** transforma y el **terciario** transporta, vende y da servicios. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tomo de manga",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "Talar árboles para el papel",
+                "right": "Primario"
+              },
+              {
+                "left": "Imprimir y encuadernar el tomo",
+                "right": "Secundario"
+              },
+              {
+                "left": "Venderlo en una librería",
+                "right": "Terciario"
+              }
+            ],
+            "completion_feedback": "El sector **primario** obtiene recursos de la naturaleza (agricultura, pesca, ganadería); el **secundario** los transforma (industria, construcción); el **terciario** da servicios (comercio, transporte, turismo)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mundo del fútbol",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "Sacar caucho del árbol",
+                "right": "Primario"
+              },
+              {
+                "left": "Coser el balón en una fábrica",
+                "right": "Secundario"
+              },
+              {
+                "left": "Transmitir el partido por TV",
+                "right": "Terciario"
+              }
+            ],
+            "completion_feedback": "El sector **primario** obtiene recursos de la naturaleza (agricultura, pesca, ganadería); el **secundario** los transforma (industria, construcción); el **terciario** da servicios (comercio, transporte, turismo)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Álbum físico",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "Talar el árbol para el papel",
+                "right": "Primario"
+              },
+              {
+                "left": "Moldear el CD e imprimir photocards",
+                "right": "Secundario"
+              },
+              {
+                "left": "Enviar el álbum a tu casa",
+                "right": "Terciario"
+              }
+            ],
+            "completion_feedback": "El sector **primario** obtiene recursos de la naturaleza (agricultura, pesca, ganadería); el **secundario** los transforma (industria, construcción); el **terciario** da servicios (comercio, transporte, turismo)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "Sector",
+            "pairs": [
+              {
+                "left": "Cosechar trigo en tu granja",
+                "right": "Primario"
+              },
+              {
+                "left": "Craftear la espada de diamante",
+                "right": "Secundario"
+              },
+              {
+                "left": "Llevar items en rieles para otros",
+                "right": "Terciario"
+              }
+            ],
+            "completion_feedback": "El sector **primario** obtiene recursos de la naturaleza (agricultura, pesca, ganadería); el **secundario** los transforma (industria, construcción); el **terciario** da servicios (comercio, transporte, turismo)."
+          }
+        }
+      }
+    },
+    "indicadores-socioeconomicos": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la tasa de desempleo",
+        "steps": [
+          "Cuenta a quienes buscan trabajo y no lo hallan: 3 millones",
+          "Cuenta la población económicamente activa: 60 millones",
+          "Divide: 3 ÷ 60 = 0.05",
+          "Multiplica por 100: la tasa de desempleo es 5%"
+        ],
+        "completion_feedback": "La **tasa de desempleo** se calcula sobre la **población económicamente activa** (quienes trabajan o buscan trabajo), no sobre toda la población. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gremio",
+            "right_label": "Indicador",
+            "pairs": [
+              {
+                "left": "Poder total del gremio",
+                "right": "PIB"
+              },
+              {
+                "left": "Poder total ÷ número de cazadores",
+                "right": "PIB per cápita"
+              },
+              {
+                "left": "Rango que combina varias stats",
+                "right": "IDH"
+              },
+              {
+                "left": "Brecha entre rango S y rango E",
+                "right": "Gini"
+              }
+            ],
+            "completion_feedback": "El **PIB per cápita** es el promedio por persona; el **IDH** combina salud, educación e ingreso; el **Gini** mide la desigualdad (0 = igualdad total) y la **inflación**, cuánto suben los precios."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estadísticas",
+            "right_label": "Indicador",
+            "pairs": [
+              {
+                "left": "Goles totales del equipo",
+                "right": "PIB"
+              },
+              {
+                "left": "Goles totales ÷ jugadores",
+                "right": "PIB per cápita"
+              },
+              {
+                "left": "Nota de goles, pases y defensa",
+                "right": "IDH"
+              },
+              {
+                "left": "Brecha salarial estrella-suplentes",
+                "right": "Gini"
+              }
+            ],
+            "completion_feedback": "El **PIB per cápita** es el promedio por persona; el **IDH** combina salud, educación e ingreso; el **Gini** mide la desigualdad (0 = igualdad total) y la **inflación**, cuánto suben los precios."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cifras del grupo",
+            "right_label": "Indicador",
+            "pairs": [
+              {
+                "left": "Ventas totales del grupo",
+                "right": "PIB"
+              },
+              {
+                "left": "Ventas ÷ integrantes",
+                "right": "PIB per cápita"
+              },
+              {
+                "left": "Ranking de ventas, streams y premios",
+                "right": "IDH"
+              },
+              {
+                "left": "Cuánto suben las entradas cada año",
+                "right": "Inflación"
+              }
+            ],
+            "completion_feedback": "El **PIB per cápita** es el promedio por persona; el **IDH** combina salud, educación e ingreso; el **Gini** mide la desigualdad (0 = igualdad total) y la **inflación**, cuánto suben los precios."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tras la partida",
+            "right_label": "Indicador",
+            "pairs": [
+              {
+                "left": "Daño total del equipo",
+                "right": "PIB"
+              },
+              {
+                "left": "Daño total ÷ 5 jugadores",
+                "right": "PIB per cápita"
+              },
+              {
+                "left": "Puntaje con KDA, precisión y winrate",
+                "right": "IDH"
+              },
+              {
+                "left": "Brecha entre el mejor y el peor",
+                "right": "Gini"
+              }
+            ],
+            "completion_feedback": "El **PIB per cápita** es el promedio por persona; el **IDH** combina salud, educación e ingreso; el **Gini** mide la desigualdad (0 = igualdad total) y la **inflación**, cuánto suben los precios."
+          }
+        }
+      }
+    },
+    "problemas-sociales-de-mexico": {
+      "order_steps": {
+        "prompt": "Ordena cómo la pobreza pasa de una generación a otra",
+        "steps": [
+          "Una familia pobre no puede pagar la escuela de sus hijos",
+          "Los hijos dejan de estudiar para trabajar",
+          "Sin estudios, consiguen empleos mal pagados",
+          "Sus propios hijos crecen también en pobreza"
+        ],
+        "completion_feedback": "Así la **pobreza** se hereda: es la **baja movilidad social**. Romper el ciclo exige educación, salud y empleo digno al alcance de todos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En los Muros",
+            "right_label": "Problema",
+            "pairs": [
+              {
+                "left": "Pasan hambre cerca del muro María",
+                "right": "Pobreza"
+              },
+              {
+                "left": "La élite de Sina lo tiene todo",
+                "right": "Desigualdad"
+              },
+              {
+                "left": "Mandan a los pobres a zonas peligrosas",
+                "right": "Marginación"
+              },
+              {
+                "left": "Miedo constante a los titanes",
+                "right": "Inseguridad"
+              }
+            ],
+            "completion_feedback": "La **pobreza** es no cubrir lo básico; la **desigualdad**, la brecha entre quienes tienen mucho y poco; la **marginación**, quedar fuera de servicios y oportunidades. Se suman el **desempleo** y la **inseguridad**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Niños con talento",
+            "right_label": "Problema",
+            "pairs": [
+              {
+                "left": "No hay academia ni recursos cerca",
+                "right": "Desigualdad de oportunidades"
+              },
+              {
+                "left": "No alcanza para comida ni inscripción",
+                "right": "Pobreza"
+              },
+              {
+                "left": "Deja el fútbol para trabajar",
+                "right": "Trabajo infantil"
+              },
+              {
+                "left": "Su colonia es peligrosa",
+                "right": "Inseguridad"
+              }
+            ],
+            "completion_feedback": "La **pobreza** es no cubrir lo básico; la **desigualdad**, la brecha entre quienes tienen mucho y poco; la **marginación**, quedar fuera de servicios y oportunidades. Se suman el **desempleo** y la **inseguridad**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el K-drama",
+            "right_label": "Problema",
+            "pairs": [
+              {
+                "left": "Familia en un sótano sin servicios",
+                "right": "Pobreza"
+              },
+              {
+                "left": "Igual talento, destinos opuestos",
+                "right": "Desigualdad"
+              },
+              {
+                "left": "No puede pagar la universidad",
+                "right": "Falta de acceso a la educación"
+              },
+              {
+                "left": "Meses sin conseguir empleo",
+                "right": "Desempleo"
+              }
+            ],
+            "completion_feedback": "La **pobreza** es no cubrir lo básico; la **desigualdad**, la brecha entre quienes tienen mucho y poco; la **marginación**, quedar fuera de servicios y oportunidades. Se suman el **desempleo** y la **inseguridad**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el servidor",
+            "right_label": "Problema",
+            "pairs": [
+              {
+                "left": "Robux ilimitados contra ninguno",
+                "right": "Desigualdad"
+              },
+              {
+                "left": "No puede comprar ni lo básico",
+                "right": "Pobreza"
+              },
+              {
+                "left": "Aislado sin acceso a recursos",
+                "right": "Marginación"
+              },
+              {
+                "left": "Hackers roban tus ítems",
+                "right": "Inseguridad"
+              }
+            ],
+            "completion_feedback": "La **pobreza** es no cubrir lo básico; la **desigualdad**, la brecha entre quienes tienen mucho y poco; la **marginación**, quedar fuera de servicios y oportunidades. Se suman el **desempleo** y la **inseguridad**."
+          }
+        }
+      }
+    }
+  }
+}
