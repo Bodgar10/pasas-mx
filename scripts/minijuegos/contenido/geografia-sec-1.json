@@ -1,0 +1,800 @@
+{
+  "subject": "geografia-sec-1",
+  "topics": {
+    "el-espacio-geografico-como-construccion-social": {
+      "order_steps": {
+        "prompt": "Ordena cómo un espacio natural se vuelve un lugar con significado",
+        "steps": [
+          "Existe un espacio natural: terreno, río o mar",
+          "Las personas lo ocupan y lo usan",
+          "Le ponen nombres, fronteras y funciones",
+          "El lugar gana significado e identidad"
+        ],
+        "completion_feedback": "La naturaleza pone la base; **la sociedad le da sentido**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del espacio geográfico es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "El océano, igual en todos lados",
+                "right": "Elemento natural"
+              },
+              {
+                "left": "Dividirlo en cuatro mares",
+                "right": "Organización humana"
+              },
+              {
+                "left": "La Red Line entre mares",
+                "right": "Frontera"
+              },
+              {
+                "left": "East Blue, 'el mar más tranquilo'",
+                "right": "Significado social"
+              }
+            ],
+            "completion_feedback": "El terreno es natural, pero **su significado lo ponen las personas**: eso es el espacio geográfico. Veamos cómo se construye."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del espacio geográfico es cada cosa?",
+            "left_label": "Montjuïc",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "El concreto y el pasto del estadio",
+                "right": "Espacio físico"
+              },
+              {
+                "left": "Cánticos y banderas blaugranas",
+                "right": "Identidad compartida"
+              },
+              {
+                "left": "Concierto o atletismo otro día",
+                "right": "Uso que decide la sociedad"
+              },
+              {
+                "left": "'La casa del Barça'",
+                "right": "Pertenencia construida"
+              }
+            ],
+            "completion_feedback": "El terreno es natural, pero **su significado lo ponen las personas**: eso es el espacio geográfico. Veamos cómo se construye."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del espacio geográfico es cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Antes del show: concreto y pasto",
+                "right": "Espacio físico"
+              },
+              {
+                "left": "Zonas VIP y secciones",
+                "right": "Organización humana"
+              },
+              {
+                "left": "Hongdae, 'el barrio artístico'",
+                "right": "Significado social"
+              },
+              {
+                "left": "Cancha, concierto o vacío",
+                "right": "Uso que decide la sociedad"
+              }
+            ],
+            "completion_feedback": "El terreno es natural, pero **su significado lo ponen las personas**: eso es el espacio geográfico. Veamos cómo se construye."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del espacio geográfico es cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Montañas y ríos de Teyvat",
+                "right": "Base natural"
+              },
+              {
+                "left": "Mondstadt, ciudad de la libertad",
+                "right": "Significado cultural"
+              },
+              {
+                "left": "Rutas comerciales y mercados",
+                "right": "Funciones humanas"
+              },
+              {
+                "left": "Mismo terreno, lugares distintos",
+                "right": "Construcción social"
+              }
+            ],
+            "completion_feedback": "El terreno es natural, pero **su significado lo ponen las personas**: eso es el espacio geográfico. Veamos cómo se construye."
+          }
+        }
+      }
+    },
+    "categorias-y-representaciones-del-espacio": {
+      "order_steps": {
+        "prompt": "Ordena estas representaciones, de la que abarca menos espacio a la que abarca más",
+        "steps": [
+          "Plano de una cancha",
+          "Mapa de una ciudad",
+          "Mapa de un país",
+          "Mapa de un continente"
+        ],
+        "completion_feedback": "Mientras más espacio abarca, **más se reduce y menos detalle muestra**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué categoría o representación del espacio es cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "La cancha con flechas en pantalla",
+                "right": "Plano: poco espacio, mucho detalle"
+              },
+              {
+                "left": "Japón con puntitos",
+                "right": "Mapa: mucho espacio, poco detalle"
+              },
+              {
+                "left": "La zona libre que lee Isagi",
+                "right": "Lugar"
+              },
+              {
+                "left": "La parte del campo que domina un equipo",
+                "right": "Territorio"
+              }
+            ],
+            "completion_feedback": "Cada tamaño de espacio pide **su propio dibujo**: plano, croquis o mapa. Veamos las categorías y las escalas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué categoría o representación del espacio es cada cosa?",
+            "left_label": "Bellingham",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "La cancha de Stourbridge",
+                "right": "Lugar"
+              },
+              {
+                "left": "Dibujo rápido de su barrio",
+                "right": "Croquis"
+              },
+              {
+                "left": "Su club en Birmingham",
+                "right": "Escala local"
+              },
+              {
+                "left": "Inglaterra, Alemania y España",
+                "right": "Escala continental"
+              }
+            ],
+            "completion_feedback": "Cada tamaño de espacio pide **su propio dibujo**: plano, croquis o mapa. Veamos las categorías y las escalas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué categoría o representación del espacio es cada cosa?",
+            "left_label": "Gira de NewJeans",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Mapa con corazones en ciudades",
+                "right": "Mapa: mucho espacio, poco detalle"
+              },
+              {
+                "left": "Pista y gradas numeradas",
+                "right": "Plano: poco espacio, mucho detalle"
+              },
+              {
+                "left": "Flechas a mano del metro a la entrada",
+                "right": "Croquis"
+              },
+              {
+                "left": "El recinto lleno de Bunnies",
+                "right": "Paisaje"
+              }
+            ],
+            "completion_feedback": "Cada tamaño de espacio pide **su propio dibujo**: plano, croquis o mapa. Veamos las categorías y las escalas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué categoría o representación del espacio es cada cosa?",
+            "left_label": "Zelda",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "El punto donde está Link",
+                "right": "Lugar"
+              },
+              {
+                "left": "Kakariko con sus casas y gente",
+                "right": "Paisaje"
+              },
+              {
+                "left": "Necluda o Eldin",
+                "right": "Región"
+              },
+              {
+                "left": "El plano de un Santuario",
+                "right": "Plano: poco espacio, mucho detalle"
+              }
+            ],
+            "completion_feedback": "Cada tamaño de espacio pide **su propio dibujo**: plano, croquis o mapa. Veamos las categorías y las escalas."
+          }
+        }
+      }
+    },
+    "aguas-continentales-y-oceanicas": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué tipo de agua es cada una?",
+            "left_label": "Naruto",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "El mar de la Aldea de la Niebla",
+                "right": "Oceánica: salada"
+              },
+              {
+                "left": "Ríos y charcos de Amegakure",
+                "right": "Continental superficial: dulce"
+              },
+              {
+                "left": "La lluvia que cae sin parar",
+                "right": "Ciclo del agua: reparte agua dulce"
+              }
+            ],
+            "completion_feedback": "No toda el agua es igual: **la salada está en los océanos y la dulce en los continentes**. Veamos dónde está cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de agua es cada una?",
+            "left_label": "Mbappé",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "El mar Mediterráneo",
+                "right": "Oceánica: salada"
+              },
+              {
+                "left": "El río Sena",
+                "right": "Continental superficial: dulce"
+              },
+              {
+                "left": "Pozos bajo la tierra",
+                "right": "Continental subterránea: dulce"
+              }
+            ],
+            "completion_feedback": "No toda el agua es igual: **la salada está en los océanos y la dulce en los continentes**. Veamos dónde está cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de agua es cada una?",
+            "left_label": "MV de TXT",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Olas saladas en la playa",
+                "right": "Oceánica: salada"
+              },
+              {
+                "left": "El río Han que cruza Seúl",
+                "right": "Continental: río que corre"
+              },
+              {
+                "left": "Lago quieto entre montañas",
+                "right": "Continental: lago estancado"
+              },
+              {
+                "left": "Manantial que brota de la tierra",
+                "right": "Continental subterránea: dulce"
+              }
+            ],
+            "completion_feedback": "No toda el agua es igual: **la salada está en los océanos y la dulce en los continentes**. Veamos dónde está cada una."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué tipo de agua es cada una?",
+            "left_label": "Minecraft",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Bioma de océano con corales",
+                "right": "Oceánica: salada"
+              },
+              {
+                "left": "Río que cruza los biomas",
+                "right": "Continental superficial: dulce"
+              },
+              {
+                "left": "Cuevas inundadas bajo tierra",
+                "right": "Continental subterránea: dulce"
+              }
+            ],
+            "completion_feedback": "No toda el agua es igual: **la salada está en los océanos y la dulce en los continentes**. Veamos dónde está cada una."
+          }
+        }
+      }
+    },
+    "placas-tectonicas-relieve-sismos-y-volcanes": {
+      "order_steps": {
+        "prompt": "Ordena cómo se produce un sismo",
+        "steps": [
+          "Dos placas se rozan o se traban en su borde",
+          "Acumulan energía sin moverse",
+          "Se sueltan de golpe",
+          "La energía sacude el suelo: sismo"
+        ],
+        "completion_feedback": "Un sismo es **energía guardada que se suelta de golpe**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué hace el movimiento de las placas en cada caso?",
+            "left_label": "One Piece",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Montañas que se alzaron al chocar",
+                "right": "Choque de placas: montañas"
+              },
+              {
+                "left": "El suelo tiembla al caminar",
+                "right": "Sismo"
+              },
+              {
+                "left": "Lava saliendo del cráter",
+                "right": "Volcán: sale lava"
+              }
+            ],
+            "completion_feedback": "Montañas, temblores y volcanes **tienen la misma causa**: placas que se mueven. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué hace el movimiento de las placas en cada caso?",
+            "left_label": "El sismo",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Africana contra Euroasiática",
+                "right": "Choque de placas: montañas"
+              },
+              {
+                "left": "Gradas que se mecen",
+                "right": "Sismo"
+              },
+              {
+                "left": "La 'zona caliente' que más tiembla",
+                "right": "Borde entre placas"
+              }
+            ],
+            "completion_feedback": "Montañas, temblores y volcanes **tienen la misma causa**: placas que se mueven. Veamos cómo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué hace el movimiento de las placas en cada caso?",
+            "left_label": "ENHYPEN",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Plataformas que se juntan y suben",
+                "right": "Choque de placas: montañas"
+              },
+              {
+                "left": "Plataformas que se abren con humo",
+                "right": "Separación: se abren grietas"
+              },
+              {
+                "left": "Escenario que vibra al saltar",
+                "right": "Sismo"
+              }
+            ],
+            "completion_feedback": "Montañas, temblores y volcanes **tienen la misma causa**: placas que se mueven. Veamos cómo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué hace el movimiento de las placas en cada caso?",
+            "left_label": "Brawl Stars",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Losas que chocan y alzan obstáculos",
+                "right": "Choque de placas: montañas"
+              },
+              {
+                "left": "Losas que se separan",
+                "right": "Separación: se abren grietas"
+              },
+              {
+                "left": "Losas que se rozan y todo tiembla",
+                "right": "Sismo"
+              }
+            ],
+            "completion_feedback": "Montañas, temblores y volcanes **tienen la misma causa**: placas que se mueven. Veamos cómo."
+          }
+        }
+      }
+    },
+    "riesgos-de-desastre-y-vulnerabilidad": {
+      "order_steps": {
+        "prompt": "Ordena cómo se reduce el riesgo ante una amenaza",
+        "steps": [
+          "Identifica la amenaza: lluvia, sismo o tormenta",
+          "Revisa qué tan expuesto y preparado estás",
+          "Toma medidas de prevención",
+          "Baja la vulnerabilidad, y con ella el riesgo"
+        ],
+        "completion_feedback": "La amenaza no se puede evitar, pero **la vulnerabilidad sí se puede bajar**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del riesgo de desastre es cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Los titanes que quieren entrar",
+                "right": "Amenaza"
+              },
+              {
+                "left": "Los pobres junto al Muro Maria",
+                "right": "Alta vulnerabilidad"
+              },
+              {
+                "left": "La realeza junto al Muro Sina",
+                "right": "Baja vulnerabilidad"
+              },
+              {
+                "left": "El muro roto en Shiganshina",
+                "right": "Desastre"
+              }
+            ],
+            "completion_feedback": "El mismo peligro no daña igual a todos: **Riesgo = Amenaza + Vulnerabilidad**. Veamos qué los separa."
+          },
+          "order_steps": {
+            "prompt": "Ordena por qué la misma amenaza no daña a todos igual",
+            "steps": [
+              "Llega la misma amenaza para todos",
+              "Unos viven más expuestos y con menos recursos",
+              "Esos tienen mayor vulnerabilidad",
+              "Sufren más daño: su riesgo es mayor"
+            ],
+            "completion_feedback": "La vulnerabilidad también es **social y económica**: los que menos tienen, más sufren. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del riesgo de desastre es cada cosa?",
+            "left_label": "Dos estadios",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "La misma tormenta en ambos",
+                "right": "Amenaza"
+              },
+              {
+                "left": "Estadio viejo sin drenaje",
+                "right": "Alta vulnerabilidad"
+              },
+              {
+                "left": "Estadio con techo y buen drenaje",
+                "right": "Baja vulnerabilidad"
+              },
+              {
+                "left": "Protocolos de evacuación",
+                "right": "Prevención"
+              }
+            ],
+            "completion_feedback": "El mismo peligro no daña igual a todos: **Riesgo = Amenaza + Vulnerabilidad**. Veamos qué los separa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del riesgo de desastre es cada cosa?",
+            "left_label": "Dos STAY",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "El aguacero con relámpagos",
+                "right": "Amenaza"
+              },
+              {
+                "left": "Sin impermeable, en zona baja",
+                "right": "Alta vulnerabilidad"
+              },
+              {
+                "left": "Bajo techo y en zona alta",
+                "right": "Baja vulnerabilidad"
+              },
+              {
+                "left": "Revisar el pronóstico antes",
+                "right": "Prevención"
+              }
+            ],
+            "completion_feedback": "El mismo peligro no daña igual a todos: **Riesgo = Amenaza + Vulnerabilidad**. Veamos qué los separa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del riesgo de desastre es cada cosa?",
+            "left_label": "Roblox",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "La tormenta de cada noche",
+                "right": "Amenaza"
+              },
+              {
+                "left": "Casa de madera junto al río",
+                "right": "Alta vulnerabilidad"
+              },
+              {
+                "left": "Muros de piedra en la colina",
+                "right": "Baja vulnerabilidad"
+              },
+              {
+                "left": "Perder todo en una noche",
+                "right": "Desastre"
+              }
+            ],
+            "completion_feedback": "El mismo peligro no daña igual a todos: **Riesgo = Amenaza + Vulnerabilidad**. Veamos qué los separa."
+          }
+        }
+      }
+    },
+    "crecimiento-y-migracion-de-la-poblacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo calcular el crecimiento total, empezando por el natural",
+        "steps": [
+          "Cuenta los nacimientos y las defunciones",
+          "Réstalos: es el crecimiento natural",
+          "Cuenta los que llegan y los que se van",
+          "Réstalos: es el saldo migratorio",
+          "Suma ambos: es el crecimiento total"
+        ],
+        "completion_feedback": "Por eso un lugar puede crecer **aunque nazcan pocos**: basta con que llegue más gente de la que se va. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué hace cambiar a la población en cada caso?",
+            "left_label": "Spy x Family",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Anya, Yor y Bond llegan a casa",
+                "right": "Inmigración"
+              },
+              {
+                "left": "Familias del barrio que tienen hijos",
+                "right": "Nacimientos"
+              },
+              {
+                "left": "Abuelitos que fallecen",
+                "right": "Defunciones"
+              },
+              {
+                "left": "Vecinos que se van a otra ciudad",
+                "right": "Emigración"
+              }
+            ],
+            "completion_feedback": "La población cambia por **dos vías**: nacimientos y defunciones, y gente que llega o se va. Veamos cómo se suman."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué hace cambiar a la población en cada caso?",
+            "left_label": "LaLiga",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Mbappé llega a España",
+                "right": "Inmigración"
+              },
+              {
+                "left": "Españoles que se van a la Premier",
+                "right": "Emigración"
+              },
+              {
+                "left": "Jugadores formados en casa",
+                "right": "Nacimientos"
+              },
+              {
+                "left": "Jugadores que se retiran",
+                "right": "Defunciones"
+              }
+            ],
+            "completion_feedback": "La población cambia por **dos vías**: nacimientos y defunciones, y gente que llega o se va. Veamos cómo se suman."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué hace cambiar a la población en cada caso?",
+            "left_label": "Las DIVE",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Fans nuevos tras 'LOVE DIVE'",
+                "right": "Nacimientos"
+              },
+              {
+                "left": "Fans que dejan el K-pop",
+                "right": "Defunciones"
+              },
+              {
+                "left": "Una Bunny que se vuelve DIVE",
+                "right": "Inmigración"
+              },
+              {
+                "left": "Una DIVE que se va con NewJeans",
+                "right": "Emigración"
+              }
+            ],
+            "completion_feedback": "La población cambia por **dos vías**: nacimientos y defunciones, y gente que llega o se va. Veamos cómo se suman."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué hace cambiar a la población en cada caso?",
+            "left_label": "Modo Carrera",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Altas de la cantera",
+                "right": "Nacimientos"
+              },
+              {
+                "left": "Jugadores que se retiran",
+                "right": "Defunciones"
+              },
+              {
+                "left": "Cracks que llegan de la Liga MX",
+                "right": "Inmigración"
+              },
+              {
+                "left": "Traspasos a la Premier",
+                "right": "Emigración"
+              }
+            ],
+            "completion_feedback": "La población cambia por **dos vías**: nacimientos y defunciones, y gente que llega o se va. Veamos cómo se suman."
+          }
+        }
+      }
+    },
+    "procesos-productivos-y-sus-consecuencias": {
+      "order_steps": {
+        "prompt": "Ordena las etapas de un proceso productivo",
+        "steps": [
+          "Se extrae la materia prima de la naturaleza",
+          "Se transforma en un producto",
+          "Se transporta y se vende"
+        ],
+        "completion_feedback": "Primaria, secundaria y terciaria: **en cada etapa se usan recursos** y se generan desechos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué etapa del proceso productivo es cada cosa?",
+            "left_label": "Demon Slayer",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Cortar madera del bosque",
+                "right": "Primaria: extraer"
+              },
+              {
+                "left": "Quemarla en hornos: carbón",
+                "right": "Secundaria: transformar"
+              },
+              {
+                "left": "Venderlo en el pueblo",
+                "right": "Terciaria: vender y transportar"
+              },
+              {
+                "left": "Laderas peladas y humo",
+                "right": "Consecuencia ambiental"
+              }
+            ],
+            "completion_feedback": "Todo producto pasa por **extraer, transformar y vender**, y cada paso deja huella. Veamos ese proceso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué etapa del proceso productivo es cada cosa?",
+            "left_label": "El balón",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Extraer caucho y plástico",
+                "right": "Primaria: extraer"
+              },
+              {
+                "left": "Fábrica que cose e infla",
+                "right": "Secundaria: transformar"
+              },
+              {
+                "left": "Barcos y tiendas",
+                "right": "Terciaria: vender y transportar"
+              },
+              {
+                "left": "Desechos de las fábricas",
+                "right": "Consecuencia ambiental"
+              }
+            ],
+            "completion_feedback": "Todo producto pasa por **extraer, transformar y vender**, y cada paso deja huella. Veamos ese proceso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué etapa del proceso productivo es cada cosa?",
+            "left_label": "La photocard",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Árboles y petróleo",
+                "right": "Primaria: extraer"
+              },
+              {
+                "left": "Imprimir y armar el álbum",
+                "right": "Secundaria: transformar"
+              },
+              {
+                "left": "Venta en línea hasta México",
+                "right": "Terciaria: vender y transportar"
+              },
+              {
+                "left": "El plástico que tiras",
+                "right": "Consecuencia ambiental"
+              }
+            ],
+            "completion_feedback": "Todo producto pasa por **extraer, transformar y vender**, y cada paso deja huella. Veamos ese proceso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué etapa del proceso productivo es cada cosa?",
+            "left_label": "Minecraft",
+            "right_label": "En Geografía",
+            "pairs": [
+              {
+                "left": "Talar y picar diamante",
+                "right": "Primaria: extraer"
+              },
+              {
+                "left": "La mesa de crafteo",
+                "right": "Secundaria: transformar"
+              },
+              {
+                "left": "Bosque pelado y humo",
+                "right": "Consecuencia ambiental"
+              }
+            ],
+            "completion_feedback": "Todo producto pasa por **extraer, transformar y vender**, y cada paso deja huella. Veamos ese proceso."
+          }
+        }
+      }
+    }
+  }
+}
