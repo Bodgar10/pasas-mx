@@ -1,0 +1,883 @@
+{
+  "subject": "ingles-1",
+  "topics": {
+    "verb-to-be-and-personal-pronouns": {
+      "order_steps": {
+        "prompt": "Arma una oración con el verb to be",
+        "steps": [
+          "Identifica de quién hablas: Zoro",
+          "Cámbialo por su pronombre: Zoro → he",
+          "Elige la forma de to be: he → is",
+          "Completa la oración: 'He is the swordsman.'"
+        ],
+        "completion_feedback": "Para usar **to be**: sujeto → **pronombre** → forma correcta (**I am**, **he/she/it is**, **you/we/they are**). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Luffy dice…",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "'___ Zoro, the swordsman.' (él)",
+                "right": "He is"
+              },
+              {
+                "left": "'___ my nakama!' (ellos)",
+                "right": "They are"
+              },
+              {
+                "left": "'___ the future Pirate King.' (yo)",
+                "right": "I am"
+              }
+            ],
+            "completion_feedback": "El **verb to be** cambia según el pronombre: **I → am**, **he/she/it → is**, **you/we/they → are**. Los pronombres reemplazan el nombre para no repetirlo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Narras el gol",
+            "right_label": "Forma de to be",
+            "pairs": [
+              {
+                "left": "Santi, el delantero",
+                "right": "he → is"
+              },
+              {
+                "left": "Los aficionados",
+                "right": "they → are"
+              },
+              {
+                "left": "Yo, el narrador",
+                "right": "I → am"
+              }
+            ],
+            "completion_feedback": "El **verb to be** cambia según el pronombre: **I → am**, **he/she/it → is**, **you/we/they → are**. Los pronombres reemplazan el nombre para no repetirlo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Stray Kids",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Bang Chan, el líder",
+                "right": "He is"
+              },
+              {
+                "left": "3RACHA: Chan, Changbin y Han",
+                "right": "They are"
+              },
+              {
+                "left": "Tú y yo, STAY",
+                "right": "We are"
+              },
+              {
+                "left": "El Nachimbong",
+                "right": "It is"
+              }
+            ],
+            "completion_feedback": "El **verb to be** cambia según el pronombre: **I → am**, **he/she/it → is**, **you/we/they → are**. Los pronombres reemplazan el nombre para no repetirlo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Brawl Ball",
+            "right_label": "Forma correcta",
+            "pairs": [
+              {
+                "left": "Yo, de tanque con El Primo",
+                "right": "I am"
+              },
+              {
+                "left": "Tú, de support con Poco",
+                "right": "You are"
+              },
+              {
+                "left": "Él, de daño con Colt",
+                "right": "He is"
+              },
+              {
+                "left": "El equipo rival, en mid",
+                "right": "They are"
+              }
+            ],
+            "completion_feedback": "El **verb to be** cambia según el pronombre: **I → am**, **he/she/it → is**, **you/we/they → are**. Los pronombres reemplazan el nombre para no repetirlo."
+          }
+        }
+      }
+    },
+    "articles-plurals-and-possessives": {
+      "order_steps": {
+        "prompt": "Elige el artículo correcto paso a paso",
+        "steps": [
+          "Decide si hablas de uno cualquiera o de uno específico",
+          "Si es específico o ya conocido, usa the",
+          "Si es uno cualquiera, fíjate en el primer sonido",
+          "Sonido consonante → a, sonido vocal → an"
+        ],
+        "completion_feedback": "Primero decides si es **específico** (the) o **cualquiera** (a/an), y luego miras el **sonido**: **a** antes de consonante, **an** antes de vocal. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Blue Lock",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Isagi es un delantero (de muchos)",
+                "right": "a striker"
+              },
+              {
+                "left": "Un egoísta (empieza con vocal)",
+                "right": "an egoist"
+              },
+              {
+                "left": "La habilidad de Bachira",
+                "right": "Bachira's ability"
+              },
+              {
+                "left": "Muchos delanteros",
+                "right": "strikers"
+              }
+            ],
+            "completion_feedback": "**A/an** = uno cualquiera (a + consonante, an + vocal). **The** = uno específico. Plural: **-s** (o **-es** tras s, sh, ch, x). Posesivo: **'s** al dueño (Bachira's dribbling)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Álbum Panini",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Tres entrenadores",
+                "right": "three coaches"
+              },
+              {
+                "left": "Once jugadores",
+                "right": "eleven players"
+              },
+              {
+                "left": "El número de Bellingham",
+                "right": "Bellingham's number"
+              },
+              {
+                "left": "Juega en el Real Madrid",
+                "right": "plays for Real Madrid"
+              }
+            ],
+            "completion_feedback": "**A/an** = uno cualquiera (a + consonante, an + vocal). **The** = uno específico. Plural: **-s** (o **-es** tras s, sh, ch, x). Posesivo: **'s** al dueño (Bachira's dribbling)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Álbum de TXT",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Una photocard cualquiera",
+                "right": "a photocard"
+              },
+              {
+                "left": "Un álbum cualquiera",
+                "right": "an album"
+              },
+              {
+                "left": "La photocard de Soobin",
+                "right": "Soobin's photocard"
+              },
+              {
+                "left": "Dos pósters",
+                "right": "two posters"
+              }
+            ],
+            "completion_feedback": "**A/an** = uno cualquiera (a + consonante, an + vocal). **The** = uno específico. Plural: **-s** (o **-es** tras s, sh, ch, x). Posesivo: **'s** al dueño (Bachira's dribbling)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Un personaje Electro",
+                "right": "an Electro character"
+              },
+              {
+                "left": "La espada de Keqing",
+                "right": "Keqing's sword"
+              },
+              {
+                "left": "Dos arcos",
+                "right": "two bows"
+              },
+              {
+                "left": "Los Fatui, ya conocidos",
+                "right": "the Fatui"
+              }
+            ],
+            "completion_feedback": "**A/an** = uno cualquiera (a + consonante, an + vocal). **The** = uno específico. Plural: **-s** (o **-es** tras s, sh, ch, x). Posesivo: **'s** al dueño (Bachira's dribbling)."
+          }
+        }
+      }
+    },
+    "present-simple": {
+      "order_steps": {
+        "prompt": "Conjuga un verbo en present simple",
+        "steps": [
+          "Identifica el sujeto de la oración",
+          "¿Es he, she o it? Entonces el verbo lleva -s",
+          "Si termina en ch, sh, s, x u o, agrega -es",
+          "Escribe la oración: 'Gojo watches the fight.'"
+        ],
+        "completion_feedback": "En **present simple**, solo **he/she/it** llevan **-s** (o **-es** tras ch, sh, s, x, o). Con I, you, we y they va el verbo base. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Verbo correcto",
+            "pairs": [
+              {
+                "left": "Gojo ___ (use) the Infinity",
+                "right": "uses"
+              },
+              {
+                "left": "Sorcerers ___ (use) cursed energy",
+                "right": "use"
+              },
+              {
+                "left": "Yuji ___ (eat) Sukuna's fingers",
+                "right": "eats"
+              },
+              {
+                "left": "I ___ (watch) one episode a night",
+                "right": "watch"
+              }
+            ],
+            "completion_feedback": "El **present simple** habla de **hábitos**, **rutinas** y **hechos**. Con **he/she/it** el verbo lleva **-s** (Gojo uses), con I/you/we/they va en forma base (I watch)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rutina de Mbappé",
+            "right_label": "Verbo correcto",
+            "pairs": [
+              {
+                "left": "Mbappé ___ (train) every morning",
+                "right": "trains"
+              },
+              {
+                "left": "I ___ (watch) all his matches",
+                "right": "watch"
+              },
+              {
+                "left": "The players ___ (rest) on Sundays",
+                "right": "rest"
+              }
+            ],
+            "completion_feedback": "El **present simple** habla de **hábitos**, **rutinas** y **hechos**. Con **he/she/it** el verbo lleva **-s** (Gojo uses), con I/you/we/they va en forma base (I watch)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rutina de IVE",
+            "right_label": "Verbo correcto",
+            "pairs": [
+              {
+                "left": "Wonyoung ___ (drink) a lot of water",
+                "right": "drinks"
+              },
+              {
+                "left": "They ___ (practice) every morning",
+                "right": "practice"
+              },
+              {
+                "left": "Liz ___ (sing) the high notes",
+                "right": "sings"
+              }
+            ],
+            "completion_feedback": "El **present simple** habla de **hábitos**, **rutinas** y **hechos**. Con **he/she/it** el verbo lleva **-s** (Gojo uses), con I/you/we/they va en forma base (I watch)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Roblox",
+            "right_label": "Verbo correcto",
+            "pairs": [
+              {
+                "left": "The game ___ (save) your progress",
+                "right": "saves"
+              },
+              {
+                "left": "You ___ (jump) with the space bar",
+                "right": "jump"
+              },
+              {
+                "left": "It ___ (crash) sometimes",
+                "right": "crashes"
+              }
+            ],
+            "completion_feedback": "El **present simple** habla de **hábitos**, **rutinas** y **hechos**. Con **he/she/it** el verbo lleva **-s** (Gojo uses), con I/you/we/they va en forma base (I watch)."
+          }
+        }
+      }
+    },
+    "prepositions-of-time-and-place": {
+      "order_steps": {
+        "prompt": "Ordena del tiempo más preciso al más amplio",
+        "steps": [
+          "AT para una hora exacta: at 8 PM",
+          "ON para un día o una fecha: on Saturday",
+          "IN para un mes: in June",
+          "IN también para un año: in 2026"
+        ],
+        "completion_feedback": "Tiempo: **at** para horas (lo más preciso), **on** para días y fechas, **in** para meses, años y estaciones (lo más amplio). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Watch party",
+            "right_label": "Preposición",
+            "pairs": [
+              {
+                "left": "The season starts ___ January 4",
+                "right": "on"
+              },
+              {
+                "left": "The episode drops ___ midnight",
+                "right": "at"
+              },
+              {
+                "left": "Season 1 aired ___ 2024",
+                "right": "in"
+              }
+            ],
+            "completion_feedback": "**Tiempo**: at + hora, on + día o fecha, in + mes o año. **Lugar**: at + punto preciso (at the entrance), on + superficie (on the table), in + espacio cerrado (in the room)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ver la final",
+            "right_label": "Preposición",
+            "pairs": [
+              {
+                "left": "The snacks are ___ the table",
+                "right": "on"
+              },
+              {
+                "left": "We sit ___ the living room",
+                "right": "in"
+              },
+              {
+                "left": "We meet ___ the stadium entrance",
+                "right": "at"
+              }
+            ],
+            "completion_feedback": "**Tiempo**: at + hora, on + día o fecha, in + mes o año. **Lugar**: at + punto preciso (at the entrance), on + superficie (on the table), in + espacio cerrado (in the room)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concierto",
+            "right_label": "Preposición",
+            "pairs": [
+              {
+                "left": "The concert is ___ March 15",
+                "right": "on"
+              },
+              {
+                "left": "The doors open ___ 6 PM",
+                "right": "at"
+              },
+              {
+                "left": "The album dropped ___ February",
+                "right": "in"
+              }
+            ],
+            "completion_feedback": "**Tiempo**: at + hora, on + día o fecha, in + mes o año. **Lugar**: at + punto preciso (at the entrance), on + superficie (on the table), in + espacio cerrado (in the room)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Club de Brawl",
+            "right_label": "Preposición",
+            "pairs": [
+              {
+                "left": "Meet me ___ the lobby",
+                "right": "in"
+              },
+              {
+                "left": "Wait ___ the spawn point",
+                "right": "at"
+              },
+              {
+                "left": "We play ___ Saturday",
+                "right": "on"
+              }
+            ],
+            "completion_feedback": "**Tiempo**: at + hora, on + día o fecha, in + mes o año. **Lugar**: at + punto preciso (at the entrance), on + superficie (on the table), in + espacio cerrado (in the room)."
+          }
+        }
+      }
+    },
+    "there-is-there-are": {
+      "order_steps": {
+        "prompt": "Decide entre there is y there are",
+        "steps": [
+          "Mira el sustantivo que viene después",
+          "Decide si es singular o plural",
+          "Singular → there is, plural → there are",
+          "Completa: 'There are ten pirates on the crew.'"
+        ],
+        "completion_feedback": "Para elegir: mira el **sustantivo**, decide si es **singular** (there is) o **plural** (there are) y completa la oración. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Thousand Sunny",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un mástil enorme",
+                "right": "There is a big mast"
+              },
+              {
+                "left": "Hay diez piratas",
+                "right": "There are ten pirates"
+              },
+              {
+                "left": "¿Hay una biblioteca?",
+                "right": "Is there a library?"
+              },
+              {
+                "left": "¿Hay cañones?",
+                "right": "Are there cannons?"
+              }
+            ],
+            "completion_feedback": "**There is** = hay (una cosa, singular). **There are** = hay (varias, plural). Lo decide el sustantivo que sigue. En pregunta se invierte: **Is there…? / Are there…?**"
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el estadio",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un árbitro",
+                "right": "There is a referee"
+              },
+              {
+                "left": "Hay miles de fans",
+                "right": "There are thousands of fans"
+              },
+              {
+                "left": "¿Hay marcador?",
+                "right": "Is there a scoreboard?"
+              }
+            ],
+            "completion_feedback": "**There is** = hay (una cosa, singular). **There are** = hay (varias, plural). Lo decide el sustantivo que sigue. En pregunta se invierte: **Is there…? / Are there…?**"
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Unboxing",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un CD adentro",
+                "right": "There is one CD inside"
+              },
+              {
+                "left": "Hay cinco photocards",
+                "right": "There are five photocards"
+              },
+              {
+                "left": "¿Hay pósters?",
+                "right": "Are there any posters?"
+              }
+            ],
+            "completion_feedback": "**There is** = hay (una cosa, singular). **There are** = hay (varias, plural). Lo decide el sustantivo que sigue. En pregunta se invierte: **Is there…? / Are there…?**"
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Minecraft",
+            "right_label": "En inglés",
+            "pairs": [
+              {
+                "left": "Hay un zombie en la entrada",
+                "right": "There is a zombie"
+              },
+              {
+                "left": "Hay tres antorchas",
+                "right": "There are three torches"
+              },
+              {
+                "left": "¿Hay diamantes en el cofre?",
+                "right": "Are there diamonds?"
+              },
+              {
+                "left": "No hay camas",
+                "right": "There aren't any beds"
+              }
+            ],
+            "completion_feedback": "**There is** = hay (una cosa, singular). **There are** = hay (varias, plural). Lo decide el sustantivo que sigue. En pregunta se invierte: **Is there…? / Are there…?**"
+          }
+        }
+      }
+    },
+    "adverbs-of-frequency": {
+      "order_steps": {
+        "prompt": "Ordena de más a menos frecuente",
+        "steps": [
+          "always — el 100% de las veces",
+          "usually — casi siempre",
+          "sometimes — a veces",
+          "rarely — casi nunca",
+          "never — el 0% de las veces"
+        ],
+        "completion_feedback": "Los **adverbs of frequency** van de **always** (100%) a **never** (0%). Se colocan **antes** del verbo principal y **después** de to be. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tanjiro",
+            "right_label": "Adverbio",
+            "pairs": [
+              {
+                "left": "Protege a Nezuko: 100%",
+                "right": "always"
+              },
+              {
+                "left": "Abandona a un amigo: 0%",
+                "right": "never"
+              },
+              {
+                "left": "Usa la Respiración del Sol a veces",
+                "right": "sometimes"
+              },
+              {
+                "left": "Se rinde casi nunca",
+                "right": "rarely"
+              }
+            ],
+            "completion_feedback": "Los adverbios de frecuencia dicen **qué tan seguido**: always (100%), usually, often, sometimes, rarely, never (0%). Van **antes** del verbo principal y **después** de **to be**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Lamine Yamal",
+            "right_label": "Adverbio",
+            "pairs": [
+              {
+                "left": "Entrena en la mañana: 100%",
+                "right": "always"
+              },
+              {
+                "left": "Juega de 10 solo a veces",
+                "right": "sometimes"
+              },
+              {
+                "left": "Por la derecha, casi siempre",
+                "right": "usually"
+              }
+            ],
+            "completion_feedback": "Los adverbios de frecuencia dicen **qué tan seguido**: always (100%), usually, often, sometimes, rarely, never (0%). Van **antes** del verbo principal y **después** de **to be**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Hoshi",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "'He always practices'",
+                "right": "Antes del verbo"
+              },
+              {
+                "left": "'He is often tired'",
+                "right": "Después de to be"
+              },
+              {
+                "left": "'He never misses' (sin don't)",
+                "right": "Never ya es negativo"
+              }
+            ],
+            "completion_feedback": "Los adverbios de frecuencia dicen **qué tan seguido**: always (100%), usually, often, sometimes, rarely, never (0%). Van **antes** del verbo principal y **después** de **to be**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Roblox",
+            "right_label": "Adverbio",
+            "pairs": [
+              {
+                "left": "Blox Fruits tras la escuela, diario",
+                "right": "always"
+              },
+              {
+                "left": "Me da lag a veces",
+                "right": "sometimes"
+              },
+              {
+                "left": "Juegos de terror: casi nunca",
+                "right": "rarely"
+              },
+              {
+                "left": "Uso mi nombre real: jamás",
+                "right": "never"
+              }
+            ],
+            "completion_feedback": "Los adverbios de frecuencia dicen **qué tan seguido**: always (100%), usually, often, sometimes, rarely, never (0%). Van **antes** del verbo principal y **después** de **to be**."
+          }
+        }
+      }
+    },
+    "wh-questions": {
+      "order_steps": {
+        "prompt": "Arma una Wh- question",
+        "steps": [
+          "Elige la palabra Wh- según el dato que buscas",
+          "Agrega el auxiliar: do, does, did, is o are",
+          "Pon el sujeto",
+          "Cierra con el verbo base: 'Where did he play?'"
+        ],
+        "completion_feedback": "Estructura: **Wh-** + **auxiliar** + **sujeto** + **verbo base**. La palabra Wh- siempre va al inicio y depende del dato que buscas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Examen de la UA",
+            "right_label": "Palabra Wh-",
+            "pairs": [
+              {
+                "left": "¿Cuál es tu Quirk?",
+                "right": "What"
+              },
+              {
+                "left": "¿Quién es tu héroe favorito?",
+                "right": "Who"
+              },
+              {
+                "left": "¿De dónde eres?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Por qué quieres ser héroe?",
+                "right": "Why"
+              }
+            ],
+            "completion_feedback": "Cada palabra Wh- pide un dato: **What** (cosa), **Who** (persona), **Where** (lugar), **When** (tiempo), **Why** (razón). Va al inicio: Wh- + auxiliar + sujeto + verbo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rueda de prensa",
+            "right_label": "Palabra Wh-",
+            "pairs": [
+              {
+                "left": "¿Cuándo regresas de la lesión?",
+                "right": "When"
+              },
+              {
+                "left": "¿Quién te dio la asistencia?",
+                "right": "Who"
+              },
+              {
+                "left": "¿Qué pasó en el segundo tiempo?",
+                "right": "What"
+              }
+            ],
+            "completion_feedback": "Cada palabra Wh- pide un dato: **What** (cosa), **Who** (persona), **Where** (lugar), **When** (tiempo), **Why** (razón). Va al inicio: Wh- + auxiliar + sujeto + verbo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Entrevista a SKZ",
+            "right_label": "Palabra Wh-",
+            "pairs": [
+              {
+                "left": "¿Dónde producen sus canciones?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Cuándo es la gira?",
+                "right": "When"
+              },
+              {
+                "left": "¿Por qué eligieron este concepto?",
+                "right": "Why"
+              }
+            ],
+            "completion_feedback": "Cada palabra Wh- pide un dato: **What** (cosa), **Who** (persona), **Where** (lugar), **When** (tiempo), **Why** (razón). Va al inicio: Wh- + auxiliar + sujeto + verbo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En Valorant",
+            "right_label": "Palabra Wh-",
+            "pairs": [
+              {
+                "left": "¿Dónde estás?",
+                "right": "Where"
+              },
+              {
+                "left": "¿Quién tiene la Spike?",
+                "right": "Who"
+              },
+              {
+                "left": "¿Cuándo rotamos?",
+                "right": "When"
+              },
+              {
+                "left": "¿Por qué entraste solo?",
+                "right": "Why"
+              }
+            ],
+            "completion_feedback": "Cada palabra Wh- pide un dato: **What** (cosa), **Who** (persona), **Where** (lugar), **When** (tiempo), **Why** (razón). Va al inicio: Wh- + auxiliar + sujeto + verbo."
+          }
+        }
+      }
+    },
+    "vocabulary-family-jobs-and-routines": {
+      "order_steps": {
+        "prompt": "Ordena una rutina diaria en inglés",
+        "steps": [
+          "I wake up and take a shower",
+          "I have breakfast with my family",
+          "I go to school",
+          "I do my homework in the afternoon",
+          "I go to bed at night"
+        ],
+        "completion_feedback": "Las **daily routines** se cuentan en orden con verbos como **wake up**, **have breakfast**, **go to school** y **go to bed**, en **present simple**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Spy x Family",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Loid, para Anya",
+                "right": "father"
+              },
+              {
+                "left": "Yuri, para Yor",
+                "right": "brother"
+              },
+              {
+                "left": "Anya, para Loid y Yor",
+                "right": "daughter"
+              },
+              {
+                "left": "Loid en el hospital",
+                "right": "doctor"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **family** (father, mother, brother, sister, daughter), **jobs** (doctor, chef, spy, police officer) y **routines** (wake up, go to school, train every day)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bellingham",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Jobe, para Jude",
+                "right": "brother"
+              },
+              {
+                "left": "El oficio de su papá",
+                "right": "police officer"
+              },
+              {
+                "left": "El oficio de Jude",
+                "right": "footballer"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **family** (father, mother, brother, sister, daughter), **jobs** (doctor, chef, spy, police officer) y **routines** (wake up, go to school, train every day)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "NewJeans",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "El rol de Minji en el grupo",
+                "right": "leader"
+              },
+              {
+                "left": "Quien organiza su agenda",
+                "right": "manager"
+              },
+              {
+                "left": "Los papás de Hanni",
+                "right": "parents"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **family** (father, mother, brother, sister, daughter), **jobs** (doctor, chef, spy, police officer) y **routines** (wake up, go to school, train every day)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Genshin Impact",
+            "right_label": "In English",
+            "pairs": [
+              {
+                "left": "Hu Tao en Wangsheng",
+                "right": "funeral director"
+              },
+              {
+                "left": "Xiangling en Wanmin",
+                "right": "chef"
+              },
+              {
+                "left": "Alice, para Klee",
+                "right": "mother"
+              },
+              {
+                "left": "Ayato, para Ayaka",
+                "right": "brother"
+              }
+            ],
+            "completion_feedback": "Vocabulario clave: **family** (father, mother, brother, sister, daughter), **jobs** (doctor, chef, spy, police officer) y **routines** (wake up, go to school, train every day)."
+          }
+        }
+      }
+    }
+  }
+}
