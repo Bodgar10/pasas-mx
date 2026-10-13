@@ -1,0 +1,1069 @@
+{
+  "subject": "fisica-1",
+  "topics": {
+    "magnitudes-fisicas-y-sistemas-de-unidades": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la velocidad de alguien que corre 100 m en 20 s",
+        "steps": [
+          "Revisa que los datos estén en SI: metros y segundos",
+          "Escribe la fórmula: velocidad = distancia ÷ tiempo",
+          "Sustituye: 100 m ÷ 20 s",
+          "Escribe el resultado con su unidad: 5 m/s",
+          "Clasifícala: es derivada porque combina dos fundamentales"
+        ],
+        "completion_feedback": "Un número sin unidad no dice nada: **5** no es lo mismo que **5 m/s**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué magnitud o valor corresponde?",
+            "left_label": "Stats de Jin-Woo",
+            "right_label": "Magnitud",
+            "pairs": [
+              {
+                "left": "Saltó 5 m",
+                "right": "Longitud: metro"
+              },
+              {
+                "left": "La pelea duró 30 s",
+                "right": "Tiempo: segundo"
+              },
+              {
+                "left": "Su daga de 2 kg",
+                "right": "Masa: kilogramo"
+              },
+              {
+                "left": "60 m en 3 s",
+                "right": "20 m/s, derivada"
+              }
+            ],
+            "completion_feedback": "Las magnitudes **fundamentales** (longitud, masa, tiempo) se miden directo; las **derivadas**, como la velocidad, salen de combinarlas."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué magnitud o valor corresponde?",
+            "left_label": "Stats de Lamine",
+            "right_label": "Magnitud",
+            "pairs": [
+              {
+                "left": "10,500 m recorridos",
+                "right": "Longitud"
+              },
+              {
+                "left": "Un partido de 90 minutos",
+                "right": "5,400 s"
+              },
+              {
+                "left": "Balón de 0.43 kg",
+                "right": "Masa"
+              },
+              {
+                "left": "10,500 m ÷ 5,400 s",
+                "right": "≈ 1.94 m/s"
+              }
+            ],
+            "completion_feedback": "Las magnitudes **fundamentales** (longitud, masa, tiempo) se miden directo; las **derivadas**, como la velocidad, salen de combinarlas."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué magnitud o valor corresponde?",
+            "left_label": "Comeback de SKZ",
+            "right_label": "Magnitud",
+            "pairs": [
+              {
+                "left": "Canción de 210 s",
+                "right": "Tiempo"
+              },
+              {
+                "left": "Estadio a 50 km",
+                "right": "50,000 m"
+              },
+              {
+                "left": "Álbum de 0.5 kg",
+                "right": "Masa"
+              },
+              {
+                "left": "50,000 m en 3,000 s",
+                "right": "≈ 16.7 m/s"
+              }
+            ],
+            "completion_feedback": "Las magnitudes **fundamentales** (longitud, masa, tiempo) se miden directo; las **derivadas**, como la velocidad, salen de combinarlas."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué magnitud o valor corresponde?",
+            "left_label": "Stats de Valorant",
+            "right_label": "Magnitud",
+            "pairs": [
+              {
+                "left": "Correr a 6.75 m/s",
+                "right": "Velocidad: derivada"
+              },
+              {
+                "left": "Round de 100 s",
+                "right": "Tiempo: fundamental"
+              },
+              {
+                "left": "30 m en 90 s",
+                "right": "≈ 0.33 m/s"
+              },
+              {
+                "left": "Daño en puntos",
+                "right": "No es magnitud física"
+              }
+            ],
+            "completion_feedback": "Las magnitudes **fundamentales** (longitud, masa, tiempo) se miden directo; las **derivadas**, como la velocidad, salen de combinarlas."
+          }
+        }
+      }
+    },
+    "notacion-cientifica-y-conversion-de-unidades": {
+      "order_steps": {
+        "prompt": "Ordena cómo escribes 0.00052 en notación científica",
+        "steps": [
+          "Ubica la primera cifra distinta de cero: el 5",
+          "Pon el punto justo después de ella: 5.2",
+          "Cuenta cuántos lugares moviste el punto: 4",
+          "Como el número es menor que 1, el exponente es negativo",
+          "Escribe el resultado: 5.2 × 10⁻⁴"
+        ],
+        "completion_feedback": "Los números grandes llevan exponente **positivo**; los menores que 1, **negativo**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Cómo se escribe en notación científica?",
+            "left_label": "Poder de Jin-Woo",
+            "right_label": "Notación",
+            "pairs": [
+              {
+                "left": "12,000,000 de poder",
+                "right": "1.2 × 10⁷"
+              },
+              {
+                "left": "850,000,000 de HP",
+                "right": "8.5 × 10⁸"
+              },
+              {
+                "left": "0.00005 s entre sombras",
+                "right": "5 × 10⁻⁵"
+              },
+              {
+                "left": "Número menor que 1",
+                "right": "Exponente negativo"
+              }
+            ],
+            "completion_feedback": "En **notación científica** escribes a × 10ⁿ con a entre 1 y 10; el exponente cuenta cuántos lugares se mueve el punto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Cómo se escribe en notación científica?",
+            "left_label": "Cifras del fútbol",
+            "right_label": "Notación",
+            "pairs": [
+              {
+                "left": "Fichaje de 180,000,000 €",
+                "right": "1.8 × 10⁸"
+              },
+              {
+                "left": "Club de 2,400,000,000 €",
+                "right": "2.4 × 10⁹"
+              },
+              {
+                "left": "Asistencia de 99,354",
+                "right": "9.9354 × 10⁴"
+              },
+              {
+                "left": "Reacción del portero: 0.2 s",
+                "right": "2 × 10⁻¹"
+              }
+            ],
+            "completion_feedback": "En **notación científica** escribes a × 10ⁿ con a entre 1 y 10; el exponente cuenta cuántos lugares se mueve el punto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Cómo se escribe en notación científica?",
+            "left_label": "Vistas de MV",
+            "right_label": "Notación",
+            "pairs": [
+              {
+                "left": "250,000,000 vistas",
+                "right": "2.5 × 10⁸"
+              },
+              {
+                "left": "480,000,000 vistas",
+                "right": "4.8 × 10⁸"
+              },
+              {
+                "left": "356,000,000",
+                "right": "3.56 × 10⁸"
+              },
+              {
+                "left": "0.016 s por cuadro",
+                "right": "1.6 × 10⁻²"
+              }
+            ],
+            "completion_feedback": "En **notación científica** escribes a × 10ⁿ con a entre 1 y 10; el exponente cuenta cuántos lugares se mueve el punto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Cómo se escribe en notación científica?",
+            "left_label": "Blox Fruits",
+            "right_label": "Notación",
+            "pairs": [
+              {
+                "left": "45,000,000 de EXP",
+                "right": "4.5 × 10⁷"
+              },
+              {
+                "left": "320,000,000 de EXP",
+                "right": "3.2 × 10⁸"
+              },
+              {
+                "left": "Un cabello: 0.00008 m",
+                "right": "8 × 10⁻⁵"
+              },
+              {
+                "left": "2,500,000 de daño",
+                "right": "2.5 × 10⁶"
+              }
+            ],
+            "completion_feedback": "En **notación científica** escribes a × 10ⁿ con a entre 1 y 10; el exponente cuenta cuántos lugares se mueve el punto."
+          }
+        }
+      }
+    },
+    "vectores": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas la resultante de 8 m al este y 15 m al norte",
+        "steps": [
+          "Identifica las componentes: Rx = 8 m y Ry = 15 m",
+          "Son perpendiculares: usa Pitágoras",
+          "Eleva al cuadrado y suma: 64 + 225 = 289",
+          "Saca la raíz: R = 17 m"
+        ],
+        "completion_feedback": "Las componentes perpendiculares **no se suman directo**: 8 + 15 daría 23, pero la resultante es 17. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Ataque de Jin-Woo",
+            "right_label": "Vectores",
+            "pairs": [
+              {
+                "left": "5 m a la derecha y 12 m al frente",
+                "right": "R = 13 m"
+              },
+              {
+                "left": "5² + 12²",
+                "right": "169"
+              },
+              {
+                "left": "10 m a la derecha vs. al frente",
+                "right": "Igual magnitud, otra dirección"
+              },
+              {
+                "left": "Cantidad con magnitud y dirección",
+                "right": "Vector"
+              }
+            ],
+            "completion_feedback": "Un **vector** tiene magnitud y dirección; si sus componentes son perpendiculares, la resultante sale con Pitágoras: R = √(Rx² + Ry²)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Pase de Lamine",
+            "right_label": "Vectores",
+            "pairs": [
+              {
+                "left": "30 m al frente y 40 m a la banda",
+                "right": "R = 50 m"
+              },
+              {
+                "left": "30² + 40²",
+                "right": "2,500"
+              },
+              {
+                "left": "Sumar 30 + 40",
+                "right": "70 m: error"
+              },
+              {
+                "left": "Componentes perpendiculares",
+                "right": "Se usa Pitágoras"
+              }
+            ],
+            "completion_feedback": "Un **vector** tiene magnitud y dirección; si sus componentes son perpendiculares, la resultante sale con Pitágoras: R = √(Rx² + Ry²)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Pasos de Felix",
+            "right_label": "Vectores",
+            "pairs": [
+              {
+                "left": "9 m a la derecha y 12 m al frente",
+                "right": "R = 15 m"
+              },
+              {
+                "left": "3 m a la derecha y 4 m al frente",
+                "right": "R = 5 m"
+              },
+              {
+                "left": "9² + 12²",
+                "right": "225"
+              },
+              {
+                "left": "Sumar 9 + 12",
+                "right": "21 m: no es la resultante"
+              }
+            ],
+            "completion_feedback": "Un **vector** tiene magnitud y dirección; si sus componentes son perpendiculares, la resultante sale con Pitágoras: R = √(Rx² + Ry²)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Dash de Jett",
+            "right_label": "Vectores",
+            "pairs": [
+              {
+                "left": "6 m a la derecha y 8 m adelante",
+                "right": "R = 10 m"
+              },
+              {
+                "left": "6² + 8²",
+                "right": "100"
+              },
+              {
+                "left": "La habilidad del dash",
+                "right": "Tailwind"
+              },
+              {
+                "left": "Hacia dónde apunta",
+                "right": "La dirección"
+              }
+            ],
+            "completion_feedback": "Un **vector** tiene magnitud y dirección; si sus componentes son perpendiculares, la resultante sale con Pitágoras: R = √(Rx² + Ry²)."
+          }
+        }
+      }
+    },
+    "cinematica-movimiento-rectilineo-uniforme-mru": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas cuánto tarda un tren a 25 m/s en recorrer 1,000 m",
+        "steps": [
+          "Verifica que la velocidad es constante: es MRU",
+          "Escribe la fórmula: d = v·t",
+          "Despeja el tiempo: t = d/v",
+          "Sustituye: t = 1,000/25 = 40 s"
+        ],
+        "completion_feedback": "En MRU la velocidad no cambia: **en tiempos iguales, distancias iguales**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Pasillo de Jin-Woo",
+            "right_label": "MRU",
+            "pairs": [
+              {
+                "left": "12 m/s durante 5 s",
+                "right": "60 m"
+              },
+              {
+                "left": "Lo que avanza en el segundo 3",
+                "right": "12 m, igual que en el 1"
+              },
+              {
+                "left": "Fórmula de la distancia",
+                "right": "d = v·t"
+              },
+              {
+                "left": "60 m a 12 m/s",
+                "right": "5 s"
+              }
+            ],
+            "completion_feedback": "En el **MRU** la trayectoria es recta y la velocidad constante: d = v·t, v = d/t y t = d/v."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Pase raso",
+            "right_label": "MRU",
+            "pairs": [
+              {
+                "left": "10 m/s durante 4 s",
+                "right": "40 m"
+              },
+              {
+                "left": "8 m/s durante 3 s",
+                "right": "24 m"
+              },
+              {
+                "left": "Balón en campo liso",
+                "right": "Rapidez casi constante"
+              },
+              {
+                "left": "40 m a 10 m/s",
+                "right": "4 s"
+              }
+            ],
+            "completion_feedback": "En el **MRU** la trayectoria es recta y la velocidad constante: d = v·t, v = d/t y t = d/v."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Dolly del MV",
+            "right_label": "MRU",
+            "pairs": [
+              {
+                "left": "2 m/s durante 15 s",
+                "right": "30 m"
+              },
+              {
+                "left": "Sin acelerones ni frenones",
+                "right": "Velocidad constante"
+              },
+              {
+                "left": "El riel recto",
+                "right": "Trayectoria rectilínea"
+              },
+              {
+                "left": "30 m a 2 m/s",
+                "right": "15 s"
+              }
+            ],
+            "completion_feedback": "En el **MRU** la trayectoria es recta y la velocidad constante: d = v·t, v = d/t y t = d/v."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Minecart",
+            "right_label": "MRU",
+            "pairs": [
+              {
+                "left": "8 bloques/s durante 6 s",
+                "right": "48 bloques"
+              },
+              {
+                "left": "6 bloques/s durante 9 s",
+                "right": "54 bloques"
+              },
+              {
+                "left": "48 bloques a 8 bloques/s",
+                "right": "6 s"
+              },
+              {
+                "left": "Velocidad que no cambia",
+                "right": "MRU"
+              }
+            ],
+            "completion_feedback": "En el **MRU** la trayectoria es recta y la velocidad constante: d = v·t, v = d/t y t = d/v."
+          }
+        }
+      }
+    },
+    "movimiento-uniformemente-acelerado-mrua": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la distancia de un auto que parte del reposo con a = 2 m/s² durante 5 s",
+        "steps": [
+          "Anota los datos: vi = 0, a = 2 m/s², t = 5 s",
+          "Elige la fórmula: d = vi·t + ½·a·t²",
+          "Sustituye: d = 0 + ½ · 2 · 25",
+          "Resultado: d = 25 m"
+        ],
+        "completion_feedback": "En MRUA la distancia crece con **t²**: en el doble de tiempo recorres cuatro veces más. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Caída de Jin-Woo",
+            "right_label": "MRUA",
+            "pairs": [
+              {
+                "left": "vf tras 3 s con g = 10 m/s²",
+                "right": "30 m/s"
+              },
+              {
+                "left": "vf tras 1 s",
+                "right": "10 m/s"
+              },
+              {
+                "left": "Lo que suma la gravedad cada s",
+                "right": "≈ 9.8 m/s"
+              },
+              {
+                "left": "Distancia en cada segundo",
+                "right": "Cada vez mayor"
+              }
+            ],
+            "completion_feedback": "En el **MRUA** la velocidad cambia lo mismo cada segundo: vf = vi + a·t y d = vi·t + ½·a·t²."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Arranque de Lamine",
+            "right_label": "MRUA",
+            "pairs": [
+              {
+                "left": "a = 3 m/s² durante 3 s",
+                "right": "9 m/s"
+              },
+              {
+                "left": "a = 2 m/s² durante 3 s",
+                "right": "6 m/s"
+              },
+              {
+                "left": "Gana 2 m/s cada segundo",
+                "right": "a = 2 m/s²"
+              },
+              {
+                "left": "Parte del reposo",
+                "right": "vi = 0"
+              }
+            ],
+            "completion_feedback": "En el **MRUA** la velocidad cambia lo mismo cada segundo: vf = vi + a·t y d = vi·t + ½·a·t²."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Dron de cámara",
+            "right_label": "MRUA",
+            "pairs": [
+              {
+                "left": "a = 2 m/s² durante 5 s",
+                "right": "10 m/s"
+              },
+              {
+                "left": "Plataforma: 1 m/s más cada s",
+                "right": "a = 1 m/s²"
+              },
+              {
+                "left": "vf del dron al segundo 3",
+                "right": "6 m/s"
+              },
+              {
+                "left": "Altura que sube cada segundo",
+                "right": "Cada vez mayor"
+              }
+            ],
+            "completion_feedback": "En el **MRUA** la velocidad cambia lo mismo cada segundo: vf = vi + a·t y d = vi·t + ½·a·t²."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Auto en Roblox",
+            "right_label": "MRUA",
+            "pairs": [
+              {
+                "left": "a = 4 m/s² durante 6 s",
+                "right": "24 m/s"
+              },
+              {
+                "left": "Suma 5 m/s cada segundo",
+                "right": "a = 5 m/s²"
+              },
+              {
+                "left": "vf a los 3 s con a = 4 m/s²",
+                "right": "12 m/s"
+              },
+              {
+                "left": "Minecart contra auto",
+                "right": "MRU contra MRUA"
+              }
+            ],
+            "completion_feedback": "En el **MRUA** la velocidad cambia lo mismo cada segundo: vf = vi + a·t y d = vi·t + ½·a·t²."
+          }
+        }
+      }
+    },
+    "caida-libre-y-tiro-vertical": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas cuánto tarda en caer algo desde 19.6 m",
+        "steps": [
+          "Anota: v₀ = 0, h = 19.6 m y g = 9.8 m/s²",
+          "Usa la fórmula h = ½·g·t²",
+          "Despeja: t² = 2h/g = 39.2/9.8 = 4",
+          "Saca la raíz: t = 2 s"
+        ],
+        "completion_feedback": "El tiempo crece con la **raíz** de la altura: el doble de altura no da el doble de tiempo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Muro de Mikasa",
+            "right_label": "Caída libre",
+            "pairs": [
+              {
+                "left": "Caída en el primer segundo",
+                "right": "4.9 m"
+              },
+              {
+                "left": "Caída acumulada a los 3 s",
+                "right": "44.1 m"
+              },
+              {
+                "left": "Tanjiro sale a 39.2 m/s",
+                "right": "Sube 78.4 m"
+              },
+              {
+                "left": "Subida de Tanjiro",
+                "right": "Dura 4 s"
+              }
+            ],
+            "completion_feedback": "En **caída libre y tiro vertical** solo actúa la gravedad: g = 9.8 m/s² hacia abajo, al subir y al bajar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Despeje vertical",
+            "right_label": "Tiro vertical",
+            "pairs": [
+              {
+                "left": "v₀ = 29.4 m/s: subida",
+                "right": "3 s"
+              },
+              {
+                "left": "Altura máxima",
+                "right": "44.1 m"
+              },
+              {
+                "left": "Vuelo completo",
+                "right": "6 s"
+              },
+              {
+                "left": "Velocidad en el punto más alto",
+                "right": "0 m/s"
+              }
+            ],
+            "completion_feedback": "En **caída libre y tiro vertical** solo actúa la gravedad: g = 9.8 m/s² hacia abajo, al subir y al bajar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Lanzar el peluche",
+            "right_label": "Tiro vertical",
+            "pairs": [
+              {
+                "left": "v₀ = 9.8 m/s: subida",
+                "right": "1 s"
+              },
+              {
+                "left": "Altura máxima",
+                "right": "4.9 m"
+              },
+              {
+                "left": "Tiempo total en el aire",
+                "right": "2 s"
+              },
+              {
+                "left": "Lightstick que cae 20 m",
+                "right": "Poco más de 2 s"
+              }
+            ],
+            "completion_feedback": "En **caída libre y tiro vertical** solo actúa la gravedad: g = 9.8 m/s² hacia abajo, al subir y al bajar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Torre y clutch",
+            "right_label": "Caída libre",
+            "pairs": [
+              {
+                "left": "Velocidad tras 2 s de caída",
+                "right": "19.6 m/s"
+              },
+              {
+                "left": "Velocidad tras 4 s de caída",
+                "right": "39.2 m/s"
+              },
+              {
+                "left": "Mario sale a 19.6 m/s",
+                "right": "Sube 19.6 m"
+              },
+              {
+                "left": "Duplicar la altura",
+                "right": "No duplica el tiempo"
+              }
+            ],
+            "completion_feedback": "En **caída libre y tiro vertical** solo actúa la gravedad: g = 9.8 m/s² hacia abajo, al subir y al bajar."
+          }
+        }
+      }
+    },
+    "tiro-parabolico": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves un lanzamiento horizontal desde 19.6 m a 15 m/s",
+        "steps": [
+          "Separa el movimiento en horizontal y vertical",
+          "Con la vertical halla el tiempo: t = √(2h/g) = 2 s",
+          "Con la horizontal halla el alcance: x = 15 × 2",
+          "Resultado: cae a 30 m de la orilla"
+        ],
+        "completion_feedback": "El **tiempo** lo decide la vertical y el **alcance** la horizontal: se resuelven por separado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Cañón de Usopp",
+            "right_label": "Tiro parabólico",
+            "pairs": [
+              {
+                "left": "Shuriken desde 44.1 m: tiempo",
+                "right": "3 s"
+              },
+              {
+                "left": "A 15 m/s durante 3 s",
+                "right": "45 m de alcance"
+              },
+              {
+                "left": "Lo que cae en el segundo 4",
+                "right": "34.3 m"
+              },
+              {
+                "left": "Por qué apunta más arriba",
+                "right": "La bala va cayendo"
+              }
+            ],
+            "completion_feedback": "En el **tiro parabólico** el avance horizontal es constante y la caída vertical es acelerada: juntos dibujan una parábola."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Despeje largo",
+            "right_label": "Tiro parabólico",
+            "pairs": [
+              {
+                "left": "v₀y = 29.4 m/s: vuelo",
+                "right": "6 s"
+              },
+              {
+                "left": "v₀ₓ = 12 m/s durante 6 s",
+                "right": "72 m"
+              },
+              {
+                "left": "Altura máxima",
+                "right": "44.1 m"
+              },
+              {
+                "left": "Globito al portero",
+                "right": "Curva que le pasa encima"
+              }
+            ],
+            "completion_feedback": "En el **tiro parabólico** el avance horizontal es constante y la caída vertical es acelerada: juntos dibujan una parábola."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Cañón de confeti",
+            "right_label": "Tiro parabólico",
+            "pairs": [
+              {
+                "left": "v₀y = 19.6 m/s: vuelo",
+                "right": "4 s"
+              },
+              {
+                "left": "v₀ₓ = 20 m/s durante 4 s",
+                "right": "80 m"
+              },
+              {
+                "left": "Altura máxima",
+                "right": "19.6 m"
+              },
+              {
+                "left": "Vertical en el punto más alto",
+                "right": "Vale cero"
+              }
+            ],
+            "completion_feedback": "En el **tiro parabólico** el avance horizontal es constante y la caída vertical es acelerada: juntos dibujan una parábola."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Arco y Mario",
+            "right_label": "Tiro parabólico",
+            "pairs": [
+              {
+                "left": "Mario desde 19.6 m: tiempo",
+                "right": "2 s"
+              },
+              {
+                "left": "A 10 m/s durante 2 s",
+                "right": "20 m"
+              },
+              {
+                "left": "Correr al doble: 20 m/s",
+                "right": "Aterriza a 40 m"
+              },
+              {
+                "left": "Flecha a un esqueleto lejano",
+                "right": "Apuntar más arriba"
+              }
+            ],
+            "completion_feedback": "En el **tiro parabólico** el avance horizontal es constante y la caída vertical es acelerada: juntos dibujan una parábola."
+          }
+        }
+      }
+    },
+    "leyes-de-newton-fisica": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la aceleración de un carrito empujado con fricción",
+        "steps": [
+          "Dibuja las fuerzas: el empuje y la fricción",
+          "Calcula la fuerza neta: empuje menos fricción",
+          "Aplica la segunda ley: a = F/m",
+          "Revisa la dirección: acelera hacia donde apunta la neta"
+        ],
+        "completion_feedback": "La aceleración depende de la **fuerza neta**, no de una sola fuerza. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Maniobras de AoT",
+            "right_label": "Leyes de Newton",
+            "pairs": [
+              {
+                "left": "Gas hacia atrás, soldado adelante",
+                "right": "Tercera ley"
+              },
+              {
+                "left": "240 N sobre 80 kg",
+                "right": "3 m/s²"
+              },
+              {
+                "left": "240 N sobre 120 kg",
+                "right": "2 m/s²"
+              },
+              {
+                "left": "3 m/s² durante 4 s",
+                "right": "12 m/s"
+              }
+            ],
+            "completion_feedback": "**Newton**: sin fuerza neta la velocidad no cambia (inercia), F = m·a, y toda acción tiene una reacción igual y opuesta."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Choque y patada",
+            "right_label": "Leyes de Newton",
+            "pairs": [
+              {
+                "left": "Delantero y central chocan",
+                "right": "Misma fuerza para los dos"
+              },
+              {
+                "left": "450 N sobre 0.45 kg",
+                "right": "1,000 m/s²"
+              },
+              {
+                "left": "Balón ya en el aire",
+                "right": "Sigue por inercia"
+              },
+              {
+                "left": "300 − 200 − 40 N",
+                "right": "60 N netos"
+              }
+            ],
+            "completion_feedback": "**Newton**: sin fuerza neta la velocidad no cambia (inercia), F = m·a, y toda acción tiene una reacción igual y opuesta."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Frenón del K-drama",
+            "right_label": "Leyes de Newton",
+            "pairs": [
+              {
+                "left": "Ella sigue de largo al frenar",
+                "right": "Primera ley: inercia"
+              },
+              {
+                "left": "160 − 40 N sobre 80 kg",
+                "right": "1.5 m/s²"
+              },
+              {
+                "left": "Bailarín empuja el piso",
+                "right": "El piso lo empuja arriba"
+              },
+              {
+                "left": "Fricción sola de 40 N",
+                "right": "Lo frena a 0.5 m/s²"
+              }
+            ],
+            "completion_feedback": "**Newton**: sin fuerza neta la velocidad no cambia (inercia), F = m·a, y toda acción tiene una reacción igual y opuesta."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Bote en hielo",
+            "right_label": "Leyes de Newton",
+            "pairs": [
+              {
+                "left": "Bote que sigue sin empujar",
+                "right": "Inercia"
+              },
+              {
+                "left": "600 N sobre 150 kg",
+                "right": "4 m/s²"
+              },
+              {
+                "left": "600 N sobre 300 kg",
+                "right": "2 m/s²"
+              },
+              {
+                "left": "Lo que frena al bote en tierra",
+                "right": "Fricción"
+              }
+            ],
+            "completion_feedback": "**Newton**: sin fuerza neta la velocidad no cambia (inercia), F = m·a, y toda acción tiene una reacción igual y opuesta."
+          }
+        }
+      }
+    },
+    "ley-de-la-gravitacion-universal": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas tu peso en la Luna si tu masa es 60 kg",
+        "steps": [
+          "Recuerda que la masa no cambia: 60 kg",
+          "Busca la gravedad de la Luna: 1.62 m/s²",
+          "Aplica P = m·g: 60 × 1.62",
+          "Resultado: 97.2 N, la sexta parte que en la Tierra"
+        ],
+        "completion_feedback": "La **masa** es la misma en todos lados; el **peso** depende de qué tan fuerte te jala el lugar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Cámara de Goku",
+            "right_label": "Gravedad",
+            "pairs": [
+              {
+                "left": "70 kg en la Tierra",
+                "right": "686 N"
+              },
+              {
+                "left": "70 kg a 10g",
+                "right": "6,860 N"
+              },
+              {
+                "left": "Masa de Goku a 10g",
+                "right": "Sigue siendo 70 kg"
+              },
+              {
+                "left": "Gravedad a 10g",
+                "right": "98 m/s²"
+              }
+            ],
+            "completion_feedback": "**Gravitación universal**: dos masas se atraen con F = G·m₁·m₂/r²; más masa da más fuerza, y a doble distancia, la cuarta parte."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Balón y Tierra",
+            "right_label": "Gravedad",
+            "pairs": [
+              {
+                "left": "Peso del balón de 0.45 kg",
+                "right": "4.41 N"
+              },
+              {
+                "left": "Fuerza con que jala a la Tierra",
+                "right": "También 4.41 N"
+              },
+              {
+                "left": "Aceleración del balón",
+                "right": "9.8 m/s²"
+              },
+              {
+                "left": "Aceleración de la Tierra",
+                "right": "Imperceptible"
+              }
+            ],
+            "completion_feedback": "**Gravitación universal**: dos masas se atraen con F = G·m₁·m₂/r²; más masa da más fuerza, y a doble distancia, la cuarta parte."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "The Silent Sea",
+            "right_label": "Gravedad",
+            "pairs": [
+              {
+                "left": "Caja de 90 kg en la Tierra",
+                "right": "882 N"
+              },
+              {
+                "left": "La misma caja en la Luna",
+                "right": "145.8 N"
+              },
+              {
+                "left": "Gravedad de la Luna",
+                "right": "1.62 m/s²"
+              },
+              {
+                "left": "Masa de la caja en la Luna",
+                "right": "Sigue siendo 90 kg"
+              }
+            ],
+            "completion_feedback": "**Gravitación universal**: dos masas se atraen con F = G·m₁·m₂/r²; más masa da más fuerza, y a doble distancia, la cuarta parte."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Mario Galaxy",
+            "right_label": "Gravedad",
+            "pairs": [
+              {
+                "left": "64 N a 1 radio; a 2 radios",
+                "right": "16 N"
+              },
+              {
+                "left": "A 4 radios",
+                "right": "4 N"
+              },
+              {
+                "left": "A 8 radios",
+                "right": "1 N"
+              },
+              {
+                "left": "Planeta más pequeño",
+                "right": "Jala menos"
+              }
+            ],
+            "completion_feedback": "**Gravitación universal**: dos masas se atraen con F = G·m₁·m₂/r²; más masa da más fuerza, y a doble distancia, la cuarta parte."
+          }
+        }
+      }
+    }
+  }
+}
