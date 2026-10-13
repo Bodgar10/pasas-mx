@@ -1,0 +1,1069 @@
+{
+  "subject": "quimica-1",
+  "topics": {
+    "materia-propiedades-y-estados-de-agregacion": {
+      "order_steps": {
+        "prompt": "Ordena qué le pasa al hielo cuando lo calientas hasta hacerlo vapor",
+        "steps": [
+          "Hielo a −10 °C: sólido, partículas casi quietas",
+          "A 0 °C se funde: de sólido a líquido",
+          "El agua líquida se calienta hasta 100 °C",
+          "Hierve y se evapora: de líquido a gas"
+        ],
+        "completion_feedback": "Dar calor **separa** las partículas: sólido, luego líquido, luego gas. La sustancia es la misma, solo cambia el estado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Agua de Tanjiro",
+            "right_label": "Estado o cambio",
+            "pairs": [
+              {
+                "left": "Hielo que se derrite al sol",
+                "right": "Fusión"
+              },
+              {
+                "left": "Agua que se vuelve vapor",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Vapor que vuelve a ser líquido",
+                "right": "Condensación"
+              },
+              {
+                "left": "Agua que se congela",
+                "right": "Solidificación"
+              }
+            ],
+            "completion_feedback": "Los **estados de agregación** son sólido, líquido y gas; pasar de uno a otro es un **cambio físico**: la sustancia sigue siendo la misma."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Estadio",
+            "right_label": "Estado o cambio",
+            "pairs": [
+              {
+                "left": "Aire dentro del balón",
+                "right": "Gas"
+              },
+              {
+                "left": "Agua de la botella",
+                "right": "Líquido"
+              },
+              {
+                "left": "Vaho del aliento",
+                "right": "Condensación"
+              },
+              {
+                "left": "Botella fría que 'suda'",
+                "right": "Vapor del aire que se condensa"
+              }
+            ],
+            "completion_feedback": "Los **estados de agregación** son sólido, líquido y gas; pasar de uno a otro es un **cambio físico**: la sustancia sigue siendo la misma."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Show de aespa",
+            "right_label": "Estado o cambio",
+            "pairs": [
+              {
+                "left": "Hielo seco que suelta niebla",
+                "right": "Sublimación"
+              },
+              {
+                "left": "Bloque de hielo seco",
+                "right": "Sólido"
+              },
+              {
+                "left": "Agua de las botellas",
+                "right": "Líquido"
+              },
+              {
+                "left": "Chorro de los tanques de CO₂",
+                "right": "Gas"
+              }
+            ],
+            "completion_feedback": "Los **estados de agregación** son sólido, líquido y gas; pasar de uno a otro es un **cambio físico**: la sustancia sigue siendo la misma."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Genshin y lava",
+            "right_label": "Estado o cambio",
+            "pairs": [
+              {
+                "left": "Ganyu congela el lago",
+                "right": "Solidificación"
+              },
+              {
+                "left": "Hu Tao derrite el hielo",
+                "right": "Fusión"
+              },
+              {
+                "left": "Lava que fluye",
+                "right": "Líquido: toma la forma del suelo"
+              },
+              {
+                "left": "Vaporización de Genshin",
+                "right": "De líquido a gas"
+              }
+            ],
+            "completion_feedback": "Los **estados de agregación** son sólido, líquido y gas; pasar de uno a otro es un **cambio físico**: la sustancia sigue siendo la misma."
+          }
+        }
+      }
+    },
+    "mezclas-elementos-y-compuestos": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas el agua de mar y lo que contiene",
+        "steps": [
+          "Observa: el agua de mar se ve uniforme",
+          "Evapórala: queda sal, así que era una mezcla",
+          "Analiza la sal: es NaCl, proporción fija 1:1",
+          "Concluye: la sal es un compuesto",
+          "Revisa el sodio: no se descompone, es un elemento"
+        ],
+        "completion_feedback": "Primero ves si **se separa físicamente** (mezcla); si no, si **se descompone** (compuesto) o no (elemento). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cocina de Sanji",
+            "right_label": "Clasificación",
+            "pairs": [
+              {
+                "left": "Amoniaco, NH₃",
+                "right": "Compuesto"
+              },
+              {
+                "left": "Ensalada",
+                "right": "Mezcla heterogénea"
+              },
+              {
+                "left": "Agua de mar",
+                "right": "Mezcla homogénea"
+              },
+              {
+                "left": "Oxígeno de los cilindros",
+                "right": "Elemento"
+              }
+            ],
+            "completion_feedback": "Un **elemento** tiene un solo tipo de átomo; un **compuesto** une elementos en proporción fija; una **mezcla** junta sustancias que se pueden separar."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Vestidor",
+            "right_label": "Clasificación",
+            "pairs": [
+              {
+                "left": "CO₂",
+                "right": "Compuesto"
+              },
+              {
+                "left": "Aire que respiran",
+                "right": "Mezcla de gases"
+              },
+              {
+                "left": "Bebida isotónica",
+                "right": "Mezcla homogénea"
+              },
+              {
+                "left": "Proporción que puede variar",
+                "right": "Señal de mezcla"
+              }
+            ],
+            "completion_feedback": "Un **elemento** tiene un solo tipo de átomo; un **compuesto** une elementos en proporción fija; una **mezcla** junta sustancias que se pueden separar."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cafetería K-drama",
+            "right_label": "Clasificación",
+            "pairs": [
+              {
+                "left": "Sal de mesa, NaCl",
+                "right": "Compuesto 1:1"
+              },
+              {
+                "left": "Limonada",
+                "right": "Mezcla homogénea"
+              },
+              {
+                "left": "H₂O líquida hecha de dos gases",
+                "right": "Propiedades nuevas"
+              },
+              {
+                "left": "Té frío con azúcar",
+                "right": "Disolución"
+              }
+            ],
+            "completion_feedback": "Un **elemento** tiene un solo tipo de átomo; un **compuesto** une elementos en proporción fija; una **mezcla** junta sustancias que se pueden separar."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Taller del juego",
+            "right_label": "Clasificación",
+            "pairs": [
+              {
+                "left": "Lingote de oro puro",
+                "right": "Elemento"
+              },
+              {
+                "left": "Armadura de bronce",
+                "right": "Aleación: mezcla"
+              },
+              {
+                "left": "Cofre con objetos variados",
+                "right": "Mezcla"
+              },
+              {
+                "left": "El cobre dentro del bronce",
+                "right": "Conserva sus propiedades"
+              }
+            ],
+            "completion_feedback": "Un **elemento** tiene un solo tipo de átomo; un **compuesto** une elementos en proporción fija; una **mezcla** junta sustancias que se pueden separar."
+          }
+        }
+      }
+    },
+    "metodos-de-separacion-de-mezclas": {
+      "order_steps": {
+        "prompt": "Ordena cómo separas una mezcla de arena, sal y agua",
+        "steps": [
+          "Filtra: la arena se queda en el papel filtro",
+          "Recoge el líquido que pasó: agua con sal disuelta",
+          "Evapora el agua calentando suavemente",
+          "Recupera la sal que queda en el fondo"
+        ],
+        "completion_feedback": "Cada método aprovecha **una propiedad distinta**: el tamaño para filtrar, la volatilidad para evaporar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ramen de Naruto",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Aceite que flota sobre el caldo",
+                "right": "Decantación"
+              },
+              {
+                "left": "Lo que sale primero del embudo",
+                "right": "El agua, más densa"
+              },
+              {
+                "left": "Por qué no se mezclan",
+                "right": "Densidades distintas"
+              },
+              {
+                "left": "Líquidos que sí se mezclan",
+                "right": "Decantar no sirve"
+              }
+            ],
+            "completion_feedback": "Los **métodos de separación** aprovechan propiedades físicas: densidad, tamaño de partícula, magnetismo o punto de ebullición."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sudor de Mbappé",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Sal disuelta en el sudor",
+                "right": "Evaporación"
+              },
+              {
+                "left": "Recuperar también el agua",
+                "right": "Destilación"
+              },
+              {
+                "left": "Colar agua salada",
+                "right": "No sirve"
+              },
+              {
+                "left": "Marcas blancas en la camiseta",
+                "right": "Cristales de sal"
+              }
+            ],
+            "completion_feedback": "Los **métodos de separación** aprovechan propiedades físicas: densidad, tamaño de partícula, magnetismo o punto de ebullición."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bubble tea",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Perlas de tapioca y agua",
+                "right": "Filtración"
+              },
+              {
+                "left": "Lo que queda en el colador",
+                "right": "Las perlas"
+              },
+              {
+                "left": "Lo que pasa por los huecos",
+                "right": "El agua"
+              },
+              {
+                "left": "Azúcar disuelta",
+                "right": "Filtrar no la separa"
+              }
+            ],
+            "completion_feedback": "Los **métodos de separación** aprovechan propiedades físicas: densidad, tamaño de partícula, magnetismo o punto de ebullición."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Imán en Brawl",
+            "right_label": "Método",
+            "pairs": [
+              {
+                "left": "Limaduras de hierro y arena",
+                "right": "Separación magnética"
+              },
+              {
+                "left": "Lo que se pega al imán",
+                "right": "El hierro"
+              },
+              {
+                "left": "Lo que queda en el suelo",
+                "right": "La arena"
+              },
+              {
+                "left": "Azúcar con arena",
+                "right": "El imán no sirve"
+              }
+            ],
+            "completion_feedback": "Los **métodos de separación** aprovechan propiedades físicas: densidad, tamaño de partícula, magnetismo o punto de ebullición."
+          }
+        }
+      }
+    },
+    "modelos-atomicos-de-dalton-a-la-mecanica-cuantica": {
+      "order_steps": {
+        "prompt": "Ordena los modelos atómicos del más antiguo al más moderno",
+        "steps": [
+          "Dalton: esfera maciza e indivisible",
+          "Thomson: masa positiva con electrones incrustados",
+          "Rutherford: núcleo positivo y espacio vacío",
+          "Bohr: órbitas con niveles de energía fijos",
+          "Cuántico: orbitales, zonas de probabilidad"
+        ],
+        "completion_feedback": "Cada modelo **corrigió** al anterior con un experimento nuevo, sin tirar todo lo que ya se sabía. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poder de Deku",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Bloque de energía sin estructura",
+                "right": "Dalton"
+              },
+              {
+                "left": "Fuerzas opuestas repartidas",
+                "right": "Thomson"
+              },
+              {
+                "left": "Poder concentrado en un centro",
+                "right": "Rutherford"
+              },
+              {
+                "left": "Niveles fijos: 5%, 20%, 100%",
+                "right": "Bohr"
+              }
+            ],
+            "completion_feedback": "Del átomo macizo de **Dalton** al **cuántico** de orbitales, pasando por **Thomson**, **Rutherford** (núcleo) y **Bohr** (niveles de energía)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Juego de Lamine",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Lámina de oro con rebotes",
+                "right": "Rutherford"
+              },
+              {
+                "left": "Pierna izquierda como eje",
+                "right": "Núcleo"
+              },
+              {
+                "left": "Carriles fijos",
+                "right": "Órbitas de Bohr"
+              },
+              {
+                "left": "Zonas donde es probable verlo",
+                "right": "Orbitales cuánticos"
+              }
+            ],
+            "completion_feedback": "Del átomo macizo de **Dalton** al **cuántico** de orbitales, pasando por **Thomson**, **Rutherford** (núcleo) y **Bohr** (niveles de energía)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Eras de IVE",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Debut como bloque uniforme",
+                "right": "Dalton"
+              },
+              {
+                "left": "Wonyoung como centro",
+                "right": "Núcleo de Rutherford"
+              },
+              {
+                "left": "Posiciones fijas en la coreo",
+                "right": "Niveles de Bohr"
+              },
+              {
+                "left": "No sabes dónde aparecerá",
+                "right": "Modelo cuántico"
+              }
+            ],
+            "completion_feedback": "Del átomo macizo de **Dalton** al **cuántico** de orbitales, pasando por **Thomson**, **Rutherford** (núcleo) y **Bohr** (niveles de energía)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Consolas",
+            "right_label": "Modelo",
+            "pairs": [
+              {
+                "left": "Masa positiva con chispas negativas",
+                "right": "Thomson"
+              },
+              {
+                "left": "Órbitas fijas de energía",
+                "right": "Bohr, 1913"
+              },
+              {
+                "left": "Bloque de píxeles macizo",
+                "right": "Dalton"
+              },
+              {
+                "left": "Solo zonas de probabilidad",
+                "right": "Mecánica cuántica"
+              }
+            ],
+            "completion_feedback": "Del átomo macizo de **Dalton** al **cuántico** de orbitales, pasando por **Thomson**, **Rutherford** (núcleo) y **Bohr** (niveles de energía)."
+          }
+        }
+      }
+    },
+    "estructura-del-atomo-particulas-subatomicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas las partículas del sodio (Z = 11, A = 23)",
+        "steps": [
+          "Lee Z: hay 11 protones",
+          "Átomo neutro: hay 11 electrones",
+          "Resta A − Z: 23 − 11",
+          "Resultado: 12 neutrones"
+        ],
+        "completion_feedback": "**Z** da los protones (y los electrones si es neutro); los **neutrones** siempre salen de A − Z. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chakra de Naruto",
+            "right_label": "Partículas",
+            "pairs": [
+              {
+                "left": "Litio: Z = 3",
+                "right": "3 protones"
+              },
+              {
+                "left": "Litio neutro",
+                "right": "3 electrones"
+              },
+              {
+                "left": "Litio: A − Z = 7 − 3",
+                "right": "4 neutrones"
+              },
+              {
+                "left": "Donde se concentra la masa",
+                "right": "El núcleo"
+              }
+            ],
+            "completion_feedback": "El **núcleo** tiene protones (+) y neutrones (sin carga); los **electrones** (−) están afuera. Z = protones y A = protones + neutrones."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Líneas del equipo",
+            "right_label": "Partículas",
+            "pairs": [
+              {
+                "left": "Aluminio: Z = 13",
+                "right": "13 protones"
+              },
+              {
+                "left": "Aluminio: A − Z = 27 − 13",
+                "right": "14 neutrones"
+              },
+              {
+                "left": "Protones + neutrones",
+                "right": "27, el número de masa"
+              },
+              {
+                "left": "Carga del electrón",
+                "right": "Negativa"
+              }
+            ],
+            "completion_feedback": "El **núcleo** tiene protones (+) y neutrones (sin carga); los **electrones** (−) están afuera. Z = protones y A = protones + neutrones."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Unidades de SVT",
+            "right_label": "Partículas",
+            "pairs": [
+              {
+                "left": "Nitrógeno: Z = 7",
+                "right": "7 protones"
+              },
+              {
+                "left": "Neutrones del nitrógeno-14",
+                "right": "7"
+              },
+              {
+                "left": "Neutrones del nitrógeno-15",
+                "right": "8"
+              },
+              {
+                "left": "Partícula sin carga",
+                "right": "Neutrón"
+              }
+            ],
+            "completion_feedback": "El **núcleo** tiene protones (+) y neutrones (sin carga); los **electrones** (−) están afuera. Z = protones y A = protones + neutrones."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cartas de FC 26",
+            "right_label": "Partículas",
+            "pairs": [
+              {
+                "left": "Carbono: A = 12, Z = 6",
+                "right": "6 neutrones"
+              },
+              {
+                "left": "Oxígeno: Z = 8",
+                "right": "8 protones"
+              },
+              {
+                "left": "Oxígeno neutro",
+                "right": "8 electrones"
+              },
+              {
+                "left": "Partícula con carga positiva",
+                "right": "Protón"
+              }
+            ],
+            "completion_feedback": "El **núcleo** tiene protones (+) y neutrones (sin carga); los **electrones** (−) están afuera. Z = protones y A = protones + neutrones."
+          }
+        }
+      }
+    },
+    "configuracion-electronica": {
+      "order_steps": {
+        "prompt": "Ordena cómo escribes la configuración del sodio (Z = 11)",
+        "steps": [
+          "Llena 1s con 2 electrones: quedan 9",
+          "Llena 2s con 2: quedan 7",
+          "Llena 2p con 6: queda 1",
+          "Pon el último en 3s: 1s² 2s² 2p⁶ 3s¹"
+        ],
+        "completion_feedback": "Siempre se llena **del subnivel de menor energía al de mayor**, sin saltarse lugares. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sombras de Jinwoo",
+            "right_label": "Configuración",
+            "pairs": [
+              {
+                "left": "Cloro, Z = 17",
+                "right": "1s² 2s² 2p⁶ 3s² 3p⁵"
+              },
+              {
+                "left": "Capacidad de un subnivel s",
+                "right": "2 electrones"
+              },
+              {
+                "left": "Capacidad de un subnivel p",
+                "right": "6 electrones"
+              },
+              {
+                "left": "Lo que le falta al cloro",
+                "right": "1 electrón"
+              }
+            ],
+            "completion_feedback": "La **configuración electrónica** acomoda los electrones por energía: 1s, 2s, 2p, 3s, 3p…, con 2 en cada s y 6 en cada p."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Banca del Madrid",
+            "right_label": "Configuración",
+            "pairs": [
+              {
+                "left": "Aluminio, Z = 13",
+                "right": "1s² 2s² 2p⁶ 3s² 3p¹"
+              },
+              {
+                "left": "Valencia del aluminio",
+                "right": "3 electrones"
+              },
+              {
+                "left": "Último subnivel del aluminio",
+                "right": "3p¹"
+              },
+              {
+                "left": "Regla para llenar",
+                "right": "De menor a mayor energía"
+              }
+            ],
+            "completion_feedback": "La **configuración electrónica** acomoda los electrones por energía: 1s, 2s, 2p, 3s, 3p…, con 2 en cada s y 6 en cada p."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Zonas de concierto",
+            "right_label": "Configuración",
+            "pairs": [
+              {
+                "left": "Flúor, Z = 9",
+                "right": "1s² 2s² 2p⁵"
+              },
+              {
+                "left": "Zona SoundCheck",
+                "right": "1s: caben 2"
+              },
+              {
+                "left": "Subnivel 2p del flúor",
+                "right": "Le falta 1"
+              },
+              {
+                "left": "Comprobación del flúor",
+                "right": "2 + 2 + 5 = 9"
+              }
+            ],
+            "completion_feedback": "La **configuración electrónica** acomoda los electrones por energía: 1s, 2s, 2p, 3s, 3p…, con 2 en cada s y 6 en cada p."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Gradas del tycoon",
+            "right_label": "Configuración",
+            "pairs": [
+              {
+                "left": "Oxígeno, Z = 8",
+                "right": "1s² 2s² 2p⁴"
+              },
+              {
+                "left": "Primer nivel",
+                "right": "2 lugares"
+              },
+              {
+                "left": "Segundo nivel",
+                "right": "8 lugares: 2s y 2p"
+              },
+              {
+                "left": "Tercer nivel",
+                "right": "18 lugares"
+              }
+            ],
+            "completion_feedback": "La **configuración electrónica** acomoda los electrones por energía: 1s, 2s, 2p, 3s, 3p…, con 2 en cada s y 6 en cada p."
+          }
+        }
+      }
+    },
+    "tabla-periodica-y-propiedades-periodicas": {
+      "order_steps": {
+        "prompt": "Ordena cómo ubicas el magnesio (Z = 12) en la tabla",
+        "steps": [
+          "Escribe su configuración: 1s² 2s² 2p⁶ 3s²",
+          "Ubica el último nivel ocupado: 3, así que periodo 3",
+          "Cuenta los electrones de valencia: 2",
+          "Concluye: grupo 2, metales alcalinotérreos"
+        ],
+        "completion_feedback": "La **configuración** te dice el periodo (último nivel) y el grupo (electrones de valencia). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Grados de JJK",
+            "right_label": "Tabla periódica",
+            "pairs": [
+              {
+                "left": "Mismo grado, poder parecido",
+                "right": "Mismo grupo"
+              },
+              {
+                "left": "Sodio contra cloro",
+                "right": "Cl: mayor ionización"
+              },
+              {
+                "left": "Hacia la derecha del periodo",
+                "right": "Sube la ionización"
+              },
+              {
+                "left": "Excepción del aluminio",
+                "right": "Menor que el magnesio"
+              }
+            ],
+            "completion_feedback": "En la **tabla periódica** las filas son periodos y las columnas grupos; los del mismo grupo se parecen y las propiedades siguen un patrón."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Posiciones",
+            "right_label": "Tabla periódica",
+            "pairs": [
+              {
+                "left": "Cloro, grupo 17",
+                "right": "Halógeno"
+              },
+              {
+                "left": "Electrones de valencia del cloro",
+                "right": "7"
+              },
+              {
+                "left": "Lo que tiende a hacer el cloro",
+                "right": "Ganar 1 electrón"
+              },
+              {
+                "left": "Sodio + cloro",
+                "right": "NaCl"
+              }
+            ],
+            "completion_feedback": "En la **tabla periódica** las filas son periodos y las columnas grupos; los del mismo grupo se parecen y las propiedades siguen un patrón."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Generaciones",
+            "right_label": "Tabla periódica",
+            "pairs": [
+              {
+                "left": "Filas de la tabla",
+                "right": "Periodos"
+              },
+              {
+                "left": "Columnas de la tabla",
+                "right": "Grupos"
+              },
+              {
+                "left": "Litio contra flúor",
+                "right": "Litio: mayor radio"
+              },
+              {
+                "left": "Radio hacia la derecha",
+                "right": "Disminuye"
+              }
+            ],
+            "completion_feedback": "En la **tabla periódica** las filas son periodos y las columnas grupos; los del mismo grupo se parecen y las propiedades siguen un patrón."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Catálogo Brawl",
+            "right_label": "Tabla periódica",
+            "pairs": [
+              {
+                "left": "Sodio: termina en 3s¹",
+                "right": "Periodo 3, grupo 1"
+              },
+              {
+                "left": "Potasio: termina en 4s¹",
+                "right": "Periodo 4, grupo 1"
+              },
+              {
+                "left": "Litio, sodio y potasio",
+                "right": "Metales alcalinos"
+              },
+              {
+                "left": "Un electrón de valencia",
+                "right": "Lo pierden fácil"
+              }
+            ],
+            "completion_feedback": "En la **tabla periódica** las filas son periodos y las columnas grupos; los del mismo grupo se parecen y las propiedades siguen un patrón."
+          }
+        }
+      }
+    },
+    "enlaces-quimicos-ionico-covalente-metalico": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificas el enlace del KCl",
+        "steps": [
+          "Identifica los elementos: K y Cl",
+          "Clasifícalos: K es metal y Cl no metal",
+          "Metal + no metal: hay transferencia de electrones",
+          "Se forman K⁺ y Cl⁻: el enlace es iónico"
+        ],
+        "completion_feedback": "Basta saber si son **metales o no metales**: metal + no metal es iónico, no metales es covalente, metales es metálico. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Quirks de MHA",
+            "right_label": "Enlace",
+            "pairs": [
+              {
+                "left": "All Might cede todo su Quirk",
+                "right": "Iónico"
+              },
+              {
+                "left": "Ataque combinado en pareja",
+                "right": "Covalente"
+              },
+              {
+                "left": "Poder que fluye en la clase",
+                "right": "Metálico"
+              },
+              {
+                "left": "Na⁺ y Cl⁻",
+                "right": "Iones que se atraen"
+              }
+            ],
+            "completion_feedback": "Enlace **iónico**: un metal cede electrones a un no metal. **Covalente**: no metales comparten. **Metálico**: mar de electrones entre metales."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Juego del Madrid",
+            "right_label": "Enlace",
+            "pairs": [
+              {
+                "left": "Pase definitivo",
+                "right": "Iónico"
+              },
+              {
+                "left": "Pared entre dos",
+                "right": "Covalente"
+              },
+              {
+                "left": "Tiki-taka de todo el equipo",
+                "right": "Metálico"
+              },
+              {
+                "left": "Hierro de la portería",
+                "right": "Mar de electrones"
+              }
+            ],
+            "completion_feedback": "Enlace **iónico**: un metal cede electrones a un no metal. **Covalente**: no metales comparten. **Metálico**: mar de electrones entre metales."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Colaboraciones",
+            "right_label": "Enlace",
+            "pairs": [
+              {
+                "left": "Ceder una canción completa",
+                "right": "Iónico"
+              },
+              {
+                "left": "Dueto parejo",
+                "right": "Covalente"
+              },
+              {
+                "left": "Proyecto colectivo de HYBE",
+                "right": "Metálico"
+              },
+              {
+                "left": "Óxido de magnesio",
+                "right": "Mg²⁺ y O²⁻"
+              }
+            ],
+            "completion_feedback": "Enlace **iónico**: un metal cede electrones a un no metal. **Covalente**: no metales comparten. **Metálico**: mar de electrones entre metales."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Equipo Valorant",
+            "right_label": "Enlace",
+            "pairs": [
+              {
+                "left": "Regalar un arma",
+                "right": "Iónico"
+              },
+              {
+                "left": "Dos agentes sostienen un sitio",
+                "right": "Covalente"
+              },
+              {
+                "left": "Fondo común de créditos",
+                "right": "Metálico"
+              },
+              {
+                "left": "Agua, H₂O",
+                "right": "Comparten electrones"
+              }
+            ],
+            "completion_feedback": "Enlace **iónico**: un metal cede electrones a un no metal. **Covalente**: no metales comparten. **Metálico**: mar de electrones entre metales."
+          }
+        }
+      }
+    },
+    "nomenclatura-de-compuestos-inorganicos": {
+      "order_steps": {
+        "prompt": "Ordena cómo nombras el FeCl₃",
+        "steps": [
+          "Identifica: hierro (metal) y cloro (no metal)",
+          "Sin oxígeno es sal binaria: el cloro pasa a cloruro",
+          "Calcula la valencia del hierro: 3 cloros dan +3",
+          "Nombre final: cloruro de hierro (III)"
+        ],
+        "completion_feedback": "El número romano solo va cuando el metal tiene **varias valencias**, como el hierro. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Respiraciones",
+            "right_label": "Nombre",
+            "pairs": [
+              {
+                "left": "Ca(OH)₂",
+                "right": "Hidróxido de calcio"
+              },
+              {
+                "left": "Fe(OH)₂",
+                "right": "Hidróxido de hierro (II)"
+              },
+              {
+                "left": "Grupo OH en la fórmula",
+                "right": "Es un hidróxido"
+              },
+              {
+                "left": "Calcio, valencia única",
+                "right": "Sin número romano"
+              }
+            ],
+            "completion_feedback": "La **nomenclatura** sigue reglas fijas: óxidos, hidróxidos (OH), sales binarias (-uro) e hidrácidos (ácido …hídrico)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Dorsales",
+            "right_label": "Nombre",
+            "pairs": [
+              {
+                "left": "KBr",
+                "right": "Bromuro de potasio"
+              },
+              {
+                "left": "FeCl₂",
+                "right": "Cloruro de hierro (II)"
+              },
+              {
+                "left": "KI",
+                "right": "Yoduro de potasio"
+              },
+              {
+                "left": "CaF₂",
+                "right": "Fluoruro de calcio"
+              }
+            ],
+            "completion_feedback": "La **nomenclatura** sigue reglas fijas: óxidos, hidróxidos (OH), sales binarias (-uro) e hidrácidos (ácido …hídrico)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Subunidades",
+            "right_label": "Nombre",
+            "pairs": [
+              {
+                "left": "HF en agua",
+                "right": "Ácido fluorhídrico"
+              },
+              {
+                "left": "HBr en agua",
+                "right": "Ácido bromhídrico"
+              },
+              {
+                "left": "HCl en agua",
+                "right": "Ácido clorhídrico"
+              },
+              {
+                "left": "Terminación de los hidrácidos",
+                "right": "-hídrico"
+              }
+            ],
+            "completion_feedback": "La **nomenclatura** sigue reglas fijas: óxidos, hidróxidos (OH), sales binarias (-uro) e hidrácidos (ácido …hídrico)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Objetos Genshin",
+            "right_label": "Nombre",
+            "pairs": [
+              {
+                "left": "CaO",
+                "right": "Óxido de calcio"
+              },
+              {
+                "left": "Fe₂O₃",
+                "right": "Óxido de hierro (III)"
+              },
+              {
+                "left": "Valencia del Fe en Fe₂O₃",
+                "right": "+3"
+              },
+              {
+                "left": "Metal + oxígeno",
+                "right": "Óxido metálico"
+              }
+            ],
+            "completion_feedback": "La **nomenclatura** sigue reglas fijas: óxidos, hidróxidos (OH), sales binarias (-uro) e hidrácidos (ácido …hídrico)."
+          }
+        }
+      }
+    }
+  }
+}
