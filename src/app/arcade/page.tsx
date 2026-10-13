@@ -36,6 +36,12 @@ export const metadata: Metadata = {
   },
 }
 
+/**
+ * s48 — pasas.mx/arcade (sin ?materia=) es "Verdadero o mentira": el juego de
+ * los reels y las stories diarios. Si al día le faltan frases, sale
+ * "¿Cuál sobra?". El anuncio actual (/arcade?materia=historia) sigue en
+ * "¿Cuál sobra?" para la prueba A/B; el de vom lleva &juego=vom.
+ */
 export default function ArcadePage() {
-  return <ContenidoArcade />
+  return <ContenidoArcade juego="vom" />
 }

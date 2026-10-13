@@ -15,9 +15,30 @@ function checkRound(r, name, { needsAnswer = true } = {}) {
   if (needsAnswer && ![0, 1, 2, 3].includes(r.sobra)) fail(`"${name}.sobra" debe ser 0, 1, 2 o 3`);
 }
 
+// s48 — Ronda de "Verdadero o mentira": una frase y si es verdad o mentira.
+function checkFrase(r, name, { needsMotivo = false } = {}) {
+  if (!r) fail(`falta "${name}"`);
+  if (typeof r.frase !== 'string' || r.frase.trim().length < 10) fail(`"${name}.frase" debe ser una frase de al menos 10 letras`);
+  if (typeof r.verdad !== 'boolean') fail(`"${name}.verdad" debe ser true o false`);
+  if (needsMotivo && !r.motivo) fail(`"${name}.motivo" es obligatorio (por qué es verdad o mentira)`);
+}
+
 export function validate(data, parte) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(data.fecha || '')) fail('"fecha" debe ser AAAA-MM-DD');
   if (!Number.isInteger(data.numero) || data.numero < 1) fail('"numero" debe ser un entero desde 1');
+  if (data.juego === 'vom') {
+    if (parte === 'manana') {
+      checkFrase(data.hoy, 'hoy');
+      checkFrase(data.extra, 'extra', { needsMotivo: true });
+      if (data.ayer) checkFrase(data.ayer, 'ayer', { needsMotivo: true });
+      if (data.extra.frase === data.hoy.frase) fail('la frase extra de la story no puede ser la misma del reto');
+    }
+    if (parte === 'noche' && !data.sinResultados) {
+      const r = data.resultados;
+      if (!r || typeof r.porcentaje !== 'number' || !r.tema) fail('"resultados" necesita "porcentaje" y "tema"');
+    }
+    return data;
+  }
   if (parte === 'manana') {
     checkRound(data.hoy, 'hoy');
     checkRound(data.extra, 'extra');
@@ -159,6 +180,99 @@ async function rondaExtra(fecha, excluir, materia, log) {
   return { opciones: r.options, sobra: r.odd_index, motivo: r.explanation };
 }
 
+// ─── s48 · "Verdadero o mentira" ─────────────────────────────────────
+// Desde el 13 oct el reto que se promociona es "Verdadero o mentira": el que
+// sale en pasas.mx/arcade. Mismos temas que "¿Cuál sobra?" ese día
+// (migración 062). Si al día le faltan frases, el reel y las stories salen de
+// "¿Cuál sobra?", igual que la página.
+
+async function vomReto(fecha) {
+  const r = await api('rpc/arcade_vom_reto', { method: 'POST', body: { p_date: fecha } });
+  return r && Array.isArray(r.rounds) && r.rounds.length === 5 ? r : null;
+}
+
+// El reto de vom de una fecha SIN armarlo (para "ayer": si no hubo, no se inventa).
+async function vomExistente(fecha) {
+  const rows = await api(`arcade_vom_challenges?challenge_date=eq.${fecha}&select=round_ids`);
+  if (!rows[0]) return null;
+  const ids = rows[0].round_ids;
+  const fr = await api(`arcade_vom_rounds?id=in.(${ids.join(',')})&select=id,statement,is_true,explanation`);
+  const m = new Map(fr.map(f => [f.id, f]));
+  return ids.map(id => m.get(id));
+}
+
+// Frase para el sticker de quiz: revela la respuesta, así que sale de un reto
+// de vom YA pasado; si todavía no hay, una aprobada que no esté en ningún reto.
+// De la materia del día cuando se puede.
+async function fraseExtra(fecha, excluir, materia, log) {
+  const pasados = (await api(`arcade_vom_challenges?challenge_date=lt.${fecha}&challenge_date=gte.${addDays(fecha, -180)}&select=round_ids`)).flatMap(c => c.round_ids);
+  const usadasEnRetos = new Set((await api('arcade_vom_challenges?select=round_ids')).flatMap(c => c.round_ids));
+  const banco = [];
+  for (let desde = 0; ; desde += 1000) {
+    const rows = await api(`arcade_vom_rounds?status=eq.aprobada&select=id,statement,is_true,explanation,topic:topics(subject:subjects(slug))&order=id&limit=1000&offset=${desde}`);
+    banco.push(...rows);
+    if (rows.length < 1000) break;
+  }
+  const deMateria = f => materia === 'papas' || materiaDeSlug(f.topic?.subject?.slug) === materia;
+  const libres = banco.filter(f => !excluir.has(f.id));
+  const yaVistas = libres.filter(f => pasados.includes(f.id));
+  const sinUsar = libres.filter(f => !usadasEnRetos.has(f.id));
+  const opciones = [
+    [yaVistas.filter(deMateria), null],
+    [sinUsar.filter(deMateria), 'aún no hay retos pasados de esta materia; la frase extra sale del banco sin usar'],
+    [yaVistas, 'no hay frases de esta materia para la story; sale de otra materia'],
+    [sinUsar, 'no hay frases de esta materia para la story; sale de otra materia, del banco sin usar'],
+  ];
+  const [lista, aviso] = opciones.find(([x]) => x.length) || [[], null];
+  if (!lista.length) return null;
+  if (aviso) log(`  aviso: ${aviso}`);
+  const f = azar(lista);
+  return { frase: f.statement, verdad: f.is_true, motivo: f.explanation };
+}
+
+async function loadVom(fecha, parte, base, log) {
+  // En la noche no se arma nada: los resultados son del juego que se jugó.
+  if (parte === 'noche') {
+    const hubo = await api(`arcade_vom_challenges?challenge_date=eq.${fecha}&select=challenge_date`);
+    if (!hubo.length) return null;
+  }
+  const v = await vomReto(fecha);
+  if (!v) return null;
+  const rondasDia = v.rounds;
+  if (parte === 'noche') {
+    const cf = await api('rpc/arcade_vom_cifras', { method: 'POST', body: { p_date: fecha } });
+    const jugadores = cf?.players ?? 0;
+    if (jugadores < MIN_JUGADORES) return { ...base, juego: 'vom', sinResultados: true, jugadores };
+    let peor = -1;
+    cf.per_round.forEach((p, i) => { if (p !== null && (peor < 0 || p < cf.per_round[peor])) peor = i; });
+    return { ...base, juego: 'vom', resultados: { porcentaje: Number(cf.per_round[peor]), tema: rondasDia[peor].topic, jugadores } };
+  }
+  const r1 = rondasDia[0];
+  const extra = await fraseExtra(fecha, new Set(rondasDia.map(r => r.id)), base.materia_key, log);
+  if (!extra) return null;
+  const data = {
+    ...base,
+    juego: 'vom',
+    hoy: { frase: r1.statement, verdad: r1.odd === 0, tema: r1.topic, materia_key: r1.materia },
+    ayer: null,
+    extra,
+  };
+  const prev = await vomExistente(addDays(fecha, -1));
+  const prevC = prev && (await reto(addDays(fecha, -1)));
+  if (prev && prev[0] && prevC) {
+    const cf = await api('rpc/arcade_vom_cifras', { method: 'POST', body: { p_date: prevC.challenge_date } });
+    const pct = cf && cf.players >= MIN_JUGADORES ? cf.per_round[0] : null;
+    data.ayer = {
+      numero: prevC.number,
+      frase: prev[0].statement,
+      verdad: prev[0].is_true,
+      motivo: prev[0].explanation,
+      porcentaje: pct === null ? null : Number(pct),
+    };
+  }
+  return data;
+}
+
 export async function loadFromSupabase(fecha, parte, { hoyMexico, log = () => {} } = {}) {
   let c = await reto(fecha);
   if (!c && fecha === hoyMexico) {
@@ -169,6 +283,13 @@ export async function loadFromSupabase(fecha, parte, { hoyMexico, log = () => {}
 
   const m = MATERIAS[c.materia] || MATERIAS.historia;
   const base = { fecha: c.challenge_date, numero: c.number, materia_key: MATERIAS[c.materia] ? c.materia : 'historia', materia: m.materia, materia_corta: m.corta, reto_titulo: m.titulo };
+
+  const vom = await loadVom(fecha, parte, base, log);
+  if (vom) {
+    log('  juego: Verdadero o mentira');
+    return vom;
+  }
+  log('  juego: ¿Cuál sobra? (al día le faltan frases de Verdadero o mentira)');
   const mapa = await rondas(c.round_ids);
   const delDia = c.round_ids.map(id => mapa.get(id));
   if (delDia.some(r => !r)) throw new Error(`El reto #${c.number} apunta a una ronda que ya no existe`);

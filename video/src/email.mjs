@@ -38,6 +38,20 @@ function etiqueta(data) {
 
 export function caption(data) {
   const papas = data.materia_key === 'papas';
+  // s48: "Verdadero o mentira", el reto que sale en pasas.mx/arcade.
+  if (data.juego === 'vom') {
+    return [
+      papas
+        ? `Reto para papás #${data.numero}. ¿Verdad o mentira? Comenta tu respuesta.`
+        : `${tituloDelDia(data)} · reto #${data.numero}. ¿Verdad o mentira? Comenta tu respuesta.`,
+      papas
+        ? 'Las otras 4 frases, una de cada materia, están en pasas.mx/arcade (link en la bio). Juégalo con tus hijos.'
+        : 'Las otras 4 frases están en pasas.mx/arcade (link en la bio).',
+      'Mañana te decimos si era verdad o mentira.',
+      '',
+      TAGS[data.materia_key] || TAGS.historia,
+    ].join('\n');
+  }
   return [
     papas
       ? `Reto para papás #${data.numero}. ¿Sabes más que un alumno de secundaria? ¿Cuál sobra? Comenta tu respuesta.`
@@ -57,6 +71,39 @@ const h = 'font-size:16px;margin:24px 0 4px';
 export function buildEmail(data, parte) {
   const n = data.numero;
   const dia = fechaLarga(data.fecha);
+  if (parte === 'manana' && data.juego === 'vom') {
+    const ex = data.extra;
+    const resp = ex.verdad ? 'Verdad' : 'Mentira';
+    return {
+      subject: `${etiqueta(data)} · reel y stories para hoy, ${dia}`,
+      html: `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
+<p>Todo listo para el <b>reto #${n}</b>, ${esc(tituloDelDia(data).replace(/^R/, 'r'))} (${esc(dia)}). Hoy el juego es <b>¿Verdadero o mentira?</b>, el mismo que sale en pasas.mx/arcade. Van cinco archivos adjuntos.</p>
+
+<h3 style="${h}">1. Reel · en la mañana, en Instagram y TikTok</h3>
+<p>Archivo <b>reel.mp4</b>. Al subirlo, agrégale un sonido que esté en tendencia. Como portada usa <b>reel-portada.png</b>: en Instagram, <i>Editar portada → Agregar desde la galería</i>; en TikTok, <i>Editar portada → Subir</i>. Texto para copiar:</p>
+<pre style="${box}">${esc(caption(data))}</pre>
+<p style="color:#6b6485;font-size:14px">La frase del reel es <b>${data.hoy.verdad ? 'verdad' : 'mentira'}</b>. Mañana la respuesta sale al inicio del reel.</p>
+
+<h3 style="${h}">2. Story · 8:00 AM</h3>
+<p>Archivo <b>story-1-aviso.png</b>. Agrega el sticker de <b>link</b> con <b>pasas.mx/arcade</b> en el espacio de abajo, bajo la flecha.</p>
+
+<h3 style="${h}">3. Story · 2:00 PM · Instagram</h3>
+<p>Archivo <b>story-2-ronda-extra.png</b>. En el espacio vacío agrega el sticker de <b>quiz</b> con dos opciones y marca la correcta (se pone verde):</p>
+<pre style="${box}">Pregunta: ¿Verdad o mentira?
+Verdad${ex.verdad ? '   ← correcta' : ''}
+Mentira${ex.verdad ? '' : '   ← correcta'}</pre>
+<p style="color:#6b6485;font-size:14px">Por si alguien pregunta: ${esc(ex.motivo)}</p>
+
+<h3 style="${h}">4. Story · 2:00 PM · TikTok</h3>
+<p>Archivo <b>story-2-ronda-extra-tiktok.png</b>. Ya trae la frase y pide responder en los comentarios; no necesita sticker. Texto para copiar:</p>
+<pre style="${box}">¿Verdad o mentira? Comenta 👇
+Mañana te decimos.</pre>
+<p style="color:#6b6485;font-size:14px">Mañana responde en los comentarios: es <b>${resp}</b>. ${esc(ex.motivo)}</p>
+
+<p style="margin-top:28px;color:#6b6485;font-size:13px">La story de resultados llega en otro correo a las 8:30 PM.</p>
+</div>`,
+    };
+  }
   if (parte === 'manana') {
     const ex = data.extra;
     return {

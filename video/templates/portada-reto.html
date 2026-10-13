@@ -58,6 +58,15 @@ window.setup = function (data) {
   buildFondo($('fondo'), data.fondo || tema.fondo, -160);
   frame.style.setProperty('--m', tema.c); frame.style.setProperty('--ms', tema.sobre);
   $('neon').style.setProperty('--c', tema.c);
+  // s48: "Verdadero o mentira" lleva el verde azulado de pasas.mx/arcade y su nombre.
+  if (data.juego === 'vom') {
+    frame.style.setProperty('--m', '#0d9488'); frame.style.setProperty('--ms', '#ffffff');
+    $('neon').style.setProperty('--c', '#0d9488');
+    var tg = document.createElement('div'); tg.className = 'tag'; tg.textContent = '¿Verdadero o mentira?';
+    tg.style.top = '296px'; tg.style.background = '#0d9488'; tg.style.boxShadow = '0 0 3cqw rgba(13,148,136,.6)';
+    frame.appendChild(tg);
+    $('title').style.top = '392px';
+  }
   $('num').textContent = '#' + n;
   if (String(n).length > 2) $('num').style.fontSize = '8.5cqw';
   $('t1').textContent = tema.arriba;
