@@ -423,3 +423,19 @@
 .hobbyNota { font-size: 13px; font-weight: 700; color: var(--dim); text-align: center; }
 .bridgeInner h3 { margin: 0; font-size: 22px; line-height: 1.2; }
 .bridgeInner p { margin: 0; }
+
+/* s47 · "Verdadero o mentira": la frase manda; dos botones grandes. */
+.frase {
+  margin-top: 10px;
+  padding: 18px 16px;
+  border-radius: var(--r-card);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  color: var(--fg) !important;
+  font-size: 20px !important;
+  font-weight: 800;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+.optionsVom .opt { min-height: 72px; }
+.optVom { gap: 8px; font-size: 19px; }

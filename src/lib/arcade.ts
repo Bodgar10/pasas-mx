@@ -18,7 +18,10 @@ export type RondaArcade = {
   options: string[]
   odd: number
   explanation: string
-  kind: 'text' | 'year'
+  /** 'vom' (s47): ronda de "Verdadero o mentira"; options = ['Verdad', 'Mentira']. */
+  kind: 'text' | 'year' | 'vom'
+  /** Solo en 'vom': la frase que se juzga. */
+  statement?: string
   topic: string
   topic_slug: string
   subject_slug: string
@@ -147,11 +150,27 @@ export function leerCodigo(codigo: string): { numero: number; resultados: boolea
  * `sitio` va con protocolo (SITIO de lib/seo): WhatsApp e Instagram solo
  * vuelven clicable de forma confiable un link con https://.
  */
-export function textoCompartir(numero: number, resultados: boolean[], sitio: string, materia?: string | null): string {
+export function textoCompartir(
+  numero: number,
+  resultados: boolean[],
+  sitio: string,
+  materia?: string | null,
+  juego: JuegoArcade = 'sobra'
+): string {
   const cuadros = resultados.map((ok) => (ok ? '🟩' : '🟥')).join('')
   const n = resultados.filter(Boolean).length
-  const link = `${sitio.replace(/\/+$/, '')}/arcade/r/${codigoResultado(numero, resultados)}`
-  return `¿Cuál sobra? #${numero} · ${configMateria(materia).corto}\n${cuadros}  ${n}/${RONDAS_POR_RETO}\n¿Tú cuántas sacas? ${link}`
+  const base = sitio.replace(/\/+$/, '')
+  // s47: el link del resultado (/arcade/r/…) pinta "¿Cuál sobra?"; el de
+  // Verdadero o mentira invita a jugar ese mismo juego.
+  const link = juego === 'vom' ? `${base}/arcade?juego=vom` : `${base}/arcade/r/${codigoResultado(numero, resultados)}`
+  return `${NOMBRE_JUEGO[juego]} #${numero} · ${configMateria(materia).corto}\n${cuadros}  ${n}/${RONDAS_POR_RETO}\n¿Tú cuántas sacas? ${link}`
+}
+
+/** s47 — Los dos juegos del reto diario (prueba A/B por anuncio). */
+export type JuegoArcade = 'sobra' | 'vom'
+export const NOMBRE_JUEGO: Record<JuegoArcade, string> = {
+  sobra: '¿Cuál sobra?',
+  vom: '¿Verdadero o mentira?',
 }
 
 /**

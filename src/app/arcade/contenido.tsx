@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import { leerRetoDeHoy, leerRetoDeMateria } from '@/lib/arcade-server'
+import { leerRetoDeHoy, leerRetoDeMateria, leerRetoVom } from '@/lib/arcade-server'
 import { copyCTA, getPromoPorDefecto, leyendaPromo, microcopyPromo } from '@/lib/promos'
 import { SITIO } from '@/lib/seo'
-import type { OrigenArcade } from '@/lib/arcade'
+import type { JuegoArcade, OrigenArcade } from '@/lib/arcade'
 import ArcadeClient, { type OfertaPapa, type RetoDeHoy } from './arcade-client'
 import s from './arcade.module.css'
 
@@ -18,14 +18,20 @@ import s from './arcade.module.css'
 export default async function ContenidoArcade({
   origenRuta = null,
   materia = null,
-}: { origenRuta?: OrigenArcade | null; materia?: string | null } = {}) {
+  juego = 'sobra',
+}: { origenRuta?: OrigenArcade | null; materia?: string | null; juego?: JuegoArcade } = {}) {
   const [hoy, deMateria, promo] = await Promise.all([
     leerRetoDeHoy(),
     materia ? leerRetoDeMateria(materia) : null,
     getPromoPorDefecto(),
   ])
   const usarMateria = !!deMateria?.rounds?.length && deMateria.date !== hoy?.date
-  const reto = usarMateria ? deMateria : hoy
+  const retoSobra = usarMateria ? deMateria : hoy
+  // s47 — "Verdadero o mentira" del MISMO día y los mismos temas. Si a algún
+  // tema le faltan frases, se juega "¿Cuál sobra?" (el jugador no nota nada).
+  const retoVom = juego === 'vom' && retoSobra?.date ? await leerRetoVom(retoSobra.date) : null
+  const juegoReal: JuegoArcade = retoVom ? 'vom' : 'sobra'
+  const reto = retoVom ?? retoSobra
   const retoDeHoy: RetoDeHoy | null =
     usarMateria && hoy?.rounds?.length ? { number: hoy.number, materia: hoy.materia ?? null } : null
 
@@ -71,6 +77,7 @@ export default async function ContenidoArcade({
       origenRuta={origenRuta}
       retoDeHoy={retoDeHoy}
       ofertaPapa={ofertaPapa}
+      juego={juegoReal}
     />
   )
 }

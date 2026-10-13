@@ -85,3 +85,43 @@ export async function registrarPartida(
   }
   return (data as CifrasArcade | null) ?? null
 }
+
+/**
+ * s47 — "Verdadero o mentira" de una fecha: mismos 5 temas que el reto de
+ * "¿Cuál sobra?" de ese día (migración 062). Misma forma que RetoArcade, con
+ * options ['Verdad', 'Mentira'] y odd 0/1. null si a algún tema le faltan
+ * frases aprobadas: la página cae entonces a "¿Cuál sobra?".
+ */
+export async function leerRetoVom(fecha: string): Promise<RetoArcade | null> {
+  const { data, error } = await admin().rpc('arcade_vom_reto', { p_date: fecha })
+  if (error) {
+    console.error('[arcade] arcade_vom_reto falló:', error)
+    return null
+  }
+  const reto = (data as RetoArcade | null) ?? null
+  return reto?.rounds?.length === 5 ? reto : null
+}
+
+/** Partida de "Verdadero o mentira" (picks 0 = Verdad, 1 = Mentira). */
+export async function registrarPartidaVom(
+  fecha: string,
+  anonId: string,
+  picks: number[],
+  origen: string | null = null,
+  atribucion: AtribucionServidor | null = null
+): Promise<CifrasArcade | null> {
+  const { data, error } = await admin().rpc('arcade_vom_registrar', {
+    p_date: fecha,
+    p_anon_id: anonId,
+    p_picks: picks,
+    p_origen: origen,
+    p_canal: atribucion?.canal ?? null,
+    p_utm_source: atribucion?.utm_source ?? null,
+    p_utm_campaign: atribucion?.utm_campaign ?? null,
+  })
+  if (error) {
+    console.error('[arcade] arcade_vom_registrar falló:', error)
+    return null
+  }
+  return (data as CifrasArcade | null) ?? null
+}

@@ -18,7 +18,9 @@ import {
   segundosParaSiguienteReto,
   textoCompartir,
   urlHorda,
+  NOMBRE_JUEGO,
   type CifrasArcade,
+  type JuegoArcade,
   type OrigenArcade,
   type RetoArcade,
 } from '@/lib/arcade'
@@ -96,7 +98,8 @@ function nombreDeMateria(m: string | null | undefined): string {
 
 // 🔴 localStorage puede no existir o lanzar (modo privado, datos bloqueados).
 // El juego tiene que funcionar igual; solo se pierde el "ya jugaste hoy".
-const llavePartida = (fecha: string) => `pasas-arcade:partida:${fecha}`
+const llavePartida = (fecha: string, juego: JuegoArcade = 'sobra') =>
+  juego === 'vom' ? `pasas-arcade:vom:${fecha}` : `pasas-arcade:partida:${fecha}`
 
 function leerLocal(llave: string): string | null {
   try {
@@ -117,8 +120,11 @@ export default function ArcadeClient({
   origenRuta = null,
   retoDeHoy = null,
   ofertaPapa = null,
+  juego = 'sobra',
 }: {
   reto: RetoArcade
+  /** s47: qué juego trae `reto` ('vom' = Verdadero o mentira). Lo decide el servidor. */
+  juego?: JuegoArcade
   dominio: string
   /** Lo fija la ruta: /arcade/r/... es siempre 'resultado_compartido'. */
   origenRuta?: OrigenArcade | null
@@ -162,6 +168,7 @@ export default function ArcadeClient({
       canal: atribRef.current.canal,
       por_materia: !!retoDeHoy,
       variant: varianteRef.current,
+      juego,
     })
 
   // s40: la versión ya está en <html> (el script corrió antes de pintar). Se
@@ -172,9 +179,10 @@ export default function ArcadeClient({
       const v = leerVariante()
       varianteRef.current = v
       setVariante(v)
-      setFase((f) => (f === 'inicio' ? (v === 'B' ? 'play' : 'intro') : f))
+      // "Verdadero o mentira" no tiene portada: siempre directo a la ronda 1.
+      setFase((f) => (f === 'inicio' ? (v === 'B' || juego === 'vom' ? 'play' : 'intro') : f))
     })()
-  }, [])
+  }, [juego])
 
   // `arcade_visto` es la entrada al embudo: sin él no se sabe cuántos de los
   // que tocaron el banner llegaron a ver el juego. window.location y no
@@ -187,9 +195,10 @@ export default function ArcadeClient({
       origen: origenRef.current,
       canal: atribRef.current.canal,
       reto_numero: reto.number,
-      ya_jugo: !!leerLocal(llavePartida(reto.date)),
+      ya_jugo: !!leerLocal(llavePartida(reto.date, juego)),
       por_materia: !!retoDeHoy,
       variant: leerVariante(),
+      juego,
     })
     // retoDeHoy viene del servidor y no cambia mientras la página vive.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -209,6 +218,7 @@ export default function ArcadeClient({
             anonId: anonIdJuegos(),
             picks: p,
             origen: origenRef.current,
+            juego,
             ...atribRef.current,
           }),
         })
@@ -218,7 +228,7 @@ export default function ArcadeClient({
         // Sin red no hay cifras del día; el resultado propio ya está en pantalla.
       }
     },
-    [reto.date]
+    [reto.date, juego]
   )
 
   // ¿Ya jugó hoy en este navegador? Directo a su resultado.
@@ -226,7 +236,7 @@ export default function ArcadeClient({
   // no en la pasada síncrona del efecto (react-hooks/set-state-in-effect).
   useEffect(() => {
     void (async () => {
-      const guardado = leerLocal(llavePartida(reto.date))
+      const guardado = leerLocal(llavePartida(reto.date, juego))
       if (!guardado) return
       try {
         const p = JSON.parse(guardado) as number[]
@@ -237,7 +247,7 @@ export default function ArcadeClient({
         }
       } catch {}
     })()
-  }, [reto.date, enviarPartida])
+  }, [reto.date, juego, enviarPartida])
 
   // Cuenta regresiva. Al llegar a cero, recarga: ya hay reto nuevo.
   useEffect(() => {
@@ -293,7 +303,7 @@ export default function ArcadeClient({
     }
     conOrigen('arcade_ronda', { reto_numero: reto.number, paso: nuevos.length, acierto: i === reto.rounds[idx].odd })
     if (nuevos.length === RONDAS_POR_RETO) {
-      escribirLocal(llavePartida(reto.date), JSON.stringify(nuevos))
+      escribirLocal(llavePartida(reto.date, juego), JSON.stringify(nuevos))
       void enviarPartida(nuevos)
       const score = calcularResultados(reto, nuevos).filter(Boolean).length
       conOrigen('arcade_completado', { reto_numero: reto.number, score, aciertos: score })
@@ -310,7 +320,7 @@ export default function ArcadeClient({
   }
 
   const codigo = codigoResultado(reto.number, resultados)
-  const texto = textoCompartir(reto.number, resultados, dominio, reto.materia)
+  const texto = textoCompartir(reto.number, resultados, dominio, reto.materia, juego)
 
   // ¿El navegador tiene menú nativo para compartir? Se decide en el cliente
   // (en el servidor no existe navigator) y desde la función async, como el
@@ -335,12 +345,13 @@ export default function ArcadeClient({
   // esa primera suele ser la de WhatsApp, que se rinde rápido y manda la
   // tarjeta sin foto. Desde este mismo teléfono cae en el mismo nodo del CDN.
   useEffect(() => {
-    if (fase !== 'end' || picks.length !== RONDAS_POR_RETO) return
+    // s47: las imágenes de /arcade/r pintan "¿Cuál sobra?"; en vom no aplican.
+    if (fase !== 'end' || picks.length !== RONDAS_POR_RETO || juego === 'vom') return
     void fetch(`/arcade/r/${codigo}/imagen`).catch(() => {})
-  }, [fase, picks.length, codigo])
+  }, [fase, picks.length, codigo, juego])
 
   useEffect(() => {
-    if (fase !== 'end' || picks.length !== RONDAS_POR_RETO) return
+    if (fase !== 'end' || picks.length !== RONDAS_POR_RETO || juego === 'vom') return
     if (typeof navigator === 'undefined' || typeof navigator.canShare !== 'function') return
     let vivo = true
     void (async () => {
@@ -355,7 +366,7 @@ export default function ArcadeClient({
     return () => {
       vivo = false
     }
-  }, [fase, picks.length, codigo, reto.number])
+  }, [fase, picks.length, codigo, reto.number, juego])
 
   /** Menú nativo del teléfono. Con la imagen para historias si ya está lista. */
   async function compartirNativo() {
@@ -644,12 +655,19 @@ function Ronda({
         </div>
       </div>
 
-      <div className={s.prompt}>
-        <h2>¿Cuál sobra?</h2>
-        <p>Tres tienen algo en común. Toca el que no.</p>
-      </div>
+      {r.kind === 'vom' ? (
+        <div className={s.prompt}>
+          <h2>{NOMBRE_JUEGO.vom}</h2>
+          <p className={s.frase}>{r.statement}</p>
+        </div>
+      ) : (
+        <div className={s.prompt}>
+          <h2>{NOMBRE_JUEGO.sobra}</h2>
+          <p>Tres tienen algo en común. Toca el que no.</p>
+        </div>
+      )}
 
-      <div className={s.options}>
+      <div className={`${s.options} ${r.kind === 'vom' ? s.optionsVom : ''}`}>
         {r.options.map((texto, j) => {
           let estado = ''
           if (elegida !== null) {
@@ -661,10 +679,11 @@ function Ronda({
             <button
               key={`${r.id}-${j}`}
               type="button"
-              className={`${s.opt} ${r.kind === 'year' ? s.optYear : ''} ${estado}`}
+              className={`${s.opt} ${r.kind === 'year' ? s.optYear : ''} ${r.kind === 'vom' ? s.optVom : ''} ${estado}`}
               disabled={elegida !== null}
               onClick={() => onResponder(j)}
             >
+              {r.kind === 'vom' && <span aria-hidden="true">{j === 0 ? '✅' : '❌'}</span>}
               {texto}
             </button>
           )
@@ -674,7 +693,7 @@ function Ronda({
       {elegida !== null && (
         <div className={s.reveal} aria-live="polite">
           <span className={`${s.verdict} ${ok ? s.verdictOk : s.verdictBad}`}>
-            {ok ? '¡Correcto!' : `Sobraba ${r.options[r.odd]}`}
+            {ok ? '¡Correcto!' : r.kind === 'vom' ? `Era ${r.odd === 0 ? 'verdad' : 'mentira'}` : `Sobraba ${r.options[r.odd]}`}
           </span>
           <p>{r.explanation}</p>
           <p className={s.topic}>

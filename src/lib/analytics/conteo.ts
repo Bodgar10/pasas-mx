@@ -159,6 +159,8 @@ export const PROPS_CONTEO = [
   'verificado',
   // s42: materia del tema (historia, biologia…). Nunca datos de la persona.
   'materia',
+  // s47: qué juego del reto ('sobra' | 'vom'), para la prueba A/B por anuncio.
+  'juego',
 ] as const
 
 const PROPS = new Set<string>(PROPS_CONTEO)
