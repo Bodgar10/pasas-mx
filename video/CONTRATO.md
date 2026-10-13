@@ -7,7 +7,23 @@ cuando alguien abre `/arcade`.
 
 Todo esto vive en `src/data.mjs → loadFromSupabase()`.
 
-## De dónde sale cada pieza
+## s48 · "Verdadero o mentira" primero
+
+Desde el 13 oct el reel y las stories muestran **"Verdadero o mentira"**, el
+juego de `pasas.mx/arcade`. Salen de `arcade_vom_reto(fecha)` (migración 062):
+mismos 5 temas que el reto de "¿Cuál sobra?" de ese día. Si a algún tema le
+faltan frases aprobadas, todo sale de "¿Cuál sobra?" como antes, y el log dice
+qué juego usó. Plantillas: `reel-vom.html` y `story-vom.html`; datos de
+ejemplo: `data/ejemplo-vom.json`.
+
+| Pieza (vom) | Fuente |
+|---|---|
+| Frase del reel | la 1.ª del reto de vom de hoy |
+| Respuesta de ayer | la 1.ª del reto de vom de ayer, si lo hubo (si no, el reel empieza en el título) |
+| Frase extra (sticker de quiz) | una frase de un reto de vom **ya pasado**; al principio, una aprobada sin usar |
+| Story de resultados | `arcade_vom_cifras(hoy)`, solo si hoy se jugó vom |
+
+## De dónde sale cada pieza (¿Cuál sobra?)
 
 | Pieza | Fuente |
 |---|---|

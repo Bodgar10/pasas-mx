@@ -89,12 +89,14 @@ export async function renderImage(browser, template, data, out) {
   return { out };
 }
 
+// s48: "Verdadero o mentira" tiene su reel y sus stories; "¿Cuál sobra?" sigue
+// para los días sin frases.
 export function renderReel(browser, data, out, opts) {
-  return renderVideo(browser, 'reel.html', data, out, opts);
+  return renderVideo(browser, data.juego === 'vom' ? 'reel-vom.html' : 'reel.html', data, out, opts);
 }
 
 export async function renderStory(browser, data, variant, out) {
-  const page = await openPage(browser, 'story.html');
+  const page = await openPage(browser, data.juego === 'vom' ? 'story-vom.html' : 'story.html');
   await page.evaluate(([d, v]) => window.setup(d, v), [data, variant]);
   await page.screenshot({ path: out, type: 'png' });
   await page.close();

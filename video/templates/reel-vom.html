@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* s48 · Reel diario de "Verdadero o mentira" (el reto de pasas.mx/arcade). Copia de reel.html
+   (¿Cuál sobra?), que sigue para los días sin frases. Cada día tiene su materia (materias.js). */
+.fondo{position:absolute;left:0;width:1080px;height:1920px;transform-origin:50% 60%}
+.dim{position:absolute;inset:0;background:rgba(15,10,30,.72)}
+/* En el título y el cierre la escena se ve, pero detrás del texto sigue oscura */
+.dim-top{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,10,30,.6) 0%, rgba(15,10,30,.55) 50%, rgba(15,10,30,0) 63%)}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--m);z-index:8;pointer-events:none;
+  box-shadow:0 0 2.4cqw var(--m), inset 0 0 2.4cqw var(--m)}
+.pasita{position:absolute;left:50%;transform-origin:50% 100%;opacity:0}
+.mtag{align-self:flex-start;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:4.4cqw;letter-spacing:.06em;
+  color:var(--ms);background:var(--m);padding:1.2cqw 3.4cqw 1.4cqw;border-radius:2.4cqw;box-shadow:0 0 3cqw var(--m)}
+.dia{font-family:var(--font-title);font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;
+  -webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
+.dia span{display:block;white-space:nowrap}
+.dia .d1{font-size:10cqw;color:#fff}
+.dia .d2{font-size:18cqw;color:var(--m)}
+.scene{position:absolute;inset:0;padding:12cqw 7cqw 32cqw;display:flex;flex-direction:column;gap:4cqw;opacity:0}
+.q-title{font-size:8.5cqw;font-weight:900;line-height:1.05}
+
+/* Respuesta de ayer */
+.list{display:flex;flex-direction:column;gap:2.4cqw;margin-top:2cqw}
+.li{background:rgba(26,16,53,.94);border:.5cqw solid var(--line);border-radius:4cqw;padding:3cqw 4cqw;font-size:5cqw;font-weight:800;opacity:.45}
+.li.win{border-color:var(--ok);background:var(--ok-soft)}
+.stat{margin-top:auto;display:flex;flex-direction:column;gap:1cqw}
+.stat b{font-family:var(--font-brand);font-size:17cqw;line-height:1;color:var(--xp)}
+.stat span{font-size:5.4cqw;font-weight:800;text-wrap:balance}
+
+/* Título */
+.title-scene{justify-content:flex-start;padding-top:22cqw;gap:3cqw}
+.big{font-family:var(--font-brand);font-weight:900;font-size:9cqw;line-height:1.02;transform-origin:left center;margin-top:2cqw}
+.big em{font-style:normal;color:var(--m)}
+.sub{font-size:5.4cqw;font-weight:800;color:var(--fg);text-wrap:balance;text-shadow:0 .4cqw 1.2cqw rgba(0,0,0,.8)}
+
+/* Reto */
+#s2{justify-content:flex-start;padding-top:16cqw;padding-bottom:30cqw;gap:3.4cqw}
+.q-head{display:flex;justify-content:space-between;align-items:center;gap:3cqw}
+.ring{position:relative;width:16cqw;height:16cqw;opacity:0;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .track{stroke:var(--line)} .ring .bar{stroke:var(--m);stroke-linecap:round}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-brand);font-size:7cqw;color:var(--m)}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;margin-top:2cqw}
+.card{min-height:30cqw;border-radius:5cqw;background:rgba(26,16,53,.94);border:.5cqw solid color-mix(in srgb, var(--m) 45%, var(--line));
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:3cqw;opacity:0;overflow:hidden}
+.card .l{display:block;font-size:3.4cqw;font-weight:900;color:var(--m);letter-spacing:.1em;margin-bottom:1cqw}
+.card .t{display:block;font-size:6cqw;font-weight:900;line-height:1.15;overflow-wrap:break-word;hyphens:manual}
+.card.year .t{font-family:var(--font-brand);font-weight:700;letter-spacing:.04em;font-size:8cqw}
+.hint{font-size:4.4cqw;font-weight:800;color:var(--fg);opacity:.8}
+
+/* s48 · Verdadero o mentira */
+#grid{display:flex;flex-direction:column;gap:3.4cqw;margin-top:2cqw}
+.frase{border-radius:5cqw;background:rgba(26,16,53,.95);border:.6cqw solid color-mix(in srgb, var(--m) 55%, var(--line));
+  padding:6cqw 6cqw;font-size:8cqw;font-weight:900;line-height:1.18;text-wrap:balance;opacity:0}
+.frase-ayer{font-size:6.2cqw;opacity:1;padding:4.4cqw 5cqw}
+.vm{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;margin-top:1cqw}
+.vbtn{min-height:20cqw;border-radius:5cqw;display:flex;align-items:center;justify-content:center;gap:2cqw;
+  font-weight:900;font-size:6.6cqw;opacity:0;color:var(--fg);
+  background:rgba(26,16,53,.96);border:.5cqw solid var(--line)}
+.vbtn svg{width:7.4cqw;height:7.4cqw;flex:none;border-radius:1.4cqw;padding:1cqw;color:#fff}
+.vbtn.v svg{background:#10b981}
+.vbtn.m svg{background:#f43f5e}
+/* Encabezado como en pasas.mx/arcade */
+.sitio{display:flex;justify-content:space-between;align-items:center;border-bottom:.3cqw solid var(--line);padding-bottom:3cqw}
+.sitio .wordmark{font-size:4.6cqw}
+.eyeb{display:flex;flex-direction:column;gap:1.4cqw}
+.eyeb b{font-size:4.2cqw;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.eyeb small{font-size:4.4cqw;font-weight:800;color:var(--dim)}
+.segs{display:grid;grid-template-columns:repeat(5,1fr);gap:2cqw}
+.segs i{height:1.6cqw;border-radius:1cqw;background:var(--line)}
+.segs i.on{background:var(--m)}
+.stamp{align-self:flex-start;font-family:var(--font-title);font-weight:900;text-transform:uppercase;font-size:11cqw;line-height:1;
+  padding:2cqw 5cqw 2.4cqw;border-radius:3cqw;border:1cqw solid currentColor;transform:rotate(-6deg);opacity:0}
+.stamp.v{color:#34d399}.stamp.m{color:#fb7185}
+
+/* Comenta */
+.comment-scene{justify-content:center;align-items:center;text-align:center;padding-bottom:36cqw}
+.bubble{background:var(--paper);color:var(--ink);border-radius:6cqw;padding:5cqw 6cqw;display:flex;flex-direction:column;gap:1.5cqw;box-shadow:0 3cqw 10cqw rgba(0,0,0,.5)}
+.bubble b{font-size:7.4cqw;font-weight:900;line-height:1.1}
+.bubble span{font-size:4.6cqw;font-weight:700;color:var(--ink-dim)}
+
+/* Cierre */
+.cta-scene{justify-content:flex-start;gap:5cqw;padding-top:30cqw}
+.cta-scene .wordmark{font-size:6cqw}
+.cta-big{font-size:10cqw;font-weight:900;line-height:1.05}
+.url{align-self:flex-start;font-family:var(--font-brand);font-size:5.6cqw;font-weight:700;background:var(--m);color:var(--ms);padding:3cqw 5cqw;border-radius:4cqw}
+.cta-sub{font-size:4.8cqw;font-weight:800;color:var(--fg);text-wrap:balance;text-shadow:0 .4cqw 1.2cqw rgba(0,0,0,.8)}
+.cta-sub b{color:var(--m)}
+</style></head>
+<body>
+<div class="frame" id="frame">
+  <div class="fondo" id="fondo"></div>
+  <div class="dim-top"></div>
+  <div class="dim" id="dim"></div>
+  <div class="neon"></div>
+  <div class="pasita" id="p-title"></div>
+  <div class="pasita" id="p-cta"></div>
+  <div class="scene" id="s0">
+    <span class="tag" id="ayer-tag">Respuesta de ayer</span>
+    <div class="q-title">¿Verdadero o mentira?</div>
+    <div class="frase frase-ayer" id="ayer-frase"></div>
+    <div class="stamp" id="ayer-stamp"></div>
+    <div class="stat"><b id="pct"></b><span id="motivo"></span></div>
+  </div>
+  <div class="scene title-scene" id="s1">
+    <span class="mtag" id="title-tag"></span>
+    <div class="dia" id="dia"><span class="d1" id="d1"></span></div>
+    <div class="big" id="big">¿VERDADERO<br><em>O MENTIRA?</em></div>
+    <div class="sub" id="sub">Una frase. Tú decides.</div>
+  </div>
+  <div class="scene" id="s2">
+    <div class="sitio"><div class="wordmark">PASAS<span>·</span>ARCADE</div></div>
+    <div class="eyeb"><b id="eyeb"></b><small>5 rondas · 2 min · gratis · sin registro</small></div>
+    <div class="segs"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="q-head">
+      <div class="q-title">¿Verdad o mentira?</div>
+      <div class="ring" id="ring"><svg viewBox="0 0 40 40"><circle class="track" cx="20" cy="20" r="16"/><circle class="bar" id="ring-bar" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="0"/></svg><b id="ring-n">5</b></div>
+    </div>
+    <div id="grid">
+      <div class="frase" id="frase"></div>
+      <div class="vm">
+        <div class="vbtn v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Verdad</div>
+        <div class="vbtn m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Mentira</div>
+      </div>
+    </div>
+    <div class="hint" id="hint"></div>
+  </div>
+  <div class="scene comment-scene" id="s3">
+    <div class="bubble" id="bubble"><b>Comenta: ¿verdad o mentira?</b><span>La respuesta, mañana en este mismo reel</span></div>
+  </div>
+  <div class="scene cta-scene" id="s4">
+    <div class="wordmark">PASAS<span>·</span>ARCADE</div>
+    <div class="cta-big">Te faltan 4 frases</div>
+    <div class="url">pasas.mx/arcade</div>
+    <div class="cta-sub" id="cta-sub">Un reto nuevo cada día</div>
+  </div>
+</div>
+<script src="pasita.js"></script>
+<script src="fondo.js"></script>
+<script src="materias.js"></script>
+<script>
+var $ = function(id){ return document.getElementById(id); };
+var clamp = function(x){ return Math.max(0, Math.min(1, x)); };
+var easeOut = function(p){ return 1 - Math.pow(1-p, 3); };
+var back = function(p){ var c1=1.70158, c3=c1+1; return 1 + c3*Math.pow(p-1,3) + c1*Math.pow(p-1,2); };
+var F = 0.35;
+var T = null, D = null;
+
+function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+// Reduce la letra de una tarjeta hasta que el texto quepa sin cortarse
+function fit(el, box){
+  var size = parseFloat(getComputedStyle(el).fontSize);
+  for (var i=0; i<30 && (el.scrollWidth > box.clientWidth - 2 || box.scrollHeight > box.clientHeight + 1); i++){
+    size *= 0.94; el.style.fontSize = size + 'px';
+  }
+}
+
+var TM = null;
+function place(id, pose, w, floor, dx){
+  var el = $(id), h = w * PASITA_VB.h / PASITA_VB.w;
+  buildPasita(el, pose, w);
+  el.style.top = (floor - h) + 'px'; el.style.marginLeft = (-w/2 + (dx||0)) + 'px'; el.style.width = w + 'px';
+}
+window.setup = function(data){
+  D = data;
+  TM = temaReto(data);
+  var fr = $('frame');
+  // s48: el verde azulado de pasas.mx/arcade (igual en todas las materias).
+  fr.style.setProperty('--m', '#0d9488'); fr.style.setProperty('--ms', '#ffffff');
+  buildFondo($('fondo'), TM.fondo, 0);
+  var o = data.ayer ? 3 : 0;               // sin "ayer" (reto #1) el video empieza en el título
+  // El título del día dura un poco más: es lo que distingue cada día
+  T = {
+    s0:[0,3], s1:[o, o+2.3], s2:[o+2.3, o+10.6], s3:[o+8.6, o+10.6], s4:[o+10.6, o+13.6],
+    cards:o+2.6, ringOn:o+4.4, ringEnd:o+8.6, dim:o+8.6, end:o+13.6
+  };
+  // Título: "Viernes de / Español" (o "Reto para / Papás")
+  $('d1').textContent = TM.arriba;
+  TM.lineas.forEach(function(l){ var sp = document.createElement('span'); sp.className = 'd2'; sp.textContent = l; $('dia').appendChild(sp); });
+  fitLines([$('d1')], 1080 - 2*76); fitLines([].slice.call(document.querySelectorAll('.dia .d2')), 1080 - 2*76);
+  if (TM.esPapas) $('sub').textContent = '¿Sabes más que un alumno de secundaria? Una ronda de cada materia.';
+  place('p-title', TM.pose, 440, 1556, 230);
+  // Cierre: qué toca mañana (dato real del calendario, no una promesa)
+  var man = temaReto({ fecha: addDay(data.fecha, 1) });
+  place('p-cta', 'aprobando', 380, 1556, 250);
+  $('cta-sub').innerHTML = TM.esPapas
+    ? 'Juégalo con tus hijos. Mañana: <b>' + esc(man.arriba + ' ' + man.nombre) + '</b>'
+    : 'Un reto nuevo cada día. Mañana: <b>' + esc(man.esPapas ? 'reto para papás' : man.nombre) + '</b>';
+  window.ready = pasitaReady();
+  if (data.ayer){
+    $('ayer-tag').textContent = 'Respuesta de ayer · Reto #' + data.ayer.numero;
+    $('ayer-frase').textContent = data.ayer.frase;
+    var st = $('ayer-stamp'); st.textContent = data.ayer.verdad ? 'Verdad' : 'Mentira'; st.className = 'stamp ' + (data.ayer.verdad ? 'v' : 'm');
+    var hasPct = typeof data.ayer.porcentaje === 'number';
+    $('pct').style.display = hasPct ? '' : 'none';
+    $('motivo').textContent = hasPct ? 'le atinó. ' + data.ayer.motivo : data.ayer.motivo;
+    if (!hasPct) $('motivo').style.fontSize = '7cqw';   // sin porcentaje, el motivo es el remate
+  }
+  $('title-tag').textContent = 'Reto #' + data.numero;
+  $('frase').textContent = data.hoy.frase;
+  $('eyeb').textContent = (TM.esPapas ? 'Reto para papás #' : 'Reto de ' + TM.nombre + ' #') + data.numero;
+  // Sábado (papás): cada ronda es de otra materia; se dice cuál
+  var rm = TM.esPapas && data.hoy.materia_key ? nombreMateriaRonda(data.hoy.materia_key) : '';
+  $('hint').textContent = rm ? 'Ronda de ' + rm + ' · 1 de 5' : 'Reto #' + data.numero + ' · Ronda 1 de 5';
+  // mostrar todo un momento para medir y ajustar
+  ['s2'].forEach(function(id){ $(id).style.opacity = 1; });
+  fitFrase($('frase'), 470);
+  window.render(0);
+  return T.end;
+};
+
+// La frase cabe en `max` px de alto: se achica la letra si es larga
+function fitFrase(el, max){
+  el.style.opacity = 1;
+  var size = parseFloat(getComputedStyle(el).fontSize);
+  for (var i=0; i<30 && el.scrollHeight > max; i++){ size *= 0.94; el.style.fontSize = size + 'px'; }
+}
+// Achica por igual un grupo de líneas para que la más ancha quepa en `max` px (copia de anim.js)
+function fitLines(lines, max){
+  var widest = 0;
+  lines.forEach(function(el){ el.style.width = 'max-content'; widest = Math.max(widest, el.getBoundingClientRect().width); el.style.width = ''; });
+  if (widest <= max) return;
+  var k = max / widest;
+  lines.forEach(function(el){ el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * k) + 'px'; });
+}
+function addDay(f, n){ var d = new Date(f + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+function hop(el, t, t0){
+  var j = clamp((t - t0) / 0.5), up = Math.sin(j * Math.PI) * (1 - j) * 60, br = 1 + 0.012 * Math.sin(t * 2.4);
+  el.style.transform = 'translateY(' + (-up) + 'px) scale(' + (1 / br) + ',' + br + ')';
+}
+function win(t, a, b, fadeIn, fadeOut){
+  if (t < a || t >= b) return 0;
+  var i = fadeIn === false ? 1 : clamp((t-a)/F);
+  var o = fadeOut === false ? 1 : clamp((b-t)/F);
+  return Math.min(i, o);
+}
+
+window.render = function(t){
+  var sc = [
+    D.ayer ? [T.s0[0], T.s0[1], false, true] : [0,0,true,true],
+    [T.s1[0], T.s1[1], !!D.ayer, true],
+    [T.s2[0], T.s2[1], true, true],
+    [T.s3[0], T.s3[1], true, true],
+    [T.s4[0], T.end + 1, true, false]
+  ];
+  sc.forEach(function(s, i){
+    var a = win(t, s[0], s[1], s[2], s[3]), el = $('s'+i);
+    el.style.opacity = a; el.style.transform = 'translateY(' + ((1-easeOut(a))*3) + 'cqw)';
+  });
+  if (D.ayer){
+    var stq = clamp((t-0.5)/0.3), stp = $('ayer-stamp');
+    stp.style.opacity = stq; stp.style.transform = 'rotate(-6deg) scale(' + (1.6 - 0.6*back(stq)) + ')';
+    if (typeof D.ayer.porcentaje === 'number'){
+      $('pct').textContent = Math.round(D.ayer.porcentaje * easeOut(clamp((t-0.5)/0.9))) + '%';
+    }
+  }
+  $('big').style.transform = 'scale(' + (0.9 + 0.1*back(clamp((t-T.s1[0])/0.5))) + ')';
+  var fq = clamp((t-T.cards)/0.35), fr2 = $('frase');
+  fr2.style.opacity = fq; fr2.style.transform = 'scale(' + (0.9 + 0.1*back(fq)) + ')';
+  document.querySelectorAll('.vbtn').forEach(function(c, i){
+    var q = clamp((t-(T.cards + 0.9 + i*0.35))/0.3);
+    c.style.opacity = q; c.style.transform = 'scale(' + (0.88 + 0.12*back(q)) + ')';
+  });
+  $('grid').style.opacity = 1 - 0.72*clamp((t-T.dim)/0.3);
+  var on = t >= T.ringOn && t < T.ringEnd + 0.2;
+  $('ring').style.opacity = on ? clamp((t-T.ringOn)/0.25) : 0;
+  if (on){
+    var span = T.ringEnd - T.ringOn, left = Math.max(0, T.ringEnd - t);
+    $('ring-n').textContent = Math.max(1, Math.ceil(left));
+    $('ring-bar').setAttribute('stroke-dashoffset', (100.5*(1 - left/span)).toFixed(1));
+  }
+  $('bubble').style.transform = 'scale(' + (0.85 + 0.15*back(clamp((t-T.s3[0])/0.35))) + ')';
+  // Pasita y escena: se ven completas en el título y el cierre; atenuadas mientras hay que leer
+  var aT = win(t, T.s1[0], T.s1[1], !!D.ayer, true), aC = win(t, T.s4[0], T.end + 1, true, false);
+  $('p-title').style.opacity = aT; hop($('p-title'), t, T.s1[0]);
+  $('p-cta').style.opacity = aC; hop($('p-cta'), t, T.s4[0]);
+  $('dim').style.opacity = 1 - Math.max(aT, aC);
+  document.querySelectorAll('.dia span').forEach(function(sp, i){
+    var q = clamp((t - (T.s1[0] + 0.05 + i*0.18)) / 0.3); sp.style.opacity = q;
+    sp.style.transform = 'scale(' + (0.88 + 0.12*back(q)) + ')'; sp.style.transformOrigin = 'left center';
+  });
+  animFondo(t);
+  blinkAll(t);
+};
+window.momentos = function(){ var o = D.ayer ? 3 : 0; return (D.ayer ? [1.6] : []).concat([o + 1.6, o + 5.5, o + 9.4, o + 12.4]); };
+</script>
+</body></html>
