@@ -1,0 +1,952 @@
+{
+  "subject": "calculo-integral",
+  "topics": {
+    "antiderivada-e-integral-indefinida": {
+      "order_steps": {
+        "prompt": "Ordena cómo integras ∫(12x³ − 6x + 7) dx",
+        "steps": [
+          "Separa la integral término por término",
+          "Aplica la regla: sube el exponente y divide entre el nuevo",
+          "Obtén 3x⁴ − 3x² + 7x",
+          "Agrega la constante: + C",
+          "Deriva para verificar: regresas a 12x³ − 6x + 7"
+        ],
+        "completion_feedback": "Integrar es derivar **al revés**; el **+C** guarda el punto de partida que la derivada borró. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Viaje del Sunny",
+            "right_label": "Antiderivada",
+            "pairs": [
+              {
+                "left": "∫8x³ dx",
+                "right": "2x⁴ + C"
+              },
+              {
+                "left": "∫3x² dx",
+                "right": "x³ + C"
+              },
+              {
+                "left": "∫−2 dx",
+                "right": "−2x + C"
+              },
+              {
+                "left": "La isla de la que zarparon",
+                "right": "La constante +C"
+              }
+            ],
+            "completion_feedback": "La **antiderivada** regresa de la rapidez a la cantidad: sube el exponente, divide entre el nuevo y agrega **+C**, el punto de partida desconocido."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Pase de Bellingham",
+            "right_label": "Antiderivada",
+            "pairs": [
+              {
+                "left": "∫9x² dx",
+                "right": "3x³ + C"
+              },
+              {
+                "left": "∫−4x dx",
+                "right": "−2x² + C"
+              },
+              {
+                "left": "∫5 dx",
+                "right": "5x + C"
+              },
+              {
+                "left": "Desde dónde salió el balón",
+                "right": "La constante +C"
+              }
+            ],
+            "completion_feedback": "La **antiderivada** regresa de la rapidez a la cantidad: sube el exponente, divide entre el nuevo y agrega **+C**, el punto de partida desconocido."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Coreo de Hoshi",
+            "right_label": "Antiderivada",
+            "pairs": [
+              {
+                "left": "∫10x⁴ dx",
+                "right": "2x⁵ + C"
+              },
+              {
+                "left": "∫6x dx",
+                "right": "3x² + C"
+              },
+              {
+                "left": "Derivar 2x⁵ + 3x²",
+                "right": "10x⁴ + 6x: comprueba"
+              },
+              {
+                "left": "Dónde arrancó en el escenario",
+                "right": "La constante +C"
+              }
+            ],
+            "completion_feedback": "La **antiderivada** regresa de la rapidez a la cantidad: sube el exponente, divide entre el nuevo y agrega **+C**, el punto de partida desconocido."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Replay de Valorant",
+            "right_label": "Antiderivada",
+            "pairs": [
+              {
+                "left": "∫6x² dx",
+                "right": "2x³ + C"
+              },
+              {
+                "left": "∫4x dx",
+                "right": "2x² + C"
+              },
+              {
+                "left": "Derivar",
+                "right": "Posición → velocidad"
+              },
+              {
+                "left": "Antiderivar",
+                "right": "Velocidad → posición"
+              }
+            ],
+            "completion_feedback": "La **antiderivada** regresa de la rapidez a la cantidad: sube el exponente, divide entre el nuevo y agrega **+C**, el punto de partida desconocido."
+          }
+        }
+      }
+    },
+    "tecnicas-de-integracion-sustitucion": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves ∫(x² + 3)⁴ · 2x dx",
+        "steps": [
+          "Elige u = x² + 3, la parte de adentro",
+          "Deriva: du = 2x dx, justo lo que multiplica afuera",
+          "Sustituye: ∫u⁴ du",
+          "Integra: u⁵/5 + C",
+          "Regresa a x: (x² + 3)⁵/5 + C"
+        ],
+        "completion_feedback": "La sustitución funciona cuando **la derivada de lo de adentro** ya está multiplicando afuera. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Murasaki de Gojo",
+            "right_label": "Sustitución",
+            "pairs": [
+              {
+                "left": "u en ∫(x³ + 2)⁵ · 3x² dx",
+                "right": "x³ + 2"
+              },
+              {
+                "left": "du",
+                "right": "3x² dx"
+              },
+              {
+                "left": "∫u⁵ du",
+                "right": "u⁶/6 + C"
+              },
+              {
+                "left": "Resultado final",
+                "right": "(x³ + 2)⁶/6 + C"
+              }
+            ],
+            "completion_feedback": "En la **sustitución** llamas u a la parte de adentro; si su derivada du aparece en la integral, todo se vuelve ∫uⁿ du y al final regresas a x."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Jugada Alfa",
+            "right_label": "Sustitución",
+            "pairs": [
+              {
+                "left": "u en ∫√(4x + 1) · 4 dx",
+                "right": "4x + 1"
+              },
+              {
+                "left": "du",
+                "right": "4 dx"
+              },
+              {
+                "left": "√u",
+                "right": "u^(1/2)"
+              },
+              {
+                "left": "Resultado final",
+                "right": "(2/3)(4x + 1)^(3/2) + C"
+              }
+            ],
+            "completion_feedback": "En la **sustitución** llamas u a la parte de adentro; si su derivada du aparece en la integral, todo se vuelve ∫uⁿ du y al final regresas a x."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Nombre clave TXT",
+            "right_label": "Sustitución",
+            "pairs": [
+              {
+                "left": "u en ∫(2x + 5)³ · 2 dx",
+                "right": "2x + 5"
+              },
+              {
+                "left": "du",
+                "right": "2 dx"
+              },
+              {
+                "left": "∫u³ du",
+                "right": "u⁴/4 + C"
+              },
+              {
+                "left": "Anunciar el título real",
+                "right": "Regresar a x"
+              }
+            ],
+            "completion_feedback": "En la **sustitución** llamas u a la parte de adentro; si su derivada du aparece en la integral, todo se vuelve ∫uⁿ du y al final regresas a x."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Pociones Minecraft",
+            "right_label": "Sustitución",
+            "pairs": [
+              {
+                "left": "u en ∫(3x² + 1)⁴ · 6x dx",
+                "right": "3x² + 1"
+              },
+              {
+                "left": "du",
+                "right": "6x dx"
+              },
+              {
+                "left": "∫u⁴ du",
+                "right": "u⁵/5 + C"
+              },
+              {
+                "left": "Desempacar el bloque",
+                "right": "Regresar a x"
+              }
+            ],
+            "completion_feedback": "En la **sustitución** llamas u a la parte de adentro; si su derivada du aparece en la integral, todo se vuelve ∫uⁿ du y al final regresas a x."
+          }
+        }
+      }
+    },
+    "integracion-por-partes": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves ∫x · e²ˣ dx por partes",
+        "steps": [
+          "Elige con ILATE: u = x y dv = e²ˣ dx",
+          "Calcula du = dx y v = e²ˣ/2",
+          "Aplica u·v − ∫v du: x·e²ˣ/2 − ∫(e²ˣ/2) dx",
+          "Integra lo que queda: x·e²ˣ/2 − e²ˣ/4 + C"
+        ],
+        "completion_feedback": "En **partes** derivas la función que se simplifica (u) e integras la que no se complica (dv). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Isagi y Bachira",
+            "right_label": "Por partes",
+            "pairs": [
+              {
+                "left": "En ∫x·ln x dx, u =",
+                "right": "ln x"
+              },
+              {
+                "left": "dv",
+                "right": "x dx"
+              },
+              {
+                "left": "v = ∫x dx",
+                "right": "x²/2"
+              },
+              {
+                "left": "Resultado",
+                "right": "(x²/2)ln x − x²/4 + C"
+              }
+            ],
+            "completion_feedback": "La **integración por partes** resuelve productos con ∫u dv = u·v − ∫v du; el orden **ILATE** te dice quién es u."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Vini y Bellingham",
+            "right_label": "Por partes",
+            "pairs": [
+              {
+                "left": "En ∫x·cos x dx, u =",
+                "right": "x"
+              },
+              {
+                "left": "v = ∫cos x dx",
+                "right": "sen x"
+              },
+              {
+                "left": "∫u dv",
+                "right": "u·v − ∫v du"
+              },
+              {
+                "left": "Resultado",
+                "right": "x·sen x + cos x + C"
+              }
+            ],
+            "completion_feedback": "La **integración por partes** resuelve productos con ∫u dv = u·v − ∫v du; el orden **ILATE** te dice quién es u."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Líneas de IVE",
+            "right_label": "Por partes",
+            "pairs": [
+              {
+                "left": "v = ∫sen x dx",
+                "right": "−cos x"
+              },
+              {
+                "left": "du si u = x",
+                "right": "dx"
+              },
+              {
+                "left": "Resultado de ∫x·sen x dx",
+                "right": "−x·cos x + sen x + C"
+              },
+              {
+                "left": "Orden para elegir u",
+                "right": "ILATE"
+              }
+            ],
+            "completion_feedback": "La **integración por partes** resuelve productos con ∫u dv = u·v − ∫v du; el orden **ILATE** te dice quién es u."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Roles en Brawl",
+            "right_label": "Por partes",
+            "pairs": [
+              {
+                "left": "En ∫x·eˣ dx, u =",
+                "right": "x"
+              },
+              {
+                "left": "v = ∫eˣ dx",
+                "right": "eˣ"
+              },
+              {
+                "left": "Resultado",
+                "right": "eˣ(x − 1) + C"
+              },
+              {
+                "left": "Elegir mal u y dv",
+                "right": "La integral se complica"
+              }
+            ],
+            "completion_feedback": "La **integración por partes** resuelve productos con ∫u dv = u·v − ∫v du; el orden **ILATE** te dice quién es u."
+          }
+        }
+      }
+    },
+    "la-integral-definida-y-el-teorema-fundamental-del-calculo": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas ∫₁⁴ (2x + 3) dx",
+        "steps": [
+          "Halla la antiderivada: F(x) = x² + 3x",
+          "Evalúa en el límite de arriba: F(4) = 28",
+          "Réstale F(1) = 4: 28 − 4 = 24",
+          "Escribe el número sin +C: la integral vale 24"
+        ],
+        "completion_feedback": "El **TFC** cambia la suma de infinitas rebanadas por una resta: **F(b) − F(a)**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Raid de Jinwoo",
+            "right_label": "Integral definida",
+            "pairs": [
+              {
+                "left": "∫₁³ 3x² dx",
+                "right": "26"
+              },
+              {
+                "left": "F(3) − F(1)",
+                "right": "27 − 1"
+              },
+              {
+                "left": "Poder por segundo",
+                "right": "Altura de la curva"
+              },
+              {
+                "left": "Poder total del raid",
+                "right": "Área bajo la curva"
+              }
+            ],
+            "completion_feedback": "La **integral definida** acumula una tasa entre a y b; con el **Teorema Fundamental** se calcula como F(b) − F(a) y da un número, sin +C."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "GPS de Mbappé",
+            "right_label": "Integral definida",
+            "pairs": [
+              {
+                "left": "∫₂⁵ 4x dx",
+                "right": "42"
+              },
+              {
+                "left": "Antiderivada de 4x",
+                "right": "2x²"
+              },
+              {
+                "left": "Velocidad en cada instante",
+                "right": "Altura de la curva"
+              },
+              {
+                "left": "Kilómetros totales",
+                "right": "Área bajo la curva"
+              }
+            ],
+            "completion_feedback": "La **integral definida** acumula una tasa entre a y b; con el **Teorema Fundamental** se calcula como F(b) − F(a) y da un número, sin +C."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Vistas de MAESTRO",
+            "right_label": "Integral definida",
+            "pairs": [
+              {
+                "left": "∫₀² 3x² dx",
+                "right": "8"
+              },
+              {
+                "left": "F(0) si F(x) = x³",
+                "right": "0"
+              },
+              {
+                "left": "Vistas por minuto",
+                "right": "Altura de la curva"
+              },
+              {
+                "left": "Total de las 24 horas",
+                "right": "Área bajo la curva"
+              }
+            ],
+            "completion_feedback": "La **integral definida** acumula una tasa entre a y b; con el **Teorema Fundamental** se calcula como F(b) − F(a) y da un número, sin +C."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "DPS de Raiden",
+            "right_label": "Integral definida",
+            "pairs": [
+              {
+                "left": "∫₁⁴ 2x dx",
+                "right": "15"
+              },
+              {
+                "left": "F(4) − F(1)",
+                "right": "16 − 1"
+              },
+              {
+                "left": "Daño por segundo",
+                "right": "Altura de la curva"
+              },
+              {
+                "left": "Daño total al jefe",
+                "right": "Área bajo la curva"
+              }
+            ],
+            "completion_feedback": "La **integral definida** acumula una tasa entre a y b; con el **Teorema Fundamental** se calcula como F(b) − F(a) y da un número, sin +C."
+          }
+        }
+      }
+    },
+    "area-bajo-la-curva": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el área bajo f(x) = x² + 2 entre 0 y 3",
+        "steps": [
+          "Plantea la integral: A = ∫₀³ (x² + 2) dx",
+          "Antiderivada: F(x) = x³/3 + 2x",
+          "Evalúa: F(3) = 9 + 6 = 15 y F(0) = 0",
+          "Resta: el área es 15 u²"
+        ],
+        "completion_feedback": "El área bajo la curva es una **integral definida** entre los extremos del tramo: suma franjas verticales. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Bijuudama",
+            "right_label": "Área bajo curva",
+            "pairs": [
+              {
+                "left": "∫₁² 3x² dx",
+                "right": "7 u²"
+              },
+              {
+                "left": "F(2) y F(1) con F = x³",
+                "right": "8 y 1"
+              },
+              {
+                "left": "Densidad alta",
+                "right": "Franja gruesa"
+              },
+              {
+                "left": "Inicio de la carga",
+                "right": "Franja delgada"
+              }
+            ],
+            "completion_feedback": "El **área bajo la curva** es la región entre f(x) y el eje X de a a b; se calcula con ∫ₐᵇ f(x) dx sumando franjas verticales."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Tiro de Yamal",
+            "right_label": "Área bajo curva",
+            "pairs": [
+              {
+                "left": "∫₀² (x² + 1) dx",
+                "right": "14/3 ≈ 4.67"
+              },
+              {
+                "left": "Antiderivada de x² + 1",
+                "right": "x³/3 + x"
+              },
+              {
+                "left": "Cerca del punto máximo",
+                "right": "Franja gruesa"
+              },
+              {
+                "left": "El césped",
+                "right": "El eje X"
+              }
+            ],
+            "completion_feedback": "El **área bajo la curva** es la región entre f(x) y el eje X de a a b; se calcula con ∫ₐᵇ f(x) dx sumando franjas verticales."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Mar de luz de IVE",
+            "right_label": "Área bajo curva",
+            "pairs": [
+              {
+                "left": "∫₁⁴ 4x dx",
+                "right": "30 u²"
+              },
+              {
+                "left": "F(4) − F(1) con F = 2x²",
+                "right": "32 − 2"
+              },
+              {
+                "left": "El coro",
+                "right": "Franja gruesa"
+              },
+              {
+                "left": "Cero luz",
+                "right": "El eje X"
+              }
+            ],
+            "completion_feedback": "El **área bajo la curva** es la región entre f(x) y el eje X de a a b; se calcula con ∫ₐᵇ f(x) dx sumando franjas verticales."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Planeo de Spidey",
+            "right_label": "Área bajo curva",
+            "pairs": [
+              {
+                "left": "∫₀³ x² dx",
+                "right": "9 u²"
+              },
+              {
+                "left": "Antiderivada de x²",
+                "right": "x³/3"
+              },
+              {
+                "left": "Planear a ras de calle",
+                "right": "Franja delgada"
+              },
+              {
+                "left": "El suelo de la ciudad",
+                "right": "El eje X"
+              }
+            ],
+            "completion_feedback": "El **área bajo la curva** es la región entre f(x) y el eje X de a a b; se calcula con ∫ₐᵇ f(x) dx sumando franjas verticales."
+          }
+        }
+      }
+    },
+    "area-entre-curvas": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el área entre f(x) = 2x y g(x) = x²",
+        "steps": [
+          "Iguala para los cortes: 2x = x² → x = 0 y x = 2",
+          "Prueba x = 1: 2x vale 2 y x² vale 1, 2x va arriba",
+          "Plantea: ∫₀² (2x − x²) dx",
+          "Antiderivada: x² − x³/3",
+          "Evalúa y resta: 4 − 8/3 = 4/3 u²"
+        ],
+        "completion_feedback": "Siempre es **la de arriba menos la de abajo**; los cortes te dan los límites de la integral. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Gojo vs. Sukuna",
+            "right_label": "Área entre curvas",
+            "pairs": [
+              {
+                "left": "Cortes de 4x y x²",
+                "right": "x = 0 y x = 4"
+              },
+              {
+                "left": "Integrando",
+                "right": "4x − x²"
+              },
+              {
+                "left": "Área entre 4x y x²",
+                "right": "32/3 ≈ 10.67"
+              },
+              {
+                "left": "Brecha de poder",
+                "right": "Arriba menos abajo"
+              }
+            ],
+            "completion_feedback": "El **área entre curvas** es ∫ₐᵇ [f(x) − g(x)] dx con f arriba y g abajo; a y b suelen ser los puntos donde se cortan."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Mbappé vs. rival",
+            "right_label": "Área entre curvas",
+            "pairs": [
+              {
+                "left": "Cortes de x + 6 y x²",
+                "right": "x = −2 y x = 3"
+              },
+              {
+                "left": "x² − x − 6",
+                "right": "(x − 3)(x + 2)"
+              },
+              {
+                "left": "Área entre x + 6 y x²",
+                "right": "125/6 ≈ 20.83"
+              },
+              {
+                "left": "Rendimiento extra",
+                "right": "Arriba menos abajo"
+              }
+            ],
+            "completion_feedback": "El **área entre curvas** es ∫ₐᵇ [f(x) − g(x)] dx con f arriba y g abajo; a y b suelen ser los puntos donde se cortan."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Comebacks de TXT",
+            "right_label": "Área entre curvas",
+            "pairs": [
+              {
+                "left": "Cortes de 3x y x²",
+                "right": "x = 0 y x = 3"
+              },
+              {
+                "left": "Integrando",
+                "right": "3x − x²"
+              },
+              {
+                "left": "Área entre 3x y x²",
+                "right": "9/2 = 4.5"
+              },
+              {
+                "left": "Streams extra del viral",
+                "right": "Arriba menos abajo"
+              }
+            ],
+            "completion_feedback": "El **área entre curvas** es ∫ₐᵇ [f(x) − g(x)] dx con f arriba y g abajo; a y b suelen ser los puntos donde se cortan."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Jett vs. Sage",
+            "right_label": "Área entre curvas",
+            "pairs": [
+              {
+                "left": "Curva de arriba",
+                "right": "f(x) = 8"
+              },
+              {
+                "left": "Integrando de 0 a 2",
+                "right": "8 − x²"
+              },
+              {
+                "left": "Área entre 8 y x²",
+                "right": "40/3 ≈ 13.33"
+              },
+              {
+                "left": "Donde casi se igualan",
+                "right": "Franja delgada"
+              }
+            ],
+            "completion_feedback": "El **área entre curvas** es ∫ₐᵇ [f(x) − g(x)] dx con f arriba y g abajo; a y b suelen ser los puntos donde se cortan."
+          }
+        }
+      }
+    },
+    "volumenes-de-solidos-de-revolucion": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el volumen al girar y = 3x de 0 a 2 en el eje X",
+        "steps": [
+          "Usa discos: V = π∫ [f(x)]² dx",
+          "Eleva el radio al cuadrado: (3x)² = 9x²",
+          "Integra: π[3x³] de 0 a 2",
+          "Evalúa: π(24 − 0) = 24π ≈ 75.4 u³"
+        ],
+        "completion_feedback": "Cada **disco** tiene radio f(x): su área es π[f(x)]², y la integral apila todos los discos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Rasengan en 3D",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Girar y = √x de 0 a 4",
+                "right": "8π ≈ 25.1"
+              },
+              {
+                "left": "(√x)²",
+                "right": "x"
+              },
+              {
+                "left": "Perfil que genera una esfera",
+                "right": "Semicírculo"
+              },
+              {
+                "left": "Radio de cada disco",
+                "right": "f(x)"
+              }
+            ],
+            "completion_feedback": "Un **sólido de revolución** sale de girar una curva alrededor de un eje; con **discos**, V = π∫ₐᵇ [f(x)]² dx."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Balón en 3D",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Girar y = 2x de 0 a 2",
+                "right": "32π/3 ≈ 33.5"
+              },
+              {
+                "left": "(2x)²",
+                "right": "4x²"
+              },
+              {
+                "left": "Semicírculo de radio R",
+                "right": "Esfera de radio R"
+              },
+              {
+                "left": "Girar una recta inclinada",
+                "right": "Cono"
+              }
+            ],
+            "completion_feedback": "Un **sólido de revolución** sale de girar una curva alrededor de un eje; con **discos**, V = π∫ₐᵇ [f(x)]² dx."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Lightstick 3D",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Girar y = 2 de 0 a 5",
+                "right": "20π ≈ 62.8"
+              },
+              {
+                "left": "Perfil constante",
+                "right": "Cilindro"
+              },
+              {
+                "left": "Perfil más ancho",
+                "right": "Lightstick más grueso"
+              },
+              {
+                "left": "Método de discos",
+                "right": "π∫[f(x)]² dx"
+              }
+            ],
+            "completion_feedback": "Un **sólido de revolución** sale de girar una curva alrededor de un eje; con **discos**, V = π∫ₐᵇ [f(x)]² dx."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Jarrón en Roblox",
+            "right_label": "Volumen",
+            "pairs": [
+              {
+                "left": "Girar y = x de 0 a 3",
+                "right": "9π ≈ 28.3"
+              },
+              {
+                "left": "Perfil y = x",
+                "right": "Cono"
+              },
+              {
+                "left": "Paso que no se olvida",
+                "right": "Elevar al cuadrado"
+              },
+              {
+                "left": "Torno de alfarero",
+                "right": "Girar 360° en un eje"
+              }
+            ],
+            "completion_feedback": "Un **sólido de revolución** sale de girar una curva alrededor de un eje; con **discos**, V = π∫ₐᵇ [f(x)]² dx."
+          }
+        }
+      }
+    },
+    "aplicaciones-de-la-integral": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas el total si la tasa es r(t) = 6t + 4 de 0 a 3",
+        "steps": [
+          "El total es la integral de la tasa: ∫₀³ (6t + 4) dt",
+          "Antiderivada: F(t) = 3t² + 4t",
+          "Evalúa: F(3) = 27 + 12 = 39 y F(0) = 0",
+          "Resta e interpreta: se acumulan 39 unidades"
+        ],
+        "completion_feedback": "Si la tasa **cambia**, no basta multiplicar: se integra la tasa para obtener el **total acumulado**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Chakra de Kurama",
+            "right_label": "Aplicación",
+            "pairs": [
+              {
+                "left": "∫₀³ (3t² + 2t) dt",
+                "right": "36"
+              },
+              {
+                "left": "Antiderivada de 3t² + 2t",
+                "right": "t³ + t²"
+              },
+              {
+                "left": "Chakra por segundo",
+                "right": "La tasa"
+              },
+              {
+                "left": "Chakra acumulado",
+                "right": "La integral"
+              }
+            ],
+            "completion_feedback": "Integrar una **tasa** da el **total acumulado**: la velocidad da la distancia y las ventas por día dan las ventas totales."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Arranque de Yamal",
+            "right_label": "Aplicación",
+            "pairs": [
+              {
+                "left": "∫₀² (2t + 3) dt",
+                "right": "10 metros"
+              },
+              {
+                "left": "Integrar la velocidad",
+                "right": "Distancia"
+              },
+              {
+                "left": "Antiderivada de 2t + 3",
+                "right": "t² + 3t"
+              },
+              {
+                "left": "Los km del reporte GPS",
+                "right": "Total acumulado"
+              }
+            ],
+            "completion_feedback": "Integrar una **tasa** da el **total acumulado**: la velocidad da la distancia y las ventas por día dan las ventas totales."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Ventas de SVT",
+            "right_label": "Aplicación",
+            "pairs": [
+              {
+                "left": "∫₀² 9t² dt",
+                "right": "24 mil streams"
+              },
+              {
+                "left": "Antiderivada de 9t²",
+                "right": "3t³"
+              },
+              {
+                "left": "Álbumes por día",
+                "right": "La tasa"
+              },
+              {
+                "left": "Ventas de la semana",
+                "right": "Total acumulado"
+              }
+            ],
+            "completion_feedback": "Integrar una **tasa** da el **total acumulado**: la velocidad da la distancia y las ventas por día dan las ventas totales."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué resultado o idea corresponde?",
+            "left_label": "Brawler en el mapa",
+            "right_label": "Aplicación",
+            "pairs": [
+              {
+                "left": "∫₀⁴ 6t dt",
+                "right": "48 unidades"
+              },
+              {
+                "left": "Antiderivada de 6t",
+                "right": "3t²"
+              },
+              {
+                "left": "Velocidad en cada instante",
+                "right": "La tasa"
+              },
+              {
+                "left": "Distancia recorrida",
+                "right": "La integral"
+              }
+            ],
+            "completion_feedback": "Integrar una **tasa** da el **total acumulado**: la velocidad da la distancia y las ventas por día dan las ventas totales."
+          }
+        }
+      }
+    }
+  }
+}
