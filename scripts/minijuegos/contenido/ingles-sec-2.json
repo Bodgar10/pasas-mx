@@ -1,0 +1,928 @@
+{
+  "subject": "ingles-sec-2",
+  "topics": {
+    "present-continuous-ingles-sec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo dices «Ellos están jugando ahorita» en inglés",
+        "steps": [
+          "Ubica el sujeto: they",
+          "Elige el to be que le toca: are",
+          "Agrega -ing al verbo: play → playing",
+          "Queda: They are playing right now"
+        ],
+        "completion_feedback": "Primero el **sujeto**, que decide entre am, is o are, y al final el verbo con **-ing**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Solo Leveling",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "He is dodging the attack",
+                "right": "he/she/it + is + verbo-ing"
+              },
+              {
+                "left": "The monsters are running",
+                "right": "you/we/they + are + verbo-ing"
+              },
+              {
+                "left": "I am watching the fight",
+                "right": "I + am + verbo-ing"
+              },
+              {
+                "left": "Jin-Woo trains every day",
+                "right": "Rutina: no es present continuous"
+              }
+            ],
+            "completion_feedback": "**am, is o are** según el sujeto, y el verbo con **-ing**: así dices lo que pasa ahorita. Veamos la fórmula completa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Narración en vivo",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Lamine is dribbling",
+                "right": "he/she/it + is + verbo-ing"
+              },
+              {
+                "left": "The fans are singing",
+                "right": "you/we/they + are + verbo-ing"
+              },
+              {
+                "left": "I am watching the match",
+                "right": "I + am + verbo-ing"
+              },
+              {
+                "left": "Lamine trains every morning",
+                "right": "Rutina: no es present continuous"
+              }
+            ],
+            "completion_feedback": "**am, is o are** según el sujeto, y el verbo con **-ing**: así dices lo que pasa ahorita. Veamos la fórmula completa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "VLIVE de SKZ",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Felix is fixing his hair",
+                "right": "he/she/it + is + verbo-ing"
+              },
+              {
+                "left": "They are warming up",
+                "right": "you/we/they + are + verbo-ing"
+              },
+              {
+                "left": "I am watching the VLIVE",
+                "right": "I + am + verbo-ing"
+              },
+              {
+                "left": "They practice every day",
+                "right": "Rutina: no es present continuous"
+              }
+            ],
+            "completion_feedback": "**am, is o are** según el sujeto, y el verbo con **-ing**: así dices lo que pasa ahorita. Veamos la fórmula completa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Showdown en vivo",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Shelly is hiding in the bushes",
+                "right": "he/she/it + is + verbo-ing"
+              },
+              {
+                "left": "The brawlers are running",
+                "right": "you/we/they + are + verbo-ing"
+              },
+              {
+                "left": "I am playing Showdown",
+                "right": "I + am + verbo-ing"
+              },
+              {
+                "left": "I play Brawl Stars every day",
+                "right": "Rutina: no es present continuous"
+              }
+            ],
+            "completion_feedback": "**am, is o are** según el sujeto, y el verbo con **-ing**: así dices lo que pasa ahorita. Veamos la fórmula completa."
+          }
+        }
+      }
+    },
+    "past-simple": {
+      "order_steps": {
+        "prompt": "Ordena cómo dices «Ganamos la ronda» en inglés",
+        "steps": [
+          "Ubica el sujeto: we",
+          "Busca el verbo: win (ganar)",
+          "Win es irregular: su pasado es won",
+          "Queda: We won the round"
+        ],
+        "completion_feedback": "El verbo pasa a **pasado** y queda igual para cualquier sujeto; si es irregular, usas su forma especial. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿De qué verbo viene cada pasado?",
+            "left_label": "One Piece",
+            "right_label": "Verbo base",
+            "pairs": [
+              {
+                "left": "Sanji joined us",
+                "right": "join (regular)"
+              },
+              {
+                "left": "We sailed the Grand Line",
+                "right": "sail (regular)"
+              },
+              {
+                "left": "I found Zoro",
+                "right": "find (irregular)"
+              },
+              {
+                "left": "We fought many enemies",
+                "right": "fight (irregular)"
+              }
+            ],
+            "completion_feedback": "Los **regulares** solo agregan **-ed**; los **irregulares** cambian completo y hay que memorizarlos. Veamos la regla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿De qué verbo viene cada pasado?",
+            "left_label": "Highlights",
+            "right_label": "Verbo base",
+            "pairs": [
+              {
+                "left": "Santi scored two goals",
+                "right": "score (regular)"
+              },
+              {
+                "left": "The keeper saved a penalty",
+                "right": "save (regular)"
+              },
+              {
+                "left": "The team won 3-1",
+                "right": "win (irregular)"
+              },
+              {
+                "left": "The fans celebrated",
+                "right": "celebrate (regular)"
+              }
+            ],
+            "completion_feedback": "Los **regulares** solo agregan **-ed**; los **irregulares** cambian completo y hay que memorizarlos. Veamos la regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿De qué verbo viene cada pasado?",
+            "left_label": "SEVENTEEN",
+            "right_label": "Verbo base",
+            "pairs": [
+              {
+                "left": "We trained for years",
+                "right": "train (regular)"
+              },
+              {
+                "left": "We cried at the debut",
+                "right": "cry: consonante + y → -ied"
+              },
+              {
+                "left": "I wrote the lyrics",
+                "right": "write (irregular)"
+              },
+              {
+                "left": "Hoshi created the choreography",
+                "right": "create (regular)"
+              }
+            ],
+            "completion_feedback": "Los **regulares** solo agregan **-ed**; los **irregulares** cambian completo y hay que memorizarlos. Veamos la regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿De qué verbo viene cada pasado?",
+            "left_label": "Ranked de Valorant",
+            "right_label": "Verbo base",
+            "pairs": [
+              {
+                "left": "Jett planted the Spike",
+                "right": "plant (regular)"
+              },
+              {
+                "left": "Reyna killed two enemies",
+                "right": "kill (regular)"
+              },
+              {
+                "left": "Cypher watched the flank",
+                "right": "watch (regular)"
+              },
+              {
+                "left": "We won the round",
+                "right": "win (irregular)"
+              }
+            ],
+            "completion_feedback": "Los **regulares** solo agregan **-ed**; los **irregulares** cambian completo y hay que memorizarlos. Veamos la regla."
+          }
+        }
+      }
+    },
+    "comparativos-y-superlativos": {
+      "order_steps": {
+        "prompt": "Ordena cómo dices «Mbappé es el más peligroso»",
+        "steps": [
+          "Detecta que eliges al #1 de todos: superlativo",
+          "Revisa el adjetivo: dangerous es largo",
+          "Por ser largo usa the most, no -est",
+          "Queda: Mbappé is the most dangerous"
+        ],
+        "completion_feedback": "Primero decides si comparas a **dos** o eliges al **#1**, y luego el largo del adjetivo te dice si va -est o the most. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada comparación?",
+            "left_label": "Chainsaw Man",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Makima is stronger than Power",
+                "right": "Comparativo: -er + than"
+              },
+              {
+                "left": "Makima is more powerful than Aki",
+                "right": "Comparativo: more + than"
+              },
+              {
+                "left": "Denji is the bravest hunter",
+                "right": "Superlativo: the + -est"
+              },
+              {
+                "left": "Makima is the most powerful",
+                "right": "Superlativo: the most"
+              }
+            ],
+            "completion_feedback": "**than** cuando comparas a dos y **the** cuando eliges al #1; los adjetivos largos usan **more / the most**. Veamos la regla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada comparación?",
+            "left_label": "Debate de cracks",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Yamal is faster than Bellingham",
+                "right": "Comparativo: -er + than"
+              },
+              {
+                "left": "Yamal is the fastest",
+                "right": "Superlativo: the + -est"
+              },
+              {
+                "left": "Mbappé is the most dangerous",
+                "right": "Superlativo: the most"
+              },
+              {
+                "left": "Bellingham is better in the air",
+                "right": "Irregular: good → better"
+              }
+            ],
+            "completion_feedback": "**than** cuando comparas a dos y **the** cuando eliges al #1; los adjetivos largos usan **more / the most**. Veamos la regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada comparación?",
+            "left_label": "Debate de TXT",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Beomgyu's voice is higher than Taehyun's",
+                "right": "Comparativo: -er + than"
+              },
+              {
+                "left": "Yeonjun is a better dancer than Soobin",
+                "right": "Irregular: good → better"
+              },
+              {
+                "left": "Taehyun hits the highest note",
+                "right": "Superlativo: the + -est"
+              },
+              {
+                "left": "Yeonjun is the most talented",
+                "right": "Superlativo: the most"
+              }
+            ],
+            "completion_feedback": "**than** cuando comparas a dos y **the** cuando eliges al #1; los adjetivos largos usan **more / the most**. Veamos la regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada comparación?",
+            "left_label": "Brawlers",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "Shelly is stronger than Colt",
+                "right": "Comparativo: -er + than"
+              },
+              {
+                "left": "Mortis is more dangerous than Colt",
+                "right": "Comparativo: more + than"
+              },
+              {
+                "left": "El Primo is the tankiest",
+                "right": "Superlativo: the + -est"
+              },
+              {
+                "left": "Spike is the most powerful",
+                "right": "Superlativo: the most"
+              }
+            ],
+            "completion_feedback": "**than** cuando comparas a dos y **the** cuando eliges al #1; los adjetivos largos usan **more / the most**. Veamos la regla."
+          }
+        }
+      }
+    },
+    "sustantivos-contables-e-incontables": {
+      "order_steps": {
+        "prompt": "Ordena cómo preguntas «¿Cuánta experiencia necesitas?»",
+        "steps": [
+          "Ubica el sustantivo: experience",
+          "Revisa si tiene plural: no se cuenta uno por uno",
+          "Es incontable: usa How much",
+          "Queda: How much experience do you need?"
+        ],
+        "completion_feedback": "El **sustantivo** decide: si no se cuenta uno por uno, la pregunta lleva **How much**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Demon Slayer",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "three demons",
+                "right": "Contable: número y plural"
+              },
+              {
+                "left": "a lot of strength",
+                "right": "Incontable: sin plural"
+              },
+              {
+                "left": "How many techniques?",
+                "right": "How many + contable"
+              },
+              {
+                "left": "How much training?",
+                "right": "How much + incontable"
+              }
+            ],
+            "completion_feedback": "Si lo cuentas uno por uno es **contable** y preguntas con **How many**; si no, **How much**. Veamos la regla completa."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Stats de Lamine",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "two goals",
+                "right": "Contable: número y plural"
+              },
+              {
+                "left": "a lot of possession",
+                "right": "Incontable: sin plural"
+              },
+              {
+                "left": "How many assists?",
+                "right": "How many + contable"
+              },
+              {
+                "left": "How much distance?",
+                "right": "How much + incontable"
+              }
+            ],
+            "completion_feedback": "Si lo cuentas uno por uno es **contable** y preguntas con **How many**; si no, **How much**. Veamos la regla completa."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Colección NewJeans",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "eight photocards",
+                "right": "Contable: número y plural"
+              },
+              {
+                "left": "a lot of money",
+                "right": "Incontable: sin plural"
+              },
+              {
+                "left": "How many albums?",
+                "right": "How many + contable"
+              },
+              {
+                "left": "How much music?",
+                "right": "How much + incontable"
+              }
+            ],
+            "completion_feedback": "Si lo cuentas uno por uno es **contable** y preguntas con **How many**; si no, **How much**. Veamos la regla completa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué regla sigue cada frase?",
+            "left_label": "Inventario Genshin",
+            "right_label": "Regla",
+            "pairs": [
+              {
+                "left": "three weapons",
+                "right": "Contable: número y plural"
+              },
+              {
+                "left": "a lot of mora",
+                "right": "Incontable: sin plural"
+              },
+              {
+                "left": "How many characters?",
+                "right": "How many + contable"
+              },
+              {
+                "left": "How much experience?",
+                "right": "How much + incontable"
+              }
+            ],
+            "completion_feedback": "Si lo cuentas uno por uno es **contable** y preguntas con **How many**; si no, **How much**. Veamos la regla completa."
+          }
+        }
+      }
+    },
+    "futuro-will-y-going-to": {
+      "order_steps": {
+        "prompt": "Ordena cómo dices «Voy a entrenar mañana» (ya lo tenías planeado)",
+        "steps": [
+          "Detecta que es un plan decidido antes de hablar",
+          "Elige going to, no will",
+          "Pon el to be del sujeto: I am",
+          "Queda: I'm going to train tomorrow"
+        ],
+        "completion_feedback": "Primero decides si es **plan** o **decisión del momento**; eso elige entre going to y will. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase sobre el futuro?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "I'm going to seal the curse",
+                "right": "Plan ya decidido: going to"
+              },
+              {
+                "left": "I'll handle this one!",
+                "right": "Decisión del momento: will"
+              },
+              {
+                "left": "Gojo will win this fight",
+                "right": "Predicción: will"
+              },
+              {
+                "left": "«I'll handles it»",
+                "right": "Error: tras will va verbo base"
+              }
+            ],
+            "completion_feedback": "**going to** para lo que ya tenías planeado; **will** para lo que decides, prometes o predices al momento. Veamos la regla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase sobre el futuro?",
+            "left_label": "Rueda de prensa",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "Mbappé is going to start",
+                "right": "Plan ya decidido: going to"
+              },
+              {
+                "left": "Madrid will win 2-0",
+                "right": "Predicción: will"
+              },
+              {
+                "left": "«He will scores»",
+                "right": "Error: tras will va verbo base"
+              }
+            ],
+            "completion_feedback": "**going to** para lo que ya tenías planeado; **will** para lo que decides, prometes o predices al momento. Veamos la regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase sobre el futuro?",
+            "left_label": "Anuncio de SKZ",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "They're going to release an album",
+                "right": "Plan ya decidido: going to"
+              },
+              {
+                "left": "We'll visit Mexico, I promise!",
+                "right": "Promesa del momento: will"
+              },
+              {
+                "left": "«They're going to performs»",
+                "right": "Error: tras going to va verbo base"
+              }
+            ],
+            "completion_feedback": "**going to** para lo que ya tenías planeado; **will** para lo que decides, prometes o predices al momento. Veamos la regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase sobre el futuro?",
+            "left_label": "Ultimate Team",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "I'm going to open my packs",
+                "right": "Plan ya decidido: going to"
+              },
+              {
+                "left": "I'll put him in my eleven!",
+                "right": "Decisión del momento: will"
+              },
+              {
+                "left": "This squad will win the league",
+                "right": "Predicción: will"
+              }
+            ],
+            "completion_feedback": "**going to** para lo que ya tenías planeado; **will** para lo que decides, prometes o predices al momento. Veamos la regla."
+          }
+        }
+      }
+    },
+    "modales-can-must-should": {
+      "order_steps": {
+        "prompt": "Ordena cómo armas un consejo en inglés",
+        "steps": [
+          "Pon el sujeto: you",
+          "Elige el modal del consejo: should",
+          "Agrega el verbo en forma base: practice",
+          "Queda: You should practice more"
+        ],
+        "completion_feedback": "Sujeto, **modal** y luego el verbo **sin to, sin -s, sin -ing**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase con modal?",
+            "left_label": "All Might",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "You can jump very high",
+                "right": "can: habilidad"
+              },
+              {
+                "left": "You must control your power",
+                "right": "must: obligación"
+              },
+              {
+                "left": "You should train your body",
+                "right": "should: consejo"
+              },
+              {
+                "left": "«He can fights»",
+                "right": "Error: tras el modal va verbo base"
+              }
+            ],
+            "completion_feedback": "**can** es poder, **must** es obligación y **should** es consejo; después, siempre el verbo en **forma base**. Veamos la regla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase con modal?",
+            "left_label": "El vestidor",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "You can dribble past anyone",
+                "right": "can: habilidad"
+              },
+              {
+                "left": "You must respect the referee",
+                "right": "must: obligación"
+              },
+              {
+                "left": "You should pass more",
+                "right": "should: consejo"
+              },
+              {
+                "left": "«He can to score»",
+                "right": "Error: el modal no lleva to"
+              }
+            ],
+            "completion_feedback": "**can** es poder, **must** es obligación y **should** es consejo; después, siempre el verbo en **forma base**. Veamos la regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase con modal?",
+            "left_label": "Audición JYP",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "You can sing and dance",
+                "right": "can: habilidad"
+              },
+              {
+                "left": "You must arrive on time",
+                "right": "must: obligación"
+              },
+              {
+                "left": "You should practice expressions",
+                "right": "should: consejo"
+              },
+              {
+                "left": "«She can sings»",
+                "right": "Error: tras el modal va verbo base"
+              }
+            ],
+            "completion_feedback": "**can** es poder, **must** es obligación y **should** es consejo; después, siempre el verbo en **forma base**. Veamos la regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué expresa cada frase con modal?",
+            "left_label": "Primer Fortnite",
+            "right_label": "Expresa",
+            "pairs": [
+              {
+                "left": "You can build walls",
+                "right": "can: habilidad"
+              },
+              {
+                "left": "You must stay in the circle",
+                "right": "must: obligación"
+              },
+              {
+                "left": "You should land in a quiet area",
+                "right": "should: consejo"
+              },
+              {
+                "left": "«You can to build»",
+                "right": "Error: el modal no lleva to"
+              }
+            ],
+            "completion_feedback": "**can** es poder, **must** es obligación y **should** es consejo; después, siempre el verbo en **forma base**. Veamos la regla."
+          }
+        }
+      }
+    },
+    "adverbios-de-frecuencia-y-de-modo": {
+      "order_steps": {
+        "prompt": "Ordena las palabras de «Él siempre pelea con valentía»",
+        "steps": [
+          "Pon el sujeto: He",
+          "El de frecuencia va antes del verbo: always",
+          "Luego el verbo: fights",
+          "El de modo va al final: bravely"
+        ],
+        "completion_feedback": "Frecuencia **antes** del verbo, modo **después**: He always fights bravely. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué dice el adverbio de cada frase?",
+            "left_label": "Tanjiro",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "He always protects Nezuko",
+                "right": "Frecuencia: siempre"
+              },
+              {
+                "left": "He never gives up",
+                "right": "Frecuencia: nunca"
+              },
+              {
+                "left": "He fights bravely",
+                "right": "Modo: con valentía"
+              },
+              {
+                "left": "He moves quickly",
+                "right": "Modo: rápido"
+              }
+            ],
+            "completion_feedback": "Los de **frecuencia** dicen qué tan seguido y van **antes** del verbo; los de **modo** dicen cómo y van **después**. Veamos la regla."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué dice el adverbio de cada frase?",
+            "left_label": "Bellingham",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "He usually scores in big games",
+                "right": "Frecuencia: normalmente"
+              },
+              {
+                "left": "He never hides",
+                "right": "Frecuencia: nunca"
+              },
+              {
+                "left": "He passes accurately",
+                "right": "Modo: con precisión"
+              },
+              {
+                "left": "He heads the ball powerfully",
+                "right": "Modo: con fuerza"
+              }
+            ],
+            "completion_feedback": "Los de **frecuencia** dicen qué tan seguido y van **antes** del verbo; los de **modo** dicen cómo y van **después**. Veamos la regla."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué dice el adverbio de cada frase?",
+            "left_label": "SEVENTEEN",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "We always practice",
+                "right": "Frecuencia: siempre"
+              },
+              {
+                "left": "We never skip rehearsals",
+                "right": "Frecuencia: nunca"
+              },
+              {
+                "left": "Hoshi dances perfectly",
+                "right": "Modo: perfectamente"
+              },
+              {
+                "left": "They perform energetically",
+                "right": "Modo: con energía"
+              }
+            ],
+            "completion_feedback": "Los de **frecuencia** dicen qué tan seguido y van **antes** del verbo; los de **modo** dicen cómo y van **después**. Veamos la regla."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué dice el adverbio de cada frase?",
+            "left_label": "Zelda: TotK",
+            "right_label": "Significa",
+            "pairs": [
+              {
+                "left": "Link always cooks before a fight",
+                "right": "Frecuencia: siempre"
+              },
+              {
+                "left": "He usually explores every cave",
+                "right": "Frecuencia: normalmente"
+              },
+              {
+                "left": "He builds carefully",
+                "right": "Modo: con cuidado"
+              },
+              {
+                "left": "He climbs slowly",
+                "right": "Modo: despacio"
+              }
+            ],
+            "completion_feedback": "Los de **frecuencia** dicen qué tan seguido y van **antes** del verbo; los de **modo** dicen cómo y van **después**. Veamos la regla."
+          }
+        }
+      }
+    },
+    "vocabulario-viajes-comida-y-salud": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra?",
+            "left_label": "Thousand Sunny",
+            "right_label": "En español",
+            "pairs": [
+              {
+                "left": "sail",
+                "right": "Navegar"
+              },
+              {
+                "left": "hungry",
+                "right": "Con hambre"
+              },
+              {
+                "left": "sick",
+                "right": "Enfermo"
+              },
+              {
+                "left": "heal",
+                "right": "Curar"
+              }
+            ],
+            "completion_feedback": "Viajes, comida y salud: aprenderlas **por campos** te ayuda a recordar las que van juntas. Veamos cada grupo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra?",
+            "left_label": "Viaje al Mundial",
+            "right_label": "En español",
+            "pairs": [
+              {
+                "left": "airport",
+                "right": "Aeropuerto"
+              },
+              {
+                "left": "vegetables",
+                "right": "Verduras"
+              },
+              {
+                "left": "injured",
+                "right": "Lesionado"
+              },
+              {
+                "left": "pain",
+                "right": "Dolor"
+              }
+            ],
+            "completion_feedback": "Viajes, comida y salud: aprenderlas **por campos** te ayuda a recordar las que van juntas. Veamos cada grupo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra?",
+            "left_label": "Gira de SKZ",
+            "right_label": "En español",
+            "pairs": [
+              {
+                "left": "flight",
+                "right": "Vuelo"
+              },
+              {
+                "left": "luggage",
+                "right": "Equipaje"
+              },
+              {
+                "left": "spicy",
+                "right": "Picante"
+              },
+              {
+                "left": "tired",
+                "right": "Cansado"
+              }
+            ],
+            "completion_feedback": "Viajes, comida y salud: aprenderlas **por campos** te ayuda a recordar las que van juntas. Veamos cada grupo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué significa cada palabra?",
+            "left_label": "Wandering Trader",
+            "right_label": "En español",
+            "pairs": [
+              {
+                "left": "trip",
+                "right": "Viaje"
+              },
+              {
+                "left": "bread",
+                "right": "Pan"
+              },
+              {
+                "left": "hungry",
+                "right": "Con hambre"
+              },
+              {
+                "left": "heal",
+                "right": "Curar"
+              }
+            ],
+            "completion_feedback": "Viajes, comida y salud: aprenderlas **por campos** te ayuda a recordar las que van juntas. Veamos cada grupo."
+          }
+        }
+      }
+    }
+  }
+}
