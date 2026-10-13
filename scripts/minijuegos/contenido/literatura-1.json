@@ -1,0 +1,920 @@
+{
+  "subject": "literatura-1",
+  "topics": {
+    "generos-literarios": {
+      "order_steps": {
+        "prompt": "Clasifica un fragmento por su género",
+        "steps": [
+          "Lee el fragmento completo",
+          "¿Un narrador cuenta hechos? Si sí, es narrativo",
+          "Si no, ¿un yo expresa sentimientos? Si sí, es lírico",
+          "Si no, ¿avanza solo con diálogo? Entonces es dramático"
+        ],
+        "completion_feedback": "Pregunta en orden: ¿hay **narrador** que cuenta? → **narrativo**. ¿Un **yo** expresa sentimientos? → **lírico**. ¿Avanza por **diálogo**? → **dramático**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escena Forger",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "Un narrador cuenta la misión de Loid",
+                "right": "Narrativo"
+              },
+              {
+                "left": "Anya confiesa su cariño en un 'yo'",
+                "right": "Lírico"
+              },
+              {
+                "left": "Diálogo veloz entre Loid, Yor y Anya",
+                "right": "Dramático"
+              }
+            ],
+            "completion_feedback": "Tres **géneros literarios**: **narrativo** (un narrador cuenta hechos), **lírico** (un yo poético expresa sentimientos) y **dramático** (la historia avanza por diálogo, para representarse)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Debut de Mbappé",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "El narrador relata el gol en orden",
+                "right": "Narrativo"
+              },
+              {
+                "left": "Un fan expresa su emoción en versos",
+                "right": "Lírico"
+              },
+              {
+                "left": "Pregunta y respuesta en sala de prensa",
+                "right": "Dramático"
+              }
+            ],
+            "completion_feedback": "Tres **géneros literarios**: **narrativo** (un narrador cuenta hechos), **lírico** (un yo poético expresa sentimientos) y **dramático** (la historia avanza por diálogo, para representarse)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Universo ENHYPEN",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "El concept trailer narrado en off",
+                "right": "Narrativo"
+              },
+              {
+                "left": "La letra de 'Bite Me' en primera persona",
+                "right": "Lírico"
+              },
+              {
+                "left": "Teaser donde solo dialogan y actúan",
+                "right": "Dramático"
+              }
+            ],
+            "completion_feedback": "Tres **géneros literarios**: **narrativo** (un narrador cuenta hechos), **lírico** (un yo poético expresa sentimientos) y **dramático** (la historia avanza por diálogo, para representarse)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Zelda: TotK",
+            "right_label": "Género",
+            "pairs": [
+              {
+                "left": "Cinemática que cuenta la caída de Zelda",
+                "right": "Narrativo"
+              },
+              {
+                "left": "Inscripción donde Zelda expresa su miedo",
+                "right": "Lírico"
+              },
+              {
+                "left": "Charla con los sabios, puro diálogo",
+                "right": "Dramático"
+              }
+            ],
+            "completion_feedback": "Tres **géneros literarios**: **narrativo** (un narrador cuenta hechos), **lírico** (un yo poético expresa sentimientos) y **dramático** (la historia avanza por diálogo, para representarse)."
+          }
+        }
+      }
+    },
+    "el-genero-narrativo-cuento-y-novela": {
+      "order_steps": {
+        "prompt": "Ordena las partes de un one-shot",
+        "steps": [
+          "Planteamiento: un espadachín llega a una aldea amenazada",
+          "Nudo: el demonio ataca y el espadachín duda",
+          "Clímax: lo enfrenta en la última página",
+          "Desenlace: la aldea queda a salvo y la historia cierra"
+        ],
+        "completion_feedback": "El **cuento** es breve y se concentra en **un solo conflicto**: planteamiento, nudo, clímax y desenlace llegan rápido. La **novela** encadena muchos conflictos y personajes. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Formato",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Un one-shot de 40 páginas",
+                "right": "Cuento"
+              },
+              {
+                "left": "One Piece y sus más de mil capítulos",
+                "right": "Novela"
+              },
+              {
+                "left": "Un solo conflicto que se resuelve ya",
+                "right": "Rasgo del cuento"
+              },
+              {
+                "left": "Arcos como Marineford y Wano",
+                "right": "Rasgo de la novela"
+              }
+            ],
+            "completion_feedback": "**Cuento**: breve, un conflicto, pocos personajes. **Novela**: extensa, varias tramas entrelazadas y muchos personajes que evolucionan. Ambos son **género narrativo**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Texto",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "El golazo de Lamine en un párrafo",
+                "right": "Cuento"
+              },
+              {
+                "left": "Su biografía desde La Masía",
+                "right": "Novela"
+              },
+              {
+                "left": "Una sola acción central",
+                "right": "Rasgo del cuento"
+              },
+              {
+                "left": "Decenas de personas y etapas",
+                "right": "Rasgo de la novela"
+              }
+            ],
+            "completion_feedback": "**Cuento**: breve, un conflicto, pocos personajes. **Novela**: extensa, varias tramas entrelazadas y muchos personajes que evolucionan. Ambos son **género narrativo**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Formato",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Un especial de un solo episodio",
+                "right": "Cuento"
+              },
+              {
+                "left": "Un K-drama de 16 capítulos",
+                "right": "Novela"
+              },
+              {
+                "left": "Una confesión en una sola tarde",
+                "right": "Un conflicto"
+              },
+              {
+                "left": "Segunda pareja, secreto y rivalidad",
+                "right": "Tramas entrelazadas"
+              }
+            ],
+            "completion_feedback": "**Cuento**: breve, un conflicto, pocos personajes. **Novela**: extensa, varias tramas entrelazadas y muchos personajes que evolucionan. Ambos son **género narrativo**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "Equivale a",
+            "pairs": [
+              {
+                "left": "Una partida en Ascent",
+                "right": "Cuento"
+              },
+              {
+                "left": "Todo el lore de Valorant",
+                "right": "Novela"
+              },
+              {
+                "left": "Plantar la Spike, un solo objetivo",
+                "right": "Un conflicto"
+              },
+              {
+                "left": "Tierra vs. Omega y traiciones",
+                "right": "Varias tramas"
+              }
+            ],
+            "completion_feedback": "**Cuento**: breve, un conflicto, pocos personajes. **Novela**: extensa, varias tramas entrelazadas y muchos personajes que evolucionan. Ambos son **género narrativo**."
+          }
+        }
+      }
+    },
+    "elementos-de-la-narracion": {
+      "order_steps": {
+        "prompt": "Ordena la trama del primer arco de Solo Leveling",
+        "steps": [
+          "Planteamiento: Jinwoo es el cazador más débil",
+          "Nudo: queda atrapado en la mazmorra doble",
+          "Clímax: enfrenta al jefe que casi lo mata",
+          "Desenlace: sobrevive y obtiene el Sistema"
+        ],
+        "completion_feedback": "La **acción** de una narración sigue un orden: **planteamiento** (situación inicial), **nudo** (conflicto), **clímax** (máxima tensión) y **desenlace**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Escena de Jinwoo",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "'Yo no voy a morir aquí'",
+                "right": "Narrador en 1.ª persona"
+              },
+              {
+                "left": "Jinwoo y el jefe de la mazmorra",
+                "right": "Personajes"
+              },
+              {
+                "left": "La mazmorra de doble dificultad",
+                "right": "Espacio"
+              },
+              {
+                "left": "Esa noche",
+                "right": "Tiempo"
+              }
+            ],
+            "completion_feedback": "Cinco elementos de la narración: **narrador** (quién cuenta), **personajes** (quiénes actúan), **acción** (qué pasa), **espacio** (dónde) y **tiempo** (cuándo)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Documental",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "La voz del documental",
+                "right": "Narrador en 3.ª persona"
+              },
+              {
+                "left": "Lamine, sus técnicos y sus críticos",
+                "right": "Personajes"
+              },
+              {
+                "left": "La Masía y el Camp Nou",
+                "right": "Espacio"
+              },
+              {
+                "left": "De su niñez a hoy",
+                "right": "Tiempo"
+              }
+            ],
+            "completion_feedback": "Cinco elementos de la narración: **narrador** (quién cuenta), **personajes** (quiénes actúan), **acción** (qué pasa), **espacio** (dónde) y **tiempo** (cuándo)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "K-drama escolar",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "La voz en off de la protagonista",
+                "right": "Narradora en 1.ª persona"
+              },
+              {
+                "left": "Un malentendido que crece",
+                "right": "Acción"
+              },
+              {
+                "left": "La azotea de la escuela",
+                "right": "Espacio"
+              },
+              {
+                "left": "El último año escolar",
+                "right": "Tiempo"
+              }
+            ],
+            "completion_feedback": "Cinco elementos de la narración: **narrador** (quién cuenta), **personajes** (quiénes actúan), **acción** (qué pasa), **espacio** (dónde) y **tiempo** (cuándo)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fortnite",
+            "right_label": "Elemento",
+            "pairs": [
+              {
+                "left": "La voz de la cinemática",
+                "right": "Narrador externo"
+              },
+              {
+                "left": "Jonesy y el villano",
+                "right": "Personajes"
+              },
+              {
+                "left": "Tilted Towers",
+                "right": "Espacio"
+              },
+              {
+                "left": "Antes de la medianoche",
+                "right": "Tiempo"
+              }
+            ],
+            "completion_feedback": "Cinco elementos de la narración: **narrador** (quién cuenta), **personajes** (quiénes actúan), **acción** (qué pasa), **espacio** (dónde) y **tiempo** (cuándo)."
+          }
+        }
+      }
+    },
+    "el-genero-lirico-la-poesia": {
+      "order_steps": {
+        "prompt": "Ordena los versos del cántico",
+        "steps": [
+          "Verde es mi sangre,",
+          "verde mi pasión,",
+          "contigo, México,",
+          "late mi corazón."
+        ],
+        "completion_feedback": "En la **lírica**, un **yo poético** expresa sentimientos en **versos**. Aquí la repetición ('verde… verde…') y la **rima** pasión/corazón dan musicalidad. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Opening de AoT",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "'Atado a estos muros nací'",
+                "right": "Verso"
+              },
+              {
+                "left": "El 'yo' que grita su rabia",
+                "right": "Yo poético"
+              },
+              {
+                "left": "'cielo' y 'suelo'",
+                "right": "Rima"
+              },
+              {
+                "left": "Las cuatro líneas juntas",
+                "right": "Estrofa"
+              }
+            ],
+            "completion_feedback": "**Yo poético**: la voz que siente. **Verso**: cada línea. **Estrofa**: grupo de versos. **Rima**: sonidos iguales al final. La lírica **expresa** emociones, no narra hechos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cántico",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "'Aunque pierda o gane, yo te seguiré'",
+                "right": "Yo poético"
+              },
+              {
+                "left": "'seguiré' y 'soltaré'",
+                "right": "Rima"
+              },
+              {
+                "left": "Lealtad y amor al equipo",
+                "right": "Sentimiento expresado"
+              },
+              {
+                "left": "No dice quién metió gol",
+                "right": "No narra hechos"
+              }
+            ],
+            "completion_feedback": "**Yo poético**: la voz que siente. **Verso**: cada línea. **Estrofa**: grupo de versos. **Rima**: sonidos iguales al final. La lírica **expresa** emociones, no narra hechos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Letra de K-pop",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "'calma' y 'alma'",
+                "right": "Rima"
+              },
+              {
+                "left": "'Siete días… siete noches'",
+                "right": "Repetición"
+              },
+              {
+                "left": "'Mi corazón repite tu nombre'",
+                "right": "Yo poético"
+              },
+              {
+                "left": "Anhelo por alguien",
+                "right": "Sentimiento expresado"
+              }
+            ],
+            "completion_feedback": "**Yo poético**: la voz que siente. **Verso**: cada línea. **Estrofa**: grupo de versos. **Rima**: sonidos iguales al final. La lírica **expresa** emociones, no narra hechos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poema gamer",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "'despierto' y 'abierto'",
+                "right": "Rima"
+              },
+              {
+                "left": "'Muero y renazco en mi cama de lana'",
+                "right": "Verso"
+              },
+              {
+                "left": "El deseo de tener respawn",
+                "right": "Sentimiento expresado"
+              },
+              {
+                "left": "'mil veces caigo, mil veces despierto'",
+                "right": "Repetición"
+              }
+            ],
+            "completion_feedback": "**Yo poético**: la voz que siente. **Verso**: cada línea. **Estrofa**: grupo de versos. **Rima**: sonidos iguales al final. La lírica **expresa** emociones, no narra hechos."
+          }
+        }
+      }
+    },
+    "figuras-retoricas": {
+      "order_steps": {
+        "prompt": "Convierte una frase literal en figura",
+        "steps": [
+          "Literal: Mbappé corre muy rápido",
+          "Símil: compáralo con nexo, 'corre como un cohete'",
+          "Metáfora: quita el 'como', 'Mbappé es un cohete'"
+        ],
+        "completion_feedback": "Del **lenguaje literal** pasas al **símil** (compara con 'como') y luego a la **metáfora** (identifica A con B sin nexo). Quitar el 'como' es lo que los separa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Jujutsu Kaisen",
+            "right_label": "Figura",
+            "pairs": [
+              {
+                "left": "'Gojo es un dios entre hechiceros'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Esperé un millón de años'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'La energía maldita gritaba'",
+                "right": "Personificación"
+              },
+              {
+                "left": "'Pelea como una tormenta'",
+                "right": "Símil"
+              }
+            ],
+            "completion_feedback": "**Símil**: compara con 'como'. **Metáfora**: identifica A con B sin nexo. **Hipérbole**: exagera. **Personificación**: da acciones humanas a lo inanimado. **Anáfora**: repite al inicio."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Narración",
+            "right_label": "Figura",
+            "pairs": [
+              {
+                "left": "'Mbappé es un cohete'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Corrió un millón de kilómetros'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'El balón lloraba en la red'",
+                "right": "Personificación"
+              },
+              {
+                "left": "'Arranca como un rayo'",
+                "right": "Símil"
+              }
+            ],
+            "completion_feedback": "**Símil**: compara con 'como'. **Metáfora**: identifica A con B sin nexo. **Hipérbole**: exagera. **Personificación**: da acciones humanas a lo inanimado. **Anáfora**: repite al inicio."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comentarios DIVE",
+            "right_label": "Figura",
+            "pairs": [
+              {
+                "left": "'Tu voz es fuego'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Wonyoung brilla más que el sol'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'Brilla como una estrella'",
+                "right": "Símil"
+              },
+              {
+                "left": "'Brilla aquí, brilla allá, brilla siempre'",
+                "right": "Anáfora"
+              }
+            ],
+            "completion_feedback": "**Símil**: compara con 'como'. **Metáfora**: identifica A con B sin nexo. **Hipérbole**: exagera. **Personificación**: da acciones humanas a lo inanimado. **Anáfora**: repite al inicio."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Chat de Brawl",
+            "right_label": "Figura",
+            "pairs": [
+              {
+                "left": "'Mi Shelly es un tanque'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Te dije MIL VECES que cubrieras'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "'La Súper de El Primo RUGE'",
+                "right": "Personificación"
+              },
+              {
+                "left": "'El láser vuela como un rayo'",
+                "right": "Símil"
+              }
+            ],
+            "completion_feedback": "**Símil**: compara con 'como'. **Metáfora**: identifica A con B sin nexo. **Hipérbole**: exagera. **Personificación**: da acciones humanas a lo inanimado. **Anáfora**: repite al inicio."
+          }
+        }
+      }
+    },
+    "metrica-rima-y-ritmo": {
+      "order_steps": {
+        "prompt": "Cuenta las sílabas métricas de un verso",
+        "steps": [
+          "Separa las sílabas gramaticales",
+          "Une las sinalefas: vocal final con vocal inicial",
+          "Revisa la última palabra: aguda +1, esdrújula −1",
+          "Nombra el verso: 8 sílabas = octosílabo"
+        ],
+        "completion_feedback": "Para medir un verso cuenta sílabas **gramaticales**, resta las **sinalefas**, ajusta el final (**aguda +1**, **llana 0**, **esdrújula −1**) y nombra el resultado. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Verso o final",
+            "right_label": "Resultado",
+            "pairs": [
+              {
+                "left": "'Jinwoo invoca a su ejército'",
+                "right": "7: heptasílabo"
+              },
+              {
+                "left": "'Sung Jinwoo despierta al fin'",
+                "right": "8: octosílabo"
+              },
+              {
+                "left": "Final llano, como 'grada'",
+                "right": "No se ajusta"
+              },
+              {
+                "left": "Final agudo, como 'fin'",
+                "right": "Suma 1 sílaba"
+              }
+            ],
+            "completion_feedback": "**Sinalefa**: une vocal final e inicial (−1). Final **agudo** suma 1, **esdrújulo** resta 1. 8 sílabas = **octosílabo**, 11 = **endecasílabo**. **Rima**: sonidos iguales al final."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Concepto",
+            "right_label": "Ejemplo",
+            "pairs": [
+              {
+                "left": "Sinalefa",
+                "right": "'La afición': La + a se unen"
+              },
+              {
+                "left": "Octosílabo",
+                "right": "'La afición ruge en la grada'"
+              },
+              {
+                "left": "Rima",
+                "right": "'pasión' con 'corazón'"
+              },
+              {
+                "left": "Ritmo",
+                "right": "Saltar en las sílabas fuertes"
+              }
+            ],
+            "completion_feedback": "**Sinalefa**: une vocal final e inicial (−1). Final **agudo** suma 1, **esdrújulo** resta 1. 8 sílabas = **octosílabo**, 11 = **endecasílabo**. **Rima**: sonidos iguales al final."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Al grabar la barra",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Que quepa justa en el compás",
+                "right": "Métrica"
+              },
+              {
+                "left": "Que el final suene como la barra anterior",
+                "right": "Rima"
+              },
+              {
+                "left": "Acentos sobre el golpe del beat",
+                "right": "Ritmo"
+              },
+              {
+                "left": "'Seungmin sostiene la nota final'",
+                "right": "Endecasílabo"
+              }
+            ],
+            "completion_feedback": "**Sinalefa**: une vocal final e inicial (−1). Final **agudo** suma 1, **esdrújulo** resta 1. 8 sílabas = **octosílabo**, 11 = **endecasílabo**. **Rima**: sonidos iguales al final."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Canción de Venti",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "'El viento canta en la altura'",
+                "right": "Octosílabo"
+              },
+              {
+                "left": "'altura' y 'murmura'",
+                "right": "Rima consonante"
+              },
+              {
+                "left": "Marcar con el pie los golpes",
+                "right": "Ritmo"
+              },
+              {
+                "left": "'canta en' en un golpe de voz",
+                "right": "Sinalefa"
+              }
+            ],
+            "completion_feedback": "**Sinalefa**: une vocal final e inicial (−1). Final **agudo** suma 1, **esdrújulo** resta 1. 8 sílabas = **octosílabo**, 11 = **endecasílabo**. **Rima**: sonidos iguales al final."
+          }
+        }
+      }
+    },
+    "el-genero-dramatico-tragedia-y-comedia": {
+      "order_steps": {
+        "prompt": "Ordena la tragedia de Marineford",
+        "steps": [
+          "Situación: Luffy llega a rescatar a su hermano Ace",
+          "Conflicto: la Marina entera se interpone",
+          "Clímax: Ace se pone en medio para proteger a Luffy",
+          "Desenlace: Ace muere y Luffy se derrumba"
+        ],
+        "completion_feedback": "La **tragedia** lleva a un héroe por un **conflicto grave** hasta un **desenlace doloroso** que provoca **catarsis**. La **comedia** resuelve enredos ligeros con final feliz. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Ace muere protegiendo a Luffy",
+                "right": "Tragedia"
+              },
+              {
+                "left": "Zoro se pierde con una sola salida",
+                "right": "Comedia"
+              },
+              {
+                "left": "El lector llora y se conmueve",
+                "right": "Catarsis"
+              },
+              {
+                "left": "Usopp inventa mentiras gigantes",
+                "right": "Enredo ligero"
+              }
+            ],
+            "completion_feedback": "**Tragedia**: héroe en conflicto grave, desenlace doloroso y **catarsis**. **Comedia**: personajes comunes, enredos ligeros y final feliz. Ambas son **género dramático**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En la cancha",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Fallar el penal de la final",
+                "right": "Tono trágico"
+              },
+              {
+                "left": "Dos compañeros chocan y se ríen",
+                "right": "Tono cómico"
+              },
+              {
+                "left": "La afición llora la derrota",
+                "right": "Catarsis"
+              }
+            ],
+            "completion_feedback": "**Tragedia**: héroe en conflicto grave, desenlace doloroso y **catarsis**. **Comedia**: personajes comunes, enredos ligeros y final feliz. Ambas son **género dramático**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Crash Landing",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Seung-jun muere protegiendo a Dan",
+                "right": "Tragedia"
+              },
+              {
+                "left": "Las señoras espían por la ventana",
+                "right": "Comedia"
+              },
+              {
+                "left": "Amor prohibido por la frontera",
+                "right": "Conflicto grave"
+              },
+              {
+                "left": "Parrillada con bromas entre soldados",
+                "right": "Final feliz"
+              }
+            ],
+            "completion_feedback": "**Tragedia**: héroe en conflicto grave, desenlace doloroso y **catarsis**. **Comedia**: personajes comunes, enredos ligeros y final feliz. Ambas son **género dramático**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Spider-Man 2",
+            "right_label": "Registro",
+            "pairs": [
+              {
+                "left": "Peter cae bajo el traje negro",
+                "right": "Tragedia"
+              },
+              {
+                "left": "Un chiste mientras amarra a un ladrón",
+                "right": "Comedia"
+              },
+              {
+                "left": "Miles decide si salvar a Martin Li",
+                "right": "Dilema grave"
+              },
+              {
+                "left": "Angustia y compasión del jugador",
+                "right": "Catarsis"
+              }
+            ],
+            "completion_feedback": "**Tragedia**: héroe en conflicto grave, desenlace doloroso y **catarsis**. **Comedia**: personajes comunes, enredos ligeros y final feliz. Ambas son **género dramático**."
+          }
+        }
+      }
+    },
+    "panorama-de-corrientes-literarias": {
+      "order_steps": {
+        "prompt": "Ordena las corrientes en el tiempo",
+        "steps": [
+          "Neoclasicismo: razón, orden y equilibrio (siglo XVIII)",
+          "Romanticismo: emoción, libertad y naturaleza",
+          "Realismo: la sociedad tal como es",
+          "Vanguardias: ruptura y experimentación (siglo XX)"
+        ],
+        "completion_feedback": "Orden histórico: **Neoclasicismo** (razón), **Romanticismo** (emoción), **Realismo** (sociedad tal cual) y **Vanguardias** como el **Surrealismo** (ruptura y sueños). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Manga",
+            "right_label": "Se parece a",
+            "pairs": [
+              {
+                "left": "Chainsaw Man: miseria sin filtros",
+                "right": "Realismo"
+              },
+              {
+                "left": "Escenas oníricas que rompen la lógica",
+                "right": "Surrealismo"
+              },
+              {
+                "left": "Ternura y emoción de los Forger",
+                "right": "Romanticismo"
+              }
+            ],
+            "completion_feedback": "**Neoclasicismo**: razón y orden. **Romanticismo**: emoción, libertad y naturaleza. **Realismo**: la sociedad tal como es. **Surrealismo** (vanguardia): sueños y ruptura de la lógica."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Era del futbol",
+            "right_label": "Se parece a",
+            "pairs": [
+              {
+                "left": "Orden táctico rígido y equilibrio",
+                "right": "Neoclasicismo"
+              },
+              {
+                "left": "El jugador-artista y su magia",
+                "right": "Romanticismo"
+              },
+              {
+                "left": "Documental de canchas de tierra",
+                "right": "Realismo"
+              },
+              {
+                "left": "Esquemas que rompen todo lo anterior",
+                "right": "Vanguardias"
+              }
+            ],
+            "completion_feedback": "**Neoclasicismo**: razón y orden. **Romanticismo**: emoción, libertad y naturaleza. **Realismo**: la sociedad tal como es. **Surrealismo** (vanguardia): sueños y ruptura de la lógica."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Era o MV",
+            "right_label": "Se parece a",
+            "pairs": [
+              {
+                "left": "Era melancólica e introspectiva",
+                "right": "Romanticismo"
+              },
+              {
+                "left": "MV con relojes derretidos",
+                "right": "Surrealismo"
+              },
+              {
+                "left": "Letras sobre la presión real de idols",
+                "right": "Realismo"
+              }
+            ],
+            "completion_feedback": "**Neoclasicismo**: razón y orden. **Romanticismo**: emoción, libertad y naturaleza. **Realismo**: la sociedad tal como es. **Surrealismo** (vanguardia): sueños y ruptura de la lógica."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Zelda",
+            "right_label": "Se parece a",
+            "pairs": [
+              {
+                "left": "Mazmorras simétricas y reglas claras",
+                "right": "Neoclasicismo"
+              },
+              {
+                "left": "BotW: naturaleza, libertad y emoción",
+                "right": "Romanticismo"
+              },
+              {
+                "left": "Obreros en una ciudad sucia",
+                "right": "Realismo"
+              },
+              {
+                "left": "Un mundo ilógico como un sueño",
+                "right": "Surrealismo"
+              }
+            ],
+            "completion_feedback": "**Neoclasicismo**: razón y orden. **Romanticismo**: emoción, libertad y naturaleza. **Realismo**: la sociedad tal como es. **Surrealismo** (vanguardia): sueños y ruptura de la lógica."
+          }
+        }
+      }
+    }
+  }
+}
