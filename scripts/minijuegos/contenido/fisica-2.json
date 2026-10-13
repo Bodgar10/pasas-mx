@@ -1,0 +1,1067 @@
+{
+  "subject": "fisica-2",
+  "topics": {
+    "trabajo-energia-y-potencia": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la potencia de quien sube una caja de 10 kg a 2 m en 4 s",
+        "steps": [
+          "Calcula la fuerza para levantarla, su peso: 10 × 9.8 = 98 N",
+          "Calcula el trabajo: W = 98 N × 2 m = 196 J",
+          "Divide entre el tiempo: P = 196 J ÷ 4 s",
+          "Resultado: P = 49 W"
+        ],
+        "completion_feedback": "Primero el **trabajo** (F·d) y luego la **potencia** (W/t): hacerlo más rápido da más potencia. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Salto de Tanjiro",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Tanjiro arriba y quieto",
+                "right": "Toda es potencial"
+              },
+              {
+                "left": "50 kg a 10 m",
+                "right": "Ep = 4,900 J"
+              },
+              {
+                "left": "A 5 m de altura",
+                "right": "2,450 J de Ep"
+              },
+              {
+                "left": "Justo antes del suelo",
+                "right": "Ec = 4,900 J"
+              }
+            ],
+            "completion_feedback": "**Trabajo** W = F·d; energía **potencial** Ep = m·g·h; **cinética** Ec = ½·m·v²; **potencia** P = W/t, en watts."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Disparo de Mbappé",
+            "right_label": "Potencia",
+            "pairs": [
+              {
+                "left": "600 J en 0.2 s",
+                "right": "3,000 W"
+              },
+              {
+                "left": "Fórmula de la potencia",
+                "right": "P = W / t"
+              },
+              {
+                "left": "Mismo trabajo en menos tiempo",
+                "right": "Más potencia"
+              },
+              {
+                "left": "Unidad de la potencia",
+                "right": "Watt"
+              }
+            ],
+            "completion_feedback": "**Trabajo** W = F·d; energía **potencial** Ep = m·g·h; **cinética** Ec = ½·m·v²; **potencia** P = W/t, en watts."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Equipo del show",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Altavoz de 20 kg a 5 m",
+                "right": "Ep = 980 J"
+              },
+              {
+                "left": "Un miembro corriendo",
+                "right": "Energía cinética"
+              },
+              {
+                "left": "Altavoz en lo alto",
+                "right": "Energía potencial"
+              },
+              {
+                "left": "Subirlo al doble de altura",
+                "right": "Doble de Ep"
+              }
+            ],
+            "completion_feedback": "**Trabajo** W = F·d; energía **potencial** Ep = m·g·h; **cinética** Ec = ½·m·v²; **potencia** P = W/t, en watts."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Pistón Minecraft",
+            "right_label": "Trabajo",
+            "pairs": [
+              {
+                "left": "50 N a lo largo de 4 m",
+                "right": "200 J"
+              },
+              {
+                "left": "Bloque que no se mueve",
+                "right": "Trabajo cero"
+              },
+              {
+                "left": "Fórmula del trabajo",
+                "right": "W = F · d"
+              },
+              {
+                "left": "Unidad del trabajo",
+                "right": "Joule"
+              }
+            ],
+            "completion_feedback": "**Trabajo** W = F·d; energía **potencial** Ep = m·g·h; **cinética** Ec = ½·m·v²; **potencia** P = W/t, en watts."
+          }
+        }
+      }
+    },
+    "conservacion-de-la-energia-mecanica": {
+      "order_steps": {
+        "prompt": "Ordena cómo hallas la velocidad de una bola que cae 5 m desde el reposo",
+        "steps": [
+          "Arriba toda la energía es potencial: Ep = m·g·h",
+          "Abajo toda se vuelve cinética: ½·m·v² = m·g·h",
+          "La masa se cancela: v² = 2·g·h = 98",
+          "Saca la raíz: v ≈ 9.9 m/s"
+        ],
+        "completion_feedback": "La energía solo **cambia de forma**: lo que pierde la potencial lo gana la cinética. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Picada de Deku",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "60 kg desde 5 m",
+                "right": "2,940 J"
+              },
+              {
+                "left": "60 kg desde 20 m",
+                "right": "11,760 J"
+              },
+              {
+                "left": "Cuadruplicar la altura",
+                "right": "Cuatro veces la Ec"
+              },
+              {
+                "left": "En el punto más alto",
+                "right": "v = 0: toda es Ep"
+              }
+            ],
+            "completion_feedback": "Sin fricción, la **energía mecánica** Ep + Ec se conserva: la potencial se vuelve cinética al bajar y al revés al subir."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Balonazo al cielo",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "Sale con 25 J de Ec",
+                "right": "Arriba tiene 25 J de Ep"
+              },
+              {
+                "left": "Vertical en lo más alto",
+                "right": "Ec = 0"
+              },
+              {
+                "left": "Sin resistencia del aire",
+                "right": "Vuelve con la misma rapidez"
+              },
+              {
+                "left": "Ec + Ep",
+                "right": "Siempre suma lo mismo"
+              }
+            ],
+            "completion_feedback": "Sin fricción, la **energía mecánica** Ep + Ec se conserva: la potencial se vuelve cinética al bajar y al revés al subir."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Columpio",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "40 kg desde 1.8 m",
+                "right": "705.6 J"
+              },
+              {
+                "left": "Punto más alto",
+                "right": "Se detiene un instante"
+              },
+              {
+                "left": "Punto más bajo",
+                "right": "Máxima rapidez"
+              },
+              {
+                "left": "Sin que nadie empuje",
+                "right": "Sube a la misma altura"
+              }
+            ],
+            "completion_feedback": "Sin fricción, la **energía mecánica** Ep + Ec se conserva: la potencial se vuelve cinética al bajar y al revés al subir."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Montaña rusa",
+            "right_label": "Energía",
+            "pairs": [
+              {
+                "left": "100 kg desde 20 m",
+                "right": "19,600 J de Ec abajo"
+              },
+              {
+                "left": "Peso del carrito",
+                "right": "980 N"
+              },
+              {
+                "left": "Segunda colina",
+                "right": "Nunca más alta que la primera"
+              },
+              {
+                "left": "Punto más bajo",
+                "right": "Máxima velocidad"
+              }
+            ],
+            "completion_feedback": "Sin fricción, la **energía mecánica** Ep + Ec se conserva: la potencial se vuelve cinética al bajar y al revés al subir."
+          }
+        }
+      }
+    },
+    "hidrostatica-presion-y-principio-de-pascal": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la presión total a 20 m bajo agua dulce",
+        "steps": [
+          "Calcula la hidrostática: P = ρ·g·h = 1000 × 9.8 × 20",
+          "Resultado parcial: 196,000 Pa",
+          "Súmale la presión atmosférica: 101,325 Pa",
+          "Presión total: 297,325 Pa"
+        ],
+        "completion_feedback": "La presión del agua solo depende de la **profundidad** y la densidad; luego se suma la atmosférica. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Isla Gyojin",
+            "right_label": "Presión",
+            "pairs": [
+              {
+                "left": "ρ·g en agua de mar",
+                "right": "10,045 Pa por metro"
+              },
+              {
+                "left": "Hidrostática a 50 m",
+                "right": "502,250 Pa"
+              },
+              {
+                "left": "Total a 50 m",
+                "right": "603,575 Pa"
+              },
+              {
+                "left": "Lo que aplasta el casco",
+                "right": "La profundidad"
+              }
+            ],
+            "completion_feedback": "**Presión** P = F/A; en un líquido crece con la profundidad (P = ρ·g·h) y, encerrado, se transmite igual a todos lados (**Pascal**)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Tachones",
+            "right_label": "Presión",
+            "pairs": [
+              {
+                "left": "600 N en 0.002 m²",
+                "right": "300,000 Pa"
+              },
+              {
+                "left": "600 N en 0.03 m²",
+                "right": "20,000 Pa"
+              },
+              {
+                "left": "Menos área, misma fuerza",
+                "right": "Más presión"
+              },
+              {
+                "left": "Fórmula de la presión",
+                "right": "P = F / A"
+              }
+            ],
+            "completion_feedback": "**Presión** P = F/A; en un líquido crece con la profundidad (P = ρ·g·h) y, encerrado, se transmite igual a todos lados (**Pascal**)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Prensa de álbumes",
+            "right_label": "Pascal",
+            "pairs": [
+              {
+                "left": "100 N sobre 2 m²",
+                "right": "50 Pa"
+              },
+              {
+                "left": "50 Pa sobre 10 m²",
+                "right": "500 N"
+              },
+              {
+                "left": "Área 5 veces mayor",
+                "right": "Fuerza 5 veces mayor"
+              },
+              {
+                "left": "Líquido encerrado",
+                "right": "Transmite la presión igual"
+              }
+            ],
+            "completion_feedback": "**Presión** P = F/A; en un líquido crece con la profundidad (P = ρ·g·h) y, encerrado, se transmite igual a todos lados (**Pascal**)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Buceo",
+            "right_label": "Presión",
+            "pairs": [
+              {
+                "left": "Agua dulce a 10 m",
+                "right": "98,000 Pa"
+              },
+              {
+                "left": "Agua dulce a 4 m",
+                "right": "39,200 Pa"
+              },
+              {
+                "left": "ρ·g del agua dulce",
+                "right": "9,800 Pa por metro"
+              },
+              {
+                "left": "Burbujas de Minecraft",
+                "right": "No dependen de la profundidad"
+              }
+            ],
+            "completion_feedback": "**Presión** P = F/A; en un líquido crece con la profundidad (P = ρ·g·h) y, encerrado, se transmite igual a todos lados (**Pascal**)."
+          }
+        }
+      }
+    },
+    "principio-de-arquimedes-y-flotacion": {
+      "order_steps": {
+        "prompt": "Ordena cómo decides si un bloque de 20 kg y 0.025 m³ flota en agua",
+        "steps": [
+          "Calcula su peso: 20 × 9.8 = 196 N",
+          "Calcula el empuje si se hunde todo: 1000 × 9.8 × 0.025 = 245 N",
+          "Compara: el empuje máximo supera al peso",
+          "Concluye: flota, con parte del bloque fuera del agua"
+        ],
+        "completion_feedback": "Si el empuje con todo el cuerpo sumergido **supera al peso**, el objeto flota. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Going Merry",
+            "right_label": "Empuje",
+            "pairs": [
+              {
+                "left": "3 m³ de agua de mar",
+                "right": "30,135 N"
+              },
+              {
+                "left": "Densidad del agua de mar",
+                "right": "1,025 kg/m³"
+              },
+              {
+                "left": "Casco que se llena de agua",
+                "right": "Se hunde"
+              },
+              {
+                "left": "Casco hueco",
+                "right": "Desaloja mucha agua"
+              }
+            ],
+            "completion_feedback": "**Arquímedes**: todo cuerpo sumergido recibe un empuje igual al peso del fluido que desaloja: E = ρ·g·V."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Balón en alberca",
+            "right_label": "Empuje",
+            "pairs": [
+              {
+                "left": "Balón de 4 N flotando",
+                "right": "Empuje de 4 N"
+              },
+              {
+                "left": "Condición para flotar quieto",
+                "right": "Empuje = peso"
+              },
+              {
+                "left": "Pesa del mismo tamaño",
+                "right": "Se hunde"
+              },
+              {
+                "left": "Balón lleno de aire",
+                "right": "Pesa poco para su tamaño"
+              }
+            ],
+            "completion_feedback": "**Arquímedes**: todo cuerpo sumergido recibe un empuje igual al peso del fluido que desaloja: E = ρ·g·V."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Globos BLACKPINK",
+            "right_label": "Empuje",
+            "pairs": [
+              {
+                "left": "0.5 m³ de aire",
+                "right": "5.88 N"
+              },
+              {
+                "left": "Densidad del aire",
+                "right": "1.2 kg/m³"
+              },
+              {
+                "left": "Globo con helio",
+                "right": "Sube"
+              },
+              {
+                "left": "Globo con tu aliento",
+                "right": "Cae"
+              }
+            ],
+            "completion_feedback": "**Arquímedes**: todo cuerpo sumergido recibe un empuje igual al peso del fluido que desaloja: E = ρ·g·V."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Bote y cofre",
+            "right_label": "Empuje",
+            "pairs": [
+              {
+                "left": "Cofre que desaloja 0.02 m³",
+                "right": "196 N"
+              },
+              {
+                "left": "Peso menor que el empuje",
+                "right": "Flota"
+              },
+              {
+                "left": "Peso mayor que el empuje",
+                "right": "Se hunde"
+              },
+              {
+                "left": "Bote de madera",
+                "right": "Desaloja mucha agua"
+              }
+            ],
+            "completion_feedback": "**Arquímedes**: todo cuerpo sumergido recibe un empuje igual al peso del fluido que desaloja: E = ρ·g·V."
+          }
+        }
+      }
+    },
+    "hidrodinamica": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa cuando aprietas una manguera a la mitad del área",
+        "steps": [
+          "Escribe la continuidad: A₁·v₁ = A₂·v₂",
+          "Con A₂ a la mitad, despeja: v₂ = A₁·v₁ / A₂",
+          "Resulta v₂ = 2·v₁: el agua va al doble",
+          "Por Bernoulli, ahí la presión es menor"
+        ],
+        "completion_feedback": "El **caudal** se conserva: menos área obliga al fluido a ir más rápido, y más rápido significa menos presión. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Agua de Tanjiro",
+            "right_label": "Fluidos",
+            "pairs": [
+              {
+                "left": "0.6 m² a 1.5 m/s",
+                "right": "Caudal de 0.9 m³/s"
+              },
+              {
+                "left": "0.9 m³/s por 0.2 m²",
+                "right": "4.5 m/s"
+              },
+              {
+                "left": "Área a un tercio",
+                "right": "Triple de velocidad"
+              },
+              {
+                "left": "Zona estrecha y rápida",
+                "right": "Menor presión"
+              }
+            ],
+            "completion_feedback": "**Continuidad**: A₁·v₁ = A₂·v₂. **Bernoulli**: donde el fluido va más rápido, la presión es menor."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Tiro con efecto",
+            "right_label": "Bernoulli",
+            "pairs": [
+              {
+                "left": "Lado donde el aire va rápido",
+                "right": "Presión baja"
+              },
+              {
+                "left": "Lado donde el aire va lento",
+                "right": "Presión alta"
+              },
+              {
+                "left": "Hacia dónde se curva",
+                "right": "Al lado de presión baja"
+              },
+              {
+                "left": "Lo que crea la diferencia",
+                "right": "El giro del balón"
+              }
+            ],
+            "completion_feedback": "**Continuidad**: A₁·v₁ = A₂·v₂. **Bernoulli**: donde el fluido va más rápido, la presión es menor."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Cañón de confeti",
+            "right_label": "Bernoulli",
+            "pairs": [
+              {
+                "left": "Zona ancha, aire lento",
+                "right": "Mayor presión"
+              },
+              {
+                "left": "Boquilla estrecha",
+                "right": "Aire más rápido"
+              },
+              {
+                "left": "Velocidad máxima",
+                "right": "Presión mínima"
+              },
+              {
+                "left": "Velocidad y presión",
+                "right": "Van en sentido contrario"
+              }
+            ],
+            "completion_feedback": "**Continuidad**: A₁·v₁ = A₂·v₂. **Bernoulli**: donde el fluido va más rápido, la presión es menor."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Canal de agua",
+            "right_label": "Continuidad",
+            "pairs": [
+              {
+                "left": "0.4 m² a 2 m/s",
+                "right": "Caudal de 0.8 m³/s"
+              },
+              {
+                "left": "0.8 m³/s por 0.1 m²",
+                "right": "8 m/s"
+              },
+              {
+                "left": "Área a la cuarta parte",
+                "right": "Cuatro veces más rápido"
+              },
+              {
+                "left": "Apretar una manguera",
+                "right": "El chorro acelera"
+              }
+            ],
+            "completion_feedback": "**Continuidad**: A₁·v₁ = A₂·v₂. **Bernoulli**: donde el fluido va más rápido, la presión es menor."
+          }
+        }
+      }
+    },
+    "temperatura-y-calor": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas el calor para calentar 3 kg de agua de 20 °C a 50 °C",
+        "steps": [
+          "Anota los datos: m = 3 kg y c = 4186 J/kg·°C",
+          "Calcula ΔT: 50 − 20 = 30 °C",
+          "Aplica Q = m·c·ΔT: 3 × 4186 × 30",
+          "Resultado: Q = 376,740 J"
+        ],
+        "completion_feedback": "El calor depende de la **masa**, del **material** (c) y de **cuánto** cambia la temperatura. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Llamas de Rengoku",
+            "right_label": "Transmisión",
+            "pairs": [
+              {
+                "left": "La espada se calienta a lo largo",
+                "right": "Conducción"
+              },
+              {
+                "left": "Aire caliente que sube",
+                "right": "Convección"
+              },
+              {
+                "left": "Calor que sientes a distancia",
+                "right": "Radiación"
+              },
+              {
+                "left": "Calor del Sol por el vacío",
+                "right": "Solo puede ser radiación"
+              }
+            ],
+            "completion_feedback": "La **temperatura** mide qué tan caliente está algo; el **calor** es energía que fluye de lo caliente a lo frío: Q = m·c·ΔT."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Hielo y compresa",
+            "right_label": "Calor",
+            "pairs": [
+              {
+                "left": "2 kg de agua, de 20 a 30 °C",
+                "right": "83,720 J"
+              },
+              {
+                "left": "0.5 kg de agua, ΔT de 8 °C",
+                "right": "16,744 J"
+              },
+              {
+                "left": "Hielo sobre la pierna",
+                "right": "Absorbe calor"
+              },
+              {
+                "left": "Compresa caliente",
+                "right": "Cede calor"
+              }
+            ],
+            "completion_feedback": "La **temperatura** mide qué tan caliente está algo; el **calor** es energía que fluye de lo caliente a lo frío: Q = m·c·ΔT."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Té en invierno",
+            "right_label": "Equilibrio",
+            "pairs": [
+              {
+                "left": "Taza a 70 °C y manos a 30 °C",
+                "right": "El calor va a las manos"
+              },
+              {
+                "left": "Temperatura final",
+                "right": "Entre 30 y 70 °C"
+              },
+              {
+                "left": "Misma temperatura en ambos",
+                "right": "Equilibrio térmico"
+              },
+              {
+                "left": "Calor de las manos a la taza",
+                "right": "No ocurre"
+              }
+            ],
+            "completion_feedback": "La **temperatura** mide qué tan caliente está algo; el **calor** es energía que fluye de lo caliente a lo frío: Q = m·c·ΔT."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Dragonspine",
+            "right_label": "Temperatura",
+            "pairs": [
+              {
+                "left": "25 °C",
+                "right": "298 K"
+              },
+              {
+                "left": "−64 °C",
+                "right": "209 K"
+              },
+              {
+                "left": "Cero absoluto",
+                "right": "−273 °C"
+              },
+              {
+                "left": "Fogata que te calienta",
+                "right": "Te transfiere calor"
+              }
+            ],
+            "completion_feedback": "La **temperatura** mide qué tan caliente está algo; el **calor** es energía que fluye de lo caliente a lo frío: Q = m·c·ΔT."
+          }
+        }
+      }
+    },
+    "dilatacion-termica": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas cuánto se alarga una barra de acero de 5 m al calentarse 40 °C",
+        "steps": [
+          "Anota: L₀ = 5 m, α = 0.000012 /°C y ΔT = 40 °C",
+          "Escribe la fórmula: ΔL = α·L₀·ΔT",
+          "Multiplica: 0.000012 × 5 × 40",
+          "Resultado: ΔL = 0.0024 m, unos 2.4 mm"
+        ],
+        "completion_feedback": "El alargamiento crece con el **material** (α), la **longitud** y el **cambio de temperatura**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Espada Nichirin",
+            "right_label": "Dilatación",
+            "pairs": [
+              {
+                "left": "1.2 m que se enfría 80 °C",
+                "right": "Se acorta 1.248 mm"
+              },
+              {
+                "left": "Metal recién forjado",
+                "right": "Un poco más largo"
+              },
+              {
+                "left": "Signo negativo de ΔL",
+                "right": "Contracción"
+              },
+              {
+                "left": "α del metal de la hoja",
+                "right": "0.000013 /°C"
+              }
+            ],
+            "completion_feedback": "Al calentarse, los materiales se **dilatan**: ΔL = α·L₀·ΔT. Los gases se dilatan más que los líquidos, y estos más que los sólidos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Balón al sol",
+            "right_label": "Dilatación",
+            "pairs": [
+              {
+                "left": "Aire del balón",
+                "right": "Gas: se dilata más"
+              },
+              {
+                "left": "Barra de acero",
+                "right": "Sólido: se dilata menos"
+              },
+              {
+                "left": "Agua",
+                "right": "Líquido: intermedio"
+              },
+              {
+                "left": "Balón que sale al sol",
+                "right": "Se siente más duro"
+              }
+            ],
+            "completion_feedback": "Al calentarse, los materiales se **dilatan**: ΔL = α·L₀·ΔT. Los gases se dilatan más que los líquidos, y estos más que los sólidos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Frasco del K-drama",
+            "right_label": "Dilatación",
+            "pairs": [
+              {
+                "left": "Aluminio de 2 m, +40 °C",
+                "right": "0.00184 m"
+              },
+              {
+                "left": "Vidrio de 2 m, +40 °C",
+                "right": "0.00072 m"
+              },
+              {
+                "left": "Tapa bajo agua caliente",
+                "right": "Se afloja"
+              },
+              {
+                "left": "Mayor coeficiente α",
+                "right": "Se dilata más"
+              }
+            ],
+            "completion_feedback": "Al calentarse, los materiales se **dilatan**: ΔL = α·L₀·ΔT. Los gases se dilatan más que los líquidos, y estos más que los sólidos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Rieles",
+            "right_label": "Dilatación",
+            "pairs": [
+              {
+                "left": "Riel de 10 m, +50 °C",
+                "right": "Se alarga 6 mm"
+              },
+              {
+                "left": "Huecos entre rieles",
+                "right": "Espacio para dilatarse"
+              },
+              {
+                "left": "Rieles sin huecos",
+                "right": "Se pandean"
+              },
+              {
+                "left": "Noche fría",
+                "right": "El metal se encoge"
+              }
+            ],
+            "completion_feedback": "Al calentarse, los materiales se **dilatan**: ΔL = α·L₀·ΔT. Los gases se dilatan más que los líquidos, y estos más que los sólidos."
+          }
+        }
+      }
+    },
+    "leyes-de-los-gases": {
+      "order_steps": {
+        "prompt": "Ordena cómo resuelves un gas de 10 L a 1 atm que se comprime a 2 atm",
+        "steps": [
+          "Revisa que la temperatura no cambia: es Boyle",
+          "Escribe la ley: P₁·V₁ = P₂·V₂",
+          "Despeja: V₂ = P₁·V₁ / P₂ = 10 / 2",
+          "Resultado: V₂ = 5 L"
+        ],
+        "completion_feedback": "En las leyes de los gases la temperatura **siempre va en Kelvin**, y primero hay que ver qué variable se queda fija. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Globo de One Piece",
+            "right_label": "Ley combinada",
+            "pairs": [
+              {
+                "left": "4 L, 2 atm, 300 K → 4 atm, 400 K",
+                "right": "V₂ ≈ 2.67 L"
+              },
+              {
+                "left": "Ley combinada",
+                "right": "P₁V₁/T₁ = P₂V₂/T₂"
+              },
+              {
+                "left": "Numerador: 2 · 4 · 400",
+                "right": "3,200"
+              },
+              {
+                "left": "Denominador: 300 · 4",
+                "right": "1,200"
+              }
+            ],
+            "completion_feedback": "**Boyle**: P·V constante (T fija). **Charles**: V/T constante (P fija). **Gay-Lussac**: P/T constante (V fijo)."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Balón rígido",
+            "right_label": "Gay-Lussac",
+            "pairs": [
+              {
+                "left": "3 atm a 300 K → 350 K",
+                "right": "3.5 atm"
+              },
+              {
+                "left": "Volumen fijo y sube T",
+                "right": "Sube la presión"
+              },
+              {
+                "left": "Partido con mucho frío",
+                "right": "Balón más blando"
+              },
+              {
+                "left": "Gay-Lussac",
+                "right": "P₁/T₁ = P₂/T₂"
+              }
+            ],
+            "completion_feedback": "**Boyle**: P·V constante (T fija). **Charles**: V/T constante (P fija). **Gay-Lussac**: P/T constante (V fijo)."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Globos de IVE",
+            "right_label": "Charles",
+            "pairs": [
+              {
+                "left": "2 L a 300 K → 600 K",
+                "right": "4 L"
+              },
+              {
+                "left": "Presión fija y sube T",
+                "right": "Sube el volumen"
+              },
+              {
+                "left": "Globos en la noche fría",
+                "right": "Se arrugan"
+              },
+              {
+                "left": "Charles",
+                "right": "V₁/T₁ = V₂/T₂"
+              }
+            ],
+            "completion_feedback": "**Boyle**: P·V constante (T fija). **Charles**: V/T constante (P fija). **Gay-Lussac**: P/T constante (V fijo)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Pistón y gas",
+            "right_label": "Boyle",
+            "pairs": [
+              {
+                "left": "6 L a 2 atm → 3 L",
+                "right": "4 atm"
+              },
+              {
+                "left": "Volumen a la mitad",
+                "right": "Presión al doble"
+              },
+              {
+                "left": "Temperatura fija",
+                "right": "Ley de Boyle"
+              },
+              {
+                "left": "Boyle",
+                "right": "P₁·V₁ = P₂·V₂"
+              }
+            ],
+            "completion_feedback": "**Boyle**: P·V constante (T fija). **Charles**: V/T constante (P fija). **Gay-Lussac**: P/T constante (V fijo)."
+          }
+        }
+      }
+    },
+    "electricidad-ley-de-coulomb-y-ley-de-ohm": {
+      "order_steps": {
+        "prompt": "Ordena cómo calculas la corriente y la potencia de un foco de 120 V y 240 Ω",
+        "steps": [
+          "Escribe la ley de Ohm: I = V / R",
+          "Sustituye: I = 120 / 240 = 0.5 A",
+          "Escribe la potencia: P = V · I",
+          "Calcula: P = 120 × 0.5 = 60 W"
+        ],
+        "completion_feedback": "Con **Ohm** sacas la corriente y con **P = V·I** la potencia: la segunda necesita la primera. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Trueno de Zenitsu",
+            "right_label": "Electricidad",
+            "pairs": [
+              {
+                "left": "10 V y 2 A: resistencia",
+                "right": "5 Ω"
+              },
+              {
+                "left": "10 V y 2 A: potencia",
+                "right": "20 W"
+              },
+              {
+                "left": "Más voltaje, misma resistencia",
+                "right": "Más corriente"
+              },
+              {
+                "left": "Más resistencia, mismo voltaje",
+                "right": "Menos corriente"
+              }
+            ],
+            "completion_feedback": "**Ohm**: V = I·R. **Coulomb**: cargas iguales se repelen, opuestas se atraen, y la fuerza cae con el cuadrado de la distancia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Camiseta pegada",
+            "right_label": "Coulomb",
+            "pairs": [
+              {
+                "left": "Positivo con negativo",
+                "right": "Se atraen"
+              },
+              {
+                "left": "Positivo con positivo",
+                "right": "Se repelen"
+              },
+              {
+                "left": "Distancia al doble",
+                "right": "Fuerza a la cuarta parte"
+              },
+              {
+                "left": "Cabellos con la misma carga",
+                "right": "Se separan"
+              }
+            ],
+            "completion_feedback": "**Ohm**: V = I·R. **Coulomb**: cargas iguales se repelen, opuestas se atraen, y la fuerza cae con el cuadrado de la distancia."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Lightstick",
+            "right_label": "Ohm",
+            "pairs": [
+              {
+                "left": "6 V y 3 Ω",
+                "right": "2 A"
+              },
+              {
+                "left": "Lo que empuja los electrones",
+                "right": "Voltaje"
+              },
+              {
+                "left": "El flujo de electrones",
+                "right": "Corriente"
+              },
+              {
+                "left": "Lo que estorba el paso",
+                "right": "Resistencia"
+              }
+            ],
+            "completion_feedback": "**Ohm**: V = I·R. **Coulomb**: cargas iguales se repelen, opuestas se atraen, y la fuerza cae con el cuadrado de la distancia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué valor o idea corresponde?",
+            "left_label": "Esferas Electro",
+            "right_label": "Coulomb",
+            "pairs": [
+              {
+                "left": "Distancia al doble",
+                "right": "F / 4"
+              },
+              {
+                "left": "90 N y distancia al triple",
+                "right": "10 N"
+              },
+              {
+                "left": "Cargas iguales",
+                "right": "Se repelen"
+              },
+              {
+                "left": "Más carga en ambas",
+                "right": "Más fuerza"
+              }
+            ],
+            "completion_feedback": "**Ohm**: V = I·R. **Coulomb**: cargas iguales se repelen, opuestas se atraen, y la fuerza cae con el cuadrado de la distancia."
+          }
+        }
+      }
+    }
+  }
+}
