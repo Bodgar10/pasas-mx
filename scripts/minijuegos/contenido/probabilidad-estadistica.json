@@ -1,0 +1,938 @@
+{
+  "subject": "probabilidad-estadistica",
+  "topics": {
+    "estadistica-descriptiva-poblacion-y-muestra": {
+      "order_steps": {
+        "prompt": "Diseña una encuesta",
+        "steps": [
+          "Define la población: todos los que quieres conocer",
+          "Elige al azar una muestra representativa",
+          "Mide a la muestra y calcula su estadístico",
+          "Usa ese estadístico para estimar el parámetro"
+        ],
+        "completion_feedback": "Defines la **población**, tomas una **muestra** al azar, calculas un **estadístico** con ella y lo usas para estimar el **parámetro** de toda la población. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Convención",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Los 20,000 asistentes",
+                "right": "Población"
+              },
+              {
+                "left": "Los 150 encuestados",
+                "right": "Muestra"
+              },
+              {
+                "left": "Promedio de mangas de los 150",
+                "right": "Estadístico"
+              },
+              {
+                "left": "Promedio real de los 20,000",
+                "right": "Parámetro"
+              }
+            ],
+            "completion_feedback": "**Población** (N): todos los que te interesan. **Muestra** (n): el subconjunto que sí mides. **Estadístico**: dato de la muestra. **Parámetro**: dato de la población."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "En el estadio",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Los 80,000 asistentes",
+                "right": "Población (N)"
+              },
+              {
+                "left": "Los 300 encuestados",
+                "right": "Muestra (n)"
+              },
+              {
+                "left": "Gasto promedio de los 300",
+                "right": "Estadístico"
+              },
+              {
+                "left": "Gasto promedio de los 80,000",
+                "right": "Parámetro"
+              }
+            ],
+            "completion_feedback": "**Población** (N): todos los que te interesan. **Muestra** (n): el subconjunto que sí mides. **Estadístico**: dato de la muestra. **Parámetro**: dato de la población."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Fanbase",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Los 50,000 miembros",
+                "right": "Población"
+              },
+              {
+                "left": "Los 400 encuestados",
+                "right": "Muestra"
+              },
+              {
+                "left": "Horas promedio de los 400",
+                "right": "Estadístico"
+              },
+              {
+                "left": "Elegirlos al azar",
+                "right": "Muestra representativa"
+              }
+            ],
+            "completion_feedback": "**Población** (N): todos los que te interesan. **Muestra** (n): el subconjunto que sí mides. **Estadístico**: dato de la muestra. **Parámetro**: dato de la población."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Juego de Roblox",
+            "right_label": "Qué es",
+            "pairs": [
+              {
+                "left": "Los 8 millones de jugadores",
+                "right": "Población"
+              },
+              {
+                "left": "Los 5,000 revisados",
+                "right": "Muestra"
+              },
+              {
+                "left": "Nivel promedio de los 5,000",
+                "right": "Estadístico"
+              },
+              {
+                "left": "Nivel promedio de los 8 millones",
+                "right": "Parámetro"
+              }
+            ],
+            "completion_feedback": "**Población** (N): todos los que te interesan. **Muestra** (n): el subconjunto que sí mides. **Estadístico**: dato de la muestra. **Parámetro**: dato de la población."
+          }
+        }
+      }
+    },
+    "tablas-de-frecuencia-y-graficas": {
+      "order_steps": {
+        "prompt": "Arma una tabla de frecuencias y su gráfica",
+        "steps": [
+          "Cuenta cuántas veces sale cada dato",
+          "Anota cada conteo: frecuencia absoluta",
+          "Divide cada conteo entre el total: frecuencia relativa",
+          "Dibuja una barra por dato con esa altura"
+        ],
+        "completion_feedback": "Para una tabla: **cuenta** cada dato (frecuencia **absoluta**), divide entre el total (frecuencia **relativa**, que × 100 da el **porcentaje**) y grafica con **barras**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Votos del club",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Frecuencia absoluta de Zoro",
+                "right": "12"
+              },
+              {
+                "left": "Total de votos",
+                "right": "40"
+              },
+              {
+                "left": "Frecuencia relativa de Zoro",
+                "right": "0.3"
+              },
+              {
+                "left": "Porcentaje de Luffy",
+                "right": "40%"
+              }
+            ],
+            "completion_feedback": "**Frecuencia absoluta** (f): cuántas veces sale un dato. **Total** (N): suma de todas. **Relativa**: f/N. **Porcentaje**: relativa × 100. Las relativas suman 1."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Goles por partido",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Partidos con 0 goles",
+                "right": "10"
+              },
+              {
+                "left": "Total de partidos",
+                "right": "25"
+              },
+              {
+                "left": "Relativa de '1 gol'",
+                "right": "0.36"
+              },
+              {
+                "left": "Porcentaje de '2 goles'",
+                "right": "24%"
+              }
+            ],
+            "completion_feedback": "**Frecuencia absoluta** (f): cuántas veces sale un dato. **Total** (N): suma de todas. **Relativa**: f/N. **Porcentaje**: relativa × 100. Las relativas suman 1."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Bias de CARAT",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Votos de Hoshi",
+                "right": "20"
+              },
+              {
+                "left": "Total de votos",
+                "right": "50"
+              },
+              {
+                "left": "Relativa de Mingyu",
+                "right": "0.3"
+              },
+              {
+                "left": "Porcentaje de The8",
+                "right": "10%"
+              }
+            ],
+            "completion_feedback": "**Frecuencia absoluta** (f): cuántas veces sale un dato. **Total** (N): suma de todas. **Relativa**: f/N. **Porcentaje**: relativa × 100. Las relativas suman 1."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Brawlers elegidos",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Veces que salió Shelly",
+                "right": "16"
+              },
+              {
+                "left": "Total de partidas",
+                "right": "40"
+              },
+              {
+                "left": "Relativa de Shelly",
+                "right": "0.4"
+              },
+              {
+                "left": "Porcentaje de El Primo",
+                "right": "10%"
+              }
+            ],
+            "completion_feedback": "**Frecuencia absoluta** (f): cuántas veces sale un dato. **Total** (N): suma de todas. **Relativa**: f/N. **Porcentaje**: relativa × 100. Las relativas suman 1."
+          }
+        }
+      }
+    },
+    "medidas-de-tendencia-central": {
+      "order_steps": {
+        "prompt": "Halla la mediana del daño: 150, 200, 130, 300, 180",
+        "steps": [
+          "Ordena de menor a mayor: 130, 150, 180, 200, 300",
+          "Cuenta los datos: son 5, número impar",
+          "Ubica el dato central: el 3.º",
+          "La mediana es 180"
+        ],
+        "completion_feedback": "**Media**: suma entre cantidad. **Mediana**: el dato central ya ordenado. **Moda**: el más repetido. La mediana no se deja jalar por datos extremos. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poder: 3,3,7,8,9",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Suma de los datos",
+                "right": "30"
+              },
+              {
+                "left": "Media",
+                "right": "6"
+              },
+              {
+                "left": "Mediana",
+                "right": "7"
+              },
+              {
+                "left": "Moda",
+                "right": "3"
+              }
+            ],
+            "completion_feedback": "**Media**: suma de datos ÷ cantidad. **Mediana**: el dato de en medio, ya ordenados. **Moda**: el valor que más se repite. Un dato extremo jala a la media, no a la mediana."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Goles: 0,0,1,3,6",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Media",
+                "right": "2"
+              },
+              {
+                "left": "Mediana",
+                "right": "1"
+              },
+              {
+                "left": "Moda",
+                "right": "0"
+              },
+              {
+                "left": "Dato que jala la media",
+                "right": "6"
+              }
+            ],
+            "completion_feedback": "**Media**: suma de datos ÷ cantidad. **Mediana**: el dato de en medio, ya ordenados. **Moda**: el valor que más se repite. Un dato extremo jala a la media, no a la mediana."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Vistas en millones",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Media de 12, 15, 18, 11",
+                "right": "14"
+              },
+              {
+                "left": "Mediana de 12, 15, 18, 11",
+                "right": "13.5"
+              },
+              {
+                "left": "Suma de los cuatro datos",
+                "right": "56"
+              },
+              {
+                "left": "Moda de esos datos",
+                "right": "No hay: ninguno se repite"
+              }
+            ],
+            "completion_feedback": "**Media**: suma de datos ÷ cantidad. **Mediana**: el dato de en medio, ya ordenados. **Moda**: el valor que más se repite. Un dato extremo jala a la media, no a la mediana."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Daño por ronda",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Media de 150, 200, 130, 300, 180",
+                "right": "192"
+              },
+              {
+                "left": "Mediana de esos datos",
+                "right": "180"
+              },
+              {
+                "left": "Dato extremo",
+                "right": "300"
+              },
+              {
+                "left": "Datos ordenados",
+                "right": "130, 150, 180, 200, 300"
+              }
+            ],
+            "completion_feedback": "**Media**: suma de datos ÷ cantidad. **Mediana**: el dato de en medio, ya ordenados. **Moda**: el valor que más se repite. Un dato extremo jala a la media, no a la mediana."
+          }
+        }
+      }
+    },
+    "medidas-de-dispersion": {
+      "order_steps": {
+        "prompt": "Halla la desviación estándar de 2, 4, 4, 6",
+        "steps": [
+          "Calcula la media: 16 ÷ 4 = 4",
+          "Resta la media a cada dato: −2, 0, 0, 2",
+          "Eleva al cuadrado y suma: 4 + 0 + 0 + 4 = 8",
+          "Varianza: 8 ÷ 4 = 2",
+          "Desviación estándar: √2 ≈ 1.41"
+        ],
+        "completion_feedback": "Desviación estándar: **media**, distancias a la media, **cuadrados**, **varianza** (promedio de los cuadrados) y su **raíz**. El **rango** es más simple: mayor − menor. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Poder: 5,7,7,9",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Media",
+                "right": "7"
+              },
+              {
+                "left": "Rango",
+                "right": "4"
+              },
+              {
+                "left": "Varianza",
+                "right": "2"
+              },
+              {
+                "left": "Desviación estándar",
+                "right": "≈ 1.41"
+              }
+            ],
+            "completion_feedback": "**Rango**: mayor − menor. **Varianza**: promedio de las distancias al cuadrado. **Desviación estándar**: raíz de la varianza. Mucha dispersión = datos regados."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Goles: 1,1,0,2,1",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Media",
+                "right": "1"
+              },
+              {
+                "left": "Rango",
+                "right": "2"
+              },
+              {
+                "left": "Varianza",
+                "right": "0.4"
+              },
+              {
+                "left": "¿Regular o errático?",
+                "right": "Muy regular"
+              }
+            ],
+            "completion_feedback": "**Rango**: mayor − menor. **Varianza**: promedio de las distancias al cuadrado. **Desviación estándar**: raíz de la varianza. Mucha dispersión = datos regados."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Ventas por álbum",
+            "right_label": "Qué indica",
+            "pairs": [
+              {
+                "left": "0.9, 1.0, 1.1, 1.0 y 1.0 millones",
+                "right": "Poca dispersión"
+              },
+              {
+                "left": "0.2, 2.5, 0.1, 2.0 y 0.2 millones",
+                "right": "Mucha dispersión"
+              },
+              {
+                "left": "Promedio de ambos grupos",
+                "right": "1 millón"
+              },
+              {
+                "left": "Rango del segundo grupo",
+                "right": "2.4 millones"
+              }
+            ],
+            "completion_feedback": "**Rango**: mayor − menor. **Varianza**: promedio de las distancias al cuadrado. **Desviación estándar**: raíz de la varianza. Mucha dispersión = datos regados."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Daño por ronda",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Dato mayor de 120, 200, 90, 250, 140",
+                "right": "250"
+              },
+              {
+                "left": "Dato menor",
+                "right": "90"
+              },
+              {
+                "left": "Rango",
+                "right": "160"
+              },
+              {
+                "left": "Jugador con 19, 20, 21, 20, 20",
+                "right": "Muy consistente"
+              }
+            ],
+            "completion_feedback": "**Rango**: mayor − menor. **Varianza**: promedio de las distancias al cuadrado. **Desviación estándar**: raíz de la varianza. Mucha dispersión = datos regados."
+          }
+        }
+      }
+    },
+    "tecnicas-de-conteo-permutaciones-y-combinaciones": {
+      "order_steps": {
+        "prompt": "Calcula de cuántas formas se eligen 2 de 8 Mugiwara",
+        "steps": [
+          "¿Importa el orden? No: es combinación",
+          "Fórmula: C(8,2) = 8! ÷ (2! · 6!)",
+          "Simplifica: (8 · 7) ÷ (2 · 1)",
+          "Resultado: 56 ÷ 2 = 28 grupos"
+        ],
+        "completion_feedback": "Primero decide si **importa el orden**: sí → **permutación** P(n,r) = n!/(n−r)!. No → **combinación** C(n,r) = n!/[r!(n−r)!]. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Mugiwara",
+            "right_label": "Tipo o resultado",
+            "pairs": [
+              {
+                "left": "Orden de pelea en fila",
+                "right": "Permutación"
+              },
+              {
+                "left": "Elegir 3 para infiltrarse",
+                "right": "Combinación"
+              },
+              {
+                "left": "C(8,2)",
+                "right": "28"
+              },
+              {
+                "left": "P(8,2)",
+                "right": "56"
+              }
+            ],
+            "completion_feedback": "**Permutación**: el orden importa (podios, filas, turnos). **Combinación**: el orden no importa (grupos, equipos). C(n,r) = P(n,r) ÷ r!."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Tanda de penales",
+            "right_label": "Tipo o resultado",
+            "pairs": [
+              {
+                "left": "Orden de los cobradores",
+                "right": "Permutación"
+              },
+              {
+                "left": "Elegir 5 cobradores",
+                "right": "Combinación"
+              },
+              {
+                "left": "P(5,3)",
+                "right": "60"
+              },
+              {
+                "left": "C(5,3)",
+                "right": "10"
+              }
+            ],
+            "completion_feedback": "**Permutación**: el orden importa (podios, filas, turnos). **Combinación**: el orden no importa (grupos, equipos). C(n,r) = P(n,r) ÷ r!."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "Tipo o resultado",
+            "pairs": [
+              {
+                "left": "Posiciones en la formación",
+                "right": "Permutación"
+              },
+              {
+                "left": "Elegir una subunidad de 3",
+                "right": "Combinación"
+              },
+              {
+                "left": "C(7,3)",
+                "right": "35"
+              },
+              {
+                "left": "P(7,3)",
+                "right": "210"
+              }
+            ],
+            "completion_feedback": "**Permutación**: el orden importa (podios, filas, turnos). **Combinación**: el orden no importa (grupos, equipos). C(n,r) = P(n,r) ÷ r!."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Valorant",
+            "right_label": "Tipo o resultado",
+            "pairs": [
+              {
+                "left": "Podio 1.º, 2.º y 3.º",
+                "right": "Permutación"
+              },
+              {
+                "left": "Elegir 5 agentes para el equipo",
+                "right": "Combinación"
+              },
+              {
+                "left": "P(6,3)",
+                "right": "120"
+              },
+              {
+                "left": "C(6,3)",
+                "right": "20"
+              }
+            ],
+            "completion_feedback": "**Permutación**: el orden importa (podios, filas, turnos). **Combinación**: el orden no importa (grupos, equipos). C(n,r) = P(n,r) ÷ r!."
+          }
+        }
+      }
+    },
+    "probabilidad-clasica": {
+      "order_steps": {
+        "prompt": "Calcula la probabilidad de sacar un SSR",
+        "steps": [
+          "Cuenta los casos favorables: 4 SSR",
+          "Cuenta los casos totales: 20 personajes",
+          "Aplica Laplace: P = 4 ÷ 20",
+          "Simplifica: 1/5 = 0.2 = 20%"
+        ],
+        "completion_feedback": "**Probabilidad clásica** (Laplace): casos **favorables** ÷ casos **totales**, siempre que todos sean igualmente probables. Va de 0 (imposible) a 1 (seguro). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Banner gacha",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Luffy Gear 5 entre 10",
+                "right": "1/10"
+              },
+              {
+                "left": "Luffy o Zoro entre 10",
+                "right": "1/5"
+              },
+              {
+                "left": "4 SSR entre 20",
+                "right": "20%"
+              },
+              {
+                "left": "Alguien que no está en el banner",
+                "right": "0: imposible"
+              }
+            ],
+            "completion_feedback": "**Laplace**: P = favorables ÷ totales, con resultados igualmente probables. P = 0 es imposible y P = 1 es seguro. Para 'A o B' sin traslape, suma los favorables."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Sorteos",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "México entre 8 bolitas",
+                "right": "1/8"
+              },
+              {
+                "left": "México o Argentina entre 8",
+                "right": "1/4"
+              },
+              {
+                "left": "12 rojas entre 30 tarjetas",
+                "right": "40%"
+              },
+              {
+                "left": "Sacar alguna tarjeta de la bolsa",
+                "right": "1: seguro"
+              }
+            ],
+            "completion_feedback": "**Laplace**: P = favorables ÷ totales, con resultados igualmente probables. P = 0 es imposible y P = 1 es seguro. Para 'A o B' sin traslape, suma los favorables."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Photocards",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Felix entre 8 photocards",
+                "right": "1/8"
+              },
+              {
+                "left": "Felix o Hyunjin entre 8",
+                "right": "1/4"
+              },
+              {
+                "left": "6 holográficas entre 24",
+                "right": "25%"
+              },
+              {
+                "left": "La de alguien fuera del grupo",
+                "right": "0: imposible"
+              }
+            ],
+            "completion_feedback": "**Laplace**: P = favorables ÷ totales, con resultados igualmente probables. P = 0 es imposible y P = 1 es seguro. Para 'A o B' sin traslape, suma los favorables."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Cofres y banners",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Un 5★ entre 20 ítems",
+                "right": "1/20"
+              },
+              {
+                "left": "4 ítems buenos entre 20",
+                "right": "1/5"
+              },
+              {
+                "left": "5 legendarias entre 50 armas",
+                "right": "10%"
+              },
+              {
+                "left": "15 épicas entre 50 armas",
+                "right": "30%"
+              }
+            ],
+            "completion_feedback": "**Laplace**: P = favorables ÷ totales, con resultados igualmente probables. P = 0 es imposible y P = 1 es seguro. Para 'A o B' sin traslape, suma los favorables."
+          }
+        }
+      }
+    },
+    "probabilidad-condicional": {
+      "order_steps": {
+        "prompt": "Calcula P(ganar | plantar la spike)",
+        "steps": [
+          "Identifica la condición B: plantaste en 20 rondas",
+          "Reduce el universo a esas 20 rondas",
+          "Cuenta A y B: ganaste 15 de esas 20",
+          "Divide: 15 ÷ 20 = 0.75 = 75%"
+        ],
+        "completion_feedback": "En la **condicional** P(A|B), la condición B **reduce el universo**: divides los casos donde ocurren A y B entre los casos de B. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Peleas de Gojo",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "P(ganar) en general",
+                "right": "16/20 = 80%"
+              },
+              {
+                "left": "Combates con Dominio",
+                "right": "Nuevo universo: 8"
+              },
+              {
+                "left": "Ganó usando Dominio",
+                "right": "7"
+              },
+              {
+                "left": "P(ganar | Dominio)",
+                "right": "7/8 ≈ 87.5%"
+              }
+            ],
+            "completion_feedback": "**P(A|B)** = casos de A y B ÷ casos de B. La condición **reduce el universo**: ya no miras todos los casos, solo aquellos donde B ocurrió."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Real Madrid",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "P(ganar) en general",
+                "right": "25/38 ≈ 66%"
+              },
+              {
+                "left": "Partidos donde Mbappé anota primero",
+                "right": "Nuevo universo: 20"
+              },
+              {
+                "left": "P(ganar | Mbappé anota primero)",
+                "right": "18/20 = 90%"
+              }
+            ],
+            "completion_feedback": "**P(A|B)** = casos de A y B ÷ casos de B. La condición **reduce el universo**: ya no miras todos los casos, solo aquellos donde B ocurrió."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Comebacks",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "Comebacks que fueron trending",
+                "right": "Condición B: 16"
+              },
+              {
+                "left": "Trending y premiados",
+                "right": "A y B: 12"
+              },
+              {
+                "left": "P(premio | trending)",
+                "right": "75%"
+              }
+            ],
+            "completion_feedback": "**P(A|B)** = casos de A y B ÷ casos de B. La condición **reduce el universo**: ya no miras todos los casos, solo aquellos donde B ocurrió."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Pistol round",
+            "right_label": "Valor",
+            "pairs": [
+              {
+                "left": "P(ganar) en general",
+                "right": "60%"
+              },
+              {
+                "left": "Partidas con pistol ganado",
+                "right": "Nuevo universo: 40"
+              },
+              {
+                "left": "P(ganar | pistol ganado)",
+                "right": "32/40 = 80%"
+              }
+            ],
+            "completion_feedback": "**P(A|B)** = casos de A y B ÷ casos de B. La condición **reduce el universo**: ya no miras todos los casos, solo aquellos donde B ocurrió."
+          }
+        }
+      }
+    },
+    "distribuciones-de-probabilidad": {
+      "order_steps": {
+        "prompt": "Completa la distribución de una mazmorra",
+        "steps": [
+          "Anota lo conocido: oro 0.50 y poción 0.30",
+          "Recuerda que todo debe sumar 1",
+          "Despeja: arma rara = 1 − 0.80 = 0.20",
+          "Verifica: 0.50 + 0.30 + 0.20 = 1"
+        ],
+        "completion_feedback": "Una **distribución de probabilidad** lista todos los resultados con su probabilidad y **siempre suma 1**. Si falta una, réstale a 1 las conocidas. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Rango de puerta",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Puerta rango E",
+                "right": "0.40"
+              },
+              {
+                "left": "Puerta rango S",
+                "right": "0.01"
+              },
+              {
+                "left": "Rango A o S",
+                "right": "0.05"
+              },
+              {
+                "left": "Todos los rangos juntos",
+                "right": "1"
+              }
+            ],
+            "completion_feedback": "Una **distribución de probabilidad** asocia cada resultado posible con su probabilidad. Todas suman **1**. Para 'A o B' (resultados distintos) se **suman** sus probabilidades."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Resultado",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Gana el equipo de Mbappé",
+                "right": "0.55"
+              },
+              {
+                "left": "Pierde",
+                "right": "0.20"
+              },
+              {
+                "left": "Gana o empata",
+                "right": "0.80"
+              },
+              {
+                "left": "Todos los resultados",
+                "right": "1"
+              }
+            ],
+            "completion_feedback": "Una **distribución de probabilidad** asocia cada resultado posible con su probabilidad. Todas suman **1**. Para 'A o B' (resultados distintos) se **suman** sus probabilidades."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Foto firmada",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Foto del bias",
+                "right": "0.50"
+              },
+              {
+                "left": "Foto grupal",
+                "right": "0.20"
+              },
+              {
+                "left": "Foto individual",
+                "right": "0.80"
+              },
+              {
+                "left": "Las tres opciones juntas",
+                "right": "1"
+              }
+            ],
+            "completion_feedback": "Una **distribución de probabilidad** asocia cada resultado posible con su probabilidad. Todas suman **1**. Para 'A o B' (resultados distintos) se **suman** sus probabilidades."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corresponde a cada cosa?",
+            "left_label": "Deseo en Genshin",
+            "right_label": "Probabilidad",
+            "pairs": [
+              {
+                "left": "Objeto 3★",
+                "right": "0.943"
+              },
+              {
+                "left": "Personaje 4★",
+                "right": "0.051"
+              },
+              {
+                "left": "5★ por tiro",
+                "right": "0.006"
+              },
+              {
+                "left": "4★ o 5★",
+                "right": "0.057"
+              }
+            ],
+            "completion_feedback": "Una **distribución de probabilidad** asocia cada resultado posible con su probabilidad. Todas suman **1**. Para 'A o B' (resultados distintos) se **suman** sus probabilidades."
+          }
+        }
+      }
+    }
+  }
+}
