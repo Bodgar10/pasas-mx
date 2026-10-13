@@ -1,0 +1,1408 @@
+{
+  "subject": "espanol-sec-3",
+  "topics": {
+    "analisis-de-textos-literarios-sec-espanol-sec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo descubrir el tema y el mensaje de una historia",
+        "steps": [
+          "Resume lo que pasa: ese es el argumento",
+          "Pregúntate qué idea se repite en el fondo",
+          "Nombra el tema en una o dos palabras",
+          "Formula el mensaje que propone el autor"
+        ],
+        "completion_feedback": "Primero los **hechos**, luego la **idea de fondo**: el tema se nombra en pocas palabras y el mensaje es la reflexión que deja. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué elemento del análisis literario es cada cosa?",
+            "left_label": "One Piece",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Buscan el tesoro y vencen a tiranos",
+                "right": "Argumento"
+              },
+              {
+                "left": "La libertad, la amistad y los sueños",
+                "right": "Tema"
+              },
+              {
+                "left": "Vale la pena luchar por ser libre",
+                "right": "Mensaje"
+              }
+            ],
+            "completion_feedback": "Analizar es ir **más allá de lo que pasa**: quién lo cuenta, cómo está armado, qué figuras usa y qué idea transmite. Veamos cómo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué tipo de narrador cuenta cada versión?",
+            "left_label": "Gol de Yamal",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Corrí con el corazón a mil'",
+                "right": "1.ª persona: dice 'yo'"
+              },
+              {
+                "left": "'Yamal recibe, encara… ¡gol!'",
+                "right": "3.ª persona, desde fuera"
+              },
+              {
+                "left": "Sabe qué piensan jugador y portero",
+                "right": "Omnisciente"
+              }
+            ],
+            "completion_feedback": "Analizar es ir **más allá de lo que pasa**: quién lo cuenta, cómo está armado, qué figuras usa y qué idea transmite. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo identificar al narrador de un relato",
+            "steps": [
+              "Ubica la voz que cuenta la historia",
+              "Fíjate si dice 'yo' o 'él/ella'",
+              "Revisa si conoce lo que piensan los personajes",
+              "Nombra el tipo de narrador"
+            ],
+            "completion_feedback": "Si dice **'yo'**, es primera persona; si dice **'él'**, tercera; y si sabe lo que todos piensan, es **omnisciente**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué figura o recurso es cada frase?",
+            "left_label": "Letras de K-pop",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Mi corazón es hielo'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Fría como el hielo'",
+                "right": "Símil"
+              },
+              {
+                "left": "'Te esperé mil años'",
+                "right": "Hipérbole"
+              },
+              {
+                "left": "Tomar 'me ahogo' al pie de la letra",
+                "right": "Perder el sentido figurado"
+              }
+            ],
+            "completion_feedback": "Analizar es ir **más allá de lo que pasa**: quién lo cuenta, cómo está armado, qué figuras usa y qué idea transmite. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo interpretar una figura en una letra",
+            "steps": [
+              "Detecta la frase que no es literal",
+              "Identifica qué se relaciona con qué",
+              "Fíjate si usa 'como' o si exagera",
+              "Nombra la figura y explica su sentido real"
+            ],
+            "completion_feedback": "Una figura dice **más de lo que dicen sus palabras**: si la tomas literal, pierdes lo que la canción quiere transmitir. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué momento de la estructura narrativa es cada uno?",
+            "left_label": "Zelda: TotK",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Link y Zelda exploran bajo el castillo",
+                "right": "Planteamiento"
+              },
+              {
+                "left": "Zelda desaparece y el peligro crece",
+                "right": "Nudo"
+              },
+              {
+                "left": "La batalla final contra Ganondorf",
+                "right": "Clímax"
+              },
+              {
+                "left": "La calma regresa a Hyrule",
+                "right": "Desenlace"
+              }
+            ],
+            "completion_feedback": "Analizar es ir **más allá de lo que pasa**: quién lo cuenta, cómo está armado, qué figuras usa y qué idea transmite. Veamos cómo."
+          },
+          "order_steps": {
+            "prompt": "Ordena los momentos de esta aventura",
+            "steps": [
+              "El héroe vive tranquilo en su aldea",
+              "Un villano ataca y el héroe parte a la aventura",
+              "Batalla final contra el villano",
+              "El héroe vence y vuelve la paz"
+            ],
+            "completion_feedback": "**Planteamiento, nudo, clímax y desenlace**: así se organiza la trama para que la tensión crezca hasta el final. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "figuras-retoricas-avanzadas": {
+      "order_steps": {
+        "prompt": "Ordena cómo reconocer una metáfora",
+        "steps": [
+          "Identifica los dos elementos: el portero y un muro",
+          "Busca si aparece 'como' o 'parece'",
+          "Comprueba que dice que el portero ES un muro",
+          "Explica el sentido: era imposible meterle gol"
+        ],
+        "completion_feedback": "Si **no hay 'como'** y una cosa se identifica directo con otra, es **metáfora**; con 'como', sería comparación. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "Chainsaw Man",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'¡VRRRRR!' al encender la motosierra",
+                "right": "Onomatopeya"
+              },
+              {
+                "left": "'Denji es una tormenta de acero'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'¿Quién podría detener a Denji?'",
+                "right": "Pregunta retórica"
+              },
+              {
+                "left": "'Sin miedo al dolor, sin miedo al fin'",
+                "right": "Paralelismo"
+              }
+            ],
+            "completion_feedback": "Cada figura tiene su marca: la **onomatopeya** imita un sonido, la **metáfora** identifica sin 'como', la **pregunta retórica** no espera respuesta y el **paralelismo** repite la estructura."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo reconocer una onomatopeya en una viñeta",
+            "steps": [
+              "Busca la palabra que imita un sonido: '¡CRACK!'",
+              "Comprueba que no tiene significado de diccionario",
+              "Confirma que te hace 'oír' la rama al partirse"
+            ],
+            "completion_feedback": "La **onomatopeya** no compara ni exagera: **reproduce un sonido** para que lo escuches con la imaginación. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "Narración de Yamal",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Yamal es un huracán por la banda'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Corre como un huracán'",
+                "right": "Comparación o símil"
+              },
+              {
+                "left": "'¡Pum! El balón pega en el poste'",
+                "right": "Onomatopeya"
+              },
+              {
+                "left": "'¿Quién no soñó con un gol así?'",
+                "right": "Pregunta retórica"
+              }
+            ],
+            "completion_feedback": "Cada figura tiene su marca: la **onomatopeya** imita un sonido, la **metáfora** identifica sin 'como', la **pregunta retórica** no espera respuesta y el **paralelismo** repite la estructura."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "Letras y K-dramas",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'¿Acaso no merecía ser feliz?'",
+                "right": "Pregunta retórica"
+              },
+              {
+                "left": "'Mi corazón es una isla'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'Tic-tac, suena el reloj sin ti'",
+                "right": "Onomatopeya"
+              },
+              {
+                "left": "'Te di mi tiempo, te di mi vida'",
+                "right": "Paralelismo"
+              }
+            ],
+            "completion_feedback": "Cada figura tiene su marca: la **onomatopeya** imita un sonido, la **metáfora** identifica sin 'como', la **pregunta retórica** no espera respuesta y el **paralelismo** repite la estructura."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo analizar una pregunta retórica",
+            "steps": [
+              "Pregúntate si la frase espera una respuesta",
+              "Identifica la emoción que quiere expresar",
+              "Reescríbela como afirmación",
+              "Concluye que es una pregunta retórica"
+            ],
+            "completion_feedback": "Tiene signos de interrogación, pero **no es una duda**: es una afirmación disfrazada que enfatiza un sentimiento. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué figura retórica es cada frase?",
+            "left_label": "Spider-Man",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Gran poder… gran responsabilidad'",
+                "right": "Paralelismo"
+              },
+              {
+                "left": "'¡Thwip!' al lanzar la telaraña",
+                "right": "Onomatopeya"
+              },
+              {
+                "left": "'Spider-Man es la sombra de la ciudad'",
+                "right": "Metáfora"
+              },
+              {
+                "left": "'¿Quién salvará la ciudad si no él?'",
+                "right": "Pregunta retórica"
+              }
+            ],
+            "completion_feedback": "Cada figura tiene su marca: la **onomatopeya** imita un sonido, la **metáfora** identifica sin 'como', la **pregunta retórica** no espera respuesta y el **paralelismo** repite la estructura."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo detectar el paralelismo en un lema",
+            "steps": [
+              "Divide el lema en sus partes",
+              "Observa la estructura gramatical de cada parte",
+              "Comprueba que todas repiten la misma forma",
+              "Nota el ritmo y el equilibrio que logra"
+            ],
+            "completion_feedback": "El **paralelismo** repite la **estructura**, no solo una palabra: eso le da ritmo y lo vuelve memorable. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    },
+    "el-ensayo-argumentativo": {
+      "order_steps": {
+        "prompt": "Ordena las partes de un ensayo argumentativo",
+        "steps": [
+          "Presenta el tema y tu tesis",
+          "Da argumentos con pruebas",
+          "Reconoce la postura contraria",
+          "Refútala con razones",
+          "Reafirma tu tesis en la conclusión"
+        ],
+        "completion_feedback": "Introducción con **tesis**, desarrollo con **argumentos y refutación**, y una **conclusión** que la reafirma. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué función cumple cada conector?",
+            "left_label": "Ensayo One Piece",
+            "right_label": "Conector",
+            "pairs": [
+              {
+                "left": "'Además, liberó islas enteras'",
+                "right": "Adición"
+              },
+              {
+                "left": "'Sin embargo, Blackbeard es fuerte'",
+                "right": "Contraste"
+              },
+              {
+                "left": "'Por lo tanto, Luffy merece el trono'",
+                "right": "Conclusión"
+              },
+              {
+                "left": "'…ya que busca la libertad'",
+                "right": "Causa"
+              }
+            ],
+            "completion_feedback": "Un ensayo **convence con razones**: tesis clara, argumentos con pruebas, respuesta a la postura contraria y conectores que enlazan todo. Veamos cómo se arma."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué papel cumple cada frase en el ensayo?",
+            "left_label": "Messi vs Cristiano",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Messi es el mejor de la historia'",
+                "right": "Tesis (opinión)"
+              },
+              {
+                "left": "'Ganó 8 Balones de Oro'",
+                "right": "Hecho que la sostiene"
+              },
+              {
+                "left": "'Es el mejor porque me cae bien'",
+                "right": "Opinión sin respaldo"
+              },
+              {
+                "left": "'Cristiano marcó más goles totales'",
+                "right": "Postura contraria"
+              }
+            ],
+            "completion_feedback": "Un ensayo **convence con razones**: tesis clara, argumentos con pruebas, respuesta a la postura contraria y conectores que enlazan todo. Veamos cómo se arma."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué tipo de argumento es cada uno?",
+            "left_label": "Defensa del K-pop",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Time nombró a BTS Artista del Año",
+                "right": "Argumento de autoridad"
+              },
+              {
+                "left": "Letras sobre la autoaceptación",
+                "right": "Argumento de ejemplo"
+              },
+              {
+                "left": "Miles de millones para la economía",
+                "right": "Argumento de datos"
+              },
+              {
+                "left": "'Aunque mueve dinero, sí es arte'",
+                "right": "Contraargumento refutado"
+              }
+            ],
+            "completion_feedback": "Un ensayo **convence con razones**: tesis clara, argumentos con pruebas, respuesta a la postura contraria y conectores que enlazan todo. Veamos cómo se arma."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué papel cumple cada frase en el ensayo?",
+            "left_label": "Ensayo Minecraft",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Minecraft es el mejor juego'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'Ha vendido más de 300 millones'",
+                "right": "Prueba"
+              },
+              {
+                "left": "'Sus gráficos son simples'",
+                "right": "Postura contraria"
+              },
+              {
+                "left": "'Por todo esto, es el mejor'",
+                "right": "Conclusión"
+              }
+            ],
+            "completion_feedback": "Un ensayo **convence con razones**: tesis clara, argumentos con pruebas, respuesta a la postura contraria y conectores que enlazan todo. Veamos cómo se arma."
+          }
+        }
+      }
+    },
+    "textos-academicos": {
+      "order_steps": {
+        "prompt": "Ordena las partes de una monografía",
+        "steps": [
+          "Título que delimita el tema",
+          "Introducción: tema y objetivo",
+          "Desarrollo: la investigación por apartados",
+          "Conclusión: resume los hallazgos",
+          "Bibliografía: las fuentes consultadas"
+        ],
+        "completion_feedback": "Empieza delimitando el tema, expone lo investigado, concluye y **cierra con las fuentes** que lo respaldan. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué rasgo del texto académico muestra cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Idea de una entrevista, con su fuente",
+                "right": "Cita correcta"
+              },
+              {
+                "left": "Copiar un párrafo sin decir de dónde",
+                "right": "Plagio"
+              },
+              {
+                "left": "Lista de todo lo que consultaste",
+                "right": "Bibliografía"
+              },
+              {
+                "left": "'El final fue horrible, 0/10'",
+                "right": "Reacción sin sustento"
+              }
+            ],
+            "completion_feedback": "Un texto académico es **formal, objetivo y con fuentes**: cada dato se respalda y se cita. Veamos cómo se construye."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué rasgo del texto académico muestra cada cosa?",
+            "left_label": "Informe de Yamal",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Completó el 78% de sus regates'",
+                "right": "Dato verificable"
+              },
+              {
+                "left": "'¡Es lo más hermoso que he visto!'",
+                "right": "Emoción: no va"
+              },
+              {
+                "left": "Objetivo, datos y conclusiones",
+                "right": "Estructura del informe"
+              },
+              {
+                "left": "Cifras tomadas de otra fuente",
+                "right": "Deben citarse"
+              }
+            ],
+            "completion_feedback": "Un texto académico es **formal, objetivo y con fuentes**: cada dato se respalda y se cita. Veamos cómo se construye."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué rasgo del texto académico muestra cada cosa?",
+            "left_label": "SEVENTEEN",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'SEVENTEEN >>> todos, lloré'",
+                "right": "Tuit informal"
+              },
+              {
+                "left": "Cifras de ventas con su fuente",
+                "right": "Dato citado"
+              },
+              {
+                "left": "'El impacto cultural de SEVENTEEN'",
+                "right": "Título que delimita"
+              },
+              {
+                "left": "Páginas y libros consultados",
+                "right": "Bibliografía"
+              }
+            ],
+            "completion_feedback": "Un texto académico es **formal, objetivo y con fuentes**: cada dato se respalda y se cita. Veamos cómo se construye."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué rasgo del texto académico muestra cada cosa?",
+            "left_label": "Reyna en Valorant",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'¡Reyna está rota, ráfaga total!'",
+                "right": "Lenguaje informal"
+              },
+              {
+                "left": "Winrate de páginas oficiales",
+                "right": "Fuente confiable"
+              },
+              {
+                "left": "Introducción, desarrollo, conclusión",
+                "right": "Estructura clara"
+              },
+              {
+                "left": "Monografía, ensayo, reseña",
+                "right": "Tipos de texto académico"
+              }
+            ],
+            "completion_feedback": "Un texto académico es **formal, objetivo y con fuentes**: cada dato se respalda y se cita. Veamos cómo se construye."
+          }
+        }
+      }
+    },
+    "escritura-creativa": {
+      "order_steps": {
+        "prompt": "Ordena cómo escribir una escena que se sienta",
+        "steps": [
+          "Elige la emoción que quieres transmitir",
+          "Decide qué sentidos vas a despertar",
+          "Busca un detalle concreto para cada sentido",
+          "Redacta la escena sin nombrar la emoción"
+        ],
+        "completion_feedback": "Así **muestras en vez de contar**: el lector vive la emoción con los detalles, sin que se la expliques. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la caracterización es cada cosa?",
+            "left_label": "Chainsaw Man",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Denji sueña con pan con mermelada",
+                "right": "Deseo"
+              },
+              {
+                "left": "Power es caótica y mentirosa",
+                "right": "Defecto"
+              },
+              {
+                "left": "El narrador dice: 'era impulsivo'",
+                "right": "Caracterización directa"
+              },
+              {
+                "left": "Lo conocemos por cómo actúa",
+                "right": "Caracterización indirecta"
+              }
+            ],
+            "completion_feedback": "Escribir creativo es hacer que el lector **sienta**: personajes con deseos y defectos, tensión que crece e imágenes que despiertan los sentidos."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo darle vida a un personaje plano",
+            "steps": [
+              "Dale una meta: proteger a su hermana",
+              "Dale un defecto: es impulsivo",
+              "Crea el conflicto: su impulso pone en riesgo a quien ama",
+              "Muéstralo con una acción, no con una descripción"
+            ],
+            "completion_feedback": "Deseo, defecto y conflicto le dan **profundidad**; mostrarlo actuando es **caracterización indirecta**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué momento de la narración es cada uno?",
+            "left_label": "Crónica de Yamal",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Minuto 89, estadio en silencio",
+                "right": "Planteamiento"
+              },
+              {
+                "left": "Yamal regatea y el portero sale",
+                "right": "Clímax"
+              },
+              {
+                "left": "El estadio estalla en festejo",
+                "right": "Desenlace"
+              },
+              {
+                "left": "'Yamal metió gol y ganaron'",
+                "right": "Narración plana"
+              }
+            ],
+            "completion_feedback": "Escribir creativo es hacer que el lector **sienta**: personajes con deseos y defectos, tensión que crece e imágenes que despiertan los sentidos."
+          },
+          "order_steps": {
+            "prompt": "Ordena esta crónica para que la emoción crezca",
+            "steps": [
+              "Quedan 2 minutos y el marcador está empatado",
+              "El delantero encara al portero en la última jugada",
+              "El estadio celebra: su equipo es campeón"
+            ],
+            "completion_feedback": "**Planteamiento, clímax y desenlace**: la tensión sube hasta el punto máximo y luego se resuelve. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿A qué sentido apela cada imagen?",
+            "left_label": "Letra para IVE",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Tu sudadera todavía huele a ti'",
+                "right": "Olfato"
+              },
+              {
+                "left": "'El lado vacío de la cama'",
+                "right": "Vista"
+              },
+              {
+                "left": "'El silencio del cuarto'",
+                "right": "Oído"
+              },
+              {
+                "left": "'El frío de la lluvia en la ventana'",
+                "right": "Tacto"
+              }
+            ],
+            "completion_feedback": "Escribir creativo es hacer que el lector **sienta**: personajes con deseos y defectos, tensión que crece e imágenes que despiertan los sentidos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada frase sobre escribir?",
+            "left_label": "Zelda: TotK",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Link estaba en peligro'",
+                "right": "Contar: plano"
+              },
+              {
+                "left": "El brazo se corrompe, la espada se rompe",
+                "right": "Mostrar con acciones"
+              },
+              {
+                "left": "'Las manos le temblaban'",
+                "right": "Señal física del miedo"
+              },
+              {
+                "left": "Goteo de agua y ecos en lo oscuro",
+                "right": "Detalle sensorial"
+              }
+            ],
+            "completion_feedback": "Escribir creativo es hacer que el lector **sienta**: personajes con deseos y defectos, tensión que crece e imágenes que despiertan los sentidos."
+          }
+        }
+      }
+    },
+    "generos-periodisticos-sec-espanol-sec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo clasificar un texto periodístico",
+        "steps": [
+          "Revisa si el autor opina o solo da hechos",
+          "Define su intención: informar, narrar u opinar",
+          "Nombra el género: noticia, crónica, columna…"
+        ],
+        "completion_feedback": "Las opiniones del autor delatan la **intención**, y la intención te dice el **género**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "Estreno One Piece",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Se estrenó con 5 millones de vistas'",
+                "right": "Noticia"
+              },
+              {
+                "left": "Fans disfrazados, filas y gritos",
+                "right": "Crónica"
+              },
+              {
+                "left": "El director explica la adaptación",
+                "right": "Entrevista"
+              },
+              {
+                "left": "'El mejor arco adaptado de la serie'",
+                "right": "Crítica o reseña"
+              }
+            ],
+            "completion_feedback": "Lo que distingue a cada género es su **intención**: informar con hechos, narrar con estilo, preguntar u opinar. Veamos cómo reconocerlos."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "El clásico",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'El Barça ganó 3-1; Yamal anotó'",
+                "right": "Noticia"
+              },
+              {
+                "left": "El partido minuto a minuto, con euforia",
+                "right": "Crónica deportiva"
+              },
+              {
+                "left": "'Yamal ya es el mejor joven del mundo'",
+                "right": "Columna de opinión"
+              },
+              {
+                "left": "Preguntas a Yamal tras el partido",
+                "right": "Entrevista"
+              }
+            ],
+            "completion_feedback": "Lo que distingue a cada género es su **intención**: informar con hechos, narrar con estilo, preguntar u opinar. Veamos cómo reconocerlos."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "Stray Kids",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Vendió 2 millones en una semana'",
+                "right": "Noticia"
+              },
+              {
+                "left": "Cómo el K-pop conquistó México, a fondo",
+                "right": "Reportaje"
+              },
+              {
+                "left": "Bang Chan y Felix cuentan cómo componen",
+                "right": "Entrevista"
+              },
+              {
+                "left": "Un crítico da su veredicto del álbum",
+                "right": "Crítica o reseña"
+              }
+            ],
+            "completion_feedback": "Lo que distingue a cada género es su **intención**: informar con hechos, narrar con estilo, preguntar u opinar. Veamos cómo reconocerlos."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué género periodístico es cada texto?",
+            "left_label": "EA Sports FC 26",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Salió el 26 de septiembre'",
+                "right": "Informativo: noticia"
+              },
+              {
+                "left": "'Le doy un 9 de 10'",
+                "right": "Opinión: reseña"
+              },
+              {
+                "left": "El productor responde preguntas",
+                "right": "Híbrido: entrevista"
+              }
+            ],
+            "completion_feedback": "Lo que distingue a cada género es su **intención**: informar con hechos, narrar con estilo, preguntar u opinar. Veamos cómo reconocerlos."
+          }
+        }
+      }
+    },
+    "debate-y-argumentacion-oral": {
+      "order_steps": {
+        "prompt": "Ordena tu intervención en un debate",
+        "steps": [
+          "Apertura: presenta tu tesis",
+          "Desarrollo: da argumentos con pruebas",
+          "Refutación: responde al oponente",
+          "Cierre: resume tu conclusión"
+        ],
+        "completion_feedback": "Abres con la **tesis**, la sostienes con **pruebas**, respondes al rival y **cierras** con fuerza. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué papel cumple cada cosa en el debate?",
+            "left_label": "Naruto vs Sasuke",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Naruto tenía razón'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'La venganza solo genera más odio'",
+                "right": "Argumento"
+              },
+              {
+                "left": "El ciclo de odio que Naruto rompe con Pain",
+                "right": "Prueba"
+              },
+              {
+                "left": "La compañera que da los turnos",
+                "right": "Moderadora"
+              }
+            ],
+            "completion_feedback": "En un debate gana quien **argumenta mejor**: tesis, razones y pruebas, escuchar para refutar y nada de falacias. Veamos cómo se construye."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Es un argumento válido o qué es?",
+            "left_label": "Messi vs Cristiano",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Ganó 8 Balones de Oro'",
+                "right": "Argumento válido"
+              },
+              {
+                "left": "'Eres tonto si crees lo contrario'",
+                "right": "Ataque personal"
+              },
+              {
+                "left": "'Falló un penal, así que siempre falla'",
+                "right": "Generalización apresurada"
+              },
+              {
+                "left": "'Es el mejor porque es mi favorito'",
+                "right": "Gusto, no argumento"
+              }
+            ],
+            "completion_feedback": "En un debate gana quien **argumenta mejor**: tesis, razones y pruebas, escuchar para refutar y nada de falacias. Veamos cómo se construye."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué papel cumple cada cosa en el debate?",
+            "left_label": "BTS vs BLACKPINK",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'BTS es el mejor grupo'",
+                "right": "Tesis"
+              },
+              {
+                "left": "Sus récords en Billboard",
+                "right": "Dato como prueba"
+              },
+              {
+                "left": "La amiga que da turnos y cuida el respeto",
+                "right": "Moderadora"
+              },
+              {
+                "left": "Responder con razones al rival",
+                "right": "Refutar"
+              }
+            ],
+            "completion_feedback": "En un debate gana quien **argumenta mejor**: tesis, razones y pruebas, escuchar para refutar y nada de falacias. Veamos cómo se construye."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo refutar al oponente",
+            "steps": [
+              "Reconoce su punto: 'Sí vende muchos álbumes'",
+              "Presenta tu objeción: vender no mide la calidad",
+              "Da tu razón: puede vender por marketing",
+              "Aporta una prueba: premios de la crítica"
+            ],
+            "completion_feedback": "Refutar no es negar todo ni insultar: **reconoces, objetas y lo pruebas**. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué papel cumple cada cosa en el debate?",
+            "left_label": "Minecraft o Roblox",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Minecraft es mejor'",
+                "right": "Tesis"
+              },
+              {
+                "left": "'…porque fomenta la creatividad'",
+                "right": "Razón"
+              },
+              {
+                "left": "'Construyes todo desde cero'",
+                "right": "Prueba"
+              },
+              {
+                "left": "'Porque sí'",
+                "right": "Le falta la razón"
+              }
+            ],
+            "completion_feedback": "En un debate gana quien **argumenta mejor**: tesis, razones y pruebas, escuchar para refutar y nada de falacias. Veamos cómo se construye."
+          }
+        }
+      }
+    },
+    "analisis-critico-del-discurso": {
+      "order_steps": {
+        "prompt": "Ordena cómo analizar críticamente un mensaje",
+        "steps": [
+          "Identifica quién lo dice y qué quiere",
+          "Detecta sus recursos: palabras cargadas o presión",
+          "Pregúntate a quién beneficia",
+          "Forma tu propia opinión con criterio"
+        ],
+        "completion_feedback": "Primero el **emisor y su interés**, luego sus **trucos**, y al final decides tú, sin aceptar una sola versión. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué recurso o rasgo del discurso es cada cosa?",
+            "left_label": "Attack on Titan",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Llamar 'demonios' al otro bando",
+                "right": "Palabra con ideología"
+              },
+              {
+                "left": "Obedecer 'por el bien de la humanidad'",
+                "right": "Control disfrazado"
+              },
+              {
+                "left": "Los mismos son héroes o demonios",
+                "right": "Depende de quién habla"
+              },
+              {
+                "left": "¿A quién le conviene este discurso?",
+                "right": "Pregunta crítica"
+              }
+            ],
+            "completion_feedback": "El lenguaje **nunca es neutral**: quien habla elige palabras para moverte. Analizar es preguntarte quién lo dice, para qué y a quién beneficia."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué recurso o rasgo del discurso es cada cosa?",
+            "left_label": "Dos titulares",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Victoria heroica' del Barça",
+                "right": "Carga positiva"
+              },
+              {
+                "left": "'Sufre y gana con polémica'",
+                "right": "Carga negativa"
+              },
+              {
+                "left": "El Barça ganó 2-1",
+                "right": "Hecho objetivo"
+              },
+              {
+                "left": "Cada medio inclina sus palabras",
+                "right": "Sesgo"
+              }
+            ],
+            "completion_feedback": "El lenguaje **nunca es neutral**: quien habla elige palabras para moverte. Analizar es preguntarte quién lo dice, para qué y a quién beneficia."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo analizar un titular deportivo",
+            "steps": [
+              "Separa el hecho: el Barça ganó",
+              "Subraya las palabras con carga",
+              "Deduce la postura del medio",
+              "Compara con el titular de otro medio"
+            ],
+            "completion_feedback": "El hecho es el mismo; las **palabras cargadas** revelan el **sesgo**. Comparar fuentes te deja leer con criterio. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué recurso o rasgo del discurso es cada cosa?",
+            "left_label": "Tuit viral",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Está COMPROBADO', sin pruebas",
+                "right": "Afirmar sin probar"
+              },
+              {
+                "left": "'Todos lo saben'",
+                "right": "Presión social"
+              },
+              {
+                "left": "'Quien dude solo tiene envidia'",
+                "right": "Descalificar al otro"
+              },
+              {
+                "left": "'Vendió 2 millones de álbumes'",
+                "right": "Hecho verificable"
+              }
+            ],
+            "completion_feedback": "El lenguaje **nunca es neutral**: quien habla elige palabras para moverte. Analizar es preguntarte quién lo dice, para qué y a quién beneficia."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué recurso o rasgo del discurso es cada cosa?",
+            "left_label": "Brawl Pass",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'¡ÚLTIMAS HORAS!'",
+                "right": "Urgencia"
+              },
+              {
+                "left": "'No te quedes fuera'",
+                "right": "Miedo a quedar excluido"
+              },
+              {
+                "left": "'Los MEJORES ya tienen a Kenji'",
+                "right": "Querer ser como otros"
+              },
+              {
+                "left": "'Por solo 169 pesos'",
+                "right": "Disfrazar el precio"
+              }
+            ],
+            "completion_feedback": "El lenguaje **nunca es neutral**: quien habla elige palabras para moverte. Analizar es preguntarte quién lo dice, para qué y a quién beneficia."
+          }
+        }
+      }
+    },
+    "variantes-del-espanol": {
+      "order_steps": null,
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre las variantes del español?",
+            "left_label": "One Piece doblado",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'¡Vale, tío, esto mola!'",
+                "right": "Doblaje de España"
+              },
+              {
+                "left": "'¡Amigos, esto está genial!'",
+                "right": "Doblaje latino neutro"
+              },
+              {
+                "left": "Ninguno de los dos está 'mal'",
+                "right": "Variantes válidas"
+              },
+              {
+                "left": "Ajustar el habla a cada público",
+                "right": "La lengua se adapta"
+              }
+            ],
+            "completion_feedback": "El español cambia según **dónde, con quién y en qué situación** se habla, y todas sus variantes son válidas. Veamos cómo se notan."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué diferencia entre variantes muestra cada cosa?",
+            "left_label": "Narradores",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Chaval', 'pibe', 'morro'",
+                "right": "Vocabulario"
+              },
+              {
+                "left": "'Vos la rompiste'",
+                "right": "Gramática: voseo"
+              },
+              {
+                "left": "Aspirar la 's' final",
+                "right": "Pronunciación"
+              },
+              {
+                "left": "Muchos países, todos igual de válidos",
+                "right": "Lengua pluricéntrica"
+              }
+            ],
+            "completion_feedback": "El español cambia según **dónde, con quién y en qué situación** se habla, y todas sus variantes son válidas. Veamos cómo se notan."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿De qué país es cada regionalismo?",
+            "left_label": "ARMY hispana",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'¡Qué guay!'",
+                "right": "España"
+              },
+              {
+                "left": "'¡Está zarpado!'",
+                "right": "Argentina"
+              },
+              {
+                "left": "'¡Qué bacano!'",
+                "right": "Colombia"
+              },
+              {
+                "left": "'¡Está bien chido!'",
+                "right": "México"
+              }
+            ],
+            "completion_feedback": "El español cambia según **dónde, con quién y en qué situación** se habla, y todas sus variantes son válidas. Veamos cómo se notan."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué muestra cada cosa sobre las variantes del español?",
+            "left_label": "Chat de Fortnite",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Español de México o de Argentina",
+                "right": "Variante geográfica"
+              },
+              {
+                "left": "La jerga de los gamers",
+                "right": "Variante social"
+              },
+              {
+                "left": "Hablar formal o informal",
+                "right": "Variante situacional"
+              },
+              {
+                "left": "Nadie en el chat habla 'mal'",
+                "right": "Todas son válidas"
+              }
+            ],
+            "completion_feedback": "El español cambia según **dónde, con quién y en qué situación** se habla, y todas sus variantes son válidas. Veamos cómo se notan."
+          }
+        }
+      }
+    },
+    "lenguaje-incluyente": {
+      "order_steps": {
+        "prompt": "Ordena cómo hacer incluyente una frase",
+        "steps": [
+          "Detecta el masculino genérico que deja fuera a alguien",
+          "Busca una palabra colectiva o un término neutro",
+          "Si no encuentras uno, usa el desdoblamiento",
+          "Relee la frase para que suene fluida"
+        ],
+        "completion_feedback": "Primero las opciones **más fluidas** (colectiva o neutra); el **desdoblamiento** queda para cuando no hay otra. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué recurso del lenguaje usa cada frase?",
+            "left_label": "Escuadrón ninja",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Todos los ninjas, prepárense'",
+                "right": "Masculino genérico"
+              },
+              {
+                "left": "'Atención, equipo ninja'",
+                "right": "Palabra colectiva"
+              },
+              {
+                "left": "'Quienes integran el equipo'",
+                "right": "Término neutro"
+              },
+              {
+                "left": "'Prepárense, todas y todos'",
+                "right": "Desdoblamiento"
+              }
+            ],
+            "completion_feedback": "El **masculino genérico** puede dejar fuera a muchas personas; la **palabra colectiva**, el **término neutro** o el **desdoblamiento** incluyen a todo el grupo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué recurso del lenguaje usa cada frase?",
+            "left_label": "Futbol femenil",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Los aficionados llenaron el estadio'",
+                "right": "Masculino genérico"
+              },
+              {
+                "left": "'La afición llenó el estadio'",
+                "right": "Palabra colectiva"
+              },
+              {
+                "left": "'Quienes juegan en la selección'",
+                "right": "Término neutro"
+              },
+              {
+                "left": "'Las y los futbolistas'",
+                "right": "Desdoblamiento"
+              }
+            ],
+            "completion_feedback": "El **masculino genérico** puede dejar fuera a muchas personas; la **palabra colectiva**, el **término neutro** o el **desdoblamiento** incluyen a todo el grupo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué recurso del lenguaje usa cada frase?",
+            "left_label": "Fandom ARMY",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Gracias a todos los fans'",
+                "right": "Masculino genérico"
+              },
+              {
+                "left": "'Gracias a todo el fandom'",
+                "right": "Palabra colectiva"
+              },
+              {
+                "left": "'Gracias a quienes nos apoyan'",
+                "right": "Término neutro"
+              },
+              {
+                "left": "'Seguidores y seguidoras'",
+                "right": "Desdoblamiento"
+              }
+            ],
+            "completion_feedback": "El **masculino genérico** puede dejar fuera a muchas personas; la **palabra colectiva**, el **término neutro** o el **desdoblamiento** incluyen a todo el grupo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué recurso del lenguaje usa cada frase?",
+            "left_label": "Torneo de Valorant",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "'Bienvenidos todos los jugadores'",
+                "right": "Masculino genérico"
+              },
+              {
+                "left": "'Bienvenida, comunidad gamer'",
+                "right": "Palabra colectiva"
+              },
+              {
+                "left": "'Las personas más hábiles ganarán'",
+                "right": "Término neutro"
+              },
+              {
+                "left": "'Jugadores y jugadoras'",
+                "right": "Desdoblamiento"
+              }
+            ],
+            "completion_feedback": "El **masculino genérico** puede dejar fuera a muchas personas; la **palabra colectiva**, el **término neutro** o el **desdoblamiento** incluyen a todo el grupo."
+          }
+        }
+      }
+    },
+    "documentos-oficiales-y-de-la-vida-cotidiana": {
+      "order_steps": {
+        "prompt": "Ordena el trámite para inscribir a tu equipo",
+        "steps": [
+          "Llena la solicitud de inscripción",
+          "Entrega identificaciones, permisos y certificados",
+          "Recibe el comprobante con folio"
+        ],
+        "completion_feedback": "Primero **pides** el lugar, luego **compruebas** que cumples los requisitos y al final te dan la **prueba** del trámite. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué documento cumple cada función?",
+            "left_label": "Blue Lock",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Cita a Isagi con fecha y lugar",
+                "right": "Carta de convocatoria"
+              },
+              {
+                "left": "Autoriza que un menor participe",
+                "right": "Permiso de los padres"
+              },
+              {
+                "left": "Fija las normas del encierro",
+                "right": "Reglamento"
+              },
+              {
+                "left": "Anota los datos de los 300 jugadores",
+                "right": "Registro"
+              }
+            ],
+            "completion_feedback": "Cada documento tiene una **función**: citar, pedir, autorizar, certificar o registrar. Su formato fijo y sus datos precisos le dan **validez**."
+          },
+          "order_steps": {
+            "prompt": "Ordena los documentos de Isagi para entrar a Blue Lock",
+            "steps": [
+              "Recibe la carta de convocatoria",
+              "Sus padres firman el permiso",
+              "Al ingresar, firma el reglamento"
+            ],
+            "completion_feedback": "Primero te **citan**, luego te **autorizan** y al entrar aceptas las **normas**: cada paso pide su documento. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué documento cumple cada función?",
+            "left_label": "Torneo escolar",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Pide un lugar en el torneo",
+                "right": "Solicitud de inscripción"
+              },
+              {
+                "left": "Dice que estás apto para jugar",
+                "right": "Certificado médico"
+              },
+              {
+                "left": "Prueba quién es cada jugador",
+                "right": "Identificación"
+              },
+              {
+                "left": "Prueba que el equipo quedó inscrito",
+                "right": "Comprobante con folio"
+              }
+            ],
+            "completion_feedback": "Cada documento tiene una **función**: citar, pedir, autorizar, certificar o registrar. Su formato fijo y sus datos precisos le dan **validez**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué documento cumple cada función?",
+            "left_label": "Staff de CARAT",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Resume tus datos y experiencia",
+                "right": "Currículum (CV)"
+              },
+              {
+                "left": "Explica por qué quieres ser staff",
+                "right": "Carta de presentación"
+              },
+              {
+                "left": "Fija tus obligaciones y horarios",
+                "right": "Carta compromiso"
+              },
+              {
+                "left": "Certifica que colaboraste",
+                "right": "Constancia"
+              }
+            ],
+            "completion_feedback": "Cada documento tiene una **función**: citar, pedir, autorizar, certificar o registrar. Su formato fijo y sus datos precisos le dan **validez**."
+          },
+          "order_steps": {
+            "prompt": "Ordena los documentos para ser staff del fanclub",
+            "steps": [
+              "Envía tu CV y tu carta de presentación",
+              "Al ser aceptado, firma la carta compromiso",
+              "Al terminar el evento, recibe tu constancia"
+            ],
+            "completion_feedback": "Te **postulas**, te **comprometes** y al final te **certifican**: cada etapa tiene su documento. Ahora míralo en un ejemplo completo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué documento cumple cada función?",
+            "left_label": "Roblox",
+            "right_label": "En Español",
+            "pairs": [
+              {
+                "left": "Denunciar a un tramposo, con folio",
+                "right": "Queja o reporte"
+              },
+              {
+                "left": "Pedir un objeto perdido por un error",
+                "right": "Solicitud"
+              },
+              {
+                "left": "Registrar los acuerdos del clan",
+                "right": "Acta"
+              },
+              {
+                "left": "Comprobar que eres administrador",
+                "right": "Constancia"
+              }
+            ],
+            "completion_feedback": "Cada documento tiene una **función**: citar, pedir, autorizar, certificar o registrar. Su formato fijo y sus datos precisos le dan **validez**."
+          },
+          "order_steps": {
+            "prompt": "Ordena cómo reportar a un tramposo",
+            "steps": [
+              "Abre el menú de reporte",
+              "Llena usuario, fecha, falta y descripción",
+              "Guarda el número de folio",
+              "Los moderadores revisan y emiten una resolución"
+            ],
+            "completion_feedback": "Un reporte con **datos precisos y folio** tiene validez: por eso sí obtiene una respuesta. Ahora míralo en un ejemplo completo."
+          }
+        }
+      }
+    }
+  }
+}
