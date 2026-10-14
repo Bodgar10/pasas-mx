@@ -49,7 +49,7 @@ Resultado en la base por tema: 40 secciones, 20 quiz, 30 de horda, 1 diagnóstic
 
 | Materia | Temas cargados | Revisión | Publicada |
 |---|---|---|---|
-| tecnologia-sec-1 | 10/10 | ✅ (2 correcciones en `tecnologia-sec-1/pendiente-sql-editor.sql`) | ✅ 14 oct 2026 (falta audio) |
+| tecnologia-sec-1 | 10/10 | ✅ todas aplicadas | ✅ 14 oct 2026 (falta audio) |
 
 ## Ojo con el conector de Supabase
 Algunos UPDATE llegan como `cancelled` sin que aparezca ningún aviso (filtro automático del
