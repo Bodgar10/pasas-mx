@@ -1,5 +1,5 @@
 {
-  "_nota": "Anuncio de conversión para papás (Meta): demo del producto real en ~25 s con voz. Fondos con OpenAI en las escenas 1, 4, 6 y 8 (workflow 'Fondos de anuncios' → video/arte/<slug>/reel-NN.jpg). Render: node src/como-funciona-v2.mjs --data data/anuncios/2026-10-asi-funciona-pasas-papas.json [--revisar | --guion | --audios carpeta/]",
+  "_nota": "Anuncio de conversión para papás (Meta): demo del producto real en ~25 s con voz. Fondos con OpenAI en las escenas 1, 4, 7 y 9 (workflow 'Fondos de anuncios' → video/arte/<slug>/reel-NN.jpg). Render: node src/como-funciona-v2.mjs --data data/anuncios/2026-10-asi-funciona-pasas-papas.json [--revisar | --guion | --audios carpeta/]",
   "nombre": "asi funciona pasas papas",
   "color": "#ec4899",
   "slides": [],
@@ -130,6 +130,23 @@
           ]
         ],
         "voz": "ordena los pasos…"
+      },
+      {
+        "tipo": "pistas",
+        "dur": 5.2,
+        "paso": "Paso 3",
+        "color": "#10b981",
+        "lineas": [
+          [
+            "Si se atora,",
+            "s"
+          ],
+          [
+            "le damos pistas",
+            "k"
+          ]
+        ],
+        "voz": "Si se atora, no le damos la respuesta: le damos pistas, hasta que la saca él."
       },
       {
         "tipo": "horda",

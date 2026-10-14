@@ -191,6 +191,28 @@
       </div>
     </div>
 
+
+    <!-- pistas · SolveBlock "Papel y lápiz" (InteractiveBlocks.tsx) -->
+    <div class="scr" id="u-pistas">
+      <div class="hdr"><div class="bk">←</div>
+        <div style="flex:1;min-width:0"><div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.08em">MATEMÁTICAS 2°</div>
+          <div class="orb" style="font-size:15px">Sistemas de ecuaciones</div></div></div>
+      <div class="tabs"><span class="on">Guía</span><span>Quiz</span><span>Horda</span><span>Resumen</span></div>
+      <div class="mj" style="border-color:rgba(16,185,129,.3)"><div class="ttl" style="background:rgba(16,185,129,.08);color:#10b981">📝 PAPEL Y LÁPIZ</div>
+        <div style="padding:14px 14px 16px">
+          <div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.05em;margin-bottom:8px">EJERCICIO 1 DE 3</div>
+          <div style="font-size:15px;line-height:1.5;color:#e2d9f3;margin-bottom:12px">En una tienda, dos cuadernos y una pluma cuestan 45 pesos. Una pluma cuesta 5 pesos. ¿Cuánto cuesta cada cuaderno?</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div id="sv-in" style="flex:1;border:1.5px solid #2D2048;border-radius:12px;padding:12px;font-size:16px;font-weight:700;color:#e2d9f3;background:#0f0a1e;min-height:46px"><span id="sv-val" style="color:#4B3D6E">Tu respuesta</span></div>
+            <span style="font-size:16px;color:#a78bfa;font-weight:700">pesos</span></div>
+          <div class="btn" id="sv-btn" style="margin-top:10px;min-height:46px">Revisar</div>
+          <div id="sv-err" style="margin-top:10px;font-size:13.5px;font-weight:700;color:#fca5a5;opacity:0">✗ Todavía no. Te dejé una pista arriba — inténtalo otra vez.</div>
+          <div id="sv-hint" style="display:flex;gap:6px;margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);opacity:0;transform:scale(.96)"><span style="font-size:14px">💡</span><span style="font-size:14px;color:#fbbf24;font-weight:600;line-height:1.5">Llama x al precio de un cuaderno. Con los datos: 2x + y = 45, y ya sabes que y = 5.</span></div>
+          <div id="sv-ok" style="margin-top:12px;font-size:16px;color:#6ee7b7;font-weight:800;opacity:0">✓ ¡Correcto!</div>
+        </div>
+      </div>
+    </div>
+
     <!-- horda (horda-client.tsx) -->
     <div class="scr" id="u-horda">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
@@ -338,7 +360,7 @@ window.render = function (t) {
   // Teléfono: entra tras el gancho y sale antes del cierre
   var pin = easeOut(clamp((t - (t1('gancho') - 0.5)) / 0.6)), pout = easeOut(clamp((t - (t0('cierre') - 0.2)) / 0.5));
   $('phone').style.transform = 'translateY(' + ((1 - pin) * 1400 + pout * 1400) + 'px)';
-  ['elige', 'analogia', 'conecta', 'pasos', 'horda', 'avance'].forEach(function (k) {
+  ['elige', 'analogia', 'conecta', 'pasos', 'pistas', 'horda', 'avance'].forEach(function (k) {
     $('u-' + k).style.opacity = win(t, t0(k) - (k === 'elige' ? 0.6 : 0), t1(k) + (k === 'avance' ? 0.3 : 0), k !== 'elige', k !== 'avance');
   });
 
@@ -387,6 +409,21 @@ window.render = function (t) {
     if (k < 3) lp.push([tk, 'ch' + k]);
   }
   tapped = taps(t, lp) || tapped;
+
+
+  // pistas: escribe 25 → Revisar → falla y sale la pista → escribe 20 → Revisar → ¡Correcto!
+  var s7 = t0('pistas'), d7 = E[idx('pistas')].dur, pA = s7 + d7 * 0.18, pB = s7 + d7 * 0.33, pC = s7 + d7 * 0.6, pD = s7 + d7 * 0.76;
+  var typed = t < pA ? '' : t < pB ? '25' : t < pC ? '25' : '20';
+  if (t >= pA && t < pA + 0.4) typed = '2'; if (t >= pC && t < pC + 0.4) typed = '2';
+  $('sv-val').textContent = typed || 'Tu respuesta'; $('sv-val').style.color = typed ? '#e2d9f3' : '#4B3D6E';
+  var wrong = t >= pB && t < pC, right = t >= pD;
+  $('sv-in').style.borderColor = right ? '#10b981' : wrong ? '#f87171' : typed ? '#7c3aed' : '#2D2048';
+  $('sv-btn').classList.toggle('off', !typed);
+  $('sv-err').style.opacity = wrong ? clamp((t - pB) / 0.2) : 0;
+  var hv = clamp((t - pB) / 0.3); $('sv-hint').style.opacity = hv; $('sv-hint').style.transform = 'scale(' + (0.96 + 0.04 * easeOut(hv)) + ')';
+  $('sv-ok').style.opacity = clamp((t - pD) / 0.25);
+  $('sv-in').style.transform = wrong && t < pB + 0.4 ? 'translateX(' + (Math.sin((t - pB) * 60) * 4) + 'px)' : 'none';
+  tapped = taps(t, [[pB, 'sv-btn'], [pD, 'sv-btn']]) || tapped;
 
   // horda
   var s5 = t0('horda'), d5 = E[idx('horda')].dur, hT = s5 + d5 * 0.45, hok = t >= hT;
