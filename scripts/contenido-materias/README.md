@@ -50,8 +50,17 @@ Resultado en la base por tema: 40 secciones, 20 quiz, 30 de horda, 1 diagnóstic
 | Materia | Temas cargados | Revisión | Publicada |
 |---|---|---|---|
 | tecnologia-sec-1 | 10/10 | ✅ todas aplicadas | ✅ 14 oct 2026 (falta audio) |
+| tecnologia-sec-2 | 10/10 | ✅ antes de cargar | ✅ 14 oct 2026 (falta audio) |
 
 ## Ojo con el conector de Supabase
 Algunos UPDATE llegan como `cancelled` sin que aparezca ningún aviso (filtro automático del
 conector, no tuyo). Pasa más con bloques `DO` de varios UPDATE. Funciona mejor una sentencia por
 llamada; lo que se siga cancelando se corre a mano en el SQL Editor del dashboard.
+
+## Ojo al cargar con agentes (md5 no coincide)
+El shell no llega a Supabase, así que el `.sql` (~60 KB) lo transcribe un agente al conector, y a
+veces altera un carácter: parte palabras ("copiarlas" → "copiar las"), cambia "el" por "tu" o mete
+`"hint":null`. El md5 lo frena y no se inserta nada, así que reintentar es seguro. Lo que funciona:
+que el agente **primero escriba su copia a un archivo, la compare con `cmp` contra el original,
+corrija hasta que sea idéntica, y solo entonces la mande**. Si una palabra se rompe siempre,
+reescribe esa frase en el JSON y regenera el SQL.

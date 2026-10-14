@@ -1,0 +1,1847 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "hoja-de-calculo-formulas-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo sacar un total con una función",
+    "steps": [
+      "Capturar los datos en las celdas de una columna",
+      "Seleccionar la celda donde irá el resultado",
+      "Escribir el signo igual",
+      "Escribir SUMA y el rango entre paréntesis",
+      "Presionar Enter para ver el total"
+    ],
+    "completion_feedback": "Primero los **datos**, luego eliges la **celda** del resultado, escribes el **=**, la **función** con su **rango** y presionas **Enter**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El reto de episodios de Frieren",
+        "content": "Tú, Ana, Diego y Sofi hicieron un reto en el salón: quién ve más episodios de Frieren en una semana. La primera temporada tiene 28, así que hay para rato. Al principio llevaban la cuenta en el chat del grupo, pero cada quien decía un número distinto y nadie sabía cuántos iban en total. Entonces abres Google Sheets. En la columna A escribes los nombres y en la columna B los episodios: Ana 7, Diego 6, Sofi 10 y tú 8. Debajo, en la casilla B6, en lugar de sumar con la calculadora escribes una instrucción que empieza con el signo igual y le pide a la hoja sumar desde B2 hasta B5. Aparece 31. Esa misma noche Diego presume que ya va en 9. Cambias su 6 por un 9 y, sin tocar nada más, el total salta solo a 34. Nadie volvió a pelear por las cuentas: la hoja hace las operaciones y se actualiza cada vez que alguien avanza. Dejar que la hoja calcule por ti es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu hoja del reto ES una hoja de cálculo",
+        "content": "Lo que acabas de ver con el reto de Frieren es exactamente trabajar con una **hoja de cálculo** (Excel, Google Sheets o LibreOffice Calc). El archivo se llama **libro** y puede tener varias **hojas**. Las **columnas** se nombran con **letras** y las **filas** con **números**; donde se cruzan está la **celda**, que se nombra columna + fila, como **B4**. La que tienes seleccionada es la **celda activa**. Un **rango** es un grupo de celdas seguidas y se escribe con dos puntos: **B2:B5**. Una **fórmula** siempre empieza con **=** y una **función** como **=SUMA(B2:B5)** hace la cuenta por ti y se **recalcula** sola si cambias un dato."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu presupuesto para la convención de anime",
+        "content": "Vas a una convención de anime y quieres saber cuánto gastarás en mercancía.\n\n**Paso 1:** En la fila 1 escribes Artículo, Precio, Cantidad y Total. Abajo: manga de Naruto, $120, 3; figura de Goku, $450, 1; póster de Frieren, $85, 2.\n**Paso 2:** En D2 escribes **=B2*C2** → 120 × 3 = **360**.\n**Paso 3:** Arrastras D2 hasta D4 y la hoja ajusta sola: D3 queda **=B3*C3** (450) y D4 **=B4*C4** (170) → **referencia relativa**.\n**Paso 4:** En D5 escribes **=SUMA(D2:D4)** → 360 + 450 + 170 = **980**.\n**Paso 5:** Decides llevar un solo póster: cambias C4 a 1 y el total baja solo a **895**.\n\nResultado: sabes exacto cuánto llevar sin volver a hacer cuentas."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **fórmula** siempre empieza con **=** y usa **referencias** (=B2*C2) para recalcularse sola. Orden: **paréntesis**, **potencia (^)**, **multiplicación y división**, **suma y resta**. Funciones: **=SUMA**, **=PROMEDIO**, **=MAX**, **=MIN** y **=CONTAR** (cuenta celdas con números), con un **rango** como B2:B6. Dividir entre cero da **#¡DIV/0!**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Una fórmula sin = es como una técnica que nadie grita: no se activa. Si escribes SUMA(B2:B5) sin el igual, la hoja lo deja como texto. Primero el =, luego la función y al final el rango."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Así calcula la hoja el promedio de episodios del reto, paso a paso.",
+        "data": {
+          "intro": "Ya con el 9 de Diego, la columna B tiene 7, 9, 10 y 8. Quieres saber cuántos episodios vio cada quien en promedio.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Seleccionas la celda B7: ahora es la celda activa y ahí aparecerá el resultado."
+            },
+            {
+              "text": "Escribes =PROMEDIO(B2:B5) y presionas Enter. El rango B2:B5 incluye las cuatro celdas, no solo las dos de las orillas."
+            },
+            {
+              "text": "La hoja suma el rango: 7 + 9 + 10 + 8 = 34."
+            },
+            {
+              "text": "Luego divide entre las 4 celdas con número: 34 ÷ 4 = 8.5. En promedio, cada quien vio 8.5 episodios."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica los datos del reto",
+        "content": "Texto: nombres y palabras. Número: cantidades con las que se puede calcular. Fecha: día, mes y año.",
+        "data": {
+          "prompt": "Arrastra cada cosa que escribiste en tu hoja a su tipo de dato.",
+          "buckets": [
+            "Texto",
+            "Número",
+            "Fecha"
+          ],
+          "items": [
+            {
+              "t": "Fern",
+              "b": 0
+            },
+            {
+              "t": "28",
+              "b": 1
+            },
+            {
+              "t": "15/03/2026",
+              "b": 2
+            },
+            {
+              "t": "Himmel",
+              "b": 0
+            },
+            {
+              "t": "8.5",
+              "b": 1
+            },
+            {
+              "t": "01/10/2026",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada función con lo que te dice de la columna de episodios.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "=SUMA(B2:B5)",
+              "b": "Episodios de todos juntos"
+            },
+            {
+              "a": "=PROMEDIO(B2:B5)",
+              "b": "Media del grupo"
+            },
+            {
+              "a": "=MAX(B2:B5)",
+              "b": "El número más alto"
+            },
+            {
+              "a": "=MIN(B2:B5)",
+              "b": "El número más bajo"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la hoja de cálculo es cada cosa del reto?",
+        "left_label": "Reto Frieren",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El cuadro donde va el 10 de Sofi",
+            "right": "Celda"
+          },
+          {
+            "left": "De B2 a B5: los cuatro del reto",
+            "right": "Rango"
+          },
+          {
+            "left": "La palabra SUMA que hace la cuenta",
+            "right": "Función"
+          },
+          {
+            "left": "El total que sube solo a 34",
+            "right": "Recálculo automático"
+          }
+        ],
+        "completion_feedback": "Cada dato vive en una **celda**, varias seguidas forman un **rango** y una **función** las calcula y se **recalcula** sola. Ahora ponle nombre formal a todo."
+      },
+      "quiz": [
+        {
+          "question": "En tu hoja del reto, ¿cómo se llama la celda donde se cruzan la columna B y la fila 4?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "B4"
+            },
+            {
+              "letter": "B",
+              "text": "4B"
+            },
+            {
+              "letter": "C",
+              "text": "B-4"
+            },
+            {
+              "letter": "D",
+              "text": "C4"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Una celda se nombra primero con la letra de la columna y luego con el número de la fila: B4. Al revés, 4B, no es un nombre válido.",
+          "difficulty": 1
+        },
+        {
+          "question": "Escribes SUMA(B2:B5) en B6, pero se te olvida el signo igual. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se queda como texto"
+            },
+            {
+              "letter": "B",
+              "text": "Suma los cuatro valores"
+            },
+            {
+              "letter": "C",
+              "text": "Marca el error #¡DIV/0!"
+            },
+            {
+              "letter": "D",
+              "text": "Saca el promedio del rango"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Sin el = la hoja no sabe que es una fórmula y lo muestra tal cual, como texto. Toda fórmula y toda función empiezan con =.",
+          "difficulty": 2
+        },
+        {
+          "question": "En B2:B5 están los episodios: Ana 7, Diego 9, Sofi 10 y tú 8. ¿Qué devuelve =PROMEDIO(B2:B5)?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "8.5"
+            },
+            {
+              "letter": "B",
+              "text": "34"
+            },
+            {
+              "letter": "C",
+              "text": "6.8"
+            },
+            {
+              "letter": "D",
+              "text": "10"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "PROMEDIO suma 7 + 9 + 10 + 8 = 34 y divide entre las 4 celdas: 34 ÷ 4 = 8.5. Si divides entre 5 te sale 6.8, y 34 es solo la suma.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué función te da el número de episodios más bajo del rango B2:B5?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=MIN(B2:B5)"
+            },
+            {
+              "letter": "B",
+              "text": "=MAX(B2:B5)"
+            },
+            {
+              "letter": "C",
+              "text": "=CONTAR(B2:B5)"
+            },
+            {
+              "letter": "D",
+              "text": "=PROMEDIO(B2:B5)"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "MIN devuelve el valor más bajo del rango. MAX da el más alto, CONTAR cuenta cuántas celdas tienen número y PROMEDIO saca la media.",
+          "difficulty": 2
+        },
+        {
+          "question": "En C2 escribiste =B2/28 para ver el avance de Ana y la arrastras hasta C5. ¿Qué fórmula queda en C4?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=B4/28"
+            },
+            {
+              "letter": "B",
+              "text": "=B2/28"
+            },
+            {
+              "letter": "C",
+              "text": "=C4/28"
+            },
+            {
+              "letter": "D",
+              "text": "=B4/30"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Al bajar dos filas, la referencia B2 se ajusta a B4: es una referencia relativa. El 28 es un número escrito a mano, así que no cambia.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La tabla de goleo de tu equipo",
+        "content": "Este año te tocó llevar la tabla de goleo de tu equipo en la liga intersecundarias. Al principio la hacías en una libreta: nombre, partidos y goles, y con la calculadora sacabas cuántos goles mete cada quien por partido. Cada jornada tenías que borrar y volver a hacer todas las cuentas. Así que la pasas a Excel. En la columna A van los nombres, en la B los partidos jugados y en la C los goles. En la D escribes una instrucción que empieza con el signo igual y divide los goles entre los partidos: Leo, con 6 goles en 8 partidos, da 0.75. La arrastras hacia abajo y la hoja la acomoda sola para cada jugador. Pero en la fila de Santi, que acaba de llegar y no ha jugado, aparece un aviso raro: no se puede dividir entre cero. El sábado Leo juega su noveno partido y mete otro gol; cambias sus dos números y su promedio se actualiza solo. Esa hoja que hace las cuentas por ti es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu tabla de goleo ES una hoja de cálculo",
+        "content": "Lo que acabas de ver con la tabla de goleo es exactamente trabajar con una **hoja de cálculo** (Excel, Google Sheets o LibreOffice Calc). El archivo se llama **libro** y puede tener varias **hojas**. Las **columnas** se nombran con **letras** y las **filas** con **números**; donde se cruzan está la **celda**, que se nombra columna + fila, como **C2**. La que tienes seleccionada es la **celda activa**. Un **rango** es un grupo de celdas seguidas y se escribe con dos puntos: **C2:C9**. Una **fórmula** siempre empieza con **=** y una **función** como **=SUMA(C2:C9)** hace la cuenta por ti y se **recalcula** sola si cambias un dato."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los puntos de la tabla de posiciones",
+        "content": "En tu liga, como en la Liga MX, cada victoria vale 3 puntos y cada empate 1. Armas la tabla de posiciones.\n\n**Paso 1:** En la fila 1 escribes Equipo, Ganados, Empatados, Perdidos y Puntos.\n**Paso 2:** Tu equipo ganó 5, empató 2 y perdió 1. En E2 escribes **=B2*3+C2**.\n**Paso 3:** La hoja respeta la **jerarquía**: primero multiplica 5 × 3 = 15 y luego suma 2 → **17 puntos**.\n**Paso 4:** Arrastras E2 hasta E9 para los 8 equipos. En E3 queda **=B3*3+C3**: el rival, con 4 ganados y 3 empates, suma 12 + 3 = **15**.\n**Paso 5:** En E10 escribes **=MAX(E2:E9)** para ver el puntaje del líder.\n\nResultado: la tabla se actualiza sola después de cada jornada."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **fórmula** siempre empieza con **=** y usa **referencias** (=B2*C2) para recalcularse sola. Orden: **paréntesis**, **potencia (^)**, **multiplicación y división**, **suma y resta**. Funciones: **=SUMA**, **=PROMEDIO**, **=MAX**, **=MIN** y **=CONTAR** (cuenta celdas con números), con un **rango** como B2:B6. Dividir entre cero da **#¡DIV/0!**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "La jerarquía es como la tanda de penales: hay un orden y nadie se lo brinca. Primero paréntesis, luego potencia (^), después multiplicación y división, y al final suma y resta."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Así calcula la hoja los puntos de un equipo respetando la jerarquía de operaciones.",
+        "data": {
+          "intro": "El equipo de la fila 4 ganó 6 partidos y empató 1. En E4 está la fórmula =B4*3+C4. Mira qué hace la hoja.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Revisa si hay paréntesis. No hay, así que sigue con la multiplicación."
+            },
+            {
+              "text": "Multiplica primero: B4*3 = 6 × 3 = 18."
+            },
+            {
+              "text": "Después suma el empate: 18 + C4 = 18 + 1 = 19 puntos."
+            },
+            {
+              "text": "Ojo: =(B4+C4)*3 daría (6 + 1) × 3 = 21, un resultado falso. Los paréntesis cambian el orden de las operaciones."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Calcula o se queda como texto?",
+        "content": "Si empieza con =, la hoja lo calcula. Si no lleva el =, la hoja lo guarda como texto aunque parezca fórmula.",
+        "data": {
+          "prompt": "Arrastra cada cosa que escribiste en tus tablas de la liga a su lugar.",
+          "buckets": [
+            "Fórmula (calcula)",
+            "Texto (no calcula)"
+          ],
+          "items": [
+            {
+              "t": "=C2/B2",
+              "b": 0
+            },
+            {
+              "t": "C2/B2",
+              "b": 1
+            },
+            {
+              "t": "=SUMA(C2:C9)",
+              "b": 0
+            },
+            {
+              "t": "SUMA(C2:C9)",
+              "b": 1
+            },
+            {
+              "t": "=B2*3+C2",
+              "b": 0
+            },
+            {
+              "t": "Goles por partido",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada cosa de la tabla de goleo con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "#¡DIV/0!",
+              "b": "Error: entre cero"
+            },
+            {
+              "a": "=C2/B2",
+              "b": "Goles por partido"
+            },
+            {
+              "a": "=SUMA(C2:C9)",
+              "b": "Goles de todo el equipo"
+            },
+            {
+              "a": "=CONTAR(C2:C9)",
+              "b": "Celdas con número"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la hoja de cálculo es cada cosa de tu tabla?",
+        "left_label": "Tabla de goleo",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El cuadro con los 6 goles de Leo",
+            "right": "Celda"
+          },
+          {
+            "left": "Goles entre partidos de cada jugador",
+            "right": "Fórmula"
+          },
+          {
+            "left": "El aviso en la fila de Santi",
+            "right": "Error #¡DIV/0!"
+          },
+          {
+            "left": "Toda la columna de goles, de C2 a C9",
+            "right": "Rango"
+          }
+        ],
+        "completion_feedback": "Cada dato está en una **celda**, una **fórmula** divide, el **rango** agrupa la columna y dividir entre cero da **#¡DIV/0!**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En tu hoja de goleo, ¿con qué se nombran las columnas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Con letras"
+            },
+            {
+              "letter": "B",
+              "text": "Con números"
+            },
+            {
+              "letter": "C",
+              "text": "Con colores"
+            },
+            {
+              "letter": "D",
+              "text": "Con los nombres"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Las columnas se nombran con letras y las filas con números. Por eso una celda se llama, por ejemplo, C2: columna C, fila 2.",
+          "difficulty": 1
+        },
+        {
+          "question": "Leo tiene 6 goles en C2 y 8 partidos en B2. ¿Qué fórmula da sus goles por partido?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=C2/B2"
+            },
+            {
+              "letter": "B",
+              "text": "=B2/C2"
+            },
+            {
+              "letter": "C",
+              "text": "=C2*B2"
+            },
+            {
+              "letter": "D",
+              "text": "C2/B2"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Goles entre partidos: =C2/B2 da 6 ÷ 8 = 0.75. Al revés da partidos por gol, y sin el = la hoja lo guarda como texto.",
+          "difficulty": 2
+        },
+        {
+          "question": "Santi lleva 0 partidos en B5. Al arrastrar =C2/B2 hasta su fila, ¿qué aparece en D5?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "#¡DIV/0!"
+            },
+            {
+              "letter": "B",
+              "text": "El número 0"
+            },
+            {
+              "letter": "C",
+              "text": "Una celda en blanco"
+            },
+            {
+              "letter": "D",
+              "text": "Los goles de Leo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "En D5 la fórmula queda =C5/B5 y B5 vale 0. No se puede dividir entre cero, así que la hoja muestra el error #¡DIV/0!.",
+          "difficulty": 3
+        },
+        {
+          "question": "B2 = 5 victorias y C2 = 2 empates. ¿Qué resultado da =B2*3+C2?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "17"
+            },
+            {
+              "letter": "B",
+              "text": "21"
+            },
+            {
+              "letter": "C",
+              "text": "15"
+            },
+            {
+              "letter": "D",
+              "text": "30"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Primero la multiplicación: 5 × 3 = 15, y luego la suma: 15 + 2 = 17. Si sumas antes de multiplicar te sale 21, que es incorrecto.",
+          "difficulty": 2
+        },
+        {
+          "question": "El rango C2:C9 tiene 8 celdas: 6 con goles y 2 vacías. ¿Qué devuelve =CONTAR(C2:C9)?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "6"
+            },
+            {
+              "letter": "B",
+              "text": "8"
+            },
+            {
+              "letter": "C",
+              "text": "2"
+            },
+            {
+              "letter": "D",
+              "text": "9"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "CONTAR solo cuenta las celdas que tienen números. Las 2 vacías no cuentan, así que el resultado es 6.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El presupuesto para ver a SEVENTEEN",
+        "content": "Imagina que SEVENTEEN anuncia concierto en la Ciudad de México y tú quieres ir. Antes de pedir permiso necesitas un plan de cuánto cuesta todo. Abres Google Sheets y en la columna A escribes los gastos: boleto, lightstick, transporte y comida. En la columna B, lo que cuesta cada uno: 2,400, 1,100, 300 y 250 pesos. Debajo no sumas con la calculadora: escribes una instrucción que empieza con el signo igual y le pide a la hoja sumar de B2 a B5. Aparece 4,050. En otra casilla divides ese total entre los 150 pesos que puedes ahorrar cada semana y la hoja te dice 27 semanas. Luego tu prima te avisa que hay una zona más barata, de 1,800. Cambias solo el precio del boleto y, sin tocar nada más, el total baja a 3,450 y las semanas a 23. Tu mamá ve el plan tan claro que acepta platicarlo. Esa hoja que recalcula todo cuando cambias un dato es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu plan del concierto ES una hoja de cálculo",
+        "content": "Lo que acabas de ver con el presupuesto del concierto es exactamente trabajar con una **hoja de cálculo** (Excel, Google Sheets o LibreOffice Calc). El archivo se llama **libro** y puede tener varias **hojas**. Las **columnas** se nombran con **letras** y las **filas** con **números**; donde se cruzan está la **celda**, que se nombra columna + fila, como **B2**. La que tienes seleccionada es la **celda activa**. Un **rango** es un grupo de celdas seguidas y se escribe con dos puntos: **B2:B5**. Una **fórmula** siempre empieza con **=** y una **función** como **=SUMA(B2:B5)** hace la cuenta por ti y se **recalcula** sola si cambias un dato."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tus reproducciones del nuevo MV de aespa",
+        "content": "Durante una semana de clases anotas cuántas veces reprodujiste el nuevo MV de aespa.\n\n**Paso 1:** En A1 escribes Día y en B1 Reproducciones. De B2 a B6 capturas de lunes a viernes: 12, 15, 9, 20 y 14.\n**Paso 2:** En B7 escribes **=SUMA(B2:B6)** → 12 + 15 + 9 + 20 + 14 = **70**.\n**Paso 3:** En B8, **=PROMEDIO(B2:B6)** → 70 ÷ 5 = **14** por día.\n**Paso 4:** En B9, **=MAX(B2:B6)** → **20**, el jueves. En B10, **=MIN(B2:B6)** → **9**, el miércoles.\n**Paso 5:** Te das cuenta de que el lunes fueron 17, no 12. Corriges B2 y la suma pasa sola a **75** y el promedio a **15**.\n\nResultado: cuatro funciones y cero cuentas a mano."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **fórmula** siempre empieza con **=** y usa **referencias** (=B2*C2) para recalcularse sola. Orden: **paréntesis**, **potencia (^)**, **multiplicación y división**, **suma y resta**. Funciones: **=SUMA**, **=PROMEDIO**, **=MAX**, **=MIN** y **=CONTAR** (cuenta celdas con números), con un **rango** como B2:B6. Dividir entre cero da **#¡DIV/0!**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Lee un rango como el line-up de un grupo: B2:B6 es de B2 hasta B6 con todos los del medio, cinco celdas, no solo las dos de las orillas. Los dos puntos significan hasta."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso deja tu presupuesto del concierto más completo y automático.",
+        "data": {
+          "intro": "Vas a armar desde cero tu hoja de presupuesto para el concierto. El medidor muestra qué tan lista está.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Escribes los encabezados en la fila 1: Gasto en A1 y Precio en B1.",
+              "delta": 15
+            },
+            {
+              "text": "Capturas los precios de B2 a B5: 2,400, 1,100, 300 y 250.",
+              "delta": 25
+            },
+            {
+              "text": "En B6 escribes =SUMA(B2:B5) y aparece 4,050.",
+              "delta": 30
+            },
+            {
+              "text": "Cambias el boleto a 1,800 y el total baja solo a 3,450. ¡La hoja trabaja por ti!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué función usas?",
+        "content": "SUMA da el total de un rango, PROMEDIO da la media y MAX da el valor más alto.",
+        "data": {
+          "prompt": "Arrastra cada pregunta de tu hoja a la función que la responde.",
+          "buckets": [
+            "=SUMA",
+            "=PROMEDIO",
+            "=MAX"
+          ],
+          "items": [
+            {
+              "t": "Cuánto cuesta todo el concierto",
+              "b": 0
+            },
+            {
+              "t": "Reproducciones por día, en promedio",
+              "b": 1
+            },
+            {
+              "t": "El boleto más caro de la gira",
+              "b": 2
+            },
+            {
+              "t": "Reproducciones de toda la semana",
+              "b": 0
+            },
+            {
+              "t": "Calificación media de un K-drama",
+              "b": 1
+            },
+            {
+              "t": "Máximo de reproducciones en un día",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte de la hoja de cálculo con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Libro",
+              "b": "El archivo completo"
+            },
+            {
+              "a": "Hoja",
+              "b": "Una pestaña del archivo"
+            },
+            {
+              "a": "Celda activa",
+              "b": "La que está seleccionada"
+            },
+            {
+              "a": "B2:B6",
+              "b": "De B2 hasta B6"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la hoja de cálculo es cada cosa de tu plan?",
+        "left_label": "Plan del concierto",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La casilla del precio del boleto",
+            "right": "Celda"
+          },
+          {
+            "left": "Sumar boleto, lightstick y lo demás",
+            "right": "Función SUMA"
+          },
+          {
+            "left": "Total entre 150 para saber las semanas",
+            "right": "Fórmula"
+          },
+          {
+            "left": "El total baja solo a 3,450",
+            "right": "Recálculo automático"
+          }
+        ],
+        "completion_feedback": "Cada precio vive en una **celda**, la **función SUMA** junta el rango, una **fórmula** divide y todo se **recalcula** solo. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Toda fórmula de tu presupuesto debe empezar con…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El signo ="
+            },
+            {
+              "letter": "B",
+              "text": "Un paréntesis"
+            },
+            {
+              "letter": "C",
+              "text": "Una comilla"
+            },
+            {
+              "letter": "D",
+              "text": "La letra de la columna"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Sin el signo = la hoja no calcula nada: lo toma como texto. Después del = ya puedes escribir referencias, operadores o funciones.",
+          "difficulty": 1
+        },
+        {
+          "question": "Escribes =SUMA(B2:B6) en tu hoja de reproducciones. ¿Cuántas celdas suma?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "5"
+            },
+            {
+              "letter": "B",
+              "text": "2"
+            },
+            {
+              "letter": "C",
+              "text": "4"
+            },
+            {
+              "letter": "D",
+              "text": "6"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los dos puntos significan hasta: B2, B3, B4, B5 y B6 son 5 celdas. Contar solo las orillas, B2 y B6, es el error más común.",
+          "difficulty": 2
+        },
+        {
+          "question": "Antes, =SUMA(B2:B5) daba 4,050 con el boleto en 2,400. Cambias el boleto a 1,800. ¿Cuánto da ahora?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "3,450"
+            },
+            {
+              "letter": "B",
+              "text": "4,650"
+            },
+            {
+              "letter": "C",
+              "text": "1,800"
+            },
+            {
+              "letter": "D",
+              "text": "2,250"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El boleto bajó 600 pesos, así que el total baja lo mismo: 4,050 − 600 = 3,450. La hoja lo recalcula sola porque la fórmula usa referencias.",
+          "difficulty": 3
+        },
+        {
+          "question": "Escribes la fecha de la preventa, 15/11/2026, en una celda. ¿Qué tipo de dato es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fecha"
+            },
+            {
+              "letter": "B",
+              "text": "Texto"
+            },
+            {
+              "letter": "C",
+              "text": "Fórmula"
+            },
+            {
+              "letter": "D",
+              "text": "Función"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Día, mes y año separados con diagonales se reconocen como fecha. No es fórmula porque no empieza con =.",
+          "difficulty": 2
+        },
+        {
+          "question": "El total del concierto está en B6 y ahorras 150 pesos por semana. ¿Qué fórmula te da cuántas semanas necesitas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=B6/150"
+            },
+            {
+              "letter": "B",
+              "text": "=B6*150"
+            },
+            {
+              "letter": "C",
+              "text": "=150/B6"
+            },
+            {
+              "letter": "D",
+              "text": "B6/150"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Semanas = total ÷ ahorro semanal, así que =B6/150. Multiplicar da otra cosa, al revés da una fracción y sin el = se queda como texto.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El torneo de Brawl Stars con tus amigos",
+        "content": "Tú y tus amigos arman un torneo de Brawl Stars de tres rondas. En cada ronda se reparten puntos según cómo quede cada quien, y gana quien junte más. La primera vez llevaron las cuentas en un papel y terminaron discutiendo. Esta vez abres Excel: en la columna A van los nombres y en B, C y D los puntos de cada ronda. En E2 escribes una instrucción que empieza con el signo igual y suma de B2 a D2: Kevin hizo 8, 10 y 6, así que tiene 24. En vez de escribirla otra vez para cada jugador, agarras la esquinita de la casilla y la arrastras hacia abajo; la hoja ajusta sola la fila de cada quien. Valeria sale con 26, tú con 25 y Rodri con 24. Abajo, otra instrucción busca el número más alto de la columna E. Entonces Valeria reclama que en la ronda 2 hizo 9 y no 7. Corriges esa casilla y su total sube solo a 28, sin rehacer nada. Que la hoja calcule y se corrija sola es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La hoja del torneo ES una hoja de cálculo",
+        "content": "Lo que acabas de ver con el torneo de Brawl Stars es exactamente trabajar con una **hoja de cálculo** (Excel, Google Sheets o LibreOffice Calc). El archivo se llama **libro** y puede tener varias **hojas**. Las **columnas** se nombran con **letras** y las **filas** con **números**; donde se cruzan está la **celda**, que se nombra columna + fila, como **C3**. La que tienes seleccionada es la **celda activa**. Un **rango** es un grupo de celdas seguidas y se escribe con dos puntos: **B2:D2**. Una **fórmula** siempre empieza con **=** y una **función** como **=SUMA(B2:D2)** hace la cuenta por ti y se **recalcula** sola si cambias un dato."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la ganancia de los nabos en Animal Crossing",
+        "content": "En Animal Crossing: New Horizons compraste 200 nabos a 95 bayas cada uno y hoy la tienda los compra a 250. ¿Cuánto ganas?\n\n**Paso 1:** Capturas el precio de compra en B2 (95), el de venta en C2 (250) y la cantidad en D2 (200).\n**Paso 2:** En E2 escribes **=(C2-B2)*D2**.\n**Paso 3:** Primero el **paréntesis**: 250 − 95 = **155** bayas de ganancia por nabo.\n**Paso 4:** Luego la **multiplicación**: 155 × 200 = **31,000** bayas.\n**Paso 5:** Sin paréntesis, =C2-B2*D2 multiplicaría primero 95 × 200 = 19,000 y daría 250 − 19,000 = **−18,750**. ¡Pérdida falsa!\n\nResultado: los paréntesis deciden qué se calcula primero."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **fórmula** siempre empieza con **=** y usa **referencias** (=B2*C2) para recalcularse sola. Orden: **paréntesis**, **potencia (^)**, **multiplicación y división**, **suma y resta**. Funciones: **=SUMA**, **=PROMEDIO**, **=MAX**, **=MIN** y **=CONTAR** (cuenta celdas con números), con un **rango** como B2:B6. Dividir entre cero da **#¡DIV/0!**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Arrastrar una fórmula es como copiar tu build a otro personaje: se adapta a su fila. =SUMA(B2:D2) bajada una fila se vuelve =SUMA(B3:D3) sola. Eso es la referencia relativa."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso deja la hoja del torneo más completa y automática.",
+        "data": {
+          "intro": "Vas a armar desde cero la hoja del torneo de Brawl Stars. El medidor muestra qué tan lista está.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Escribes los encabezados en la fila 1: Jugador, Ronda 1, Ronda 2, Ronda 3 y Total.",
+              "delta": 20
+            },
+            {
+              "text": "Capturas los puntos de cada jugador en las columnas B, C y D.",
+              "delta": 25
+            },
+            {
+              "text": "En E2 escribes =SUMA(B2:D2): Kevin suma 8 + 10 + 6 = 24.",
+              "delta": 25
+            },
+            {
+              "text": "Arrastras E2 hasta E5 y la hoja ajusta cada fila: E3 queda =SUMA(B3:D3).",
+              "delta": 20
+            },
+            {
+              "text": "En E6 escribes =MAX(E2:E5) y aparece 26, el puntaje de Valeria. ¡Torneo calculado!",
+              "delta": 10
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Celda, rango o fórmula",
+        "content": "Celda: una sola casilla, como B3. Rango: varias seguidas con dos puntos, como B2:D2. Fórmula: empieza con =.",
+        "data": {
+          "prompt": "Arrastra cada cosa de la hoja del torneo a su categoría.",
+          "buckets": [
+            "Celda",
+            "Rango",
+            "Fórmula"
+          ],
+          "items": [
+            {
+              "t": "B3",
+              "b": 0
+            },
+            {
+              "t": "B2:D2",
+              "b": 1
+            },
+            {
+              "t": "=SUMA(B2:D2)",
+              "b": 2
+            },
+            {
+              "t": "E5",
+              "b": 0
+            },
+            {
+              "t": "E2:E5",
+              "b": 1
+            },
+            {
+              "t": "=E2-E3",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada símbolo de las fórmulas con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "^",
+              "b": "Potencia"
+            },
+            {
+              "a": "*",
+              "b": "Multiplicación"
+            },
+            {
+              "a": "/",
+              "b": "División"
+            },
+            {
+              "a": "( )",
+              "b": "Se resuelve primero"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la hoja de cálculo es cada cosa del torneo?",
+        "left_label": "Torneo Brawl",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Los puntos de Valeria en la ronda 2",
+            "right": "Celda"
+          },
+          {
+            "left": "B2 a D2: las tres rondas de Kevin",
+            "right": "Rango"
+          },
+          {
+            "left": "Al arrastrar, cada fila usa la suya",
+            "right": "Referencia relativa"
+          },
+          {
+            "left": "Buscar el puntaje más alto",
+            "right": "Función MAX"
+          }
+        ],
+        "completion_feedback": "Cada puntaje está en una **celda**, las rondas forman un **rango**, la **referencia relativa** se ajusta al arrastrar y **MAX** encuentra al campeón. Ahora, el nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En la hoja del torneo, ¿qué es B2:D2?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un rango"
+            },
+            {
+              "letter": "B",
+              "text": "Una celda"
+            },
+            {
+              "letter": "C",
+              "text": "Una fórmula"
+            },
+            {
+              "letter": "D",
+              "text": "Una función"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los dos puntos indican un rango: todas las celdas de B2 hasta D2, es decir, B2, C2 y D2. Una celda sola sería, por ejemplo, C2.",
+          "difficulty": 1
+        },
+        {
+          "question": "Kevin hizo 8, 10 y 6 puntos en B2, C2 y D2. ¿Qué da =SUMA(B2:D2)?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "24"
+            },
+            {
+              "letter": "B",
+              "text": "14"
+            },
+            {
+              "letter": "C",
+              "text": "8"
+            },
+            {
+              "letter": "D",
+              "text": "30"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El rango incluye las tres celdas: 8 + 10 + 6 = 24. Si solo sumas las orillas, B2 y D2, te sale 14.",
+          "difficulty": 2
+        },
+        {
+          "question": "En Animal Crossing compras nabos a 100 (B2), los vendes a 300 (C2) y tienes 50 (D2). ¿Qué fórmula da tu ganancia?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=(C2-B2)*D2"
+            },
+            {
+              "letter": "B",
+              "text": "=C2-B2*D2"
+            },
+            {
+              "letter": "C",
+              "text": "=(B2-C2)*D2"
+            },
+            {
+              "letter": "D",
+              "text": "=(C2*D2)-B2"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Primero la ganancia por nabo, 300 − 100 = 200, y luego por la cantidad: 200 × 50 = 10,000. Sin paréntesis se multiplicaría antes de restar.",
+          "difficulty": 3
+        },
+        {
+          "question": "Arrastras =SUMA(B2:D2) de la celda E2 a la celda E3. ¿Qué fórmula queda en E3?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=SUMA(B3:D3)"
+            },
+            {
+              "letter": "B",
+              "text": "=SUMA(B2:D2)"
+            },
+            {
+              "letter": "C",
+              "text": "=SUMA(C2:E2)"
+            },
+            {
+              "letter": "D",
+              "text": "=SUMA(B3:D2)"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Al bajar una fila, todas las referencias bajan una fila: B2 pasa a B3 y D2 a D3. Así cada jugador suma sus propias rondas.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un bonus del torneo se calcula con =10+5*2. ¿Qué resultado da?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "20"
+            },
+            {
+              "letter": "B",
+              "text": "30"
+            },
+            {
+              "letter": "C",
+              "text": "17"
+            },
+            {
+              "letter": "D",
+              "text": "25"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La multiplicación va antes que la suma: 5 × 2 = 10 y luego 10 + 10 = 20. Si sumas primero, (10 + 5) × 2 = 30.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos programas es una hoja de cálculo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Excel"
+        },
+        {
+          "letter": "B",
+          "text": "Word"
+        },
+        {
+          "letter": "C",
+          "text": "PowerPoint"
+        },
+        {
+          "letter": "D",
+          "text": "Paint"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el que sirve para hacer cuentas con filas y columnas.",
+      "explanation": "Excel es una hoja de cálculo, igual que Google Sheets y LibreOffice Calc. Word es procesador de textos, PowerPoint es de presentaciones y Paint es de dibujo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En una hoja de cálculo, las columnas se identifican con…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Letras"
+        },
+        {
+          "letter": "B",
+          "text": "Números"
+        },
+        {
+          "letter": "C",
+          "text": "Colores"
+        },
+        {
+          "letter": "D",
+          "text": "Símbolos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en lo que aparece arriba de cada columna en Excel.",
+      "explanation": "Las columnas llevan letras (A, B, C…) y las filas llevan números (1, 2, 3…)."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama el cuadro donde se cruzan una columna y una fila?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Celda"
+        },
+        {
+          "letter": "B",
+          "text": "Rango"
+        },
+        {
+          "letter": "C",
+          "text": "Libro"
+        },
+        {
+          "letter": "D",
+          "text": "Hoja"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el lugar donde escribes un solo dato.",
+      "explanation": "La celda es el cruce de una columna y una fila. Un rango es un grupo de celdas, y el libro es el archivo completo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Con qué signo empieza siempre una fórmula?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Signo igual"
+        },
+        {
+          "letter": "B",
+          "text": "Asterisco"
+        },
+        {
+          "letter": "C",
+          "text": "Dos puntos"
+        },
+        {
+          "letter": "D",
+          "text": "Signo de pesos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el mismo signo que escribes antes de un resultado en matemáticas.",
+      "explanation": "Toda fórmula empieza con =. El asterisco sirve para multiplicar y los dos puntos para escribir rangos."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "La celda que está en la columna C y en la fila 7 se llama…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "C7"
+        },
+        {
+          "letter": "B",
+          "text": "7C"
+        },
+        {
+          "letter": "C",
+          "text": "C-7"
+        },
+        {
+          "letter": "D",
+          "text": "7-C"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Primero va la columna y después la fila.",
+      "explanation": "El nombre de una celda es la letra de la columna seguida del número de la fila: C7."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué símbolo se usa para multiplicar en una fórmula de hoja de cálculo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "*"
+        },
+        {
+          "letter": "B",
+          "text": "x"
+        },
+        {
+          "letter": "C",
+          "text": "/"
+        },
+        {
+          "letter": "D",
+          "text": "^"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No es la x que usas en el cuaderno de matemáticas.",
+      "explanation": "En la hoja de cálculo se multiplica con el asterisco, por ejemplo =B2*C2. La diagonal divide y el ^ eleva a una potencia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué significa el rango A1:A5?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De A1 hasta A5"
+        },
+        {
+          "letter": "B",
+          "text": "Solo A1 y A5"
+        },
+        {
+          "letter": "C",
+          "text": "A1 dividido entre A5"
+        },
+        {
+          "letter": "D",
+          "text": "A1 multiplicado por 5"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Los dos puntos se leen como hasta.",
+      "explanation": "A1:A5 incluye A1, A2, A3, A4 y A5: cinco celdas. No son solo las dos de las orillas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué función suma todos los números de un rango?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "SUMA"
+        },
+        {
+          "letter": "B",
+          "text": "CONTAR"
+        },
+        {
+          "letter": "C",
+          "text": "PROMEDIO"
+        },
+        {
+          "letter": "D",
+          "text": "MAX"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en la función que usarías para sacar un total.",
+      "explanation": "SUMA junta todos los valores del rango. CONTAR dice cuántas celdas tienen número, PROMEDIO saca la media y MAX da el más alto."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cómo se llama el archivo completo de una hoja de cálculo, que puede tener varias hojas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Libro"
+        },
+        {
+          "letter": "B",
+          "text": "Celda"
+        },
+        {
+          "letter": "C",
+          "text": "Rango"
+        },
+        {
+          "letter": "D",
+          "text": "Columna"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en algo que tiene muchas páginas adentro.",
+      "explanation": "El archivo se llama libro y cada pestaña dentro de él es una hoja."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Escribes Pedro en una celda. ¿Qué tipo de dato es?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Texto"
+        },
+        {
+          "letter": "B",
+          "text": "Número"
+        },
+        {
+          "letter": "C",
+          "text": "Fecha"
+        },
+        {
+          "letter": "D",
+          "text": "Fórmula"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Pregúntate si con eso se puede hacer una cuenta.",
+      "explanation": "Un nombre es texto. Con él no se puede calcular. Los números sirven para operar y las fechas indican día, mes y año."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Las celdas A1 a A4 tienen 6, 8, 10 y 4. ¿Qué da =SUMA(A1:A4)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "28"
+        },
+        {
+          "letter": "B",
+          "text": "10"
+        },
+        {
+          "letter": "C",
+          "text": "24"
+        },
+        {
+          "letter": "D",
+          "text": "7"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Suma las cuatro celdas, no solo las orillas.",
+      "explanation": "6 + 8 + 10 + 4 = 28. Si sumas solo A1 y A4 te sale 10, y 7 sería el promedio."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Las celdas B1 a B5 tienen 5, 7, 9, 3 y 6. ¿Qué da =PROMEDIO(B1:B5)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "6"
+        },
+        {
+          "letter": "B",
+          "text": "30"
+        },
+        {
+          "letter": "C",
+          "text": "9"
+        },
+        {
+          "letter": "D",
+          "text": "7.5"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Suma todo y divide entre cuántos números hay.",
+      "explanation": "La suma es 5 + 7 + 9 + 3 + 6 = 30 y hay 5 números: 30 ÷ 5 = 6. Dividir entre 4 da 7.5, un error común."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué hace la función =MAX(C1:C10)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Da el número más alto del rango"
+        },
+        {
+          "letter": "B",
+          "text": "Suma todos los números del rango"
+        },
+        {
+          "letter": "C",
+          "text": "Cuenta cuántas celdas tienen datos"
+        },
+        {
+          "letter": "D",
+          "text": "Da el número más bajo del rango"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en para qué la usarías en una tabla de puntajes.",
+      "explanation": "MAX devuelve el valor más alto del rango. Para el más bajo se usa MIN y para sumar, SUMA."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué resultado da la fórmula =2+3*4?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "14"
+        },
+        {
+          "letter": "B",
+          "text": "20"
+        },
+        {
+          "letter": "C",
+          "text": "24"
+        },
+        {
+          "letter": "D",
+          "text": "9"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Recuerda qué operación va antes: la suma o la multiplicación.",
+      "explanation": "Primero se multiplica 3 × 4 = 12 y luego se suma 2: 14. Si sumas primero te sale 20, que es incorrecto."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un alumno escribe B2+C2 en una celda, sin nada antes. ¿Qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se muestra como texto"
+        },
+        {
+          "letter": "B",
+          "text": "Suma las dos celdas"
+        },
+        {
+          "letter": "C",
+          "text": "Marca el error #¡DIV/0!"
+        },
+        {
+          "letter": "D",
+          "text": "Multiplica B2 por C2"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa con qué debe empezar toda fórmula.",
+      "explanation": "Sin el signo = la hoja no reconoce una fórmula y deja lo escrito como texto. Lo correcto es =B2+C2."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En D2 está =B2*C2. La copias a D3. ¿Qué fórmula queda en D3?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "=B3*C3"
+        },
+        {
+          "letter": "B",
+          "text": "=B2*C2"
+        },
+        {
+          "letter": "C",
+          "text": "=B3*C2"
+        },
+        {
+          "letter": "D",
+          "text": "=C3*D3"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Al bajar una fila, todas las referencias bajan una fila.",
+      "explanation": "Es una referencia relativa: al copiar una fila abajo, B2 pasa a B3 y C2 pasa a C3. Por eso cada fila calcula con sus propios datos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué error aparece al dividir un número entre una celda vacía o con cero?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "#¡DIV/0!"
+        },
+        {
+          "letter": "B",
+          "text": "#¡VALOR!"
+        },
+        {
+          "letter": "C",
+          "text": "#¡REF!"
+        },
+        {
+          "letter": "D",
+          "text": "#N/A"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué operación está fallando en la fórmula.",
+      "explanation": "#¡DIV/0! avisa que se intentó dividir entre cero. Una celda vacía cuenta como cero en una división."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "El rango A1:A6 tiene: 4, la palabra hola, 7, una celda vacía, 2 y 9. ¿Qué da =CONTAR(A1:A6)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "4"
+        },
+        {
+          "letter": "B",
+          "text": "6"
+        },
+        {
+          "letter": "C",
+          "text": "5"
+        },
+        {
+          "letter": "D",
+          "text": "22"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "CONTAR solo toma en cuenta las celdas que tienen números.",
+      "explanation": "Las celdas con número son 4, 7, 2 y 9: son 4. La palabra hola y la celda vacía no cuentan. 22 sería la suma."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué resultado da la fórmula =(2+3)*4?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "20"
+        },
+        {
+          "letter": "B",
+          "text": "14"
+        },
+        {
+          "letter": "C",
+          "text": "24"
+        },
+        {
+          "letter": "D",
+          "text": "9"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Lo que está entre paréntesis se resuelve antes que todo.",
+      "explanation": "Primero el paréntesis: 2 + 3 = 5, y luego 5 × 4 = 20. Sin paréntesis el resultado sería 14."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Las celdas C1 a C5 tienen 12, 4, 15, 9 y 7. ¿Qué da =MIN(C1:C5)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "4"
+        },
+        {
+          "letter": "B",
+          "text": "15"
+        },
+        {
+          "letter": "C",
+          "text": "7"
+        },
+        {
+          "letter": "D",
+          "text": "47"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "MIN viene de mínimo.",
+      "explanation": "MIN devuelve el número más bajo del rango: 4. El 15 sería el MAX y 47 la suma de todo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué resultado da la fórmula =10-2^3?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "2"
+        },
+        {
+          "letter": "B",
+          "text": "512"
+        },
+        {
+          "letter": "C",
+          "text": "4"
+        },
+        {
+          "letter": "D",
+          "text": "7"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La potencia se resuelve antes que la resta.",
+      "explanation": "Primero la potencia: 2^3 = 2 × 2 × 2 = 8. Luego la resta: 10 − 8 = 2. Restar primero daría 8^3 = 512."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En D2 quieres el total de un producto con precio en B2 y cantidad en C2. ¿Por qué conviene =B2*C2 y no =25*3?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se recalcula si cambias un dato"
+        },
+        {
+          "letter": "B",
+          "text": "Da un resultado más exacto"
+        },
+        {
+          "letter": "C",
+          "text": "Las fórmulas con números dan error"
+        },
+        {
+          "letter": "D",
+          "text": "Excel no sabe multiplicar números"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa si mañana cambia el precio.",
+      "explanation": "Con referencias, si cambias el precio o la cantidad, el total se actualiza solo. Con números fijos tendrías que reescribir la fórmula cada vez."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un alumno escribe =A1+A2+A3+A4+A5+A6+A7+A8. ¿Qué fórmula da lo mismo y es más corta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "=SUMA(A1:A8)"
+        },
+        {
+          "letter": "B",
+          "text": "=CONTAR(A1:A8)"
+        },
+        {
+          "letter": "C",
+          "text": "=SUMA(A1:A7)"
+        },
+        {
+          "letter": "D",
+          "text": "=PROMEDIO(A1:A8)"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la función que junta los valores de un rango completo.",
+      "explanation": "=SUMA(A1:A8) suma las ocho celdas de A1 hasta A8. CONTAR solo cuenta celdas con número y el rango hasta A7 deja fuera una celda."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "B1 a B4 tienen 8, 6, una celda vacía y 10. ¿Qué da =PROMEDIO(B1:B4)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "8"
+        },
+        {
+          "letter": "B",
+          "text": "6"
+        },
+        {
+          "letter": "C",
+          "text": "24"
+        },
+        {
+          "letter": "D",
+          "text": "10"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "PROMEDIO ignora las celdas vacías.",
+      "explanation": "Suma 8 + 6 + 10 = 24 y divide entre las 3 celdas con número: 24 ÷ 3 = 8. Dividir entre 4 daría 6, porque contarías la vacía."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Copias =SUMA(B2:B6) de la celda B7 a la celda C7. ¿Qué fórmula queda en C7?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "=SUMA(C2:C6)"
+        },
+        {
+          "letter": "B",
+          "text": "=SUMA(B2:B6)"
+        },
+        {
+          "letter": "C",
+          "text": "=SUMA(B3:B7)"
+        },
+        {
+          "letter": "D",
+          "text": "=SUMA(C3:C7)"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Te moviste una columna a la derecha, no una fila hacia abajo.",
+      "explanation": "Al copiar una columna a la derecha, las letras avanzan una: B pasa a C. Las filas no cambian porque no te moviste hacia abajo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Para promediar 3 calificaciones en A1, B1 y C1, un alumno escribe =A1+B1+C1/3. ¿Cuál es su error?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Faltan paréntesis en la suma"
+        },
+        {
+          "letter": "B",
+          "text": "Debió dividir entre 4 y no entre 3"
+        },
+        {
+          "letter": "C",
+          "text": "Las celdas no se pueden sumar así"
+        },
+        {
+          "letter": "D",
+          "text": "Debe empezar con + y no con ="
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa qué operación hace primero la hoja.",
+      "explanation": "La división va antes que la suma, así que solo C1 se divide entre 3. Lo correcto es =(A1+B1+C1)/3, o mejor =PROMEDIO(A1:C1)."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "A1 vale 9 y A2 vale 3. ¿Qué da =(A1+A2)/A2*2?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "8"
+        },
+        {
+          "letter": "B",
+          "text": "2"
+        },
+        {
+          "letter": "C",
+          "text": "11"
+        },
+        {
+          "letter": "D",
+          "text": "24"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Después del paréntesis, división y multiplicación van de izquierda a derecha.",
+      "explanation": "Paréntesis: 9 + 3 = 12. Luego, de izquierda a derecha: 12 ÷ 3 = 4 y 4 × 2 = 8. Multiplicar 3 × 2 antes de dividir daría 2."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "La celda E2 tiene =C2/D2 y muestra #¡DIV/0!. ¿Qué hay probablemente en D2?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un cero o nada"
+        },
+        {
+          "letter": "B",
+          "text": "Un número muy grande"
+        },
+        {
+          "letter": "C",
+          "text": "Una fecha de este año"
+        },
+        {
+          "letter": "D",
+          "text": "Un número negativo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa entre qué número no se puede dividir.",
+      "explanation": "El error #¡DIV/0! aparece cuando el divisor vale cero. Una celda vacía también cuenta como cero al dividir."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál es la diferencia entre =CONTAR(A1:A10) y =SUMA(A1:A10)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una cuenta celdas con número; otra suma valores"
+        },
+        {
+          "letter": "B",
+          "text": "Ninguna, las dos dan siempre el mismo resultado final"
+        },
+        {
+          "letter": "C",
+          "text": "CONTAR suma los textos y SUMA suma los números del rango"
+        },
+        {
+          "letter": "D",
+          "text": "CONTAR solo funciona con fechas y SUMA solo con números"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Imagina un rango con 3, 5 y 2: una función diría 3 y la otra diría 10.",
+      "explanation": "CONTAR dice cuántas celdas tienen números; SUMA junta sus valores. Con 3, 5 y 2, CONTAR da 3 y SUMA da 10."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Tienes 30 precios por capturar en B2:B31 y quieres saber cuántos ya escribiste. ¿Qué función usas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "=CONTAR(B2:B31)"
+        },
+        {
+          "letter": "B",
+          "text": "=SUMA(B2:B31)"
+        },
+        {
+          "letter": "C",
+          "text": "=MAX(B2:B31)"
+        },
+        {
+          "letter": "D",
+          "text": "=PROMEDIO(B2:B31)"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No te interesa cuánto suman los precios, sino cuántas celdas ya tienen uno.",
+      "explanation": "CONTAR dice cuántas celdas del rango tienen números, o sea, cuántos precios ya capturaste. SUMA daría el dinero total."
+    }
+  ],
+  "diagnostic": {
+    "question": "En una hoja de cálculo, ¿qué fórmula suma los valores de las celdas A1 hasta A10?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "=SUMA(A1:A10)"
+      },
+      {
+        "letter": "B",
+        "text": "SUMA(A1:A10)"
+      },
+      {
+        "letter": "C",
+        "text": "=SUMA(A1-A10)"
+      },
+      {
+        "letter": "D",
+        "text": "=CONTAR(A1:A10)"
+      }
+    ],
+    "correct_answer": "A",
+    "explanation": "Una fórmula empieza con = y el rango se escribe con dos puntos: A1:A10. Sin el = queda como texto, y CONTAR solo cuenta celdas con número."
+  }
+}

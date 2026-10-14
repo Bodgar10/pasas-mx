@@ -1,0 +1,1858 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "programacion-por-bloques-scratch-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo se arma y se prueba un programa en Scratch",
+    "steps": [
+      "Elegir o dibujar el objeto y sus disfraces",
+      "Arrastrar el evento al hacer clic en bandera verde",
+      "Encajar debajo los bloques en el orden en que deben pasar",
+      "Hacer clic en la bandera verde para probar el programa",
+      "Corregir los bloques que no hicieron lo esperado"
+    ],
+    "completion_feedback": "Primero el **objeto**, luego el **evento** que arranca, después los bloques en **secuencia** y al final **probar y corregir**. Ahora míralo en un programa completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La rutina de remates de Hinata en Karasuno",
+        "content": "En Haikyuu!!, Hinata es bajito pero salta como nadie, y Kageyama es el armador que le pone el balón justo donde lo necesita. Imagina que, para que su ataque rápido salga en un partido de verdad, el entrenador Ukai les escribe en el pizarrón del gimnasio una rutina que deben seguir al pie de la letra. Primero, Hinata corre hacia la red; luego salta; al final remata. Si cambia el orden y salta antes de correr, no llega a nada. Abajo dice: 'Repitan esto 20 veces'. Y una regla más: 'Si el pase viene alto, salta un poco después; si no, salta en cuanto Kageyama toque el balón'. La última línea es la más dura: 'No se van a su casa hasta que conecten 10 remates seguidos'. Hinata no improvisa: lee cada instrucción, la cumple en orden, repite lo que hay que repetir y decide según cómo venga el pase. Una lista de órdenes exactas que se siguen de arriba abajo, con partes que se repiten y partes que dependen de una condición: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La rutina del pizarrón ES un programa de Scratch",
+        "content": "Lo que acabas de ver en el gimnasio de Karasuno es exactamente cómo se programa en **Scratch**, el lenguaje de programación **por bloques** del MIT. Un **programa** es una lista de instrucciones que el **objeto** (el personaje) sigue en **secuencia**: **de arriba abajo**, en orden. Arranca con un **evento**, como **al hacer clic en bandera verde**. Lo que se repite va dentro de un **ciclo**: **repetir (20)**, **por siempre** o **repetir hasta que**. Y lo que depende de algo va en un **condicional**: **si <> entonces** o **si <> entonces … si no**, que revisa una condición de **verdadero o falso**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Goku cruza el escenario en la Nube Voladora",
+        "content": "Programas en Scratch a Goku volando en su Nube Voladora, mirando a la derecha. ¿Dónde termina?\n\n**Paso 1 — Evento:** 'al hacer clic en bandera verde' arranca el programa.\n**Paso 2 — Posición:** 'ir a x: -200 y: 0' lo pone a la izquierda, a media altura.\n**Paso 3 — Ciclo:** 'repetir (8)' con 'mover (25) pasos' adentro: 8 × 25 = 200 pasos a la derecha.\n**Paso 4 — Cuenta:** -200 + 200 = 0. Goku termina en x: 0, el centro del escenario.\n**Paso 5 — Condicional:** 'si ¿tocando [Krilin]? entonces decir [¡Hola, Krilin!]'. Solo saluda si Krilin está ahí.\n\nResultado: secuencia, ciclo y condicional en un solo programa."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Scratch** es un lenguaje de programación **por bloques** del MIT. Un programa arranca con un **evento** (**al hacer clic en bandera verde**) y sus bloques corren en **secuencia**, de arriba abajo. Los **ciclos** repiten: **repetir (10)**, **por siempre** y **repetir hasta que**. Los **condicionales** deciden: **si <> entonces** y **si <> entonces … si no**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Truco de Karasuno: si la pregunta dice 'cuántas veces', busca un ciclo; si dice 'solo cuando' o 'dependiendo de', busca un condicional. Y en las cuentas de movimiento, multiplica: repetir (20) con mover (5) pasos = 100 pasos."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El ciclo 'repetir hasta que' revisa su condición en cada vuelta y se detiene cuando se vuelve verdadera.",
+        "data": {
+          "intro": "Hiciste un juego en Scratch donde Hinata remata cada vez que presionas espacio. Sigue su programa bloque por bloque.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Evento y secuencia: al hacer clic en bandera verde se ejecuta 'fijar puntos a 0' y después 'ir a x: -150 y: -100'."
+            },
+            {
+              "text": "Ciclo: llega a 'repetir hasta que <(puntos) = 3>'. Revisa la condición: 0 = 3 es falso, así que entra al ciclo."
+            },
+            {
+              "text": "Condicional: adentro está 'si ¿tecla [espacio] presionada? entonces cambiar puntos por 1 y esperar (0.5) segundos'. La espera evita que un solo toque sume varias veces. Si no presionas, puntos no cambia."
+            },
+            {
+              "text": "Después de tres remates, puntos vale 3. Ahora la condición es verdadera y el ciclo se detiene."
+            },
+            {
+              "text": "Secuencia otra vez: por fin se ejecuta el bloque de abajo, 'decir [¡Karasuno gana!]'."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica los bloques del juego de Hinata",
+        "content": "Evento: arranca el programa. Ciclo: repite bloques. Condicional: decide si unos bloques se ejecutan o no.",
+        "data": {
+          "prompt": "Arrastra cada bloque del juego de remates a su tipo.",
+          "buckets": [
+            "Evento (arranca)",
+            "Ciclo (repite)",
+            "Condicional (decide)"
+          ],
+          "items": [
+            {
+              "t": "al hacer clic en bandera verde",
+              "b": 0
+            },
+            {
+              "t": "repetir (20)",
+              "b": 1
+            },
+            {
+              "t": "si <> entonces",
+              "b": 2
+            },
+            {
+              "t": "al presionar tecla [espacio]",
+              "b": 0
+            },
+            {
+              "t": "repetir hasta que <(puntos) = 10>",
+              "b": 1
+            },
+            {
+              "t": "si <> entonces … si no",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada bloque de Scratch con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "repetir (20)",
+              "b": "Repite un número fijo"
+            },
+            {
+              "a": "por siempre",
+              "b": "Repite sin detenerse"
+            },
+            {
+              "a": "si <> entonces … si no",
+              "b": "Elige entre dos caminos"
+            },
+            {
+              "a": "Bandera verde",
+              "b": "Arranca el programa"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de un programa es cada orden del pizarrón?",
+        "left_label": "Pizarrón de Ukai",
+        "right_label": "En Scratch",
+        "pairs": [
+          {
+            "left": "Correr, saltar y rematar, en ese orden",
+            "right": "Secuencia"
+          },
+          {
+            "left": "Repitan esto 20 veces",
+            "right": "repetir (20)"
+          },
+          {
+            "left": "Si el pase viene alto, salta después",
+            "right": "si <> entonces … si no"
+          },
+          {
+            "left": "Hasta conectar 10 remates seguidos",
+            "right": "repetir hasta que"
+          }
+        ],
+        "completion_feedback": "Las órdenes en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende de algo es un **condicional**. Ahora míralo con bloques de Scratch."
+      },
+      "quiz": [
+        {
+          "question": "En el programa de Goku, ¿qué bloque hace que todo empiece cuando presionas la bandera verde?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "al hacer clic en este objeto"
+            },
+            {
+              "letter": "B",
+              "text": "al hacer clic en bandera verde"
+            },
+            {
+              "letter": "C",
+              "text": "al presionar tecla [espacio]"
+            },
+            {
+              "letter": "D",
+              "text": "si ¿tocando [Krilin]? entonces"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El evento de la bandera verde arranca los bloques que tiene debajo. 'Al hacer clic en este objeto' solo arranca si haces clic sobre Goku, 'al presionar tecla' espera una tecla y el 'si' no es un evento.",
+          "difficulty": 1
+        },
+        {
+          "question": "Goku empieza en x: -200, mirando a la derecha, y repite 8 veces 'mover (25) pasos'. ¿En qué x termina?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "x: 200"
+            },
+            {
+              "letter": "B",
+              "text": "x: 0"
+            },
+            {
+              "letter": "C",
+              "text": "x: -175"
+            },
+            {
+              "letter": "D",
+              "text": "x: -400"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "8 × 25 = 200 pasos a la derecha. Como partió de -200, termina en -200 + 200 = 0. Quien responde 200 olvidó que no empezó en el centro, y -175 sería una sola vuelta.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el juego de Hinata pusiste 'si ¿tecla [espacio] presionada? entonces cambiar puntos por 1' justo debajo de la bandera verde, sin ciclo. A media partida presionas espacio y no suma. ¿Por qué?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La condición se revisó una sola vez"
+            },
+            {
+              "letter": "B",
+              "text": "Falta poner un 'si no' debajo del bloque"
+            },
+            {
+              "letter": "C",
+              "text": "La variable puntos no acepta sumas"
+            },
+            {
+              "letter": "D",
+              "text": "La tecla espacio no funciona en Scratch"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Sin ciclo, el programa revisa la condición una sola vez, justo al arrancar, y sigue de largo. Para revisarla todo el tiempo, el 'si' debe ir dentro de 'por siempre'.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué bloque usarías para que Hinata siga rematando hasta que el marcador llegue a 10, sin importar cuántos intentos falle?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "repetir (10)"
+            },
+            {
+              "letter": "B",
+              "text": "por siempre"
+            },
+            {
+              "letter": "C",
+              "text": "repetir hasta que"
+            },
+            {
+              "letter": "D",
+              "text": "si <> entonces … si no"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "'Repetir hasta que' sigue repitiendo mientras la condición sea falsa y se detiene cuando el marcador llega a 10. 'Repetir (10)' da 10 vueltas aunque falle remates, y 'por siempre' nunca se detiene.",
+          "difficulty": 2
+        },
+        {
+          "question": "Goku tiene 'repetir (4)' con 'mover (30) pasos' y 'girar ↻ (90) grados' adentro. ¿Qué figura forma su recorrido?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una línea recta"
+            },
+            {
+              "letter": "B",
+              "text": "Un triángulo"
+            },
+            {
+              "letter": "C",
+              "text": "Un cuadrado"
+            },
+            {
+              "letter": "D",
+              "text": "Un círculo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "En cada vuelta avanza 30 pasos y gira 90 grados. Cuatro giros de 90 suman 360: después de cuatro lados iguales regresa al punto de inicio. Eso es un cuadrado.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La hoja de entrenamiento de La Masia",
+        "content": "En La Masia, la escuela del Barça donde se formó Lamine Yamal, los entrenamientos no se improvisan. Imagina que juegas en las fuerzas básicas y el entrenador pega en el vestidor la hoja de la sesión. Primero, dos vueltas trotando a la cancha; después, estiramientos; luego, el rondo. Nadie estira antes de trotar: el orden importa. En el rondo dice: 'Den 10 pases a un toque'. Más abajo viene la regla del control: 'Si el balón te llega por arriba, contrólalo con el pecho; si no, con la parte interna del pie'. Y al final, la tarea de tiro: 'Cada quien patea a gol hasta que meta 5 penales'. Unos terminan en 5 tiros y otros en 12, pero todos se detienen justo al llegar a 5 goles. Fíjate que la hoja no dice 'juega bien': da órdenes exactas, en fila, con partes que se repiten un número fijo de veces, partes que se repiten hasta cumplir algo y partes que dependen de cómo viene el balón. Esa forma de dar instrucciones es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La hoja de la sesión ES un programa de Scratch",
+        "content": "Lo que acabas de ver en la hoja de La Masia es exactamente cómo se programa en **Scratch**, el lenguaje **por bloques** del MIT. Cada **objeto** (un balón, un portero) tiene sus bloques, que se ejecutan en **secuencia**: **de arriba abajo**. El programa arranca con un **evento**: **al hacer clic en bandera verde**. Los **ciclos** repiten: **repetir (10)** da un número fijo de vueltas y **repetir hasta que** sigue hasta que se cumple una condición. El **condicional** **si <> entonces … si no** elige un camino según algo **verdadero o falso**, como el sensor **¿tocando [Portero]?**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu juego de penales en Scratch",
+        "content": "Programas el balón de un juego de penales, mirando a la derecha. ¿Dónde queda y qué dice?\n\n**Paso 1 — Evento:** 'al presionar tecla [espacio]' dispara el tiro.\n**Paso 2 — Posición:** 'ir a x: -150 y: 0' pone el balón en el manchón penal.\n**Paso 3 — Ciclo:** 'repetir (12)' con 'mover (25) pasos' adentro: 12 × 25 = 300 pasos.\n**Paso 4 — Cuenta:** -150 + 300 = 150. El balón llega a x: 150, frente a la portería.\n**Paso 5 — Condicional:** 'si ¿tocando [Portero]? entonces decir [¡Atajada!] si no decir [¡Gol!] y cambiar goles por 1'.\n\nResultado: en cada tiro se ejecuta solo una de las dos ramas."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Scratch** es un lenguaje **por bloques** del MIT. Un programa arranca con un **evento** (**al hacer clic en bandera verde**) y corre en **secuencia**, de arriba abajo. **Ciclos**: **repetir (10)**, **por siempre**, **repetir hasta que**. **Condicionales**: **si <> entonces** y **si … si no**. El escenario mide **480 × 360** y su centro es **x: 0, y: 0**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Como en un penal, primero cuenta y luego patea: con 'repetir (N)' y 'mover (P) pasos', el balón avanza N × P. Súmalo a la x inicial y sabrás dónde queda. Si la x crece, va a la derecha; si la y crece, sube."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "En cada vuelta del ciclo el balón suma 20 pasos: 5 vueltas × 20 pasos = 100 pasos.",
+        "data": {
+          "intro": "Tu balón tiene 'repetir (5)' con 'mover (20) pasos' adentro. El medidor muestra cuántos pasos lleva recorridos. Síguelo vuelta por vuelta.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Vuelta 1: se ejecuta 'mover (20) pasos'. El balón lleva 20 pasos.",
+              "delta": 20
+            },
+            {
+              "text": "Vuelta 2: el ciclo regresa arriba y mueve otros 20. Lleva 40.",
+              "delta": 20
+            },
+            {
+              "text": "Vuelta 3: otros 20 pasos. Lleva 60 y faltan dos vueltas.",
+              "delta": 20
+            },
+            {
+              "text": "Vuelta 4: suma 20 más. Lleva 80.",
+              "delta": 20
+            },
+            {
+              "text": "Vuelta 5: última vuelta, llega a 100 pasos. El ciclo termina y se ejecuta el bloque de abajo: 'si ¿tocando [Portería]? entonces'.",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica los bloques del penal",
+        "content": "Movimiento mueve y coloca al objeto. Control repite y decide. Sensores preguntan algo y responden verdadero o falso.",
+        "data": {
+          "prompt": "Arrastra cada bloque del juego de penales a su categoría.",
+          "buckets": [
+            "Movimiento",
+            "Control",
+            "Sensores"
+          ],
+          "items": [
+            {
+              "t": "mover (25) pasos",
+              "b": 0
+            },
+            {
+              "t": "repetir (12)",
+              "b": 1
+            },
+            {
+              "t": "¿tocando [Portero]?",
+              "b": 2
+            },
+            {
+              "t": "ir a x: -150 y: 0",
+              "b": 0
+            },
+            {
+              "t": "si <> entonces … si no",
+              "b": 1
+            },
+            {
+              "t": "¿tecla [espacio] presionada?",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada bloque del penal con su categoría.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "mover (25) pasos",
+              "b": "Movimiento"
+            },
+            {
+              "a": "repetir (12)",
+              "b": "Control"
+            },
+            {
+              "a": "¿tocando [Portero]?",
+              "b": "Sensores"
+            },
+            {
+              "a": "cambiar goles por 1",
+              "b": "Variables"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de un programa es cada orden de la hoja?",
+        "left_label": "Hoja de La Masia",
+        "right_label": "En Scratch",
+        "pairs": [
+          {
+            "left": "Trotar, estirar y luego el rondo",
+            "right": "Secuencia"
+          },
+          {
+            "left": "Den 10 pases a un toque",
+            "right": "repetir (10)"
+          },
+          {
+            "left": "Si llega por arriba, pecho; si no, pie",
+            "right": "si <> entonces … si no"
+          },
+          {
+            "left": "Patear hasta meter 5 penales",
+            "right": "repetir hasta que"
+          }
+        ],
+        "completion_feedback": "Las órdenes en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende del balón es un **condicional**. Ahora míralo con bloques de Scratch."
+      },
+      "quiz": [
+        {
+          "question": "En tu juego de penales, ¿en qué orden ejecuta Scratch los bloques encajados debajo de un evento?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De arriba abajo, en orden"
+            },
+            {
+              "letter": "B",
+              "text": "De abajo hacia arriba"
+            },
+            {
+              "letter": "C",
+              "text": "Todos al mismo tiempo"
+            },
+            {
+              "letter": "D",
+              "text": "Primero los de Movimiento"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los bloques encajados bajo un evento forman una secuencia y se ejecutan de arriba abajo, uno tras otro. La categoría no cambia el orden: manda la posición del bloque.",
+          "difficulty": 1
+        },
+        {
+          "question": "El balón empieza en x: -100, mirando a la derecha, y tiene 'repetir (6)' con 'mover (30) pasos' adentro. ¿En qué x termina?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "x: 180"
+            },
+            {
+              "letter": "B",
+              "text": "x: -70"
+            },
+            {
+              "letter": "C",
+              "text": "x: 80"
+            },
+            {
+              "letter": "D",
+              "text": "x: -280"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "6 × 30 = 180 pasos a la derecha. Partiendo de -100: -100 + 180 = 80. Si respondes 180 olvidaste la posición inicial, y -70 sería solo una vuelta del ciclo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Al final del tiro pusiste 'si ¿tocando [Portero]? entonces decir [¡Atajada!] si no decir [¡Gol!]'. El balón NO toca al portero. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Dice ¡Gol!"
+            },
+            {
+              "letter": "B",
+              "text": "Dice ¡Atajada!"
+            },
+            {
+              "letter": "C",
+              "text": "Dice ¡Atajada! y luego ¡Gol!"
+            },
+            {
+              "letter": "D",
+              "text": "No dice nada"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La condición es falsa, así que se salta la rama de 'entonces' y corre solo la de 'si no'. En un 'si … si no' siempre se ejecuta exactamente una de las dos ramas.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿A qué categoría de bloques pertenece '¿tocando [Portero]?'?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Movimiento"
+            },
+            {
+              "letter": "B",
+              "text": "Control"
+            },
+            {
+              "letter": "C",
+              "text": "Operadores"
+            },
+            {
+              "letter": "D",
+              "text": "Sensores"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los Sensores preguntan algo sobre el juego y responden verdadero o falso, como si el balón toca al portero. Control tiene los ciclos y condicionales donde se usa esa pregunta.",
+          "difficulty": 2
+        },
+        {
+          "question": "El balón está en x: 150, y: 0. Quieres que suba hacia el ángulo, 60 pasos más arriba. ¿Qué bloque usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "ir a x: 150 y: -60"
+            },
+            {
+              "letter": "B",
+              "text": "ir a x: 150 y: 60"
+            },
+            {
+              "letter": "C",
+              "text": "ir a x: 210 y: 0"
+            },
+            {
+              "letter": "D",
+              "text": "ir a x: 60 y: 150"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "En Scratch la y crece hacia arriba, así que subir es 0 + 60 = 60, y la x se queda en 150. Con y: -60 bajaría, y cambiar la x lo movería de lado.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Hoshi y las formaciones de SEVENTEEN",
+        "content": "SEVENTEEN tiene 13 integrantes, y bailar sincronizados con tanta gente parece imposible. Por eso Hoshi, el líder del equipo de performance, prepara cada coreografía con muchísimo detalle. Imagina la hoja que les reparte antes del ensayo: primero, todos en dos filas; después, giro a la derecha en el conteo 5; luego, el paso del coro. Si alguien gira antes de formar las filas, choca con el de al lado: el orden importa. Más abajo dice: 'Paso del coro: 4 veces seguidas'. Después viene una regla: 'Si el escenario es pequeño, formación corta en tres filas; si no, la formación abierta'. Y al final: 'Ensayamos la canción completa hasta que nadie se equivoque'. Nadie improvisa: cada integrante sigue la hoja de arriba abajo, repite lo que se repite y elige formación según el escenario. Órdenes exactas en fila, partes que se repiten y partes que dependen de una condición: esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La hoja de Hoshi ES un programa de Scratch",
+        "content": "Lo que acabas de ver con la hoja de Hoshi es exactamente cómo se programa en **Scratch**, el lenguaje **por bloques** del MIT. Cada **objeto** (un idol animado) tiene **disfraces**, que son sus poses, y el **escenario** tiene **fondos**. Los bloques corren en **secuencia**, **de arriba abajo**, desde un **evento** como **al hacer clic en bandera verde**. Los **ciclos** repiten (**repetir (4)**, **por siempre**, **repetir hasta que**) y los **condicionales** eligen (**si <> entonces … si no**) según algo que sea **verdadero o falso**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Rumi de HUNTR/X baila en Scratch",
+        "content": "Animas a Rumi, de KPop Demon Hunters, con 4 disfraces: 4 poses de su coreografía. ¿Cuánto dura todo?\n\n**Paso 1 — Evento:** 'al hacer clic en bandera verde' arranca la animación.\n**Paso 2 — Posición:** 'ir a x: 0 y: 0' la pone en el centro del escenario.\n**Paso 3 — Ciclo:** 'repetir (8)' con 'siguiente disfraz' y 'esperar (0.5) segundos' adentro.\n**Paso 4 — Cuenta:** 8 × 0.5 = 4 segundos de baile. Con 4 disfraces, recorre la coreografía 2 veces completas.\n**Paso 5 — Final:** 'decir [¡Golden!] durante (2) segundos'. Total: 4 + 2 = 6 segundos.\n\nResultado: sin el 'esperar', las poses cambiarían tan rápido que casi no se verían."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Scratch** es un lenguaje **por bloques** del MIT. Los **objetos** son los personajes: cambian de pose con **disfraces**, y el **escenario** cambia con **fondos**. El programa arranca con un **evento** y corre en **secuencia**, de arriba abajo. **Ciclos**: **repetir (10)**, **por siempre**, **repetir hasta que**. **Condicionales**: **si <> entonces** y **si … si no**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Para animar a un idol, piensa en conteos: 'repetir (N)' con 'esperar (S) segundos' adentro dura N × S segundos. Y no los confundas: disfraz = pose del objeto; fondo = imagen del escenario."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El programa corre bloque por bloque, de arriba abajo, y el 'si … si no' elige solo un camino.",
+        "data": {
+          "intro": "Así va el programa de la coreografía de Rumi. Síguelo en el orden en que Scratch lo ejecuta.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Evento: haces clic en la bandera verde y arranca el programa encajado debajo."
+            },
+            {
+              "text": "Secuencia: 'cambiar fondo a [Concierto]' y 'ir a x: 0 y: 0' ponen a Rumi en el centro del escenario."
+            },
+            {
+              "text": "Ciclo: 'repetir (8)' cambia de disfraz y espera 0.5 segundos en cada vuelta. 8 × 0.5 = 4 segundos de baile."
+            },
+            {
+              "text": "Condicional: 'si ¿tecla [espacio] presionada? entonces decir [¡Golden!] si no decir [¡Gracias!]'. Solo corre una rama."
+            },
+            {
+              "text": "Fin: no hay más bloques y el programa termina. Como 8 cambios entre 4 disfraces son 2 vueltas exactas, Rumi acaba en su pose inicial."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica los bloques de la coreografía",
+        "content": "Apariencia cambia cómo se ve el objeto. Control repite, espera y decide. Eventos arrancan el programa.",
+        "data": {
+          "prompt": "Arrastra cada bloque de la animación de Rumi a su categoría.",
+          "buckets": [
+            "Apariencia",
+            "Control",
+            "Eventos"
+          ],
+          "items": [
+            {
+              "t": "siguiente disfraz",
+              "b": 0
+            },
+            {
+              "t": "repetir (8)",
+              "b": 1
+            },
+            {
+              "t": "al hacer clic en bandera verde",
+              "b": 2
+            },
+            {
+              "t": "decir [¡Golden!] durante (2) segundos",
+              "b": 0
+            },
+            {
+              "t": "esperar (0.5) segundos",
+              "b": 1
+            },
+            {
+              "t": "al presionar tecla [espacio]",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada elemento de Scratch con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Disfraz",
+              "b": "Pose del objeto"
+            },
+            {
+              "a": "Fondo",
+              "b": "Imagen del escenario"
+            },
+            {
+              "a": "Objeto",
+              "b": "Personaje con bloques"
+            },
+            {
+              "a": "x: 0, y: 0",
+              "b": "Centro del escenario"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de un programa es cada orden de la hoja?",
+        "left_label": "Hoja de Hoshi",
+        "right_label": "En Scratch",
+        "pairs": [
+          {
+            "left": "Filas, giro y luego el coro",
+            "right": "Secuencia"
+          },
+          {
+            "left": "Paso del coro: 4 veces seguidas",
+            "right": "repetir (4)"
+          },
+          {
+            "left": "Si el escenario es chico, formación corta",
+            "right": "si <> entonces … si no"
+          },
+          {
+            "left": "Ensayar hasta que nadie falle",
+            "right": "repetir hasta que"
+          }
+        ],
+        "completion_feedback": "Las órdenes en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende del escenario es un **condicional**. Ahora míralo con bloques de Scratch."
+      },
+      "quiz": [
+        {
+          "question": "En la animación de Rumi, ¿cómo se llaman las distintas poses que puede tomar el objeto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fondos"
+            },
+            {
+              "letter": "B",
+              "text": "Variables"
+            },
+            {
+              "letter": "C",
+              "text": "Disfraces"
+            },
+            {
+              "letter": "D",
+              "text": "Escenarios"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Los disfraces son las apariencias de un objeto; cambiarlos uno tras otro crea la animación. Los fondos son imágenes del escenario, no del personaje.",
+          "difficulty": 1
+        },
+        {
+          "question": "Rumi tiene 'repetir (6)' con 'siguiente disfraz' y 'esperar (0.5) segundos' adentro. ¿Cuánto dura su baile?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "3 segundos"
+            },
+            {
+              "letter": "B",
+              "text": "6 segundos"
+            },
+            {
+              "letter": "C",
+              "text": "0.5 segundos"
+            },
+            {
+              "letter": "D",
+              "text": "12 segundos"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cada vuelta espera 0.5 segundos y hay 6 vueltas: 6 × 0.5 = 3 segundos. Responder 6 es contar vueltas en vez de tiempo, y 12 sería dividir en lugar de multiplicar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Rumi tiene 4 disfraces y empieza en el disfraz 1. Ejecuta 'repetir (6)' con 'siguiente disfraz' adentro. ¿En cuál termina?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Disfraz 2"
+            },
+            {
+              "letter": "B",
+              "text": "Disfraz 7"
+            },
+            {
+              "letter": "C",
+              "text": "Disfraz 1"
+            },
+            {
+              "letter": "D",
+              "text": "Disfraz 3"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Después del disfraz 4 vuelve al 1. Cuenta los 6 cambios: 2, 3, 4, 1, 2, 3. Termina en el disfraz 3. No existe un disfraz 7 porque solo hay 4.",
+          "difficulty": 3
+        },
+        {
+          "question": "Al terminar el baile pusiste 'si ¿tecla [espacio] presionada? entonces decir [¡Golden!] si no decir [¡Gracias!]'. ¿Cuántas de esas frases dice Rumi?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Las dos"
+            },
+            {
+              "letter": "B",
+              "text": "Solo una"
+            },
+            {
+              "letter": "C",
+              "text": "Ninguna"
+            },
+            {
+              "letter": "D",
+              "text": "Depende del disfraz"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un 'si … si no' siempre ejecuta exactamente una rama: la de 'entonces' si la condición es verdadera o la de 'si no' si es falsa. Nunca las dos y nunca ninguna.",
+          "difficulty": 2
+        },
+        {
+          "question": "Pusiste el baile de Rumi dentro de 'por siempre' y quieres agregar debajo 'decir [¡Gracias!]'. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Rumi lo dice antes de empezar a bailar"
+            },
+            {
+              "letter": "B",
+              "text": "No se puede: el ciclo nunca acaba"
+            },
+            {
+              "letter": "C",
+              "text": "Rumi lo dice en cada vuelta del ciclo"
+            },
+            {
+              "letter": "D",
+              "text": "Rumi lo dice cuando termina la canción"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "'Por siempre' no tiene salida: nunca termina, por eso Scratch no deja encajar bloques debajo. Si quieres que diga algo al final, usa 'repetir (N)' o 'repetir hasta que'.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Un día de granja en Stardew Valley",
+        "content": "Empiezas un nuevo día en Stardew Valley. Tu granja tiene 12 plantas de chirivía y tu rutina ya es automática. Primero sales de la casa; luego revisas el buzón; después vas a los cultivos. Si te saltas el orden y vas al pueblo primero, se te va la mañana. Al llegar, riegas: planta, regadera, siguiente planta; lo mismo 12 veces seguidas. Pero antes de sacar la regadera piensas: si llueve, no riegas, porque la lluvia lo hace por ti; si no llueve, riegas una por una. Por la tarde te vas a la mina y bajas nivel tras nivel hasta que tu barra de energía casi se acaba, y entonces regresas a dormir. Fíjate en lo que hiciste sin darte cuenta: seguiste pasos en un orden fijo, repetiste una acción un número exacto de veces, repetiste otra hasta que pasó algo y tomaste una decisión según el clima. Tu día entero fue como un programa, y eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu día en la granja ES un programa de Scratch",
+        "content": "Lo que acabas de ver en tu día de Stardew Valley es exactamente cómo se programa en **Scratch**, el lenguaje **por bloques** del MIT. El **objeto** (tu personaje) sigue bloques en **secuencia**, **de arriba abajo**, desde un **evento** como **al hacer clic en bandera verde**. Regar 12 plantas es el **ciclo** **repetir (12)**; bajar a la mina hasta cansarte es **repetir hasta que**; un juego que nunca para usa **por siempre**. Decidir según el clima es un **condicional**: **si <> entonces … si no**. Y los datos que cambian, como tu energía o tus **puntos**, se guardan en **variables**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — un crewmate esquiva asteroides",
+        "content": "En Scratch, tu crewmate de Among Us esquiva asteroides. Analiza su programa.\n\n**Paso 1 — Evento:** 'al hacer clic en bandera verde', luego 'fijar vidas a 3' e 'ir a x: 0 y: -100'.\n**Paso 2 — Ciclo:** 'repetir hasta que <(vidas) = 0>' mantiene el juego mientras quede alguna vida.\n**Paso 3 — Condicional:** 'si ¿tecla [flecha derecha] presionada? entonces mover (10) pasos'.\n**Paso 4 — Sensor:** 'si ¿tocando [Asteroide]? entonces cambiar vidas por -1'.\n**Paso 5 — Cuenta:** si lo golpean 3 veces, 3 - 1 - 1 - 1 = 0. El ciclo termina y el bloque de abajo dice '¡Fin del juego!'.\n\nResultado: el ciclo revisa teclas y choques en cada vuelta."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Scratch** es un lenguaje **por bloques** del MIT. El programa arranca con un **evento** y corre en **secuencia**, de arriba abajo. **Ciclos**: **repetir (10)**, **por siempre**, **repetir hasta que**. **Condicionales**: **si <> entonces** y **si … si no**. Las **variables** guardan datos: **fijar puntos a 0** pone un valor exacto y **cambiar puntos por 1** suma."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "En los marcadores de arcade, separa los dos bloques: 'fijar' pone un valor exacto y 'cambiar' suma o resta. 'Cambiar puntos por -1' le quita un punto; no deja el marcador en -1."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La variable puntos sube o baja con 'cambiar puntos por', y 'fijar puntos a 0' la reinicia al empezar.",
+        "data": {
+          "intro": "Hiciste un juego estilo arcade: cada moneda vale 25 puntos y cada fantasma te quita 25. El medidor muestra la variable puntos, que empieza en 0 por 'fijar puntos a 0'.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Tocas una moneda: 'si ¿tocando [Moneda]? entonces cambiar puntos por 25'. Puntos = 25.",
+              "delta": 25
+            },
+            {
+              "text": "Otra moneda en la siguiente vuelta del ciclo: 25 + 25 = 50.",
+              "delta": 25
+            },
+            {
+              "text": "Tercera moneda: 50 + 25 = 75.",
+              "delta": 25
+            },
+            {
+              "text": "Te alcanza un fantasma: 'cambiar puntos por -25'. Sumar un negativo resta: 75 - 25 = 50.",
+              "delta": -25
+            },
+            {
+              "text": "Última moneda: 50 + 25 = 75. Si en vez de cambiar hubieras usado 'fijar puntos a 25', el marcador habría quedado en 25.",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica los bloques del arcade",
+        "content": "Variables guardan y cambian datos. Sensores preguntan algo del juego. Operadores hacen cuentas y comparaciones.",
+        "data": {
+          "prompt": "Arrastra cada bloque del juego de arcade a su categoría.",
+          "buckets": [
+            "Variables",
+            "Sensores",
+            "Operadores"
+          ],
+          "items": [
+            {
+              "t": "fijar puntos a 0",
+              "b": 0
+            },
+            {
+              "t": "¿tocando [Moneda]?",
+              "b": 1
+            },
+            {
+              "t": "(puntos) > (100)",
+              "b": 2
+            },
+            {
+              "t": "cambiar puntos por 25",
+              "b": 0
+            },
+            {
+              "t": "¿tecla [espacio] presionada?",
+              "b": 1
+            },
+            {
+              "t": "número aleatorio entre (1) y (10)",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada bloque del arcade con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "fijar puntos a 0",
+              "b": "Reinicia el marcador"
+            },
+            {
+              "a": "cambiar puntos por 25",
+              "b": "Suma al marcador"
+            },
+            {
+              "a": "cambiar puntos por -25",
+              "b": "Resta al marcador"
+            },
+            {
+              "a": "¿tocando [Moneda]?",
+              "b": "Pregunta de sí o no"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de un programa es cada momento de tu día?",
+        "left_label": "Día en la granja",
+        "right_label": "En Scratch",
+        "pairs": [
+          {
+            "left": "Salir, revisar el buzón, ir a cultivos",
+            "right": "Secuencia"
+          },
+          {
+            "left": "Regar las 12 plantas, una por una",
+            "right": "repetir (12)"
+          },
+          {
+            "left": "Si llueve, no riegas; si no, sí",
+            "right": "si <> entonces … si no"
+          },
+          {
+            "left": "Bajar a la mina hasta cansarte",
+            "right": "repetir hasta que"
+          }
+        ],
+        "completion_feedback": "Los pasos en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende del clima es un **condicional**. Ahora míralo con bloques de Scratch."
+      },
+      "quiz": [
+        {
+          "question": "En tu juego de arcade, ¿qué bloque deja el marcador en cero al empezar la partida?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "cambiar puntos por 0"
+            },
+            {
+              "letter": "B",
+              "text": "fijar puntos a 0"
+            },
+            {
+              "letter": "C",
+              "text": "cambiar puntos por -1"
+            },
+            {
+              "letter": "D",
+              "text": "esconder variable puntos"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "'Fijar' pone un valor exacto, así que 'fijar puntos a 0' reinicia el marcador. 'Cambiar puntos por 0' suma cero y deja el valor que ya tenía, y esconder la variable solo la quita de la vista.",
+          "difficulty": 1
+        },
+        {
+          "question": "El marcador empieza en 0 y el programa tiene 'repetir (4)' con 'cambiar puntos por 15' adentro. ¿Cuánto vale puntos al final?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "15 puntos"
+            },
+            {
+              "letter": "B",
+              "text": "19 puntos"
+            },
+            {
+              "letter": "C",
+              "text": "60 puntos"
+            },
+            {
+              "letter": "D",
+              "text": "4 puntos"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Cada vuelta suma 15 y hay 4 vueltas: 4 × 15 = 60. Si respondes 19 sumaste 4 + 15 en vez de multiplicar, y 15 sería solo una vuelta.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu crewmate empieza con 'fijar vidas a 3'. Choca 2 veces con un asteroide y luego toma un escudo que ejecuta 'fijar vidas a 3'. ¿Cuántas vidas tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "1 vida"
+            },
+            {
+              "letter": "B",
+              "text": "4 vidas"
+            },
+            {
+              "letter": "C",
+              "text": "6 vidas"
+            },
+            {
+              "letter": "D",
+              "text": "3 vidas"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Tras los choques, 3 - 1 - 1 = 1. Pero 'fijar vidas a 3' pone el valor exacto, no suma: vuelve a 3. Si respondes 4 confundiste 'fijar' con 'cambiar vidas por 3'.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el juego del crewmate, ¿qué tipo de bloque es '¿tecla [flecha derecha] presionada?'?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sensor"
+            },
+            {
+              "letter": "B",
+              "text": "Evento"
+            },
+            {
+              "letter": "C",
+              "text": "Movimiento"
+            },
+            {
+              "letter": "D",
+              "text": "Variable"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es un sensor: pregunta si la tecla está presionada y responde verdadero o falso. Se confunde con el evento 'al presionar tecla', que arranca un programa en vez de responder una pregunta.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un juego usa 'repetir hasta que <(puntos) > 100>' y en cada vuelta suma 30 puntos, empezando en 0. ¿Con cuántos puntos termina el ciclo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "100 puntos"
+            },
+            {
+              "letter": "B",
+              "text": "120 puntos"
+            },
+            {
+              "letter": "C",
+              "text": "90 puntos"
+            },
+            {
+              "letter": "D",
+              "text": "130 puntos"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Antes de cada vuelta revisa la condición: 30, 60 y 90 no son mayores que 100, así que sigue. Al llegar a 120 la condición es verdadera y se detiene. Nunca vale exactamente 100.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es Scratch?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un lenguaje de programación por bloques"
+        },
+        {
+          "letter": "B",
+          "text": "Un navegador de internet para estudiantes"
+        },
+        {
+          "letter": "C",
+          "text": "Un programa para editar fotos y videos"
+        },
+        {
+          "letter": "D",
+          "text": "Un tipo de procesador de la computadora"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cómo se arman los programas ahí: encajando piezas de colores.",
+      "explanation": "Scratch es un lenguaje de programación por bloques creado en el MIT. En lugar de escribir código, se encajan bloques de colores para dar instrucciones."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En Scratch, ¿cómo se llaman los personajes que se programan?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Fondos"
+        },
+        {
+          "letter": "B",
+          "text": "Objetos"
+        },
+        {
+          "letter": "C",
+          "text": "Bloques"
+        },
+        {
+          "letter": "D",
+          "text": "Variables"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "También se les dice sprites, como en los videojuegos clásicos.",
+      "explanation": "Los objetos o sprites son los personajes. Los fondos decoran el escenario y los bloques son las instrucciones que se les dan."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Con qué bloque suele arrancar un programa de Scratch?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "mover (10) pasos"
+        },
+        {
+          "letter": "B",
+          "text": "esperar (1) segundos"
+        },
+        {
+          "letter": "C",
+          "text": "al hacer clic en bandera verde"
+        },
+        {
+          "letter": "D",
+          "text": "decir [¡Hola!] durante (2) segundos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en qué hace que los bloques empiecen a correr.",
+      "explanation": "El evento al hacer clic en bandera verde arranca los bloques que tiene debajo. Los demás son acciones que van encajadas después."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿En qué orden se ejecutan los bloques de una secuencia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De abajo hacia arriba"
+        },
+        {
+          "letter": "B",
+          "text": "Todos al mismo tiempo"
+        },
+        {
+          "letter": "C",
+          "text": "Al azar en cada clic"
+        },
+        {
+          "letter": "D",
+          "text": "De arriba abajo"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Lee los bloques como lees una receta de cocina.",
+      "explanation": "En una secuencia, Scratch ejecuta un bloque tras otro, de arriba abajo. Si cambias el orden de los bloques, cambia lo que pasa."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué bloque repite su contenido un número fijo de veces?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "repetir (10)"
+        },
+        {
+          "letter": "B",
+          "text": "por siempre"
+        },
+        {
+          "letter": "C",
+          "text": "si <> entonces"
+        },
+        {
+          "letter": "D",
+          "text": "esperar (10) segundos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el que lleva un número que dice cuántas vueltas dar.",
+      "explanation": "Repetir (10) da exactamente 10 vueltas y luego sigue con lo de abajo. Por siempre nunca se detiene, y el bloque si <> entonces no repite: solo decide."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué hace el bloque por siempre?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Repite exactamente 10 veces"
+        },
+        {
+          "letter": "B",
+          "text": "Repite sin detenerse"
+        },
+        {
+          "letter": "C",
+          "text": "Ejecuta sus bloques una sola vez"
+        },
+        {
+          "letter": "D",
+          "text": "Espera un segundo y luego sigue"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué pasaría con un bloque que encajaras debajo de él.",
+      "explanation": "Por siempre repite su contenido sin fin, hasta que se detiene el proyecto. Por eso no se pueden encajar bloques debajo de él."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué bloque ejecuta algo solo cuando una condición es verdadera?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "repetir (10)"
+        },
+        {
+          "letter": "B",
+          "text": "por siempre"
+        },
+        {
+          "letter": "C",
+          "text": "si <> entonces"
+        },
+        {
+          "letter": "D",
+          "text": "mover (10) pasos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Distingue los bloques que repiten de los que deciden.",
+      "explanation": "Si <> entonces revisa la condición: si es verdadera ejecuta lo de adentro y si es falsa se lo salta. Es un condicional."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En el escenario de Scratch, ¿qué coordenadas tiene el centro?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "x: 240, y: 180"
+        },
+        {
+          "letter": "B",
+          "text": "x: 480, y: 360"
+        },
+        {
+          "letter": "C",
+          "text": "x: 0, y: 0"
+        },
+        {
+          "letter": "D",
+          "text": "x: 100, y: 100"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El centro está a la misma distancia de todas las orillas.",
+      "explanation": "El centro es x: 0, y: 0. Desde ahí, x va de -240 a 240 y y va de -180 a 180. Los números 480 y 360 son el tamaño total, no el centro."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿En qué categoría están los bloques repetir (10), por siempre y si <> entonces?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Eventos"
+        },
+        {
+          "letter": "B",
+          "text": "Control"
+        },
+        {
+          "letter": "C",
+          "text": "Operadores"
+        },
+        {
+          "letter": "D",
+          "text": "Movimiento"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Son bloques que deciden cuántas veces y cuándo pasa algo.",
+      "explanation": "Ciclos y condicionales están en Control. Eventos tiene los bloques que arrancan programas y Operadores, las cuentas y comparaciones."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirve una variable como puntos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para mover al objeto por el escenario"
+        },
+        {
+          "letter": "B",
+          "text": "Para cambiar el fondo del escenario"
+        },
+        {
+          "letter": "C",
+          "text": "Para que el programa se repita"
+        },
+        {
+          "letter": "D",
+          "text": "Para guardar un dato que cambia"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en un marcador que sube durante una partida.",
+      "explanation": "Una variable guarda un dato que puede cambiar mientras corre el programa, como los puntos o las vidas."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un programa tiene repetir (5) y adentro mover (10) pasos. ¿Cuántos pasos avanza en total?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "15 pasos"
+        },
+        {
+          "letter": "B",
+          "text": "50 pasos"
+        },
+        {
+          "letter": "C",
+          "text": "10 pasos"
+        },
+        {
+          "letter": "D",
+          "text": "5 pasos"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Cada vuelta avanza lo mismo. ¿Cuántas vueltas hay?",
+      "explanation": "Son 5 vueltas de 10 pasos: 5 × 10 = 50. Sumar 5 + 10 = 15 es el error más común."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué bloque usarías para elegir entre dos acciones según una condición?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "si <> entonces"
+        },
+        {
+          "letter": "B",
+          "text": "repetir hasta que <>"
+        },
+        {
+          "letter": "C",
+          "text": "si <> entonces … si no"
+        },
+        {
+          "letter": "D",
+          "text": "al hacer clic en bandera verde"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Necesitas un camino para cuando es verdadero y otro para cuando es falso.",
+      "explanation": "Si <> entonces … si no tiene dos ramas: una para cuando la condición es verdadera y otra para cuando es falsa. Si <> entonces solo tiene una."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿A qué categoría pertenece el bloque ¿tocando [borde]?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Movimiento"
+        },
+        {
+          "letter": "B",
+          "text": "Sonido"
+        },
+        {
+          "letter": "C",
+          "text": "Sensores"
+        },
+        {
+          "letter": "D",
+          "text": "Apariencia"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Este bloque hace una pregunta sobre lo que pasa en el escenario.",
+      "explanation": "Los bloques de Sensores preguntan algo, como si el objeto toca el borde, y responden verdadero o falso."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un objeto está en x: 0. ¿Hacia dónde se mueve si su x cambia a 100?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hacia la derecha"
+        },
+        {
+          "letter": "B",
+          "text": "Hacia la izquierda"
+        },
+        {
+          "letter": "C",
+          "text": "Hacia arriba"
+        },
+        {
+          "letter": "D",
+          "text": "Hacia abajo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "En el escenario, la x mide la posición horizontal.",
+      "explanation": "La x crece hacia la derecha y decrece hacia la izquierda. La y es la que cambia al subir o bajar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué hace el bloque fijar puntos a 0?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Le suma 0 a la variable"
+        },
+        {
+          "letter": "B",
+          "text": "Borra la variable del proyecto"
+        },
+        {
+          "letter": "C",
+          "text": "Resta 1 punto a la variable"
+        },
+        {
+          "letter": "D",
+          "text": "Pone la variable en 0"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en qué bloque usarías al empezar una partida nueva.",
+      "explanation": "Fijar puntos a 0 pone la variable exactamente en 0, sin importar lo que valía antes. Se usa al iniciar el juego para reiniciar el marcador."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué hace el bloque cambiar puntos por -1?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pone puntos en -1"
+        },
+        {
+          "letter": "B",
+          "text": "Le resta 1 a puntos"
+        },
+        {
+          "letter": "C",
+          "text": "Cambia el nombre de la variable"
+        },
+        {
+          "letter": "D",
+          "text": "Suma 1 punto a la variable"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Distingue entre poner un valor exacto y modificar el que ya había.",
+      "explanation": "El bloque cambiar suma el número indicado, y sumar -1 equivale a restar 1. Dejarla exactamente en -1 sería fijar puntos a -1."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre repetir (10) y repetir hasta que <>?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Los dos hacen exactamente lo mismo en todos los casos"
+        },
+        {
+          "letter": "B",
+          "text": "Repetir hasta que siempre da diez vueltas exactas"
+        },
+        {
+          "letter": "C",
+          "text": "Uno da vueltas fijas; el otro, hasta cumplir algo"
+        },
+        {
+          "letter": "D",
+          "text": "Repetir (10) solo funciona con bloques de movimiento"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en qué decide cuándo se detiene cada ciclo.",
+      "explanation": "Repetir (10) da siempre 10 vueltas. Repetir hasta que sigue mientras la condición sea falsa y se detiene cuando se vuelve verdadera."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un objeto mira a la derecha y está en x: -50. Ejecuta mover (30) pasos tres veces. ¿En qué x queda?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "x: 90"
+        },
+        {
+          "letter": "B",
+          "text": "x: -20"
+        },
+        {
+          "letter": "C",
+          "text": "x: -140"
+        },
+        {
+          "letter": "D",
+          "text": "x: 40"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Primero calcula cuántos pasos avanzó en total y luego súmalo a donde empezó.",
+      "explanation": "Avanza 3 × 30 = 90 pasos a la derecha. Desde -50: -50 + 90 = 40. Responder 90 olvida el punto de inicio, y -20 sería un solo movimiento."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué forma tienen los bloques que caben en el hueco de condición de un bloque si?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hexagonal, con puntas"
+        },
+        {
+          "letter": "B",
+          "text": "Redonda, como una cápsula"
+        },
+        {
+          "letter": "C",
+          "text": "De gorro, con la parte de arriba curva"
+        },
+        {
+          "letter": "D",
+          "text": "Rectangular, con muesca"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Los bloques que responden verdadero o falso tienen una forma especial.",
+      "explanation": "Las condiciones son bloques hexagonales, como ¿tocando [borde]?, que responden verdadero o falso. Los redondos dan números o textos y los de gorro arrancan programas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Quieres que un objeto revise todo el tiempo si presionas la tecla espacio. ¿Dónde debe ir el bloque si?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Justo arriba de la bandera verde"
+        },
+        {
+          "letter": "B",
+          "text": "Dentro de un por siempre"
+        },
+        {
+          "letter": "C",
+          "text": "Debajo de un bloque esperar (10) segundos"
+        },
+        {
+          "letter": "D",
+          "text": "Afuera de cualquier programa"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una condición se revisa solo cuando el programa pasa por ella.",
+      "explanation": "Un si suelto revisa la condición una sola vez. Dentro de por siempre se vuelve a revisar en cada vuelta, así que detecta la tecla en cualquier momento."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un programa hace fijar puntos a 10 y luego repetir (3) con cambiar puntos por -2 adentro. ¿Cuánto vale puntos al final?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "6 puntos"
+        },
+        {
+          "letter": "B",
+          "text": "16 puntos"
+        },
+        {
+          "letter": "C",
+          "text": "4 puntos"
+        },
+        {
+          "letter": "D",
+          "text": "-6 puntos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Empieza en el valor fijado y aplica el cambio en cada vuelta.",
+      "explanation": "Empieza en 10 y resta 2 tres veces: 10 - 6 = 4. Si respondes 16 sumaste en vez de restar, y -6 olvida que empezó en 10."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un programa hace fijar puntos a 0 y luego repetir hasta que <(puntos) = 10> con cambiar puntos por 3 adentro. ¿Qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Termina con puntos en 10"
+        },
+        {
+          "letter": "B",
+          "text": "El ciclo nunca termina"
+        },
+        {
+          "letter": "C",
+          "text": "Termina con puntos en 12"
+        },
+        {
+          "letter": "D",
+          "text": "Termina con puntos en 9"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Escribe los valores que va tomando puntos y busca si alguno es exactamente 10.",
+      "explanation": "Puntos va 0, 3, 6, 9, 12, 15… y nunca vale exactamente 10, así que la condición nunca es verdadera y el ciclo no se detiene. Por eso conviene comparar con mayor que en lugar de igual."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un objeto apunta a la derecha (dirección 90), ejecuta girar ↻ (90) grados y luego mover (50) pasos. ¿Hacia dónde se mueve?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hacia arriba"
+        },
+        {
+          "letter": "B",
+          "text": "Hacia la izquierda"
+        },
+        {
+          "letter": "C",
+          "text": "Hacia la derecha"
+        },
+        {
+          "letter": "D",
+          "text": "Hacia abajo"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "El giro ↻ va como las manecillas del reloj. Si miras a la derecha y giras un cuarto así, ¿a dónde miras?",
+      "explanation": "Girar 90 grados en el sentido del reloj desde la derecha deja al objeto mirando hacia abajo, dirección 180. Al mover 50 pasos, su y baja 50."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En un bloque si <> entonces … si no, la condición es falsa. ¿Qué se ejecuta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo la rama de entonces"
+        },
+        {
+          "letter": "B",
+          "text": "Las dos ramas, en orden"
+        },
+        {
+          "letter": "C",
+          "text": "Solo la rama de si no"
+        },
+        {
+          "letter": "D",
+          "text": "Ninguna de las dos ramas"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Cada rama corresponde a uno de los dos resultados posibles de la condición.",
+      "explanation": "Si la condición es falsa se ejecuta solo la rama de si no. Siempre corre exactamente una de las dos ramas, nunca ambas ni ninguna."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una animación tiene repetir (10) con siguiente disfraz y esperar (0.2) segundos adentro. ¿Cuánto dura?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "2 segundos"
+        },
+        {
+          "letter": "B",
+          "text": "10 segundos"
+        },
+        {
+          "letter": "C",
+          "text": "0.2 segundos"
+        },
+        {
+          "letter": "D",
+          "text": "20 segundos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Multiplica las vueltas por lo que espera cada vuelta.",
+      "explanation": "Cada vuelta espera 0.2 segundos: 10 × 0.2 = 2 segundos. Responder 20 es multiplicar por 2 en lugar de por 0.2."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un programa tiene repetir (3) y dentro otro repetir (4) con mover (25) pasos. ¿Cuántos pasos avanza en total?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "175 pasos"
+        },
+        {
+          "letter": "B",
+          "text": "100 pasos"
+        },
+        {
+          "letter": "C",
+          "text": "75 pasos"
+        },
+        {
+          "letter": "D",
+          "text": "300 pasos"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "El ciclo de adentro se completa entero en cada vuelta del de afuera.",
+      "explanation": "El ciclo de adentro da 4 vueltas de 25 pasos, o sea 100, y el de afuera lo repite 3 veces: 3 × 100 = 300 pasos. Sumar 3 + 4 antes de multiplicar da 175, que es incorrecto."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un objeto está en x: 100, y: 50 y ejecuta ir a x: 0 y: 0. ¿Qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se coloca en el centro"
+        },
+        {
+          "letter": "B",
+          "text": "Se mueve 100 pasos a la derecha"
+        },
+        {
+          "letter": "C",
+          "text": "No se mueve porque le suma cero"
+        },
+        {
+          "letter": "D",
+          "text": "Baja 50 pasos y se queda en x: 100"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa si este bloque toma en cuenta dónde estaba el objeto.",
+      "explanation": "Ir a x: 0 y: 0 coloca al objeto en esas coordenadas exactas, el centro, sin importar dónde estaba. No le suma cero a su posición."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Pusiste decir [¡Ganaste!] arriba de repetir hasta que <(puntos) = 5>, en el mismo programa. ¿Cuándo aparece el mensaje?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cuando puntos llega a 5"
+        },
+        {
+          "letter": "B",
+          "text": "Cada vez que suma un punto"
+        },
+        {
+          "letter": "C",
+          "text": "Al arrancar, antes de jugar"
+        },
+        {
+          "letter": "D",
+          "text": "Nunca, porque el ciclo lo bloquea"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda en qué orden ejecuta Scratch los bloques de una secuencia.",
+      "explanation": "Los bloques corren de arriba abajo. Como el mensaje está antes del ciclo, se dice al arrancar, aunque todavía no ganes. Para que salga al final, debe ir debajo del ciclo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué Scratch no deja encajar ningún bloque debajo de por siempre?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque solo acepta bloques de Eventos"
+        },
+        {
+          "letter": "B",
+          "text": "Porque borra los bloques que le siguen"
+        },
+        {
+          "letter": "C",
+          "text": "Porque solo funciona con la bandera verde"
+        },
+        {
+          "letter": "D",
+          "text": "Porque nunca termina de repetir"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en cuándo llegaría el programa al bloque de abajo.",
+      "explanation": "Por siempre repite sin fin, así que el programa nunca llegaría al bloque de abajo. Si necesitas algo después, usa repetir (N) o repetir hasta que."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un programa usa repetir hasta que <(vidas) = 0> y cada choque hace cambiar vidas por -1. Si vidas empieza en 3 y nunca chocas, ¿qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Termina con 3 vidas"
+        },
+        {
+          "letter": "B",
+          "text": "El ciclo sigue repitiendo"
+        },
+        {
+          "letter": "C",
+          "text": "El juego termina al primer segundo"
+        },
+        {
+          "letter": "D",
+          "text": "Vidas baja sola hasta 0"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La condición solo cambia si algo modifica la variable.",
+      "explanation": "Sin choques, vidas se queda en 3, la condición vidas = 0 sigue siendo falsa y el ciclo continúa. Una variable no cambia sola: solo cambia cuando un bloque la modifica."
+    }
+  ],
+  "diagnostic": {
+    "question": "En Scratch quieres que un personaje salte solo si se presiona la tecla espacio. ¿Qué tipo de bloque necesitas?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Un ciclo por siempre"
+      },
+      {
+        "letter": "B",
+        "text": "Un condicional"
+      },
+      {
+        "letter": "C",
+        "text": "Una variable"
+      },
+      {
+        "letter": "D",
+        "text": "Un fondo nuevo"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "La frase solo si indica una condición: se usa si <> entonces con el sensor de la tecla espacio. Un ciclo repite, pero no decide."
+  }
+}
