@@ -1,0 +1,129 @@
+{
+  "_nota": "Anuncio de conversión para papás (Meta): demo del producto real en ~25 s con voz. Fondos con OpenAI en las escenas 1, 4, 6 y 8 (workflow 'Fondos de anuncios' → video/arte/<slug>/reel-NN.jpg). Render: node src/como-funciona-v2.mjs --data data/anuncios/2026-10-asi-funciona-pasas-papas.json [--revisar | --guion | --audios carpeta/]",
+  "nombre": "asi funciona pasas papas",
+  "color": "#ec4899",
+  "slides": [],
+  "arte": {
+    "universo": "The Pasita's world: a cozy teenager's study room at night and, beyond it, bright dreamlike worlds that come out of a phone screen — a football stadium under floodlights, a glowing video-game landscape of floating blocks, a friendly neon arena. Original and respectful, like a modern animated film. Colors: deep violet (#0f0a1e) and purple (#7c3aed) with hot pink (#ec4899), cyan (#06b6d4) and golden (#fbbf24) lights. No text, no letters, no logos, no real people, no brands; the only character is the Pasita."
+  },
+  "reel": {
+    "escenas": [
+      {
+        "tipo": "gancho",
+        "dur": 3.2,
+        "lineas": [["Tu hijo no es flojo.", "s"], ["La escuela no le habla", "k"], ["en su idioma.", "k"]],
+        "voz": "Tu hijo no es flojo. La escuela no le habla en su idioma.",
+        "arte": {
+          "escena": {
+            "accion": "The Pasita sits at a teenager's desk at night, slumped, chin on one hand, in front of an open notebook full of scribbles and a giant closed textbook; the pencil is dropped; a small crumpled paper ball nearby",
+            "protagonista": "The Pasita, lower-middle part of the frame, big tired eyes, bored and a little frustrated, but cute",
+            "objeto": "An open notebook with messy doodles (abstract scribbles, no letters) and a huge closed textbook with a blank cover",
+            "foreground": "Desk lamp, eraser crumbs and a mug, slightly blurred",
+            "midground": "The Pasita at the desk",
+            "background": "Dark bedroom wall with a window showing a city at night, a faint purple glow",
+            "iluminacion": "Cold bluish desk lamp, dim room, soft purple rim light",
+            "emocion": "Boredom and 'I don't get it', with warmth, never sad",
+            "composicion": "Medium shot from the front; keep the upper 45% calm and dark for big captions; the Pasita sits in the lower middle"
+          }
+        }
+      },
+      {
+        "tipo": "elige",
+        "dur": 2.8,
+        "paso": "Paso 1",
+        "color": "#7c3aed",
+        "lineas": [["Elige lo que", "s"], ["le gusta", "k"]],
+        "voz": "En PASAS elige lo que le gusta…"
+      },
+      {
+        "tipo": "analogia",
+        "dur": 4.2,
+        "paso": "Paso 2",
+        "color": "#ec4899",
+        "lineas": [["Cada tema,", "s"], ["explicado con eso", "k"]],
+        "lineas2": [["Y se lo lee", "s"], ["en voz alta", "k"]],
+        "voz": "y cada tema se le explica con eso. Hasta se lo lee en voz alta."
+      },
+      {
+        "tipo": "conecta",
+        "dur": 3.8,
+        "paso": "Paso 3",
+        "color": "#06b6d4",
+        "lineas": [["Lo arma", "s"], ["jugando", "k"]],
+        "voz": "Luego lo arma jugando: conecta cada pista con su ecuación…",
+        "arte": {
+          "escena": {
+            "accion": "A phone-sized portal in the middle of the frame opens onto a bright football stadium at night; from the dark study room, glowing light, confetti and a floating football come out of the portal; the Pasita peeks in from the lower-left corner, curious and excited, both hands up",
+            "protagonista": "The Pasita, small, in the lower-left corner, peeking with wide happy eyes",
+            "objeto": "A vertical glowing rectangular portal (empty, no screen content, no text) in the exact center where a phone will be placed",
+            "foreground": "Confetti and a floating football, slightly blurred",
+            "midground": "The glowing empty portal",
+            "background": "Dark study room walls fading into the stadium floodlights and green pitch seen through the portal",
+            "iluminacion": "Stadium floodlights pouring out of the portal, cyan and pink neon accents",
+            "emocion": "Curiosity, fun, 'this is a game'",
+            "composicion": "Portal centered, occupying the middle 60% vertically; keep the upper 25% calm and dark for captions; the Pasita only in the lower-left corner"
+          }
+        }
+      },
+      {
+        "tipo": "pasos",
+        "dur": 3.0,
+        "paso": "Paso 3",
+        "color": "#06b6d4",
+        "lineas": [["Ordena", "s"], ["los pasos", "k"]],
+        "voz": "ordena los pasos…"
+      },
+      {
+        "tipo": "horda",
+        "dur": 3.6,
+        "paso": "Paso 3",
+        "color": "#ec4899",
+        "lineas": [["Y se pone a prueba:", "s"], ["la Horda", "k"]],
+        "voz": "y se pone a prueba en la Horda: seis oleadas de preguntas, cada una más difícil.",
+        "arte": {
+          "escena": {
+            "accion": "The Pasita stands heroic on a glowing neon platform at night, feet apart, one fist raised, facing a playful wave of cute glowing question-mark-shaped ghosts that float toward her in rows from the background; friendly, cartoon, no fear",
+            "protagonista": "The Pasita, lower-left part of the frame, confident smile, brave pose, with a small backpack",
+            "objeto": "Rows of cute, rounded, translucent neon ghosts shaped like blobs with big round eyes (no letters, no symbols on them), arriving in waves",
+            "foreground": "Neon platform edge and small sparks",
+            "midground": "The Pasita on the platform",
+            "background": "A dark arena with pink and purple neon light beams and a big round moon",
+            "iluminacion": "Hot pink and purple neon, glowing ghosts, dramatic but fun",
+            "emocion": "Excitement and bravery, like a boss fight in a kids' game",
+            "composicion": "Keep the upper 25% dark and calm for captions and the center free for a phone; the Pasita lower-left, the ghosts to the right and back"
+          }
+        }
+      },
+      {
+        "tipo": "avance",
+        "dur": 2.8,
+        "paso": "Paso 4",
+        "color": "#fbbf24",
+        "lineas": [["Tú ves", "s"], ["su avance", "k"]],
+        "voz": "Y tú ves su avance, materia por materia."
+      },
+      {
+        "tipo": "cierre",
+        "dur": 4.4,
+        "lineas": [["7 días", "k"], ["gratis", "k"]],
+        "bullets": ["Secundaria y prepa", "Todas las materias de su grado", "Cancela cuando quieras"],
+        "url": "pasas.mx",
+        "voz": "Secundaria y prepa, todas sus materias. Pruébalo siete días gratis en pasas punto mx.",
+        "arte": {
+          "escena": {
+            "accion": "The Pasita jumps with joy in the lower-right corner, both arms up, surrounded by golden confetti and small glowing stars; behind her, soft silhouettes of the three worlds (stadium lights, floating game blocks, neon arena) blend into a warm purple sky",
+            "protagonista": "The Pasita, lower-right corner, big happy smile, celebrating",
+            "objeto": "Golden confetti and glowing stars",
+            "foreground": "Confetti, slightly blurred",
+            "midground": "The Pasita jumping",
+            "background": "Warm purple-to-pink gradient sky with soft silhouettes of the stadium, floating blocks and neon arena",
+            "iluminacion": "Warm golden and pink, celebratory",
+            "emocion": "Joy, relief, 'we found it'",
+            "composicion": "Keep the upper 60% calm with soft gradients for big text and a card; the Pasita only in the lower-right corner"
+          }
+        }
+      }
+    ]
+  },
+  "post": "Así estudia un alumno en PASAS: elige lo que le gusta, el tema se le explica con eso (y se lo lee en voz alta), lo arma jugando con Conecta y Arma los pasos, se pone a prueba en la Horda y tú ves su avance materia por materia. Secundaria y prepa, todas las materias de su grado. 7 días gratis en pasas.mx"
+}
