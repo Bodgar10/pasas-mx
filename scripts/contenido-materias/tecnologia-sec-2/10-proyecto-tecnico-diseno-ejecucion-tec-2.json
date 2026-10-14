@@ -1,0 +1,981 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "proyecto-tecnico-diseno-ejecucion-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo se lleva un proyecto del papel a la realidad",
+    "steps": [
+      "Hacer bocetos de la idea y elegir uno",
+      "Dibujar el plano con medidas a escala",
+      "Hacer la lista de materiales, el presupuesto y el cronograma",
+      "Construir siguiendo el plan, con seguridad y anotando en la bitácora",
+      "Evaluar con los criterios definidos y proponer mejoras"
+    ],
+    "completion_feedback": "Primero se **diseña** (boceto y plano), luego se **planea** (materiales, presupuesto y cronograma), se **ejecuta** con seguridad y bitácora, y al final se **evalúa**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La espada gigante de Asta para la convención",
+        "content": "Tu grupo de amigos va a ir de Black Clover a la convención de anime y a ti te toca la espada gigante de Asta. La regla de la convención es clara: utilería ligera, sin puntas ni filos. Así que será de foami y tiene que estar lista en tres semanas. Primero haces un dibujo rápido en tu cuaderno para ver la forma. Luego pasas la idea a una hoja con medidas exactas: la espada real medirá 120 cm, así que en tu hoja la dibujas de 12 cm, diez veces más chica. Antes de gastar foami, recortas una mini espada de cartulina para ver si la forma te convence. Haces la lista de lo que necesitas, sacas cuentas de cuánto vas a gastar y pegas en tu cuarto una tabla con lo que toca cada semana. Tu prima corta y tú pintas. Al usar el cúter y la pistola de silicón te pones lentes y guantes, y anotas en una libreta que el mango se doblaba y lo reforzaste con un tubo de PVC. Al final revisas lo que te propusiste desde el inicio: ligera, firme, segura y parecida a la del anime. Pasar de la idea al objeto terminado con un plan es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La espada de Asta ES diseño, planeación y ejecución",
+        "content": "Lo que acabas de ver con la espada de Asta es exactamente un **proyecto técnico** en sus fases de **diseño**, **planeación**, **ejecución** y **evaluación**. En el diseño haces un **boceto** (dibujo rápido de la idea) y un **plano** o dibujo técnico con medidas a **escala** (1:10 = 1 cm del dibujo son 10 cm reales). La mini espada de cartulina fue una **maqueta** y la primera de foami, el **prototipo**. Planear es hacer la **lista de materiales**, el **presupuesto**, el **cronograma** y el **reparto de tareas**. Ejecutar es seguir el plan con **seguridad** y anotar todo en la **bitácora**. Evaluar es revisar los **criterios** fijados desde antes."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el presupuesto de la varita de Sailor Moon",
+        "content": "Para tu cosplay de Sailor Moon necesitas la varita y tienes $200. Arma el presupuesto: costo unitario × cantidad, y luego suma.\n\n**Paso 1 — Foami rosa:** 2 hojas × $15 = **$30**.\n**Paso 2 — Foami dorado diamantado:** 3 hojas × $22 = **$66**.\n**Paso 3 — Tubo de PVC para el mango:** 1 × $25 = **$25**.\n**Paso 4 — Pintura acrílica:** 2 botes × $28 = **$56**.\n**Paso 5 — Total:** $30 + $66 + $25 + $56 = **$177**. Te sobran $200 − $177 = **$23**.\n\nResultado: sabes antes de comprar que te alcanza, y los $23 quedan para imprevistos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un proyecto técnico se **diseña** (**boceto**, **plano a escala**, **maqueta** o **prototipo**), se **planea** (**lista de materiales**, **presupuesto** = costo unitario × cantidad, sumado, y **cronograma o diagrama de Gantt**), se **ejecuta** con **medidas de seguridad** y **bitácora**, y se **evalúa** con **criterios definidos antes**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Escala 1:10 es como una figura de Asta en tu repisa: todo más chico, pero proporcional. Del dibujo a lo real, multiplica por 10; de lo real al dibujo, divide entre 10."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase acerca la espada a la convención: diseñar, planear, ejecutar y evaluar.",
+        "data": {
+          "intro": "La convención es en tres semanas. El medidor muestra qué tan avanzada va la espada de Asta. Sigue cada fase.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Diseño: boceto rápido y plano a escala 1:10. La espada de 120 cm se dibuja de 12 cm.", "delta": 20 },
+            { "text": "Planeación: lista de materiales, presupuesto y diagrama de Gantt con lo que toca cada semana.", "delta": 20 },
+            { "text": "Ejecución: con lentes y guantes cortas el foami y pegas las capas. En la bitácora anotas que el mango se dobla y lo refuerzas con PVC.", "delta": 40 },
+            { "text": "Evaluación: revisas los criterios que fijaste al inicio: ligera, firme, segura y parecida al anime. ¡Lista para la convención!", "delta": 20 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué fase va cada cosa?",
+        "content": "Diseño: cómo será (boceto, plano). Planeación: con qué, cuánto y quién. Ejecución: construir con seguridad y registrar.",
+        "data": {
+          "prompt": "Arrastra cada acción del proyecto de la espada a su fase.",
+          "buckets": ["Diseño", "Planeación", "Ejecución"],
+          "items": [
+            { "t": "Boceto de la espada en tu cuaderno", "b": 0 },
+            { "t": "Sumar el costo del foami y la pintura", "b": 1 },
+            { "t": "Cortar el foami con lentes y guantes", "b": 2 },
+            { "t": "Plano a escala 1:10", "b": 0 },
+            { "t": "Repartir quién corta y quién pinta", "b": 1 },
+            { "t": "Anotar en la bitácora que el mango se dobló", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada forma de representar la espada con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Boceto", "b": "Dibujo rápido de la idea" },
+            { "a": "Plano", "b": "Dibujo con medidas" },
+            { "a": "Maqueta", "b": "Mini espada de cartulina" },
+            { "a": "Prototipo", "b": "Primera espada de foami" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "Espada de Asta",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Espada de 120 cm dibujada de 12 cm", "right": "Plano a escala" },
+          { "left": "Primera espada de foami para probar", "right": "Prototipo" },
+          { "left": "Tabla con lo que toca cada semana", "right": "Cronograma" },
+          { "left": "Libreta con el problema del mango", "right": "Bitácora" }
+        ],
+        "completion_feedback": "Tu espada pasó por el **plano a escala**, el **prototipo**, el **cronograma** y la **bitácora**. Ahora ponle nombre formal a cada parte del proyecto."
+      },
+      "quiz": [
+        {
+          "question": "Antes de cortar el foami, dibujas rápido en tu cuaderno cómo será la espada de Asta, sin medidas. ¿Qué hiciste?",
+          "options": [
+            { "letter": "A", "text": "Un boceto" },
+            { "letter": "B", "text": "Un plano técnico" },
+            { "letter": "C", "text": "Un prototipo" },
+            { "letter": "D", "text": "Una bitácora" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El boceto es un dibujo rápido para ver la idea. El plano ya lleva medidas y escala, y el prototipo es la espada que se construye para probar.",
+          "difficulty": 1
+        },
+        {
+          "question": "En tu plano a escala 1:10, la hoja de la espada mide 9 cm. ¿Cuánto medirá la hoja real?",
+          "options": [
+            { "letter": "A", "text": "9 cm" },
+            { "letter": "B", "text": "90 cm" },
+            { "letter": "C", "text": "19 cm" },
+            { "letter": "D", "text": "0.9 cm" }
+          ],
+          "correct_answer": "B",
+          "explanation": "En escala 1:10 cada centímetro del dibujo son 10 cm reales: 9 × 10 = 90 cm. Dividir entre 10 sería el camino al revés, de lo real al dibujo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Recortas una mini espada de cartulina solo para ver si la forma te convence, y luego haces una de foami tamaño real para moverla y ver si aguanta. ¿Qué es cada una?",
+          "options": [
+            { "letter": "A", "text": "Prototipo y luego maqueta" },
+            { "letter": "B", "text": "Boceto y luego plano final" },
+            { "letter": "C", "text": "Maqueta y luego prototipo" },
+            { "letter": "D", "text": "Plano y luego producto final" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La mini espada sirve para ver forma y tamaño: es una maqueta. La de foami es el primer ejemplar funcional que se pone a prueba: el prototipo.",
+          "difficulty": 3
+        },
+        {
+          "question": "Compras 4 hojas de foami negro a $18 cada una. ¿Cuánto gastas en foami?",
+          "options": [
+            { "letter": "A", "text": "$22" },
+            { "letter": "B", "text": "$64" },
+            { "letter": "C", "text": "$82" },
+            { "letter": "D", "text": "$72" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Costo unitario × cantidad: $18 × 4 = $72. Sumar $18 + 4 = $22 es el error típico de no multiplicar.",
+          "difficulty": 2
+        },
+        {
+          "question": "A mitad del proyecto, el mango se dobla y lo refuerzas con un tubo de PVC. ¿Qué debes hacer con ese cambio?",
+          "options": [
+            { "letter": "A", "text": "Olvidarlo porque ya quedó" },
+            { "letter": "B", "text": "Anotarlo en la bitácora" },
+            { "letter": "C", "text": "Empezar de cero el diseño" },
+            { "letter": "D", "text": "Esconderlo en la evaluación" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La bitácora registra los cambios y problemas de la ejecución. Así, al evaluar sabes qué falló y cómo lo resolviste, y otros pueden aprender de eso.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La maqueta del Estadio Azteca para la feria de ciencias",
+        "content": "Para la feria de ciencias, tu equipo de cuatro decide hacer una maqueta del Estadio Azteca, donde se inauguró el Mundial 2026. Tienen tres semanas y $300 entre todos. Primero cada quien hace un dibujo rápido de cómo se la imagina, y eligen uno. Luego lo pasan a una hoja cuadriculada con medidas reales reducidas: cada centímetro del dibujo representa 5 metros del estadio, así que la cancha de 105 × 68 m queda de 21 × 13.6 cm. Hacen la lista de lo que necesitan, preguntan precios en la papelería y suman para ver si les alcanza. En una cartulina dibujan una tabla con las tareas y las semanas, y le ponen nombre a cada tarea: Diego corta las gradas y Sofía pinta la cancha. Al usar el cúter se ponen lentes y cortan sobre una tabla, nunca hacia la mano. En un cuaderno anotan que el techo de cartón se caía y que lo cambiaron por popotes. Al final revisan lo que acordaron desde el inicio: que se parezca, que mida lo planeado y que no se pasen del dinero. Del dibujo a la feria con un plan: esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La maqueta del Azteca ES diseño, planeación y ejecución",
+        "content": "Lo que acabas de ver con la maqueta del Azteca es exactamente un **proyecto técnico** en sus fases de **diseño**, **planeación**, **ejecución** y **evaluación**. Diseñar es hacer **bocetos** y un **plano** con medidas a **escala** (1:500 = 1 cm del dibujo son 500 cm, o sea 5 m reales). La **maqueta** es un modelo a escala para ver forma y tamaño; un **prototipo** sería un primer ejemplar que funciona. Planear es armar la **lista de materiales**, el **presupuesto**, el **diagrama de Gantt** y el **reparto de tareas**. Ejecutar es seguir el plan con **seguridad** y llevar una **bitácora**. Evaluar es revisar **criterios** acordados desde antes y proponer **mejoras**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el presupuesto de la pizarra táctica",
+        "content": "Tu equipo de la liga quiere una pizarra táctica con imanes para el entrenador. Tienen $250. Arma el presupuesto: costo unitario × cantidad, y luego suma.\n\n**Paso 1 — Lámina metálica:** 1 × $60 = **$60**.\n**Paso 2 — Imanes, 11 por equipo:** 22 × $3 = **$66**.\n**Paso 3 — Vinil verde para la cancha:** 1 × $35 = **$35**.\n**Paso 4 — Plumones para pizarrón:** 2 × $15 = **$30**.\n**Paso 5 — Total:** $60 + $66 + $35 + $30 = **$191**. Sobran $250 − $191 = **$59**.\n\nResultado: les alcanza, y saben exactamente cuánto queda para imprevistos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un proyecto técnico se **diseña** (**boceto**, **plano a escala**, **maqueta** o **prototipo**), se **planea** (**lista de materiales**, **presupuesto** = costo unitario × cantidad, sumado, y **cronograma o diagrama de Gantt**), se **ejecuta** con **medidas de seguridad** y **bitácora**, y se **evalúa** con **criterios definidos antes**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "El diagrama de Gantt es como el calendario de la liga: las tareas son los equipos (filas), las semanas son las jornadas (columnas) y cada barra marca cuándo le toca jugar a cada tarea."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase acerca la maqueta a la feria: diseñar, planear, ejecutar y evaluar.",
+        "data": {
+          "intro": "Faltan tres semanas para la feria de ciencias. El medidor muestra el avance de la maqueta del Azteca. Sigue cada fase.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Diseño: eligen un boceto y hacen el plano a escala 1:500. La cancha de 105 × 68 m queda de 21 × 13.6 cm.", "delta": 20 },
+            { "text": "Planeación: lista de materiales, presupuesto de $300 y diagrama de Gantt con un responsable por tarea.", "delta": 25 },
+            { "text": "Ejecución: cortan las gradas con lentes y sobre una tabla. En la bitácora anotan que el techo se caía y lo cambian por popotes.", "delta": 40 },
+            { "text": "Evaluación: revisan los criterios acordados: parecido, medidas y costo. ¡Lista para la feria!", "delta": 15 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué fase va cada cosa?",
+        "content": "Diseño: cómo será. Planeación: con qué, cuánto, cuándo y quién. Ejecución: construir con seguridad. Evaluación: revisar criterios.",
+        "data": {
+          "prompt": "Arrastra cada acción del proyecto de la maqueta a su fase.",
+          "buckets": ["Diseño", "Planeación", "Ejecución", "Evaluación"],
+          "items": [
+            { "t": "Plano de la cancha a escala 1:500", "b": 0 },
+            { "t": "Diagrama de Gantt en una cartulina", "b": 1 },
+            { "t": "Cortar las gradas con lentes puestos", "b": 2 },
+            { "t": "Sumar los precios de la papelería", "b": 1 },
+            { "t": "Anotar en la bitácora lo del techo", "b": 2 },
+            { "t": "Revisar si se pasaron del dinero", "b": 3 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de planeación con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Presupuesto", "b": "Costo total del proyecto" },
+            { "a": "Diagrama de Gantt", "b": "Tareas y semanas en barras" },
+            { "a": "Bitácora", "b": "Registro de cambios" },
+            { "a": "Criterios", "b": "Metas fijadas desde antes" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "Maqueta del Azteca",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Cada cm del dibujo son 5 m", "right": "Escala" },
+          { "left": "Diego corta y Sofía pinta", "right": "Reparto de tareas" },
+          { "left": "Lentes al usar el cúter", "right": "Medida de seguridad" },
+          { "left": "¿Se parece, mide bien y alcanzó?", "right": "Criterios de evaluación" }
+        ],
+        "completion_feedback": "La maqueta usó **escala**, **reparto de tareas**, **medidas de seguridad** y **criterios de evaluación**. Ahora ponle nombre formal a cada parte del proyecto."
+      },
+      "quiz": [
+        {
+          "question": "Para la maqueta del Azteca, ¿qué documento dice cuánto dinero van a gastar en total?",
+          "options": [
+            { "letter": "A", "text": "El diagrama de Gantt" },
+            { "letter": "B", "text": "El presupuesto" },
+            { "letter": "C", "text": "La bitácora" },
+            { "letter": "D", "text": "El boceto" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El presupuesto multiplica el costo de cada material por la cantidad y suma todo. El Gantt organiza el tiempo y la bitácora registra cambios.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el plano a escala 1:500, una tribuna mide 8 cm. ¿Cuánto mide en el estadio real?",
+          "options": [
+            { "letter": "A", "text": "4 m" },
+            { "letter": "B", "text": "400 m" },
+            { "letter": "C", "text": "40 m" },
+            { "letter": "D", "text": "16 m" }
+          ],
+          "correct_answer": "C",
+          "explanation": "En 1:500, cada centímetro son 500 cm reales: 8 × 500 = 4,000 cm. Como 100 cm son 1 m, eso da 40 m.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el Gantt, la barra de 'Pintar la cancha' cubre las semanas 2 y 3, y la de 'Armar las gradas' solo la semana 2. ¿Qué indica?",
+          "options": [
+            { "letter": "A", "text": "En la semana 2 se hacen las dos" },
+            { "letter": "B", "text": "Pintar la cancha termina primero" },
+            { "letter": "C", "text": "Las gradas tardan más que la cancha" },
+            { "letter": "D", "text": "Cada tarea dura una sola semana" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Las barras muestran cuándo se hace cada tarea. Las dos ocupan la semana 2, así que ahí se hacen al mismo tiempo; pintar sigue en la semana 3 y dura más.",
+          "difficulty": 3
+        },
+        {
+          "question": "Necesitan 3 pliegos de cartón a $25 y 2 botes de pintura a $30. ¿Cuál es el total?",
+          "options": [
+            { "letter": "A", "text": "$55" },
+            { "letter": "B", "text": "$110" },
+            { "letter": "C", "text": "$150" },
+            { "letter": "D", "text": "$135" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Cada material: costo unitario × cantidad. Cartón: 3 × $25 = $75. Pintura: 2 × $30 = $60. Total: $75 + $60 = $135.",
+          "difficulty": 2
+        },
+        {
+          "question": "La maqueta se ve increíble, pero gastaron $380 y el límite acordado desde el inicio era $300. ¿Cómo se evalúa?",
+          "options": [
+            { "letter": "A", "text": "Cumplió todo porque se ve muy bien" },
+            { "letter": "B", "text": "El costo no cuenta en la evaluación" },
+            { "letter": "C", "text": "Solo se evalúa la estética final" },
+            { "letter": "D", "text": "No cumplió el criterio de costo" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los criterios se fijan antes y se revisan todos. Se ve bien, pero se pasaron $80 del límite: ese criterio no se cumplió y queda como mejora para la próxima.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El organizador de photocards de LE SSERAFIM",
+        "content": "Llevas meses coleccionando photocards de LE SSERAFIM y ya tienes 60 regadas en una caja de zapatos: se doblan las esquinas y nunca encuentras la de tu bias. Decides hacer un organizador de pared para tu cuarto. Primero haces un dibujo rápido en tu libreta. Luego lo pasas a una hoja con medidas exactas: cada photocard mide 5.5 × 8.5 cm y, como tu hoja es chica, dibujas todo a la mitad de su tamaño. Antes de cortar el cartón grueso, armas un organizador chiquito de papel para ver si se ve bien en la pared. Haces la lista de material, preguntas precios en la papelería y sumas. En tu calendario marcas qué vas a hacer cada fin de semana, y tu hermana se ofrece a forrarlo. Cuando usas el cúter te pones lentes y cortas sobre una tabla. Apuntas en tu libreta que las fundas se resbalaban y que les pusiste cinta doble cara. Al final revisas lo que te propusiste desde el principio: que quepan las 60, que no se doblen y que se vea bonito. De la idea al organizador con un plan: esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu organizador ES diseño, planeación y ejecución",
+        "content": "Lo que acabas de ver con tus photocards es exactamente un **proyecto técnico** en sus fases de **diseño**, **planeación**, **ejecución** y **evaluación**. Diseñar es hacer un **boceto** y un **plano** con medidas a **escala** (1:2 = 1 cm del dibujo son 2 cm reales). El organizador chiquito de papel fue una **maqueta**; el primero de cartón que pruebas con tus 60 cartas es el **prototipo**. Planear es hacer la **lista de materiales**, el **presupuesto**, el **cronograma** y el **reparto de tareas**. Ejecutar es seguir el plan con **seguridad** y anotar todo en una **bitácora**. Evaluar es revisar los **criterios** que fijaste antes y proponer **mejoras**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el soporte para ver los lives en Weverse",
+        "content": "Quieres un soporte de MDF para ver los lives de tus idols en Weverse desde tu cama. Tienes $120. Arma el presupuesto: costo unitario × cantidad, y luego suma.\n\n**Paso 1 — Placa de MDF:** 1 × $45 = **$45**.\n**Paso 2 — Tornillos con tuerca:** 4 × $4 = **$16**.\n**Paso 3 — Hojas de lija:** 2 × $8 = **$16**.\n**Paso 4 — Barniz al agua:** 1 × $38 = **$38**.\n**Paso 5 — Total:** $45 + $16 + $16 + $38 = **$115**. Sobran $120 − $115 = **$5**.\n\nResultado: te alcanza, pero muy justo. Si se pierde un tornillo, ya casi no hay margen."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un proyecto técnico se **diseña** (**boceto**, **plano a escala**, **maqueta** o **prototipo**), se **planea** (**lista de materiales**, **presupuesto** = costo unitario × cantidad, sumado, y **cronograma o diagrama de Gantt**), se **ejecuta** con **medidas de seguridad** y **bitácora**, y se **evalúa** con **criterios definidos antes**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "La bitácora es como el diario de un trainee: cada día anota qué practicó, qué salió mal y qué cambió. Sin ella, al evaluar no recuerdas por qué tomaste cada decisión."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase acerca el organizador a tu pared: diseñar, planear, ejecutar y evaluar.",
+        "data": {
+          "intro": "Quieres el organizador listo en tres fines de semana. El medidor muestra su avance. Sigue cada fase.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Diseño: boceto y plano a escala 1:2. Una photocard de 5.5 × 8.5 cm se dibuja de 2.75 × 4.25 cm.", "delta": 20 },
+            { "text": "Planeación: lista de materiales, presupuesto y cronograma. Tu hermana es la responsable de forrar.", "delta": 20 },
+            { "text": "Ejecución: cortas el cartón con lentes y sobre una tabla. En la bitácora anotas que las fundas se resbalan y les pones cinta doble cara.", "delta": 45 },
+            { "text": "Evaluación: revisas tus criterios: caben las 60, no se doblan y se ve bonito. ¡A la pared!", "delta": 15 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué fase va cada cosa?",
+        "content": "Diseño: cómo será (boceto, plano, maqueta). Planeación: con qué y cuándo. Ejecución: construir con seguridad y registrar.",
+        "data": {
+          "prompt": "Arrastra cada acción del proyecto del organizador a su fase.",
+          "buckets": ["Diseño (cómo será)", "Planeación (con qué y cuándo)", "Ejecución (hacerlo)"],
+          "items": [
+            { "t": "Dibujar el organizador en tu libreta", "b": 0 },
+            { "t": "Preguntar el precio del cartón", "b": 1 },
+            { "t": "Cortar el cartón con lentes puestos", "b": 2 },
+            { "t": "Organizador chiquito de papel", "b": 0 },
+            { "t": "Marcar en el calendario cada fin de semana", "b": 1 },
+            { "t": "Pegar cinta doble cara a las fundas", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del diseño y la planeación con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Escala 1:2", "b": "Dibujo a la mitad" },
+            { "a": "Maqueta", "b": "Mini organizador de papel" },
+            { "a": "Prototipo", "b": "Versión de cartón a prueba" },
+            { "a": "Lista de materiales", "b": "Qué y cuánto comprar" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "Photocards",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Organizador chiquito de papel", "right": "Maqueta" },
+          { "left": "El primero de cartón con las 60", "right": "Prototipo" },
+          { "left": "Tu hermana forra el organizador", "right": "Responsable de tarea" },
+          { "left": "Que quepan las 60 sin doblarse", "right": "Criterio de evaluación" }
+        ],
+        "completion_feedback": "Tu organizador pasó por **maqueta**, **prototipo**, **reparto de tareas** y **criterios de evaluación**. Ahora ponle nombre formal a cada parte del proyecto."
+      },
+      "quiz": [
+        {
+          "question": "Antes de cortar el cartón grueso, haces un organizador chiquito de papel para ver si se ve bien en la pared. ¿Qué es?",
+          "options": [
+            { "letter": "A", "text": "Un presupuesto" },
+            { "letter": "B", "text": "Un cronograma" },
+            { "letter": "C", "text": "Una maqueta" },
+            { "letter": "D", "text": "Una bitácora" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Es un modelo a escala para ver forma y tamaño antes de construir: una maqueta. Todavía no es el prototipo, porque no lo vas a usar para probarlo con tus photocards.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu plano está a escala 1:2. Si el organizador real mide 40 cm de alto, ¿cuánto mide en el plano?",
+          "options": [
+            { "letter": "A", "text": "20 cm" },
+            { "letter": "B", "text": "80 cm" },
+            { "letter": "C", "text": "42 cm" },
+            { "letter": "D", "text": "38 cm" }
+          ],
+          "correct_answer": "A",
+          "explanation": "En 1:2 cada centímetro del dibujo son 2 cm reales. De lo real al dibujo se divide: 40 ÷ 2 = 20 cm. Multiplicar daría 80 cm, el error típico.",
+          "difficulty": 2
+        },
+        {
+          "question": "En tu diagrama de Gantt, la barra de 'Forrar' empieza justo cuando termina la de 'Cortar el cartón'. ¿Por qué?",
+          "options": [
+            { "letter": "A", "text": "Forrar es la tarea más larga" },
+            { "letter": "B", "text": "Forrar depende de cortar" },
+            { "letter": "C", "text": "Cortar es la tarea más barata" },
+            { "letter": "D", "text": "Así lo pide el presupuesto" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Algunas tareas dependen de otras: no puedes forrar piezas que todavía no existen. El Gantt lo muestra poniendo una barra justo después de la otra.",
+          "difficulty": 3
+        },
+        {
+          "question": "Compras 3 paquetes de fundas a $35 y 2 pliegos de cartón a $22. ¿Cuánto gastas?",
+          "options": [
+            { "letter": "A", "text": "$57" },
+            { "letter": "B", "text": "$114" },
+            { "letter": "C", "text": "$149" },
+            { "letter": "D", "text": "$175" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Fundas: 3 × $35 = $105. Cartón: 2 × $22 = $44. Total: $105 + $44 = $149. Sumar solo $35 + $22 olvida multiplicar por la cantidad.",
+          "difficulty": 2
+        },
+        {
+          "question": "Al evaluar, tu hermana dice: 'Está bonito, así que ya cumplió'. ¿Qué le falta hacer?",
+          "options": [
+            { "letter": "A", "text": "Agregarle más stickers de LE SSERAFIM" },
+            { "letter": "B", "text": "Comprar otro organizador hecho" },
+            { "letter": "C", "text": "Cambiar el boceto desde el inicio" },
+            { "letter": "D", "text": "Revisar todos los criterios" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La estética es solo un criterio. También hay que revisar si caben las 60, si no se doblan y cuánto costó, porque todos se definieron desde antes.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El stand para los viernes de Fortnite",
+        "content": "Los viernes de Fortnite con tus primos siempre terminan igual: los controles en el piso, alguien los pisa y la consola se calienta porque está metida en un cajón. Decides hacer un stand de madera que sostenga la consola de pie y cuelgue dos controles. Primero haces un dibujo rápido de la idea. Luego lo pasas a una hoja cuadriculada con medidas: el stand real medirá 40 cm de alto y lo dibujas cinco veces más chico, de 8 cm. Antes de cortar madera, armas uno de cartón del mismo tamaño y le pones la consola encima para ver si aguanta y si los controles cuelgan bien. Hacen la lista de material, preguntan precios en la ferretería y suman. Tu primo Iván se encarga de lijar, tú de pintar, y en una tabla marcan qué toca cada semana. En el taller de la escuela usas lentes y guantes, y el maestro te enseña a sujetar la madera con una prensa antes de cortarla. En una libreta anotas que los ganchos quedaron muy juntos y que los separaste 3 cm. Al final revisan lo que acordaron: firme, seguro, barato y bonito. Esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu stand ES diseño, planeación y ejecución",
+        "content": "Lo que acabas de ver con el stand es exactamente un **proyecto técnico** en sus fases de **diseño**, **planeación**, **ejecución** y **evaluación**. Diseñar es hacer un **boceto** y un **plano** con medidas a **escala** (1:5 = 1 cm del dibujo son 5 cm reales). El stand de cartón del mismo tamaño que aguantó la consola fue el **prototipo**: un primer ejemplar que funciona para probar. Uno chiquito solo para ver la forma sería una **maqueta**. Planear es hacer la **lista de materiales**, el **presupuesto**, el **diagrama de Gantt** y el **reparto de tareas**. Ejecutar es seguir el plan con **seguridad** y una **bitácora**. Evaluar es revisar **criterios** fijados antes."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el presupuesto de tu control arcade",
+        "content": "Quieres armar un control arcade para jugar Street Fighter en la compu. Tienes $450. Arma el presupuesto: costo unitario × cantidad, y luego suma.\n\n**Paso 1 — Caja de MDF:** 1 × $90 = **$90**.\n**Paso 2 — Botones arcade:** 8 × $15 = **$120**.\n**Paso 3 — Palanca:** 1 × $110 = **$110**.\n**Paso 4 — Placa USB para conectarlo:** 1 × $95 = **$95**.\n**Paso 5 — Total:** $90 + $120 + $110 + $95 = **$415**. Sobran $450 − $415 = **$35**.\n\nResultado: te alcanza, y con los $35 puedes comprar dos botones de repuesto."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un proyecto técnico se **diseña** (**boceto**, **plano a escala**, **maqueta** o **prototipo**), se **planea** (**lista de materiales**, **presupuesto** = costo unitario × cantidad, sumado, y **cronograma o diagrama de Gantt**), se **ejecuta** con **medidas de seguridad** y **bitácora**, y se **evalúa** con **criterios definidos antes**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Maqueta vs. prototipo: la maqueta es como el mapa del nivel, sirve para ver la forma. El prototipo es la demo jugable: funciona y se prueba para encontrar fallas."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase acerca el stand al próximo viernes de juego: diseñar, probar, planear, ejecutar y evaluar.",
+        "data": {
+          "intro": "Quieres el stand listo en tres semanas. El medidor muestra su avance. Sigue cada fase.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Diseño: boceto y plano a escala 1:5. El stand de 40 cm de alto se dibuja de 8 cm.", "delta": 20 },
+            { "text": "Prototipo: armas uno de cartón del mismo tamaño y compruebas que aguante la consola.", "delta": 15 },
+            { "text": "Planeación: lista de materiales, presupuesto y Gantt. Iván es responsable de lijar y tú de pintar.", "delta": 20 },
+            { "text": "Ejecución: en el taller, con lentes, guantes y la madera sujeta con prensa. En la bitácora anotas que separaste los ganchos 3 cm.", "delta": 35 },
+            { "text": "Evaluación: revisan los criterios acordados: firme, seguro, barato y bonito. ¡Listo para el viernes!", "delta": 10 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica lo del proyecto del stand",
+        "content": "Representación: dibujos y modelos del stand. Planeación: costos y responsables. Seguridad: lo que te protege al construir.",
+        "data": {
+          "prompt": "Arrastra cada cosa del proyecto del stand a su categoría.",
+          "buckets": ["Representación (dibujo o modelo)", "Planeación", "Seguridad al ejecutar"],
+          "items": [
+            { "t": "Plano del stand a escala 1:5", "b": 0 },
+            { "t": "Presupuesto de la ferretería", "b": 1 },
+            { "t": "Usar lentes y guantes al cortar", "b": 2 },
+            { "t": "Stand de cartón para probar la consola", "b": 0 },
+            { "t": "Iván como responsable de lijar", "b": 1 },
+            { "t": "Sujetar la madera con una prensa", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del proyecto con lo que pasó con el stand.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Prototipo", "b": "Stand de cartón de prueba" },
+            { "a": "Plano", "b": "Dibujo con medidas" },
+            { "a": "Medida de seguridad", "b": "Lentes y guantes" },
+            { "a": "Bitácora", "b": "Notas de los cambios" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "Stand gamer",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Primer dibujo, sin medidas", "right": "Boceto" },
+          { "left": "Stand de 40 cm dibujado de 8 cm", "right": "Escala 1:5" },
+          { "left": "Barras de lo que toca cada semana", "right": "Diagrama de Gantt" },
+          { "left": "Firme, seguro, barato y bonito", "right": "Criterios" }
+        ],
+        "completion_feedback": "Tu stand pasó por **boceto**, **escala**, **diagrama de Gantt** y **criterios**. Ahora ponle nombre formal a cada parte del proyecto."
+      },
+      "quiz": [
+        {
+          "question": "Para que la madera no se mueva al cortarla, el maestro te pide sujetarla con una prensa y usar lentes. ¿Qué son estas acciones?",
+          "options": [
+            { "letter": "A", "text": "Criterios de estética" },
+            { "letter": "B", "text": "Partes del presupuesto" },
+            { "letter": "C", "text": "Tareas del cronograma" },
+            { "letter": "D", "text": "Medidas de seguridad" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Usar lentes y guantes y sujetar la pieza son medidas de seguridad de la ejecución: protegen tus ojos y manos y evitan que la herramienta se resbale.",
+          "difficulty": 1
+        },
+        {
+          "question": "En tu plano a escala 1:5, la base del stand mide 6 cm. ¿Cuánto mide la base real?",
+          "options": [
+            { "letter": "A", "text": "11 cm" },
+            { "letter": "B", "text": "30 cm" },
+            { "letter": "C", "text": "1.2 cm" },
+            { "letter": "D", "text": "60 cm" }
+          ],
+          "correct_answer": "B",
+          "explanation": "En 1:5 cada centímetro del dibujo son 5 cm reales: 6 × 5 = 30 cm. Dividir (1.2 cm) sería ir de lo real al dibujo.",
+          "difficulty": 2
+        },
+        {
+          "question": "El stand de cartón del mismo tamaño que el real aguanta la consola y deja colgar los controles. ¿Por qué es un prototipo y no una maqueta?",
+          "options": [
+            { "letter": "A", "text": "Porque es más chico que el real" },
+            { "letter": "B", "text": "Porque está hecho de puro cartón" },
+            { "letter": "C", "text": "Porque funciona y se prueba" },
+            { "letter": "D", "text": "Porque solo sirve para ver la forma" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El prototipo es un primer ejemplar funcional que se pone a prueba. La maqueta es un modelo a escala para ver forma y tamaño. El material no decide cuál es.",
+          "difficulty": 3
+        },
+        {
+          "question": "Necesitas 2 tablas de pino a $65 y 4 ganchos a $9. ¿Cuánto cuesta en total?",
+          "options": [
+            { "letter": "A", "text": "$166" },
+            { "letter": "B", "text": "$74" },
+            { "letter": "C", "text": "$148" },
+            { "letter": "D", "text": "$296" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Tablas: 2 × $65 = $130. Ganchos: 4 × $9 = $36. Total: $130 + $36 = $166. Cada material se multiplica por su propia cantidad.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el Gantt, 'Lijar' estaba en la semana 2 y 'Pintar' en la 3. Iván se enferma y lijar ocupa toda la semana 3. Como no se pinta sin lijar, ¿cuándo puede empezar a pintar?",
+          "options": [
+            { "letter": "A", "text": "En la semana 2" },
+            { "letter": "B", "text": "En la semana 3" },
+            { "letter": "C", "text": "En la semana 1" },
+            { "letter": "D", "text": "En la semana 4" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Pintar depende de lijar, así que se recorre: empieza en la semana 4. El Gantt se actualiza y el cambio se anota en la bitácora.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué es un boceto?",
+      "options": [
+        { "letter": "A", "text": "Un dibujo rápido de la idea" },
+        { "letter": "B", "text": "Un dibujo con medidas exactas" },
+        { "letter": "C", "text": "Un modelo a escala de cartón" },
+        { "letter": "D", "text": "La lista de materiales a usar" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es lo primero que se dibuja, sin regla ni medidas.",
+      "explanation": "El boceto es un dibujo rápido para plasmar la idea. El plano o dibujo técnico es el que lleva medidas exactas y escala."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué es el presupuesto en un proyecto técnico?",
+      "options": [
+        { "letter": "A", "text": "La lista de tareas por semana" },
+        { "letter": "B", "text": "El cálculo de cuánto costará" },
+        { "letter": "C", "text": "El registro de los problemas" },
+        { "letter": "D", "text": "El dibujo con medidas del objeto" }
+      ],
+      "correct_answer": "B",
+      "hint": "Tiene que ver con dinero.",
+      "explanation": "El presupuesto calcula el costo: costo unitario por cantidad de cada material, y luego la suma de todo."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Para qué sirve la bitácora durante la ejecución de un proyecto?",
+      "options": [
+        { "letter": "A", "text": "Para dibujar el boceto inicial a mano" },
+        { "letter": "B", "text": "Para calcular el costo de los materiales" },
+        { "letter": "C", "text": "Para registrar cambios y problemas" },
+        { "letter": "D", "text": "Para ver la forma del objeto a escala" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es como un diario del proyecto.",
+      "explanation": "En la bitácora se anota qué se hizo, qué falló y qué se cambió. Sirve para evaluar y para que otros aprendan del proceso."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué equipo de protección se usa al cortar con cúter o segueta?",
+      "options": [
+        { "letter": "A", "text": "Audífonos con música" },
+        { "letter": "B", "text": "Cubrebocas solamente" },
+        { "letter": "C", "text": "Ropa holgada y pulseras" },
+        { "letter": "D", "text": "Lentes y guantes" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en qué partes del cuerpo corren más riesgo al cortar.",
+      "explanation": "Los lentes protegen los ojos de astillas y los guantes protegen las manos. La ropa holgada y las pulseras se pueden atorar en las herramientas."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "En un plano, la escala 1:10 significa que…",
+      "options": [
+        { "letter": "A", "text": "1 cm del dibujo son 10 cm reales" },
+        { "letter": "B", "text": "10 cm del dibujo equivalen a 1 cm real" },
+        { "letter": "C", "text": "El dibujo es 10 veces más grande" },
+        { "letter": "D", "text": "El objeto real mide exactamente 10 cm" }
+      ],
+      "correct_answer": "A",
+      "hint": "El primer número corresponde al dibujo; el segundo, a la realidad.",
+      "explanation": "En 1:10, cada centímetro del dibujo representa 10 cm del objeto real. El dibujo es 10 veces más chico, no más grande."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué es una maqueta?",
+      "options": [
+        { "letter": "A", "text": "El primer ejemplar que funciona y se prueba" },
+        { "letter": "B", "text": "Un modelo a escala para ver la forma" },
+        { "letter": "C", "text": "Un dibujo rápido hecho sin medidas" },
+        { "letter": "D", "text": "La tabla de tareas con sus fechas" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en los edificios en miniatura de una exposición.",
+      "explanation": "La maqueta es un modelo a escala, sobre todo para ver forma y tamaño. El primer ejemplar funcional para probar es el prototipo."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Cuál es la característica principal de un prototipo?",
+      "options": [
+        { "letter": "A", "text": "Siempre es más chico que el real" },
+        { "letter": "B", "text": "Solo sirve para ver el color" },
+        { "letter": "C", "text": "Es el dibujo final con medidas" },
+        { "letter": "D", "text": "Funciona y se usa para probar" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es la primera versión que de verdad se pone a prueba.",
+      "explanation": "El prototipo es el primer ejemplar funcional: se construye para probarlo y encontrar fallas antes de hacer la versión final."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "En un diagrama de Gantt, ¿qué va en las filas?",
+      "options": [
+        { "letter": "A", "text": "Las semanas" },
+        { "letter": "B", "text": "Las tareas" },
+        { "letter": "C", "text": "Los precios" },
+        { "letter": "D", "text": "Los materiales" }
+      ],
+      "correct_answer": "B",
+      "hint": "Las columnas representan el tiempo.",
+      "explanation": "En el Gantt las tareas van en filas, el tiempo en columnas, y las barras muestran cuándo se hace cada tarea."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Cómo se calcula el costo de un material en el presupuesto?",
+      "options": [
+        { "letter": "A", "text": "Costo unitario más cantidad" },
+        { "letter": "B", "text": "Costo total entre cantidad" },
+        { "letter": "C", "text": "Costo unitario por cantidad" },
+        { "letter": "D", "text": "Cantidad menos costo unitario" }
+      ],
+      "correct_answer": "C",
+      "hint": "Si una hoja cuesta $10 y compras 3, ¿qué operación haces?",
+      "explanation": "Se multiplica el costo de una pieza por cuántas se compran. Después se suman todos los materiales para obtener el total."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Cuándo se definen los criterios para evaluar un proyecto técnico?",
+      "options": [
+        { "letter": "A", "text": "Antes de construir" },
+        { "letter": "B", "text": "Al final, según cómo quedó" },
+        { "letter": "C", "text": "Solo cuando algo sale mal" },
+        { "letter": "D", "text": "Nunca, se evalúa a simple vista" }
+      ],
+      "correct_answer": "A",
+      "hint": "Si los inventas al final, siempre vas a cumplirlos.",
+      "explanation": "Los criterios (funciona, costo, tiempo, seguridad, estética) se fijan antes. Así la evaluación es honesta y no se acomoda al resultado."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Un plano está a escala 1:10 y una pieza mide 7 cm en el dibujo. ¿Cuánto mide en la realidad?",
+      "options": [
+        { "letter": "A", "text": "17 cm" },
+        { "letter": "B", "text": "0.7 cm" },
+        { "letter": "C", "text": "7 cm" },
+        { "letter": "D", "text": "70 cm" }
+      ],
+      "correct_answer": "D",
+      "hint": "Cada centímetro del dibujo vale 10 cm reales.",
+      "explanation": "En 1:10 se multiplica la medida del dibujo por 10: 7 × 10 = 70 cm."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Una mesa real mide 80 cm de largo. ¿Cuánto mide en un plano a escala 1:10?",
+      "options": [
+        { "letter": "A", "text": "800 cm" },
+        { "letter": "B", "text": "8 cm" },
+        { "letter": "C", "text": "90 cm" },
+        { "letter": "D", "text": "70 cm" }
+      ],
+      "correct_answer": "B",
+      "hint": "De lo real al dibujo, la medida se hace más chica.",
+      "explanation": "De la realidad al dibujo se divide entre 10: 80 ÷ 10 = 8 cm. Multiplicar daría 800 cm, que es más grande que la mesa."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Se necesitan 5 tubos de PVC a $24 cada uno. ¿Cuánto cuestan en total?",
+      "options": [
+        { "letter": "A", "text": "$29" },
+        { "letter": "B", "text": "$100" },
+        { "letter": "C", "text": "$120" },
+        { "letter": "D", "text": "$96" }
+      ],
+      "correct_answer": "C",
+      "hint": "Multiplica el precio de un tubo por cuántos tubos hay.",
+      "explanation": "Costo unitario por cantidad: 24 × 5 = 120, o sea $120. Sumar 24 + 5 da 29, un error típico."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Al cortar cartón con un cúter, ¿cuál es la forma segura?",
+      "options": [
+        { "letter": "A", "text": "Cortar hacia la mano que sostiene" },
+        { "letter": "B", "text": "Cortar sobre las piernas para apoyar" },
+        { "letter": "C", "text": "Cortar rápido para terminar antes" },
+        { "letter": "D", "text": "Cortar alejando la hoja del cuerpo" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa hacia dónde iría la hoja si se resbala.",
+      "explanation": "Si la hoja se resbala, debe ir lejos de tu cuerpo. Por eso se corta sobre una mesa o tabla, hacia afuera y nunca hacia la mano ni sobre las piernas."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "En un equipo, ¿para qué sirve asignar un responsable a cada tarea?",
+      "options": [
+        { "letter": "A", "text": "Para que nada quede sin hacer" },
+        { "letter": "B", "text": "Para que una persona haga todo" },
+        { "letter": "C", "text": "Para que nadie tenga que trabajar" },
+        { "letter": "D", "text": "Para no tener que hacer cronograma" }
+      ],
+      "correct_answer": "A",
+      "hint": "Imagina qué pasa si todos creen que otro lo hará.",
+      "explanation": "Con un responsable por tarea nadie se queda esperando a que otro la haga, y todos saben qué les toca y cuándo."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "Un presupuesto tiene 3 hojas de foami a $15, 2 botes de pintura a $30 y 1 pegamento a $40. ¿Cuál es el total?",
+      "options": [
+        { "letter": "A", "text": "$85" },
+        { "letter": "B", "text": "$145" },
+        { "letter": "C", "text": "$105" },
+        { "letter": "D", "text": "$155" }
+      ],
+      "correct_answer": "B",
+      "hint": "Primero multiplica cada material por su cantidad y luego suma los tres resultados.",
+      "explanation": "Foami: 3 × 15 = 45. Pintura: 2 × 30 = 60. Pegamento: 1 × 40 = 40. Total: 45 + 60 + 40 = $145."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "En un Gantt, la barra de 'Comprar material' ocupa la semana 1 y la de 'Cortar piezas' la semana 2. ¿Qué muestra?",
+      "options": [
+        { "letter": "A", "text": "Que las dos se hacen al mismo tiempo" },
+        { "letter": "B", "text": "Que cortar cuesta más que comprar material" },
+        { "letter": "C", "text": "Que primero se compra y luego se corta" },
+        { "letter": "D", "text": "Que comprar dura el doble que cortar" }
+      ],
+      "correct_answer": "C",
+      "hint": "Lee las barras de izquierda a derecha, como una línea del tiempo.",
+      "explanation": "Las columnas son el tiempo. Una barra en la semana 1 y otra en la semana 2 indican que una tarea va después de la otra."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "¿Qué diferencia hay entre un boceto y un plano?",
+      "options": [
+        { "letter": "A", "text": "El plano lleva medidas y escala" },
+        { "letter": "B", "text": "El boceto lleva más medidas" },
+        { "letter": "C", "text": "El plano es más rápido de hacer" },
+        { "letter": "D", "text": "El boceto se hace con computadora" }
+      ],
+      "correct_answer": "A",
+      "hint": "Uno se hace a mano alzada en un minuto; el otro, con regla.",
+      "explanation": "El boceto es rápido y sirve para plasmar la idea. El plano o dibujo técnico tiene medidas exactas y escala para poder construir."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "Durante la construcción, una pieza no encaja y el equipo la recorta 1 cm. ¿Qué deben hacer además?",
+      "options": [
+        { "letter": "A", "text": "Romper el plano original" },
+        { "letter": "B", "text": "Anotarlo en la bitácora" },
+        { "letter": "C", "text": "Ocultarlo en la evaluación" },
+        { "letter": "D", "text": "Rehacer todo el presupuesto" }
+      ],
+      "correct_answer": "B",
+      "hint": "Ese cambio es información valiosa para evaluar después.",
+      "explanation": "Cada cambio o problema se registra en la bitácora. Así se puede corregir el plano y explicar el cambio al comunicar los resultados."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "¿Cuál de estos es un criterio de evaluación bien definido?",
+      "options": [
+        { "letter": "A", "text": "Que quede más o menos bien" },
+        { "letter": "B", "text": "Que le guste a alguien del grupo" },
+        { "letter": "C", "text": "Que se vea como se pueda" },
+        { "letter": "D", "text": "Que soporte 2 kg sin doblarse" }
+      ],
+      "correct_answer": "D",
+      "hint": "Un buen criterio se puede comprobar con una prueba.",
+      "explanation": "Un criterio útil se puede medir: soportar 2 kg sin doblarse se comprueba con una prueba. Más o menos bien no se puede verificar."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Un patio mide 100 m de largo. ¿Cuánto mide en una maqueta a escala 1:500?",
+      "options": [
+        { "letter": "A", "text": "2 cm" },
+        { "letter": "B", "text": "50 cm" },
+        { "letter": "C", "text": "20 cm" },
+        { "letter": "D", "text": "200 cm" }
+      ],
+      "correct_answer": "C",
+      "hint": "Primero pasa los metros a centímetros y luego divide entre 500.",
+      "explanation": "100 m son 10,000 cm. En 1:500 se divide: 10,000 entre 500 da 20 cm."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Un equipo tiene $300. Su presupuesto: 4 tablas a $45, 10 tornillos a $3 y 2 botes de pintura a $50. ¿Les alcanza?",
+      "options": [
+        { "letter": "A", "text": "Sí, les sobran $10" },
+        { "letter": "B", "text": "No, les faltan $10" },
+        { "letter": "C", "text": "Sí, les sobran $202" },
+        { "letter": "D", "text": "No, les faltan $110" }
+      ],
+      "correct_answer": "B",
+      "hint": "Calcula cada línea, suma el total y compáralo con lo que tienen.",
+      "explanation": "Tablas: 4 × 45 = 180. Tornillos: 10 × 3 = 30. Pintura: 2 × 50 = 100. Total: $310. Tienen $300, así que les faltan $10."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Un prototipo se rompe en la primera prueba. ¿Qué indica sobre el proyecto?",
+      "options": [
+        { "letter": "A", "text": "Que el proyecto fracasó por completo" },
+        { "letter": "B", "text": "Que no había que hacer prototipo" },
+        { "letter": "C", "text": "Que hay que esconder el resultado" },
+        { "letter": "D", "text": "Que la prueba cumplió su función" }
+      ],
+      "correct_answer": "D",
+      "hint": "¿Para qué se construye un prototipo antes de la versión final?",
+      "explanation": "El prototipo existe para encontrar fallas antes de la versión final. Que se rompa da información para mejorar el diseño."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "¿Por qué conviene hacer una maqueta antes de construir algo grande?",
+      "options": [
+        { "letter": "A", "text": "Para ver forma y tamaño sin gastar tanto" },
+        { "letter": "B", "text": "Para no tener que hacer ningún plano" },
+        { "letter": "C", "text": "Porque sustituye al prototipo funcional" },
+        { "letter": "D", "text": "Porque así ya no hay que evaluarlo después" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cuánto cuesta equivocarse en pequeño contra equivocarse en grande.",
+      "explanation": "La maqueta permite ver forma y tamaño y detectar errores de diseño con poco material, antes de invertir en el objeto real."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "En un Gantt, las barras de 'Diseñar el logo' y 'Comprar material' están en la misma semana. ¿Qué significa?",
+      "options": [
+        { "letter": "A", "text": "Una tiene que esperar a la otra" },
+        { "letter": "B", "text": "Se pueden hacer al mismo tiempo" },
+        { "letter": "C", "text": "Las dos cuestan lo mismo" },
+        { "letter": "D", "text": "La de arriba es la más importante" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en qué columnas ocupan las dos barras.",
+      "explanation": "Barras en la misma columna indican tareas que ocurren en el mismo periodo, por ejemplo con responsables distintos. El Gantt no indica costos ni importancia."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un equipo terminó su proyecto: funciona y se ve bien, pero tardó 5 semanas en lugar de 3. ¿Qué concluye la evaluación?",
+      "options": [
+        { "letter": "A", "text": "Cumplió todos los criterios" },
+        { "letter": "B", "text": "Falló el criterio de tiempo" },
+        { "letter": "C", "text": "El tiempo no se evalúa nunca" },
+        { "letter": "D", "text": "Solo importa que se vea bien" }
+      ],
+      "correct_answer": "B",
+      "hint": "Revisa uno por uno los criterios que suele tener un proyecto.",
+      "explanation": "Cumplió funcionamiento y estética, pero no el tiempo: se pasó 2 semanas. Se anota como mejora, por ejemplo, ajustar el cronograma."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "En una maqueta a escala 1:20, una pared mide 15 cm. ¿Cuánto mide la pared real?",
+      "options": [
+        { "letter": "A", "text": "35 cm" },
+        { "letter": "B", "text": "30 m" },
+        { "letter": "C", "text": "0.75 cm" },
+        { "letter": "D", "text": "3 m" }
+      ],
+      "correct_answer": "D",
+      "hint": "Multiplica y después convierte los centímetros a metros.",
+      "explanation": "En 1:20 se multiplica: 15 × 20 = 300 cm. Como 100 cm son 1 m, la pared real mide 3 m."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un equipo compra el material antes de hacer la lista y el presupuesto. ¿Qué riesgo corre?",
+      "options": [
+        { "letter": "A", "text": "Gastar de más o que falte algo" },
+        { "letter": "B", "text": "Que el boceto salga muy feo" },
+        { "letter": "C", "text": "Que la bitácora quede vacía" },
+        { "letter": "D", "text": "Que la maqueta sea demasiado chica" }
+      ],
+      "correct_answer": "A",
+      "hint": "La planeación existe para saber qué y cuánto se necesita.",
+      "explanation": "Sin lista ni presupuesto no saben qué ni cuánto comprar: pueden pasarse del dinero o quedarse sin un material a mitad del trabajo."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un alumno usa el taladro sin lentes porque 'solo es un agujero'. ¿Qué principio rompe?",
+      "options": [
+        { "letter": "A", "text": "Seguir el presupuesto acordado" },
+        { "letter": "B", "text": "Respetar el diagrama de Gantt del equipo" },
+        { "letter": "C", "text": "Usar equipo de protección siempre" },
+        { "letter": "D", "text": "Registrar todo en la bitácora" }
+      ],
+      "correct_answer": "C",
+      "hint": "Las astillas y el polvo no avisan.",
+      "explanation": "El equipo de protección se usa en toda tarea con herramientas, aunque sea corta. Una astilla en el ojo puede pasar en un segundo."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Al comunicar los resultados de un proyecto técnico, ¿qué conviene incluir?",
+      "options": [
+        { "letter": "A", "text": "Solo las fotos del producto ya terminado" },
+        { "letter": "B", "text": "Solo lo que salió bien para lucirse" },
+        { "letter": "C", "text": "Únicamente el costo total del proyecto" },
+        { "letter": "D", "text": "Lo que funcionó, lo que falló y mejoras" }
+      ],
+      "correct_answer": "D",
+      "hint": "Comunicar sirve para que otros aprendan, también de los errores.",
+      "explanation": "Una buena comunicación cuenta el proceso completo: qué funcionó, qué falló según la bitácora y qué mejoras se proponen. Así otros aprenden."
+    }
+  ],
+  "diagnostic": {
+    "question": "Para construir un librero, un equipo hace la lista de materiales, calcula cuánto costará y arma una tabla con las tareas de cada semana. ¿En qué fase del proyecto están?",
+    "options": [
+      { "letter": "A", "text": "Diseño" },
+      { "letter": "B", "text": "Ejecución" },
+      { "letter": "C", "text": "Planeación" },
+      { "letter": "D", "text": "Evaluación" }
+    ],
+    "correct_answer": "C",
+    "explanation": "Lista de materiales, presupuesto y cronograma son parte de la planeación. El diseño son bocetos y planos; la ejecución es construir; la evaluación es revisar los criterios."
+  }
+}

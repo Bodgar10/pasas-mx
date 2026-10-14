@@ -1,0 +1,1834 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "hoja-de-calculo-graficas-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo hacer una gráfica en la hoja de cálculo",
+    "steps": [
+      "Seleccionar el rango de datos con sus encabezados",
+      "Ir a Insertar y elegir Gráfico",
+      "Escoger el tipo de gráfica que va con los datos",
+      "Escribir el título y las etiquetas de los ejes",
+      "Leer la gráfica: máximo, mínimo y tendencia"
+    ],
+    "completion_feedback": "Primero **seleccionas** los datos con encabezados, luego **insertas** la gráfica, eliges el **tipo** y le pones **título** y **etiquetas**. Al final la **lees**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La encuesta de Naruto para el periódico mural",
+        "content": "Tu maestra les pide una encuesta para el periódico mural y tu grupo elige la pregunta: ¿quién es el mejor personaje de Naruto? Votan los 30 alumnos del salón y tú lo capturas en una hoja de cálculo: en la columna A los nombres y en la B los votos. Naruto tiene 12, Kakashi 9, Itachi 6 y Sasuke 3. La tabla está bien, pero cuando la pegas en el mural nadie se detiene a leerla: son puros números. Entonces seleccionas la tabla, le das a Insertar y aparece un dibujo con una barra por personaje. Todo cambia: la barra de Naruto es la más alta, la de Sasuke apenas se levanta y cualquiera que pasa entiende quién ganó sin leer un solo número. Le pones un título arriba, escribes el número de votos sobre cada barra y la gente hasta se para a discutir. Luego tu amiga pregunta qué parte del salón votó por cada uno, y cambias el dibujo por un pastel: Naruto se queda con 40%, Kakashi con 30%, Itachi con 20% y Sasuke con 10%. Todo junto suma 100%. Convertir una tabla en un dibujo que se entiende de un vistazo es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El dibujo de los votos ES una gráfica",
+        "content": "Lo que acabas de ver con la encuesta de Naruto es exactamente una **gráfica**: convierte los datos de una tabla en un dibujo para ver de un vistazo **patrones** y **comparaciones**. El tipo depende de la pregunta: **barras o columnas** para **comparar categorías** (votos por personaje); **líneas** para **cambios a lo largo del tiempo**, su **tendencia** (episodios vistos por semana); **circular o pastel** para **partes de un todo** que suman **100%**, con pocas categorías (qué parte del salón votó por cada uno); y **dispersión** para la **relación entre dos variables**. Toda gráfica lleva **título**, **ejes** con sus etiquetas, **leyenda** y **etiquetas de datos**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu maratón de My Hero Academia",
+        "content": "En vacaciones anotaste cuántos episodios de My Hero Academia viste cada semana: semana 1, 4; semana 2, 7; semana 3, 10; semana 4, 15. ¿Tu ritmo fue en aumento?\n\n**Paso 1:** Seleccionas A1:B5, con los encabezados Semana y Episodios.\n**Paso 2:** Vas a **Insertar → Gráfico**.\n**Paso 3:** Eliges **líneas**, porque los datos cambian con el tiempo.\n**Paso 4:** Pones el título Episodios de MHA por semana y etiquetas a los ejes: Semana y Episodios.\n**Paso 5:** Lees: el **mínimo** es 4 (semana 1), el **máximo** es 15 (semana 4) y la línea siempre sube.\n\nResultado: la **tendencia** es a subir; tu maratón fue acelerando."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **gráfica** muestra de un vistazo lo que dice una tabla. **Barras**: comparar categorías. **Líneas**: cambios en el tiempo (**tendencia**). **Circular**: partes de un todo que suman **100%**. Lleva **título**, **ejes** con etiquetas, **leyenda** y **etiquetas de datos**. Para hacerla: **seleccionar el rango con encabezados → Insertar → tipo → título**. Desconfía si el eje no empieza en **0**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en un ranking de personajes: ¿quién tiene más votos? Barras. ¿Cómo fue cambiando su popularidad? Líneas. ¿Qué parte del total se llevó cada uno? Pastel. Si un pastel no suma 100%, está mal hecho."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Revisar los ejes antes de creerle a una gráfica evita que te engañen.",
+        "data": {
+          "intro": "Una página de fans publica una gráfica de barras: ¿quién es mejor, Goku o Vegeta? La barra de Goku se ve más del doble de alta. Revísala paso a paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees las etiquetas de datos: Goku tiene 52 votos y Vegeta 48. La diferencia real es de solo 4 votos."
+            },
+            {
+              "text": "Revisas el eje vertical: no empieza en 0, empieza en 45. Primera señal de alerta."
+            },
+            {
+              "text": "Calculas lo que se ve: la barra de Goku mide 52 − 45 = 7 y la de Vegeta 48 − 45 = 3. Por eso parece más del doble."
+            },
+            {
+              "text": "Conclusión: la gráfica es engañosa. Con el eje desde 0, las barras se verían casi iguales: 52% contra 48%."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué gráfica usarías?",
+        "content": "Barras: comparar categorías. Líneas: cómo cambia algo con el tiempo. Circular: qué parte de un total le toca a cada quien.",
+        "data": {
+          "prompt": "Arrastra cada conjunto de datos de anime a la gráfica que le queda mejor.",
+          "buckets": [
+            "Barras (comparar)",
+            "Líneas (en el tiempo)",
+            "Circular (partes de un todo)"
+          ],
+          "items": [
+            {
+              "t": "Tomos de manga que tiene cada amigo",
+              "b": 0
+            },
+            {
+              "t": "Seguidores de tu cuenta de fanart mes a mes",
+              "b": 1
+            },
+            {
+              "t": "% del salón que prefiere sub o doblaje",
+              "b": 2
+            },
+            {
+              "t": "Episodios que dura cada uno de 4 animes",
+              "b": 0
+            },
+            {
+              "t": "Capítulos que lees cada semana del año",
+              "b": 1
+            },
+            {
+              "t": "Qué % de tus mangas es shōnen, shōjo o seinen",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada elemento de la gráfica con lo que muestra.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Título",
+              "b": "De qué trata la gráfica"
+            },
+            {
+              "a": "Leyenda",
+              "b": "Qué serie es cada color"
+            },
+            {
+              "a": "Eje horizontal",
+              "b": "Línea de abajo con nombres"
+            },
+            {
+              "a": "Etiqueta de datos",
+              "b": "El número sobre la barra"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu encuesta?",
+        "left_label": "Encuesta Naruto",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Nombres y votos en columnas",
+            "right": "Tabla de datos"
+          },
+          {
+            "left": "Ver quién ganó sin leer números",
+            "right": "Gráfica"
+          },
+          {
+            "left": "La barra de Naruto, la más alta",
+            "right": "Valor máximo"
+          },
+          {
+            "left": "Naruto con 40% del salón",
+            "right": "Parte de un todo"
+          }
+        ],
+        "completion_feedback": "La **tabla** guarda los datos, pero la **gráfica** te deja ver de un vistazo el **máximo** y las **partes de un todo**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Quieres ver si tu ritmo de episodios fue subiendo o bajando semana tras semana. ¿Qué gráfica usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De líneas"
+            },
+            {
+              "letter": "B",
+              "text": "Circular (pastel)"
+            },
+            {
+              "letter": "C",
+              "text": "De dispersión"
+            },
+            {
+              "letter": "D",
+              "text": "Solo la tabla"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los cambios a lo largo del tiempo se ven mejor con líneas: muestran la tendencia. El pastel es para partes de un todo y la dispersión, para relacionar dos variables.",
+          "difficulty": 1
+        },
+        {
+          "question": "En la encuesta del salón votaron 30 alumnos y Naruto tuvo 12 votos. ¿Qué porcentaje le toca en la gráfica circular?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "12%"
+            },
+            {
+              "letter": "B",
+              "text": "30%"
+            },
+            {
+              "letter": "C",
+              "text": "40%"
+            },
+            {
+              "letter": "D",
+              "text": "25%"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Se divide la parte entre el total: 12 ÷ 30 = 0.4, es decir, 40%. El 12% sale de confundir votos con porcentaje.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una gráfica de votos muestra a Luffy con 61 y a Zoro con 59, pero la barra de Luffy se ve el triple de alta. ¿Qué la hace engañosa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usa barras en vez de pastel"
+            },
+            {
+              "letter": "B",
+              "text": "El eje no empieza en 0"
+            },
+            {
+              "letter": "C",
+              "text": "Tiene etiquetas de datos"
+            },
+            {
+              "letter": "D",
+              "text": "Le falta una leyenda"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Si el eje vertical empieza en 58, Luffy se ve de 3 y Zoro de 1. La diferencia real es de solo 2 votos. Las etiquetas de datos ayudan, no engañan.",
+          "difficulty": 3
+        },
+        {
+          "question": "Tu gráfica compara los episodios de dos animes por semana, cada uno con un color. ¿Qué elemento dice qué color es cada anime?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El título"
+            },
+            {
+              "letter": "B",
+              "text": "El eje vertical"
+            },
+            {
+              "letter": "C",
+              "text": "La leyenda"
+            },
+            {
+              "letter": "D",
+              "text": "La etiqueta de datos"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La leyenda explica qué serie representa cada color. El título dice de qué trata toda la gráfica y el eje vertical da la escala.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una página de fans publica un pastel: Naruto 45%, Sasuke 35% y Kakashi 30%. ¿Qué está mal?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Faltan las etiquetas de los ejes"
+            },
+            {
+              "letter": "B",
+              "text": "Suman más de 100%"
+            },
+            {
+              "letter": "C",
+              "text": "Debería empezar en 0"
+            },
+            {
+              "letter": "D",
+              "text": "Tiene muy pocas categorías"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "45 + 35 + 30 = 110%. En una circular las partes forman un todo y deben sumar exactamente 100%. El pastel no tiene ejes y tres categorías está bien.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "¿Santi va mejorando o solo tuvo suerte?",
+        "content": "Eres quien lleva las estadísticas del equipo de fútbol de tu secundaria. El entrenador quiere saber si Santi, el delantero, va mejorando o si solo tuvo suerte en un par de partidos. Abres Google Sheets y anotas sus goles por mes: febrero 1, marzo 3, abril 4, mayo 6 y junio 8. Se la enseñas al entrenador, pero él frunce el ceño: ve cinco números sueltos y no le dicen nada. Entonces seleccionas la tabla con todo y encabezados, le das a Insertar y eliges un dibujo de puntos unidos por una línea. Ahora sí: la línea arranca abajo en febrero y no deja de subir hasta junio, donde está su punto más alto. El entrenador lo entiende en dos segundos: Santi no tuvo suerte, va de menos a más y se ganó la titularidad. Le agregas un título, escribes los meses abajo y los goles a un lado, y lo pegas en el vestidor para que todo el equipo lo vea. Esa línea que dice más que la tabla completa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La línea de los goles ES una gráfica",
+        "content": "Lo que acabas de ver con los goles de Santi es exactamente una **gráfica**: convierte los datos de una tabla en un dibujo para ver de un vistazo **patrones** y **comparaciones**. El tipo depende de la pregunta: **barras o columnas** para **comparar categorías** (goles de cada jugador); **líneas** para **cambios a lo largo del tiempo**, su **tendencia** (goles mes a mes); **circular o pastel** para **partes de un todo** que suman **100%**, con pocas categorías (qué parte de los goles fue de cabeza); y **dispersión** para la **relación entre dos variables**. Toda gráfica lleva **título**, **ejes** con sus etiquetas, **leyenda** y **etiquetas de datos**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los goleadores de tu equipo",
+        "content": "Al cerrar la temporada tienes los goles de cada jugador: Leo 14, Santi 22, Mateo 5 e Iker 9. ¿Quién es el goleador?\n\n**Paso 1:** **Ordenas** la tabla de mayor a menor: Santi, Leo, Iker y Mateo.\n**Paso 2:** Seleccionas A1:B5, con los encabezados Jugador y Goles.\n**Paso 3:** Vas a **Insertar → Gráfico** y eliges **columnas**, porque comparas jugadores.\n**Paso 4:** Pones el título Goles por jugador y **etiquetas de datos** sobre cada barra.\n**Paso 5:** Lees: el **máximo** es Santi con 22 y el **mínimo** es Mateo con 5.\n\nResultado: las barras bajan como escalera y el goleador salta a la vista."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **gráfica** muestra de un vistazo lo que dice una tabla. **Barras**: comparar categorías. **Líneas**: cambios en el tiempo (**tendencia**). **Circular**: partes de un todo que suman **100%**. Lleva **título**, **ejes** con etiquetas, **leyenda** y **etiquetas de datos**. Para hacerla: **seleccionar el rango con encabezados → Insertar → tipo → título**. Desconfía si el eje no empieza en **0**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la tabla de goleo: ¿quién mete más? Barras. ¿Cómo va un jugador mes a mes? Líneas. ¿Qué parte de sus goles fue de cabeza? Pastel. Y antes de creerle a una gráfica, revisa su escala, como revisas el fuera de lugar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Revisar la escala de cada gráfica evita comparaciones tramposas.",
+        "data": {
+          "intro": "Un video compara a dos delanteros de la liga con dos gráficas separadas, y las dos barras se ven igual de altas. Revísalas paso a paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees los títulos: una gráfica es de Diego y la otra de Andrés. Las barras llegan a la misma altura."
+            },
+            {
+              "text": "Revisas los ejes verticales: el de Diego va de 0 a 8 y el de Andrés de 0 a 24. Las escalas son distintas."
+            },
+            {
+              "text": "Lees las etiquetas de datos: Diego metió 6 goles y Andrés 18. Andrés anotó el triple."
+            },
+            {
+              "text": "Conclusión: la comparación engaña. Para comparar, usa la misma escala o pon a los dos en una sola gráfica de barras."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué gráfica usarías?",
+        "content": "Barras: comparar categorías. Líneas: cómo cambia algo con el tiempo. Circular: qué parte de un total le toca a cada quien.",
+        "data": {
+          "prompt": "Arrastra cada conjunto de datos de fútbol a la gráfica que le queda mejor.",
+          "buckets": [
+            "Barras (comparar)",
+            "Líneas (en el tiempo)",
+            "Circular (partes de un todo)"
+          ],
+          "items": [
+            {
+              "t": "Goles de cada jugador del plantel",
+              "b": 0
+            },
+            {
+              "t": "Tus goles mes a mes en la temporada",
+              "b": 1
+            },
+            {
+              "t": "% de partidos ganados, empatados y perdidos",
+              "b": 2
+            },
+            {
+              "t": "Tarjetas amarillas de cada equipo de la liga",
+              "b": 0
+            },
+            {
+              "t": "Puntos de tu equipo jornada tras jornada",
+              "b": 1
+            },
+            {
+              "t": "% de tus goles de cabeza, derecha o izquierda",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada tipo de gráfica con para qué sirve.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Barras",
+              "b": "Comparar categorías"
+            },
+            {
+              "a": "Líneas",
+              "b": "Cambio en el tiempo"
+            },
+            {
+              "a": "Circular",
+              "b": "Partes de un todo"
+            },
+            {
+              "a": "Dispersión",
+              "b": "Relación de dos variables"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu reporte?",
+        "left_label": "Goles de Santi",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Los goles anotados mes a mes",
+            "right": "Tabla de datos"
+          },
+          {
+            "left": "La línea que no deja de subir",
+            "right": "Tendencia al alza"
+          },
+          {
+            "left": "Junio, con 8 goles",
+            "right": "Valor máximo"
+          },
+          {
+            "left": "Los meses escritos abajo",
+            "right": "Eje horizontal"
+          }
+        ],
+        "completion_feedback": "La **tabla** tenía los números, pero la **línea** mostró la **tendencia** y el **máximo** de un vistazo. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Quieres comparar cuántos goles metió cada jugador de tu equipo en la temporada. ¿Qué gráfica es la mejor?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De líneas"
+            },
+            {
+              "letter": "B",
+              "text": "De barras"
+            },
+            {
+              "letter": "C",
+              "text": "De dispersión"
+            },
+            {
+              "letter": "D",
+              "text": "Solo la tabla"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Para comparar categorías, como jugadores, se usan barras o columnas. Las líneas son para cambios en el tiempo y la dispersión, para relacionar dos variables.",
+          "difficulty": 1
+        },
+        {
+          "question": "Santi metió 1, 3, 4, 6 y 8 goles de febrero a junio. ¿Qué tendencia muestra la gráfica de líneas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Va bajando"
+            },
+            {
+              "letter": "B",
+              "text": "Se mantiene igual"
+            },
+            {
+              "letter": "C",
+              "text": "Sube y luego baja"
+            },
+            {
+              "letter": "D",
+              "text": "Va subiendo"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Cada mes metió más goles que el anterior, así que la línea siempre sube: tendencia al alza. Su mínimo es febrero y su máximo, junio.",
+          "difficulty": 2
+        },
+        {
+          "question": "Dos gráficas separadas: la de Diego tiene eje de 0 a 8 y la de Andrés de 0 a 24. Las barras se ven igual de altas y Diego metió 6. ¿Cuántos metió Andrés?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "6 goles"
+            },
+            {
+              "letter": "B",
+              "text": "8 goles"
+            },
+            {
+              "letter": "C",
+              "text": "18 goles"
+            },
+            {
+              "letter": "D",
+              "text": "24 goles"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La barra de Diego llega a 6 de 8, o sea a tres cuartos del eje. Tres cuartos de 24 son 18. Con escalas distintas, barras iguales no significan valores iguales.",
+          "difficulty": 3
+        },
+        {
+          "question": "Antes de graficar, quieres que las barras queden del mayor al menor goleador. ¿Qué haces con la tabla?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Filtrarla"
+            },
+            {
+              "letter": "B",
+              "text": "Ordenarla"
+            },
+            {
+              "letter": "C",
+              "text": "Borrar encabezados"
+            },
+            {
+              "letter": "D",
+              "text": "Cambiarle el título"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Ordenar de mayor a menor acomoda las filas y las barras salen como escalera. Filtrar solo oculta filas; no cambia el orden.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tabla tiene Jugador en A1, Goles en B1 y cuatro jugadores en las filas 2 a 5. ¿Qué rango seleccionas para graficar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "A2:B5"
+            },
+            {
+              "letter": "B",
+              "text": "B1:B5"
+            },
+            {
+              "letter": "C",
+              "text": "A1:A5"
+            },
+            {
+              "letter": "D",
+              "text": "A1:B5"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Se selecciona el rango con encabezados y con las dos columnas: A1:B5. Sin la fila 1 la gráfica no tiene nombres de serie, y sin la columna A no sabe de qué jugador es cada barra.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Las vistas de tu reacción al comeback de IVE",
+        "content": "Subiste a tu canal de YouTube tu video de reacción al comeback de IVE y cada noche anotas las vistas del día en una hoja de cálculo: lunes 120, martes 300, miércoles 450, jueves 380, viernes 250, sábado 200 y domingo 150. Quieres entender qué pasó para planear tu próximo video, pero ves siete números en fila y no te dicen gran cosa. ¿Fue buena semana? ¿Mala? Entonces seleccionas la tabla con los encabezados Día y Vistas, le das a Insertar y eliges un dibujo con una línea. De golpe aparece la historia: la línea sube rápido del lunes al miércoles, llega a su punto más alto y luego baja poco a poco hasta el domingo. Ahora lo entiendes: tu video pegó fuerte los primeros días, cuando todo el fandom hablaba del comeback, y después se fue apagando. La próxima vez vas a subir tu reacción el mismo día del estreno. Esa línea que te cuenta en un vistazo lo que siete números escondían es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La línea de tus vistas ES una gráfica",
+        "content": "Lo que acabas de ver con las vistas de tu video es exactamente una **gráfica**: convierte los datos de una tabla en un dibujo para ver de un vistazo **patrones** y **comparaciones**. El tipo depende de la pregunta: **barras o columnas** para **comparar categorías** (fotocards de cada amiga); **líneas** para **cambios a lo largo del tiempo**, su **tendencia** (vistas día por día); **circular o pastel** para **partes de un todo** que suman **100%**, con pocas categorías (votos por integrante); y **dispersión** para la **relación entre dos variables**. Toda gráfica lleva **título**, **ejes** con sus etiquetas, **leyenda** y **etiquetas de datos**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la integrante favorita de HUNTR/X",
+        "content": "En tu salón, 40 alumnos votaron por su integrante favorita de HUNTR/X, de KPop Demon Hunters: Rumi 18, Zoey 12 y Mira 10.\n\n**Paso 1:** Seleccionas A1:B4, con los encabezados Integrante y Votos.\n**Paso 2:** Vas a **Insertar → Gráfico** y eliges **circular**: son partes de un todo y solo hay 3 categorías.\n**Paso 3:** Pones el título Integrante favorita de HUNTR/X y activas la **leyenda**.\n**Paso 4:** Agregas **etiquetas de datos** con porcentaje: Rumi 45%, Zoey 30% y Mira 25%.\n**Paso 5:** Compruebas: 45 + 30 + 25 = 100%.\n\nResultado: Rumi se lleva casi la mitad del pastel."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **gráfica** muestra de un vistazo lo que dice una tabla. **Barras**: comparar categorías. **Líneas**: cambios en el tiempo (**tendencia**). **Circular**: partes de un todo que suman **100%**. Lleva **título**, **ejes** con etiquetas, **leyenda** y **etiquetas de datos**. Para hacerla: **seleccionar el rango con encabezados → Insertar → tipo → título**. Desconfía si el eje no empieza en **0**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en tu fandom: ¿qué integrante tiene más fans? Barras. ¿Cómo crecieron las vistas del MV día a día? Líneas. ¿Qué parte de los votos se llevó cada una? Pastel, y sus partes siempre suman 100%."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Sumar las partes de un pastel antes de creerle evita que te engañen.",
+        "data": {
+          "intro": "Una cuenta de fans publica un pastel: ¿cuál es tu K-drama favorito? Lovely Runner 50%, Business Proposal 35% y King the Land 25%. Revísalo paso a paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees las etiquetas de datos del pastel: 50%, 35% y 25%."
+            },
+            {
+              "text": "Sumas las partes: 50 + 35 + 25 = 110%. Primera señal de alerta."
+            },
+            {
+              "text": "Recuerdas la regla: en una gráfica circular las partes forman un todo y deben sumar exactamente 100%."
+            },
+            {
+              "text": "Conclusión: el pastel está mal hecho o inventado. No lo compartes hasta ver los votos reales."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué gráfica usarías?",
+        "content": "Barras: comparar categorías. Líneas: cómo cambia algo con el tiempo. Circular: qué parte de un total le toca a cada quien.",
+        "data": {
+          "prompt": "Arrastra cada conjunto de datos de K-pop a la gráfica que le queda mejor.",
+          "buckets": [
+            "Barras (comparar)",
+            "Líneas (en el tiempo)",
+            "Circular (partes de un todo)"
+          ],
+          "items": [
+            {
+              "t": "Fotocards que tiene cada una de tus amigas",
+              "b": 0
+            },
+            {
+              "t": "Vistas de tu video de reacción día por día",
+              "b": 1
+            },
+            {
+              "t": "% de tu playlist que es de cada grupo",
+              "b": 2
+            },
+            {
+              "t": "Likes del último MV de 5 grupos",
+              "b": 0
+            },
+            {
+              "t": "Seguidores de tu cuenta de K-pop mes a mes",
+              "b": 1
+            },
+            {
+              "t": "% del salón que prefiere K-pop o K-dramas",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada idea de análisis con lo que significa en tus vistas.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Valor máximo",
+              "b": "El día con más vistas"
+            },
+            {
+              "a": "Valor mínimo",
+              "b": "El día con menos vistas"
+            },
+            {
+              "a": "Tendencia",
+              "b": "Si la línea sube o baja"
+            },
+            {
+              "a": "Filtrar",
+              "b": "Ver solo ciertas filas"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu análisis?",
+        "left_label": "Vistas del video",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Siete días con sus vistas",
+            "right": "Tabla de datos"
+          },
+          {
+            "left": "El miércoles con 450 vistas",
+            "right": "Valor máximo"
+          },
+          {
+            "left": "La línea que baja hasta el domingo",
+            "right": "Tendencia a la baja"
+          },
+          {
+            "left": "Lunes a domingo, abajo",
+            "right": "Eje horizontal"
+          }
+        ],
+        "completion_feedback": "Siete números no decían nada, pero la **línea** mostró el **máximo** y la **tendencia** de un vistazo. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué gráfica muestra mejor qué parte del total de votos se llevó cada integrante de HUNTR/X?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De líneas"
+            },
+            {
+              "letter": "B",
+              "text": "De dispersión"
+            },
+            {
+              "letter": "C",
+              "text": "Circular"
+            },
+            {
+              "letter": "D",
+              "text": "Solo la tabla"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La circular o pastel muestra partes de un todo, y con 3 integrantes se lee muy bien. Las líneas son para cambios en el tiempo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tus vistas fueron: lunes 120, martes 300, miércoles 450, jueves 380, viernes 250, sábado 200 y domingo 150. ¿Qué día es el valor mínimo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Domingo"
+            },
+            {
+              "letter": "B",
+              "text": "Lunes"
+            },
+            {
+              "letter": "C",
+              "text": "Sábado"
+            },
+            {
+              "letter": "D",
+              "text": "Miércoles"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El número más bajo es 120, del lunes. El domingo, con 150, es el más bajo del final de la semana, pero no de toda la tabla. El miércoles es el máximo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un pastel de la canción favorita del nuevo álbum muestra 60%, 20% y 10%, y no tiene más partes. ¿Qué está mal?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Las partes no suman 100%"
+            },
+            {
+              "letter": "B",
+              "text": "Tiene muy pocas categorías"
+            },
+            {
+              "letter": "C",
+              "text": "Debería usar escalas iguales"
+            },
+            {
+              "letter": "D",
+              "text": "Le falta el eje vertical"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "60 + 20 + 10 = 90%. En una circular las partes forman un todo y deben sumar exactamente 100%: falta un 10% o hay un error. El pastel no lleva eje vertical.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la votación de 40 alumnos, Rumi tuvo 18 votos. ¿Qué porcentaje le toca en el pastel?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "18%"
+            },
+            {
+              "letter": "B",
+              "text": "40%"
+            },
+            {
+              "letter": "C",
+              "text": "45%"
+            },
+            {
+              "letter": "D",
+              "text": "36%"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Parte entre total: 18 ÷ 40 = 0.45, es decir, 45%. El 18% sale de confundir votos con porcentaje.",
+          "difficulty": 2
+        },
+        {
+          "question": "Solo quieres graficar los días en que tu video pasó de 300 vistas, sin borrar los demás. ¿Qué haces antes de graficar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ordenar de mayor a menor"
+            },
+            {
+              "letter": "B",
+              "text": "Filtrar los datos"
+            },
+            {
+              "letter": "C",
+              "text": "Cambiar a circular"
+            },
+            {
+              "letter": "D",
+              "text": "Quitar el título"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Filtrar oculta las filas que no cumplen la condición sin borrarlas: quedan miércoles y jueves. Ordenar cambia el orden, pero sigue mostrando los siete días.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "¿De verdad juegas cada vez más Roblox?",
+        "content": "Tu mamá está segura de que cada semana juegas más Roblox, y tú estás seguro de que no. Para no discutir sin pruebas, revisas el tiempo en pantalla de tu celular y copias tus horas de juego en una hoja de cálculo: semana 1, 14 horas; semana 2, 12; semana 3, 9; semana 4, 6. Se la enseñas, pero solo ve números y dice que así no le entiende. Entonces seleccionas la tabla con los encabezados Semana y Horas, vas a Insertar y eliges un dibujo con una línea. La línea arranca arriba en la semana 1, cuando todavía eran vacaciones, y baja semana tras semana hasta la 4, ya con clases y tareas. Le pones un título, escribes las semanas abajo y las horas a un lado. Tu mamá lo ve en dos segundos: no juegas cada vez más, juegas cada vez menos. Hasta te propone un trato: que la semana 5 no pase de 6 horas. Esa línea que gana la discusión sin decir una palabra es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La línea de tus horas ES una gráfica",
+        "content": "Lo que acabas de ver con tus horas de Roblox es exactamente una **gráfica**: convierte los datos de una tabla en un dibujo para ver de un vistazo **patrones** y **comparaciones**. El tipo depende de la pregunta: **barras o columnas** para **comparar categorías** (oro de cada cultivo); **líneas** para **cambios a lo largo del tiempo**, su **tendencia** (horas por semana); **circular o pastel** para **partes de un todo** que suman **100%**, con pocas categorías (partidas como tripulante o impostor); y **dispersión** para la **relación entre dos variables**. Toda gráfica lleva **título**, **ejes** con sus etiquetas, **leyenda** y **etiquetas de datos**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los cultivos de tu granja en Stardew Valley",
+        "content": "Terminó el verano en tu granja y anotaste el oro que ganaste con cada cultivo: Melón 3,600, Arándano 4,800, Trigo 900 y Tomate 1,500. ¿Cuál conviene sembrar más?\n\n**Paso 1:** **Ordenas** la tabla de mayor a menor: Arándano, Melón, Tomate y Trigo.\n**Paso 2:** Seleccionas A1:B5, con los encabezados Cultivo y Oro.\n**Paso 3:** Vas a **Insertar → Gráfico** y eliges **barras**, porque comparas cultivos.\n**Paso 4:** Pones el título Oro por cultivo en verano y **etiquetas de datos** en cada barra.\n**Paso 5:** Lees: el **máximo** es Arándano con 4,800 y el **mínimo** es Trigo con 900.\n\nResultado: el arándano te dio más de cinco veces lo del trigo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **gráfica** muestra de un vistazo lo que dice una tabla. **Barras**: comparar categorías. **Líneas**: cambios en el tiempo (**tendencia**). **Circular**: partes de un todo que suman **100%**. Lleva **título**, **ejes** con etiquetas, **leyenda** y **etiquetas de datos**. Para hacerla: **seleccionar el rango con encabezados → Insertar → tipo → título**. Desconfía si el eje no empieza en **0**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en tus stats: ¿con qué personaje ganas más? Barras. ¿Cómo sube tu nivel semana a semana? Líneas. ¿Qué parte de tus partidas de Among Us fuiste impostor? Pastel. Y si una barra se ve gigante, revisa dónde empieza el eje."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Revisar dónde empieza el eje antes de creerle a una gráfica evita que te engañen.",
+        "data": {
+          "intro": "Tu amigo te enseña una gráfica de barras con sus victorias en Fortnite contra las tuyas. Su barra se ve el triple de alta. Revísala paso a paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees las etiquetas de datos: él tiene 21 victorias y tú 19."
+            },
+            {
+              "text": "Revisas el eje vertical: no empieza en 0, empieza en 18. Primera señal de alerta."
+            },
+            {
+              "text": "Calculas lo que se ve: su barra mide 21 − 18 = 3 y la tuya 19 − 18 = 1. Por eso parece el triple."
+            },
+            {
+              "text": "Conclusión: la gráfica exagera. Solo te gana por 2 victorias; con el eje desde 0 las barras se verían casi iguales."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué gráfica usarías?",
+        "content": "Barras: comparar categorías. Líneas: cómo cambia algo con el tiempo. Circular: qué parte de un total le toca a cada quien.",
+        "data": {
+          "prompt": "Arrastra cada conjunto de datos gamer a la gráfica que le queda mejor.",
+          "buckets": [
+            "Barras (comparar)",
+            "Líneas (en el tiempo)",
+            "Circular (partes de un todo)"
+          ],
+          "items": [
+            {
+              "t": "Horas que llevas en 4 juegos distintos",
+              "b": 0
+            },
+            {
+              "t": "Tu nivel de cuenta semana tras semana",
+              "b": 1
+            },
+            {
+              "t": "% de partidas como tripulante o impostor",
+              "b": 2
+            },
+            {
+              "t": "Victorias con cada uno de tus personajes",
+              "b": 0
+            },
+            {
+              "t": "Horas de juego en cada semana del mes",
+              "b": 1
+            },
+            {
+              "t": "% de tu tiempo en cada modo de juego",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada elemento de la gráfica con lo que muestra en tu reporte de horas.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Título",
+              "b": "Horas de Roblox por semana"
+            },
+            {
+              "a": "Eje horizontal",
+              "b": "Semana 1, 2, 3 y 4"
+            },
+            {
+              "a": "Eje vertical",
+              "b": "Escala de 0 a 15 horas"
+            },
+            {
+              "a": "Leyenda",
+              "b": "Qué color es cada juego"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu prueba?",
+        "left_label": "Horas de Roblox",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Tus horas copiadas por semana",
+            "right": "Tabla de datos"
+          },
+          {
+            "left": "La línea que baja semana a semana",
+            "right": "Tendencia a la baja"
+          },
+          {
+            "left": "Semana 1, con 14 horas",
+            "right": "Valor máximo"
+          },
+          {
+            "left": "Las semanas escritas abajo",
+            "right": "Eje horizontal"
+          }
+        ],
+        "completion_feedback": "Tu mamá no leyó la **tabla**: vio la **línea**, su **tendencia** y su **máximo** de un vistazo. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Quieres comparar cuánto oro te dio cada cultivo de Stardew Valley. ¿Qué gráfica usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De dispersión"
+            },
+            {
+              "letter": "B",
+              "text": "De líneas"
+            },
+            {
+              "letter": "C",
+              "text": "Solo la tabla"
+            },
+            {
+              "letter": "D",
+              "text": "De barras"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Para comparar categorías, como cultivos, se usan barras o columnas. Las líneas son para cambios en el tiempo y la dispersión, para relacionar dos variables.",
+          "difficulty": 1
+        },
+        {
+          "question": "Jugaste 14, 12, 9 y 6 horas en cuatro semanas. ¿Cuál es la diferencia entre el valor máximo y el mínimo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "6 horas"
+            },
+            {
+              "letter": "B",
+              "text": "8 horas"
+            },
+            {
+              "letter": "C",
+              "text": "14 horas"
+            },
+            {
+              "letter": "D",
+              "text": "3 horas"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El máximo es 14 (semana 1) y el mínimo es 6 (semana 4): 14 − 6 = 8 horas. El 3 es solo la diferencia entre las dos últimas semanas.",
+          "difficulty": 2
+        },
+        {
+          "question": "En una gráfica de coronas de Fall Guys, tu primo tiene 34 y tú 32, pero el eje empieza en 30. ¿Cuántas veces más alta se ve su barra?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Casi igual"
+            },
+            {
+              "letter": "B",
+              "text": "El triple"
+            },
+            {
+              "letter": "C",
+              "text": "El doble"
+            },
+            {
+              "letter": "D",
+              "text": "Cuatro veces"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Desde 30, su barra mide 4 y la tuya 2: se ve el doble. En realidad solo te gana por 2 coronas. Un eje que no empieza en 0 exagera las diferencias.",
+          "difficulty": 3
+        },
+        {
+          "question": "Tu tabla tiene Cultivo en A1, Oro en B1 y datos hasta la fila 5. ¿Qué es lo primero para hacer la gráfica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Seleccionar A1:B5"
+            },
+            {
+              "letter": "B",
+              "text": "Escribir el título"
+            },
+            {
+              "letter": "C",
+              "text": "Elegir el tipo de gráfica"
+            },
+            {
+              "letter": "D",
+              "text": "Insertar una gráfica vacía"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Primero se selecciona el rango con encabezados; luego Insertar, el tipo y al final el título. Sin seleccionar, la hoja no sabe qué datos graficar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Durante 8 semanas anotas tus horas de práctica en Fortnite y tus victorias. Quieres ver si entrenar más se relaciona con ganar más. ¿Qué gráfica usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De dispersión"
+            },
+            {
+              "letter": "B",
+              "text": "Circular"
+            },
+            {
+              "letter": "C",
+              "text": "De una sola barra"
+            },
+            {
+              "letter": "D",
+              "text": "Un pastel por semana"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La dispersión pone un punto por semana con horas en un eje y victorias en el otro, y muestra si hay relación entre las dos variables. El pastel es para partes de un todo.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Para qué sirve principalmente una gráfica en una hoja de cálculo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para ver los datos de un vistazo"
+        },
+        {
+          "letter": "B",
+          "text": "Para guardar el archivo más rápido"
+        },
+        {
+          "letter": "C",
+          "text": "Para escribir fórmulas sin el signo igual"
+        },
+        {
+          "letter": "D",
+          "text": "Para cambiar el color de las celdas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué es más fácil de entender: una fila de números o un dibujo.",
+      "explanation": "Una gráfica convierte una tabla en un dibujo para ver patrones y comparaciones de un vistazo. No guarda archivos ni cambia fórmulas."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué tipo de gráfica se usa para comparar cantidades entre categorías, como ventas por tienda?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Circular o de pastel"
+        },
+        {
+          "letter": "B",
+          "text": "De barras o columnas"
+        },
+        {
+          "letter": "C",
+          "text": "De líneas de tendencia"
+        },
+        {
+          "letter": "D",
+          "text": "De dispersión"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Imagina una fila de rectángulos de distinta altura, uno por tienda.",
+      "explanation": "Las barras o columnas comparan categorías: cada tienda tiene su barra y se ve cuál es más alta. Las líneas son para cambios en el tiempo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué gráfica muestra mejor cómo cambia un dato a lo largo del tiempo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Circular"
+        },
+        {
+          "letter": "B",
+          "text": "De dispersión"
+        },
+        {
+          "letter": "C",
+          "text": "De líneas"
+        },
+        {
+          "letter": "D",
+          "text": "Una tabla de texto"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en una gráfica que une puntos de izquierda a derecha, mes tras mes.",
+      "explanation": "La gráfica de líneas une los valores en orden y deja ver la tendencia: si sube, baja o se mantiene."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué elemento de la gráfica dice de qué trata?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La leyenda"
+        },
+        {
+          "letter": "B",
+          "text": "El eje vertical"
+        },
+        {
+          "letter": "C",
+          "text": "La etiqueta de datos"
+        },
+        {
+          "letter": "D",
+          "text": "El título"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Es lo primero que lees, arriba de la gráfica.",
+      "explanation": "El título indica el tema de la gráfica. La leyenda explica los colores, el eje vertical da la escala y las etiquetas muestran cada valor."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En una gráfica circular, ¿cuánto deben sumar los porcentajes de todas las partes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "50%"
+        },
+        {
+          "letter": "B",
+          "text": "100%"
+        },
+        {
+          "letter": "C",
+          "text": "360%"
+        },
+        {
+          "letter": "D",
+          "text": "75%"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Todas las rebanadas juntas forman el pastel completo.",
+      "explanation": "Las partes de una circular forman un todo, así que sus porcentajes suman 100%. El 360 son los grados del círculo, no el porcentaje."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la leyenda de una gráfica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El número más alto de la tabla"
+        },
+        {
+          "letter": "B",
+          "text": "Indica qué representa cada color"
+        },
+        {
+          "letter": "C",
+          "text": "La fecha en que se hizo la gráfica"
+        },
+        {
+          "letter": "D",
+          "text": "El nombre del archivo de la hoja"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Aparece a un lado cuando hay varias series con distintos colores.",
+      "explanation": "La leyenda dice qué serie representa cada color, por ejemplo qué línea es de cada equipo. No muestra valores ni fechas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué gráfica conviene para mostrar qué parte de un total le toca a cada categoría?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De líneas en el tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "De dispersión"
+        },
+        {
+          "letter": "C",
+          "text": "Circular o de pastel"
+        },
+        {
+          "letter": "D",
+          "text": "Una línea por categoría"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en la gráfica cuyas partes juntas siempre suman 100%.",
+      "explanation": "La circular muestra partes de un todo: cada rebanada es un porcentaje y todas suman 100%. Funciona mejor con pocas categorías."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Antes de insertar una gráfica, ¿qué debes seleccionar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo la celda del título"
+        },
+        {
+          "letter": "B",
+          "text": "El rango con sus encabezados"
+        },
+        {
+          "letter": "C",
+          "text": "Una celda vacía fuera de la tabla"
+        },
+        {
+          "letter": "D",
+          "text": "Solo la columna de los números"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La hoja necesita saber qué datos graficar y cómo se llaman.",
+      "explanation": "Se selecciona el rango de datos con sus encabezados: así la gráfica toma los valores y también los nombres de categorías y series."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿En qué menú se encuentra la opción para crear una gráfica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Archivo"
+        },
+        {
+          "letter": "B",
+          "text": "Fórmulas"
+        },
+        {
+          "letter": "C",
+          "text": "Insertar"
+        },
+        {
+          "letter": "D",
+          "text": "Ver"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en el menú que usas para agregar imágenes o tablas.",
+      "explanation": "La gráfica se agrega desde Insertar, igual que una imagen. Archivo sirve para guardar o abrir y Fórmulas para funciones."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En una gráfica de columnas de ventas por mes, ¿dónde suelen ir los meses?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "En el eje horizontal"
+        },
+        {
+          "letter": "B",
+          "text": "En el eje vertical"
+        },
+        {
+          "letter": "C",
+          "text": "Dentro de la leyenda de colores"
+        },
+        {
+          "letter": "D",
+          "text": "En el título"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Las categorías se acomodan una junto a otra, de izquierda a derecha.",
+      "explanation": "Los meses van en el eje horizontal y las ventas en el vertical, que da la escala de valores."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una tabla muestra ventas: lunes 8, martes 12, miércoles 5 y jueves 10. ¿Qué día es el valor máximo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Jueves"
+        },
+        {
+          "letter": "B",
+          "text": "Martes"
+        },
+        {
+          "letter": "C",
+          "text": "Lunes"
+        },
+        {
+          "letter": "D",
+          "text": "Miércoles"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el número más grande, no el último ni el primero.",
+      "explanation": "El número más alto es 12, del martes: ese es el valor máximo. El mínimo es el miércoles, con 5."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una gráfica de líneas va de 20 en enero a 35 en abril y sube todos los meses. ¿Qué tendencia muestra?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Va bajando"
+        },
+        {
+          "letter": "B",
+          "text": "Se mantiene igual"
+        },
+        {
+          "letter": "C",
+          "text": "Va subiendo"
+        },
+        {
+          "letter": "D",
+          "text": "Sube y luego baja"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en hacia dónde va la línea de izquierda a derecha.",
+      "explanation": "Si la línea sube mes tras mes, la tendencia es al alza. Bajaría si cada valor fuera menor que el anterior."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En un grupo de 20 alumnos, 10 prefieren fútbol, 6 básquet y 4 voleibol. ¿Qué porcentaje le toca a básquet en la circular?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "6%"
+        },
+        {
+          "letter": "B",
+          "text": "20%"
+        },
+        {
+          "letter": "C",
+          "text": "25%"
+        },
+        {
+          "letter": "D",
+          "text": "30%"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Divide la parte entre el total y multiplica por 100.",
+      "explanation": "6 entre 20 es 0.3, o sea 30%. Fútbol es 50% y voleibol 20%: juntos suman 100%."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué son las etiquetas de datos de una gráfica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El nombre de toda la gráfica arriba"
+        },
+        {
+          "letter": "B",
+          "text": "Los colores que explican cada serie"
+        },
+        {
+          "letter": "C",
+          "text": "El valor escrito junto a cada barra"
+        },
+        {
+          "letter": "D",
+          "text": "Las líneas de la cuadrícula de fondo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Te dicen el número exacto sin tener que medir la altura de la barra.",
+      "explanation": "Las etiquetas de datos escriben el valor exacto de cada barra o punto. El título es el nombre y la leyenda explica los colores."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Para qué sirve filtrar los datos antes de graficar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para ver solo las filas que necesitas"
+        },
+        {
+          "letter": "B",
+          "text": "Para ordenar los datos de mayor a menor"
+        },
+        {
+          "letter": "C",
+          "text": "Para borrar para siempre los datos viejos"
+        },
+        {
+          "letter": "D",
+          "text": "Para cambiar el color de todas las barras"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Filtrar es como un colador: deja pasar unas filas y esconde otras.",
+      "explanation": "El filtro oculta las filas que no cumplen una condición, sin borrarlas. Ordenar es otra herramienta: cambia el orden de las filas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Para qué sirve ordenar los datos de mayor a menor antes de hacer una gráfica de barras?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para que las barras queden en orden"
+        },
+        {
+          "letter": "B",
+          "text": "Para que todas las partes sumen 100%"
+        },
+        {
+          "letter": "C",
+          "text": "Para que el eje vertical empiece en cero"
+        },
+        {
+          "letter": "D",
+          "text": "Para borrar las filas que están repetidas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cómo se verían las barras después de ordenar la tabla.",
+      "explanation": "Al ordenar la tabla, las barras salen de la más alta a la más baja y se ve rápido quién va primero y quién al final."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una gráfica de barras tiene el eje vertical de 90 a 100. El equipo A tiene 98 y el B tiene 94. ¿Qué efecto causa ese eje?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La gráfica es más precisa que nunca"
+        },
+        {
+          "letter": "B",
+          "text": "La diferencia se ve exagerada"
+        },
+        {
+          "letter": "C",
+          "text": "Las dos barras se ven iguales"
+        },
+        {
+          "letter": "D",
+          "text": "Los datos suman 100%"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Resta 90 a cada valor para saber cuánto mide cada barra en el dibujo.",
+      "explanation": "Desde 90, la barra de A mide 8 y la de B mide 4: A parece el doble, aunque la diferencia real es de solo 4 puntos. El eje debería empezar en 0."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué gráfica usarías para ver si los alumnos que estudian más horas sacan mejor calificación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Circular"
+        },
+        {
+          "letter": "B",
+          "text": "De líneas en el tiempo"
+        },
+        {
+          "letter": "C",
+          "text": "De dispersión"
+        },
+        {
+          "letter": "D",
+          "text": "Una barra por alumno"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Buscas la relación entre dos datos de cada alumno: horas y calificación.",
+      "explanation": "La dispersión pone un punto por alumno, con horas en un eje y calificación en el otro, y muestra si hay relación entre las dos variables."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una gráfica circular dice: rojo 40%, azul 35% y verde 30%. ¿Qué está mal?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tiene muy pocas categorías"
+        },
+        {
+          "letter": "B",
+          "text": "Las partes suman más de 100%"
+        },
+        {
+          "letter": "C",
+          "text": "Le falta el eje vertical"
+        },
+        {
+          "letter": "D",
+          "text": "Los colores están mal elegidos"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Suma los tres porcentajes.",
+      "explanation": "40 + 35 + 30 = 105%. En una circular las partes forman un todo y deben sumar exactamente 100%. El pastel no lleva ejes."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una tabla tiene Mes en A1, Ventas en B1 y datos en las filas 2 a 7. ¿Qué rango seleccionas para graficar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A2:B7"
+        },
+        {
+          "letter": "B",
+          "text": "A1:B7"
+        },
+        {
+          "letter": "C",
+          "text": "B1:B7"
+        },
+        {
+          "letter": "D",
+          "text": "A1:A7"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Incluye los encabezados y las dos columnas.",
+      "explanation": "El rango A1:B7 toma los encabezados y las dos columnas: meses y ventas. Sin la fila 1 se pierden los nombres y sin la columna A, los meses."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una gráfica circular tiene 12 rebanadas muy delgadas que casi no se distinguen. ¿Qué conviene hacer?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Usar mejor una de barras"
+        },
+        {
+          "letter": "B",
+          "text": "Agregarle aún más categorías"
+        },
+        {
+          "letter": "C",
+          "text": "Quitar el título y la leyenda"
+        },
+        {
+          "letter": "D",
+          "text": "Cambiarla a una de líneas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El pastel funciona bien con pocas categorías.",
+      "explanation": "Con muchas categorías el pastel se vuelve ilegible; las barras comparan mejor. Las líneas no sirven porque los datos no son de tiempo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Dos gráficas separadas comparan los goles de dos equipos: una tiene eje de 0 a 10 y otra de 0 a 50. Las barras se ven igual de altas. ¿Qué error tiene la comparación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Usa escalas distintas"
+        },
+        {
+          "letter": "B",
+          "text": "No tiene leyenda de colores"
+        },
+        {
+          "letter": "C",
+          "text": "Usa barras en vez de líneas"
+        },
+        {
+          "letter": "D",
+          "text": "El eje empieza en cero"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa hasta dónde llega el eje vertical de cada gráfica.",
+      "explanation": "Con escalas distintas, barras de la misma altura representan valores diferentes. Para comparar, las dos gráficas deben usar la misma escala."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Las ventas fueron: enero 50, febrero 45, marzo 40 y abril 30. Alguien dice que van mejorando. ¿Qué muestra la tendencia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que suben poco a poco"
+        },
+        {
+          "letter": "B",
+          "text": "Que van bajando cada mes"
+        },
+        {
+          "letter": "C",
+          "text": "Que se mantienen iguales"
+        },
+        {
+          "letter": "D",
+          "text": "Que suben a partir de marzo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Compara cada mes con el anterior.",
+      "explanation": "Cada mes vende menos que el anterior, así que la línea baja: tendencia a la baja. Decir que mejoran contradice los datos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Quieres graficar en barras las 5 mejores calificaciones de 30 alumnos. ¿Qué haces antes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ordenar de mayor a menor"
+        },
+        {
+          "letter": "B",
+          "text": "Hacer primero una circular"
+        },
+        {
+          "letter": "C",
+          "text": "Quitar los encabezados"
+        },
+        {
+          "letter": "D",
+          "text": "Poner el título en rojo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Necesitas que las más altas queden juntas arriba de la tabla.",
+      "explanation": "Al ordenar de mayor a menor, las 5 mejores quedan en las primeras filas y puedes seleccionarlas. Quitar encabezados le quita nombres a la gráfica."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una encuesta de sabor de helado votaron 50 alumnos: 20 chocolate, 15 fresa, 10 vainilla y 5 limón. ¿Qué porcentaje le toca a vainilla en la circular?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "10%"
+        },
+        {
+          "letter": "B",
+          "text": "15%"
+        },
+        {
+          "letter": "C",
+          "text": "20%"
+        },
+        {
+          "letter": "D",
+          "text": "25%"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Divide los votos de vainilla entre el total de votos.",
+      "explanation": "10 entre 50 es 0.2, o sea 20%. Chocolate es 40%, fresa 30% y limón 10%: todo suma 100%."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "La barra de la tienda A llega a 8 en un eje de 0 a 10. La de la tienda B llega a 40 en un eje de 0 a 50. Se ven igual de altas. ¿Cuántas veces más vendió B?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo mismo que A"
+        },
+        {
+          "letter": "B",
+          "text": "4 veces más"
+        },
+        {
+          "letter": "C",
+          "text": "5 veces más"
+        },
+        {
+          "letter": "D",
+          "text": "8 veces más"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Ignora la altura del dibujo y compara los números reales.",
+      "explanation": "B vendió 40 y A vendió 8: 40 entre 8 es 5. Las barras se ven iguales solo porque cada gráfica usa una escala distinta."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una gráfica de barras, el equipo A tiene 52 puntos y el B 50, pero el eje vertical empieza en 48. ¿Cuántas veces más alta se ve la barra de A?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Casi igual"
+        },
+        {
+          "letter": "B",
+          "text": "El doble"
+        },
+        {
+          "letter": "C",
+          "text": "El triple"
+        },
+        {
+          "letter": "D",
+          "text": "Cuatro veces"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Resta 48 a cada valor para saber cuánto mide cada barra en el dibujo.",
+      "explanation": "Desde 48, la barra de A mide 4 y la de B mide 2: se ve el doble. La diferencia real es de solo 2 puntos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una gráfica circular muestra 25% para el grupo A. Si en total son 80 alumnos, ¿cuántos alumnos son del grupo A?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "25"
+        },
+        {
+          "letter": "B",
+          "text": "40"
+        },
+        {
+          "letter": "C",
+          "text": "20"
+        },
+        {
+          "letter": "D",
+          "text": "55"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Un 25% es la cuarta parte del total.",
+      "explanation": "El 25% de 80 es 80 entre 4, o sea 20 alumnos. El 25 sale de confundir el porcentaje con el número de alumnos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un reporte debe comparar las ventas de 4 tiendas en junio y mostrar cómo cambió la venta total de enero a junio. ¿Qué par de gráficas conviene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Barras para tiendas, líneas para meses"
+        },
+        {
+          "letter": "B",
+          "text": "Líneas para tiendas, circular para meses"
+        },
+        {
+          "letter": "C",
+          "text": "Dispersión para tiendas, circular para meses"
+        },
+        {
+          "letter": "D",
+          "text": "Circular para tiendas y también para meses"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una parte compara categorías y la otra muestra un cambio en el tiempo.",
+      "explanation": "Comparar tiendas es comparar categorías, así que van barras. El cambio de enero a junio es en el tiempo, así que va una línea."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una gráfica de dispersión de horas de estudio contra calificación, los puntos suben de izquierda a derecha. ¿Qué sugiere?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que si una crece, la otra también"
+        },
+        {
+          "letter": "B",
+          "text": "Que las dos variables no tienen relación"
+        },
+        {
+          "letter": "C",
+          "text": "Que todas las partes suman el 100%"
+        },
+        {
+          "letter": "D",
+          "text": "Que el eje vertical no empieza en cero"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate qué pasa con la calificación cuando aumentan las horas.",
+      "explanation": "Si los puntos suben, a más horas de estudio corresponde mejor calificación: hay relación entre las dos variables. Si estuvieran regados sin forma, no la habría."
+    }
+  ],
+  "diagnostic": {
+    "question": "Tienes una tabla con cuántos alumnos de tu escuela usan cada red social y quieres comparar cuál se usa más. ¿Qué gráfica es la más adecuada?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "De líneas"
+      },
+      {
+        "letter": "B",
+        "text": "De barras"
+      },
+      {
+        "letter": "C",
+        "text": "De dispersión"
+      },
+      {
+        "letter": "D",
+        "text": "Solo la tabla, sin gráfica"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "Para comparar categorías, como redes sociales, se usan barras o columnas: la más alta salta a la vista. Las líneas son para cambios en el tiempo y la dispersión, para relacionar dos variables."
+  }
+}

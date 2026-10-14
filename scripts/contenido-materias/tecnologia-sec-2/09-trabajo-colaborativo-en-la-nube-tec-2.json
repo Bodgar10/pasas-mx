@@ -1,0 +1,1473 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "trabajo-colaborativo-en-la-nube-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo trabaja un equipo en la nube",
+    "steps": [
+      "Crear un solo archivo en una carpeta de la nube",
+      "Compartirlo con el equipo con el permiso adecuado",
+      "Escribir cada quien su parte en el mismo archivo",
+      "Revisar los comentarios y sugerencias de los demás",
+      "Entregar el enlace del archivo terminado"
+    ],
+    "completion_feedback": "Un trabajo en la nube va así: **un solo archivo**, **compartido con permisos**, **editado entre todos**, **revisado** y **entregado**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El fanfic de Blue Lock que escribieron entre cuatro",
+        "content": "En el club de lectura de tu secundaria, tú y tres amigos deciden escribir un fanfic de Blue Lock: Isagi y Bachira llegan a jugar a México. La primera semana fue un desastre. Cada quien escribía su capítulo en su compu y lo mandaba por WhatsApp: fanfic_final.docx, fanfic_final2.docx, fanfic_ahora_si.docx. Nadie sabía cuál era el bueno y Mika corrigió una versión vieja. Entonces Ana crea un solo documento en Google Docs y lo comparte con los cuatro. Ahora escriben al mismo tiempo: ves el cursor de Leo avanzando en el capítulo 2 mientras tú escribes el 3. Si Mika quiere cambiar algo tuyo, no lo borra: deja una sugerencia o un comentario al margen y tú decides si lo aceptas. Un día Leo borra sin querer medio capítulo, pero Ana abre el historial de versiones y lo recupera en un minuto. Y como el archivo no vive en ninguna de sus computadoras, lo abren hasta desde el celular en el camión. Trabajar juntos en un solo archivo guardado en internet es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El fanfic compartido ES trabajo colaborativo en la nube",
+        "content": "Lo que acabas de ver con el fanfic de Blue Lock es exactamente **trabajo colaborativo en la nube**. La **nube** es guardar archivos y usar aplicaciones en **servidores** (computadoras de empresas) a los que entras **por internet**, como Google Drive, OneDrive, iCloud o Dropbox. Sus ventajas: **acceso desde cualquier dispositivo**, **respaldo** si tu equipo falla y **edición simultánea**. Al compartir eliges el permiso: **lector**, **comentarista** o **editor**. Los **comentarios** y el **modo sugerencia** sirven para opinar sin cambiar el texto de otro, y el **historial de versiones** recupera lo borrado."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la carpeta del cosplay grupal de Sailor Moon",
+        "content": "Cinco amigas harán el cosplay de las Sailor Scouts para una convención. Organiza el trabajo en la nube.\n\n**Paso 1 — Carpeta:** Sofía crea en Drive la carpeta Cosplay Sailor Moon 2026.\n**Paso 2 — Una sola versión:** adentro, una hoja con los materiales y una columna de quién compra qué.\n**Paso 3 — Editoras:** comparte la carpeta con las otras cuatro, porque todas actualizan la hoja.\n**Paso 4 — Comentarista:** la mamá de Sofía, que les ayuda a coser, deja notas sobre las telas sin cambiar nada.\n**Paso 5 — Lectora, no enlace público:** la tía que solo quiere ver el avance es lectora. Nada de 'cualquier persona con el enlace', porque hay fotos de ellas.\n\nResultado: cada quien tiene el **permiso mínimo** que necesita."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **nube** guarda archivos y apps en **servidores** a los que entras **por internet**. Ventajas: **acceso desde cualquier equipo**, **respaldo** y **edición simultánea**. Riesgos: **necesitas internet** y tus datos están en **servidores ajenos**. Permisos: **lector** (ve), **comentarista** (ve y comenta) y **editor** (cambia); da el **mínimo**. El **historial de versiones** recupera lo borrado."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en Blue Lock: el lector solo mira el partido, el comentarista grita desde la banca y el editor entra a la cancha. Si alguien solo debe opinar, no lo metas a jugar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un solo archivo, buenos permisos y reglas claras convierten el caos en trabajo en equipo.",
+        "data": {
+          "intro": "El fanfic está regado en seis archivos por WhatsApp. El medidor muestra qué tan organizado está el equipo. Pásalo a la nube paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Ana crea un solo documento en Google Docs con un nombre claro: Fanfic Blue Lock, club de lectura.",
+              "delta": 20
+            },
+            {
+              "text": "Lo comparte con los cuatro como editores, porque todos van a escribir.",
+              "delta": 25
+            },
+            {
+              "text": "Se reparten los capítulos y escriben al mismo tiempo: cada quien ve el cursor de los demás.",
+              "delta": 25
+            },
+            {
+              "text": "Para corregir lo de otro usan comentarios y el modo sugerencia, sin borrar nada. ¡Equipo en orden!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ventaja o riesgo",
+        "content": "Ventaja: lo que la nube te facilita. Riesgo o desventaja: lo que te limita o lo que puede salir mal.",
+        "data": {
+          "prompt": "Arrastra cada cosa que vivió el club del fanfic a su categoría.",
+          "buckets": [
+            "Ventaja de la nube",
+            "Riesgo o desventaja"
+          ],
+          "items": [
+            {
+              "t": "Escribir los cuatro al mismo tiempo",
+              "b": 0
+            },
+            {
+              "t": "Sin internet no pueden editar",
+              "b": 1
+            },
+            {
+              "t": "Si se descompone tu compu, el fanfic sigue",
+              "b": 0
+            },
+            {
+              "t": "Un enlace público llega a desconocidos",
+              "b": 1
+            },
+            {
+              "t": "Abrirlo desde el celular o la compu",
+              "b": 0
+            },
+            {
+              "t": "Sus textos quedan en servidores ajenos",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada permiso o herramienta con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Lector",
+              "b": "Solo puede ver"
+            },
+            {
+              "a": "Comentarista",
+              "b": "Ve y deja notas"
+            },
+            {
+              "a": "Editor",
+              "b": "Puede cambiar el texto"
+            },
+            {
+              "a": "Historial de versiones",
+              "b": "Recupera lo borrado"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de la nube es cada cosa?",
+        "left_label": "Fanfic del club",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Los cuatro escriben a la vez",
+            "right": "Edición simultánea"
+          },
+          {
+            "left": "Recuperar el capítulo borrado",
+            "right": "Historial de versiones"
+          },
+          {
+            "left": "Proponer un cambio sin borrar",
+            "right": "Modo sugerencia"
+          },
+          {
+            "left": "Un documento en vez de seis copias",
+            "right": "Una sola versión"
+          }
+        ],
+        "completion_feedback": "Escribir a la vez es **edición simultánea**, recuperar es el **historial de versiones**, proponer sin borrar es el **modo sugerencia** y todo vive en **una sola versión**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "El fanfic está guardado en servidores de Google y los cuatro lo abren por internet. ¿Dónde está guardado?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En la nube"
+            },
+            {
+              "letter": "B",
+              "text": "En la memoria USB de Ana"
+            },
+            {
+              "letter": "C",
+              "text": "En el disco duro de la compu del club"
+            },
+            {
+              "letter": "D",
+              "text": "En la galería del celular de Leo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Guardar un archivo en servidores de una empresa y entrar a él por internet es usar la nube. No vive en la USB ni en el disco duro de nadie del club.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres que la maestra de Español lea el fanfic y deje notas, pero sin cambiar el texto. ¿Qué permiso le das?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Editora"
+            },
+            {
+              "letter": "B",
+              "text": "Comentarista"
+            },
+            {
+              "letter": "C",
+              "text": "Lectora"
+            },
+            {
+              "letter": "D",
+              "text": "Propietaria del archivo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El comentarista puede ver y dejar notas, pero no cambiar el texto. Como lectora no podría comentar, y como editora podría modificar el fanfic.",
+          "difficulty": 2
+        },
+        {
+          "question": "Leo borró sin querer medio capítulo 3 y ya pasaron dos días. ¿Qué es lo mejor que pueden hacer?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Pedirle a Leo que lo escriba otra vez de memoria"
+            },
+            {
+              "letter": "B",
+              "text": "Buscarlo en la papelera de la compu del club"
+            },
+            {
+              "letter": "C",
+              "text": "Restaurarlo desde el historial de versiones"
+            },
+            {
+              "letter": "D",
+              "text": "Esperar a que la nube lo regrese sola mañana"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El historial de versiones guarda cómo estaba el documento antes, así que pueden restaurar la versión con el capítulo completo. El archivo no está en la compu del club, sino en la nube.",
+          "difficulty": 3
+        },
+        {
+          "question": "Ana quiere proponer un cambio en el capítulo de Mika, pero que Mika decida si lo acepta. ¿Qué usa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El modo sugerencia"
+            },
+            {
+              "letter": "B",
+              "text": "El permiso de lector"
+            },
+            {
+              "letter": "C",
+              "text": "Una copia por WhatsApp"
+            },
+            {
+              "letter": "D",
+              "text": "El historial de versiones"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "En modo sugerencia el cambio aparece marcado y la autora lo acepta o lo rechaza. Con permiso de lector no podría proponer nada, y una copia por WhatsApp crea otra versión.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un compañero propone: 'Mejor cada quien escribe en su compu y luego juntamos todo por WhatsApp'. ¿Qué problema traería?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Varias versiones distintas del fanfic"
+            },
+            {
+              "letter": "B",
+              "text": "Que el fanfic ya no se pueda imprimir"
+            },
+            {
+              "letter": "C",
+              "text": "Que nadie pueda escribir si no hay luz"
+            },
+            {
+              "letter": "D",
+              "text": "Que WhatsApp borre los archivos de texto"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Mandar copias crea muchas versiones y nadie sabe cuál es la buena, justo lo que le pasó al club. En la nube hay un solo archivo que todos editan.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La lista compartida del álbum de estampas",
+        "content": "Tú y tres amigos se juntaron para llenar un álbum de estampas de fútbol. Al principio cada quien anotaba en una libreta qué le faltaba, pero las libretas se perdían y nadie recordaba quién tenía repetida la del escudo de su equipo. Entonces Andrea hizo una hoja en Google Sheets con una columna por persona y la compartió con los cuatro. Ahora, cuando ella marca desde su compu que ya consiguió la 120, tú lo ves al momento en tu celular. Los cuatro pueden actualizar la hoja al mismo tiempo, cada uno en su columna. Un sábado, en el intercambio de estampas del parque, a Beto se le cayó el celular y se rompió la pantalla. Se espantó, pero su lista no estaba guardada en el celular: estaba en internet, y la abrió desde el teléfono de su hermana. Eso sí, una tarde sin datos ni wifi, nadie pudo consultar la hoja. Una lista que vive en internet, que todos ven igual y que no se pierde con tu celular es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La hoja de estampas ES trabajo colaborativo en la nube",
+        "content": "Lo que acabas de ver con la hoja de estampas es exactamente **trabajo colaborativo en la nube**. La **nube** es guardar archivos y usar aplicaciones en **servidores** de empresas a los que entras **por internet**: Google Drive, OneDrive, iCloud o Dropbox, y apps como Google Sheets o Microsoft 365 en línea. Gracias a la **sincronización**, lo que cambias en un dispositivo aparece en los demás. Hay **respaldo** si se rompe tu celular y **edición simultánea**. Pero **necesitas internet**, y al compartir debes elegir bien el permiso: **lector**, **comentarista** o **editor**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la presentación de los estadios del Mundial 2026",
+        "content": "Tu equipo de cuatro debe exponer los estadios mexicanos del Mundial 2026: Ciudad de México, Guadalajara y Monterrey. Organízalo en la nube.\n\n**Paso 1 — Un solo archivo:** Diego crea en Google Slides la presentación Estadios Mundial 2026, equipo 2.\n**Paso 2 — Editores:** la comparte con los otros tres como editores.\n**Paso 3 — Repartir:** tres hacen las diapositivas de un estadio cada uno y la cuarta persona, la portada y las conclusiones.\n**Paso 4 — Comentarista:** el maestro recibe permiso de comentarista y deja observaciones sin cambiar nada.\n**Paso 5 — Revisar:** antes de exponer, revisan el historial de versiones para ver que nadie haya borrado algo.\n\nResultado: una sola presentación, armada entre todos y sin copias perdidas."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **nube** guarda archivos y apps en **servidores** a los que entras **por internet**. Ventajas: **acceso desde cualquier equipo**, **respaldo** y **edición simultánea**. Riesgos: **necesitas internet** y tus datos están en **servidores ajenos**. Permisos: **lector** (ve), **comentarista** (ve y comenta) y **editor** (cambia); da el **mínimo**. El **historial de versiones** recupera lo borrado."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "La nube es como el marcador del estadio: todos ven el mismo resultado al mismo tiempo. Si la pregunta dice que un cambio aparece en todos tus dispositivos, la respuesta es sincronización."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un cambio hecho en un dispositivo aparece en todos los demás porque el archivo vive en la nube.",
+        "data": {
+          "intro": "Andrea consigue la estampa 120 en el recreo. Sigue el camino de ese cambio hasta tu celular.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Andrea abre la hoja en su celular y marca la 120 como conseguida en su columna."
+            },
+            {
+              "text": "El cambio viaja por internet y se guarda en los servidores de Google, no en el celular de Andrea."
+            },
+            {
+              "text": "En la tarde abres la hoja en la compu de tu casa: la 120 ya aparece marcada. Eso es sincronización."
+            },
+            {
+              "text": "Beto también la ve desde el celular de su hermana, aunque el suyo esté roto. Ese es el respaldo de la nube."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué permiso le das?",
+        "content": "Lector: solo ve. Comentarista: ve y deja notas. Editor: puede cambiar el contenido. A cada quien, el permiso mínimo que necesita.",
+        "data": {
+          "prompt": "Arrastra a cada persona al permiso mínimo que necesita en la hoja de estampas.",
+          "buckets": [
+            "Lector (solo ve)",
+            "Comentarista (ve y opina)",
+            "Editor (puede cambiar)"
+          ],
+          "items": [
+            {
+              "t": "Tu papá, que solo revisa cuánto falta",
+              "b": 0
+            },
+            {
+              "t": "Andrea, que marca sus estampas",
+              "b": 2
+            },
+            {
+              "t": "Tu hermana, que deja notas sin cambiar nada",
+              "b": 1
+            },
+            {
+              "t": "Tu primo, que solo quiere ver tus repetidas",
+              "b": 0
+            },
+            {
+              "t": "Beto, que actualiza su columna",
+              "b": 2
+            },
+            {
+              "t": "Tu tío, que te recomienda cambios en notas",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de la nube con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Nube",
+              "b": "Servidores por internet"
+            },
+            {
+              "a": "Sincronización",
+              "b": "Igual en todos lados"
+            },
+            {
+              "a": "Edición simultánea",
+              "b": "Varios a la vez"
+            },
+            {
+              "a": "Sin internet",
+              "b": "No abre la hoja"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de la nube es cada cosa?",
+        "left_label": "Álbum de estampas",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Andrea marca en la compu y tú lo ves",
+            "right": "Sincronización"
+          },
+          {
+            "left": "Beto abre su lista en otro celular",
+            "right": "Respaldo en la nube"
+          },
+          {
+            "left": "Los cuatro editan la hoja a la vez",
+            "right": "Edición simultánea"
+          },
+          {
+            "left": "Sin datos ni wifi, no abre la hoja",
+            "right": "Necesita internet"
+          }
+        ],
+        "completion_feedback": "La **sincronización**, el **respaldo** y la **edición simultánea** son ventajas; **depender de internet** es una desventaja. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Andrea marca en su compu que ya tiene la estampa 120 y tú lo ves al momento en tu celular. ¿Cómo se llama eso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Respaldo en USB"
+            },
+            {
+              "letter": "B",
+              "text": "Copia por WhatsApp"
+            },
+            {
+              "letter": "C",
+              "text": "Sincronización"
+            },
+            {
+              "letter": "D",
+              "text": "Descarga manual"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La sincronización hace que un cambio hecho en un dispositivo aparezca en los demás. Nadie tuvo que mandar copias ni descargar nada a mano.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu primo quiere ver qué estampas te faltan, pero no debe cambiar nada ni dejar notas. ¿Qué permiso le das?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Editor"
+            },
+            {
+              "letter": "B",
+              "text": "Lector"
+            },
+            {
+              "letter": "C",
+              "text": "Comentarista"
+            },
+            {
+              "letter": "D",
+              "text": "Propietario"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El lector solo puede ver. Es el permiso mínimo para lo que tu primo necesita; como comentarista podría dejar notas y como editor podría cambiar tu lista.",
+          "difficulty": 2
+        },
+        {
+          "question": "A Beto se le cayó el celular al lago de Chapultepec. ¿Qué pasa con su lista de estampas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se pierde junto con el celular"
+            },
+            {
+              "letter": "B",
+              "text": "Sigue en la nube"
+            },
+            {
+              "letter": "C",
+              "text": "Solo queda la mitad de la lista"
+            },
+            {
+              "letter": "D",
+              "text": "Se borra para todo el grupo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La lista no estaba guardada en el celular, sino en los servidores de la nube. Por eso funciona como respaldo: Beto puede abrirla desde otro dispositivo.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el intercambio del parque no tienes datos ni wifi y no puedes ver la hoja actualizada. ¿Qué desventaja de la nube es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo funciona en una compu"
+            },
+            {
+              "letter": "B",
+              "text": "No permite editar entre varios"
+            },
+            {
+              "letter": "C",
+              "text": "Depende de internet"
+            },
+            {
+              "letter": "D",
+              "text": "Borra los datos viejos"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Para entrar a los servidores de la nube necesitas conexión. Sin internet no ves los cambios recientes, aunque la hoja siga guardada.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tus compañeros del salón quieren ver tu lista para cambiar repetidas, sin modificarla. ¿Qué es lo más seguro?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Invitar a sus correos como lectores"
+            },
+            {
+              "letter": "B",
+              "text": "Dar a todo el salón permiso de editor"
+            },
+            {
+              "letter": "C",
+              "text": "Publicar el enlace de editor en Facebook"
+            },
+            {
+              "letter": "D",
+              "text": "Cualquier persona con el enlace, editor"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Invitar solo a quienes lo necesitan, con el permiso mínimo, protege tu lista. Un enlace de editor público puede llegar a quien no debe y cualquiera podría borrarla.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El regalo de cumpleaños para Hongjoong de ATEEZ",
+        "content": "Se acerca el cumpleaños de Hongjoong, el líder de ATEEZ, y una fanbase mexicana de ATINY quiere regalarle un álbum digital con mensajes de fans de todo el país. Las cuatro organizadoras crean una presentación en Google Slides donde cada fan agrega una diapositiva con su dibujo y su mensaje. Ellas editan desde Monterrey, Puebla y la CDMX al mismo tiempo, y cada una ve aparecer en vivo las diapositivas de las demás. Pero una de ellas, con las prisas, publica en X el enlace con la opción cualquier persona con el enlace puede editar. Esa noche alguien que ni es del fandom borra 15 diapositivas y pega memes. Al día siguiente abren el historial de versiones, ven a qué hora empezó el desastre y restauran la versión de la noche anterior. Después cambian el acceso a restringido: solo ellas son editoras, y las fans que revisan la ortografía reciben permiso de comentarista. Compartir bien un archivo en internet es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El álbum de cumpleaños ES trabajo colaborativo en la nube",
+        "content": "Lo que acabas de ver con el proyecto de cumpleaños es exactamente **trabajo colaborativo en la nube**. La **nube** es guardar archivos y usar aplicaciones en **servidores** de empresas a los que entras **por internet**, como Google Drive u OneDrive. Permite **edición simultánea** desde cualquier dispositivo, pero tiene **riesgos**: tus datos están en **servidores ajenos** y un enlace de **cualquier persona con el enlace** puede llegar a quien no debe. Por eso al compartir eliges **lector**, **comentarista** o **editor** y das el **permiso mínimo**. El **historial de versiones** recupera lo que alguien borró."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el pedido grupal del álbum de LE SSERAFIM",
+        "content": "Tu amiga Fer organiza una compra grupal del nuevo álbum de LE SSERAFIM para ahorrar en el envío. Organízalo en la nube.\n\n**Paso 1 — Un solo archivo:** Fer crea en Drive la hoja Pedido grupal LE SSERAFIM, con columnas de nombre, versión del álbum y pago.\n**Paso 2 — Editora:** solo Fer edita, porque ella confirma los pagos.\n**Paso 3 — Comentarista:** su amiga que le ayuda revisa la hoja y deja notas si ve un error.\n**Paso 4 — Lectoras:** las 12 compradoras pueden ver su pedido, pero no cambiar nada.\n**Paso 5 — Privacidad:** nada de direcciones ni teléfonos en la hoja; esos datos se piden por mensaje privado.\n\nResultado: todas ven lo mismo al instante y nadie tiene más permiso del que necesita."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **nube** guarda archivos y apps en **servidores** a los que entras **por internet**. Ventajas: **acceso desde cualquier equipo**, **respaldo** y **edición simultánea**. Riesgos: **necesitas internet** y tus datos están en **servidores ajenos**. Permisos: **lector** (ve), **comentarista** (ve y comenta) y **editor** (cambia); da el **mínimo**. El **historial de versiones** recupera lo borrado."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Antes de compartir, piensa como manager de un grupo: ¿esta persona necesita ver, opinar o cambiar? Lector, comentarista o editor. Y nunca publiques en redes un enlace de editor."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada ajuste a los permisos reduce el riesgo de que alguien que no debe cambie el proyecto.",
+        "data": {
+          "intro": "Después de los memes, el proyecto de cumpleaños quedó expuesto. El medidor muestra qué tan protegido está. Asegúralo paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Cambias el acceso de 'cualquier persona con el enlace' a restringido.",
+              "delta": 30
+            },
+            {
+              "text": "Dejas como editoras solo a las cuatro organizadoras.",
+              "delta": 25
+            },
+            {
+              "text": "A las fans que revisan la ortografía les das permiso de comentarista, no de editora.",
+              "delta": 20
+            },
+            {
+              "text": "Antes de entregar, revisas el historial de versiones para confirmar que no falte nada. ¡Proyecto protegido!",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Buena o mala práctica",
+        "content": "Buena práctica: un solo archivo, nombres claros y tareas repartidas. Mala práctica: copias regadas, nombres confusos o enlaces abiertos.",
+        "data": {
+          "prompt": "Arrastra cada decisión de la fanbase a su categoría.",
+          "buckets": [
+            "Buena práctica en equipo",
+            "Mala práctica en equipo"
+          ],
+          "items": [
+            {
+              "t": "Una sola presentación para todas",
+              "b": 0
+            },
+            {
+              "t": "Mandar 10 copias por WhatsApp",
+              "b": 1
+            },
+            {
+              "t": "Nombre: Proyecto cumple Hongjoong",
+              "b": 0
+            },
+            {
+              "t": "Nombre: final_final_ahora_si(2)",
+              "b": 1
+            },
+            {
+              "t": "Repartir quién hace cada sección",
+              "b": 0
+            },
+            {
+              "t": "Publicar el enlace de editor en X",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada forma de compartir o de opinar con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Enlace público",
+              "b": "Llega a cualquiera"
+            },
+            {
+              "a": "Acceso restringido",
+              "b": "Solo los invitados"
+            },
+            {
+              "a": "Modo sugerencia",
+              "b": "Cambio que otro aprueba"
+            },
+            {
+              "a": "Comentario",
+              "b": "Nota al margen"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de la nube es cada cosa?",
+        "left_label": "Proyecto ATEEZ",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El enlace de editor publicado en X",
+            "right": "Riesgo de enlace abierto"
+          },
+          {
+            "left": "Regresar a la versión de anoche",
+            "right": "Historial de versiones"
+          },
+          {
+            "left": "Las de ortografía solo dejan notas",
+            "right": "Permiso de comentarista"
+          },
+          {
+            "left": "Cuatro organizadoras editan a la vez",
+            "right": "Edición simultánea"
+          }
+        ],
+        "completion_feedback": "Un **enlace abierto** es un riesgo, el **historial** lo arregla, el **comentarista** opina sin cambiar y la **edición simultánea** une al equipo. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "La fanbase guarda el álbum de cumpleaños en Google Drive y no en una sola laptop. ¿Qué ventaja gana?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se abre desde cualquier dispositivo"
+            },
+            {
+              "letter": "B",
+              "text": "Nunca necesita una conexión a internet"
+            },
+            {
+              "letter": "C",
+              "text": "Ocupa más espacio en tu celular"
+            },
+            {
+              "letter": "D",
+              "text": "Nadie fuera del grupo puede abrirlo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Al estar en la nube, se abre desde el celular, la compu o la tablet de cualquier organizadora. Sí necesita internet, y quién la abre depende de los permisos.",
+          "difficulty": 1
+        },
+        {
+          "question": "Alguien publicó en X el enlace con 'cualquier persona con el enlace puede editar'. ¿Cuál es el riesgo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que el archivo deje de sincronizar"
+            },
+            {
+              "letter": "B",
+              "text": "Que un extraño borre todo"
+            },
+            {
+              "letter": "C",
+              "text": "Que solo se pueda ver en celular"
+            },
+            {
+              "letter": "D",
+              "text": "Que se pierda el historial de versiones"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un enlace abierto de editor deja que cualquiera que lo vea cambie o borre el archivo, como pasó con los memes. El historial y la sincronización siguen funcionando.",
+          "difficulty": 2
+        },
+        {
+          "question": "Alguien borró 15 diapositivas anoche. ¿Cómo saben a qué hora pasó y recuperan el trabajo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Con el modo sugerencia activado"
+            },
+            {
+              "letter": "B",
+              "text": "Preguntando una por una en el chat"
+            },
+            {
+              "letter": "C",
+              "text": "Con el permiso de comentarista"
+            },
+            {
+              "letter": "D",
+              "text": "Con el historial de versiones"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El historial de versiones muestra cada versión con su hora y su autor, y deja restaurar una anterior. El modo sugerencia solo sirve para proponer cambios.",
+          "difficulty": 3
+        },
+        {
+          "question": "Unas fans solo deben señalar errores de ortografía, sin cambiar el texto. ¿Qué permiso necesitan?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Editora con acceso total"
+            },
+            {
+              "letter": "B",
+              "text": "Lectora sin notas"
+            },
+            {
+              "letter": "C",
+              "text": "Comentarista"
+            },
+            {
+              "letter": "D",
+              "text": "Dueña del archivo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El comentarista ve y deja notas sin modificar nada. Es el permiso mínimo para revisar: como lectoras no podrían señalar errores y como editoras podrían cambiarlo todo.",
+          "difficulty": 2
+        },
+        {
+          "question": "La organizadora quiere evitar otro desastre. ¿Qué principio debe seguir al compartir?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Hacer editoras a todas las fans"
+            },
+            {
+              "letter": "B",
+              "text": "Dar a cada quien el permiso mínimo"
+            },
+            {
+              "letter": "C",
+              "text": "Compartir el enlace abierto en redes sociales"
+            },
+            {
+              "letter": "D",
+              "text": "Que cada fan tenga su propia copia del archivo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Dar solo el acceso que cada persona necesita reduce el riesgo de que alguien borre o cambie lo que no debe. Copias separadas romperían la versión única.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El plan de guerra de tu clan en Clash of Clans",
+        "content": "Tu clan de Clash of Clans, armado con compañeros de la escuela, entra a una guerra de clanes. Antes, el plan se decidía en el chat del juego y era un caos: dos atacaban la misma base y otra se quedaba sin tocar. Así que el líder, Iván, hace un documento en Google Docs con una tabla: cada base enemiga, quién la ataca y con qué tropas. Lo comparte con los 15 del clan. Esa noche, mientras Iván escribe, ve el cursor de Ximena moviéndose en la tabla, cambiando su ataque al mismo tiempo. Quien no está de acuerdo deja un comentario al margen: mejor ataquen la base 3 con dragones. Pero a las 9:40 Toño, sin querer, borra media tabla. Nadie entra en pánico: Iván abre el historial de versiones, ve que la última versión completa era la de las 9:30 y la restaura. Desde el celular, la compu o la tablet, todos ven el mismo plan actualizado. Organizar a un equipo alrededor de un solo archivo en internet es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El plan de guerra ES trabajo colaborativo en la nube",
+        "content": "Lo que acabas de ver con el plan de guerra es exactamente **trabajo colaborativo en la nube**. La **nube** es guardar archivos y usar aplicaciones en **servidores** de empresas a los que entras **por internet**: Google Drive, OneDrive, iCloud, Dropbox, y apps como Google Docs, Sheets, Slides o Microsoft 365 en línea. Permite **edición simultánea** (ves el **cursor** de los demás), **comentarios** para opinar sin cambiar el texto y un **historial de versiones** para ver quién cambió qué y **restaurar** una versión anterior. La clave es tener **una sola versión** del archivo para todo el equipo."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la carpeta de clips de tu escuadra de Free Fire",
+        "content": "Tu escuadra de Free Fire quiere armar un video con sus mejores jugadas del torneo. Organízalo en la nube.\n\n**Paso 1 — Carpeta compartida:** Diego crea en Drive la carpeta Clips Torneo Free Fire.\n**Paso 2 — Nombres claros:** cada clip se llama con ronda y jugador, como Ronda3_Diego, y no video(7).\n**Paso 3 — Sincronización:** cada quien sube sus clips desde el celular y aparecen en la compu de Diego.\n**Paso 4 — Repartir tareas:** Diego edita el video, Kari elige la música y Sam escribe los títulos en un documento compartido.\n**Paso 5 — Permisos:** los cuatro son editores de la carpeta; los amigos que solo verán el video final son lectores.\n\nResultado: todos los clips en un solo lugar y nadie los manda por WhatsApp."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **nube** guarda archivos y apps en **servidores** a los que entras **por internet**. Ventajas: **acceso desde cualquier equipo**, **respaldo** y **edición simultánea**. Riesgos: **necesitas internet** y tus datos están en **servidores ajenos**. Permisos: **lector** (ve), **comentarista** (ve y comenta) y **editor** (cambia); da el **mínimo**. El **historial de versiones** recupera lo borrado."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "El historial de versiones es como un punto de guardado: si alguien arruina la partida, cargas el anterior. Si la pregunta habla de recuperar lo borrado o de saber quién cambió algo, es el historial."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El historial de versiones guarda cada cambio con su autor y su hora, así que nada se pierde para siempre.",
+        "data": {
+          "intro": "A las 9:40 Toño borró media tabla del plan de guerra. Sigue a Iván mientras lo arregla.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Iván abre el menú Archivo y entra al historial de versiones del documento."
+            },
+            {
+              "text": "Ve la lista de versiones con hora y nombre: a las 9:40, Toño borró media tabla."
+            },
+            {
+              "text": "Elige la versión de las 9:30, revisa que la tabla esté completa y la restaura."
+            },
+            {
+              "text": "Todo el clan ve el plan recuperado al instante, en el celular o en la compu."
+            },
+            {
+              "text": "Iván les pide que, para opinar, dejen comentarios en vez de borrar lo de otros."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué herramienta es?",
+        "content": "Historial de versiones: ver quién cambió qué y recuperar. Comentarios: opinar sin cambiar. Sincronización: el mismo archivo en todos tus dispositivos.",
+        "data": {
+          "prompt": "Arrastra cada situación del clan a la herramienta de la nube que la resuelve.",
+          "buckets": [
+            "Historial de versiones",
+            "Comentarios",
+            "Sincronización"
+          ],
+          "items": [
+            {
+              "t": "Recuperar la tabla que Toño borró",
+              "b": 0
+            },
+            {
+              "t": "Opinar del ataque sin cambiarlo",
+              "b": 1
+            },
+            {
+              "t": "Ver en el celular lo editado en la PC",
+              "b": 2
+            },
+            {
+              "t": "Saber quién cambió el plan a las 9:40",
+              "b": 0
+            },
+            {
+              "t": "Mencionar a Ximena para que revise",
+              "b": 1
+            },
+            {
+              "t": "Tener el plan igual en tablet y compu",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada servicio o app de la nube con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Google Docs",
+              "b": "Documento de texto"
+            },
+            {
+              "a": "Google Sheets",
+              "b": "Hoja de cálculo"
+            },
+            {
+              "a": "Google Slides",
+              "b": "Presentación"
+            },
+            {
+              "a": "OneDrive",
+              "b": "Nube de Microsoft"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de la nube es cada cosa?",
+        "left_label": "Guerra de clanes",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El plan vive en Google Docs",
+            "right": "Trabajo en la nube"
+          },
+          {
+            "left": "Ves el cursor de Ximena moverse",
+            "right": "Edición simultánea"
+          },
+          {
+            "left": "'Mejor la base 3 con dragones', al margen",
+            "right": "Comentario"
+          },
+          {
+            "left": "Volver a la versión de las 9:30",
+            "right": "Historial de versiones"
+          }
+        ],
+        "completion_feedback": "Un archivo en internet es **trabajo en la nube**; el cursor ajeno es **edición simultánea**; opinar al margen es un **comentario**; y volver atrás es el **historial de versiones**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "El clan escribe su plan en Google Docs y lo abre desde el celular o la compu. ¿Qué es Google Docs?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un juego de estrategia"
+            },
+            {
+              "letter": "B",
+              "text": "Un disco duro externo"
+            },
+            {
+              "letter": "C",
+              "text": "Un programa sin internet"
+            },
+            {
+              "letter": "D",
+              "text": "Una app en la nube"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Google Docs es un procesador de textos que funciona en servidores de Google y se usa por internet: una aplicación en la nube.",
+          "difficulty": 1
+        },
+        {
+          "question": "Mientras escribes, ves un cursor con el nombre de Ximena moviéndose en la tabla. ¿Qué significa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Te mandó una copia del archivo"
+            },
+            {
+              "letter": "B",
+              "text": "Edita al mismo tiempo que tú"
+            },
+            {
+              "letter": "C",
+              "text": "Borró tu versión anterior"
+            },
+            {
+              "letter": "D",
+              "text": "Está viendo un archivo viejo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "En la edición simultánea varias personas trabajan en el mismo archivo a la vez y ves su cursor con su nombre. No es una copia: es el mismo documento.",
+          "difficulty": 2
+        },
+        {
+          "question": "Toño reescribió el plan hace horas y nadie recuerda qué decía antes. ¿Cómo sabe Iván qué cambió y regresa al plan anterior?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Con el historial de versiones"
+            },
+            {
+              "letter": "B",
+              "text": "Con la papelera de la computadora"
+            },
+            {
+              "letter": "C",
+              "text": "Con el permiso de comentarista"
+            },
+            {
+              "letter": "D",
+              "text": "Con un nuevo enlace para compartir"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El historial de versiones muestra qué cambió, quién lo cambió y cuándo, y permite restaurar una versión anterior. El archivo no está en la papelera de ninguna compu.",
+          "difficulty": 3
+        },
+        {
+          "question": "Un miembro quiere opinar 'mejor ataquen la base 3 con dragones' sin cambiar el plan. ¿Qué usa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El modo edición"
+            },
+            {
+              "letter": "B",
+              "text": "El historial de versiones"
+            },
+            {
+              "letter": "C",
+              "text": "Un comentario"
+            },
+            {
+              "letter": "D",
+              "text": "Una copia del archivo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Un comentario se queda al margen y deja la opinión sin tocar el texto. En modo edición cambiaría el plan, y una copia crearía otra versión.",
+          "difficulty": 2
+        },
+        {
+          "question": "Antes del doc, cada quien mandaba por WhatsApp su plan_final.docx, plan_final2.docx… ¿Qué regla de organización rompían?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Dar el permiso mínimo necesario"
+            },
+            {
+              "letter": "B",
+              "text": "Nombrar los archivos con fecha y hora"
+            },
+            {
+              "letter": "C",
+              "text": "Tener una sola versión del archivo"
+            },
+            {
+              "letter": "D",
+              "text": "Guardar siempre todo en la memoria USB"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Mandar copias crea muchas versiones y nadie sabe cuál vale. En la nube el equipo trabaja sobre un solo archivo que todos ven actualizado.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la nube en informática?",
+      "options": [
+        { "letter": "A", "text": "Una memoria USB que se conecta a la compu" },
+        { "letter": "B", "text": "Servidores a los que entras por internet" },
+        { "letter": "C", "text": "El disco duro donde guardas tus archivos" },
+        { "letter": "D", "text": "Una red wifi que funciona sin cables" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en dónde están guardados tus archivos cuando los abres desde cualquier equipo.",
+      "explanation": "La nube son servidores, computadoras de empresas, donde se guardan tus archivos y apps. Entras a ellos por internet desde cualquier dispositivo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un servicio para guardar archivos en la nube?",
+      "options": [
+        { "letter": "A", "text": "Paint" },
+        { "letter": "B", "text": "Bloc de notas" },
+        { "letter": "C", "text": "OneDrive" },
+        { "letter": "D", "text": "Calculadora" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el que guarda tus archivos en servidores de Microsoft.",
+      "explanation": "OneDrive es el almacenamiento en la nube de Microsoft, como Google Drive, iCloud o Dropbox. Los demás son programas que trabajan en tu equipo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué necesitas sí o sí para usar un servicio en la nube?",
+      "options": [
+        { "letter": "A", "text": "Una computadora nueva" },
+        { "letter": "B", "text": "Una memoria USB grande" },
+        { "letter": "C", "text": "Conexión a internet" },
+        { "letter": "D", "text": "Una impresora a color" }
+      ],
+      "correct_answer": "C",
+      "hint": "Los servidores están lejos de ti. ¿Cómo llegas a ellos?",
+      "explanation": "A los servidores de la nube se entra por internet. Sin conexión no ves tus archivos actualizados; por eso depender de internet es una desventaja."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En Google Drive, ¿qué permiso deja que una persona solo vea un archivo?",
+      "options": [
+        { "letter": "A", "text": "Editor" },
+        { "letter": "B", "text": "Comentarista" },
+        { "letter": "C", "text": "Propietario" },
+        { "letter": "D", "text": "Lector" }
+      ],
+      "correct_answer": "D",
+      "hint": "El nombre del permiso dice lo único que puede hacer esa persona.",
+      "explanation": "El lector solo puede ver el archivo. El comentarista además deja notas y el editor puede cambiar el contenido."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué permiso deja que una persona cambie el contenido de un archivo compartido?",
+      "options": [
+        { "letter": "A", "text": "Lector" },
+        { "letter": "B", "text": "Editor" },
+        { "letter": "C", "text": "Comentarista" },
+        { "letter": "D", "text": "Invitado" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el permiso con más poder sobre el texto.",
+      "explanation": "El editor puede escribir, borrar y cambiar el archivo. El lector solo ve y el comentarista ve y deja notas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es Google Docs?",
+      "options": [
+        { "letter": "A", "text": "Una red social para compartir fotos" },
+        { "letter": "B", "text": "Un procesador de textos en línea" },
+        { "letter": "C", "text": "Un antivirus para la computadora" },
+        { "letter": "D", "text": "Un servicio de música por internet" }
+      ],
+      "correct_answer": "B",
+      "hint": "Docs viene de documentos.",
+      "explanation": "Google Docs es un procesador de textos que funciona en la nube. Como Word, pero se usa por internet y varias personas pueden editar a la vez."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué permiso deja ver un archivo y dejar notas, pero sin cambiar el texto?",
+      "options": [
+        { "letter": "A", "text": "Lector" },
+        { "letter": "B", "text": "Editor" },
+        { "letter": "C", "text": "Comentarista" },
+        { "letter": "D", "text": "Propietario del archivo" }
+      ],
+      "correct_answer": "C",
+      "hint": "Las notas que se dejan al margen se llaman comentarios.",
+      "explanation": "El comentarista ve el archivo y deja comentarios o sugerencias, pero no cambia el texto directamente."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Ves en tu celular un cambio que tu amiga hizo en su compu hace un momento. ¿Cómo se llama eso?",
+      "options": [
+        { "letter": "A", "text": "Copia de seguridad" },
+        { "letter": "B", "text": "Instalación" },
+        { "letter": "C", "text": "Sincronización" },
+        { "letter": "D", "text": "Actualización del sistema" }
+      ],
+      "correct_answer": "C",
+      "hint": "El cambio se refleja igual en todos los dispositivos.",
+      "explanation": "La sincronización hace que lo que cambias en un dispositivo aparezca en los demás, porque todos abren el mismo archivo en la nube."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál es una ventaja de guardar tus tareas en la nube?",
+      "options": [
+        { "letter": "A", "text": "Funcionan aunque no haya internet" },
+        { "letter": "B", "text": "Las abres desde cualquier dispositivo" },
+        { "letter": "C", "text": "Nadie puede ver nunca tus archivos" },
+        { "letter": "D", "text": "Ocupan menos espacio en la memoria USB" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en la compu de la escuela, tu celular y la laptop de tu casa.",
+      "explanation": "Como el archivo está en servidores, lo abres desde cualquier equipo con internet. La nube sí necesita conexión."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirve el historial de versiones?",
+      "options": [
+        { "letter": "A", "text": "Borrar el archivo para siempre" },
+        { "letter": "B", "text": "Compartir el archivo en redes" },
+        { "letter": "C", "text": "Ver cambios y recuperar versiones" },
+        { "letter": "D", "text": "Hacer que el archivo pese menos megas" }
+      ],
+      "correct_answer": "C",
+      "hint": "Historial: un registro de lo que pasó antes.",
+      "explanation": "El historial de versiones muestra quién cambió qué y cuándo, y permite restaurar una versión anterior si alguien borra algo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un equipo de 5 debe entregar un trabajo. ¿Cuál es la mejor forma de organizarse en la nube?",
+      "options": [
+        { "letter": "A", "text": "Cada quien su archivo y unirlos al final" },
+        { "letter": "B", "text": "Mandar el archivo por WhatsApp cada vez" },
+        { "letter": "C", "text": "Un solo archivo compartido para todos" },
+        { "letter": "D", "text": "Que una persona escriba todo sola" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en cuántas versiones del trabajo deberían existir.",
+      "explanation": "Un solo archivo compartido evita copias distintas: todos editan la misma versión y nadie trabaja sobre un archivo viejo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Quieres que tu maestro revise tu ensayo y deje observaciones sin modificarlo. ¿Qué permiso le das?",
+      "options": [
+        { "letter": "A", "text": "Editor" },
+        { "letter": "B", "text": "Comentarista" },
+        { "letter": "C", "text": "Lector" },
+        { "letter": "D", "text": "Propietario del archivo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Necesita algo más que ver, pero menos que cambiar.",
+      "explanation": "Como comentarista puede dejar observaciones sin tocar tu texto. Como lector no podría comentar y como editor podría modificar el ensayo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es un riesgo de compartir un archivo con la opción cualquier persona con el enlace?",
+      "options": [
+        { "letter": "A", "text": "Que el archivo se borre solo" },
+        { "letter": "B", "text": "Que llegue a quien no debe" },
+        { "letter": "C", "text": "Que deje de sincronizar" },
+        { "letter": "D", "text": "Que ya no puedas editarlo tú" }
+      ],
+      "correct_answer": "B",
+      "hint": "Un enlace se puede reenviar muchas veces.",
+      "explanation": "Cualquiera que reciba el enlace puede abrir el archivo, aunque tú no lo conozcas. Si además tiene permiso de editor, puede cambiarlo o borrarlo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué herramienta de un documento en línea deja proponer cambios que el autor acepta o rechaza?",
+      "options": [
+        { "letter": "A", "text": "Historial de versiones" },
+        { "letter": "B", "text": "Modo sugerencia" },
+        { "letter": "C", "text": "Modo sin conexión" },
+        { "letter": "D", "text": "Compartir enlace" }
+      ],
+      "correct_answer": "B",
+      "hint": "Su nombre dice que no impones el cambio, solo lo propones.",
+      "explanation": "En modo sugerencia tus cambios quedan marcados y el autor decide si los acepta. El historial sirve para ver y restaurar versiones."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es el servicio de almacenamiento en la nube de Apple?",
+      "options": [
+        { "letter": "A", "text": "Excel" },
+        { "letter": "B", "text": "Android" },
+        { "letter": "C", "text": "iCloud" },
+        { "letter": "D", "text": "Safari" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es donde un iPhone respalda sus fotos de forma automática.",
+      "explanation": "iCloud es la nube de Apple. Safari es su navegador, Android es el sistema de Google y Excel es una hoja de cálculo de Microsoft."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Tu laptop se descompone el día antes de entregar. Si tu trabajo estaba en la nube, ¿qué pasa?",
+      "options": [
+        { "letter": "A", "text": "Se pierde para siempre" },
+        { "letter": "B", "text": "Lo abres desde otro equipo" },
+        { "letter": "C", "text": "Solo lo recupera un técnico" },
+        { "letter": "D", "text": "Lo recuperas al arreglar la laptop" }
+      ],
+      "correct_answer": "B",
+      "hint": "El archivo no estaba guardado en la laptop.",
+      "explanation": "La nube funciona como respaldo: el archivo está en servidores, así que lo abres desde otra compu o desde el celular."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué significa dar el permiso mínimo necesario?",
+      "options": [
+        { "letter": "A", "text": "Dar a todos permiso de editor" },
+        { "letter": "B", "text": "Dar solo el acceso que se necesita" },
+        { "letter": "C", "text": "Compartir con la menor cantidad de archivos" },
+        { "letter": "D", "text": "Usar contraseñas de pocos caracteres" }
+      ],
+      "correct_answer": "B",
+      "hint": "Pregúntate: ¿esta persona necesita ver, opinar o cambiar?",
+      "explanation": "Cada persona recibe solo lo que necesita: lector si solo ve, comentarista si opina, editor si cambia. Así se reducen los errores y los riesgos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál es una desventaja de la nube relacionada con la privacidad?",
+      "options": [
+        { "letter": "A", "text": "No puedes abrir archivos en el celular" },
+        { "letter": "B", "text": "Tus datos están en servidores de otra empresa" },
+        { "letter": "C", "text": "Los archivos pesan más que en tu computadora" },
+        { "letter": "D", "text": "Solo una persona puede editar a la vez el archivo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en quién es dueño de las computadoras donde se guardan tus archivos.",
+      "explanation": "Tus archivos quedan en servidores de una empresa como Google o Microsoft. Por eso conviene no subir datos muy personales sin cuidado."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En un documento compartido ves cursores de colores con nombres. ¿Qué indican?",
+      "options": [
+        { "letter": "A", "text": "Errores de ortografía en el texto" },
+        { "letter": "B", "text": "Partes del texto que se borraron" },
+        { "letter": "C", "text": "Otras personas editando a la vez" },
+        { "letter": "D", "text": "Comentarios que nadie ha leído" }
+      ],
+      "correct_answer": "C",
+      "hint": "Cada cursor tiene el nombre de alguien del equipo.",
+      "explanation": "Es la edición simultánea: cada cursor es una persona trabajando en el mismo archivo al mismo tiempo que tú."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué nombre de archivo es más claro para un trabajo en equipo?",
+      "options": [
+        { "letter": "A", "text": "final final ahora si (2)" },
+        { "letter": "B", "text": "documento sin título (5)" },
+        { "letter": "C", "text": "Proyecto Ciencias Equipo 3" },
+        { "letter": "D", "text": "trabajo nuevo copia de copia" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el que dice de qué es y de quién es, sin abrirlo.",
+      "explanation": "Un buen nombre dice la materia, el tema o el equipo. Nombres como final final o copia de copia confunden a todos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un compañero borró ayer media presentación del equipo en la nube. ¿Qué es lo mejor?",
+      "options": [
+        { "letter": "A", "text": "Volver a hacer todo desde cero" },
+        { "letter": "B", "text": "Restaurar una versión anterior" },
+        { "letter": "C", "text": "Pedir al maestro más días de plazo" },
+        { "letter": "D", "text": "Buscarla en la papelera de la compu" }
+      ],
+      "correct_answer": "B",
+      "hint": "La nube guarda cómo estaba el archivo antes.",
+      "explanation": "Con el historial de versiones se restaura la versión de antes del borrado. El archivo está en la nube, no en la papelera de una compu."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Ana edita en su compu y Luis en su celular el mismo archivo en la nube, al mismo tiempo. ¿Qué ven?",
+      "options": [
+        { "letter": "A", "text": "Cada uno solo ve sus propios cambios" },
+        { "letter": "B", "text": "Los cambios de ambos en el archivo" },
+        { "letter": "C", "text": "Dos archivos distintos con el mismo nombre" },
+        { "letter": "D", "text": "Un error porque no se puede editar a la vez" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda la edición simultánea y la sincronización.",
+      "explanation": "Es un solo archivo: gracias a la edición simultánea y la sincronización, los dos ven los cambios de ambos casi al instante."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un equipo se manda 10 copias del trabajo por WhatsApp. ¿Cuál es el problema principal?",
+      "options": [
+        { "letter": "A", "text": "WhatsApp no permite mandar documentos" },
+        { "letter": "B", "text": "Los archivos se vuelven de solo lectura" },
+        { "letter": "C", "text": "Nadie sabe cuál es la versión buena" },
+        { "letter": "D", "text": "El trabajo pierde sus imágenes" }
+      ],
+      "correct_answer": "C",
+      "hint": "Imagina que cada copia tiene cambios distintos.",
+      "explanation": "Con muchas copias, cada una con cambios diferentes, nadie sabe cuál es la buena. Por eso se trabaja con una sola versión en la nube."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un equipo escribe un trabajo y el maestro debe dejar observaciones sin cambiarlo. ¿Qué permisos asignas?",
+      "options": [
+        { "letter": "A", "text": "Todos editores, incluso el maestro" },
+        { "letter": "B", "text": "Equipo editor y maestro comentarista" },
+        { "letter": "C", "text": "Equipo lector y maestro como editor" },
+        { "letter": "D", "text": "Maestro lector y equipo comentarista" }
+      ],
+      "correct_answer": "B",
+      "hint": "Quien escribe necesita cambiar; quien revisa solo necesita opinar.",
+      "explanation": "El equipo escribe, así que necesita ser editor. El maestro solo opina, así que basta con comentarista: es el permiso mínimo para cada quien."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un archivo tiene datos personales de tus compañeros. ¿Cómo debes compartirlo?",
+      "options": [
+        { "letter": "A", "text": "Solo con quien lo necesita" },
+        { "letter": "B", "text": "Con cualquier persona con el enlace" },
+        { "letter": "C", "text": "Publicando el enlace en un grupo grande" },
+        { "letter": "D", "text": "Como editor para todo el salón" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en el riesgo de que el enlace llegue a desconocidos.",
+      "explanation": "Los datos personales se comparten solo con quien los necesita y con acceso restringido. Un enlace abierto puede terminar en manos de cualquiera."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál es la diferencia entre dejar un comentario y usar el modo sugerencia?",
+      "options": [
+        { "letter": "A", "text": "El comentario opina; la sugerencia propone un cambio" },
+        { "letter": "B", "text": "El comentario borra el texto y la sugerencia lo guarda" },
+        { "letter": "C", "text": "La sugerencia solo la puede hacer el lector del archivo" },
+        { "letter": "D", "text": "El comentario cambia el texto sin pedir ningún permiso" }
+      ],
+      "correct_answer": "A",
+      "hint": "Uno se queda al margen; el otro aparece dentro del texto, marcado.",
+      "explanation": "El comentario es una nota al margen. La sugerencia propone un cambio concreto dentro del texto, que el autor acepta o rechaza. Ninguno cambia el texto por sí solo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un amigo dice: Si está en la nube, está flotando en el aire y no en ninguna computadora. ¿Qué le corriges?",
+      "options": [
+        { "letter": "A", "text": "Está guardado en tu memoria RAM" },
+        { "letter": "B", "text": "Está en servidores de una empresa" },
+        { "letter": "C", "text": "Está en el satélite de tu compañía de internet" },
+        { "letter": "D", "text": "Está en el disco duro de tu propio equipo" }
+      ],
+      "correct_answer": "B",
+      "hint": "La nube sí son computadoras, solo que no son tuyas.",
+      "explanation": "La nube son servidores físicos, computadoras de empresas como Google, Microsoft o Apple, a las que llegas por internet. No están en tu equipo ni en el aire."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Compartiste un archivo como cualquier persona con el enlace puede editar y el enlace llegó a desconocidos. ¿Qué haces primero?",
+      "options": [
+        { "letter": "A", "text": "Mandar el enlace a más personas" },
+        { "letter": "B", "text": "Borrar tu cuenta de correo" },
+        { "letter": "C", "text": "Cambiar el acceso a restringido" },
+        { "letter": "D", "text": "Esperar a ver si alguien cambia algo" }
+      ],
+      "correct_answer": "C",
+      "hint": "Primero hay que cerrar la puerta por la que entran.",
+      "explanation": "Cambiar a restringido hace que solo entren las personas invitadas. Después puedes revisar el historial por si alguien ya cambió algo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué combinación aprovecha mejor la nube para un proyecto de equipo?",
+      "options": [
+        { "letter": "A", "text": "Una copia por persona y juntarlas el día de la entrega" },
+        { "letter": "B", "text": "Carpeta compartida, nombres claros y tareas repartidas" },
+        { "letter": "C", "text": "Guardar todo en la USB del líder y llevarla a clase" },
+        { "letter": "D", "text": "Enlace público de editor para que nadie pida permiso" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la que tenga orden, una sola versión y acceso controlado.",
+      "explanation": "Una carpeta compartida con nombres claros y tareas repartidas mantiene una sola versión ordenada. Las copias, la USB o un enlace público causan caos o riesgos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué la nube sirve como respaldo si se te pierde el celular?",
+      "options": [
+        { "letter": "A", "text": "El celular se encuentra solo con el GPS" },
+        { "letter": "B", "text": "Los archivos no están solo en tu celular" },
+        { "letter": "C", "text": "La nube borra el celular perdido al instante" },
+        { "letter": "D", "text": "Los archivos se imprimen en automático" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en dónde vive la copia de tus archivos.",
+      "explanation": "Tus archivos están guardados en servidores, no solo en el celular. Al entrar a tu cuenta desde otro dispositivo, siguen ahí."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Qué ventaja de la nube permite que cuatro personas escriban en el mismo documento al mismo tiempo?",
+    "options": [
+      { "letter": "A", "text": "Edición simultánea" },
+      { "letter": "B", "text": "Historial de versiones" },
+      { "letter": "C", "text": "Permiso de lector" },
+      { "letter": "D", "text": "Respaldo automático" }
+    ],
+    "correct_answer": "A",
+    "explanation": "La edición simultánea deja que varias personas trabajen en el mismo archivo a la vez, viendo el cursor de los demás. El historial sirve para ver y restaurar versiones anteriores."
+  }
+}

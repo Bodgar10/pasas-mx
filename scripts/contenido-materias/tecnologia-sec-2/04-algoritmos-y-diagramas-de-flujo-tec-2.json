@@ -1,0 +1,1846 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "algoritmos-y-diagramas-de-flujo-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo se crea un algoritmo",
+    "steps": [
+      "Definir el problema que se quiere resolver",
+      "Identificar los datos de entrada y la salida esperada",
+      "Escribir los pasos del proceso en orden y sin ambigüedad",
+      "Pasar los pasos a pseudocódigo o a diagrama de flujo",
+      "Probarlo con datos reales y corregir los errores"
+    ],
+    "completion_feedback": "Un algoritmo nace de un **problema**, define su **entrada** y su **salida**, ordena los **pasos**, se representa en **pseudocódigo** o **diagrama de flujo** y se **prueba**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La rutina de Saitama, bien escrita",
+        "content": "Después de ver One Punch Man, tu amigo Leo y tú deciden copiar la famosa rutina de Saitama. Leo la apunta así en su celular: «Haz muchas lagartijas, abdominales y sentadillas, y corre bastante». Al día siguiente hace veinte lagartijas, se cansa y dice que ya fueron muchas. Tú la copias tal como Saitama la cuenta: 100 lagartijas, 100 abdominales, 100 sentadillas y correr 10 kilómetros, en ese orden. Además le agregas tus propias reglas: cuentas cada repetición en voz alta y, mientras no llegues a 100, sigues; si llueve, cambias la carrera por subir y bajar las escaleras de tu edificio. Con tu lista, cualquiera que la siga hace exactamente lo mismo y sabe cuándo terminó. Con la de Leo, cada quien entiende algo distinto y nadie sabe cuándo parar. La diferencia entre las dos listas no es el esfuerzo: es que una tiene pasos precisos, en orden y con un final claro. Esa diferencia es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu lista de entrenamiento ES un algoritmo",
+        "content": "Lo que acabas de ver con la rutina de Saitama es exactamente un **algoritmo**: una **secuencia finita, ordenada y precisa de pasos** para resolver un problema. Tu lista es **precisa** (100, no «muchas»), **definida** (quien la siga hace lo mismo) y **finita** (termina al llegar a 100). Tiene **entrada** (los datos, como si llueve), **proceso** (los pasos) y **salida** (el resultado: rutina completa). Usa una **decisión** (si llueve, escaleras; si no, calle) y una **repetición** (mientras no llegues a 100, sigue). Se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el diagrama de Fern para los cofres",
+        "content": "En Frieren, la maga no resiste abrir cofres, aunque algunos son mímicos que la muerden. Imagina que Fern le dibuja un diagrama de flujo.\n\n**Paso 1 — Óvalo:** Inicio.\n**Paso 2 — Paralelogramo (entrada):** encuentran un cofre.\n**Paso 3 — Rectángulo (proceso):** lanzar el hechizo que detecta mímicos.\n**Paso 4 — Rombo (decisión):** ¿es mímico? Si la flecha sale por **Sí**, alejarse; si sale por **No**, abrirlo y tomar el grimorio.\n**Paso 5 — Óvalo:** Fin.\n\nResultado: las **flechas** marcan el camino y el rombo es el único símbolo con dos salidas. Frieren lo abriría igual, pero el algoritmo es claro."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **algoritmo** es una **secuencia finita, ordenada y precisa** de pasos para resolver un problema. Debe ser **preciso** (sin ambigüedad), **definido** (mismos datos, mismo resultado) y **finito** (termina). Su estructura es **entrada → proceso → salida**, y se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en un manga: el óvalo es la portada y la contraportada (inicio y fin), cada rectángulo es una viñeta de acción y el rombo es el momento en que la historia se divide en dos caminos: Sí o No."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una repetición necesita un contador que avance; si no, el ciclo nunca termina.",
+        "data": {
+          "intro": "Convierte las 100 lagartijas de Saitama en un algoritmo con repetición. Sigue cada paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Inicio: el contador de lagartijas empieza en 0."
+            },
+            {
+              "text": "Proceso: haces una lagartija y le sumas 1 al contador."
+            },
+            {
+              "text": "Decisión: ¿el contador ya llegó a 100? Si la respuesta es No, regresas al paso anterior."
+            },
+            {
+              "text": "Repetición: el ciclo sigue mientras el contador sea menor que 100. Como siempre sumas 1, sí termina."
+            },
+            {
+              "text": "Salida: con el contador en 100 muestras «Serie completa» y pasas a los abdominales."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Preciso o ambiguo?",
+        "content": "Un paso preciso dice cuánto, cuándo o hasta dónde. Un paso ambiguo deja que cada quien lo entienda distinto.",
+        "data": {
+          "prompt": "Arrastra cada instrucción de la rutina a su categoría.",
+          "buckets": [
+            "Paso preciso",
+            "Paso ambiguo"
+          ],
+          "items": [
+            {
+              "t": "Haz 100 lagartijas",
+              "b": 0
+            },
+            {
+              "t": "Corre bastante",
+              "b": 1
+            },
+            {
+              "t": "Corre 10 kilómetros",
+              "b": 0
+            },
+            {
+              "t": "Entrena un rato",
+              "b": 1
+            },
+            {
+              "t": "Descansa 60 segundos",
+              "b": 0
+            },
+            {
+              "t": "Haz varias sentadillas",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada símbolo del diagrama de flujo con lo que representa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Óvalo",
+              "b": "Inicio o fin"
+            },
+            {
+              "a": "Rectángulo",
+              "b": "Proceso o acción"
+            },
+            {
+              "a": "Rombo",
+              "b": "Decisión Sí/No"
+            },
+            {
+              "a": "Paralelogramo",
+              "b": "Entrada o salida"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del algoritmo es cada cosa?",
+        "left_label": "Rutina de Saitama",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "«Haz muchas lagartijas»",
+            "right": "Paso ambiguo"
+          },
+          {
+            "left": "Si llueve, usa las escaleras",
+            "right": "Decisión"
+          },
+          {
+            "left": "Sigue mientras no llegues a 100",
+            "right": "Repetición"
+          },
+          {
+            "left": "«Serie completa»",
+            "right": "Salida"
+          }
+        ],
+        "completion_feedback": "Tu rutina tenía **pasos precisos**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+      },
+      "quiz": [
+        {
+          "question": "La rutina de Saitama dice exactamente 100 lagartijas, 100 abdominales, 100 sentadillas y 10 km. ¿Qué es esa lista?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un algoritmo"
+            },
+            {
+              "letter": "B",
+              "text": "Un programa instalado"
+            },
+            {
+              "letter": "C",
+              "text": "Un dato de entrada"
+            },
+            {
+              "letter": "D",
+              "text": "Un símbolo de proceso"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es una secuencia finita, ordenada y precisa de pasos para resolver un problema: un algoritmo. No necesita computadora para serlo.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el diagrama de Fern, ¿qué símbolo lleva la pregunta «¿Es mímico?»?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un rectángulo"
+            },
+            {
+              "letter": "B",
+              "text": "Un óvalo"
+            },
+            {
+              "letter": "C",
+              "text": "Un rombo"
+            },
+            {
+              "letter": "D",
+              "text": "Un paralelogramo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Las preguntas con dos salidas, Sí y No, van en un rombo. El rectángulo es para acciones y el óvalo para inicio o fin.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un algoritmo dice: «Contador en 0. Haz una lagartija. Si el contador es menor que 100, repite». ¿Qué error tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Tiene demasiadas lagartijas en total"
+            },
+            {
+              "letter": "B",
+              "text": "Nunca le suma 1 al contador"
+            },
+            {
+              "letter": "C",
+              "text": "Usa una decisión en vez de un proceso"
+            },
+            {
+              "letter": "D",
+              "text": "Empieza el contador en cero y no en uno"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Si el contador nunca aumenta, siempre será menor que 100 y el ciclo se repite para siempre: no es finito. Falta «súmale 1 al contador» dentro de la repetición.",
+          "difficulty": 3
+        },
+        {
+          "question": "En tu rutina, saber si llueve antes de salir a correr es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La salida"
+            },
+            {
+              "letter": "B",
+              "text": "Un óvalo de fin"
+            },
+            {
+              "letter": "C",
+              "text": "Una repetición"
+            },
+            {
+              "letter": "D",
+              "text": "La entrada"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Si llueve o no es un dato que el algoritmo recibe para decidir: es entrada. La salida es el resultado final, como «rutina completa».",
+          "difficulty": 2
+        },
+        {
+          "question": "Fern cambia el rombo por un rectángulo que dice «Abrir el cofre». ¿Qué pasa con el algoritmo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ya no decide, abre todos"
+            },
+            {
+              "letter": "B",
+              "text": "Ya no tiene un final claro"
+            },
+            {
+              "letter": "C",
+              "text": "Ya no recibe ninguna entrada"
+            },
+            {
+              "letter": "D",
+              "text": "Ya no se puede dibujar"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El rombo es lo que permite elegir entre dos caminos. Con un rectángulo solo hay una acción, así que Frieren abriría también los mímicos.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "¿Fue penal o no fue?",
+        "content": "Minuto 85 en la final del torneo de tu liga. El 9 de tu equipo encara al defensa y este le mete la pierna justo sobre la línea del área. Medio equipo grita «¡penal!» y el otro grita «¡fue afuera!». El árbitro no decide por quién grita más: sigue en su cabeza una serie de preguntas que aprendió en su curso, siempre en el mismo orden. Primero: ¿hubo falta? Si no, el juego sigue. Si sí, segunda pregunta: ¿fue dentro del área del equipo que la cometió? Y recuerda que la línea cuenta como parte del área. Si fue dentro, marca penal; si fue afuera, tiro libre. Con los mismos datos, cualquier árbitro bien preparado llega a la misma marcación, y el proceso siempre termina con una decisión. Cuando pita y señala el punto penal, nadie puede decir que se inventó la regla: solo siguió los pasos. Esa forma de decidir con pasos claros, en orden y con un final es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Las preguntas del árbitro SON un algoritmo",
+        "content": "Lo que acabas de ver con el árbitro es exactamente un **algoritmo**: una **secuencia finita, ordenada y precisa de pasos** para resolver un problema. Sus pasos son **precisos** (preguntas claras), **definidos** (mismos datos, misma marcación) y **finitos** (siempre termina en una decisión). Tiene **entrada** (lo que pasó en la jugada), **proceso** (las preguntas en orden) y **salida** (penal, tiro libre o sigue el juego). Usa **decisiones** (si fue dentro del área, penal; si no, tiro libre) y puede tener **repeticiones**. Se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la tanda de penales en pseudocódigo",
+        "content": "La final termina empatada y se va a penales. Escríbelo en **pseudocódigo**, el paso entre la idea y el programa.\n\n**Paso 1 — INICIO:** marcador de la tanda en 0-0.\n**Paso 2 — Repetición fija:** cada equipo tira 5 penales, alternando.\n**Paso 3 — Decisión:** SI un equipo tiene más goles, ESCRIBIR ganador y terminar.\n**Paso 4 — Repetición con condición:** SI NO, REPETIR un tiro por equipo HASTA QUE uno anote y el otro falle.\n**Paso 5 — Salida:** ESCRIBIR el equipo ganador. FIN.\n\nResultado: la muerte súbita es una **repetición** con una condición de salida clara, por eso la tanda siempre tiene un ganador."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **algoritmo** es una **secuencia finita, ordenada y precisa** de pasos para resolver un problema. Debe ser **preciso** (sin ambigüedad), **definido** (mismos datos, mismo resultado) y **finito** (termina). Su estructura es **entrada → proceso → salida**, y se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "En un diagrama de flujo, el rombo es como el árbitro: hace una pregunta y solo hay dos salidas, Sí o No. Si en tu diagrama un rombo tiene una sola flecha de salida, está mal dibujado."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El algoritmo del árbitro va de la entrada a la salida pasando por dos decisiones.",
+        "data": {
+          "intro": "Sigue el algoritmo del árbitro con una jugada: zancadilla justo sobre la línea del área.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Entrada: el árbitro ve la jugada. El defensa le mete la pierna al delantero justo sobre la línea."
+            },
+            {
+              "text": "Decisión 1: ¿hubo falta? Sí, fue zancadilla. Sigue por la flecha del Sí."
+            },
+            {
+              "text": "Decisión 2: ¿fue dentro del área? La línea es parte del área, así que la respuesta es Sí."
+            },
+            {
+              "text": "Salida: el árbitro pita y señala el punto penal. Fin del algoritmo."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Entrada, proceso o salida",
+        "content": "Entrada: los datos de la jugada. Proceso: las preguntas y acciones del árbitro. Salida: la marcación final.",
+        "data": {
+          "prompt": "Arrastra cada parte del algoritmo del árbitro a su lugar.",
+          "buckets": [
+            "Entrada",
+            "Proceso",
+            "Salida"
+          ],
+          "items": [
+            {
+              "t": "Lo que el árbitro vio en la jugada",
+              "b": 0
+            },
+            {
+              "t": "Dónde fue la falta",
+              "b": 0
+            },
+            {
+              "t": "Preguntarse si hubo falta",
+              "b": 1
+            },
+            {
+              "t": "Revisar si fue dentro del área",
+              "b": 1
+            },
+            {
+              "t": "Señalar el punto penal",
+              "b": 2
+            },
+            {
+              "t": "Marcar tiro libre",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada característica o símbolo con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Preciso",
+              "b": "Sin pasos ambiguos"
+            },
+            {
+              "a": "Definido",
+              "b": "Mismos datos, misma marca"
+            },
+            {
+              "a": "Finito",
+              "b": "Termina en algún momento"
+            },
+            {
+              "a": "Rombo",
+              "b": "¿Fue dentro del área?"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del algoritmo es cada cosa?",
+        "left_label": "El árbitro",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Lo que pasó en la jugada",
+            "right": "Entrada"
+          },
+          {
+            "left": "¿Fue dentro del área?",
+            "right": "Decisión"
+          },
+          {
+            "left": "Tirar hasta que haya ganador",
+            "right": "Repetición"
+          },
+          {
+            "left": "Señalar el punto penal",
+            "right": "Salida"
+          }
+        ],
+        "completion_feedback": "El árbitro usó una **entrada**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+      },
+      "quiz": [
+        {
+          "question": "¿Por qué las preguntas del árbitro para marcar un penal forman un algoritmo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Las decide el público del estadio"
+            },
+            {
+              "letter": "B",
+              "text": "Son pasos ordenados y precisos"
+            },
+            {
+              "letter": "C",
+              "text": "Cambian según quién va ganando"
+            },
+            {
+              "letter": "D",
+              "text": "Las inventa en cada partido"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un algoritmo es una secuencia ordenada, precisa y finita de pasos. Si dependiera del público o del marcador, dos árbitros marcarían distinto con la misma jugada.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el diagrama del árbitro, ¿qué símbolo se usa para la pregunta «¿Hubo falta?»?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Rombo"
+            },
+            {
+              "letter": "B",
+              "text": "Óvalo"
+            },
+            {
+              "letter": "C",
+              "text": "Rectángulo"
+            },
+            {
+              "letter": "D",
+              "text": "Paralelogramo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Toda pregunta con salidas Sí y No va en un rombo. El óvalo marca inicio o fin y el rectángulo una acción.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un árbitro novato escribe: «Si la falta se ve fea, marca penal». ¿Qué falla en ese paso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No tiene entrada"
+            },
+            {
+              "letter": "B",
+              "text": "Es un ciclo infinito"
+            },
+            {
+              "letter": "C",
+              "text": "Es ambiguo"
+            },
+            {
+              "letter": "D",
+              "text": "Le sobra un óvalo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "«Se ve fea» depende de quién mire: dos árbitros con la misma jugada podrían marcar distinto. Un paso preciso usa una condición clara, como «¿fue dentro del área?».",
+          "difficulty": 3
+        },
+        {
+          "question": "En la tanda de penales, «REPETIR un tiro por equipo HASTA QUE uno anote y el otro falle» es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una entrada"
+            },
+            {
+              "letter": "B",
+              "text": "Una repetición"
+            },
+            {
+              "letter": "C",
+              "text": "Un óvalo de inicio"
+            },
+            {
+              "letter": "D",
+              "text": "Una salida"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Repetir una acción hasta que se cumpla una condición es una repetición. La condición de salida es lo que hace que la tanda termine.",
+          "difficulty": 2
+        },
+        {
+          "question": "Para la muerte súbita alguien escribe: «REPETIR un tiro por equipo HASTA QUE los dos fallen». ¿Qué problema tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Nunca puede terminar"
+            },
+            {
+              "letter": "B",
+              "text": "No tiene datos de entrada"
+            },
+            {
+              "letter": "C",
+              "text": "Le falta el símbolo de rombo"
+            },
+            {
+              "letter": "D",
+              "text": "Puede terminar sin ganador"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Si los dos fallan, el ciclo para, pero siguen empatados. La condición correcta es que uno anote y el otro falle: así la salida siempre tiene un ganador.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Aprender «Supernova» con el dance practice",
+        "content": "Quieres aprender la coreografía de «Supernova» de aespa para el festival de la escuela. La primera vez solo pones el video e intentas seguir a Karina, Giselle, Winter y Ningning al mismo tiempo: en diez segundos ya te perdiste. Así que cambias de estrategia. Pones el dance practice en modo espejo y a velocidad 0.75. Divides la canción en bloques de ocho tiempos. Practicas el primer bloque y te haces una pregunta: ¿me salió sin errores? Si no, lo repites. Si sí, pasas al siguiente bloque. Cuando ya tienes todos, haces la coreografía completa con la canción a velocidad normal. Al final te grabas y comparas tu video con el original. Tu amiga te pide el método y se lo mandas por mensaje: como los pasos están escritos claros y en orden, ella llega al mismo resultado sin que le expliques nada más. Esa lista de pasos, con preguntas y repeticiones, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu método de ensayo ES un algoritmo",
+        "content": "Lo que acabas de ver con el dance practice es exactamente un **algoritmo**: una **secuencia finita, ordenada y precisa de pasos** para resolver un problema. Tu método es **preciso** (velocidad 0.75, bloques de ocho tiempos), **definido** (tu amiga llega al mismo resultado) y **finito** (termina cuando sale la coreografía completa). Tiene **entrada** (el video), **proceso** (practicar bloque por bloque) y **salida** (tu coreografía grabada). Usa **decisiones** (¿me salió sin errores?) y **repeticiones** (repite el bloque hasta que salga). Se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el ramyeon de los K-dramas en pseudocódigo",
+        "content": "En muchísimos K-dramas alguien cocina ramyeon en una olla pequeña. Escribe la receta en **pseudocódigo**, el paso entre la idea y el programa.\n\n**Paso 1 — INICIO y LEER:** cuántos paquetes vas a preparar.\n**Paso 2 — Proceso:** poner 550 ml de agua por paquete y HERVIR.\n**Paso 3 — Proceso:** agregar los fideos y el sobre de sazón; cocer 4 minutos y medio.\n**Paso 4 — Decisión:** SI quieres huevo, agrégalo en el último minuto; SI NO, sigue.\n**Paso 5 — ESCRIBIR y FIN:** servir el ramyeon.\n\nResultado: nada de «cocina un rato». Cada paso dice cuánto y cuándo, así que cualquiera obtiene lo mismo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **algoritmo** es una **secuencia finita, ordenada y precisa** de pasos para resolver un problema. Debe ser **preciso** (sin ambigüedad), **definido** (mismos datos, mismo resultado) y **finito** (termina). Su estructura es **entrada → proceso → salida**, y se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el pseudocódigo como la letra romanizada de una canción en coreano: todavía no es el idioma de la computadora, pero ya está escrito para que lo sigas paso a paso y luego lo pases a un programa."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso del algoritmo te acerca a dominar la coreografía completa.",
+        "data": {
+          "intro": "Vas a aprender «Supernova» con tu algoritmo. El medidor muestra cuánto de la coreografía ya dominas.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Entrada: pones el dance practice en modo espejo y a velocidad 0.75.",
+              "delta": 10
+            },
+            {
+              "text": "Proceso y decisión: practicas el bloque 1 de ocho tiempos. ¿Salió sin errores? No: lo repites.",
+              "delta": 15
+            },
+            {
+              "text": "Repetición: al tercer intento sale limpio y pasas al bloque 2. Repites el ciclo con cada bloque.",
+              "delta": 45
+            },
+            {
+              "text": "Salida: haces la coreografía completa a velocidad normal y te grabas para comparar. ¡Lista!",
+              "delta": 30
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué símbolo va?",
+        "content": "Óvalo: inicio o fin. Rectángulo: acciones. Rombo: preguntas con Sí o No. Paralelogramo: datos que entran o mensajes que salen.",
+        "data": {
+          "prompt": "Arrastra cada parte del diagrama de tu ensayo a su símbolo.",
+          "buckets": [
+            "Óvalo (inicio/fin)",
+            "Rectángulo (proceso)",
+            "Rombo (decisión)",
+            "Paralelogramo (entrada/salida)"
+          ],
+          "items": [
+            {
+              "t": "Inicio del ensayo",
+              "b": 0
+            },
+            {
+              "t": "Practicar el bloque 1",
+              "b": 1
+            },
+            {
+              "t": "¿Me salió sin errores?",
+              "b": 2
+            },
+            {
+              "t": "Mostrar «¡Coreografía lista!»",
+              "b": 3
+            },
+            {
+              "t": "Subir la velocidad a 1x",
+              "b": 1
+            },
+            {
+              "t": "Fin del ensayo",
+              "b": 0
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte del algoritmo con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Entrada",
+              "b": "Datos que recibe"
+            },
+            {
+              "a": "Proceso",
+              "b": "Pasos que transforman"
+            },
+            {
+              "a": "Salida",
+              "b": "Resultado que entrega"
+            },
+            {
+              "a": "Pseudocódigo",
+              "b": "Pasos en texto simple"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del algoritmo es cada cosa?",
+        "left_label": "Dance practice",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El video en modo espejo",
+            "right": "Entrada"
+          },
+          {
+            "left": "¿Me salió sin errores?",
+            "right": "Decisión"
+          },
+          {
+            "left": "Repetir el bloque hasta que salga",
+            "right": "Repetición"
+          },
+          {
+            "left": "Tu video final grabado",
+            "right": "Salida"
+          }
+        ],
+        "completion_feedback": "Tu ensayo tuvo **entrada**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+      },
+      "quiz": [
+        {
+          "question": "Tu método para aprender «Supernova» le funciona igual a tu amiga. ¿Por qué?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Es rápido y muy divertido"
+            },
+            {
+              "letter": "B",
+              "text": "Es preciso y ordenado"
+            },
+            {
+              "letter": "C",
+              "text": "Es famoso en redes sociales"
+            },
+            {
+              "letter": "D",
+              "text": "Lo hizo la compañía"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Como los pasos son precisos y están en orden, cualquiera que los siga con los mismos datos llega al mismo resultado. Eso es un algoritmo definido.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el diagrama de tu ensayo, «Inicio» y «Fin» van dentro de…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un rombo"
+            },
+            {
+              "letter": "B",
+              "text": "Un rectángulo"
+            },
+            {
+              "letter": "C",
+              "text": "Un paralelogramo"
+            },
+            {
+              "letter": "D",
+              "text": "Un óvalo"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El óvalo marca dónde empieza y dónde termina el diagrama. El rombo es para decisiones y el rectángulo para acciones.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu algoritmo dice: «Practica el bloque 1. Si no salió perfecto, repítelo». ¿Qué riesgo tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No tiene datos de entrada"
+            },
+            {
+              "letter": "B",
+              "text": "Podría no terminar nunca"
+            },
+            {
+              "letter": "C",
+              "text": "Le sobra el símbolo de inicio"
+            },
+            {
+              "letter": "D",
+              "text": "Usa pseudocódigo en vez de diagrama"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Si la única salida del ciclo es «perfecto», podría repetirse sin fin. Un algoritmo debe ser finito: por ejemplo, «máximo 10 intentos; después, baja la velocidad».",
+          "difficulty": 3
+        },
+        {
+          "question": "En el pseudocódigo del ramyeon, «LEER cuántos paquetes vas a preparar» es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La entrada"
+            },
+            {
+              "letter": "B",
+              "text": "La salida"
+            },
+            {
+              "letter": "C",
+              "text": "Una decisión"
+            },
+            {
+              "letter": "D",
+              "text": "Una repetición"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "LEER indica un dato que el algoritmo recibe para trabajar: es la entrada. La salida sería ESCRIBIR o servir el resultado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amiga escribe la receta así: «Echa los fideos, hierve el agua, sirve». ¿Cuál es el error?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ciclo que no termina"
+            },
+            {
+              "letter": "B",
+              "text": "Orden incorrecto"
+            },
+            {
+              "letter": "C",
+              "text": "Le falta un rombo"
+            },
+            {
+              "letter": "D",
+              "text": "Salida sin entrada"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los fideos se echan cuando el agua ya hierve. Con los mismos pasos en otro orden, el resultado cambia: el orden es parte del algoritmo.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El plan para vencer al Ender Dragon",
+        "content": "Llegas al End en Minecraft con tu amigo y ven al Ender Dragon volando entre torres de obsidiana. Tu amigo saca la espada y se lanza a pegarle. Diez minutos después el dragón sigue con la vida casi llena: cada vez que lo lastima, los cristales del End que brillan sobre las torres lo curan. Caen derrotados, reaparecen y esta vez siguen un plan. Primero, revisan cuántos cristales quedan. Mientras quede alguno, le disparan con el arco; si un cristal está protegido por una jaula de barrotes, suben por la torre poniendo bloques y la rompen. Cuando ya no queda ninguno, esperan a que el dragón baje al portal del centro y ahí lo atacan con la espada, repitiendo hasta que su barra de vida llegue a cero. Si tu vida baja mucho, te alejas y comes. Con ese plan el dragón cae, y tu amigo puede repetirlo en su propio mundo. Un plan con pasos en orden, preguntas y repeticiones que terminan: esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu plan contra el jefe ES un algoritmo",
+        "content": "Lo que acabas de ver con el Ender Dragon es exactamente un **algoritmo**: una **secuencia finita, ordenada y precisa de pasos** para resolver un problema. Tu plan es **preciso** (primero cristales, luego dragón), **definido** (tu amigo obtiene lo mismo en su mundo) y **finito** (termina cuando la vida llega a cero). Tiene **entrada** (cuántos cristales quedan), **proceso** (disparar, subir, atacar) y **salida** (dragón derrotado). Usa **decisiones** (si tiene jaula, rómpela) y **repeticiones** (mientras quede un cristal, dispara). Se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — pescar en Animal Crossing con diagrama de flujo",
+        "content": "En Animal Crossing: New Horizons, si presionas A antes de tiempo, el pez se escapa. Haz el diagrama de flujo.\n\n**Paso 1 — Óvalo:** Inicio.\n**Paso 2 — Rectángulo (proceso):** lanzar la caña cerca de la sombra del pez.\n**Paso 3 — Rombo (decisión):** ¿el corcho se hundió? Si la flecha sale por **No**, regresa al rombo y sigues esperando; si sale por **Sí**, presionas A.\n**Paso 4 — Paralelogramo (salida):** mostrar el pez atrapado.\n**Paso 5 — Óvalo:** Fin.\n\nResultado: la flecha que regresa al rombo forma una **repetición**: esperar hasta que el corcho se hunda."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **algoritmo** es una **secuencia finita, ordenada y precisa** de pasos para resolver un problema. Debe ser **preciso** (sin ambigüedad), **definido** (mismos datos, mismo resultado) y **finito** (termina). Su estructura es **entrada → proceso → salida**, y se representa con un **diagrama de flujo** o con **pseudocódigo**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Lee un diagrama de flujo como el mapa de un nivel: empiezas en el óvalo de inicio, sigues las flechas como si fueran el camino y en cada rombo eliges ruta. Si una flecha regresa atrás, es una repetición."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso del algoritmo, en orden, los acerca a vencer al jefe final.",
+        "data": {
+          "intro": "Sigue el algoritmo contra el Ender Dragon. El medidor muestra qué tan cerca están de vencerlo.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Entrada: cuentan los cristales del End que brillan sobre las torres.",
+              "delta": 10
+            },
+            {
+              "text": "Repetición: mientras quede algún cristal, le disparan con el arco. Si tiene jaula, suben con bloques y la rompen.",
+              "delta": 40
+            },
+            {
+              "text": "Decisión: ¿ya no queda ningún cristal? Sí: el dragón ya no se puede curar.",
+              "delta": 20
+            },
+            {
+              "text": "Repetición y salida: cuando baja al portal, lo atacan hasta que su vida llega a cero. ¡Dragón derrotado!",
+              "delta": 30
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Decisión o repetición?",
+        "content": "Decisión: si pasa algo, haz A; si no, haz B. Repetición: haz algo mientras se cumpla una condición o hasta que se cumpla.",
+        "data": {
+          "prompt": "Arrastra cada instrucción del plan contra el dragón a su categoría.",
+          "buckets": [
+            "Decisión (si…)",
+            "Repetición (mientras/hasta)"
+          ],
+          "items": [
+            {
+              "t": "Si el cristal tiene jaula, rómpela",
+              "b": 0
+            },
+            {
+              "t": "Dispara mientras quede un cristal",
+              "b": 1
+            },
+            {
+              "t": "Si el dragón baja al portal, atácalo",
+              "b": 0
+            },
+            {
+              "t": "Ataca hasta que su vida llegue a cero",
+              "b": 1
+            },
+            {
+              "t": "Si tu vida baja mucho, come algo",
+              "b": 0
+            },
+            {
+              "t": "Pon bloques hasta llegar a la cima",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada símbolo del diagrama con un paso del plan contra el dragón.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Óvalo",
+              "b": "Inicio de la pelea"
+            },
+            {
+              "a": "Rombo",
+              "b": "¿Quedan cristales?"
+            },
+            {
+              "a": "Rectángulo",
+              "b": "Disparar una flecha"
+            },
+            {
+              "a": "Paralelogramo",
+              "b": "Mostrar «¡Victoria!»"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del algoritmo es cada cosa?",
+        "left_label": "Ender Dragon",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Cuántos cristales quedan",
+            "right": "Entrada"
+          },
+          {
+            "left": "¿Tiene jaula el cristal?",
+            "right": "Decisión"
+          },
+          {
+            "left": "Disparar mientras quede uno",
+            "right": "Repetición"
+          },
+          {
+            "left": "Dragón derrotado",
+            "right": "Salida"
+          }
+        ],
+        "completion_feedback": "Tu plan tuvo **entrada**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+      },
+      "quiz": [
+        {
+          "question": "El plan contra el Ender Dragon termina cuando su vida llega a cero. ¿Qué característica del algoritmo muestra eso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Es ambiguo"
+            },
+            {
+              "letter": "B",
+              "text": "Es finito"
+            },
+            {
+              "letter": "C",
+              "text": "Es aleatorio"
+            },
+            {
+              "letter": "D",
+              "text": "Es infinito"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un algoritmo finito siempre termina. Aquí la condición de fin es clara: vida en cero. Si nunca acabara, no serviría como algoritmo.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el diagrama de pesca, ¿qué indica la flecha que sale del rombo y regresa a él?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El fin del algoritmo"
+            },
+            {
+              "letter": "B",
+              "text": "Un dato de entrada"
+            },
+            {
+              "letter": "C",
+              "text": "Una repetición"
+            },
+            {
+              "letter": "D",
+              "text": "Un paso ambiguo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Una flecha que regresa a un paso anterior forma un ciclo: se repite la espera hasta que el corcho se hunde. El fin se marca con un óvalo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amigo escribe: «Mientras quede algún cristal, ataca al dragón con la espada». ¿Qué error tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Le falta un óvalo de inicio"
+            },
+            {
+              "letter": "B",
+              "text": "No tiene ninguna decisión"
+            },
+            {
+              "letter": "C",
+              "text": "El ciclo nunca termina"
+            },
+            {
+              "letter": "D",
+              "text": "Ataca con el arma más fuerte"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Atacar al dragón no rompe cristales, así que la condición nunca cambia y el ciclo se repite sin fin. Dentro de una repetición debe haber una acción que acerque al final.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el plan contra el dragón, «Dragón derrotado» es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La entrada"
+            },
+            {
+              "letter": "B",
+              "text": "La salida"
+            },
+            {
+              "letter": "C",
+              "text": "Una decisión"
+            },
+            {
+              "letter": "D",
+              "text": "Un proceso"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es el resultado que entrega el algoritmo al terminar: la salida. La entrada fue cuántos cristales quedaban al empezar.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Qué orden de pasos es el correcto para vencer al Ender Dragon?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Atacar, romper cristales, esperar al portal"
+            },
+            {
+              "letter": "B",
+              "text": "Esperar al portal, atacar, romper cristales"
+            },
+            {
+              "letter": "C",
+              "text": "Romper cristales, esperar al portal, atacar"
+            },
+            {
+              "letter": "D",
+              "text": "Atacar, esperar al portal, romper cristales"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Si atacas antes de romper los cristales, el dragón se cura. Primero se eliminan los cristales y luego se ataca cuando baja al portal: el orden cambia el resultado.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un algoritmo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un aparato electrónico que guarda información"
+        },
+        {
+          "letter": "B",
+          "text": "Pasos ordenados para resolver un problema"
+        },
+        {
+          "letter": "C",
+          "text": "Un lenguaje que solo entienden las computadoras"
+        },
+        {
+          "letter": "D",
+          "text": "Una lista de ideas sin un orden en particular"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en una receta de cocina: ¿qué tiene que la hace útil?",
+      "explanation": "Un algoritmo es una secuencia finita, ordenada y precisa de pasos para resolver un problema. No necesita computadora: una receta también lo es."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En un diagrama de flujo, ¿qué símbolo indica el inicio o el fin?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Óvalo"
+        },
+        {
+          "letter": "B",
+          "text": "Rombo"
+        },
+        {
+          "letter": "C",
+          "text": "Rectángulo"
+        },
+        {
+          "letter": "D",
+          "text": "Paralelogramo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el símbolo que solo aparece al principio y al final del diagrama.",
+      "explanation": "El óvalo marca dónde empieza y dónde termina el algoritmo. El rombo es para decisiones y el rectángulo para acciones."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué símbolo se usa para una decisión con salidas Sí y No?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Óvalo"
+        },
+        {
+          "letter": "B",
+          "text": "Rectángulo"
+        },
+        {
+          "letter": "C",
+          "text": "Rombo"
+        },
+        {
+          "letter": "D",
+          "text": "Paralelogramo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el único símbolo del que salen dos caminos.",
+      "explanation": "El rombo contiene una pregunta y de él salen dos flechas, una para Sí y otra para No."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué símbolo representa un proceso o una acción, como «sumar 1»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Rombo"
+        },
+        {
+          "letter": "B",
+          "text": "Rectángulo"
+        },
+        {
+          "letter": "C",
+          "text": "Óvalo"
+        },
+        {
+          "letter": "D",
+          "text": "Paralelogramo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el símbolo donde se escriben las acciones que no preguntan nada.",
+      "explanation": "El rectángulo es para procesos o acciones. Si hubiera una pregunta, iría en un rombo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es la estructura básica de todo algoritmo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pregunta, respuesta y examen"
+        },
+        {
+          "letter": "B",
+          "text": "Entrada, proceso y salida"
+        },
+        {
+          "letter": "C",
+          "text": "Salida, proceso y entrada"
+        },
+        {
+          "letter": "D",
+          "text": "Problema, intento y suerte"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa qué recibe, qué hace y qué entrega una licuadora.",
+      "explanation": "Todo algoritmo recibe datos (entrada), los trabaja (proceso) y entrega un resultado (salida), en ese orden."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué símbolo se usa para la entrada o salida de datos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Rectángulo redondeado"
+        },
+        {
+          "letter": "B",
+          "text": "Paralelogramo"
+        },
+        {
+          "letter": "C",
+          "text": "Óvalo alargado"
+        },
+        {
+          "letter": "D",
+          "text": "Rombo con flechas"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en dónde escribirías «leer la edad» o «mostrar el total».",
+      "explanation": "El paralelogramo representa datos que entran o resultados que salen, como «leer la edad» o «mostrar el total»."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirven las flechas en un diagrama de flujo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Indican dónde termina el programa"
+        },
+        {
+          "letter": "B",
+          "text": "Marcan la dirección del flujo"
+        },
+        {
+          "letter": "C",
+          "text": "Señalan los pasos que están mal"
+        },
+        {
+          "letter": "D",
+          "text": "Adornan el diagrama para que se vea bien"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Sin ellas no sabrías qué paso sigue.",
+      "explanation": "Las flechas indican el orden en que se recorren los pasos. Una flecha que regresa a un paso anterior forma una repetición."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué característica tiene un algoritmo que siempre termina?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Es preciso"
+        },
+        {
+          "letter": "B",
+          "text": "Es definido"
+        },
+        {
+          "letter": "C",
+          "text": "Es finito"
+        },
+        {
+          "letter": "D",
+          "text": "Es ambiguo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en qué pasaría si el algoritmo nunca acabara.",
+      "explanation": "Un algoritmo finito llega a un final. Uno que se repite para siempre no resuelve el problema."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Un algoritmo que con los mismos datos siempre da el mismo resultado es…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Finito"
+        },
+        {
+          "letter": "B",
+          "text": "Ambiguo"
+        },
+        {
+          "letter": "C",
+          "text": "Infinito"
+        },
+        {
+          "letter": "D",
+          "text": "Definido"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en dos personas siguiendo los mismos pasos con lo mismo.",
+      "explanation": "Definido significa que con los mismos datos se obtiene siempre el mismo resultado, sin importar quién lo siga."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es el pseudocódigo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un programa que ya funciona en la computadora"
+        },
+        {
+          "letter": "B",
+          "text": "Pasos en texto simple, antes de programar"
+        },
+        {
+          "letter": "C",
+          "text": "Un dibujo con óvalos, rombos y rectángulos"
+        },
+        {
+          "letter": "D",
+          "text": "Un código secreto que solo entiende el maestro"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Pseudo significa «casi»: es casi código, pero todavía no.",
+      "explanation": "El pseudocódigo escribe los pasos con palabras sencillas como LEER, SI o REPETIR. Es el paso entre la idea y el programa."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos pasos es ambiguo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hornea 20 minutos a 180 °C"
+        },
+        {
+          "letter": "B",
+          "text": "Agrega 2 tazas de harina"
+        },
+        {
+          "letter": "C",
+          "text": "Hornea un rato"
+        },
+        {
+          "letter": "D",
+          "text": "Mezcla durante 3 minutos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el paso en el que dos personas podrían hacer cosas distintas.",
+      "explanation": "«Un rato» puede ser 5 o 40 minutos según quién lo lea. Un paso preciso dice cuánto o cuándo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En un algoritmo que calcula el promedio de tres calificaciones, ¿cuál es la entrada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El promedio ya calculado"
+        },
+        {
+          "letter": "B",
+          "text": "Las tres calificaciones"
+        },
+        {
+          "letter": "C",
+          "text": "Sumar y dividir entre tres"
+        },
+        {
+          "letter": "D",
+          "text": "Mostrar el resultado final"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La entrada es lo que el algoritmo necesita recibir antes de trabajar.",
+      "explanation": "Las calificaciones son los datos que entran. Sumar y dividir es el proceso, y el promedio es la salida."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En una calculadora de propinas, ¿qué parte es «multiplicar la cuenta por 0.10»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La entrada"
+        },
+        {
+          "letter": "B",
+          "text": "El proceso"
+        },
+        {
+          "letter": "C",
+          "text": "La salida"
+        },
+        {
+          "letter": "D",
+          "text": "Una decisión"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "No es un dato que recibes ni el resultado que muestras.",
+      "explanation": "Multiplicar transforma los datos: es el proceso. La cuenta sería la entrada y la propina calculada, la salida."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué estructura usarías para «si llueve, lleva paraguas; si no, lleva gorra»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una repetición"
+        },
+        {
+          "letter": "B",
+          "text": "Una entrada"
+        },
+        {
+          "letter": "C",
+          "text": "Una decisión"
+        },
+        {
+          "letter": "D",
+          "text": "Un óvalo de fin"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate si se repite algo o si se elige entre dos caminos.",
+      "explanation": "Elegir entre dos acciones según una condición es una decisión. En el diagrama va en un rombo con salidas Sí y No."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué estructura usarías para «da vueltas a la pista hasta completar 5»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una decisión simple"
+        },
+        {
+          "letter": "B",
+          "text": "Una salida de datos"
+        },
+        {
+          "letter": "C",
+          "text": "Un óvalo de inicio"
+        },
+        {
+          "letter": "D",
+          "text": "Una repetición"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en la palabra «hasta».",
+      "explanation": "Hacer la misma acción hasta que se cumpla una condición es una repetición. La condición de salida es completar 5 vueltas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué error tiene este algoritmo: «Ponte los zapatos. Ponte los calcetines. Sal de casa»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ciclo infinito"
+        },
+        {
+          "letter": "B",
+          "text": "Orden incorrecto"
+        },
+        {
+          "letter": "C",
+          "text": "Falta una decisión"
+        },
+        {
+          "letter": "D",
+          "text": "Paso ambiguo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Imagina que lo haces exactamente como está escrito.",
+      "explanation": "Los calcetines van antes que los zapatos. Los pasos son claros, pero en otro orden el resultado no sirve."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un rombo dice «¿Número mayor que 10?». ¿Cuántas flechas deben salir de él?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una sola flecha"
+        },
+        {
+          "letter": "B",
+          "text": "Dos: Sí y No"
+        },
+        {
+          "letter": "C",
+          "text": "Tres o más"
+        },
+        {
+          "letter": "D",
+          "text": "Ninguna flecha"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cuántas respuestas posibles tiene la pregunta.",
+      "explanation": "Toda decisión tiene dos salidas: una para Sí y otra para No. Cada flecha lleva a un camino distinto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué el pseudocódigo es útil antes de programar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque la computadora lo ejecuta directo"
+        },
+        {
+          "letter": "B",
+          "text": "Ordena la idea antes del código"
+        },
+        {
+          "letter": "C",
+          "text": "Porque sustituye al diagrama siempre"
+        },
+        {
+          "letter": "D",
+          "text": "Porque no necesita orden ni lógica"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en para qué sirve un borrador antes de escribir en limpio.",
+      "explanation": "Permite revisar la lógica con palabras sencillas antes de traducirla a un lenguaje de programación. La computadora no lo ejecuta tal cual."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Algoritmo: «Leer edad. Si edad es 18 o más, mostrar Adulto; si no, mostrar Menor». ¿Qué muestra si la edad es 13?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Adulto"
+        },
+        {
+          "letter": "B",
+          "text": "Menor"
+        },
+        {
+          "letter": "C",
+          "text": "13"
+        },
+        {
+          "letter": "D",
+          "text": "Nada"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Revisa si 13 cumple la condición del rombo.",
+      "explanation": "13 no es 18 o más, así que la flecha sale por el No y el algoritmo muestra Menor."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Algoritmo: «x = 1. Mientras x sea menor que 4: mostrar x y sumar 1 a x». ¿Qué muestra?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "1, 2, 3, 4"
+        },
+        {
+          "letter": "B",
+          "text": "2, 3, 4"
+        },
+        {
+          "letter": "C",
+          "text": "1, 2, 3"
+        },
+        {
+          "letter": "D",
+          "text": "1, 1, 1 sin fin"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Sigue el ciclo con lápiz: revisa la condición antes de cada vuelta.",
+      "explanation": "Muestra 1, 2 y 3. Cuando x llega a 4, la condición «menor que 4» ya no se cumple y el ciclo termina sin mostrarlo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Algoritmo: «x = 1. Mientras x sea menor que 4: mostrar x». ¿Qué problema tiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Muestra 1, 2, 3"
+        },
+        {
+          "letter": "B",
+          "text": "No muestra nada"
+        },
+        {
+          "letter": "C",
+          "text": "Nunca termina"
+        },
+        {
+          "letter": "D",
+          "text": "Termina en x = 4"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa si algo dentro del ciclo cambia el valor de x.",
+      "explanation": "Como x nunca cambia, siempre es menor que 4 y el ciclo se repite sin fin. Falta «sumar 1 a x» dentro de la repetición."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un algoritmo para lavarse los dientes dice «cepilla bien». ¿Cómo se vuelve preciso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cepilla lo mejor que puedas"
+        },
+        {
+          "letter": "B",
+          "text": "Cepilla durante 2 minutos"
+        },
+        {
+          "letter": "C",
+          "text": "Cepilla hasta que te aburras"
+        },
+        {
+          "letter": "D",
+          "text": "Cepilla bien, como siempre"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Un paso preciso se puede medir igual por cualquier persona.",
+      "explanation": "«2 minutos» se cumple igual para todos. «Bien», «lo mejor que puedas» o «hasta aburrirte» cambian según quién lo haga."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un diagrama de flujo tiene un rombo, pero ninguna flecha llega a un óvalo de fin. ¿Qué característica podría fallar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que sea preciso"
+        },
+        {
+          "letter": "B",
+          "text": "Que tenga entrada"
+        },
+        {
+          "letter": "C",
+          "text": "Que sea finito"
+        },
+        {
+          "letter": "D",
+          "text": "Que use flechas"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa qué marca el óvalo de fin.",
+      "explanation": "Si ningún camino llega al fin, el algoritmo podría no terminar nunca. Todo algoritmo debe ser finito."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Dos amigos siguen la misma receta con los mismos ingredientes y obtienen pasteles muy distintos. ¿Qué característica falló?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que sea finito"
+        },
+        {
+          "letter": "B",
+          "text": "Que tenga salida"
+        },
+        {
+          "letter": "C",
+          "text": "Que use rombos"
+        },
+        {
+          "letter": "D",
+          "text": "Que sea definido"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en que los datos de entrada eran los mismos.",
+      "explanation": "Un algoritmo definido da el mismo resultado con los mismos datos. Si los pasteles salen distintos, la receta no lo es."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Algoritmo: «Leer calificación. Si es mayor o igual a 6, mostrar Aprobado; si no, mostrar Reprobado». ¿Qué muestra con 6?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Reprobado"
+        },
+        {
+          "letter": "B",
+          "text": "Aprobado"
+        },
+        {
+          "letter": "C",
+          "text": "Nada"
+        },
+        {
+          "letter": "D",
+          "text": "Error"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Lee con cuidado la condición: dice «mayor o igual».",
+      "explanation": "6 es igual a 6, así que la condición se cumple y la flecha sale por el Sí: muestra Aprobado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Algoritmo: «total = 0. Repetir 3 veces: sumar 5 a total. Mostrar total». ¿Qué muestra?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "5"
+        },
+        {
+          "letter": "B",
+          "text": "15"
+        },
+        {
+          "letter": "C",
+          "text": "20"
+        },
+        {
+          "letter": "D",
+          "text": "0"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Anota el valor de total después de cada vuelta.",
+      "explanation": "Vuelta 1: 5. Vuelta 2: 10. Vuelta 3: 15. Después de repetir 3 veces, muestra 15."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Algoritmo: «Mientras la cubeta no esté llena: mirar la cubeta». ¿Qué cambio lo vuelve finito?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cambiar «mientras» por «siempre»"
+        },
+        {
+          "letter": "B",
+          "text": "Agregar «echar un vaso de agua»"
+        },
+        {
+          "letter": "C",
+          "text": "Quitar la condición de la cubeta"
+        },
+        {
+          "letter": "D",
+          "text": "Agregar un óvalo de inicio al principio"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Dentro del ciclo debe pasar algo que acerque a la condición de salida.",
+      "explanation": "Mirar no llena la cubeta, así que el ciclo nunca terminaría. Si cada vuelta echa agua, en algún momento se llena y el ciclo acaba."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En un diagrama, la flecha del No del rombo «¿Contraseña correcta?» regresa a «Pedir contraseña». ¿Qué estructura forma?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una salida de datos"
+        },
+        {
+          "letter": "B",
+          "text": "Un inicio nuevo"
+        },
+        {
+          "letter": "C",
+          "text": "Una repetición"
+        },
+        {
+          "letter": "D",
+          "text": "Un proceso simple"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate hacia dónde apunta la flecha del No.",
+      "explanation": "Una flecha que regresa a un paso anterior forma una repetición: se pide la contraseña hasta que sea correcta."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué secuencia está en el orden correcto para un algoritmo que calcula un promedio?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mostrar, leer datos, sumar y dividir"
+        },
+        {
+          "letter": "B",
+          "text": "Sumar y dividir, leer datos, mostrar"
+        },
+        {
+          "letter": "C",
+          "text": "Leer datos, sumar y dividir, mostrar"
+        },
+        {
+          "letter": "D",
+          "text": "Leer datos, mostrar, sumar y dividir"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda la estructura de entrada, proceso y salida.",
+      "explanation": "Primero se leen los datos (entrada), luego se suman y dividen (proceso) y al final se muestra el resultado (salida)."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un algoritmo de semáforo dice: «Si está en verde, avanza. Si está en rojo, detente». ¿Qué le falta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un óvalo de inicio extra"
+        },
+        {
+          "letter": "B",
+          "text": "Más pasos repetidos"
+        },
+        {
+          "letter": "C",
+          "text": "Qué hacer en amarillo"
+        },
+        {
+          "letter": "D",
+          "text": "Otra flecha de regreso"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa si el algoritmo cubre todos los casos posibles.",
+      "explanation": "El semáforo tiene tres colores y el algoritmo solo cubre dos. Un algoritmo debe decir qué hacer en todos los casos posibles."
+    }
+  ],
+  "diagnostic": {
+    "question": "Una calculadora recibe dos números, los suma y muestra el resultado en la pantalla. En el algoritmo, mostrar el resultado es…",
+    "options": [
+      {
+        "letter": "A",
+        "text": "La entrada"
+      },
+      {
+        "letter": "B",
+        "text": "El proceso"
+      },
+      {
+        "letter": "C",
+        "text": "La salida"
+      },
+      {
+        "letter": "D",
+        "text": "Una decisión"
+      }
+    ],
+    "correct_answer": "C",
+    "explanation": "Todo algoritmo sigue entrada, proceso y salida. Los dos números son la entrada, sumarlos es el proceso y mostrar el resultado es la salida. No hay ninguna pregunta, así que no hay decisión."
+  }
+}

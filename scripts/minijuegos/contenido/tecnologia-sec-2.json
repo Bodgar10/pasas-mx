@@ -1,0 +1,1193 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topics": {
+    "cambio-tecnico-y-sistemas-tecnicos-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena la trayectoria técnica de cómo mandamos mensajes",
+        "steps": [
+          "Escribir una carta y enviarla por correo postal",
+          "Mandar un telegrama desde la oficina de telégrafos",
+          "Enviar un SMS desde un celular de teclas",
+          "Mandar un audio por una app de mensajería"
+        ],
+        "completion_feedback": "Cada forma de mandar mensajes es **consecuente** de la anterior y **antecedente** de la siguiente. Esa línea en el tiempo es una **trayectoria técnica**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio técnico es cada cosa?",
+            "left_label": "Dragon Ball",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Acetatos pintados a mano",
+                "right": "Antecedente"
+              },
+              {
+                "left": "Color en la computadora",
+                "right": "Consecuente"
+              },
+              {
+                "left": "El público pide imágenes HD",
+                "right": "Cambio social"
+              },
+              {
+                "left": "Del acetato a la tableta, paso a paso",
+                "right": "Trayectoria técnica"
+              }
+            ],
+            "completion_feedback": "La animación pasó del **antecedente** al **consecuente** por razones como los **cambios sociales**, y esa línea completa es su **trayectoria técnica**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio técnico es cada cosa?",
+            "left_label": "Mundiales",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Balón de cuero con agujetas",
+                "right": "Antecedente"
+              },
+              {
+                "left": "Al Rihla con sensor",
+                "right": "Consecuente"
+              },
+              {
+                "left": "Que se viera en la tele",
+                "right": "Cambio social"
+              },
+              {
+                "left": "1930 → 1970 → 1986 → 2022",
+                "right": "Trayectoria técnica"
+              }
+            ],
+            "completion_feedback": "El balón pasó de su **antecedente** a sus **consecuentes** por razones como los **cambios sociales**, y esa línea completa es su **trayectoria técnica**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio técnico es cada cosa?",
+            "left_label": "Álbumes de K-pop",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El casete de los noventa",
+                "right": "Antecedente"
+              },
+              {
+                "left": "El álbum en tarjeta",
+                "right": "Consecuente"
+              },
+              {
+                "left": "Escuchar todo en streaming",
+                "right": "Cambio social"
+              },
+              {
+                "left": "Casete → CD → tarjeta",
+                "right": "Trayectoria técnica"
+              }
+            ],
+            "completion_feedback": "El álbum pasó de su **antecedente** a su **consecuente** por razones como los **cambios sociales**, y esa línea completa es su **trayectoria técnica**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del cambio técnico es cada cosa?",
+            "left_label": "Consolas Nintendo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Game Boy con cuatro pilas",
+                "right": "Antecedente"
+              },
+              {
+                "left": "Switch 2 con pantalla grande",
+                "right": "Consecuente"
+              },
+              {
+                "left": "De pilas a batería recargable",
+                "right": "Nueva fuente de energía"
+              },
+              {
+                "left": "Jugar con amigos en línea",
+                "right": "Cambio social"
+              }
+            ],
+            "completion_feedback": "Las consolas pasaron del **antecedente** al **consecuente** por una **nueva fuente de energía** y por **cambios sociales**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "hoja-de-calculo-formulas-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo sacar un total con una función",
+        "steps": [
+          "Capturar los datos en las celdas de una columna",
+          "Seleccionar la celda donde irá el resultado",
+          "Escribir el signo igual",
+          "Escribir SUMA y el rango entre paréntesis",
+          "Presionar Enter para ver el total"
+        ],
+        "completion_feedback": "Primero los **datos**, luego eliges la **celda** del resultado, escribes el **=**, la **función** con su **rango** y presionas **Enter**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la hoja de cálculo es cada cosa del reto?",
+            "left_label": "Reto Frieren",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El cuadro donde va el 10 de Sofi",
+                "right": "Celda"
+              },
+              {
+                "left": "De B2 a B5: los cuatro del reto",
+                "right": "Rango"
+              },
+              {
+                "left": "La palabra SUMA que hace la cuenta",
+                "right": "Función"
+              },
+              {
+                "left": "El total que sube solo a 34",
+                "right": "Recálculo automático"
+              }
+            ],
+            "completion_feedback": "Cada dato vive en una **celda**, varias seguidas forman un **rango** y una **función** las calcula y se **recalcula** sola. Ahora ponle nombre formal a todo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la hoja de cálculo es cada cosa de tu tabla?",
+            "left_label": "Tabla de goleo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El cuadro con los 6 goles de Leo",
+                "right": "Celda"
+              },
+              {
+                "left": "Goles entre partidos de cada jugador",
+                "right": "Fórmula"
+              },
+              {
+                "left": "El aviso en la fila de Santi",
+                "right": "Error #¡DIV/0!"
+              },
+              {
+                "left": "Toda la columna de goles, de C2 a C9",
+                "right": "Rango"
+              }
+            ],
+            "completion_feedback": "Cada dato está en una **celda**, una **fórmula** divide, el **rango** agrupa la columna y dividir entre cero da **#¡DIV/0!**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la hoja de cálculo es cada cosa de tu plan?",
+            "left_label": "Plan del concierto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La casilla del precio del boleto",
+                "right": "Celda"
+              },
+              {
+                "left": "Sumar boleto, lightstick y lo demás",
+                "right": "Función SUMA"
+              },
+              {
+                "left": "Total entre 150 para saber las semanas",
+                "right": "Fórmula"
+              },
+              {
+                "left": "El total baja solo a 3,450",
+                "right": "Recálculo automático"
+              }
+            ],
+            "completion_feedback": "Cada precio vive en una **celda**, la **función SUMA** junta el rango, una **fórmula** divide y todo se **recalcula** solo. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la hoja de cálculo es cada cosa del torneo?",
+            "left_label": "Torneo Brawl",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los puntos de Valeria en la ronda 2",
+                "right": "Celda"
+              },
+              {
+                "left": "B2 a D2: las tres rondas de Kevin",
+                "right": "Rango"
+              },
+              {
+                "left": "Al arrastrar, cada fila usa la suya",
+                "right": "Referencia relativa"
+              },
+              {
+                "left": "Buscar el puntaje más alto",
+                "right": "Función MAX"
+              }
+            ],
+            "completion_feedback": "Cada puntaje está en una **celda**, las rondas forman un **rango**, la **referencia relativa** se ajusta al arrastrar y **MAX** encuentra al campeón. Ahora, el nombre formal."
+          }
+        }
+      }
+    },
+    "hoja-de-calculo-graficas-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo hacer una gráfica en la hoja de cálculo",
+        "steps": [
+          "Seleccionar el rango de datos con sus encabezados",
+          "Ir a Insertar y elegir Gráfico",
+          "Escoger el tipo de gráfica que va con los datos",
+          "Escribir el título y las etiquetas de los ejes",
+          "Leer la gráfica: máximo, mínimo y tendencia"
+        ],
+        "completion_feedback": "Primero **seleccionas** los datos con encabezados, luego **insertas** la gráfica, eliges el **tipo** y le pones **título** y **etiquetas**. Al final la **lees**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu encuesta?",
+            "left_label": "Encuesta Naruto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Nombres y votos en columnas",
+                "right": "Tabla de datos"
+              },
+              {
+                "left": "Ver quién ganó sin leer números",
+                "right": "Gráfica"
+              },
+              {
+                "left": "La barra de Naruto, la más alta",
+                "right": "Valor máximo"
+              },
+              {
+                "left": "Naruto con 40% del salón",
+                "right": "Parte de un todo"
+              }
+            ],
+            "completion_feedback": "La **tabla** guarda los datos, pero la **gráfica** te deja ver de un vistazo el **máximo** y las **partes de un todo**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu reporte?",
+            "left_label": "Goles de Santi",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los goles anotados mes a mes",
+                "right": "Tabla de datos"
+              },
+              {
+                "left": "La línea que no deja de subir",
+                "right": "Tendencia al alza"
+              },
+              {
+                "left": "Junio, con 8 goles",
+                "right": "Valor máximo"
+              },
+              {
+                "left": "Los meses escritos abajo",
+                "right": "Eje horizontal"
+              }
+            ],
+            "completion_feedback": "La **tabla** tenía los números, pero la **línea** mostró la **tendencia** y el **máximo** de un vistazo. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu análisis?",
+            "left_label": "Vistas del video",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Siete días con sus vistas",
+                "right": "Tabla de datos"
+              },
+              {
+                "left": "El miércoles con 450 vistas",
+                "right": "Valor máximo"
+              },
+              {
+                "left": "La línea que baja hasta el domingo",
+                "right": "Tendencia a la baja"
+              },
+              {
+                "left": "Lunes a domingo, abajo",
+                "right": "Eje horizontal"
+              }
+            ],
+            "completion_feedback": "Siete números no decían nada, pero la **línea** mostró el **máximo** y la **tendencia** de un vistazo. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu prueba?",
+            "left_label": "Horas de Roblox",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tus horas copiadas por semana",
+                "right": "Tabla de datos"
+              },
+              {
+                "left": "La línea que baja semana a semana",
+                "right": "Tendencia a la baja"
+              },
+              {
+                "left": "Semana 1, con 14 horas",
+                "right": "Valor máximo"
+              },
+              {
+                "left": "Las semanas escritas abajo",
+                "right": "Eje horizontal"
+              }
+            ],
+            "completion_feedback": "Tu mamá no leyó la **tabla**: vio la **línea**, su **tendencia** y su **máximo** de un vistazo. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "algoritmos-y-diagramas-de-flujo-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo se crea un algoritmo",
+        "steps": [
+          "Definir el problema que se quiere resolver",
+          "Identificar los datos de entrada y la salida esperada",
+          "Escribir los pasos del proceso en orden y sin ambigüedad",
+          "Pasar los pasos a pseudocódigo o a diagrama de flujo",
+          "Probarlo con datos reales y corregir los errores"
+        ],
+        "completion_feedback": "Un algoritmo nace de un **problema**, define su **entrada** y su **salida**, ordena los **pasos**, se representa en **pseudocódigo** o **diagrama de flujo** y se **prueba**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del algoritmo es cada cosa?",
+            "left_label": "Rutina de Saitama",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "«Haz muchas lagartijas»",
+                "right": "Paso ambiguo"
+              },
+              {
+                "left": "Si llueve, usa las escaleras",
+                "right": "Decisión"
+              },
+              {
+                "left": "Sigue mientras no llegues a 100",
+                "right": "Repetición"
+              },
+              {
+                "left": "«Serie completa»",
+                "right": "Salida"
+              }
+            ],
+            "completion_feedback": "Tu rutina tenía **pasos precisos**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del algoritmo es cada cosa?",
+            "left_label": "El árbitro",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Lo que pasó en la jugada",
+                "right": "Entrada"
+              },
+              {
+                "left": "¿Fue dentro del área?",
+                "right": "Decisión"
+              },
+              {
+                "left": "Tirar hasta que haya ganador",
+                "right": "Repetición"
+              },
+              {
+                "left": "Señalar el punto penal",
+                "right": "Salida"
+              }
+            ],
+            "completion_feedback": "El árbitro usó una **entrada**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del algoritmo es cada cosa?",
+            "left_label": "Dance practice",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El video en modo espejo",
+                "right": "Entrada"
+              },
+              {
+                "left": "¿Me salió sin errores?",
+                "right": "Decisión"
+              },
+              {
+                "left": "Repetir el bloque hasta que salga",
+                "right": "Repetición"
+              },
+              {
+                "left": "Tu video final grabado",
+                "right": "Salida"
+              }
+            ],
+            "completion_feedback": "Tu ensayo tuvo **entrada**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del algoritmo es cada cosa?",
+            "left_label": "Ender Dragon",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cuántos cristales quedan",
+                "right": "Entrada"
+              },
+              {
+                "left": "¿Tiene jaula el cristal?",
+                "right": "Decisión"
+              },
+              {
+                "left": "Disparar mientras quede uno",
+                "right": "Repetición"
+              },
+              {
+                "left": "Dragón derrotado",
+                "right": "Salida"
+              }
+            ],
+            "completion_feedback": "Tu plan tuvo **entrada**, una **decisión**, una **repetición** y una **salida**. Ahora ponle nombre formal: eso es un **algoritmo**."
+          }
+        }
+      }
+    },
+    "programacion-por-bloques-scratch-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo se arma y se prueba un programa en Scratch",
+        "steps": [
+          "Elegir o dibujar el objeto y sus disfraces",
+          "Arrastrar el evento al hacer clic en bandera verde",
+          "Encajar debajo los bloques en el orden en que deben pasar",
+          "Hacer clic en la bandera verde para probar el programa",
+          "Corregir los bloques que no hicieron lo esperado"
+        ],
+        "completion_feedback": "Primero el **objeto**, luego el **evento** que arranca, después los bloques en **secuencia** y al final **probar y corregir**. Ahora míralo en un programa completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de un programa es cada orden del pizarrón?",
+            "left_label": "Pizarrón de Ukai",
+            "right_label": "En Scratch",
+            "pairs": [
+              {
+                "left": "Correr, saltar y rematar, en ese orden",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Repitan esto 20 veces",
+                "right": "repetir (20)"
+              },
+              {
+                "left": "Si el pase viene alto, salta después",
+                "right": "si <> entonces … si no"
+              },
+              {
+                "left": "Hasta conectar 10 remates seguidos",
+                "right": "repetir hasta que"
+              }
+            ],
+            "completion_feedback": "Las órdenes en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende de algo es un **condicional**. Ahora míralo con bloques de Scratch."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de un programa es cada orden de la hoja?",
+            "left_label": "Hoja de La Masia",
+            "right_label": "En Scratch",
+            "pairs": [
+              {
+                "left": "Trotar, estirar y luego el rondo",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Den 10 pases a un toque",
+                "right": "repetir (10)"
+              },
+              {
+                "left": "Si llega por arriba, pecho; si no, pie",
+                "right": "si <> entonces … si no"
+              },
+              {
+                "left": "Patear hasta meter 5 penales",
+                "right": "repetir hasta que"
+              }
+            ],
+            "completion_feedback": "Las órdenes en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende del balón es un **condicional**. Ahora míralo con bloques de Scratch."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de un programa es cada orden de la hoja?",
+            "left_label": "Hoja de Hoshi",
+            "right_label": "En Scratch",
+            "pairs": [
+              {
+                "left": "Filas, giro y luego el coro",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Paso del coro: 4 veces seguidas",
+                "right": "repetir (4)"
+              },
+              {
+                "left": "Si el escenario es chico, formación corta",
+                "right": "si <> entonces … si no"
+              },
+              {
+                "left": "Ensayar hasta que nadie falle",
+                "right": "repetir hasta que"
+              }
+            ],
+            "completion_feedback": "Las órdenes en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende del escenario es un **condicional**. Ahora míralo con bloques de Scratch."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de un programa es cada momento de tu día?",
+            "left_label": "Día en la granja",
+            "right_label": "En Scratch",
+            "pairs": [
+              {
+                "left": "Salir, revisar el buzón, ir a cultivos",
+                "right": "Secuencia"
+              },
+              {
+                "left": "Regar las 12 plantas, una por una",
+                "right": "repetir (12)"
+              },
+              {
+                "left": "Si llueve, no riegas; si no, sí",
+                "right": "si <> entonces … si no"
+              },
+              {
+                "left": "Bajar a la mina hasta cansarte",
+                "right": "repetir hasta que"
+              }
+            ],
+            "completion_feedback": "Los pasos en fila son una **secuencia**, lo que se repite es un **ciclo** y lo que depende del clima es un **condicional**. Ahora míralo con bloques de Scratch."
+          }
+        }
+      }
+    },
+    "edicion-de-imagen-y-diseno-digital-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo se hace un diseño digital",
+        "steps": [
+          "Decidir dónde se va a usar: pantalla o impresión",
+          "Crear el lienzo con el tamaño correcto en píxeles",
+          "Poner fondo, imagen y texto cada uno en su capa",
+          "Revisar contraste, alineación y jerarquía",
+          "Exportar en el formato adecuado"
+        ],
+        "completion_feedback": "Primero se **decide el destino** (RGB o CMYK), luego el **lienzo**, las **capas**, la **revisión del diseño** y al final el **formato**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte?",
+            "left_label": "Portada del fanfic",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cuadritos al estirar la captura",
+                "right": "Pixelado"
+              },
+              {
+                "left": "Cada cuadrito de un solo color",
+                "right": "Píxel"
+              },
+              {
+                "left": "Título que crece sin escalones",
+                "right": "Imagen vectorial"
+              },
+              {
+                "left": "Fondo, dibujo y título aparte",
+                "right": "Capas"
+              }
+            ],
+            "completion_feedback": "La portada mostró **píxeles**, el **pixelado** al estirar, un título **vectorial** y el trabajo por **capas**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte?",
+            "left_label": "Póster del torneo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Escudo de WhatsApp en cuadritos",
+                "right": "Baja resolución"
+              },
+              {
+                "left": "Escudo hecho de formas, nítido",
+                "right": "Imagen vectorial"
+              },
+              {
+                "left": "Verde brillante en el celular",
+                "right": "RGB"
+              },
+              {
+                "left": "Verde más apagado en la lona",
+                "right": "CMYK"
+              }
+            ],
+            "completion_feedback": "El póster mostró **baja resolución**, una imagen **vectorial** y la diferencia entre **RGB** y **CMYK**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte?",
+            "left_label": "Edit de Kazuha",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Captura chica que sale borrosa",
+                "right": "Baja resolución"
+              },
+              {
+                "left": "Quitarle los bordes negros",
+                "right": "Recortar"
+              },
+              {
+                "left": "Foto, brillitos y texto aparte",
+                "right": "Capas"
+              },
+              {
+                "left": "Letras que crecen sin deformarse",
+                "right": "Imagen vectorial"
+              }
+            ],
+            "completion_feedback": "Tu edit usó **recortar**, **capas** y letras **vectoriales**, y mostró el problema de la **baja resolución**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte?",
+            "left_label": "Miniatura",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Captura del mensaje estirada",
+                "right": "Pixelado"
+              },
+              {
+                "left": "Logo del canal, chico o gigante",
+                "right": "Imagen vectorial"
+              },
+              {
+                "left": "Captura, personaje y texto aparte",
+                "right": "Capas"
+              },
+              {
+                "left": "Tus 1280 × 720 puntos de color",
+                "right": "Resolución"
+              }
+            ],
+            "completion_feedback": "Tu miniatura mostró **resolución**, **pixelado**, un logo **vectorial** y **capas**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "tecnologia-y-sociedad-impacto-ambiental-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo de vida de un producto",
+        "steps": [
+          "Se extraen las materias primas de la naturaleza",
+          "Se fabrican las piezas y se arma el producto",
+          "Se transporta hasta la tienda o hasta tu casa",
+          "Se usa y, si es un aparato, consume energía",
+          "Se desecha, se recicla o va a un centro de acopio"
+        ],
+        "completion_feedback": "Todo producto recorre **extracción**, **fabricación**, **transporte**, **uso** y **desecho**, y **cada etapa tiene impacto**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué etapa del ciclo de vida es cada cosa?",
+            "left_label": "Cajas sorpresa",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El petróleo para el plástico",
+                "right": "Extracción"
+              },
+              {
+                "left": "Moldear y pintar la figura",
+                "right": "Fabricación"
+              },
+              {
+                "left": "El viaje en barco y camión",
+                "right": "Transporte"
+              },
+              {
+                "left": "Las bolsitas en la basura",
+                "right": "Desecho"
+              }
+            ],
+            "completion_feedback": "Cada figura pasa por **extracción**, **fabricación**, **transporte**, uso y **desecho**, y cada etapa deja huella. Ahora ponle nombre formal a ese viaje."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte de la historia?",
+            "left_label": "Jersey nuevo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cambiarlo aunque sigue bien",
+                "right": "Obsolescencia percibida"
+              },
+              {
+                "left": "Poliéster hecho de petróleo",
+                "right": "Extracción"
+              },
+              {
+                "left": "Tejer, estampar y coser",
+                "right": "Fabricación"
+              },
+              {
+                "left": "Regalarlo a la escuelita",
+                "right": "Reutilizar"
+              }
+            ],
+            "completion_feedback": "El jersey pasa por **extracción** y **fabricación**, y cambiarlo cuando sirve es **obsolescencia percibida**. **Reutilizar** alarga su vida. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte del viaje del álbum?",
+            "left_label": "Álbumes de ATEEZ",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Árboles para el papel",
+                "right": "Extracción"
+              },
+              {
+                "left": "Imprimir y armar el álbum",
+                "right": "Fabricación"
+              },
+              {
+                "left": "El viaje en avión o barco",
+                "right": "Transporte"
+              },
+              {
+                "left": "Cambiar photocards repetidas",
+                "right": "Reutilizar"
+              }
+            ],
+            "completion_feedback": "Cada álbum pasa por **extracción**, **fabricación** y **transporte** antes de llegar a ti, e intercambiar es **reutilizar**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto aparece en cada parte del cajón?",
+            "left_label": "Cajón de consolas",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Controles, cables y pilas viejas",
+                "right": "Residuos electrónicos"
+              },
+              {
+                "left": "El plomo de algunas soldaduras",
+                "right": "Metal pesado"
+              },
+              {
+                "left": "Minerales sacados de minas",
+                "right": "Extracción"
+              },
+              {
+                "left": "Regalarle la consola a tu primo",
+                "right": "Reutilizar"
+              }
+            ],
+            "completion_feedback": "El cajón está lleno de **residuos electrónicos** con **metales pesados**, que empezaron con la **extracción** de minerales. **Reutilizar** les da otra vida. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "propiedad-intelectual-uso-etico-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo usar bien una imagen ajena en un trabajo",
+        "steps": [
+          "Encontrar una imagen que sirva para tu trabajo",
+          "Revisar qué licencia tiene o pedir permiso al autor",
+          "Usarla solo como esa licencia o ese permiso lo deja",
+          "Escribir el crédito con autor, título y fuente"
+        ],
+        "completion_feedback": "Antes de usar algo ajeno se revisa la **licencia** o se pide **permiso**, se usa como está permitido y al final se da **crédito**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Fanart de Isagi",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tu dibujo, hecho trazo por trazo",
+                "right": "Obra propia"
+              },
+              {
+                "left": "Que pongan tu usuario como autor",
+                "right": "Derecho moral"
+              },
+              {
+                "left": "Ganar dinero con stickers del dibujo",
+                "right": "Derecho patrimonial"
+              },
+              {
+                "left": "Isagi y Rin, creados por otros",
+                "right": "Obra ajena"
+              }
+            ],
+            "completion_feedback": "Tu dibujo es **obra propia**, con **derecho moral** (crédito) y **patrimonial** (ganar dinero), pero el personaje es **obra ajena**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del jersey?",
+            "left_label": "Jersey pirata",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El escudo rojiblanco en el pecho",
+                "right": "Marca registrada"
+              },
+              {
+                "left": "La tela que deja salir el sudor",
+                "right": "Patente"
+              },
+              {
+                "left": "Quien registra escudos e inventos",
+                "right": "IMPI"
+              },
+              {
+                "left": "Copiarlo todo para venderlo",
+                "right": "Piratería"
+              }
+            ],
+            "completion_feedback": "El escudo es una **marca**, la tela puede tener **patente**, las dos las registra el **IMPI**, y venderlas copiadas es **piratería**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de tu edit?",
+            "left_label": "Edit de K-drama",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La canción de LE SSERAFIM",
+                "right": "Obra protegida"
+              },
+              {
+                "left": "Los anuncios pagan a los dueños",
+                "right": "Derecho patrimonial"
+              },
+              {
+                "left": "El aviso a los pocos minutos",
+                "right": "Detección automática"
+              },
+              {
+                "left": "La biblioteca de audio de YouTube",
+                "right": "Música con licencia"
+              }
+            ],
+            "completion_feedback": "La canción es una **obra protegida**, el dinero de los anuncios es **derecho patrimonial** de sus dueños y la salida legal es usar **música con licencia**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del juego de Dani?",
+            "left_label": "Juego de fans",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El código que programó Dani",
+                "right": "Obra propia"
+              },
+              {
+                "left": "Pikachu y Charizard",
+                "right": "Obra ajena"
+              },
+              {
+                "left": "El logo amarillo de Pokémon",
+                "right": "Marca registrada"
+              },
+              {
+                "left": "Lo que Dani debió pedir",
+                "right": "Permiso"
+              }
+            ],
+            "completion_feedback": "El código es **obra propia**, Pikachu es **obra ajena** y el logo es una **marca**: para usar lo ajeno hace falta **permiso**, aunque sea gratis. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "trabajo-colaborativo-en-la-nube-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo trabaja un equipo en la nube",
+        "steps": [
+          "Crear un solo archivo en una carpeta de la nube",
+          "Compartirlo con el equipo con el permiso adecuado",
+          "Escribir cada quien su parte en el mismo archivo",
+          "Revisar los comentarios y sugerencias de los demás",
+          "Entregar el enlace del archivo terminado"
+        ],
+        "completion_feedback": "Un trabajo en la nube va así: **un solo archivo**, **compartido con permisos**, **editado entre todos**, **revisado** y **entregado**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de la nube es cada cosa?",
+            "left_label": "Fanfic del club",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los cuatro escriben a la vez",
+                "right": "Edición simultánea"
+              },
+              {
+                "left": "Recuperar el capítulo borrado",
+                "right": "Historial de versiones"
+              },
+              {
+                "left": "Proponer un cambio sin borrar",
+                "right": "Modo sugerencia"
+              },
+              {
+                "left": "Un documento en vez de seis copias",
+                "right": "Una sola versión"
+              }
+            ],
+            "completion_feedback": "Escribir a la vez es **edición simultánea**, recuperar es el **historial de versiones**, proponer sin borrar es el **modo sugerencia** y todo vive en **una sola versión**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de la nube es cada cosa?",
+            "left_label": "Álbum de estampas",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Andrea marca en la compu y tú lo ves",
+                "right": "Sincronización"
+              },
+              {
+                "left": "Beto abre su lista en otro celular",
+                "right": "Respaldo en la nube"
+              },
+              {
+                "left": "Los cuatro editan la hoja a la vez",
+                "right": "Edición simultánea"
+              },
+              {
+                "left": "Sin datos ni wifi, no abre la hoja",
+                "right": "Necesita internet"
+              }
+            ],
+            "completion_feedback": "La **sincronización**, el **respaldo** y la **edición simultánea** son ventajas; **depender de internet** es una desventaja. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de la nube es cada cosa?",
+            "left_label": "Proyecto ATEEZ",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El enlace de editor publicado en X",
+                "right": "Riesgo de enlace abierto"
+              },
+              {
+                "left": "Regresar a la versión de anoche",
+                "right": "Historial de versiones"
+              },
+              {
+                "left": "Las de ortografía solo dejan notas",
+                "right": "Permiso de comentarista"
+              },
+              {
+                "left": "Cuatro organizadoras editan a la vez",
+                "right": "Edición simultánea"
+              }
+            ],
+            "completion_feedback": "Un **enlace abierto** es un riesgo, el **historial** lo arregla, el **comentarista** opina sin cambiar y la **edición simultánea** une al equipo. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de la nube es cada cosa?",
+            "left_label": "Guerra de clanes",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El plan vive en Google Docs",
+                "right": "Trabajo en la nube"
+              },
+              {
+                "left": "Ves el cursor de Ximena moverse",
+                "right": "Edición simultánea"
+              },
+              {
+                "left": "'Mejor la base 3 con dragones', al margen",
+                "right": "Comentario"
+              },
+              {
+                "left": "Volver a la versión de las 9:30",
+                "right": "Historial de versiones"
+              }
+            ],
+            "completion_feedback": "Un archivo en internet es **trabajo en la nube**; el cursor ajeno es **edición simultánea**; opinar al margen es un **comentario**; y volver atrás es el **historial de versiones**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "proyecto-tecnico-diseno-ejecucion-tec-2": {
+      "order_steps": {
+        "prompt": "Ordena cómo se lleva un proyecto del papel a la realidad",
+        "steps": [
+          "Hacer bocetos de la idea y elegir uno",
+          "Dibujar el plano con medidas a escala",
+          "Hacer la lista de materiales, el presupuesto y el cronograma",
+          "Construir siguiendo el plan, con seguridad y anotando en la bitácora",
+          "Evaluar con los criterios definidos y proponer mejoras"
+        ],
+        "completion_feedback": "Primero se **diseña** (boceto y plano), luego se **planea** (materiales, presupuesto y cronograma), se **ejecuta** con seguridad y bitácora, y al final se **evalúa**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "Espada de Asta",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Espada de 120 cm dibujada de 12 cm",
+                "right": "Plano a escala"
+              },
+              {
+                "left": "Primera espada de foami para probar",
+                "right": "Prototipo"
+              },
+              {
+                "left": "Tabla con lo que toca cada semana",
+                "right": "Cronograma"
+              },
+              {
+                "left": "Libreta con el problema del mango",
+                "right": "Bitácora"
+              }
+            ],
+            "completion_feedback": "Tu espada pasó por el **plano a escala**, el **prototipo**, el **cronograma** y la **bitácora**. Ahora ponle nombre formal a cada parte del proyecto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "Maqueta del Azteca",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cada cm del dibujo son 5 m",
+                "right": "Escala"
+              },
+              {
+                "left": "Diego corta y Sofía pinta",
+                "right": "Reparto de tareas"
+              },
+              {
+                "left": "Lentes al usar el cúter",
+                "right": "Medida de seguridad"
+              },
+              {
+                "left": "¿Se parece, mide bien y alcanzó?",
+                "right": "Criterios de evaluación"
+              }
+            ],
+            "completion_feedback": "La maqueta usó **escala**, **reparto de tareas**, **medidas de seguridad** y **criterios de evaluación**. Ahora ponle nombre formal a cada parte del proyecto."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "Photocards",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Organizador chiquito de papel",
+                "right": "Maqueta"
+              },
+              {
+                "left": "El primero de cartón con las 60",
+                "right": "Prototipo"
+              },
+              {
+                "left": "Tu hermana forra el organizador",
+                "right": "Responsable de tarea"
+              },
+              {
+                "left": "Que quepan las 60 sin doblarse",
+                "right": "Criterio de evaluación"
+              }
+            ],
+            "completion_feedback": "Tu organizador pasó por **maqueta**, **prototipo**, **reparto de tareas** y **criterios de evaluación**. Ahora ponle nombre formal a cada parte del proyecto."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "Stand gamer",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Primer dibujo, sin medidas",
+                "right": "Boceto"
+              },
+              {
+                "left": "Stand de 40 cm dibujado de 8 cm",
+                "right": "Escala 1:5"
+              },
+              {
+                "left": "Barras de lo que toca cada semana",
+                "right": "Diagrama de Gantt"
+              },
+              {
+                "left": "Firme, seguro, barato y bonito",
+                "right": "Criterios"
+              }
+            ],
+            "completion_feedback": "Tu stand pasó por **boceto**, **escala**, **diagrama de Gantt** y **criterios**. Ahora ponle nombre formal a cada parte del proyecto."
+          }
+        }
+      }
+    }
+  }
+}

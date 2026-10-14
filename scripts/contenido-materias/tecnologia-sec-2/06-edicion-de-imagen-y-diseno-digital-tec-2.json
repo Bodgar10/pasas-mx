@@ -1,0 +1,1857 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "edicion-de-imagen-y-diseno-digital-tec-2",
+  "order_steps": {
+    "prompt": "Ordena cómo se hace un diseño digital",
+    "steps": [
+      "Decidir dónde se va a usar: pantalla o impresión",
+      "Crear el lienzo con el tamaño correcto en píxeles",
+      "Poner fondo, imagen y texto cada uno en su capa",
+      "Revisar contraste, alineación y jerarquía",
+      "Exportar en el formato adecuado"
+    ],
+    "completion_feedback": "Primero se **decide el destino** (RGB o CMYK), luego el **lienzo**, las **capas**, la **revisión del diseño** y al final el **formato**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La portada de tu fanfic de Solo Leveling",
+        "content": "Terminaste el primer capítulo de tu fanfic de Solo Leveling y quieres subirlo a Wattpad con una portada que se vea pro. Guardas una imagen chiquita de Sung Jin-Woo que viste en un post y la estiras hasta el tamaño de la portada. Desastre: los bordes se llenan de escalones, la cara se ve borrosa y la sombra parece hecha de cuadritos. Le haces zoom en el editor y lo confirmas: toda la imagen es una cuadrícula de cuadritos diminutos, cada uno de un solo color. Tu imagen tenía muy pocos y, al estirarla, el programa solo los hizo más grandes; no puede inventar detalles que nunca tuvo. Tu prima, que dibuja en Krita, te presta un dibujo suyo de Jin-Woo hecho desde el inicio en tamaño grande, con muchísimos más cuadritos, y se ve nítido. Para el título usa letras hechas con formas en Canva: las agranda diez veces y siguen perfectas, sin un solo escalón. Además pone el fondo, el dibujo y el título cada uno en su propia capa, así mueve el título sin borrar nada. Por qué unas imágenes se llenan de cuadritos y otras no es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La portada ES una imagen digital hecha de píxeles",
+        "content": "Lo que acabas de ver con la portada de tu fanfic es exactamente cómo funciona una **imagen digital**. Cada cuadrito es un **píxel**: el punto mínimo de color. La **resolución** es el ancho × alto en píxeles; a más píxeles, más detalle y más peso del archivo. Si agrandas una imagen de **baja resolución**, se ve **pixelada**. Las fotos y los dibujos pintados son **mapas de bits** (hechos de píxeles); el título de Canva es **vectorial**: hecho de **formas matemáticas**, se escala sin perder calidad. Las **capas** separan cada elemento para editarlo sin afectar a los demás."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el sticker de Anya para WhatsApp",
+        "content": "Dibujaste a Anya de Spy x Family en Ibis Paint y quieres convertirla en sticker para el chat del grupo.\n\n**Paso 1:** Ajustas el lienzo a 512 × 512 píxeles, el tamaño cuadrado que usan los stickers → 262,144 píxeles.\n**Paso 2:** **Recortas** el espacio sobrante para que Anya ocupe casi todo el cuadro.\n**Paso 3:** Borras el fondo blanco y aparece un patrón de cuadros grises: eso significa **transparente**.\n**Paso 4:** La guardas en **JPG** y el fondo vuelve a salir blanco: el JPG **no admite transparencia**.\n**Paso 5:** La exportas en **PNG**, que guarda la transparencia y **no pierde calidad**.\n\nResultado: Anya aparece en el chat sin un cuadro blanco alrededor."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Píxel**: punto mínimo de color. **Resolución**: ancho × alto en píxeles (1920 × 1080 = 2,073,600). **Mapa de bits** = hecho de píxeles (fotos); **vectorial** = hecho de formas (logos, se escala sin perder calidad). **JPG**: fotos ligeras, con pérdida. **PNG**: sin pérdida y con transparencia. **GIF**: animación, máximo 256 colores. **RGB** = pantallas; **CMYK** = impresión."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Píxeles = los cuadritos de una captura del anime; vector = formas, como las letras de un título. Si preguntan qué se puede hacer enorme sin pixelarse, busca el logo o el SVG, nunca la foto ni la captura."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada decisión acerca tu portada a verse profesional.",
+        "data": {
+          "intro": "Tu primera portada era una captura estirada y llena de cuadritos. El medidor muestra qué tan lista está para Wattpad. Mejórala paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Cambias la captura chiquita por el dibujo de tu prima, hecho en alta resolución.",
+              "delta": 30
+            },
+            {
+              "text": "Pones el fondo, a Jin-Woo y el título cada uno en su propia capa.",
+              "delta": 20
+            },
+            {
+              "text": "Subes el brillo y el contraste solo a la capa del fondo, sin tocar el dibujo.",
+              "delta": 15
+            },
+            {
+              "text": "Haces el título más grande que tu nombre de autor: lo importante, más grande.",
+              "delta": 15
+            },
+            {
+              "text": "La exportas en JPG para que sea ligera, porque no necesita transparencia. ¡Portada lista!",
+              "delta": 10
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Píxeles o formas?",
+        "content": "Mapa de bits: hecho de píxeles, se pixela al agrandar (fotos, dibujos pintados, capturas). Vectorial: hecho de formas, se escala sin perder calidad (logos, títulos, íconos).",
+        "data": {
+          "prompt": "Arrastra cada imagen de tu portada a su categoría.",
+          "buckets": [
+            "Mapa de bits (píxeles)",
+            "Vectorial (formas)"
+          ],
+          "items": [
+            {
+              "t": "Captura de un episodio",
+              "b": 0
+            },
+            {
+              "t": "Título del fanfic en SVG",
+              "b": 1
+            },
+            {
+              "t": "Foto de tus figuras de colección",
+              "b": 0
+            },
+            {
+              "t": "Ícono de espada hecho con formas",
+              "b": 1
+            },
+            {
+              "t": "Dibujo pintado en Ibis Paint",
+              "b": 0
+            },
+            {
+              "t": "Logo que se agranda sin escalones",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de imagen digital con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Píxel",
+              "b": "Punto mínimo de color"
+            },
+            {
+              "a": "Resolución",
+              "b": "Ancho × alto en píxeles"
+            },
+            {
+              "a": "Vectorial",
+              "b": "Hecha de formas"
+            },
+            {
+              "a": "Capa",
+              "b": "Nivel que se edita aparte"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte?",
+        "left_label": "Portada del fanfic",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Cuadritos al estirar la captura",
+            "right": "Pixelado"
+          },
+          {
+            "left": "Cada cuadrito de un solo color",
+            "right": "Píxel"
+          },
+          {
+            "left": "Título que crece sin escalones",
+            "right": "Imagen vectorial"
+          },
+          {
+            "left": "Fondo, dibujo y título aparte",
+            "right": "Capas"
+          }
+        ],
+        "completion_feedback": "La portada mostró **píxeles**, el **pixelado** al estirar, un título **vectorial** y el trabajo por **capas**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Al estirar la imagen chiquita de Jin-Woo aparecen cuadritos. ¿Cómo se llama cada cuadrito?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un píxel"
+            },
+            {
+              "letter": "B",
+              "text": "Una capa"
+            },
+            {
+              "letter": "C",
+              "text": "Un vector"
+            },
+            {
+              "letter": "D",
+              "text": "Un filtro"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cada cuadrito de color es un píxel, el punto mínimo de una imagen digital. Al estirar una imagen chica, los píxeles se agrandan y se notan.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu prima dibuja en Krita una ilustración de 1920 × 1080 píxeles. ¿Cuántos píxeles tiene en total?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "3,000"
+            },
+            {
+              "letter": "B",
+              "text": "2,073,600"
+            },
+            {
+              "letter": "C",
+              "text": "1,920,000"
+            },
+            {
+              "letter": "D",
+              "text": "20,736"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Se multiplica ancho por alto: 1920 × 1080 = 2,073,600 píxeles. Sumar los dos lados daría 3,000, que es un error común.",
+          "difficulty": 2
+        },
+        {
+          "question": "Quieres que el título de tu fanfic sirva igual para la portada y para un cartel enorme en una convención. ¿Cómo conviene hacerlo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Como JPG chico"
+            },
+            {
+              "letter": "B",
+              "text": "Como captura"
+            },
+            {
+              "letter": "C",
+              "text": "Como vector"
+            },
+            {
+              "letter": "D",
+              "text": "Como GIF animado"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Un título vectorial está hecho de formas matemáticas, así que se escala a cualquier tamaño sin pixelarse. Un JPG o una captura son mapas de bits y se verían con escalones.",
+          "difficulty": 3
+        },
+        {
+          "question": "Quieres oscurecer solo el fondo de la portada sin cambiar el dibujo de Jin-Woo. ¿Qué te lo permite?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El formato GIF"
+            },
+            {
+              "letter": "B",
+              "text": "Las capas"
+            },
+            {
+              "letter": "C",
+              "text": "Bajar la resolución"
+            },
+            {
+              "letter": "D",
+              "text": "El modo CMYK"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Si cada elemento está en su capa, ajustas el brillo del fondo sin tocar el dibujo. Cambiar el formato o la resolución afecta a toda la imagen.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amigo dice: 'Si mi captura se ve pixelada, la agrando más y así gana detalle'. ¿Qué error comete?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Las capturas son vectoriales"
+            },
+            {
+              "letter": "B",
+              "text": "El pixelado se quita en GIF"
+            },
+            {
+              "letter": "C",
+              "text": "Solo pasa al imprimir en CMYK"
+            },
+            {
+              "letter": "D",
+              "text": "Agrandar no crea detalle"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Una imagen de mapa de bits tiene un número fijo de píxeles. Al agrandarla, cada píxel solo se estira; el detalle que no tenía no aparece.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El póster del torneo de tu secundaria",
+        "content": "Tu secundaria organiza el torneo de fútbol de fin de año y el profe de Educación Física te encarga el póster. Lo armas en Canva con el escudo de la escuela, que copiaste de la foto de perfil del grupo de WhatsApp. En tu celular se ve perfecto. Pero lo mandan a imprimir en una lona de un metro para la entrada y, cuando la cuelgan, el escudo parece hecho de cuadritos con bordes en escalón. La imagen de WhatsApp era muy pequeña: tenía pocos puntos de color y, al agrandarla tanto, cada punto se volvió un cuadro visible. El profe consigue el escudo original que hizo una diseñadora, en un archivo hecho de formas y no de puntos. Lo vuelven a imprimir y sale nítido, aunque sea enorme. Hay otra sorpresa: el verde brillante que veías en la pantalla salió más apagado en la lona. La pantalla arma los colores con luz y la impresora con tinta, y no dan exactamente lo mismo. Esos puntos, esas formas y esos dos tipos de color son la lección de hoy."
+      },
+      "explanation": {
+        "title": "El póster ES una imagen digital: píxeles, vectores y color",
+        "content": "Lo que acabas de ver con el póster del torneo es exactamente cómo funciona una **imagen digital**. Cada punto de color es un **píxel**. La **resolución** es el ancho × alto en píxeles; a más píxeles, más detalle y más peso. El escudo de WhatsApp tenía **baja resolución** y se **pixeló** al agrandarlo: era un **mapa de bits**. El escudo de la diseñadora es **vectorial**: hecho de **formas matemáticas**, se escala sin perder calidad. Y el color cambia: las pantallas usan **RGB** (luz) y las impresoras **CMYK** (tinta)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la gráfica de día de partido para Instagram",
+        "content": "Tu equipo juega la final el sábado y te toca hacer la publicación. La primera versión tiene cinco tipografías, letras amarillas sobre fondo blanco y diez balones decorativos.\n\n**Paso 1 — Jerarquía:** FINAL va enorme; la hora y la cancha, más chicas.\n**Paso 2 — Contraste:** cambias a letras blancas sobre fondo verde oscuro.\n**Paso 3 — Alineación:** todo el texto alineado a la izquierda, sobre la misma línea.\n**Paso 4 — Espacio en blanco:** quitas los balones y dejas aire alrededor del escudo.\n**Paso 5 — Pocas tipografías:** dejas solo dos, una para el título y otra para los datos.\n\nResultado: se entiende en dos segundos mientras alguien hace scroll."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Píxel**: punto mínimo de color. **Resolución**: ancho × alto en píxeles (1920 × 1080 = 2,073,600). **Mapa de bits** = hecho de píxeles (fotos); **vectorial** = hecho de formas (logos, se escala sin perder calidad). **JPG**: fotos ligeras, con pérdida. **PNG**: sin pérdida y con transparencia. **GIF**: animación, máximo 256 colores. **RGB** = pantallas; **CMYK** = impresión."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "RGB es la pantalla gigante del estadio: colores hechos con luz. CMYK es la lona impresa de la tribuna: colores hechos con tinta. Si el diseño se va a imprimir, piensa en CMYK."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada arreglo acerca tu póster a estar listo para la imprenta.",
+        "data": {
+          "intro": "Tu primer póster tenía el escudo pixelado y cinco tipografías. El medidor muestra qué tan listo está para imprimirse. Arréglalo paso a paso.",
+          "visual": "bar",
+          "start": 15,
+          "steps": [
+            {
+              "text": "Cambias el escudo de WhatsApp por el escudo vectorial en SVG de la diseñadora.",
+              "delta": 25
+            },
+            {
+              "text": "Pones el nombre del torneo enorme y la fecha y el lugar más chicos.",
+              "delta": 20
+            },
+            {
+              "text": "Dejas solo dos tipografías y alineas todo el texto a la izquierda.",
+              "delta": 20
+            },
+            {
+              "text": "Preparas el archivo en CMYK, el modelo de color de la impresión, y revisas el verde. ¡A la imprenta!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Pantalla o impresión?",
+        "content": "RGB: colores hechos con luz, para todo lo que se ve en una pantalla. CMYK: colores hechos con tinta, para todo lo que se imprime.",
+        "data": {
+          "prompt": "Arrastra cada pieza del torneo al modelo de color que le toca.",
+          "buckets": [
+            "RGB (pantalla)",
+            "CMYK (impresión)"
+          ],
+          "items": [
+            {
+              "t": "Lona impresa para la entrada",
+              "b": 1
+            },
+            {
+              "t": "Historia de Instagram del torneo",
+              "b": 0
+            },
+            {
+              "t": "Volantes en papel para los salones",
+              "b": 1
+            },
+            {
+              "t": "Video del resumen en YouTube",
+              "b": 0
+            },
+            {
+              "t": "Boletos impresos de la final",
+              "b": 1
+            },
+            {
+              "t": "Fondo de pantalla con el escudo",
+              "b": 0
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "RGB",
+              "b": "Color hecho con luz"
+            },
+            {
+              "a": "CMYK",
+              "b": "Color hecho con tinta"
+            },
+            {
+              "a": "SVG",
+              "b": "Formato vectorial"
+            },
+            {
+              "a": "Jerarquía",
+              "b": "Lo importante, más grande"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte?",
+        "left_label": "Póster del torneo",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Escudo de WhatsApp en cuadritos",
+            "right": "Baja resolución"
+          },
+          {
+            "left": "Escudo hecho de formas, nítido",
+            "right": "Imagen vectorial"
+          },
+          {
+            "left": "Verde brillante en el celular",
+            "right": "RGB"
+          },
+          {
+            "left": "Verde más apagado en la lona",
+            "right": "CMYK"
+          }
+        ],
+        "completion_feedback": "El póster mostró **baja resolución**, una imagen **vectorial** y la diferencia entre **RGB** y **CMYK**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "El póster del torneo se va a imprimir en una lona. ¿Qué modelo de color se usa para imprimir?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El de luz, RGB"
+            },
+            {
+              "letter": "B",
+              "text": "El de tinta, CMYK"
+            },
+            {
+              "letter": "C",
+              "text": "El vectorial, SVG"
+            },
+            {
+              "letter": "D",
+              "text": "El de fotos, JPG"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Lo impreso usa CMYK: cian, magenta, amarillo y negro, los colores de la tinta. RGB es para pantallas, y SVG y JPG son formatos de archivo, no modelos de color.",
+          "difficulty": 1
+        },
+        {
+          "question": "El escudo que copiaste de WhatsApp mide 200 × 200 píxeles. ¿Cuántos píxeles tiene en total?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "400"
+            },
+            {
+              "letter": "B",
+              "text": "4,000"
+            },
+            {
+              "letter": "C",
+              "text": "40,000"
+            },
+            {
+              "letter": "D",
+              "text": "400,000"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Se multiplica ancho por alto: 200 × 200 = 40,000 píxeles. Es muy poco para una lona de un metro, por eso se pixeló.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué el escudo de la diseñadora salió nítido aunque se imprimió enorme?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Es vectorial"
+            },
+            {
+              "letter": "B",
+              "text": "Se guardó en JPG"
+            },
+            {
+              "letter": "C",
+              "text": "Tiene más brillo"
+            },
+            {
+              "letter": "D",
+              "text": "Se imprimió en RGB"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El escudo vectorial está hecho de formas matemáticas que se recalculan a cualquier tamaño. Un JPG es mapa de bits y se pixela si le faltan píxeles.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la gráfica de la final, la palabra FINAL va enorme y la hora más chica. ¿Qué principio de diseño es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Alineación"
+            },
+            {
+              "letter": "B",
+              "text": "Transparencia"
+            },
+            {
+              "letter": "C",
+              "text": "Resolución"
+            },
+            {
+              "letter": "D",
+              "text": "Jerarquía"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La jerarquía hace más grande lo más importante para que se lea primero. La alineación acomoda los elementos sobre una misma línea.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu compañero pone letras amarillas sobre fondo blanco y cinco tipografías distintas. ¿Qué principios rompe?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Alineación y espacio en blanco"
+            },
+            {
+              "letter": "B",
+              "text": "Contraste y pocas tipografías"
+            },
+            {
+              "letter": "C",
+              "text": "Jerarquía y modelo de color RGB"
+            },
+            {
+              "letter": "D",
+              "text": "Resolución y formato de archivo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Amarillo sobre blanco casi no se distingue: falta contraste. Y cinco tipografías hacen que se vea desordenado; lo recomendable es usar pocas, una o dos.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Tu edit de Kazuha de LE SSERAFIM",
+        "content": "Quieres hacer un edit de Kazuha de LE SSERAFIM para el grupo de FEARNOT de tu salón. Primero tomas una captura de un video vertical, la recortas para quitarle los bordes negros y la agrandas para llenar el diseño. Se ve fatal: la cara borrosa y el contorno lleno de escalones. Al hacer zoom ves por qué: la imagen es una cuadrícula de puntos de color, y tu captura tenía muy pocos; al agrandarla, solo se estiraron. Entonces usas la foto oficial en alta calidad que publicó la agencia: tiene muchísimos más puntos y se ve nítida aunque la amplíes. Luego trabajas en orden: la foto en una capa, los brillitos en otra y el texto en otra. Subes el brillo y el contraste solo a la foto, sin tocar lo demás. Para el nombre del grupo usas letras hechas con formas, que puedes hacer enormes sin que se deformen. Y una regla del fandom: editas a tu idol para celebrarla, nunca la foto de alguien para burlarte. Esos puntos, esas formas y esas capas son la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu edit ES edición de imagen digital",
+        "content": "Lo que acabas de ver con tu edit de Kazuha es exactamente **edición de imagen digital**. Cada punto de color es un **píxel** y la **resolución** es el ancho × alto en píxeles: la captura tenía **baja resolución** y se **pixeló** al agrandarla. La foto oficial y la captura son **mapas de bits**; las letras hechas con formas son **vectoriales** y se escalan sin perder calidad. **Recortar** quita bordes, el **brillo y contraste** ajustan la luz, y las **capas** dejan editar cada elemento sin afectar a los demás."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — redimensionar el póster de Lovely Runner",
+        "content": "Quieres subir el póster de Lovely Runner a tu blog de K-dramas, pero la página acepta imágenes de máximo 600 píxeles de ancho. El póster mide 1200 × 1800.\n\n**Paso 1:** Calculas sus píxeles: 1200 × 1800 = **2,160,000**.\n**Paso 2:** Activas **mantener proporción** y escribes 600 de ancho.\n**Paso 3:** El programa calcula el alto solo: 600 es la mitad de 1200, así que el alto queda en 1800 ÷ 2 = **900**.\n**Paso 4:** Si escribieras 600 × 1800 sin proporción, los protagonistas saldrían **deformados**, flacos y estirados.\n**Paso 5:** La nueva imagen tiene 600 × 900 = **540,000** píxeles: la cuarta parte, así que pesa mucho menos.\n\nResultado: el póster se ve bien y carga rápido."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Píxel**: punto mínimo de color. **Resolución**: ancho × alto en píxeles (1920 × 1080 = 2,073,600). **Mapa de bits** = hecho de píxeles (fotos); **vectorial** = hecho de formas (logos, se escala sin perder calidad). **JPG**: fotos ligeras, con pérdida. **PNG**: sin pérdida y con transparencia. **GIF**: animación, máximo 256 colores. **RGB** = pantallas; **CMYK** = impresión."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Al redimensionar, mantén la proporción: si el ancho baja a la mitad, el alto también. Si cambias solo uno, tu idol sale estirada como en espejo de feria."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Sigue la cuenta de píxeles y descubre por qué la photocard se pixela.",
+        "data": {
+          "intro": "Escaneaste tu photocard de LE SSERAFIM a 600 × 900 píxeles y quieres usarla como fondo de celular de 1080 × 1620. Sigue cada paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "La photocard escaneada tiene 600 × 900 = 540,000 píxeles."
+            },
+            {
+              "text": "El fondo de celular necesita 1080 × 1620 = 1,749,600 píxeles: más del triple."
+            },
+            {
+              "text": "Al agrandarla, el programa no inventa detalle nuevo: estira los mismos píxeles para cubrir el espacio."
+            },
+            {
+              "text": "Por eso la foto se ve borrosa y con bordes en escalón: está pixelada."
+            },
+            {
+              "text": "Solución: volver a escanearla a mayor resolución desde el inicio."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "JPG, PNG o GIF",
+        "content": "JPG: fotos ligeras, con pérdida. PNG: sin pérdida y con transparencia. GIF: animaciones cortas de máximo 256 colores.",
+        "data": {
+          "prompt": "Arrastra cada archivo del fandom al formato que le conviene.",
+          "buckets": [
+            "JPG",
+            "PNG",
+            "GIF"
+          ],
+          "items": [
+            {
+              "t": "Foto del concierto que debe pesar poco",
+              "b": 0
+            },
+            {
+              "t": "Logo del fandom con fondo transparente",
+              "b": 1
+            },
+            {
+              "t": "Paso de baile corto que se repite",
+              "b": 2
+            },
+            {
+              "t": "Selfie del fanmeeting para el chat",
+              "b": 0
+            },
+            {
+              "t": "Póster editado que no debe perder calidad",
+              "b": 1
+            },
+            {
+              "t": "Reacción animada de tres segundos",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada formato o herramienta con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "JPG",
+              "b": "Fotos ligeras con pérdida"
+            },
+            {
+              "a": "PNG",
+              "b": "Transparencia sin pérdida"
+            },
+            {
+              "a": "GIF",
+              "b": "Animación corta"
+            },
+            {
+              "a": "Recortar",
+              "b": "Quitar bordes sobrantes"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte?",
+        "left_label": "Edit de Kazuha",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Captura chica que sale borrosa",
+            "right": "Baja resolución"
+          },
+          {
+            "left": "Quitarle los bordes negros",
+            "right": "Recortar"
+          },
+          {
+            "left": "Foto, brillitos y texto aparte",
+            "right": "Capas"
+          },
+          {
+            "left": "Letras que crecen sin deformarse",
+            "right": "Imagen vectorial"
+          }
+        ],
+        "completion_feedback": "Tu edit usó **recortar**, **capas** y letras **vectoriales**, y mostró el problema de la **baja resolución**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Quieres poner el logo de FEARNOT sobre tu edit sin que se vea un cuadro blanco alrededor. ¿En qué formato debe estar el logo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "JPG"
+            },
+            {
+              "letter": "B",
+              "text": "PNG"
+            },
+            {
+              "letter": "C",
+              "text": "RGB"
+            },
+            {
+              "letter": "D",
+              "text": "JPG en alta calidad"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "PNG admite transparencia, así que el logo queda sin fondo. JPG no guarda transparencia, aunque tenga alta calidad, y RGB es un modelo de color, no un formato.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu edit mide 1080 × 1080 píxeles. ¿Cuántos píxeles tiene en total?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "2,160"
+            },
+            {
+              "letter": "B",
+              "text": "116,640"
+            },
+            {
+              "letter": "C",
+              "text": "1,080,000"
+            },
+            {
+              "letter": "D",
+              "text": "1,166,400"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Se multiplica ancho por alto: 1080 × 1080 = 1,166,400 píxeles. Sumar los dos lados da 2,160, un error común.",
+          "difficulty": 2
+        },
+        {
+          "question": "Cambias el ancho del póster de Lovely Runner de 1200 a 600 sin tocar el alto de 1800. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sale deformado"
+            },
+            {
+              "letter": "B",
+              "text": "Gana resolución"
+            },
+            {
+              "letter": "C",
+              "text": "Se vuelve vectorial"
+            },
+            {
+              "letter": "D",
+              "text": "Pierde la transparencia"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Si cambias solo el ancho, la proporción se rompe y los personajes salen estirados. Hay que mantener la proporción: con 600 de ancho, el alto queda en 900.",
+          "difficulty": 3
+        },
+        {
+          "question": "Subes el brillo de la foto de Kazuha y los brillitos no cambian. ¿Por qué?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Tienen baja resolución"
+            },
+            {
+              "letter": "B",
+              "text": "Están en otra capa"
+            },
+            {
+              "letter": "C",
+              "text": "Están guardados en CMYK"
+            },
+            {
+              "letter": "D",
+              "text": "Son de formato vectorial"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cada capa se edita por separado: el ajuste de brillo solo afecta a la capa seleccionada. Por eso los brillitos, en su propia capa, quedan igual.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una compañera edita la foto de un compañero del salón para burlarse y la sube al grupo. ¿Qué está mal?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usa una resolución baja"
+            },
+            {
+              "letter": "B",
+              "text": "La guardó en formato JPG"
+            },
+            {
+              "letter": "C",
+              "text": "Daña a otra persona"
+            },
+            {
+              "letter": "D",
+              "text": "No usó capas al editar"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Editar la foto de alguien para burlarse lo daña y lo expone, sin importar el programa o el formato. Las herramientas de edición son para crear, no para humillar.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "La miniatura de tu gameplay de Fortnite",
+        "content": "Grabaste tu mejor partida de Fortnite y la vas a subir a tu canal de YouTube. Para la miniatura tomas una captura de un clip que te mandaste por mensaje, chiquita y comprimida, y la estiras al tamaño de miniatura, 1280 × 720. Al verla en la tele de la sala, tu skin se ve borrosa y los bordes parecen escaleras de cuadritos. Haces zoom y lo entiendes: la imagen es una cuadrícula de puntos de color, y tu captura tenía tan pocos que, al estirarla, cada uno se volvió un cuadro visible. Vuelves a sacar la captura directo de la grabación original, a tamaño completo, y ahora se ve nítida. El logo de tu canal es otra historia: lo hiciste con formas y lo puedes poner diminuto en la esquina o gigante en el banner, y siempre se ve limpio. Al final acomodas todo en partes separadas: la captura abajo, tu personaje encima y el texto hasta arriba, para mover cada cosa sin arruinar las demás. Esos puntos, esas formas y esas partes son la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu miniatura ES una imagen digital",
+        "content": "Lo que acabas de ver con la miniatura de tu gameplay es exactamente cómo funciona una **imagen digital**. Cada punto de color es un **píxel**. La **resolución** es el ancho × alto en píxeles: 1280 × 720 = 921,600 píxeles. A más píxeles, más detalle y más peso. La captura del mensaje tenía **baja resolución** y se **pixeló**: es un **mapa de bits**. El logo hecho con formas es **vectorial** y se escala sin perder calidad. Las partes separadas son **capas**: cada elemento se edita sin afectar a los demás."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el banner de tu equipo Pokémon en capas",
+        "content": "Quieres un banner para tu perfil con tu equipo Pokémon favorito y lo armas en GIMP.\n\n**Paso 1:** Creas un lienzo de 1920 × 1080 píxeles → 2,073,600 píxeles.\n**Paso 2:** Pones el fondo, un paisaje de tu partida, en la **capa** de abajo.\n**Paso 3:** Agregas a Pikachu, Lucario y Gengar, cada uno en su propia **capa**, encima del fondo.\n**Paso 4:** Bajas el **brillo** solo de la capa del fondo para que tus Pokémon resalten: ellos no cambian.\n**Paso 5:** Escribes tu nombre de entrenador en una capa hasta arriba y lo mueves sin borrar nada.\n\nResultado: si mañana cambias a Gengar por Charizard, solo reemplazas esa capa."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Píxel**: punto mínimo de color. **Resolución**: ancho × alto en píxeles (1920 × 1080 = 2,073,600). **Mapa de bits** = hecho de píxeles (fotos); **vectorial** = hecho de formas (logos, se escala sin perder calidad). **JPG**: fotos ligeras, con pérdida. **PNG**: sin pérdida y con transparencia. **GIF**: animación, máximo 256 colores. **RGB** = pantallas; **CMYK** = impresión."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Las capas son como los planos de un videojuego: el escenario atrás, los personajes en medio y el marcador hasta arriba. Puedes cambiar uno sin romper los otros."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada arreglo acerca tu miniatura a que la gente le dé clic.",
+        "data": {
+          "intro": "Tu primera miniatura era una captura estirada con letras chiquitas. El medidor muestra qué tan buena es. Mejórala paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Sacas la captura de la grabación original a 1280 × 720, en vez de estirar una chiquita.",
+              "delta": 30
+            },
+            {
+              "text": "Separas la captura, tu personaje y el texto, cada uno en su capa.",
+              "delta": 20
+            },
+            {
+              "text": "Escribes tres palabras enormes: lo importante, más grande.",
+              "delta": 20
+            },
+            {
+              "text": "Pones letras blancas con borde negro para que resalten del fondo.",
+              "delta": 15
+            },
+            {
+              "text": "La exportas en JPG para que sea ligera. ¡Lista para subir!",
+              "delta": 5
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ayuda o estorba",
+        "content": "Ayuda: contraste, jerarquía, alineación, espacio en blanco y pocas tipografías. Estorba: saturar, letras pequeñas o del mismo tono que el fondo.",
+        "data": {
+          "prompt": "Arrastra cada decisión de tu miniatura a su categoría.",
+          "buckets": [
+            "Ayuda",
+            "Estorba"
+          ],
+          "items": [
+            {
+              "t": "Tres palabras enormes y cortas",
+              "b": 0
+            },
+            {
+              "t": "Cinco tipografías diferentes",
+              "b": 1
+            },
+            {
+              "t": "Letras blancas con borde negro",
+              "b": 0
+            },
+            {
+              "t": "Letras grises sobre fondo gris",
+              "b": 1
+            },
+            {
+              "t": "Espacio libre alrededor de tu skin",
+              "b": 0
+            },
+            {
+              "t": "Quince emojis por toda la imagen",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de diseño con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Contraste",
+              "b": "Texto que resalta"
+            },
+            {
+              "a": "Alineación",
+              "b": "Elementos en línea"
+            },
+            {
+              "a": "Espacio en blanco",
+              "b": "Aire sin saturar"
+            },
+            {
+              "a": "Pixelado",
+              "b": "Imagen chica estirada"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte?",
+        "left_label": "Miniatura",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Captura del mensaje estirada",
+            "right": "Pixelado"
+          },
+          {
+            "left": "Logo del canal, chico o gigante",
+            "right": "Imagen vectorial"
+          },
+          {
+            "left": "Captura, personaje y texto aparte",
+            "right": "Capas"
+          },
+          {
+            "left": "Tus 1280 × 720 puntos de color",
+            "right": "Resolución"
+          }
+        ],
+        "completion_feedback": "Tu miniatura mostró **resolución**, **pixelado**, un logo **vectorial** y **capas**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "La miniatura mide 1280 × 720. ¿Qué indican esos dos números?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Colores y capas que tiene"
+            },
+            {
+              "letter": "B",
+              "text": "Ancho y alto en píxeles"
+            },
+            {
+              "letter": "C",
+              "text": "Peso del archivo en MB"
+            },
+            {
+              "letter": "D",
+              "text": "Brillo y contraste"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La resolución se escribe ancho × alto en píxeles: 1280 de ancho y 720 de alto. No indica colores, capas ni brillo.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Cuántos píxeles tiene en total una miniatura de 1280 × 720?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "921,600"
+            },
+            {
+              "letter": "B",
+              "text": "2,000"
+            },
+            {
+              "letter": "C",
+              "text": "92,160"
+            },
+            {
+              "letter": "D",
+              "text": "9,216,000"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Se multiplica ancho por alto: 1280 × 720 = 921,600 píxeles. Sumar los dos lados da 2,000, un error común.",
+          "difficulty": 2
+        },
+        {
+          "question": "Quieres un mini clip de tu baile de victoria que se repita en bucle y pese poco. ¿Qué formato eliges y qué sacrificas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "PNG; pierde la transparencia"
+            },
+            {
+              "letter": "B",
+              "text": "JPG; queda sin compresión"
+            },
+            {
+              "letter": "C",
+              "text": "SVG; se pixela al agrandar"
+            },
+            {
+              "letter": "D",
+              "text": "GIF; solo 256 colores"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El GIF guarda animaciones cortas en bucle, pero con máximo 256 colores, así que pierde algo de color. JPG y PNG son imágenes fijas, y un SVG no se pixela.",
+          "difficulty": 3
+        },
+        {
+          "question": "El título de tu miniatura está en letras grises sobre una captura gris y nadie lo lee. ¿Qué principio falla?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Jerarquía"
+            },
+            {
+              "letter": "B",
+              "text": "Contraste"
+            },
+            {
+              "letter": "C",
+              "text": "Resolución"
+            },
+            {
+              "letter": "D",
+              "text": "Alineación"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Gris sobre gris casi no se distingue: falta contraste. Letras claras con borde oscuro sobre un fondo oscuro, o al revés, se leen al instante.",
+          "difficulty": 2
+        },
+        {
+          "question": "Quieres usar el logo de tu canal en la miniatura y en una playera grande. ¿Qué archivo conviene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un JPG chiquito"
+            },
+            {
+              "letter": "B",
+              "text": "La captura en GIF"
+            },
+            {
+              "letter": "C",
+              "text": "El SVG vectorial"
+            },
+            {
+              "letter": "D",
+              "text": "Un PNG de 100 × 100"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El SVG es vectorial: está hecho de formas y se escala sin perder calidad, de una miniatura a una playera. Un PNG o JPG chico se pixelaría al agrandarlo.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama el punto mínimo de color de una imagen digital?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Píxel"
+        },
+        {
+          "letter": "B",
+          "text": "Vector"
+        },
+        {
+          "letter": "C",
+          "text": "Capa"
+        },
+        {
+          "letter": "D",
+          "text": "Filtro"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el cuadrito que ves al hacer mucho zoom a una foto.",
+      "explanation": "El píxel es el punto mínimo de color. Una imagen de mapa de bits es una cuadrícula de millones de píxeles."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué formato admite transparencia y no pierde calidad al guardar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "JPG"
+        },
+        {
+          "letter": "B",
+          "text": "PNG"
+        },
+        {
+          "letter": "C",
+          "text": "RGB"
+        },
+        {
+          "letter": "D",
+          "text": "CMYK"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el formato típico de los stickers sin fondo.",
+      "explanation": "PNG guarda sin pérdida y admite transparencia. JPG no guarda transparencia, y RGB y CMYK son modelos de color, no formatos."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué modelo de color usan las pantallas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "CMYK"
+        },
+        {
+          "letter": "B",
+          "text": "PNG"
+        },
+        {
+          "letter": "C",
+          "text": "RGB"
+        },
+        {
+          "letter": "D",
+          "text": "SVG"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en colores formados con luz, no con tinta.",
+      "explanation": "Las pantallas usan RGB: rojo, verde y azul hechos con luz. CMYK es para imprimir, y PNG y SVG son formatos de archivo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos programas sirve para editar imágenes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Excel"
+        },
+        {
+          "letter": "B",
+          "text": "Scratch"
+        },
+        {
+          "letter": "C",
+          "text": "Chrome"
+        },
+        {
+          "letter": "D",
+          "text": "GIMP"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Es un programa gratuito que se parece a Photoshop.",
+      "explanation": "GIMP es un editor de imágenes gratuito. Excel es hoja de cálculo, Scratch es para programar con bloques y Chrome es un navegador."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "Una imagen hecha de formas matemáticas que se escala sin perder calidad es…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Vectorial"
+        },
+        {
+          "letter": "B",
+          "text": "Mapa de bits"
+        },
+        {
+          "letter": "C",
+          "text": "Pixelada"
+        },
+        {
+          "letter": "D",
+          "text": "Comprimida"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el tipo de imagen que se usa para los logos.",
+      "explanation": "La imagen vectorial guarda formas, no píxeles, así que se puede agrandar sin pixelarse. Las fotos son mapas de bits."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué formato se usa normalmente para fotos porque genera archivos ligeros?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "GIF"
+        },
+        {
+          "letter": "B",
+          "text": "JPG"
+        },
+        {
+          "letter": "C",
+          "text": "SVG"
+        },
+        {
+          "letter": "D",
+          "text": "PNG"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Comprime la foto aunque pierda un poco de calidad.",
+      "explanation": "JPG comprime con pérdida: quita detalles que casi no se notan y deja archivos ligeros. Por eso es el formato típico de las fotos."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué modelo de color se usa para imprimir?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "RGB"
+        },
+        {
+          "letter": "B",
+          "text": "JPEG"
+        },
+        {
+          "letter": "C",
+          "text": "CMYK"
+        },
+        {
+          "letter": "D",
+          "text": "SVG"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en colores que se forman con tinta, no con luz.",
+      "explanation": "La impresión usa CMYK: cian, magenta, amarillo y negro, los colores de la tinta. RGB es para pantallas, y JPEG y SVG son formatos."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué formato se usa para animaciones cortas y tiene un máximo de 256 colores?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "JPG"
+        },
+        {
+          "letter": "B",
+          "text": "PNG"
+        },
+        {
+          "letter": "C",
+          "text": "SVG"
+        },
+        {
+          "letter": "D",
+          "text": "GIF"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Es el formato de las reacciones animadas que se repiten en bucle.",
+      "explanation": "El GIF guarda animaciones cortas en bucle, pero solo con 256 colores como máximo. JPG y PNG son imágenes fijas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué pasa si agrandas mucho una imagen pequeña de mapa de bits?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se pixela"
+        },
+        {
+          "letter": "B",
+          "text": "Gana detalle"
+        },
+        {
+          "letter": "C",
+          "text": "Se vuelve vectorial"
+        },
+        {
+          "letter": "D",
+          "text": "Cambia a CMYK"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa con los píxeles cuando los estiras.",
+      "explanation": "La imagen tiene un número fijo de píxeles; al agrandarla, cada uno se estira y se notan los cuadritos. No gana detalle."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirve recortar una imagen?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cambiar la imagen a vectorial"
+        },
+        {
+          "letter": "B",
+          "text": "Quitar las partes que sobran"
+        },
+        {
+          "letter": "C",
+          "text": "Subir el brillo de la foto"
+        },
+        {
+          "letter": "D",
+          "text": "Hacer que la foto se anime"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Es como usar tijeras en los bordes de una foto.",
+      "explanation": "Recortar elimina partes de la imagen que no necesitas, como bordes o espacio sobrante. No cambia el color ni el tipo de imagen."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una imagen mide 1920 × 1080 píxeles. ¿Cuántos píxeles tiene en total?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "3,000"
+        },
+        {
+          "letter": "B",
+          "text": "1,920,000"
+        },
+        {
+          "letter": "C",
+          "text": "2,073,600"
+        },
+        {
+          "letter": "D",
+          "text": "207,360"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Multiplica el ancho por el alto, no los sumes.",
+      "explanation": "Se multiplica: 1920 × 1080 = 2,073,600 píxeles. Sumar los lados da 3,000, que es el error más común."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué ventaja tiene trabajar con capas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que la imagen nunca se pixele al agrandarla"
+        },
+        {
+          "letter": "B",
+          "text": "Que el archivo pese menos al guardarlo"
+        },
+        {
+          "letter": "C",
+          "text": "Que los colores se impriman igual"
+        },
+        {
+          "letter": "D",
+          "text": "Editar un elemento sin afectar otros"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en hojas transparentes encimadas, cada una con algo distinto.",
+      "explanation": "Cada elemento va en su capa, así que puedes mover, borrar o ajustar uno sin tocar los demás. Las capas no evitan el pixelado ni cambian el color de impresión."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Quieres reducir una foto de 1000 × 800 a 500 de ancho manteniendo la proporción. ¿Qué alto queda?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "400"
+        },
+        {
+          "letter": "B",
+          "text": "800"
+        },
+        {
+          "letter": "C",
+          "text": "500"
+        },
+        {
+          "letter": "D",
+          "text": "300"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Si el ancho baja a la mitad, ¿qué le pasa al alto?",
+      "explanation": "El ancho bajó a la mitad (de 1000 a 500), así que el alto también: 800 ÷ 2 = 400. Dejar 800 deformaría la foto."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué principio de diseño consiste en hacer más grande lo más importante?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Contraste"
+        },
+        {
+          "letter": "B",
+          "text": "Jerarquía"
+        },
+        {
+          "letter": "C",
+          "text": "Alineación"
+        },
+        {
+          "letter": "D",
+          "text": "Resolución"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué lee primero la gente al ver un póster.",
+      "explanation": "La jerarquía ordena la importancia: lo más importante va más grande para que se lea primero."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos es un programa gratuito pensado para pintar y dibujar en la computadora?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Excel"
+        },
+        {
+          "letter": "B",
+          "text": "Scratch"
+        },
+        {
+          "letter": "C",
+          "text": "Krita"
+        },
+        {
+          "letter": "D",
+          "text": "PowerPoint"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Muchos ilustradores lo usan para pintar fanart con pinceles digitales.",
+      "explanation": "Krita es un programa gratuito de pintura digital. Excel es hoja de cálculo, Scratch es para programar y PowerPoint, para presentaciones."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué un logo conviene hacerlo vectorial?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Admite más colores que una foto"
+        },
+        {
+          "letter": "B",
+          "text": "Se ve igual en pantalla e impresión"
+        },
+        {
+          "letter": "C",
+          "text": "Se puede animar como un GIF"
+        },
+        {
+          "letter": "D",
+          "text": "Se escala sin perder calidad"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Un logo se usa en tamaños muy distintos: de un ícono a un espectacular.",
+      "explanation": "Al ser formas matemáticas, el logo vectorial se recalcula a cualquier tamaño sin pixelarse. El color en pantalla o impresión depende de RGB y CMYK, no del tipo de imagen."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Al guardar un sticker en JPG, el fondo transparente se vuelve blanco. ¿Por qué?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "JPG no admite transparencia"
+        },
+        {
+          "letter": "B",
+          "text": "El sticker tenía pocas capas"
+        },
+        {
+          "letter": "C",
+          "text": "La imagen estaba en CMYK"
+        },
+        {
+          "letter": "D",
+          "text": "El JPG la volvió vectorial"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No todos los formatos pueden guardar zonas sin color.",
+      "explanation": "JPG no guarda transparencia, así que rellena el fondo con un color. Para un sticker sin fondo se usa PNG."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un póster tiene letras azul marino sobre fondo negro y nadie las lee. ¿Qué principio falla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Jerarquía"
+        },
+        {
+          "letter": "B",
+          "text": "Contraste"
+        },
+        {
+          "letter": "C",
+          "text": "Alineación"
+        },
+        {
+          "letter": "D",
+          "text": "Resolución"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate qué tan distintos son el color de la letra y el del fondo.",
+      "explanation": "Azul marino y negro son muy oscuros los dos: casi no hay contraste. Letra clara sobre fondo oscuro, o al revés, se lee mejor."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una foto pasa de 800 × 600 a 1600 × 1200 píxeles. ¿Cuántas veces más píxeles tiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "2 veces"
+        },
+        {
+          "letter": "B",
+          "text": "8 veces"
+        },
+        {
+          "letter": "C",
+          "text": "4 veces"
+        },
+        {
+          "letter": "D",
+          "text": "Igual"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Calcula el total de píxeles antes y después, y compáralos.",
+      "explanation": "Antes: 800 × 600 = 480,000. Después: 1600 × 1200 = 1,920,000. Son 4 veces más, porque se duplicaron el ancho y el alto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué hace subir el contraste de una foto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Aclara toda la foto por igual"
+        },
+        {
+          "letter": "B",
+          "text": "Quita las partes que sobran"
+        },
+        {
+          "letter": "C",
+          "text": "Cambia el tamaño en píxeles"
+        },
+        {
+          "letter": "D",
+          "text": "Separa más claros y oscuros"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "No es lo mismo que el brillo: piensa en la diferencia entre zonas.",
+      "explanation": "El contraste aumenta la diferencia entre las zonas claras y las oscuras. Aclarar todo por igual es subir el brillo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Tienes una foto de 3000 × 2000 y la reduces a 1500 × 1000. ¿Qué pasa con el total de píxeles?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Queda en la cuarta parte"
+        },
+        {
+          "letter": "B",
+          "text": "Queda en la mitad"
+        },
+        {
+          "letter": "C",
+          "text": "Se queda igual, solo cambia el tamaño"
+        },
+        {
+          "letter": "D",
+          "text": "Aumenta al doble"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Calcula el total antes y después; se redujeron el ancho y el alto.",
+      "explanation": "Antes: 3000 × 2000 = 6,000,000. Después: 1500 × 1000 = 1,500,000, la cuarta parte. Al reducir ambos lados a la mitad, los píxeles se dividen entre cuatro."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un diseño se ve con colores brillantes en la pantalla pero sale más apagado al imprimirlo. ¿Cuál es la causa más probable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La imagen era vectorial"
+        },
+        {
+          "letter": "B",
+          "text": "Pantalla RGB e impresión CMYK"
+        },
+        {
+          "letter": "C",
+          "text": "El archivo se guardó con muchas capas"
+        },
+        {
+          "letter": "D",
+          "text": "La resolución era demasiado alta"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La pantalla y la impresora forman los colores de maneras distintas.",
+      "explanation": "La pantalla forma colores con luz (RGB) y la impresora con tinta (CMYK). Algunos colores muy brillantes de pantalla no se pueden lograr con tinta."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Quieres una animación corta con un degradado de miles de colores. ¿Qué problema tendría el GIF?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No admite animaciones"
+        },
+        {
+          "letter": "B",
+          "text": "No se puede ver en celulares"
+        },
+        {
+          "letter": "C",
+          "text": "Solo maneja 256 colores"
+        },
+        {
+          "letter": "D",
+          "text": "Es un formato vectorial"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda el límite de colores de este formato.",
+      "explanation": "El GIF tiene un máximo de 256 colores, así que un degradado de miles se ve con franjas o puntitos. Sí admite animación."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué diseño cumple mejor los principios de diseño?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Seis tipografías y todo el espacio lleno"
+        },
+        {
+          "letter": "B",
+          "text": "Texto gris claro sobre fondo blanco"
+        },
+        {
+          "letter": "C",
+          "text": "Todo del mismo tamaño y sin alinear"
+        },
+        {
+          "letter": "D",
+          "text": "Título grande, dos tipografías y aire"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Revisa cada opción contra jerarquía, contraste y espacio en blanco.",
+      "explanation": "Un título grande marca la jerarquía, pocas tipografías dan orden y el espacio en blanco evita saturar. Las demás opciones rompen al menos un principio."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Encuentras en el grupo una foto de un compañero editada para burlarse de él. ¿Qué es lo correcto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No compartirla y avisar a un adulto"
+        },
+        {
+          "letter": "B",
+          "text": "Reenviarla porque ya es pública"
+        },
+        {
+          "letter": "C",
+          "text": "Editarla todavía más para que dé risa"
+        },
+        {
+          "letter": "D",
+          "text": "Reaccionar con risa sin reenviarla"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cómo se sentiría la persona de la foto.",
+      "explanation": "Editar fotos de otros para burlarse daña a la persona. No compartirla y avisar a un adulto de confianza corta la cadena. Reaccionar con risa también la alimenta."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Necesitas el escudo de tu escuela para un sello chico y para una lona de 3 metros. ¿Qué formato pides?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "JPG"
+        },
+        {
+          "letter": "B",
+          "text": "SVG"
+        },
+        {
+          "letter": "C",
+          "text": "PNG"
+        },
+        {
+          "letter": "D",
+          "text": "GIF"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el formato que guarda formas en lugar de píxeles.",
+      "explanation": "SVG es vectorial: se escala de un sello a una lona sin perder calidad. JPG, PNG y GIF son mapas de bits y se pixelarían al agrandarlos tanto."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una foto de 4000 × 3000 pesa demasiado para mandarla por correo. ¿Qué conviene más?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Guardarla en PNG sin pérdida"
+        },
+        {
+          "letter": "B",
+          "text": "Convertirla a SVG vectorial"
+        },
+        {
+          "letter": "C",
+          "text": "Reducirla y guardarla en JPG"
+        },
+        {
+          "letter": "D",
+          "text": "Agrandarla para que se vea mejor"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en qué reduce el número de píxeles y qué formato comprime fotos.",
+      "explanation": "Menos píxeles y la compresión del JPG bajan mucho el peso. PNG sin pérdida pesa más en fotos, y una foto no se vuelve vectorial al cambiarle el formato."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Ajustas el brillo y toda la imagen cambia, incluido el texto que querías dejar igual. ¿Qué error cometiste?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La resolución era muy baja"
+        },
+        {
+          "letter": "B",
+          "text": "Trabajaste en modelo RGB"
+        },
+        {
+          "letter": "C",
+          "text": "Usaste el formato PNG"
+        },
+        {
+          "letter": "D",
+          "text": "Todo estaba en una capa"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en cómo separar los elementos para editarlos por partes.",
+      "explanation": "Si todo está en una sola capa, cualquier ajuste afecta a todo. Con el texto en su propia capa, el brillo solo cambia la capa seleccionada."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un logo vectorial y una foto se agrandan diez veces. ¿Qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La foto se pixela; el logo no"
+        },
+        {
+          "letter": "B",
+          "text": "Los dos se pixelan igual"
+        },
+        {
+          "letter": "C",
+          "text": "El logo se pixela; la foto no"
+        },
+        {
+          "letter": "D",
+          "text": "Ninguno cambia en absoluto"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Compara una imagen hecha de píxeles con una hecha de formas.",
+      "explanation": "La foto es mapa de bits: sus píxeles se estiran y se notan. El logo vectorial se recalcula desde sus formas y sigue nítido."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Vas a diseñar un póster para imprimir y también para publicarlo en redes. ¿Qué es lo más adecuado?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Usar RGB en los dos casos"
+        },
+        {
+          "letter": "B",
+          "text": "Imprimir en CMYK y publicar en RGB"
+        },
+        {
+          "letter": "C",
+          "text": "Usar CMYK en los dos casos"
+        },
+        {
+          "letter": "D",
+          "text": "Usar GIF para que tenga muchos más colores"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Cada destino forma el color de una manera distinta.",
+      "explanation": "Lo impreso se prepara en CMYK, porque usa tinta, y lo que va a pantallas en RGB, porque usa luz. Un GIF tiene máximo 256 colores, no más."
+    }
+  ],
+  "diagnostic": {
+    "question": "Una imagen mide 640 × 480 píxeles. ¿Cuántos píxeles tiene en total?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "1,120"
+      },
+      {
+        "letter": "B",
+        "text": "307,200"
+      },
+      {
+        "letter": "C",
+        "text": "30,720"
+      },
+      {
+        "letter": "D",
+        "text": "3,072,000"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "Se multiplica ancho por alto: 640 × 480 = 307,200 píxeles. Sumar los lados da 1,120, que es el error más común."
+  }
+}

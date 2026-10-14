@@ -1,0 +1,1478 @@
+{
+  "subject": "tecnologia-sec-2",
+  "topic": "tecnologia-y-sociedad-impacto-ambiental-tec-2",
+  "order_steps": {
+    "prompt": "Ordena el ciclo de vida de un producto",
+    "steps": [
+      "Se extraen las materias primas de la naturaleza",
+      "Se fabrican las piezas y se arma el producto",
+      "Se transporta hasta la tienda o hasta tu casa",
+      "Se usa y, si es un aparato, consume energía",
+      "Se desecha, se recicla o va a un centro de acopio"
+    ],
+    "completion_feedback": "Todo producto recorre **extracción**, **fabricación**, **transporte**, **uso** y **desecho**, y **cada etapa tiene impacto**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Las cajas sorpresa de Anya",
+        "content": "En la convención de anime hay un puesto de cajas sorpresa de Spy x Family. Cada caja trae una figura de plástico al azar y tú quieres a Anya con su famosa cara de 'heh'. Abres la primera: Bond. La segunda: Loid. La tercera: otra vez Bond. La cuarta: Yor. A la quinta por fin sale Anya. Llegas a casa feliz, pero en tu cama queda un montón: cinco cajas de cartón, cinco bolsitas de plástico, cinco instructivos y cuatro figuras que no buscabas. Te pones a pensar de dónde salió todo eso. El plástico se hizo a partir del petróleo que alguien sacó de la tierra. Las figuras se moldearon y pintaron en una fábrica que usa energía y agua. Luego viajaron muy lejos en barco y en camión hasta llegar a la convención. Tú las disfrutaste un rato y, si las bolsitas y las figuras repetidas terminan en la basura, ahí se quedan muchísimos años. Nadie hizo nada malo: así funciona casi todo lo que compramos. Ver el viaje completo de un producto, desde que nace hasta que se tira, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El viaje de la figura ES su ciclo de vida",
+        "content": "Lo que acabas de ver con las cajas sorpresa es exactamente el **ciclo de vida de un producto**: **extracción de materias primas** (el petróleo para el plástico), **fabricación** (moldear y pintar), **transporte** (barco y camión), **uso** y **desecho**. **Cada etapa tiene impacto ambiental**: gasta energía, agua o materiales y genera residuos. La tecnología trae **impactos positivos** (la figura te alegra, da empleo) y **negativos** (basura, contaminación). Por eso existe el **consumo responsable**: elegir con información para que lo que compras dure y no termine en la basura antes de tiempo."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu cosplay de Deku con las R",
+        "content": "Quieres ir de Deku (My Hero Academia) a la próxima convención sin generar basura de más. Aplica las R.\n\n**Paso 1 — Rechazar:** no compras la peluca desechable que se maltrata en un día.\n**Paso 2 — Reducir:** haces una lista y compras solo lo que de verdad te falta.\n**Paso 3 — Reutilizar:** usas un pants verde que ya tenías como base del traje.\n**Paso 4 — Reparar:** pegas la suela de tus tenis rojos en vez de comprar otros.\n**Paso 5 — Reciclar:** las bolsas y cajas de lo que sí compraste van al contenedor de reciclaje.\n\nResultado: el mismo cosplay con mucho menos residuo, y al final hasta puedes donarlo al club."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **ciclo de vida** de un producto es **extracción → fabricación → transporte → uso → desecho**, y cada etapa tiene impacto. **Obsolescencia programada**: se diseña para durar poco. **Percibida**: lo cambias por moda aunque funcione. Los **residuos electrónicos** van a **centros de acopio**. **Consumo responsable**: rechazar, reducir, reutilizar, reparar y reciclar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Recuerda el viaje de la figura: sale de la tierra, la fabrican, viaja, la usas y se tira. Si te preguntan en qué etapa hay impacto ambiental, la respuesta es en todas, no solo en la basura."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada etapa del ciclo de vida de la figura deja una huella en el ambiente.",
+        "data": {
+          "intro": "Vas a seguir el viaje completo de tu figura de Anya, desde antes de existir hasta después de tirarla. Fíjate qué impacto deja cada etapa.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Extracción: se saca petróleo de la tierra para hacer el plástico. Eso gasta energía y altera el lugar de donde se saca."
+            },
+            {
+              "text": "Fabricación: en la fábrica se moldea y se pinta la figura con máquinas que usan electricidad y agua."
+            },
+            {
+              "text": "Transporte: barcos y camiones queman combustible para llevarla hasta la convención."
+            },
+            {
+              "text": "Uso: la figura no gasta energía, pero su caja y su bolsita se vuelven basura en cuanto la abres."
+            },
+            {
+              "text": "Desecho: si la figura repetida va a la basura común, su plástico tarda muchísimos años en degradarse. Si la intercambias, su vida sigue."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué R estás usando?",
+        "content": "Rechazar: no aceptas lo que no necesitas. Reutilizar: le das otro uso o alguien más lo usa. Reparar: lo arreglas. Reciclar: lo conviertes en material nuevo.",
+        "data": {
+          "prompt": "Arrastra cada acción del club de anime a la R que aplica.",
+          "buckets": [
+            "Rechazar",
+            "Reutilizar",
+            "Reparar",
+            "Reciclar"
+          ],
+          "items": [
+            {
+              "t": "No aceptas la bolsa de plástico del puesto",
+              "b": 0
+            },
+            {
+              "t": "Cambias tus figuras repetidas en el club",
+              "b": 1
+            },
+            {
+              "t": "Pegas el brazo roto de tu figura de Luffy",
+              "b": 2
+            },
+            {
+              "t": "Llevas las cajas de cartón al reciclaje",
+              "b": 3
+            },
+            {
+              "t": "Usas la caja vacía para guardar tus pines",
+              "b": 1
+            },
+            {
+              "t": "Coses el botón de tu capa de Akatsuki",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de impacto ambiental con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Extracción",
+              "b": "Sacar petróleo"
+            },
+            {
+              "a": "Transporte",
+              "b": "Barco y camión"
+            },
+            {
+              "a": "Obsolescencia percibida",
+              "b": "Cambiar por moda"
+            },
+            {
+              "a": "Residuo electrónico",
+              "b": "Tableta de dibujo rota"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué etapa del ciclo de vida es cada cosa?",
+        "left_label": "Cajas sorpresa",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El petróleo para el plástico",
+            "right": "Extracción"
+          },
+          {
+            "left": "Moldear y pintar la figura",
+            "right": "Fabricación"
+          },
+          {
+            "left": "El viaje en barco y camión",
+            "right": "Transporte"
+          },
+          {
+            "left": "Las bolsitas en la basura",
+            "right": "Desecho"
+          }
+        ],
+        "completion_feedback": "Cada figura pasa por **extracción**, **fabricación**, **transporte**, uso y **desecho**, y cada etapa deja huella. Ahora ponle nombre formal a ese viaje."
+      },
+      "quiz": [
+        {
+          "question": "En el viaje de la figura de Anya, sacar petróleo de la tierra para hacer el plástico es la etapa de…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Extracción"
+            },
+            {
+              "letter": "B",
+              "text": "Fabricación"
+            },
+            {
+              "letter": "C",
+              "text": "Transporte"
+            },
+            {
+              "letter": "D",
+              "text": "Desecho"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Obtener materias primas de la naturaleza es la extracción, la primera etapa del ciclo de vida. Moldear la figura sería fabricación y llevarla a la convención, transporte.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu figura favorita está perfecta, pero la quieres cambiar por la nueva edición solo porque se ve más bonita. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Obsolescencia programada"
+            },
+            {
+              "letter": "B",
+              "text": "Obsolescencia percibida"
+            },
+            {
+              "letter": "C",
+              "text": "Reciclaje"
+            },
+            {
+              "letter": "D",
+              "text": "Reparación"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es obsolescencia percibida: el producto sigue funcionando, pero lo sientes viejo por moda. Sería programada si la figura estuviera diseñada para romperse pronto.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un amigo dice: 'Las figuras no contaminan porque no usan pilas ni electricidad'. ¿Qué está olvidando?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que fabricarla y transportarla también deja impacto"
+            },
+            {
+              "letter": "B",
+              "text": "Que el plástico se degrada solo en unas semanas"
+            },
+            {
+              "letter": "C",
+              "text": "Que solo los aparatos con pila cuentan como basura"
+            },
+            {
+              "letter": "D",
+              "text": "Que las figuras de plástico son residuos electrónicos"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Aunque no gaste energía al usarla, para existir se extrajo petróleo, se fabricó y viajó en barco y camión. El impacto está en todo el ciclo de vida, no solo en el uso.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el club de anime cambias tus figuras repetidas por las que te faltan. ¿Qué R aplicas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Reciclar en un contenedor"
+            },
+            {
+              "letter": "B",
+              "text": "Reutilizar"
+            },
+            {
+              "letter": "C",
+              "text": "Rechazar"
+            },
+            {
+              "letter": "D",
+              "text": "Reparar"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Intercambiar es reutilizar: la figura sigue en uso con otra persona en vez de ir a la basura. Reciclar sería convertir su plástico en material nuevo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tableta de dibujo ya no prende y no tiene arreglo. ¿Qué es lo más responsable?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Llevarla a un centro de acopio"
+            },
+            {
+              "letter": "B",
+              "text": "Tirarla en la basura de la casa"
+            },
+            {
+              "letter": "C",
+              "text": "Guardarla en un cajón para siempre"
+            },
+            {
+              "letter": "D",
+              "text": "Desarmarla y tirar las piezas"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es un residuo electrónico: puede tener metales pesados como plomo o mercurio que contaminan suelo y agua si van a la basura común. En un centro de acopio se manejan de forma segura.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El jersey nuevo de cada temporada",
+        "content": "Cada temporada tu equipo de la Liga MX presenta jersey nuevo: el de local, el de visitante y, a veces, uno más. El anuncio sale con un video épico, los jugadores lo modelan y en la escuela medio salón ya lo trae. Tú tienes el de la temporada pasada. Está completo, sin un hoyo, con el escudo bien pegado. Funciona perfecto. Pero de repente se siente viejo y te dan ganas de cambiarlo. Piensa en lo que hay detrás de cada jersey. La tela suele ser poliéster, una fibra que se hace a partir del petróleo. Se teje, se corta, se estampa y se cose en fábricas que usan energía, agua y tintes. Luego viaja en barco y camión hasta la tienda. Lo usas unos meses y, cuando sale el siguiente, el anterior termina en el fondo del clóset o en la basura. No está mal querer el jersey de tu equipo: es parte de la pasión. Pero cambiar algo que sirve solo porque salió otro tiene un costo para el planeta que casi nunca se ve. Esa cadena es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Cambiar un jersey que sirve ES obsolescencia percibida",
+        "content": "Lo que acabas de ver con el jersey es exactamente la **obsolescencia percibida**: cambiar algo que **todavía funciona** porque la moda o la publicidad lo hacen sentir viejo. Es distinta de la **obsolescencia programada**, cuando un producto se **diseña para durar poco**. Además, todo producto tiene un **ciclo de vida**: **extracción** (petróleo para el poliéster), **fabricación**, **transporte**, **uso** y **desecho**, y **cada etapa tiene impacto**. El **consumo responsable** no es dejar de comprar: es elegir lo **durable**, **reutilizar**, **reparar** y **donar** lo que ya no usas."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la noche de Champions en tu casa",
+        "content": "Terminó el partido de Champions y en la sala todo sigue conectado. Revisa el consumo de energía.\n\n**Paso 1:** La tele se apagó con el control, pero sigue con la lucecita roja → está en **modo espera** y consume energía.\n**Paso 2:** La consola donde jugaste EA SPORTS FC en el medio tiempo quedó en reposo → también está en **modo espera**.\n**Paso 3:** El cargador del celular sigue en el enchufe sin el celular → puede gastar un poco de energía.\n**Paso 4:** Conectas todo a un multicontacto con apagador y lo apagas al terminar.\n**Paso 5:** Gran parte de la electricidad se produce quemando combustibles, así que gastar menos hace más pequeña tu **huella de carbono**.\n\nResultado: el mismo partido, menos energía tirada."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **ciclo de vida** de un producto es **extracción → fabricación → transporte → uso → desecho**, y cada etapa tiene impacto. **Obsolescencia programada**: se diseña para durar poco. **Percibida**: lo cambias por moda aunque funcione. Los **residuos electrónicos** van a **centros de acopio**. **Consumo responsable**: rechazar, reducir, reutilizar, reparar y reciclar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Para no confundirte, pregúntate: ¿se descompuso o solo pasó de moda? Si el fabricante hizo que dure poco, es programada. Si funciona bien pero lo sientes viejo, como el jersey de la temporada pasada, es percibida."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada decisión alarga la vida útil de tu jersey de la temporada pasada.",
+        "data": {
+          "intro": "Salió el jersey nuevo y el tuyo sigue en buen estado. El medidor muestra cuánto aprovechas su vida útil. Sigue cada decisión.",
+          "visual": "bar",
+          "start": 30,
+          "steps": [
+            {
+              "text": "Antes de comprar, te preguntas si de verdad lo necesitas o si es solo por la moda.",
+              "delta": 15
+            },
+            {
+              "text": "Le coses el número que se estaba despegando en lugar de tirarlo.",
+              "delta": 20
+            },
+            {
+              "text": "Lo sigues usando para jugar en la cancha de la colonia.",
+              "delta": 15
+            },
+            {
+              "text": "Cuando ya no te queda, lo donas a la escuelita de fútbol de tu colonia. ¡Su vida sigue!",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Programada o percibida?",
+        "content": "Programada: el producto se diseña para fallar o durar poco. Percibida: funciona bien, pero lo cambias por moda.",
+        "data": {
+          "prompt": "Arrastra cada caso a su tipo de obsolescencia.",
+          "buckets": [
+            "Obsolescencia programada",
+            "Obsolescencia percibida"
+          ],
+          "items": [
+            {
+              "t": "Tacos con suela diseñada para despegarse pronto",
+              "b": 0
+            },
+            {
+              "t": "Cambias tu jersey porque salió el nuevo",
+              "b": 1
+            },
+            {
+              "t": "Audífonos hechos para fallar tras la garantía",
+              "b": 0
+            },
+            {
+              "t": "Compras otros tacos solo porque cambió el color",
+              "b": 1
+            },
+            {
+              "t": "Batería que no se puede cambiar ni reparar",
+              "b": 0
+            },
+            {
+              "t": "Dejas la gorra del club porque pasó de moda",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de impacto ambiental con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Poliéster",
+              "b": "Fibra hecha de petróleo"
+            },
+            {
+              "a": "Modo espera",
+              "b": "Lucecita roja encendida"
+            },
+            {
+              "a": "Donar el jersey",
+              "b": "Alargar su vida útil"
+            },
+            {
+              "a": "Obsolescencia percibida",
+              "b": "Cambiar por moda"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte de la historia?",
+        "left_label": "Jersey nuevo",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Cambiarlo aunque sigue bien",
+            "right": "Obsolescencia percibida"
+          },
+          {
+            "left": "Poliéster hecho de petróleo",
+            "right": "Extracción"
+          },
+          {
+            "left": "Tejer, estampar y coser",
+            "right": "Fabricación"
+          },
+          {
+            "left": "Regalarlo a la escuelita",
+            "right": "Reutilizar"
+          }
+        ],
+        "completion_feedback": "El jersey pasa por **extracción** y **fabricación**, y cambiarlo cuando sirve es **obsolescencia percibida**. **Reutilizar** alarga su vida. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Después de años de uso, tu jersey ya no te queda. ¿Qué opción alarga su vida útil?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Donarlo a otro niño"
+            },
+            {
+              "letter": "B",
+              "text": "Tirarlo a la basura"
+            },
+            {
+              "letter": "C",
+              "text": "Guardarlo en el clóset"
+            },
+            {
+              "letter": "D",
+              "text": "Comprar otro igual"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Donarlo hace que otra persona lo siga usando, así que su vida útil continúa. Tirarlo o dejarlo olvidado en el clóset la termina antes de tiempo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Unos audífonos para ver los partidos dejan de funcionar justo cuando termina la garantía, porque así se diseñaron. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Obsolescencia programada"
+            },
+            {
+              "letter": "B",
+              "text": "Obsolescencia percibida"
+            },
+            {
+              "letter": "C",
+              "text": "Un problema de huella de carbono"
+            },
+            {
+              "letter": "D",
+              "text": "Consumo responsable"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es obsolescencia programada: el producto se diseñó para durar poco. Si funcionaran bien y los cambiaras por unos más bonitos, sería obsolescencia percibida.",
+          "difficulty": 2
+        },
+        {
+          "question": "Después del partido apagas la tele con el control, pero queda la lucecita roja. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sigue gastando energía en espera"
+            },
+            {
+              "letter": "B",
+              "text": "Ya no consume nada porque está apagada"
+            },
+            {
+              "letter": "C",
+              "text": "Se está cargando para mañana"
+            },
+            {
+              "letter": "D",
+              "text": "Se recicla la energía sobrante"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La lucecita indica modo espera: el aparato sigue conectado y consume energía para poder prender rápido. Desconectarlo o usar un multicontacto con apagador evita ese gasto.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Por qué ahorrar electricidad en tu casa ayuda a reducir la huella de carbono?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Gran parte se produce quemando combustibles"
+            },
+            {
+              "letter": "B",
+              "text": "Porque la electricidad se hace con agua de lluvia"
+            },
+            {
+              "letter": "C",
+              "text": "Porque los cables guardan el carbono de la casa"
+            },
+            {
+              "letter": "D",
+              "text": "Porque el recibo de luz se imprime en papel"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Gran parte de la electricidad se genera en plantas que queman combustibles y liberan gases. Usar menos energía significa quemar menos, por eso tu huella de carbono baja.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un club diseña su jersey con tela más resistente y costuras que se pueden reparar. ¿Qué está aplicando?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Diseño responsable"
+            },
+            {
+              "letter": "B",
+              "text": "Reciclaje del jersey viejo"
+            },
+            {
+              "letter": "C",
+              "text": "Obsolescencia programada"
+            },
+            {
+              "letter": "D",
+              "text": "Un cambio solo por moda"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Quien diseña también es responsable: pensar desde el principio en que el producto dure y se pueda reparar reduce la basura. Es lo contrario de la obsolescencia.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Cinco álbumes para una photocard",
+        "content": "Sale el nuevo álbum de ATEEZ y tú quieres la photocard de tu bias. El problema: cada álbum trae una photocard al azar. Compras uno y sale otro integrante. Compras otro y otra vez no. Al quinto por fin aparece. Celebras en el chat del fandom, pero en tu cuarto quedan cinco álbumes casi iguales: cajas de cartón, libros de fotos, CD que nunca vas a poner porque escuchas todo en streaming y el plástico que los envolvía. Ahora piensa en el viaje de cada álbum. El papel salió de árboles; el plástico y el CD se hicieron a partir del petróleo. Todo se imprimió y se armó en fábricas que gastan energía y agua. Después cruzó el océano en avión o en barco hasta llegar a México. Y lo que no te sirve puede terminar muy pronto en la basura. Ser fan no tiene nada de malo: los álbumes también son arte y recuerdos. Pero entender cuánto le cuesta al planeta cada copia extra te ayuda a decidir mejor. Ese viaje completo es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El viaje del álbum ES su ciclo de vida",
+        "content": "Lo que acabas de ver con los álbumes es exactamente el **ciclo de vida de un producto**: **extracción** (árboles para el papel, petróleo para el plástico y el CD), **fabricación** (imprimir y armar), **transporte** (avión o barco), **uso** y **desecho**. **Cada etapa tiene impacto ambiental**, y comprar copias que no vas a usar lo multiplica. El **consumo responsable** propone **rechazar** lo que no necesitas, **reducir**, **reutilizar** (intercambiar photocards), **reparar** y **reciclar** el cartón y el papel. No se trata de sentir culpa, sino de decidir con información."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las pilas del lightstick después del concierto",
+        "content": "Saliste del concierto y tu lightstick se quedó sin pila. ¿Qué haces con las pilas usadas?\n\n**Paso 1 — Identifica:** las pilas son **residuos electrónicos**, no basura común.\n**Paso 2 — Entiende el riesgo:** pueden contener **metales pesados** como mercurio, cadmio o plomo, que contaminan el suelo y el agua si se tiran.\n**Paso 3 — Guarda:** las juntas en un frasco seco, lejos del calor.\n**Paso 4 — Lleva:** las entregas en un **centro de acopio** de pilas.\n**Paso 5 — Reduce:** para el próximo concierto usas **pilas recargables**.\n\nResultado: tu lightstick brilla y las pilas no terminan en la tierra."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **ciclo de vida** de un producto es **extracción → fabricación → transporte → uso → desecho**, y cada etapa tiene impacto. **Obsolescencia programada**: se diseña para durar poco. **Percibida**: lo cambias por moda aunque funcione. Los **residuos electrónicos** van a **centros de acopio**. **Consumo responsable**: rechazar, reducir, reutilizar, reparar y reciclar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Si funciona con pila, cable o enchufe, al final es residuo electrónico y va al centro de acopio, como las pilas de tu lightstick. Y recuerda: intercambiar photocards repetidas es reutilizar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada pregunta antes de comprar baja el impacto de cambiar de celular.",
+        "data": {
+          "intro": "Salió el celular nuevo y quieres cambiar el tuyo para grabar mejores fancams. El medidor muestra el impacto de tu decisión. Mira cómo baja con cada paso.",
+          "visual": "bar",
+          "start": 90,
+          "steps": [
+            {
+              "text": "Te preguntas: ¿mi celular se descompuso o solo quiero el modelo nuevo?",
+              "delta": -15
+            },
+            {
+              "text": "Descubres que lo único que falla es la batería, y en un taller se puede cambiar.",
+              "delta": -25
+            },
+            {
+              "text": "Le cambias la batería y le pones mica y funda para que dure más.",
+              "delta": -20
+            },
+            {
+              "text": "Cuando de verdad lo cambies, lo donas si funciona o lo llevas a un centro de acopio si no.",
+              "delta": -15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Acopio o reciclaje de papel?",
+        "content": "Centro de acopio electrónico: todo lo que tiene pila, cable o circuito. Reciclaje de papel y cartón: cajas, pósters y folletos.",
+        "data": {
+          "prompt": "Arrastra cada cosa que quedó después del concierto a su destino.",
+          "buckets": [
+            "Centro de acopio electrónico",
+            "Reciclaje de papel y cartón"
+          ],
+          "items": [
+            {
+              "t": "Pilas del lightstick",
+              "b": 0
+            },
+            {
+              "t": "Caja de cartón del álbum",
+              "b": 1
+            },
+            {
+              "t": "Audífonos que ya no suenan",
+              "b": 0
+            },
+            {
+              "t": "Póster rasgado del comeback",
+              "b": 1
+            },
+            {
+              "t": "Cable de cargador pelado",
+              "b": 0
+            },
+            {
+              "t": "Folleto del concierto",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de impacto ambiental con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Photocard repetida",
+              "b": "Intercambiarla"
+            },
+            {
+              "a": "Pilas usadas",
+              "b": "Centro de acopio"
+            },
+            {
+              "a": "Fabricación",
+              "b": "Imprimir el photobook"
+            },
+            {
+              "a": "Obsolescencia percibida",
+              "b": "Celular nuevo por moda"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte del viaje del álbum?",
+        "left_label": "Álbumes de ATEEZ",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Árboles para el papel",
+            "right": "Extracción"
+          },
+          {
+            "left": "Imprimir y armar el álbum",
+            "right": "Fabricación"
+          },
+          {
+            "left": "El viaje en avión o barco",
+            "right": "Transporte"
+          },
+          {
+            "left": "Cambiar photocards repetidas",
+            "right": "Reutilizar"
+          }
+        ],
+        "completion_feedback": "Cada álbum pasa por **extracción**, **fabricación** y **transporte** antes de llegar a ti, e intercambiar es **reutilizar**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Dónde deben ir las pilas usadas de tu lightstick?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "A un centro de acopio"
+            },
+            {
+              "letter": "B",
+              "text": "A la basura de la cocina"
+            },
+            {
+              "letter": "C",
+              "text": "Al contenedor de papel"
+            },
+            {
+              "letter": "D",
+              "text": "Al bote de basura común"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Las pilas pueden tener metales pesados que contaminan suelo y agua. En un centro de acopio se manejan sin que lleguen a la tierra.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el viaje de un álbum, cuando se imprimen las fotos y se arma la caja en la fábrica, ¿qué etapa es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fabricación"
+            },
+            {
+              "letter": "B",
+              "text": "Extracción"
+            },
+            {
+              "letter": "C",
+              "text": "Transporte"
+            },
+            {
+              "letter": "D",
+              "text": "Uso del producto"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Transformar materiales en el producto terminado es fabricación. La extracción fue sacar la madera y el petróleo, y el transporte es el viaje hasta México.",
+          "difficulty": 2
+        },
+        {
+          "question": "Compras cinco copias del mismo álbum para conseguir una photocard. ¿Por qué aumenta el impacto ambiental?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cada copia repite todo el ciclo de vida"
+            },
+            {
+              "letter": "B",
+              "text": "Porque los CD gastan energía aunque estén guardados"
+            },
+            {
+              "letter": "C",
+              "text": "Porque las photocards son electrónicas"
+            },
+            {
+              "letter": "D",
+              "text": "Porque el cartón no se puede reciclar"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cada copia necesitó materias primas, fabricación y transporte, y todo lo que no uses se vuelve residuo. Cinco copias son cinco ciclos de vida completos.",
+          "difficulty": 3
+        },
+        {
+          "question": "Antes de cambiar tu celular por el modelo nuevo, ¿qué pregunta ayuda a un consumo responsable?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "¿Se descompuso o solo es moda?"
+            },
+            {
+              "letter": "B",
+              "text": "¿Cuál tiene la caja más bonita?"
+            },
+            {
+              "letter": "C",
+              "text": "¿Cuál usa mi idol favorito?"
+            },
+            {
+              "letter": "D",
+              "text": "¿Cuál tiene más colores?"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Si tu celular funciona y solo quieres el nuevo, es obsolescencia percibida. Preguntarte si de verdad lo necesitas es el primer paso del consumo responsable.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una agencia decide vender una versión del álbum sin CD, porque casi nadie lo usa. ¿Qué está aplicando?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Reducir desde el diseño"
+            },
+            {
+              "letter": "B",
+              "text": "Obsolescencia programada"
+            },
+            {
+              "letter": "C",
+              "text": "Obsolescencia percibida"
+            },
+            {
+              "letter": "D",
+              "text": "Reciclar el álbum viejo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Quitar lo que no se usa desde el diseño ahorra materiales y residuos antes de fabricar. Es responsabilidad de quien produce, no obsolescencia.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El cajón de las consolas viejas",
+        "content": "En tu casa hay un cajón que nadie abre: adentro está la consola que usabas de niño, dos controles con un botón atorado, un montón de cables enredados, un cargador que no sabes de qué es y unas pilas viejas. Cuando llegó la consola nueva, la anterior seguía funcionando, pero ya nadie la conectó. Un día tu mamá dice que va a tirar todo a la basura. Antes de que lo haga, te pones a pensar. Esa consola tiene placas con circuitos, metales y plástico. Para fabricarla se sacaron minerales de minas en distintas partes del mundo, se armó en una fábrica y viajó hasta tu casa. Si termina en la basura común, algunos de sus componentes, como el plomo que llevan algunas soldaduras o los metales de las pilas, pueden contaminar el suelo y el agua. Pero también tiene salidas: se puede reparar el control, regalarle la consola a tu primo o llevar lo que ya no sirve a un centro de acopio. Ese cajón lleno de aparatos es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El cajón ES basura electrónica esperando destino",
+        "content": "Lo que acabas de ver con el cajón es exactamente el problema de los **residuos electrónicos** (o **basura electrónica**): consolas, controles, celulares, cables y pilas que ya no se usan. Contienen **metales pesados** como **plomo, mercurio o cadmio**, que **contaminan suelo y agua** si van a la **basura común**; por eso deben ir a **centros de acopio o reciclaje**. Antes de llegar ahí, el **consumo responsable** propone **reparar**, **reutilizar** o **donar**. Y recuerda: el aparato ya tuvo impacto desde la **extracción** de minerales, la **fabricación** y el **transporte**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el control con drift",
+        "content": "Tu control empezó a mover al personaje solo: tiene drift en la palanca. Decide qué hacer con las R.\n\n**Paso 1 — Reducir:** antes de comprar otro, revisas si de verdad hace falta.\n**Paso 2 — Reparar:** buscas si la palanca se puede cambiar; en muchos casos sí, con una pieza de repuesto.\n**Paso 3 — Reutilizar:** si no tiene arreglo, sus botones o su batería pueden servir de repuesto a otro control.\n**Paso 4 — Reciclar:** lo que ya no sirve va a un centro de acopio, no a la basura.\n**Paso 5 — Elegir mejor:** la próxima vez revisas si el control tiene piezas que se puedan cambiar.\n\nResultado: menos basura electrónica y menos gasto."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **ciclo de vida** de un producto es **extracción → fabricación → transporte → uso → desecho**, y cada etapa tiene impacto. **Obsolescencia programada**: se diseña para durar poco. **Percibida**: lo cambias por moda aunque funcione. Los **residuos electrónicos** van a **centros de acopio**. **Consumo responsable**: rechazar, reducir, reutilizar, reparar y reciclar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Regla gamer: si tiene pila, cable o circuito, no va al bote de basura, va al centro de acopio. Y antes de eso, prueba las R como niveles: ¿se puede reparar? ¿Alguien más lo puede usar?"
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada decisión de diseño hace que el control dure más y contamine menos.",
+        "data": {
+          "intro": "Eres parte del equipo que diseña un control nuevo para una consola. El medidor muestra qué tan responsable es el diseño. Piensa en las consecuencias antes de fabricar.",
+          "visual": "bar",
+          "start": 20,
+          "steps": [
+            {
+              "text": "En vez de pegar la carcasa con pegamento, usan tornillos para que se pueda abrir y reparar.",
+              "delta": 20
+            },
+            {
+              "text": "La batería se puede cambiar, así el control no se tira cuando la batería se desgasta.",
+              "delta": 20
+            },
+            {
+              "text": "Las palancas se venden como repuesto para arreglar el drift.",
+              "delta": 20
+            },
+            {
+              "text": "Antes de fabricar en grande, revisan qué materiales podrían contaminar y buscan opciones más seguras.",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Residuo electrónico o no?",
+        "content": "Residuo electrónico: tiene pila, cable o circuito y va al centro de acopio. No electrónico: papel, cartón o tela, que van al reciclaje o a la basura.",
+        "data": {
+          "prompt": "Arrastra cada cosa del cajón a su categoría.",
+          "buckets": [
+            "Residuo electrónico",
+            "No es electrónico"
+          ],
+          "items": [
+            {
+              "t": "Control con la palanca rota",
+              "b": 0
+            },
+            {
+              "t": "Caja de cartón del juego",
+              "b": 1
+            },
+            {
+              "t": "Cable HDMI pelado",
+              "b": 0
+            },
+            {
+              "t": "Instructivo de papel del juego",
+              "b": 1
+            },
+            {
+              "t": "Pilas viejas del cajón",
+              "b": 0
+            },
+            {
+              "t": "Funda de tela de la consola",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada situación del cajón con lo que le corresponde.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Drift en la palanca",
+              "b": "Reparar"
+            },
+            {
+              "a": "Regalar la consola",
+              "b": "Reutilizar"
+            },
+            {
+              "a": "Pilas gastadas",
+              "b": "Centro de acopio"
+            },
+            {
+              "a": "Consola nueva por moda",
+              "b": "Obsolescencia percibida"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto aparece en cada parte del cajón?",
+        "left_label": "Cajón de consolas",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Controles, cables y pilas viejas",
+            "right": "Residuos electrónicos"
+          },
+          {
+            "left": "El plomo de algunas soldaduras",
+            "right": "Metal pesado"
+          },
+          {
+            "left": "Minerales sacados de minas",
+            "right": "Extracción"
+          },
+          {
+            "left": "Regalarle la consola a tu primo",
+            "right": "Reutilizar"
+          }
+        ],
+        "completion_feedback": "El cajón está lleno de **residuos electrónicos** con **metales pesados**, que empezaron con la **extracción** de minerales. **Reutilizar** les da otra vida. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál de estos es un residuo electrónico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un control descompuesto"
+            },
+            {
+              "letter": "B",
+              "text": "La caja de cartón del juego"
+            },
+            {
+              "letter": "C",
+              "text": "El instructivo de papel"
+            },
+            {
+              "letter": "D",
+              "text": "La bolsa de plástico"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El control tiene circuitos, cables y a veces batería, así que es residuo electrónico y va a un centro de acopio. El cartón, el papel y la bolsa no son electrónicos.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu control tiene drift y le cambias la palanca por un repuesto en vez de tirarlo. ¿Qué R aplicas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Reparar"
+            },
+            {
+              "letter": "B",
+              "text": "Reciclar"
+            },
+            {
+              "letter": "C",
+              "text": "Rechazar"
+            },
+            {
+              "letter": "D",
+              "text": "Reducir"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Si el problema tiene arreglo, repararlo alarga su vida y evita fabricar otro. Reciclar es para cuando ya no se puede usar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu mamá quiere tirar la consola vieja a la basura común. ¿Cuál es el mejor argumento para no hacerlo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Puede soltar metales pesados al suelo"
+            },
+            {
+              "letter": "B",
+              "text": "Porque algún día valdrá mucho dinero"
+            },
+            {
+              "letter": "C",
+              "text": "Porque las consolas no se pueden reciclar"
+            },
+            {
+              "letter": "D",
+              "text": "Porque ocupa mucho espacio en el bote"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Sus circuitos y pilas pueden tener plomo, mercurio o cadmio que contaminan suelo y agua. Mejor regalarla si funciona, o llevarla a un centro de acopio si no.",
+          "difficulty": 3
+        },
+        {
+          "question": "La consola de tu primo funciona bien, pero la guarda en un cajón porque salió la nueva. ¿Qué tipo de obsolescencia es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Percibida"
+            },
+            {
+              "letter": "B",
+              "text": "Programada"
+            },
+            {
+              "letter": "C",
+              "text": "Por desgaste"
+            },
+            {
+              "letter": "D",
+              "text": "Por una falla"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Funciona, pero se siente vieja frente a la nueva: eso es obsolescencia percibida. Sería programada si la consola estuviera diseñada para dejar de funcionar pronto.",
+          "difficulty": 2
+        },
+        {
+          "question": "Antes de fabricar un control, el equipo revisa si algún material podría dañar la salud o el ambiente, aunque aún no esté comprobado. ¿Qué aplica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El principio precautorio"
+            },
+            {
+              "letter": "B",
+              "text": "La obsolescencia programada"
+            },
+            {
+              "letter": "C",
+              "text": "El reciclaje de materiales"
+            },
+            {
+              "letter": "D",
+              "text": "La obsolescencia percibida"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El principio precautorio dice que, si algo podría causar daño, conviene prevenir antes de producir, aunque no haya certeza total. Es parte de la responsabilidad de quien diseña.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es la primera etapa del ciclo de vida de un producto?",
+      "options": [
+        { "letter": "A", "text": "Extracción de materias primas" },
+        { "letter": "B", "text": "Fabricación en una planta industrial" },
+        { "letter": "C", "text": "Transporte a la tienda" },
+        { "letter": "D", "text": "Desecho del producto" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué se necesita antes de poder fabricar cualquier cosa.",
+      "explanation": "Todo empieza al sacar materiales de la naturaleza, como minerales, petróleo o madera. Sin materias primas no hay nada que fabricar."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la basura electrónica?",
+      "options": [
+        { "letter": "A", "text": "Aparatos y piezas eléctricas desechadas" },
+        { "letter": "B", "text": "Correos de spam que llegan a tu bandeja" },
+        { "letter": "C", "text": "Archivos borrados de la computadora" },
+        { "letter": "D", "text": "Papel impreso desde una computadora" }
+      ],
+      "correct_answer": "A",
+      "hint": "No es algo digital: se puede tocar y tiene cables o circuitos.",
+      "explanation": "Son aparatos eléctricos o electrónicos que ya no se usan: celulares, consolas, cables, pilas. No tiene que ver con correos ni con archivos."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un metal pesado que puede estar en algunos residuos electrónicos?",
+      "options": [
+        { "letter": "A", "text": "Plomo" },
+        { "letter": "B", "text": "Calcio" },
+        { "letter": "C", "text": "Sodio" },
+        { "letter": "D", "text": "Magnesio" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es un metal tóxico que antes se usaba en pinturas y soldaduras.",
+      "explanation": "El plomo es un metal pesado que puede estar en soldaduras y baterías. Junto con el mercurio y el cadmio, contamina suelo y agua si se tira a la basura común."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué significa reciclar?",
+      "options": [
+        { "letter": "A", "text": "Convertir residuos en material nuevo" },
+        { "letter": "B", "text": "Usar el mismo objeto otra vez para lo mismo" },
+        { "letter": "C", "text": "Comprar menos cosas de las que quieres" },
+        { "letter": "D", "text": "Arreglar algo que se descompuso" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que pasa con las botellas en una planta: se vuelven materia prima.",
+      "explanation": "Reciclar es transformar un residuo en material para fabricar algo nuevo. Usar otra vez el mismo objeto es reutilizar y arreglarlo es reparar."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "Dejar el cargador conectado al enchufe sin el celular…",
+      "options": [
+        { "letter": "A", "text": "Puede gastar algo de energía" },
+        { "letter": "B", "text": "Carga la batería a distancia" },
+        { "letter": "C", "text": "Ahorra luz en la casa" },
+        { "letter": "D", "text": "Recicla la electricidad" }
+      ],
+      "correct_answer": "A",
+      "hint": "Pregúntate si un aparato conectado a la corriente está realmente apagado.",
+      "explanation": "Un cargador conectado puede seguir consumiendo un poco de energía aunque no cargue nada. Desconectarlo es un hábito sencillo de ahorro."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la obsolescencia programada?",
+      "options": [
+        { "letter": "A", "text": "Diseñar algo para que dure poco" },
+        { "letter": "B", "text": "Cambiar algo por moda aunque sirva" },
+        { "letter": "C", "text": "Programar una computadora nueva" },
+        { "letter": "D", "text": "Reparar un aparato descompuesto" }
+      ],
+      "correct_answer": "A",
+      "hint": "La palabra programada indica que alguien lo decidió desde el diseño.",
+      "explanation": "Es cuando un producto se diseña para durar poco o fallar pronto. Cambiar algo que sirve por moda es obsolescencia percibida."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la obsolescencia percibida?",
+      "options": [
+        { "letter": "A", "text": "Cambiar algo por moda aunque sirva" },
+        { "letter": "B", "text": "Diseñar un producto que falle pronto" },
+        { "letter": "C", "text": "Llevar un aparato al centro de acopio" },
+        { "letter": "D", "text": "Ver un aparato en una tienda" }
+      ],
+      "correct_answer": "A",
+      "hint": "Percibida viene de percibir: depende de cómo lo ves tú, no de si funciona.",
+      "explanation": "El producto funciona, pero la moda o la publicidad hacen que lo sientas viejo. No falla: lo cambias tú."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál de estas acciones es reutilizar?",
+      "options": [
+        { "letter": "A", "text": "Usar un frasco como portalápices" },
+        { "letter": "B", "text": "Llevar latas a una planta de reciclaje" },
+        { "letter": "C", "text": "Comprar un frasco nuevo para tus lápices" },
+        { "letter": "D", "text": "Tirar el frasco al contenedor de vidrio" }
+      ],
+      "correct_answer": "A",
+      "hint": "Reutilizar es darle otro uso al mismo objeto, sin transformarlo.",
+      "explanation": "Usar el frasco para otra cosa es reutilizar: sigue siendo frasco. Llevar latas a una planta para transformarlas es reciclar."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es un centro de acopio?",
+      "options": [
+        { "letter": "A", "text": "Un lugar que recibe residuos para tratarlos" },
+        { "letter": "B", "text": "Una tienda que vende aparatos de segunda mano" },
+        { "letter": "C", "text": "Un taller que fabrica celulares" },
+        { "letter": "D", "text": "Un basurero donde se entierra todo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Acopiar significa juntar o reunir cosas.",
+      "explanation": "Un centro de acopio junta residuos como pilas o aparatos electrónicos para enviarlos a reciclar o a un manejo seguro, en vez de que lleguen a la basura común."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál de estas acciones es reducir?",
+      "options": [
+        { "letter": "A", "text": "Comprar solo lo que necesitas" },
+        { "letter": "B", "text": "Llevar pilas al acopio" },
+        { "letter": "C", "text": "Arreglar un cable roto" },
+        { "letter": "D", "text": "Separar la basura en orgánica e inorgánica" }
+      ],
+      "correct_answer": "A",
+      "hint": "Reducir es usar o comprar menos desde el principio.",
+      "explanation": "Reducir es consumir menos: si compras solo lo necesario, se genera menos basura. Arreglar un cable es reparar, y llevar pilas al acopio evita que contaminen."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En el ciclo de vida de un celular, ¿en qué etapa se sacan minerales de las minas?",
+      "options": [
+        { "letter": "A", "text": "Extracción" },
+        { "letter": "B", "text": "Fabricación" },
+        { "letter": "C", "text": "Transporte" },
+        { "letter": "D", "text": "Uso" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es la etapa que ocurre antes de que exista cualquier pieza.",
+      "explanation": "Sacar minerales de la tierra es la extracción de materias primas. Después se fabrican las piezas, se transportan y se usa el celular."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿En qué etapa del ciclo de vida una consola gasta la electricidad de tu casa?",
+      "options": [
+        { "letter": "A", "text": "Uso" },
+        { "letter": "B", "text": "Extracción" },
+        { "letter": "C", "text": "Transporte" },
+        { "letter": "D", "text": "Desecho" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cuándo está conectada al enchufe de tu casa.",
+      "explanation": "Durante el uso, la consola se conecta a la corriente de tu casa y consume energía. Las otras etapas también gastan energía, pero no la de tu casa."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué no se deben tirar los celulares viejos a la basura común?",
+      "options": [
+        { "letter": "A", "text": "Tienen metales que contaminan" },
+        { "letter": "B", "text": "Porque ocupan demasiado espacio" },
+        { "letter": "C", "text": "Porque se pueden prender solos" },
+        { "letter": "D", "text": "Porque el camión no los recoge" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que hay dentro de su batería y sus circuitos.",
+      "explanation": "Contienen metales pesados como plomo, mercurio o cadmio que, al romperse en la basura, pasan al suelo y al agua. Deben ir a un centro de acopio."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una impresora deja de funcionar y el fabricante no vende la pieza para arreglarla. ¿Qué R se vuelve imposible?",
+      "options": [
+        { "letter": "A", "text": "Reparar el producto" },
+        { "letter": "B", "text": "Reciclar el papel impreso" },
+        { "letter": "C", "text": "Reducir el uso de tinta" },
+        { "letter": "D", "text": "Rechazar bolsas de plástico" }
+      ],
+      "correct_answer": "A",
+      "hint": "Sin repuesto, ¿qué acción ya no se puede hacer con el aparato?",
+      "explanation": "Si no hay piezas de repuesto, el aparato no se puede reparar y termina como basura antes de tiempo. Por eso conviene elegir productos reparables."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es la huella de carbono?",
+      "options": [
+        { "letter": "A", "text": "Los gases que genera una actividad" },
+        { "letter": "B", "text": "La marca que deja el carbón en el piso" },
+        { "letter": "C", "text": "La cantidad de basura en tu casa" },
+        { "letter": "D", "text": "El carbón que usa una consola" }
+      ],
+      "correct_answer": "A",
+      "hint": "No es una marca física: es una forma de medir el impacto en el clima.",
+      "explanation": "Es la cantidad de gases de efecto invernadero que genera una persona, producto o actividad, por ejemplo al quemar combustibles para producir electricidad o transportar mercancías."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál es el orden correcto del ciclo de vida de un producto?",
+      "options": [
+        { "letter": "A", "text": "Extracción, fabricación, transporte, uso y desecho" },
+        { "letter": "B", "text": "Fabricación, extracción, uso, transporte y desecho" },
+        { "letter": "C", "text": "Extracción, transporte, desecho, fabricación y uso" },
+        { "letter": "D", "text": "Uso, fabricación, extracción, transporte y desecho" }
+      ],
+      "correct_answer": "A",
+      "hint": "Primero se consigue el material y al final se tira el producto.",
+      "explanation": "Primero se sacan materias primas, luego se fabrica, se transporta, se usa y al final se desecha. Cada etapa tiene impacto ambiental."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un amigo cambia su celular cada año aunque el anterior funcione. ¿Qué efecto tiene en el ambiente?",
+      "options": [
+        { "letter": "A", "text": "Más residuos y más extracción" },
+        { "letter": "B", "text": "Ninguno, porque guarda el anterior en un cajón" },
+        { "letter": "C", "text": "Menos energía en su casa" },
+        { "letter": "D", "text": "Menos basura electrónica" }
+      ],
+      "correct_answer": "A",
+      "hint": "Cada celular nuevo repite todo el ciclo de vida.",
+      "explanation": "Cada celular nuevo necesita minerales, fabricación y transporte, y el viejo se vuelve residuo aunque funcione. Por eso cambiar sin necesidad aumenta el impacto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué conviene hacer con un celular que funciona pero ya no usas?",
+      "options": [
+        { "letter": "A", "text": "Donarlo o venderlo" },
+        { "letter": "B", "text": "Tirarlo a la basura" },
+        { "letter": "C", "text": "Guardarlo para siempre" },
+        { "letter": "D", "text": "Desarmarlo en casa" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la opción con la que alguien más lo sigue usando.",
+      "explanation": "Si funciona, donarlo o venderlo alarga su vida útil. Guardado para siempre no se aprovecha, y en la basura contamina."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué es el consumo responsable?",
+      "options": [
+        { "letter": "A", "text": "Elegir pensando en el impacto" },
+        { "letter": "B", "text": "No comprar absolutamente nada" },
+        { "letter": "C", "text": "Comprar siempre lo más barato" },
+        { "letter": "D", "text": "Comprar lo último que salga" }
+      ],
+      "correct_answer": "A",
+      "hint": "No se trata de dejar de comprar, sino de cómo eliges.",
+      "explanation": "Es comprar y usar pensando en el impacto: elegir productos durables y reparables, reducir, reutilizar, reparar y reciclar. No significa dejar de comprar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué conviene elegir productos durables y reparables?",
+      "options": [
+        { "letter": "A", "text": "Duran más y generan menos basura" },
+        { "letter": "B", "text": "Porque siempre cuestan menos que los demás" },
+        { "letter": "C", "text": "Porque nunca se descomponen" },
+        { "letter": "D", "text": "Porque se ven más modernos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa cuando algo se rompe y tiene arreglo.",
+      "explanation": "Si un producto dura y se puede reparar, su vida útil se alarga y no hay que fabricar otro. No significa que sea más barato ni que nunca falle."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Unos audífonos tienen la batería pegada y no se puede cambiar; cuando se gasta, hay que tirarlos. ¿Con qué concepto se relaciona?",
+      "options": [
+        { "letter": "A", "text": "Obsolescencia programada" },
+        { "letter": "B", "text": "Obsolescencia percibida" },
+        { "letter": "C", "text": "Reciclaje de baterías de litio" },
+        { "letter": "D", "text": "Consumo responsable" }
+      ],
+      "correct_answer": "A",
+      "hint": "El problema está en cómo se diseñó, no en la moda.",
+      "explanation": "Diseñar un producto sin poder cambiar su batería limita su vida útil desde la fábrica, por eso se relaciona con la obsolescencia programada."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Alguien dice que una laptop no tiene impacto ambiental si se carga con energía solar. ¿Por qué la idea es incompleta?",
+      "options": [
+        { "letter": "A", "text": "Su fabricación también tuvo impacto" },
+        { "letter": "B", "text": "Porque la energía solar contamina más" },
+        { "letter": "C", "text": "Porque las laptops no usan energía" },
+        { "letter": "D", "text": "Porque la laptop nunca se desecha" }
+      ],
+      "correct_answer": "A",
+      "hint": "El uso es solo una de las etapas del ciclo de vida.",
+      "explanation": "Aunque el uso sea limpio, la laptop ya tuvo impacto en la extracción de minerales, la fabricación y el transporte, y lo tendrá al desecharse."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué reciclar suele ser la última R y no la primera?",
+      "options": [
+        { "letter": "A", "text": "Reciclar también gasta energía" },
+        { "letter": "B", "text": "Porque reciclar está prohibido" },
+        { "letter": "C", "text": "Porque reciclar no sirve para nada" },
+        { "letter": "D", "text": "Porque reciclar es lo más difícil" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que necesita una planta para transformar un residuo en material nuevo.",
+      "explanation": "Reciclar ayuda, pero transformar residuos necesita energía, agua y transporte. Por eso primero conviene no generar el residuo: rechazar, reducir, reutilizar y reparar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una escuela juntan cables, celulares y pilas para llevarlos a un centro de acopio. ¿Qué evitan principalmente?",
+      "options": [
+        { "letter": "A", "text": "Que metales pesados lleguen al suelo" },
+        { "letter": "B", "text": "Que la escuela gaste luz" },
+        { "letter": "C", "text": "Que los aparatos se vuelvan a fabricar" },
+        { "letter": "D", "text": "Que suba el precio de los celulares" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasaría si esos residuos terminaran en un tiradero.",
+      "explanation": "Al llevarlos al acopio, los metales pesados no terminan contaminando suelo y agua, y algunos materiales se pueden recuperar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿En qué caso hay obsolescencia percibida?",
+      "options": [
+        { "letter": "A", "text": "Cambias tu tele porque salió una más delgada" },
+        { "letter": "B", "text": "Tu tele se descompone justo después de la garantía" },
+        { "letter": "C", "text": "Tu tele ya no tiene repuestos para repararla" },
+        { "letter": "D", "text": "Tu tele se cae y se rompe la pantalla" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el caso donde el aparato todavía funciona.",
+      "explanation": "Si la tele funciona y la cambias por una más moderna, es obsolescencia percibida. Las otras opciones son fallas, falta de repuestos o accidentes."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué propone el principio precautorio?",
+      "options": [
+        { "letter": "A", "text": "Ante un posible daño, prevenir" },
+        { "letter": "B", "text": "Primero producir y después revisar" },
+        { "letter": "C", "text": "Solo actuar con pruebas totales" },
+        { "letter": "D", "text": "Reciclar todo lo que se fabrique" }
+      ],
+      "correct_answer": "A",
+      "hint": "Precaución es actuar antes de que pase algo malo.",
+      "explanation": "El principio precautorio dice que, si una tecnología podría causar daño, conviene prevenir y pensar las consecuencias antes de producir, aunque no haya certeza total."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Quién tiene responsabilidad en el impacto ambiental de un producto tecnológico?",
+      "options": [
+        { "letter": "A", "text": "Quien lo diseña y quien lo consume" },
+        { "letter": "B", "text": "Solo la fábrica que lo produce en grandes cantidades" },
+        { "letter": "C", "text": "Solo la persona que lo compra" },
+        { "letter": "D", "text": "Solo el gobierno del país" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en todas las personas que deciden algo durante el ciclo de vida.",
+      "explanation": "Quien diseña decide si el producto dura y se puede reparar; quien consume decide cuánto compra y cómo lo desecha. La responsabilidad es compartida."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una empresa quiere lanzar un juguete con un químico que quizá sea tóxico, aunque no hay estudios completos. Según el principio precautorio, ¿qué debe hacer?",
+      "options": [
+        { "letter": "A", "text": "Revisar y buscar otro material" },
+        { "letter": "B", "text": "Lanzarlo y esperar a ver qué pasa" },
+        { "letter": "C", "text": "Venderlo solo en otros países" },
+        { "letter": "D", "text": "Ponerle un precio más bajo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Si hay duda sobre un daño, ¿conviene arriesgarse o prevenir?",
+      "explanation": "Ante la duda de daño, el principio precautorio pide prevenir: estudiar el material o cambiarlo antes de producir, en lugar de esperar a que alguien salga afectado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una comunidad recibe internet en su escuela, pero con el tiempo también se acumulan aparatos descompuestos. ¿Qué muestra este caso?",
+      "options": [
+        { "letter": "A", "text": "Impactos positivos y negativos a la vez" },
+        { "letter": "B", "text": "Que el internet solo trae problemas" },
+        { "letter": "C", "text": "Que la tecnología no afecta a nadie" },
+        { "letter": "D", "text": "Que la basura electrónica desaparece sola con los años" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la opción que reconozca lo bueno y lo malo al mismo tiempo.",
+      "explanation": "La misma tecnología trae beneficios, como acceso a información, y costos, como residuos electrónicos. Reconocer ambos permite aprovecharla y reducir sus daños."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo diseña un celular cuya batería y pantalla se pueden cambiar fácilmente. ¿Qué logra con eso?",
+      "options": [
+        { "letter": "A", "text": "Alargar su vida útil" },
+        { "letter": "B", "text": "Obsolescencia programada" },
+        { "letter": "C", "text": "Que se vuelva moda cada año" },
+        { "letter": "D", "text": "Que consuma más energía" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa cuando una pieza se desgasta y se puede cambiar.",
+      "explanation": "Si las piezas que más se desgastan se pueden cambiar, el celular dura más años y se genera menos basura electrónica. Es diseño responsable."
+    }
+  ],
+  "diagnostic": {
+    "question": "Tu celular funciona bien, pero lo cambias porque salió el modelo nuevo y el tuyo se siente viejo. ¿Cómo se llama esto?",
+    "options": [
+      { "letter": "A", "text": "Obsolescencia programada" },
+      { "letter": "B", "text": "Obsolescencia percibida" },
+      { "letter": "C", "text": "Falla de fábrica" },
+      { "letter": "D", "text": "Desgaste natural del equipo" }
+    ],
+    "correct_answer": "B",
+    "explanation": "Es obsolescencia percibida: el aparato sirve, pero la moda o la publicidad lo hacen sentir viejo. Sería programada si se hubiera diseñado para fallar pronto."
+  }
+}
