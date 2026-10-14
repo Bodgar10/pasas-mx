@@ -1,5 +1,5 @@
 {
-  "_nota": "Anuncio de conversión para papás (Meta): demo del producto real en ~25 s con voz. Fondos con OpenAI en las escenas 1, 4, 6 y 8 (workflow 'Fondos de anuncios' → video/arte/<slug>/reel-NN.jpg). Render: node src/como-funciona-v2.mjs --data data/anuncios/2026-10-asi-funciona-pasas-papas.json [--revisar | --guion | --audios carpeta/]",
+  "_nota": "Anuncio de conversión para papás (Meta): demo del producto real en ~25 s con voz. Fondos con OpenAI en las escenas 1, 4, 7 y 9 (workflow 'Fondos de anuncios' → video/arte/<slug>/reel-NN.jpg). Render: node src/como-funciona-v2.mjs --data data/anuncios/2026-10-asi-funciona-pasas-papas.json [--revisar | --guion | --audios carpeta/]",
   "nombre": "asi funciona pasas papas",
   "color": "#ec4899",
   "slides": [],
@@ -10,8 +10,21 @@
     "escenas": [
       {
         "tipo": "gancho",
-        "dur": 3.2,
-        "lineas": [["Tu hijo no es flojo.", "s"], ["La escuela no le habla", "k"], ["en su idioma.", "k"]],
+        "dur": 3.6,
+        "lineas": [
+          [
+            "Tu hijo no es flojo.",
+            "s"
+          ],
+          [
+            "La escuela no le habla",
+            "k"
+          ],
+          [
+            "en su idioma.",
+            "k"
+          ]
+        ],
         "voz": "Tu hijo no es flojo. La escuela no le habla en su idioma.",
         "arte": {
           "escena": {
@@ -29,27 +42,63 @@
       },
       {
         "tipo": "elige",
-        "dur": 2.8,
+        "dur": 3.4,
         "paso": "Paso 1",
         "color": "#7c3aed",
-        "lineas": [["Elige lo que", "s"], ["le gusta", "k"]],
+        "lineas": [
+          [
+            "Elige lo que",
+            "s"
+          ],
+          [
+            "le gusta",
+            "k"
+          ]
+        ],
         "voz": "En PASAS elige lo que le gusta…"
       },
       {
         "tipo": "analogia",
-        "dur": 4.2,
+        "dur": 5.0,
         "paso": "Paso 2",
         "color": "#ec4899",
-        "lineas": [["Cada tema,", "s"], ["explicado con eso", "k"]],
-        "lineas2": [["Y se lo lee", "s"], ["en voz alta", "k"]],
+        "lineas": [
+          [
+            "Cada tema,",
+            "s"
+          ],
+          [
+            "explicado con eso",
+            "k"
+          ]
+        ],
+        "lineas2": [
+          [
+            "Y se lo lee",
+            "s"
+          ],
+          [
+            "en voz alta",
+            "k"
+          ]
+        ],
         "voz": "y cada tema se le explica con eso. Hasta se lo lee en voz alta."
       },
       {
         "tipo": "conecta",
-        "dur": 3.8,
+        "dur": 4.6,
         "paso": "Paso 3",
         "color": "#06b6d4",
-        "lineas": [["Lo arma", "s"], ["jugando", "k"]],
+        "lineas": [
+          [
+            "Lo arma",
+            "s"
+          ],
+          [
+            "jugando",
+            "k"
+          ]
+        ],
         "voz": "Luego lo arma jugando: conecta cada pista con su ecuación…",
         "arte": {
           "escena": {
@@ -67,18 +116,53 @@
       },
       {
         "tipo": "pasos",
-        "dur": 3.0,
+        "dur": 3.8,
         "paso": "Paso 3",
         "color": "#06b6d4",
-        "lineas": [["Ordena", "s"], ["los pasos", "k"]],
+        "lineas": [
+          [
+            "Ordena",
+            "s"
+          ],
+          [
+            "los pasos",
+            "k"
+          ]
+        ],
         "voz": "ordena los pasos…"
       },
       {
+        "tipo": "pistas",
+        "dur": 5.2,
+        "paso": "Paso 3",
+        "color": "#10b981",
+        "lineas": [
+          [
+            "Si se atora,",
+            "s"
+          ],
+          [
+            "le damos pistas",
+            "k"
+          ]
+        ],
+        "voz": "Si se atora, no le damos la respuesta: le damos pistas, hasta que la saca él."
+      },
+      {
         "tipo": "horda",
-        "dur": 3.6,
+        "dur": 4.2,
         "paso": "Paso 3",
         "color": "#ec4899",
-        "lineas": [["Y se pone a prueba:", "s"], ["la Horda", "k"]],
+        "lineas": [
+          [
+            "Y se pone a prueba:",
+            "s"
+          ],
+          [
+            "la Horda",
+            "k"
+          ]
+        ],
         "voz": "y se pone a prueba en la Horda: seis oleadas de preguntas, cada una más difícil.",
         "arte": {
           "escena": {
@@ -96,19 +180,41 @@
       },
       {
         "tipo": "avance",
-        "dur": 2.8,
+        "dur": 3.4,
         "paso": "Paso 4",
         "color": "#fbbf24",
-        "lineas": [["Tú ves", "s"], ["su avance", "k"]],
+        "lineas": [
+          [
+            "Tú ves",
+            "s"
+          ],
+          [
+            "su avance",
+            "k"
+          ]
+        ],
         "voz": "Y tú ves su avance, materia por materia."
       },
       {
         "tipo": "cierre",
-        "dur": 4.4,
-        "lineas": [["7 días", "k"], ["gratis", "k"]],
-        "bullets": ["Secundaria y prepa", "Todas las materias de su grado", "Cancela cuando quieras"],
+        "dur": 5.0,
+        "lineas": [
+          [
+            "Primer mes",
+            "s"
+          ],
+          [
+            "a $1",
+            "k"
+          ]
+        ],
+        "bullets": [
+          "Secundaria y prepa",
+          "Todas las materias de su grado",
+          "Código PASAS1 al pagar"
+        ],
         "url": "pasas.mx",
-        "voz": "Secundaria y prepa, todas sus materias. Pruébalo siete días gratis en pasas punto mx.",
+        "voz": "Secundaria y prepa, todas sus materias. Pruébalo: el primer mes a un peso con el código PASAS1, en pasas punto mx.",
         "arte": {
           "escena": {
             "accion": "The Pasita jumps with joy in the lower-right corner, both arms up, surrounded by golden confetti and small glowing stars; behind her, soft silhouettes of the three worlds (stadium lights, floating game blocks, neon arena) blend into a warm purple sky",
@@ -125,5 +231,5 @@
       }
     ]
   },
-  "post": "Así estudia un alumno en PASAS: elige lo que le gusta, el tema se le explica con eso (y se lo lee en voz alta), lo arma jugando con Conecta y Arma los pasos, se pone a prueba en la Horda y tú ves su avance materia por materia. Secundaria y prepa, todas las materias de su grado. 7 días gratis en pasas.mx"
+  "post": "Así estudia un alumno en PASAS: elige lo que le gusta, el tema se le explica con eso (y se lo lee en voz alta), lo arma jugando con Conecta y Arma los pasos, se pone a prueba en la Horda y tú ves su avance materia por materia. Secundaria y prepa, todas las materias de su grado. Primer mes a $1 con el código PASAS1 al pagar, en pasas.mx"
 }

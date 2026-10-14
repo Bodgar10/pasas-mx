@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* "Así funciona PASAS" v2 (s44): anuncio de conversión para papás, ~25 s, con voz.
+   Escenas desde el JSON (data/anuncios/…): gancho → elige → analogía + audio → Conecta →
+   Arma los pasos → Horda → avance → cierre. Fondos de OpenAI en reel_fondos[i]; sin fondo,
+   sale el morado de respaldo. Pantallas recreadas del código real (onboarding-client,
+   topic-client, InteractiveBlocks: ConnectBlock y OrderStepsBlock, horda-client, dashboard). */
+.frame{background:#0f0a1e}
+.bg{position:absolute;inset:-40px;background-size:cover;background-position:center;opacity:0;will-change:transform,opacity}
+.bg.vacio{background:radial-gradient(110% 60% at 100% 0%, rgba(236,72,153,.22), transparent 60%), radial-gradient(110% 60% at 0% 100%, rgba(124,58,237,.4), transparent 60%), #0f0a1e}
+.stars i{position:absolute;border-radius:50%;background:#fff}
+.neon{position:absolute;inset:2.4cqw;border-radius:5cqw;border:.7cqw solid var(--c,#7c3aed);z-index:20;pointer-events:none;
+  box-shadow:0 0 2.4cqw var(--c,#7c3aed), inset 0 0 2.4cqw var(--c,#7c3aed)}
+.brand{position:absolute;left:0;right:0;top:6cqw;text-align:center;font-family:var(--font-brand);font-weight:900;font-size:5cqw;letter-spacing:.14em;z-index:9;text-shadow:0 .4cqw 1.6cqw rgba(0,0,0,.8)}
+.brand span{color:var(--pink)}
+
+/* Textos de arriba */
+.cap{position:absolute;left:8cqw;right:8cqw;top:14cqw;opacity:0;z-index:5}
+.step{display:inline-block;font-family:var(--font-title);font-weight:900;font-size:4.4cqw;letter-spacing:.06em;text-transform:uppercase;
+  color:#fff;background:var(--c);padding:1.1cqw 3.2cqw 1.3cqw;border-radius:2.4cqw;box-shadow:0 0 3cqw var(--c);margin-bottom:2.4cqw}
+.step.dark{color:#1a1035}
+.ct{font-family:var(--font-title);font-weight:900;font-size:8.4cqw;line-height:1.04;text-transform:uppercase;
+  -webkit-text-stroke:1.1cqw var(--bg);paint-order:stroke fill;text-shadow:0 .8cqw 0 rgba(0,0,0,.45)}
+.ct span{display:block;color:#fff}
+.ct span.k{color:var(--c)}
+
+/* Gancho */
+.hook{position:absolute;left:8cqw;right:8cqw;top:22cqw;z-index:5;opacity:0}
+.hook .ct{font-size:10.4cqw}
+.hook .ct span.k{color:var(--pink)}
+.pasita{position:absolute;left:50%;transform-origin:50% 100%}
+
+/* Teléfono */
+#phone{position:absolute;left:50%;top:560px;width:680px;height:1416px;margin-left:-340px;border-radius:84px;background:#05030c;
+  box-shadow:0 0 0 4px #2D2048, 0 0 60px rgba(124,58,237,.55), 0 40px 80px rgba(0,0,0,.6);z-index:4}
+#screen{position:absolute;left:14px;top:14px;width:652px;height:1388px;border-radius:72px;overflow:hidden;background:#0f0a1e}
+#ui{position:absolute;left:0;top:0;width:390px;height:830px;transform:scale(1.6718);transform-origin:0 0;font-family:'Nunito',sans-serif;color:#e2d9f3}
+.notch{position:absolute;left:50%;top:10px;width:110px;height:30px;margin-left:-55px;background:#05030c;border-radius:20px;z-index:30}
+.sb{position:absolute;left:0;right:0;top:0;height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 26px;font-size:15px;font-weight:800;z-index:29}
+.sb i{font-style:normal;letter-spacing:2px;font-size:12px}
+.scr{position:absolute;inset:0;padding:52px 16px 0;opacity:0}
+
+/* Piezas de la app (design-tokens.ts) */
+.orb{font-family:'Orbitron',sans-serif;font-weight:900}
+.card{background:#1a1035;border:1px solid rgba(124,58,237,.25);border-radius:20px;padding:20px 18px}
+.opt{border:1.5px solid #2D2048;background:#1a1035;border-radius:14px;padding:12px;position:relative}
+.opt.sel{border-color:#7c3aed;background:#2d1b69}
+.opt .ck{position:absolute;right:10px;top:10px;width:22px;height:22px;border-radius:50%;background:#7c3aed;color:#fff;font-size:13px;font-weight:900;display:none;place-items:center}
+.opt.sel .ck{display:grid}
+.btn{background:#7c3aed;border-radius:12px;min-height:52px;display:grid;place-items:center;font-size:16px;font-weight:900;color:#fff}
+.btn.off{background:#2D2048;color:#4B3D6E}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:50px;padding:5px 10px;font-size:12px;font-weight:800}
+.bar{height:8px;border-radius:8px;background:#2D2048;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);box-shadow:0 0 10px rgba(236,72,153,.6)}
+.hdr{display:flex;align-items:center;gap:10px}
+.hdr .bk{width:36px;height:36px;border-radius:10px;background:#1a1035;border:1px solid #2D2048;display:grid;place-items:center;color:#a78bfa;font-weight:900}
+.tabs{display:flex;justify-content:space-around;margin:14px 0 12px;font-size:15px;font-weight:800;color:#a78bfa;border-bottom:1px solid #2D2048}
+.tabs .on{color:#e2d9f3;border-bottom:2.5px solid #7c3aed;padding:0 6px 10px}
+.mj{border-radius:14px;background:#1a1035;border:1px solid rgba(6,182,212,.3);overflow:hidden}
+.mj .ttl{background:rgba(6,182,212,.12);padding:10px 14px;font-size:12px;font-weight:900;letter-spacing:.08em;color:#06b6d4}
+.ins{display:flex;gap:6px;align-items:flex-start;font-size:11.5px;color:#fbbf24;font-weight:700;letter-spacing:.03em;line-height:1.35;margin-bottom:8px}
+/* Conecta */
+.cn{display:grid;grid-template-columns:1fr 26px 1fr;gap:8px 0;align-items:stretch;position:relative}
+.cn .lb{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding-bottom:2px}
+.cn .cc{border:1.5px solid #2D2048;background:#0f0a1e;border-radius:12px;padding:10px 9px;font-size:12.5px;font-weight:700;line-height:1.3;min-height:48px;display:flex;align-items:center;color:#e2d9f3;position:relative}
+.cn .cc.sel{border-color:#fbbf24;background:rgba(251,191,36,.1)}
+.cn .cc.ok{color:#fff}
+.cn svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.cn svg path{fill:none;stroke-width:3;stroke-linecap:round;opacity:0}
+.okbox{display:flex;align-items:center;gap:10px;margin-top:12px;padding:10px 12px;border-radius:12px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.32);opacity:0}
+.okbox b{font-size:14px;color:#6ee7b7}
+.okbox span{font-size:13px;color:#d1fae5;line-height:1.45;font-weight:600}
+/* Arma los pasos */
+.slots{display:flex;flex-direction:column;gap:7px}
+.slot{display:flex;align-items:center;gap:8px;border:1.5px dashed #3b2a6b;border-radius:12px;min-height:44px;padding:8px 10px;font-size:12.5px;font-weight:700;line-height:1.3;color:#e2d9f3}
+.slot i{flex:none;width:22px;height:22px;border-radius:50%;background:#2D2048;color:#a78bfa;font-style:normal;font-size:11px;font-weight:900;display:grid;place-items:center}
+.slot.full{border-style:solid;border-color:#06b6d4;background:rgba(6,182,212,.1)}
+.slot.full i{background:#06b6d4;color:#0f0a1e}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chip{border:1.5px solid #7c3aed;background:#2d1b69;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:700;line-height:1.25;color:#fff;max-width:100%}
+.chip.used{opacity:.18}
+
+/* Dedo */
+#tap{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:rgba(255,255,255,.35);border:4px solid rgba(255,255,255,.85);z-index:40;opacity:0;pointer-events:none}
+#ripple{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;border:4px solid #fff;z-index:39;opacity:0}
+
+/* Cierre */
+.end{position:absolute;left:8cqw;right:8cqw;top:22cqw;opacity:0;z-index:6}
+.end .big{font-family:var(--font-title);font-weight:900;font-size:12.2cqw;line-height:1;color:var(--xp);text-transform:uppercase;
+  -webkit-text-stroke:1.2cqw var(--bg);paint-order:stroke fill;text-shadow:0 1cqw 0 rgba(0,0,0,.5)}
+.end .rows{margin-top:5cqw;display:flex;flex-direction:column;gap:2.6cqw;background:rgba(15,10,30,.78);border:.5cqw solid rgba(255,255,255,.18);border-radius:5cqw;padding:5cqw 6cqw}
+.end .rows div{font-size:6cqw;font-weight:900;display:flex;gap:3cqw;align-items:center;color:#fff}
+.end .rows b{color:var(--cyan);font-family:var(--font-brand);font-size:5cqw;width:7cqw}
+.end .url{display:inline-block;margin-top:6cqw;font-family:var(--font-brand);font-weight:700;font-size:6.4cqw;background:var(--brand);color:#fff;padding:3cqw 6cqw;border-radius:4cqw;box-shadow:0 0 4cqw rgba(124,58,237,.7)}
+</style></head>
+<body>
+<div class="frame">
+  <div id="bgs"></div>
+  <div class="stars" id="stars"></div>
+  <div class="neon" id="neon"></div>
+  <div class="brand">PASAS<span>.</span>MX</div>
+  <div id="caps"></div>
+
+  <div id="phone"><div id="screen"><div id="ui">
+    <div class="notch"></div>
+    <div class="sb"><span>10:13</span><i>▂▄▆ ◉ ▮</i></div>
+
+    <!-- elige · Onboarding: temática (onboarding-client.tsx, paso 3) -->
+    <div class="scr" id="u-elige">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:6px">
+        <div class="orb" style="font-size:22px;letter-spacing:.04em">PA<span style="color:#a78bfa">S</span>A<span style="color:#a78bfa">S</span>.MX</div>
+      </div>
+      <div style="display:flex;gap:6px;margin:16px 0 14px"><div class="bar" style="flex:1;height:6px"><i style="width:100%"></i></div><div class="bar" style="flex:1;height:6px"><i style="width:100%"></i></div><div class="bar" style="flex:1;height:6px"><i id="u1-p3" style="width:0%"></i></div></div>
+      <div class="card">
+        <div class="orb" style="font-size:20px;line-height:1.2;margin-bottom:6px">¿Qué le gusta más?</div>
+        <div style="font-size:14px;color:#a78bfa;margin-bottom:16px">Así le explicamos cada tema</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="opt"><span class="ck">✓</span><div style="font-size:24px">🎮</div><div style="font-size:15px;font-weight:700;margin-top:4px">Videojuegos</div><div style="font-size:12px;color:#a78bfa">Mundos, misiones, crafteo</div></div>
+          <div class="opt"><span class="ck">✓</span><div style="font-size:24px">🎤</div><div style="font-size:15px;font-weight:700;margin-top:4px">K-pop & K-dramas</div><div style="font-size:12px;color:#a78bfa">Grupos, giras, series</div></div>
+          <div class="opt" id="o-fut"><span class="ck">✓</span><div style="font-size:24px">⚽</div><div style="font-size:15px;font-weight:700;margin-top:4px">Fútbol</div><div style="font-size:12px;color:#a78bfa">Partidos, ligas, fichajes</div></div>
+          <div class="opt"><span class="ck">✓</span><div style="font-size:24px">⚔️</div><div style="font-size:15px;font-weight:700;margin-top:4px">Anime & Manga</div><div style="font-size:12px;color:#a78bfa">Arcos, poderes, torneos</div></div>
+        </div>
+        <div class="btn off" id="u1-btn" style="margin-top:18px">¡Empezar! ✨</div>
+      </div>
+    </div>
+
+    <!-- analogia · Lección (topic-client.tsx) con el reproductor -->
+    <div class="scr" id="u-analogia">
+      <div class="hdr"><div class="bk">←</div>
+        <div style="flex:1;min-width:0"><div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.08em">MATEMÁTICAS 2°</div>
+          <div class="orb" style="font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sistemas de ecuaciones</div></div>
+        <span class="pill" style="background:#422006;color:#fbbf24;border:1px solid rgba(251,191,36,.4)">⚡ +10 XP sesión</span>
+      </div>
+      <div class="tabs"><span class="on">Guía</span><span>Quiz</span><span>Horda</span><span>Resumen</span></div>
+      <div style="border-radius:14px;background:#1a1035;border:1px solid rgba(236,72,153,.3);overflow:hidden">
+        <div style="background:rgba(236,72,153,.12);padding:10px 14px;font-size:12px;font-weight:900;letter-spacing:.08em;color:#ec4899">🎭 ANALOGÍA <span style="float:right;color:#e2d9f3;letter-spacing:0">⚽ Fútbol</span></div>
+        <div style="padding:12px 14px 4px;font-size:15px;line-height:1.7">Un club ficha <b>2 delanteros y 1 portero</b> por 7 millones; otro, <b>1 delantero y 1 portero</b> por 5 millones. ¿Cuánto cuesta cada jugador? Dos pistas, dos incógnitas: eso es un <b style="color:#fbbf24">sistema de ecuaciones</b>.</div>
+        <div id="u2-player" style="margin:8px 10px 10px;padding:8px 10px;border-radius:12px;display:flex;align-items:center;gap:10px;border:1.5px solid transparent">
+          <div id="u2-pbtn" style="width:40px;height:40px;border-radius:50%;background:#7c3aed;display:grid;place-items:center;flex:none">
+            <svg id="u2-play" width="14" height="16" viewBox="0 0 14 16"><path d="M0 0 L14 8 L0 16Z" fill="#fff"/></svg>
+            <svg id="u2-pause" width="14" height="16" viewBox="0 0 14 16" style="display:none"><rect width="5" height="16" fill="#fff"/><rect x="9" width="5" height="16" fill="#fff"/></svg></div>
+          <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700"><span id="u2-al">Escuchar sección</span><span id="u2-at" style="color:#a78bfa">0:00 / 0:41</span></div>
+            <div style="height:6px;border-radius:6px;background:#2a1d52;margin-top:6px;overflow:hidden"><i id="u2-ab" style="display:block;height:100%;width:0;background:#7c3aed"></i></div></div>
+        </div>
+        <div style="text-align:right;padding:0 14px 10px;font-size:12px;color:#a78bfa">Leíste esto <b style="color:#fbbf24">+10 XP</b></div>
+      </div>
+      <div style="border-radius:14px;background:#1a1035;border:1px solid rgba(6,182,212,.3);overflow:hidden;margin-top:12px">
+        <div style="background:rgba(6,182,212,.12);padding:10px 14px;font-size:12px;font-weight:900;letter-spacing:.08em;color:#06b6d4">🧩 RESUÉLVELO CONMIGO</div>
+        <div style="padding:12px 14px;font-size:15px;line-height:1.7">Resta una pista de la otra: <b>2x + y = 7</b> menos <b>x + y = 5</b> deja <b style="color:#06b6d4">x = 2</b>.</div>
+      </div>
+    </div>
+
+    <!-- conecta · ConnectBlock (InteractiveBlocks.tsx) -->
+    <div class="scr" id="u-conecta">
+      <div class="hdr"><div class="bk">←</div>
+        <div style="flex:1;min-width:0"><div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.08em">MATEMÁTICAS 2°</div>
+          <div class="orb" style="font-size:15px">Sistemas de ecuaciones</div></div></div>
+      <div class="tabs"><span class="on">Guía</span><span>Quiz</span><span>Horda</span><span>Resumen</span></div>
+      <div class="mj"><div class="ttl">🔗 CONECTA</div>
+        <div style="padding:14px 14px 16px">
+          <div class="ins"><span style="font-size:14px">👆</span><span>Toca una tarjeta de cada lado para unir el par</span></div>
+          <div style="font-size:15px;line-height:1.5;color:#e2d9f3;margin-bottom:12px">¿Qué parte del sistema de ecuaciones es cada cosa?</div>
+          <div class="cn" id="cn">
+            <div class="lb" style="color:#f472b6">Fútbol</div><div></div><div class="lb" style="color:#a78bfa">En Mate</div>
+            <div class="cc" id="L0">Puntos por un gol</div><div></div><div class="cc" id="R0">2x + y = 11</div>
+            <div class="cc" id="L1">Puntos por una asistencia</div><div></div><div class="cc" id="R1">x</div>
+            <div class="cc" id="L2">2 goles y 1 asistencia</div><div></div><div class="cc" id="R2">x + 3y = 13</div>
+            <div class="cc" id="L3">1 gol y 3 asistencias</div><div></div><div class="cc" id="R3">y</div>
+            <svg id="cn-svg"></svg>
+          </div>
+          <div class="okbox" id="cn-ok"><div class="pasita" id="p-ok" style="position:relative;left:0;flex:none"></div><div><b>¡Todo conectado!</b><br><span>Dos incógnitas necesitan <b style="color:#fff">dos pistas</b>.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pasos · OrderStepsBlock (InteractiveBlocks.tsx) -->
+    <div class="scr" id="u-pasos">
+      <div class="hdr"><div class="bk">←</div>
+        <div style="flex:1;min-width:0"><div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.08em">MATEMÁTICAS 2°</div>
+          <div class="orb" style="font-size:15px">Sistemas de ecuaciones</div></div></div>
+      <div class="tabs"><span class="on">Guía</span><span>Quiz</span><span>Horda</span><span>Resumen</span></div>
+      <div class="mj"><div class="ttl">🪜 ARMA LOS PASOS</div>
+        <div style="padding:14px 14px 16px">
+          <div class="ins"><span style="font-size:14px">👆</span><span>Toca los pasos en el orden correcto</span></div>
+          <div style="font-size:15px;line-height:1.5;color:#e2d9f3;margin-bottom:12px">Ordena cómo resolver un sistema por sustitución</div>
+          <div class="slots" id="slots"></div>
+          <div class="chips" id="chips"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- pistas · SolveBlock "Papel y lápiz" (InteractiveBlocks.tsx) -->
+    <div class="scr" id="u-pistas">
+      <div class="hdr"><div class="bk">←</div>
+        <div style="flex:1;min-width:0"><div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.08em">MATEMÁTICAS 2°</div>
+          <div class="orb" style="font-size:15px">Sistemas de ecuaciones</div></div></div>
+      <div class="tabs"><span class="on">Guía</span><span>Quiz</span><span>Horda</span><span>Resumen</span></div>
+      <div class="mj" style="border-color:rgba(16,185,129,.3)"><div class="ttl" style="background:rgba(16,185,129,.08);color:#10b981">📝 PAPEL Y LÁPIZ</div>
+        <div style="padding:14px 14px 16px">
+          <div style="font-size:12px;color:#a78bfa;font-weight:800;letter-spacing:.05em;margin-bottom:8px">EJERCICIO 1 DE 3</div>
+          <div style="font-size:15px;line-height:1.5;color:#e2d9f3;margin-bottom:12px">En una tienda, dos cuadernos y una pluma cuestan 45 pesos. Una pluma cuesta 5 pesos. ¿Cuánto cuesta cada cuaderno?</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div id="sv-in" style="flex:1;border:1.5px solid #2D2048;border-radius:12px;padding:12px;font-size:16px;font-weight:700;color:#e2d9f3;background:#0f0a1e;min-height:46px"><span id="sv-val" style="color:#4B3D6E">Tu respuesta</span></div>
+            <span style="font-size:16px;color:#a78bfa;font-weight:700">pesos</span></div>
+          <div class="btn" id="sv-btn" style="margin-top:10px;min-height:46px">Revisar</div>
+          <div id="sv-err" style="margin-top:10px;font-size:13.5px;font-weight:700;color:#fca5a5;opacity:0">✗ Todavía no. Te dejé una pista arriba — inténtalo otra vez.</div>
+          <div id="sv-hint" style="display:flex;gap:6px;margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);opacity:0;transform:scale(.96)"><span style="font-size:14px">💡</span><span style="font-size:14px;color:#fbbf24;font-weight:600;line-height:1.5">Llama x al precio de un cuaderno. Con los datos: 2x + y = 45, y ya sabes que y = 5.</span></div>
+          <div id="sv-ok" style="margin-top:12px;font-size:16px;color:#6ee7b7;font-weight:800;opacity:0">✓ ¡Correcto!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- horda (horda-client.tsx) -->
+    <div class="scr" id="u-horda">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+        <div class="orb" style="font-size:13px;color:#ec4899;letter-spacing:.06em">OLEADA <span id="u4-w">3</span> / 6</div>
+        <div style="font-size:13px;color:#a78bfa;font-weight:800">3 de 5 · 2 ✓</div></div>
+      <div style="display:flex;gap:5px;margin:10px 0 16px"><i style="flex:1;height:5px;border-radius:4px;background:#7c3aed"></i><i style="flex:1;height:5px;border-radius:4px;background:#7c3aed"></i><i style="flex:1;height:5px;border-radius:4px;background:#ec4899"></i><i style="flex:1;height:5px;border-radius:4px;background:#2D2048"></i><i style="flex:1;height:5px;border-radius:4px;background:#2D2048"></i></div>
+      <div style="background:#1e1040;border:1px solid rgba(124,58,237,.3);border-radius:16px;padding:16px">
+        <div style="font-size:17px;font-weight:700;color:#f0e6ff;line-height:1.45;margin-bottom:14px">¿Qué par de valores cumple x + y = 5 y x − y = 1?</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:700">
+          <div style="border-radius:10px;border:1.5px solid #2D2048;padding:11px 12px">A. x = 2, y = 3</div>
+          <div id="u4-ok" style="border-radius:10px;border:1.5px solid #2D2048;padding:11px 12px">B. x = 3, y = 2</div>
+          <div style="border-radius:10px;border:1.5px solid #2D2048;padding:11px 12px">C. x = 4, y = 1</div>
+          <div style="border-radius:10px;border:1.5px solid #2D2048;padding:11px 12px">D. x = 5, y = 0</div>
+        </div>
+        <div id="u4-fb" style="margin-top:12px;font-size:15px;font-weight:900;color:#6ee7b7;opacity:0">✓ Correcto · +25 XP</div>
+      </div>
+      <div class="pasita" id="p-zombie" style="left:auto;right:4px;top:560px"></div>
+      <div style="position:absolute;left:16px;top:610px;width:230px;font-size:14px;line-height:1.5;color:#a78bfa"><b style="color:#e2d9f3">Modo Horda:</b> 6 oleadas de preguntas, cada una más difícil. Para llegar listo al examen.</div>
+    </div>
+
+    <!-- avance · Dashboard (dashboard-client.tsx) -->
+    <div class="scr" id="u-avance">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="orb" style="font-size:15px;letter-spacing:.12em;background:linear-gradient(90deg,#7c3aed,#ec4899);-webkit-background-clip:text;color:transparent">PASAS.MX</div>
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#ec4899);display:grid;place-items:center" class="orb">S</div></div>
+      <div style="display:flex;align-items:center;gap:10px;margin:8px 0 14px"><div class="pasita" id="p-dash" style="position:relative;left:0"></div>
+        <div><div style="font-size:16px;font-weight:600;color:#a78bfa">Bienvenida de vuelta,</div><div style="font-size:24px;font-weight:900">Sofía</div></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="border:1px solid rgba(251,191,36,.4);border-radius:14px;padding:12px;background:#1a1035;display:flex;gap:8px;align-items:center"><span style="font-size:22px">⭐</span><div><div style="font-size:13px;color:#a78bfa">XP Total</div><div id="u5-xp" style="font-size:18px;font-weight:900;color:#fbbf24">0</div></div></div>
+        <div style="border:1px solid rgba(236,72,153,.4);border-radius:14px;padding:12px;background:#1a1035;display:flex;gap:8px;align-items:center"><span style="font-size:22px">🔥</span><div><div style="font-size:13px;color:#a78bfa">Racha</div><div style="font-size:18px;font-weight:900;color:#ec4899">5 días</div></div></div>
+      </div>
+      <div style="border:1px solid #2D2048;border-radius:14px;padding:14px;background:#1a1035;margin-top:10px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="orb" style="color:#fbbf24;font-size:16px">NIVEL 3</span><span id="u5-lv" style="font-size:14px;color:#a78bfa">0/500 XP</span></div>
+        <div class="bar" style="margin-top:10px"><i id="u5-bar" style="width:0%"></i></div></div>
+      <div style="font-size:13px;font-weight:900;letter-spacing:.14em;color:#a78bfa;margin:18px 0 10px">MIS MATERIAS</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="u5-mats"></div>
+    </div>
+  </div></div></div>
+
+  <div id="tap"></div><div id="ripple"></div>
+  <div id="end" class="end"></div>
+</div>
+<script src="anim.js"></script>
+<script src="pasita.js"></script>
+<script>
+var D, E, T0 = [], TOTAL = 0;
+var MATS = [['∑', 'Matemáticas 2°', '915 XP', 72], ['Aa', 'Español 2°', '420 XP', 38], ['🏛', 'Historia 2°', '260 XP', 24], ['🧬', 'Biología 2°', 'Sin progreso', 0]];
+var PASOS = ['Despeja una incógnita en una de las ecuaciones', 'Sustitúyela en la otra ecuación', 'Resuelve para hallar la otra incógnita', 'Usa ese valor para hallar la primera', 'Comprueba el par en ambas ecuaciones'];
+var ORDEN_CHIPS = [2, 0, 4, 1, 3]; // los chips salen barajados; el alumno toca 0, 1, 2
+var PARES = [[0, 1, '#10b981'], [1, 3, '#06b6d4'], [2, 0, '#fbbf24'], [3, 2, '#f472b6']]; // [izq, der, color]
+
+function capHTML(e) {
+  var h = e.paso ? '<span class="step' + (e.color === '#fbbf24' ? ' dark' : '') + '">' + esc(e.paso) + '</span>' : '';
+  return h + '<div class="ct">' + e.lineas.map(function (l) { return '<span class="' + l[1] + '">' + esc(l[0]) + '</span>'; }).join('') + '</div>';
+}
+function idx(tipo) { for (var i = 0; i < E.length; i++) if (E[i].tipo === tipo) return i; return -1; }
+function t0(tipo) { return T0[idx(tipo)]; }
+function t1(tipo) { var i = idx(tipo); return T0[i] + E[i].dur; }
+
+window.setup = function (data) {
+  D = data; E = data.reel.escenas;
+  var tiempos = data.tiempos || E.map(function (e) { return e.dur || 3; });
+  var t = 0; E.forEach(function (e, i) { e.dur = tiempos[i]; T0.push(t); t += e.dur; }); TOTAL = t;
+  var s = '';
+  for (var i = 0; i < 90; i++) s += '<i style="left:' + ((i * 173) % 1080) + 'px;top:' + ((i * 389) % 1920) + 'px;width:' + (1 + i % 3) + 'px;height:' + (1 + i % 3) + 'px;opacity:' + (0.2 + (i % 5) * 0.12) + '"></i>';
+  $('stars').innerHTML = s;
+  $('bgs').innerHTML = E.map(function (e, i) {
+    var src = (data.reel_fondos || [])[i];
+    return '<div class="bg' + (src ? '' : ' vacio') + '" id="bg' + i + '"' + (src ? ' style="background-image:url(\'' + src + '\')"' : '') + '></div>';
+  }).join('');
+  $('caps').innerHTML = E.map(function (e, i) {
+    if (e.tipo === 'cierre') return '';
+    var cls = e.tipo === 'gancho' ? 'hook' : 'cap';
+    var h = '<div class="' + cls + '" id="cap' + i + '" style="--c:' + (e.color || '#ec4899') + '">' + capHTML(e) + '</div>';
+    if (e.lineas2) h += '<div class="cap" id="cap' + i + 'b" style="--c:' + (e.color || '#ec4899') + '">' + capHTML({ paso: e.paso, color: e.color, lineas: e.lineas2 }) + '</div>';
+    return h;
+  }).join('');
+  var ce = E[idx('cierre')];
+  $('end').innerHTML = '<div class="big">' + ce.lineas.map(function (l) { return esc(l[0]); }).join('<br>') + '</div><div class="rows">' +
+    ce.bullets.map(function (b) { return '<div><b>✓</b>' + esc(b) + '</div>'; }).join('') + '</div><div class="url">' + esc(ce.url || 'pasas.mx') + '</div>';
+  // Arma los pasos: slots vacíos + chips barajados
+  $('slots').innerHTML = PASOS.map(function (p, k) { return '<div class="slot" id="sl' + k + '"><i>' + (k + 1) + '</i><span id="slt' + k + '"></span></div>'; }).join('');
+  $('chips').innerHTML = ORDEN_CHIPS.map(function (k) { return '<div class="chip" id="ch' + k + '">' + esc(PASOS[k]) + '</div>'; }).join('');
+  buildPasita($('p-zombie'), 'zombie' in PASITA_POSES ? 'zombie' : 'flexionando', 120); $('p-zombie').style.width = '120px';
+  buildPasita($('p-dash'), 'confiada', 56); $('p-dash').style.width = '56px'; $('p-dash').style.marginLeft = '0';
+  buildPasita($('p-ok'), 'aprobando', 56); $('p-ok').style.width = '56px'; $('p-ok').style.marginLeft = '0';
+  $('u5-mats').innerHTML = MATS.map(function (m) {
+    return '<div style="background:#1a1035;border-radius:20px;padding:14px;border:1px solid #2D2048"><div style="width:36px;height:36px;border-radius:10px;background:#2d1b69;display:grid;place-items:center;font-weight:900;color:#a78bfa">' + m[0] + '</div>' +
+      '<div style="font-size:17px;font-weight:800;margin-top:10px">' + m[1] + '</div><div style="font-size:13px;color:#a78bfa">' + m[2] + '</div>' +
+      '<div style="height:4px;border-radius:4px;background:#2D2048;margin-top:10px;overflow:hidden"><i class="mb" data-p="' + m[3] + '" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#ec4899)"></i></div></div>';
+  }).join('');
+  // Líneas de Conecta: una por par, del centro-derecha de la izquierda al centro-izquierda de la derecha
+  var cn = $('cn').getBoundingClientRect(), paths = '';
+  PARES.forEach(function (p, k) {
+    var a = $('L' + p[0]).getBoundingClientRect(), b = $('R' + p[1]).getBoundingClientRect();
+    var x1 = (a.right - cn.left) / 1.6718, y1 = (a.top + a.height / 2 - cn.top) / 1.6718, x2 = (b.left - cn.left) / 1.6718, y2 = (b.top + b.height / 2 - cn.top) / 1.6718;
+    paths += '<path id="ln' + k + '" d="M' + x1 + ' ' + y1 + ' C' + (x1 + 14) + ' ' + y1 + ' ' + (x2 - 14) + ' ' + y2 + ' ' + x2 + ' ' + y2 + '" stroke="' + p[2] + '"/>';
+  });
+  $('cn-svg').innerHTML = paths;
+  window.ready = Promise.all([pasitaReady()].concat([].map.call(document.querySelectorAll('.bg:not(.vacio)'), function (el) {
+    return new Promise(function (ok) { var im = new Image(); im.onload = im.onerror = ok; im.src = el.style.backgroundImage.slice(5, -2); });
+  })));
+  window.render(0);
+  return TOTAL;
+};
+window.momentos = function () {
+  return E.map(function (e, i) { return T0[i] + Math.min(e.dur - 0.3, e.tipo === 'analogia' ? e.dur * 0.75 : e.tipo === 'conecta' || e.tipo === 'pasos' ? e.dur * 0.78 : 2.0); });
+};
+
+function tapAt(t, t0, target) {
+  var d = t - t0, el = $('tap'), r = $('ripple');
+  var on = d > -0.45 && d < 0.35;
+  var b = $(target).getBoundingClientRect();
+  el.style.left = (b.left + b.width / 2) + 'px'; el.style.top = (b.top + b.height / 2) + 'px';
+  r.style.left = el.style.left; r.style.top = el.style.top;
+  el.style.opacity = on ? clamp((d + 0.45) / 0.2) * clamp((0.35 - d) / 0.2) : 0;
+  el.style.transform = 'scale(' + (d > -0.08 && d < 0.12 ? 0.82 : 1) + ')';
+  var q = clamp(d / 0.45);
+  r.style.opacity = d > 0 && d < 0.45 ? 0.8 * (1 - q) : 0;
+  r.style.transform = 'scale(' + (1 + q * 1.4) + ')';
+  return on;
+}
+// Toques en cadena: cada uno a su tiempo; devuelve si alguno está activo
+function taps(t, lista) { var on = false; lista.forEach(function (x) { if (!on && t > x[0] - 0.5 && t < x[0] + 0.4) on = tapAt(t, x[0], x[1]); }); return on; }
+function okStyle(el, ok) { el.style.borderColor = ok ? '#10b981' : '#2D2048'; el.style.background = ok ? 'rgba(16,185,129,.15)' : 'transparent'; el.style.color = ok ? '#6ee7b7' : '#e2d9f3'; }
+
+window.render = function (t) {
+  var tapped = false, i, e;
+  // Fondos y textos por escena
+  for (i = 0; i < E.length; i++) {
+    e = E[i];
+    var a = T0[i], b = a + e.dur, v = win(t, a, b, i > 0, i < E.length - 1);
+    var bg = $('bg' + i); bg.style.opacity = v;
+    bg.style.transform = 'scale(' + (1.02 + 0.03 * clamp((t - a) / e.dur)) + ')';
+    if (e.tipo === 'gancho') {
+      var h = $('cap' + i); h.style.opacity = v;
+      h.querySelectorAll('.ct span').forEach(function (s, k) { pop(s, t, a + 0.1 + k * 0.45, 0.35); });
+    } else if (e.tipo === 'cierre') {
+      show($('end'), win(t, a, b + 1, true, false));
+    } else if (e.lineas2) {
+      var m = a + e.dur * 0.5;
+      show($('cap' + i), win(t, a, m, true, true)); show($('cap' + i + 'b'), win(t, m, b, true, true));
+    } else show($('cap' + i), v);
+  }
+  // Teléfono: entra tras el gancho y sale antes del cierre
+  var pin = easeOut(clamp((t - (t1('gancho') - 0.5)) / 0.6)), pout = easeOut(clamp((t - (t0('cierre') - 0.2)) / 0.5));
+  $('phone').style.transform = 'translateY(' + ((1 - pin) * 1400 + pout * 1400) + 'px)';
+  ['elige', 'analogia', 'conecta', 'pasos', 'pistas', 'horda', 'avance'].forEach(function (k) {
+    $('u-' + k).style.opacity = win(t, t0(k) - (k === 'elige' ? 0.6 : 0), t1(k) + (k === 'avance' ? 0.3 : 0), k !== 'elige', k !== 'avance');
+  });
+
+  // elige: toca Fútbol y luego ¡Empezar!
+  var s1 = t0('elige'), d1 = E[idx('elige')].dur;
+  $('o-fut').classList.toggle('sel', t >= s1 + d1 * 0.42);
+  $('u1-btn').classList.toggle('off', t < s1 + d1 * 0.42);
+  $('u1-p3').style.width = (t >= s1 + d1 * 0.42 ? 100 : 0) + '%';
+  tapped = taps(t, [[s1 + d1 * 0.42, 'o-fut'], [s1 + d1 * 0.85, 'u1-btn']]) || tapped;
+
+  // analogia: toca el reproductor y la barra avanza
+  var s2 = t0('analogia'), d2 = E[idx('analogia')].dur, playT = s2 + d2 * 0.52;
+  tapped = taps(t, [[playT, 'u2-pbtn']]) || tapped;
+  var playing = t >= playT;
+  $('u2-play').style.display = playing ? 'none' : ''; $('u2-pause').style.display = playing ? '' : 'none';
+  $('u2-al').textContent = playing ? 'Reproduciendo' : 'Escuchar sección';
+  var secs = playing ? Math.min(41, (t - playT) * 1.0) : 0;
+  $('u2-at').textContent = '0:' + String(Math.floor(secs)).padStart(2, '0') + ' / 0:41';
+  $('u2-ab').style.width = (100 * secs / 41) + '%';
+  var glow = playing ? 0.5 + 0.5 * Math.sin((t - playT) * 6) : 0;
+  $('u2-player').style.borderColor = playing ? 'rgba(236,72,153,' + (0.4 + 0.5 * glow) + ')' : 'transparent';
+  $('u2-player').style.boxShadow = playing ? '0 0 ' + (8 + 10 * glow) + 'px rgba(236,72,153,.5)' : 'none';
+
+  // conecta: toca izquierda, luego derecha; aparece la línea. 3 pares en el tiempo, el 4° se completa solo al final
+  var s3 = t0('conecta'), d3 = E[idx('conecta')].dur, step = d3 / 6, lista = [];
+  PARES.forEach(function (p, k) {
+    var tl = s3 + step * (0.5 + k * 1.2), tr = tl + step * 0.5, done = t >= tr;
+    var L = $('L' + p[0]), R = $('R' + p[1]);
+    L.classList.toggle('sel', t >= tl && !done); R.classList.toggle('sel', false);
+    L.classList.toggle('ok', done); R.classList.toggle('ok', done);
+    L.style.borderColor = done ? p[2] : t >= tl ? '#fbbf24' : '#2D2048'; R.style.borderColor = done ? p[2] : '#2D2048';
+    L.style.background = done ? p[2] + '22' : t >= tl ? 'rgba(251,191,36,.1)' : '#0f0a1e'; R.style.background = done ? p[2] + '22' : '#0f0a1e';
+    var ln = $('ln' + k); ln.style.opacity = done ? 1 : 0;
+    var len = ln.getTotalLength ? ln.getTotalLength() : 200; ln.style.strokeDasharray = len; ln.style.strokeDashoffset = len * (1 - easeOut(clamp((t - tr) / 0.3)));
+    if (k < 3) lista.push([tl, 'L' + p[0]], [tr, 'R' + p[1]]);
+  });
+  tapped = taps(t, lista) || tapped;
+  var okT = s3 + step * (0.5 + 3 * 1.2) + step * 0.5;
+  $('cn-ok').style.opacity = clamp((t - okT) / 0.25); $('cn-ok').style.transform = 'scale(' + (0.9 + 0.1 * easeOut(clamp((t - okT) / 0.3))) + ')';
+
+  // pasos: toca 3 chips en orden y se llenan los slots
+  var s4 = t0('pasos'), d4 = E[idx('pasos')].dur, lp = [];
+  for (var k = 0; k < 5; k++) {
+    var tk = s4 + d4 * (0.22 + k * 0.26), on = k < 3 ? t >= tk : t >= s4 + d4 * 0.95;
+    $('ch' + k).classList.toggle('used', on); $('sl' + k).classList.toggle('full', on); $('slt' + k).textContent = on ? PASOS[k] : '';
+    if (k < 3) lp.push([tk, 'ch' + k]);
+  }
+  tapped = taps(t, lp) || tapped;
+
+
+  // pistas: escribe 25 → Revisar → falla y sale la pista → escribe 20 → Revisar → ¡Correcto!
+  var s7 = t0('pistas'), d7 = E[idx('pistas')].dur, pA = s7 + d7 * 0.18, pB = s7 + d7 * 0.33, pC = s7 + d7 * 0.6, pD = s7 + d7 * 0.76;
+  var typed = t < pA ? '' : t < pB ? '25' : t < pC ? '25' : '20';
+  if (t >= pA && t < pA + 0.4) typed = '2'; if (t >= pC && t < pC + 0.4) typed = '2';
+  $('sv-val').textContent = typed || 'Tu respuesta'; $('sv-val').style.color = typed ? '#e2d9f3' : '#4B3D6E';
+  var wrong = t >= pB && t < pC, right = t >= pD;
+  $('sv-in').style.borderColor = right ? '#10b981' : wrong ? '#f87171' : typed ? '#7c3aed' : '#2D2048';
+  $('sv-btn').classList.toggle('off', !typed);
+  $('sv-err').style.opacity = wrong ? clamp((t - pB) / 0.2) : 0;
+  var hv = clamp((t - pB) / 0.3); $('sv-hint').style.opacity = hv; $('sv-hint').style.transform = 'scale(' + (0.96 + 0.04 * easeOut(hv)) + ')';
+  $('sv-ok').style.opacity = clamp((t - pD) / 0.25);
+  $('sv-in').style.transform = wrong && t < pB + 0.4 ? 'translateX(' + (Math.sin((t - pB) * 60) * 4) + 'px)' : 'none';
+  tapped = taps(t, [[pB, 'sv-btn'], [pD, 'sv-btn']]) || tapped;
+
+  // horda
+  var s5 = t0('horda'), d5 = E[idx('horda')].dur, hT = s5 + d5 * 0.45, hok = t >= hT;
+  tapped = taps(t, [[hT, 'u4-ok']]) || tapped;
+  okStyle($('u4-ok'), hok);
+  $('u4-fb').style.opacity = clamp((t - hT) / 0.25);
+  $('u4-w').textContent = t >= s5 + d5 * 0.8 ? '4' : '3';
+  $('p-zombie').style.transform = 'translateY(' + (Math.sin(t * 2.4) * 5) + 'px)';
+  if (!tapped) { $('tap').style.opacity = 0; $('ripple').style.opacity = 0; }
+
+  // avance
+  var s6 = t0('avance');
+  var g = easeOut(clamp((t - (s6 + 0.4)) / 1.4));
+  $('u5-xp').textContent = Math.round(1260 * g).toLocaleString('en-US');
+  $('u5-lv').textContent = Math.round(260 * g) + '/500 XP';
+  $('u5-bar').style.width = (52 * g) + '%';
+  document.querySelectorAll('.mb').forEach(function (bb, k) { bb.style.width = (+bb.dataset.p * easeOut(clamp((t - (s6 + 0.7 + k * 0.2)) / 1.1))) + '%'; });
+
+  // Marco del color de la escena
+  var c = '#ec4899';
+  for (i = 0; i < E.length; i++) if (t >= T0[i]) c = E[i].color || (E[i].tipo === 'cierre' ? '#7c3aed' : '#ec4899');
+  $('neon').style.setProperty('--c', c);
+  blinkAll(t);
+};
+</script>
+</body></html>
