@@ -1,0 +1,282 @@
+[
+ {
+  "topic_id": "b84ba4f0-5738-452d-b4f4-7a4741bb86bb",
+  "statement": "Un balón que cae también jala a la Tierra, y con la misma fuerza.",
+  "is_true": true,
+  "explanation": "Verdad: la atracción gravitacional es mutua e igual para los dos. La Tierra casi no se mueve porque su masa es enorme y, como a = F/m, su aceleración es mínima.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "b84ba4f0-5738-452d-b4f4-7a4741bb86bb",
+  "statement": "Los astronautas flotan en la estación espacial porque allá no hay gravedad.",
+  "is_true": false,
+  "explanation": "Mentira: a 400 km de altura la gravedad es casi 90 % de la que hay en la superficie. Flotan porque ellos y la estación van cayendo juntos alrededor de la Tierra.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "b84ba4f0-5738-452d-b4f4-7a4741bb86bb",
+  "statement": "Al doble de distancia del centro de un planeta, su atracción baja a la mitad.",
+  "is_true": false,
+  "explanation": "Mentira: la fuerza depende del cuadrado de la distancia (F = G·m₁·m₂/r²). Al doble de distancia queda la cuarta parte; al triple, la novena parte.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "b84ba4f0-5738-452d-b4f4-7a4741bb86bb",
+  "statement": "La fuerza que hace caer una manzana es la misma que mantiene a la Luna en órbita.",
+  "is_true": true,
+  "explanation": "Verdad: esa fue la gran idea de Newton. La Luna también cae hacia la Tierra, pero avanza tan rápido de lado que nunca termina de caer encima.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "e900af73-c924-45f5-972c-4665dc21f113",
+  "statement": "Un objeto puede estar en movimiento aunque la fuerza neta sobre él sea cero.",
+  "is_true": true,
+  "explanation": "Verdad: fuerza neta cero significa que la velocidad no cambia, no que el objeto esté quieto. Un disco de hockey que se desliza parejo sobre el hielo es un ejemplo.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "e900af73-c924-45f5-972c-4665dc21f113",
+  "statement": "La acción y la reacción se anulan porque son iguales y opuestas.",
+  "is_true": false,
+  "explanation": "Mentira: actúan sobre cuerpos distintos, así que no se pueden anular. Tú empujas el piso, el piso te empuja a ti, y por eso logras saltar.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "e900af73-c924-45f5-972c-4665dc21f113",
+  "statement": "Un balón pateado sigue avanzando porque lleva dentro la fuerza de la patada.",
+  "is_true": false,
+  "explanation": "Mentira: en cuanto se despega del pie, nada lo empuja hacia adelante. Avanza por inercia, mientras el aire lo frena y la gravedad lo baja.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "e900af73-c924-45f5-972c-4665dc21f113",
+  "statement": "Un libro quieto sobre una mesa tiene fuerzas actuando sobre él.",
+  "is_true": true,
+  "explanation": "Verdad: su peso lo jala hacia abajo y la mesa lo empuja hacia arriba con la misma fuerza. Se equilibran y la fuerza neta es cero.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "e6ce0f95-9889-41a7-85c4-7be5fce7cabb",
+  "statement": "En física, el peso de una persona se mide en kilogramos.",
+  "is_true": false,
+  "explanation": "Mentira: el kilogramo mide la masa. El peso es una fuerza y se mide en newtons (N): una persona de 50 kg pesa unos 490 N en la Tierra.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "e6ce0f95-9889-41a7-85c4-7be5fce7cabb",
+  "statement": "La velocidad es una magnitud derivada.",
+  "is_true": true,
+  "explanation": "Verdad: se obtiene combinando dos magnitudes fundamentales, longitud entre tiempo. Por eso su unidad en el SI es el metro por segundo (m/s).",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "e6ce0f95-9889-41a7-85c4-7be5fce7cabb",
+  "statement": "En el Sistema Internacional, la unidad base de masa es el gramo.",
+  "is_true": false,
+  "explanation": "Mentira: es el kilogramo (kg). Es la única unidad base del SI que ya trae un prefijo en su nombre.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "e6ce0f95-9889-41a7-85c4-7be5fce7cabb",
+  "statement": "Hoy el metro se define a partir de la velocidad de la luz.",
+  "is_true": true,
+  "explanation": "Verdad: desde 1983, un metro es la distancia que recorre la luz en el vacío en 1/299 792 458 de segundo. Así cualquier laboratorio del mundo puede reproducirlo.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "46289b6c-9125-495b-8b61-050a065fe656",
+  "statement": "En notación científica, un número muy pequeño lleva exponente negativo.",
+  "is_true": true,
+  "explanation": "Verdad: 0.00002 se escribe 2 × 10⁻⁵. El exponente negativo indica cuántos lugares se movió el punto decimal hacia la derecha.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "46289b6c-9125-495b-8b61-050a065fe656",
+  "statement": "El número 45 × 10⁶ ya está bien escrito en notación científica.",
+  "is_true": false,
+  "explanation": "Mentira: el número de adelante debe estar entre 1 y 10 (sin llegar a 10). Lo correcto es 4.5 × 10⁷.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "46289b6c-9125-495b-8b61-050a065fe656",
+  "statement": "Para convertir kilómetros a metros se divide entre 1000.",
+  "is_true": false,
+  "explanation": "Mentira: se multiplica por 1000, porque 1 km = 1000 m. Al pasar a una unidad más pequeña, el número de la medida crece.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "46289b6c-9125-495b-8b61-050a065fe656",
+  "statement": "Al sumar 4 × 10⁶ más 3 × 10⁶, el resultado es 7 × 10⁶.",
+  "is_true": true,
+  "explanation": "Verdad: con la misma potencia de 10, solo se suman los números de adelante y el exponente se queda igual. Sumar los exponentes es el error clásico.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "37d07df8-4b4e-414f-9436-fefcd1290cf8",
+  "statement": "La energía mecánica es la suma de la energía cinética y la potencial.",
+  "is_true": true,
+  "explanation": "Verdad: la cinética depende del movimiento y la potencial de la posición; juntas forman la energía mecánica de un objeto.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "37d07df8-4b4e-414f-9436-fefcd1290cf8",
+  "statement": "Un carrito que parte del reposo puede subir una colina más alta que la de salida.",
+  "is_true": false,
+  "explanation": "Mentira: aun sin fricción, su energía mecánica solo alcanza para volver a la altura inicial. Por eso en una montaña rusa clásica la primera colina suele ser la más alta.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "37d07df8-4b4e-414f-9436-fefcd1290cf8",
+  "statement": "La energía mecánica de un objeto se conserva aunque haya fricción.",
+  "is_true": false,
+  "explanation": "Mentira: la fricción convierte parte de la energía mecánica en calor, así que esta disminuye. Lo que sí se conserva es la energía total.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "37d07df8-4b4e-414f-9436-fefcd1290cf8",
+  "statement": "Sin fricción, caer en vertical o bajar por una rampa desde la misma altura da la misma rapidez final.",
+  "is_true": true,
+  "explanation": "Verdad: en los dos casos toda la energía potencial (m·g·h) se vuelve cinética, y esa cuenta solo depende de la altura, no del camino.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "0ba9c295-f5d6-42ae-9310-536ceb83a061",
+  "statement": "En física, empujar una pared que no se mueve equivale a trabajo cero.",
+  "is_true": true,
+  "explanation": "Verdad: el trabajo es fuerza por distancia (W = F·d). Si no hay desplazamiento no hay trabajo, aunque termines cansado.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "0ba9c295-f5d6-42ae-9310-536ceb83a061",
+  "statement": "Subir una escalera corriendo o caminando requiere la misma potencia.",
+  "is_true": false,
+  "explanation": "Mentira: el trabajo es el mismo, pero corriendo lo haces en menos tiempo. Como la potencia es trabajo entre tiempo (P = W/t), corriendo desarrollas más.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "0ba9c295-f5d6-42ae-9310-536ceb83a061",
+  "statement": "El trabajo y la energía se miden en unidades distintas.",
+  "is_true": false,
+  "explanation": "Mentira: los dos se miden en joules (J), porque el trabajo es energía que se transfiere al aplicar una fuerza a lo largo de una distancia.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "0ba9c295-f5d6-42ae-9310-536ceb83a061",
+  "statement": "Al subir una caja a un estante, tu trabajo queda guardado como energía potencial.",
+  "is_true": true,
+  "explanation": "Verdad: el trabajo de levantarla se transforma en energía potencial (m·g·h). Si la caja se cae, esa energía se vuelve cinética.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "140ff91d-8fdf-4632-9f53-ba83016e0bfd",
+  "statement": "Una máquina bien diseñada puede entregar más energía de la que recibe.",
+  "is_true": false,
+  "explanation": "Mentira: la energía no se crea ni se destruye. Ninguna máquina entrega más de lo que recibe; por eso las máquinas de movimiento perpetuo son imposibles.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "140ff91d-8fdf-4632-9f53-ba83016e0bfd",
+  "statement": "Un foco incandescente convierte en calor más energía que en luz.",
+  "is_true": true,
+  "explanation": "Verdad: más del 90 % de su electricidad se vuelve calor. La energía no se pierde, pero se transforma en algo que no queríamos; por eso los focos LED gastan menos.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "140ff91d-8fdf-4632-9f53-ba83016e0bfd",
+  "statement": "Al subir escaleras, transformas energía química de tus alimentos en energía potencial.",
+  "is_true": true,
+  "explanation": "Verdad: tus músculos usan la energía química de la comida para elevarte; una parte queda como energía potencial y otra se vuelve calor.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "140ff91d-8fdf-4632-9f53-ba83016e0bfd",
+  "statement": "La batería de un celular guarda la energía en forma de electricidad.",
+  "is_true": false,
+  "explanation": "Mentira: al cargarla, transforma la energía eléctrica en energía química. Al usar el celular, esa energía química vuelve a convertirse en electricidad.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "f58a1c5e-7bd5-448a-9009-fd6e64cdc612",
+  "statement": "Si un coche va al doble de rapidez, lleva el doble de energía cinética.",
+  "is_true": false,
+  "explanation": "Mentira: en Ec = ½·m·v² la velocidad va al cuadrado. Al doble de rapidez lleva cuatro veces más energía; por eso los choques a alta velocidad son tan graves.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "f58a1c5e-7bd5-448a-9009-fd6e64cdc612",
+  "statement": "Una resortera estirada y quieta tiene energía guardada.",
+  "is_true": true,
+  "explanation": "Verdad: es energía potencial elástica. Al soltar la liga, se transforma en energía cinética de la piedra.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "f58a1c5e-7bd5-448a-9009-fd6e64cdc612",
+  "statement": "Una pelota tiene su máxima energía cinética en lo más alto de su salto.",
+  "is_true": false,
+  "explanation": "Mentira: arriba va más lenta y tiene su máxima energía potencial. La cinética es máxima justo antes de tocar el suelo, cuando va más rápido.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "f58a1c5e-7bd5-448a-9009-fd6e64cdc612",
+  "statement": "A la misma velocidad, un camión tiene más energía cinética que una bicicleta.",
+  "is_true": true,
+  "explanation": "Verdad: la energía cinética crece con la masa (Ec = ½·m·v²). Por eso un choque de camión causa muchísimo más daño.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "536c5c8a-2fdb-445a-8741-396c06f4c237",
+  "statement": "Un panel solar convierte la luz directamente en electricidad.",
+  "is_true": true,
+  "explanation": "Verdad: sus celdas fotovoltaicas, hechas de silicio, liberan electrones cuando les llega la luz. No tiene turbinas ni piezas que giren.",
+  "difficulty": 1
+ },
+ {
+  "topic_id": "536c5c8a-2fdb-445a-8741-396c06f4c237",
+  "statement": "La energía del viento viene, en el fondo, del Sol.",
+  "is_true": true,
+  "explanation": "Verdad: el Sol calienta de forma desigual la superficie y el aire; esas diferencias de temperatura y presión crean el viento que mueve los aerogeneradores.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "536c5c8a-2fdb-445a-8741-396c06f4c237",
+  "statement": "Una hidroeléctrica aprovecha la energía química del agua.",
+  "is_true": false,
+  "explanation": "Mentira: usa la energía potencial del agua de la presa. Al caer, se vuelve cinética, hace girar una turbina y un generador la convierte en electricidad.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "536c5c8a-2fdb-445a-8741-396c06f4c237",
+  "statement": "En una termoeléctrica, quemar el combustible produce electricidad directamente.",
+  "is_true": false,
+  "explanation": "Mentira: el calor hierve agua, el vapor hace girar una turbina y un generador convierte ese giro en electricidad. Es una cadena de transformaciones.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "a6f218ff-b26b-4c3c-be14-5af6fb881eef",
+  "statement": "Con la misma fuerza, un objeto con el doble de masa acelera la mitad.",
+  "is_true": true,
+  "explanation": "Verdad: es la segunda ley de Newton, a = F/m. Por eso cuesta más acelerar un carrito del súper lleno que uno vacío.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "a6f218ff-b26b-4c3c-be14-5af6fb881eef",
+  "statement": "Un cohete no puede acelerar en el espacio porque no hay aire en qué empujar.",
+  "is_true": false,
+  "explanation": "Mentira: el cohete empuja los gases hacia atrás y los gases lo empujan hacia adelante (tercera ley). No necesita aire; en el vacío funciona incluso mejor.",
+  "difficulty": 2
+ },
+ {
+  "topic_id": "a6f218ff-b26b-4c3c-be14-5af6fb881eef",
+  "statement": "Un paracaidista deja de acelerar cuando la resistencia del aire iguala su peso.",
+  "is_true": true,
+  "explanation": "Verdad: las dos fuerzas se equilibran, la fuerza neta es cero y cae a velocidad constante, llamada velocidad terminal.",
+  "difficulty": 3
+ },
+ {
+  "topic_id": "a6f218ff-b26b-4c3c-be14-5af6fb881eef",
+  "statement": "Mientras más masa tiene un objeto, menos inercia tiene.",
+  "is_true": false,
+  "explanation": "Mentira: es al revés, la masa mide la inercia. Un camión cargado cuesta mucho más trabajo arrancarlo o frenarlo que una bicicleta.",
+  "difficulty": 1
+ }
+]
