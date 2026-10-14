@@ -49,4 +49,9 @@ Resultado en la base por tema: 40 secciones, 20 quiz, 30 de horda, 1 diagnóstic
 
 | Materia | Temas cargados | Revisión | Publicada |
 |---|---|---|---|
-| tecnologia-sec-1 | 10/10 | ✅ (correcciones 7-10 en `pendiente-correcciones-07-10.sql`) | ⬜ |
+| tecnologia-sec-1 | 10/10 | ✅ (2 correcciones en `tecnologia-sec-1/pendiente-sql-editor.sql`) | ✅ 14 oct 2026 (falta audio) |
+
+## Ojo con el conector de Supabase
+Algunos UPDATE llegan como `cancelled` sin que aparezca ningún aviso (filtro automático del
+conector, no tuyo). Pasa más con bloques `DO` de varios UPDATE. Funciona mejor una sentencia por
+llamada; lo que se siga cancelando se corre a mano en el SQL Editor del dashboard.
