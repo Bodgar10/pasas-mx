@@ -1,0 +1,1847 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "seguridad-digital-tec-1",
+  "order_steps": {
+    "prompt": "Ordena qué pasa cuando detectas un intento de phishing",
+    "steps": [
+      "Te llega un mensaje que pide tu contraseña",
+      "Revisas quién lo manda y la URL del enlace",
+      "Notas que la dirección no es la oficial",
+      "Lo borras y lo reportas sin dar clic"
+    ],
+    "completion_feedback": "El **phishing** se desarma revisando el **remitente** y la **URL** antes de dar clic. Ningún servicio real te pide tu contraseña por mensaje. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Alguien entró a tu cuenta de Crunchyroll",
+        "content": "Un sábado quieres ver el nuevo episodio de Jujutsu Kaisen en Crunchyroll y descubres algo raro: en tu historial hay animes que nunca viste y te sacaron de tu propia cuenta. Alguien entró. Haces memoria y recuerdas dos cosas. La primera: tu contraseña era naruto123, la misma que usas en tus redes y en tus juegos. La segunda: hace unos días te llegó un correo que decía que tu suscripción se había cancelado y que entraras a un link para arreglarlo. Diste clic y escribiste tu correo y tu contraseña en una página que se veía igualita a la original. Esa página era falsa y le entregaste tus datos a un desconocido. Como usabas la misma contraseña en todos lados, ahora todas tus cuentas están en riesgo. Recuperas el acceso, creas una contraseña larga y distinta, y activas la verificación en dos pasos. Así como un hechicero protege su territorio con barreras, en internet tus datos se protegen con buenas prácticas. Esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Lo que te pasó ES un problema de seguridad digital",
+        "content": "Lo que acabas de ver con tu cuenta de Crunchyroll es exactamente lo que estudia la **seguridad digital**: cuidar tus cuentas, tus datos y a ti mismo en internet. Una **contraseña segura** es **larga**, mezcla mayúsculas, minúsculas, números y símbolos, no usa datos personales y es **distinta para cada cuenta**. La **verificación en dos pasos** pide un código extra al entrar. El **phishing** es un engaño, con mensajes o páginas falsas, para robar tus datos. La **privacidad** es controlar qué datos tuyos ven los demás, y el **ciberacoso** es molestar o humillar a alguien de forma repetida por medios digitales."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu nueva contraseña de anime",
+        "content": "Vas a cambiar tu contraseña débil por una segura. Revisa cada opción.\n\n**Paso 1:** naruto123 → corta y fácil de adivinar → **débil**.\n**Paso 2:** Sofia2011 → usa tu nombre y tu año de nacimiento → **débil**.\n**Paso 3:** Kakashi!! → mezcla símbolos, pero es corta y un nombre famoso → **débil**.\n**Paso 4:** Ramen-Ichiraku-sabe-mejor-7! → larga, con mayúsculas, símbolos y número, fácil de recordar para ti → **segura**.\n**Paso 5:** Activas la verificación en dos pasos para que, aunque alguien adivine la contraseña, no pueda entrar sin el código.\n\nResultado: tu cuenta pasó de puerta abierta a fortaleza."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **contraseña segura** es **larga**, mezcla tipos de caracteres, **no usa datos personales** y es **diferente en cada cuenta**. Activa la **verificación en dos pasos**. El **phishing** imita sitios reales para robar datos: revisa siempre la **URL**. Ante **ciberacoso**: no respondas, **guarda evidencia**, **bloquea**, **reporta** y **cuéntale a un adulto de confianza**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Usa una frase en vez de una palabra: es más larga y más fácil de recordar. Y recuerda que ningún servicio real, ni Crunchyroll ni tu banco, te pide tu contraseña por correo o mensaje."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada medida de seguridad sube la protección de tu cuenta.",
+        "data": {
+          "intro": "Tu cuenta de anime estaba casi sin protección. El medidor muestra qué tan segura está. Aplica cada medida.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Cambias naruto123 por una frase larga con mayúsculas, números y símbolos.",
+              "delta": 30
+            },
+            {
+              "text": "Usas una contraseña distinta para tu correo, tus redes y tus juegos.",
+              "delta": 20
+            },
+            {
+              "text": "Activas la verificación en dos pasos con un código en tu celular.",
+              "delta": 25
+            },
+            {
+              "text": "Aprendes a revisar la URL antes de escribir tus datos. ¡Cuenta blindada!",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Segura o débil",
+        "content": "Segura: larga, mezcla de caracteres, sin datos personales. Débil: corta, obvia o con tu nombre o fecha.",
+        "data": {
+          "prompt": "Arrastra cada contraseña a su categoría.",
+          "buckets": [
+            "Segura",
+            "Débil"
+          ],
+          "items": [
+            {
+              "t": "Ramen-Ichiraku-sabe-mejor-7!",
+              "b": 0
+            },
+            {
+              "t": "naruto123",
+              "b": 1
+            },
+            {
+              "t": "Mi-gato-Mochi-ama-el-sushi_24",
+              "b": 0
+            },
+            {
+              "t": "Sofia2011",
+              "b": 1
+            },
+            {
+              "t": "Luffy-come-carne-x3-en-Wano!",
+              "b": 0
+            },
+            {
+              "t": "123456",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de seguridad digital con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Phishing",
+              "b": "Engaño para robar datos"
+            },
+            {
+              "a": "Dos pasos",
+              "b": "Código extra al entrar"
+            },
+            {
+              "a": "Contraseña única",
+              "b": "Una por cada cuenta"
+            },
+            {
+              "a": "Ciberacoso",
+              "b": "Acoso repetido en línea"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+        "left_label": "Tu cuenta",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El correo de la suscripción",
+            "right": "Phishing"
+          },
+          {
+            "left": "naruto123 en todas tus cuentas",
+            "right": "Contraseña débil"
+          },
+          {
+            "left": "El código que llega al celular",
+            "right": "Verificación en dos pasos"
+          },
+          {
+            "left": "Tus datos en la página falsa",
+            "right": "Robo de datos"
+          }
+        ],
+        "completion_feedback": "Una **contraseña débil** y un **phishing** abrieron la puerta; la **verificación en dos pasos** la cierra. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál de estas contraseñas es más segura para tu cuenta de anime?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "naruto123"
+            },
+            {
+              "letter": "B",
+              "text": "Gojo-vence-a-todos_2025!"
+            },
+            {
+              "letter": "C",
+              "text": "narutonarutonarutonaruto123"
+            },
+            {
+              "letter": "D",
+              "text": "SofiaLopez12deMayode2011"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es larga y mezcla mayúsculas, minúsculas, números y símbolos sin usar datos personales. Las otras son obvias o usan tu nombre.",
+          "difficulty": 1
+        },
+        {
+          "question": "Te llega un correo de 'Crunchyroll' que pide tu contraseña por un link para no perder tu cuenta. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un aviso oficial"
+            },
+            {
+              "letter": "B",
+              "text": "Phishing"
+            },
+            {
+              "letter": "C",
+              "text": "Una actualización"
+            },
+            {
+              "letter": "D",
+              "text": "Un antivirus"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es phishing: imita al servicio real para robar tus datos. Los servicios reales nunca piden tu contraseña por correo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Usabas la misma contraseña en Crunchyroll, tu correo y tus juegos, y la robaron. ¿Por qué es tan grave?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque abre todas tus cuentas"
+            },
+            {
+              "letter": "B",
+              "text": "Porque borra tu historial"
+            },
+            {
+              "letter": "C",
+              "text": "Porque te cobran el doble"
+            },
+            {
+              "letter": "D",
+              "text": "Porque baja la calidad del video"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Con una sola contraseña robada pueden entrar a todas las cuentas donde la repetiste. Por eso cada cuenta necesita una distinta.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Para qué sirve la verificación en dos pasos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Pide un código extra al entrar"
+            },
+            {
+              "letter": "B",
+              "text": "Hace que los videos carguen rápido"
+            },
+            {
+              "letter": "C",
+              "text": "Quita los anuncios de los episodios"
+            },
+            {
+              "letter": "D",
+              "text": "Cambia tu contraseña cada semana"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Además de la contraseña pide un código, por ejemplo en tu celular. Así, aunque alguien la robe, no puede entrar.",
+          "difficulty": 2
+        },
+        {
+          "question": "La página falsa se veía igualita a la de Crunchyroll. ¿Qué la delataba?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los colores de la página"
+            },
+            {
+              "letter": "B",
+              "text": "La URL en la barra"
+            },
+            {
+              "letter": "C",
+              "text": "Las imágenes del anime"
+            },
+            {
+              "letter": "D",
+              "text": "El tipo de letra del menú"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los colores y las imágenes se copian fácil, pero la URL falsa no puede ser idéntica a la oficial. Revisarla es la mejor defensa.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El penal fallado del portero de tu equipo",
+        "content": "En la final del torneo escolar, Diego, el portero de tu equipo, se anima a tirar el último penal y lo manda a la tribuna. Pierden la copa. Esa noche empieza otro partido, uno mucho más feo. Alguien sube el video a TikTok con música de burla, otros hacen memes con su cara y en el grupo del salón le escriben cosas horribles. Al día siguiente sigue, y al siguiente también. Diego ya no quiere ir a la escuela. Lo que le pasa tiene nombre: ciberacoso. Por suerte, el capitán sabe qué hacer. Le dice que no responda a los ataques, que haga capturas de pantalla de todo como evidencia, que bloquee y reporte las cuentas en cada plataforma, y lo acompaña a hablar con el entrenador y con sus papás. También se dan cuenta de que el perfil de Diego era público y mostraba su escuela y su colonia. En la cancha hay reglas y árbitro; en internet también necesitas reglas para cuidarte y cuidar a otros. Esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Lo que vivió Diego ES un tema de seguridad digital",
+        "content": "Lo que acabas de ver con Diego es exactamente lo que estudia la **seguridad digital**: cuidar tus cuentas, tus datos y a ti mismo en internet. El **ciberacoso** es molestar, humillar o amenazar a alguien de forma **repetida** por medios digitales. Ante él: **no responder**, **guardar evidencia**, **bloquear**, **reportar** y **contarle a un adulto de confianza**. La **privacidad** es controlar qué datos tuyos ven los demás, como tu escuela o tu dirección. Y tus cuentas se cuidan con **contraseñas seguras**, **verificación en dos pasos** y desconfiando del **phishing**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — hackearon la cuenta del equipo",
+        "content": "La cuenta de Instagram de tu equipo empezó a publicar anuncios raros. Resuélvelo.\n\n**Paso 1:** La contraseña era equipo2024, la sabían todos → **contraseña débil y compartida**.\n**Paso 2:** El capitán había dado clic en un mensaje de 'Instagram te regala la insignia azul' → **phishing**.\n**Paso 3:** Recuperan la cuenta con el correo y ponen una contraseña larga que solo sabe el entrenador → **contraseña segura**.\n**Paso 4:** Activan la verificación en dos pasos → **protección extra**.\n**Paso 5:** Avisan a los seguidores que no den clic en lo que se publicó.\n\nResultado: la cuenta vuelve a ser del equipo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **ciberacoso** es agresión **repetida** por medios digitales. Qué hacer: **no responder**, **guardar evidencia**, **bloquear**, **reportar** y **contarle a un adulto**. Una **contraseña segura** es **larga**, mezcla caracteres y es **única** por cuenta. Activa la **verificación en dos pasos** y cuida tu **privacidad**: no publiques escuela, dirección ni ubicación."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Ante el ciberacoso, piensa como un buen capitán: no te calientes ni respondas, junta las pruebas, bloquea, reporta y busca a tu entrenador, es decir, a un adulto de confianza. Nunca lo enfrentes solo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada acción ayuda a frenar el ciberacoso y a proteger a Diego.",
+        "data": {
+          "intro": "Diego está recibiendo burlas y mensajes crueles después del penal. Sigue lo que hace el equipo para ayudarlo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Diego no responde a los ataques: contestar suele hacer que crezcan."
+            },
+            {
+              "text": "Hace capturas de pantalla con fecha de cada mensaje y publicación: es la evidencia."
+            },
+            {
+              "text": "Bloquea y reporta las cuentas que lo atacan en cada plataforma."
+            },
+            {
+              "text": "Le cuenta a sus papás y al entrenador, que hablan con la escuela. Ya no está solo."
+            },
+            {
+              "text": "Pone su perfil en privado y quita su escuela y su colonia de la descripción."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ayuda o empeora",
+        "content": "Ayuda: no responder, guardar evidencia, bloquear, reportar y pedir apoyo. Empeora: contestar con insultos, compartir los memes o quedarse callado.",
+        "data": {
+          "prompt": "Arrastra cada reacción ante el ciberacoso a su categoría.",
+          "buckets": [
+            "Ayuda",
+            "Empeora"
+          ],
+          "items": [
+            {
+              "t": "Guardar capturas de los mensajes",
+              "b": 0
+            },
+            {
+              "t": "Contestar con más insultos",
+              "b": 1
+            },
+            {
+              "t": "Reportar la cuenta en la plataforma",
+              "b": 0
+            },
+            {
+              "t": "Compartir el meme 'porque da risa'",
+              "b": 1
+            },
+            {
+              "t": "Contarle a un adulto de confianza",
+              "b": 0
+            },
+            {
+              "t": "Quedarse callado y aguantar",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de seguridad digital con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Ciberacoso",
+              "b": "Acoso repetido en línea"
+            },
+            {
+              "a": "Capturas",
+              "b": "Evidencia"
+            },
+            {
+              "a": "Perfil privado",
+              "b": "Solo te ven tus amigos"
+            },
+            {
+              "a": "Phishing",
+              "b": "Engaño para robar datos"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+        "left_label": "Caso de Diego",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Memes y mensajes día tras día",
+            "right": "Ciberacoso"
+          },
+          {
+            "left": "Las capturas de los mensajes",
+            "right": "Evidencia"
+          },
+          {
+            "left": "Escuela y colonia en su perfil",
+            "right": "Datos personales"
+          },
+          {
+            "left": "Hablar con papás y entrenador",
+            "right": "Pedir ayuda"
+          }
+        ],
+        "completion_feedback": "El **ciberacoso** se enfrenta con **evidencia**, bloqueando, reportando y **pidiendo ayuda**, y cuidando tus **datos personales**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Durante una semana, varios compañeros le mandan burlas a Diego por el penal fallado. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una broma normal"
+            },
+            {
+              "letter": "B",
+              "text": "Ciberacoso"
+            },
+            {
+              "letter": "C",
+              "text": "Phishing"
+            },
+            {
+              "letter": "D",
+              "text": "Un virus"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es ciberacoso porque son agresiones repetidas por medios digitales. No es una broma si lastima y se repite.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué NO conviene hacer ante un mensaje de acoso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Guardar una captura del mensaje"
+            },
+            {
+              "letter": "B",
+              "text": "Responder con insultos"
+            },
+            {
+              "letter": "C",
+              "text": "Bloquear la cuenta del agresor"
+            },
+            {
+              "letter": "D",
+              "text": "Contarle a un adulto de confianza"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Responder con insultos suele hacer que el acoso crezca. Guardar capturas, bloquear y avisar a un adulto sí ayudan.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué es importante guardar capturas de pantalla antes de bloquear a quien acosa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para tener evidencia"
+            },
+            {
+              "letter": "B",
+              "text": "Para subirlas a TikTok"
+            },
+            {
+              "letter": "C",
+              "text": "Para responder después"
+            },
+            {
+              "letter": "D",
+              "text": "Para que el acoso pare solo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Las capturas son evidencia para reportar a la plataforma, a la escuela o a las autoridades. Al bloquear, a veces los mensajes desaparecen.",
+          "difficulty": 3
+        },
+        {
+          "question": "La cuenta del equipo tenía la contraseña equipo2024 y la sabían todos. ¿Cuál fue el error principal?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usar Instagram para el equipo"
+            },
+            {
+              "letter": "B",
+              "text": "Una clave débil y compartida"
+            },
+            {
+              "letter": "C",
+              "text": "Publicar demasiadas fotos"
+            },
+            {
+              "letter": "D",
+              "text": "Tener muchos seguidores nuevos"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Era fácil de adivinar y la conocía demasiada gente. Una contraseña segura es larga, compleja y la sabe solo quien la necesita.",
+          "difficulty": 2
+        },
+        {
+          "question": "El perfil público de Diego mostraba su escuela y su colonia. ¿Qué riesgo había?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que lo ubicaran"
+            },
+            {
+              "letter": "B",
+              "text": "Que se llenara su celular"
+            },
+            {
+              "letter": "C",
+              "text": "Que le bajaran puntos"
+            },
+            {
+              "letter": "D",
+              "text": "Que se borrara su perfil"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Con su escuela y colonia, cualquiera podía saber dónde encontrarlo. Esos datos personales conviene mantenerlos privados.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Tu fan account de Stray Kids",
+        "content": "Tienes una fan account de Stray Kids con cientos de seguidores. Subes edits, fancams y fotos tuyas con tu photocard de Felix. Un día te escribe por mensaje directo una cuenta que dice ser fan como tú. Al principio platican de los comebacks, pero luego empieza a preguntar cosas raras: en qué escuela vas, en qué colonia vives y si le mandas una foto tuya. Te das cuenta de que en tus publicaciones ya se ve tu uniforme escolar y que activaste la ubicación en la foto del concierto. Ahí se te prende el foco: no sabes quién está del otro lado de la pantalla. Dejas de responder, bloqueas la cuenta, la reportas y se lo cuentas a tu mamá. Después pones tu cuenta en privado, borras la foto con el uniforme y desactivas la ubicación. Además, en una pelea de fandoms alguien empezó a mandarte insultos todos los días. En el K-pop las agencias cuidan a sus idols; en internet tú tienes que cuidarte. Esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Cuidar tu fan account ES seguridad digital",
+        "content": "Lo que acabas de ver con tu fan account es exactamente lo que estudia la **seguridad digital**: cuidar tus cuentas, tus datos y a ti mismo en internet. La **privacidad** es controlar qué **datos personales** ven los demás: escuela, dirección, ubicación, fotos con uniforme. Tu **huella digital** es el rastro que dejas con todo lo que publicas. Si alguien desconocido pide datos o fotos, no respondas, **bloquea**, **reporta** y **avisa a un adulto**. El **ciberacoso** es agredir a alguien de forma **repetida** en línea. Y tus cuentas se protegen con **contraseñas seguras** y **verificación en dos pasos**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — revisar tu perfil antes de un concierto",
+        "content": "Antes de ir al concierto de tu grupo favorito revisas tu perfil público.\n\n**Paso 1:** Tu descripción dice el nombre de tu secundaria → **dato personal**, lo quitas.\n**Paso 2:** Ibas a subir una historia diciendo 'ya estoy en la fila de la puerta 3' → **ubicación en tiempo real**, mejor la subes después.\n**Paso 3:** Tu cuenta es pública → la pones en **privado**.\n**Paso 4:** Tu contraseña es skz2018 → la cambias por una **frase larga y única**.\n**Paso 5:** Activas la **verificación en dos pasos**.\n\nResultado: disfrutas el concierto sin regalar tus datos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Cuida tu **privacidad**: no publiques **escuela, dirección ni ubicación**. Lo que subes forma tu **huella digital** y puede quedarse para siempre. Si un desconocido te pide datos o fotos: **no respondas, bloquea, reporta y avisa a un adulto**. Usa **contraseñas largas y únicas** y la **verificación en dos pasos**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Antes de publicar pregúntate: ¿me sentiría bien si esto lo viera un desconocido? Si la respuesta es no, no lo subas. Los datos que ubican dónde estás son los que más se deben cuidar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada ajuste de privacidad sube la protección de tu fan account.",
+        "data": {
+          "intro": "Tu fan account estaba muy expuesta. El medidor muestra qué tan protegida está. Aplica cada ajuste.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Bloqueas y reportas la cuenta que te pedía datos, y se lo cuentas a tu mamá.",
+              "delta": 30
+            },
+            {
+              "text": "Pones tu cuenta en privado para que solo te vean quienes aceptas.",
+              "delta": 20
+            },
+            {
+              "text": "Borras la foto con uniforme y desactivas la ubicación en tus publicaciones.",
+              "delta": 20
+            },
+            {
+              "text": "Cambias tu contraseña por una frase larga y activas la verificación en dos pasos. ¡Protegida!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Publicar o cuidar",
+        "content": "Puedes publicar: gustos, edits, opiniones sobre música. Mejor cuidar: escuela, dirección, ubicación en tiempo real, teléfono.",
+        "data": {
+          "prompt": "Arrastra cada dato de tu fan account a su categoría.",
+          "buckets": [
+            "Puedes publicarlo",
+            "Mejor mantenerlo privado"
+          ],
+          "items": [
+            {
+              "t": "Tu bias es Felix",
+              "b": 0
+            },
+            {
+              "t": "El nombre de tu escuela",
+              "b": 1
+            },
+            {
+              "t": "Un edit de tu canción favorita",
+              "b": 0
+            },
+            {
+              "t": "Tu ubicación en tiempo real",
+              "b": 1
+            },
+            {
+              "t": "Tu opinión del nuevo álbum",
+              "b": 0
+            },
+            {
+              "t": "Tu número de teléfono",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de seguridad digital con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Huella digital",
+              "b": "Rastro de lo que publicas"
+            },
+            {
+              "a": "Cuenta privada",
+              "b": "Solo te ven tus amigos"
+            },
+            {
+              "a": "Ubicación activada",
+              "b": "Revela dónde estás"
+            },
+            {
+              "a": "Ciberacoso",
+              "b": "Acoso repetido en línea"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+        "left_label": "Fan account",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La foto con tu uniforme",
+            "right": "Dato personal"
+          },
+          {
+            "left": "La cuenta que pide tu dirección",
+            "right": "Riesgo con desconocidos"
+          },
+          {
+            "left": "Insultos todos los días",
+            "right": "Ciberacoso"
+          },
+          {
+            "left": "Poner tu cuenta en privado",
+            "right": "Privacidad"
+          }
+        ],
+        "completion_feedback": "Cuidar tus **datos personales**, desconfiar de **desconocidos** y frenar el **ciberacoso** es tu **privacidad** en acción. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál de estos datos NO conviene publicar en tu fan account?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Tu escuela"
+            },
+            {
+              "letter": "B",
+              "text": "Tu bias del grupo"
+            },
+            {
+              "letter": "C",
+              "text": "Tu canción favorita"
+            },
+            {
+              "letter": "D",
+              "text": "Tu opinión del álbum"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El nombre de tu escuela permite ubicarte. Tus gustos musicales no ponen en riesgo tu seguridad.",
+          "difficulty": 1
+        },
+        {
+          "question": "Una cuenta 'fan' que no conoces en persona te pide tu dirección y una foto tuya. ¿Qué haces?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se la mandas si te ha tratado amable"
+            },
+            {
+              "letter": "B",
+              "text": "Bloqueas, reportas y avisas a un adulto"
+            },
+            {
+              "letter": "C",
+              "text": "Le mandas solo la foto, sin la dirección"
+            },
+            {
+              "letter": "D",
+              "text": "Sigues platicando para conocerla mejor"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "No sabes quién está detrás de una cuenta. Ante peticiones de datos o fotos: no respondas, bloquea, reporta y cuéntale a un adulto.",
+          "difficulty": 2
+        },
+        {
+          "question": "Borras una foto vergonzosa una hora después de subirla. ¿Por qué todavía podría existir?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Alguien pudo guardarla"
+            },
+            {
+              "letter": "B",
+              "text": "Las fotos no se borran"
+            },
+            {
+              "letter": "C",
+              "text": "La app la vuelve a subir"
+            },
+            {
+              "letter": "D",
+              "text": "Se guarda en la RAM"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "En esa hora alguien pudo hacer captura o descargarla. Por eso tu huella digital es difícil de borrar: piensa antes de publicar.",
+          "difficulty": 3
+        },
+        {
+          "question": "En una pelea de fandoms, una cuenta te insulta todos los días por tu grupo favorito. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ciberacoso"
+            },
+            {
+              "letter": "B",
+              "text": "Phishing"
+            },
+            {
+              "letter": "C",
+              "text": "Un comentario normal"
+            },
+            {
+              "letter": "D",
+              "text": "Una actualización"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Son agresiones repetidas por medios digitales: ciberacoso. El phishing busca robar datos, no insultar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Subes una historia 'en la fila de la puerta 3' en pleno concierto. ¿Qué riesgo tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Revela dónde estás"
+            },
+            {
+              "letter": "B",
+              "text": "Gasta tu batería"
+            },
+            {
+              "letter": "C",
+              "text": "Baja tu calidad de video"
+            },
+            {
+              "letter": "D",
+              "text": "Te quita seguidores"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Publicar tu ubicación en tiempo real dice exactamente dónde estás en ese momento. Mejor súbela cuando ya te hayas ido.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El generador de Robux gratis",
+        "content": "Ves un video en YouTube: ¡Generador de Robux GRATIS, funciona 100%! Te manda a una página con el logo de Roblox, efectos de monedas cayendo y un contador que dice que miles de personas ya recibieron sus Robux. Solo tienes que escribir tu usuario y tu contraseña. Lo haces. Al día siguiente no puedes entrar: te cambiaron la contraseña, se llevaron tus objetos y tu avatar está mandando mensajes raros a tus amigos. El famoso generador era una trampa para robar cuentas. Para colmo, tu contraseña era la misma que la de tu correo, así que también tienen acceso a él. Con ayuda de tu papá recuperas tu correo, haces una contraseña larga y distinta para cada cuenta, activas la verificación en dos pasos y reportas la página. Aprendiste algo que vale más que mil Robux: los Robux solo se consiguen en el sitio o la app oficial, y nadie regala dinero real a cambio de tu contraseña. Cuidar tus cuentas es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El generador falso ES un caso de seguridad digital",
+        "content": "Lo que acabas de ver con el generador de Robux es exactamente lo que estudia la **seguridad digital**: cuidar tus cuentas, tus datos y a ti mismo en internet. El **phishing** es un engaño, con páginas o mensajes falsos que imitan a uno real, para robar tus datos. Una **contraseña segura** es **larga**, mezcla mayúsculas, minúsculas, números y símbolos y es **distinta en cada cuenta**. La **verificación en dos pasos** pide un código extra al entrar. Y nunca descargues ni des datos en páginas que no sean las **oficiales**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — mensajes sospechosos en tu juego",
+        "content": "En tu juego favorito te llegan tres mensajes. Clasifícalos.\n\n**Paso 1:** 'Gana una skin legendaria, entra a fortnite-skins-gratis.xyz y pon tu contraseña' → URL falsa y pide contraseña → **phishing**.\n**Paso 2:** 'Tu amigo te invitó a una partida' dentro del juego → **normal**.\n**Paso 3:** 'Soy moderador, pásame tu código de verificación o te banean' → los moderadores nunca piden códigos → **phishing**.\n**Paso 4:** Reportas los dos falsos desde el propio juego.\n**Paso 5:** Revisas que tu cuenta tenga verificación en dos pasos.\n\nResultado: tu cuenta sigue siendo tuya."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **phishing** imita sitios o mensajes reales para robar datos: revisa la **URL** y desconfía de regalos y urgencias. Una **contraseña segura** es **larga**, mezcla caracteres y es **única** por cuenta. Activa la **verificación en dos pasos** y **nunca compartas** tu contraseña ni tus códigos, ni con 'moderadores'."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Regla de oro gamer: si algo te regala monedas, skins o Robux a cambio de tu contraseña, es trampa. Lo gratis de verdad nunca te pide tus datos de acceso."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada medida de seguridad sube la protección de tu cuenta gamer.",
+        "data": {
+          "intro": "Te robaron la cuenta con el generador falso. El medidor muestra qué tan protegida está tu cuenta nueva. Aplica cada medida.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Recuperas tu correo y cambias la contraseña por una frase larga y única.",
+              "delta": 25
+            },
+            {
+              "text": "Usas contraseñas distintas para el correo, Roblox y tus otros juegos.",
+              "delta": 20
+            },
+            {
+              "text": "Activas la verificación en dos pasos en tu correo y en el juego.",
+              "delta": 25
+            },
+            {
+              "text": "Reportas la página falsa y avisas a tus amigos que no den clic. ¡Cuenta blindada!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Real o phishing",
+        "content": "Real: viene del sitio o la app oficial y no pide tu contraseña. Phishing: regalos increíbles, URL rara o te pide datos de acceso.",
+        "data": {
+          "prompt": "Arrastra cada mensaje a su categoría.",
+          "buckets": [
+            "Real",
+            "Phishing"
+          ],
+          "items": [
+            {
+              "t": "Compra de Robux dentro de la app oficial",
+              "b": 0
+            },
+            {
+              "t": "'Robux gratis, solo pon tu contraseña'",
+              "b": 1
+            },
+            {
+              "t": "Invitación de un amigo dentro del juego",
+              "b": 0
+            },
+            {
+              "t": "'Moderador' que pide tu código",
+              "b": 1
+            },
+            {
+              "t": "Notas de actualización en el sitio oficial",
+              "b": 0
+            },
+            {
+              "t": "Skin gratis en una página .xyz",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de seguridad digital con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Phishing",
+              "b": "Engaño para robar datos"
+            },
+            {
+              "a": "Dos pasos",
+              "b": "Código extra al entrar"
+            },
+            {
+              "a": "Robux gratis",
+              "b": "Trampa común"
+            },
+            {
+              "a": "App oficial",
+              "b": "Lugar seguro para comprar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+        "left_label": "Robux gratis",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La página del generador",
+            "right": "Phishing"
+          },
+          {
+            "left": "La misma clave en tu correo",
+            "right": "Contraseña repetida"
+          },
+          {
+            "left": "El código que llega al celular",
+            "right": "Verificación en dos pasos"
+          },
+          {
+            "left": "Comprar solo en la app",
+            "right": "Fuente oficial"
+          }
+        ],
+        "completion_feedback": "El **phishing** y una **contraseña repetida** te dejaron sin cuenta; la **verificación en dos pasos** y las **fuentes oficiales** te protegen. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Una página promete Robux gratis si escribes tu usuario y contraseña. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una promoción oficial"
+            },
+            {
+              "letter": "B",
+              "text": "Un regalo de Roblox"
+            },
+            {
+              "letter": "C",
+              "text": "Phishing"
+            },
+            {
+              "letter": "D",
+              "text": "Un torneo del juego"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Es phishing: imita a Roblox para robar tu cuenta. Los Robux solo se obtienen en el sitio o la app oficial.",
+          "difficulty": 1
+        },
+        {
+          "question": "Un 'moderador' te pide el código de verificación que te llegó para no banearte. ¿Qué haces?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se lo das para evitar el baneo"
+            },
+            {
+              "letter": "B",
+              "text": "No se lo das y lo reportas"
+            },
+            {
+              "letter": "C",
+              "text": "Le das la mitad del código"
+            },
+            {
+              "letter": "D",
+              "text": "Le das tu contraseña en su lugar"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Ningún moderador real pide códigos ni contraseñas. Compartir el código anula la verificación en dos pasos y te roban la cuenta.",
+          "difficulty": 2
+        },
+        {
+          "question": "Te robaron la cuenta de Roblox y también entraron a tu correo. ¿Qué lo explica mejor?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usabas la misma contraseña"
+            },
+            {
+              "letter": "B",
+              "text": "Roblox comparte tus datos"
+            },
+            {
+              "letter": "C",
+              "text": "Tu internet era muy lento"
+            },
+            {
+              "letter": "D",
+              "text": "Tenías muchos amigos agregados"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Con una sola contraseña robada pueden entrar a todas las cuentas donde la repetiste. Por eso cada cuenta necesita una distinta.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál de estas contraseñas es más segura para tu cuenta gamer?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "minecraft123"
+            },
+            {
+              "letter": "B",
+              "text": "Creeper-explota-mi-casa_x7!"
+            },
+            {
+              "letter": "C",
+              "text": "minecraftminecraftminecraft1"
+            },
+            {
+              "letter": "D",
+              "text": "AlexGamer14deJuliode2012"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es una frase larga que mezcla mayúsculas, minúsculas, números y símbolos sin datos personales. Las otras son obvias o usan tu nombre y año.",
+          "difficulty": 2
+        },
+        {
+          "question": "Ya activaste la verificación en dos pasos. Alguien adivina tu contraseña. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Entra sin ningún problema"
+            },
+            {
+              "letter": "B",
+              "text": "Necesita también tu código"
+            },
+            {
+              "letter": "C",
+              "text": "Se borra tu cuenta en automático"
+            },
+            {
+              "letter": "D",
+              "text": "Te cambian el nombre de usuario"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Con la verificación en dos pasos, la contraseña sola no basta: también necesita el código que llega a tu celular.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estas contraseñas es más segura?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "holaholaholaholaholahola"
+        },
+        {
+          "letter": "B",
+          "text": "Gato-azul_come*7-tacos"
+        },
+        {
+          "letter": "C",
+          "text": "contraseña1234"
+        },
+        {
+          "letter": "D",
+          "text": "MiNombre2012x"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la más larga que mezcle varios tipos de caracteres.",
+      "explanation": "Es larga y mezcla mayúsculas, minúsculas, números y símbolos. Las otras son obvias o usan datos personales."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es el ciberacoso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Agredir a alguien en línea varias veces"
+        },
+        {
+          "letter": "B",
+          "text": "Un virus que borra los archivos del equipo"
+        },
+        {
+          "letter": "C",
+          "text": "Una forma de proteger todas tus contraseñas"
+        },
+        {
+          "letter": "D",
+          "text": "Un tipo de juego en línea con amigos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Tiene que ver con lastimar a una persona usando medios digitales.",
+      "explanation": "El ciberacoso es molestar, humillar o amenazar a alguien de forma repetida por internet o el celular."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Con quién deberías compartir tus contraseñas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Con tu mejor amigo o amiga"
+        },
+        {
+          "letter": "B",
+          "text": "Con nadie, salvo tus papás"
+        },
+        {
+          "letter": "C",
+          "text": "Con tus compañeros de equipo"
+        },
+        {
+          "letter": "D",
+          "text": "Con cualquiera que te las pida"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una contraseña deja de ser segura cuando la conoce mucha gente.",
+      "explanation": "Las contraseñas son personales. Solo tus papás o tutores deberían conocerlas, por tu seguridad."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es el phishing?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un engaño para robar datos"
+        },
+        {
+          "letter": "B",
+          "text": "Un programa para editar fotos"
+        },
+        {
+          "letter": "C",
+          "text": "Una red social para pescadores"
+        },
+        {
+          "letter": "D",
+          "text": "Un tipo de memoria del celular"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Su nombre suena a pescar: te ponen una carnada.",
+      "explanation": "El phishing usa mensajes o páginas falsas como carnada para que entregues tus datos."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos datos es personal y conviene no publicar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tu dirección"
+        },
+        {
+          "letter": "B",
+          "text": "Tu color favorito"
+        },
+        {
+          "letter": "C",
+          "text": "Tu música favorita"
+        },
+        {
+          "letter": "D",
+          "text": "Tu película favorita"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el dato que permitiría encontrarte en persona.",
+      "explanation": "La dirección permite ubicarte. Tus gustos no ponen en riesgo tu seguridad."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué hace la verificación en dos pasos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pide un código extra al entrar"
+        },
+        {
+          "letter": "B",
+          "text": "Borra tu cuenta en dos días"
+        },
+        {
+          "letter": "C",
+          "text": "Te deja usar dos cuentas a la vez"
+        },
+        {
+          "letter": "D",
+          "text": "Cambia tu contraseña cada semana"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Además de la contraseña, necesitas algo más.",
+      "explanation": "Pide un segundo código, normalmente en tu celular, además de la contraseña. Así es más difícil que entren a tu cuenta."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Si sufres ciberacoso, ¿a quién debes contárselo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A un adulto de confianza"
+        },
+        {
+          "letter": "B",
+          "text": "A nadie, para no exagerar"
+        },
+        {
+          "letter": "C",
+          "text": "Solo a quien te molesta"
+        },
+        {
+          "letter": "D",
+          "text": "A todos en redes sociales"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No tienes que enfrentarlo solo.",
+      "explanation": "Un adulto de confianza puede ayudarte a reportar y a que se detenga. Callarlo suele empeorar las cosas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué conviene hacer con una cuenta que te molesta en línea?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Bloquearla y reportarla"
+        },
+        {
+          "letter": "B",
+          "text": "Seguirla para vigilarla"
+        },
+        {
+          "letter": "C",
+          "text": "Mandarle tus datos"
+        },
+        {
+          "letter": "D",
+          "text": "Responderle con insultos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Corta el contacto y avisa a la plataforma.",
+      "explanation": "Bloquear corta el contacto y reportar avisa a la plataforma. Responder con insultos suele empeorar todo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la huella digital?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El rastro que dejas en internet"
+        },
+        {
+          "letter": "B",
+          "text": "El sensor del celular para el dedo"
+        },
+        {
+          "letter": "C",
+          "text": "La marca del mouse en la mesa"
+        },
+        {
+          "letter": "D",
+          "text": "Un antivirus para la computadora"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No hablamos del dedo, sino de lo que publicas y buscas.",
+      "explanation": "Es el rastro de todo lo que publicas, comentas y compartes en internet, y puede durar mucho tiempo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué tipo de cuenta te protege más en redes sociales?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una cuenta privada"
+        },
+        {
+          "letter": "B",
+          "text": "Una cuenta pública"
+        },
+        {
+          "letter": "C",
+          "text": "Una cuenta compartida"
+        },
+        {
+          "letter": "D",
+          "text": "Una cuenta sin contraseña"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Decide quién puede ver lo que subes.",
+      "explanation": "En una cuenta privada solo ven tu contenido las personas que tú aceptas."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué no conviene usar la misma contraseña en todas tus cuentas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Si roban una, entran a todas"
+        },
+        {
+          "letter": "B",
+          "text": "Porque así se te olvida rápido"
+        },
+        {
+          "letter": "C",
+          "text": "Porque las apps no lo permiten"
+        },
+        {
+          "letter": "D",
+          "text": "Porque gasta más batería"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en una sola llave que abre todas las puertas de tu casa.",
+      "explanation": "Una contraseña repetida es una llave maestra: si la roban, abren todas tus cuentas."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un correo dice que tu cuenta se cerrará en una hora si no confirmas tus datos. ¿Qué técnica usa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Urgencia para presionarte"
+        },
+        {
+          "letter": "B",
+          "text": "Una alerta oficial real"
+        },
+        {
+          "letter": "C",
+          "text": "Un aviso de actualización"
+        },
+        {
+          "letter": "D",
+          "text": "Una encuesta de servicio"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Las prisas impiden pensar con calma.",
+      "explanation": "El phishing usa la urgencia para que actúes sin revisar. Los servicios reales no te presionan así."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué conviene guardar capturas de pantalla si sufres ciberacoso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para tener evidencia al reportar"
+        },
+        {
+          "letter": "B",
+          "text": "Para subirlas y así poder vengarte"
+        },
+        {
+          "letter": "C",
+          "text": "Para borrar después los mensajes"
+        },
+        {
+          "letter": "D",
+          "text": "Para mandárselas de vuelta al agresor"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que necesitas para demostrar lo que pasó.",
+      "explanation": "Las capturas son evidencia para la plataforma, la escuela o las autoridades. No sirven para vengarse."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es la mejor forma de crear una contraseña larga y fácil de recordar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Usar una frase propia"
+        },
+        {
+          "letter": "B",
+          "text": "Usar tu fecha de nacimiento"
+        },
+        {
+          "letter": "C",
+          "text": "Usar 123456 con tu nombre"
+        },
+        {
+          "letter": "D",
+          "text": "Usar el nombre de tu mascota"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Varias palabras unidas son más largas que una sola.",
+      "explanation": "Una frase con símbolos y números es larga y memorable. Fechas y nombres son fáciles de adivinar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué información es más riesgosa publicar en tiempo real?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tu ubicación"
+        },
+        {
+          "letter": "B",
+          "text": "Tu canción favorita"
+        },
+        {
+          "letter": "C",
+          "text": "Un dibujo que hiciste"
+        },
+        {
+          "letter": "D",
+          "text": "Tu opinión de una serie"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "¿Cuál dato le dice a cualquiera dónde estás ahora mismo?",
+      "explanation": "La ubicación en tiempo real revela dónde estás en ese momento. Lo demás no te pone en riesgo físico."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué señal indica que un mensaje puede ser phishing?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Te pide tu contraseña"
+        },
+        {
+          "letter": "B",
+          "text": "Viene en la app oficial"
+        },
+        {
+          "letter": "C",
+          "text": "No incluye ningún enlace"
+        },
+        {
+          "letter": "D",
+          "text": "Lo manda un amigo en persona"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Ningún servicio legítimo pide esto por mensaje.",
+      "explanation": "Pedir la contraseña es la señal más clara de phishing. Los servicios reales nunca lo hacen."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un desconocido en línea te pide fotos y que no le cuentes a tus papás. ¿Qué haces?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Bloquear y avisar a un adulto"
+        },
+        {
+          "letter": "B",
+          "text": "Mandar fotos donde no salga la cara"
+        },
+        {
+          "letter": "C",
+          "text": "Seguir platicando para ver quién es"
+        },
+        {
+          "letter": "D",
+          "text": "Guardar el secreto que te pidió"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Pedir secretos a un menor es una señal de peligro.",
+      "explanation": "Pedir fotos y secretos son señales de peligro. Lo correcto es no responder, bloquear, reportar y contarle a un adulto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué es lo correcto si ves que acosan a un compañero en el grupo del salón?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No reenviar y avisar a un adulto"
+        },
+        {
+          "letter": "B",
+          "text": "Reenviar el meme porque es chistoso"
+        },
+        {
+          "letter": "C",
+          "text": "Unirte para no quedar mal"
+        },
+        {
+          "letter": "D",
+          "text": "Ignorarlo porque no es contigo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Quien comparte también participa.",
+      "explanation": "Reenviar o reírse alimenta el acoso. No compartir y avisar a un adulto ayuda a detenerlo."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué conviene mantener actualizadas las apps y el sistema operativo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Corrigen fallas de seguridad"
+        },
+        {
+          "letter": "B",
+          "text": "Cambian tu contraseña sola"
+        },
+        {
+          "letter": "C",
+          "text": "Hacen la pantalla más grande"
+        },
+        {
+          "letter": "D",
+          "text": "Borran tus datos personales"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Las actualizaciones también tapan huecos.",
+      "explanation": "Las actualizaciones corrigen fallas que los atacantes podrían aprovechar. No cambian tu contraseña."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué significa pensar antes de publicar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Revisar si te expone o lastima"
+        },
+        {
+          "letter": "B",
+          "text": "Publicar solo de noche"
+        },
+        {
+          "letter": "C",
+          "text": "Escribir sin faltas de ortografía"
+        },
+        {
+          "letter": "D",
+          "text": "Subir todo lo que quieras rápido"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Lo que subes puede quedarse para siempre.",
+      "explanation": "Antes de publicar conviene preguntarse si expone tus datos o lastima a alguien, porque tu huella digital permanece."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "La página que te llegó es www.instagrarn.com. ¿Qué te debería hacer dudar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cambia la m por rn"
+        },
+        {
+          "letter": "B",
+          "text": "Tiene las letras www"
+        },
+        {
+          "letter": "C",
+          "text": "Termina en .com"
+        },
+        {
+          "letter": "D",
+          "text": "Está en minúsculas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Léela letra por letra y compárala con la real.",
+      "explanation": "Es phishing: usa 'rn' para que parezca 'm'. Las URL falsas imitan a las reales con cambios mínimos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Tu contraseña es segura y única, pero te llega un código de verificación que no pediste. ¿Qué indica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Alguien intenta entrar"
+        },
+        {
+          "letter": "B",
+          "text": "Te ganaste un premio sorpresa"
+        },
+        {
+          "letter": "C",
+          "text": "Tu celular ya no tiene espacio"
+        },
+        {
+          "letter": "D",
+          "text": "La app se actualizó sola"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Los códigos llegan cuando alguien intenta entrar o recuperar tu cuenta.",
+      "explanation": "Alguien intentó entrar o recuperar tu cuenta. No compartas ese código con nadie y, por precaución, cambia tu contraseña."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un compañero publica una foto tuya sin permiso para burlarse. ¿Qué derecho se está afectando?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tu privacidad e imagen"
+        },
+        {
+          "letter": "B",
+          "text": "Tu derecho al voto"
+        },
+        {
+          "letter": "C",
+          "text": "Tu derecho a la salud"
+        },
+        {
+          "letter": "D",
+          "text": "Tu derecho a la vivienda"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Tiene que ver con quién decide qué se muestra de ti.",
+      "explanation": "Publicar tu imagen sin permiso para burlarse afecta tu privacidad y tu derecho a la propia imagen."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué una contraseña larga es más difícil de descifrar que una corta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hay muchas más combinaciones"
+        },
+        {
+          "letter": "B",
+          "text": "Porque se escribe mucho más despacio"
+        },
+        {
+          "letter": "C",
+          "text": "Porque la página la esconde mejor"
+        },
+        {
+          "letter": "D",
+          "text": "Porque ocupa más memoria RAM"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cuántas opciones tiene un programa que prueba todas.",
+      "explanation": "Cada carácter extra multiplica las combinaciones posibles, así que adivinarla tarda muchísimo más."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Ana borró una publicación ofensiva que hizo hace un mes. ¿Por qué todavía podría afectarle?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pudieron guardar capturas"
+        },
+        {
+          "letter": "B",
+          "text": "Internet no deja borrar"
+        },
+        {
+          "letter": "C",
+          "text": "El celular la vuelve a subir"
+        },
+        {
+          "letter": "D",
+          "text": "Las fotos no se pueden borrar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que otras personas pudieron hacer en ese mes.",
+      "explanation": "En ese tiempo otros pudieron hacer capturas o compartirla. Por eso la huella digital es difícil de borrar."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué combinación protege mejor una cuenta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Clave única y dos pasos"
+        },
+        {
+          "letter": "B",
+          "text": "Clave corta y fácil"
+        },
+        {
+          "letter": "C",
+          "text": "Clave compartida y pública"
+        },
+        {
+          "letter": "D",
+          "text": "Cuenta sin contraseña"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Dos capas de protección son mejor que una.",
+      "explanation": "Una contraseña única y la verificación en dos pasos son dos capas: aunque falle una, la otra protege."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un juego te pide permiso para tus contactos, tu ubicación y tu micrófono, aunque no los necesita. ¿Qué conviene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Negar lo que no necesite"
+        },
+        {
+          "letter": "B",
+          "text": "Aceptar todo sin leer"
+        },
+        {
+          "letter": "C",
+          "text": "Dar tu contraseña también"
+        },
+        {
+          "letter": "D",
+          "text": "Compartir tu ubicación siempre"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Los permisos son datos que entregas.",
+      "explanation": "Cada permiso entrega datos. Si un juego no los necesita para funcionar, lo más seguro es negarlos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué el ciberacoso puede ser más dañino que el acoso en persona?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Sigue a toda hora y se difunde"
+        },
+        {
+          "letter": "B",
+          "text": "Porque no tiene ninguna solución"
+        },
+        {
+          "letter": "C",
+          "text": "Porque solo pasa en la escuela"
+        },
+        {
+          "letter": "D",
+          "text": "Porque nunca deja evidencia"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en el celular que llevas contigo todo el día.",
+      "explanation": "Llega a cualquier hora y puede compartirse con muchas personas. Sí tiene solución y sí deja evidencia."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En México, ¿qué castiga la llamada Ley Olimpia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Difundir contenido íntimo sin permiso"
+        },
+        {
+          "letter": "B",
+          "text": "Usar redes sociales dentro de la escuela"
+        },
+        {
+          "letter": "C",
+          "text": "Descargar juegos gratis en el celular"
+        },
+        {
+          "letter": "D",
+          "text": "Tener una cuenta de correo electrónico"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Tiene que ver con la violencia digital y el consentimiento.",
+      "explanation": "La Ley Olimpia reconoce como violencia digital difundir contenido íntimo de alguien sin su consentimiento, y lo castiga."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un amigo te pide tu contraseña 'para subirte de nivel'. ¿Cuál es la mejor respuesta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Decirle que no, aunque sea amigo"
+        },
+        {
+          "letter": "B",
+          "text": "Dársela porque es alguien de confianza"
+        },
+        {
+          "letter": "C",
+          "text": "Dársela y cambiarla dentro de un año"
+        },
+        {
+          "letter": "D",
+          "text": "Dársela solo por un rato y ya"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una contraseña compartida deja de ser solo tuya.",
+      "explanation": "Aunque sea amigo, compartir la contraseña pone tu cuenta en riesgo. Lo seguro es no darla."
+    }
+  ],
+  "diagnostic": {
+    "question": "Un mensaje dice que ganaste un celular y te pide tu contraseña para enviártelo. ¿Qué es?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Un premio real"
+      },
+      {
+        "letter": "B",
+        "text": "Phishing"
+      },
+      {
+        "letter": "C",
+        "text": "Un aviso oficial"
+      },
+      {
+        "letter": "D",
+        "text": "Una actualización"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "Es phishing: usa un premio falso como carnada para robar tus datos. Ningún premio real te pide tu contraseña."
+  }
+}

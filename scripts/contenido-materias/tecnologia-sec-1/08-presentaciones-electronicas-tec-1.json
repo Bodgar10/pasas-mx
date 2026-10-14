@@ -1,0 +1,1850 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "presentaciones-electronicas-tec-1",
+  "order_steps": {
+    "prompt": "Ordena la estructura de una presentación",
+    "steps": [
+      "Portada con el título y tu nombre",
+      "Introducción: de qué vas a hablar",
+      "Desarrollo con una idea por diapositiva",
+      "Conclusión con lo más importante",
+      "Diapositiva final con tus fuentes"
+    ],
+    "completion_feedback": "Una presentación tiene **inicio** (portada e introducción), **desarrollo** y **cierre** (conclusión y fuentes). Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Tu exposición sobre Studio Ghibli",
+        "content": "Te toca exponer sobre Studio Ghibli en la clase de Tecnología. En tu primera versión pegas en cada diapositiva párrafos completos copiados de internet, con letra pequeña y fondo de colores. Cuando ensayas frente a tu hermana, ella se duerme en la tercera lámina. Entonces te acuerdas de cómo funciona un buen manga: cada viñeta muestra un solo momento, con una imagen fuerte y pocas palabras en el globo de diálogo. Decides hacer lo mismo. Empiezas con una portada: el título Studio Ghibli: magia hecha a mano, tu nombre y una imagen de Totoro. Luego una lámina por idea: quién es Hayao Miyazaki, cómo dibujan a mano, el Óscar que ganó El viaje de Chihiro. Usas letra grande, pocas palabras y una imagen en cada una. Al final pones una conclusión y tus fuentes. Escribes lo que quieres decir en las notas del orador y ensayas sin leer la pantalla. El día de la exposición, todos ponen atención hasta la última diapositiva. Esa forma de presentar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu exposición ES una presentación electrónica bien hecha",
+        "content": "Lo que acabas de ver con tu exposición de Ghibli es exactamente una **presentación electrónica**: un apoyo visual hecho en programas como **PowerPoint**, **Google Slides** o **Canva**, formado por **diapositivas**. Una buena presentación tiene **estructura** (portada, introducción, desarrollo, conclusión y fuentes), **una idea por diapositiva**, **poco texto**, **letra grande** y buen **contraste** entre letra y fondo. Las **transiciones** son efectos al pasar de una diapositiva a otra; las **animaciones**, efectos de un elemento. Las **notas del orador** son apuntes que solo ves tú."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — arreglar una diapositiva saturada",
+        "content": "Tu diapositiva sobre Miyazaki tiene 12 renglones de texto, letra de 12 puntos y fondo morado con letras azules.\n\n**Paso 1:** Dejas una sola idea: Miyazaki dibuja sus películas a mano.\n**Paso 2:** Reduces el texto a tres frases cortas y subes la letra a 28 puntos → **legible**.\n**Paso 3:** Cambias a fondo claro con letras oscuras → **buen contraste**.\n**Paso 4:** Agregas una imagen de un storyboard → **apoyo visual**.\n**Paso 5:** Lo que quitaste lo pasas a las **notas del orador** para decirlo tú.\n\nResultado: la diapositiva se entiende en tres segundos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **presentación electrónica** apoya lo que dices con **diapositivas**. Estructura: **portada, introducción, desarrollo, conclusión y fuentes**. Reglas: **una idea por diapositiva**, **poco texto**, **letra grande**, **buen contraste** e imágenes de apoyo. **Transición** = efecto entre diapositivas; **animación** = efecto de un elemento."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en cada diapositiva como una viñeta de manga: un momento, una imagen fuerte y pocas palabras. Lo demás lo dices tú; la diapositiva no es para leerla en voz alta."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada mejora hace tu exposición más clara y fácil de seguir.",
+        "data": {
+          "intro": "Tu primera versión dormía a cualquiera. El medidor muestra qué tan buena es tu presentación. Mejórala paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Agregas portada, introducción, desarrollo, conclusión y fuentes.",
+              "delta": 20
+            },
+            {
+              "text": "Dejas una idea por diapositiva y cambias los párrafos por frases cortas.",
+              "delta": 25
+            },
+            {
+              "text": "Subes la letra, usas fondo claro con letras oscuras y pones una imagen por lámina.",
+              "delta": 25
+            },
+            {
+              "text": "Escribes tus apuntes en las notas del orador y ensayas sin leer. ¡Lista para exponer!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ayuda o estorba",
+        "content": "Ayuda: una idea por lámina, letra grande, contraste, imágenes. Estorba: párrafos largos, letra pequeña, leer la pantalla.",
+        "data": {
+          "prompt": "Arrastra cada decisión de tu exposición a su categoría.",
+          "buckets": [
+            "Ayuda",
+            "Estorba"
+          ],
+          "items": [
+            {
+              "t": "Una idea por diapositiva",
+              "b": 0
+            },
+            {
+              "t": "Párrafos copiados completos",
+              "b": 1
+            },
+            {
+              "t": "Letra de 28 puntos",
+              "b": 0
+            },
+            {
+              "t": "Letras azules en fondo morado",
+              "b": 1
+            },
+            {
+              "t": "Imagen de Totoro en la portada",
+              "b": 0
+            },
+            {
+              "t": "Leer todo lo que dice la pantalla",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de presentaciones con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Transición",
+              "b": "Efecto entre láminas"
+            },
+            {
+              "a": "Animación",
+              "b": "Efecto de un elemento"
+            },
+            {
+              "a": "Plantilla",
+              "b": "Diseño ya hecho"
+            },
+            {
+              "a": "Notas del orador",
+              "b": "Apuntes que solo ves tú"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la presentación es cada cosa?",
+        "left_label": "Exposición Ghibli",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Título, tu nombre y Totoro",
+            "right": "Portada"
+          },
+          {
+            "left": "Una lámina por cada idea",
+            "right": "Desarrollo"
+          },
+          {
+            "left": "Lo que dices sin leerlo",
+            "right": "Notas del orador"
+          },
+          {
+            "left": "Las páginas que consultaste",
+            "right": "Fuentes"
+          }
+        ],
+        "completion_feedback": "La exposición tuvo **portada**, **desarrollo**, **notas del orador** y **fuentes**: la estructura completa. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué va en la portada de tu exposición sobre Studio Ghibli?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El título y tu nombre"
+            },
+            {
+              "letter": "B",
+              "text": "Todas tus fuentes consultadas"
+            },
+            {
+              "letter": "C",
+              "text": "La conclusión final del tema"
+            },
+            {
+              "letter": "D",
+              "text": "Un párrafo muy largo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La portada presenta el tema y a quien expone. Las fuentes van al final y la conclusión, antes de ellas.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres que la imagen de Totoro aparezca girando cuando das clic. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una transición"
+            },
+            {
+              "letter": "B",
+              "text": "Una animación"
+            },
+            {
+              "letter": "C",
+              "text": "Una plantilla"
+            },
+            {
+              "letter": "D",
+              "text": "Las notas"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La animación mueve un elemento dentro de la diapositiva. La transición es el efecto al cambiar de una diapositiva a otra.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu diapositiva tiene letras azules sobre fondo morado y nadie las lee desde atrás. ¿Qué falla?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El contraste"
+            },
+            {
+              "letter": "B",
+              "text": "La transición"
+            },
+            {
+              "letter": "C",
+              "text": "La plantilla"
+            },
+            {
+              "letter": "D",
+              "text": "La portada"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Azul sobre morado tiene poco contraste: los colores se parecen y el texto se pierde. Letra oscura en fondo claro, o al revés, se lee mejor.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Dónde escribes lo que vas a decir para que el público no lo vea?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En el título"
+            },
+            {
+              "letter": "B",
+              "text": "En la portada"
+            },
+            {
+              "letter": "C",
+              "text": "En las notas"
+            },
+            {
+              "letter": "D",
+              "text": "En el fondo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Las notas del orador son apuntes que solo ve quien presenta. Lo que va en la diapositiva lo ve todo el público.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un compañero pone en cada diapositiva tres ideas distintas sobre Ghibli. ¿Qué regla rompe?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Poner fuentes al final"
+            },
+            {
+              "letter": "B",
+              "text": "Una idea por lámina"
+            },
+            {
+              "letter": "C",
+              "text": "Usar una plantilla"
+            },
+            {
+              "letter": "D",
+              "text": "Tener portada"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cada diapositiva debe tener una sola idea para que el público no se pierda. Mezclar tres hace que nadie retenga ninguna.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La charla táctica del medio tiempo",
+        "content": "Van perdiendo 1 a 0 al medio tiempo y en el vestidor el entrenador tiene solo quince minutos para cambiar el partido. No saca un libro ni lee un discurso de diez páginas. Toma la pizarra táctica y muestra una sola idea a la vez. Primero dibuja cómo los están atacando por la banda derecha. Luego borra y dibuja la solución: el lateral se queda atrás y el volante cubre el espacio. Después borra otra vez y marca con flechas cómo van a salir al contragolpe. Pocas palabras, dibujos grandes y claros, una idea a la vez. Los jugadores entienden todo y en el segundo tiempo le dan la vuelta al marcador. Ahora imagina que te toca exponer en clase sobre el Mundial 2026. Puedes hacerlo como un entrenador malo, con diapositivas llenas de texto que lees en voz alta, o como uno bueno: una idea por diapositiva, imágenes grandes, poco texto y tú explicando. Esa diferencia es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La charla del vestidor ES una buena presentación",
+        "content": "Lo que acabas de ver en el vestidor es exactamente lo que hace una buena **presentación electrónica**: un apoyo visual hecho en programas como **PowerPoint**, **Google Slides** o **Canva**, formado por **diapositivas**. Una buena presentación tiene **estructura** (portada, introducción, desarrollo, conclusión y fuentes), **una idea por diapositiva**, **poco texto**, **letra grande** y buen **contraste** entre letra y fondo. Las **transiciones** son efectos al pasar de una diapositiva a otra; las **animaciones**, efectos de un elemento. Las **notas del orador** son apuntes que solo ves tú."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu exposición del Mundial 2026",
+        "content": "Armas la presentación Mundial 2026: tres países, una fiesta.\n\n**Paso 1 — Portada:** el título, tu nombre y una foto de un estadio.\n**Paso 2 — Introducción:** una lámina que dice que se jugó en México, Estados Unidos y Canadá.\n**Paso 3 — Desarrollo:** una lámina por idea: las tres ciudades sede en México (Ciudad de México, Guadalajara y Monterrey), el formato con 48 selecciones y la historia del Estadio Azteca.\n**Paso 4 — Conclusión:** México fue el primer país en recibir tres Mundiales.\n**Paso 5 — Fuentes:** el sitio de la FIFA y los artículos que consultaste.\n\nResultado: una exposición ordenada y fácil de seguir."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **presentación electrónica** apoya lo que dices con **diapositivas**. Estructura: **portada, introducción, desarrollo, conclusión y fuentes**. Reglas: **una idea por diapositiva**, **poco texto**, **letra grande**, **buen contraste** e imágenes de apoyo. **Transición** = efecto entre diapositivas; **animación** = efecto de un elemento."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Presenta como un buen entrenador en el vestidor: una jugada por pizarra, dibujos claros y tú explicando. Si la diapositiva tiene tanto texto que la tienes que leer, tiene demasiado."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada mejora hace tu exposición más clara, como una buena charla táctica.",
+        "data": {
+          "intro": "Tu primera versión sobre el Mundial 2026 era puro texto. El medidor muestra qué tan buena es. Mejórala paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Ordenas: portada, introducción, desarrollo, conclusión y fuentes.",
+              "delta": 20
+            },
+            {
+              "text": "Dejas una idea por diapositiva: sedes, formato e historia, cada una aparte.",
+              "delta": 25
+            },
+            {
+              "text": "Cambias los párrafos por frases cortas y agregas fotos de los estadios.",
+              "delta": 25
+            },
+            {
+              "text": "Pasas los detalles a las notas del orador y ensayas sin leer. ¡A exponer!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ayuda o estorba",
+        "content": "Ayuda: una idea por lámina, letra grande, contraste, imágenes. Estorba: párrafos largos, letra pequeña, leer la pantalla.",
+        "data": {
+          "prompt": "Arrastra cada decisión de tu exposición a su categoría.",
+          "buckets": [
+            "Ayuda",
+            "Estorba"
+          ],
+          "items": [
+            {
+              "t": "Foto grande del estadio",
+              "b": 0
+            },
+            {
+              "t": "Diez renglones de texto por lámina",
+              "b": 1
+            },
+            {
+              "t": "Una idea por diapositiva",
+              "b": 0
+            },
+            {
+              "t": "Letra amarilla en fondo blanco",
+              "b": 1
+            },
+            {
+              "t": "Conclusión antes de las fuentes",
+              "b": 0
+            },
+            {
+              "t": "Una transición distinta en cada lámina",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de presentaciones con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Transición",
+              "b": "Efecto entre láminas"
+            },
+            {
+              "a": "Portada",
+              "b": "Título y tu nombre"
+            },
+            {
+              "a": "Conclusión",
+              "b": "Lo más importante"
+            },
+            {
+              "a": "Fuentes",
+              "b": "Dónde investigaste"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué idea de presentación muestra cada parte?",
+        "left_label": "Medio tiempo",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Una jugada en cada pizarra",
+            "right": "Una idea por lámina"
+          },
+          {
+            "left": "Dibujos grandes y flechas",
+            "right": "Apoyo visual"
+          },
+          {
+            "left": "Pocas palabras escritas",
+            "right": "Poco texto"
+          },
+          {
+            "left": "El entrenador explica",
+            "right": "Tú hablas, no lees"
+          }
+        ],
+        "completion_feedback": "La charla del vestidor usó **una idea por lámina**, **apoyo visual**, **poco texto** y un orador que **no lee**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál es la regla principal que siguió el entrenador con su pizarra?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una idea a la vez"
+            },
+            {
+              "letter": "B",
+              "text": "Escribir párrafos largos"
+            },
+            {
+              "letter": "C",
+              "text": "Mostrar todo de golpe"
+            },
+            {
+              "letter": "D",
+              "text": "Leer un discurso completo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Mostró una idea por pizarra, igual que se recomienda una idea por diapositiva. Mostrar todo junto confunde.",
+          "difficulty": 1
+        },
+        {
+          "question": "En tu exposición del Mundial, ¿dónde va la diapositiva con el sitio de la FIFA y los artículos que leíste?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En la portada"
+            },
+            {
+              "letter": "B",
+              "text": "En la introducción"
+            },
+            {
+              "letter": "C",
+              "text": "Al final, en fuentes"
+            },
+            {
+              "letter": "D",
+              "text": "En medio del desarrollo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Las fuentes van al final para reconocer de dónde salió la información. La portada solo lleva título y nombre.",
+          "difficulty": 2
+        },
+        {
+          "question": "Pones letra amarilla sobre fondo blanco en la lámina de las sedes. ¿Cuál es el problema?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Poco contraste"
+            },
+            {
+              "letter": "B",
+              "text": "Mucha imagen"
+            },
+            {
+              "letter": "C",
+              "text": "Falta transición"
+            },
+            {
+              "letter": "D",
+              "text": "Falta portada"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Amarillo y blanco son muy claros los dos: casi no hay contraste y el texto no se lee. Hace falta letra oscura sobre fondo claro.",
+          "difficulty": 3
+        },
+        {
+          "question": "Pones un efecto para que, al pasar a la siguiente lámina, entre deslizándose desde la derecha. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una animación"
+            },
+            {
+              "letter": "B",
+              "text": "Una transición"
+            },
+            {
+              "letter": "C",
+              "text": "Una plantilla nueva"
+            },
+            {
+              "letter": "D",
+              "text": "Las notas del orador"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El efecto al pasar de una diapositiva a otra es una transición. La animación mueve un elemento dentro de la misma diapositiva.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu compañero lee en voz alta cada palabra de sus diapositivas llenas de texto. ¿Qué es lo mejor que podría hacer?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Leer todavía más rápido"
+            },
+            {
+              "letter": "B",
+              "text": "Poner aún más texto"
+            },
+            {
+              "letter": "C",
+              "text": "Resumir y explicar él"
+            },
+            {
+              "letter": "D",
+              "text": "Quitar la portada"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La diapositiva apoya; el que explica es quien expone. Resumir en frases cortas y hablar con sus palabras mantiene la atención.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Los teasers de un comeback",
+        "content": "Cuando un grupo como SEVENTEEN o LE SSERAFIM prepara un comeback, la agencia no publica un documento de diez páginas explicando el álbum. Publica teasers: una foto conceptual por día, cada una con una sola idea, una imagen impactante y casi nada de texto, apenas el nombre del grupo, el título y la fecha. Primero sale el calendario del comeback, luego las fotos de cada integrante, después el teaser del MV y al final el estreno. Cada pieza tiene un solo mensaje y todas siguen el mismo estilo de colores y letras, así se nota que son del mismo proyecto. Los fans entienden todo en segundos y se emocionan más con cada publicación. Ahora imagina tu exposición sobre cómo se forma un grupo de K-pop. Puedes llenar tus diapositivas de párrafos copiados o puedes hacer lo que hace la agencia: una idea por lámina, imágenes grandes, poco texto, el mismo diseño en todas y un orden que lleve al gran final. Esa forma de presentar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Los teasers SON una buena presentación",
+        "content": "Lo que acabas de ver con los teasers del comeback es exactamente lo que hace una buena **presentación electrónica**: un apoyo visual hecho en programas como **PowerPoint**, **Google Slides** o **Canva**, formado por **diapositivas**. Una buena presentación tiene **estructura** (portada, introducción, desarrollo, conclusión y fuentes), **una idea por diapositiva**, **poco texto**, **letra grande**, buen **contraste** y un **diseño uniforme**, como el que da una **plantilla**. Las **transiciones** son efectos entre diapositivas; las **animaciones**, efectos de un elemento. Las **notas del orador** son apuntes que solo ves tú."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — cómo se forma un grupo de K-pop",
+        "content": "Armas tu exposición: Del trainee al debut.\n\n**Paso 1 — Portada:** el título, tu nombre y una foto de un escenario.\n**Paso 2 — Introducción:** una lámina con la pregunta: ¿cuánto tarda alguien en debutar?\n**Paso 3 — Desarrollo:** una lámina por etapa: audición, años de entrenamiento como trainee (canto, baile e idiomas) y debut.\n**Paso 4 — Conclusión:** el debut es el resultado de años de práctica diaria.\n**Paso 5 — Fuentes:** los artículos y entrevistas que consultaste.\n\nUsas la misma plantilla en todas las láminas y una imagen en cada una. Resultado: una exposición que se ve como un comeback bien planeado."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **presentación electrónica** apoya lo que dices con **diapositivas**. Estructura: **portada, introducción, desarrollo, conclusión y fuentes**. Reglas: **una idea por diapositiva**, **poco texto**, **letra grande**, **buen contraste**, **diseño uniforme** e imágenes de apoyo. **Transición** = efecto entre diapositivas; **animación** = efecto de un elemento."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Haz cada diapositiva como una foto teaser: un mensaje, una imagen fuerte y casi nada de texto. Y usa el mismo diseño en todas, como cada era de un grupo tiene su propio concepto."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada mejora hace tu exposición más clara, como un comeback bien planeado.",
+        "data": {
+          "intro": "Tu exposición sobre el K-pop tenía párrafos y colores distintos en cada lámina. El medidor muestra qué tan buena es. Mejórala paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Eliges una plantilla y la usas en todas las diapositivas.",
+              "delta": 20
+            },
+            {
+              "text": "Ordenas: portada, introducción, desarrollo por etapas, conclusión y fuentes.",
+              "delta": 25
+            },
+            {
+              "text": "Dejas una idea por lámina, con poco texto y una imagen grande.",
+              "delta": 25
+            },
+            {
+              "text": "Pasas los datos extra a las notas del orador y ensayas. ¡Debut de tu exposición!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ayuda o estorba",
+        "content": "Ayuda: una idea por lámina, letra grande, contraste, diseño uniforme. Estorba: párrafos largos, letra pequeña, diseño distinto en cada lámina.",
+        "data": {
+          "prompt": "Arrastra cada decisión de tu exposición a su categoría.",
+          "buckets": [
+            "Ayuda",
+            "Estorba"
+          ],
+          "items": [
+            {
+              "t": "Misma plantilla en todas",
+              "b": 0
+            },
+            {
+              "t": "Un color de fondo diferente en cada lámina",
+              "b": 1
+            },
+            {
+              "t": "Una etapa por diapositiva",
+              "b": 0
+            },
+            {
+              "t": "Letra de 10 puntos",
+              "b": 1
+            },
+            {
+              "t": "Foto grande del escenario",
+              "b": 0
+            },
+            {
+              "t": "Párrafos completos copiados",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de presentaciones con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Plantilla",
+              "b": "Diseño ya hecho"
+            },
+            {
+              "a": "Animación",
+              "b": "Efecto de un elemento"
+            },
+            {
+              "a": "Contraste",
+              "b": "Letra que resalta"
+            },
+            {
+              "a": "Notas del orador",
+              "b": "Apuntes que solo ves tú"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué idea de presentación muestra cada parte?",
+        "left_label": "Comeback",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Una foto teaser por día",
+            "right": "Una idea por lámina"
+          },
+          {
+            "left": "Mismo estilo en todos",
+            "right": "Diseño uniforme"
+          },
+          {
+            "left": "Solo nombre, título y fecha",
+            "right": "Poco texto"
+          },
+          {
+            "left": "Calendario, fotos, MV, estreno",
+            "right": "Estructura ordenada"
+          }
+        ],
+        "completion_feedback": "El comeback usó **una idea por lámina**, **diseño uniforme**, **poco texto** y una **estructura ordenada**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Cada foto teaser muestra una sola idea con poco texto. ¿Qué regla de presentaciones refleja?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una idea por lámina"
+            },
+            {
+              "letter": "B",
+              "text": "Mucho texto por lámina"
+            },
+            {
+              "letter": "C",
+              "text": "Muchas transiciones"
+            },
+            {
+              "letter": "D",
+              "text": "Letra muy pequeña"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Una sola idea por diapositiva hace que el mensaje se entienda rápido, igual que un teaser. Mucho texto confunde.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres que todas tus diapositivas tengan los mismos colores y letras, como una era de comeback. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Notas del orador"
+            },
+            {
+              "letter": "B",
+              "text": "Una plantilla"
+            },
+            {
+              "letter": "C",
+              "text": "Una animación"
+            },
+            {
+              "letter": "D",
+              "text": "Las fuentes"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una plantilla da el mismo diseño a todas las diapositivas. Las notas son apuntes y la animación mueve elementos.",
+          "difficulty": 2
+        },
+        {
+          "question": "En tu exposición del K-pop, ¿qué va justo antes de las fuentes?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La portada"
+            },
+            {
+              "letter": "B",
+              "text": "La introducción"
+            },
+            {
+              "letter": "C",
+              "text": "La conclusión"
+            },
+            {
+              "letter": "D",
+              "text": "El índice"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El orden es portada, introducción, desarrollo, conclusión y fuentes. La conclusión cierra la idea antes de mostrar de dónde investigaste.",
+          "difficulty": 3
+        },
+        {
+          "question": "Haces que la foto de un trainee aparezca desvaneciéndose al dar clic. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una animación"
+            },
+            {
+              "letter": "B",
+              "text": "Una transición"
+            },
+            {
+              "letter": "C",
+              "text": "Una plantilla"
+            },
+            {
+              "letter": "D",
+              "text": "Una portada"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un efecto sobre un elemento dentro de la diapositiva es una animación. La transición ocurre al cambiar de diapositiva.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amiga usa un fondo distinto, otra letra y otra transición en cada diapositiva. ¿Qué problema principal tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se ve desordenada"
+            },
+            {
+              "letter": "B",
+              "text": "Le falta texto"
+            },
+            {
+              "letter": "C",
+              "text": "No tiene portada"
+            },
+            {
+              "letter": "D",
+              "text": "Tiene pocas láminas"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cambiar el diseño en cada lámina distrae y se ve desordenado. Un diseño uniforme hace que la presentación se vea como un solo proyecto.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Lo que te enseña un Nintendo Direct",
+        "content": "Cuando Nintendo presenta sus juegos nuevos en un Nintendo Direct, no te pone una pantalla llena de texto para leer. Cada juego tiene su propio segmento: aparece el logo, un tráiler con imágenes impactantes, uno o dos datos clave, como la fecha de salida, y luego pasa al siguiente con una transición rápida. Todo sigue el mismo estilo de principio a fin y el presentador habla con sus palabras, sin leer. Hay un inicio que te dice de qué va el evento, un desarrollo con un juego tras otro y un gran cierre con el anuncio más esperado al final. Millones de jugadores lo ven completo sin aburrirse. Ahora imagina tu exposición sobre la evolución de las consolas. Puedes hacer diapositivas llenas de párrafos que nadie lee o puedes hacerlo como un Direct: una consola por lámina, imágenes grandes, pocos datos, el mismo diseño en todas y un final que deje a todos con ganas. Esa forma de presentar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Un Nintendo Direct ES una buena presentación",
+        "content": "Lo que acabas de ver con el Nintendo Direct es exactamente lo que hace una buena **presentación electrónica**: un apoyo visual hecho en programas como **PowerPoint**, **Google Slides** o **Canva**, formado por **diapositivas**. Una buena presentación tiene **estructura** (portada, introducción, desarrollo, conclusión y fuentes), **una idea por diapositiva**, **poco texto**, **letra grande**, buen **contraste** y **diseño uniforme**. Las **transiciones** son efectos al pasar de una diapositiva a otra; las **animaciones**, efectos de un elemento. Las **notas del orador** son apuntes que solo ves tú."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la evolución de las consolas",
+        "content": "Armas tu exposición: De Atari a Switch.\n\n**Paso 1 — Portada:** el título, tu nombre y una foto de varios controles.\n**Paso 2 — Introducción:** una lámina con la pregunta: ¿cómo cambiaron los videojuegos en 50 años?\n**Paso 3 — Desarrollo:** una consola por lámina: Atari 2600, NES, PlayStation y Switch, cada una con su foto y un dato clave.\n**Paso 4 — Conclusión:** las consolas pasaron de píxeles a mundos abiertos.\n**Paso 5 — Fuentes:** los sitios oficiales y los artículos que consultaste.\n\nUsas la misma plantilla y una transición sencilla en todas. Resultado: una exposición que se ve como un Direct."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **presentación electrónica** apoya lo que dices con **diapositivas**. Estructura: **portada, introducción, desarrollo, conclusión y fuentes**. Reglas: **una idea por diapositiva**, **poco texto**, **letra grande**, **buen contraste** e imágenes de apoyo. **Transición** = efecto entre diapositivas; **animación** = efecto de un elemento."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Transición es el cambio de nivel: pasa entre una diapositiva y otra. Animación es un personaje moviéndose dentro del mismo nivel: afecta a un solo elemento de la diapositiva."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada mejora hace tu exposición más clara, como un buen Direct.",
+        "data": {
+          "intro": "Tu exposición sobre consolas era un muro de texto. El medidor muestra qué tan buena es. Mejórala paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Ordenas: portada, introducción, desarrollo, conclusión y fuentes.",
+              "delta": 20
+            },
+            {
+              "text": "Pones una consola por diapositiva, con su foto grande y un solo dato clave.",
+              "delta": 25
+            },
+            {
+              "text": "Usas la misma plantilla y una sola transición sencilla en todas.",
+              "delta": 25
+            },
+            {
+              "text": "Escribes tus apuntes en las notas del orador y ensayas sin leer. ¡Game on!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Ayuda o estorba",
+        "content": "Ayuda: una idea por lámina, letra grande, contraste, imágenes. Estorba: párrafos largos, efectos exagerados, leer la pantalla.",
+        "data": {
+          "prompt": "Arrastra cada decisión de tu exposición a su categoría.",
+          "buckets": [
+            "Ayuda",
+            "Estorba"
+          ],
+          "items": [
+            {
+              "t": "Una consola por diapositiva",
+              "b": 0
+            },
+            {
+              "t": "Diez animaciones en cada lámina",
+              "b": 1
+            },
+            {
+              "t": "Foto grande de cada consola",
+              "b": 0
+            },
+            {
+              "t": "Leer todo lo que dice la pantalla",
+              "b": 1
+            },
+            {
+              "t": "Letra blanca sobre fondo oscuro",
+              "b": 0
+            },
+            {
+              "t": "Párrafos de la wiki completos",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de presentaciones con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Transición",
+              "b": "Cambio de diapositiva"
+            },
+            {
+              "a": "Animación",
+              "b": "Efecto de un elemento"
+            },
+            {
+              "a": "Modo presentación",
+              "b": "Pantalla completa"
+            },
+            {
+              "a": "Canva",
+              "b": "Programa de diseño"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué idea de presentación muestra cada parte?",
+        "left_label": "Nintendo Direct",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Un juego por segmento",
+            "right": "Una idea por lámina"
+          },
+          {
+            "left": "El paso rápido entre juegos",
+            "right": "Transición"
+          },
+          {
+            "left": "El gran anuncio del final",
+            "right": "Cierre"
+          },
+          {
+            "left": "El presentador no lee",
+            "right": "Tú explicas"
+          }
+        ],
+        "completion_feedback": "El Direct usa **una idea por lámina**, **transiciones**, un buen **cierre** y un presentador que **explica**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En un Nintendo Direct cada juego tiene su propio segmento. ¿Qué regla refleja?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una idea por lámina"
+            },
+            {
+              "letter": "B",
+              "text": "Todo en una lámina"
+            },
+            {
+              "letter": "C",
+              "text": "Mucho texto escrito"
+            },
+            {
+              "letter": "D",
+              "text": "Sin estructura clara"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un segmento por juego es como una idea por diapositiva: el público entiende cada cosa por separado.",
+          "difficulty": 1
+        },
+        {
+          "question": "Pones un efecto para pasar de la lámina del NES a la del PlayStation. ¿Qué usaste?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una animación"
+            },
+            {
+              "letter": "B",
+              "text": "Una plantilla nueva"
+            },
+            {
+              "letter": "C",
+              "text": "Una transición"
+            },
+            {
+              "letter": "D",
+              "text": "Las notas del orador"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El efecto al cambiar de una diapositiva a otra es una transición. La animación afecta a un elemento dentro de una sola lámina.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu primo pone diez efectos distintos de entrada y salida en cada diapositiva. ¿Qué consecuencia es más probable?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El público se distrae"
+            },
+            {
+              "letter": "B",
+              "text": "Se ve más profesional"
+            },
+            {
+              "letter": "C",
+              "text": "Se entiende más rápido"
+            },
+            {
+              "letter": "D",
+              "text": "Ocupa menos tiempo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Demasiados efectos distraen del contenido y hacen lenta la exposición. Los efectos deben ser pocos y sencillos.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué modo pone tus diapositivas en pantalla completa para exponer?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Modo de edición normal"
+            },
+            {
+              "letter": "B",
+              "text": "Modo presentación"
+            },
+            {
+              "letter": "C",
+              "text": "Modo borrador rápido"
+            },
+            {
+              "letter": "D",
+              "text": "Modo de impresión"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El modo presentación muestra las diapositivas en pantalla completa, una por una. En modo edición las modificas.",
+          "difficulty": 2
+        },
+        {
+          "question": "En tu exposición de consolas, ¿cuál sería una buena conclusión?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una lámina con la idea clave"
+            },
+            {
+              "letter": "B",
+              "text": "Diez datos nuevos de golpe al final"
+            },
+            {
+              "letter": "C",
+              "text": "Repetir todas las láminas otra vez"
+            },
+            {
+              "letter": "D",
+              "text": "Terminar sin decir nada más"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La conclusión resume lo más importante en una idea clara. Agregar datos nuevos al final confunde.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos programas sirve para hacer presentaciones?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "PowerPoint"
+        },
+        {
+          "letter": "B",
+          "text": "Microsoft Excel"
+        },
+        {
+          "letter": "C",
+          "text": "Google Chrome"
+        },
+        {
+          "letter": "D",
+          "text": "Paint 3D"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el que trabaja con diapositivas.",
+      "explanation": "PowerPoint crea presentaciones con diapositivas. Excel es hoja de cálculo y Chrome, navegador."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama cada pantalla o lámina de una presentación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Diapositiva"
+        },
+        {
+          "letter": "B",
+          "text": "Celda de tabla"
+        },
+        {
+          "letter": "C",
+          "text": "Carpeta de archivos"
+        },
+        {
+          "letter": "D",
+          "text": "Párrafo de texto"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Viene de las antiguas fotos que se proyectaban.",
+      "explanation": "Cada lámina se llama diapositiva. La celda es de las tablas y hojas de cálculo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué va en la portada de una presentación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El título y tu nombre"
+        },
+        {
+          "letter": "B",
+          "text": "La conclusión del tema"
+        },
+        {
+          "letter": "C",
+          "text": "Todas las fuentes usadas"
+        },
+        {
+          "letter": "D",
+          "text": "Un párrafo muy largo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es lo primero que ve el público.",
+      "explanation": "La portada presenta el tema y a quien expone. La conclusión y las fuentes van al final."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuántas ideas principales conviene poner en cada diapositiva?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una"
+        },
+        {
+          "letter": "B",
+          "text": "Diez"
+        },
+        {
+          "letter": "C",
+          "text": "Todas"
+        },
+        {
+          "letter": "D",
+          "text": "Cinco"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Menos es más.",
+      "explanation": "Una idea por diapositiva hace que el mensaje se entienda rápido. Más ideas confunden."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es una transición?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Efecto entre diapositivas"
+        },
+        {
+          "letter": "B",
+          "text": "Una imagen de fondo bonita"
+        },
+        {
+          "letter": "C",
+          "text": "El título de la portada"
+        },
+        {
+          "letter": "D",
+          "text": "Un tipo de letra especial"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Ocurre cuando pasas a la siguiente lámina.",
+      "explanation": "La transición es el efecto al pasar de una diapositiva a otra."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una animación en una presentación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Efecto de un elemento"
+        },
+        {
+          "letter": "B",
+          "text": "Cambio de diapositiva"
+        },
+        {
+          "letter": "C",
+          "text": "La portada del trabajo"
+        },
+        {
+          "letter": "D",
+          "text": "Una caricatura animada"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Afecta a una imagen o texto dentro de la misma lámina.",
+      "explanation": "La animación es un efecto aplicado a un elemento, como un texto que aparece. La transición es entre diapositivas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirven las notas del orador?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Apuntes que solo ves tú"
+        },
+        {
+          "letter": "B",
+          "text": "Texto grande para el público"
+        },
+        {
+          "letter": "C",
+          "text": "La música de fondo"
+        },
+        {
+          "letter": "D",
+          "text": "El título principal"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Te ayudan a recordar qué decir.",
+      "explanation": "Son apuntes que ve solo quien presenta. El público no los ve en la pantalla."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué combinación de colores tiene mejor contraste?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Negro sobre blanco"
+        },
+        {
+          "letter": "B",
+          "text": "Amarillo sobre blanco"
+        },
+        {
+          "letter": "C",
+          "text": "Azul sobre morado"
+        },
+        {
+          "letter": "D",
+          "text": "Gris sobre plateado"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca colores muy distintos entre sí.",
+      "explanation": "Negro sobre blanco tiene máximo contraste. Las demás combinaciones usan colores parecidos."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una plantilla en un programa de presentaciones?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un diseño ya hecho"
+        },
+        {
+          "letter": "B",
+          "text": "Un archivo de audio"
+        },
+        {
+          "letter": "C",
+          "text": "Una lista de fuentes"
+        },
+        {
+          "letter": "D",
+          "text": "Un efecto de entrada"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Te da colores y letras listos para todas las láminas.",
+      "explanation": "Una plantilla es un diseño prediseñado que se aplica a todas las diapositivas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Dónde van las fuentes que consultaste?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "En la última diapositiva"
+        },
+        {
+          "letter": "B",
+          "text": "En la portada, con el título"
+        },
+        {
+          "letter": "C",
+          "text": "En la introducción del tema"
+        },
+        {
+          "letter": "D",
+          "text": "En ninguna parte del trabajo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Cierran la presentación.",
+      "explanation": "Las fuentes van al final para reconocer de dónde salió la información."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es el orden correcto de una presentación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Portada, desarrollo, conclusión, fuentes"
+        },
+        {
+          "letter": "B",
+          "text": "Fuentes, portada, conclusión, desarrollo"
+        },
+        {
+          "letter": "C",
+          "text": "Conclusión, portada, fuentes, desarrollo"
+        },
+        {
+          "letter": "D",
+          "text": "Desarrollo, fuentes, portada, conclusión"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Empieza presentándote y termina diciendo de dónde investigaste.",
+      "explanation": "Se empieza con la portada, sigue el desarrollo, luego la conclusión y al final las fuentes."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué no conviene leer en voz alta todo el texto de la diapositiva?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Aburre y no aporta nada"
+        },
+        {
+          "letter": "B",
+          "text": "Porque está prohibido"
+        },
+        {
+          "letter": "C",
+          "text": "Porque borra la lámina"
+        },
+        {
+          "letter": "D",
+          "text": "Porque cambia la plantilla"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El público ya lo puede leer solo.",
+      "explanation": "Si solo lees, el público se aburre: ya puede leerlo. Quien expone debe explicar con sus palabras."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué tamaño de letra es más adecuado para que se lea desde el fondo del salón?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "28 puntos"
+        },
+        {
+          "letter": "B",
+          "text": "8 puntos"
+        },
+        {
+          "letter": "C",
+          "text": "10 puntos"
+        },
+        {
+          "letter": "D",
+          "text": "12 puntos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en alguien sentado en la última fila.",
+      "explanation": "Una letra de 24 puntos o más se lee a distancia. Los tamaños de documento impreso son muy pequeños para proyectar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Quieres que una imagen aparezca girando al dar clic. ¿Qué herramienta usas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una animación"
+        },
+        {
+          "letter": "B",
+          "text": "Una transición"
+        },
+        {
+          "letter": "C",
+          "text": "Una plantilla"
+        },
+        {
+          "letter": "D",
+          "text": "Una portada"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Afecta a un solo elemento de la diapositiva.",
+      "explanation": "Mover un elemento dentro de la diapositiva es una animación. La transición es el paso entre diapositivas."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué función tiene la conclusión?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Resumir lo más importante"
+        },
+        {
+          "letter": "B",
+          "text": "Presentar tu nombre otra vez"
+        },
+        {
+          "letter": "C",
+          "text": "Listar todas las fuentes"
+        },
+        {
+          "letter": "D",
+          "text": "Agregar temas nuevos al final"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es lo que quieres que el público recuerde.",
+      "explanation": "La conclusión retoma lo esencial. No es el lugar para meter temas nuevos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una diapositiva tiene 15 renglones de texto. ¿Cuál es la mejor solución?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Resumir en frases cortas"
+        },
+        {
+          "letter": "B",
+          "text": "Hacer la letra más chica"
+        },
+        {
+          "letter": "C",
+          "text": "Agregar más animaciones"
+        },
+        {
+          "letter": "D",
+          "text": "Cambiar el color del fondo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El problema es la cantidad de texto, no el diseño.",
+      "explanation": "Resumir en frases cortas, o dividir en varias láminas, hace que se lea. Achicar la letra la vuelve ilegible."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué conviene usar la misma plantilla en toda la presentación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se ve ordenada"
+        },
+        {
+          "letter": "B",
+          "text": "Pesa menos el archivo"
+        },
+        {
+          "letter": "C",
+          "text": "Agrega fuentes solo"
+        },
+        {
+          "letter": "D",
+          "text": "Hace las transiciones"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cómo se ve todo junto.",
+      "explanation": "Un mismo diseño hace que la presentación se vea como un solo proyecto ordenado."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué tipo de imagen conviene usar en una diapositiva?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una que apoye la idea"
+        },
+        {
+          "letter": "B",
+          "text": "Una al azar y bonita"
+        },
+        {
+          "letter": "C",
+          "text": "Una pixeleada y chica"
+        },
+        {
+          "letter": "D",
+          "text": "Diez imágenes juntas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La imagen debe ayudar a entender, no decorar.",
+      "explanation": "La imagen debe relacionarse con la idea y verse bien. Muchas imágenes o una borrosa distraen."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué ventaja tiene ensayar tu presentación antes de exponer?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Controlas tu tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "Cambia la plantilla"
+        },
+        {
+          "letter": "C",
+          "text": "Agrega diapositivas"
+        },
+        {
+          "letter": "D",
+          "text": "Corrige la ortografía"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Practicar te prepara para el momento real.",
+      "explanation": "Ensayar te ayuda a saber cuánto tardas y a explicar sin leer."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué modo muestra las diapositivas en pantalla completa para exponer?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Modo presentación"
+        },
+        {
+          "letter": "B",
+          "text": "Modo de edición normal"
+        },
+        {
+          "letter": "C",
+          "text": "Modo borrador rápido"
+        },
+        {
+          "letter": "D",
+          "text": "Modo de impresión"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el que usas frente al público.",
+      "explanation": "El modo presentación muestra las láminas en pantalla completa. En modo edición las modificas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una presentación usa una transición distinta en cada diapositiva y animaciones en todo. ¿Cuál es el problema?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Distrae del contenido"
+        },
+        {
+          "letter": "B",
+          "text": "Le falta la portada"
+        },
+        {
+          "letter": "C",
+          "text": "Tiene muy poco texto"
+        },
+        {
+          "letter": "D",
+          "text": "Usa un buen contraste"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Los efectos deben ayudar, no robar la atención.",
+      "explanation": "Demasiados efectos distraen y alargan la exposición. Lo mejor son pocos efectos y sencillos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Tu exposición dura 5 minutos y tienes 30 diapositivas. ¿Qué es lo más probable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Irás muy rápido"
+        },
+        {
+          "letter": "B",
+          "text": "Te sobrará tiempo"
+        },
+        {
+          "letter": "C",
+          "text": "Será muy clara"
+        },
+        {
+          "letter": "D",
+          "text": "No necesitas ensayar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Calcula cuántos segundos tendrías por diapositiva.",
+      "explanation": "Serían 10 segundos por lámina: muy rápido para explicar. Conviene menos diapositivas o más tiempo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Usas una imagen que encontraste en internet. ¿Qué es lo correcto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Citar de dónde la tomaste"
+        },
+        {
+          "letter": "B",
+          "text": "Decir que la hiciste tú mismo"
+        },
+        {
+          "letter": "C",
+          "text": "Recortarle la marca de agua"
+        },
+        {
+          "letter": "D",
+          "text": "No decir nada de dónde salió"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Reconoce el trabajo de quien la creó.",
+      "explanation": "Las imágenes tienen autor. Citarlas, o usar las de uso libre, es lo correcto; quitarles la marca es incorrecto."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Cuál diapositiva cumple mejor las reglas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un título, 3 frases y 1 imagen"
+        },
+        {
+          "letter": "B",
+          "text": "Un título y 12 renglones de texto"
+        },
+        {
+          "letter": "C",
+          "text": "Tres temas distintos y cinco imágenes"
+        },
+        {
+          "letter": "D",
+          "text": "Solo texto, en letra de 10 puntos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la que tenga una idea, poco texto y apoyo visual.",
+      "explanation": "Una idea con poco texto y una imagen se entiende rápido. Las demás saturan o no se leen."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué diferencia hay entre una presentación y un documento de texto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La presentación apoya lo que dices"
+        },
+        {
+          "letter": "B",
+          "text": "El documento no puede tener imágenes"
+        },
+        {
+          "letter": "C",
+          "text": "La presentación no lleva texto"
+        },
+        {
+          "letter": "D",
+          "text": "No existe diferencia entre ellos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Uno se lee solo; el otro acompaña a quien habla.",
+      "explanation": "La presentación es un apoyo visual para quien expone; el documento se lee completo por su cuenta."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo expone y cada integrante usa colores y letras distintas en sus diapositivas. ¿Qué conviene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Acordar una plantilla"
+        },
+        {
+          "letter": "B",
+          "text": "Agregar muchos más efectos"
+        },
+        {
+          "letter": "C",
+          "text": "Poner más texto en cada lámina"
+        },
+        {
+          "letter": "D",
+          "text": "Quitar la portada del trabajo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es una sola presentación de un solo equipo.",
+      "explanation": "Usar la misma plantilla une el trabajo de todos y se ve ordenado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Durante tu exposición se va la luz del proyector. ¿Qué te ayuda más a seguir?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Haber ensayado el tema"
+        },
+        {
+          "letter": "B",
+          "text": "Tener muchas transiciones"
+        },
+        {
+          "letter": "C",
+          "text": "Usar letra muy pequeña"
+        },
+        {
+          "letter": "D",
+          "text": "Haber copiado párrafos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La presentación apoya, pero el conocimiento es tuyo.",
+      "explanation": "Si dominas tu tema por haber ensayado, puedes explicarlo aunque falle la pantalla."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué la regla de 'poco texto' hace más efectiva una presentación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El público escucha y no solo lee"
+        },
+        {
+          "letter": "B",
+          "text": "Porque así el archivo pesa mucho menos"
+        },
+        {
+          "letter": "C",
+          "text": "Porque así ya no necesitas ensayar nada"
+        },
+        {
+          "letter": "D",
+          "text": "Porque se proyecta más rápido"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Nadie puede leer mucho texto y escucharte a la vez.",
+      "explanation": "Con poco texto el público te escucha a ti en lugar de leer párrafos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una exposición sobre reciclaje, ¿qué diapositiva NO pertenece al desarrollo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lista de fuentes"
+        },
+        {
+          "letter": "B",
+          "text": "Tipos de residuos"
+        },
+        {
+          "letter": "C",
+          "text": "Cómo separar la basura"
+        },
+        {
+          "letter": "D",
+          "text": "Beneficios del reciclaje"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una de ellas va hasta el final.",
+      "explanation": "La lista de fuentes va al final de la presentación. Las demás desarrollan el tema."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué elemento hace que una presentación sea fácil de seguir de principio a fin?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una estructura clara"
+        },
+        {
+          "letter": "B",
+          "text": "Muchas animaciones"
+        },
+        {
+          "letter": "C",
+          "text": "Fondos diferentes en cada lámina"
+        },
+        {
+          "letter": "D",
+          "text": "Letras muy pequeñas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Inicio, desarrollo y cierre.",
+      "explanation": "Una estructura clara guía al público. Las animaciones o fondos distintos solo distraen."
+    }
+  ],
+  "diagnostic": {
+    "question": "Quieres que, al pasar de una diapositiva a la siguiente, aparezca un efecto de deslizamiento. ¿Qué usas?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Una transición"
+      },
+      {
+        "letter": "B",
+        "text": "Una animación"
+      },
+      {
+        "letter": "C",
+        "text": "Una plantilla nueva"
+      },
+      {
+        "letter": "D",
+        "text": "Las notas del orador"
+      }
+    ],
+    "correct_answer": "A",
+    "explanation": "La transición es el efecto entre una diapositiva y otra. La animación afecta a un elemento dentro de la misma diapositiva."
+  }
+}

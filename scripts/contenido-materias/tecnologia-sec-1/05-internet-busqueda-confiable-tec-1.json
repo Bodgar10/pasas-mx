@@ -1,0 +1,1829 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "internet-busqueda-confiable-tec-1",
+  "order_steps": {
+    "prompt": "Ordena cómo verificar una noticia que se hizo viral",
+    "steps": [
+      "Leer más allá del título llamativo",
+      "Revisar quién la publicó y en qué fecha",
+      "Compararla con al menos dos fuentes confiables",
+      "Decidir si es verdad antes de compartirla"
+    ],
+    "completion_feedback": "Una fuente confiable tiene **autor**, **fecha** y coincide con **otras fuentes**. Verificar va antes de compartir, nunca después. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "¿De verdad se filtró el final de One Piece?",
+        "content": "Un viernes en la noche te llega un TikTok con millones de vistas: ¡Se filtró el final de One Piece y Luffy no encuentra el One Piece! La cuenta no tiene nombre real, el video no dice de dónde salió la información y los comentarios están llenos de gente asustada. Antes de mandárselo a tu grupo de amigos, decides investigar como un verdadero nakama. Abres el navegador y en el buscador escribes las palabras clave entre comillas para encontrar la frase exacta. Luego entras a MANGA Plus, la plataforma oficial de Shueisha, la editorial que publica One Piece, y revisas los capítulos más recientes. También buscas en sitios de noticias de anime conocidos y te fijas en la fecha de cada publicación. Resultado: ninguna fuente seria dice nada; el video era inventado para ganar vistas. Te diste cuenta de que en internet hay de todo y que encontrar información es fácil, pero saber cuál es confiable es el verdadero poder. Esa habilidad es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Investigar el rumor ES buscar con criterio en internet",
+        "content": "Lo que acabas de ver con el rumor de One Piece es exactamente cómo se usa **internet** con criterio. Internet es una red mundial de computadoras conectadas. Para entrar a las páginas usas un **navegador** (Chrome, Safari, Firefox) y para encontrarlas, un **buscador** (Google, Bing). Cada página tiene una dirección o **URL**. Para buscar mejor usas **palabras clave** y **comillas** para una frase exacta. Una **fuente confiable** dice **quién** la escribió, tiene **fecha**, muestra de dónde sacó sus datos y **coincide con otras fuentes**, como la editorial oficial."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu exposición sobre el manga en México",
+        "content": "Tienes que exponer cuándo llegó el manga a México y encuentras tres páginas.\n\n**Paso 1:** Una página sin autor ni fecha, llena de anuncios → **dudosa**.\n**Paso 2:** Un artículo de un periódico conocido, con autor y fecha → **confiable**.\n**Paso 3:** Un sitio de una universidad terminado en .edu.mx → **confiable**.\n**Paso 4:** Comparas los datos de las dos confiables y coinciden → **información verificada**.\n**Paso 5:** En tu exposición escribes de dónde sacaste los datos → **citas tus fuentes**.\n\nResultado: tu exposición se apoya en fuentes que puedes defender."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **navegador** abre páginas y el **buscador** las encuentra. Busca con **palabras clave**, usa **comillas** para frases exactas. Una **fuente confiable** tiene **autor**, **fecha**, datos comprobables y **coincide con otras fuentes**. Antes de compartir, **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "No confundas navegador con buscador: Chrome es el barco y Google es el mapa. Y recuerda: que algo tenga millones de vistas no lo hace verdad; lo que importa es quién lo dice y si otras fuentes lo confirman."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Verificar un rumor paso a paso evita compartir información falsa.",
+        "data": {
+          "intro": "El TikTok del final filtrado de One Piece ya está en tu pantalla. Sigue los pasos para comprobar si es verdad.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees más allá del título: el video no dice de dónde sacó la información. Primera señal de alerta."
+            },
+            {
+              "text": "Revisas quién lo publicó: una cuenta sin nombre real y que solo sube rumores."
+            },
+            {
+              "text": "Buscas en MANGA Plus, el sitio oficial de la editorial: no hay nada parecido."
+            },
+            {
+              "text": "Comparas con dos sitios de noticias de anime conocidos: ninguno lo menciona. Conclusión: es falso y no lo compartes."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Confiable o dudosa",
+        "content": "Confiable: tiene autor, fecha y fuentes, y coincide con otras. Dudosa: anónima, sin fecha, exagerada o sin pruebas.",
+        "data": {
+          "prompt": "Arrastra cada fuente sobre anime a su categoría.",
+          "buckets": [
+            "Confiable",
+            "Dudosa"
+          ],
+          "items": [
+            {
+              "t": "Comunicado oficial de la editorial",
+              "b": 0
+            },
+            {
+              "t": "TikTok anónimo de 'filtraciones'",
+              "b": 1
+            },
+            {
+              "t": "Nota con autor y fecha en un medio conocido",
+              "b": 0
+            },
+            {
+              "t": "Captura de pantalla sin origen",
+              "b": 1
+            },
+            {
+              "t": "Entrevista publicada al mangaka",
+              "b": 0
+            },
+            {
+              "t": "Página con título en mayúsculas y sin autor",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de internet con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Navegador",
+              "b": "Abre páginas web"
+            },
+            {
+              "a": "Buscador",
+              "b": "Encuentra páginas"
+            },
+            {
+              "a": "Comillas",
+              "b": "Frase exacta"
+            },
+            {
+              "a": "URL",
+              "b": "Dirección de la página"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu investigación?",
+        "left_label": "Rumor de One Piece",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa donde abres páginas",
+            "right": "Navegador"
+          },
+          {
+            "left": "Donde escribiste las palabras",
+            "right": "Buscador"
+          },
+          {
+            "left": "MANGA Plus de la editorial",
+            "right": "Fuente confiable"
+          },
+          {
+            "left": "El TikTok sin pruebas",
+            "right": "Fuente dudosa"
+          }
+        ],
+        "completion_feedback": "Con el **navegador** y el **buscador** encuentras todo, pero solo una **fuente confiable** te dice qué es verdad. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál de estas fuentes es más confiable para saber si se filtró un capítulo de One Piece?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La editorial oficial"
+            },
+            {
+              "letter": "B",
+              "text": "Un TikTok muy viral"
+            },
+            {
+              "letter": "C",
+              "text": "Un comentario anónimo"
+            },
+            {
+              "letter": "D",
+              "text": "Una captura sin origen"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La editorial es quien publica el manga, así que es la fuente directa. Un video viral o anónimo puede ser inventado aunque tenga muchas vistas.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres buscar solo páginas con la frase exacta 'Gear 5 de Luffy'. ¿Qué haces?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La escribes en mayúsculas"
+            },
+            {
+              "letter": "B",
+              "text": "La pones entre comillas"
+            },
+            {
+              "letter": "C",
+              "text": "Le agregas signos de ¡!"
+            },
+            {
+              "letter": "D",
+              "text": "La escribes dos veces"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las comillas le piden al buscador la frase exacta, palabra por palabra. Las mayúsculas o los signos no cambian el resultado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un sitio dice que Akira Toriyama murió en 2015 y otro que fue en 2024. ¿Qué haces?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Eliges el que tenga más vistas"
+            },
+            {
+              "letter": "B",
+              "text": "Comparas con fuentes confiables"
+            },
+            {
+              "letter": "C",
+              "text": "Eliges el que se vea más bonito"
+            },
+            {
+              "letter": "D",
+              "text": "Copias el primero que salió"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Si dos fuentes no coinciden, hay que contrastar con fuentes confiables. Toriyama, autor de Dragon Ball, murió en marzo de 2024.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué es Google para tu investigación?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un navegador"
+            },
+            {
+              "letter": "B",
+              "text": "Un buscador"
+            },
+            {
+              "letter": "C",
+              "text": "Una fuente oficial"
+            },
+            {
+              "letter": "D",
+              "text": "Un sistema operativo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Google encuentra páginas a partir de tus palabras: es un buscador. El navegador es el programa donde lo abres, como Chrome.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una página de noticias de anime no dice quién escribió la nota ni cuándo. ¿Qué tan confiable es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Muy confiable"
+            },
+            {
+              "letter": "B",
+              "text": "Poco confiable"
+            },
+            {
+              "letter": "C",
+              "text": "Igual que la oficial"
+            },
+            {
+              "letter": "D",
+              "text": "Confiable si es larga"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Sin autor ni fecha no puedes saber quién responde por la información ni si está actualizada. Que sea larga no la hace más confiable.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "¿Mbappé al América?",
+        "content": "Un martes en la noche explota tu grupo de WhatsApp: ¡Mbappé firmó con el América! Alguien manda una imagen con el escudo de las Águilas y la foto del jugador, y otra persona un video de TikTok de una cuenta llamada FichajesBomba. Todos lo creen, pero tú quieres estar seguro antes de presumirlo. Abres el navegador y en el buscador escribes Mbappé América entre comillas. Revisas la página oficial del club y su cuenta verificada: nada. Buscas en periódicos deportivos conocidos y en lo que publican periodistas de fichajes reconocidos, como Fabrizio Romano, famoso por su Here we go cuando un fichaje es real: tampoco. Te fijas en la fecha del video: es de hace dos años y era una broma. Conclusión: el fichaje nunca existió. Te diste cuenta de que en internet encontrar información es fácil, pero distinguir la verdadera de la falsa es lo que de verdad cuenta. Esa habilidad es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Revisar el rumor ES buscar con criterio en internet",
+        "content": "Lo que acabas de ver con el falso fichaje es exactamente cómo se usa **internet** con criterio. Internet es una red mundial de computadoras conectadas. Para entrar a las páginas usas un **navegador** (Chrome, Safari, Firefox) y para encontrarlas, un **buscador** (Google, Bing). Cada página tiene una dirección o **URL**. Para buscar mejor usas **palabras clave** y **comillas** para una frase exacta. Una **fuente confiable** dice **quién** la escribió, tiene **fecha**, muestra de dónde sacó sus datos y **coincide con otras fuentes**, como el sitio oficial del club."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu tarea sobre los Mundiales en México",
+        "content": "Investigas cuántos Mundiales se han jugado en México.\n\n**Paso 1:** Buscas con palabras clave: Mundiales en México historia.\n**Paso 2:** Un blog sin autor dice que fueron cinco → **dudoso**.\n**Paso 3:** El sitio oficial de la FIFA y un periódico con autor y fecha dicen que fueron 1970 y 1986, y que 2026 fue el tercero → **confiables**.\n**Paso 4:** Las dos fuentes confiables coinciden → **información verificada**.\n**Paso 5:** En tu tarea anotas las fuentes que usaste → **citas tus fuentes**.\n\nResultado: tu dato es correcto y lo puedes demostrar."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **navegador** abre páginas y el **buscador** las encuentra. Busca con **palabras clave**, usa **comillas** para frases exactas. Una **fuente confiable** tiene **autor**, **fecha**, datos comprobables y **coincide con otras fuentes**. Antes de compartir, **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Trata cada noticia como una jugada dudosa: revísala en el VAR. Quién la publica, cuándo y si otras fuentes la confirman. Un rumor sin fuente es como un gol en fuera de lugar: no cuenta."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Verificar un rumor paso a paso evita compartir información falsa.",
+        "data": {
+          "intro": "El rumor de Mbappé al América ya está en tu WhatsApp. Sigue los pasos para comprobar si es verdad.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees más allá de la imagen: no tiene fuente ni dice quién la hizo. Primera señal de alerta."
+            },
+            {
+              "text": "Revisas quién lo publicó: una cuenta de TikTok sin verificar que vive de rumores."
+            },
+            {
+              "text": "Buscas en el sitio oficial del club y en su cuenta verificada: no hay ningún anuncio."
+            },
+            {
+              "text": "Comparas con dos periódicos deportivos conocidos: nadie lo reporta. Conclusión: es falso y no lo compartes."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Confiable o dudosa",
+        "content": "Confiable: tiene autor, fecha y fuentes, y coincide con otras. Dudosa: anónima, sin fecha, exagerada o sin pruebas.",
+        "data": {
+          "prompt": "Arrastra cada fuente de noticias de fútbol a su categoría.",
+          "buckets": [
+            "Confiable",
+            "Dudosa"
+          ],
+          "items": [
+            {
+              "t": "Comunicado en el sitio oficial del club",
+              "b": 0
+            },
+            {
+              "t": "Cuenta 'FichajesBomba' sin verificar",
+              "b": 1
+            },
+            {
+              "t": "Nota con autor y fecha en un diario deportivo",
+              "b": 0
+            },
+            {
+              "t": "Audio reenviado muchas veces",
+              "b": 1
+            },
+            {
+              "t": "Conferencia de prensa del entrenador",
+              "b": 0
+            },
+            {
+              "t": "Imagen editada sin origen",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de internet con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Chrome",
+              "b": "Navegador"
+            },
+            {
+              "a": "Google",
+              "b": "Buscador"
+            },
+            {
+              "a": "\"Mbappé América\"",
+              "b": "Frase exacta"
+            },
+            {
+              "a": "Fecha de la nota",
+              "b": "¿Está actualizada?"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu investigación?",
+        "left_label": "Rumor de fichaje",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa donde abres páginas",
+            "right": "Navegador"
+          },
+          {
+            "left": "Donde escribiste Mbappé América",
+            "right": "Buscador"
+          },
+          {
+            "left": "El sitio oficial del club",
+            "right": "Fuente confiable"
+          },
+          {
+            "left": "La imagen sin origen",
+            "right": "Fuente dudosa"
+          }
+        ],
+        "completion_feedback": "Con el **navegador** y el **buscador** encuentras todo, pero solo una **fuente confiable** te dice qué es verdad. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Dónde confirmarías primero si un jugador firmó con un club?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En el sitio oficial"
+            },
+            {
+              "letter": "B",
+              "text": "En un audio reenviado"
+            },
+            {
+              "letter": "C",
+              "text": "En un meme de Facebook"
+            },
+            {
+              "letter": "D",
+              "text": "En una cuenta anónima"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El club es quien anuncia sus fichajes, así que su sitio oficial es la fuente directa. Audios y memes pueden ser inventados.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué es Chrome?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un buscador"
+            },
+            {
+              "letter": "B",
+              "text": "Un periódico digital"
+            },
+            {
+              "letter": "C",
+              "text": "Un navegador"
+            },
+            {
+              "letter": "D",
+              "text": "Una red social"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Chrome es el programa para abrir páginas web: un navegador. Google, que también es de la misma empresa, es el buscador.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un video de un fichaje se ve muy real, pero es de hace dos años. ¿Qué dato de la fuente te hizo dudar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El número de likes"
+            },
+            {
+              "letter": "B",
+              "text": "La fecha"
+            },
+            {
+              "letter": "C",
+              "text": "La música del video"
+            },
+            {
+              "letter": "D",
+              "text": "El color del escudo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La fecha te dice si la información sigue vigente. Un video viejo puede circular como si fuera nuevo; los likes no prueban nada.",
+          "difficulty": 3
+        },
+        {
+          "question": "Buscas noticias del América pero no quieres resultados de la Liga Femenil. ¿Qué te ayuda?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Escribir todo en mayúsculas"
+            },
+            {
+              "letter": "B",
+              "text": "El signo menos: -femenil"
+            },
+            {
+              "letter": "C",
+              "text": "Buscar usando emojis de balón"
+            },
+            {
+              "letter": "D",
+              "text": "Repetir dos veces la palabra"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Poner un guion antes de una palabra le pide al buscador que la excluya. Las mayúsculas y los emojis no cambian los resultados.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un artículo dice que el Estadio Azteca fue sede de dos finales de Mundial. ¿Cómo lo confirmas mejor?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Con otras dos fuentes serias"
+            },
+            {
+              "letter": "B",
+              "text": "Preguntando en un grupo"
+            },
+            {
+              "letter": "C",
+              "text": "Viendo si tiene muchas fotos"
+            },
+            {
+              "letter": "D",
+              "text": "Creyéndolo si suena bien"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Contrastar con fuentes serias es la forma de verificar. Las finales de 1970 y 1986 sí se jugaron ahí, pero lo sabes porque coinciden fuentes confiables.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "¿Boletos para BTS a mitad de precio?",
+        "content": "Un domingo te etiquetan en una publicación de Instagram: ¡Boletos para BTS en la Ciudad de México a mitad de precio, solo hoy! La cuenta tiene el logo morado, fotos de los chicos y un link para pagar. Muchas ARMY ya están comentando que van a comprar. Pero algo no te cuadra, así que investigas. Abres el navegador y en el buscador escribes las palabras clave del anuncio entre comillas. Entras a Weverse, donde HYBE publica los anuncios oficiales del grupo, y a la página de la boletera oficial: ahí no hay ninguna promoción. Te fijas en la URL del link: no es la de la boletera, tiene letras raras y termina en un dominio extraño. Revisas la cuenta: se creó hace una semana y no tiene ni un post viejo. Conclusión: es una estafa para robar dinero. Te diste cuenta de que en internet hay muchísima información, pero lo importante es saber cuál viene de una fuente confiable. Esa habilidad es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Revisar el anuncio ES buscar con criterio en internet",
+        "content": "Lo que acabas de ver con los boletos falsos es exactamente cómo se usa **internet** con criterio. Internet es una red mundial de computadoras conectadas. Para entrar a las páginas usas un **navegador** (Chrome, Safari, Firefox) y para encontrarlas, un **buscador** (Google, Bing). Cada página tiene una dirección o **URL**, y revisarla te dice si estás en el sitio real. Para buscar mejor usas **palabras clave** y **comillas** para una frase exacta. Una **fuente confiable** dice **quién** la escribió, tiene **fecha** y **coincide con otras fuentes**, como el anuncio oficial en Weverse."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu exposición sobre la ola coreana",
+        "content": "Tienes que explicar qué es el Hallyu, la ola coreana, y encuentras tres fuentes.\n\n**Paso 1:** Un post de fans sin autor que exagera datos → **dudosa**.\n**Paso 2:** Un artículo de un medio conocido, con autor y fecha → **confiable**.\n**Paso 3:** Un texto de una institución cultural coreana oficial → **confiable**.\n**Paso 4:** Las dos fuentes confiables coinciden en la definición → **información verificada**.\n**Paso 5:** Anotas en tu exposición de dónde sacaste los datos → **citas tus fuentes**.\n\nResultado: una exposición con datos que puedes defender."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **navegador** abre páginas y el **buscador** las encuentra. Busca con **palabras clave**, usa **comillas** para frases exactas. Una **fuente confiable** tiene **autor**, **fecha**, datos comprobables y **coincide con otras fuentes**. Revisa la **URL** antes de dar datos o pagar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa como fan precavida: si no lo anunció la cuenta oficial del grupo, no es oficial. Y una oferta demasiado buena, con urgencia de 'solo hoy', es una señal de alerta, no de suerte."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Verificar un anuncio paso a paso te evita caer en una estafa.",
+        "data": {
+          "intro": "El anuncio de boletos a mitad de precio ya está en tu feed. Sigue los pasos para comprobar si es real.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees con calma: 'solo hoy' y 'mitad de precio' son trucos para que no pienses. Primera alerta."
+            },
+            {
+              "text": "Revisas la cuenta: se creó hace una semana y no tiene publicaciones viejas."
+            },
+            {
+              "text": "Buscas en Weverse y en la boletera oficial: no existe ninguna promoción así."
+            },
+            {
+              "text": "Revisas la URL del link: no es la de la boletera oficial. Conclusión: es estafa y avisas a tus amigas."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Confiable o dudosa",
+        "content": "Confiable: tiene autor, fecha y fuentes, y coincide con otras. Dudosa: anónima, sin fecha, exagerada o sin pruebas.",
+        "data": {
+          "prompt": "Arrastra cada fuente sobre K-pop a su categoría.",
+          "buckets": [
+            "Confiable",
+            "Dudosa"
+          ],
+          "items": [
+            {
+              "t": "Aviso oficial en Weverse",
+              "b": 0
+            },
+            {
+              "t": "Cuenta nueva que vende boletos baratos",
+              "b": 1
+            },
+            {
+              "t": "Nota con autor y fecha en un medio conocido",
+              "b": 0
+            },
+            {
+              "t": "Captura de un chat sin origen",
+              "b": 1
+            },
+            {
+              "t": "Cuenta verificada de la agencia",
+              "b": 0
+            },
+            {
+              "t": "Link con letras raras en la URL",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de internet con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Navegador",
+              "b": "Abre páginas web"
+            },
+            {
+              "a": "Buscador",
+              "b": "Encuentra páginas"
+            },
+            {
+              "a": "URL",
+              "b": "Dirección de la página"
+            },
+            {
+              "a": "Weverse oficial",
+              "b": "Fuente confiable"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu investigación?",
+        "left_label": "Boletos BTS",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa donde abres páginas",
+            "right": "Navegador"
+          },
+          {
+            "left": "La dirección rara del link",
+            "right": "URL"
+          },
+          {
+            "left": "El aviso de HYBE en Weverse",
+            "right": "Fuente confiable"
+          },
+          {
+            "left": "La cuenta creada hace una semana",
+            "right": "Fuente dudosa"
+          }
+        ],
+        "completion_feedback": "Con el **navegador** llegas a cualquier página, pero revisar la **URL** y buscar la **fuente confiable** te protege. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Dónde confirmarías si BTS anunció un concierto en México?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En un canal oficial"
+            },
+            {
+              "letter": "B",
+              "text": "En un post sin autor"
+            },
+            {
+              "letter": "C",
+              "text": "En una cuenta nueva"
+            },
+            {
+              "letter": "D",
+              "text": "En un audio reenviado"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los anuncios reales salen por los canales oficiales del grupo o su agencia. Una cuenta nueva o un post sin autor pueden ser falsos.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué parte del link te ayuda a saber si estás en la página real de la boletera?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Las fotos del grupo"
+            },
+            {
+              "letter": "B",
+              "text": "El color de la página"
+            },
+            {
+              "letter": "C",
+              "text": "La URL"
+            },
+            {
+              "letter": "D",
+              "text": "La cantidad de likes"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La URL es la dirección real de la página. Las fotos y los colores se pueden copiar fácilmente para engañar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una página tiene candado y https, pero vende boletos 'oficiales' a mitad de precio. ¿Qué es cierto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El candado prueba que es real"
+            },
+            {
+              "letter": "B",
+              "text": "El candado no prueba que sea real"
+            },
+            {
+              "letter": "C",
+              "text": "Con https ya no existen estafas"
+            },
+            {
+              "letter": "D",
+              "text": "Si tiene fotos oficiales, es real"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El candado solo significa que la conexión va cifrada. Una página falsa también puede tenerlo, así que hay que verificar quién la publica.",
+          "difficulty": 3
+        },
+        {
+          "question": "Buscas 'Queen of Tears final' y quieres solo esa frase exacta. ¿Cómo la escribes?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Entre comillas"
+            },
+            {
+              "letter": "B",
+              "text": "En puras mayúsculas"
+            },
+            {
+              "letter": "C",
+              "text": "Con varios hashtags"
+            },
+            {
+              "letter": "D",
+              "text": "Con emojis de corazón"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Las comillas le piden al buscador la frase exacta. Mayúsculas, hashtags o emojis no cambian cómo busca.",
+          "difficulty": 2
+        },
+        {
+          "question": "Dos sitios dan años distintos del debut de BTS. ¿Qué es lo más correcto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Creer al que tenga más fotos del grupo"
+            },
+            {
+              "letter": "B",
+              "text": "Comparar con fuentes confiables"
+            },
+            {
+              "letter": "C",
+              "text": "Sacar el promedio de los dos años"
+            },
+            {
+              "letter": "D",
+              "text": "Elegir el que se publicó al final"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cuando las fuentes no coinciden, se contrasta con fuentes confiables. BTS debutó en 2013, y lo confirman fuentes serias, no las fotos.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El truco secreto de los diamantes infinitos",
+        "content": "En YouTube te aparece un video con miniatura llamativa: ¡Truco SECRETO para tener diamantes infinitos en Minecraft, 100% real! El canal tiene un nombre raro, el video no muestra el truco completo y pide que entres a un link para descargar un mod. Antes de hacerle caso, decides investigar como un buen jugador. Abres el navegador y en el buscador escribes las palabras clave entre comillas. Luego entras a minecraft.net, el sitio oficial de Mojang, y a la Minecraft Wiki, donde la comunidad documenta cada bloque y cada mecánica con fuentes. En ningún lado existe ese truco. Revisas la fecha del video y los comentarios: es viejo y mucha gente dice que el link instala virus. Conclusión: era clickbait para ganar visitas y algo peor. Te diste cuenta de que en internet hay respuestas para todo, pero saber distinguir la confiable de la falsa es lo que realmente te hace pro. Esa habilidad es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Investigar el truco ES buscar con criterio en internet",
+        "content": "Lo que acabas de ver con el falso truco es exactamente cómo se usa **internet** con criterio. Internet es una red mundial de computadoras conectadas. Para entrar a las páginas usas un **navegador** (Chrome, Safari, Firefox) y para encontrarlas, un **buscador** (Google, Bing). Cada página tiene una dirección o **URL**. Para buscar mejor usas **palabras clave** y **comillas** para una frase exacta. Una **fuente confiable** dice **quién** la escribió, tiene **fecha**, muestra de dónde sacó sus datos y **coincide con otras fuentes**, como el sitio oficial del juego."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu exposición sobre la historia de Nintendo",
+        "content": "Tienes que exponer cómo empezó Nintendo y encuentras tres fuentes.\n\n**Paso 1:** Un video anónimo que dice que Nintendo empezó haciendo consolas → **dudoso**.\n**Paso 2:** La sección de historia del sitio oficial de Nintendo → **confiable**.\n**Paso 3:** Un artículo de un medio conocido, con autor y fecha → **confiable**.\n**Paso 4:** Las dos confiables coinciden: empezó en 1889 haciendo cartas de juego → **verificado**.\n**Paso 5:** Anotas tus fuentes al final de la presentación → **citas tus fuentes**.\n\nResultado: un dato sorprendente y comprobado."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **navegador** abre páginas y el **buscador** las encuentra. Busca con **palabras clave**, usa **comillas** para frases exactas. Una **fuente confiable** tiene **autor**, **fecha**, datos comprobables y **coincide con otras fuentes**. Antes de descargar o compartir, **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Una miniatura con letras gigantes, 100% REAL y flechas rojas es clickbait: está hecha para que entres, no para informarte. Busca siempre la fuente oficial del juego antes de creer o descargar algo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Verificar un truco paso a paso te evita perder tiempo o meterle virus a tu compu.",
+        "data": {
+          "intro": "El video del truco de diamantes infinitos te está tentando. Sigue los pasos para comprobar si es real.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lees más allá de la miniatura: el video no muestra el truco completo y te manda a un link. Primera alerta."
+            },
+            {
+              "text": "Revisas el canal: nombre raro, sin videos serios y lleno de 'trucos secretos'."
+            },
+            {
+              "text": "Buscas en minecraft.net y en la Minecraft Wiki: ese truco no existe en el juego."
+            },
+            {
+              "text": "Lees los comentarios y la fecha: es viejo y avisan de virus. Conclusión: falso, no descargas nada."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Confiable o dudosa",
+        "content": "Confiable: tiene autor, fecha y fuentes, y coincide con otras. Dudosa: anónima, sin fecha, exagerada o sin pruebas.",
+        "data": {
+          "prompt": "Arrastra cada fuente sobre videojuegos a su categoría.",
+          "buckets": [
+            "Confiable",
+            "Dudosa"
+          ],
+          "items": [
+            {
+              "t": "Notas de actualización en el sitio oficial",
+              "b": 0
+            },
+            {
+              "t": "Video '100% REAL' que pide descargar algo",
+              "b": 1
+            },
+            {
+              "t": "Wiki de la comunidad con fuentes citadas",
+              "b": 0
+            },
+            {
+              "t": "Comentario anónimo en un foro",
+              "b": 1
+            },
+            {
+              "t": "Reseña con autor y fecha en un medio conocido",
+              "b": 0
+            },
+            {
+              "t": "Página que regala juegos de paga",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de internet con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Chrome",
+              "b": "Navegador"
+            },
+            {
+              "a": "Google",
+              "b": "Buscador"
+            },
+            {
+              "a": "minecraft.net",
+              "b": "Sitio oficial"
+            },
+            {
+              "a": "Clickbait",
+              "b": "Engaña para que entres"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu investigación?",
+        "left_label": "Truco falso",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa donde abres páginas",
+            "right": "Navegador"
+          },
+          {
+            "left": "Donde escribiste el truco",
+            "right": "Buscador"
+          },
+          {
+            "left": "minecraft.net de Mojang",
+            "right": "Fuente confiable"
+          },
+          {
+            "left": "El video 100% REAL",
+            "right": "Fuente dudosa"
+          }
+        ],
+        "completion_feedback": "Con el **navegador** y el **buscador** encuentras todo, pero solo una **fuente confiable** te dice qué es verdad. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Dónde comprobarías si una mecánica nueva de Minecraft es real?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En el sitio oficial"
+            },
+            {
+              "letter": "B",
+              "text": "En un video '100% real'"
+            },
+            {
+              "letter": "C",
+              "text": "En un comentario anónimo"
+            },
+            {
+              "letter": "D",
+              "text": "En una miniatura llamativa"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El sitio oficial publica los cambios reales del juego. Un video que se presenta como 100% real no lo demuestra.",
+          "difficulty": 1
+        },
+        {
+          "question": "Un video tiene letras gigantes, flechas rojas y dice SECRETO, pero no muestra nada. ¿Cómo se le llama?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fuente oficial"
+            },
+            {
+              "letter": "B",
+              "text": "Clickbait"
+            },
+            {
+              "letter": "C",
+              "text": "Tutorial"
+            },
+            {
+              "letter": "D",
+              "text": "Reseña"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Clickbait es contenido hecho para que des clic, no para informarte. Un tutorial sí muestra el procedimiento completo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Dos páginas dicen cosas distintas sobre cómo se craftea un objeto. ¿Qué haces?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Le crees a la que se vea más bonita"
+            },
+            {
+              "letter": "B",
+              "text": "Comparas con fuentes confiables"
+            },
+            {
+              "letter": "C",
+              "text": "Eliges la que salió primero en Google"
+            },
+            {
+              "letter": "D",
+              "text": "Le crees a la que tenga más anuncios"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cuando las fuentes no coinciden, se contrasta con fuentes confiables como el sitio oficial o una wiki con fuentes. El diseño o el orden no prueban nada.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué son Chrome y Google en tu búsqueda?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Chrome navegador, Google buscador"
+            },
+            {
+              "letter": "B",
+              "text": "Los dos son buscadores"
+            },
+            {
+              "letter": "C",
+              "text": "Chrome buscador, Google navegador"
+            },
+            {
+              "letter": "D",
+              "text": "Los dos son sistemas operativos"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Chrome es el programa donde abres páginas (navegador) y Google encuentra páginas por palabras (buscador). Se confunden porque son de la misma empresa.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una página ofrece descargar gratis un juego que cuesta $1,200 en la tienda oficial. ¿Cuál es el mayor riesgo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que el juego corra muy lento"
+            },
+            {
+              "letter": "B",
+              "text": "Que traiga virus o robe datos"
+            },
+            {
+              "letter": "C",
+              "text": "Que no traiga subtítulos en español"
+            },
+            {
+              "letter": "D",
+              "text": "Que solo se pueda jugar en inglés"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las descargas piratas de sitios desconocidos suelen esconder virus o robar datos. Además de ilegal, es la forma más común de infectar una computadora.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es internet?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una red mundial de computadoras"
+        },
+        {
+          "letter": "B",
+          "text": "Un programa para escribir textos"
+        },
+        {
+          "letter": "C",
+          "text": "Una sola página muy grande"
+        },
+        {
+          "letter": "D",
+          "text": "Una marca de computadoras"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en millones de equipos conectados entre sí.",
+      "explanation": "Internet es una red que conecta computadoras de todo el mundo. No es un programa ni una sola página."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un navegador web?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Google"
+        },
+        {
+          "letter": "B",
+          "text": "Firefox"
+        },
+        {
+          "letter": "C",
+          "text": "Wikipedia"
+        },
+        {
+          "letter": "D",
+          "text": "YouTube"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el programa que se instala para abrir páginas.",
+      "explanation": "Firefox es un navegador. Google es un buscador, y Wikipedia y YouTube son sitios web."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Para qué sirve un buscador como Google?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para encontrar páginas"
+        },
+        {
+          "letter": "B",
+          "text": "Para escribir documentos"
+        },
+        {
+          "letter": "C",
+          "text": "Para editar fotografías"
+        },
+        {
+          "letter": "D",
+          "text": "Para apagar la computadora"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Su nombre dice lo que hace.",
+      "explanation": "Un buscador encuentra páginas a partir de palabras clave. Escribir o editar fotos son tareas de otros programas."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama la dirección de una página web, como www.sep.gob.mx?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "URL"
+        },
+        {
+          "letter": "B",
+          "text": "PDF"
+        },
+        {
+          "letter": "C",
+          "text": "USB"
+        },
+        {
+          "letter": "D",
+          "text": "RAM"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Son tres letras que identifican cualquier dirección web.",
+      "explanation": "La URL es la dirección de una página. PDF es un formato, USB un puerto y RAM una memoria."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué dato hace más confiable una página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que diga quién la escribió"
+        },
+        {
+          "letter": "B",
+          "text": "Que tenga muchos colores"
+        },
+        {
+          "letter": "C",
+          "text": "Que esté llena de anuncios"
+        },
+        {
+          "letter": "D",
+          "text": "Que use letras en mayúsculas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Pregúntate quién responde por esa información.",
+      "explanation": "Saber quién la escribió permite revisar si es experto y responsable. Colores o anuncios no dicen nada de la calidad."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Para buscar una frase exacta en Google, la escribes…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Entre comillas"
+        },
+        {
+          "letter": "B",
+          "text": "En mayúsculas"
+        },
+        {
+          "letter": "C",
+          "text": "Con signos de ¡!"
+        },
+        {
+          "letter": "D",
+          "text": "Con muchos espacios"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el mismo signo que usas para citar lo que dijo alguien.",
+      "explanation": "Las comillas le piden al buscador la frase exacta. Las mayúsculas no cambian los resultados."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué terminación de dominio corresponde a sitios del gobierno de México?",
+      "options": [
+        {
+          "letter": "A",
+          "text": ".com.mx"
+        },
+        {
+          "letter": "B",
+          "text": ".gob.mx"
+        },
+        {
+          "letter": "C",
+          "text": ".net.mx"
+        },
+        {
+          "letter": "D",
+          "text": ".org.mx"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Contiene una abreviatura de gobierno y otra de México.",
+      "explanation": ".gob.mx es para dependencias del gobierno mexicano, como la SEP. .com suele ser comercial."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué son las palabras clave en una búsqueda?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Las ideas principales del tema"
+        },
+        {
+          "letter": "B",
+          "text": "Las contraseñas de tus cuentas"
+        },
+        {
+          "letter": "C",
+          "text": "Los nombres de los navegadores"
+        },
+        {
+          "letter": "D",
+          "text": "Las letras del teclado numérico"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Son las pocas palabras que resumen lo que buscas.",
+      "explanation": "Las palabras clave resumen el tema, por ejemplo 'ciclo del agua etapas'. No tienen que ver con contraseñas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Por qué es importante revisar la fecha de una página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para saber si está actualizada"
+        },
+        {
+          "letter": "B",
+          "text": "Para saber cuántos megas pesa"
+        },
+        {
+          "letter": "C",
+          "text": "Para cambiar el idioma de la página"
+        },
+        {
+          "letter": "D",
+          "text": "Para que cargue mucho más rápido"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Hay información que cambia con el tiempo.",
+      "explanation": "La fecha te dice si la información sigue vigente. Un dato viejo puede ya no ser cierto."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Una noticia falsa que se comparte como si fuera real se conoce como…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Fake news"
+        },
+        {
+          "letter": "B",
+          "text": "Fuente primaria"
+        },
+        {
+          "letter": "C",
+          "text": "Sitio oficial"
+        },
+        {
+          "letter": "D",
+          "text": "Palabra clave"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es un término en inglés que significa noticia falsa.",
+      "explanation": "Las fake news son noticias falsas que circulan como verdaderas, muchas veces para ganar vistas o engañar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es lo primero que conviene hacer ante una noticia que te sorprende mucho?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Verificar la fuente"
+        },
+        {
+          "letter": "B",
+          "text": "Compartirla rápido"
+        },
+        {
+          "letter": "C",
+          "text": "Dar like y seguir"
+        },
+        {
+          "letter": "D",
+          "text": "Creerla si es viral"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Antes de mover un dedo, pregúntate de dónde viene.",
+      "explanation": "Verificar antes de compartir evita difundir mentiras. Que sea viral no la hace cierta."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Buscas 'jaguar' y salen muchos coches. ¿Qué escribes para quitar esos resultados?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "jaguar -coche"
+        },
+        {
+          "letter": "B",
+          "text": "JAGUAR COCHE"
+        },
+        {
+          "letter": "C",
+          "text": "jaguar coche coche"
+        },
+        {
+          "letter": "D",
+          "text": "jaguar!!!"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Un signo antes de una palabra le dice al buscador que la quite.",
+      "explanation": "El guion antes de una palabra la excluye. Las mayúsculas o los signos de admiración no cambian nada."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué significa el candado junto a una dirección https?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que la conexión va cifrada"
+        },
+        {
+          "letter": "B",
+          "text": "Que todo lo que dice es cierto"
+        },
+        {
+          "letter": "C",
+          "text": "Que la página es del gobierno"
+        },
+        {
+          "letter": "D",
+          "text": "Que no tiene ningún anuncio"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Tiene que ver con cómo viajan tus datos, no con la verdad.",
+      "explanation": "El candado indica conexión cifrada. Una página falsa también puede tenerlo, así que no garantiza que sea confiable."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es la mejor forma de usar Wikipedia para una tarea?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Como punto de partida"
+        },
+        {
+          "letter": "B",
+          "text": "Copiar todo el artículo"
+        },
+        {
+          "letter": "C",
+          "text": "Nunca abrirla jamás"
+        },
+        {
+          "letter": "D",
+          "text": "Creerle sin revisar nada"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Al final de cada artículo hay una lista de algo muy útil.",
+      "explanation": "Sirve para orientarte y llegar a las referencias que cita al final. Copiarla completa es plagio."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué significa contrastar fuentes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Comparar varias fuentes"
+        },
+        {
+          "letter": "B",
+          "text": "Usar solo una página"
+        },
+        {
+          "letter": "C",
+          "text": "Cambiar el color del texto"
+        },
+        {
+          "letter": "D",
+          "text": "Borrar el historial"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Contrastar es poner una frente a otra.",
+      "explanation": "Contrastar es comparar varias fuentes para ver si coinciden. Si coinciden las confiables, el dato es más seguro."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál de estas fuentes es más confiable para un dato de salud?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un sitio .gob.mx de salud"
+        },
+        {
+          "letter": "B",
+          "text": "Un video de un influencer"
+        },
+        {
+          "letter": "C",
+          "text": "Un mensaje en cadena"
+        },
+        {
+          "letter": "D",
+          "text": "Un foro sin moderadores"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca a la institución responsable del tema.",
+      "explanation": "Las instituciones oficiales de salud responden por su información. Mensajes en cadena e influencers no siempre tienen bases."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué señal indica que una página podría ser falsa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tiene autor y fecha visibles"
+        },
+        {
+          "letter": "B",
+          "text": "Cita todas sus fuentes"
+        },
+        {
+          "letter": "C",
+          "text": "URL con letras raras"
+        },
+        {
+          "letter": "D",
+          "text": "Coincide con otras"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Tres opciones describen una buena fuente. Busca la que no.",
+      "explanation": "Una URL que imita a otra con letras raras es señal de engaño. Autor, fecha y fuentes son señales de confianza."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué es citar una fuente en un trabajo escolar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Decir de dónde sacaste la información"
+        },
+        {
+          "letter": "B",
+          "text": "Copiar el texto sin decir nada"
+        },
+        {
+          "letter": "C",
+          "text": "Cambiar algunas palabras del original"
+        },
+        {
+          "letter": "D",
+          "text": "Inventar un autor para que suene serio"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es reconocer el trabajo de otra persona.",
+      "explanation": "Citar es indicar autor, título y dirección de donde tomaste los datos. Copiar sin citar es plagio."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un mensaje dice: '¡Compártelo antes de que lo borren!'. ¿Qué debería hacerte pensar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que busca presionarte"
+        },
+        {
+          "letter": "B",
+          "text": "Que es información oficial"
+        },
+        {
+          "letter": "C",
+          "text": "Que ya fue verificado"
+        },
+        {
+          "letter": "D",
+          "text": "Que lo escribió un experto"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La urgencia es un truco para que no pienses.",
+      "explanation": "La urgencia es una técnica para que compartas sin verificar. Las fuentes serias no presionan así."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre un navegador y un buscador?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El navegador abre páginas; el buscador las halla"
+        },
+        {
+          "letter": "B",
+          "text": "Son exactamente lo mismo, solo cambia el nombre"
+        },
+        {
+          "letter": "C",
+          "text": "El buscador se instala y el navegador no se instala"
+        },
+        {
+          "letter": "D",
+          "text": "El navegador solo sirve para ver videos en línea"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Uno es el programa y el otro es un sitio dentro de él.",
+      "explanation": "El navegador (Chrome) es el programa que abre páginas; el buscador (Google) es un sitio que las encuentra."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una página sobre un medicamento no tiene autor, vende ese producto y promete curarlo todo. ¿Qué problema principal tiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tiene un interés en venderte"
+        },
+        {
+          "letter": "B",
+          "text": "Está en otro idioma distinto"
+        },
+        {
+          "letter": "C",
+          "text": "Tiene muy pocas imágenes"
+        },
+        {
+          "letter": "D",
+          "text": "Carga lento en el celular"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Pregúntate qué gana quien escribió la página.",
+      "explanation": "Si quien informa también vende, su propósito puede sesgar la información. Además, prometer curarlo todo es señal de alerta."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Encuentras la URL sep-gob-mx.info/becas. ¿Por qué deberías desconfiar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No termina en .gob.mx"
+        },
+        {
+          "letter": "B",
+          "text": "Tiene la palabra becas"
+        },
+        {
+          "letter": "C",
+          "text": "Usa letras minúsculas"
+        },
+        {
+          "letter": "D",
+          "text": "Es una página muy corta"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa con cuidado cómo termina el dominio.",
+      "explanation": "El sitio oficial termina en .gob.mx. Este imita el nombre pero su dominio es .info, típico de páginas falsas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Tres páginas dicen lo mismo, pero las tres copiaron el texto de un mismo blog sin fuentes. ¿Qué concluyes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que es seguro porque son tres"
+        },
+        {
+          "letter": "B",
+          "text": "Que sigue sin estar verificado"
+        },
+        {
+          "letter": "C",
+          "text": "Que el blog es una fuente oficial"
+        },
+        {
+          "letter": "D",
+          "text": "Que basta con que coincidan dos"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "¿Cuántas fuentes originales hay en realidad?",
+      "explanation": "Si todas copian del mismo origen, en realidad hay una sola fuente sin pruebas. Contrastar sirve con fuentes independientes."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Necesitas información para tarea sobre la erupción del Popocatépetl. ¿Qué búsqueda es mejor?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "volcanes de todo el mundo"
+        },
+        {
+          "letter": "B",
+          "text": "Popocatépetl erupciones"
+        },
+        {
+          "letter": "C",
+          "text": "cosas que pasan en México hoy"
+        },
+        {
+          "letter": "D",
+          "text": "tarea de geografía ya resuelta"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Las palabras clave deben ser específicas del tema.",
+      "explanation": "Palabras clave específicas dan resultados precisos. 'Volcán' es demasiado general y 'tarea resuelta' busca copiar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué es más importante para decidir si una fuente es confiable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que muestre sus pruebas"
+        },
+        {
+          "letter": "B",
+          "text": "Que tenga muchos seguidores"
+        },
+        {
+          "letter": "C",
+          "text": "Que salga primero en Google"
+        },
+        {
+          "letter": "D",
+          "text": "Que tenga un diseño bonito"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La popularidad y la verdad no son lo mismo.",
+      "explanation": "Una fuente confiable muestra de dónde salen sus datos. Seguidores, posición en Google o diseño no prueban nada."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un video muestra a un político diciendo algo escandaloso, pero su boca se mueve raro. ¿Qué podría ser?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un video manipulado"
+        },
+        {
+          "letter": "B",
+          "text": "Un reportaje oficial"
+        },
+        {
+          "letter": "C",
+          "text": "Una fuente primaria"
+        },
+        {
+          "letter": "D",
+          "text": "Un sitio .gob.mx"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Hoy se pueden alterar voces y caras con inteligencia artificial.",
+      "explanation": "Puede ser un deepfake: video alterado con IA. Hay que buscar el video original en fuentes confiables."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué el primer resultado de un buscador no siempre es el más confiable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Puede ser un anuncio pagado"
+        },
+        {
+          "letter": "B",
+          "text": "Siempre es una página falsa"
+        },
+        {
+          "letter": "C",
+          "text": "Nunca tiene información útil"
+        },
+        {
+          "letter": "D",
+          "text": "El buscador lo elige al azar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate si dice 'Patrocinado' arriba del enlace.",
+      "explanation": "Los primeros lugares pueden ser anuncios pagados o páginas populares, no necesariamente las más confiables."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Ana copia párrafos de tres páginas y los junta en su tarea sin citarlos. ¿Qué hizo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Plagio"
+        },
+        {
+          "letter": "B",
+          "text": "Una investigación"
+        },
+        {
+          "letter": "C",
+          "text": "Un resumen propio"
+        },
+        {
+          "letter": "D",
+          "text": "Contrastar fuentes"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Presentar el trabajo de otros como propio tiene un nombre.",
+      "explanation": "Usar textos ajenos sin decir de dónde vienen es plagio, aunque sean de varias páginas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un sitio de noticias tiene autor, fecha y fuentes, pero es de 2010 y habla de 'la tecnología más nueva'. ¿Qué haces?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Buscar una fuente más reciente"
+        },
+        {
+          "letter": "B",
+          "text": "Usarla tal cual en tu tarea"
+        },
+        {
+          "letter": "C",
+          "text": "Cambiarle la fecha al citarla"
+        },
+        {
+          "letter": "D",
+          "text": "Descartar internet por completo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Lo 'más nuevo' de 2010 probablemente ya no lo sea.",
+      "explanation": "Puede ser confiable pero estar desactualizada. Para temas que cambian rápido, conviene una fuente reciente."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál es la secuencia correcta para investigar en internet?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Buscar, evaluar, contrastar y citar"
+        },
+        {
+          "letter": "B",
+          "text": "Copiar, pegar, entregar y olvidarlo"
+        },
+        {
+          "letter": "C",
+          "text": "Citar, buscar, copiar y compartirlo"
+        },
+        {
+          "letter": "D",
+          "text": "Compartir, buscar, evaluar y citarlo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa qué tienes que hacer con una fuente antes de poder usarla.",
+      "explanation": "Primero buscas, luego evalúas cada fuente, contrastas varias y al final citas las que usaste."
+    }
+  ],
+  "diagnostic": {
+    "question": "Te llega una noticia sorprendente por WhatsApp sin autor ni fecha. ¿Qué es lo más adecuado antes de reenviarla?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Reenviarla si es muy viral"
+      },
+      {
+        "letter": "B",
+        "text": "Verificarla en fuentes serias"
+      },
+      {
+        "letter": "C",
+        "text": "Creerla si la manda un amigo"
+      },
+      {
+        "letter": "D",
+        "text": "Reenviarla con un 'no sé si sea cierto'"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "Sin autor ni fecha no sabes de dónde viene. Hay que compararla con fuentes confiables antes de compartirla, aunque la mande alguien de confianza."
+  }
+}

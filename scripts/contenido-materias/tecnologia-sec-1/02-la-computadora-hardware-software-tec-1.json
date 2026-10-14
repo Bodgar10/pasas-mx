@@ -1,0 +1,1832 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "la-computadora-hardware-software-tec-1",
+  "order_steps": {
+    "prompt": "Ordena el viaje de una letra desde el teclado",
+    "steps": [
+      "Presionas una tecla del teclado",
+      "La señal entra a la computadora por el cable o el Bluetooth",
+      "El procesador interpreta qué tecla fue",
+      "La letra aparece en el monitor"
+    ],
+    "completion_feedback": "La información siempre viaja igual: **entrada**, **proceso** y **salida**. Los periféricos están en los extremos y el procesador en medio. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Dibujando tu fanart de Jujutsu Kaisen en digital",
+        "content": "Quieres dibujar a Gojo con su venda y los ojos azules brillando, como hacen muchos mangakas hoy: en digital. Conectas una tableta gráfica a la computadora y abres Clip Studio Paint, el programa que usan muchos dibujantes de manga. Cada trazo que haces con la pluma de la tableta entra a la computadora. La computadora recibe esos movimientos, calcula la línea, el grosor y el color, y en el monitor ves aparecer el dibujo al instante. Cuando terminas, lo guardas en el disco para no perderlo y lo mandas a la impresora para tener una copia en papel. Fíjate en las dos cosas que necesitaste. Por un lado, objetos que puedes tocar: la tableta, la pluma, la computadora, el monitor y la impresora. Por otro, cosas que no se tocan: Windows, que hace que la computadora arranque, y Clip Studio Paint, que te deja dibujar. Las piezas que tocas y los programas que les dicen qué hacer son la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu estudio de dibujo digital ES una computadora completa",
+        "content": "Lo que acabas de ver dibujando a Gojo es exactamente cómo funciona una computadora. El **hardware** es todo lo **físico**: la tableta, el monitor, la impresora y las piezas de adentro, como el **procesador**, que hace los cálculos, y la **memoria RAM**, que guarda lo que estás usando en ese momento. El **software** es lo **lógico**: el **sistema operativo** (Windows) y las **aplicaciones** (Clip Studio Paint). Los **periféricos** son los aparatos conectados: de **entrada** (la tableta mete datos), de **salida** (el monitor y la impresora muestran resultados) y de **almacenamiento** (el disco donde guardas)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el video de tu opening favorito",
+        "content": "Vas a grabarte cantando el opening de Naruto para subirlo. Clasifica cada cosa que usas.\n\n**Paso 1:** El micrófono capta tu voz y la mete a la computadora → **periférico de entrada**.\n**Paso 2:** La webcam graba tu cara → **periférico de entrada**.\n**Paso 3:** El programa de edición donde cortas el video → **software (aplicación)**.\n**Paso 4:** Los audífonos por donde escuchas la pista → **periférico de salida**.\n**Paso 5:** La memoria USB donde guardas el video final → **almacenamiento**.\n\nPregunta clave: ¿la información entra, sale o se guarda?"
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Hardware** = parte física (procesador, RAM, monitor). **Software** = programas: **sistema operativo** y **aplicaciones**. Los **periféricos** pueden ser de **entrada** (teclado, mouse, micrófono), de **salida** (monitor, bocinas, impresora) o **mixtos** (pantalla táctil). La información sigue el camino **entrada → proceso → salida**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Para clasificar un periférico pregúntate hacia dónde va la información. Si va de ti a la compu, como el trazo de la pluma, es entrada. Si va de la compu a ti, como el dibujo en el monitor, es salida."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El trazo entra por la tableta, el procesador lo calcula, sale por el monitor y se guarda en el disco.",
+        "data": {
+          "intro": "Sigue el viaje de un solo trazo del cabello de Gojo, desde la pluma hasta el archivo guardado.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Entrada: deslizas la pluma sobre la tableta gráfica y el movimiento entra a la computadora."
+            },
+            {
+              "text": "Proceso: el procesador, con ayuda de la RAM y de Clip Studio Paint, calcula la forma, el grosor y el color de la línea."
+            },
+            {
+              "text": "Salida: el monitor te muestra la línea blanca del cabello en una fracción de segundo."
+            },
+            {
+              "text": "Almacenamiento: guardas el archivo en el disco y ahí queda aunque apagues la computadora."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica tu estudio de dibujo",
+        "content": "Entrada: meten información (tableta, micrófono, escáner). Salida: la muestran (monitor, impresora, bocinas).",
+        "data": {
+          "prompt": "Arrastra cada aparato de tu estudio de dibujo a su tipo de periférico.",
+          "buckets": [
+            "Entrada (mete datos)",
+            "Salida (muestra datos)"
+          ],
+          "items": [
+            {
+              "t": "Tableta gráfica",
+              "b": 0
+            },
+            {
+              "t": "Monitor",
+              "b": 1
+            },
+            {
+              "t": "Escáner para bocetos en papel",
+              "b": 0
+            },
+            {
+              "t": "Impresora",
+              "b": 1
+            },
+            {
+              "t": "Micrófono",
+              "b": 0
+            },
+            {
+              "t": "Bocinas",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada pieza o programa con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Windows",
+              "b": "Sistema operativo"
+            },
+            {
+              "a": "Clip Studio Paint",
+              "b": "Aplicación"
+            },
+            {
+              "a": "Procesador",
+              "b": "Hace los cálculos"
+            },
+            {
+              "a": "Memoria RAM",
+              "b": "Memoria temporal"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu estudio?",
+        "left_label": "Fanart de Gojo",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La pluma de la tableta",
+            "right": "Periférico de entrada"
+          },
+          {
+            "left": "El monitor y la impresora",
+            "right": "Periférico de salida"
+          },
+          {
+            "left": "Clip Studio Paint",
+            "right": "Software"
+          },
+          {
+            "left": "La computadora por dentro",
+            "right": "Hardware"
+          }
+        ],
+        "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y los aparatos conectados son **periféricos**. Ahora ponle nombre formal a cada parte."
+      },
+      "quiz": [
+        {
+          "question": "Al dibujar fanart en digital, ¿qué es Clip Studio Paint?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un periférico de entrada"
+            },
+            {
+              "letter": "B",
+              "text": "Hardware de dibujo"
+            },
+            {
+              "letter": "C",
+              "text": "Una aplicación"
+            },
+            {
+              "letter": "D",
+              "text": "Un procesador gráfico"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Es un programa que se instala para dibujar, así que es software de aplicación. El hardware y los periféricos son cosas físicas que puedes tocar.",
+          "difficulty": 1
+        },
+        {
+          "question": "Escaneas un boceto de Luffy hecho a lápiz para colorearlo en la computadora. ¿Qué tipo de periférico es el escáner?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De salida"
+            },
+            {
+              "letter": "B",
+              "text": "De entrada"
+            },
+            {
+              "letter": "C",
+              "text": "De proceso"
+            },
+            {
+              "letter": "D",
+              "text": "Un programa"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El escáner mete la imagen del papel a la computadora, así que es de entrada. Se confunde con la impresora, que hace lo contrario: saca la imagen al papel.",
+          "difficulty": 2
+        },
+        {
+          "question": "Dibujas con muchas capas y el programa se vuelve lento, pero el disco tiene espacio de sobra. ¿Qué pieza conviene revisar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La memoria RAM"
+            },
+            {
+              "letter": "B",
+              "text": "La impresora láser"
+            },
+            {
+              "letter": "C",
+              "text": "El monitor grande"
+            },
+            {
+              "letter": "D",
+              "text": "La pluma digital"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La RAM guarda lo que estás usando en ese momento, como las capas abiertas. Si se llena, todo va lento aunque el disco, que guarda a largo plazo, tenga espacio.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál de estos es el sistema operativo de tu computadora de dibujo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Clip Studio Paint"
+            },
+            {
+              "letter": "B",
+              "text": "Windows"
+            },
+            {
+              "letter": "C",
+              "text": "El monitor"
+            },
+            {
+              "letter": "D",
+              "text": "La tableta gráfica"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Windows es el programa base que hace funcionar toda la computadora. Clip Studio Paint es una aplicación que corre encima de él, y monitor y tableta son hardware.",
+          "difficulty": 2
+        },
+        {
+          "question": "Algunas tabletas para mangakas tienen pantalla: dibujas directo sobre la imagen. ¿Cómo se clasifica ese periférico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo de entrada, por la pluma"
+            },
+            {
+              "letter": "B",
+              "text": "Solo de salida, por la pantalla"
+            },
+            {
+              "letter": "C",
+              "text": "De entrada y salida"
+            },
+            {
+              "letter": "D",
+              "text": "Software de dibujo digital"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Recibe tus trazos (entrada) y a la vez te muestra la imagen (salida), así que es mixto. Elegir solo uno ignora que hace las dos cosas.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "Dentro del cuarto del VAR",
+        "content": "Es la final de la Liga MX y hay una jugada dudosa en el área. El árbitro se lleva la mano al oído: lo están llamando del VAR. Lejos de la cancha, en un cuarto lleno de pantallas, un equipo revisa la jugada. Todo empieza en las cámaras del estadio, que graban desde muchos ángulos y mandan las imágenes a unas computadoras muy potentes. Esas computadoras reciben el video, lo procesan y, con un programa especial, trazan la línea del fuera de lugar. El resultado aparece en los monitores del cuarto y en la pantalla que está junto a la cancha, donde el árbitro va a revisar. Mientras tanto, el árbitro habla con el VAR por un micrófono y escucha por un audífono. Y todas las jugadas quedan grabadas por si hay que verlas otra vez. Fíjate: hay cosas que puedes tocar, como cámaras, computadoras, monitores y audífonos, y cosas que no, como el programa que traza la línea. Esa diferencia es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El VAR ES un sistema de cómputo completo",
+        "content": "Lo que acabas de ver en el cuarto del VAR es exactamente cómo funciona una computadora. El **hardware** es lo **físico**: las cámaras, los monitores y las piezas de adentro, como el **procesador**, que hace los cálculos, y la **memoria RAM**, que guarda lo que se está usando. El **software** es lo **lógico**: el **sistema operativo** y las **aplicaciones**, como el programa que traza la línea. Los **periféricos** son de **entrada** (las cámaras meten video), de **salida** (los monitores lo muestran), **mixtos** (el audífono con micrófono) y de **almacenamiento** (donde se graban las jugadas)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la transmisión del partido en tu casa",
+        "content": "Ves el Clásico Nacional en una pantalla inteligente. Clasifica cada cosa.\n\n**Paso 1:** El control remoto con el que subes el volumen → **periférico de entrada**.\n**Paso 2:** La pantalla donde ves el partido → **periférico de salida**.\n**Paso 3:** La barra de sonido por donde oyes al narrador → **periférico de salida**.\n**Paso 4:** La app de streaming que transmite el partido → **software (aplicación)**.\n**Paso 5:** El sistema que arranca la pantalla y abre las apps → **sistema operativo**.\n\nPregunta clave: ¿se toca o es un programa? Y si se toca, ¿mete o saca información?"
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Hardware** = parte física (procesador, RAM, monitor). **Software** = programas: **sistema operativo** y **aplicaciones**. Los **periféricos** pueden ser de **entrada** (teclado, mouse, cámara), de **salida** (monitor, bocinas, impresora) o **mixtos** (pantalla táctil). La información sigue el camino **entrada → proceso → salida**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el VAR: la cámara mete la jugada (entrada), la computadora la analiza (proceso) y el monitor la muestra (salida). Si un aparato hace dos cosas, como el audífono con micrófono, es mixto."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La jugada entra por las cámaras, se procesa, sale por los monitores y se guarda.",
+        "data": {
+          "intro": "Sigue el viaje de una jugada polémica desde que pasa en la cancha hasta que el árbitro la revisa.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Entrada: las cámaras del estadio graban el pase desde varios ángulos y mandan el video a las computadoras."
+            },
+            {
+              "text": "Proceso: el procesador ejecuta el programa del VAR, que congela el cuadro exacto y traza la línea del fuera de lugar."
+            },
+            {
+              "text": "Salida: la imagen con la línea aparece en los monitores del cuarto y en la pantalla junto a la cancha."
+            },
+            {
+              "text": "Almacenamiento: la jugada queda grabada en los discos para revisarla otra vez cuando haga falta."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica el equipo del estadio",
+        "content": "Entrada: meten información (cámaras, micrófono). Salida: la muestran (monitor, bocinas). Mixtos: hacen las dos cosas.",
+        "data": {
+          "prompt": "Arrastra cada aparato del estadio a su tipo de periférico.",
+          "buckets": [
+            "Entrada",
+            "Salida",
+            "Entrada y salida"
+          ],
+          "items": [
+            {
+              "t": "Cámara de la tribuna",
+              "b": 0
+            },
+            {
+              "t": "Pantalla gigante del estadio",
+              "b": 1
+            },
+            {
+              "t": "Diadema con micrófono del árbitro",
+              "b": 2
+            },
+            {
+              "t": "Bocinas del sonido local",
+              "b": 1
+            },
+            {
+              "t": "Micrófono del narrador",
+              "b": 0
+            },
+            {
+              "t": "Tableta táctil del analista",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada pieza o programa del VAR con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Programa de la línea",
+              "b": "Aplicación"
+            },
+            {
+              "a": "Cámara del estadio",
+              "b": "Periférico de entrada"
+            },
+            {
+              "a": "Procesador",
+              "b": "Hace los cálculos"
+            },
+            {
+              "a": "Disco de grabaciones",
+              "b": "Almacenamiento"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa del VAR?",
+        "left_label": "Cuarto del VAR",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Las cámaras del estadio",
+            "right": "Periférico de entrada"
+          },
+          {
+            "left": "Los monitores del cuarto",
+            "right": "Periférico de salida"
+          },
+          {
+            "left": "El programa que traza la línea",
+            "right": "Software"
+          },
+          {
+            "left": "Las computadoras del VAR",
+            "right": "Hardware"
+          }
+        ],
+        "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y los aparatos conectados son **periféricos**. Ahora ponle nombre formal a cada parte."
+      },
+      "quiz": [
+        {
+          "question": "En el VAR, el programa que traza la línea del fuera de lugar es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Hardware"
+            },
+            {
+              "letter": "B",
+              "text": "Software"
+            },
+            {
+              "letter": "C",
+              "text": "Un periférico"
+            },
+            {
+              "letter": "D",
+              "text": "Una cámara"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un programa no se puede tocar: es software. Las cámaras y los monitores sí son físicos, por eso son hardware.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué tipo de periférico es la pantalla gigante del estadio que repite los goles?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De entrada"
+            },
+            {
+              "letter": "B",
+              "text": "Mixto"
+            },
+            {
+              "letter": "C",
+              "text": "De salida"
+            },
+            {
+              "letter": "D",
+              "text": "De software"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Solo muestra información al público, así que es de salida. No recibe datos de las personas, por eso no es de entrada ni mixta.",
+          "difficulty": 2
+        },
+        {
+          "question": "El árbitro usa una diadema para escuchar al VAR y hablarle. ¿Cómo se clasifica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo de entrada, por el micrófono"
+            },
+            {
+              "letter": "B",
+              "text": "De entrada y salida"
+            },
+            {
+              "letter": "C",
+              "text": "Solo de salida, por el audífono"
+            },
+            {
+              "letter": "D",
+              "text": "Sistema operativo del VAR"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El micrófono mete su voz (entrada) y el audífono le saca la voz del VAR (salida). Como hace las dos cosas, es un periférico mixto.",
+          "difficulty": 3
+        },
+        {
+          "question": "Viendo el partido en la pantalla inteligente, ¿qué es la app de streaming?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una aplicación"
+            },
+            {
+              "letter": "B",
+              "text": "El control remoto"
+            },
+            {
+              "letter": "C",
+              "text": "Una pieza física"
+            },
+            {
+              "letter": "D",
+              "text": "Un periférico"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La app es un programa que corre sobre el sistema operativo de la pantalla: software de aplicación. El control remoto sí es físico.",
+          "difficulty": 2
+        },
+        {
+          "question": "Las jugadas del partido siguen disponibles una semana después, aunque apagaron todo. ¿Dónde estaban guardadas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En la memoria RAM del equipo"
+            },
+            {
+              "letter": "B",
+              "text": "En el procesador central"
+            },
+            {
+              "letter": "C",
+              "text": "En el almacenamiento"
+            },
+            {
+              "letter": "D",
+              "text": "En la pantalla del cuarto"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El almacenamiento, como un disco, guarda la información aunque se apague el equipo. La RAM es temporal: lo que tiene se borra al apagar.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Jungkook prende un live en Weverse",
+        "content": "Es medianoche en Seúl y Jungkook, de BTS, decide prender un live en Weverse para platicar con ARMY. Pone el celular frente a él. La cámara capta su cara y el micrófono su voz, y todo eso entra al celular. Adentro, el procesador del teléfono comprime el video y el audio para mandarlo por internet a millones de fans al mismo tiempo. En la pantalla, él va leyendo los comentarios que llegan en coreano, inglés y español, y por la bocina escucha la canción que pone de fondo. Cuando termina, el video queda guardado para quien no alcanzó a verlo en vivo. Fíjate en lo que necesitó. Por un lado, cosas que puedes tocar: el celular, su cámara, su micrófono, su pantalla y su bocina. Por otro, cosas que no se tocan: el sistema del teléfono, que lo hace encender y abrir apps, y la app de Weverse, que hace posible el live. Las piezas que tocas y los programas que no son la lección de hoy."
+      },
+      "explanation": {
+        "title": "El live de Jungkook ES una computadora en acción",
+        "content": "Lo que acabas de ver en el live de Weverse es exactamente cómo funciona una computadora, porque un celular es una. El **hardware** es lo **físico**: la cámara, la pantalla y las piezas de adentro, como el **procesador**, que hace los cálculos, y la **memoria RAM**, que guarda lo que se usa en ese momento. El **software** es lo **lógico**: el **sistema operativo** (iOS o Android) y las **aplicaciones** (Weverse). Los dispositivos para meter o sacar información son de **entrada** (cámara, micrófono), de **salida** (bocina) o **mixtos** (la pantalla táctil)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu video de reacción al nuevo MV",
+        "content": "Vas a grabar tu reacción al nuevo MV de Stray Kids en tu laptop. Clasifica cada cosa.\n\n**Paso 1:** La webcam que graba tu cara → **periférico de entrada**.\n**Paso 2:** El micrófono de diadema que capta tus gritos → **periférico de entrada**.\n**Paso 3:** Los audífonos donde oyes la canción → **periférico de salida**.\n**Paso 4:** CapCut, donde editas el video → **software (aplicación)**.\n**Paso 5:** El disco donde queda guardado el video → **almacenamiento**.\n\nPregunta clave: ¿la información entra, sale o se guarda?"
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Hardware** = parte física (procesador, RAM, pantalla). **Software** = programas: **sistema operativo** y **aplicaciones**. Los **periféricos** pueden ser de **entrada** (cámara, micrófono, teclado), de **salida** (bocinas, monitor, impresora) o **mixtos** (pantalla táctil). La información sigue el camino **entrada → proceso → salida**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "No confundas sistema operativo con app: iOS o Android son el jefe que hace funcionar todo el celular; Weverse, Spotify o CapCut solo corren encima. Si lo descargas de la tienda, es aplicación."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La imagen entra por la cámara, el procesador la prepara, sale por la pantalla de los fans y se guarda.",
+        "data": {
+          "intro": "Sigue el viaje de un saludo de Jungkook en su live, desde su celular hasta el tuyo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Entrada: la cámara y el micrófono del celular captan su cara y su voz diciendo hola."
+            },
+            {
+              "text": "Proceso: el procesador comprime el video y el audio y la app de Weverse lo manda por internet."
+            },
+            {
+              "text": "Salida: el saludo aparece en tu pantalla y lo escuchas por tus audífonos."
+            },
+            {
+              "text": "Almacenamiento: el live queda guardado en los servidores para verlo después."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica el equipo del live",
+        "content": "Entrada: meten información (cámara, micrófono). Salida: la muestran (bocina, audífonos). Mixtos: hacen las dos cosas (pantalla táctil).",
+        "data": {
+          "prompt": "Arrastra cada parte del celular y sus accesorios a su tipo de periférico.",
+          "buckets": [
+            "Entrada",
+            "Salida",
+            "Entrada y salida"
+          ],
+          "items": [
+            {
+              "t": "Cámara frontal",
+              "b": 0
+            },
+            {
+              "t": "Bocina del celular",
+              "b": 1
+            },
+            {
+              "t": "Pantalla táctil",
+              "b": 2
+            },
+            {
+              "t": "Micrófono",
+              "b": 0
+            },
+            {
+              "t": "Audífonos",
+              "b": 1
+            },
+            {
+              "t": "Audífonos con micrófono",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada pieza o programa con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "iOS o Android",
+              "b": "Sistema operativo"
+            },
+            {
+              "a": "Weverse",
+              "b": "Aplicación"
+            },
+            {
+              "a": "Cámara frontal",
+              "b": "Periférico de entrada"
+            },
+            {
+              "a": "Memoria RAM",
+              "b": "Memoria temporal"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa del live?",
+        "left_label": "Live en Weverse",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La cámara y el micrófono",
+            "right": "Periférico de entrada"
+          },
+          {
+            "left": "La bocina del celular",
+            "right": "Periférico de salida"
+          },
+          {
+            "left": "La app de Weverse",
+            "right": "Software"
+          },
+          {
+            "left": "El celular por dentro",
+            "right": "Hardware"
+          }
+        ],
+        "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y lo que mete o saca información son **periféricos**. Ahora ponle nombre formal a cada parte."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué es la app de Weverse en el celular de Jungkook?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Hardware"
+            },
+            {
+              "letter": "B",
+              "text": "Un periférico"
+            },
+            {
+              "letter": "C",
+              "text": "Un procesador"
+            },
+            {
+              "letter": "D",
+              "text": "Software"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Weverse es un programa que se descarga y se instala: software. La cámara y la pantalla sí son físicas, por eso son hardware.",
+          "difficulty": 1
+        },
+        {
+          "question": "Para tu video de reacción, los audífonos donde oyes la canción son un periférico…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De salida"
+            },
+            {
+              "letter": "B",
+              "text": "De entrada"
+            },
+            {
+              "letter": "C",
+              "text": "De proceso"
+            },
+            {
+              "letter": "D",
+              "text": "De software"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El sonido sale de la computadora hacia ti, así que son de salida. Serían mixtos solo si también tuvieran micrófono.",
+          "difficulty": 2
+        },
+        {
+          "question": "La pantalla del celular te muestra el live y también recibe tus toques para mandar corazones. ¿Qué tipo de periférico es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo de salida, por la imagen"
+            },
+            {
+              "letter": "B",
+              "text": "Solo de entrada, por los toques"
+            },
+            {
+              "letter": "C",
+              "text": "De entrada y salida"
+            },
+            {
+              "letter": "D",
+              "text": "El sistema operativo del celular"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Muestra imagen (salida) y recibe tus toques (entrada), así que es mixta. Quedarse solo con una función olvida la otra mitad.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál de estos es el sistema operativo de un iPhone?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Weverse"
+            },
+            {
+              "letter": "B",
+              "text": "iOS"
+            },
+            {
+              "letter": "C",
+              "text": "Spotify"
+            },
+            {
+              "letter": "D",
+              "text": "La pantalla"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "iOS es el programa base que hace funcionar el iPhone y deja correr las demás apps. Weverse y Spotify son aplicaciones, y la pantalla es hardware.",
+          "difficulty": 2
+        },
+        {
+          "question": "Con muchas apps abiertas el celular se traba, aunque te sobra espacio para fotos. ¿Qué parte se está quedando corta?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La cámara frontal"
+            },
+            {
+              "letter": "B",
+              "text": "La bocina de abajo"
+            },
+            {
+              "letter": "C",
+              "text": "La memoria RAM"
+            },
+            {
+              "letter": "D",
+              "text": "La pantalla táctil"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La RAM guarda lo que está abierto en ese momento. Si se llena, todo se traba aunque el almacenamiento, donde van las fotos, tenga espacio libre.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Una carrera de Mario Kart en tu Switch",
+        "content": "Te toca la Copa Especial en Mario Kart 8 y vas en el Rainbow Road. Presionas el botón A para acelerar y mueves el stick para tomar la curva. Esa orden sale del control y entra a la consola. Adentro, el procesador de la Switch hace miles de cálculos por segundo: dónde va tu kart, a qué velocidad, si te pega un caparazón azul. El resultado aparece en la pantalla, suena la música por las bocinas y el control vibra cuando chocas. Al terminar, tu récord se guarda en la memoria de la consola para la próxima vez. Ahora fíjate en lo que necesitaste. Por un lado, cosas que puedes tocar: la consola, los controles, la pantalla y las bocinas. Por otro, cosas que no se tocan: el sistema de la Switch, que la enciende y muestra el menú, y el juego de Mario Kart, que es un programa. Las piezas que tocas y los programas que les dicen qué hacer son justo la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu consola ES una computadora",
+        "content": "Lo que acabas de ver en Mario Kart es exactamente cómo funciona una computadora, porque una consola es una. El **hardware** es lo **físico**: los controles, la pantalla y las piezas de adentro, como el **procesador**, que hace los cálculos, y la **memoria RAM**, que guarda lo que se usa durante la partida. El **software** es lo **lógico**: el **sistema operativo** de la consola y las **aplicaciones**, como el juego. Los **periféricos** pueden ser de **entrada** (el control mete tus órdenes), de **salida** (la pantalla y las bocinas) o **mixtos**, y la información viaja **entrada → proceso → salida**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu setup para jugar Fortnite en PC",
+        "content": "Armas tu setup para jugar Fortnite con tus amigos. Clasifica cada cosa.\n\n**Paso 1:** El teclado y el mouse con los que te mueves y disparas → **periféricos de entrada**.\n**Paso 2:** El monitor donde ves la partida → **periférico de salida**.\n**Paso 3:** La diadema con micrófono para hablar con tu escuadra → **periférico mixto**.\n**Paso 4:** Fortnite → **software (aplicación)**.\n**Paso 5:** Windows, que arranca la PC y abre el juego → **sistema operativo**.\n\nPregunta clave: ¿se toca o es un programa? Y si se toca, ¿mete o saca información?"
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Hardware** = parte física (procesador, RAM, control, pantalla). **Software** = programas: **sistema operativo** y **aplicaciones** (como los juegos). Los **periféricos** pueden ser de **entrada** (teclado, mouse, control), de **salida** (monitor, bocinas) o **mixtos** (diadema con micrófono). La información sigue el camino **entrada → proceso → salida**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Un juego siempre es software, aunque venga en un cartucho físico: el cartucho es solo donde se guarda. Lo que se toca es hardware; las instrucciones que trae adentro son el programa."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Tu orden entra por el control, el procesador la calcula, sale por la pantalla y se guarda.",
+        "data": {
+          "intro": "Sigue el viaje de una sola orden en Mario Kart: lanzar un caparazón rojo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Entrada: presionas el botón del control y la orden entra a la consola."
+            },
+            {
+              "text": "Proceso: el procesador calcula hacia dónde va el caparazón y a quién le pega."
+            },
+            {
+              "text": "Salida: en la pantalla ves cómo choca con Bowser, oyes el golpe por las bocinas y sientes la vibración del control."
+            },
+            {
+              "text": "Almacenamiento: al final de la copa, tu récord se guarda en la memoria de la consola."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica tu setup gamer",
+        "content": "Entrada: meten tus órdenes (teclado, mouse, control). Salida: te muestran el juego (monitor, bocinas). Mixtos: hacen las dos cosas.",
+        "data": {
+          "prompt": "Arrastra cada parte de tu setup a su tipo de periférico.",
+          "buckets": [
+            "Entrada",
+            "Salida",
+            "Entrada y salida"
+          ],
+          "items": [
+            {
+              "t": "Mouse gamer",
+              "b": 0
+            },
+            {
+              "t": "Monitor",
+              "b": 1
+            },
+            {
+              "t": "Diadema con micrófono",
+              "b": 2
+            },
+            {
+              "t": "Teclado mecánico",
+              "b": 0
+            },
+            {
+              "t": "Bocinas",
+              "b": 1
+            },
+            {
+              "t": "Pantalla táctil de la Switch",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada pieza o programa gamer con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Mario Kart 8",
+              "b": "Aplicación"
+            },
+            {
+              "a": "Menú de la Switch",
+              "b": "Sistema operativo"
+            },
+            {
+              "a": "Procesador",
+              "b": "Hace los cálculos"
+            },
+            {
+              "a": "Control",
+              "b": "Periférico de entrada"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu partida?",
+        "left_label": "Mario Kart",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El control con el botón A",
+            "right": "Periférico de entrada"
+          },
+          {
+            "left": "La pantalla y las bocinas",
+            "right": "Periférico de salida"
+          },
+          {
+            "left": "El juego de Mario Kart",
+            "right": "Software"
+          },
+          {
+            "left": "La consola por dentro",
+            "right": "Hardware"
+          }
+        ],
+        "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y lo que mete o saca información son **periféricos**. Ahora ponle nombre formal a cada parte."
+      },
+      "quiz": [
+        {
+          "question": "El juego de Mario Kart 8 es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Software"
+            },
+            {
+              "letter": "B",
+              "text": "Hardware"
+            },
+            {
+              "letter": "C",
+              "text": "Un periférico"
+            },
+            {
+              "letter": "D",
+              "text": "Un procesador"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un juego es un programa: software. Aunque venga en cartucho, el cartucho solo lo guarda; las instrucciones que trae no se pueden tocar.",
+          "difficulty": 1
+        },
+        {
+          "question": "En tu setup de Fortnite, ¿qué tipo de periférico es el mouse?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De salida"
+            },
+            {
+              "letter": "B",
+              "text": "Mixto"
+            },
+            {
+              "letter": "C",
+              "text": "De almacenamiento"
+            },
+            {
+              "letter": "D",
+              "text": "De entrada"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El mouse mete tus movimientos y clics a la computadora: entrada. No muestra nada, así que no es de salida ni mixto.",
+          "difficulty": 2
+        },
+        {
+          "question": "El control de la Switch recibe tus botones y además vibra cuando chocas. ¿Cómo se clasifica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo de entrada"
+            },
+            {
+              "letter": "B",
+              "text": "Entrada y salida"
+            },
+            {
+              "letter": "C",
+              "text": "Solo de salida"
+            },
+            {
+              "letter": "D",
+              "text": "Sistema operativo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los botones meten tus órdenes (entrada) y la vibración te regresa información (salida). Por eso, con vibración, el control funciona como mixto.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué hace el sistema operativo de la consola?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Dibuja los karts y las pistas del juego"
+            },
+            {
+              "letter": "B",
+              "text": "Hace funcionar la consola y abre juegos"
+            },
+            {
+              "letter": "C",
+              "text": "Guarda la energía de la batería interna"
+            },
+            {
+              "letter": "D",
+              "text": "Convierte el sonido del juego en vibración"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El sistema operativo es el programa base: enciende la consola, muestra el menú y abre los juegos. Dibujar los karts le toca al juego, que es una aplicación.",
+          "difficulty": 2
+        },
+        {
+          "question": "Apagas la consola a media carrera y al prenderla la partida desapareció, pero tus récords guardados siguen ahí. ¿Por qué?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La partida estaba en la RAM"
+            },
+            {
+              "letter": "B",
+              "text": "El récord estaba en la RAM"
+            },
+            {
+              "letter": "C",
+              "text": "El juego borra los récords"
+            },
+            {
+              "letter": "D",
+              "text": "La pantalla guarda los datos"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La partida en curso vive en la RAM, que se borra al apagar. Los récords se guardaron en el almacenamiento, que conserva la información sin energía.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama la parte física de una computadora, la que se puede tocar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hardware"
+        },
+        {
+          "letter": "B",
+          "text": "Software"
+        },
+        {
+          "letter": "C",
+          "text": "Internet"
+        },
+        {
+          "letter": "D",
+          "text": "Sistema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una de estas palabras viene de 'hard', algo duro y sólido.",
+      "explanation": "El hardware es lo físico, como el monitor o el teclado. El software son los programas, que no se tocan."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es software?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El teclado inalámbrico"
+        },
+        {
+          "letter": "B",
+          "text": "El navegador web"
+        },
+        {
+          "letter": "C",
+          "text": "La impresora láser"
+        },
+        {
+          "letter": "D",
+          "text": "El monitor curvo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el único que no puedes tocar con la mano.",
+      "explanation": "El navegador es un programa, así que es software. Teclado, impresora y monitor son hardware."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "El teclado es un periférico de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Salida"
+        },
+        {
+          "letter": "B",
+          "text": "Proceso"
+        },
+        {
+          "letter": "C",
+          "text": "Entrada"
+        },
+        {
+          "letter": "D",
+          "text": "Energía"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Pregúntate si la información va de ti a la computadora o al revés.",
+      "explanation": "Con el teclado metes letras y órdenes a la computadora: es de entrada. Un monitor sería de salida."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un periférico de salida?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El micrófono"
+        },
+        {
+          "letter": "B",
+          "text": "El escáner"
+        },
+        {
+          "letter": "C",
+          "text": "El mouse"
+        },
+        {
+          "letter": "D",
+          "text": "Las bocinas"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Busca el que te entrega información a ti.",
+      "explanation": "Las bocinas sacan sonido de la computadora: salida. Micrófono, escáner y mouse meten información."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué pieza de la computadora hace los cálculos y ejecuta las instrucciones?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El monitor plano"
+        },
+        {
+          "letter": "B",
+          "text": "El procesador"
+        },
+        {
+          "letter": "C",
+          "text": "La bocina externa"
+        },
+        {
+          "letter": "D",
+          "text": "El ratón óptico"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "También le dicen CPU o el cerebro de la computadora.",
+      "explanation": "El procesador (CPU) hace los cálculos. El monitor y la bocina solo muestran resultados."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál es un sistema operativo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Word"
+        },
+        {
+          "letter": "B",
+          "text": "Android"
+        },
+        {
+          "letter": "C",
+          "text": "WhatsApp"
+        },
+        {
+          "letter": "D",
+          "text": "Chrome"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el programa que hace funcionar todo el aparato, no una app.",
+      "explanation": "Android es el sistema operativo de muchos celulares. Word, WhatsApp y Chrome son aplicaciones que corren sobre un sistema."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Los programas que usas para una tarea concreta, como escribir o editar fotos, son…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Aplicaciones"
+        },
+        {
+          "letter": "B",
+          "text": "Periféricos"
+        },
+        {
+          "letter": "C",
+          "text": "Procesadores"
+        },
+        {
+          "letter": "D",
+          "text": "Sistemas de energía"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que descargas de una tienda de apps.",
+      "explanation": "Las aplicaciones sirven para tareas específicas. El sistema operativo, en cambio, hace funcionar todo el equipo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "La impresora es un periférico de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Entrada"
+        },
+        {
+          "letter": "B",
+          "text": "Proceso"
+        },
+        {
+          "letter": "C",
+          "text": "Salida"
+        },
+        {
+          "letter": "D",
+          "text": "Software"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "¿Saca algo de la computadora o mete algo?",
+      "explanation": "La impresora saca documentos de la computadora al papel: salida. El escáner hace lo contrario."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué periférico de entrada sirve para pasar una foto en papel a la computadora?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La impresora"
+        },
+        {
+          "letter": "B",
+          "text": "El escáner"
+        },
+        {
+          "letter": "C",
+          "text": "La bocina"
+        },
+        {
+          "letter": "D",
+          "text": "El monitor"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Hace lo contrario que la impresora.",
+      "explanation": "El escáner digitaliza papeles: es de entrada. La impresora es su opuesto, de salida."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué guarda la memoria RAM?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo que se usa en ese momento"
+        },
+        {
+          "letter": "B",
+          "text": "Las fotos para siempre, sin borrarse"
+        },
+        {
+          "letter": "C",
+          "text": "La energía de la batería"
+        },
+        {
+          "letter": "D",
+          "text": "El sonido de las bocinas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es una memoria temporal que se borra al apagar.",
+      "explanation": "La RAM guarda temporalmente lo que está abierto. Para guardar fotos para siempre se usa el almacenamiento."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué una pantalla táctil es un periférico mixto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque muestra imagen y recibe toques"
+        },
+        {
+          "letter": "B",
+          "text": "Porque funciona con batería y cable"
+        },
+        {
+          "letter": "C",
+          "text": "Porque solo sirve para ver videos"
+        },
+        {
+          "letter": "D",
+          "text": "Porque es parte del sistema operativo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Mixto significa que hace dos cosas a la vez. ¿Cuáles?",
+      "explanation": "Muestra información (salida) y recibe tus toques (entrada). La batería o el cable no tienen que ver con la clasificación."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Ordena el camino de la información: salida, entrada, proceso. ¿Cuál va primero?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Salida"
+        },
+        {
+          "letter": "B",
+          "text": "Proceso"
+        },
+        {
+          "letter": "C",
+          "text": "Entrada"
+        },
+        {
+          "letter": "D",
+          "text": "Ninguno, van juntos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Antes de procesar algo, primero tiene que llegar a la computadora.",
+      "explanation": "Primero entra el dato, luego se procesa y al final sale el resultado. Por eso se dice entrada, proceso y salida."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Al apagar la computadora sin guardar, pierdes el trabajo. ¿Dónde estaba?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "En el disco duro"
+        },
+        {
+          "letter": "B",
+          "text": "En la memoria RAM"
+        },
+        {
+          "letter": "C",
+          "text": "En la memoria USB"
+        },
+        {
+          "letter": "D",
+          "text": "En la impresora"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una de estas memorias se borra cuando no tiene energía.",
+      "explanation": "Lo que no se guarda vive solo en la RAM, que se borra al apagar. El disco y la USB conservan lo que sí se guardó."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos es un dispositivo de almacenamiento?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una memoria USB"
+        },
+        {
+          "letter": "B",
+          "text": "Un teclado numérico"
+        },
+        {
+          "letter": "C",
+          "text": "Unas bocinas portátiles"
+        },
+        {
+          "letter": "D",
+          "text": "Un procesador"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca dónde se guardan archivos para llevarlos a otro lado.",
+      "explanation": "La memoria USB guarda archivos aunque se desconecte: almacenamiento. El teclado es entrada y las bocinas, salida."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un compañero dice que Windows es una aplicación como Word. ¿Qué confunde?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hardware con periférico de salida"
+        },
+        {
+          "letter": "B",
+          "text": "Entrada de datos con salida de datos"
+        },
+        {
+          "letter": "C",
+          "text": "Sistema operativo con aplicación"
+        },
+        {
+          "letter": "D",
+          "text": "Memoria RAM con el procesador"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Uno hace funcionar todo el equipo y el otro corre encima de él.",
+      "explanation": "Windows es el sistema operativo que hace funcionar la computadora; Word es una aplicación que corre sobre Windows."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué par está bien clasificado?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Micrófono: salida"
+        },
+        {
+          "letter": "B",
+          "text": "Monitor: entrada"
+        },
+        {
+          "letter": "C",
+          "text": "Webcam: entrada"
+        },
+        {
+          "letter": "D",
+          "text": "Bocina: entrada"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa hacia dónde va la información en cada par.",
+      "explanation": "La webcam mete video a la computadora: entrada. El micrófono también es entrada, y el monitor y la bocina son salida."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un juego viene en un disco físico. ¿Qué es hardware y qué es software?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ambos son hardware"
+        },
+        {
+          "letter": "B",
+          "text": "El disco es hardware; el juego, software"
+        },
+        {
+          "letter": "C",
+          "text": "Ambos son software"
+        },
+        {
+          "letter": "D",
+          "text": "El disco es software; el juego, hardware"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Separa el objeto que tocas de las instrucciones que trae guardadas.",
+      "explanation": "El disco se toca: hardware. El juego son instrucciones guardadas en él: software."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué necesita una computadora recién armada para poder usarse?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una impresora conectada por USB"
+        },
+        {
+          "letter": "B",
+          "text": "Un sistema operativo instalado"
+        },
+        {
+          "letter": "C",
+          "text": "Un juego descargado de internet"
+        },
+        {
+          "letter": "D",
+          "text": "Unas bocinas nuevas y potentes"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Sin este programa ni siquiera puedes abrir las demás aplicaciones.",
+      "explanation": "Sin sistema operativo no se pueden usar ni abrir aplicaciones. La impresora y las bocinas son opcionales."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En un cajero automático, ¿qué es la pantalla donde tocas las opciones?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un periférico mixto"
+        },
+        {
+          "letter": "B",
+          "text": "El software del banco"
+        },
+        {
+          "letter": "C",
+          "text": "Un periférico de salida"
+        },
+        {
+          "letter": "D",
+          "text": "El procesador del cajero"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La pantalla te muestra opciones y también recibe tu dedo.",
+      "explanation": "Muestra opciones (salida) y recibe toques (entrada), así que es mixta. No es software porque se puede tocar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre la RAM y el almacenamiento?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La RAM es temporal y el almacenamiento, permanente"
+        },
+        {
+          "letter": "B",
+          "text": "La RAM es software y el almacenamiento es hardware"
+        },
+        {
+          "letter": "C",
+          "text": "La RAM imprime y el almacenamiento muestra imágenes"
+        },
+        {
+          "letter": "D",
+          "text": "No hay ninguna diferencia real entre las dos piezas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa con cada una al apagar el equipo.",
+      "explanation": "La RAM se borra al apagar; el almacenamiento conserva los archivos. Ambas son hardware."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un dictado por voz en el celular convierte lo que dices en texto. ¿Qué periférico es la entrada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La bocina"
+        },
+        {
+          "letter": "B",
+          "text": "La pantalla táctil"
+        },
+        {
+          "letter": "C",
+          "text": "El micrófono"
+        },
+        {
+          "letter": "D",
+          "text": "La batería interna"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "¿Por dónde entra tu voz al celular?",
+      "explanation": "La voz entra por el micrófono. La pantalla es la salida donde aparece el texto."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Imprimes una tarea: escribes, la computadora la prepara y sale en papel. ¿Qué parte es el proceso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Escribir la tarea con el teclado"
+        },
+        {
+          "letter": "B",
+          "text": "Que la computadora la prepare"
+        },
+        {
+          "letter": "C",
+          "text": "Que la tarea salga en el papel"
+        },
+        {
+          "letter": "D",
+          "text": "Comprar hojas blancas para imprimir"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El proceso ocurre dentro del equipo, entre la entrada y la salida.",
+      "explanation": "El proceso es lo que hace la computadora con los datos. Escribir es entrada y la hoja impresa es salida."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una computadora tiene mucha RAM pero un procesador muy lento. ¿Qué es lo más probable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Todo tarda aunque sobre memoria"
+        },
+        {
+          "letter": "B",
+          "text": "No puede guardar ningún archivo nuevo"
+        },
+        {
+          "letter": "C",
+          "text": "El monitor deja de mostrar la imagen"
+        },
+        {
+          "letter": "D",
+          "text": "El teclado deja de escribir las letras"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Cada pieza tiene una función. ¿Cuál hace los cálculos?",
+      "explanation": "La RAM guarda lo que se usa, pero quien calcula es el procesador. Si es lento, todo tarda aunque sobre memoria."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Cuál afirmación sobre hardware y software es correcta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El hardware funciona solo sin software"
+        },
+        {
+          "letter": "B",
+          "text": "El software puede existir sin estar guardado"
+        },
+        {
+          "letter": "C",
+          "text": "Se necesitan mutuamente para funcionar"
+        },
+        {
+          "letter": "D",
+          "text": "El software es más pesado que el hardware"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en una computadora sin programas o en un programa sin computadora.",
+      "explanation": "El hardware sin software no hace nada y el software necesita hardware donde correr. Se complementan."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un control de videojuegos con vibración, ¿por qué se puede considerar mixto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque usa pilas recargables de litio"
+        },
+        {
+          "letter": "B",
+          "text": "Porque recibe órdenes y devuelve vibración"
+        },
+        {
+          "letter": "C",
+          "text": "Porque tiene botones de varios colores"
+        },
+        {
+          "letter": "D",
+          "text": "Porque viene incluido en la caja de la consola"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca las dos direcciones en que viaja la información.",
+      "explanation": "Los botones son entrada y la vibración es salida hacia el jugador. Por eso funciona en las dos direcciones."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una persona ciega usa un lector de pantalla que convierte el texto en voz. ¿Qué periférico es clave como salida?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El teclado"
+        },
+        {
+          "letter": "B",
+          "text": "Los audífonos"
+        },
+        {
+          "letter": "C",
+          "text": "La webcam HD"
+        },
+        {
+          "letter": "D",
+          "text": "El escáner de hojas"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El texto se convierte en sonido. ¿Por dónde sale el sonido?",
+      "explanation": "La voz sale por audífonos o bocinas, que son salida. El teclado y el escáner son de entrada."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué un celular se considera una computadora?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque tiene entrada, proceso, salida y apps"
+        },
+        {
+          "letter": "B",
+          "text": "Porque sirve para hacer llamadas por teléfono"
+        },
+        {
+          "letter": "C",
+          "text": "Porque tiene una batería que se puede recargar"
+        },
+        {
+          "letter": "D",
+          "text": "Porque casi todos los modelos traen una cámara"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa qué elementos debe tener cualquier computadora.",
+      "explanation": "Recibe datos, los procesa con un procesador, muestra resultados y usa sistema operativo y apps. Eso lo hace una computadora."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un programa de edición pide 8 GB de RAM y tu laptop tiene 4 GB. ¿Qué se puede esperar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que funcione lento o se cierre"
+        },
+        {
+          "letter": "B",
+          "text": "Que el monitor se apague solo"
+        },
+        {
+          "letter": "C",
+          "text": "Que se borre todo el disco duro"
+        },
+        {
+          "letter": "D",
+          "text": "Que el teclado deje de responder"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa cuando la memoria temporal se llena.",
+      "explanation": "Con menos RAM de la necesaria el programa no tiene espacio para trabajar: va lento o se cierra. El disco no se borra por eso."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una memoria USB guarda archivos y también te deja leerlos en otra computadora. ¿Cómo se clasifica mejor?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo de salida de datos"
+        },
+        {
+          "letter": "B",
+          "text": "Un tipo de procesador"
+        },
+        {
+          "letter": "C",
+          "text": "De almacenamiento"
+        },
+        {
+          "letter": "D",
+          "text": "Un programa de software"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Su función principal es conservar información.",
+      "explanation": "Su función principal es guardar archivos de forma permanente: almacenamiento. No calcula ni es un programa."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Instalas un programa nuevo y la computadora sigue igual de rápida. Luego agregas más RAM y abre todo más rápido. ¿Qué muestra esto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que el software cambia las piezas físicas"
+        },
+        {
+          "letter": "B",
+          "text": "Que el hardware influye en el rendimiento"
+        },
+        {
+          "letter": "C",
+          "text": "Que la RAM es en realidad un tipo de software"
+        },
+        {
+          "letter": "D",
+          "text": "Que instalar más apps siempre acelera el equipo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en qué cambio mejoró la velocidad.",
+      "explanation": "Mejorar una pieza física, como la RAM, aumentó la velocidad. Instalar programas no cambia las piezas."
+    }
+  ],
+  "diagnostic": {
+    "question": "Tecleas una tarea, la computadora la procesa y la imprimes. ¿Qué tipo de periférico es la impresora?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "De entrada"
+      },
+      {
+        "letter": "B",
+        "text": "De salida"
+      },
+      {
+        "letter": "C",
+        "text": "Un programa"
+      },
+      {
+        "letter": "D",
+        "text": "Un procesador"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "La impresora saca la información de la computadora al papel, por eso es de salida. El teclado, con el que escribiste, es de entrada."
+  }
+}

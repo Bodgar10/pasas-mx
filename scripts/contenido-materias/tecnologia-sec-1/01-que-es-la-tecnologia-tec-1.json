@@ -1,0 +1,1850 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "que-es-la-tecnologia-tec-1",
+  "order_steps": {
+    "prompt": "Ordena cómo nace un producto técnico",
+    "steps": [
+      "Detectar una necesidad o un problema",
+      "Planear qué hacer, con qué medios y con qué materiales",
+      "Transformar los materiales con herramientas o máquinas",
+      "Revisar que el resultado funcione como se quería",
+      "Usar el producto para satisfacer la necesidad"
+    ],
+    "completion_feedback": "Toda técnica arranca en una **necesidad** y termina en un **producto**. En medio hay acciones para planear, hacer y revisar. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La primera espada Nichirin de Tanjiro",
+        "content": "En Demon Slayer, Tanjiro acaba de pasar la Selección Final, pero sin una espada Nichirin propia no puede pelear en el Cuerpo de Exterminio. En la Aldea de los Herreros, Haganezuka, su herrero, se pone a trabajar. Primero decide cómo será la hoja: largo, peso y filo pensados para la forma en que pelea Tanjiro. Luego calienta el mineral en el horno, lo golpea una y otra vez con el martillo sobre el yunque, lo templa en agua y lo afila durante días. Al final revisa el filo con mucho cuidado antes de entregarla. Nada de esto es magia: es un saber hacer que los herreros de la aldea aprendieron, practicaron y se pasan de generación en generación, y que incluso estudian para mejorar. Fíjate en la cadena completa: una necesidad (Tanjiro sin espada), un montón de acciones ordenadas, herramientas, materiales y, al final, un producto: la espada Nichirin. Esa cadena es justo la lección de hoy."
+      },
+      "explanation": {
+        "title": "La forja de la espada ES la técnica",
+        "content": "Lo que acabas de ver en la Aldea de los Herreros es exactamente una **técnica**: un conjunto de **acciones ordenadas e intencionadas** que usa **medios técnicos** (martillo, yunque, horno) para transformar **materiales** (el mineral) y obtener un **producto** que satisface una **necesidad** (que Tanjiro pueda pelear). La **tecnología** es otra cosa: es el **campo de conocimiento que estudia la técnica**, es decir, por qué funciona, cómo mejorarla y qué efectos tiene. Ojo: tecnología no significa solo aparatos electrónicos. Una espada forjada a mano también es un producto técnico."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Franky construye el Thousand Sunny",
+        "content": "En One Piece, los Sombrero de Paja perdieron al Going Merry y necesitan un barco nuevo. Identifica los elementos de la técnica.\n\n**Paso 1 — Necesidad:** navegar el Nuevo Mundo sin hundirse.\n**Paso 2 — Acción estratégica:** Franky dibuja los planos y decide medidas y forma.\n**Paso 3 — Materiales:** la madera del árbol Adam, la más resistente.\n**Paso 4 — Acciones instrumentales:** corta, une y clava piezas con sus herramientas.\n**Paso 5 — Acción de control:** revisa cada parte antes de zarpar.\n\nResultado: el Thousand Sunny es el **producto técnico** que satisface la necesidad."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **técnica** es el saber hacer: **acciones ordenadas** que usan **medios** para transformar **materiales** y crear un **producto** que satisface una **necesidad**. La **tecnología** es el **estudio de la técnica**. Las acciones pueden ser **estratégicas** (planear), **instrumentales** (hacer) o **de control** (revisar)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Técnica = el herrero forjando (saber HACER). Tecnología = estudiar por qué la espada corta y cómo hacerla mejor (saber POR QUÉ). Si la pregunta habla de un proceso para fabricar algo, es técnica."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada tipo de acción técnica acerca la espada a estar lista: planear, hacer y revisar.",
+        "data": {
+          "intro": "Haganezuka va a forjar la nueva espada de Tanjiro. El medidor muestra qué tan lista está. Sigue cada acción y fíjate de qué tipo es.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Acción estratégica: decide el largo, el peso y el tipo de filo según cómo pelea Tanjiro.",
+              "delta": 20
+            },
+            {
+              "text": "Acción instrumental: calienta el mineral en el horno y lo golpea con el martillo sobre el yunque.",
+              "delta": 40
+            },
+            {
+              "text": "Acción instrumental: templa la hoja en agua y la afila durante días.",
+              "delta": 25
+            },
+            {
+              "text": "Acción de control: revisa el filo y el balance antes de entregarla. ¡Espada lista!",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica lo que hay en la herrería",
+        "content": "Medios técnicos: con qué se trabaja (martillo, yunque, horno). Materiales: lo que se transforma (mineral, madera, tela).",
+        "data": {
+          "prompt": "Arrastra cada cosa de la herrería de Haganezuka a su categoría.",
+          "buckets": [
+            "Medio técnico (con qué)",
+            "Material (qué se transforma)"
+          ],
+          "items": [
+            {
+              "t": "Martillo",
+              "b": 0
+            },
+            {
+              "t": "Mineral de hierro",
+              "b": 1
+            },
+            {
+              "t": "Yunque",
+              "b": 0
+            },
+            {
+              "t": "Madera para el mango",
+              "b": 1
+            },
+            {
+              "t": "Horno de forja",
+              "b": 0
+            },
+            {
+              "t": "Tela de la empuñadura",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada acción del herrero con su tipo de acción técnica.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Planear la hoja",
+              "b": "Acción estratégica"
+            },
+            {
+              "a": "Golpear el metal",
+              "b": "Acción instrumental"
+            },
+            {
+              "a": "Probar el filo",
+              "b": "Acción de control"
+            },
+            {
+              "a": "Estudiar por qué corta",
+              "b": "Tecnología"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la técnica es cada cosa?",
+        "left_label": "Aldea de herreros",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Tanjiro no tiene espada",
+            "right": "Necesidad"
+          },
+          {
+            "left": "Forjar, templar y afilar",
+            "right": "Técnica"
+          },
+          {
+            "left": "Martillo, yunque y horno",
+            "right": "Medios técnicos"
+          },
+          {
+            "left": "La espada Nichirin",
+            "right": "Producto técnico"
+          }
+        ],
+        "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Tanjiro necesita una espada nueva y Haganezuka la forja. ¿Qué es la espada terminada?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un producto técnico"
+            },
+            {
+              "letter": "B",
+              "text": "Una acción técnica"
+            },
+            {
+              "letter": "C",
+              "text": "Un medio de control"
+            },
+            {
+              "letter": "D",
+              "text": "La necesidad inicial"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La espada es el resultado del proceso: un producto técnico que satisface la necesidad de Tanjiro. Las acciones son lo que hace el herrero, y la necesidad es lo que faltaba al inicio.",
+          "difficulty": 1
+        },
+        {
+          "question": "Haganezuka decide el largo y el peso de la hoja antes de encender el horno. ¿Qué tipo de acción es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Instrumental"
+            },
+            {
+              "letter": "B",
+              "text": "Estratégica"
+            },
+            {
+              "letter": "C",
+              "text": "De control"
+            },
+            {
+              "letter": "D",
+              "text": "De consumo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Decidir qué y cómo se va a hacer es una acción estratégica. Sería instrumental si ya estuviera golpeando el metal, y de control si estuviera revisando el resultado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un herrero de la aldea investiga por qué cierto mineral hace hojas más resistentes para mejorar todas las espadas. ¿Qué está haciendo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una acción instrumental"
+            },
+            {
+              "letter": "B",
+              "text": "Fabricar un medio técnico"
+            },
+            {
+              "letter": "C",
+              "text": "Estudiar la técnica"
+            },
+            {
+              "letter": "D",
+              "text": "Satisfacer una necesidad"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Investigar por qué funciona un proceso para mejorarlo es estudiar la técnica, que es justo lo que hace la tecnología. Todavía no está fabricando nada, así que no es una acción instrumental.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la herrería, ¿cuál de estos es un MATERIAL y no un medio técnico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El yunque"
+            },
+            {
+              "letter": "B",
+              "text": "El martillo"
+            },
+            {
+              "letter": "C",
+              "text": "El horno"
+            },
+            {
+              "letter": "D",
+              "text": "El mineral"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El mineral es lo que se transforma en espada, por eso es material. Yunque, martillo y horno son medios: se usan para trabajar, pero no se convierten en la espada.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un amigo dice: 'La espada Nichirin no es tecnología porque no tiene pilas ni chips'. ¿Qué error comete?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cree que solo lo electrónico es técnico"
+            },
+            {
+              "letter": "B",
+              "text": "Cree que la espada no es un producto"
+            },
+            {
+              "letter": "C",
+              "text": "Cree que forjar no requiere materiales"
+            },
+            {
+              "letter": "D",
+              "text": "Cree que el herrero no usa medios técnicos"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Confunde tecnología con aparatos electrónicos. Cualquier objeto hecho con un saber hacer ordenado para resolver una necesidad es un producto técnico, aunque sea de metal y madera.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La banda protectora de Raúl Jiménez",
+        "content": "En noviembre de 2020, jugando con los Wolves contra el Arsenal, Raúl Jiménez chocó de cabeza con David Luiz y sufrió una fractura de cráneo. Para volver a las canchas necesitaba algo muy concreto: proteger su cabeza en cada choque y cada cabezazo. La respuesta fue la banda acolchada que desde entonces usa en los partidos. Piensa en todo lo que hay detrás de ese objeto. Alguien tuvo que decidir qué forma y qué grosor debía tener para proteger sin estorbar. Luego hubo que elegir materiales: espuma que amortigua y una tela que deja respirar. Después cortar, moldear y coser las piezas con herramientas y máquinas. Y antes de usarla en un partido, revisar que aguantara golpes y que no se moviera al correr. Una necesidad, un montón de acciones bien ordenadas, herramientas, materiales y, al final, un producto que le permitió seguir jugando. Esa cadena completa es justo lo que vas a estudiar hoy."
+      },
+      "explanation": {
+        "title": "Fabricar la banda protectora ES una técnica",
+        "content": "Lo que acabas de ver con la banda de Raúl Jiménez es exactamente una **técnica**: un conjunto de **acciones ordenadas e intencionadas** que usa **medios técnicos** (tijeras, moldes, máquinas de coser) para transformar **materiales** (espuma y tela) y obtener un **producto** que satisface una **necesidad** (proteger su cabeza). La **tecnología** es el **campo de conocimiento que estudia la técnica**: por qué una espuma amortigua mejor que otra, cómo mejorar el diseño y qué efectos tiene. No la confundas con aparatos electrónicos: unos tacos o un balón también son productos técnicos."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las porterías de la cancha de la colonia",
+        "content": "La liga de tu colonia no tiene porterías. Identifica los elementos de la técnica para hacerlas.\n\n**Paso 1 — Necesidad:** jugar partidos con porterías reglamentarias.\n**Paso 2 — Acción estratégica:** planear medidas oficiales, 7.32 m de ancho por 2.44 m de alto.\n**Paso 3 — Materiales:** tubos de metal y la red.\n**Paso 4 — Acciones instrumentales:** cortar y soldar los tubos y amarrar la red.\n**Paso 5 — Acción de control:** medir otra vez y empujar la estructura para ver que no se mueva.\n\nResultado: las porterías son el **producto técnico** que resuelve la necesidad."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **técnica** es el saber hacer: **acciones ordenadas** que usan **medios** para transformar **materiales** y crear un **producto** que satisface una **necesidad**. La **tecnología** es el **estudio de la técnica**. Las acciones pueden ser **estratégicas** (planear), **instrumentales** (hacer) o **de control** (revisar)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en un partido: el planteamiento del técnico antes de jugar es la acción estratégica, jugar es la instrumental y revisar el video del VAR es la de control. Planear, hacer, revisar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada tipo de acción técnica acerca la portería a estar lista: planear, hacer y revisar.",
+        "data": {
+          "intro": "La liga de la colonia va a construir sus porterías. El medidor muestra qué tan lista está la cancha. Sigue cada acción y fíjate de qué tipo es.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Acción estratégica: se planean las medidas oficiales y se calcula cuánto tubo comprar.",
+              "delta": 20
+            },
+            {
+              "text": "Acción instrumental: se cortan y sueldan los tubos para armar los marcos.",
+              "delta": 45
+            },
+            {
+              "text": "Acción instrumental: se amarra la red al marco con cuerda.",
+              "delta": 20
+            },
+            {
+              "text": "Acción de control: se vuelve a medir y se empuja la portería para comprobar que no se mueva. ¡A jugar!",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica lo del taller de porterías",
+        "content": "Medios técnicos: con qué se trabaja (soldadora, cinta métrica, segueta). Materiales: lo que se transforma (tubos, red, pintura).",
+        "data": {
+          "prompt": "Arrastra cada cosa del taller a su categoría.",
+          "buckets": [
+            "Medio técnico (con qué)",
+            "Material (qué se transforma)"
+          ],
+          "items": [
+            {
+              "t": "Soldadora",
+              "b": 0
+            },
+            {
+              "t": "Tubos de metal",
+              "b": 1
+            },
+            {
+              "t": "Cinta métrica",
+              "b": 0
+            },
+            {
+              "t": "Red de nylon",
+              "b": 1
+            },
+            {
+              "t": "Segueta",
+              "b": 0
+            },
+            {
+              "t": "Pintura blanca",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada acción del equipo con su tipo de acción técnica.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Planear las medidas",
+              "b": "Acción estratégica"
+            },
+            {
+              "a": "Soldar los tubos",
+              "b": "Acción instrumental"
+            },
+            {
+              "a": "Medir otra vez",
+              "b": "Acción de control"
+            },
+            {
+              "a": "Estudiar qué tubo dura",
+              "b": "Tecnología"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la técnica es cada cosa?",
+        "left_label": "Banda de Raúl",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Proteger su cabeza al jugar",
+            "right": "Necesidad"
+          },
+          {
+            "left": "Cortar, moldear y coser",
+            "right": "Técnica"
+          },
+          {
+            "left": "Tijeras y máquina de coser",
+            "right": "Medios técnicos"
+          },
+          {
+            "left": "La banda acolchada",
+            "right": "Producto técnico"
+          }
+        ],
+        "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "La banda acolchada que usa Raúl Jiménez para proteger su cabeza es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una necesidad"
+            },
+            {
+              "letter": "B",
+              "text": "Un producto técnico"
+            },
+            {
+              "letter": "C",
+              "text": "Una acción de control"
+            },
+            {
+              "letter": "D",
+              "text": "Un material"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La banda es el resultado del proceso técnico, así que es un producto. La necesidad era proteger su cabeza, y la espuma y la tela son los materiales con que se hizo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Antes de estrenar unos tacos, el fabricante los prueba en pasto mojado para ver si resbalan. ¿Qué tipo de acción es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Estratégica"
+            },
+            {
+              "letter": "B",
+              "text": "Instrumental"
+            },
+            {
+              "letter": "C",
+              "text": "De control"
+            },
+            {
+              "letter": "D",
+              "text": "De diseño"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Probar el resultado para comprobar que funciona es una acción de control. Diseñar o planear sería estratégica, y coser o pegar la suela sería instrumental.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un laboratorio deportivo analiza por qué un balón vuela más estable que otro para mejorar los próximos. ¿Qué hace?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fabrica un balón"
+            },
+            {
+              "letter": "B",
+              "text": "Estudia la técnica"
+            },
+            {
+              "letter": "C",
+              "text": "Satisface una necesidad"
+            },
+            {
+              "letter": "D",
+              "text": "Usa un medio técnico"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Investigar por qué funciona un producto para mejorarlo es estudiar la técnica, que es lo propio de la tecnología. Aún no está fabricando nada.",
+          "difficulty": 3
+        },
+        {
+          "question": "Para hacer las porterías de la colonia, ¿cuál es un MEDIO técnico y no un material?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La soldadora"
+            },
+            {
+              "letter": "B",
+              "text": "Los tubos de metal"
+            },
+            {
+              "letter": "C",
+              "text": "La red de nylon"
+            },
+            {
+              "letter": "D",
+              "text": "La pintura blanca"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La soldadora se usa para trabajar pero no forma parte de la portería: es un medio técnico. Tubos, red y pintura terminan dentro del producto, por eso son materiales.",
+          "difficulty": 2
+        },
+        {
+          "question": "Alguien dice: 'Un balón no es tecnología, tecnología es el VAR'. ¿Qué confunde?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cree que solo lo electrónico es técnico"
+            },
+            {
+              "letter": "B",
+              "text": "Cree que el balón no está hecho de materiales"
+            },
+            {
+              "letter": "C",
+              "text": "Cree que el VAR no es un producto"
+            },
+            {
+              "letter": "D",
+              "text": "Cree que jugar al fútbol es una acción técnica"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Confunde tecnología con aparatos electrónicos. El balón también se diseñó y fabricó con un saber hacer ordenado para una necesidad, así que es un producto técnico igual que el VAR.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Cómo nació el ARMY Bomb de BTS",
+        "content": "Imagina un estadio lleno con 50 mil fans de BTS. Con las luces apagadas, nadie ve a nadie y los chicos en el escenario solo ven oscuridad. Los fans tenían una necesidad: mostrar su apoyo y que el grupo los viera. De ahí nació el ARMY Bomb, el lightstick oficial. Piensa en todo lo que costó crearlo. Primero alguien decidió cómo sería: la forma de bomba, el tamaño para sostenerlo horas y los colores que debía encender. Luego se eligieron materiales: plástico, focos LED, cables y pilas. Después se fabricaron y armaron las piezas con máquinas en una fábrica. Y antes de venderlo se revisó que encendiera, que aguantara golpes y que se conectara al sistema del concierto para cambiar de color todos al mismo tiempo. Una necesidad, un montón de acciones ordenadas, máquinas, materiales y, al final, un producto que hoy convierte un estadio en un mar morado. Esa cadena es justo la lección de hoy."
+      },
+      "explanation": {
+        "title": "Crear el lightstick ES una técnica",
+        "content": "Lo que acabas de ver con el ARMY Bomb es exactamente una **técnica**: un conjunto de **acciones ordenadas e intencionadas** que usa **medios técnicos** (moldes, máquinas, herramientas) para transformar **materiales** (plástico, LED, cables) y obtener un **producto** que satisface una **necesidad** (que los fans muestren su apoyo). La **tecnología** es el **campo de conocimiento que estudia la técnica**: por qué una luz se ve más, cómo mejorar el diseño y qué efectos tiene. Y no solo lo electrónico cuenta: un hanbok cosido a mano también es un producto técnico."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el vestuario del comeback de Stray Kids",
+        "content": "Stray Kids prepara su comeback y necesita vestuario que aguante sus coreografías. Identifica los elementos de la técnica.\n\n**Paso 1 — Necesidad:** ropa que se vea increíble y deje bailar sin romperse.\n**Paso 2 — Acción estratégica:** el equipo de estilistas dibuja bocetos y elige el concepto.\n**Paso 3 — Materiales:** telas elásticas, cuero sintético y cadenas.\n**Paso 4 — Acciones instrumentales:** cortar, coser y ajustar cada prenda a su medida.\n**Paso 5 — Acción de control:** prueba de vestuario en el ensayo general.\n\nResultado: el vestuario es el **producto técnico** del comeback."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **técnica** es el saber hacer: **acciones ordenadas** que usan **medios** para transformar **materiales** y crear un **producto** que satisface una **necesidad**. La **tecnología** es el **estudio de la técnica**. Las acciones pueden ser **estratégicas** (planear), **instrumentales** (hacer) o **de control** (revisar)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en un comeback: planear el concepto es la acción estratégica, grabar el MV es la instrumental y revisar la edición final antes de subirlo es la de control. Planear, hacer, revisar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada tipo de acción técnica acerca el lightstick a estar listo: planear, hacer y revisar.",
+        "data": {
+          "intro": "La empresa va a lanzar el nuevo lightstick de un grupo. El medidor muestra qué tan listo está. Sigue cada acción y fíjate de qué tipo es.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Acción estratégica: el equipo decide la forma, el tamaño y los colores que debe encender.",
+              "delta": 25
+            },
+            {
+              "text": "Acción instrumental: las máquinas moldean la carcasa de plástico.",
+              "delta": 25
+            },
+            {
+              "text": "Acción instrumental: se colocan los focos LED, los cables y el espacio de las pilas.",
+              "delta": 30
+            },
+            {
+              "text": "Acción de control: se prueba que encienda y que cambie de color con el sistema del concierto. ¡Listo para el tour!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica lo de la fábrica de lightsticks",
+        "content": "Medios técnicos: con qué se trabaja (molde, desarmador, máquina de inyección). Materiales: lo que se transforma (plástico, LED, cables).",
+        "data": {
+          "prompt": "Arrastra cada cosa de la fábrica a su categoría.",
+          "buckets": [
+            "Medio técnico (con qué)",
+            "Material (qué se transforma)"
+          ],
+          "items": [
+            {
+              "t": "Molde de la carcasa",
+              "b": 0
+            },
+            {
+              "t": "Plástico",
+              "b": 1
+            },
+            {
+              "t": "Desarmador",
+              "b": 0
+            },
+            {
+              "t": "Focos LED",
+              "b": 1
+            },
+            {
+              "t": "Cautín para soldar",
+              "b": 0
+            },
+            {
+              "t": "Cables",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada acción del equipo con su tipo de acción técnica.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Bocetear el vestuario",
+              "b": "Acción estratégica"
+            },
+            {
+              "a": "Coser las prendas",
+              "b": "Acción instrumental"
+            },
+            {
+              "a": "Prueba de vestuario",
+              "b": "Acción de control"
+            },
+            {
+              "a": "Estudiar qué tela dura",
+              "b": "Tecnología"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la técnica es cada cosa?",
+        "left_label": "ARMY Bomb",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Que BTS vea el apoyo de ARMY",
+            "right": "Necesidad"
+          },
+          {
+            "left": "Diseñar, moldear y armar",
+            "right": "Técnica"
+          },
+          {
+            "left": "Moldes y máquinas",
+            "right": "Medios técnicos"
+          },
+          {
+            "left": "El lightstick terminado",
+            "right": "Producto técnico"
+          }
+        ],
+        "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En la historia del ARMY Bomb, que los fans quisieran mostrar su apoyo en un estadio oscuro es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El producto técnico"
+            },
+            {
+              "letter": "B",
+              "text": "Una acción estratégica"
+            },
+            {
+              "letter": "C",
+              "text": "La necesidad"
+            },
+            {
+              "letter": "D",
+              "text": "Un medio técnico"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Lo que faltaba resolver al inicio es la necesidad. El lightstick es el producto que la satisface, y las máquinas de la fábrica son los medios.",
+          "difficulty": 1
+        },
+        {
+          "question": "La estilista de un grupo corta y cose la tela del vestuario. ¿Qué tipo de acción es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Estratégica"
+            },
+            {
+              "letter": "B",
+              "text": "Instrumental"
+            },
+            {
+              "letter": "C",
+              "text": "De control"
+            },
+            {
+              "letter": "D",
+              "text": "De planeación"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cortar y coser con herramientas es ejecutar: acción instrumental. Dibujar el boceto sería estratégica, y revisar la prenda en el ensayo sería de control.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un equipo de ingenieros investiga por qué ciertos LED se ven mejor desde lejos para mejorar los próximos lightsticks. ¿Qué hace?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Estudia la técnica"
+            },
+            {
+              "letter": "B",
+              "text": "Arma un lightstick"
+            },
+            {
+              "letter": "C",
+              "text": "Prueba un producto"
+            },
+            {
+              "letter": "D",
+              "text": "Crea una necesidad"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Investigar por qué algo funciona para mejorarlo es estudiar la técnica, que es lo que hace la tecnología. No está armando ni probando un lightstick en concreto.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la fábrica del lightstick, ¿cuál es un MATERIAL y no un medio técnico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El molde"
+            },
+            {
+              "letter": "B",
+              "text": "El desarmador"
+            },
+            {
+              "letter": "C",
+              "text": "El cautín"
+            },
+            {
+              "letter": "D",
+              "text": "El plástico"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El plástico se transforma y queda dentro del lightstick, por eso es material. El molde, el desarmador y el cautín se usan para trabajar, pero no forman parte del producto.",
+          "difficulty": 2
+        },
+        {
+          "question": "Alguien dice: 'Los hanbok de los K-dramas de época no son producto de una técnica porque se cosen a mano'. ¿Qué error comete?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cree que coser no es una acción"
+            },
+            {
+              "letter": "B",
+              "text": "Cree que la tela no es un material"
+            },
+            {
+              "letter": "C",
+              "text": "Cree que solo cuentan las máquinas"
+            },
+            {
+              "letter": "D",
+              "text": "Cree que el hanbok es una necesidad"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Una técnica no necesita máquinas ni electricidad: coser a mano con aguja también es un saber hacer ordenado. El hanbok es un producto técnico tradicional.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Tu primera noche en Minecraft",
+        "content": "Empiezas un mundo nuevo de Minecraft en modo supervivencia. El sol se está poniendo y sabes lo que viene: zombis, esqueletos y creepers. Tienes una necesidad urgente: sobrevivir la primera noche. Así que te pones a trabajar con orden. Primero decides qué hacer: conseguir madera, hacer herramientas y construir un refugio. Golpeas un árbol, conviertes los troncos en tablones, armas una mesa de crafteo y con ella fabricas un pico de madera. Con ese pico sacas piedra y haces un pico mejor. Con la piedra y un horno conviertes la carne cruda en comida. Antes de que oscurezca revisas tu refugio: ¿hay huecos por donde pueda entrar un mob? Fíjate en lo que hiciste: no fue suerte, fue un saber hacer, recetas que aprendiste jugando o en la wiki. Una necesidad, acciones ordenadas, medios como la mesa y el horno, materiales como madera y piedra y, al final, productos: herramientas y un refugio. Esa cadena es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Craftear para sobrevivir ES una técnica",
+        "content": "Lo que acabas de ver en tu primera noche de Minecraft es exactamente una **técnica**: un conjunto de **acciones ordenadas e intencionadas** que usa **medios técnicos** (la mesa de crafteo, el horno, el pico) para transformar **materiales** (madera, piedra, carne cruda) y obtener **productos** que satisfacen una **necesidad** (sobrevivir). La **tecnología** es el **campo de conocimiento que estudia la técnica**: por qué un pico de hierro rompe lo que uno de madera no, cómo mejorar y qué efectos tiene. En la vida real pasa igual: un pico o un martillo también son productos técnicos."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — cruzar el lago en Zelda: Tears of the Kingdom",
+        "content": "Link tiene que llegar a una isla y no hay puente. Identifica los elementos de la técnica.\n\n**Paso 1 — Necesidad:** cruzar el lago sin ahogarse.\n**Paso 2 — Acción estratégica:** decides construir una balsa con ventiladores.\n**Paso 3 — Materiales:** tablones de madera.\n**Paso 4 — Acciones instrumentales:** con la Ultramano unes los tablones y les pegas dos ventiladores zonai.\n**Paso 5 — Acción de control:** la pruebas cerca de la orilla y acomodas los ventiladores si se ladea.\n\nResultado: la balsa es el **producto técnico** que resuelve la necesidad."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **técnica** es el saber hacer: **acciones ordenadas** que usan **medios** para transformar **materiales** y crear un **producto** que satisface una **necesidad**. La **tecnología** es el **estudio de la técnica**. Las acciones pueden ser **estratégicas** (planear), **instrumentales** (hacer) o **de control** (revisar)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Recuerda tu partida: decidir qué construir es estratégico, picar y craftear es instrumental, y revisar el refugio antes de la noche es control. Y la mesa de crafteo es un medio, no un material."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada tipo de acción técnica te acerca a sobrevivir la noche: planear, hacer y revisar.",
+        "data": {
+          "intro": "Se está poniendo el sol en tu mundo de Minecraft. El medidor muestra qué tan preparado estás para la noche. Sigue cada acción y fíjate de qué tipo es.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Acción estratégica: decides el plan: madera, herramientas y refugio, en ese orden.",
+              "delta": 15
+            },
+            {
+              "text": "Acción instrumental: talas árboles, haces tablones y armas la mesa de crafteo.",
+              "delta": 25
+            },
+            {
+              "text": "Acción instrumental: fabricas un pico, sacas piedra y construyes el refugio.",
+              "delta": 40
+            },
+            {
+              "text": "Acción de control: revisas que no queden huecos y pones una puerta. ¡Noche superada!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica tu inventario",
+        "content": "Medios técnicos: con qué se trabaja (mesa de crafteo, horno, pico). Materiales: lo que se transforma (madera, piedra, hierro).",
+        "data": {
+          "prompt": "Arrastra cada cosa de tu inventario de Minecraft a su categoría.",
+          "buckets": [
+            "Medio técnico (con qué)",
+            "Material (qué se transforma)"
+          ],
+          "items": [
+            {
+              "t": "Mesa de crafteo",
+              "b": 0
+            },
+            {
+              "t": "Troncos de roble",
+              "b": 1
+            },
+            {
+              "t": "Horno",
+              "b": 0
+            },
+            {
+              "t": "Mineral de hierro",
+              "b": 1
+            },
+            {
+              "t": "Pico de piedra",
+              "b": 0
+            },
+            {
+              "t": "Bloques de piedra",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada jugada con su tipo de acción técnica.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Planear el refugio",
+              "b": "Acción estratégica"
+            },
+            {
+              "a": "Picar piedra",
+              "b": "Acción instrumental"
+            },
+            {
+              "a": "Revisar los huecos",
+              "b": "Acción de control"
+            },
+            {
+              "a": "Estudiar qué pico rinde",
+              "b": "Tecnología"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte de la técnica es cada cosa?",
+        "left_label": "Primera noche",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Sobrevivir a los mobs",
+            "right": "Necesidad"
+          },
+          {
+            "left": "Talar, craftear y construir",
+            "right": "Técnica"
+          },
+          {
+            "left": "Mesa de crafteo y horno",
+            "right": "Medios técnicos"
+          },
+          {
+            "left": "El refugio terminado",
+            "right": "Producto técnico"
+          }
+        ],
+        "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En Minecraft, el refugio que construyes para pasar la noche es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un medio técnico"
+            },
+            {
+              "letter": "B",
+              "text": "La necesidad inicial"
+            },
+            {
+              "letter": "C",
+              "text": "Un material de construcción"
+            },
+            {
+              "letter": "D",
+              "text": "Un producto técnico"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El refugio es el resultado de tus acciones, así que es un producto técnico. La necesidad era sobrevivir, y la madera y la piedra fueron los materiales.",
+          "difficulty": 1
+        },
+        {
+          "question": "En Zelda, antes de construir, decides que la balsa llevará dos ventiladores. ¿Qué tipo de acción es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Instrumental"
+            },
+            {
+              "letter": "B",
+              "text": "De control"
+            },
+            {
+              "letter": "C",
+              "text": "Estratégica"
+            },
+            {
+              "letter": "D",
+              "text": "De consumo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Decidir qué y cómo hacerlo es una acción estratégica. Pegar los ventiladores con la Ultramano sería instrumental, y probar la balsa en la orilla sería de control.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un jugador hace pruebas para entender por qué un pico de diamante rompe obsidiana y uno de hierro no. ¿Qué está haciendo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Craftear un medio"
+            },
+            {
+              "letter": "B",
+              "text": "Estudiar la técnica"
+            },
+            {
+              "letter": "C",
+              "text": "Usar un material"
+            },
+            {
+              "letter": "D",
+              "text": "Crear una necesidad"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Investigar por qué funciona algo para usarlo mejor es estudiar la técnica, que es lo que hace la tecnología. No está fabricando nada en ese momento.",
+          "difficulty": 3
+        },
+        {
+          "question": "En tu inventario de Minecraft, ¿cuál es un MEDIO técnico y no un material?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los troncos"
+            },
+            {
+              "letter": "B",
+              "text": "El horno"
+            },
+            {
+              "letter": "C",
+              "text": "El hierro"
+            },
+            {
+              "letter": "D",
+              "text": "La piedra"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El horno se usa para transformar otras cosas, pero no se convierte en el producto: es un medio. Troncos, hierro y piedra se transforman, por eso son materiales.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu primo dice: 'La consola es tecnología, pero un pico de verdad no'. ¿Qué confunde?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cree que solo lo electrónico es técnico"
+            },
+            {
+              "letter": "B",
+              "text": "Cree que el pico no está hecho de materiales"
+            },
+            {
+              "letter": "C",
+              "text": "Cree que la consola sí es un producto técnico"
+            },
+            {
+              "letter": "D",
+              "text": "Cree que picar es una acción técnica"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Confunde tecnología con aparatos electrónicos. Un pico también se diseñó y fabricó con un saber hacer para una necesidad, así que es un producto técnico, igual que la consola.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama el conjunto de acciones ordenadas que se hacen para obtener un producto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Técnica"
+        },
+        {
+          "letter": "B",
+          "text": "Tecnología"
+        },
+        {
+          "letter": "C",
+          "text": "Necesidad"
+        },
+        {
+          "letter": "D",
+          "text": "Insumo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en el saber hacer de un artesano, no en el estudio de ese saber.",
+      "explanation": "La técnica es el saber hacer ordenado. La tecnología es el campo que estudia la técnica, por eso se confunden."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la tecnología?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cualquier aparato moderno que use electricidad"
+        },
+        {
+          "letter": "B",
+          "text": "El campo que estudia la técnica"
+        },
+        {
+          "letter": "C",
+          "text": "Las herramientas que se usan en un taller"
+        },
+        {
+          "letter": "D",
+          "text": "Los productos que se venden en tiendas"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La palabra termina en -logía, como biología: estudio de algo.",
+      "explanation": "La tecnología estudia la técnica: cómo funciona, cómo mejorarla y sus efectos. Pensar que solo son aparatos electrónicos es el error más común."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "Un pan recién salido del horno de una panadería es un…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Medio técnico"
+        },
+        {
+          "letter": "B",
+          "text": "Producto técnico"
+        },
+        {
+          "letter": "C",
+          "text": "Acción de control"
+        },
+        {
+          "letter": "D",
+          "text": "Material"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Pregúntate si es el resultado del proceso o algo que se usa durante el proceso.",
+      "explanation": "El pan es el resultado del proceso técnico, así que es un producto. El horno sería el medio y la harina el material."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué impulsa a las personas a crear una técnica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una necesidad o un interés"
+        },
+        {
+          "letter": "B",
+          "text": "Tener una máquina nueva en casa"
+        },
+        {
+          "letter": "C",
+          "text": "Contar con mucho dinero"
+        },
+        {
+          "letter": "D",
+          "text": "Saber usar la computadora"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué hay antes de cualquier invento: algo que falta resolver.",
+      "explanation": "Toda técnica nace de una necesidad o interés que alguien quiere resolver. Las máquinas o el dinero ayudan, pero no son el origen."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En un taller de carpintería, ¿cuál de estos es un medio técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La madera de pino"
+        },
+        {
+          "letter": "B",
+          "text": "El serrucho"
+        },
+        {
+          "letter": "C",
+          "text": "El barniz"
+        },
+        {
+          "letter": "D",
+          "text": "Los clavos"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca lo que se usa para trabajar y no termina dentro del mueble.",
+      "explanation": "El serrucho es una herramienta: medio técnico. La madera, el barniz y los clavos terminan formando parte del mueble, por eso son materiales."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Planear qué se va a hacer y cómo, antes de empezar, es una acción…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Instrumental"
+        },
+        {
+          "letter": "B",
+          "text": "De control"
+        },
+        {
+          "letter": "C",
+          "text": "Estratégica"
+        },
+        {
+          "letter": "D",
+          "text": "Manual"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Hay tres tipos: decidir, ejecutar y revisar. ¿Cuál es este?",
+      "explanation": "Decidir qué y cómo hacer es una acción estratégica. La instrumental ejecuta con herramientas y la de control revisa el resultado."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Cortar una tabla con un serrucho es una acción…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Estratégica"
+        },
+        {
+          "letter": "B",
+          "text": "Instrumental"
+        },
+        {
+          "letter": "C",
+          "text": "De control"
+        },
+        {
+          "letter": "D",
+          "text": "De planeación"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "¿Se está decidiendo, ejecutando o revisando?",
+      "explanation": "Ejecutar con una herramienta es una acción instrumental. Si solo se midiera para revisar, sería de control."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Medir una mesa terminada para ver si quedó del tamaño planeado es una acción…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De control"
+        },
+        {
+          "letter": "B",
+          "text": "Estratégica"
+        },
+        {
+          "letter": "C",
+          "text": "Instrumental"
+        },
+        {
+          "letter": "D",
+          "text": "De consumo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en el propósito de medir en este momento: ¿planear o comprobar?",
+      "explanation": "Comprobar que el resultado salió como se planeó es una acción de control. Medir antes de cortar sería parte de la planeación."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál de estos ejemplos es un producto técnico que NO usa electricidad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un celular"
+        },
+        {
+          "letter": "B",
+          "text": "Un molcajete"
+        },
+        {
+          "letter": "C",
+          "text": "Una consola"
+        },
+        {
+          "letter": "D",
+          "text": "Un televisor"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca un objeto hecho por un artesano para preparar comida.",
+      "explanation": "El molcajete se hace tallando piedra con un saber hacer, así que es un producto técnico aunque no use electricidad."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "La harina, el agua y la levadura en una panadería son…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Medios técnicos de trabajo"
+        },
+        {
+          "letter": "B",
+          "text": "Acciones instrumentales"
+        },
+        {
+          "letter": "C",
+          "text": "Materiales o insumos"
+        },
+        {
+          "letter": "D",
+          "text": "Productos técnicos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Pregúntate si se transforman y terminan dentro del pan.",
+      "explanation": "Se transforman y terminan dentro del pan, por eso son materiales o insumos. El horno y la batidora serían los medios."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un alfarero amasa barro, lo moldea en el torno y lo hornea. ¿Qué elemento de la técnica es el torno?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un material de trabajo"
+        },
+        {
+          "letter": "B",
+          "text": "Un medio técnico"
+        },
+        {
+          "letter": "C",
+          "text": "El producto final"
+        },
+        {
+          "letter": "D",
+          "text": "La necesidad"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El torno no se convierte en la olla. ¿Entonces qué papel tiene?",
+      "explanation": "El torno es una máquina que ayuda a trabajar: medio técnico. El barro es el material y la olla el producto."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una familia necesita guardar agua de lluvia y construye un tinaco con un tambo y tubos. ¿Cuál es la necesidad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tener agua disponible"
+        },
+        {
+          "letter": "B",
+          "text": "Comprar un tambo grande"
+        },
+        {
+          "letter": "C",
+          "text": "Cortar y unir los tubos"
+        },
+        {
+          "letter": "D",
+          "text": "El tinaco ya terminado"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La necesidad es lo que falta, no lo que se usa ni lo que se fabrica.",
+      "explanation": "La necesidad es tener agua. Cortar tubos es una acción, el tambo es material y el tinaco es el producto."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿En qué caso se está hablando de TECNOLOGÍA y no solo de técnica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un cocinero prepara tortillas a mano en el comal"
+        },
+        {
+          "letter": "B",
+          "text": "Un grupo compara hornos para gastar menos gas"
+        },
+        {
+          "letter": "C",
+          "text": "Un carpintero lija una silla antes de barnizarla"
+        },
+        {
+          "letter": "D",
+          "text": "Una costurera cose un vestido para una boda"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca a alguien que estudie y compare, no solo a alguien que haga.",
+      "explanation": "Comparar y analizar procesos para mejorarlos es estudiar la técnica: tecnología. Las demás opciones son técnicas en acción, alguien haciendo algo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un arquitecto dibuja los planos de una casa antes de construir. ¿Qué tipo de acción técnica realiza?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Instrumental"
+        },
+        {
+          "letter": "B",
+          "text": "De control"
+        },
+        {
+          "letter": "C",
+          "text": "Estratégica"
+        },
+        {
+          "letter": "D",
+          "text": "De mantenimiento"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Los planos se hacen antes de poner un solo ladrillo.",
+      "explanation": "Dibujar planos es decidir qué se hará y cómo: acción estratégica. Construir sería instrumental y supervisar la obra terminada, de control."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué un huipil bordado a mano es un producto técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque se vende en los mercados de artesanías"
+        },
+        {
+          "letter": "B",
+          "text": "Porque usa hilos de colores muy llamativos"
+        },
+        {
+          "letter": "C",
+          "text": "Porque es resultado de un saber hacer"
+        },
+        {
+          "letter": "D",
+          "text": "Porque está hecho con una máquina de coser"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Lo que hace técnico a un objeto es cómo se obtuvo, no cómo se vende.",
+      "explanation": "Es técnico porque resulta de acciones ordenadas y un saber hacer transmitido. No necesita máquinas para serlo."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Ordena: revisar el resultado, detectar la necesidad, ejecutar con herramientas, planear. ¿Qué va en tercer lugar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Planear qué hacer"
+        },
+        {
+          "letter": "B",
+          "text": "Ejecutar con herramientas"
+        },
+        {
+          "letter": "C",
+          "text": "Revisar el resultado final"
+        },
+        {
+          "letter": "D",
+          "text": "Detectar la necesidad"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué tiene que existir antes de poder ejecutar algo.",
+      "explanation": "El orden es necesidad, planear, ejecutar y revisar. Ejecutar va tercero, después de planear."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En una tortillería, ¿qué par está bien clasificado?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Masa: medio técnico"
+        },
+        {
+          "letter": "B",
+          "text": "Máquina tortilladora: material"
+        },
+        {
+          "letter": "C",
+          "text": "Comal: medio técnico"
+        },
+        {
+          "letter": "D",
+          "text": "Tortilla: necesidad"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa cada par: ¿se usa para trabajar o se transforma?",
+      "explanation": "El comal sirve para cocer y no termina en la tortilla: es medio técnico. La masa es material, la máquina es medio y la tortilla es producto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un mecánico cambia una llanta y al final aprieta y revisa cada tuerca. ¿Qué tipo de acción es revisar las tuercas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Estratégica"
+        },
+        {
+          "letter": "B",
+          "text": "De control"
+        },
+        {
+          "letter": "C",
+          "text": "Instrumental"
+        },
+        {
+          "letter": "D",
+          "text": "De diseño"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La acción sirve para comprobar que el trabajo quedó bien.",
+      "explanation": "Revisar que el resultado sea seguro es una acción de control. Quitar y poner la llanta fueron acciones instrumentales."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué frase describe mejor la relación entre técnica y tecnología?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Son exactamente lo mismo"
+        },
+        {
+          "letter": "B",
+          "text": "La tecnología estudia y mejora la técnica"
+        },
+        {
+          "letter": "C",
+          "text": "La técnica solo usa máquinas modernas"
+        },
+        {
+          "letter": "D",
+          "text": "La tecnología es más antigua que la técnica"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una es el hacer y la otra es el conocimiento sobre ese hacer.",
+      "explanation": "La técnica es el saber hacer y la tecnología es su estudio, que permite mejorarla. No son sinónimos, aunque en la calle se usen igual."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un campesino usa una coa para sembrar maíz. ¿Qué es la coa en esta técnica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El producto final"
+        },
+        {
+          "letter": "B",
+          "text": "La necesidad inicial"
+        },
+        {
+          "letter": "C",
+          "text": "Un material o insumo"
+        },
+        {
+          "letter": "D",
+          "text": "Una herramienta"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "La coa no se siembra ni se cosecha: se usa para trabajar la tierra.",
+      "explanation": "La coa es una herramienta, un medio técnico. Las semillas serían el material y la milpa cosechada el producto."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Dos panaderías hacen el mismo pan, una con horno de leña y otra con horno eléctrico. ¿Qué cambia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La necesidad que satisfacen"
+        },
+        {
+          "letter": "B",
+          "text": "El tipo de producto final"
+        },
+        {
+          "letter": "C",
+          "text": "El medio técnico que usan"
+        },
+        {
+          "letter": "D",
+          "text": "Que una de ellas no tiene técnica"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Ambas quieren lo mismo y obtienen lo mismo. ¿Qué es distinto en el proceso?",
+      "explanation": "Cambia el medio técnico (el horno); la necesidad y el producto son iguales. Las dos panaderías siguen una técnica."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Alguien afirma: 'En la época prehispánica no había técnica porque no existían máquinas'. ¿Por qué es falso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque sí existían computadoras muy simples"
+        },
+        {
+          "letter": "B",
+          "text": "Porque había acciones ordenadas para producir"
+        },
+        {
+          "letter": "C",
+          "text": "Porque la técnica no necesita usar materiales"
+        },
+        {
+          "letter": "D",
+          "text": "Porque los objetos aparecían sin trabajo humano"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en las chinampas, la cerámica o las pirámides.",
+      "explanation": "Chinampas, cerámica y pirámides se lograron con acciones ordenadas y herramientas, es decir, con técnicas. Las máquinas no son requisito."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un estudiante dice que un cuchillo es material porque es de metal. ¿Cuál es su error?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Confunde lo que se usa con lo que se transforma"
+        },
+        {
+          "letter": "B",
+          "text": "Cree que el metal no puede ser un material técnico"
+        },
+        {
+          "letter": "C",
+          "text": "Cree que el cuchillo es la necesidad del proceso"
+        },
+        {
+          "letter": "D",
+          "text": "Olvida que todo cuchillo es una acción estratégica"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Que algo esté hecho de un material no lo vuelve material del proceso.",
+      "explanation": "Al cocinar, el cuchillo se usa para cortar: es medio técnico. Material es lo que se transforma, como las verduras."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Cuál situación muestra las tres acciones técnicas en el orden correcto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cocinar, probar la sazón, elegir la receta"
+        },
+        {
+          "letter": "B",
+          "text": "Probar la sazón, elegir la receta, cocinar"
+        },
+        {
+          "letter": "C",
+          "text": "Elegir la receta, cocinar, probar la sazón"
+        },
+        {
+          "letter": "D",
+          "text": "Elegir la receta, probar la sazón, cocinar"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Primero se decide, luego se hace y al final se revisa.",
+      "explanation": "Elegir la receta es estratégica, cocinar es instrumental y probar la sazón es de control. Ese es el orden lógico."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un mismo objeto puede ser producto en una técnica y medio en otra. ¿Cuál es el ejemplo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un martillo hecho por un herrero y usado por un carpintero"
+        },
+        {
+          "letter": "B",
+          "text": "Una tortilla que se come en el desayuno con frijoles y salsa"
+        },
+        {
+          "letter": "C",
+          "text": "Un árbol que crece solo en el bosque sin que nadie lo plante"
+        },
+        {
+          "letter": "D",
+          "text": "La lluvia que cae del cielo y riega la milpa del campesino"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca algo fabricado que después se use para fabricar otra cosa.",
+      "explanation": "El martillo es producto del herrero y medio técnico del carpintero. El árbol y la lluvia son naturales, no productos técnicos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una comunidad sin luz necesita leer de noche. ¿Qué secuencia describe una técnica completa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Comprar focos al azar, sin ningún plan, y ver qué pasa"
+        },
+        {
+          "letter": "B",
+          "text": "Diseñar una lámpara solar, armarla y probarla"
+        },
+        {
+          "letter": "C",
+          "text": "Estudiar la historia completa de la electricidad"
+        },
+        {
+          "letter": "D",
+          "text": "Esperar a que algún día llegue la red eléctrica"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una técnica completa tiene planeación, ejecución y control.",
+      "explanation": "Diseñar, armar y probar incluye las tres acciones y termina en un producto. Estudiar la historia sirve para aprender, pero no resuelve la necesidad."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué decimos que la técnica es un hecho social?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque solo existe en las redes sociales"
+        },
+        {
+          "letter": "B",
+          "text": "Porque se aprende, comparte y transmite"
+        },
+        {
+          "letter": "C",
+          "text": "Porque siempre la hace una sola persona"
+        },
+        {
+          "letter": "D",
+          "text": "Porque no depende de ninguna necesidad"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cómo aprendió un artesano a hacer su oficio.",
+      "explanation": "Las técnicas se aprenden de otras personas, se comparten y pasan de generación en generación, como el bordado o la alfarería."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo analiza por qué las chinampas producen tanto para aplicarlo en huertos urbanos. Esto es un ejemplo de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una acción instrumental"
+        },
+        {
+          "letter": "B",
+          "text": "Un medio técnico nuevo"
+        },
+        {
+          "letter": "C",
+          "text": "La tecnología en acción"
+        },
+        {
+          "letter": "D",
+          "text": "Una necesidad básica"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Están estudiando una técnica para mejorarla y llevarla a otro lugar.",
+      "explanation": "Estudiar una técnica para entenderla y aplicarla mejor es justo lo que hace la tecnología. Todavía no están sembrando, así que no es instrumental."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una técnica, ¿qué pasa si se omiten las acciones de control?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No se puede fabricar absolutamente nada"
+        },
+        {
+          "letter": "B",
+          "text": "El producto podría fallar sin que nadie lo note"
+        },
+        {
+          "letter": "C",
+          "text": "La necesidad desaparece sola con el tiempo"
+        },
+        {
+          "letter": "D",
+          "text": "Los materiales se convierten en medios técnicos"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué hace la revisión al final del proceso.",
+      "explanation": "Sin control nadie verifica que el producto funcione, así que puede fallar al usarse. Sí se puede fabricar, pero sin garantía."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál afirmación es correcta sobre las necesidades y los productos técnicos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cada necesidad tiene un solo producto técnico posible"
+        },
+        {
+          "letter": "B",
+          "text": "Una necesidad puede resolverse con productos distintos"
+        },
+        {
+          "letter": "C",
+          "text": "Los productos técnicos nunca resuelven necesidades reales"
+        },
+        {
+          "letter": "D",
+          "text": "Las necesidades humanas nunca cambian con el tiempo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cuántas formas hay de transportarse o de guardar agua.",
+      "explanation": "La necesidad de transportarse se resuelve con bici, camión o metro. Por eso hay muchas técnicas y productos para una misma necesidad."
+    }
+  ],
+  "diagnostic": {
+    "question": "En Puebla, un artesano amasa el barro, lo moldea, lo hornea y lo pinta para hacer talavera. Ese saber hacer ordenado se llama…",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Tecnología"
+      },
+      {
+        "letter": "B",
+        "text": "Técnica"
+      },
+      {
+        "letter": "C",
+        "text": "Insumo"
+      },
+      {
+        "letter": "D",
+        "text": "Máquina"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "Las acciones ordenadas para obtener un producto son la técnica. La tecnología es el campo que estudia esas técnicas para entenderlas y mejorarlas."
+  }
+}

@@ -1,0 +1,1849 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "procesador-de-textos-tec-1",
+  "order_steps": {
+    "prompt": "Ordena cómo insertar una tabla en tu documento",
+    "steps": [
+      "Poner el cursor donde irá la tabla",
+      "Ir al menú Insertar y elegir Tabla",
+      "Elegir cuántas filas y columnas tendrá",
+      "Escribir los datos en cada celda"
+    ],
+    "completion_feedback": "Primero eliges el **lugar**, luego insertas la **tabla** con sus **filas y columnas** y al final llenas las **celdas**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La ficha de los Sombrero de Paja para el club de anime",
+        "content": "En el club de anime de tu escuela te toca presentar a la tripulación de los Sombrero de Paja de One Piece, y la maestra quiere un documento impreso, no un mensaje de WhatsApp. Abres el procesador de textos y escribes todo de corrido: nombres, roles y sueños, sin espacios, todo del mismo tamaño. Se ve como un muro de texto que nadie va a leer. Así que empiezas a darle forma. El título, La tripulación de Luffy, lo pones más grande, en negritas y centrado. Los párrafos de explicación los alineas parejos a los dos lados. Y en lugar de escribir uno por uno quién es quién, insertas una tabla: una columna para el personaje, otra para su rol y otra para su sueño. Luffy, capitán, quiere ser el Rey de los Piratas; Zoro, espadachín, el mejor del mundo; Nami, navegante, dibujar el mapa del mundo. Al final agregas un pie de página con tu nombre y el número de página. El mismo texto, ahora se entiende de un vistazo. Eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu ficha del club ES trabajo con procesador de textos",
+        "content": "Lo que acabas de ver con la ficha de los Sombrero de Paja es exactamente el trabajo con un **procesador de textos** (Word, Google Docs o LibreOffice Writer): un programa para crear, editar y dar **formato** a documentos. El **formato de fuente** cambia las letras: tipo, **tamaño**, **negrita**, cursiva y color. El **formato de párrafo** cambia el bloque: **alineación** (izquierda, centrada, derecha o **justificada**), interlineado y sangría. Una **tabla** ordena datos en **filas** y **columnas**, y cada cuadrito es una **celda**. El **encabezado** y el **pie de página** se repiten en todas las hojas."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu reseña de Demon Slayer",
+        "content": "Vas a entregar una reseña de Demon Slayer bien presentada.\n\n**Paso 1:** Escribes el título y lo pones centrado, en negritas y en tamaño 16 → **formato de fuente y de párrafo**.\n**Paso 2:** Justificas los párrafos de tu opinión para que queden parejos → **alineación justificada**.\n**Paso 3:** Haces una lista con viñetas de los Pilares que aparecen → **viñetas**.\n**Paso 4:** Insertas una tabla de 3 columnas: Personaje, Respiración y Arco → **tabla**.\n**Paso 5:** Agregas tu nombre en el pie de página y la guardas como PDF para entregarla.\n\nResultado: una reseña que se lee fácil y se ve profesional."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **procesador de textos** sirve para crear y dar formato a documentos. **Formato de fuente**: tipo, tamaño, **negrita**, cursiva, color. **Formato de párrafo**: **alineación**, interlineado, sangría. Una **tabla** tiene **filas** (horizontales), **columnas** (verticales) y **celdas** (donde se cruzan)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Si el cambio afecta solo a las letras que seleccionaste (negrita, color, tamaño), es formato de fuente. Si afecta a todo el bloque (centrar, justificar, interlineado), es formato de párrafo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada herramienta de formato hace la ficha más fácil de leer.",
+        "data": {
+          "intro": "Tu ficha de los Sombrero de Paja es un muro de texto. El medidor muestra qué tan presentable está. Aplica el formato paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Pones el título en negritas, tamaño 18 y centrado. Ya se nota de qué trata.",
+              "delta": 20
+            },
+            {
+              "text": "Justificas los párrafos y dejas un espacio entre ellos. Se lee más cómodo.",
+              "delta": 20
+            },
+            {
+              "text": "Insertas una tabla de 3 columnas: Personaje, Rol y Sueño. Los datos quedan ordenados.",
+              "delta": 30
+            },
+            {
+              "text": "Agregas tu nombre y el número de página en el pie de página. ¡Lista para imprimir!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Fuente o párrafo",
+        "content": "Formato de fuente: cambia las letras (negrita, tamaño, color). Formato de párrafo: cambia el bloque (alineación, interlineado, sangría).",
+        "data": {
+          "prompt": "Arrastra cada cambio que le hiciste a tu ficha a su tipo de formato.",
+          "buckets": [
+            "Formato de fuente",
+            "Formato de párrafo"
+          ],
+          "items": [
+            {
+              "t": "Poner Luffy en negritas",
+              "b": 0
+            },
+            {
+              "t": "Centrar el título",
+              "b": 1
+            },
+            {
+              "t": "Tamaño 18 al título",
+              "b": 0
+            },
+            {
+              "t": "Justificar la explicación",
+              "b": 1
+            },
+            {
+              "t": "Color rojo a 'Rey de los Piratas'",
+              "b": 0
+            },
+            {
+              "t": "Doble interlineado",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta del procesador de textos con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Justificado",
+              "b": "Parejo a ambos lados"
+            },
+            {
+              "a": "Celda",
+              "b": "Cruce fila-columna"
+            },
+            {
+              "a": "Pie de página",
+              "b": "Abajo de cada hoja"
+            },
+            {
+              "a": "Viñetas",
+              "b": "Lista con puntos"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué herramienta usaste en cada parte de tu ficha?",
+        "left_label": "Ficha del club",
+        "right_label": "Herramienta",
+        "pairs": [
+          {
+            "left": "Título grande y en negritas",
+            "right": "Formato de fuente"
+          },
+          {
+            "left": "Párrafos parejos a los lados",
+            "right": "Alineación justificada"
+          },
+          {
+            "left": "Personaje, rol y sueño",
+            "right": "Tabla"
+          },
+          {
+            "left": "Tu nombre abajo de cada hoja",
+            "right": "Pie de página"
+          }
+        ],
+        "completion_feedback": "Cada parte de la ficha usó una herramienta distinta: **fuente**, **párrafo**, **tabla** y **pie de página**. Ahora ponle nombre formal a cada una."
+      },
+      "quiz": [
+        {
+          "question": "En tu tabla, Personaje, Rol y Sueño son los títulos de arriba y debajo de cada uno van los datos. ¿Qué encabeza cada título?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una columna"
+            },
+            {
+              "letter": "B",
+              "text": "El pie de página"
+            },
+            {
+              "letter": "C",
+              "text": "Una sola celda grande"
+            },
+            {
+              "letter": "D",
+              "text": "Una lista con viñetas"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cada título encabeza una columna, que corre de arriba abajo. Juntos, los tres títulos forman la primera fila de la tabla.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres que el título La tripulación de Luffy quede a la mitad de la hoja. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Negritas"
+            },
+            {
+              "letter": "B",
+              "text": "Tamaño de letra mayor"
+            },
+            {
+              "letter": "C",
+              "text": "Alinear al centro"
+            },
+            {
+              "letter": "D",
+              "text": "Un pie de página"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Centrar es una alineación de párrafo que lo pone a la mitad. Las negritas y el tamaño cambian cómo se ven las letras, no dónde quedan.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tabla tiene 4 personajes, una fila de títulos y 3 columnas. ¿Cuántas celdas tiene en total?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "12 celdas"
+            },
+            {
+              "letter": "B",
+              "text": "15 celdas"
+            },
+            {
+              "letter": "C",
+              "text": "7 celdas"
+            },
+            {
+              "letter": "D",
+              "text": "9 celdas"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Son 5 filas (4 personajes más la de títulos) por 3 columnas: 5 × 3 = 15. Si olvidas la fila de títulos te salen 12.",
+          "difficulty": 3
+        },
+        {
+          "question": "Pones el nombre de Zoro en negritas. ¿Qué tipo de formato aplicaste?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De párrafo"
+            },
+            {
+              "letter": "B",
+              "text": "De página"
+            },
+            {
+              "letter": "C",
+              "text": "De fuente"
+            },
+            {
+              "letter": "D",
+              "text": "De tabla"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La negrita cambia cómo se ven las letras, así que es formato de fuente. El de párrafo cambiaría la alineación o el interlineado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Quieres que tu nombre aparezca abajo en las 5 hojas de la ficha sin escribirlo 5 veces. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una tabla al final"
+            },
+            {
+              "letter": "B",
+              "text": "El pie de página"
+            },
+            {
+              "letter": "C",
+              "text": "Viñetas en cada hoja"
+            },
+            {
+              "letter": "D",
+              "text": "Copiar y pegar en cada hoja"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El pie de página se repite solo en todas las hojas. Copiar y pegar funcionaría, pero se descuadra si agregas o quitas texto.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La convocatoria del torneo relámpago",
+        "content": "Tu escuela va a organizar un torneo relámpago de fútbol y a ti te toca hacer la convocatoria para pegarla en el periódico mural. Abres el procesador de textos y escribes todo de corrido: fechas, equipos, reglas y horarios, todo del mismo tamaño y sin espacios. Nadie lo va a leer. Así que le das forma como lo haría la Liga MX. El título, Torneo Relámpago Copa Secundaria, lo pones grande, en negritas y centrado. Las reglas las escribes como lista con viñetas: partidos de 20 minutos, cinco jugadores por equipo, no se vale barrerse. Para los horarios insertas una tabla con tres columnas: Partido, Hora y Cancha. Así cada quien encuentra su juego de un vistazo. Los párrafos de explicación los alineas parejos a los dos lados, y en el encabezado pones el escudo de la escuela para que salga en todas las hojas. El mismo texto, ahora parece una convocatoria oficial. Esa transformación es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu convocatoria ES trabajo con procesador de textos",
+        "content": "Lo que acabas de ver con la convocatoria del torneo es exactamente el trabajo con un **procesador de textos** (Word, Google Docs o LibreOffice Writer): un programa para crear, editar y dar **formato** a documentos. El **formato de fuente** cambia las letras: tipo, **tamaño**, **negrita**, cursiva y color. El **formato de párrafo** cambia el bloque: **alineación** (izquierda, centrada, derecha o **justificada**), interlineado y sangría. Una **tabla** ordena datos en **filas** y **columnas**, y cada cuadrito es una **celda**. El **encabezado** y el **pie de página** se repiten en todas las hojas."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la crónica del partido para el periódico escolar",
+        "content": "Escribes la crónica de la final del torneo.\n\n**Paso 1:** Título centrado y en negritas: ¡Campeones! → **formato de fuente y de párrafo**.\n**Paso 2:** Justificas el texto de la crónica → **alineación justificada**.\n**Paso 3:** Pones en cursiva lo que dijo el capitán → **formato de fuente**.\n**Paso 4:** Insertas una tabla con Equipo, Goles y Tarjetas → **tabla de 3 columnas**.\n**Paso 5:** Revisas la ortografía con la herramienta del programa y guardas como PDF.\n\nResultado: una crónica que parece de periódico deportivo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **procesador de textos** sirve para crear y dar formato a documentos. **Formato de fuente**: tipo, tamaño, **negrita**, cursiva, color. **Formato de párrafo**: **alineación**, interlineado, sangría. Una **tabla** tiene **filas** (horizontales), **columnas** (verticales) y **celdas** (donde se cruzan)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en una tabla de posiciones: cada equipo es una fila (va de lado a lado), cada dato como goles o puntos es una columna (va de arriba abajo) y cada número es una celda."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada herramienta de formato hace la convocatoria más fácil de leer.",
+        "data": {
+          "intro": "Tu convocatoria del torneo es un bloque de texto gris. El medidor muestra qué tan clara está. Aplica el formato paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Pones el título en negritas, tamaño 20 y centrado. Se ve desde lejos.",
+              "delta": 20
+            },
+            {
+              "text": "Escribes las reglas como lista con viñetas. Cada regla se lee por separado.",
+              "delta": 20
+            },
+            {
+              "text": "Insertas una tabla con Partido, Hora y Cancha. Todos encuentran su juego.",
+              "delta": 30
+            },
+            {
+              "text": "Pones el escudo de la escuela en el encabezado para que salga en todas las hojas. ¡Lista!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Fuente o párrafo",
+        "content": "Formato de fuente: cambia las letras (negrita, tamaño, color). Formato de párrafo: cambia el bloque (alineación, interlineado, sangría).",
+        "data": {
+          "prompt": "Arrastra cada cambio que le hiciste a la convocatoria a su tipo de formato.",
+          "buckets": [
+            "Formato de fuente",
+            "Formato de párrafo"
+          ],
+          "items": [
+            {
+              "t": "Título en negritas",
+              "b": 0
+            },
+            {
+              "t": "Centrar el título",
+              "b": 1
+            },
+            {
+              "t": "Letra color verde",
+              "b": 0
+            },
+            {
+              "t": "Justificar las reglas",
+              "b": 1
+            },
+            {
+              "t": "Cursiva a la frase del capitán",
+              "b": 0
+            },
+            {
+              "t": "Sangría al inicio del párrafo",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta del procesador de textos con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Fila",
+              "b": "Horizontal"
+            },
+            {
+              "a": "Columna",
+              "b": "Vertical"
+            },
+            {
+              "a": "Encabezado",
+              "b": "Arriba de cada hoja"
+            },
+            {
+              "a": "Cursiva",
+              "b": "Letra inclinada"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué herramienta usaste en cada parte de la convocatoria?",
+        "left_label": "Convocatoria",
+        "right_label": "Herramienta",
+        "pairs": [
+          {
+            "left": "Título grande y en negritas",
+            "right": "Formato de fuente"
+          },
+          {
+            "left": "Reglas una debajo de otra",
+            "right": "Viñetas"
+          },
+          {
+            "left": "Partido, hora y cancha",
+            "right": "Tabla"
+          },
+          {
+            "left": "Escudo arriba de cada hoja",
+            "right": "Encabezado"
+          }
+        ],
+        "completion_feedback": "Cada parte de la convocatoria usó una herramienta distinta: **fuente**, **viñetas**, **tabla** y **encabezado**. Ahora ponle nombre formal a cada una."
+      },
+      "quiz": [
+        {
+          "question": "En la tabla de horarios, cada partido ocupa un renglón que va de lado a lado. ¿Cómo se llama?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fila"
+            },
+            {
+              "letter": "B",
+              "text": "Columna"
+            },
+            {
+              "letter": "C",
+              "text": "Viñeta"
+            },
+            {
+              "letter": "D",
+              "text": "Margen"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Lo que va de lado a lado es una fila. Las columnas van de arriba abajo, como Hora o Cancha.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres las reglas del torneo una debajo de otra, cada una con un puntito. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una tabla"
+            },
+            {
+              "letter": "B",
+              "text": "Viñetas"
+            },
+            {
+              "letter": "C",
+              "text": "Negritas"
+            },
+            {
+              "letter": "D",
+              "text": "Encabezado"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las viñetas crean listas con un punto al inicio de cada elemento. Una tabla serviría para datos en columnas, no para una lista simple.",
+          "difficulty": 2
+        },
+        {
+          "question": "Hay 6 partidos y una fila de títulos, con las columnas Partido, Hora y Cancha. ¿Cuántas celdas tiene la tabla?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "18 celdas"
+            },
+            {
+              "letter": "B",
+              "text": "21 celdas"
+            },
+            {
+              "letter": "C",
+              "text": "9 celdas"
+            },
+            {
+              "letter": "D",
+              "text": "10 celdas"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Son 7 filas (6 partidos más los títulos) por 3 columnas: 7 × 3 = 21. Si olvidas la fila de títulos te salen 18.",
+          "difficulty": 3
+        },
+        {
+          "question": "Alineas los párrafos de la crónica para que queden parejos a la izquierda y a la derecha. ¿Qué alineación es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Centrada"
+            },
+            {
+              "letter": "B",
+              "text": "A la izquierda"
+            },
+            {
+              "letter": "C",
+              "text": "A la derecha"
+            },
+            {
+              "letter": "D",
+              "text": "Justificada"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La justificada empareja ambos bordes. La izquierda solo empareja el borde izquierdo y deja el derecho disparejo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Cambias la letra de la convocatoria a color verde y la centras. ¿Qué tipos de formato usaste?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo de fuente, por el color"
+            },
+            {
+              "letter": "B",
+              "text": "Solo de párrafo, por centrar"
+            },
+            {
+              "letter": "C",
+              "text": "De fuente y de párrafo"
+            },
+            {
+              "letter": "D",
+              "text": "De tabla y de página"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El color cambia las letras (fuente) y centrar cambia la posición del bloque (párrafo). Usaste los dos tipos.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El reporte de BLACKPINK para la clase",
+        "content": "La maestra pidió un reporte sobre un artista que admires y tú elegiste a BLACKPINK. Abres el procesador de textos y escribes todo de corrido: cuándo debutaron, quiénes son, sus canciones como solistas, todo del mismo tamaño y sin pausas. Parece un muro de texto. Así que le das forma como si fuera el folleto de un comeback. El título, BLACKPINK: de YG al mundo, lo pones grande, en negritas, color rosa y centrado. Los párrafos los alineas parejos a los dos lados para que se vean ordenados. Para presentar a las integrantes insertas una tabla con dos columnas, Integrante y Canción solista: Jisoo con Flower, Jennie con SOLO, Rosé con On The Ground y Lisa con LALISA. En el encabezado pones el nombre de tu escuela para que salga en cada hoja. Al final revisas la ortografía con la herramienta del programa. El mismo texto, ahora se ve como un reporte de verdad. Esa transformación es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu reporte de BLACKPINK ES trabajo con procesador de textos",
+        "content": "Lo que acabas de ver con el reporte es exactamente el trabajo con un **procesador de textos** (Word, Google Docs o LibreOffice Writer): un programa para crear, editar y dar **formato** a documentos. El **formato de fuente** cambia las letras: tipo, **tamaño**, **negrita**, cursiva y **color**. El **formato de párrafo** cambia el bloque: **alineación** (izquierda, centrada, derecha o **justificada**), interlineado y sangría. Una **tabla** ordena datos en **filas** y **columnas**, y cada cuadrito es una **celda**. El **encabezado** y el **pie de página** se repiten en todas las hojas."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la guía de K-dramas para tu amiga",
+        "content": "Tu amiga quiere empezar a ver K-dramas y le haces una guía.\n\n**Paso 1:** Título centrado, en negritas y tamaño 18: Mis K-dramas favoritos → **fuente y párrafo**.\n**Paso 2:** Una lista con viñetas de lo que necesita saber antes de empezar → **viñetas**.\n**Paso 3:** Una tabla de 3 columnas: Drama, Género y Episodios → **tabla**.\n**Paso 4:** Pones en cursiva los nombres en coreano → **formato de fuente**.\n**Paso 5:** Cambias la orientación a horizontal porque la tabla es ancha → **formato de página**.\n\nResultado: una guía clara que se lee en un minuto."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **procesador de textos** sirve para crear y dar formato a documentos. **Formato de fuente**: tipo, tamaño, **negrita**, cursiva, color. **Formato de párrafo**: **alineación**, interlineado, sangría. Una **tabla** tiene **filas** (horizontales), **columnas** (verticales) y **celdas** (donde se cruzan)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el formato de fuente como el outfit de cada palabra (color, tamaño, negrita) y en el formato de párrafo como la formación del grupo en el escenario (centrado, a la izquierda, justificado)."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada herramienta de formato hace el reporte más fácil de leer.",
+        "data": {
+          "intro": "Tu reporte de BLACKPINK es un bloque de texto. El medidor muestra qué tan presentable está. Aplica el formato paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Pones el título en negritas, rosa, tamaño 20 y centrado.",
+              "delta": 20
+            },
+            {
+              "text": "Justificas los párrafos y dejas un espacio entre ellos.",
+              "delta": 20
+            },
+            {
+              "text": "Insertas una tabla con Integrante y Canción solista para las cuatro.",
+              "delta": 30
+            },
+            {
+              "text": "Revisas la ortografía y pones tu escuela en el encabezado. ¡Reporte listo!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Fuente o párrafo",
+        "content": "Formato de fuente: cambia las letras (negrita, tamaño, color). Formato de párrafo: cambia el bloque (alineación, interlineado, sangría).",
+        "data": {
+          "prompt": "Arrastra cada cambio que le hiciste al reporte a su tipo de formato.",
+          "buckets": [
+            "Formato de fuente",
+            "Formato de párrafo"
+          ],
+          "items": [
+            {
+              "t": "Título color rosa",
+              "b": 0
+            },
+            {
+              "t": "Centrar el título",
+              "b": 1
+            },
+            {
+              "t": "Negritas a 'Jennie'",
+              "b": 0
+            },
+            {
+              "t": "Justificar los párrafos",
+              "b": 1
+            },
+            {
+              "t": "Cursiva a palabras en coreano",
+              "b": 0
+            },
+            {
+              "t": "Interlineado de 1.5",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta del procesador de textos con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Justificado",
+              "b": "Parejo a ambos lados"
+            },
+            {
+              "a": "Celda",
+              "b": "Cruce fila-columna"
+            },
+            {
+              "a": "Encabezado",
+              "b": "Arriba de cada hoja"
+            },
+            {
+              "a": "Ortografía",
+              "b": "Revisa palabras"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué herramienta usaste en cada parte del reporte?",
+        "left_label": "Reporte BLACKPINK",
+        "right_label": "Herramienta",
+        "pairs": [
+          {
+            "left": "Título rosa y en negritas",
+            "right": "Formato de fuente"
+          },
+          {
+            "left": "Párrafos parejos a los lados",
+            "right": "Alineación justificada"
+          },
+          {
+            "left": "Integrante y canción solista",
+            "right": "Tabla"
+          },
+          {
+            "left": "Tu escuela arriba de cada hoja",
+            "right": "Encabezado"
+          }
+        ],
+        "completion_feedback": "Cada parte del reporte usó una herramienta distinta: **fuente**, **párrafo**, **tabla** y **encabezado**. Ahora ponle nombre formal a cada una."
+      },
+      "quiz": [
+        {
+          "question": "Pones el título del reporte en color rosa. ¿Qué tipo de formato es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De párrafo"
+            },
+            {
+              "letter": "B",
+              "text": "De fuente"
+            },
+            {
+              "letter": "C",
+              "text": "De tabla"
+            },
+            {
+              "letter": "D",
+              "text": "De página"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El color cambia cómo se ven las letras, así que es formato de fuente. El de párrafo cambia la alineación o el espacio entre líneas.",
+          "difficulty": 1
+        },
+        {
+          "question": "En la tabla de integrantes, Integrante y Canción solista van de arriba abajo. ¿Qué son?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Filas"
+            },
+            {
+              "letter": "B",
+              "text": "Celdas sueltas"
+            },
+            {
+              "letter": "C",
+              "text": "Columnas"
+            },
+            {
+              "letter": "D",
+              "text": "Viñetas"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Lo que corre de arriba abajo son columnas. Cada integrante ocupa una fila, que va de lado a lado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tabla tiene 4 integrantes, una fila de títulos y 2 columnas. ¿Cuántas celdas tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "8 celdas"
+            },
+            {
+              "letter": "B",
+              "text": "6 celdas"
+            },
+            {
+              "letter": "C",
+              "text": "12 celdas"
+            },
+            {
+              "letter": "D",
+              "text": "10 celdas"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Son 5 filas (4 integrantes más los títulos) por 2 columnas: 5 × 2 = 10. Si olvidas la fila de títulos te salen 8.",
+          "difficulty": 3
+        },
+        {
+          "question": "Escribiste 'cansión' en lugar de 'canción' y el programa la subraya en rojo. ¿Qué herramienta te avisó?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La revisión ortográfica"
+            },
+            {
+              "letter": "B",
+              "text": "El formato de párrafo"
+            },
+            {
+              "letter": "C",
+              "text": "La alineación del texto"
+            },
+            {
+              "letter": "D",
+              "text": "El pie de página"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La revisión ortográfica marca las palabras que no reconoce o tienen errores. Las otras herramientas cambian el aspecto, no revisan palabras.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tabla de K-dramas no cabe a lo ancho de la hoja. ¿Qué cambio de página ayuda más?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Poner todo en negritas"
+            },
+            {
+              "letter": "B",
+              "text": "Orientación horizontal"
+            },
+            {
+              "letter": "C",
+              "text": "Justificar los párrafos"
+            },
+            {
+              "letter": "D",
+              "text": "Agregar un encabezado"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La orientación horizontal hace la hoja más ancha, así cabe la tabla. Las negritas o justificar no le dan espacio extra.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "La guía de tu equipo Pokémon",
+        "content": "Tu primo va a empezar su primera aventura Pokémon y le prometiste una guía de tu equipo inicial para que no pierda contra el primer gimnasio. Abres el procesador de textos y escribes todo de corrido: los Pokémon, sus tipos, sus debilidades y tus consejos, todo del mismo tamaño. Ni tú lo entiendes. Así que le das forma. El título, Guía para tu primera aventura, lo pones grande, en negritas y centrado. Los consejos los escribes como lista con viñetas: guarda Pociones, captura un Pokémon de cada tipo, no pelees contra el líder sin subir de nivel. Para los Pokémon insertas una tabla con tres columnas, Pokémon, Tipo y Debilidad: Pikachu es eléctrico y débil contra tierra; Squirtle es agua y débil contra planta y eléctrico; Charmander es fuego y débil contra agua. Al final pones tu nombre en el pie de página. Ahora tu primo entiende todo de un vistazo. Esa transformación es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu guía Pokémon ES trabajo con procesador de textos",
+        "content": "Lo que acabas de ver con la guía Pokémon es exactamente el trabajo con un **procesador de textos** (Word, Google Docs o LibreOffice Writer): un programa para crear, editar y dar **formato** a documentos. El **formato de fuente** cambia las letras: tipo, **tamaño**, **negrita**, cursiva y color. El **formato de párrafo** cambia el bloque: **alineación** (izquierda, centrada, derecha o **justificada**), interlineado y sangría. Una **tabla** ordena datos en **filas** y **columnas**, y cada cuadrito es una **celda**. El **encabezado** y el **pie de página** se repiten en todas las hojas."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las reglas de tu servidor de Minecraft",
+        "content": "Abres un servidor de Minecraft con tus amigos y escribes las reglas.\n\n**Paso 1:** Título centrado y en negritas: Reglas del servidor → **fuente y párrafo**.\n**Paso 2:** Las reglas como lista numerada: no destruir casas ajenas, no robar cofres → **numeración**.\n**Paso 3:** Una tabla de 2 columnas, Jugador y Rol, para saber quién es admin → **tabla**.\n**Paso 4:** Subrayas la regla más importante → **formato de fuente**.\n**Paso 5:** Lo exportas a PDF para que se vea igual en todos lados y sea difícil de cambiar.\n\nResultado: reglas claras que todos pueden leer."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **procesador de textos** sirve para crear y dar formato a documentos. **Formato de fuente**: tipo, tamaño, **negrita**, cursiva, color. **Formato de párrafo**: **alineación**, interlineado, sangría. Una **tabla** tiene **filas** (horizontales), **columnas** (verticales) y **celdas** (donde se cruzan)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en tu inventario: cada casilla es una celda, cada renglón de casillas es una fila y cada línea vertical es una columna. Y si te equivocas al dar formato, Ctrl+Z deshace el cambio."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada herramienta de formato hace la guía más fácil de usar.",
+        "data": {
+          "intro": "Tu guía Pokémon es un bloque de texto que nadie entiende. El medidor muestra qué tan útil es. Aplica el formato paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Pones el título en negritas, tamaño 18 y centrado.",
+              "delta": 20
+            },
+            {
+              "text": "Escribes los consejos como lista con viñetas, uno por línea.",
+              "delta": 20
+            },
+            {
+              "text": "Insertas una tabla con Pokémon, Tipo y Debilidad.",
+              "delta": 30
+            },
+            {
+              "text": "Agregas tu nombre en el pie de página y la guardas como PDF. ¡Guía lista!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Fuente o párrafo",
+        "content": "Formato de fuente: cambia las letras (negrita, tamaño, color). Formato de párrafo: cambia el bloque (alineación, interlineado, sangría).",
+        "data": {
+          "prompt": "Arrastra cada cambio que le hiciste a tu guía a su tipo de formato.",
+          "buckets": [
+            "Formato de fuente",
+            "Formato de párrafo"
+          ],
+          "items": [
+            {
+              "t": "Pikachu en color amarillo",
+              "b": 0
+            },
+            {
+              "t": "Centrar el título",
+              "b": 1
+            },
+            {
+              "t": "Subrayar la regla clave",
+              "b": 0
+            },
+            {
+              "t": "Justificar los consejos",
+              "b": 1
+            },
+            {
+              "t": "Título en tamaño 18",
+              "b": 0
+            },
+            {
+              "t": "Más espacio entre líneas",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta del procesador de textos con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Ctrl+Z",
+              "b": "Deshacer"
+            },
+            {
+              "a": "Celda",
+              "b": "Cruce fila-columna"
+            },
+            {
+              "a": "Numeración",
+              "b": "Lista 1, 2, 3"
+            },
+            {
+              "a": "Exportar a PDF",
+              "b": "Difícil de modificar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué herramienta usaste en cada parte de tu guía?",
+        "left_label": "Guía Pokémon",
+        "right_label": "Herramienta",
+        "pairs": [
+          {
+            "left": "Título grande y en negritas",
+            "right": "Formato de fuente"
+          },
+          {
+            "left": "Consejos con puntitos",
+            "right": "Viñetas"
+          },
+          {
+            "left": "Pokémon, tipo y debilidad",
+            "right": "Tabla"
+          },
+          {
+            "left": "Tu nombre abajo de cada hoja",
+            "right": "Pie de página"
+          }
+        ],
+        "completion_feedback": "Cada parte de la guía usó una herramienta distinta: **fuente**, **viñetas**, **tabla** y **pie de página**. Ahora ponle nombre formal a cada una."
+      },
+      "quiz": [
+        {
+          "question": "En la tabla de tu guía, el cuadro donde dice Eléctrico, al cruzar la fila de Pikachu con la columna Tipo, es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una celda"
+            },
+            {
+              "letter": "B",
+              "text": "Una columna"
+            },
+            {
+              "letter": "C",
+              "text": "Una fila completa"
+            },
+            {
+              "letter": "D",
+              "text": "Un pie de página"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El cuadro donde se cruzan una fila y una columna es una celda. La columna Tipo y la fila de Pikachu tienen varias celdas.",
+          "difficulty": 1
+        },
+        {
+          "question": "Te equivocaste al poner todo en cursiva. ¿Qué haces para regresar al paso anterior?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ctrl+C"
+            },
+            {
+              "letter": "B",
+              "text": "Ctrl+Z"
+            },
+            {
+              "letter": "C",
+              "text": "Ctrl+V"
+            },
+            {
+              "letter": "D",
+              "text": "Ctrl+P"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Ctrl+Z deshace el último cambio. Ctrl+C copia, Ctrl+V pega y Ctrl+P manda a imprimir.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tabla tiene 3 Pokémon, una fila de títulos y 3 columnas. Agregas a Bulbasaur. ¿Cuántas celdas quedan?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "12 celdas"
+            },
+            {
+              "letter": "B",
+              "text": "9 celdas"
+            },
+            {
+              "letter": "C",
+              "text": "15 celdas"
+            },
+            {
+              "letter": "D",
+              "text": "16 celdas"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Quedan 5 filas (4 Pokémon más los títulos) por 3 columnas: 5 × 3 = 15. Si olvidas la fila de títulos te salen 12.",
+          "difficulty": 3
+        },
+        {
+          "question": "Quieres que las reglas del servidor queden como 1, 2, 3 en lugar de puntitos. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Viñetas"
+            },
+            {
+              "letter": "B",
+              "text": "Una tabla de 1 columna"
+            },
+            {
+              "letter": "C",
+              "text": "Negritas en cada regla"
+            },
+            {
+              "letter": "D",
+              "text": "Numeración"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La numeración crea listas con números en orden. Las viñetas también hacen listas, pero con puntos o símbolos.",
+          "difficulty": 2
+        },
+        {
+          "question": "Mandas tus reglas en PDF y no en .docx. ¿Cuál es la principal ventaja?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se ve igual en todos lados"
+            },
+            {
+              "letter": "B",
+              "text": "Se puede editar más fácil"
+            },
+            {
+              "letter": "C",
+              "text": "Agrega tablas automáticas"
+            },
+            {
+              "letter": "D",
+              "text": "Corrige solo la ortografía"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El PDF conserva el formato en cualquier equipo y es difícil de modificar. El .docx es más fácil de editar, que es justo lo que no quieres.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos programas es un procesador de textos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Word"
+        },
+        {
+          "letter": "B",
+          "text": "Excel"
+        },
+        {
+          "letter": "C",
+          "text": "Paint"
+        },
+        {
+          "letter": "D",
+          "text": "Chrome"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el que sirve para escribir documentos.",
+      "explanation": "Word es un procesador de textos. Excel es hoja de cálculo, Paint es de dibujo y Chrome es navegador."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "Poner una palabra en negritas es un cambio de formato de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Párrafo"
+        },
+        {
+          "letter": "B",
+          "text": "Fuente"
+        },
+        {
+          "letter": "C",
+          "text": "Página"
+        },
+        {
+          "letter": "D",
+          "text": "Tabla"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "¿Cambia las letras o la posición del bloque?",
+      "explanation": "La negrita cambia el aspecto de las letras: formato de fuente. Alinear sería formato de párrafo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En una tabla, las líneas que van de arriba hacia abajo se llaman…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Filas"
+        },
+        {
+          "letter": "B",
+          "text": "Celdas sueltas"
+        },
+        {
+          "letter": "C",
+          "text": "Columnas"
+        },
+        {
+          "letter": "D",
+          "text": "Bordes"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en las columnas de un edificio: son verticales.",
+      "explanation": "Las columnas son verticales y las filas horizontales. La celda es donde se cruzan."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué alineación pone el texto a la mitad de la hoja?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Izquierda"
+        },
+        {
+          "letter": "B",
+          "text": "Justificada"
+        },
+        {
+          "letter": "C",
+          "text": "Derecha"
+        },
+        {
+          "letter": "D",
+          "text": "Centrada"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Se usa mucho para los títulos.",
+      "explanation": "La alineación centrada pone el texto a la mitad. La justificada empareja ambos bordes."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "El cuadrito donde se cruzan una fila y una columna se llama…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Celda"
+        },
+        {
+          "letter": "B",
+          "text": "Margen"
+        },
+        {
+          "letter": "C",
+          "text": "Viñeta"
+        },
+        {
+          "letter": "D",
+          "text": "Sangría"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es donde escribes cada dato de la tabla.",
+      "explanation": "La celda es el cruce de una fila y una columna; ahí va cada dato."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué parte del documento se repite arriba de todas las hojas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El pie de página"
+        },
+        {
+          "letter": "B",
+          "text": "El encabezado"
+        },
+        {
+          "letter": "C",
+          "text": "La tabla"
+        },
+        {
+          "letter": "D",
+          "text": "El margen"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Su nombre dice que va en la cabeza de la hoja.",
+      "explanation": "El encabezado se repite arriba de cada hoja; el pie de página, abajo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué herramienta crea una lista con puntitos al inicio de cada línea?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Numeración"
+        },
+        {
+          "letter": "B",
+          "text": "Viñetas"
+        },
+        {
+          "letter": "C",
+          "text": "Sangría"
+        },
+        {
+          "letter": "D",
+          "text": "Tabla"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La numeración usa números; esta usa símbolos.",
+      "explanation": "Las viñetas ponen un punto o símbolo en cada elemento. La numeración usa 1, 2, 3."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué combinación de teclas deshace el último cambio?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ctrl+V"
+        },
+        {
+          "letter": "B",
+          "text": "Ctrl+C"
+        },
+        {
+          "letter": "C",
+          "text": "Ctrl+Z"
+        },
+        {
+          "letter": "D",
+          "text": "Ctrl+P"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la tecla que más usas cuando te equivocas.",
+      "explanation": "Ctrl+Z deshace. Ctrl+C copia, Ctrl+V pega y Ctrl+P imprime."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué extensión tienen normalmente los documentos de Word?",
+      "options": [
+        {
+          "letter": "A",
+          "text": ".docx"
+        },
+        {
+          "letter": "B",
+          "text": ".xlsx"
+        },
+        {
+          "letter": "C",
+          "text": ".mp4"
+        },
+        {
+          "letter": "D",
+          "text": ".png"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Empieza con las letras de documento.",
+      "explanation": ".docx es de Word. .xlsx es de Excel, .mp4 es video y .png es imagen."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Cambiar el tamaño de la letra a 16 es formato de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Párrafo"
+        },
+        {
+          "letter": "B",
+          "text": "Tabla"
+        },
+        {
+          "letter": "C",
+          "text": "Página"
+        },
+        {
+          "letter": "D",
+          "text": "Fuente"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "El tamaño afecta directamente a las letras.",
+      "explanation": "El tamaño cambia las letras: formato de fuente. El de párrafo cambia alineación o interlineado."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué alineación deja el texto parejo tanto a la izquierda como a la derecha?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Centrada"
+        },
+        {
+          "letter": "B",
+          "text": "Justificada"
+        },
+        {
+          "letter": "C",
+          "text": "A la izquierda"
+        },
+        {
+          "letter": "D",
+          "text": "A la derecha"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Es la que usan los libros y los periódicos.",
+      "explanation": "La justificada empareja ambos bordes. La izquierda deja el borde derecho disparejo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una tabla tiene 4 filas y 5 columnas. ¿Cuántas celdas tiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "9"
+        },
+        {
+          "letter": "B",
+          "text": "20"
+        },
+        {
+          "letter": "C",
+          "text": "45"
+        },
+        {
+          "letter": "D",
+          "text": "16"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Multiplica las filas por las columnas.",
+      "explanation": "4 × 5 = 20 celdas. Sumar las filas y las columnas daría 9, un error común."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos cambios es formato de párrafo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Poner el texto en cursiva"
+        },
+        {
+          "letter": "B",
+          "text": "Cambiar el color de letra"
+        },
+        {
+          "letter": "C",
+          "text": "Ajustar el interlineado"
+        },
+        {
+          "letter": "D",
+          "text": "Subrayar una frase clave"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el que cambia todo el bloque y no solo unas letras.",
+      "explanation": "El interlineado cambia el espacio entre las líneas del párrafo. Cursiva, color y subrayado son de fuente."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Para qué sirve el pie de página en un trabajo escolar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para numerar las hojas"
+        },
+        {
+          "letter": "B",
+          "text": "Para hacer tablas grandes"
+        },
+        {
+          "letter": "C",
+          "text": "Para cambiar el tipo de letra"
+        },
+        {
+          "letter": "D",
+          "text": "Para centrar los títulos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Va abajo de cada hoja y se repite solo.",
+      "explanation": "En el pie de página se pone el número de página o el nombre, y se repite en todas las hojas."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué ventaja tiene guardar un trabajo como PDF antes de entregarlo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Conserva el formato"
+        },
+        {
+          "letter": "B",
+          "text": "Se edita más fácil"
+        },
+        {
+          "letter": "C",
+          "text": "Corrige la ortografía"
+        },
+        {
+          "letter": "D",
+          "text": "Hace tablas solo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en abrirlo en otra computadora con otro programa.",
+      "explanation": "El PDF se ve igual en cualquier equipo y es difícil de modificar. No corrige ni crea nada."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Seleccionas una palabra y la pones en cursiva y en rojo. ¿Qué formato aplicaste?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De fuente"
+        },
+        {
+          "letter": "B",
+          "text": "De párrafo"
+        },
+        {
+          "letter": "C",
+          "text": "De página"
+        },
+        {
+          "letter": "D",
+          "text": "De tabla"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Los dos cambios afectan a las letras.",
+      "explanation": "Cursiva y color cambian el aspecto de las letras: ambos son formato de fuente."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué herramienta del procesador marca en rojo las palabras mal escritas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La tabla"
+        },
+        {
+          "letter": "B",
+          "text": "La revisión ortográfica"
+        },
+        {
+          "letter": "C",
+          "text": "El encabezado"
+        },
+        {
+          "letter": "D",
+          "text": "La alineación del texto"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Sirve para revisar cómo se escriben las palabras.",
+      "explanation": "La revisión ortográfica subraya las palabras con errores. Las demás solo cambian el aspecto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Tienes una tabla de 3 columnas y le agregas una fila. ¿Cuántas celdas nuevas aparecen?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "1"
+        },
+        {
+          "letter": "B",
+          "text": "3"
+        },
+        {
+          "letter": "C",
+          "text": "4"
+        },
+        {
+          "letter": "D",
+          "text": "6"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una fila nueva cruza todas las columnas.",
+      "explanation": "Una fila nueva tiene una celda por cada columna: 3 celdas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué orientación de hoja conviene para una tabla muy ancha?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Vertical"
+        },
+        {
+          "letter": "B",
+          "text": "Horizontal"
+        },
+        {
+          "letter": "C",
+          "text": "Centrada"
+        },
+        {
+          "letter": "D",
+          "text": "Justificada"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Gira la hoja para que tenga más espacio de lado a lado.",
+      "explanation": "La horizontal hace la hoja más ancha. Centrada y justificada son alineaciones, no orientaciones."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre viñetas y numeración?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Viñetas usan símbolos y numeración, números"
+        },
+        {
+          "letter": "B",
+          "text": "Las viñetas solo se pueden usar dentro de tablas"
+        },
+        {
+          "letter": "C",
+          "text": "La numeración solo sirve para los títulos"
+        },
+        {
+          "letter": "D",
+          "text": "No existe ninguna diferencia entre ellas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Imagina una lista de compras y una lista de pasos.",
+      "explanation": "Las viñetas ponen símbolos y la numeración pone números, útil cuando el orden importa."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una tabla tiene 6 celdas por fila y 30 celdas en total. ¿Cuántas filas tiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "6"
+        },
+        {
+          "letter": "B",
+          "text": "5"
+        },
+        {
+          "letter": "C",
+          "text": "24"
+        },
+        {
+          "letter": "D",
+          "text": "36"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Celdas por fila es lo mismo que el número de columnas.",
+      "explanation": "30 ÷ 6 = 5 filas. Restar daría 24 y sumar 36, errores comunes."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un alumno centra el título metiendo muchos espacios con la barra espaciadora. ¿Qué debió usar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Alinear al centro"
+        },
+        {
+          "letter": "B",
+          "text": "Una tabla de una celda"
+        },
+        {
+          "letter": "C",
+          "text": "Más tamaño de letra"
+        },
+        {
+          "letter": "D",
+          "text": "Más saltos de línea"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Hay un botón que centra sin tener que meter espacios a mano.",
+      "explanation": "Alinear al centro lo pone a la mitad exacta. Meter espacios a mano se descuadra al cambiar el texto."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué no conviene escribir el número de página a mano en cada hoja?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque se descuadra al editar"
+        },
+        {
+          "letter": "B",
+          "text": "Porque el PDF lo borra solo"
+        },
+        {
+          "letter": "C",
+          "text": "Porque la impresora no lo lee"
+        },
+        {
+          "letter": "D",
+          "text": "Porque está prohibido escribirlo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa si agregas un párrafo en la primera hoja.",
+      "explanation": "Al agregar o quitar texto todo se recorre y los números quedan mal. El pie de página los actualiza solo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Necesitas que el título ocupe dos columnas de una tabla. ¿Qué herramienta usas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Combinar celdas"
+        },
+        {
+          "letter": "B",
+          "text": "Justificar texto"
+        },
+        {
+          "letter": "C",
+          "text": "Poner viñetas"
+        },
+        {
+          "letter": "D",
+          "text": "Cambiar la fuente"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Hay que unir dos cuadritos en uno.",
+      "explanation": "Combinar celdas une varias en una sola. Las demás no cambian la estructura de la tabla."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué diferencia hay entre sangría y alineación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Sangría mueve el inicio de línea"
+        },
+        {
+          "letter": "B",
+          "text": "Sangría cambia el color del texto"
+        },
+        {
+          "letter": "C",
+          "text": "La alineación solo aplica a tablas"
+        },
+        {
+          "letter": "D",
+          "text": "Son exactamente la misma cosa"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una mete un poco la primera línea; la otra decide a qué lado se pega el texto.",
+      "explanation": "La sangría recorre el inicio de una línea hacia adentro; la alineación decide si el texto va a la izquierda, centro, derecha o justificado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un documento usa 6 tipos de letra y 5 colores distintos. ¿Cuál es el problema principal?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se vuelve difícil de leer"
+        },
+        {
+          "letter": "B",
+          "text": "No se puede guardar nunca"
+        },
+        {
+          "letter": "C",
+          "text": "Ya no se puede imprimir"
+        },
+        {
+          "letter": "D",
+          "text": "Se borra la ortografía"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El formato sirve para ayudar al lector, no para decorar.",
+      "explanation": "Demasiados estilos distraen y cansan la vista. El documento sí se guarda e imprime, pero se lee mal."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Quieres comparar tres celulares por precio, cámara y batería. ¿Qué es lo más claro?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un párrafo largo"
+        },
+        {
+          "letter": "B",
+          "text": "Una tabla"
+        },
+        {
+          "letter": "C",
+          "text": "Una lista con viñetas"
+        },
+        {
+          "letter": "D",
+          "text": "Un pie de página"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Tienes varios objetos y varias características para cada uno.",
+      "explanation": "Una tabla cruza objetos (filas) con características (columnas) y deja comparar de un vistazo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Revisas la ortografía y el programa no marca nada, pero escribiste 'haber si vienes'. ¿Qué muestra esto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que el corrector no detecta todo"
+        },
+        {
+          "letter": "B",
+          "text": "Que la frase ya está bien escrita"
+        },
+        {
+          "letter": "C",
+          "text": "Que el corrector está descompuesto"
+        },
+        {
+          "letter": "D",
+          "text": "Que hay que usar letra más grande"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Haber existe como palabra, aunque aquí esté mal usada.",
+      "explanation": "Lo correcto es 'a ver'. El corrector no marca palabras que existen aunque estén mal usadas, por eso hay que releer."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué formato conviene para entregar un trabajo que debe verse igual en cualquier equipo y ser difícil de modificar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": ".docx"
+        },
+        {
+          "letter": "B",
+          "text": ".pdf"
+        },
+        {
+          "letter": "C",
+          "text": ".txt"
+        },
+        {
+          "letter": "D",
+          "text": ".odt"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el formato pensado para leer, no para editar.",
+      "explanation": "El PDF conserva el diseño y es difícil de editar. .docx, .txt y .odt se modifican fácilmente."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Seleccionas un párrafo completo y le pones interlineado doble y negritas. ¿Qué es cierto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo aplicaste formato de fuente"
+        },
+        {
+          "letter": "B",
+          "text": "Solo aplicaste formato de párrafo"
+        },
+        {
+          "letter": "C",
+          "text": "Usaste formato de fuente y párrafo"
+        },
+        {
+          "letter": "D",
+          "text": "Usaste formato de tabla y de página"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa cada cambio por separado.",
+      "explanation": "El interlineado es de párrafo y las negritas son de fuente. Usaste los dos tipos."
+    }
+  ],
+  "diagnostic": {
+    "question": "En un procesador de textos, ¿qué herramienta sirve para ordenar datos en filas y columnas?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Una tabla"
+      },
+      {
+        "letter": "B",
+        "text": "Las viñetas"
+      },
+      {
+        "letter": "C",
+        "text": "El encabezado"
+      },
+      {
+        "letter": "D",
+        "text": "La justificación"
+      }
+    ],
+    "correct_answer": "A",
+    "explanation": "La tabla organiza datos en filas y columnas, y cada cruce es una celda. Las viñetas hacen listas, no tablas."
+  }
+}
