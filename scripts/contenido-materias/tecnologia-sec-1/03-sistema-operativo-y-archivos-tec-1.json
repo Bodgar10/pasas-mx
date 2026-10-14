@@ -1,0 +1,1853 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "sistema-operativo-y-archivos-tec-1",
+  "order_steps": {
+    "prompt": "Ordena cómo guardar tu tarea en una carpeta nueva",
+    "steps": [
+      "Abrir el explorador de archivos",
+      "Entrar a la carpeta Documentos",
+      "Crear dentro la subcarpeta Tecnología",
+      "Guardar ahí la tarea con un nombre claro"
+    ],
+    "completion_feedback": "Primero llegas al lugar, luego creas la **subcarpeta** y al final guardas el **archivo** con un nombre que se entienda. Así se arma una **ruta** ordenada. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Los archivos secretos de la Operación Strix",
+        "content": "Imagina a Loid Forger, el espía de Spy x Family conocido como Twilight, con una laptop moderna donde guarda todo lo de la Operación Strix. Al principio era un desastre: fotos de Desmond, reportes para su jefa, la lista de útiles de Anya para la Escuela Eden, todo amontonado en el escritorio. Un espía no puede perder un archivo, así que se pone a ordenar. Crea una carpeta llamada Operación Strix y, dentro, otras tres: Desmond, Escuela Eden y Familia Forger. Mueve cada archivo a su lugar y les pone nombres claros, como reporte_semana12.docx o foto_desmond.jpg. Así, cuando necesita algo, sabe exactamente el camino para llegar: Operación Strix, luego Desmond, luego la foto. Los archivos que ya no sirven los manda a la papelera, y antes de vaciarla revisa dos veces. Y hay alguien trabajando todo el tiempo sin que Loid lo note: el programa que enciende la laptop, le deja crear carpetas y abre cada archivo. Ese programa jefe y esa forma de ordenar archivos son la lección de hoy."
+      },
+      "explanation": {
+        "title": "La laptop de Twilight ES un sistema operativo trabajando",
+        "content": "Lo que acabas de ver con los archivos de Twilight es exactamente el trabajo del **sistema operativo** (como Windows, macOS o Linux): el programa base que **administra los recursos** de la computadora, **controla los periféricos**, **ejecuta las aplicaciones** y te da una **interfaz** con ventanas e íconos. Una de sus tareas más importantes es la **gestión de archivos**. Cada **archivo** tiene un **nombre** y una **extensión** (.docx, .jpg) que dice qué tipo es. Los archivos se ordenan en **carpetas** y **subcarpetas**, y el camino para llegar a uno se llama **ruta**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los capítulos de un mangaka",
+        "content": "Un asistente de mangaka organiza el capítulo 1100 de One Piece para mandarlo al editor.\n\n**Paso 1:** Crea la carpeta Capítulo 1100.\n**Paso 2:** Dentro crea las subcarpetas Bocetos y Final.\n**Paso 3:** Nombra cada página en orden: pagina_01.png, pagina_02.png… La extensión .png dice que es imagen.\n**Paso 4:** Copia la carpeta Final a una memoria USB para el editor. Al copiar, el original se queda en la laptop.\n**Paso 5:** La ruta de una página queda así: Capítulo 1100 > Final > pagina_01.png.\n\nResultado: nada se pierde y el editor encuentra todo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **sistema operativo** es el programa base que administra la computadora y gestiona los archivos. Un **archivo** tiene **nombre y extensión** (.docx, .pdf, .jpg, .mp4). Se ordena en **carpetas y subcarpetas**, y su ubicación se escribe como **ruta**. **Copiar** deja el original; **mover** lo cambia de lugar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Como buen espía: copiar es sacar una copia y dejar el original en su lugar; mover es llevarte el original a otro lado. Y fíjate en la extensión: es la pista que dice si el archivo es foto, video o documento."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso de organización hace la laptop de Twilight más ordenada y segura.",
+        "data": {
+          "intro": "La laptop de Loid es un caos. El medidor muestra qué tan ordenados están los archivos de la Operación Strix. Ayúdalo paso a paso.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Crea la carpeta Operación Strix en Documentos para tener un solo lugar de trabajo.",
+              "delta": 20
+            },
+            {
+              "text": "Dentro crea las subcarpetas Desmond, Escuela Eden y Familia Forger.",
+              "delta": 30
+            },
+            {
+              "text": "Cambia nombres como IMG_2231.jpg por foto_desmond.jpg, para saber qué es cada archivo sin abrirlo.",
+              "delta": 25
+            },
+            {
+              "text": "Mueve cada archivo a su subcarpeta y hace una copia de respaldo en una USB. ¡Misión ordenada!",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica por extensión",
+        "content": "La extensión dice el tipo de archivo: .jpg y .png son imagen, .mp4 es video y .docx o .pdf son documento.",
+        "data": {
+          "prompt": "Arrastra cada archivo de la Operación Strix según su tipo.",
+          "buckets": [
+            "Imagen",
+            "Video",
+            "Documento"
+          ],
+          "items": [
+            {
+              "t": "foto_desmond.jpg",
+              "b": 0
+            },
+            {
+              "t": "camara_eden.mp4",
+              "b": 1
+            },
+            {
+              "t": "reporte_semana12.docx",
+              "b": 2
+            },
+            {
+              "t": "dibujo_anya.png",
+              "b": 0
+            },
+            {
+              "t": "fiesta_imperial.mp4",
+              "b": 1
+            },
+            {
+              "t": "boleta_anya.pdf",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada término de archivos con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Copiar",
+              "b": "Deja el original"
+            },
+            {
+              "a": "Mover",
+              "b": "Cambia de lugar"
+            },
+            {
+              "a": ".docx",
+              "b": "Extensión de texto"
+            },
+            {
+              "a": "Strix > Desmond",
+              "b": "Ruta"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de la laptop de Twilight?",
+        "left_label": "Operación Strix",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa que enciende todo",
+            "right": "Sistema operativo"
+          },
+          {
+            "left": "Operación Strix > Desmond",
+            "right": "Ruta"
+          },
+          {
+            "left": "El .jpg de foto_desmond",
+            "right": "Extensión"
+          },
+          {
+            "left": "La carpeta Escuela Eden",
+            "right": "Subcarpeta"
+          }
+        ],
+        "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En foto_desmond.jpg, ¿qué indica la parte .jpg?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El tipo de archivo"
+            },
+            {
+              "letter": "B",
+              "text": "La carpeta donde está"
+            },
+            {
+              "letter": "C",
+              "text": "El tamaño del archivo"
+            },
+            {
+              "letter": "D",
+              "text": "La fecha en que se tomó"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La extensión dice qué tipo de archivo es; .jpg es imagen. La carpeta forma parte de la ruta, no del nombre.",
+          "difficulty": 1
+        },
+        {
+          "question": "Twilight pasa el reporte a una USB y quiere que el original siga en su laptop. ¿Qué debe hacer?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Moverlo a la USB"
+            },
+            {
+              "letter": "B",
+              "text": "Copiarlo"
+            },
+            {
+              "letter": "C",
+              "text": "Eliminarlo primero"
+            },
+            {
+              "letter": "D",
+              "text": "Cambiarle el nombre"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Copiar crea un duplicado y deja el original donde estaba. Mover se lleva el original y lo quita de la laptop.",
+          "difficulty": 2
+        },
+        {
+          "question": "La foto está en Documentos, dentro de Operación Strix, dentro de Desmond. ¿Cuál es su ruta correcta?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Desmond > Strix > Documentos > foto.jpg"
+            },
+            {
+              "letter": "B",
+              "text": "foto.jpg > Desmond > Strix > Documentos"
+            },
+            {
+              "letter": "C",
+              "text": "Documentos > Strix > Desmond > foto.jpg"
+            },
+            {
+              "letter": "D",
+              "text": "Strix > foto.jpg > Documentos > Desmond"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La ruta va de la carpeta más grande a la más pequeña y termina en el archivo. Las otras están al revés o en desorden.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál de estos es un sistema operativo que podría usar la laptop de Loid?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Microsoft Word"
+            },
+            {
+              "letter": "B",
+              "text": "Google Chrome"
+            },
+            {
+              "letter": "C",
+              "text": "Windows"
+            },
+            {
+              "letter": "D",
+              "text": "El explorador de fotos"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Windows es el programa base que hace funcionar la laptop. Word y Chrome son aplicaciones que corren encima de él.",
+          "difficulty": 2
+        },
+        {
+          "question": "Loid borra por error el reporte de la semana 12. ¿Dónde lo puede recuperar si no ha vaciado nada?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En la memoria RAM"
+            },
+            {
+              "letter": "B",
+              "text": "En la papelera"
+            },
+            {
+              "letter": "C",
+              "text": "En la carpeta Desmond"
+            },
+            {
+              "letter": "D",
+              "text": "En el navegador web"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Lo que se elimina va primero a la papelera y de ahí se puede restaurar. Si se vacía la papelera, ya no se recupera tan fácil.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El analista de video del América",
+        "content": "En cada club de la Liga MX hay alguien que casi nadie ve: el analista de video. Después de cada partido, el analista del América recibe horas de grabación, estadísticas y reportes. Si los dejara todos sueltos en el escritorio, el lunes el entrenador le pediría los goles en contra de la jornada 5 y no los encontraría. Por eso ordena. Crea una carpeta Apertura 2026 y, dentro, una por jornada: Jornada 05 vs Chivas, Jornada 06 vs Pumas. Dentro de cada una pone subcarpetas: Goles, Jugadas a balón parado y Estadísticas. A cada archivo le pone un nombre claro, como gol_minuto78.mp4 o posesion.xlsx, y así sabe qué es sin abrirlo. Cuando el entrenador pide algo, el analista sigue el camino: Apertura 2026, Jornada 05, Goles. Mientras tanto, un programa trabaja en silencio: el que enciende la computadora, le deja crear carpetas y abre cada video. Ese programa jefe y esa forma de ordenar archivos son la lección de hoy."
+      },
+      "explanation": {
+        "title": "La computadora del analista ES un sistema operativo trabajando",
+        "content": "Lo que acabas de ver con el analista es exactamente el trabajo del **sistema operativo** (como Windows, macOS o Linux): el programa base que **administra los recursos** de la computadora, **controla los periféricos**, **ejecuta las aplicaciones** y te da una **interfaz** con ventanas e íconos. Una de sus tareas más importantes es la **gestión de archivos**. Cada **archivo** tiene un **nombre** y una **extensión** (.mp4, .xlsx) que dice qué tipo es. Los archivos se ordenan en **carpetas** y **subcarpetas**, y el camino para llegar a uno se llama **ruta**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el resumen de la Selección",
+        "content": "Un periodista arma el resumen de un partido de la Selección Mexicana.\n\n**Paso 1:** Crea la carpeta Selección y dentro la subcarpeta Partido vs Japón.\n**Paso 2:** Guarda ahí gol_raul.mp4 y alineacion.pdf. La extensión .mp4 dice que es video y .pdf que es documento.\n**Paso 3:** Renombra video1.mp4 a atajada_portero.mp4 para saber qué es.\n**Paso 4:** Mueve los videos que ya no usará a la papelera.\n**Paso 5:** La ruta del gol queda así: Selección > Partido vs Japón > gol_raul.mp4.\n\nResultado: cualquier compañero encuentra todo sin preguntar."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **sistema operativo** es el programa base que administra la computadora y gestiona los archivos. Un **archivo** tiene **nombre y extensión** (.docx, .pdf, .jpg, .mp4). Se ordena en **carpetas y subcarpetas**, y su ubicación se escribe como **ruta**. **Copiar** deja el original; **mover** lo cambia de lugar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Copiar es como pasarle a la prensa el video del gol: ellos tienen uno y el club conserva el suyo. Mover es vender a un jugador: se va a otro club y ya no está en el tuyo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso de organización deja más ordenado el archivo de videos del club.",
+        "data": {
+          "intro": "El escritorio del analista está lleno de videos sueltos. El medidor muestra qué tan ordenado está su material. Ayúdalo paso a paso.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Crea la carpeta Apertura 2026 para tener todo el torneo en un solo lugar.",
+              "delta": 20
+            },
+            {
+              "text": "Dentro crea una subcarpeta por jornada, con el rival en el nombre.",
+              "delta": 30
+            },
+            {
+              "text": "Renombra cada video, por ejemplo de clip003.mp4 a gol_minuto78.mp4.",
+              "delta": 25
+            },
+            {
+              "text": "Mueve cada archivo a su jornada y respalda todo en la nube. ¡Listo para el entrenador!",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica por extensión",
+        "content": "La extensión dice el tipo de archivo: .jpg y .png son imagen, .mp4 es video y .xlsx o .pdf son documento.",
+        "data": {
+          "prompt": "Arrastra cada archivo del analista según su tipo.",
+          "buckets": [
+            "Imagen",
+            "Video",
+            "Documento"
+          ],
+          "items": [
+            {
+              "t": "foto_alineacion.jpg",
+              "b": 0
+            },
+            {
+              "t": "gol_minuto78.mp4",
+              "b": 1
+            },
+            {
+              "t": "posesion.xlsx",
+              "b": 2
+            },
+            {
+              "t": "escudo_rival.png",
+              "b": 0
+            },
+            {
+              "t": "tiro_libre.mp4",
+              "b": 1
+            },
+            {
+              "t": "reporte_arbitral.pdf",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada término de archivos con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Copiar",
+              "b": "Deja el original"
+            },
+            {
+              "a": "Mover",
+              "b": "Cambia de lugar"
+            },
+            {
+              "a": ".mp4",
+              "b": "Extensión de video"
+            },
+            {
+              "a": "Jornada 05 > Goles",
+              "b": "Ruta"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de la computadora del analista?",
+        "left_label": "Analista",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa que enciende todo",
+            "right": "Sistema operativo"
+          },
+          {
+            "left": "Apertura 2026 > Jornada 05",
+            "right": "Ruta"
+          },
+          {
+            "left": "El .mp4 del gol",
+            "right": "Extensión"
+          },
+          {
+            "left": "La carpeta Goles",
+            "right": "Subcarpeta"
+          }
+        ],
+        "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En gol_minuto78.mp4, ¿qué indica .mp4?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El minuto del gol"
+            },
+            {
+              "letter": "B",
+              "text": "Que es un video"
+            },
+            {
+              "letter": "C",
+              "text": "La jornada del partido"
+            },
+            {
+              "letter": "D",
+              "text": "El tamaño del archivo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La extensión .mp4 indica que el archivo es un video. El minuto forma parte del nombre que eligió el analista.",
+          "difficulty": 1
+        },
+        {
+          "question": "El analista quiere llevar el video del gol a la carpeta Resumen sin dejar una copia en Jornada 05. ¿Qué hace?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Moverlo"
+            },
+            {
+              "letter": "B",
+              "text": "Copiarlo"
+            },
+            {
+              "letter": "C",
+              "text": "Renombrarlo"
+            },
+            {
+              "letter": "D",
+              "text": "Duplicarlo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Mover lleva el archivo a otro lugar y lo quita del original. Copiar o duplicar dejarían el video también en Jornada 05.",
+          "difficulty": 2
+        },
+        {
+          "question": "El entrenador pide la ruta del archivo posesion.xlsx de la jornada 6. ¿Cuál es correcta?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "posesion.xlsx > Jornada 06 > Apertura"
+            },
+            {
+              "letter": "B",
+              "text": "Jornada 06 > Apertura > posesion.xlsx"
+            },
+            {
+              "letter": "C",
+              "text": "Apertura > posesion.xlsx > Jornada 06"
+            },
+            {
+              "letter": "D",
+              "text": "Apertura > Jornada 06 > posesion.xlsx"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La ruta va de la carpeta más general a la más específica y termina en el archivo. Las demás están al revés o desordenadas.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué tarea NO le toca al sistema operativo de la computadora del analista?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Administrar la memoria"
+            },
+            {
+              "letter": "B",
+              "text": "Gestionar los archivos"
+            },
+            {
+              "letter": "C",
+              "text": "Decidir la alineación"
+            },
+            {
+              "letter": "D",
+              "text": "Abrir las aplicaciones"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La alineación la decide el entrenador. El sistema operativo administra memoria, archivos y aplicaciones.",
+          "difficulty": 2
+        },
+        {
+          "question": "Hay dos archivos: video1.mp4 y gol_henry_jornada5.mp4. ¿Por qué el segundo es mejor práctica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque pesa mucho menos en disco"
+            },
+            {
+              "letter": "B",
+              "text": "Porque se abre más rápido"
+            },
+            {
+              "letter": "C",
+              "text": "Porque el nombre dice qué es"
+            },
+            {
+              "letter": "D",
+              "text": "Porque así cambia la extensión"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Un nombre descriptivo te dice el contenido sin abrirlo. El nombre no cambia el peso, la velocidad ni la extensión.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Los subtítulos de Queen of Tears",
+        "content": "Imagina que trabajas en el equipo que subtitula K-dramas al español para una plataforma de streaming, y les toca Queen of Tears. Cada semana llegan dos episodios en video, los subtítulos en inglés y las traducciones que hace cada integrante del equipo. Al principio todos guardaban en el escritorio y ya nadie sabía cuál era la versión buena. Así que se organizan. Crean una carpeta Queen of Tears y, dentro, una por episodio: Episodio 01, Episodio 02. Dentro de cada una ponen el video, como ep01.mp4, y los subtítulos, como ep01_espanol.srt. La extensión .srt les dice que es un archivo de subtítulos y .mp4 que es video. Cuando la persona que revisa necesita algo, sigue el camino: Queen of Tears, Episodio 01, ep01_espanol.srt. Si alguien quiere trabajar sin arruinar el archivo bueno, hace una copia. Y un programa trabaja todo el tiempo sin que lo noten: el que enciende la computadora, crea carpetas y abre cada archivo. Ese programa jefe y esa forma de ordenar son la lección de hoy."
+      },
+      "explanation": {
+        "title": "La computadora del equipo de subtítulos ES un sistema operativo trabajando",
+        "content": "Lo que acabas de ver con el equipo de subtítulos es exactamente el trabajo del **sistema operativo** (como Windows, macOS, Android o iOS): el programa base que **administra los recursos**, **controla los periféricos**, **ejecuta las aplicaciones** y te da una **interfaz** con ventanas e íconos. Una de sus tareas más importantes es la **gestión de archivos**. Cada **archivo** tiene un **nombre** y una **extensión** (.mp4, .srt) que dice qué tipo es. Los archivos se ordenan en **carpetas** y **subcarpetas**, y el camino para llegar a uno se llama **ruta**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las fotos de tu photocard collection",
+        "content": "Quieres ordenar en tu computadora las fotos de tus photocards de SEVENTEEN.\n\n**Paso 1:** Crea la carpeta Photocards y dentro la subcarpeta SEVENTEEN.\n**Paso 2:** Dentro crea una subcarpeta por álbum.\n**Paso 3:** Renombra IMG_0042.jpg a mingyu_album1.jpg. La extensión .jpg dice que es imagen.\n**Paso 4:** Copia la carpeta a una USB como respaldo: el original se queda en la compu.\n**Paso 5:** La ruta queda: Photocards > SEVENTEEN > Álbum 1 > mingyu_album1.jpg.\n\nResultado: encuentras cualquier photocard en segundos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **sistema operativo** es el programa base que administra la computadora y gestiona los archivos. Un **archivo** tiene **nombre y extensión** (.docx, .pdf, .jpg, .mp4). Se ordena en **carpetas y subcarpetas**, y su ubicación se escribe como **ruta**. **Copiar** deja el original; **mover** lo cambia de lugar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "La ruta se lee como la ficha de un idol: agencia, luego grupo, luego integrante. De lo más grande a lo más pequeño, y al final el archivo con su extensión."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso de organización deja más ordenado el trabajo del equipo de subtítulos.",
+        "data": {
+          "intro": "El equipo de subtítulos tiene archivos regados por todos lados. El medidor muestra qué tan ordenado está el proyecto. Ayúdales paso a paso.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Crean la carpeta Queen of Tears para tener todo el drama en un solo lugar.",
+              "delta": 20
+            },
+            {
+              "text": "Dentro crean una subcarpeta por episodio.",
+              "delta": 30
+            },
+            {
+              "text": "Renombran subs_final_final2.srt a ep01_espanol.srt, para que nadie se confunda de versión.",
+              "delta": 25
+            },
+            {
+              "text": "Mueven cada video y subtítulo a su episodio y respaldan todo en la nube. ¡Proyecto ordenado!",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica por extensión",
+        "content": "La extensión dice el tipo de archivo: .jpg y .png son imagen, .mp4 es video y .docx, .pdf o .srt son texto.",
+        "data": {
+          "prompt": "Arrastra cada archivo del equipo de subtítulos según su tipo.",
+          "buckets": [
+            "Imagen",
+            "Video",
+            "Texto"
+          ],
+          "items": [
+            {
+              "t": "poster_drama.jpg",
+              "b": 0
+            },
+            {
+              "t": "ep01.mp4",
+              "b": 1
+            },
+            {
+              "t": "ep01_espanol.srt",
+              "b": 2
+            },
+            {
+              "t": "captura_escena.png",
+              "b": 0
+            },
+            {
+              "t": "teaser.mp4",
+              "b": 1
+            },
+            {
+              "t": "glosario_coreano.docx",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada término de archivos con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Copiar",
+              "b": "Deja el original"
+            },
+            {
+              "a": "Mover",
+              "b": "Cambia de lugar"
+            },
+            {
+              "a": ".srt",
+              "b": "Subtítulos"
+            },
+            {
+              "a": "Drama > Episodio 01",
+              "b": "Ruta"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa del proyecto de subtítulos?",
+        "left_label": "Subtítulos",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa que enciende todo",
+            "right": "Sistema operativo"
+          },
+          {
+            "left": "Queen of Tears > Episodio 01",
+            "right": "Ruta"
+          },
+          {
+            "left": "El .srt de los subtítulos",
+            "right": "Extensión"
+          },
+          {
+            "left": "La carpeta Episodio 01",
+            "right": "Subcarpeta"
+          }
+        ],
+        "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En ep01_espanol.srt, ¿qué parte es la extensión?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "ep01"
+            },
+            {
+              "letter": "B",
+              "text": "espanol"
+            },
+            {
+              "letter": "C",
+              "text": ".srt"
+            },
+            {
+              "letter": "D",
+              "text": "ep01_espanol"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La extensión va después del punto final: .srt, que indica subtítulos. Lo demás es el nombre que eligió el equipo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Una integrante quiere probar cambios sin arruinar los subtítulos buenos. ¿Qué le conviene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Mover el archivo"
+            },
+            {
+              "letter": "B",
+              "text": "Eliminar el archivo"
+            },
+            {
+              "letter": "C",
+              "text": "Cambiarle la extensión"
+            },
+            {
+              "letter": "D",
+              "text": "Hacer una copia"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Una copia le deja trabajar mientras el original sigue intacto. Mover o borrar se llevaría el archivo bueno.",
+          "difficulty": 2
+        },
+        {
+          "question": "Alguien le cambia a ep01.mp4 el nombre por ep01.docx. ¿Qué es lo más probable?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se convierte en texto"
+            },
+            {
+              "letter": "B",
+              "text": "Se vuelve más ligero"
+            },
+            {
+              "letter": "C",
+              "text": "No abre bien"
+            },
+            {
+              "letter": "D",
+              "text": "Se traduce solo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Cambiar la extensión no convierte el contenido: sigue siendo video, pero el sistema intentará abrirlo con un programa de texto y fallará.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál de estos es un sistema operativo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Netflix"
+            },
+            {
+              "letter": "B",
+              "text": "macOS"
+            },
+            {
+              "letter": "C",
+              "text": "Viki"
+            },
+            {
+              "letter": "D",
+              "text": "Spotify"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "macOS es el sistema operativo de las computadoras Mac. Netflix, Viki y Spotify son aplicaciones que corren sobre un sistema.",
+          "difficulty": 2
+        },
+        {
+          "question": "Los subtítulos están en Documentos, dentro de Queen of Tears, dentro de Episodio 02. ¿Cuál es su ruta?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Documentos > Queen of Tears > Episodio 02 > ep02.srt"
+            },
+            {
+              "letter": "B",
+              "text": "Episodio 02 > Queen of Tears > Documentos > ep02.srt"
+            },
+            {
+              "letter": "C",
+              "text": "ep02.srt > Episodio 02 > Queen of Tears > Documentos"
+            },
+            {
+              "letter": "D",
+              "text": "Queen of Tears > Documentos > ep02.srt > Episodio 02"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La ruta va de lo más general a lo más específico y termina en el archivo. Las demás están al revés o revueltas.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Instalando un resource pack en Minecraft",
+        "content": "Descargaste un resource pack para que tu Minecraft se vea más bonito: agua cristalina, hojas que se mueven y bloques en alta definición. Llega a tu carpeta de Descargas como un archivo llamado texturas_hd.zip. Para que el juego lo use, tienes que ponerlo en el lugar exacto. Abres el explorador de archivos y sigues el camino: la carpeta .minecraft, y dentro de ella la carpeta resourcepacks. Ahí lo mueves. De paso descubres cómo está organizado todo: en saves están tus mundos, cada uno en su propia carpeta; en screenshots, tus capturas, como 2025-07-14_casa.png. Te das cuenta de que la extensión te dice qué es cada cosa: .zip es un archivo comprimido y .png una imagen. Antes de tocar tu mundo de supervivencia, haces una copia por si algo sale mal. Y todo eso es posible gracias a un programa que casi nunca notas: el que enciende la computadora, te deja ver carpetas y abre el juego. Ese programa jefe y esa forma de ordenar son la lección de hoy."
+      },
+      "explanation": {
+        "title": "Instalar el resource pack ES usar el sistema operativo",
+        "content": "Lo que acabas de ver instalando el resource pack es exactamente el trabajo del **sistema operativo** (como Windows, macOS o Linux): el programa base que **administra los recursos** de la computadora, **controla los periféricos**, **ejecuta las aplicaciones** como Minecraft y te da una **interfaz** con ventanas e íconos. Una de sus tareas más importantes es la **gestión de archivos**. Cada **archivo** tiene un **nombre** y una **extensión** (.zip, .png) que dice qué tipo es. Los archivos se ordenan en **carpetas** y **subcarpetas**, y el camino para llegar a uno se llama **ruta**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — respaldar tu mundo antes de una actualización",
+        "content": "Sale una actualización grande y no quieres perder tu mundo Isla Supervivencia.\n\n**Paso 1:** Abres el explorador y entras a .minecraft > saves.\n**Paso 2:** Encuentras la carpeta Isla Supervivencia: cada mundo es una subcarpeta.\n**Paso 3:** La copias, no la mueves, a una carpeta Respaldos. Así el original sigue jugable.\n**Paso 4:** Le cambias el nombre a la copia: Isla Supervivencia respaldo julio.\n**Paso 5:** La ruta del respaldo queda: Respaldos > Isla Supervivencia respaldo julio.\n\nResultado: si la actualización falla, tienes tu mundo a salvo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "El **sistema operativo** es el programa base que administra la computadora y gestiona los archivos. Un **archivo** tiene **nombre y extensión** (.docx, .pdf, .png, .zip). Se ordena en **carpetas y subcarpetas**, y su ubicación se escribe como **ruta**. **Copiar** deja el original; **mover** lo cambia de lugar."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Copiar es como duplicar un objeto en modo creativo: tienes dos. Mover es pasarlo de un cofre a otro: sigue siendo uno solo. Y la ruta es el camino de cofres hasta llegar al objeto."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada paso te acerca a tener el resource pack funcionando en el juego.",
+        "data": {
+          "intro": "Descargaste texturas_hd.zip y quieres verlo en tu mundo. El medidor muestra qué tan cerca estás de lograrlo. Sigue los pasos.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Abres el explorador de archivos, la herramienta del sistema operativo para ver carpetas.",
+              "delta": 20
+            },
+            {
+              "text": "Sigues la ruta: .minecraft y luego la subcarpeta resourcepacks.",
+              "delta": 30
+            },
+            {
+              "text": "Mueves texturas_hd.zip desde Descargas hasta resourcepacks.",
+              "delta": 30
+            },
+            {
+              "text": "Abres Minecraft, activas el pack en Opciones y ves el agua cristalina. ¡Funciona!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Clasifica por extensión",
+        "content": "La extensión dice el tipo de archivo: .png y .jpg son imagen, .mp4 es video y .zip es un archivo comprimido.",
+        "data": {
+          "prompt": "Arrastra cada archivo de tu carpeta de Minecraft según su tipo.",
+          "buckets": [
+            "Imagen",
+            "Video",
+            "Comprimido"
+          ],
+          "items": [
+            {
+              "t": "captura_casa.png",
+              "b": 0
+            },
+            {
+              "t": "clip_creeper.mp4",
+              "b": 1
+            },
+            {
+              "t": "texturas_hd.zip",
+              "b": 2
+            },
+            {
+              "t": "skin_steve.png",
+              "b": 0
+            },
+            {
+              "t": "speedrun.mp4",
+              "b": 1
+            },
+            {
+              "t": "mapa_parkour.zip",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada término de archivos con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Copiar",
+              "b": "Deja el original"
+            },
+            {
+              "a": "Mover",
+              "b": "Cambia de lugar"
+            },
+            {
+              "a": ".zip",
+              "b": "Comprimido"
+            },
+            {
+              "a": ".minecraft > saves",
+              "b": "Ruta"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu carpeta de Minecraft?",
+        "left_label": "Resource pack",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El programa que enciende todo",
+            "right": "Sistema operativo"
+          },
+          {
+            "left": ".minecraft > resourcepacks",
+            "right": "Ruta"
+          },
+          {
+            "left": "El .zip del pack",
+            "right": "Extensión"
+          },
+          {
+            "left": "La carpeta saves",
+            "right": "Subcarpeta"
+          }
+        ],
+        "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En texturas_hd.zip, ¿qué indica .zip?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que es una imagen"
+            },
+            {
+              "letter": "B",
+              "text": "Que es un video"
+            },
+            {
+              "letter": "C",
+              "text": "Que está comprimido"
+            },
+            {
+              "letter": "D",
+              "text": "Que es un programa nuevo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La extensión .zip indica un archivo comprimido, que guarda otros archivos adentro. Una imagen sería .png o .jpg.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres respaldar tu mundo y que el original siga jugable. ¿Qué haces con su carpeta?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La copias"
+            },
+            {
+              "letter": "B",
+              "text": "La mueves"
+            },
+            {
+              "letter": "C",
+              "text": "La eliminas"
+            },
+            {
+              "letter": "D",
+              "text": "La renombras"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Copiar crea un duplicado y deja el original en saves. Si la movieras, el juego ya no encontraría tu mundo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Mueves por error tu mundo fuera de saves y el juego ya no lo muestra. ¿Por qué?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque el mundo se borró para siempre"
+            },
+            {
+              "letter": "B",
+              "text": "Porque cambió la ruta donde lo busca"
+            },
+            {
+              "letter": "C",
+              "text": "Porque se le cambió la extensión .zip"
+            },
+            {
+              "letter": "D",
+              "text": "Porque la RAM se quedó sin espacio libre"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El juego busca los mundos en una ruta fija. Al moverlo, el archivo sigue existiendo, pero ya no está donde el juego lo busca.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué es Minecraft para el sistema operativo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Otro sistema operativo"
+            },
+            {
+              "letter": "B",
+              "text": "Un periférico"
+            },
+            {
+              "letter": "C",
+              "text": "Una aplicación"
+            },
+            {
+              "letter": "D",
+              "text": "Una carpeta del sistema"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Minecraft es una aplicación que el sistema operativo ejecuta. El sistema es el programa base sobre el que corre.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Cuál es la ruta correcta de una captura dentro de screenshots, en .minecraft?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "captura.png > screenshots > .minecraft"
+            },
+            {
+              "letter": "B",
+              "text": "screenshots > .minecraft > captura.png"
+            },
+            {
+              "letter": "C",
+              "text": ".minecraft > captura.png > screenshots"
+            },
+            {
+              "letter": "D",
+              "text": ".minecraft > screenshots > captura.png"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La ruta va de la carpeta más grande a la más pequeña y termina en el archivo. Las demás están en desorden.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es la función principal de un sistema operativo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Administrar la computadora"
+        },
+        {
+          "letter": "B",
+          "text": "Solo reproducir música y videos"
+        },
+        {
+          "letter": "C",
+          "text": "Imprimir todos los documentos"
+        },
+        {
+          "letter": "D",
+          "text": "Conectarse a internet por wifi"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en el programa que trabaja siempre, aunque no abras ninguna app.",
+      "explanation": "El sistema operativo administra recursos, archivos y programas. Reproducir música o imprimir son tareas de aplicaciones."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un sistema operativo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "PowerPoint"
+        },
+        {
+          "letter": "B",
+          "text": "Linux"
+        },
+        {
+          "letter": "C",
+          "text": "YouTube"
+        },
+        {
+          "letter": "D",
+          "text": "TikTok"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el que hace funcionar una computadora completa.",
+      "explanation": "Linux es un sistema operativo. PowerPoint, YouTube y TikTok son aplicaciones o servicios."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es una carpeta en la computadora?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un lugar para agrupar archivos"
+        },
+        {
+          "letter": "B",
+          "text": "Un tipo de periférico de entrada"
+        },
+        {
+          "letter": "C",
+          "text": "Un programa para hacer dibujos"
+        },
+        {
+          "letter": "D",
+          "text": "La memoria interna del procesador"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en un fólder de papel donde guardas hojas.",
+      "explanation": "Una carpeta agrupa archivos para tenerlos ordenados. No es un programa ni una pieza física."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En el archivo tarea.pdf, ¿cuál es la extensión?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "tarea"
+        },
+        {
+          "letter": "B",
+          "text": "tarea.pdf"
+        },
+        {
+          "letter": "C",
+          "text": ".pdf"
+        },
+        {
+          "letter": "D",
+          "text": "t"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Va después del punto final del nombre.",
+      "explanation": "La extensión es .pdf e indica el tipo de archivo. Tarea es solo el nombre."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué tipo de archivo suele tener la extensión .mp3?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Audio"
+        },
+        {
+          "letter": "B",
+          "text": "Imagen"
+        },
+        {
+          "letter": "C",
+          "text": "Documento"
+        },
+        {
+          "letter": "D",
+          "text": "Tabla"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el formato clásico de las canciones descargadas.",
+      "explanation": ".mp3 es un formato de audio. Las imágenes suelen ser .jpg o .png y los documentos .docx o .pdf."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué pasa cuando COPIAS un archivo a otra carpeta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El original desaparece"
+        },
+        {
+          "letter": "B",
+          "text": "Quedan dos iguales"
+        },
+        {
+          "letter": "C",
+          "text": "Cambia la extensión"
+        },
+        {
+          "letter": "D",
+          "text": "Se borra el contenido"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Compara con una fotocopia: ¿qué pasa con la hoja original?",
+      "explanation": "Copiar crea un duplicado y el original se queda donde estaba. Si desapareciera, sería mover."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué pasa cuando MUEVES un archivo a otra carpeta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quedan dos copias"
+        },
+        {
+          "letter": "B",
+          "text": "Cambia de lugar"
+        },
+        {
+          "letter": "C",
+          "text": "Se vuelve un video"
+        },
+        {
+          "letter": "D",
+          "text": "Se manda por correo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cambiar un libro de un estante a otro.",
+      "explanation": "Mover lleva el archivo a otro lugar y lo quita del original. Si quedaran dos, sería copiar."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿A dónde van normalmente los archivos que eliminas en Windows?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A la papelera"
+        },
+        {
+          "letter": "B",
+          "text": "A la impresora"
+        },
+        {
+          "letter": "C",
+          "text": "A la memoria RAM"
+        },
+        {
+          "letter": "D",
+          "text": "Al escritorio"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es un lugar del que todavía se pueden recuperar.",
+      "explanation": "Primero van a la papelera de reciclaje, de donde se pueden restaurar. Al vaciarla se eliminan."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Una carpeta que está dentro de otra carpeta se llama…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Extensión"
+        },
+        {
+          "letter": "B",
+          "text": "Subcarpeta"
+        },
+        {
+          "letter": "C",
+          "text": "Archivo raíz"
+        },
+        {
+          "letter": "D",
+          "text": "Periférico"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El prefijo sub- significa debajo de.",
+      "explanation": "Una subcarpeta vive dentro de otra carpeta. La extensión es parte del nombre de un archivo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué programa de Windows sirve para ver y organizar carpetas y archivos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El Explorador de archivos"
+        },
+        {
+          "letter": "B",
+          "text": "La calculadora de Windows"
+        },
+        {
+          "letter": "C",
+          "text": "El reproductor de video"
+        },
+        {
+          "letter": "D",
+          "text": "El bloc de notas de texto"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Su nombre dice que sirve para explorar.",
+      "explanation": "El Explorador de archivos permite ver, crear, mover y copiar carpetas y archivos."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es la ruta correcta de un archivo llamado examen.docx dentro de Escuela, dentro de Documentos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Escuela > Documentos > examen.docx"
+        },
+        {
+          "letter": "B",
+          "text": "Documentos > Escuela > examen.docx"
+        },
+        {
+          "letter": "C",
+          "text": "examen.docx > Escuela > Documentos"
+        },
+        {
+          "letter": "D",
+          "text": "Documentos > examen.docx > Escuela"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La ruta va de lo más general a lo más específico.",
+      "explanation": "Se empieza en la carpeta más grande, Documentos, luego Escuela y al final el archivo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué nombre de archivo es la mejor práctica para una tarea de Historia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "documento1_nuevo.docx"
+        },
+        {
+          "letter": "B",
+          "text": "asdfgh_qwerty_zx.docx"
+        },
+        {
+          "letter": "C",
+          "text": "historia_revolucion.docx"
+        },
+        {
+          "letter": "D",
+          "text": "nuevo final final 2.docx"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Elige el que te diga qué contiene sin abrirlo.",
+      "explanation": "Un nombre descriptivo dice el contenido sin abrirlo. Los demás no ayudan a encontrar nada."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué Word es una aplicación y no un sistema operativo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque cuesta dinero comprarlo"
+        },
+        {
+          "letter": "B",
+          "text": "Porque escribe muchas letras"
+        },
+        {
+          "letter": "C",
+          "text": "Porque corre sobre el sistema"
+        },
+        {
+          "letter": "D",
+          "text": "Porque se abre muy rápido siempre"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Pregúntate si Word puede funcionar sin Windows o macOS.",
+      "explanation": "Word necesita un sistema operativo para funcionar: es una aplicación que corre encima de él."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una amiga quiere pasarte una foto y quedarse con ella también. ¿Qué operación hace?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Copiar"
+        },
+        {
+          "letter": "B",
+          "text": "Mover"
+        },
+        {
+          "letter": "C",
+          "text": "Eliminar"
+        },
+        {
+          "letter": "D",
+          "text": "Renombrar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Al final, ¿cuántas fotos debe haber?",
+      "explanation": "Copiar deja el original con ella y te da un duplicado. Mover se lo quitaría."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Ordena de lo más general a lo más específico: archivo, disco, carpeta, subcarpeta. ¿Cuál va segundo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Archivo"
+        },
+        {
+          "letter": "B",
+          "text": "Disco"
+        },
+        {
+          "letter": "C",
+          "text": "Carpeta"
+        },
+        {
+          "letter": "D",
+          "text": "Subcarpeta"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El disco contiene todo y el archivo está al final.",
+      "explanation": "El orden es disco, carpeta, subcarpeta y archivo. La carpeta va segunda."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué tarea NO realiza un sistema operativo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Administrar la memoria"
+        },
+        {
+          "letter": "B",
+          "text": "Controlar periféricos"
+        },
+        {
+          "letter": "C",
+          "text": "Escribir tu ensayo"
+        },
+        {
+          "letter": "D",
+          "text": "Gestionar archivos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El sistema operativo administra; las tareas concretas son de las apps o tuyas.",
+      "explanation": "El ensayo lo escribes tú con una aplicación. El sistema administra memoria, periféricos y archivos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué extensiones corresponden a imágenes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": ".mp3 y .wav"
+        },
+        {
+          "letter": "B",
+          "text": ".jpg y .png"
+        },
+        {
+          "letter": "C",
+          "text": ".docx y .pdf"
+        },
+        {
+          "letter": "D",
+          "text": ".mp4 y .avi"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en las extensiones de las fotos del celular.",
+      "explanation": ".jpg y .png son imágenes. .mp3 y .wav son audio, .docx y .pdf documentos, .mp4 y .avi video."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué pasa si vacías la papelera de reciclaje?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Los archivos regresan a su carpeta"
+        },
+        {
+          "letter": "B",
+          "text": "Se eliminan definitivamente"
+        },
+        {
+          "letter": "C",
+          "text": "Se copian todos a una memoria USB"
+        },
+        {
+          "letter": "D",
+          "text": "Se convierten en carpetas vacías"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La papelera es la última oportunidad para recuperar algo.",
+      "explanation": "Al vaciarla, los archivos se eliminan de forma definitiva y ya no se restauran desde ahí."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué ventaja da organizar los archivos en carpetas y subcarpetas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Encontrarlos rápido"
+        },
+        {
+          "letter": "B",
+          "text": "Que pesen menos"
+        },
+        {
+          "letter": "C",
+          "text": "Que nunca se borren"
+        },
+        {
+          "letter": "D",
+          "text": "Que se abran sin programa"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en un clóset ordenado contra uno revuelto.",
+      "explanation": "Ordenar en carpetas facilita encontrar todo. No cambia el peso ni protege contra el borrado."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué sistema operativo usan muchos celulares que no son iPhone?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "iOS de Apple"
+        },
+        {
+          "letter": "B",
+          "text": "Android"
+        },
+        {
+          "letter": "C",
+          "text": "Microsoft Word"
+        },
+        {
+          "letter": "D",
+          "text": "Microsoft Excel"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El de los iPhone se llama iOS; busca el otro gran sistema.",
+      "explanation": "Android es el sistema de la mayoría de los celulares que no son iPhone. Word y Excel son aplicaciones."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Cambias el nombre de foto.jpg a foto.mp3. ¿Qué pasa con el contenido?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se vuelve una canción"
+        },
+        {
+          "letter": "B",
+          "text": "Sigue siendo una imagen"
+        },
+        {
+          "letter": "C",
+          "text": "Se borra para siempre"
+        },
+        {
+          "letter": "D",
+          "text": "Se divide en dos partes"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Cambiar la etiqueta de un frasco no cambia lo que tiene dentro.",
+      "explanation": "La extensión solo indica el tipo; cambiarla no convierte el contenido. Sigue siendo imagen y puede no abrir bien."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Necesitas tu tarea en la USB y en la computadora. Tu compañero la mueve a la USB. ¿Cuál es el problema?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ya no está en la computadora"
+        },
+        {
+          "letter": "B",
+          "text": "La USB se llena de golpe y se traba"
+        },
+        {
+          "letter": "C",
+          "text": "La tarea cambia de extensión sola"
+        },
+        {
+          "letter": "D",
+          "text": "La tarea se duplica sin querer"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Repasa qué hace mover con el archivo original.",
+      "explanation": "Mover quita el archivo del lugar original. Para tenerlo en ambos lados debía copiarlo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Para llegar a Documentos > Escuela > 1B > Tec > tarea.docx, ¿cuántas carpetas hay que abrir?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tres"
+        },
+        {
+          "letter": "B",
+          "text": "Cuatro"
+        },
+        {
+          "letter": "C",
+          "text": "Cinco"
+        },
+        {
+          "letter": "D",
+          "text": "Una sola"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Cuenta solo las carpetas, no el archivo del final.",
+      "explanation": "Documentos, Escuela, 1B y Tec son cuatro carpetas. tarea.docx es el archivo, no se cuenta como carpeta."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un archivo se llama Tarea.final.docx. ¿Cuál es su extensión?",
+      "options": [
+        {
+          "letter": "A",
+          "text": ".final"
+        },
+        {
+          "letter": "B",
+          "text": ".final.docx"
+        },
+        {
+          "letter": "C",
+          "text": ".docx"
+        },
+        {
+          "letter": "D",
+          "text": "Tarea"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Solo cuenta lo que está después del último punto.",
+      "explanation": "La extensión va después del último punto: .docx. Lo demás es parte del nombre."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "La computadora arranca, pero no muestra el escritorio ni deja abrir apps. ¿Qué es lo más probable que falle?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El sistema operativo"
+        },
+        {
+          "letter": "B",
+          "text": "Las bocinas"
+        },
+        {
+          "letter": "C",
+          "text": "La impresora"
+        },
+        {
+          "letter": "D",
+          "text": "Un archivo de música"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "¿Qué programa muestra el escritorio y abre las aplicaciones?",
+      "explanation": "Mostrar el escritorio y abrir apps es trabajo del sistema operativo. Bocinas o impresora no lo impedirían."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué conviene respaldar archivos importantes en otro lugar, como la nube o una USB?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Por si falla el equipo"
+        },
+        {
+          "letter": "B",
+          "text": "Para que pesen menos"
+        },
+        {
+          "letter": "C",
+          "text": "Para cambiar su extensión"
+        },
+        {
+          "letter": "D",
+          "text": "Para que abran más rápido"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué pasa si se descompone o se pierde la computadora.",
+      "explanation": "Un respaldo protege tus archivos si el equipo falla, se pierde o se borra algo. No cambia su peso ni su tipo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Dos archivos con el mismo nombre y extensión, ¿pueden estar en la misma carpeta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Sí, sin ningún problema"
+        },
+        {
+          "letter": "B",
+          "text": "No, el sistema lo impide"
+        },
+        {
+          "letter": "C",
+          "text": "Solo si uno de ellos es imagen"
+        },
+        {
+          "letter": "D",
+          "text": "Solo si los dos son muy grandes"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "¿Cómo distinguiría el sistema uno de otro?",
+      "explanation": "En una misma carpeta cada archivo necesita un nombre único; por eso el sistema pregunta si quieres reemplazar."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Ana guarda todo en el escritorio sin carpetas. ¿Qué consecuencia es más probable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Le cuesta encontrar archivos"
+        },
+        {
+          "letter": "B",
+          "text": "La computadora se rompe"
+        },
+        {
+          "letter": "C",
+          "text": "Los archivos cambian de tipo"
+        },
+        {
+          "letter": "D",
+          "text": "La papelera se llena sola"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Imagina un cuarto donde todo está en el piso.",
+      "explanation": "Sin carpetas todo se amontona y cuesta encontrar lo que necesita. No se rompe ni cambia el tipo de archivo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué relación hay entre el sistema operativo y el explorador de archivos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El explorador es parte del sistema"
+        },
+        {
+          "letter": "B",
+          "text": "El explorador es un periférico"
+        },
+        {
+          "letter": "C",
+          "text": "El sistema es parte del explorador"
+        },
+        {
+          "letter": "D",
+          "text": "No tienen ninguna relación"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El explorador viene incluido para que gestiones tus archivos.",
+      "explanation": "El explorador es la herramienta del sistema operativo para gestionar archivos. No es un periférico."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un archivo está en C: > Usuarios > Leo > Música > rap.mp3. ¿Qué es Música?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El sistema operativo"
+        },
+        {
+          "letter": "B",
+          "text": "La extensión del archivo"
+        },
+        {
+          "letter": "C",
+          "text": "Una subcarpeta"
+        },
+        {
+          "letter": "D",
+          "text": "El nombre del disco"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Está entre otras carpetas y antes del archivo.",
+      "explanation": "Música es una subcarpeta dentro de Leo. C: es el disco y .mp3 la extensión."
+    }
+  ],
+  "diagnostic": {
+    "question": "En la ruta Documentos > Escuela > Tecnología > tarea1.docx, ¿qué es Tecnología?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Una subcarpeta"
+      },
+      {
+        "letter": "B",
+        "text": "Una extensión"
+      },
+      {
+        "letter": "C",
+        "text": "El sistema operativo"
+      },
+      {
+        "letter": "D",
+        "text": "El archivo final"
+      }
+    ],
+    "correct_answer": "A",
+    "explanation": "Tecnología está dentro de otras carpetas y contiene el archivo, así que es una subcarpeta. La extensión sería .docx."
+  }
+}

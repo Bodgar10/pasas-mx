@@ -1,0 +1,1846 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topic": "proyecto-tecnico-problema-solucion-tec-1",
+  "order_steps": {
+    "prompt": "Ordena las fases de un proyecto técnico",
+    "steps": [
+      "Identificar y delimitar el problema",
+      "Investigar información sobre el problema",
+      "Proponer alternativas y elegir la mejor",
+      "Planear y construir el prototipo",
+      "Evaluar el resultado y comunicarlo"
+    ],
+    "completion_feedback": "Un proyecto técnico avanza en orden: **problema**, **investigación**, **alternativas**, **planeación y ejecución**, y **evaluación y comunicación**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Tu colección de manga se está maltratando",
+        "content": "Tienes casi cuarenta tomos de manga: One Piece, Haikyuu!!, Spy x Family. Pero viven apilados en el piso de tu cuarto; las portadas se doblan, los lomos se maltratan y nunca encuentras el tomo que sigue. Ese es el problema, y decides resolverlo como un verdadero proyecto. Primero lo delimitas: necesitas guardar cuarenta tomos de pie, en orden y sin que se doblen, en el espacio junto a tu cama. Investigas cuánto mide un tomo y cómo guardan los mangas en las librerías. Imaginas cómo se verá tu rincón ya resuelto. Luego piensas alternativas: comprar un librero, hacer una repisa de madera o armar un organizador con cajas de cartón. Comparas costo, materiales y tiempo, y eliges el de cartón reforzado. Planeas medidas y materiales, lo construyes, metes los tomos y revisas si aguanta el peso. Al final se lo enseñas al club de anime y tres amigos quieren uno. Ese camino del problema a la solución es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu organizador de manga ES un proyecto técnico",
+        "content": "Lo que acabas de ver con tu colección es exactamente un **proyecto técnico**: un proceso ordenado para resolver un **problema** o una **necesidad** con una solución técnica. Sus fases son: **identificar y delimitar el problema**, **investigar**, imaginar la **imagen-objetivo** (cómo se verá todo resuelto), **proponer alternativas** y **elegir la mejor** con criterios como costo, tiempo y materiales, **planear**, **ejecutar** construyendo un **prototipo** o modelo, **evaluar** si funcionó y **comunicar** los resultados."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — elegir entre tres alternativas",
+        "content": "Para tu colección tienes tres opciones. Compáralas con criterios.\n\n**Paso 1 — Librero de tienda:** muy resistente, pero cuesta $1,500 → **costo alto**.\n**Paso 2 — Repisa de madera:** bonita, pero necesitas serrucho y taladro que no tienes → **medios no disponibles**.\n**Paso 3 — Organizador de cartón reforzado:** casi gratis, con materiales de casa y listo en una tarde → **cumple los criterios**.\n**Paso 4 — Decisión:** eliges el de cartón.\n**Paso 5 — Evaluación:** si al probarlo se dobla, lo refuerzas y lo vuelves a probar.\n\nResultado: elegiste con argumentos, no al azar."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **proyecto técnico** resuelve un problema en fases: **identificar el problema**, **investigar**, imaginar la **imagen-objetivo**, **proponer alternativas** y **elegir la mejor** con criterios (costo, tiempo, materiales), **planear**, **ejecutar** con un **prototipo**, **evaluar** y **comunicar**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Recuerda el orden como un arco de manga: primero aparece el problema, luego investigas, eliges la mejor estrategia, la ejecutas y al final ves si funcionó. Nadie construye antes de saber qué problema resuelve."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase del proyecto te acerca a resolver el problema de tu colección.",
+        "data": {
+          "intro": "Sigue las fases de tu proyecto para salvar tu colección de manga.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Problema: cuarenta tomos en el piso que se doblan. Lo delimitas: guardarlos de pie, en orden, junto a tu cama."
+            },
+            {
+              "text": "Investigación: mides un tomo y ves cómo los acomodan en las librerías."
+            },
+            {
+              "text": "Alternativas: librero, repisa de madera u organizador de cartón. Eliges el de cartón por costo y materiales."
+            },
+            {
+              "text": "Planeación y ejecución: haces un plano con medidas, juntas los materiales y lo construyes."
+            },
+            {
+              "text": "Evaluación y comunicación: pruebas que aguante los cuarenta tomos y lo presentas al club de anime."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué momento del proyecto?",
+        "content": "Antes de construir: identificar, investigar, elegir, planear. Construir: ejecutar el prototipo. Después: evaluar y comunicar.",
+        "data": {
+          "prompt": "Arrastra cada acción de tu proyecto a su momento.",
+          "buckets": [
+            "Antes de construir",
+            "Al construir",
+            "Después de construir"
+          ],
+          "items": [
+            {
+              "t": "Medir cuánto mide un tomo",
+              "b": 0
+            },
+            {
+              "t": "Cortar y pegar el cartón",
+              "b": 1
+            },
+            {
+              "t": "Revisar si aguanta el peso",
+              "b": 2
+            },
+            {
+              "t": "Comparar tres alternativas",
+              "b": 0
+            },
+            {
+              "t": "Doblar y pegar las divisiones",
+              "b": 1
+            },
+            {
+              "t": "Presentarlo al club de anime",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del proyecto técnico con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Imagen-objetivo",
+              "b": "Cómo se verá resuelto"
+            },
+            {
+              "a": "Prototipo",
+              "b": "Primer modelo de prueba"
+            },
+            {
+              "a": "Alternativas",
+              "b": "Posibles soluciones"
+            },
+            {
+              "a": "Evaluación",
+              "b": "Revisar si funcionó"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué fase del proyecto es cada cosa?",
+        "left_label": "Colección de manga",
+        "right_label": "Fase",
+        "pairs": [
+          {
+            "left": "Tomos doblados en el piso",
+            "right": "Problema"
+          },
+          {
+            "left": "Medir un tomo",
+            "right": "Investigación"
+          },
+          {
+            "left": "Librero, repisa o cartón",
+            "right": "Alternativas"
+          },
+          {
+            "left": "Ver si aguanta el peso",
+            "right": "Evaluación"
+          }
+        ],
+        "completion_feedback": "Tu proyecto pasó por **problema**, **investigación**, **alternativas** y **evaluación**. Ahora ponle nombre formal a cada fase."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué fase del proyecto es darte cuenta de que tus mangas se doblan en el piso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Identificar el problema"
+            },
+            {
+              "letter": "B",
+              "text": "Construir el prototipo"
+            },
+            {
+              "letter": "C",
+              "text": "Evaluar el resultado final"
+            },
+            {
+              "letter": "D",
+              "text": "Comunicar lo que lograste"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Todo proyecto empieza al identificar el problema. Construir y evaluar vienen después.",
+          "difficulty": 1
+        },
+        {
+          "question": "Imaginas tu rincón con los cuarenta tomos de pie y en orden. ¿Cómo se llama eso en un proyecto técnico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Prototipo de prueba"
+            },
+            {
+              "letter": "B",
+              "text": "Imagen-objetivo"
+            },
+            {
+              "letter": "C",
+              "text": "Alternativa de solución"
+            },
+            {
+              "letter": "D",
+              "text": "Comunicación final"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La imagen-objetivo es cómo se verá la situación ya resuelta. El prototipo es el objeto que construyes para lograrlo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Eliges el organizador de cartón porque es barato, usa materiales de casa y lo haces en una tarde. ¿Qué usaste para elegir?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Criterios de selección"
+            },
+            {
+              "letter": "B",
+              "text": "La suerte del momento exacto"
+            },
+            {
+              "letter": "C",
+              "text": "El gusto de un amigo del club"
+            },
+            {
+              "letter": "D",
+              "text": "La opción que era más cara"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Costo, materiales y tiempo son criterios para comparar alternativas. Elegir al azar no es parte de un proyecto técnico.",
+          "difficulty": 3
+        },
+        {
+          "question": "Metes los cuarenta tomos y revisas si el organizador se dobla. ¿Qué fase es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Investigación"
+            },
+            {
+              "letter": "B",
+              "text": "Planeación"
+            },
+            {
+              "letter": "C",
+              "text": "Evaluación"
+            },
+            {
+              "letter": "D",
+              "text": "Identificación"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Probar si la solución funciona es evaluar. La planeación se hace antes de construir.",
+          "difficulty": 2
+        },
+        {
+          "question": "El organizador se dobla con veinte tomos. ¿Qué es lo correcto según el proyecto técnico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Mejorarlo y volver a probar"
+            },
+            {
+              "letter": "B",
+              "text": "Abandonar todo el proyecto"
+            },
+            {
+              "letter": "C",
+              "text": "Fingir que sí funciona bien"
+            },
+            {
+              "letter": "D",
+              "text": "Empezar otro sin revisar nada"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La evaluación sirve para detectar fallas y mejorar. Reforzar y volver a probar es parte normal de un proyecto.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "Los balones que siempre se van a la calle",
+        "content": "En la cancha de tu secundaria pasa lo mismo todos los recreos: alguien patea con fuerza, el balón vuela por encima de la barda y cae a la avenida. Ya se perdieron cinco balones este mes y una vez casi le pega a un coche. Tu equipo decide resolverlo como un proyecto técnico. Primero delimitan el problema: los balones salen por el lado de la portería que da a la calle, entre los dos postes. Investigan qué tan alto vuelan los balones y cómo lo resuelven otras canchas. Imaginan cómo se verá la cancha ya resuelta: se puede patear fuerte sin que nada salga. Luego proponen alternativas: subir la barda, poner una red alta o cambiar la cancha de lugar. Comparan costo, tiempo y permisos, y eligen la red. Planean medidas, consiguen postes y red, la instalan con ayuda del conserje y la prueban con tiros de media cancha. Al final presentan el resultado al director. Ese camino del problema a la solución es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La red de la cancha ES un proyecto técnico",
+        "content": "Lo que acabas de ver con los balones perdidos es exactamente un **proyecto técnico**: un proceso ordenado para resolver un **problema** o una **necesidad** con una solución técnica. Sus fases son: **identificar y delimitar el problema**, **investigar**, imaginar la **imagen-objetivo** (cómo se verá todo resuelto), **proponer alternativas** y **elegir la mejor** con criterios como costo, tiempo y materiales, **planear**, **ejecutar** construyendo un **prototipo** o modelo, **evaluar** si funcionó y **comunicar** los resultados."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — elegir entre tres alternativas",
+        "content": "Para frenar los balones hay tres opciones. Compáralas con criterios.\n\n**Paso 1 — Subir la barda:** muy efectivo, pero caro y necesita permiso de obra → **costo y tiempo altos**.\n**Paso 2 — Cambiar la cancha de lugar:** no hay otro espacio en la escuela → **no es posible**.\n**Paso 3 — Red alta con postes:** costo bajo, se instala en un fin de semana → **cumple los criterios**.\n**Paso 4 — Decisión:** eligen la red.\n**Paso 5 — Evaluación:** si un balón todavía pasa por arriba, suben la red otro metro y vuelven a probar.\n\nResultado: una decisión con argumentos, no a lo loco."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **proyecto técnico** resuelve un problema en fases: **identificar el problema**, **investigar**, imaginar la **imagen-objetivo**, **proponer alternativas** y **elegir la mejor** con criterios (costo, tiempo, materiales), **planear**, **ejecutar** con un **prototipo**, **evaluar** y **comunicar**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Un proyecto técnico es como un partido bien jugado: primero estudias al rival (problema e investigación), luego eliges la táctica (alternativas), la ejecutas en la cancha y al final revisas el video para mejorar (evaluación)."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase del proyecto acerca a la escuela a dejar de perder balones.",
+        "data": {
+          "intro": "Sigue las fases del proyecto del equipo para que los balones dejen de caer a la avenida.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Problema: los balones salen por encima de la barda del lado de la calle. Lo delimitan: entre los dos postes de esa portería."
+            },
+            {
+              "text": "Investigación: miden qué tan alto vuelan los tiros y preguntan cómo lo resolvieron otras escuelas."
+            },
+            {
+              "text": "Alternativas: subir la barda, red alta o mover la cancha. Eligen la red por costo y tiempo."
+            },
+            {
+              "text": "Planeación y ejecución: calculan medidas, consiguen postes y red y la instalan con el conserje."
+            },
+            {
+              "text": "Evaluación y comunicación: prueban con tiros de media cancha y presentan el resultado al director."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué momento del proyecto?",
+        "content": "Antes de construir: identificar, investigar, elegir, planear. Construir: ejecutar. Después: evaluar y comunicar.",
+        "data": {
+          "prompt": "Arrastra cada acción del proyecto de la red a su momento.",
+          "buckets": [
+            "Antes de construir",
+            "Al construir",
+            "Después de construir"
+          ],
+          "items": [
+            {
+              "t": "Medir qué tan alto vuelan los tiros",
+              "b": 0
+            },
+            {
+              "t": "Enterrar los postes",
+              "b": 1
+            },
+            {
+              "t": "Probar con tiros de media cancha",
+              "b": 2
+            },
+            {
+              "t": "Comparar costos de las tres opciones",
+              "b": 0
+            },
+            {
+              "t": "Amarrar la red a los postes",
+              "b": 1
+            },
+            {
+              "t": "Presentar el resultado al director",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del proyecto técnico con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Problema",
+              "b": "Balones a la calle"
+            },
+            {
+              "a": "Alternativas",
+              "b": "Barda, red o mover"
+            },
+            {
+              "a": "Criterios",
+              "b": "Costo y tiempo"
+            },
+            {
+              "a": "Evaluación",
+              "b": "Tiros de prueba"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué fase del proyecto es cada cosa?",
+        "left_label": "Red de la cancha",
+        "right_label": "Fase",
+        "pairs": [
+          {
+            "left": "Balones que caen a la avenida",
+            "right": "Problema"
+          },
+          {
+            "left": "Ver cómo lo hacen otras escuelas",
+            "right": "Investigación"
+          },
+          {
+            "left": "Elegir la red por costo",
+            "right": "Selección de alternativa"
+          },
+          {
+            "left": "Presentarlo al director",
+            "right": "Comunicación"
+          }
+        ],
+        "completion_feedback": "El proyecto pasó por **problema**, **investigación**, **selección de alternativa** y **comunicación**. Ahora ponle nombre formal a cada fase."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál es el problema que resuelve el proyecto del equipo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los balones se van a la calle"
+            },
+            {
+              "letter": "B",
+              "text": "Comprar una red muy grande y alta"
+            },
+            {
+              "letter": "C",
+              "text": "Enterrar dos postes nuevos de metal"
+            },
+            {
+              "letter": "D",
+              "text": "Presentar todo el plan al director"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El problema es lo que falla al inicio: los balones salen a la calle. La red y los postes son parte de la solución.",
+          "difficulty": 1
+        },
+        {
+          "question": "El equipo compara subir la barda, poner una red o mover la cancha. ¿Qué fase es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Evaluación"
+            },
+            {
+              "letter": "B",
+              "text": "Comunicación"
+            },
+            {
+              "letter": "C",
+              "text": "Alternativas"
+            },
+            {
+              "letter": "D",
+              "text": "Ejecución"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Proponer varias soluciones posibles y compararlas es la fase de alternativas. Todavía no construyen nada.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un compañero quiere comprar la red sin medir nada 'para ganar tiempo'. ¿Qué riesgo hay?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que la red no sirva"
+            },
+            {
+              "letter": "B",
+              "text": "Que el balón se ponche"
+            },
+            {
+              "letter": "C",
+              "text": "Que llueva el sábado"
+            },
+            {
+              "letter": "D",
+              "text": "Que el director se enoje"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Saltarse la investigación y la planeación puede llevar a una solución de medidas equivocadas. Por eso las fases van en orden.",
+          "difficulty": 3
+        },
+        {
+          "question": "El equipo hace un dibujo con medidas, materiales y fechas antes de instalar la red. ¿Qué fase es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Planeación"
+            },
+            {
+              "letter": "B",
+              "text": "Evaluación"
+            },
+            {
+              "letter": "C",
+              "text": "Identificación"
+            },
+            {
+              "letter": "D",
+              "text": "Comunicación"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Definir medidas, materiales y tiempos antes de construir es planear. La evaluación se hace al final.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la prueba, un tiro todavía pasa por arriba de la red. ¿Qué indica la evaluación?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Hay que mejorar el diseño"
+            },
+            {
+              "letter": "B",
+              "text": "El proyecto ya terminó"
+            },
+            {
+              "letter": "C",
+              "text": "Hay que culpar al tirador"
+            },
+            {
+              "letter": "D",
+              "text": "La red debe quitarse ya"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La evaluación detectó una falla, así que se mejora la solución, por ejemplo subiendo la red, y se vuelve a probar.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El club de dance cover no tiene espejo",
+        "content": "Tu club de dance cover ensaya 'Magnetic' de ILLIT en el salón de usos múltiples, pero hay un problema: no hay espejo. Nadie puede ver si va sincronizada con las demás y en la presentación se nota. Deciden resolverlo como un proyecto técnico. Primero delimitan el problema: necesitan verse las cinco al mismo tiempo mientras bailan, en ese salón, durante los ensayos de una hora. Investigan cómo ensayan los grupos de K-pop en sus salas de práctica y cuánto cuesta un espejo grande. Imaginan cómo se verá el ensayo ya resuelto: cada una corrige su movimiento al instante. Proponen alternativas: comprar espejos, pegar láminas reflejantes o grabarse con un celular en un tripié y revisar el video. Comparan costo, seguridad y tiempo, y eligen el tripié hecho con materiales reciclados. Lo planean, lo construyen, lo prueban en un ensayo y al final cuentan en la junta del club cómo les fue. Ese camino del problema a la solución es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El tripié del club ES un proyecto técnico",
+        "content": "Lo que acabas de ver con el club de baile es exactamente un **proyecto técnico**: un proceso ordenado para resolver un **problema** o una **necesidad** con una solución técnica. Sus fases son: **identificar y delimitar el problema**, **investigar**, imaginar la **imagen-objetivo** (cómo se verá todo resuelto), **proponer alternativas** y **elegir la mejor** con criterios como costo, seguridad y tiempo, **planear**, **ejecutar** construyendo un **prototipo** o modelo, **evaluar** si funcionó y **comunicar** los resultados."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — elegir entre tres alternativas",
+        "content": "Para verse al bailar, el club tiene tres opciones. Compáralas con criterios.\n\n**Paso 1 — Espejos grandes:** ideales, pero cuestan mucho y se pueden romper → **costo y riesgo altos**.\n**Paso 2 — Láminas reflejantes:** baratas, pero deforman la imagen → **no cumple bien la función**.\n**Paso 3 — Tripié reciclado para el celular:** casi gratis, seguro y permite repetir el video → **cumple los criterios**.\n**Paso 4 — Decisión:** eligen el tripié.\n**Paso 5 — Evaluación:** si el tripié se mueve con la vibración del piso, le ponen más peso en la base.\n\nResultado: una decisión con argumentos, como un buen equipo de producción."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **proyecto técnico** resuelve un problema en fases: **identificar el problema**, **investigar**, imaginar la **imagen-objetivo**, **proponer alternativas** y **elegir la mejor** con criterios (costo, tiempo, materiales, seguridad), **planear**, **ejecutar** con un **prototipo**, **evaluar** y **comunicar**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la preparación de un comeback: primero se define el concepto (problema e imagen-objetivo), luego se eligen ideas, se produce, se revisa antes del estreno y se presenta. Un proyecto técnico sigue ese mismo orden."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase del proyecto acerca al club a ensayar mejor.",
+        "data": {
+          "intro": "Sigue las fases del proyecto del club de dance cover para poder verse al ensayar.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Problema: no hay espejo y nadie ve si está sincronizada. Lo delimitan: verse las cinco a la vez durante la hora de ensayo."
+            },
+            {
+              "text": "Investigación: ven cómo son las salas de práctica de los grupos y cuánto cuesta un espejo."
+            },
+            {
+              "text": "Alternativas: espejos, láminas reflejantes o tripié para grabarse. Eligen el tripié por costo y seguridad."
+            },
+            {
+              "text": "Planeación y ejecución: dibujan el tripié con medidas, juntan tubos reciclados y lo arman."
+            },
+            {
+              "text": "Evaluación y comunicación: lo prueban en un ensayo, le refuerzan la base y presentan el resultado al club."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué momento del proyecto?",
+        "content": "Antes de construir: identificar, investigar, elegir, planear. Construir: ejecutar. Después: evaluar y comunicar.",
+        "data": {
+          "prompt": "Arrastra cada acción del proyecto del club a su momento.",
+          "buckets": [
+            "Antes de construir",
+            "Al construir",
+            "Después de construir"
+          ],
+          "items": [
+            {
+              "t": "Comparar precios de espejos",
+              "b": 0
+            },
+            {
+              "t": "Unir los tubos del tripié",
+              "b": 1
+            },
+            {
+              "t": "Probarlo en un ensayo completo",
+              "b": 2
+            },
+            {
+              "t": "Dibujar el tripié con medidas",
+              "b": 0
+            },
+            {
+              "t": "Cortar los tubos a la medida",
+              "b": 1
+            },
+            {
+              "t": "Contar en la junta cómo funcionó",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del proyecto técnico con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Imagen-objetivo",
+              "b": "Cómo se verá resuelto"
+            },
+            {
+              "a": "Prototipo",
+              "b": "Primer modelo de prueba"
+            },
+            {
+              "a": "Criterios",
+              "b": "Costo y seguridad"
+            },
+            {
+              "a": "Comunicación",
+              "b": "Contar los resultados"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué fase del proyecto es cada cosa?",
+        "left_label": "Club de baile",
+        "right_label": "Fase",
+        "pairs": [
+          {
+            "left": "No ver la sincronización",
+            "right": "Problema"
+          },
+          {
+            "left": "Ver salas de práctica de idols",
+            "right": "Investigación"
+          },
+          {
+            "left": "Armar el tripié reciclado",
+            "right": "Ejecución"
+          },
+          {
+            "left": "Contarlo en la junta del club",
+            "right": "Comunicación"
+          }
+        ],
+        "completion_feedback": "El proyecto pasó por **problema**, **investigación**, **ejecución** y **comunicación**. Ahora ponle nombre formal a cada fase."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál es el problema del club de dance cover?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No se ven al bailar"
+            },
+            {
+              "letter": "B",
+              "text": "Comprar un tripié nuevo"
+            },
+            {
+              "letter": "C",
+              "text": "Grabar videos en el celular"
+            },
+            {
+              "letter": "D",
+              "text": "Bailar una canción de ILLIT"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El problema es lo que falla: no pueden verse para sincronizarse. El tripié y la grabación son parte de la solución.",
+          "difficulty": 1
+        },
+        {
+          "question": "Imaginan el ensayo con cada una corrigiendo su movimiento al instante. ¿Qué es eso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una alternativa más"
+            },
+            {
+              "letter": "B",
+              "text": "La evaluación final"
+            },
+            {
+              "letter": "C",
+              "text": "La imagen-objetivo"
+            },
+            {
+              "letter": "D",
+              "text": "El prototipo de prueba"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La imagen-objetivo describe cómo se verá la situación ya resuelta. El prototipo es el objeto que construyen.",
+          "difficulty": 2
+        },
+        {
+          "question": "Descartan los espejos porque son caros y se pueden romper. ¿Qué criterios usaron?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Costo y seguridad"
+            },
+            {
+              "letter": "B",
+              "text": "Color y tamaño del espejo"
+            },
+            {
+              "letter": "C",
+              "text": "Gusto y moda del momento"
+            },
+            {
+              "letter": "D",
+              "text": "Suerte y prisa por terminar"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Compararon el costo y el riesgo de romperse: criterios técnicos. El color o la moda no resuelven el problema.",
+          "difficulty": 3
+        },
+        {
+          "question": "El primer tripié que arman para probar si funciona es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El problema"
+            },
+            {
+              "letter": "B",
+              "text": "Un prototipo"
+            },
+            {
+              "letter": "C",
+              "text": "Una investigación"
+            },
+            {
+              "letter": "D",
+              "text": "La imagen-objetivo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El prototipo es el primer modelo funcional que se construye para probar la solución y mejorarla.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la junta del club explican cómo hicieron el tripié y qué mejorarían. ¿Para qué sirve esta fase?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para compartir lo aprendido"
+            },
+            {
+              "letter": "B",
+              "text": "Para empezar todo desde cero"
+            },
+            {
+              "letter": "C",
+              "text": "Para elegir otra vez el problema"
+            },
+            {
+              "letter": "D",
+              "text": "Para comprar otro espejo grande"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Comunicar los resultados permite que otros aprendan de la solución y den ideas para mejorarla.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El nido de cables de tu setup gamer",
+        "content": "Tu setup gamer se ve increíble de frente, pero detrás del escritorio hay un nido de cables: el de la consola, el del monitor, el del cargador del control, el de las bocinas. Se enredan, el control se cae cuando jalas el cable y una vez casi tiras el monitor. Decides resolverlo como un proyecto técnico. Primero delimitas el problema: necesitas ordenar seis cables detrás de tu escritorio para que no se enreden ni se jalen. Investigas cómo lo hacen los streamers y qué productos existen. Imaginas tu setup ya resuelto: cables invisibles y cada uno en su lugar. Propones alternativas: comprar una canaleta, usar cinchos de velcro o imprimir en 3D un organizador en el taller de la escuela. Comparas costo, tiempo y herramientas disponibles, y eliges cinchos de velcro con una canaleta sencilla. Planeas por dónde va cada cable, lo armas, pruebas jalar el control y al final subes un video del antes y después. Ese camino del problema a la solución es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Ordenar tu setup ES un proyecto técnico",
+        "content": "Lo que acabas de ver con tu setup es exactamente un **proyecto técnico**: un proceso ordenado para resolver un **problema** o una **necesidad** con una solución técnica. Sus fases son: **identificar y delimitar el problema**, **investigar**, imaginar la **imagen-objetivo** (cómo se verá todo resuelto), **proponer alternativas** y **elegir la mejor** con criterios como costo, tiempo y herramientas, **planear**, **ejecutar** construyendo un **prototipo** o modelo, **evaluar** si funcionó y **comunicar** los resultados."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — elegir entre tres alternativas",
+        "content": "Para tus cables tienes tres opciones. Compáralas con criterios.\n\n**Paso 1 — Organizador impreso en 3D:** queda perfecto, pero necesitas esperar turno en la impresora de la escuela dos semanas → **tiempo alto**.\n**Paso 2 — Canaleta grande para pared:** ordenada, pero hay que taladrar la pared y no tienes permiso → **no es posible**.\n**Paso 3 — Cinchos de velcro y canaleta pegable:** baratos, sin herramientas y listos hoy → **cumple los criterios**.\n**Paso 4 — Decisión:** eliges cinchos con canaleta pegable.\n**Paso 5 — Evaluación:** si un cable se suelta al jalar el control, le das más holgura y vuelves a probar.\n\nResultado: una elección con argumentos, como un buen build."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **proyecto técnico** resuelve un problema en fases: **identificar el problema**, **investigar**, imaginar la **imagen-objetivo**, **proponer alternativas** y **elegir la mejor** con criterios (costo, tiempo, materiales), **planear**, **ejecutar** con un **prototipo**, **evaluar** y **comunicar**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Un proyecto técnico es como pasar un nivel difícil: identificas el obstáculo, investigas en la wiki, eliges tu estrategia, la ejecutas y, si pierdes, ajustas y vuelves a intentar. Evaluar y mejorar es parte del juego."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada fase del proyecto acerca tu setup a estar ordenado y seguro.",
+        "data": {
+          "intro": "Sigue las fases de tu proyecto para acabar con el nido de cables.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Problema: seis cables enredados que hacen caer el control. Lo delimitas: ordenar esos seis cables detrás del escritorio."
+            },
+            {
+              "text": "Investigación: ves cómo ordenan sus cables los streamers y qué opciones existen."
+            },
+            {
+              "text": "Alternativas: impresión 3D, canaleta de pared o cinchos con canaleta pegable. Eliges la última por costo y tiempo."
+            },
+            {
+              "text": "Planeación y ejecución: dibujas por dónde va cada cable y lo armas con los cinchos."
+            },
+            {
+              "text": "Evaluación y comunicación: jalas el control para probar y subes un video del antes y después."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿En qué momento del proyecto?",
+        "content": "Antes de construir: identificar, investigar, elegir, planear. Construir: ejecutar. Después: evaluar y comunicar.",
+        "data": {
+          "prompt": "Arrastra cada acción de tu proyecto a su momento.",
+          "buckets": [
+            "Antes de construir",
+            "Al construir",
+            "Después de construir"
+          ],
+          "items": [
+            {
+              "t": "Ver cómo ordenan cables los streamers",
+              "b": 0
+            },
+            {
+              "t": "Amarrar los cables con velcro",
+              "b": 1
+            },
+            {
+              "t": "Jalar el control para probar",
+              "b": 2
+            },
+            {
+              "t": "Dibujar por dónde va cada cable",
+              "b": 0
+            },
+            {
+              "t": "Pegar la canaleta al escritorio",
+              "b": 1
+            },
+            {
+              "t": "Subir el video del antes y después",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del proyecto técnico con su significado.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Imagen-objetivo",
+              "b": "Cómo se verá resuelto"
+            },
+            {
+              "a": "Alternativas",
+              "b": "Posibles soluciones"
+            },
+            {
+              "a": "Ejecución",
+              "b": "Construir la solución"
+            },
+            {
+              "a": "Evaluación",
+              "b": "Revisar si funcionó"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué fase del proyecto es cada cosa?",
+        "left_label": "Setup gamer",
+        "right_label": "Fase",
+        "pairs": [
+          {
+            "left": "El nido de cables",
+            "right": "Problema"
+          },
+          {
+            "left": "3D, canaleta o cinchos",
+            "right": "Alternativas"
+          },
+          {
+            "left": "Amarrar todo con velcro",
+            "right": "Ejecución"
+          },
+          {
+            "left": "Jalar el control para probar",
+            "right": "Evaluación"
+          }
+        ],
+        "completion_feedback": "Tu proyecto pasó por **problema**, **alternativas**, **ejecución** y **evaluación**. Ahora ponle nombre formal a cada fase."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué fase del proyecto es darte cuenta de que los cables enredados hacen caer el control?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Identificar el problema"
+            },
+            {
+              "letter": "B",
+              "text": "Ejecutar la solución"
+            },
+            {
+              "letter": "C",
+              "text": "Comunicar el resultado"
+            },
+            {
+              "letter": "D",
+              "text": "Evaluar el prototipo final"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Reconocer qué falla es la primera fase: identificar el problema. Ejecutar y evaluar vienen después.",
+          "difficulty": 1
+        },
+        {
+          "question": "Comparas la impresión 3D, la canaleta de pared y los cinchos de velcro. ¿Qué fase es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Evaluación"
+            },
+            {
+              "letter": "B",
+              "text": "Alternativas"
+            },
+            {
+              "letter": "C",
+              "text": "Comunicación"
+            },
+            {
+              "letter": "D",
+              "text": "Ejecución"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Proponer y comparar varias soluciones posibles es la fase de alternativas. Aún no construyes nada.",
+          "difficulty": 2
+        },
+        {
+          "question": "Descartas la impresión 3D porque tendrías que esperar dos semanas. ¿Qué criterio usaste?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El tiempo"
+            },
+            {
+              "letter": "B",
+              "text": "El color"
+            },
+            {
+              "letter": "C",
+              "text": "La moda del año"
+            },
+            {
+              "letter": "D",
+              "text": "La marca del cable"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El tiempo que tarda una alternativa es un criterio de selección, igual que el costo o los materiales.",
+          "difficulty": 3
+        },
+        {
+          "question": "Antes de amarrar nada, dibujas por dónde irá cada cable. ¿Qué fase es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Planeación"
+            },
+            {
+              "letter": "B",
+              "text": "Evaluación"
+            },
+            {
+              "letter": "C",
+              "text": "Comunicación"
+            },
+            {
+              "letter": "D",
+              "text": "Identificación"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Decidir cómo y con qué se hará antes de construir es planear. Evaluar se hace al final.",
+          "difficulty": 2
+        },
+        {
+          "question": "Al jalar el control, un cable se sale de su lugar. ¿Qué es lo correcto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ajustar y volver a probar"
+            },
+            {
+              "letter": "B",
+              "text": "Darlo por terminado así"
+            },
+            {
+              "letter": "C",
+              "text": "Quitar todos los cinchos de una vez"
+            },
+            {
+              "letter": "D",
+              "text": "Comprar otro control nuevo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La evaluación detectó una falla, así que se ajusta la solución y se vuelve a probar. Así se mejora un proyecto.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es la primera fase de un proyecto técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Identificar el problema"
+        },
+        {
+          "letter": "B",
+          "text": "Construir el prototipo final"
+        },
+        {
+          "letter": "C",
+          "text": "Evaluar todos los resultados"
+        },
+        {
+          "letter": "D",
+          "text": "Comprar todos los materiales"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No puedes resolver algo que todavía no sabes qué es.",
+      "explanation": "Todo proyecto empieza al identificar y delimitar el problema. Construir y evaluar vienen después."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un proyecto técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un proceso para resolver problemas"
+        },
+        {
+          "letter": "B",
+          "text": "Un examen de tecnología por escrito"
+        },
+        {
+          "letter": "C",
+          "text": "Una lista de herramientas muy caras"
+        },
+        {
+          "letter": "D",
+          "text": "Un aparato que ya está terminado"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Tiene fases que van del problema a la solución.",
+      "explanation": "Es un proceso ordenado, con fases, para resolver un problema o una necesidad con una solución técnica."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué son las alternativas de solución?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Varias formas de resolver"
+        },
+        {
+          "letter": "B",
+          "text": "Los problemas del proyecto"
+        },
+        {
+          "letter": "C",
+          "text": "Las fallas del prototipo"
+        },
+        {
+          "letter": "D",
+          "text": "Las fuentes que consultas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Alternativa significa opción.",
+      "explanation": "Son las distintas soluciones posibles para el mismo problema; después se elige la mejor."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un prototipo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El primer modelo de prueba"
+        },
+        {
+          "letter": "B",
+          "text": "El problema que se resuelve"
+        },
+        {
+          "letter": "C",
+          "text": "La lista de materiales"
+        },
+        {
+          "letter": "D",
+          "text": "El informe final escrito"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Se construye para probar si la idea funciona.",
+      "explanation": "El prototipo es el primer modelo funcional que se construye para probar y mejorar la solución."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es la última fase de un proyecto técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Evaluar y comunicar"
+        },
+        {
+          "letter": "B",
+          "text": "Identificar el problema"
+        },
+        {
+          "letter": "C",
+          "text": "Proponer alternativas"
+        },
+        {
+          "letter": "D",
+          "text": "Investigar el tema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Va después de construir.",
+      "explanation": "Al final se evalúa si la solución funcionó y se comunican los resultados."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la imagen-objetivo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cómo se verá todo resuelto"
+        },
+        {
+          "letter": "B",
+          "text": "Una foto del prototipo terminado"
+        },
+        {
+          "letter": "C",
+          "text": "El logotipo oficial del proyecto"
+        },
+        {
+          "letter": "D",
+          "text": "La lista de los costos totales"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es imaginar el final feliz del proyecto.",
+      "explanation": "La imagen-objetivo describe cómo será la situación cuando el problema esté resuelto."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Hacer un dibujo con medidas, materiales y fechas antes de construir es…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Planear"
+        },
+        {
+          "letter": "B",
+          "text": "Evaluar"
+        },
+        {
+          "letter": "C",
+          "text": "Comunicar"
+        },
+        {
+          "letter": "D",
+          "text": "Delimitar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Pasa antes de ejecutar.",
+      "explanation": "Definir medidas, materiales y tiempos antes de construir es planear."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Construir la solución con los materiales y herramientas es la fase de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ejecución"
+        },
+        {
+          "letter": "B",
+          "text": "Investigación"
+        },
+        {
+          "letter": "C",
+          "text": "Identificación"
+        },
+        {
+          "letter": "D",
+          "text": "Comunicación"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es cuando se pasa del papel a la realidad.",
+      "explanation": "La ejecución es construir lo que se planeó."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Buscar en libros e internet cómo otros resolvieron un problema parecido es…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Investigar"
+        },
+        {
+          "letter": "B",
+          "text": "Ejecutar el plan"
+        },
+        {
+          "letter": "C",
+          "text": "Evaluar el resultado"
+        },
+        {
+          "letter": "D",
+          "text": "Comunicar los logros"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Va antes de proponer soluciones.",
+      "explanation": "Recopilar información sobre el problema es la fase de investigación."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Presentar tu proyecto al grupo y explicar qué lograste es la fase de…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Comunicación"
+        },
+        {
+          "letter": "B",
+          "text": "Planeación"
+        },
+        {
+          "letter": "C",
+          "text": "Investigación"
+        },
+        {
+          "letter": "D",
+          "text": "Delimitación"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es compartir lo que hiciste.",
+      "explanation": "Comunicar los resultados es compartir lo que se hizo, lo que funcionó y lo que se puede mejorar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué significa delimitar un problema?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Precisar qué, dónde y para quién"
+        },
+        {
+          "letter": "B",
+          "text": "Hacerlo más grande y más general"
+        },
+        {
+          "letter": "C",
+          "text": "Ignorarlo hasta que se pase solo"
+        },
+        {
+          "letter": "D",
+          "text": "Elegir la solución que sea más cara"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Delimitar es ponerle límites claros.",
+      "explanation": "Delimitar es precisar el problema: qué pasa exactamente, dónde, a quién afecta. Así se puede resolver."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es un criterio para elegir entre alternativas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El costo"
+        },
+        {
+          "letter": "B",
+          "text": "El color favorito"
+        },
+        {
+          "letter": "C",
+          "text": "La suerte"
+        },
+        {
+          "letter": "D",
+          "text": "La moda"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca algo que se pueda comparar con datos.",
+      "explanation": "Costo, tiempo, materiales y seguridad son criterios técnicos. El gusto o la suerte no lo son."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué no conviene construir antes de investigar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La solución podría no servir"
+        },
+        {
+          "letter": "B",
+          "text": "Porque está prohibido por la escuela"
+        },
+        {
+          "letter": "C",
+          "text": "Porque al final cuesta lo mismo"
+        },
+        {
+          "letter": "D",
+          "text": "Porque así ya no hay problema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Sin información, puedes resolver lo que no era.",
+      "explanation": "Sin investigar puedes construir algo con medidas o materiales equivocados que no resuelva el problema."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En una escuela, los alumnos se mojan al esperar el transporte. ¿Qué enunciado delimita mejor el problema?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mojarse en la parada de la entrada"
+        },
+        {
+          "letter": "B",
+          "text": "Llueve muchísimo en todo el mundo"
+        },
+        {
+          "letter": "C",
+          "text": "El clima del planeta está cambiando"
+        },
+        {
+          "letter": "D",
+          "text": "A nadie le gusta mojarse con la lluvia"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El problema debe decir qué pasa y dónde.",
+      "explanation": "Precisa qué pasa (se mojan) y dónde (en la parada de la entrada). Los demás son demasiado generales."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Para qué sirve la evaluación en un proyecto técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para saber si funcionó"
+        },
+        {
+          "letter": "B",
+          "text": "Para elegir el problema"
+        },
+        {
+          "letter": "C",
+          "text": "Para comprar materiales"
+        },
+        {
+          "letter": "D",
+          "text": "Para investigar el tema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Va después de construir.",
+      "explanation": "Evaluar es revisar si la solución cumple su propósito y qué se puede mejorar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Ordena: planear, identificar el problema, evaluar, ejecutar. ¿Cuál va en tercer lugar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ejecutar"
+        },
+        {
+          "letter": "B",
+          "text": "Planear"
+        },
+        {
+          "letter": "C",
+          "text": "Evaluar"
+        },
+        {
+          "letter": "D",
+          "text": "Identificar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa qué necesitas tener listo antes de poder construir.",
+      "explanation": "El orden es identificar, planear, ejecutar y evaluar. Ejecutar va en tercer lugar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un equipo elige una solución sin comparar otras opciones. ¿Qué fase se saltó?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Proponer alternativas"
+        },
+        {
+          "letter": "B",
+          "text": "Comunicar resultados"
+        },
+        {
+          "letter": "C",
+          "text": "Construir el prototipo"
+        },
+        {
+          "letter": "D",
+          "text": "Identificar el problema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Para elegir la mejor necesitas tener varias.",
+      "explanation": "Sin proponer alternativas no hay con qué comparar, y la solución elegida puede no ser la mejor."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre un prototipo y un producto terminado?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El prototipo se prueba y mejora"
+        },
+        {
+          "letter": "B",
+          "text": "El prototipo nunca funciona"
+        },
+        {
+          "letter": "C",
+          "text": "El producto no tiene materiales"
+        },
+        {
+          "letter": "D",
+          "text": "No existe ninguna diferencia"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Uno es para probar; el otro, para usar.",
+      "explanation": "El prototipo sirve para probar la idea y corregirla; el producto terminado ya incorpora esas mejoras."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué incluye normalmente la planeación de un proyecto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Materiales, pasos, tiempos y costos"
+        },
+        {
+          "letter": "B",
+          "text": "Solo el nombre que tendrá el proyecto"
+        },
+        {
+          "letter": "C",
+          "text": "Los aplausos que dará el público"
+        },
+        {
+          "letter": "D",
+          "text": "La calificación que pondrá el maestro"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es todo lo que necesitas saber antes de construir.",
+      "explanation": "La planeación define qué materiales, qué pasos, cuánto tiempo y cuánto costará."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En un proyecto, ¿por qué se usan criterios como la seguridad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para que nadie se lastime"
+        },
+        {
+          "letter": "B",
+          "text": "Para que se vea mucho más caro"
+        },
+        {
+          "letter": "C",
+          "text": "Para tardar más tiempo en hacerlo"
+        },
+        {
+          "letter": "D",
+          "text": "Para cambiar el problema original"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una solución no sirve si pone en riesgo a alguien.",
+      "explanation": "Una solución debe resolver el problema sin crear riesgos para las personas que la usan."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un prototipo de bebedero para el patio gotea al probarlo. ¿Qué indica sobre el proceso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Toca mejorar y volver a probar"
+        },
+        {
+          "letter": "B",
+          "text": "Que el proyecto ya fracasó del todo"
+        },
+        {
+          "letter": "C",
+          "text": "Que en realidad no había problema"
+        },
+        {
+          "letter": "D",
+          "text": "Que no hacía falta ninguna evaluación"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Las fallas en la prueba son información útil.",
+      "explanation": "La evaluación detectó una falla; se corrige y se vuelve a probar. Eso es parte normal del proyecto."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Dos alternativas resuelven igual el problema; una cuesta $200 y otra $1,200. ¿Qué conviene si el presupuesto es bajo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La de $200"
+        },
+        {
+          "letter": "B",
+          "text": "La de $1,200"
+        },
+        {
+          "letter": "C",
+          "text": "Ninguna de las dos"
+        },
+        {
+          "letter": "D",
+          "text": "Las dos a la vez"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Si funcionan igual, el costo decide.",
+      "explanation": "Si ambas cumplen igual la función, el criterio de costo favorece la más barata."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué la investigación va antes de proponer alternativas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Da información para buenas ideas"
+        },
+        {
+          "letter": "B",
+          "text": "Porque es la fase más corta de todas"
+        },
+        {
+          "letter": "C",
+          "text": "Porque así lo dice el maestro siempre"
+        },
+        {
+          "letter": "D",
+          "text": "Porque en realidad no tiene importancia"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Las buenas soluciones se basan en datos.",
+      "explanation": "Investigar da información sobre el problema y sobre soluciones existentes, lo que permite proponer mejores alternativas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una alternativa es la más barata, pero tiene bordes filosos. ¿Qué haces?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Considerar la seguridad"
+        },
+        {
+          "letter": "B",
+          "text": "Elegirla solo por precio"
+        },
+        {
+          "letter": "C",
+          "text": "Ocultar el riesgo"
+        },
+        {
+          "letter": "D",
+          "text": "No evaluar nada"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "No basta con un solo criterio.",
+      "explanation": "Se comparan varios criterios: si es peligrosa, hay que corregirla o elegir otra aunque cueste más."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué se gana al comunicar los resultados de un proyecto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Otros aprenden y aportan"
+        },
+        {
+          "letter": "B",
+          "text": "El prototipo se arregla solo"
+        },
+        {
+          "letter": "C",
+          "text": "El problema desaparece"
+        },
+        {
+          "letter": "D",
+          "text": "Ya no hay que evaluar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Compartir abre la puerta a mejoras.",
+      "explanation": "Al compartir, otras personas aprenden de tu solución y pueden sugerir mejoras."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo construye una caseta para la parada sin preguntar a quienes la usan, y queda muy baja. ¿Qué faltó?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Investigar a los usuarios"
+        },
+        {
+          "letter": "B",
+          "text": "Comprar más materiales caros"
+        },
+        {
+          "letter": "C",
+          "text": "Pintarla de un color más bonito"
+        },
+        {
+          "letter": "D",
+          "text": "Presentarla más rápido al grupo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Las soluciones son para personas.",
+      "explanation": "Investigar las necesidades de quienes la usarán habría evitado el error de medidas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué relación hay entre la imagen-objetivo y la evaluación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Se compara el resultado con ella"
+        },
+        {
+          "letter": "B",
+          "text": "No tienen ninguna relación entre sí"
+        },
+        {
+          "letter": "C",
+          "text": "La evaluación la reemplaza por completo"
+        },
+        {
+          "letter": "D",
+          "text": "Se hacen exactamente igual y al mismo tiempo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "¿Cómo sabes si lograste lo que imaginaste?",
+      "explanation": "Al evaluar se compara lo que se logró con lo que se imaginó en la imagen-objetivo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué un proyecto técnico puede regresar a una fase anterior?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para corregir lo que falló"
+        },
+        {
+          "letter": "B",
+          "text": "Porque se hizo mal todo"
+        },
+        {
+          "letter": "C",
+          "text": "Porque el orden no importa"
+        },
+        {
+          "letter": "D",
+          "text": "Para alargar el proyecto"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Evaluar puede mostrar que algo debe replantearse.",
+      "explanation": "Si la evaluación muestra fallas, se vuelve a planear o a construir para mejorar. El proceso es cíclico."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué problema está MEJOR planteado para un proyecto escolar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Basura del recreo en el patio"
+        },
+        {
+          "letter": "B",
+          "text": "La contaminación de todo el planeta"
+        },
+        {
+          "letter": "C",
+          "text": "Todos los problemas de México"
+        },
+        {
+          "letter": "D",
+          "text": "Todo lo que está mal en el mundo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Un buen problema es concreto y se puede atender.",
+      "explanation": "Es concreto y está al alcance de los alumnos. Los demás son tan amplios que no se pueden resolver con un proyecto escolar."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un proyecto resuelve el problema, pero genera mucha basura difícil de reciclar. ¿Qué debería considerarse?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Su impacto ambiental"
+        },
+        {
+          "letter": "B",
+          "text": "Su color final"
+        },
+        {
+          "letter": "C",
+          "text": "Su nombre comercial"
+        },
+        {
+          "letter": "D",
+          "text": "El tamaño de su caja"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Una buena solución no crea un problema nuevo.",
+      "explanation": "Al evaluar se toman en cuenta los efectos en el ambiente, no solo si se resolvió el problema."
+    }
+  ],
+  "diagnostic": {
+    "question": "Los alumnos se mojan al esperar el transporte en la entrada de la escuela. Para resolverlo con un proyecto técnico, ¿qué se hace primero?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Delimitar el problema"
+      },
+      {
+        "letter": "B",
+        "text": "Construir un techo ya"
+      },
+      {
+        "letter": "C",
+        "text": "Comprar las láminas"
+      },
+      {
+        "letter": "D",
+        "text": "Evaluar el techo hecho"
+      }
+    ],
+    "correct_answer": "A",
+    "explanation": "Primero se identifica y delimita el problema: qué pasa, dónde y a quién afecta. Construir, comprar y evaluar vienen después de investigar y planear."
+  }
+}

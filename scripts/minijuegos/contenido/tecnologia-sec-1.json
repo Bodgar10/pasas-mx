@@ -1,0 +1,1189 @@
+{
+  "subject": "tecnologia-sec-1",
+  "topics": {
+    "que-es-la-tecnologia-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo nace un producto técnico",
+        "steps": [
+          "Detectar una necesidad o un problema",
+          "Planear qué hacer, con qué medios y con qué materiales",
+          "Transformar los materiales con herramientas o máquinas",
+          "Revisar que el resultado funcione como se quería",
+          "Usar el producto para satisfacer la necesidad"
+        ],
+        "completion_feedback": "Toda técnica arranca en una **necesidad** y termina en un **producto**. En medio hay acciones para planear, hacer y revisar. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la técnica es cada cosa?",
+            "left_label": "Aldea de herreros",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tanjiro no tiene espada",
+                "right": "Necesidad"
+              },
+              {
+                "left": "Forjar, templar y afilar",
+                "right": "Técnica"
+              },
+              {
+                "left": "Martillo, yunque y horno",
+                "right": "Medios técnicos"
+              },
+              {
+                "left": "La espada Nichirin",
+                "right": "Producto técnico"
+              }
+            ],
+            "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte de la técnica es cada cosa?",
+            "left_label": "Banda de Raúl",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Proteger su cabeza al jugar",
+                "right": "Necesidad"
+              },
+              {
+                "left": "Cortar, moldear y coser",
+                "right": "Técnica"
+              },
+              {
+                "left": "Tijeras y máquina de coser",
+                "right": "Medios técnicos"
+              },
+              {
+                "left": "La banda acolchada",
+                "right": "Producto técnico"
+              }
+            ],
+            "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte de la técnica es cada cosa?",
+            "left_label": "ARMY Bomb",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Que BTS vea el apoyo de ARMY",
+                "right": "Necesidad"
+              },
+              {
+                "left": "Diseñar, moldear y armar",
+                "right": "Técnica"
+              },
+              {
+                "left": "Moldes y máquinas",
+                "right": "Medios técnicos"
+              },
+              {
+                "left": "El lightstick terminado",
+                "right": "Producto técnico"
+              }
+            ],
+            "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte de la técnica es cada cosa?",
+            "left_label": "Primera noche",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Sobrevivir a los mobs",
+                "right": "Necesidad"
+              },
+              {
+                "left": "Talar, craftear y construir",
+                "right": "Técnica"
+              },
+              {
+                "left": "Mesa de crafteo y horno",
+                "right": "Medios técnicos"
+              },
+              {
+                "left": "El refugio terminado",
+                "right": "Producto técnico"
+              }
+            ],
+            "completion_feedback": "Una **necesidad** se resuelve con una **técnica**, que usa **medios** para crear un **producto**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "la-computadora-hardware-software-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena el viaje de una letra desde el teclado",
+        "steps": [
+          "Presionas una tecla del teclado",
+          "La señal entra a la computadora por el cable o el Bluetooth",
+          "El procesador interpreta qué tecla fue",
+          "La letra aparece en el monitor"
+        ],
+        "completion_feedback": "La información siempre viaja igual: **entrada**, **proceso** y **salida**. Los periféricos están en los extremos y el procesador en medio. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu estudio?",
+            "left_label": "Fanart de Gojo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La pluma de la tableta",
+                "right": "Periférico de entrada"
+              },
+              {
+                "left": "El monitor y la impresora",
+                "right": "Periférico de salida"
+              },
+              {
+                "left": "Clip Studio Paint",
+                "right": "Software"
+              },
+              {
+                "left": "La computadora por dentro",
+                "right": "Hardware"
+              }
+            ],
+            "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y los aparatos conectados son **periféricos**. Ahora ponle nombre formal a cada parte."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa del VAR?",
+            "left_label": "Cuarto del VAR",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Las cámaras del estadio",
+                "right": "Periférico de entrada"
+              },
+              {
+                "left": "Los monitores del cuarto",
+                "right": "Periférico de salida"
+              },
+              {
+                "left": "El programa que traza la línea",
+                "right": "Software"
+              },
+              {
+                "left": "Las computadoras del VAR",
+                "right": "Hardware"
+              }
+            ],
+            "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y los aparatos conectados son **periféricos**. Ahora ponle nombre formal a cada parte."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa del live?",
+            "left_label": "Live en Weverse",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La cámara y el micrófono",
+                "right": "Periférico de entrada"
+              },
+              {
+                "left": "La bocina del celular",
+                "right": "Periférico de salida"
+              },
+              {
+                "left": "La app de Weverse",
+                "right": "Software"
+              },
+              {
+                "left": "El celular por dentro",
+                "right": "Hardware"
+              }
+            ],
+            "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y lo que mete o saca información son **periféricos**. Ahora ponle nombre formal a cada parte."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu partida?",
+            "left_label": "Mario Kart",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El control con el botón A",
+                "right": "Periférico de entrada"
+              },
+              {
+                "left": "La pantalla y las bocinas",
+                "right": "Periférico de salida"
+              },
+              {
+                "left": "El juego de Mario Kart",
+                "right": "Software"
+              },
+              {
+                "left": "La consola por dentro",
+                "right": "Hardware"
+              }
+            ],
+            "completion_feedback": "Lo que tocas es **hardware**, los programas son **software** y lo que mete o saca información son **periféricos**. Ahora ponle nombre formal a cada parte."
+          }
+        }
+      }
+    },
+    "sistema-operativo-y-archivos-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo guardar tu tarea en una carpeta nueva",
+        "steps": [
+          "Abrir el explorador de archivos",
+          "Entrar a la carpeta Documentos",
+          "Crear dentro la subcarpeta Tecnología",
+          "Guardar ahí la tarea con un nombre claro"
+        ],
+        "completion_feedback": "Primero llegas al lugar, luego creas la **subcarpeta** y al final guardas el **archivo** con un nombre que se entienda. Así se arma una **ruta** ordenada. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de la laptop de Twilight?",
+            "left_label": "Operación Strix",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa que enciende todo",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": "Operación Strix > Desmond",
+                "right": "Ruta"
+              },
+              {
+                "left": "El .jpg de foto_desmond",
+                "right": "Extensión"
+              },
+              {
+                "left": "La carpeta Escuela Eden",
+                "right": "Subcarpeta"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de la computadora del analista?",
+            "left_label": "Analista",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa que enciende todo",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": "Apertura 2026 > Jornada 05",
+                "right": "Ruta"
+              },
+              {
+                "left": "El .mp4 del gol",
+                "right": "Extensión"
+              },
+              {
+                "left": "La carpeta Goles",
+                "right": "Subcarpeta"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa del proyecto de subtítulos?",
+            "left_label": "Subtítulos",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa que enciende todo",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": "Queen of Tears > Episodio 01",
+                "right": "Ruta"
+              },
+              {
+                "left": "El .srt de los subtítulos",
+                "right": "Extensión"
+              },
+              {
+                "left": "La carpeta Episodio 01",
+                "right": "Subcarpeta"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu carpeta de Minecraft?",
+            "left_label": "Resource pack",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa que enciende todo",
+                "right": "Sistema operativo"
+              },
+              {
+                "left": ".minecraft > resourcepacks",
+                "right": "Ruta"
+              },
+              {
+                "left": "El .zip del pack",
+                "right": "Extensión"
+              },
+              {
+                "left": "La carpeta saves",
+                "right": "Subcarpeta"
+              }
+            ],
+            "completion_feedback": "El **sistema operativo** te deja crear **carpetas**, y cada **archivo** se encuentra siguiendo su **ruta**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "procesador-de-textos-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo insertar una tabla en tu documento",
+        "steps": [
+          "Poner el cursor donde irá la tabla",
+          "Ir al menú Insertar y elegir Tabla",
+          "Elegir cuántas filas y columnas tendrá",
+          "Escribir los datos en cada celda"
+        ],
+        "completion_feedback": "Primero eliges el **lugar**, luego insertas la **tabla** con sus **filas y columnas** y al final llenas las **celdas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué herramienta usaste en cada parte de tu ficha?",
+            "left_label": "Ficha del club",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Título grande y en negritas",
+                "right": "Formato de fuente"
+              },
+              {
+                "left": "Párrafos parejos a los lados",
+                "right": "Alineación justificada"
+              },
+              {
+                "left": "Personaje, rol y sueño",
+                "right": "Tabla"
+              },
+              {
+                "left": "Tu nombre abajo de cada hoja",
+                "right": "Pie de página"
+              }
+            ],
+            "completion_feedback": "Cada parte de la ficha usó una herramienta distinta: **fuente**, **párrafo**, **tabla** y **pie de página**. Ahora ponle nombre formal a cada una."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué herramienta usaste en cada parte de la convocatoria?",
+            "left_label": "Convocatoria",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Título grande y en negritas",
+                "right": "Formato de fuente"
+              },
+              {
+                "left": "Reglas una debajo de otra",
+                "right": "Viñetas"
+              },
+              {
+                "left": "Partido, hora y cancha",
+                "right": "Tabla"
+              },
+              {
+                "left": "Escudo arriba de cada hoja",
+                "right": "Encabezado"
+              }
+            ],
+            "completion_feedback": "Cada parte de la convocatoria usó una herramienta distinta: **fuente**, **viñetas**, **tabla** y **encabezado**. Ahora ponle nombre formal a cada una."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué herramienta usaste en cada parte del reporte?",
+            "left_label": "Reporte BLACKPINK",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Título rosa y en negritas",
+                "right": "Formato de fuente"
+              },
+              {
+                "left": "Párrafos parejos a los lados",
+                "right": "Alineación justificada"
+              },
+              {
+                "left": "Integrante y canción solista",
+                "right": "Tabla"
+              },
+              {
+                "left": "Tu escuela arriba de cada hoja",
+                "right": "Encabezado"
+              }
+            ],
+            "completion_feedback": "Cada parte del reporte usó una herramienta distinta: **fuente**, **párrafo**, **tabla** y **encabezado**. Ahora ponle nombre formal a cada una."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué herramienta usaste en cada parte de tu guía?",
+            "left_label": "Guía Pokémon",
+            "right_label": "Herramienta",
+            "pairs": [
+              {
+                "left": "Título grande y en negritas",
+                "right": "Formato de fuente"
+              },
+              {
+                "left": "Consejos con puntitos",
+                "right": "Viñetas"
+              },
+              {
+                "left": "Pokémon, tipo y debilidad",
+                "right": "Tabla"
+              },
+              {
+                "left": "Tu nombre abajo de cada hoja",
+                "right": "Pie de página"
+              }
+            ],
+            "completion_feedback": "Cada parte de la guía usó una herramienta distinta: **fuente**, **viñetas**, **tabla** y **pie de página**. Ahora ponle nombre formal a cada una."
+          }
+        }
+      }
+    },
+    "internet-busqueda-confiable-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo verificar una noticia que se hizo viral",
+        "steps": [
+          "Leer más allá del título llamativo",
+          "Revisar quién la publicó y en qué fecha",
+          "Compararla con al menos dos fuentes confiables",
+          "Decidir si es verdad antes de compartirla"
+        ],
+        "completion_feedback": "Una fuente confiable tiene **autor**, **fecha** y coincide con **otras fuentes**. Verificar va antes de compartir, nunca después. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu investigación?",
+            "left_label": "Rumor de One Piece",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa donde abres páginas",
+                "right": "Navegador"
+              },
+              {
+                "left": "Donde escribiste las palabras",
+                "right": "Buscador"
+              },
+              {
+                "left": "MANGA Plus de la editorial",
+                "right": "Fuente confiable"
+              },
+              {
+                "left": "El TikTok sin pruebas",
+                "right": "Fuente dudosa"
+              }
+            ],
+            "completion_feedback": "Con el **navegador** y el **buscador** encuentras todo, pero solo una **fuente confiable** te dice qué es verdad. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu investigación?",
+            "left_label": "Rumor de fichaje",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa donde abres páginas",
+                "right": "Navegador"
+              },
+              {
+                "left": "Donde escribiste Mbappé América",
+                "right": "Buscador"
+              },
+              {
+                "left": "El sitio oficial del club",
+                "right": "Fuente confiable"
+              },
+              {
+                "left": "La imagen sin origen",
+                "right": "Fuente dudosa"
+              }
+            ],
+            "completion_feedback": "Con el **navegador** y el **buscador** encuentras todo, pero solo una **fuente confiable** te dice qué es verdad. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu investigación?",
+            "left_label": "Boletos BTS",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa donde abres páginas",
+                "right": "Navegador"
+              },
+              {
+                "left": "La dirección rara del link",
+                "right": "URL"
+              },
+              {
+                "left": "El aviso de HYBE en Weverse",
+                "right": "Fuente confiable"
+              },
+              {
+                "left": "La cuenta creada hace una semana",
+                "right": "Fuente dudosa"
+              }
+            ],
+            "completion_feedback": "Con el **navegador** llegas a cualquier página, pero revisar la **URL** y buscar la **fuente confiable** te protege. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu investigación?",
+            "left_label": "Truco falso",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El programa donde abres páginas",
+                "right": "Navegador"
+              },
+              {
+                "left": "Donde escribiste el truco",
+                "right": "Buscador"
+              },
+              {
+                "left": "minecraft.net de Mojang",
+                "right": "Fuente confiable"
+              },
+              {
+                "left": "El video 100% REAL",
+                "right": "Fuente dudosa"
+              }
+            ],
+            "completion_feedback": "Con el **navegador** y el **buscador** encuentras todo, pero solo una **fuente confiable** te dice qué es verdad. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "seguridad-digital-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena qué pasa cuando detectas un intento de phishing",
+        "steps": [
+          "Te llega un mensaje que pide tu contraseña",
+          "Revisas quién lo manda y la URL del enlace",
+          "Notas que la dirección no es la oficial",
+          "Lo borras y lo reportas sin dar clic"
+        ],
+        "completion_feedback": "El **phishing** se desarma revisando el **remitente** y la **URL** antes de dar clic. Ningún servicio real te pide tu contraseña por mensaje. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+            "left_label": "Tu cuenta",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El correo de la suscripción",
+                "right": "Phishing"
+              },
+              {
+                "left": "naruto123 en todas tus cuentas",
+                "right": "Contraseña débil"
+              },
+              {
+                "left": "El código que llega al celular",
+                "right": "Verificación en dos pasos"
+              },
+              {
+                "left": "Tus datos en la página falsa",
+                "right": "Robo de datos"
+              }
+            ],
+            "completion_feedback": "Una **contraseña débil** y un **phishing** abrieron la puerta; la **verificación en dos pasos** la cierra. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+            "left_label": "Caso de Diego",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Memes y mensajes día tras día",
+                "right": "Ciberacoso"
+              },
+              {
+                "left": "Las capturas de los mensajes",
+                "right": "Evidencia"
+              },
+              {
+                "left": "Escuela y colonia en su perfil",
+                "right": "Datos personales"
+              },
+              {
+                "left": "Hablar con papás y entrenador",
+                "right": "Pedir ayuda"
+              }
+            ],
+            "completion_feedback": "El **ciberacoso** se enfrenta con **evidencia**, bloqueando, reportando y **pidiendo ayuda**, y cuidando tus **datos personales**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+            "left_label": "Fan account",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La foto con tu uniforme",
+                "right": "Dato personal"
+              },
+              {
+                "left": "La cuenta que pide tu dirección",
+                "right": "Riesgo con desconocidos"
+              },
+              {
+                "left": "Insultos todos los días",
+                "right": "Ciberacoso"
+              },
+              {
+                "left": "Poner tu cuenta en privado",
+                "right": "Privacidad"
+              }
+            ],
+            "completion_feedback": "Cuidar tus **datos personales**, desconfiar de **desconocidos** y frenar el **ciberacoso** es tu **privacidad** en acción. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de seguridad aparece en cada parte?",
+            "left_label": "Robux gratis",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La página del generador",
+                "right": "Phishing"
+              },
+              {
+                "left": "La misma clave en tu correo",
+                "right": "Contraseña repetida"
+              },
+              {
+                "left": "El código que llega al celular",
+                "right": "Verificación en dos pasos"
+              },
+              {
+                "left": "Comprar solo en la app",
+                "right": "Fuente oficial"
+              }
+            ],
+            "completion_feedback": "El **phishing** y una **contraseña repetida** te dejaron sin cuenta; la **verificación en dos pasos** y las **fuentes oficiales** te protegen. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "correo-electronico-formal-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo se arma un correo formal",
+        "steps": [
+          "Escribir la dirección del destinatario en Para",
+          "Poner un asunto breve y claro",
+          "Saludar de forma respetuosa",
+          "Explicar el motivo en el cuerpo del correo",
+          "Despedirse y firmar con tu nombre"
+        ],
+        "completion_feedback": "Un correo formal va de afuera hacia adentro: **destinatario**, **asunto**, **saludo**, **cuerpo** y **despedida con firma**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del correo es cada cosa?",
+            "left_label": "Club de anime",
+            "right_label": "Parte del correo",
+            "pairs": [
+              {
+                "left": "Solicitud para abrir un club",
+                "right": "Asunto"
+              },
+              {
+                "left": "Estimado director:",
+                "right": "Saludo"
+              },
+              {
+                "left": "La propuesta en PDF",
+                "right": "Archivo adjunto"
+              },
+              {
+                "left": "La orientadora, para que sepa",
+                "right": "CC"
+              }
+            ],
+            "completion_feedback": "Cada parte del correo tiene su función: **asunto**, **saludo**, **adjunto** y **CC**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del correo es cada cosa?",
+            "left_label": "Inscripción",
+            "right_label": "Parte del correo",
+            "pairs": [
+              {
+                "left": "La dirección de la liga",
+                "right": "Para"
+              },
+              {
+                "left": "Inscripción equipo Secundaria 15",
+                "right": "Asunto"
+              },
+              {
+                "left": "La lista de jugadores",
+                "right": "Archivo adjunto"
+              },
+              {
+                "left": "Tu nombre y capitán",
+                "right": "Firma"
+              }
+            ],
+            "completion_feedback": "Cada parte del correo tiene su función: **Para**, **asunto**, **adjunto** y **firma**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del correo es cada cosa?",
+            "left_label": "Dance cover",
+            "right_label": "Parte del correo",
+            "pairs": [
+              {
+                "left": "Solicitud para presentar un baile",
+                "right": "Asunto"
+              },
+              {
+                "left": "Estimada maestra Hernández:",
+                "right": "Saludo"
+              },
+              {
+                "left": "El video del ensayo",
+                "right": "Archivo adjunto"
+              },
+              {
+                "left": "La tutora, para que sepa",
+                "right": "CC"
+              }
+            ],
+            "completion_feedback": "Cada parte del correo tiene su función: **asunto**, **saludo**, **adjunto** y **CC**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del correo es cada cosa?",
+            "left_label": "Soporte técnico",
+            "right_label": "Parte del correo",
+            "pairs": [
+              {
+                "left": "Compra no recibida, pedido 12345",
+                "right": "Asunto"
+              },
+              {
+                "left": "Estimado equipo de soporte:",
+                "right": "Saludo"
+              },
+              {
+                "left": "La captura del recibo",
+                "right": "Archivo adjunto"
+              },
+              {
+                "left": "Tu nombre y tu usuario",
+                "right": "Firma"
+              }
+            ],
+            "completion_feedback": "Cada parte del correo tiene su función: **asunto**, **saludo**, **adjunto** y **firma**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "presentaciones-electronicas-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena la estructura de una presentación",
+        "steps": [
+          "Portada con el título y tu nombre",
+          "Introducción: de qué vas a hablar",
+          "Desarrollo con una idea por diapositiva",
+          "Conclusión con lo más importante",
+          "Diapositiva final con tus fuentes"
+        ],
+        "completion_feedback": "Una presentación tiene **inicio** (portada e introducción), **desarrollo** y **cierre** (conclusión y fuentes). Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte de la presentación es cada cosa?",
+            "left_label": "Exposición Ghibli",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Título, tu nombre y Totoro",
+                "right": "Portada"
+              },
+              {
+                "left": "Una lámina por cada idea",
+                "right": "Desarrollo"
+              },
+              {
+                "left": "Lo que dices sin leerlo",
+                "right": "Notas del orador"
+              },
+              {
+                "left": "Las páginas que consultaste",
+                "right": "Fuentes"
+              }
+            ],
+            "completion_feedback": "La exposición tuvo **portada**, **desarrollo**, **notas del orador** y **fuentes**: la estructura completa. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea de presentación muestra cada parte?",
+            "left_label": "Medio tiempo",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Una jugada en cada pizarra",
+                "right": "Una idea por lámina"
+              },
+              {
+                "left": "Dibujos grandes y flechas",
+                "right": "Apoyo visual"
+              },
+              {
+                "left": "Pocas palabras escritas",
+                "right": "Poco texto"
+              },
+              {
+                "left": "El entrenador explica",
+                "right": "Tú hablas, no lees"
+              }
+            ],
+            "completion_feedback": "La charla del vestidor usó **una idea por lámina**, **apoyo visual**, **poco texto** y un orador que **no lee**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué idea de presentación muestra cada parte?",
+            "left_label": "Comeback",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Una foto teaser por día",
+                "right": "Una idea por lámina"
+              },
+              {
+                "left": "Mismo estilo en todos",
+                "right": "Diseño uniforme"
+              },
+              {
+                "left": "Solo nombre, título y fecha",
+                "right": "Poco texto"
+              },
+              {
+                "left": "Calendario, fotos, MV, estreno",
+                "right": "Estructura ordenada"
+              }
+            ],
+            "completion_feedback": "El comeback usó **una idea por lámina**, **diseño uniforme**, **poco texto** y una **estructura ordenada**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué idea de presentación muestra cada parte?",
+            "left_label": "Nintendo Direct",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Un juego por segmento",
+                "right": "Una idea por lámina"
+              },
+              {
+                "left": "El paso rápido entre juegos",
+                "right": "Transición"
+              },
+              {
+                "left": "El gran anuncio del final",
+                "right": "Cierre"
+              },
+              {
+                "left": "El presentador no lee",
+                "right": "Tú explicas"
+              }
+            ],
+            "completion_feedback": "El Direct usa **una idea por lámina**, **transiciones**, un buen **cierre** y un presentador que **explica**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "medios-tecnicos-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena cómo se fue delegando la función de cortar",
+        "steps": [
+          "Cortar con las manos o con los dientes",
+          "Usar una piedra con filo",
+          "Usar unas tijeras de metal",
+          "Usar una cortadora eléctrica"
+        ],
+        "completion_feedback": "Cada medio técnico se hizo cargo de una parte del trabajo del cuerpo: eso es **delegar funciones**. Primero **herramientas** y luego **máquinas**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué medio técnico es cada cosa del taller?",
+            "left_label": "Dr. STONE",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El hacha de piedra",
+                "right": "Herramienta"
+              },
+              {
+                "left": "La máquina de vapor",
+                "right": "Máquina"
+              },
+              {
+                "left": "El recipiente con marcas",
+                "right": "Instrumento"
+              },
+              {
+                "left": "Que el hacha corte por él",
+                "right": "Delegación de funciones"
+              }
+            ],
+            "completion_feedback": "Senku usa **herramientas**, **máquinas** e **instrumentos**, y cada uno **delega una función** de su cuerpo. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué medio técnico es cada cosa del estadio?",
+            "left_label": "Estadio",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Las tijeras del jardinero",
+                "right": "Herramienta"
+              },
+              {
+                "left": "La pintadora de líneas",
+                "right": "Máquina"
+              },
+              {
+                "left": "El cronómetro del preparador",
+                "right": "Instrumento"
+              },
+              {
+                "left": "El cañón en vez de un pateador",
+                "right": "Delegación de funciones"
+              }
+            ],
+            "completion_feedback": "En el estadio hay **herramientas**, **máquinas** e **instrumentos**, y el cañón muestra la **delegación de funciones**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué medio técnico es cada cosa del concierto?",
+            "left_label": "Backstage",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El desarmador del técnico",
+                "right": "Herramienta"
+              },
+              {
+                "left": "La máquina de humo",
+                "right": "Máquina"
+              },
+              {
+                "left": "El medidor de decibeles",
+                "right": "Instrumento"
+              },
+              {
+                "left": "La plataforma en vez de subir a pie",
+                "right": "Delegación de funciones"
+              }
+            ],
+            "completion_feedback": "En el backstage hay **herramientas**, **máquinas** e **instrumentos**, y la plataforma muestra la **delegación de funciones**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué medio técnico es cada cosa de tu mundo?",
+            "left_label": "Minecraft",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El pico que usas al picar",
+                "right": "Herramienta"
+              },
+              {
+                "left": "La puerta de pistones",
+                "right": "Máquina"
+              },
+              {
+                "left": "El reloj que marca la noche",
+                "right": "Instrumento"
+              },
+              {
+                "left": "Que la granja coseche por ti",
+                "right": "Delegación de funciones"
+              }
+            ],
+            "completion_feedback": "Tu mundo tiene **herramientas**, **máquinas** e **instrumentos**, y la granja muestra la **delegación de funciones**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "proyecto-tecnico-problema-solucion-tec-1": {
+      "order_steps": {
+        "prompt": "Ordena las fases de un proyecto técnico",
+        "steps": [
+          "Identificar y delimitar el problema",
+          "Investigar información sobre el problema",
+          "Proponer alternativas y elegir la mejor",
+          "Planear y construir el prototipo",
+          "Evaluar el resultado y comunicarlo"
+        ],
+        "completion_feedback": "Un proyecto técnico avanza en orden: **problema**, **investigación**, **alternativas**, **planeación y ejecución**, y **evaluación y comunicación**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué fase del proyecto es cada cosa?",
+            "left_label": "Colección de manga",
+            "right_label": "Fase",
+            "pairs": [
+              {
+                "left": "Tomos doblados en el piso",
+                "right": "Problema"
+              },
+              {
+                "left": "Medir un tomo",
+                "right": "Investigación"
+              },
+              {
+                "left": "Librero, repisa o cartón",
+                "right": "Alternativas"
+              },
+              {
+                "left": "Ver si aguanta el peso",
+                "right": "Evaluación"
+              }
+            ],
+            "completion_feedback": "Tu proyecto pasó por **problema**, **investigación**, **alternativas** y **evaluación**. Ahora ponle nombre formal a cada fase."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué fase del proyecto es cada cosa?",
+            "left_label": "Red de la cancha",
+            "right_label": "Fase",
+            "pairs": [
+              {
+                "left": "Balones que caen a la avenida",
+                "right": "Problema"
+              },
+              {
+                "left": "Ver cómo lo hacen otras escuelas",
+                "right": "Investigación"
+              },
+              {
+                "left": "Elegir la red por costo",
+                "right": "Selección de alternativa"
+              },
+              {
+                "left": "Presentarlo al director",
+                "right": "Comunicación"
+              }
+            ],
+            "completion_feedback": "El proyecto pasó por **problema**, **investigación**, **selección de alternativa** y **comunicación**. Ahora ponle nombre formal a cada fase."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué fase del proyecto es cada cosa?",
+            "left_label": "Club de baile",
+            "right_label": "Fase",
+            "pairs": [
+              {
+                "left": "No ver la sincronización",
+                "right": "Problema"
+              },
+              {
+                "left": "Ver salas de práctica de idols",
+                "right": "Investigación"
+              },
+              {
+                "left": "Armar el tripié reciclado",
+                "right": "Ejecución"
+              },
+              {
+                "left": "Contarlo en la junta del club",
+                "right": "Comunicación"
+              }
+            ],
+            "completion_feedback": "El proyecto pasó por **problema**, **investigación**, **ejecución** y **comunicación**. Ahora ponle nombre formal a cada fase."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué fase del proyecto es cada cosa?",
+            "left_label": "Setup gamer",
+            "right_label": "Fase",
+            "pairs": [
+              {
+                "left": "El nido de cables",
+                "right": "Problema"
+              },
+              {
+                "left": "3D, canaleta o cinchos",
+                "right": "Alternativas"
+              },
+              {
+                "left": "Amarrar todo con velcro",
+                "right": "Ejecución"
+              },
+              {
+                "left": "Jalar el control para probar",
+                "right": "Evaluación"
+              }
+            ],
+            "completion_feedback": "Tu proyecto pasó por **problema**, **alternativas**, **ejecución** y **evaluación**. Ahora ponle nombre formal a cada fase."
+          }
+        }
+      }
+    }
+  }
+}
