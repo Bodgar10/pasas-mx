@@ -1,0 +1,1463 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "proyecto-de-innovacion-prototipo-tec-3",
+  "order_steps": {
+    "prompt": "Ordena el ciclo de un proyecto de innovación con prototipo",
+    "steps": [
+      "Hacer un prototipo rápido de baja fidelidad",
+      "Probarlo con usuarios y anotar los resultados",
+      "Corregir el diseño según lo que falló en la prueba",
+      "Hacer el prototipo de alta fidelidad y volver a probarlo",
+      "Presentar el proyecto y recibir retroalimentación"
+    ],
+    "completion_feedback": "Un proyecto de innovación empieza con un **prototipo de baja fidelidad**, se **prueba con usuarios**, se **mejora** (eso es **iteración**), pasa a **alta fidelidad** y se **presenta**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La vitrina con luz para tus figuras de My Hero Academia",
+        "content": "Tienes tus figuras de Bakugo y Todoroki de My Hero Academia en un librero oscuro y casi no se ven. Quieres hacerles una vitrina con luz, pero antes de gastar en acrílico y tiras LED haces algo rápido: una caja de zapatos pintada de negro, con la linterna del celular pegada con cinta. Así pruebas dónde va la luz. Si alumbras desde abajo, a Bakugo le salen sombras raras en la cara; desde arriba y al frente, se ve como en las fotos de la tienda. Les enseñas la caja a tres amigos del club de anime y les pides que la usen como si fuera suya. Uno intenta meter una figura y tira la otra, porque la abertura es muy chica. Anotas todo en tu cuaderno: qué probaste, qué pasó y qué vas a cambiar. Haces una segunda caja más ancha, la vuelves a probar y ahora nadie tira nada. Solo entonces compras el acrílico y la tira LED de USB. Cuando la llevas a la expo del club, explicas qué problema tenías, cómo lo resolviste y qué cambiaste en cada versión. Ese camino de versiones de prueba es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu caja de zapatos ES un prototipo",
+        "content": "Lo que acabas de ver con la vitrina es exactamente un **prototipo**: una **versión de prueba** de un producto que sirve para comprobar si la idea funciona antes de hacer la versión final. La caja de zapatos es un prototipo de **baja fidelidad**: rápido, barato y de materiales simples; se parece poco a la final, pero prueba la idea (dónde va la luz, si caben las figuras). La vitrina de acrílico con LED es de **alta fidelidad**: cuesta más y se ve y funciona casi como la final. Repetiste el ciclo **construir → probar → mejorar**, que se llama **iteración**: hiciste **pruebas con usuarios**, **registraste los resultados**, **documentaste** cada versión y al final **presentaste** el proyecto."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el marcapáginas con contador de capítulos",
+        "content": "Quieres un marcapáginas que no se caiga de tu tomo de Bleach y que te recuerde en qué capítulo ibas.\n\n**Paso 1 — Baja fidelidad:** recortas una tira de cartulina con un clip y escribes el capítulo a lápiz.\n**Paso 2 — Prueba con usuarios:** se lo prestas a 5 compañeros del club por una semana. A 3 de 5 se les cayó al meter el tomo a la mochila.\n**Paso 3 — Registro:** anotas versión, prueba, resultado (3 de 5 se cayeron, o sea 60%) y cambio: una liga que abrace la tapa.\n**Paso 4 — Iteración:** versión 2, aún de cartulina, con liga y tres rueditas de números: los capítulos de Bleach llegan a tres cifras. Repites la prueba: 0 de 5 se cayeron.\n**Paso 5 — Alta fidelidad:** lo haces enmicado, con las rueditas bien fijas, casi como uno de tienda.\n\nResultado: cada versión resolvió un problema que solo apareció al probar con usuarios reales."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **prototipo** es una **versión de prueba** para comprobar si la idea funciona antes de hacer la final. El de **baja fidelidad** es rápido, barato y de papel o cartón: se parece poco al final y prueba la idea. El de **alta fidelidad** cuesta más y es casi igual al producto real: prueba los detalles. Se mejora con **construir → probar → mejorar** (**iteración**), registrando cada prueba."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el boceto a lápiz de una página de manga: es rápido y feo, pero sirve para ver si la historia se entiende antes de entintar. Eso es baja fidelidad; la página entintada es alta fidelidad."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada vuelta del ciclo construir → probar → mejorar deja una versión mejor que la anterior.",
+        "data": {
+          "intro": "Sigue el ciclo de iteración de la vitrina para Bakugo y Todoroki, paso por paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Construir: versión 1, una caja de zapatos con la linterna del celular arriba y al frente."
+            },
+            {
+              "text": "Probar: tres amigos la usan. Uno tira una figura al meter otra y anotas «abertura muy chica»."
+            },
+            {
+              "text": "Mejorar: versión 2 con la abertura más ancha. Vuelves a probar y nadie tira nada."
+            },
+            {
+              "text": "Alta fidelidad: con la idea ya probada, haces la vitrina de acrílico con la tira LED de USB."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Baja o alta fidelidad?",
+        "content": "Baja fidelidad: rápido, barato y con materiales simples. Alta fidelidad: se ve y funciona casi como el producto final.",
+        "data": {
+          "prompt": "Arrastra cada versión de tus proyectos de anime a su categoría.",
+          "buckets": [
+            "Baja fidelidad",
+            "Alta fidelidad"
+          ],
+          "items": [
+            {
+              "t": "Caja de zapatos con la linterna",
+              "b": 0
+            },
+            {
+              "t": "Vitrina de acrílico con tira LED",
+              "b": 1
+            },
+            {
+              "t": "Marcapáginas de cartulina y clip",
+              "b": 0
+            },
+            {
+              "t": "Base de madera con el cable escondido",
+              "b": 1
+            },
+            {
+              "t": "Modelo de plastilina de la base",
+              "b": 0
+            },
+            {
+              "t": "Marcapáginas enmicado con rueditas",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con su ejemplo en el proyecto de la vitrina.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Registro de resultados",
+              "b": "Notas en tu cuaderno"
+            },
+            {
+              "a": "Baja fidelidad",
+              "b": "Caja de zapatos"
+            },
+            {
+              "a": "Alta fidelidad",
+              "b": "Vitrina de acrílico"
+            },
+            {
+              "a": "Iteración",
+              "b": "Construir, probar, mejorar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "La vitrina",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Caja de zapatos con linterna",
+            "right": "Prototipo de baja fidelidad"
+          },
+          {
+            "left": "Tus amigos del club la usan",
+            "right": "Prueba con usuarios"
+          },
+          {
+            "left": "Lo que anotas en tu cuaderno",
+            "right": "Registro de resultados"
+          },
+          {
+            "left": "Hacer la caja 2 más ancha",
+            "right": "Iteración"
+          }
+        ],
+        "completion_feedback": "Tu vitrina pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, un **registro** y una **iteración**. Ahora ponle nombre formal a todo el proceso."
+      },
+      "quiz": [
+        {
+          "question": "La caja de zapatos con la linterna del celular, ¿qué es para tu proyecto de vitrina?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La versión final"
+            },
+            {
+              "letter": "B",
+              "text": "Un prototipo"
+            },
+            {
+              "letter": "C",
+              "text": "Un presupuesto"
+            },
+            {
+              "letter": "D",
+              "text": "Un manual de uso"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es una versión de prueba para comprobar dónde va la luz y si las figuras caben antes de gastar en la vitrina final. Eso es un prototipo.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué la caja de zapatos es un prototipo de baja fidelidad?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Es rápida y barata de hacer"
+            },
+            {
+              "letter": "B",
+              "text": "Ya funciona igual que la final"
+            },
+            {
+              "letter": "C",
+              "text": "Nadie la ha probado todavía"
+            },
+            {
+              "letter": "D",
+              "text": "Es la última versión del proyecto"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Baja fidelidad significa rápido, barato y con materiales simples. Se parece poco a la vitrina final, pero sirve para probar la idea.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amigo tira una figura al meter la otra en la caja. ¿Qué es lo mejor que puedes hacer?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Anotarlo y ensanchar la abertura"
+            },
+            {
+              "letter": "B",
+              "text": "Pedirle que tenga más cuidado"
+            },
+            {
+              "letter": "C",
+              "text": "Comprar ya el acrílico y la tira LED"
+            },
+            {
+              "letter": "D",
+              "text": "Borrarlo para que no se vea mal"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un error en la prueba es información valiosa: muestra una falla del diseño, no del usuario. Se registra y se corrige en la siguiente versión.",
+          "difficulty": 3
+        },
+        {
+          "question": "En tu cuaderno escribes: «Versión 1. Prueba con 3 amigos. Uno tiró una figura. Cambio: abertura más ancha». ¿Qué estás haciendo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Registrando resultados"
+            },
+            {
+              "letter": "B",
+              "text": "Presentando el proyecto"
+            },
+            {
+              "letter": "C",
+              "text": "Haciendo el presupuesto"
+            },
+            {
+              "letter": "D",
+              "text": "Eligiendo los materiales"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Anotar qué se probó, qué pasó y qué se va a cambiar es el registro de resultados. Con él documentas por qué cambió cada versión.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el marcapáginas, la versión 2 nació porque a 3 de 5 se les cayó la versión 1. ¿Qué muestra eso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que la versión 1 fue un fracaso inútil"
+            },
+            {
+              "letter": "B",
+              "text": "Que la prueba encontró qué mejorar"
+            },
+            {
+              "letter": "C",
+              "text": "Que debió hacerse en alta fidelidad"
+            },
+            {
+              "letter": "D",
+              "text": "Que 5 personas son demasiadas"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La versión 1 cumplió su trabajo: al probarla apareció un problema que no se veía en papel. Así funciona la iteración.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El marcador para la liga de la escuela",
+        "content": "En la liga de la escuela el marcador es un pizarrón con gis junto a la cancha. Cuando tu grupo juega contra 3°B, la porra del otro lado pregunta a cada rato cómo van, y el gis se borra con la mano sudada de quien lo cambia. Con tus amigos de Tecnología quieren hacer un marcador electrónico, pero antes de comprar nada hacen uno de cartulina: números que se voltean como las hojas de un calendario. En el recreo lo ponen junto a la cancha y les piden a los de la porra que lo lean desde lejos. Desde la otra portería, a unos 30 metros, los números de 10 cm no se distinguen: solo 3 de 10 aficionados los leen. Lo anotan, hacen números de 25 cm y repiten la prueba: ahora los leen 9 de 10. Después prueban la versión con luces y dos botones con el profe de Educación Física, que es el árbitro. En la final se equivoca y le suma un gol al equipo que no era, porque los dos botones son iguales. Le ponen un color a cada equipo y un botón para restar, y vuelven a probar. Ese ir y venir entre construir, probar y mejorar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu marcador de cartulina ES un prototipo",
+        "content": "Lo que acabas de ver con el marcador es exactamente un **prototipo**: una **versión de prueba** de un producto que sirve para comprobar si la idea funciona antes de hacer la versión final. El de cartulina es un prototipo de **baja fidelidad**: rápido, barato y de materiales simples; se parece poco al final, pero prueba la idea (qué tamaño de número se lee). El de luces con botones es de **alta fidelidad**: cuesta más y se ve y funciona casi como el final. Repitieron el ciclo **construir → probar → mejorar**, que se llama **iteración**: hicieron **pruebas con usuarios** (la porra y el árbitro), **registraron los resultados** y corrigieron cada falla."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — presentar el tablero de cambios en la feria",
+        "content": "Tu equipo hizo un tablero de cambios con luces, parecido al que levanta el cuarto árbitro en los partidos profesionales, y lo presenta en la feria de Tecnología.\n\n**Paso 1 — Problema:** en la liga de la escuela nadie sabía quién salía y quién entraba; el árbitro gritaba los números.\n**Paso 2 — Solución:** un tablero con el dorsal que sale en un color y el que entra en otro, para no confundirlos.\n**Paso 3 — Cómo funciona:** con botones eliges los dos dorsales y levantas el tablero.\n**Paso 4 — Resultados de pruebas:** con la versión 1, de cartón, solo 10 de 20 jugadores vieron su número a la primera (50%); con la de luces, 18 de 20 (90%).\n**Paso 5 — Mejoras futuras:** pilas recargables y una pantalla que se lea con sol.\n\nResultado: el jurado comenta que pesa mucho. No lo discutes: lo anotas como retroalimentación para la versión 3."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **prototipo** es una **versión de prueba** para comprobar si la idea funciona antes de hacer la final. El de **baja fidelidad** es rápido, barato y de papel o cartón: se parece poco al final y prueba la idea. El de **alta fidelidad** cuesta más y es casi igual al producto real: prueba los detalles. Se mejora con **construir → probar → mejorar** (**iteración**), registrando cada prueba."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Presenta tu proyecto como la narración de un gol: la jugada (problema), quién la resolvió (solución), cómo lo hizo (funcionamiento), la repetición (resultados de pruebas) y lo que viene (mejoras futuras)."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Probar con usuarios reales da datos; los datos dicen qué mejorar en la siguiente versión.",
+        "data": {
+          "intro": "Sigue las primeras versiones del marcador de la liga y fíjate qué hace avanzar el proyecto.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Construir: versión 1 de cartulina, con números de 10 cm que se voltean como calendario."
+            },
+            {
+              "text": "Probar: desde la otra portería, a unos 30 metros, solo 3 de 10 aficionados leen el marcador."
+            },
+            {
+              "text": "Registrar y mejorar: anotan «números muy chicos» y hacen la versión 2 con números de 25 cm."
+            },
+            {
+              "text": "Volver a probar: ahora 9 de 10 lo leen. La idea ya está probada y pasan a la versión con luces."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "Construir, probar o mejorar",
+        "content": "Construir: hacer una versión. Probar: que alguien la use y ver qué pasa. Mejorar: cambiar el diseño según lo que falló.",
+        "data": {
+          "prompt": "Arrastra cada acción del proyecto del marcador a su etapa del ciclo.",
+          "buckets": [
+            "Construir",
+            "Probar",
+            "Mejorar"
+          ],
+          "items": [
+            {
+              "t": "Recortar números de cartulina",
+              "b": 0
+            },
+            {
+              "t": "El profe lo usa en un partido",
+              "b": 1
+            },
+            {
+              "t": "Agrandar los números a 25 cm",
+              "b": 2
+            },
+            {
+              "t": "Armar la versión con luces",
+              "b": 0
+            },
+            {
+              "t": "Leerlo desde la otra portería",
+              "b": 1
+            },
+            {
+              "t": "Poner un color a cada equipo",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte de la presentación con lo que dirías del marcador.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Problema",
+              "b": "El pizarrón no se lee"
+            },
+            {
+              "a": "Solución",
+              "b": "Marcador con luces"
+            },
+            {
+              "a": "Resultados de pruebas",
+              "b": "9 de 10 lo leen a 30 m"
+            },
+            {
+              "a": "Mejoras futuras",
+              "b": "Agregar un cronómetro"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "El marcador",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Marcador de cartulina",
+            "right": "Prototipo de baja fidelidad"
+          },
+          {
+            "left": "El profe lo usa en la final",
+            "right": "Prueba con usuarios"
+          },
+          {
+            "left": "«No se lee desde la portería»",
+            "right": "Registro de resultados"
+          },
+          {
+            "left": "Un color para cada equipo",
+            "right": "Mejora tras la prueba"
+          }
+        ],
+        "completion_feedback": "Su marcador pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, un **registro** y una **mejora**. Ahora ponle nombre formal a todo el proceso."
+      },
+      "quiz": [
+        {
+          "question": "¿Por qué hicieron primero el marcador de cartulina y no el de luces?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para probar la idea barato y rápido"
+            },
+            {
+              "letter": "B",
+              "text": "Porque la cartulina dura más tiempo"
+            },
+            {
+              "letter": "C",
+              "text": "Porque el de luces está prohibido"
+            },
+            {
+              "letter": "D",
+              "text": "Para no tener que probar nada después"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un prototipo de baja fidelidad permite descubrir fallas, como el tamaño de los números, antes de gastar en la versión con luces.",
+          "difficulty": 1
+        },
+        {
+          "question": "El profe se equivoca de botón en la final. Para el proyecto, eso es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un resultado de prueba útil"
+            },
+            {
+              "letter": "B",
+              "text": "Culpa del profe y no del diseño"
+            },
+            {
+              "letter": "C",
+              "text": "Una razón para quitar los botones"
+            },
+            {
+              "letter": "D",
+              "text": "Un detalle que no hay que anotar"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Si el usuario se equivoca, el diseño lo permitió: los dos botones eran iguales. Ese dato se registra y lleva a una mejora concreta.",
+          "difficulty": 2
+        },
+        {
+          "question": "Le ponen un color a cada equipo y vuelven a probar en otro partido. ¿Por qué volver a probar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para ver si el cambio sí funcionó"
+            },
+            {
+              "letter": "B",
+              "text": "Porque las pruebas son obligatorias"
+            },
+            {
+              "letter": "C",
+              "text": "Para gastar el resto del presupuesto"
+            },
+            {
+              "letter": "D",
+              "text": "Porque la primera prueba no contó"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Una mejora es solo una hipótesis hasta que se prueba. Por eso el ciclo construir, probar y mejorar se repite: eso es la iteración.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la presentación del tablero de cambios, «18 de 20 jugadores vieron su número a la primera» es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El problema"
+            },
+            {
+              "letter": "B",
+              "text": "La solución"
+            },
+            {
+              "letter": "C",
+              "text": "Un resultado de prueba"
+            },
+            {
+              "letter": "D",
+              "text": "Una mejora para la versión 3"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Es un dato medido al probar el tablero con jugadores reales: va en los resultados de pruebas. Las mejoras futuras son lo que todavía falta cambiar.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la feria, el jurado dice que el tablero pesa mucho. ¿Cuál es la mejor respuesta del equipo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Explicar que el jurado no entendió"
+            },
+            {
+              "letter": "B",
+              "text": "Anotarlo como mejora futura"
+            },
+            {
+              "letter": "C",
+              "text": "Quitar esa parte de la presentación"
+            },
+            {
+              "letter": "D",
+              "text": "Decir que pesa así a propósito"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La retroalimentación se escucha sin defenderse, se anota y después se evalúa. Un tablero pesado es una buena pista para la siguiente versión.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El lightstick casero para la fiesta de escucha",
+        "content": "Tu fandom de la escuela organiza una fiesta de escucha del nuevo álbum de ENHYPEN en el salón de usos múltiples. No todos tienen el lightstick oficial, así que te ofreces a diseñar uno casero que cualquiera pueda hacer. La primera versión la armas en diez minutos: una botella de agua forrada con papel de china y la linterna del celular adentro. Apagan la luz y se la pasas a diez ENGENEs: brilla bonito, pero hay que sostener el celular dentro de la botella, así que nadie puede grabar, y solo dos dicen que la usarían. Lo anotas en tu libreta. La versión 2 usa un tubo translúcido con un LED de pilas y un mango de cartón. La pruebas con los mismos diez durante una canción completa: seis la usarían, pero cuatro dicen que les cansa la mano porque pesa de arriba. Mueves las pilas al mango y en la tercera prueba ya nueve de diez la usarían. Al final llevas las tres versiones a la junta del fandom y explicas por qué cambiaste cada cosa. Ese camino de versiones de prueba es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu botella con linterna ES un prototipo",
+        "content": "Lo que acabas de ver con el lightstick es exactamente un **prototipo**: una **versión de prueba** de un producto que sirve para comprobar si la idea funciona antes de hacer la versión final. La botella con la linterna es un prototipo de **baja fidelidad**: rápido, barato y de materiales simples; se parece poco al final, pero prueba la idea (si la luz se ve en el salón). El tubo con LED y pilas en el mango es de **alta fidelidad**: cuesta más y se ve y funciona casi como el final. Repetiste el ciclo **construir → probar → mejorar**, que se llama **iteración**: hiciste **pruebas con usuarios**, **registraste los resultados** y **presentaste** tus versiones."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la app para el fan event de IVE",
+        "content": "Tu fandom organiza un fan event de IVE en una cafetería y quiere una app con registro, mapa del lugar y horario de actividades.\n\n**Paso 1 — Baja fidelidad:** dibujas cada pantalla en una hoja; cuando alguien toca un botón, cambias la hoja a mano.\n**Paso 2 — Prueba con usuarios:** pides a 6 DIVE que se registren sin ayudarles. 4 de 6 no encuentran el botón «Registrarme», que quedó hasta abajo.\n**Paso 3 — Registro:** anotas la tarea, cuántos la lograron (2 de 6) y dónde se atoraron.\n**Paso 4 — Iteración:** pones el botón arriba y más grande, y pruebas con otros 6 DIVE: 6 de 6 lo logran.\n**Paso 5 — Alta fidelidad:** con el diseño ya probado, haces la versión navegable en la compu, con colores y fotos.\n\nResultado: el prototipo de papel encontró el error en una tarde y sin programar nada."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **prototipo** es una **versión de prueba** para comprobar si la idea funciona antes de hacer la final. El de **baja fidelidad** es rápido, barato y de papel o cartón: se parece poco al final y prueba la idea. El de **alta fidelidad** cuesta más y es casi igual al producto real: prueba los detalles. Se mejora con **construir → probar → mejorar** (**iteración**), registrando cada prueba."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el demo de una canción: es una grabación rápida para probar si la melodía funciona antes de la producción final. Tu prototipo de baja fidelidad es el demo; el de alta fidelidad, la canción terminada."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada versión resolvió lo que falló en la prueba anterior.",
+        "data": {
+          "intro": "Sigue las versiones del lightstick. El medidor muestra el porcentaje de ENGENEs que lo usarían en la fiesta.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Versión 1, botella con la linterna del celular: brilla, pero hay que sostener el celular. Solo 2 de 10 la usarían.",
+              "delta": 20
+            },
+            {
+              "text": "Versión 2, tubo con LED de pilas: ya no ocupa el celular, pero pesa de arriba. 6 de 10 la usarían.",
+              "delta": 40
+            },
+            {
+              "text": "Versión 3, con las pilas en el mango: ya no cansa la mano. En la nueva prueba, 9 de 10 la usarían.",
+              "delta": 30
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué parte de la presentación es?",
+        "content": "Problema: qué necesidad había. Solución: qué hiciste. Resultados: qué pasó en las pruebas. Mejoras futuras: qué falta cambiar.",
+        "data": {
+          "prompt": "Arrastra cada frase de tu presentación del lightstick a su parte.",
+          "buckets": [
+            "Problema",
+            "Solución",
+            "Resultados de pruebas",
+            "Mejoras futuras"
+          ],
+          "items": [
+            {
+              "t": "No todos tienen el lightstick oficial",
+              "b": 0
+            },
+            {
+              "t": "Lightstick casero de tubo con LED",
+              "b": 1
+            },
+            {
+              "t": "9 de 10 lo usarían en la fiesta",
+              "b": 2
+            },
+            {
+              "t": "Agregar un botón para cambiar de color",
+              "b": 3
+            },
+            {
+              "t": "Con la versión 2, a 4 de 10 les cansaba",
+              "b": 2
+            },
+            {
+              "t": "Cambiar a pilas recargables",
+              "b": 3
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con su ejemplo en la app del fan event.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Baja fidelidad",
+              "b": "App dibujada en hojas"
+            },
+            {
+              "a": "Alta fidelidad",
+              "b": "App navegable a color"
+            },
+            {
+              "a": "Prueba con usuarios",
+              "b": "6 DIVE se registran solos"
+            },
+            {
+              "a": "Iteración",
+              "b": "Corregir y volver a probar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "El lightstick",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Botella con la linterna del celular",
+            "right": "Prototipo de baja fidelidad"
+          },
+          {
+            "left": "Diez ENGENEs lo usan una canción",
+            "right": "Prueba con usuarios"
+          },
+          {
+            "left": "Mover las pilas al mango",
+            "right": "Mejora tras la prueba"
+          },
+          {
+            "left": "Explicar las versiones en la junta",
+            "right": "Presentación del proyecto"
+          }
+        ],
+        "completion_feedback": "Tu lightstick pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, una **mejora** y una **presentación**. Ahora ponle nombre formal a todo el proceso."
+      },
+      "quiz": [
+        {
+          "question": "La botella con la linterna del celular es la primera versión del lightstick. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un prototipo"
+            },
+            {
+              "letter": "B",
+              "text": "El lightstick oficial"
+            },
+            {
+              "letter": "C",
+              "text": "El producto final"
+            },
+            {
+              "letter": "D",
+              "text": "Una presentación"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es una versión de prueba hecha para comprobar si la idea funciona antes de construir la versión final. Eso es un prototipo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Comparado con la botella con linterna, ¿qué es el tubo con LED y pilas en el mango?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Uno de mayor fidelidad"
+            },
+            {
+              "letter": "B",
+              "text": "Uno que ya no se prueba"
+            },
+            {
+              "letter": "C",
+              "text": "El problema del proyecto"
+            },
+            {
+              "letter": "D",
+              "text": "Uno de menor fidelidad"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El tubo se ve y funciona mucho más como un lightstick real: es de mayor fidelidad. Aun así se sigue probando, como pasó con el peso.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la app del fan event, ¿por qué no ayudas a los DIVE mientras intentan registrarse?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para ver dónde se atoran solos"
+            },
+            {
+              "letter": "B",
+              "text": "Para que la prueba dure menos"
+            },
+            {
+              "letter": "C",
+              "text": "Porque ayudar está prohibido"
+            },
+            {
+              "letter": "D",
+              "text": "Para que se sientan presionados"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Si les explicas, escondes el problema: el día del evento no vas a estar junto a cada usuario. Observar sin ayudar muestra dónde falla el diseño.",
+          "difficulty": 3
+        },
+        {
+          "question": "4 de 6 no encontraron el botón «Registrarme». En tu proyecto, ese dato es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un resultado de prueba"
+            },
+            {
+              "letter": "B",
+              "text": "La solución final"
+            },
+            {
+              "letter": "C",
+              "text": "Una mejora futura"
+            },
+            {
+              "letter": "D",
+              "text": "El problema que resuelve la app"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es lo que pasó al probar la app con usuarios reales: un resultado de prueba. Ese dato se registra y lleva a la siguiente versión.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la junta, una ENGENE dice que el lightstick debería cambiar de color. ¿Qué haces con ese comentario?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Lo anotas y lo evalúas"
+            },
+            {
+              "letter": "B",
+              "text": "Lo ignoras porque ya terminaste"
+            },
+            {
+              "letter": "C",
+              "text": "Rehaces todo en ese momento"
+            },
+            {
+              "letter": "D",
+              "text": "Le explicas que está equivocada"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La retroalimentación se escucha, se anota y luego se decide si conviene. Puede convertirse en una mejora futura sin rehacer todo de golpe.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El nivel de Mario Maker que nadie terminaba",
+        "content": "Quieres compartir tu primer nivel de Super Mario Maker 2. En vez de pasar semanas decorándolo, en una tarde lo armas solo con bloques, plataformas, huecos, un tubo y la meta: sin enemigos, sin monedas y sin adornos. Les pasas el control a diez amigos, uno por uno, con cinco minutos cada quien, y los miras jugar sin decirles nada. En una tabla anotas qué le pasa a cada uno: seis caen una y otra vez en el tercer hueco, dos no descubren que hay que meterse al tubo y se quedan dando vueltas, y solo dos llegan a la meta. Haces más corto el tercer hueco y vuelves a probar: ya llegan cinco. Luego pones un punto de control a la mitad y una flecha que señala el tubo, y en la tercera prueba llegan siete. Hasta entonces lo decoras, con monedas que marcan el camino y efectos de sonido, y lo pruebas una vez más para ver que nada se rompió: llegan ocho. Cuando lo enseñas en el chat de tu grupo, cuentas el problema, cómo lo resolviste y qué te dijeron los jugadores. Esa forma de crear con versiones de prueba es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu nivel sin adornos ES un prototipo",
+        "content": "Lo que acabas de ver con tu nivel de Mario Maker es exactamente un **prototipo**: una **versión de prueba** de un producto que sirve para comprobar si la idea funciona antes de hacer la versión final. El nivel sin enemigos ni adornos es un prototipo de **baja fidelidad**: rápido y solo con lo básico; se parece poco al final, pero prueba la idea (si los saltos se pueden pasar). El nivel decorado, con monedas y sonidos, es de **alta fidelidad**: se ve y funciona casi como el final. Repetiste el ciclo **construir → probar → mejorar**, que se llama **iteración**: hiciste **pruebas con usuarios**, **registraste los resultados** en una tabla y **presentaste** tu nivel."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el control adaptado para Emi",
+        "content": "Tu amigo Emi tiene poca fuerza en la mano izquierda y con el control normal no alcanza los gatillos. Quieren hacerle un control adaptado.\n\n**Paso 1 — Baja fidelidad:** en una caja de cartón pegan tapas de garrafón donde irían los botones, solo para probar la posición.\n**Paso 2 — Prueba con el usuario:** Emi simula una partida de Rocket League y alcanza todo menos el botón de acelerar, que quedó muy lejos.\n**Paso 3 — Registro:** anotan versión, prueba, resultado y cambio: acercar el botón de acelerar al pulgar derecho.\n**Paso 4 — Iteración:** mueven la tapa y repiten la prueba hasta que Emi alcanza todo sin estirarse.\n**Paso 5 — Alta fidelidad:** con el profe de Tecnología montan botones grandes de verdad en las posiciones ya probadas.\n\nResultado: el usuario no era «cualquier jugador», era Emi. Por eso las pruebas fueron con él."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **prototipo** es una **versión de prueba** para comprobar si la idea funciona antes de hacer la final. El de **baja fidelidad** es rápido, barato y de papel o cartón: se parece poco al final y prueba la idea. El de **alta fidelidad** cuesta más y es casi igual al producto real: prueba los detalles. Se mejora con **construir → probar → mejorar** (**iteración**), registrando cada prueba."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en una beta: el juego sale incompleto para que los jugadores encuentren fallas antes del lanzamiento. Tu prototipo es tu beta: se prueba con usuarios para que la versión final salga mejor."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada versión del nivel corrige lo que salió mal en la prueba anterior, y eso se nota en los datos.",
+        "data": {
+          "intro": "En la primera prueba, solo 2 de 10 amigos llegaron a la meta en sus cinco minutos. El medidor muestra el porcentaje que llega en cada versión.",
+          "visual": "bar",
+          "start": 20,
+          "steps": [
+            {
+              "text": "Versión 2: haces más corto el tercer hueco, donde caían 6 de 10. En la segunda prueba, 5 de 10 llegan a la meta.",
+              "delta": 30
+            },
+            {
+              "text": "Versión 3: pones un punto de control a la mitad y una flecha que señala el tubo. En la tercera prueba, 7 de 10 llegan.",
+              "delta": 20
+            },
+            {
+              "text": "Alta fidelidad: lo decoras, con monedas que marcan el camino y efectos de sonido. Pruebas otra vez para ver que nada se rompió: 8 de 10 llegan.",
+              "delta": 10
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Dato útil o comentario vago?",
+        "content": "Un buen registro anota qué pasó y cuántas veces. Un comentario vago no te dice qué cambiar en la siguiente versión.",
+        "data": {
+          "prompt": "Arrastra cada nota de la prueba de tu nivel a su categoría.",
+          "buckets": [
+            "Resultado medible",
+            "Comentario vago"
+          ],
+          "items": [
+            {
+              "t": "6 de 10 caen en el tercer hueco",
+              "b": 0
+            },
+            {
+              "t": "Está padre, creo",
+              "b": 1
+            },
+            {
+              "t": "2 de 10 no descubren el tubo",
+              "b": 0
+            },
+            {
+              "t": "Le falta algo, no sé qué",
+              "b": 1
+            },
+            {
+              "t": "Los que llegan tardan 4 minutos",
+              "b": 0
+            },
+            {
+              "t": "Está más o menos difícil",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con su ejemplo en tu nivel de Super Mario Maker 2.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Baja fidelidad",
+              "b": "Nivel sin adornos"
+            },
+            {
+              "a": "Alta fidelidad",
+              "b": "Nivel decorado"
+            },
+            {
+              "a": "Prueba con usuarios",
+              "b": "Diez amigos lo juegan"
+            },
+            {
+              "a": "Iteración",
+              "b": "Arreglar y volver a probar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del proyecto es cada cosa?",
+        "left_label": "Tu nivel",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Nivel sin enemigos ni adornos",
+            "right": "Prototipo de baja fidelidad"
+          },
+          {
+            "left": "Diez amigos juegan mientras miras",
+            "right": "Prueba con usuarios"
+          },
+          {
+            "left": "La tabla de qué le pasa a cada uno",
+            "right": "Registro de resultados"
+          },
+          {
+            "left": "Acortar el hueco y volver a probar",
+            "right": "Iteración"
+          }
+        ],
+        "completion_feedback": "Tu nivel pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, un **registro** y una **iteración**. Ahora ponle nombre formal a todo el proceso."
+      },
+      "quiz": [
+        {
+          "question": "Tu nivel de Mario Maker hecho solo con bloques y huecos, sin enemigos ni adornos, es un prototipo de…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Baja fidelidad"
+            },
+            {
+              "letter": "B",
+              "text": "Alta fidelidad"
+            },
+            {
+              "letter": "C",
+              "text": "Versión final"
+            },
+            {
+              "letter": "D",
+              "text": "Presentación"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Se hizo rápido, sin enemigos, monedas ni adornos, solo para probar si los saltos y el camino funcionan. Eso es un prototipo de baja fidelidad.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué miras a tus amigos jugar sin decirles cómo pasar los saltos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para ver dónde fallan solos"
+            },
+            {
+              "letter": "B",
+              "text": "Para que tarden más en terminar"
+            },
+            {
+              "letter": "C",
+              "text": "Para que no copien tu nivel"
+            },
+            {
+              "letter": "D",
+              "text": "Para que el nivel sea más difícil"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cuando compartas el nivel no vas a estar ahí para explicar. Observar sin ayudar muestra los problemas reales del diseño.",
+          "difficulty": 2
+        },
+        {
+          "question": "6 de 10 caen una y otra vez en el tercer hueco. ¿Qué cambio tiene más sentido para la siguiente versión?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ajustar ese hueco y volver a probar"
+            },
+            {
+              "letter": "B",
+              "text": "Ponerle enemigos y adornos a todo el nivel"
+            },
+            {
+              "letter": "C",
+              "text": "Compartirlo así porque así es más retador"
+            },
+            {
+              "letter": "D",
+              "text": "Agregar más saltos para hacerlo más largo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El registro señala un punto exacto de falla. Se corrige ese hueco y se vuelve a probar para confirmar que mejoró: eso es iterar.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el control de Emi, ¿por qué la primera versión fue de cartón y tapas de garrafón?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Para probar la posición rápido"
+            },
+            {
+              "letter": "B",
+              "text": "Porque así se queda para siempre"
+            },
+            {
+              "letter": "C",
+              "text": "Porque Emi lo pidió de cartón"
+            },
+            {
+              "letter": "D",
+              "text": "Para ahorrarse las pruebas"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es un prototipo de baja fidelidad: barato y fácil de cambiar. Mover una tapa toma un minuto; mover un botón ya instalado, mucho más.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué las pruebas del control adaptado se hicieron con Emi y no con cualquier jugador?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque él es el usuario real"
+            },
+            {
+              "letter": "B",
+              "text": "Porque juega mejor que los demás"
+            },
+            {
+              "letter": "C",
+              "text": "Porque así la prueba es más rápida"
+            },
+            {
+              "letter": "D",
+              "text": "Porque los demás no tienen consola"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un prototipo se prueba con quien lo va a usar. A otro jugador quizá le funcionaba la primera versión, pero el control era para las manos de Emi.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un prototipo?",
+      "options": [
+        { "letter": "A", "text": "La versión final que se vende en tiendas" },
+        { "letter": "B", "text": "Una versión de prueba de un producto" },
+        { "letter": "C", "text": "El dibujo del logotipo del proyecto" },
+        { "letter": "D", "text": "La lista de materiales del proyecto" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en para qué sirve hacer algo antes de la versión definitiva.",
+      "explanation": "Un prototipo es una versión de prueba de un producto. Sirve para comprobar si la idea funciona antes de hacer la versión final."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo es un prototipo de baja fidelidad?",
+      "options": [
+        { "letter": "A", "text": "Rápido y de materiales simples" },
+        { "letter": "B", "text": "Igual al producto final en todo" },
+        { "letter": "C", "text": "Hecho con máquinas de fábrica" },
+        { "letter": "D", "text": "Caro, detallado y ya terminado" }
+      ],
+      "correct_answer": "A",
+      "hint": "Baja fidelidad significa que se parece poco al producto final.",
+      "explanation": "Un prototipo de baja fidelidad se hace rápido y barato, con papel, cartón o materiales simples. Sirve para probar la idea, no para verse perfecto."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un prototipo de alta fidelidad?",
+      "options": [
+        { "letter": "A", "text": "Uno casi igual al producto final" },
+        { "letter": "B", "text": "Un boceto rápido hecho en una hoja" },
+        { "letter": "C", "text": "Una idea que todavía no tiene forma" },
+        { "letter": "D", "text": "Uno hecho con cartón y cinta adhesiva" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fidelidad es qué tanto se parece al producto real.",
+      "explanation": "Un prototipo de alta fidelidad se ve y funciona casi como el producto final. Se hace cuando la idea ya se probó con versiones más simples."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama el ciclo de construir, probar y mejorar que se repite varias veces?",
+      "options": [
+        { "letter": "A", "text": "Iteración" },
+        { "letter": "B", "text": "Presupuesto" },
+        { "letter": "C", "text": "Cronograma" },
+        { "letter": "D", "text": "Diagnóstico" }
+      ],
+      "correct_answer": "A",
+      "hint": "Viene de una palabra que significa repetir.",
+      "explanation": "La iteración es repetir el ciclo construir, probar y mejorar. Cada vuelta produce una versión mejor que la anterior."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Para qué sirve probar un prototipo con usuarios?",
+      "options": [
+        { "letter": "A", "text": "Para descubrir qué mejorar" },
+        { "letter": "B", "text": "Para que el proyecto se vea más caro" },
+        { "letter": "C", "text": "Para no tener que documentar nada" },
+        { "letter": "D", "text": "Para terminar el proyecto más rápido" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué aprende el autor al ver a otros usar su prototipo.",
+      "explanation": "Las pruebas con usuarios muestran fallas que el autor no ve, porque él ya sabe cómo se usa. Con eso decide qué mejorar."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué se anota en el registro de una prueba?",
+      "options": [
+        { "letter": "A", "text": "Qué se probó, qué pasó y qué cambiar" },
+        { "letter": "B", "text": "Solo las cosas que salieron bien" },
+        { "letter": "C", "text": "La opinión del autor del proyecto" },
+        { "letter": "D", "text": "Los nombres de quienes no ayudaron nada" }
+      ],
+      "correct_answer": "A",
+      "hint": "El registro debe servir para decidir la siguiente versión.",
+      "explanation": "Un registro útil dice qué se probó, qué pasó (de preferencia con datos) y qué se va a cambiar. Anotar solo lo bueno esconde las fallas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la retroalimentación en un proyecto?",
+      "options": [
+        { "letter": "A", "text": "Comentarios de otros para mejorar" },
+        { "letter": "B", "text": "Un aplauso al terminar la presentación" },
+        { "letter": "C", "text": "La lista de materiales que sobraron" },
+        { "letter": "D", "text": "Una calificación que ya no se puede cambiar" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que te dicen otros después de ver tu trabajo.",
+      "explanation": "La retroalimentación son las opiniones y observaciones de otras personas sobre tu proyecto. Sirve para mejorarlo en la siguiente versión."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un prototipo de baja fidelidad?",
+      "options": [
+        { "letter": "A", "text": "Una app dibujada en hojas" },
+        { "letter": "B", "text": "Una app publicada en la tienda" },
+        { "letter": "C", "text": "Un celular nuevo en su caja" },
+        { "letter": "D", "text": "Un videojuego terminado y a la venta" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la opción hecha rápido y con materiales simples.",
+      "explanation": "Dibujar las pantallas en papel es rápido y barato, y ya permite probar si la app se entiende. Las demás opciones son productos terminados."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En la presentación de un proyecto, ¿con qué parte conviene empezar?",
+      "options": [
+        { "letter": "A", "text": "El problema que resuelve" },
+        { "letter": "B", "text": "Las mejoras futuras" },
+        { "letter": "C", "text": "Los resultados de pruebas" },
+        { "letter": "D", "text": "El precio de los materiales" }
+      ],
+      "correct_answer": "A",
+      "hint": "Sin saber para qué existe el proyecto, lo demás no se entiende.",
+      "explanation": "Se empieza por el problema, luego la solución, cómo funciona, los resultados de las pruebas y al final las mejoras futuras."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué significa documentar un proyecto?",
+      "options": [
+        { "letter": "A", "text": "Registrar versiones y cambios" },
+        { "letter": "B", "text": "Tomarle una sola foto al terminar" },
+        { "letter": "C", "text": "Guardar el proyecto en un cajón" },
+        { "letter": "D", "text": "Hacer el póster para la presentación" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que permite explicar después cómo llegaste al resultado.",
+      "explanation": "Documentar es dejar por escrito, con fotos y datos, cada versión, cada prueba y cada cambio. Así puedes explicar por qué el prototipo quedó como quedó."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un equipo hace la versión final sin hacer ningún prototipo antes. ¿Cuál es el mayor riesgo?",
+      "options": [
+        { "letter": "A", "text": "Encontrar errores ya muy tarde" },
+        { "letter": "B", "text": "Terminar demasiado rápido el proyecto" },
+        { "letter": "C", "text": "Que el producto se vea muy bonito" },
+        { "letter": "D", "text": "Que no le sobren materiales al final" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cuánto cuesta corregir algo que ya está terminado.",
+      "explanation": "Sin prototipo, los errores aparecen cuando ya se gastó tiempo y dinero en la versión final, y corregirlos cuesta mucho más."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Le muestras tu prototipo a un amigo y solo te dice «está bonito». ¿Qué le falta a esa prueba?",
+      "options": [
+        { "letter": "A", "text": "Que él lo use y observes qué pasa" },
+        { "letter": "B", "text": "Que te lo diga más veces" },
+        { "letter": "C", "text": "Que sea con más amigos que opinen igual" },
+        { "letter": "D", "text": "Que se lo enseñes ya terminado" }
+      ],
+      "correct_answer": "A",
+      "hint": "Una prueba con usuarios es más que pedir una opinión.",
+      "explanation": "Probar es pedir que el usuario use el prototipo para una tarea real y observar qué pasa. «Está bonito» no dice qué funciona ni qué falla."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué dato de una prueba es más útil para mejorar un prototipo?",
+      "options": [
+        { "letter": "A", "text": "8 de 10 no hallaron el botón" },
+        { "letter": "B", "text": "A todos les pareció más o menos" },
+        { "letter": "C", "text": "Al autor le gustó mucho cómo quedó" },
+        { "letter": "D", "text": "Un usuario dijo que le faltaba algo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca el dato que dice qué falló y a cuántos les pasó.",
+      "explanation": "Un resultado medible señala qué falla y qué tan grave es. Los comentarios vagos no dicen qué cambiar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Después de mejorar un prototipo según lo que falló en la prueba, ¿qué sigue?",
+      "options": [
+        { "letter": "A", "text": "Volver a probarlo" },
+        { "letter": "B", "text": "Presentarlo sin probar" },
+        { "letter": "C", "text": "Tirar la versión anterior sin anotar" },
+        { "letter": "D", "text": "Empezar otro proyecto distinto" }
+      ],
+      "correct_answer": "A",
+      "hint": "Recuerda que el ciclo construir, probar y mejorar se repite.",
+      "explanation": "Una mejora hay que comprobarla: se vuelve a probar para ver si de verdad resolvió el problema y no causó otro."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué conviene guardar las versiones anteriores de un prototipo?",
+      "options": [
+        { "letter": "A", "text": "Muestran cómo y por qué mejoró" },
+        { "letter": "B", "text": "Se pueden vender como productos" },
+        { "letter": "C", "text": "Así el proyecto pesa más" },
+        { "letter": "D", "text": "Para no tener que hacer pruebas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué vas a mostrar cuando presentes el proyecto.",
+      "explanation": "Las versiones anteriores, con fotos y registros, documentan el proceso y permiten explicar en la presentación por qué se hizo cada cambio."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En una prueba, el usuario se atora y tú le explicas cómo seguir. ¿Qué problema causa eso?",
+      "options": [
+        { "letter": "A", "text": "Ocultas una falla real" },
+        { "letter": "B", "text": "La prueba queda muy corta" },
+        { "letter": "C", "text": "Le das demasiadas opciones" },
+        { "letter": "D", "text": "Ya no es baja fidelidad" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa si vas a estar ahí cuando otros usen el producto final.",
+      "explanation": "Si el usuario se atora, el diseño tiene una falla. Al explicarle, la tapas y no la registras: hay que observar sin ayudar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un equipo quiere probar en una tarde si su idea de app se entiende, sin saber programar. ¿Qué prototipo le conviene?",
+      "options": [
+        { "letter": "A", "text": "De papel, de baja fidelidad" },
+        { "letter": "B", "text": "Una app ya publicada" },
+        { "letter": "C", "text": "Uno de alta fidelidad programado" },
+        { "letter": "D", "text": "Ninguno, mejor la versión final" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en las dos condiciones: poco tiempo y sin programar.",
+      "explanation": "Las pantallas dibujadas en papel se hacen rápido, sin programar, y ya permiten ver si los usuarios entienden la app."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuándo conviene pasar de un prototipo de baja fidelidad a uno de alta fidelidad?",
+      "options": [
+        { "letter": "A", "text": "Cuando la idea ya se probó" },
+        { "letter": "B", "text": "Antes de hacer cualquier prueba" },
+        { "letter": "C", "text": "Cuando sobra dinero del proyecto" },
+        { "letter": "D", "text": "Nunca, la baja fidelidad basta" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa para qué sirve primero la versión barata.",
+      "explanation": "Primero se prueba la idea con algo barato y fácil de cambiar. Cuando ya funciona, vale la pena invertir en una versión más parecida a la final."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En una presentación, «con la versión 2, el soporte se cayó 0 veces de 10» va en…",
+      "options": [
+        { "letter": "A", "text": "Resultados de pruebas" },
+        { "letter": "B", "text": "Mejoras futuras" },
+        { "letter": "C", "text": "El problema" },
+        { "letter": "D", "text": "La solución propuesta" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate si es algo que ya pasó al probar o algo que falta hacer.",
+      "explanation": "Es un dato medido al probar una versión con usuarios: va en los resultados de pruebas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En la presentación, «el siguiente paso es hacerlo resistente al agua» va en…",
+      "options": [
+        { "letter": "A", "text": "Mejoras futuras" },
+        { "letter": "B", "text": "Resultados de pruebas" },
+        { "letter": "C", "text": "El problema inicial" },
+        { "letter": "D", "text": "Cómo funciona" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en las palabras «el siguiente paso».",
+      "explanation": "Es algo que todavía no se hace y se planea para otra versión: es una mejora futura."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Al recibir una crítica a tu prototipo durante la presentación, ¿cuál es la mejor reacción?",
+      "options": [
+        { "letter": "A", "text": "Escuchar, anotar y luego evaluarla" },
+        { "letter": "B", "text": "Defender cada decisión en el momento" },
+        { "letter": "C", "text": "Cambiar todo de inmediato sin pensar" },
+        { "letter": "D", "text": "Ignorarla si viene de alguien menor" }
+      ],
+      "correct_answer": "A",
+      "hint": "La retroalimentación sirve para la siguiente versión, no para ganar una discusión.",
+      "explanation": "La retroalimentación se escucha sin defenderse, se anota y después se decide con calma si conviene aplicarla."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Prueba 1: 6 de 10 usuarios lograron la tarea. Prueba 2, tras un cambio: 9 de 10. ¿De qué porcentaje a qué porcentaje subió?",
+      "options": [
+        { "letter": "A", "text": "De 60% a 90%" },
+        { "letter": "B", "text": "De 6% a 9%" },
+        { "letter": "C", "text": "De 60% a 100%" },
+        { "letter": "D", "text": "De 40% a 10%" }
+      ],
+      "correct_answer": "A",
+      "hint": "Divide los que lo lograron entre el total y multiplica por 100.",
+      "explanation": "6 de 10 es 6 / 10 × 100 = 60%, y 9 de 10 es 90%. El cambio subió el éxito de 60% a 90%."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un prototipo pasó la prueba con los amigos del autor, pero falló con los usuarios reales. ¿Qué enseña eso?",
+      "options": [
+        { "letter": "A", "text": "Hay que probar con los usuarios" },
+        { "letter": "B", "text": "Los amigos no saben opinar nada" },
+        { "letter": "C", "text": "Las pruebas con usuarios no sirven" },
+        { "letter": "D", "text": "Debió ser de alta fidelidad" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa para quién se diseñó el producto.",
+      "explanation": "Un prototipo se prueba con las personas que de verdad lo van a usar, porque sus necesidades pueden ser distintas a las de los amigos del autor."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un registro dice: «Versión 2: funcionó mejor». ¿Qué le falta para ser útil?",
+      "options": [
+        { "letter": "A", "text": "Qué se probó y cuánto mejoró" },
+        { "letter": "B", "text": "Una opinión más entusiasta del autor" },
+        { "letter": "C", "text": "La fecha de la presentación" },
+        { "letter": "D", "text": "Fotos del equipo trabajando" }
+      ],
+      "correct_answer": "A",
+      "hint": "Imagina que otra persona lee el registro: ¿sabría qué pasó?",
+      "explanation": "«Funcionó mejor» no dice en qué ni cuánto. Un registro útil dice qué se probó, con cuántos usuarios y qué resultado dio, por ejemplo 9 de 10."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un equipo hizo 5 versiones de su prototipo, pero en la presentación solo muestra la última y no habla de las pruebas. ¿Qué le falta?",
+      "options": [
+        { "letter": "A", "text": "Los resultados de las pruebas" },
+        { "letter": "B", "text": "Un video mucho más largo" },
+        { "letter": "C", "text": "El precio de venta del producto" },
+        { "letter": "D", "text": "Más colores en las diapositivas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Recuerda las partes de una presentación: problema, solución, cómo funciona…",
+      "explanation": "Una presentación debe incluir problema, solución, cómo funciona, resultados de pruebas y mejoras futuras. Los resultados demuestran que el prototipo sí funciona."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo prueba su prototipo, ve que falla, lo corrige y lo presenta sin volver a probarlo. ¿Qué paso del ciclo se saltó?",
+      "options": [
+        { "letter": "A", "text": "Probar la nueva versión" },
+        { "letter": "B", "text": "Construir el primer prototipo" },
+        { "letter": "C", "text": "Recibir retroalimentación" },
+        { "letter": "D", "text": "Hacer el registro inicial" }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa qué pasó después de la corrección.",
+      "explanation": "Construyó, probó y mejoró, pero no comprobó la mejora. Sin una nueva prueba no sabe si la corrección funcionó o causó otro problema."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Prueban una app para pedir comida en la cafetería escolar: 7 de 20 alumnos no encuentran el botón de pagar. ¿Qué porcentaje sí lo encontró?",
+      "options": [
+        { "letter": "A", "text": "65%" },
+        { "letter": "B", "text": "35%" },
+        { "letter": "C", "text": "70%" },
+        { "letter": "D", "text": "13%" }
+      ],
+      "correct_answer": "A",
+      "hint": "Primero calcula cuántos sí lo encontraron y luego divide entre 20.",
+      "explanation": "Si 7 de 20 no lo encuentran, 13 sí lo encuentran. 13 / 20 × 100 = 65%."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo tiene tres ideas de soporte para celular y una sola clase para decidir cuál funciona mejor. ¿Qué le conviene?",
+      "options": [
+        { "letter": "A", "text": "Tres prototipos rápidos de cartón" },
+        { "letter": "B", "text": "Una sola versión final de madera" },
+        { "letter": "C", "text": "Comprar los tres soportes en tienda" },
+        { "letter": "D", "text": "Elegir una idea sin probar ninguna" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cómo comparar varias ideas con poco tiempo.",
+      "explanation": "Los prototipos de baja fidelidad permiten probar varias ideas rápido y barato, y elegir con datos la que mejor funciona."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Prueba A: 5 usuarios, 4 terminaron. Prueba B: 20 usuarios, 15 terminaron. ¿Cuál tuvo mayor porcentaje de éxito?",
+      "options": [
+        { "letter": "A", "text": "La A, con 80%" },
+        { "letter": "B", "text": "La B, con 75%" },
+        { "letter": "C", "text": "La B, porque hubo 15 éxitos" },
+        { "letter": "D", "text": "Las dos tuvieron el mismo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Compara porcentajes, no cantidades: divide entre el total de cada prueba.",
+      "explanation": "4 / 5 = 80% y 15 / 20 = 75%. La B tuvo más éxitos en número, pero la A tuvo mayor porcentaje de éxito."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál de estas mejoras futuras está mejor escrita para un registro?",
+      "options": [
+        { "letter": "A", "text": "Que se vea más padre y más moderno" },
+        { "letter": "B", "text": "Mejorarlo en general para que guste" },
+        { "letter": "C", "text": "Bajar su peso de 600 g a 300 g" },
+        { "letter": "D", "text": "Arreglar lo que falte cuando se pueda" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca la que se podría comprobar con una prueba.",
+      "explanation": "Una mejora útil es concreta y medible: después se puede pesar el prototipo y comprobar si se logró. Las otras no dicen qué cambiar."
+    }
+  ],
+  "diagnostic": {
+    "question": "Un equipo dibuja en papel las pantallas de su app, se las muestra a 5 compañeros para que intenten usarla y anota dónde se confunden. ¿Qué están haciendo?",
+    "options": [
+      { "letter": "A", "text": "Probando un prototipo" },
+      { "letter": "B", "text": "Presentando la versión final de la app" },
+      { "letter": "C", "text": "Programando la app completa en Python" },
+      { "letter": "D", "text": "Haciendo el presupuesto del proyecto" }
+    ],
+    "correct_answer": "A",
+    "explanation": "Las pantallas en papel son un prototipo de baja fidelidad. Pedir a usuarios que lo usen y anotar dónde se confunden es una prueba con usuarios: sirve para mejorar antes de programar."
+  }
+}

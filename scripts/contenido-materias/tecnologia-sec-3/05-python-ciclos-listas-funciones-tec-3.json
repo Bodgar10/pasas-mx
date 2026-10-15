@@ -1,0 +1,1470 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "python-ciclos-listas-funciones-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo se crea y se usa una función en Python",
+    "steps": [
+      "Escribir def, el nombre de la función y sus parámetros entre paréntesis",
+      "Cerrar esa primera línea con dos puntos",
+      "Escribir debajo las instrucciones con sangría de 4 espacios",
+      "Devolver el resultado con return como última línea del cuerpo",
+      "Llamar a la función fuera del def, con los valores entre paréntesis"
+    ],
+    "completion_feedback": "Una función se **define** con def, nombre, **parámetros** y dos puntos; su cuerpo va con **sangría**, entrega su resultado con **return** y solo trabaja cuando la **llamas**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Mil clones, una sola orden",
+        "content": "¿Te acuerdas del entrenamiento de Naruto en Shippuden para dominar el chakra de viento? Primero tenía que cortar una hoja de árbol en dos usando solo chakra, y después partir una cascada. Kakashi le propone un truco: usar clones de sombra, porque lo que aprende cada clon le regresa a Naruto cuando el clon desaparece. Naruto no le explica a cada clon qué hacer, uno por uno. Hace el sello una sola vez, decide cuántos clones quiere y todos reciben la misma orden: toma una hoja y, mientras no esté cortada, vuelve a concentrar chakra. Ahora imagina que Kakashi lleva la cuenta en una libreta: los clones están formados en fila y él los revisa en orden, del primero al último; cada vez que uno logra cortar su hoja, le suma uno al marcador. Al final no le importa cómo se llamaba cada clon, sino el número total. Una orden escrita una vez, repetida por muchos, aplicada a cada uno de la fila y con una cuenta que crece: esa forma de trabajar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Los clones de Naruto SON ciclos, listas y funciones",
+        "content": "Lo que acabas de ver con los clones de Naruto es exactamente cómo funcionan los **ciclos**, las **listas** y las **funciones** en Python. La fila de clones es una **lista**: guarda varios datos en orden, su **índice empieza en 0**, **append** agrega al final y **len** dice cuántos hay. Revisar a cada clon es un **ciclo for**: for clon in clones. Con **range(1, 4)** el for da 1, 2 y 3: **incluye el inicio y excluye el fin**. Insistir hasta cortar la hoja es un **ciclo while**: repite mientras su condición sea verdadera; si nada la cambia, es un **ciclo infinito**. El sello es una **función**: se crea con **def**, recibe **parámetros** y entrega su resultado con **return**. La libreta es un **acumulador**: total = total + 1."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la caja de la tienda de Sakamoto",
+        "content": "En Sakamoto Days, Sakamoto dejó atrás su vida de antes y atiende una tienda de barrio junto con Shin. Programa su caja en Python. **Paso 1:** guarda los precios de una compra en una lista: precios = [150, 200, 120]. **Paso 2:** crea la función con un parámetro: def cobrar(lista): y no olvides los dos puntos. **Paso 3:** dentro, con sangría de 4 espacios, el acumulador empieza en cero: total = 0. **Paso 4:** recorre la lista sumando cada precio: for p in lista: total = total + p; después, fuera del for pero dentro del def, va return total. **Paso 5:** llama a la función: print(cobrar(precios)) imprime 470. Resultado: escribiste la caja una sola vez y sirve para cualquier compra, sea de 3 productos o de 30."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **ciclo for** repite un número conocido de veces o recorre una lista; **range(a, b)** va de a hasta b − 1. Un **ciclo while** repite mientras su condición sea verdadera. Una **lista** guarda datos en orden con **índice desde 0**; **append** agrega y **len** cuenta. Una **función** se crea con **def**, recibe **parámetros** y devuelve con **return**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Imagina range(1, 6) como una fila de clones con un letrero al final: salen a entrenar los clones 1, 2, 3, 4 y 5. El 6 es solo el letrero de «aquí se acaba la fila» y nunca entrena."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un acumulador empieza en cero y crece una vez por cada vuelta del ciclo.",
+        "data": {
+          "intro": "Cada clon aporta 25 % del entrenamiento. Sigue el código: total = 0 y luego for clon in range(1, 5): total = total + 25. El medidor muestra total.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Vuelta 1: clon vale 1, el inicio de range. total = 0 + 25 = 25.",
+              "delta": 25
+            },
+            {
+              "text": "Vuelta 2: clon vale 2. total = 25 + 25 = 50.",
+              "delta": 25
+            },
+            {
+              "text": "Vuelta 3: clon vale 3. total = 50 + 25 = 75.",
+              "delta": 25
+            },
+            {
+              "text": "Vuelta 4: clon vale 4. total = 100. Como range(1, 5) excluye el 5, el ciclo termina y print(total) muestra 100.",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿for o while?",
+        "content": "Usa for cuando sabes cuántas veces repetir o tienes una lista que recorrer. Usa while cuando repites hasta que algo cambie.",
+        "data": {
+          "prompt": "Arrastra cada tarea de entrenamiento al ciclo que le conviene.",
+          "buckets": [
+            "for (sé cuántas veces)",
+            "while (hasta que algo cambie)"
+          ],
+          "items": [
+            {
+              "t": "Que cada uno de 10 clones salude",
+              "b": 0
+            },
+            {
+              "t": "Intentar cortar la hoja hasta lograrlo",
+              "b": 1
+            },
+            {
+              "t": "Revisar a cada clon de la fila",
+              "b": 0
+            },
+            {
+              "t": "Concentrar chakra mientras quede energía",
+              "b": 1
+            },
+            {
+              "t": "Repetir el sello exactamente 3 veces",
+              "b": 0
+            },
+            {
+              "t": "Correr mientras Kakashi no diga alto",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada instrucción de Python con lo que hace en la fila de clones.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "range(1, 4)",
+              "b": "Clones 1, 2 y 3"
+            },
+            {
+              "a": "clones[0]",
+              "b": "El primer clon"
+            },
+            {
+              "a": "len(clones)",
+              "b": "Cuántos clones hay"
+            },
+            {
+              "a": "return",
+              "b": "Entrega el resultado"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa del entrenamiento en Python?",
+        "left_label": "Clones de Naruto",
+        "right_label": "En Python",
+        "pairs": [
+          {
+            "left": "Hacer el sello una vez y usarlo siempre",
+            "right": "Función con def"
+          },
+          {
+            "left": "Mientras la hoja no se corte, insiste",
+            "right": "Ciclo while"
+          },
+          {
+            "left": "Revisar la fila de clones en orden",
+            "right": "Ciclo for sobre una lista"
+          },
+          {
+            "left": "La libreta que suma uno por cada éxito",
+            "right": "Acumulador"
+          }
+        ],
+        "completion_feedback": "La orden única era una **función**, insistir era un **while**, la fila era una **lista** recorrida con **for** y la libreta, un **acumulador**. Ahora ponles nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Kakashi guarda la fila en clones = [\"Clon A\", \"Clon B\", \"Clon C\"]. ¿Qué índice tiene el primer clon?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "0"
+            },
+            {
+              "letter": "B",
+              "text": "1"
+            },
+            {
+              "letter": "C",
+              "text": "3"
+            },
+            {
+              "letter": "D",
+              "text": "A"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "En Python las listas empiezan en el índice 0: clones[0] es \"Clon A\". El índice 1 ya es el segundo clon.",
+          "difficulty": 1
+        },
+        {
+          "question": "Naruto escribe for clon in range(1, 6): print(clon). ¿Qué números aparecen?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "1, 2, 3, 4, 5"
+            },
+            {
+              "letter": "B",
+              "text": "1, 2, 3, 4, 5, 6"
+            },
+            {
+              "letter": "C",
+              "text": "0, 1, 2, 3, 4, 5"
+            },
+            {
+              "letter": "D",
+              "text": "2, 3, 4, 5, 6"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "range(1, 6) incluye el inicio, 1, y excluye el fin, 6. Por eso imprime del 1 al 5: cinco números.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un clon escribe hojas = 0 y luego while hojas < 3: print(\"Otra vez\"), sin nada más dentro del ciclo. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Imprime 3 veces"
+            },
+            {
+              "letter": "B",
+              "text": "No imprime nada"
+            },
+            {
+              "letter": "C",
+              "text": "Nunca termina"
+            },
+            {
+              "letter": "D",
+              "text": "Imprime 4 veces"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Como nada dentro del ciclo cambia hojas, siempre vale 0 y 0 < 3 siempre es verdadero: es un ciclo infinito. Faltaba hojas = hojas + 1.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la caja de Sakamoto, ¿qué hace total = total + p dentro del for?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Suma cada precio al total"
+            },
+            {
+              "letter": "B",
+              "text": "Reinicia el total en cero"
+            },
+            {
+              "letter": "C",
+              "text": "Imprime cada precio en pantalla"
+            },
+            {
+              "letter": "D",
+              "text": "Compara si total es igual a p"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es un acumulador: en cada vuelta toma lo que ya llevaba total y le suma el precio p. Comparar sería ==, e imprimir sería print.",
+          "difficulty": 2
+        },
+        {
+          "question": "Shin agrega un producto: precios = [150, 200, 120] y luego precios.append(80). ¿Qué imprime print(cobrar(precios))?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "470"
+            },
+            {
+              "letter": "B",
+              "text": "550"
+            },
+            {
+              "letter": "C",
+              "text": "80"
+            },
+            {
+              "letter": "D",
+              "text": "4"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "append agrega el 80 al final, así que la lista queda con 4 precios. El for los suma todos: 150 + 200 + 120 + 80 = 550.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El utilero y la lista de convocados",
+        "content": "Antes de un partido de la Selección Mexicana, el cuerpo técnico entrega la lista de convocados y el utilero se pone a trabajar en el vestidor del estadio. No necesita instrucciones distintas para Santiago Giménez, para Edson Álvarez o para los porteros: tiene una sola rutina que aplica igual a cada nombre. Toma al primero de la lista, cuelga su jersey con su número, acomoda sus espinilleras y deja una botella de agua; luego pasa al siguiente, y así hasta el último. Si llaman a alguien de última hora, solo lo agrega al final de la lista y la rutina funciona igual. Mientras el camión del equipo no llegue al estadio, sigue revisando que no falte nada. Al terminar, el auxiliar le pregunta cuántas botellas usó, y él no tiene que contarlas de nuevo: fue sumando una cada vez que acomodaba un lugar. Una lista en orden, la misma rutina para cada nombre, una espera con condición y una cuenta que crece: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La rutina del utilero SON ciclos, listas y funciones",
+        "content": "Lo que acabas de ver con el utilero es exactamente cómo funcionan los **ciclos**, las **listas** y las **funciones** en Python. La hoja de convocados es una **lista**: guarda varios datos en orden, su **índice empieza en 0**, **append** agrega al final y **len** dice cuántos hay. Aplicar la rutina a cada nombre es un **ciclo for**: for jugador in convocados. Con **range(1, 4)** el for da 1, 2 y 3: **incluye el inicio y excluye el fin**. Esperar al camión es un **ciclo while**: repite mientras su condición sea verdadera; si nada la cambia, es un **ciclo infinito**. Una rutina con nombre es una **función**: se crea con **def**, recibe **parámetros** y devuelve con **return**. Contar botellas es un **acumulador**: total = total + 1."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las jornadas y los puntos de la Liga MX",
+        "content": "La Liga MX tiene 18 equipos y en la fase regular cada uno enfrenta una vez a los otros 17: son 17 jornadas. **Paso 1:** para anunciarlas, escribe for j in range(1, 18): print(\"Jornada\", j). Imprime de Jornada 1 a Jornada 17, porque el 18 no se incluye. **Paso 2:** guarda los puntos de tu equipo en sus primeras cinco jornadas: puntos = [3, 1, 0, 3, 3] (ganar da 3, empatar 1 y perder 0). **Paso 3:** crea la función def sumar(lista): y, con sangría, el acumulador total = 0. **Paso 4:** dentro, for p in lista: total = total + p, y al terminar el ciclo, return total. **Paso 5:** print(sumar(puntos)) imprime 10. Resultado: la misma función sirve en la jornada 5 o en la 17."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **ciclo for** repite un número conocido de veces o recorre una lista; **range(a, b)** va de a hasta b − 1. Un **ciclo while** repite mientras su condición sea verdadera. Una **lista** guarda datos en orden con **índice desde 0**; **append** agrega y **len** cuenta. Una **función** se crea con **def**, recibe **parámetros** y devuelve con **return**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "En una lista, el índice no es el dorsal: es cuántos lugares avanzas desde el inicio de la fila. El primer convocado no avanza ninguno, por eso es convocados[0], y el último de 26 es convocados[25]."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El for toma los elementos de la lista en orden y el acumulador los va sumando.",
+        "data": {
+          "intro": "Suma los goles de tu equipo con este código: goles = [2, 0, 1, 3], total = 0 y for g in goles: total = total + g.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Vuelta 1: g vale 2, el elemento de índice 0. total = 0 + 2 = 2."
+            },
+            {
+              "text": "Vuelta 2: g vale 0. total = 2 + 0 = 2. Un partido sin goles no suma, pero la vuelta sí ocurre."
+            },
+            {
+              "text": "Vuelta 3: g vale 1. total = 2 + 1 = 3."
+            },
+            {
+              "text": "Vuelta 4: g vale 3. total = 3 + 3 = 6. Ya no quedan elementos y el for termina solo."
+            },
+            {
+              "text": "Fuera del ciclo, print(total) muestra 6, y len(goles) diría que fueron 4 partidos."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Lista, ciclo o función?",
+        "content": "Una lista va entre corchetes. Un ciclo empieza con for o while. Una función se crea con def y entrega su resultado con return.",
+        "data": {
+          "prompt": "Arrastra cada línea del código del equipo a lo que es.",
+          "buckets": [
+            "Lista",
+            "Ciclo",
+            "Función"
+          ],
+          "items": [
+            {
+              "t": "puntos = [3, 1, 0, 3]",
+              "b": 0
+            },
+            {
+              "t": "goles = [2, 0, 1, 3]",
+              "b": 0
+            },
+            {
+              "t": "for j in range(1, 18):",
+              "b": 1
+            },
+            {
+              "t": "while minuto < 90:",
+              "b": 1
+            },
+            {
+              "t": "def alinear(jugador):",
+              "b": 2
+            },
+            {
+              "t": "return total",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada instrucción de Python con lo que hace en el código del equipo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "range(1, 18)",
+              "b": "Jornadas 1 a 17"
+            },
+            {
+              "a": "convocados[0]",
+              "b": "Primer convocado"
+            },
+            {
+              "a": "append",
+              "b": "Agrega al final"
+            },
+            {
+              "a": "def",
+              "b": "Crea una función"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa del vestidor en Python?",
+        "left_label": "El utilero",
+        "right_label": "En Python",
+        "pairs": [
+          {
+            "left": "La hoja con los nombres en orden",
+            "right": "Lista"
+          },
+          {
+            "left": "La misma rutina para cada nombre",
+            "right": "Ciclo for"
+          },
+          {
+            "left": "Revisar mientras no llegue el camión",
+            "right": "Ciclo while"
+          },
+          {
+            "left": "Ir sumando las botellas usadas",
+            "right": "Acumulador"
+          }
+        ],
+        "completion_feedback": "La hoja de convocados era una **lista**, la rutina para cada nombre un **for**, la espera del camión un **while** y la cuenta de botellas un **acumulador**. Ahora ponles nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "La lista convocados guarda los nombres de la Selección en orden. ¿Qué te dice cuántos convocados hay?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "len(convocados)"
+            },
+            {
+              "letter": "B",
+              "text": "range(convocados)"
+            },
+            {
+              "letter": "C",
+              "text": "print(convocados)"
+            },
+            {
+              "letter": "D",
+              "text": "count(convocados)"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "len() devuelve cuántos elementos tiene una lista. print la muestra completa, pero no la cuenta, y range genera números a partir de enteros, no de listas.",
+          "difficulty": 1
+        },
+        {
+          "question": "Con for j in range(1, 18): print(\"Jornada\", j), ¿cuál es la última jornada que aparece?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Jornada 18"
+            },
+            {
+              "letter": "B",
+              "text": "Jornada 17"
+            },
+            {
+              "letter": "C",
+              "text": "Jornada 16"
+            },
+            {
+              "letter": "D",
+              "text": "Jornada 1"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "range excluye el número final. range(1, 18) llega hasta 17, justo las 17 jornadas de la fase regular.",
+          "difficulty": 2
+        },
+        {
+          "question": "El utilero pone dos líneas dentro de for g in goles: primero total = 0 y luego total = total + g. Con goles = [2, 1, 3], ¿qué imprime print(total) al final?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "6"
+            },
+            {
+              "letter": "B",
+              "text": "3"
+            },
+            {
+              "letter": "C",
+              "text": "0"
+            },
+            {
+              "letter": "D",
+              "text": "2"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Como total = 0 está dentro del for, se reinicia en cada vuelta y solo queda el último gol: 0 + 3 = 3. El acumulador se crea en cero antes del ciclo.",
+          "difficulty": 3
+        },
+        {
+          "question": "Si convocados = [\"Ochoa\", \"Edson\", \"Santi\"], ¿qué imprime print(convocados[1])?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ochoa"
+            },
+            {
+              "letter": "B",
+              "text": "Santi"
+            },
+            {
+              "letter": "C",
+              "text": "Edson"
+            },
+            {
+              "letter": "D",
+              "text": "Error"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El índice empieza en 0: convocados[0] es Ochoa y convocados[1] es Edson, el segundo de la lista.",
+          "difficulty": 2
+        },
+        {
+          "question": "En sumar(lista) alguien borra la línea return total. ¿Qué imprime ahora print(sumar(puntos))?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "10"
+            },
+            {
+              "letter": "B",
+              "text": "0"
+            },
+            {
+              "letter": "C",
+              "text": "None"
+            },
+            {
+              "letter": "D",
+              "text": "3, 1, 0, 3, 3"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La función sí suma por dentro, pero sin return no entrega nada. En Python, una función sin return devuelve None, y eso es lo que imprime print.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El setlist de TWICE en tu celular",
+        "content": "Por fin tienes boleto para ver a TWICE y, como buena ONCE, no quieres que nada te tome por sorpresa. Una fan publica el setlist de la gira y tú lo copias en tu celular, canción por canción y en el mismo orden. Cada tarde pones esa lista y, para cada canción, haces lo mismo: cantas el fanchant y mueves el Candybong al ritmo. No tienes que decidir qué hacer en cada una: la rutina es igual y la lista dice qué sigue. Tu amiga y tú inventan además una señal: cuando una grita «¡porra!», las dos dicen los nueve nombres en orden: Nayeon, Jeongyeon, Momo, Sana, Jihyo, Mina, Dahyun, Chaeyoung y Tzuyu. La aprenden una sola vez y la usan cuantas veces quieran. También llevas la cuenta de cuántas canciones ya te sabes completas: cada vez que dominas una, le sumas uno. Y ya sabes cómo será el final: luces apagadas y el público gritando mientras TWICE no regrese al escenario para el encore. Una lista en orden, una rutina para cada canción, una señal con nombre y una espera con condición: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu setlist ES una lista y tu ensayo, un ciclo",
+        "content": "Lo que acabas de ver con el concierto de TWICE es exactamente cómo funcionan los **ciclos**, las **listas** y las **funciones** en Python. El setlist es una **lista**: guarda datos en orden, su **índice empieza en 0**, **append** agrega al final y **len** cuenta. Corear cada canción es un **ciclo for**: for cancion in setlist. Con **range(1, 4)** el for daría 1, 2 y 3, porque **incluye el inicio y excluye el fin**. Gritar por el encore es un **ciclo while**: repite mientras su condición sea verdadera; si nada la cambia, es un **ciclo infinito**. La porra es una **función**: se define con **def**, recibe **parámetros** y devuelve con **return**. Tu cuenta de canciones es un **acumulador**: sabidas = sabidas + 1."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los siete integrantes de BTS",
+        "content": "BTS tiene siete integrantes. **Paso 1:** crea la lista bts = [\"RM\", \"Jin\", \"SUGA\", \"j-hope\", \"Jimin\", \"V\", \"Jung Kook\"]. **Paso 2:** len(bts) devuelve 7, pero los índices van de 0 a 6: bts[0] es RM y bts[6] es Jung Kook. **Paso 3:** define la función def saludar(nombre): y debajo, con sangría, return \"Hola, \" + nombre. El parámetro nombre recibe el dato que le mandes. **Paso 4:** recorre la lista con for n in bts: print(saludar(n)). Imprime siete saludos, de Hola, RM a Hola, Jung Kook. **Paso 5:** si pides bts[7], Python marca IndexError, porque ese lugar no existe. Resultado: una lista de 7 tiene índices del 0 al 6, y la función saluda a quien le pases."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **ciclo for** repite un número conocido de veces o recorre una lista; **range(a, b)** va de a hasta b − 1. Un **ciclo while** repite mientras su condición sea verdadera. Una **lista** guarda datos en orden con **índice desde 0**; **append** agrega y **len** cuenta. Una **función** se crea con **def**, recibe **parámetros** y devuelve con **return**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "El for es el setlist: sabes desde el inicio qué canciones vienen y se acaba cuando se acaba la lista. El while es el encore: no sabes cuánto gritarán, solo que paran cuando el grupo regresa."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un while revisa su condición antes de cada vuelta, y algo dentro debe cambiarla para que termine.",
+        "data": {
+          "intro": "Tu Candybong tiene 100 % de pila y cada canción gasta 20. Sigue el código: pila = 100 y while pila > 40: pila = pila - 20.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Revisión 1: ¿100 > 40? Sí. Entra al ciclo y pila = 100 - 20 = 80."
+            },
+            {
+              "text": "Revisión 2: ¿80 > 40? Sí. pila = 80 - 20 = 60."
+            },
+            {
+              "text": "Revisión 3: ¿60 > 40? Sí. pila = 60 - 20 = 40."
+            },
+            {
+              "text": "Revisión 4: ¿40 > 40? No, 40 no es mayor que 40. El ciclo termina con pila = 40 después de 3 canciones."
+            },
+            {
+              "text": "Si quitaras la línea pila = pila - 20, la condición nunca cambiaría y tendrías un ciclo infinito."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Funciona o marca error?",
+        "content": "Revisa los dos puntos al final de for, while y def; que = asigna y == compara, y que el último índice es uno menos que len.",
+        "data": {
+          "prompt": "Arrastra cada línea del programa del concierto a donde corresponde.",
+          "buckets": [
+            "Funciona",
+            "Marca error"
+          ],
+          "items": [
+            {
+              "t": "for s in setlist:",
+              "b": 0
+            },
+            {
+              "t": "for s in setlist",
+              "b": 1
+            },
+            {
+              "t": "setlist.append(\"Fancy\")",
+              "b": 0
+            },
+            {
+              "t": "print(len(setlist))",
+              "b": 0
+            },
+            {
+              "t": "setlist[9] si hay 9 canciones",
+              "b": 1
+            },
+            {
+              "t": "while encore = True:",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada instrucción de Python con lo que hace en tu setlist.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "setlist[0]",
+              "b": "Primera canción"
+            },
+            {
+              "a": "len(setlist)",
+              "b": "Total de canciones"
+            },
+            {
+              "a": "while",
+              "b": "Repite con condición"
+            },
+            {
+              "a": "def",
+              "b": "Define una función"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa del concierto en Python?",
+        "left_label": "Concierto de TWICE",
+        "right_label": "En Python",
+        "pairs": [
+          {
+            "left": "Las canciones en el orden del setlist",
+            "right": "Lista"
+          },
+          {
+            "left": "Corear cada canción del setlist",
+            "right": "for sobre la lista"
+          },
+          {
+            "left": "Gritar mientras no vuelvan al escenario",
+            "right": "Ciclo while"
+          },
+          {
+            "left": "La porra que aprendes una vez y repites",
+            "right": "Función"
+          }
+        ],
+        "completion_feedback": "El setlist era una **lista**, corear cada canción un **for**, el encore un **while** y la porra, una **función** que llamas por su nombre. Ahora ponles nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Guardas las canciones del concierto en setlist = [\"Fancy\", \"TT\", \"Feel Special\"]. ¿Qué es setlist?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una función"
+            },
+            {
+              "letter": "B",
+              "text": "Una lista"
+            },
+            {
+              "letter": "C",
+              "text": "Un ciclo for"
+            },
+            {
+              "letter": "D",
+              "text": "Un acumulador"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los corchetes con datos separados por comas forman una lista: varios datos guardados en orden dentro de una sola variable.",
+          "difficulty": 1
+        },
+        {
+          "question": "Con esa misma lista de tres canciones, ¿qué imprime print(setlist[2])?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "TT"
+            },
+            {
+              "letter": "B",
+              "text": "Feel Special"
+            },
+            {
+              "letter": "C",
+              "text": "Fancy"
+            },
+            {
+              "letter": "D",
+              "text": "Error: no hay índice 2"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los índices son 0, 1 y 2: setlist[0] es Fancy, setlist[1] es TT y setlist[2] es Feel Special, la tercera canción.",
+          "difficulty": 2
+        },
+        {
+          "question": "Escribes encore = False y luego while encore == False: print(\"¡TWICE!\"), sin nada que cambie encore dentro del ciclo. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Imprime una vez"
+            },
+            {
+              "letter": "B",
+              "text": "No imprime nada"
+            },
+            {
+              "letter": "C",
+              "text": "Ciclo infinito"
+            },
+            {
+              "letter": "D",
+              "text": "Imprime 9 veces"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La condición encore == False es verdadera y nada dentro del ciclo la cambia, así que se repite para siempre. Habría que poner encore = True en algún momento.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la lista bts, con siete integrantes, ¿qué índice tiene \"Jung Kook\", el último?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "7"
+            },
+            {
+              "letter": "B",
+              "text": "6"
+            },
+            {
+              "letter": "C",
+              "text": "0"
+            },
+            {
+              "letter": "D",
+              "text": "8"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Si el primero es el índice 0, el séptimo es el 6. Siempre: último índice = len(lista) - 1. Pedir bts[7] marca IndexError.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu setlist tenía 3 canciones y haces setlist.append(\"Cheer Up\"). ¿Qué imprime print(setlist[len(setlist) - 1])?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Feel Special"
+            },
+            {
+              "letter": "B",
+              "text": "Cheer Up"
+            },
+            {
+              "letter": "C",
+              "text": "IndexError"
+            },
+            {
+              "letter": "D",
+              "text": "Fancy"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "append pone Cheer Up al final y len(setlist) ahora es 4. Entonces setlist[4 - 1] es setlist[3]: el último elemento, Cheer Up.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Un turno de Salmon Run",
+        "content": "En Salmon Run de Splatoon 3, tú y tres amigos toman un turno de trabajo: hay que aguantar tres oleadas de salmónidos y, en cada una, entregar en la canasta una cuota de huevos dorados. Nadie juega cada oleada de forma distinta: la rutina es la misma, repetida tres veces. Dentro de cada oleada, mientras el marcador no llegue a la cuota, siguen recolectando: derrotan a un salmónido jefe, toman los huevos dorados que suelta, nadan a la canasta y los entregan; cada huevo entregado le suma uno al marcador. Tu equipo hasta tiene una señal: cuando alguien grita «¡canasta!», todos hacen exactamente lo mismo, sin tener que explicarlo cada vez. Antes de empezar, revisan en orden la lista de las cuatro armas de la rotación, porque en Salmon Run el juego te las asigna. Una rutina repetida un número fijo de veces, otra que se repite hasta cumplir la cuota, una cuenta que crece y una señal con nombre: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu turno en Salmon Run SON ciclos, listas y funciones",
+        "content": "Lo que acabas de ver en Salmon Run es exactamente cómo funcionan los **ciclos**, las **listas** y las **funciones** en Python. Las tres oleadas son un **ciclo for**: for oleada in range(1, 4) da 1, 2 y 3, porque **range incluye el inicio y excluye el fin**. Recolectar hasta la cuota es un **ciclo while**: repite mientras su condición sea verdadera; si nada la cambia, es un **ciclo infinito**. El marcador es un **acumulador**: huevos = huevos + 1. Las cuatro armas forman una **lista**: datos en orden con **índice desde 0**; **append** agrega y **len** cuenta. La señal «¡canasta!» es una **función**: se crea con **def**, recibe **parámetros** y devuelve con **return**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las pistas de Mario Kart World",
+        "content": "En Mario Kart World corren 24 pilotos por carrera. **Paso 1:** para mostrar todos los lugares, escribe for lugar in range(1, 25): print(lugar); imprime del 1 al 24, porque el 25 no se incluye. **Paso 2:** guarda tus pistas favoritas en una lista: pistas = [\"Desierto\", \"Playa\", \"Castillo\"], con los apodos que tú les pones. **Paso 3:** agrega una más al final con pistas.append(\"Senda Arco Iris\"); ahora len(pistas) es 4. **Paso 4:** define def anunciar(pista): y debajo, con sangría, return \"Siguiente: \" + pista. **Paso 5:** recorre la lista con for p in pistas: print(anunciar(p)). El último mensaje es Siguiente: Senda Arco Iris. Resultado: un ciclo, una lista y una función trabajan juntos, y si agregas pistas, el código no cambia."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **ciclo for** repite un número conocido de veces o recorre una lista; **range(a, b)** va de a hasta b − 1. Un **ciclo while** repite mientras su condición sea verdadera. Una **lista** guarda datos en orden con **índice desde 0**; **append** agrega y **len** cuenta. Una **función** se crea con **def**, recibe **parámetros** y devuelve con **return**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Un for es como un Gran Premio: sabes desde el inicio cuántas carreras son. Un while es como la cuota de Salmon Run: no sabes cuántos viajes a la canasta harás, solo cuándo parar."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El while revisa la condición antes de cada vuelta y se detiene en cuanto deja de cumplirse.",
+        "data": {
+          "intro": "Sigue el código de una oleada: huevos = 0 y while huevos < 10: huevos = huevos + 4. En cada vuelta tu equipo de cuatro entrega un huevo cada quien.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Revisión 1: ¿0 < 10? Sí. huevos = 0 + 4 = 4."
+            },
+            {
+              "text": "Revisión 2: ¿4 < 10? Sí. huevos = 4 + 4 = 8."
+            },
+            {
+              "text": "Revisión 3: ¿8 < 10? Sí. huevos = 8 + 4 = 12. Se pasan de la cuota, y está bien."
+            },
+            {
+              "text": "Revisión 4: ¿12 < 10? No. El while termina tras 3 vueltas y print(huevos) muestra 12."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Cuántas vueltas da?",
+        "content": "range(n) va de 0 a n - 1, range(a, b) da b - a vueltas y un for sobre una lista da una vuelta por elemento.",
+        "data": {
+          "prompt": "Cada ciclo tiene un print dentro. Arrástralo según cuántas veces imprime.",
+          "buckets": [
+            "3 vueltas",
+            "4 vueltas"
+          ],
+          "items": [
+            {
+              "t": "for i in range(3):",
+              "b": 0
+            },
+            {
+              "t": "for i in range(1, 4):",
+              "b": 0
+            },
+            {
+              "t": "for i in range(2, 5):",
+              "b": 0
+            },
+            {
+              "t": "for i in range(4):",
+              "b": 1
+            },
+            {
+              "t": "for i in range(0, 4):",
+              "b": 1
+            },
+            {
+              "t": "for a in [\"A\", \"B\", \"C\", \"D\"]:",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada instrucción de Python con lo que hace en tu código de Mario Kart y Salmon Run.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "range(1, 25)",
+              "b": "Lugares 1 a 24"
+            },
+            {
+              "a": "pistas.append(x)",
+              "b": "Añade al final"
+            },
+            {
+              "a": "pistas[0]",
+              "b": "La primera pista"
+            },
+            {
+              "a": "huevos = huevos + 1",
+              "b": "Acumulador"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué es cada cosa de tu turno en Python?",
+        "left_label": "Salmon Run",
+        "right_label": "En Python",
+        "pairs": [
+          {
+            "left": "Jugar las tres oleadas, una tras otra",
+            "right": "for con range(1, 4)"
+          },
+          {
+            "left": "Recolectar hasta llegar a la cuota",
+            "right": "Ciclo while"
+          },
+          {
+            "left": "Cada huevo suma uno al marcador",
+            "right": "Acumulador"
+          },
+          {
+            "left": "La señal «¡canasta!»",
+            "right": "Función"
+          }
+        ],
+        "completion_feedback": "Las tres oleadas eran un **for**, la cuota un **while**, el marcador un **acumulador** y la señal, una **función** que todos ejecutan al oír su nombre. Ahora ponles nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En Salmon Run, «recolectar mientras el marcador no llegue a la cuota» corresponde en Python a…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un ciclo while"
+            },
+            {
+              "letter": "B",
+              "text": "Un for con range"
+            },
+            {
+              "letter": "C",
+              "text": "Una lista de huevos"
+            },
+            {
+              "letter": "D",
+              "text": "Un return final"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "No sabes cuántos viajes harás; solo sabes cuándo parar. Repetir mientras se cumpla una condición es justo lo que hace while.",
+          "difficulty": 1
+        },
+        {
+          "question": "Escribes pistas = [\"Desierto\", \"Playa\"] y luego pistas.append(\"Senda Arco Iris\"). ¿Qué imprime print(len(pistas))?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "2"
+            },
+            {
+              "letter": "B",
+              "text": "4"
+            },
+            {
+              "letter": "C",
+              "text": "3"
+            },
+            {
+              "letter": "D",
+              "text": "1"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La lista empezó con 2 pistas y append agregó una al final. len cuenta elementos, no índices: son 3.",
+          "difficulty": 2
+        },
+        {
+          "question": "Quieres imprimir los lugares del 1 al 24 de una carrera de Mario Kart World. ¿Qué ciclo lo hace?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "for i in range(1, 24):"
+            },
+            {
+              "letter": "B",
+              "text": "for i in range(0, 24):"
+            },
+            {
+              "letter": "C",
+              "text": "for i in range(1, 25):"
+            },
+            {
+              "letter": "D",
+              "text": "for i in range(24, 1):"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El fin de range no se incluye, así que para llegar a 24 hay que poner 25. range(1, 24) se queda en 23 y range(0, 24) empieza en 0.",
+          "difficulty": 3
+        },
+        {
+          "question": "Con huevos = 0 y while huevos < 9: huevos = huevos + 3, ¿con qué valor termina huevos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "12"
+            },
+            {
+              "letter": "B",
+              "text": "6"
+            },
+            {
+              "letter": "C",
+              "text": "3"
+            },
+            {
+              "letter": "D",
+              "text": "9"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Vale 3, luego 6 y luego 9. Al revisar ¿9 < 9?, la respuesta es No y el ciclo se detiene: termina en 9.",
+          "difficulty": 2
+        },
+        {
+          "question": "pistas tiene 4 elementos. Dentro de for p in pistas: va print(p), y después del ciclo, sin sangría, va print(\"Fin\"). ¿Cuántas veces aparece Fin?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "4"
+            },
+            {
+              "letter": "B",
+              "text": "1"
+            },
+            {
+              "letter": "C",
+              "text": "5"
+            },
+            {
+              "letter": "D",
+              "text": "0"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La sangría decide qué está dentro del ciclo. print(p) se repite 4 veces, pero print(\"Fin\") está fuera, así que se ejecuta una sola vez al terminar.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué palabra de Python se usa para crear una función?",
+      "options": [
+        { "letter": "A", "text": "def" },
+        { "letter": "B", "text": "function" },
+        { "letter": "C", "text": "func" },
+        { "letter": "D", "text": "create" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es una abreviatura de la palabra en inglés para «definir».",
+      "explanation": "En Python las funciones se crean con def, seguido del nombre, los paréntesis y dos puntos. function existe en otros lenguajes, como JavaScript, pero no en Python."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué ciclo repite instrucciones mientras una condición sea verdadera?",
+      "options": [
+        { "letter": "A", "text": "if" },
+        { "letter": "B", "text": "while" },
+        { "letter": "C", "text": "def" },
+        { "letter": "D", "text": "print" }
+      ],
+      "correct_answer": "B",
+      "hint": "Su nombre en inglés significa «mientras».",
+      "explanation": "while revisa su condición antes de cada vuelta y repite mientras sea verdadera. if también revisa una condición, pero solo una vez: no repite."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿En qué índice está el primer elemento de una lista en Python?",
+      "options": [
+        { "letter": "A", "text": "1" },
+        { "letter": "B", "text": "-1" },
+        { "letter": "C", "text": "0" },
+        { "letter": "D", "text": "10" }
+      ],
+      "correct_answer": "C",
+      "hint": "Python empieza a contar los lugares de una lista desde antes del uno.",
+      "explanation": "Los índices empiezan en 0: lista[0] es el primer elemento y lista[1] el segundo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué función dice cuántos elementos tiene una lista?",
+      "options": [
+        { "letter": "A", "text": "size()" },
+        { "letter": "B", "text": "range()" },
+        { "letter": "C", "text": "print()" },
+        { "letter": "D", "text": "len()" }
+      ],
+      "correct_answer": "D",
+      "hint": "Su nombre viene de length, «longitud» en inglés.",
+      "explanation": "len() devuelve cuántos elementos tiene una lista. Por ejemplo, len([5, 7, 9]) es 3."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué hace return dentro de una función?",
+      "options": [
+        { "letter": "A", "text": "Muestra el resultado en la pantalla" },
+        { "letter": "B", "text": "Repite la función desde el principio" },
+        { "letter": "C", "text": "Devuelve un valor a quien la llamó" },
+        { "letter": "D", "text": "Borra todas las variables de la función" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en la diferencia entre devolver un dato y mostrarlo.",
+      "explanation": "return entrega un valor al lugar donde se llamó la función y la termina. Mostrar en pantalla es trabajo de print."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué números genera range(4)?",
+      "options": [
+        { "letter": "A", "text": "1, 2, 3, 4" },
+        { "letter": "B", "text": "0, 1, 2, 3" },
+        { "letter": "C", "text": "0, 1, 2, 3, 4" },
+        { "letter": "D", "text": "4, 3, 2, 1" }
+      ],
+      "correct_answer": "B",
+      "hint": "Con un solo número, range empieza en 0 y no incluye ese número.",
+      "explanation": "range(4) empieza en 0 y se detiene antes del 4: da 0, 1, 2 y 3. Son cuatro números, pero el 4 no aparece."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué hace lista.append(x)?",
+      "options": [
+        { "letter": "A", "text": "Borra x de la lista" },
+        { "letter": "B", "text": "Agrega x al final" },
+        { "letter": "C", "text": "Pone x al principio" },
+        { "letter": "D", "text": "Cuenta cuántas x hay" }
+      ],
+      "correct_answer": "B",
+      "hint": "Append significa «añadir» en inglés. ¿En qué lugar de la fila se añade?",
+      "explanation": "append agrega un elemento al final de la lista, y len aumenta en 1."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es un ciclo infinito?",
+      "options": [
+        { "letter": "A", "text": "Un ciclo que da muchísimas vueltas seguidas" },
+        { "letter": "B", "text": "Uno cuya condición nunca deja de cumplirse" },
+        { "letter": "C", "text": "Un ciclo que recorre una lista muy larga" },
+        { "letter": "D", "text": "Un ciclo for que usa range sin número de inicio" }
+      ],
+      "correct_answer": "B",
+      "hint": "No se trata de cuántas vueltas da, sino de si alguna vez termina.",
+      "explanation": "Un ciclo infinito nunca termina porque su condición siempre es verdadera; casi siempre falta algo dentro que la cambie. Un ciclo con muchas vueltas que sí termina no es infinito."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En Python, ¿cómo se indica qué instrucciones están dentro de un for?",
+      "options": [
+        { "letter": "A", "text": "Con sangría" },
+        { "letter": "B", "text": "Con llaves { }" },
+        { "letter": "C", "text": "Con punto y coma" },
+        { "letter": "D", "text": "Entre comillas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en el espacio que hay al inicio de las líneas.",
+      "explanation": "Python usa la sangría, normalmente 4 espacios, para marcar qué líneas pertenecen al for, al while, al if o al def. Otros lenguajes usan llaves."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En def saludar(nombre):, ¿qué es nombre?",
+      "options": [
+        { "letter": "A", "text": "Un parámetro" },
+        { "letter": "B", "text": "Una lista" },
+        { "letter": "C", "text": "Un ciclo" },
+        { "letter": "D", "text": "El resultado" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es lo que va entre los paréntesis cuando defines la función.",
+      "explanation": "Un parámetro es el dato que recibe la función entre paréntesis. Al llamar saludar(\"Ana\"), nombre vale Ana."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué números imprime for i in range(2, 6): print(i)?",
+      "options": [
+        { "letter": "A", "text": "2, 3, 4, 5, 6" },
+        { "letter": "B", "text": "3, 4, 5, 6" },
+        { "letter": "C", "text": "2, 3, 4, 5" },
+        { "letter": "D", "text": "0, 1, 2, 3, 4, 5" }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda: el inicio sí se incluye y el fin no.",
+      "explanation": "range(2, 6) empieza en 2 y se detiene antes del 6: imprime 2, 3, 4 y 5."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "frutas = [\"mango\", \"pera\", \"uva\"]. ¿Qué imprime print(frutas[1])?",
+      "options": [
+        { "letter": "A", "text": "mango" },
+        { "letter": "B", "text": "pera" },
+        { "letter": "C", "text": "uva" },
+        { "letter": "D", "text": "Error" }
+      ],
+      "correct_answer": "B",
+      "hint": "Cuenta los lugares empezando en cero.",
+      "explanation": "frutas[0] es mango y frutas[1] es pera. El índice 1 es el segundo elemento."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "colores = [\"rojo\", \"azul\", \"verde\", \"negro\"]. ¿Qué imprime print(len(colores))?",
+      "options": [
+        { "letter": "A", "text": "3" },
+        { "letter": "B", "text": "5" },
+        { "letter": "C", "text": "negro" },
+        { "letter": "D", "text": "4" }
+      ],
+      "correct_answer": "D",
+      "hint": "len cuenta elementos, no índices.",
+      "explanation": "La lista tiene 4 elementos, así que len devuelve 4. Su último índice es 3, pero eso no es lo que mide len."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "total = 0 y luego for n in [2, 4, 6]: total = total + n. ¿Qué imprime print(total) después del ciclo?",
+      "options": [
+        { "letter": "A", "text": "6" },
+        { "letter": "B", "text": "12" },
+        { "letter": "C", "text": "0" },
+        { "letter": "D", "text": "246" }
+      ],
+      "correct_answer": "B",
+      "hint": "Anota cuánto vale total después de cada vuelta.",
+      "explanation": "Es un acumulador: 0 + 2 = 2, luego 2 + 4 = 6 y luego 6 + 6 = 12. Al terminar el ciclo, total vale 12."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "def doble(x): return x * 2. ¿Qué imprime print(doble(5))?",
+      "options": [
+        { "letter": "A", "text": "52" },
+        { "letter": "B", "text": "x * 2" },
+        { "letter": "C", "text": "5" },
+        { "letter": "D", "text": "10" }
+      ],
+      "correct_answer": "D",
+      "hint": "Sustituye el parámetro x por el valor que le mandaste.",
+      "explanation": "Al llamar doble(5), el parámetro x vale 5 y la función devuelve 5 * 2 = 10. print muestra ese valor devuelto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "x = 10 y luego while x > 0: x = x - 3. ¿Cuánto vale x cuando termina el ciclo?",
+      "options": [
+        { "letter": "A", "text": "0" },
+        { "letter": "B", "text": "1" },
+        { "letter": "C", "text": "-2" },
+        { "letter": "D", "text": "-3" }
+      ],
+      "correct_answer": "C",
+      "hint": "Resta 3 vuelta por vuelta y revisa la condición antes de cada una.",
+      "explanation": "x pasa por 7, 4, 1 y -2. Con 1 la condición 1 > 0 todavía es verdadera, así que resta otra vez; con -2 ya es falsa y el ciclo termina."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "lista = [] y luego lista.append(\"a\") y lista.append(\"b\"). ¿Qué imprime print(len(lista))?",
+      "options": [
+        { "letter": "A", "text": "0" },
+        { "letter": "B", "text": "1" },
+        { "letter": "C", "text": "2" },
+        { "letter": "D", "text": "ab" }
+      ],
+      "correct_answer": "C",
+      "hint": "Empieza vacía. Cuenta cuántos elementos se le agregaron.",
+      "explanation": "La lista empieza vacía y cada append agrega un elemento: queda [\"a\", \"b\"], con 2 elementos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un programa debe pedir la contraseña una y otra vez hasta que sea correcta, sin saber cuántos intentos harán falta. ¿Qué ciclo conviene?",
+      "options": [
+        { "letter": "A", "text": "while" },
+        { "letter": "B", "text": "for con range(3)" },
+        { "letter": "C", "text": "for sobre una lista" },
+        { "letter": "D", "text": "Ninguno, basta un if" }
+      ],
+      "correct_answer": "A",
+      "hint": "¿Sabes de antemano cuántas vueltas habrá?",
+      "explanation": "Cuando no sabes cuántas veces se repetirá y solo conoces la condición para parar, usas while. for conviene cuando sabes cuántas vueltas son. Un if solo revisaría una vez."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un archivo de Python solo contiene esto: def saludar(): y dentro print(\"Hola\"). Al ejecutarlo, ¿qué aparece en pantalla?",
+      "options": [
+        { "letter": "A", "text": "Hola" },
+        { "letter": "B", "text": "Nada" },
+        { "letter": "C", "text": "saludar" },
+        { "letter": "D", "text": "Un error" }
+      ],
+      "correct_answer": "B",
+      "hint": "Definir una función no es lo mismo que usarla.",
+      "explanation": "def solo crea la función; sus instrucciones se ejecutan cuando la llamas con saludar(). Como nunca se llama, no se imprime nada."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "frutas = [\"mango\", \"pera\", \"uva\"]. ¿Qué pasa con print(frutas[3])?",
+      "options": [
+        { "letter": "A", "text": "Imprime uva" },
+        { "letter": "B", "text": "Imprime mango" },
+        { "letter": "C", "text": "Marca error de índice" },
+        { "letter": "D", "text": "Imprime un espacio vacío" }
+      ],
+      "correct_answer": "C",
+      "hint": "Con 3 elementos, ¿cuál es el último índice que existe?",
+      "explanation": "Los índices válidos son 0, 1 y 2. El índice 3 no existe, así que Python marca IndexError. uva es frutas[2]."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "contador = 0 y luego while contador < 5: print(contador). El ciclo nunca termina. ¿Qué línea falta dentro?",
+      "options": [
+        { "letter": "A", "text": "contador = 0" },
+        { "letter": "B", "text": "contador = contador + 1" },
+        { "letter": "C", "text": "print(contador + 1)" },
+        { "letter": "D", "text": "contador == contador + 1" }
+      ],
+      "correct_answer": "B",
+      "hint": "Algo dentro del ciclo debe cambiar el valor que revisa la condición.",
+      "explanation": "Sin aumentar contador, siempre vale 0 y 0 < 5 nunca deja de cumplirse. contador = contador + 1 lo acerca a 5. Con == solo se compara, no cambia nada, y print(contador + 1) no guarda el valor."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Quieres imprimir los números del 1 al 10, ambos incluidos. ¿Qué range usas en el for?",
+      "options": [
+        { "letter": "A", "text": "range(1, 10)" },
+        { "letter": "B", "text": "range(10)" },
+        { "letter": "C", "text": "range(0, 10)" },
+        { "letter": "D", "text": "range(1, 11)" }
+      ],
+      "correct_answer": "D",
+      "hint": "El número final de range nunca se incluye.",
+      "explanation": "Para llegar al 10, el fin debe ser 11. range(1, 10) se queda en 9, y range(10) o range(0, 10) empiezan en 0 y terminan en 9."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "def cuadrado(n): return n * n. ¿Qué imprime print(cuadrado(3) + 1)?",
+      "options": [
+        { "letter": "A", "text": "7" },
+        { "letter": "B", "text": "16" },
+        { "letter": "C", "text": "10" },
+        { "letter": "D", "text": "9" }
+      ],
+      "correct_answer": "C",
+      "hint": "Primero resuelve la llamada a la función y luego la suma.",
+      "explanation": "cuadrado(3) devuelve 3 * 3 = 9, y después se le suma 1: imprime 10. Sería 16 solo si el 1 se sumara antes, dentro del paréntesis."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "total = 0 y luego for n in [5, 5, 5]: con dos líneas dentro, total = total + n y print(total). ¿Qué aparece en pantalla?",
+      "options": [
+        { "letter": "A", "text": "15" },
+        { "letter": "B", "text": "5, 10 y 15" },
+        { "letter": "C", "text": "5, 5 y 5" },
+        { "letter": "D", "text": "0, 5, 10 y 15" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en que el print está dentro del ciclo, no después.",
+      "explanation": "Como print está dentro del for, se ejecuta en cada vuelta: muestra 5, luego 10 y luego 15, en líneas distintas. Si estuviera fuera, solo saldría 15."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "notas = [8, 5, 9, 6] y cuenta = 0. Luego for n in notas: y dentro, if n >= 6: cuenta = cuenta + 1. ¿Qué imprime print(cuenta)?",
+      "options": [
+        { "letter": "A", "text": "4" },
+        { "letter": "B", "text": "2" },
+        { "letter": "C", "text": "28" },
+        { "letter": "D", "text": "3" }
+      ],
+      "correct_answer": "D",
+      "hint": "No sumes las notas: cuenta cuántas cumplen la condición.",
+      "explanation": "El if dentro del for revisa cada nota: 8, 9 y 6 son mayores o iguales a 6; el 5 no. El acumulador suma 1 tres veces: imprime 3."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una función promedio(lista) suma con un for y devuelve total / len(lista). ¿Qué imprime exactamente print(promedio([6, 8, 10]))?",
+      "options": [
+        { "letter": "A", "text": "24" },
+        { "letter": "B", "text": "8" },
+        { "letter": "C", "text": "8.0" },
+        { "letter": "D", "text": "24 / 3" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa qué tipo de número da la división con / en Python 3.",
+      "explanation": "La suma es 24 y len es 3. En Python 3, el operador / siempre devuelve un número decimal, así que 24 / 3 da 8.0, y eso es lo que imprime."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una función suma una lista con un for, pero el return total quedó con sangría dentro del for. ¿Qué devuelve con [4, 5, 6]?",
+      "options": [
+        { "letter": "A", "text": "15" },
+        { "letter": "B", "text": "4" },
+        { "letter": "C", "text": "6" },
+        { "letter": "D", "text": "None" }
+      ],
+      "correct_answer": "B",
+      "hint": "return termina la función en el momento en que se ejecuta.",
+      "explanation": "En la primera vuelta total vale 0 + 4 = 4 y enseguida se ejecuta return, que termina la función. Las demás vueltas nunca ocurren. El return va fuera del for."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "ahorro = 0 y semanas = 0. Luego while ahorro < 100: con ahorro = ahorro + 30 y semanas = semanas + 1. ¿Qué imprime print(semanas)?",
+      "options": [
+        { "letter": "A", "text": "3" },
+        { "letter": "B", "text": "4" },
+        { "letter": "C", "text": "100" },
+        { "letter": "D", "text": "120" }
+      ],
+      "correct_answer": "B",
+      "hint": "Sigue los dos acumuladores vuelta por vuelta.",
+      "explanation": "El ahorro pasa por 30, 60, 90 y 120. Con 90 todavía es menor que 100, así que hay una cuarta vuelta. Termina con ahorro en 120 y semanas en 4."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "lista = [3, 1] y luego lista.append(lista[0] + lista[1]). ¿Qué imprime print(lista)?",
+      "options": [
+        { "letter": "A", "text": "[3, 1, 4]" },
+        { "letter": "B", "text": "[4]" },
+        { "letter": "C", "text": "[3, 1, 31]" },
+        { "letter": "D", "text": "[3, 1, 3, 1]" }
+      ],
+      "correct_answer": "A",
+      "hint": "Resuelve primero lo que está dentro del paréntesis de append.",
+      "explanation": "lista[0] es 3 y lista[1] es 1; como son números, 3 + 1 = 4. append agrega ese 4 al final sin borrar nada: [3, 1, 4]."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "def resta(a, b): return a - b. ¿Qué imprime print(resta(2, 7))?",
+      "options": [
+        { "letter": "A", "text": "5" },
+        { "letter": "B", "text": "-5" },
+        { "letter": "C", "text": "9" },
+        { "letter": "D", "text": "27" }
+      ],
+      "correct_answer": "B",
+      "hint": "Los valores se asignan a los parámetros en el mismo orden en que los escribes.",
+      "explanation": "El primer valor va al primer parámetro: a vale 2 y b vale 7. Entonces a - b = 2 - 7 = -5. El orden de los parámetros importa."
+    }
+  ],
+  "diagnostic": {
+    "question": "En Python, nums = [10, 20, 30]. ¿Qué imprime print(nums[0] + nums[2])?",
+    "options": [
+      { "letter": "A", "text": "30" },
+      { "letter": "B", "text": "50" },
+      { "letter": "C", "text": "40" },
+      { "letter": "D", "text": "60" }
+    ],
+    "correct_answer": "C",
+    "explanation": "Los índices empiezan en 0: nums[0] es 10 y nums[2] es 30, el tercer elemento. 10 + 30 = 40. Quien cuenta desde 1 suma 10 + 20 y obtiene 30."
+  }
+}

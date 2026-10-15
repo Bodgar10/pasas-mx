@@ -1,0 +1,1831 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "multimedia-audio-y-video-digital-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo se digitaliza una canción",
+    "steps": [
+      "El micrófono convierte el sonido en una señal eléctrica",
+      "Se mide la señal miles de veces por segundo (muestreo)",
+      "Cada muestra se guarda como un número en bits",
+      "Los números se comprimen en un formato como MP3 o AAC",
+      "El archivo se guarda o se sube a una app de música"
+    ],
+    "completion_feedback": "El sonido se vuelve **señal**, la señal se **muestrea**, cada muestra se guarda en **bits** y al final se **comprime** en un formato. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El AMV que TikTok dejó chiquito",
+        "content": "Terminas tu primer AMV de Jujutsu Kaisen: 45 segundos con los mejores momentos de Yuji, Megumi y Nobara, cortados justo al ritmo de la canción. En tu editor lo exportas igual que el anime: horizontal, de 1920 por 1080. Lo subes a TikTok y te llevas una sorpresa: en el celular se ve como una tira delgada a media pantalla, con dos franjas negras enormes arriba y abajo. Tu amiga del club, que ya ha subido varios, te explica tres cosas. Primero, TikTok es vertical: hay que exportar de 1080 de ancho por 1920 de alto y recortar cada escena para que el personaje quede al centro. Segundo, no sirve exportar a 60 imágenes por segundo para que se vea más fluido: el anime se hace para verse a 24, así que el editor solo repetiría imágenes. Tercero, la app vuelve a comprimir lo que subes, así que conviene exportarlo con buena calidad desde el principio. Lo exportas otra vez con esos ajustes, lo subes y ahora sí llena toda la pantalla. Esos números que cambiaste en la ventana de exportar son la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu AMV ES audio y video digital",
+        "content": "Lo que acabas de ver con tu AMV es exactamente **audio y video digital**: imagen y sonido convertidos en números. El video tiene **resolución** (cuántos píxeles: 1920 × 1080 es 1080p), **relación de aspecto** (16:9 horizontal, 9:16 vertical) y **cuadros por segundo** o fps (el anime usa 24). El audio de la canción se **muestrea**: se mide la onda miles de veces por segundo. La **tasa de bits** dice cuántos datos usa cada segundo, y la **compresión** baja el peso: **con pérdida** (MP3, AAC, H.264) o **sin pérdida** (FLAC); el WAV ni siquiera comprime."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿cuánto pesará tu AMV?",
+        "content": "Vas a exportar tu AMV de 45 segundos. Calcula cuánto pesará antes de subirlo.\n\n**Paso 1 — Ajustes:** 1080 × 1920 (9:16), 24 fps, video en **H.264** y audio en **AAC**, todo dentro del contenedor **MP4**.\n**Paso 2 — Tasa de bits:** eliges 10 Mbps en total (megabits por segundo).\n**Paso 3 — Multiplica:** 10 Mbps × 45 s = 450 megabits.\n**Paso 4 — Pasa a bytes:** 1 byte = 8 bits, así que 450 ÷ 8 = 56.25 MB (aquí 1 MB = 1,000,000 bytes).\n**Paso 5 — Compara:** a 5 Mbps pesaría la mitad, unos 28.1 MB, pero con más cuadritos en las escenas rápidas.\n\nResultado: el peso depende de la **tasa de bits** y de la **duración**. El MP4 solo guarda juntos el video y el audio; quien comprime es el códec."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Digitalizar es pasar sonido e imagen a números. El **muestreo** mide la onda miles de veces por segundo (44.1 kHz en CD). En video importan la **resolución** (1080p = 1920 × 1080), la **relación de aspecto** (16:9, 9:16) y los **cuadros por segundo**. **Tamaño = tasa de bits × tiempo**. **Con pérdida** (MP3, AAC, H.264) pesa menos; **sin pérdida** (FLAC) conserva todo; **WAV** no comprime."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en 16:9 como la tele donde ves el anime y en 9:16 como esa misma pantalla girada en tu celular: el primer número siempre es el ancho y el segundo, el alto."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Pasar de horizontal a vertical es cambiar la relación de aspecto sin deformar la imagen.",
+        "data": {
+          "intro": "Tu escena de Megumi está en 1920 × 1080 y TikTok pide 1080 × 1920. Conviértela paso a paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Revisa la relación: 1920 ÷ 1080 da la proporción 16:9, horizontal. TikTok usa 9:16: el mismo rectángulo, pero de pie."
+            },
+            {
+              "text": "Si solo giras el video, Megumi queda acostado; si lo estiras, se ve aplastado. Ninguna de las dos sirve."
+            },
+            {
+              "text": "Recorta una franja vertical: con 1080 de alto, el ancho debe ser 1080 × 9 ÷ 16 = 607.5 píxeles, casi un tercio del cuadro."
+            },
+            {
+              "text": "Escala esa franja a 1080 × 1920 (pierde algo de nitidez) y mueve el recorte en cada escena para que el personaje quede al centro."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Con pérdida o sin pérdida?",
+        "content": "Con pérdida: borra detalles que casi no notas para pesar menos. Sin pérdida: guarda todo, aunque pese más.",
+        "data": {
+          "prompt": "Arrastra cada archivo de tu AMV a su categoría.",
+          "buckets": [
+            "Con pérdida",
+            "Sin pérdida"
+          ],
+          "items": [
+            {
+              "t": "Opening en MP3 a 320 kbps",
+              "b": 0
+            },
+            {
+              "t": "Opening en FLAC",
+              "b": 1
+            },
+            {
+              "t": "AMV exportado en H.264",
+              "b": 0
+            },
+            {
+              "t": "Canción en WAV para editar",
+              "b": 1
+            },
+            {
+              "t": "Clip de voz en AAC",
+              "b": 0
+            },
+            {
+              "t": "Ending en FLAC",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada ajuste de exportación con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "24 fps",
+              "b": "Velocidad del anime"
+            },
+            {
+              "a": "9:16",
+              "b": "Formato de TikTok"
+            },
+            {
+              "a": "1920 × 1080",
+              "b": "1080p horizontal"
+            },
+            {
+              "a": "MP4",
+              "b": "Junta video y audio"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto hay detrás de cada ajuste de tu AMV?",
+        "left_label": "Tu AMV",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Elegir entre 1080p y 4K",
+            "right": "Resolución"
+          },
+          {
+            "left": "Pasar de horizontal a vertical",
+            "right": "Relación de aspecto"
+          },
+          {
+            "left": "Dejarlo a 24 imágenes por segundo",
+            "right": "Cuadros por segundo"
+          },
+          {
+            "left": "TikTok vuelve a comprimirlo",
+            "right": "Compresión con pérdida"
+          }
+        ],
+        "completion_feedback": "Tu AMV dependía de **resolución**, **relación de aspecto**, **cuadros por segundo** y **compresión**. Ahora ponle nombre formal: eso es **audio y video digital**."
+      },
+      "quiz": [
+        {
+          "question": "Tu AMV en 1920 × 1080 sale con franjas negras en TikTok. ¿Qué tienes que cambiar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La relación de aspecto"
+            },
+            {
+              "letter": "B",
+              "text": "Los cuadros por segundo"
+            },
+            {
+              "letter": "C",
+              "text": "El formato del audio"
+            },
+            {
+              "letter": "D",
+              "text": "La tasa de bits del audio"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "1920 × 1080 es 16:9, horizontal. TikTok es vertical, 9:16, así que hay que exportar a 1080 × 1920. Los fps y el audio no cambian la forma del cuadro.",
+          "difficulty": 1
+        },
+        {
+          "question": "El anime se hace para verse a 24 cuadros por segundo. ¿Qué significa eso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "24 dibujos por cada minuto"
+            },
+            {
+              "letter": "B",
+              "text": "24 imágenes cada segundo"
+            },
+            {
+              "letter": "C",
+              "text": "24 minutos por episodio"
+            },
+            {
+              "letter": "D",
+              "text": "24 píxeles en cada imagen"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los fps dicen cuántas imágenes fijas pasan cada segundo. En muchas escenas se anima «en dos»: cada dibujo dura 2 cuadros, así que hay 12 dibujos distintos por segundo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu AMV dura 45 segundos y lo exportas a 10 Mbps. ¿Cuánto pesa, más o menos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "450 MB"
+            },
+            {
+              "letter": "B",
+              "text": "56 MB"
+            },
+            {
+              "letter": "C",
+              "text": "5.6 MB"
+            },
+            {
+              "letter": "D",
+              "text": "3,600 MB"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "10 Mbps × 45 s = 450 megabits. Como 1 byte son 8 bits, 450 ÷ 8 = 56.25 MB. El error común es olvidar que Mbps son bits y MB son bytes.",
+          "difficulty": 3
+        },
+        {
+          "question": "Exportas tu AMV en MP4 con video H.264 y audio AAC. ¿Qué es el MP4?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El códec del video"
+            },
+            {
+              "letter": "B",
+              "text": "El contenedor"
+            },
+            {
+              "letter": "C",
+              "text": "El códec del audio"
+            },
+            {
+              "letter": "D",
+              "text": "La resolución"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "MP4 es el contenedor: el archivo que guarda juntos el video y el audio. H.264 es el códec que comprime el video y AAC el que comprime el audio.",
+          "difficulty": 2
+        },
+        {
+          "question": "Exportas a 60 fps una escena de anime hecha para 24 fps. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se ve más del doble de fluida"
+            },
+            {
+              "letter": "B",
+              "text": "Solo repite imágenes"
+            },
+            {
+              "letter": "C",
+              "text": "Se reproduce en cámara lenta"
+            },
+            {
+              "letter": "D",
+              "text": "Aumenta su resolución a 4K"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las imágenes originales son 24 por segundo. Para llenar 60, el editor repite cuadros que ya existían: no aparecen movimientos nuevos. Para una cámara lenta fluida hay que grabar con más fps, no exportar con más.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El golazo que se veía borroso",
+        "content": "Tu hermana juega de delantera en el equipo de la secundaria y en la final mete un gol de chilena. Tú lo grabaste con el celular en modo normal y, al verlo, el remate es un manchón: en una imagen el balón está junto a su pie y en la siguiente ya va casi un metro adelante. Para el siguiente partido cambias al modo cámara lenta, que graba 240 imágenes por segundo en lugar de 30. Ahora un segundo de jugada dura ocho en la pantalla y se ve clarito cómo le pega con el empeine. Es lo mismo que hace la transmisión de un partido de la Liga MX Femenil cuando repite una jugada: la cámara lenta capta muchas más imágenes de las que se muestran cada segundo y luego las pasa a velocidad normal. Feliz, mandas el video al chat de la familia, pero tu tía lo ve con cuadritos y colores raros: la app lo comprimió para que pesara menos. Cuántas imágenes hay por segundo, qué tan nítida es cada una y cuánto pesa el archivo son la lección de hoy."
+      },
+      "explanation": {
+        "title": "El video del gol ES audio y video digital",
+        "content": "Lo que acabas de ver con el gol de tu hermana es exactamente **audio y video digital**: la jugada convertida en números. El video tiene **cuadros por segundo** o fps (30 en modo normal; 240 en cámara lenta, que se reproduce a 30 y dura 8 veces más), **resolución** (1080p = 1920 × 1080 píxeles) y **relación de aspecto** (16:9 en la tele). El grito de la tribuna se **muestrea**: se mide la onda miles de veces por segundo. La **tasa de bits** dice cuántos datos usa cada segundo. La compresión **con pérdida** (H.264, AAC) quita detalles; la **sin pérdida** (FLAC) guarda todo, y el WAV ni siquiera comprime."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿cabe el partido completo en tu celular?",
+        "content": "El entrenador quiere el partido completo de 90 minutos para analizarlo. A tu celular le quedan 8 GB libres.\n\n**Paso 1 — Datos:** 1080p a 30 fps; supón que tu cel graba con una **tasa de bits** de 16 Mbps. 90 min = 5,400 s.\n**Paso 2 — Multiplica:** 16 Mbps × 5,400 s = 86,400 megabits.\n**Paso 3 — Pasa a bytes:** 86,400 ÷ 8 = 10,800 MB; con 1 GB = 1,000 MB, unos 10.8 GB. No cabe.\n**Paso 4 — Ajusta:** en 720p con 8 Mbps: 8 × 5,400 ÷ 8 = 5,400 MB, unos 5.4 GB. Sí cabe.\n**Paso 5 — Decide:** para ver la táctica basta 720p; la cámara lenta úsala solo en la jugada del gol.\n\nResultado: **tamaño = tasa de bits × tiempo**. Bajar la resolución y la tasa de bits ahorra espacio a cambio de detalle."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Digitalizar es pasar sonido e imagen a números. El **muestreo** mide la onda miles de veces por segundo (44.1 kHz en CD). En video importan la **resolución** (1080p = 1920 × 1080), la **relación de aspecto** (16:9, 9:16) y los **cuadros por segundo**. **Tamaño = tasa de bits × tiempo**. **Con pérdida** (MP3, AAC, H.264) pesa menos; **sin pérdida** (FLAC) conserva todo; **WAV** no comprime."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Cámara lenta = grabar muchos cuadros y reproducirlos a velocidad normal. Para saber cuántas veces más lenta se ve la repetición del gol, divide fps grabados ÷ fps reproducidos: 240 ÷ 30 = 8."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La cámara lenta estira el tiempo porque hay más cuadros grabados que los que se muestran cada segundo.",
+        "data": {
+          "intro": "Supón que la cámara de la repetición graba a 180 cuadros por segundo y la transmisión se ve a 30. Calcula cuánto dura la jugada.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Una jugada real de 1.5 segundos grabada a 180 fps genera 180 × 1.5 = 270 cuadros."
+            },
+            {
+              "text": "La transmisión muestra 30 cuadros cada segundo, así que esos 270 cuadros tardan 270 ÷ 30 = 9 segundos."
+            },
+            {
+              "text": "Compara: 9 ÷ 1.5 = 6. La repetición va 6 veces más lenta que la realidad, igual que 180 ÷ 30."
+            },
+            {
+              "text": "Si la jugada se hubiera grabado a 30 fps y solo la frenaras, no habría cuadros nuevos: se repetirían los mismos y se vería a saltos."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Fps, resolución o compresión?",
+        "content": "Cuadros por segundo: cuántas imágenes. Resolución: cuántos píxeles tiene cada imagen. Compresión: cuántos datos se quitan para que pese menos.",
+        "data": {
+          "prompt": "Arrastra cada cambio en el video del partido a lo que modifica.",
+          "buckets": [
+            "Cuadros por segundo",
+            "Resolución",
+            "Compresión"
+          ],
+          "items": [
+            {
+              "t": "Grabar el gol en cámara lenta",
+              "b": 0
+            },
+            {
+              "t": "Grabar en 4K en vez de 1080p",
+              "b": 1
+            },
+            {
+              "t": "El video llega con cuadritos al chat",
+              "b": 2
+            },
+            {
+              "t": "Pasar de 30 a 60 imágenes por segundo",
+              "b": 0
+            },
+            {
+              "t": "Bajar de 1080p a 720p",
+              "b": 1
+            },
+            {
+              "t": "Guardar el video con el códec H.264",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada dato técnico con lo que significa en el video del partido.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "30 fps",
+              "b": "Modo normal del cel"
+            },
+            {
+              "a": "240 fps",
+              "b": "Modo cámara lenta"
+            },
+            {
+              "a": "16:9",
+              "b": "Pantalla de la tele"
+            },
+            {
+              "a": "Mbps",
+              "b": "Megabits por segundo"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto hay detrás de cada cosa del video del gol?",
+        "left_label": "El gol grabado",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Grabar 240 imágenes cada segundo",
+            "right": "Cuadros por segundo"
+          },
+          {
+            "left": "Grabar en 1920 × 1080",
+            "right": "Resolución"
+          },
+          {
+            "left": "El video llega con cuadritos",
+            "right": "Compresión con pérdida"
+          },
+          {
+            "left": "El partido completo pesa 10.8 GB",
+            "right": "Tasa de bits × tiempo"
+          }
+        ],
+        "completion_feedback": "El video del gol dependía de **cuadros por segundo**, **resolución**, **compresión** y **tasa de bits**. Ahora ponle nombre formal: eso es **audio y video digital**."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué cambia el modo cámara lenta del celular al grabar el gol?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Graba más cuadros por segundo"
+            },
+            {
+              "letter": "B",
+              "text": "Graba con más píxeles por imagen"
+            },
+            {
+              "letter": "C",
+              "text": "Comprime más fuerte el video final"
+            },
+            {
+              "letter": "D",
+              "text": "Graba el sonido con más calidad"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La cámara lenta capta muchas más imágenes por segundo, como 240, y luego las reproduce a velocidad normal, 30. Por eso cada segundo real se estira en la pantalla.",
+          "difficulty": 1
+        },
+        {
+          "question": "Grabas el remate a 240 fps y el video se reproduce a 30 fps. ¿Cuántas veces más lento se ve?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "4 veces"
+            },
+            {
+              "letter": "B",
+              "text": "8 veces"
+            },
+            {
+              "letter": "C",
+              "text": "210 veces"
+            },
+            {
+              "letter": "D",
+              "text": "2 veces"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "240 ÷ 30 = 8. Cada segundo real tiene 240 cuadros, que a 30 por segundo tardan 8 segundos en mostrarse.",
+          "difficulty": 2
+        },
+        {
+          "question": "Grabas 10 minutos del partido con una tasa de 16 Mbps. ¿Cuánto pesa el video?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "9.6 GB"
+            },
+            {
+              "letter": "B",
+              "text": "20 MB"
+            },
+            {
+              "letter": "C",
+              "text": "1.2 GB"
+            },
+            {
+              "letter": "D",
+              "text": "76.8 GB"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "10 min = 600 s. 16 Mbps × 600 s = 9,600 megabits; entre 8 da 1,200 MB, o sea 1.2 GB. Hay que pasar los minutos a segundos y los bits a bytes.",
+          "difficulty": 3
+        },
+        {
+          "question": "Mandas el video del gol al chat de la familia y llega con cuadritos. ¿Qué pasó?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se cambió su relación de aspecto"
+            },
+            {
+              "letter": "B",
+              "text": "Se convirtió a un formato sin pérdida"
+            },
+            {
+              "letter": "C",
+              "text": "Se comprimió con pérdida"
+            },
+            {
+              "letter": "D",
+              "text": "Se redujeron sus cuadros por segundo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Para que pese menos, la app recomprime el video y quita información: eso es compresión con pérdida. Con menos datos por segundo aparecen cuadritos, sobre todo en movimientos rápidos como un remate.",
+          "difficulty": 2
+        },
+        {
+          "question": "El entrenador quiere leer el número de cada jersey en un video grabado desde la tribuna. ¿Qué ajuste ayuda más?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Subir a 240 fps"
+            },
+            {
+              "letter": "B",
+              "text": "Cambiar a 9:16"
+            },
+            {
+              "letter": "C",
+              "text": "Bajar la tasa de bits"
+            },
+            {
+              "letter": "D",
+              "text": "Grabar en 4K"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Para leer detalles pequeños hacen falta más píxeles: 4K tiene 3840 × 2160, cuatro veces los de 1080p. Más fps sirve para movimientos rápidos, no para ver más detalle.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Las canciones que sonaban con arenita",
+        "content": "Antes de un viaje en camión a Guadalajara, descargas en tu app de música el álbum de Stray Kids para escucharlo sin datos. La app te pregunta la calidad: Normal o Muy alta. Como tu celular ya casi no tiene espacio, eliges Normal. En la carretera, con tus audífonos buenos, notas algo raro al inicio de una canción: los platillos y los coros de fondo suenan como con arenita y el bajo se oye menos definido que en tu casa. Tu primo, que hace música en su compu, te explica que en calidad Normal cada segundo de canción usa muchos menos datos: la app quitó detalles que casi no se notan... hasta que usas buenos audífonos. Luego pones el MV en YouTube y, para ahorrar datos, se queda en 480p: no distingues los aretes de Felix. Ya en casa, con wifi, lo cambias a 2160p, es decir 4K, y ahora se ve cada detalle del vestuario. Cuántos datos usa cada segundo de audio y de video es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu álbum descargado ES audio digital",
+        "content": "Lo que acabas de ver con el álbum y el MV es exactamente **audio y video digital**. Para digitalizar el sonido se hace un **muestreo**: se mide la onda miles de veces por segundo (44,100 en un CD, o sea 44.1 kHz). La **tasa de bits** (kbps) dice cuántos datos usa cada segundo: la calidad Normal usa menos y pesa menos. En video cuentan la **resolución** (4K = 3840 × 2160), la **relación de aspecto** (16:9) y los **cuadros por segundo**. La compresión **con pérdida** (MP3, AAC) quita detalles; la **sin pérdida** (FLAC) conserva todo, y el WAV ni siquiera comprime."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿cuánto pesa una canción?",
+        "content": "Una canción de 3 minutos y medio dura 210 segundos. Compara cuánto pesa en tres calidades.\n\n**Paso 1 — Fórmula:** tamaño = **tasa de bits × tiempo**, y al final ÷ 8 para pasar de bits a bytes (aquí 1 MB = 1,000 kB).\n**Paso 2 — Normal, 96 kbps:** 96 × 210 ÷ 8 = 2,520 kB, unos 2.5 MB.\n**Paso 3 — Muy alta, 320 kbps:** 320 × 210 ÷ 8 = 8,400 kB, unos 8.4 MB.\n**Paso 4 — WAV con calidad de CD:** 44,100 muestras × 16 bits × 2 canales = 1,411.2 kbps; × 210 ÷ 8 = 37,044 kB, unos 37 MB.\n**Paso 5 — Elige según el uso:** para el viaje, 320 kbps; para editar el audio de tu video, WAV.\n\nResultado: el WAV pesa más de 4 veces lo que la calidad Muy alta, pero no pierde nada."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Digitalizar es pasar sonido e imagen a números. El **muestreo** mide la onda miles de veces por segundo (44.1 kHz en CD). En video importan la **resolución** (1080p = 1920 × 1080), la **relación de aspecto** (16:9, 9:16) y los **cuadros por segundo**. **Tamaño = tasa de bits × tiempo**. **Con pérdida** (MP3, AAC, H.264) pesa menos; **sin pérdida** (FLAC) conserva todo; **WAV** no comprime."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Stray Kids son 8 integrantes y un byte son 8 bits. Cuando pases de kbps (kilobits) a kB (kilobytes), divide entre 8, como si juntaras a los 8 integrantes en un solo grupo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Duplicar el ancho y el alto no duplica los píxeles: los multiplica por cuatro.",
+        "data": {
+          "intro": "El MV se puede ver en 1080p o en 4K. Calcula cuántos píxeles más tiene cada cuadro en 4K.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "1080p mide 1920 × 1080 = 2,073,600 píxeles por cuadro, unos 2 millones."
+            },
+            {
+              "text": "4K mide 3840 × 2160 = 8,294,400 píxeles por cuadro, unos 8.3 millones."
+            },
+            {
+              "text": "Divide: 8,294,400 ÷ 2,073,600 = 4. El 4K tiene cuatro veces los píxeles porque duplica el ancho y también el alto."
+            },
+            {
+              "text": "Por eso el MV en 4K necesita una tasa de bits mucho mayor y gasta muchos más datos si lo ves sin wifi."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Es de audio o de video?",
+        "content": "El muestreo y los bits por muestra son del audio. La resolución, la relación de aspecto y los cuadros por segundo son del video.",
+        "data": {
+          "prompt": "Arrastra cada ajuste del álbum o del MV a su categoría.",
+          "buckets": [
+            "Ajuste de audio",
+            "Ajuste de video"
+          ],
+          "items": [
+            {
+              "t": "Muestreo a 44.1 kHz",
+              "b": 0
+            },
+            {
+              "t": "Resolución de 2160p",
+              "b": 1
+            },
+            {
+              "t": "Canción en AAC a 256 kbps",
+              "b": 0
+            },
+            {
+              "t": "60 cuadros por segundo",
+              "b": 1
+            },
+            {
+              "t": "16 bits por muestra",
+              "b": 0
+            },
+            {
+              "t": "Relación de aspecto 16:9",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada dato técnico con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "44.1 kHz",
+              "b": "Muestreo de un CD"
+            },
+            {
+              "a": "320 kbps",
+              "b": "Máximo del MP3"
+            },
+            {
+              "a": "2160p",
+              "b": "Resolución 4K"
+            },
+            {
+              "a": "FLAC",
+              "b": "Comprime sin pérdida"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto hay detrás de cada cosa del álbum y el MV?",
+        "left_label": "Álbum y MV",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La calidad Normal pesa menos",
+            "right": "Tasa de bits"
+          },
+          {
+            "left": "Platillos que suenan con arenita",
+            "right": "Compresión con pérdida"
+          },
+          {
+            "left": "Medir la onda 44,100 veces por segundo",
+            "right": "Muestreo"
+          },
+          {
+            "left": "Pasar el MV de 480p a 2160p",
+            "right": "Resolución"
+          }
+        ],
+        "completion_feedback": "Tu álbum y tu MV dependían de **tasa de bits**, **compresión**, **muestreo** y **resolución**. Ahora ponle nombre formal: eso es **audio y video digital**."
+      },
+      "quiz": [
+        {
+          "question": "Al digitalizar una canción de Stray Kids se mide la onda 44,100 veces por segundo. ¿Cómo se llama ese proceso?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Compresión"
+            },
+            {
+              "letter": "B",
+              "text": "Resolución"
+            },
+            {
+              "letter": "C",
+              "text": "Muestreo"
+            },
+            {
+              "letter": "D",
+              "text": "Streaming"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Muestrear es medir la onda a intervalos muy cortos y guardar cada medida como número. 44,100 muestras por segundo es la frecuencia de muestreo de un CD: 44.1 kHz.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Cuántas veces los píxeles de un cuadro 1080p tiene un cuadro del MV en 4K?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "2 veces"
+            },
+            {
+              "letter": "B",
+              "text": "3 veces"
+            },
+            {
+              "letter": "C",
+              "text": "8 veces"
+            },
+            {
+              "letter": "D",
+              "text": "4 veces"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "4K mide 3840 × 2160: el doble de ancho y el doble de alto que 1920 × 1080. 2 × 2 = 4 veces los píxeles.",
+          "difficulty": 2
+        },
+        {
+          "question": "Descargas una canción de 4 minutos en calidad de 320 kbps. ¿Cuánto pesa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "9.6 MB"
+            },
+            {
+              "letter": "B",
+              "text": "76.8 MB"
+            },
+            {
+              "letter": "C",
+              "text": "160 kB"
+            },
+            {
+              "letter": "D",
+              "text": "1.2 MB"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "4 min = 240 s. 320 kbps × 240 s = 76,800 kilobits; entre 8 da 9,600 kB, unos 9.6 MB. Si no divides entre 8, confundes bits con bytes.",
+          "difficulty": 3
+        },
+        {
+          "question": "Quieres guardar el audio de una canción para editarlo sin perder calidad. ¿Qué formato eliges?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "MP3 a 320 kbps"
+            },
+            {
+              "letter": "B",
+              "text": "FLAC"
+            },
+            {
+              "letter": "C",
+              "text": "AAC a 256 kbps"
+            },
+            {
+              "letter": "D",
+              "text": "MP3 a 128 kbps"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "FLAC comprime sin pérdida: al reproducirlo, el audio es idéntico al original. MP3 y AAC son con pérdida aunque usen muchos kbps.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amiga convierte un MP3 de 128 kbps a FLAC para «recuperar la calidad». ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Suena igual que el original de estudio"
+            },
+            {
+              "letter": "B",
+              "text": "Pesa menos y suena mejor"
+            },
+            {
+              "letter": "C",
+              "text": "Pesa más pero no recupera nada"
+            },
+            {
+              "letter": "D",
+              "text": "Se convierte en un video"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Lo que el MP3 borró ya no existe. FLAC guarda sin pérdida lo que recibe, o sea el MP3 con sus defectos, pero ocupa más espacio. La calidad se decide al comprimir la primera vez.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El stream que se trababa",
+        "content": "Metes el gol aéreo de tu vida en Rocket League y quieres presumirlo. Tu compu ya grababa a 60 imágenes por segundo, así que guardas los últimos 30 segundos y el clip se ve igual de fluido que en el juego: el carro girando en el aire y el balón entrando por el ángulo. Esa noche decides transmitir en Twitch por primera vez. En el programa de transmisión eliges lo máximo: 1080p, 60 imágenes por segundo y 8,000 kilobits por segundo. A los dos minutos el chat se llena de mensajes: «se traba», «se ve a saltos». Haces una prueba de velocidad de tu internet: bajas 50 megabits por segundo, pero solo subes 5. Cada segundo de tu stream necesitaba 8 megabits y tu internet solo podía subir 5: no alcanzaba. Bajas a 720p con 3,500 kilobits por segundo, todavía a 60 imágenes, y el stream corre sin trabas. Tu clip podía pesar bastante porque se quedaba en tu compu; tu stream tenía que caber en tu internet. Esos números son la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu clip y tu stream SON video digital",
+        "content": "Lo que acabas de ver con tu clip y tu stream es exactamente **audio y video digital**. El video tiene **cuadros por segundo** (60 para juegos rápidos), **resolución** (1080p = 1920 × 1080; 720p = 1280 × 720) y **relación de aspecto** (16:9). La **tasa de bits** (kbps o Mbps) son los datos de cada segundo: si supera lo que sube tu internet, el stream se traba. El audio del juego se **muestrea**, midiendo la onda miles de veces por segundo. Para que todo quepa se usa compresión **con pérdida** (H.264, AAC); la **sin pérdida** (FLAC) guarda todo pero pesa más, y el WAV ni siquiera comprime."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿por qué todo video se comprime?",
+        "content": "Calcula cuánto pesaría tu clip de 30 segundos a 1080p y 60 fps **sin comprimir**.\n\n**Paso 1 — Píxeles por cuadro:** 1920 × 1080 = 2,073,600.\n**Paso 2 — Bytes por cuadro:** cada píxel guarda rojo, verde y azul en 3 bytes: 2,073,600 × 3 = 6,220,800 bytes, unos 6.2 MB (1 MB = 1,000,000 bytes).\n**Paso 3 — Un segundo:** 6,220,800 × 60 cuadros = unos 373 MB.\n**Paso 4 — El clip:** 373 MB × 30 s = unos 11,200 MB, más de 11 GB.\n**Paso 5 — Con H.264 a 10 Mbps:** 10 × 30 ÷ 8 = 37.5 MB.\n\nResultado: la **compresión con pérdida** deja el clip unas 300 veces más ligero y casi no notas la diferencia. Sin ella, ningún clip cabría en tu disco ni se podría subir."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Digitalizar es pasar sonido e imagen a números. El **muestreo** mide la onda miles de veces por segundo (44.1 kHz en CD). En video importan la **resolución** (1080p = 1920 × 1080), la **relación de aspecto** (16:9, 9:16) y los **cuadros por segundo**. **Tamaño = tasa de bits × tiempo**. **Con pérdida** (MP3, AAC, H.264) pesa menos; **sin pérdida** (FLAC) conserva todo; **WAV** no comprime."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Antes de transmitir, revisa tu ruta como en un speedrun: la tasa de bits debe quedar por debajo de lo que SUBE tu internet, no de lo que baja, y con margen. Recuerda que 1 Mbps = 1,000 kbps."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El peso de un clip depende de la tasa de bits y de cuánto dura.",
+        "data": {
+          "intro": "Tu clip de Rocket League dura 30 segundos, va a 60 fps y se guardó a 12 Mbps. Calcula sus cuadros y su peso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Cuadros: 60 por segundo × 30 segundos = 1,800 imágenes en todo el clip."
+            },
+            {
+              "text": "Datos: 12 Mbps × 30 s = 360 megabits."
+            },
+            {
+              "text": "Pasa a bytes: 360 ÷ 8 = 45 MB."
+            },
+            {
+              "text": "Si subes la tasa a 24 Mbps, el clip pesa el doble: 90 MB. Si lo recortas a 15 segundos, pesa la mitad: 22.5 MB."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Pesa más o pesa menos?",
+        "content": "Tamaño = tasa de bits × tiempo. Si sube cualquiera de los dos, el archivo pesa más; si baja, pesa menos.",
+        "data": {
+          "prompt": "Arrastra cada cambio en tu clip a lo que le pasa al archivo.",
+          "buckets": [
+            "El archivo pesa más",
+            "El archivo pesa menos"
+          ],
+          "items": [
+            {
+              "t": "Subir la tasa de bits de 6 a 12 Mbps",
+              "b": 0
+            },
+            {
+              "t": "Grabar 60 segundos en vez de 30",
+              "b": 0
+            },
+            {
+              "t": "Guardar el audio en WAV en vez de AAC",
+              "b": 0
+            },
+            {
+              "t": "Bajar la tasa de bits a 4 Mbps",
+              "b": 1
+            },
+            {
+              "t": "Recortar el clip a los 10 s del gol",
+              "b": 1
+            },
+            {
+              "t": "Pasar el audio de WAV a AAC",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada dato técnico de tu clip con su equivalente.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "60 fps",
+              "b": "Clip fluido de juego"
+            },
+            {
+              "a": "720p",
+              "b": "1280 × 720"
+            },
+            {
+              "a": "8,000 kbps",
+              "b": "8 Mbps"
+            },
+            {
+              "a": "H.264",
+              "b": "Códec de video"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto hay detrás de cada cosa de tu clip y tu stream?",
+        "left_label": "Tu clip y stream",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Grabar 60 imágenes cada segundo",
+            "right": "Cuadros por segundo"
+          },
+          {
+            "left": "Pasar de 1080p a 720p",
+            "right": "Resolución"
+          },
+          {
+            "left": "8,000 kbps no caben en 5 Mbps",
+            "right": "Tasa de bits"
+          },
+          {
+            "left": "El clip pesa 300 veces menos",
+            "right": "Compresión con pérdida"
+          }
+        ],
+        "completion_feedback": "Tu clip y tu stream dependían de **cuadros por segundo**, **resolución**, **tasa de bits** y **compresión**. Ahora ponle nombre formal: eso es **audio y video digital**."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué mide la tasa de bits de tu stream?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Píxeles que tiene cada imagen del video"
+            },
+            {
+              "letter": "B",
+              "text": "Imágenes que se muestran por segundo"
+            },
+            {
+              "letter": "C",
+              "text": "Datos que usa cada segundo"
+            },
+            {
+              "letter": "D",
+              "text": "Velocidad de bajada de tu internet"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La tasa de bits, en kbps o Mbps, es la cantidad de datos que ocupa cada segundo de audio o video. Los píxeles son la resolución y las imágenes por segundo son los fps.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu internet sube 5 Mbps. ¿Qué tasa de bits sí puedes usar para transmitir en Twitch?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "8,000 kbps"
+            },
+            {
+              "letter": "B",
+              "text": "6,000 kbps"
+            },
+            {
+              "letter": "C",
+              "text": "50,000 kbps"
+            },
+            {
+              "letter": "D",
+              "text": "3,500 kbps"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "5 Mbps son 5,000 kbps. Solo 3,500 kbps cabe y deja margen. La de 50,000 confunde la subida con la bajada de tu internet.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un cuadro 1080p sin comprimir pesa unos 6.2 MB. ¿Cuánto pesaría un segundo de tu clip a 60 fps sin comprimir?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Unos 6.2 MB"
+            },
+            {
+              "letter": "B",
+              "text": "Unos 373 MB"
+            },
+            {
+              "letter": "C",
+              "text": "Unos 37 MB"
+            },
+            {
+              "letter": "D",
+              "text": "Unos 3.7 GB"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cada segundo trae 60 cuadros: 6.22 MB × 60 ≈ 373 MB. Por eso casi nadie guarda video sin comprimir: códecs como H.264 lo bajan a unos pocos megabytes por segundo.",
+          "difficulty": 3
+        },
+        {
+          "question": "Grabas tus jugadas de Rocket League. ¿Por qué conviene grabar a 60 fps y no a 30?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Duplica los píxeles de cada imagen"
+            },
+            {
+              "letter": "B",
+              "text": "Hace que el archivo pese la mitad"
+            },
+            {
+              "letter": "C",
+              "text": "Mejora el sonido de los efectos"
+            },
+            {
+              "letter": "D",
+              "text": "Muestra el doble de imágenes"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "A 60 fps hay 60 imágenes cada segundo, el doble que a 30, así que los movimientos rápidos del carro se ven más fluidos. Los píxeles dependen de la resolución, no de los fps.",
+          "difficulty": 2
+        },
+        {
+          "question": "Quieres guardar tu clip para subirlo a redes y que se vea en casi cualquier celular. ¿Qué eliges?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "MP4 con H.264 y AAC"
+            },
+            {
+              "letter": "B",
+              "text": "Video sin comprimir de 11 GB"
+            },
+            {
+              "letter": "C",
+              "text": "Solo el audio en FLAC"
+            },
+            {
+              "letter": "D",
+              "text": "MP3 con el video adentro"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "MP4 es un contenedor que casi cualquier celular y red reproduce, con video en H.264 y audio en AAC. MP3 y FLAC solo guardan audio, y sin comprimir el clip pesaría gigas.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En un video, ¿qué indican los cuadros por segundo (fps)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Píxeles que tiene cada imagen del video"
+        },
+        {
+          "letter": "B",
+          "text": "Imágenes que se muestran cada segundo"
+        },
+        {
+          "letter": "C",
+          "text": "Datos que usa el archivo cada segundo"
+        },
+        {
+          "letter": "D",
+          "text": "Segundos que dura el video completo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en un flipbook: ¿qué cuentas al pasar las hojas?",
+      "explanation": "Un video es una serie de imágenes fijas que pasan muy rápido. Los fps dicen cuántas se muestran en cada segundo: 24, 30 o 60, por ejemplo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué mide la resolución de un video?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Las imágenes que pasan por segundo"
+        },
+        {
+          "letter": "B",
+          "text": "Los píxeles de ancho y de alto"
+        },
+        {
+          "letter": "C",
+          "text": "Los datos que usa cada segundo"
+        },
+        {
+          "letter": "D",
+          "text": "El volumen máximo del audio"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en los cuadritos de color que forman cada imagen.",
+      "explanation": "La resolución es cuántos píxeles tiene la imagen, por ejemplo 1920 × 1080. Más píxeles permiten ver más detalle."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos formatos guarda el audio sin pérdida?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "MP3 a 320 kbps"
+        },
+        {
+          "letter": "B",
+          "text": "AAC"
+        },
+        {
+          "letter": "C",
+          "text": "MP3 a 128 kbps"
+        },
+        {
+          "letter": "D",
+          "text": "FLAC"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en el formato, no en los kbps: usar más datos no vuelve a un formato sin pérdida.",
+      "explanation": "FLAC comprime sin borrar nada: al reproducirlo, el audio es idéntico al original. MP3 y AAC son con pérdida, aunque usen muchos kbps."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué significa muestrear un sonido para digitalizarlo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Subir el volumen de la onda antes de grabarla"
+        },
+        {
+          "letter": "B",
+          "text": "Borrar los sonidos que el oído casi no escucha"
+        },
+        {
+          "letter": "C",
+          "text": "Medir la onda muchas veces por segundo"
+        },
+        {
+          "letter": "D",
+          "text": "Juntar el audio y el video en un solo archivo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "La palabra viene de «tomar muestras», como probar un poco de algo.",
+      "explanation": "Muestrear es medir la onda de sonido a intervalos muy cortos y guardar cada medida como número. Un CD toma 44,100 muestras por segundo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué relación de aspecto tiene un video horizontal de pantalla ancha, como los de YouTube?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "9:16"
+        },
+        {
+          "letter": "B",
+          "text": "16:9"
+        },
+        {
+          "letter": "C",
+          "text": "1:1"
+        },
+        {
+          "letter": "D",
+          "text": "3:4"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "En una relación de aspecto el primer número es el ancho.",
+      "explanation": "16:9 significa 16 partes de ancho por 9 de alto: más ancho que alto. 9:16 es lo mismo de pie, el formato vertical del celular."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuántos píxeles mide un video 1080p horizontal (16:9)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "1080 × 1920"
+        },
+        {
+          "letter": "B",
+          "text": "1280 × 720"
+        },
+        {
+          "letter": "C",
+          "text": "1920 × 1080"
+        },
+        {
+          "letter": "D",
+          "text": "3840 × 2160"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "En una medida de pantalla se escribe primero el ancho, y un video horizontal es más ancho que alto.",
+      "explanation": "1080p mide 1920 de ancho por 1080 de alto: 1920 ÷ 1080 da 16:9. 1080 × 1920 es lo mismo en vertical, 1280 × 720 es 720p y 3840 × 2160 es 4K."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la tasa de bits de un archivo de audio o video?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cantidad de imágenes por segundo"
+        },
+        {
+          "letter": "B",
+          "text": "Cantidad de píxeles por imagen"
+        },
+        {
+          "letter": "C",
+          "text": "Cantidad de muestras por canción"
+        },
+        {
+          "letter": "D",
+          "text": "Cantidad de datos por segundo"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en la unidad: kbps es kilobits por segundo.",
+      "explanation": "La tasa de bits dice cuántos bits ocupa cada segundo, en kbps o Mbps. A mayor tasa, más calidad posible y más peso."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué hace la compresión con pérdida, como la de MP3 o H.264?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Quita detalles que casi no se perciben"
+        },
+        {
+          "letter": "B",
+          "text": "Guarda todo y lo acomoda en menos espacio"
+        },
+        {
+          "letter": "C",
+          "text": "Aumenta la resolución para que se vea mejor"
+        },
+        {
+          "letter": "D",
+          "text": "Junta varios archivos en uno solo sin cambiarlos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en por qué un MP3 pesa mucho menos que el WAV de la misma canción.",
+      "explanation": "La compresión con pérdida elimina información que el ojo o el oído casi no notan. Pesa mucho menos, pero lo borrado ya no se recupera. Guardar todo en menos espacio es la compresión sin pérdida."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál es la frecuencia de muestreo del audio de un CD?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "320 kbps"
+        },
+        {
+          "letter": "B",
+          "text": "20 kHz"
+        },
+        {
+          "letter": "C",
+          "text": "44.1 kHz"
+        },
+        {
+          "letter": "D",
+          "text": "16 bits"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la cantidad de muestras por segundo, y se mide en hertz.",
+      "explanation": "Un CD toma 44,100 muestras por segundo, o sea 44.1 kHz. 16 bits es el tamaño de cada muestra y 320 kbps es una tasa de bits, no una frecuencia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es un formato contenedor como MP4 o MKV?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un códec que comprime solo la imagen"
+        },
+        {
+          "letter": "B",
+          "text": "Una resolución especial para celular"
+        },
+        {
+          "letter": "C",
+          "text": "Un formato de audio sin pérdida"
+        },
+        {
+          "letter": "D",
+          "text": "Un archivo que junta video y audio"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en una caja: ¿qué lleva adentro?",
+      "explanation": "El contenedor (MP4, MKV, MOV) es la caja que guarda las pistas de video, audio y subtítulos. Lo que comprime cada pista es el códec, como H.264 o AAC."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Quieres subir un video vertical a una red social de videos cortos. ¿Qué resolución usas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "1920 × 1080"
+        },
+        {
+          "letter": "B",
+          "text": "1080 × 1920"
+        },
+        {
+          "letter": "C",
+          "text": "3840 × 2160"
+        },
+        {
+          "letter": "D",
+          "text": "1280 × 720"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "En vertical el alto es mayor que el ancho.",
+      "explanation": "El formato vertical es 9:16: 1080 de ancho por 1920 de alto. Las otras tres medidas son horizontales (16:9)."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuántos cuadros por segundo se usan tradicionalmente en el cine?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "60"
+        },
+        {
+          "letter": "B",
+          "text": "120"
+        },
+        {
+          "letter": "C",
+          "text": "48"
+        },
+        {
+          "letter": "D",
+          "text": "24"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Las películas usan menos cuadros por segundo que la tele y los videojuegos.",
+      "explanation": "El cine usa 24 cuadros por segundo desde hace casi un siglo. La tele y muchos celulares usan 30, y los videojuegos suelen buscar 60."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En el nombre «1080p», ¿qué indica el número 1080?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Los píxeles de alto"
+        },
+        {
+          "letter": "B",
+          "text": "Los píxeles de ancho"
+        },
+        {
+          "letter": "C",
+          "text": "Los cuadros por segundo"
+        },
+        {
+          "letter": "D",
+          "text": "La tasa de bits en kbps"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Recuerda las medidas completas de 1080p: 1920 × 1080.",
+      "explanation": "1080p mide 1920 × 1080: el 1080 es el alto, en líneas de píxeles. La p significa progresivo: cada cuadro se dibuja completo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué significa la unidad kbps?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Kilobytes por segundo"
+        },
+        {
+          "letter": "B",
+          "text": "Kilobits por segundo"
+        },
+        {
+          "letter": "C",
+          "text": "Kilopíxeles por segundo"
+        },
+        {
+          "letter": "D",
+          "text": "Kilohertz por segundo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La b minúscula es una unidad 8 veces más pequeña que el byte.",
+      "explanation": "kbps son kilobits por segundo. Un byte son 8 bits, así que para saber cuántos kilobytes ocupa algo hay que dividir los kilobits entre 8."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Para lograr una cámara lenta fluida, ¿qué hay que hacer?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Grabar en 4K y reproducir en 1080p"
+        },
+        {
+          "letter": "B",
+          "text": "Bajar la tasa de bits al grabar"
+        },
+        {
+          "letter": "C",
+          "text": "Grabar con muchos más fps"
+        },
+        {
+          "letter": "D",
+          "text": "Exportar a 60 fps un video de 30"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Para estirar un segundo en la pantalla necesitas imágenes de sobra.",
+      "explanation": "Se graban muchos cuadros por segundo, como 120 o 240, y se reproducen a velocidad normal, 30. Exportar a más fps un video de 30 solo repite cuadros."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un cuadro 4K mide 3840 × 2160 y uno 1080p mide 1920 × 1080. ¿Cuántas veces más píxeles tiene el 4K?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "2 veces"
+        },
+        {
+          "letter": "B",
+          "text": "3 veces"
+        },
+        {
+          "letter": "C",
+          "text": "4 veces"
+        },
+        {
+          "letter": "D",
+          "text": "8 veces"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara el ancho y el alto por separado y luego multiplica.",
+      "explanation": "3840 es el doble de 1920 y 2160 es el doble de 1080. Doble de ancho por doble de alto: 2 × 2 = 4 veces los píxeles."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un video grabado a 120 fps se reproduce a 30 fps. ¿Cuántas veces más lento se ve?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "90 veces"
+        },
+        {
+          "letter": "B",
+          "text": "4 veces"
+        },
+        {
+          "letter": "C",
+          "text": "2 veces"
+        },
+        {
+          "letter": "D",
+          "text": "150 veces"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Divide los cuadros que se grabaron entre los que se muestran cada segundo.",
+      "explanation": "120 ÷ 30 = 4. Un segundo real tiene 120 cuadros y, a 30 por segundo, tardan 4 segundos en verse."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "El oído humano capta sonidos de hasta unos 20,000 Hz. ¿Por qué el CD muestrea a 44,100 Hz y no a 20,000?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para que el archivo pese menos al guardarse"
+        },
+        {
+          "letter": "B",
+          "text": "Para tener más canales de audio estéreo"
+        },
+        {
+          "letter": "C",
+          "text": "Se necesita al menos el doble"
+        },
+        {
+          "letter": "D",
+          "text": "Porque así cabe una hora en el disco"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara 44,100 con 20,000: ¿cuántas veces cabe?",
+      "explanation": "Para captar bien un sonido hay que tomar al menos el doble de muestras por segundo que su frecuencia más alta: 2 × 20,000 = 40,000. Por eso el CD usa 44,100."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Quieres mandar una canción por mensaje y que pese poco. ¿Qué formato conviene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "WAV de calidad CD"
+        },
+        {
+          "letter": "B",
+          "text": "FLAC sin pérdida"
+        },
+        {
+          "letter": "C",
+          "text": "MP3 a 128 kbps"
+        },
+        {
+          "letter": "D",
+          "text": "WAV de 24 bits"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el formato que quita información para pesar menos.",
+      "explanation": "MP3 es con pérdida: a 128 kbps pesa unas 11 veces menos que el WAV de calidad CD (1,411 kbps). FLAC no pierde nada, pero pesa mucho más que un MP3."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un audio de 128 kbps dura 60 segundos. ¿Cuánto pesa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "7,680 kB"
+        },
+        {
+          "letter": "B",
+          "text": "128 kB"
+        },
+        {
+          "letter": "C",
+          "text": "960 kB"
+        },
+        {
+          "letter": "D",
+          "text": "2.1 kB"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Multiplica la tasa por el tiempo y recuerda que 1 byte son 8 bits.",
+      "explanation": "128 kbps × 60 s = 7,680 kilobits. Entre 8 da 960 kilobytes, casi 1 MB."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un video usa una tasa de 8 Mbps y dura 1 minuto. ¿Cuánto pesa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "480 MB"
+        },
+        {
+          "letter": "B",
+          "text": "60 MB"
+        },
+        {
+          "letter": "C",
+          "text": "8 MB"
+        },
+        {
+          "letter": "D",
+          "text": "3,840 MB"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Pasa el minuto a segundos y los bits a bytes.",
+      "explanation": "8 Mbps × 60 s = 480 megabits. Entre 8 da 60 megabytes. Quedarse en 480 es confundir bits con bytes."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Grabas 2 segundos a 240 fps y los reproduces a 30 fps. ¿Cuánto dura el video en pantalla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "8 segundos"
+        },
+        {
+          "letter": "B",
+          "text": "60 segundos"
+        },
+        {
+          "letter": "C",
+          "text": "16 segundos"
+        },
+        {
+          "letter": "D",
+          "text": "4 segundos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Primero cuenta cuántos cuadros se grabaron en total.",
+      "explanation": "2 × 240 = 480 cuadros. A 30 por segundo tardan 480 ÷ 30 = 16 segundos: 8 veces más lento que la realidad."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Vas a editar una grabación de audio varias veces antes de publicarla. ¿En qué formato conviene guardarla mientras trabajas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "MP3 a 128 kbps"
+        },
+        {
+          "letter": "B",
+          "text": "WAV"
+        },
+        {
+          "letter": "C",
+          "text": "AAC a 256 kbps"
+        },
+        {
+          "letter": "D",
+          "text": "MP3 a 320 kbps"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa qué pasa si comprimes con pérdida una y otra vez.",
+      "explanation": "Cada vez que guardas en un formato con pérdida se borra un poco más. WAV conserva todo mientras editas; el MP3 o AAC se hace solo al final, para compartir."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Alguien convierte un MP3 de 128 kbps a WAV. ¿Qué obtiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La calidad del audio original"
+        },
+        {
+          "letter": "B",
+          "text": "Un archivo más ligero y mejor"
+        },
+        {
+          "letter": "C",
+          "text": "Más peso, misma calidad"
+        },
+        {
+          "letter": "D",
+          "text": "Un audio con más muestras reales"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Lo que la compresión con pérdida borró, ¿se puede volver a crear?",
+      "explanation": "El WAV guarda tal cual lo que recibe: el MP3 con sus defectos. Pesa unas 11 veces más, pero la información borrada no regresa."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Cuántos valores distintos puede guardar una muestra de audio de 16 bits?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "256"
+        },
+        {
+          "letter": "B",
+          "text": "44,100"
+        },
+        {
+          "letter": "C",
+          "text": "32"
+        },
+        {
+          "letter": "D",
+          "text": "65,536"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Cada bit duplica las opciones: 1 bit da 2 valores, 2 bits dan 4, 3 bits dan 8…",
+      "explanation": "Con 16 bits hay 2 multiplicado por sí mismo 16 veces: 65,536 niveles. 256 corresponde a 8 bits y 44,100 es la frecuencia de muestreo, no los niveles."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Tu internet baja 100 Mbps y sube 10 Mbps. Quieres transmitir en vivo. ¿Qué tasa de bits es la adecuada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "12,000 kbps"
+        },
+        {
+          "letter": "B",
+          "text": "80,000 kbps"
+        },
+        {
+          "letter": "C",
+          "text": "15,000 kbps"
+        },
+        {
+          "letter": "D",
+          "text": "7,000 kbps"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Para transmitir importa lo que tu internet sube, y conviene dejar margen.",
+      "explanation": "10 Mbps de subida son 10,000 kbps. Solo 7,000 kbps cabe con margen. 80,000 cabría en la bajada, pero para transmitir se usa la subida."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un minuto de audio de calidad CD usa 44,100 muestras por segundo, 16 bits por muestra y 2 canales. ¿Cuánto pesa sin comprimir?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Unos 84.7 MB"
+        },
+        {
+          "letter": "B",
+          "text": "Unos 10.6 MB"
+        },
+        {
+          "letter": "C",
+          "text": "Unos 5.3 MB"
+        },
+        {
+          "letter": "D",
+          "text": "Unos 1.4 MB"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Multiplica muestras × bits × canales × segundos, y al final divide entre 8.",
+      "explanation": "44,100 × 16 × 2 = 1,411,200 bits por segundo. Por 60 s da 84,672,000 bits; entre 8, 10,584,000 bytes: unos 10.6 MB (con 1 MB = 1,000,000 bytes)."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una red social acepta videos de máximo 50 MB y tu clip dura 40 segundos. ¿Qué tasa de bits máxima puedes usar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "1.25 Mbps"
+        },
+        {
+          "letter": "B",
+          "text": "80 Mbps"
+        },
+        {
+          "letter": "C",
+          "text": "10 Mbps"
+        },
+        {
+          "letter": "D",
+          "text": "2,000 Mbps"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Pasa los megabytes a megabits y repártelos entre los segundos.",
+      "explanation": "50 MB × 8 = 400 megabits. Entre 40 segundos da 10 Mbps. Con 1.25 se olvida pasar de bytes a bits."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Subes un video 16:9 sin recortar a una app que lo muestra en una pantalla vertical 9:16. ¿Qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Salen franjas negras a los lados"
+        },
+        {
+          "letter": "B",
+          "text": "Se ve el doble de rápido en la app"
+        },
+        {
+          "letter": "C",
+          "text": "Salen franjas arriba y abajo"
+        },
+        {
+          "letter": "D",
+          "text": "Pasa sola a resolución 4K"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Imagina un rectángulo acostado dentro de uno de pie, sin cortarle nada.",
+      "explanation": "Para que quepa entero, el video horizontal se ajusta al ancho de la pantalla vertical y sobra espacio arriba y abajo. Por eso conviene recortar o exportar en 9:16."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Hay dos copias de un video de 1 minuto con la misma resolución: una a 4 Mbps y otra a 16 Mbps. ¿Qué es cierto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pesan igual porque tienen la misma resolución"
+        },
+        {
+          "letter": "B",
+          "text": "La de 16 Mbps pesa 4 veces más"
+        },
+        {
+          "letter": "C",
+          "text": "La de 4 Mbps pesa 4 veces más por estar comprimida"
+        },
+        {
+          "letter": "D",
+          "text": "La de 16 Mbps tiene 4 veces más píxeles"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El tamaño depende de la tasa de bits y de la duración.",
+      "explanation": "Tamaño = tasa de bits × tiempo: 16 × 60 ÷ 8 = 120 MB contra 4 × 60 ÷ 8 = 30 MB, 4 veces más. Los píxeles son iguales; la de 16 Mbps suele verse con menos cuadritos."
+    }
+  ],
+  "diagnostic": {
+    "question": "Una canción en WAV pesa 40 MB y la misma canción en MP3 pesa 4 MB. ¿Por qué el MP3 pesa menos?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Guarda la misma información más ordenada"
+      },
+      {
+        "letter": "B",
+        "text": "Quita sonidos que casi no se oyen"
+      },
+      {
+        "letter": "C",
+        "text": "Tiene menos canales porque siempre es mono"
+      },
+      {
+        "letter": "D",
+        "text": "Usa una frecuencia de muestreo más alta"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "MP3 es compresión con pérdida: elimina sonidos que el oído casi no percibe y por eso pesa mucho menos. Guardar todo más ordenado, sin perder nada, es lo que hace FLAC, y por eso un FLAC pesa bastante más que un MP3."
+  }
+}

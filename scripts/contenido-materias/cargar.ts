@@ -144,6 +144,10 @@ export function validar(a: ArchivoTema): { errores: string[]; avisos: string[] }
       if (s.content.length < min || s.content.length > max)
         err.push(ctx(`${tipo} mide ${s.content.length} (rango ${min}-${max})`))
       if (s.title.length > 90) err.push(ctx(`${tipo}: título > 90`))
+      // La app solo interpreta **negritas**: las comillas invertidas se pintan tal cual
+      if (/`/.test(s.content + s.title)) err.push(ctx(`${tipo}: lleva comillas invertidas (se ven tal cual en la app)`))
+      // ** impar = negrita sin cerrar (p. ej. una potencia de Python escrita como 2**3)
+      if ((s.content.split('**').length - 1) % 2 !== 0) err.push(ctx(`${tipo}: número impar de ** (negrita sin cerrar)`))
     }
     if (b.explanation?.content && !/^Lo que acabas de ver/.test(b.explanation.content))
       av.push(ctx('la explicación no abre con "Lo que acabas de ver…"'))

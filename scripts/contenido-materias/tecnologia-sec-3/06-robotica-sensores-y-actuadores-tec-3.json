@@ -1,0 +1,1475 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "robotica-sensores-y-actuadores-tec-3",
+  "order_steps": {
+    "prompt": "Ordena una vuelta del ciclo de un robot",
+    "steps": [
+      "El sensor mide algo del entorno, como la distancia",
+      "El sensor envía esa medida como señal al controlador",
+      "El controlador compara la medida con la regla de su programa",
+      "El controlador le ordena al actuador qué hacer",
+      "El actuador hace la acción y el sensor vuelve a medir"
+    ],
+    "completion_feedback": "Todo robot **percibe** con sensores, **decide** con un controlador y **actúa** con actuadores. Si después vuelve a medir para corregir, usa **retroalimentación**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Doraemon contra el despertador de Nobita",
+        "content": "Son las 7:00 y el despertador de Nobita suena… y al minuto se calla solo. Nobita sigue dormido, abrazado a la almohada. El despertador hizo exactamente lo que tenía programado: sonar a cierta hora. Nunca revisó si Nobita se levantó. Entonces entra Doraemon. Primero mira la cama: Nobita sigue ahí. Con eso decide: «hay que despertarlo». Luego actúa: le jala la cobija y le grita que va a llegar tarde otra vez. Pero no se va. Vuelve a mirar: Nobita se dio la vuelta y sigue dormido. Así que decide subir el nivel y lo sacude de los hombros. Mira una vez más: ahora sí está sentado, bostezando. Hasta entonces Doraemon se detiene. Fíjate en la diferencia: el despertador actúa a ciegas, con un horario fijo. Doraemon, que también es un robot, usa sus ojos para percibir, su computadora interna para decidir y sus brazos para actuar, y repite el ciclo revisando el resultado hasta lograrlo. Esa forma de percibir, decidir y actuar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Doraemon ES un ejemplo de robot",
+        "content": "Lo que acabas de ver con Doraemon es exactamente cómo funciona un **robot**: un sistema que **percibe, decide y actúa**. Para percibir usa **sensores**, que miden algo del entorno (luz, distancia, temperatura, tacto, infrarrojo) y lo convierten en una señal. Para decidir usa un **controlador**, casi siempre un **microcontrolador** como el de una placa **Arduino**, que ejecuta un programa. Para actuar usa **actuadores**: **motores**, **servomotores**, **LEDs** o **bocinas**. El despertador es de **lazo abierto**: actúa sin revisar el resultado. Doraemon es de **lazo cerrado**: con la **retroalimentación** de sus ojos revisa y corrige hasta lograrlo."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — un Doraemon de escritorio con Arduino",
+        "content": "Tu equipo arma una figura de Doraemon que saluda cuando alguien se acerca. Identifica cada parte. **Paso 1 — Sensor:** un sensor ultrasónico en la panza mide la distancia a tu mano usando el eco de un sonido que tú no oyes. **Paso 2 — Controlador:** una placa Arduino recibe esa distancia y ejecuta la regla del programa: SI la distancia es menor que 20 cm, saluda. **Paso 3 — Actuadores:** un servomotor gira el brazo de 0° a 90°, un LED enciende el cascabel y una bocina pequeña toca una melodía. **Paso 4 — Ciclo:** el programa del Arduino se repite sin parar, así que mide otra vez muchas veces por segundo. **Paso 5 — Prueba:** alejas la mano a 40 cm y deja de saludar. Resultado: sensor, controlador y actuadores trabajan en un ciclo que nunca deja de medir."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **robot** funciona con el ciclo **percibir → decidir → actuar**. Los **sensores** miden el entorno (luz, distancia, temperatura, tacto, infrarrojo). El **controlador**, un **microcontrolador** como Arduino, ejecuta el programa y decide. Los **actuadores** (motores, servomotores, LEDs, bocinas) actúan. En **lazo abierto** no se revisa el resultado; en **lazo cerrado** hay **retroalimentación**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en Doraemon: sus ojos son los sensores, su computadora interna es el controlador y sus brazos y piernas son los actuadores. Si dudas en el examen, pregúntate: ¿esta pieza mide, decide o hace algo?"
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Percibir, decidir, actuar y volver a revisar: así trabaja un robot de lazo cerrado.",
+        "data": {
+          "intro": "Doraemon ve algo junto a la puerta del cuarto de Nobita. Les tiene pánico a los ratones desde que un ratón robot le mordió las orejas. Sigue su ciclo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Percibir: sus ojos, que funcionan como sensores, detectan algo pequeño y gris junto a la puerta."
+            },
+            {
+              "text": "Decidir: su computadora interna, el controlador, compara lo que vio con lo que conoce: «¡Es un ratón!»."
+            },
+            {
+              "text": "Actuar: sus piernas y su voz, los actuadores, entran en acción: grita y sale corriendo."
+            },
+            {
+              "text": "Retroalimentación: mientras huye, vuelve a mirar. Si el ratón sigue cerca, corre; cuando ya no lo ve, se detiene."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué sensor usarías?",
+        "content": "Cada sensor mide una sola cosa del entorno. Antes de armar un robot, pregúntate qué necesita medir.",
+        "data": {
+          "prompt": "Arrastra cada tarea del robot de la casa de Nobita al sensor que necesita.",
+          "buckets": [
+            "Sensor de luz",
+            "Sensor de distancia",
+            "Sensor de temperatura",
+            "Sensor de tacto"
+          ],
+          "items": [
+            {
+              "t": "Saber si ya oscureció en el cuarto",
+              "b": 0
+            },
+            {
+              "t": "Frenar antes de chocar con el clóset",
+              "b": 1
+            },
+            {
+              "t": "Medir qué tan cerca está Nobita",
+              "b": 1
+            },
+            {
+              "t": "Saber si el té ya se enfrió",
+              "b": 2
+            },
+            {
+              "t": "Notar si el cuarto está muy caliente",
+              "b": 2
+            },
+            {
+              "t": "Detectar que le aprietan la mano",
+              "b": 3
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada pieza que podrías usar en un robot como el Doraemon de escritorio con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Sensor ultrasónico",
+              "b": "Mide la distancia"
+            },
+            {
+              "a": "Fotorresistencia",
+              "b": "Mide la luz"
+            },
+            {
+              "a": "Servomotor",
+              "b": "Gira a ángulos exactos"
+            },
+            {
+              "a": "Placa Arduino",
+              "b": "Ejecuta el programa"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del robot es cada cosa?",
+        "left_label": "Doraemon",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Sus ojos ven la cama",
+            "right": "Sensor"
+          },
+          {
+            "left": "Piensa «hay que despertarlo»",
+            "right": "Controlador"
+          },
+          {
+            "left": "Le jala la cobija",
+            "right": "Actuador"
+          },
+          {
+            "left": "Vuelve a mirar y lo sacude",
+            "right": "Lazo cerrado"
+          }
+        ],
+        "completion_feedback": "Doraemon usó un **sensor**, un **controlador** y un **actuador**, y revisó el resultado: eso es **lazo cerrado**. Ahora ponle nombre formal: así funciona un **robot**."
+      },
+      "quiz": [
+        {
+          "question": "Cuando Doraemon revisa si Nobita sigue en la cama, ¿qué parte de su cuerpo funciona como sensor?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sus brazos"
+            },
+            {
+              "letter": "B",
+              "text": "Sus ojos"
+            },
+            {
+              "letter": "C",
+              "text": "Su bolsillo"
+            },
+            {
+              "letter": "D",
+              "text": "Sus piernas"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un sensor mide algo del entorno. Sus ojos le dicen si Nobita sigue acostado. Los brazos y las piernas hacen la acción: son actuadores.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el Doraemon de escritorio, ¿qué hace la placa Arduino?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Mide la distancia a la mano"
+            },
+            {
+              "letter": "B",
+              "text": "Gira el brazo para saludar"
+            },
+            {
+              "letter": "C",
+              "text": "Ejecuta el programa y decide"
+            },
+            {
+              "letter": "D",
+              "text": "Enciende el cascabel con luz"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Arduino es el controlador: recibe la distancia del sensor, aplica la regla del programa y da órdenes. Medir es trabajo del sensor y girar o encender, de los actuadores.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué el despertador de Nobita es un sistema de lazo abierto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usa una bocina en vez de un motor"
+            },
+            {
+              "letter": "B",
+              "text": "No tiene controlador ni programa"
+            },
+            {
+              "letter": "C",
+              "text": "Suena demasiado temprano en la mañana"
+            },
+            {
+              "letter": "D",
+              "text": "No revisa si Nobita despertó"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "En lazo abierto el sistema actúa y nunca mide el resultado. El despertador suena a su hora sin saber si Nobita se levantó. Doraemon sí revisa: él es lazo cerrado.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el Doraemon de escritorio, el servomotor que gira el brazo de 0° a 90° es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un actuador"
+            },
+            {
+              "letter": "B",
+              "text": "Un sensor"
+            },
+            {
+              "letter": "C",
+              "text": "El controlador"
+            },
+            {
+              "letter": "D",
+              "text": "Un receptor"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El servomotor convierte la orden del controlador en movimiento: es un actuador. Además, a diferencia de un motor común, gira hasta un ángulo exacto.",
+          "difficulty": 2
+        },
+        {
+          "question": "El Doraemon de escritorio saluda si la mano está a menos de 20 cm. El sensor mide 35 cm. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Saluda porque detectó algo"
+            },
+            {
+              "letter": "B",
+              "text": "No saluda y vuelve a medir"
+            },
+            {
+              "letter": "C",
+              "text": "Saluda y apaga el sensor"
+            },
+            {
+              "letter": "D",
+              "text": "Se apaga hasta reiniciarlo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "35 cm no es menor que 20 cm, así que la regla no se cumple y no saluda. Como el programa se repite sin parar, el sensor vuelve a medir enseguida.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "Robots que juegan fútbol solos",
+        "content": "En la RoboCup, un torneo internacional que se juega desde 1997, los equipos no son de personas: son de robots. Y lo más impresionante es que nadie los maneja con un control durante el partido. Fíjate en el delantero de un equipo de robots humanoides. En la cabeza lleva una cámara que busca el balón en la cancha. Cuando lo encuentra, su computadora calcula dónde está y decide qué hacer: caminar hacia él. Los motores de sus piernas mueven cada articulación y el robot avanza, medio torpe, paso a paso. Pero no camina a ciegas: después de cada paso vuelve a mirar. Si el balón rodó un poco a la izquierda, corrige el rumbo. Cuando por fin lo tiene enfrente, decide patear y el motor de la pierna lanza el golpe. Si se cae, sus sensores notan que está en el piso y se levanta solo. La meta de la RoboCup es enorme: que para 2050 un equipo de robots humanoides le gane al campeón del Mundial. Ver, pensar, moverse y volver a ver es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El delantero robot ES el ciclo de todo robot",
+        "content": "Lo que acabas de ver en la RoboCup es exactamente el ciclo de todo **robot**: **percibir, decidir y actuar**. La cámara es un **sensor**: mide algo del entorno y lo convierte en señal; otros sensores miden luz, distancia, temperatura, tacto o infrarrojo. La computadora del robot es el **controlador**: un **microcontrolador** o procesador que ejecuta el programa y decide. Los motores de las piernas son **actuadores**, igual que los **servomotores**, los **LEDs** y las **bocinas**. Como el robot vuelve a mirar después de cada paso y corrige, usa **lazo cerrado** o **retroalimentación**. Si caminara sin volver a mirar, sería **lazo abierto**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la máquina lanzabalones del entrenamiento",
+        "content": "El entrenador de tu equipo consigue una máquina que lanza balones para practicar el control. Analízala. **Paso 1 — Actuadores:** dos ruedas, cada una con su motor, giran muy rápido y disparan el balón cuando pasa entre ellas. **Paso 2 — Controlador:** un microcontrolador ejecuta el programa «lanzar un balón cada 8 segundos». **Paso 3 — Lazo abierto:** la máquina no mide nada; si las ruedas pierden fuerza, los balones salen cada vez más lentos y ella ni se entera. **Paso 4 — Agregar un sensor:** un sensor de velocidad mide cada balón que sale. **Paso 5 — Lazo cerrado:** si el balón salió más lento de lo programado, el controlador acelera los motores. Resultado: con retroalimentación, la máquina corrige sus propios errores."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **robot** funciona con el ciclo **percibir → decidir → actuar**. Los **sensores** miden el entorno (luz, distancia, temperatura, tacto, infrarrojo). El **controlador**, un **microcontrolador** como Arduino, ejecuta el programa y decide. Los **actuadores** (motores, servomotores, LEDs, bocinas) actúan. En **lazo abierto** no se revisa el resultado; en **lazo cerrado** hay **retroalimentación**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en un portero ante un disparo: sus ojos son el sensor, su cerebro es el controlador y sus piernas son el actuador. Como sigue mirando el balón mientras vuela y se corrige en el aire, trabaja en lazo cerrado."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El robot no llega al balón con una sola orden: repite el ciclo y corrige con lo que ve.",
+        "data": {
+          "intro": "Ayuda al delantero robot de la RoboCup a llegar al balón. El medidor muestra qué tan cerca está de patear.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Percibir: la cámara de su cabeza detecta el balón a 3 metros, un poco a la derecha.",
+              "delta": 20
+            },
+            {
+              "text": "Decidir: el controlador calcula el ángulo y ordena girar a la derecha y caminar.",
+              "delta": 20
+            },
+            {
+              "text": "Actuar: los motores de las piernas dan cuatro pasos. Vuelve a mirar: el balón rodó a la izquierda.",
+              "delta": 20
+            },
+            {
+              "text": "Retroalimentación: con la nueva medida corrige el rumbo y llega justo frente al balón.",
+              "delta": 25
+            },
+            {
+              "text": "Actuar otra vez: el controlador ordena patear y el motor de la pierna dispara. ¡Gol robótico!",
+              "delta": 15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Lazo abierto o lazo cerrado?",
+        "content": "Lazo abierto: actúa con un plan fijo y no revisa el resultado. Lazo cerrado: un sensor mide el resultado y el controlador corrige.",
+        "data": {
+          "prompt": "Arrastra cada sistema de la cancha a su tipo de control.",
+          "buckets": [
+            "Lazo abierto",
+            "Lazo cerrado"
+          ],
+          "items": [
+            {
+              "t": "Lanza un balón cada 8 segundos y ya",
+              "b": 0
+            },
+            {
+              "t": "Riego de la cancha 20 minutos a las 6 a. m.",
+              "b": 0
+            },
+            {
+              "t": "Robot que patea sin volver a mirar",
+              "b": 0
+            },
+            {
+              "t": "Máquina que mide el balón y ajusta motores",
+              "b": 1
+            },
+            {
+              "t": "Riego que se apaga si el pasto ya está húmedo",
+              "b": 1
+            },
+            {
+              "t": "Robot que corrige su paso al ver el balón",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte o conducta de los robots y máquinas del fútbol con su concepto.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Cámara en la cabeza",
+              "b": "Sensor"
+            },
+            {
+              "a": "Motores de las piernas",
+              "b": "Actuador"
+            },
+            {
+              "a": "Lanzar cada 8 segundos",
+              "b": "Lazo abierto"
+            },
+            {
+              "a": "Corregir viendo el balón",
+              "b": "Lazo cerrado"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del robot es cada cosa?",
+        "left_label": "RoboCup",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La cámara de su cabeza",
+            "right": "Sensor"
+          },
+          {
+            "left": "Su computadora calcula",
+            "right": "Controlador"
+          },
+          {
+            "left": "Los motores de las piernas",
+            "right": "Actuador"
+          },
+          {
+            "left": "Mirar otra vez y corregir",
+            "right": "Retroalimentación"
+          }
+        ],
+        "completion_feedback": "El delantero robot usó un **sensor**, un **controlador**, un **actuador** y **retroalimentación**. Ahora ponle nombre formal: es el ciclo **percibir, decidir y actuar**."
+      },
+      "quiz": [
+        {
+          "question": "En el delantero robot de la RoboCup, ¿qué es la cámara de su cabeza?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un actuador"
+            },
+            {
+              "letter": "B",
+              "text": "El controlador"
+            },
+            {
+              "letter": "C",
+              "text": "Un sensor"
+            },
+            {
+              "letter": "D",
+              "text": "Un motor"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La cámara mide algo del entorno, en este caso dónde está el balón, y lo convierte en señal para el controlador. Eso es un sensor.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué hacen los motores de las piernas del robot?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Convierten la orden en movimiento"
+            },
+            {
+              "letter": "B",
+              "text": "Detectan dónde quedó el balón en la cancha"
+            },
+            {
+              "letter": "C",
+              "text": "Deciden la jugada según el programa"
+            },
+            {
+              "letter": "D",
+              "text": "Guardan el programa que se ejecuta"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los motores son actuadores: reciben la orden del controlador y la convierten en movimiento. Detectar es trabajo de la cámara y decidir, del controlador.",
+          "difficulty": 2
+        },
+        {
+          "question": "La máquina lanzabalones dispara cada 8 segundos aunque los balones salgan cada vez más lentos. ¿Qué la volvería de lazo cerrado?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Lanzar cada 5 segundos en lugar de cada 8"
+            },
+            {
+              "letter": "B",
+              "text": "Agregar un motor más potente a cada rueda"
+            },
+            {
+              "letter": "C",
+              "text": "Un sensor que mida la velocidad del balón"
+            },
+            {
+              "letter": "D",
+              "text": "Encender la máquina solo con el entrenador"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Lazo cerrado significa medir el resultado y corregir. Sin un sensor, la máquina sigue sin saber qué tan rápido sale el balón, aunque cambies el tiempo o el motor.",
+          "difficulty": 3
+        },
+        {
+          "question": "Durante el partido de la RoboCup, ¿qué controla a los robots?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un jugador con un joystick"
+            },
+            {
+              "letter": "B",
+              "text": "Su propio programa"
+            },
+            {
+              "letter": "C",
+              "text": "El público con sus gritos"
+            },
+            {
+              "letter": "D",
+              "text": "Un control remoto del equipo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "En la RoboCup los robots son autónomos: nadie los maneja durante el partido. Su controlador ejecuta el programa y decide con lo que miden sus sensores.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un robot ve el balón, calcula dónde está y camina 10 pasos sin volver a mirar. Mientras, el balón rodó. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Corrige su rumbo después de cada paso"
+            },
+            {
+              "letter": "B",
+              "text": "La cámara lo sigue y lo alcanza igual"
+            },
+            {
+              "letter": "C",
+              "text": "El controlador lo detiene en seco"
+            },
+            {
+              "letter": "D",
+              "text": "Llega a donde ya no está el balón"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Caminar sin volver a medir es lazo abierto: el robot no se entera de que el balón se movió. Para corregir necesita retroalimentación de su cámara en cada paso.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "La luz que persigue a la idol",
+        "content": "Imagina el concierto de TWICE en un estadio enorme. Se apagan las luces y Nayeon empieza a caminar sola por la pasarela, desde el escenario principal hasta el del centro. Un círculo de luz blanca la sigue a cada paso, sin perderla ni un segundo, aunque se detenga, gire o regrese corriendo. Lo curioso es que nadie mueve ese reflector con las manos. En su vestuario lleva un pequeño emisor de luz infrarroja, invisible para ti. Alrededor del escenario, varias cámaras especiales lo detectan y saben dónde está ella en cada instante. Una computadora recibe esa posición y calcula hacia dónde debe apuntar cada luz. Entonces los motores de los reflectores giran hasta alinearse con ella. Y no lo hacen una sola vez: el sistema mide de nuevo su posición muchas veces por segundo y corrige el ángulo si se movió. Detectar, calcular, mover y volver a medir: ese ciclo, que ocurre sin que el público lo note, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Las luces del concierto SON un sistema robótico",
+        "content": "Lo que acabas de ver en el concierto es exactamente cómo funciona un sistema **robótico**: **percibe, decide y actúa**. Las cámaras que detectan el emisor infrarrojo son **sensores**: miden algo del entorno y lo convierten en señal. La computadora es el **controlador**: ejecuta un programa, como lo hace un **microcontrolador** tipo **Arduino** en un robot escolar. Los motores que giran los reflectores son **actuadores**, igual que los **servomotores**, los **LEDs** o las **bocinas**. Como el sistema vuelve a medir y corrige, es de **lazo cerrado**: usa **retroalimentación**. Si apuntara a un lugar fijo sin medir, sería **lazo abierto**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los lightsticks controlados desde una consola",
+        "content": "En muchos conciertos de K-pop, antes de entrar registras tu asiento en la app oficial del lightstick. Analiza el sistema. **Paso 1 — Sensor:** enciendes el lightstick con su botón; ese botón es un sensor de tacto. **Paso 2 — Señal:** durante el show, una consola central manda señales inalámbricas a todo el estadio y el receptor de tu lightstick las capta. **Paso 3 — Controlador:** el chip del lightstick revisa tu zona y elige el color que te toca. **Paso 4 — Actuador:** sus LEDs se encienden y, juntos, miles de lightsticks forman figuras en las gradas. **Paso 5 — Tipo de control:** la consola nunca revisa si tu lightstick de verdad se encendió, así que es lazo abierto. Resultado: es automatización, pero sin retroalimentación."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **robot** funciona con el ciclo **percibir → decidir → actuar**. Los **sensores** miden el entorno (luz, distancia, temperatura, tacto, infrarrojo). El **controlador**, un **microcontrolador** como Arduino, ejecuta el programa y decide. Los **actuadores** (motores, servomotores, LEDs, bocinas) actúan. En **lazo abierto** no se revisa el resultado; en **lazo cerrado** hay **retroalimentación**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en tu lightstick: el botón que aprietas recibe algo (sensor), el chip elige el color (controlador) y los LEDs que brillan hacen algo (actuador). Si una pieza solo brilla, suena o se mueve, es actuador."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El ciclo percibir-decidir-actuar se repite muchas veces por segundo: eso es lazo cerrado.",
+        "data": {
+          "intro": "Sigue una vuelta del sistema de luces mientras Nayeon camina por la pasarela.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Percibir: las cámaras infrarrojas detectan el emisor de su vestuario a 10 metros del escenario principal."
+            },
+            {
+              "text": "Decidir: la computadora, que es el controlador, calcula el ángulo exacto al que debe girar cada reflector."
+            },
+            {
+              "text": "Actuar: los motores, que son los actuadores, giran los reflectores y la luz cae justo sobre ella."
+            },
+            {
+              "text": "Retroalimentación: Nayeon da tres pasos más; las cámaras miden su nueva posición, la computadora la compara con hacia dónde apunta la luz y corrige la diferencia."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Sensor, controlador o actuador?",
+        "content": "Sensor: mide o recibe algo del entorno. Controlador: ejecuta el programa y decide. Actuador: hace la acción.",
+        "data": {
+          "prompt": "Arrastra cada pieza del concierto a su papel en el sistema.",
+          "buckets": [
+            "Sensor (percibe)",
+            "Controlador (decide)",
+            "Actuador (actúa)"
+          ],
+          "items": [
+            {
+              "t": "Cámaras que ubican a la idol",
+              "b": 0
+            },
+            {
+              "t": "Botón para encender el lightstick",
+              "b": 0
+            },
+            {
+              "t": "Computadora que calcula a dónde apuntar",
+              "b": 1
+            },
+            {
+              "t": "Chip del lightstick que elige el color",
+              "b": 1
+            },
+            {
+              "t": "Motor que gira el reflector",
+              "b": 2
+            },
+            {
+              "t": "LEDs del lightstick",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que hace dentro del sistema.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Sensor",
+              "b": "Mide el entorno"
+            },
+            {
+              "a": "Controlador",
+              "b": "Ejecuta el programa"
+            },
+            {
+              "a": "Actuador",
+              "b": "Hace la acción"
+            },
+            {
+              "a": "Retroalimentación",
+              "b": "El resultado regresa"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del sistema es cada cosa?",
+        "left_label": "Concierto",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Cámaras que ven el emisor",
+            "right": "Sensor"
+          },
+          {
+            "left": "La computadora calcula",
+            "right": "Controlador"
+          },
+          {
+            "left": "Motores de los reflectores",
+            "right": "Actuador"
+          },
+          {
+            "left": "Medir otra vez y corregir",
+            "right": "Lazo cerrado"
+          }
+        ],
+        "completion_feedback": "Las luces del concierto usaron **sensores**, un **controlador** y **actuadores**, y volvieron a medir: **lazo cerrado**. Ahora ponle nombre formal: así funciona un **robot**."
+      },
+      "quiz": [
+        {
+          "question": "En el sistema que sigue a Nayeon, ¿qué son los motores que giran los reflectores?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sensores"
+            },
+            {
+              "letter": "B",
+              "text": "Controladores"
+            },
+            {
+              "letter": "C",
+              "text": "Emisores"
+            },
+            {
+              "letter": "D",
+              "text": "Actuadores"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los motores reciben la orden de la computadora y la convierten en movimiento: son actuadores. Los sensores son las cámaras que detectan dónde está ella.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué papel tiene la computadora que calcula hacia dónde apuntar la luz?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Controlador"
+            },
+            {
+              "letter": "B",
+              "text": "Sensor de luz"
+            },
+            {
+              "letter": "C",
+              "text": "Actuador"
+            },
+            {
+              "letter": "D",
+              "text": "Emisor infrarrojo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Recibe la posición que miden las cámaras, ejecuta su programa y decide el ángulo de cada reflector. Esa es la tarea del controlador.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué el sistema de luces de la pasarela es de lazo cerrado?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usa luz infrarroja invisible"
+            },
+            {
+              "letter": "B",
+              "text": "Mide otra vez y corrige"
+            },
+            {
+              "letter": "C",
+              "text": "Tiene muchos motores a la vez"
+            },
+            {
+              "letter": "D",
+              "text": "Se programa antes del show"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Lazo cerrado significa que un sensor revisa el resultado y el controlador corrige. Las cámaras miden de nuevo dónde está Nayeon y la luz se ajusta si se movió.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el lightstick, ¿qué tipo de sensor es el botón para encenderlo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "De luz"
+            },
+            {
+              "letter": "B",
+              "text": "De temperatura"
+            },
+            {
+              "letter": "C",
+              "text": "De tacto"
+            },
+            {
+              "letter": "D",
+              "text": "De distancia"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Un botón detecta que lo presionas con el dedo: es un sensor de tacto. No mide luz, calor ni qué tan lejos está algo.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el modo concierto, tu lightstick se quedó apagado, pero la consola sigue mandando colores como si nada. ¿Por qué no se entera?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Su chip no tiene un programa"
+            },
+            {
+              "letter": "B",
+              "text": "Sus LEDs no cuentan como actuadores"
+            },
+            {
+              "letter": "C",
+              "text": "No recibe retroalimentación"
+            },
+            {
+              "letter": "D",
+              "text": "La consola no tiene controlador"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La consola solo manda señales y nunca recibe respuesta de cada lightstick. Sin retroalimentación es lazo abierto: actúa sin revisar el resultado.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Tu base de Minecraft se ilumina sola",
+        "content": "Construiste una base increíble en Minecraft, pero cada noche olvidas encender las luces y los zombis aparecen en tu patio. Tu primer intento es un reloj de redstone que prende y apaga las lámparas cada cierto tiempo, sin fijarse si es de día o de noche: un desastre, porque a veces brillan al mediodía y se apagan a medianoche. Entonces pruebas otra cosa. Pones un sensor de luz solar en el techo. De día manda señal por el polvo de redstone; de noche, no. Como tú quieres lo contrario, la señal llega a un bloque con una antorcha de redstone, que funciona al revés: si le llega señal, se apaga; si no le llega, se enciende. De la antorcha sale el cable a tus lámparas de redstone. Al anochecer, el sensor deja de mandar señal, la antorcha se enciende y las lámparas brillan solas. Al amanecer pasa lo contrario. Algo percibe, algo decide y algo actúa, sin que tú toques nada: esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu circuito de redstone ES un sistema automático",
+        "content": "Lo que acabas de ver con tu base es exactamente cómo funciona un sistema **automático**, la base de la **robótica**: **percibe, decide y actúa**. El sensor de luz solar es un **sensor**: mide algo del entorno y lo convierte en señal. La antorcha hace de **controlador**: según la señal, decide encender o no; en un robot real, ese papel lo tiene un **microcontrolador** como el de **Arduino**, que ejecuta un programa. Las lámparas son **actuadores**, como los **motores**, **servomotores**, **LEDs** y **bocinas**. El reloj de redstone era **lazo abierto**: actuaba con tiempo fijo sin medir nada. Si un sensor mide el resultado para corregir, es **lazo cerrado**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la granja automática de caña de azúcar",
+        "content": "Quieres caña de azúcar para hacer papel sin cosecharla a mano. Arma la granja con observadores y pistones. **Paso 1 — Sensor:** un observador vigila la caña a la altura del segundo bloque y detecta cuando ella crece hasta ahí. **Paso 2 — Señal:** al detectar el cambio, el observador manda un pulso de redstone. **Paso 3 — Actuador:** el pulso activa un pistón que se extiende, rompe la caña de arriba y deja la base para que vuelva a crecer. **Paso 4 — Recolección:** la caña cae, una corriente de agua la lleva a una tolva y la tolva la pasa a un cofre. **Paso 5 — Comparar:** con un reloj de redstone, el pistón golpearía aunque no hubiera nada (lazo abierto); con el observador, solo actúa cuando la planta creció (lazo cerrado). Resultado: el sensor vigila justo lo que el pistón cambia."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **robot** funciona con el ciclo **percibir → decidir → actuar**. Los **sensores** miden el entorno (luz, distancia, temperatura, tacto, infrarrojo). El **controlador**, un **microcontrolador** como Arduino, ejecuta el programa y decide. Los **actuadores** (motores, servomotores, LEDs, bocinas) actúan. En **lazo abierto** no se revisa el resultado; en **lazo cerrado** hay **retroalimentación**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en redstone: lo que detecta (sensor de luz solar, observador, placa de presión) es sensor; lo que hace algo (pistón, lámpara, bloque musical) es actuador; y lo que decide en medio es el controlador."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada vuelta del ciclo cosecha la caña solo cuando hace falta.",
+        "data": {
+          "intro": "Sigue una vuelta de tu granja de caña de azúcar. El medidor muestra cuánto del ciclo se ha completado.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Percibir: la caña crece al segundo bloque y el observador, que es el sensor, detecta ese cambio.",
+              "delta": 25
+            },
+            {
+              "text": "Decidir: la regla del circuito es simple: si llega el pulso del observador, se activa el pistón; si no, nada.",
+              "delta": 25
+            },
+            {
+              "text": "Actuar: el pistón, que es el actuador, se extiende y rompe la caña de arriba sin tocar la base.",
+              "delta": 25
+            },
+            {
+              "text": "Repetir: la caña cae en la tolva y el observador vuelve a vigilar hasta que la planta crezca otra vez.",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Sensor o actuador?",
+        "content": "Un sensor detecta algo del mundo y manda una señal. Un actuador recibe la señal y hace algo: empuja, ilumina o suena.",
+        "data": {
+          "prompt": "Arrastra cada bloque de redstone a su categoría.",
+          "buckets": [
+            "Sensor (percibe)",
+            "Actuador (actúa)"
+          ],
+          "items": [
+            {
+              "t": "Sensor de luz solar",
+              "b": 0
+            },
+            {
+              "t": "Observador",
+              "b": 0
+            },
+            {
+              "t": "Placa de presión",
+              "b": 0
+            },
+            {
+              "t": "Pistón",
+              "b": 1
+            },
+            {
+              "t": "Lámpara de redstone",
+              "b": 1
+            },
+            {
+              "t": "Bloque musical",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada bloque de redstone con la pieza de robótica real que se le parece.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Sensor de luz solar",
+              "b": "Fotorresistencia"
+            },
+            {
+              "a": "Placa de presión",
+              "b": "Sensor de tacto"
+            },
+            {
+              "a": "Lámpara de redstone",
+              "b": "LED"
+            },
+            {
+              "a": "Bloque musical",
+              "b": "Bocina"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué parte del sistema es cada cosa?",
+        "left_label": "Redstone",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El bloque que nota la noche",
+            "right": "Sensor"
+          },
+          {
+            "left": "La antorcha que invierte",
+            "right": "Controlador"
+          },
+          {
+            "left": "Las lámparas que brillan",
+            "right": "Actuador"
+          },
+          {
+            "left": "El reloj que no mira el cielo",
+            "right": "Lazo abierto"
+          }
+        ],
+        "completion_feedback": "Tu base usó un **sensor**, un **controlador** y **actuadores**, y viste que el reloj era **lazo abierto**. Ahora ponle nombre formal: así se automatiza con **robótica**."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuál de estos bloques de redstone es un actuador?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Observador"
+            },
+            {
+              "letter": "B",
+              "text": "Placa de presión"
+            },
+            {
+              "letter": "C",
+              "text": "Sensor de luz solar"
+            },
+            {
+              "letter": "D",
+              "text": "Pistón"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El pistón recibe la señal y hace algo en el mundo: empuja bloques. El observador, la placa de presión y el sensor de luz solar detectan cosas: son sensores.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el circuito de las lámparas, ¿qué hace la antorcha de redstone?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Mide cuánta luz hay en el cielo"
+            },
+            {
+              "letter": "B",
+              "text": "Decide al invertir la señal"
+            },
+            {
+              "letter": "C",
+              "text": "Empuja bloques para abrir paso"
+            },
+            {
+              "letter": "D",
+              "text": "Guarda la caña en una tolva"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La antorcha aplica una regla: si llega señal, se apaga; si no, se enciende. Esa decisión es el papel del controlador. Medir la luz le toca al sensor.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué el reloj de redstone que prendía las lámparas cada cierto tiempo era de lazo abierto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No tenía ningún actuador conectado"
+            },
+            {
+              "letter": "B",
+              "text": "Usaba lámparas en lugar de pistones"
+            },
+            {
+              "letter": "C",
+              "text": "Actuaba por tiempo sin medir nada"
+            },
+            {
+              "letter": "D",
+              "text": "Necesitaba polvo de redstone para funcionar"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "En lazo abierto el sistema actúa con un plan fijo y no revisa nada. El reloj prendía las lámparas por tiempo, sin medir nada: ni si había sol ni si las lámparas brillaban.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la granja de caña de azúcar, ¿qué papel tiene el observador?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Actuador"
+            },
+            {
+              "letter": "B",
+              "text": "Sensor"
+            },
+            {
+              "letter": "C",
+              "text": "Controlador"
+            },
+            {
+              "letter": "D",
+              "text": "Recolector"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El observador detecta un cambio en el bloque que vigila, como la caña que creció, y manda una señal. Eso hace un sensor. El pistón es el actuador.",
+          "difficulty": 2
+        },
+        {
+          "question": "Cambias el observador de la granja por un reloj de redstone que activa el pistón cada 5 segundos. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La caña deja de crecer y la granja se apaga"
+            },
+            {
+              "letter": "B",
+              "text": "Golpea aunque la caña no haya crecido"
+            },
+            {
+              "letter": "C",
+              "text": "El pistón ya no tiene quien le mande señal"
+            },
+            {
+              "letter": "D",
+              "text": "Cosecha solo cuando la caña llega a 2 bloques"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El reloj no mide la planta: el pistón actúa por tiempo, haya caña o no. Pasaste de lazo cerrado a lazo abierto.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es el ciclo básico con el que funciona un robot?",
+      "options": [
+        { "letter": "A", "text": "Actuar, decidir y percibir" },
+        { "letter": "B", "text": "Percibir, decidir y actuar" },
+        { "letter": "C", "text": "Encender, cargar y apagarse" },
+        { "letter": "D", "text": "Programar, imprimir y guardar" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en lo que haces cuando ves venir un balón: ¿qué pasa primero?",
+      "explanation": "Un robot primero percibe con sensores, luego decide con el controlador y al final actúa con actuadores. Después vuelve a empezar."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué hace un sensor en un robot?",
+      "options": [
+        { "letter": "A", "text": "Mueve las partes del robot" },
+        { "letter": "B", "text": "Guarda y ejecuta el programa" },
+        { "letter": "C", "text": "Mide algo del entorno" },
+        { "letter": "D", "text": "Da la energía a los motores" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la parte que le permite al robot darse cuenta de lo que pasa afuera.",
+      "explanation": "Un sensor mide algo del entorno, como luz, distancia o temperatura, y lo convierte en una señal que entiende el controlador."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué hace un actuador en un robot?",
+      "options": [
+        { "letter": "A", "text": "Realiza una acción física" },
+        { "letter": "B", "text": "Mide la temperatura del lugar" },
+        { "letter": "C", "text": "Decide qué hacer con los datos" },
+        { "letter": "D", "text": "Recibe datos del exterior" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es la última parte del ciclo, la que se nota desde afuera.",
+      "explanation": "El actuador convierte la orden del controlador en una acción: moverse, iluminar o sonar. Medir es del sensor y decidir, del controlador."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos componentes es un actuador?",
+      "options": [
+        { "letter": "A", "text": "Fotorresistencia" },
+        { "letter": "B", "text": "Sensor ultrasónico" },
+        { "letter": "C", "text": "Termómetro digital" },
+        { "letter": "D", "text": "Servomotor" }
+      ],
+      "correct_answer": "D",
+      "hint": "Busca el único que hace algo en lugar de medir algo.",
+      "explanation": "El servomotor se mueve: es un actuador. La fotorresistencia mide luz, el ultrasónico mide distancia y el termómetro mide temperatura: son sensores."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es Arduino?",
+      "options": [
+        { "letter": "A", "text": "Un sensor que mide la distancia" },
+        { "letter": "B", "text": "Una placa con microcontrolador" },
+        { "letter": "C", "text": "Un motor que gira a un ángulo fijo" },
+        { "letter": "D", "text": "Un lenguaje para hacer páginas web" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué parte del robot guarda y ejecuta el programa.",
+      "explanation": "Arduino es una placa con un microcontrolador que ejecuta el programa. Funciona como el controlador del robot: recibe datos de sensores y da órdenes a actuadores."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué sensor usarías para que un robot no choque con la pared?",
+      "options": [
+        { "letter": "A", "text": "Sensor de temperatura" },
+        { "letter": "B", "text": "Sensor de distancia" },
+        { "letter": "C", "text": "Sensor de luz" },
+        { "letter": "D", "text": "Sensor de humedad" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué necesita saber el robot para frenar a tiempo.",
+      "explanation": "Para no chocar, el robot necesita saber qué tan lejos está la pared. Eso lo mide un sensor de distancia, como el ultrasónico."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué parte del robot ejecuta el programa y toma las decisiones?",
+      "options": [
+        { "letter": "A", "text": "El sensor de luz" },
+        { "letter": "B", "text": "El actuador" },
+        { "letter": "C", "text": "El controlador" },
+        { "letter": "D", "text": "La batería" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la parte que está en medio, entre lo que mide y lo que se mueve.",
+      "explanation": "El controlador, normalmente un microcontrolador, ejecuta el programa: recibe lo que miden los sensores y decide qué deben hacer los actuadores."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué actuador convierte la electricidad en luz?",
+      "options": [
+        { "letter": "A", "text": "El servomotor" },
+        { "letter": "B", "text": "La fotorresistencia" },
+        { "letter": "C", "text": "El LED" },
+        { "letter": "D", "text": "El motor" }
+      ],
+      "correct_answer": "C",
+      "hint": "Ojo: una pieza mide la luz y otra la produce.",
+      "explanation": "El LED emite luz cuando recibe corriente: es un actuador. La fotorresistencia hace lo contrario: mide la luz, así que es un sensor."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué sensor necesita un termostato?",
+      "options": [
+        { "letter": "A", "text": "Sensor de temperatura" },
+        { "letter": "B", "text": "Sensor de distancia" },
+        { "letter": "C", "text": "Sensor de movimiento" },
+        { "letter": "D", "text": "Sensor de luz ambiental" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué controla un termostato.",
+      "explanation": "Un termostato mantiene la temperatura de un lugar, así que necesita medirla con un sensor de temperatura."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En la mayoría de las teles, ¿con qué tipo de sensor se reciben las órdenes del control remoto?",
+      "options": [
+        { "letter": "A", "text": "Ultrasonido" },
+        { "letter": "B", "text": "Luz infrarroja" },
+        { "letter": "C", "text": "Luz ultravioleta" },
+        { "letter": "D", "text": "Temperatura" }
+      ],
+      "correct_answer": "B",
+      "hint": "El control manda una luz que tus ojos no pueden ver.",
+      "explanation": "El control remoto emite luz infrarroja, invisible para nosotros, y la tele tiene un sensor infrarrojo que la recibe."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es un sistema de lazo abierto?",
+      "options": [
+        { "letter": "A", "text": "Revisa el resultado y se corrige" },
+        { "letter": "B", "text": "No tiene ningún controlador" },
+        { "letter": "C", "text": "Funciona solo con energía solar" },
+        { "letter": "D", "text": "Actúa sin revisar el resultado" }
+      ],
+      "correct_answer": "D",
+      "hint": "Abierto quiere decir que la información del resultado no regresa al controlador.",
+      "explanation": "En lazo abierto el sistema actúa con un plan fijo y no mide si logró lo que buscaba. Revisar y corregir es lazo cerrado."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es la retroalimentación en un sistema de control?",
+      "options": [
+        { "letter": "A", "text": "Repetir la misma acción siempre" },
+        { "letter": "B", "text": "Medir el resultado para corregir" },
+        { "letter": "C", "text": "Enviar órdenes sin recibir datos" },
+        { "letter": "D", "text": "Apagar el sistema cuando falla" }
+      ],
+      "correct_answer": "B",
+      "hint": "Retro significa hacia atrás: ¿qué información regresa al controlador?",
+      "explanation": "La retroalimentación es la información del resultado que regresa al controlador para que corrija. Es lo que convierte un sistema en lazo cerrado."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos sistemas es de lazo cerrado?",
+      "options": [
+        { "letter": "A", "text": "Un tostador con temporizador" },
+        { "letter": "B", "text": "Un riego que se prende a las 6 a. m." },
+        { "letter": "C", "text": "Un termostato de calefacción" },
+        { "letter": "D", "text": "Un despertador de hora fija" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el único que mide el resultado de lo que hace.",
+      "explanation": "El termostato mide la temperatura, prende o apaga la calefacción y vuelve a medir. El tostador, el riego y el despertador actúan por tiempo sin revisar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un robot debe seguir una línea negra pintada en el piso blanco. ¿Qué sensor necesita?",
+      "options": [
+        { "letter": "A", "text": "Un sensor de temperatura" },
+        { "letter": "B", "text": "Un sensor de luz reflejada" },
+        { "letter": "C", "text": "Un sensor de tacto en el frente" },
+        { "letter": "D", "text": "Un sensor de sonido ambiental" }
+      ],
+      "correct_answer": "B",
+      "hint": "El negro y el blanco reflejan muy distinta cantidad de luz.",
+      "explanation": "Lo blanco refleja mucha luz y lo negro casi nada. Un sensor de luz reflejada, como los infrarrojos de los seguidores de línea, nota esa diferencia."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué las puertas automáticas de un centro comercial se abren solas?",
+      "options": [
+        { "letter": "A", "text": "Un temporizador las abre cada minuto" },
+        { "letter": "B", "text": "Un sensor detecta a la persona" },
+        { "letter": "C", "text": "El motor decide cuándo abrir" },
+        { "letter": "D", "text": "Una persona las abre a distancia" }
+      ],
+      "correct_answer": "B",
+      "hint": "Se abren justo cuando alguien llega, no a cierta hora.",
+      "explanation": "Un sensor de movimiento detecta a la persona, el controlador decide abrir y el motor, que es el actuador, mueve la puerta. El motor no decide nada."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En una vuelta del ciclo de un robot, ¿qué pasa primero?",
+      "options": [
+        { "letter": "A", "text": "El actuador se mueve" },
+        { "letter": "B", "text": "El controlador da la orden" },
+        { "letter": "C", "text": "El sensor mide el entorno" },
+        { "letter": "D", "text": "El motor recibe energía" }
+      ],
+      "correct_answer": "C",
+      "hint": "El controlador no puede decidir sin datos.",
+      "explanation": "Primero el sensor mide, luego el controlador decide con esa medida y al final el actuador hace la acción."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un robot aspiradora frena justo antes de caer por un escalón. ¿Qué parte detecta el escalón?",
+      "options": [
+        { "letter": "A", "text": "Un actuador" },
+        { "letter": "B", "text": "Un sensor" },
+        { "letter": "C", "text": "El motor de las ruedas" },
+        { "letter": "D", "text": "El cepillo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Detectar es percibir. ¿Qué parte percibe?",
+      "explanation": "Un sensor en la parte de abajo nota que ya no hay piso. El controlador decide frenar y los motores de las ruedas, que son actuadores, obedecen."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre un motor de corriente directa común y un servomotor?",
+      "options": [
+        { "letter": "A", "text": "El servo gira libre y sin parar" },
+        { "letter": "B", "text": "El servo va a un ángulo exacto" },
+        { "letter": "C", "text": "El motor común mide la distancia" },
+        { "letter": "D", "text": "El servo no necesita electricidad" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en el brazo de un robot que debe quedar en una posición precisa.",
+      "explanation": "El servomotor gira hasta un ángulo que se le indica, por ejemplo 90°, y ahí se queda. El motor común gira sin parar mientras recibe corriente. Los dos son actuadores."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un termostato está programado a 22 °C y su sensor mide 19 °C. ¿Qué hace?",
+      "options": [
+        { "letter": "A", "text": "Enciende la calefacción" },
+        { "letter": "B", "text": "Apaga la calefacción y espera" },
+        { "letter": "C", "text": "No hace nada hasta mañana" },
+        { "letter": "D", "text": "Enciende el aire frío" }
+      ],
+      "correct_answer": "A",
+      "hint": "Compara lo que mide con lo que debería haber.",
+      "explanation": "19 °C es menos que 22 °C, así que hace falta calor: enciende la calefacción y sigue midiendo hasta llegar a 22 °C."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué un robot repite sin parar el ciclo de percibir, decidir y actuar?",
+      "options": [
+        { "letter": "A", "text": "Porque se le olvida el programa" },
+        { "letter": "B", "text": "Porque los motores lo necesitan" },
+        { "letter": "C", "text": "Porque así gasta menos batería" },
+        { "letter": "D", "text": "Porque el entorno cambia" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa qué pasaría si el robot midiera una sola vez al encenderse.",
+      "explanation": "El mundo cambia todo el tiempo: algo se mueve, oscurece, alguien se acerca. Al repetir el ciclo, el robot actúa con datos actuales."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un tostador calienta el pan 2 minutos aunque el pan ya esté dorado. ¿Qué tipo de control usa?",
+      "options": [
+        { "letter": "A", "text": "Lazo cerrado" },
+        { "letter": "B", "text": "Retroalimentación" },
+        { "letter": "C", "text": "Lazo abierto" },
+        { "letter": "D", "text": "Control con sensor" }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate si el tostador revisa cómo va quedando el pan.",
+      "explanation": "Actúa por tiempo fijo y nunca mide qué tan dorado está el pan. Sin revisar el resultado, es lazo abierto."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un riego se enciende siempre a las 6 a. m., aunque haya llovido. ¿Qué lo volvería de lazo cerrado?",
+      "options": [
+        { "letter": "A", "text": "Un temporizador de mayor precisión" },
+        { "letter": "B", "text": "Un sensor de humedad de la tierra" },
+        { "letter": "C", "text": "Una bomba de agua con más potencia" },
+        { "letter": "D", "text": "Un LED que avise cuando ya terminó" }
+      ],
+      "correct_answer": "B",
+      "hint": "Lazo cerrado necesita medir justo lo que el sistema cambia.",
+      "explanation": "Regar cambia la humedad de la tierra. Si un sensor la mide, el controlador puede no regar cuando ya llovió y parar cuando ya está húmeda."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un invernadero tiene un sensor de humedad, un Arduino y una bomba de agua. Si la tierra se seca, ¿en qué orden actúan?",
+      "options": [
+        { "letter": "A", "text": "Bomba, Arduino, sensor" },
+        { "letter": "B", "text": "Arduino, sensor, bomba" },
+        { "letter": "C", "text": "Sensor, bomba, Arduino" },
+        { "letter": "D", "text": "Sensor, Arduino, bomba" }
+      ],
+      "correct_answer": "D",
+      "hint": "Ubica cuál es sensor, cuál controlador y cuál actuador.",
+      "explanation": "El sensor detecta la tierra seca, el Arduino como controlador decide regar y la bomba como actuador echa el agua: percibir, decidir y actuar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un timbre suena cuando alguien presiona su botón. ¿Cuál es la entrada y cuál la salida?",
+      "options": [
+        { "letter": "A", "text": "Entrada: bocina; salida: botón" },
+        { "letter": "B", "text": "Entrada: botón; salida: bocina" },
+        { "letter": "C", "text": "Entrada: controlador; salida: botón" },
+        { "letter": "D", "text": "Entrada: bocina; salida: controlador" }
+      ],
+      "correct_answer": "B",
+      "hint": "La entrada es lo que percibe; la salida es lo que hace algo.",
+      "explanation": "El botón es un sensor de tacto: es la entrada. La bocina produce el sonido: es el actuador, la salida."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una puerta de cochera baja con un motor, pero un sensor infrarrojo la detiene si algo se atraviesa. ¿Para qué sirve ese sensor?",
+      "options": [
+        { "letter": "A", "text": "Hace que la puerta cierre más rápido" },
+        { "letter": "B", "text": "Reemplaza al motor que mueve la puerta" },
+        { "letter": "C", "text": "Detecta obstáculos y frena el motor" },
+        { "letter": "D", "text": "Cambia el color de la luz de la cochera" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa qué pasaría si un niño o una mascota pasa debajo.",
+      "explanation": "El sensor infrarrojo detecta que algo cruza, el controlador decide detener la puerta y el motor obedece. Es un sensor de seguridad; el motor sigue siendo el actuador."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un sensor ultrasónico manda un sonido que viaja a 340 m/s. El eco regresa en 0.002 s. ¿A qué distancia está el objeto?",
+      "options": [
+        { "letter": "A", "text": "68 cm" },
+        { "letter": "B", "text": "34 cm" },
+        { "letter": "C", "text": "17 cm" },
+        { "letter": "D", "text": "6.8 cm" }
+      ],
+      "correct_answer": "B",
+      "hint": "El sonido va y regresa: piensa qué parte del recorrido te interesa.",
+      "explanation": "340 × 0.002 = 0.68 m, pero eso es ida y vuelta. La distancia al objeto es la mitad: 0.34 m, o sea 34 cm."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un robot debe encender una luz cuando oscurezca y apagarla cuando haya luz. ¿Qué sensor y qué actuador usa?",
+      "options": [
+        { "letter": "A", "text": "Sensor de temperatura y LED" },
+        { "letter": "B", "text": "Fotorresistencia y LED" },
+        { "letter": "C", "text": "Fotorresistencia y servomotor" },
+        { "letter": "D", "text": "Sensor ultrasónico y bocina" }
+      ],
+      "correct_answer": "B",
+      "hint": "Primero decide qué hay que medir y luego qué hay que producir.",
+      "explanation": "Hay que medir la luz, así que el sensor es una fotorresistencia. Hay que producir luz, así que el actuador es un LED. Un servomotor movería algo, no iluminaría."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un brazo robótico coloca piezas en una caja. Si una pieza se resbala de su pinza, ¿qué tipo de sistema se daría cuenta?",
+      "options": [
+        { "letter": "A", "text": "Uno de lazo abierto con temporizador" },
+        { "letter": "B", "text": "Uno con más motores en el brazo" },
+        { "letter": "C", "text": "Uno de lazo cerrado con sensor" },
+        { "letter": "D", "text": "Uno sin controlador, solo motores" }
+      ],
+      "correct_answer": "C",
+      "hint": "Darse cuenta requiere medir el resultado de la acción.",
+      "explanation": "Solo un sistema que mide el resultado, por ejemplo con un sensor en la pinza, nota que la pieza se cayó y puede corregir. Eso es lazo cerrado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Regla de un robot: «Si la distancia es menor que 15 cm, gira; si no, avanza». El sensor mide exactamente 15 cm. ¿Qué hace?",
+      "options": [
+        { "letter": "A", "text": "Gira" },
+        { "letter": "B", "text": "Se detiene" },
+        { "letter": "C", "text": "Avanza" },
+        { "letter": "D", "text": "Retrocede" }
+      ],
+      "correct_answer": "C",
+      "hint": "Lee con cuidado: ¿15 es menor que 15?",
+      "explanation": "15 no es menor que 15, así que la condición no se cumple y se va por el «si no»: avanza. Para girar con 15 cm, la regla diría «menor o igual»."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un seguidor de línea se sale de la pista en las curvas. Su programa lee el sensor solo una vez por segundo. ¿Qué lo mejora?",
+      "options": [
+        { "letter": "A", "text": "Ponerle motores mucho más rápidos" },
+        { "letter": "B", "text": "Leer el sensor muchas más veces" },
+        { "letter": "C", "text": "Quitar el sensor y usar un temporizador" },
+        { "letter": "D", "text": "Cambiar el LED por una bocina más fuerte" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa cuánto avanza el robot entre una medida y la siguiente.",
+      "explanation": "En un segundo el robot avanza mucho a ciegas y la curva lo saca. Si mide más seguido, la retroalimentación llega a tiempo para corregir. Motores más rápidos lo empeorarían."
+    }
+  ],
+  "diagnostic": {
+    "question": "Un ventilador inteligente mide la temperatura del cuarto y se enciende solo cuando hace calor. En ese sistema, el motor que hace girar las aspas es…",
+    "options": [
+      { "letter": "A", "text": "Un sensor" },
+      { "letter": "B", "text": "El controlador" },
+      { "letter": "C", "text": "Un actuador" },
+      { "letter": "D", "text": "Un receptor" }
+    ],
+    "correct_answer": "C",
+    "explanation": "El sensor de temperatura percibe el calor, el controlador decide encender y el motor hace la acción de girar las aspas. Lo que actúa es un actuador."
+  }
+}

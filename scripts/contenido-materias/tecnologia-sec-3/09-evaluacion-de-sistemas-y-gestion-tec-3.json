@@ -1,0 +1,1843 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "evaluacion-de-sistemas-y-gestion-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo se gestiona un proyecto",
+    "steps": [
+      "Definir el objetivo medible y la fecha de entrega",
+      "Dividir el trabajo en tareas y ver cuáles dependen de otras",
+      "Asignar a cada tarea responsable, recursos y duración",
+      "Armar el cronograma o diagrama de Gantt",
+      "Dar seguimiento al avance real y ajustar lo atrasado"
+    ],
+    "completion_feedback": "Primero el **objetivo**, luego las **tareas** y sus **dependencias**, después **responsables, recursos y tiempos**, el **cronograma** y al final el **seguimiento**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El fandub de One Piece para la expo",
+        "content": "El club de anime de tu secundaria quiere presentar un fandub en la expo de fin de semestre: doblar al español una escena corta de One Piece donde Luffy y Zoro platican en la cubierta del barco. Faltan tres semanas. Valeria, la presidenta, escribe en el grupo la meta: un video de dos minutos, listo el viernes 28. Luego reparte: Diego traduce y adapta el guion, Sofi le da voz a Luffy y Emi a Zoro, Pao edita y Toño hace el póster. Anota lo que hace falta: un micrófono prestado, la laptop del club y el programa de edición. Al poner todo en una tabla con fechas descubren algo: nadie puede grabar sin el guion terminado y Pao no puede editar sin las voces; el póster, en cambio, se puede hacer cualquier día. En la segunda semana Emi se enferma y la grabación se atrasa tres días. Valeria revisa la tabla, ve que todo lo que sigue se recorre y ajusta: Pao empieza a editar la parte de Sofi mientras Emi se recupera. El viernes el fandub está listo, y después de la función le piden al público calificarlo del 1 al 5 para saber si funcionó. Organizar así y luego medir el resultado es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu plan del fandub ES gestión de proyectos",
+        "content": "Lo que acabas de ver con el fandub es exactamente **gestionar un proyecto**: fijar un **objetivo** medible y con fecha, dividirlo en **tareas**, asignar **responsables**, **recursos** y **tiempos**, y acomodarlo en un **cronograma** o **diagrama de Gantt**. Grabar **depende** del guion y editar depende de las voces: la cadena más larga de tareas dependientes es la **ruta crítica**, marca lo mínimo que dura el proyecto y, si una de sus tareas se atrasa, se atrasa la entrega. El póster queda fuera: tiene **holgura**, días que puede atrasarse sin mover la fecha. Revisar el avance y ajustar es el **seguimiento**. Al final se **evalúa** el resultado con **indicadores medibles**, como la calificación del público."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — evaluar la proyección del club",
+        "content": "El club proyectó la película Your Name en el auditorio. ¿Funcionó el sistema (proyector, bocinas, laptop y sala)? Evalúalo con criterios e indicadores.\n\n**Paso 1 — Eficacia:** ¿cumplió su objetivo? La película se vio completa y sin cortes: sí.\n**Paso 2 — Eficiencia:** montar el equipo tardó 45 minutos y la meta era 20: gastaron más tiempo del necesario.\n**Paso 3 — Seguridad:** una extensión cruzaba el pasillo: riesgo de tropiezo.\n**Paso 4 — Satisfacción:** 34 de 40 asistentes calificaron con 4 o 5. 34 ÷ 40 = 0.85, o sea **85 %**.\n**Paso 5 — Ajustes:** montar una hora antes y pasar el cable pegado a la pared.\n\nResultado: el sistema es **eficaz**, pero **poco eficiente** y con un riesgo que corregir antes de la siguiente función."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Evaluar un sistema técnico** es medirlo con **criterios** (eficacia, eficiencia, seguridad, costo, impacto ambiental y social, satisfacción) usando **indicadores**: número, unidad y meta. **Gestionar un proyecto** es fijar **objetivo, tareas, responsables, recursos y tiempos**, ordenarlos en un **cronograma o Gantt**, cuidar la **ruta crítica** y dar **seguimiento**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Eficacia es que el fandub quede listo para la expo; eficiencia es que quede listo sin desvelarse ni gastar de más. Un proyecto puede ser eficaz y nada eficiente."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "No manda la tarea más larga: manda la cadena más larga de tareas que dependen unas de otras.",
+        "data": {
+          "intro": "Calcula cuánto dura el fandub. Guion: 4 días. Grabar: 3 días, después del guion. Editar: 5 días, después de grabar. Póster: 2 días, sin depender de nada.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Busca las dependencias: grabar necesita el guion y editar necesita las voces. Guion, grabar y editar forman una cadena."
+            },
+            {
+              "text": "Suma la cadena: 4 + 3 + 5 = 12 días. Esa es la ruta crítica: el fandub no puede estar listo en menos tiempo."
+            },
+            {
+              "text": "El póster dura 2 días y no depende de nadie: puede atrasarse hasta 12 − 2 = 10 días y aún estar listo el día 12. Ese margen es su holgura."
+            },
+            {
+              "text": "Si la grabación se atrasa 3 días, la cadena sube a 15 días: por estar en la ruta crítica, se atrasa todo el proyecto."
+            },
+            {
+              "text": "Si el póster se atrasa 3 días, el fandub sigue saliendo en 12 días: el atraso cabe en su holgura."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Eficacia o eficiencia?",
+        "content": "Eficacia: ¿se logró el objetivo? Eficiencia: ¿cuánto tiempo, dinero o material costó lograrlo?",
+        "data": {
+          "prompt": "Arrastra cada dato del fandub al criterio que mide.",
+          "buckets": [
+            "Eficacia (logra el objetivo)",
+            "Eficiencia (recursos usados)"
+          ],
+          "items": [
+            {
+              "t": "El fandub quedó listo para la expo",
+              "b": 0
+            },
+            {
+              "t": "Grabaron todas las voces en una tarde",
+              "b": 1
+            },
+            {
+              "t": "La escena completa quedó doblada",
+              "b": 0
+            },
+            {
+              "t": "Usaron un micrófono prestado, sin comprar",
+              "b": 1
+            },
+            {
+              "t": "El público entendió todos los diálogos",
+              "b": 0
+            },
+            {
+              "t": "Editaron en 2 horas y no en 5",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada elemento de la gestión con su ejemplo en el fandub.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Objetivo",
+              "b": "Fandub listo el viernes 28"
+            },
+            {
+              "a": "Responsable",
+              "b": "Pao edita el video"
+            },
+            {
+              "a": "Recurso",
+              "b": "Micrófono prestado"
+            },
+            {
+              "a": "Dependencia",
+              "b": "Sin guion, no se graba"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada momento del fandub?",
+        "left_label": "Fandub del club",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Video de 2 minutos, listo el viernes 28",
+            "right": "Objetivo"
+          },
+          {
+            "left": "Nadie graba sin el guion terminado",
+            "right": "Dependencia"
+          },
+          {
+            "left": "Valeria revisa la tabla y ajusta",
+            "right": "Seguimiento"
+          },
+          {
+            "left": "El público califica del 1 al 5",
+            "right": "Indicador"
+          }
+        ],
+        "completion_feedback": "Tu fandub tuvo **objetivo**, **dependencias**, **seguimiento** y un **indicador**. Ahora ponle nombre formal: eso es **gestionar** y **evaluar** un proyecto."
+      },
+      "quiz": [
+        {
+          "question": "En el fandub, «Sofi le da voz a Luffy y Emi a Zoro» define…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los responsables"
+            },
+            {
+              "letter": "B",
+              "text": "El objetivo del proyecto"
+            },
+            {
+              "letter": "C",
+              "text": "Los recursos materiales"
+            },
+            {
+              "letter": "D",
+              "text": "La ruta crítica completa"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Decir quién se encarga de cada tarea es asignar responsables. El objetivo es el video listo el viernes 28 y los recursos son cosas como el micrófono o la laptop.",
+          "difficulty": 1
+        },
+        {
+          "question": "En la proyección del club, montar el equipo tardó 45 minutos cuando la meta era 20. ¿Qué criterio sale mal?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Eficacia"
+            },
+            {
+              "letter": "B",
+              "text": "Eficiencia"
+            },
+            {
+              "letter": "C",
+              "text": "Seguridad"
+            },
+            {
+              "letter": "D",
+              "text": "Impacto social"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La película sí se vio (eso es eficacia), pero se gastó más tiempo del necesario para lograrlo. Medir los recursos usados, como el tiempo, es eficiencia.",
+          "difficulty": 2
+        },
+        {
+          "question": "Guion 4 días; grabar 3, después del guion; editar 5, después de grabar; póster 2, independiente. ¿Cuánto dura el fandub como mínimo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "14 días"
+            },
+            {
+              "letter": "B",
+              "text": "12 días"
+            },
+            {
+              "letter": "C",
+              "text": "5 días"
+            },
+            {
+              "letter": "D",
+              "text": "9 días"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La ruta crítica es guion, grabar y editar: 4 + 3 + 5 = 12 días. El póster corre en paralelo, así que no se suma. 14 sería sumar todo y 5 es solo la tarea más larga.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál es un indicador medible de la satisfacción del público con el fandub?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que el público lo disfrute"
+            },
+            {
+              "letter": "B",
+              "text": "85 % calificó con 4 o 5"
+            },
+            {
+              "letter": "C",
+              "text": "Que quede muy bonito"
+            },
+            {
+              "letter": "D",
+              "text": "Que nadie se aburra tanto"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un indicador es un número que se puede medir y comparar con una meta. «Que lo disfrute» o «muy bonito» dependen de quién opine.",
+          "difficulty": 2
+        },
+        {
+          "question": "Toño se atrasa 3 días con el póster, que dura 2 días y no depende de nadie. ¿Qué pasa con la entrega del fandub?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Se atrasa también 3 días"
+            },
+            {
+              "letter": "B",
+              "text": "No cambia: tiene holgura"
+            },
+            {
+              "letter": "C",
+              "text": "Se atrasa el doble, 6 días"
+            },
+            {
+              "letter": "D",
+              "text": "Se cancela la grabación"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El póster no está en la ruta crítica y tiene 10 días de holgura. Un atraso de 3 días cabe en ese margen, así que la entrega no se mueve.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El boleto digital del estadio",
+        "content": "Tu equipo estrenó boleto digital: ya no hay boletos de papel, solo un código QR en la app del club. La directiva presume que ahora entrar es más rápido. El domingo vas con tu papá al partido y lo compruebas: antes hacían 25 minutos de fila y hoy, 10. Pero en la puerta de tu sección casi nadie tiene señal y la app no abre el código; a un señor mayor que no sabe dónde buscarlo lo mandan a la taquilla. Tu papá dice que el sistema es un éxito; tú dices que es un desastre. Los dos tienen razón a medias, porque cada uno mira una sola cosa. Así que haces lo que haría un ingeniero: escribes qué debe cumplir el acceso y cómo medirlo. ¿Cuántos minutos de fila hay? ¿Cuántos aficionados entran al primer intento? ¿Se frenan los boletos falsos? ¿Cuánto papel se ahorra? ¿Deja fuera a quien no tiene celular? ¿Qué tan contentos salen todos? Con números en la mano ya no es opinión: el sistema es más rápido, pero le falla a un grupo de personas y hay que ajustarlo. Juzgar un sistema con criterios y datos es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu lista del acceso ES evaluar un sistema técnico",
+        "content": "Lo que acabas de ver con el boleto digital es exactamente **evaluar un sistema técnico**: revisarlo con varios **criterios**, no con una sola impresión. Los criterios son **eficacia** (¿logra su objetivo?, que la gente entre), **eficiencia** (¿con cuántos recursos?: minutos, personal, energía), **seguridad**, **costo**, **impacto ambiental** (papel ahorrado), **impacto social** (¿deja fuera a alguien?) y **satisfacción del usuario**. Cada criterio se mide con un **indicador**: un número con unidad y una meta, como «fila de máximo 15 minutos». Comparar el resultado con la meta dice qué hay que **ajustar**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el cronograma de la copa de la secundaria",
+        "content": "Te toca organizar la copa de futbol de la secundaria.\n\n**Paso 1 — Objetivo:** jugar la final el 30 de mayo con 8 equipos.\n**Paso 2 — Tareas, responsables y tiempos:** inscripciones con Ana (2 semanas), sorteo y calendario con Beto (1 semana), reservar la cancha con Caro (1 semana), jornadas y final (4 semanas), medallas con Dani (2 semanas).\n**Paso 3 — Dependencias:** el calendario necesita saber qué equipos se inscribieron, y las jornadas necesitan el calendario y la cancha.\n**Paso 4 — Ruta crítica:** inscripciones, calendario y jornadas: 2 + 1 + 4 = **7 semanas**.\n**Paso 5 — Holgura:** la cancha (1 semana) no se usa hasta la semana 3: tiene 2 de margen. Las medallas (2 semanas) solo deben llegar para la final, en la semana 7: tienen 5.\n\nResultado: toca arrancar 7 semanas antes del 30 de mayo; si el sorteo se atrasa, se mueve la final."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Evaluar un sistema técnico** es medirlo con **criterios** (eficacia, eficiencia, seguridad, costo, impacto ambiental y social, satisfacción) usando **indicadores**: número, unidad y meta. **Gestionar un proyecto** es fijar **objetivo, tareas, responsables, recursos y tiempos**, ordenarlos en un **cronograma o Gantt**, cuidar la **ruta crítica** y dar **seguimiento**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Eficacia es meter el gol; eficiencia es meterlo con pocos toques. Si la pregunta habla de lograr el objetivo, es eficacia; si habla de tiempo, dinero o energía gastados, es eficiencia."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un indicador solo sirve si lo comparas con una meta: así sabes si el sistema cumple o hay que ajustarlo.",
+        "data": {
+          "intro": "Evalúa el acceso con QR. Metas: fila de máximo 15 minutos y 95 % de entradas al primer intento. Ese domingo llegaron 20,000 aficionados.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Indicador de eficiencia: la fila promedio fue de 10 minutos. La meta era máximo 15: cumple."
+            },
+            {
+              "text": "Indicador de eficacia: 18,600 de 20,000 entraron al primer intento. 18,600 ÷ 20,000 = 0.93, o sea 93 %."
+            },
+            {
+              "text": "Compara con la meta: 93 % es menor que 95 %. No cumple: 1,400 aficionados tuvieron problemas para entrar."
+            },
+            {
+              "text": "Busca la causa en los datos: casi todas las fallas fueron en las puertas donde no hay señal."
+            },
+            {
+              "text": "Ajuste: poner wifi en esas puertas y aceptar el QR impreso. En el siguiente partido se miden otra vez los mismos indicadores."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué criterio mide?",
+        "content": "Cada dato que se mide del acceso al estadio sirve para evaluar un criterio distinto del sistema.",
+        "data": {
+          "prompt": "Arrastra cada dato del acceso al criterio que mide.",
+          "buckets": [
+            "Eficiencia",
+            "Seguridad",
+            "Impacto ambiental",
+            "Impacto social"
+          ],
+          "items": [
+            {
+              "t": "Minutos de fila en la entrada",
+              "b": 0
+            },
+            {
+              "t": "Boletos falsos detectados en la puerta",
+              "b": 1
+            },
+            {
+              "t": "Hojas de papel que ya no se imprimen",
+              "b": 2
+            },
+            {
+              "t": "Personas sin celular que no pudieron entrar",
+              "b": 3
+            },
+            {
+              "t": "Personal necesario en cada puerta",
+              "b": 0
+            },
+            {
+              "t": "Salidas de emergencia despejadas",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada criterio con lo que se revisa en el acceso al estadio.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Eficacia",
+              "b": "Lograr que todos entren"
+            },
+            {
+              "a": "Eficiencia",
+              "b": "Menos minutos y personal"
+            },
+            {
+              "a": "Impacto ambiental",
+              "b": "Cero boletos de papel"
+            },
+            {
+              "a": "Satisfacción",
+              "b": "Encuesta a la salida"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada cosa del boleto digital?",
+        "left_label": "Boleto digital",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "La gente logra entrar al estadio",
+            "right": "Eficacia"
+          },
+          {
+            "left": "La fila bajó de 25 a 10 minutos",
+            "right": "Eficiencia"
+          },
+          {
+            "left": "Al señor sin app lo mandan a taquilla",
+            "right": "Impacto social"
+          },
+          {
+            "left": "«Fila de máximo 15 minutos»",
+            "right": "Indicador con meta"
+          }
+        ],
+        "completion_feedback": "Revisaste **eficacia**, **eficiencia**, **impacto social** y un **indicador con meta**. Ahora ponle nombre formal: eso es **evaluar un sistema técnico**."
+      },
+      "quiz": [
+        {
+          "question": "El acceso con QR bajó la fila de 25 a 10 minutos. ¿Qué criterio mejoró?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Eficiencia"
+            },
+            {
+              "letter": "B",
+              "text": "Impacto ambiental"
+            },
+            {
+              "letter": "C",
+              "text": "Seguridad física"
+            },
+            {
+              "letter": "D",
+              "text": "Costo del boleto"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El objetivo, que la gente entre, ya se cumplía antes; ahora se logra gastando menos tiempo. Hacer lo mismo con menos recursos es eficiencia.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu papá dice que el boleto digital «es un éxito» y tú que «es un desastre». ¿Por qué ninguno lo evalúa bien?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cada quien mira un solo criterio"
+            },
+            {
+              "letter": "B",
+              "text": "Ninguno de los dos sabe usar la app"
+            },
+            {
+              "letter": "C",
+              "text": "Fueron a un solo partido del torneo"
+            },
+            {
+              "letter": "D",
+              "text": "El sistema todavía es demasiado nuevo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Tu papá solo ve la rapidez y tú solo ves a quienes no pudieron entrar. Evaluar un sistema exige revisar varios criterios con indicadores, no una sola impresión.",
+          "difficulty": 2
+        },
+        {
+          "question": "La meta era que 95 % entrara al primer intento. Entraron así 18,600 de 20,000 aficionados. ¿Qué concluyes?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cumple: casi todos entraron"
+            },
+            {
+              "letter": "B",
+              "text": "No cumple: fue el 93 %"
+            },
+            {
+              "letter": "C",
+              "text": "Cumple: falló solo el 7 %"
+            },
+            {
+              "letter": "D",
+              "text": "No cumple: fue el 86 %"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "18,600 ÷ 20,000 = 0.93, o sea 93 %. Es menor que la meta de 95 %, así que no cumple. Que falle «solo» el 7 % suena poco, pero la meta permitía máximo 5 %.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la copa de la secundaria, ¿por qué el calendario no puede hacerse antes de que terminen las inscripciones?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Depende de saber qué equipos hay"
+            },
+            {
+              "letter": "B",
+              "text": "El calendario es la tarea más larga"
+            },
+            {
+              "letter": "C",
+              "text": "Las inscripciones tienen holgura"
+            },
+            {
+              "letter": "D",
+              "text": "Lo hace un responsable diferente"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Sin saber cuántos y cuáles equipos hay, no se pueden armar los partidos: es una dependencia. Además, el calendario dura 1 semana, no es la tarea más larga.",
+          "difficulty": 2
+        },
+        {
+          "question": "Dani empieza a pedir las medallas 3 semanas tarde. Tardan 2 semanas en llegar y la final es en la semana 7. ¿Qué pasa con la final?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No cambia: tenían holgura"
+            },
+            {
+              "letter": "B",
+              "text": "Se mueve 3 semanas"
+            },
+            {
+              "letter": "C",
+              "text": "Se recorre todo el calendario"
+            },
+            {
+              "letter": "D",
+              "text": "Se mueve solo 1 semana"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Las medallas no están en la ruta crítica: con el atraso llegan en la semana 3 + 2 = 5, antes de la final. Tenían 7 − 2 = 5 semanas de holgura y el atraso de 3 cabe en ese margen.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "La fila virtual para ver a BLACKPINK",
+        "content": "Imagina que BLACKPINK anuncia concierto en la Ciudad de México y la venta abre un jueves a las 10:00. Entras a la fila virtual a las 9:59 y la página te da tu lugar: 48,312. Esperas 50 minutos viendo avanzar la barrita y, cuando por fin te toca, la sección que querías ya está agotada; compras en otra y pagas un cargo por servicio que no esperabas. Esa misma tarde aparecen boletos en reventa al triple. En el chat de BLINKs todos opinan: «la fila fue un fraude», «a mí me fue perfecto», «al menos la página nunca se cayó». Tu amiga Majo, que quiere estudiar ingeniería, propone dejar de pelear y hacer una tabla: ¿cuántos de los que hicieron fila consiguieron boleto?, ¿cuántos minutos esperaron en promedio?, ¿la página se cayó?, ¿cuántos boletos acabaron con revendedores?, ¿cuánto se pagó de cargos?, ¿qué tan satisfechos quedaron, del 1 al 10? Con esos números, el «fue un fraude» se convierte en algo que sí se puede revisar y mejorar. Juzgar un sistema con criterios y datos, no con el coraje del momento, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La tabla de Majo ES evaluar un sistema técnico",
+        "content": "Lo que acabas de ver con la fila virtual es exactamente **evaluar un sistema técnico** con **criterios**: **eficacia** (¿se completó la venta?), **eficiencia** (minutos de espera, capacidad del servidor), **seguridad** (frenar a los bots y proteger los datos de la tarjeta), **costo** (cargos por servicio), **impacto social** (¿deja fuera a quien no tiene tarjeta o buen internet?) y **satisfacción del usuario**. Cada pregunta de la tabla de Majo es un **indicador medible**: número, unidad y meta. Con los datos se decide qué **ajustar**: más servidores, filtros contra bots o un límite de boletos por persona."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el fan project de slogans",
+        "content": "Las BLINKs de tu ciudad quieren repartir slogans de papel en la fila del concierto.\n\n**Paso 1 — Objetivo:** 500 slogans impresos y repartidos el día del concierto.\n**Paso 2 — Tareas, responsables y recursos:** Majo diseña el slogan (5 días), Ale junta la cooperación de $600 (7 días) y la imprenta imprime (3 días).\n**Paso 3 — Dependencias:** imprimir necesita el diseño y también el dinero. Diseñar y juntar dinero corren en paralelo.\n**Paso 4 — Ruta crítica:** manda la más larga de las dos: 7 días de cooperación + 3 de impresión = **10 días**.\n**Paso 5 — Holgura:** el diseño termina el día 5 y no se usa hasta el día 7: tiene **2 días** de holgura.\n\nResultado: hay que arrancar al menos 10 días antes del concierto, y si la cooperación se atrasa, se atrasa todo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Evaluar un sistema técnico** es medirlo con **criterios** (eficacia, eficiencia, seguridad, costo, impacto ambiental y social, satisfacción) usando **indicadores**: número, unidad y meta. **Gestionar un proyecto** es fijar **objetivo, tareas, responsables, recursos y tiempos**, ordenarlos en un **cronograma o Gantt**, cuidar la **ruta crítica** y dar **seguimiento**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "En la fila virtual, que te deje comprar es eficacia; que no te tenga dos horas viendo la barrita es eficiencia. Para cada criterio pregúntate: ¿con qué número lo mido?"
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un buen indicador separa lo que el sistema controla, como los bots, de lo que no, como el tamaño del estadio.",
+        "data": {
+          "intro": "Evalúa la fila virtual con la tabla de Majo. Datos: 200,000 personas en la fila, 60,000 boletos a la venta y 9,000 de ellos en reventa.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Eficacia: ¿se vendió todo sin caídas? Se vendieron los 60,000 boletos y la página no se cayó: cumple."
+            },
+            {
+              "text": "Acceso: 60,000 ÷ 200,000 = 0.3. Solo el 30 % de la fila pudo comprar, pero eso depende del tamaño del estadio, no de la página."
+            },
+            {
+              "text": "Seguridad contra reventa: 9,000 ÷ 60,000 = 0.15, o sea 15 % de los boletos. La meta era menos de 5 %: no cumple."
+            },
+            {
+              "text": "Ajuste: límite de 4 boletos por cuenta y verificación contra bots. En la siguiente venta se mide otra vez el mismo indicador."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Criterio o indicador?",
+        "content": "El criterio dice QUÉ se evalúa. El indicador dice CÓMO se mide, con un número y una unidad.",
+        "data": {
+          "prompt": "Arrastra cada elemento de la tabla de Majo a su categoría.",
+          "buckets": [
+            "Criterio (qué se evalúa)",
+            "Indicador (cómo se mide)"
+          ],
+          "items": [
+            {
+              "t": "Seguridad",
+              "b": 0
+            },
+            {
+              "t": "Minutos promedio en la fila",
+              "b": 1
+            },
+            {
+              "t": "Eficiencia",
+              "b": 0
+            },
+            {
+              "t": "Porcentaje de boletos en reventa",
+              "b": 1
+            },
+            {
+              "t": "Satisfacción del usuario",
+              "b": 0
+            },
+            {
+              "t": "Calificación promedio del 1 al 10",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de la gestión con su ejemplo en el fan project.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Ruta crítica",
+              "b": "Cooperación + impresión"
+            },
+            {
+              "a": "Holgura",
+              "b": "2 días libres del diseño"
+            },
+            {
+              "a": "Recurso",
+              "b": "$600 de cooperación"
+            },
+            {
+              "a": "Objetivo",
+              "b": "500 slogans para el show"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué criterio es cada cosa de la fila virtual?",
+        "left_label": "Fila virtual",
+        "right_label": "Criterio",
+        "pairs": [
+          {
+            "left": "Se vendieron todos los boletos",
+            "right": "Eficacia"
+          },
+          {
+            "left": "50 minutos viendo la barrita",
+            "right": "Eficiencia"
+          },
+          {
+            "left": "Bots que compran antes que tú",
+            "right": "Seguridad"
+          },
+          {
+            "left": "Cargo por servicio inesperado",
+            "right": "Costo"
+          }
+        ],
+        "completion_feedback": "Revisaste **eficacia**, **eficiencia**, **seguridad** y **costo**. Ahora ponle nombre formal: eso es **evaluar un sistema técnico** con criterios."
+      },
+      "quiz": [
+        {
+          "question": "Las fans miden «minutos promedio en la fila virtual». ¿Qué es ese dato?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un indicador"
+            },
+            {
+              "letter": "B",
+              "text": "Un responsable"
+            },
+            {
+              "letter": "C",
+              "text": "Una dependencia"
+            },
+            {
+              "letter": "D",
+              "text": "Un objetivo"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es un número con unidad que mide un criterio, en este caso la eficiencia: eso es un indicador. Si se le pone meta, como «máximo 30 minutos», sirve para decidir si el sistema cumple.",
+          "difficulty": 1
+        },
+        {
+          "question": "Unos bots se colaron a la fila virtual, compraron boletos antes que las fans y luego los revendieron. ¿Qué criterio revisa si la página puede frenarlos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Eficiencia"
+            },
+            {
+              "letter": "B",
+              "text": "Impacto ambiental"
+            },
+            {
+              "letter": "C",
+              "text": "Seguridad"
+            },
+            {
+              "letter": "D",
+              "text": "Satisfacción"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Frenar a los bots y proteger el sistema contra abusos es parte de la seguridad. La eficiencia mide tiempo y recursos, no quién logra colarse.",
+          "difficulty": 2
+        },
+        {
+          "question": "La meta era que menos de 5 % de los boletos acabara en reventa. Fueron 9,000 de 60,000. ¿Cumple?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No: fue el 15 %"
+            },
+            {
+              "letter": "B",
+              "text": "Sí: fue el 1.5 %"
+            },
+            {
+              "letter": "C",
+              "text": "No: fue el 30 %"
+            },
+            {
+              "letter": "D",
+              "text": "Sí: fue el 0.15 %"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "9,000 ÷ 60,000 = 0.15, y 0.15 × 100 = 15 %. Es tres veces la meta de 5 %, así que no cumple. Olvidar multiplicar por 100 da el 0.15 % equivocado.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el fan project, imprimir necesita el dinero de la cooperación. ¿Qué relación tienen esas dos tareas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Imprimir depende de ella"
+            },
+            {
+              "letter": "B",
+              "text": "Son tareas independientes"
+            },
+            {
+              "letter": "C",
+              "text": "Pueden hacerse al revés"
+            },
+            {
+              "letter": "D",
+              "text": "Juntar dinero tiene holgura"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La imprenta no empieza sin el dinero: imprimir depende de la cooperación. Por eso la cooperación está en la ruta crítica y no tiene holgura.",
+          "difficulty": 2
+        },
+        {
+          "question": "Diseño 5 días y cooperación 7 días, al mismo tiempo; después, impresión 3 días. ¿Cuánto dura el fan project como mínimo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "15 días"
+            },
+            {
+              "letter": "B",
+              "text": "8 días"
+            },
+            {
+              "letter": "C",
+              "text": "10 días"
+            },
+            {
+              "letter": "D",
+              "text": "7 días"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Imprimir espera a la más larga de las dos tareas paralelas: 7 días. Luego van 3 de impresión: 7 + 3 = 10. Sumar todo da 15 y tomar el diseño da 8.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El obby de tu equipo en Roblox Studio",
+        "content": "Tú y tres amigos deciden hacer su propio obby en Roblox Studio para el concurso de videojuegos de la escuela, que se entrega en cuatro semanas. Los primeros días nadie organiza nada: Iker modela un castillo enorme que no sale en ningún nivel, Dani programa unas monedas que todavía no tienen dónde ponerse y nadie ha diseñado los niveles. Se asustan y hacen un plan en el pizarrón. Primero escriben la meta: un obby de 10 niveles que funcione en celular y en compu, entregado el viernes 14. Luego las tareas, cada una con su responsable y sus días: diseñar los niveles en papel, construirlos en Studio, programar los checkpoints, hacer la portada y probarlo con compañeros. Al ponerlas en una tabla por semanas ven el problema: no se pueden construir niveles sin diseñarlos, ni poner checkpoints sin niveles, ni probar sin todo lo anterior. La portada, en cambio, se puede hacer cualquier día. Cada viernes revisan la tabla y mueven lo que se atrasó. Llegan a tiempo y, al final, piden a 20 compañeros que lo jueguen para medir si funciona. Ese plan es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu plan del obby ES gestión de proyectos",
+        "content": "Lo que acabas de ver con el obby es exactamente **gestionar un proyecto**: un **objetivo** concreto y con fecha (10 niveles, viernes 14), **tareas** con **responsable**, **recursos** (Roblox Studio, compus, horas de trabajo) y **tiempos**, ordenadas en un **cronograma** o **diagrama de Gantt**. Las tareas que esperan a otra tienen una **dependencia**; la cadena más larga de ellas es la **ruta crítica** y marca la duración mínima. La portada, fuera de esa cadena, tiene **holgura**. Revisar cada viernes y mover lo atrasado es el **seguimiento**. Al final se **evalúa** con **indicadores**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — evaluar el servidor de Minecraft del grupo",
+        "content": "Tu grupo renta un servidor de Minecraft y, al cumplir un mes, hay que decidir si se queda.\n\n**Paso 1 — Eficacia:** ¿cumple su objetivo, que los 8 jueguen juntos? Estuvo encendido 714 de 720 horas: 714 ÷ 720 = **99.2 %**.\n**Paso 2 — Costo:** $160 al mes entre 8 = $20 por persona. La meta era máximo $25: cumple.\n**Paso 3 — Seguridad:** tiene lista blanca, así que solo entran ustedes. Nadie ajeno se coló.\n**Paso 4 — Satisfacción:** 7 de 8 lo califican con 4 o 5. 7 ÷ 8 = 0.875, o sea **87.5 %**; la meta era 75 %: cumple.\n**Paso 5 — Ajuste:** lo único que falta es un respaldo semanal del mundo.\n\nResultado: el servidor se queda, porque cada criterio tiene un **indicador** y una **meta** con qué compararlo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Evaluar un sistema técnico** es medirlo con **criterios** (eficacia, eficiencia, seguridad, costo, impacto ambiental y social, satisfacción) usando **indicadores**: número, unidad y meta. **Gestionar un proyecto** es fijar **objetivo, tareas, responsables, recursos y tiempos**, ordenarlos en un **cronograma o Gantt**, cuidar la **ruta crítica** y dar **seguimiento**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el Gantt como barras de progreso: una tarea que depende de otra no puede empezar a llenarse hasta que la anterior llegue al 100 %."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El seguimiento compara el avance real contra el planeado; si no coinciden, se ajusta antes de que sea tarde.",
+        "data": {
+          "intro": "Da seguimiento al obby. El medidor muestra el avance real del proyecto; el plan pedía 25 % más cada semana.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Semana 1: diseñan los 10 niveles en papel. Avance real: 20 %. El plan pedía 25 %: van un poco atrás.",
+              "delta": 20
+            },
+            {
+              "text": "Semana 2: construyen 4 de los 10 niveles. Avance real: 40 %, cuando el plan pedía 50 %. Hay que ajustar.",
+              "delta": 20
+            },
+            {
+              "text": "Ajuste: Iker deja el castillo y ayuda a construir. Semana 3: terminan los 10 niveles y los checkpoints. Avance: 80 %.",
+              "delta": 40
+            },
+            {
+              "text": "Semana 4: lo prueban con compañeros, corrigen dos saltos imposibles y lo entregan el viernes 14. Avance: 100 %.",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Depende de otra tarea?",
+        "content": "Una tarea dependiente no puede empezar hasta que termine otra. Una independiente se puede hacer en cualquier momento.",
+        "data": {
+          "prompt": "Arrastra cada tarea del obby a su categoría.",
+          "buckets": [
+            "Depende de otra tarea",
+            "Se puede hacer cuando sea"
+          ],
+          "items": [
+            {
+              "t": "Construir los niveles en Studio",
+              "b": 0
+            },
+            {
+              "t": "Diseñar la portada del juego",
+              "b": 1
+            },
+            {
+              "t": "Programar los checkpoints",
+              "b": 0
+            },
+            {
+              "t": "Elegir a los compañeros que lo probarán",
+              "b": 1
+            },
+            {
+              "t": "Probar el obby con compañeros",
+              "b": 0
+            },
+            {
+              "t": "Elegir la música del lobby",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de la gestión con su ejemplo en el obby.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Objetivo",
+              "b": "10 niveles el viernes 14"
+            },
+            {
+              "a": "Ruta crítica",
+              "b": "Diseñar, construir, probar"
+            },
+            {
+              "a": "Holgura",
+              "b": "La portada puede esperar"
+            },
+            {
+              "a": "Seguimiento",
+              "b": "Revisar cada viernes"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del plan del obby?",
+        "left_label": "Obby en Studio",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "10 niveles, entregado el viernes 14",
+            "right": "Objetivo"
+          },
+          {
+            "left": "Sin niveles no hay checkpoints",
+            "right": "Dependencia"
+          },
+          {
+            "left": "Iker se encarga de construir",
+            "right": "Responsable"
+          },
+          {
+            "left": "Cada viernes mueven lo atrasado",
+            "right": "Seguimiento"
+          }
+        ],
+        "completion_feedback": "Tu equipo usó **objetivo**, **dependencias**, **responsables** y **seguimiento**. Ahora ponle nombre formal: eso es **gestionar un proyecto** con cronograma."
+      },
+      "quiz": [
+        {
+          "question": "«Un obby de 10 niveles que funcione en celular y en compu, entregado el viernes 14» es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El objetivo"
+            },
+            {
+              "letter": "B",
+              "text": "Una tarea"
+            },
+            {
+              "letter": "C",
+              "text": "Un recurso"
+            },
+            {
+              "letter": "D",
+              "text": "La ruta crítica"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Dice qué se quiere lograr, cómo saber si se logró (10 niveles, celular y compu) y cuándo. Eso es un objetivo medible y con fecha.",
+          "difficulty": 1
+        },
+        {
+          "question": "Del servidor de Minecraft se anota: «$160 al mes entre 8 = $20 por persona». ¿Qué criterio evalúa ese dato?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Eficacia"
+            },
+            {
+              "letter": "B",
+              "text": "Costo"
+            },
+            {
+              "letter": "C",
+              "text": "Seguridad"
+            },
+            {
+              "letter": "D",
+              "text": "Satisfacción"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es cuánto dinero cuesta mantener el sistema: el criterio de costo. Con la meta de máximo $25 por persona, se puede decir que cumple.",
+          "difficulty": 2
+        },
+        {
+          "question": "Diseñar niveles 5 días; construir 8, después de diseñar; checkpoints 3, después de construir; portada 4, independiente. ¿Duración mínima?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "20 días"
+            },
+            {
+              "letter": "B",
+              "text": "8 días"
+            },
+            {
+              "letter": "C",
+              "text": "16 días"
+            },
+            {
+              "letter": "D",
+              "text": "12 días"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La ruta crítica es diseñar, construir y checkpoints: 5 + 8 + 3 = 16 días. La portada corre en paralelo. 20 sería sumar todo y 8 es solo la tarea más larga.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la semana 2 el obby lleva 40 % de avance y el plan pedía 50 %. ¿Qué parte de la gestión detecta esa diferencia?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El objetivo"
+            },
+            {
+              "letter": "B",
+              "text": "La holgura"
+            },
+            {
+              "letter": "C",
+              "text": "El seguimiento"
+            },
+            {
+              "letter": "D",
+              "text": "El presupuesto"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El seguimiento compara el avance real con el planeado. Detectar a tiempo que van 10 % atrás permite ajustar, como pasar a Iker a construir niveles.",
+          "difficulty": 2
+        },
+        {
+          "question": "Dani se atrasa 2 días con los checkpoints, que están en la ruta crítica, y nadie hace ajustes. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "No pasa nada: tiene holgura"
+            },
+            {
+              "letter": "B",
+              "text": "La entrega se atrasa 2 días"
+            },
+            {
+              "letter": "C",
+              "text": "Solo se atrasa la portada"
+            },
+            {
+              "letter": "D",
+              "text": "La entrega se adelanta 2 días"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las tareas de la ruta crítica no tienen holgura: lo que se atrasan ellas se atrasa el proyecto entero. Por eso hay que vigilarlas más que a las demás.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué mide la eficacia de un sistema técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Si logra el objetivo para el que se creó"
+        },
+        {
+          "letter": "B",
+          "text": "Cuánto tiempo y dinero gasta al funcionar"
+        },
+        {
+          "letter": "C",
+          "text": "Qué tan bonito se ve para el usuario"
+        },
+        {
+          "letter": "D",
+          "text": "Qué daño le causa al medio ambiente"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en la pregunta más básica que le harías a cualquier aparato: ¿hace lo que tiene que hacer?",
+      "explanation": "La eficacia revisa si el sistema cumple su objetivo. Lo que gasta para lograrlo es la eficiencia y el daño al ambiente es el impacto ambiental."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué mide la eficiencia de un sistema técnico?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cuántas personas lo usan cada día"
+        },
+        {
+          "letter": "B",
+          "text": "Los recursos que usa para lograrlo"
+        },
+        {
+          "letter": "C",
+          "text": "Si protege de accidentes a quienes lo usan"
+        },
+        {
+          "letter": "D",
+          "text": "Si tiene muchas funciones distintas"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en tiempo, dinero, energía y materiales.",
+      "explanation": "La eficiencia mide cuántos recursos (tiempo, dinero, energía, materiales) gasta un sistema para lograr su objetivo. Protegerte de accidentes es seguridad."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En la evaluación de un sistema, ¿qué es un indicador?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un dato medible para un criterio"
+        },
+        {
+          "letter": "B",
+          "text": "La persona encargada de una tarea"
+        },
+        {
+          "letter": "C",
+          "text": "Un paso del diagrama de flujo"
+        },
+        {
+          "letter": "D",
+          "text": "Una opinión general sobre el sistema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en algo que se pueda contar o medir igual sin importar quién lo revise.",
+      "explanation": "Un indicador es un dato medible, con número y unidad, como «minutos de espera». Una opinión general no se puede comparar con una meta."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En un diagrama de Gantt, ¿qué representa el largo de cada barra?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La importancia de la tarea"
+        },
+        {
+          "letter": "B",
+          "text": "El costo de la tarea"
+        },
+        {
+          "letter": "C",
+          "text": "La duración de la tarea"
+        },
+        {
+          "letter": "D",
+          "text": "El número de responsables"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda qué va en el eje horizontal de un Gantt.",
+      "explanation": "En el Gantt, el eje horizontal es el tiempo. Cada barra empieza cuando inicia la tarea y termina cuando acaba, así que su largo es la duración."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En la gestión de un proyecto, ¿qué es un responsable?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El dinero que se necesita para la tarea"
+        },
+        {
+          "letter": "B",
+          "text": "Quien se encarga de una tarea"
+        },
+        {
+          "letter": "C",
+          "text": "La fecha en que se entrega el proyecto"
+        },
+        {
+          "letter": "D",
+          "text": "El objetivo principal del proyecto"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Es la respuesta a la pregunta «¿quién lo hace?».",
+      "explanation": "El responsable es la persona que se encarga de que una tarea se haga. Asignarlo evita que todos piensen que otro lo va a hacer."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué criterio revisa si un sistema puede causar accidentes o lesiones?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Eficiencia"
+        },
+        {
+          "letter": "B",
+          "text": "Costo"
+        },
+        {
+          "letter": "C",
+          "text": "Seguridad"
+        },
+        {
+          "letter": "D",
+          "text": "Satisfacción"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en el criterio que protege a las personas.",
+      "explanation": "La seguridad revisa los riesgos para quienes usan el sistema o están cerca de él, como cables sueltos, piezas filosas o calor."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué criterio revisa la basura, la energía y la contaminación que genera un sistema?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Impacto social"
+        },
+        {
+          "letter": "B",
+          "text": "Impacto ambiental"
+        },
+        {
+          "letter": "C",
+          "text": "Eficacia"
+        },
+        {
+          "letter": "D",
+          "text": "Satisfacción del usuario"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Basura, energía y contaminación afectan a la naturaleza.",
+      "explanation": "El impacto ambiental mide cómo afecta el sistema a la naturaleza. El impacto social mide cómo afecta a las personas y comunidades."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una dependencia entre tareas de un proyecto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una tarea que espera a que termine otra"
+        },
+        {
+          "letter": "B",
+          "text": "Una tarea que se hace al mismo tiempo que otra"
+        },
+        {
+          "letter": "C",
+          "text": "Una tarea que cuesta más que las demás"
+        },
+        {
+          "letter": "D",
+          "text": "Una tarea que puede saltarse sin problema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en pintar una pared: ¿puedes hacerlo antes de construirla?",
+      "explanation": "Hay dependencia cuando una tarea no puede empezar hasta que termine otra, como pintar después de construir. Las que van al mismo tiempo son tareas en paralelo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué son los recursos de un proyecto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Material, dinero, equipo y tiempo"
+        },
+        {
+          "letter": "B",
+          "text": "Las fechas de inicio y fin de cada tarea"
+        },
+        {
+          "letter": "C",
+          "text": "Los pasos ordenados para lograr la meta"
+        },
+        {
+          "letter": "D",
+          "text": "Las opiniones de los usuarios del sistema"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en todo lo que hay que conseguir antes de poder trabajar.",
+      "explanation": "Los recursos son lo que se necesita para hacer las tareas: materiales, dinero, equipo, personas y tiempo. Las fechas van en el cronograma."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirve un cronograma?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Calcular cuánto cuesta cada material"
+        },
+        {
+          "letter": "B",
+          "text": "Medir si el usuario quedó satisfecho"
+        },
+        {
+          "letter": "C",
+          "text": "Dibujar los planos del proyecto"
+        },
+        {
+          "letter": "D",
+          "text": "Ubicar cada tarea en el tiempo"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "La palabra viene de «cronos», que en griego significa tiempo.",
+      "explanation": "El cronograma acomoda cada tarea en el calendario: cuándo empieza y cuándo termina. El costo va en el presupuesto y la satisfacción se mide al evaluar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una app de transporte siempre te lleva a tu destino, pero gasta mucha batería del celular. ¿Qué se puede concluir?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Es eficiente, pero poco eficaz"
+        },
+        {
+          "letter": "B",
+          "text": "Es eficaz, pero poco eficiente"
+        },
+        {
+          "letter": "C",
+          "text": "No es eficaz ni eficiente"
+        },
+        {
+          "letter": "D",
+          "text": "Es eficaz y muy eficiente"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Separa dos preguntas: ¿cumple su objetivo? y ¿cuántos recursos gasta?",
+      "explanation": "Llegar siempre al destino es cumplir el objetivo: es eficaz. Gastar mucha batería es usar muchos recursos: es poco eficiente."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos es un indicador medible?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que la fila avance bastante rápido"
+        },
+        {
+          "letter": "B",
+          "text": "Que el sistema funcione lo mejor posible"
+        },
+        {
+          "letter": "C",
+          "text": "Tiempo de espera promedio en minutos"
+        },
+        {
+          "letter": "D",
+          "text": "Que la página se vea bien y moderna"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca la opción que tenga una unidad con la que se pueda contar.",
+      "explanation": "«Minutos de espera» se mide igual sin importar quién lo revise. «Bastante rápido» o «se vea bien» dependen de la opinión de cada quien."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué le falta a este objetivo de proyecto: «Hacer un buen video para la feria»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tener un presupuesto más alto"
+        },
+        {
+          "letter": "B",
+          "text": "Ser medible y tener fecha"
+        },
+        {
+          "letter": "C",
+          "text": "Usar un diagrama de flujo"
+        },
+        {
+          "letter": "D",
+          "text": "Incluir la palabra proyecto"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Pregúntate: ¿cómo sabrías que ya se cumplió y para cuándo?",
+      "explanation": "«Buen video» no se puede medir y no dice cuándo. Un objetivo útil sería «video de 3 minutos, listo el 15 de mayo»."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En un Gantt, la barra de una tarea empieza justo donde termina la de otra y una flecha las une. ¿Qué indica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que las dos son de la misma persona"
+        },
+        {
+          "letter": "B",
+          "text": "Que las dos cuestan lo mismo"
+        },
+        {
+          "letter": "C",
+          "text": "Que se pueden hacer al mismo tiempo"
+        },
+        {
+          "letter": "D",
+          "text": "Que una depende de la otra"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en que la segunda no arranca hasta que acaba la primera.",
+      "explanation": "La flecha marca una dependencia: la segunda tarea solo puede empezar cuando termina la primera. Si fueran en paralelo, sus barras se encimarían en el tiempo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una encuesta pide a los usuarios calificar un sistema del 1 al 5. ¿Qué criterio mide?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Seguridad del sistema"
+        },
+        {
+          "letter": "B",
+          "text": "Impacto ambiental del sistema"
+        },
+        {
+          "letter": "C",
+          "text": "Satisfacción del usuario"
+        },
+        {
+          "letter": "D",
+          "text": "Costo de mantenimiento"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en a quién se le pregunta.",
+      "explanation": "Preguntar a los usuarios qué tan contentos están mide la satisfacción del usuario. El promedio de esas calificaciones es su indicador."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Tres tareas en cadena: A dura 3 días, luego B dura 2 días y luego C dura 4 días. ¿Cuánto dura el proyecto como mínimo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "4 días"
+        },
+        {
+          "letter": "B",
+          "text": "9 días"
+        },
+        {
+          "letter": "C",
+          "text": "3 días"
+        },
+        {
+          "letter": "D",
+          "text": "24 días"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Si cada tarea espera a la anterior, ¿pueden avanzar al mismo tiempo?",
+      "explanation": "Como cada tarea espera a la anterior, sus duraciones se suman: 3 + 2 + 4 = 9 días. 4 sería solo la más larga y 24 es multiplicar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué es la ruta crítica de un proyecto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La tarea más difícil de todo el proyecto"
+        },
+        {
+          "letter": "B",
+          "text": "La cadena más larga de tareas dependientes"
+        },
+        {
+          "letter": "C",
+          "text": "La tarea que tiene el costo más alto de todas"
+        },
+        {
+          "letter": "D",
+          "text": "Las tareas que se pueden atrasar sin problema"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Tiene que ver con el tiempo, no con la dificultad ni con el dinero.",
+      "explanation": "La ruta crítica es la secuencia más larga de tareas que dependen unas de otras. Marca la duración mínima del proyecto y sus tareas no tienen holgura."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un sistema de riego nuevo ahorra 40 % de agua, pero cuesta el doble que el anterior. ¿Qué criterios entran en conflicto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Eficacia y seguridad"
+        },
+        {
+          "letter": "B",
+          "text": "Seguridad y satisfacción"
+        },
+        {
+          "letter": "C",
+          "text": "Impacto ambiental y costo"
+        },
+        {
+          "letter": "D",
+          "text": "Costo y satisfacción del usuario"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca qué mejora y qué empeora con el cambio.",
+      "explanation": "Ahorrar agua mejora el impacto ambiental, pero pagar el doble empeora el costo. Evaluar con varios criterios ayuda a decidir si el cambio vale la pena."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué es la holgura de una tarea en un cronograma?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El tiempo extra que se da a todo el equipo al final"
+        },
+        {
+          "letter": "B",
+          "text": "Tiempo que puede atrasarse sin afectar la entrega"
+        },
+        {
+          "letter": "C",
+          "text": "La diferencia entre el costo planeado y el real"
+        },
+        {
+          "letter": "D",
+          "text": "El descanso entre dos tareas que dependen"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en las tareas que no están en la ruta crítica.",
+      "explanation": "La holgura es el margen que tiene una tarea fuera de la ruta crítica: puede retrasarse ese tiempo y el proyecto se entrega igual."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Al final de la semana 2, el plan marcaba 50 % de avance y el equipo lleva 30 %. ¿Qué indica el seguimiento?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Va a tiempo, según el plan"
+        },
+        {
+          "letter": "B",
+          "text": "Va adelantado y puede descansar"
+        },
+        {
+          "letter": "C",
+          "text": "Va atrasado y hay que ajustar"
+        },
+        {
+          "letter": "D",
+          "text": "No se puede saber sin terminar"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara el avance real con el planeado.",
+      "explanation": "El seguimiento compara lo real con lo planeado: 30 % es menos que 50 %, así que van atrasados. Detectarlo a tiempo permite ajustar antes de la entrega."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "A dura 2 días. Después de A van B (5 días) y C (3 días) en paralelo. D (2 días) empieza cuando B y C terminan. ¿Duración mínima?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "12 días"
+        },
+        {
+          "letter": "B",
+          "text": "7 días"
+        },
+        {
+          "letter": "C",
+          "text": "9 días"
+        },
+        {
+          "letter": "D",
+          "text": "5 días"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "D tiene que esperar a la más tardada de las dos tareas paralelas.",
+      "explanation": "La ruta crítica es A, B y D: 2 + 5 + 2 = 9 días. El camino por C da 7, pero D espera a B. 12 sería sumar todas las tareas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Después de una tarea inicial van B (5 días) y C (3 días) en paralelo, y la siguiente tarea espera a las dos. ¿Cuánta holgura tiene C?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "3 días"
+        },
+        {
+          "letter": "B",
+          "text": "0 días"
+        },
+        {
+          "letter": "C",
+          "text": "2 días"
+        },
+        {
+          "letter": "D",
+          "text": "5 días"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara cuánto dura C con cuánto tiene que esperar de todos modos a B.",
+      "explanation": "La siguiente tarea espera a B, que dura 5 días. C dura 3, así que puede atrasarse 5 − 3 = 2 días sin mover nada. B, en la ruta crítica, tiene 0."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un elevador nuevo sube rápido y gasta poca energía, pero a veces abre la puerta entre dos pisos. ¿Qué criterio debe atenderse primero?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Eficiencia"
+        },
+        {
+          "letter": "B",
+          "text": "Seguridad"
+        },
+        {
+          "letter": "C",
+          "text": "Costo"
+        },
+        {
+          "letter": "D",
+          "text": "Satisfacción"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa qué falla podría lastimar a alguien.",
+      "explanation": "Una puerta que se abre entre pisos puede causar un accidente grave. Ser rápido y ahorrar energía no compensa un riesgo para las personas: la seguridad va primero."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "La meta de una cafetería escolar es atender a cada alumno en máximo 3 minutos. En una semana, 240 de 300 alumnos se atendieron a tiempo. ¿Qué porcentaje cumple?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "60 %"
+        },
+        {
+          "letter": "B",
+          "text": "80 %"
+        },
+        {
+          "letter": "C",
+          "text": "24 %"
+        },
+        {
+          "letter": "D",
+          "text": "125 %"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Divide los que se atendieron a tiempo entre el total y multiplica por 100.",
+      "explanation": "240 ÷ 300 = 0.8, y 0.8 × 100 = 80 %. El 60 es la cantidad de alumnos que esperaron de más, no un porcentaje, y 125 sale de dividir al revés."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una tarea de la ruta crítica se atrasa 3 días. Si no se hace ningún ajuste, ¿qué pasa con la entrega?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La holgura absorbe el atraso"
+        },
+        {
+          "letter": "B",
+          "text": "Solo se atrasa esa tarea"
+        },
+        {
+          "letter": "C",
+          "text": "Se atrasa 3 días"
+        },
+        {
+          "letter": "D",
+          "text": "Se atrasa solo 1 día"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda cuánta holgura tienen las tareas de la ruta crítica.",
+      "explanation": "Las tareas de la ruta crítica tienen holgura cero: cada día que se atrasan, se atrasa la entrega del proyecto. Por eso son las que más se vigilan."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Dos apps venden boletos. X tarda 5 minutos por compra y falla en 2 % de ellas; Y tarda 3 minutos y falla en 15 %. ¿Cuál es más eficaz?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Y, porque es la más rápida de las dos"
+        },
+        {
+          "letter": "B",
+          "text": "X, falla en menos compras"
+        },
+        {
+          "letter": "C",
+          "text": "Las dos son igual de eficaces"
+        },
+        {
+          "letter": "D",
+          "text": "Y, gasta menos tiempo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La eficacia no pregunta qué tan rápido, sino qué tan seguido se logra el objetivo.",
+      "explanation": "El objetivo es completar la compra: X lo logra en 98 % de los casos y Y en 85 %. Y es más rápida, o sea más eficiente en tiempo, pero menos eficaz."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una tarea de la ruta crítica va atrasada y la fecha de entrega no se puede mover. ¿Qué ajuste tiene más sentido?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pasar ayuda de una tarea con holgura"
+        },
+        {
+          "letter": "B",
+          "text": "Esperar a ver si se recupera solo al final"
+        },
+        {
+          "letter": "C",
+          "text": "Quitar la evaluación final del proyecto"
+        },
+        {
+          "letter": "D",
+          "text": "Empezar ya la tarea que depende de ella"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "¿Qué tareas pueden ceder tiempo o personas sin mover la entrega?",
+      "explanation": "Las tareas con holgura pueden esperar sin afectar la entrega, así que su gente puede ayudar en la crítica. Una tarea dependiente no puede empezar antes de tiempo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un torniquete con tarjeta deja pasar rápido a los usuarios, pero alguien en silla de ruedas no puede cruzarlo. ¿Qué criterio falla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Eficiencia"
+        },
+        {
+          "letter": "B",
+          "text": "Impacto ambiental"
+        },
+        {
+          "letter": "C",
+          "text": "Impacto social"
+        },
+        {
+          "letter": "D",
+          "text": "Costo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en a quién deja fuera el sistema.",
+      "explanation": "Un sistema que excluye a un grupo de personas tiene un impacto social negativo. Que sea rápido para la mayoría no lo hace incluyente."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué indicador mide mejor la eficiencia de una impresora 3D escolar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Piezas que salen sin defectos"
+        },
+        {
+          "letter": "B",
+          "text": "Gramos de filamento por pieza"
+        },
+        {
+          "letter": "C",
+          "text": "Lo que opinan los alumnos de ella"
+        },
+        {
+          "letter": "D",
+          "text": "Si tiene cubierta para no quemarse"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La eficiencia tiene que ver con cuánto se gasta para lograr el resultado.",
+      "explanation": "Los gramos de filamento por pieza miden el material gastado: eficiencia. Las piezas sin defectos miden eficacia, la opinión mide satisfacción y la cubierta, seguridad."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo evaluó su proyecto: cumplió el objetivo y entregó a tiempo, pero gastó 20 % más de lo presupuestado. ¿Qué conviene hacer?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Nada, porque se cumplió el objetivo"
+        },
+        {
+          "letter": "B",
+          "text": "Repetir todo el proyecto"
+        },
+        {
+          "letter": "C",
+          "text": "Ajustar cómo calculan costos"
+        },
+        {
+          "letter": "D",
+          "text": "Cambiar el objetivo para el próximo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "La evaluación sirve para mejorar lo que no salió según el plan.",
+      "explanation": "El proyecto fue eficaz y puntual, pero el costo no cumplió. Evaluar sirve para ajustar: la próxima vez deben cotizar mejor o dejar un margen en el presupuesto."
+    }
+  ],
+  "diagnostic": {
+    "question": "Una aspiradora robot deja limpio todo el cuarto, pero tarda dos horas y gasta casi toda su batería. ¿Qué criterio debe mejorar?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Eficacia"
+      },
+      {
+        "letter": "B",
+        "text": "Seguridad"
+      },
+      {
+        "letter": "C",
+        "text": "Eficiencia"
+      },
+      {
+        "letter": "D",
+        "text": "Impacto social"
+      }
+    ],
+    "correct_answer": "C",
+    "explanation": "Dejar el cuarto limpio es cumplir el objetivo: es eficaz. Lo que falla es cuánto tiempo y energía gasta para lograrlo, y eso es eficiencia."
+  }
+}
