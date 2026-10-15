@@ -1,0 +1,1005 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "salud-sexual-y-reproductiva-cs1",
+  "order_steps": {
+    "prompt": "Ordena cómo avanza la infección por VIH cuando no se trata",
+    "steps": [
+      "El VIH entra al cuerpo por una vía de transmisión",
+      "Puede pasar años sin síntomas mientras ataca las defensas",
+      "Las defensas del cuerpo caen a niveles muy bajos",
+      "Aparecen infecciones oportunistas: es la etapa de sida"
+    ],
+    "completion_feedback": "Sin tratamiento, el **VIH** avanza en silencio hasta el **sida**, su etapa avanzada. Con **antirretrovirales** esa cadena se frena. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Luffy contra Enel: un escudo no cubre todo",
+        "content": "En el arco de Skypiea de One Piece, Enel parece imposible de vencer: se convierte en rayo y deja fuera de combate a casi todos los que lo enfrentan. Entonces llega Luffy y los rayos no le hacen nada. ¿Por qué? Su cuerpo es de goma, y la goma no conduce la electricidad. Es el escudo perfecto… contra ese ataque. Porque la misma goma que lo salva del rayo no lo protege de una espada filosa ni del mar, donde se hunde como cualquier usuario de una Fruta del Diablo. Un escudo te cubre de un peligro específico, no de todos. Por eso una buena tripulación no zarpa a lo loco: Nami traza la ruta antes de salir, cada quien sabe qué cubre su habilidad y qué no, y nadie confunde «aguanto rayos» con «soy invencible». Y Chopper, el médico del barco, sabe algo que te diría cualquier doctor: hay males que avanzan sin dar señales, así que revisa a la tripulación aunque todos juren sentirse bien. Planear, saber de qué te protege cada cosa y revisarte aunque no sientas nada es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La goma de Luffy ES la lógica de la prevención",
+        "content": "Lo que acabas de ver con la goma de Luffy es exactamente cómo funciona la prevención en **salud sexual y reproductiva**: cada método te protege de un riesgo específico. Los **hormonales** (pastilla, inyección, implante subdérmico, parche, anillo), el **DIU** (de cobre u hormonal) y los **definitivos** (vasectomía y salpingoclasia) previenen el embarazo, pero **no protegen de ITS**. Solo el **condón**, externo o interno, protege de las dos cosas. Y como sabe Chopper, muchas **infecciones de transmisión sexual** no dan síntomas: solo una **prueba** las detecta. Informarte y decidir con libertad y **consentimiento** es un **derecho**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la tabla de habilidades de los métodos",
+        "content": "Imagina una tabla como las de poderes de un shōnen, pero con métodos anticonceptivos: qué cubre cada uno y en qué falla. Resuélvela.\n\n**Paso 1:** Condón externo o interno → **barrera**: previene embarazo **y** ITS.\n**Paso 2:** Pastilla, inyección, implante, parche y anillo → **hormonales**: previenen embarazo, **no** ITS.\n**Paso 3:** DIU de cobre y DIU hormonal → **intrauterinos**: duran años y no dependen de acordarse; **no** cubren ITS.\n**Paso 4:** Vasectomía y salpingoclasia → **definitivos**: para quien ya decidió no tener hijos o no tener más.\n**Paso 5:** Anticoncepción de emergencia → **no es un método regular**: es un respaldo tras un imprevisto y no protege de ITS.\n\nResultado: solo un método aparece en las dos columnas, el condón."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **salud sexual y reproductiva** es un derecho: información, decisión libre y **consentimiento**. Métodos: **barrera** (condón externo e interno, el único que también protege de **ITS**), **hormonales**, **DIU**, **definitivos** y de **emergencia** (no es método regular). Las ITS **bacterianas** y **parasitarias** se curan; las **virales** se controlan. Muchas son **asintomáticas**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Como en un shōnen, pregunta «¿contra qué protege este escudo?». Si la respuesta incluye ITS, solo puede ser el condón. Hormonales, DIU y definitivos: solo embarazo. Emergencia: ni es método regular ni cubre ITS."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un buen plan cubre los dos riesgos a la vez y se completa con revisiones.",
+        "data": {
+          "intro": "Sigue el razonamiento de Chopper para armar un plan que cubra los dos riesgos: embarazo no planeado e ITS.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Riesgo uno, un embarazo no planeado: lo previenen los hormonales, el DIU, los definitivos y el condón." },
+            { "text": "Riesgo dos, una ITS: de toda esa lista, solo el condón, externo o interno, la previene." },
+            { "text": "Conclusión: la doble protección suma el condón a otro método para cubrir los dos riesgos." },
+            { "text": "Y como muchas ITS no dan síntomas, las pruebas y la consulta médica completan el plan." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué cubre cada escudo?",
+        "content": "Embarazo e ITS: solo el condón, externo o interno. Solo embarazo: hormonales, DIU y definitivos. La emergencia es un respaldo, no un método regular.",
+        "data": {
+          "prompt": "Arrastra cada método a lo que cubre, como si fuera la habilidad de un personaje.",
+          "buckets": ["Embarazo e ITS", "Solo embarazo", "Respaldo, no uso regular"],
+          "items": [
+            { "t": "Condón externo", "b": 0 },
+            { "t": "Condón interno", "b": 0 },
+            { "t": "Implante subdérmico", "b": 1 },
+            { "t": "DIU de cobre", "b": 1 },
+            { "t": "Vasectomía", "b": 1 },
+            { "t": "Anticoncepción de emergencia", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada método con su tipo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Condón", "b": "Barrera contra ITS" },
+            { "a": "Implante subdérmico", "b": "Método hormonal" },
+            { "a": "Salpingoclasia", "b": "Método definitivo" },
+            { "a": "DIU de cobre", "b": "Intrauterino sin hormonas" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia de Skypiea?",
+        "left_label": "Skypiea",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La goma que frena el rayo de Enel", "right": "Método que cubre un riesgo" },
+          { "left": "La goma no lo salva del mar", "right": "Hormonales no cubren ITS" },
+          { "left": "Nami traza la ruta antes de zarpar", "right": "Planificación" },
+          { "left": "Males que avanzan sin dar señales", "right": "ITS asintomática" }
+        ],
+        "completion_feedback": "La goma cubre un riesgo y no otro, como los **hormonales**, que no cubren **ITS**. Trazar la ruta es **planificación**, y lo que no da señales es una ITS **asintomática**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "La goma de Luffy aguanta el rayo, pero no el mar. ¿Qué método protege del embarazo y también de las ITS?",
+          "options": [
+            { "letter": "A", "text": "El implante" },
+            { "letter": "B", "text": "El condón" },
+            { "letter": "C", "text": "La pastilla" },
+            { "letter": "D", "text": "El DIU" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El condón, externo o interno, es un método de barrera: evita el contacto con fluidos, por eso previene embarazo e ITS. El implante, la pastilla y el DIU solo previenen el embarazo.",
+          "difficulty": 1
+        },
+        {
+          "question": "El parche y el anillo anticonceptivos son escudos que…",
+          "options": [
+            { "letter": "A", "text": "Previenen embarazo e ITS" },
+            { "letter": "B", "text": "Previenen el embarazo, no ITS" },
+            { "letter": "C", "text": "Previenen ITS, pero no el embarazo" },
+            { "letter": "D", "text": "Solo sirven una vez, de emergencia" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El parche y el anillo son métodos hormonales: previenen el embarazo, pero no forman ninguna barrera, así que no protegen de ITS. Tampoco son de emergencia: son métodos regulares.",
+          "difficulty": 2
+        },
+        {
+          "question": "Chopper revisa a alguien que jura sentirse perfecto. ¿Por qué igual le recomendaría una prueba de ITS?",
+          "options": [
+            { "letter": "A", "text": "Las pruebas también curan las ITS" },
+            { "letter": "B", "text": "Muchas ITS no dan síntomas" },
+            { "letter": "C", "text": "Todas las ITS dan fiebre muy alta" },
+            { "letter": "D", "text": "Sentirse bien descarta cualquier ITS" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Muchas ITS, como la clamidia, o el VIH durante años, pueden no dar síntomas. Sentirse bien no las descarta: solo una prueba lo confirma. La prueba detecta; el tratamiento lo indica un médico.",
+          "difficulty": 3
+        },
+        {
+          "question": "Como Nami decide la ruta antes de zarpar, la salud reproductiva incluye el derecho a…",
+          "options": [
+            { "letter": "A", "text": "Que otra persona elija el método por ti" },
+            { "letter": "B", "text": "Decidir si tener hijos, cuántos y cuándo" },
+            { "letter": "C", "text": "Recibir información solo al casarse" },
+            { "letter": "D", "text": "Usar los métodos que recomienden en redes" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los derechos reproductivos incluyen decidir de forma libre e informada si tener hijos, cuántos y cuándo. Nadie puede decidir por ti, y la información confiable viene de los servicios de salud, no de rumores.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un amigo dice: «Con el DIU ya no hay que pensar en ITS». ¿Qué le responderías?",
+          "options": [
+            { "letter": "A", "text": "Tiene razón, el DIU cubre todo" },
+            { "letter": "B", "text": "El DIU no protege de ITS" },
+            { "letter": "C", "text": "Solo el DIU de cobre cubre ITS" },
+            { "letter": "D", "text": "El DIU solo falla con ITS virales" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El DIU, de cobre u hormonal, es muy eficaz contra el embarazo, pero no protege de ninguna ITS. Para eso hace falta el condón; por eso existe la doble protección.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El tiro libre que se entrena toda la semana",
+        "content": "Falta peligrosa justo afuera del área en los últimos minutos, y van ganando por uno. Antes de que el rival patee, tu equipo ya sabe qué hacer porque lo entrenó toda la semana: la barrera se para a 9.15 metros y tapa un palo, y el portero cuida el otro. Ninguno alcanza solo: la barrera bloquea el disparo directo, pero no el que se va por encima; el portero llega a ese, pero no si la barrera deja un hueco. Y la barrera solo sirve si se arma bien cada vez: basta con que un jugador salte a destiempo para que el balón pase. En el entrenamiento sale perfecta; en la final, con nervios y prisa, falla más. Si todo sale mal y el delantero queda solo, a veces el portero salva el gol en el último segundo, pero ningún entrenador arma su defensa esperando ese rescate. Y aunque ganen, el cuerpo técnico revisa el video del partido, porque hay errores que no se ven en el marcador. Elegir cómo protegerte, usarlo bien siempre y no dejar todo al rescate final es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La barrera ES un método de protección",
+        "content": "Lo que acabas de ver con la barrera es exactamente la lógica de los **métodos anticonceptivos**: hay de **barrera** (condón externo e interno), **hormonales** (pastilla, inyección, implante, parche, anillo), **DIU** (de cobre u hormonal) y **definitivos** (vasectomía, salpingoclasia). Solo el **condón** protege del embarazo y de las **ITS**. Su eficacia cambia entre **uso perfecto** (siempre y bien) y **uso típico** (en la vida real, con olvidos y errores). La **anticoncepción de emergencia** es el rescate del portero: un respaldo, **no un método regular**. Y como los errores que no salen en el marcador, muchas ITS son **asintomáticas**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el reporte de rivales: las ITS",
+        "content": "El cuerpo técnico arma un reporte de rivales, pero los rivales son las ITS. Clasifícalas.\n\n**Paso 1:** Clamidia, gonorrea y sífilis → **bacterianas**: se **curan** con el tratamiento que indique un médico.\n**Paso 2:** VIH, VPH, herpes genital y hepatitis B → **virales**: no tienen cura, pero sus efectos **se tratan y controlan**.\n**Paso 3:** Tricomoniasis → **parasitaria**: también se **cura** con tratamiento.\n**Paso 4:** ¿Alguna tiene vacuna? → **Sí**: contra el **VPH** y la **hepatitis B**.\n**Paso 5:** ¿Avisan antes de atacar? → **Muchas no dan síntomas**: el condón, las vacunas y las **pruebas** son tu defensa.\n\nResultado: un rival que no ves no es un rival que no existe."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **salud sexual y reproductiva** es un derecho: información, decisión libre y **consentimiento**. Métodos: **barrera** (condón externo e interno, el único que también protege de **ITS**), **hormonales**, **DIU**, **definitivos** y de **emergencia** (no es método regular). Las ITS **bacterianas** y **parasitarias** se curan; las **virales** se controlan. Muchas son **asintomáticas**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en rivales: las bacterianas y la parasitaria se pueden eliminar, porque se curan. Las virales (VIH, VPH, herpes, hepatitis B) se controlan, y dos tienen vacuna: VPH y hepatitis B."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La defensa contra las ITS combina barrera, vacunas y pruebas.",
+        "data": {
+          "intro": "El medidor muestra qué tan sólida es tu defensa contra las ITS. Sigue cada jugada.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Usas condón siempre, no solo a veces: la barrera bien armada en cada jugada.", "delta": 40 },
+            { "text": "Tienes al día las vacunas contra el VPH y la hepatitis B de tu cartilla.", "delta": 25 },
+            { "text": "Piensas «no tengo síntomas, estoy bien» y no te revisas. Error: muchas ITS no avisan.", "delta": -15 },
+            { "text": "Corriges y te haces pruebas en el centro de salud; si algo sale, hay tratamiento o control.", "delta": 35 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué tipo de rival es?",
+        "content": "Bacterianas: clamidia, gonorrea, sífilis. Virales: VIH, VPH, herpes, hepatitis B. Parasitaria: tricomoniasis.",
+        "data": {
+          "prompt": "Arrastra cada ITS del reporte de rivales al tipo de microorganismo que la causa.",
+          "buckets": ["Bacteriana", "Viral", "Parasitaria"],
+          "items": [
+            { "t": "Clamidia", "b": 0 },
+            { "t": "Sífilis", "b": 0 },
+            { "t": "VPH", "b": 1 },
+            { "t": "Hepatitis B", "b": 1 },
+            { "t": "Herpes genital", "b": 1 },
+            { "t": "Tricomoniasis", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada ITS con lo que la distingue.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Sífilis", "b": "ITS bacteriana" },
+            { "a": "Tricomoniasis", "b": "ITS parasitaria" },
+            { "a": "VPH", "b": "Cáncer cervicouterino" },
+            { "a": "VIH", "b": "Puede llevar al sida" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del tiro libre?",
+        "left_label": "Tiro libre",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La barrera bien armada", "right": "Método de barrera" },
+          { "left": "Perfecta en el entrenamiento", "right": "Uso perfecto" },
+          { "left": "Con nervios en la final", "right": "Uso típico" },
+          { "left": "El portero que salva al final", "right": "Anticoncepción de emergencia" }
+        ],
+        "completion_feedback": "La barrera es el **método de barrera**, la diferencia entre entrenamiento y final es **uso perfecto** contra **uso típico**, y el rescate del portero es la **anticoncepción de emergencia**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Como la barrera en un tiro libre, el condón pertenece a los métodos…",
+          "options": [
+            { "letter": "A", "text": "Hormonales" },
+            { "letter": "B", "text": "Definitivos" },
+            { "letter": "C", "text": "De barrera" },
+            { "letter": "D", "text": "Intrauterinos" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El condón, externo o interno, forma una barrera física: por eso es el único que previene embarazo e ITS. Los hormonales, definitivos e intrauterinos solo previenen el embarazo.",
+          "difficulty": 1
+        },
+        {
+          "question": "La barrera sale perfecta en el entrenamiento y falla con nervios en la final. En anticoncepción, esa diferencia es entre…",
+          "options": [
+            { "letter": "A", "text": "Método de barrera y hormonal" },
+            { "letter": "B", "text": "Método temporal y definitivo" },
+            { "letter": "C", "text": "Uso perfecto y uso típico" },
+            { "letter": "D", "text": "ITS bacteriana y viral" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Uso perfecto es usar el método siempre y bien; uso típico es como la gente lo usa en la vida real, con olvidos y errores. Por eso la eficacia real puede ser menor.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un portero salva un mano a mano, pero ningún DT arma su defensa contando con eso. ¿Qué es como ese portero?",
+          "options": [
+            { "letter": "A", "text": "El implante subdérmico" },
+            { "letter": "B", "text": "La anticoncepción de emergencia" },
+            { "letter": "C", "text": "El DIU hormonal de larga duración" },
+            { "letter": "D", "text": "La vasectomía" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La anticoncepción de emergencia es un respaldo después de una relación sin protección o de una falla. No es un método regular ni protege de ITS: la defensa diaria son los métodos regulares.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el reporte de rivales, ¿cuál de estas ITS se cura con tratamiento médico?",
+          "options": [
+            { "letter": "A", "text": "Herpes genital" },
+            { "letter": "B", "text": "VIH" },
+            { "letter": "C", "text": "Gonorrea" },
+            { "letter": "D", "text": "VPH" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La gonorrea es bacteriana y se cura con el tratamiento que indique un médico. El herpes, el VIH y el VPH son virales: no tienen cura, aunque sus efectos se pueden tratar o controlar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un jugador dice: «Si tuviera una ITS lo sabría, me sentiría mal en la cancha». ¿Qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "Tiene razón: siempre se sienten" },
+            { "letter": "B", "text": "Puede tenerla sin síntomas" },
+            { "letter": "C", "text": "Solo las virales no dan síntomas" },
+            { "letter": "D", "text": "El ejercicio elimina las ITS" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Muchas ITS, bacterianas o virales, pueden no dar síntomas durante semanas, meses o años. Estar en forma no cambia eso: la única forma de saberlo es una prueba.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Un comeback no se lanza por accidente",
+        "content": "Tu grupo favorito anuncia comeback y, aunque para los fans parece que todo pasa de golpe, detrás hay meses de plan. La agencia decide cuándo lanzar, en lugar de que el lanzamiento le caiga encima: elige la fecha, prepara teasers, ensayos y gira, y no saca nada hasta que el grupo está listo. También protege el material: el MV y las canciones viajan con contraseña, pocas personas los ven y cada copia puede llevar una marca invisible. Cada medida cubre un riesgo distinto: la contraseña no sirve si alguien graba la pantalla, y la marca no evita la filtración, solo ayuda a rastrearla. Si un día una canción se filtra, la agencia puede adelantar el lanzamiento de emergencia, pero eso es un rescate de último minuto, no una forma de planear comebacks. Y lo más inquietante: un archivo filtrado puede circular en grupos privados durante semanas sin que nadie en la agencia lo note, hasta que una revisión lo descubre. Decidir cuándo, protegerte con lo que cubre cada riesgo y revisar aunque todo parezca bien es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El comeback ES planificación",
+        "content": "Lo que acabas de ver con el comeback es exactamente la **salud sexual y reproductiva**: un **derecho** a decidir con información, libertad y **consentimiento** si tener hijos, cuántos y cuándo. Para planear existen los **métodos anticonceptivos**: de **barrera** (condón externo e interno), **hormonales**, **DIU** y **definitivos**. Cada uno cubre un riesgo, y solo el **condón** previene embarazo e **ITS**. La **anticoncepción de emergencia** es el lanzamiento adelantado: sirve después de un imprevisto, **no es un método regular** ni protege de ITS. Y como la filtración silenciosa, muchas ITS son **asintomáticas**: solo una **prueba** las detecta."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el hilo de tu fanbase para el 1 de diciembre",
+        "content": "Para el Día Mundial del Sida, el 1 de diciembre, tu fanbase arma un hilo informativo. Revisen cada dato antes de publicarlo.\n\n**Paso 1:** «VIH y sida son lo mismo» → **falso**: el **VIH** es el virus; el **sida** es la etapa avanzada de la infección sin tratamiento.\n**Paso 2:** «Se contagia por abrazos o un vaso» → **falso**: se transmite por relaciones sexuales sin condón, por sangre y de madre a hijo.\n**Paso 3:** «Si te sientes bien, no lo tienes» → **falso**: puede no dar síntomas por años; solo una **prueba** lo confirma.\n**Paso 4:** «Con tratamiento se vive muchos años» → **verdadero**: los **antirretrovirales** controlan el virus.\n**Paso 5:** «El condón reduce el riesgo» → **verdadero**, y hay pruebas gratuitas en los servicios públicos de salud.\n\nResultado: un hilo que informa sin estigma."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **salud sexual y reproductiva** es un derecho: información, decisión libre y **consentimiento**. Métodos: **barrera** (condón externo e interno, el único que también protege de **ITS**), **hormonales**, **DIU**, **definitivos** y de **emergencia** (no es método regular). Las ITS **bacterianas** y **parasitarias** se curan; las **virales** se controlan. Muchas son **asintomáticas**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Recuérdalo como un comeback: primero el teaser y después el lanzamiento. Primero está el VIH (el virus) y, solo si no se trata, llega el sida (la etapa avanzada). No son sinónimos."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Ejercer el derecho a decidir es un plan, igual que un comeback.",
+        "data": {
+          "intro": "Así como la agencia planea su comeback, sigue cómo se ejerce el derecho a decidir sobre tu salud sexual y reproductiva.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Te informas en fuentes confiables, como tu maestra de salud, el centro de salud o sitios oficiales, no en rumores de redes." },
+            { "text": "Pides orientación en los servicios amigables para adolescentes del centro de salud, donde te atienden sin juzgarte." },
+            { "text": "Decides tú, con libertad y sin presión: nadie puede elegir un método por ti." },
+            { "text": "Y con cualquier persona, solo cuenta un sí con consentimiento: libre, informado y que se puede retirar." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Dato o mito para el hilo?",
+        "content": "Dato: lo que dicen la OMS y la Secretaría de Salud. Mito: ideas falsas que circulan en redes y ponen en riesgo a la gente.",
+        "data": {
+          "prompt": "Arrastra cada frase que llegó al chat de tu fanbase a su categoría.",
+          "buckets": ["Dato", "Mito"],
+          "items": [
+            { "t": "El VIH no se transmite por abrazos", "b": 0 },
+            { "t": "El sida es la etapa avanzada del VIH", "b": 0 },
+            { "t": "El consentimiento se puede retirar", "b": 0 },
+            { "t": "Si no hay síntomas, no hay ITS", "b": 1 },
+            { "t": "La pastilla de emergencia protege de ITS", "b": 1 },
+            { "t": "El DIU protege de las ITS", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Consentimiento", "b": "Sí libre y revocable" },
+            { "a": "Uso típico", "b": "Eficacia en la vida real" },
+            { "a": "Uso perfecto", "b": "Sin ningún error" },
+            { "a": "Servicios amigables", "b": "Atención para adolescentes" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del comeback?",
+        "left_label": "Comeback",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La agencia elige la fecha", "right": "Derecho a decidir" },
+          { "left": "Adelantar el lanzamiento", "right": "Anticoncepción de emergencia" },
+          { "left": "La filtración que nadie nota", "right": "ITS asintomática" },
+          { "left": "La revisión que la descubre", "right": "Prueba de detección" }
+        ],
+        "completion_feedback": "Elegir la fecha es el **derecho a decidir**, adelantar el lanzamiento es la **emergencia**, la filtración silenciosa es una ITS **asintomática** y la revisión es la **prueba**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Un teaser no es el comeback completo, y el VIH no es lo mismo que el sida. ¿Qué es el sida?",
+          "options": [
+            { "letter": "A", "text": "La etapa avanzada del VIH" },
+            { "letter": "B", "text": "Otro nombre del mismo virus" },
+            { "letter": "C", "text": "Una ITS bacteriana curable" },
+            { "letter": "D", "text": "La vacuna contra el VIH" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El VIH es el virus; el sida es la etapa avanzada de la infección cuando no se trata y las defensas caen mucho. No son sinónimos, no es bacteriana y no existe vacuna contra el VIH.",
+          "difficulty": 1
+        },
+        {
+          "question": "La agencia decide cuándo lanzar. En salud reproductiva, ¿quién decide si usar un método y cuál?",
+          "options": [
+            { "letter": "A", "text": "Sus amigos, por votación" },
+            { "letter": "B", "text": "La propia persona, informada" },
+            { "letter": "C", "text": "Quien tenga más edad en la pareja" },
+            { "letter": "D", "text": "El influencer que más sigue" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La salud sexual y reproductiva es un derecho: cada persona decide de forma libre e informada, sin presión de amigos, de la pareja ni de redes. Para orientarse existen los servicios de salud.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un hilo dice: «La pastilla de emergencia puede usarse como método de todos los días». ¿Qué corregirías?",
+          "options": [
+            { "letter": "A", "text": "Es correcto, y también protege de ITS" },
+            { "letter": "B", "text": "Es un respaldo, no un método regular" },
+            { "letter": "C", "text": "Solo sirve si se combina con el DIU" },
+            { "letter": "D", "text": "Solo funciona si la receta un hospital" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La anticoncepción de emergencia es un respaldo para después de un imprevisto, no un método para usar de forma regular, y no protege de ninguna ITS. Para el día a día existen los métodos regulares.",
+          "difficulty": 3
+        },
+        {
+          "question": "Tu fanbase prepara el hilo del 1 de diciembre. ¿Cuál de estas formas SÍ transmite el VIH?",
+          "options": [
+            { "letter": "A", "text": "Compartir un vaso" },
+            { "letter": "B", "text": "Un abrazo de un amigo" },
+            { "letter": "C", "text": "Compartir jeringas" },
+            { "letter": "D", "text": "Piquete de mosquito" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El VIH se transmite por relaciones sexuales sin condón, por sangre (como al compartir jeringas) y de madre a hijo. No se transmite por vasos, abrazos ni piquetes de mosquito.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un plan de comeback se puede cambiar, y el consentimiento también. Si alguien dijo que sí y luego dice que no, ¿qué pasa?",
+          "options": [
+            { "letter": "A", "text": "El primer sí sigue valiendo" },
+            { "letter": "B", "text": "Debe explicar por qué cambió" },
+            { "letter": "C", "text": "Se respeta el no" },
+            { "letter": "D", "text": "Solo cuenta si lo dice por escrito" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El consentimiento es libre y se puede retirar en cualquier momento. Un sí anterior no obliga a nada, nadie tiene que justificar su no y no hace falta ponerlo por escrito: el no se respeta.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Tres años de skins y una cuenta sin proteger",
+        "content": "Llevas tres años en tu juego favorito: skins de temporada, pases de batalla completos, tu rango. Un día a un amigo le vacían la suya: alguien entró con su contraseña y se llevó todo. Te asustas y empiezas a proteger la tuya. Pones una contraseña larga que no usas en ningún otro lado, pero descubres que eso no sirve si tú mismo la escribes en una página falsa de skins gratis. Activas la verificación en dos pasos y la app te da códigos de respaldo: cada uno sirve una sola vez y son para una emergencia, como perder tu celular, no para entrar todos los días. Lo que más te sorprende está en la configuración: una lista de dispositivos con sesión abierta. Ahí aparece una consola que no reconoces, conectada desde hace semanas, y el juego nunca te avisó nada. Entonces entiendes tres cosas: cada protección cubre un riesgo distinto, hay que usarlas siempre y no solo cuando te acuerdas, y revisar es la única forma de descubrir lo que no da señales. Proteger lo que es tuyo con un plan, y no solo después del susto, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu cuenta ES un plan de prevención",
+        "content": "Lo que acabas de ver con tu cuenta es exactamente la prevención en **salud sexual y reproductiva**: cada protección cubre un riesgo distinto. Los métodos **hormonales** (pastilla, inyección, implante, parche, anillo), el **DIU** y los **definitivos** previenen el embarazo, pero no las **ITS**; el **condón**, externo o interno, es el único que protege de los dos. Su eficacia real depende de usarlo siempre y bien: el **uso típico**, con olvidos y errores, protege menos que el **uso perfecto**. La **anticoncepción de emergencia** es como un código de respaldo: para un imprevisto, **no para el día a día**. Y como la consola desconocida, muchas ITS no dan síntomas: por eso existen las **pruebas**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la tier list de «depende de ti»",
+        "content": "Haces una tier list de métodos, pero no de cuál es «mejor», sino de cuánto dependen de que la persona no cometa errores. Resuélvela.\n\n**Paso 1:** Implante y DIU → casi **no dependen de ti**: su eficacia con **uso típico** es casi igual a la de **uso perfecto**.\n**Paso 2:** Inyección → depende de no faltar a la cita cuando toca la siguiente.\n**Paso 3:** Pastilla, parche y anillo → dependen de usarlos a tiempo, sin olvidos.\n**Paso 4:** Condón → depende de usarlo **siempre y bien**, cada vez; y es el **único** que también cubre **ITS**.\n**Paso 5:** Anticoncepción de emergencia → **fuera de la tier list**: es un respaldo, no un método regular.\n\nResultado: lo más completo es la **doble protección**, condón más otro método."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **salud sexual y reproductiva** es un derecho: información, decisión libre y **consentimiento**. Métodos: **barrera** (condón externo e interno, el único que también protege de **ITS**), **hormonales**, **DIU**, **definitivos** y de **emergencia** (no es método regular). Las ITS **bacterianas** y **parasitarias** se curan; las **virales** se controlan. Muchas son **asintomáticas**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Uso perfecto es tu speedrun sin un solo error; uso típico es como juegas de verdad, con fallos. Si una pregunta habla de por qué un método falla «en la vida real», la respuesta casi siempre es el uso típico."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La anticoncepción de emergencia es un código de respaldo, no tu forma de entrar cada día.",
+        "data": {
+          "intro": "Como con los códigos de respaldo de tu cuenta, sigue qué es y qué no es la anticoncepción de emergencia.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Es un respaldo después de una relación sin protección o de una falla, como un condón que se rompe." },
+            { "text": "Actúa antes de que empiece un embarazo: no interrumpe un embarazo que ya existe." },
+            { "text": "No protege de ninguna ITS: después de un imprevisto también conviene hacerse pruebas." },
+            { "text": "No es para el día a día: para eso están los métodos regulares, y el centro de salud te orienta para elegir uno." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Se cura o se controla?",
+        "content": "Se curan con tratamiento: las bacterianas (gonorrea, sífilis) y la parasitaria (tricomoniasis). Las virales, como el VIH y el herpes, no tienen cura, pero se controlan.",
+        "data": {
+          "prompt": "Arrastra cada ITS a su categoría, como si clasificaras enemigos por cómo se vencen.",
+          "buckets": ["Se cura con tratamiento", "No se cura, se controla"],
+          "items": [
+            { "t": "Gonorrea", "b": 0 },
+            { "t": "Sífilis", "b": 0 },
+            { "t": "Tricomoniasis", "b": 0 },
+            { "t": "VIH", "b": 1 },
+            { "t": "Herpes genital", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Pastilla de emergencia", "b": "Respaldo, no uso regular" },
+            { "a": "Doble protección", "b": "Condón más otro método" },
+            { "a": "Asintomática", "b": "Sin síntomas visibles" },
+            { "a": "Antirretrovirales", "b": "Controlan el VIH" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia de tu cuenta?",
+        "left_label": "Tu cuenta",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Códigos de respaldo de un solo uso", "right": "Anticoncepción de emergencia" },
+          { "left": "La consola conectada sin avisar", "right": "ITS asintomática" },
+          { "left": "Revisar los dispositivos", "right": "Prueba de detección" },
+          { "left": "Protegerte siempre, no a veces", "right": "Uso constante y correcto" }
+        ],
+        "completion_feedback": "Los códigos de respaldo son la **emergencia**, la consola silenciosa es una ITS **asintomática**, revisar es la **prueba** y protegerte siempre es el **uso correcto y constante**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "La consola conectada a tu cuenta sin que el juego avisara es como una ITS…",
+          "options": [
+            { "letter": "A", "text": "Asintomática" },
+            { "letter": "B", "text": "Bacteriana" },
+            { "letter": "C", "text": "Hereditaria" },
+            { "letter": "D", "text": "Contagiosa por aire" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Una ITS asintomática no da señales, igual que la consola que nunca generó un aviso. Que sea bacteriana o viral es otra cosa: hay asintomáticas de los dos tipos, y las ITS no se heredan ni se transmiten por aire.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu tier list pone el implante arriba porque casi no depende de ti. ¿Qué significa eso?",
+          "options": [
+            { "letter": "A", "text": "Que protege también de las ITS" },
+            { "letter": "B", "text": "Su uso típico y perfecto se parecen" },
+            { "letter": "C", "text": "Que es un método definitivo de por vida" },
+            { "letter": "D", "text": "Que se coloca una vez en la vida" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El implante no depende de acordarse cada día, así que su eficacia en la vida real es casi igual a la de uso perfecto. Pero no protege de ITS y no es definitivo: es reversible.",
+          "difficulty": 2
+        },
+        {
+          "question": "Proteges tu cuenta y aun así revisas los dispositivos conectados. En salud sexual, ¿qué paso equivale a esa revisión?",
+          "options": [
+            { "letter": "A", "text": "Cambiar de método cada mes" },
+            { "letter": "B", "text": "Esperar a tener síntomas" },
+            { "letter": "C", "text": "Hacerte una prueba de ITS" },
+            { "letter": "D", "text": "Tomar antibióticos por si acaso" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La prueba descubre lo que no da señales. Esperar síntomas no sirve porque muchas ITS no los dan, y tomar antibióticos por tu cuenta es riesgoso y no sirve contra las virales: el tratamiento lo indica un médico.",
+          "difficulty": 3
+        },
+        {
+          "question": "Como la verificación en dos pasos, la «doble protección» en salud sexual es…",
+          "options": [
+            { "letter": "A", "text": "Usar dos condones a la vez" },
+            { "letter": "B", "text": "Condón más otro método" },
+            { "letter": "C", "text": "Dos métodos hormonales juntos" },
+            { "letter": "D", "text": "Pastilla más anticoncepción de emergencia" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La doble protección suma el condón, que previene ITS y embarazo, a otro método anticonceptivo. Dos condones a la vez aumentan el riesgo de que se rompan, y la emergencia no es un método regular.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un streamer cuenta que vive con VIH, sigue su tratamiento y su carga viral es indetectable. ¿Qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "Ya no necesita seguir su tratamiento" },
+            { "letter": "B", "text": "No transmite el VIH por vía sexual" },
+            { "letter": "C", "text": "Ya desarrolló sida por los medicamentos" },
+            { "letter": "D", "text": "Puede transmitirlo con un abrazo" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Según la OMS, con carga viral indetectable no hay transmisión sexual del VIH: indetectable es igual a intransmisible. Pero no está curado, así que debe seguir su tratamiento. Los antirretrovirales evitan el sida, no lo causan.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es el único tipo de método anticonceptivo que también protege de las ITS?",
+      "options": [
+        { "letter": "A", "text": "Los hormonales" },
+        { "letter": "B", "text": "Los intrauterinos" },
+        { "letter": "C", "text": "El condón" },
+        { "letter": "D", "text": "Los definitivos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en el método que funciona como una barrera física.",
+      "explanation": "El condón, externo o interno, es un método de barrera: impide el contacto con fluidos y por eso previene embarazo e ITS. Los demás solo previenen el embarazo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué tipo de ITS es la sífilis?",
+      "options": [
+        { "letter": "A", "text": "Viral" },
+        { "letter": "B", "text": "Parasitaria" },
+        { "letter": "C", "text": "Bacteriana" },
+        { "letter": "D", "text": "Hereditaria" }
+      ],
+      "correct_answer": "C",
+      "hint": "Va en el mismo grupo que la clamidia y la gonorrea.",
+      "explanation": "La sífilis la causa una bacteria, igual que la clamidia y la gonorrea, y se cura con tratamiento médico. Las ITS no son hereditarias."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué significan las siglas VIH?",
+      "options": [
+        { "letter": "A", "text": "Virus de inmunodeficiencia humana" },
+        { "letter": "B", "text": "Síndrome de inmunodeficiencia adquirida" },
+        { "letter": "C", "text": "Virus de infección hepática" },
+        { "letter": "D", "text": "Vacuna de inmunidad humana" }
+      ],
+      "correct_answer": "A",
+      "hint": "La V es de lo que causa la infección; el síndrome es otra sigla.",
+      "explanation": "VIH es virus de inmunodeficiencia humana. Síndrome de inmunodeficiencia adquirida es el significado de sida, la etapa avanzada de la infección."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿En qué grupo de métodos anticonceptivos está el implante subdérmico?",
+      "options": [
+        { "letter": "A", "text": "De barrera" },
+        { "letter": "B", "text": "Definitivos" },
+        { "letter": "C", "text": "Hormonales" },
+        { "letter": "D", "text": "De emergencia" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es una varilla bajo la piel que libera una sustancia del mismo tipo que la pastilla.",
+      "explanation": "El implante subdérmico es hormonal, igual que la pastilla, la inyección, el parche y el anillo. Dura años, pero es reversible: no es definitivo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuáles son los dos métodos anticonceptivos definitivos?",
+      "options": [
+        { "letter": "A", "text": "Vasectomía y salpingoclasia" },
+        { "letter": "B", "text": "DIU de cobre y DIU hormonal" },
+        { "letter": "C", "text": "Implante e inyección mensual" },
+        { "letter": "D", "text": "Condón externo y condón interno" }
+      ],
+      "correct_answer": "A",
+      "hint": "Son procedimientos quirúrgicos, uno para hombres y otro para mujeres.",
+      "explanation": "La vasectomía y la salpingoclasia son definitivos. El DIU y el implante duran años, pero se pueden retirar, y el condón es de barrera."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es el sida?",
+      "options": [
+        { "letter": "A", "text": "Otro nombre del virus del VIH" },
+        { "letter": "B", "text": "La etapa avanzada de la infección por VIH" },
+        { "letter": "C", "text": "Una vacuna que previene el VIH" },
+        { "letter": "D", "text": "Una ITS bacteriana que se cura con antibióticos" }
+      ],
+      "correct_answer": "B",
+      "hint": "Primero llega el virus; esto es lo que pasa si no se trata.",
+      "explanation": "El sida es la etapa avanzada de la infección por VIH, cuando las defensas caen mucho por falta de tratamiento. El VIH es el virus; no son sinónimos."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Contra cuál de estas ITS existe una vacuna?",
+      "options": [
+        { "letter": "A", "text": "Clamidia" },
+        { "letter": "B", "text": "Gonorrea" },
+        { "letter": "C", "text": "VPH" },
+        { "letter": "D", "text": "Tricomoniasis" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es un virus que se relaciona con el cáncer cervicouterino.",
+      "explanation": "Existe vacuna contra el virus del papiloma humano (VPH), y también contra la hepatitis B. Clamidia, gonorrea y tricomoniasis no tienen vacuna, pero se curan con tratamiento."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la anticoncepción de emergencia?",
+      "options": [
+        { "letter": "A", "text": "Un método para usar de forma regular" },
+        { "letter": "B", "text": "Un respaldo tras una relación sin protección" },
+        { "letter": "C", "text": "Un tratamiento que cura las ITS" },
+        { "letter": "D", "text": "Un medicamento que interrumpe un embarazo ya establecido" }
+      ],
+      "correct_answer": "B",
+      "hint": "Su nombre dice para cuándo es: no para el día a día.",
+      "explanation": "Es un respaldo después de una relación sin protección o de una falla del método. No es un método regular, no protege de ITS y no interrumpe un embarazo ya establecido."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué causa la tricomoniasis?",
+      "options": [
+        { "letter": "A", "text": "Un virus" },
+        { "letter": "B", "text": "Una bacteria" },
+        { "letter": "C", "text": "Un parásito" },
+        { "letter": "D", "text": "Un hongo" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la ITS que no es bacteriana ni viral en la clasificación del temario.",
+      "explanation": "La tricomoniasis la causa un parásito microscópico. Es una ITS parasitaria y se cura con el tratamiento que indique un médico."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es el consentimiento?",
+      "options": [
+        { "letter": "A", "text": "Un sí libre, informado y que se puede retirar" },
+        { "letter": "B", "text": "Un permiso que, una vez dado, vale para siempre" },
+        { "letter": "C", "text": "Aceptar algo para que no se enojen contigo" },
+        { "letter": "D", "text": "No decir nada cuando no estás seguro" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en tres palabras: sin presión, sabiendo de qué se trata y reversible.",
+      "explanation": "El consentimiento es un sí libre, informado y que se puede retirar en cualquier momento. Callar, ceder por presión o un sí anterior no son consentimiento."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué describe la eficacia de un método anticonceptivo con uso típico?",
+      "options": [
+        { "letter": "A", "text": "Cómo funciona si nunca se comete un error" },
+        { "letter": "B", "text": "Cómo funciona en la vida real, con errores" },
+        { "letter": "C", "text": "Cómo funciona solo en pruebas de laboratorio con expertos" },
+        { "letter": "D", "text": "Cuánto tiempo dura el método en el cuerpo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Típico quiere decir como lo usa la mayoría de la gente.",
+      "explanation": "El uso típico mide cómo funciona un método como la gente lo usa en realidad, con olvidos y errores. El uso perfecto supone usarlo siempre y bien."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué tienen en común la clamidia, la gonorrea y la sífilis?",
+      "options": [
+        { "letter": "A", "text": "Son bacterianas y curables" },
+        { "letter": "B", "text": "Son virales y no tienen cura" },
+        { "letter": "C", "text": "Se previenen con una vacuna" },
+        { "letter": "D", "text": "Solo pueden afectar a las mujeres" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué tipo de microorganismo las causa.",
+      "explanation": "Las tres son ITS bacterianas y se curan con tratamiento médico. No tienen vacuna y afectan a cualquier persona, sin importar su sexo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué muchas ITS se transmiten sin que la persona sepa que las tiene?",
+      "options": [
+        { "letter": "A", "text": "Porque muchas no dan síntomas" },
+        { "letter": "B", "text": "Porque solo se contagian por el aire" },
+        { "letter": "C", "text": "Porque todas se curan solas en días" },
+        { "letter": "D", "text": "Porque las pruebas no las detectan" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué señal esperaría alguien para saber que está enfermo.",
+      "explanation": "Muchas ITS son asintomáticas: no dan señales durante semanas, meses o años. Por eso las pruebas son la única forma de saberlo, y sí las detectan."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué diferencia al DIU de cobre del DIU hormonal?",
+      "options": [
+        { "letter": "A", "text": "El de cobre protege de ITS" },
+        { "letter": "B", "text": "El de cobre no libera hormonas" },
+        { "letter": "C", "text": "El de cobre es un método definitivo" },
+        { "letter": "D", "text": "El hormonal es un método de barrera" }
+      ],
+      "correct_answer": "B",
+      "hint": "La diferencia está en el nombre de cada uno.",
+      "explanation": "Los dos son intrauterinos y reversibles; el de cobre no libera hormonas y el hormonal sí. Ninguno protege de ITS."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Según la OMS, la salud sexual es…",
+      "options": [
+        { "letter": "A", "text": "Solo la ausencia de infecciones sexuales" },
+        { "letter": "B", "text": "Bienestar integral, no solo no enfermar" },
+        { "letter": "C", "text": "Solo la capacidad de tener hijos sanos" },
+        { "letter": "D", "text": "Un tema que importa solo a los adultos" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda cómo define la OMS la salud en general: no es solo no estar enfermo.",
+      "explanation": "Para la OMS, la salud sexual es un estado de bienestar físico, emocional, mental y social en relación con la sexualidad, no solo la ausencia de enfermedad. Es un derecho también de los adolescentes."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál de estas acciones NO transmite el VIH?",
+      "options": [
+        { "letter": "A", "text": "Compartir jeringas" },
+        { "letter": "B", "text": "Relaciones sexuales sin condón" },
+        { "letter": "C", "text": "Abrazar o compartir un vaso" },
+        { "letter": "D", "text": "De madre a hijo sin tratamiento" }
+      ],
+      "correct_answer": "C",
+      "hint": "El VIH necesita sangre o ciertos fluidos del cuerpo para pasar de una persona a otra.",
+      "explanation": "El VIH se transmite por vía sexual, por sangre y de madre a hijo. Abrazar, compartir un vaso o convivir no lo transmiten: discriminar por eso es estigma."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué virus de transmisión sexual se relaciona con el cáncer cervicouterino?",
+      "options": [
+        { "letter": "A", "text": "VIH" },
+        { "letter": "B", "text": "Herpes" },
+        { "letter": "C", "text": "VPH" },
+        { "letter": "D", "text": "Hepatitis B" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el virus que tiene tipos que causan verrugas y otros que alteran las células del cuello del útero.",
+      "explanation": "Algunos tipos del virus del papiloma humano (VPH) pueden causar cáncer cervicouterino. Por eso existen la vacuna contra el VPH y las revisiones médicas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "La hepatitis B es una ITS…",
+      "options": [
+        { "letter": "A", "text": "Viral y prevenible con vacuna" },
+        { "letter": "B", "text": "Bacteriana y prevenible con vacuna" },
+        { "letter": "C", "text": "Viral y sin ninguna vacuna" },
+        { "letter": "D", "text": "Parasitaria y curable con antibióticos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Va en el mismo grupo que el VIH, pero tiene algo que el VIH no tiene.",
+      "explanation": "La hepatitis B la causa un virus y afecta al hígado. Se previene con una vacuna incluida en el esquema nacional y con el condón."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En México, ¿dónde puede un adolescente recibir orientación sobre métodos anticonceptivos pensada para su edad?",
+      "options": [
+        { "letter": "A", "text": "En los servicios amigables" },
+        { "letter": "B", "text": "Solo en un hospital privado" },
+        { "letter": "C", "text": "Solo con un vendedor de farmacia" },
+        { "letter": "D", "text": "En videos de redes sin fuente" }
+      ],
+      "correct_answer": "A",
+      "hint": "La Secretaría de Salud tiene un servicio con nombre pensado para que los jóvenes se sientan bienvenidos.",
+      "explanation": "Los servicios amigables para adolescentes de los centros de salud dan información y orientación con respeto y sin juicios. Los videos sin fuente no son confiables."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué ITS viral puede no dar síntomas durante años y, sin tratamiento, debilita el sistema inmunitario?",
+      "options": [
+        { "letter": "A", "text": "VIH" },
+        { "letter": "B", "text": "Gonorrea" },
+        { "letter": "C", "text": "Tricomoniasis" },
+        { "letter": "D", "text": "Sífilis" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en la palabra viral y en qué sistema del cuerpo ataca.",
+      "explanation": "El VIH es un virus que ataca las defensas del cuerpo y puede pasar años sin síntomas. Gonorrea y sífilis son bacterianas, y la tricomoniasis es parasitaria."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona usa el implante subdérmico como método. ¿De qué NO la protege?",
+      "options": [
+        { "letter": "A", "text": "De las ITS" },
+        { "letter": "B", "text": "Del embarazo" },
+        { "letter": "C", "text": "De nada: cubre embarazo e ITS" },
+        { "letter": "D", "text": "Solo de las virales; de las bacterianas sí" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué tipo de método es el implante y qué no puede hacer una hormona.",
+      "explanation": "El implante es hormonal y muy eficaz contra el embarazo, pero no forma ninguna barrera, así que no protege de ninguna ITS, ni bacteriana ni viral. Para eso hace falta el condón."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Alguien dice: «Me siento bien, así que no tengo ninguna ITS». ¿Qué es correcto?",
+      "options": [
+        { "letter": "A", "text": "Tiene razón: sin síntomas no hay ITS" },
+        { "letter": "B", "text": "Solo una prueba puede confirmarlo" },
+        { "letter": "C", "text": "Solo las bacterianas son silenciosas" },
+        { "letter": "D", "text": "Las ITS siempre dan fiebre al inicio" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda que hay ITS asintomáticas de varios tipos.",
+      "explanation": "Muchas ITS, bacterianas y virales, no dan síntomas. Sentirse bien no las descarta: la única forma de saberlo es una prueba."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Alguien planea usar la anticoncepción de emergencia como su método de siempre. ¿Qué es correcto?",
+      "options": [
+        { "letter": "A", "text": "No es un método regular ni protege de ITS" },
+        { "letter": "B", "text": "Es buena idea si también usa el DIU" },
+        { "letter": "C", "text": "Está bien, porque es igual de eficaz que el resto" },
+        { "letter": "D", "text": "Está bien si la combina con antibióticos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en para qué momento está pensada y qué riesgos cubre.",
+      "explanation": "La anticoncepción de emergencia es un respaldo, no un método regular, y no protege de ITS. Para el día a día existen los métodos regulares, y el centro de salud orienta para elegir uno."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un estudiante usa condón solo «cuando se acuerda». ¿Qué explica que su protección real sea menor?",
+      "options": [
+        { "letter": "A", "text": "Usarlo sin constancia: uso típico" },
+        { "letter": "B", "text": "Que el condón no sirve contra ITS" },
+        { "letter": "C", "text": "Que el condón es un método hormonal" },
+        { "letter": "D", "text": "Que el condón solo funciona con el DIU" }
+      ],
+      "correct_answer": "A",
+      "hint": "Compara cómo se usa en la vida real con cómo debería usarse.",
+      "explanation": "El condón protege de embarazo e ITS si se usa siempre y bien. Usarlo solo a veces es uso típico con fallas de constancia, y por eso protege menos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona acepta algo solo porque la presionaron. ¿Hay consentimiento?",
+      "options": [
+        { "letter": "A", "text": "Sí, porque al final dijo que sí" },
+        { "letter": "B", "text": "No, porque no fue libre" },
+        { "letter": "C", "text": "Sí, si no lo dijo en voz alta" },
+        { "letter": "D", "text": "Sí, si ya se conocían de antes" }
+      ],
+      "correct_answer": "B",
+      "hint": "Revisa la primera característica del consentimiento.",
+      "explanation": "El consentimiento debe ser libre: un sí obtenido con presión, chantaje o miedo no cuenta. Conocerse de antes no cambia nada."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué se recomienda la doble protección, condón más otro método?",
+      "options": [
+        { "letter": "A", "text": "Suma prevención de embarazo y de ITS" },
+        { "letter": "B", "text": "Porque el condón no previene embarazos" },
+        { "letter": "C", "text": "Porque dos hormonales se potencian" },
+        { "letter": "D", "text": "Porque así ya no se necesitan pruebas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué aporta cada uno de los dos métodos.",
+      "explanation": "El condón protege de ITS y del embarazo, y el otro método refuerza la prevención del embarazo. Aun con doble protección, las pruebas siguen siendo importantes."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál afirmación sobre el VPH es correcta?",
+      "options": [
+        { "letter": "A", "text": "Es bacteriano y se cura con antibióticos" },
+        { "letter": "B", "text": "Puede no dar síntomas y tiene vacuna" },
+        { "letter": "C", "text": "Solo afecta a las mujeres" },
+        { "letter": "D", "text": "Es el mismo virus que causa el sida" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda su tipo, si tiene vacuna y si siempre da señales.",
+      "explanation": "El VPH es un virus que muchas veces no da síntomas y se previene con vacuna y condón. Afecta a cualquier persona y no tiene relación con el VIH, que es el virus que lleva al sida."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "La clamidia se cura con tratamiento. ¿Por qué igual importa detectarla aunque no haya síntomas?",
+      "options": [
+        { "letter": "A", "text": "Sin tratar, puede causar infertilidad" },
+        { "letter": "B", "text": "Porque se vuelve VIH con el tiempo" },
+        { "letter": "C", "text": "Porque sin síntomas ya no se transmite" },
+        { "letter": "D", "text": "Porque solo la detecta una vacuna" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que pasa con una infección que nadie trata durante mucho tiempo.",
+      "explanation": "Sin tratamiento, la clamidia puede dañar los órganos reproductores y causar infertilidad, y se sigue transmitiendo aunque no haya síntomas. Una ITS nunca se convierte en otra."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una persona adulta elige la vasectomía. ¿Qué es correcto?",
+      "options": [
+        { "letter": "A", "text": "Es definitiva y no protege de ITS" },
+        { "letter": "B", "text": "Es temporal y se retira al año" },
+        { "letter": "C", "text": "Es hormonal y protege del VIH" },
+        { "letter": "D", "text": "Es de barrera y cubre todas las ITS" }
+      ],
+      "correct_answer": "A",
+      "hint": "Clasifícala primero y luego pregúntate si crea alguna barrera.",
+      "explanation": "La vasectomía es un método definitivo para hombres: evita el embarazo, pero no crea ninguna barrera, así que no protege de ITS. No es hormonal ni temporal."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué una persona con VIH que sigue su tratamiento puede no llegar nunca a la etapa de sida?",
+      "options": [
+        { "letter": "A", "text": "Los antirretrovirales controlan el virus" },
+        { "letter": "B", "text": "El tratamiento elimina el virus del cuerpo" },
+        { "letter": "C", "text": "El sida solo aparece en personas mayores" },
+        { "letter": "D", "text": "El VIH desaparece solo después de años" }
+      ],
+      "correct_answer": "A",
+      "hint": "El tratamiento no cura, pero algo hace con el virus.",
+      "explanation": "Los antirretrovirales no curan el VIH, pero lo mantienen bajo control y protegen las defensas, así que la persona puede vivir muchos años sin llegar al sida."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál de estas ITS es causada por un virus?",
+    "options": [
+      { "letter": "A", "text": "Gonorrea" },
+      { "letter": "B", "text": "Herpes" },
+      { "letter": "C", "text": "Tricomoniasis" },
+      { "letter": "D", "text": "Sífilis" }
+    ],
+    "correct_answer": "B",
+    "explanation": "El herpes genital es viral, igual que el VIH, el VPH y la hepatitis B. La gonorrea y la sífilis son bacterianas, y la tricomoniasis es parasitaria."
+  }
+}

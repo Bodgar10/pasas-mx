@@ -1,0 +1,1463 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "vacunacion-y-esquema-nacional-cs1",
+  "order_steps": {
+    "prompt": "Ordena lo que pasa en tu cuerpo después de recibir una vacuna",
+    "steps": [
+      "La vacuna introduce un antígeno que no causa la enfermedad",
+      "El sistema inmune reconoce ese antígeno como extraño",
+      "Los linfocitos B fabrican anticuerpos contra el antígeno",
+      "Quedan células de memoria que recuerdan al antígeno",
+      "Si llega el microbio real, la respuesta es rápida e intensa"
+    ],
+    "completion_feedback": "La vacuna presenta un **antígeno**, el sistema inmune lo reconoce, los **linfocitos B** fabrican **anticuerpos** y quedan **células de memoria** para el encuentro real. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Kafka y los kaiju que ya conoce",
+        "content": "Antes de entrar a las Fuerzas de Defensa, Kafka Hibino pasó años en una empresa de limpieza desarmando los restos de los kaiju que los soldados derrotaban. Era un trabajo pesado y nadie lo admiraba, pero le dejó algo que ningún recluta tenía: conocía por dentro a esos monstruos. Un kaiju derrotado ya no podía lastimar a nadie, pero conservaba su forma, sus órganos y su núcleo, así que Kafka aprendió a reconocer cada especie sin correr peligro. Por eso, cuando enfrenta a uno vivo, sabe dónde golpear. A la Fuerza de Defensa le pasa algo parecido. La primera vez que aparece un kaiju desconocido, la Tercera División tarda en entender cómo vencerlo, y mientras tanto la ciudad sufre daños. Pero después del combate todo queda registrado: su forma, sus puntos débiles y la estrategia que funcionó. Si uno de la misma clase vuelve a aparecer, la capitana Mina Ashiro ya sabe qué hacer y lo derriba antes de que avance. Conocer al enemigo sin que te dañe, y recordarlo para la próxima vez, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Lo que aprendió Kafka ES memoria inmunológica",
+        "content": "Lo que acabas de ver con Kafka es exactamente cómo funciona una **vacuna**: una preparación con **antígenos** (el microbio **atenuado**, **inactivado**, un **fragmento** o **ARN mensajero**) que entrena al **sistema inmune** sin causar la enfermedad. Los **linfocitos B** fabrican **anticuerpos** y quedan **células de memoria**; si llega el microbio real, la **respuesta secundaria** es rápida, como Mina ante un kaiju ya registrado. Eso es **inmunidad activa artificial**; enfermar da la **activa natural**, y recibir anticuerpos hechos (maternos o **sueros**) es **inmunidad pasiva**: inmediata, pero sin memoria. Si casi todos se vacunan, el microbio deja de circular: **inmunidad de grupo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el consultorio de la Tercera División",
+        "content": "Imagina que el médico de la Tercera División revisa cómo se protegió cada integrante. Clasifica cada caso.\n\n**Paso 1:** Un recluta tuvo varicela de niño y se recuperó → su cuerpo hizo los anticuerpos al enfermar: **activa natural**.\n**Paso 2:** Kikoru se pone la vacuna de influenza antes del invierno → **activa artificial**.\n**Paso 3:** A un soldado le pica un alacrán y le aplican suero antialacrán → recibe anticuerpos hechos: **pasiva artificial**.\n**Paso 4:** La bebé de una oficial recibe anticuerpos por la placenta y la leche materna → **pasiva natural**.\n**Paso 5:** Comparan: la **pasiva** protege al instante pero dura poco; la **activa** tarda, pero deja **memoria**.\n\nResultado: la clave es quién fabrica los anticuerpos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **vacuna** contiene **antígenos** (atenuados, inactivados, fragmentos o ARNm) que crean **memoria inmunológica** sin causar la enfermedad. **Activa**: tu cuerpo hace los anticuerpos (al enfermar o vacunarte). **Pasiva**: los recibes hechos (maternos o sueros), sin memoria. **Inmunidad de grupo**: alta cobertura protege a quien no puede vacunarse. Se anotan en la **Cartilla Nacional de Salud**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Pregunta quién fabrica los anticuerpos. Si los hace tu cuerpo (al enfermar o con vacuna), es activa y deja memoria, como el registro de la Fuerza de Defensa. Si te los dan hechos (mamá o suero), es pasiva: rápida, pero sin memoria."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una vacuna entrena la respuesta inmune y deja memoria para el encuentro real.",
+        "data": {
+          "intro": "Kikoru acaba de recibir una vacuna. Sigue lo que pasa dentro de su cuerpo como si fuera un informe de la Fuerza de Defensa.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "La vacuna presenta el antígeno: el microbio debilitado o inactivado, o solo una parte de él, que no puede causar la enfermedad."
+            },
+            {
+              "text": "Las células del sistema inmune detectan ese antígeno como extraño y activan a los linfocitos B y T."
+            },
+            {
+              "text": "Los linfocitos B fabrican anticuerpos específicos contra ese antígeno. Es la respuesta primaria: tarda días o semanas."
+            },
+            {
+              "text": "Quedan células de memoria, como el registro de un kaiju ya identificado."
+            },
+            {
+              "text": "Si el microbio real llega meses o años después, la respuesta secundaria es rápida e intensa y casi siempre evita la enfermedad."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Primer kaiju o kaiju registrado?",
+        "content": "Respuesta primaria: el primer encuentro con un antígeno, lento. Respuesta secundaria: el siguiente encuentro, rápido gracias a la memoria.",
+        "data": {
+          "prompt": "Arrastra cada característica a la respuesta inmune que le corresponde.",
+          "buckets": [
+            "Respuesta primaria",
+            "Respuesta secundaria"
+          ],
+          "items": [
+            {
+              "t": "Tarda días o semanas en armarse",
+              "b": 0
+            },
+            {
+              "t": "Es más rápida y más intensa",
+              "b": 1
+            },
+            {
+              "t": "Se forman las células de memoria",
+              "b": 0
+            },
+            {
+              "t": "Las células de memoria ya actúan",
+              "b": 1
+            },
+            {
+              "t": "La provoca la primera vacuna que recibes",
+              "b": 0
+            },
+            {
+              "t": "Es la que aprovecha un refuerzo",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada vacuna del esquema con lo que previene.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "BCG",
+              "b": "Tuberculosis grave"
+            },
+            {
+              "a": "Rotavirus",
+              "b": "Diarrea grave infantil"
+            },
+            {
+              "a": "Td",
+              "b": "Tétanos y difteria"
+            },
+            {
+              "a": "VPH",
+              "b": "Cáncer cervicouterino"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Kaiju No. 8",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Restos de kaiju que ya no atacan",
+            "right": "Vacuna inactivada"
+          },
+          {
+            "left": "El primer combate, lento y con daños",
+            "right": "Respuesta primaria"
+          },
+          {
+            "left": "El registro de cada kaiju vencido",
+            "right": "Células de memoria"
+          },
+          {
+            "left": "Mina lo derriba antes de que avance",
+            "right": "Respuesta secundaria"
+          }
+        ],
+        "completion_feedback": "Los restos inofensivos son la **vacuna**, el primer combate es la **respuesta primaria**, el registro son las **células de memoria** y la victoria rápida, la **respuesta secundaria**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Kafka aprendió a reconocer kaiju estudiando restos que ya no podían atacar. En una vacuna, eso equivale a…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un antígeno que no causa la enfermedad"
+            },
+            {
+              "letter": "B",
+              "text": "Un antibiótico que destruye al microbio"
+            },
+            {
+              "letter": "C",
+              "text": "Un analgésico que quita los síntomas"
+            },
+            {
+              "letter": "D",
+              "text": "Un suero con anticuerpos ya fabricados"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La vacuna muestra al sistema inmune un antígeno (el microbio debilitado, inactivado o una parte) que no puede enfermarte, igual que un kaiju derrotado. Los antibióticos y analgésicos tratan, no entrenan, y el suero da anticuerpos hechos.",
+          "difficulty": 1
+        },
+        {
+          "question": "Un soldado de la Fuerza de Defensa tuvo sarampión de niño y nunca volvió a enfermar de eso. ¿Qué inmunidad desarrolló?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Pasiva natural"
+            },
+            {
+              "letter": "B",
+              "text": "Activa artificial"
+            },
+            {
+              "letter": "C",
+              "text": "Activa natural"
+            },
+            {
+              "letter": "D",
+              "text": "Pasiva artificial"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Su propio cuerpo fabricó los anticuerpos al enfrentar la enfermedad: eso es activa natural. Sería artificial si viniera de una vacuna, y pasiva si hubiera recibido anticuerpos ya hechos.",
+          "difficulty": 2
+        },
+        {
+          "question": "La primera vez que aparece un kaiju nuevo, la Tercera División tarda; la segunda, lo derriba rápido. En inmunología, ¿qué explica esa diferencia?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los anticuerpos maternos"
+            },
+            {
+              "letter": "B",
+              "text": "Las células de memoria"
+            },
+            {
+              "letter": "C",
+              "text": "La inmunidad pasiva"
+            },
+            {
+              "letter": "D",
+              "text": "Un antibiótico más fuerte"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Tras el primer encuentro quedan células de memoria que reconocen al antígeno, y la respuesta secundaria es más rápida e intensa. Los anticuerpos maternos y la inmunidad pasiva no dejan memoria.",
+          "difficulty": 3
+        },
+        {
+          "question": "A un recluta le pica un alacrán y le aplican suero antialacrán. ¿Por qué esa protección no le dura años?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El suero trae el alacrán debilitado"
+            },
+            {
+              "letter": "B",
+              "text": "Recibió anticuerpos hechos, sin memoria"
+            },
+            {
+              "letter": "C",
+              "text": "Su cuerpo rechaza todos los sueros"
+            },
+            {
+              "letter": "D",
+              "text": "Solo sirve si se aplica antes de la picadura"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El suero da inmunidad pasiva artificial: anticuerpos ya fabricados que actúan de inmediato, pero el cuerpo no forma memoria y se eliminan con el tiempo. No contiene un microbio debilitado como una vacuna.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un capitán dice: «Mejor que los reclutas se enfermen de sarampión y así quedan inmunes; es más natural». ¿Qué es lo correcto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Tiene razón: la inmunidad natural no tiene riesgos"
+            },
+            {
+              "letter": "B",
+              "text": "La vacuna da memoria sin el riesgo de enfermar"
+            },
+            {
+              "letter": "C",
+              "text": "Las vacunas solo sirven si ya te enfermaste"
+            },
+            {
+              "letter": "D",
+              "text": "El sarampión no deja ninguna inmunidad"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Enfermar sí deja inmunidad, pero el sarampión puede causar complicaciones graves como neumonía o encefalitis y contagiar a otros. La vacuna genera la misma memoria sin pasar por la enfermedad.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La jugada que ya no los sorprende",
+        "content": "En la semifinal del torneo intercolegial, tu equipo pierde 3-0 contra la prepa de enfrente. Su delantero tiene un amague que nadie había visto: finta hacia afuera, recorta hacia adentro y dispara al segundo poste. Las tres veces los tomó por sorpresa. La temporada siguiente les vuelve a tocar el mismo rival en la final, y el entrenador cambia todo. Durante dos semanas, un suplente imita ese amague en cada práctica. Es una versión de mentira: el suplente no tiene la velocidad del delantero y, aunque la defensa falle, ese gol no cuenta en ninguna tabla. Pero los centrales repiten la lectura tantas veces que la tienen grabada. El día de la final, el delantero amaga y tu central ni se inmuta: lo espera adentro y le quita el balón. Y funciona para todos: como casi toda la línea defensiva entrenó la jugada, aunque el lateral nuevo no fue a las prácticas, el delantero nunca encuentra espacio por su lado. Entrenar contra una amenaza que no puede hacerte daño para reconocerla al instante es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El suplente que imita el amague ES una vacuna",
+        "content": "Lo que acabas de ver con el amague es exactamente cómo funciona una **vacuna**: una preparación con **antígenos** (el microbio **atenuado**, **inactivado**, un **fragmento** o **ARN mensajero**) que entrena al **sistema inmune** sin causar la enfermedad, como el suplente que imita la jugada. Los **linfocitos B** fabrican **anticuerpos** y quedan **células de memoria**: ante el microbio real, la **respuesta secundaria** es rápida. Es **inmunidad activa artificial**; enfermar da la **activa natural**, y recibir anticuerpos hechos (maternos o **sueros**) es **pasiva**, inmediata pero sin memoria. Y como la defensa en bloque, si casi todos se vacunan hay **inmunidad de grupo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el torneo y los brotes de sarampión",
+        "content": "En los últimos años hubo brotes de sarampión en México y otros países de América, sobre todo entre personas sin vacunar. Antes de un torneo, el entrenador revisa la **Cartilla Nacional de Salud** de todos.\n\n**Paso 1:** La mayoría tiene completa la **triple viral (SRP)** → protegidos contra sarampión, rubéola y parotiditis.\n**Paso 2:** A dos les falta completarla → van al **centro de salud**, donde las vacunas del esquema son **gratuitas**.\n**Paso 3:** El utilero lleva un tratamiento que baja sus defensas y no puede recibir vacunas **atenuadas** → depende de los demás.\n**Paso 4:** El sarampión es muy contagioso: se necesita cerca de **95%** de cobertura para frenarlo.\n**Paso 5:** Con casi todos vacunados, el virus no encuentra a quién contagiar → **inmunidad de grupo**.\n\nResultado: vacunarte te protege a ti y a quien no puede vacunarse."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **vacuna** contiene **antígenos** (atenuados, inactivados, fragmentos o ARNm) que crean **memoria inmunológica** sin causar la enfermedad. **Activa**: tu cuerpo hace los anticuerpos (al enfermar o vacunarte). **Pasiva**: los recibes hechos (maternos o sueros), sin memoria. **Inmunidad de grupo**: alta cobertura protege a quien no puede vacunarse. Se anotan en la **Cartilla Nacional de Salud**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Inmunidad de grupo = defensa en bloque: si casi todos marcan bien, el rival no encuentra hueco ni por el lado del que no puede marcar. Mientras más contagiosa la enfermedad, más alta la cobertura que se necesita (sarampión: cerca de 95%)."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada jugador vacunado sube la cobertura del equipo y protege a quien no puede vacunarse.",
+        "data": {
+          "intro": "El club, con 20 personas entre jugadores y cuerpo técnico, revisa cartillas antes del torneo: solo 13 tienen la triple viral completa. El medidor muestra el porcentaje del equipo protegido contra el sarampión.",
+          "visual": "bar",
+          "start": 65,
+          "steps": [
+            {
+              "text": "Tres jugadores a los que les faltaba completar la triple viral van al centro de salud y se ponen al día. Ya son 16 de 20.",
+              "delta": 15
+            },
+            {
+              "text": "Dos que perdieron su cartilla consultan en su centro de salud y completan su esquema. Ya son 18 de 20.",
+              "delta": 10
+            },
+            {
+              "text": "Uno dudaba por un video que dice que la vacuna causa autismo; el médico le explica que es falso y se vacuna. 19 de 20: el 95%. El único sin vacuna es el utilero, que no puede por su tratamiento, y lo protege el grupo.",
+              "delta": 5
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Se vacuna o lo protege el grupo?",
+        "content": "Quien puede vacunarse debe hacerlo. Los bebés muy pequeños para cierta vacuna, las personas con defensas bajas o con alergia grave a un componente dependen de la inmunidad de grupo.",
+        "data": {
+          "prompt": "Arrastra a cada persona del club a su categoría.",
+          "buckets": [
+            "Puede vacunarse",
+            "Depende del grupo"
+          ],
+          "items": [
+            {
+              "t": "Delantero sano de 17 años",
+              "b": 0
+            },
+            {
+              "t": "Entrenador sano con la cartilla atrasada",
+              "b": 0
+            },
+            {
+              "t": "Árbitra sana que perdió su cartilla",
+              "b": 0
+            },
+            {
+              "t": "Bebé muy pequeño para recibir la SRP",
+              "b": 1
+            },
+            {
+              "t": "Utilero en quimioterapia",
+              "b": 1
+            },
+            {
+              "t": "Aficionado con alergia grave a un componente",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada tipo de inmunidad con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Activa natural",
+              "b": "Pasar el sarampión"
+            },
+            {
+              "a": "Activa artificial",
+              "b": "Ponerte la triple viral"
+            },
+            {
+              "a": "Pasiva natural",
+              "b": "Anticuerpos de mamá"
+            },
+            {
+              "a": "Pasiva artificial",
+              "b": "Suero antialacrán"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la final?",
+        "left_label": "Amague del rival",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El delantero con su amague real",
+            "right": "Microbio que enferma"
+          },
+          {
+            "left": "El suplente que imita el amague",
+            "right": "Vacuna"
+          },
+          {
+            "left": "La lectura grabada en los centrales",
+            "right": "Memoria inmunológica"
+          },
+          {
+            "left": "El lateral protegido por el bloque",
+            "right": "Inmunidad de grupo"
+          }
+        ],
+        "completion_feedback": "El delantero es el **microbio**, el suplente es la **vacuna**, la lectura grabada es la **memoria inmunológica** y el lateral protegido es la **inmunidad de grupo**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Antes de viajar a un torneo, ¿qué vacuna protege a un jugador contra el sarampión?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La BCG del nacimiento"
+            },
+            {
+              "letter": "B",
+              "text": "La triple viral (SRP)"
+            },
+            {
+              "letter": "C",
+              "text": "La Td de refuerzo"
+            },
+            {
+              "letter": "D",
+              "text": "La de hepatitis B"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La triple viral protege contra sarampión, rubéola y parotiditis (paperas). La BCG es contra formas graves de tuberculosis y la Td, contra tétanos y difteria.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué el sarampión exige una cobertura de vacunación tan alta, cerca de 95%, para lograr inmunidad de grupo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque la vacuna casi no funciona"
+            },
+            {
+              "letter": "B",
+              "text": "Porque solo enferma a los adultos"
+            },
+            {
+              "letter": "C",
+              "text": "Porque es muy contagioso"
+            },
+            {
+              "letter": "D",
+              "text": "Porque no tiene una vacuna eficaz"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Mientras más contagiosa es una enfermedad, más personas inmunes se necesitan para cortar la transmisión. El sarampión es de las más contagiosas, y su vacuna sí es muy eficaz.",
+          "difficulty": 2
+        },
+        {
+          "question": "Casi todo el equipo está vacunado, menos el utilero, que no puede por su tratamiento. ¿Por qué tiene menos riesgo de contagiarse de sarampión?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los anticuerpos de los demás pasan a él"
+            },
+            {
+              "letter": "B",
+              "text": "Las vacunas de otros lo inmunizan a distancia"
+            },
+            {
+              "letter": "C",
+              "text": "El sarampión no ataca a los adultos"
+            },
+            {
+              "letter": "D",
+              "text": "El virus no encuentra a quién contagiar"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Él no tiene anticuerpos propios ni prestados: lo protege que el virus no logre circular entre personas inmunes. Eso es la inmunidad de grupo. Los adultos sin protección sí pueden enfermar de sarampión.",
+          "difficulty": 3
+        },
+        {
+          "question": "Un lateral no quiere vacunarse porque leyó que la triple viral causa autismo. ¿Qué dice la evidencia?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo lo causa en algunos niños"
+            },
+            {
+              "letter": "B",
+              "text": "La relación se probó en 1998"
+            },
+            {
+              "letter": "C",
+              "text": "No hay relación; ese estudio se retractó"
+            },
+            {
+              "letter": "D",
+              "text": "Depende de la edad a la que se aplica la vacuna"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "The Lancet retractó en 2010 el estudio de Andrew Wakefield de 1998, que tenía datos manipulados, y estudios con cientos de miles de niños no encontraron ninguna relación entre la vacuna y el autismo.",
+          "difficulty": 2
+        },
+        {
+          "question": "La defensa entrenó el amague hace un año y lo vuelve a practicar una semana antes de la final para no olvidarlo. En vacunación, ese repaso equivale a…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un suero"
+            },
+            {
+              "letter": "B",
+              "text": "Un refuerzo"
+            },
+            {
+              "letter": "C",
+              "text": "Una inmunidad pasiva"
+            },
+            {
+              "letter": "D",
+              "text": "Un anticuerpo materno"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un refuerzo vuelve a presentar el antígeno para reactivar la memoria y prolongar la protección, como la Td en adultos. El suero y los anticuerpos maternos son inmunidad pasiva, sin memoria.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El fanchant que ya te sabías",
+        "content": "Conseguiste boleto para ver a BABYMONSTER en Seúl y tienes semanas para prepararte. Sale el video guía del fanchant de la canción nueva: la letra en pantalla y los momentos exactos en que el público grita. No es el concierto: no hay escenario, ni luces, ni miles de personas a tu lado, así que equivocarte no tiene ninguna consecuencia. Lo repites en el camión, en la regadera y con tu amiga por videollamada. La noche del concierto suenan los primeros segundos y tu boca va sola: gritas cada parte a tiempo. Junto a ti, una fan que no practicó tarda todo el coro en entender qué está pasando. Meses después vuelves a oír la canción en un evento y la recuerdas al instante, aunque no la hayas repasado. Pero cuando el grupo saca otra canción, el fanchant viejo no te sirve: necesitas un video guía nuevo. Prepararte con una versión sin riesgo para reaccionar rápido ante lo real es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El video guía del fanchant ES una vacuna",
+        "content": "Lo que acabas de ver con el fanchant es exactamente cómo funciona una **vacuna**: una preparación con **antígenos** (el microbio **atenuado**, **inactivado**, un **fragmento** o **ARN mensajero**) que entrena al **sistema inmune** sin causar la enfermedad. Los **linfocitos B** fabrican **anticuerpos** y quedan **células de memoria**: ante el microbio real, la **respuesta secundaria** es inmediata. Es **inmunidad activa artificial**; enfermar da la **activa natural**, y recibir anticuerpos hechos (maternos o **sueros**) es **pasiva**, sin memoria. Si el virus cambia, como la **influenza**, se necesita vacuna nueva cada temporada. Con casi todos vacunados hay **inmunidad de grupo**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la cartilla antes de viajar a Corea",
+        "content": "Antes de tu viaje a Seúl vas al centro de salud con tu **Cartilla Nacional de Salud** de adolescente y la revisas con la enfermera.\n\n**Paso 1:** **Triple viral (SRP)** completa → protegida contra sarampión, rubéola y parotiditis.\n**Paso 2:** La de **VPH** ya está anotada → previene la infección por los tipos de virus que causan la mayoría del cáncer cervicouterino.\n**Paso 3:** Te falta el refuerzo de **Td** (tétanos y difteria) → te lo aplican y lo anotan.\n**Paso 4:** Viajas en invierno y preguntas por la de **influenza** → se aplica cada temporada porque el virus cambia; en la campaña invernal se prioriza a los grupos de riesgo.\n**Paso 5:** Le tomas foto a la cartilla → siempre sabrás qué tienes y qué te falta.\n\nResultado: esquema al día y sin costo. El esquema lo actualiza la **Secretaría de Salud**."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **vacuna** contiene **antígenos** (atenuados, inactivados, fragmentos o ARNm) que crean **memoria inmunológica** sin causar la enfermedad. **Activa**: tu cuerpo hace los anticuerpos (al enfermar o vacunarte). **Pasiva**: los recibes hechos (maternos o sueros), sin memoria. **Inmunidad de grupo**: alta cobertura protege a quien no puede vacunarse. Se anotan en la **Cartilla Nacional de Salud**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Activa = te aprendes el fanchant tú (vacuna o enfermedad). Pasiva = alguien te sopla la letra en el momento (anticuerpos de mamá o suero): sirve ya, pero no te la aprendes. La influenza es canción nueva cada temporada: vacuna cada año."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Los eventos adversos leves son comunes y pasajeros; los raros se vigilan como ESAVI.",
+        "data": {
+          "intro": "Te pusiste el refuerzo de Td antes de tu viaje a Corea. Sigue qué es normal y qué se vigila.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Esperas unos minutos en observación en la unidad de salud: así pueden atender de inmediato una reacción alérgica grave, que es muy rara."
+            },
+            {
+              "text": "En la noche el brazo te duele y está un poco rojo: es un evento adverso leve y común, que pasa en pocos días."
+            },
+            {
+              "text": "Al día siguiente sientes cansancio o febrícula: es tu sistema inmune trabajando, no la enfermedad."
+            },
+            {
+              "text": "Si aparece algo fuera de lo común, avisas en tu centro de salud: se registra como ESAVI y se investiga si tiene relación con la vacuna."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Mito o realidad?",
+        "content": "Mito: lo que la evidencia científica ya descartó. Realidad: lo que confirman la OMS y la Secretaría de Salud.",
+        "data": {
+          "prompt": "Arrastra cada frase que leíste en un foro de fans a su categoría.",
+          "buckets": [
+            "Mito",
+            "Realidad"
+          ],
+          "items": [
+            {
+              "t": "Las vacunas causan autismo",
+              "b": 0
+            },
+            {
+              "t": "La influenza inyectable te da influenza",
+              "b": 0
+            },
+            {
+              "t": "Si ya casi no hay sarampión, sobra vacunarse",
+              "b": 0
+            },
+            {
+              "t": "Un brazo adolorido es un efecto leve común",
+              "b": 1
+            },
+            {
+              "t": "La de influenza se aplica cada temporada",
+              "b": 1
+            },
+            {
+              "t": "Los eventos raros se vigilan y se investigan",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "ESAVI",
+              "b": "Evento tras vacunarse"
+            },
+            {
+              "a": "Cartilla Nacional",
+              "b": "Tu registro personal"
+            },
+            {
+              "a": "Wakefield",
+              "b": "Estudio retractado"
+            },
+            {
+              "a": "Secretaría de Salud",
+              "b": "Actualiza el esquema"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de tu preparación?",
+        "left_label": "Fanchant",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El video guía, sin escenario ni público",
+            "right": "Vacuna"
+          },
+          {
+            "left": "Gritar cada parte a tiempo en el show",
+            "right": "Respuesta secundaria"
+          },
+          {
+            "left": "Recordarlo meses después",
+            "right": "Memoria inmunológica"
+          },
+          {
+            "left": "Canción nueva, video guía nuevo",
+            "right": "Vacuna anual de influenza"
+          }
+        ],
+        "completion_feedback": "El video guía es la **vacuna**, reaccionar a tiempo es la **respuesta secundaria**, recordarlo es la **memoria** y cada canción nueva pide guía nueva, como la **influenza**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Antes de viajar a Corea, ¿dónde quedan registradas las vacunas que te han aplicado en México?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "En la Cartilla Nacional de Salud"
+            },
+            {
+              "letter": "B",
+              "text": "En la página de visas de tu pasaporte"
+            },
+            {
+              "letter": "C",
+              "text": "En tu acta de nacimiento"
+            },
+            {
+              "letter": "D",
+              "text": "En tu credencial de la escuela"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La Cartilla Nacional de Salud registra tus vacunas y acciones de prevención según tu grupo de edad. El pasaporte, el acta y la credencial escolar no llevan ese registro.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu amiga se pone la vacuna de influenza y al día siguiente le duele el brazo y tiene febrícula. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Influenza causada por la vacuna"
+            },
+            {
+              "letter": "B",
+              "text": "Una alergia grave a la vacuna"
+            },
+            {
+              "letter": "C",
+              "text": "Una señal de que la vacuna falló"
+            },
+            {
+              "letter": "D",
+              "text": "Un evento adverso leve"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El dolor en el brazo y la febrícula son eventos adversos leves y pasajeros: el sistema inmune está respondiendo. La vacuna inyectable lleva virus inactivado, así que no puede dar influenza.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un fan publica: «Mi prima se vacunó y después la diagnosticaron con autismo; la vacuna lo causó». ¿Cuál es el error de razonamiento?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que no dijo qué vacuna le pusieron a su prima"
+            },
+            {
+              "letter": "B",
+              "text": "Que algo pase después no prueba que lo causó"
+            },
+            {
+              "letter": "C",
+              "text": "Que el autismo solo lo causan vacunas nuevas"
+            },
+            {
+              "letter": "D",
+              "text": "Que debió esperar a un segundo caso igual"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Que dos cosas ocurran una tras otra no significa que una cause la otra. Para saberlo se comparan miles de personas vacunadas y no vacunadas, y esos estudios no encontraron relación con el autismo.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Por qué te ponen la vacuna de influenza cada temporada, aunque te la hayas puesto el año pasado?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La vacuna anterior te dio la enfermedad"
+            },
+            {
+              "letter": "B",
+              "text": "El virus cambia y la protección baja"
+            },
+            {
+              "letter": "C",
+              "text": "Las vacunas caducan dentro del cuerpo"
+            },
+            {
+              "letter": "D",
+              "text": "Para recibir anticuerpos de otra persona"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El virus de la influenza cambia de una temporada a otra y la protección disminuye con los meses, así que la vacuna se actualiza cada año, como un fanchant nuevo para cada canción.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el concierto, una fan que no practicó copia lo que grita la persona de al lado: le sirve en ese momento, pero no se lo aprende. ¿A qué se parece?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Inmunidad activa"
+            },
+            {
+              "letter": "B",
+              "text": "Memoria inmunológica"
+            },
+            {
+              "letter": "C",
+              "text": "Inmunidad pasiva"
+            },
+            {
+              "letter": "D",
+              "text": "Inmunidad de grupo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "En la inmunidad pasiva recibes anticuerpos ya hechos (de mamá o de un suero): protegen de inmediato, pero tu cuerpo no forma memoria. La activa sí deja memoria porque tú fabricas la respuesta.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "La partida de infectados que no prendió",
+        "content": "Con tus amigos entran a un juego de infectados en Roblox: uno empieza como zombi y cada jugador que toca se convierte también. En la primera ronda, el infectado atrapa a uno, esos dos atrapan a otros dos y en un minuto el mapa entero está verde. Imagina que, para la siguiente partida, quien creó el servidor activa una regla: los jugadores que elijan escudo antes de entrar no pueden convertirse. Solo tres de veinte lo eligen, y la ronda acaba igual: todos infectados. En la tercera, diecisiete de veinte entran con escudo. El zombi corre de un lado a otro, pero casi todos los que toca son inmunes y la cadena nunca arranca. Lo curioso es quiénes se salvan: tu primo de siete años, que entró sin entender lo del escudo, y otros dos que no alcanzaron a elegirlo. Nadie los protegió directamente, pero el zombi nunca logró llegar hasta ellos. Que muchos protegidos frenen el contagio y salven también a quienes no tienen protección es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La partida de infectados ES inmunidad de grupo",
+        "content": "Lo que acabas de ver en la partida de infectados es exactamente la **inmunidad de grupo**: si una proporción alta de la población es inmune, la **cadena de transmisión** se rompe y quedan protegidos quienes no pueden vacunarse. El escudo es la **vacuna**: una preparación con **antígenos** (microbio **atenuado**, **inactivado**, un **fragmento** o **ARN mensajero**) que entrena al sistema inmune sin enfermarte. Los **linfocitos B** fabrican **anticuerpos** y dejan **células de memoria**. Es **inmunidad activa artificial**; enfermar da la **activa natural**, y recibir anticuerpos hechos (maternos o **sueros**) es **pasiva**, temporal y sin memoria."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el modo entrenamiento y los tipos de vacuna",
+        "content": "Quieres ganarle a un rival en Super Smash Bros. Ultimate y practicas en el modo entrenamiento. Cada forma de practicar se parece a un tipo de vacuna.\n\n**Paso 1:** El CPU quieto, que no ataca: tiene la forma completa pero no hace daño → **inactivada**, como la de influenza inyectable.\n**Paso 2:** El CPU en nivel bajo: ataca, pero débil → **atenuada** (vivo pero debilitado), como la **SRP** o la **BCG**.\n**Paso 3:** Practicas solo el ataque con el que siempre te saca → **fragmento**, como la de **hepatitis B** o la de **VPH**.\n**Paso 4:** La consola recibe instrucciones para generar ese ataque y luego las borra → **ARN mensajero**: tus células fabrican una proteína del virus y el ARNm se degrada sin tocar tu ADN.\n**Paso 5:** En la partida real reaccionas al instante → **memoria inmunológica**.\n\nResultado: aprender sin perder de verdad."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **vacuna** contiene **antígenos** (atenuados, inactivados, fragmentos o ARNm) que crean **memoria inmunológica** sin causar la enfermedad. **Activa**: tu cuerpo hace los anticuerpos (al enfermar o vacunarte). **Pasiva**: los recibes hechos (maternos o sueros), sin memoria. **Inmunidad de grupo**: alta cobertura protege a quien no puede vacunarse. Se anotan en la **Cartilla Nacional de Salud**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el modo entrenamiento: atenuada = rival vivo pero débil (SRP, BCG, rotavirus); inactivada = rival que no se mueve (influenza inyectable); fragmento = un solo ataque (hepatitis B, VPH); ARNm = instrucciones que luego se borran."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un dato de salud se verifica buscando su origen y la evidencia, no la fama de quien lo dice.",
+        "data": {
+          "intro": "Un streamer dice en directo que las vacunas causan autismo. Verifica el dato como verificarías un truco que parece demasiado bueno.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Buscas el origen: un estudio de 1998 de Andrew Wakefield, con solo 12 niños, que sugería una relación con la vacuna triple viral."
+            },
+            {
+              "text": "Investigaciones posteriores mostraron que los datos estaban manipulados: la revista The Lancet lo retractó en 2010 y Wakefield perdió su licencia médica en Reino Unido."
+            },
+            {
+              "text": "Estudios con cientos de miles de niños, vacunados y no vacunados, no encontraron ninguna relación entre la vacuna y el autismo."
+            },
+            {
+              "text": "Conclusión: es un mito. La OMS y la Secretaría de Salud confirman que las vacunas son seguras y que sus beneficios superan por mucho sus riesgos."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué tipo de vacuna es?",
+        "content": "Atenuada: microbio vivo pero debilitado. Inactivada o fragmento: microbio muerto o solo una parte. ARN mensajero: instrucciones para que tus células fabriquen una proteína del virus.",
+        "data": {
+          "prompt": "Arrastra cada vacuna a su tipo, como si armaras tu equipo de entrenamiento.",
+          "buckets": [
+            "Atenuada",
+            "Inactivada o fragmento",
+            "ARN mensajero"
+          ],
+          "items": [
+            {
+              "t": "Triple viral (SRP)",
+              "b": 0
+            },
+            {
+              "t": "BCG contra la tuberculosis",
+              "b": 0
+            },
+            {
+              "t": "Rotavirus, que se da por la boca",
+              "b": 0
+            },
+            {
+              "t": "Influenza inyectable",
+              "b": 1
+            },
+            {
+              "t": "Hepatitis B",
+              "b": 1
+            },
+            {
+              "t": "Vacunas de ARNm contra COVID-19",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto del esquema con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Inmunidad de grupo",
+              "b": "Frena la cadena"
+            },
+            {
+              "a": "Hexavalente",
+              "b": "Seis enfermedades"
+            },
+            {
+              "a": "Triple viral",
+              "b": "Incluye la rubéola"
+            },
+            {
+              "a": "Influenza",
+              "b": "Cambia cada temporada"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la partida?",
+        "left_label": "Partida infectados",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El escudo elegido antes de entrar",
+            "right": "Vacuna"
+          },
+          {
+            "left": "17 de 20 jugadores con escudo",
+            "right": "Alta cobertura"
+          },
+          {
+            "left": "El zombi que no logra contagiar",
+            "right": "Cadena de transmisión rota"
+          },
+          {
+            "left": "Tu primo, salvado sin escudo",
+            "right": "Inmunidad de grupo"
+          }
+        ],
+        "completion_feedback": "El escudo es la **vacuna**, 17 de 20 es una **alta cobertura**, el zombi frenado es la **cadena de transmisión rota** y tu primo salvado es la **inmunidad de grupo**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En la partida de infectados, el escudo hace que un jugador nunca se convierta. En salud, ¿qué cumple ese papel?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El antibiótico"
+            },
+            {
+              "letter": "B",
+              "text": "La vacuna"
+            },
+            {
+              "letter": "C",
+              "text": "El analgésico"
+            },
+            {
+              "letter": "D",
+              "text": "La desinfección"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La vacuna deja al cuerpo preparado para que el microbio no logre enfermarlo, como el escudo. Los antibióticos tratan infecciones bacterianas ya presentes y los analgésicos solo calman el dolor.",
+          "difficulty": 1
+        },
+        {
+          "question": "Con solo 3 de 20 jugadores con escudo, todos acabaron infectados. ¿Qué faltó para frenar la cadena?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un escudo más resistente para esos tres"
+            },
+            {
+              "letter": "B",
+              "text": "Que el zombi se moviera más lento"
+            },
+            {
+              "letter": "C",
+              "text": "Una cobertura mucho más alta"
+            },
+            {
+              "letter": "D",
+              "text": "Que los tres tuvieran dos escudos"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La inmunidad de grupo no depende de qué tan bueno sea cada escudo, sino de cuántos lo tienen. Con poca cobertura, el contagio siempre encuentra a quién pasar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu primo entró sin escudo y aun así no se infectó en la tercera ronda. En la vida real, ¿a quién representa mejor?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "A alguien que ya tuvo la enfermedad"
+            },
+            {
+              "letter": "B",
+              "text": "A un bebé muy pequeño para la SRP"
+            },
+            {
+              "letter": "C",
+              "text": "A alguien con todas sus vacunas"
+            },
+            {
+              "letter": "D",
+              "text": "A alguien que recibió anticuerpos de un suero"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Tu primo no tenía ninguna protección propia, igual que un bebé que aún no puede recibir la SRP. Quien ya enfermó, está vacunado o recibió suero sí tiene protección.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el modo entrenamiento, practicar contra un CPU que ataca pero muy débil se parece a una vacuna…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Inactivada"
+            },
+            {
+              "letter": "B",
+              "text": "De subunidad"
+            },
+            {
+              "letter": "C",
+              "text": "Atenuada"
+            },
+            {
+              "letter": "D",
+              "text": "De ARN mensajero"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La vacuna atenuada lleva el microbio vivo pero debilitado, como la SRP o la BCG: se parece al CPU que ataca débil. La inactivada es el CPU quieto y la de subunidad, un solo ataque.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un jugador dice en el chat: «Las vacunas de ARN mensajero cambian tu ADN». ¿Qué es cierto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sí, pero solo en algunas células"
+            },
+            {
+              "letter": "B",
+              "text": "El ARNm no entra al núcleo y se degrada"
+            },
+            {
+              "letter": "C",
+              "text": "Sí, por eso solo se aplican en adultos"
+            },
+            {
+              "letter": "D",
+              "text": "Lo cambian, pero de forma temporal y leve"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "El ARN mensajero se queda fuera del núcleo, donde está el ADN: tus células lo leen para fabricar una proteína del virus y luego se degrada. No modifica tu material genético.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es una vacuna?",
+      "options": [
+        { "letter": "A", "text": "Un medicamento que destruye a las bacterias que ya te infectaron" },
+        { "letter": "B", "text": "Un preparado que entrena al sistema inmune sin enfermarte" },
+        { "letter": "C", "text": "Un suero con anticuerpos que te protege toda la vida" },
+        { "letter": "D", "text": "Una vitamina que fortalece todas tus defensas por igual" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en algo que se aplica antes de enfermar y le enseña algo al cuerpo.",
+      "explanation": "Una vacuna contiene antígenos que entrenan al sistema inmune y dejan memoria sin causar la enfermedad. No cura infecciones presentes como un antibiótico ni trae anticuerpos hechos como un suero."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama la molécula de un microbio que el sistema inmune reconoce como extraña?",
+      "options": [
+        { "letter": "A", "text": "Anticuerpo" },
+        { "letter": "B", "text": "Antibiótico" },
+        { "letter": "C", "text": "Antígeno" },
+        { "letter": "D", "text": "Linfocito" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es lo que el cuerpo detecta, no lo que el cuerpo fabrica para defenderse.",
+      "explanation": "El antígeno es la molécula que el sistema inmune reconoce como extraña. El anticuerpo es la proteína que el cuerpo fabrica contra él, y el linfocito es la célula que lo produce."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué células fabrican los anticuerpos?",
+      "options": [
+        { "letter": "A", "text": "Linfocitos T" },
+        { "letter": "B", "text": "Linfocitos B" },
+        { "letter": "C", "text": "Glóbulos rojos" },
+        { "letter": "D", "text": "Plaquetas" }
+      ],
+      "correct_answer": "B",
+      "hint": "Son glóbulos blancos; los otros linfocitos coordinan la respuesta y destruyen células infectadas.",
+      "explanation": "Los linfocitos B, al activarse, producen anticuerpos. Los linfocitos T coordinan la respuesta y destruyen células infectadas; los glóbulos rojos llevan oxígeno y las plaquetas ayudan a coagular."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué enfermedades previene la vacuna triple viral (SRP)?",
+      "options": [
+        { "letter": "A", "text": "Difteria, tos ferina y tétanos" },
+        { "letter": "B", "text": "Tuberculosis, hepatitis B y polio" },
+        { "letter": "C", "text": "Sarampión, rubéola y parotiditis" },
+        { "letter": "D", "text": "Influenza, neumonía y COVID-19" }
+      ],
+      "correct_answer": "C",
+      "hint": "Las siglas SRP son las iniciales de las tres enfermedades.",
+      "explanation": "SRP significa sarampión, rubéola y parotiditis (paperas), tres enfermedades causadas por virus. Difteria, tos ferina y tétanos están en la hexavalente y en la Tdpa."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué documento registra las vacunas de una persona en México?",
+      "options": [
+        { "letter": "A", "text": "El acta de nacimiento" },
+        { "letter": "B", "text": "La Cartilla Nacional de Salud" },
+        { "letter": "C", "text": "La CURP" },
+        { "letter": "D", "text": "El certificado de estudios de primaria" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es una libreta que se entrega por grupo de edad y se lleva al centro de salud.",
+      "explanation": "La Cartilla Nacional de Salud registra vacunas y acciones de prevención; hay una para cada grupo de edad. El acta, la CURP y los certificados escolares no llevan ese registro."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la memoria inmunológica?",
+      "options": [
+        { "letter": "A", "text": "Recordar a un microbio para responder más rápido" },
+        { "letter": "B", "text": "Fabricar los mismos anticuerpos contra cualquier microbio" },
+        { "letter": "C", "text": "Recibir anticuerpos ya hechos de otra persona" },
+        { "letter": "D", "text": "Olvidar a un microbio después de vencerlo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es la razón por la que el segundo encuentro con un microbio suele salir mejor que el primero.",
+      "explanation": "Tras el primer contacto quedan células de memoria que reconocen al microbio y permiten una respuesta más rápida e intensa. Los anticuerpos son específicos, y recibirlos hechos es inmunidad pasiva."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué vacuna se aplica al nacer y protege contra las formas graves de tuberculosis?",
+      "options": [
+        { "letter": "A", "text": "Triple viral" },
+        { "letter": "B", "text": "Rotavirus" },
+        { "letter": "C", "text": "BCG" },
+        { "letter": "D", "text": "Td" }
+      ],
+      "correct_answer": "C",
+      "hint": "Son tres letras y es la primera vacuna de la cartilla.",
+      "explanation": "La BCG se aplica al nacer y protege a los niños contra las formas graves de tuberculosis, como la meníngea. La de hepatitis B también se aplica al nacer, pero es contra otra enfermedad."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué tipo de inmunidad da una vacuna?",
+      "options": [
+        { "letter": "A", "text": "Activa natural" },
+        { "letter": "B", "text": "Pasiva artificial" },
+        { "letter": "C", "text": "Activa artificial" },
+        { "letter": "D", "text": "Pasiva natural" }
+      ],
+      "correct_answer": "C",
+      "hint": "Pregúntate quién fabrica los anticuerpos y si hubo intervención médica.",
+      "explanation": "Con la vacuna tu cuerpo fabrica sus anticuerpos (activa) gracias a una intervención médica (artificial). Enfermar da activa natural, y recibir anticuerpos hechos es pasiva."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la inmunidad de grupo?",
+      "options": [
+        { "letter": "A", "text": "Inmunidad que solo tienen los grupos de personas jóvenes" },
+        { "letter": "B", "text": "Una vacuna que se aplica a varias personas al mismo tiempo" },
+        { "letter": "C", "text": "Anticuerpos que un grupo de personas comparte por el contacto" },
+        { "letter": "D", "text": "Protección que surge cuando casi toda la población es inmune" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en qué le pasa a un microbio que no encuentra a quién contagiar.",
+      "explanation": "Cuando una proporción alta de la población es inmune, el microbio deja de circular y protege también a quien no puede vacunarse. Los anticuerpos no se comparten por contacto."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Contra qué protege principalmente la vacuna de neumococo?",
+      "options": [
+        { "letter": "A", "text": "Neumonía, meningitis y otitis" },
+        { "letter": "B", "text": "Diarreas graves causadas por rotavirus" },
+        { "letter": "C", "text": "Sarampión y rubéola" },
+        { "letter": "D", "text": "Tuberculosis grave" }
+      ],
+      "correct_answer": "A",
+      "hint": "Su nombre se parece al de una infección de los pulmones.",
+      "explanation": "El neumococo es una bacteria que causa neumonía, meningitis y otitis, sobre todo en niños pequeños y adultos mayores. Las diarreas por rotavirus tienen su propia vacuna."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "La vacuna hexavalente protege contra seis enfermedades. ¿Cuál de estas NO está incluida?",
+      "options": [
+        { "letter": "A", "text": "Tos ferina" },
+        { "letter": "B", "text": "Poliomielitis" },
+        { "letter": "C", "text": "Hepatitis B" },
+        { "letter": "D", "text": "Sarampión" }
+      ],
+      "correct_answer": "D",
+      "hint": "Una de estas enfermedades tiene su propia vacuna combinada con otras dos.",
+      "explanation": "La hexavalente cubre difteria, tos ferina, tétanos, poliomielitis, Haemophilus influenzae tipo b y hepatitis B. El sarampión se previene con la triple viral (SRP)."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué distingue a la inmunidad pasiva de la activa?",
+      "options": [
+        { "letter": "A", "text": "Tu cuerpo fabrica los anticuerpos y la protección dura años" },
+        { "letter": "B", "text": "Recibes anticuerpos ya hechos y no deja memoria" },
+        { "letter": "C", "text": "Solo se obtiene al enfermar de forma natural" },
+        { "letter": "D", "text": "Siempre dura toda la vida de la persona" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en quién fabrica los anticuerpos en cada caso.",
+      "explanation": "En la pasiva recibes anticuerpos ya formados (de la madre o de un suero): protegen de inmediato, pero son temporales y no dejan memoria. Fabricarlos tú y que duren es la activa."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un bebé recibe anticuerpos de su mamá por la placenta y la leche materna. ¿Qué inmunidad es?",
+      "options": [
+        { "letter": "A", "text": "Activa natural" },
+        { "letter": "B", "text": "Pasiva natural" },
+        { "letter": "C", "text": "Pasiva artificial" },
+        { "letter": "D", "text": "Activa artificial" }
+      ],
+      "correct_answer": "B",
+      "hint": "El bebé no fabricó esos anticuerpos y nadie se los inyectó.",
+      "explanation": "El bebé recibe anticuerpos ya hechos (pasiva) por una vía del propio cuerpo, la placenta o la leche (natural). Lo protegen sus primeros meses, pero no le dejan memoria."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué contiene una vacuna atenuada?",
+      "options": [
+        { "letter": "A", "text": "El microbio muerto, que ya no se reproduce" },
+        { "letter": "B", "text": "El microbio vivo pero debilitado" },
+        { "letter": "C", "text": "Anticuerpos de otra persona ya formados" },
+        { "letter": "D", "text": "Solo instrucciones de ARN para una proteína" }
+      ],
+      "correct_answer": "B",
+      "hint": "Atenuar significa hacer algo más débil, no matarlo.",
+      "explanation": "La vacuna atenuada lleva el microbio vivo pero debilitado, como la SRP, la BCG o la de rotavirus. La que lleva el microbio muerto es inactivada, y la de ARN lleva solo instrucciones."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es el refuerzo de una vacuna?",
+      "options": [
+        { "letter": "A", "text": "Una aplicación posterior que renueva la memoria" },
+        { "letter": "B", "text": "Un suero que se aplica si la vacuna no funcionó" },
+        { "letter": "C", "text": "Un medicamento que quita los efectos adversos leves" },
+        { "letter": "D", "text": "Una vacuna distinta contra una enfermedad nueva" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en repasar algo que ya aprendiste para no olvidarlo.",
+      "explanation": "El refuerzo vuelve a presentar el mismo antígeno para reactivar la memoria inmunológica y prolongar la protección, como la Td en adolescentes y adultos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cómo actúa una vacuna de ARN mensajero?",
+      "options": [
+        { "letter": "A", "text": "Introduce el virus vivo pero debilitado" },
+        { "letter": "B", "text": "Tus células fabrican una proteína del virus" },
+        { "letter": "C", "text": "Modifica tu ADN para volverte inmune" },
+        { "letter": "D", "text": "Te da anticuerpos ya formados de otra persona" }
+      ],
+      "correct_answer": "B",
+      "hint": "Un mensajero lleva instrucciones; alguien más hace el trabajo.",
+      "explanation": "El ARNm da a tus células instrucciones para fabricar una proteína del virus, que entrena al sistema inmune. Luego se degrada; no entra al núcleo ni cambia tu ADN."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué es un ESAVI?",
+      "options": [
+        { "letter": "A", "text": "Un tipo de vacuna que solo se aplica en emergencias" },
+        { "letter": "B", "text": "Una enfermedad causada siempre por la vacuna aplicada" },
+        { "letter": "C", "text": "Un evento posterior a vacunarse que se investiga" },
+        { "letter": "D", "text": "El registro de vacunas de un adolescente en su cartilla" }
+      ],
+      "correct_answer": "C",
+      "hint": "La palabra supuestamente está escondida en sus siglas.",
+      "explanation": "ESAVI significa Evento Supuestamente Atribuible a la Vacunación o Inmunización: algo que ocurre tras vacunarse y se investiga para saber si la vacuna lo causó o solo coincidió."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué la vacuna de influenza inyectable no puede causar influenza?",
+      "options": [
+        { "letter": "A", "text": "Contiene el virus vivo de la temporada pasada" },
+        { "letter": "B", "text": "Contiene virus inactivado que no se reproduce" },
+        { "letter": "C", "text": "Es un antibiótico contra el virus de la influenza" },
+        { "letter": "D", "text": "Trae anticuerpos de personas que ya se curaron" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en si lo que trae la vacuna está vivo o no.",
+      "explanation": "La vacuna inyectable lleva virus inactivado o partes de él, que no pueden reproducirse ni causar la enfermedad. Los antibióticos no sirven contra virus."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué institución define y actualiza el esquema nacional de vacunación en México?",
+      "options": [
+        { "letter": "A", "text": "La Secretaría de Educación Pública" },
+        { "letter": "B", "text": "La PROFECO" },
+        { "letter": "C", "text": "El INEGI" },
+        { "letter": "D", "text": "La Secretaría de Salud" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es la dependencia federal encargada de la salud de la población.",
+      "explanation": "La Secretaría de Salud define el esquema y lo actualiza según la evidencia y la situación del país. Por eso conviene revisar tu cartilla con el personal de salud."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál es un evento adverso leve y común después de una vacuna?",
+      "options": [
+        { "letter": "A", "text": "La enfermedad completa contra la que protege" },
+        { "letter": "B", "text": "Dolor y enrojecimiento donde se aplicó" },
+        { "letter": "C", "text": "Una reacción alérgica grave en todos los casos" },
+        { "letter": "D", "text": "Perder la memoria inmunológica anterior" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en lo que sientes en el brazo un día después.",
+      "explanation": "Dolor, enrojecimiento, cansancio o febrícula son eventos leves y pasajeros. Las reacciones alérgicas graves son muy raras y se atienden en la unidad de salud."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "El sarampión necesita cerca de 95% de cobertura para lograr inmunidad de grupo; otras enfermedades, menos. ¿De qué depende esa diferencia?",
+      "options": [
+        { "letter": "A", "text": "Del precio de cada vacuna en el país" },
+        { "letter": "B", "text": "De qué tan contagiosa es la enfermedad" },
+        { "letter": "C", "text": "De la edad promedio de la población vacunada" },
+        { "letter": "D", "text": "De si la vacuna es inyectada o tomada" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en a cuántas personas puede contagiar un solo enfermo.",
+      "explanation": "Mientras más personas contagia cada enfermo, más alta debe ser la cobertura para cortar la transmisión. El sarampión es de las enfermedades más contagiosas que existen."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un adolescente dice que ya no necesita vacunarse contra el sarampión porque casi no hay casos. ¿Qué error comete?",
+      "options": [
+        { "letter": "A", "text": "El sarampión desapareció del mundo hace años" },
+        { "letter": "B", "text": "Las vacunas solo sirven durante un brote activo" },
+        { "letter": "C", "text": "Hay pocos casos justo porque muchos se vacunan" },
+        { "letter": "D", "text": "Los adolescentes no pueden contagiarse de sarampión" }
+      ],
+      "correct_answer": "C",
+      "hint": "Pregúntate por qué hay pocos casos y qué pasaría si mucha gente pensara igual.",
+      "explanation": "Hay pocos casos gracias a la vacunación. Si la cobertura baja, el sarampión regresa: por eso ha habido brotes recientes en América, sobre todo entre personas sin vacunar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona recibe suero antialacrán tras una picadura. ¿Qué tipo de inmunidad recibe y cuánto dura?",
+      "options": [
+        { "letter": "A", "text": "Activa artificial, de por vida" },
+        { "letter": "B", "text": "Pasiva natural, de por vida" },
+        { "letter": "C", "text": "Activa natural, temporal" },
+        { "letter": "D", "text": "Pasiva artificial, temporal" }
+      ],
+      "correct_answer": "D",
+      "hint": "El suero trae anticuerpos ya hechos y se aplica en la unidad de salud.",
+      "explanation": "El suero aporta anticuerpos ya fabricados (pasiva) mediante una intervención médica (artificial). Actúan de inmediato, pero se eliminan con el tiempo y no dejan memoria."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué una persona en quimioterapia depende de la inmunidad de grupo?",
+      "options": [
+        { "letter": "A", "text": "La quimioterapia la vuelve inmune a todo contagio" },
+        { "letter": "B", "text": "Con defensas bajas no puede recibir algunas vacunas" },
+        { "letter": "C", "text": "Las vacunas le quitan el efecto a su tratamiento" },
+        { "letter": "D", "text": "Ya recibió anticuerpos de las personas a su alrededor" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué pasa con el sistema inmune durante ese tratamiento.",
+      "explanation": "Sus defensas bajas le impiden recibir vacunas atenuadas y hacen que otras funcionen peor. La protege que el microbio no circule entre la gente vacunada a su alrededor."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué, en una segunda exposición al mismo antígeno, la respuesta inmune es más rápida que en la primera?",
+      "options": [
+        { "letter": "A", "text": "Los anticuerpos maternos siguen activos" },
+        { "letter": "B", "text": "El microbio se vuelve más débil cada vez" },
+        { "letter": "C", "text": "Ya existen células de memoria" },
+        { "letter": "D", "text": "El cuerpo usa una vacuna distinta" }
+      ],
+      "correct_answer": "C",
+      "hint": "Algo quedó guardado en el cuerpo después del primer encuentro.",
+      "explanation": "La primera respuesta deja células de memoria que reconocen al antígeno de inmediato. Por eso la respuesta secundaria es más rápida e intensa, y en eso se basan las vacunas y los refuerzos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En 1998 un estudio de 12 niños sugirió que la triple viral causaba autismo. ¿Qué pasó después?",
+      "options": [
+        { "letter": "A", "text": "Se confirmó con estudios de miles de niños" },
+        { "letter": "B", "text": "Se retiró la vacuna en todo el mundo" },
+        { "letter": "C", "text": "Se retractó y estudios grandes lo descartaron" },
+        { "letter": "D", "text": "Se aceptó y se cambió la fórmula de la vacuna" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca qué pasó con el estudio y con su autor cuando se revisaron sus datos.",
+      "explanation": "The Lancet retractó el estudio de Andrew Wakefield en 2010 por datos manipulados y él perdió su licencia en Reino Unido. Estudios con cientos de miles de niños no encontraron relación con el autismo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una escuela, 70% de los alumnos tiene la SRP completa y aparece un caso de sarampión. ¿Qué es lo más probable?",
+      "options": [
+        { "letter": "A", "text": "Nadie se contagie porque 70% basta" },
+        { "letter": "B", "text": "Se contagien varios no vacunados" },
+        { "letter": "C", "text": "Solo se contagien los vacunados" },
+        { "letter": "D", "text": "El virus desaparezca solo en un día" }
+      ],
+      "correct_answer": "B",
+      "hint": "Compara ese 70% con la cobertura que necesita el sarampión.",
+      "explanation": "Para el sarampión se necesita cerca de 95% de cobertura. Con 70%, el virus encuentra suficientes personas sin protección y puede formar un brote entre ellas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una mujer recibe la vacuna Tdpa durante el embarazo. ¿Cómo protege eso a su bebé recién nacido contra la tos ferina?",
+      "options": [
+        { "letter": "A", "text": "El bebé nace con memoria inmunológica propia" },
+        { "letter": "B", "text": "Le pasa anticuerpos por la placenta" },
+        { "letter": "C", "text": "El bebé recibe el microbio debilitado" },
+        { "letter": "D", "text": "La vacuna se le aplica también al bebé" }
+      ],
+      "correct_answer": "B",
+      "hint": "La mamá fabrica anticuerpos; piensa en cómo llegan al bebé antes de nacer.",
+      "explanation": "La madre produce anticuerpos y estos cruzan la placenta: el bebé recibe inmunidad pasiva natural que lo protege sus primeros meses, cuando aún es muy pequeño para vacunarse."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "A una persona con defensas muy bajas le recomiendan evitar la triple viral, pero sí aplicarse la vacuna de influenza inyectable. ¿Por qué?",
+      "options": [
+        { "letter": "A", "text": "La SRP es atenuada y la de influenza, inactivada" },
+        { "letter": "B", "text": "La SRP es inactivada y la de influenza, atenuada" },
+        { "letter": "C", "text": "La influenza no puede contagiar a esa persona" },
+        { "letter": "D", "text": "La SRP solo sirve en niños y no en adultos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en cuál de las dos lleva un microbio vivo.",
+      "explanation": "La SRP lleva virus vivos debilitados, que en alguien con defensas muy bajas podrían causar problemas. La influenza inyectable lleva virus inactivado, que no se reproduce."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un video dice que aplicar varias vacunas el mismo día satura el sistema inmune. ¿Qué es lo correcto?",
+      "options": [
+        { "letter": "A", "text": "Es cierto, por eso se aplica una vacuna por año" },
+        { "letter": "B", "text": "El sistema inmune responde a muchos antígenos a la vez" },
+        { "letter": "C", "text": "Es cierto solo en adolescentes y adultos sanos" },
+        { "letter": "D", "text": "Las vacunas combinadas protegen menos que las separadas" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cuántos microbios distintos enfrenta tu cuerpo cada día al comer o respirar.",
+      "explanation": "El cuerpo enfrenta a diario muchísimos antígenos del ambiente. Las vacunas combinadas, como la hexavalente, son seguras y eficaces y evitan más pinchazos."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Qué diferencia hay entre una vacuna y un suero?",
+    "options": [
+      { "letter": "A", "text": "El suero previene y la vacuna cura enfermedades ya presentes" },
+      { "letter": "B", "text": "La vacuna genera memoria; el suero da anticuerpos ya hechos" },
+      { "letter": "C", "text": "Son lo mismo, solo cambia la forma de aplicarlos" },
+      { "letter": "D", "text": "La vacuna dura días y el suero dura toda la vida" }
+    ],
+    "correct_answer": "B",
+    "explanation": "La vacuna hace que tu cuerpo fabrique anticuerpos y células de memoria (inmunidad activa). El suero aporta anticuerpos ya hechos que actúan de inmediato pero no dejan memoria (pasiva)."
+  }
+}

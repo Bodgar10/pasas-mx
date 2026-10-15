@@ -100,6 +100,23 @@ Hyrule, Geometry Dash, torneo de Fall Guys, efectividad de tipos y caramelos de 
 Studio, Creeper vs Drivatar (Forza), clip de Rocket League y stream de Twitch, obby en Roblox Studio con
 cronograma, servidor de Minecraft rentado, nivel de Super Mario Maker 2, control adaptado.
 
+## Escenarios ya usados en Introducción a las Ciencias Sociales (no repetir)
+Anime: proyección pública de Dragon Ball Super (2018), Cells at Work! y la gripe del salón, convención de anime en
+CDMX, Caballeros del Zodiaco en México, Dr. STONE (aldea Ishigami), Haikyuu!! (Karasuno vs Shiratorizawa, colecta),
+My Hero Academia (Dones y licencias), Komi-san, Kimi ni Todoke, tomos de One Piece en el club, club de anime de la
+prepa, Mob y su club, investigación del club sobre por qué ven anime. Fútbol: festejo en el Ángel (México 1-0
+Alemania 2018), partido en la tiendita, tiro libre y fisiología, liga juvenil al mediodía, inauguración del Mundial
+2026, Liga MX Femenil, Manchester y Newton Heath, equipo que no gana en casa, carne asada tras el título, abono caro,
+Clásico Nacional, roja y Comisión Disciplinaria, cascarita que se vuelve institución, Selección en Estados Unidos y
+remesas, fuerzas básicas, cancha recuperada, equipo femenil de la prepa, entrevistas en la fila de Pumas, porra.
+K-pop: cumpleaños de Stray Kids con STAY, fans de ENHYPEN, concierto y sonido de Stray Kids, CARAT y versiones de
+álbum, Hallyu en casa, Extraordinary Attorney Woo, trainee de Busan, K-drama de fábrica en los setenta, debut de un
+grupo nuevo, contrato de siete años, servicio militar de BTS, península de Corea, comeback de aespa, HYBE/Weverse,
+live de BTS y brecha digital, fanbase de TXT, ATINY que dona, admin de fanbase, dance cover de ITZY, ONCE en el cine.
+Videojuegos: Brookhaven con los primos, escuadras de Fortnite, Pokémon GO (huevo de 10 km, Día de la Comunidad),
+Free Fire en el recreo, Among Us 2020, Stardew Valley y JojaMart, mascotas de Roblox, Animal Crossing (Nook Inc.),
+Liga Pokémon de Kanto y Alola, Fortnite y ciberacoso, Discord de Roblox, club de Brawl Stars, encuesta de juego y sueño.
+
 Ideas frescas que casi no se han usado: Jujutsu Kaisen (sin escenas gráficas), Kaiju No. 8, Oshi no Ko
 (sin el crimen), Pokémon anime, Mob Psycho 100, Sakamoto Days, Bleach, Dragon Ball Daima, Attack on Titan
 (sin violencia); Pumas, Cruz Azul, Tigres, Rayados, Santiago Giménez, Messi en el Inter Miami, Real Madrid,
@@ -143,3 +160,19 @@ Minecraft redstone, Roblox Studio.
   villano de la analogía.
 - Los fandoms, los clubes, los equipos y las comunidades gamer son grupos sociales reales: úsalos como objeto de
   estudio (normas, roles, identidad, instituciones, poder) sin burlarte de ellos.
+
+## Ciencias de la Salud (prepa 3°, 17-18 años)
+- 🔴 **Exactitud médica y vigente**: usa definiciones y guías oficiales (OMS, Secretaría de Salud, NOM). Si un dato
+  pudo cambiar (esquema de vacunación, instituciones, cifras), dilo de forma general o con su año y fuente.
+  Instituciones: IMSS, ISSSTE, IMSS-Bienestar (atiende a quien no tiene seguridad social en los estados adheridos;
+  el INSABI desapareció en 2023), Pemex, Sedena y Semar, Secretaría de Salud, servicios privados.
+- 🔴 **Nada de dosis ni indicaciones de medicamentos o drogas**, nada de cómo conseguir o consumir sustancias, nada
+  de métodos de autolesión. Teléfonos reales y seguros: **911** (emergencias) y **Línea de la Vida 800 911 2000**
+  (adicciones y salud mental, gratis, 24 h).
+- **Salud mental y trastornos alimentarios**: con empatía, sin estigma y sin cifras de peso, calorías o metas
+  corporales; siempre con la salida de pedir ayuda a un adulto de confianza o a un profesional.
+- **Salud sexual**: informativa, científica y respetuosa, sin escenas sexuales ni romantizar a idols o personajes
+  reales. La temática entra con metáforas (planear, prevenir, contagio en un juego), no con relaciones de personajes.
+- **Primeros auxilios**: protocolos actuales (seguridad de la escena, llamar al 911, RCP de alta calidad en adultos:
+  100-120 compresiones por minuto, 5-6 cm de profundidad). Nunca sustituye un curso; dilo.
+- La temática no trivializa enfermedades ni sufrimiento: nadie se burla de un paciente.
