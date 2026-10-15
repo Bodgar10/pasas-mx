@@ -1,0 +1,979 @@
+{
+  "subject": "introduccion-ciencias-sociales",
+  "topic": "instituciones-sociales-ics",
+  "order_steps": {
+    "prompt": "Ordena cómo se forma una institución social",
+    "steps": [
+      "Aparece una necesidad que la sociedad tiene que resolver",
+      "La gente prueba formas de resolverla y repite las que funcionan",
+      "Esas prácticas se vuelven normas y roles estables",
+      "Se enseñan a las nuevas generaciones como algo natural"
+    ],
+    "completion_feedback": "Una **institución** nace de una **necesidad**, se vuelve **hábito**, se fija en **normas y roles** y se **transmite** a quienes llegan después. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El primer día de Komi en la Preparatoria Itan",
+        "content": "Primer día de clases en Komi-san. Antes de entrar al salón, todos cambian sus zapatos por unos de interior en los casilleros de la entrada; nadie lo cuestiona, así se hace en las escuelas de Japón. Hay ceremonia de bienvenida, el mismo uniforme para todos, un maestro titular, lista de asistencia y turnos para limpiar el salón al terminar el día. Y luego están las reglas que nadie escribió: en el salón 1-1, sin ponerse de acuerdo, todos deciden que Komi es tan imponente que casi nadie se atreve a hablarle. Tadano descubre la verdad: Komi no es fría, le cuesta muchísimo comunicarse, y en el pizarrón le confiesa su sueño de hacer cien amigos. Eso no lo va a aprender en su casa, sino ahí, entre compañeros. Ahora piénsalo: la escuela ya funcionaba igual antes de que Komi llegara y seguirá igual cuando se gradúe. Cambian los alumnos y los maestros, pero los roles, las reglas y las costumbres se quedan. Ese molde que le da forma a la vida de todos es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La escuela de Komi ES una institución social",
+        "content": "Lo que acabas de ver con el primer día de Komi es exactamente una **institución social**: un patrón **estable** de **normas, roles y prácticas** que satisface una **necesidad** de la sociedad. La institución **no es el edificio** ni la **organización** concreta (la Preparatoria Itan): es la forma organizada de educar. Los zapatos y la limpieza son **normas formales**; el «nadie le habla», una **norma informal**. Lo que Komi aprende con sus compañeros es **socialización secundaria**; la **primaria** pasó antes, en su **familia** (**Berger y Luckmann**). Las grandes instituciones son la **familia** (cuidado), la **escuela** (saberes), el **Estado** (leyes y servicios), la **religión** (sentido y comunidad) y los **medios** (información)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Sawako y las instituciones de Kimi ni Todoke",
+        "content": "En Kimi ni Todoke, Sawako es amable, pero en su prepa le dicen «Sadako» por su aspecto y casi nadie se le acerca. Revisa qué institución actúa en cada momento.\n\n**Paso 1:** En casa aprendió a ser educada y a ayudar a otros → **familia**, **socialización primaria**.\n**Paso 2:** En la prepa hay horario, uniforme y reglamento → **escuela**, **normas formales**.\n**Paso 3:** Sus compañeros la evitan por rumores → **grupo de pares**, **norma informal** con sanción social: la exclusión.\n**Paso 4:** Kazehaya la saluda frente a todos y otros empiezan a hablarle → las normas informales **pueden cambiar**.\n**Paso 5:** Con Chizu y Ayane aprende a ser amiga → **socialización secundaria**.\n\nResultado: la familia la formó primero; la escuela y sus amigas la siguen formando."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **institución social** es un patrón **estable** de **normas, roles y prácticas** que satisface una **necesidad** social; no es un edificio ni una organización. **Socialización primaria**: familia. **Secundaria**: escuela, pares, medios y religión (**Berger y Luckmann**). **Normas formales**: escritas, con sanción oficial; **informales**: no escritas, con sanción social."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en Komi: el edificio es donde estudia, la Preparatoria Itan es la organización y «la escuela», con sus reglas, roles y costumbres, es la institución. La institución sobrevive a cualquier edificio."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una institución combina prácticas estables, roles, normas formales e informales y socialización.",
+        "data": {
+          "intro": "Sigue el día de Komi y nombra qué parte de la institución escolar aparece en cada momento.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Llega y cambia sus zapatos por los de interior, como todos: es una práctica que se repite cada día y nadie discute." },
+            { "text": "El maestro pasa lista y cada quien sabe qué le toca: maestro, alumno, encargado de limpieza. Son roles." },
+            { "text": "Le toca limpiar el salón: la escuela lo marca y, si no lo hace, hay una sanción formal." },
+            { "text": "Casi nadie se atreve a hablarle: esa regla no está escrita en ningún lado, es una norma informal del grupo." },
+            { "text": "Tadano la ayuda a hablar con otros: entre pares, Komi vive la socialización secundaria." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Primaria o secundaria?",
+        "content": "Primaria: la que da la familia en los primeros años. Secundaria: la que dan después la escuela, los amigos, los medios y otras instituciones.",
+        "data": {
+          "prompt": "Arrastra cada momento del mundo del anime al tipo de socialización que muestra.",
+          "buckets": ["Socialización primaria", "Socialización secundaria"],
+          "items": [
+            { "t": "Komi aprende a hablar en casa, de bebé", "b": 0 },
+            { "t": "Sawako aprende modales con sus papás", "b": 0 },
+            { "t": "Aprender de niña a comer con palillos", "b": 0 },
+            { "t": "Komi aprende las reglas del salón 1-1", "b": 1 },
+            { "t": "Najimi le presenta a todo el grupo", "b": 1 },
+            { "t": "Un anime la anima a entrar a un club", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Familia", "b": "Socialización primaria" },
+            { "a": "Grupo de pares", "b": "Amigos de tu edad" },
+            { "a": "Medios", "b": "Informar y entretener" },
+            { "a": "Rol", "b": "Conducta esperada" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del primer día de Komi?",
+        "left_label": "Primer día de Komi",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Cambiarse los zapatos al entrar", "right": "Práctica estable" },
+          { "left": "Casi nadie se atreve a hablarle", "right": "Norma informal" },
+          { "left": "Maestro, alumna, encargado de limpieza", "right": "Roles" },
+          { "left": "Aprender a hacer amigos en el salón", "right": "Socialización secundaria" }
+        ],
+        "completion_feedback": "Los zapatos son una **práctica estable**, el silencio ante Komi es una **norma informal**, cada quien tiene un **rol** y entre pares hay **socialización secundaria**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Tadano dice que «la escuela» es una institución social. ¿Qué significa eso en sociología?",
+          "options": [
+            { "letter": "A", "text": "Un edificio con salones y pizarrones" },
+            { "letter": "B", "text": "Un patrón estable de normas y roles" },
+            { "letter": "C", "text": "Un grupo de amigos del mismo salón" },
+            { "letter": "D", "text": "Una empresa privada que cobra colegiatura" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una institución social es un patrón estable de normas, roles y prácticas que satisface una necesidad, como educar. El edificio es solo el lugar, la prepa privada es una organización y un grupo de amigos no es una institución.",
+          "difficulty": 1
+        },
+        {
+          "question": "Komi aprendió de bebé a hablar y a dar las gracias en su casa. ¿Qué tipo de socialización fue?",
+          "options": [
+            { "letter": "A", "text": "Secundaria" },
+            { "letter": "B", "text": "Institucional" },
+            { "letter": "C", "text": "Primaria" },
+            { "letter": "D", "text": "Formal" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La socialización primaria ocurre en la infancia, casi siempre en la familia: ahí se aprenden el idioma y las normas básicas. La secundaria llega después, con la escuela, los amigos y los medios.",
+          "difficulty": 2
+        },
+        {
+          "question": "Si la Preparatoria Itan se mudara a un edificio nuevo, ¿qué pasaría con la escuela como institución?",
+          "options": [
+            { "letter": "A", "text": "Desaparecería con el edificio viejo" },
+            { "letter": "B", "text": "Seguiría: no depende del edificio" },
+            { "letter": "C", "text": "Se volvería una institución familiar" },
+            { "letter": "D", "text": "Perdería todas sus normas formales" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La institución es el patrón de normas, roles y prácticas, no el lugar. Aunque cambie el edificio, siguen las clases, los maestros, el reglamento y las costumbres.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál de estas es una norma formal en la escuela de Komi?",
+          "options": [
+            { "letter": "A", "text": "No hablarle a Komi porque impone" },
+            { "letter": "B", "text": "Turnos de limpieza del reglamento" },
+            { "letter": "C", "text": "Sentarse con los amigos en el almuerzo" },
+            { "letter": "D", "text": "Admirar en silencio a la más popular" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una norma formal la fija la institución y tiene sanción oficial, como los turnos de limpieza. No hablarle a Komi o sentarse con los amigos son costumbres del grupo: normas informales.",
+          "difficulty": 2
+        },
+        {
+          "question": "Imagina que en Año Nuevo Komi y sus amigas visitan un santuario, como es tradición en Japón. Según Durkheim, ¿qué hace la religión?",
+          "options": [
+            { "letter": "A", "text": "Cobra impuestos para el Estado" },
+            { "letter": "B", "text": "Une a una comunidad con ritos" },
+            { "letter": "C", "text": "Sustituye a la escuela en la enseñanza" },
+            { "letter": "D", "text": "Transmite noticias y entretenimiento" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Para Durkheim, la religión une a las personas en una comunidad con creencias y ritos compartidos, y les da normas y sentido. Cobrar impuestos es del Estado e informar es de los medios.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La roja del sábado y el balón que se regresa",
+        "content": "Sábado de Liga MX. Al minuto 30, un defensa de tu equipo barre por detrás y el árbitro le saca la roja directa. Se va al vestidor y tú ya sabes lo que sigue: en unos días, la Comisión Disciplinaria de la Federación Mexicana de Fútbol anunciará cuántos partidos se pierde. Nadie en el estadio lo discute: así funciona. Al 70, un jugador rival cae lesionado y tu equipo saca el balón por la banda. En el saque, el rival te lo devuelve. Ningún reglamento lo obliga, pero si no lo hiciera, el estadio entero lo abuchearía. Fíjate en todo lo que pasa sin que nadie lo explique: el capitán habla con el árbitro, el cuarto árbitro levanta el tablero de cambios, el entrenador grita desde su zona, la porra canta desde el primer minuto. La Federación existe desde 1927; han pasado miles de jugadores, entrenadores y directivos, y las reglas, los roles y los castigos siguen ahí. Ese orden que sobrevive a las personas es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El fútbol organizado ES una institución social",
+        "content": "Lo que acabas de ver en el estadio es exactamente una **institución social**: un patrón **estable** de **normas, roles y prácticas** que satisface necesidades, aquí competir, convivir y sentir identidad. La roja y la suspensión son **normas formales**: escritas, con **sanción oficial**. Devolver el balón es una **norma informal**: nadie la escribió y su sanción es **social**, el abucheo. Árbitro y capitán son **roles**. La **FMF** y tu club son **organizaciones**; la institución es el fútbol organizado. En la sociedad, las grandes instituciones son la **familia** (cuidado y **socialización primaria**), la **escuela** (saberes), el **Estado** (leyes y servicios), la **religión** (sentido y comunidad) y los **medios** (información)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — de la cascarita a la liga de la colonia",
+        "content": "Cada domingo, los vecinos se juntan a jugar una cascarita. Mira cómo se vuelve institución.\n\n**Paso 1:** Al principio cada quien llega cuando quiere y las reglas cambian cada semana → solo hay **interacción**, todavía no institución.\n**Paso 2:** Se repite cada domingo a las 10 con las mismas reglas → nace una **práctica estable**.\n**Paso 3:** Eligen capitanes, un árbitro y una tesorera → aparecen **roles**.\n**Paso 4:** Escriben un reglamento: quien no paga la cuota no juega → **norma formal** con **sanción**.\n**Paso 5:** Llegan vecinos nuevos y aprenden las reglas de los de siempre → la institución se **transmite**.\n\nResultado: aunque cambien los jugadores, las reglas y los roles siguen. Eso es una institución."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **institución social** es un patrón **estable** de **normas, roles y prácticas** que satisface una **necesidad** social; no es un edificio ni una organización. **Socialización primaria**: familia. **Secundaria**: escuela, pares, medios y religión (**Berger y Luckmann**). **Normas formales**: escritas, con sanción oficial; **informales**: no escritas, con sanción social."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Pregúntate si la regla está escrita y quién castiga. Tarjeta y suspensión de la Federación: norma y sanción formales. Devolver el balón y el abucheo de la tribuna: norma y sanción informales."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una institución necesita una necesidad que cubrir, roles, normas con sanciones y transmisión a los que llegan.",
+        "data": {
+          "intro": "Tu prepa quiere un torneo interno que dure muchos años. El medidor muestra qué tan institucionalizado queda. Sigue cada paso.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Definen qué necesidad cubre: que los alumnos hagan ejercicio y convivan entre grupos.", "delta": 20 },
+            { "text": "Asignan roles: un maestro coordina, cada grupo elige capitán y hay árbitros fijos.", "delta": 25 },
+            { "text": "Escriben un reglamento con tarjetas y suspensiones: ya hay normas y sanciones formales.", "delta": 25 },
+            { "text": "Cada generación les enseña el torneo a los de nuevo ingreso, y sigue cuando ellos se gradúan. ¡Ya es institución!", "delta": 30 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Formal o informal?",
+        "content": "Norma formal: está escrita y una autoridad aplica la sanción. Norma informal: es costumbre, no está escrita y la sanciona el grupo.",
+        "data": {
+          "prompt": "Arrastra cada norma del mundo del fútbol a su tipo.",
+          "buckets": ["Norma formal", "Norma informal"],
+          "items": [
+            { "t": "Roja directa por barrer por detrás", "b": 0 },
+            { "t": "Suspensión de la Comisión Disciplinaria", "b": 0 },
+            { "t": "Máximo cinco cambios por partido", "b": 0 },
+            { "t": "Devolver el balón tras una lesión", "b": 1 },
+            { "t": "No festejar el gol contra tu exequipo", "b": 1 },
+            { "t": "Hacerle pasillo al campeón", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada tipo de norma o sanción con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Norma formal", "b": "Reglamento escrito" },
+            { "a": "Norma informal", "b": "Costumbre no escrita" },
+            { "a": "Sanción formal", "b": "Multa de la Federación" },
+            { "a": "Sanción informal", "b": "Abucheo de la tribuna" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del partido?",
+        "left_label": "La roja del sábado",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La Comisión Disciplinaria suspende", "right": "Sanción formal" },
+          { "left": "Devolver el balón al rival", "right": "Norma informal" },
+          { "left": "Árbitro, capitán y cuarto árbitro", "right": "Roles" },
+          { "left": "La FMF, que existe desde 1927", "right": "Organización" }
+        ],
+        "completion_feedback": "La suspensión es una **sanción formal**, devolver el balón es una **norma informal**, cada quien cumple un **rol** y la FMF es una **organización** dentro de la institución. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En el fútbol, devolverle el balón al rival después de una lesión es una norma…",
+          "options": [
+            { "letter": "A", "text": "Formal" },
+            { "letter": "B", "text": "Jurídica" },
+            { "letter": "C", "text": "Informal" },
+            { "letter": "D", "text": "Escrita" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Ningún reglamento obliga a devolver el balón: es una costumbre del juego, y quien no la cumple recibe una sanción social, como el abucheo. Por eso es una norma informal.",
+          "difficulty": 1
+        },
+        {
+          "question": "Para la sociología, la Federación Mexicana de Fútbol es…",
+          "options": [
+            { "letter": "A", "text": "Un edificio con oficinas" },
+            { "letter": "B", "text": "Una organización concreta" },
+            { "letter": "C", "text": "Una norma informal" },
+            { "letter": "D", "text": "Un agente de socialización primaria" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La FMF es un grupo concreto con directivos, reglamento y sede: una organización. La institución es el fútbol organizado, el patrón de normas y roles que la FMF ayuda a administrar. Su edificio es solo el lugar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un delantero anota contra su exequipo y no lo festeja, aunque nadie se lo pide. ¿Qué explica su conducta?",
+          "options": [
+            { "letter": "A", "text": "Una regla escrita de la FIFA" },
+            { "letter": "B", "text": "Una sanción formal de su club" },
+            { "letter": "C", "text": "Una norma informal aprendida" },
+            { "letter": "D", "text": "Una orden del árbitro del partido" }
+          ],
+          "correct_answer": "C",
+          "explanation": "No festejar contra tu exequipo es una costumbre del fútbol que el jugador aprendió con los años; no está escrita ni la impone el árbitro. Cumplirla sin que nadie lo pida muestra que la interiorizó.",
+          "difficulty": 3
+        },
+        {
+          "question": "Un niño de cuatro años ya le va al equipo de su papá y se sabe sus cantos. ¿Qué institución lo socializó?",
+          "options": [
+            { "letter": "A", "text": "La escuela" },
+            { "letter": "B", "text": "El Estado" },
+            { "letter": "C", "text": "La familia" },
+            { "letter": "D", "text": "La religión" }
+          ],
+          "correct_answer": "C",
+          "explanation": "A esa edad, lo que se aprende viene sobre todo de la familia: es socialización primaria. La escuela, los medios y los amigos influyen después, en la socialización secundaria.",
+          "difficulty": 2
+        },
+        {
+          "question": "Hace unos años, las reglas del fútbol pasaron de tres a cinco cambios por partido. ¿Qué muestra eso?",
+          "options": [
+            { "letter": "A", "text": "Que el fútbol ya no es institución" },
+            { "letter": "B", "text": "Que las instituciones cambian" },
+            { "letter": "C", "text": "Que las normas formales no existen" },
+            { "letter": "D", "text": "Que solo cambian las normas informales" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las instituciones son estables, pero no eternas: sus normas se ajustan con el tiempo. Cambiar una regla escrita es justo un cambio en una norma formal, y el fútbol sigue siendo institución.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El comeback que sigue el mismo guion",
+        "content": "aespa anuncia comeback y tú ya te sabes el guion de memoria, aunque nadie te lo haya explicado. SM publica el calendario, salen las fotos conceptuales, el MV se estrena a las 6 de la tarde, hora de Corea, y durante dos semanas el grupo se presenta en los programas musicales de la tele. Ahí, los grupos nuevos saludan con una reverencia a los que llevan más años, y cada integrante cumple su papel: de Karina, la líder, se espera que hable por el grupo. Frente a la pantalla, los fans gritan los fanchants en el momento exacto; quien se equivoca recibe comentarios incómodos en el chat. Y si un idol rompe su contrato o comete una falta grave, la agencia publica un comunicado y suspende sus actividades. Lo más curioso: este guion funcionaba casi igual con grupos de hace veinte años. Antes los fans compraban CD y veían la tele; hoy viven en apps como Weverse y en el streaming. Ese sistema que forma a idols y fans por igual es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El sistema del K-pop ES una institución social",
+        "content": "Lo que acabas de ver con el comeback es exactamente una **institución social**: un patrón **estable** de **normas, roles y prácticas** que satisface necesidades, aquí entretener, dar identidad y dar trabajo. El contrato y los comunicados son **normas formales** con **sanción oficial**; la reverencia y el fanchant a tiempo, **normas informales** con sanción **social**. Líder y maknae son **roles**. **SM, JYP o HYBE** son **organizaciones**, no la institución. Programas musicales y Weverse son parte de los **medios**, que hoy también te **socializan**. Las grandes instituciones son la **familia** (**socialización primaria**), la **escuela** (saberes), el **Estado** (leyes y servicios), la **religión** (sentido y comunidad) y los **medios**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — HYBE: ¿edificio, organización o institución?",
+        "content": "Tu amiga dice que HYBE «es una institución». Separa cada cosa con cuidado.\n\n**Paso 1:** La torre de oficinas de HYBE en Seúl → es un **edificio**, solo el lugar.\n**Paso 2:** HYBE, la empresa fundada como Big Hit en 2005, con dueños y empleados → es una **organización**.\n**Paso 3:** El sistema de audiciones, entrenamiento, debut y contratos que comparten SM, JYP y HYBE → es la **institución**.\n**Paso 4:** Weverse, la plataforma de HYBE donde los fans siguen a sus artistas → no es la institución: es parte de los **medios**.\n**Paso 5:** Si una agencia cerrara, el sistema seguiría en las demás → la institución es más **estable** que cualquier organización.\n\nResultado: el edificio y la empresa pueden cambiar; el patrón se queda."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **institución social** es un patrón **estable** de **normas, roles y prácticas** que satisface una **necesidad** social; no es un edificio ni una organización. **Socialización primaria**: familia. **Secundaria**: escuela, pares, medios y religión (**Berger y Luckmann**). **Normas formales**: escritas, con sanción oficial; **informales**: no escritas, con sanción social."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Haz la prueba de HYBE: si tiene dirección, es edificio; si tiene dueños y empleados, es organización; si es una forma de hacer las cosas que comparten muchas agencias durante años, es institución."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La socialización secundaria también ocurre en los medios y entre pares.",
+        "data": {
+          "intro": "Tu prima de 15 años acaba de entrar a un fandom. Sigue cómo los medios y otras fans la van socializando.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Ve una presentación en un programa musical y conoce al grupo: los medios le muestran nuevos gustos y modelos." },
+            { "text": "Entra a Weverse y lee cómo hablan las demás fans: aprende palabras como maknae, comeback o bias." },
+            { "text": "Aprende el fanchant oficial que publica la agencia y lo grita a tiempo: ya cumple una norma del fandom." },
+            { "text": "Alguien comparte contenido filtrado y las demás lo reportan: así descubre las sanciones sociales del grupo." },
+            { "text": "Meses después, ella les explica todo a las fans nuevas: la norma ya se transmite sola." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Edificio, organización o institución?",
+        "content": "Edificio: el lugar físico. Organización: un grupo concreto con dueños, miembros y metas. Institución: el patrón estable de normas y roles que comparten muchas organizaciones.",
+        "data": {
+          "prompt": "Arrastra cada cosa del mundo del K-pop a la categoría que le corresponde.",
+          "buckets": ["Edificio", "Organización", "Institución"],
+          "items": [
+            { "t": "Las oficinas de SM en Seúl", "b": 0 },
+            { "t": "El estudio de grabación de JYP", "b": 0 },
+            { "t": "JYP Entertainment, la empresa", "b": 1 },
+            { "t": "KBS, la televisora de Music Bank", "b": 1 },
+            { "t": "El sistema de trainees y debut", "b": 2 },
+            { "t": "Los medios de comunicación", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Institución", "b": "Patrón estable de normas" },
+            { "a": "Organización", "b": "HYBE como empresa" },
+            { "a": "Edificio", "b": "Lugar físico" },
+            { "a": "Rol", "b": "Ser líder o maknae" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del comeback?",
+        "left_label": "Comeback",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "El contrato con la agencia", "right": "Norma formal" },
+          { "left": "La reverencia a los grupos mayores", "right": "Norma informal" },
+          { "left": "Ser la líder del grupo", "right": "Rol" },
+          { "left": "Programas musicales y Weverse", "right": "Medios" }
+        ],
+        "completion_feedback": "El contrato es una **norma formal**, la reverencia es una **norma informal**, la líder cumple un **rol** y los programas y Weverse son parte de los **medios**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿A qué institución social pertenecen los programas musicales y Weverse?",
+          "options": [
+            { "letter": "A", "text": "La familia de cada idol" },
+            { "letter": "B", "text": "Los medios de comunicación" },
+            { "letter": "C", "text": "La religión organizada" },
+            { "letter": "D", "text": "El Estado de Corea del Sur" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los programas de televisión, las apps y las redes sociales forman parte de los medios de comunicación, una institución que informa, entretiene y también socializa.",
+          "difficulty": 1
+        },
+        {
+          "question": "Un idol sabe que debe saludar con una reverencia a los grupos mayores, aunque su contrato no lo diga. Eso es una…",
+          "options": [
+            { "letter": "A", "text": "Norma formal" },
+            { "letter": "B", "text": "Norma informal" },
+            { "letter": "C", "text": "Sanción oficial" },
+            { "letter": "D", "text": "Función del Estado" }
+          ],
+          "correct_answer": "B",
+          "explanation": "No está escrita en ningún contrato ni reglamento: es una costumbre del medio. Si no la cumple, la sanción es social, como las críticas. Por eso es una norma informal.",
+          "difficulty": 2
+        },
+        {
+          "question": "Si HYBE desapareciera mañana, ¿qué pasaría con el sistema de agencias del K-pop?",
+          "options": [
+            { "letter": "A", "text": "Desaparecería con la empresa" },
+            { "letter": "B", "text": "Seguiría en otras agencias" },
+            { "letter": "C", "text": "Se volvería socialización primaria" },
+            { "letter": "D", "text": "Pasaría a ser un edificio" }
+          ],
+          "correct_answer": "B",
+          "explanation": "HYBE es una organización; el sistema de audiciones, entrenamiento, debut y contratos es la institución, y lo comparten SM, JYP y muchas agencias más. Por eso sobrevive aunque una empresa cierre.",
+          "difficulty": 3
+        },
+        {
+          "question": "Una fan nueva aprende en Weverse las palabras y costumbres del fandom. ¿Qué socialización vive?",
+          "options": [
+            { "letter": "A", "text": "Secundaria" },
+            { "letter": "B", "text": "Primaria, porque es su primer fandom" },
+            { "letter": "C", "text": "Ninguna, solo se entretiene" },
+            { "letter": "D", "text": "Formal, porque la regula la agencia" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Ya tuvo su socialización primaria en la familia. Lo que aprende de los medios y de otras fans es socialización secundaria, aunque sea su primer fandom y lo haga por diversión.",
+          "difficulty": 2
+        },
+        {
+          "question": "Antes los fans compraban CD y veían la tele; hoy siguen a sus idols en apps y streaming. ¿Qué muestra eso?",
+          "options": [
+            { "letter": "A", "text": "Los medios dejaron de ser una institución" },
+            { "letter": "B", "text": "Las instituciones cambian con el tiempo" },
+            { "letter": "C", "text": "Las normas informales ya no existen" },
+            { "letter": "D", "text": "La familia sustituyó a los medios" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los medios siguen cumpliendo sus funciones de informar, entretener y socializar, pero con otras herramientas. Las instituciones son estables, no eternas: cambian con la tecnología y la sociedad.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Las ocho medallas de la Liga Pokémon",
+        "content": "Empiezas tu aventura en Pueblo Paleta. Tu mamá te despide en casa y el Profesor Oak te da tu primer Pokémon. Pronto descubres que el mundo Pokémon tiene reglas que nadie te explica, pero todos cumplen. Si dos entrenadores cruzan miradas, combaten. Si lanzas una Poké Ball al Pokémon de otro entrenador, el juego te frena: no se roba. Y hay reglas escritas: para retar a la Liga Pokémon necesitas ocho medallas, y antes de la Calle Victoria hay guardias que revisan que las tengas. Cada gimnasio tiene un líder especialista en un tipo, como Brock con roca o Misty con agua; arriba están el Alto Mando y el Campeón. Si pierdes un combate, apareces en el último Centro Pokémon con menos dinero. Lo más interesante es que la Liga ya existía antes de ti y seguirá cuando la venzas: llegarán nuevos retadores y otros líderes, pero el sistema de medallas sigue igual. Esa estructura que organiza a todos los entrenadores es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La Liga Pokémon ES una institución",
+        "content": "Lo que acabas de ver en Kanto es exactamente una **institución social**: un patrón **estable** de **normas, roles y prácticas** que satisface necesidades, aquí organizar los combates y reconocer a los mejores. La regla de las ocho medallas es una **norma formal**: la vigilan guardias oficiales; combatir al cruzar miradas es una **norma informal**. Líder de gimnasio y Campeón son **roles**: cambian las personas, el rol se queda. Tu mamá te dio la **socialización primaria**; el viaje, la **secundaria** (**Berger y Luckmann**). En el mundo real, las grandes instituciones son la **familia** (cuidado), la **escuela** (saberes), el **Estado** (leyes y servicios), la **religión** (sentido y comunidad) y los **medios** (información)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Alola, la región que no tenía Liga",
+        "content": "En Pokémon Sol y Luna, la región de Alola no tenía Liga ni gimnasios. Analiza cómo cambia una institución.\n\n**Paso 1:** Los jóvenes recorrían las islas superando pruebas con capitanes y kahunas → una institución basada en la **tradición**.\n**Paso 2:** Cada isla tiene un guardián, y la tradición lo honra → así una costumbre da **sentido** y une a la **comunidad**, como hace la **religión**.\n**Paso 3:** El Profesor Kukui funda la primera Liga de Alola → se crea una institución **formal**, con reglas.\n**Paso 4:** Aparecen el Alto Mando y el Campeón, y tú eres el primero → nacen **roles** nuevos.\n**Paso 5:** El recorrido por las islas no desaparece: convive con la Liga → las instituciones **cambian** y se mezclan.\n\nResultado: una institución no es eterna; la sociedad la crea y la transforma."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **institución social** es un patrón **estable** de **normas, roles y prácticas** que satisface una **necesidad** social; no es un edificio ni una organización. **Socialización primaria**: familia. **Secundaria**: escuela, pares, medios y religión (**Berger y Luckmann**). **Normas formales**: escritas, con sanción oficial; **informales**: no escritas, con sanción social."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la Liga Pokémon: si un cargo como líder de gimnasio sigue aunque cambie la persona, es un rol. Si una regla la revisa un guardia, es formal; si solo la cuida la costumbre, es informal."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "En la Liga Pokémon hay socialización, roles, normas formales e informales y estabilidad.",
+        "data": {
+          "intro": "Recorre tu viaje por Kanto y nombra qué parte de una institución aparece en cada momento.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Tu mamá te despide y te pide cuidar a tus Pokémon: es la socialización primaria, la de la familia." },
+            { "text": "Retas a Brock en Ciudad Plateada: líder de gimnasio es un rol que alguien ocupa, no una persona fija." },
+            { "text": "Cruzas miradas con un entrenador y combaten: nadie lo escribió, es una norma informal." },
+            { "text": "Los guardias revisan tus ocho medallas antes de la Calle Victoria: norma formal con control oficial." },
+            { "text": "Vences al Campeón y llegarán nuevos retadores: la Liga sigue sin ti. La institución es estable." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué institución actúa?",
+        "content": "Familia: cuidado y socialización primaria. Escuela: saberes y convivencia. Estado: leyes y servicios. Medios: información, entretenimiento y modelos.",
+        "data": {
+          "prompt": "Arrastra cada situación de tu vida gamer a la institución que actúa.",
+          "buckets": ["Familia", "Escuela", "Estado", "Medios"],
+          "items": [
+            { "t": "Tu hermana te enseña tu primer juego", "b": 0 },
+            { "t": "Tus papás te ponen horario para jugar", "b": 0 },
+            { "t": "Clase de historia con un juego educativo", "b": 1 },
+            { "t": "PROFECO atiende tu queja por una compra", "b": 2 },
+            { "t": "Un streamer te hace querer un juego", "b": 3 },
+            { "t": "Un video de YouTube sobre la nueva consola", "b": 3 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada institución con su función principal.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Estado", "b": "Leyes y servicios públicos" },
+            { "a": "Religión", "b": "Ritos y comunidad" },
+            { "a": "Familia", "b": "Cuidado y afecto" },
+            { "a": "Escuela", "b": "Saberes y certificados" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la Liga Pokémon?",
+        "left_label": "Liga Pokémon",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Ocho medallas para entrar a la Liga", "right": "Norma formal" },
+          { "left": "Combatir al cruzar miradas", "right": "Norma informal" },
+          { "left": "Líder de gimnasio", "right": "Rol" },
+          { "left": "La Liga sigue tras tu victoria", "right": "Estabilidad" }
+        ],
+        "completion_feedback": "Las medallas son una **norma formal**, combatir al cruzar miradas es una **norma informal**, el líder de gimnasio es un **rol** y la Liga que sigue sin ti muestra **estabilidad**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Desde la sociología, ¿qué es «líder de gimnasio» en el mundo Pokémon?",
+          "options": [
+            { "letter": "A", "text": "Un rol" },
+            { "letter": "B", "text": "Una norma" },
+            { "letter": "C", "text": "Un edificio" },
+            { "letter": "D", "text": "Una sanción" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un rol es la conducta que se espera de quien ocupa una posición. Ser líder de gimnasio implica deberes fijos, como aceptar retos y entregar medallas, sin importar quién ocupe el cargo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Los guardias revisan tus ocho medallas antes de dejarte pasar a la Calle Victoria. ¿Qué tipo de norma es?",
+          "options": [
+            { "letter": "A", "text": "Informal, de costumbre" },
+            { "letter": "B", "text": "Formal, con control" },
+            { "letter": "C", "text": "Primaria, de la familia" },
+            { "letter": "D", "text": "Religiosa, por creencia" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es una regla establecida por la Liga y la hacen cumplir guardias oficiales: una norma formal. Las informales, como combatir al cruzar miradas, no están escritas y las cuida la costumbre.",
+          "difficulty": 2
+        },
+        {
+          "question": "En Pokémon Sol y Luna, Alola no tuvo Liga hasta que el Profesor Kukui fundó una. ¿Qué muestra esto sobre las instituciones?",
+          "options": [
+            { "letter": "A", "text": "Que nunca pueden cambiar" },
+            { "letter": "B", "text": "Que se crean y cambian" },
+            { "letter": "C", "text": "Que una liga no es institución" },
+            { "letter": "D", "text": "Que Alola no tenía ninguna norma" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las instituciones las crea la sociedad y cambian con el tiempo. Antes de la Liga, Alola ya tenía normas: su tradición del recorrido por las islas, que siguió conviviendo con la nueva Liga.",
+          "difficulty": 3
+        },
+        {
+          "question": "Un amigo te explica en Discord las reglas no escritas para intercambiar Pokémon. ¿Qué agente de socialización actúa?",
+          "options": [
+            { "letter": "A", "text": "La familia nuclear" },
+            { "letter": "B", "text": "El grupo de pares" },
+            { "letter": "C", "text": "El Estado mexicano" },
+            { "letter": "D", "text": "La escuela formal" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los amigos de tu edad forman el grupo de pares, un agente de socialización secundaria. Te enseñan normas informales que ni tu familia ni la escuela te explican.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué la Liga Pokémon es una institución y no solo un grupo de entrenadores?",
+          "options": [
+            { "letter": "A", "text": "Porque sus normas y roles duran" },
+            { "letter": "B", "text": "Porque tiene un edificio enorme" },
+            { "letter": "C", "text": "Porque sus líderes son famosos" },
+            { "letter": "D", "text": "Porque todos los entrenadores son amigos" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Lo que la hace institución es su patrón estable: medallas, gimnasios, Alto Mando y Campeón siguen aunque cambien las personas. El edificio o la fama no la definen.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué es una institución social?",
+      "options": [
+        { "letter": "A", "text": "Un patrón estable de normas, roles y prácticas" },
+        { "letter": "B", "text": "El edificio donde trabaja una dependencia" },
+        { "letter": "C", "text": "Cualquier grupo de personas que se reúne" },
+        { "letter": "D", "text": "Una empresa grande que da servicios al público" }
+      ],
+      "correct_answer": "A",
+      "hint": "No es un lugar ni una empresa: piensa en algo que dura aunque cambien las personas.",
+      "explanation": "Una institución social es un patrón estable de normas, roles y prácticas que satisface necesidades sociales. Un edificio es solo un lugar y una empresa es una organización."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué institución se encarga sobre todo de la socialización primaria?",
+      "options": [
+        { "letter": "A", "text": "La escuela" },
+        { "letter": "B", "text": "La familia" },
+        { "letter": "C", "text": "Los medios" },
+        { "letter": "D", "text": "El Estado" }
+      ],
+      "correct_answer": "B",
+      "hint": "La primaria ocurre en los primeros años de vida. ¿Con quién pasas esos años?",
+      "explanation": "La socialización primaria ocurre en la infancia, casi siempre en la familia: ahí se aprenden el idioma, los hábitos y las normas básicas."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Cuál de estas es una norma formal?",
+      "options": [
+        { "letter": "A", "text": "Saludar al llegar a una reunión" },
+        { "letter": "B", "text": "El reglamento escolar escrito" },
+        { "letter": "C", "text": "Dejar el asiento a una persona mayor" },
+        { "letter": "D", "text": "Felicitar a alguien en su cumpleaños" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la que está escrita y tiene una autoridad que la hace cumplir.",
+      "explanation": "Una norma formal está escrita y una autoridad aplica la sanción, como el reglamento escolar. Saludar o felicitar son costumbres: normas informales."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué autores distinguieron entre socialización primaria y secundaria en La construcción social de la realidad (1966)?",
+      "options": [
+        { "letter": "A", "text": "Berger y Luckmann" },
+        { "letter": "B", "text": "Marx y Engels" },
+        { "letter": "C", "text": "Comte y Spencer" },
+        { "letter": "D", "text": "Durkheim y Max Weber" }
+      ],
+      "correct_answer": "A",
+      "hint": "Son dos sociólogos del siglo XX que escribieron juntos ese libro.",
+      "explanation": "Peter Berger y Thomas Luckmann publicaron La construcción social de la realidad en 1966. Marx y Engels escribieron sobre las clases; Comte fundó el positivismo."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué es un rol social?",
+      "options": [
+        { "letter": "A", "text": "La conducta que se espera de una posición" },
+        { "letter": "B", "text": "Una ley que aprueba el Congreso de la Unión" },
+        { "letter": "C", "text": "El lugar donde se reúne un grupo" },
+        { "letter": "D", "text": "Una costumbre que solo tiene una persona" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que se espera de un maestro, de una mamá o de un árbitro.",
+      "explanation": "Un rol es el conjunto de conductas que se esperan de quien ocupa una posición, como alumno, madre o juez. Cambian las personas, pero el rol se mantiene."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué función principal cumple la escuela como institución?",
+      "options": [
+        { "letter": "A", "text": "Transmitir saberes y certificarlos" },
+        { "letter": "B", "text": "Cobrar impuestos y aprobar las leyes" },
+        { "letter": "C", "text": "Dar sentido religioso a la vida" },
+        { "letter": "D", "text": "Informar sobre las noticias del día" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en lo que te da la escuela al terminar cada nivel.",
+      "explanation": "La escuela transmite conocimientos y valores, socializa a los jóvenes y certifica lo aprendido. Las leyes son del Estado y las noticias, de los medios."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué institución cumple funciones de cuidado, afecto, reproducción y sustento de sus miembros?",
+      "options": [
+        { "letter": "A", "text": "La escuela" },
+        { "letter": "B", "text": "La familia" },
+        { "letter": "C", "text": "Los medios" },
+        { "letter": "D", "text": "La religión" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el primer grupo al que perteneces al nacer.",
+      "explanation": "La familia cuida, da afecto, asegura la reproducción y el sustento de sus miembros, y hace la socialización primaria. Existen muchos tipos de familia, y todos cumplen estas funciones."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué caracteriza a una norma informal?",
+      "options": [
+        { "letter": "A", "text": "No está escrita; la sanciona el grupo" },
+        { "letter": "B", "text": "La aplica un juez y casi siempre con multa" },
+        { "letter": "C", "text": "Está en la Constitución" },
+        { "letter": "D", "text": "Solo existe en las empresas privadas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en una costumbre: ¿quién te llama la atención si no la cumples?",
+      "explanation": "Las normas informales son costumbres no escritas. Su sanción es social: una burla, una mirada, la exclusión. Las que aplica un juez y están en leyes son formales."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué sociólogo estudió la religión como fuente de cohesión social en Las formas elementales de la vida religiosa (1912)?",
+      "options": [
+        { "letter": "A", "text": "Karl Marx" },
+        { "letter": "B", "text": "Max Weber" },
+        { "letter": "C", "text": "Émile Durkheim" },
+        { "letter": "D", "text": "Herbert Spencer" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es el sociólogo francés de los hechos sociales y la cohesión.",
+      "explanation": "Émile Durkheim publicó ese libro en 1912. Ahí explica que la religión une a las personas en una comunidad moral mediante creencias y ritos compartidos."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Cuáles son agentes de socialización secundaria?",
+      "options": [
+        { "letter": "A", "text": "Escuela, amigos y medios" },
+        { "letter": "B", "text": "Únicamente la mamá y el papá" },
+        { "letter": "C", "text": "Los genes y la herencia" },
+        { "letter": "D", "text": "El clima y la geografía" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en quién te enseña cosas fuera de casa, después de la infancia.",
+      "explanation": "La socialización secundaria la hacen la escuela, el grupo de pares, los medios, la religión y el trabajo. Los padres son el agente principal de la primaria."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "¿Cuál es la diferencia entre una institución y una organización?",
+      "options": [
+        { "letter": "A", "text": "Organización: grupo concreto; institución: un patrón" },
+        { "letter": "B", "text": "Son lo mismo: la sociología las usa como sinónimos" },
+        { "letter": "C", "text": "La institución siempre necesita un edificio propio" },
+        { "letter": "D", "text": "La organización nunca tiene reglas ni roles definidos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Compara «la educación» con «la prepa a la que vas».",
+      "explanation": "Una organización es un grupo concreto, con miembros y metas, como una prepa o un hospital. La institución es el patrón de normas y roles que esas organizaciones siguen, como la educación."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "«La Preparatoria Benito Juárez ocupa un edificio de tres pisos y forma parte de la educación escolar.» ¿Cuál es la institución?",
+      "options": [
+        { "letter": "A", "text": "La educación escolar" },
+        { "letter": "B", "text": "El edificio de tres pisos" },
+        { "letter": "C", "text": "La Preparatoria Benito Juárez" },
+        { "letter": "D", "text": "El director de la prepa" }
+      ],
+      "correct_answer": "A",
+      "hint": "Separa el lugar, el grupo concreto y la forma organizada de hacer las cosas.",
+      "explanation": "El edificio es el lugar y la preparatoria es una organización. La institución es la educación escolar: el patrón de normas, roles y prácticas que comparten todas las escuelas."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Un alumno es suspendido tres días por romper el reglamento. ¿Qué es la suspensión?",
+      "options": [
+        { "letter": "A", "text": "Una sanción formal" },
+        { "letter": "B", "text": "Una sanción informal" },
+        { "letter": "C", "text": "Una norma informal" },
+        { "letter": "D", "text": "Una función latente" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en quién castiga y con base en qué.",
+      "explanation": "La aplica una autoridad, la escuela, con base en una norma escrita: es una sanción formal. Una sanción informal sería una burla o el rechazo de los compañeros."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Según Berger y Luckmann, ¿por qué la socialización primaria deja una huella tan profunda?",
+      "options": [
+        { "letter": "A", "text": "Se da en la infancia, con afecto" },
+        { "letter": "B", "text": "Se da en la escuela, con exámenes" },
+        { "letter": "C", "text": "La impone el Estado con leyes" },
+        { "letter": "D", "text": "Se da en la adultez, en el trabajo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en la edad en que ocurre y en quiénes te la dan.",
+      "explanation": "La primaria ocurre en la infancia y con fuerte carga emocional: el niño acepta el mundo de sus padres como el único posible. Por eso marca más que la secundaria."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Vista desde la sociología, ¿qué función cumple la religión como institución social?",
+      "options": [
+        { "letter": "A", "text": "Producir bienes y cobrar impuestos" },
+        { "letter": "B", "text": "Dar sentido, normas y comunidad" },
+        { "letter": "C", "text": "Certificar estudios de bachillerato" },
+        { "letter": "D", "text": "Transmitir las noticias de cada día" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en lo que comparten quienes asisten juntos a una celebración religiosa.",
+      "explanation": "Sin juzgar ninguna creencia, la sociología observa que la religión da sentido a la vida, ofrece normas morales y une a las personas en comunidad mediante ritos compartidos."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "Según el artículo 3° de la Constitución, ¿cómo es la educación que imparte el Estado mexicano?",
+      "options": [
+        { "letter": "A", "text": "Privada y con costo" },
+        { "letter": "B", "text": "Religiosa y opcional" },
+        { "letter": "C", "text": "Laica y gratuita" },
+        { "letter": "D", "text": "Solo para adultos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda cómo es la escuela pública en México y su relación con las religiones.",
+      "explanation": "El artículo 3° establece que la educación que imparte el Estado es laica, ajena a cualquier doctrina religiosa, y gratuita. Así el Estado regula a otra institución: la escuela."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "¿Qué significa que México sea un Estado laico?",
+      "options": [
+        { "letter": "A", "text": "Prohíbe practicar cualquier religión" },
+        { "letter": "B", "text": "Tiene una religión oficial del país" },
+        { "letter": "C", "text": "Separa al Estado de las iglesias" },
+        { "letter": "D", "text": "Las iglesias aprueban las leyes" }
+      ],
+      "correct_answer": "C",
+      "hint": "Laico no significa contra la religión: piensa en quién decide qué.",
+      "explanation": "En un Estado laico, el gobierno y las iglesias están separados: el Estado no tiene religión oficial y garantiza la libertad de cada persona para tener o no una creencia."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "Las redes sociales enseñan a los jóvenes modas, palabras y formas de comportarse. ¿Qué función de los medios es esa?",
+      "options": [
+        { "letter": "A", "text": "Legislar" },
+        { "letter": "B", "text": "Socializar" },
+        { "letter": "C", "text": "Celebrar ritos" },
+        { "letter": "D", "text": "Certificar estudios" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué pasa cuando aprendes cómo actuar en un grupo.",
+      "explanation": "Además de informar y entretener, los medios, incluidas las redes sociales, socializan: transmiten valores, modelos y formas de actuar. Son un agente de socialización secundaria."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "La función manifiesta de la escuela es enseñar. Según Robert K. Merton, ¿cuál sería una función latente?",
+      "options": [
+        { "letter": "A", "text": "Que los alumnos hagan amigos" },
+        { "letter": "B", "text": "Que los alumnos aprendan álgebra" },
+        { "letter": "C", "text": "Que la SEP apruebe los programas" },
+        { "letter": "D", "text": "Que el maestro califique exámenes" }
+      ],
+      "correct_answer": "A",
+      "hint": "La función latente no es el objetivo oficial: es un efecto que nadie planeó.",
+      "explanation": "Merton llamó manifiestas a las funciones buscadas y reconocidas, y latentes a las no planeadas. Enseñar álgebra es manifiesta; hacer amigos y redes de apoyo es latente."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "Hoy hay hogares nucleares, monoparentales, extensos y reconstituidos. ¿Qué muestra esa variedad?",
+      "options": [
+        { "letter": "A", "text": "Que la familia cambia con el tiempo" },
+        { "letter": "B", "text": "Que la familia dejó de ser institución" },
+        { "letter": "C", "text": "Que solo la familia nuclear es familia" },
+        { "letter": "D", "text": "Que la familia ya no socializa" }
+      ],
+      "correct_answer": "A",
+      "hint": "Pregúntate si esas familias siguen cuidando y criando a sus miembros.",
+      "explanation": "Todas esas formas cumplen las funciones de la familia: cuidado, afecto y socialización primaria. La institución sigue, pero su forma cambia con la sociedad."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Durkheim definió la sociología como «la ciencia de las instituciones». ¿Qué quería destacar?",
+      "options": [
+        { "letter": "A", "text": "Que las instituciones moldean a las personas" },
+        { "letter": "B", "text": "Que solo importan los edificios públicos" },
+        { "letter": "C", "text": "Que la sociedad es solo la suma de individuos" },
+        { "letter": "D", "text": "Que la sociología estudia solo al Estado" }
+      ],
+      "correct_answer": "A",
+      "hint": "Para Durkheim, lo social existe fuera de cada persona y la presiona.",
+      "explanation": "Durkheim veía las instituciones como hechos sociales: existen antes que el individuo y orientan su conducta. Por eso la sociedad es más que la suma de sus miembros."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Una alumna escribe en su examen: «La escuela es el edificio de mi prepa». ¿Qué error comete?",
+      "options": [
+        { "letter": "A", "text": "No comete error, es lo mismo" },
+        { "letter": "B", "text": "Confunde institución y edificio" },
+        { "letter": "C", "text": "Confunde la familia con la escuela" },
+        { "letter": "D", "text": "Confunde una norma con una sanción" }
+      ],
+      "correct_answer": "B",
+      "hint": "Pregúntate si la escuela desaparecería al cambiar de edificio.",
+      "explanation": "La escuela como institución es el patrón de normas, roles y prácticas para educar. El edificio es solo el lugar donde ocurre; puede cambiar y la institución sigue."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "En 2020, durante la pandemia, la SEP transmitió clases por televisión con el programa Aprende en Casa. ¿Qué muestra este caso?",
+      "options": [
+        { "letter": "A", "text": "Instituciones que cambian y se apoyan entre sí" },
+        { "letter": "B", "text": "Que la escuela dejó de ser una institución" },
+        { "letter": "C", "text": "Que los medios sustituyeron por completo a la familia" },
+        { "letter": "D", "text": "Que el Estado ya no participa en la educación" }
+      ],
+      "correct_answer": "A",
+      "hint": "Cuenta cuántas instituciones participaron: quién organizó, por dónde llegó y quién acompañó en casa.",
+      "explanation": "El Estado organizó, los medios transmitieron, la escuela adaptó sus clases y la familia acompañó. Las instituciones se relacionan entre sí y cambian ante nuevas situaciones."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "¿Qué tienen en común un reglamento escolar, una ley federal y las reglas oficiales de un deporte?",
+      "options": [
+        { "letter": "A", "text": "Son normas informales" },
+        { "letter": "B", "text": "Son normas formales" },
+        { "letter": "C", "text": "Son funciones latentes" },
+        { "letter": "D", "text": "Son agentes de socialización" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en si están escritas y en si hay una autoridad que las aplica.",
+      "explanation": "Los tres están escritos y una autoridad aplica sanciones oficiales: la escuela, un juez o el árbitro. Eso los hace normas formales."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "¿Por qué una institución dura más que las personas que la forman?",
+      "options": [
+        { "letter": "A", "text": "Sus miembros nunca cambian" },
+        { "letter": "B", "text": "Siempre conserva el mismo edificio" },
+        { "letter": "C", "text": "Sus normas y roles se transmiten" },
+        { "letter": "D", "text": "La ley prohíbe modificarla" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en qué pasa cuando llegan miembros nuevos.",
+      "explanation": "Las normas y los roles se enseñan a cada generación mediante la socialización. Así, aunque las personas se van, la institución sigue. Eso no impide que cambie con el tiempo."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Unos amigos se juntan una sola vez a jugar fútbol en el parque, sin reglas fijas. ¿Es una institución social?",
+      "options": [
+        { "letter": "A", "text": "Sí, porque hay un grupo de personas" },
+        { "letter": "B", "text": "No, no hay un patrón estable" },
+        { "letter": "C", "text": "Sí, porque juegan en un lugar público" },
+        { "letter": "D", "text": "No, porque le falta un edificio propio" }
+      ],
+      "correct_answer": "B",
+      "hint": "Una sola vez y sin reglas fijas: ¿hay algo que se repita y dure?",
+      "explanation": "Una institución exige un patrón estable de normas y roles que se repite y se transmite. Un juego aislado es solo interacción. El edificio no tiene nada que ver."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un joven deja de publicar cierto tipo de videos después de recibir cientos de comentarios de burla. ¿Qué ocurrió?",
+      "options": [
+        { "letter": "A", "text": "Una sanción formal" },
+        { "letter": "B", "text": "Una sanción informal" },
+        { "letter": "C", "text": "Una socialización primaria" },
+        { "letter": "D", "text": "Una función manifiesta" }
+      ],
+      "correct_answer": "B",
+      "hint": "Nadie con autoridad oficial lo castigó. ¿Quién lo presionó?",
+      "explanation": "Las burlas son una sanción informal: las aplica el grupo, no una autoridad con base en una norma escrita. Muestran cómo las redes también regulan la conducta."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Una familia se muda a otro estado y los hijos aprenden en la nueva escuela palabras y costumbres distintas. ¿Qué proceso viven?",
+      "options": [
+        { "letter": "A", "text": "Socialización secundaria" },
+        { "letter": "B", "text": "Socialización primaria" },
+        { "letter": "C", "text": "Sanción formal" },
+        { "letter": "D", "text": "Función latente del Estado" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en quién les enseña y en que ya tuvieron su infancia en casa.",
+      "explanation": "Ya vivieron la socialización primaria en su familia. Lo que aprenden de la escuela y de sus nuevos compañeros es socialización secundaria, que dura toda la vida."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un municipio cobra impuestos para pavimentar calles y abrir una clínica. ¿Qué institución actúa y con qué función?",
+      "options": [
+        { "letter": "A", "text": "La familia: sustento económico" },
+        { "letter": "B", "text": "El Estado: servicios públicos" },
+        { "letter": "C", "text": "Los medios: informar" },
+        { "letter": "D", "text": "La religión: dar comunidad" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la institución que puede cobrar impuestos y prestar servicios a todos.",
+      "explanation": "El municipio es parte del Estado, la institución que crea leyes, mantiene el orden, cobra impuestos y presta servicios públicos como calles, salud y educación."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un profesor dice que los medios solo informan; una alumna responde que también socializan. ¿Quién tiene razón?",
+      "options": [
+        { "letter": "A", "text": "El profesor: solo informan y ya" },
+        { "letter": "B", "text": "La alumna: los medios también socializan" },
+        { "letter": "C", "text": "Ninguno: los medios no son institución" },
+        { "letter": "D", "text": "El profesor: socializar es de la familia" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en lo que aprendes de series, videos y redes además de noticias.",
+      "explanation": "Los medios informan y entretienen, pero también transmiten valores, modelos y formas de actuar: son agentes de socialización secundaria. La familia hace la primaria, no toda."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál de estos es un ejemplo de institución social?",
+    "options": [
+      { "letter": "A", "text": "Un salón de clases vacío" },
+      { "letter": "B", "text": "La familia" },
+      { "letter": "C", "text": "Una persona que vive sola" },
+      { "letter": "D", "text": "Un partido de fútbol aislado" }
+    ],
+    "correct_answer": "B",
+    "explanation": "La familia es una institución social: un patrón estable de normas, roles y prácticas que cubre necesidades como el cuidado y la socialización primaria. Un salón es un lugar y un partido aislado no tiene continuidad."
+  }
+}

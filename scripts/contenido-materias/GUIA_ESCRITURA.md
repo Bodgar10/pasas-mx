@@ -81,6 +81,25 @@ crewmate de Among Us en Scratch, miniatura de Fortnite, banner Pokémon en GIMP,
 drift del control, juego de Pokémon hecho por un fan, recursos con licencia, guerra de Clash of Clans, video de
 Free Fire, controles de Fortnite pisados, control arcade de Street Fighter.
 
+## Escenarios ya usados en Tecnología 3° (no repetir)
+Anime: Corporación Cápsula y la nave a Namek (Dragon Ball), Pokédex de Ash, página de fans de Kaiju No. 8
+(Kafka, Mina, Tercera División), medidor de Mob (Mob Psycho 100), clones de Naruto, tienda de Sakamoto Days,
+Doraemon despertando a Nobita, recomendaciones «porque viste Jujutsu Kaisen», traductor de un tomo de Sakamoto
+Days, AMV de Jujutsu Kaisen, fandub de One Piece, vitrina de Bakugo y Todoroki (MHA), marcapáginas de Bleach.
+Fútbol: fuera de lugar semiautomático y Estadio 974 (Qatar 2022), mercado de Ultimate Team, torneo femenil de la
+escuela, página de Pumas, Clásico Regio femenil, minutos por gol, utilero de la Selección, 17 jornadas de Liga MX,
+RoboCup, máquina lanzabalones, portera que estudia tiros de esquina, cámara con IA que siguió una cabeza calva,
+chilena en cámara lenta, partido grabado con el celular, boleto digital con QR, cronograma de la copa escolar,
+marcador de la liga escolar, tablero de cambios. K-pop: Weverse Albums, concierto en línea de BTS 2020,
+discografía de Stray Kids, nacionalidades de TWICE (MiSaMo), fan site de TXT, Inkigayo/Music Bank, reto de MIDZY,
+setlist de TWICE, lista de BTS, luz que sigue a Nayeon, lightsticks con control central, cover de IA de Winter,
+chatbot y aespa, calidad de audio de Stray Kids, MV en 4K, fila virtual de BLACKPINK, slogans de BLINK,
+lightstick casero para ENHYPEN, fan event de IVE. Videojuegos: Switch 2 y Xbox Adaptive Controller, Compendio de
+Hyrule, Geometry Dash, torneo de Fall Guys, efectividad de tipos y caramelos de Magikarp (Pokémon GO), Salmon Run
+(Splatoon 3), Mario Kart World, redstone de Minecraft (lámparas, granja de caña), jefe generado con IA en Roblox
+Studio, Creeper vs Drivatar (Forza), clip de Rocket League y stream de Twitch, obby en Roblox Studio con
+cronograma, servidor de Minecraft rentado, nivel de Super Mario Maker 2, control adaptado.
+
 Ideas frescas que casi no se han usado: Jujutsu Kaisen (sin escenas gráficas), Kaiju No. 8, Oshi no Ko
 (sin el crimen), Pokémon anime, Mob Psycho 100, Sakamoto Days, Bleach, Dragon Ball Daima, Attack on Titan
 (sin violencia); Pumas, Cruz Azul, Tigres, Rayados, Santiago Giménez, Messi en el Inter Miami, Real Madrid,
@@ -111,3 +130,16 @@ Minecraft redstone, Roblox Studio.
   `<img src="" alt="">` (sin cierre), `<ul>/<ol>/<li>`. No inventes etiquetas.
 - Bases de datos: tabla, campo (columna), registro (fila), clave primaria, tipos de dato, filtro/consulta.
   Si usas SQL, solo `SELECT … FROM … WHERE …` sencillo y correcto.
+
+## Bachillerato y ciencias sociales (ICS y siguientes de prepa)
+- Alumnos de 15-17 años: vocabulario de prepa, conceptos con nombre técnico, autores y fechas cuando el temario los pide.
+- 🔴 **Equilibrio político**: presenta teorías (positivismo, marxismo, funcionalismo, Weber) y problemas sociales con
+  precisión y sin tomar partido. Nada de opiniones sobre partidos, gobiernos o políticos actuales. Si hay debate,
+  muestra las posturas. Nunca atribuyas frases inventadas a personas reales.
+- **Cifras oficiales** (INEGI, CONEVAL, CONAPO, Banco Mundial): úsalas solo si estás seguro del dato y del año, y di el
+  año y la fuente («según CONEVAL, en 2022…»). Si dudas, describe la tendencia sin número o usa un caso hipotético.
+- **Temas delicados** (violencia, migración, pobreza, discriminación): con respeto y sin morbo; nada de detalles
+  gráficos ni de glorificar al crimen organizado o la narcocultura. Las personas afectadas no son el chiste ni el
+  villano de la analogía.
+- Los fandoms, los clubes, los equipos y las comunidades gamer son grupos sociales reales: úsalos como objeto de
+  estudio (normas, roles, identidad, instituciones, poder) sin burlarte de ellos.

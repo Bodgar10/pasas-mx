@@ -1,0 +1,1230 @@
+{
+  "subject": "introduccion-ciencias-sociales",
+  "topic": "disciplinas-sociales-ics",
+  "order_steps": {
+    "prompt": "Ordena cómo se analiza un hecho social con varias disciplinas",
+    "steps": [
+      "Elegir un hecho social concreto, como un concierto",
+      "Plantear la pregunta de cada disciplina sobre ese hecho",
+      "Buscar datos con el método propio de cada disciplina",
+      "Unir las respuestas en una explicación completa"
+    ],
+    "completion_feedback": "Primero se elige el **hecho**, luego cada disciplina hace su **pregunta**, busca datos con su **método** y al final todo se une en una mirada **interdisciplinaria**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Seis amigos, una convención y seis preguntas",
+        "content": "Vas con tus amigos a una convención de anime en la Ciudad de México. En la fila, Mariana nota que hay familias completas: papás que de niños veían anime en la tele abierta y hoy traen a sus hijos disfrazados. «¿En qué momento el anime pasó de ser cosa de unos cuantos a llenar un recinto así?», pregunta. Adentro, Ana ve que el lugar funciona como una pequeña sociedad: staff, artistas, vendedores y visitantes, cada quien con su papel. Leo descubre que una figura de Gojo cuesta el doble que en línea y que al final del día los puestos la rematan. Sofía observa a los cosplayers: se piden fotos con la misma pose, se saludan con frases de sus series y respetan reglas que nadie escribió, como no tocar un disfraz sin permiso. Diego se fija en los organizadores: deciden quién sube al escenario, qué se prohíbe y a quién sacan si no respeta. Y tú te descubres comprando el llavero que todos traían, aunque ni te gustaba tanto. Un mismo evento, seis preguntas distintas. Saber a qué disciplina pertenece cada una es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La convención vista por seis disciplinas",
+        "content": "Lo que acabas de ver en la convención es exactamente cómo trabajan las **disciplinas sociales**: miran un mismo **hecho social** con preguntas distintas. La **historia** estudia los procesos en el tiempo (cómo creció el anime en México). La **sociología**, los grupos, sus relaciones y sus instituciones (los papeles de staff y vendedores). La **economía**, cómo se producen, distribuyen y consumen **recursos escasos** (el precio de la figura). La **antropología**, la cultura y las costumbres (las poses de los cosplayers). La **ciencia política**, el **poder** y quién decide. La **psicología social**, cómo el grupo influye en cada persona (tu llavero)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Los Caballeros del Zodiaco",
+        "content": "Tu equipo expone la huella que dejó en México Los Caballeros del Zodiaco, serie japonesa de 1986 que aquí fue un éxito de TV Azteca en los noventa. Asigna cada pregunta a su disciplina.\n\n**Paso 1:** ¿Cómo pasó de éxito de los noventa a serie que hoy ven los hijos de aquellos fans? → **historia**, un proceso en el tiempo.\n**Paso 2:** ¿Quién fabricaba las figuras con armadura, cuánto costaban y quién las compraba? → **economía**.\n**Paso 3:** ¿Cómo se organizaban los clubes de fans y sus roles? → **sociología**.\n**Paso 4:** ¿Qué significaba en el recreo jugar «a los caballeros» y escoger al de tu signo zodiacal? → **antropología**, costumbres y significados.\n**Paso 5:** ¿Por qué alguien la empezó a ver solo porque todo su salón la comentaba? → **psicología social**.\n\nResultado: un solo fenómeno, cinco preguntas, cinco disciplinas."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Las **disciplinas sociales** estudian un mismo hecho con preguntas distintas: **historia** (procesos en el tiempo), **sociología** (grupos, relaciones e instituciones), **economía** (producción, distribución y consumo de recursos escasos), **antropología** (cultura y diversidad humana), **ciencia política** (poder y Estado) y **psicología social** (influencia del grupo en la persona)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la convención como un anime con seis protagonistas, cada uno con su poder. Historia: el tiempo. Sociología: grupos y roles. Economía: lo escaso. Antropología: costumbres. Ciencia política: quién manda. Psicología social: imitar al grupo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una sola escena de la convención da preguntas para varias disciplinas.",
+        "data": {
+          "intro": "Estás en la fila para conocer a un actor de doblaje muy famoso en la convención. Sigue cómo cada disciplina le saca una pregunta distinta a esa misma fila.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Sociología: en la fila hay dos generaciones, papás e hijos, que comparten la misma identidad de fans."
+            },
+            {
+              "text": "Economía: la foto con el actor tiene precio porque su tiempo es escaso y muchísima gente la quiere."
+            },
+            {
+              "text": "Antropología: cuando el actor dice la frase célebre de su personaje, toda la fila la grita con él, un ritual que el grupo entiende sin explicarlo."
+            },
+            {
+              "text": "Psicología social: tú no pensabas gritar, pero al oír a cientos de personas te uniste sin darte cuenta."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué disciplina pregunta esto?",
+        "content": "Historia: cómo cambia algo con el tiempo. Economía: producción, precios y recursos escasos. Ciencia política: poder, reglas y quién decide.",
+        "data": {
+          "prompt": "Arrastra cada pregunta sobre la convención a la disciplina que la haría.",
+          "buckets": [
+            "Historia",
+            "Economía",
+            "Ciencia política"
+          ],
+          "items": [
+            {
+              "t": "¿Cuándo llegó el anime a la tele mexicana?",
+              "b": 0
+            },
+            {
+              "t": "¿Cómo eran las convenciones hace 20 años?",
+              "b": 0
+            },
+            {
+              "t": "¿Por qué la figura cuesta el doble?",
+              "b": 1
+            },
+            {
+              "t": "¿Quién fabrica y quién vende el merch?",
+              "b": 1
+            },
+            {
+              "t": "¿Quién decide las reglas del evento?",
+              "b": 2
+            },
+            {
+              "t": "¿Quién puede expulsar a un asistente?",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada disciplina con lo que estudia.",
+        "data": {
+          "prompt": "Empareja cada disciplina con su objeto de estudio.",
+          "pairs": [
+            {
+              "a": "Historia",
+              "b": "Procesos en el tiempo"
+            },
+            {
+              "a": "Sociología",
+              "b": "Instituciones sociales"
+            },
+            {
+              "a": "Economía",
+              "b": "Recursos escasos"
+            },
+            {
+              "a": "Psicología social",
+              "b": "Influencia del grupo"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué disciplina hace cada pregunta de la convención?",
+        "left_label": "La convención",
+        "right_label": "Disciplina",
+        "pairs": [
+          {
+            "left": "Mariana y el anime de hace treinta años",
+            "right": "Historia"
+          },
+          {
+            "left": "Leo y la figura al doble de precio",
+            "right": "Economía"
+          },
+          {
+            "left": "Diego y quién decide en el escenario",
+            "right": "Ciencia política"
+          },
+          {
+            "left": "Tú y el llavero que todos traían",
+            "right": "Psicología social"
+          }
+        ],
+        "completion_feedback": "Cada amigo hizo la pregunta de una disciplina: el **tiempo** es de la historia, lo **escaso** de la economía, el **poder** de la ciencia política y la **influencia del grupo** de la psicología social."
+      },
+      "quiz": [
+        {
+          "question": "En la convención, ¿qué disciplina pregunta por qué una figura de Gojo cuesta el doble que en línea?",
+          "options": [
+            { "letter": "A", "text": "Historia" },
+            { "letter": "B", "text": "Economía" },
+            { "letter": "C", "text": "Sociología" },
+            { "letter": "D", "text": "Antropología" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El precio depende de cuántas figuras hay y cuánta gente las quiere: producción, distribución y consumo de recursos escasos. Eso es economía.",
+          "difficulty": 1
+        },
+        {
+          "question": "Una antropóloga quiere estudiar a los cosplayers de la convención. ¿Qué haría?",
+          "options": [
+            { "letter": "A", "text": "Convivir con ellos y observar sus costumbres" },
+            { "letter": "B", "text": "Medir la oferta y la demanda de pelucas en línea" },
+            { "letter": "C", "text": "Revisar solo documentos de hace cien años" },
+            { "letter": "D", "text": "Contar los votos de una elección del staff" }
+          ],
+          "correct_answer": "A",
+          "explanation": "La antropología estudia la cultura desde dentro: hace trabajo de campo, convive con el grupo y registra sus costumbres. Medir precios es economía y contar votos, ciencia política.",
+          "difficulty": 2
+        },
+        {
+          "question": "Compraste el llavero que todos traían, aunque no te gustaba tanto. ¿Por qué ese caso es de psicología social y no de sociología?",
+          "options": [
+            { "letter": "A", "text": "Analiza cómo el grupo influyó en ti" },
+            { "letter": "B", "text": "Analiza cómo se organiza la convención" },
+            { "letter": "C", "text": "Analiza el precio del llavero en el puesto" },
+            { "letter": "D", "text": "Analiza el origen histórico de los llaveros" }
+          ],
+          "correct_answer": "A",
+          "explanation": "La psicología social estudia cómo el grupo influye en lo que una persona piensa y hace. La sociología se fija en el grupo completo: cómo se organiza, sus roles y sus instituciones.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué pregunta sobre la convención haría la historia?",
+          "options": [
+            { "letter": "A", "text": "¿Quién decide qué cosplayer sube al escenario?" },
+            { "letter": "B", "text": "¿Por qué los precios bajan al final del día?" },
+            { "letter": "C", "text": "¿Cómo cambió el fandom en treinta años?" },
+            { "letter": "D", "text": "¿Por qué imitas las poses que hacen los demás?" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La historia estudia procesos en el tiempo: cómo algo cambió y qué siguió igual. Quién decide es ciencia política, los precios son economía e imitar al grupo es psicología social.",
+          "difficulty": 2
+        },
+        {
+          "question": "Diego investiga quién pone las reglas de la convención y quién las hace cumplir. ¿Qué disciplina hace esa pregunta?",
+          "options": [
+            { "letter": "A", "text": "Antropología" },
+            { "letter": "B", "text": "Ciencia política" },
+            { "letter": "C", "text": "Psicología social" },
+            { "letter": "D", "text": "Economía" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Quién decide y quién obliga a cumplir es una pregunta sobre el poder: ciencia política. Las reglas que nadie escribió, como no tocar un disfraz, serían costumbres, tema de la antropología.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El día que el Mundial volvió a la Ciudad de México",
+        "content": "El 11 de junio de 2026 el Mundial se inauguró en el Estadio Azteca, en la Ciudad de México, y tu familia lo vio reunida en casa de tu abuelo. Él no paraba de contar que en 1986 fue a ese mismo estadio y que en aquel Mundial la ola se hizo famosa en todo el planeta; para él, este torneo era un capítulo nuevo de una historia larga. Tu tía, que vende tortas cerca del estadio, hacía cuentas: ese día vendió como nunca, pero también le subieron los costos. Tu primo leía en el celular quién decidió cerrar calles, cómo se organizó la seguridad y qué acordaron tres países para compartir el torneo. Tu hermana notó que en la plaza se juntaban familias, grupos de amigos y aficionados de equipos rivales que el resto del año ni se hablan. Tu mamá se fijó en otra cosa: desconocidos que cantaban «Cielito lindo», se pintaban la cara igual y comían lo mismo, como en un ritual. Y tú, que ni eras tan futbolero, terminaste gritando cada jugada porque toda la sala gritaba. Un mismo partido, mirado con preguntas distintas, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La inauguración vista por seis disciplinas",
+        "content": "Lo que acabas de ver con la inauguración del Mundial es exactamente el trabajo de las **disciplinas sociales**: un mismo **hecho social** con seis preguntas. La **historia** estudia procesos en el tiempo (de 1970 y 1986 a 2026). La **sociología**, grupos, relaciones e instituciones (quién se junta con quién). La **economía**, producción, distribución y consumo de **recursos escasos** (las ventas y los costos de tu tía). La **antropología**, cultura y costumbres (cantos y rituales). La **ciencia política**, el **poder** y el **Estado** (quién decide cerrar calles). La **psicología social**, cómo el grupo influye en la persona (tus gritos)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la Liga MX Femenil",
+        "content": "Tu equipo hará un reportaje sobre la Liga MX Femenil, que arrancó en 2017. Asigna cada pregunta a su disciplina.\n\n**Paso 1:** ¿Cómo pasó el futbol femenil de torneos sin apoyo a una liga profesional? → **historia**.\n**Paso 2:** ¿Cuánto ganan las jugadoras y de dónde sale el dinero de los patrocinios? → **economía**.\n**Paso 3:** ¿Qué papel tienen hoy las mujeres en el deporte, la familia y la escuela? → **sociología**.\n**Paso 4:** ¿Por qué aficionados que no lo tomaban en serio cambiaron de actitud al ver estadios llenos? → **psicología social**.\n**Paso 5:** ¿Quién decide qué apoyos públicos recibe el deporte de mujeres? → **ciencia política**, el poder de decidir.\n\nResultado: una liga, cinco miradas que se completan."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Las **disciplinas sociales** estudian un mismo hecho con preguntas distintas: **historia** (procesos en el tiempo), **sociología** (grupos, relaciones e instituciones), **economía** (producción, distribución y consumo de recursos escasos), **antropología** (cultura y diversidad humana), **ciencia política** (poder y Estado) y **psicología social** (influencia del grupo en la persona)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Imagina que cada disciplina juega en una posición distinta del mismo partido: la historia mira el marcador de décadas, la economía la taquilla, la ciencia política al árbitro, la antropología los cantos, la sociología cómo se organizan las porras y la psicología social a ti."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada disciplina que sumas hace más completa la explicación del Mundial.",
+        "data": {
+          "intro": "Tu reportaje sobre el Mundial 2026 empieza vacío. Cada disciplina que agregas llena el medidor de comprensión. Sigue los pasos.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Historia: comparas los Mundiales de 1970, 1986 y 2026 en México para ver qué cambió y qué siguió igual.",
+              "delta": 20
+            },
+            {
+              "text": "Economía: investigas qué ganaron y qué gastaron los negocios, los hoteles y las ciudades sede.",
+              "delta": 20
+            },
+            {
+              "text": "Ciencia política: analizas cómo tres gobiernos y la FIFA se repartieron las decisiones.",
+              "delta": 20
+            },
+            {
+              "text": "Antropología: registras los cantos, la comida y los rituales de la afición en la calle.",
+              "delta": 20
+            },
+            {
+              "text": "Psicología social: explicas por qué hasta los que no eran futboleros gritaban con la sala. ¡Reportaje completo!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Sociología, antropología o ciencia política?",
+        "content": "Sociología: grupos, roles e instituciones. Antropología: cultura, rituales y costumbres. Ciencia política: poder, gobierno y quién decide.",
+        "data": {
+          "prompt": "Arrastra cada pregunta sobre el Mundial a la disciplina que la haría.",
+          "buckets": [
+            "Sociología",
+            "Antropología",
+            "Ciencia política"
+          ],
+          "items": [
+            {
+              "t": "Cómo se organiza una porra y sus roles",
+              "b": 0
+            },
+            {
+              "t": "Qué grupos se juntaron a ver el partido",
+              "b": 0
+            },
+            {
+              "t": "El ritual de pintarse la cara",
+              "b": 1
+            },
+            {
+              "t": "Los cantos y la comida típica de la calle",
+              "b": 1
+            },
+            {
+              "t": "Quién autorizó cerrar las calles",
+              "b": 2
+            },
+            {
+              "t": "Cómo acordaron tres países ser sede",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada disciplina con lo que estudia. Incluye dos vecinas: geografía humana y derecho.",
+        "data": {
+          "prompt": "Empareja cada disciplina con su objeto de estudio.",
+          "pairs": [
+            {
+              "a": "Antropología",
+              "b": "Cultura y costumbres"
+            },
+            {
+              "a": "Ciencia política",
+              "b": "Poder y gobierno"
+            },
+            {
+              "a": "Geografía humana",
+              "b": "Población y territorio"
+            },
+            {
+              "a": "Derecho",
+              "b": "Normas jurídicas"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué disciplina hace cada pregunta de tu familia?",
+        "left_label": "Inauguración",
+        "right_label": "Disciplina",
+        "pairs": [
+          {
+            "left": "El abuelo y su Mundial de 1986",
+            "right": "Historia"
+          },
+          {
+            "left": "La tía y las ventas de tortas",
+            "right": "Economía"
+          },
+          {
+            "left": "Cantos y caras pintadas en la calle",
+            "right": "Antropología"
+          },
+          {
+            "left": "Tú gritando porque toda la sala gritaba",
+            "right": "Psicología social"
+          }
+        ],
+        "completion_feedback": "Tu familia vio el mismo partido con cuatro disciplinas: **historia** (1986), **economía** (las tortas), **antropología** (los rituales) y **psicología social** (tus gritos). Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Tu abuelo compara el Mundial de 1986 con el de 2026 para ver qué cambió. ¿Qué disciplina hace esa comparación?",
+          "options": [
+            { "letter": "A", "text": "Economía" },
+            { "letter": "B", "text": "Antropología" },
+            { "letter": "C", "text": "Historia" },
+            { "letter": "D", "text": "Sociología" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Comparar dos momentos para ver qué cambió y qué permaneció es estudiar un proceso en el tiempo: eso es historia.",
+          "difficulty": 1
+        },
+        {
+          "question": "Investigas cómo negociaron tres gobiernos y la FIFA quién organizaba cada parte del Mundial 2026. ¿Qué disciplina es?",
+          "options": [
+            { "letter": "A", "text": "Psicología social" },
+            { "letter": "B", "text": "Antropología" },
+            { "letter": "C", "text": "Economía" },
+            { "letter": "D", "text": "Ciencia política" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Negociar entre gobiernos y decidir quién hace qué es una cuestión de poder y de Estado, objeto de la ciencia política.",
+          "difficulty": 2
+        },
+        {
+          "question": "Si en días de partido los cuartos de hotel cerca del estadio suben de precio, ¿qué lo explica según la economía?",
+          "options": [
+            { "letter": "A", "text": "Una costumbre de los hoteleros" },
+            { "letter": "B", "text": "Más demanda que oferta" },
+            { "letter": "C", "text": "La presión del grupo de amigos" },
+            { "letter": "D", "text": "Una orden directa de la FIFA" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los cuartos son un recurso escaso: si muchas personas los quieren al mismo tiempo y hay pocos, el precio sube. Es oferta y demanda, no una costumbre ni presión de grupo.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué estudiaría la antropología de la afición durante el Mundial?",
+          "options": [
+            { "letter": "A", "text": "Las ganancias de los vendedores del estadio" },
+            { "letter": "B", "text": "Sus cantos, rituales y costumbres" },
+            { "letter": "C", "text": "Las leyes que regulan la venta de boletos" },
+            { "letter": "D", "text": "Cómo cambió el estadio desde su construcción" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La antropología estudia la cultura: cantos, rituales, comida y formas de celebrar. Las ganancias son economía, las leyes son derecho y los cambios del estadio en el tiempo, historia.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un reportaje sobre el Mundial usa datos de ventas, entrevistas a aficionados y la historia de 1986. ¿Qué tipo de análisis es?",
+          "options": [
+            { "letter": "A", "text": "Puramente económico" },
+            { "letter": "B", "text": "Interdisciplinario" },
+            { "letter": "C", "text": "Solo histórico" },
+            { "letter": "D", "text": "Experimental" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Combina economía (ventas), antropología o sociología (entrevistas) e historia (1986) sobre un mismo hecho. Juntar varias disciplinas para entender algo es un análisis interdisciplinario.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "La ola coreana llegó a tu casa",
+        "content": "Hace unos años, en tu casa nadie sabía casi nada de Corea del Sur. Hoy tu mamá ve K-dramas en el celular antes de dormir, tu hermano compra ramyeon en el súper y tú cantas en coreano sin entender todas las palabras. En tu salón, Fer aprende hangul con una app y ya saluda con un «annyeong». El grupo de ARMY de la escuela tiene su propia organización: quién junta el dinero de las compras grupales, quién traduce las noticias y quién modera el chat. Tu tía se pregunta desde cuándo pasó todo esto y cómo empezó. Tu papá, más práctico, quiere saber cuánto dinero mueve: álbumes, conciertos, cosméticos. Tu prima, que estudia relaciones internacionales, dice algo que te sorprende: que Corea del Sur ganó influencia en el mundo sin amenazar a nadie, solo porque su música y sus series atraen a millones. Y tú reconoces que empezaste a escuchar a Stray Kids porque todas tus amigas lo hacían. Un solo fenómeno, la ola coreana o Hallyu, al que cada persona de tu casa le hace una pregunta distinta, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La ola coreana vista por seis disciplinas",
+        "content": "Lo que acabas de ver con la ola coreana es exactamente cómo trabajan las **disciplinas sociales** sobre un mismo **hecho social**. La **historia** pregunta cómo se dio el proceso en el tiempo. La **sociología** estudia grupos y su organización (el grupo de ARMY). La **economía**, la producción y el consumo de **recursos escasos** (álbumes y boletos). La **antropología**, la cultura y la diversidad (el hangul, el ramyeon). La **ciencia política**, el **poder**: el politólogo **Joseph Nye** llamó **poder suave** a influir por atracción cultural y no por la fuerza. La **psicología social**, cómo el grupo influye en ti (Stray Kids)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Extraordinary Attorney Woo",
+        "content": "Tu equipo analiza el éxito de Extraordinary Attorney Woo (2022), sobre una abogada autista. Asigna cada pregunta.\n\n**Paso 1:** ¿Cambió la actitud del público hacia las personas autistas después de verla? → **psicología social**, actitudes.\n**Paso 2:** ¿Cómo incluyen o excluyen la escuela y el trabajo a las personas autistas? → **sociología**, instituciones.\n**Paso 3:** Woo come kimbap a diario: ¿qué lugar tiene ese platillo en la vida cotidiana de Corea? → **antropología**.\n**Paso 4:** ¿Quién pagó la producción y cuánto ganó la plataforma? → **economía**.\n**Paso 5:** Woo cita leyes en cada juicio: ¿qué dicen esas normas? → **derecho**, disciplina vecina.\n\nResultado: una serie, cinco miradas que no se estorban."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Las **disciplinas sociales** estudian un mismo hecho con preguntas distintas: **historia** (procesos en el tiempo), **sociología** (grupos, relaciones e instituciones), **economía** (producción, distribución y consumo de recursos escasos), **antropología** (cultura y diversidad humana), **ciencia política** (poder y Estado) y **psicología social** (influencia del grupo en la persona)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en un grupo de K-pop: cada integrante tiene su posición (vocal, rap, baile) y juntos hacen el comeback. Las disciplinas igual: cada una tiene su pregunta y juntas explican el hecho completo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "El poder suave es influir por atracción y no por la fuerza; lo estudia la ciencia política.",
+        "data": {
+          "intro": "¿Cómo gana influencia un país solo con canciones y series? Sigue la cadena del poder suave con la ola coreana.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Corea del Sur produce música, series y comida que atraen a público de otros países."
+            },
+            {
+              "text": "Millones de fans en México consumen esa cultura y hasta aprenden palabras en coreano."
+            },
+            {
+              "text": "La imagen del país mejora: más gente quiere viajar, estudiar o comprar productos coreanos."
+            },
+            {
+              "text": "Corea gana influencia sin amenazar ni pagar a nadie: eso es poder suave, un concepto de Joseph Nye."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Antropología, ciencia política o economía?",
+        "content": "Antropología: costumbres y cultura. Ciencia política: poder, Estado e influencia entre países. Economía: producción, precios y consumo.",
+        "data": {
+          "prompt": "Arrastra cada pregunta sobre la ola coreana a la disciplina que la haría.",
+          "buckets": [
+            "Antropología",
+            "Ciencia política",
+            "Economía"
+          ],
+          "items": [
+            {
+              "t": "Por qué en Corea se come con palillos de metal",
+              "b": 0
+            },
+            {
+              "t": "Qué significa saludar con «annyeong»",
+              "b": 0
+            },
+            {
+              "t": "Cómo influye Corea sin usar la fuerza",
+              "b": 1
+            },
+            {
+              "t": "Qué acuerdos culturales firman los gobiernos",
+              "b": 1
+            },
+            {
+              "t": "Cuántos álbumes se venden en México",
+              "b": 2
+            },
+            {
+              "t": "Por qué un boleto de concierto cuesta tanto",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada autor con su aporte a las disciplinas sociales.",
+        "data": {
+          "prompt": "Empareja cada autor con su aporte.",
+          "pairs": [
+            {
+              "a": "Joseph Nye",
+              "b": "Poder suave"
+            },
+            {
+              "a": "Adam Smith",
+              "b": "La riqueza de las naciones"
+            },
+            {
+              "a": "Bronisław Malinowski",
+              "b": "Observación participante"
+            },
+            {
+              "a": "Solomon Asch",
+              "b": "Experimento de conformidad"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué disciplina hace cada pregunta sobre la ola coreana?",
+        "left_label": "Ola coreana",
+        "right_label": "Disciplina",
+        "pairs": [
+          {
+            "left": "La tía: ¿desde cuándo pasa todo esto?",
+            "right": "Historia"
+          },
+          {
+            "left": "El papá: ¿cuánto dinero mueve?",
+            "right": "Economía"
+          },
+          {
+            "left": "La prima: influencia sin amenazar",
+            "right": "Ciencia política"
+          },
+          {
+            "left": "El chat de ARMY con sus roles",
+            "right": "Sociología"
+          }
+        ],
+        "completion_feedback": "Tu familia preguntó como cuatro disciplinas: **historia** (desde cuándo), **economía** (cuánto dinero), **ciencia política** (poder suave) y **sociología** (la organización del grupo)."
+      },
+      "quiz": [
+        {
+          "question": "Tu prima dice que Corea del Sur ganó influencia gracias a su música y sus series, sin amenazar a nadie. ¿Cómo se llama eso?",
+          "options": [
+            { "letter": "A", "text": "Poder duro" },
+            { "letter": "B", "text": "Libre comercio" },
+            { "letter": "C", "text": "Poder suave" },
+            { "letter": "D", "text": "Conformidad" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Poder suave es influir por atracción: cultura, valores e imagen. El poder duro usa la fuerza militar o la presión económica. Es un concepto de la ciencia política.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué politólogo propuso el concepto de poder suave?",
+          "options": [
+            { "letter": "A", "text": "Adam Smith" },
+            { "letter": "B", "text": "Joseph Nye" },
+            { "letter": "C", "text": "Auguste Comte" },
+            { "letter": "D", "text": "Solomon Asch" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Joseph Nye, politólogo estadounidense, propuso el poder suave alrededor de 1990. Adam Smith es clave en economía, Comte nombró a la sociología y Asch estudió la conformidad.",
+          "difficulty": 2
+        },
+        {
+          "question": "Fer aprende hangul y ya saluda con un «annyeong» a sus amigas. ¿Qué pregunta haría la antropología?",
+          "options": [
+            { "letter": "A", "text": "¿Cuánto cuesta la app que usa para aprender?" },
+            { "letter": "B", "text": "¿Qué gobierno promueve los cursos de coreano?" },
+            { "letter": "C", "text": "¿Qué costumbres adopta y qué significan?" },
+            { "letter": "D", "text": "¿En qué siglo se inventó el alfabeto coreano?" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La antropología estudia la cultura y la diversidad: qué costumbres adopta un grupo y qué significan para él. El precio es economía, qué gobierno promueve los cursos es ciencia política y el siglo, historia.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué pregunta sobre la ola coreana haría la economía?",
+          "options": [
+            { "letter": "A", "text": "¿Por qué imitas a tus amigas al elegir grupo?" },
+            { "letter": "B", "text": "¿Cuánto se gasta en álbumes en México?" },
+            { "letter": "C", "text": "¿Desde qué década llegaron los K-dramas?" },
+            { "letter": "D", "text": "¿Qué significa el saludo con reverencia?" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La economía estudia producción, distribución y consumo: cuánto se gasta en álbumes es consumo. Imitar a otras es psicología social, la década es historia y la reverencia, antropología.",
+          "difficulty": 2
+        },
+        {
+          "question": "Empezaste a escuchar a Stray Kids porque todas tus amigas lo hacían. Para la psicología social, eso es…",
+          "options": [
+            { "letter": "A", "text": "Una costumbre cultural coreana" },
+            { "letter": "B", "text": "Una decisión de oferta y demanda" },
+            { "letter": "C", "text": "Conformidad con el grupo" },
+            { "letter": "D", "text": "Un proceso histórico de largo plazo" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La conformidad es ajustar lo que piensas o haces para coincidir con tu grupo. Es uno de los temas centrales de la psicología social, que estudia cómo los demás influyen en cada persona.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "¡Booyah! en el recreo",
+        "content": "En tu escuela, el recreo suena a Free Fire. Casi todos lo juegan en celulares sencillos, porque corre bien aunque el teléfono no sea caro, y por eso se volvió enorme en México, Brasil y el resto de Latinoamérica. Tu amigo Iván dirige su gremio como si fuera un club: hay líder, hay quien recluta y hay reglas para sacar a quien no juega en equipo. Cuando alguien gana la partida, todos gritan «¡Booyah!», y ya hasta lo dicen fuera del juego cuando sacan diez en un examen. Karla calcula cuántos diamantes alcanza a comprar con lo que le dan el domingo y se pregunta quién gana con cada skin. La maestra les cuenta que ella jugaba en maquinitas con monedas, y te pones a pensar cómo cambió todo. La dirección prohibió los celulares en el salón, y medio grupo pidió que la regla se discuta con los alumnos. Y tú compraste la misma skin que traían los mejores del gremio, aunque nadie te obligó. Un solo juego que despierta muchas preguntas distintas es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Free Fire visto por seis disciplinas",
+        "content": "Lo que acabas de ver con Free Fire es exactamente el trabajo de las **disciplinas sociales**: un mismo **hecho social** mirado con preguntas distintas. La **historia** estudia procesos en el tiempo (de las maquinitas al celular). La **sociología**, grupos, roles e instituciones (el gremio de Iván). La **economía**, producción, distribución y consumo de **recursos escasos** (los diamantes de Karla). La **antropología**, la cultura (el «¡Booyah!»). La **ciencia política**, el **poder** y quién decide las reglas (la dirección). La **psicología social**, cómo el grupo influye en la persona (tu skin)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el año de Among Us",
+        "content": "Among Us salió en 2018 casi sin ruido, pero en 2020, con las escuelas cerradas por la pandemia, se volvió de los juegos más populares del mundo. Asigna cada pregunta.\n\n**Paso 1:** ¿Cómo pasó de juego poco conocido a llenar las transmisiones en vivo dos años después? → **historia**, un proceso en el tiempo.\n**Paso 2:** Es gratis en celular: ¿cómo gana dinero el estudio con anuncios y cosméticos? → **economía**.\n**Paso 3:** ¿Cómo cambiaron las relaciones de amigos y familias que, sin poder verse, se reunían en partidas? → **sociología**.\n**Paso 4:** En la reunión de emergencia, ¿quién tiene el poder de convocar y cómo decide el grupo a quién expulsar? → **ciencia política**.\n**Paso 5:** ¿Por qué votaste contra el amarillo sin pruebas, solo porque todos lo acusaban? → **psicología social**.\n\nResultado: un juego, cinco disciplinas."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Las **disciplinas sociales** estudian un mismo hecho con preguntas distintas: **historia** (procesos en el tiempo), **sociología** (grupos, relaciones e instituciones), **economía** (producción, distribución y consumo de recursos escasos), **antropología** (cultura y diversidad humana), **ciencia política** (poder y Estado) y **psicología social** (influencia del grupo en la persona)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Arma tu escuadra de cuatro como en Free Fire: si la pregunta habla de cuándo, llama a la historia; de dinero, a la economía; de quién manda, a la ciencia política; de por qué imitas, a la psicología social."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La antropología estudia la cultura desde dentro, con trabajo de campo.",
+        "data": {
+          "intro": "Vas a estudiar el gremio de Iván como lo haría una antropóloga. Sigue los pasos del trabajo de campo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Pides permiso al gremio para observarlo y explicas que es para una investigación de la escuela."
+            },
+            {
+              "text": "Juegas y convives con ellos varias semanas: participar en el grupo mientras lo observas es observación participante."
+            },
+            {
+              "text": "Anotas en tu diario de campo sus palabras, como «¡Booyah!», sus rituales y sus reglas no escritas."
+            },
+            {
+              "text": "Explicas qué significan esas costumbres para el grupo, sin burlarte ni juzgar: así trabaja la antropología."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Sociología, psicología social o historia?",
+        "content": "Sociología: el grupo completo, sus roles y reglas. Psicología social: cómo el grupo influye en una persona. Historia: cambios en el tiempo.",
+        "data": {
+          "prompt": "Arrastra cada pregunta sobre Free Fire a la disciplina que la haría.",
+          "buckets": [
+            "Sociología",
+            "Psicología social",
+            "Historia"
+          ],
+          "items": [
+            {
+              "t": "Cómo se reparten los roles en un gremio",
+              "b": 0
+            },
+            {
+              "t": "Qué reglas tiene el gremio para sacar a alguien",
+              "b": 0
+            },
+            {
+              "t": "Por qué copias la skin de los mejores",
+              "b": 1
+            },
+            {
+              "t": "Por qué juegas distinto cuando te ven",
+              "b": 1
+            },
+            {
+              "t": "Cómo pasamos de las maquinitas al celular",
+              "b": 2
+            },
+            {
+              "t": "Cómo eran los videojuegos en los ochenta",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada disciplina con algo típico de su trabajo.",
+        "data": {
+          "prompt": "Empareja cada disciplina con su herramienta o tema.",
+          "pairs": [
+            {
+              "a": "Historia",
+              "b": "Fuentes del pasado"
+            },
+            {
+              "a": "Antropología",
+              "b": "Trabajo de campo"
+            },
+            {
+              "a": "Economía",
+              "b": "Oferta y demanda"
+            },
+            {
+              "a": "Ciencia política",
+              "b": "Formas de gobierno"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué disciplina estudia cada parte de la historia de Free Fire?",
+        "left_label": "Free Fire",
+        "right_label": "Disciplina",
+        "pairs": [
+          {
+            "left": "Iván y la organización de su gremio",
+            "right": "Sociología"
+          },
+          {
+            "left": "El «¡Booyah!» fuera del juego",
+            "right": "Antropología"
+          },
+          {
+            "left": "Karla y sus diamantes del domingo",
+            "right": "Economía"
+          },
+          {
+            "left": "Quién decide la regla del celular",
+            "right": "Ciencia política"
+          }
+        ],
+        "completion_feedback": "El recreo tenía cuatro disciplinas: **sociología** (el gremio), **antropología** (el «¡Booyah!»), **economía** (los diamantes) y **ciencia política** (quién pone la regla). Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué disciplina estudia cómo pasaron los videojuegos de las maquinitas al celular?",
+          "options": [
+            { "letter": "A", "text": "Sociología" },
+            { "letter": "B", "text": "Historia" },
+            { "letter": "C", "text": "Economía" },
+            { "letter": "D", "text": "Antropología" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cómo algo cambió a lo largo de los años es un proceso en el tiempo, y ese es el objeto de la historia.",
+          "difficulty": 1
+        },
+        {
+          "question": "Free Fire se descarga gratis, pero vende diamantes y skins. ¿Qué disciplina explica cómo gana dinero?",
+          "options": [
+            { "letter": "A", "text": "Psicología social" },
+            { "letter": "B", "text": "Ciencia política" },
+            { "letter": "C", "text": "Economía" },
+            { "letter": "D", "text": "Sociología" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Cómo se produce, se vende y se consume algo, y quién gana con ello, es la pregunta de la economía.",
+          "difficulty": 2
+        },
+        {
+          "question": "Todos dicen «¡Booyah!» hasta cuando sacan diez en un examen. ¿Por qué eso es tema de la antropología?",
+          "options": [
+            { "letter": "A", "text": "Es un producto que se compra y se vende" },
+            { "letter": "B", "text": "Es una costumbre que el grupo comparte" },
+            { "letter": "C", "text": "Es una regla que impuso la dirección" },
+            { "letter": "D", "text": "Es un hecho del pasado que ya no ocurre" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La antropología estudia la cultura: palabras, rituales y costumbres que un grupo comparte y que le dan identidad. Comprar y vender es economía, y una regla impuesta es tema de ciencia política.",
+          "difficulty": 3
+        },
+        {
+          "question": "La dirección prohíbe los celulares y medio grupo pide discutir la regla. Para la ciencia política, ¿qué está en juego?",
+          "options": [
+            { "letter": "A", "text": "El precio de los celulares" },
+            { "letter": "B", "text": "Las costumbres del recreo" },
+            { "letter": "C", "text": "El poder y quién decide" },
+            { "letter": "D", "text": "La historia de la escuela" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La ciencia política estudia el poder: quién toma las decisiones, cómo se hacen cumplir y cómo se pueden cambiar. El precio es economía y las costumbres, antropología.",
+          "difficulty": 2
+        },
+        {
+          "question": "Iván dirige su gremio con líder, reclutador y reglas. ¿Qué disciplina pone el foco en esa organización y no en una sola persona?",
+          "options": [
+            { "letter": "A", "text": "Psicología social" },
+            { "letter": "B", "text": "Antropología" },
+            { "letter": "C", "text": "Sociología" },
+            { "letter": "D", "text": "Historia" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La sociología estudia los grupos como un todo: sus roles, normas e instituciones. La psicología social, en cambio, se fija en cómo el grupo influye en una persona en particular.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué disciplina social estudia los procesos humanos a lo largo del tiempo?",
+      "options": [
+        { "letter": "A", "text": "Historia" },
+        { "letter": "B", "text": "Sociología" },
+        { "letter": "C", "text": "Antropología" },
+        { "letter": "D", "text": "Economía" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en la disciplina que pregunta cuándo y cómo cambiaron las cosas.",
+      "explanation": "La historia estudia los procesos humanos en el tiempo: qué cambió, qué permaneció y por qué. No solo memoriza fechas, explica procesos."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué disciplina estudia la producción, distribución y consumo de recursos escasos?",
+      "options": [
+        { "letter": "A", "text": "Ciencia política" },
+        { "letter": "B", "text": "Economía" },
+        { "letter": "C", "text": "Historia" },
+        { "letter": "D", "text": "Geografía humana" }
+      ],
+      "correct_answer": "B",
+      "hint": "Tiene que ver con precios, dinero, bienes y servicios.",
+      "explanation": "La economía estudia cómo una sociedad produce, reparte y consume bienes y servicios cuando los recursos no alcanzan para todo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué disciplina estudia el poder, el Estado y el gobierno?",
+      "options": [
+        { "letter": "A", "text": "Antropología" },
+        { "letter": "B", "text": "Psicología social" },
+        { "letter": "C", "text": "Ciencia política" },
+        { "letter": "D", "text": "Economía" }
+      ],
+      "correct_answer": "C",
+      "hint": "Su pregunta típica es quién decide y cómo se reparte el poder.",
+      "explanation": "La ciencia política estudia el poder, el Estado, los gobiernos, las elecciones y las instituciones políticas."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué disciplina estudia la cultura, las costumbres y la diversidad de los pueblos?",
+      "options": [
+        { "letter": "A", "text": "Economía" },
+        { "letter": "B", "text": "Ciencia política" },
+        { "letter": "C", "text": "Historia" },
+        { "letter": "D", "text": "Antropología" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es la disciplina que convive con una comunidad para entender su forma de vida.",
+      "explanation": "La antropología estudia la cultura y la diversidad humana: costumbres, creencias, lenguas y formas de vida, muchas veces con trabajo de campo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué disciplina estudia cómo el grupo influye en lo que piensa y hace cada persona?",
+      "options": [
+        { "letter": "A", "text": "Psicología social" },
+        { "letter": "B", "text": "Psicología clínica" },
+        { "letter": "C", "text": "Antropología" },
+        { "letter": "D", "text": "Historia" }
+      ],
+      "correct_answer": "A",
+      "hint": "Une dos miradas: la de la persona y la de la sociedad.",
+      "explanation": "La psicología social estudia cómo los demás influyen en los pensamientos, actitudes y conductas de una persona. La psicología clínica atiende la salud mental."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué disciplina estudia los grupos, las relaciones sociales y las instituciones?",
+      "options": [
+        { "letter": "A", "text": "Economía" },
+        { "letter": "B", "text": "Sociología" },
+        { "letter": "C", "text": "Historia" },
+        { "letter": "D", "text": "Antropología" }
+      ],
+      "correct_answer": "B",
+      "hint": "Su nombre viene del latín socius, que significa compañero.",
+      "explanation": "La sociología estudia la sociedad: cómo se forman los grupos, cómo se relacionan y cómo funcionan instituciones como la familia o la escuela."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Quién es considerado el padre de la historia?",
+      "options": [
+        { "letter": "A", "text": "Adam Smith" },
+        { "letter": "B", "text": "Auguste Comte" },
+        { "letter": "C", "text": "Heródoto" },
+        { "letter": "D", "text": "Nicolás Maquiavelo" }
+      ],
+      "correct_answer": "C",
+      "hint": "Fue un griego del siglo V antes de Cristo que viajó para investigar las guerras de su tiempo.",
+      "explanation": "Heródoto, griego del siglo V a. C., escribió las Historias, una investigación sobre las guerras entre griegos y persas. Por eso se le llama padre de la historia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué pensador francés creó la palabra sociología?",
+      "options": [
+        { "letter": "A", "text": "Auguste Comte" },
+        { "letter": "B", "text": "Adam Smith" },
+        { "letter": "C", "text": "Heródoto" },
+        { "letter": "D", "text": "Émile Durkheim" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el mismo pensador asociado al positivismo, en el siglo XIX.",
+      "explanation": "Auguste Comte acuñó el término sociología en el siglo XIX para nombrar el estudio científico de la sociedad. Durkheim, también francés, vino después y la convirtió en disciplina universitaria."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Adam Smith publicó La riqueza de las naciones en 1776. ¿A qué disciplina le dio forma?",
+      "options": [
+        { "letter": "A", "text": "Ciencia política" },
+        { "letter": "B", "text": "Antropología" },
+        { "letter": "C", "text": "Sociología" },
+        { "letter": "D", "text": "Economía" }
+      ],
+      "correct_answer": "D",
+      "hint": "El título habla de cómo se produce la riqueza.",
+      "explanation": "La riqueza de las naciones explica cómo se produce y reparte la riqueza, y es una de las obras fundadoras de la economía moderna."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué estudia la geografía humana, vecina de las ciencias sociales?",
+      "options": [
+        { "letter": "A", "text": "Cómo la sociedad ocupa y usa el espacio" },
+        { "letter": "B", "text": "Los ríos, montañas y climas del planeta" },
+        { "letter": "C", "text": "Las leyes y normas que rigen a un país" },
+        { "letter": "D", "text": "Las costumbres y creencias de cada pueblo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en la palabra humana: no estudia la naturaleza sola.",
+      "explanation": "La geografía humana estudia cómo la población ocupa y transforma el territorio: ciudades, migraciones y uso del espacio. Ríos y climas son de la geografía física."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué método es típico de la antropología?",
+      "options": [
+        { "letter": "A", "text": "Convivir con la comunidad que estudia" },
+        { "letter": "B", "text": "Medir precios en la bolsa de valores" },
+        { "letter": "C", "text": "Hacer experimentos con ratones de laboratorio" },
+        { "letter": "D", "text": "Contar los votos de cada casilla electoral" }
+      ],
+      "correct_answer": "A",
+      "hint": "La antropología quiere entender una cultura desde dentro.",
+      "explanation": "La antropología usa el trabajo de campo: la investigadora convive con la comunidad, observa y registra su forma de vida. Los precios son de economía y los votos, de ciencia política."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Malinowski vivió años en las islas Trobriand participando en la vida diaria de sus habitantes. ¿Cómo se llama ese método?",
+      "options": [
+        { "letter": "A", "text": "Encuesta por muestreo" },
+        { "letter": "B", "text": "Observación participante" },
+        { "letter": "C", "text": "Experimento controlado" },
+        { "letter": "D", "text": "Análisis de estadísticas" }
+      ],
+      "correct_answer": "B",
+      "hint": "El investigador observa, pero también toma parte en la vida del grupo.",
+      "explanation": "Bronisław Malinowski hizo famosa la observación participante: vivir con el grupo, participar en su vida y observarlo. Es la base del trabajo de campo antropológico."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una historiadora lee cartas escritas por soldados durante la Revolución Mexicana. ¿Qué tipo de fuente usa?",
+      "options": [
+        { "letter": "A", "text": "Fuentes secundarias" },
+        { "letter": "B", "text": "Encuestas de opinión" },
+        { "letter": "C", "text": "Fuentes primarias" },
+        { "letter": "D", "text": "Diarios de campo" }
+      ],
+      "correct_answer": "C",
+      "hint": "Las cartas fueron escritas por quienes vivieron el hecho, en ese momento.",
+      "explanation": "Una fuente primaria se produjo en la época que se estudia, como una carta de un soldado. Un libro escrito después sobre esas cartas sería una fuente secundaria."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué estudió Solomon Asch en su famoso experimento de las líneas, en los años cincuenta?",
+      "options": [
+        { "letter": "A", "text": "La oferta y la demanda" },
+        { "letter": "B", "text": "La memoria a largo plazo" },
+        { "letter": "C", "text": "Las costumbres de una aldea" },
+        { "letter": "D", "text": "La conformidad con el grupo" }
+      ],
+      "correct_answer": "D",
+      "hint": "Los participantes oían primero las respuestas equivocadas de otros.",
+      "explanation": "Asch mostró que muchas personas dan una respuesta que saben equivocada solo para coincidir con el grupo. Es un experimento clásico de psicología social sobre conformidad."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estas preguntas es propia de la ciencia política?",
+      "options": [
+        { "letter": "A", "text": "¿Cuánto subió el precio de la tortilla?" },
+        { "letter": "B", "text": "¿Quién manda en un municipio y por qué?" },
+        { "letter": "C", "text": "¿Qué fiestas celebra un pueblo de Oaxaca?" },
+        { "letter": "D", "text": "¿Por qué imitamos lo que hace la mayoría?" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la pregunta sobre quién decide.",
+      "explanation": "Quién manda y cómo se reparte el poder es tema de la ciencia política. El precio es economía, las fiestas son antropología e imitar a la mayoría es psicología social."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿De qué disciplina es un clásico El príncipe, escrito por Maquiavelo en 1513?",
+      "options": [
+        { "letter": "A", "text": "Antropología" },
+        { "letter": "B", "text": "Economía" },
+        { "letter": "C", "text": "Ciencia política" },
+        { "letter": "D", "text": "Psicología social" }
+      ],
+      "correct_answer": "C",
+      "hint": "El libro explica cómo un gobernante gana y conserva el poder.",
+      "explanation": "Maquiavelo analizó cómo se obtiene y se mantiene el poder, separando la política de la moral. Por eso El príncipe es un clásico de la ciencia política."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué significa que un estudio social sea interdisciplinario?",
+      "options": [
+        { "letter": "A", "text": "Que lo hace un solo experto muy famoso" },
+        { "letter": "B", "text": "Que combina varias disciplinas sobre un hecho" },
+        { "letter": "C", "text": "Que compara lo que pasa en varios países" },
+        { "letter": "D", "text": "Que usa solo números y estadísticas oficiales" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en el prefijo inter: entre varias.",
+      "explanation": "Un estudio interdisciplinario junta las preguntas y métodos de varias disciplinas para entender mejor un mismo hecho social."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál es la diferencia principal entre la sociología y la psicología social?",
+      "options": [
+        { "letter": "A", "text": "Una mira al grupo; la otra, a la persona en el grupo" },
+        { "letter": "B", "text": "Una estudia el pasado; la otra, solo el presente" },
+        { "letter": "C", "text": "Una usa números; la otra nunca hace investigación" },
+        { "letter": "D", "text": "Una estudia países ricos; la otra, comunidades pobres" }
+      ],
+      "correct_answer": "A",
+      "hint": "Las dos estudian grupos, pero desde escalas distintas.",
+      "explanation": "La sociología estudia grupos, relaciones e instituciones como un todo. La psicología social se fija en cómo ese grupo influye en lo que piensa y hace cada persona."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Según Joseph Nye, el poder suave es la capacidad de un país de influir en otros mediante…",
+      "options": [
+        { "letter": "A", "text": "Su ejército y sus amenazas" },
+        { "letter": "B", "text": "Sanciones económicas y aranceles" },
+        { "letter": "C", "text": "Su cultura y su atractivo" },
+        { "letter": "D", "text": "Préstamos que obligan a obedecer" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es lo contrario de obligar: los demás se acercan porque quieren.",
+      "explanation": "El poder suave influye por atracción: cultura, valores e imagen. El ejército y las sanciones son formas de poder duro."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué estudia el derecho, disciplina vecina de las ciencias sociales?",
+      "options": [
+        { "letter": "A", "text": "Las costumbres no escritas de cada pueblo" },
+        { "letter": "B", "text": "Las normas jurídicas que regulan la conducta" },
+        { "letter": "C", "text": "La influencia del grupo sobre cada persona" },
+        { "letter": "D", "text": "Cómo se producen y venden los bienes del país" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en leyes, códigos y reglamentos que obligan a todos.",
+      "explanation": "El derecho estudia las normas jurídicas: leyes y reglas obligatorias que regulan la conducta. Las costumbres no escritas son tema de la antropología."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Sube mucho el precio del aguacate y bajan sus ventas en los mercados. ¿Qué disciplina explica mejor este hecho?",
+      "options": [
+        { "letter": "A", "text": "Antropología" },
+        { "letter": "B", "text": "Ciencia política" },
+        { "letter": "C", "text": "Psicología social" },
+        { "letter": "D", "text": "Economía" }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en la relación entre precio y cantidad que se compra.",
+      "explanation": "Cuando sube el precio de un bien, normalmente se compra menos: es la ley de la demanda, tema central de la economía."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una investigadora vive seis meses con una comunidad wixárika para entender sus fiestas y su forma de ver el mundo. ¿Qué disciplina practica?",
+      "options": [
+        { "letter": "A", "text": "Historia" },
+        { "letter": "B", "text": "Sociología" },
+        { "letter": "C", "text": "Antropología" },
+        { "letter": "D", "text": "Ciencia política" }
+      ],
+      "correct_answer": "C",
+      "hint": "Convive con el grupo para entender su cultura desde dentro.",
+      "explanation": "Convivir con una comunidad para entender su cultura, sus rituales y su visión del mundo es trabajo de campo antropológico."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En un experimento, un alumno cambia su respuesta correcta para coincidir con la de la mayoría del salón. ¿Qué disciplina lo estudia?",
+      "options": [
+        { "letter": "A", "text": "Sociología" },
+        { "letter": "B", "text": "Psicología social" },
+        { "letter": "C", "text": "Antropología" },
+        { "letter": "D", "text": "Psicología clínica" }
+      ],
+      "correct_answer": "B",
+      "hint": "El foco está en una persona influida por los demás.",
+      "explanation": "Ajustar la propia respuesta para coincidir con la mayoría es conformidad, y estudiarla es tarea de la psicología social. La sociología miraría al salón como grupo."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un estudio analiza cómo la familia, la escuela y la religión transmiten normas a los jóvenes. ¿Qué disciplina lo hace?",
+      "options": [
+        { "letter": "A", "text": "Economía" },
+        { "letter": "B", "text": "Historia" },
+        { "letter": "C", "text": "Psicología social" },
+        { "letter": "D", "text": "Sociología" }
+      ],
+      "correct_answer": "D",
+      "hint": "Familia, escuela y religión son instituciones.",
+      "explanation": "Estudiar cómo las instituciones sociales transmiten normas es propio de la sociología, que analiza grupos, relaciones e instituciones."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "El Congreso discute una ley y un investigador estudia qué grupos tienen más influencia en la votación. ¿Qué disciplina es?",
+      "options": [
+        { "letter": "A", "text": "Derecho" },
+        { "letter": "B", "text": "Economía" },
+        { "letter": "C", "text": "Ciencia política" },
+        { "letter": "D", "text": "Psicología social" }
+      ],
+      "correct_answer": "C",
+      "hint": "No importa lo que dice la ley, sino quién influye para que se apruebe.",
+      "explanation": "Quién tiene influencia en una decisión es una pregunta sobre el poder: ciencia política. El derecho estudiaría el contenido de la ley, no la lucha por aprobarla."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Sobre la migración de mexicanos a Estados Unidos, ¿qué pregunta corresponde a la economía?",
+      "options": [
+        { "letter": "A", "text": "¿Cuánto envían en remesas y en qué se usa?" },
+        { "letter": "B", "text": "¿Cómo cambió la migración desde el siglo XX?" },
+        { "letter": "C", "text": "¿Qué costumbres conservan en su nuevo país?" },
+        { "letter": "D", "text": "¿Qué leyes aprueban los gobiernos al respecto?" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la pregunta sobre dinero que se produce, se envía y se gasta.",
+      "explanation": "Las remesas son dinero que se gana, se envía y se consume: tema de economía. El cambio en el tiempo es historia, las costumbres son antropología y las leyes, ciencia política o derecho."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Tras un sismo, los vecinos de una colonia ayudan más cuando ven que otros ya están ayudando. ¿Qué disciplina explica este hecho?",
+      "options": [
+        { "letter": "A", "text": "Psicología clínica" },
+        { "letter": "B", "text": "Economía" },
+        { "letter": "C", "text": "Ciencia política" },
+        { "letter": "D", "text": "Psicología social" }
+      ],
+      "correct_answer": "D",
+      "hint": "El cambio ocurre en cada persona al ver lo que hacen los demás.",
+      "explanation": "Que una persona actúe distinto al ver a otros es influencia social, objeto de la psicología social. El costo de reconstruir sería economía y quién coordina la ayuda, ciencia política."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo estudia el tianguis de su colonia: precios, costumbres, quién da los permisos y cómo cambió en 30 años. ¿Qué tipo de estudio es?",
+      "options": [
+        { "letter": "A", "text": "Puramente económico" },
+        { "letter": "B", "text": "Solo antropológico" },
+        { "letter": "C", "text": "Interdisciplinario" },
+        { "letter": "D", "text": "Solo histórico" }
+      ],
+      "correct_answer": "C",
+      "hint": "Cuenta cuántas disciplinas distintas aparecen en esa lista.",
+      "explanation": "Une economía (precios), antropología (costumbres), ciencia política (permisos) e historia (30 años) sobre un mismo hecho: es un estudio interdisciplinario."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Alguien dice que la historia solo sirve para memorizar fechas. ¿Qué error comete?",
+      "options": [
+        { "letter": "A", "text": "Olvida que la historia estudia precios y mercados" },
+        { "letter": "B", "text": "Olvida que la historia explica procesos de cambio" },
+        { "letter": "C", "text": "Olvida que la historia hace experimentos con grupos" },
+        { "letter": "D", "text": "Olvida que la historia estudia solo a los reyes" }
+      ],
+      "correct_answer": "B",
+      "hint": "Las fechas son el punto de partida, no el objetivo.",
+      "explanation": "La historia usa las fechas para ubicar hechos, pero su objetivo es explicar procesos: por qué algo cambió, qué causas tuvo y qué consecuencias dejó."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Sobre el crecimiento de una ciudad, ¿qué pregunta haría la geografía humana?",
+      "options": [
+        { "letter": "A", "text": "¿Hacia dónde crece y cómo se reparte la gente?" },
+        { "letter": "B", "text": "¿Quién toma las decisiones en el cabildo?" },
+        { "letter": "C", "text": "¿Por qué los vecinos imitan lo que hacen otros?" },
+        { "letter": "D", "text": "¿Cuánto cuesta rentar un departamento hoy?" }
+      ],
+      "correct_answer": "A",
+      "hint": "Busca la pregunta que habla de espacio y territorio.",
+      "explanation": "La geografía humana estudia cómo la población ocupa el territorio: hacia dónde crece una ciudad y cómo se reparte la gente. El cabildo es ciencia política y la renta, economía."
+    }
+  ],
+  "diagnostic": {
+    "question": "Llega una fábrica grande a un pueblo. ¿Qué pregunta haría la antropología?",
+    "options": [
+      { "letter": "A", "text": "¿Cuántos empleos nuevos y qué salarios trajo la fábrica?" },
+      { "letter": "B", "text": "¿Cómo cambiaron las fiestas y costumbres del pueblo?" },
+      { "letter": "C", "text": "¿Qué autoridad dio el permiso y con qué poder?" },
+      { "letter": "D", "text": "¿Cómo era la vida del pueblo hace cien años?" }
+    ],
+    "correct_answer": "B",
+    "explanation": "La antropología estudia la cultura: fiestas, costumbres y formas de vida. Los empleos son economía, el permiso es ciencia política y la vida hace cien años, historia."
+  }
+}

@@ -1,0 +1,1834 @@
+{
+  "subject": "introduccion-ciencias-sociales",
+  "topic": "problemas-sociales-de-mexico-ics",
+  "order_steps": {
+    "prompt": "Ordena cómo se mide la pobreza en México",
+    "steps": [
+      "Definir la línea de ingreso y las seis carencias que se van a revisar",
+      "Levantar una encuesta en miles de hogares de todo el país",
+      "Calcular el ingreso y las carencias de cada persona",
+      "Clasificar a cada persona: en pobreza, vulnerable o no pobre",
+      "Publicar los resultados para comparar estados y años"
+    ],
+    "completion_feedback": "Primero se define **qué medir**, luego se levanta la **encuesta** (la ENIGH), se calculan **ingreso y carencias**, se **clasifica** a cada persona y se publican los resultados. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El tomo nuevo de One Piece en el club",
+        "content": "Llega el tomo nuevo de One Piece a la tienda de cómics y el chat del club de anime explota. Sebas ya lo apartó: tiene la colección completa en su repisa, figuras de Luffy y hasta fue a la convención con pase para conocer a los actores de doblaje. Mariana lee los capítulos gratis en la app oficial, porque en su casa no sobra para tomos. Toño ahorra de lo que le dan para el recreo durante semanas y compra uno cada tantos meses. Un día alguien propone armar una biblioteca del club y hacen inventario: de los 120 tomos que hay entre los 20 integrantes, Sebas y otros dos tienen 90. Los otros diecisiete se reparten el resto. Nadie hizo nada malo y a todos les gusta One Piece por igual; la diferencia está en cuánto entra a cada casa. Y si lo piensas, no pasa solo en el club: en la colonia, en la ciudad y en el país, unos pocos tienen mucho y muchos tienen poco. Entender cómo se reparte lo que hay, y cómo se mide si está muy disparejo, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Los tomos del club SON un caso de desigualdad",
+        "content": "Lo que acabas de ver con los tomos del club es exactamente la **desigualdad**: el reparto disparejo del **ingreso**, la **riqueza** y las **oportunidades** entre personas, grupos o regiones. No es lo mismo que la **pobreza**: pobreza es no alcanzar un **mínimo**; desigualdad es qué tan **lejos** están unos de otros. Se mide con el **coeficiente de Gini**, de **0** (igualdad total: todos tienen lo mismo) a **1** (desigualdad total: uno lo tiene todo), y con **deciles**: los hogares se ordenan por ingreso en 10 grupos iguales y se compara el **decil X**, el de más ingreso, con el **decil I**, el de menos. En México los datos salen de la **ENIGH** del **INEGI**. Es un **problema social**: afecta a millones y tiene causas sociales."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el Gini de tres clubes de anime",
+        "content": "Imagina tres clubes de anime de 5 integrantes. ¿Cuál es más desigual?\n\n**Paso 1:** Club A, 50 tomos: todos tienen 10 → reparto idéntico: **Gini = 0**.\n**Paso 2:** Club B, 50 tomos: uno tiene 42 y los otros cuatro, 2 cada uno → casi todo en una mano: **Gini = 0.64**, alto.\n**Paso 3:** Club C, 5 tomos: cada quien tiene 1 → **Gini = 0** otra vez, aunque casi no tienen nada.\n**Paso 4:** Compara: entre más cerca de **1**, más desigual. El club B es el más desigual; A y C empatan en 0.\n**Paso 5:** Conclusión: el Gini mide el **reparto**, no si alcanza. Un grupo puede ser muy igualitario y muy pobre a la vez.\n\nPor eso **pobreza** y **desigualdad** se miden por separado."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **problema social** afecta a muchas personas y tiene causas sociales. **Pobreza** (CONEVAL): ingreso insuficiente y al menos una **carencia social**; **extrema**: 3 o más carencias e ingreso menor a la canasta alimentaria. **Gini**: 0 = igualdad total, 1 = desigualdad total. **Remesas**: dinero que envían los migrantes. **Describir** dice qué pasa; **medir**, cuánto; **explicar**, por qué."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Si la pregunta habla de un mínimo que no se alcanza, es pobreza. Si compara a unos con otros (deciles, Gini, «el 10 % más rico»), es desigualdad. Como en el club: no tener tomos es una cosa; que tres tengan casi todos es otra."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Comparar los extremos de una lista ordenada es una forma clásica de medir la desigualdad.",
+        "data": {
+          "intro": "Vas a medir qué tan disparejo está el reparto de tomos en el club, como el INEGI lo hace con el ingreso de los hogares.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Ordenas a los 20 integrantes del club de quien tiene menos tomos a quien tiene más."
+            },
+            {
+              "text": "Los partes en 10 grupos iguales de 2 personas: son los deciles. El decil I tiene menos; el decil X, más."
+            },
+            {
+              "text": "Sumas: el decil I tiene 2 tomos y el decil X, 70. Divides 70 entre 2: el decil X tiene 35 veces más."
+            },
+            {
+              "text": "Esa comparación entre deciles, junto con el Gini, resume la desigualdad. La ENIGH hace lo mismo con el ingreso de los hogares."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Pobreza o desigualdad?",
+        "content": "Pobreza: no alcanzar un mínimo de ingreso o de derechos. Desigualdad: qué tan disparejo se reparte lo que hay entre unos y otros.",
+        "data": {
+          "prompt": "Arrastra cada frase al problema que describe.",
+          "buckets": [
+            "Pobreza",
+            "Desigualdad"
+          ],
+          "items": [
+            {
+              "t": "Un hogar cuyo ingreso no cubre la canasta",
+              "b": 0
+            },
+            {
+              "t": "Tres del club tienen el 75 % de los tomos",
+              "b": 1
+            },
+            {
+              "t": "Una familia sin acceso a servicios de salud",
+              "b": 0
+            },
+            {
+              "t": "El decil X gana muchas veces más que el I",
+              "b": 1
+            },
+            {
+              "t": "Personas con rezago educativo",
+              "b": 0
+            },
+            {
+              "t": "Un Gini que sube de 0.40 a 0.45",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada medida de desigualdad con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Gini de 0",
+              "b": "Igualdad total"
+            },
+            {
+              "a": "Gini de 1",
+              "b": "Desigualdad total"
+            },
+            {
+              "a": "Decil I",
+              "b": "10 % con menos ingreso"
+            },
+            {
+              "a": "Decil X",
+              "b": "10 % con más ingreso"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Club de anime",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Tres tienen casi todos los tomos",
+            "right": "Desigualdad"
+          },
+          {
+            "left": "Ordenar a todos de menos a más tomos",
+            "right": "Deciles"
+          },
+          {
+            "left": "Un número que dice qué tan disparejo es",
+            "right": "Coeficiente de Gini"
+          },
+          {
+            "left": "Pasa en el club, la colonia y el país",
+            "right": "Problema social"
+          }
+        ],
+        "completion_feedback": "El reparto disparejo es **desigualdad**; ordenar y comparar grupos son los **deciles**; el **Gini** lo resume en un número, y como pasa a gran escala, es un **problema social**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En el coeficiente de Gini, ¿qué significa un valor de 0?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Igualdad total"
+            },
+            {
+              "letter": "B",
+              "text": "Desigualdad total"
+            },
+            {
+              "letter": "C",
+              "text": "Pobreza extrema"
+            },
+            {
+              "letter": "D",
+              "text": "Ingreso de cero"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "En el Gini, 0 es igualdad total: todos tienen lo mismo. El 1 es desigualdad total: una sola persona lo tiene todo. El Gini no mide pobreza, sino reparto.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el club, 3 de 20 integrantes tienen 90 de los 120 tomos. ¿Qué describe ese dato?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Pobreza extrema en el club"
+            },
+            {
+              "letter": "B",
+              "text": "Una carencia social"
+            },
+            {
+              "letter": "C",
+              "text": "Desigualdad en el reparto"
+            },
+            {
+              "letter": "D",
+              "text": "Igualdad entre integrantes"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Que pocos concentren casi todo es desigualdad: habla de cómo se reparte lo que hay. La pobreza sería no alcanzar un mínimo, y las carencias sociales son derechos que no se cumplen.",
+          "difficulty": 2
+        },
+        {
+          "question": "Imagina un club donde los 20 integrantes tienen exactamente 1 tomo cada uno. ¿Qué es cierto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Su Gini es 1 porque casi no tienen nada"
+            },
+            {
+              "letter": "B",
+              "text": "No es igualdad porque nadie tiene muchos"
+            },
+            {
+              "letter": "C",
+              "text": "Su Gini es 0.5 porque es un caso intermedio"
+            },
+            {
+              "letter": "D",
+              "text": "Su Gini es 0, aunque tengan muy poco"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El Gini mide el reparto, no la cantidad. Si todos tienen lo mismo, el Gini es 0 aunque sea muy poco. Por eso pobreza y desigualdad se miden por separado.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la ENIGH, los hogares se ordenan por ingreso y se parten en 10 grupos iguales. ¿Cómo se llaman esos grupos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Percentiles"
+            },
+            {
+              "letter": "B",
+              "text": "Deciles"
+            },
+            {
+              "letter": "C",
+              "text": "Cuartiles"
+            },
+            {
+              "letter": "D",
+              "text": "Estratos"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Son deciles: diez grupos con el mismo número de hogares, del I (menos ingreso) al X (más ingreso). Los cuartiles serían cuatro grupos y los percentiles, cien.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un país reduce la pobreza, pero el ingreso del decil X crece mucho más rápido que el del decil I. ¿Qué puede pasar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que bajen las dos, porque siempre van juntas"
+            },
+            {
+              "letter": "B",
+              "text": "Que baje la pobreza y suba la desigualdad"
+            },
+            {
+              "letter": "C",
+              "text": "Que suba la pobreza, porque el Gini creció"
+            },
+            {
+              "letter": "D",
+              "text": "Que el Gini baje, porque hay menos pobres"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Pobreza y desigualdad no siempre se mueven juntas. Si los de menos ingreso mejoran un poco y los de más ingreso mucho más, hay menos pobres y, a la vez, más distancia entre los extremos.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El estadio pintado de verde en Texas",
+        "content": "Cada vez que la Selección juega en Estados Unidos, tu tío Beto te manda videos desde la tribuna: un estadio de Texas pintado de verde, banderas de Michoacán, Jalisco y Zacatecas, mariachi en el estacionamiento y miles de personas cantando el «Cielito lindo». Se fue de su pueblo hace quince años, cuando cerró la empacadora y no había trabajo; allá un primo ya lo esperaba con un cuarto y un empleo en la construcción. Desde entonces, cada quincena le manda dinero a tu abuela por una app de envíos. Con eso ella compra sus medicinas y cambió el techo de lámina por uno de losa. En el video también salen tus primos, nacidos allá: hablan más inglés que español, pero gritan los goles de México como si estuvieran en el Azteca. Ese estadio lleno no es casualidad ni solo pasión futbolera: es la huella de millones de personas que salieron del país por razones parecidas a las de tu tío. Por qué la gente deja su tierra, qué la atrae a otro lugar y qué manda de regreso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El estadio lleno ES la migración en acción",
+        "content": "Lo que acabas de ver con el tío Beto es exactamente la **migración**: el cambio de residencia de personas de un lugar a otro. Es **interna** si ocurre dentro del país e **internacional** si cruza fronteras; para México es **emigración** cuando alguien sale e **inmigración** cuando alguien llega. Se explica por **factores de expulsión** (desempleo, salarios bajos, violencia, desastres) y **factores de atracción** (empleo, mejores salarios, **redes** de familiares). Las **remesas** son el dinero que los migrantes envían a sus familias; según el **Banco Mundial**, México está entre los países que más remesas reciben. El **INEGI** la mide con el censo y encuestas, y es un **problema social** por sus causas y efectos."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la familia de un canterano",
+        "content": "Kevin, de 14 años, juega en las fuerzas básicas de un club de la Liga MX. Clasifica los movimientos de su familia.\n\n**Paso 1:** Kevin dejó Chiapas para vivir en la casa club, en Hidalgo → **migración interna**, atraído por una oportunidad.\n**Paso 2:** Su hermana se fue a Cancún a trabajar en un hotel → también **interna**: el turismo es un **factor de atracción**.\n**Paso 3:** Su papá trabaja en Chicago → **migración internacional**; para México es **emigración**.\n**Paso 4:** Un delantero colombiano llega a jugar al club → para México es **inmigración**.\n**Paso 5:** Su tío vuelve de Estados Unidos y abre un taller → **migración de retorno**.\n\nMéxico es a la vez país de **origen**, **tránsito**, **destino** y **retorno**."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **problema social** afecta a muchas personas y tiene causas sociales. **Pobreza** (CONEVAL): ingreso insuficiente y al menos una **carencia social**; **extrema**: 3 o más carencias e ingreso menor a la canasta alimentaria. **Gini**: 0 = igualdad total, 1 = desigualdad total. **Remesas**: dinero que envían los migrantes. **Describir** dice qué pasa; **medir**, cuánto; **explicar**, por qué."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Fíjate en la frontera y en la dirección. Dentro del país es migración interna; si cruza fronteras, internacional. Saliendo de México es emigración; llegando, inmigración. Como en un fichaje: depende de qué club lo cuente."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Toda migración junta un empujón de salida, un jalón de llegada y efectos que regresan al lugar de origen.",
+        "data": {
+          "intro": "Sigue la historia del tío Beto para ver cómo funciona una migración de punta a punta.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "En su pueblo cerró la empacadora y no había empleo: es un factor de expulsión."
+            },
+            {
+              "text": "En Texas había trabajo mejor pagado y un primo que lo recibió: factores de atracción y redes migratorias."
+            },
+            {
+              "text": "Cada quincena manda parte de su sueldo a la abuela: eso son las remesas."
+            },
+            {
+              "text": "La abuela las usa en medicinas y en el techo: las remesas sostienen el gasto de muchos hogares."
+            },
+            {
+              "text": "Sus hijos crecen allá y siguen a la Selección: la migración también mueve identidades."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Expulsa o atrae?",
+        "content": "Expulsión: lo que empuja a la gente a irse de su lugar de origen. Atracción: lo que la jala hacia otro lugar.",
+        "data": {
+          "prompt": "Arrastra cada razón a su tipo de factor.",
+          "buckets": [
+            "Factor de expulsión",
+            "Factor de atracción"
+          ],
+          "items": [
+            {
+              "t": "Cierra la única fábrica del pueblo",
+              "b": 0
+            },
+            {
+              "t": "Salarios más altos en otra ciudad",
+              "b": 1
+            },
+            {
+              "t": "Una sequía arruina la cosecha",
+              "b": 0
+            },
+            {
+              "t": "Un primo que ya vive allá y te recibe",
+              "b": 1
+            },
+            {
+              "t": "Violencia que no deja vivir en paz",
+              "b": 0
+            },
+            {
+              "t": "Un club que te ofrece una prueba",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de migración con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Emigración",
+              "b": "Salir del país"
+            },
+            {
+              "a": "Inmigración",
+              "b": "Llegar al país"
+            },
+            {
+              "a": "Remesa",
+              "b": "Dinero enviado a casa"
+            },
+            {
+              "a": "Migración interna",
+              "b": "De un estado a otro"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Tío Beto",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Cerró la empacadora del pueblo",
+            "right": "Factor de expulsión"
+          },
+          {
+            "left": "Un primo con cuarto y empleo en Texas",
+            "right": "Red migratoria"
+          },
+          {
+            "left": "El dinero que llega cada quincena",
+            "right": "Remesas"
+          },
+          {
+            "left": "Se fue de México a Estados Unidos",
+            "right": "Emigración"
+          }
+        ],
+        "completion_feedback": "El cierre de la empacadora es un **factor de expulsión**, el primo es una **red migratoria**, el dinero son **remesas** y salir de México es **emigración**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Un aficionado de Tigres se muda de Zacatecas a Monterrey para trabajar. ¿Qué tipo de migración es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Internacional"
+            },
+            {
+              "letter": "B",
+              "text": "De tránsito"
+            },
+            {
+              "letter": "C",
+              "text": "Interna"
+            },
+            {
+              "letter": "D",
+              "text": "De retorno"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Se queda dentro de México: cambia de estado, no de país. Por eso es migración interna. Sería internacional si cruzara una frontera.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué son las remesas que recibe la abuela de la historia?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Impuestos que pagan los migrantes en su nuevo país"
+            },
+            {
+              "letter": "B",
+              "text": "Dinero que envían los migrantes a su familia"
+            },
+            {
+              "letter": "C",
+              "text": "Apoyos del gobierno para quienes regresan al país"
+            },
+            {
+              "letter": "D",
+              "text": "Ganancias de las empresas que contratan migrantes"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las remesas son el dinero que los migrantes mandan a sus familias en su lugar de origen. México está entre los países que más remesas reciben, y muchos hogares las usan en comida, salud o vivienda.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu tío dice: «Me fui porque cerró la empacadora y porque mi primo me consiguió trabajo allá». ¿Qué factores menciona?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Dos factores de expulsión"
+            },
+            {
+              "letter": "B",
+              "text": "Dos factores de atracción"
+            },
+            {
+              "letter": "C",
+              "text": "Expulsión y atracción"
+            },
+            {
+              "letter": "D",
+              "text": "Solo migración interna"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El cierre de la empacadora lo empujó a salir: expulsión. El primo con trabajo lo jaló hacia otro lugar: atracción, a través de una red. Casi siempre actúan los dos a la vez.",
+          "difficulty": 3
+        },
+        {
+          "question": "Un delantero argentino se muda a México para jugar en la Liga MX. Visto desde México, ¿cómo se llama ese movimiento?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Emigración"
+            },
+            {
+              "letter": "B",
+              "text": "Migración interna"
+            },
+            {
+              "letter": "C",
+              "text": "Remesa"
+            },
+            {
+              "letter": "D",
+              "text": "Inmigración"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Para México es inmigración, porque la persona llega al país. Para Argentina sería emigración, porque sale. La misma migración se nombra distinto según desde dónde se mire.",
+          "difficulty": 2
+        },
+        {
+          "question": "Miles de aficionados llenan de verde un estadio en Estados Unidos cuando juega la Selección. ¿Qué explicación es la más completa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo es pasión por el fútbol"
+            },
+            {
+              "letter": "B",
+              "text": "Los boletos son más baratos allá que en México"
+            },
+            {
+              "letter": "C",
+              "text": "Refleja décadas de migración hacia ese país"
+            },
+            {
+              "letter": "D",
+              "text": "Todos viajaron desde México para ese partido"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La afición existe, pero que haya tantos mexicanos y sus hijos en esas ciudades se explica por la migración de muchos años. Estados Unidos es el principal destino de quienes emigran de México.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El live de BTS que se congeló",
+        "content": "Es viernes en la noche y BTS abre un live en Weverse. En el grupo de chat de unas ARMY de todo México, Camila, de Guadalajara, presume capturas en alta calidad desde su laptop: en su casa hay internet de fibra y cada quien tiene su cuarto. Itzel, que vive en una comunidad de la sierra de Oaxaca, entra desde el celular de su mamá con una recarga; el video se congela, la imagen se pixelea y a los diez minutos se le acaban los megas. Camila, sin mala intención, le contesta: «Pues compra más datos». Pero en la plática sale lo demás: la señal solo agarra en la plaza, en su casa no hay agua entubada, su mamá trabaja en el campo sin seguro ni pensión, y lo que gana apenas alcanza para la comida de la semana. No es que Itzel sea menos ARMY; es que en su vida faltan varias cosas a la vez, y una recarga no las arregla. Darse cuenta de que la pobreza no se mide solo con dinero, sino también con los derechos que una persona puede ejercer, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Lo que le falta a Itzel ES pobreza multidimensional",
+        "content": "Lo que acabas de ver con Itzel es exactamente la **pobreza multidimensional**, la forma oficial de medir la pobreza en México. Alguien está en **pobreza** si su **ingreso** no alcanza para los bienes básicos y además tiene al menos una de seis **carencias sociales**: **rezago educativo**, acceso a los **servicios de salud**, acceso a la **seguridad social**, **calidad y espacios de la vivienda**, **servicios básicos en la vivienda** y acceso a una **alimentación nutritiva y de calidad**. Está en **pobreza extrema** con **tres o más** carencias y un ingreso que no cubre ni la **canasta alimentaria**. La diseñó el **CONEVAL** y se calcula con la **ENIGH** del **INEGI**. El internet no es una de las seis: la **brecha digital** se mide aparte."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — cinco hogares de la fanbase de TXT",
+        "content": "Para un proyecto de la prepa, la fanbase de TXT clasifica cinco hogares inventados con la medición oficial.\n\n**Paso 1:** Ingreso bajo la línea de pobreza y sin seguridad social (1 carencia) → **pobreza moderada**.\n**Paso 2:** Ingreso que no cubre ni la canasta alimentaria y 3 carencias → **pobreza extrema**.\n**Paso 3:** Ingreso suficiente, pero sin acceso a servicios de salud → **vulnerable por carencias**.\n**Paso 4:** Ninguna carencia, pero el ingreso no alcanza → **vulnerable por ingreso**.\n**Paso 5:** Ingreso suficiente y cero carencias → **no pobre y no vulnerable**.\n\nLa clave: se cruzan **dos ejes**, ingreso y carencias, y la clasificación sale de los dos juntos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **problema social** afecta a muchas personas y tiene causas sociales. **Pobreza** (CONEVAL): ingreso insuficiente y al menos una **carencia social**; **extrema**: 3 o más carencias e ingreso menor a la canasta alimentaria. **Gini**: 0 = igualdad total, 1 = desigualdad total. **Remesas**: dinero que envían los migrantes. **Describir** dice qué pasa; **medir**, cuánto; **explicar**, por qué."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la entrada de un concierto con dos filtros: el boleto (ingreso) y la pulsera (derechos sociales). En pobreza fallan los dos: ingreso insuficiente y al menos una carencia. Si falla solo uno, es vulnerabilidad."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La medición oficial revisa el ingreso, cuenta las carencias y cruza los dos ejes.",
+        "data": {
+          "intro": "Clasifica la situación de Itzel paso a paso, como lo haría la medición oficial de pobreza.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Ingreso: en su hogar, lo que hay por persona no alcanza la línea de pobreza por ingresos."
+            },
+            {
+              "text": "Carencias: su mamá no tiene seguridad social y en la casa no hay agua entubada. Son dos carencias."
+            },
+            {
+              "text": "Cruce: ingreso insuficiente y al menos una carencia. Itzel está en situación de pobreza."
+            },
+            {
+              "text": "Grado: tiene menos de tres carencias, así que es pobreza moderada, no extrema."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Es una de las seis carencias?",
+        "content": "Las seis carencias oficiales: rezago educativo, servicios de salud, seguridad social, calidad y espacios de la vivienda, servicios básicos en la vivienda y alimentación nutritiva y de calidad. Lo demás puede importar, pero no está en esa lista.",
+        "data": {
+          "prompt": "Arrastra cada situación a su categoría.",
+          "buckets": [
+            "Carencia social oficial",
+            "No está en las seis"
+          ],
+          "items": [
+            {
+              "t": "Vivir en una casa con piso de tierra",
+              "b": 0
+            },
+            {
+              "t": "No poder pagar la ARMY Membership",
+              "b": 1
+            },
+            {
+              "t": "Trabajar sin seguro ni pensión",
+              "b": 0
+            },
+            {
+              "t": "No tener internet en casa",
+              "b": 1
+            },
+            {
+              "t": "No tener agua entubada en casa",
+              "b": 0
+            },
+            {
+              "t": "No ir al concierto en CDMX",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada categoría de la medición con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Pobreza extrema",
+              "b": "Sin canasta y 3+ carencias"
+            },
+            {
+              "a": "Vulnerable por ingreso",
+              "b": "Solo ingreso insuficiente"
+            },
+            {
+              "a": "Vulnerable por carencias",
+              "b": "Solo carencias sociales"
+            },
+            {
+              "a": "No pobre ni vulnerable",
+              "b": "Todo el mínimo cubierto"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Live de BTS",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Se le acaban los megas a los diez minutos",
+            "right": "Brecha digital"
+          },
+          {
+            "left": "Su mamá trabaja sin seguro ni pensión",
+            "right": "Carencia de seguridad social"
+          },
+          {
+            "left": "En su casa no hay agua entubada",
+            "right": "Carencia de servicios básicos"
+          },
+          {
+            "left": "Le faltan varias cosas, no solo dinero",
+            "right": "Pobreza multidimensional"
+          }
+        ],
+        "completion_feedback": "Los megas que se acaban muestran la **brecha digital**; la falta de seguro y de agua son **carencias sociales**, y todo junto, con el ingreso, es **pobreza multidimensional**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "¿Cuántas carencias sociales revisa la medición oficial de pobreza en México?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cuatro"
+            },
+            {
+              "letter": "B",
+              "text": "Diez"
+            },
+            {
+              "letter": "C",
+              "text": "Tres"
+            },
+            {
+              "letter": "D",
+              "text": "Seis"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Son seis: rezago educativo, servicios de salud, seguridad social, calidad y espacios de la vivienda, servicios básicos en la vivienda y alimentación nutritiva y de calidad. Tres o más, con ingreso menor a la canasta alimentaria, es pobreza extrema.",
+          "difficulty": 1
+        },
+        {
+          "question": "Una fan vive en un hogar con ingreso suficiente, pero nadie en su familia tiene seguridad social. ¿Cómo se clasifica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Vulnerable por carencias"
+            },
+            {
+              "letter": "B",
+              "text": "Vulnerable por ingreso"
+            },
+            {
+              "letter": "C",
+              "text": "Pobreza extrema"
+            },
+            {
+              "letter": "D",
+              "text": "No pobre y no vulnerable"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Su ingreso alcanza, así que no está en pobreza, pero tiene una carencia: seguridad social. Eso es vulnerable por carencias. Para estar en pobreza tendrían que fallar las dos cosas.",
+          "difficulty": 2
+        },
+        {
+          "question": "Camila dice: «Itzel no es pobre, solo le faltan datos». Según la medición oficial, ¿cuál es su error?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Olvida que el internet es una de las seis carencias"
+            },
+            {
+              "letter": "B",
+              "text": "Ignora su ingreso y sus carencias sociales"
+            },
+            {
+              "letter": "C",
+              "text": "Debió fijarse solo en cuánto gana la familia"
+            },
+            {
+              "letter": "D",
+              "text": "Debió contar cuántos lives se ha perdido Itzel"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La pobreza oficial no se decide por los datos del celular. Se revisan el ingreso por persona y las seis carencias: Itzel tiene ingreso bajo y al menos dos carencias. El internet no está entre las seis.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Con qué encuesta del INEGI se calculan el ingreso y las carencias para medir la pobreza?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "ENVIPE"
+            },
+            {
+              "letter": "B",
+              "text": "ENDUTIH"
+            },
+            {
+              "letter": "C",
+              "text": "ENIGH"
+            },
+            {
+              "letter": "D",
+              "text": "MOCIBA"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La ENIGH, Encuesta Nacional de Ingresos y Gastos de los Hogares, da los datos de ingreso y carencias. La ENVIPE mide victimización, la ENDUTIH el uso de internet y el MOCIBA el ciberacoso.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un hogar no cubre ni la canasta alimentaria y tiene dos carencias sociales. ¿Cómo se clasifica?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Pobreza extrema"
+            },
+            {
+              "letter": "B",
+              "text": "Pobreza moderada"
+            },
+            {
+              "letter": "C",
+              "text": "Vulnerable por ingreso"
+            },
+            {
+              "letter": "D",
+              "text": "Vulnerable por carencias"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La pobreza extrema pide dos condiciones: ingreso menor a la canasta alimentaria y tres o más carencias. Con dos carencias está en pobreza, pero moderada, aunque su ingreso sea muy bajo.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Los insultos en el chat de voz de Fortnite",
+        "content": "Andrea es la mejor de tu escuadra en Fortnite: construye rapidísimo y siempre revive a los demás. Pero cada vez que abre el micrófono en una partida con desconocidos, le llueven insultos: que se vaya a la cocina, que las mujeres no saben jugar, que mejor se salga. Al principio se ríe; luego juega muteada y, un día, deja de conectarse. Tú pensabas que era mala suerte: un jugador tóxico y ya. Pero cuando lo platicas en el grupo del salón, salen más historias: a Diego le mandaron amenazas por perder una ranked, a Fer lo exhibieron en un grupo de Discord con una foto editada para burlarse de él, y casi nadie lo reportó porque «para qué, si no pasa nada». No es una persona grosera ni un día malo: se repite, le pega a muchos, tiene causas (el anonimato, que nadie sancione, que se vea normal) y cambia cómo vive la gente, aunque nadie haya recibido un golpe. Entender cuándo algo deja de ser un problema personal y se vuelve un problema social es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La toxicidad en línea ES violencia como problema social",
+        "content": "Lo que acabas de ver con Andrea es exactamente un **problema social**: afecta a **muchas personas**, se repite, tiene **causas sociales** y no se resuelve solo con decisiones individuales. La **violencia** es uno de los grandes problemas de México y no es solo física: también es verbal, psicológica, sexual, económica y **digital**. Tiene **causas múltiples** que se combinan en varios niveles: individual, de relaciones, comunitario y social (desigualdad, **impunidad**, crimen organizado, normalización). Para estudiarla, primero se **describe** (qué pasa y a quién), luego se **mide** con encuestas del **INEGI** como la **ENVIPE** o el módulo **MOCIBA** (ciberacoso), y al final se **explica** por qué ocurre."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿qué servidor tiene más acoso?",
+        "content": "Imagina dos servidores de Discord de jugadores de Roblox. El A tiene 200 miembros y 30 reportes de acoso al mes; el B, 900 miembros y 45 reportes.\n\n**Paso 1:** **Describir**: en los dos hay insultos y amenazas, sobre todo en los chats de voz.\n**Paso 2:** Contar no basta: B tiene más reportes, pero también mucha más gente.\n**Paso 3:** **Medir** con una **tasa**: A = 30 ÷ 200 × 100 = **15 por cada 100**; B = 45 ÷ 900 × 100 = **5 por cada 100**.\n**Paso 4:** Una encuesta anónima revela casos que nunca se reportaron: es la **cifra negra**.\n**Paso 5:** **Explicar**: una causa probable es que en A no hay moderadores ni sanciones.\n\nAsí se comparan los estados: con tasas por cada 100 mil habitantes, no con totales."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Un **problema social** afecta a muchas personas y tiene causas sociales. **Pobreza** (CONEVAL): ingreso insuficiente y al menos una **carencia social**; **extrema**: 3 o más carencias e ingreso menor a la canasta alimentaria. **Gini**: 0 = igualdad total, 1 = desigualdad total. **Remesas**: dinero que envían los migrantes. **Describir** dice qué pasa; **medir**, cuánto; **explicar**, por qué."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Para comparar violencia entre lugares de distinto tamaño, nunca uses el total: usa la tasa por cada 100 mil habitantes. Como en un torneo: no gana quien jugó más partidas, sino quien tiene mejor porcentaje de victorias."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Estudiar un problema social tiene momentos distintos: describir, medir y explicar, y solo después proponer.",
+        "data": {
+          "intro": "Tu salón presentará el caso de la toxicidad en línea en la feria de ciencias sociales. Hazlo como lo haría un investigador.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Describir: en las partidas en línea hay insultos, amenazas y burlas, sobre todo hacia las jugadoras."
+            },
+            {
+              "text": "Medir: en una encuesta anónima, 12 de 30 compañeros dicen haber sufrido acoso en línea este año: el 40 %."
+            },
+            {
+              "text": "Explicar: buscan varias causas juntas, como el anonimato, la falta de sanciones y que el acoso se vea normal."
+            },
+            {
+              "text": "Proponer: con esa explicación, sugieren reportar, moderar mejor y hablar del tema en la escuela."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Describe, mide o explica?",
+        "content": "Describir: qué pasa, a quién y dónde. Medir: cuántos o qué proporción, con números. Explicar: por qué pasa.",
+        "data": {
+          "prompt": "Arrastra cada frase sobre el acoso en línea a lo que hace.",
+          "buckets": [
+            "Describe",
+            "Mide",
+            "Explica"
+          ],
+          "items": [
+            {
+              "t": "En los chats de voz insultan a las jugadoras",
+              "b": 0
+            },
+            {
+              "t": "4 de cada 10 del salón vivieron acoso",
+              "b": 1
+            },
+            {
+              "t": "El anonimato hace sentir libre al agresor",
+              "b": 2
+            },
+            {
+              "t": "Los insultos aparecen sobre todo en ranked",
+              "b": 0
+            },
+            {
+              "t": "Hay 15 reportes por cada 100 miembros",
+              "b": 1
+            },
+            {
+              "t": "Sin sanciones, la conducta se repite",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada herramienta de medición con lo que es.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "ENVIPE",
+              "b": "Encuesta de victimización"
+            },
+            {
+              "a": "MOCIBA",
+              "b": "Módulo sobre ciberacoso"
+            },
+            {
+              "a": "Cifra negra",
+              "b": "Delitos sin denunciar"
+            },
+            {
+              "a": "Tasa",
+              "b": "Casos por cada 100 mil"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Chat de Fortnite",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Le pasa a muchos, no solo a Andrea",
+            "right": "Problema social"
+          },
+          {
+            "left": "Insultos y amenazas por el micrófono",
+            "right": "Violencia digital"
+          },
+          {
+            "left": "«Para qué reporto, si no pasa nada»",
+            "right": "Cifra negra"
+          },
+          {
+            "left": "Anonimato, impunidad y normalización",
+            "right": "Causas múltiples"
+          }
+        ],
+        "completion_feedback": "Lo que le pasa a muchos es un **problema social**; los insultos son **violencia digital**; lo que no se reporta es la **cifra negra**, y las razones juntas son **causas múltiples**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué convierte la toxicidad en línea en un problema social y no solo personal?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo le pasa a una persona con mala suerte"
+            },
+            {
+              "letter": "B",
+              "text": "Ocurre en internet y no en la calle"
+            },
+            {
+              "letter": "C",
+              "text": "Lo resuelve cada quien silenciando el chat"
+            },
+            {
+              "letter": "D",
+              "text": "Afecta a muchos y tiene causas sociales"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Un problema social afecta a muchas personas, se repite y tiene causas sociales, como el anonimato o la falta de sanciones. Que pase en internet no lo hace menos real.",
+          "difficulty": 1
+        },
+        {
+          "question": "En un servidor de 400 jugadores hay 20 reportes de acoso. ¿Cuál es la tasa por cada 100 miembros?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "20 por cada 100"
+            },
+            {
+              "letter": "B",
+              "text": "5 por cada 100"
+            },
+            {
+              "letter": "C",
+              "text": "2 por cada 100"
+            },
+            {
+              "letter": "D",
+              "text": "50 por cada 100"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La tasa divide los casos entre la población y multiplica por 100: 20 ÷ 400 × 100 = 5. Así se comparan comunidades de distinto tamaño, igual que los estados con la tasa por cada 100 mil.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amigo dice: «Hay acoso en línea porque los jugadores son malas personas». ¿Qué le falta a esa explicación?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Contar cuántos insultos hay por partida"
+            },
+            {
+              "letter": "B",
+              "text": "Considerar varias causas sociales a la vez"
+            },
+            {
+              "letter": "C",
+              "text": "Nada, una sola causa basta para explicarlo"
+            },
+            {
+              "letter": "D",
+              "text": "Decir en qué juegos pasa más seguido"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La violencia tiene causas múltiples: individuales, de relaciones, comunitarias y sociales, como el anonimato o la impunidad. Contar casos o decir dónde pasan es medir y describir, no explicar.",
+          "difficulty": 3
+        },
+        {
+          "question": "Muchos jugadores acosados nunca lo reportan. En las estadísticas de delitos, ¿cómo se llama ese hueco?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Tasa de delitos"
+            },
+            {
+              "letter": "B",
+              "text": "Cifra oficial"
+            },
+            {
+              "letter": "C",
+              "text": "Brecha digital"
+            },
+            {
+              "letter": "D",
+              "text": "Cifra negra"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La cifra negra son los delitos que no se denuncian o no llegan a investigarse. Por eso el INEGI hace la ENVIPE: pregunta directo a la gente si fue víctima, aunque no haya denunciado.",
+          "difficulty": 2
+        },
+        {
+          "question": "«El 40 % del salón sufrió acoso en línea este año». ¿Qué hace esa frase con el problema?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Explica sus causas"
+            },
+            {
+              "letter": "B",
+              "text": "Propone una solución"
+            },
+            {
+              "letter": "C",
+              "text": "Mide el problema"
+            },
+            {
+              "letter": "D",
+              "text": "Niega que exista"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Dar un número o un porcentaje es medir: dice cuánto. Describir sería decir qué pasa y a quién; explicar sería decir por qué. Las tres cosas se necesitan, pero no son lo mismo.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué caracteriza a un problema social?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Le ocurre a una sola persona por mala suerte"
+        },
+        {
+          "letter": "B",
+          "text": "Afecta a muchas personas y tiene causas sociales"
+        },
+        {
+          "letter": "C",
+          "text": "Solo lo puede resolver cada individuo por su cuenta"
+        },
+        {
+          "letter": "D",
+          "text": "Es cualquier tema que aparece en las noticias del día"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en la diferencia entre algo que le pasa a una persona y algo que les pasa a muchas por razones parecidas.",
+      "explanation": "Un problema social afecta a una parte importante de la sociedad, tiene causas sociales y requiere acción colectiva. No basta con que salga en las noticias ni se resuelve persona por persona."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué institución diseñó la medición multidimensional de la pobreza en México?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "IMPI"
+        },
+        {
+          "letter": "B",
+          "text": "PROFECO"
+        },
+        {
+          "letter": "C",
+          "text": "CONEVAL"
+        },
+        {
+          "letter": "D",
+          "text": "SEP"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el organismo cuyo nombre incluye la evaluación de la política de desarrollo social.",
+      "explanation": "El CONEVAL, Consejo Nacional de Evaluación de la Política de Desarrollo Social, diseñó la medición que combina ingreso y carencias sociales. El IMPI, la PROFECO y la SEP tienen otras funciones."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En el coeficiente de Gini, ¿qué indica un valor de 1?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Igualdad total"
+        },
+        {
+          "letter": "B",
+          "text": "Pobreza de todo el país"
+        },
+        {
+          "letter": "C",
+          "text": "Desigualdad total"
+        },
+        {
+          "letter": "D",
+          "text": "Ingreso promedio alto"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El Gini va de 0 a 1. ¿Qué pasa en el extremo donde una sola persona tiene todo?",
+      "explanation": "El Gini va de 0, igualdad total, a 1, desigualdad total, cuando una sola persona concentra todo el ingreso. No mide pobreza ni ingreso promedio, sino cómo se reparte."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama el dinero que los migrantes envían a sus familias en su lugar de origen?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Aranceles"
+        },
+        {
+          "letter": "B",
+          "text": "Subsidios"
+        },
+        {
+          "letter": "C",
+          "text": "Impuestos"
+        },
+        {
+          "letter": "D",
+          "text": "Remesas"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Es el dinero que llega a muchos hogares de México desde quienes trabajan en otro país.",
+      "explanation": "Las remesas son el dinero que envían los migrantes a sus familias. Los subsidios son apoyos del gobierno, y los aranceles e impuestos son cobros del Estado."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué institución levanta el censo y encuestas como la ENIGH y la ENVIPE?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "INEGI"
+        },
+        {
+          "letter": "B",
+          "text": "CONAPO"
+        },
+        {
+          "letter": "C",
+          "text": "Banco de México"
+        },
+        {
+          "letter": "D",
+          "text": "IMSS"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el instituto nacional de estadística y geografía.",
+      "explanation": "El INEGI, Instituto Nacional de Estadística y Geografía, hace el censo y encuestas como la ENIGH (ingresos y gastos) y la ENVIPE (victimización). El Banco de México registra las remesas."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la migración interna?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mudarse dentro del mismo país"
+        },
+        {
+          "letter": "B",
+          "text": "Salir del país para vivir en otro"
+        },
+        {
+          "letter": "C",
+          "text": "Llegar a vivir a México desde otro país"
+        },
+        {
+          "letter": "D",
+          "text": "Viajar de vacaciones a otro estado"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Interna quiere decir que no se cruza ninguna frontera del país, y migrar implica cambiar de residencia.",
+      "explanation": "La migración interna es cambiar de residencia sin salir del país, por ejemplo de un estado a otro o del campo a la ciudad. Viajar de vacaciones no es migrar, porque no cambias de residencia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En el estudio de la migración, ¿qué es un factor de expulsión?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Lo que jala a alguien hacia un nuevo lugar"
+        },
+        {
+          "letter": "B",
+          "text": "La deportación de un país a otro"
+        },
+        {
+          "letter": "C",
+          "text": "Lo que empuja a dejar el lugar de origen"
+        },
+        {
+          "letter": "D",
+          "text": "Un trámite para salir legalmente del país"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Expulsión empuja desde el lugar de origen; atracción jala desde el lugar de destino.",
+      "explanation": "Un factor de expulsión empuja a la gente a irse, como el desempleo, la violencia o un desastre. Lo que jala hacia otro lugar es un factor de atracción. No es lo mismo que una deportación."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Según la medición oficial de pobreza, ¿cuál de estas es una carencia social?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No tener automóvil"
+        },
+        {
+          "letter": "B",
+          "text": "Rezago educativo"
+        },
+        {
+          "letter": "C",
+          "text": "No tener internet"
+        },
+        {
+          "letter": "D",
+          "text": "Desempleo temporal"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda las seis: educación, salud, seguridad social, vivienda, servicios básicos y alimentación.",
+      "explanation": "El rezago educativo es una de las seis carencias sociales. El automóvil y el internet no están en la lista, y el desempleo afecta el ingreso, pero no es una carencia en sí."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es un decil en los estudios de desigualdad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un índice de 0 a 1 que resume la desigualdad"
+        },
+        {
+          "letter": "B",
+          "text": "Un décimo de la población ordenada por ingreso"
+        },
+        {
+          "letter": "C",
+          "text": "La décima parte del salario mínimo de un trabajador"
+        },
+        {
+          "letter": "D",
+          "text": "Solo el 10 % más pobre de toda la población"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Viene de diez: la población, ordenada por ingreso, se parte en diez grupos iguales.",
+      "explanation": "Un decil es cada uno de los diez grupos iguales en que se divide la población ordenada por ingreso, del I al X. El índice de 0 a 1 es el Gini, no un decil."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué mide la ENVIPE del INEGI?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mide el ingreso y el gasto de los hogares del país"
+        },
+        {
+          "letter": "B",
+          "text": "Cuenta a toda la población del país cada diez años"
+        },
+        {
+          "letter": "C",
+          "text": "Mide delitos sufridos e inseguridad percibida"
+        },
+        {
+          "letter": "D",
+          "text": "Registra las remesas que llegan al país cada mes"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "La V de ENVIPE viene de victimización y la P, de percepción.",
+      "explanation": "La ENVIPE es la Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública: pregunta si la gente sufrió delitos y cómo percibe la inseguridad. El ingreso lo mide la ENIGH."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un hogar no tiene ninguna carencia social, pero su ingreso no alcanza la línea de pobreza. ¿Cómo se clasifica?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Vulnerable por carencias"
+        },
+        {
+          "letter": "B",
+          "text": "Pobreza moderada"
+        },
+        {
+          "letter": "C",
+          "text": "Vulnerable por ingreso"
+        },
+        {
+          "letter": "D",
+          "text": "Pobreza extrema"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa por separado los dos ejes: carencias e ingreso. ¿Cuál falla aquí?",
+      "explanation": "Para estar en pobreza hacen falta ingreso insuficiente y al menos una carencia. Si solo falla el ingreso, el hogar es vulnerable por ingreso."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué diferencia hay entre pobreza y desigualdad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Son lo mismo: las dos miden cuánto dinero gana una persona al mes"
+        },
+        {
+          "letter": "B",
+          "text": "Pobreza se mide con el Gini y desigualdad con las seis carencias"
+        },
+        {
+          "letter": "C",
+          "text": "Pobreza: no alcanzar un mínimo; desigualdad: reparto disparejo"
+        },
+        {
+          "letter": "D",
+          "text": "Pobreza solo existe en el campo y desigualdad solo en las ciudades"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Una habla de un mínimo que no se cubre; la otra, de la distancia entre unos y otros.",
+      "explanation": "La pobreza es no alcanzar un mínimo de ingreso y derechos; la desigualdad es qué tan disparejo se reparte lo que hay. La pobreza se mide con ingreso y carencias; la desigualdad, con el Gini o los deciles."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En la migración internacional, ¿cuál de estos es un factor de atracción?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Falta de empleo en el lugar de origen"
+        },
+        {
+          "letter": "B",
+          "text": "Mejores salarios en el destino"
+        },
+        {
+          "letter": "C",
+          "text": "Violencia en la comunidad de origen"
+        },
+        {
+          "letter": "D",
+          "text": "Una sequía que arruina las cosechas"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Atracción es lo que hace atractivo el lugar al que se llega, no lo que falla en el de origen.",
+      "explanation": "Los mejores salarios en el destino jalan a las personas: son atracción. El desempleo, la violencia y la sequía en el lugar de origen empujan a irse: son factores de expulsión."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Para qué se usa una tasa por cada 100 mil habitantes al estudiar la violencia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para contar solo los delitos denunciados"
+        },
+        {
+          "letter": "B",
+          "text": "Para calcular la cifra negra exacta"
+        },
+        {
+          "letter": "C",
+          "text": "Para medir la desigualdad del ingreso"
+        },
+        {
+          "letter": "D",
+          "text": "Para comparar lugares de distinto tamaño"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Un estado muy poblado casi siempre tiene más casos en total. ¿Cómo se compara de forma justa?",
+      "explanation": "La tasa divide los casos entre la población y los expresa por cada 100 mil habitantes. Así se pueden comparar estados o ciudades de distinto tamaño sin que gane el más grande."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Según la medición oficial, ¿cuándo está una persona en pobreza extrema?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cuando su ingreso es bajo, aunque no tenga ninguna carencia social"
+        },
+        {
+          "letter": "B",
+          "text": "Tres o más carencias e ingreso menor a la canasta alimentaria"
+        },
+        {
+          "letter": "C",
+          "text": "Cuando tiene una sola carencia, sin importar cuánto gane al mes"
+        },
+        {
+          "letter": "D",
+          "text": "Cuando vive en el campo y no tiene internet ni computadora en casa"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Hacen falta dos condiciones a la vez: muchas carencias y un ingreso muy bajo.",
+      "explanation": "La pobreza extrema combina tres o más carencias sociales con un ingreso que no alcanza ni para la canasta alimentaria. Vivir en el campo o no tener internet no la define."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué significa la cifra negra en las estadísticas de delitos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Delitos cometidos de noche en zonas sin alumbrado"
+        },
+        {
+          "letter": "B",
+          "text": "Número total de delitos que registra la policía"
+        },
+        {
+          "letter": "C",
+          "text": "Delitos que no se denuncian o no se investigan"
+        },
+        {
+          "letter": "D",
+          "text": "Delitos cometidos por el crimen organizado"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en los delitos que nunca llegan a los registros oficiales.",
+      "explanation": "La cifra negra son los delitos que no se denuncian o que no llegan a una investigación. Por eso, además de los registros oficiales, el INEGI pregunta directamente a la gente con la ENVIPE."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué hace un investigador cuando explica un problema social?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cuenta cuántos casos hay"
+        },
+        {
+          "letter": "B",
+          "text": "Dice qué pasa y a quién"
+        },
+        {
+          "letter": "C",
+          "text": "Elige un indicador"
+        },
+        {
+          "letter": "D",
+          "text": "Busca sus causas"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Describir dice qué pasa y medir dice cuánto. ¿Qué pregunta falta responder?",
+      "explanation": "Explicar es responder por qué ocurre: buscar causas. Decir qué pasa es describir, y contar casos o elegir un indicador es parte de medir."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "México recibe migrantes, es paso hacia Estados Unidos, tiene emigrantes y recibe a quienes regresan. ¿Qué describe esto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo migración interna entre estados"
+        },
+        {
+          "letter": "B",
+          "text": "Origen, tránsito, destino y retorno"
+        },
+        {
+          "letter": "C",
+          "text": "Un país que solo expulsa población"
+        },
+        {
+          "letter": "D",
+          "text": "Un problema de brecha digital"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Cuenta cuántos papeles distintos cumple el país en la migración.",
+      "explanation": "México es país de origen (emigrantes), tránsito (paso hacia Estados Unidos), destino (inmigrantes) y retorno (quienes vuelven). No solo expulsa población."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué se dice que la violencia es un problema social con causas múltiples?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Depende solo de la personalidad de cada agresor"
+        },
+        {
+          "letter": "B",
+          "text": "Se debe únicamente a lo que se ve en videojuegos y series"
+        },
+        {
+          "letter": "C",
+          "text": "Combina factores individuales, comunitarios y sociales"
+        },
+        {
+          "letter": "D",
+          "text": "Ocurre solo en las ciudades grandes y nunca en el campo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en varios niveles a la vez: la persona, sus relaciones, la comunidad y la sociedad.",
+      "explanation": "La violencia surge de la combinación de factores individuales, de relaciones, comunitarios y sociales, como la desigualdad o la impunidad. Culpar a una sola causa deja fuera el resto."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un hogar con ingreso suficiente vive en una casa con piso de tierra. ¿Qué carencia social tiene?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Rezago educativo"
+        },
+        {
+          "letter": "B",
+          "text": "Acceso a los servicios básicos de la vivienda"
+        },
+        {
+          "letter": "C",
+          "text": "Seguridad social"
+        },
+        {
+          "letter": "D",
+          "text": "Calidad y espacios de la vivienda"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "El piso es parte de los materiales de la casa, no de los servicios como agua o luz.",
+      "explanation": "El piso de tierra entra en la carencia por calidad y espacios de la vivienda, junto con techos y muros frágiles o el hacinamiento. Los servicios básicos son agua, drenaje, luz y combustible para cocinar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En un país imaginario, la pobreza baja pero el coeficiente de Gini se queda igual. ¿Qué se puede concluir?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Es imposible: si baja la pobreza, baja el Gini"
+        },
+        {
+          "letter": "B",
+          "text": "Hay menos pobres, pero el reparto no cambió"
+        },
+        {
+          "letter": "C",
+          "text": "La desigualdad subió porque el Gini no bajó"
+        },
+        {
+          "letter": "D",
+          "text": "El Gini está mal calculado y hay que repetirlo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "La pobreza y el Gini miden cosas distintas: un mínimo y un reparto.",
+      "explanation": "Si todos los ingresos suben en la misma proporción, puede haber menos personas bajo la línea de pobreza sin que cambie el reparto. Pobreza y desigualdad se mueven por separado."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "El estado A tiene 300 robos y 1 millón de habitantes; el B, 600 robos y 4 millones. ¿Cuál tiene la tasa más alta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "B, con 15 por cada 100 mil"
+        },
+        {
+          "letter": "B",
+          "text": "A, con 30 por cada 100 mil"
+        },
+        {
+          "letter": "C",
+          "text": "B, porque tiene más robos"
+        },
+        {
+          "letter": "D",
+          "text": "Tienen la misma tasa"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Divide los robos entre la población y multiplica por 100 mil en cada estado.",
+      "explanation": "A: 300 ÷ 1 000 000 × 100 000 = 30. B: 600 ÷ 4 000 000 × 100 000 = 15. Aunque B tiene más robos en total, A tiene el doble de tasa."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Gracias a las remesas, una familia pasa a tener ingreso suficiente, pero sigue sin seguridad social. ¿Cómo queda clasificada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No pobre y no vulnerable"
+        },
+        {
+          "letter": "B",
+          "text": "Pobreza moderada"
+        },
+        {
+          "letter": "C",
+          "text": "Vulnerable por ingreso"
+        },
+        {
+          "letter": "D",
+          "text": "Vulnerable por carencias"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Las remesas resolvieron el eje del ingreso. ¿Qué eje sigue fallando?",
+      "explanation": "Con ingreso suficiente ya no está en pobreza, pero conserva una carencia: seguridad social. Eso es vulnerable por carencias. Las remesas mejoran el ingreso, no todos los derechos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una encuesta encuentra que las colonias con más desempleo juvenil tienen más robos. ¿Qué es correcto afirmar?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El desempleo es la única causa de los robos"
+        },
+        {
+          "letter": "B",
+          "text": "Bajar el desempleo acabará con todos los robos"
+        },
+        {
+          "letter": "C",
+          "text": "Hay una relación, pero falta explicar la causa"
+        },
+        {
+          "letter": "D",
+          "text": "Los datos prueban que una cosa causa la otra"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Que dos cosas aparezcan juntas no siempre quiere decir que una cause la otra.",
+      "explanation": "Que dos cosas aparezcan juntas es una correlación, no una prueba de causa. Medir muestra la relación; explicarla exige revisar varias causas. Tampoco permite culpar a un grupo de personas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un joven de Oaxaca se va a trabajar a Baja California y, años después, cruza a Estados Unidos. ¿Qué migraciones hizo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Interna y luego internacional"
+        },
+        {
+          "letter": "B",
+          "text": "Primero internacional y luego interna"
+        },
+        {
+          "letter": "C",
+          "text": "Inmigración en ambos casos"
+        },
+        {
+          "letter": "D",
+          "text": "Retorno y luego interna"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa cada movimiento por separado: ¿cruza una frontera del país o no?",
+      "explanation": "De Oaxaca a Baja California no sale de México: migración interna. Al cruzar a Estados Unidos hace migración internacional, que para México es emigración."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un texto dice: «La violencia en el estado aumentó porque hay más películas de acción». ¿Cuál es el problema de esa explicación?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mide con una tasa en vez de con totales"
+        },
+        {
+          "letter": "B",
+          "text": "Atribuye a una sola causa algo multicausal"
+        },
+        {
+          "letter": "C",
+          "text": "Describe el problema sin usar números"
+        },
+        {
+          "letter": "D",
+          "text": "No dice en qué año se estrenaron esas películas"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda cuántas causas suele tener la violencia y en cuántos niveles actúan.",
+      "explanation": "La violencia es multicausal: combina factores individuales, de relaciones, comunitarios y sociales. Reducirla a una sola causa es una mala explicación, aunque use datos. Medir con tasas es correcto."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Dos municipios tienen el mismo porcentaje de pobreza, pero uno tiene un Gini mucho mayor. ¿Qué significa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Tiene más personas en pobreza extrema"
+        },
+        {
+          "letter": "B",
+          "text": "Tiene menos carencias sociales"
+        },
+        {
+          "letter": "C",
+          "text": "Sus ingresos están más concentrados"
+        },
+        {
+          "letter": "D",
+          "text": "Recibe más remesas que el otro"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El Gini no cuenta cuántos son pobres: mide cómo se reparte el ingreso.",
+      "explanation": "Un Gini mayor indica que el ingreso está más concentrado en pocas manos. No dice nada directo sobre pobreza extrema, carencias o remesas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál de estas frases describe la migración de una comunidad, sin medirla ni explicarla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El 30 % de los hogares recibe remesas"
+        },
+        {
+          "letter": "B",
+          "text": "Se van porque cerró la fábrica del pueblo"
+        },
+        {
+          "letter": "C",
+          "text": "Hay 12 emigrantes por cada 100 habitantes"
+        },
+        {
+          "letter": "D",
+          "text": "Muchos jóvenes se van a trabajar al norte"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Describir no lleva cifras ni razones: solo dice qué pasa y a quién.",
+      "explanation": "Decir que muchos jóvenes se van al norte describe el fenómeno. Los porcentajes y las tasas lo miden, y decir que se van porque cerró la fábrica lo explica."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Según la medición oficial, ¿por qué no basta el ingreso para saber si una persona está en pobreza?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El ingreso no se puede medir con encuestas"
+        },
+        {
+          "letter": "B",
+          "text": "Solo importan las carencias, no el dinero"
+        },
+        {
+          "letter": "C",
+          "text": "Porque el Gini ya incluye el ingreso"
+        },
+        {
+          "letter": "D",
+          "text": "También cuentan sus derechos sociales"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "La medición oficial tiene dos ejes. Uno es el ingreso; ¿cuál es el otro?",
+      "explanation": "La medición multidimensional cruza el ingreso con seis derechos sociales, medidos como carencias. Los dos ejes importan: ni solo dinero ni solo carencias."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En un país, baja la carencia por calidad de la vivienda, pero sube la carencia por acceso a servicios de salud. ¿Qué muestra este caso?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Las dimensiones pueden moverse en sentidos distintos"
+        },
+        {
+          "letter": "B",
+          "text": "Que la medición está mal, pues todo debe subir junto"
+        },
+        {
+          "letter": "C",
+          "text": "Que la vivienda y la salud son la misma carencia social"
+        },
+        {
+          "letter": "D",
+          "text": "Que el país ya no tiene pobreza de ningún tipo"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Cada carencia se mide por separado y puede cambiar por su lado.",
+      "explanation": "Cada carencia es una dimensión distinta y puede mejorar o empeorar por su cuenta. Por eso la medición es multidimensional: un solo número escondería esos cambios."
+    }
+  ],
+  "diagnostic": {
+    "question": "En una región, muchas personas no cubren un mínimo de ingreso ni de derechos sociales. ¿Qué problema social describe?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Desigualdad"
+      },
+      {
+        "letter": "B",
+        "text": "Migración"
+      },
+      {
+        "letter": "C",
+        "text": "Pobreza"
+      },
+      {
+        "letter": "D",
+        "text": "Violencia"
+      }
+    ],
+    "correct_answer": "C",
+    "explanation": "No alcanzar un mínimo de ingreso y de derechos sociales es pobreza. La desigualdad compara cuánto tienen unos frente a otros; la migración es cambiar de residencia y la violencia es causar daño a otros."
+  }
+}
