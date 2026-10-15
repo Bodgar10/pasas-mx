@@ -87,16 +87,21 @@ function renderContent(text: string): React.ReactNode {
       />
     )
   }
-  // Otherwise render markdown bold
+  // Otherwise render markdown bold. pre-line respeta los saltos de línea del
+  // contenido (los ejemplos traen "**Paso 1:** …" en renglones separados).
   const parts = text.split('**')
-  return parts.map((part, i) =>
-    i % 2 === 1 ? (
-      <strong key={i} style={{ fontWeight: 800, color: '#e2d9f3' }}>
-        {part}
-      </strong>
-    ) : (
-      <span key={i}>{part}</span>
-    )
+  return (
+    <span style={{ whiteSpace: 'pre-line' }}>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <strong key={i} style={{ fontWeight: 800, color: '#e2d9f3' }}>
+            {part}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </span>
   )
 }
 
