@@ -97,12 +97,10 @@ Minecraft redstone, Roblox Studio.
 3. No cargues nada a la base, no toques otros archivos.
 
 ## Código y etiquetas (Tecnología 3°: HTML, Python, bases de datos)
-- 🔴 **La app NO respeta saltos de línea ni sangrías** en analogía, explicación, ejemplo, dato y tip: todo
-  se pinta como un solo párrafo (solo entiende `**negritas**`; las comillas invertidas salen tal cual, así que
-  **no uses backticks en ningún lado**: el código va en texto normal o en negritas). Por eso el código va **en línea y corto**,
-  legible en una sola línea: `if vidas > 0: print("Sigue")`, `<h1>Mi página</h1>`. Un bloque de varias
-  líneas se explica por pasos («Paso 3: dentro del if, con sangría de 4 espacios, va print("Ganaste")»),
-  no se pega como bloque.
+- Desde el 15 oct 2026 la app **sí respeta los saltos de línea** (`\n`) en las secciones, pero **no las sangrías**
+  y solo interpreta `**negritas**`; las comillas invertidas salen tal cual, así que **no uses backticks**.
+  El código va en texto normal o en negritas, en línea y corto: `if vidas > 0: print("Sigue")`, `<h1>Mi página</h1>`.
+  Un bloque de varias líneas se explica por pasos («Paso 3: dentro del if, con sangría de 4 espacios, va print("Ganaste")»).
 - 🔴 **Nunca uses `**` para potencias de Python** (choca con las negritas). Usa `pow(2, 3)` o multiplica.
 - En horda y diagnóstico **no hay Markdown**: nada de backticks ni `**`. El código va tal cual en el texto
   (`print(3 + 4)` sin comillas invertidas). Evita guiones bajos dobles (`__`).
