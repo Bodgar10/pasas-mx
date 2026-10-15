@@ -117,6 +117,18 @@ Videojuegos: Brookhaven con los primos, escuadras de Fortnite, Pokémon GO (huev
 Free Fire en el recreo, Among Us 2020, Stardew Valley y JojaMart, mascotas de Roblox, Animal Crossing (Nook Inc.),
 Liga Pokémon de Kanto y Alola, Fortnite y ciberacoso, Discord de Roblox, club de Brawl Stars, encuesta de juego y sueño.
 
+## Escenarios ya usados en Ciencias de la Salud I (no repetir)
+Anime: Chigiri y su rodilla (Blue Lock), Centro Pokémon y Enfermera Joy, brote en el festival de Kaguya-sama,
+Senshi y el estofado (Delicious in Dungeon), Maomao y el pozo (The Apothecary Diaries), Kafka y la memoria de kaiju
+(Kaiju No. 8), Luffy contra Enel (One Piece), Shoko Ieiri y el tabaco (Jujutsu Kaisen), Bocchi en la caja de mangos,
+campamento de vóley con desmayo. Fútbol: rodilla y calentamiento FIFA 11+, lateral lesionado en liga amateur e IMSS,
+lesiones por temporada, desayuno en la visoria, pie de atleta, sarampión antes del torneo, barrera del tiro libre,
+cerveza en Qatar 2022, nervios antes de la final sub-18, Eriksen y la RCP. K-pop: idol que pausa, fan enferma en CDMX
+y Hospital Playlist, gripe tras fan meeting, «dieta de idol», Candybong de TWICE, fanchant de BABYMONSTER y cartilla
+para Corea, plan de comeback y filtración, pijamada con vapeador, trainee Ha-eun, desmayo en la fila y tteokbokki.
+Videojuegos: Silksong y la postura, curación en Zelda TotK, Corrupted Blood, hambre de Minecraft, Plague Inc.,
+infectados en Roblox y Smash (entrenamiento), proteger tu cuenta, deseos de Genshin, Celeste, quemadura en Mario Party.
+
 Ideas frescas que casi no se han usado: Jujutsu Kaisen (sin escenas gráficas), Kaiju No. 8, Oshi no Ko
 (sin el crimen), Pokémon anime, Mob Psycho 100, Sakamoto Days, Bleach, Dragon Ball Daima, Attack on Titan
 (sin violencia); Pumas, Cruz Azul, Tigres, Rayados, Santiago Giménez, Messi en el Inter Miami, Real Madrid,
