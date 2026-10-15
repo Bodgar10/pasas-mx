@@ -1,0 +1,1234 @@
+{
+  "subject": "introduccion-ciencias-sociales",
+  "topic": "investigacion-social-tecnicas-ics",
+  "order_steps": {
+    "prompt": "Ordena las etapas de una investigación social",
+    "steps": [
+      "Elegir el tema que se quiere investigar",
+      "Plantear el problema: pregunta delimitada y objetivos",
+      "Revisar el marco teórico y plantear la hipótesis",
+      "Elegir la técnica y recolectar los datos",
+      "Analizar los datos y redactar las conclusiones"
+    ],
+    "completion_feedback": "Eliges el **tema** y **planteas** el problema; con el **marco teórico** propones una **hipótesis**; eliges la **técnica**, **recolectas** y **analizas** los datos y al final **concluyes**."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El club de anime quiere saber por qué la prepa ve anime",
+        "content": "En la junta del club de anime, Sofi suelta la pregunta: ¿por qué tanta gente de la prepa ve anime? Todos opinan a la vez. Uno dice que por las peleas de Jujutsu Kaisen; otra, que por lo chistoso de Sakamoto Days. Beto propone preguntarles a los del club y ya. Sofi lo frena: «Nosotros ya somos fans; eso no dice nada del resto de la prepa». Además, «¿por qué la gente ve anime?» es una pregunta del tamaño del mundo: nadie sabría por dónde empezar. Entonces la recortan: ¿por qué empezaron a ver anime los alumnos de primer semestre de esta prepa en el último año? Ahora sí saben a quién preguntar. Pero surge otra duda. Si reparten un cuestionario a muchos alumnos, sabrán cuántos ven anime y en qué plataforma; para entender qué los enganchó, en cambio, tendrán que sentarse a platicar con algunos y escuchar sus historias. Una sola curiosidad terminó pidiendo dos herramientas distintas. Convertir una curiosidad en una pregunta que se puede responder, y escoger con qué responderla, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La pregunta del club ES una investigación social",
+        "content": "Lo que acabas de ver con el club es exactamente la **investigación social**: un proceso ordenado para responder preguntas sobre la sociedad. Empieza con el **planteamiento del problema**: una **pregunta clara y delimitada** (quiénes, dónde, cuándo) y **objetivos** (lo que buscas lograr). Con lo que ya se sabe del tema planteas una **hipótesis**: una respuesta tentativa. La **población** son todos los alumnos de primer semestre; la **muestra**, la parte que sí vas a estudiar, y debe parecerse a la población, no solo a tus amigos. Para medir cuántos, usas el enfoque **cuantitativo** (encuesta); para comprender por qué, el **cualitativo** (entrevista a profundidad u observación participante)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — entrevistas sobre el primer anime",
+        "content": "El club decide entrevistar a cinco alumnos para entender qué los enganchó con el anime.\n\n**Paso 1:** Escriben el objetivo: **comprender** cómo empezaron a ver anime alumnos de primer semestre → enfoque **cualitativo**.\n**Paso 2:** Arman una **guía** con preguntas **abiertas**: «¿Cómo fue la primera vez que viste anime?».\n**Paso 3:** Piden **consentimiento**: explican el proyecto, piden permiso para grabar y prometen **anonimato** con nombres cambiados. Como son menores de edad, también piden permiso a sus papás o tutores.\n**Paso 4:** Hacen una entrevista **semiestructurada**: siguen la guía, pero si alguien dice «mi hermano me puso Kaiju No. 8», preguntan más.\n**Paso 5:** Transcriben y buscan los temas que se repiten.\n\nResultado: no saben cuántos, pero sí entienden por qué."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **investigación social** sigue etapas: **planteamiento** (pregunta delimitada y objetivos), **marco teórico** e **hipótesis**, **técnica**, recolección, análisis y conclusiones. **Cuantitativa**: mide con números (**encuesta**). **Cualitativa**: comprende significados (**entrevista a profundidad**, **observación participante**). La **muestra** es la parte de la **población** que estudias."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Fíjate en la pregunta del club: si dice «¿cuántos?» o «¿qué porcentaje?», casi siempre va encuesta (cuantitativo). Si dice «¿cómo lo viven?» o «¿qué significa para ellos?», va entrevista u observación (cualitativo)."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una buena pregunta de investigación dice quiénes, dónde y cuándo, y se puede poner a prueba.",
+        "data": {
+          "intro": "La curiosidad del club es enorme: ¿por qué la gente ve anime? Sigue cómo se vuelve una pregunta que sí se puede investigar.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Delimitas quiénes y dónde: no «la gente», sino los alumnos de primer semestre de tu prepa."
+            },
+            {
+              "text": "Delimitas cuándo: los que empezaron a ver anime en el último año."
+            },
+            {
+              "text": "Escribes el objetivo con un verbo en infinitivo: «Identificar qué los llevó a empezar a ver anime»."
+            },
+            {
+              "text": "Revisas lo que ya se sabe del tema y planteas una hipótesis para ponerla a prueba: «La mayoría empezó por recomendación de amigos o familia»."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Cuantitativo o cualitativo?",
+        "content": "Cuantitativo: mide y cuenta con números. Cualitativo: comprende significados, experiencias y motivos a fondo.",
+        "data": {
+          "prompt": "Arrastra cada idea del club de anime al enfoque que le corresponde.",
+          "buckets": [
+            "Cuantitativo (medir)",
+            "Cualitativo (comprender)"
+          ],
+          "items": [
+            {
+              "t": "¿Cuántos alumnos ven anime cada semana?",
+              "b": 0
+            },
+            {
+              "t": "Porcentaje que ve anime con subtítulos",
+              "b": 0
+            },
+            {
+              "t": "Cuestionario cerrado a 80 alumnos",
+              "b": 0
+            },
+            {
+              "t": "Qué siente un fan al ver su primer anime",
+              "b": 1
+            },
+            {
+              "t": "Platicar a fondo con 5 alumnos",
+              "b": 1
+            },
+            {
+              "t": "Qué significa el club para sus miembros",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte del planteamiento con lo que es en la investigación del club.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Población",
+              "b": "Todos los de 1er semestre"
+            },
+            {
+              "a": "Muestra",
+              "b": "Los 80 que sí encuestan"
+            },
+            {
+              "a": "Hipótesis",
+              "b": "Respuesta tentativa"
+            },
+            {
+              "a": "Objetivo",
+              "b": "Lo que buscas lograr"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia del club?",
+        "left_label": "Club de anime",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "«¿Por qué la gente ve anime?»",
+            "right": "Pregunta sin delimitar"
+          },
+          {
+            "left": "Los alumnos de primer semestre",
+            "right": "Población"
+          },
+          {
+            "left": "Preguntarles solo a los del club",
+            "right": "Muestra sesgada"
+          },
+          {
+            "left": "Platicar a fondo con algunos",
+            "right": "Entrevista"
+          }
+        ],
+        "completion_feedback": "La pregunta inicial estaba **sin delimitar**, los de primer semestre son la **población**, preguntar solo al club da una **muestra sesgada** y platicar a fondo es **entrevista**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "El club quiere saber cuántos alumnos de la prepa ven anime cada semana. ¿Qué enfoque y técnica le convienen?",
+          "options": [
+            { "letter": "A", "text": "Cualitativo, con entrevistas" },
+            { "letter": "B", "text": "Cuantitativo, con encuesta" },
+            { "letter": "C", "text": "Cualitativo, con observación" },
+            { "letter": "D", "text": "Teórico, sin recolectar datos" }
+          ],
+          "correct_answer": "B",
+          "explanation": "«¿Cuántos?» pide medir y contar, y eso es enfoque cuantitativo: un cuestionario aplicado a una muestra amplia. Las entrevistas y la observación sirven para comprender significados, no para contar.",
+          "difficulty": 1
+        },
+        {
+          "question": "El club solo encuesta a sus propios miembros y concluye que «a toda la prepa le encanta el anime». ¿Cuál es el error?",
+          "options": [
+            { "letter": "A", "text": "Debieron usar preguntas abiertas siempre" },
+            { "letter": "B", "text": "La encuesta no sirve para estudiar gustos" },
+            { "letter": "C", "text": "La muestra no representa a la población" },
+            { "letter": "D", "text": "Les faltó escribir el marco teórico antes" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Los del club ya son fans, así que no se parecen al resto de la prepa: es una muestra sesgada. Para concluir sobre la población, la muestra debe incluir alumnos de todos los grupos, vean o no anime.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Cuál es la mejor pregunta de investigación para el club?",
+          "options": [
+            { "letter": "A", "text": "¿Por qué el anime se volvió tan popular entre la juventud de todo el mundo?" },
+            { "letter": "B", "text": "¿Qué llevó a los alumnos de primer semestre de esta prepa a ver anime este año?" },
+            { "letter": "C", "text": "¿Verdad que el anime es mucho mejor que las caricaturas que se hacen en otros países?" },
+            { "letter": "D", "text": "¿Qué anime es mejor, Jujutsu Kaisen o Kaiju No. 8, según los fans de todas partes?" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es la única delimitada: dice quiénes, dónde y cuándo, y se puede responder con datos. La de la juventud de todo el mundo es demasiado amplia, la de «¿Verdad que…?» es sesgada y la que compara dos animes pide un juicio de gusto.",
+          "difficulty": 3
+        },
+        {
+          "question": "En sus entrevistas, el club sigue una guía, pero agrega preguntas cuando alguien cuenta algo interesante. ¿Qué tipo de entrevista es?",
+          "options": [
+            { "letter": "A", "text": "Estructurada" },
+            { "letter": "B", "text": "Semiestructurada" },
+            { "letter": "C", "text": "No participante" },
+            { "letter": "D", "text": "Cuestionario cerrado" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La semiestructurada tiene una guía de preguntas, pero permite agregar otras sobre la marcha. La estructurada sigue preguntas fijas en el mismo orden. «No participante» es un tipo de observación, no de entrevista.",
+          "difficulty": 2
+        },
+        {
+          "question": "La hipótesis del club era que casi todos empezaron por recomendación de amigos, pero varias entrevistas dicen que fue por videos cortos en redes. ¿Qué deben hacer?",
+          "options": [
+            { "letter": "A", "text": "Borrar esas entrevistas para no confundir" },
+            { "letter": "B", "text": "Cambiar la pregunta para que encaje con la hipótesis" },
+            { "letter": "C", "text": "Reportarlo: la hipótesis no se confirmó" },
+            { "letter": "D", "text": "Repetir entrevistas hasta que digan lo esperado" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La hipótesis es una respuesta tentativa que se pone a prueba, no algo que haya que defender. Si los datos la contradicen, se reporta así: eso también es un hallazgo. Borrar o forzar datos sería deshonesto.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "¿Por qué ir al estadio si en la tele se ve mejor?",
+        "content": "Para tu trabajo de Ciencias Sociales te haces una pregunta que te late desde hace tiempo: si en la tele se ven las repeticiones y desde la casa no gastas en boletos, ¿por qué miles de personas van al estadio de Pumas, en Ciudad Universitaria, cada vez que juegan de local? Llegas temprano con tu cuaderno y les preguntas a diez aficionados en la fila. Casi todos te dicen lo mismo con otras palabras: «por el ambiente». Uno agrega que su papá lo traía de niño; otra, que aquí se siente parte de algo. Ya adentro te das cuenta de que «el ambiente» no es tan misterioso: se puede ver. Detrás de una portería, la porra arranca los cánticos siempre igual, alguien marca el ritmo con un bombo, los niños imitan a los grandes y, cuando cae un gol, todo el sector salta al mismo tiempo. Nadie te contó eso en la fila, porque lo hacen sin pensarlo. Te vas con dos libretas distintas: lo que la gente dice y lo que la gente hace. Saber qué herramienta usar para cada pregunta es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Preguntar y mirar SON técnicas de investigación",
+        "content": "Lo que acabas de ver en el estadio es exactamente cómo se **elige la técnica** en una **investigación social**. La **entrevista** es una conversación guiada para conocer **motivos, opiniones y experiencias**: lo que la gente **dice**. Puede ser **estructurada** (preguntas fijas), **semiestructurada** (guía flexible) o **a profundidad** (charla larga y abierta). La **observación** registra de forma sistemática lo que la gente **hace** en su ambiente, con una **guía de observación**; si es muy estructurada, hasta puede contar conductas. Las dos suelen dar datos **cualitativos** y son **fuentes primarias**: los recoges tú. La técnica la decide la **pregunta**, no el gusto del investigador."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la guía para observar a la porra",
+        "content": "Ahora quieres responder: ¿cómo se organiza la porra durante un partido? Diseña la observación.\n\n**Paso 1:** La pregunta es sobre **conductas**, no opiniones → eliges **observación**.\n**Paso 2:** La verás desde otra tribuna, sin cantar ni intervenir → observación **no participante**.\n**Paso 3:** Armas tu **guía de observación**: quién inicia los cánticos, en qué momentos, qué objetos usan (bombo, banderas) y cómo reaccionan a un gol en contra.\n**Paso 4:** Registras con el minuto: «min 34, el del bombo cambia de ritmo y todo el sector lo sigue».\n**Paso 5:** Por **ética**, no publicas fotos de caras ni nombres.\n\nResultado: datos que ninguna encuesta te habría dado."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **investigación social** sigue etapas: **planteamiento** (pregunta delimitada y objetivos), **marco teórico** e **hipótesis**, **técnica**, recolección, análisis y conclusiones. **Cuantitativa**: mide con números (**encuesta**). **Cualitativa**: comprende significados (**entrevista a profundidad**, **observación participante**). La **muestra** es la parte de la **población** que estudias."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Antes de escoger técnica, pregúntate: ¿quiero saber lo que la gente dice o lo que hace? En el estadio, «¿por qué vienes?» se entrevista; «¿cómo se organiza la porra?» se observa."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una entrevista semiestructurada combina una guía con la libertad de repreguntar.",
+        "data": {
+          "intro": "Vas a entrevistar a un aficionado de Pumas en la fila. Sigue los pasos de una entrevista semiestructurada bien hecha.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Te presentas, explicas que es una tarea escolar y le preguntas si acepta participar: eso es consentimiento."
+            },
+            {
+              "text": "Le avisas que no usarás su nombre: anonimato. Así contesta con más confianza."
+            },
+            {
+              "text": "Sigues tu guía con preguntas abiertas: «¿Desde cuándo vienes al estadio y por qué?»."
+            },
+            {
+              "text": "Si dice «por mi papá», sales de la guía y repreguntas: «¿Qué recuerdas de esas veces?»."
+            },
+            {
+              "text": "Al terminar anotas sus palabras textuales, para analizarlas después junto con las de los demás."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Entrevista u observación?",
+        "content": "Entrevista: motivos, opiniones y recuerdos, lo que la gente dice. Observación: conductas, lo que la gente hace.",
+        "data": {
+          "prompt": "Arrastra cada cosa que quieres saber del estadio a la técnica que le conviene.",
+          "buckets": [
+            "Entrevista (lo que dicen)",
+            "Observación (lo que hacen)"
+          ],
+          "items": [
+            {
+              "t": "Por qué un aficionado compra abono",
+              "b": 0
+            },
+            {
+              "t": "Qué significa el equipo para una familia",
+              "b": 0
+            },
+            {
+              "t": "Qué recuerda alguien de su primer partido",
+              "b": 0
+            },
+            {
+              "t": "Cuándo arranca la porra cada cántico",
+              "b": 1
+            },
+            {
+              "t": "Cómo se acomodan las familias en la tribuna",
+              "b": 1
+            },
+            {
+              "t": "Qué hace el sector al caer un gol en contra",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada tipo de entrevista o instrumento con lo que lo distingue.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Estructurada",
+              "b": "Preguntas fijas y en orden"
+            },
+            {
+              "a": "Semiestructurada",
+              "b": "Base fija con repreguntas"
+            },
+            {
+              "a": "A profundidad",
+              "b": "Charla larga y abierta"
+            },
+            {
+              "a": "Guía de observación",
+              "b": "Lista de qué registrar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de tu día en el estadio?",
+        "left_label": "Día de estadio",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Preguntar en la fila por qué vienen",
+            "right": "Entrevista"
+          },
+          {
+            "left": "Mirar cómo la porra arranca cánticos",
+            "right": "Observación"
+          },
+          {
+            "left": "Los diez aficionados de la fila",
+            "right": "Muestra"
+          },
+          {
+            "left": "Todos los que van a los partidos de Pumas",
+            "right": "Población"
+          }
+        ],
+        "completion_feedback": "Preguntar es **entrevista**, mirar a la porra es **observación**, los diez aficionados son tu **muestra** y todos los que van al estadio, la **población**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Quieres saber por qué una aficionada va al estadio desde niña. ¿Qué técnica te conviene?",
+          "options": [
+            { "letter": "A", "text": "Una observación" },
+            { "letter": "B", "text": "Un conteo de boletos" },
+            { "letter": "C", "text": "Una entrevista" },
+            { "letter": "D", "text": "Una tabla de posiciones" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Los motivos y recuerdos de una persona se conocen preguntándole: entrevista. Observarla te diría qué hace en el estadio, pero no por qué empezó a ir.",
+          "difficulty": 1
+        },
+        {
+          "question": "Observas a la porra desde otra tribuna, sin cantar ni intervenir. ¿Qué tipo de observación es?",
+          "options": [
+            { "letter": "A", "text": "Participante" },
+            { "letter": "B", "text": "No participante" },
+            { "letter": "C", "text": "Entrevista estructurada" },
+            { "letter": "D", "text": "Encuesta de campo" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Observas sin integrarte al grupo ni intervenir: es no participante. En la participante el investigador se une al grupo, por ejemplo cantando con la porra. Una entrevista implicaría hablar con ellos.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu pregunta es «¿cómo cambia el comportamiento de la porra cuando su equipo va perdiendo?». ¿Por qué conviene más observar que entrevistar?",
+          "options": [
+            { "letter": "A", "text": "Porque así no hace falta una pregunta de investigación" },
+            { "letter": "B", "text": "Porque registra lo que hacen, no lo que dicen" },
+            { "letter": "C", "text": "Porque observar da números exactos para porcentajes" },
+            { "letter": "D", "text": "Porque la entrevista está prohibida dentro del estadio" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La pregunta es sobre conductas en el momento, y la gente no siempre nota ni recuerda cómo actúa. Por eso se observa. La observación también necesita pregunta y guía, y aquí no se buscan porcentajes, sino cómo cambia la conducta.",
+          "difficulty": 3
+        },
+        {
+          "question": "Entrevistas a diez aficionados con las mismas preguntas, en el mismo orden y sin agregar nada. ¿Qué tipo de entrevista es?",
+          "options": [
+            { "letter": "A", "text": "Semiestructurada" },
+            { "letter": "B", "text": "A profundidad" },
+            { "letter": "C", "text": "No participante" },
+            { "letter": "D", "text": "Estructurada" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Mismas preguntas, mismo orden y sin salirse del guion: entrevista estructurada. La semiestructurada permite repreguntar y la de profundidad es una charla larga y abierta.",
+          "difficulty": 2
+        },
+        {
+          "question": "Para tu trabajo usas una nota de un periódico deportivo y tus propias entrevistas en la fila. ¿Qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "Las dos son fuentes primarias porque hablan del estadio" },
+            { "letter": "B", "text": "Tus entrevistas son primarias y la nota es secundaria" },
+            { "letter": "C", "text": "La nota es primaria porque la escribió un periodista experto" },
+            { "letter": "D", "text": "Ninguna cuenta como fuente, porque ninguna es un libro" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una fuente primaria son datos que recoges tú directamente, como tus entrevistas. La nota del periódico es secundaria: alguien más ya recogió y procesó esa información. Las dos sirven si se citan.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Tu tarea empezó en el dance cover de la explanada",
+        "content": "Cada sábado, en la explanada de un centro cultural, un grupo de dance cover ensaya coreografías de K-pop y siempre hay gente mirando. Para tu proyecto de Ciencias Sociales decides entenderlos desde dentro: les explicas que es para una tarea, aceptan, y te unes a aprender «WANNABE» de ITZY. Al principio solo piensas en no perderte en el coro, pero pronto notas cosas que nadie te dijo. Los nuevos siempre ensayan en la última fila. La líder decide quién pasa adelante, y nadie le discute. Antes de grabar un video, todos preguntan si alguien no quiere salir. Cuando una chica se equivoca, el grupo aplaude igual al terminar. Esas reglas no están escritas en ningún lado, y si les mandaras un cuestionario, probablemente nadie las mencionaría, porque las viven sin pensarlo. Al llegar a tu casa escribes todo en una libreta antes de que se te olvide. Estudiar a un grupo metiéndote en él, sin dejar de ser investigadora, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Bailar con el grupo ES observación participante",
+        "content": "Lo que acabas de ver en el dance cover es exactamente la **observación participante**: el investigador se **integra** al grupo que estudia para comprender sus normas, roles y significados **desde dentro**. Un referente es el antropólogo **Bronisław Malinowski**, que convivió con los habitantes de las **islas Trobriand** y lo publicó en **Los argonautas del Pacífico occidental (1922)**. Es una técnica **cualitativa**: no mide cuántos, comprende cómo y por qué. Lo observado se anota en un **diario de campo**. En la **no participante**, en cambio, miras desde fuera sin intervenir. La ética pide que el grupo sepa que lo estudias y lo acepte: **consentimiento**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ONCE organiza una proyección en el cine",
+        "content": "Un cine de tu ciudad proyectará un concierto de TWICE y un grupo de ONCE quiere apartar una sala completa, con regalitos en cada asiento. Diseña la investigación.\n\n**Paso 1:** Antes de salir a campo, lees estudios sobre fandoms → **fuentes secundarias** para tu **marco teórico**.\n**Paso 2:** Delimitas la pregunta: ¿cómo se reparten las tareas las ONCE de este grupo para la proyección?\n**Paso 3:** Pides permiso al grupo y, como varias son menores de edad, también a sus papás o tutores. Te unes como voluntaria → **observación participante** con **consentimiento**.\n**Paso 4:** Usas una **guía de observación**: quién decide, quién compra los boletos, quién arma los regalitos, qué pasa si alguien no cumple.\n**Paso 5:** En tu **diario de campo** usas seudónimos → **anonimato**.\n\nResultado: tus notas son **fuente primaria**."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **investigación social** sigue etapas: **planteamiento** (pregunta delimitada y objetivos), **marco teórico** e **hipótesis**, **técnica**, recolección, análisis y conclusiones. **Cuantitativa**: mide con números (**encuesta**). **Cualitativa**: comprende significados (**entrevista a profundidad**, **observación participante**). La **muestra** es la parte de la **población** que estudias."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Para no confundirlas: en la observación participante bailas con el grupo; en la no participante solo lo miras desde la banca. Las dos necesitan una guía de qué registrar y un diario de campo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La observación participante va del permiso del grupo a las conclusiones, pasando por el diario de campo.",
+        "data": {
+          "intro": "Te uniste al dance cover para tu proyecto. Sigue cómo avanza una observación participante de principio a fin.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Pides permiso a la líder y al grupo, y les explicas que es para una tarea: consentimiento."
+            },
+            {
+              "text": "Ensayas con ellos, pero con tu guía en mente: roles, reglas y cómo se resuelven los errores."
+            },
+            {
+              "text": "Al llegar a casa escribes tu diario de campo con fecha, lugar y lo que viste, sin nombres reales."
+            },
+            {
+              "text": "Después de varios sábados comparas tus notas y buscas lo que se repite: las reglas no escritas."
+            },
+            {
+              "text": "Concluyes: el grupo tiene una jerarquía clara y a los nuevos se les integra poco a poco."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Participante o no participante?",
+        "content": "Participante: te integras al grupo y haces lo que hace. No participante: observas desde fuera, sin intervenir.",
+        "data": {
+          "prompt": "Arrastra cada forma de estudiar a un grupo de fans de K-pop a su tipo de observación.",
+          "buckets": [
+            "Participante",
+            "No participante"
+          ],
+          "items": [
+            {
+              "t": "Bailas «WANNABE» con el grupo y anotas",
+              "b": 0
+            },
+            {
+              "t": "Armas regalitos con ONCE para la proyección",
+              "b": 0
+            },
+            {
+              "t": "Ensayas cada sábado en la última fila",
+              "b": 0
+            },
+            {
+              "t": "Los miras ensayar desde una banca",
+              "b": 1
+            },
+            {
+              "t": "Cuentas desde lejos cuántos se acercan",
+              "b": 1
+            },
+            {
+              "t": "Registras desde fuera quién da órdenes",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de la observación con su par.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Observación participante",
+              "b": "Te integras al grupo"
+            },
+            {
+              "a": "Diario de campo",
+              "b": "Notas tras cada visita"
+            },
+            {
+              "a": "Malinowski",
+              "b": "Islas Trobriand"
+            },
+            {
+              "a": "Consentimiento",
+              "b": "Aceptar ser estudiado"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de tu sábado de dance cover?",
+        "left_label": "Dance cover",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Unirte a ensayar «WANNABE» con ellos",
+            "right": "Observación participante"
+          },
+          {
+            "left": "Avisarles que es para una tarea",
+            "right": "Consentimiento"
+          },
+          {
+            "left": "La libreta que llenas al llegar a casa",
+            "right": "Diario de campo"
+          },
+          {
+            "left": "Los nuevos ensayan en la última fila",
+            "right": "Hallazgo cualitativo"
+          }
+        ],
+        "completion_feedback": "Unirte al grupo es **observación participante**, avisar es pedir **consentimiento**, tu libreta es el **diario de campo** y las reglas que descubres son **hallazgos cualitativos**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Te unes a un grupo de dance cover para estudiar cómo se organiza. ¿Qué técnica usas?",
+          "options": [
+            { "letter": "A", "text": "Observación no participante" },
+            { "letter": "B", "text": "Observación participante" },
+            { "letter": "C", "text": "Encuesta con cuestionario" },
+            { "letter": "D", "text": "Revisión de fuentes secundarias" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Integrarte al grupo para estudiarlo desde dentro es observación participante. Si solo los miraras desde fuera sin intervenir, sería no participante.",
+          "difficulty": 1
+        },
+        {
+          "question": "Al unirte al dance cover haces algo parecido a lo que hizo Malinowski en las islas Trobriand. ¿Qué hizo él?",
+          "options": [
+            { "letter": "A", "text": "Les aplicó un cuestionario cerrado" },
+            { "letter": "B", "text": "Estudió solo libros sobre ellos" },
+            { "letter": "C", "text": "Convivió con sus habitantes" },
+            { "letter": "D", "text": "Los observó con binoculares desde un barco" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Malinowski vivió entre los trobriandeses, aprendió su lengua y participó en su vida diaria; lo contó en Los argonautas del Pacífico occidental (1922). Por eso es referente de la observación participante.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una amiga te dice: «Mejor mándales un cuestionario y ya». ¿Por qué la observación participante sirve más para descubrir las reglas no escritas del grupo?",
+          "options": [
+            { "letter": "A", "text": "Porque el cuestionario solo funciona con grupos muy grandes" },
+            { "letter": "B", "text": "Porque observar da porcentajes más exactos que preguntar" },
+            { "letter": "C", "text": "Porque los grupos de baile no aceptan contestar encuestas" },
+            { "letter": "D", "text": "Porque se viven sin pensarlas y se notan al convivir" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Las reglas no escritas, como que los nuevos ensayan atrás, se practican sin pensarlas, así que casi nadie las mencionaría en un cuestionario. Conviviendo con el grupo, el investigador las ve en acción.",
+          "difficulty": 3
+        },
+        {
+          "question": "Después de cada ensayo escribes lo que viste, con fecha y lugar. ¿Cómo se llama ese registro?",
+          "options": [
+            { "letter": "A", "text": "Diario de campo" },
+            { "letter": "B", "text": "Marco teórico del tema" },
+            { "letter": "C", "text": "Cuestionario abierto" },
+            { "letter": "D", "text": "Fuente secundaria" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El diario de campo es la libreta donde el investigador registra lo que observa, con fecha y lugar, lo antes posible. El marco teórico reúne estudios previos, y las fuentes secundarias son información elaborada por otros.",
+          "difficulty": 2
+        },
+        {
+          "question": "En tu reporte quieres contar que una integrante lloró tras equivocarse en una presentación. ¿Qué es lo ético?",
+          "options": [
+            { "letter": "A", "text": "Poner su nombre real para que el dato sea creíble" },
+            { "letter": "B", "text": "Usar un seudónimo y omitir datos que la delaten" },
+            { "letter": "C", "text": "Subir el video del momento para que se entienda mejor" },
+            { "letter": "D", "text": "Contarlo con su usuario de redes, que ya es público" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El anonimato protege a quien participa: se usa un seudónimo y se omiten datos que la identifiquen. Su nombre, su usuario o un video la expondrían, aunque el dato sea verdadero.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "La encuesta de videojuegos y sueño que salió chueca",
+        "content": "Tu equipo quiere saber si jugar de noche les quita horas de sueño a los alumnos de la prepa. Arman un formulario en línea en diez minutos y lo mandan al servidor de Discord donde juegan Minecraft. La primera pregunta dice: «¿No crees que jugar hasta tarde es malo para tu salud?». La segunda: «¿Juegas en consola y en celular?». La tercera: «¿Juegas mucho?». Llegan 40 respuestas y el 85% contesta que sí, que jugar tarde es malo. Celebran… hasta que la maestra de Ciencias Sociales revisa el formulario. Les pregunta cómo contesta alguien que juega en consola pero no en celular, qué significa «mucho» para cada quien y por qué todos los que respondieron juegan en el mismo servidor. El resultado no dice nada sobre la prepa: dice cómo escribieron las preguntas y a quién se las mandaron. Hacer una encuesta que de verdad mida lo que quieres medir es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El formulario ES una encuesta, y tenía errores",
+        "content": "Lo que acabas de ver con el formulario es exactamente el diseño de una **encuesta**, la técnica **cuantitativa** que aplica las mismas preguntas a una **muestra** para medir y comparar. Su instrumento es el **cuestionario**. Las preguntas **cerradas** dan opciones fijas y se cuentan fácil; las **abiertas** dejan responder libre y dan más detalle. Errores típicos: la pregunta **sesgada** (empuja una respuesta), la **doble** (pregunta dos cosas en una) y la **ambigua** (cada quien la entiende distinto). Y si la muestra no **representa** a la **población**, el resultado no se puede generalizar."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el cuestionario, corregido",
+        "content": "El equipo rehace su encuesta sobre videojuegos y sueño.\n\n**Paso 1:** **Población**: los 400 alumnos de primer semestre. **Muestra**: 80, sorteados de todos los grupos y turnos, jueguen o no.\n**Paso 2:** La pregunta sesgada se vuelve neutral: «¿A qué hora te dormiste anoche?».\n**Paso 3:** La pregunta doble se parte en dos: «¿Juegas en consola?» y «¿Juegas en celular?».\n**Paso 4:** La ambigua se vuelve **cerrada** con rangos: «Ayer jugaste: nada / menos de 1 h / de 1 a 2 h / más de 2 h».\n**Paso 5:** Al final, una pregunta **abierta** opcional y un aviso: la encuesta es **anónima** y voluntaria.\n\nResultado: datos que sí se pueden contar y comparar."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **investigación social** sigue etapas: **planteamiento** (pregunta delimitada y objetivos), **marco teórico** e **hipótesis**, **técnica**, recolección, análisis y conclusiones. **Cuantitativa**: mide con números (**encuesta**). **Cualitativa**: comprende significados (**entrevista a profundidad**, **observación participante**). La **muestra** es la parte de la **población** que estudias."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Revisa cada pregunta como si buscaras bugs: ¿empuja una respuesta? Sesgada. ¿Lleva una «y» que junta dos temas? Doble. ¿Usa palabras como «mucho» que cada quien entiende distinto? Ambigua."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada corrección hace más confiable la encuesta.",
+        "data": {
+          "intro": "El medidor muestra qué tan confiable es la encuesta de videojuegos y sueño. Empieza muy bajo. Sigue cada corrección.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Cambian «¿No crees que jugar tarde es malo?» por «¿A qué hora te dormiste anoche?».",
+              "delta": 20
+            },
+            {
+              "text": "Parten «¿Juegas en consola y en celular?» en dos preguntas separadas.",
+              "delta": 15
+            },
+            {
+              "text": "Cambian «¿Juegas mucho?» por rangos de horas: así todos entienden lo mismo.",
+              "delta": 15
+            },
+            {
+              "text": "Mandan la encuesta a una muestra sorteada de todos los grupos y turnos, no solo al Discord.",
+              "delta": 30
+            },
+            {
+              "text": "Agregan el aviso de que es anónima y voluntaria. ¡Encuesta lista!",
+              "delta": 10
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Bien hecha o con error?",
+        "content": "Bien hecha: neutral, clara y sobre una sola cosa. Sesgada: empuja hacia una respuesta. Doble: pregunta dos cosas a la vez.",
+        "data": {
+          "prompt": "Arrastra cada pregunta de la encuesta gamer a su categoría.",
+          "buckets": [
+            "Bien hecha",
+            "Sesgada",
+            "Doble"
+          ],
+          "items": [
+            {
+              "t": "¿A qué hora te dormiste anoche?",
+              "b": 0
+            },
+            {
+              "t": "¿Cuántas horas jugaste ayer?",
+              "b": 0
+            },
+            {
+              "t": "¿Verdad que jugar de noche te quita sueño?",
+              "b": 1
+            },
+            {
+              "t": "¿No crees que los videojuegos son adictivos?",
+              "b": 1
+            },
+            {
+              "t": "¿Juegas y cenas en tu cuarto?",
+              "b": 2
+            },
+            {
+              "t": "¿Juegas en línea y con audífonos?",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada tipo de pregunta de cuestionario con lo que la distingue.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Pregunta cerrada",
+              "b": "Opciones fijas"
+            },
+            {
+              "a": "Pregunta abierta",
+              "b": "Respuesta libre"
+            },
+            {
+              "a": "Pregunta sesgada",
+              "b": "Empuja una respuesta"
+            },
+            {
+              "a": "Pregunta doble",
+              "b": "Dos temas en una"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué error es cada parte del formulario gamer?",
+        "left_label": "Formulario gamer",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "«¿No crees que jugar tarde es malo?»",
+            "right": "Pregunta sesgada"
+          },
+          {
+            "left": "«¿Juegas en consola y en celular?»",
+            "right": "Pregunta doble"
+          },
+          {
+            "left": "«¿Juegas mucho?»",
+            "right": "Pregunta ambigua"
+          },
+          {
+            "left": "Solo jugadores del mismo Discord",
+            "right": "Muestra no representativa"
+          }
+        ],
+        "completion_feedback": "Tu formulario tenía una pregunta **sesgada**, una **doble**, una **ambigua** y una **muestra no representativa**. Ahora ponle nombre formal a cómo se diseña bien una encuesta."
+      },
+      "quiz": [
+        {
+          "question": "La encuesta de tu equipo sobre videojuegos y sueño usa una lista de preguntas escritas que todos contestan igual. ¿Cómo se llama ese instrumento?",
+          "options": [
+            { "letter": "A", "text": "Guía de observación" },
+            { "letter": "B", "text": "Diario de campo" },
+            { "letter": "C", "text": "Marco teórico" },
+            { "letter": "D", "text": "Cuestionario" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La encuesta es la técnica y el cuestionario es su instrumento: la lista de preguntas que todos contestan igual. La guía de observación y el diario de campo pertenecen a la observación.",
+          "difficulty": 1
+        },
+        {
+          "question": "«¿Verdad que jugar de noche te quita horas de sueño?» es una pregunta…",
+          "options": [
+            { "letter": "A", "text": "Abierta" },
+            { "letter": "B", "text": "Sesgada" },
+            { "letter": "C", "text": "Doble" },
+            { "letter": "D", "text": "Neutral" }
+          ],
+          "correct_answer": "B",
+          "explanation": "«¿Verdad que…?» empuja a contestar que sí: es sesgada. Una versión neutral preguntaría a qué hora se durmió y cuánto jugó, para luego comparar.",
+          "difficulty": 2
+        },
+        {
+          "question": "Imagina que el formulario, mandado solo al Discord de Minecraft del equipo, muestra que el 85% juega de noche. ¿Qué se puede concluir sobre toda la prepa?",
+          "options": [
+            { "letter": "A", "text": "Que el 85% de la prepa juega de noche" },
+            { "letter": "B", "text": "Que la encuesta salió bien porque hubo muchas respuestas" },
+            { "letter": "C", "text": "Nada seguro: la muestra no la representa" },
+            { "letter": "D", "text": "Que solo los de Minecraft duermen poco" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Todos los encuestados juegan en el mismo servidor, así que no se parecen al resto de la prepa. Una muestra que no representa a la población no permite generalizar, por muchas respuestas que tenga.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Cuál es la ventaja de usar preguntas cerradas en tu encuesta sobre videojuegos?",
+          "options": [
+            { "letter": "A", "text": "Dan respuestas más detalladas" },
+            { "letter": "B", "text": "Permiten contestar con libertad" },
+            { "letter": "C", "text": "Evitan que la muestra esté sesgada" },
+            { "letter": "D", "text": "Se cuentan y comparan fácil" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Las cerradas dan opciones fijas, así que las respuestas se cuentan y se vuelven porcentajes. El detalle y la libertad son ventajas de las abiertas, y ninguna pregunta arregla una muestra mal elegida.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una pregunta dice «¿Juegas en consola y te desvelas?». Un alumno juega solo en celular y sí se desvela. ¿Cuál es el problema de la pregunta?",
+          "options": [
+            { "letter": "A", "text": "Es doble: junta dos temas" },
+            { "letter": "B", "text": "Es abierta: no tiene opciones" },
+            { "letter": "C", "text": "Es sesgada: empuja a decir que sí" },
+            { "letter": "D", "text": "Es neutral: no tiene ningún error" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Junta dos cosas en una: jugar en consola y desvelarse. Quien solo cumple una no sabe si contestar sí o no. Se arregla partiéndola en dos preguntas.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama la parte de la población que de verdad se estudia en una investigación?",
+      "options": [
+        { "letter": "A", "text": "Hipótesis" },
+        { "letter": "B", "text": "Muestra" },
+        { "letter": "C", "text": "Universo" },
+        { "letter": "D", "text": "Variable" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es como probar una cucharada para saber cómo está toda la sopa.",
+      "explanation": "La muestra es el subconjunto de la población que se estudia. La población, también llamada universo, es el total de casos sobre los que se quiere concluir."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es una hipótesis?",
+      "options": [
+        { "letter": "A", "text": "Un dato que ya se comprobó como cierto" },
+        { "letter": "B", "text": "La lista de preguntas de una encuesta" },
+        { "letter": "C", "text": "Una respuesta tentativa a la pregunta" },
+        { "letter": "D", "text": "El resumen de los estudios anteriores" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es lo que crees que vas a encontrar, antes de comprobarlo.",
+      "explanation": "La hipótesis es una respuesta tentativa a la pregunta de investigación, que se pone a prueba con datos. La lista de preguntas es el cuestionario y el resumen de estudios previos es el marco teórico."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué instrumento se usa para aplicar una encuesta?",
+      "options": [
+        { "letter": "A", "text": "El diario de campo" },
+        { "letter": "B", "text": "La guía de observación" },
+        { "letter": "C", "text": "La entrevista a profundidad" },
+        { "letter": "D", "text": "El cuestionario" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es una lista de preguntas escritas que todos contestan igual.",
+      "explanation": "La encuesta usa un cuestionario: las mismas preguntas para todos. El diario de campo y la guía de observación son instrumentos de la observación."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué caracteriza al enfoque cuantitativo?",
+      "options": [
+        { "letter": "A", "text": "Mide y analiza datos numéricos" },
+        { "letter": "B", "text": "Interpreta significados y vivencias" },
+        { "letter": "C", "text": "Usa solo libros y documentos antiguos" },
+        { "letter": "D", "text": "Estudia a pocas personas a profundidad" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en la palabra: cuanti- viene de cantidad.",
+      "explanation": "El enfoque cuantitativo mide, cuenta y usa estadística para comparar y generalizar. Interpretar significados y estudiar a pocas personas a fondo es propio del enfoque cualitativo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En la observación participante, el investigador…",
+      "options": [
+        { "letter": "A", "text": "Mira desde fuera sin intervenir" },
+        { "letter": "B", "text": "Se integra al grupo que estudia" },
+        { "letter": "C", "text": "Aplica un cuestionario cerrado" },
+        { "letter": "D", "text": "Lee lo que otros escribieron del grupo" }
+      ],
+      "correct_answer": "B",
+      "hint": "El nombre lo dice: el investigador participa.",
+      "explanation": "En la observación participante el investigador se integra al grupo y comparte sus actividades para entenderlo desde dentro. Mirar desde fuera sin intervenir es observación no participante."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una pregunta abierta en un cuestionario?",
+      "options": [
+        { "letter": "A", "text": "Deja responder con palabras propias" },
+        { "letter": "B", "text": "Ofrece opciones fijas para escoger" },
+        { "letter": "C", "text": "Empuja al encuestado hacia una respuesta" },
+        { "letter": "D", "text": "Pregunta dos cosas distintas a la vez" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en una pregunta que no trae opciones para marcar.",
+      "explanation": "La pregunta abierta deja que la persona conteste libremente. La que ofrece opciones fijas es cerrada; la que empuja una respuesta es sesgada y la que junta dos cosas es doble."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una fuente primaria en una investigación social?",
+      "options": [
+        { "letter": "A", "text": "Un libro que resume otras investigaciones" },
+        { "letter": "B", "text": "Datos recogidos por el propio investigador" },
+        { "letter": "C", "text": "Una enciclopedia o un artículo de divulgación" },
+        { "letter": "D", "text": "La primera página que sale en un buscador" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es información de primera mano: nadie la procesó antes que tú.",
+      "explanation": "Una fuente primaria es información de primera mano, como tus encuestas, entrevistas u observaciones. Los libros, enciclopedias y artículos que resumen lo que otros investigaron son fuentes secundarias."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué caracteriza al enfoque cualitativo?",
+      "options": [
+        { "letter": "A", "text": "Mide todo en porcentajes" },
+        { "letter": "B", "text": "Usa muestras muy grandes al azar" },
+        { "letter": "C", "text": "Busca comprender significados" },
+        { "letter": "D", "text": "Solo trabaja con estadísticas" }
+      ],
+      "correct_answer": "C",
+      "hint": "Cuali- viene de cualidad: cómo es algo, no cuánto hay.",
+      "explanation": "El enfoque cualitativo busca comprender significados, experiencias y motivos, por lo general con pocas personas y a profundidad. Los porcentajes, las estadísticas y las muestras grandes al azar son propios del cuantitativo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la observación no participante?",
+      "options": [
+        { "letter": "A", "text": "Vivir con el grupo y hacer lo que hace" },
+        { "letter": "B", "text": "Observar sin integrarse ni intervenir" },
+        { "letter": "C", "text": "Preguntar a cada miembro por su vida" },
+        { "letter": "D", "text": "Revisar videos y libros sobre el grupo" }
+      ],
+      "correct_answer": "B",
+      "hint": "El investigador mira, pero no forma parte del grupo.",
+      "explanation": "En la observación no participante el investigador registra lo que pasa desde fuera, sin unirse al grupo ni intervenir. Vivir con el grupo y hacer lo que hace es observación participante."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué significa que una encuesta sea anónima?",
+      "options": [
+        { "letter": "A", "text": "Nadie sabe para qué es el estudio" },
+        { "letter": "B", "text": "Solo la contestan los amigos" },
+        { "letter": "C", "text": "Las respuestas no se analizan" },
+        { "letter": "D", "text": "No se registra quién contestó" }
+      ],
+      "correct_answer": "D",
+      "hint": "Tiene que ver con proteger la identidad de quien responde.",
+      "explanation": "El anonimato protege la identidad de los participantes: no se registra quién respondió. Así la gente contesta con más sinceridad. Las respuestas sí se analizan, solo que sin nombres."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué distingue a la entrevista semiestructurada?",
+      "options": [
+        { "letter": "A", "text": "Usa preguntas fijas en el mismo orden" },
+        { "letter": "B", "text": "Es una charla libre, sin ninguna guía" },
+        { "letter": "C", "text": "Tiene guía y admite repreguntas" },
+        { "letter": "D", "text": "Se responde por escrito y sin hablar" }
+      ],
+      "correct_answer": "C",
+      "hint": "Está a medio camino entre la estructurada y la de profundidad.",
+      "explanation": "La semiestructurada tiene una guía de preguntas, pero el entrevistador puede agregar otras según lo que responda la persona. Las preguntas fijas en orden son de la estructurada."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es el consentimiento informado?",
+      "options": [
+        { "letter": "A", "text": "Firmar que las respuestas serán públicas" },
+        { "letter": "B", "text": "Aceptar participar sabiendo de qué trata" },
+        { "letter": "C", "text": "Pedirle al maestro que apruebe el tema" },
+        { "letter": "D", "text": "Aceptar que se publique tu nombre real" }
+      ],
+      "correct_answer": "B",
+      "hint": "La persona decide si participa, pero primero necesita saber algo.",
+      "explanation": "Es aceptar participar después de saber el objetivo del estudio y qué se hará con los datos, con libertad de retirarse. Si el participante es menor de edad, también se pide permiso a sus padres o tutores."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es la diferencia entre encuesta y cuestionario?",
+      "options": [
+        { "letter": "A", "text": "Son sinónimos: las dos palabras significan lo mismo" },
+        { "letter": "B", "text": "Encuesta es la técnica; cuestionario, el instrumento" },
+        { "letter": "C", "text": "La encuesta es oral y el cuestionario siempre es escrito" },
+        { "letter": "D", "text": "El cuestionario es cualitativo y la encuesta cuantitativa" }
+      ],
+      "correct_answer": "B",
+      "hint": "Una es el método para obtener datos; el otro, la herramienta con que lo haces.",
+      "explanation": "La encuesta es la técnica: preguntar lo mismo a una muestra. El cuestionario es el instrumento: la lista de preguntas. No son de enfoques distintos, y la encuesta puede aplicarse en papel, en línea o en voz alta."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué hace que una pregunta de investigación esté delimitada?",
+      "options": [
+        { "letter": "A", "text": "Abarca a todas las personas del mundo" },
+        { "letter": "B", "text": "Sugiere la respuesta que se espera encontrar" },
+        { "letter": "C", "text": "Precisa a quién, dónde y cuándo se estudia" },
+        { "letter": "D", "text": "Tiene como máximo cinco palabras de largo" }
+      ],
+      "correct_answer": "C",
+      "hint": "Delimitar es ponerle límites al estudio.",
+      "explanation": "Una pregunta delimitada fija la población, el lugar y el periodo, así se puede responder con datos. Abarcar a todo el mundo la vuelve imposible y sugerir la respuesta la vuelve sesgada."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Para qué sirve el marco teórico de una investigación?",
+      "options": [
+        { "letter": "A", "text": "Para escoger a los encuestados al azar" },
+        { "letter": "B", "text": "Para reunir conceptos y estudios previos" },
+        { "letter": "C", "text": "Para anotar lo observado cada día en campo" },
+        { "letter": "D", "text": "Para presentar los resultados finales" }
+      ],
+      "correct_answer": "B",
+      "hint": "Antes de salir a campo, revisas lo que otros ya dijeron del tema.",
+      "explanation": "El marco teórico reúne los conceptos, teorías y estudios previos que sustentan la investigación. Escoger encuestados es el muestreo y anotar lo observado es el diario de campo."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una investigadora quiere saber qué porcentaje de jóvenes de su colonia trabaja y estudia a la vez. ¿Qué técnica le conviene?",
+      "options": [
+        { "letter": "A", "text": "Observación participante" },
+        { "letter": "B", "text": "Una encuesta" },
+        { "letter": "C", "text": "Entrevista a profundidad" },
+        { "letter": "D", "text": "Revisión del marco teórico" }
+      ],
+      "correct_answer": "B",
+      "hint": "La palabra porcentaje te dice qué enfoque necesitas.",
+      "explanation": "Un porcentaje se obtiene contando, y eso pide una encuesta aplicada a una muestra: enfoque cuantitativo. La observación participante y la entrevista a profundidad sirven para comprender, no para contar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "«¿Te gusta leer y hacer ejercicio?» es una mala pregunta de encuesta porque…",
+      "options": [
+        { "letter": "A", "text": "Pregunta dos cosas a la vez" },
+        { "letter": "B", "text": "Empuja al encuestado a responder que sí" },
+        { "letter": "C", "text": "Deja responder con palabras propias" },
+        { "letter": "D", "text": "Usa palabras muy técnicas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Imagina a alguien a quien le encanta leer pero odia el ejercicio.",
+      "explanation": "Es una pregunta doble: junta dos temas, y quien solo cumple uno no sabe qué contestar. Se corrige separándola en dos preguntas."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál de estas preguntas de encuesta es sesgada?",
+      "options": [
+        { "letter": "A", "text": "¿A qué hora entras a clases?" },
+        { "letter": "B", "text": "¿Cuántas materias llevas este semestre?" },
+        { "letter": "C", "text": "¿No crees que el horario es injusto?" },
+        { "letter": "D", "text": "¿Cómo llegas a la escuela cada día?" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca la pregunta que ya trae una opinión metida.",
+      "explanation": "«¿No crees que…?» empuja a estar de acuerdo con que el horario es injusto: es sesgada. Las otras preguntan datos de forma neutral."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una muestra se elige por sorteo entre todos los alumnos de una escuela. ¿Qué se busca con eso?",
+      "options": [
+        { "letter": "A", "text": "Que sean solo los más participativos" },
+        { "letter": "B", "text": "Que la hipótesis salga confirmada" },
+        { "letter": "C", "text": "Que la encuesta sea cualitativa" },
+        { "letter": "D", "text": "Que represente a la población" }
+      ],
+      "correct_answer": "D",
+      "hint": "Con un sorteo, todos tienen la misma oportunidad de quedar.",
+      "explanation": "Sortear le da a todos la misma probabilidad de quedar en la muestra, así se parece más a la población. Escoger solo a los más participativos sesgaría los resultados."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un investigador vive un mes con una comunidad de pescadores y trabaja con ellos para entender su vida diaria. ¿Qué técnica usa?",
+      "options": [
+        { "letter": "A", "text": "Observación no participante" },
+        { "letter": "B", "text": "Observación participante" },
+        { "letter": "C", "text": "Encuesta por muestreo" },
+        { "letter": "D", "text": "Entrevista estructurada" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en si el investigador se queda afuera o se integra.",
+      "explanation": "Vivir con la comunidad y compartir su trabajo es observación participante, como la que hizo Malinowski en las islas Trobriand. Si solo los mirara desde fuera, sería no participante."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una escuela quiere saber cuántos alumnos faltan seguido y por qué lo hacen. ¿Qué combinación de técnicas es más completa?",
+      "options": [
+        { "letter": "A", "text": "Encuesta para medir y entrevistas para entender" },
+        { "letter": "B", "text": "Solo observar la entrada del plantel, sin hablar con nadie" },
+        { "letter": "C", "text": "Solo preguntar sí o no a todos, con una pregunta cerrada" },
+        { "letter": "D", "text": "Solo leer lo que dicen las redes sociales" }
+      ],
+      "correct_answer": "A",
+      "hint": "La pregunta tiene dos partes: una pide contar y otra pide comprender.",
+      "explanation": "«Cuántos» se mide con encuesta (cuantitativo) y «por qué» se comprende con entrevistas (cualitativo). Combinar enfoques se llama enfoque mixto. Observar la entrada no revela motivos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un cuestionario pregunta: «¿Usas mucho el celular? Sí / No». ¿Cuál es el problema?",
+      "options": [
+        { "letter": "A", "text": "Pregunta dos cosas diferentes a la vez" },
+        { "letter": "B", "text": "Cada quien entiende «mucho» distinto" },
+        { "letter": "C", "text": "Empuja a responder que no lo usas" },
+        { "letter": "D", "text": "Deja responder con palabras propias" }
+      ],
+      "correct_answer": "B",
+      "hint": "Imagina a dos personas que usan el celular 2 y 6 horas, y las dos contestan que sí.",
+      "explanation": "Es una pregunta ambigua: «mucho» significa algo distinto para cada persona, así que las respuestas no se pueden comparar. Se corrige con rangos de horas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un estudio con 30 alumnos de un solo grupo concluye que «los jóvenes de México prefieren estudiar de noche». ¿Qué es lo correcto?",
+      "options": [
+        { "letter": "A", "text": "Debió observar a los alumnos en vez de encuestarlos" },
+        { "letter": "B", "text": "Le faltó escribir una hipótesis antes de empezar" },
+        { "letter": "C", "text": "No puede generalizar a todo México" },
+        { "letter": "D", "text": "Treinta alumnos son demasiados para una encuesta" }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara a quiénes estudió con a quiénes se refiere su conclusión.",
+      "explanation": "Un solo grupo no representa a los jóvenes de todo el país: la conclusión va más allá de su muestra. Solo podría hablar de ese grupo, o necesitaría una muestra representativa nacional."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un investigador pregunta a sus vecinos qué opinan de un nuevo parque y luego publica en internet sus nombres junto con sus respuestas. ¿Qué principio ético rompe?",
+      "options": [
+        { "letter": "A", "text": "El marco teórico" },
+        { "letter": "B", "text": "La hipótesis" },
+        { "letter": "C", "text": "El muestreo" },
+        { "letter": "D", "text": "El anonimato" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en qué le debe el investigador a quien le confía su opinión.",
+      "explanation": "El anonimato obliga a proteger la identidad de los participantes. Publicar nombres con respuestas los expone. El marco teórico, la hipótesis y el muestreo son etapas del diseño, no principios éticos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué una investigación con entrevistas a profundidad suele trabajar con pocas personas y no con cientos?",
+      "options": [
+        { "letter": "A", "text": "Busca comprender a fondo, no generalizar" },
+        { "letter": "B", "text": "Las entrevistas no se pueden grabar" },
+        { "letter": "C", "text": "Con más personas se vuelve observación" },
+        { "letter": "D", "text": "Así se asegura que la hipótesis siempre se confirme" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en qué busca el enfoque cualitativo: cantidad o profundidad.",
+      "explanation": "La entrevista a profundidad es cualitativa: dedica mucho tiempo a cada persona para comprender sus experiencias. No busca generalizar a una población, así que no necesita una muestra grande."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una investigadora estudia cómo se reparten las tareas en un mercado. Primero lee un libro sobre mercados de México y luego hace sus propias observaciones. ¿Qué fuentes usa, en ese orden?",
+      "options": [
+        { "letter": "A", "text": "Primaria y luego secundaria" },
+        { "letter": "B", "text": "Secundaria y luego primaria" },
+        { "letter": "C", "text": "Solo fuentes primarias" },
+        { "letter": "D", "text": "Solo fuentes secundarias" }
+      ],
+      "correct_answer": "B",
+      "hint": "Pregúntate quién recogió la información en cada caso.",
+      "explanation": "El libro es una fuente secundaria: otra persona ya investigó y procesó esa información. Sus observaciones son fuente primaria porque las recoge ella misma en el mercado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una encuesta con la pregunta «¿Te gusta tu escuela? Sí / No» da 70% de sí. Para entender qué es lo que les gusta, ¿qué conviene hacer?",
+      "options": [
+        { "letter": "A", "text": "Repetir la misma pregunta a más alumnos" },
+        { "letter": "B", "text": "Cambiar el sí o no por una escala del 1 al 5" },
+        { "letter": "C", "text": "Entrevistas con preguntas abiertas" },
+        { "letter": "D", "text": "Publicar el resultado y dar por cerrado" }
+      ],
+      "correct_answer": "C",
+      "hint": "Ya sabes cuántos; ahora quieres saber por qué. ¿Qué tipo de pregunta da explicaciones?",
+      "explanation": "Las preguntas abiertas en entrevistas dejan que cada alumno explique sus razones. Una escala del 1 al 5 mide cuánto les gusta, pero no qué les gusta; repetir la pregunta solo da más de lo mismo."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un alumno quiere investigar cómo se comporta la gente en la fila de las tortillas, sin influir en lo que hacen. ¿Qué técnica elige?",
+      "options": [
+        { "letter": "A", "text": "Observación participante" },
+        { "letter": "B", "text": "Observación no participante" },
+        { "letter": "C", "text": "Entrevista estructurada" },
+        { "letter": "D", "text": "Encuesta con preguntas abiertas" }
+      ],
+      "correct_answer": "B",
+      "hint": "Quiere ver conductas y no quiere intervenir.",
+      "explanation": "Para registrar conductas sin influir en ellas se observa desde fuera: observación no participante. Entrevistar o encuestar daría lo que la gente dice, no lo que hace en la fila."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una hipótesis dice: «Los alumnos que trabajan duermen menos». La encuesta muestra que duermen lo mismo que los demás. ¿Qué es correcto?",
+      "options": [
+        { "letter": "A", "text": "La encuesta está mal porque no la confirmó" },
+        { "letter": "B", "text": "Hay que cambiar los datos para que encaje" },
+        { "letter": "C", "text": "La hipótesis no se confirmó y se reporta" },
+        { "letter": "D", "text": "La hipótesis se borra del reporte final" }
+      ],
+      "correct_answer": "C",
+      "hint": "Una hipótesis es tentativa: se pone a prueba, no se defiende a toda costa.",
+      "explanation": "Si los datos no apoyan la hipótesis, se reporta así y se analiza por qué. Cambiar datos o esconder la hipótesis sería deshonesto; un resultado inesperado también es conocimiento."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo aplicó una encuesta y hasta después escribió su pregunta de investigación. ¿Cuál es el problema?",
+      "options": [
+        { "letter": "A", "text": "Debieron empezar por las conclusiones" },
+        { "letter": "B", "text": "Eligieron técnica sin saber qué responder" },
+        { "letter": "C", "text": "La pregunta siempre se escribe al final" },
+        { "letter": "D", "text": "La encuesta solo sirve en ciencias naturales" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda qué etapa va primero y cuál decide a la otra.",
+      "explanation": "La pregunta de investigación va al principio porque decide la técnica, la muestra y qué datos recoger. Sin ella, la encuesta puede medir cosas que luego no sirven para responder nada."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál de estas preguntas de encuesta está bien formulada?",
+    "options": [
+      { "letter": "A", "text": "¿Verdad que estudias poco?" },
+      { "letter": "B", "text": "¿Cuántas horas estudiaste ayer?" },
+      { "letter": "C", "text": "¿Estudias y trabajas por las tardes?" },
+      { "letter": "D", "text": "¿Estudias mucho?" }
+    ],
+    "correct_answer": "B",
+    "explanation": "Es neutral, pregunta una sola cosa y no deja dudas sobre qué significa. Las otras son sesgada («¿Verdad que…?»), doble (estudiar y trabajar) y ambigua («mucho» es distinto para cada quien)."
+  }
+}

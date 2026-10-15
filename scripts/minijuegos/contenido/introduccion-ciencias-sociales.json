@@ -1,0 +1,1191 @@
+{
+  "subject": "introduccion-ciencias-sociales",
+  "topics": {
+    "que-son-las-ciencias-sociales-ics": {
+      "order_steps": {
+        "prompt": "Ordena los pasos del método científico aplicado a un fenómeno social",
+        "steps": [
+          "Observar un fenómeno social que llama la atención",
+          "Plantear una pregunta sobre por qué ocurre",
+          "Formular una hipótesis, una respuesta tentativa",
+          "Recolectar datos para poner a prueba la hipótesis",
+          "Analizar los datos y sacar una conclusión"
+        ],
+        "completion_feedback": "Primero se **observa** y se **pregunta**, luego se propone una **hipótesis**, se **recolectan datos** y al final se **analiza** y se **concluye**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Plaza de Goku",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Toda la plaza grita a la vez",
+                "right": "Hecho social"
+              },
+              {
+                "left": "«Es el mejor anime de la historia»",
+                "right": "Opinión"
+              },
+              {
+                "left": "¿Por qué prefieren verlo en la calle?",
+                "right": "Pregunta de investigación"
+              },
+              {
+                "left": "Tú, fan, estudiando a otros fans",
+                "right": "Subjetividad"
+              }
+            ],
+            "completion_feedback": "El grito colectivo es un **hecho social**, «el mejor anime» es una **opinión**, el «¿por qué?» es tu **pregunta de investigación** y ser fan es **subjetividad** que debes controlar. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del festejo?",
+            "left_label": "Festejo del Ángel",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Nadie lo organiza, pero todos van",
+                "right": "Hecho social"
+              },
+              {
+                "left": "«Somos fiesteros», dice tu amigo",
+                "right": "Opinión"
+              },
+              {
+                "left": "¿Qué significa para ellos ir ahí?",
+                "right": "Comprender"
+              },
+              {
+                "left": "Victorias grandes, festejos grandes",
+                "right": "Explicar"
+              }
+            ],
+            "completion_feedback": "Festejar en el Ángel es un **hecho social**, «somos fiesteros» es una **opinión**, buscar causas es **explicar** y buscar el sentido es **comprender**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Fandom de K-pop",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Quien coordina y quien lleva cuentas",
+                "right": "Roles en el grupo"
+              },
+              {
+                "left": "Nada de pleitos con otros fandoms",
+                "right": "Norma no escrita"
+              },
+              {
+                "left": "«Es una moda», dice tu tía",
+                "right": "Opinión"
+              },
+              {
+                "left": "Ser STAY y estudiar a STAY",
+                "right": "Riesgo de subjetividad"
+              }
+            ],
+            "completion_feedback": "El fandom tiene **roles** y **normas no escritas** como cualquier grupo social, lo de tu tía es una **opinión** y ser fan mientras investigas exige cuidar la **objetividad**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Domingo en Roblox",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Primos que se ven cada domingo",
+                "right": "Interacción social"
+              },
+              {
+                "left": "Policía, cafetería, bebé",
+                "right": "Roles"
+              },
+              {
+                "left": "«Otra vez con su jueguito»",
+                "right": "Opinión"
+              },
+              {
+                "left": "¿Por qué la plaza se muda al juego?",
+                "right": "Pregunta de investigación"
+              }
+            ],
+            "completion_feedback": "Reunirse cada domingo es **interacción social**, cada quien juega un **rol**, lo de tu mamá es una **opinión** y el «¿por qué?» es tu **pregunta de investigación**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "ciencias-sociales-y-naturales-ics": {
+      "order_steps": {
+        "prompt": "Ordena los pasos del método que comparten las ciencias naturales y las sociales",
+        "steps": [
+          "Plantear una pregunta sobre un hecho real",
+          "Proponer una hipótesis que la responda",
+          "Reunir evidencia con mediciones, experimentos o entrevistas",
+          "Comprobar si la evidencia apoya o tumba la hipótesis",
+          "Publicar los resultados para que otros los verifiquen"
+        ],
+        "completion_feedback": "Biología o sociología, el camino es el mismo: **pregunta**, **hipótesis**, **evidencia** y **verificación**. Las dos son **ciencias fácticas**; lo que cambia es su objeto. Míralo en tu mundo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Gripe en el salón",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El virus actúa igual en cualquier cuerpo",
+                "right": "Ley natural"
+              },
+              {
+                "left": "Gel frente a la maestra, nada al salir",
+                "right": "Saberse observado"
+              },
+              {
+                "left": "Unos se cuidan y otros no, según creen",
+                "right": "Conducta con intención"
+              },
+              {
+                "left": "Biología y sociología contra el brote",
+                "right": "Interdisciplina"
+              }
+            ],
+            "completion_feedback": "El virus sigue una **ley natural**; tus compañeros actúan con **intención** y **cambian al saberse observados**; y frenar el brote pide **interdisciplina**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del partido?",
+            "left_label": "El partido",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El balón que se curva en cualquier cancha",
+                "right": "Ley universal"
+              },
+              {
+                "left": "La porra que abuchea a su exjugador",
+                "right": "Conducta con intención"
+              },
+              {
+                "left": "Su propia afición lo abucheó un mes antes",
+                "right": "Tendencia, no ley"
+              },
+              {
+                "left": "Contar abucheos y preguntar por qué",
+                "right": "Cuantitativo y cualitativo"
+              }
+            ],
+            "completion_feedback": "El balón obedece una **ley universal**; la porra actúa con **intención** y su conducta es una **tendencia**, que se estudia contando y preguntando: **cuantitativo y cualitativo**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del concierto?",
+            "left_label": "Concierto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El retraso del sonido en la última fila",
+                "right": "Ley física"
+              },
+              {
+                "left": "Cinco versiones del mismo álbum",
+                "right": "Conducta social"
+              },
+              {
+                "left": "La prima que solo hace streaming",
+                "right": "Tendencia, no ley"
+              },
+              {
+                "left": "Una fan que investiga a su fandom",
+                "right": "Investigador en la sociedad"
+              }
+            ],
+            "completion_feedback": "El retraso del sonido es una **ley física**; comprar álbumes es **conducta social** con **tendencias**, no leyes, y quien la estudia puede ser fan: el **investigador es parte de la sociedad**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Pokémon GO",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Las pantorrillas que duelen al caminar",
+                "right": "Fenómeno natural"
+              },
+              {
+                "left": "Desconocidos que arman una incursión",
+                "right": "Fenómeno social"
+              },
+              {
+                "left": "Otro parque, mismo evento, sin gente",
+                "right": "Tendencia, no ley"
+              },
+              {
+                "left": "Médicos y sociólogos estudian el juego",
+                "right": "Interdisciplina"
+              }
+            ],
+            "completion_feedback": "El cansancio es un **fenómeno natural**; la convivencia, un **fenómeno social** que muestra **tendencias**, no leyes; y estudiar ambos juntos es **interdisciplina**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "disciplinas-sociales-ics": {
+      "order_steps": {
+        "prompt": "Ordena cómo se analiza un hecho social con varias disciplinas",
+        "steps": [
+          "Elegir un hecho social concreto, como un concierto",
+          "Plantear la pregunta de cada disciplina sobre ese hecho",
+          "Buscar datos con el método propio de cada disciplina",
+          "Unir las respuestas en una explicación completa"
+        ],
+        "completion_feedback": "Primero se elige el **hecho**, luego cada disciplina hace su **pregunta**, busca datos con su **método** y al final todo se une en una mirada **interdisciplinaria**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué disciplina hace cada pregunta de la convención?",
+            "left_label": "La convención",
+            "right_label": "Disciplina",
+            "pairs": [
+              {
+                "left": "Mariana y el anime de hace treinta años",
+                "right": "Historia"
+              },
+              {
+                "left": "Leo y la figura al doble de precio",
+                "right": "Economía"
+              },
+              {
+                "left": "Diego y quién decide en el escenario",
+                "right": "Ciencia política"
+              },
+              {
+                "left": "Tú y el llavero que todos traían",
+                "right": "Psicología social"
+              }
+            ],
+            "completion_feedback": "Cada amigo hizo la pregunta de una disciplina: el **tiempo** es de la historia, lo **escaso** de la economía, el **poder** de la ciencia política y la **influencia del grupo** de la psicología social."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué disciplina hace cada pregunta de tu familia?",
+            "left_label": "Inauguración",
+            "right_label": "Disciplina",
+            "pairs": [
+              {
+                "left": "El abuelo y su Mundial de 1986",
+                "right": "Historia"
+              },
+              {
+                "left": "La tía y las ventas de tortas",
+                "right": "Economía"
+              },
+              {
+                "left": "Cantos y caras pintadas en la calle",
+                "right": "Antropología"
+              },
+              {
+                "left": "Tú gritando porque toda la sala gritaba",
+                "right": "Psicología social"
+              }
+            ],
+            "completion_feedback": "Tu familia vio el mismo partido con cuatro disciplinas: **historia** (1986), **economía** (las tortas), **antropología** (los rituales) y **psicología social** (tus gritos). Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué disciplina hace cada pregunta sobre la ola coreana?",
+            "left_label": "Ola coreana",
+            "right_label": "Disciplina",
+            "pairs": [
+              {
+                "left": "La tía: ¿desde cuándo pasa todo esto?",
+                "right": "Historia"
+              },
+              {
+                "left": "El papá: ¿cuánto dinero mueve?",
+                "right": "Economía"
+              },
+              {
+                "left": "La prima: influencia sin amenazar",
+                "right": "Ciencia política"
+              },
+              {
+                "left": "El chat de ARMY con sus roles",
+                "right": "Sociología"
+              }
+            ],
+            "completion_feedback": "Tu familia preguntó como cuatro disciplinas: **historia** (desde cuándo), **economía** (cuánto dinero), **ciencia política** (poder suave) y **sociología** (la organización del grupo)."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué disciplina estudia cada parte de la historia de Free Fire?",
+            "left_label": "Free Fire",
+            "right_label": "Disciplina",
+            "pairs": [
+              {
+                "left": "Iván y la organización de su gremio",
+                "right": "Sociología"
+              },
+              {
+                "left": "El «¡Booyah!» fuera del juego",
+                "right": "Antropología"
+              },
+              {
+                "left": "Karla y sus diamantes del domingo",
+                "right": "Economía"
+              },
+              {
+                "left": "Quién decide la regla del celular",
+                "right": "Ciencia política"
+              }
+            ],
+            "completion_feedback": "El recreo tenía cuatro disciplinas: **sociología** (el gremio), **antropología** (el «¡Booyah!»), **economía** (los diamantes) y **ciencia política** (quién pone la regla). Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "origen-de-las-ciencias-sociales-ics": {
+      "order_steps": {
+        "prompt": "Ordena estos hechos del más antiguo al más reciente",
+        "steps": [
+          "Montesquieu publica El espíritu de las leyes",
+          "Watt patenta su máquina de vapor mejorada",
+          "Estalla la Revolución Francesa",
+          "Comte acuña la palabra sociología"
+        ],
+        "completion_feedback": "Primero las **ideas** ilustradas (1748), luego la **máquina de vapor** (1769) y la **Revolución Francesa** (1789), y al final **Comte** pone nombre a la **sociología** (1838). Ahora míralo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Dr. STONE",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Chrome cree que hace hechicería",
+                "right": "Estadio teológico"
+              },
+              {
+                "left": "Senku prueba que es pura química",
+                "right": "Estadio positivo"
+              },
+              {
+                "left": "Senku enseña a todos lo que sabe",
+                "right": "Ideal de la Enciclopedia"
+              },
+              {
+                "left": "Explicar también a la aldea con ciencia",
+                "right": "Sociología"
+              }
+            ],
+            "completion_feedback": "Pasar de la **hechicería** a la química es ir del **estadio teológico** al **positivo**; compartir el saber es el ideal de la **Enciclopedia**, y estudiar a la aldea con ciencia es la **sociología**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Newton Heath",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Familias que dejan el campo por Manchester",
+                "right": "Migración campo-ciudad"
+              },
+              {
+                "left": "Trabajadores del taller de vagones",
+                "right": "Clase obrera"
+              },
+              {
+                "left": "Barrios sin drenaje y llenos de humo",
+                "right": "Problemas urbanos"
+              },
+              {
+                "left": "Explicar con ciencia esa ciudad nueva",
+                "right": "Sociología"
+              }
+            ],
+            "completion_feedback": "La **migración** del campo creó una **clase obrera** que vivía con **problemas urbanos** nuevos, y explicar todo eso con ciencia es la **sociología**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Vida de trainee",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Mudarse de Busan a Seúl por trabajo",
+                "right": "Migración a la ciudad"
+              },
+              {
+                "left": "Un horario de reloj para todo el día",
+                "right": "Disciplina de fábrica"
+              },
+              {
+                "left": "Compositor, coreógrafo y estilista aparte",
+                "right": "División del trabajo"
+              },
+              {
+                "left": "Preguntarte cómo cambia eso a la gente",
+                "right": "Mirada sociológica"
+              }
+            ],
+            "completion_feedback": "Mudarse por trabajo es **migración**, el horario de reloj y la **división del trabajo** vienen de la fábrica, y preguntarte cómo cambia eso a la gente es la **mirada sociológica**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Stardew Valley",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Joja produce y vende a gran escala",
+                "right": "Industrialización"
+              },
+              {
+                "left": "Shane cobra un sueldo y cumple horario",
+                "right": "Trabajo asalariado"
+              },
+              {
+                "left": "El Centro Comunitario se queda vacío",
+                "right": "Cambio en la vida social"
+              },
+              {
+                "left": "Explicar al pueblo con hechos y datos",
+                "right": "Positivismo"
+              }
+            ],
+            "completion_feedback": "Joja es la **industrialización**, Shane es el **trabajo asalariado**, el Centro vacío es un **cambio social** y explicarlo con hechos es el **positivismo**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "corrientes-teoricas-ics": {
+      "order_steps": {
+        "prompt": "Ordena estos aportes del más antiguo al más reciente",
+        "steps": [
+          "Comte publica su Curso de filosofía positiva",
+          "Marx y Engels publican el Manifiesto del Partido Comunista",
+          "Durkheim publica La división del trabajo social",
+          "Weber publica La ética protestante y el espíritu del capitalismo",
+          "Parsons y Merton desarrollan el funcionalismo en Estados Unidos"
+        ],
+        "completion_feedback": "**Comte** (1830-1842), **Marx y Engels** (1848), **Durkheim** (1893), **Weber** (1904-1905) y, ya en el siglo XX, **Parsons y Merton**. Ahora mira cómo usar cada lente."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué corriente usa cada amigo para explicar a Karasuno?",
+            "left_label": "Karasuno",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "Fer y sus capturas con números",
+                "right": "Positivismo"
+              },
+              {
+                "left": "Una academia con más recursos",
+                "right": "Marxismo"
+              },
+              {
+                "left": "Cada quien en su papel, como un cuerpo",
+                "right": "Funcionalismo"
+              },
+              {
+                "left": "Lo que el partido significó para Hinata",
+                "right": "Teoría comprensiva"
+              }
+            ],
+            "completion_feedback": "Fer usa el **positivismo**, Leo el **marxismo**, Mariana el **funcionalismo** y Diego la **teoría comprensiva**. Ahora ponle nombre formal a cada lente y a su autor."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué idea usa cada familiar para explicar el título?",
+            "left_label": "Carne asada",
+            "right_label": "Idea central",
+            "pairs": [
+              {
+                "left": "La prima y su app de resultados",
+                "right": "Datos observables"
+              },
+              {
+                "left": "El tío y el dinero de los dueños",
+                "right": "Conflicto de clases"
+              },
+              {
+                "left": "La abuela y las piezas del club",
+                "right": "Función de cada parte"
+              },
+              {
+                "left": "La promesa del capitán a su papá",
+                "right": "Sentido de la acción"
+              }
+            ],
+            "completion_feedback": "La prima piensa como **positivista**, el tío como **marxista**, la abuela como **funcionalista** y tu hermano como **Weber**. Ahora ponle nombre formal a cada corriente."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del debate sobre el debut?",
+            "left_label": "Debut de K-pop",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Las gráficas de vistas de Sofi",
+                "right": "Hechos observables"
+              },
+              {
+                "left": "La agencia, dueña de los estudios",
+                "right": "Medios de producción"
+              },
+              {
+                "left": "Cada quien en su papel, como un cuerpo",
+                "right": "Organismo social"
+              },
+              {
+                "left": "El sueño de niña de la idol",
+                "right": "Sentido subjetivo"
+              }
+            ],
+            "completion_feedback": "Las gráficas son **hechos observables**, la agencia posee los **medios de producción**, el reparto de papeles es un **organismo** y el sueño de la idol es **sentido subjetivo**. Ahora ponle nombre a cada corriente."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué corriente usa cada integrante del equipo de ICS?",
+            "left_label": "Juego de Roblox",
+            "right_label": "Corriente",
+            "pairs": [
+              {
+                "left": "La tabla de Iván con jugadores por hora",
+                "right": "Positivismo (Comte)"
+              },
+              {
+                "left": "La plataforma, dueña de los servidores",
+                "right": "Marxismo (Marx)"
+              },
+              {
+                "left": "Comerciantes, nuevos y moderadores",
+                "right": "Funcionalismo (Durkheim)"
+              },
+              {
+                "left": "Tu primo y su mascota de respeto",
+                "right": "Comprensiva (Weber)"
+              }
+            ],
+            "completion_feedback": "Iván mide como **Comte**, Paula mira la ganancia como **Marx**, Toño ve funciones como **Durkheim** y Lu busca el sentido como **Weber**. Ahora ponle nombre formal a cada corriente."
+          }
+        }
+      }
+    },
+    "conceptos-basicos-sociedad-estado-ics": {
+      "order_steps": {
+        "prompt": "Ordena cómo nace una autoridad legal-racional, según Weber",
+        "steps": [
+          "Se escriben las reglas para elegir a quien va a dirigir",
+          "Se hace la elección siguiendo esas reglas",
+          "La persona elegida toma el cargo",
+          "La gente la obedece porque así lo marcan las reglas",
+          "Al terminar su periodo, deja el cargo a otra persona"
+        ],
+        "completion_feedback": "En la **autoridad legal-racional** se obedece al **cargo** que definen las reglas, no a la persona: por eso quien lo ocupa se va al terminar su periodo. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del mundo de My Hero Academia?",
+            "left_label": "Mundo de MHA",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Millones que conviven con leyes comunes",
+                "right": "Sociedad"
+              },
+              {
+                "left": "Solo el país autoriza usar la fuerza",
+                "right": "Estado"
+              },
+              {
+                "left": "Todos siguen a All Might por quién es",
+                "right": "Autoridad carismática"
+              },
+              {
+                "left": "Yaoyorozu, de una familia muy rica",
+                "right": "Clase social"
+              }
+            ],
+            "completion_feedback": "La gente que convive forma una **sociedad**, el **Estado** controla la fuerza legítima, All Might tiene **autoridad carismática** y Yaoyorozu muestra la **clase social**. Ahora ponle nombre formal a todo."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del Clásico Nacional?",
+            "left_label": "Clásico Nacional",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los cantos que aprendiste de tu papá",
+                "right": "Cultura"
+              },
+              {
+                "left": "El «¡ganamos!» de tu tía",
+                "right": "Identidad colectiva"
+              },
+              {
+                "left": "Palco contra la zona más barata",
+                "right": "Clase social"
+              },
+              {
+                "left": "La directiva decide por reglamento",
+                "right": "Autoridad legal-racional"
+              }
+            ],
+            "completion_feedback": "Los cantos son **cultura**, el «¡ganamos!» es **identidad colectiva**, el palco y la zona barata muestran la **clase social** y la directiva tiene **autoridad legal-racional**. Ahora ponle nombre formal a todo."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de BTS y ARMY?",
+            "left_label": "BTS y ARMY",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La ley del servicio militar obligatorio",
+                "right": "Estado"
+              },
+              {
+                "left": "Porras en coreano y el color morado",
+                "right": "Cultura"
+              },
+              {
+                "left": "«Somos ARMY», aunque no se conozcan",
+                "right": "Identidad colectiva"
+              },
+              {
+                "left": "Fans que pagan VIP y fans que ahorran",
+                "right": "Clase social"
+              }
+            ],
+            "completion_feedback": "La ley viene del **Estado**, las porras y el morado son **cultura**, «somos ARMY» es **identidad colectiva** y la diferencia entre boletos refleja la **clase social**. Ahora ponle nombre formal a todo."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de tu isla de Animal Crossing?",
+            "left_label": "Tu isla",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Vecinos que conviven con las mismas reglas",
+                "right": "Sociedad"
+              },
+              {
+                "left": "Tom Nook y los préstamos de tu casa",
+                "right": "Poder"
+              },
+              {
+                "left": "La bandera y la melodía de tu isla",
+                "right": "Cultura"
+              },
+              {
+                "left": "Defender tu isla como tu pueblo",
+                "right": "Identidad colectiva"
+              }
+            ],
+            "completion_feedback": "Los vecinos forman una **sociedad**, Tom Nook tiene **poder** porque influye en tus decisiones, la bandera y la melodía son **cultura** y defender tu isla es **identidad colectiva**. Ahora ponle nombre formal a todo."
+          }
+        }
+      }
+    },
+    "instituciones-sociales-ics": {
+      "order_steps": {
+        "prompt": "Ordena cómo se forma una institución social",
+        "steps": [
+          "Aparece una necesidad que la sociedad tiene que resolver",
+          "La gente prueba formas de resolverla y repite las que funcionan",
+          "Esas prácticas se vuelven normas y roles estables",
+          "Se enseñan a las nuevas generaciones como algo natural"
+        ],
+        "completion_feedback": "Una **institución** nace de una **necesidad**, se vuelve **hábito**, se fija en **normas y roles** y se **transmite** a quienes llegan después. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del primer día de Komi?",
+            "left_label": "Primer día de Komi",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cambiarse los zapatos al entrar",
+                "right": "Práctica estable"
+              },
+              {
+                "left": "Casi nadie se atreve a hablarle",
+                "right": "Norma informal"
+              },
+              {
+                "left": "Maestro, alumna, encargado de limpieza",
+                "right": "Roles"
+              },
+              {
+                "left": "Aprender a hacer amigos en el salón",
+                "right": "Socialización secundaria"
+              }
+            ],
+            "completion_feedback": "Los zapatos son una **práctica estable**, el silencio ante Komi es una **norma informal**, cada quien tiene un **rol** y entre pares hay **socialización secundaria**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del partido?",
+            "left_label": "La roja del sábado",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La Comisión Disciplinaria suspende",
+                "right": "Sanción formal"
+              },
+              {
+                "left": "Devolver el balón al rival",
+                "right": "Norma informal"
+              },
+              {
+                "left": "Árbitro, capitán y cuarto árbitro",
+                "right": "Roles"
+              },
+              {
+                "left": "La FMF, que existe desde 1927",
+                "right": "Organización"
+              }
+            ],
+            "completion_feedback": "La suspensión es una **sanción formal**, devolver el balón es una **norma informal**, cada quien cumple un **rol** y la FMF es una **organización** dentro de la institución. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del comeback?",
+            "left_label": "Comeback",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El contrato con la agencia",
+                "right": "Norma formal"
+              },
+              {
+                "left": "La reverencia a los grupos mayores",
+                "right": "Norma informal"
+              },
+              {
+                "left": "Ser la líder del grupo",
+                "right": "Rol"
+              },
+              {
+                "left": "Programas musicales y Weverse",
+                "right": "Medios"
+              }
+            ],
+            "completion_feedback": "El contrato es una **norma formal**, la reverencia es una **norma informal**, la líder cumple un **rol** y los programas y Weverse son parte de los **medios**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la Liga Pokémon?",
+            "left_label": "Liga Pokémon",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ocho medallas para entrar a la Liga",
+                "right": "Norma formal"
+              },
+              {
+                "left": "Combatir al cruzar miradas",
+                "right": "Norma informal"
+              },
+              {
+                "left": "Líder de gimnasio",
+                "right": "Rol"
+              },
+              {
+                "left": "La Liga sigue tras tu victoria",
+                "right": "Estabilidad"
+              }
+            ],
+            "completion_feedback": "Las medallas son una **norma formal**, combatir al cruzar miradas es una **norma informal**, el líder de gimnasio es un **rol** y la Liga que sigue sin ti muestra **estabilidad**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "problemas-sociales-de-mexico-ics": {
+      "order_steps": {
+        "prompt": "Ordena cómo se mide la pobreza en México",
+        "steps": [
+          "Definir la línea de ingreso y las seis carencias que se van a revisar",
+          "Levantar una encuesta en miles de hogares de todo el país",
+          "Calcular el ingreso y las carencias de cada persona",
+          "Clasificar a cada persona: en pobreza, vulnerable o no pobre",
+          "Publicar los resultados para comparar estados y años"
+        ],
+        "completion_feedback": "Primero se define **qué medir**, luego se levanta la **encuesta** (la ENIGH), se calculan **ingreso y carencias**, se **clasifica** a cada persona y se publican los resultados. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Club de anime",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tres tienen casi todos los tomos",
+                "right": "Desigualdad"
+              },
+              {
+                "left": "Ordenar a todos de menos a más tomos",
+                "right": "Deciles"
+              },
+              {
+                "left": "Un número que dice qué tan disparejo es",
+                "right": "Coeficiente de Gini"
+              },
+              {
+                "left": "Pasa en el club, la colonia y el país",
+                "right": "Problema social"
+              }
+            ],
+            "completion_feedback": "El reparto disparejo es **desigualdad**; ordenar y comparar grupos son los **deciles**; el **Gini** lo resume en un número, y como pasa a gran escala, es un **problema social**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Tío Beto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cerró la empacadora del pueblo",
+                "right": "Factor de expulsión"
+              },
+              {
+                "left": "Un primo con cuarto y empleo en Texas",
+                "right": "Red migratoria"
+              },
+              {
+                "left": "El dinero que llega cada quincena",
+                "right": "Remesas"
+              },
+              {
+                "left": "Se fue de México a Estados Unidos",
+                "right": "Emigración"
+              }
+            ],
+            "completion_feedback": "El cierre de la empacadora es un **factor de expulsión**, el primo es una **red migratoria**, el dinero son **remesas** y salir de México es **emigración**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Live de BTS",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Se le acaban los megas a los diez minutos",
+                "right": "Brecha digital"
+              },
+              {
+                "left": "Su mamá trabaja sin seguro ni pensión",
+                "right": "Carencia de seguridad social"
+              },
+              {
+                "left": "En su casa no hay agua entubada",
+                "right": "Carencia de servicios básicos"
+              },
+              {
+                "left": "Le faltan varias cosas, no solo dinero",
+                "right": "Pobreza multidimensional"
+              }
+            ],
+            "completion_feedback": "Los megas que se acaban muestran la **brecha digital**; la falta de seguro y de agua son **carencias sociales**, y todo junto, con el ingreso, es **pobreza multidimensional**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Chat de Fortnite",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Le pasa a muchos, no solo a Andrea",
+                "right": "Problema social"
+              },
+              {
+                "left": "Insultos y amenazas por el micrófono",
+                "right": "Violencia digital"
+              },
+              {
+                "left": "«Para qué reporto, si no pasa nada»",
+                "right": "Cifra negra"
+              },
+              {
+                "left": "Anonimato, impunidad y normalización",
+                "right": "Causas múltiples"
+              }
+            ],
+            "completion_feedback": "Lo que le pasa a muchos es un **problema social**; los insultos son **violencia digital**; lo que no se reporta es la **cifra negra**, y las razones juntas son **causas múltiples**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "individuo-sociedad-participacion-ics": {
+      "order_steps": {
+        "prompt": "Ordena cómo un grupo hace una petición a una autoridad",
+        "steps": [
+          "Detectar un problema que afecta a todo el grupo",
+          "Acordar qué pedir y elegir quién representará al grupo",
+          "Entregar la petición por escrito, de forma pacífica y respetuosa",
+          "Dar seguimiento hasta recibir una respuesta por escrito"
+        ],
+        "completion_feedback": "Se detecta el **problema**, el grupo se **organiza**, entrega la **petición por escrito** y da **seguimiento**: así se ejerce el derecho de petición del **artículo 8**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia del club?",
+            "left_label": "Club de anime",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Avisar antes de soltar un spoiler",
+                "right": "Norma informal"
+              },
+              {
+                "left": "Las miradas en silencio",
+                "right": "Sanción informal"
+              },
+              {
+                "left": "Andrea, elegida presidenta",
+                "right": "Estatus adquirido"
+              },
+              {
+                "left": "La carta con firmas a la dirección",
+                "right": "Derecho de petición"
+              }
+            ],
+            "completion_feedback": "Avisar los spoilers es una **norma**, las miradas fueron una **sanción**, la presidencia es un **estatus adquirido** y la carta ejerce el **derecho de petición**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de la cancha?",
+            "left_label": "Cancha de colonia",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Emilio aprende a devolver el balón",
+                "right": "Socialización secundaria"
+              },
+              {
+                "left": "Lo eligen capitán del equipo",
+                "right": "Estatus adquirido"
+              },
+              {
+                "left": "Limpiar la cancha un domingo",
+                "right": "Voluntariado"
+              },
+              {
+                "left": "La carta con firmas a la alcaldía",
+                "right": "Petición a la autoridad"
+              }
+            ],
+            "completion_feedback": "Emilio vive la **socialización secundaria**, gana un **estatus adquirido** y luego participa con **voluntariado** y una **petición a la autoridad**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de la fanbase?",
+            "left_label": "Fanbase",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "No publicar la vida privada del idol",
+                "right": "Norma del grupo"
+              },
+              {
+                "left": "Sacar del chat a quien la rompe",
+                "right": "Sanción"
+              },
+              {
+                "left": "Llevar las cuentas del proyecto",
+                "right": "Rol de la tesorera"
+              },
+              {
+                "left": "Donar a un banco de alimentos",
+                "right": "Participación ciudadana"
+              }
+            ],
+            "completion_feedback": "Cuidar la privacidad del idol es una **norma**, sacar a quien la rompe es una **sanción**, llevar las cuentas es un **rol** y donar es **participación ciudadana**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Diego?",
+            "left_label": "Servidor del club",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El canal de reglas del servidor",
+                "right": "Normas formales"
+              },
+              {
+                "left": "Lo silencian una hora por spam",
+                "right": "Sanción formal"
+              },
+              {
+                "left": "Pasar de Recluta a moderador",
+                "right": "Estatus adquirido"
+              },
+              {
+                "left": "Proponer el canal para novatos",
+                "right": "Agencia"
+              }
+            ],
+            "completion_feedback": "Las reglas escritas son **normas formales**, el silencio de una hora es una **sanción formal**, ser moderador es un **estatus adquirido** y proponer el canal es **agencia**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "investigacion-social-tecnicas-ics": {
+      "order_steps": {
+        "prompt": "Ordena las etapas de una investigación social",
+        "steps": [
+          "Elegir el tema que se quiere investigar",
+          "Plantear el problema: pregunta delimitada y objetivos",
+          "Revisar el marco teórico y plantear la hipótesis",
+          "Elegir la técnica y recolectar los datos",
+          "Analizar los datos y redactar las conclusiones"
+        ],
+        "completion_feedback": "Eliges el **tema** y **planteas** el problema; con el **marco teórico** propones una **hipótesis**; eliges la **técnica**, **recolectas** y **analizas** los datos y al final **concluyes**."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia del club?",
+            "left_label": "Club de anime",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "«¿Por qué la gente ve anime?»",
+                "right": "Pregunta sin delimitar"
+              },
+              {
+                "left": "Los alumnos de primer semestre",
+                "right": "Población"
+              },
+              {
+                "left": "Preguntarles solo a los del club",
+                "right": "Muestra sesgada"
+              },
+              {
+                "left": "Platicar a fondo con algunos",
+                "right": "Entrevista"
+              }
+            ],
+            "completion_feedback": "La pregunta inicial estaba **sin delimitar**, los de primer semestre son la **población**, preguntar solo al club da una **muestra sesgada** y platicar a fondo es **entrevista**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de tu día en el estadio?",
+            "left_label": "Día de estadio",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Preguntar en la fila por qué vienen",
+                "right": "Entrevista"
+              },
+              {
+                "left": "Mirar cómo la porra arranca cánticos",
+                "right": "Observación"
+              },
+              {
+                "left": "Los diez aficionados de la fila",
+                "right": "Muestra"
+              },
+              {
+                "left": "Todos los que van a los partidos de Pumas",
+                "right": "Población"
+              }
+            ],
+            "completion_feedback": "Preguntar es **entrevista**, mirar a la porra es **observación**, los diez aficionados son tu **muestra** y todos los que van al estadio, la **población**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de tu sábado de dance cover?",
+            "left_label": "Dance cover",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Unirte a ensayar «WANNABE» con ellos",
+                "right": "Observación participante"
+              },
+              {
+                "left": "Avisarles que es para una tarea",
+                "right": "Consentimiento"
+              },
+              {
+                "left": "La libreta que llenas al llegar a casa",
+                "right": "Diario de campo"
+              },
+              {
+                "left": "Los nuevos ensayan en la última fila",
+                "right": "Hallazgo cualitativo"
+              }
+            ],
+            "completion_feedback": "Unirte al grupo es **observación participante**, avisar es pedir **consentimiento**, tu libreta es el **diario de campo** y las reglas que descubres son **hallazgos cualitativos**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué error es cada parte del formulario gamer?",
+            "left_label": "Formulario gamer",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "«¿No crees que jugar tarde es malo?»",
+                "right": "Pregunta sesgada"
+              },
+              {
+                "left": "«¿Juegas en consola y en celular?»",
+                "right": "Pregunta doble"
+              },
+              {
+                "left": "«¿Juegas mucho?»",
+                "right": "Pregunta ambigua"
+              },
+              {
+                "left": "Solo jugadores del mismo Discord",
+                "right": "Muestra no representativa"
+              }
+            ],
+            "completion_feedback": "Tu formulario tenía una pregunta **sesgada**, una **doble**, una **ambigua** y una **muestra no representativa**. Ahora ponle nombre formal a cómo se diseña bien una encuesta."
+          }
+        }
+      }
+    }
+  }
+}
