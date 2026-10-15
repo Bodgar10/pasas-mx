@@ -1,0 +1,1227 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "epidemiologia-basica-cs1",
+  "order_steps": {
+    "prompt": "Ordena cómo funciona la vigilancia epidemiológica",
+    "steps": [
+      "Detectar los casos en clínicas, hospitales y laboratorios",
+      "Notificar los casos a las autoridades de salud",
+      "Analizar los datos por persona, lugar y tiempo",
+      "Difundir los resultados y aplicar medidas de control"
+    ],
+    "completion_feedback": "La **vigilancia epidemiológica** es un ciclo continuo: se **detectan** casos, se **notifican**, se **analizan** y se **actúa**. En México la coordina el **SINAVE**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El lunes después del festival de Shuchiin",
+        "content": "Imagina un capítulo extra de Kaguya-sama: Love is War. Termina el festival cultural de la Academia Shuchiin y el lunes el consejo estudiantil recibe una noticia rara: en varios salones hay lugares vacíos. Alumnos con vómito, diarrea y fiebre. Shirogane, como presidente, le pide a Ishigami que haga una lista. El martes aparecen más enfermos y el miércoles algunos ya regresan a clase. Ishigami descubre que muchos comieron en el puesto de crepas de un salón. Fujiwara protesta: «¡Pero de los que no comieron crepas hay 15 enfermos, y de los que sí, solo 12!». Kaguya ni levanta la vista de la hoja: «Crepas comieron 30 personas. Del resto del festival fueron 300». Doce de treinta son cuatro de cada diez; quince de trescientos, uno de cada veinte. De pronto la lista cuenta otra historia. Y Shirogane nota algo más: no es lo mismo cuántos enfermaron desde el lunes que cuántos siguen faltando hoy. Contar, comparar y entender cómo se reparte una enfermedad en un grupo es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El festival de Shuchiin ES epidemiología",
+        "content": "Lo que acabas de ver en el festival de Shuchiin es exactamente la **epidemiología**: la ciencia que estudia cómo se **distribuyen** las enfermedades en una **población** (quién, dónde y cuándo) y qué las **causa**, para controlarlas. Dos o más casos ligados a un mismo origen, como las crepas, forman un **brote**. La **morbilidad** cuenta a los **enfermos** y la **mortalidad**, las **muertes**. La **incidencia** son los casos **nuevos** en un periodo (los que enfermaron desde el lunes); la **prevalencia**, los casos **existentes** en un momento (los que faltan hoy). Como los grupos miden distinto, se usan **tasas**: **casos ÷ población × constante** (100, 1,000 o 100,000)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el reporte de gripe de Ishigami",
+        "content": "En invierno, Ishigami entrega a la enfermería un reporte de gripe. Imagina que Shuchiin tiene 800 alumnos y que el lunes nadie estaba enfermo.\n\n**Paso 1:** De lunes a viernes enfermaron **40** alumnos por primera vez → son casos **nuevos**.\n**Paso 2:** Incidencia semanal = 40 ÷ 800 × 100 = **5 por cada 100** alumnos.\n**Paso 3:** El viernes siguen enfermos **24** (16 ya se curaron) → son los casos **existentes**.\n**Paso 4:** Prevalencia del viernes = 24 ÷ 800 × 100 = **3 por cada 100**.\n**Paso 5:** Con constante 1,000, la incidencia se lee **50 por cada 1,000**: mismo dato, otra escala.\n\nResultado: la incidencia mide qué tan rápido aparecen casos; la prevalencia, cuántos enfermos hay hoy."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **epidemiología** estudia cómo se distribuyen las enfermedades en una población y sus causas. **Incidencia**: casos **nuevos** en un periodo. **Prevalencia**: casos **existentes** en un momento. **Tasa** = casos ÷ población × constante. **Mortalidad**: muertes entre toda la población. **Letalidad**: muertes entre los enfermos × 100."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el salón: la incidencia son los que se enferman esta semana (los que llegan); la prevalencia, los lugares vacíos de hoy (los que están). Nuevos = incidencia; existentes = prevalencia."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La prevalencia sube con cada caso nuevo y baja con cada alumno que se cura.",
+        "data": {
+          "intro": "En un salón de 40 alumnos de Shuchiin empieza la gastro tras el festival. La barra muestra cuántos están enfermos cada día: la prevalencia. Síguela.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Lunes: enferman 6 alumnos que comieron crepas. Son 6 casos nuevos y 6 enfermos hoy.",
+              "delta": 6
+            },
+            {
+              "text": "Martes: 8 casos nuevos y nadie se ha curado. La prevalencia sube a 14.",
+              "delta": 8
+            },
+            {
+              "text": "Miércoles: 2 casos nuevos, pero 6 regresan sanos. Hoy hay 10 enfermos.",
+              "delta": -4
+            },
+            {
+              "text": "Jueves: ningún caso nuevo y 7 se curan. Quedan 3. En total hubo 16 casos nuevos: una incidencia de 40 por cada 100 alumnos.",
+              "delta": -7
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Incidencia o prevalencia?",
+        "content": "Incidencia: casos nuevos que aparecen en un periodo. Prevalencia: todos los casos que existen en un momento, nuevos y viejos.",
+        "data": {
+          "prompt": "Arrastra cada dato del reporte de Shuchiin a lo que mide.",
+          "buckets": [
+            "Incidencia",
+            "Prevalencia"
+          ],
+          "items": [
+            {
+              "t": "Alumnos que enfermaron esta semana",
+              "b": 0
+            },
+            {
+              "t": "Lugares vacíos hoy por gastro",
+              "b": 1
+            },
+            {
+              "t": "Contagios nuevos desde el lunes",
+              "b": 0
+            },
+            {
+              "t": "Enfermos en la enfermería ahora mismo",
+              "b": 1
+            },
+            {
+              "t": "Casos que aparecieron tras el festival",
+              "b": 0
+            },
+            {
+              "t": "Alumnos con gripe el día del examen",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada término con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Brote",
+              "b": "Casos con origen común"
+            },
+            {
+              "a": "Incidencia",
+              "b": "Casos nuevos"
+            },
+            {
+              "a": "Prevalencia",
+              "b": "Casos existentes hoy"
+            },
+            {
+              "a": "Tasa",
+              "b": "Casos entre población"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Festival Shuchiin",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Gastro ligada al puesto de crepas",
+            "right": "Brote"
+          },
+          {
+            "left": "Los que enfermaron desde el lunes",
+            "right": "Incidencia"
+          },
+          {
+            "left": "Los lugares vacíos de hoy",
+            "right": "Prevalencia"
+          },
+          {
+            "left": "Doce entre los treinta que comieron",
+            "right": "Tasa"
+          }
+        ],
+        "completion_feedback": "Las crepas causaron un **brote**; los casos desde el lunes son la **incidencia**, los lugares vacíos la **prevalencia**, y dividir entre los que comieron es una **tasa**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En el reporte de Ishigami, los alumnos que enfermaron por primera vez esta semana miden la…",
+          "options": [
+            { "letter": "A", "text": "Prevalencia" },
+            { "letter": "B", "text": "Incidencia" },
+            { "letter": "C", "text": "Letalidad" },
+            { "letter": "D", "text": "Mortalidad" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La incidencia cuenta los casos nuevos en un periodo. La prevalencia contaría a todos los que están enfermos en un momento, nuevos y viejos; letalidad y mortalidad hablan de muertes.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tras el festival enferman 12 de los 30 alumnos que comieron crepas. ¿Cuál es la tasa por cada 100?",
+          "options": [
+            { "letter": "A", "text": "12 por cada 100" },
+            { "letter": "B", "text": "2.5 por cada 100" },
+            { "letter": "C", "text": "40 por cada 100" },
+            { "letter": "D", "text": "18 por cada 100" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Tasa = casos ÷ población × constante: 12 ÷ 30 × 100 = 40. Poner 12 es olvidar dividir, 2.5 es dividir al revés y 18 es restar en lugar de dividir.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el salón 2-A enfermaron 8 de 20 alumnos y en el 2-B, 10 de 50. ¿Qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "El 2-B está peor porque tiene más casos" },
+            { "letter": "B", "text": "El 2-A tiene la tasa más alta" },
+            { "letter": "C", "text": "Están igual porque la diferencia es de dos" },
+            { "letter": "D", "text": "No se pueden comparar sin la letalidad" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El 2-A tiene 8 ÷ 20 × 100 = 40 por cada 100 y el 2-B, 10 ÷ 50 × 100 = 20 por cada 100. Con grupos de distinto tamaño se comparan tasas, no números sueltos.",
+          "difficulty": 3
+        },
+        {
+          "question": "Dos o más casos de gastro ligados a la misma comida del festival. ¿Cómo se llama ese conjunto de casos?",
+          "options": [
+            { "letter": "A", "text": "Brote" },
+            { "letter": "B", "text": "Pandemia" },
+            { "letter": "C", "text": "Endemia" },
+            { "letter": "D", "text": "Indicador" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un brote son dos o más casos relacionados entre sí, con un origen común. La endemia es una presencia constante en una región y la pandemia abarca varios países y continentes.",
+          "difficulty": 2
+        },
+        {
+          "question": "El lunes faltan 14 alumnos por gastro. El martes enferman 3 más y 5 regresan sanos. ¿Cuántos enfermos hay el martes?",
+          "options": [
+            { "letter": "A", "text": "17 alumnos" },
+            { "letter": "B", "text": "9 alumnos" },
+            { "letter": "C", "text": "3 alumnos" },
+            { "letter": "D", "text": "12 alumnos" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La prevalencia sube con los casos nuevos y baja con los que se curan: 14 + 3 − 5 = 12. Los 3 son solo la incidencia del martes; 17 olvida a los que sanaron.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "¿El equipo más lesionado de la liga?",
+        "content": "Termina la temporada de la liga juvenil de tu ciudad y en el podcast de la liga el comentarista lo dice sin dudar: «Los Halcones son el equipo más lesionado: 9 jugadores lesionados contra 8 de los Lobos». Tu primo, que juega en los Halcones, no se queda callado: «Nosotros somos 30 entre titulares y suplentes; los Lobos son 20». Abres la calculadora: 9 de 30 son 3 de cada 10, pero 8 de 20 son 4 de cada 10. El equipo «más lesionado» en realidad cuidó mejor a su plantel. Luego el comentarista lee el parte médico de esta semana: «Hoy los Halcones tienen 2 lesionados y los Lobos, 3». Eso es otra cosa: no dice cuántos se lesionaron en toda la temporada, sino cuántos están fuera hoy. Y el preparador físico agrega que en los estudios de medicina del deporte las lesiones se cuentan por cada 1,000 horas de juego y entrenamiento, porque no es lo mismo entrenar dos días que cinco. Contar bien, comparar con justicia y medir la salud de un grupo es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Las lesiones de la liga SON epidemiología",
+        "content": "Lo que acabas de ver con las lesiones de la liga es exactamente la **epidemiología**: estudiar cómo se **distribuyen** los problemas de salud en una **población** (quién, dónde y cuándo) y sus **causas**, para prevenirlos. Contar enfermos o lesionados es medir la **morbilidad**; contar muertes, la **mortalidad**. Las lesiones nuevas de la temporada son la **incidencia**; el parte médico de hoy, la **prevalencia**. Para comparar grupos de distinto tamaño se usa una **tasa**: **casos ÷ población × constante** (100, 1,000 o 100,000). El número suelto engaña; la tasa compara con justicia."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el informe médico de la liga",
+        "content": "La liga juvenil tiene **400** jugadores y su médico arma el informe de fin de temporada.\n\n**Paso 1:** En la temporada, **60** jugadores distintos se lesionaron por primera vez → casos **nuevos**.\n**Paso 2:** Incidencia = 60 ÷ 400 × 100 = **15 por cada 100** jugadores.\n**Paso 3:** El parte médico del último día tiene **12** lesionados → casos **existentes**: prevalencia = 12 ÷ 400 × 100 = **3 por cada 100**.\n**Paso 4:** Cada jugador sumó **100 horas** de juego y entrenamiento: 400 × 100 = **40,000 horas**.\n**Paso 5:** Tasa por exposición = 60 ÷ 40,000 × 1,000 = **1.5 lesiones por cada 1,000 horas**.\n\nResultado: tres tasas que responden tres preguntas distintas y que se pueden comparar con otras ligas."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **epidemiología** estudia cómo se distribuyen las enfermedades en una población y sus causas. **Incidencia**: casos **nuevos** en un periodo. **Prevalencia**: casos **existentes** en un momento. **Tasa** = casos ÷ población × constante. **Mortalidad**: muertes entre toda la población. **Letalidad**: muertes entre los enfermos × 100."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Lee el parte médico como prevalencia (quién está lesionado hoy) y la lista de lesiones de la temporada como incidencia (cuántas aparecieron). Y nunca compares números sueltos: divide entre el plantel."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Para comparar a dos equipos de distinto tamaño, cada conteo se convierte en una tasa.",
+        "data": {
+          "intro": "El comentarista dice que los Halcones son el equipo más lesionado. Compruébalo paso a paso con una tasa.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Cuentas los casos de cada equipo: los Halcones tuvieron 9 jugadores lesionados en la temporada y los Lobos, 8."
+            },
+            {
+              "text": "Identificas la población de cada uno: los Halcones tienen 30 jugadores y los Lobos, 20."
+            },
+            {
+              "text": "Divides casos entre población: 9 ÷ 30 = 0.3 y 8 ÷ 20 = 0.4."
+            },
+            {
+              "text": "Multiplicas por la constante 100: Halcones, 30 por cada 100 jugadores; Lobos, 40 por cada 100. El comentarista se equivocó."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Número suelto o tasa?",
+        "content": "Un número suelto solo cuenta casos. Una tasa los divide entre la población (o las horas de juego) y los multiplica por una constante, y así se puede comparar.",
+        "data": {
+          "prompt": "Arrastra cada dato del informe médico a su categoría.",
+          "buckets": [
+            "Número suelto",
+            "Tasa (se puede comparar)"
+          ],
+          "items": [
+            {
+              "t": "9 lesionados en los Halcones",
+              "b": 0
+            },
+            {
+              "t": "40 lesionados por cada 100 jugadores",
+              "b": 1
+            },
+            {
+              "t": "3 jugadores en el parte médico",
+              "b": 0
+            },
+            {
+              "t": "1.5 lesiones por cada 1,000 horas",
+              "b": 1
+            },
+            {
+              "t": "60 lesiones en toda la temporada",
+              "b": 0
+            },
+            {
+              "t": "15 lesionados por cada 100 jugadores",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada término con su par.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Incidencia",
+              "b": "Lesiones nuevas"
+            },
+            {
+              "a": "Prevalencia",
+              "b": "Parte médico de hoy"
+            },
+            {
+              "a": "Mortalidad",
+              "b": "Muertes en la población"
+            },
+            {
+              "a": "Constante",
+              "b": "100, 1,000 o 100,000"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Lesiones de liga",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Lesiones nuevas de la temporada",
+            "right": "Incidencia"
+          },
+          {
+            "left": "Los lesionados del parte de hoy",
+            "right": "Prevalencia"
+          },
+          {
+            "left": "9 de 30 contra 8 de 20",
+            "right": "Tasa"
+          },
+          {
+            "left": "Leerlo «por cada 100 jugadores»",
+            "right": "Constante"
+          }
+        ],
+        "completion_feedback": "Las lesiones nuevas son la **incidencia**, el parte médico la **prevalencia**, y comparar 9 de 30 con 8 de 20 es usar una **tasa** con su **constante**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "El parte médico de hoy dice que 5 jugadores están lesionados. Ese dato describe la…",
+          "options": [
+            { "letter": "A", "text": "Prevalencia" },
+            { "letter": "B", "text": "Incidencia" },
+            { "letter": "C", "text": "Letalidad" },
+            { "letter": "D", "text": "Tasa de mortalidad" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El parte médico cuenta a todos los que están lesionados en un momento, sin importar cuándo se lastimaron: eso es prevalencia. La incidencia contaría solo las lesiones nuevas de un periodo.",
+          "difficulty": 1
+        },
+        {
+          "question": "Un equipo de 25 jugadores tuvo 5 jugadores lesionados en la temporada. ¿Cuál es su tasa por cada 100 jugadores?",
+          "options": [
+            { "letter": "A", "text": "5 por cada 100" },
+            { "letter": "B", "text": "20 por cada 100" },
+            { "letter": "C", "text": "25 por cada 100" },
+            { "letter": "D", "text": "50 por cada 100" }
+          ],
+          "correct_answer": "B",
+          "explanation": "5 ÷ 25 × 100 = 20 por cada 100 jugadores. Escribir 5 es olvidar dividir y 25 es confundir la población con los casos.",
+          "difficulty": 2
+        },
+        {
+          "question": "Halcones: 9 lesionados de 30 jugadores. Lobos: 8 de 20. Un comentarista dice que los Halcones son el más lesionado. ¿Qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "Tiene razón, porque 9 es más que 8" },
+            { "letter": "B", "text": "Los Lobos tienen la tasa más alta" },
+            { "letter": "C", "text": "Están igual, solo hay un caso de diferencia" },
+            { "letter": "D", "text": "No se compara sin saber cuántos murieron" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Halcones: 9 ÷ 30 × 100 = 30 por cada 100. Lobos: 8 ÷ 20 × 100 = 40 por cada 100. Con planteles de distinto tamaño, el número suelto engaña y la tasa compara.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Por qué en medicina del deporte se cuentan lesiones por cada 1,000 horas de juego?",
+          "options": [
+            { "letter": "A", "text": "Porque así salen menos lesiones" },
+            { "letter": "B", "text": "Para comparar con la misma exposición" },
+            { "letter": "C", "text": "Porque la OMS prohíbe usar porcentajes" },
+            { "letter": "D", "text": "Para saber cuántos jugadores murieron" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un equipo que entrena cinco días se expone más que uno que entrena dos. Dividir entre horas de juego pone a todos en la misma escala y la comparación es justa.",
+          "difficulty": 2
+        },
+        {
+          "question": "Durante un torneo con miles de aficionados, las autoridades revisan a diario los casos de diarrea que reportan las clínicas cercanas. ¿Qué hacen?",
+          "options": [
+            { "letter": "A", "text": "Vigilancia epidemiológica" },
+            { "letter": "B", "text": "Medir la esperanza de vida local" },
+            { "letter": "C", "text": "Calcular la letalidad del torneo" },
+            { "letter": "D", "text": "Declarar una pandemia mundial" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Recolectar y analizar de forma continua los casos que reportan las clínicas, para actuar a tiempo, es vigilancia epidemiológica. En eventos masivos se refuerza porque mucha gente se junta.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "La gripe que llegó después del fan meeting",
+        "content": "Por fin llega a México el fan meeting de tu grupo favorito y las fanbases de varias ciudades viajan a la CDMX. Fila desde la madrugada, intercambio de photocards, gritos en cada juego de los idols y abrazos con amigas que solo conocías por el chat. Tres días después, el chat de tu fanbase de Guadalajara es puro «me siento fatal»: fiebre, tos y dolor de cuerpo. La admin hace una encuesta: de las 100 que fueron, 15 tienen gripe. En el chat de Monterrey reportan 10. Alguien concluye: «Guadalajara salió peor». Pero de Monterrey solo viajaron 40. Tú haces la cuenta: 15 de 100 son 15 de cada 100; 10 de 40 son 25 de cada 100. Monterrey, con menos casos, tuvo una proporción mayor. Al final de la semana alguien pregunta lo que de verdad importa: ¿fue algo solo de las que fueron al evento o la gripe ya anda por toda la ciudad? Comparar casos de forma justa y saber cuándo un contagio deja de ser «cosa del grupo» es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La gripe del fan meeting ES epidemiología",
+        "content": "Lo que acabas de ver con la gripe del fan meeting es exactamente la **epidemiología**: estudia cómo se **distribuyen** las enfermedades en una **población** y qué las causa, para controlarlas. Para comparar fanbases de distinto tamaño se usa una **tasa**: **casos ÷ población × constante**. Los contagios nuevos de la semana son la **incidencia**; las enfermas de hoy, la **prevalencia**. Según hasta dónde llega, es **brote** (casos ligados a un mismo origen), **epidemia** (más casos de lo esperado en una zona y tiempo), **endemia** (presencia constante en una región) o **pandemia** (epidemia en varios países y continentes)."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — de un chat de fans a una pandemia",
+        "content": "Clasifica cada situación según hasta dónde llegó la enfermedad.\n\n**Paso 1:** Cinco fans que compartieron comida en la fila enferman de lo mismo → **brote**: casos ligados a un origen común.\n**Paso 2:** Los casos de gripe de la ciudad superan lo esperado para ese invierno → **epidemia**.\n**Paso 3:** Viajas a un concierto en Mérida, donde el dengue aparece año con año → **endemia**: presencia constante en una región.\n**Paso 4:** El 11 de marzo de 2020 la OMS declaró pandemia el COVID-19 y se pospusieron giras en todo el mundo → **pandemia**.\n**Paso 5:** ¿Quién detecta cada cambio? La **vigilancia epidemiológica**: en México, el **SINAVE** junta los reportes y cada semana se publica el **Boletín Epidemiológico**.\n\nResultado: la clasificación depende de si los casos superan lo esperado y de hasta dónde llegan."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **epidemiología** estudia cómo se distribuyen las enfermedades en una población y sus causas. **Incidencia**: casos **nuevos** en un periodo. **Prevalencia**: casos **existentes** en un momento. **Tasa** = casos ÷ población × constante. **Mortalidad**: muertes entre toda la población. **Letalidad**: muertes entre los enfermos × 100."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Ordénalas como una gira: brote = un grupo de fans; epidemia = toda la ciudad, más de lo esperado; pandemia = gira mundial. La endemia es la que «vive» siempre en la misma sede."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "En un brote, la incidencia entre quienes estuvieron expuestos se llama tasa de ataque.",
+        "data": {
+          "intro": "La fanbase encuesta a 200 fans que fueron al fan meeting. Calcula con ellas la tasa de gripe del evento.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Cuentas solo los casos nuevos tras el evento: 30 fans empezaron con gripe esa semana."
+            },
+            {
+              "text": "Defines la población expuesta: las 200 fans que fueron al fan meeting y respondieron."
+            },
+            {
+              "text": "Divides casos entre población: 30 ÷ 200 = 0.15."
+            },
+            {
+              "text": "Multiplicas por la constante: 0.15 × 100 = 15 por cada 100 asistentes, o 150 por cada 1,000. Esa es la tasa de ataque del brote."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Brote, epidemia, endemia o pandemia?",
+        "content": "Brote: casos ligados a un origen común. Epidemia: más casos de lo esperado en una zona y tiempo. Endemia: presencia constante en una región. Pandemia: epidemia en varios países y continentes.",
+        "data": {
+          "prompt": "Arrastra cada situación a su clasificación.",
+          "buckets": [
+            "Brote",
+            "Epidemia",
+            "Endemia",
+            "Pandemia"
+          ],
+          "items": [
+            {
+              "t": "Fans enfermas tras comer el mismo pastel",
+              "b": 0
+            },
+            {
+              "t": "Gripe en la ciudad, muy arriba de lo normal",
+              "b": 1
+            },
+            {
+              "t": "Dengue que aparece cada año en la costa",
+              "b": 2
+            },
+            {
+              "t": "COVID-19 en todos los continentes, 2020",
+              "b": 3
+            },
+            {
+              "t": "Influenza A H1N1 en muchos países, 2009",
+              "b": 3
+            },
+            {
+              "t": "Sarampión muy arriba de lo esperado en un estado",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada clasificación con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Brote",
+              "b": "Origen común"
+            },
+            {
+              "a": "Epidemia",
+              "b": "Exceso de casos"
+            },
+            {
+              "a": "Endemia",
+              "b": "Presencia constante"
+            },
+            {
+              "a": "Pandemia",
+              "b": "Varios continentes"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Fan meeting",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "15 de 100 contra 10 de 40",
+            "right": "Tasa"
+          },
+          {
+            "left": "Las que enfermaron esa semana",
+            "right": "Incidencia"
+          },
+          {
+            "left": "Gripe solo entre las asistentes",
+            "right": "Brote"
+          },
+          {
+            "left": "Gripe arriba de lo normal en la ciudad",
+            "right": "Epidemia"
+          }
+        ],
+        "completion_feedback": "Comparar 15 de 100 con 10 de 40 es usar una **tasa**; los contagios de la semana son la **incidencia**; si solo enferman las asistentes es un **brote**, y si toda la ciudad pasa lo esperado, una **epidemia**."
+      },
+      "quiz": [
+        {
+          "question": "Una enfermedad que siempre está presente en una región, como el dengue en zonas cálidas de México, ¿cómo se clasifica?",
+          "options": [
+            { "letter": "A", "text": "Pandemia" },
+            { "letter": "B", "text": "Epidemia" },
+            { "letter": "C", "text": "Endemia" },
+            { "letter": "D", "text": "Brote" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La endemia es la presencia constante de una enfermedad en una región. Si los casos superan lo esperado es epidemia, y si se extiende por varios países y continentes, pandemia.",
+          "difficulty": 1
+        },
+        {
+          "question": "De 100 fans de Guadalajara enfermaron 15; de 40 fans de Monterrey, 10. ¿Qué fanbase tuvo la tasa más alta?",
+          "options": [
+            { "letter": "A", "text": "Guadalajara, porque tiene más casos" },
+            { "letter": "B", "text": "Monterrey, con 25 por cada 100" },
+            { "letter": "C", "text": "Las dos, porque suman 25 casos" },
+            { "letter": "D", "text": "Guadalajara, con 15 por cada 100" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Guadalajara: 15 ÷ 100 × 100 = 15 por cada 100. Monterrey: 10 ÷ 40 × 100 = 25 por cada 100. Menos casos no significa menor tasa si el grupo es más chico.",
+          "difficulty": 2
+        },
+        {
+          "question": "En marzo de 2020 se pospusieron o cancelaron giras de K-pop en todo el mundo. ¿Por qué el COVID-19 se clasificó como pandemia y no solo como epidemia?",
+          "options": [
+            { "letter": "A", "text": "Fue la enfermedad más letal de la historia" },
+            { "letter": "B", "text": "Se extendió a varios países y continentes" },
+            { "letter": "C", "text": "Estaba siempre presente en una sola región" },
+            { "letter": "D", "text": "Empezó con dos casos relacionados entre sí" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una pandemia es una epidemia que se extiende por varios países y continentes. No depende de qué tan letal sea: depende de hasta dónde llega. La presencia constante sería endemia.",
+          "difficulty": 3
+        },
+        {
+          "question": "Una fan dice: «La gripe del fan meeting tuvo letalidad cero». ¿Qué significa?",
+          "options": [
+            { "letter": "A", "text": "Que nadie se enfermó de gripe" },
+            { "letter": "B", "text": "Ninguna de las enfermas murió" },
+            { "letter": "C", "text": "Nadie en la ciudad murió de nada" },
+            { "letter": "D", "text": "Que la gripe no se contagia" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La letalidad divide las muertes entre las personas enfermas. Letalidad cero significa que nadie de quienes enfermaron murió, aunque sí hubo enfermas.",
+          "difficulty": 2
+        },
+        {
+          "question": "Corea del Sur tiene una de las esperanzas de vida más altas del mundo. ¿Qué mide ese indicador?",
+          "options": [
+            { "letter": "A", "text": "La edad máxima que alcanza una persona" },
+            { "letter": "B", "text": "Años promedio que viviría un recién nacido" },
+            { "letter": "C", "text": "La edad promedio de quienes viven hoy" },
+            { "letter": "D", "text": "Cuántos bebés mueren antes de cumplir un año" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La esperanza de vida al nacer son los años que en promedio viviría un recién nacido si se mantienen las condiciones de mortalidad actuales. Los bebés que mueren antes del año miden la mortalidad infantil.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Corrupted Blood: la plaga que escapó de una mazmorra",
+        "content": "En septiembre de 2005, World of Warcraft estrenó la banda de Zul'Gurub. Su jefe final, Hakkar, lanzaba un hechizo llamado Corrupted Blood: quitaba vida poco a poco y saltaba a los jugadores que estuvieran cerca. El efecto no debía salir de la mazmorra, pero había un error: las mascotas de los cazadores podían cargarlo y llevarlo afuera. Pronto el contagio llegó a ciudades llenas de jugadores, como Ironforge y Orgrimmar. Los personajes de nivel alto aguantaban; los de nivel bajo caían casi al instante. Las calles se llenaron de esqueletos. Unos jugadores huían al campo, otros curaban a desconocidos y algunos esparcían la plaga a propósito. Blizzard tuvo que corregir el juego y reiniciar servidores. Años después, epidemiólogos de verdad estudiaron el incidente en revistas científicas, porque la gente reaccionó como en una epidemia real. Ver cómo se reparte una enfermedad, a quién mata y cómo se vigila es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Corrupted Blood ES epidemiología",
+        "content": "Lo que acabas de ver con Corrupted Blood es exactamente lo que estudia la **epidemiología**: cómo se **distribuye** una enfermedad en una **población** (quién, dónde y cuándo), qué la causa y cómo controlarla. Empezó como **brote** en la banda y se volvió **epidemia** en las ciudades. La **morbilidad** cuenta a los enfermos; la **mortalidad**, las muertes en **toda** la población. La **letalidad** son las muertes **entre los enfermos**: era altísima en los niveles bajos. La **incidencia** son los casos **nuevos** de un periodo; la **prevalencia**, los **existentes** en un momento. Todo se compara con **tasas**: **casos ÷ población × constante**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los números de la plaga en un servidor",
+        "content": "Imagina un servidor con **10,000** jugadores conectados durante la plaga.\n\n**Paso 1:** Se infectaron **2,000** → morbilidad = 2,000 ÷ 10,000 × 100 = **20 por cada 100** jugadores.\n**Paso 2:** Murieron **500** personajes → mortalidad = 500 ÷ 10,000 × 1,000 = **50 por cada 1,000** jugadores.\n**Paso 3:** Letalidad = muertes ÷ **enfermos** × 100 = 500 ÷ 2,000 × 100 = **25 %**.\n**Paso 4:** Separas por nivel: de 1,000 infectados de nivel bajo murieron 400 (**40 %**); de 1,000 de nivel alto, 100 (**10 %**).\n**Paso 5:** Conclusión: la misma enfermedad es mucho más letal en el grupo vulnerable.\n\nResultado: la mortalidad divide entre todos; la letalidad, solo entre los enfermos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **epidemiología** estudia cómo se distribuyen las enfermedades en una población y sus causas. **Incidencia**: casos **nuevos** en un periodo. **Prevalencia**: casos **existentes** en un momento. **Tasa** = casos ÷ población × constante. **Mortalidad**: muertes entre toda la población. **Letalidad**: muertes entre los enfermos × 100."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Letalidad = qué tan peligrosa es para quien ya se infectó (divides entre enfermos). Mortalidad = cuántos mueren en todo el servidor (divides entre todos). Mira siempre el denominador."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una enfermedad se clasifica según hasta dónde llega, y se controla cuando alguien la vigila.",
+        "data": {
+          "intro": "Sigue a Corrupted Blood desde la mazmorra hasta las ciudades y ponle nombre a cada etapa.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "En Zul'Gurub, Hakkar contagia a los 20 jugadores de la banda: casos ligados a un mismo origen. Es un brote."
+            },
+            {
+              "text": "Una mascota guardada conserva el efecto y, al llamarla de nuevo en una ciudad, contagia a todos los que están cerca."
+            },
+            {
+              "text": "En Ironforge y Orgrimmar los casos superan por mucho lo esperado, que era cero: ya es una epidemia en el servidor."
+            },
+            {
+              "text": "Los de nivel bajo mueren casi siempre y los de nivel alto sobreviven: la letalidad cambia según el grupo."
+            },
+            {
+              "text": "Blizzard detecta el problema, lo analiza, corrige el error y reinicia servidores: vigilar y actuar es lo que frena una epidemia."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Letalidad o mortalidad?",
+        "content": "Letalidad: muertes entre quienes tienen la enfermedad. Mortalidad: muertes entre toda la población, enferma o no.",
+        "data": {
+          "prompt": "Arrastra cada dato de la plaga a lo que mide.",
+          "buckets": [
+            "Letalidad (entre enfermos)",
+            "Mortalidad (entre todos)"
+          ],
+          "items": [
+            {
+              "t": "Muertos de cada 100 infectados",
+              "b": 0
+            },
+            {
+              "t": "Muertos de cada 1,000 jugadores del servidor",
+              "b": 1
+            },
+            {
+              "t": "Qué tan peligrosa es si ya la tienes",
+              "b": 0
+            },
+            {
+              "t": "Muertes entre toda la población",
+              "b": 1
+            },
+            {
+              "t": "500 muertes ÷ 2,000 infectados",
+              "b": 0
+            },
+            {
+              "t": "500 muertes ÷ 10,000 jugadores",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada indicador con lo que mide.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Letalidad",
+              "b": "Muertes entre enfermos"
+            },
+            {
+              "a": "Mortalidad",
+              "b": "Muertes entre todos"
+            },
+            {
+              "a": "Morbilidad",
+              "b": "Enfermos en la población"
+            },
+            {
+              "a": "Vigilancia",
+              "b": "Reunir datos y actuar"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia?",
+        "left_label": "Corrupted Blood",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Los 20 de la banda en Zul'Gurub",
+            "right": "Brote"
+          },
+          {
+            "left": "Ciudades llenas de esqueletos",
+            "right": "Epidemia"
+          },
+          {
+            "left": "El nivel bajo caía casi siempre",
+            "right": "Letalidad alta"
+          },
+          {
+            "left": "Rastrear quién, dónde y cuándo",
+            "right": "Vigilancia"
+          }
+        ],
+        "completion_feedback": "La banda fue el **brote**, las ciudades la **epidemia**, el nivel bajo tenía **letalidad alta** y rastrear quién, dónde y cuándo es **vigilancia**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Al inicio, Corrupted Blood solo contagió a los jugadores de la banda que enfrentaban a Hakkar. ¿Cómo se clasifica ese inicio?",
+          "options": [
+            { "letter": "A", "text": "Una endemia" },
+            { "letter": "B", "text": "Una pandemia" },
+            { "letter": "C", "text": "Un brote" },
+            { "letter": "D", "text": "Una prevalencia" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Varios casos ligados a un mismo origen (el hechizo de Hakkar) en un grupo pequeño forman un brote. Se volvió epidemia cuando llegó a las ciudades del servidor.",
+          "difficulty": 1
+        },
+        {
+          "question": "Un servidor tiene 10,000 jugadores; 2,000 se infectaron y 500 murieron. ¿Cuál es la letalidad?",
+          "options": [
+            { "letter": "A", "text": "5 de cada 100 enfermos" },
+            { "letter": "B", "text": "20 de cada 100 enfermos" },
+            { "letter": "C", "text": "4 de cada 100 enfermos" },
+            { "letter": "D", "text": "25 de cada 100 enfermos" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Letalidad = muertes ÷ enfermos × 100 = 500 ÷ 2,000 × 100 = 25. El 5 sale de dividir entre todo el servidor (mortalidad) y el 20 es la proporción de infectados.",
+          "difficulty": 2
+        },
+        {
+          "question": "En un servidor de 10,000 jugadores, la plaga mató a 500 personajes. ¿Cuál es la tasa de mortalidad por cada 1,000 jugadores?",
+          "options": [
+            { "letter": "A", "text": "250 por cada 1,000" },
+            { "letter": "B", "text": "50 por cada 1,000" },
+            { "letter": "C", "text": "200 por cada 1,000" },
+            { "letter": "D", "text": "5 por cada 1,000" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Mortalidad = muertes ÷ población total × constante = 500 ÷ 10,000 × 1,000 = 50. Se divide entre todos los jugadores, no solo entre los infectados.",
+          "difficulty": 3
+        },
+        {
+          "question": "Los personajes de nivel bajo morían casi siempre que se infectaban y los de nivel alto sobrevivían. ¿Qué indicador era mayor en los de nivel bajo?",
+          "options": [
+            { "letter": "A", "text": "La incidencia" },
+            { "letter": "B", "text": "La letalidad" },
+            { "letter": "C", "text": "La prevalencia" },
+            { "letter": "D", "text": "La esperanza de vida" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La letalidad mide cuántos de los enfermos mueren. Entre los infectados de nivel bajo morían casi todos, así que su letalidad era mucho mayor.",
+          "difficulty": 2
+        },
+        {
+          "question": "La plaga se extendió en días por las ciudades del servidor. ¿Qué dato muestra mejor qué tan rápido se propagaba?",
+          "options": [
+            { "letter": "A", "text": "Los infectados que había en un momento" },
+            { "letter": "B", "text": "Los muertos entre todos los infectados" },
+            { "letter": "C", "text": "Los casos nuevos de cada día" },
+            { "letter": "D", "text": "La esperanza de vida de los personajes" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La velocidad de propagación se mide con la incidencia: casos nuevos por periodo. Los infectados en un momento son la prevalencia y los muertos entre infectados, la letalidad.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué estudia la epidemiología?",
+      "options": [
+        { "letter": "A", "text": "Solo las enfermedades de la piel" },
+        { "letter": "B", "text": "La salud y la enfermedad en poblaciones" },
+        { "letter": "C", "text": "El tratamiento de cada paciente en consulta" },
+        { "letter": "D", "text": "Los microbios dentro del laboratorio" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en la raíz: epi (sobre) y demos (pueblo). No estudia a una sola persona.",
+      "explanation": "La epidemiología estudia cómo se distribuyen la salud y la enfermedad en las poblaciones y qué las causa, para controlarlas. No es dermatología ni atención de un paciente individual."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la morbilidad?",
+      "options": [
+        { "letter": "A", "text": "La cantidad de muertes en una población" },
+        { "letter": "B", "text": "La cantidad de personas enfermas en una población" },
+        { "letter": "C", "text": "La proporción de muertes entre los enfermos de algo" },
+        { "letter": "D", "text": "Los años que se espera que viva una persona" }
+      ],
+      "correct_answer": "B",
+      "hint": "Viene del latín morbus, que significa enfermedad.",
+      "explanation": "La morbilidad cuenta a las personas que enferman en un lugar y tiempo. Las muertes son la mortalidad, y las muertes entre los enfermos, la letalidad."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué mide la mortalidad?",
+      "options": [
+        { "letter": "A", "text": "Los enfermos de una población" },
+        { "letter": "B", "text": "Las muertes en una población" },
+        { "letter": "C", "text": "Los casos nuevos de un periodo" },
+        { "letter": "D", "text": "Los nacimientos de un año" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en la palabra mortal.",
+      "explanation": "La mortalidad mide las muertes que ocurren en una población durante un periodo. Los enfermos son la morbilidad y los casos nuevos, la incidencia."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la incidencia?",
+      "options": [
+        { "letter": "A", "text": "Casos existentes en un momento" },
+        { "letter": "B", "text": "Muertes entre los enfermos" },
+        { "letter": "C", "text": "Casos nuevos en un periodo" },
+        { "letter": "D", "text": "Años de vida esperados" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en lo que «incide» o aparece por primera vez.",
+      "explanation": "La incidencia cuenta los casos nuevos que aparecen en una población durante un periodo. Los casos existentes en un momento, nuevos y viejos, son la prevalencia."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿A quién se considera padre de la epidemiología moderna por estudiar el cólera en Londres en 1854?",
+      "options": [
+        { "letter": "A", "text": "Louis Pasteur" },
+        { "letter": "B", "text": "Edward Jenner" },
+        { "letter": "C", "text": "John Snow" },
+        { "letter": "D", "text": "Alexander Fleming" }
+      ],
+      "correct_answer": "C",
+      "hint": "Fue un médico inglés que marcó en un mapa las casas con muertes por cólera.",
+      "explanation": "John Snow ubicó en un mapa las muertes por cólera y vio que se agrupaban alrededor de una bomba de agua. Jenner hizo la vacuna contra la viruela y Fleming descubrió la penicilina."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la prevalencia?",
+      "options": [
+        { "letter": "A", "text": "Solo los casos nuevos de un periodo" },
+        { "letter": "B", "text": "Todos los casos que existen en un momento" },
+        { "letter": "C", "text": "La proporción de enfermos que llegan a morir" },
+        { "letter": "D", "text": "Las muertes por una enfermedad en un año" }
+      ],
+      "correct_answer": "B",
+      "hint": "Incluye a los que acaban de enfermar y a los que ya estaban enfermos.",
+      "explanation": "La prevalencia cuenta todos los casos que existen en un momento o periodo, nuevos y viejos. Solo los casos nuevos serían la incidencia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cómo se calcula una tasa en epidemiología?",
+      "options": [
+        { "letter": "A", "text": "Población ÷ casos × constante" },
+        { "letter": "B", "text": "Casos ÷ población × constante" },
+        { "letter": "C", "text": "Casos + población ÷ 100" },
+        { "letter": "D", "text": "Solo contando los casos" }
+      ],
+      "correct_answer": "B",
+      "hint": "Lo que quieres medir va arriba; el grupo donde ocurre, abajo.",
+      "explanation": "Una tasa divide los casos entre la población donde ocurren y multiplica por una constante (100, 1,000 o 100,000). Contar casos sin dividir no permite comparar."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una pandemia?",
+      "options": [
+        { "letter": "A", "text": "Una enfermedad siempre presente en una región" },
+        { "letter": "B", "text": "Una epidemia que abarca varios países y continentes" },
+        { "letter": "C", "text": "Dos o más casos con un origen común" },
+        { "letter": "D", "text": "Una enfermedad muy grave que mata a la mayoría de los enfermos" }
+      ],
+      "correct_answer": "B",
+      "hint": "Pan significa «todo». Piensa en el alcance, no en la gravedad.",
+      "explanation": "Una pandemia es una epidemia que se extiende por varios países y continentes. Se define por su alcance, no por su letalidad. La presencia constante en una región es endemia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es una endemia?",
+      "options": [
+        { "letter": "A", "text": "Un aumento repentino de casos por arriba de lo esperado" },
+        { "letter": "B", "text": "Una epidemia que se extiende por varios continentes" },
+        { "letter": "C", "text": "Una enfermedad presente de forma constante en una zona" },
+        { "letter": "D", "text": "Dos o más casos relacionados entre sí" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en una enfermedad que «vive» en un lugar año tras año.",
+      "explanation": "La endemia es la presencia habitual de una enfermedad en una zona, como el dengue en regiones cálidas de México. El aumento por arriba de lo esperado es epidemia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la vigilancia epidemiológica?",
+      "options": [
+        { "letter": "A", "text": "Cuidar a los pacientes internados en un hospital" },
+        { "letter": "B", "text": "Recolectar y analizar datos de salud continuamente" },
+        { "letter": "C", "text": "Vacunar casa por casa a toda la población del país" },
+        { "letter": "D", "text": "Revisar que los hospitales tengan medicamentos suficientes" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es un trabajo de información: reunir datos, analizarlos y usarlos para decidir.",
+      "explanation": "La vigilancia epidemiológica recolecta, analiza y difunde de forma continua datos sobre enfermedades para tomar decisiones a tiempo. No es atender pacientes ni vacunar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es la letalidad?",
+      "options": [
+        { "letter": "A", "text": "Muertes entre toda la población" },
+        { "letter": "B", "text": "Muertes entre quienes tienen la enfermedad" },
+        { "letter": "C", "text": "Enfermos entre toda la población" },
+        { "letter": "D", "text": "Muertes de menores de un año por cada mil nacidos" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en el denominador: ¿se divide entre todos o solo entre los enfermos?",
+      "explanation": "La letalidad divide las muertes por una enfermedad entre las personas que la tienen y se expresa por cada 100. La mortalidad divide entre toda la población."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "La tasa de mortalidad infantil cuenta las muertes de menores de un año por cada…",
+      "options": [
+        { "letter": "A", "text": "1,000 habitantes" },
+        { "letter": "B", "text": "1,000 nacidos vivos" },
+        { "letter": "C", "text": "100 niños de primaria" },
+        { "letter": "D", "text": "100,000 mujeres" }
+      ],
+      "correct_answer": "B",
+      "hint": "Los que pueden morir antes del año son los bebés que nacieron ese año.",
+      "explanation": "La mortalidad infantil divide las muertes de menores de un año entre los nacidos vivos del mismo año y multiplica por 1,000. Dividir entre habitantes sería la mortalidad general."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es la esperanza de vida al nacer?",
+      "options": [
+        { "letter": "A", "text": "La edad del habitante más viejo del país" },
+        { "letter": "B", "text": "Años que viviría en promedio quien nace hoy" },
+        { "letter": "C", "text": "La edad promedio de quienes viven hoy en el país" },
+        { "letter": "D", "text": "Cuántos bebés mueren antes de cumplir un año por cada mil" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es un promedio que se calcula para un recién nacido con las condiciones de mortalidad actuales.",
+      "explanation": "La esperanza de vida al nacer estima cuántos años viviría en promedio un recién nacido si se mantienen las condiciones de mortalidad actuales. No es la edad promedio de la población."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué las tasas se multiplican por una constante como 1,000 o 100,000?",
+      "options": [
+        { "letter": "A", "text": "Para que la enfermedad parezca más grave" },
+        { "letter": "B", "text": "Para leerlas como números claros y comparables" },
+        { "letter": "C", "text": "Porque así lo pide cada hospital por separado" },
+        { "letter": "D", "text": "Para convertir los casos en muertes esperadas del año" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa si es más fácil leer 0.00015 o 15 por cada 100,000.",
+      "explanation": "La constante convierte proporciones muy pequeñas en números fáciles de leer y comparar, como 15 por cada 100,000. No cambia el dato ni lo vuelve más grave."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué sistema reúne en México los datos de vigilancia epidemiológica de todo el país?",
+      "options": [
+        { "letter": "A", "text": "El INEGI" },
+        { "letter": "B", "text": "La COFEPRIS" },
+        { "letter": "C", "text": "El SINAVE" },
+        { "letter": "D", "text": "El CONAPO" }
+      ],
+      "correct_answer": "C",
+      "hint": "Sus siglas incluyen las palabras Vigilancia y Epidemiológica.",
+      "explanation": "El SINAVE (Sistema Nacional de Vigilancia Epidemiológica) reúne las notificaciones de casos de todo el país. El INEGI y el CONAPO hacen estadística de población; la COFEPRIS regula riesgos sanitarios."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En un pueblo de 2,000 habitantes que no habían tenido varicela hubo 50 casos nuevos en un mes. ¿Cuál es la incidencia por cada 1,000?",
+      "options": [
+        { "letter": "A", "text": "50 por cada 1,000" },
+        { "letter": "B", "text": "25 por cada 1,000" },
+        { "letter": "C", "text": "40 por cada 1,000" },
+        { "letter": "D", "text": "2.5 por cada 1,000" }
+      ],
+      "correct_answer": "B",
+      "hint": "Divide los casos nuevos entre la población y multiplica por la constante.",
+      "explanation": "50 ÷ 2,000 × 1,000 = 25 casos nuevos por cada 1,000 habitantes en ese mes. Escribir 50 es olvidar dividir y 2.5 es usar la constante 100."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En una ciudad de 500,000 habitantes hubo 3,000 defunciones en un año. ¿Cuál es su tasa de mortalidad general por cada 1,000?",
+      "options": [
+        { "letter": "A", "text": "60 por cada 1,000" },
+        { "letter": "B", "text": "0.6 por cada 1,000" },
+        { "letter": "C", "text": "6 por cada 1,000" },
+        { "letter": "D", "text": "3 por cada 1,000" }
+      ],
+      "correct_answer": "C",
+      "hint": "Muertes del año entre la población total, por la constante.",
+      "explanation": "La mortalidad general es defunciones ÷ población total × 1,000 = 3,000 ÷ 500,000 × 1,000 = 6 por cada 1,000 habitantes."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En un municipio hubo 4,000 nacidos vivos en un año y murieron 48 menores de un año. ¿Cuál es la tasa de mortalidad infantil?",
+      "options": [
+        { "letter": "A", "text": "48 por cada 1,000 nacidos vivos" },
+        { "letter": "B", "text": "1.2 por cada 1,000 nacidos vivos" },
+        { "letter": "C", "text": "120 por cada 1,000 nacidos vivos" },
+        { "letter": "D", "text": "12 por cada 1,000 nacidos vivos" }
+      ],
+      "correct_answer": "D",
+      "hint": "Muertes de menores de un año entre nacidos vivos, por 1,000.",
+      "explanation": "48 ÷ 4,000 × 1,000 = 12 muertes de menores de un año por cada 1,000 nacidos vivos. 1.2 sale de usar la constante 100 en lugar de 1,000."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una enfermedad dura muchos años y cada año aparecen pocos casos nuevos, pero los enfermos se acumulan. ¿Qué se espera?",
+      "options": [
+        { "letter": "A", "text": "Alta incidencia y baja prevalencia" },
+        { "letter": "B", "text": "Baja incidencia y alta prevalencia" },
+        { "letter": "C", "text": "Alta letalidad y baja mortalidad" },
+        { "letter": "D", "text": "Igual incidencia que prevalencia" }
+      ],
+      "correct_answer": "B",
+      "hint": "Pocos casos nuevos, pero nadie deja de estar enfermo pronto. ¿Qué medida crece?",
+      "explanation": "Pocos casos nuevos significa baja incidencia, pero como la enfermedad dura años, los casos existentes se acumulan: alta prevalencia. A mayor duración, mayor prevalencia."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En una fiesta, 12 invitados enferman del estómago después de comer el mismo pastel. ¿Cómo se clasifica?",
+      "options": [
+        { "letter": "A", "text": "Epidemia" },
+        { "letter": "B", "text": "Endemia" },
+        { "letter": "C", "text": "Pandemia" },
+        { "letter": "D", "text": "Brote" }
+      ],
+      "correct_answer": "D",
+      "hint": "Los casos están relacionados entre sí y tienen un mismo origen.",
+      "explanation": "Dos o más casos relacionados con un origen común, como el mismo alimento, forman un brote. No es endemia porque no es una presencia constante en la zona."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una escuela de 600 alumnos, 30 tuvieron conjuntivitis este mes y hoy 12 siguen enfermos. ¿Cuáles son la incidencia del mes y la prevalencia de hoy, por cada 100?",
+      "options": [
+        { "letter": "A", "text": "Incidencia 2 y prevalencia 5" },
+        { "letter": "B", "text": "Incidencia 5 y prevalencia 2" },
+        { "letter": "C", "text": "Incidencia 5 y prevalencia 5" },
+        { "letter": "D", "text": "Incidencia 7 y prevalencia 2" }
+      ],
+      "correct_answer": "B",
+      "hint": "Los casos nuevos del mes van en la incidencia; los que siguen enfermos hoy, en la prevalencia.",
+      "explanation": "Incidencia = 30 ÷ 600 × 100 = 5. Prevalencia de hoy = 12 ÷ 600 × 100 = 2. Sumar los dos grupos o invertirlos confunde casos nuevos con casos existentes."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una ciudad de 100,000 habitantes, 400 personas tuvieron una enfermedad y 8 de ellas murieron. ¿Cuál es la letalidad?",
+      "options": [
+        { "letter": "A", "text": "8 de cada 100 enfermos" },
+        { "letter": "B", "text": "0.4 de cada 100 enfermos" },
+        { "letter": "C", "text": "2 de cada 100 enfermos" },
+        { "letter": "D", "text": "50 de cada 100 enfermos" }
+      ],
+      "correct_answer": "C",
+      "hint": "La población de la ciudad no se usa aquí: solo importan los enfermos.",
+      "explanation": "Letalidad = muertes ÷ enfermos × 100 = 8 ÷ 400 × 100 = 2. El 0.4 es la proporción de enfermos en la ciudad y el 50 sale de dividir al revés."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una ciudad de 200,000 habitantes, una enfermedad causó 30 muertes en un año. ¿Cuál es su tasa de mortalidad por cada 100,000?",
+      "options": [
+        { "letter": "A", "text": "30 por cada 100,000" },
+        { "letter": "B", "text": "15 por cada 100,000" },
+        { "letter": "C", "text": "1.5 por cada 100,000" },
+        { "letter": "D", "text": "150 por cada 100,000" }
+      ],
+      "correct_answer": "B",
+      "hint": "Divide las muertes entre toda la población y multiplica por 100,000.",
+      "explanation": "30 ÷ 200,000 × 100,000 = 15 muertes por cada 100,000 habitantes. Escribir 30 ignora que la ciudad tiene el doble de 100,000."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "La enfermedad A tiene letalidad alta pero casi nadie se contagia; la B tiene letalidad baja pero se contagia a millones. ¿Qué puede pasar?",
+      "options": [
+        { "letter": "A", "text": "A siempre causa más muertes en total" },
+        { "letter": "B", "text": "B puede causar más muertes en total" },
+        { "letter": "C", "text": "Las dos causan las mismas muertes" },
+        { "letter": "D", "text": "B no puede causar ninguna muerte" }
+      ],
+      "correct_answer": "B",
+      "hint": "Las muertes totales dependen de dos cosas: cuántos enferman y qué proporción de ellos muere.",
+      "explanation": "Muertes = enfermos × letalidad. Un porcentaje bajo de millones de enfermos puede ser mucho más que un porcentaje alto de pocos. Por eso la mortalidad de B puede superar a la de A."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una región donde el dengue siempre está presente, este año los casos triplican lo esperado en varios estados. ¿Qué describe mejor la situación?",
+      "options": [
+        { "letter": "A", "text": "Solo una endemia, nada cambió" },
+        { "letter": "B", "text": "Una epidemia sobre una endemia" },
+        { "letter": "C", "text": "Una pandemia, porque son varios estados" },
+        { "letter": "D", "text": "Un brote, porque hay casos relacionados" }
+      ],
+      "correct_answer": "B",
+      "hint": "Hay dos cosas a la vez: la presencia de siempre y un aumento por arriba de lo esperado.",
+      "explanation": "El dengue es endémico porque siempre está presente, pero si los casos superan por mucho lo esperado hay una epidemia. Varios estados de un país no hacen una pandemia."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Dos ciudades tuvieron 900 casos de gripe cada una. La A tiene 30,000 habitantes y la B, 90,000. ¿Qué concluyes?",
+      "options": [
+        { "letter": "A", "text": "Están igual porque tienen los mismos casos" },
+        { "letter": "B", "text": "La A tiene el triple de tasa que la B" },
+        { "letter": "C", "text": "La B está peor porque tiene más habitantes" },
+        { "letter": "D", "text": "No se comparan, la población no importa" }
+      ],
+      "correct_answer": "B",
+      "hint": "Calcula la tasa de cada ciudad por cada 1,000 habitantes y compáralas.",
+      "explanation": "A: 900 ÷ 30,000 × 1,000 = 30 por cada 1,000. B: 900 ÷ 90,000 × 1,000 = 10 por cada 1,000. Los mismos casos en menos gente dan una tasa tres veces mayor."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un hospital calcula una letalidad muy alta para una enfermedad, pero solo atiende los casos más graves. ¿Por qué ese dato no representa a toda la población?",
+      "options": [
+        { "letter": "A", "text": "Faltan los casos leves" },
+        { "letter": "B", "text": "La letalidad no usa a los enfermos" },
+        { "letter": "C", "text": "Debería dividir entre los médicos" },
+        { "letter": "D", "text": "Solo se cuentan casos de este año" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en quiénes quedan fuera del denominador.",
+      "explanation": "Si solo se cuentan los casos graves, el denominador se queda corto: faltan los enfermos leves que nunca llegaron al hospital. Con ellos, la letalidad real sería menor."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un país reduce mucho su mortalidad infantil durante 20 años. ¿Qué indicador tiende a subir?",
+      "options": [
+        { "letter": "A", "text": "La tasa de letalidad" },
+        { "letter": "B", "text": "La incidencia de la gripe" },
+        { "letter": "C", "text": "La esperanza de vida al nacer" },
+        { "letter": "D", "text": "La prevalencia de enfermedades agudas" }
+      ],
+      "correct_answer": "C",
+      "hint": "Si menos bebés mueren antes del año, ¿qué pasa con el promedio de años que vive un recién nacido?",
+      "explanation": "Las muertes de bebés bajan mucho el promedio de años vividos. Si la mortalidad infantil baja, la esperanza de vida al nacer tiende a subir."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En 1854, John Snow marcó en un mapa de Londres las casas con muertes por cólera y vio que se agrupaban junto a una bomba de agua. ¿Qué hizo?",
+      "options": [
+        { "letter": "A", "text": "Ubicar en el espacio los casos" },
+        { "letter": "B", "text": "Un tratamiento con antibióticos" },
+        { "letter": "C", "text": "Una vacuna contra el cólera" },
+        { "letter": "D", "text": "Un cálculo de esperanza de vida" }
+      ],
+      "correct_answer": "A",
+      "hint": "Recuerda las tres preguntas de la epidemiología: quién, dónde y cuándo.",
+      "explanation": "Snow analizó dónde ocurrían los casos (la variable lugar) y encontró la fuente común: el agua de la bomba. Los antibióticos aún no existían."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En la misma población, una enfermedad tiene 200 casos nuevos al año y dura 10 años; otra tiene 2,000 al año y dura una semana. ¿Cuál tendrá mayor prevalencia en un día cualquiera?",
+      "options": [
+        { "letter": "A", "text": "La de 2,000 casos al año" },
+        { "letter": "B", "text": "La que dura 10 años" },
+        { "letter": "C", "text": "Las dos tienen la misma" },
+        { "letter": "D", "text": "Ninguna, la prevalencia no cambia" }
+      ],
+      "correct_answer": "B",
+      "hint": "La prevalencia depende de cuántos casos nuevos aparecen y de cuánto duran.",
+      "explanation": "Como aproximación, prevalencia ≈ incidencia × duración. La primera acumula unos 2,000 enfermos a la vez (200 × 10); la segunda, unos 38, porque cada caso se cura en una semana."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Qué diferencia a la incidencia de la prevalencia?",
+    "options": [
+      { "letter": "A", "text": "La incidencia cuenta solo las muertes" },
+      { "letter": "B", "text": "La incidencia cuenta solo los casos nuevos" },
+      { "letter": "C", "text": "La prevalencia cuenta solo los casos nuevos" },
+      { "letter": "D", "text": "Son lo mismo con distinto nombre" }
+    ],
+    "correct_answer": "B",
+    "explanation": "La incidencia cuenta los casos nuevos de un periodo; la prevalencia, todos los casos que existen en un momento, nuevos y viejos. Las muertes se miden con la mortalidad."
+  }
+}

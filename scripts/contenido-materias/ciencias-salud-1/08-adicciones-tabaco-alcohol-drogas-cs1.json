@@ -1,0 +1,979 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "adicciones-tabaco-alcohol-drogas-cs1",
+  "order_steps": {
+    "prompt": "Ordena cómo se va formando una dependencia a una sustancia",
+    "steps": [
+      "Probar la sustancia por curiosidad o por presión del grupo",
+      "La dopamina se dispara y el cerebro lo registra como premio",
+      "Con el uso repetido aparece la tolerancia: se necesita más",
+      "Al dejarla llegan síntomas de abstinencia y ganas intensas"
+    ],
+    "completion_feedback": "Primero el **consumo inicial**, luego la **dopamina** marca el premio, el cerebro se adapta con **tolerancia** y al dejarla aparece la **abstinencia**. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Shoko Ieiri y el cigarro que ya había dejado",
+        "content": "En Jujutsu Kaisen, Shoko Ieiri es la doctora de la Escuela de Hechicería de Tokio: la que cura a todos con su técnica maldita inversa. En los recuerdos de su época de estudiante, cuando iba con Gojo y Geto, ya fumaba, aunque era menor de edad. Después lo dejó: según los datos oficiales del manga, llevaba cinco años sin fumar. Pero durante el incidente de Shibuya, con la escuela en crisis y después de todo lo que le tocó ver, aparece otra vez con un cigarro. No hay nada de cool en esa escena: está agotada y preocupada. Piénsalo: cinco años sin fumar, y bastó un momento de muchísimo estrés para volver. No le pasó por débil ni por mala persona: lo que empezó en la escuela dejó una huella en su cerebro que seguía ahí, esperando. Ahora imagina qué la ayudó a dejarlo durante esos años: una amiga como su senpai Utahime, que se preocupa por ella. Por qué una sustancia engancha así, por qué cuesta tanto dejarla y quién te puede ayudar es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Lo de Shoko ES una adicción",
+        "content": "Lo que acabas de ver con Shoko es exactamente cómo funciona una **adicción**. La nicotina es una **droga**: según la OMS, toda sustancia que al entrar al organismo **altera el sistema nervioso central** y puede crear **dependencia**. Al consumirla, el **circuito de recompensa** libera **dopamina**, la señal de «esto se siente bien, repítelo». Con el uso repetido llega la **tolerancia** (necesitar más para sentir lo mismo) y, al dejarla, la **abstinencia** (irritabilidad, ansiedad, ganas intensas de consumir). La adicción es una **enfermedad crónica** que puede tener **recaídas**, como la de Shoko en Shibuya. No es falta de voluntad, y tiene tratamiento."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — imagina la plática de Shoko a los de primer año",
+        "content": "Imagina que Shoko da una plática de prevención a Yuji, Megumi y Nobara, y les pide clasificar sustancias por su efecto en el sistema nervioso.\n\n**Paso 1:** El **alcohol** vuelve más lentos los reflejos y el juicio → es **depresora**.\n**Paso 2:** La **nicotina** del cigarro y del vapeador acelera el corazón → es **estimulante**.\n**Paso 3:** La **cocaína** y la **metanfetamina** («cristal») aceleran todo el cuerpo → también son **estimulantes**.\n**Paso 4:** El **LSD** y los hongos alucinógenos distorsionan lo que ves y oyes → son **alucinógenas** o perturbadoras.\n**Paso 5:** Nobara pregunta si lo legal es seguro → Shoko responde que **legal no significa inofensivo**: el tabaco y el alcohol causan millones de muertes al año.\n\nResultado: tres grupos por su efecto, y ninguno es seguro."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Según la OMS, una **droga** es toda sustancia que altera el **sistema nervioso central** y puede crear **dependencia**. **Tolerancia**: necesitar más para el mismo efecto. **Abstinencia**: malestar al dejarla. Por su efecto son **depresoras** (alcohol), **estimulantes** (nicotina, cocaína) o **alucinógenas**. Ayuda gratis 24 h: **Línea de la Vida 800 911 2000**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en Shoko: tolerancia es necesitar más, abstinencia es sentirte mal al dejarlo y recaída es volver tras años sin consumir. Y ojo: el alcohol es depresor, aunque en una fiesta parezca que «anima»."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una dependencia se arma eslabón por eslabón, y la huella en el cerebro puede durar años.",
+        "data": {
+          "intro": "Sigue cómo la nicotina enganchó a Shoko desde que era estudiante, eslabón por eslabón.",
+          "visual": "chain",
+          "steps": [
+            { "text": "De estudiante prueba el cigarro: la nicotina llega al cerebro en segundos y libera dopamina en el circuito de recompensa." },
+            { "text": "El cerebro aprende «esto se siente bien» y lo asocia con momentos y lugares: el descanso, los amigos, el estrés." },
+            { "text": "Con el uso repetido el cerebro se adapta: aparece la tolerancia y fumar se vuelve necesario para sentirse normal." },
+            { "text": "Al dejarlo llega la abstinencia: irritabilidad, ansiedad y ganas intensas. Imagina que, con el apoyo de una amiga como Utahime, Shoko la supera." },
+            { "text": "Años después, un estrés enorme reactiva la huella: es una recaída, parte de una enfermedad crónica, no un fracaso." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Depresora, estimulante o alucinógena?",
+        "content": "Depresoras: hacen más lento el sistema nervioso central. Estimulantes: lo aceleran. Alucinógenas o perturbadoras: distorsionan la percepción.",
+        "data": {
+          "prompt": "Arrastra cada sustancia de la plática de Shoko al grupo que le corresponde.",
+          "buckets": ["Depresora", "Estimulante", "Alucinógena"],
+          "items": [
+            { "t": "Alcohol", "b": 0 },
+            { "t": "Fentanilo (un opioide)", "b": 0 },
+            { "t": "Nicotina del cigarro", "b": 1 },
+            { "t": "Metanfetamina («cristal»)", "b": 1 },
+            { "t": "LSD", "b": 2 },
+            { "t": "Hongos alucinógenos", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Tolerancia", "b": "Necesitar más cada vez" },
+            { "a": "Abstinencia", "b": "Malestar al dejarla" },
+            { "a": "Recaída", "b": "Volver tras dejarla" },
+            { "a": "Dopamina", "b": "Señal química de premio" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia de Shoko?",
+        "left_label": "Shoko Ieiri",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La nicotina que la enganchó", "right": "Droga estimulante" },
+          { "left": "Una amiga que la apoya a dejarlo", "right": "Factor de protección" },
+          { "left": "El estrés que la hizo volver", "right": "Factor de riesgo" },
+          { "left": "El cigarro otra vez en Shibuya", "right": "Recaída" }
+        ],
+        "completion_feedback": "La nicotina es una **droga estimulante**, la amiga que apoya es un **factor de protección**, el estrés un **factor de riesgo** y volver a fumar, una **recaída**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Según la OMS, ¿qué hace que la nicotina del cigarro de Shoko sea una droga?",
+          "options": [
+            { "letter": "A", "text": "Que se vende en tiendas a cualquier persona" },
+            { "letter": "B", "text": "Que altera el sistema nervioso central" },
+            { "letter": "C", "text": "Que está prohibida para todos en México" },
+            { "letter": "D", "text": "Que solo la consumen las personas adultas" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La OMS define droga como toda sustancia que altera el sistema nervioso central y puede crear dependencia. Que sea legal o ilegal no cambia nada: la nicotina es droga aunque el tabaco sea legal para adultos.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tras cinco años sin fumar, Shoko vuelve al cigarro durante una crisis. ¿Cómo se llama eso?",
+          "options": [
+            { "letter": "A", "text": "Una tolerancia" },
+            { "letter": "B", "text": "Una intoxicación" },
+            { "letter": "C", "text": "Una recaída" },
+            { "letter": "D", "text": "Un síndrome de abstinencia" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Volver a consumir después de un tiempo sin hacerlo es una recaída. Es común en las adicciones porque son enfermedades crónicas, y no borra lo avanzado: se retoma el tratamiento.",
+          "difficulty": 2
+        },
+        {
+          "question": "Al dejar el cigarro, alguien se siente irritable, ansioso y con ganas intensas de fumar. ¿Qué está viviendo?",
+          "options": [
+            { "letter": "A", "text": "Tolerancia a la nicotina" },
+            { "letter": "B", "text": "Síndrome de abstinencia" },
+            { "letter": "C", "text": "Intoxicación por nicotina" },
+            { "letter": "D", "text": "Una adicción conductual" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Son síntomas de abstinencia: el cerebro, adaptado a la nicotina, reacciona cuando le falta. La tolerancia es otra cosa: necesitar más para sentir lo mismo.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la plática de Shoko, ¿en qué grupo va el alcohol?",
+          "options": [
+            { "letter": "A", "text": "Depresoras" },
+            { "letter": "B", "text": "Estimulantes" },
+            { "letter": "C", "text": "Alucinógenas" },
+            { "letter": "D", "text": "Ninguno, porque es legal" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El alcohol deprime el sistema nervioso central: vuelve lentos los reflejos, la coordinación y el juicio. Que al principio parezca que «anima» no lo hace estimulante, y ser legal no lo saca de la clasificación.",
+          "difficulty": 2
+        },
+        {
+          "question": "Imagina que Utahime apoyó a Shoko para dejar de fumar y así lo logró durante años. ¿Qué sería Utahime en su historia?",
+          "options": [
+            { "letter": "A", "text": "Un factor de riesgo" },
+            { "letter": "B", "text": "Una presión de grupo" },
+            { "letter": "C", "text": "Un síntoma de abstinencia" },
+            { "letter": "D", "text": "Un factor de protección" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Una persona cercana que te apoya para no consumir es un factor de protección: reduce la probabilidad de consumo. El estrés y la presión de grupo, en cambio, son factores de riesgo.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La cerveza que también juega en el partido",
+        "content": "Sábado de partido de la Selección y toda la familia está en casa de tu tía. En el medio tiempo, entre la repetición del gol y el análisis, salen tres anuncios de cerveza seguidos: amigos abrazados, goles, risas, un estadio lleno. La misma marca aparece en las vallas de la cancha y en el vaso gigante que levanta un aficionado en la tribuna. Tu primo de 16 años saca una lata de la hielera y dice: «Una no hace nada, todos lo hacen». Tu tío se ríe; nadie le dice nada. Pero tú te acuerdas del Mundial de Qatar 2022, cuando prohibieron vender cerveza con alcohol en los estadios dos días antes de la inauguración, y de que ningún anuncio enseña lo que también pasa: el choque de regreso a casa, la pelea en la tribuna, la persona que ya no disfruta un partido si no bebe. El fútbol y el alcohol parecen inseparables, aunque uno es un deporte y el otro una droga. Por qué una sustancia legal también engancha y daña es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La cerveza del medio tiempo ES una droga",
+        "content": "Lo que acabas de ver en el partido es exactamente cómo funcionan las **drogas legales**. El alcohol es una **droga depresora**: hace más lento el **sistema nervioso central**, por eso baja los reflejos y el juicio. Que sea **legal** para mayores de 18 no significa que sea **inofensivo**: en 2023 la OMS declaró que no hay un nivel de consumo seguro para la salud, y se puede pasar del **uso** al **abuso** (consumo que ya causa problemas) y a la **dependencia** (no poder controlarlo pese al daño). La **publicidad** y la idea de que «todos lo hacen» son **factores de riesgo**: hacen que beber parezca normal y que se empiece más temprano."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el aficionado que pasó del uso a la dependencia",
+        "content": "Imagina a Rodrigo, aficionado de toda la vida. Identifica en qué etapa está en cada temporada.\n\n**Paso 1:** Bebe de vez en cuando en una boda, sin problemas evidentes → es **uso** (y aun así tiene riesgos).\n**Paso 2:** Empieza a beber en cada partido y falta al trabajo los lunes → ya es **abuso**: el consumo le causa problemas.\n**Paso 3:** Nota que necesita más para sentir el mismo efecto → apareció la **tolerancia**.\n**Paso 4:** Si un día no bebe, le tiemblan las manos y suda → es **abstinencia**, señal de **dependencia física**.\n**Paso 5:** Siente que sin beber no puede disfrutar un partido → **dependencia psicológica**.\n\nResultado: Rodrigo necesita ayuda profesional; su familia llama a la **Línea de la Vida, 800 911 2000**."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Según la OMS, una **droga** es toda sustancia que altera el **sistema nervioso central** y puede crear **dependencia**. **Tolerancia**: necesitar más para el mismo efecto. **Abstinencia**: malestar al dejarla. Por su efecto son **depresoras** (alcohol), **estimulantes** (nicotina, cocaína) o **alucinógenas**. Ayuda gratis 24 h: **Línea de la Vida 800 911 2000**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "En el examen el alcohol va con las depresoras, aunque en el estadio parezca que «prende» a la porra. Y legal no es lo mismo que inofensivo: el tabaco y el alcohol son legales para adultos y están entre las drogas que más muertes causan."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Los factores de protección no garantizan nada, pero bajan mucho el riesgo de empezar a consumir.",
+        "data": {
+          "intro": "Tu primo de 16 está rodeado de factores de riesgo. El medidor muestra su riesgo de empezar a beber. Mira cómo lo bajan los factores de protección.",
+          "visual": "bar",
+          "start": 85,
+          "steps": [
+            { "text": "Tu tía le explica, sin regaños, que el alcohol es una droga depresora y que a su edad afecta un cerebro que sigue en desarrollo.", "delta": -20 },
+            { "text": "Tú le dices que en tu grupo casi nadie bebe: el «todos lo hacen» de los anuncios es exagerado.", "delta": -15 },
+            { "text": "Entra al equipo de fútbol de la escuela: tiene metas, horarios y amigos que no beben.", "delta": -20 },
+            { "text": "Sus papás ponen una regla clara: en la casa no se le da alcohol a menores, y platican de por qué.", "delta": -15 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Factor de riesgo o de protección?",
+        "content": "Riesgo: lo que aumenta la probabilidad de empezar a consumir. Protección: lo que la reduce.",
+        "data": {
+          "prompt": "Arrastra cada situación del mundo del fútbol a su categoría.",
+          "buckets": ["Factor de riesgo", "Factor de protección"],
+          "items": [
+            { "t": "Anuncios que unen cerveza y goles", "b": 0 },
+            { "t": "«Una no hace nada, todos lo hacen»", "b": 0 },
+            { "t": "Probar el alcohol desde muy joven", "b": 0 },
+            { "t": "Entrenar con metas en un equipo", "b": 1 },
+            { "t": "Familia que platica sin regaños", "b": 1 },
+            { "t": "Amigos que respetan un «no, gracias»", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Uso", "b": "Consumo ocasional" },
+            { "a": "Abuso", "b": "Consumo que causa daños" },
+            { "a": "Dependencia", "b": "No poder controlarlo" },
+            { "a": "Depresora", "b": "Frena el sistema nervioso" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del partido en casa?",
+        "left_label": "Partido en casa",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La lata que saca tu primo", "right": "Droga depresora" },
+          { "left": "Anuncios de goles y cerveza", "right": "Factor de riesgo" },
+          { "left": "No disfrutar el partido sin beber", "right": "Dependencia psicológica" },
+          { "left": "Se vende en el estadio y aun así daña", "right": "Legal no es inofensivo" }
+        ],
+        "completion_feedback": "La cerveza es una **droga depresora**, la publicidad es un **factor de riesgo**, no disfrutar sin beber es **dependencia psicológica** y ser legal no la vuelve inofensiva. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "El alcohol que anuncian en el medio tiempo es una droga…",
+          "options": [
+            { "letter": "A", "text": "Estimulante" },
+            { "letter": "B", "text": "Depresora" },
+            { "letter": "C", "text": "Alucinógena" },
+            { "letter": "D", "text": "Sin efecto en el cerebro" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El alcohol hace más lento el sistema nervioso central: baja los reflejos, la coordinación y el juicio. Por eso se clasifica como depresora, aunque en una fiesta parezca que «prende».",
+          "difficulty": 1
+        },
+        {
+          "question": "Rodrigo bebe en cada partido y por eso falta al trabajo los lunes. ¿En qué etapa está?",
+          "options": [
+            { "letter": "A", "text": "Uso ocasional" },
+            { "letter": "B", "text": "Tolerancia" },
+            { "letter": "C", "text": "Abuso" },
+            { "letter": "D", "text": "Abstinencia" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Cuando el consumo ya causa problemas en el trabajo, la escuela, la salud o la familia, es abuso. El uso ocasional no trae esas consecuencias, y la abstinencia aparece al dejar de consumir.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu primo dice: «Es legal, entonces no hace daño». ¿Qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "Si es legal, la OMS lo considera seguro" },
+            { "letter": "B", "text": "Solo dañan las drogas ilegales" },
+            { "letter": "C", "text": "El alcohol no es droga por ser legal" },
+            { "letter": "D", "text": "Legal no significa inofensivo" }
+          ],
+          "correct_answer": "D",
+          "explanation": "El alcohol es legal para mayores de 18 y aun así es una droga que daña: causa accidentes, dependencia y enfermedades. En 2023 la OMS declaró que no hay un nivel de consumo seguro para la salud.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Por qué la publicidad que une alcohol y goles es un factor de riesgo?",
+          "options": [
+            { "letter": "A", "text": "Hace que beber parezca normal" },
+            { "letter": "B", "text": "Explica bien los daños del alcohol" },
+            { "letter": "C", "text": "Prohíbe la venta a menores de edad" },
+            { "letter": "D", "text": "Vuelve al alcohol una droga estimulante" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Al asociar el alcohol con amistad, fiesta y triunfos, la publicidad lo normaliza y lo hace atractivo, lo que aumenta la probabilidad de empezar a beber, y más temprano. No cambia su clasificación: sigue siendo depresora.",
+          "difficulty": 2
+        },
+        {
+          "question": "A Rodrigo le tiemblan las manos y suda si un día no bebe. ¿Qué indica?",
+          "options": [
+            { "letter": "A", "text": "Dependencia física" },
+            { "letter": "B", "text": "Un simple cansancio" },
+            { "letter": "C", "text": "Tolerancia al alcohol" },
+            { "letter": "D", "text": "Dependencia psicológica" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Síntomas en el cuerpo al dejar de consumir, como temblor y sudor, son abstinencia y señalan dependencia física. La psicológica es la necesidad emocional de consumir para sentirse bien.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "La pijamada después del concierto",
+        "content": "Saliste del concierto con la voz destrozada y el lightstick todavía prendido. Una de las fans con las que fuiste organiza una pijamada en su casa para seguir con los fanchants y ver los fancams. Al llegar, alguien saca un vapeador de sabor sandía y otra persona saca unas latas de cerveza. «Es solo vapor de agua, huele a dulce», dice una. «Si eres fan de verdad, celebra con nosotras», dice otra, y todas voltean a verte. Sientes el estómago apretado: quieres seguir en el grupo, compartir la emoción del concierto y no ser la aburrida. Pero también sabes que no quieres. Nadie te obliga a gritos; la presión es más sutil: miradas, risitas, la idea de que todas lo hacen. Y el vapeador, con su olor a dulce y su diseño bonito, parece un juguete. Por qué el grupo empuja tanto, qué hay de verdad en ese «vapor de agua» y cómo decir que no sin perder a tus amigas es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La pijamada ES presión de grupo",
+        "content": "Lo que acabas de ver en la pijamada es exactamente la **presión de grupo**: la influencia de los demás para que hagas algo y así te acepten. Es un **factor de riesgo** fuerte en la adolescencia porque la **corteza prefrontal**, la que frena los impulsos, termina de madurar cerca de los 25 años, mientras el **circuito de recompensa** ya responde con fuerza. El vapeador no echa «vapor de agua»: produce un **aerosol** que casi siempre lleva **nicotina**, una droga **estimulante** muy adictiva, y otras sustancias dañinas; en México la ley **prohíbe** venderlo y distribuirlo. Decir **no** de forma **asertiva** (clara, firme y sin agredir) es un **factor de protección**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — cómo decir que no en la pijamada",
+        "content": "Te vuelven a ofrecer el vapeador. Resuelve la situación con una **respuesta asertiva**.\n\n**Paso 1:** Di un no claro y corto: «No, gracias». Sin pedir perdón ni dar mil explicaciones.\n**Paso 2:** Si insisten, repite lo mismo con calma: es la técnica del **disco rayado**.\n**Paso 3:** Propón otra cosa: «Mejor pongamos el fancam del encore» → cambias el foco **sin pelear**.\n**Paso 4:** Busca una **aliada**: casi siempre hay alguien más que tampoco quiere.\n**Paso 5:** Si la presión sigue, te vas y llamas a un **adulto de confianza**; si alguien se desmaya o no responde, al **911**.\n\nResultado: dijiste que no sin ofender, y en un grupo sano eso se respeta."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Según la OMS, una **droga** es toda sustancia que altera el **sistema nervioso central** y puede crear **dependencia**. **Tolerancia**: necesitar más para el mismo efecto. **Abstinencia**: malestar al dejarla. Por su efecto son **depresoras** (alcohol), **estimulantes** (nicotina, cocaína) o **alucinógenas**. Ayuda gratis 24 h: **Línea de la Vida 800 911 2000**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Si el caso dice «todos lo hacen», «si eres fan de verdad» o hay miradas del grupo, es presión de grupo: factor de riesgo. Decir que no de forma clara y sin agredir es asertividad: factor de protección."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La presión de grupo pega fuerte porque el freno del cerebro adolescente todavía está en construcción.",
+        "data": {
+          "intro": "Sigue lo que pasa dentro de tu cerebro desde que alguien saca el vapeador en la pijamada.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Tu circuito de recompensa ya viene encendido: el concierto, el grupo y la emoción liberaron mucha dopamina." },
+            { "text": "Te ofrecen el vapeador: tu cerebro adolescente le da muchísimo peso a que el grupo te acepte." },
+            { "text": "Tu corteza prefrontal, que aún madura, frena el impulso: recuerdas que la nicotina es adictiva y que no quieres." },
+            { "text": "Dices «no, gracias» y propones otra cosa. Cada vez que practicas esa respuesta, la siguiente te cuesta menos." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Presión de grupo o respuesta asertiva?",
+        "content": "Presión de grupo: frases y gestos que te empujan a consumir para encajar. Respuesta asertiva: decir que no de forma clara, firme y sin agredir.",
+        "data": {
+          "prompt": "Arrastra cada cosa que pasa en la pijamada a su categoría.",
+          "buckets": ["Presión de grupo", "Respuesta asertiva"],
+          "items": [
+            { "t": "«Si eres fan de verdad, celebra»", "b": 0 },
+            { "t": "Risitas cuando alguien dice que no", "b": 0 },
+            { "t": "«Es solo vapor de agua, no pasa nada»", "b": 0 },
+            { "t": "«No, gracias», con calma y firmeza", "b": 1 },
+            { "t": "Proponer ver los fancams del encore", "b": 1 },
+            { "t": "Repetir el no sin pelear", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Presión de grupo", "b": "Influencia para encajar" },
+            { "a": "Asertividad", "b": "No claro, sin agredir" },
+            { "a": "Corteza prefrontal", "b": "Frena los impulsos" },
+            { "a": "Nicotina", "b": "Lo adictivo del vapeador" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la pijamada?",
+        "left_label": "Pijamada de fans",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "«Si eres fan de verdad, celebra»", "right": "Presión de grupo" },
+          { "left": "«Es solo vapor de agua»", "right": "Información falsa" },
+          { "left": "Lo que lleva el vapeador", "right": "Nicotina, droga estimulante" },
+          { "left": "«No, gracias», con calma", "right": "Respuesta asertiva" }
+        ],
+        "completion_feedback": "La frase del fandom es **presión de grupo**, lo del «vapor de agua» es **información falsa**, el vapeador lleva **nicotina** y tu «no, gracias» es una **respuesta asertiva**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En la pijamada te dicen: «Si eres fan de verdad, celebra con nosotras». ¿Qué es eso?",
+          "options": [
+            { "letter": "A", "text": "Un factor de protección" },
+            { "letter": "B", "text": "Presión de grupo" },
+            { "letter": "C", "text": "Una respuesta asertiva" },
+            { "letter": "D", "text": "Un síntoma de abstinencia" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Usar la pertenencia al grupo para empujarte a consumir es presión de grupo, un factor de riesgo. La respuesta asertiva sería tu «no, gracias», y eso sí es un factor de protección.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué sustancia adictiva suelen llevar los vapeadores, aunque huelan a dulce?",
+          "options": [
+            { "letter": "A", "text": "Vapor de agua" },
+            { "letter": "B", "text": "Vitaminas" },
+            { "letter": "C", "text": "Nicotina" },
+            { "letter": "D", "text": "Cafeína" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El vapeador produce un aerosol que casi siempre lleva nicotina, una droga estimulante muy adictiva, además de otras sustancias dañinas. No es vapor de agua, y el sabor dulce no lo vuelve inofensivo.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué la presión de grupo pega tan fuerte en la adolescencia?",
+          "options": [
+            { "letter": "A", "text": "La corteza prefrontal aún madura" },
+            { "letter": "B", "text": "El cerebro adolescente ya no cambia" },
+            { "letter": "C", "text": "La dopamina no existe antes de los 18" },
+            { "letter": "D", "text": "El circuito de recompensa está apagado" }
+          ],
+          "correct_answer": "A",
+          "explanation": "La corteza prefrontal, que frena los impulsos, termina de madurar cerca de los 25 años, mientras el circuito de recompensa ya responde con fuerza. Por eso ser aceptado pesa tanto.",
+          "difficulty": 3
+        },
+        {
+          "question": "Te vuelven a ofrecer el vapeador. ¿Qué respuesta es asertiva?",
+          "options": [
+            { "letter": "A", "text": "Aceptarlo para no quedar mal" },
+            { "letter": "B", "text": "«No, gracias», con calma" },
+            { "letter": "C", "text": "Gritarles e insultarlas a todas" },
+            { "letter": "D", "text": "Quedarte callada y tomarlo" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La asertividad es decir lo que piensas de forma clara y firme, sin agredir ni someterte. Ceder o quedarte callada es pasivo, e insultar es agresivo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una amiga dice: «El vapeador es solo agua con sabor, así que no es droga». ¿Qué está mal?",
+          "options": [
+            { "letter": "A", "text": "Nada, el vapor de agua no altera el cerebro" },
+            { "letter": "B", "text": "Solo que el sabor sandía es el más dañino" },
+            { "letter": "C", "text": "Suele llevar nicotina, que sí es droga" },
+            { "letter": "D", "text": "Que es droga únicamente si lo usa un adulto" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La nicotina altera el sistema nervioso central y crea dependencia: es una droga, sin importar el sabor ni quién la use. Además, en México la ley prohíbe vender y distribuir vapeadores.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Los deseos de Genshin Impact",
+        "content": "Sale el banner del personaje que llevas meses esperando en Genshin Impact. Juntaste Protogemas con misiones diarias y eventos, y empiezas a pedir deseos. Cada tirada tiene su animación: la estrella cae, el brillo cambia de color y por un segundo el corazón se te acelera porque quizá esta sí sea dorada. Casi nunca lo es. Pero esa posibilidad es justo lo que engancha: no sabes cuándo llegará el premio, así que sigues. Cuando se te acaban las Protogemas, piensas en pedirle la tarjeta a tu mamá «solo esta vez». Te desvelas pensando en la siguiente tirada, dejas la tarea para después y te pones de malas si alguien te interrumpe. Y aunque el juego te asegura un personaje de 5 estrellas a más tardar en el deseo 90, hay un 50/50 de que no sea el que buscabas. No hay ninguna sustancia de por medio, pero tu cerebro reacciona de una forma muy parecida. Cuándo un juego deja de ser diversión y se vuelve una adicción es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Los deseos de Genshin SON una adicción conductual",
+        "content": "Lo que acabas de ver con los deseos es exactamente una **adicción conductual**: una adicción a una **conducta**, no a una sustancia. Usa el mismo **circuito de recompensa**: la **dopamina** se dispara sobre todo cuando **esperas** un premio que **no sabes cuándo llegará** (**recompensa variable**), igual que en las máquinas de apuestas. La OMS reconoce en la **CIE-11** el **trastorno por juego de apuestas** y el **trastorno por videojuegos**: **pérdida de control**, darle **prioridad** al juego sobre todo lo demás y **seguir pese a las consecuencias**, normalmente durante al menos **12 meses**. Jugar mucho no es lo mismo que tener un trastorno."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿afición o trastorno por videojuegos?",
+        "content": "Compara a dos jugadores de Genshin con los criterios de la OMS.\n\n**Paso 1:** Fer juega un rato diario, hace la tarea, duerme bien y deja el juego cuando quiere → tiene **control**.\n**Paso 2:** Nico se promete «un deseo más» y termina a las 3 a. m. → **pérdida de control**.\n**Paso 3:** Nico dejó el fútbol y casi no ve a sus amigos por juntar Protogemas → el juego tiene **prioridad** sobre todo.\n**Paso 4:** Reprueba dos materias y gasta dinero que no es suyo, pero sigue → **continúa pese a las consecuencias**.\n**Paso 5:** Esto lleva más de un año → el patrón encaja con un **trastorno por videojuegos**, que solo un profesional puede diagnosticar.\n\nResultado: Fer tiene una afición; Nico necesita ayuda, y puede empezar por la **Línea de la Vida**."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Según la OMS, una **droga** es toda sustancia que altera el **sistema nervioso central** y puede crear **dependencia**. **Tolerancia**: necesitar más para el mismo efecto. **Abstinencia**: malestar al dejarla. Por su efecto son **depresoras** (alcohol), **estimulantes** (nicotina, cocaína) o **alucinógenas**. Ayuda gratis 24 h: **Línea de la Vida 800 911 2000**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Si preguntan por una adicción sin sustancia, como las apuestas o los videojuegos, es una adicción conductual. La clave no son las horas de juego: es la pérdida de control y seguir pese al daño."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Recuperar el control es un proceso: puede haber tropiezos, y una recaída no borra lo avanzado.",
+        "data": {
+          "intro": "Nico quiere recuperar el control de su tiempo y su dinero. El medidor muestra cuánto control tiene. Sigue sus decisiones.",
+          "visual": "bar",
+          "start": 15,
+          "steps": [
+            { "text": "Le cuenta a su papá cuánto ha gastado, en vez de esconderlo: pedir ayuda es el primer paso.", "delta": 20 },
+            { "text": "Quitan la tarjeta guardada de la cuenta y activan el control parental para las compras.", "delta": 20 },
+            { "text": "Pone horario: juega después de la tarea y deja el celular fuera del cuarto para dormir.", "delta": 20 },
+            { "text": "Sale un banner nuevo y vuelve a desvelarse una noche: es una recaída, no el fin del camino.", "delta": -15 },
+            { "text": "Con apoyo de una psicóloga retoma su plan y vuelve al fútbol con sus amigos: otras actividades también dan recompensa.", "delta": 25 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Afición sana o señal de alerta?",
+        "content": "Afición sana: juegas con control y el juego convive con la escuela, el sueño y los amigos. Señal de alerta: pérdida de control o seguir pese al daño.",
+        "data": {
+          "prompt": "Arrastra cada conducta de un jugador de Genshin a su categoría.",
+          "buckets": ["Afición sana", "Señal de alerta"],
+          "items": [
+            { "t": "Deja el juego cuando quiere", "b": 0 },
+            { "t": "Junta Protogemas sin gastar dinero", "b": 0 },
+            { "t": "Juega con amigos y también sale con ellos", "b": 0 },
+            { "t": "Usa la tarjeta familiar sin permiso", "b": 1 },
+            { "t": "Se enoja mucho si no puede jugar", "b": 1 },
+            { "t": "Deja de dormir por «un deseo más»", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Adicción conductual", "b": "Adicción sin sustancia" },
+            { "a": "Recompensa variable", "b": "Premio impredecible" },
+            { "a": "CIE-11", "b": "Clasificación de la OMS" },
+            { "a": "Dopamina", "b": "Señal química de premio" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de los deseos de Genshin?",
+        "left_label": "Deseos de Genshin",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "No saber cuándo sale el 5 estrellas", "right": "Recompensa variable" },
+          { "left": "«Un deseo más» a las 3 a. m.", "right": "Pérdida de control" },
+          { "left": "Dejar la tarea y a los amigos", "right": "Prioridad al juego" },
+          { "left": "Seguir aunque repruebes", "right": "Continuar pese al daño" }
+        ],
+        "completion_feedback": "El premio incierto es **recompensa variable**, el «uno más» es **pérdida de control**, dejarlo todo es darle **prioridad** al juego y seguir pese a reprobar completa el cuadro. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Una adicción a los videojuegos o a las apuestas, sin ninguna sustancia, se llama…",
+          "options": [
+            { "letter": "A", "text": "Dependencia física" },
+            { "letter": "B", "text": "Síndrome de abstinencia" },
+            { "letter": "C", "text": "Adicción conductual" },
+            { "letter": "D", "text": "Droga alucinógena" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Una adicción conductual es la dependencia a una conducta, como apostar o jugar, sin sustancia de por medio. Usa el mismo circuito de recompensa que las drogas.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué los deseos de un juego gacha enganchan tanto?",
+          "options": [
+            { "letter": "A", "text": "El premio llega sin saber cuándo" },
+            { "letter": "B", "text": "El premio llega siempre igual" },
+            { "letter": "C", "text": "Bajan la dopamina del cerebro" },
+            { "letter": "D", "text": "El juego siempre da lo que buscas" }
+          ],
+          "correct_answer": "A",
+          "explanation": "La recompensa variable, un premio que no sabes cuándo llegará, dispara mucha dopamina en la espera y te hace seguir intentando. Es el mismo mecanismo de las máquinas de apuestas.",
+          "difficulty": 2
+        },
+        {
+          "question": "Mateo juega cinco horas los sábados, pero hace la tarea, duerme bien y deja el juego cuando quiere. Según la OMS…",
+          "options": [
+            { "letter": "A", "text": "Ya tiene trastorno por videojuegos" },
+            { "letter": "B", "text": "No cumple el patrón de trastorno" },
+            { "letter": "C", "text": "Tiene dependencia física al juego" },
+            { "letter": "D", "text": "Las horas bastan para diagnosticarlo" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El trastorno por videojuegos no se mide en horas: requiere pérdida de control, darle prioridad al juego sobre todo y seguir pese a las consecuencias. Mateo mantiene el control.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿En qué clasificación de la OMS aparece el trastorno por videojuegos?",
+          "options": [
+            { "letter": "A", "text": "La NOM-028 de adicciones" },
+            { "letter": "B", "text": "La Ley General de Salud" },
+            { "letter": "C", "text": "La Declaración de Alma-Ata" },
+            { "letter": "D", "text": "La CIE-11" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La CIE-11, la Clasificación Internacional de Enfermedades de la OMS, incluye el trastorno por videojuegos y el trastorno por juego de apuestas. La NOM-028 y la Ley General de Salud son normas mexicanas, no de la OMS.",
+          "difficulty": 2
+        },
+        {
+          "question": "Nico llevaba semanas sin gastar, pero se desvela otra vez con un banner nuevo. ¿Qué le conviene hacer?",
+          "options": [
+            { "letter": "A", "text": "Rendirse: ya no tiene remedio" },
+            { "letter": "B", "text": "Esconderlo para que nadie se entere" },
+            { "letter": "C", "text": "Gastar más para acabar de una vez" },
+            { "letter": "D", "text": "Retomar su plan y pedir apoyo" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Una recaída es parte común del proceso y no borra lo avanzado. Lo útil es retomar el plan y apoyarse en su familia o en un profesional, no esconderlo ni rendirse.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "Según la OMS, ¿qué es una droga?",
+      "options": [
+        { "letter": "A", "text": "Solo una sustancia prohibida por la ley" },
+        { "letter": "B", "text": "Una sustancia que altera el sistema nervioso central" },
+        { "letter": "C", "text": "Cualquier medicamento que receta un médico de confianza" },
+        { "letter": "D", "text": "Una sustancia natural que nunca le hace daño al cuerpo" }
+      ],
+      "correct_answer": "B",
+      "hint": "La definición no depende de si la sustancia es legal: se fija en lo que le hace al cerebro.",
+      "explanation": "La OMS define droga como toda sustancia que, al entrar al organismo, altera el sistema nervioso central y puede crear dependencia. Puede ser legal o ilegal, natural o sintética."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué es la tolerancia a una droga?",
+      "options": [
+        { "letter": "A", "text": "Malestar físico que aparece al dejar de consumir" },
+        { "letter": "B", "text": "Necesitar más sustancia para el mismo efecto" },
+        { "letter": "C", "text": "Capacidad de consumir sin que nunca te haga daño" },
+        { "letter": "D", "text": "Respeto hacia quienes deciden no consumir" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué pasa cuando el cerebro ya se acostumbró a la sustancia.",
+      "explanation": "La tolerancia es la adaptación del cuerpo: cada vez se necesita más para sentir el mismo efecto. El malestar al dejar de consumir es la abstinencia, otro concepto."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué neurotransmisor se relaciona con el circuito de recompensa del cerebro?",
+      "options": [
+        { "letter": "A", "text": "Insulina" },
+        { "letter": "B", "text": "Hemoglobina" },
+        { "letter": "C", "text": "Dopamina" },
+        { "letter": "D", "text": "Adrenalina" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la señal química que le dice al cerebro «esto se siente bien, repítelo».",
+      "explanation": "La dopamina es el neurotransmisor del circuito de recompensa. Las drogas la disparan mucho más que las recompensas naturales. La insulina es una hormona y la hemoglobina transporta oxígeno."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "Por su efecto en el sistema nervioso, ¿en qué grupo se clasifica la cocaína?",
+      "options": [
+        { "letter": "A", "text": "Depresoras" },
+        { "letter": "B", "text": "Estimulantes" },
+        { "letter": "C", "text": "Alucinógenas" },
+        { "letter": "D", "text": "Inhalables" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate si acelera o frena el sistema nervioso.",
+      "explanation": "La cocaína acelera el sistema nervioso central: es estimulante, como la nicotina y la metanfetamina. Las depresoras, como el alcohol, lo hacen más lento."
+    },
+    {
+      "wave": 1, "difficulty": 1,
+      "question": "¿Qué ofrece la Línea de la Vida, 800 911 2000?",
+      "options": [
+        { "letter": "A", "text": "Venta de medicamentos para dejar de consumir" },
+        { "letter": "B", "text": "Orientación gratis en adicciones, las 24 horas" },
+        { "letter": "C", "text": "Denuncias anónimas contra quienes venden drogas" },
+        { "letter": "D", "text": "Consultas pagadas solo en horario de oficina" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es un servicio pensado para pedir ayuda a cualquier hora, sin costo.",
+      "explanation": "La Línea de la Vida, de la Comisión Nacional de Salud Mental y Adicciones (CONASAMA), da orientación gratuita y confidencial en adicciones y salud mental las 24 horas, todos los días."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué es el síndrome de abstinencia?",
+      "options": [
+        { "letter": "A", "text": "Necesitar cada vez más para sentir lo mismo" },
+        { "letter": "B", "text": "Malestar al dejar de consumir una sustancia" },
+        { "letter": "C", "text": "Consumir solo en fiestas y en ocasiones" },
+        { "letter": "D", "text": "Un tipo de droga que acelera el sistema nervioso" }
+      ],
+      "correct_answer": "B",
+      "hint": "Aparece cuando la sustancia falta en un cuerpo que ya se acostumbró a ella.",
+      "explanation": "El síndrome de abstinencia es el conjunto de síntomas físicos y psicológicos que aparecen al suspender una sustancia de la que se depende. Necesitar más para lo mismo es tolerancia."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Cómo se clasifica el alcohol por su efecto en el sistema nervioso central?",
+      "options": [
+        { "letter": "A", "text": "Estimulante" },
+        { "letter": "B", "text": "Alucinógeno" },
+        { "letter": "C", "text": "Depresor" },
+        { "letter": "D", "text": "Sin efecto" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en lo que pasa con los reflejos y el equilibrio de alguien que bebió.",
+      "explanation": "El alcohol es depresor: hace más lento el sistema nervioso central, por eso baja los reflejos, la coordinación y el juicio. Que al principio desinhiba no lo vuelve estimulante."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué es una adicción conductual?",
+      "options": [
+        { "letter": "A", "text": "Una adicción causada solo por drogas ilegales" },
+        { "letter": "B", "text": "Mal comportamiento de quien consume alcohol" },
+        { "letter": "C", "text": "Una adicción a una conducta, sin sustancia" },
+        { "letter": "D", "text": "Un hábito sano que se repite todos los días" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en apostar o en jugar videojuegos sin control.",
+      "explanation": "Una adicción conductual es la dependencia a una conducta, como el juego de apuestas o los videojuegos, sin ninguna sustancia. Activa el mismo circuito de recompensa que las drogas."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Cuál de estas drogas es legal para los adultos en México?",
+      "options": [
+        { "letter": "A", "text": "La cocaína" },
+        { "letter": "B", "text": "El tabaco" },
+        { "letter": "C", "text": "La metanfetamina" },
+        { "letter": "D", "text": "El LSD" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cuál se vende en tiendas, aunque prohibida a menores de 18.",
+      "explanation": "El tabaco y el alcohol son legales para mayores de 18 años, pero siguen siendo drogas que causan dependencia y enfermedades. La cocaína, la metanfetamina y el LSD son ilegales."
+    },
+    {
+      "wave": 2, "difficulty": 1,
+      "question": "¿Qué es un factor de protección frente a las adicciones?",
+      "options": [
+        { "letter": "A", "text": "Algo que aumenta la probabilidad de consumir" },
+        { "letter": "B", "text": "Un medicamento que cura cualquier adicción" },
+        { "letter": "C", "text": "Algo que reduce la probabilidad de consumir" },
+        { "letter": "D", "text": "Una ley que permite consumir a los menores" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es lo contrario de un factor de riesgo.",
+      "explanation": "Un factor de protección reduce la probabilidad de consumir: buena comunicación familiar, metas, deporte, amigos sanos, saber decir que no. Los factores de riesgo la aumentan."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "La nicotina se clasifica como estimulante porque…",
+      "options": [
+        { "letter": "A", "text": "Vuelve más lentos los reflejos y el juicio" },
+        { "letter": "B", "text": "Hace ver y oír cosas que no existen" },
+        { "letter": "C", "text": "Acelera el sistema nervioso central" },
+        { "letter": "D", "text": "Es una sustancia legal para los adultos" }
+      ],
+      "correct_answer": "C",
+      "hint": "La clasificación se basa en el efecto sobre el sistema nervioso, no en la ley.",
+      "explanation": "La nicotina acelera el sistema nervioso central y el ritmo cardiaco: es estimulante. Hacer lentos los reflejos es propio de las depresoras, y ver cosas que no existen, de las alucinógenas."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "¿Cuál es la diferencia entre dependencia física y dependencia psicológica?",
+      "options": [
+        { "letter": "A", "text": "La física solo ocurre con drogas ilegales" },
+        { "letter": "B", "text": "La psicológica no es una dependencia real" },
+        { "letter": "C", "text": "La física da síntomas corporales al dejarla" },
+        { "letter": "D", "text": "La psicológica siempre es más leve que la física" }
+      ],
+      "correct_answer": "C",
+      "hint": "Una se nota en el cuerpo al suspender la sustancia; la otra, en la necesidad emocional.",
+      "explanation": "En la dependencia física el cuerpo reacciona al suspender la sustancia (temblor, sudor, náusea). En la psicológica hay una necesidad emocional de consumir para sentirse bien. Las dos son reales."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "¿Por qué los adolescentes son más vulnerables a desarrollar una adicción?",
+      "options": [
+        { "letter": "A", "text": "Su cerebro ya no tiene circuito de recompensa" },
+        { "letter": "B", "text": "Su corteza prefrontal aún está madurando" },
+        { "letter": "C", "text": "Su hígado procesa el alcohol más rápido" },
+        { "letter": "D", "text": "Las adicciones solo afectan a los adolescentes" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en la parte del cerebro que frena los impulsos y en cuándo termina de formarse.",
+      "explanation": "La corteza prefrontal, que controla los impulsos y planea, termina de madurar cerca de los 25 años. Mientras tanto, el circuito de recompensa responde con fuerza, y eso facilita el enganche."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "¿Qué significa la frase «legal no es lo mismo que inofensivo»?",
+      "options": [
+        { "letter": "A", "text": "Que las drogas legales no tienen efectos" },
+        { "letter": "B", "text": "Que una droga legal también daña la salud" },
+        { "letter": "C", "text": "Que solo las drogas ilegales generan adicción" },
+        { "letter": "D", "text": "Que lo legal siempre es más peligroso" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en el tabaco y el alcohol: se venden en tiendas, pero ¿son seguros?",
+      "explanation": "El tabaco y el alcohol son legales para adultos y aun así causan dependencia, enfermedades y millones de muertes al año en el mundo. Que algo sea legal no lo vuelve seguro."
+    },
+    {
+      "wave": 3, "difficulty": 2,
+      "question": "Alguien pasa de beber de vez en cuando a beber aunque ya le cause problemas en la escuela. ¿Qué cambio es?",
+      "options": [
+        { "letter": "A", "text": "De abuso a uso" },
+        { "letter": "B", "text": "De uso a abuso" },
+        { "letter": "C", "text": "De dependencia a uso" },
+        { "letter": "D", "text": "De abstinencia a tolerancia" }
+      ],
+      "correct_answer": "B",
+      "hint": "El uso es ocasional y sin consecuencias evidentes. ¿Cómo se llama cuando ya hay problemas?",
+      "explanation": "El uso es un consumo ocasional sin consecuencias evidentes; el abuso es seguir consumiendo aunque cause problemas en la escuela, la salud o la familia. El siguiente escalón sería la dependencia."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "En una fiesta te insisten en que pruebes un vapeador. ¿Cuál es una respuesta asertiva?",
+      "options": [
+        { "letter": "A", "text": "Aceptar para que dejen de insistir" },
+        { "letter": "B", "text": "Insultarlos para que te dejen en paz" },
+        { "letter": "C", "text": "«No, gracias», claro y sin agredir" },
+        { "letter": "D", "text": "Inventar una mentira muy complicada" }
+      ],
+      "correct_answer": "C",
+      "hint": "La asertividad queda en medio: ni ceder ni atacar.",
+      "explanation": "Ser asertivo es expresar lo que quieres de forma clara y firme, respetando a los demás. Ceder es una respuesta pasiva, insultar es agresiva y las mentiras complicadas suelen invitar a más insistencia."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "¿Cuál es un ejemplo de factor de riesgo familiar?",
+      "options": [
+        { "letter": "A", "text": "Reglas claras sobre el alcohol en casa" },
+        { "letter": "B", "text": "Consumo frecuente de alcohol en casa" },
+        { "letter": "C", "text": "Buena comunicación con los padres" },
+        { "letter": "D", "text": "Practicar un deporte con la familia" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca lo que hace que consumir parezca normal desde la infancia.",
+      "explanation": "Crecer donde el consumo es frecuente o se ve normal aumenta el riesgo. Las reglas claras, la buena comunicación y las actividades en familia son factores de protección."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "¿Cuál es un efecto a largo plazo del consumo excesivo de alcohol?",
+      "options": [
+        { "letter": "A", "text": "Mejor coordinación al hacer deporte" },
+        { "letter": "B", "text": "Inmunidad contra las infecciones" },
+        { "letter": "C", "text": "Daño al hígado, como la cirrosis" },
+        { "letter": "D", "text": "Pulmones más fuertes y sanos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en el órgano que se encarga de procesar el alcohol.",
+      "explanation": "Con los años, el consumo excesivo de alcohol daña el hígado (hígado graso, hepatitis alcohólica y cirrosis), además del cerebro y el corazón, y aumenta el riesgo de dependencia y de cáncer."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "¿Qué distingue al trastorno por videojuegos de simplemente jugar mucho?",
+      "options": [
+        { "letter": "A", "text": "Solo el número de horas que se juega al día" },
+        { "letter": "B", "text": "Que el juego tenga compras o un sistema gacha" },
+        { "letter": "C", "text": "La pérdida de control sobre el juego" },
+        { "letter": "D", "text": "Jugar en línea con personas desconocidas" }
+      ],
+      "correct_answer": "C",
+      "hint": "Según la OMS, la clave no está en el reloj sino en lo que la persona ya no puede manejar.",
+      "explanation": "La CIE-11 describe el trastorno por pérdida de control, prioridad del juego sobre otras actividades y seguir pese a las consecuencias, normalmente por al menos 12 meses. Las horas solas no lo definen."
+    },
+    {
+      "wave": 4, "difficulty": 2,
+      "question": "El fentanilo es un opioide. ¿Cómo se clasifica por su efecto en el sistema nervioso?",
+      "options": [
+        { "letter": "A", "text": "Estimulante" },
+        { "letter": "B", "text": "Depresor" },
+        { "letter": "C", "text": "Alucinógeno" },
+        { "letter": "D", "text": "Sin efecto en el cerebro" }
+      ],
+      "correct_answer": "B",
+      "hint": "Los opioides se parecen al alcohol en que frenan funciones del cuerpo, como la respiración.",
+      "explanation": "Los opioides, como el fentanilo, son depresores del sistema nervioso central: pueden frenar la respiración hasta causar la muerte. Por eso son tan peligrosos fuera del uso médico controlado."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Un joven de 19 años apuesta en línea. Al principio le bastaba poco; ahora necesita apostar más para sentir la misma emoción. ¿Qué concepto es?",
+      "options": [
+        { "letter": "A", "text": "Abstinencia" },
+        { "letter": "B", "text": "Recaída" },
+        { "letter": "C", "text": "Tolerancia" },
+        { "letter": "D", "text": "Intoxicación" }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en que necesita más de lo mismo para sentir igual. ¿Pasa también sin sustancias?",
+      "explanation": "Necesitar más para obtener el mismo efecto es tolerancia, y también aparece en las adicciones conductuales como el juego de apuestas. La abstinencia sería el malestar al dejar de apostar."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Un chico dejó de fumar hace un año y vuelve a hacerlo tras una semana de mucho estrés. ¿Qué es lo correcto?",
+      "options": [
+        { "letter": "A", "text": "Demuestra que no tiene fuerza de voluntad alguna" },
+        { "letter": "B", "text": "Es una recaída y puede retomar su tratamiento" },
+        { "letter": "C", "text": "Es tolerancia porque ahora necesita más nicotina" },
+        { "letter": "D", "text": "Prueba que nunca podrá dejar de fumar" }
+      ],
+      "correct_answer": "B",
+      "hint": "La adicción es una enfermedad crónica. ¿Qué pasa en otras enfermedades crónicas cuando hay un tropiezo?",
+      "explanation": "Volver a consumir tras un tiempo sin hacerlo es una recaída, frecuente en las adicciones porque son enfermedades crónicas. No es falta de voluntad: se retoma el tratamiento y se identifica el detonante, aquí el estrés."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "Una amiga te cuenta que su hermano no puede dejar de beber y ella no sabe qué hacer. ¿Qué es lo más adecuado?",
+      "options": [
+        { "letter": "A", "text": "Guardar el secreto y no decirle a nadie" },
+        { "letter": "B", "text": "Sugerirle llamar a la Línea de la Vida" },
+        { "letter": "C", "text": "Decirle que lo regañe hasta que lo deje" },
+        { "letter": "D", "text": "Esperar a que se le pase sin ayuda alguna" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la opción que conecta a la familia con orientación profesional.",
+      "explanation": "La dependencia es una enfermedad que necesita ayuda profesional. La Línea de la Vida, 800 911 2000, orienta gratis las 24 horas y canaliza a centros comunitarios de salud mental y adicciones. Regañar o esperar no funciona."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "En una fiesta, alguien que bebió mucho vomita y no responde cuando le hablan. ¿Qué haces primero?",
+      "options": [
+        { "letter": "A", "text": "Darle café para que se despierte" },
+        { "letter": "B", "text": "Dejarlo dormir solo en un cuarto" },
+        { "letter": "C", "text": "Llamar al 911 y no dejarlo solo" },
+        { "letter": "D", "text": "Meterlo a bañar con agua muy fría" }
+      ],
+      "correct_answer": "C",
+      "hint": "No responder es una señal de alarma. El café y el agua fría son mitos.",
+      "explanation": "Puede ser una intoxicación grave por alcohol, que puede ser mortal. Llama al 911, quédate con la persona y colócala de lado para que no se ahogue si vomita. El café y el agua fría no bajan la intoxicación."
+    },
+    {
+      "wave": 5, "difficulty": 3,
+      "question": "¿Por qué la publicidad que asocia el alcohol con amistad y deporte se considera un factor de riesgo?",
+      "options": [
+        { "letter": "A", "text": "Obliga legalmente a los menores a consumir" },
+        { "letter": "B", "text": "Normaliza el consumo y lo hace atractivo" },
+        { "letter": "C", "text": "Hace que el alcohol pase a ser estimulante" },
+        { "letter": "D", "text": "Informa sobre los daños del alcohol" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué idea del alcohol se lleva quien ve el anuncio.",
+      "explanation": "Al unir el alcohol con momentos felices, la publicidad lo hace parecer normal y deseable, lo que aumenta la probabilidad de empezar a consumir y de hacerlo más joven. No cambia su efecto depresor."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Alguien dice: «Yo controlo, lo dejo cuando quiera», pero ya lo intentó varias veces y no ha podido. ¿Qué indica?",
+      "options": [
+        { "letter": "A", "text": "Que solo es un uso ocasional sin riesgo" },
+        { "letter": "B", "text": "Pérdida de control, señal de dependencia" },
+        { "letter": "C", "text": "Que ya desarrolló inmunidad a la sustancia" },
+        { "letter": "D", "text": "Que tiene un factor de protección muy fuerte" }
+      ],
+      "correct_answer": "B",
+      "hint": "Compara lo que dice con lo que pasa cuando intenta dejarlo.",
+      "explanation": "Querer dejar de consumir y no lograrlo es pérdida de control, uno de los rasgos centrales de la dependencia. Creer que se controla cuando no es así es común y retrasa la búsqueda de ayuda."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Se compara a jóvenes que empezaron a beber a los 13 años con otros que empezaron a los 18. ¿Qué es lo esperable?",
+      "options": [
+        { "letter": "A", "text": "El mismo riesgo, la edad no importa" },
+        { "letter": "B", "text": "Más riesgo en quienes empezaron a los 18" },
+        { "letter": "C", "text": "Ningún riesgo si beben solo en fiestas" },
+        { "letter": "D", "text": "Más riesgo de dependencia en los de 13" }
+      ],
+      "correct_answer": "D",
+      "hint": "Recuerda qué parte del cerebro sigue madurando en la adolescencia.",
+      "explanation": "Empezar a consumir a edad temprana es un factor de riesgo: el cerebro adolescente aún madura y se adapta más fácil a la sustancia. Cuanto antes se empieza, mayor es el riesgo de dependencia."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "¿Por qué es especialmente peligroso mezclar alcohol con otra droga depresora?",
+      "options": [
+        { "letter": "A", "text": "Una droga cancela el efecto de la otra" },
+        { "letter": "B", "text": "Sus efectos se suman y pueden frenar la respiración" },
+        { "letter": "C", "text": "Las depresoras se vuelven estimulantes al combinarse con alcohol" },
+        { "letter": "D", "text": "No hay riesgo si las dos son legales" }
+      ],
+      "correct_answer": "B",
+      "hint": "Si las dos frenan el sistema nervioso, ¿qué pasa al juntarlas?",
+      "explanation": "Dos depresoras juntas suman su efecto sobre el sistema nervioso central y pueden frenar la respiración hasta poner en peligro la vida. Ser legal no las vuelve seguras; ante una emergencia, 911."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "¿Cuál de estas acciones de una escuela es un factor de protección?",
+      "options": [
+        { "letter": "A", "text": "Permitir venta de alcohol cerca de la escuela" },
+        { "letter": "B", "text": "Talleres de habilidades para la vida" },
+        { "letter": "C", "text": "Ignorar los anuncios de vapeadores en redes" },
+        { "letter": "D", "text": "Organizar fiestas sin adultos responsables" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca lo que fortalece a los alumnos en lugar de exponerlos.",
+      "explanation": "Los talleres de habilidades para la vida (decir que no, manejar emociones, tomar decisiones) reducen el riesgo de consumo. La venta cercana, la publicidad y la falta de supervisión lo aumentan."
+    },
+    {
+      "wave": 6, "difficulty": 3,
+      "question": "Un amigo lleva más de un año gastando todo su dinero en un juego gacha, falta a clases y miente sobre eso. ¿Cuál es el mejor paso?",
+      "options": [
+        { "letter": "A", "text": "Esperar, porque los videojuegos no son adictivos" },
+        { "letter": "B", "text": "Borrarle el juego sin hablar con él del tema" },
+        { "letter": "C", "text": "Hablar con él y buscar ayuda profesional" },
+        { "letter": "D", "text": "Prestarle dinero para que no se enoje" }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa si hay pérdida de control y daño, y quién puede ayudar de verdad.",
+      "explanation": "Pérdida de control, prioridad del juego y seguir pese al daño por más de un año encajan con un trastorno por videojuegos, reconocido por la OMS. Lo mejor es hablarlo sin juzgar y buscar ayuda profesional."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál de estas afirmaciones sobre las drogas es correcta?",
+    "options": [
+      { "letter": "A", "text": "Solo las drogas ilegales causan adicción" },
+      { "letter": "B", "text": "El vapeador solo produce vapor de agua" },
+      { "letter": "C", "text": "El alcohol y el tabaco son drogas" },
+      { "letter": "D", "text": "Una adicción se cura con fuerza de voluntad" }
+    ],
+    "correct_answer": "C",
+    "explanation": "El alcohol y el tabaco alteran el sistema nervioso central y crean dependencia: son drogas, aunque sean legales para adultos. El vapeador lleva nicotina, y la adicción es una enfermedad que necesita tratamiento."
+  }
+}

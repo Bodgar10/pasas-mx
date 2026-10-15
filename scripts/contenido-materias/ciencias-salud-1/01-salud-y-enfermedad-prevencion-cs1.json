@@ -1,0 +1,1007 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "salud-y-enfermedad-prevencion-cs1",
+  "order_steps": {
+    "prompt": "Ordena las etapas de la historia natural de la enfermedad",
+    "steps": [
+      "Agente, huésped y ambiente interactúan, pero aún no hay enfermedad",
+      "La enfermedad empieza con cambios en el cuerpo, todavía sin síntomas",
+      "Se cruza el horizonte clínico y aparecen signos y síntomas",
+      "Llega el desenlace: curación, secuela, cronicidad o muerte"
+    ],
+    "completion_feedback": "Primero el **periodo prepatogénico**; luego el **patogénico**, con su etapa **subclínica** y su etapa **clínica**; al final, el desenlace. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Chigiri: la rodilla sana que no se atrevía a correr",
+        "content": "En Blue Lock, Chigiri Hyoma es de los más rápidos de todo el programa, pero al principio casi nunca corre a fondo. Antes de llegar se rompió el ligamento cruzado anterior de la rodilla y pasó por una recuperación larga. Físicamente ya está listo para jugar y, aun así, cada vez que tiene espacio para arrancar, frena. Le da miedo volver a lesionarse y perder el fútbol para siempre, así que se guarda, se aleja de los demás y hasta piensa en rendirse. Si alguien revisara solo su rodilla, diría que Chigiri está sano: no hay ninguna lesión activa. Pero míralo con calma: su cabeza no lo deja jugar y se mantiene aparte del equipo. Solo cuando Isagi, en pleno partido, le dice que el equipo necesita su velocidad, se atreve a soltarla otra vez. Su cuerpo estuvo listo antes que su mente y que su lugar en el grupo. Y fíjate en que su historia tiene etapas: antes de la lesión, la lesión y la recuperación. Entender qué es estar sano de verdad, y cómo se cuida la salud en cada etapa, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Chigiri y el concepto de salud de la OMS",
+        "content": "Lo que acabas de ver con Chigiri es exactamente el concepto de **salud de la OMS** (1946): un estado de **completo bienestar físico, mental y social**, y **no solamente la ausencia de enfermedad**. Su rodilla sanó, pero le faltaba bienestar mental y social. La **enfermedad** es la alteración de ese equilibrio. **Leavell y Clark** describieron su **historia natural** en dos periodos, **prepatogénico** (antes de enfermar) y **patogénico** (la enfermedad ya empezó), y propusieron tres **niveles de prevención**: **primaria** (promoción y protección específica), **secundaria** (diagnóstico temprano y tratamiento oportuno) y **terciaria** (**rehabilitación**, cuando el daño ya ocurrió), como la recuperación de Chigiri."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el plan de salud del cuerpo técnico de Blue Lock",
+        "content": "Imagina que trabajas en el cuerpo técnico de Blue Lock y debes clasificar cada medida de salud del programa.\n\n**Paso 1:** Charla sobre sueño, hidratación y comida → **promoción de la salud**: prevención **primaria**.\n**Paso 2:** Espinilleras obligatorias en cada partido → **protección específica**: también **primaria**.\n**Paso 3:** Revisión física semanal que detecta una molestia en un tendón antes de que se vuelva lesión → **diagnóstico temprano**: **secundaria**.\n**Paso 4:** Atender esa molestia de inmediato y bajar la carga → **tratamiento oportuno**: **secundaria**.\n**Paso 5:** Terapia para recuperar la fuerza de una rodilla lesionada, como la de Chigiri → **rehabilitación**: **terciaria**.\n\nResultado: un programa que cuida antes, durante y después de la lesión."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Salud (OMS, 1946)**: estado de **completo bienestar físico, mental y social**, no solo la ausencia de enfermedad. **Lalonde (1974)**: biología humana, medio ambiente, estilo de vida y servicios de salud. **Leavell y Clark**: prevención **primaria** (promoción y protección específica), **secundaria** (diagnóstico temprano y tratamiento oportuno) y **terciaria** (rehabilitación tras el daño)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Ubica el momento, como en la historia de Chigiri: antes de la lesión es prevención primaria, detectarla a tiempo es secundaria y la recuperación es terciaria. Y sano no es solo «sin lesión»: también cuentan la mente y el equipo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Según la OMS, la salud solo está completa cuando hay bienestar físico, mental y social al mismo tiempo.",
+        "data": {
+          "intro": "El medidor muestra qué tan completo es el bienestar de Chigiri según la OMS. Sigue su historia paso a paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            { "text": "La rehabilitación sana su rodilla: recupera el bienestar físico.", "delta": 30 },
+            { "text": "Aun así frena por miedo a lesionarse otra vez: le falta bienestar mental.", "delta": -10 },
+            { "text": "Isagi le dice que el equipo necesita su velocidad y deja de mantenerse aparte: crece su bienestar social.", "delta": 30 },
+            { "text": "En pleno partido suelta toda su velocidad sin miedo. Físico, mental y social juntos: eso es salud.", "delta": 35 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué nivel de prevención es?",
+        "content": "Primaria: antes de enfermar (promoción y protección específica). Secundaria: detectar y tratar a tiempo. Terciaria: rehabilitar cuando el daño ya ocurrió.",
+        "data": {
+          "prompt": "Arrastra cada medida del programa de Blue Lock a su nivel de prevención.",
+          "buckets": ["Primaria", "Secundaria", "Terciaria"],
+          "items": [
+            { "t": "Charla de sueño y alimentación", "b": 0 },
+            { "t": "Espinilleras en cada partido", "b": 0 },
+            { "t": "Revisión que detecta una molestia a tiempo", "b": 1 },
+            { "t": "Atender la molestia apenas se detecta", "b": 1 },
+            { "t": "Terapia tras la lesión de rodilla", "b": 2 },
+            { "t": "Volver a correr con ejercicios guiados", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada componente de la prevención con su ejemplo en Blue Lock.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Promoción de la salud", "b": "Charla de hábitos sanos" },
+            { "a": "Protección específica", "b": "Usar espinilleras" },
+            { "a": "Diagnóstico temprano", "b": "Detectar a tiempo" },
+            { "a": "Rehabilitación", "b": "Recuperar la rodilla" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia de Chigiri?",
+        "left_label": "Chigiri",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Ya no hay ninguna lesión activa", "right": "Ausencia de enfermedad" },
+          { "left": "Rodilla sana, pero miedo a correr", "right": "Falta bienestar mental" },
+          { "left": "Se mantiene aparte del equipo", "right": "Falta bienestar social" },
+          { "left": "La terapia tras la lesión", "right": "Prevención terciaria" }
+        ],
+        "completion_feedback": "Chigiri no tenía enfermedad, pero le faltaba **bienestar mental** y **social**: según la OMS, eso no es salud completa. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Chigiri ya no tiene ninguna lesión, pero no está bien. Según la OMS, la salud es…",
+          "options": [
+            { "letter": "A", "text": "Solo no tener ninguna enfermedad" },
+            { "letter": "B", "text": "Bienestar físico, mental y social" },
+            { "letter": "C", "text": "Tener un cuerpo fuerte y entrenado" },
+            { "letter": "D", "text": "Ir al médico una vez al año" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La OMS define la salud como un estado de completo bienestar físico, mental y social, y no solamente la ausencia de enfermedad. Por eso Chigiri, sin lesión pero con miedo y aislado, no tenía salud completa.",
+          "difficulty": 1
+        },
+        {
+          "question": "Las espinilleras obligatorias en cada partido de Blue Lock son un ejemplo de…",
+          "options": [
+            { "letter": "A", "text": "Prevención secundaria" },
+            { "letter": "B", "text": "Prevención primaria" },
+            { "letter": "C", "text": "Prevención terciaria" },
+            { "letter": "D", "text": "Tratamiento oportuno" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las espinilleras protegen contra un riesgo concreto antes de que ocurra la lesión. Eso es protección específica, que forma parte de la prevención primaria, junto con la promoción de la salud.",
+          "difficulty": 2
+        },
+        {
+          "question": "Chigiri hace terapia para recuperar la fuerza de su rodilla lesionada. ¿Qué periodo de la historia natural y qué nivel de prevención son?",
+          "options": [
+            { "letter": "A", "text": "Prepatogénico, prevención primaria" },
+            { "letter": "B", "text": "Patogénico, prevención terciaria" },
+            { "letter": "C", "text": "Prepatogénico, prevención terciaria" },
+            { "letter": "D", "text": "Patogénico, prevención primaria" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La lesión ya ocurrió, así que está en el periodo patogénico. La terapia busca recuperar la función: es rehabilitación, prevención terciaria. La primaria solo actúa antes de que empiece el problema.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la revisión semanal detectan una molestia en el tendón de un jugador y la atienden antes de que se vuelva lesión. ¿Qué es?",
+          "options": [
+            { "letter": "A", "text": "Primaria: promoción de la salud" },
+            { "letter": "B", "text": "Secundaria: diagnóstico temprano" },
+            { "letter": "C", "text": "Terciaria: rehabilitación del tendón" },
+            { "letter": "D", "text": "Primaria: protección específica" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La molestia indica que el problema ya empezó, pero se detectó pronto. Detectarlo y atenderlo a tiempo es diagnóstico temprano y tratamiento oportuno: prevención secundaria.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un médico revisa solo la rodilla de Chigiri y dice: «Está sano». Según la OMS, ¿qué le falta a esa conclusión?",
+          "options": [
+            { "letter": "A", "text": "Repetir los estudios de la rodilla otra vez" },
+            { "letter": "B", "text": "Revisar si tiene otra enfermedad física" },
+            { "letter": "C", "text": "Valorar también su mente y su vida social" },
+            { "letter": "D", "text": "Nada, sin lesión ya está completamente sano" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La definición de la OMS incluye el bienestar mental y social, no solo el físico. Revisar más estudios del cuerpo no basta: el miedo y el aislamiento de Chigiri también son parte de su salud.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La rodilla de Saúl y el calentamiento que no hizo",
+        "content": "Sábado, 8 de la mañana. Hace frío y la cancha de tierra del deportivo está dura. Tu equipo sub-17 juega la final de la liga y Saúl, el delantero, llega tarde: se pone los tacos y entra directo, sin calentar, como hace en casi todos los entrenamientos. Lleva dos semanas con una molestia en la rodilla, pero no le dijo a nadie para no perderse el partido. Al minuto 20 frena en seco para recortar, la rodilla se le va hacia adentro y cae. No puede apoyar la pierna. Termina con muletas, estudios y meses de terapia. En la banca nadie habla. Después, el entrenador repasa todo lo que pudo ser distinto: un calentamiento de verdad antes del partido, avisar a tiempo de la molestia y que alguien que sabe revisara esa rodilla. Y ahora que ya pasó, que la terapia lo deje volver sin lesionarse otra vez. Desde ese día, antes de cada entrenamiento, el equipo hace el FIFA 11+, un calentamiento de unos 20 minutos que la FIFA creó con especialistas en medicina deportiva para prevenir lesiones. Cuidar la salud antes, durante y después de un problema es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La lesión de Saúl tiene historia natural",
+        "content": "Lo que acabas de ver con Saúl es exactamente la **historia natural de la enfermedad** y los **niveles de prevención** de **Leavell y Clark**. En el **periodo prepatogénico** se juntan el **agente** (la fuerza del giro), el **huésped** (Saúl sin calentar) y el **ambiente** (cancha dura y fría): es la **triada ecológica**. Ahí actúa la **prevención primaria**: **promoción** y **protección específica**, como el FIFA 11+. En el **periodo patogénico** entran la **secundaria** (**diagnóstico temprano y tratamiento oportuno** de la molestia) y la **terciaria** (**rehabilitación** tras la lesión). La meta es la **salud** según la OMS: bienestar **físico, mental y social**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el plan de salud de la liga para la nueva temporada",
+        "content": "La liga del deportivo arma un plan de salud para la nueva temporada. Clasifica cada medida.\n\n**Paso 1:** Pláticas a jugadores y familias sobre hidratarse, dormir y comer bien → **promoción de la salud** (primaria).\n**Paso 2:** Calentamiento FIFA 11+ obligatorio y espinilleras → **protección específica** (primaria).\n**Paso 3:** Revisión médica antes de inscribirse, que busca problemas que aún no se notan → **diagnóstico temprano** (secundaria).\n**Paso 4:** Si alguien avisa de una molestia, lo revisan y lo tratan esa misma semana → **tratamiento oportuno** (secundaria).\n**Paso 5:** Un jugador operado vuelve con terapia y regreso gradual → **rehabilitación** (terciaria).\n\nResultado: una liga que previene en los tres niveles."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Salud (OMS, 1946)**: estado de **completo bienestar físico, mental y social**, no solo la ausencia de enfermedad. **Lalonde (1974)**: biología humana, medio ambiente, estilo de vida y servicios de salud. **Leavell y Clark**: prevención **primaria** (promoción y protección específica), **secundaria** (diagnóstico temprano y tratamiento oportuno) y **terciaria** (rehabilitación tras el daño)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el reloj del partido: antes del silbatazo (calentar, espinilleras) es prevención primaria; detectar la molestia a tiempo es secundaria; la terapia después de la lesión es terciaria."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La historia natural tiene dos periodos: prepatogénico (antes) y patogénico (subclínico, clínico y desenlace).",
+        "data": {
+          "intro": "Sigue la lesión de Saúl por las etapas de la historia natural de la enfermedad.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Periodo prepatogénico: semanas de entrenar en cancha dura y sin calentar. Agente, huésped y ambiente se juntan, pero la rodilla aún está sana." },
+            { "text": "Periodo patogénico, etapa subclínica: la rodilla empieza a dañarse por dentro, aunque Saúl todavía no siente nada." },
+            { "text": "Cruza el horizonte clínico: aparece la molestia, un síntoma. Era el momento del diagnóstico temprano." },
+            { "text": "Etapa clínica: la molestia sigue y, en la final, la rodilla cede. El desenlace depende de la rehabilitación: recuperarse por completo o quedar con secuelas." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Agente, huésped o ambiente?",
+        "content": "Agente: lo que causa el daño. Huésped: la persona que puede enfermar o lesionarse. Ambiente: el entorno que los junta.",
+        "data": {
+          "prompt": "Arrastra cada parte de la historia del equipo a su lugar en la triada ecológica.",
+          "buckets": ["Agente", "Huésped", "Ambiente"],
+          "items": [
+            { "t": "La fuerza del giro sobre la rodilla", "b": 0 },
+            { "t": "El virus de gripe que circula en el vestidor", "b": 0 },
+            { "t": "Saúl, con los músculos fríos", "b": 1 },
+            { "t": "El portero, desvelado y cansado", "b": 1 },
+            { "t": "La cancha dura y con hoyos", "b": 2 },
+            { "t": "La mañana de mucho frío", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada etapa de la historia natural con lo que pasa en ella.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Prepatogénico", "b": "Antes de enfermar" },
+            { "a": "Etapa subclínica", "b": "Daño sin síntomas" },
+            { "a": "Horizonte clínico", "b": "Aparecen los síntomas" },
+            { "a": "Desenlace", "b": "Curación o secuela" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la historia de Saúl?",
+        "left_label": "Lesión de Saúl",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Calentar con el FIFA 11+", "right": "Protección específica" },
+          { "left": "Revisar la molestia a tiempo", "right": "Diagnóstico temprano" },
+          { "left": "Meses de terapia tras la lesión", "right": "Rehabilitación" },
+          { "left": "Cancha dura y mañana fría", "right": "Ambiente" }
+        ],
+        "completion_feedback": "El calentamiento es **protección específica**, revisar la molestia es **diagnóstico temprano**, la terapia es **rehabilitación** y la cancha fría es el **ambiente**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "En la triada ecológica de la lesión, Saúl, el jugador que se lastima, es…",
+          "options": [
+            { "letter": "A", "text": "El agente" },
+            { "letter": "B", "text": "El ambiente" },
+            { "letter": "C", "text": "El huésped" },
+            { "letter": "D", "text": "El vector" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El huésped es la persona que puede enfermar o lesionarse. El agente es lo que causa el daño, como la fuerza del giro, y el ambiente es el entorno, como la cancha dura y fría.",
+          "difficulty": 1
+        },
+        {
+          "question": "Hacer el calentamiento FIFA 11+ antes de cada entrenamiento es prevención…",
+          "options": [
+            { "letter": "A", "text": "Primaria" },
+            { "letter": "B", "text": "Secundaria" },
+            { "letter": "C", "text": "Terciaria" },
+            { "letter": "D", "text": "Clínica" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El calentamiento se hace antes de que haya lesión, en el periodo prepatogénico. Protege contra un riesgo concreto, así que es protección específica, parte de la prevención primaria.",
+          "difficulty": 2
+        },
+        {
+          "question": "Saúl tuvo dos semanas de molestia en la rodilla y no dijo nada. ¿Qué nivel de prevención se perdió al callarla?",
+          "options": [
+            { "letter": "A", "text": "Primaria: promoción de la salud" },
+            { "letter": "B", "text": "Secundaria: diagnóstico temprano" },
+            { "letter": "C", "text": "Terciaria: rehabilitación a tiempo" },
+            { "letter": "D", "text": "Primaria: protección específica" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La molestia era un síntoma: el problema ya había empezado. Revisarlo entonces habría sido diagnóstico temprano y tratamiento oportuno, es decir, prevención secundaria. La primaria se aplica antes de que exista el problema.",
+          "difficulty": 3
+        },
+        {
+          "question": "La liga rellena los hoyos de la cancha para evitar lesiones. ¿Sobre qué elemento de la triada ecológica actúa?",
+          "options": [
+            { "letter": "A", "text": "Sobre el ambiente" },
+            { "letter": "B", "text": "Sobre el agente causal" },
+            { "letter": "C", "text": "Sobre el huésped" },
+            { "letter": "D", "text": "Sobre el horizonte clínico" }
+          ],
+          "correct_answer": "A",
+          "explanation": "La cancha es el entorno donde se juntan el agente y el huésped, así que arreglarla es actuar sobre el ambiente. El calentamiento, en cambio, actúa sobre el huésped.",
+          "difficulty": 2
+        },
+        {
+          "question": "Semanas antes de la molestia, la rodilla de Saúl ya se dañaba por dentro, pero él no sentía nada. ¿En qué etapa estaba?",
+          "options": [
+            { "letter": "A", "text": "Prepatogénico, porque no dolía" },
+            { "letter": "B", "text": "Patogénico, etapa clínica" },
+            { "letter": "C", "text": "Patogénico, etapa subclínica" },
+            { "letter": "D", "text": "Horizonte clínico ya cruzado" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Si ya hay daño, la enfermedad empezó: es el periodo patogénico. Como aún no hay síntomas, es la etapa subclínica. Que no duela no significa que siga en el periodo prepatogénico.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El idol que pausó actividades sin estar «enfermo»",
+        "content": "Un martes en la noche, la agencia de un grupo publica un aviso: uno de los integrantes pausará actividades por un tiempo para cuidar su salud. No dan más detalles y el fandom se divide: unos preguntan qué enfermedad tiene, otros dicen que en los videos se veía perfecto. Pero si repasas su último año, la historia se arma sola: comeback, gira por varios países, programas de variedades y transmisiones en vivo de madrugada después de ensayar todo el día. Dormía poco y a horas distintas, comía cuando podía y cada comentario sobre cómo se veía le llegaba en segundos. No necesitaba un diagnóstico grave para no estar bien. Muchos fans entienden algo importante: que nadie lo vea en una camilla no significa que esté sano. Y lo que lo desgastó no fue solo su cuerpo, con lo que heredó de su familia: también la agenda que decidió la industria, el ambiente de presión, sus propios hábitos y lo fácil o difícil que era ver a un especialista. Qué es estar sano de verdad y qué factores lo deciden es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La pausa del idol y los determinantes de la salud",
+        "content": "Lo que acabas de ver con el idol es exactamente el **concepto de salud de la OMS** (1946): **completo bienestar físico, mental y social**, y **no solamente la ausencia de enfermedad**. Lo que lo desgastó son **determinantes de la salud**. El **modelo de Lalonde** (1974) los agrupa en cuatro campos: **biología humana** (herencia, edad), **medio ambiente** (entorno físico y social), **estilo de vida** (sueño, comida, hábitos) y **servicios de salud**. La OMS llama **determinantes sociales** a las condiciones en que las personas nacen, crecen, viven, trabajan y envejecen. Y pausar para atenderse a tiempo es **prevención**: evita un daño mayor."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el plan de salud del grupo para la próxima gira",
+        "content": "Imagina que la agencia arma un plan para que nadie más tenga que pausar. Clasifica cada medida.\n\n**Paso 1:** Dos días de descanso fijos por semana → cambia el **estilo de vida** y es prevención **primaria**.\n**Paso 2:** Un psicólogo disponible durante toda la gira → mejora el acceso a los **servicios de salud**.\n**Paso 3:** Moderar los comentarios de odio en las transmisiones → mejora el **ambiente** social.\n**Paso 4:** Chequeo médico al inicio de la gira para detectar a tiempo cualquier problema → prevención **secundaria**.\n**Paso 5:** Regreso gradual de quien estuvo en pausa, sin agenda completa → **rehabilitación**: prevención **terciaria**.\n\nResultado: un plan que cuida el bienestar físico, mental y social."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Salud (OMS, 1946)**: estado de **completo bienestar físico, mental y social**, no solo la ausencia de enfermedad. **Lalonde (1974)**: biología humana, medio ambiente, estilo de vida y servicios de salud. **Leavell y Clark**: prevención **primaria** (promoción y protección específica), **secundaria** (diagnóstico temprano y tratamiento oportuno) y **terciaria** (rehabilitación tras el daño)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la vida de un idol: lo que heredó es biología, lo que hace cada día es estilo de vida, la presión que lo rodea es ambiente, y el médico o psicólogo al que puede llegar son los servicios de salud."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cuando se atienden varios campos de Lalonde a la vez, el bienestar sube en sus tres dimensiones.",
+        "data": {
+          "intro": "El integrante en pausa empieza con el bienestar muy bajo. Sigue cómo lo recupera con ayuda de los campos de Lalonde.",
+          "visual": "bar",
+          "start": 20,
+          "steps": [
+            { "text": "Duerme lo suficiente, a la misma hora, y come a sus horas: cambia su estilo de vida.", "delta": 20 },
+            { "text": "Lo atiende un especialista en salud mental: entran los servicios de salud.", "delta": 20 },
+            { "text": "La agencia aligera su agenda y el fandom pide respetar su pausa: mejora su ambiente.", "delta": 20 },
+            { "text": "Regresa a ensayar poco a poco, sin forzar: bienestar físico, mental y social juntos.", "delta": 15 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué campo de Lalonde es?",
+        "content": "Biología: lo heredado y el cuerpo. Ambiente: el entorno físico y social. Estilo de vida: tus hábitos. Servicios: la atención de salud disponible.",
+        "data": {
+          "prompt": "Arrastra cada factor de la vida del idol al campo de Lalonde que le corresponde.",
+          "buckets": ["Biología humana", "Medio ambiente", "Estilo de vida", "Servicios de salud"],
+          "items": [
+            { "t": "Su edad y lo que heredó de su familia", "b": 0 },
+            { "t": "Ensayar en una sala sin ventilación", "b": 1 },
+            { "t": "Comentarios de odio en redes", "b": 1 },
+            { "t": "Dormir poco por los lives de madrugada", "b": 2 },
+            { "t": "Saltarse comidas durante la gira", "b": 2 },
+            { "t": "Tener un psicólogo en la agencia", "b": 3 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada componente de la prevención con su medida en el plan de la gira.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Promoción de la salud", "b": "Taller de hábitos sanos" },
+            { "a": "Protección específica", "b": "Vacuna antes de la gira" },
+            { "a": "Diagnóstico temprano", "b": "Chequeo al iniciar la gira" },
+            { "a": "Rehabilitación", "b": "Regreso gradual tras pausa" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué campo de Lalonde es cada parte de la historia del idol?",
+        "left_label": "Idol en pausa",
+        "right_label": "Campo de Lalonde",
+        "pairs": [
+          { "left": "Lo que heredó de su familia", "right": "Biología humana" },
+          { "left": "Dormir poco y comer a deshoras", "right": "Estilo de vida" },
+          { "left": "La presión de la agenda y las redes", "right": "Medio ambiente" },
+          { "left": "Poder ver a un especialista", "right": "Servicios de salud" }
+        ],
+        "completion_feedback": "Lo heredado es **biología humana**, los hábitos son **estilo de vida**, la presión es **medio ambiente** y la atención es **servicios de salud**: los cuatro campos de **Lalonde**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "Un idol pausa actividades por agotamiento aunque no tiene ninguna lesión. La OMS dice que la salud es bienestar físico, mental y…",
+          "options": [
+            { "letter": "A", "text": "Social" },
+            { "letter": "B", "text": "Económico" },
+            { "letter": "C", "text": "Espiritual" },
+            { "letter": "D", "text": "Laboral" }
+          ],
+          "correct_answer": "A",
+          "explanation": "La OMS define la salud como completo bienestar físico, mental y social, y no solamente la ausencia de enfermedad. Lo económico o lo laboral influyen, pero no forman parte de la definición.",
+          "difficulty": 1
+        },
+        {
+          "question": "Dormir poco por hacer lives de madrugada corresponde, en el modelo de Lalonde, a…",
+          "options": [
+            { "letter": "A", "text": "Biología humana" },
+            { "letter": "B", "text": "Estilo de vida" },
+            { "letter": "C", "text": "Servicios de salud" },
+            { "letter": "D", "text": "Medio ambiente" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Dormir, comer y moverse son hábitos de la propia persona, así que pertenecen al estilo de vida. La biología es lo heredado y el ambiente es lo externo que la persona casi no controla.",
+          "difficulty": 2
+        },
+        {
+          "question": "Una fan dice: «Si no tiene una enfermedad diagnosticada, no tenía por qué pausar». Según la OMS, ¿qué es cierto?",
+          "options": [
+            { "letter": "A", "text": "Tiene razón: sin diagnóstico no hay problema" },
+            { "letter": "B", "text": "Sin enfermedad también puede faltar salud" },
+            { "letter": "C", "text": "Solo cuenta la salud física para trabajar" },
+            { "letter": "D", "text": "La salud mental no se considera salud" }
+          ],
+          "correct_answer": "B",
+          "explanation": "La definición de la OMS dice que la salud no es solamente la ausencia de enfermedad. Si falta bienestar mental o social, la salud está incompleta aunque no haya un diagnóstico.",
+          "difficulty": 3
+        },
+        {
+          "question": "La agencia contrata un psicólogo para la gira. ¿Qué campo de Lalonde mejora?",
+          "options": [
+            { "letter": "A", "text": "La biología humana heredada" },
+            { "letter": "B", "text": "El estilo de vida del idol" },
+            { "letter": "C", "text": "Los servicios de salud" },
+            { "letter": "D", "text": "El medio ambiente de la gira" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Tener acceso a un profesional de la salud corresponde al campo de los servicios de salud, que Lalonde llamó organización de la atención de salud.",
+          "difficulty": 2
+        },
+        {
+          "question": "Ensayar todo el día en una sala sin ventilación y recibir comentarios de odio son, para Lalonde, parte de…",
+          "options": [
+            { "letter": "A", "text": "El estilo de vida" },
+            { "letter": "B", "text": "El medio ambiente" },
+            { "letter": "C", "text": "La biología humana" },
+            { "letter": "D", "text": "Los servicios de salud" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Son factores externos al cuerpo que el idol casi no puede controlar por sí solo: el entorno físico y el social. Para Lalonde eso es medio ambiente, no estilo de vida, que son las decisiones propias.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Tres noches atorado en un jefe de Silksong",
+        "content": "Vacaciones. Llevas tres días atorado en un jefe de Hollow Knight: Silksong y te prometes «una más y me duermo». Son las 3 de la mañana. Juegas encorvado en la cama, con la consola en modo portátil a un palmo de la cara y la luz apagada. Al cuarto día despiertas con el cuello rígido, los ojos secos y ardiendo, y un dolor de cabeza que no se quita. En la tarde te cuesta concentrarte, contestas de malas en la comida y ya ni sales con tus amigos porque «tengo que pasar ese jefe». No es una enfermedad grave, pero algo se fue acumulando. Por un lado estás tú, con tu cuerpo y tus hábitos. Por otro, lo que te hace daño: la postura forzada y una pantalla que no deja descansar la vista. Y alrededor, un cuarto sin buena luz ni silla, donde nadie te dice que pares. Si te hubieras levantado cada rato, mirado lejos y apagado a tiempo, quizá nada de eso habría pasado. Y si el cuello sigue rígido una semana, toca que alguien lo revise. Cómo se forma un problema de salud, y en qué momento se puede frenar, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu maratón gamer tiene triada e historia natural",
+        "content": "Lo que acabas de ver con tus noches de Silksong es exactamente la **triada ecológica** y la **historia natural de la enfermedad**. El **agente** es lo que causa el daño (la postura forzada, la pantalla), el **huésped** eres tú y el **ambiente** es el cuarto oscuro y sin pausas. En el **periodo prepatogénico** solo hay riesgo; en el **patogénico** aparecen el cuello rígido y los ojos secos. Por eso existen los **niveles de prevención**: **primaria** (pausas, buena postura), **secundaria** (revisar a tiempo el dolor que no se va) y **terciaria** (rehabilitar cuando ya hubo daño). La meta es la **salud** según la OMS: bienestar **físico, mental y social**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — tu plan para jugar sin que te pase factura",
+        "content": "Arma tu plan de salud gamer y clasifica cada medida en su nivel de prevención.\n\n**Paso 1:** Lees una infografía de la escuela sobre por qué dormir bien importa → **promoción de la salud** (primaria).\n**Paso 2:** Juegas en silla, con la pantalla a la altura de los ojos, y aplicas la regla 20-20-20: cada 20 minutos miras a unos 6 metros durante 20 segundos → **protección específica** (primaria).\n**Paso 3:** Notas que ves borroso el pizarrón y vas a un examen de la vista → **diagnóstico temprano** (secundaria).\n**Paso 4:** El dolor de cuello no se quita en una semana y lo atienden de inmediato → **tratamiento oportuno** (secundaria).\n**Paso 5:** Una lesión de muñeca necesita terapia para recuperar el movimiento → **rehabilitación** (terciaria).\n\nResultado: un plan que te cuida antes, durante y después del daño."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**Salud (OMS, 1946)**: estado de **completo bienestar físico, mental y social**, no solo la ausencia de enfermedad. **Lalonde (1974)**: biología humana, medio ambiente, estilo de vida y servicios de salud. **Leavell y Clark**: prevención **primaria** (promoción y protección específica), **secundaria** (diagnóstico temprano y tratamiento oportuno) y **terciaria** (rehabilitación tras el daño)."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en los periodos como en una partida: antes del jefe solo hay riesgo (prepatogénico) y ahí juega la prevención primaria; cuando ya recibiste daño (patogénico), tocan la secundaria y la terciaria."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La triada ecológica explica un problema de salud como el encuentro entre agente, huésped y ambiente.",
+        "data": {
+          "intro": "Identifica la triada ecológica en tu maratón de Silksong, pieza por pieza.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Agente: la postura encorvada y la pantalla a un palmo, horas seguidas. Es lo que provoca el daño." },
+            { "text": "Huésped: tú, con tu cuerpo, tus hábitos y el cansancio con el que llegas a cada partida." },
+            { "text": "Ambiente: un cuarto oscuro, sin silla y sin nadie que te recuerde parar." },
+            { "text": "Cuando los tres se juntan varios días, pasas al periodo patogénico: cuello rígido y ojos secos." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Prepatogénico o patogénico?",
+        "content": "Prepatogénico: hay riesgo, pero la enfermedad aún no empieza en tu cuerpo. Patogénico: ya hay un cambio o un daño en ti.",
+        "data": {
+          "prompt": "Arrastra cada situación de tu maratón gamer al periodo de la historia natural que le toca.",
+          "buckets": ["Prepatogénico", "Patogénico"],
+          "items": [
+            { "t": "Jugar encorvado, con el cuello aún sano", "b": 0 },
+            { "t": "Pantalla muy cerca, con la vista aún bien", "b": 0 },
+            { "t": "Cuarto oscuro y sin silla para jugar", "b": 0 },
+            { "t": "Cuello rígido que no se quita", "b": 1 },
+            { "t": "Ojos secos y ardor al despertar", "b": 1 },
+            { "t": "Dolor de muñeca al usar el control", "b": 1 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada componente de la prevención con su ejemplo gamer.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Promoción de la salud", "b": "Infografía sobre el sueño" },
+            { "a": "Protección específica", "b": "Regla 20-20-20" },
+            { "a": "Diagnóstico temprano", "b": "Examen de la vista" },
+            { "a": "Rehabilitación", "b": "Terapia de muñeca" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de tu maratón de Silksong?",
+        "left_label": "Maratón gamer",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La postura encorvada y la pantalla", "right": "Agente" },
+          { "left": "Tú, desvelado y sin pausas", "right": "Huésped" },
+          { "left": "Cuarto oscuro y sin silla", "right": "Ambiente" },
+          { "left": "Cuello rígido y ojos secos", "right": "Periodo patogénico" }
+        ],
+        "completion_feedback": "La postura y la pantalla son el **agente**, tú eres el **huésped**, el cuarto es el **ambiente** y, cuando se juntan por días, llega el **periodo patogénico**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En tu maratón de Silksong, ¿quién es el huésped de la triada ecológica?",
+          "options": [
+            { "letter": "A", "text": "La pantalla de la consola" },
+            { "letter": "B", "text": "Tú, el jugador" },
+            { "letter": "C", "text": "El cuarto oscuro" },
+            { "letter": "D", "text": "La postura encorvada" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El huésped es la persona que puede enfermar: tú. La postura y la pantalla son el agente que causa el daño, y el cuarto oscuro es el ambiente.",
+          "difficulty": 1
+        },
+        {
+          "question": "Juegas encorvado, pero tu cuello está perfectamente bien. ¿En qué periodo de la historia natural estás?",
+          "options": [
+            { "letter": "A", "text": "Patogénico subclínico" },
+            { "letter": "B", "text": "Patogénico clínico" },
+            { "letter": "C", "text": "Prepatogénico" },
+            { "letter": "D", "text": "Horizonte clínico" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Hay un factor de riesgo, la postura, pero tu cuerpo todavía no tiene ningún cambio. Eso es el periodo prepatogénico, el momento ideal para la prevención primaria.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu cuello sigue rígido una semana después y vas a que te revisen. ¿Qué nivel de prevención es?",
+          "options": [
+            { "letter": "A", "text": "Primaria: protección específica" },
+            { "letter": "B", "text": "Terciaria: rehabilitación del cuello" },
+            { "letter": "C", "text": "Secundaria: diagnóstico temprano" },
+            { "letter": "D", "text": "Primaria: promoción de la salud" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El problema ya empezó, porque hay un síntoma. Revisarlo pronto para tratarlo a tiempo es diagnóstico temprano y tratamiento oportuno: prevención secundaria.",
+          "difficulty": 3
+        },
+        {
+          "question": "Aplicar la regla 20-20-20 para descansar la vista mientras juegas es…",
+          "options": [
+            { "letter": "A", "text": "Prevención secundaria" },
+            { "letter": "B", "text": "Prevención terciaria" },
+            { "letter": "C", "text": "Diagnóstico temprano" },
+            { "letter": "D", "text": "Prevención primaria" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La regla 20-20-20 protege tus ojos antes de que aparezca un problema. Es protección específica, que junto con la promoción de la salud forma la prevención primaria.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Qué medida frena el problema antes de que empiece, en el periodo prepatogénico?",
+          "options": [
+            { "letter": "A", "text": "Terapia cuando el cuello ya no gire" },
+            { "letter": "B", "text": "Pausas y buena postura desde hoy" },
+            { "letter": "C", "text": "Ir al médico cuando el dolor no se quite" },
+            { "letter": "D", "text": "Esperar a ver si el dolor desaparece" }
+          ],
+          "correct_answer": "B",
+          "explanation": "En el periodo prepatogénico aún no hay daño, así que se actúa con prevención primaria: pausas y buena postura. Ir al médico con dolor es secundaria y la terapia es terciaria.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "Según la Organización Mundial de la Salud, ¿qué es la salud?",
+      "options": [
+        { "letter": "A", "text": "Un estado de completo bienestar físico, mental y social" },
+        { "letter": "B", "text": "La ausencia total de enfermedades y lesiones en el cuerpo" },
+        { "letter": "C", "text": "Tener acceso a un médico cuando se necesita" },
+        { "letter": "D", "text": "El buen funcionamiento de todos los órganos" }
+      ],
+      "correct_answer": "A",
+      "hint": "La definición va más allá del cuerpo y menciona tres tipos de bienestar.",
+      "explanation": "La Constitución de la OMS define la salud como un estado de completo bienestar físico, mental y social, y no solamente la ausencia de afecciones o enfermedades."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Quiénes propusieron la historia natural de la enfermedad y los niveles de prevención?",
+      "options": [
+        { "letter": "A", "text": "Marc Lalonde y la OMS" },
+        { "letter": "B", "text": "Leavell y Clark" },
+        { "letter": "C", "text": "Louis Pasteur" },
+        { "letter": "D", "text": "Robert Koch" }
+      ],
+      "correct_answer": "B",
+      "hint": "Son dos médicos estadounidenses especialistas en medicina preventiva.",
+      "explanation": "Hugh Leavell y Gurney Clark describieron la historia natural de la enfermedad y los niveles de prevención. Lalonde propuso los cuatro campos de la salud; Pasteur y Koch estudiaron los microbios."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuáles son los tres elementos de la triada ecológica?",
+      "options": [
+        { "letter": "A", "text": "Biología, ambiente y servicios" },
+        { "letter": "B", "text": "Promoción, protección y rehabilitación" },
+        { "letter": "C", "text": "Agente, huésped y ambiente" },
+        { "letter": "D", "text": "Física, mental y social" }
+      ],
+      "correct_answer": "C",
+      "hint": "Uno causa el daño, otro lo recibe y el tercero los rodea.",
+      "explanation": "La triada ecológica explica la enfermedad como la interacción entre el agente que la causa, el huésped que la sufre y el ambiente que los rodea."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué campos de la salud propuso el modelo de Lalonde?",
+      "options": [
+        { "letter": "A", "text": "Promoción, protección específica, diagnóstico y rehabilitación" },
+        { "letter": "B", "text": "Agente, huésped, ambiente y horizonte clínico" },
+        { "letter": "C", "text": "Bienestar físico, mental, social y económico" },
+        { "letter": "D", "text": "Biología, ambiente, estilo de vida y servicios de salud" }
+      ],
+      "correct_answer": "D",
+      "hint": "Son cuatro: uno es tu cuerpo, otro tus hábitos, otro tu entorno y otro la atención médica.",
+      "explanation": "Marc Lalonde, en 1974, agrupó los determinantes de la salud en cuatro campos: biología humana, medio ambiente, estilo de vida y organización de los servicios de salud."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "Aplicar una vacuna a una persona sana es un ejemplo de prevención…",
+      "options": [
+        { "letter": "A", "text": "Primaria" },
+        { "letter": "B", "text": "Secundaria" },
+        { "letter": "C", "text": "Terciaria" },
+        { "letter": "D", "text": "Clínica" }
+      ],
+      "correct_answer": "A",
+      "hint": "La persona aún no está enferma: ¿en qué momento se está actuando?",
+      "explanation": "La vacuna se aplica antes de enfermar, en el periodo prepatogénico. Es protección específica, parte de la prevención primaria."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿En qué año se firmó la Constitución de la OMS, que contiene su definición de salud?",
+      "options": [
+        { "letter": "A", "text": "1974" },
+        { "letter": "B", "text": "1946" },
+        { "letter": "C", "text": "1978" },
+        { "letter": "D", "text": "1986" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fue justo al terminar la Segunda Guerra Mundial.",
+      "explanation": "La Constitución de la OMS se firmó en 1946 y entró en vigor el 7 de abril de 1948, hoy Día Mundial de la Salud. En 1974 se publicó el informe Lalonde, en 1978 la Declaración de Alma-Ata y en 1986 la Carta de Ottawa."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "La rehabilitación de una persona después de una enfermedad o lesión pertenece a la prevención…",
+      "options": [
+        { "letter": "A", "text": "Primaria" },
+        { "letter": "B", "text": "Secundaria" },
+        { "letter": "C", "text": "Terciaria" },
+        { "letter": "D", "text": "Cuaternaria" }
+      ],
+      "correct_answer": "C",
+      "hint": "Se aplica cuando el daño ya ocurrió.",
+      "explanation": "La prevención terciaria actúa cuando el daño ya ocurrió: con la rehabilitación, la persona recupera sus funciones y su vida diaria después de una enfermedad o lesión."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En la triada ecológica, ¿cómo se llama la persona que puede enfermarse?",
+      "options": [
+        { "letter": "A", "text": "Agente" },
+        { "letter": "B", "text": "Ambiente" },
+        { "letter": "C", "text": "Vector" },
+        { "letter": "D", "text": "Huésped" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es quien recibe al agente, como quien recibe una visita en su casa.",
+      "explanation": "El huésped es la persona o ser vivo que puede enfermar. El agente es lo que causa la enfermedad y el ambiente es el entorno que los rodea."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es el periodo prepatogénico?",
+      "options": [
+        { "letter": "A", "text": "La etapa antes de que empiece la enfermedad" },
+        { "letter": "B", "text": "La etapa en que aparecen los primeros síntomas" },
+        { "letter": "C", "text": "La recuperación después de la enfermedad" },
+        { "letter": "D", "text": "El momento del diagnóstico médico" }
+      ],
+      "correct_answer": "A",
+      "hint": "El prefijo pre significa antes.",
+      "explanation": "En el periodo prepatogénico el agente, el huésped y el ambiente interactúan, pero la enfermedad todavía no empieza en la persona. Es el momento de la prevención primaria."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "El diagnóstico temprano y el tratamiento oportuno corresponden a la prevención…",
+      "options": [
+        { "letter": "A", "text": "Primaria" },
+        { "letter": "B", "text": "Terciaria" },
+        { "letter": "C", "text": "Secundaria" },
+        { "letter": "D", "text": "Cuaternaria" }
+      ],
+      "correct_answer": "C",
+      "hint": "La enfermedad ya empezó, pero todavía se puede detectar y frenar pronto.",
+      "explanation": "La prevención secundaria actúa cuando la enfermedad ya empezó: busca detectarla pronto y tratarla a tiempo para evitar complicaciones."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Según la OMS, ¿cuáles son las tres dimensiones del bienestar que forman la salud?",
+      "options": [
+        { "letter": "A", "text": "Física, mental y espiritual" },
+        { "letter": "B", "text": "Física, mental y social" },
+        { "letter": "C", "text": "Física, económica y social" },
+        { "letter": "D", "text": "Biológica, química y física" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en el cuerpo, en la mente y en la relación con los demás.",
+      "explanation": "La OMS habla de bienestar físico, mental y social. Lo espiritual o lo económico pueden influir, pero no forman parte de la definición oficial."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Una campaña escolar enseña a dormir bien, moverse más y comer variado. ¿Qué es?",
+      "options": [
+        { "letter": "A", "text": "Protección específica" },
+        { "letter": "B", "text": "Diagnóstico temprano" },
+        { "letter": "C", "text": "Rehabilitación física" },
+        { "letter": "D", "text": "Promoción de la salud" }
+      ],
+      "correct_answer": "D",
+      "hint": "No protege contra un problema en particular: mejora la salud en general.",
+      "explanation": "La promoción de la salud mejora el bienestar general con educación y hábitos. La protección específica, en cambio, va contra un problema concreto, como una vacuna contra una enfermedad."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En el periodo patogénico, ¿qué caracteriza a la etapa subclínica?",
+      "options": [
+        { "letter": "A", "text": "La persona ya tiene síntomas fuertes y visibles" },
+        { "letter": "B", "text": "Ya hay cambios en el cuerpo, pero sin síntomas" },
+        { "letter": "C", "text": "Todavía no hay contacto con el agente causal" },
+        { "letter": "D", "text": "La persona ya se recuperó por completo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Sub significa por debajo: por debajo de lo que se nota.",
+      "explanation": "En la etapa subclínica la enfermedad ya empezó y hay cambios en el cuerpo, pero todavía no hay signos ni síntomas. Al cruzar el horizonte clínico empieza la etapa clínica."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es el horizonte clínico en la historia natural de la enfermedad?",
+      "options": [
+        { "letter": "A", "text": "El momento en que el agente entra al huésped" },
+        { "letter": "B", "text": "El último día del tratamiento médico" },
+        { "letter": "C", "text": "El momento en que aparecen signos y síntomas" },
+        { "letter": "D", "text": "La línea entre la salud y la muerte" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la línea que separa lo que todavía no se nota de lo que ya se nota.",
+      "explanation": "El horizonte clínico separa la etapa subclínica de la clínica: es el momento en que la enfermedad se manifiesta con signos y síntomas."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Para la OMS, ¿qué son los determinantes sociales de la salud?",
+      "options": [
+        { "letter": "A", "text": "Los genes y las enfermedades que una persona hereda de su familia" },
+        { "letter": "B", "text": "Las condiciones en que la gente nace, vive, trabaja y envejece" },
+        { "letter": "C", "text": "Las enfermedades más comunes de un país en un año" },
+        { "letter": "D", "text": "Las leyes que regulan a hospitales y clínicas privadas" }
+      ],
+      "correct_answer": "B",
+      "hint": "No hablan del cuerpo, sino de las condiciones en que transcurre la vida.",
+      "explanation": "La OMS llama determinantes sociales a las circunstancias en que las personas nacen, crecen, viven, trabajan y envejecen, como el ingreso, la vivienda o la escuela."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un virus que causa gripe es, dentro de la triada ecológica, un…",
+      "options": [
+        { "letter": "A", "text": "Huésped susceptible" },
+        { "letter": "B", "text": "Ambiente biológico" },
+        { "letter": "C", "text": "Agente químico" },
+        { "letter": "D", "text": "Agente biológico" }
+      ],
+      "correct_answer": "D",
+      "hint": "Pregúntate si causa, si enferma o si rodea, y de qué tipo es.",
+      "explanation": "El virus causa la enfermedad, así que es el agente; como es un microorganismo, es un agente biológico. Los agentes químicos son sustancias, como tóxicos o contaminantes."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una colonia recibe agua contaminada. En el modelo de Lalonde, ¿a qué campo pertenece ese factor?",
+      "options": [
+        { "letter": "A", "text": "Medio ambiente" },
+        { "letter": "B", "text": "Estilo de vida" },
+        { "letter": "C", "text": "Biología humana" },
+        { "letter": "D", "text": "Servicios de salud" }
+      ],
+      "correct_answer": "A",
+      "hint": "Es algo externo al cuerpo que cada persona casi no puede controlar sola.",
+      "explanation": "Para Lalonde, el medio ambiente incluye lo externo al cuerpo que la persona no controla del todo, como el agua, el aire o la vivienda. El estilo de vida son las decisiones personales."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "El tamiz neonatal busca enfermedades en recién nacidos antes de que den síntomas. ¿Qué nivel de prevención es?",
+      "options": [
+        { "letter": "A", "text": "Primaria" },
+        { "letter": "B", "text": "Secundaria" },
+        { "letter": "C", "text": "Terciaria" },
+        { "letter": "D", "text": "Cuaternaria" }
+      ],
+      "correct_answer": "B",
+      "hint": "El bebé podría ya tener la enfermedad; la prueba la busca para tratarla pronto.",
+      "explanation": "El tamiz neonatal detecta enfermedades que ya existen pero todavía no se notan, para tratarlas a tiempo. Es diagnóstico temprano, parte de la prevención secundaria."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Usar casco en la bici o cinturón de seguridad en el auto es un ejemplo de…",
+      "options": [
+        { "letter": "A", "text": "Promoción de la salud" },
+        { "letter": "B", "text": "Protección específica" },
+        { "letter": "C", "text": "Tratamiento oportuno" },
+        { "letter": "D", "text": "Rehabilitación física" }
+      ],
+      "correct_answer": "B",
+      "hint": "Va contra un riesgo concreto, antes de que pase algo.",
+      "explanation": "El casco y el cinturón protegen contra un riesgo concreto, las lesiones por accidente, antes de que ocurran. Por eso son protección específica, dentro de la prevención primaria."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Lo que una persona hereda de sus padres, como la predisposición a una enfermedad, es para Lalonde…",
+      "options": [
+        { "letter": "A", "text": "Estilo de vida" },
+        { "letter": "B", "text": "Medio ambiente" },
+        { "letter": "C", "text": "Biología humana" },
+        { "letter": "D", "text": "Servicios de salud" }
+      ],
+      "correct_answer": "C",
+      "hint": "Viene de los genes, no de los hábitos ni del entorno.",
+      "explanation": "La biología humana incluye la herencia genética, la edad y el funcionamiento del cuerpo. Es el campo que la persona menos puede cambiar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Andrea no tiene ninguna enfermedad, pero lleva meses triste y sin ver a nadie. Según la OMS, ¿está sana?",
+      "options": [
+        { "letter": "A", "text": "Sí, porque no tiene ninguna enfermedad" },
+        { "letter": "B", "text": "No, le falta bienestar mental y social" },
+        { "letter": "C", "text": "Sí, porque su cuerpo funciona bien" },
+        { "letter": "D", "text": "No, porque tiene una enfermedad oculta" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda que la definición dice: y no solamente la ausencia de enfermedad.",
+      "explanation": "Para la OMS la salud incluye el bienestar mental y social; no tener una enfermedad no basta. Si alguien se siente así, lo indicado es hablar con un adulto de confianza o con un profesional."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Luis casi no se mueve, duerme tarde y toma refresco a diario. En el modelo de Lalonde, esos factores son…",
+      "options": [
+        { "letter": "A", "text": "Biología humana" },
+        { "letter": "B", "text": "Medio ambiente" },
+        { "letter": "C", "text": "Estilo de vida" },
+        { "letter": "D", "text": "Servicios de salud" }
+      ],
+      "correct_answer": "C",
+      "hint": "Son decisiones y hábitos de la propia persona.",
+      "explanation": "El estilo de vida son los hábitos que la persona decide, como moverse, comer o dormir. Lalonde le dio mucha importancia porque es un campo que sí se puede cambiar."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona come con mucha sal y no hace ejercicio, pero aún no tiene ninguna enfermedad. ¿En qué periodo está y qué prevención le toca?",
+      "options": [
+        { "letter": "A", "text": "Patogénico, prevención secundaria" },
+        { "letter": "B", "text": "Prepatogénico, prevención primaria" },
+        { "letter": "C", "text": "Prepatogénico, prevención terciaria" },
+        { "letter": "D", "text": "Patogénico, prevención primaria" }
+      ],
+      "correct_answer": "B",
+      "hint": "Si todavía no hay enfermedad, ¿la historia natural ya pasó a su segundo periodo?",
+      "explanation": "Hay factores de riesgo, pero la enfermedad no ha empezado: es el periodo prepatogénico. Ahí actúa la prevención primaria, con promoción de la salud y protección específica."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una revisión dental encuentran una caries pequeña que todavía no duele y la arreglan ese mismo día. ¿Qué nivel de prevención es?",
+      "options": [
+        { "letter": "A", "text": "Primaria" },
+        { "letter": "B", "text": "Terciaria" },
+        { "letter": "C", "text": "Ninguna, porque no dolía" },
+        { "letter": "D", "text": "Secundaria" }
+      ],
+      "correct_answer": "D",
+      "hint": "La caries ya existía, aunque no doliera.",
+      "explanation": "La caries ya estaba ahí, en etapa subclínica, así que encontrarla y arreglarla es diagnóstico temprano y tratamiento oportuno: prevención secundaria. Que no doliera no significa que no hubiera enfermedad."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona supera una enfermedad grave, pero le queda una pérdida de audición permanente. En la historia natural, ¿qué desenlace es?",
+      "options": [
+        { "letter": "A", "text": "Curación completa" },
+        { "letter": "B", "text": "Etapa subclínica" },
+        { "letter": "C", "text": "Secuela o incapacidad" },
+        { "letter": "D", "text": "Periodo prepatogénico" }
+      ],
+      "correct_answer": "C",
+      "hint": "La enfermedad terminó, pero dejó algo permanente.",
+      "explanation": "La historia natural puede terminar en curación, cronicidad, secuela o incapacidad, o muerte. Un daño permanente es una secuela, y ahí entra la prevención terciaria con la rehabilitación."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Qué señaló el informe Lalonde de 1974 sobre el gasto en salud?",
+      "options": [
+        { "letter": "A", "text": "Que la biología humana era lo único que se podía cambiar" },
+        { "letter": "B", "text": "Que casi todo se iba a servicios de salud" },
+        { "letter": "C", "text": "Que había que gastar todo en construir más hospitales" },
+        { "letter": "D", "text": "Que el estilo de vida no influía en la salud" }
+      ],
+      "correct_answer": "B",
+      "hint": "Lalonde notó un desequilibrio entre dónde se gastaba y qué causaba las enfermedades.",
+      "explanation": "Lalonde observó que la mayor parte del dinero se iba a los servicios de salud, aunque la biología, el ambiente y el estilo de vida pesan mucho. Por eso pidió invertir también en prevención."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una colonia sin drenaje y con bajos ingresos hay más enfermedades que en otras. ¿Cuál es la explicación más completa?",
+      "options": [
+        { "letter": "A", "text": "Sus habitantes no quieren cuidarse lo suficiente" },
+        { "letter": "B", "text": "Es un problema solo de su herencia genética" },
+        { "letter": "C", "text": "Pesan los determinantes sociales en que viven" },
+        { "letter": "D", "text": "Es pura mala suerte que les tocó a todos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en las condiciones en que vive la gente, no solo en lo que decide cada quien.",
+      "explanation": "El drenaje, el agua o el ingreso son determinantes sociales de la salud. No se trata de culpar a las personas: muchas de esas condiciones no dependen solo de ellas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Para cortar la triada ecológica, una vacuna actúa principalmente sobre…",
+      "options": [
+        { "letter": "A", "text": "El agente" },
+        { "letter": "B", "text": "El ambiente" },
+        { "letter": "C", "text": "El huésped" },
+        { "letter": "D", "text": "El horizonte clínico" }
+      ],
+      "correct_answer": "C",
+      "hint": "La vacuna no elimina al microbio del entorno: cambia algo en la persona.",
+      "explanation": "La vacuna hace al huésped menos susceptible, porque su sistema inmunitario aprende a defenderse. Clorar el agua, en cambio, actúa sobre el ambiente."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál es el orden correcto de la historia natural de la enfermedad?",
+      "options": [
+        { "letter": "A", "text": "Subclínica, prepatogénico, clínica y desenlace" },
+        { "letter": "B", "text": "Prepatogénico, clínica, subclínica y desenlace" },
+        { "letter": "C", "text": "Clínica, subclínica, prepatogénico y desenlace" },
+        { "letter": "D", "text": "Prepatogénico, subclínica, clínica y desenlace" }
+      ],
+      "correct_answer": "D",
+      "hint": "Primero no hay enfermedad, luego hay pero no se nota, y al final sí se nota.",
+      "explanation": "Primero viene el periodo prepatogénico. Luego el patogénico, con la etapa subclínica, sin síntomas, y la clínica, con síntomas, hasta llegar a un desenlace."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una persona con una fractura ya soldada hace ejercicios guiados para volver a caminar bien. ¿Qué periodo y qué nivel de prevención son?",
+      "options": [
+        { "letter": "A", "text": "Prepatogénico, prevención primaria" },
+        { "letter": "B", "text": "Patogénico, prevención secundaria" },
+        { "letter": "C", "text": "Prepatogénico, prevención terciaria" },
+        { "letter": "D", "text": "Patogénico, prevención terciaria" }
+      ],
+      "correct_answer": "D",
+      "hint": "El daño ya ocurrió; ahora se busca recuperar la función.",
+      "explanation": "La fractura ya ocurrió, así que es el periodo patogénico. Recuperar la función con ejercicios guiados es rehabilitación: prevención terciaria."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál de estos es un determinante social de la salud?",
+    "options": [
+      { "letter": "A", "text": "El grupo sanguíneo de una persona" },
+      { "letter": "B", "text": "El ingreso económico de la familia" },
+      { "letter": "C", "text": "La estatura que heredó de sus padres" },
+      { "letter": "D", "text": "El color natural de los ojos" }
+    ],
+    "correct_answer": "B",
+    "explanation": "Los determinantes sociales son las condiciones en que la gente nace, vive, trabaja y envejece, como el ingreso de la familia. El grupo sanguíneo, la estatura heredada o el color de ojos son biología."
+  }
+}

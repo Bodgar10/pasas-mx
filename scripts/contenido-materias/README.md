@@ -53,6 +53,7 @@ Resultado en la base por tema: 40 secciones, 20 quiz, 30 de horda, 1 diagnóstic
 | tecnologia-sec-2 | 10/10 | ✅ antes de cargar | ✅ 14 oct 2026 (falta audio) |
 | tecnologia-sec-3 | 10/10 | ✅ antes de cargar | ✅ 15 oct 2026 (falta audio) |
 | introduccion-ciencias-sociales | 10/10 | ✅ antes de cargar | ✅ 15 oct 2026 (falta audio) |
+| ciencias-salud-1 | 10/10 | ✅ antes de cargar | ✅ 15 oct 2026 (falta audio) |
 
 ## Ojo con el conector de Supabase
 Algunos UPDATE llegan como `cancelled` sin que aparezca ningún aviso (filtro automático del

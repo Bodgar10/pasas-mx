@@ -1,0 +1,1006 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "sistema-de-salud-en-mexico-cs1",
+  "order_steps": {
+    "prompt": "Ordena el camino de un paciente que necesita un especialista",
+    "steps": [
+      "Lo revisa su médico en el centro de salud o la UMF",
+      "Su médico ve que necesita un especialista y lo refiere",
+      "Lo atienden en el hospital general del segundo nivel",
+      "Regresa a su clínica con indicaciones para el seguimiento"
+    ],
+    "completion_feedback": "Se entra por el **primer nivel**, se sube con una **referencia** cuando el caso lo pide y se regresa con la **contrarreferencia** para seguir cerca de casa. Ahora míralo en un ejemplo completo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La Enfermera Joy y el primer lugar al que llegas",
+        "content": "En el anime de Pokémon hay una regla que se repite capítulo tras capítulo: Ash llega a una ciudad nueva y, antes de buscar el gimnasio, entra al Centro Pokémon. Ahí lo recibe la Enfermera Joy, que revisa a Pikachu y a los demás, los deja descansar y se los regresa sanos, sin cobrarle nada a ningún entrenador. Casi cada pueblo tiene uno, así que nunca queda lejos. Joy no solo atiende a los que llegan heridos: también revisa a los que están bien, y casi todo lo que ve son golpes de batalla y cansancio, cosas comunes que se resuelven ahí mismo. Ahora imagina un caso que se sale de lo común: un Pokémon con algo que Joy nunca ha visto. No podría haber en cada pueblo una máquina para todo; lo lógico sería mandarlo, con una nota, a un centro más grande en la capital de la región, y que, ya estable, volviera con Joy para sus revisiones. Un lugar cercano para lo común, uno más grande para lo complicado y otro muy especializado para lo raro: así se organiza la atención de la salud, y eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El Centro Pokémon ES el primer nivel de atención",
+        "content": "Lo que acabas de ver con el Centro Pokémon es exactamente el **primer nivel de atención**: la puerta de entrada, cerca de casa, para **prevención** y padecimientos comunes, como los **centros de salud** y las **Unidades de Medicina Familiar**. El **segundo nivel** son los **hospitales generales**, con **urgencias** y especialidades básicas; el **tercer nivel**, la **alta especialidad** de los **institutos nacionales**. Mandar al paciente a un nivel mayor es **referencia**; regresarlo con indicaciones, **contrarreferencia**. Quién te atiende depende de tu trabajo: **IMSS**, **ISSSTE** o, sin **seguridad social**, **IMSS-Bienestar**. La **Secretaría de Salud** es la rectora del sistema."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la animadora que dibuja con dolor",
+        "content": "Mariana trabaja con contrato en un estudio mexicano de animación estilo anime y lleva semanas con dolor en la muñeca. Sigue su camino por el sistema.\n\n**Paso 1:** Tiene empleo formal en una empresa privada → es **derechohabiente del IMSS**.\n**Paso 2:** Va a su **Unidad de Medicina Familiar** → **primer nivel**: la revisa su médico familiar.\n**Paso 3:** El médico ve que necesita un especialista → la **refiere** al **Hospital General de Zona**, de **segundo nivel**, con traumatología.\n**Paso 4:** El especialista la estudia y le deja un plan → con la **contrarreferencia** vuelve a su UMF.\n**Paso 5:** Su médico familiar le da seguimiento cerca de casa.\n\nResultado: cada nivel hizo lo que le tocaba, y el hospital quedó libre para otros casos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **protección de la salud** es un derecho del **artículo 4° constitucional** y la **Secretaría de Salud** es la rectora. Con **seguridad social**: **IMSS** (sector privado formal), **ISSSTE** (trabajadores del Estado), **Pemex, Sedena y Semar**. Sin ella: **IMSS-Bienestar** o servicios estatales. **Niveles**: 1° centros de salud y UMF; 2° hospitales generales; 3° alta especialidad."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el Centro Pokémon: lo común y la prevención se quedan en el primer nivel. Si el caso crece, sube de nivel con una referencia; cuando ya está controlado, baja con la contrarreferencia."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada caso se atiende en el nivel que necesita y vuelve al primero para el seguimiento.",
+        "data": {
+          "intro": "Imagina que un Pokémon tiene algo raro que la Enfermera Joy no puede resolver. Sigue su camino por los niveles de atención.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Llega al Centro Pokémon de su pueblo: es el primer contacto, como un centro de salud. Joy lo revisa y ve que no es un golpe común." },
+            { "text": "Joy lo manda con una nota a un centro más grande en la capital de la región: eso es una referencia." },
+            { "text": "Ahí lo atienden especialistas con equipo que no cabe en cada pueblo, como en el segundo o el tercer nivel." },
+            { "text": "Ya estable, regresa con una nota para Joy, que seguirá sus revisiones cerca de casa: eso es la contrarreferencia." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué nivel lo atiende?",
+        "content": "Primer nivel: prevención y lo común. Segundo nivel: urgencias, hospitalización y especialidades básicas. Tercer nivel: alta especialidad para casos complejos.",
+        "data": {
+          "prompt": "Arrastra cada caso de un fan del anime al nivel de atención que le toca.",
+          "buckets": ["Primer nivel", "Segundo nivel", "Tercer nivel"],
+          "items": [
+            { "t": "Vacuna antes de ir a la convención", "b": 0 },
+            { "t": "Consulta por gripa tras un maratón de anime", "b": 0 },
+            { "t": "Apendicitis en la noche del estreno", "b": 1 },
+            { "t": "Brazo fracturado en el concurso de cosplay", "b": 1 },
+            { "t": "Trasplante de riñón", "b": 2 },
+            { "t": "Cirugía de corazón de alta especialidad", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada nivel o proceso con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Primer nivel", "b": "Centro de salud" },
+            { "a": "Segundo nivel", "b": "Hospital general" },
+            { "a": "Tercer nivel", "b": "Instituto nacional" },
+            { "a": "Contrarreferencia", "b": "Regreso a tu clínica" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte del Centro Pokémon?",
+        "left_label": "Centro Pokémon",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "Joy revisa a Pikachu aunque esté sano", "right": "Prevención" },
+          { "left": "Golpes comunes que se curan ahí mismo", "right": "Primer nivel" },
+          { "left": "La nota para el centro de la capital", "right": "Referencia" },
+          { "left": "Volver con Joy para sus revisiones", "right": "Contrarreferencia" }
+        ],
+        "completion_feedback": "El Centro Pokémon es el **primer nivel**: **prevención** y casos comunes. La nota al centro grande es una **referencia** y volver con Joy, la **contrarreferencia**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "El Centro Pokémon de cada pueblo atiende lo común y revisa a los Pokémon sanos. ¿A qué nivel de atención se parece?",
+          "options": [
+            { "letter": "A", "text": "Segundo nivel" },
+            { "letter": "B", "text": "Primer nivel" },
+            { "letter": "C", "text": "Tercer nivel" },
+            { "letter": "D", "text": "Nivel de urgencias" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El primer nivel es la puerta de entrada, cerca de casa: hace prevención y resuelve los padecimientos comunes, como los centros de salud y las Unidades de Medicina Familiar. Las urgencias están en el segundo nivel.",
+          "difficulty": 1
+        },
+        {
+          "question": "Joy manda a un Pokémon, con una nota, a un centro más grande. En el sistema de salud, ¿cómo se llama ese envío?",
+          "options": [
+            { "letter": "A", "text": "Contrarreferencia" },
+            { "letter": "B", "text": "Afiliación" },
+            { "letter": "C", "text": "Referencia" },
+            { "letter": "D", "text": "Derechohabiencia" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La referencia es enviar al paciente a un nivel de mayor capacidad. La contrarreferencia es el camino de regreso; afiliación y derechohabiencia tienen que ver con tener seguridad social.",
+          "difficulty": 2
+        },
+        {
+          "question": "Mariana, animadora con contrato formal en un estudio privado, necesita un especialista para su muñeca. ¿Cuál es el camino correcto?",
+          "options": [
+            { "letter": "A", "text": "UMF, luego hospital general y regreso a la UMF" },
+            { "letter": "B", "text": "Directo al instituto nacional, sin referencia" },
+            { "letter": "C", "text": "Al ISSSTE, porque atiende a todos los trabajadores" },
+            { "letter": "D", "text": "Al IMSS-Bienestar, porque es para quien trabaja" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Con empleo privado formal le toca el IMSS: entra por su UMF, la refieren al hospital general y vuelve con contrarreferencia. El ISSSTE es para trabajadores del Estado y el IMSS-Bienestar, para quien no tiene seguridad social.",
+          "difficulty": 3
+        },
+        {
+          "question": "Si los Centros Pokémon fueran mexicanos, ¿qué institución pondría las reglas para todos ellos, como rectora del sistema?",
+          "options": [
+            { "letter": "A", "text": "El Instituto Mexicano del Seguro Social" },
+            { "letter": "B", "text": "El ISSSTE y sus clínicas familiares" },
+            { "letter": "C", "text": "La Cruz Roja Mexicana" },
+            { "letter": "D", "text": "La Secretaría de Salud" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La Secretaría de Salud es la rectora: coordina el Sistema Nacional de Salud y emite normas para todas las instituciones. El IMSS y el ISSSTE dan servicio a sus derechohabientes, pero no rigen a los demás.",
+          "difficulty": 2
+        },
+        {
+          "question": "Fuera del anime, en la vida real, ¿cuál de estos casos le corresponde al tercer nivel de atención?",
+          "options": [
+            { "letter": "A", "text": "Una apendicitis que llega a urgencias" },
+            { "letter": "B", "text": "La vacuna de la influenza" },
+            { "letter": "C", "text": "Una cirugía cardiaca compleja" },
+            { "letter": "D", "text": "Una gripa con fiebre leve" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El tercer nivel es la alta especialidad, para casos complejos como una cirugía cardiaca difícil. La apendicitis se resuelve en urgencias y cirugía de un hospital general (segundo nivel); la vacuna y la gripa, en el primero.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El lesionado de la liga dominical: ¿a dónde lo llevan?",
+        "content": "Domingo, liga amateur, minuto 70. A Ramiro, el lateral, le cae una entrada fuerte y se queda en el pasto agarrándose el tobillo. Lo sacan cargando, le ponen hielo y empieza la discusión en la banca: ¿a dónde lo llevan? El portero dice que a su clínica del Seguro, porque él trabaja con contrato en una fábrica y tiene IMSS. El central responde que eso solo sirve si Ramiro también lo tiene, y cuenta que a su mamá, maestra en una primaria federal, la atiende el ISSSTE. El delantero, que vende tacos por su cuenta, dice que él no tiene ninguno de los dos y que cuando se enferma va al centro de salud. El entrenador propone una clínica particular, aunque haya que pagar. Ramiro, entre el dolor, aclara que trabaja de ayudante en un taller sin contrato. Y alguien más pregunta si, con el tobillo así de hinchado, no deberían ir directo a urgencias. Por qué once jugadores de la misma cancha tienen puertas distintas para atenderse, y cuál le toca a cada uno, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La banca de la liga ES el sistema de salud mexicano",
+        "content": "Lo que acabas de ver en la banca es exactamente cómo se organiza el **sistema de salud en México**. Con **seguridad social**, te atiende la institución ligada a tu trabajo: el **IMSS** (sector privado formal), el **ISSSTE** (trabajadores del Estado) o los servicios de **Pemex, Sedena y Semar**; tu familia entra como **beneficiaria**. Sin ella, como Ramiro, te atiende **IMSS-Bienestar** en los estados adheridos o los servicios estatales. El **sector privado** cobra o funciona con seguro. La **Secretaría de Salud** es la rectora, y la atención se ordena en **tres niveles**, unidos por la **referencia**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la guía de la liga para saber a qué nivel ir",
+        "content": "La liga arma una guía para saber a qué nivel de atención ir en cada caso. Resuélvela.\n\n**Paso 1:** Al portero le toca una **vacuna** → **primer nivel**: su clínica familiar o el centro de salud.\n**Paso 2:** El entrenador lleva el control de su **presión** → también **primer nivel**: seguimiento de algo común.\n**Paso 3:** A Ramiro le sigue doliendo el tobillo después de una semana → su médico de primer nivel lo **refiere** al **hospital general**, de **segundo nivel**.\n**Paso 4:** Un jugador se fractura la pierna en plena cancha → no se espera: se llama al **911** y va a **urgencias**, en el **segundo nivel**.\n**Paso 5:** A un juvenil le detectan un problema del corazón que pide una cirugía compleja → **tercer nivel**, de **alta especialidad**.\n\nResultado: cada caso en el nivel que necesita."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **protección de la salud** es un derecho del **artículo 4° constitucional** y la **Secretaría de Salud** es la rectora. Con **seguridad social**: **IMSS** (sector privado formal), **ISSSTE** (trabajadores del Estado), **Pemex, Sedena y Semar**. Sin ella: **IMSS-Bienestar** o servicios estatales. **Niveles**: 1° centros de salud y UMF; 2° hospitales generales; 3° alta especialidad."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la banca de la liga: la pregunta no es qué clínica queda cerca, sino de dónde viene tu seguridad social. Empresa privada formal: IMSS. Gobierno: ISSSTE. Sin ella: IMSS-Bienestar o servicios estatales."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Primero se revisa la gravedad y luego qué institución le corresponde.",
+        "data": {
+          "intro": "Ramiro sigue en la banca con el tobillo hinchado. Sigue los pasos para decidir a dónde llevarlo.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Primero, la gravedad: si no puede apoyar el pie o el tobillo se ve deformado, va a urgencias; si fuera algo muy grave, se llama al 911." },
+            { "text": "Luego, su derechohabiencia: trabaja sin contrato y no es beneficiario de nadie, así que no tiene IMSS ni ISSSTE." },
+            { "text": "Sin seguridad social, en un estado adherido lo atiende IMSS-Bienestar; en los demás, los servicios estatales de salud." },
+            { "text": "Si su familia puede y quiere pagar, también está el sector privado, que cobra la consulta o funciona con un seguro." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Quién lo atiende?",
+        "content": "IMSS: empleo formal en el sector privado. ISSSTE: trabajadores del Estado. IMSS-Bienestar o estatal: sin seguridad social. Privado: se paga o con seguro.",
+        "data": {
+          "prompt": "Arrastra a cada persona de la liga con quien le da servicios de salud.",
+          "buckets": ["IMSS", "ISSSTE", "IMSS-Bienestar o estatal", "Sector privado"],
+          "items": [
+            { "t": "Portero con contrato en una fábrica", "b": 0 },
+            { "t": "Utilero con contrato en un club profesional", "b": 0 },
+            { "t": "Árbitro que trabaja en una secretaría federal", "b": 1 },
+            { "t": "Delantero taquero, sin seguridad social", "b": 2 },
+            { "t": "Ayudante de taller sin contrato", "b": 2 },
+            { "t": "Entrenador que paga una consulta particular", "b": 3 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada institución con a quién atiende o qué hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "IMSS", "b": "Empleo privado formal" },
+            { "a": "ISSSTE", "b": "Trabajadores del Estado" },
+            { "a": "IMSS-Bienestar", "b": "Sin seguridad social" },
+            { "a": "Secretaría de Salud", "b": "Rectora del sistema" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada parte de la discusión en la banca?",
+        "left_label": "Banca de la liga",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "El portero, con IMSS por su fábrica", "right": "Seguridad social" },
+          { "left": "Ramiro, que trabaja sin contrato", "right": "Sin seguridad social" },
+          { "left": "La clínica que propone el entrenador", "right": "Sector privado" },
+          { "left": "La idea de ir directo a urgencias", "right": "Segundo nivel" }
+        ],
+        "completion_feedback": "El portero tiene **seguridad social** y Ramiro está **sin seguridad social**; la clínica de pago es el **sector privado** y urgencias está en el **segundo nivel**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "El portero trabaja con contrato en una fábrica. ¿Qué institución le da servicios de salud?",
+          "options": [
+            { "letter": "A", "text": "El ISSSTE" },
+            { "letter": "B", "text": "El IMSS" },
+            { "letter": "C", "text": "IMSS-Bienestar" },
+            { "letter": "D", "text": "La Sedena" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una fábrica es una empresa privada, y quien trabaja ahí con contrato formal está afiliado al IMSS. El ISSSTE es para trabajadores del Estado y la Sedena, para militares.",
+          "difficulty": 1
+        },
+        {
+          "question": "Ramiro trabaja sin contrato, no es beneficiario de nadie y vive en un estado adherido a IMSS-Bienestar. ¿Dónde se atiende sin pagar?",
+          "options": [
+            { "letter": "A", "text": "En el ISSSTE, como su vecino" },
+            { "letter": "B", "text": "En el IMSS, por ser trabajador" },
+            { "letter": "C", "text": "En IMSS-Bienestar" },
+            { "letter": "D", "text": "Solo en clínicas privadas" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Sin seguridad social, en los estados adheridos lo atiende IMSS-Bienestar sin costo. Trabajar sin contrato no lo afilia al IMSS, y el ISSSTE es solo para trabajadores del Estado y sus familias.",
+          "difficulty": 2
+        },
+        {
+          "question": "Si mañana el taller contrata formalmente a Ramiro, ¿qué cambia en su acceso a la salud?",
+          "options": [
+            { "letter": "A", "text": "Pierde el derecho a urgencias públicas" },
+            { "letter": "B", "text": "Pasa a ser derechohabiente del ISSSTE" },
+            { "letter": "C", "text": "Ya no puede usar el sector privado" },
+            { "letter": "D", "text": "Pasa a tener IMSS por su empleo" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Un taller es una empresa privada: al contratarlo formalmente, el patrón debe inscribirlo en el IMSS. Sería ISSSTE solo si trabajara para el Estado, y tener IMSS no le prohíbe pagar un servicio privado.",
+          "difficulty": 3
+        },
+        {
+          "question": "La mamá del central es maestra en una primaria federal y él tiene 15 años. ¿Dónde puede atenderse?",
+          "options": [
+            { "letter": "A", "text": "En el ISSSTE, como beneficiario" },
+            { "letter": "B", "text": "En el IMSS, por ser menor de edad" },
+            { "letter": "C", "text": "En IMSS-Bienestar, porque no trabaja" },
+            { "letter": "D", "text": "Solo en la Secretaría de Educación" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Su mamá trabaja para el Estado, así que tiene ISSSTE, y sus hijos menores entran como beneficiarios. No hace falta que él trabaje para tener seguridad social.",
+          "difficulty": 2
+        },
+        {
+          "question": "Al defensa le duele la rodilla desde hace un mes, sin urgencia. Tiene IMSS. ¿Por dónde debe empezar?",
+          "options": [
+            { "letter": "A", "text": "Directo con un ortopedista del tercer nivel" },
+            { "letter": "B", "text": "Por su Unidad de Medicina Familiar" },
+            { "letter": "C", "text": "Por urgencias del hospital general" },
+            { "letter": "D", "text": "Por un instituto nacional de rehabilitación" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Sin urgencia, se entra por el primer nivel: su UMF. Si necesita especialista, su médico familiar lo refiere. Urgencias es para lo que no puede esperar, y al tercer nivel se llega por referencia.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Enfermarte lejos de casa en el viaje al concierto",
+        "content": "Llevas meses ahorrando para ver a tu grupo favorito en la Ciudad de México. Viajas desde Mérida con tu prima, hacen fila desde temprano y el concierto es todo lo que soñaste. Pero al día siguiente amaneces con fiebre, dolor de estómago y vómito, y el vuelo de regreso sale en dos días. Tu prima abre el chat de la fanbase y llueven consejos. Una fan dice que vayas al consultorio de la farmacia de la esquina, que atienden rápido aunque hay que pagar. Otra te recuerda que tienes IMSS por el trabajo de tu mamá, pero tu clínica está en Mérida, a más de mil kilómetros. Una tercera cuenta que, cuando se puso muy mal en otro viaje, la recibieron en urgencias de un hospital público aunque no era su ciudad. Y alguien más sugiere esperar a volver y ver a tu médico de siempre. Estás en otra ciudad, con un problema de salud y varias puertas posibles. Saber cuál te toca, cuál cuesta, cuál es para urgencias y cuál para el seguimiento es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Las puertas de tu viaje SON el sistema de salud",
+        "content": "Lo que acabas de ver con tu viaje es exactamente el **sistema de salud en México** y sus distintas puertas. El consultorio de farmacia es **sector privado**: atiende rápido, pero se paga. Tu **IMSS** es **seguridad social**: eres **beneficiaria** de tu mamá y tienes asignada una clínica de **primer nivel** para consultas y **prevención**. Una **urgencia** se atiende en el **segundo nivel**, el de los hospitales generales, aunque estés lejos. El **tercer nivel**, de **alta especialidad**, recibe casos complejos por **referencia**. Otras puertas: **ISSSTE** para trabajadores del Estado e **IMSS-Bienestar** para quien no tiene seguridad social. Con el **Servicio Universal de Salud** (decreto de 2026), está previsto que desde 2027 compartan sus unidades."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — si el hospital de Hospital Playlist estuviera en México",
+        "content": "En Hospital Playlist, cinco amigos de la carrera son especialistas en un gran hospital. Imagina que ese hospital estuviera en México y ubica a cada paciente.\n\n**Paso 1:** Un trasplante de hígado, como los de Ik-jun → **tercer nivel**: alta especialidad.\n**Paso 2:** Una cirugía de corazón compleja, como las de Jun-wan → también **tercer nivel**.\n**Paso 3:** Una fan con tos y fiebre de dos días → no le toca ese hospital: va al **primer nivel**, su centro de salud o UMF.\n**Paso 4:** Una fractura de brazo → **segundo nivel**: urgencias y traumatología de un hospital general.\n**Paso 5:** Si el médico de primer nivel detecta algo complejo → hace una **referencia**, y al terminar recibe la **contrarreferencia**.\n\nResultado: el tercer nivel no es para todo; se llega por referencia."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **protección de la salud** es un derecho del **artículo 4° constitucional** y la **Secretaría de Salud** es la rectora. Con **seguridad social**: **IMSS** (sector privado formal), **ISSSTE** (trabajadores del Estado), **Pemex, Sedena y Semar**. Sin ella: **IMSS-Bienestar** o servicios estatales. **Niveles**: 1° centros de salud y UMF; 2° hospitales generales; 3° alta especialidad."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Como en un fan meeting, no todos pasan directo al backstage: lo común se atiende en el primer nivel y al tercer nivel se llega con una referencia. La excepción son las urgencias: esas van directo al hospital."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Primero se descarta una urgencia; luego se elige la puerta y se cierra el seguimiento en casa.",
+        "data": {
+          "intro": "Sigues con fiebre en la Ciudad de México y el vuelo sale en dos días. Sigue los pasos para decidir bien.",
+          "visual": "chain",
+          "steps": [
+            { "text": "Revisas señales de alarma: si no puedes ni tomar agua, el dolor es muy fuerte o te sientes cada vez peor, es urgencia y vas a urgencias o llamas al 911." },
+            { "text": "Si no es urgencia, eliges: el consultorio de farmacia es sector privado y cobra; tu IMSS es seguridad social, pero tu clínica asignada está en Mérida." },
+            { "text": "Te atienden y mejoras. Al volver a Mérida vas a tu Unidad de Medicina Familiar, tu primer nivel, y cuentas qué pasó." },
+            { "text": "Si tu médico familiar ve algo que requiere especialista, te refiere al hospital general; si no, el seguimiento se queda en el primer nivel." }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué puerta le toca?",
+        "content": "Seguridad social: IMSS, ISSSTE, Pemex, Sedena o Semar, por tu trabajo o el de tu familia. Sin ella: IMSS-Bienestar o servicios estatales. Privado: se paga o con seguro.",
+        "data": {
+          "prompt": "Arrastra cada caso del viaje al concierto a la parte del sistema que le corresponde.",
+          "buckets": ["Seguridad social", "IMSS-Bienestar o estatal", "Sector privado"],
+          "items": [
+            { "t": "Fan beneficiaria del IMSS de su mamá", "b": 0 },
+            { "t": "Fan cuyo papá trabaja en el gobierno federal", "b": 0 },
+            { "t": "Fan sin empleo formal ni seguridad social", "b": 1 },
+            { "t": "Fan que vende fanart, sin seguridad social", "b": 1 },
+            { "t": "Consultorio junto a la farmacia", "b": 2 },
+            { "t": "Hospital pagado con seguro de gastos médicos", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Consultorio de farmacia", "b": "Sector privado" },
+            { "a": "Beneficiaria", "b": "Cubierta por un familiar" },
+            { "a": "Artículo 4°", "b": "Derecho a la salud" },
+            { "a": "Referencia", "b": "Envío a un nivel mayor" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada consejo de la fanbase?",
+        "left_label": "Viaje al concierto",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "El consultorio de la farmacia", "right": "Sector privado" },
+          { "left": "Tu IMSS por el trabajo de tu mamá", "right": "Beneficiaria" },
+          { "left": "Tu clínica de siempre en Mérida", "right": "Primer nivel" },
+          { "left": "La que entró a urgencias lejos de casa", "right": "Segundo nivel" }
+        ],
+        "completion_feedback": "La farmacia es **sector privado**, tu IMSS te hace **beneficiaria**, tu clínica es el **primer nivel** y urgencias está en el **segundo nivel**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "Una fan tiene IMSS porque su mamá trabaja con contrato. ¿Qué es ella dentro del IMSS?",
+          "options": [
+            { "letter": "A", "text": "Trabajadora asegurada" },
+            { "letter": "B", "text": "Afiliada voluntaria" },
+            { "letter": "C", "text": "Pensionada" },
+            { "letter": "D", "text": "Beneficiaria" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los familiares de quien cotiza, como sus hijos, reciben servicio como beneficiarios. La asegurada es la mamá, que es quien trabaja; la fan no cotiza ni está pensionada.",
+          "difficulty": 1
+        },
+        {
+          "question": "El consultorio junto a una farmacia, donde pagas la consulta, pertenece al…",
+          "options": [
+            { "letter": "A", "text": "Sector privado" },
+            { "letter": "B", "text": "IMSS-Bienestar" },
+            { "letter": "C", "text": "Tercer nivel" },
+            { "letter": "D", "text": "ISSSTE" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Los consultorios de farmacia son servicios privados de primer nivel: se pagan y no dependen de ninguna institución pública. IMSS-Bienestar e ISSSTE son públicos.",
+          "difficulty": 2
+        },
+        {
+          "question": "Lejos de su ciudad, una fan con IMSS tiene dolor muy fuerte y no deja de vomitar. ¿Qué es lo correcto?",
+          "options": [
+            { "letter": "A", "text": "Esperar a volver para ir a su clínica asignada" },
+            { "letter": "B", "text": "Ir a urgencias aunque no sea su ciudad" },
+            { "letter": "C", "text": "Pedir antes una referencia a su médico familiar" },
+            { "letter": "D", "text": "Ir directo a un instituto nacional de tercer nivel" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una urgencia no espera ni necesita referencia: se va a urgencias del hospital más cercano o se llama al 911. La clínica asignada es para consultas y seguimiento, no para emergencias.",
+          "difficulty": 3
+        },
+        {
+          "question": "En Hospital Playlist hacen trasplantes de hígado. En México, ¿qué nivel de atención los realiza?",
+          "options": [
+            { "letter": "A", "text": "Segundo nivel" },
+            { "letter": "B", "text": "Tercer nivel" },
+            { "letter": "C", "text": "Primer nivel" },
+            { "letter": "D", "text": "Consultorio privado" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un trasplante es alta especialidad, así que le toca al tercer nivel, con equipos y especialistas que hay en pocos lugares. El segundo nivel cubre urgencias y especialidades básicas.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué la fan no puede ir directo al tercer nivel por un dolor de estómago común?",
+          "options": [
+            { "letter": "A", "text": "Porque el tercer nivel solo es privado" },
+            { "letter": "B", "text": "Porque solo atiende a trabajadores del Estado" },
+            { "letter": "C", "text": "Porque se llega ahí por referencia" },
+            { "letter": "D", "text": "Porque ahí solo se aplican vacunas" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El tercer nivel atiende casos complejos que le mandan los otros niveles por referencia; así no se satura con lo común. Hay tercer nivel público, como los institutos nacionales, y las vacunas son del primer nivel.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Manzanas, platillos y las profundidades en Tears of the Kingdom",
+        "content": "En Zelda: Tears of the Kingdom aprendes rápido que no todo daño se cura igual. Un golpe de un bokoblin se arregla con una manzana o un hongo del inventario: es barato, lo encuentras en cualquier parte y resuelve casi todos los rasguños del día. Cuando el daño es mayor, buscas una olla, juntas ingredientes y cocinas un platillo que te devuelve muchos más corazones; necesita más recursos y un lugar específico, así que no lo gastas en cualquier cosa. Y luego están las profundidades oscuras bajo Hyrule: ahí el aura maligna, una sustancia oscura, daña tus corazones de una forma que la comida normal ya no repara. Para eso necesitas algo especial que solo hay en ciertos lugares, como las raíces que iluminan las profundidades o platillos con ingredientes que crecen sobre todo en las islas del cielo. Nadie gasta un recurso raro en un rasguño, y nadie intenta arreglar ese daño con una manzana. Organizar la curación según qué tan complejo es el daño, con lo sencillo a la mano y lo especializado en pocos lugares, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La curación en Zelda ES el sistema de niveles de atención",
+        "content": "Lo que acabas de ver en Tears of the Kingdom es exactamente cómo se organizan los **niveles de atención**. El **primer nivel** es la manzana: **centros de salud** y **Unidades de Medicina Familiar** cercanos, para **prevención** y padecimientos comunes, que son la mayoría. El **segundo nivel** son los **hospitales generales**, con **urgencias** y especialidades básicas. El **tercer nivel** es la **alta especialidad**, en pocos lugares, como los **institutos nacionales**. Se sube por **referencia** y se regresa por **contrarreferencia**. Quién te atiende depende de tu **seguridad social**: **IMSS**, **ISSSTE** o, sin ella, **IMSS-Bienestar**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el capitán del equipo de eSports sin IMSS",
+        "content": "Kevin, de 17 años, es capitán del equipo de Rocket League de su prepa pública. Sus papás trabajan por su cuenta y no tienen IMSS. Resuelve su caso.\n\n**Paso 1:** ¿Tiene seguridad social por su familia? → **no**: sus papás no están afiliados.\n**Paso 2:** ¿Y por su escuela? → los estudiantes de prepa y universidad **públicas** tienen derecho al **seguro de salud para estudiantes** del **IMSS**, y su escuela lo inscribe.\n**Paso 3:** Con eso, Kevin es **derechohabiente** y tiene asignada una **Unidad de Medicina Familiar**: su **primer nivel**.\n**Paso 4:** Si algún día necesita un especialista, su UMF lo **refiere** al **segundo nivel**.\n**Paso 5:** Si deja de estudiar, pierde ese seguro, y sin otra cobertura le tocaría **IMSS-Bienestar** o los servicios estatales.\n\nResultado: estudiar en una escuela pública también le da acceso a la salud."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **protección de la salud** es un derecho del **artículo 4° constitucional** y la **Secretaría de Salud** es la rectora. Con **seguridad social**: **IMSS** (sector privado formal), **ISSSTE** (trabajadores del Estado), **Pemex, Sedena y Semar**. Sin ella: **IMSS-Bienestar** o servicios estatales. **Niveles**: 1° centros de salud y UMF; 2° hospitales generales; 3° alta especialidad."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la curación de Zelda: lo común y la prevención con lo que tienes cerca (primer nivel), lo grave en un hospital general (segundo) y lo raro y complejo en pocos lugares especializados (tercero)."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La atención sube de nivel solo cuando el caso lo pide, y baja otra vez para el seguimiento.",
+        "data": {
+          "intro": "A un compañero de tu equipo le detectan algo complejo. El medidor muestra qué tan especializada es la atención en cada paso.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            { "text": "Consulta en su Unidad de Medicina Familiar: primer nivel, como curarse con una manzana. Su médico nota algo fuera de lo común.", "delta": 20 },
+            { "text": "Referencia al hospital general: segundo nivel, con especialistas y estudios, como cocinar en la olla.", "delta": 30 },
+            { "text": "Referencia a un hospital de alta especialidad: tercer nivel, el recurso raro que solo hay en pocos lugares.", "delta": 40 },
+            { "text": "Ya controlado, contrarreferencia: regresa a su UMF para el seguimiento cerca de casa.", "delta": -70 }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Referencia, contrarreferencia o urgencia?",
+        "content": "Referencia: subir al paciente a un nivel de mayor capacidad. Contrarreferencia: regresarlo a su nivel de origen con indicaciones. Urgencia: se va directo al hospital, sin referencia.",
+        "data": {
+          "prompt": "Arrastra cada movimiento de un jugador por el sistema de salud a su categoría.",
+          "buckets": ["Referencia", "Contrarreferencia", "Urgencia directa"],
+          "items": [
+            { "t": "La UMF lo manda al hospital general", "b": 0 },
+            { "t": "El hospital general lo envía a un instituto", "b": 0 },
+            { "t": "El instituto lo regresa a su UMF con un plan", "b": 1 },
+            { "t": "El hospital lo devuelve a su centro de salud", "b": 1 },
+            { "t": "Se fractura en el torneo y llaman al 911", "b": 2 },
+            { "t": "Dolor de pecho intenso: directo al hospital", "b": 2 }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            { "a": "Seguro de estudiante", "b": "Alumnos de escuela pública" },
+            { "a": "IMSS-Bienestar", "b": "Sin seguridad social" },
+            { "a": "Derechohabiente", "b": "Asegurado o beneficiario" },
+            { "a": "Tercer nivel", "b": "Alta especialidad" }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto es cada forma de curarte en Zelda?",
+        "left_label": "Curación en Zelda",
+        "right_label": "Concepto",
+        "pairs": [
+          { "left": "La manzana para un rasguño", "right": "Primer nivel" },
+          { "left": "El platillo cocinado en la olla", "right": "Segundo nivel" },
+          { "left": "Lo especial para el daño oscuro", "right": "Tercer nivel" },
+          { "left": "No gastar lo raro en un rasguño", "right": "Usar el nivel adecuado" }
+        ],
+        "completion_feedback": "La manzana es el **primer nivel**, el platillo es el **segundo** y lo especial es el **tercero**: cada daño se atiende en el **nivel adecuado**. Ahora ponle nombre formal a todo eso."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué unidad es la «manzana» del sistema de salud, la que está cerca de casa y atiende lo común?",
+          "options": [
+            { "letter": "A", "text": "Un instituto nacional" },
+            { "letter": "B", "text": "Un hospital general" },
+            { "letter": "C", "text": "Un centro de salud" },
+            { "letter": "D", "text": "Un hospital de especialidad" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El centro de salud es primer nivel: cercano, para prevención y padecimientos comunes. El hospital general es segundo nivel, y los institutos y hospitales de especialidad son tercer nivel.",
+          "difficulty": 1
+        },
+        {
+          "question": "Kevin estudia en una prepa pública y sus papás no tienen IMSS. ¿Qué cobertura puede tener?",
+          "options": [
+            { "letter": "A", "text": "El ISSSTE, por ser escuela del gobierno" },
+            { "letter": "B", "text": "El seguro de estudiante del IMSS" },
+            { "letter": "C", "text": "Nada, solo servicios privados" },
+            { "letter": "D", "text": "Solo IMSS-Bienestar, por ser menor de edad" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Los estudiantes de escuelas públicas de nivel medio superior y superior tienen derecho al seguro de salud para estudiantes del IMSS. El ISSSTE es para trabajadores del Estado, no para alumnos.",
+          "difficulty": 2
+        },
+        {
+          "question": "En Zelda nadie arregla el daño de las profundidades con una manzana. En salud, ¿qué principio refleja?",
+          "options": [
+            { "letter": "A", "text": "El tercer nivel atiende todo primero" },
+            { "letter": "B", "text": "Lo privado siempre resuelve más casos" },
+            { "letter": "C", "text": "La prevención solo es del tercer nivel" },
+            { "letter": "D", "text": "Cada caso va al nivel que necesita" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los niveles se organizan por complejidad: lo común en el primero y lo complejo en el segundo o el tercero. La prevención es tarea central del primer nivel, no del tercero.",
+          "difficulty": 3
+        },
+        {
+          "question": "Tu compañero ya fue operado en el tercer nivel y lo mandan a su UMF con indicaciones. ¿Cómo se llama eso?",
+          "options": [
+            { "letter": "A", "text": "Referencia" },
+            { "letter": "B", "text": "Afiliación al IMSS" },
+            { "letter": "C", "text": "Contrarreferencia" },
+            { "letter": "D", "text": "Segunda opinión" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La contrarreferencia regresa al paciente a su nivel de origen con indicaciones para el seguimiento. La referencia es el camino de ida, hacia un nivel de mayor capacidad.",
+          "difficulty": 2
+        },
+        {
+          "question": "Como cuando un juego cierra un servidor, en 2023 desapareció el INSABI. ¿Quién atiende hoy a quien no tiene seguridad social en los estados adheridos?",
+          "options": [
+            { "letter": "A", "text": "El ISSSTE" },
+            { "letter": "B", "text": "IMSS-Bienestar" },
+            { "letter": "C", "text": "El IMSS ordinario" },
+            { "letter": "D", "text": "La Sedena" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Las funciones del INSABI pasaron a IMSS-Bienestar, que atiende sin costo a quien no tiene seguridad social en los estados adheridos. El IMSS ordinario y el ISSSTE atienden a derechohabientes.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué artículo de la Constitución mexicana reconoce el derecho a la protección de la salud?",
+      "options": [
+        { "letter": "A", "text": "Artículo 3°" },
+        { "letter": "B", "text": "Artículo 4°" },
+        { "letter": "C", "text": "Artículo 123" },
+        { "letter": "D", "text": "Artículo 27" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el mismo artículo que habla de la igualdad y de los derechos de las familias.",
+      "explanation": "El artículo 4° dice que toda persona tiene derecho a la protección de la salud. El 3° trata de la educación, el 123 del trabajo y el 27 de la tierra."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué institución es la rectora del Sistema Nacional de Salud en México?",
+      "options": [
+        { "letter": "A", "text": "Instituto Mexicano del Seguro Social" },
+        { "letter": "B", "text": "Secretaría de Salud" },
+        { "letter": "C", "text": "El ISSSTE" },
+        { "letter": "D", "text": "IMSS-Bienestar" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la dependencia del gobierno federal que coordina a todas las demás.",
+      "explanation": "La Secretaría de Salud coordina el sistema y emite las normas oficiales. El IMSS, el ISSSTE e IMSS-Bienestar dan servicios, pero no rigen a las demás instituciones."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿A quién atiende principalmente el IMSS?",
+      "options": [
+        { "letter": "A", "text": "Trabajadores del gobierno federal" },
+        { "letter": "B", "text": "Personas sin ningún tipo de seguridad social" },
+        { "letter": "C", "text": "Trabajadores del sector privado formal" },
+        { "letter": "D", "text": "Solo a militares y a sus familias" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en quien trabaja con contrato en una empresa, una tienda o una fábrica.",
+      "explanation": "El IMSS atiende a quienes trabajan formalmente en el sector privado y a sus beneficiarios. Los trabajadores del gobierno federal van al ISSSTE y los militares, a la Sedena o la Semar."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿A quién atiende el ISSSTE?",
+      "options": [
+        { "letter": "A", "text": "A los trabajadores de empresas privadas" },
+        { "letter": "B", "text": "A los trabajadores del Estado" },
+        { "letter": "C", "text": "A quien no tiene seguridad social" },
+        { "letter": "D", "text": "Solo a los trabajadores petroleros" }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda qué significan sus siglas: dicen para quién trabaja su derechohabiente.",
+      "explanation": "El ISSSTE es el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado. Las empresas privadas van al IMSS y los petroleros tienen los servicios de Pemex."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué nivel de atención es la puerta de entrada al sistema de salud?",
+      "options": [
+        { "letter": "A", "text": "El segundo nivel" },
+        { "letter": "B", "text": "El tercer nivel" },
+        { "letter": "C", "text": "El primer nivel" },
+        { "letter": "D", "text": "El nivel de urgencias" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa a dónde vas primero por algo común, antes de cualquier hospital.",
+      "explanation": "El primer nivel es el primer contacto: centros de salud y Unidades de Medicina Familiar. Desde ahí se refiere a los niveles segundo y tercero cuando hace falta."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué unidades forman el tercer nivel de atención?",
+      "options": [
+        { "letter": "A", "text": "Centros de salud comunitarios" },
+        { "letter": "B", "text": "Hospitales de alta especialidad" },
+        { "letter": "C", "text": "Unidades de Medicina Familiar" },
+        { "letter": "D", "text": "Hospitales generales con urgencias básicas" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el nivel para los casos más complejos y raros.",
+      "explanation": "El tercer nivel son los hospitales de alta especialidad y los institutos nacionales. Los centros de salud y las UMF son primer nivel, y los hospitales generales, segundo."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la salud pública?",
+      "options": [
+        { "letter": "A", "text": "La atención que dan solo los hospitales del gobierno a los enfermos" },
+        { "letter": "B", "text": "Acciones organizadas para proteger la salud de toda la población" },
+        { "letter": "C", "text": "Los servicios médicos que se pagan en consultorios particulares" },
+        { "letter": "D", "text": "El tratamiento individual de cada enfermo en un consultorio" }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate en si habla de una persona o de toda una comunidad.",
+      "explanation": "La salud pública es el esfuerzo organizado de la sociedad y sus instituciones para prevenir enfermedades y proteger la salud de toda la población, no solo curar a cada paciente."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Desde 2023, ¿qué institución atiende a las personas sin seguridad social en los estados adheridos?",
+      "options": [
+        { "letter": "A", "text": "INSABI" },
+        { "letter": "B", "text": "ISSSTE" },
+        { "letter": "C", "text": "IMSS-Bienestar" },
+        { "letter": "D", "text": "Seguro Popular" }
+      ],
+      "correct_answer": "C",
+      "hint": "Dos de las opciones ya no existen.",
+      "explanation": "IMSS-Bienestar atiende a quien no tiene seguridad social en los estados adheridos. El Seguro Popular fue sustituido por el INSABI, que a su vez desapareció en 2023."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es la referencia en el sistema de salud?",
+      "options": [
+        { "letter": "A", "text": "Regresar al paciente a su clínica de origen" },
+        { "letter": "B", "text": "Enviar al paciente a un nivel de mayor capacidad" },
+        { "letter": "C", "text": "Inscribir a un trabajador en el IMSS" },
+        { "letter": "D", "text": "Pedir una consulta privada sin pasar por el IMSS" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es el camino de ida, cuando el caso necesita más de lo que hay en tu clínica.",
+      "explanation": "La referencia envía al paciente a un nivel con más recursos o especialistas. Regresarlo a su clínica de origen es la contrarreferencia."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué institución da servicios de salud a los militares del Ejército y la Fuerza Aérea?",
+      "options": [
+        { "letter": "A", "text": "Semar" },
+        { "letter": "B", "text": "ISSSTE" },
+        { "letter": "C", "text": "Sedena" },
+        { "letter": "D", "text": "Pemex" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en qué secretaría tiene a su cargo al Ejército; la Marina tiene la suya.",
+      "explanation": "La Sedena tiene servicios médicos propios para el Ejército y la Fuerza Aérea. La Semar atiende a la Marina y Pemex, a los trabajadores petroleros."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué es la contrarreferencia?",
+      "options": [
+        { "letter": "A", "text": "Enviar al paciente a un hospital de alta especialidad" },
+        { "letter": "B", "text": "Regresar al paciente a su nivel de origen con indicaciones" },
+        { "letter": "C", "text": "Mandar al paciente a urgencias cuando su caso empeora de golpe" },
+        { "letter": "D", "text": "Pedir una segunda opinión a un médico privado" }
+      ],
+      "correct_answer": "B",
+      "hint": "Contra significa en sentido opuesto a la referencia.",
+      "explanation": "Después de atenderlo, el nivel superior regresa al paciente a su clínica con indicaciones para el seguimiento. Así el hospital queda libre y el paciente sigue cerca de casa."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué se atiende principalmente en el primer nivel?",
+      "options": [
+        { "letter": "A", "text": "Cirugías complejas y trasplantes" },
+        { "letter": "B", "text": "Urgencias y hospitalización prolongada" },
+        { "letter": "C", "text": "Prevención y padecimientos comunes" },
+        { "letter": "D", "text": "Investigación de enfermedades raras" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en vacunas, consultas por gripa y control de enfermedades frecuentes.",
+      "explanation": "El primer nivel hace prevención (vacunas, revisiones, educación para la salud) y atiende lo común. Cirugías complejas e investigación son del tercer nivel; urgencias, del segundo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué caracteriza al segundo nivel de atención?",
+      "options": [
+        { "letter": "A", "text": "Centros de salud dedicados a vacunar y a dar pláticas" },
+        { "letter": "B", "text": "Hospitales generales con urgencias" },
+        { "letter": "C", "text": "Institutos que investigan y atienden casos muy complejos" },
+        { "letter": "D", "text": "Consultorios privados junto a farmacias de cadena" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en el hospital al que llegas con una fractura.",
+      "explanation": "El segundo nivel son los hospitales generales: urgencias, hospitalización y especialidades básicas como pediatría, ginecología, medicina interna y cirugía general."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué significa ser derechohabiente?",
+      "options": [
+        { "letter": "A", "text": "Ser trabajador del gobierno con una plaza federal" },
+        { "letter": "B", "text": "Tener derecho a servicios de seguridad social" },
+        { "letter": "C", "text": "Pagar un seguro privado de gastos médicos mayores" },
+        { "letter": "D", "text": "Ser atendido en un centro de salud del estado" }
+      ],
+      "correct_answer": "B",
+      "hint": "La palabra junta derecho y habiente: quien tiene un derecho.",
+      "explanation": "Derechohabiente es quien tiene derecho a los servicios de una institución de seguridad social, como el IMSS o el ISSSTE, ya sea como asegurado o como beneficiario."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Quiénes pueden ser beneficiarios del IMSS de una persona que trabaja con contrato?",
+      "options": [
+        { "letter": "A", "text": "Solo el trabajador que cotiza" },
+        { "letter": "B", "text": "Su familia directa, como pareja e hijos" },
+        { "letter": "C", "text": "Cualquier persona que viva en su colonia" },
+        { "letter": "D", "text": "Sus compañeros de trabajo" }
+      ],
+      "correct_answer": "B",
+      "hint": "La seguridad social protege también a quienes dependen del trabajador.",
+      "explanation": "La seguridad social cubre al trabajador y a su familia directa, como su pareja y sus hijos, y en ciertos casos a sus padres. No cubre a vecinos ni a compañeros."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un empleado de oficina de la SEP federal se enferma. ¿Qué institución le da seguridad social?",
+      "options": [
+        { "letter": "A", "text": "El IMSS" },
+        { "letter": "B", "text": "El ISSSTE" },
+        { "letter": "C", "text": "IMSS-Bienestar" },
+        { "letter": "D", "text": "La Sedena" }
+      ],
+      "correct_answer": "B",
+      "hint": "La SEP es una dependencia del gobierno federal.",
+      "explanation": "Quien trabaja para el gobierno federal es trabajador del Estado, así que le corresponde el ISSSTE. El IMSS es para el sector privado formal."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un mesero trabaja con contrato en un restaurante. ¿Qué institución le corresponde?",
+      "options": [
+        { "letter": "A", "text": "El ISSSTE" },
+        { "letter": "B", "text": "IMSS-Bienestar" },
+        { "letter": "C", "text": "El IMSS" },
+        { "letter": "D", "text": "La Secretaría de Salud" }
+      ],
+      "correct_answer": "C",
+      "hint": "Un restaurante es una empresa privada y él tiene contrato.",
+      "explanation": "Con empleo formal en una empresa privada, el patrón debe inscribirlo en el IMSS. IMSS-Bienestar es para quien no tiene seguridad social."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una señora vende comida por su cuenta, sin seguridad social, en un estado adherido a IMSS-Bienestar. ¿Dónde se atiende sin costo?",
+      "options": [
+        { "letter": "A", "text": "En el ISSSTE de su colonia" },
+        { "letter": "B", "text": "En IMSS-Bienestar" },
+        { "letter": "C", "text": "Solo en el IMSS ordinario" },
+        { "letter": "D", "text": "En un consultorio privado" }
+      ],
+      "correct_answer": "B",
+      "hint": "Revisa si tiene derechohabiencia y en qué tipo de estado vive.",
+      "explanation": "Sin seguridad social, en un estado adherido la atiende IMSS-Bienestar sin costo. El ISSSTE y el IMSS ordinario son para derechohabientes, y el consultorio privado cobra."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "A una persona le duele la garganta desde ayer y no tiene señales de alarma. ¿Dónde debe atenderse?",
+      "options": [
+        { "letter": "A", "text": "En el tercer nivel" },
+        { "letter": "B", "text": "En urgencias de un hospital" },
+        { "letter": "C", "text": "En el primer nivel" },
+        { "letter": "D", "text": "En un instituto nacional" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es un padecimiento común y no urgente.",
+      "explanation": "Lo común y no urgente se atiende en el primer nivel, en su centro de salud o UMF. Ir a urgencias o al tercer nivel por algo así satura los servicios que necesitan los casos graves."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una persona se fractura el brazo al caerse. ¿Qué nivel tiene urgencias y traumatología para atenderla?",
+      "options": [
+        { "letter": "A", "text": "El primer nivel" },
+        { "letter": "B", "text": "El segundo nivel" },
+        { "letter": "C", "text": "El tercer nivel" },
+        { "letter": "D", "text": "Su consultorio familiar" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el nivel de los hospitales generales.",
+      "explanation": "Los hospitales generales, de segundo nivel, tienen urgencias y especialidades básicas como traumatología. El primer nivel no tiene traumatología ni hospitalización, y el tercero es para casos de alta especialidad."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un médico familiar detecta en su paciente un problema del corazón que requiere una cirugía muy compleja. ¿Qué debe hacer?",
+      "options": [
+        { "letter": "A", "text": "Tratarlo él mismo en la UMF" },
+        { "letter": "B", "text": "Referirlo a un nivel superior" },
+        { "letter": "C", "text": "Mandarlo a un consultorio de farmacia" },
+        { "letter": "D", "text": "Esperar a que llegue por urgencias" }
+      ],
+      "correct_answer": "B",
+      "hint": "El primer nivel no tiene equipo para cirugías complejas.",
+      "explanation": "Cuando el caso rebasa al primer nivel, el médico hace una referencia para que lo atiendan especialistas. Esperar a una urgencia pone en riesgo al paciente."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Por qué se dice que el sistema de salud mexicano está fragmentado?",
+      "options": [
+        { "letter": "A", "text": "Tu institución depende de tu situación laboral" },
+        { "letter": "B", "text": "Solo existen hospitales en la capital del país" },
+        { "letter": "C", "text": "Todas las personas se atienden en el mismo lugar" },
+        { "letter": "D", "text": "El sector privado controla a todas las instituciones" }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa en por qué dos vecinos pueden atenderse en lugares distintos.",
+      "explanation": "Hay varias instituciones y cada persona va a una según su trabajo: IMSS, ISSSTE, Pemex, Sedena, Semar o, sin seguridad social, IMSS-Bienestar o servicios estatales."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un paciente operado en un instituto nacional vuelve a su centro de salud para el seguimiento. ¿Qué ventaja tiene?",
+      "options": [
+        { "letter": "A", "text": "Así deja de necesitar seguridad social" },
+        { "letter": "B", "text": "Libera al tercer nivel y lo sigue cerca de casa" },
+        { "letter": "C", "text": "Le permite operarse otra vez sin referencia" },
+        { "letter": "D", "text": "El centro de salud tiene más especialistas que el instituto" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en quién gana espacio y en quién deja de viajar.",
+      "explanation": "La contrarreferencia deja al tercer nivel libre para casos complejos y permite que el paciente siga su control cerca de casa, con su médico de primer nivel."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona tiene IMSS por su trabajo y además paga un seguro de gastos médicos. ¿Qué es cierto?",
+      "options": [
+        { "letter": "A", "text": "Pierde su IMSS al tener un seguro privado" },
+        { "letter": "B", "text": "Debe atenderse solo en IMSS-Bienestar" },
+        { "letter": "C", "text": "Puede usar el IMSS o el sector privado" },
+        { "letter": "D", "text": "Solo puede usar el seguro en urgencias" }
+      ],
+      "correct_answer": "C",
+      "hint": "Tener una opción privada no borra los derechos que da tu empleo.",
+      "explanation": "Su IMSS viene de su empleo formal y no se pierde por tener un seguro privado. Puede elegir entre ambos según el caso; IMSS-Bienestar es para quien no tiene seguridad social."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué hace la Secretaría de Salud como rectora del sistema?",
+      "options": [
+        { "letter": "A", "text": "Atiende solo a trabajadores del Estado" },
+        { "letter": "B", "text": "Afilia a los trabajadores de empresas privadas" },
+        { "letter": "C", "text": "Coordina el sistema y fija normas para todos" },
+        { "letter": "D", "text": "Opera todos los hospitales privados del país" }
+      ],
+      "correct_answer": "C",
+      "hint": "Rector es quien dirige y pone las reglas, no quien atiende a un grupo.",
+      "explanation": "Como rectora, la Secretaría de Salud coordina a todas las instituciones y emite normas, como las NOM, que aplican también a los servicios privados. Afiliar trabajadores es tarea del IMSS."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una joven de 18 años estudia en una universidad pública y sus papás no tienen seguridad social. ¿Qué opción de cobertura tiene?",
+      "options": [
+        { "letter": "A", "text": "El seguro de salud para estudiantes del IMSS" },
+        { "letter": "B", "text": "El ISSSTE, porque su universidad es pública" },
+        { "letter": "C", "text": "Solo el sector privado, por ser mayor de edad" },
+        { "letter": "D", "text": "Ninguna hasta que consiga un empleo" }
+      ],
+      "correct_answer": "A",
+      "hint": "Existe un seguro ligado a ser alumno de una escuela pública.",
+      "explanation": "Los estudiantes de escuelas públicas de nivel medio superior y superior tienen derecho al seguro de salud para estudiantes del IMSS. Ser alumna de una universidad pública no la hace trabajadora del Estado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un paciente sin seguridad social vive en un estado que no se adhirió a IMSS-Bienestar. ¿Quién lo atiende?",
+      "options": [
+        { "letter": "A", "text": "Los servicios estatales de salud" },
+        { "letter": "B", "text": "El IMSS ordinario de su zona" },
+        { "letter": "C", "text": "El ISSSTE de su estado" },
+        { "letter": "D", "text": "Nadie: tendría que ir a un hospital privado" }
+      ],
+      "correct_answer": "A",
+      "hint": "Si el estado no se adhirió, ¿quién sigue a cargo de sus centros de salud?",
+      "explanation": "En los estados no adheridos, los servicios estatales de salud atienden a quien no tiene seguridad social. El derecho a la protección de la salud no depende de poder pagar un privado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un trabajador de Pemex se enferma. ¿Qué es lo más probable?",
+      "options": [
+        { "letter": "A", "text": "Lo atiende el ISSSTE por ser empresa del Estado" },
+        { "letter": "B", "text": "Lo atienden los servicios médicos de Pemex" },
+        { "letter": "C", "text": "Debe ir a IMSS-Bienestar" },
+        { "letter": "D", "text": "Lo atiende el IMSS como empresa privada" }
+      ],
+      "correct_answer": "B",
+      "hint": "Algunas instituciones del Estado tienen servicios médicos propios, aparte del ISSSTE.",
+      "explanation": "Pemex tiene servicios médicos propios para sus trabajadores y sus familias, igual que la Sedena y la Semar. No pasan por el ISSSTE aunque Pemex sea del Estado."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En una urgencia real, ¿es necesario pasar antes por el primer nivel?",
+      "options": [
+        { "letter": "A", "text": "Sí, siempre se necesita una referencia" },
+        { "letter": "B", "text": "Sí, pero solo si tiene IMSS" },
+        { "letter": "C", "text": "No, se va directo a urgencias" },
+        { "letter": "D", "text": "No, se va a un instituto nacional" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en qué pasa cuando no hay tiempo de esperar una cita.",
+      "explanation": "Una urgencia se atiende de inmediato: se llama al 911 o se va directo a urgencias, sin referencia. Al instituto nacional se llega por referencia, no por urgencias."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué fortalecer el primer nivel ayuda a que los hospitales no se saturen?",
+      "options": [
+        { "letter": "A", "text": "Hace las cirugías de alta especialidad" },
+        { "letter": "B", "text": "Sustituye a los hospitales generales" },
+        { "letter": "C", "text": "Resuelve y previene la mayoría de los casos" },
+        { "letter": "D", "text": "Atiende solo a quienes tienen seguro privado" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en cuántos problemas de salud se quedan resueltos cerca de casa.",
+      "explanation": "Con buena prevención y atención de lo común, la mayoría de los problemas se resuelve en el primer nivel y no llega al hospital. Así el segundo y el tercer nivel quedan para lo que sí los necesita."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál es el orden de los niveles de atención, de menor a mayor complejidad?",
+    "options": [
+      { "letter": "A", "text": "Hospital general, centro de salud, instituto nacional" },
+      { "letter": "B", "text": "Centro de salud, hospital general, instituto nacional" },
+      { "letter": "C", "text": "Instituto nacional, hospital general, centro de salud" },
+      { "letter": "D", "text": "Centro de salud, instituto nacional, hospital general" }
+    ],
+    "correct_answer": "B",
+    "explanation": "El centro de salud es primer nivel (prevención y lo común), el hospital general es segundo nivel (urgencias y especialidades básicas) y el instituto nacional es tercer nivel (alta especialidad)."
+  }
+}

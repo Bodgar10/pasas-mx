@@ -1,0 +1,1241 @@
+{
+  "subject": "ciencias-salud-1",
+  "topic": "higiene-saneamiento-infecciosas-cs1",
+  "order_steps": {
+    "prompt": "Ordena los pasos del lavado de manos correcto",
+    "steps": [
+      "Mojar las manos con agua limpia",
+      "Aplicar jabón en toda la superficie de las manos",
+      "Frotar palmas, dorsos, dedos y uñas al menos 20 segundos",
+      "Enjuagar con agua corriente hasta quitar el jabón",
+      "Secar con una toalla limpia o desechable"
+    ],
+    "completion_feedback": "Mojar, **enjabonar**, **frotar al menos 20 segundos**, enjuagar y secar: el **lavado de manos** corta la vía de transmisión de muchas infecciones. Ahora míralo dentro de tu tema."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "Maomao y el pozo del palacio",
+        "content": "Imagina un capítulo nuevo de The Apothecary Diaries. En pleno verano, varias sirvientas del palacio interior caen con diarrea, cólicos y fiebre, y en los pasillos ya se habla de una maldición. Jinshi le pide a Maomao que investigue. Ella no cree en maldiciones: hace preguntas, como siempre. Descubre que todas las enfermas comen en el mismo pabellón, que en las otras alas nadie se ha enfermado y que la cocina de ese pabellón saca su agua de un pozo viejo. Camina alrededor y encuentra la pista: a unos pasos del pozo están las letrinas de los sirvientes, y con las lluvias de la semana el suelo quedó hecho lodo. Lo que salía del cuerpo de una enferma se estaba filtrando hasta el agua que después bebían las demás. Maomao pide cerrar el pozo, hervir toda el agua y mover las letrinas lejos y cuesta abajo, y Jinshi lo ordena. En pocos días ya no hay casos nuevos. No hubo veneno ni maldición: hubo un camino que un microbio recorrió de una persona a otra, y alguien que lo cortó. Ese camino, y cómo romperlo, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El pozo de Maomao ES una cadena epidemiológica",
+        "content": "Lo que acabas de ver con el pozo de Maomao es exactamente la **cadena epidemiológica** (o cadena de infección): los seis eslabones que necesita un microbio para pasar de una persona a otra. **Agente**: el microbio que enferma (bacteria, virus, hongo o parásito). **Reservorio**: donde vive y se multiplica, aquí el intestino de las enfermas. **Puerta de salida**: por donde sale, las heces. **Vía de transmisión**: cómo viaja, el agua del pozo. **Puerta de entrada**: por donde entra, la boca. **Huésped susceptible**: quien no tiene defensas suficientes. Basta romper **un solo eslabón** para cortar el contagio, y eso hizo el **saneamiento básico**: **agua potable** y excretas lejos del pozo."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la gripe en el cuarto de costura",
+        "content": "Imagina ahora que una gripe recorre las habitaciones de las damas de la consorte Gyokuyou. Maomao identifica cada eslabón de la cadena.\n\n**Paso 1:** Una dama volvió de la ciudad con tos y fiebre: el **agente** es el **virus** de la influenza y ella es el **reservorio**.\n**Paso 2:** Tose sin taparse: su nariz y su boca son la **puerta de salida**.\n**Paso 3:** Las damas cosen juntas en un cuarto cerrado: las **gotitas** viajan de una a otra, esa es la **vía de transmisión**.\n**Paso 4:** Las gotitas llegan a la nariz, la boca y los ojos de las demás: la **puerta de entrada**.\n**Paso 5:** La que peor se pone es una aprendiz que lleva noches sin dormir y casi no come: el **huésped susceptible**.\n\nResultado: que la enferma descanse aparte, abrir las ventanas y taparse al toser rompe la cadena."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **cadena epidemiológica** tiene seis eslabones: **agente** → **reservorio** → **puerta de salida** → **vía de transmisión** → **puerta de entrada** → **huésped susceptible**. Si se rompe **uno solo**, el contagio se detiene. La **higiene** y el **saneamiento básico** (agua potable, drenaje, manejo de basura y control de fauna nociva) cortan las vías."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Recorre la cadena como Maomao: quién enferma (agente), dónde vive (reservorio), por dónde sale, cómo viaja, por dónde entra y a quién le pega (huésped). Si te preguntan cómo frenar un brote, busca el eslabón más fácil de romper."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Si sigues el camino del microbio eslabón por eslabón, encuentras dónde cortarlo.",
+        "data": {
+          "intro": "Maomao sigue el rastro de la diarrea en el pabellón. Recorre con ella cada eslabón de la cadena.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Agente y reservorio: una bacteria que causa diarrea se multiplica en el intestino de la primera sirvienta enferma."
+            },
+            {
+              "text": "Puerta de salida: el microbio sale en sus heces, que van a dar a las letrinas pegadas al pozo."
+            },
+            {
+              "text": "Vía de transmisión: con la lluvia, lo de las letrinas se filtra al pozo. El agua contaminada es el vehículo."
+            },
+            {
+              "text": "Puerta de entrada y huésped: otras sirvientas beben esa agua sin hervir y el microbio entra por su boca."
+            },
+            {
+              "text": "Se rompe la cadena: hervir el agua y alejar las letrinas corta la vía de transmisión. Ya no hay casos nuevos."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué parte del saneamiento es?",
+        "content": "Agua potable: agua segura para beber. Excretas y drenaje: alejar heces y aguas sucias. Basura: recogerla y desecharla bien. Fauna nociva: controlar ratas, cucarachas, moscas y moscos.",
+        "data": {
+          "prompt": "Arrastra cada medida del palacio al componente del saneamiento básico que atiende.",
+          "buckets": [
+            "Agua potable",
+            "Excretas y drenaje",
+            "Basura",
+            "Fauna nociva"
+          ],
+          "items": [
+            {
+              "t": "Hervir el agua antes de beberla",
+              "b": 0
+            },
+            {
+              "t": "Letrinas lejos y cuesta abajo del pozo",
+              "b": 1
+            },
+            {
+              "t": "Canales cerrados para las aguas sucias",
+              "b": 1
+            },
+            {
+              "t": "Sacar a diario los desechos de la cocina",
+              "b": 2
+            },
+            {
+              "t": "Trampas para las ratas del almacén",
+              "b": 3
+            },
+            {
+              "t": "Sellar las grietas por donde entran ratas",
+              "b": 3
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada eslabón de la cadena con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Agente",
+              "b": "El microbio que enferma"
+            },
+            {
+              "a": "Reservorio",
+              "b": "Lugar donde se multiplica"
+            },
+            {
+              "a": "Puerta de entrada",
+              "b": "Boca, nariz u ojos"
+            },
+            {
+              "a": "Huésped susceptible",
+              "b": "Persona sin defensas"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué eslabón es cada parte del caso de Maomao?",
+        "left_label": "Caso del pozo",
+        "right_label": "Eslabón",
+        "pairs": [
+          {
+            "left": "La sirvienta que enfermó primero",
+            "right": "Reservorio"
+          },
+          {
+            "left": "Las heces que llegaban a la letrina",
+            "right": "Puerta de salida"
+          },
+          {
+            "left": "El agua contaminada del pozo",
+            "right": "Vía de transmisión"
+          },
+          {
+            "left": "La boca de quien bebía sin hervir",
+            "right": "Puerta de entrada"
+          }
+        ],
+        "completion_feedback": "La enferma es el **reservorio**, las heces la **puerta de salida**, el agua la **vía de transmisión** y la boca la **puerta de entrada**. Ahora ponle nombre formal a toda la cadena."
+      },
+      "quiz": [
+        {
+          "question": "Maomao descubre que la diarrea del palacio venía del agua del pozo. ¿Qué eslabón de la cadena es el agua?",
+          "options": [
+            { "letter": "A", "text": "La vía de transmisión" },
+            { "letter": "B", "text": "El agente causal" },
+            { "letter": "C", "text": "El huésped susceptible" },
+            { "letter": "D", "text": "La puerta de entrada" }
+          ],
+          "correct_answer": "A",
+          "explanation": "El agua no es el microbio ni la persona: es el vehículo en el que el microbio viaja de una enferma a una sana. Por eso es la vía de transmisión. La puerta de entrada es la boca.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué Maomao pide mover las letrinas lejos y cuesta abajo del pozo?",
+          "options": [
+            { "letter": "A", "text": "Para que el olor no atraiga mosquitos al pozo" },
+            { "letter": "B", "text": "Para evitar que las heces contaminen el agua" },
+            { "letter": "C", "text": "Para que las enfermas no contagien por el aire" },
+            { "letter": "D", "text": "Para que nadie toque a las enfermas al pasar" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Es saneamiento básico: separar las excretas del agua que se bebe. Si las letrinas están cerca o más arriba que el pozo, lo que sale en las heces se filtra al agua y vuelve a entrar por la boca.",
+          "difficulty": 2
+        },
+        {
+          "question": "En el brote de gripe, una aprendiz que casi no duerme ni come se pone peor que las demás. ¿Qué eslabón representa?",
+          "options": [
+            { "letter": "A", "text": "Reservorio del virus" },
+            { "letter": "B", "text": "Puerta de salida" },
+            { "letter": "C", "text": "Huésped susceptible" },
+            { "letter": "D", "text": "Agente infeccioso" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Es la persona que recibe el microbio con menos defensas: la falta de sueño y de buena alimentación la vuelve más susceptible. El reservorio es la dama que llegó enferma de la ciudad.",
+          "difficulty": 3
+        },
+        {
+          "question": "La dama con gripe tose sin taparse en el cuarto de costura. ¿Por qué vía contagia a las demás?",
+          "options": [
+            { "letter": "A", "text": "Por vectores" },
+            { "letter": "B", "text": "Por el agua" },
+            { "letter": "C", "text": "Por la sangre" },
+            { "letter": "D", "text": "Por gotitas" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Al toser y hablar salen gotitas con virus que alcanzan a quien está cerca, más en un cuarto cerrado. Los vectores son animales como el mosco, y el agua fue la vía de la diarrea, no de la gripe.",
+          "difficulty": 2
+        },
+        {
+          "question": "Maomao no cura a nadie de inmediato, pero el brote del pozo se detiene. ¿Por qué funcionó hervir el agua?",
+          "options": [
+            { "letter": "A", "text": "Rompe un eslabón y la cadena se corta" },
+            { "letter": "B", "text": "Fortalece las defensas de todas las sirvientas" },
+            { "letter": "C", "text": "Elimina el microbio del intestino de las enfermas" },
+            { "letter": "D", "text": "Evita que las enfermas tosan sobre las sanas" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Basta romper un solo eslabón para cortar el contagio. Hervir el agua destruye a los microbios del vehículo, así que ya no llegan a la boca de nadie, aunque las enfermas sigan siendo reservorio un tiempo.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La toalla del vestidor y el pie de atleta",
+        "content": "Es la tercera semana de pretemporada del equipo de la prepa. Entrenan diario, terminan empapados y el vestidor parece sauna: regaderas con charcos, tenis húmedos amontonados y una toalla grande que todos agarran «nomás para los pies». Gael, el lateral izquierdo, lleva días rascándose entre los dedos: la piel se le pone blanca, se le pela y le arde. Nadie le da importancia. Diez días después ya son cuatro con la misma comezón, y todos tienen algo en común: se secaron con esa toalla y se bañaron descalzos en la misma regadera. El entrenador revisa y no culpa a Gael. Explica que es un hongo que adora lo húmedo y lo caliente, que vive en la piel de quien lo tiene, que se queda en las toallas y en el piso mojado, y que entra por la piel reblandecida entre los dedos. Ese mismo día se acaban las toallas compartidas, aparecen las chanclas y cada quien se seca bien los pies. Cómo un microbio brinca de un pie a otro, y cómo cortarle el camino, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La toalla del vestidor ES una cadena epidemiológica",
+        "content": "Lo que acabas de ver con la toalla del vestidor es exactamente la **cadena epidemiológica**: los seis eslabones que necesita un microbio para pasar de una persona a otra. El **agente** es un **hongo**; el **reservorio**, el pie de Gael; la **puerta de salida**, su piel que se descama; la **vía de transmisión**, el **contacto indirecto** con **fómites**, objetos contaminados como la toalla o el piso mojado; la **puerta de entrada**, la piel húmeda entre los dedos, y el **huésped susceptible**, quien se seca mal y anda descalzo. La **higiene personal** rompe la cadena: cada quien su toalla, chanclas en la regadera y pies bien secos."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la diarrea después del torneo",
+        "content": "En un torneo de sábado, tu equipo comparte un garrafón destapado donde todos meten el mismo vaso, y compra fruta picada en un puesto sin agua para lavarse las manos. El lunes, cinco tienen diarrea. Para el siguiente torneo rompen la cadena.\n\n**Paso 1:** Cada quien lleva su botella con **agua potable** (purificada o hervida) → se corta la **vía** del agua.\n**Paso 2:** Nadie mete su vaso al garrafón: se sirve con llave o de una jarra tapada.\n**Paso 3:** **Lavado de manos** con agua y jabón al salir del baño y antes de comer → las manos dejan de llevar microbios a la boca (**vía fecal-oral**).\n**Paso 4:** La fruta se lava y desinfecta en casa → **alimentos** seguros.\n**Paso 5:** Quien tiene diarrea descansa, se hidrata y va al médico → el **reservorio** no contagia al equipo.\n\nResultado: un torneo sin brote."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **cadena epidemiológica** tiene seis eslabones: **agente** → **reservorio** → **puerta de salida** → **vía de transmisión** → **puerta de entrada** → **huésped susceptible**. Si se rompe **uno solo**, el contagio se detiene. La **higiene** y el **saneamiento básico** (agua potable, drenaje, manejo de basura y control de fauna nociva) cortan las vías."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el vestidor: si el microbio pasa de un objeto a ti (toalla, piso, botella), es contacto indirecto y el objeto se llama fómite. Si pasa de piel a piel, es contacto directo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada medida de higiene le quita al hongo un lugar donde vivir o un camino para viajar.",
+        "data": {
+          "intro": "El vestidor ya tiene cuatro casos de pie de atleta. El medidor muestra qué tan protegido está el equipo. Sigue cada paso.",
+          "visual": "bar",
+          "start": 10,
+          "steps": [
+            {
+              "text": "Se acaban las toallas compartidas: cada quien trae la suya. El hongo pierde su fómite favorito.",
+              "delta": 25
+            },
+            {
+              "text": "Todos se bañan con chanclas: el piso mojado de la regadera ya no toca la piel.",
+              "delta": 20
+            },
+            {
+              "text": "Después del baño se secan bien entre los dedos: sin humedad, la puerta de entrada se cierra.",
+              "delta": 20
+            },
+            {
+              "text": "Gael y los otros tres van al médico para tratarse: el reservorio deja de contagiar. ¡Vestidor protegido!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué tipo de agente es?",
+        "content": "Bacterias: seres de una sola célula (tifoidea, cólera, tuberculosis). Virus: solo se multiplican dentro de células (gripa, influenza, dengue). Hongos: pie de atleta. Parásitos: amibas y lombrices.",
+        "data": {
+          "prompt": "Arrastra cada infección del mundo del fútbol al tipo de agente que la causa.",
+          "buckets": [
+            "Bacteria",
+            "Virus",
+            "Hongo",
+            "Parásito"
+          ],
+          "items": [
+            {
+              "t": "Pie de atleta del vestidor",
+              "b": 2
+            },
+            {
+              "t": "Influenza en la pretemporada",
+              "b": 1
+            },
+            {
+              "t": "Amibiasis por fruta mal lavada",
+              "b": 3
+            },
+            {
+              "t": "Tifoidea por agua contaminada",
+              "b": 0
+            },
+            {
+              "t": "Resfriado que se pasa en el camión",
+              "b": 1
+            },
+            {
+              "t": "Cólera en un torneo sin agua potable",
+              "b": 0
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de higiene con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Fómite",
+              "b": "Toalla contaminada"
+            },
+            {
+              "a": "Vector",
+              "b": "Mosco que transmite"
+            },
+            {
+              "a": "Saneamiento",
+              "b": "Agua potable y drenaje"
+            },
+            {
+              "a": "Higiene personal",
+              "b": "Chanclas en la regadera"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué eslabón es cada parte de lo que pasó en el vestidor?",
+        "left_label": "Vestidor",
+        "right_label": "Eslabón",
+        "pairs": [
+          {
+            "left": "El pie de Gael, con el hongo",
+            "right": "Reservorio"
+          },
+          {
+            "left": "La toalla que todos usaron",
+            "right": "Fómite (vía indirecta)"
+          },
+          {
+            "left": "La piel húmeda entre los dedos",
+            "right": "Puerta de entrada"
+          },
+          {
+            "left": "El que se secó mal y anduvo descalzo",
+            "right": "Huésped susceptible"
+          }
+        ],
+        "completion_feedback": "El pie de Gael es el **reservorio**, la toalla un **fómite**, la piel húmeda la **puerta de entrada** y quien se descuida el **huésped susceptible**. Ahora ponle nombre formal a toda la cadena."
+      },
+      "quiz": [
+        {
+          "question": "El pie de atleta que se pasó en el vestidor lo causa…",
+          "options": [
+            { "letter": "A", "text": "Un virus" },
+            { "letter": "B", "text": "Una bacteria" },
+            { "letter": "C", "text": "Un hongo" },
+            { "letter": "D", "text": "Un parásito" }
+          ],
+          "correct_answer": "C",
+          "explanation": "El pie de atleta es una infección de la piel causada por hongos, que crecen con humedad y calor. Por eso se pega en regaderas, toallas y tenis mojados.",
+          "difficulty": 1
+        },
+        {
+          "question": "La toalla que todos usaron en el vestidor es un ejemplo de…",
+          "options": [
+            { "letter": "A", "text": "Un vector" },
+            { "letter": "B", "text": "Un fómite" },
+            { "letter": "C", "text": "Un reservorio" },
+            { "letter": "D", "text": "Un agente" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un fómite es un objeto que lleva microbios de una persona a otra: contacto indirecto. Un vector es un ser vivo, como el mosco, y el reservorio es donde el microbio vive y se multiplica.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tras el torneo, cinco jugadores tienen diarrea; todos tomaron del garrafón destapado donde metían el mismo vaso. ¿Qué medida corta mejor esa vía?",
+          "options": [
+            { "letter": "A", "text": "Vacunar al equipo contra la influenza" },
+            { "letter": "B", "text": "Cubrebocas para todos durante el partido" },
+            { "letter": "C", "text": "Agua potable en botellas individuales" },
+            { "letter": "D", "text": "Repelente para todos antes de jugar" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La diarrea vino del agua contaminada: vía fecal-oral. Agua potable y que nadie meta su vaso cortan esa vía. El repelente es para vectores, y el cubrebocas y la vacuna de influenza, para enfermedades respiratorias.",
+          "difficulty": 3
+        },
+        {
+          "question": "Un jugador se baña en el club y se seca mal entre los dedos. ¿Qué eslabón de la cadena deja abierto?",
+          "options": [
+            { "letter": "A", "text": "La puerta de salida" },
+            { "letter": "B", "text": "El agente infeccioso" },
+            { "letter": "C", "text": "El reservorio del hongo" },
+            { "letter": "D", "text": "La puerta de entrada" }
+          ],
+          "correct_answer": "D",
+          "explanation": "La piel húmeda y reblandecida entre los dedos es por donde entra el hongo. Secarse bien cierra esa puerta de entrada. La puerta de salida es la piel del que ya está infectado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Alguien propone: «Gael tiene la culpa, que no vuelva a entrenar». Según la cadena epidemiológica, ¿qué es lo correcto?",
+          "options": [
+            { "letter": "A", "text": "Sacar a Gael del equipo para siempre" },
+            { "letter": "B", "text": "Tratar a Gael y cortar las vías de contagio" },
+            { "letter": "C", "text": "Desinfectar solo el piso y seguir con la toalla" },
+            { "letter": "D", "text": "Lavar solo la toalla de Gael y seguir igual" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Contagiarse no es culpa de nadie: el hongo aprovechó la humedad y las toallas compartidas. Lo útil es que Gael vaya al médico, para atender el reservorio, y romper las vías con higiene. Excluirlo no corta la cadena.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El Candybong prestado en el concierto de TWICE",
+        "content": "Sofi llevaba dos días con la nariz tapada, pero no se iba a perder el concierto de TWICE por nada. En la fila estornuda en sus manos, se las limpia en el pantalón y te presta su Candybong mientras busca su boleto en el celular. Adentro, el ambiente es perfecto: miles de ONCE pegadas hombro con hombro, gritando el fanchant a todo pulmón. Le pides a Sofi su celular para grabar tu parte favorita porque el tuyo ya no tiene pila, y entre tanta emoción te tallas los ojos varias veces. Llegas a casa ronca y feliz, duermes cuatro horas y al día siguiente vas a la escuela. Dos días después amaneces con estornudos, la garganta irritada y mocos; Itzel, que también usó el lightstick de Sofi, igual. Nadie hizo nada malo a propósito: un virus del resfriado salió de la nariz de Sofi, viajó en gotitas y en sus manos, se quedó en el lightstick y en el celular, entró por tus ojos y encontró a alguien desvelada. Cada uno de esos pasos se podía cortar, y eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El resfriado del concierto ES una cadena epidemiológica",
+        "content": "Lo que acabas de ver en el concierto es exactamente la **cadena epidemiológica**: los seis eslabones que necesita un microbio para pasar de una persona a otra. **Agente**: un **virus** del resfriado. **Reservorio**: la nariz y la garganta de Sofi. **Puerta de salida**: sus vías respiratorias, al estornudar. **Vía de transmisión**: **gotitas** y **contacto indirecto** con **fómites**, el lightstick y el celular. **Puerta de entrada**: tus ojos y tu nariz. **Huésped susceptible**: tú, desvelada. Si se rompe **un solo eslabón**, la cadena se corta: estornudar en el **ángulo interno del codo**, lavarse las manos y no tocarse la cara."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el café de cumpleaños de tu bias",
+        "content": "Vas a un café temático por el cumpleaños de una integrante de TWICE: cambias photocards, tocas el mostrador y los álbumes de exhibición, y luego te sirven un cupcake. Antes de comer haces el **lavado de manos** correcto.\n\n**Paso 1:** **Mojas** las manos con agua limpia y pones **jabón**.\n**Paso 2:** **Frotas** palmas, dorsos, **entre los dedos**, pulgares y **uñas** durante **al menos 20 segundos**; cantar dos veces «Feliz cumpleaños» te ayuda a contarlos.\n**Paso 3:** **Enjuagas** con agua corriente hasta quitar todo el jabón.\n**Paso 4:** **Secas** con toalla de papel o una toalla limpia que solo sea tuya.\n**Paso 5:** **Cierras la llave** con el papel para no volver a ensuciarte.\n\nResultado: los microbios de las photocards no llegan a tu boca. Si no hay agua y jabón, usa **gel con al menos 60% de alcohol**."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **cadena epidemiológica** tiene seis eslabones: **agente** → **reservorio** → **puerta de salida** → **vía de transmisión** → **puerta de entrada** → **huésped susceptible**. Si se rompe **uno solo**, el contagio se detiene. La **higiene** y el **saneamiento básico** (agua potable, drenaje, manejo de basura y control de fauna nociva) cortan las vías."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Para no confundir gotitas con aire: las gotitas son pesadas y caen cerca, como el estornudo de Sofi en la fila. Los aerosoles son finísimos y flotan en lugares cerrados, como pasa con el sarampión o la tuberculosis."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un resfriado no aparece de la nada: recorre la cadena completa.",
+        "data": {
+          "intro": "Sigue el viaje del virus del resfriado desde Sofi hasta ti, eslabón por eslabón.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Agente y reservorio: un virus del resfriado se multiplica en la nariz y la garganta de Sofi."
+            },
+            {
+              "text": "Puerta de salida: al estornudar en sus manos, el virus sale por sus vías respiratorias."
+            },
+            {
+              "text": "Vía de transmisión: sus manos dejan virus en el Candybong y en el celular; esos objetos son fómites."
+            },
+            {
+              "text": "Puerta de entrada: tocas el lightstick y luego te tallas los ojos. El virus entra por tus mucosas."
+            },
+            {
+              "text": "Huésped susceptible: dormiste cuatro horas y tus defensas están bajas. Dos días después empiezan los estornudos."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Por qué vía viaja el microbio?",
+        "content": "Gotitas: estornudos y tos de alguien cercano. Contacto con objetos: fómites como el lightstick. Agua y alimentos: vía fecal-oral. Vector: un animal, como el mosco, que lleva el microbio.",
+        "data": {
+          "prompt": "Arrastra cada situación de concierto a la vía de transmisión que representa.",
+          "buckets": [
+            "Gotitas",
+            "Contacto con objetos",
+            "Agua y alimentos",
+            "Vector"
+          ],
+          "items": [
+            {
+              "t": "Estornudo de alguien a tu lado en la fila",
+              "b": 0
+            },
+            {
+              "t": "Lightstick que pasa de mano en mano",
+              "b": 1
+            },
+            {
+              "t": "Celular prestado que acercas a tu cara",
+              "b": 1
+            },
+            {
+              "t": "Hielo hecho con agua no potable",
+              "b": 2
+            },
+            {
+              "t": "Fanchant a gritos junto a alguien con tos",
+              "b": 0
+            },
+            {
+              "t": "Mosco en un concierto en tierra caliente",
+              "b": 3
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con su ejemplo.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Gotitas",
+              "b": "Gotas que caen cerca"
+            },
+            {
+              "a": "Aerosoles",
+              "b": "Flotan en el aire"
+            },
+            {
+              "a": "Fómite",
+              "b": "Lightstick compartido"
+            },
+            {
+              "a": "Etiqueta respiratoria",
+              "b": "Toser en el codo"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué eslabón es cada parte de lo que pasó en el concierto?",
+        "left_label": "Concierto",
+        "right_label": "Eslabón",
+        "pairs": [
+          {
+            "left": "La nariz congestionada de Sofi",
+            "right": "Reservorio"
+          },
+          {
+            "left": "El estornudo en sus manos",
+            "right": "Puerta de salida"
+          },
+          {
+            "left": "El Candybong y el celular prestados",
+            "right": "Fómites"
+          },
+          {
+            "left": "Tus ojos al tallarlos",
+            "right": "Puerta de entrada"
+          }
+        ],
+        "completion_feedback": "La nariz de Sofi es el **reservorio**, el estornudo la **puerta de salida**, el lightstick y el celular **fómites** y tus ojos la **puerta de entrada**. Ahora ponle nombre formal a toda la cadena."
+      },
+      "quiz": [
+        {
+          "question": "El resfriado que te pasó Sofi en el concierto lo causa…",
+          "options": [
+            { "letter": "A", "text": "Un hongo" },
+            { "letter": "B", "text": "Una bacteria" },
+            { "letter": "C", "text": "Un parásito" },
+            { "letter": "D", "text": "Un virus" }
+          ],
+          "correct_answer": "D",
+          "explanation": "El resfriado común lo causan virus, como el rinovirus. Los hongos causan infecciones como el pie de atleta, y los parásitos, enfermedades como la amibiasis.",
+          "difficulty": 1
+        },
+        {
+          "question": "Sofi va a estornudar en la fila. ¿Qué es lo más correcto?",
+          "options": [
+            { "letter": "A", "text": "Taparse con el ángulo interno del codo" },
+            { "letter": "B", "text": "Voltear hacia el piso sin taparse con nada" },
+            { "letter": "C", "text": "Taparse con las dos manos y seguir" },
+            { "letter": "D", "text": "Estornudar hacia arriba para no mojar a nadie" }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es la etiqueta respiratoria: el codo detiene las gotitas y no quedan en las manos, que luego tocan lightsticks y celulares. Taparse con las manos detiene gotitas, pero convierte las manos en vehículo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Te contagiaste por tallarte los ojos después de usar el celular de Sofi. ¿Qué vía de transmisión fue?",
+          "options": [
+            { "letter": "A", "text": "Contacto directo" },
+            { "letter": "B", "text": "Contacto indirecto" },
+            { "letter": "C", "text": "Transmisión por aire" },
+            { "letter": "D", "text": "Transmisión por vector" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Fue contacto indirecto: el virus pasó por un objeto, el celular, que es un fómite. El directo es de piel a piel; por aire serían partículas que flotan, y un vector es un animal como el mosco.",
+          "difficulty": 3
+        },
+        {
+          "question": "Después del concierto dormiste cuatro horas y tus defensas bajaron. En la cadena epidemiológica eres…",
+          "options": [
+            { "letter": "A", "text": "El reservorio del virus" },
+            { "letter": "B", "text": "El huésped susceptible" },
+            { "letter": "C", "text": "La puerta de salida" },
+            { "letter": "D", "text": "El agente infeccioso" }
+          ],
+          "correct_answer": "B",
+          "explanation": "El huésped susceptible es quien recibe el microbio sin defensas suficientes, y dormir poco las baja. El reservorio es Sofi, en cuya nariz el virus ya se multiplicaba.",
+          "difficulty": 2
+        },
+        {
+          "question": "Para el próximo concierto, ¿qué medida rompe el eslabón de la puerta de salida?",
+          "options": [
+            { "letter": "A", "text": "Que tú te laves las manos al salir" },
+            { "letter": "B", "text": "Que tú duermas bien después del concierto" },
+            { "letter": "C", "text": "Que Sofi se cubra al estornudar" },
+            { "letter": "D", "text": "Que nadie se toque los ojos en el show" }
+          ],
+          "correct_answer": "C",
+          "explanation": "La puerta de salida es por donde el virus deja el cuerpo enfermo: si Sofi se cubre o usa cubrebocas, sale menos virus. Lavarte las manos corta la vía, no tocarte los ojos cierra la entrada y dormir bien fortalece al huésped.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Plague Inc.: jugar del lado del microbio",
+        "content": "En Plague Inc. juegas del lado contrario: eres el microbio. Escoges una bacteria, eliges el país donde empieza todo y ves cómo los puntitos rojos se esparcen por el mapa. Con los puntos de ADN compras mejoras: transmisión por agua, para viajar en lo que la gente bebe; por insectos, para que los moscos te lleven; por aire, para pasar de un pulmón a otro; y síntomas como tos y estornudos, para salir de un cuerpo y llegar al siguiente. Pronto descubres qué te frena: si te tardas, los países cierran puertos y aeropuertos (el famoso meme de Madagascar) y el mundo empieza a investigar la cura. Ganar en Plague Inc. es armar una cadena completa: un microbio, un lugar donde vivir, una salida, un camino, una entrada y gente sin defensas. Si un solo eslabón falla, te quedas atorado. Ahora cambia de lado: en la vida real tú no eres el microbio, eres quien quiere frenarlo. Lo que el juego te enseñó a construir, hoy vas a aprender a romperlo, y esa es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Plague Inc. ES una cadena epidemiológica",
+        "content": "Lo que acabas de ver en Plague Inc. es exactamente la **cadena epidemiológica**: los seis eslabones que necesita un microbio para pasar de una persona a otra. **Agente**: la bacteria, virus, hongo o parásito que eliges. **Reservorio**: donde vive y se multiplica (personas, animales, agua o suelo). **Puerta de salida**: por donde sale (tos, heces, sangre, piel). **Vía de transmisión**: cómo viaja (contacto, gotitas, aire, agua y alimentos o **vectores**). **Puerta de entrada**: boca, nariz, ojos o piel lesionada. **Huésped susceptible**: alguien sin defensas suficientes. En la vida real basta romper **un solo eslabón** para frenar el contagio."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — Plague Inc. al revés contra el dengue",
+        "content": "Ahora defiendes una colonia de un brote de **dengue** en lluvias. Cada «mejora» rompe un eslabón.\n\n**Paso 1:** Identificas la cadena: el **agente** es el **virus del dengue** y el **vector** es la hembra del mosco **Aedes aegypti**, que pica a un enfermo y luego a un sano.\n**Paso 2:** El mosco pone sus huevos en **agua estancada** y limpia: llantas, cubetas, floreros y tinacos destapados.\n**Paso 3:** Mejora «descacharrización»: **lava, tapa, voltea y tira** todo lo que junte agua → sin criaderos hay menos moscos.\n**Paso 4:** Mejora «barreras»: mosquiteros, manga larga y repelente → proteges la **puerta de entrada**, la piel.\n**Paso 5:** Mejora «atención»: quien tiene fiebre alta va pronto al médico y duerme con pabellón para que otros moscos no lo piquen.\n\nResultado: el dengue no pasa de persona a persona; sin mosco, no hay cadena."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **cadena epidemiológica** tiene seis eslabones: **agente** → **reservorio** → **puerta de salida** → **vía de transmisión** → **puerta de entrada** → **huésped susceptible**. Si se rompe **uno solo**, el contagio se detiene. La **higiene** y el **saneamiento básico** (agua potable, drenaje, manejo de basura y control de fauna nociva) cortan las vías."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el menú de Plague Inc.: cada transmisión que compras (aire, agua, insectos, sangre) es una vía de transmisión. Si en el examen te preguntan cómo frenar un brote, busca la medida que rompa esa vía."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada medida rompe un eslabón y baja el contagio.",
+        "data": {
+          "intro": "Tu colonia tiene un brote de dengue. La barra muestra el contagio, como en Plague Inc. Bájala rompiendo eslabones.",
+          "visual": "bar",
+          "start": 90,
+          "steps": [
+            {
+              "text": "Toda la colonia voltea cubetas, tapa tinacos y tira llantas viejas: sin criaderos hay muchos menos moscos.",
+              "delta": -35
+            },
+            {
+              "text": "Las casas ponen mosquiteros en puertas y ventanas: el mosco ya no entra a picar.",
+              "delta": -15
+            },
+            {
+              "text": "Quienes salen temprano o al atardecer usan manga larga y repelente: se protege la puerta de entrada.",
+              "delta": -15
+            },
+            {
+              "text": "Los enfermos van al médico y duermen con pabellón: los moscos ya no se infectan al picarlos.",
+              "delta": -15
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué eslabón rompe?",
+        "content": "Puerta de salida: que el microbio no salga del enfermo. Vía de transmisión: que no viaje en manos ni objetos. Huésped susceptible: que quien lo recibe tenga buenas defensas.",
+        "data": {
+          "prompt": "Arrastra cada medida del torneo de videojuegos al eslabón que rompe.",
+          "buckets": [
+            "Puerta de salida",
+            "Vía de transmisión",
+            "Huésped susceptible"
+          ],
+          "items": [
+            {
+              "t": "Toser en el codo en plena partida",
+              "b": 0
+            },
+            {
+              "t": "Cubrebocas si vas enfermo al torneo",
+              "b": 0
+            },
+            {
+              "t": "Desinfectar el control antes de pasarlo",
+              "b": 1
+            },
+            {
+              "t": "Lavarte las manos al salir de la LAN",
+              "b": 1
+            },
+            {
+              "t": "Dormir bien en vez de jugar toda la noche",
+              "b": 2
+            },
+            {
+              "t": "Comer completo antes del torneo",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada tipo de agente de Plague Inc. con una enfermedad real que causa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Bacteria",
+              "b": "Cólera"
+            },
+            {
+              "a": "Virus",
+              "b": "Dengue"
+            },
+            {
+              "a": "Hongo",
+              "b": "Pie de atleta"
+            },
+            {
+              "a": "Parásito",
+              "b": "Amibiasis"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué eslabón es cada parte de tu partida de Plague Inc.?",
+        "left_label": "Plague Inc.",
+        "right_label": "Eslabón",
+        "pairs": [
+          {
+            "left": "El tipo de patógeno que eliges",
+            "right": "Agente"
+          },
+          {
+            "left": "Los síntomas de tos y estornudos",
+            "right": "Puerta de salida"
+          },
+          {
+            "left": "La mejora de transmisión por insectos",
+            "right": "Vector (vía de transmisión)"
+          },
+          {
+            "left": "La gente que se va infectando",
+            "right": "Huésped susceptible"
+          }
+        ],
+        "completion_feedback": "El patógeno es el **agente**, la tos la **puerta de salida**, los insectos son **vectores** de la **vía de transmisión** y la gente infectada el **huésped susceptible**. Ahora ponle nombre formal."
+      },
+      "quiz": [
+        {
+          "question": "En Plague Inc. compras la mejora de transmisión por insectos. En la vida real, ¿cómo se llama un animal que transmite un microbio?",
+          "options": [
+            { "letter": "A", "text": "Fómite" },
+            { "letter": "B", "text": "Reservorio" },
+            { "letter": "C", "text": "Vector" },
+            { "letter": "D", "text": "Huésped" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Un vector es un ser vivo, como el mosco, que lleva el microbio de un enfermo a un sano. Un fómite es un objeto, y el huésped es quien recibe la infección.",
+          "difficulty": 1
+        },
+        {
+          "question": "En Plague Inc. evolucionas tos y estornudos para contagiar más. ¿Qué eslabón de la cadena fortalecen?",
+          "options": [
+            { "letter": "A", "text": "La puerta de entrada" },
+            { "letter": "B", "text": "El huésped susceptible" },
+            { "letter": "C", "text": "La puerta de salida" },
+            { "letter": "D", "text": "El reservorio" }
+          ],
+          "correct_answer": "C",
+          "explanation": "Toser y estornudar es la forma en que el microbio sale del cuerpo por las vías respiratorias: la puerta de salida. Por eso cubrirte con el codo o usar cubrebocas estando enfermo rompe ese eslabón.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un jugador dice: «Si el dengue es un virus, se contagia igual que la gripa». ¿Qué le corriges?",
+          "options": [
+            { "letter": "A", "text": "Se contagia por gotitas al hablar" },
+            { "letter": "B", "text": "Necesita al mosco como vector" },
+            { "letter": "C", "text": "Se contagia por compartir el control" },
+            { "letter": "D", "text": "Se contagia por tomar agua de la llave" }
+          ],
+          "correct_answer": "B",
+          "explanation": "Ser virus no define la vía. El dengue lo transmite la hembra del mosco Aedes aegypti al picar a un enfermo y luego a un sano; no pasa por gotitas, objetos ni agua para beber.",
+          "difficulty": 3
+        },
+        {
+          "question": "En una colonia con dengue, ¿qué medida elimina los criaderos del mosco?",
+          "options": [
+            { "letter": "A", "text": "Hervir el agua antes de tomarla" },
+            { "letter": "B", "text": "Lavarse las manos con agua y jabón" },
+            { "letter": "C", "text": "Usar cubrebocas en lugares cerrados" },
+            { "letter": "D", "text": "Tirar y voltear lo que junta agua" }
+          ],
+          "correct_answer": "D",
+          "explanation": "El Aedes aegypti pone sus huevos en agua estancada: llantas, cubetas, floreros y tinacos destapados. Lavar, tapar, voltear y tirar esos recipientes acaba con los criaderos.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu patógeno de Plague Inc. usa transmisión por agua. En la vida real, ¿qué lo frenaría más?",
+          "options": [
+            { "letter": "A", "text": "Mosquiteros y repelente" },
+            { "letter": "B", "text": "Cubrebocas en el transporte" },
+            { "letter": "C", "text": "Desinfectar los controles" },
+            { "letter": "D", "text": "Agua potable y drenaje" }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los microbios del agua siguen la vía fecal-oral: salen en las heces y entran por la boca. El drenaje aleja las excretas y el agua potable evita beberlas. Mosquiteros y cubrebocas frenan otras vías.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál es el primer eslabón de la cadena epidemiológica?",
+      "options": [
+        { "letter": "A", "text": "El huésped susceptible" },
+        { "letter": "B", "text": "El agente causal" },
+        { "letter": "C", "text": "La puerta de entrada" },
+        { "letter": "D", "text": "La vía de transmisión" }
+      ],
+      "correct_answer": "B",
+      "hint": "Antes de que haya contagio tiene que existir algo que cause la enfermedad.",
+      "explanation": "La cadena empieza con el agente causal, el microbio que provoca la enfermedad. Le siguen reservorio, puerta de salida, vía de transmisión, puerta de entrada y huésped susceptible."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En la cadena de infección, ¿qué es el reservorio?",
+      "options": [
+        { "letter": "A", "text": "El objeto que lleva microbios a otra persona" },
+        { "letter": "B", "text": "La persona sana que recibe el microbio" },
+        { "letter": "C", "text": "Donde el agente vive y se multiplica" },
+        { "letter": "D", "text": "El órgano por donde el microbio entra" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en la casa del microbio antes de salir a buscar a alguien más.",
+      "explanation": "El reservorio es el lugar donde el agente vive y se multiplica: una persona, un animal, el agua o el suelo. El objeto que lo lleva es un fómite y quien lo recibe es el huésped."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué tipo de agente infeccioso es la amiba que causa la amibiasis?",
+      "options": [
+        { "letter": "A", "text": "Un virus" },
+        { "letter": "B", "text": "Un parásito" },
+        { "letter": "C", "text": "Una bacteria" },
+        { "letter": "D", "text": "Un hongo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es un organismo que vive a costa de otro, en este caso en el intestino.",
+      "explanation": "La amiba es un parásito: vive en el intestino de su huésped a costa de él. Llega por agua o alimentos contaminados con heces, es decir, por vía fecal-oral."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es el saneamiento básico?",
+      "options": [
+        { "letter": "A", "text": "Las vacunas que se aplican a toda la población del país" },
+        { "letter": "B", "text": "Medidas sobre agua, excretas, basura y fauna nociva" },
+        { "letter": "C", "text": "El tratamiento médico que reciben las personas enfermas" },
+        { "letter": "D", "text": "La limpieza personal diaria, como bañarse y peinarse" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en lo que necesita una comunidad, no una sola persona, para no enfermarse.",
+      "explanation": "El saneamiento básico es el conjunto de medidas que cuidan el ambiente de una comunidad: agua potable, manejo de excretas y drenaje, manejo de basura y control de fauna nociva. Bañarse es higiene personal."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un vector?",
+      "options": [
+        { "letter": "A", "text": "Un objeto que guarda microbios en su superficie" },
+        { "letter": "B", "text": "Una persona enferma que no tiene síntomas" },
+        { "letter": "C", "text": "Una sustancia que destruye a los microbios" },
+        { "letter": "D", "text": "Un animal que transmite un microbio" }
+      ],
+      "correct_answer": "D",
+      "hint": "El ejemplo más famoso en México es el mosco del dengue.",
+      "explanation": "Un vector es un ser vivo, casi siempre un insecto como el mosco, que lleva el microbio de un enfermo a un sano. Un objeto contaminado es un fómite."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuánto tiempo se recomienda frotar las manos con agua y jabón en un lavado correcto?",
+      "options": [
+        { "letter": "A", "text": "Al menos 5 segundos" },
+        { "letter": "B", "text": "Al menos 10 segundos" },
+        { "letter": "C", "text": "Al menos 20 segundos" },
+        { "letter": "D", "text": "Al menos 2 minutos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es más o menos lo que tardas en cantar dos veces «Feliz cumpleaños».",
+      "explanation": "Hay que frotar palmas, dorsos, entre los dedos, pulgares y uñas al menos 20 segundos. Menos tiempo no alcanza a quitar bien los microbios."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué es un fómite?",
+      "options": [
+        { "letter": "A", "text": "Un insecto que pica a un enfermo y a un sano" },
+        { "letter": "B", "text": "La parte del cuerpo por donde sale el microbio" },
+        { "letter": "C", "text": "Un objeto que transmite microbios" },
+        { "letter": "D", "text": "La persona que no tiene defensas suficientes" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en una toalla, un celular o una manija.",
+      "explanation": "Un fómite es un objeto contaminado que lleva microbios de una persona a otra, como toallas, celulares o manijas. Es contacto indirecto. Un insecto que transmite es un vector."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué enfermedad transmite el mosco Aedes aegypti en México?",
+      "options": [
+        { "letter": "A", "text": "Tuberculosis" },
+        { "letter": "B", "text": "Dengue" },
+        { "letter": "C", "text": "Cólera" },
+        { "letter": "D", "text": "Influenza" }
+      ],
+      "correct_answer": "B",
+      "hint": "Aumenta en la temporada de lluvias, cuando hay agua estancada.",
+      "explanation": "El Aedes aegypti transmite el dengue (y también zika y chikungunya). La tuberculosis y la influenza son respiratorias, y el cólera se transmite por agua y alimentos."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál es la puerta de entrada de los microbios que causan diarrea?",
+      "options": [
+        { "letter": "A", "text": "La piel" },
+        { "letter": "B", "text": "Los ojos" },
+        { "letter": "C", "text": "La nariz" },
+        { "letter": "D", "text": "La boca" }
+      ],
+      "correct_answer": "D",
+      "hint": "Llegan en el agua y la comida.",
+      "explanation": "Los microbios de la diarrea entran por la boca con agua o alimentos contaminados. Por eso el agua potable, lavar los alimentos y lavarse las manos antes de comer los frenan."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué tipo de agente causa la influenza?",
+      "options": [
+        { "letter": "A", "text": "Un hongo" },
+        { "letter": "B", "text": "Una bacteria" },
+        { "letter": "C", "text": "Un parásito" },
+        { "letter": "D", "text": "Un virus" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es el mismo tipo de agente que causa el resfriado común.",
+      "explanation": "La influenza la causa un virus, igual que el resfriado común y el dengue. Por eso los antibióticos, que actúan contra bacterias, no la curan."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es la vía de transmisión típica de las enfermedades diarreicas?",
+      "options": [
+        { "letter": "A", "text": "Por gotitas" },
+        { "letter": "B", "text": "Fecal-oral" },
+        { "letter": "C", "text": "Por vectores" },
+        { "letter": "D", "text": "Por la sangre" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa por dónde sale el microbio y por dónde vuelve a entrar.",
+      "explanation": "Los microbios de la diarrea salen en las heces y entran por la boca con agua, alimentos o manos sucias: vía fecal-oral. Por eso importan el drenaje, el agua potable y el lavado de manos."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿En qué se diferencian las gotitas de los aerosoles?",
+      "options": [
+        { "letter": "A", "text": "Las gotitas flotan horas; los aerosoles caen rápido" },
+        { "letter": "B", "text": "Las gotitas solo salen al toser, nunca al hablar" },
+        { "letter": "C", "text": "Las gotitas caen cerca; los aerosoles flotan" },
+        { "letter": "D", "text": "Los aerosoles solo existen en hospitales" }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara el tamaño: lo grande pesa y cae, lo diminuto se queda suspendido.",
+      "explanation": "Las gotitas son grandes y caen a poca distancia de quien tose o habla. Los aerosoles son diminutos y pueden quedar flotando en lugares cerrados, como pasa con el sarampión o la tuberculosis."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es un ejemplo de transmisión por contacto directo?",
+      "options": [
+        { "letter": "A", "text": "Tomar agua contaminada de un pozo cercano" },
+        { "letter": "B", "text": "Tocar la piel infectada de otra persona" },
+        { "letter": "C", "text": "Que te pique un mosco que picó a un enfermo" },
+        { "letter": "D", "text": "Usar la toalla de alguien con hongos" }
+      ],
+      "correct_answer": "B",
+      "hint": "En el contacto directo no hay nada en medio entre las dos personas.",
+      "explanation": "El contacto directo es de persona a persona, piel con piel. La toalla es un fómite (contacto indirecto), el agua es un vehículo y el mosco es un vector."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué medida forma parte del manejo adecuado de la basura?",
+      "options": [
+        { "letter": "A", "text": "Conectar el baño de la casa a la red de drenaje" },
+        { "letter": "B", "text": "Separarla y sacarla en el horario del camión" },
+        { "letter": "C", "text": "Poner trampas y sellar grietas contra las ratas" },
+        { "letter": "D", "text": "Hervir o clorar el agua antes de tomarla" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca la medida que trata los desechos sólidos, no el agua ni los animales.",
+      "explanation": "Separar la basura y no dejarla en la calle evita que atraiga ratas, moscas y cucarachas. El drenaje es manejo de excretas, las trampas son control de fauna nociva y hervir el agua la hace potable."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué grupo de enfermedades infecciosas es el más frecuente en México?",
+      "options": [
+        { "letter": "A", "text": "Las transmitidas por vectores" },
+        { "letter": "B", "text": "Las infecciones de la piel" },
+        { "letter": "C", "text": "Las respiratorias agudas" },
+        { "letter": "D", "text": "Las intestinales por parásitos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en lo que casi todos tienen una o varias veces al año, sobre todo en invierno.",
+      "explanation": "Según los anuarios de morbilidad de la Secretaría de Salud, las infecciones respiratorias agudas, como resfriados e influenza, son año tras año la causa más frecuente de enfermedad en México. Las intestinales también son comunes."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué medida rompe el eslabón del huésped susceptible?",
+      "options": [
+        { "letter": "A", "text": "Taparse al toser con el codo" },
+        { "letter": "B", "text": "Eliminar el agua estancada" },
+        { "letter": "C", "text": "Desinfectar las superficies" },
+        { "letter": "D", "text": "Tener las vacunas al día" }
+      ],
+      "correct_answer": "D",
+      "hint": "Este eslabón es la persona que recibe el microbio. ¿Qué la hace más fuerte?",
+      "explanation": "Las vacunas, buena alimentación y descanso fortalecen las defensas del huésped. Taparse al toser rompe la puerta de salida, y eliminar agua estancada o desinfectar rompen la vía de transmisión."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué agentes infecciosos no son células y, sin excepción, necesitan entrar a una célula de otro ser vivo para multiplicarse?",
+      "options": [
+        { "letter": "A", "text": "Las bacterias" },
+        { "letter": "B", "text": "Los hongos" },
+        { "letter": "C", "text": "Los virus" },
+        { "letter": "D", "text": "Los parásitos" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca a los más pequeños de la lista: no pueden fabricar nada por su cuenta.",
+      "explanation": "Los virus no son células: todos necesitan entrar a una célula para multiplicarse. Las bacterias, los hongos y los parásitos sí son células, y la mayoría se reproduce por su cuenta."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Dónde pone sus huevos el mosco que transmite el dengue?",
+      "options": [
+        { "letter": "A", "text": "En la basura orgánica seca" },
+        { "letter": "B", "text": "En el pasto recién cortado" },
+        { "letter": "C", "text": "En agua estancada y limpia" },
+        { "letter": "D", "text": "En las aguas negras del drenaje" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en lo que se junta en llantas, cubetas y floreros después de llover.",
+      "explanation": "El Aedes aegypti pone sus huevos en recipientes con agua estancada y relativamente limpia: llantas, cubetas, floreros, tinacos destapados. Por eso se pide lavar, tapar, voltear y tirar."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál de estas enfermedades se transmite por el aire, en partículas que quedan flotando?",
+      "options": [
+        { "letter": "A", "text": "Dengue" },
+        { "letter": "B", "text": "Pie de atleta" },
+        { "letter": "C", "text": "Tuberculosis" },
+        { "letter": "D", "text": "Amibiasis" }
+      ],
+      "correct_answer": "C",
+      "hint": "Es una infección de los pulmones que causa una bacteria.",
+      "explanation": "La tuberculosis se transmite por el aire cuando una persona enferma tose o habla. El dengue va por vector, el pie de atleta por contacto y la amibiasis por agua y alimentos."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Por qué secarse bien entre los dedos de los pies ayuda a prevenir el pie de atleta?",
+      "options": [
+        { "letter": "A", "text": "Los virus mueren con el aire seco del baño" },
+        { "letter": "B", "text": "Así se elimina el mosco que lo transmite" },
+        { "letter": "C", "text": "La toalla funciona como una vacuna" },
+        { "letter": "D", "text": "Los hongos crecen con humedad" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en qué tipo de agente lo causa y qué ambiente le gusta.",
+      "explanation": "El pie de atleta lo causan hongos, que crecen en la piel húmeda y caliente. Secarse bien, usar chanclas en regaderas y no compartir toallas les quita su ambiente favorito."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una comunidad sin drenaje, varias personas tienen diarrea después de beber agua de un pozo. ¿Qué eslabón conviene romper primero?",
+      "options": [
+        { "letter": "A", "text": "La vía: dar agua potable" },
+        { "letter": "B", "text": "La entrada: usar cubrebocas" },
+        { "letter": "C", "text": "La salida: que tosan en el codo" },
+        { "letter": "D", "text": "El vector: fumigar contra moscos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Identifica primero cómo viaja el microbio en este caso.",
+      "explanation": "El microbio viaja en el agua del pozo, así que la vía de transmisión es el eslabón más claro: agua potable y, después, drenaje. Cubrebocas y toser en el codo sirven para enfermedades respiratorias, y fumigar, para las de vector."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un alumno con influenza va a clases sin cubrebocas y tose sobre su banca. ¿Cuál es la puerta de salida?",
+      "options": [
+        { "letter": "A", "text": "La banca del salón" },
+        { "letter": "B", "text": "Sus vías respiratorias" },
+        { "letter": "C", "text": "Las manos de sus compañeros" },
+        { "letter": "D", "text": "El aire del salón cerrado" }
+      ],
+      "correct_answer": "B",
+      "hint": "La puerta de salida está en el cuerpo del enfermo, no fuera de él.",
+      "explanation": "La puerta de salida es por donde el virus deja el cuerpo del enfermo: nariz y boca, sus vías respiratorias. La banca es un fómite y el aire del salón forma parte de la vía de transmisión."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una familia junta llantas viejas en el patio y en temporada de lluvias dos personas tienen dengue. ¿Qué medida rompe mejor la cadena?",
+      "options": [
+        { "letter": "A", "text": "Que los enfermos usen cubrebocas" },
+        { "letter": "B", "text": "Voltear o tirar las llantas" },
+        { "letter": "C", "text": "Hervir el agua del tinaco" },
+        { "letter": "D", "text": "Lavarse las manos con más frecuencia" }
+      ],
+      "correct_answer": "B",
+      "hint": "El dengue no pasa de persona a persona. ¿Qué necesita para viajar?",
+      "explanation": "Las llantas con agua de lluvia son criaderos del mosco vector. Eliminarlas corta la vía de transmisión. El dengue no se contagia por gotitas, manos ni agua para beber."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En un hospital, el personal se lava las manos entre un paciente y otro. ¿Qué eslabón rompe?",
+      "options": [
+        { "letter": "A", "text": "La puerta de salida" },
+        { "letter": "B", "text": "El huésped susceptible" },
+        { "letter": "C", "text": "La vía de transmisión" },
+        { "letter": "D", "text": "El reservorio" }
+      ],
+      "correct_answer": "C",
+      "hint": "Las manos del personal no son el enfermo ni el sano: son el camino entre ellos.",
+      "explanation": "Las manos pueden llevar microbios de un paciente a otro. Lavarlas rompe la vía de transmisión por contacto, una de las medidas más eficaces contra las infecciones en hospitales."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una persona lleva el microbio de la tifoidea, no tiene síntomas y prepara comida sin lavarse las manos. ¿Qué es en la cadena?",
+      "options": [
+        { "letter": "A", "text": "Un vector del microbio" },
+        { "letter": "B", "text": "Un fómite de la cocina" },
+        { "letter": "C", "text": "Un reservorio humano" },
+        { "letter": "D", "text": "Un huésped inmune" }
+      ],
+      "correct_answer": "C",
+      "hint": "Aunque no se sienta mal, el microbio vive y se multiplica en su cuerpo.",
+      "explanation": "Es un portador sano: un reservorio humano que no tiene síntomas pero puede contagiar. No es vector porque es una persona, ni fómite porque no es un objeto. El lavado de manos corta la vía."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una escuela pone jabón en los baños, pero el brote de diarrea sigue porque el agua de la cisterna está contaminada. ¿Qué falla?",
+      "options": [
+        { "letter": "A", "text": "Falta vacunar contra la influenza a todos" },
+        { "letter": "B", "text": "Falta agua potable: la vía sigue abierta" },
+        { "letter": "C", "text": "Falta fumigar contra el mosco del dengue" },
+        { "letter": "D", "text": "Falta usar cubrebocas dentro de los salones" }
+      ],
+      "correct_answer": "B",
+      "hint": "El jabón cortó un camino, pero el microbio tiene otro.",
+      "explanation": "El lavado de manos corta el paso por las manos, pero si el agua de la cisterna está contaminada, el microbio sigue entrando por la boca. Sin agua potable, la vía fecal-oral queda abierta."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Por qué basta romper un solo eslabón para detener un contagio?",
+      "options": [
+        { "letter": "A", "text": "Así se eliminan todos los microbios del mundo" },
+        { "letter": "B", "text": "Así el huésped se vuelve inmune para siempre" },
+        { "letter": "C", "text": "La cadena necesita los seis eslabones" },
+        { "letter": "D", "text": "Así el agente se convierte en otro microbio" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en una cadena real: ¿qué pasa si se rompe un solo anillo?",
+      "explanation": "El contagio solo ocurre si están los seis eslabones. Si falta uno, el microbio no llega al siguiente huésped. Por eso se elige el eslabón más fácil de romper en cada caso."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Durante un brote de gripe en una oficina, ¿qué combinación de medidas ataca más eslabones distintos?",
+      "options": [
+        { "letter": "A", "text": "Cubrebocas al enfermo, ventilar y vacunarse" },
+        { "letter": "B", "text": "Lavar las manos, lavarlas otra vez y usar gel" },
+        { "letter": "C", "text": "Ventilar, abrir ventanas y prender ventilador" },
+        { "letter": "D", "text": "Desinfectar mesas, teclados y manijas" }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa a qué eslabón ataca cada medida y cuenta cuántos diferentes cubre.",
+      "explanation": "El cubrebocas al enfermo cierra la puerta de salida, ventilar corta la vía y vacunarse protege al huésped: tres eslabones. Las demás repiten medidas sobre un solo eslabón, la vía de transmisión."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una persona con dengue duerme sin mosquitero en una zona con muchos moscos. ¿Por qué es un riesgo para sus vecinos?",
+      "options": [
+        { "letter": "A", "text": "Puede contagiarlos por gotitas al hablar" },
+        { "letter": "B", "text": "Los moscos que la piquen pueden contagiar" },
+        { "letter": "C", "text": "Sus sábanas pueden contagiar a quien las toque" },
+        { "letter": "D", "text": "El virus sale en su sudor y se queda en la casa" }
+      ],
+      "correct_answer": "B",
+      "hint": "El enfermo es el reservorio. ¿Quién se lleva el virus de su sangre?",
+      "explanation": "Al picar a una persona con dengue, el mosco se infecta y después puede transmitir el virus a otras personas. Por eso el enfermo debe dormir con mosquitero. El dengue no pasa por gotitas ni por objetos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un equipo comparte toallas, botellas y rastrillos. ¿Qué regla de higiene personal está rompiendo?",
+      "options": [
+        { "letter": "A", "text": "Lavarse las manos solo antes de comer" },
+        { "letter": "B", "text": "Vacunarse cada año contra la influenza" },
+        { "letter": "C", "text": "No compartir objetos de uso personal" },
+        { "letter": "D", "text": "Bañarse por lo menos una vez a la semana" }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en qué tienen en común las tres cosas que se pasan entre ellos.",
+      "explanation": "Toallas, botellas y rastrillos son objetos de uso personal: compartirlos los vuelve fómites que llevan hongos, virus o bacterias de una persona a otra. Cada quien debe tener los suyos."
+    }
+  ],
+  "diagnostic": {
+    "question": "¿Cuál de estas acciones es un ejemplo de saneamiento básico?",
+    "options": [
+      { "letter": "A", "text": "Lavarse los dientes después de cada comida" },
+      { "letter": "B", "text": "Conectar las casas a la red de drenaje" },
+      { "letter": "C", "text": "Ir al médico cuando hay fiebre alta" },
+      { "letter": "D", "text": "Hacer ejercicio por lo menos tres veces por semana" }
+    ],
+    "correct_answer": "B",
+    "explanation": "El saneamiento básico cuida el ambiente de toda la comunidad: agua potable, drenaje y manejo de excretas, basura y control de fauna nociva. Lavarse los dientes es higiene personal, y el ejercicio o ir al médico son otros cuidados de la salud."
+  }
+}

@@ -1,0 +1,1184 @@
+{
+  "subject": "ciencias-salud-1",
+  "topics": {
+    "salud-y-enfermedad-prevencion-cs1": {
+      "order_steps": {
+        "prompt": "Ordena las etapas de la historia natural de la enfermedad",
+        "steps": [
+          "Agente, huésped y ambiente interactúan, pero aún no hay enfermedad",
+          "La enfermedad empieza con cambios en el cuerpo, todavía sin síntomas",
+          "Se cruza el horizonte clínico y aparecen signos y síntomas",
+          "Llega el desenlace: curación, secuela, cronicidad o muerte"
+        ],
+        "completion_feedback": "Primero el **periodo prepatogénico**; luego el **patogénico**, con su etapa **subclínica** y su etapa **clínica**; al final, el desenlace. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Chigiri?",
+            "left_label": "Chigiri",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ya no hay ninguna lesión activa",
+                "right": "Ausencia de enfermedad"
+              },
+              {
+                "left": "Rodilla sana, pero miedo a correr",
+                "right": "Falta bienestar mental"
+              },
+              {
+                "left": "Se mantiene aparte del equipo",
+                "right": "Falta bienestar social"
+              },
+              {
+                "left": "La terapia tras la lesión",
+                "right": "Prevención terciaria"
+              }
+            ],
+            "completion_feedback": "Chigiri no tenía enfermedad, pero le faltaba **bienestar mental** y **social**: según la OMS, eso no es salud completa. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Saúl?",
+            "left_label": "Lesión de Saúl",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Calentar con el FIFA 11+",
+                "right": "Protección específica"
+              },
+              {
+                "left": "Revisar la molestia a tiempo",
+                "right": "Diagnóstico temprano"
+              },
+              {
+                "left": "Meses de terapia tras la lesión",
+                "right": "Rehabilitación"
+              },
+              {
+                "left": "Cancha dura y mañana fría",
+                "right": "Ambiente"
+              }
+            ],
+            "completion_feedback": "El calentamiento es **protección específica**, revisar la molestia es **diagnóstico temprano**, la terapia es **rehabilitación** y la cancha fría es el **ambiente**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué campo de Lalonde es cada parte de la historia del idol?",
+            "left_label": "Idol en pausa",
+            "right_label": "Campo de Lalonde",
+            "pairs": [
+              {
+                "left": "Lo que heredó de su familia",
+                "right": "Biología humana"
+              },
+              {
+                "left": "Dormir poco y comer a deshoras",
+                "right": "Estilo de vida"
+              },
+              {
+                "left": "La presión de la agenda y las redes",
+                "right": "Medio ambiente"
+              },
+              {
+                "left": "Poder ver a un especialista",
+                "right": "Servicios de salud"
+              }
+            ],
+            "completion_feedback": "Lo heredado es **biología humana**, los hábitos son **estilo de vida**, la presión es **medio ambiente** y la atención es **servicios de salud**: los cuatro campos de **Lalonde**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de tu maratón de Silksong?",
+            "left_label": "Maratón gamer",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La postura encorvada y la pantalla",
+                "right": "Agente"
+              },
+              {
+                "left": "Tú, desvelado y sin pausas",
+                "right": "Huésped"
+              },
+              {
+                "left": "Cuarto oscuro y sin silla",
+                "right": "Ambiente"
+              },
+              {
+                "left": "Cuello rígido y ojos secos",
+                "right": "Periodo patogénico"
+              }
+            ],
+            "completion_feedback": "La postura y la pantalla son el **agente**, tú eres el **huésped**, el cuarto es el **ambiente** y, cuando se juntan por días, llega el **periodo patogénico**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "sistema-de-salud-en-mexico-cs1": {
+      "order_steps": {
+        "prompt": "Ordena el camino de un paciente que necesita un especialista",
+        "steps": [
+          "Lo revisa su médico en el centro de salud o la UMF",
+          "Su médico ve que necesita un especialista y lo refiere",
+          "Lo atienden en el hospital general del segundo nivel",
+          "Regresa a su clínica con indicaciones para el seguimiento"
+        ],
+        "completion_feedback": "Se entra por el **primer nivel**, se sube con una **referencia** cuando el caso lo pide y se regresa con la **contrarreferencia** para seguir cerca de casa. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del Centro Pokémon?",
+            "left_label": "Centro Pokémon",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Joy revisa a Pikachu aunque esté sano",
+                "right": "Prevención"
+              },
+              {
+                "left": "Golpes comunes que se curan ahí mismo",
+                "right": "Primer nivel"
+              },
+              {
+                "left": "La nota para el centro de la capital",
+                "right": "Referencia"
+              },
+              {
+                "left": "Volver con Joy para sus revisiones",
+                "right": "Contrarreferencia"
+              }
+            ],
+            "completion_feedback": "El Centro Pokémon es el **primer nivel**: **prevención** y casos comunes. La nota al centro grande es una **referencia** y volver con Joy, la **contrarreferencia**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la discusión en la banca?",
+            "left_label": "Banca de la liga",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El portero, con IMSS por su fábrica",
+                "right": "Seguridad social"
+              },
+              {
+                "left": "Ramiro, que trabaja sin contrato",
+                "right": "Sin seguridad social"
+              },
+              {
+                "left": "La clínica que propone el entrenador",
+                "right": "Sector privado"
+              },
+              {
+                "left": "La idea de ir directo a urgencias",
+                "right": "Segundo nivel"
+              }
+            ],
+            "completion_feedback": "El portero tiene **seguridad social** y Ramiro está **sin seguridad social**; la clínica de pago es el **sector privado** y urgencias está en el **segundo nivel**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada consejo de la fanbase?",
+            "left_label": "Viaje al concierto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El consultorio de la farmacia",
+                "right": "Sector privado"
+              },
+              {
+                "left": "Tu IMSS por el trabajo de tu mamá",
+                "right": "Beneficiaria"
+              },
+              {
+                "left": "Tu clínica de siempre en Mérida",
+                "right": "Primer nivel"
+              },
+              {
+                "left": "La que entró a urgencias lejos de casa",
+                "right": "Segundo nivel"
+              }
+            ],
+            "completion_feedback": "La farmacia es **sector privado**, tu IMSS te hace **beneficiaria**, tu clínica es el **primer nivel** y urgencias está en el **segundo nivel**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada forma de curarte en Zelda?",
+            "left_label": "Curación en Zelda",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La manzana para un rasguño",
+                "right": "Primer nivel"
+              },
+              {
+                "left": "El platillo cocinado en la olla",
+                "right": "Segundo nivel"
+              },
+              {
+                "left": "Lo especial para el daño oscuro",
+                "right": "Tercer nivel"
+              },
+              {
+                "left": "No gastar lo raro en un rasguño",
+                "right": "Usar el nivel adecuado"
+              }
+            ],
+            "completion_feedback": "La manzana es el **primer nivel**, el platillo es el **segundo** y lo especial es el **tercero**: cada daño se atiende en el **nivel adecuado**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "epidemiologia-basica-cs1": {
+      "order_steps": {
+        "prompt": "Ordena cómo funciona la vigilancia epidemiológica",
+        "steps": [
+          "Detectar los casos en clínicas, hospitales y laboratorios",
+          "Notificar los casos a las autoridades de salud",
+          "Analizar los datos por persona, lugar y tiempo",
+          "Difundir los resultados y aplicar medidas de control"
+        ],
+        "completion_feedback": "La **vigilancia epidemiológica** es un ciclo continuo: se **detectan** casos, se **notifican**, se **analizan** y se **actúa**. En México la coordina el **SINAVE**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Festival Shuchiin",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Gastro ligada al puesto de crepas",
+                "right": "Brote"
+              },
+              {
+                "left": "Los que enfermaron desde el lunes",
+                "right": "Incidencia"
+              },
+              {
+                "left": "Los lugares vacíos de hoy",
+                "right": "Prevalencia"
+              },
+              {
+                "left": "Doce entre los treinta que comieron",
+                "right": "Tasa"
+              }
+            ],
+            "completion_feedback": "Las crepas causaron un **brote**; los casos desde el lunes son la **incidencia**, los lugares vacíos la **prevalencia**, y dividir entre los que comieron es una **tasa**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Lesiones de liga",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Lesiones nuevas de la temporada",
+                "right": "Incidencia"
+              },
+              {
+                "left": "Los lesionados del parte de hoy",
+                "right": "Prevalencia"
+              },
+              {
+                "left": "9 de 30 contra 8 de 20",
+                "right": "Tasa"
+              },
+              {
+                "left": "Leerlo «por cada 100 jugadores»",
+                "right": "Constante"
+              }
+            ],
+            "completion_feedback": "Las lesiones nuevas son la **incidencia**, el parte médico la **prevalencia**, y comparar 9 de 30 con 8 de 20 es usar una **tasa** con su **constante**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Fan meeting",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "15 de 100 contra 10 de 40",
+                "right": "Tasa"
+              },
+              {
+                "left": "Las que enfermaron esa semana",
+                "right": "Incidencia"
+              },
+              {
+                "left": "Gripe solo entre las asistentes",
+                "right": "Brote"
+              },
+              {
+                "left": "Gripe arriba de lo normal en la ciudad",
+                "right": "Epidemia"
+              }
+            ],
+            "completion_feedback": "Comparar 15 de 100 con 10 de 40 es usar una **tasa**; los contagios de la semana son la **incidencia**; si solo enferman las asistentes es un **brote**, y si toda la ciudad pasa lo esperado, una **epidemia**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Corrupted Blood",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los 20 de la banda en Zul'Gurub",
+                "right": "Brote"
+              },
+              {
+                "left": "Ciudades llenas de esqueletos",
+                "right": "Epidemia"
+              },
+              {
+                "left": "El nivel bajo caía casi siempre",
+                "right": "Letalidad alta"
+              },
+              {
+                "left": "Rastrear quién, dónde y cuándo",
+                "right": "Vigilancia"
+              }
+            ],
+            "completion_feedback": "La banda fue el **brote**, las ciudades la **epidemia**, el nivel bajo tenía **letalidad alta** y rastrear quién, dónde y cuándo es **vigilancia**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "nutricion-y-plato-del-bien-comer-cs1": {
+      "order_steps": {
+        "prompt": "Ordena cómo ayudar a alguien que muestra señales de un trastorno alimentario",
+        "steps": [
+          "Notar que las señales se repiten y no son de un solo día",
+          "Buscar un momento a solas para hablar con calma",
+          "Decirle lo que te preocupa y escucharlo sin juzgar",
+          "Avisar a un adulto de confianza para buscar ayuda profesional"
+        ],
+        "completion_feedback": "Primero se **notan las señales**, luego se **habla en privado y sin juzgar**, y al final se busca a un **adulto de confianza** y **ayuda profesional** (Línea de la Vida: 800 911 2000). Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la cocina de Senshi?",
+            "left_label": "Cocina de Senshi",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Verduras del huerto sobre un gólem",
+                "right": "Verduras y frutas"
+              },
+              {
+                "left": "Limpiar y cocer bien cada monstruo",
+                "right": "Dieta inocua"
+              },
+              {
+                "left": "Un poco de todo en cada plato",
+                "right": "Dieta completa"
+              },
+              {
+                "left": "Laios quiere probar monstruos nuevos",
+                "right": "Dieta variada"
+              }
+            ],
+            "completion_feedback": "El huerto aporta **verduras y frutas**, cocer bien hace la dieta **inocua**, un poco de todo la hace **completa** y probar cosas nuevas la hace **variada**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la visoria?",
+            "left_label": "Visoria",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Las tortillas del desayuno de Héctor",
+                "right": "Carbohidratos"
+              },
+              {
+                "left": "Frijoles con tortilla en un taco",
+                "right": "Combinar grupos"
+              },
+              {
+                "left": "El termo de agua de Héctor",
+                "right": "Jarra del Buen Beber"
+              },
+              {
+                "left": "El refresco y las papitas de Leo",
+                "right": "Comida incompleta"
+              }
+            ],
+            "completion_feedback": "La tortilla da **carbohidratos**, el taco de frijol **combina grupos**, el agua es la primera opción de la **Jarra del Buen Beber** y lo de Leo fue una **comida incompleta**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Majo?",
+            "left_label": "Antes del show",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Decir que ya desayunó sin ser cierto",
+                "right": "Señal de alerta"
+              },
+              {
+                "left": "La «dieta de idol» del video viral",
+                "right": "Dieta de moda"
+              },
+              {
+                "left": "Compararse con fotos editadas",
+                "right": "Presión por la imagen"
+              },
+              {
+                "left": "Que alguien la escuche y avise",
+                "right": "Pedir ayuda"
+              }
+            ],
+            "completion_feedback": "Mentir sobre la comida es una **señal de alerta**, el video es una **dieta de moda**, las fotos editadas son **presión por la imagen** y la salida es **pedir ayuda**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada mecánica de Minecraft?",
+            "left_label": "Minecraft",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Galleta que casi no mueve la barra",
+                "right": "Poca saciedad"
+              },
+              {
+                "left": "Pollo crudo que puede dar efecto Hambre",
+                "right": "Comida no inocua"
+              },
+              {
+                "left": "Sobrevivir comiendo solo filetes",
+                "right": "Dieta no variada"
+              },
+              {
+                "left": "Zanahoria, pan y filete juntos",
+                "right": "Plato completo"
+              }
+            ],
+            "completion_feedback": "La galleta da **poca saciedad**, el pollo crudo es **comida no inocua**, solo filetes es una **dieta no variada** y zanahoria, pan y filete forman un **plato completo**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "higiene-saneamiento-infecciosas-cs1": {
+      "order_steps": {
+        "prompt": "Ordena los pasos del lavado de manos correcto",
+        "steps": [
+          "Mojar las manos con agua limpia",
+          "Aplicar jabón en toda la superficie de las manos",
+          "Frotar palmas, dorsos, dedos y uñas al menos 20 segundos",
+          "Enjuagar con agua corriente hasta quitar el jabón",
+          "Secar con una toalla limpia o desechable"
+        ],
+        "completion_feedback": "Mojar, **enjabonar**, **frotar al menos 20 segundos**, enjuagar y secar: el **lavado de manos** corta la vía de transmisión de muchas infecciones. Ahora míralo dentro de tu tema."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué eslabón es cada parte del caso de Maomao?",
+            "left_label": "Caso del pozo",
+            "right_label": "Eslabón",
+            "pairs": [
+              {
+                "left": "La sirvienta que enfermó primero",
+                "right": "Reservorio"
+              },
+              {
+                "left": "Las heces que llegaban a la letrina",
+                "right": "Puerta de salida"
+              },
+              {
+                "left": "El agua contaminada del pozo",
+                "right": "Vía de transmisión"
+              },
+              {
+                "left": "La boca de quien bebía sin hervir",
+                "right": "Puerta de entrada"
+              }
+            ],
+            "completion_feedback": "La enferma es el **reservorio**, las heces la **puerta de salida**, el agua la **vía de transmisión** y la boca la **puerta de entrada**. Ahora ponle nombre formal a toda la cadena."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué eslabón es cada parte de lo que pasó en el vestidor?",
+            "left_label": "Vestidor",
+            "right_label": "Eslabón",
+            "pairs": [
+              {
+                "left": "El pie de Gael, con el hongo",
+                "right": "Reservorio"
+              },
+              {
+                "left": "La toalla que todos usaron",
+                "right": "Fómite (vía indirecta)"
+              },
+              {
+                "left": "La piel húmeda entre los dedos",
+                "right": "Puerta de entrada"
+              },
+              {
+                "left": "El que se secó mal y anduvo descalzo",
+                "right": "Huésped susceptible"
+              }
+            ],
+            "completion_feedback": "El pie de Gael es el **reservorio**, la toalla un **fómite**, la piel húmeda la **puerta de entrada** y quien se descuida el **huésped susceptible**. Ahora ponle nombre formal a toda la cadena."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué eslabón es cada parte de lo que pasó en el concierto?",
+            "left_label": "Concierto",
+            "right_label": "Eslabón",
+            "pairs": [
+              {
+                "left": "La nariz congestionada de Sofi",
+                "right": "Reservorio"
+              },
+              {
+                "left": "El estornudo en sus manos",
+                "right": "Puerta de salida"
+              },
+              {
+                "left": "El Candybong y el celular prestados",
+                "right": "Fómites"
+              },
+              {
+                "left": "Tus ojos al tallarlos",
+                "right": "Puerta de entrada"
+              }
+            ],
+            "completion_feedback": "La nariz de Sofi es el **reservorio**, el estornudo la **puerta de salida**, el lightstick y el celular **fómites** y tus ojos la **puerta de entrada**. Ahora ponle nombre formal a toda la cadena."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué eslabón es cada parte de tu partida de Plague Inc.?",
+            "left_label": "Plague Inc.",
+            "right_label": "Eslabón",
+            "pairs": [
+              {
+                "left": "El tipo de patógeno que eliges",
+                "right": "Agente"
+              },
+              {
+                "left": "Los síntomas de tos y estornudos",
+                "right": "Puerta de salida"
+              },
+              {
+                "left": "La mejora de transmisión por insectos",
+                "right": "Vector (vía de transmisión)"
+              },
+              {
+                "left": "La gente que se va infectando",
+                "right": "Huésped susceptible"
+              }
+            ],
+            "completion_feedback": "El patógeno es el **agente**, la tos la **puerta de salida**, los insectos son **vectores** de la **vía de transmisión** y la gente infectada el **huésped susceptible**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "vacunacion-y-esquema-nacional-cs1": {
+      "order_steps": {
+        "prompt": "Ordena lo que pasa en tu cuerpo después de recibir una vacuna",
+        "steps": [
+          "La vacuna introduce un antígeno que no causa la enfermedad",
+          "El sistema inmune reconoce ese antígeno como extraño",
+          "Los linfocitos B fabrican anticuerpos contra el antígeno",
+          "Quedan células de memoria que recuerdan al antígeno",
+          "Si llega el microbio real, la respuesta es rápida e intensa"
+        ],
+        "completion_feedback": "La vacuna presenta un **antígeno**, el sistema inmune lo reconoce, los **linfocitos B** fabrican **anticuerpos** y quedan **células de memoria** para el encuentro real. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Kaiju No. 8",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Restos de kaiju que ya no atacan",
+                "right": "Vacuna inactivada"
+              },
+              {
+                "left": "El primer combate, lento y con daños",
+                "right": "Respuesta primaria"
+              },
+              {
+                "left": "El registro de cada kaiju vencido",
+                "right": "Células de memoria"
+              },
+              {
+                "left": "Mina lo derriba antes de que avance",
+                "right": "Respuesta secundaria"
+              }
+            ],
+            "completion_feedback": "Los restos inofensivos son la **vacuna**, el primer combate es la **respuesta primaria**, el registro son las **células de memoria** y la victoria rápida, la **respuesta secundaria**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la final?",
+            "left_label": "Amague del rival",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El delantero con su amague real",
+                "right": "Microbio que enferma"
+              },
+              {
+                "left": "El suplente que imita el amague",
+                "right": "Vacuna"
+              },
+              {
+                "left": "La lectura grabada en los centrales",
+                "right": "Memoria inmunológica"
+              },
+              {
+                "left": "El lateral protegido por el bloque",
+                "right": "Inmunidad de grupo"
+              }
+            ],
+            "completion_feedback": "El delantero es el **microbio**, el suplente es la **vacuna**, la lectura grabada es la **memoria inmunológica** y el lateral protegido es la **inmunidad de grupo**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de tu preparación?",
+            "left_label": "Fanchant",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El video guía, sin escenario ni público",
+                "right": "Vacuna"
+              },
+              {
+                "left": "Gritar cada parte a tiempo en el show",
+                "right": "Respuesta secundaria"
+              },
+              {
+                "left": "Recordarlo meses después",
+                "right": "Memoria inmunológica"
+              },
+              {
+                "left": "Canción nueva, video guía nuevo",
+                "right": "Vacuna anual de influenza"
+              }
+            ],
+            "completion_feedback": "El video guía es la **vacuna**, reaccionar a tiempo es la **respuesta secundaria**, recordarlo es la **memoria** y cada canción nueva pide guía nueva, como la **influenza**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la partida?",
+            "left_label": "Partida infectados",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El escudo elegido antes de entrar",
+                "right": "Vacuna"
+              },
+              {
+                "left": "17 de 20 jugadores con escudo",
+                "right": "Alta cobertura"
+              },
+              {
+                "left": "El zombi que no logra contagiar",
+                "right": "Cadena de transmisión rota"
+              },
+              {
+                "left": "Tu primo, salvado sin escudo",
+                "right": "Inmunidad de grupo"
+              }
+            ],
+            "completion_feedback": "El escudo es la **vacuna**, 17 de 20 es una **alta cobertura**, el zombi frenado es la **cadena de transmisión rota** y tu primo salvado es la **inmunidad de grupo**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "salud-sexual-y-reproductiva-cs1": {
+      "order_steps": {
+        "prompt": "Ordena cómo avanza la infección por VIH cuando no se trata",
+        "steps": [
+          "El VIH entra al cuerpo por una vía de transmisión",
+          "Puede pasar años sin síntomas mientras ataca las defensas",
+          "Las defensas del cuerpo caen a niveles muy bajos",
+          "Aparecen infecciones oportunistas: es la etapa de sida"
+        ],
+        "completion_feedback": "Sin tratamiento, el **VIH** avanza en silencio hasta el **sida**, su etapa avanzada. Con **antirretrovirales** esa cadena se frena. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Skypiea?",
+            "left_label": "Skypiea",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La goma que frena el rayo de Enel",
+                "right": "Método que cubre un riesgo"
+              },
+              {
+                "left": "La goma no lo salva del mar",
+                "right": "Hormonales no cubren ITS"
+              },
+              {
+                "left": "Nami traza la ruta antes de zarpar",
+                "right": "Planificación"
+              },
+              {
+                "left": "Males que avanzan sin dar señales",
+                "right": "ITS asintomática"
+              }
+            ],
+            "completion_feedback": "La goma cubre un riesgo y no otro, como los **hormonales**, que no cubren **ITS**. Trazar la ruta es **planificación**, y lo que no da señales es una ITS **asintomática**. Ahora ponle nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del tiro libre?",
+            "left_label": "Tiro libre",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La barrera bien armada",
+                "right": "Método de barrera"
+              },
+              {
+                "left": "Perfecta en el entrenamiento",
+                "right": "Uso perfecto"
+              },
+              {
+                "left": "Con nervios en la final",
+                "right": "Uso típico"
+              },
+              {
+                "left": "El portero que salva al final",
+                "right": "Anticoncepción de emergencia"
+              }
+            ],
+            "completion_feedback": "La barrera es el **método de barrera**, la diferencia entre entrenamiento y final es **uso perfecto** contra **uso típico**, y el rescate del portero es la **anticoncepción de emergencia**. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del comeback?",
+            "left_label": "Comeback",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La agencia elige la fecha",
+                "right": "Derecho a decidir"
+              },
+              {
+                "left": "Adelantar el lanzamiento",
+                "right": "Anticoncepción de emergencia"
+              },
+              {
+                "left": "La filtración que nadie nota",
+                "right": "ITS asintomática"
+              },
+              {
+                "left": "La revisión que la descubre",
+                "right": "Prueba de detección"
+              }
+            ],
+            "completion_feedback": "Elegir la fecha es el **derecho a decidir**, adelantar el lanzamiento es la **emergencia**, la filtración silenciosa es una ITS **asintomática** y la revisión es la **prueba**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de tu cuenta?",
+            "left_label": "Tu cuenta",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Códigos de respaldo de un solo uso",
+                "right": "Anticoncepción de emergencia"
+              },
+              {
+                "left": "La consola conectada sin avisar",
+                "right": "ITS asintomática"
+              },
+              {
+                "left": "Revisar los dispositivos",
+                "right": "Prueba de detección"
+              },
+              {
+                "left": "Protegerte siempre, no a veces",
+                "right": "Uso constante y correcto"
+              }
+            ],
+            "completion_feedback": "Los códigos de respaldo son la **emergencia**, la consola silenciosa es una ITS **asintomática**, revisar es la **prueba** y protegerte siempre es el **uso correcto y constante**. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "adicciones-tabaco-alcohol-drogas-cs1": {
+      "order_steps": {
+        "prompt": "Ordena cómo se va formando una dependencia a una sustancia",
+        "steps": [
+          "Probar la sustancia por curiosidad o por presión del grupo",
+          "La dopamina se dispara y el cerebro lo registra como premio",
+          "Con el uso repetido aparece la tolerancia: se necesita más",
+          "Al dejarla llegan síntomas de abstinencia y ganas intensas"
+        ],
+        "completion_feedback": "Primero el **consumo inicial**, luego la **dopamina** marca el premio, el cerebro se adapta con **tolerancia** y al dejarla aparece la **abstinencia**. Ahora míralo en un ejemplo completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Shoko?",
+            "left_label": "Shoko Ieiri",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La nicotina que la enganchó",
+                "right": "Droga estimulante"
+              },
+              {
+                "left": "Una amiga que la apoya a dejarlo",
+                "right": "Factor de protección"
+              },
+              {
+                "left": "El estrés que la hizo volver",
+                "right": "Factor de riesgo"
+              },
+              {
+                "left": "El cigarro otra vez en Shibuya",
+                "right": "Recaída"
+              }
+            ],
+            "completion_feedback": "La nicotina es una **droga estimulante**, la amiga que apoya es un **factor de protección**, el estrés un **factor de riesgo** y volver a fumar, una **recaída**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del partido en casa?",
+            "left_label": "Partido en casa",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La lata que saca tu primo",
+                "right": "Droga depresora"
+              },
+              {
+                "left": "Anuncios de goles y cerveza",
+                "right": "Factor de riesgo"
+              },
+              {
+                "left": "No disfrutar el partido sin beber",
+                "right": "Dependencia psicológica"
+              },
+              {
+                "left": "Se vende en el estadio y aun así daña",
+                "right": "Legal no es inofensivo"
+              }
+            ],
+            "completion_feedback": "La cerveza es una **droga depresora**, la publicidad es un **factor de riesgo**, no disfrutar sin beber es **dependencia psicológica** y ser legal no la vuelve inofensiva. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la pijamada?",
+            "left_label": "Pijamada de fans",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "«Si eres fan de verdad, celebra»",
+                "right": "Presión de grupo"
+              },
+              {
+                "left": "«Es solo vapor de agua»",
+                "right": "Información falsa"
+              },
+              {
+                "left": "Lo que lleva el vapeador",
+                "right": "Nicotina, droga estimulante"
+              },
+              {
+                "left": "«No, gracias», con calma",
+                "right": "Respuesta asertiva"
+              }
+            ],
+            "completion_feedback": "La frase del fandom es **presión de grupo**, lo del «vapor de agua» es **información falsa**, el vapeador lleva **nicotina** y tu «no, gracias» es una **respuesta asertiva**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de los deseos de Genshin?",
+            "left_label": "Deseos de Genshin",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "No saber cuándo sale el 5 estrellas",
+                "right": "Recompensa variable"
+              },
+              {
+                "left": "«Un deseo más» a las 3 a. m.",
+                "right": "Pérdida de control"
+              },
+              {
+                "left": "Dejar la tarea y a los amigos",
+                "right": "Prioridad al juego"
+              },
+              {
+                "left": "Seguir aunque repruebes",
+                "right": "Continuar pese al daño"
+              }
+            ],
+            "completion_feedback": "El premio incierto es **recompensa variable**, el «uno más» es **pérdida de control**, dejarlo todo es darle **prioridad** al juego y seguir pese a reprobar completa el cuadro. Ahora ponle nombre formal."
+          }
+        }
+      }
+    },
+    "salud-mental-adolescentes-cs1": {
+      "order_steps": {
+        "prompt": "Ordena cómo acompañar a un amigo que te cuenta que se siente muy mal",
+        "steps": [
+          "Buscar un momento tranquilo y preguntarle cómo está",
+          "Escucharlo sin juzgar, sin interrumpir ni minimizar lo que siente",
+          "Animarlo a hablar con un adulto de confianza o con un profesional",
+          "Acompañarlo a pedir ayuda y seguir pendiente de él"
+        ],
+        "completion_feedback": "Primero **preguntas** y **escuchas sin juzgar**, luego lo animas a buscar a un **adulto o profesional** y lo **acompañas**. Si hay riesgo de que se haga daño, no guardas el secreto: pides ayuda ya."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del live de Bocchi?",
+            "left_label": "Live de Bocchi",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El público que su cerebro ve como peligro",
+                "right": "Estresor"
+              },
+              {
+                "left": "Corazón a mil y ganas de salir corriendo",
+                "right": "Lucha o huida"
+              },
+              {
+                "left": "Nervios que llegan y se van al tocar",
+                "right": "Ansiedad normal"
+              },
+              {
+                "left": "Si el miedo nunca se fuera y la frenara",
+                "right": "Posible trastorno"
+              }
+            ],
+            "completion_feedback": "El público es el **estresor** y el cuerpo activa la **lucha o huida**. Los nervios que se van son **ansiedad normal**; si no se van e interfieren con la vida, toca pedir ayuda a un profesional."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la final?",
+            "left_label": "Final sub-18",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La final, el reto que te pone a prueba",
+                "right": "Estresor"
+              },
+              {
+                "left": "Nervios que te hacen correr más",
+                "right": "Eustrés"
+              },
+              {
+                "left": "Iván: semanas de presión sin descanso",
+                "right": "Estrés crónico"
+              },
+              {
+                "left": "Corazón fuerte y manos sudadas",
+                "right": "Lucha o huida"
+              }
+            ],
+            "completion_feedback": "La final fue el **estresor**; tu cuerpo activó la **lucha o huida** y tus nervios fueron **eustrés**; lo de Iván es **estrés crónico**, que ya pide apoyo. Ahora ponle nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia de Ha-eun?",
+            "left_label": "Trainee",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La evaluación de cada mes",
+                "right": "Estresor"
+              },
+              {
+                "left": "Meses de presión sin descanso",
+                "right": "Estrés crónico"
+              },
+              {
+                "left": "Su amiga que la escucha",
+                "right": "Factor de protección"
+              },
+              {
+                "left": "Semanas sin disfrutar bailar",
+                "right": "Señal de alerta"
+              }
+            ],
+            "completion_feedback": "La evaluación es el **estresor**, meses así son **estrés crónico**, perder el gusto por semanas es una **señal de alerta** y su amiga es un **factor de protección**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la escena de Celeste?",
+            "left_label": "Celeste",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Ola de miedo de golpe en la góndola",
+                "right": "Ataque de pánico"
+              },
+              {
+                "left": "Theo no se burla ni le dice que exagera",
+                "right": "Escuchar sin juzgar"
+              },
+              {
+                "left": "Respirar para que flote la pluma",
+                "right": "Técnica de respiración"
+              }
+            ],
+            "completion_feedback": "La ola de miedo es un **ataque de pánico**, la pluma es una **técnica de respiración** y Theo hace lo correcto: **escuchar sin juzgar**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    },
+    "primeros-auxilios-basicos-cs1": {
+      "order_steps": {
+        "prompt": "Ordena qué hacer si un adulto se desploma frente a ti",
+        "steps": [
+          "Revisar que la escena sea segura para ti y para la víctima",
+          "Comprobar si responde y si respira normal",
+          "Llamar al 911 y pedir que alguien traiga un DEA",
+          "Dar compresiones en el centro del pecho sin parar",
+          "Usar el DEA en cuanto llegue, siguiendo su voz"
+        ],
+        "completion_feedback": "Primero **escena segura**, luego **evaluar** si responde y respira, **avisar al 911** con un **DEA** en camino, **RCP** y desfibrilación. Ahora míralo en un caso completo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la historia?",
+            "left_label": "Campamento",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Desconectar el ventilador del charco",
+                "right": "Proteger la escena"
+              },
+              {
+                "left": "Hablarle fuerte y tocarle los hombros",
+                "right": "Evaluar si responde"
+              },
+              {
+                "left": "El capitán marca y da la ubicación",
+                "right": "Avisar al 911"
+              },
+              {
+                "left": "Acomodarlo de lado y vigilarlo",
+                "right": "Posición lateral"
+              }
+            ],
+            "completion_feedback": "Primero **proteges** la escena, luego **evalúas** si responde y respira, **avisas** al 911 y lo pones en **posición lateral**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del caso Eriksen?",
+            "left_label": "Caso Eriksen",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Se desplomó y su corazón se detuvo",
+                "right": "Paro cardiaco"
+              },
+              {
+                "left": "Le comprimieron el pecho en el pasto",
+                "right": "RCP"
+              },
+              {
+                "left": "El aparato que le dio la descarga",
+                "right": "Desfibrilador"
+              },
+              {
+                "left": "Todo pasó en los primeros minutos",
+                "right": "Atención inmediata"
+              }
+            ],
+            "completion_feedback": "Eriksen tuvo un **paro cardiaco**, recibió **RCP** y la descarga de un **desfibrilador**, todo como **atención inmediata**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la fila?",
+            "left_label": "Fila del concierto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La chica que cae y despierta sola",
+                "right": "Desmayo"
+              },
+              {
+                "left": "El fan con la piel ardiendo y confuso",
+                "right": "Golpe de calor"
+              },
+              {
+                "left": "El radio a los paramédicos",
+                "right": "Avisar"
+              },
+              {
+                "left": "Pedir a la fila que abra espacio",
+                "right": "Escena segura"
+              }
+            ],
+            "completion_feedback": "La chica tuvo un **desmayo**; el fan, un **golpe de calor**, que es emergencia. En los dos casos va primero la **escena segura** y luego **avisar**. Ahora ponle nombre formal a todo eso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte de la tarde de juego?",
+            "left_label": "Mario Party",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tropezar con el cable del cargador",
+                "right": "Escena insegura"
+              },
+              {
+                "left": "El chorro de agua de la llave",
+                "right": "Enfriar la quemadura"
+              },
+              {
+                "left": "La pasta, el hielo y la mantequilla",
+                "right": "Remedios que agravan"
+              },
+              {
+                "left": "La gasa limpia del botiquín",
+                "right": "Cubrir sin apretar"
+              }
+            ],
+            "completion_feedback": "El cable era una **escena insegura**, el agua de la llave **enfría la quemadura**, la pasta y el hielo **la agravan** y la gasa la **cubre**. Ahora ponle nombre formal a todo eso."
+          }
+        }
+      }
+    }
+  }
+}
