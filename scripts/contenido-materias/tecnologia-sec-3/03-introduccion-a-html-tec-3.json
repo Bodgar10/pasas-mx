@@ -1,0 +1,1848 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "introduccion-a-html-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo se crea tu primera página web",
+    "steps": [
+      "Abrir un editor de texto, como el Bloc de notas",
+      "Escribir la estructura: DOCTYPE, html, head y body",
+      "Agregar el contenido dentro de body: títulos, párrafos e imágenes",
+      "Guardar el archivo con la extensión .html",
+      "Abrir el archivo con el navegador para ver la página"
+    ],
+    "completion_feedback": "Primero el **editor**, luego la **estructura** básica, después el **contenido** con etiquetas; se **guarda** como .html y el **navegador** lo interpreta. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La página de Kafka que salió toda pegada",
+        "content": "En el club de anime decidieron hacer una página de fans de Kaiju No. 8 y a ti te tocó la de Kafka Hibino. Abres el Bloc de notas y escribes con cuidado, en renglones separados: el nombre de Kafka, un párrafo que cuenta que a los 32 años limpia restos de kaijus y sueña con entrar a la Fuerza de Defensa para pelear junto a Mina Ashiro, su amiga de la infancia y capitana de la Tercera División, y otro sobre su transformación. Guardas el archivo como kafka.html y lo abres en el navegador. Sorpresa: todo sale en un solo bloque, del mismo tamaño y sin renglones. El navegador no adivina qué es título y qué es párrafo. Tu amiga del club te enseña el truco: antes del nombre escribes <h1> y después </h1>; cada párrafo va entre <p> y </p>. Para la foto basta una sola marca, <img src=\"kafka.jpg\" alt=\"Kafka Hibino\">, porque no encierra ningún texto. Recargas y ahora el nombre sale grande, los párrafos separados y la foto en su lugar. Lo curioso: ninguna de esas marcas aparece en la pantalla, y tu archivo no calcula nada; solo le dice al navegador qué es cada parte. Esa forma de marcar el contenido es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tus marcas SON etiquetas de HTML",
+        "content": "Lo que acabas de ver con la página de Kafka es exactamente **HTML** (HyperText Markup Language): un **lenguaje de marcado**, no de programación. No hace cálculos ni toma decisiones: solo **marca qué es cada parte** del contenido con **etiquetas** entre picos. Casi todas tienen **apertura** y **cierre**, como <p> y </p>; el cierre lleva diagonal. Las **etiquetas vacías**, como <img>, no llevan cierre. Toda página tiene la estructura <!DOCTYPE html>, <html>, <head> (con el <title> de la pestaña) y <body> (lo que se ve). El **navegador** lee el archivo .html y lo muestra."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la página de la Tercera División",
+        "content": "Arma desde cero la página de los personajes principales de Kaiju No. 8.\n\n**Paso 1:** Escribe <!DOCTYPE html> en la primera línea y abre <html>.\n**Paso 2:** Abre <head>, pon <title>Kaiju No. 8 Fans</title> y cierra </head>: ese texto sale en la pestaña, no en la página.\n**Paso 3:** Abre <body> y escribe <h1>Personajes</h1> y <h2>Tercera División</h2>.\n**Paso 4:** Haz una lista con viñetas: abre <ul>, escribe <li>Kafka Hibino</li>, <li>Mina Ashiro</li> y <li>Reno Ichikawa</li>, y cierra </ul>.\n**Paso 5:** Cierra </body> y </html>, guarda como personajes.html y ábrelo con el navegador.\n\nResultado: cada etiqueta que abriste se cerró en orden inverso, de adentro hacia afuera."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**HTML** (HyperText Markup Language) es un **lenguaje de marcado**, no de programación: estructura una página web con **etiquetas**. Su estructura básica es **<!DOCTYPE html>**, **<html>**, **<head>** (con **<title>**) y **<body>**. Casi todas las etiquetas tienen **apertura y cierre** (<p> y </p>); las **vacías**, como **<img>**, no. El **navegador** interpreta el archivo **.html**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la diagonal como Kafka regresando a su forma humana: <h1> abre la transformación y </h1> la termina. Si olvidas el cierre, todo lo que sigue se queda transformado en título gigante."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Primero va la estructura, luego el contenido, y cada etiqueta que abres se cierra.",
+        "data": {
+          "intro": "Arma la ficha de Kafka Hibino. El medidor muestra cuánto de la página ya está lista.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Escribes <!DOCTYPE html> y <html>; en <head> pones <title>Kafka Hibino</title> y cierras </head>. Todavía no se ve nada en la página.",
+              "delta": 20
+            },
+            {
+              "text": "Abres <body> y escribes <h1>Kaiju No. 8</h1>: el navegador lo muestra como el título más grande.",
+              "delta": 25
+            },
+            {
+              "text": "Agregas <p>Limpia restos de kaijus y sueña con la Fuerza de Defensa.</p> como párrafo.",
+              "delta": 25
+            },
+            {
+              "text": "Pones <img src=\"kafka.jpg\" alt=\"Kafka Hibino\">, sin cierre, y terminas con </body> y </html>. ¡Página lista!",
+              "delta": 30
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué hace cada etiqueta?",
+        "content": "h1 y h2 son títulos; p y li llevan texto; a lleva a otra página e img muestra una imagen.",
+        "data": {
+          "prompt": "Arrastra cada línea de tu página de fans a su categoría.",
+          "buckets": [
+            "Título o subtítulo",
+            "Texto o elemento de lista",
+            "Enlace o imagen"
+          ],
+          "items": [
+            {
+              "t": "<h1>Kaiju No. 8</h1>",
+              "b": 0
+            },
+            {
+              "t": "<p>Kafka tiene 32 años.</p>",
+              "b": 1
+            },
+            {
+              "t": "<a href=\"mina.html\">Mina Ashiro</a>",
+              "b": 2
+            },
+            {
+              "t": "<h2>Tercera División</h2>",
+              "b": 0
+            },
+            {
+              "t": "<li>Reno Ichikawa</li>",
+              "b": 1
+            },
+            {
+              "t": "<img src=\"kafka.jpg\" alt=\"Kafka\">",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada etiqueta con lo que hace en tu página de fans.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "<h1>",
+              "b": "Título principal"
+            },
+            {
+              "a": "<p>",
+              "b": "Párrafo de texto"
+            },
+            {
+              "a": "<img>",
+              "b": "Muestra una imagen"
+            },
+            {
+              "a": "<a>",
+              "b": "Enlace a otra página"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de HTML es cada cosa?",
+        "left_label": "Página de Kafka",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Marcar cada parte sin calcular nada",
+            "right": "Lenguaje de marcado"
+          },
+          {
+            "left": "La foto con una sola marca",
+            "right": "Etiqueta vacía"
+          },
+          {
+            "left": "El </h1> con diagonal",
+            "right": "Etiqueta de cierre"
+          },
+          {
+            "left": "El programa que abrió kafka.html",
+            "right": "Navegador"
+          }
+        ],
+        "completion_feedback": "Marcaste cada parte, cerraste con **diagonal**, usaste una **etiqueta vacía** y el **navegador** lo mostró. Eso es **HTML**: un **lenguaje de marcado**."
+      },
+      "quiz": [
+        {
+          "question": "En tu página de Kafka, ¿qué etiqueta usaste para que su nombre saliera como el título más grande?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<p>"
+            },
+            {
+              "letter": "B",
+              "text": "<h1>"
+            },
+            {
+              "letter": "C",
+              "text": "<h6>"
+            },
+            {
+              "letter": "D",
+              "text": "<title>"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "h1 es el encabezado más importante y se ve más grande. h6 es el más pequeño, p es un párrafo y title solo pone el texto de la pestaña.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué <img src=\"kafka.jpg\" alt=\"Kafka Hibino\"> no lleva etiqueta de cierre?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque src ya la cierra"
+            },
+            {
+              "letter": "B",
+              "text": "Las imágenes no son HTML"
+            },
+            {
+              "letter": "C",
+              "text": "Es una etiqueta vacía"
+            },
+            {
+              "letter": "D",
+              "text": "Porque va dentro del head"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "img no encierra texto: solo inserta la imagen en ese lugar. Por eso es una etiqueta vacía. src indica el archivo y alt el texto alternativo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Escribes <h1>Kafka Hibino y olvidas el </h1>. ¿Qué pasa con los párrafos que siguen?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El navegador borra el título"
+            },
+            {
+              "letter": "B",
+              "text": "Salen grandes, como título"
+            },
+            {
+              "letter": "C",
+              "text": "No se muestra nada de la página"
+            },
+            {
+              "letter": "D",
+              "text": "Se ven igual que siempre"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Sin cierre, el navegador no sabe dónde termina el título, así que el texto que sigue queda dentro del h1 y se ve grande. Cada apertura necesita su cierre.",
+          "difficulty": 3
+        },
+        {
+          "question": "Tu página dice <title>Kaiju No. 8 Fans</title>. ¿Dónde aparece ese texto?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Debajo de la foto de Kafka"
+            },
+            {
+              "letter": "B",
+              "text": "En el primer párrafo de la página"
+            },
+            {
+              "letter": "C",
+              "text": "Como el título más grande"
+            },
+            {
+              "letter": "D",
+              "text": "En la pestaña del navegador"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "title va dentro del head y solo nombra la pestaña. El título grande que se ve en la página se escribe con h1 dentro del body.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la lista de personajes de Kaiju No. 8, ¿qué fragmento está bien anidado?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<ul><li>Mina</ul></li>"
+            },
+            {
+              "letter": "B",
+              "text": "<li><ul>Mina</li></ul>"
+            },
+            {
+              "letter": "C",
+              "text": "<ul>Mina<li></ul></li>"
+            },
+            {
+              "letter": "D",
+              "text": "<ul><li>Mina</li></ul>"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La etiqueta que se abre al último se cierra primero: li se abrió dentro de ul, así que su cierre va antes del cierre de ul. Además, el texto va dentro del li.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El título de Pumas que se comió la página",
+        "content": "Para el periódico digital de tu secundaria te toca la página de Pumas, el equipo al que le va medio salón. Abres el Bloc de notas y escribes <h1>Pumas UNAM: azul y oro. Abajo, entre <p> y </p>, pones un párrafo sobre el Estadio Olímpico Universitario, en Ciudad Universitaria, y otro sobre el ¡Goya! que retumba en la tribuna. Guardas el archivo como pumas.html y lo abres en el navegador. Desastre: no solo el título salió enorme, también los dos párrafos, como si toda la página fuera un solo letrero. Tu primo, que estudia en CU, revisa el archivo y encuentra el problema en dos segundos: abriste el título y nunca le dijiste al navegador dónde terminaba. Es como un partido con silbatazo inicial y sin silbatazo final: el juego sigue y sigue. Agregas </h1> justo después de azul y oro, recargas y ahora el título sale grande y los párrafos con letra normal. Tu primo te explica que cada marca que se abre necesita su pareja de cierre, con una diagonal y en el lugar correcto. Abrir y cerrar bien cada parte de tu página es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tus marcas de Pumas SON etiquetas de HTML",
+        "content": "Lo que acabas de ver con la página de Pumas es exactamente cómo funciona **HTML**: un **lenguaje de marcado** (no de programación) que indica qué es cada parte con **etiquetas**. La mayoría van en pareja: **apertura** <h1> y **cierre** </h1>, con diagonal; lo que queda en medio es el contenido. Si una etiqueta se abre dentro de otra, se cierra antes: eso es **anidar bien**. Las **etiquetas vacías**, como <img>, no se cierran. La página lleva <html>, <head> con <title> y <body>, y el **navegador** interpreta el archivo .html."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la sección del próximo partido",
+        "content": "Arma la sección del próximo partido del equipo de futbol de tu escuela.\n\n**Paso 1:** Dentro de <body> escribe <h2>Próximo partido</h2>: un subtítulo, más chico que el h1.\n**Paso 2:** Agrega <p>Sábado a las 10:00 en la cancha de la escuela.</p>\n**Paso 3:** Pon el escudo con <img src=\"escudo.png\" alt=\"Escudo del equipo\">, sin etiqueta de cierre.\n**Paso 4:** Haz la lista numerada de cobradores de penales: abre <ol>, escribe tres <li> con sus nombres y cierra </ol>.\n**Paso 5:** Enlaza el reglamento con <a href=\"reglamento.html\">Reglamento</a>.\n\nResultado: subtítulo, párrafo, imagen, lista y enlace. Cada etiqueta con pareja se cerró y la imagen no lo necesitó."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**HTML** (HyperText Markup Language) es un **lenguaje de marcado**, no de programación: estructura una página web con **etiquetas**. Su estructura básica es **<!DOCTYPE html>**, **<html>**, **<head>** (con **<title>**) y **<body>**. Casi todas las etiquetas tienen **apertura y cierre** (<p> y </p>); las **vacías**, como **<img>**, no. El **navegador** interpreta el archivo **.html**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Lee las etiquetas como un partido: <p> es el silbatazo inicial y </p> el final, con diagonal. Una etiqueta sin su cierre es un partido que nunca termina: todo lo que sigue queda adentro."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada etiqueta que se abre necesita su cierre, en el lugar correcto.",
+        "data": {
+          "intro": "Tu código dice <h1>Pumas UNAM <p>Juegan en CU.</p> y todo sale gigante. Corrígelo conmigo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Lee de izquierda a derecha: se abre <h1>, luego se abre y se cierra <p>."
+            },
+            {
+              "text": "Busca la pareja de cada apertura: <p> tiene su </p>, pero <h1> no tiene </h1>."
+            },
+            {
+              "text": "Consecuencia: el navegador mete el párrafo dentro del título y todo sale grande."
+            },
+            {
+              "text": "Arreglo: escribe </h1> después de Pumas UNAM, antes de abrir el párrafo."
+            },
+            {
+              "text": "Resultado: <h1>Pumas UNAM</h1><p>Juegan en CU.</p>. Título grande y párrafo normal."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Abre, cierra o va sola?",
+        "content": "La apertura no lleva diagonal, el cierre sí, y la etiqueta vacía no tiene pareja.",
+        "data": {
+          "prompt": "Arrastra cada etiqueta de la página de Pumas a su tipo.",
+          "buckets": [
+            "Etiqueta de apertura",
+            "Etiqueta de cierre",
+            "Etiqueta vacía"
+          ],
+          "items": [
+            {
+              "t": "<h1>",
+              "b": 0
+            },
+            {
+              "t": "</p>",
+              "b": 1
+            },
+            {
+              "t": "<img src=\"escudo.png\" alt=\"Escudo\">",
+              "b": 2
+            },
+            {
+              "t": "<ol>",
+              "b": 0
+            },
+            {
+              "t": "</a>",
+              "b": 1
+            },
+            {
+              "t": "<img src=\"cu.jpg\" alt=\"Estadio\">",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte de la estructura básica con su función.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "<html>",
+              "b": "Etiqueta raíz"
+            },
+            {
+              "a": "<head>",
+              "b": "Cabecera: guarda el title"
+            },
+            {
+              "a": "<body>",
+              "b": "Contenido visible"
+            },
+            {
+              "a": "<title>",
+              "b": "Texto de la pestaña"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de HTML es cada cosa?",
+        "left_label": "Página de Pumas",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "<h1> antes de Pumas UNAM",
+            "right": "Etiqueta de apertura"
+          },
+          {
+            "left": "</h1> después de azul y oro",
+            "right": "Etiqueta de cierre"
+          },
+          {
+            "left": "El texto entre <p> y </p>",
+            "right": "Contenido"
+          },
+          {
+            "left": "Abrir pumas.html y verlo armado",
+            "right": "El navegador lo interpreta"
+          }
+        ],
+        "completion_feedback": "Abriste con **<h1>**, cerraste con **</h1>**, lo de en medio fue el **contenido** y el **navegador** lo interpretó. Así trabaja **HTML**."
+      },
+      "quiz": [
+        {
+          "question": "En la página de Pumas, ¿cuál es la etiqueta de cierre del título?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<h1>"
+            },
+            {
+              "letter": "B",
+              "text": "<\\h1>"
+            },
+            {
+              "letter": "C",
+              "text": "</h1>"
+            },
+            {
+              "letter": "D",
+              "text": "<h1/>"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El cierre repite el nombre de la etiqueta con una diagonal normal antes: /h1 entre picos. La diagonal invertida no se usa en HTML.",
+          "difficulty": 1
+        },
+        {
+          "question": "En la sección del próximo partido, ¿qué etiqueta crea la lista numerada de cobradores?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<ol>"
+            },
+            {
+              "letter": "B",
+              "text": "<ul>"
+            },
+            {
+              "letter": "C",
+              "text": "<li>"
+            },
+            {
+              "letter": "D",
+              "text": "<p>"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "ol (ordered list) numera los elementos y ul pone viñetas. Cada cobrador va en su propio li dentro de la lista.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu código es <p>Vamos <a href=\"boletos.html\">Pumas</p></a>. ¿Qué error tiene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Le falta la diagonal a la apertura"
+            },
+            {
+              "letter": "B",
+              "text": "Cierres en orden invertido"
+            },
+            {
+              "letter": "C",
+              "text": "El enlace no lleva atributo href"
+            },
+            {
+              "letter": "D",
+              "text": "Un párrafo no puede llevar texto"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La a se abrió dentro del p, así que debe cerrarse primero: el cierre de a va antes del cierre de p. La etiqueta que se abre al último se cierra primero.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la página de Pumas, ¿dentro de qué etiqueta va el párrafo sobre el Estadio Olímpico Universitario?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<head>"
+            },
+            {
+              "letter": "B",
+              "text": "<title>"
+            },
+            {
+              "letter": "C",
+              "text": "<body>"
+            },
+            {
+              "letter": "D",
+              "text": "<!DOCTYPE>"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Todo lo que se ve en la página va en body. head guarda información sobre la página, como el title de la pestaña.",
+          "difficulty": 2
+        },
+        {
+          "question": "Pones <img src=\"escudo.png\" alt=\"Escudo de Pumas\"> y la imagen no carga. ¿Qué verá el aficionado en su lugar?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El nombre del archivo escudo.png"
+            },
+            {
+              "letter": "B",
+              "text": "El texto Escudo de Pumas"
+            },
+            {
+              "letter": "C",
+              "text": "Una página en blanco completa"
+            },
+            {
+              "letter": "D",
+              "text": "El código de la etiqueta img"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "alt es el texto alternativo: aparece si la imagen no carga y lo leen los lectores de pantalla. src solo indica dónde está el archivo.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El fan site de TXT que salió en una sola línea",
+        "content": "Eres MOA y decides hacer un fan site de TXT. En el Bloc de notas escribes a los cinco integrantes, uno por renglón: Soobin, Yeonjun, Beomgyu, Taehyun y Huening Kai. Abajo pones tu top 3 de canciones: Sugar Rush Ride, Crown y Blue Hour. Guardas el archivo como moa.html, lo abres en el navegador y todo sale pegado en una sola línea, como si fuera un nombre larguísimo. Tu amiga, que también es MOA, te enseña el truco: los integrantes van entre <ul> y </ul>, y cada nombre entre <li> y </li>; el navegador les pone viñetas solito. Para el top, que sí tiene orden, usas <ol> en lugar de <ul>, y los números aparecen sin que los escribas. Luego decides que Blue Hour merece el primer lugar, mueves su renglón hasta arriba y los números se acomodan solos. Al final agregas un enlace a otra página de tu sitio, canciones.html, para que quien dé clic vea la discografía. Nada de eso lo dibujaste tú: solo marcaste qué es cada cosa y el navegador decidió cómo mostrarlo. Esa forma de describir el contenido es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu fan site ES una página en HTML",
+        "content": "Lo que acabas de ver con tu fan site de TXT es exactamente **HTML**: un **lenguaje de marcado** que describe la estructura del contenido con **etiquetas**, no un lenguaje de programación que calcula. <ul> crea una **lista con viñetas**, <ol> una **lista numerada** y cada elemento va en <li>, **anidado** dentro de la lista. Las etiquetas tienen **apertura** y **cierre** (</li>), salvo las **vacías** como <img>. Todo va dentro de <html>, con <head> y <title> para la pestaña y <body> para lo visible. El **navegador** interpreta el archivo y dibuja viñetas y números."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la página de Soobin",
+        "content": "Haz la página de Soobin, el líder de TXT, dentro de tu fan site.\n\n**Paso 1:** En <head> escribe <title>Soobin | Fan site MOA</title> para nombrar la pestaña.\n**Paso 2:** En <body> pon <h1>Soobin</h1> y debajo <h2>Líder de TXT</h2>.\n**Paso 3:** Agrega su foto con <img src=\"soobin.jpg\" alt=\"Soobin en concierto\">, sin cierre.\n**Paso 4:** Escribe <p>Debutó con TXT en 2019 con la canción Crown.</p>\n**Paso 5:** Regresa al inicio con <a href=\"index.html\">Volver a integrantes</a>.\n\nResultado: h1 es el título principal, h2 un subtítulo, img muestra la foto, p es el texto y a lleva a otra página."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**HTML** (HyperText Markup Language) es un **lenguaje de marcado**, no de programación: estructura una página web con **etiquetas**. Su estructura básica es **<!DOCTYPE html>**, **<html>**, **<head>** (con **<title>**) y **<body>**. Casi todas las etiquetas tienen **apertura y cierre** (<p> y </p>); las **vacías**, como **<img>**, no. El **navegador** interpreta el archivo **.html**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en tu fan site: si el orden importa, como tu top de canciones, es <ol> y lleva números. Si no importa, como la lista de integrantes, es <ul> con viñetas. En las dos, cada canción o integrante va en su propio <li>."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una lista se abre, se llena con li y se cierra; cada li queda anidado dentro.",
+        "data": {
+          "intro": "Arma la lista de integrantes de tu fan site. El medidor muestra cuánto de la lista ya funciona.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "Escribes <ul> para abrir una lista con viñetas, porque los integrantes no van en un ranking.",
+              "delta": 20
+            },
+            {
+              "text": "Pones cada nombre en su propio elemento: <li>Soobin</li>, <li>Yeonjun</li> y <li>Beomgyu</li>.",
+              "delta": 40
+            },
+            {
+              "text": "Agregas <li>Taehyun</li> y <li>Huening Kai</li>: ya están los cinco.",
+              "delta": 20
+            },
+            {
+              "text": "Cierras con </ul>, después del último </li>. El navegador dibuja cinco viñetas. ¡Lista!",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Lista con viñetas o numerada?",
+        "content": "Si el orden importa, usa ol y salen números. Si no importa, usa ul y salen viñetas.",
+        "data": {
+          "prompt": "Arrastra cada lista de tu fan site al tipo que le toca.",
+          "buckets": [
+            "Lista con viñetas (ul)",
+            "Lista numerada (ol)"
+          ],
+          "items": [
+            {
+              "t": "Integrantes de TXT",
+              "b": 0
+            },
+            {
+              "t": "Tu top 3 de canciones",
+              "b": 1
+            },
+            {
+              "t": "Cosas que llevar al concierto",
+              "b": 0
+            },
+            {
+              "t": "Pasos para votar en un premio",
+              "b": 1
+            },
+            {
+              "t": "Fandoms de tus amigas",
+              "b": 0
+            },
+            {
+              "t": "Canciones del álbum, del track 1 al 5",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada etiqueta con lo que crea en tu fan site.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "<ul>",
+              "b": "Lista con viñetas"
+            },
+            {
+              "a": "<ol>",
+              "b": "Lista numerada"
+            },
+            {
+              "a": "<li>",
+              "b": "Elemento de una lista"
+            },
+            {
+              "a": "<h2>",
+              "b": "Subtítulo"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de HTML es cada cosa?",
+        "left_label": "Fan site MOA",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Los integrantes con viñetas",
+            "right": "Lista no ordenada (ul)"
+          },
+          {
+            "left": "Tu top 3 con números",
+            "right": "Lista ordenada (ol)"
+          },
+          {
+            "left": "Cada nombre entre <li> y </li>",
+            "right": "Elemento de lista"
+          },
+          {
+            "left": "El clic que lleva a canciones.html",
+            "right": "Enlace"
+          }
+        ],
+        "completion_feedback": "Usaste una **lista con viñetas**, una **numerada**, **elementos de lista** y un **enlace**. Todo con **etiquetas** de **HTML**, el lenguaje que marca qué es cada cosa."
+      },
+      "quiz": [
+        {
+          "question": "En tu fan site, ¿qué etiqueta va alrededor de cada integrante dentro de la lista?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<ul>"
+            },
+            {
+              "letter": "B",
+              "text": "<li>"
+            },
+            {
+              "letter": "C",
+              "text": "<ol>"
+            },
+            {
+              "letter": "D",
+              "text": "<p>"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Cada elemento de una lista va en li. ul y ol envuelven la lista completa: ul con viñetas y ol con números.",
+          "difficulty": 1
+        },
+        {
+          "question": "Quieres mostrar tu top 3 de canciones de TXT con números. ¿Qué usas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<ul> con tres <li>"
+            },
+            {
+              "letter": "B",
+              "text": "<li> con tres <ol>"
+            },
+            {
+              "letter": "C",
+              "text": "<ol> con tres <li>"
+            },
+            {
+              "letter": "D",
+              "text": "<h3> con tres <p>"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "ol crea una lista numerada y el navegador pone los números solo. Cada canción va en un li dentro del ol.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amiga dice que HTML es un lenguaje de programación porque «hace» las viñetas. ¿Qué le respondes?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Tiene razón, porque crea las viñetas solo"
+            },
+            {
+              "letter": "B",
+              "text": "Es de marcado: describe, no calcula"
+            },
+            {
+              "letter": "C",
+              "text": "Es de programación porque usa etiquetas"
+            },
+            {
+              "letter": "D",
+              "text": "Es de diseño, porque da colores y estilos"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "HTML solo marca qué es cada parte; no hace cálculos ni toma decisiones. Las viñetas las dibuja el navegador. Los colores y estilos son trabajo de CSS.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la página de Soobin, ¿qué hace <a href=\"index.html\">Volver a integrantes</a>?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Muestra la imagen index.html"
+            },
+            {
+              "letter": "B",
+              "text": "Crea un enlace a index.html"
+            },
+            {
+              "letter": "C",
+              "text": "Cambia el nombre de la pestaña"
+            },
+            {
+              "letter": "D",
+              "text": "Escribe un título que dice index"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "a crea un enlace y href indica a dónde lleva. El texto entre la apertura y el cierre es lo que se ve y en lo que das clic.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu foto de TXT sale rota. El código es <img src=\"txt.jpg\" alt=\"TXT\"> y el archivo se llama txt.png. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "A la etiqueta img le falta su cierre"
+            },
+            {
+              "letter": "B",
+              "text": "El atributo alt borra la imagen original"
+            },
+            {
+              "letter": "C",
+              "text": "src no coincide con el archivo"
+            },
+            {
+              "letter": "D",
+              "text": "Las imágenes solo funcionan en el head"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "src debe tener el nombre exacto del archivo, con su extensión. Como dice .jpg y la foto es .png, el navegador no la encuentra y muestra el texto de alt.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "Los niveles de Geometry Dash que llevan a otra página",
+        "content": "Ya pasaste los primeros niveles de Geometry Dash y quieres una página para presumirlos. En el Bloc de notas escribes una lista numerada con los niveles en el orden del juego: Stereo Madness, Back on Track y Polargeist. Pero quieres más: que al tocar el nombre de un nivel, como en el menú del juego, te lleve a otra página con tus trucos para pasarlo. Para eso encierras cada nombre así: <a href=\"polargeist.html\">Polargeist</a>. Lo que va en href es el destino; lo que va en medio es el texto que se ve y se toca. También agregas una captura de tu cubo con <img src=\"cubo.png\" alt=\"Mi cubo de Geometry Dash\">. Abres la página en el navegador y pruebas todo. Dos enlaces funcionan, pero el de Back on Track te manda a un error: tu archivo se llama backontrack.html y en href escribiste back-on-track.html. Además, la captura no aparece porque la guardaste como cubo.jpg, y en su lugar sale el texto que pusiste en alt. Corriges los dos nombres y todo funciona. Conectar páginas y mostrar imágenes con las marcas correctas es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tus niveles enlazados SON HTML",
+        "content": "Lo que acabas de ver con tu página de Geometry Dash es exactamente **HTML**: un **lenguaje de marcado** (no de programación) que estructura el contenido con **etiquetas**. El **enlace** se hace con <a>, y su **atributo href** indica el destino; el texto entre <a> y </a> es lo que se toca. La **imagen** se pone con <img>, una **etiqueta vacía** (sin cierre) con **src** (el archivo) y **alt** (el texto alternativo). Todo va en <body>, dentro de <html>, junto con <head> y su <title>. El **navegador** interpreta el archivo .html."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la página del torneo de Fall Guys",
+        "content": "Tu salón organizó un torneo de Fall Guys y te toca hacer su página.\n\n**Paso 1:** Escribe <!DOCTYPE html> y abre <html>; en <head> pon <title>Torneo de Fall Guys</title> y cierra </head>.\n**Paso 2:** Abre <body> y escribe <h1>Torneo del 3° B</h1> y <p>Tres shows por jugador en el recreo.</p>\n**Paso 3:** Agrega el póster con <img src=\"poster.png\" alt=\"Póster del torneo\">, sin cierre.\n**Paso 4:** Lista las reglas: abre <ul>, escribe <li>Cada quien juega con su cuenta</li> y <li>Gana quien llegue más veces a la final</li>, y cierra </ul>.\n**Paso 5:** Agrega <a href=\"resultados.html\">Ver resultados</a> y cierra </body> y </html>.\n\nResultado: título, párrafo, imagen, lista y enlace en una página completa que guardas como torneo.html."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "**HTML** (HyperText Markup Language) es un **lenguaje de marcado**, no de programación: estructura una página web con **etiquetas**. Su estructura básica es **<!DOCTYPE html>**, **<html>**, **<head>** (con **<title>**) y **<body>**. Casi todas las etiquetas tienen **apertura y cierre** (<p> y </p>); las **vacías**, como **<img>**, no. El **navegador** interpreta el archivo **.html**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en href como el botón de un nivel en el menú: decide a qué página entras. Si el nombre en href no coincide letra por letra con el archivo, te manda a un error. En img, src es el archivo y alt el texto de respaldo."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "href debe tener el nombre del archivo exactamente igual, con su extensión.",
+        "data": {
+          "intro": "Tu enlace <a href=\"back-on-track.html\">Back on Track</a> manda a un error. Revísalo conmigo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "El texto Back on Track se ve bien en la página: el problema no está entre <a> y </a>."
+            },
+            {
+              "text": "Revisa href: es la dirección a la que lleva el clic. Dice back-on-track.html."
+            },
+            {
+              "text": "Compara con tu carpeta: el archivo se llama backontrack.html, sin guiones."
+            },
+            {
+              "text": "Corrige href para que coincida letra por letra: <a href=\"backontrack.html\">Back on Track</a>."
+            },
+            {
+              "text": "Guardas, recargas y das clic: ahora sí entras a la página de trucos del nivel 2."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Bien escrita o con error?",
+        "content": "Revisa que el cierre coincida con la apertura, que se cierren en orden y que la etiqueta exista: de h1 a h6, no más.",
+        "data": {
+          "prompt": "Arrastra cada línea de tu página de Geometry Dash a su categoría.",
+          "buckets": [
+            "Bien escrita",
+            "Tiene error"
+          ],
+          "items": [
+            {
+              "t": "<h2>Stereo Madness</h2>",
+              "b": 0
+            },
+            {
+              "t": "<p>Nivel fácil</h2>",
+              "b": 1
+            },
+            {
+              "t": "<a href=\"niveles.html\">Niveles</a>",
+              "b": 0
+            },
+            {
+              "t": "<p><a href=\"x.html\">Ver</p></a>",
+              "b": 1
+            },
+            {
+              "t": "<img src=\"cubo.png\" alt=\"Mi cubo\">",
+              "b": 0
+            },
+            {
+              "t": "<h7>Nivel secreto</h7>",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada atributo o extensión con lo que significa.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "href",
+              "b": "Destino del enlace"
+            },
+            {
+              "a": "src",
+              "b": "Archivo de la imagen"
+            },
+            {
+              "a": "alt",
+              "b": "Texto alternativo"
+            },
+            {
+              "a": ".html",
+              "b": "Extensión de la página"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de HTML es cada cosa?",
+        "left_label": "Geometry Dash",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Tocar Polargeist y entrar a su página",
+            "right": "Enlace con <a>"
+          },
+          {
+            "left": "polargeist.html dentro de href",
+            "right": "Destino del enlace"
+          },
+          {
+            "left": "El texto que salió cuando falló la foto",
+            "right": "Atributo alt"
+          },
+          {
+            "left": "La captura de tu cubo",
+            "right": "Imagen con <img>"
+          }
+        ],
+        "completion_feedback": "Usaste un **enlace** con **href**, una **imagen** con **src** y un texto **alt** de respaldo. Así conecta páginas y muestra imágenes **HTML**."
+      },
+      "quiz": [
+        {
+          "question": "En tu página de Geometry Dash, ¿qué etiqueta hace que el nombre de un nivel lleve a otra página?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "<p>"
+            },
+            {
+              "letter": "B",
+              "text": "<img>"
+            },
+            {
+              "letter": "C",
+              "text": "<a>"
+            },
+            {
+              "letter": "D",
+              "text": "<li>"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "a crea un enlace; con href le dices a qué página lleva. img muestra imágenes, p es un párrafo y li un elemento de lista.",
+          "difficulty": 1
+        },
+        {
+          "question": "En <img src=\"cubo.png\" alt=\"Mi cubo\">, ¿qué indica src?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El texto que sale si no carga"
+            },
+            {
+              "letter": "B",
+              "text": "El archivo de la imagen"
+            },
+            {
+              "letter": "C",
+              "text": "El tamaño de la imagen en pantalla"
+            },
+            {
+              "letter": "D",
+              "text": "La página a la que lleva el clic"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "src (de source, fuente) es el archivo que se muestra. El texto de respaldo es alt, y el destino de un clic se escribe con href en una etiqueta a.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu lista es <ol><li>Stereo Madness</li><li>Polargeist</li><li>Back on Track</li></ol>. ¿Qué número le pone el navegador a Polargeist?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "3"
+            },
+            {
+              "letter": "B",
+              "text": "1"
+            },
+            {
+              "letter": "C",
+              "text": "2"
+            },
+            {
+              "letter": "D",
+              "text": "Ninguno"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "ol numera según el orden en que escribes los li, no según el juego. Polargeist es el nivel 3 de Geometry Dash, pero en tu lista quedó en segundo lugar, así que sale con el 2.",
+          "difficulty": 3
+        },
+        {
+          "question": "¿Qué extensión debe tener el archivo de tu página de niveles para que el navegador lo interprete como página web?",
+          "options": [
+            {
+              "letter": "A",
+              "text": ".txt"
+            },
+            {
+              "letter": "B",
+              "text": ".exe"
+            },
+            {
+              "letter": "C",
+              "text": ".docx"
+            },
+            {
+              "letter": "D",
+              "text": ".html"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Un archivo .html es texto con etiquetas que el navegador interpreta como página. Puedes escribirlo en el Bloc de notas, pero debes guardarlo con extensión .html.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amigo pone <h7>Niveles demon</h7> para tener un subtítulo aún más chico. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Sale más chico que h6"
+            },
+            {
+              "letter": "B",
+              "text": "Sale más grande que h1"
+            },
+            {
+              "letter": "C",
+              "text": "El navegador lo vuelve h1"
+            },
+            {
+              "letter": "D",
+              "text": "h7 no existe en HTML"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Los encabezados van de h1, el más importante, a h6, el menos importante. h7 no existe, así que el navegador no lo trata como encabezado y lo muestra como texto normal.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué significa la sigla HTML?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "High Technology Modern Language"
+        },
+        {
+          "letter": "B",
+          "text": "HyperText Markup Language"
+        },
+        {
+          "letter": "C",
+          "text": "HyperText Machine Logic"
+        },
+        {
+          "letter": "D",
+          "text": "Home Tool Markup Language"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en el hipertexto, el texto con enlaces, y en marcar el contenido.",
+      "explanation": "HTML significa HyperText Markup Language: lenguaje de marcado de hipertexto. Hipertexto es texto que se conecta con otros por medio de enlaces."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué tipo de lenguaje es HTML?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "De programación"
+        },
+        {
+          "letter": "B",
+          "text": "De marcado"
+        },
+        {
+          "letter": "C",
+          "text": "De base de datos"
+        },
+        {
+          "letter": "D",
+          "text": "De sistema operativo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa si HTML hace cálculos y toma decisiones o si solo señala qué es cada parte.",
+      "explanation": "HTML es un lenguaje de marcado: indica qué es cada parte de la página con etiquetas, pero no calcula ni toma decisiones como un lenguaje de programación."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué programa interpreta un archivo .html y lo muestra como página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El procesador de textos"
+        },
+        {
+          "letter": "B",
+          "text": "La hoja de cálculo"
+        },
+        {
+          "letter": "C",
+          "text": "El navegador web"
+        },
+        {
+          "letter": "D",
+          "text": "El antivirus"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en el programa que usas para entrar a cualquier sitio de internet.",
+      "explanation": "El navegador web lee las etiquetas del archivo .html y dibuja la página: títulos, párrafos, listas e imágenes."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué etiqueta se usa para escribir un párrafo de texto?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<h1>"
+        },
+        {
+          "letter": "B",
+          "text": "<li>"
+        },
+        {
+          "letter": "C",
+          "text": "<a>"
+        },
+        {
+          "letter": "D",
+          "text": "<p>"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Busca la etiqueta pensada para texto corrido, no para títulos, listas ni enlaces.",
+      "explanation": "p marca un párrafo. h1 es un encabezado, li un elemento de lista y a un enlace."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué etiqueta muestra el encabezado más importante y más grande?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<h6>"
+        },
+        {
+          "letter": "B",
+          "text": "<h1>"
+        },
+        {
+          "letter": "C",
+          "text": "<head>"
+        },
+        {
+          "letter": "D",
+          "text": "<title>"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Los encabezados van numerados: piensa cuál número es el primero en importancia.",
+      "explanation": "Los encabezados van de h1, el más importante y grande, a h6, el menos importante. head y title no son encabezados visibles de la página."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué etiqueta inserta una imagen en la página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<src>"
+        },
+        {
+          "letter": "B",
+          "text": "<pic>"
+        },
+        {
+          "letter": "C",
+          "text": "<img>"
+        },
+        {
+          "letter": "D",
+          "text": "<photo>"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la abreviatura de la palabra imagen en inglés.",
+      "explanation": "img inserta una imagen. src no es una etiqueta, es el atributo que dice qué archivo mostrar."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Cuál de estas es una etiqueta de cierre?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<p>"
+        },
+        {
+          "letter": "B",
+          "text": "<\\p>"
+        },
+        {
+          "letter": "C",
+          "text": "</p>"
+        },
+        {
+          "letter": "D",
+          "text": "<p/>"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en la posición y el tipo de diagonal.",
+      "explanation": "El cierre lleva una diagonal normal justo después del pico de apertura: /p entre picos. La diagonal invertida no se usa en HTML."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Para qué sirve la etiqueta <title>?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pone el título grande de la página"
+        },
+        {
+          "letter": "B",
+          "text": "Da el texto de la pestaña"
+        },
+        {
+          "letter": "C",
+          "text": "Crea el primer párrafo del texto"
+        },
+        {
+          "letter": "D",
+          "text": "Inserta el logo del sitio web"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Va dentro de head, la parte que no se ve en el cuerpo de la página.",
+      "explanation": "title da el nombre que aparece en la pestaña del navegador. El título grande dentro de la página se hace con h1."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Dentro de qué etiqueta va el contenido que ve el usuario en la página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<head>"
+        },
+        {
+          "letter": "B",
+          "text": "<title>"
+        },
+        {
+          "letter": "C",
+          "text": "<body>"
+        },
+        {
+          "letter": "D",
+          "text": "<!DOCTYPE html>"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en la parte que es el cuerpo de la página.",
+      "explanation": "body es el cuerpo: ahí van títulos, párrafos, listas, enlaces e imágenes. head guarda información sobre la página."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué etiqueta crea un enlace a otra página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<link>"
+        },
+        {
+          "letter": "B",
+          "text": "<href>"
+        },
+        {
+          "letter": "C",
+          "text": "<a>"
+        },
+        {
+          "letter": "D",
+          "text": "<img>"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Es la etiqueta más corta de todas; href es solo una de sus partes.",
+      "explanation": "a (de anchor, ancla) crea el enlace, y su atributo href indica a dónde lleva. href no es una etiqueta. link sí existe, pero va en head para conectar archivos como el CSS: no crea un enlace que se pueda tocar."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué etiqueta crea una lista numerada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<ul>"
+        },
+        {
+          "letter": "B",
+          "text": "<ol>"
+        },
+        {
+          "letter": "C",
+          "text": "<li>"
+        },
+        {
+          "letter": "D",
+          "text": "<nl>"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Una es para listas sin orden y otra para listas con orden. ¿Cuál es la ordenada?",
+      "explanation": "ol (ordered list) crea una lista numerada. ul (unordered list) usa viñetas, y li es cada elemento dentro de cualquiera de las dos."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué indica <!DOCTYPE html> al inicio del archivo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Que el documento es HTML"
+        },
+        {
+          "letter": "B",
+          "text": "Que la página tiene título"
+        },
+        {
+          "letter": "C",
+          "text": "Que empieza la parte visible"
+        },
+        {
+          "letter": "D",
+          "text": "Que el archivo lleva imágenes"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Va en la primera línea, antes de cualquier otra etiqueta. ¿Qué le avisa al navegador?",
+      "explanation": "DOCTYPE declara el tipo de documento: le avisa al navegador que el archivo es HTML. Va en la primera línea, antes de html."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué <img> es una etiqueta vacía?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "No encierra texto, no lleva cierre"
+        },
+        {
+          "letter": "B",
+          "text": "Porque no tiene atributos src ni alt"
+        },
+        {
+          "letter": "C",
+          "text": "Porque solo funciona dentro del head"
+        },
+        {
+          "letter": "D",
+          "text": "Porque la imagen se ve en blanco"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Compárala con p: ¿hay algo que escribir entre una apertura y un cierre de img?",
+      "explanation": "Una etiqueta vacía no encierra contenido entre apertura y cierre, por eso no se cierra. img solo inserta la imagen con sus atributos src y alt."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En <a href=\"niveles.html\">Ver niveles</a>, ¿qué texto ve el usuario en la página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "niveles.html"
+        },
+        {
+          "letter": "B",
+          "text": "Ver niveles"
+        },
+        {
+          "letter": "C",
+          "text": "href"
+        },
+        {
+          "letter": "D",
+          "text": "El código completo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Lo que va dentro de las comillas de href es el destino, no lo que se lee.",
+      "explanation": "Se ve el texto que queda entre la apertura y el cierre de a: Ver niveles. href guarda el destino y no aparece en la página."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Para qué sirve el atributo alt en una imagen?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Indica el archivo de la imagen"
+        },
+        {
+          "letter": "B",
+          "text": "Describe la imagen con texto"
+        },
+        {
+          "letter": "C",
+          "text": "Cambia la altura de la imagen"
+        },
+        {
+          "letter": "D",
+          "text": "Pone un enlace dentro de la foto"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa qué pasa si la imagen no carga o si la usa una persona con discapacidad visual.",
+      "explanation": "alt es el texto alternativo: se muestra si la imagen no carga y lo leen los lectores de pantalla. No tiene que ver con la altura; el archivo lo indica src."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál es el orden correcto de la estructura básica de una página?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "html, body, head, DOCTYPE"
+        },
+        {
+          "letter": "B",
+          "text": "head, DOCTYPE, html, body"
+        },
+        {
+          "letter": "C",
+          "text": "DOCTYPE, html, head, body"
+        },
+        {
+          "letter": "D",
+          "text": "DOCTYPE, body, head, html"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Primero se avisa qué tipo de documento es; la parte visible va al final.",
+      "explanation": "Primero DOCTYPE, luego html, que envuelve todo; dentro, head con la información de la página y después body con lo visible."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Dentro de qué etiqueta va <title>?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<body>"
+        },
+        {
+          "letter": "B",
+          "text": "<h1>"
+        },
+        {
+          "letter": "C",
+          "text": "<head>"
+        },
+        {
+          "letter": "D",
+          "text": "<p>"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "title no se ve en el cuerpo de la página, sino en la pestaña.",
+      "explanation": "title va dentro de head, la parte con información sobre la página. Su texto aparece en la pestaña del navegador."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Cuál es la diferencia entre HTML y CSS?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "HTML da estilo y CSS estructura"
+        },
+        {
+          "letter": "B",
+          "text": "Son el mismo lenguaje con otro nombre"
+        },
+        {
+          "letter": "C",
+          "text": "HTML estructura y CSS da estilo"
+        },
+        {
+          "letter": "D",
+          "text": "CSS es para imágenes y HTML para texto"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Uno dice qué es cada parte; el otro, cómo se ve.",
+      "explanation": "HTML estructura el contenido: título, párrafo, lista. CSS es otro lenguaje que le da estilo: colores, tamaños y posiciones."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En un archivo .html escribes tres nombres en renglones separados, sin etiquetas. ¿Cómo los muestra el navegador?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cada nombre en su renglón"
+        },
+        {
+          "letter": "B",
+          "text": "En una sola línea"
+        },
+        {
+          "letter": "C",
+          "text": "Como lista con viñetas automáticas"
+        },
+        {
+          "letter": "D",
+          "text": "No muestra ningún nombre"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El navegador no se fija en los saltos de línea del archivo, solo en las etiquetas.",
+      "explanation": "El navegador ignora los saltos de línea del archivo y junta el texto con espacios. Para separar, se usan etiquetas como p o una lista con li."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué hace el navegador con las etiquetas de un archivo .html?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Las muestra tal cual en la pantalla"
+        },
+        {
+          "letter": "B",
+          "text": "Las interpreta y no las muestra"
+        },
+        {
+          "letter": "C",
+          "text": "Las convierte en un programa ejecutable"
+        },
+        {
+          "letter": "D",
+          "text": "Las borra y deja el archivo vacío"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa si al entrar a una página ves los picos y las diagonales.",
+      "explanation": "El navegador lee las etiquetas para saber qué es cada parte y muestra solo el contenido con su formato. Las etiquetas no aparecen en la pantalla."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué fragmento está bien anidado?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<p>Hola <a href=\"x.html\">aquí</p></a>"
+        },
+        {
+          "letter": "B",
+          "text": "<a>Hola <p href=\"x.html\">aquí</a></p>"
+        },
+        {
+          "letter": "C",
+          "text": "<p>Hola <a href=\"x.html\">aquí</a></p>"
+        },
+        {
+          "letter": "D",
+          "text": "<p>Hola <a href=\"x.html\">aquí</a></a>"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "La etiqueta que se abre al último debe cerrarse primero.",
+      "explanation": "a se abrió dentro de p, así que se cierra antes que p. En las otras, los cierres van invertidos, href está en la etiqueta equivocada o p nunca se cierra."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué error tiene <h1>Mi página</h2>?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "h1 no lleva etiqueta de cierre"
+        },
+        {
+          "letter": "B",
+          "text": "Le falta la etiqueta img"
+        },
+        {
+          "letter": "C",
+          "text": "El cierre no coincide"
+        },
+        {
+          "letter": "D",
+          "text": "El texto debe ir afuera"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Compara el nombre de la etiqueta que abre con el de la que cierra.",
+      "explanation": "Se abrió h1 pero se cerró h2. El cierre debe repetir el mismo nombre de la apertura: h1 se cierra con /h1."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué está mal en <a>Ver niveles</a href=\"niveles.html\">?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Al enlace le falta alt"
+        },
+        {
+          "letter": "B",
+          "text": "href va en la apertura"
+        },
+        {
+          "letter": "C",
+          "text": "a es una etiqueta vacía"
+        },
+        {
+          "letter": "D",
+          "text": "Falta la diagonal al inicio"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Los atributos acompañan a la etiqueta que abre, nunca a la que cierra.",
+      "explanation": "Los atributos van en la etiqueta de apertura: a href=\"niveles.html\", luego el texto y al final el cierre de a, sin atributos."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un alumno escribe <img src=\"foto.jpg\">. La foto se ve, pero ¿qué le falta para que sea accesible?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La etiqueta </img>"
+        },
+        {
+          "letter": "B",
+          "text": "El atributo href"
+        },
+        {
+          "letter": "C",
+          "text": "El atributo alt"
+        },
+        {
+          "letter": "D",
+          "text": "Un <p> que la encierre"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en una persona que usa un lector de pantalla y no puede ver la foto.",
+      "explanation": "alt describe la imagen con texto. Lo leen los lectores de pantalla y aparece si la imagen no carga. img es vacía, así que no lleva cierre."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Quieres escribir los pasos de una receta, donde el orden importa. ¿Qué código usas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "<ul> con un <li> por paso"
+        },
+        {
+          "letter": "B",
+          "text": "<ol> con un <li> por paso"
+        },
+        {
+          "letter": "C",
+          "text": "<li> con un <ol> por paso"
+        },
+        {
+          "letter": "D",
+          "text": "<p> con un <h1> por paso"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Decide primero si la lista necesita números y luego qué va dentro de ella.",
+      "explanation": "ol crea una lista numerada, ideal cuando el orden importa, y cada paso va en su propio li dentro de ella. ul usaría viñetas sin orden."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un archivo tiene <h1>Bienvenidos y luego <p>Hola</p>, sin cerrar el h1. ¿Qué verá el usuario?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo el título grande"
+        },
+        {
+          "letter": "B",
+          "text": "Ambos textos grandes"
+        },
+        {
+          "letter": "C",
+          "text": "Solo el párrafo grande"
+        },
+        {
+          "letter": "D",
+          "text": "Ningún texto visible"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Si el h1 nunca se cierra, ¿dónde queda el párrafo que viene después?",
+      "explanation": "Como h1 no se cerró, el párrafo queda dentro del encabezado y también se ve grande. Cada etiqueta con pareja necesita su cierre."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una página tiene <img src=\"logo.png\" alt=\"Logo del club\">, pero el archivo se llama logo.jpg. ¿Qué verá el usuario?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La imagen logo.jpg de todos modos"
+        },
+        {
+          "letter": "B",
+          "text": "El texto Logo del club"
+        },
+        {
+          "letter": "C",
+          "text": "El texto logo.png en grande"
+        },
+        {
+          "letter": "D",
+          "text": "Una página completamente vacía"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El navegador busca exactamente el nombre que dice src. Si no lo encuentra, ¿qué usa de respaldo?",
+      "explanation": "src pide logo.png, que no existe, así que la imagen no carga y el navegador muestra el texto de alt. El resto de la página se ve normal."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Revisa: <!DOCTYPE html><html><body><title>Tienda</title><h1>Tienda</h1></body></html>. ¿Qué está mal en su estructura?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Falta cerrar el DOCTYPE"
+        },
+        {
+          "letter": "B",
+          "text": "title debe ir en head"
+        },
+        {
+          "letter": "C",
+          "text": "html debe ir dentro de body"
+        },
+        {
+          "letter": "D",
+          "text": "title no lleva cierre"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda las dos partes que van dentro de html y qué guarda cada una.",
+      "explanation": "title debe ir dentro de head, y head antes de body: <html><head><title>Tienda</title></head><body>... body es solo para lo visible. DOCTYPE nunca se cierra y title sí lleva cierre."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un compañero quiere que su página sume los puntos de un torneo usando solo HTML. ¿Qué le dices?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Debe usar la etiqueta <sum>"
+        },
+        {
+          "letter": "B",
+          "text": "HTML no hace cálculos"
+        },
+        {
+          "letter": "C",
+          "text": "Debe ponerlo dentro de head"
+        },
+        {
+          "letter": "D",
+          "text": "Debe guardarlo como .txt"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda qué tipo de lenguaje es HTML y qué puede hacer.",
+      "explanation": "HTML es un lenguaje de marcado: estructura el contenido, pero no calcula ni toma decisiones. Para sumar haría falta un lenguaje de programación."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Analiza <ul><li>Uno</li><li>Dos</li></ul>. ¿Cuántas viñetas muestra el navegador?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Una, porque solo hay un ul"
+        },
+        {
+          "letter": "B",
+          "text": "Cuatro, una por etiqueta li"
+        },
+        {
+          "letter": "C",
+          "text": "Dos, una por cada li"
+        },
+        {
+          "letter": "D",
+          "text": "Ninguna, porque falta el ol"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Cuenta los elementos de la lista, no las etiquetas sueltas.",
+      "explanation": "Cada pareja de apertura y cierre de li es un elemento, y hay dos. ul es la lista completa y pone viñetas; ol pondría números."
+    }
+  ],
+  "diagnostic": {
+    "question": "Una página tiene <h1>Recetas</h1><p>Hoy: tacos</p>. ¿Qué texto se verá como el título más grande?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hoy: tacos"
+      },
+      {
+        "letter": "B",
+        "text": "Las dos igual"
+      },
+      {
+        "letter": "C",
+        "text": "Recetas"
+      },
+      {
+        "letter": "D",
+        "text": "Ninguno"
+      }
+    ],
+    "correct_answer": "C",
+    "explanation": "h1 marca el encabezado más importante y el navegador lo muestra grande. p marca un párrafo de texto normal. Las etiquetas no se ven: solo indican qué es cada parte."
+  }
+}

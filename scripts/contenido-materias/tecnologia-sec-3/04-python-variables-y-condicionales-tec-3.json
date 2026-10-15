@@ -1,0 +1,1843 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "python-variables-y-condicionales-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo se arma un programa que decide con if",
+    "steps": [
+      "Pedir el dato al usuario con input()",
+      "Convertir ese texto a número con int() y guardarlo en una variable",
+      "Escribir el if con la comparación y dos puntos al final",
+      "Escribir con sangría lo que pasa si la condición es True",
+      "Escribir else: y, con sangría, lo que pasa si es False"
+    ],
+    "completion_feedback": "Primero llega el dato con **input()**, se convierte con **int()** y se guarda en una **variable**; luego el **if** compara y, con **sangría**, va cada camino. Ahora míralo en tu tema."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El contador de Mob",
+        "content": "Si viste Mob Psycho 100, conoces el número que aparece en pantalla mientras Shigeo Kageyama, Mob, aguanta lo que siente. Algo lo incomoda: 20%. Algo lo molesta más: el 20 desaparece y ahora dice 50%. Alguien se mete con su hermano Ritsu: 80%. Mob casi no cambia de cara, pero el contador no miente. Fíjate en cómo funciona: es un solo lugar donde se guarda un número, y cada vez que algo pasa, el número viejo se borra y se escribe el nuevo. Nunca ves 20% y 50% al mismo tiempo. Y detrás del contador hay una regla que cualquier fan se sabe de memoria: mientras el número esté abajo de 100, Mob se contiene; si llega a 100, lo que estaba guardando explota y en pantalla aparece el 100% junto con el nombre de esa emoción. Por eso, cuando ves 90%, ya sabes que algo grande viene. Un dato que se guarda y cambia, y una regla que decide qué pasa según ese dato: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El contador de Mob ES una variable",
+        "content": "Lo que acabas de ver con el contador de Mob es exactamente una **variable** y un **condicional**. Una variable es un nombre que guarda un dato y puede cambiar. En Python se crea con **=**, que significa «guarda»: **porcentaje = 20**. Si luego escribes **porcentaje = porcentaje + 30**, Python calcula 50 y borra el 20. Cada dato tiene **tipo**: **int** (entero, 50), **float** (decimal, 50.5), **str** (texto entre comillas, \"Mob\") y **bool** (True o False). La regla del 100 es un **if**: **if porcentaje >= 100:** con dos puntos y, abajo, con **sangría**, lo que pasa si se cumple; **elif** agrega más casos y **else:** cubre todo lo demás."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las vueltas de Mob en su club",
+        "content": "Mob se une a un club de ejercicio para ponerse fuerte. Imagina que le haces un programa para saber si ya cumplió su meta de vueltas.\n\n**Paso 1:** meta = 10 guarda un **int**.\n**Paso 2:** vueltas = int(input(\"¿Cuántas vueltas corriste? \")). **input()** siempre devuelve texto; **int()** lo vuelve número para poder restar.\n**Paso 3:** faltan = meta - vueltas. Si Mob escribe 7, faltan vale **3**.\n**Paso 4:** if vueltas >= meta: print(\"¡Meta cumplida, Mob!\"), con dos puntos y 4 espacios de sangría. Con 7, la condición da **False**.\n**Paso 5:** else: print(\"Te faltan\", faltan, \"vueltas\") imprime: **Te faltan 3 vueltas**.\n\nResultado: si Mob escribe 10 o más, sale ¡Meta cumplida, Mob!"
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **variable** guarda un dato con **=** (asignar) y puede cambiar de valor. Tipos básicos: **int** (entero), **float** (decimal), **str** (texto) y **bool** (True/False). **input()** siempre devuelve **texto**: usa **int()** para hacer cuentas. Para decidir se usa **if / elif / else** con **dos puntos** y **sangría**; **=** asigna y **==** compara."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el contador de Mob: el = es el momento en que el número cambia en pantalla; el == es la pregunta que se hace todo fan: «¿ya llegó a 100?». Uno guarda, el otro pregunta. Dentro de un if siempre va la pregunta: ==."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada línea reasigna la variable y el if revisa la condición con el valor nuevo.",
+        "data": {
+          "intro": "Sigue el programa del contador de Mob línea por línea. El medidor muestra el valor de la variable porcentaje.",
+          "visual": "bar",
+          "start": 0,
+          "steps": [
+            {
+              "text": "porcentaje = 20: Python crea la variable y guarda el 20.",
+              "delta": 20
+            },
+            {
+              "text": "porcentaje = porcentaje + 30: calcula 20 + 30 y guarda 50; el 20 se borra. if porcentaje >= 100 da False, así que corre el else.",
+              "delta": 30
+            },
+            {
+              "text": "porcentaje = porcentaje + 25: ahora vale 75. ¿75 >= 100? Sigue siendo False: print(\"Mob se contiene\").",
+              "delta": 25
+            },
+            {
+              "text": "porcentaje = porcentaje + 25: vale 100. ¿100 >= 100? Es True, así que entra al if: print(\"¡100%!\").",
+              "delta": 25
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué tipo de dato es?",
+        "content": "int: número entero. float: número con punto decimal. str: texto entre comillas, aunque adentro haya números. bool: True o False.",
+        "data": {
+          "prompt": "Arrastra cada valor del programa de Mob a su tipo de dato.",
+          "buckets": [
+            "int (entero)",
+            "float (decimal)",
+            "str (texto)",
+            "bool (True/False)"
+          ],
+          "items": [
+            {
+              "t": "100",
+              "b": 0
+            },
+            {
+              "t": "30",
+              "b": 0
+            },
+            {
+              "t": "99.5",
+              "b": 1
+            },
+            {
+              "t": "\"Shigeo\"",
+              "b": 2
+            },
+            {
+              "t": "\"100\"",
+              "b": 2
+            },
+            {
+              "t": "True",
+              "b": 3
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada operación con el resultado que da Python.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "100 // 3",
+              "b": "33"
+            },
+            {
+              "a": "100 % 3",
+              "b": "1"
+            },
+            {
+              "a": "100 / 4",
+              "b": "25.0"
+            },
+            {
+              "a": "60 + 40",
+              "b": "100"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de Python es cada cosa?",
+        "left_label": "Contador de Mob",
+        "right_label": "Python",
+        "pairs": [
+          {
+            "left": "El número que guarda lo que siente",
+            "right": "Variable"
+          },
+          {
+            "left": "El 20% se borra y aparece 50%",
+            "right": "Reasignar con ="
+          },
+          {
+            "left": "¿Ya llegó a 100?",
+            "right": "Comparación >="
+          },
+          {
+            "left": "Explota o se contiene",
+            "right": "if / else"
+          }
+        ],
+        "completion_feedback": "El contador es una **variable** que se **reasigna**, y la regla del 100 es una **comparación** dentro de un **if / else**. Ahora míralo escrito en Python."
+      },
+      "quiz": [
+        {
+          "question": "En la línea porcentaje = 80, ¿qué es porcentaje?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Una variable"
+            },
+            {
+              "letter": "B",
+              "text": "Una comparación"
+            },
+            {
+              "letter": "C",
+              "text": "Un condicional"
+            },
+            {
+              "letter": "D",
+              "text": "Un texto"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es un nombre que guarda un dato, en este caso el 80: una variable. No compara nada, porque usa un solo =.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué imprime? porcentaje = 90 y luego if porcentaje >= 100: print(\"Explota\") else: print(\"Se contiene\")",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Explota"
+            },
+            {
+              "letter": "B",
+              "text": "Se contiene"
+            },
+            {
+              "letter": "C",
+              "text": "Error de sintaxis"
+            },
+            {
+              "letter": "D",
+              "text": "90"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "¿90 >= 100? Es False, así que Python se salta el if y ejecuta el else: imprime Se contiene. El código está bien escrito.",
+          "difficulty": 2
+        },
+        {
+          "question": "Mob escribe vueltas = input(\"Vueltas: \") y luego faltan = 10 - vueltas. Teclea 7. ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "faltan vale 3"
+            },
+            {
+              "letter": "B",
+              "text": "Da error: vueltas es texto"
+            },
+            {
+              "letter": "C",
+              "text": "faltan vale el texto \"3\""
+            },
+            {
+              "letter": "D",
+              "text": "faltan vale 3.0, como decimal"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "input() siempre devuelve texto, así que vueltas vale \"7\". Python no puede restar un texto a un número y marca TypeError. Se arregla con int(input(\"Vueltas: \")).",
+          "difficulty": 3
+        },
+        {
+          "question": "En nombre = \"Reigen\", ¿qué tipo de dato se guarda?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "int"
+            },
+            {
+              "letter": "B",
+              "text": "float"
+            },
+            {
+              "letter": "C",
+              "text": "str"
+            },
+            {
+              "letter": "D",
+              "text": "bool"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Todo lo que va entre comillas es texto: tipo str. int y float son números, y bool solo puede ser True o False.",
+          "difficulty": 2
+        },
+        {
+          "question": "Este código marca error: if porcentaje = 100: print(\"¡100%!\") ¿Por qué?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usa = en lugar de =="
+            },
+            {
+              "letter": "B",
+              "text": "Le faltan los dos puntos"
+            },
+            {
+              "letter": "C",
+              "text": "El 100 debe ir entre comillas"
+            },
+            {
+              "letter": "D",
+              "text": "print no lleva paréntesis"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Dentro de un if se pregunta, y la pregunta «¿es igual?» se escribe con ==. Un solo = asigna, y Python lo marca como error de sintaxis. Los dos puntos sí están.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "El pizarrón del Clásico Regio femenil",
+        "content": "Es sábado y en la tele pasan el Clásico Regio de la Liga MX Femenil: Tigres contra Rayadas. Tu prima y tú llevan el marcador en un pizarrón blanco. Escriben «Tigres» en un cuadro y «Rayadas» en otro, y abajo de cada nombre un 0. Al minuto 20 anota Tigres: borran el 0 y escriben 1. En el 55 empata Rayadas: borran su 0 y ponen 1. Cada cuadro tiene un nombre fijo y un número que cambia; nunca hay dos números en el mismo cuadro, porque el viejo se borra. Cuando el árbitro pita el final, tu prima no necesita ver la repetición: solo compara los dos cuadros, siempre en el mismo orden. Si el de Tigres es mayor, ganó Tigres. Si no, pero los dos son iguales, es empate. Y si no pasó ninguna de las dos cosas, ganó Rayadas. Con cualquier marcador sale una sola respuesta. Cuadros con nombre que guardan un número, y preguntas en orden para decidir quién ganó: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El pizarrón ES un programa con variables",
+        "content": "Lo que acabas de ver con el pizarrón es exactamente cómo Python usa **variables** y **condicionales**. Cada cuadro es una variable: **tigres = 0**. Cuando hay gol, **tigres = tigres + 1** borra el valor viejo y guarda el nuevo: el **=** asigna. Al final se compara con **>**, **<**, **>=**, **<=**, **==** (igual) o **!=** (distinto), y cada comparación da **True** o **False**. La decisión es un **if / elif / else**: **if tigres > rayadas:** ganó Tigres; **elif tigres == rayadas:** empate; **else:** ganó Rayadas. Python revisa en orden y ejecuta solo la primera rama que da True. Cada línea lleva **dos puntos** y lo de adentro, **sangría**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los minutos por gol de tu delantera",
+        "content": "En una app de resultados ves que tu delantera favorita de la Liga MX Femenil jugó 3 partidos completos y metió 4 goles. Calcúlalo en Python.\n\n**Paso 1:** minutos = 3 * 90 guarda **270** (int).\n**Paso 2:** goles = 4.\n**Paso 3:** minutos / goles da **67.5**: la división con / siempre da float.\n**Paso 4:** minutos // goles da **67** (división entera) y minutos % goles da **2** (el residuo: 67 por 4 es 268 y sobran 2).\n**Paso 5:** if minutos / goles < 90: print(\"Más de un gol por partido\"). ¿67.5 < 90? True, así que lo imprime.\n\nResultado: anota, en promedio, un gol cada 67.5 minutos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **variable** guarda un dato con **=** (asignar) y puede cambiar de valor. Tipos básicos: **int** (entero), **float** (decimal), **str** (texto) y **bool** (True/False). **input()** siempre devuelve **texto**: usa **int()** para hacer cuentas. Para decidir se usa **if / elif / else** con **dos puntos** y **sangría**; **=** asigna y **==** compara."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el pizarrón: = es borrar y escribir el marcador nuevo; == es tu prima preguntando «¿van iguales?». Si en un if ves un solo =, es como escribir en el pizarrón en vez de preguntar: error."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Python revisa las condiciones en orden y se detiene en la primera que da True.",
+        "data": {
+          "intro": "El partido terminó 2-2. Sigue el programa del marcador línea por línea.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "tigres = 2 y rayadas = 2: las dos variables guardan el marcador final."
+            },
+            {
+              "text": "if tigres > rayadas: ¿2 > 2? Es False, así que Python se salta lo que tiene sangría abajo."
+            },
+            {
+              "text": "elif tigres == rayadas: ¿2 == 2? Es True. Entra y ejecuta print(\"Empate\")."
+            },
+            {
+              "text": "else: ya ni se revisa. Como una rama ya fue True, Python ignora las demás. En pantalla sale: Empate."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Guarda o pregunta?",
+        "content": "Un solo = guarda un valor en la variable. Los comparadores (==, !=, >, <, >=, <=) preguntan y dan True o False.",
+        "data": {
+          "prompt": "Arrastra cada línea del programa del partido a su categoría.",
+          "buckets": [
+            "Guarda un valor (=)",
+            "Pregunta algo (True/False)"
+          ],
+          "items": [
+            {
+              "t": "goles = 3",
+              "b": 0
+            },
+            {
+              "t": "goles == 3",
+              "b": 1
+            },
+            {
+              "t": "tigres = tigres + 1",
+              "b": 0
+            },
+            {
+              "t": "tigres != rayadas",
+              "b": 1
+            },
+            {
+              "t": "minutos = 90",
+              "b": 0
+            },
+            {
+              "t": "minutos >= 90",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada comparador con la pregunta que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "==",
+              "b": "¿Son iguales?"
+            },
+            {
+              "a": "!=",
+              "b": "¿Son distintos?"
+            },
+            {
+              "a": ">=",
+              "b": "¿Es mayor o igual?"
+            },
+            {
+              "a": "<",
+              "b": "¿Es menor?"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de Python es cada cosa?",
+        "left_label": "El pizarrón",
+        "right_label": "Python",
+        "pairs": [
+          {
+            "left": "El cuadro «Tigres» con su número",
+            "right": "Variable"
+          },
+          {
+            "left": "Borrar el 1 y escribir 2",
+            "right": "Reasignar con ="
+          },
+          {
+            "left": "¿Los dos cuadros son iguales?",
+            "right": "Comparación =="
+          },
+          {
+            "left": "Ganó, empate o perdió",
+            "right": "if / elif / else"
+          }
+        ],
+        "completion_feedback": "Cada cuadro era una **variable**, cada gol una **reasignación** y el final, una **comparación** dentro de un **if / elif / else**. Así lo escribe Python."
+      },
+      "quiz": [
+        {
+          "question": "En el programa del partido, ¿qué operador pregunta si dos marcadores son iguales?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "=="
+            },
+            {
+              "letter": "B",
+              "text": "="
+            },
+            {
+              "letter": "C",
+              "text": "!="
+            },
+            {
+              "letter": "D",
+              "text": ">="
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El doble igual compara y da True o False. Un solo = no pregunta: guarda un valor en la variable. != pregunta si son distintos.",
+          "difficulty": 1
+        },
+        {
+          "question": "Con tigres = 1 y rayadas = 3, ¿qué da tigres != rayadas?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "True"
+            },
+            {
+              "letter": "B",
+              "text": "False"
+            },
+            {
+              "letter": "C",
+              "text": "2"
+            },
+            {
+              "letter": "D",
+              "text": "Error"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "!= pregunta «¿son distintos?». 1 y 3 son distintos, así que la comparación da True. Las comparaciones siempre dan True o False, nunca un número.",
+          "difficulty": 2
+        },
+        {
+          "question": "Con tigres = 2 y rayadas = 1, ¿qué imprime? if tigres >= 2: print(\"Dos o más goles\") elif tigres > rayadas: print(\"Ganó Tigres\") else: print(\"Ganó Rayadas\")",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Dos o más goles"
+            },
+            {
+              "letter": "B",
+              "text": "Ganó Tigres"
+            },
+            {
+              "letter": "C",
+              "text": "Las dos frases, en orden"
+            },
+            {
+              "letter": "D",
+              "text": "Ganó Rayadas"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "¿2 >= 2? Es True, así que entra al if e imprime Dos o más goles. Aunque el elif también sería True, Python ya no lo revisa: solo se ejecuta la primera rama verdadera.",
+          "difficulty": 3
+        },
+        {
+          "question": "Tu delantera jugó 270 minutos y metió 4 goles. ¿Qué da 270 // 4 en Python?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "67"
+            },
+            {
+              "letter": "B",
+              "text": "67.5"
+            },
+            {
+              "letter": "C",
+              "text": "2"
+            },
+            {
+              "letter": "D",
+              "text": "68"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "// es división entera: se queda con la parte entera y no redondea. 270 / 4 daría 67.5 y 270 % 4 daría 2, el residuo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un compañero escribe: if tigres > rayadas print(\"Ganó Tigres\") ¿Qué le falta?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los dos puntos tras rayadas"
+            },
+            {
+              "letter": "B",
+              "text": "Comillas en tigres y rayadas"
+            },
+            {
+              "letter": "C",
+              "text": "Un else al final"
+            },
+            {
+              "letter": "D",
+              "text": "Paréntesis en la condición"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Toda línea de if termina en dos puntos antes de lo que se ejecuta. Las variables no llevan comillas, el else es opcional y Python no exige paréntesis en la condición.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "La pantalla del primer lugar",
+        "content": "Cada semana, los programas musicales de Corea, como Inkigayo o Music Bank, eligen un primer lugar. Imagina que BABYMONSTER está nominada contra otro grupo y tu fandom lleva días organizado: unos hacen streaming, otros compran el álbum y otros votan en la app. Al final del programa aparece la pantalla de resultados. Cada grupo tiene sus casillas, como digital, ventas del álbum y votos, y cada casilla guarda un número que se fue actualizando toda la semana. El programa suma las casillas de cada grupo y obtiene un total. Luego hace una sola pregunta: ¿el total de BABYMONSTER es mayor que el del otro grupo? Si sí, ellas se llevan el trofeo y cantan el encore. Si no, el trofeo es para el otro grupo. Nadie decide por quién gritaron más en el estudio: la pantalla guarda números, los suma, los compara y, según la respuesta, pasa una cosa u otra. Casillas que guardan datos, una suma y una decisión: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La pantalla de resultados ES un programa",
+        "content": "Lo que acabas de ver con la pantalla de resultados es exactamente lo que hace Python con **variables**, **operaciones** y **condicionales**. Cada casilla es una variable: **votos = 3500** guarda un **int** y **grupo = \"BABYMONSTER\"** guarda un **str** (texto entre comillas). Con **+ - * /** se calcula: **total = digital + ventas + votos**. Con **+** también se juntan textos: **\"Hola, \" + grupo** da Hola, BABYMONSTER. Las comparaciones **>**, **==** o **!=** dan **True** o **False** (tipo **bool**), y se decide con **if total > rival:** y **else:**, con **dos puntos** y **sangría**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el reto de puntos de MIDZY",
+        "content": "Tu club de MIDZY, las fans de ITZY, regala un póster a quien junte 10 puntos o más. Haces el programa.\n\n**Paso 1:** nombre = input(\"Tu nombre: \") guarda texto, por ejemplo Ana.\n**Paso 2:** puntos = int(input(\"Tus puntos: \")). **input()** siempre devuelve **texto**; sin **int()**, Python no podría restar ni comparar con números.\n**Paso 3:** faltan = 10 - puntos. Si Ana escribe 8, faltan vale **2**.\n**Paso 4:** if puntos >= 10: print(nombre + \" gana el póster\"). Con 8, la condición da **False**.\n**Paso 5:** else: print(\"Te faltan\", faltan, \"puntos\") imprime: **Te faltan 2 puntos**.\n\nResultado: con 12 puntos imprimiría Ana gana el póster."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **variable** guarda un dato con **=** (asignar) y puede cambiar de valor. Tipos básicos: **int** (entero), **float** (decimal), **str** (texto) y **bool** (True/False). **input()** siempre devuelve **texto**: usa **int()** para hacer cuentas. Para decidir se usa **if / elif / else** con **dos puntos** y **sangría**; **=** asigna y **==** compara."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en una votación de fans: lo que llega por input() es como un voto escrito en un papelito. Antes de sumarlo al conteo hay que leerlo como número con int(); si no, Python junta textos y \"3\" + \"2\" da \"32\"."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Primero se guardan los datos, luego se operan y al final se comparan para decidir.",
+        "data": {
+          "intro": "Calcula con Python la pantalla de resultados. Los números son de ejemplo.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "digital = 40, ventas = 25 y votos = 20: tres variables int con los puntos de BABYMONSTER."
+            },
+            {
+              "text": "total = digital + ventas + votos: Python suma 40 + 25 + 20 y guarda 85 en total."
+            },
+            {
+              "text": "rival = 80. La condición total > rival pregunta: ¿85 > 80? Da True."
+            },
+            {
+              "text": "Como es True, entra al if y ejecuta print(\"¡Primer lugar!\"). El else se salta."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Funciona o marca error?",
+        "content": "Errores típicos: olvidar los dos puntos del if, usar = en vez de == y sumar texto con número sin convertir.",
+        "data": {
+          "prompt": "Supón que votos ya guarda un número entero. Arrastra cada línea a su categoría.",
+          "buckets": [
+            "Funciona",
+            "Marca error"
+          ],
+          "items": [
+            {
+              "t": "votos = int(input(\"Votos: \"))",
+              "b": 0
+            },
+            {
+              "t": "print(\"Hola, \" + \"ITZY\")",
+              "b": 0
+            },
+            {
+              "t": "if votos > 100: print(\"¡Ganamos!\")",
+              "b": 0
+            },
+            {
+              "t": "if votos > 100 print(\"¡Ganamos!\")",
+              "b": 1
+            },
+            {
+              "t": "print(\"Votos: \" + votos)",
+              "b": 1
+            },
+            {
+              "t": "if votos = 100:",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada instrucción de Python con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "input()",
+              "b": "Pide un dato (texto)"
+            },
+            {
+              "a": "int()",
+              "b": "Convierte texto a entero"
+            },
+            {
+              "a": "print()",
+              "b": "Muestra en pantalla"
+            },
+            {
+              "a": "else:",
+              "b": "Cuando todo es False"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de Python es cada cosa?",
+        "left_label": "Pantalla final",
+        "right_label": "Python",
+        "pairs": [
+          {
+            "left": "La casilla de votos de la semana",
+            "right": "Variable"
+          },
+          {
+            "left": "Digital + ventas + votos",
+            "right": "Operación"
+          },
+          {
+            "left": "¿BABYMONSTER tiene más puntos?",
+            "right": "Comparación >"
+          },
+          {
+            "left": "Se lleva el trofeo o no",
+            "right": "if / else"
+          }
+        ],
+        "completion_feedback": "Cada casilla era una **variable**, el total una **operación** y el trofeo dependía de una **comparación** dentro de un **if / else**. Así lo escribe Python."
+      },
+      "quiz": [
+        {
+          "question": "¿Qué hace print(\"¡Primer lugar!\")?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Lo muestra en pantalla"
+            },
+            {
+              "letter": "B",
+              "text": "Lo guarda en una variable"
+            },
+            {
+              "letter": "C",
+              "text": "Lo pide al usuario"
+            },
+            {
+              "letter": "D",
+              "text": "Lo compara con otro texto"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "print() muestra en pantalla lo que va entre los paréntesis. Para guardar se usa una variable con = y para pedir un dato, input().",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Qué imprime print(\"Hola, \" + \"ITZY\")?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Hola, ITZY"
+            },
+            {
+              "letter": "B",
+              "text": "Hola, + ITZY"
+            },
+            {
+              "letter": "C",
+              "text": "Error de tipos"
+            },
+            {
+              "letter": "D",
+              "text": "HolaITZY"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Con dos textos, + los junta (concatena). El espacio está dentro de \"Hola, \", por eso sale Hola, ITZY. Solo habría error si sumaras texto con número.",
+          "difficulty": 2
+        },
+        {
+          "question": "Ana escribe 8 en puntos = input(\"Puntos: \") y luego el programa hace print(puntos + puntos). ¿Qué sale?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "88"
+            },
+            {
+              "letter": "B",
+              "text": "16"
+            },
+            {
+              "letter": "C",
+              "text": "Error"
+            },
+            {
+              "letter": "D",
+              "text": "8 + 8"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "input() devuelve texto, así que puntos vale \"8\". Con textos, + junta en vez de sumar: \"8\" + \"8\" da 88. Para obtener 16 había que usar int(input(\"Puntos: \")).",
+          "difficulty": 3
+        },
+        {
+          "question": "En la pantalla final, total = 40 + 25 + 20. ¿Qué da total > 80?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "True"
+            },
+            {
+              "letter": "B",
+              "text": "False"
+            },
+            {
+              "letter": "C",
+              "text": "85"
+            },
+            {
+              "letter": "D",
+              "text": "80"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "total vale 85, y ¿85 > 80? Sí. Una comparación no devuelve el número: devuelve True o False.",
+          "difficulty": 2
+        },
+        {
+          "question": "Con puntos = 10, ¿qué imprime? if puntos > 10: print(\"Póster\") else: print(\"Te falta poco\")",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Te falta poco"
+            },
+            {
+              "letter": "B",
+              "text": "Póster"
+            },
+            {
+              "letter": "C",
+              "text": "Póster y Te falta poco"
+            },
+            {
+              "letter": "D",
+              "text": "Error: falta elif"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "¿10 > 10? Es False, porque 10 no es mayor que sí mismo. Entra al else. Para incluir el 10 la condición debía ser puntos >= 10. El elif es opcional.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "¡Es muy eficaz!",
+        "content": "Estás en un combate de Pokémon y tu rival saca a Arcanine, que es de tipo Fuego. Tú tienes a Blastoise y eliges Hidrobomba. En pantalla sale «¡Es muy eficaz!» y el ataque hace el doble de daño. En otro combate, tu amigo usa Impactrueno de Pikachu contra un Onix, que es de tipo Roca y Tierra, y el juego avisa que no le afecta. ¿Cómo sabe el juego qué mensaje poner? Por dentro tiene guardados unos datos: el tipo del ataque, el tipo del Pokémon que lo recibe y sus PS. Antes de mostrar el mensaje, se hace preguntas en orden: ¿el ataque es Agua y el rival es Fuego? Entonces el daño se multiplica por 2. ¿No? ¿El ataque es Eléctrico y el rival es Tierra? Entonces el daño es 0. ¿Tampoco? Sigue revisando la tabla. Y siempre llega a una sola respuesta. Por eso un fan que se sabe la tabla de tipos adivina el mensaje antes de que salga. Datos guardados, cuentas con ellos y preguntas que deciden qué pasa: eso es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La tabla de tipos ES un programa con if",
+        "content": "Lo que acabas de ver con la tabla de tipos es exactamente un programa con **variables** y **condicionales**. El juego guarda datos: **rival = \"fuego\"** es un **str** (texto), **ps = 120** es un **int** y **multiplicador = 0.5** es un **float**. Hace cuentas con **+ - * /**: **daño = 40 * 2**. Y decide comparando: **if rival == \"fuego\":** imprime ¡Es muy eficaz!; **elif rival == \"agua\":** otro mensaje; **else:** el resto. Cada comparación da **True** o **False** (tipo **bool**), y Python ejecuta la primera rama que da True. El if lleva **dos puntos** y lo de adentro va con **sangría** de 4 espacios."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los caramelos para Gyarados en Pokémon GO",
+        "content": "En Pokémon GO, evolucionar a Magikarp en Gyarados cuesta 400 caramelos, y cada Magikarp que atrapas te da 3. Haz un programa que te diga cuánto falta (sin contar transferencias ni bayas).\n\n**Paso 1:** caramelos = int(input(\"¿Cuántos caramelos tienes? \")). Escribes 335 e **int()** lo vuelve número.\n**Paso 2:** faltan = 400 - caramelos guarda **65**.\n**Paso 3:** faltan // 3 da **21** (división entera) y faltan % 3 da **2** (el residuo): 21 capturas dan 63 caramelos y todavía faltan 2.\n**Paso 4:** if caramelos >= 400: print(\"¡Ya puedes evolucionarlo!\"). Con 335 da **False**.\n**Paso 5:** else: print(\"Te faltan\", faltan, \"caramelos\") imprime: **Te faltan 65 caramelos**.\n\nResultado: necesitas 22 capturas, no 21."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **variable** guarda un dato con **=** (asignar) y puede cambiar de valor. Tipos básicos: **int** (entero), **float** (decimal), **str** (texto) y **bool** (True/False). **input()** siempre devuelve **texto**: usa **int()** para hacer cuentas. Para decidir se usa **if / elif / else** con **dos puntos** y **sangría**; **=** asigna y **==** compara."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la tabla de tipos: para Python, \"Agua\" y \"agua\" no son el mismo tipo. El == compara letra por letra, mayúsculas incluidas, así que \"Agua\" == \"agua\" da False."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada ataque reasigna la variable ps, y el if revisa si ya llegó a 0.",
+        "data": {
+          "intro": "Juego de práctica: el Squirtle rival tiene 100 PS y cada Impactrueno hace 20 de daño base. El medidor muestra la variable ps.",
+          "visual": "bar",
+          "start": 100,
+          "steps": [
+            {
+              "text": "rival == \"agua\" da True, así que multiplicador = 2 y daño = 20 * 2, que es 40. ps = ps - daño: 100 - 40 = 60.",
+              "delta": -40
+            },
+            {
+              "text": "Segundo Impactrueno: ps = 60 - 40 = 20. if ps <= 0 da False: Squirtle sigue en pie.",
+              "delta": -40
+            },
+            {
+              "text": "El rival usa una Poción: ps = ps + 20. Ahora ps vale 40.",
+              "delta": 20
+            },
+            {
+              "text": "Último Impactrueno: ps = 40 - 40 = 0. if ps <= 0 da True: print(\"¡Squirtle se debilitó!\").",
+              "delta": -40
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué rama del if se ejecuta?",
+        "content": "En Python, cada mensaje del combate sería una rama: if para x2, elif para x0.5 y otro elif para x0. Cada combinación cae en una sola.",
+        "data": {
+          "prompt": "Arrastra cada ataque al mensaje que imprimiría el programa del combate.",
+          "buckets": [
+            "¡Es muy eficaz! (x2)",
+            "No es muy eficaz (x0.5)",
+            "No afecta (x0)"
+          ],
+          "items": [
+            {
+              "t": "Agua contra Fuego",
+              "b": 0
+            },
+            {
+              "t": "Planta contra Agua",
+              "b": 0
+            },
+            {
+              "t": "Fuego contra Agua",
+              "b": 1
+            },
+            {
+              "t": "Eléctrico contra Planta",
+              "b": 1
+            },
+            {
+              "t": "Eléctrico contra Tierra",
+              "b": 2
+            },
+            {
+              "t": "Normal contra Fantasma",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada línea de código con lo que tiene de especial.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "if tipo = \"agua\":",
+              "b": "= en vez de =="
+            },
+            {
+              "a": "if tipo == \"agua\"",
+              "b": "Faltan los dos puntos"
+            },
+            {
+              "a": "input(\"PS: \") - 10",
+              "b": "Le falta int()"
+            },
+            {
+              "a": "\"Agua\" == \"agua\"",
+              "b": "False: cuentan mayúsculas"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de Python es cada cosa?",
+        "left_label": "Combate Pokémon",
+        "right_label": "Python",
+        "pairs": [
+          {
+            "left": "El tipo del ataque: «agua»",
+            "right": "Variable de texto (str)"
+          },
+          {
+            "left": "El daño multiplicado por 2",
+            "right": "Operación *"
+          },
+          {
+            "left": "¿El rival es de tipo Fuego?",
+            "right": "Comparación =="
+          },
+          {
+            "left": "Muy eficaz, poco eficaz o no afecta",
+            "right": "if / elif / else"
+          }
+        ],
+        "completion_feedback": "El juego guarda **variables**, hace **operaciones** y decide con **comparaciones** dentro de un **if / elif / else**. Así se escribe en Python."
+      },
+      "quiz": [
+        {
+          "question": "En ps = 120, ¿qué hace el signo =?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Guarda 120 en ps"
+            },
+            {
+              "letter": "B",
+              "text": "Pregunta si ps es 120"
+            },
+            {
+              "letter": "C",
+              "text": "Suma 120 a ps"
+            },
+            {
+              "letter": "D",
+              "text": "Compara ps con 120"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Un solo = asigna: guarda el valor de la derecha en la variable de la izquierda. Para preguntar si ps es 120 se usa ==.",
+          "difficulty": 1
+        },
+        {
+          "question": "Pikachu usa Impactrueno y rival = \"agua\". ¿Qué imprime? if rival == \"fuego\": print(\"Normal\") elif rival == \"agua\": print(\"¡Es muy eficaz!\") else: print(\"No es muy eficaz\")",
+          "options": [
+            {
+              "letter": "A",
+              "text": "¡Es muy eficaz!"
+            },
+            {
+              "letter": "B",
+              "text": "Normal"
+            },
+            {
+              "letter": "C",
+              "text": "No es muy eficaz"
+            },
+            {
+              "letter": "D",
+              "text": "Normal y ¡Es muy eficaz!"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La primera condición da False porque \"agua\" no es \"fuego\". La del elif da True, así que imprime ¡Es muy eficaz! y el else se salta.",
+          "difficulty": 2
+        },
+        {
+          "question": "El juego guarda rival = \"Agua\" y luego revisa if rival == \"agua\": ¿Qué pasa?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La condición da False"
+            },
+            {
+              "letter": "B",
+              "text": "La condición da True"
+            },
+            {
+              "letter": "C",
+              "text": "Marca error de sintaxis"
+            },
+            {
+              "letter": "D",
+              "text": "Cambia Agua a agua"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "== compara letra por letra y distingue mayúsculas: \"Agua\" y \"agua\" son textos distintos. No hay error de sintaxis; simplemente no entra al if.",
+          "difficulty": 3
+        },
+        {
+          "question": "Te faltan 65 caramelos y cada captura da 3. ¿Qué da 65 % 3?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "2"
+            },
+            {
+              "letter": "B",
+              "text": "21"
+            },
+            {
+              "letter": "C",
+              "text": "1"
+            },
+            {
+              "letter": "D",
+              "text": "22"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "% da el residuo de la división: 21 por 3 es 63 y sobran 2. 65 // 3 daría 21, la parte entera.",
+          "difficulty": 2
+        },
+        {
+          "question": "Este programa marca error: ps = input(\"PS: \") y luego ps = ps - 40. ¿Cómo se arregla la primera línea?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "ps = int(input(\"PS: \"))"
+            },
+            {
+              "letter": "B",
+              "text": "ps = input(int(\"PS: \"))"
+            },
+            {
+              "letter": "C",
+              "text": "ps == input(\"PS: \")"
+            },
+            {
+              "letter": "D",
+              "text": "ps = input(\"PS: \") - \"40\""
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "input() devuelve texto y no se le puede restar un número. int() debe envolver a input() para convertir lo que escribe el usuario. int(\"PS: \") también falla.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué hace el signo = en la línea edad = 14?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Guarda 14 en la variable edad"
+        },
+        {
+          "letter": "B",
+          "text": "Pregunta si la edad es igual a 14"
+        },
+        {
+          "letter": "C",
+          "text": "Suma 14 a la variable edad"
+        },
+        {
+          "letter": "D",
+          "text": "Muestra 14 en la pantalla"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa si esa línea guarda algo o hace una pregunta.",
+      "explanation": "Un solo = asigna: guarda el valor de la derecha en la variable de la izquierda. Para preguntar si son iguales se usa ==."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué función de Python muestra un mensaje en la pantalla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "print()"
+        },
+        {
+          "letter": "B",
+          "text": "input()"
+        },
+        {
+          "letter": "C",
+          "text": "int()"
+        },
+        {
+          "letter": "D",
+          "text": "show()"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "En inglés, su nombre significa «imprimir».",
+      "explanation": "print() muestra en pantalla lo que va entre paréntesis. input() pide un dato y int() convierte a entero."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué función pide al usuario que escriba un dato?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "input()"
+        },
+        {
+          "letter": "B",
+          "text": "print()"
+        },
+        {
+          "letter": "C",
+          "text": "int()"
+        },
+        {
+          "letter": "D",
+          "text": "ask()"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "En inglés, su nombre significa «entrada».",
+      "explanation": "input() detiene el programa, muestra el mensaje y espera a que el usuario escriba algo y presione Enter."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿De qué tipo es el valor 3.5 en Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "float"
+        },
+        {
+          "letter": "B",
+          "text": "int"
+        },
+        {
+          "letter": "C",
+          "text": "str"
+        },
+        {
+          "letter": "D",
+          "text": "double"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en el punto decimal.",
+      "explanation": "Los números con punto decimal son float. int es para enteros como 3, y str es texto entre comillas."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué valores puede tener un dato de tipo bool?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "True o False"
+        },
+        {
+          "letter": "B",
+          "text": "Solo números enteros"
+        },
+        {
+          "letter": "C",
+          "text": "Cualquier texto"
+        },
+        {
+          "letter": "D",
+          "text": "Sí o No"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el tipo que dan las comparaciones, y en Python se escribe en inglés.",
+      "explanation": "Un bool solo puede ser True o False, con mayúscula inicial. Es lo que dan las comparaciones como 5 > 3."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En Python, ¿cómo se sabe qué líneas van dentro de un if?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Por la sangría"
+        },
+        {
+          "letter": "B",
+          "text": "Por las llaves { }"
+        },
+        {
+          "letter": "C",
+          "text": "Por el punto y coma"
+        },
+        {
+          "letter": "D",
+          "text": "Por las comillas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en los espacios al inicio de la línea.",
+      "explanation": "Python usa la sangría, normalmente 4 espacios, para saber qué está dentro del if. Otros lenguajes usan llaves, pero Python no."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué significa el operador != en Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Distinto de"
+        },
+        {
+          "letter": "B",
+          "text": "Igual a"
+        },
+        {
+          "letter": "C",
+          "text": "Mayor o igual que"
+        },
+        {
+          "letter": "D",
+          "text": "No asignar"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El signo de admiración funciona como un «no».",
+      "explanation": "!= pregunta si dos valores son distintos y da True o False. Por ejemplo, 3 != 5 da True."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué tipo de dato devuelve siempre input()?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Texto (str)"
+        },
+        {
+          "letter": "B",
+          "text": "Entero (int)"
+        },
+        {
+          "letter": "C",
+          "text": "Decimal (float)"
+        },
+        {
+          "letter": "D",
+          "text": "Depende de lo que escribas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Aunque escribas un número, Python lo recibe de una sola forma.",
+      "explanation": "input() siempre devuelve texto, aunque escribas 15. Por eso, para hacer cuentas, se convierte con int()."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué palabra se usa para el caso «si no» de un if?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "else"
+        },
+        {
+          "letter": "B",
+          "text": "elif"
+        },
+        {
+          "letter": "C",
+          "text": "then"
+        },
+        {
+          "letter": "D",
+          "text": "otherwise"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es la parte que se ejecuta cuando ninguna condición fue verdadera.",
+      "explanation": "else cubre todo lo que no cumplió las condiciones anteriores. elif sirve para agregar otra condición."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué debe llevar al final la línea de un if?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Dos puntos"
+        },
+        {
+          "letter": "B",
+          "text": "Punto y coma"
+        },
+        {
+          "letter": "C",
+          "text": "Un paréntesis"
+        },
+        {
+          "letter": "D",
+          "text": "Un punto final"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es el mismo signo que llevan elif y else.",
+      "explanation": "if, elif y else terminan con dos puntos. Si faltan, Python marca error de sintaxis."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué imprime print(7 + 3 * 2)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "13"
+        },
+        {
+          "letter": "B",
+          "text": "20"
+        },
+        {
+          "letter": "C",
+          "text": "12"
+        },
+        {
+          "letter": "D",
+          "text": "7 + 3 * 2"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Recuerda qué operación va primero, como en matemáticas.",
+      "explanation": "Python respeta la jerarquía: primero 3 * 2 = 6 y luego 7 + 6 = 13. Para obtener 20 se escribiría (7 + 3) * 2."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué imprime print(17 // 5)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "3"
+        },
+        {
+          "letter": "B",
+          "text": "3.4"
+        },
+        {
+          "letter": "C",
+          "text": "2"
+        },
+        {
+          "letter": "D",
+          "text": "4"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La doble diagonal se queda solo con la parte entera.",
+      "explanation": "// es división entera: 17 entre 5 cabe 3 veces completas. 17 / 5 daría 3.4 y 17 % 5 daría 2."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué imprime print(17 % 5)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "2"
+        },
+        {
+          "letter": "B",
+          "text": "3"
+        },
+        {
+          "letter": "C",
+          "text": "3.4"
+        },
+        {
+          "letter": "D",
+          "text": "0"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El % no es porcentaje en Python: busca lo que sobra.",
+      "explanation": "% da el residuo: 5 por 3 es 15 y sobran 2. Por eso 17 % 5 da 2."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué imprime print(\"5\" + \"5\")?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "55"
+        },
+        {
+          "letter": "B",
+          "text": "10"
+        },
+        {
+          "letter": "C",
+          "text": "Error"
+        },
+        {
+          "letter": "D",
+          "text": "5 + 5"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en las comillas: ¿son números o textos?",
+      "explanation": "Con comillas son textos, y + junta textos: \"5\" + \"5\" da 55. Sin comillas, 5 + 5 daría 10."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué imprime print(10 / 2)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "5.0"
+        },
+        {
+          "letter": "B",
+          "text": "5"
+        },
+        {
+          "letter": "C",
+          "text": "0"
+        },
+        {
+          "letter": "D",
+          "text": "Error"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "La división con una sola diagonal siempre da el mismo tipo de dato.",
+      "explanation": "La división con / siempre da float, aunque sea exacta: 10 / 2 da 5.0. Con // daría 5."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Con x = 8, ¿qué da la comparación x >= 8?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "True"
+        },
+        {
+          "letter": "B",
+          "text": "False"
+        },
+        {
+          "letter": "C",
+          "text": "8"
+        },
+        {
+          "letter": "D",
+          "text": "Error"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": ">= significa «mayor o igual».",
+      "explanation": "8 no es mayor que 8, pero sí es igual, y >= acepta las dos cosas: da True."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué está mal en la línea if edad = 15:?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Usa = en vez de =="
+        },
+        {
+          "letter": "B",
+          "text": "Le faltan los dos puntos"
+        },
+        {
+          "letter": "C",
+          "text": "El 15 debe ir entre comillas"
+        },
+        {
+          "letter": "D",
+          "text": "if va con mayúscula"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa si la línea está guardando o preguntando.",
+      "explanation": "En un if se pregunta, y «¿es igual?» se escribe ==. Con un solo = Python marca error de sintaxis. Los dos puntos sí están."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "nombre = \"Ana\" y luego print(\"Hola, \" + nombre). ¿Qué imprime?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Hola, Ana"
+        },
+        {
+          "letter": "B",
+          "text": "Hola, nombre"
+        },
+        {
+          "letter": "C",
+          "text": "Hola, + Ana"
+        },
+        {
+          "letter": "D",
+          "text": "Error de tipos"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "nombre no lleva comillas en el print: Python usa lo que guarda.",
+      "explanation": "nombre es una variable y guarda \"Ana\". El + junta los dos textos: Hola, Ana. Solo habría error si se juntara texto con número."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Después de puntos = 10 y puntos = puntos + 5, ¿cuánto vale puntos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "15"
+        },
+        {
+          "letter": "B",
+          "text": "10"
+        },
+        {
+          "letter": "C",
+          "text": "5"
+        },
+        {
+          "letter": "D",
+          "text": "105"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Python calcula primero la derecha con el valor viejo y luego guarda.",
+      "explanation": "Primero se calcula puntos + 5 con el valor actual, 10, y da 15. Ese resultado reemplaza al 10."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En edad = int(input(\"Edad: \")) el usuario escribe 14. ¿De qué tipo queda edad?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "int"
+        },
+        {
+          "letter": "B",
+          "text": "str"
+        },
+        {
+          "letter": "C",
+          "text": "float"
+        },
+        {
+          "letter": "D",
+          "text": "bool"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en la función que envuelve a input().",
+      "explanation": "input() da el texto \"14\", pero int() lo convierte en el entero 14. Así ya se puede comparar y hacer cuentas."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Con temp = 25, ¿qué imprime? if temp > 30: print(\"Calor\") elif temp > 20: print(\"Templado\") else: print(\"Frío\")",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Templado"
+        },
+        {
+          "letter": "B",
+          "text": "Calor"
+        },
+        {
+          "letter": "C",
+          "text": "Frío"
+        },
+        {
+          "letter": "D",
+          "text": "Templado y Frío"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa las condiciones de arriba hacia abajo.",
+      "explanation": "¿25 > 30? False. ¿25 > 20? True: imprime Templado. Como ya entró a una rama, el else se salta."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Con n = 30, ¿qué imprime? if n > 10: print(\"Mucho\") elif n > 20: print(\"Bastante\") else: print(\"Poco\")",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Mucho"
+        },
+        {
+          "letter": "B",
+          "text": "Bastante"
+        },
+        {
+          "letter": "C",
+          "text": "Mucho y Bastante"
+        },
+        {
+          "letter": "D",
+          "text": "Poco"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Python se detiene en la primera condición que da True.",
+      "explanation": "¿30 > 10? True: imprime Mucho y ya no revisa el elif, aunque 30 > 20 también sea cierto. El orden de las condiciones importa."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un programa tiene edad = input(\"Edad: \") y luego if edad >= 15:. El usuario escribe 16. ¿Qué pasa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Da error: edad es texto"
+        },
+        {
+          "letter": "B",
+          "text": "Entra al if porque 16 >= 15"
+        },
+        {
+          "letter": "C",
+          "text": "Entra al else"
+        },
+        {
+          "letter": "D",
+          "text": "Compara 16 como decimal"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa qué tipo de dato devuelve input().",
+      "explanation": "edad vale el texto \"16\" y Python no puede comparar texto con número usando >=: marca TypeError. Se arregla con int(input(\"Edad: \"))."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Se ejecuta a = 5, luego b = a y después a = 9. ¿Cuánto vale b?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "5"
+        },
+        {
+          "letter": "B",
+          "text": "9"
+        },
+        {
+          "letter": "C",
+          "text": "14"
+        },
+        {
+          "letter": "D",
+          "text": "Error"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Sigue las líneas en orden y anota qué guarda cada variable en ese momento.",
+      "explanation": "b = a copió el valor que tenía a en ese momento: 5. Cambiar a después no cambia a b."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un programa debe imprimir «Aprobado» si la calificación es 6 o más. ¿Qué condición es correcta?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "if cal >= 6:"
+        },
+        {
+          "letter": "B",
+          "text": "if cal > 6:"
+        },
+        {
+          "letter": "C",
+          "text": "if cal = 6:"
+        },
+        {
+          "letter": "D",
+          "text": "if cal => 6:"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "El 6 también debe aprobar. Revisa además cómo se escribe el operador.",
+      "explanation": ">= incluye el 6. Con > el 6 reprobaría, = asigna en vez de comparar y => no existe en Python: se escribe >=."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "prom = a + b / 2 da 13.0 con a = 8 y b = 10, en lugar de 9.0. ¿Cómo se corrige?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "prom = (a + b) / 2"
+        },
+        {
+          "letter": "B",
+          "text": "prom = a + b // 2"
+        },
+        {
+          "letter": "C",
+          "text": "prom = a + (b / 2)"
+        },
+        {
+          "letter": "D",
+          "text": "prom = (a + b) % 2"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Piensa qué operación hace Python primero.",
+      "explanation": "Python divide antes de sumar: 8 + 10 / 2 da 13.0. Con paréntesis, primero suma 18 y luego divide: 9.0."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Se quiere imprimir «Par» si el número n es par. ¿Qué condición funciona?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "if n % 2 == 0:"
+        },
+        {
+          "letter": "B",
+          "text": "if n / 2 == 0:"
+        },
+        {
+          "letter": "C",
+          "text": "if n // 2 == 1:"
+        },
+        {
+          "letter": "D",
+          "text": "if n % 2 = 0:"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Un número es par si al dividirlo entre 2 no sobra nada.",
+      "explanation": "n % 2 da el residuo; si es 0, el número es par. Con / casi nunca da 0, // da la mitad y un solo = es error."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Se ejecuta x = 4, luego x = x * 3 y luego print(x - 2). ¿Qué imprime?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "10"
+        },
+        {
+          "letter": "B",
+          "text": "12"
+        },
+        {
+          "letter": "C",
+          "text": "2"
+        },
+        {
+          "letter": "D",
+          "text": "14"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Anota el valor de x después de cada línea.",
+      "explanation": "x empieza en 4, después vale 4 * 3 = 12 y print muestra 12 - 2 = 10. print no cambia el valor de x."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Este programa nunca imprime «Empate»: if local >= visita: print(\"Gana local\") elif local == visita: print(\"Empate\"). ¿Por qué?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "El if ya es True cuando empatan"
+        },
+        {
+          "letter": "B",
+          "text": "elif no puede usar el operador =="
+        },
+        {
+          "letter": "C",
+          "text": "Falta un else al final del programa"
+        },
+        {
+          "letter": "D",
+          "text": "Empate debe escribirse sin comillas"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Prueba con local = 2 y visita = 2: ¿qué condición da True primero?",
+      "explanation": "Con marcador igual, local >= visita ya da True, así que Python entra al if y nunca llega al elif. Se arregla con > en el if."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "En a = input() el usuario escribe 3 y en b = int(input()) escribe 4. ¿Qué pasa con print(a + b)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Marca error"
+        },
+        {
+          "letter": "B",
+          "text": "Imprime 7"
+        },
+        {
+          "letter": "C",
+          "text": "Imprime 34"
+        },
+        {
+          "letter": "D",
+          "text": "Imprime 3 + 4"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Revisa el tipo de dato de cada variable antes de sumar.",
+      "explanation": "a es texto (\"3\") porque no se convirtió, y b es entero (4). Python no puede juntar texto con número y marca TypeError."
+    }
+  ],
+  "diagnostic": {
+    "question": "Con x = 5, ¿qué imprime este programa? if x > 3: print(\"Sí\") else: print(\"No\")",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Sí"
+      },
+      {
+        "letter": "B",
+        "text": "No"
+      },
+      {
+        "letter": "C",
+        "text": "Sí y No"
+      },
+      {
+        "letter": "D",
+        "text": "5"
+      }
+    ],
+    "correct_answer": "A",
+    "explanation": "La variable x guarda 5. ¿5 > 3? Es True, así que Python ejecuta lo que está dentro del if e imprime Sí. El else solo corre cuando la condición es False."
+  }
+}

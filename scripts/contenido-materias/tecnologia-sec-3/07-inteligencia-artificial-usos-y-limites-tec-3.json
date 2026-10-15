@@ -1,0 +1,1470 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "inteligencia-artificial-usos-y-limites-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo aprende y se usa una inteligencia artificial",
+    "steps": [
+      "Reunir muchos ejemplos: los datos de entrenamiento",
+      "Entrenar el modelo para que encuentre patrones en esos datos",
+      "Darle un dato nuevo que nunca había visto",
+      "La IA hace una predicción o genera una respuesta",
+      "Una persona verifica si el resultado es correcto"
+    ],
+    "completion_feedback": "Una IA se **entrena** con **datos de entrenamiento**, encuentra **patrones**, hace una **predicción** ante un dato nuevo y una persona la **verifica**. Ahora míralo en un ejemplo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "La fila de «Porque viste…»",
+        "content": "Terminas Jujutsu Kaisen un domingo en la noche y abres tu app de streaming. En la fila «Porque viste Jujutsu Kaisen» aparece Kaiju No. 8. Le das play solo por curiosidad y a los tres capítulos ya estás enganchado. Nadie en la empresa te conoce ni escribió una regla que diga «a este usuario dale Kaiju No. 8». La app se fijó en millones de personas: la mayoría de quienes vieron lo mismo que tú siguieron con esa serie, así que apostó a que a ti también te gustaría. Una semana después, tu hermanito de siete años usa tu perfil para ver Pokémon todo el fin de semana. El lunes tu pantalla de inicio está llena de caricaturas infantiles y tus recomendaciones de acción desaparecieron. La app no se descompuso: aprendió de lo que vio en tu perfil, y esta vez lo que vio no eras tú. Nunca supo que era otra persona; solo recibió datos nuevos y cambió sus apuestas. Cómo una máquina aprende de lo que ve y por qué a veces se equivoca es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu app de streaming USA inteligencia artificial",
+        "content": "Lo que acabas de ver con tu app de streaming es exactamente **inteligencia artificial (IA)**: un sistema que **aprende patrones a partir de datos** en lugar de seguir reglas escritas una por una. Primero se **entrena** con muchísimos ejemplos, los **datos de entrenamiento** (lo que vieron millones de usuarios). Con eso arma un **modelo** y, ante un dato nuevo (tu historial), hace una **predicción**: «esto te va a gustar». Su gran límite: **no entiende** como un humano. Si los datos están incompletos o mezclados, como los de tu hermanito, se equivoca, y lo hace con toda seguridad."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — leer un tomo de Sakamoto Days con el traductor",
+        "content": "Te regalan un tomo de Sakamoto Days en japonés y lo lees con la función de traducir con la cámara de tu celular.\n\n**Paso 1 — Datos de entrenamiento:** el traductor aprendió con millones de frases en japonés junto con su traducción hecha por personas.\n**Paso 2 — Entrenamiento:** encontró patrones: qué palabras y frases suelen corresponder entre los dos idiomas.\n**Paso 3 — Predicción:** apuntas a un globo de diálogo que nunca vio y te da la traducción más probable.\n**Paso 4 — Límite:** en japonés muchas veces no se dice quién hace la acción. El traductor solo lee el texto, no ve el dibujo, así que adivina «él» o «ella» y a veces falla.\n**Paso 5 — Uso responsable:** si algo no cuadra con la escena, revisas el dibujo y el contexto.\n\nResultado: la IA traduce rápido, pero no entiende la historia; el que la entiende eres tú."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **inteligencia artificial (IA)** son sistemas que **aprenden patrones a partir de datos** para hacer **predicciones** o generar contenido. Se **entrena** con muchos ejemplos (**datos de entrenamiento**) y luego responde ante datos nuevos. **No entiende** como un humano: con datos incompletos o sesgados se equivoca, y a veces inventa datos muy segura (**alucinación**). Por eso se **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la IA como el fan que vio miles de episodios y adivina qué pasará en el siguiente: suele acertar porque reconoce patrones, pero no tiene el guion. Si el examen pregunta si la IA «entiende», la respuesta es no: predice."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La IA no sabe quién eres: predice con los datos que recibe.",
+        "data": {
+          "intro": "Sigue cómo la app decidió recomendarte Kaiju No. 8 y por qué después se confundió.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Datos de entrenamiento: la app guarda qué series vieron millones de usuarios y cuáles terminaron."
+            },
+            {
+              "text": "Entrenamiento: encuentra un patrón. Muchos que terminaron Jujutsu Kaisen siguieron con Kaiju No. 8."
+            },
+            {
+              "text": "Dato nuevo: tú acabas de terminar Jujutsu Kaisen en tu perfil."
+            },
+            {
+              "text": "Predicción: el modelo calcula que es muy probable que te guste y la pone en «Porque viste…»."
+            },
+            {
+              "text": "Límite: cuando tu hermanito usa tu perfil, los datos nuevos ya no son tuyos y las predicciones fallan."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Aprende de datos o sigue una regla?",
+        "content": "Una IA aprende patrones de muchos ejemplos. Una función con regla fija hace siempre lo mismo que alguien programó.",
+        "data": {
+          "prompt": "Arrastra cada función de tu app de anime a su categoría.",
+          "buckets": [
+            "Aprende de datos (IA)",
+            "Sigue una regla fija"
+          ],
+          "items": [
+            {
+              "t": "La fila «Porque viste…»",
+              "b": 0
+            },
+            {
+              "t": "Adelantar 10 segundos",
+              "b": 1
+            },
+            {
+              "t": "Traducir un globo de diálogo con la cámara",
+              "b": 0
+            },
+            {
+              "t": "Ordenar tus favoritos de la A a la Z",
+              "b": 1
+            },
+            {
+              "t": "Buscar «One Piece» diciéndolo en voz alta",
+              "b": 0
+            },
+            {
+              "t": "Avisar de un episodio nuevo cada sábado",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de IA con lo que pasó en tu app de anime.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Datos de entrenamiento",
+              "b": "Historial de millones"
+            },
+            {
+              "a": "Entrenamiento",
+              "b": "Buscar patrones"
+            },
+            {
+              "a": "Predicción",
+              "b": "«Esto te va a gustar»"
+            },
+            {
+              "a": "Alucinación",
+              "b": "Dato inventado muy seguro"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de IA es cada cosa que hizo tu app?",
+        "left_label": "Tu app de anime",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Lo que vieron millones de usuarios",
+            "right": "Datos de entrenamiento"
+          },
+          {
+            "left": "Quien ve Jujutsu Kaisen sigue con otra",
+            "right": "Patrón"
+          },
+          {
+            "left": "La fila «Porque viste…»",
+            "right": "Predicción"
+          },
+          {
+            "left": "Tu hermanito usando tu perfil",
+            "right": "Datos equivocados"
+          }
+        ],
+        "completion_feedback": "La app usó **datos**, encontró un **patrón** e hizo una **predicción**, pero con datos equivocados se confundió. Ahora ponle nombre formal: eso es **inteligencia artificial**."
+      },
+      "quiz": [
+        {
+          "question": "¿Por qué tu app te recomendó Kaiju No. 8 después de Jujutsu Kaisen?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Alguien de la app revisó tu perfil"
+            },
+            {
+              "letter": "B",
+              "text": "Aprendió un patrón de muchos usuarios"
+            },
+            {
+              "letter": "C",
+              "text": "La serie pagó para salir en tu inicio"
+            },
+            {
+              "letter": "D",
+              "text": "La eligió al azar entre todas las series"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La app aprendió de lo que vieron millones de personas: muchos que terminaron Jujutsu Kaisen siguieron con Kaiju No. 8. Con ese patrón predijo que a ti también te gustaría.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el traductor de la cámara, los millones de frases en japonés ya traducidas por personas son…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La traducción que te muestra"
+            },
+            {
+              "letter": "B",
+              "text": "Los datos de entrenamiento"
+            },
+            {
+              "letter": "C",
+              "text": "El resultado de la predicción"
+            },
+            {
+              "letter": "D",
+              "text": "El texto del globo de diálogo"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Son los ejemplos con los que el traductor aprendió patrones entre los dos idiomas. La traducción que te muestra es la predicción que hace después, con un texto nuevo.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu hermanito vio Pokémon en tu perfil y ahora solo te recomiendan caricaturas. ¿Cuál es la mejor explicación?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La app aprendió de datos que no eran tuyos"
+            },
+            {
+              "letter": "B",
+              "text": "La app entiende que ya no te gusta la acción"
+            },
+            {
+              "letter": "C",
+              "text": "La app se descompuso y hay que reinstalarla"
+            },
+            {
+              "letter": "D",
+              "text": "La app castiga a quien presta su cuenta"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La IA no sabe quién está frente a la pantalla: solo recibe datos. Como los nuevos datos eran de tu hermanito, sus predicciones cambiaron. No «entiende» tus gustos, los calcula.",
+          "difficulty": 3
+        },
+        {
+          "question": "El traductor escribe «él corrió» cuando en el dibujo la que corre es una chica. ¿Qué límite de la IA muestra?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Predice sin entender la escena"
+            },
+            {
+              "letter": "B",
+              "text": "Está mal instalado en el celular"
+            },
+            {
+              "letter": "C",
+              "text": "Tradujo con mala intención"
+            },
+            {
+              "letter": "D",
+              "text": "Solo funciona con manga en inglés"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "El traductor da la traducción más probable según sus patrones, pero no ve el dibujo ni entiende la historia. Por eso falla cuando el texto no dice quién habla.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Cuál es el uso más responsable del traductor para leer tu tomo de Sakamoto Days?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Usarlo y revisar si cuadra con el dibujo"
+            },
+            {
+              "letter": "B",
+              "text": "Copiar su traducción y subirla como tuya"
+            },
+            {
+              "letter": "C",
+              "text": "Confiar en todo porque usó millones de frases"
+            },
+            {
+              "letter": "D",
+              "text": "No usarlo nunca porque siempre se equivoca"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La IA ayuda, pero puede equivocarse con seguridad, así que se verifica con el contexto. Subir su trabajo como tuyo es deshonesto, y no siempre falla: acierta muchas veces.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "La portera que estudió 20 tiros de esquina",
+        "content": "Fer es la portera del equipo femenil de tu secundaria y el sábado juegan la final. Durante la semana, el entrenador le pasa los videos de los últimos 20 tiros de esquina del rival. Todos los cobró la número 10, que es diestra. Fer no tiene un manual que diga a dónde los van a mandar, pero al verlos todos nota algo: 14 de los 20 fueron al primer poste. Nadie se lo explicó; lo descubrió al ver muchos ejemplos. En la final, en el primer córner se acomoda cerca del primer poste y atrapa el balón sin problemas. Pero en el segundo tiro de esquina el rival pone a cobrar a una jugadora nueva, zurda, que no aparecía en ningún video. Fer se acomoda igual, con toda seguridad, y el balón se le va al segundo poste: casi les meten gol. Su método funcionó mientras el partido se parecía a lo que había visto y falló con lo que nunca vio. Aprender de ejemplos para adivinar lo que viene, y equivocarse cuando faltan ejemplos, es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Lo que hizo Fer ES lo que hace una IA",
+        "content": "Lo que acabas de ver con Fer es exactamente cómo funciona la **inteligencia artificial (IA)**: un sistema que **aprende patrones a partir de datos** en lugar de seguir reglas escritas una por una. Se **entrena** con muchos ejemplos, los **datos de entrenamiento** (los 20 córners), y con eso arma un **modelo**. Ante un dato nuevo (el siguiente córner) hace una **predicción**: «va al primer poste». Su límite: **no entiende** el juego como una persona. Si sus datos están incompletos, como la zurda que nunca apareció, tiene un **sesgo** y se equivoca con toda seguridad."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la cámara que sigue sola al balón",
+        "content": "Muchas ligas amateur y escuelas transmiten sus partidos con una cámara con IA, sin camarógrafo.\n\n**Paso 1 — Datos de entrenamiento:** el sistema vio miles de horas de partidos donde alguien marcó dónde estaba el balón en cada imagen.\n**Paso 2 — Entrenamiento:** aprendió el patrón de cómo se ve un balón: algo redondo y claro que se mueve entre los jugadores.\n**Paso 3 — Predicción:** en cada imagen nueva calcula dónde está el balón y mueve el encuadre hacia ahí.\n**Paso 4 — Límite:** en 2020, en Escocia, la cámara de un partido del Inverness Caledonian Thistle confundió varias veces la cabeza calva de un juez de línea con el balón.\n**Paso 5 — Revisión humana:** como la IA no entiende el futbol, conviene que una persona vigile la transmisión.\n\nResultado: la cámara ahorra trabajo y suele acertar, pero falla con lo que se parece a sus ejemplos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **inteligencia artificial (IA)** son sistemas que **aprenden patrones a partir de datos** para hacer **predicciones** o generar contenido. Se **entrena** con muchos ejemplos (**datos de entrenamiento**) y luego responde ante datos nuevos. **No entiende** como un humano: con datos incompletos o sesgados se equivoca, y a veces inventa datos muy segura (**alucinación**). Por eso se **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "La IA es como un equipo que solo entrenó contra rivales diestros: juega bien mientras el partido se parezca a sus entrenamientos. Si te preguntan por qué falla una IA, busca primero qué faltaba en sus datos."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Un modelo acierta con lo que se parece a sus ejemplos y falla con lo que nunca vio.",
+        "data": {
+          "intro": "Sigue el «modelo» de Fer, desde los videos hasta el segundo córner de la final.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Datos de entrenamiento: Fer ve en video los últimos 20 tiros de esquina del rival."
+            },
+            {
+              "text": "Entrenamiento: encuentra el patrón. 14 de 20 fueron al primer poste, todos cobrados por una diestra."
+            },
+            {
+              "text": "Predicción: en el primer córner de la final se acomoda en el primer poste y acierta."
+            },
+            {
+              "text": "Dato que no estaba en sus ejemplos: cobra una zurda nueva. Fer predice igual, muy segura, y falla."
+            },
+            {
+              "text": "Conclusión: con datos incompletos el modelo tiene un sesgo. Se corrige entrenando con ejemplos más variados."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Dónde hay IA en el futbol?",
+        "content": "Una IA aprende patrones de muchos ejemplos. Un aparato con regla fija hace siempre lo mismo, sin aprender nada.",
+        "data": {
+          "prompt": "Arrastra cada tecnología del estadio a su categoría.",
+          "buckets": [
+            "Aprende de datos (IA)",
+            "Sigue una regla fija"
+          ],
+          "items": [
+            {
+              "t": "Reconocer caras en la entrada del estadio",
+              "b": 0
+            },
+            {
+              "t": "Cronómetro del partido",
+              "b": 1
+            },
+            {
+              "t": "Subtítulos automáticos de la transmisión",
+              "b": 0
+            },
+            {
+              "t": "Tablero de cambios del cuarto árbitro",
+              "b": 1
+            },
+            {
+              "t": "Cámara que sigue sola al balón",
+              "b": 0
+            },
+            {
+              "t": "Marcador electrónico del estadio",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de IA con lo que pasó en la final de Fer y con la cámara automática.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Datos de entrenamiento",
+              "b": "Los 20 córners en video"
+            },
+            {
+              "a": "Predicción",
+              "b": "«Va al primer poste»"
+            },
+            {
+              "a": "Sesgo",
+              "b": "Nunca vio a una zurda"
+            },
+            {
+              "a": "Revisión humana",
+              "b": "Alguien vigila la cámara"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de IA es cada cosa que hizo Fer?",
+        "left_label": "La final de Fer",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Los videos de 20 tiros de esquina",
+            "right": "Datos de entrenamiento"
+          },
+          {
+            "left": "14 de 20 fueron al primer poste",
+            "right": "Patrón"
+          },
+          {
+            "left": "Acomodarse en el primer poste",
+            "right": "Predicción"
+          },
+          {
+            "left": "La cobradora zurda que nunca vio",
+            "right": "Datos incompletos"
+          }
+        ],
+        "completion_feedback": "Fer usó **datos**, encontró un **patrón** e hizo una **predicción**, pero falló con lo que no estaba en sus ejemplos. Ahora ponle nombre formal: así aprende una **inteligencia artificial**."
+      },
+      "quiz": [
+        {
+          "question": "¿Cómo descubrió Fer a dónde iban los tiros de esquina del rival?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Viendo muchos ejemplos"
+            },
+            {
+              "letter": "B",
+              "text": "Leyendo el reglamento de la liga"
+            },
+            {
+              "letter": "C",
+              "text": "Preguntándole a la rival"
+            },
+            {
+              "letter": "D",
+              "text": "Adivinando al azar"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Nadie le dio una regla: encontró el patrón al ver 20 ejemplos. Así aprende una IA, a partir de datos de entrenamiento.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el partido del Inverness de 2020, ¿por qué la cámara automática siguió la cabeza calva del juez de línea?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Quería mostrar mejor al juez de línea"
+            },
+            {
+              "letter": "B",
+              "text": "Se parecía al balón que aprendió a ver"
+            },
+            {
+              "letter": "C",
+              "text": "Alguien la programó para seguir árbitros"
+            },
+            {
+              "letter": "D",
+              "text": "Un virus le movió el encuadre a propósito"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La cámara aprendió que el balón es algo redondo y claro. Con la luz del estadio, la cabeza calva encajaba en ese patrón. La IA no entiende el futbol: predice según lo que se parece a sus ejemplos.",
+          "difficulty": 2
+        },
+        {
+          "question": "Para que Fer no vuelva a fallar con cobradoras nuevas, ¿qué le conviene más?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ver otra vez los mismos 20 córners"
+            },
+            {
+              "letter": "B",
+              "text": "Confiar más en su primera idea"
+            },
+            {
+              "letter": "C",
+              "text": "Pararse siempre en el primer poste"
+            },
+            {
+              "letter": "D",
+              "text": "Ver córners más variados"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Su error vino de datos incompletos: nunca vio a una zurda. Con ejemplos más variados, su «modelo» tiene menos sesgo. Repetir los mismos datos no le enseña nada nuevo.",
+          "difficulty": 3
+        },
+        {
+          "question": "La cámara automática aprendió a encontrar el balón con miles de horas de partidos donde alguien lo marcó. Esos videos son…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "La predicción de la cámara"
+            },
+            {
+              "letter": "B",
+              "text": "La transmisión en vivo"
+            },
+            {
+              "letter": "C",
+              "text": "Los datos de entrenamiento"
+            },
+            {
+              "letter": "D",
+              "text": "Una alucinación de la IA"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Son los ejemplos de los que la cámara aprendió cómo se ve un balón. La predicción viene después: calcular dónde está el balón en cada imagen nueva del partido.",
+          "difficulty": 2
+        },
+        {
+          "question": "Un club entrena una IA para buscar talentos solo con datos de la liga varonil y la usa para elegir jugadoras de la Liga MX Femenil. ¿Qué riesgo hay?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Que funcione mejor por tener más datos"
+            },
+            {
+              "letter": "B",
+              "text": "Que falle: no vio datos de ellas"
+            },
+            {
+              "letter": "C",
+              "text": "Que se niegue a dar resultados"
+            },
+            {
+              "letter": "D",
+              "text": "Ninguno, porque el futbol es igual"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La IA aprendió patrones de otra liga, con otros jugadores. Si sus datos de entrenamiento no incluyen a las jugadoras, sus predicciones sobre ellas pueden tener sesgo.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "Winter cantando una canción que nunca cantó",
+        "content": "Imagina esta situación inventada: en TikTok te sale un video con 2 millones de reproducciones donde Winter, de aespa, canta «APT.», la canción de Rosé y Bruno Mars. Suena idéntica a ella: el mismo timbre, la misma forma de alargar las notas. En los comentarios hay fans que dicen que es la mejor colaboración del año. Pero tú notas algo raro: en una palabra la pronunciación se rompe y en otra respira donde no hay pausa. Revisas las cuentas oficiales de aespa y no hay nada. En la descripción, en letras chiquitas, dice «AI cover». Alguien le dio a un programa horas y horas de canciones de Winter; el programa encontró los patrones de su voz y generó una canción que ella nunca grabó. Engañó a miles, pero no entendió la letra ni sabe quién es Winter. Y lo más grave: nadie le pidió permiso. Su voz es parte de quién es y de su trabajo, y alguien la usó sin que ella lo supiera. Cómo una máquina aprende de tantos ejemplos, por qué a veces se le nota y por qué usarla así no es ético es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El cover falso de Winter ES inteligencia artificial",
+        "content": "Lo que acabas de ver con el cover imaginario de Winter es exactamente **inteligencia artificial (IA)**: un sistema que **aprende patrones a partir de datos** en lugar de seguir reglas escritas una por una. Se **entrena** con muchos ejemplos, los **datos de entrenamiento** (horas de canciones de Winter), y luego **genera** algo nuevo o hace una **predicción**. Su límite: **no entiende** lo que canta; por eso a veces se le nota. Y su uso tiene **ética**: un audio o video falso que imita la voz o la cara de una persona real es un **deepfake**, y hacerlo sin su permiso no es ético."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — el chatbot que inventó una canción de aespa",
+        "content": "Le pides a un chatbot de IA datos de aespa para el grupo de fans de tu escuela.\n\n**Paso 1 — Cómo funciona:** se entrenó con muchísimo texto y escribe la respuesta palabra por palabra, prediciendo la más probable.\n**Paso 2 — Pregunta conocida:** «¿Con qué canción debutó aespa?». Responde «Black Mamba», en 2020. Acierta porque ese dato aparece muchísimas veces en sus datos.\n**Paso 3 — Pregunta imposible:** «¿Cómo se llama la canción 7 de su próximo álbum?». El álbum ni siquiera está anunciado, pero te da un título con toda seguridad.\n**Paso 4 — Verificación:** revisas las cuentas oficiales de aespa y no hay nada. El chatbot lo inventó: es una **alucinación**.\n**Paso 5 — Conclusión:** escribió lo que sonaba probable, no lo que era cierto.\n\nResultado: un chatbot sirve para empezar, pero los datos se comprueban en fuentes oficiales."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **inteligencia artificial (IA)** son sistemas que **aprenden patrones a partir de datos** para hacer **predicciones** o generar contenido. Se **entrena** con muchos ejemplos (**datos de entrenamiento**) y luego responde ante datos nuevos. **No entiende** como un humano: con datos incompletos o sesgados se equivoca, y a veces inventa datos muy segura (**alucinación**). Por eso se **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la IA como un fan que se aprendió miles de letras de memoria: puede «cantar» algo que suena a aespa, pero no sabe qué significa. En el examen: la IA predice lo probable, no lo verdadero."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La IA copia patrones muy bien, pero no entiende ni pide permiso: eso le toca a las personas.",
+        "data": {
+          "intro": "Sigue cómo se haría un cover falso como el del caso imaginario y en qué momentos se nota que es IA.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Datos de entrenamiento: alguien junta horas de canciones y videos donde canta Winter."
+            },
+            {
+              "text": "Entrenamiento: el programa aprende los patrones de su voz: timbre, tono y cómo alarga las notas."
+            },
+            {
+              "text": "Generación: le dan «APT.» y produce una voz nueva que imita la de Winter."
+            },
+            {
+              "text": "Límite: no entiende la letra, por eso falla en una pronunciación y en una respiración."
+            },
+            {
+              "text": "Ética: Winter no dio permiso y el video engaña. No se usa la voz de una persona real sin permiso ni se hace pasar por real."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Uso responsable o no ético?",
+        "content": "Usar IA con responsabilidad es verificar, avisar cuando la usaste y respetar la voz, la cara y el trabajo de otras personas.",
+        "data": {
+          "prompt": "Arrastra cada acción de un fan a su categoría.",
+          "buckets": [
+            "Uso responsable",
+            "Uso no ético"
+          ],
+          "items": [
+            {
+              "t": "Avisar «hecho con IA» en tu edit",
+              "b": 0
+            },
+            {
+              "t": "Subir un cover con voz clonada como real",
+              "b": 1
+            },
+            {
+              "t": "Verificar un rumor en cuentas oficiales",
+              "b": 0
+            },
+            {
+              "t": "Hacer un video falso de un idol sin permiso",
+              "b": 1
+            },
+            {
+              "t": "Traducir un post con IA y revisarlo",
+              "b": 0
+            },
+            {
+              "t": "Entregar como tuya una reseña hecha por IA",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de IA con lo que pasó en el fandom.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Deepfake",
+              "b": "Video falso de un idol"
+            },
+            {
+              "a": "Alucinación",
+              "b": "Título que no existe"
+            },
+            {
+              "a": "Datos de entrenamiento",
+              "b": "Horas de su voz"
+            },
+            {
+              "a": "Verificar",
+              "b": "Revisar cuentas oficiales"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de IA es cada parte del cover?",
+        "left_label": "El cover de Winter",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Horas de canciones de Winter",
+            "right": "Datos de entrenamiento"
+          },
+          {
+            "left": "Su timbre y cómo alarga las notas",
+            "right": "Patrones"
+          },
+          {
+            "left": "Una palabra mal pronunciada",
+            "right": "Límite de la IA"
+          },
+          {
+            "left": "Hacerla cantar sin su permiso",
+            "right": "Problema ético"
+          }
+        ],
+        "completion_feedback": "El cover usó **datos**, copió **patrones**, mostró sus **límites** y abrió un **problema ético**. Ahora ponle nombre formal: eso es **inteligencia artificial**."
+      },
+      "quiz": [
+        {
+          "question": "En el caso imaginario, ¿cómo logró el programa imitar la voz de Winter?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Aprendió de horas de su voz"
+            },
+            {
+              "letter": "B",
+              "text": "Winter le grabó la canción"
+            },
+            {
+              "letter": "C",
+              "text": "Copió un archivo secreto de SM"
+            },
+            {
+              "letter": "D",
+              "text": "Un imitador cantó por ella"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Se entrenó con muchas grabaciones de Winter y aprendió los patrones de su voz. Con eso generó una canción que ella nunca grabó.",
+          "difficulty": 1
+        },
+        {
+          "question": "El chatbot inventó el título de una canción de un álbum de aespa que ni siquiera está anunciado. ¿Cómo se llama ese error?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Deepfake"
+            },
+            {
+              "letter": "B",
+              "text": "Alucinación"
+            },
+            {
+              "letter": "C",
+              "text": "Sesgo de datos"
+            },
+            {
+              "letter": "D",
+              "text": "Virus informático"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Una alucinación es un dato inventado que la IA presenta con seguridad. Un deepfake, en cambio, es un video, imagen o audio falso que imita a una persona real.",
+          "difficulty": 2
+        },
+        {
+          "question": "Te llega un video de Karina anunciando un concierto gratis de aespa en el Zócalo, pero no aparece en ninguna cuenta oficial. ¿Qué haces primero?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Compartirlo rápido para avisar a todos"
+            },
+            {
+              "letter": "B",
+              "text": "Creerlo porque se ve muy real"
+            },
+            {
+              "letter": "C",
+              "text": "Verificar antes de compartir"
+            },
+            {
+              "letter": "D",
+              "text": "Comentar el video para que lo suban"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Podría ser un deepfake: con IA se puede imitar la cara y la voz de alguien. Que se vea real no lo hace cierto, y compartir algo falso también hace daño.",
+          "difficulty": 3
+        },
+        {
+          "question": "En el cover falso del caso imaginario, las horas de canciones de Winter son…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Los datos de entrenamiento"
+            },
+            {
+              "letter": "B",
+              "text": "La predicción final del modelo"
+            },
+            {
+              "letter": "C",
+              "text": "La canción que se generó"
+            },
+            {
+              "letter": "D",
+              "text": "Un sesgo del programa"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Son los ejemplos de los que el programa aprende los patrones de su voz. La canción generada es el resultado que sale después.",
+          "difficulty": 2
+        },
+        {
+          "question": "Hiciste un edit de aespa y usaste IA para generar el fondo con luces y estrellas. ¿Qué es lo más responsable al subirlo?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Decir que lo dibujaste tú"
+            },
+            {
+              "letter": "B",
+              "text": "Avisar que usaste IA"
+            },
+            {
+              "letter": "C",
+              "text": "Borrar cualquier rastro de IA"
+            },
+            {
+              "letter": "D",
+              "text": "Subirlo con el logo de SM"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Usar IA no está mal, pero no se hace pasar como tuyo lo que hizo la IA. Avisar es honesto; poner el logo de SM haría creer que es oficial.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El jefe final que dibujó una IA",
+        "content": "Estás haciendo tu propio juego en Roblox Studio y te falta la imagen del jefe final para la pantalla de carga. Abres un generador de imágenes con IA y escribes: «dragón robot morado, estilo pixel art, ojos brillantes». En diez segundos tienes cuatro dragones increíbles que nadie había dibujado antes. ¿Cómo lo hizo? Ese programa vio millones de imágenes con su descripción: dragones, robots, pixel art, el color morado. No tenía guardado un dragón robot morado, porque no existía; aprendió cómo suelen verse esas cosas y las combinó. Pero cuando haces zoom ves detalles raros: un dragón tiene seis garras en una pata y las letras de su armadura no dicen nada. El programa sabe cómo se ven las garras, pero no entiende cuántas debe tener un dragón. Cuando tu amigo pregunta «¿lo dibujaste tú?», te quedas pensando qué contestar. Cómo una máquina aprende de millones de ejemplos, dónde se equivoca y cómo usarla con honestidad es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu generador de imágenes ES inteligencia artificial",
+        "content": "Lo que acabas de ver con tu jefe final es exactamente **inteligencia artificial (IA)**: un sistema que **aprende patrones a partir de datos** en lugar de seguir reglas escritas una por una. Se **entrena** con muchos ejemplos, los **datos de entrenamiento** (millones de imágenes con descripción), y luego **genera** contenido nuevo o hace **predicciones**. Su límite: **no entiende** lo que crea; por eso pone garras de más con toda seguridad. Y su uso pide **ética**: si la IA lo hizo, no lo presentes como tuyo."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — ¿el enemigo aprende o sigue reglas?",
+        "content": "No todo lo que en los juegos se llama «IA» aprende de datos. Compara dos casos.\n\n**Paso 1 — El Creeper de Minecraft:** sigue reglas que escribieron los programadores: si te detecta cerca, te persigue; si llega junto a ti, explota.\n**Paso 2 — ¿Aprende?** No. Hoy y dentro de un año hace lo mismo, aunque te gane mil veces.\n**Paso 3 — Los Drivatar de Forza Horizon 5:** el juego registra cómo manejan los jugadores reales: dónde frenan y cómo toman las curvas. Esos son sus **datos**.\n**Paso 4 — Entrenamiento y predicción:** con esos datos aprende el estilo de cada jugador y crea un rival de la computadora que maneja parecido a él.\n**Paso 5 — Comparación:** el Creeper es un programa de reglas fijas; el Drivatar es IA que aprende.\n\nResultado: la pregunta clave es si el comportamiento sale de reglas escritas o de patrones aprendidos de datos."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "La **inteligencia artificial (IA)** son sistemas que **aprenden patrones a partir de datos** para hacer **predicciones** o generar contenido. Se **entrena** con muchos ejemplos (**datos de entrenamiento**) y luego responde ante datos nuevos. **No entiende** como un humano: con datos incompletos o sesgados se equivoca, y a veces inventa datos muy segura (**alucinación**). Por eso se **verifica**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la IA como un jugador que vio miles de partidas: copia las jugadas que más se repiten, pero no conoce las reglas del juego. Para distinguir, pregúntate: ¿sigue reglas escritas o aprendió de ejemplos?"
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La IA combina patrones que aprendió, pero no entiende lo que crea: revisarlo te toca a ti.",
+        "data": {
+          "intro": "Sigue cómo el generador creó tu dragón robot, de los datos a la imagen final.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Datos de entrenamiento: el programa vio millones de imágenes, cada una con su descripción en texto."
+            },
+            {
+              "text": "Entrenamiento: aprendió patrones: cómo suelen verse un dragón, un robot y el pixel art."
+            },
+            {
+              "text": "Dato nuevo: escribes «dragón robot morado, estilo pixel art», algo que nunca vio junto."
+            },
+            {
+              "text": "Generación: combina esos patrones y crea una imagen nueva en segundos."
+            },
+            {
+              "text": "Límite y ética: como no entiende, le pone seis garras. Revisas, corriges y dices que usaste IA."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Aprende de datos o sigue reglas?",
+        "content": "Una IA cambia su comportamiento según los ejemplos que aprendió. Un personaje con reglas fijas hace siempre lo mismo.",
+        "data": {
+          "prompt": "Arrastra cada cosa del mundo gamer a su categoría.",
+          "buckets": [
+            "Aprende de datos (IA)",
+            "Sigue reglas fijas"
+          ],
+          "items": [
+            {
+              "t": "Drivatar de Forza Horizon 5",
+              "b": 0
+            },
+            {
+              "t": "Creeper que explota al acercarse",
+              "b": 1
+            },
+            {
+              "t": "Generador de imágenes del jefe final",
+              "b": 0
+            },
+            {
+              "t": "Goomba que camina y da la vuelta",
+              "b": 1
+            },
+            {
+              "t": "Chat de voz convertido a texto",
+              "b": 0
+            },
+            {
+              "t": "Puerta que se abre con una palanca",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con lo que pasó al crear tu jefe final.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Datos de entrenamiento",
+              "b": "Millones de imágenes"
+            },
+            {
+              "a": "Límite de la IA",
+              "b": "Seis garras en una pata"
+            },
+            {
+              "a": "Uso ético",
+              "b": "Decir que usaste IA"
+            },
+            {
+              "a": "Regla fija",
+              "b": "El Creeper explota cerca"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de IA es cada parte de tu jefe final?",
+        "left_label": "Tu jefe final",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Millones de imágenes con descripción",
+            "right": "Datos de entrenamiento"
+          },
+          {
+            "left": "Saber cómo suele verse un dragón",
+            "right": "Patrón aprendido"
+          },
+          {
+            "left": "Cuatro dragones nuevos en 10 segundos",
+            "right": "Generación"
+          },
+          {
+            "left": "La garra de más en la pata",
+            "right": "Error por no entender"
+          }
+        ],
+        "completion_feedback": "El generador usó **datos**, aprendió **patrones**, **generó** algo nuevo y se equivocó porque no entiende. Ahora ponle nombre formal: eso es **inteligencia artificial**."
+      },
+      "quiz": [
+        {
+          "question": "¿Cómo pudo el generador crear un dragón robot morado que no existía?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Lo copió de un juego que ya existía"
+            },
+            {
+              "letter": "B",
+              "text": "Un artista lo dibujó en ese momento"
+            },
+            {
+              "letter": "C",
+              "text": "Combinó patrones aprendidos"
+            },
+            {
+              "letter": "D",
+              "text": "Lo buscó en internet y lo pegó"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Aprendió de millones de imágenes cómo suelen verse un dragón, un robot y el pixel art, y combinó esos patrones en una imagen nueva.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Cuál de estos personajes es una IA que aprende de datos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un Creeper que explota al acercarse"
+            },
+            {
+              "letter": "B",
+              "text": "Un Goomba que camina y da la vuelta"
+            },
+            {
+              "letter": "C",
+              "text": "Un aldeano que siempre vende lo mismo"
+            },
+            {
+              "letter": "D",
+              "text": "Un Drivatar de Forza Horizon 5"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "El Drivatar aprende de cómo manejan los jugadores reales. El Creeper, el Goomba y el aldeano siguen reglas fijas que escribieron los programadores.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu imagen hecha con IA gana el concurso de portadas de la escuela, pero dijiste que la dibujaste tú. ¿Cuál es el problema?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Presentaste como tuyo algo que no hiciste"
+            },
+            {
+              "letter": "B",
+              "text": "Las imágenes de IA siempre traen virus"
+            },
+            {
+              "letter": "C",
+              "text": "Ninguno, porque tú escribiste la descripción"
+            },
+            {
+              "letter": "D",
+              "text": "La IA debía firmar la imagen con su nombre"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Escribir la descripción no es dibujar. Hacer pasar como tuyo lo que hizo la IA es deshonesto y es injusto con quienes sí dibujaron su portada.",
+          "difficulty": 3
+        },
+        {
+          "question": "El dragón salió con seis garras en una pata. ¿Por qué pasó?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Escribiste mal la palabra «dragón»"
+            },
+            {
+              "letter": "B",
+              "text": "La IA no entiende lo que dibuja"
+            },
+            {
+              "letter": "C",
+              "text": "El programa tiene un virus"
+            },
+            {
+              "letter": "D",
+              "text": "Así son los dragones robot"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "La IA sabe cómo suelen verse las garras, pero no entiende cuántas debe tener un dragón. Genera lo que parece probable, aunque no tenga sentido.",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Por qué el Creeper de Minecraft NO es una IA que aprende?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Porque explota y desaparece del mapa"
+            },
+            {
+              "letter": "B",
+              "text": "Porque no puede hablar con el jugador"
+            },
+            {
+              "letter": "C",
+              "text": "Porque es un personaje muy viejo"
+            },
+            {
+              "letter": "D",
+              "text": "Sigue reglas fijas que no cambian"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Su comportamiento lo escribieron los programadores y no cambia con la experiencia. Una IA que aprende ajusta su comportamiento a partir de datos, como el Drivatar.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la inteligencia artificial?",
+      "options": [
+        { "letter": "A", "text": "Un robot con forma humana que piensa igual que una persona" },
+        { "letter": "B", "text": "Sistemas que aprenden patrones a partir de datos" },
+        { "letter": "C", "text": "Cualquier programa que hace cálculos muy rápido" },
+        { "letter": "D", "text": "Una computadora que está conectada siempre a internet" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en cómo una app aprende qué videos te gustan.",
+      "explanation": "La IA son sistemas que aprenden patrones a partir de muchos datos para hacer predicciones o generar contenido. No necesita forma de robot ni piensa como una persona."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llaman los ejemplos con los que se entrena una IA?",
+      "options": [
+        { "letter": "A", "text": "Predicciones del modelo" },
+        { "letter": "B", "text": "Resultados finales" },
+        { "letter": "C", "text": "Datos de entrenamiento" },
+        { "letter": "D", "text": "Instrucciones fijas" }
+      ],
+      "correct_answer": "C",
+      "hint": "Son lo que la IA usa para practicar antes de responder.",
+      "explanation": "Los datos de entrenamiento son los ejemplos de los que la IA aprende patrones. Las predicciones son lo que produce después, ante datos nuevos."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cuál de estos es un uso cotidiano de la inteligencia artificial?",
+      "options": [
+        { "letter": "A", "text": "Una calculadora básica sumando dos números" },
+        { "letter": "B", "text": "Un foco que prendes con un interruptor" },
+        { "letter": "C", "text": "Un reloj de pared que marca la hora" },
+        { "letter": "D", "text": "Las recomendaciones de una app de videos" }
+      ],
+      "correct_answer": "D",
+      "hint": "Busca la opción que aprende de lo que haces.",
+      "explanation": "Las recomendaciones aprenden de lo que tú y millones de usuarios ven. La calculadora, el foco y el reloj siguen siempre la misma regla fija."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es una alucinación de una IA?",
+      "options": [
+        { "letter": "A", "text": "Una respuesta inventada dicha con seguridad" },
+        { "letter": "B", "text": "Una falla del monitor que muestra cosas falsas" },
+        { "letter": "C", "text": "Un sueño que tiene la computadora al apagarse" },
+        { "letter": "D", "text": "Un virus que hace que la IA vea cosas raras" }
+      ],
+      "correct_answer": "A",
+      "hint": "No tiene que ver con ver cosas: piensa en las respuestas que da.",
+      "explanation": "Una alucinación es cuando la IA inventa un dato, una fuente o un hecho y lo presenta con toda seguridad, como si fuera cierto."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es un deepfake?",
+      "options": [
+        { "letter": "A", "text": "Un filtro que solo cambia el color de una foto" },
+        { "letter": "B", "text": "Video o audio falso que imita a alguien real" },
+        { "letter": "C", "text": "Un video muy largo subido a una red social" },
+        { "letter": "D", "text": "Una contraseña muy difícil de adivinar" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en videos de famosos diciendo cosas que nunca dijeron.",
+      "explanation": "Un deepfake usa IA para crear un video, una imagen o un audio falso que imita la cara o la voz de una persona real. Puede engañar y dañar a esa persona."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Al proceso de darle muchos ejemplos a una IA para que encuentre patrones se le llama…",
+      "options": [
+        { "letter": "A", "text": "Programación por reglas" },
+        { "letter": "B", "text": "Entrenamiento" },
+        { "letter": "C", "text": "Predicción" },
+        { "letter": "D", "text": "Descarga de archivos" }
+      ],
+      "correct_answer": "B",
+      "hint": "Es como lo que hace un equipo antes del partido.",
+      "explanation": "Entrenar es darle a la IA muchos ejemplos para que encuentre patrones. La predicción viene después, cuando ya aprendió y recibe datos nuevos."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Cuando una IA ya entrenada recibe un dato nuevo y da una respuesta, está haciendo…",
+      "options": [
+        { "letter": "A", "text": "Un entrenamiento" },
+        { "letter": "B", "text": "Una copia exacta" },
+        { "letter": "C", "text": "Un respaldo" },
+        { "letter": "D", "text": "Una predicción" }
+      ],
+      "correct_answer": "D",
+      "hint": "Es lo que hace la IA después de aprender.",
+      "explanation": "Con lo que aprendió, la IA hace una predicción ante un dato que nunca vio, como adivinar qué serie te gustará. No copia una respuesta guardada."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En inteligencia artificial, ¿qué es un sesgo?",
+      "options": [
+        { "letter": "A", "text": "Una pieza de la computadora que se calienta" },
+        { "letter": "B", "text": "Un error que viene de datos desequilibrados" },
+        { "letter": "C", "text": "Un tipo de virus que borra las fotos del celular" },
+        { "letter": "D", "text": "Una opinión que tiene la IA sobre las personas" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué pasa si la IA solo practicó con un tipo de ejemplos.",
+      "explanation": "Un sesgo aparece cuando los datos de entrenamiento no representan bien todos los casos. La IA aprende ese desequilibrio y se equivoca más con lo que casi no vio."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Tu celular se desbloquea al ver tu cara. ¿Qué uso de la IA es?",
+      "options": [
+        { "letter": "A", "text": "Reconocimiento de voz" },
+        { "letter": "B", "text": "Reconocimiento de imágenes" },
+        { "letter": "C", "text": "Traducción automática" },
+        { "letter": "D", "text": "Recomendación de contenido" }
+      ],
+      "correct_answer": "B",
+      "hint": "¿Qué analiza el celular: un sonido, un texto o una imagen?",
+      "explanation": "El celular compara la imagen de la cámara con los patrones de tu cara que aprendió. Eso es reconocimiento de imágenes; en este caso, reconocimiento facial."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "Le dices al celular «pon una alarma a las 7» y la pone. ¿Qué uso de la IA es?",
+      "options": [
+        { "letter": "A", "text": "Reconocimiento de voz" },
+        { "letter": "B", "text": "Reconocimiento de imágenes" },
+        { "letter": "C", "text": "Generación de imágenes" },
+        { "letter": "D", "text": "Recomendación de videos" }
+      ],
+      "correct_answer": "A",
+      "hint": "Fíjate en cómo le diste la orden.",
+      "explanation": "El asistente convierte tu voz en texto e interpreta la orden gracias a patrones aprendidos de muchísimas grabaciones. Eso es reconocimiento de voz."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál es la diferencia principal entre un programa tradicional y una IA?",
+      "options": [
+        { "letter": "A", "text": "El programa es para computadoras y la IA es solo para robots" },
+        { "letter": "B", "text": "El programa sigue reglas escritas; la IA aprende de ejemplos" },
+        { "letter": "C", "text": "La IA siempre acierta y el programa tradicional se equivoca" },
+        { "letter": "D", "text": "El programa usa internet y la IA trabaja siempre sin internet" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en quién decide las reglas en cada caso.",
+      "explanation": "En un programa tradicional, una persona escribe cada regla. En una IA, el sistema encuentra los patrones por sí mismo a partir de muchos datos de entrenamiento."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué hace un chatbot de IA al escribir una respuesta?",
+      "options": [
+        { "letter": "A", "text": "Busca la respuesta en un libro oficial" },
+        { "letter": "B", "text": "Copia lo que escribió un experto real" },
+        { "letter": "C", "text": "Predice las palabras más probables" },
+        { "letter": "D", "text": "Piensa y siente como una persona" }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda que la IA trabaja con patrones, no con certezas.",
+      "explanation": "Un chatbot se entrenó con muchísimo texto y genera la respuesta palabra por palabra, eligiendo lo más probable. Por eso puede sonar seguro aunque se equivoque."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "Un traductor con IA se entrenó solo con textos formales y traduce mal frases como «qué onda, carnal». ¿Por qué?",
+      "options": [
+        { "letter": "A", "text": "Las frases informales no se pueden traducir" },
+        { "letter": "B", "text": "Sus datos no incluían ese tipo de lenguaje" },
+        { "letter": "C", "text": "El traductor se cansa con frases cortas" },
+        { "letter": "D", "text": "El celular necesita más memoria RAM" }
+      ],
+      "correct_answer": "B",
+      "hint": "Pregúntate con qué ejemplos practicó.",
+      "explanation": "Una IA solo aprende lo que hay en sus datos de entrenamiento. Si nunca vio lenguaje coloquial mexicano, no tiene patrones para traducirlo bien."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué afirmación sobre la inteligencia artificial es correcta?",
+      "options": [
+        { "letter": "A", "text": "Siempre dice la verdad porque usa muchos datos" },
+        { "letter": "B", "text": "Piensa igual que una persona, pero más rápido" },
+        { "letter": "C", "text": "Siente emociones cuando alguien le habla" },
+        { "letter": "D", "text": "Reconoce patrones, pero no entiende como tú" }
+      ],
+      "correct_answer": "D",
+      "hint": "Separa lo que la IA hace de lo que solo parece hacer.",
+      "explanation": "La IA encuentra patrones en los datos y con eso predice o genera respuestas. No tiene emociones ni comprensión como una persona, y puede equivocarse aunque haya usado muchos datos."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Cuál de estos datos NO deberías escribirle a un chatbot de IA?",
+      "options": [
+        { "letter": "A", "text": "Una duda de matemáticas" },
+        { "letter": "B", "text": "Un tema para tu exposición" },
+        { "letter": "C", "text": "Una receta para la cena" },
+        { "letter": "D", "text": "Tu dirección y tu teléfono" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en qué podría pasar si alguien más leyera esa conversación.",
+      "explanation": "Lo que escribes en un chatbot puede guardarse y revisarse o usarse para entrenar el sistema. Datos personales como tu dirección o tu teléfono no se comparten."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Usaste IA para que te explicara un tema y luego hiciste tu tarea. ¿Qué es lo más honesto?",
+      "options": [
+        { "letter": "A", "text": "Ocultarlo para que no te bajen puntos" },
+        { "letter": "B", "text": "Decir que usaste IA y para qué" },
+        { "letter": "C", "text": "Copiar su texto y cambiar algunas palabras" },
+        { "letter": "D", "text": "Decir que la IA hizo toda la tarea" }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en qué esperaría tu maestro si supiera cómo trabajaste.",
+      "explanation": "Usar IA para entender un tema puede ayudar, pero lo honesto es decir cómo la usaste. Copiar su texto, aunque cambies palabras, es hacer pasar como tuyo algo que no hiciste."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Un chatbot te da una fecha histórica para tu tarea. ¿Qué debes hacer con ese dato?",
+      "options": [
+        { "letter": "A", "text": "Copiarla porque la IA no se equivoca" },
+        { "letter": "B", "text": "Preguntarle lo mismo hasta que cambie" },
+        { "letter": "C", "text": "Comprobarla en una fuente confiable" },
+        { "letter": "D", "text": "Cambiarla un poco para que se vea tuya" }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda que la IA puede inventar datos con seguridad.",
+      "explanation": "Los chatbots pueden alucinar. Por eso cualquier dato importante se verifica en una fuente confiable, como tu libro de texto o una página oficial."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Una IA se entrenó con miles de fotos de gatos negros y blancos. Le muestras un gato naranja. ¿Qué es más probable?",
+      "options": [
+        { "letter": "A", "text": "Que lo reconozca mejor que a los demás" },
+        { "letter": "B", "text": "Que aprenda el color naranja en ese instante" },
+        { "letter": "C", "text": "Que tenga más probabilidad de fallar" },
+        { "letter": "D", "text": "Que se apague por no conocer el color" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa si el gato naranja se parece a los ejemplos con los que practicó.",
+      "explanation": "La IA solo aprendió patrones de gatos negros y blancos. Un gato naranja no se parece a sus datos de entrenamiento, así que es más probable que se equivoque."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Ves un video viral de un famoso diciendo algo muy extraño, pero no aparece en sus cuentas oficiales. ¿Qué es lo más prudente?",
+      "options": [
+        { "letter": "A", "text": "Compartirlo para que todos se enteren" },
+        { "letter": "B", "text": "No compartirlo hasta verificarlo" },
+        { "letter": "C", "text": "Creerlo porque se ve y suena real" },
+        { "letter": "D", "text": "Reportar al famoso por lo que dijo" }
+      ],
+      "correct_answer": "B",
+      "hint": "Un video que se ve real no siempre es real.",
+      "explanation": "Podría ser un deepfake. Antes de compartir, conviene buscar la noticia en fuentes oficiales o medios confiables. Compartir algo falso también hace daño."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué ayuda más a reducir el sesgo de una IA?",
+      "options": [
+        { "letter": "A", "text": "Darle una computadora más rápida" },
+        { "letter": "B", "text": "Usarla solo en las mañanas" },
+        { "letter": "C", "text": "Pedirle que no tenga sesgos" },
+        { "letter": "D", "text": "Entrenarla con datos variados" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa en dónde nace el sesgo.",
+      "explanation": "Si los datos de entrenamiento representan bien todos los casos y a todas las personas, la IA tiene menos huecos. Una computadora más rápida o pedírselo no cambian lo que aprendió."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un sistema de reconocimiento facial se equivoca mucho más con las personas de cierto grupo. ¿Cuál es la causa más probable?",
+      "options": [
+        { "letter": "A", "text": "Esas personas no saben usar la cámara" },
+        { "letter": "B", "text": "La IA decidió tratarlas peor a propósito" },
+        { "letter": "C", "text": "Había pocas fotos de ellas en sus datos" },
+        { "letter": "D", "text": "La cámara del celular es de mala calidad" }
+      ],
+      "correct_answer": "C",
+      "hint": "La IA aprende mejor lo que más vio durante su entrenamiento.",
+      "explanation": "Si en los datos de entrenamiento hay pocas fotos de un grupo, la IA aprende peor sus patrones y falla más con esas personas. Es un sesgo por datos desequilibrados, no una decisión de la IA."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Un filtro de spam aprende de los correos que la gente marca como spam. Si muchos marcan por error los avisos de la escuela, ¿qué pasará?",
+      "options": [
+        { "letter": "A", "text": "Los avisos llegarán con más prioridad" },
+        { "letter": "B", "text": "El filtro notará el error y lo ignorará" },
+        { "letter": "C", "text": "Mandará esos avisos a spam" },
+        { "letter": "D", "text": "La escuela recibirá una alerta automática" }
+      ],
+      "correct_answer": "C",
+      "hint": "La IA aprende de lo que le enseñan, aunque esté mal.",
+      "explanation": "El filtro aprende el patrón de los ejemplos que recibe. Si están mal etiquetados, aprende algo equivocado y empezará a mandar los avisos de la escuela a spam."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una app de videos solo te recomienda cosas muy parecidas a las que ya viste. ¿Qué lo explica mejor?",
+      "options": [
+        { "letter": "A", "text": "Entiende tus gustos como un amigo" },
+        { "letter": "B", "text": "Una persona elige tus videos a mano" },
+        { "letter": "C", "text": "La app solo tiene ese tipo de videos guardados" },
+        { "letter": "D", "text": "Predice con base en tus datos pasados" }
+      ],
+      "correct_answer": "D",
+      "hint": "Piensa con qué información trabaja la app.",
+      "explanation": "La app predice qué te gustará según lo que ya viste. Por eso repite patrones y puede encerrarte en lo mismo. No entiende tus gustos: los calcula."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Le pides a un chatbot fuentes para tu tarea y te da un libro con autor y año, pero ese libro no existe. ¿Qué pasó?",
+      "options": [
+        { "letter": "A", "text": "El libro fue borrado de internet" },
+        { "letter": "B", "text": "La IA te engañó a propósito" },
+        { "letter": "C", "text": "Escribiste mal la pregunta" },
+        { "letter": "D", "text": "La IA alucinó una fuente" }
+      ],
+      "correct_answer": "D",
+      "hint": "La IA no tiene intenciones: genera lo que suena probable.",
+      "explanation": "El chatbot generó un título y un autor que suenan creíbles, pero no comprobó si existen. Eso es una alucinación. Por eso las fuentes se buscan y se verifican."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Cuál es el uso más responsable de un chatbot para estudiar para un examen?",
+      "options": [
+        { "letter": "A", "text": "Pedirle las respuestas del examen para memorizarlas" },
+        { "letter": "B", "text": "Pedirle preguntas de práctica y checar con tu libro" },
+        { "letter": "C", "text": "Que haga tu guía y entregarla como tuya sin leerla" },
+        { "letter": "D", "text": "Creer todo lo que dice porque se entrenó con libros" }
+      ],
+      "correct_answer": "B",
+      "hint": "Busca el uso en el que tú sigues aprendiendo y verificas.",
+      "explanation": "Usar la IA para practicar y comprobar con tu libro te ayuda a aprender. Copiar sin leer o creer todo sin verificar no te prepara y puede llevarte a errores."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una IA que recomienda la talla de tenis se entrenó solo con datos de adultos. ¿Qué pasará si la usan niños de 8 años?",
+      "options": [
+        { "letter": "A", "text": "Funcionará igual porque los pies son pies" },
+        { "letter": "B", "text": "Sus predicciones serán poco confiables" },
+        { "letter": "C", "text": "Aprenderá sola las tallas de niños al usarla" },
+        { "letter": "D", "text": "Dará siempre la talla más chica que exista" }
+      ],
+      "correct_answer": "B",
+      "hint": "Compara los datos de entrenamiento con los nuevos usuarios.",
+      "explanation": "Los niños no estaban en sus datos de entrenamiento, así que la IA no aprendió sus patrones. Sus predicciones para ellos serán poco confiables: es un sesgo por datos incompletos."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "¿Cuál de estos sistemas es una IA que aprende de datos?",
+      "options": [
+        { "letter": "A", "text": "Un semáforo que cambia de color cada 30 segundos" },
+        { "letter": "B", "text": "Una alarma programada para sonar a las 7:00 en punto" },
+        { "letter": "C", "text": "Un filtro de spam que mejora con correos marcados" },
+        { "letter": "D", "text": "Una calculadora que suma los números que tecleas" }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el único que cambia su comportamiento con ejemplos.",
+      "explanation": "El filtro de spam aprende patrones de los correos que la gente marca y mejora con el tiempo. El semáforo, la alarma y la calculadora siguen reglas fijas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Un compañero usa IA para crear un audio con la voz de otra alumna diciendo insultos, «solo como broma». ¿Qué problema hay?",
+      "options": [
+        { "letter": "A", "text": "Ninguno, porque es solo una broma" },
+        { "letter": "B", "text": "Que el audio no suena muy realista" },
+        { "letter": "C", "text": "Usa su voz sin permiso y puede dañarla" },
+        { "letter": "D", "text": "Solo es grave si lo sube a una red social" }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en la persona cuya voz se usó.",
+      "explanation": "Es un deepfake: imita a una persona real sin su permiso y puede dañar su reputación. Aunque se llame broma, es una forma de acoso y puede tener consecuencias."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Subes fotos de tu amiga a una app de IA que «la envejece», sin preguntarle. ¿Qué problema hay?",
+      "options": [
+        { "letter": "A", "text": "La app puede borrar tus propias fotos" },
+        { "letter": "B", "text": "Las fotos pierden calidad al subirlas" },
+        { "letter": "C", "text": "Ninguno, si la foto queda divertida" },
+        { "letter": "D", "text": "Compartes sus datos sin su permiso" }
+      ],
+      "correct_answer": "D",
+      "hint": "Una foto de tu cara también es un dato personal.",
+      "explanation": "La cara de una persona es un dato personal. Al subir sus fotos, la app puede guardarlas o usarlas para entrenar. Se necesita su permiso antes de compartirlas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una app de IA para identificar plantas y hongos dice que un hongo del bosque es comestible, con 98% de seguridad. ¿Qué es lo correcto?",
+      "options": [
+        { "letter": "A", "text": "Comerlo, porque 98% de seguridad es casi seguro" },
+        { "letter": "B", "text": "Tomarle otra foto hasta que dé 100%" },
+        { "letter": "C", "text": "Consultar a un experto antes de comerlo" },
+        { "letter": "D", "text": "Comer solo un poquito para probar la app" }
+      ],
+      "correct_answer": "C",
+      "hint": "Que la IA esté muy segura no significa que tenga razón.",
+      "explanation": "La IA puede equivocarse aunque muestre mucha seguridad, y aquí un error es peligroso. Cuando hay riesgo para la salud, se verifica con una persona experta."
+    }
+  ],
+  "diagnostic": {
+    "question": "Quieres que una IA aprenda a reconocer fotos de perros. ¿Qué necesita antes que nada?",
+    "options": [
+      { "letter": "A", "text": "Una regla escrita para cada raza de perro" },
+      { "letter": "B", "text": "Una cámara de muy alta calidad" },
+      { "letter": "C", "text": "Muchas fotos de ejemplo" },
+      { "letter": "D", "text": "Que alguien le explique qué siente un perro" }
+    ],
+    "correct_answer": "C",
+    "explanation": "Una IA aprende de ejemplos: necesita muchas fotos, de perros y de otras cosas, para encontrar los patrones que distinguen a un perro. Ese es su entrenamiento. Después podrá reconocer perros en fotos nuevas."
+  }
+}

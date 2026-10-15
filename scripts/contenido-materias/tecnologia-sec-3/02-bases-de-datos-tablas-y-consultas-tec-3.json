@@ -1,0 +1,1840 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topic": "bases-de-datos-tablas-y-consultas-tec-3",
+  "order_steps": {
+    "prompt": "Ordena cómo se crea y se consulta una base de datos",
+    "steps": [
+      "Decidir qué información se quiere guardar",
+      "Crear la tabla con sus campos y tipos de dato",
+      "Capturar un registro por cada elemento, sin repetir",
+      "Escribir una consulta con el criterio que buscas",
+      "Revisar los registros que devuelve la consulta"
+    ],
+    "completion_feedback": "Una base de datos empieza por saber **qué guardar**, luego se diseña la **tabla** con sus **campos**, se capturan los **registros** y al final se hace una **consulta**. Ahora míralo en tu mundo."
+  },
+  "temas": {
+    "Anime & Manga": {
+      "analogy": {
+        "title": "El cuaderno de tu primo contra la Pokédex",
+        "content": "Tu primo lleva años viendo el anime de Pokémon y anota en un cuaderno cada Pokémon que sale: «Pikachu, amarillo, eléctrico, el de Ash», «psyduck de Misty, agua», «Pikachu otra vez», «Vulpix de Brock, fuego». Un día le preguntas cuántos Pokémon de tipo Agua lleva anotados. Tiene que leer el cuaderno entero, página por página, y aun así se equivoca: Pikachu aparece una y otra vez, unos nombres van con mayúscula y otros no, y a varios les falta el tipo. Ahora piensa en la Pokédex de Ash. La apunta a un Pokémon y obtiene su ficha, y si todas las fichas se guardan con los mismos datos en el mismo orden (número, nombre, tipo y altura), todo cambia. Pikachu es el 0025 y ningún otro Pokémon puede tener ese número: por más Pikachus que salgan en la serie, hay una sola ficha de Pikachu. Y pedir «solo los de tipo Agua» se vuelve inmediato: se revisa el dato tipo de cada ficha y aparecen únicamente los que cumplen. La diferencia entre el cuaderno de tu primo y la Pokédex es la lección de hoy."
+      },
+      "explanation": {
+        "title": "La Pokédex ES una base de datos",
+        "content": "Lo que acabas de ver con la Pokédex es exactamente una **base de datos**: información **organizada** para guardarla y consultarla sin leer todo. Los datos viven en una **tabla**. Cada columna es un **campo** (número, nombre, tipo, altura) con su **tipo de dato**: el nombre es **texto** y la altura es **número**. Cada fila es un **registro**: la ficha completa de un Pokémon. El número 0025 es la **clave primaria**: un campo **único** que no se repite ni queda vacío. Pedir «solo los de tipo Agua» es una **consulta** con un **criterio**, y también puedes pedir el resultado **ordenado**, por ejemplo por altura."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los Pokémon de Agua de tu Pokédex",
+        "content": "Tu tabla se llama pokemon y tiene cinco registros: 0004 Charmander, Fuego, 0.6 m; 0007 Squirtle, Agua, 0.5 m; 0025 Pikachu, Eléctrico, 0.4 m; 0054 Psyduck, Agua, 0.8 m; 0143 Snorlax, Normal, 2.1 m. **Paso 1:** identifica la tabla: pokemon. **Paso 2:** decide qué campo quieres ver: nombre. **Paso 3:** escribe el criterio: tipo = 'Agua'. **Paso 4:** arma la consulta: **SELECT nombre FROM pokemon WHERE tipo = 'Agua'**. **Paso 5:** revisa registro por registro: solo Squirtle y Psyduck cumplen. Resultado: la consulta devuelve dos nombres, Squirtle y Psyduck, sin que tengas que leer toda la Pokédex."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **base de datos** guarda información organizada en **tablas**. Cada **campo** (columna) tiene un **tipo de dato** (texto, número, fecha, sí/no) y cada **registro** (fila) es un elemento completo. La **clave primaria** es un campo **único** que identifica cada registro. Una **consulta** filtra con criterios y puede ordenar: **SELECT campo FROM tabla WHERE condición**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en la Pokédex: hacia abajo vas de Pokémon en Pokémon (registros = filas) y hacia el lado lees sus datos (campos = columnas). El número de la Pokédex es la clave primaria: nunca se repite."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una consulta solo encuentra lo que está escrito igual: un dato inconsistente se queda fuera del resultado.",
+        "data": {
+          "intro": "Haz de computadora y ejecuta SELECT nombre FROM pokemon WHERE tipo = 'Fuego'. Ojo con un registro.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "FROM pokemon: abres la tabla. Tiene a Charmander (Fuego), Vulpix (Fire), Squirtle (Agua) y Pikachu (Eléctrico)."
+            },
+            {
+              "text": "WHERE tipo = 'Fuego': revisas el campo tipo de cada registro. Charmander cumple; Squirtle y Pikachu no."
+            },
+            {
+              "text": "Vulpix también es de tipo Fuego, pero tu primo lo capturó en inglés como «Fire». No es el mismo texto, así que no cumple."
+            },
+            {
+              "text": "SELECT nombre: de los registros que cumplieron, muestras solo el nombre. Resultado: Charmander. Vulpix se perdió por un dato inconsistente."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Campo o registro?",
+        "content": "Un campo es una columna: el mismo dato para todos los Pokémon. Un registro es una fila: todos los datos de un solo Pokémon.",
+        "data": {
+          "prompt": "Arrastra cada parte de la tabla pokemon a su categoría.",
+          "buckets": [
+            "Campo (columna)",
+            "Registro (fila)"
+          ],
+          "items": [
+            {
+              "t": "Tipo",
+              "b": 0
+            },
+            {
+              "t": "0025, Pikachu, Eléctrico, 0.4 m",
+              "b": 1
+            },
+            {
+              "t": "Altura",
+              "b": 0
+            },
+            {
+              "t": "0007, Squirtle, Agua, 0.5 m",
+              "b": 1
+            },
+            {
+              "t": "Nombre",
+              "b": 0
+            },
+            {
+              "t": "0143, Snorlax, Normal, 2.1 m",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de base de datos con su ejemplo en la Pokédex.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Campo",
+              "b": "Columna «tipo»"
+            },
+            {
+              "a": "Registro",
+              "b": "Ficha de Pikachu"
+            },
+            {
+              "a": "Clave primaria",
+              "b": "Número 0025"
+            },
+            {
+              "a": "Consulta",
+              "b": "Solo los de Agua"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de base de datos es cada cosa?",
+        "left_label": "Pokédex",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El dato «tipo» de todas las fichas",
+            "right": "Campo"
+          },
+          {
+            "left": "La ficha completa de Psyduck",
+            "right": "Registro"
+          },
+          {
+            "left": "El 0025, que nunca se repite",
+            "right": "Clave primaria"
+          },
+          {
+            "left": "Pedir solo los de tipo Agua",
+            "right": "Consulta"
+          }
+        ],
+        "completion_feedback": "La Pokédex tiene **campos**, **registros**, una **clave primaria** y responde **consultas**. Ahora ponle nombre formal: eso es una **base de datos**."
+      },
+      "quiz": [
+        {
+          "question": "En la Pokédex, la ficha completa de Pikachu (número, nombre, tipo y altura) es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un campo"
+            },
+            {
+              "letter": "B",
+              "text": "Un registro"
+            },
+            {
+              "letter": "C",
+              "text": "Una tabla"
+            },
+            {
+              "letter": "D",
+              "text": "Una consulta"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Un registro es una fila con todos los datos de un solo elemento. Cada dato suelto, como el tipo, es un campo.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué el número de la Pokédex sirve como clave primaria y el tipo no?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "El tipo es un dato de texto"
+            },
+            {
+              "letter": "B",
+              "text": "El número se escribe primero"
+            },
+            {
+              "letter": "C",
+              "text": "Cada número es único"
+            },
+            {
+              "letter": "D",
+              "text": "El número es más fácil de leer"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La clave primaria no se puede repetir. Muchos Pokémon son de tipo Agua, pero solo uno tiene el 0025. Una clave también puede ser texto: lo que importa es que sea única.",
+          "difficulty": 2
+        },
+        {
+          "question": "Con la tabla del ejemplo, ¿qué devuelve SELECT nombre FROM pokemon WHERE tipo = 'Normal'?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "0143, Snorlax, Normal, 2.1 m"
+            },
+            {
+              "letter": "B",
+              "text": "Squirtle y Psyduck"
+            },
+            {
+              "letter": "C",
+              "text": "Ningún nombre"
+            },
+            {
+              "letter": "D",
+              "text": "Snorlax"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "WHERE deja pasar solo a Snorlax, el único de tipo Normal, y SELECT nombre muestra únicamente su nombre, no el registro completo.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la tabla pokemon, el campo altura guarda valores como 0.4 y 2.1. ¿Qué tipo de dato le conviene?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Número"
+            },
+            {
+              "letter": "B",
+              "text": "Texto"
+            },
+            {
+              "letter": "C",
+              "text": "Fecha"
+            },
+            {
+              "letter": "D",
+              "text": "Booleano (sí/no)"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La altura es una cantidad que se puede comparar y ordenar, así que es número. Como texto, la base no podría saber cuál es mayor.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu primo registra a Pikachu tres veces en su tabla, cada vez con un número distinto. ¿Qué pasa al contar sus Pokémon de tipo Eléctrico?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Pikachu cuenta 3 veces"
+            },
+            {
+              "letter": "B",
+              "text": "La base borra los repetidos sola"
+            },
+            {
+              "letter": "C",
+              "text": "Cuenta 1, porque el nombre se repite"
+            },
+            {
+              "letter": "D",
+              "text": "Marca error por clave primaria"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "La clave primaria solo bloquea números repetidos. Si cada Pikachu lleva un número distinto, entran tres duplicados y el conteo sale inflado. Por eso la clave debe ser el número oficial: 0025.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Fútbol": {
+      "analogy": {
+        "title": "Buscar un delantero en Ultimate Team",
+        "content": "Abres Ultimate Team en EA SPORTS FC porque a tu equipo de la Liga MX le falta un delantero centro. En el mercado de transferencias hay miles de cartas: si las revisaras una por una, se te iría la tarde entera. Por eso usas los filtros. Posición: DC. Liga: Liga MX. Calidad: Oro. Precio máximo: las monedas que tienes. Le das buscar y en un segundo aparece una lista corta con solo las cartas que cumplen las cuatro condiciones. Eso funciona porque cada carta guarda los mismos datos en el mismo lugar: nombre, posición, media, club, liga y nacionalidad. Si una carta tuviera escrito «delantero» y otra «DC», o si a alguna le faltara la liga, el filtro se las saltaría aunque fueran justo lo que buscas. Y aunque un mismo futbolista tenga varias cartas distintas, el juego distingue cada una sin confundirlas. Guardar datos con ese orden y pedir solo lo que buscas es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El mercado de transferencias ES una base de datos",
+        "content": "Lo que acabas de ver en el mercado de transferencias es exactamente una **consulta** a una **base de datos**. Las cartas viven en una **tabla**: cada carta es un **registro** (fila) y cada dato, como posición, media o club, es un **campo** (columna) con su **tipo de dato**: la media es **número** y el club es **texto**. Cada carta tiene una **clave primaria**, un identificador **único** que no se repite. Los filtros son los **criterios**: la base revisa cada registro y devuelve solo los que cumplen. En SQL: **SELECT nombre FROM cartas WHERE posicion = 'DC'**. En una base de datos, el resultado también se puede **ordenar**, por ejemplo por media."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — la base del torneo femenil de tu escuela",
+        "content": "Inspiradas en la Liga MX Femenil, en tu escuela arman un torneo y te piden la base de datos de las jugadoras. **Paso 1:** creas la tabla jugadoras con los campos folio, nombre, equipo, posicion y goles. **Paso 2:** eliges la clave primaria. El dorsal no sirve: Fer, de las Halconas, y Ale, de las Tigritas, usan la 10. Usas el folio de inscripción, que nunca se repite. **Paso 3:** defines tipos: nombre y equipo son texto; goles es número. **Paso 4:** para ver quién pelea el título de goleo escribes **SELECT nombre FROM jugadoras WHERE goles >= 5**. **Paso 5:** la base revisa los registros: Fer (7), Ale (5) y Sofi (3). Resultado: devuelve a Fer y a Ale, porque 5 también cumple «mayor o igual»."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **base de datos** guarda información organizada en **tablas**. Cada **campo** (columna) tiene un **tipo de dato** (texto, número, fecha, sí/no) y cada **registro** (fila) es un elemento completo. La **clave primaria** es un campo **único** que identifica cada registro. Una **consulta** filtra con criterios y puede ordenar: **SELECT campo FROM tabla WHERE condición**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Lee la consulta como una jugada de tres toques: SELECT (qué datos quieres ver), FROM (de qué tabla salen) y WHERE (qué condición deben cumplir). Si quitas el WHERE, la base te regresa la plantilla completa."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Cada filtro es un criterio: la base revisa ese campo en cada registro y solo deja pasar los que cumplen.",
+        "data": {
+          "intro": "Arma tu búsqueda del mercado como si fuera una consulta a la base de datos. Sigue cada paso.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "La tabla: el mercado guarda miles de cartas. Cada una es un registro con los mismos campos: nombre, posición, media, club y liga."
+            },
+            {
+              "text": "Primer criterio: posición igual a DC. La base revisa ese campo en cada carta y descarta porteros, defensas y medios."
+            },
+            {
+              "text": "Segundo criterio: liga igual a Liga MX. De los DC que quedaron, solo siguen los de esa liga."
+            },
+            {
+              "text": "Tercer criterio: precio menor o igual a tus monedas. Queda una lista corta de cartas que sí puedes comprar."
+            },
+            {
+              "text": "Resultado: de miles de registros quedan unos cuantos, los únicos que cumplieron los tres criterios a la vez. Eso devuelve una consulta."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Qué tipo de dato es?",
+        "content": "Texto: palabras o nombres. Número: cantidades que se pueden comparar o sumar. Sí/No: datos que solo tienen dos respuestas.",
+        "data": {
+          "prompt": "Arrastra cada campo a su tipo de dato.",
+          "buckets": [
+            "Texto",
+            "Número",
+            "Sí / No"
+          ],
+          "items": [
+            {
+              "t": "Nombre de la jugadora",
+              "b": 0
+            },
+            {
+              "t": "Media de la carta",
+              "b": 1
+            },
+            {
+              "t": "¿Está lesionada?",
+              "b": 2
+            },
+            {
+              "t": "Club",
+              "b": 0
+            },
+            {
+              "t": "Goles en el torneo",
+              "b": 1
+            },
+            {
+              "t": "¿Es la capitana?",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada parte de una consulta con lo que hace.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "SELECT",
+              "b": "Qué campo mostrar"
+            },
+            {
+              "a": "FROM",
+              "b": "De qué tabla sacar"
+            },
+            {
+              "a": "WHERE",
+              "b": "Qué criterio cumplir"
+            },
+            {
+              "a": "Clave primaria",
+              "b": "Folio de inscripción"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de base de datos es cada cosa?",
+        "left_label": "Ultimate Team",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Cada carta del mercado",
+            "right": "Registro"
+          },
+          {
+            "left": "Posición, media y club",
+            "right": "Campos"
+          },
+          {
+            "left": "El filtro «Posición: DC»",
+            "right": "Criterio"
+          },
+          {
+            "left": "La lista corta que aparece",
+            "right": "Resultado de la consulta"
+          }
+        ],
+        "completion_feedback": "El mercado tiene **registros** con **campos**, y tus filtros son **criterios** que dan un **resultado**. Ahora ponle nombre formal: eso es una **consulta** a una **base de datos**."
+      },
+      "quiz": [
+        {
+          "question": "En el mercado de Ultimate Team, ¿qué es la «media» de las cartas dentro de la base de datos?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un registro"
+            },
+            {
+              "letter": "B",
+              "text": "Una tabla"
+            },
+            {
+              "letter": "C",
+              "text": "Un campo"
+            },
+            {
+              "letter": "D",
+              "text": "Una clave"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "La media es un dato que tienen todas las cartas: una columna, es decir, un campo. Cada carta completa sería un registro.",
+          "difficulty": 1
+        },
+        {
+          "question": "En el torneo femenil de tu escuela, ¿por qué el dorsal no sirve como clave primaria?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Es un dato numérico"
+            },
+            {
+              "letter": "B",
+              "text": "Se puede repetir"
+            },
+            {
+              "letter": "C",
+              "text": "No es un dato de texto"
+            },
+            {
+              "letter": "D",
+              "text": "Es un dato muy corto"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Dos jugadoras de equipos distintos pueden usar la 10. La clave primaria nunca se repite; por eso se usa el folio de inscripción. Ser número no es el problema.",
+          "difficulty": 2
+        },
+        {
+          "question": "Base del torneo: Fer 7 goles, Ale 5, Sofi 3 y Majo 5. ¿Qué devuelve SELECT nombre FROM jugadoras WHERE goles > 5?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Fer, Ale y Majo"
+            },
+            {
+              "letter": "B",
+              "text": "Ale y Majo"
+            },
+            {
+              "letter": "C",
+              "text": "Solo Fer"
+            },
+            {
+              "letter": "D",
+              "text": "Fer, Ale, Sofi y Majo"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El símbolo > significa «mayor que», sin incluir el 5. Solo Fer, con 7, cumple. Con >= también saldrían Ale y Majo.",
+          "difficulty": 3
+        },
+        {
+          "question": "En tu búsqueda del mercado, el filtro «Posición: DC» es…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un criterio"
+            },
+            {
+              "letter": "B",
+              "text": "Un registro"
+            },
+            {
+              "letter": "C",
+              "text": "Una tabla"
+            },
+            {
+              "letter": "D",
+              "text": "Un tipo de dato"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Es la condición que debe cumplir cada carta para aparecer en el resultado: un criterio. En SQL va después de WHERE.",
+          "difficulty": 2
+        },
+        {
+          "question": "En tu base, la posición de los delanteros quedó como «DC», «Delantero» o «9». ¿Qué pasa al filtrar posicion = 'DC'?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Salen todas las cartas igual"
+            },
+            {
+              "letter": "B",
+              "text": "La base corrige los datos sola"
+            },
+            {
+              "letter": "C",
+              "text": "Sale un error de clave primaria"
+            },
+            {
+              "letter": "D",
+              "text": "Faltan cartas en el resultado"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "La base solo deja pasar los registros que dicen exactamente DC. Los que dicen «Delantero» o «9» se quedan fuera: son datos inconsistentes.",
+          "difficulty": 3
+        }
+      ]
+    },
+    "K-pop & K-dramas": {
+      "analogy": {
+        "title": "El trivia de Stray Kids del club",
+        "content": "Tu club de STAY va a organizar un trivia de Stray Kids y te toca preparar las preguntas de discografía. Abres el chat del club y ahí está todo, pero regado: «God's Menu es de 2020», «maniac salió en el 22», «MANIAC, ODDINARY, 2022», «S-Class y LALALALA son del mismo año, ¿no?», «Thunderous 2021». MANIAC aparece dos veces, en un mensaje el año dice «22» y en otro «2022», y nadie anotó de qué álbum es God's Menu. Para saber qué canciones salieron en 2023 tendrías que leer cientos de mensajes. Así que haces una tabla con una fila por cada canción del trivia y siempre los mismos datos en el mismo orden: canción, álbum y año. God's Menu, GO LIVE, 2020. Thunderous, NOEASY, 2021. MANIAC, ODDINARY, 2022. S-Class, 5-STAR, 2023. LALALALA, ROCK-STAR, 2023. Chk Chk Boom, ATE, 2024. MANIAC queda una sola vez y todos los años llevan cuatro cifras. Ahora la pregunta de 2023 se contesta en un segundo: S-Class y LALALALA. Pasar del chat a esa tabla es la lección de hoy."
+      },
+      "explanation": {
+        "title": "Tu tabla del trivia ES una base de datos",
+        "content": "Lo que acabas de ver con la discografía de Stray Kids es exactamente una **base de datos**: información **organizada** para guardarla y consultarla sin leer todo. Tu **tabla** tiene tres **campos** (columnas): canción y álbum, de tipo **texto**, y año, de tipo **número**. Cada canción es un **registro** (fila). Al borrar el MANIAC repetido quitaste un **duplicado**, y al escribir todos los años con cuatro cifras corregiste un dato **inconsistente**. Preguntar «¿qué salió en 2023?» es una **consulta** con un **criterio**: **SELECT cancion FROM discografia WHERE estreno = 2023**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — las integrantes de TWICE en una tabla",
+        "content": "Quieres saber qué integrantes de TWICE son japonesas sin buscar perfil por perfil. **Paso 1:** creas la tabla integrantes con los campos id, nombre y nacionalidad. **Paso 2:** el id es la clave primaria: del 1 al 9, sin repetirse ni quedar vacío. **Paso 3:** capturas los 9 registros: Nayeon, Jeongyeon, Jihyo, Dahyun y Chaeyoung, coreanas; Momo, Sana y Mina, japonesas; Tzuyu, taiwanesa. **Paso 4:** escribes **SELECT nombre FROM integrantes WHERE nacionalidad = 'Japonesa'**. **Paso 5:** la base revisa el campo nacionalidad de los 9 registros y solo tres cumplen. Resultado: devuelve Momo, Sana y Mina, justo las tres que forman la subunidad MiSaMo."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **base de datos** guarda información organizada en **tablas**. Cada **campo** (columna) tiene un **tipo de dato** (texto, número, fecha, sí/no) y cada **registro** (fila) es un elemento completo. La **clave primaria** es un campo **único** que identifica cada registro. Una **consulta** filtra con criterios y puede ordenar: **SELECT campo FROM tabla WHERE condición**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Piensa en el tracklist de un álbum: cada canción es una fila (registro), los datos que tienen todas, como la duración, son columnas (campos), y el número de pista nunca se repite: funciona como clave primaria."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "Una base limpia, sin duplicados ni datos inconsistentes, es la que da respuestas correctas.",
+        "data": {
+          "intro": "Limpia la tabla del trivia de Stray Kids. El medidor muestra qué tan confiable es tu base de datos.",
+          "visual": "bar",
+          "start": 20,
+          "steps": [
+            {
+              "text": "Borras el segundo registro de MANIAC: era un duplicado y hacía que contaras dos canciones de 2022.",
+              "delta": 25
+            },
+            {
+              "text": "Cambias «22» por 2022: ahora todos los años tienen el mismo formato y son de tipo número.",
+              "delta": 20
+            },
+            {
+              "text": "Completas el álbum que faltaba en God's Menu: GO LIVE. Ya ningún registro tiene campos vacíos.",
+              "delta": 15
+            },
+            {
+              "text": "Consultas WHERE estreno = 2023 y salen las dos de tu tabla, S-Class y LALALALA, sin repetidas ni perdidas.",
+              "delta": 20
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Dato limpio o con error?",
+        "content": "Duplicado: el mismo elemento capturado dos veces. Inconsistente: el mismo dato escrito de formas distintas.",
+        "data": {
+          "prompt": "Arrastra cada caso de la tabla de Stray Kids a su categoría.",
+          "buckets": [
+            "Sin error",
+            "Duplicado",
+            "Inconsistente"
+          ],
+          "items": [
+            {
+              "t": "S-Class · 5-STAR · 2023",
+              "b": 0
+            },
+            {
+              "t": "MANIAC capturada en dos filas",
+              "b": 1
+            },
+            {
+              "t": "Un año como «22» y otro como «2022»",
+              "b": 2
+            },
+            {
+              "t": "Chk Chk Boom · ATE · 2024",
+              "b": 0
+            },
+            {
+              "t": "Thunderous registrada dos veces",
+              "b": 1
+            },
+            {
+              "t": "Álbum «Oddinary» y «ODDINARY»",
+              "b": 2
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto con su ejemplo en la tabla de Stray Kids.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Duplicado",
+              "b": "MANIAC dos veces"
+            },
+            {
+              "a": "Inconsistente",
+              "b": "«22» y «2022»"
+            },
+            {
+              "a": "Campo de texto",
+              "b": "Álbum: NOEASY"
+            },
+            {
+              "a": "Campo de número",
+              "b": "Estreno: 2021"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de base de datos es cada cosa?",
+        "left_label": "Trivia de SKZ",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "El chat con los datos regados",
+            "right": "Lista sin organizar"
+          },
+          {
+            "left": "Una fila por canción del trivia",
+            "right": "Registro"
+          },
+          {
+            "left": "MANIAC escrita dos veces",
+            "right": "Duplicado"
+          },
+          {
+            "left": "¿Qué salió en 2023?",
+            "right": "Consulta"
+          }
+        ],
+        "completion_feedback": "Pasaste de una **lista sin organizar** a **registros** limpios, sin **duplicados**, que responden **consultas**. Ahora ponle nombre formal: eso es una **base de datos**."
+      },
+      "quiz": [
+        {
+          "question": "En tu tabla de Stray Kids, «canción», «álbum» y «estreno» son…",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Registros"
+            },
+            {
+              "letter": "B",
+              "text": "Tablas"
+            },
+            {
+              "letter": "C",
+              "text": "Consultas"
+            },
+            {
+              "letter": "D",
+              "text": "Campos"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Son los datos que tiene cada canción: las columnas, es decir, los campos. Cada canción con sus tres datos es un registro.",
+          "difficulty": 1
+        },
+        {
+          "question": "Tu tabla de idols tiene id, nombre, grupo y nacionalidad, y piensas agregar muchos grupos. ¿Qué campo debe ser la clave primaria?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "nombre"
+            },
+            {
+              "letter": "B",
+              "text": "id"
+            },
+            {
+              "letter": "C",
+              "text": "grupo"
+            },
+            {
+              "letter": "D",
+              "text": "nacionalidad"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Dos idols de grupos distintos pueden tener el mismo nombre artístico, y muchas comparten grupo o nacionalidad. Solo el id está pensado para no repetirse nunca.",
+          "difficulty": 2
+        },
+        {
+          "question": "En la tabla de TWICE capturaste la nacionalidad de Mina como «Japón» y la de Momo y Sana como «Japonesa». ¿Qué devuelve WHERE nacionalidad = 'Japonesa'?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Momo, Sana y Mina"
+            },
+            {
+              "letter": "B",
+              "text": "Momo y Sana"
+            },
+            {
+              "letter": "C",
+              "text": "Solo Mina"
+            },
+            {
+              "letter": "D",
+              "text": "Ninguna integrante"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "«Japón» no es el mismo texto que «Japonesa», así que Mina no cumple el criterio. Un dato inconsistente hace que la consulta deje fuera a alguien que sí debía salir.",
+          "difficulty": 3
+        },
+        {
+          "question": "En tu tabla, MANIAC aparece en dos filas con los mismos datos. ¿Qué error es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un dato inconsistente"
+            },
+            {
+              "letter": "B",
+              "text": "Un campo vacío"
+            },
+            {
+              "letter": "C",
+              "text": "Un duplicado"
+            },
+            {
+              "letter": "D",
+              "text": "Una clave primaria"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "El mismo elemento capturado dos veces es un duplicado. Inconsistente sería escribir el mismo dato de formas distintas, como «22» y «2022».",
+          "difficulty": 2
+        },
+        {
+          "question": "¿Qué consulta devuelve las canciones de tu tabla del trivia que se estrenaron en 2022?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "SELECT discografia FROM cancion WHERE estreno = 2022"
+            },
+            {
+              "letter": "B",
+              "text": "SELECT cancion FROM discografia WHERE estreno = 2022"
+            },
+            {
+              "letter": "C",
+              "text": "SELECT cancion FROM discografia WHERE cancion = 2022"
+            },
+            {
+              "letter": "D",
+              "text": "SELECT estreno FROM discografia WHERE cancion = 2022"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Después de SELECT va el campo que quieres ver (cancion), después de FROM la tabla (discografia) y después de WHERE el criterio sobre el campo correcto (estreno = 2022).",
+          "difficulty": 3
+        }
+      ]
+    },
+    "Videojuegos": {
+      "analogy": {
+        "title": "El álbum de capturas contra el Compendio de Hyrule",
+        "content": "Tu amigo te escribe: «¿Dónde encuentro un Lynel en Tears of the Kingdom? Necesito sus materiales». Abres el álbum de capturas de tu Switch para ayudarle y empiezas a bajar: cientos de fotos sin orden, el mismo Bokoblin quince veces, paisajes, tus vehículos armados, y ninguna dice qué es ni dónde la tomaste. Entonces abres el Compendio de Hyrule del juego. Ahí cada cosa que fotografiaste tiene una entrada, y todas siguen el mismo formato: número, nombre, foto y descripción; las de monstruos dicen además dónde suelen aparecer y qué materiales sueltan. Aunque le tomes diez fotos al mismo Bokoblin, el compendio guarda una sola entrada de Bokoblin, con su número fijo. Y como las entradas están separadas por categorías, puedes ir directo a la de los monstruos, encontrar al Lynel y contestarle a tu amigo en un minuto. Pasar del álbum desordenado a un compendio así es la lección de hoy."
+      },
+      "explanation": {
+        "title": "El Compendio de Hyrule ES una base de datos",
+        "content": "Lo que acabas de ver con el Compendio de Hyrule es exactamente una **base de datos**: datos **organizados** para encontrarlos rápido. Las entradas forman una **tabla**: cada entrada es un **registro** (fila) y cada dato que comparten, como número, nombre o categoría, es un **campo** (columna) con su **tipo de dato**. El número de entrada es la **clave primaria**: es **único**, por eso diez fotos del mismo Bokoblin no crean diez **duplicados**. Ir directo a los monstruos es una **consulta** con un **criterio**: **SELECT nombre FROM compendio WHERE categoria = 'Monstruos'**."
+      },
+      "example": {
+        "title": "Ejemplo resuelto — los materiales para cocinar",
+        "content": "Vas a cocinar y quieres ver solo los materiales de tu propio compendio. **Paso 1:** creas la tabla compendio con los campos numero (número), nombre (texto) y categoria (texto); las categorías las eliges tú. **Paso 2:** numero es la clave primaria: cada entrada tiene uno distinto. **Paso 3:** capturas cinco registros: Caballo (Fauna), Manzana (Materiales), Cuerno de Bokoblin (Materiales), Lynel (Monstruos) y Espada Maestra (Equipamiento). **Paso 4:** escribes **SELECT nombre FROM compendio WHERE categoria = 'Materiales'**. **Paso 5:** la base revisa el campo categoria de los cinco registros y solo dos cumplen. Resultado: devuelve Manzana y Cuerno de Bokoblin; el Lynel y la Espada Maestra no salen porque no son materiales."
+      },
+      "key_fact": {
+        "title": "Lo que debes recordar",
+        "content": "Una **base de datos** guarda información organizada en **tablas**. Cada **campo** (columna) tiene un **tipo de dato** (texto, número, fecha, sí/no) y cada **registro** (fila) es un elemento completo. La **clave primaria** es un campo **único** que identifica cada registro. Una **consulta** filtra con criterios y puede ordenar: **SELECT campo FROM tabla WHERE condición**."
+      },
+      "tip": {
+        "title": "Tip para no fallar en el examen",
+        "content": "Recuerda el compendio: otra foto del mismo monstruo no crea otra entrada, solo cambia la imagen. Así trabaja la clave primaria: un número, un registro y cero duplicados."
+      },
+      "steps": {
+        "title": "Resuélvelo conmigo",
+        "content": "La clave primaria impide que el mismo elemento se registre dos veces.",
+        "data": {
+          "intro": "Tu amigo armó su propia tabla del compendio, pero el conteo de monstruos le sale mal. Encuentra el error.",
+          "visual": "chain",
+          "steps": [
+            {
+              "text": "Tu amigo hizo la tabla sin clave primaria y capturó «Bokoblin» tres veces, una por cada foto que tomó."
+            },
+            {
+              "text": "Cuando cuenta cuántos monstruos tiene registrados, la base suma los tres Bokoblin: el total sale inflado."
+            },
+            {
+              "text": "Solución: borra los dos Bokoblin sobrantes y agrega el campo numero, con el número oficial de entrada del compendio, como clave primaria."
+            },
+            {
+              "text": "Ahora, si alguien intenta capturar otro Bokoblin con el mismo número, la base lo rechaza. El conteo sale correcto y se queda así."
+            }
+          ]
+        }
+      },
+      "sort": {
+        "title": "¿Sirve como clave primaria?",
+        "content": "Una clave primaria nunca se repite ni queda vacía. Si dos elementos pueden compartir ese dato, no sirve como clave.",
+        "data": {
+          "prompt": "Arrastra cada dato a su categoría.",
+          "buckets": [
+            "Sirve como clave primaria",
+            "No sirve como clave"
+          ],
+          "items": [
+            {
+              "t": "Número de entrada del compendio",
+              "b": 0
+            },
+            {
+              "t": "Categoría de la entrada",
+              "b": 1
+            },
+            {
+              "t": "Región donde aparece",
+              "b": 1
+            },
+            {
+              "t": "Código de amigo de tu Switch",
+              "b": 0
+            },
+            {
+              "t": "Apodo de tu perfil",
+              "b": 1
+            },
+            {
+              "t": "Materiales que suelta",
+              "b": 1
+            }
+          ]
+        }
+      },
+      "match": {
+        "title": "Memorama",
+        "content": "Empareja cada concepto de base de datos con su ejemplo en el compendio.",
+        "data": {
+          "prompt": "Empareja cada concepto con su par.",
+          "pairs": [
+            {
+              "a": "Registro",
+              "b": "Entrada del Lynel"
+            },
+            {
+              "a": "Campo",
+              "b": "Materiales que suelta"
+            },
+            {
+              "a": "Clave primaria",
+              "b": "Número que no se repite"
+            },
+            {
+              "a": "Consulta",
+              "b": "Ver solo monstruos"
+            }
+          ]
+        }
+      },
+      "connect": {
+        "prompt": "¿Qué concepto de base de datos es cada cosa?",
+        "left_label": "Compendio",
+        "right_label": "Concepto",
+        "pairs": [
+          {
+            "left": "Todo el Compendio de Hyrule",
+            "right": "Base de datos"
+          },
+          {
+            "left": "La entrada del Bokoblin",
+            "right": "Registro"
+          },
+          {
+            "left": "Diez fotos, una sola entrada",
+            "right": "Sin duplicados"
+          },
+          {
+            "left": "Ir directo a los monstruos",
+            "right": "Consulta"
+          }
+        ],
+        "completion_feedback": "El compendio guarda **registros** sin **duplicados** y responde **consultas**. Ahora ponle nombre formal: eso es una **base de datos** con su **clave primaria**."
+      },
+      "quiz": [
+        {
+          "question": "El Compendio de Hyrule guarda cientos de entradas organizadas para encontrarlas rápido. ¿Qué es?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Un sistema operativo"
+            },
+            {
+              "letter": "B",
+              "text": "Una base de datos"
+            },
+            {
+              "letter": "C",
+              "text": "Un procesador de textos"
+            },
+            {
+              "letter": "D",
+              "text": "Un navegador web"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Guarda datos organizados en registros con los mismos campos y permite encontrarlos rápido: eso es una base de datos.",
+          "difficulty": 1
+        },
+        {
+          "question": "¿Por qué diez fotos del mismo Bokoblin no crean diez entradas en el compendio?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Solo guarda la primera foto"
+            },
+            {
+              "letter": "B",
+              "text": "Las fotos no son datos"
+            },
+            {
+              "letter": "C",
+              "text": "La categoría Monstruos está llena"
+            },
+            {
+              "letter": "D",
+              "text": "El número de entrada es único"
+            }
+          ],
+          "correct_answer": "D",
+          "explanation": "Cada entrada tiene un número que no se repite, igual que una clave primaria. Una foto nueva del mismo monstruo cae en la misma entrada y no crea un duplicado.",
+          "difficulty": 2
+        },
+        {
+          "question": "Con la tabla del ejemplo, ¿qué devuelve SELECT nombre FROM compendio WHERE categoria = 'Equipamiento'?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Espada Maestra, Equipamiento"
+            },
+            {
+              "letter": "B",
+              "text": "Lynel y Espada Maestra"
+            },
+            {
+              "letter": "C",
+              "text": "Espada Maestra"
+            },
+            {
+              "letter": "D",
+              "text": "Ningún registro"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Solo la Espada Maestra tiene la categoría Equipamiento, y SELECT nombre muestra únicamente el campo nombre, no la categoría.",
+          "difficulty": 3
+        },
+        {
+          "question": "En la tabla compendio, numero guarda 1, 2, 3… y nombre guarda Lynel o Manzana. ¿Qué tipo de dato es cada uno?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Texto y número"
+            },
+            {
+              "letter": "B",
+              "text": "Número y texto"
+            },
+            {
+              "letter": "C",
+              "text": "Fecha y texto"
+            },
+            {
+              "letter": "D",
+              "text": "Sí/No y texto"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "numero guarda números enteros, así que es número; nombre guarda palabras, así que es texto. El orden importa: primero numero, luego nombre.",
+          "difficulty": 2
+        },
+        {
+          "question": "Tu amigo escribió «monstruo», «Monstruos» y «Enemigos» en el campo categoria de distintos registros. ¿Cuál es el problema?",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Registros duplicados"
+            },
+            {
+              "letter": "B",
+              "text": "Falta la clave primaria"
+            },
+            {
+              "letter": "C",
+              "text": "Datos inconsistentes"
+            },
+            {
+              "letter": "D",
+              "text": "Tipo de dato incorrecto"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Es la misma categoría escrita de tres formas. Una consulta con categoria = 'Monstruos' dejaría fuera a los otros dos: son datos inconsistentes.",
+          "difficulty": 3
+        }
+      ]
+    }
+  },
+  "horde": [
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es una base de datos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un programa para escribir y dar formato a textos"
+        },
+        {
+          "letter": "B",
+          "text": "Datos organizados para guardarlos y consultarlos"
+        },
+        {
+          "letter": "C",
+          "text": "Una lista de notas sin ningún orden"
+        },
+        {
+          "letter": "D",
+          "text": "Un archivo para guardar solo imágenes"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en para qué sirve una Pokédex o un directorio de contactos.",
+      "explanation": "Una base de datos es un conjunto de datos organizados para guardarlos, buscarlos y consultarlos de forma rápida."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En una tabla, ¿cómo se llama cada fila con los datos completos de un elemento?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Campo"
+        },
+        {
+          "letter": "B",
+          "text": "Consulta"
+        },
+        {
+          "letter": "C",
+          "text": "Registro"
+        },
+        {
+          "letter": "D",
+          "text": "Clave"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Es como la ficha completa de un alumno en la lista de la escuela.",
+      "explanation": "Cada fila es un registro: reúne todos los datos de un mismo elemento, como un alumno o un producto."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "En una tabla, ¿cómo se llama cada columna, como «nombre» o «edad»?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Campo"
+        },
+        {
+          "letter": "B",
+          "text": "Registro"
+        },
+        {
+          "letter": "C",
+          "text": "Fila"
+        },
+        {
+          "letter": "D",
+          "text": "Consulta"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "Es un dato que tienen todos los elementos de la tabla.",
+      "explanation": "Cada columna es un campo: un dato que se guarda para todos los registros, como el nombre o la edad."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Qué es la clave primaria de una tabla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La contraseña que protege la base de datos completa"
+        },
+        {
+          "letter": "B",
+          "text": "Un campo único que identifica cada registro"
+        },
+        {
+          "letter": "C",
+          "text": "El primer registro que se capturó en la tabla"
+        },
+        {
+          "letter": "D",
+          "text": "El campo con el dato más importante de la tabla"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en un dato que nunca se repite entre dos registros.",
+      "explanation": "La clave primaria es un campo cuyo valor no se repite ni queda vacío, como una matrícula. Sirve para identificar cada registro sin confundirlo."
+    },
+    {
+      "wave": 1,
+      "difficulty": 1,
+      "question": "¿Cómo se llama la petición que le haces a una base de datos para obtener solo ciertos datos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Registro"
+        },
+        {
+          "letter": "B",
+          "text": "Campo"
+        },
+        {
+          "letter": "C",
+          "text": "Tabla"
+        },
+        {
+          "letter": "D",
+          "text": "Consulta"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Es como hacerle una pregunta a la base.",
+      "explanation": "Una consulta le pide a la base solo los datos que cumplen ciertos criterios, sin revisar todo a mano."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué tipo de dato corresponde a la edad de una persona en años?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Texto"
+        },
+        {
+          "letter": "B",
+          "text": "Número"
+        },
+        {
+          "letter": "C",
+          "text": "Fecha"
+        },
+        {
+          "letter": "D",
+          "text": "Booleano"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa si ese dato se puede comparar o sumar.",
+      "explanation": "La edad es una cantidad que se puede comparar, como «mayor que 14», así que su tipo de dato es número."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué tipo de dato conviene para guardar si un alumno entregó o no la tarea?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Texto"
+        },
+        {
+          "letter": "B",
+          "text": "Número"
+        },
+        {
+          "letter": "C",
+          "text": "Sí/No"
+        },
+        {
+          "letter": "D",
+          "text": "Fecha"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Fíjate en cuántas respuestas posibles tiene ese dato.",
+      "explanation": "Si solo hay dos valores posibles, entregó o no entregó, el tipo adecuado es sí/no, también llamado booleano."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En una consulta SQL, ¿qué palabra indica de qué tabla se toman los datos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "SELECT"
+        },
+        {
+          "letter": "B",
+          "text": "WHERE"
+        },
+        {
+          "letter": "C",
+          "text": "INTO"
+        },
+        {
+          "letter": "D",
+          "text": "FROM"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "En inglés significa «de» o «desde».",
+      "explanation": "FROM indica la tabla de donde salen los datos. SELECT dice qué campos mostrar y WHERE pone la condición."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "En una consulta SQL, ¿qué palabra va antes de la condición que deben cumplir los registros?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "WHERE"
+        },
+        {
+          "letter": "B",
+          "text": "SELECT"
+        },
+        {
+          "letter": "C",
+          "text": "FROM"
+        },
+        {
+          "letter": "D",
+          "text": "INTO"
+        }
+      ],
+      "correct_answer": "A",
+      "hint": "En inglés significa «donde».",
+      "explanation": "WHERE introduce el criterio, como edad = 14. Solo los registros que lo cumplen aparecen en el resultado."
+    },
+    {
+      "wave": 2,
+      "difficulty": 1,
+      "question": "¿Qué ventaja tiene una base de datos frente a una lista suelta en un cuaderno?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Nunca necesita revisar sus datos"
+        },
+        {
+          "letter": "B",
+          "text": "Guarda los datos sin ningún orden"
+        },
+        {
+          "letter": "C",
+          "text": "Permite buscar y filtrar rápido"
+        },
+        {
+          "letter": "D",
+          "text": "No necesita que nadie capture datos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa en cuánto tardas en encontrar un dato en un cuaderno lleno.",
+      "explanation": "Como los datos están organizados en campos y registros, la base encuentra y filtra lo que pides en segundos. En un cuaderno hay que leerlo todo."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En una tabla de alumnos con nombre, grado y edad, el renglón «Ana, tercero, 14» es…",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un campo"
+        },
+        {
+          "letter": "B",
+          "text": "Un registro"
+        },
+        {
+          "letter": "C",
+          "text": "Una tabla"
+        },
+        {
+          "letter": "D",
+          "text": "Una consulta"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate si son los datos de un solo alumno o un dato de todos.",
+      "explanation": "Reúne todos los datos de un solo alumno, así que es un registro. Nombre, grado y edad, por separado, son los campos."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué campo sirve mejor como clave primaria en la tabla de alumnos de una escuela?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Nombre del alumno"
+        },
+        {
+          "letter": "B",
+          "text": "Fecha de nacimiento"
+        },
+        {
+          "letter": "C",
+          "text": "Número de matrícula"
+        },
+        {
+          "letter": "D",
+          "text": "Grado y salón"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Busca el dato que la escuela le asigna a cada alumno sin repetirlo.",
+      "explanation": "La matrícula es única para cada alumno. Dos alumnos pueden llamarse igual, nacer el mismo día o estar en el mismo salón."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Por qué el nombre de una persona no es buena clave primaria?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque los nombres llevan acentos y espacios"
+        },
+        {
+          "letter": "B",
+          "text": "Dos personas pueden llamarse igual"
+        },
+        {
+          "letter": "C",
+          "text": "Porque la clave siempre debe ir en números"
+        },
+        {
+          "letter": "D",
+          "text": "Porque es el dato más largo de la tabla"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda la regla más importante de una clave primaria.",
+      "explanation": "La clave primaria no se puede repetir, y los nombres sí se repiten. Una clave puede ser texto; lo que importa es que sea única."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "¿Qué hace la consulta SELECT nombre FROM alumnos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Muestra solo el primer alumno de la tabla"
+        },
+        {
+          "letter": "B",
+          "text": "Muestra el nombre de todos los alumnos"
+        },
+        {
+          "letter": "C",
+          "text": "Borra el campo nombre de la tabla"
+        },
+        {
+          "letter": "D",
+          "text": "Muestra todos los campos de los alumnos"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Fíjate qué campo pide y si hay alguna condición.",
+      "explanation": "SELECT nombre muestra solo ese campo, y como no hay WHERE, no se filtra ningún registro: salen los nombres de todos los alumnos."
+    },
+    {
+      "wave": 3,
+      "difficulty": 2,
+      "question": "En la consulta SELECT nombre FROM alumnos WHERE edad = 14, ¿qué parte es el criterio?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "nombre"
+        },
+        {
+          "letter": "B",
+          "text": "alumnos"
+        },
+        {
+          "letter": "C",
+          "text": "edad = 14"
+        },
+        {
+          "letter": "D",
+          "text": "SELECT nombre"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El criterio es la condición que se escribe después de WHERE.",
+      "explanation": "edad = 14 es la condición que debe cumplir cada registro. nombre es el campo que se muestra y alumnos es la tabla."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En la tabla de una biblioteca aparecen dos registros idénticos del mismo libro. ¿Qué error es?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un dato inconsistente"
+        },
+        {
+          "letter": "B",
+          "text": "Un campo vacío"
+        },
+        {
+          "letter": "C",
+          "text": "Un tipo de dato"
+        },
+        {
+          "letter": "D",
+          "text": "Un registro duplicado"
+        }
+      ],
+      "correct_answer": "D",
+      "hint": "Fíjate en que es el mismo elemento capturado más de una vez.",
+      "explanation": "Capturar el mismo elemento dos veces es un duplicado. Provoca conteos inflados, como decir que hay dos libros cuando solo hay uno."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "En el campo ciudad aparecen «CDMX», «Ciudad de México» y «Cd. Mx.». ¿Qué problema tiene la tabla?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Registros duplicados"
+        },
+        {
+          "letter": "B",
+          "text": "Datos inconsistentes"
+        },
+        {
+          "letter": "C",
+          "text": "Clave primaria repetida"
+        },
+        {
+          "letter": "D",
+          "text": "Tipo de dato numérico"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Es la misma ciudad; fíjate en cómo está escrita.",
+      "explanation": "Es el mismo dato escrito de tres formas distintas: datos inconsistentes. Un filtro por «CDMX» dejaría fuera los otros registros."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Tabla productos: Pan 15, Leche 28, Huevo 45, Jugo 28. ¿Qué devuelve SELECT nombre FROM productos WHERE precio = 28?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Leche"
+        },
+        {
+          "letter": "B",
+          "text": "Jugo y Huevo"
+        },
+        {
+          "letter": "C",
+          "text": "Leche y Jugo"
+        },
+        {
+          "letter": "D",
+          "text": "Pan, Leche y Jugo"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa el precio de cada registro, no te quedes con el primero que cumpla.",
+      "explanation": "La consulta revisa todos los registros. Leche y Jugo cuestan 28, así que salen los dos; no solo el primero."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "¿Qué consulta muestra el nombre de los alumnos que tienen 15 años?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "SELECT alumnos FROM nombre WHERE edad = 15"
+        },
+        {
+          "letter": "B",
+          "text": "SELECT edad FROM alumnos WHERE nombre = 15"
+        },
+        {
+          "letter": "C",
+          "text": "SELECT nombre FROM alumnos WHERE edad = 15"
+        },
+        {
+          "letter": "D",
+          "text": "SELECT nombre FROM edad WHERE alumnos = 15"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Orden: SELECT el campo que quieres ver, FROM la tabla, WHERE la condición.",
+      "explanation": "Se muestra el campo nombre, se toma de la tabla alumnos y se filtra con la condición edad = 15."
+    },
+    {
+      "wave": 4,
+      "difficulty": 2,
+      "question": "Quieres ver los productos de una tienda del más barato al más caro, sin quitar ninguno. ¿Qué le pides a la base?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Filtrar por el campo precio"
+        },
+        {
+          "letter": "B",
+          "text": "Ordenar por el campo precio"
+        },
+        {
+          "letter": "C",
+          "text": "Borrar el campo precio"
+        },
+        {
+          "letter": "D",
+          "text": "Duplicar el campo precio"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "No quieres quitar productos, solo acomodarlos.",
+      "explanation": "Filtrar deja solo los registros que cumplen un criterio. Ordenar los muestra todos, acomodados según un campo, como el precio de menor a mayor."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Tabla calificaciones: Ana 9, Beto 6, Caro 8, Dani 6. ¿Qué devuelve SELECT nombre FROM calificaciones WHERE calificacion >= 8?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo Ana"
+        },
+        {
+          "letter": "B",
+          "text": "Ana y Caro"
+        },
+        {
+          "letter": "C",
+          "text": "Ana, Caro y Beto"
+        },
+        {
+          "letter": "D",
+          "text": "Beto y Dani"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "El símbolo >= significa «mayor o igual»: el 8 también cuenta.",
+      "explanation": "Ana tiene 9 y Caro tiene 8; los dos cumplen «mayor o igual a 8». Beto y Dani, con 6, quedan fuera."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En el campo ciudad, 3 registros dicen «Monterrey» y 2 dicen «Mty». ¿Cuántos registros devuelve WHERE ciudad = 'Monterrey'?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "5 registros"
+        },
+        {
+          "letter": "B",
+          "text": "2 registros"
+        },
+        {
+          "letter": "C",
+          "text": "3 registros"
+        },
+        {
+          "letter": "D",
+          "text": "Ninguno"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "La base compara el texto tal como está escrito.",
+      "explanation": "Solo los 3 registros que dicen exactamente Monterrey cumplen. Los 2 que dicen Mty se quedan fuera por ser datos inconsistentes."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "Una escuela usa el número de lista como clave primaria en una tabla con alumnos de todos los grupos. ¿Qué problema aparece?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La clave no puede ser número"
+        },
+        {
+          "letter": "B",
+          "text": "Los números de lista son muy largos"
+        },
+        {
+          "letter": "C",
+          "text": "El número se repite en cada grupo"
+        },
+        {
+          "letter": "D",
+          "text": "No se puede consultar por nombre"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Piensa cuántos alumnos con el número 1 hay en toda la escuela.",
+      "explanation": "Cada grupo tiene su propio número 1, 2, 3… Con varios grupos en la tabla, la clave se repetiría y ya no identificaría a un solo alumno."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "En una tabla, la clave primaria de un registro quedó vacía. ¿Por qué es un error?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "La tabla se borraría completa"
+        },
+        {
+          "letter": "B",
+          "text": "Solo los campos de texto pueden quedar vacíos"
+        },
+        {
+          "letter": "C",
+          "text": "No se podría identificar ese registro"
+        },
+        {
+          "letter": "D",
+          "text": "La consulta mostraría todos los campos"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Recuerda para qué existe la clave primaria.",
+      "explanation": "La clave primaria sirve para identificar cada registro. Si está vacía, ese registro no se puede distinguir de los demás; por eso nunca puede quedar sin valor."
+    },
+    {
+      "wave": 5,
+      "difficulty": 3,
+      "question": "¿Qué consulta devuelve el título de las películas que duran más de 120 minutos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "SELECT titulo FROM peliculas WHERE duracion < 120"
+        },
+        {
+          "letter": "B",
+          "text": "SELECT peliculas FROM titulo WHERE duracion > 120"
+        },
+        {
+          "letter": "C",
+          "text": "SELECT titulo FROM peliculas WHERE duracion > 120"
+        },
+        {
+          "letter": "D",
+          "text": "SELECT duracion FROM peliculas WHERE titulo > 120"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "Revisa tres cosas: el campo a mostrar, la tabla y el sentido del signo.",
+      "explanation": "Se muestra titulo, de la tabla peliculas, con la condición duracion > 120. El signo < daría las más cortas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una tienda anota sus ventas en una libreta y, para saber cuánto vendió de un producto, revisa página por página. ¿Qué mejora le daría una base de datos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Guardar las ventas sin campos ni orden"
+        },
+        {
+          "letter": "B",
+          "text": "Filtrar las ventas por producto al instante"
+        },
+        {
+          "letter": "C",
+          "text": "Evitar que se capture cualquier venta nueva"
+        },
+        {
+          "letter": "D",
+          "text": "Borrar las ventas viejas de forma automática"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa en la tarea que hoy le cuesta más trabajo a la tienda.",
+      "explanation": "Con cada venta como registro y el producto como campo, una consulta con el criterio producto = ese producto da el resultado en segundos, sin leer toda la libreta."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "La tabla jugadores usa id como clave primaria. Al capturar, alguien intenta guardar un segundo registro con id 7. ¿Qué debe hacer la base?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Guardar los dos sin avisar"
+        },
+        {
+          "letter": "B",
+          "text": "Rechazar el segundo registro"
+        },
+        {
+          "letter": "C",
+          "text": "Cambiar el nombre del segundo registro"
+        },
+        {
+          "letter": "D",
+          "text": "Unir los dos registros en uno solo"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Recuerda la regla de la clave primaria sobre los valores repetidos.",
+      "explanation": "Una clave primaria no admite valores repetidos, así que la base rechaza el registro con id 7 duplicado. Así evita tener dos jugadores con la misma identificación."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "La tabla alumnos tiene nombre, edad y grado. ¿Qué muestra SELECT nombre, edad FROM alumnos WHERE edad < 14?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Solo el nombre de los menores de 14"
+        },
+        {
+          "letter": "B",
+          "text": "Nombre y edad de los menores de 14"
+        },
+        {
+          "letter": "C",
+          "text": "Nombre y edad de los de 14 o más"
+        },
+        {
+          "letter": "D",
+          "text": "Todos los campos de los menores de 14"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "SELECT decide qué campos se ven; WHERE decide qué registros salen.",
+      "explanation": "SELECT nombre, edad muestra esos dos campos, y WHERE edad < 14 deja solo a quienes tienen menos de 14. El grado no se muestra porque no se pidió."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Una app de música filtra por género, pero las canciones dicen «Pop», «pop.» o «POP!» y cada búsqueda da resultados distintos. ¿Qué conviene hacer?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Agregar más registros de canciones"
+        },
+        {
+          "letter": "B",
+          "text": "Quitar el campo género de la tabla"
+        },
+        {
+          "letter": "C",
+          "text": "Escribir el género siempre igual"
+        },
+        {
+          "letter": "D",
+          "text": "Borrar la clave primaria de la tabla"
+        }
+      ],
+      "correct_answer": "C",
+      "hint": "El problema no es cuántos datos hay, sino cómo están escritos.",
+      "explanation": "Son datos inconsistentes. Si todas dicen Pop exactamente igual, una sola consulta las encuentra todas."
+    },
+    {
+      "wave": 6,
+      "difficulty": 3,
+      "question": "Necesitas guardar los préstamos de la biblioteca: alumno, libro y fecha. ¿Qué diseño es el mejor?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Un texto largo con todo junto"
+        },
+        {
+          "letter": "B",
+          "text": "Una tabla con un campo por dato"
+        },
+        {
+          "letter": "C",
+          "text": "Una tabla nueva por cada préstamo"
+        },
+        {
+          "letter": "D",
+          "text": "Un solo campo con alumno, libro y fecha"
+        }
+      ],
+      "correct_answer": "B",
+      "hint": "Piensa cómo harías después una consulta por fecha o por libro.",
+      "explanation": "Una tabla con los campos alumno, libro y fecha, y un registro por préstamo, permite consultar por cualquiera de esos datos. Todo junto en un texto no se puede filtrar bien."
+    }
+  ],
+  "diagnostic": {
+    "question": "Una biblioteca guarda sus libros en una tabla. ¿Qué campo identificaría mejor a cada ejemplar sin repetirse?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "El título completo del libro"
+      },
+      {
+        "letter": "B",
+        "text": "Su número de inventario"
+      },
+      {
+        "letter": "C",
+        "text": "El nombre de su autor"
+      },
+      {
+        "letter": "D",
+        "text": "Su año de publicación"
+      }
+    ],
+    "correct_answer": "B",
+    "explanation": "La clave primaria debe ser única. Puede haber varios ejemplares con el mismo título, varios libros del mismo autor y muchos del mismo año, pero cada ejemplar tiene su propio número de inventario."
+  }
+}

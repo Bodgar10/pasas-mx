@@ -58,13 +58,58 @@ boletos falsos de BTS, fan account de Stray Kids, dance cover de NewJeans, tease
 de TWICE, club de dance cover (ILLIT). Videojuegos: primera noche de Minecraft, Mario Kart, resource pack,
 guía Pokémon, truco falso de Minecraft, Robux gratis, soporte de compra, Nintendo Direct, inventario de
 Minecraft, cables del setup.
-Ideas frescas: Blue Lock, Haikyuu!!, Frieren, My Hero Academia, Naruto, Dragon Ball, Solo Leveling;
-Liga MX, Selección, Champions, Lamine Yamal, EA SPORTS FC / Ultimate Team; SEVENTEEN, aespa, IVE,
-LE SSERAFIM, ATEEZ, KPop Demon Hunters (HUNTR/X), Lovely Runner, Business Proposal; Fortnite, Zelda,
-Roblox, Free Fire, Brawl Stars, Animal Crossing, Among Us, Stardew Valley, Pokémon (no repetir guía).
+
+## Escenarios ya usados en Tecnología 2° (no repetir)
+Anime: animación a mano de Dragon Ball, ramen de Teuchi (Naruto), maratón de Frieren, gasto en convención,
+encuesta del mejor personaje, episodios de My Hero Academia, rutina de Saitama (One Punch Man), cofres mímicos
+de Frieren, Hinata y Kageyama (Haikyuu!!), Goku en Scratch, portada de fanfic de Solo Leveling, sticker de
+Anya en Ibis Paint, cajas sorpresa de Spy x Family, cosplay de Deku, fanart de Isagi y Rin (Blue Lock), cartel
+de expo del club, fanfic grupal de Blue Lock, cosplay de Sailor Scouts, espada de Asta (Black Clover), varita
+de Sailor Moon. Fútbol: balón antiguo vs moderno, jersey estampado de la Selección, tabla de goleo, puntos de
+Liga MX, estadísticas de Santi, goles por jugador, falta del minuto 85, penales en pseudocódigo, La Masia y
+Lamine Yamal, juego de penales en Scratch, póster del torneo escolar, publicación de la final, jerseys nuevos
+cada temporada, consumo de energía viendo Champions, jersey pirata de Chivas en el tianguis, escudo de la liga
+de la colonia, álbum de estampas compartido, estadios del Mundial 2026, maqueta del Estadio Azteca, pizarra
+táctica. K-pop: casete de los noventa, SEVENTEEN en el estudio, concierto de SEVENTEEN en CDMX, reproducciones
+del MV de aespa, reacción al comeback de IVE, votación de HUNTR/X, coreografía de «Supernova», ramyeon de
+K-drama, Hoshi coreografiando a SEVENTEEN, Rumi en Scratch, edit de Kazuha (LE SSERAFIM), póster de Lovely
+Runner, photocards de ATEEZ, pilas del lightstick, edit de Lovely Runner, reseña de Business Proposal, regalo
+de cumpleaños a Hongjoong (ATEEZ), compra grupal de LE SSERAFIM, organizador de photocards, soporte para ver
+Weverse. Videojuegos: Game Boy de 1989, Overcooked, torneo de Brawl Stars, nabos de Animal Crossing, horas de
+Roblox, oro de Stardew Valley, Ender Dragon de Minecraft, pesca en Animal Crossing, granja de Stardew Valley,
+crewmate de Among Us en Scratch, miniatura de Fortnite, banner Pokémon en GIMP, consola vieja en el cajón,
+drift del control, juego de Pokémon hecho por un fan, recursos con licencia, guerra de Clash of Clans, video de
+Free Fire, controles de Fortnite pisados, control arcade de Street Fighter.
+
+Ideas frescas que casi no se han usado: Jujutsu Kaisen (sin escenas gráficas), Kaiju No. 8, Oshi no Ko
+(sin el crimen), Pokémon anime, Mob Psycho 100, Sakamoto Days, Bleach, Dragon Ball Daima, Attack on Titan
+(sin violencia); Pumas, Cruz Azul, Tigres, Rayados, Santiago Giménez, Messi en el Inter Miami, Real Madrid,
+Mundial femenil / Liga MX Femenil, Club América femenil, apps de resultados; Stray Kids (fuera de fan account),
+TWICE (fuera de backstage), BTS en solitario, ENHYPEN, TXT, ITZY, BABYMONSTER, Crash Landing on You,
+Extraordinary Attorney Woo, Weverse/Bubble; Zelda: Tears of the Kingdom, Mario Kart World, Nintendo Switch 2,
+Splatoon, Rocket League, Geometry Dash, Hollow Knight: Silksong, Valorant (sin violencia), Pokémon GO,
+Minecraft redstone, Roblox Studio.
 
 ## Proceso
 1. Escribe el JSON en `scripts/contenido-materias/<materia>/<NN>-<slug>.json` (subject y topic = los slugs exactos).
 2. Valida: `npx tsx scripts/contenido-materias/cargar.ts <archivo>` y corrige hasta **0 errores**
    (los avisos de "carta de más de 4 palabras" se toleran).
 3. No cargues nada a la base, no toques otros archivos.
+
+## Código y etiquetas (Tecnología 3°: HTML, Python, bases de datos)
+- 🔴 **La app NO respeta saltos de línea ni sangrías** en analogía, explicación, ejemplo, dato y tip: todo
+  se pinta como un solo párrafo (solo entiende `**negritas**`; las comillas invertidas salen tal cual, así que
+  **no uses backticks en ningún lado**: el código va en texto normal o en negritas). Por eso el código va **en línea y corto**,
+  legible en una sola línea: `if vidas > 0: print("Sigue")`, `<h1>Mi página</h1>`. Un bloque de varias
+  líneas se explica por pasos («Paso 3: dentro del if, con sangría de 4 espacios, va print("Ganaste")»),
+  no se pega como bloque.
+- 🔴 **Nunca uses `**` para potencias de Python** (choca con las negritas). Usa `pow(2, 3)` o multiplica.
+- En horda y diagnóstico **no hay Markdown**: nada de backticks ni `**`. El código va tal cual en el texto
+  (`print(3 + 4)` sin comillas invertidas). Evita guiones bajos dobles (`__`).
+- Python 3 real y exacto: `print()`, `input()` devuelve texto, `int()`, `if / elif / else` con dos puntos,
+  sangría de 4 espacios, `range(1, 5)` da 1-4, listas empiezan en índice 0, `len()`, `def`, `return`,
+  `=` asigna y `==` compara. Cada salida que pongas debe ser la que de verdad imprime Python.
+- HTML real: `<!DOCTYPE html>`, `<html>`, `<head>`, `<title>`, `<body>`, `<h1>`-`<h6>`, `<p>`, `<a href="">`,
+  `<img src="" alt="">` (sin cierre), `<ul>/<ol>/<li>`. No inventes etiquetas.
+- Bases de datos: tabla, campo (columna), registro (fila), clave primaria, tipos de dato, filtro/consulta.
+  Si usas SQL, solo `SELECT … FROM … WHERE …` sencillo y correcto.

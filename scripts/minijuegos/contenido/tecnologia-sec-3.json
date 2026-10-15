@@ -1,0 +1,1195 @@
+{
+  "subject": "tecnologia-sec-3",
+  "topics": {
+    "innovacion-y-desarrollo-sustentable-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo de vida de un producto",
+        "steps": [
+          "Extraer las materias primas de la naturaleza",
+          "Fabricar el producto con esos materiales",
+          "Transportarlo y distribuirlo hasta las tiendas",
+          "Usarlo, darle mantenimiento y repararlo",
+          "Al final de su vida, reusarlo, reciclarlo o desecharlo"
+        ],
+        "completion_feedback": "Todo producto pasa por **extracción**, **fabricación**, **distribución**, **uso** y **fin de vida**. Un diseño sustentable piensa en cada etapa desde el principio. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada creación?",
+            "left_label": "Dragon Ball",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Radar que solo usa Bulma",
+                "right": "Invención"
+              },
+              {
+                "left": "Cápsulas que usa todo el mundo",
+                "right": "Innovación radical"
+              },
+              {
+                "left": "Nave basada en la de Goku",
+                "right": "Mejora"
+              },
+              {
+                "left": "Moto que cuida ambiente, gente y costo",
+                "right": "Diseño sustentable"
+              }
+            ],
+            "completion_feedback": "Viste una **invención**, una **innovación radical**, una **mejora** y un **diseño sustentable**. Ahora ponle nombre formal a cada uno."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "En la cancha",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Prototipo que nadie usa todavía",
+                "right": "Invención"
+              },
+              {
+                "left": "Fuera de lugar semiautomático",
+                "right": "Innovación incremental"
+              },
+              {
+                "left": "El video llega al arbitraje",
+                "right": "Innovación radical"
+              },
+              {
+                "left": "Estadio pensado para desmontarse",
+                "right": "Diseño sustentable"
+              }
+            ],
+            "completion_feedback": "Viste una **invención**, una innovación **incremental**, una **radical** y un **diseño sustentable**. Ahora ponle nombre formal a cada uno."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto está defendiendo cada quien?",
+            "left_label": "El fandom",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Mina: menos CD olvidados en cajones",
+                "right": "Dimensión ambiental"
+              },
+              {
+                "left": "Leo: no todos tienen celular",
+                "right": "Dimensión social"
+              },
+              {
+                "left": "Sofi: es más barata",
+                "right": "Dimensión económica"
+              },
+              {
+                "left": "Tarjeta que los fans ya usan",
+                "right": "Innovación"
+              }
+            ],
+            "completion_feedback": "El debate tocó las tres dimensiones: **ambiental**, **social** y **económica**. Juntas definen el **desarrollo sustentable**. Ahora ponle nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa?",
+            "left_label": "Consolas",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Agarre que solo existe en un cuarto",
+                "right": "Invención"
+              },
+              {
+                "left": "Consola de sala y portátil a la vez",
+                "right": "Innovación radical"
+              },
+              {
+                "left": "Pantalla más grande, misma idea",
+                "right": "Innovación incremental"
+              },
+              {
+                "left": "Tus juegos viejos siguen sirviendo",
+                "right": "Diseño sustentable"
+              }
+            ],
+            "completion_feedback": "Viste una **invención**, una innovación **radical**, una **incremental** y un **diseño sustentable**. Ahora ponle nombre formal a cada uno."
+          }
+        }
+      }
+    },
+    "bases-de-datos-tablas-y-consultas-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo se crea y se consulta una base de datos",
+        "steps": [
+          "Decidir qué información se quiere guardar",
+          "Crear la tabla con sus campos y tipos de dato",
+          "Capturar un registro por cada elemento, sin repetir",
+          "Escribir una consulta con el criterio que buscas",
+          "Revisar los registros que devuelve la consulta"
+        ],
+        "completion_feedback": "Una base de datos empieza por saber **qué guardar**, luego se diseña la **tabla** con sus **campos**, se capturan los **registros** y al final se hace una **consulta**. Ahora míralo en tu mundo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de base de datos es cada cosa?",
+            "left_label": "Pokédex",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El dato «tipo» de todas las fichas",
+                "right": "Campo"
+              },
+              {
+                "left": "La ficha completa de Psyduck",
+                "right": "Registro"
+              },
+              {
+                "left": "El 0025, que nunca se repite",
+                "right": "Clave primaria"
+              },
+              {
+                "left": "Pedir solo los de tipo Agua",
+                "right": "Consulta"
+              }
+            ],
+            "completion_feedback": "La Pokédex tiene **campos**, **registros**, una **clave primaria** y responde **consultas**. Ahora ponle nombre formal: eso es una **base de datos**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de base de datos es cada cosa?",
+            "left_label": "Ultimate Team",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cada carta del mercado",
+                "right": "Registro"
+              },
+              {
+                "left": "Posición, media y club",
+                "right": "Campos"
+              },
+              {
+                "left": "El filtro «Posición: DC»",
+                "right": "Criterio"
+              },
+              {
+                "left": "La lista corta que aparece",
+                "right": "Resultado de la consulta"
+              }
+            ],
+            "completion_feedback": "El mercado tiene **registros** con **campos**, y tus filtros son **criterios** que dan un **resultado**. Ahora ponle nombre formal: eso es una **consulta** a una **base de datos**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de base de datos es cada cosa?",
+            "left_label": "Trivia de SKZ",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El chat con los datos regados",
+                "right": "Lista sin organizar"
+              },
+              {
+                "left": "Una fila por canción del trivia",
+                "right": "Registro"
+              },
+              {
+                "left": "MANIAC escrita dos veces",
+                "right": "Duplicado"
+              },
+              {
+                "left": "¿Qué salió en 2023?",
+                "right": "Consulta"
+              }
+            ],
+            "completion_feedback": "Pasaste de una **lista sin organizar** a **registros** limpios, sin **duplicados**, que responden **consultas**. Ahora ponle nombre formal: eso es una **base de datos**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de base de datos es cada cosa?",
+            "left_label": "Compendio",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Todo el Compendio de Hyrule",
+                "right": "Base de datos"
+              },
+              {
+                "left": "La entrada del Bokoblin",
+                "right": "Registro"
+              },
+              {
+                "left": "Diez fotos, una sola entrada",
+                "right": "Sin duplicados"
+              },
+              {
+                "left": "Ir directo a los monstruos",
+                "right": "Consulta"
+              }
+            ],
+            "completion_feedback": "El compendio guarda **registros** sin **duplicados** y responde **consultas**. Ahora ponle nombre formal: eso es una **base de datos** con su **clave primaria**."
+          }
+        }
+      }
+    },
+    "introduccion-a-html-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo se crea tu primera página web",
+        "steps": [
+          "Abrir un editor de texto, como el Bloc de notas",
+          "Escribir la estructura: DOCTYPE, html, head y body",
+          "Agregar el contenido dentro de body: títulos, párrafos e imágenes",
+          "Guardar el archivo con la extensión .html",
+          "Abrir el archivo con el navegador para ver la página"
+        ],
+        "completion_feedback": "Primero el **editor**, luego la **estructura** básica, después el **contenido** con etiquetas; se **guarda** como .html y el **navegador** lo interpreta. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de HTML es cada cosa?",
+            "left_label": "Página de Kafka",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Marcar cada parte sin calcular nada",
+                "right": "Lenguaje de marcado"
+              },
+              {
+                "left": "La foto con una sola marca",
+                "right": "Etiqueta vacía"
+              },
+              {
+                "left": "El </h1> con diagonal",
+                "right": "Etiqueta de cierre"
+              },
+              {
+                "left": "El programa que abrió kafka.html",
+                "right": "Navegador"
+              }
+            ],
+            "completion_feedback": "Marcaste cada parte, cerraste con **diagonal**, usaste una **etiqueta vacía** y el **navegador** lo mostró. Eso es **HTML**: un **lenguaje de marcado**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de HTML es cada cosa?",
+            "left_label": "Página de Pumas",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "<h1> antes de Pumas UNAM",
+                "right": "Etiqueta de apertura"
+              },
+              {
+                "left": "</h1> después de azul y oro",
+                "right": "Etiqueta de cierre"
+              },
+              {
+                "left": "El texto entre <p> y </p>",
+                "right": "Contenido"
+              },
+              {
+                "left": "Abrir pumas.html y verlo armado",
+                "right": "El navegador lo interpreta"
+              }
+            ],
+            "completion_feedback": "Abriste con **<h1>**, cerraste con **</h1>**, lo de en medio fue el **contenido** y el **navegador** lo interpretó. Así trabaja **HTML**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de HTML es cada cosa?",
+            "left_label": "Fan site MOA",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los integrantes con viñetas",
+                "right": "Lista no ordenada (ul)"
+              },
+              {
+                "left": "Tu top 3 con números",
+                "right": "Lista ordenada (ol)"
+              },
+              {
+                "left": "Cada nombre entre <li> y </li>",
+                "right": "Elemento de lista"
+              },
+              {
+                "left": "El clic que lleva a canciones.html",
+                "right": "Enlace"
+              }
+            ],
+            "completion_feedback": "Usaste una **lista con viñetas**, una **numerada**, **elementos de lista** y un **enlace**. Todo con **etiquetas** de **HTML**, el lenguaje que marca qué es cada cosa."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de HTML es cada cosa?",
+            "left_label": "Geometry Dash",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Tocar Polargeist y entrar a su página",
+                "right": "Enlace con <a>"
+              },
+              {
+                "left": "polargeist.html dentro de href",
+                "right": "Destino del enlace"
+              },
+              {
+                "left": "El texto que salió cuando falló la foto",
+                "right": "Atributo alt"
+              },
+              {
+                "left": "La captura de tu cubo",
+                "right": "Imagen con <img>"
+              }
+            ],
+            "completion_feedback": "Usaste un **enlace** con **href**, una **imagen** con **src** y un texto **alt** de respaldo. Así conecta páginas y muestra imágenes **HTML**."
+          }
+        }
+      }
+    },
+    "python-variables-y-condicionales-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo se arma un programa que decide con if",
+        "steps": [
+          "Pedir el dato al usuario con input()",
+          "Convertir ese texto a número con int() y guardarlo en una variable",
+          "Escribir el if con la comparación y dos puntos al final",
+          "Escribir con sangría lo que pasa si la condición es True",
+          "Escribir else: y, con sangría, lo que pasa si es False"
+        ],
+        "completion_feedback": "Primero llega el dato con **input()**, se convierte con **int()** y se guarda en una **variable**; luego el **if** compara y, con **sangría**, va cada camino. Ahora míralo en tu tema."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de Python es cada cosa?",
+            "left_label": "Contador de Mob",
+            "right_label": "Python",
+            "pairs": [
+              {
+                "left": "El número que guarda lo que siente",
+                "right": "Variable"
+              },
+              {
+                "left": "El 20% se borra y aparece 50%",
+                "right": "Reasignar con ="
+              },
+              {
+                "left": "¿Ya llegó a 100?",
+                "right": "Comparación >="
+              },
+              {
+                "left": "Explota o se contiene",
+                "right": "if / else"
+              }
+            ],
+            "completion_feedback": "El contador es una **variable** que se **reasigna**, y la regla del 100 es una **comparación** dentro de un **if / else**. Ahora míralo escrito en Python."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de Python es cada cosa?",
+            "left_label": "El pizarrón",
+            "right_label": "Python",
+            "pairs": [
+              {
+                "left": "El cuadro «Tigres» con su número",
+                "right": "Variable"
+              },
+              {
+                "left": "Borrar el 1 y escribir 2",
+                "right": "Reasignar con ="
+              },
+              {
+                "left": "¿Los dos cuadros son iguales?",
+                "right": "Comparación =="
+              },
+              {
+                "left": "Ganó, empate o perdió",
+                "right": "if / elif / else"
+              }
+            ],
+            "completion_feedback": "Cada cuadro era una **variable**, cada gol una **reasignación** y el final, una **comparación** dentro de un **if / elif / else**. Así lo escribe Python."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de Python es cada cosa?",
+            "left_label": "Pantalla final",
+            "right_label": "Python",
+            "pairs": [
+              {
+                "left": "La casilla de votos de la semana",
+                "right": "Variable"
+              },
+              {
+                "left": "Digital + ventas + votos",
+                "right": "Operación"
+              },
+              {
+                "left": "¿BABYMONSTER tiene más puntos?",
+                "right": "Comparación >"
+              },
+              {
+                "left": "Se lleva el trofeo o no",
+                "right": "if / else"
+              }
+            ],
+            "completion_feedback": "Cada casilla era una **variable**, el total una **operación** y el trofeo dependía de una **comparación** dentro de un **if / else**. Así lo escribe Python."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de Python es cada cosa?",
+            "left_label": "Combate Pokémon",
+            "right_label": "Python",
+            "pairs": [
+              {
+                "left": "El tipo del ataque: «agua»",
+                "right": "Variable de texto (str)"
+              },
+              {
+                "left": "El daño multiplicado por 2",
+                "right": "Operación *"
+              },
+              {
+                "left": "¿El rival es de tipo Fuego?",
+                "right": "Comparación =="
+              },
+              {
+                "left": "Muy eficaz, poco eficaz o no afecta",
+                "right": "if / elif / else"
+              }
+            ],
+            "completion_feedback": "El juego guarda **variables**, hace **operaciones** y decide con **comparaciones** dentro de un **if / elif / else**. Así se escribe en Python."
+          }
+        }
+      }
+    },
+    "python-ciclos-listas-funciones-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo se crea y se usa una función en Python",
+        "steps": [
+          "Escribir def, el nombre de la función y sus parámetros entre paréntesis",
+          "Cerrar esa primera línea con dos puntos",
+          "Escribir debajo las instrucciones con sangría de 4 espacios",
+          "Devolver el resultado con return como última línea del cuerpo",
+          "Llamar a la función fuera del def, con los valores entre paréntesis"
+        ],
+        "completion_feedback": "Una función se **define** con def, nombre, **parámetros** y dos puntos; su cuerpo va con **sangría**, entrega su resultado con **return** y solo trabaja cuando la **llamas**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa del entrenamiento en Python?",
+            "left_label": "Clones de Naruto",
+            "right_label": "En Python",
+            "pairs": [
+              {
+                "left": "Hacer el sello una vez y usarlo siempre",
+                "right": "Función con def"
+              },
+              {
+                "left": "Mientras la hoja no se corte, insiste",
+                "right": "Ciclo while"
+              },
+              {
+                "left": "Revisar la fila de clones en orden",
+                "right": "Ciclo for sobre una lista"
+              },
+              {
+                "left": "La libreta que suma uno por cada éxito",
+                "right": "Acumulador"
+              }
+            ],
+            "completion_feedback": "La orden única era una **función**, insistir era un **while**, la fila era una **lista** recorrida con **for** y la libreta, un **acumulador**. Ahora ponles nombre formal."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa del vestidor en Python?",
+            "left_label": "El utilero",
+            "right_label": "En Python",
+            "pairs": [
+              {
+                "left": "La hoja con los nombres en orden",
+                "right": "Lista"
+              },
+              {
+                "left": "La misma rutina para cada nombre",
+                "right": "Ciclo for"
+              },
+              {
+                "left": "Revisar mientras no llegue el camión",
+                "right": "Ciclo while"
+              },
+              {
+                "left": "Ir sumando las botellas usadas",
+                "right": "Acumulador"
+              }
+            ],
+            "completion_feedback": "La hoja de convocados era una **lista**, la rutina para cada nombre un **for**, la espera del camión un **while** y la cuenta de botellas un **acumulador**. Ahora ponles nombre formal."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa del concierto en Python?",
+            "left_label": "Concierto de TWICE",
+            "right_label": "En Python",
+            "pairs": [
+              {
+                "left": "Las canciones en el orden del setlist",
+                "right": "Lista"
+              },
+              {
+                "left": "Corear cada canción del setlist",
+                "right": "for sobre la lista"
+              },
+              {
+                "left": "Gritar mientras no vuelvan al escenario",
+                "right": "Ciclo while"
+              },
+              {
+                "left": "La porra que aprendes una vez y repites",
+                "right": "Función"
+              }
+            ],
+            "completion_feedback": "El setlist era una **lista**, corear cada canción un **for**, el encore un **while** y la porra, una **función** que llamas por su nombre. Ahora ponles nombre formal."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué es cada cosa de tu turno en Python?",
+            "left_label": "Salmon Run",
+            "right_label": "En Python",
+            "pairs": [
+              {
+                "left": "Jugar las tres oleadas, una tras otra",
+                "right": "for con range(1, 4)"
+              },
+              {
+                "left": "Recolectar hasta llegar a la cuota",
+                "right": "Ciclo while"
+              },
+              {
+                "left": "Cada huevo suma uno al marcador",
+                "right": "Acumulador"
+              },
+              {
+                "left": "La señal «¡canasta!»",
+                "right": "Función"
+              }
+            ],
+            "completion_feedback": "Las tres oleadas eran un **for**, la cuota un **while**, el marcador un **acumulador** y la señal, una **función** que todos ejecutan al oír su nombre. Ahora ponles nombre formal."
+          }
+        }
+      }
+    },
+    "robotica-sensores-y-actuadores-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena una vuelta del ciclo de un robot",
+        "steps": [
+          "El sensor mide algo del entorno, como la distancia",
+          "El sensor envía esa medida como señal al controlador",
+          "El controlador compara la medida con la regla de su programa",
+          "El controlador le ordena al actuador qué hacer",
+          "El actuador hace la acción y el sensor vuelve a medir"
+        ],
+        "completion_feedback": "Todo robot **percibe** con sensores, **decide** con un controlador y **actúa** con actuadores. Si después vuelve a medir para corregir, usa **retroalimentación**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del robot es cada cosa?",
+            "left_label": "Doraemon",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Sus ojos ven la cama",
+                "right": "Sensor"
+              },
+              {
+                "left": "Piensa «hay que despertarlo»",
+                "right": "Controlador"
+              },
+              {
+                "left": "Le jala la cobija",
+                "right": "Actuador"
+              },
+              {
+                "left": "Vuelve a mirar y lo sacude",
+                "right": "Lazo cerrado"
+              }
+            ],
+            "completion_feedback": "Doraemon usó un **sensor**, un **controlador** y un **actuador**, y revisó el resultado: eso es **lazo cerrado**. Ahora ponle nombre formal: así funciona un **robot**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del robot es cada cosa?",
+            "left_label": "RoboCup",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La cámara de su cabeza",
+                "right": "Sensor"
+              },
+              {
+                "left": "Su computadora calcula",
+                "right": "Controlador"
+              },
+              {
+                "left": "Los motores de las piernas",
+                "right": "Actuador"
+              },
+              {
+                "left": "Mirar otra vez y corregir",
+                "right": "Retroalimentación"
+              }
+            ],
+            "completion_feedback": "El delantero robot usó un **sensor**, un **controlador**, un **actuador** y **retroalimentación**. Ahora ponle nombre formal: es el ciclo **percibir, decidir y actuar**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema es cada cosa?",
+            "left_label": "Concierto",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Cámaras que ven el emisor",
+                "right": "Sensor"
+              },
+              {
+                "left": "La computadora calcula",
+                "right": "Controlador"
+              },
+              {
+                "left": "Motores de los reflectores",
+                "right": "Actuador"
+              },
+              {
+                "left": "Medir otra vez y corregir",
+                "right": "Lazo cerrado"
+              }
+            ],
+            "completion_feedback": "Las luces del concierto usaron **sensores**, un **controlador** y **actuadores**, y volvieron a medir: **lazo cerrado**. Ahora ponle nombre formal: así funciona un **robot**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del sistema es cada cosa?",
+            "left_label": "Redstone",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "El bloque que nota la noche",
+                "right": "Sensor"
+              },
+              {
+                "left": "La antorcha que invierte",
+                "right": "Controlador"
+              },
+              {
+                "left": "Las lámparas que brillan",
+                "right": "Actuador"
+              },
+              {
+                "left": "El reloj que no mira el cielo",
+                "right": "Lazo abierto"
+              }
+            ],
+            "completion_feedback": "Tu base usó un **sensor**, un **controlador** y **actuadores**, y viste que el reloj era **lazo abierto**. Ahora ponle nombre formal: así se automatiza con **robótica**."
+          }
+        }
+      }
+    },
+    "inteligencia-artificial-usos-y-limites-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo aprende y se usa una inteligencia artificial",
+        "steps": [
+          "Reunir muchos ejemplos: los datos de entrenamiento",
+          "Entrenar el modelo para que encuentre patrones en esos datos",
+          "Darle un dato nuevo que nunca había visto",
+          "La IA hace una predicción o genera una respuesta",
+          "Una persona verifica si el resultado es correcto"
+        ],
+        "completion_feedback": "Una IA se **entrena** con **datos de entrenamiento**, encuentra **patrones**, hace una **predicción** ante un dato nuevo y una persona la **verifica**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto de IA es cada cosa que hizo tu app?",
+            "left_label": "Tu app de anime",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Lo que vieron millones de usuarios",
+                "right": "Datos de entrenamiento"
+              },
+              {
+                "left": "Quien ve Jujutsu Kaisen sigue con otra",
+                "right": "Patrón"
+              },
+              {
+                "left": "La fila «Porque viste…»",
+                "right": "Predicción"
+              },
+              {
+                "left": "Tu hermanito usando tu perfil",
+                "right": "Datos equivocados"
+              }
+            ],
+            "completion_feedback": "La app usó **datos**, encontró un **patrón** e hizo una **predicción**, pero con datos equivocados se confundió. Ahora ponle nombre formal: eso es **inteligencia artificial**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto de IA es cada cosa que hizo Fer?",
+            "left_label": "La final de Fer",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Los videos de 20 tiros de esquina",
+                "right": "Datos de entrenamiento"
+              },
+              {
+                "left": "14 de 20 fueron al primer poste",
+                "right": "Patrón"
+              },
+              {
+                "left": "Acomodarse en el primer poste",
+                "right": "Predicción"
+              },
+              {
+                "left": "La cobradora zurda que nunca vio",
+                "right": "Datos incompletos"
+              }
+            ],
+            "completion_feedback": "Fer usó **datos**, encontró un **patrón** e hizo una **predicción**, pero falló con lo que no estaba en sus ejemplos. Ahora ponle nombre formal: así aprende una **inteligencia artificial**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto de IA es cada parte del cover?",
+            "left_label": "El cover de Winter",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Horas de canciones de Winter",
+                "right": "Datos de entrenamiento"
+              },
+              {
+                "left": "Su timbre y cómo alarga las notas",
+                "right": "Patrones"
+              },
+              {
+                "left": "Una palabra mal pronunciada",
+                "right": "Límite de la IA"
+              },
+              {
+                "left": "Hacerla cantar sin su permiso",
+                "right": "Problema ético"
+              }
+            ],
+            "completion_feedback": "El cover usó **datos**, copió **patrones**, mostró sus **límites** y abrió un **problema ético**. Ahora ponle nombre formal: eso es **inteligencia artificial**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto de IA es cada parte de tu jefe final?",
+            "left_label": "Tu jefe final",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Millones de imágenes con descripción",
+                "right": "Datos de entrenamiento"
+              },
+              {
+                "left": "Saber cómo suele verse un dragón",
+                "right": "Patrón aprendido"
+              },
+              {
+                "left": "Cuatro dragones nuevos en 10 segundos",
+                "right": "Generación"
+              },
+              {
+                "left": "La garra de más en la pata",
+                "right": "Error por no entender"
+              }
+            ],
+            "completion_feedback": "El generador usó **datos**, aprendió **patrones**, **generó** algo nuevo y se equivocó porque no entiende. Ahora ponle nombre formal: eso es **inteligencia artificial**."
+          }
+        }
+      }
+    },
+    "multimedia-audio-y-video-digital-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo se digitaliza una canción",
+        "steps": [
+          "El micrófono convierte el sonido en una señal eléctrica",
+          "Se mide la señal miles de veces por segundo (muestreo)",
+          "Cada muestra se guarda como un número en bits",
+          "Los números se comprimen en un formato como MP3 o AAC",
+          "El archivo se guarda o se sube a una app de música"
+        ],
+        "completion_feedback": "El sonido se vuelve **señal**, la señal se **muestrea**, cada muestra se guarda en **bits** y al final se **comprime** en un formato. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto hay detrás de cada ajuste de tu AMV?",
+            "left_label": "Tu AMV",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Elegir entre 1080p y 4K",
+                "right": "Resolución"
+              },
+              {
+                "left": "Pasar de horizontal a vertical",
+                "right": "Relación de aspecto"
+              },
+              {
+                "left": "Dejarlo a 24 imágenes por segundo",
+                "right": "Cuadros por segundo"
+              },
+              {
+                "left": "TikTok vuelve a comprimirlo",
+                "right": "Compresión con pérdida"
+              }
+            ],
+            "completion_feedback": "Tu AMV dependía de **resolución**, **relación de aspecto**, **cuadros por segundo** y **compresión**. Ahora ponle nombre formal: eso es **audio y video digital**."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto hay detrás de cada cosa del video del gol?",
+            "left_label": "El gol grabado",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Grabar 240 imágenes cada segundo",
+                "right": "Cuadros por segundo"
+              },
+              {
+                "left": "Grabar en 1920 × 1080",
+                "right": "Resolución"
+              },
+              {
+                "left": "El video llega con cuadritos",
+                "right": "Compresión con pérdida"
+              },
+              {
+                "left": "El partido completo pesa 10.8 GB",
+                "right": "Tasa de bits × tiempo"
+              }
+            ],
+            "completion_feedback": "El video del gol dependía de **cuadros por segundo**, **resolución**, **compresión** y **tasa de bits**. Ahora ponle nombre formal: eso es **audio y video digital**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué concepto hay detrás de cada cosa del álbum y el MV?",
+            "left_label": "Álbum y MV",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La calidad Normal pesa menos",
+                "right": "Tasa de bits"
+              },
+              {
+                "left": "Platillos que suenan con arenita",
+                "right": "Compresión con pérdida"
+              },
+              {
+                "left": "Medir la onda 44,100 veces por segundo",
+                "right": "Muestreo"
+              },
+              {
+                "left": "Pasar el MV de 480p a 2160p",
+                "right": "Resolución"
+              }
+            ],
+            "completion_feedback": "Tu álbum y tu MV dependían de **tasa de bits**, **compresión**, **muestreo** y **resolución**. Ahora ponle nombre formal: eso es **audio y video digital**."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto hay detrás de cada cosa de tu clip y tu stream?",
+            "left_label": "Tu clip y stream",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Grabar 60 imágenes cada segundo",
+                "right": "Cuadros por segundo"
+              },
+              {
+                "left": "Pasar de 1080p a 720p",
+                "right": "Resolución"
+              },
+              {
+                "left": "8,000 kbps no caben en 5 Mbps",
+                "right": "Tasa de bits"
+              },
+              {
+                "left": "El clip pesa 300 veces menos",
+                "right": "Compresión con pérdida"
+              }
+            ],
+            "completion_feedback": "Tu clip y tu stream dependían de **cuadros por segundo**, **resolución**, **tasa de bits** y **compresión**. Ahora ponle nombre formal: eso es **audio y video digital**."
+          }
+        }
+      }
+    },
+    "evaluacion-de-sistemas-y-gestion-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena cómo se gestiona un proyecto",
+        "steps": [
+          "Definir el objetivo medible y la fecha de entrega",
+          "Dividir el trabajo en tareas y ver cuáles dependen de otras",
+          "Asignar a cada tarea responsable, recursos y duración",
+          "Armar el cronograma o diagrama de Gantt",
+          "Dar seguimiento al avance real y ajustar lo atrasado"
+        ],
+        "completion_feedback": "Primero el **objetivo**, luego las **tareas** y sus **dependencias**, después **responsables, recursos y tiempos**, el **cronograma** y al final el **seguimiento**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada momento del fandub?",
+            "left_label": "Fandub del club",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Video de 2 minutos, listo el viernes 28",
+                "right": "Objetivo"
+              },
+              {
+                "left": "Nadie graba sin el guion terminado",
+                "right": "Dependencia"
+              },
+              {
+                "left": "Valeria revisa la tabla y ajusta",
+                "right": "Seguimiento"
+              },
+              {
+                "left": "El público califica del 1 al 5",
+                "right": "Indicador"
+              }
+            ],
+            "completion_feedback": "Tu fandub tuvo **objetivo**, **dependencias**, **seguimiento** y un **indicador**. Ahora ponle nombre formal: eso es **gestionar** y **evaluar** un proyecto."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada cosa del boleto digital?",
+            "left_label": "Boleto digital",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "La gente logra entrar al estadio",
+                "right": "Eficacia"
+              },
+              {
+                "left": "La fila bajó de 25 a 10 minutos",
+                "right": "Eficiencia"
+              },
+              {
+                "left": "Al señor sin app lo mandan a taquilla",
+                "right": "Impacto social"
+              },
+              {
+                "left": "«Fila de máximo 15 minutos»",
+                "right": "Indicador con meta"
+              }
+            ],
+            "completion_feedback": "Revisaste **eficacia**, **eficiencia**, **impacto social** y un **indicador con meta**. Ahora ponle nombre formal: eso es **evaluar un sistema técnico**."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué criterio es cada cosa de la fila virtual?",
+            "left_label": "Fila virtual",
+            "right_label": "Criterio",
+            "pairs": [
+              {
+                "left": "Se vendieron todos los boletos",
+                "right": "Eficacia"
+              },
+              {
+                "left": "50 minutos viendo la barrita",
+                "right": "Eficiencia"
+              },
+              {
+                "left": "Bots que compran antes que tú",
+                "right": "Seguridad"
+              },
+              {
+                "left": "Cargo por servicio inesperado",
+                "right": "Costo"
+              }
+            ],
+            "completion_feedback": "Revisaste **eficacia**, **eficiencia**, **seguridad** y **costo**. Ahora ponle nombre formal: eso es **evaluar un sistema técnico** con criterios."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué concepto es cada parte del plan del obby?",
+            "left_label": "Obby en Studio",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "10 niveles, entregado el viernes 14",
+                "right": "Objetivo"
+              },
+              {
+                "left": "Sin niveles no hay checkpoints",
+                "right": "Dependencia"
+              },
+              {
+                "left": "Iker se encarga de construir",
+                "right": "Responsable"
+              },
+              {
+                "left": "Cada viernes mueven lo atrasado",
+                "right": "Seguimiento"
+              }
+            ],
+            "completion_feedback": "Tu equipo usó **objetivo**, **dependencias**, **responsables** y **seguimiento**. Ahora ponle nombre formal: eso es **gestionar un proyecto** con cronograma."
+          }
+        }
+      }
+    },
+    "proyecto-de-innovacion-prototipo-tec-3": {
+      "order_steps": {
+        "prompt": "Ordena el ciclo de un proyecto de innovación con prototipo",
+        "steps": [
+          "Hacer un prototipo rápido de baja fidelidad",
+          "Probarlo con usuarios y anotar los resultados",
+          "Corregir el diseño según lo que falló en la prueba",
+          "Hacer el prototipo de alta fidelidad y volver a probarlo",
+          "Presentar el proyecto y recibir retroalimentación"
+        ],
+        "completion_feedback": "Un proyecto de innovación empieza con un **prototipo de baja fidelidad**, se **prueba con usuarios**, se **mejora** (eso es **iteración**), pasa a **alta fidelidad** y se **presenta**. Ahora míralo en un ejemplo."
+      },
+      "temas": {
+        "Anime & Manga": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "La vitrina",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Caja de zapatos con linterna",
+                "right": "Prototipo de baja fidelidad"
+              },
+              {
+                "left": "Tus amigos del club la usan",
+                "right": "Prueba con usuarios"
+              },
+              {
+                "left": "Lo que anotas en tu cuaderno",
+                "right": "Registro de resultados"
+              },
+              {
+                "left": "Hacer la caja 2 más ancha",
+                "right": "Iteración"
+              }
+            ],
+            "completion_feedback": "Tu vitrina pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, un **registro** y una **iteración**. Ahora ponle nombre formal a todo el proceso."
+          }
+        },
+        "Fútbol": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "El marcador",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Marcador de cartulina",
+                "right": "Prototipo de baja fidelidad"
+              },
+              {
+                "left": "El profe lo usa en la final",
+                "right": "Prueba con usuarios"
+              },
+              {
+                "left": "«No se lee desde la portería»",
+                "right": "Registro de resultados"
+              },
+              {
+                "left": "Un color para cada equipo",
+                "right": "Mejora tras la prueba"
+              }
+            ],
+            "completion_feedback": "Su marcador pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, un **registro** y una **mejora**. Ahora ponle nombre formal a todo el proceso."
+          }
+        },
+        "K-pop & K-dramas": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "El lightstick",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Botella con la linterna del celular",
+                "right": "Prototipo de baja fidelidad"
+              },
+              {
+                "left": "Diez ENGENEs lo usan una canción",
+                "right": "Prueba con usuarios"
+              },
+              {
+                "left": "Mover las pilas al mango",
+                "right": "Mejora tras la prueba"
+              },
+              {
+                "left": "Explicar las versiones en la junta",
+                "right": "Presentación del proyecto"
+              }
+            ],
+            "completion_feedback": "Tu lightstick pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, una **mejora** y una **presentación**. Ahora ponle nombre formal a todo el proceso."
+          }
+        },
+        "Videojuegos": {
+          "connect": {
+            "prompt": "¿Qué parte del proyecto es cada cosa?",
+            "left_label": "Tu nivel",
+            "right_label": "Concepto",
+            "pairs": [
+              {
+                "left": "Nivel sin enemigos ni adornos",
+                "right": "Prototipo de baja fidelidad"
+              },
+              {
+                "left": "Diez amigos juegan mientras miras",
+                "right": "Prueba con usuarios"
+              },
+              {
+                "left": "La tabla de qué le pasa a cada uno",
+                "right": "Registro de resultados"
+              },
+              {
+                "left": "Acortar el hueco y volver a probar",
+                "right": "Iteración"
+              }
+            ],
+            "completion_feedback": "Tu nivel pasó por un **prototipo de baja fidelidad**, **pruebas con usuarios**, un **registro** y una **iteración**. Ahora ponle nombre formal a todo el proceso."
+          }
+        }
+      }
+    }
+  }
+}
