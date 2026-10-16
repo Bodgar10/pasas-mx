@@ -74,7 +74,7 @@ window.setup = function (data) {
   fitLines([$('t1')], 1080 - 2 * 97);
   fitLines([].slice.call(document.querySelectorAll('.title .km')), 1080 - 2 * 97);
   var pose = data.pose || tema.pose;
-  $('dur-t').textContent = Math.round(data.duracion || 16) + ' segundos';
+  $('dur-t').textContent = Math.round(data.duracion || 27) + ' segundos';
   // La Pasita llena el espacio entre el título y el piso, un poco a la derecha del distintivo
   var bottom = document.querySelector('.title').getBoundingClientRect().bottom, floor = 1412;
   var h = Math.min(640, floor - bottom - 50), w = h * PASITA_VB.w / PASITA_VB.h;
