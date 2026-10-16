@@ -1,0 +1,27 @@
+name: Envío shorts Yolanda (rama temporal)
+on:
+  push:
+    branches: [envio-yolanda-shorts]
+    paths: ['envios/yolanda/envio.json']
+permissions:
+  contents: write
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Mandar correos
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: node envios/yolanda/enviar.mjs
+      - name: Guardar resultado en la rama
+        if: always()
+        run: |
+          git config user.name "pasas-bot"
+          git config user.email "hola@pasas.mx"
+          git add envios/yolanda/resultado.json || true
+          git commit -m "envio: resultado [skip ci]" || exit 0
+          git push origin HEAD:envio-yolanda-shorts
