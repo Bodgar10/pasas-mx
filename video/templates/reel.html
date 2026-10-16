@@ -87,7 +87,7 @@
   <div class="scene" id="s2">
     <div class="q-head">
       <div class="q-title">¿Cuál sobra?</div>
-      <div class="ring" id="ring"><svg viewBox="0 0 40 40"><circle class="track" cx="20" cy="20" r="16"/><circle class="bar" id="ring-bar" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="0"/></svg><b id="ring-n">5</b></div>
+      <div class="ring" id="ring"><svg viewBox="0 0 40 40"><circle class="track" cx="20" cy="20" r="16"/><circle class="bar" id="ring-bar" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="0"/></svg><b id="ring-n">7</b></div>
     </div>
     <div class="grid4" id="grid"></div>
     <div class="hint" id="hint"></div>
@@ -111,7 +111,7 @@ var clamp = function(x){ return Math.max(0, Math.min(1, x)); };
 var easeOut = function(p){ return 1 - Math.pow(1-p, 3); };
 var back = function(p){ var c1=1.70158, c3=c1+1; return 1 + c3*Math.pow(p-1,3) + c1*Math.pow(p-1,2); };
 var F = 0.35;
-var T = null, D = null;
+var T = null, D = null, AYER = 5.5;
 
 function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
@@ -135,11 +135,12 @@ window.setup = function(data){
   var fr = $('frame');
   fr.style.setProperty('--m', TM.c); fr.style.setProperty('--ms', TM.sobre);
   buildFondo($('fondo'), TM.fondo, 0);
-  var o = data.ayer ? 3 : 0;               // sin "ayer" (reto #1) el video empieza en el título
-  // El título del día dura un poco más: es lo que distingue cada día
+  var o = data.ayer ? AYER : 0;            // sin "ayer" (reto #1) el video empieza en el título
+  // Más lento (16 oct, "es mucho texto y pasa muy rápido"): ~27 s en vez de ~17 s.
+  // Ayer 5.5 s · título 3.2 s · leer pregunta y opciones 3.2 s · PENSAR 7 s · comenta 4 s · cierre 4 s
   T = {
-    s0:[0,3], s1:[o, o+2.3], s2:[o+2.3, o+10.6], s3:[o+8.6, o+10.6], s4:[o+10.6, o+13.6],
-    cards:o+2.6, ringOn:o+4.4, ringEnd:o+8.6, dim:o+8.6, end:o+13.6
+    s0:[0,AYER], s1:[o, o+3.2], s2:[o+3.2, o+17.4], s3:[o+13.4, o+17.4], s4:[o+17.4, o+21.4],
+    cards:o+3.6, ringOn:o+6.4, ringEnd:o+13.4, dim:o+13.4, end:o+21.4
   };
   // Título: "Viernes de / Español" (o "Reto para / Papás")
   $('d1').textContent = TM.arriba;
@@ -219,7 +220,7 @@ window.render = function(t){
   }
   $('big').style.transform = 'scale(' + (0.9 + 0.1*back(clamp((t-T.s1[0])/0.5))) + ')';
   document.querySelectorAll('.card').forEach(function(c, i){
-    var q = clamp((t-(T.cards + i*0.45))/0.3);
+    var q = clamp((t-(T.cards + i*0.6))/0.3);
     c.style.opacity = q; c.style.transform = 'scale(' + (0.88 + 0.12*back(q)) + ')';
   });
   $('grid').style.opacity = 1 - 0.72*clamp((t-T.dim)/0.3);
@@ -243,6 +244,6 @@ window.render = function(t){
   animFondo(t);
   blinkAll(t);
 };
-window.momentos = function(){ var o = D.ayer ? 3 : 0; return (D.ayer ? [1.6] : []).concat([o + 1.6, o + 5.5, o + 9.4, o + 12.4]); };
+window.momentos = function(){ var o = D.ayer ? AYER : 0; return (D.ayer ? [2.5] : []).concat([o + 2, o + 8, o + 15, o + 19.5]); };
 </script>
 </body></html>
