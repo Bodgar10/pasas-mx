@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+/* Video "Citas canceladas" para clínicas de fisioterapia (bodgar.dev).
+   Escenas recreadas e ilustradas, no capturas de la landing. Colores y letra de bodgar.dev.
+   Zona segura: nada importante debajo de y=1560 (ahí van los botones de Reels/TikTok). */
+@font-face{font-family:B;src:url(../../fonts/bodgar/brico.woff2) format('woff2');font-weight:200 800}
+@font-face{font-family:I;font-weight:400;src:url(../../fonts/bodgar/inst-400.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:500;src:url(../../fonts/bodgar/inst-500.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:600;src:url(../../fonts/bodgar/inst-600.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:700;src:url(../../fonts/bodgar/inst-700.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:400;src:url(../../fonts/bodgar/plex-400.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:600;src:url(../../fonts/bodgar/plex-600.woff2) format('woff2')}
+:root{--tinta:#1F332E;--tinta2:#162723;--crema:#F4F1EA;--papel:#FBFAF7;--terra:#C96F4A;--terra2:#B35D3A;--verde:#3E8E6A;--verde2:#DDEFE5;--gris:#8A9893;--linea:#E3DED3}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--tinta)}
+.frame{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:I;color:var(--crema);
+  background:radial-gradient(90% 45% at 100% 0%,rgba(201,111,74,.28),transparent 60%),radial-gradient(80% 40% at 0% 100%,rgba(62,142,106,.22),transparent 60%),var(--tinta)}
+.marca{position:absolute;left:90px;top:96px;font-family:M;font-weight:600;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.7)}
+.marca b{color:var(--terra);font-weight:600}
+
+/* Títulos: cortos, grandes, uno por escena */
+.tit{position:absolute;left:90px;right:90px;top:200px;opacity:0}
+.tit h1{margin:0;font-family:B;font-weight:800;font-stretch:88%;font-size:112px;line-height:1;letter-spacing:-.02em;text-wrap:balance}
+.tit h1 em{font-style:normal;color:var(--terra)}
+.tit p{margin:22px 0 0;font-size:44px;font-weight:600;color:rgba(244,241,234,.78);text-wrap:balance}
+
+/* Teléfono con chat */
+#phone{position:absolute;left:250px;top:620px;width:580px;height:880px;border-radius:80px;background:#0c1513;box-shadow:0 0 0 6px #2c4540,0 40px 90px rgba(0,0,0,.5)}
+#phone .scr{position:absolute;inset:16px;border-radius:66px;background:#ECE7DD;overflow:hidden}
+.chatcab{height:150px;background:var(--papel);border-bottom:1px solid var(--linea);display:flex;align-items:flex-end;gap:20px;padding:0 34px 22px;color:var(--tinta)}
+.av{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-family:B;font-weight:700;font-size:34px;color:#fff;flex:none}
+.chatcab b{display:block;font-size:34px}.chatcab span{font-size:24px;color:var(--gris)}
+.bub{position:absolute;left:34px;max-width:440px;background:#fff;color:var(--tinta);border-radius:30px 30px 30px 8px;padding:24px 28px 18px;font-size:34px;line-height:1.3;box-shadow:0 4px 0 rgba(0,0,0,.06)}
+.bub small{display:block;text-align:right;font-size:22px;color:var(--gris);margin-top:8px}
+.typing{position:absolute;left:34px;top:200px;background:#fff;border-radius:30px;padding:26px 30px;display:flex;gap:12px}
+.typing i{width:16px;height:16px;border-radius:50%;background:#b5b0a6}
+
+/* Agenda */
+.card{position:absolute;left:90px;right:90px;background:var(--papel);color:var(--tinta);border-radius:36px;box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden}
+.ccab{display:flex;justify-content:space-between;align-items:center;padding:26px 36px;border-bottom:1px solid var(--linea);font-family:M;font-weight:600;font-size:26px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra2)}
+.ccab span:last-child{color:var(--gris)}
+#agenda{top:600px}
+.slot{position:relative;height:118px;display:flex;align-items:center;gap:28px;padding:0 36px;border-bottom:1px solid var(--linea)}
+.slot:last-child{border-bottom:0}
+.hora{font-family:M;font-weight:600;font-size:30px;width:150px;color:var(--gris)}
+.cita{flex:1;display:flex;align-items:center;gap:18px;height:84px;border-radius:20px;padding:0 24px;background:#EEF3F1;border-left:10px solid var(--verde);font-size:34px;font-weight:600}
+.cita span{font-weight:500;color:var(--gris)}
+#s5 .cita{position:relative;overflow:hidden}
+.hueco{position:absolute;inset:0;border-radius:20px;border:4px dashed #C9B9A8;background:repeating-linear-gradient(-45deg,#F7F1E8 0 18px,#F1E8DC 18px 36px);display:flex;align-items:center;padding:0 24px;font-weight:700;color:#A88D73;opacity:0}
+.nueva{position:absolute;inset:0;border-radius:20px;background:var(--verde2);border-left:10px solid var(--verde);display:flex;align-items:center;gap:18px;padding:0 24px;font-weight:700;opacity:0}
+.nueva .ok{margin-left:auto;width:52px;height:52px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:30px}
+.chip{position:absolute;top:50%;margin-top:-30px;height:60px;padding:0 22px;border-radius:30px;background:var(--tinta);color:var(--crema);font-size:28px;font-weight:700;display:flex;align-items:center;opacity:0;white-space:nowrap}
+.pierde{position:absolute;right:56px;top:50%;margin-top:-38px;background:var(--terra);color:#fff;font-family:B;font-weight:800;font-size:44px;padding:8px 22px;border-radius:18px;opacity:0;box-shadow:0 10px 20px rgba(0,0,0,.2)}
+.gana{position:absolute;right:60px;top:10px;font-family:B;font-weight:800;font-size:64px;color:var(--verde);opacity:0}
+
+/* Lista de espera */
+#espera{top:1160px}
+.fila{position:relative;height:118px;display:flex;align-items:center;gap:24px;padding:0 36px;border-bottom:1px solid var(--linea)}
+.fila:last-child{border-bottom:0}
+.fila .av{width:66px;height:66px;font-size:30px}
+.fila .nom{font-size:34px;font-weight:700;width:150px}
+.estado{margin-left:auto;font-size:28px;font-weight:600;color:var(--gris);display:flex;align-items:center;gap:12px}
+.estado.sin::before{content:"";width:16px;height:16px;border-radius:50%;background:#C9B9A8}
+.noti{position:absolute;left:250px;right:30px;top:15px;height:88px;border-radius:22px;background:var(--tinta);color:var(--crema);display:flex;align-items:center;gap:16px;padding:0 14px 0 24px;font-size:26px;font-weight:600;opacity:0}
+.noti .bell{font-size:30px}
+.noti .si{margin-left:auto;background:var(--terra);color:#fff;border-radius:16px;padding:14px 20px;font-weight:700;font-size:26px;white-space:nowrap}
+.noti.ganó{background:var(--verde)}
+.noti.ganó .si{background:#fff;color:var(--verde)}
+.noti.tarde{background:#E9E5DD;color:var(--gris)}
+.noti.tarde .si{display:none}
+
+/* Pulso del aviso */
+.pulso{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--terra);box-shadow:0 0 30px var(--terra);opacity:0;z-index:9}
+
+/* Giro */
+#giro{position:absolute;left:50%;top:1000px;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:var(--terra);display:grid;place-items:center;opacity:0;box-shadow:0 0 80px rgba(201,111,74,.6)}
+#giro svg{width:150px;height:150px}
+
+/* Cuenta del mes */
+#mes{top:620px;padding-bottom:20px}
+.sem{display:flex;align-items:center;gap:20px;padding:18px 36px}
+.sem b{font-family:M;font-weight:600;font-size:26px;color:var(--gris);width:150px;text-transform:uppercase;letter-spacing:.06em}
+.blq{flex:1;height:64px;border-radius:14px;background:#EEE8DE;position:relative;overflow:hidden}
+.blq i{position:absolute;inset:0;background:var(--verde);transform-origin:0 50%;transform:scaleX(0)}
+.blq span{position:absolute;inset:0;display:grid;place-items:center;font-size:24px;font-weight:700;color:#fff;opacity:0}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 10px;border-top:1px solid var(--linea);margin-top:10px}
+.total span{font-size:32px;font-weight:600;color:var(--gris)}
+.total b{font-family:B;font-weight:800;font-size:96px;color:var(--verde)}
+.nota{padding:0 36px;font-family:M;font-size:24px;color:var(--gris)}
+
+/* Cierre */
+#fin{position:absolute;left:90px;right:90px;top:560px;opacity:0}
+.pasos{display:flex;align-items:center;gap:14px;margin:0 0 60px}
+.pasos span{background:rgba(244,241,234,.1);border:2px solid rgba(244,241,234,.25);border-radius:22px;padding:18px 22px;font-size:32px;font-weight:700}
+.pasos span.v{background:var(--verde);border-color:var(--verde)}
+.pasos i{font-style:normal;font-size:34px;color:var(--terra)}
+#fin p{margin:0 0 50px;font-size:52px;line-height:1.3;font-weight:600;color:rgba(244,241,234,.9)}
+.url{display:inline-block;font-family:M;font-weight:600;font-size:35px;background:var(--crema);color:var(--tinta);padding:30px 40px;border-radius:26px;box-shadow:0 0 0 6px rgba(201,111,74,.5)}
+.diag{margin-top:46px;display:flex;align-items:center;gap:18px;font-size:40px;font-weight:700;color:var(--crema)}
+.diag i{width:56px;height:56px;border-radius:50%;background:var(--terra);display:grid;place-items:center;font-style:normal;font-size:32px}
+.cifras{margin-top:60px;font-family:M;font-size:24px;color:rgba(244,241,234,.55)}
+
+/* Dedo */
+#tap{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;background:rgba(255,255,255,.4);border:5px solid rgba(255,255,255,.9);opacity:0;z-index:20}
+#ripple{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;border:5px solid #fff;opacity:0;z-index:19}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-mensaje"><h1>9:00 AM</h1><p>Tu paciente de las 5 te escribe</p></div>
+  <div class="tit" id="t-vacia"><h1>Una hora <em>vacía</em></h1></div>
+  <div class="tit" id="t-pagada"><h1>Que ya <em>pagaste</em></h1></div>
+  <div class="tit" id="t-espera"><h1>Y alguien la <em>quería</em></h1></div>
+  <div class="tit" id="t-giro"><h1>Esto se resuelve <em>solo</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>Cancela → aviso <em>al instante</em></h1></div>
+  <div class="tit" id="t-confirma"><h1>El primero que confirma, <em>la toma</em></h1></div>
+  <div class="tit" id="t-cobrada"><h1>La hora se vuelve a <em>cobrar</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $18,000 <em>al mes</em></h1><p>Ejemplo: 6 horas × $700 × 4.3 semanas</p></div>
+  <div class="tit" id="t-cierre"><h1>¿Se te cancelan <em>citas?</em></h1></div>
+
+  <!-- Teléfono con el mensaje -->
+  <div id="phone"><div class="scr">
+    <div class="chatcab"><div class="av" style="background:#9C7BB5">M</div><div><b>Mariana</b><span>Paciente · martes 5:00 PM</span></div></div>
+    <div class="typing" id="typing"><i></i><i></i><i></i></div>
+    <div class="bub" id="bub" style="top:200px">Hola, una disculpa 🙏 hoy ya no voy a poder llegar a mi cita de las 5.<small>9:00 AM</small></div>
+  </div></div>
+
+  <!-- Agenda del día -->
+  <div class="card" id="agenda">
+    <div class="ccab"><span>Martes · agenda</span><span>Cabina 2</span></div>
+    <div class="slot"><span class="hora">3:00 PM</span><div class="cita">Laura <span>· lumbar</span></div></div>
+    <div class="slot"><span class="hora">4:00 PM</span><div class="cita">Jorge <span>· tobillo</span></div></div>
+    <div class="slot" id="s5"><span class="hora">5:00 PM</span>
+      <div class="cita" id="c5">Mariana <span>· hombro</span>
+        <div class="hueco" id="hueco">Hora libre</div>
+        <div class="nueva" id="nueva">Carlos <span style="font-weight:500;color:var(--gris)">· rodilla</span><span class="ok">✓</span></div>
+      </div>
+      <div class="chip" id="ch1" style="right:470px">Terapeuta</div>
+      <div class="chip" id="ch2" style="right:300px">Renta</div>
+      <div class="chip" id="ch3" style="right:120px">Cabina</div>
+      <div class="pierde" id="pierde">−$700</div>
+      <div class="gana" id="gana">+$700</div>
+    </div>
+    <div class="slot"><span class="hora">6:00 PM</span><div class="cita">Sofía <span>· rodilla</span></div></div>
+  </div>
+
+  <!-- Lista de espera -->
+  <div class="card" id="espera">
+    <div class="ccab"><span>Lista de espera</span><span>Querían tarde</span></div>
+    <div class="fila" id="f1"><div class="av" style="background:#4F8F7A">C</div><span class="nom">Carlos</span><span class="estado sin" id="e1">Sin aviso</span>
+      <div class="noti" id="n1"><span class="bell">🔔</span>Se liberó hoy 5:00 PM<span class="si" id="si1">Sí, la quiero</span></div></div>
+    <div class="fila" id="f2"><div class="av" style="background:#C98A5A">A</div><span class="nom">Ana</span><span class="estado sin">Sin aviso</span>
+      <div class="noti" id="n2"><span class="bell">🔔</span>Se liberó hoy 5:00 PM<span class="si">Sí, la quiero</span></div></div>
+    <div class="fila" id="f3"><div class="av" style="background:#6C7FB0">L</div><span class="nom">Luis</span><span class="estado sin">Sin aviso</span>
+      <div class="noti" id="n3"><span class="bell">🔔</span>Se liberó hoy 5:00 PM<span class="si">Sí, la quiero</span></div></div>
+  </div>
+  <div class="pulso" id="p1"></div><div class="pulso" id="p2"></div><div class="pulso" id="p3"></div>
+
+  <!-- Giro -->
+  <div id="giro"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+
+  <!-- Cuenta del mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>6 horas por semana</span></div>
+    <div class="sem"><b>Semana 1</b><div class="blq"><i></i><span>+$4,200</span></div></div>
+    <div class="sem"><b>Semana 2</b><div class="blq"><i></i><span>+$4,200</span></div></div>
+    <div class="sem"><b>Semana 3</b><div class="blq"><i></i><span>+$4,200</span></div></div>
+    <div class="sem"><b>Semana 4</b><div class="blq"><i></i><span>+$4,200</span></div></div>
+    <div class="total"><span>Recuperado</span><b id="tot">$0</b></div>
+    <div class="nota">Cifras de ejemplo. Con tus números puede ser más o menos.</div>
+  </div>
+
+  <!-- Cierre -->
+  <div id="fin">
+    <div class="pasos"><span>Cancela</span><i>→</i><span>Aviso solo</span><i>→</i><span class="v">Hora cobrada</span></div>
+    <p>Te cuento cómo lo haría para tu clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script>
+var $ = function (id) { return document.getElementById(id); };
+var clamp = function (x) { return Math.max(0, Math.min(1, x)); };
+var easeOut = function (p) { return 1 - Math.pow(1 - p, 3); };
+var back = function (p) { var c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+var F = 0.3;
+var S = {}, E = {}, ORDEN = [], TOTAL = 0;
+
+// Opacidad entre a y b con fundidos.
+function win(t, a, b, fi, fo) {
+  if (t < a || t >= b) return 0;
+  return Math.min(fi === false ? 1 : clamp((t - a) / F), fo === false ? 1 : clamp((b - t) / F));
+}
+function pop(el, t, at, dur, base) {
+  var q = clamp((t - at) / (dur || 0.35));
+  el.style.opacity = q;
+  el.style.transform = (base || '') + ' scale(' + (0.85 + 0.15 * back(q)) + ')';
+  return q;
+}
+function slide(el, a, dy) { el.style.opacity = a; el.style.transform = 'translateY(' + ((1 - easeOut(a)) * (dy || 60)) + 'px)'; }
+function tapAt(t, t0, el) {
+  var d = t - t0, f = $('tap'), r = $('ripple'), fr = $('frame').getBoundingClientRect();
+  var on = d > -0.5 && d < 0.4;
+  if (!on) return false;
+  var b = el.getBoundingClientRect();
+  f.style.left = r.style.left = (b.left - fr.left + b.width / 2) + 'px';
+  f.style.top = r.style.top = (b.top - fr.top + b.height / 2) + 'px';
+  f.style.opacity = clamp((d + 0.5) / 0.2) * clamp((0.4 - d) / 0.2);
+  f.style.transform = 'scale(' + (d > -0.08 && d < 0.12 ? 0.8 : 1) + ')';
+  var q = clamp(d / 0.45);
+  r.style.opacity = d > 0 && d < 0.45 ? 0.8 * (1 - q) : 0;
+  r.style.transform = 'scale(' + (1 + q * 1.5) + ')';
+  return true;
+}
+
+// data.durs: segundos de cada escena (lo que dura su audio + respiro), en el orden de ORDEN.
+window.setup = function (data) {
+  ORDEN = data.ids; var t = 0;
+  ORDEN.forEach(function (id, i) { S[id] = t; t += data.durs[i]; E[id] = t; });
+  TOTAL = t;
+  window.render(0);
+  return TOTAL;
+};
+window.momentos = function () { return ORDEN.map(function (id) { return Math.min(E[id] - 0.4, S[id] + (E[id] - S[id]) * 0.75); }); };
+
+window.render = function (t) {
+  // Títulos: uno por escena
+  ORDEN.forEach(function (id) {
+    var el = $('t-' + id); if (!el) return;
+    var a = win(t, S[id], E[id] + (id === 'cierre' ? 9 : 0), true, true);
+    slide(el, a, 50);
+    var h = el.querySelector('h1'); h.style.transform = 'scale(' + (0.92 + 0.08 * back(clamp((t - S[id]) / 0.4))) + ')'; h.style.transformOrigin = '0 50%';
+  });
+
+  // 1 · Teléfono con el mensaje
+  var pin = easeOut(clamp((t - 0.1) / 0.6)), pout = easeOut(clamp((t - (E.mensaje - 0.35)) / 0.45));
+  $('phone').style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  $('phone').style.opacity = t < E.mensaje + 0.5 ? 1 : 0;
+  var ty = t > 0.7 && t < 1.9;
+  $('typing').style.opacity = ty ? 1 : 0;
+  $('typing').querySelectorAll('i').forEach(function (d, i) { d.style.transform = 'translateY(' + (Math.sin(t * 9 - i * 0.8) * 6) + 'px)'; });
+  pop($('bub'), t, 1.9, 0.35);
+
+  // Agenda: entra en "vacía", sale al terminar "cobrada"
+  var ain = easeOut(clamp((t - (S.vacia - 0.1)) / 0.55)), aout = easeOut(clamp((t - (E.cobrada - 0.3)) / 0.45));
+  $('agenda').style.opacity = t < E.cobrada + 0.2 ? Math.min(ain, 1 - aout) : 0;
+  $('agenda').style.transform = 'translateY(' + ((1 - ain) * 120 - aout * 80) + 'px)';
+  var dim = (t >= S.giro && t < E.giro) ? 1 - 0.65 * Math.min(clamp((t - S.giro) / 0.3), clamp((E.giro - t) / 0.3)) : 1;
+  $('agenda').style.filter = 'saturate(' + dim + ')';
+  if (t >= S.giro && t < E.giro) $('agenda').style.opacity = Math.min(+$('agenda').style.opacity, dim);
+
+  // 2 · La cita se cae: se tacha y queda el hueco
+  var cae = clamp((t - (S.vacia + 0.35)) / 0.4);
+  var shake = (t > S.vacia + 0.3 && t < S.vacia + 0.75) ? Math.sin(t * 60) * 10 : 0;
+  $('c5').style.transform = 'translateX(' + shake + 'px)';
+  $('hueco').style.opacity = cae;
+  // 3 · Lo que ya pagaste
+  ['ch1', 'ch2', 'ch3'].forEach(function (id, i) {
+    var at = S.pagada + 0.9 + i * 0.6;
+    var vis = t < S.pagada + 2.5;
+    if (!vis) { $(id).style.opacity = 0; return; }
+    pop($(id), t, at, 0.35);
+  });
+  var pq = t < E.espera ? clamp((t - (S.pagada + 2.6)) / 0.3) : 0;
+  $('pierde').style.opacity = pq * (t < E.giro ? 1 : 0);
+  $('pierde').style.transform = 'scale(' + (0.7 + 0.3 * back(pq)) + ')';
+
+  // Lista de espera: entra en "espera", sigue en "giro", "aviso", "confirma"
+  var lin = easeOut(clamp((t - (S.espera + 0.1)) / 0.55)), lout = easeOut(clamp((t - (E.confirma - 0.3)) / 0.45));
+  $('espera').style.opacity = t < E.confirma + 0.2 ? Math.min(lin, 1 - lout) : 0;
+  $('espera').style.transform = 'translateY(' + ((1 - lin) * 140) + 'px)';
+  if (t >= S.giro && t < E.giro) $('espera').style.opacity = Math.min(+$('espera').style.opacity, dim);
+  ['f1', 'f2', 'f3'].forEach(function (id, i) { var q = clamp((t - (S.espera + 0.5 + i * 0.25)) / 0.3); $(id).style.opacity = q; });
+
+  // 5 · Giro
+  var g = win(t, S.giro, E.giro, true, true);
+  $('giro').style.opacity = g;
+  $('giro').style.transform = 'scale(' + (0.6 + 0.4 * back(clamp((t - S.giro) / 0.4))) + ') rotate(' + (Math.sin(t * 3) * 4) + 'deg)';
+
+  // 6 · Aviso: pulsos de la agenda a cada fila, y aparecen las notificaciones
+  var fr = $('frame').getBoundingClientRect(), sb = $('s5').getBoundingClientRect();
+  var x0 = sb.left - fr.left + 200, y0 = sb.top - fr.top + sb.height / 2;
+  ['n1', 'n2', 'n3'].forEach(function (id, i) {
+    var at = S.aviso + 0.6 + i * 0.35, p = $('p' + (i + 1)), fb = $('f' + (i + 1)).getBoundingClientRect();
+    var x1 = fb.left - fr.left + 330, y1 = fb.top - fr.top + fb.height / 2;
+    var q = clamp((t - at) / 0.55), on = t >= at && t < at + 0.6 && t < E.aviso;
+    p.style.opacity = on ? 1 - q * 0.3 : 0;
+    p.style.left = (x0 + (x1 - x0) * easeOut(q)) + 'px'; p.style.top = (y0 + (y1 - y0) * easeOut(q)) + 'px';
+    var n = $(id); var nq = clamp((t - (at + 0.5)) / 0.3);
+    n.style.opacity = t < E.confirma ? nq : 0;
+    n.style.transform = 'translateX(' + ((1 - easeOut(nq)) * 60) + 'px)';
+  });
+  // 7 · Carlos confirma; los otros llegan tarde; la agenda se llena
+  var tapT = S.confirma + 1.0, tomado = t >= tapT;
+  var tapped = (t > S.confirma + 0.3 && t < S.confirma + 1.6) ? tapAt(t, tapT, $('si1')) : false;
+  if (!tapped) { $('tap').style.opacity = 0; $('ripple').style.opacity = 0; }
+  $('n1').classList.toggle('ganó', tomado);
+  $('si1').textContent = tomado ? '¡Es tuya!' : 'Sí, la quiero';
+  var tarde = t >= tapT + 0.5;
+  $('n2').classList.toggle('tarde', tarde); $('n3').classList.toggle('tarde', tarde);
+  $('n2').childNodes[1].nodeValue = tarde ? 'Ya la tomaron' : 'Se liberó hoy 5:00 PM';
+  $('n3').childNodes[1].nodeValue = tarde ? 'Ya la tomaron' : 'Se liberó hoy 5:00 PM';
+  var lleno = clamp((t - (tapT + 0.9)) / 0.4);
+  $('nueva').style.opacity = lleno;
+  $('nueva').style.transform = 'scale(' + (0.9 + 0.1 * back(lleno)) + ')';
+
+  // 8 · Cobrada: la agenda sube al centro, la cita brilla y flota el +$700
+  var up = easeOut(clamp((t - S.cobrada) / 0.6));
+  if (t >= S.cobrada) $('agenda').style.transform = 'translateY(' + (up * 200 - aout * 80) + 'px)';
+  var gq = clamp((t - (S.cobrada + 0.4)) / 1.2);
+  $('gana').style.opacity = t >= S.cobrada + 0.4 && t < E.cobrada ? Math.min(1, gq * 4) * (1 - clamp((gq - 0.8) / 0.2)) : 0;
+  $('gana').style.transform = 'translateY(' + (-90 * easeOut(gq)) + 'px)';
+  $('nueva').style.boxShadow = t >= S.cobrada ? '0 0 0 ' + (6 + 4 * Math.sin(t * 6)) + 'px rgba(62,142,106,.35)' : 'none';
+
+  // 9 · El mes
+  var min = easeOut(clamp((t - S.cuenta) / 0.5)), mout = easeOut(clamp((t - (E.cuenta - 0.3)) / 0.45));
+  $('mes').style.opacity = t < E.cuenta + 0.2 ? Math.min(min, 1 - mout) : 0;
+  $('mes').style.transform = 'translateY(' + ((1 - min) * 120) + 'px)';
+  var bl = document.querySelectorAll('#mes .blq');
+  bl.forEach(function (b, i) {
+    var q = easeOut(clamp((t - (S.cuenta + 0.6 + i * 0.7)) / 0.6));
+    b.querySelector('i').style.transform = 'scaleX(' + q + ')';
+    b.querySelector('span').style.opacity = clamp((q - 0.6) / 0.4);
+  });
+  var tq = clamp((t - (S.cuenta + 0.6)) / 2.9);
+  var dinero = Math.round(18060 * easeOut(tq) / 10) * 10;
+  $('tot').textContent = '$' + dinero.toLocaleString('en-US');
+
+  // 10 · Cierre
+  var f = clamp((t - S.cierre - 0.15) / 0.5);
+  slide($('fin'), f, 70);
+  $('url').style.transform = 'scale(' + (1 + 0.03 * Math.sin(Math.max(0, t - S.cierre - 1) * 4)) + ')';
+};
+</script>
+</body></html>

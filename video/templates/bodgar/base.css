@@ -1,0 +1,57 @@
+/* Base de los videos de bodgar.dev (plataformas y apps). Misma línea visual que el sitio.
+   Lienzo 1080×1920. Zona segura: nada importante debajo de y=1560 (botones de Reels/TikTok). */
+@font-face{font-family:B;src:url(../../fonts/bodgar/brico.woff2) format('woff2');font-weight:200 800}
+@font-face{font-family:I;font-weight:400;src:url(../../fonts/bodgar/inst-400.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:500;src:url(../../fonts/bodgar/inst-500.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:600;src:url(../../fonts/bodgar/inst-600.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:700;src:url(../../fonts/bodgar/inst-700.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:400;src:url(../../fonts/bodgar/plex-400.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:600;src:url(../../fonts/bodgar/plex-600.woff2) format('woff2')}
+:root{--tinta:#1F332E;--crema:#F4F1EA;--papel:#FBFAF7;--terra:#C96F4A;--terra2:#B35D3A;--verde:#3E8E6A;--verde2:#DDEFE5;--gris:#8A9893;--linea:#E3DED3;--oro:#E0A63A;--suave:#EEF3F1;--arena:#EEE8DE}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--tinta)}
+.frame{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:I;color:var(--crema);
+  background:radial-gradient(90% 45% at 100% 0%,rgba(201,111,74,.28),transparent 60%),radial-gradient(80% 40% at 0% 100%,rgba(62,142,106,.22),transparent 60%),var(--tinta)}
+.marca{position:absolute;left:90px;top:96px;font-family:M;font-weight:600;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.7)}
+.marca b{color:var(--terra);font-weight:600}
+/* Un título por escena: id="t-<id de la escena>" */
+.tit{position:absolute;left:90px;right:90px;top:200px;opacity:0}
+.tit h1{margin:0;font-family:B;font-weight:800;font-stretch:88%;font-size:112px;line-height:1;letter-spacing:-.02em;text-wrap:balance;transform-origin:0 50%}
+.tit h1 em{font-style:normal;color:var(--terra)}
+.tit p{margin:22px 0 0;font-size:44px;font-weight:600;color:rgba(244,241,234,.78);text-wrap:balance}
+/* Teléfono */
+.phone{position:absolute;left:250px;top:620px;width:580px;height:880px;border-radius:80px;background:#0c1513;box-shadow:0 0 0 6px #2c4540,0 40px 90px rgba(0,0,0,.5);opacity:0}
+.phone .scr{position:absolute;inset:16px;border-radius:66px;background:var(--papel);overflow:hidden;color:var(--tinta)}
+.pant{position:absolute;inset:0;opacity:0}
+.av{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-family:B;font-weight:700;font-size:30px;color:#fff;flex:none}
+/* Tarjeta clara */
+.card{position:absolute;left:90px;right:90px;top:620px;background:var(--papel);color:var(--tinta);border-radius:36px;box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden;opacity:0}
+.ccab{display:flex;justify-content:space-between;align-items:center;padding:26px 36px;border-bottom:1px solid var(--linea);font-family:M;font-weight:600;font-size:26px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra2)}
+.ccab span:last-child{color:var(--gris)}
+.ej{display:inline-block;font-family:M;font-size:22px;background:var(--arena);color:#8a7a66;padding:6px 12px;border-radius:10px;letter-spacing:0;text-transform:none}
+.fila{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600}
+.fila:last-child{border-bottom:0}
+.fila .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px}
+.ok{width:52px;height:52px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:28px;flex:none}
+.no{width:52px;height:52px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:28px;flex:none}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:26px 36px 30px;border-top:1px solid var(--linea)}
+.total span{font-size:32px;font-weight:600;color:var(--gris)}
+.total b{font-family:B;font-weight:800;font-size:90px}
+.nota{padding:0 36px 28px;font-family:M;font-size:24px;color:var(--gris)}
+/* Giro */
+.giro{position:absolute;left:50%;top:1000px;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:var(--terra);display:grid;place-items:center;opacity:0;box-shadow:0 0 80px rgba(201,111,74,.6)}
+.giro svg{width:150px;height:150px}
+/* Cierre: id="fin" y "url" */
+#fin{position:absolute;left:90px;right:90px;top:620px;opacity:0}
+.pasos{display:flex;align-items:center;gap:14px;margin:0 0 60px;flex-wrap:wrap}
+.pasos span{background:rgba(244,241,234,.1);border:2px solid rgba(244,241,234,.25);border-radius:22px;padding:18px 22px;font-size:32px;font-weight:700}
+.pasos span.v{background:var(--verde);border-color:var(--verde)}
+.pasos i{font-style:normal;font-size:34px;color:var(--terra)}
+#fin p{margin:0 0 50px;font-size:52px;line-height:1.3;font-weight:600;color:rgba(244,241,234,.9)}
+.url{display:inline-block;font-family:M;font-weight:600;font-size:38px;background:var(--crema);color:var(--tinta);padding:30px 40px;border-radius:26px;box-shadow:0 0 0 6px rgba(201,111,74,.5)}
+.diag{margin-top:46px;display:flex;align-items:center;gap:18px;font-size:40px;font-weight:700}
+.diag i{width:56px;height:56px;border-radius:50%;background:var(--terra);display:grid;place-items:center;font-style:normal;font-size:32px}
+.cifras{margin-top:60px;font-family:M;font-size:24px;color:rgba(244,241,234,.55)}
+/* Dedo */
+#tap{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;background:rgba(255,255,255,.4);border:5px solid rgba(31,51,46,.6);opacity:0;z-index:20}
+#ripple{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;border:5px solid var(--terra);opacity:0;z-index:19}

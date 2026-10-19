@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · pérdida: "Hiciste el trabajo, pero nadie lo facturó". Cifras de ejemplo. */
+.tarea .ok{opacity:0}
+.fac .linea{display:flex;align-items:center;gap:16px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.fac .linea .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px}
+.fac .linea.off{color:#B9B2A6}
+.fac .linea.off .der{text-decoration:line-through}
+.sello{font-family:M;font-size:20px;font-weight:600;background:#FBEADF;color:var(--terra2);padding:6px 10px;border-radius:10px;white-space:nowrap}
+.fac .total b{color:var(--tinta)}
+/* Recortes: libreta, chat y nada */
+.recorte{position:absolute;opacity:0;box-shadow:0 24px 50px rgba(0,0,0,.35)}
+#libreta{left:110px;top:640px;width:520px;height:440px;background:repeating-linear-gradient(#FFFDF6 0 58px,#C9D7E6 58px 60px);border-radius:10px;padding:70px 46px 0 90px;color:#38506B;font-family:M;font-size:32px;line-height:60px;transform:rotate(-5deg)}
+#libreta::before{content:"";position:absolute;left:62px;top:0;bottom:0;width:3px;background:#E7A9A0}
+#chat{right:100px;top:1010px;width:560px;background:#fff;color:var(--tinta);border-radius:30px 30px 30px 8px;padding:26px 30px;font-size:32px;line-height:1.35;transform:rotate(3deg)}
+#chat small{display:block;margin-top:10px;font-size:22px;color:var(--gris);text-align:right}
+#nada{left:150px;top:1260px;width:380px;height:200px;border:5px dashed rgba(244,241,234,.5);border-radius:26px;display:grid;place-items:center;font-size:36px;font-weight:700;color:rgba(244,241,234,.7);box-shadow:none;transform:rotate(-2deg)}
+/* Semanas */
+.sem{display:flex;align-items:center;gap:20px;padding:20px 36px}
+.sem b{font-family:M;font-weight:600;font-size:26px;color:var(--gris);width:150px;text-transform:uppercase;letter-spacing:.06em}
+.blq{flex:1;height:64px;border-radius:14px;background:var(--arena);position:relative;overflow:hidden}
+.blq i{position:absolute;inset:0;background:var(--terra);transform-origin:0 50%;transform:scaleX(0)}
+.blq span{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:700;color:#fff;opacity:0}
+/* App del operador */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:32px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.cli{margin:22px 24px 10px;padding:18px 22px;border-radius:18px;background:var(--suave);font-size:26px;font-weight:700;display:flex;justify-content:space-between}
+.cli span{color:var(--gris);font-weight:600}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:12px 24px}
+.op{border:3px solid var(--linea);border-radius:20px;padding:22px 18px;font-size:27px;font-weight:700;text-align:center;background:#fff}
+.op small{display:block;font-family:M;font-size:20px;color:var(--gris);margin-top:6px;font-weight:600}
+.op.sel{border-color:var(--verde);background:var(--verde2)}
+.toast{position:absolute;left:24px;right:24px;bottom:150px;background:var(--verde);color:#fff;border-radius:20px;padding:22px 24px;font-size:26px;font-weight:700;opacity:0}
+.pend{position:absolute;left:24px;right:24px;bottom:40px;border-radius:20px;background:var(--arena);padding:22px 24px;display:flex;justify-content:space-between;font-size:26px;font-weight:700}
+.pend b{font-family:M;color:var(--terra2)}
+/* Reporte */
+.rep .fila{opacity:0}
+.btnf{margin:6px 36px 32px;background:var(--verde);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:30px;font-weight:700;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-trabajo"><h1>Tu equipo hizo el <em>trabajo</em></h1></div>
+  <div class="tit" id="t-factura"><h1>La factura dice <em>otra cosa</em></h1></div>
+  <div class="tit" id="t-porque"><h1>Se apuntó... <em>o no</em></h1></div>
+  <div class="tit" id="t-cuesta"><h1>≈ $8,600 al mes <em>sin cobrar</em></h1><p>Ejemplo: $2,000 por semana × 4.3</p></div>
+  <div class="tit" id="t-giro"><h1>Que nada se quede <em>fuera</em></h1></div>
+  <div class="tit" id="t-registro"><h1>Se hace → <em>se registra</em></h1></div>
+  <div class="tit" id="t-reporte"><h1>Listo para <em>facturar</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Cobras lo que ya <em>hiciste</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Se te escapan <em>cobros?</em></h1></div>
+
+  <!-- 1 · El trabajo de la semana -->
+  <div class="card tarea" id="semana">
+    <div class="ccab"><span>Esta semana · bodega</span><span>Hecho</span></div>
+    <div class="fila" id="w1">Reempaque · Moda Luna<span class="der">×3</span><span class="ok">✓</span></div>
+    <div class="fila" id="w2">Etiquetado<span class="der">120 pzas</span><span class="ok">✓</span></div>
+    <div class="fila" id="w3">Devoluciones procesadas<span class="der">×6</span><span class="ok">✓</span></div>
+    <div class="fila" id="w4">Almacenaje extra<span class="der">4 tarimas</span><span class="ok">✓</span></div>
+  </div>
+
+  <!-- 2 y 8 · La factura del mes -->
+  <div class="card fac" id="fac">
+    <div class="ccab"><span>Factura · octubre</span><span class="ej">Ejemplo</span></div>
+    <div class="linea" id="l0">Almacenaje mensual<span class="der">$12,000</span></div>
+    <div class="linea off" id="l1">Reempaques<span class="sello">No se cobró</span><span class="der">$2,160</span></div>
+    <div class="linea off" id="l2">Etiquetado<span class="sello">No se cobró</span><span class="der">$2,400</span></div>
+    <div class="linea off" id="l3">Devoluciones<span class="sello">No se cobró</span><span class="der">$1,920</span></div>
+    <div class="linea off" id="l4">Almacenaje extra<span class="sello">No se cobró</span><span class="der">$2,120</span></div>
+    <div class="total"><span>Total</span><b id="ftot">$12,000</b></div>
+  </div>
+
+  <!-- 3 · Dónde quedó apuntado -->
+  <div class="recorte" id="libreta">reempaque x3 ??<br>etiquetas Moda L.<br>dev. ayer (6)</div>
+  <div class="recorte" id="chat">Ahí te encargo las devoluciones de ayer 🙏<small>Almacén · 7:42 PM</small></div>
+  <div class="recorte" id="nada">(en ningún lado)</div>
+
+  <!-- 4 · Lo que se queda fuera -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>Sin cobrar</span></div>
+    <div class="sem"><b>Semana 1</b><div class="blq"><i></i><span>−$2,000</span></div></div>
+    <div class="sem"><b>Semana 2</b><div class="blq"><i></i><span>−$2,000</span></div></div>
+    <div class="sem"><b>Semana 3</b><div class="blq"><i></i><span>−$2,000</span></div></div>
+    <div class="sem"><b>Semana 4</b><div class="blq"><i></i><span>−$2,000</span></div></div>
+    <div class="total"><span>Al mes (4.3 semanas)</span><b id="mtot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Se registra en el momento -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Operación</b><span>Andén 2</span></div>
+    <div class="cli">Cliente<span>Moda Luna ▾</span></div>
+    <div class="ops">
+      <div class="op" id="o1">Reempaque<small>$180 c/u</small></div>
+      <div class="op">Etiquetado<small>$20 c/pza</small></div>
+      <div class="op">Devolución<small>$80 c/u</small></div>
+      <div class="op">Almacenaje extra<small>$530 c/tarima</small></div>
+    </div>
+    <div class="toast" id="toast">✓ Registrado · Moda Luna · Reempaque $180</div>
+    <div class="pend">Pendiente de facturar<b id="pend">$1,060</b></div>
+  </div></div>
+
+  <!-- 7 · Lo pendiente por cliente -->
+  <div class="card rep" id="rep">
+    <div class="ccab"><span>Pendiente de facturar</span><span>Esta semana</span></div>
+    <div class="fila" id="c1">Moda Luna<span class="der">$1,240</span></div>
+    <div class="fila" id="c2">Café Tierra<span class="der">$560</span></div>
+    <div class="fila" id="c3">Nube Store<span class="der">$200</span></div>
+    <div class="total"><span>Total</span><b style="color:var(--verde)">$2,000</b></div>
+    <div class="btnf" id="btnf">Agregar a las facturas</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Se hace</span><i>→</i><span>Se registra</span><i>→</i><span class="v">Se cobra</span></div>
+    <p>Te cuento cómo lo haría para tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.escena = function (t) {
+  // 1 · Tareas hechas
+  bloque($('semana'), 'trabajo', 'trabajo', t);
+  ['w1', 'w2', 'w3', 'w4'].forEach(function (id, i) {
+    aparece(id, t, S.trabajo + 0.5 + i * 0.5, 50);
+    pop($(id).querySelector('.ok'), t, S.trabajo + 0.8 + i * 0.5, 0.3);
+  });
+
+  // 2 · Factura incompleta (escena factura) y completa (escena gana)
+  var enF = t >= S.factura && t < E.factura + 0.1, enG = t >= S.gana && t < E.gana + 0.1;
+  if (enF) bloque($('fac'), 'factura', 'factura', t); else if (enG) bloque($('fac'), 'gana', 'gana', t); else $('fac').style.opacity = 0;
+  var base = enG ? S.gana : S.factura;
+  aparece('l0', t, base + 0.4);
+  ['l1', 'l2', 'l3', 'l4'].forEach(function (id, i) {
+    var el = $(id);
+    aparece(el, t, base + (enG ? 0.4 : 1.4) + i * (enG ? 0.25 : 0.35), 40);
+    el.classList.toggle('off', !enG);
+    el.querySelector('.sello').style.display = enG ? 'none' : '';
+  });
+  $('ftot').textContent = enG ? pesos(12000 + cuenta(t, S.gana + 1.2, 1.6, 8600)) : '$12,000';
+  $('ftot').style.color = enG ? 'var(--verde)' : '';
+
+  // 3 · Recortes
+  [['libreta', 0.2], ['chat', 0.9], ['nada', 1.8]].forEach(function (r) {
+    var el = $(r[0]), q = t >= S.porque && t < E.porque ? clamp((t - S.porque - r[1]) / 0.35) : 0;
+    var o = clamp((t - (E.porque - 0.3)) / 0.3);
+    el.style.opacity = Math.min(q, 1 - o);
+    var rot = r[0] === 'libreta' ? -5 : r[0] === 'chat' ? 3 : -2;
+    el.style.transform = 'rotate(' + rot + 'deg) scale(' + (0.9 + 0.1 * back(q)) + ')';
+  });
+
+  // 4 · Semanas sin cobrar
+  bloque($('mes'), 'cuesta', 'cuesta', t);
+  document.querySelectorAll('#mes .blq').forEach(function (b, i) {
+    var q = easeOut(clamp((t - (S.cuesta + 0.6 + i * 0.6)) / 0.5));
+    b.querySelector('i').style.transform = 'scaleX(' + q + ')';
+    b.querySelector('span').style.opacity = clamp((q - 0.6) / 0.4);
+  });
+  $('mtot').textContent = '−' + pesos(Math.round(cuenta(t, S.cuesta + 0.6, 3.0, 8600) / 10) * 10);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Registro en el momento
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.registro) / 0.6)), pout = easeOut(clamp((t - (E.registro - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.registro && t < E.registro + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var tapT = S.registro + 1.6, hecho = t >= tapT;
+  var tapped = t > S.registro + 0.9 && t < tapT + 0.5 ? toque(t, tapT, $('o1')) : false;
+  $('o1').classList.toggle('sel', hecho);
+  var tq = clamp((t - (tapT + 0.2)) / 0.3);
+  $('toast').style.opacity = hecho ? tq : 0; $('toast').style.transform = 'translateY(' + ((1 - easeOut(tq)) * 30) + 'px)';
+  $('pend').textContent = pesos(1060 + (hecho ? 180 * easeOut(clamp((t - tapT - 0.3) / 0.5)) : 0));
+
+  // 7 · Reporte por cliente
+  bloque($('rep'), 'reporte', 'reporte', t);
+  ['c1', 'c2', 'c3'].forEach(function (id, i) { aparece(id, t, S.reporte + 0.5 + i * 0.35, 50); });
+  pop($('btnf'), t, S.reporte + 2.0, 0.35);
+  return tapped;
+};
+</script>
+</body></html>
