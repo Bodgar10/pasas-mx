@@ -15,12 +15,9 @@ const resultados = [];
 
 for (const [i, v] of cfg.videos.entries()) {
   const html = `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
-<p>Hola, Katya. Este es el <b>short ${i + 1} de ${n}</b> del video de Yolanda <i>"Mi hijo no puede soltar el control"</i>. El video va adjunto (<b>${esc(v.file)}</b>), listo para subir en vertical.</p>
-<p style="color:#6b6485;font-size:14px">Ya trae subtítulos, portada al inicio y el cierre "Mira el video completo en YouTube". Al subirlo, elige el primer cuadro como portada. Video completo: <a href="${cfg.youtube}">${cfg.youtube}</a> (conviene ponerlo en la bio, porque en TikTok e Instagram los links de la descripción no se pueden tocar).</p>
-<h3 style="${h}">Texto para TikTok</h3>
-<pre style="${box}">${esc(v.tiktok)}</pre>
-<h3 style="${h}">Texto para Instagram (Reels)</h3>
-<pre style="${box}">${esc(v.instagram)}</pre>
+<p>${esc(cfg.saludo || "Hola")}. Este es el <b>short ${i + 1} de ${n}</b> del video de Yolanda <i>"Mi hijo no puede soltar el control"</i>. El video va adjunto (<b>${esc(v.file)}</b>), listo para subir en vertical.</p>
+<p style="color:#6b6485;font-size:14px">${esc(cfg.nota || '')} Video completo: <a href="${cfg.youtube}">${cfg.youtube}</a></p>
+${(v.secciones || []).map(([t, x]) => `<h3 style="${h}">${esc(t)}</h3>\n<pre style="${box}">${esc(x)}</pre>`).join('\n')}
 </div>`;
   const content = (await readFile(path.join(dir, v.file))).toString('base64');
   const res = await fetch('https://api.resend.com/emails', {
