@@ -6,7 +6,7 @@ Un video al día, de lunes a viernes, para las redes de bodgar.dev. Plataformas 
 
 1. El workflow **"Videos de bodgar.dev"** (`.github/workflows/bodgar-videos.yml`) corre de lunes a viernes a las ~06:47, hora de México.
 2. Lee `data/bodgar/AAAA-MM-DD.json` (fecha de hoy) y su plantilla en `templates/bodgar/`.
-3. Genera el MP4 **sin voz** (con pista de audio en silencio) y la portada, y los manda por correo a `BODGAR_EMAIL_TO` (si no existe, a `ARCADE_EMAIL_TO`). El correo trae el texto para publicar y el guion de voz.
+3. Genera el reel **sin voz** (con pista de audio en silencio), su **portada** y la **story** del día, y los manda por correo a `BODGAR_EMAIL_TO` (si no existe, a `ARCADE_EMAIL_TO`). El correo trae la descripción para copiar, los comandos de la Terminal para la voz, la dirección del sticker de enlace de la story y el guion de voz.
 4. Bodgar le pone la voz en su Mac con `tools/ponvoz.py` y publica a las **12:30 PM**.
 
 Si no hay JSON para ese día, llega un correo corto avisando. Cada correo dice cuántos videos quedan programados; con 3 o menos, toca pedir el lote de la siguiente semana.
@@ -56,6 +56,16 @@ Si no hay JSON para ese día, llega un correo corto avisando. Cada correo dice c
   "nombre": "bodegas-sin-facturar",           // nombre del archivo
   "url": "bodgar.dev/plataformas/bodegas",
   "idioma": "es-MX",                          // apps: "en-US"
+  "portada": {                                // portada del reel (templates/bodgar/portada.html)
+    "etiqueta": "Bodegas y 3PL",
+    "titulo": "Hiciste el trabajo. *Nadie lo facturó.*",   // *énfasis* en terracota
+    "dato": { "num": "≈ $8,600", "texto": "al mes en servicios sin cobrar", "tipo": "perd" }   // "gana" en verde; opcional
+  },
+  "story": {                                  // story del día (templates/bodgar/story.html); sin dato, usa el de la portada
+    "chip": "Nuevo reel",                     // opcional
+    "titulo": "¿Cuánto trabajo *no cobraste* este mes?",
+    "texto": "Una línea que invite a ver el reel."
+  },
   "post": "Texto para publicar, con hashtags al final",
   "escenas": [
     { "id": "trabajo", "voz": "Lo que se dice en esta escena.", "titulo": "Tu equipo hizo el trabajo" }
@@ -71,7 +81,7 @@ Carga `base.css` y `base.js`. La base ya trae: lienzo 1080×1920, colores y letr
 
 La plantilla define `window.escena(t)`: anima lo suyo con `S[id]`/`E[id]` (inicio y fin de cada escena, en segundos) y devuelve `true` mientras el dedo esté tocando. Ayudas: `bloque(el, desde, hasta, t)`, `aparece(id, t, segundo)`, `pop(el, t, segundo)`, `cuenta(t, inicio, dur, hasta)`, `pesos(n)`, `toque(t, segundo, el)`, `giro(el, t, id)`. Si necesita armar algo al inicio, `window.prepara()`.
 
-Zona segura: nada importante debajo de y=1560 (botones de Reels y TikTok). Ejemplos: `bodegas-sin-facturar.html`, `fisio-despues-alta.html`, `caso-aseguradoras.html`.
+Zona segura: nada importante debajo de y=1560 (botones de Reels y TikTok). La portada pone lo importante dentro del recorte 4:5 del perfil (y 285–1635); la story deja libre arriba de y=260 y abajo de y=1640, y trae un hueco punteado para el sticker de enlace. Ejemplos: `bodegas-sin-facturar.html`, `fisio-despues-alta.html`, `caso-aseguradoras.html`.
 
 ### 3. Revisar y generar
 

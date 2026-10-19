@@ -66,6 +66,17 @@ async function abrir(browser, plantilla, ids, durs) {
   return { page, total };
 }
 
+// Portada y story: plantillas fijas que se llenan con g.portada / g.story.
+async function imagen(browser, plantilla, g, out) {
+  const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
+  await page.goto(pathToFileURL(path.join(PLANTILLAS, plantilla)).href);
+  await page.evaluate(async () => { await document.fonts.ready; await Promise.all(['800 10px B', '600 10px I', '600 10px M'].map(x => document.fonts.load(x))); });
+  await page.evaluate(d => window.setup(d), g);
+  await page.screenshot({ path: out, clip: { x: 0, y: 0, width: 1080, height: 1920 } });
+  await page.close();
+  return out;
+}
+
 export async function generar(g, dir, { revisar = false } = {}) {
   const ids = g.escenas.map(e => e.id), durs = duraciones(g.escenas);
   const base = `${g.fecha}-${g.nombre}`;
@@ -74,8 +85,12 @@ export async function generar(g, dir, { revisar = false } = {}) {
     const { page, total } = await abrir(browser, g.plantilla, ids, durs);
     const clip = { x: 0, y: 0, width: 1080, height: 1920 };
     const ts = await page.evaluate(() => window.momentos());
+    const portada = path.join(dir, `${base}-portada.png`), story = path.join(dir, `${base}-story.png`);
+    if (g.portada) await imagen(browser, 'portada.html', g, portada);
+    else { await page.evaluate(x => window.render(x), ts[0]); await page.screenshot({ path: portada, clip }); }
+    await imagen(browser, 'story.html', g, story);
     if (revisar) {
-      const files = [];
+      const files = [portada, story];
       for (const [i, t] of ts.entries()) {
         await page.evaluate(x => window.render(x), t);
         const f = path.join(dir, `${base}-revisar-${String(i + 1).padStart(2, '0')}-${ids[i]}.png`);
@@ -83,10 +98,6 @@ export async function generar(g, dir, { revisar = false } = {}) {
       }
       return { files };
     }
-    // Portada: el cuadro de la primera escena.
-    await page.evaluate(x => window.render(x), ts[0]);
-    const portada = path.join(dir, `${base}-portada.png`);
-    await page.screenshot({ path: portada, clip });
     // Tiempos de cada escena, para la voz.
     let t0 = 0;
     const voz = { v: 1, fecha: g.fecha, idioma: g.idioma || 'es-MX', escenas: g.escenas.map((e, i) => { const r = { id: e.id, ini: +t0.toFixed(3), dur: +durs[i].toFixed(3), voz: e.voz }; t0 += durs[i]; return r; }) };
@@ -101,26 +112,39 @@ export async function generar(g, dir, { revisar = false } = {}) {
     }
     proc.stdin.end(); await done;
     await writeFile(path.join(dir, `${base}.voz.json`), JSON.stringify(voz, null, 1));
-    return { video, portada, total, voz };
+    return { video, portada, story, total, voz };
   } finally { await browser.close(); }
 }
 
 function correo(g, r, quedan) {
   const guion = g.escenas.map((e, i) => `${String(i + 1).padStart(2, '0')}. ${e.voz}`).join('\n');
   const box = 'background:#F4F1EA;border-radius:10px;padding:12px 14px;margin:8px 0 0;white-space:pre-wrap;font-family:inherit';
-  const aviso = quedan <= 3 ? `<p style="color:#B35D3A"><b>Quedan ${quedan} videos programados.</b> Pide en el chat el lote de la siguiente semana.</p>` : `<p style="color:#8A9893">Quedan ${quedan} videos programados.</p>`;
+  const mono = box + ';font-family:ui-monospace,Menlo,monospace;font-size:14px';
+  const h = 'font-size:17px;margin:26px 0 6px';
+  const mp4 = path.basename(r.video), conVoz = path.basename(r.video, '.mp4') + '-voz.mp4';
+  const voz = (g.idioma || 'es-MX').startsWith('en') ? ' --voz en-US-GuyNeural' : '';
+  const aviso = quedan <= 3 ? `<p style="color:#B35D3A;margin-top:26px"><b>Quedan ${quedan} videos programados.</b> Pide en el chat el lote de la siguiente semana.</p>` : `<p style="color:#8A9893;margin-top:26px">Quedan ${quedan} videos programados.</p>`;
   return {
     subject: `Video de hoy · ${fechaLarga(g.fecha)} · ${g.linea}`,
-    html: `<div style="font-family:system-ui,sans-serif;color:#1F332E;max-width:560px;line-height:1.5">
-<p>Video de hoy, <b>${esc(fechaLarga(g.fecha))}</b>: <b>${esc(g.linea)}</b>. Va <b>sin voz</b> (${Math.round(r.total)} s) con su portada.</p>
-<h3 style="font-size:16px;margin:22px 0 4px">1. Ponle la voz (Mac)</h3>
-<p>Guarda <b>${esc(path.basename(r.video))}</b> en <b>Movies/bodgar-videos</b> y en la Terminal:</p>
-<pre style="${box}">cd ~/Movies/bodgar-videos && python3 ponvoz.py</pre>
-<p>Sale <b>${esc(path.basename(r.video, '.mp4'))}-voz.mp4</b>.</p>
-<h3 style="font-size:16px;margin:22px 0 4px">2. Publica a las 12:30 PM</h3>
-<p>Texto para copiar:</p>
+    html: `<div style="font-family:system-ui,sans-serif;color:#1F332E;max-width:580px;line-height:1.5">
+<p>Todo listo para hoy, <b>${esc(fechaLarga(g.fecha))}</b>: <b>${esc(g.linea)}</b>. Van tres archivos adjuntos:</p>
+<ul style="padding-left:20px;margin:6px 0">
+<li><b>${esc(mp4)}</b>: el reel, <b>sin voz</b> (${Math.round(r.total)} s).</li>
+<li><b>${esc(path.basename(r.portada))}</b>: la portada del reel.</li>
+<li><b>${esc(path.basename(r.story))}</b>: la story del día.</li>
+</ul>
+<h3 style="${h}">1. Ponle la voz (Mac)</h3>
+<p>Guarda <b>${esc(mp4)}</b> en la carpeta <b>Películas → bodgar-videos</b> (Movies/bodgar-videos). Abre la Terminal y pega:</p>
+<pre style="${mono}">cd ~/Movies/bodgar-videos
+python3 ponvoz.py${voz}</pre>
+<p>Al terminar dice <i>✓ Listo</i> y en la carpeta aparece <b>${esc(conVoz)}</b>. Ése es el que se publica.</p>
+<h3 style="${h}">2. Publica el reel a las 12:30 PM (Instagram y TikTok)</h3>
+<p>Sube <b>${esc(conVoz)}</b>. En Instagram: <i>Editar portada → Agregar de la galería</i> y elige <b>${esc(path.basename(r.portada))}</b>. Descripción para copiar:</p>
 <pre style="${box}">${esc(g.post)}</pre>
-<h3 style="font-size:16px;margin:22px 0 4px">Guion de voz (por si la grabas tú)</h3>
+<h3 style="${h}">3. Sube la story después del reel</h3>
+<p>Sube <b>${esc(path.basename(r.story))}</b> y pon el sticker de <b>enlace</b> en el hueco punteado, con esta dirección:</p>
+<pre style="${mono}">https://${esc(g.url)}</pre>
+<h3 style="${h}">Guion de voz (por si prefieres grabarla tú)</h3>
 <pre style="${box}">${esc(guion)}</pre>
 ${aviso}
 </div>`,
@@ -164,7 +188,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   console.log(`Video listo: ${r.video} (${r.total.toFixed(1)} s, ${Math.round((Date.now() - t) / 1000)} s de render)`);
   if (a.enviar) {
     const quedan = (await programados(fecha)).length - 1;
-    const res = await mandar(correo(g, r, quedan), [r.video, r.portada]);
+    const res = await mandar(correo(g, r, quedan), [r.video, r.portada, r.story]);
     console.log('Correo enviado', res.id || '');
   }
 }
