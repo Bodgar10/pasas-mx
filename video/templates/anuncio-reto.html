@@ -57,6 +57,21 @@
 .cta .card b b{color:var(--c)}
 .cta .card span{font-size:5.6cqw;font-weight:800;color:var(--c)}
 .cta .url{font-family:var(--font-brand);font-weight:700;font-size:6.4cqw;background:var(--brand);color:#fff;padding:3cqw 6.4cqw;border-radius:4cqw;box-shadow:0 0 5cqw rgba(124,58,237,.8);white-space:nowrap}
+
+/* Verdadero o mentira (como pasas.mx/arcade) */
+.vom{position:absolute;left:8cqw;right:8cqw;top:620px;z-index:6;opacity:0;display:flex;flex-direction:column;gap:4cqw}
+.vom .frase{border-radius:5cqw;background:rgba(15,10,30,.92);border:.6cqw solid rgba(255,255,255,.35);padding:6cqw 6cqw;
+  font-size:7.6cqw;font-weight:900;line-height:1.2;text-align:center;color:#fff;text-wrap:balance;box-shadow:0 1.4cqw 4cqw rgba(0,0,0,.5);opacity:0}
+.vom .vm{display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
+.vom .vbtn{min-height:20cqw;border-radius:5cqw;display:flex;align-items:center;justify-content:center;gap:2cqw;font-weight:900;font-size:6.6cqw;
+  color:#fff;background:rgba(15,10,30,.92);border:.5cqw solid rgba(255,255,255,.35);opacity:0;box-shadow:0 1.4cqw 4cqw rgba(0,0,0,.5)}
+.vom .vbtn svg{width:7.4cqw;height:7.4cqw;flex:none;border-radius:1.4cqw;padding:1cqw;color:#fff}
+.vom .vbtn.v svg{background:#10b981}.vom .vbtn.m svg{background:#f43f5e}
+.vom .vbtn.pick.v{border-color:#34d399;background:rgba(16,185,129,.28);box-shadow:0 0 5cqw rgba(52,211,153,.7)}
+.vom .vbtn.pick.m{border-color:#fb7185;background:rgba(244,63,94,.28);box-shadow:0 0 5cqw rgba(251,113,133,.7)}
+.vom .stamp{position:absolute;left:50%;top:-6cqw;transform:translateX(-50%) rotate(-6deg) scale(.6);font-family:var(--font-title);font-weight:900;text-transform:uppercase;
+  font-size:9cqw;line-height:1;padding:1.6cqw 4cqw 2cqw;border-radius:3cqw;border:1cqw solid currentColor;background:rgba(15,10,30,.92);opacity:0;z-index:7}
+.vom .stamp.v{color:#34d399}.vom .stamp.m{color:#fb7185}
 </style></head>
 <body>
 <div class="frame" id="frame">
@@ -99,6 +114,13 @@ window.setup = function (data) {
       h += '<div class="ops" id="ops' + i + '">' + e.opciones.map(function (o, k) {
         return '<div class="op" id="op' + i + '_' + k + '"><i>' + 'ABCD'[k] + '</i><span>' + esc(o) + '</span>' + (k === e.sobra ? '<em class="badge" id="ob' + i + '">Sobra</em>' : '') + '</div>';
       }).join('') + '</div>';
+      h += '<div class="ring" id="ring' + i + '"><div class="disc"></div><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3.4"/><circle id="rb' + i + '" cx="20" cy="20" r="17" fill="none" stroke="var(--c)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="0"/></svg><b id="rn' + i + '">3</b></div>';
+    }
+    if (e.tipo === 'vom') {
+      h += '<div class="vom" id="vom' + i + '"><div class="stamp ' + (e.verdad ? 'v' : 'm') + '" id="st' + i + '">' + (e.verdad ? 'Verdad' : 'Mentira') + '</div>' +
+        '<div class="frase" id="fr' + i + '">' + esc(e.frase) + '</div><div class="vm">' +
+        '<div class="vbtn v" id="vb' + i + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Verdad</div>' +
+        '<div class="vbtn m" id="mb' + i + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Mentira</div></div></div>';
       h += '<div class="ring" id="ring' + i + '"><div class="disc"></div><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3.4"/><circle id="rb' + i + '" cx="20" cy="20" r="17" fill="none" stroke="var(--c)" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="0"/></svg><b id="rn' + i + '">3</b></div>';
     }
     if (e.tipo === 'explica') h += '<div class="exp" id="exp' + i + '">' + md(e.texto) + '</div>';
@@ -171,6 +193,30 @@ window.render = function (t) {
         tp.style.transform = 'scale(' + (qq < 0.35 ? 1 - 0.25 * (qq / 0.35) : 0.75 + 0.9 * (qq - 0.35)) + ')';
       }
     }
+    if (e.tipo === 'vom') {
+      var o2 = tiemposOpciones(e), box = $('vom' + i); box.style.opacity = w;
+      var qf = clamp((t - a - o2.chips) / 0.35); $('fr' + i).style.opacity = qf; $('fr' + i).style.transform = 'scale(' + (0.9 + 0.1 * back(qf)) + ')';
+      [['vb', true], ['mb', false]].forEach(function (pr, k) {
+        var el = $(pr[0] + i), q = clamp((t - a - o2.chips - 0.35 - k * 0.15) / 0.3), pick = pr[1] === e.verdad && t - a >= o2.toque;
+        var rev = clamp((t - a - o2.revela) / 0.3);
+        el.style.opacity = pr[1] === e.verdad ? q : q * (1 - 0.55 * rev);
+        var s = 0.86 + 0.14 * back(q); if (pick) { var pq = clamp((t - a - o2.toque) / 0.25); s *= 1 - 0.05 * Math.sin(Math.PI * pq); }
+        el.style.transform = 'scale(' + s + ')'; el.classList.toggle('pick', pick);
+      });
+      var rv = clamp((t - a - o2.revela) / 0.35), st = $('st' + i);
+      st.style.opacity = rv; st.style.transform = 'translateX(-50%) rotate(-6deg) scale(' + (0.6 + 0.4 * back(rv)) + ')';
+      var r2 = $('ring' + i), span2 = o2.toque - o2.ring0, left2 = Math.max(0, a + o2.toque - t);
+      r2.style.opacity = t - a >= o2.ring0 && t - a < o2.toque + 0.2 ? w * clamp((t - a - o2.ring0) / 0.25) : 0;
+      $('rn' + i).textContent = Math.max(1, Math.ceil(left2 * 3 / span2));
+      $('rb' + i).setAttribute('stroke-dashoffset', (106.8 * (1 - clamp(left2 / span2))).toFixed(1));
+      if (t - a >= o2.toque - 0.25 && t - a < o2.toque + 0.5) {
+        var el3 = $((e.verdad ? 'vb' : 'mb') + i).getBoundingClientRect(), fb2 = $('frame').getBoundingClientRect();
+        var tp2 = $('tap'), q2 = clamp((t - a - o2.toque + 0.25) / 0.75);
+        tp2.style.left = (el3.left - fb2.left + el3.width * 0.6) + 'px'; tp2.style.top = (el3.top - fb2.top + el3.height * 0.55) + 'px';
+        tp2.style.opacity = q2 < 0.35 ? q2 / 0.35 : (1 - (q2 - 0.35) / 0.65);
+        tp2.style.transform = 'scale(' + (q2 < 0.35 ? 1 - 0.25 * (q2 / 0.35) : 0.75 + 0.9 * (q2 - 0.35)) + ')';
+      }
+    }
     if (e.tipo === 'explica') show($('exp' + i), clamp((t - a - 0.55) / 0.4) * w);
     if (e.tipo === 'materias') {
       e.materias.forEach(function (_, k) { pop($('mt' + i + '_' + k), t, a + 0.5 + k * 0.22, 0.3); $('mt' + i + '_' + k).style.opacity *= w; });
@@ -179,7 +225,7 @@ window.render = function (t) {
     if (e.tipo === 'cta') show($('cta' + i), clamp((t - a - 0.5) / 0.4));
   });
   var ef = E[on], tt = t - T0[on];
-  $('dim').style.opacity = ef.tipo === 'opciones' ? 0.55 * clamp((tt - 0.2) / 0.4)
+  $('dim').style.opacity = ef.tipo === 'opciones' || ef.tipo === 'vom' ? 0.55 * clamp((tt - 0.2) / 0.4)
     : ef.tipo === 'explica' || ef.tipo === 'materias' ? 0.4 * clamp((tt - 0.3) / 0.4)
     : ef.tipo === 'cta' ? 0.35 : 0;
 };
