@@ -95,7 +95,7 @@ Revisa los PNG antes de dar por bueno un video: que nada se salga de la tarjeta,
 
 ### 4. Subir
 
-El lote de cada semana (los JSON de `data/bodgar/` y las plantillas **nuevas** de `templates/bodgar/`) va **directo a `main`**, sin PR: el workflow solo ve lo que está en `main`, y esos archivos no tocan nada de Pasas. Lo que sí va por rama y PR: `base.css`, `base.js`, `portada.html`, `story.html`, `src/bodgar.mjs`, `tools/ponvoz.py`, el workflow y cualquier archivo de Pasas.
+El lote de cada semana (los JSON de `data/bodgar/` y las plantillas **nuevas** de `templates/bodgar/`) va **directo a `main`**, sin PR: el workflow solo ve lo que está en `main`, y esos archivos no tocan nada de Pasas. El mensaje del commit lleva **`[skip ci]`**: sin eso, Vercel vuelve a publicar pasas.mx con cada subida (ver `ignoreCommand` en `vercel.json`). Lo que sí va por rama y PR: `base.css`, `base.js`, `portada.html`, `story.html`, `src/bodgar.mjs`, `tools/ponvoz.py`, el workflow y cualquier archivo de Pasas.
 
 ## El lote semanal (automático)
 
