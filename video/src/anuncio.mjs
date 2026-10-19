@@ -17,8 +17,9 @@ const { values: a } = parseArgs({ options: { data: { type: 'string' }, salida: {
 if (!a.data) throw new Error('Falta --data archivo.json');
 const d = JSON.parse(await readFile(a.data, 'utf8'));
 const slug = slugCarrusel(d);
+const slugFondos = d.fondos_de || slug; // reusar los fondos de otro anuncio de la misma materia
 const fondos = d.reel.escenas.map((_, i) => {
-  const f = path.join(ARTE, slug, `reel-${String(i + 1).padStart(2, '0')}.jpg`);
+  const f = path.join(ARTE, slugFondos, `reel-${String(i + 1).padStart(2, '0')}.jpg`);
   return existsSync(f) ? f : null;
 });
 const faltan = fondos.map((f, i) => (f ? null : i + 1)).filter(Boolean);
