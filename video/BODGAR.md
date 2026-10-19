@@ -95,7 +95,11 @@ Revisa los PNG antes de dar por bueno un video: que nada se salga de la tarjeta,
 
 ### 4. Subir
 
-Plantillas nuevas: rama y PR (como todo el código de `video/`). Los JSON de `data/bodgar/` pueden ir directo a `main`.
+El lote de cada semana (los JSON de `data/bodgar/` y las plantillas **nuevas** de `templates/bodgar/`) va **directo a `main`**, sin PR: el workflow solo ve lo que está en `main`, y esos archivos no tocan nada de Pasas. Lo que sí va por rama y PR: `base.css`, `base.js`, `portada.html`, `story.html`, `src/bodgar.mjs`, `tools/ponvoz.py`, el workflow y cualquier archivo de Pasas.
+
+## El lote semanal (automático)
+
+Una tarea programada de Claude corre cada **viernes ~4:56 PM** (hora de México): escribe los 5 videos de lunes a viernes de la semana siguiente con este calendario y estas reglas, revisa sus cuadros, genera cada uno para confirmar que no falla, los sube a `main` y deja un resumen. Si ya existe el JSON de un día, ese día no se toca.
 
 ## La voz, en la Mac
 
