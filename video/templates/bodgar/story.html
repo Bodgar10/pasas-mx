@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="base.css">
 <style>
 /* Story del día (1080×1920). Zonas seguras: nada importante arriba de y=260 ni debajo de y=1640.
-   Deja un hueco para el sticker de enlace (lo pone Bodgar en Instagram). */
+   Deja libre la zona de abajo (y 1420–1600) para el sticker de enlace, que pone Bodgar en Instagram. */
 .s-marca{position:absolute;left:90px;top:290px;font-family:M;font-weight:600;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.7)}
 .s-marca b{color:var(--terra)}
 .s-chip{position:absolute;left:90px;top:370px;display:inline-flex;align-items:center;gap:14px;background:var(--terra);color:#fff;border-radius:999px;padding:14px 26px;font-family:M;font-weight:600;font-size:28px;letter-spacing:.08em;text-transform:uppercase}
@@ -15,7 +15,6 @@
 .s-dato span{font-size:31px;font-weight:600;color:var(--gris);line-height:1.25}
 .s-dato.perd b{color:var(--terra2)}.s-dato.gana b{color:var(--verde)}
 .s-txt{position:absolute;left:90px;right:90px;top:1250px;font-size:46px;font-weight:600;line-height:1.3;color:rgba(244,241,234,.92);text-wrap:balance}
-.s-hueco{position:absolute;left:240px;right:240px;top:1440px;height:150px;border:4px dashed rgba(244,241,234,.28);border-radius:30px;display:grid;place-items:center;font-family:M;font-size:26px;color:rgba(244,241,234,.45)}
 .s-ej{position:absolute;left:90px;right:90px;top:1612px;text-align:center;font-family:M;font-size:22px;color:rgba(244,241,234,.45)}
 </style></head>
 <body><div class="frame" id="frame">
@@ -24,7 +23,6 @@
   <div class="s-tit"><h1 id="tit"></h1></div>
   <div class="s-dato" id="dato"><b id="dnum"></b><span id="dtxt"></span></div>
   <div class="s-txt" id="txt"></div>
-  <div class="s-hueco">aquí va el enlace</div>
   <div class="s-ej" id="ej">Cifras de ejemplo</div>
 </div>
 <script>
