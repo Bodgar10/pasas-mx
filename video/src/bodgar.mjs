@@ -142,7 +142,7 @@ python3 ponvoz.py${voz}</pre>
 <p>Sube <b>${esc(conVoz)}</b>. En Instagram: <i>Editar portada → Agregar de la galería</i> y elige <b>${esc(path.basename(r.portada))}</b>. Descripción para copiar:</p>
 <pre style="${box}">${esc(g.post)}</pre>
 <h3 style="${h}">3. Sube la story después del reel</h3>
-<p>Sube <b>${esc(path.basename(r.story))}</b> y pon el sticker de <b>enlace</b> en el hueco punteado, con esta dirección:</p>
+<p>Sube <b>${esc(path.basename(r.story))}</b> y pon el sticker de <b>enlace</b> en el espacio libre de abajo, con esta dirección:</p>
 <pre style="${mono}">https://${esc(g.url)}</pre>
 <h3 style="${h}">Guion de voz (por si prefieres grabarla tú)</h3>
 <pre style="${box}">${esc(guion)}</pre>

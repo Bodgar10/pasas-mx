@@ -81,7 +81,7 @@ Carga `base.css` y `base.js`. La base ya trae: lienzo 1080×1920, colores y letr
 
 La plantilla define `window.escena(t)`: anima lo suyo con `S[id]`/`E[id]` (inicio y fin de cada escena, en segundos) y devuelve `true` mientras el dedo esté tocando. Ayudas: `bloque(el, desde, hasta, t)`, `aparece(id, t, segundo)`, `pop(el, t, segundo)`, `cuenta(t, inicio, dur, hasta)`, `pesos(n)`, `toque(t, segundo, el)`, `giro(el, t, id)`. Si necesita armar algo al inicio, `window.prepara()`.
 
-Zona segura: nada importante debajo de y=1560 (botones de Reels y TikTok). La portada pone lo importante dentro del recorte 4:5 del perfil (y 285–1635); la story deja libre arriba de y=260 y abajo de y=1640, y trae un hueco punteado para el sticker de enlace. Ejemplos: `bodegas-sin-facturar.html`, `fisio-despues-alta.html`, `caso-aseguradoras.html`.
+Zona segura: nada importante debajo de y=1560 (botones de Reels y TikTok). La portada pone lo importante dentro del recorte 4:5 del perfil (y 285–1635); la story deja libre arriba de y=260 y abajo de y=1640, y deja libre la zona de abajo para el sticker de enlace. Ejemplos: `bodegas-sin-facturar.html`, `fisio-despues-alta.html`, `caso-aseguradoras.html`.
 
 ### 3. Revisar y generar
 
