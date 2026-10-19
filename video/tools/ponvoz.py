@@ -15,9 +15,9 @@ que su escena, se acelera un poco (hasta 1.3x) para que no se encime con la sigu
 
 Requisitos (una sola vez):
     brew install ffmpeg
-    python3 -m pip install --user edge-tts
+    python3 -m pip install edge-tts
 """
-import argparse, glob, json, os, shutil, subprocess, sys, tempfile
+import argparse, asyncio, glob, importlib.util, json, os, shutil, subprocess, sys, tempfile
 
 VOCES = {  # voces neuronales de México (edge-tts)
     "jorge": "es-MX-JorgeNeural",
@@ -61,6 +61,7 @@ def voz_say():
     """Una voz de México instalada en la Mac (Paulina o Juan, de preferencia la versión mejorada)."""
     r = correr(["say", "-v", "?"])
     mx = [l.split("  ")[0].strip() for l in r.stdout.splitlines() if "es_MX" in l]
+    mx = [v for v in mx if v.split(" ")[0] in ("Paulina", "Juan")]
     if not mx:
         falla("La Mac no tiene voces de México. Agrégalas en Configuración del Sistema → Accesibilidad → "
               "Contenido leído → Voz del sistema → Administrar voces → Español (México).")
@@ -71,8 +72,11 @@ def voz_say():
 def sintetiza(texto, salida, motor, voz):
     """Genera el audio de una frase. Devuelve la ruta del archivo."""
     if motor == "edge":
+        import edge_tts
         f = salida + ".mp3"
-        correr(["edge-tts", "--voice", voz, "--text", texto, "--write-media", f])
+        async def _genera():
+            await edge_tts.Communicate(texto, voz).save(f)
+        asyncio.run(_genera())
         return f
     f = salida + ".aiff"
     correr(["say", "-v", voz, "-o", f, texto])
@@ -134,10 +138,11 @@ def main():
     if not os.path.exists(video):
         falla(f"No existe {video}")
 
-    motor = a.motor or ("edge" if shutil.which("edge-tts") else "say")
-    if motor == "edge" and not shutil.which("edge-tts"):
-        falla("Falta edge-tts. Instálalo con:  python3 -m pip install --user edge-tts\n"
-              "  (o usa las voces de la Mac:  python3 ponvoz.py --motor say)")
+    motor = a.motor or "edge"
+    if motor == "edge" and importlib.util.find_spec("edge_tts") is None:
+        falla(f"Falta edge-tts para este Python ({sys.executable}). Instálalo con:\n"
+              f"    {sys.executable} -m pip install edge-tts\n"
+              "  y vuelve a correr:  python3 ponvoz.py")
     if motor == "say" and not shutil.which("say"):
         falla("El motor 'say' solo existe en la Mac.")
     voz = VOCES.get(a.voz.lower(), a.voz) if motor == "edge" else (a.voz if a.voz.lower() not in VOCES else voz_say())
@@ -145,8 +150,10 @@ def main():
     print(f"Video: {video}")
     try:
         salida = poner_voz(video, motor, voz)
-    except subprocess.CalledProcessError as e:
-        err = (e.stderr or "").strip().splitlines()[-1:] or [""]
+    except Exception as e:
+        if motor == "edge" and not isinstance(e, subprocess.CalledProcessError):
+            falla(f"No se pudo generar la voz con edge-tts ({e}). ¿Hay internet? Vuelve a intentar en un momento.")
+        err = ((getattr(e, "stderr", None) or "").strip().splitlines()[-1:]) or [""]
         if motor == "edge":
             falla(f"No se pudo generar la voz con edge-tts ({err[0]}). ¿Hay internet? Prueba:  python3 ponvoz.py --motor say")
         falla(f"Falló un paso: {' '.join(e.cmd[:2])} {err[0]}")

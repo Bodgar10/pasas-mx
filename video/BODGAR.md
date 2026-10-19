@@ -95,7 +95,7 @@ Una sola vez:
 
 ```bash
 brew install ffmpeg
-python3 -m pip install --user edge-tts
+python3 -m pip install edge-tts
 mkdir -p ~/Movies/bodgar-videos   # y copia ahí ponvoz.py
 ```
 
