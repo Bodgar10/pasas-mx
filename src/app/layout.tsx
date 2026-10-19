@@ -40,6 +40,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITIO),
   title: "Pasas.mx",
   description: "Guías de estudio personalizadas para estudiantes mexicanos",
+  // Verificación del dominio en Meta Business (s45): la etiqueta tiene que ir
+  // en el <head> del HTML servido, no inyectada por JS. Sin dominio verificado
+  // Meta limita la atribución de conversiones desde iOS.
+  other: { "facebook-domain-verification": "snf9tckvr3z178lttzwpsqyeasyrbn" },
 };
 
 export default function RootLayout({
