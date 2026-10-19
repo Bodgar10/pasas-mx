@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Viernes · caso práctico: aseguradoras (carta pase). Muestra cómo pienso: cuenta → primer flujo → qué mediría.
+   Cifras de ejemplo. Nada de resultados prometidos: la meta se marca como meta. */
+.caso{padding:40px 36px 36px}
+.caso .k{font-family:M;font-weight:600;font-size:28px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra2)}
+.caso h2{margin:16px 0 26px;font-family:B;font-weight:800;font-size:58px;line-height:1.05}
+.dato{display:flex;align-items:center;gap:16px;font-size:32px;font-weight:600;padding:12px 0;opacity:0}
+.dato i{width:18px;height:18px;border-radius:5px;background:var(--terra);flex:none}
+/* Carta pase */
+.ccuerpo{padding:30px 36px 34px}
+.ccuerpo b.t{display:block;font-size:40px;margin-bottom:22px}
+.barra{height:24px;border-radius:12px;background:var(--arena);overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--verde);border-radius:12px}
+.cdatos{display:flex;justify-content:space-between;margin-top:20px;font-size:28px;font-weight:600;color:var(--gris)}
+.cdatos b{font-family:M;color:var(--tinta)}
+.sello{position:absolute;right:40px;top:110px;border:7px solid var(--terra);color:var(--terra);border-radius:18px;padding:10px 26px;font-family:B;font-weight:800;font-size:64px;transform:rotate(-12deg);opacity:0;background:rgba(251,250,247,.85)}
+.pierde{margin:0 36px 34px;padding:22px 26px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:30px;font-weight:700;opacity:0}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:64px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:150px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Año */
+.meses{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:30px 36px}
+.meses i{height:90px;border-radius:16px;background:var(--arena);position:relative;overflow:hidden;font-style:normal}
+.meses i b{position:absolute;inset:0;background:var(--terra);transform:scaleY(0);transform-origin:50% 100%}
+.meses i span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:M;font-size:20px;color:#fff;z-index:1;opacity:.95}
+/* Plano: el primer flujo */
+.plano{background:#24403A;border:3px dashed rgba(244,241,234,.35);color:var(--crema);box-shadow:none}
+.plano .ccab{color:var(--crema);border-color:rgba(244,241,234,.2)}
+.plano .ccab span:last-child{color:rgba(244,241,234,.6)}
+.nodo{margin:26px 36px;border-radius:22px;background:var(--papel);color:var(--tinta);padding:24px 26px;opacity:0}
+.nodo .k{font-family:M;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.nodo b{display:block;font-size:34px;margin-top:6px}
+.flecha{text-align:center;font-size:44px;color:var(--terra);opacity:0;margin:-8px 0}
+.cont{display:flex;align-items:center;gap:18px;margin-top:16px}
+.cont .barra{flex:1}
+.cont b{font-family:M;font-size:32px;margin:0}
+/* Aviso */
+.noti{position:absolute;left:90px;right:90px;top:640px;background:var(--crema);color:var(--tinta);border-radius:32px;padding:34px 36px;box-shadow:0 30px 70px rgba(0,0,0,.35);opacity:0}
+.noti .k{display:flex;align-items:center;gap:14px;font-family:M;font-weight:600;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.noti p{margin:18px 0 26px;font-size:36px;line-height:1.3;font-weight:600}
+.noti .btn{background:var(--terra);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:32px;font-weight:700}
+.noti .btn.ok2{background:var(--verde)}
+/* Medir */
+.medir{padding:36px}
+.medir .k{font-size:32px;font-weight:700}
+.medir .val{display:flex;align-items:baseline;gap:16px;margin:20px 0 26px}
+.medir .val b{font-family:B;font-weight:800;font-size:130px;line-height:1}
+.medir .val span{font-size:40px;font-weight:700;color:var(--gris)}
+.meta{display:inline-block;background:var(--verde2);color:var(--verde);border-radius:16px;padding:14px 20px;font-size:30px;font-weight:700;opacity:0}
+.medir .n{margin-top:26px;font-size:28px;color:var(--gris);line-height:1.35;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · caso práctico</div>
+
+  <div class="tit" id="t-caso"><h1>Caso <em>práctico</em></h1></div>
+  <div class="tit" id="t-pasa"><h1>La carta vence <em>a medias</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>Hagamos la <em>cuenta</em></h1></div>
+  <div class="tit" id="t-anio"><h1>≈ $100,800 <em>al año</em></h1><p>Ejemplo: $8,400 × 12 meses</p></div>
+  <div class="tit" id="t-primero"><h1>Lo primero que <em>construiría</em></h1></div>
+  <div class="tit" id="t-liga"><h1>Cada sesión cuenta <em>sola</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>Aviso en la <em>sesión 8</em></h1></div>
+  <div class="tit" id="t-medir"><h1>Lo que <em>mediría</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Revisamos tu <em>clínica?</em></h1></div>
+
+  <!-- 1 · El caso -->
+  <div class="card" id="caso">
+    <div class="caso">
+      <div class="k">Caso práctico · ejemplo</div>
+      <h2>Clínica de fisioterapia que trabaja con aseguradoras</h2>
+      <div class="dato" id="d1"><i></i>4 terapeutas</div>
+      <div class="dato" id="d2"><i></i>Cartas pase de varias aseguradoras</div>
+      <div class="dato" id="d3"><i></i>Sesiones contadas a mano</div>
+    </div>
+  </div>
+
+  <!-- 2 · La carta vence -->
+  <div class="card carta" id="carta">
+    <div class="ccab"><span>Aseguradora · carta pase #48291</span><span class="ej">Ejemplo</span></div>
+    <div class="ccuerpo">
+      <b class="t">Rehabilitación de hombro</b>
+      <div class="barra"><i id="cbar"></i></div>
+      <div class="cdatos"><span>Autorizadas <b>10</b></span><span>Tomadas <b id="ctom">0</b></span><span>Vigencia <b>30 oct</b></span></div>
+    </div>
+    <div class="sello" id="sello">VENCIDA</div>
+    <div class="pierde" id="pierde">4 sesiones que ya no cubre la carta</div>
+  </div>
+
+  <!-- 3 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>3</b><span>cartas que vencen</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>4</b><span>sesiones pendientes</span></div>
+    <div class="term" id="e3"><span class="op">×</span><b>$700</b><span>por sesión</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">$0</b></div>
+  </div>
+
+  <!-- 4 · Al año -->
+  <div class="card" id="anio">
+    <div class="ccab"><span>Un año · ejemplo</span><span>$8,400 por mes</span></div>
+    <div class="meses" id="meses"></div>
+    <div class="total"><span>Al año</span><b id="atot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · El primer flujo -->
+  <div class="card plano" id="plano">
+    <div class="ccab"><span>Primer flujo</span><span>Un proceso, no todo</span></div>
+    <div class="nodo" id="n1"><div class="k">Carta pase #48291</div><b>Cubre 10 sesiones · vence 30 oct</b></div>
+    <div class="flecha" id="f1">↓</div>
+    <div class="nodo" id="n2"><div class="k">Cada sesión se registra</div>
+      <div class="cont"><div class="barra"><i id="sbar"></i></div><b id="scnt">5/10</b></div></div>
+  </div>
+
+  <!-- 7 · Aviso -->
+  <div class="noti" id="noti">
+    <div class="k">🔔 Recepción · ahora</div>
+    <p>Sofía M. va en la sesión 8 de 10. Hay que pedir la renovación de la carta #48291.</p>
+    <div class="btn" id="btn">Solicitar renovación</div>
+  </div>
+
+  <!-- 8 · Qué mediría -->
+  <div class="card" id="medir">
+    <div class="ccab"><span>Una sola métrica</span><span>Desde el día 1</span></div>
+    <div class="medir">
+      <div class="k">Cartas renovadas antes de vencer</div>
+      <div class="val"><b id="mval">?</b><span>de cada 10</span></div>
+      <div class="meta" id="meta">Meta del primer mes: 9 de 10</div>
+      <div class="n" id="mn">Si no mejora, se ajusta antes de construir lo siguiente.</div>
+    </div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>La cuenta</span><i>→</i><span>Un flujo</span><i>→</i><span class="v">Se mide</span></div>
+    <p>Así pienso cada proceso de una clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  var M = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+  $('meses').innerHTML = M.map(function (m) { return '<i><b></b><span>' + m + '</span></i>'; }).join('');
+};
+window.escena = function (t) {
+  // 1 · El caso
+  bloque($('caso'), 'caso', 'caso', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { aparece(id, t, S.caso + 0.6 + i * 0.45, 40); });
+
+  // 2 · Carta que vence a medias
+  bloque($('carta'), 'pasa', 'pasa', t);
+  var cq = easeOut(clamp((t - (S.pasa + 0.5)) / 1.6));
+  $('cbar').style.width = (60 * cq) + '%'; $('ctom').textContent = Math.round(6 * cq);
+  var sq = clamp((t - (S.pasa + 2.6)) / 0.3);
+  $('sello').style.opacity = sq; $('sello').style.transform = 'rotate(-12deg) scale(' + (1.6 - 0.6 * easeOut(sq)) + ')';
+  aparece('pierde', t, S.pasa + 3.3);
+
+  // 3 · La cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  ['e1', 'e2', 'e3'].forEach(function (id, i) { aparece(id, t, S.cuenta + 1.2 + i * 1.3, 50); });
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuenta + 5.2, 1.4, 8400) / 10) * 10);
+
+  // 4 · Al año
+  bloque($('anio'), 'anio', 'anio', t);
+  document.querySelectorAll('#meses i b').forEach(function (b, i) { b.style.transform = 'scaleY(' + easeOut(clamp((t - (S.anio + 0.4 + i * 0.12)) / 0.3)) + ')'; });
+  $('atot').textContent = pesos(Math.round(cuenta(t, S.anio + 0.4, 1.8, 100800) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro' in S ? 'giro' : 'primero');
+
+  // 6 · El flujo: carta ligada, sesiones que se cuentan solas
+  var enL = t >= S.liga && t < E.aviso + 0.1;
+  if (enL) bloque($('plano'), 'liga', 'aviso', t); else $('plano').style.opacity = 0;
+  aparece('n1', t, S.liga + 0.4); aparece('f1', t, S.liga + 0.9); aparece('n2', t, S.liga + 1.2);
+  var ses = Math.min(8, 5 + Math.floor(clamp((t - (S.liga + 1.8)) / 2.4) * 3.999));
+  $('scnt').textContent = ses + '/10'; $('sbar').style.width = (ses * 10) + '%';
+  $('sbar').style.background = ses >= 8 ? 'var(--terra)' : '';
+  // En la escena del aviso, el flujo baja un poco y entra la notificación encima
+  if (t >= S.aviso) $('plano').style.transform = 'translateY(' + (easeOut(clamp((t - S.aviso) / 0.5)) * 420) + 'px)';
+
+  // 7 · Aviso a recepción
+  var nq = t >= S.aviso && t < E.aviso + 0.1 ? Math.min(easeOut(clamp((t - S.aviso - 0.2) / 0.45)), 1 - easeOut(clamp((t - (E.aviso - 0.3)) / 0.4))) : 0;
+  $('noti').style.opacity = nq; $('noti').style.transform = 'translateY(' + ((1 - nq) * -60) + 'px)';
+  var tapT = S.aviso + 2.4, tapped = false;
+  if (t > tapT - 0.5 && t < tapT + 0.4) tapped = toque(t, tapT, $('btn'));
+  $('btn').textContent = t >= tapT ? '✓ Renovación solicitada' : 'Solicitar renovación';
+  $('btn').classList.toggle('ok2', t >= tapT);
+
+  // 8 · Qué mediría
+  bloque($('medir'), 'medir', 'medir', t);
+  aparece('meta', t, S.medir + 1.6); aparece('mn', t, S.medir + 2.4);
+  return tapped;
+};
+</script>
+</body></html>

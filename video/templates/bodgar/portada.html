@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Portada del reel (1080×1920). Lo importante va dentro del recorte 4:5 del perfil de Instagram (y 285–1635). */
+.p-chip{position:absolute;left:90px;top:330px;display:flex;align-items:center;gap:16px;background:rgba(244,241,234,.1);border:2px solid rgba(244,241,234,.25);border-radius:999px;padding:16px 28px;font-family:M;font-weight:600;font-size:30px;letter-spacing:.1em;text-transform:uppercase;color:var(--crema)}
+.p-chip i{width:16px;height:16px;border-radius:50%;background:var(--terra)}
+.p-tit{position:absolute;left:90px;right:90px;top:470px}
+.p-tit h1{margin:0;font-family:B;font-weight:800;font-stretch:86%;font-size:150px;line-height:.98;letter-spacing:-.025em;text-wrap:balance}
+.p-tit h1 em{font-style:normal;color:var(--terra)}
+.p-dato{position:absolute;left:90px;right:90px;top:1150px;background:var(--papel);color:var(--tinta);border-radius:36px;padding:34px 40px;box-shadow:0 30px 70px rgba(0,0,0,.35);display:flex;align-items:center;gap:30px}
+.p-dato b{font-family:B;font-weight:800;font-size:96px;line-height:1;white-space:nowrap}
+.p-dato span{font-size:34px;font-weight:600;color:var(--gris);line-height:1.25}
+.p-dato.perd b{color:var(--terra2)}.p-dato.gana b{color:var(--verde)}
+.p-pie{position:absolute;left:90px;right:90px;top:1460px;display:flex;justify-content:space-between;align-items:center;font-family:M;font-weight:600;font-size:30px;color:rgba(244,241,234,.75)}
+.p-pie b{color:var(--crema)}
+.p-ej{font-family:M;font-size:24px;color:rgba(244,241,234,.5)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev</div>
+  <div class="p-chip"><i></i><span id="etq"></span></div>
+  <div class="p-tit"><h1 id="tit"></h1></div>
+  <div class="p-dato" id="dato"><b id="dnum"></b><span id="dtxt"></span></div>
+  <div class="p-pie"><span class="p-ej" id="ej">Cifras de ejemplo</span><span><b>Ver el reel</b> →</span></div>
+</div>
+<script>
+// data.portada = {etiqueta, titulo: "texto con *énfasis*", dato?: {num, texto, tipo: "perd"|"gana"}}
+window.setup = function (data) {
+  var p = data.portada || {};
+  var esc = function (s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+  document.getElementById('etq').textContent = p.etiqueta || '';
+  document.getElementById('tit').innerHTML = esc(p.titulo || '').replace(/\*(.+?)\*/g, '<em>$1</em>');
+  var d = document.getElementById('dato');
+  if (p.dato) { document.getElementById('dnum').textContent = p.dato.num; document.getElementById('dtxt').textContent = p.dato.texto; d.classList.add(p.dato.tipo || 'perd'); }
+  else { d.style.display = 'none'; document.getElementById('ej').style.visibility = 'hidden'; }
+  return 0;
+};
+</script>
+</body></html>

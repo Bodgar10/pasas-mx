@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+/* Video "Tus clientes te preguntan todo" para bodegas, 3PL y fulfillment (bodgar.dev).
+   Misma base visual que cancelaciones.html. Escenas recreadas e ilustradas.
+   Zona segura: nada importante debajo de y=1560. */
+@font-face{font-family:B;src:url(../../fonts/bodgar/brico.woff2) format('woff2');font-weight:200 800}
+@font-face{font-family:I;font-weight:400;src:url(../../fonts/bodgar/inst-400.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:500;src:url(../../fonts/bodgar/inst-500.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:600;src:url(../../fonts/bodgar/inst-600.woff2) format('woff2')}
+@font-face{font-family:I;font-weight:700;src:url(../../fonts/bodgar/inst-700.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:400;src:url(../../fonts/bodgar/plex-400.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:600;src:url(../../fonts/bodgar/plex-600.woff2) format('woff2')}
+:root{--tinta:#1F332E;--crema:#F4F1EA;--papel:#FBFAF7;--terra:#C96F4A;--terra2:#B35D3A;--verde:#3E8E6A;--verde2:#DDEFE5;--gris:#8A9893;--linea:#E3DED3}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--tinta)}
+.frame{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:I;color:var(--crema);
+  background:radial-gradient(90% 45% at 100% 0%,rgba(201,111,74,.28),transparent 60%),radial-gradient(80% 40% at 0% 100%,rgba(62,142,106,.22),transparent 60%),var(--tinta)}
+.marca{position:absolute;left:90px;top:96px;font-family:M;font-weight:600;font-size:30px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,241,234,.7)}
+.marca b{color:var(--terra);font-weight:600}
+.tit{position:absolute;left:90px;right:90px;top:200px;opacity:0}
+.tit h1{margin:0;font-family:B;font-weight:800;font-stretch:88%;font-size:112px;line-height:1;letter-spacing:-.02em;text-wrap:balance;transform-origin:0 50%}
+.tit h1 em{font-style:normal;color:var(--terra)}
+.tit p{margin:22px 0 0;font-size:44px;font-weight:600;color:rgba(244,241,234,.78);text-wrap:balance}
+
+/* Teléfono */
+#phone{position:absolute;left:250px;top:620px;width:580px;height:880px;border-radius:80px;background:#0c1513;box-shadow:0 0 0 6px #2c4540,0 40px 90px rgba(0,0,0,.5)}
+#phone .scr{position:absolute;inset:16px;border-radius:66px;background:var(--papel);overflow:hidden;color:var(--tinta)}
+.pant{position:absolute;inset:0;opacity:0}
+.pcab{height:140px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 34px 20px;border-bottom:1px solid var(--linea)}
+.pcab b{font-family:B;font-weight:800;font-size:44px}
+.badge{min-width:64px;height:64px;border-radius:32px;background:var(--terra);color:#fff;display:grid;place-items:center;font-family:B;font-weight:800;font-size:36px;padding:0 16px}
+.msg{display:flex;gap:18px;padding:20px 30px;border-bottom:1px solid var(--linea);opacity:0}
+.av{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-family:B;font-weight:700;font-size:30px;color:#fff;flex:none}
+.msg div{min-width:0}.msg b{display:block;font-size:28px}.msg span{display:block;font-size:26px;color:#5d6b66;line-height:1.3}
+.msg i{font-style:normal;margin-left:auto;align-self:center;width:22px;height:22px;border-radius:50%;background:var(--terra);flex:none}
+
+/* Portal del cliente */
+.ptop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;gap:16px;padding:0 30px 22px}
+.logo{width:62px;height:62px;border-radius:16px;background:var(--terra);display:grid;place-items:center;font-family:B;font-weight:800;font-size:28px;color:#fff}
+.ptop b{display:block;font-size:30px}.ptop span{display:block;font-size:22px;color:rgba(244,241,234,.65)}
+.hola{padding:22px 30px 8px;font-size:28px;font-weight:700}
+.tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:8px 24px 16px}
+.tile{background:#EEF3F1;border-radius:20px;padding:16px 14px}
+.tile b{display:block;font-family:B;font-weight:800;font-size:46px}
+.tile span{font-size:23px;color:var(--gris);font-weight:600}
+.ped{display:flex;align-items:center;gap:14px;margin:0 24px 12px;padding:18px 20px;border-radius:20px;border:2px solid var(--linea);font-size:26px;font-weight:700}
+.ped .est{margin-left:auto;font-size:21px;padding:8px 14px;border-radius:14px;font-weight:700}
+.camino{background:#FBEADF;color:var(--terra2)}.entregado{background:var(--verde2);color:var(--verde)}.emp{background:#EEE8DE;color:#8a7a66}
+/* Detalle del pedido */
+#det{position:absolute;inset:0;background:var(--papel);transform:translateX(100%)}
+.dcab{height:150px;display:flex;align-items:flex-end;gap:18px;padding:0 30px 22px;border-bottom:1px solid var(--linea)}
+.dcab b{font-family:B;font-weight:800;font-size:40px}
+.paso{position:relative;display:flex;gap:20px;padding:22px 30px 6px 30px;opacity:0}
+.paso .pt{width:40px;height:40px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:22px;flex:none;z-index:1}
+.paso.ahora .pt{background:var(--terra);box-shadow:0 0 0 8px rgba(201,111,74,.25)}
+.paso b{display:block;font-size:28px}.paso span{font-size:22px;color:var(--gris)}
+.paso::before{content:"";position:absolute;left:49px;top:62px;bottom:-24px;width:3px;background:var(--linea)}
+.paso:last-child::before{display:none}
+.foto{margin-top:12px;width:250px;height:150px;border-radius:16px;background:#E9DFD0;position:relative;overflow:hidden}
+.foto .caja{position:absolute;left:60px;top:34px;width:130px;height:90px;background:#C9A57B;border-radius:8px}
+.foto .caja::before{content:"";position:absolute;left:0;right:0;top:0;height:28px;background:#B88F63;border-radius:8px 8px 0 0}
+.foto .cinta{position:absolute;left:118px;top:34px;width:16px;height:90px;background:#E8D7B8}
+.foto em{position:absolute;right:8px;bottom:8px;font-style:normal;font-family:M;font-size:16px;background:rgba(31,51,46,.75);color:#fff;padding:3px 8px;border-radius:8px}
+
+/* Tarjetas */
+.card{position:absolute;left:90px;right:90px;background:var(--papel);color:var(--tinta);border-radius:36px;box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden;opacity:0}
+.ccab{display:flex;justify-content:space-between;align-items:center;padding:26px 36px;border-bottom:1px solid var(--linea);font-family:M;font-weight:600;font-size:26px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra2)}
+.ccab span:last-child{color:var(--gris)}
+/* Excel */
+#excel{top:640px}
+.preg{margin:28px 36px 10px;align-self:flex-start;display:inline-block;background:#EEF3F1;border-radius:26px 26px 26px 8px;padding:20px 26px;font-size:32px;font-weight:600}
+.hoja{margin:16px 36px 30px;border:2px solid var(--linea);border-radius:14px;overflow:hidden;font-family:M;font-size:24px}
+.hoja .r{display:grid;grid-template-columns:130px 1fr 150px;border-bottom:1px solid var(--linea)}
+.hoja .r:last-child{border-bottom:0}
+.hoja .r span{padding:14px 16px;border-right:1px solid var(--linea);white-space:nowrap;overflow:hidden}
+.hoja .r span:last-child{border-right:0}
+.hoja .h{background:#EEE8DE;font-weight:600}
+.hoja .r.on{background:#FBEADF}
+.reloj{position:absolute;right:36px;top:110px;display:flex;align-items:center;gap:12px;background:var(--tinta);color:var(--crema);border-radius:22px;padding:14px 22px;font-family:M;font-weight:600;font-size:34px}
+/* Horas */
+#horas{top:640px}
+.grid{display:grid;grid-template-columns:repeat(11,1fr);gap:12px;padding:34px 36px 20px}
+.grid i{aspect-ratio:1;border-radius:12px;background:#EEE8DE;position:relative;overflow:hidden}
+.grid i b{position:absolute;inset:0;background:var(--terra);transform:scale(0)}
+.hfila{display:flex;justify-content:space-between;align-items:baseline;padding:18px 36px 28px;border-top:1px solid var(--linea)}
+.hfila span{font-size:32px;font-weight:600;color:var(--gris)}
+.hfila b{font-family:B;font-weight:800;font-size:92px;color:var(--terra2)}
+/* Plan */
+#plan{top:640px}
+.plan{padding:34px 36px}
+.plan h2{margin:0 0 10px;font-family:B;font-weight:800;font-size:64px}
+.plan .d{font-size:30px;color:var(--gris);margin-bottom:24px}
+.inc{display:flex;align-items:center;gap:18px;font-size:34px;font-weight:600;padding:12px 0;opacity:0}
+.inc i{width:48px;height:48px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-style:normal;font-size:26px}
+.precio{display:flex;align-items:baseline;gap:14px;margin-top:26px;padding-top:24px;border-top:1px solid var(--linea);opacity:0}
+.precio b{font-family:B;font-weight:800;font-size:84px;color:var(--verde)}
+.precio span{font-size:30px;color:var(--gris);font-weight:600}
+.ej{display:inline-block;font-family:M;font-size:22px;background:#EEE8DE;color:#8a7a66;padding:6px 12px;border-radius:10px;margin-left:auto}
+/* Cuenta */
+#cuenta{top:640px}
+.fila{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.fila span{font-size:32px;font-weight:600;color:var(--gris)}
+.fila b{font-family:B;font-weight:800;font-size:64px}
+.fila.g b{color:var(--verde);font-size:86px}
+.nota{padding:20px 36px 30px;font-family:M;font-size:24px;color:var(--gris)}
+
+/* Giro */
+#giro{position:absolute;left:50%;top:1000px;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:var(--terra);display:grid;place-items:center;opacity:0;box-shadow:0 0 80px rgba(201,111,74,.6)}
+#giro svg{width:150px;height:150px}
+/* Cierre */
+#fin{position:absolute;left:90px;right:90px;top:620px;opacity:0}
+.pasos{display:flex;align-items:center;gap:14px;margin:0 0 60px;flex-wrap:wrap}
+.pasos span{background:rgba(244,241,234,.1);border:2px solid rgba(244,241,234,.25);border-radius:22px;padding:18px 22px;font-size:32px;font-weight:700}
+.pasos span.v{background:var(--verde);border-color:var(--verde)}
+.pasos i{font-style:normal;font-size:34px;color:var(--terra)}
+#fin p{margin:0 0 50px;font-size:52px;line-height:1.3;font-weight:600;color:rgba(244,241,234,.9)}
+.url{display:inline-block;font-family:M;font-weight:600;font-size:38px;background:var(--crema);color:var(--tinta);padding:30px 40px;border-radius:26px;box-shadow:0 0 0 6px rgba(201,111,74,.5)}
+.diag{margin-top:46px;display:flex;align-items:center;gap:18px;font-size:40px;font-weight:700}
+.diag i{width:56px;height:56px;border-radius:50%;background:var(--terra);display:grid;place-items:center;font-style:normal;font-size:32px}
+.cifras{margin-top:60px;font-family:M;font-size:24px;color:rgba(244,241,234,.55)}
+/* Dedo */
+#tap{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;background:rgba(255,255,255,.4);border:5px solid rgba(31,51,46,.6);opacity:0;z-index:20}
+#ripple{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;border:5px solid var(--terra);opacity:0;z-index:19}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-mensajes"><h1>10:15 AM</h1><p>Y ya van 12 mensajes</p></div>
+  <div class="tit" id="t-buscar"><h1>Deja todo, busca, <em>contesta</em></h1></div>
+  <div class="tit" id="t-horas"><h1>+30 horas <em>al mes</em></h1><p>Ejemplo: 30 mensajes × 3 min × 22 días</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo ve <em>solo?</em></h1></div>
+  <div class="tit" id="t-portal"><h1>Su portal, con <em>tu marca</em></h1></div>
+  <div class="tit" id="t-tracking"><h1>Tracking y <em>evidencia</em></h1></div>
+  <div class="tit" id="t-calma"><h1>Menos <em>mensajes</em></h1></div>
+  <div class="tit" id="t-cobra"><h1>Y lo puedes <em>cobrar</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $30,000 <em>al mes</em></h1><p>Ejemplo: 20 clientes × $1,500</p></div>
+  <div class="tit" id="t-cierre"><h1>¿Te preguntan todo por <em>mensaje?</em></h1></div>
+
+  <div id="phone"><div class="scr">
+    <!-- Bandeja de mensajes -->
+    <div class="pant" id="inbox">
+      <div class="pcab"><b>Mensajes</b><div class="badge" id="badge">0</div></div>
+      <div class="msg" id="m1"><div class="av" style="background:#9C7BB5">ML</div><div><b>Moda Luna</b><span>¿Cuánto me queda de la talla M?</span></div><i></i></div>
+      <div class="msg" id="m2"><div class="av" style="background:#4F8F7A">CT</div><div><b>Café Tierra</b><span>¿Ya salió mi pedido 8391?</span></div><i></i></div>
+      <div class="msg" id="m3"><div class="av" style="background:#C98A5A">TB</div><div><b>Tienda Bambú</b><span>¿Me mandas foto de lo que llegó?</span></div><i></i></div>
+      <div class="msg" id="m4"><div class="av" style="background:#9C7BB5">ML</div><div><b>Moda Luna</b><span>¿Y de la L? Urge 🙏</span></div><i></i></div>
+      <div class="msg" id="m6" style="position:absolute;left:0;right:0;top:250px;background:var(--verde2)"><div class="av" style="background:#4F8F7A">CT</div><div><b>Café Tierra</b><span>Ya vi mi pedido en el portal. ¡Gracias! 👍</span></div></div>
+      <div class="msg" id="m5"><div class="av" style="background:#6C7FB0">NS</div><div><b>Nube Store</b><span>¿Cuántas cajas tengo en total?</span></div><i></i></div>
+    </div>
+    <!-- Portal del cliente -->
+    <div class="pant" id="portal">
+      <div class="ptop"><div class="logo">TB</div><div><b>Tu bodega</b><span>Portal de clientes</span></div></div>
+      <div class="hola">Hola, Café Tierra</div>
+      <div class="tiles">
+        <div class="tile"><b id="k1">0</b><span>piezas</span></div>
+        <div class="tile"><b id="k2">0</b><span>pedidos hoy</span></div>
+        <div class="tile"><b id="k3">0</b><span>en camino</span></div>
+      </div>
+      <div class="ped" id="p8391">#8391<span class="est camino">En camino</span></div>
+      <div class="ped">#8390<span class="est entregado">Entregado</span></div>
+      <div class="ped">#8389<span class="est emp">Empacando</span></div>
+      <div class="ped">#8388<span class="est entregado">Entregado</span></div>
+      <div id="det">
+        <div class="dcab"><b>Pedido #8391</b></div>
+        <div class="paso" id="d1"><span class="pt">✓</span><div><b>Recibido en bodega</b><span>08:42</span></div></div>
+        <div class="paso" id="d2"><span class="pt">✓</span><div><b>Empacado</b><span>13:12 · foto de evidencia</span>
+          <div class="foto"><div class="caja"></div><div class="cinta"></div><em>13:12</em></div></div></div>
+        <div class="paso" id="d3"><span class="pt">✓</span><div><b>Entregado a paquetería</b><span>17:21</span></div></div>
+        <div class="paso ahora" id="d4"><span class="pt">•</span><div><b>En camino</b><span>Llega mañana</span></div></div>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- Excel y reloj -->
+  <div class="card" id="excel">
+    <div class="ccab"><span>inventario_final_v3.xlsx</span><span>Cada mensaje</span></div>
+    <div class="reloj" id="reloj">⏱ <span id="rt">0:00</span></div>
+    <div class="preg" id="preg">¿Ya salió mi pedido 8391?</div>
+    <div class="hoja">
+      <div class="r h"><span>Pedido</span><span>Cliente</span><span>Estado</span></div>
+      <div class="r"><span>8386</span><span>Moda Luna</span><span>Salió</span></div>
+      <div class="r"><span>8387</span><span>Nube Store</span><span>Salió</span></div>
+      <div class="r"><span>8388</span><span>Café Tierra</span><span>Salió</span></div>
+      <div class="r"><span>8389</span><span>Tienda Bambú</span><span>¿?</span></div>
+      <div class="r"><span>8390</span><span>Moda Luna</span><span>Salió</span></div>
+      <div class="r"><span>8391</span><span>Café Tierra</span><span>¿?</span></div>
+    </div>
+  </div>
+
+  <!-- Horas del mes -->
+  <div class="card" id="horas">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>1 cuadro = 1 hora</span></div>
+    <div class="grid" id="grid"></div>
+    <div class="hfila"><span>Contestando mensajes</span><b id="ht">0 h</b></div>
+  </div>
+
+  <div id="giro"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+
+  <!-- Plan premium -->
+  <div class="card" id="plan">
+    <div class="ccab"><span>Lo que ofreces</span><span>Plan premium</span></div>
+    <div class="plan">
+      <h2>Plan Control</h2><div class="d">Para tus clientes que quieren ver todo</div>
+      <div class="inc" id="i1"><i>✓</i>Portal con su inventario</div>
+      <div class="inc" id="i2"><i>✓</i>Tracking de cada pedido</div>
+      <div class="inc" id="i3"><i>✓</i>Fotos de evidencia</div>
+      <div class="precio" id="precio"><b>+$1,500</b><span>al mes por cliente</span><em class="ej">Ejemplo</em></div>
+    </div>
+  </div>
+
+  <!-- La cuenta -->
+  <div class="card" id="cuenta">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>20 clientes</span></div>
+    <div class="fila g" id="r1"><span>Ingreso extra</span><b id="ing">$0</b></div>
+    <div class="fila" id="r2"><span>Horas que recuperas</span><b id="hr">0 h</b></div>
+    <div class="nota">Cifras de ejemplo. Con tus números puede ser más o menos.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Te preguntan</span><i>→</i><span>Lo ven solos</span><i>→</i><span class="v">Lo cobras</span></div>
+    <p>Te cuento cómo lo haría para tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script>
+var $ = function (id) { return document.getElementById(id); };
+var clamp = function (x) { return Math.max(0, Math.min(1, x)); };
+var easeOut = function (p) { return 1 - Math.pow(1 - p, 3); };
+var back = function (p) { var c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+var F = 0.3, S = {}, E = {}, ORDEN = [];
+function win(t, a, b) { if (t < a || t >= b) return 0; return Math.min(clamp((t - a) / F), clamp((b - t) / F)); }
+function slide(el, a, dy) { el.style.opacity = a; el.style.transform = 'translateY(' + ((1 - easeOut(a)) * (dy || 60)) + 'px)'; }
+function cardIn(el, a, b, t) { // tarjeta que entra al inicio de a y sale al final de b
+  var i = easeOut(clamp((t - S[a] - 0.05) / 0.5)), o = easeOut(clamp((t - (E[b] - 0.3)) / 0.4));
+  el.style.opacity = (t >= S[a] && t < E[b] + 0.1) ? Math.min(i, 1 - o) : 0;
+  el.style.transform = 'translateY(' + ((1 - i) * 120 - o * 60) + 'px)';
+}
+function tapAt(t, t0, el) {
+  var d = t - t0, f = $('tap'), r = $('ripple'), fr = $('frame').getBoundingClientRect();
+  if (!(d > -0.5 && d < 0.4)) return false;
+  var b = el.getBoundingClientRect();
+  f.style.left = r.style.left = (b.left - fr.left + b.width / 2) + 'px';
+  f.style.top = r.style.top = (b.top - fr.top + b.height / 2) + 'px';
+  f.style.opacity = clamp((d + 0.5) / 0.2) * clamp((0.4 - d) / 0.2);
+  f.style.transform = 'scale(' + (d > -0.08 && d < 0.12 ? 0.8 : 1) + ')';
+  var q = clamp(d / 0.45); r.style.opacity = d > 0 && d < 0.45 ? 0.8 * (1 - q) : 0; r.style.transform = 'scale(' + (1 + q * 1.5) + ')';
+  return true;
+}
+function num(n) { return Math.round(n).toLocaleString('en-US'); }
+
+window.setup = function (data) {
+  ORDEN = data.ids; var t = 0;
+  ORDEN.forEach(function (id, i) { S[id] = t; t += data.durs[i]; E[id] = t; });
+  var g = ''; for (var i = 0; i < 33; i++) g += '<i><b></b></i>'; $('grid').innerHTML = g;
+  window.render(0);
+  return t;
+};
+window.momentos = function () { return ORDEN.map(function (id) { return S[id] + (E[id] - S[id]) * 0.8; }); };
+
+window.render = function (t) {
+  ORDEN.forEach(function (id) {
+    var el = $('t-' + id); if (!el) return;
+    slide(el, win(t, S[id], E[id] + (id === 'cierre' ? 9 : 0)), 50);
+    el.querySelector('h1').style.transform = 'scale(' + (0.92 + 0.08 * back(clamp((t - S[id]) / 0.4))) + ')';
+  });
+
+  // Teléfono: visible en mensajes, portal, tracking y calma
+  var vis = function (a, b) { return t >= S[a] - 0.1 && t < E[b]; };
+  var enA = vis('mensajes', 'mensajes'), enB = vis('portal', 'calma');
+  var pin, pout;
+  if (enA) { pin = easeOut(clamp((t - 0.1) / 0.6)); pout = easeOut(clamp((t - (E.mensajes - 0.35)) / 0.45)); }
+  else if (enB) { pin = easeOut(clamp((t - S.portal) / 0.6)); pout = easeOut(clamp((t - (E.calma - 0.35)) / 0.45)); }
+  $('phone').style.opacity = (enA || enB) ? 1 : 0;
+  if (enA || enB) $('phone').style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var inboxOn = enA || t >= S.calma;
+  $('inbox').style.opacity = inboxOn ? 1 : 0;
+  $('portal').style.opacity = inboxOn ? 0 : 1;
+
+  // 1 · Llegan los mensajes y sube el contador
+  ['m1', 'm2', 'm3', 'm4', 'm5'].forEach(function (id, i) {
+    var at = 0.6 + i * 0.5, q = clamp((t - at) / 0.3), el = $(id);
+    if (t >= S.calma) { var bajó = clamp((t - (S.calma + 0.6 + (4 - i) * 0.25)) / 0.3); el.style.opacity = i === 0 ? 1 : 1 - bajó; el.querySelector('i').style.opacity = 1 - clamp((t - (S.calma + 0.5)) / 0.3); return; }
+    el.style.opacity = q; el.style.transform = 'translateX(' + ((1 - easeOut(q)) * 80) + 'px)'; el.querySelector('i').style.opacity = 1;
+  });
+  var q6 = t >= S.calma ? clamp((t - (S.calma + 1.6)) / 0.35) : 0; $('m6').style.opacity = q6; $('m6').style.transform = 'translateY(' + ((1 - easeOut(q6)) * 40) + 'px)';
+  var c = Math.min(12, Math.floor(clamp((t - 0.6) / 2.6) * 12));
+  if (t >= S.calma) c = Math.max(2, 12 - Math.floor(clamp((t - (S.calma + 0.5)) / 1.4) * 10));
+  $('badge').textContent = c;
+  $('badge').style.background = t >= S.calma && c <= 2 ? 'var(--verde)' : 'var(--terra)';
+
+  // 2 · Excel: aparece la pregunta, se recorre la hoja, corre el reloj
+  cardIn($('excel'), 'buscar', 'buscar', t);
+  var rows = document.querySelectorAll('#excel .r:not(.h)');
+  var scan = (t - (S.buscar + 1.2)) / 0.45;
+  rows.forEach(function (r, i) { r.classList.toggle('on', t > S.buscar + 1.2 && Math.floor(scan) % rows.length === i && t < E.buscar - 0.8 || (t >= E.buscar - 0.8 && i === 5)); });
+  var secs = Math.round(180 * clamp((t - (S.buscar + 0.5)) / (E.buscar - S.buscar - 1)));
+  $('rt').textContent = Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0');
+
+  // 3 · Horas: se llenan 33 cuadros
+  cardIn($('horas'), 'horas', 'horas', t);
+  var hq = clamp((t - (S.horas + 0.5)) / Math.max(1, (E.horas - S.horas - 1.2)));
+  var n = Math.round(33 * hq);
+  document.querySelectorAll('#grid i b').forEach(function (b, i) { var q = clamp((33 * hq - i) / 1); b.style.transform = 'scale(' + easeOut(q) + ')'; });
+  $('ht').textContent = n + ' h';
+
+  // 4 · Giro
+  $('giro').style.opacity = win(t, S.giro, E.giro);
+  $('giro').style.transform = 'scale(' + (0.6 + 0.4 * back(clamp((t - S.giro) / 0.4))) + ') rotate(' + (Math.sin(t * 3) * 4) + 'deg)';
+
+  // 5 · Portal: los números suben
+  var kq = easeOut(clamp((t - (S.portal + 0.8)) / 1.4));
+  $('k1').textContent = num(1240 * kq); $('k2').textContent = num(37 * kq); $('k3').textContent = num(12 * kq);
+
+  // 6 · Tracking: toca el pedido y entra el detalle con su línea de tiempo
+  var tapT = S.tracking + 0.6;
+  var tapped = (t > S.tracking && t < S.tracking + 1.1) ? tapAt(t, tapT, $('p8391')) : false;
+  if (!tapped) { $('tap').style.opacity = 0; $('ripple').style.opacity = 0; }
+  $('p8391').style.background = t >= tapT && t < tapT + 0.3 ? '#FBEADF' : '';
+  var dq = easeOut(clamp((t - (tapT + 0.15)) / 0.45));
+  $('det').style.transform = 'translateX(' + ((1 - dq) * 100) + '%)';
+  ['d1', 'd2', 'd3', 'd4'].forEach(function (id, i) { var q = clamp((t - (tapT + 0.6 + i * 0.4)) / 0.3); $(id).style.opacity = q; $(id).style.transform = 'translateY(' + ((1 - easeOut(q)) * 30) + 'px)'; });
+  $('d4').querySelector('.pt').style.boxShadow = '0 0 0 ' + (6 + 5 * Math.sin(t * 6)) + 'px rgba(201,111,74,.25)';
+
+  // 8 · Plan premium
+  cardIn($('plan'), 'cobra', 'cobra', t);
+  ['i1', 'i2', 'i3'].forEach(function (id, i) { var q = clamp((t - (S.cobra + 0.5 + i * 0.35)) / 0.3); $(id).style.opacity = q; $(id).style.transform = 'translateX(' + ((1 - easeOut(q)) * 40) + 'px)'; });
+  var pr = clamp((t - (S.cobra + 1.7)) / 0.35); $('precio').style.opacity = pr; $('precio').style.transform = 'scale(' + (0.9 + 0.1 * back(pr)) + ')';
+
+  // 9 · La cuenta
+  cardIn($('cuenta'), 'cuenta', 'cuenta', t);
+  var r1 = clamp((t - (S.cuenta + 0.4)) / 0.3), r2 = clamp((t - (S.cuenta + 3.2)) / 0.3);
+  $('r1').style.opacity = r1; $('r2').style.opacity = r2;
+  $('ing').textContent = '$' + num(Math.round(30000 * easeOut(clamp((t - (S.cuenta + 0.5)) / 2.2)) / 100) * 100);
+  $('hr').textContent = Math.round(33 * easeOut(clamp((t - (S.cuenta + 3.3)) / 1.4))) + ' h';
+
+  // 10 · Cierre
+  slide($('fin'), clamp((t - S.cierre - 0.15) / 0.5), 70);
+  $('url').style.transform = 'scale(' + (1 + 0.03 * Math.sin(Math.max(0, t - S.cierre - 1) * 4)) + ')';
+};
+</script>
+</body></html>

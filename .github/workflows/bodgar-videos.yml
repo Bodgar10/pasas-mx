@@ -1,0 +1,68 @@
+# Video diario de bodgar.dev (plataformas en español, apps en inglés), SIN voz, por correo.
+# Lee video/data/bodgar/AAAA-MM-DD.json (fecha de hoy en México) y su plantilla en video/templates/bodgar/.
+# Corre solo de lunes a viernes ~06:47 hora de México; se publica a las 12:30 PM.
+# A mano: Actions → "Videos de bodgar.dev" → Run workflow (fecha opcional).
+# Guía: video/BODGAR.md
+name: Videos de bodgar.dev
+
+on:
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: 'AAAA-MM-DD (vacío = hoy en hora de México)'
+        type: string
+        default: ''
+      enviar:
+        description: 'Mandar el correo'
+        type: boolean
+        default: true
+  schedule:
+    # Minuto "raro" a propósito: GitHub retrasa los horarios en punto.
+    - cron: '47 12 * * 1-5'   # ~06:47 hora de México, lunes a viernes
+
+concurrency:
+  group: bodgar-videos
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: video
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      - name: Instalar dependencias
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Generar y enviar
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          BODGAR_EMAIL_TO: ${{ secrets.BODGAR_EMAIL_TO }}
+          ARCADE_EMAIL_TO: ${{ secrets.ARCADE_EMAIL_TO }}
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.fecha }}" ]; then ARGS="$ARGS --fecha ${{ inputs.fecha }}"; fi
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.enviar }}" = "true" ]; then ARGS="$ARGS --enviar"; fi
+          node src/bodgar.mjs $ARGS
+
+      # Respaldo: si el correo falla, el video queda descargable en la corrida
+      - name: Guardar archivos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bodgar-${{ github.run_id }}
+          path: video/salida/bodgar/
+          retention-days: 7
+          if-no-files-found: ignore
