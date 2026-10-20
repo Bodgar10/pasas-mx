@@ -4,7 +4,7 @@ Un video al día, de lunes a viernes, para las redes de bodgar.dev. Plataformas 
 
 ## Cómo llega cada mañana
 
-1. El workflow **"Videos de bodgar.dev"** (`.github/workflows/bodgar-videos.yml`) corre de lunes a viernes a las ~06:47, hora de México.
+1. El workflow **"Videos de bodgar.dev"** (`.github/workflows/bodgar-videos.yml`) corre de lunes a viernes a las ~06:47, hora de México, con dos respaldos (~07:23 y ~07:53) por si GitHub se salta la corrida; si el correo del día ya salió, los respaldos no hacen nada.
 2. Lee `data/bodgar/AAAA-MM-DD.json` (fecha de hoy) y su plantilla en `templates/bodgar/`.
 3. Genera el reel **sin voz** (con pista de audio en silencio), su **portada** y la **story** del día, y los manda por correo a `BODGAR_EMAIL_TO` (si no existe, a `ARCADE_EMAIL_TO`). El correo trae la descripción para copiar, los comandos de la Terminal para la voz, la dirección del sticker de enlace de la story y el guion de voz.
 4. Bodgar le pone la voz en su Mac con `tools/ponvoz.py` y publica a las **12:30 PM**.
