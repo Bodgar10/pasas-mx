@@ -1,5 +1,5 @@
 -- =============================================================================
--- 063 — Rendimiento: índices, RLS con initplan y cifras del arcade en una pasada
+-- 064 — Rendimiento: índices, RLS con initplan y cifras del arcade en una pasada
 -- =============================================================================
 --
 -- Sale de la auditoría de rendimiento del 20-oct-2026 (advisor de Supabase +
