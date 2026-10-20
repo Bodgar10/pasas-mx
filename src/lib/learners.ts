@@ -315,6 +315,83 @@ export async function resolveLearner(
 }
 
 /**
+ * resolveLearner + getAccountLearners en UNA consulta — para /dashboard.
+ *
+ * El dashboard necesitaba los dos y leía `learners` dos o tres veces en el
+ * mismo render (slot pedido, primario de respaldo y la lista de la cuenta).
+ * Una cuenta tiene 1–3 alumnos: se traen todos una vez y las dos respuestas
+ * se derivan en JS.
+ *
+ * 🔴 DEBE devolver EXACTAMENTE lo mismo que las dos funciones por separado:
+ *  - `learner`: sin filtro de status, igual que resolveLearner (el slot del
+ *    `?a=` y, si no existe o no es válido, el slot 1). Mismas columnas que
+ *    `Learner`, ni una más.
+ *  - `alumnos`: la regla de getAccountLearners (`tieneAccesoVigente`, que es
+ *    la misma), por slot y con sus mismas columnas — sin
+ *    `promocion_vista_ciclo`, que no viaja al cliente.
+ * Si la lectura falla: learner null y lista vacía, como cada una por su lado.
+ */
+export async function resolveLearnerYCuenta(
+  supabase: SupabaseClient,
+  userId: string,
+  searchParams?: { a?: string | string[] }
+) {
+  const { data, error } = await supabase
+    .from('learners')
+    .select('id, slot, display_name, education_level, grade, theme_id, xp_total, streak_days, last_active_at, last_level_seen, promocion_vista_ciclo, status, access_until')
+    .eq('account_user_id', userId)
+    .order('slot', { ascending: true })
+
+  if (error) {
+    console.error('resolveLearnerYCuenta failed:', error)
+    return { learner: null, alumnos: [] }
+  }
+
+  const filas = data ?? []
+  const raw = Array.isArray(searchParams?.a) ? searchParams?.a[0] : searchParams?.a
+  const slot = raw ? Number.parseInt(raw, 10) : 1
+  const fila =
+    (Number.isFinite(slot) && slot > 0 ? filas.find((f) => f.slot === slot) : undefined) ??
+    filas.find((f) => f.slot === 1) ??
+    null
+
+  const learner: Learner | null = fila
+    ? {
+        id: fila.id,
+        slot: fila.slot,
+        display_name: fila.display_name,
+        education_level: fila.education_level,
+        grade: fila.grade,
+        theme_id: fila.theme_id,
+        xp_total: fila.xp_total,
+        streak_days: fila.streak_days,
+        last_active_at: fila.last_active_at,
+        last_level_seen: fila.last_level_seen,
+        promocion_vista_ciclo: fila.promocion_vista_ciclo,
+      }
+    : null
+
+  const alumnos = filas
+    .filter((f) => tieneAccesoVigente(f))
+    .map((f) => ({
+      id: f.id,
+      slot: f.slot,
+      display_name: f.display_name,
+      education_level: f.education_level,
+      grade: f.grade,
+      theme_id: f.theme_id,
+      xp_total: f.xp_total,
+      streak_days: f.streak_days,
+      last_active_at: f.last_active_at,
+      last_level_seen: f.last_level_seen,
+      status: f.status,
+      access_until: f.access_until,
+    }))
+
+  return { learner, alumnos }
+}
+
+/**
  * Construye una ruta conservando el alumno activo.
  *
  * 🔴 USAR SIEMPRE ESTO en lugar de concatenar rutas a mano. Un push que

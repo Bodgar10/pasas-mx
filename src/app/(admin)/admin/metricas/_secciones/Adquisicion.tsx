@@ -1,6 +1,6 @@
 import ComoSeLee from '@/components/admin/ComoSeLee'
 import { StatCard, SectionTitle, Panel, Nota, Vacio, FilaRanking, COLORES, GRID_4 } from '@/components/admin/Tarjetas'
-import { servicio, ventanas, pct, TOPE } from '../_lib/datos'
+import { servicio, ventanas, pct, leerTodo } from '../_lib/datos'
 
 type Usuario = { id: string; created_at: string; acquisition_source: Record<string, string> | null }
 type Sub = { user_id: string; promo_slug: string | null; created_at: string; trial_ends_at: string | null; current_period_start: string | null; billing_cycle: string | null; acquisition: Record<string, string> | null }
@@ -13,15 +13,18 @@ export default async function Adquisicion({ incluirPrueba }: { incluirPrueba: bo
 
   // 🔴 NO se pide `email`. Esta pestaña agrupa por canal; la identidad de
   // cada persona no hace falta y no debe viajar al navegador.
-  const qU = db.from('users').select('id, created_at, acquisition_source').limit(TOPE)
-  const qS = db
-    .from('subscriptions')
-    .select('user_id, promo_slug, created_at, trial_ends_at, current_period_start, billing_cycle, acquisition')
-    .limit(TOPE)
-
+  // Paginadas con `leerTodo`: PostgREST corta en 1000 filas sin avisar.
   const [{ data: dataU }, { data: dataS }] = await Promise.all([
-    incluirPrueba ? qU : qU.eq('is_test', false),
-    incluirPrueba ? qS : qS.eq('is_test', false),
+    leerTodo<Usuario>(() => {
+      const q = db.from('users').select('id, created_at, acquisition_source')
+      return (incluirPrueba ? q : q.eq('is_test', false)).order('id')
+    }),
+    leerTodo<Sub>(() => {
+      const q = db
+        .from('subscriptions')
+        .select('user_id, promo_slug, created_at, trial_ends_at, current_period_start, billing_cycle, acquisition')
+      return (incluirPrueba ? q : q.eq('is_test', false)).order('id')
+    }),
   ])
 
   const usuarios = (dataU ?? []) as Usuario[]

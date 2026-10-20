@@ -22,7 +22,8 @@ import 'server-only'
 
 import { stripe } from '@/lib/payments/stripe'
 import { cicloDisplay } from '@/lib/payments/config'
-import { getPromoActiva, getPromoPorDefecto, promoAplica, type PromoCampaign } from '@/lib/promos'
+import { promoAplica, type PromoCampaign } from '@/lib/promos'
+import { getPromoActiva, getPromoPorDefecto } from '@/lib/promos-server'
 
 /**
  * La fila dice que la campaña está viva y aplica, pero Stripe no reconoce el

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { leerRetoDeHoy, leerRetoDeMateria, leerRetoVom } from '@/lib/arcade-server'
-import { copyCTA, getPromoPorDefecto, leyendaPromo, microcopyPromo } from '@/lib/promos'
+import { copyCTA, leyendaPromo, microcopyPromo } from '@/lib/promos'
+import { getPromoPorDefecto } from '@/lib/promos-server'
 import { SITIO } from '@/lib/seo'
 import type { JuegoArcade, OrigenArcade } from '@/lib/arcade'
 import ArcadeClient, { type OfertaPapa, type RetoDeHoy } from './arcade-client'

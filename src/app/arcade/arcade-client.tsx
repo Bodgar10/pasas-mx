@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { track } from '@/lib/analytics/track'
 import {
@@ -139,7 +139,6 @@ export default function ArcadeClient({
   const [picks, setPicks] = useState<number[]>([])
   const [cifras, setCifras] = useState<CifrasArcade | null>(null)
   const [aviso, setAviso] = useState('')
-  const [reloj, setReloj] = useState<string | null>(null)
   // Aviso al volver de confirmar o darse de baja del recordatorio (s34-F5).
   const [avisoRecordatorio, setAvisoRecordatorio] = useState<string | null>(null)
   useEffect(() => {
@@ -204,7 +203,7 @@ export default function ArcadeClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [origenRuta, reto.number, reto.date])
 
-  const resultados = calcularResultados(reto, picks)
+  const resultados = useMemo(() => calcularResultados(reto, picks), [reto, picks])
   const aciertos = resultados.filter(Boolean).length
 
   const enviarPartida = useCallback(
@@ -249,12 +248,12 @@ export default function ArcadeClient({
     })()
   }, [reto.date, juego, enviarPartida])
 
-  // Cuenta regresiva. Al llegar a cero, recarga: ya hay reto nuevo.
+  // Al llegar a cero, recarga: ya hay reto nuevo. Corre en todas las fases,
+  // pero sin estado: el reloj que se ve vive en <RelojManana/> (solo en 'end'),
+  // así el Arcade entero no se vuelve a pintar cada segundo.
   useEffect(() => {
     const tick = () => {
-      const seg = segundosParaSiguienteReto()
-      setReloj(formatoReloj(seg))
-      if (seg === 0) window.setTimeout(() => window.location.reload(), 3000)
+      if (segundosParaSiguienteReto() === 0) window.setTimeout(() => window.location.reload(), 3000)
     }
     tick()
     const id = window.setInterval(tick, 1000)
@@ -319,8 +318,11 @@ export default function ArcadeClient({
     }
   }
 
-  const codigo = codigoResultado(reto.number, resultados)
-  const texto = textoCompartir(reto.number, resultados, dominio, reto.materia, juego)
+  const codigo = useMemo(() => codigoResultado(reto.number, resultados), [reto.number, resultados])
+  const texto = useMemo(
+    () => textoCompartir(reto.number, resultados, dominio, reto.materia, juego),
+    [reto.number, resultados, dominio, reto.materia, juego]
+  )
 
   // ¿El navegador tiene menú nativo para compartir? Se decide en el cliente
   // (en el servidor no existe navigator) y desde la función async, como el
@@ -566,7 +568,7 @@ export default function ArcadeClient({
                   Mañana toca {manana} <span aria-hidden="true">{configMateria(materiaDeManana(reto.date)).emoji}</span>
                 </div>
                 <div className={s.mananaReloj}>
-                  Nuevo reto en <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
+                  Nuevo reto en <RelojManana />
                 </div>
               </div>
             )}
@@ -843,6 +845,22 @@ const ACENTO_ARCADE = { acento: MATERIAS.biologia.acento, sobreAcento: MATERIAS.
  * Si la cookie engaña (sesión vencida), lo peor es no ver la oferta.
  */
 const SIN_SUSCRIPCION = () => () => {}
+
+/**
+ * Cuenta regresiva al siguiente reto. Hoja con su propio intervalo: solo ella
+ * se vuelve a pintar cada segundo. Se monta en la fase 'end', que nunca sale
+ * del servidor (el primer render es 'inicio'), así que arranca ya con la hora.
+ */
+function RelojManana() {
+  const [reloj, setReloj] = useState<string | null>(() =>
+    typeof window === 'undefined' ? null : formatoReloj(segundosParaSiguienteReto())
+  )
+  useEffect(() => {
+    const id = window.setInterval(() => setReloj(formatoReloj(segundosParaSiguienteReto())), 1000)
+    return () => window.clearInterval(id)
+  }, [])
+  return <b suppressHydrationWarning>{reloj ?? '--:--:--'}</b>
+}
 function useConCuenta(): boolean {
   return useSyncExternalStore(
     SIN_SUSCRIPCION,

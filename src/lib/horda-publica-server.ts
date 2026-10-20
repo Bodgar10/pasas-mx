@@ -1,5 +1,7 @@
 import 'server-only'
 
+import { cache } from 'react'
+import { unstable_cache } from 'next/cache'
 import { createClient } from '@supabase/supabase-js'
 import { faltaFirmaNueva, type AtribucionServidor } from '@/lib/arcade-server'
 import { NIVEL_ONBOARDING, OLEADAS_GRATIS, esMateriaPublica, gradoOnboarding } from '@/lib/horda-publica'
@@ -36,46 +38,82 @@ export type PreguntaPublica = {
   options: { letter: string; text: string }[]
 }
 
-/** El tema, solo si es de una materia pública, está publicado y tiene Horda. */
-export async function temaPorSlugs(subjectSlug: string, topicSlug: string): Promise<TemaPublico | null> {
-  if (!esMateriaPublica(subjectSlug)) return null
-  const db = admin()
-  const { data: subject } = await db
-    .from('subjects')
-    .select('id, slug, name, education_level, grades')
-    .eq('slug', subjectSlug)
-    .maybeSingle()
-  if (!subject) return null
-
-  const { data: topic } = await db
+/**
+ * Lectura del tema por slugs, sin caché. Tema y materia en UNA consulta:
+ * `topics.slug` es UNIQUE, así que "el tema con este slug cuya materia tiene
+ * este slug" es la misma fila que antes salía de dos lecturas en serie.
+ */
+async function leerTemaPorSlugs(subjectSlug: string, topicSlug: string): Promise<TemaPublico | null> {
+  const { data: fila } = await admin()
     .from('topics')
-    .select('id, name, slug, grade, published, horde_ready')
-    .eq('subject_id', subject.id)
+    .select('id, name, slug, grade, published, horde_ready, subjects!inner(id, slug, name, education_level, grades)')
     .eq('slug', topicSlug)
+    .eq('subjects.slug', subjectSlug)
     .maybeSingle()
-  if (!topic || !topic.published || !topic.horde_ready) return null
+  if (!fila || !fila.published || !fila.horde_ready) return null
+  const subject = fila.subjects as unknown as {
+    slug: string
+    name: string
+    education_level: string | null
+    grades: number[] | null
+  }
 
   return {
-    topicId: topic.id,
-    topicName: topic.name,
-    topicSlug: topic.slug,
+    topicId: fila.id,
+    topicName: fila.name,
+    topicSlug: fila.slug,
     subjectSlug: subject.slug,
     subjectName: subject.name,
     nivel: NIVEL_ONBOARDING[subject.education_level as string] ?? null,
-    grado: gradoOnboarding(topic.grade ?? subject.grades?.[0]),
+    grado: gradoOnboarding(fila.grade ?? subject.grades?.[0]),
   }
 }
 
-/** Valida por id (lo que mandan las APIs): mismo criterio que temaPorSlugs. */
-async function esTemaPublico(topicId: string): Promise<boolean> {
-  const { data } = await admin()
-    .from('topics')
-    .select('published, horde_ready, subjects!inner(slug)')
-    .eq('id', topicId)
-    .maybeSingle()
-  const slug = (data?.subjects as unknown as { slug: string } | null)?.slug
-  return !!data && data.published && data.horde_ready && !!slug && esMateriaPublica(slug)
-}
+/**
+ * Caché entre requests (300 s, tag 'topics'): /unete la pide en cada clic
+ * del muro y la página en cada regeneración. Mismo TTL que el `revalidate`
+ * de /horda/[subject]/[topic].
+ */
+const temaPorSlugsCacheado = unstable_cache(leerTemaPorSlugs, ['horda-publica-tema-por-slugs'], {
+  revalidate: 300,
+  tags: ['topics'],
+})
+
+/**
+ * El tema, solo si es de una materia pública, está publicado y tiene Horda.
+ *
+ * React `cache()` por encima: generateMetadata y la página lo llaman los dos
+ * en el mismo render y así comparten la misma promesa. En un route handler
+ * (/unete) no hay render y solo actúa la caché de abajo.
+ *
+ * `esMateriaPublica` va FUERA de las cachés: es una lista en código, no cuesta
+ * nada y así un slug de otra materia ni siquiera crea entrada.
+ */
+export const temaPorSlugs = cache(async (subjectSlug: string, topicSlug: string): Promise<TemaPublico | null> => {
+  if (!esMateriaPublica(subjectSlug)) return null
+  return temaPorSlugsCacheado(subjectSlug, topicSlug)
+})
+
+/**
+ * Valida por id (lo que mandan las APIs): mismo criterio que temaPorSlugs.
+ *
+ * Se llama en CADA respuesta de la Horda pública (oleada, respuesta, avance):
+ * con caché por topicId de 300 s, un jugador que contesta 30 preguntas ya no
+ * paga 30 veces la misma lectura de catálogo.
+ */
+const esTemaPublico = unstable_cache(
+  async (topicId: string): Promise<boolean> => {
+    const { data } = await admin()
+      .from('topics')
+      .select('published, horde_ready, subjects!inner(slug)')
+      .eq('id', topicId)
+      .maybeSingle()
+    const slug = (data?.subjects as unknown as { slug: string } | null)?.slug
+    return !!data && data.published && data.horde_ready && !!slug && esMateriaPublica(slug)
+  },
+  ['horda-publica-es-tema-publico'],
+  { revalidate: 300, tags: ['topics'] }
+)
 
 export async function preguntasDeOleada(topicId: string, wave: number): Promise<PreguntaPublica[] | null> {
   if (!Number.isInteger(wave) || wave < 1 || wave > OLEADAS_GRATIS) return null

@@ -1,5 +1,5 @@
 import 'server-only'
-import { createClient as createServiceClient, type SupabaseClient } from '@supabase/supabase-js'
+import { createClient as createServiceClient, type PostgrestError, type SupabaseClient } from '@supabase/supabase-js'
 
 /**
  * Capa de datos del tablero. TODO ocurre en el servidor.
@@ -14,6 +14,44 @@ import { createClient as createServiceClient, type SupabaseClient } from '@supab
  */
 
 export const TOPE = 5000 as const
+
+/** `max_rows` de PostgREST (supabase/config.toml). Ninguna respuesta trae más. */
+const PAGINA = 1000
+
+type RespuestaPagina<T> = { data: T[] | null; error: PostgrestError | null }
+
+/**
+ * Lee TODAS las filas de una consulta, de 1000 en 1000, hasta agotarla o
+ * llegar a `tope`.
+ *
+ * 🔴 `.limit(5000)` NO pasaba de 1000: PostgREST corta en `max_rows` sin
+ * error ni aviso, así que cada tarjeta se habría quedado congelada en las
+ * primeras 1000 filas en cuanto los datos crecieran.
+ *
+ * `armar` debe devolver un builder NUEVO en cada llamada (`.range()` muta el
+ * builder) y con un `.order()` ESTABLE —por PK—: sin orden, Postgres puede
+ * devolver las páginas en otro orden entre llamadas y repetir o saltarse
+ * filas.
+ *
+ * Mismo contrato que antes: si una página falla, `data` es null (antes un
+ * error también dejaba `data` en null y la pestaña pintaba ceros).
+ */
+export async function leerTodo<T>(
+  armar: () => { range(desde: number, hasta: number): PromiseLike<RespuestaPagina<T>> },
+  tope: number = TOPE
+): Promise<RespuestaPagina<T>> {
+  const filas: T[] = []
+  while (filas.length < tope) {
+    const desde = filas.length
+    const hasta = Math.min(desde + PAGINA, tope) - 1
+    const { data, error } = await armar().range(desde, hasta)
+    if (error) return { data: null, error }
+    const pagina = data ?? []
+    filas.push(...pagina)
+    if (pagina.length < hasta - desde + 1) break
+  }
+  return { data: filas, error: null }
+}
 
 export function servicio(): SupabaseClient {
   return createServiceClient(
@@ -77,17 +115,17 @@ export async function cargarFranja(incluirPrueba: boolean): Promise<Franja> {
     user_id: string
   }
 
-  const qSubs = db
-    .from('subscriptions')
-    .select('price_mxn, status, current_period_end, cancelled_at, user_id')
-    .limit(TOPE)
+  const qSubs = () => {
+    const q = db.from('subscriptions').select('price_mxn, status, current_period_end, cancelled_at, user_id')
+    return (incluirPrueba ? q : q.eq('is_test', false)).order('id')
+  }
   const qNuevos = db
     .from('users')
     .select('id', { count: 'exact', head: true })
     .gte('created_at', v.d30)
 
   const [{ data: subs }, { count: nuevos30 }, { count: dePrueba }] = await Promise.all([
-    incluirPrueba ? qSubs : qSubs.eq('is_test', false),
+    leerTodo<FilaSub>(qSubs),
     incluirPrueba ? qNuevos : qNuevos.eq('is_test', false),
     db.from('users').select('id', { count: 'exact', head: true }).eq('is_test', true),
   ])
@@ -130,14 +168,20 @@ export type Alumno = {
 
 export async function idsVigentes(incluirPrueba: boolean) {
   const db = servicio()
-  const q = db.from('users').select('id')
-  const { data: usuarios } = await (incluirPrueba ? q : q.eq('is_test', false)).limit(TOPE)
+  // Las dos lecturas son independientes: van en paralelo.
+  const [{ data: usuarios }, { data: alumnos }] = await Promise.all([
+    leerTodo<{ id: string }>(() => {
+      const q = db.from('users').select('id')
+      return (incluirPrueba ? q : q.eq('is_test', false)).order('id')
+    }),
+    leerTodo<Alumno>(() =>
+      db
+        .from('learners')
+        .select('id, account_user_id, status, access_until, education_level, grade, xp_total, streak_days, max_streak_days, last_active_at, first_session_at, activated_at')
+        .order('id')
+    ),
+  ])
   const cuentas = new Set((usuarios ?? []).map((u) => u.id as string))
-
-  const { data: alumnos } = await db
-    .from('learners')
-    .select('id, account_user_id, status, access_until, education_level, grade, xp_total, streak_days, max_streak_days, last_active_at, first_session_at, activated_at')
-    .limit(TOPE)
 
   const suyos = ((alumnos ?? []) as Alumno[]).filter((l) => cuentas.has(l.account_user_id))
   return { cuentas, alumnos: suyos, totalCuentas: cuentas.size }

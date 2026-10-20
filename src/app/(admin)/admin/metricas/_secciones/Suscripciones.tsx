@@ -1,6 +1,6 @@
 import ComoSeLee from '@/components/admin/ComoSeLee'
 import { StatCard, SectionTitle, Panel, Barra, Nota, Vacio, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
-import { servicio, ventanas, dias, pct, TOPE } from '../_lib/datos'
+import { servicio, ventanas, dias, pct, leerTodo } from '../_lib/datos'
 
 const MOTIVOS: Record<string, string> = {
   precio: '💸 Precio muy alto',
@@ -28,15 +28,18 @@ export default async function Suscripciones({ incluirPrueba }: { incluirPrueba: 
   const db = servicio()
   const v = ventanas()
 
-  const qSubs = db
-    .from('subscriptions')
-    .select('status, plan, billing_cycle, current_period_start, current_period_end, cancelled_at, paused_at, paused_until, user_id')
-    .limit(TOPE)
+  type Motivo = { reason_category: string; pause_offered: boolean | null; pause_accepted: boolean | null }
 
+  // Paginadas con `leerTodo`: PostgREST corta en 1000 filas sin avisar.
   const [{ data: dataSubs }, { data: motivos }, { count: asientos }] = await Promise.all([
-    incluirPrueba ? qSubs : qSubs.eq('is_test', false),
+    leerTodo<Sub>(() => {
+      const q = db
+        .from('subscriptions')
+        .select('status, plan, billing_cycle, current_period_start, current_period_end, cancelled_at, paused_at, paused_until, user_id')
+      return (incluirPrueba ? q : q.eq('is_test', false)).order('id')
+    }),
     // Agregado, no detalle: los textos libres se leen en /admin/insights.
-    db.from('cancellation_reasons').select('reason_category, pause_offered, pause_accepted').limit(TOPE),
+    leerTodo<Motivo>(() => db.from('cancellation_reasons').select('reason_category, pause_offered, pause_accepted').order('id')),
     db.from('learners').select('id', { count: 'exact', head: true }).eq('status', 'active').eq('is_primary', false),
   ])
 

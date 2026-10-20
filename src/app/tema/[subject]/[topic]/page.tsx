@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+import { getUsuario } from '@/lib/auth'
 import { contenidoMuestra, temaMuestraPorSlugs } from '@/lib/tema-muestra-server'
 import {
   TEMATICAS,
@@ -11,7 +11,8 @@ import {
   type MuestraTema,
 } from '@/lib/tema-muestra'
 import { esMateriaPublica, urlHordaPublica } from '@/lib/horda-publica'
-import { conPromo, copyCTA, getPromoPorDefecto, leyendaPromo, microcopyPromo } from '@/lib/promos'
+import { conPromo, copyCTA, leyendaPromo, microcopyPromo } from '@/lib/promos'
+import { getPromoPorDefecto } from '@/lib/promos-server'
 import { SITIO } from '@/lib/seo'
 import TopicClient from '@/app/(protected)/guia/[subject]/[topic]/topic-client'
 import ElegirTematica from './elegir-tematica'
@@ -47,13 +48,12 @@ export default async function TemaMuestraPage({ params, searchParams }: { params
   const desdeArcade = leer('from') === 'arcade'
 
   // Quien ya tiene cuenta no necesita la muestra: va a su guía, con su avance.
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  //
+  // La sesión y el tema van en paralelo (el tema sale de caché casi siempre,
+  // ver lib/tema-muestra-server). El redirect se decide PRIMERO, igual que
+  // antes: con cuenta se va a la guía aunque el tema no exista aquí.
+  const [{ user }, tema] = await Promise.all([getUsuario(), temaMuestraPorSlugs(subject, topic)])
   if (user && !user.is_anonymous) redirect(urlGuia(subject, topic, perfecto))
-
-  const tema = await temaMuestraPorSlugs(subject, topic)
   if (!tema) notFound()
 
   const tematica = tematicaPorClave(leer('tematica'))

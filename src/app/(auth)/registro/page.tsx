@@ -63,6 +63,93 @@ function StrengthBar({ password }: { password: string }) {
   )
 }
 
+/**
+ * A nivel de módulo, no dentro de RegistroContent: definido adentro era un
+ * componente NUEVO en cada render del padre, se remontaba y perdía su estado
+ * ("Verificando…", el aviso de no verificado).
+ */
+function VerifyButton({
+  email,
+  medir,
+}: {
+  email: string
+  medir: (verificado: boolean) => Promise<void>
+}) {
+  const [checking, setChecking] = useState(false)
+  const [notVerified, setNotVerified] = useState(false)
+
+  async function handleCheck() {
+    setChecking(true)
+    setNotVerified(false)
+    try {
+      const { createClient } = await import('@/utils/supabase/client')
+      const supabase = createClient()
+      await supabase.auth.signInWithPassword({
+        email,
+        password: '',
+      })
+      // Si el error es "Email not confirmed" → no verificado
+      // Si el error es "Invalid login credentials" → sí verificado (password vacío falla)
+      // Si no hay sesión activa, verificamos directo
+      const { data: { session } } = await supabase.auth.getSession()
+      if (session?.user?.email_confirmed_at) {
+        await medir(true)
+        window.location.href = '/dashboard'
+        return
+      }
+      // Intentar refresh de sesión
+      const { data: refreshed } = await supabase.auth.refreshSession()
+      if (refreshed?.user?.email_confirmed_at) {
+        await medir(true)
+        window.location.href = '/dashboard'
+        return
+      }
+      await medir(false)
+      setNotVerified(true)
+    } catch {
+      await medir(false)
+      setNotVerified(true)
+    } finally {
+      setChecking(false)
+    }
+  }
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={handleCheck}
+        disabled={checking}
+        className="w-full rounded-xl font-bold text-white text-base"
+        style={{
+          backgroundColor: checking ? '#4B3D6E' : '#7c3aed',
+          minHeight: '52px',
+          border: 'none',
+          cursor: checking ? 'not-allowed' : 'pointer',
+          fontFamily: 'var(--font-nunito)',
+          transition: 'background-color 0.15s ease',
+        }}
+      >
+        {checking ? 'Verificando...' : 'Ya verifiqué mi correo →'}
+      </button>
+      {notVerified && (
+        <div
+          className="rounded-xl px-4 py-3 text-sm"
+          style={{
+            background: 'rgba(239,68,68,0.08)',
+            border: '1px solid rgba(239,68,68,0.2)',
+            color: '#f87171',
+            textAlign: 'center',
+            lineHeight: 1.6,
+          }}
+        >
+          Aún no vemos tu verificación. Revisa tu correo — puede estar en spam o en la carpeta de "No deseado".
+        </div>
+      )}
+    </>
+  )
+}
+
 function RegistroContent() {
   const searchParams = useSearchParams()
   const [state, formAction, pending] = useActionState<RegistroState, FormData>(
@@ -351,7 +438,7 @@ function RegistroContent() {
         >
           El link expira en 24 horas.
         </div>
-        <VerifyButton />
+        <VerifyButton email={state.email ?? ''} medir={medirVerificacion} />
       </div>
     )
   }
@@ -371,95 +458,19 @@ function RegistroContent() {
     })
   }
 
-  function VerifyButton() {
-    const [checking, setChecking] = useState(false)
-    const [notVerified, setNotVerified] = useState(false)
-
-    /**
-     * 🔴 Esto NO es un reenvio de correo — ese boton no existe en el repo.
-     * Es "ya verifique, comprueba": la persona vuelve de su bandeja y pide
-     * que se revise. `verificado` distingue las dos salidas, y `intentos`
-     * cuenta cuantas veces tuvo que insistir. Un promedio alto ahi significa
-     * que el correo tarda o cae en spam.
-     */
-    async function medir(verificado: boolean) {
-      intentosVerificacionRef.current += 1
-      track('verificacion_comprobada', {
-        intentos: intentosVerificacionRef.current,
-        verificado,
-      })
-    }
-
-    async function handleCheck() {
-      setChecking(true)
-      setNotVerified(false)
-      try {
-        const { createClient } = await import('@/utils/supabase/client')
-        const supabase = createClient()
-        await supabase.auth.signInWithPassword({
-          email: (state as any)?.email ?? '',
-          password: '',
-        })
-        // Si el error es "Email not confirmed" → no verificado
-        // Si el error es "Invalid login credentials" → sí verificado (password vacío falla)
-        // Si no hay sesión activa, verificamos directo
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session?.user?.email_confirmed_at) {
-          await medir(true)
-          window.location.href = '/dashboard'
-          return
-        }
-        // Intentar refresh de sesión
-        const { data: refreshed } = await supabase.auth.refreshSession()
-        if (refreshed?.user?.email_confirmed_at) {
-          await medir(true)
-          window.location.href = '/dashboard'
-          return
-        }
-        await medir(false)
-        setNotVerified(true)
-      } catch {
-        await medir(false)
-        setNotVerified(true)
-      } finally {
-        setChecking(false)
-      }
-    }
-
-    return (
-      <>
-        <button
-          type="button"
-          onClick={handleCheck}
-          disabled={checking}
-          className="w-full rounded-xl font-bold text-white text-base"
-          style={{
-            backgroundColor: checking ? '#4B3D6E' : '#7c3aed',
-            minHeight: '52px',
-            border: 'none',
-            cursor: checking ? 'not-allowed' : 'pointer',
-            fontFamily: 'var(--font-nunito)',
-            transition: 'background-color 0.15s ease',
-          }}
-        >
-          {checking ? 'Verificando...' : 'Ya verifiqué mi correo →'}
-        </button>
-        {notVerified && (
-          <div
-            className="rounded-xl px-4 py-3 text-sm"
-            style={{
-              background: 'rgba(239,68,68,0.08)',
-              border: '1px solid rgba(239,68,68,0.2)',
-              color: '#f87171',
-              textAlign: 'center',
-              lineHeight: 1.6,
-            }}
-          >
-            Aún no vemos tu verificación. Revisa tu correo — puede estar en spam o en la carpeta de "No deseado".
-          </div>
-        )}
-      </>
-    )
+  /**
+   * 🔴 Esto NO es un reenvio de correo — ese boton no existe en el repo.
+   * Es "ya verifique, comprueba": la persona vuelve de su bandeja y pide
+   * que se revise. `verificado` distingue las dos salidas, y `intentos`
+   * cuenta cuantas veces tuvo que insistir. Un promedio alto ahi significa
+   * que el correo tarda o cae en spam.
+   */
+  async function medirVerificacion(verificado: boolean) {
+    intentosVerificacionRef.current += 1
+    track('verificacion_comprobada', {
+      intentos: intentosVerificacionRef.current,
+      verificado,
+    })
   }
 
   return (

@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto'
 import { createClient } from '@supabase/supabase-js'
 import { createServerClient } from '@supabase/ssr'
 import { NextRequest } from 'next/server'
-import { middleware } from '@/middleware'
+import { proxy as middleware } from '@/proxy'
 
 /**
  * I4 — LOS GATES DEL MIDDLEWARE

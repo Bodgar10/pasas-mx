@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+import { getUsuario } from '@/lib/auth'
 import { resolveLearner } from '@/lib/learners'
 import HordaClient from './horda-client'
 
-export const dynamic = 'force-dynamic'
+// Sin `force-dynamic`: lee la sesión (cookies) y con eso ya se renderiza en
+// cada request. El flag no añadía nada.
 
 export default async function HordaPage({
   params,
@@ -14,32 +15,27 @@ export default async function HordaPage({
 }) {
   const { subject: subjectSlug, topic: topicSlug } = await params
   const sp = await searchParams
-  const supabase = await createClient()
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const { supabase, user } = await getUsuario()
   if (!user) return notFound()
 
   // horde_runs se llavea por learner_id desde la migracion 035. Con
   // user_id, dos hermanos en el mismo tema hacen que maybeSingle LANCE.
-  const learner = await resolveLearner(supabase, user.id, sp)
+  //
+  // Alumno y tema en paralelo; el tema con su materia en UNA consulta
+  // (`subjects!inner`, `topics.slug` es UNIQUE).
+  const [learner, { data: topicConMateria }] = await Promise.all([
+    resolveLearner(supabase, user.id, sp),
+    supabase
+      .from('topics')
+      .select('id, name, slug, horde_ready, subjects!inner(slug)')
+      .eq('slug', topicSlug)
+      .eq('subjects.slug', subjectSlug)
+      .maybeSingle(),
+  ])
 
-  const { data: subject } = await supabase
-    .from('subjects')
-    .select('id, slug')
-    .eq('slug', subjectSlug)
-    .maybeSingle()
-  if (!subject) return notFound()
-
-  const { data: topic } = await supabase
-    .from('topics')
-    .select('id, name, slug, horde_ready')
-    .eq('slug', topicSlug)
-    .eq('subject_id', subject.id)
-    .maybeSingle()
-
-  if (!topic || !topic.horde_ready) return notFound()
+  if (!topicConMateria || !topicConMateria.horde_ready) return notFound()
+  const { subjects: subjectRel, ...topic } = topicConMateria
+  const subject = subjectRel as unknown as { slug: string }
 
   const { data: run } = learner
     ? await supabase

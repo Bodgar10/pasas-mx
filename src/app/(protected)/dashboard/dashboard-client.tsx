@@ -1,11 +1,10 @@
 'use client'
 
-import LevelUpModal from '@/components/global/LevelUpModal'
-import PromocionCicloModal from '@/components/global/PromocionCicloModal'
+import dynamic from 'next/dynamic'
 import Pasita from '@/components/mascota/Pasita'
 import { xpToLevel, levelProgress } from '@/lib/gamification'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/utils/supabase/client'
@@ -15,6 +14,14 @@ import { waLink } from '@/lib/contacto'
 import { rutaAlumno } from '@/lib/learners'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 import { track } from '@/lib/analytics/track'
+import { useEsEscritorio } from '@/hooks/useEsEscritorio'
+import { ModalPedirMateria, ModalReportarBug } from './modales-feedback'
+
+// Solo se pintan si el servidor manda algo que celebrar o promover: fuera del
+// bundle inicial. Con SSR (sin `ssr: false`) a propósito: cuando sí aplican,
+// el modal ya viene en el HTML, como antes, sin aparecer tarde.
+const LevelUpModal = dynamic(() => import('@/components/global/LevelUpModal'))
+const PromocionCicloModal = dynamic(() => import('@/components/global/PromocionCicloModal'))
 
 type SubscriptionStatus = 'no_subscription' | 'expired' | 'active'
 
@@ -117,13 +124,7 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
   const { level, current, total } = xpToLevel(profile.xp_total)
   const fillPercent = Math.min((current / total) * 100, 100)
 
-  const [isDesktop, setIsDesktop] = useState(false)
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
+  const isDesktop = useEsEscritorio()
 
   const [showMenu, setShowMenu] = useState(false)
 
@@ -180,22 +181,23 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
   // cuando router.push retorna: push no espera a que el servidor
   // responda, y como la ruta solo cambia en el query param el
   // componente se reutiliza en vez de remontarse. Sin esto el boton se
-  // queda en "Cambiando…" indefinidamente.
-  useEffect(() => {
+  // queda en "Cambiando…" indefinidamente. Se ajusta en el render (no en un
+  // efecto): mismo resultado sin el render extra.
+  const [slotVisto, setSlotVisto] = useState(activeSlot)
+  if (slotVisto !== activeSlot) {
+    setSlotVisto(activeSlot)
     setCambiando(null)
-  }, [activeSlot])
+  }
 
   // Modales de feedback
   const [showSubjectModal, setShowSubjectModal] = useState(false)
   const [showBugModal, setShowBugModal] = useState(false)
-  const [subjectName, setSubjectName] = useState('')
-  const [subjectDesc, setSubjectDesc] = useState('')
-  const [bugDesc, setBugDesc] = useState('')
+  // El texto de cada modal vive en el modal (ver modales-feedback.tsx).
   const [feedbackSending, setFeedbackSending] = useState(false)
   const [feedbackSent, setFeedbackSent] = useState<'subject' | 'bug' | null>(null)
 
-  async function handleSubjectRequest() {
-    if (!subjectName.trim()) return
+  async function handleSubjectRequest(subjectName: string, subjectDesc: string): Promise<boolean> {
+    let enviado = false
     setFeedbackSending(true)
     try {
       await fetch('/api/feedback', {
@@ -210,15 +212,15 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
         }),
       })
       setFeedbackSent('subject')
-      setSubjectName('')
-      setSubjectDesc('')
+      enviado = true
       setTimeout(() => { setShowSubjectModal(false); setFeedbackSent(null) }, 2000)
     } catch {}
     setFeedbackSending(false)
+    return enviado
   }
 
-  async function handleBugReport() {
-    if (!bugDesc.trim()) return
+  async function handleBugReport(bugDesc: string): Promise<boolean> {
+    let enviado = false
     setFeedbackSending(true)
     try {
       await fetch('/api/feedback', {
@@ -231,11 +233,14 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
         }),
       })
       setFeedbackSent('bug')
-      setBugDesc('')
+      enviado = true
       setTimeout(() => { setShowBugModal(false); setFeedbackSent(null) }, 2000)
     } catch {}
     setFeedbackSending(false)
+    return enviado
   }
+  const cerrarModalMateria = useCallback(() => setShowSubjectModal(false), [])
+  const cerrarModalBug = useCallback(() => setShowBugModal(false), [])
 
   useEffect(() => {
     if (!showMenu) return
@@ -1339,114 +1344,24 @@ export default function DashboardClient({ profile, subscriptionStatus, subjects,
     </div>
 
       {/* Modal materia faltante */}
-      {showSubjectModal && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 100,
-          background: 'rgba(15,10,30,0.85)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
-        }} onClick={() => setShowSubjectModal(false)}>
-          <div style={{
-            background: '#1a1035', border: '1px solid rgba(124,58,237,0.3)',
-            borderRadius: 20, padding: 24, width: '100%', maxWidth: 440,
-          }} onClick={e => e.stopPropagation()}>
-            {feedbackSent === 'subject' ? (
-              <div style={{ textAlign: 'center', padding: '16px 0' }}>
-                <div style={{ fontSize: 40, marginBottom: 12 }}>✅</div>
-                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#10b981' }}>¡Solicitud enviada!</div>
-                <div style={{ fontSize: 14, color: '#a78bfa', marginTop: 8 }}>Lo revisamos y la agregamos pronto.</div>
-              </div>
-            ) : (
-              <>
-                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#e2d9f3', marginBottom: 4 }}>
-                  📩 Solicitar materia
-                </div>
-                <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 20 }}>
-                  {profile.education_level === 'middle_school' ? 'Secundaria' : 'Preparatoria'} {profile.grade}°
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  <div>
-                    <label style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, display: 'block', marginBottom: 6 }}>
-                      Nombre de la materia *
-                    </label>
-                    <input value={subjectName} onChange={e => setSubjectName(e.target.value)}
-                      placeholder="ej. Física 2°"
-                      style={{ width: '100%', background: '#1C1033', border: '1.5px solid #2D2048', borderRadius: 10, color: '#e2d9f3', fontSize: 15, padding: '10px 12px', fontFamily: 'var(--font-nunito)', boxSizing: 'border-box' }} />
-                  </div>
-                  <div>
-                    <label style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, display: 'block', marginBottom: 6 }}>
-                      ¿Algo más que quieras decirnos? (opcional)
-                    </label>
-                    <textarea value={subjectDesc} onChange={e => setSubjectDesc(e.target.value)}
-                      placeholder="ej. La vemos en tercer semestre con el prof. García"
-                      rows={3}
-                      style={{ width: '100%', background: '#1C1033', border: '1.5px solid #2D2048', borderRadius: 10, color: '#e2d9f3', fontSize: 15, padding: '10px 12px', fontFamily: 'var(--font-nunito)', boxSizing: 'border-box', resize: 'none' }} />
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: 8, marginTop: 20, justifyContent: 'flex-end' }}>
-                  <button type="button" onClick={() => setShowSubjectModal(false)}
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048', color: '#a78bfa', borderRadius: 10, padding: '10px 20px', fontSize: 14, fontWeight: 800, cursor: 'pointer', fontFamily: 'var(--font-nunito)' }}>
-                    Cancelar
-                  </button>
-                  <button type="button" onClick={handleSubjectRequest} disabled={feedbackSending || !subjectName.trim()}
-                    style={{ background: subjectName.trim() ? 'linear-gradient(135deg, #7c3aed, #ec4899)' : 'rgba(124,58,237,0.3)', color: 'white', borderRadius: 12, padding: '10px 20px', fontWeight: 800, border: 'none', cursor: (feedbackSending || !subjectName.trim()) ? 'not-allowed' : 'pointer', fontSize: 14, fontFamily: 'var(--font-nunito)', opacity: feedbackSending ? 0.7 : 1 }}>
-                    {feedbackSending ? 'Enviando...' : 'Enviar solicitud'}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      <ModalPedirMateria
+        abierto={showSubjectModal}
+        onCerrar={cerrarModalMateria}
+        feedbackSending={feedbackSending}
+        feedbackSent={feedbackSent}
+        educationLevel={profile.education_level}
+        grade={profile.grade}
+        onEnviar={handleSubjectRequest}
+      />
 
       {/* Modal reportar bug */}
-      {showBugModal && (
-        <div style={{
-          position: 'fixed', inset: 0, zIndex: 100,
-          background: 'rgba(15,10,30,0.85)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
-        }} onClick={() => setShowBugModal(false)}>
-          <div style={{
-            background: '#1a1035', border: '1px solid rgba(239,68,68,0.3)',
-            borderRadius: 20, padding: 24, width: '100%', maxWidth: 440,
-          }} onClick={e => e.stopPropagation()}>
-            {feedbackSent === 'bug' ? (
-              <div style={{ textAlign: 'center', padding: '16px 0' }}>
-                <div style={{ fontSize: 40, marginBottom: 12 }}>✅</div>
-                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#10b981' }}>¡Reporte enviado!</div>
-                <div style={{ fontSize: 14, color: '#a78bfa', marginTop: 8 }}>Lo revisamos y si procede te damos 15 días gratis.</div>
-              </div>
-            ) : (
-              <>
-                <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#e2d9f3', marginBottom: 4 }}>
-                  🐛 Reportar error
-                </div>
-                <div style={{ fontSize: 13, color: '#a78bfa', marginBottom: 20 }}>
-                  Si encontraste un error, cuéntanos qué pasó. Si el reporte procede, te damos 15 días gratis.
-                </div>
-                <div>
-                  <label style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, display: 'block', marginBottom: 6 }}>
-                    ¿Qué pasó? *
-                  </label>
-                  <textarea value={bugDesc} onChange={e => setBugDesc(e.target.value)}
-                    placeholder="ej. En la materia de Matemáticas 1°, el tema 'Álgebra' no carga el contenido"
-                    rows={4}
-                    style={{ width: '100%', background: '#1C1033', border: '1.5px solid #2D2048', borderRadius: 10, color: '#e2d9f3', fontSize: 15, padding: '10px 12px', fontFamily: 'var(--font-nunito)', boxSizing: 'border-box', resize: 'none' }} />
-                </div>
-                <div style={{ display: 'flex', gap: 8, marginTop: 20, justifyContent: 'flex-end' }}>
-                  <button type="button" onClick={() => setShowBugModal(false)}
-                    style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid #2D2048', color: '#a78bfa', borderRadius: 10, padding: '10px 20px', fontSize: 14, fontWeight: 800, cursor: 'pointer', fontFamily: 'var(--font-nunito)' }}>
-                    Cancelar
-                  </button>
-                  <button type="button" onClick={handleBugReport} disabled={feedbackSending || !bugDesc.trim()}
-                    style={{ background: bugDesc.trim() ? '#ef4444' : 'rgba(239,68,68,0.3)', color: 'white', borderRadius: 12, padding: '10px 20px', fontWeight: 800, border: 'none', cursor: (feedbackSending || !bugDesc.trim()) ? 'not-allowed' : 'pointer', fontSize: 14, fontFamily: 'var(--font-nunito)', opacity: feedbackSending ? 0.7 : 1 }}>
-                    {feedbackSending ? 'Enviando...' : 'Enviar reporte'}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      <ModalReportarBug
+        abierto={showBugModal}
+        onCerrar={cerrarModalBug}
+        feedbackSending={feedbackSending}
+        feedbackSent={feedbackSent}
+        onEnviar={handleBugReport}
+      />
     </>
   )
 }

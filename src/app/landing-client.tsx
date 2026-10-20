@@ -1,9 +1,9 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { detectAudience } from '@/lib/audience-detection'
 import { COLORS, FONTS, RADIUS } from '@/lib/design-tokens'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
@@ -15,18 +15,49 @@ import type { LandingStats } from '@/lib/landing-stats'
 import { Hueco } from '@/components/global/HuecoPromo'
 import WhatsAppButton from '@/components/global/WhatsAppButton'
 import Logo from '@/components/global/Logo'
-import Image from 'next/image'
-import DemoPistas, { DEMO_PISTAS_ID } from '@/components/landing/DemoPistas'
-import DemoHorda, { DEMO_HORDA_ID } from '@/components/landing/DemoHorda'
+import { DEMO_PISTAS_ID, DEMO_HORDA_ID } from '@/components/landing/demo-ids'
+import EtiquetaCTA from '@/components/landing/EtiquetaCTA'
+import NavLanding, { BANNER_ALTO } from '@/components/landing/NavLanding'
+import CapturasTabs from '@/components/landing/CapturasTabs'
+import {
+  CSS_BASE_HERO,
+  VARIANTES_HERO,
+  aplicarCssHero,
+  getOrAssignVariant,
+  scriptVarianteHero,
+  tomarVariantePrevia,
+  type VariantKey,
+} from '@/components/landing/hero-variante'
 import Pasita from '@/components/mascota/Pasita'
 import PasitaLazy from '@/components/mascota/PasitaLazy'
 import { track } from '@/lib/analytics/track'
 
-// ── A/B hero variants ──────────────────────────────────────────────
-/** Alto del banner del Arcade que va encima de la nav. */
-const BANNER_ALTO = 40
+/**
+ * Los dos demos jugables van con next/dynamic: están abajo del pliegue y son
+ * los componentes más pesados de la página, así que salen del bundle inicial.
+ *
+ * Con SSR (el default): el HTML sigue trayendo su marcado, así que ni Google
+ * pierde contenido ni hay salto de layout. Solo se difiere su JS.
+ *
+ * 🔴 Los DEMO_*_ID se importan de demo-ids, NO de estos módulos: un import
+ * estático desde DemoPistas/DemoHorda los metería de vuelta al bundle
+ * principal y el dynamic no serviría de nada.
+ */
+const DemoPistas = dynamic(() => import('@/components/landing/DemoPistas'))
+const DemoHorda = dynamic(() => import('@/components/landing/DemoHorda'))
 
-const HERO_VARIANTS = {
+// ── A/B hero variants ──────────────────────────────────────────────
+/**
+ * La asignación (utm → audiencia → D/E/PAPA) y el truco para que se resuelva
+ * antes del primer pintado viven en components/landing/hero-variante.ts.
+ */
+const HERO_VARIANTS: Record<VariantKey, {
+  id: VariantKey
+  h1: string
+  sub: string
+  cta: string
+  micro: string
+}> = {
   D: {
     id: 'D',
     h1: 'Estudia sin estudiar.',
@@ -48,26 +79,31 @@ const HERO_VARIANTS = {
     cta: 'Prueba 7 días gratis →',
     micro: '7 días gratis · Sin contrato · Cancela cuando quieras.',
   },
-} as const
-
-type VariantKey = keyof typeof HERO_VARIANTS
+}
 
 /**
- * Misma asignacion de siempre: 50/50 entre D y E, sticky en localStorage.
- * Lo unico que cambia es que ahora dice TAMBIEN si la variante venia
- * guardada o se sorteo en esta carga.
+ * Pinta el texto de LAS TRES variantes, cada uno en su <span class="hv-X">;
+ * el CSS de hero-variante.ts deja visible solo la que toca. Así el HTML del
+ * servidor ya trae el texto correcto y no hay cambio de copy al hidratar.
  *
- * 🔴 Sin ese dato el A/B se lee mal: PAPA nunca se persiste, asi que un
- * papa que vuelve sin utm recibe D o E y su `hero_variant_seen` parece una
- * visita nueva cuando es una reasignacion.
+ * Si las tres coinciden (p. ej. el label de un CTA con promo, que no depende
+ * de la variante) se pinta una sola vez, sin spans.
  */
-function getOrAssignVariant(): { variant: VariantKey; persistida: boolean } {
-  if (typeof window === 'undefined') return { variant: 'D', persistida: false }
-  const stored = localStorage.getItem('pasas_hero_variant') as VariantKey | null
-  if (stored === 'D' || stored === 'E') return { variant: stored, persistida: true }
-  const assigned: VariantKey = Math.random() < 0.5 ? 'D' : 'E'
-  localStorage.setItem('pasas_hero_variant', assigned)
-  return { variant: assigned, persistida: false }
+function PorVariante({ textos }: { textos: Record<VariantKey, string> }) {
+  const unico = textos.D
+  if (VARIANTES_HERO.every((k) => textos[k] === unico)) return <>{unico}</>
+  return (
+    <>
+      {VARIANTES_HERO.map((k) => (
+        <span key={k} className={`hv-${k}`}>{textos[k]}</span>
+      ))}
+    </>
+  )
+}
+
+/** Aplica `f` a cada variante. */
+function porVariante<T>(f: (k: VariantKey) => T): Record<VariantKey, T> {
+  return { D: f('D'), E: f('E'), PAPA: f('PAPA') }
 }
 
 /**
@@ -202,42 +238,8 @@ const THEMES = [
   { emoji: '⚽', name: 'Fútbol', color: COLORS.success, desc: 'Estadística con la liga que sigues. Geografía con el Mundial. Inglés con las ligas de allá. Para los que sí ven los 90 minutos.' },
 ]
 
-/**
- * Capturas REALES, una por temática.
- *
- * Antes había cuatro pestañas mostrando las mismas cuatro imágenes con distinto
- * pie de foto. Quien picaba dos se daba cuenta.
- *
- * Fútbol y Anime vuelven cuando existan sus capturas. Prefiero dos pestañas
- * verdaderas que cuatro repetidas.
- */
-const THEME_TABS = [
-  {
-    id: 'gaming',
-    emoji: '🎮',
-    label: 'Videojuegos',
-    screens: [
-      { src: '/screenshots/gaming-dashboard.png',   caption: 'Tu XP, tu racha y tus materias' },
-      { src: '/screenshots/gaming-interactivo.png', caption: 'Álgebra explicada con Genshin Impact' },
-      // ⚠️ AL VOLVER LAS CAPTURAS: este caption dice "fallas y salen las
-      // pistas" y describe media mecánica — también se puede pedir pista sin
-      // haber fallado. Reescribir junto con la captura nueva.
-      { src: '/screenshots/gaming-pistas.png',      caption: 'Papel y lápiz: fallas y salen las pistas' },
-      { src: '/screenshots/gaming-horda.png',       caption: 'Modo Horda: 6 oleadas de preguntas' },
-    ],
-  },
-  {
-    id: 'kpop',
-    emoji: '🎤',
-    label: 'K-pop',
-    screens: [
-      { src: '/screenshots/kpop-dashboard.png',   caption: 'Tu XP, tu racha y tus materias' },
-      { src: '/screenshots/kpop-interactivo.png', caption: 'Las revoluciones explicadas con SEVENTEEN' },
-      { src: '/screenshots/kpop-pistas.png',      caption: 'Clasifica: arrastra y comprueba' },
-      { src: '/screenshots/kpop-horda.png',       caption: 'Modo Horda: 6 oleadas de preguntas' },
-    ],
-  },
-]
+// Las capturas (THEME_TABS) y sus pestañas viven en
+// components/landing/CapturasTabs.tsx, con su propio estado.
 
 const TUTORIAL_STANDARD = [
   { emoji: '🎮', step: '01', title: 'Elige tu temática', desc: 'Una sola: Videojuegos, K-pop, Anime o Fútbol. Todo tu contenido se genera dentro de ese mundo.' },
@@ -315,26 +317,8 @@ const PLANS = [
  * argumento convence. Si el de después de las demos gana, eso dice que lo
  * jugable es lo que vende.
  */
-/**
- * La etiqueta de un CTA mientras no se sabe si hay campaña.
- *
- * 🔴 Sustituye SOLO el texto de dentro, no el botón. El contenedor —ancho,
- * alto mínimo, padding, radio— es el mismo elemento de siempre, así que el
- * reemplazo no puede mover el layout: no hay dos geometrías que cuadrar, hay
- * una. Es también la razón de que no haga falta medir a mano los seis CTA de
- * esta pantalla, que tienen tamaños distintos entre sí.
- */
-function EtiquetaCTA({
-  esperando,
-  ancho,
-  children,
-}: {
-  esperando: boolean
-  ancho: number
-  children: React.ReactNode
-}) {
-  return esperando ? <Hueco alto={16} ancho={ancho} radio={5} /> : <>{children}</>
-}
+// EtiquetaCTA (la etiqueta de un CTA mientras no se sabe si hay campaña) vive
+// en components/landing/EtiquetaCTA.tsx: la usan esta página y <NavLanding>.
 
 function CTAIntermedio({
   texto,
@@ -360,9 +344,9 @@ function CTAIntermedio({
 }) {
   return (
     <div style={{ padding: '0 24px 64px', maxWidth: 520, margin: '0 auto' }}>
+      {/* Sin prefetch={true}: /onboarding es dinámica (ver NavLanding). */}
       <Link
         href={href}
-        prefetch={true}
         onClick={() => onClick(location)}
         style={{
           background: COLORS.primary,
@@ -436,9 +420,17 @@ function FadeSection({
  */
 export default function LandingClient({ stats }: { stats: LandingStats }) {
   const router = useRouter()
+  /**
+   * 🔴 Este estado ya NO decide qué texto se ve: eso lo resuelve el script de
+   * hero-variante.ts antes de pintar. Sigue existiendo porque la analítica
+   * (hero_variant_seen, hero_variant_converted, landing_cta_clicked…) manda
+   * `variant`, y el efecto de abajo lo sincroniza con lo que el script decidió.
+   * Nace en 'D' para que servidor e hidratación coincidan.
+   */
   const [variant, setVariant] = useState<VariantKey>('D')
-  const [scrolled, setScrolled] = useState(false)
-  const [activeTab, setActiveTab] = useState('gaming')
+  // `scrolled` vive en <NavLanding> y `activeTab` en <CapturasTabs>: aquí
+  // re-renderizaban la página entera por un cambio que solo veía la nav o el
+  // carrusel.
 
   // ── ANALITICA ────────────────────────────────────────────────────
   //
@@ -669,18 +661,37 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
     const utmSource = new URLSearchParams(window.location.search).get('utm_source')
     const audience = detectAudience(utmSource)
 
+    // 🔴 En una carga normal la variante YA la sorteó (y persistió) el script
+    // en línea de hero-variante.ts, antes de pintar. Aquí se TOMA su
+    // resultado, no se vuelve a sortear: getOrAssignVariant() encontraría
+    // guardado lo que el script acaba de escribir y mandaría
+    // `es_persistida: true` en una visita nueva.
+    //
+    // La audiencia, en cambio, se recalcula con detectAudience, que es la
+    // fuente de verdad: si el espejo del script se desfasara, gana esta.
+    const previa = tomarVariantePrevia()
+
     let v: VariantKey
     let persistida: boolean
     if (audience === 'papa') {
       // PAPA no se persiste nunca: depende del utm de esa visita.
       v = 'PAPA'
       persistida = false
+    } else if (previa && previa.v !== 'PAPA') {
+      v = previa.v
+      persistida = previa.p
     } else {
+      // Sin script (navegación de cliente: React no ejecuta <script> al
+      // renderizar en el navegador) o el script dijo PAPA y detectAudience
+      // no. En ese caso el script no tocó el storage, así que esto es exacto.
       const asignacion = getOrAssignVariant()
       v = asignacion.variant
       persistida = asignacion.persistida
     }
 
+    // Idempotente: en una carga normal deja la misma regla que puso el
+    // script. Corrige el texto solo si el script no corrió o discrepó.
+    aplicarCssHero(v)
     setVariant(v)
     // `utm_source` ya no se manda a mano: track() lo agrega solo desde el
     // sessionStorage de UTMPersistence, con first-touch. `audience` SI se
@@ -696,13 +707,12 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
     // anónimos y sin un flujo que de verdad use esa sesión.
   }, [])
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  const hero = HERO_VARIANTS[variant]
+  /**
+   * Los minijuegos solo dependen de `stats`, que llega del servidor y no
+   * cambia. Antes la lista (y sus cinco toLocaleString) se rehacía en cada
+   * render de la landing.
+   */
+  const listaMinijuegos = useMemo(() => minijuegos(stats), [stats])
 
   /*
     Promoción. Se resuelve UNA vez para toda la landing.
@@ -740,11 +750,15 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
     sublabel: null,
   })
 
-  // Hero: el label y la micro de la variante activa son el fallback.
-  const ctaHero = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
-    label: hero.cta,
-    sublabel: hero.micro,
-  })
+  // Hero: el label y la micro de CADA variante son su fallback. Se calculan
+  // las tres porque el HTML las trae todas (ver PorVariante); con promo, las
+  // tres salen iguales y se pintan una sola vez.
+  const ctaHero = porVariante((k) =>
+    copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
+      label: HERO_VARIANTS[k].cta,
+      sublabel: HERO_VARIANTS[k].micro,
+    })
+  )
 
   // CTAs intermedios: cada uno conserva su texto propio como fallback.
   const ctaPostDemos = copyCTA(promo, 'estandar_v2', CICLO_LANDING, {
@@ -801,87 +815,44 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
   return (
     <div style={{ fontFamily: FONTS.nunito, color: COLORS.text, minHeight: '100vh', overflowX: 'hidden' }}>
 
-      {/* ── Banner del Arcade ──
-          Encima de la nav y solo arriba de todo: al hacer scroll sube y la nav
-          ocupa su lugar, así no le quita pantalla a la landing mientras se lee.
-          🔴 Sin utm_source en el link: UTMPersistence guarda el PRIMER toque, y
-          un utm interno pisaría el canal real (orgánico) de quien lo toque. El
-          clic se mide con su propio evento, y ?desde= marca el origen en los
-          eventos del Arcade, la Horda y el onboarding (lib/arcade.ts). */}
-      <Link
-        href="/arcade?desde=landing_banner"
-        onClick={() => track('landing_banner_arcade_clic', { variant })}
-        style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 101,
-          height: BANNER_ALTO,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-          padding: '0 16px',
-          background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.pink})`,
-          color: '#fff', textDecoration: 'none',
-          fontFamily: FONTS.nunito, fontSize: 14, fontWeight: 800,
-          whiteSpace: 'nowrap', overflow: 'hidden',
-          transform: scrolled ? `translateY(-${BANNER_ALTO}px)` : 'translateY(0)',
-          transition: 'transform 0.3s ease',
-        }}
-      >
-        <span style={{ fontWeight: 900 }}>¿Cuál sobra?</span>
-        <span className="banner-arcade-medio" style={{ opacity: 0.9 }}>· Un reto nuevo cada día ·</span>
-        <span style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>Juega gratis →</span>
-      </Link>
-      <style>{`@media (max-width: 360px){ .banner-arcade-medio{ display:none } }`}</style>
+      {/* 🔴 EL SCRIPT VA ANTES DEL HERO. Corre mientras el navegador parsea
+          y, si la variante no es D, mete en <head> la regla que la muestra:
+          el H1 ya se pinta con su texto, sin cambio al hidratar. El <style>
+          de al lado es la base (solo D visible), igual en servidor y cliente.
+          Ver components/landing/hero-variante.ts. */}
+      <script dangerouslySetInnerHTML={{ __html: scriptVarianteHero() }} />
+      <style>{CSS_BASE_HERO}</style>
 
-      {/* ── Sticky nav ── */}
-      <nav style={{
-        position: 'fixed', top: scrolled ? 0 : BANNER_ALTO, left: 0, right: 0, zIndex: 100,
-        padding: '0 20px',
-        height: 56,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: scrolled ? 'rgba(15,10,30,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? `1px solid ${COLORS.inputBorder}` : 'none',
-        transition: 'background 0.3s ease, border 0.3s ease, top 0.3s ease',
-      }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          <Logo size={24} />
-          <span style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 18, color: COLORS.text, letterSpacing: 2 }}>
-            PASAS.MX
-          </span>
-        </span>
-        <div style={{ display: 'flex', gap: 8 }}>
-          <Link
-            href="/login"
-            prefetch={true}
-            onClick={() => track('landing_login_clicked', { location: 'nav' })}
-            style={{ background: 'transparent', border: `1.5px solid ${COLORS.inputBorder}`, color: COLORS.muted, borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 700, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
-          >
-            Entrar
-          </Link>
-          <Link
-            href={destinoOnboarding}
-            prefetch={true}
-            onClick={() => handleCTA('nav')}
-            style={{ background: COLORS.primary, border: 'none', color: '#fff', borderRadius: RADIUS.lg, padding: '8px 16px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 14, cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
-          >
-            <EtiquetaCTA esperando={esperandoPromo} ancho={64}>{ctaNav.label}</EtiquetaCTA>
-          </Link>
-        </div>
-      </nav>
+      {/* Banner del Arcade + nav fija, con su propio estado de scroll. */}
+      <NavLanding
+        variant={variant}
+        destinoOnboarding={destinoOnboarding}
+        ctaLabel={ctaNav.label}
+        esperandoPromo={esperandoPromo}
+        onCTA={handleCTA}
+      />
 
       {/* ── HERO ── */}
       {/* Observer propio en vez de <FadeSection>: envolverlo aqui le
           añadiria el fundido de entrada de las demas secciones y eso SI se
-          veria. La medicion es la misma; el hero conserva su animacion. */}
+          veria. La medicion es la misma. */}
       <section ref={refHero} style={{ minHeight: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: `${100 + BANNER_ALTO}px 24px 64px`, textAlign: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 320, height: 320, background: `radial-gradient(circle, ${COLORS.primary}33 0%, transparent 70%)`, pointerEvents: 'none', filter: 'blur(40px)' }} />
-        <div style={{ animation: 'fadeUp 0.8s ease both', position: 'relative', maxWidth: 480 }}>
+        {/* 🔴 SIN `animation: fadeUp` en este bloque. Partía de opacity 0
+            durante 0.8 s: el H1 —el LCP de la página— no contaba como pintado
+            hasta terminar el fundido, en la pantalla donde el 69% se va en
+            menos de 5 s. El fundido sigue solo en la Pasita, más abajo. */}
+        <div style={{ position: 'relative', maxWidth: 480 }}>
           {/* s38 — Aquí iba la insignia "Ya está en línea · Entra gratis hoy".
               Se quitó: era la tercera oferta de la primera pantalla junto con
               el reto y la suscripción. Ver el comentario del CTA del hero. */}
+          {/* UN solo <h1> con las tres variantes dentro (PorVariante): el CSS
+              esconde las que no tocan, así que lectores y buscadores ven uno. */}
           <h1 style={{ fontFamily: FONTS.orbitron, fontWeight: 900, fontSize: 'clamp(28px, 8vw, 42px)', lineHeight: 1.15, marginBottom: 20, whiteSpace: 'pre-line', background: `linear-gradient(135deg, ${COLORS.text} 0%, ${COLORS.muted} 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            {hero.h1}
+            <PorVariante textos={porVariante((k) => HERO_VARIANTS[k].h1)} />
           </h1>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: COLORS.muted, marginBottom: 24, fontWeight: 600 }}>
-            {hero.sub}
+            <PorVariante textos={porVariante((k) => HERO_VARIANTS[k].sub)} />
           </p>
 
           {/*
@@ -907,6 +878,8 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
           */}
           <Link
             href="/arcade?desde=landing_banner"
+            // Este prefetch={true} SÍ se queda: /arcade es ISR (HTML estático
+            // en CDN), traerlo entero es barato y es el botón principal.
             prefetch={true}
             onClick={() => track('landing_cta_clicked', { location: 'hero_reto', variant })}
             style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 20px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
@@ -922,16 +895,17 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
               variante, pero "Cancela cuando quieras" no se pierde. */}
           <Link
             href={destinoOnboarding}
-            prefetch={true}
             onClick={() => handleCTA('hero')}
             style={{ marginTop: 20, background: 'transparent', border: `1.5px solid ${COLORS.inputBorder}`, color: COLORS.text, borderRadius: RADIUS.xl, padding: '10px 20px', fontFamily: FONTS.nunito, fontWeight: 800, fontSize: 15, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 44, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            <EtiquetaCTA esperando={esperandoPromo} ancho={200}>{ctaHero.label}</EtiquetaCTA>
+            <EtiquetaCTA esperando={esperandoPromo} ancho={200}>
+              <PorVariante textos={porVariante((k) => ctaHero[k].label)} />
+            </EtiquetaCTA>
           </Link>
           <p style={{ marginTop: 8, fontSize: 12, color: COLORS.muted, opacity: 0.7, display: 'flex', justifyContent: 'center' }}>
             {esperandoPromo
               ? <Hueco alto={18} ancho={230} radio={5} />
-              : microcopyPromo(ctaHero.sublabel, ['Cancela cuando quieras'])}
+              : <PorVariante textos={porVariante((k) => microcopyPromo(ctaHero[k].sublabel, ['Cancela cuando quieras']))} />}
           </p>
 
           {/* La Pasita presentándose.
@@ -942,13 +916,15 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
               Va con <Pasita> y no con <PasitaLazy>: sigue cerca del pliegue y
               diferirla la haría aparecer con retraso. 'flotar' es lento y
               sutil para no competir con el CTA. */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
-            <Pasita pose="confiada" size={140} animacion="flotar" />
-          </div>
+          <div style={{ animation: 'fadeUp 0.8s ease both' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
+              <Pasita pose="confiada" size={140} animacion="flotar" />
+            </div>
 
-          <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
-            <span style={{ fontSize: 12, fontWeight: 600 }}>scroll</span>
-            <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${COLORS.muted}, transparent)` }} />
+            <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.4 }}>
+              <span style={{ fontSize: 12, fontWeight: 600 }}>scroll</span>
+              <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, ${COLORS.muted}, transparent)` }} />
+            </div>
           </div>
         </div>
       </section>
@@ -1212,7 +1188,7 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             cada uno con estos. Los recorres todos en tu temática.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {minijuegos(stats).map((j, i) => (
+            {listaMinijuegos.map((j, i) => (
               <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: COLORS.card, borderRadius: RADIUS.xxl, padding: '20px', border: `1px solid ${COLORS.inputBorder}` }}>
                 <div style={{ minWidth: 48, height: 48, borderRadius: RADIUS.xl, background: `${COLORS.primary}22`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>
                   {j.emoji}
@@ -1271,89 +1247,8 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             Capturas reales de la plataforma. Dos temáticas, el mismo temario.
           </p>
 
-          {/* Tabs */}
-          <div style={{ display: 'flex', gap: 8, padding: '0 24px', marginBottom: 32, overflowX: 'auto', scrollbarWidth: 'none' }}>
-            {THEME_TABS.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => { setActiveTab(tab.id); track('landing_theme_tab_clicked', { theme: tab.id }) }}
-                style={{
-                  background: activeTab === tab.id ? COLORS.primary : `${COLORS.primary}18`,
-                  border: `1.5px solid ${activeTab === tab.id ? COLORS.primary : COLORS.inputBorder}`,
-                  color: activeTab === tab.id ? '#fff' : COLORS.muted,
-                  borderRadius: RADIUS.pill,
-                  padding: '8px 16px',
-                  fontFamily: FONTS.nunito,
-                  fontWeight: 800,
-                  fontSize: 14,
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap',
-                  transition: 'all 0.2s ease',
-                  flexShrink: 0,
-                }}
-              >
-                {tab.emoji} {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Screenshots scroll horizontal */}
-          <div style={{ display: 'flex', gap: 16, overflowX: 'auto', padding: '0 24px 16px', scrollbarWidth: 'none', scrollSnapType: 'x mandatory' }}>
-            {THEME_TABS.find(t => t.id === activeTab)?.screens.map((screen, i) => (
-              <div key={i} style={{ flexShrink: 0, scrollSnapAlign: 'start', width: 320 }}>
-                {/* Marco de teléfono.
-                    Las capturas tienen el mismo fondo #0a0a0f que la landing, así
-                    que sin marco se funden con la página y no se ve dónde empieza
-                    la pantalla. El borde las separa y de paso comunica que el
-                    producto es móvil. */}
-                <div
-                  style={{
-                    position: 'relative',
-                    padding: 8,
-                    borderRadius: 36,
-                    background: 'linear-gradient(160deg, #2a2140 0%, #15102a 100%)',
-                    border: `1px solid ${COLORS.primary}44`,
-                    boxShadow: `0 0 0 1px rgba(0,0,0,0.6), 0 18px 40px rgba(0,0,0,0.55), 0 0 60px ${COLORS.primary}18`,
-                  }}
-                >
-                  {/* Notch */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 14,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: 86,
-                      height: 20,
-                      borderRadius: 999,
-                      background: '#000',
-                      zIndex: 2,
-                    }}
-                  />
-                  <Image
-                    src={screen.src}
-                    alt={screen.caption}
-                    width={320}
-                    height={696}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 28,
-                      display: 'block',
-                    }}
-                    loading="lazy"
-                  />
-                </div>
-                <p style={{ textAlign: 'center', fontSize: 12, color: COLORS.muted, marginTop: 14, fontWeight: 600, lineHeight: 1.4 }}>
-                  {screen.caption}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <style>{`
-            div::-webkit-scrollbar { display: none; }
-          `}</style>
+          {/* Pestañas + carrusel, con su propio estado (CapturasTabs). */}
+          <CapturasTabs />
         </section>
       </FadeSection>
       )}
@@ -1613,7 +1508,6 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
                 </div>
                 <Link
                   href={destinoTarjeta}
-                  prefetch={true}
                   onClick={() => handleCTA(`pricing_${plan.key}`)}
                   style={{ background: plan.highlight ? `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})` : `${COLORS.primary}22`, border: plan.highlight ? 'none' : `1.5px solid ${COLORS.primary}55`, color: plan.highlight ? '#fff' : COLORS.primary, borderRadius: RADIUS.xl, padding: '14px 24px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 15, cursor: 'pointer', width: '100%', minHeight: 52, transition: 'transform 0.15s ease', boxShadow: plan.highlight ? `0 0 24px ${COLORS.primary}44` : 'none', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                 >
@@ -1676,7 +1570,6 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             </p>
             <Link
               href={destinoOnboarding}
-              prefetch={true}
               style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '18px 32px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 18, cursor: 'pointer', width: '100%', maxWidth: 380, minHeight: 56, boxShadow: `0 0 40px ${COLORS.primary}44`, transition: 'transform 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => handleCTA('cta_final')}
             >

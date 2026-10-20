@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, after } from 'next/server'
 import { headers } from 'next/headers'
 import { FEATURE_FLAGS } from '@/lib/feature-flags'
 import { LEGAL_VERSION } from '@/lib/legal'
@@ -17,6 +17,10 @@ const REENVIO_MS = 10 * 60 * 1000
  * 🔴 NUNCA revela si un correo ya estaba suscrito: toda salida válida
  * responde lo mismo, `{ ok: true }`. Solo cambian los errores de formato
  * (correo inválido, casilla sin marcar) y el límite de solicitudes.
+ *
+ * El envío por Resend va en `after()`: la respuesta no depende de si el
+ * correo salió (es `{ ok: true }` pase lo que pase), así que no se espera.
+ * De paso, el tiempo de respuesta ya no delata si hubo envío o no.
  */
 export async function POST(req: Request) {
   if (!FEATURE_FLAGS.ENABLE_ARCADE_RECORDATORIO) return NextResponse.json({ error: 'No disponible' }, { status: 404 })
@@ -74,7 +78,7 @@ export async function POST(req: Request) {
       anon_id: anonId,
       canal,
     })
-    if (!error) await enviarConfirmacion(email, tConfirmar)
+    if (!error) after(() => enviarConfirmacion(email, tConfirmar))
     else console.error('[recordatorio] alta falló:', error)
     return NextResponse.json({ ok: true })
   }
@@ -82,7 +86,8 @@ export async function POST(req: Request) {
   if (existente.estado === 'pendiente') {
     // Reenvío de la confirmación, como mucho cada 10 minutos.
     if (Date.now() - new Date(existente.created_at as string).getTime() > REENVIO_MS) {
-      await enviarConfirmacion(email, existente.token_confirmacion as string)
+      const tPendiente = existente.token_confirmacion as string
+      after(() => enviarConfirmacion(email, tPendiente))
     }
     return NextResponse.json({ ok: true })
   }
@@ -104,7 +109,7 @@ export async function POST(req: Request) {
         baja_at: null,
       })
       .eq('id', existente.id)
-    if (!error) await enviarConfirmacion(email, tConfirmar)
+    if (!error) after(() => enviarConfirmacion(email, tConfirmar))
     return NextResponse.json({ ok: true })
   }
 

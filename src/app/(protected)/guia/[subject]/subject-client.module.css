@@ -1,0 +1,10 @@
+/*
+ * Hover de la tarjeta de tema. Antes era estado de React (setHoveredTopic):
+ * pasar el mouse por la lista re-pintaba la pantalla completa. Mismo efecto,
+ * ahora en CSS. La sombra cambia si el tema está completado: la manda la
+ * tarjeta en --sombra-hover.
+ */
+.tarjetaTema:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-hover);
+}

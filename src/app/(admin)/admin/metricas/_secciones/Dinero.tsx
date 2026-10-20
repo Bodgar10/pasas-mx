@@ -1,6 +1,6 @@
 import ComoSeLee from '@/components/admin/ComoSeLee'
 import { StatCard, SectionTitle, Panel, Barra, Nota, Vacio, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
-import { servicio, ventanas, pesos, aPesos, TOPE } from '../_lib/datos'
+import { servicio, ventanas, pesos, aPesos, leerTodo } from '../_lib/datos'
 
 type Sub = {
   price_mxn: number | null
@@ -20,11 +20,13 @@ export default async function Dinero({ incluirPrueba }: { incluirPrueba: boolean
 
   // SOLO `subscriptions`. Esta pestaña no necesita ninguna de las otras seis
   // tablas que traía la pantalla anterior.
-  const q = db
-    .from('subscriptions')
-    .select('price_mxn, plan, status, billing_cycle, current_period_end, created_at, trial_ends_at, user_id, acquisition')
-    .limit(TOPE)
-  const { data } = await (incluirPrueba ? q : q.eq('is_test', false))
+  // Paginada con `leerTodo`: PostgREST corta en 1000 filas sin avisar.
+  const { data } = await leerTodo<Sub>(() => {
+    const q = db
+      .from('subscriptions')
+      .select('price_mxn, plan, status, billing_cycle, current_period_end, created_at, trial_ends_at, user_id, acquisition')
+    return (incluirPrueba ? q : q.eq('is_test', false)).order('id')
+  })
   const subs = (data ?? []) as Sub[]
 
   const activas = subs.filter((s) => s.status === 'active' && s.current_period_end > v.ahoraIso)

@@ -1,10 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import Pasita from '@/components/mascota/Pasita'
 import { rutaAlumno } from '@/lib/learners'
 import { track } from '@/lib/analytics/track'
+import { useEsEscritorio } from '@/hooks/useEsEscritorio'
+import s from './subject-client.module.css'
 
 interface Subject {
   id: string
@@ -53,21 +55,29 @@ const LEVEL_LABELS: Record<string, string> = {
   high_school: 'Preparatoria',
 }
 
-function getProgress(topicId: string, topicProgress: TopicProgress[]): TopicProgress | null {
-  return topicProgress.find((p) => p.topic_id === topicId) ?? null
+type ProgresoPorTema = Map<string, TopicProgress>
+
+/** topic_id → progreso, armado una vez. Se queda con el primero, como el viejo .find(). */
+function mapaDeProgreso(topicProgress: TopicProgress[]): ProgresoPorTema {
+  const mapa: ProgresoPorTema = new Map()
+  for (const p of topicProgress) if (!mapa.has(p.topic_id)) mapa.set(p.topic_id, p)
+  return mapa
+}
+
+function getProgress(topicId: string, progreso: ProgresoPorTema): TopicProgress | null {
+  return progreso.get(topicId) ?? null
 }
 
 function getStatus(
   topicId: string,
-  topicProgress: TopicProgress[]
+  progreso: ProgresoPorTema
 ): 'not_started' | 'in_progress' | 'completed' {
-  return getProgress(topicId, topicProgress)?.status ?? 'not_started'
+  return getProgress(topicId, progreso)?.status ?? 'not_started'
 }
 
 export default function SubjectClient({ subject, topics, topicProgress, profile, subjectXp, activeSlot = 1 }: Props) {
   const router = useRouter()
-  const [hoveredTopic, setHoveredTopic] = useState<string | null>(null)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const isDesktop = useEsEscritorio()
   const [showRequestModal, setShowRequestModal] = useState(false)
   const [requestTopicName, setRequestTopicName] = useState('')
   const [requestDescription, setRequestDescription] = useState('')
@@ -122,25 +132,25 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
     setRequestSending(false)
   }
 
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  const completedTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'completed')
-  const inProgressTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'in_progress')
-  const pendingTopics = topics.filter((t) => getStatus(t.id, topicProgress) === 'not_started')
+  // Se calcula una vez: escribir en el modal ya no recorre la lista de temas.
+  const progreso = useMemo(() => mapaDeProgreso(topicProgress), [topicProgress])
+  const { completedTopics, inProgressTopics, pendingTopics, nTemasHorda } = useMemo(
+    () => ({
+      completedTopics: topics.filter((t) => getStatus(t.id, progreso) === 'completed'),
+      inProgressTopics: topics.filter((t) => getStatus(t.id, progreso) === 'in_progress'),
+      pendingTopics: topics.filter((t) => getStatus(t.id, progreso) === 'not_started'),
+      nTemasHorda: topics.filter((t) => t.horde_ready === true).length,
+    }),
+    [topics, progreso]
+  )
   const totalXpEarned = subjectXp
   const overallPercent =
     topics.length > 0 ? Math.round((completedTopics.length / topics.length) * 100) : 0
 
   function renderTopicCard(topic: Topic) {
-    const status = getStatus(topic.id, topicProgress)
-    const progress = getProgress(topic.id, topicProgress)
+    const status = getStatus(topic.id, progreso)
+    const progress = getProgress(topic.id, progreso)
     const isCompleted = status === 'completed'
-    const isHovered = hoveredTopic === topic.id
 
     const cardBorder = isCompleted
       ? 'rgba(16,185,129,0.3)'
@@ -211,9 +221,9 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
       <div
         key={topic.id}
         onClick={() => router.push(rutaAlumno(`/guia/${subject.slug}/${topic.slug}`, activeSlot))}
-        onMouseEnter={() => setHoveredTopic(topic.id)}
-        onMouseLeave={() => setHoveredTopic(null)}
+        className={s.tarjetaTema}
         style={{
+          ['--sombra-hover' as string]: hoverShadow,
           background: '#1a1035',
           border: `1px solid ${cardBorder}`,
           borderRadius: 16,
@@ -224,8 +234,6 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
           gap: 12,
           alignItems: 'flex-start',
           transition: 'transform 0.2s, box-shadow 0.2s',
-          transform: isHovered ? 'translateY(-2px)' : 'none',
-          boxShadow: isHovered ? hoverShadow : 'none',
         }}
       >
         <div
@@ -523,7 +531,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
       </div>
 
       {/* Banner: Modo Horda */}
-      {topics.filter((t) => t.horde_ready === true).length > 0 && (
+      {nTemasHorda > 0 && (
         <div
           style={{
             margin: isDesktop ? '4px 32px 18px' : '4px 16px 16px',
@@ -550,7 +558,7 @@ export default function SubjectClient({ subject, topics, topicProgress, profile,
             </div>
             <div style={{ fontSize: 13, color: '#a78bfa', lineHeight: 1.45, fontWeight: 600 }}>
               Sobrevive 6 oleadas de preguntas por tema y llega listo.{' '}
-              {topics.filter((t) => t.horde_ready === true).length} de {topics.length}{' '}
+              {nTemasHorda} de {topics.length}{' '}
               {topics.length === 1 ? 'tema ya tiene' : 'temas ya tienen'} su horda — búscala
               dentro de cada tema.
             </div>

@@ -26,6 +26,15 @@ const h = vi.hoisted(() => ({
   promotionCodes: { data: [] as { id: string }[] },
 }))
 
+// La ruta manda la analítica con after(), que fuera de un request real de
+// Next lanza "called outside a request scope". Aquí se corre en el acto.
+vi.mock('next/server', async (original) => ({
+  ...(await original<typeof import('next/server')>()),
+  after: (tarea: () => unknown) => {
+    void tarea()
+  },
+}))
+
 vi.mock('next/headers', () => ({
   cookies: async () => ({ getAll: () => h.cookies.valor, set: () => {} }),
 }))

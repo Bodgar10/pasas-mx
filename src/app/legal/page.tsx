@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
-import { createClient } from '@/utils/supabase/server'
+import { getUsuario } from '@/lib/auth'
 import ConsentimientoLegal from '@/components/legal/ConsentimientoLegal'
 import CookieConsentInput from '@/components/legal/CookieConsentInput'
 import Logo from '@/components/global/Logo'
@@ -18,8 +18,7 @@ export default async function LegalPage({
 }) {
   const { error } = await searchParams
 
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { supabase, user } = await getUsuario()
 
   if (!user || user.is_anonymous) {
     redirect('/login')

@@ -20,8 +20,8 @@ const OLEADAS = [
   { n: 6, dif: 'Difícil', color: COLORS.pink },
 ]
 
-/** Igual que en DemoPistas: le pone nombre al contenido fijo que ya existe. */
-export const DEMO_HORDA_ID = 'horda_oleadas'
+/** El identificador vive en ./demo-ids; se reexporta igual que en DemoPistas. */
+export { DEMO_HORDA_ID } from './demo-ids'
 
 /**
  * Callbacks de ANALITICA. No cambian la mecanica ni lo que se pinta.

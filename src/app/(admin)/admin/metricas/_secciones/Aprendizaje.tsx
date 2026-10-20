@@ -1,8 +1,11 @@
 import ComoSeLee from '@/components/admin/ComoSeLee'
 import { StatCard, SectionTitle, Panel, Barra, Nota, Vacio, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
-import { servicio, ventanas, idsVigentes, pct, dias } from '../_lib/datos'
+import { servicio, ventanas, idsVigentes, pct, dias, leerTodo } from '../_lib/datos'
 import { tieneAccesoVigente } from '@/lib/learners'
 import { rachaVisible } from '@/lib/gamification'
+
+/** Tope propio, más alto que TOPE: son tablas por evento/tema, crecen más rápido. */
+const TOPE_APRENDIZAJE = 20000
 
 const SIN_NIVEL = '__sin_nivel__'
 /** El enum tiene EXACTAMENTE dos valores (001_initial_schema.sql:49). */
@@ -22,9 +25,20 @@ export default async function Aprendizaje({ incluirPrueba }: { incluirPrueba: bo
 
   const [{ data: progreso }, { data: avance }, { data: materias }] = await Promise.all([
     // Solo la ventana que se usa: 7 días para actividad, 30 para XP.
-    db.from('progress').select('learner_id, event_type, xp_earned, created_at').gte('created_at', v.d30).limit(20000),
-    db.from('topic_progress').select('learner_id, status, best_score, completed_at').limit(20000),
-    db.from('user_subjects').select('learner_id, subject_id').limit(20000),
+    // Paginadas con `leerTodo`: PostgREST corta en 1000 filas sin avisar.
+    leerTodo<{ learner_id: string | null; event_type: string; xp_earned: number | null; created_at: string }>(
+      () => db.from('progress').select('learner_id, event_type, xp_earned, created_at').gte('created_at', v.d30).order('id'),
+      TOPE_APRENDIZAJE
+    ),
+    // PK compuesta (learner_id, topic_id), migración 035.
+    leerTodo<{ learner_id: string | null; status: string; best_score: number | null; completed_at: string | null }>(
+      () => db.from('topic_progress').select('learner_id, status, best_score, completed_at').order('learner_id').order('topic_id'),
+      TOPE_APRENDIZAJE
+    ),
+    leerTodo<{ learner_id: string | null; subject_id: string }>(
+      () => db.from('user_subjects').select('learner_id, subject_id').order('id'),
+      TOPE_APRENDIZAJE
+    ),
   ])
 
   const mios = (progreso ?? []).filter((p) => p.learner_id && ids.has(p.learner_id))

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, after } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { resolveLearnerFromBody } from '@/lib/learners'
 import { trackServer } from '@/lib/analytics/track-server'
@@ -53,18 +53,41 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'No se pudo guardar la respuesta' }, { status: 500 })
     }
 
+    // Las dos RPC de XP son independientes (una escribe `learners`, la otra
+    // `user_subjects`): van en paralelo.
     if (is_correct && xp_earned > 0) {
-      await supabase.rpc('increment_learner_xp', { lid: learnerId, amount: xp_earned })
-      await supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: xp_earned })
+      await Promise.all([
+        supabase.rpc('increment_learner_xp', { lid: learnerId, amount: xp_earned }),
+        supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: xp_earned }),
+      ])
     }
 
     if (is_last_question) {
-      const { data: current } = await supabase
-        .from('topic_progress')
-        .select('best_score, attempts')
-        .eq('learner_id', learnerId)
-        .eq('topic_id', topic_id)
-        .maybeSingle()
+      /**
+       * Estado ANTES del insert — s33.
+       *
+       * `activated_at` lo escribe el trigger de la migración 050 en cuanto
+       * entra el `topic_completed`. Leerlo después diría siempre "ya estaba
+       * activado" y el evento `activado` no saldría nunca: hay que
+       * preguntarlo antes de insertar.
+       *
+       * Va en paralelo con la lectura de topic_progress: las dos son lecturas
+       * previas a cualquier escritura de este bloque (el upsert de
+       * topic_progress no toca `learners`).
+       */
+      const [{ data: current }, { data: estadoPrevio }] = await Promise.all([
+        supabase
+          .from('topic_progress')
+          .select('best_score, attempts')
+          .eq('learner_id', learnerId)
+          .eq('topic_id', topic_id)
+          .maybeSingle(),
+        supabase
+          .from('learners')
+          .select('first_session_at, activated_at')
+          .eq('id', learnerId)
+          .maybeSingle(),
+      ])
 
       const newBestScore = Math.max(current?.best_score ?? 0, final_score ?? 0)
 
@@ -86,20 +109,6 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'No se pudo guardar el resultado' }, { status: 500 })
       }
 
-      /**
-       * Estado ANTES del insert — s33.
-       *
-       * `activated_at` lo escribe el trigger de la migración 050 en cuanto
-       * entra el `topic_completed`. Leerlo después diría siempre "ya estaba
-       * activado" y el evento `activado` no saldría nunca: hay que
-       * preguntarlo antes de insertar.
-       */
-      const { data: estadoPrevio } = await supabase
-        .from('learners')
-        .select('first_session_at, activated_at')
-        .eq('id', learnerId)
-        .maybeSingle()
-
       if (final_score === 100) {
         await supabase.from('progress').insert({
           user_id: user.id,
@@ -111,8 +120,10 @@ export async function POST(request: Request) {
           attempt,
           metadata: { perfect: true, score: 100 },
         })
-        await supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 150 })
-        await supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 150 })
+        await Promise.all([
+          supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 150 }),
+          supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 150 }),
+        ])
       }
 
       /**
@@ -133,39 +144,45 @@ export async function POST(request: Request) {
        * perfecto — que es la unica condicion en la que el trigger acaba de
        * marcarlo.
        */
-      try {
-        if (!estadoPrevio?.activated_at && final_score === 100) {
-          const { data: consentimiento } = await supabase
-            .from('users')
-            .select('cookie_consent_analytics, cookie_consent_marketing')
-            .eq('id', user.id)
-            .maybeSingle()
+      //
+      // Va en `after()`: el consentimiento y el envío a PostHog/Meta/TikTok
+      // corren DESPUÉS de responder, y el alumno ve su resultado sin esperar.
+      // `estadoPrevio` ya se leyó arriba, antes del insert: dentro del
+      // callback solo se usa lo que ya estaba en la mano.
+      if (!estadoPrevio?.activated_at && final_score === 100) {
+        const firstSessionAt = estadoPrevio?.first_session_at ?? null
+        after(async () => {
+          try {
+            const { data: consentimiento } = await supabase
+              .from('users')
+              .select('cookie_consent_analytics, cookie_consent_marketing')
+              .eq('id', user.id)
+              .maybeSingle()
 
-          await trackServer(
-            'activado',
-            {
-              // Horas desde la PRIMERA sesion, no desde el alta: mide cuanto
-              // tardo el producto en demostrar valor una vez que empezo.
-              horas_desde_primera_sesion: estadoPrevio?.first_session_at
-                ? Math.round(
-                    (Date.now() - new Date(estadoPrevio.first_session_at).getTime()) / 3_600_000
-                  )
-                : 0,
-              ruta: 'quiz',
-              score: final_score,
-            },
-            {
-              consent: {
-                analytics: consentimiento?.cookie_consent_analytics,
-                marketing: consentimiento?.cookie_consent_marketing,
+            await trackServer(
+              'activado',
+              {
+                // Horas desde la PRIMERA sesion, no desde el alta: mide cuanto
+                // tardo el producto en demostrar valor una vez que empezo.
+                horas_desde_primera_sesion: firstSessionAt
+                  ? Math.round((Date.now() - new Date(firstSessionAt).getTime()) / 3_600_000)
+                  : 0,
+                ruta: 'quiz',
+                score: final_score,
               },
-              userId: user.id,
-            }
-          )
-        }
-      } catch (err) {
-        // Nunca tumba el quiz: el progreso ya esta escrito arriba.
-        console.error('[quiz-answer] activacion fallo:', err)
+              {
+                consent: {
+                  analytics: consentimiento?.cookie_consent_analytics,
+                  marketing: consentimiento?.cookie_consent_marketing,
+                },
+                userId: user.id,
+              }
+            )
+          } catch (err) {
+            // Nunca tumba el quiz: el progreso ya esta escrito arriba.
+            console.error('[quiz-answer] activacion fallo:', err)
+          }
+        })
       }
 
       return NextResponse.json({

@@ -1,6 +1,6 @@
 import { configMateria } from '@/lib/arcade/materias'
 import { StatCard, SectionTitle, Panel, Nota, Vacio, FilaRanking, Barra, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
-import { servicio, TOPE, pct } from '../_lib/datos'
+import { servicio, pct, leerTodo } from '../_lib/datos'
 
 /**
  * 🎮 Juegos gratis: el Arcade (reto diario) y la Horda pública.
@@ -49,14 +49,21 @@ export default async function Juegos() {
   const desde7 = restarDias(hoy, 6)
 
   const [{ data: partidasData }, { data: retosData }, { data: cifrasHoy }, { data: avanceData }] = await Promise.all([
-    db.from('arcade_plays').select('challenge_date, anon_id, score, origen').gte('challenge_date', desde30).limit(TOPE),
+    // Paginadas con `leerTodo`: PostgREST corta en 1000 filas sin avisar.
+    leerTodo<Partida>(() =>
+      db.from('arcade_plays').select('challenge_date, anon_id, score, origen').gte('challenge_date', desde30).order('id')
+    ),
     db.from('arcade_challenges').select('challenge_date, number, materia').gte('challenge_date', desde30).lte('challenge_date', hoy),
     db.rpc('arcade_cifras', { p_date: hoy }),
-    db
-      .from('horda_publica_avance')
-      .select('anon_id, topic_id, partidas, oleada_max, llego_muro, eleccion, origen, topics(name)')
-      .gte('updated_at', `${desde30}T00:00:00Z`)
-      .limit(TOPE),
+    // PK compuesta (anon_id, topic_id), migración 052.
+    leerTodo<unknown>(() =>
+      db
+        .from('horda_publica_avance')
+        .select('anon_id, topic_id, partidas, oleada_max, llego_muro, eleccion, origen, topics(name)')
+        .gte('updated_at', `${desde30}T00:00:00Z`)
+        .order('anon_id')
+        .order('topic_id')
+    ),
   ])
 
   const partidas = (partidasData ?? []) as Partida[]

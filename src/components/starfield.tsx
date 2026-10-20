@@ -1,51 +1,13 @@
-'use client'
-
+/**
+ * Fondo de estrellas del layout raíz.
+ *
+ * Componente de SERVIDOR y sin estado: todo el dibujo y el titileo viven en
+ * la clase `.starfield` de src/app/globals.css (radial-gradients con
+ * posiciones fijas). Ver la nota de allá para el porqué — s34.
+ *
+ * 🔴 NO vuelvas a generar estrellas con Math.random() en el render: el
+ * servidor y el cliente sacan números distintos y la hidratación no casa.
+ */
 export default function Starfield() {
-  const stars = Array.from({ length: 120 }, (_, i) => ({
-    id: i,
-    top: Math.random() * 100,
-    left: Math.random() * 100,
-    size: Math.random() * 1.5 + 0.5,
-    opacity: Math.random() * 0.5 + 0.1,
-    duration: Math.random() * 3 + 2,
-    delay: Math.random() * 4,
-  }))
-
-  return (
-    <>
-      <style>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: var(--star-opacity); }
-          50% { opacity: calc(var(--star-opacity) * 0.2); }
-        }
-      `}</style>
-      <div
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: 'none',
-          overflow: 'hidden',
-        }}
-      >
-        {stars.map((star) => (
-          <div
-            key={star.id}
-            style={{
-              position: 'absolute',
-              top: `${star.top}%`,
-              left: `${star.left}%`,
-              width: star.size,
-              height: star.size,
-              borderRadius: '50%',
-              backgroundColor: '#ffffff',
-              opacity: star.opacity,
-              '--star-opacity': star.opacity,
-              animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`,
-            } as React.CSSProperties}
-          />
-        ))}
-      </div>
-    </>
-  )
+  return <div className="starfield" aria-hidden="true" />
 }

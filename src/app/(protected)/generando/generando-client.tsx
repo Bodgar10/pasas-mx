@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackPersonalizedPlanGenerated } from '@/components/posthog-events'
+import PuntosCargando from '@/components/global/PuntosCargando'
 
 interface Props {
   userId: string
@@ -34,14 +35,6 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
 
   const [currentTopic, setCurrentTopic] = useState(0)
   const [error, setError] = useState<string | null>(null)
-  const [dots, setDots] = useState('.')
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDots(d => d.length >= 3 ? '.' : d + '.')
-    }, 500)
-    return () => clearInterval(interval)
-  }, [])
 
   useEffect(() => {
     if (hasFetched.current) return
@@ -159,7 +152,7 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
             Creando tu plan personalizado
           </div>
           <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 24, lineHeight: 1.6 }}>
-            Analizamos tu diagnóstico y generamos<br />contenido único para ti{dots}
+            Analizamos tu diagnóstico y generamos<br />contenido único para ti<PuntosCargando />
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24, textAlign: 'left' }}>
@@ -213,7 +206,7 @@ export default function GenerandoClient({ userId, subject, theme, weakTopicIds, 
                     fontSize: 12, marginTop: 2,
                     color: step.status === 'done' ? '#6ee7b7' : step.status === 'active' ? '#a78bfa' : '#2D2048',
                   }}>
-                    {step.sublabel}{step.status === 'active' ? dots : ''}
+                    {step.sublabel}{step.status === 'active' && <PuntosCargando />}
                   </div>
                 </div>
               </div>

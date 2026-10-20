@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
+import PuntosCargando from '@/components/global/PuntosCargando'
 
 type AIPreview = {
   title: string
@@ -23,7 +24,6 @@ function PreviewIAContent() {
 
   const [preview, setPreview] = useState<AIPreview | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [dots, setDots] = useState('.')
   const hasFetched = useRef(false)
 
   useEffect(() => {
@@ -101,14 +101,6 @@ function PreviewIAContent() {
 
     loadPreview()
   }, [subject, theme, diagnostico, level])
-
-  useEffect(() => {
-    if (preview || error) return
-    const interval = setInterval(() => {
-      setDots((d) => (d.length >= 3 ? '.' : d + '.'))
-    }, 500)
-    return () => clearInterval(interval)
-  }, [preview, error])
 
   async function handleBack() {
     const { data: { user } } = await supabase.auth.getUser()
@@ -234,7 +226,7 @@ function PreviewIAContent() {
                   margin: '0 0 20px',
                 }}
               >
-                Preparando tu ejemplo personalizado{dots}
+                Preparando tu ejemplo personalizado<PuntosCargando />
               </p>
 
               {/* Skeleton rows */}

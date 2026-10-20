@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useState, useEffect, useRef } from 'react'
+import React, { memo, useCallback, useLayoutEffect, useMemo, useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
 import HordeEntryCard from '@/components/guia/HordeEntryCard'
@@ -9,6 +9,8 @@ import { ahoraMs, track } from '@/lib/analytics/track'
 import { ScrubberBlock, StepsBlock, SortBlock, MatchBlock, SolveBlock, ConnectBlock, OrderStepsBlock, CollapsibleText, RevealOnScroll, AudioPlayer, AUDIO_TEXT_TYPES } from '@/components/guia/InteractiveBlocks'
 import type { MuestraTema } from '@/lib/tema-muestra'
 import { EntradaDesdeReto, OfertaMuestra } from '@/components/guia/MuestraTema'
+import PuntosCargando from '@/components/global/PuntosCargando'
+import { useEsEscritorio } from '@/hooks/useEsEscritorio'
 
 type SectionType =
   | 'explanation' | 'analogy' | 'example' | 'key_fact' | 'tip' | 'diagram'
@@ -429,11 +431,27 @@ export default function TopicClient({
   const [combo, setCombo] = useState(0)
   const [xpPerQuestion, setXpPerQuestion] = useState<Record<string, number>>({})
   const [comboAtAnswer, setComboAtAnswer] = useState<Record<string, number>>({})
-  const [isDesktop, setIsDesktop] = useState(false)
+  const isDesktop = useEsEscritorio()
   const [readSections, setReadSections] = useState<Set<string>>(
     () => new Set(readSectionIds)
   )
-  const [attempt, setAttempt] = useState(1)
+  // El observer y los callbacks estables leen las secciones leídas de aquí:
+  // así no se reconstruyen en cada lectura.
+  const readSectionsRef = useRef(readSections)
+  useLayoutEffect(() => {
+    readSectionsRef.current = readSections
+  }, [readSections])
+  // Antes se fijaba en un efecto (un render extra al montar). Nace ya con el
+  // valor y, si el servidor manda otro progreso (router.refresh), se ajusta
+  // en el mismo render, igual que hacía el efecto.
+  const [attempt, setAttempt] = useState(() =>
+    initialProgress?.attempts ? initialProgress.attempts + 1 : 1
+  )
+  const [progresoVisto, setProgresoVisto] = useState(initialProgress)
+  if (progresoVisto !== initialProgress) {
+    setProgresoVisto(initialProgress)
+    if (initialProgress?.attempts) setAttempt(initialProgress.attempts + 1)
+  }
   const [quizCompleted, setQuizCompleted] = useState(
     () =>
       quizQuestions.length > 0 &&
@@ -457,7 +475,6 @@ export default function TopicClient({
   })
   const [generating, setGenerating] = useState(false)
   const [generateError, setGenerateError] = useState<string | null>(null)
-  const [generateDots, setGenerateDots] = useState('.')
   const [generationDone, setGenerationDone] = useState(false)
 
   const [streakToast, setStreakToast] = useState<{
@@ -465,18 +482,6 @@ export default function TopicClient({
     event: 'continued' | 'started'
   } | null>(null)
 
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  useEffect(() => {
-    if (initialProgress?.attempts) {
-      setAttempt(initialProgress.attempts + 1)
-    }
-  }, [initialProgress])
 
   useEffect(() => {
     if (sections.length > 0) {
@@ -503,14 +508,6 @@ export default function TopicClient({
     const timer = setTimeout(() => setStreakToast(null), 3500)
     return () => clearTimeout(timer)
   }, [streakToast])
-
-  useEffect(() => {
-    if (!generating) return
-    const interval = setInterval(() => {
-      setGenerateDots(d => d.length >= 3 ? '.' : d + '.')
-    }, 500)
-    return () => clearInterval(interval)
-  }, [generating])
 
   async function handleGenerate() {
     if (!generationData) return
@@ -553,7 +550,7 @@ export default function TopicClient({
           if (entry.isIntersecting) {
             const sectionId = (entry.target as HTMLElement).dataset.sectionId
             // Skip sections already read in previous sessions
-            if (!sectionId || readSections.has(sectionId) || readSectionIds.includes(sectionId)) return
+            if (!sectionId || readSectionsRef.current.has(sectionId) || readSectionIds.includes(sectionId)) return
 
             // Momento en que la seccion entro en pantalla. El observer usa
             // threshold 0.6, asi que esto es "empezo a verla de verdad".
@@ -648,7 +645,7 @@ export default function TopicClient({
     })
 
     return () => observer.disconnect()
-  }, [sections, topic.id, subject.id, readSections, muestra])
+  }, [sections, topic.id, subject.id, muestra])
 
   async function handleAnswer(questionId: string, selectedLetter: string, question: QuizQuestion) {
     if (answers[questionId]) return
@@ -816,7 +813,7 @@ export default function TopicClient({
     }
   }
 
-  function handleInteractiveComplete(sectionId: string) {
+  const handleInteractiveComplete = useCallback((sectionId: string) => {
     const seccion = sections.find((sec) => sec.id === sectionId)
     const est = interactivosRef.current.get(sectionId)
     if (est) est.completado = true
@@ -828,7 +825,7 @@ export default function TopicClient({
       n_intentos: est?.intentos,
     })
 
-    if (readSections.has(sectionId) || readSectionIds.includes(sectionId)) return
+    if (readSectionsRef.current.has(sectionId) || readSectionIds.includes(sectionId)) return
     setReadSections((prev) => {
       if (prev.has(sectionId)) return prev
       return new Set([...prev, sectionId])
@@ -866,16 +863,46 @@ export default function TopicClient({
           ruta: window.location.pathname,
         })
       })
-  }
+  }, [sections, topic.name, topic.id, subject.id, activeSlot, muestra, readSectionIds])
 
-  const orderedSections = [...sections].sort(
-    (a, b) =>
-      (LESSON_ORDER[a.type] ?? 99) - (LESSON_ORDER[b.type] ?? 99) ||
-      a.display_order - b.display_order
+  /**
+   * El quiz (memo) recibe un handler ESTABLE que llama a la versión más
+   * reciente de handleAnswer: así leer una sección no re-renderiza el quiz.
+   * La ref se actualiza al confirmar el render, antes de cualquier clic.
+   */
+  const handleAnswerRef = useRef(handleAnswer)
+  useLayoutEffect(() => {
+    handleAnswerRef.current = handleAnswer
+  })
+  const onAnswer = useCallback(
+    (questionId: string, selectedLetter: string, question: QuizQuestion) =>
+      handleAnswerRef.current(questionId, selectedLetter, question),
+    []
+  )
+  const irAResumen = useCallback(() => setActiveTab('resumen'), [])
+  const irSiguienteTema = useCallback(() => {
+    router.back()
+    setTimeout(() => router.refresh(), 100)
+  }, [router])
+  const registrarSeccion = useCallback((id: string, el: HTMLDivElement | null) => {
+    if (el) sectionRefs.current.set(id, el)
+    else sectionRefs.current.delete(id)
+  }, [])
+
+  const orderedSections = useMemo(
+    () =>
+      [...sections].sort(
+        (a, b) =>
+          (LESSON_ORDER[a.type] ?? 99) - (LESSON_ORDER[b.type] ?? 99) ||
+          a.display_order - b.display_order
+      ),
+    [sections]
   )
 
-  const summaryItems = orderedSections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
-  const resumenSections = summaryItems.length > 0 ? summaryItems : orderedSections
+  const resumenSections = useMemo(() => {
+    const summaryItems = orderedSections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
+    return summaryItems.length > 0 ? summaryItems : orderedSections
+  }, [orderedSections])
 
   return (
     <div
@@ -955,7 +982,7 @@ export default function TopicClient({
                     </div>
                   </div>
                   <div style={{ fontFamily: 'var(--font-orbitron)', fontSize: 15, fontWeight: 900, color: '#e2d9f3', marginBottom: 8 }}>
-                    Generando tu guía{generateDots}
+                    Generando tu guía<PuntosCargando />
                   </div>
                   <div style={{ fontSize: 13, color: '#a78bfa', lineHeight: 1.6 }}>
                     Creando contenido personalizado para {topic.name}. No cierres esta ventana.
@@ -1192,288 +1219,21 @@ export default function TopicClient({
               background: 'rgba(124,58,237,0.2)',
             }} />
 
-            {orderedSections.map((section, index) => {
-              // Sin este respaldo, un tipo nuevo en el enum sin entrada en
-              // SECTION_TYPE_CONFIG deja `meta` en undefined y el primer
-              // acceso a meta.color tira la leccion COMPLETA con error de
-              // servidor. Paso exactamente eso al agregar 'solve'.
-              // TypeScript no lo detecta: el acceso por indice a un Record
-              // se tipa como definido aunque la llave no exista.
-              const meta = SECTION_TYPE_CONFIG[section.type] ?? {
-                label: 'Sección',
-                icon: '📄',
-                color: '#a78bfa',
-                borderColor: 'rgba(167,139,250,0.25)',
-                headerBg: 'rgba(167,139,250,0.06)',
-              }
-              return (
-                <RevealOnScroll key={section.id}>
-                <div
-                  style={{ position: 'relative', marginBottom: 16 }}
-                  data-section-id={section.id}
-                  data-section-type={section.type}
-                  ref={(el) => {
-                    if (el) sectionRefs.current.set(section.id, el)
-                    else sectionRefs.current.delete(section.id)
-                  }}
-                >
-                  {/* Dot */}
-                  <div style={{
-                    position: 'absolute',
-                    left: -33,
-                    top: 16,
-                    width: 18,
-                    height: 18,
-                    borderRadius: '50%',
-                    border: readSections.has(section.id) ? '2px solid #10b981' : `2px solid ${meta.color}`,
-                    background: readSections.has(section.id) ? 'rgba(16,185,129,0.15)' : '#0f0a1e',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 10,
-                    fontWeight: 800,
-                    color: readSections.has(section.id) ? '#10b981' : meta.color,
-                    fontFamily: 'var(--font-nunito)',
-                    transition: 'all 0.3s ease',
-                  }}>
-                    {readSections.has(section.id) ? '✓' : index + 1}
-                  </div>
-
-                  {/* Card */}
-                  <div style={{
-                    background: '#1a1035',
-                    border: `1px solid ${meta.borderColor}`,
-                    borderRadius: 14,
-                    overflow: 'hidden',
-                  }}>
-                    {/* Header */}
-                    <div style={{
-                      padding: '10px 16px',
-                      borderBottom: `1px solid ${meta.borderColor}`,
-                      background: meta.headerBg,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 8,
-                    }}>
-                      <span style={{ fontSize: 15 }}>{meta.icon}</span>
-                      <span style={{
-                        fontSize: 12,
-                        fontWeight: 700,
-                        textTransform: 'uppercase' as const,
-                        letterSpacing: 1,
-                        color: meta.color,
-                      }}>
-                        {meta.label}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div style={{
-                      padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match' || section.type === 'connect' || section.type === 'order_steps') ? '0' : '14px 16px',
-                      fontSize: 15,
-                      lineHeight: 1.75,
-                      color: '#e2d9f3',
-                    }}>
-                      {section.type === 'diagram' ? (
-                        <div
-                          style={{ width: '100%' }}
-                          dangerouslySetInnerHTML={{ __html: section.content
-                            .replace(/<svg([^>]*?)width="[^"]*"([^>]*?)height="[^"]*"/g, '<svg$1$2')
-                            .replace(/<svg([^>]*?)height="[^"]*"([^>]*?)width="[^"]*"/g, '<svg$1$2')
-                            .replace('<svg ', '<svg style="width:100%;height:auto;display:block;" ')
-                          }}
-                        />
-                      ) : section.type === 'sort' ? (
-                        <SortBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'sort', section.display_order)
-                            e.ultimoPaso = pr.paso
-                            if (pr.intentos != null) e.intentos = pr.intentos
-                          }}
-                          onFallo={({ intentos }) =>
-                            track('sort_fallido', {
-                              topic: topic.name,
-                              seccion_orden: section.display_order,
-                              n_intentos: intentos,
-                            })
-                          }
-                        />
-                      ) : section.type === 'scrubber' ? (
-                        <ScrubberBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'scrubber', section.display_order)
-                            e.ultimoPaso = pr.paso
-                          }}
-                        />
-                      ) : section.type === 'steps' ? (
-                        <StepsBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'steps', section.display_order)
-                            e.ultimoPaso = pr.paso
-                          }}
-                        />
-                      ) : section.type === 'match' ? (
-                        <MatchBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'match', section.display_order)
-                            e.ultimoPaso = pr.paso
-                            if (pr.intentos != null) e.intentos = pr.intentos
-                          }}
-                        />
-                      ) : section.type === 'solve' ? (
-                        <SolveBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'solve', section.display_order)
-                            e.ultimoPaso = pr.paso
-                            if (pr.intentos != null) e.intentos = pr.intentos
-                          }}
-                          onPistaPedida={({ ejercicioOrden, nPista, trasFallar }) => {
-                            const e = estadoInteractivo(section.id, 'solve', section.display_order)
-                            track('pista_pedida', {
-                              topic: topic.name,
-                              seccion_orden: section.display_order,
-                              ejercicio_orden: ejercicioOrden,
-                              n_pista: nPista,
-                              tras_fallar: trasFallar,
-                              segundos_desde_inicio: Math.round((Date.now() - e.inicio) / 1000),
-                            })
-                          }}
-                          onResuelto={({ ejercicioOrden, nPistasUsadas, intentos }) => {
-                            const e = estadoInteractivo(section.id, 'solve', section.display_order)
-                            track('resolvio_tras_pista', {
-                              topic: topic.name,
-                              seccion_orden: section.display_order,
-                              ejercicio_orden: ejercicioOrden,
-                              n_pistas_usadas: nPistasUsadas,
-                              correcto: true,
-                              n_intentos: intentos,
-                              segundos_totales: Math.round((Date.now() - e.inicio) / 1000),
-                            })
-                          }}
-                          onRevelada={({ ejercicioOrden, nPistasUsadas }) =>
-                            track('respuesta_revelada', {
-                              topic: topic.name,
-                              seccion_orden: section.display_order,
-                              ejercicio_orden: ejercicioOrden,
-                              n_pistas_usadas: nPistasUsadas,
-                            })
-                          }
-                        />
-                      ) : section.type === 'connect' ? (
-                        <ConnectBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'connect', section.display_order)
-                            e.ultimoPaso = pr.paso
-                            if (pr.intentos != null) e.intentos = pr.intentos
-                          }}
-                          onFallo={({ intentos, par }) =>
-                            track('minijuego_fallido', {
-                              tipo: 'connect',
-                              topic: topic.name,
-                              seccion_orden: section.display_order,
-                              n_intentos: intentos,
-                              par,
-                            })
-                          }
-                        />
-                      ) : section.type === 'order_steps' ? (
-                        <OrderStepsBlock
-                          data={section.data}
-                          onComplete={() => handleInteractiveComplete(section.id)}
-                          onProgreso={(pr) => {
-                            const e = estadoInteractivo(section.id, 'order_steps', section.display_order)
-                            e.ultimoPaso = pr.paso
-                            if (pr.intentos != null) e.intentos = pr.intentos
-                          }}
-                          onFallo={({ intentos, posicion }) =>
-                            track('minijuego_fallido', {
-                              tipo: 'order_steps',
-                              topic: topic.name,
-                              seccion_orden: section.display_order,
-                              n_intentos: intentos,
-                              posicion,
-                            })
-                          }
-                        />
-                      ) : (section.type === 'analogy' || section.type === 'example') ? (
-                        <CollapsibleText text={section.content} />
-                      ) : renderContent(section.content)}
-                    </div>
-
-                    {/* Audio narrado — solo bloques de texto con audio */}
-                    {section.audio_url && AUDIO_TEXT_TYPES.has(section.type) && (
-                      <AudioPlayer
-                        url={section.audio_url}
-                        duration={section.audio_duration}
-                        onAudioInicio={({ duracionTotalSeg }) => {
-                          track('audio_iniciado', {
-                            topic: topic.name,
-                            seccion_orden: section.display_order,
-                            duracion_total_seg: duracionTotalSeg,
-                          })
-                          primeraInteraccion('audio')
-                          contarMuestra('tema_muestra_audio', { elemento: section.type })
-                        }}
-                        onAudioProgreso={({ pct }) =>
-                          track('audio_progreso', {
-                            topic: topic.name,
-                            seccion_orden: section.display_order,
-                            pct,
-                          })
-                        }
-                        onAudioFin={({ pctEscuchado, segundosEscuchados, motivo }) =>
-                          track('audio_terminado', {
-                            topic: topic.name,
-                            seccion_orden: section.display_order,
-                            pct_escuchado: pctEscuchado,
-                            segundos_escuchados: segundosEscuchados,
-                            motivo,
-                          })
-                        }
-                      />
-                    )}
-
-                    {/* Footer XP (la muestra no guarda XP: no se promete) */}
-                    {!muestra && (
-                    <div style={{
-                      padding: '8px 16px 12px',
-                      display: 'flex',
-                      justifyContent: 'flex-end',
-                    }}>
-                      <span style={{
-                        fontSize: 12,
-                        color: '#a78bfa',
-                        fontWeight: 600,
-                        transition: 'opacity 0.4s ease',
-                      }}>
-                        {readSections.has(section.id) ? (
-                          <>
-                            Leíste esto{' '}
-                            <span style={{ color: '#fbbf24' }}>+10 XP</span>
-                          </>
-                        ) : (
-                          <span style={{ color: 'rgba(167,139,250,0.4)' }}>Lee esta sección para ganar XP</span>
-                        )}
-                      </span>
-                    </div>
-                    )}
-                  </div>
-                </div>
-                </RevealOnScroll>
-              )
-            })}
+            {orderedSections.map((section, index) => (
+              <SeccionGuia
+                key={section.id}
+                section={section}
+                index={index}
+                leida={readSections.has(section.id)}
+                esMuestra={!!muestra}
+                topicName={topic.name}
+                registrarSeccion={registrarSeccion}
+                onInteractiveComplete={handleInteractiveComplete}
+                estadoInteractivo={estadoInteractivo}
+                primeraInteraccion={primeraInteraccion}
+                contarMuestra={contarMuestra}
+              />
+            ))}
           </div>
         )}
 
@@ -1520,272 +1280,22 @@ export default function TopicClient({
 
       {/* Tab: Quiz */}
       <div style={{ display: activeTab === 'quiz' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
-        {quizQuestions.length === 0 ? (
-          <div
-            style={{
-              background: '#1a1035',
-              border: '1px solid rgba(124,58,237,0.2)',
-              borderRadius: 16,
-              padding: '32px 16px',
-              textAlign: 'center',
-              color: '#a78bfa',
-              fontSize: 16,
-            }}
-          >
-            Preguntas próximamente
-          </div>
-        ) : (
-          <div style={{
-            display: isDesktop ? 'grid' : 'block',
-            gridTemplateColumns: isDesktop ? '200px 1fr' : undefined,
-            gap: isDesktop ? 24 : undefined,
-            alignItems: 'start',
-          }}>
-            {/* Left: score + combo dots */}
-            <div style={{ position: isDesktop ? 'sticky' : undefined, top: isDesktop ? 80 : undefined }}>
-              {/* Score display */}
-              <div style={{ textAlign: 'center', paddingBottom: 16 }}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-orbitron)',
-                    fontSize: 24,
-                    fontWeight: 900,
-                    background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  {score} / {quizQuestions.length}
-                </div>
-                <div style={{ fontSize: 14, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
-                  Respuestas correctas
-                </div>
-              </div>
-
-              {/* Combo dots */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 8,
-                  marginBottom: 16,
-                }}
-              >
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: '50%',
-                      background: i < combo ? '#fbbf24' : 'rgba(255,255,255,0.1)',
-                      border: i < combo
-                        ? '1px solid #fbbf24'
-                        : '1px solid rgba(124,58,237,0.3)',
-                      boxShadow: i < combo ? '0 0 6px rgba(251,191,36,0.5)' : 'none',
-                    }}
-                  />
-                ))}
-                <span style={{ fontSize: 13, color: '#a78bfa' }}>
-                  {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
-                </span>
-              </div>
-            </div>
-
-            {/* Right: questions */}
-            <div>
-              {quizQuestions.map((question, index) => {
-                const isAnswered = !!answers[question.id]
-                const isLocked = index > 0 && !answers[quizQuestions[index - 1].id]
-                const earnedXp = xpPerQuestion[question.id] ?? 0
-                const comboWhenAnswered = comboAtAnswer[question.id] ?? 0
-                const isCorrectAnswer = answers[question.id] === question.correct_answer
-
-                return (
-                  <div
-                    key={question.id}
-                    style={{
-                      background: '#1e1040',
-                      border: '1px solid rgba(236,72,153,0.2)',
-                      borderRadius: 16,
-                      padding: 18,
-                      marginBottom: 12,
-                      opacity: isLocked ? 0.4 : 1,
-                      pointerEvents: isLocked ? 'none' : 'auto',
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: 16,
-                        fontWeight: 700,
-                        color: '#f0e6ff',
-                        marginBottom: 14,
-                        lineHeight: 1.55,
-                      }}
-                    >
-                      {question.question}
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      {question.options.map((option) => {
-                        const isThisCorrect = option.letter === question.correct_answer
-                        const isThisSelected = answers[question.id] === option.letter
-                        const isThisWrong = isThisSelected && !isThisCorrect
-
-                        let optBg = 'rgba(255,255,255,0.04)'
-                        let optBorder = '1px solid rgba(124,58,237,0.2)'
-                        let optColor = '#e2d9f3'
-
-                        if (isAnswered && isThisCorrect) {
-                          optBg = 'rgba(16,185,129,0.2)'
-                          optBorder = '1px solid #10b981'
-                          optColor = '#6ee7b7'
-                        } else if (isThisWrong) {
-                          optBg = 'rgba(239,68,68,0.15)'
-                          optBorder = '1px solid #ef4444'
-                          optColor = '#fca5a5'
-                        }
-
-                        return (
-                          <button
-                            key={option.letter}
-                            type="button"
-                            onClick={() => handleAnswer(question.id, option.letter, question)}
-                            style={{
-                              width: '100%',
-                              background: optBg,
-                              border: optBorder,
-                              borderRadius: 10,
-                              padding: '10px 14px',
-                              fontSize: 15,
-                              color: optColor,
-                              cursor: isAnswered ? 'default' : 'pointer',
-                              textAlign: 'left',
-                              fontFamily: 'var(--font-nunito)',
-                              fontWeight: 600,
-                              transition: 'all 0.2s',
-                              pointerEvents: isAnswered ? 'none' : 'auto',
-                            }}
-                          >
-                            <strong style={{ fontWeight: 800 }}>{option.letter}.</strong>{' '}
-                            {option.text}
-                          </button>
-                        )
-                      })}
-                    </div>
-
-                    {isAnswered && (
-                      <div
-                        style={{
-                          marginTop: 10,
-                          padding: '10px 12px',
-                          borderRadius: 8,
-                          fontSize: 15,
-                          fontWeight: 700,
-                          ...(isCorrectAnswer
-                            ? {
-                                background: 'rgba(16,185,129,0.12)',
-                                color: '#6ee7b7',
-                                border: '1px solid rgba(16,185,129,0.3)',
-                              }
-                            : {
-                                background: 'rgba(239,68,68,0.08)',
-                                color: '#fca5a5',
-                                border: '1px solid rgba(239,68,68,0.25)',
-                              }),
-                        }}
-                      >
-                        {question.explanation}
-                        {isCorrectAnswer && earnedXp > 0 && !muestra && (
-                          <span
-                            style={{
-                              background: 'rgba(251,191,36,0.15)',
-                              color: '#fbbf24',
-                              borderRadius: 50,
-                              padding: '2px 8px',
-                              fontSize: 13,
-                              marginLeft: 8,
-                            }}
-                          >
-                            +{earnedXp}XP{comboWhenAnswered >= 3 ? ' COMBO🔥' : ''}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-
-              {quizCompleted && quizResult && (
-                <div style={{
-                  marginTop: 16,
-                  background: quizResult.perfect
-                    ? 'rgba(251,191,36,0.08)'
-                    : 'rgba(16,185,129,0.08)',
-                  border: `1px solid ${quizResult.perfect ? 'rgba(251,191,36,0.3)' : 'rgba(16,185,129,0.25)'}`,
-                  borderRadius: 16,
-                  padding: '20px 16px',
-                  textAlign: 'center',
-                }}>
-                  <div style={{
-                    fontFamily: 'var(--font-orbitron)',
-                    fontSize: 28,
-                    fontWeight: 900,
-                    color: quizResult.perfect ? '#fbbf24' : '#10b981',
-                    marginBottom: 4,
-                  }}>
-                    {quizResult.best_score}%
-                  </div>
-                  <div style={{
-                    fontFamily: 'var(--font-orbitron)',
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: quizResult.perfect ? '#fbbf24' : '#10b981',
-                    marginBottom: 8,
-                    letterSpacing: 1,
-                  }}>
-                    {quizResult.perfect ? (muestra ? '🔥 ¡PERFECTO!' : '🔥 ¡PERFECTO! +150 XP') : '✓ Quiz completado'}
-                  </div>
-                  <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 16 }}>
-                    {quizResult.perfect
-                      ? 'Dominaste este tema al 100%'
-                      : muestra
-                      ? 'Ya viste cómo funciona PASAS con un tema'
-                      : 'Puedes repetir el quiz para mejorar tu puntaje'}
-                  </div>
-                  {muestra ? (
-                    <OfertaMuestra muestra={muestra} lugar="quiz" topicName={topic.name} contar={contarMuestra} />
-                  ) : (
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('resumen')}
-                    style={{
-                      width: '100%',
-                      minHeight: 52,
-                      background: quizResult.perfect
-                        ? 'linear-gradient(135deg, #fbbf24, #ec4899)'
-                        : 'linear-gradient(135deg, #7c3aed, #ec4899)',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: 14,
-                      fontFamily: 'var(--font-orbitron)',
-                      fontSize: 14,
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      letterSpacing: 1,
-                    }}
-                  >
-                    VER RESUMEN →
-                  </button>
-                  )}
-                </div>
-              )}
-
-            </div>
-          </div>
-        )}
+        <QuizPanel
+          quizQuestions={quizQuestions}
+          answers={answers}
+          score={score}
+          combo={combo}
+          xpPerQuestion={xpPerQuestion}
+          comboAtAnswer={comboAtAnswer}
+          quizCompleted={quizCompleted}
+          quizResult={quizResult}
+          isDesktop={isDesktop}
+          muestra={muestra}
+          topicName={topic.name}
+          contarMuestra={contarMuestra}
+          onAnswer={onAnswer}
+          onVerResumen={irAResumen}
+        />
       </div>
 
       {/* Tab: Horda */}
@@ -1808,111 +1318,14 @@ export default function TopicClient({
 
       {/* Tab: Resumen */}
       <div style={{ display: activeTab === 'resumen' ? 'block' : 'none', padding: isDesktop ? '24px 32px' : 16 }}>
-        <div
-          style={{
-            fontFamily: 'var(--font-orbitron)',
-            fontSize: 12,
-            color: '#a78bfa',
-            textTransform: 'uppercase',
-            letterSpacing: 2,
-            marginBottom: 12,
-          }}
-        >
-          ⚡ Lo que necesitas saber
-        </div>
-
-        <div style={{
-          display: isDesktop ? 'grid' : 'block',
-          gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined,
-          gap: isDesktop ? '0 24px' : undefined,
-        }}>
-          {resumenSections.map((section, index) => (
-            <div
-              key={section.id}
-              style={{
-                display: 'flex',
-                gap: 10,
-                alignItems: 'flex-start',
-                padding: '12px 0',
-                borderBottom:
-                  index < resumenSections.length - 1
-                    ? '1px solid rgba(124,58,237,0.1)'
-                    : 'none',
-              }}
-            >
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 8,
-                  background: 'rgba(124,58,237,0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 17,
-                  flexShrink: 0,
-                }}
-              >
-                {SECTION_ICONS[section.type]}
-              </div>
-              <div style={{ fontSize: 15, lineHeight: 1.55, color: '#e2d9f3' }}>
-                {renderContent(section.content)}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Completion card. En la muestra, la oferta en su lugar. */}
-        {muestra ? (
-          <div style={{ marginTop: 16 }}>
-            <OfertaMuestra muestra={muestra} lugar="resumen" topicName={topic.name} contar={contarMuestra} />
-          </div>
-        ) : (
-        <div
-          style={{
-            marginTop: 16,
-            background: 'rgba(16,185,129,0.08)',
-            border: '1px solid rgba(16,185,129,0.25)',
-            borderRadius: 14,
-            padding: 14,
-            textAlign: 'center',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: 'var(--font-orbitron)',
-              fontSize: 14,
-              color: '#10b981',
-              fontWeight: 700,
-              marginBottom: 4,
-            }}
-          >
-            ✓ Tema dominado
-          </div>
-          <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 12 }}>
-            Continúa con el siguiente tema
-          </div>
-          <button
-            type="button"
-            onClick={() => { router.back(); setTimeout(() => router.refresh(), 100) }}
-            style={{
-              width: '100%',
-              minHeight: 52,
-              background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
-              color: 'white',
-              border: 'none',
-              borderRadius: 14,
-              fontFamily: 'var(--font-orbitron)',
-              fontSize: 14,
-              fontWeight: 700,
-              cursor: 'pointer',
-              letterSpacing: 1,
-            }}
-          >
-            SIGUIENTE TEMA →
-          </button>
-        </div>
-        )}
+        <ResumenPanel
+          resumenSections={resumenSections}
+          isDesktop={isDesktop}
+          muestra={muestra}
+          topicName={topic.name}
+          contarMuestra={contarMuestra}
+          onSiguienteTema={irSiguienteTema}
+        />
       </div>
 
       <div style={{ height: 32 }} />
@@ -1973,3 +1386,758 @@ export default function TopicClient({
     </div>
   )
 }
+
+type EstadoInteractivo = { inicio: number; ultimoPaso: string; intentos: number; completado: boolean }
+
+/**
+ * Una sección de la guía. memo + props estables: contestar el quiz (estado en
+ * TopicClient) no la vuelve a pintar, y leer una sección solo re-pinta esa
+ * (cambia `leida`). Los callbacks reciben el sectionId, no son closures por
+ * sección creados en el padre.
+ */
+const SeccionGuia = memo(function SeccionGuia({
+  section,
+  index,
+  leida,
+  esMuestra,
+  topicName,
+  registrarSeccion,
+  onInteractiveComplete,
+  estadoInteractivo,
+  primeraInteraccion,
+  contarMuestra,
+}: {
+  section: Section
+  index: number
+  leida: boolean
+  esMuestra: boolean
+  topicName: string
+  registrarSeccion: (id: string, el: HTMLDivElement | null) => void
+  onInteractiveComplete: (sectionId: string) => void
+  estadoInteractivo: (sectionId: string, tipo: string, orden: number) => EstadoInteractivo
+  primeraInteraccion: (elemento: string) => void
+  contarMuestra: (evento: string, props?: Record<string, unknown>) => void
+}) {
+  const refSeccion = useCallback(
+    (el: HTMLDivElement | null) => registrarSeccion(section.id, el),
+    [registrarSeccion, section.id]
+  )
+  // El SVG del diagrama se limpia una vez, no en cada render.
+  const diagramaHtml = useMemo(
+    () =>
+      section.type === 'diagram'
+        ? section.content
+            .replace(/<svg([^>]*?)width="[^"]*"([^>]*?)height="[^"]*"/g, '<svg$1$2')
+            .replace(/<svg([^>]*?)height="[^"]*"([^>]*?)width="[^"]*"/g, '<svg$1$2')
+            .replace('<svg ', '<svg style="width:100%;height:auto;display:block;" ')
+        : null,
+    [section.type, section.content]
+  )
+  // Sin este respaldo, un tipo nuevo en el enum sin entrada en
+  // SECTION_TYPE_CONFIG deja `meta` en undefined y el primer
+  // acceso a meta.color tira la leccion COMPLETA con error de
+  // servidor. Paso exactamente eso al agregar 'solve'.
+  // TypeScript no lo detecta: el acceso por indice a un Record
+  // se tipa como definido aunque la llave no exista.
+  const meta = SECTION_TYPE_CONFIG[section.type] ?? {
+    label: 'Sección',
+    icon: '📄',
+    color: '#a78bfa',
+    borderColor: 'rgba(167,139,250,0.25)',
+    headerBg: 'rgba(167,139,250,0.06)',
+  }
+  return (
+    <RevealOnScroll>
+    <div
+      style={{ position: 'relative', marginBottom: 16 }}
+      data-section-id={section.id}
+      data-section-type={section.type}
+      ref={refSeccion}
+    >
+      {/* Dot */}
+      <div style={{
+        position: 'absolute',
+        left: -33,
+        top: 16,
+        width: 18,
+        height: 18,
+        borderRadius: '50%',
+        border: leida ? '2px solid #10b981' : `2px solid ${meta.color}`,
+        background: leida ? 'rgba(16,185,129,0.15)' : '#0f0a1e',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 10,
+        fontWeight: 800,
+        color: leida ? '#10b981' : meta.color,
+        fontFamily: 'var(--font-nunito)',
+        transition: 'all 0.3s ease',
+      }}>
+        {leida ? '✓' : index + 1}
+      </div>
+
+      {/* Card */}
+      <div style={{
+        background: '#1a1035',
+        border: `1px solid ${meta.borderColor}`,
+        borderRadius: 14,
+        overflow: 'hidden',
+      }}>
+        {/* Header */}
+        <div style={{
+          padding: '10px 16px',
+          borderBottom: `1px solid ${meta.borderColor}`,
+          background: meta.headerBg,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+        }}>
+          <span style={{ fontSize: 15 }}>{meta.icon}</span>
+          <span style={{
+            fontSize: 12,
+            fontWeight: 700,
+            textTransform: 'uppercase' as const,
+            letterSpacing: 1,
+            color: meta.color,
+          }}>
+            {meta.label}
+          </span>
+        </div>
+
+        {/* Content */}
+        <div style={{
+          padding: (section.type === 'diagram' || section.type === 'sort' || section.type === 'scrubber' || section.type === 'steps' || section.type === 'match' || section.type === 'connect' || section.type === 'order_steps') ? '0' : '14px 16px',
+          fontSize: 15,
+          lineHeight: 1.75,
+          color: '#e2d9f3',
+        }}>
+          {section.type === 'diagram' ? (
+            <div
+              style={{ width: '100%' }}
+              dangerouslySetInnerHTML={{ __html: diagramaHtml ?? '' }}
+            />
+          ) : section.type === 'sort' ? (
+            <SortBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'sort', section.display_order)
+                e.ultimoPaso = pr.paso
+                if (pr.intentos != null) e.intentos = pr.intentos
+              }}
+              onFallo={({ intentos }) =>
+                track('sort_fallido', {
+                  topic: topicName,
+                  seccion_orden: section.display_order,
+                  n_intentos: intentos,
+                })
+              }
+            />
+          ) : section.type === 'scrubber' ? (
+            <ScrubberBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'scrubber', section.display_order)
+                e.ultimoPaso = pr.paso
+              }}
+            />
+          ) : section.type === 'steps' ? (
+            <StepsBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'steps', section.display_order)
+                e.ultimoPaso = pr.paso
+              }}
+            />
+          ) : section.type === 'match' ? (
+            <MatchBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'match', section.display_order)
+                e.ultimoPaso = pr.paso
+                if (pr.intentos != null) e.intentos = pr.intentos
+              }}
+            />
+          ) : section.type === 'solve' ? (
+            <SolveBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'solve', section.display_order)
+                e.ultimoPaso = pr.paso
+                if (pr.intentos != null) e.intentos = pr.intentos
+              }}
+              onPistaPedida={({ ejercicioOrden, nPista, trasFallar }) => {
+                const e = estadoInteractivo(section.id, 'solve', section.display_order)
+                track('pista_pedida', {
+                  topic: topicName,
+                  seccion_orden: section.display_order,
+                  ejercicio_orden: ejercicioOrden,
+                  n_pista: nPista,
+                  tras_fallar: trasFallar,
+                  segundos_desde_inicio: Math.round((Date.now() - e.inicio) / 1000),
+                })
+              }}
+              onResuelto={({ ejercicioOrden, nPistasUsadas, intentos }) => {
+                const e = estadoInteractivo(section.id, 'solve', section.display_order)
+                track('resolvio_tras_pista', {
+                  topic: topicName,
+                  seccion_orden: section.display_order,
+                  ejercicio_orden: ejercicioOrden,
+                  n_pistas_usadas: nPistasUsadas,
+                  correcto: true,
+                  n_intentos: intentos,
+                  segundos_totales: Math.round((Date.now() - e.inicio) / 1000),
+                })
+              }}
+              onRevelada={({ ejercicioOrden, nPistasUsadas }) =>
+                track('respuesta_revelada', {
+                  topic: topicName,
+                  seccion_orden: section.display_order,
+                  ejercicio_orden: ejercicioOrden,
+                  n_pistas_usadas: nPistasUsadas,
+                })
+              }
+            />
+          ) : section.type === 'connect' ? (
+            <ConnectBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'connect', section.display_order)
+                e.ultimoPaso = pr.paso
+                if (pr.intentos != null) e.intentos = pr.intentos
+              }}
+              onFallo={({ intentos, par }) =>
+                track('minijuego_fallido', {
+                  tipo: 'connect',
+                  topic: topicName,
+                  seccion_orden: section.display_order,
+                  n_intentos: intentos,
+                  par,
+                })
+              }
+            />
+          ) : section.type === 'order_steps' ? (
+            <OrderStepsBlock
+              data={section.data}
+              onComplete={() => onInteractiveComplete(section.id)}
+              onProgreso={(pr) => {
+                const e = estadoInteractivo(section.id, 'order_steps', section.display_order)
+                e.ultimoPaso = pr.paso
+                if (pr.intentos != null) e.intentos = pr.intentos
+              }}
+              onFallo={({ intentos, posicion }) =>
+                track('minijuego_fallido', {
+                  tipo: 'order_steps',
+                  topic: topicName,
+                  seccion_orden: section.display_order,
+                  n_intentos: intentos,
+                  posicion,
+                })
+              }
+            />
+          ) : (section.type === 'analogy' || section.type === 'example') ? (
+            <CollapsibleText text={section.content} />
+          ) : renderContent(section.content)}
+        </div>
+
+        {/* Audio narrado — solo bloques de texto con audio */}
+        {section.audio_url && AUDIO_TEXT_TYPES.has(section.type) && (
+          <AudioPlayer
+            url={section.audio_url}
+            duration={section.audio_duration}
+            onAudioInicio={({ duracionTotalSeg }) => {
+              track('audio_iniciado', {
+                topic: topicName,
+                seccion_orden: section.display_order,
+                duracion_total_seg: duracionTotalSeg,
+              })
+              primeraInteraccion('audio')
+              contarMuestra('tema_muestra_audio', { elemento: section.type })
+            }}
+            onAudioProgreso={({ pct }) =>
+              track('audio_progreso', {
+                topic: topicName,
+                seccion_orden: section.display_order,
+                pct,
+              })
+            }
+            onAudioFin={({ pctEscuchado, segundosEscuchados, motivo }) =>
+              track('audio_terminado', {
+                topic: topicName,
+                seccion_orden: section.display_order,
+                pct_escuchado: pctEscuchado,
+                segundos_escuchados: segundosEscuchados,
+                motivo,
+              })
+            }
+          />
+        )}
+
+        {/* Footer XP (la muestra no guarda XP: no se promete) */}
+        {!esMuestra && (
+        <div style={{
+          padding: '8px 16px 12px',
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}>
+          <span style={{
+            fontSize: 12,
+            color: '#a78bfa',
+            fontWeight: 600,
+            transition: 'opacity 0.4s ease',
+          }}>
+            {leida ? (
+              <>
+                Leíste esto{' '}
+                <span style={{ color: '#fbbf24' }}>+10 XP</span>
+              </>
+            ) : (
+              <span style={{ color: 'rgba(167,139,250,0.4)' }}>Lee esta sección para ganar XP</span>
+            )}
+          </span>
+        </div>
+        )}
+      </div>
+    </div>
+    </RevealOnScroll>
+  )
+})
+
+/**
+ * Pestaña Quiz. memo: leer secciones (readSections, sessionXp, racha) no la
+ * vuelve a pintar. `onAnswer` es estable (ver handleAnswerRef).
+ */
+const QuizPanel = memo(function QuizPanel({
+  quizQuestions,
+  answers,
+  score,
+  combo,
+  xpPerQuestion,
+  comboAtAnswer,
+  quizCompleted,
+  quizResult,
+  isDesktop,
+  muestra,
+  topicName,
+  contarMuestra,
+  onAnswer,
+  onVerResumen,
+}: {
+  quizQuestions: QuizQuestion[]
+  answers: Record<string, string>
+  score: number
+  combo: number
+  xpPerQuestion: Record<string, number>
+  comboAtAnswer: Record<string, number>
+  quizCompleted: boolean
+  quizResult: { best_score: number; perfect: boolean } | null
+  isDesktop: boolean
+  muestra: MuestraTema | null
+  topicName: string
+  contarMuestra: (evento: string, props?: Record<string, unknown>) => void
+  onAnswer: (questionId: string, selectedLetter: string, question: QuizQuestion) => void
+  onVerResumen: () => void
+}) {
+  return (
+    <>
+      {quizQuestions.length === 0 ? (
+        <div
+          style={{
+            background: '#1a1035',
+            border: '1px solid rgba(124,58,237,0.2)',
+            borderRadius: 16,
+            padding: '32px 16px',
+            textAlign: 'center',
+            color: '#a78bfa',
+            fontSize: 16,
+          }}
+        >
+          Preguntas próximamente
+        </div>
+      ) : (
+        <div style={{
+          display: isDesktop ? 'grid' : 'block',
+          gridTemplateColumns: isDesktop ? '200px 1fr' : undefined,
+          gap: isDesktop ? 24 : undefined,
+          alignItems: 'start',
+        }}>
+          {/* Left: score + combo dots */}
+          <div style={{ position: isDesktop ? 'sticky' : undefined, top: isDesktop ? 80 : undefined }}>
+            {/* Score display */}
+            <div style={{ textAlign: 'center', paddingBottom: 16 }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 24,
+                  fontWeight: 900,
+                  background: 'linear-gradient(135deg, #fbbf24, #ec4899)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {score} / {quizQuestions.length}
+              </div>
+              <div style={{ fontSize: 14, color: '#a78bfa', fontWeight: 600, marginTop: 4 }}>
+                Respuestas correctas
+              </div>
+            </div>
+
+            {/* Combo dots */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                marginBottom: 16,
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: '50%',
+                    background: i < combo ? '#fbbf24' : 'rgba(255,255,255,0.1)',
+                    border: i < combo
+                      ? '1px solid #fbbf24'
+                      : '1px solid rgba(124,58,237,0.3)',
+                    boxShadow: i < combo ? '0 0 6px rgba(251,191,36,0.5)' : 'none',
+                  }}
+                />
+              ))}
+              <span style={{ fontSize: 13, color: '#a78bfa' }}>
+                {combo >= 3 ? 'Combo x2 🔥' : combo >= 2 ? 'Combo x1.5 ⚡' : 'Combo'}
+              </span>
+            </div>
+          </div>
+
+          {/* Right: questions */}
+          <div>
+            {quizQuestions.map((question, index) => {
+              const isAnswered = !!answers[question.id]
+              const isLocked = index > 0 && !answers[quizQuestions[index - 1].id]
+              const earnedXp = xpPerQuestion[question.id] ?? 0
+              const comboWhenAnswered = comboAtAnswer[question.id] ?? 0
+              const isCorrectAnswer = answers[question.id] === question.correct_answer
+
+              return (
+                <div
+                  key={question.id}
+                  style={{
+                    background: '#1e1040',
+                    border: '1px solid rgba(236,72,153,0.2)',
+                    borderRadius: 16,
+                    padding: 18,
+                    marginBottom: 12,
+                    opacity: isLocked ? 0.4 : 1,
+                    pointerEvents: isLocked ? 'none' : 'auto',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 16,
+                      fontWeight: 700,
+                      color: '#f0e6ff',
+                      marginBottom: 14,
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    {question.question}
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {question.options.map((option) => {
+                      const isThisCorrect = option.letter === question.correct_answer
+                      const isThisSelected = answers[question.id] === option.letter
+                      const isThisWrong = isThisSelected && !isThisCorrect
+
+                      let optBg = 'rgba(255,255,255,0.04)'
+                      let optBorder = '1px solid rgba(124,58,237,0.2)'
+                      let optColor = '#e2d9f3'
+
+                      if (isAnswered && isThisCorrect) {
+                        optBg = 'rgba(16,185,129,0.2)'
+                        optBorder = '1px solid #10b981'
+                        optColor = '#6ee7b7'
+                      } else if (isThisWrong) {
+                        optBg = 'rgba(239,68,68,0.15)'
+                        optBorder = '1px solid #ef4444'
+                        optColor = '#fca5a5'
+                      }
+
+                      return (
+                        <button
+                          key={option.letter}
+                          type="button"
+                          onClick={() => onAnswer(question.id, option.letter, question)}
+                          style={{
+                            width: '100%',
+                            background: optBg,
+                            border: optBorder,
+                            borderRadius: 10,
+                            padding: '10px 14px',
+                            fontSize: 15,
+                            color: optColor,
+                            cursor: isAnswered ? 'default' : 'pointer',
+                            textAlign: 'left',
+                            fontFamily: 'var(--font-nunito)',
+                            fontWeight: 600,
+                            transition: 'all 0.2s',
+                            pointerEvents: isAnswered ? 'none' : 'auto',
+                          }}
+                        >
+                          <strong style={{ fontWeight: 800 }}>{option.letter}.</strong>{' '}
+                          {option.text}
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {isAnswered && (
+                    <div
+                      style={{
+                        marginTop: 10,
+                        padding: '10px 12px',
+                        borderRadius: 8,
+                        fontSize: 15,
+                        fontWeight: 700,
+                        ...(isCorrectAnswer
+                          ? {
+                              background: 'rgba(16,185,129,0.12)',
+                              color: '#6ee7b7',
+                              border: '1px solid rgba(16,185,129,0.3)',
+                            }
+                          : {
+                              background: 'rgba(239,68,68,0.08)',
+                              color: '#fca5a5',
+                              border: '1px solid rgba(239,68,68,0.25)',
+                            }),
+                      }}
+                    >
+                      {question.explanation}
+                      {isCorrectAnswer && earnedXp > 0 && !muestra && (
+                        <span
+                          style={{
+                            background: 'rgba(251,191,36,0.15)',
+                            color: '#fbbf24',
+                            borderRadius: 50,
+                            padding: '2px 8px',
+                            fontSize: 13,
+                            marginLeft: 8,
+                          }}
+                        >
+                          +{earnedXp}XP{comboWhenAnswered >= 3 ? ' COMBO🔥' : ''}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+
+            {quizCompleted && quizResult && (
+              <div style={{
+                marginTop: 16,
+                background: quizResult.perfect
+                  ? 'rgba(251,191,36,0.08)'
+                  : 'rgba(16,185,129,0.08)',
+                border: `1px solid ${quizResult.perfect ? 'rgba(251,191,36,0.3)' : 'rgba(16,185,129,0.25)'}`,
+                borderRadius: 16,
+                padding: '20px 16px',
+                textAlign: 'center',
+              }}>
+                <div style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 28,
+                  fontWeight: 900,
+                  color: quizResult.perfect ? '#fbbf24' : '#10b981',
+                  marginBottom: 4,
+                }}>
+                  {quizResult.best_score}%
+                </div>
+                <div style={{
+                  fontFamily: 'var(--font-orbitron)',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: quizResult.perfect ? '#fbbf24' : '#10b981',
+                  marginBottom: 8,
+                  letterSpacing: 1,
+                }}>
+                  {quizResult.perfect ? (muestra ? '🔥 ¡PERFECTO!' : '🔥 ¡PERFECTO! +150 XP') : '✓ Quiz completado'}
+                </div>
+                <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 16 }}>
+                  {quizResult.perfect
+                    ? 'Dominaste este tema al 100%'
+                    : muestra
+                    ? 'Ya viste cómo funciona PASAS con un tema'
+                    : 'Puedes repetir el quiz para mejorar tu puntaje'}
+                </div>
+                {muestra ? (
+                  <OfertaMuestra muestra={muestra} lugar="quiz" topicName={topicName} contar={contarMuestra} />
+                ) : (
+                <button
+                  type="button"
+                  onClick={onVerResumen}
+                  style={{
+                    width: '100%',
+                    minHeight: 52,
+                    background: quizResult.perfect
+                      ? 'linear-gradient(135deg, #fbbf24, #ec4899)'
+                      : 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: 14,
+                    fontFamily: 'var(--font-orbitron)',
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    letterSpacing: 1,
+                  }}
+                >
+                  VER RESUMEN →
+                </button>
+                )}
+              </div>
+            )}
+
+          </div>
+        </div>
+      )}
+    </>
+  )
+})
+
+/** Pestaña Resumen. memo: no cambia con el quiz ni con la lectura. */
+const ResumenPanel = memo(function ResumenPanel({
+  resumenSections,
+  isDesktop,
+  muestra,
+  topicName,
+  contarMuestra,
+  onSiguienteTema,
+}: {
+  resumenSections: Section[]
+  isDesktop: boolean
+  muestra: MuestraTema | null
+  topicName: string
+  contarMuestra: (evento: string, props?: Record<string, unknown>) => void
+  onSiguienteTema: () => void
+}) {
+  return (
+    <>
+      <div
+        style={{
+          fontFamily: 'var(--font-orbitron)',
+          fontSize: 12,
+          color: '#a78bfa',
+          textTransform: 'uppercase',
+          letterSpacing: 2,
+          marginBottom: 12,
+        }}
+      >
+        ⚡ Lo que necesitas saber
+      </div>
+
+      <div style={{
+        display: isDesktop ? 'grid' : 'block',
+        gridTemplateColumns: isDesktop ? '1fr 1fr' : undefined,
+        gap: isDesktop ? '0 24px' : undefined,
+      }}>
+        {resumenSections.map((section, index) => (
+          <div
+            key={section.id}
+            style={{
+              display: 'flex',
+              gap: 10,
+              alignItems: 'flex-start',
+              padding: '12px 0',
+              borderBottom:
+                index < resumenSections.length - 1
+                  ? '1px solid rgba(124,58,237,0.1)'
+                  : 'none',
+            }}
+          >
+            <div
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: 8,
+                background: 'rgba(124,58,237,0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 17,
+                flexShrink: 0,
+              }}
+            >
+              {SECTION_ICONS[section.type]}
+            </div>
+            <div style={{ fontSize: 15, lineHeight: 1.55, color: '#e2d9f3' }}>
+              {renderContent(section.content)}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Completion card. En la muestra, la oferta en su lugar. */}
+      {muestra ? (
+        <div style={{ marginTop: 16 }}>
+          <OfertaMuestra muestra={muestra} lugar="resumen" topicName={topicName} contar={contarMuestra} />
+        </div>
+      ) : (
+      <div
+        style={{
+          marginTop: 16,
+          background: 'rgba(16,185,129,0.08)',
+          border: '1px solid rgba(16,185,129,0.25)',
+          borderRadius: 14,
+          padding: 14,
+          textAlign: 'center',
+        }}
+      >
+        <div
+          style={{
+            fontFamily: 'var(--font-orbitron)',
+            fontSize: 14,
+            color: '#10b981',
+            fontWeight: 700,
+            marginBottom: 4,
+          }}
+        >
+          ✓ Tema dominado
+        </div>
+        <div style={{ fontSize: 14, color: '#a78bfa', marginBottom: 12 }}>
+          Continúa con el siguiente tema
+        </div>
+        <button
+          type="button"
+          onClick={onSiguienteTema}
+          style={{
+            width: '100%',
+            minHeight: 52,
+            background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+            color: 'white',
+            border: 'none',
+            borderRadius: 14,
+            fontFamily: 'var(--font-orbitron)',
+            fontSize: 14,
+            fontWeight: 700,
+            cursor: 'pointer',
+            letterSpacing: 1,
+          }}
+        >
+          SIGUIENTE TEMA →
+        </button>
+      </div>
+      )}
+    </>
+  )
+})

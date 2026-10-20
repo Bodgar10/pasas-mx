@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import LandingClient from './landing-client'
 import { leerLandingStats, type LandingStats } from '@/lib/landing-stats'
-import { detectAudience } from '@/lib/audience-detection'
 import { PLAN_DISPLAY } from '@/lib/payments/config'
 
 /**

@@ -60,6 +60,7 @@ export default function RootLayout({
         {/* GA4 y Clarity viven en AnalyticsScripts: solo cargan con
             consentimiento. NO devolverlos aquí. */}
         <AnalyticsScripts />
+        {/* Server component: solo una <div> con fondo CSS (globals.css). */}
         <Starfield />
         {/*
           🔴 UN <Suspense> POR COMPONENTE, Y `children` FUERA DE TODOS.
@@ -86,8 +87,9 @@ export default function RootLayout({
           ningún síntoma visible: la página se ve igual en el navegador.
 
           El <Suspense> de PostHogPageView vive dentro de posthog-provider.tsx,
-          no aquí: PHProvider tiene que seguir envolviendo a `children` para
-          darles el contexto del cliente de PostHog.
+          no aquí. Desde s34 PostHogProvider ya no da contexto (no hay
+          PHProvider: posthog-js se descarga solo con consentimiento), pero
+          sigue envolviendo a `children` para no mover el árbol.
         */}
         <Suspense fallback={null}>
           <UTMPersistence />

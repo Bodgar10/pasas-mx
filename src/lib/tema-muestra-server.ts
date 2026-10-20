@@ -1,5 +1,6 @@
 import 'server-only'
 
+import { unstable_cache } from 'next/cache'
 import { createClient } from '@supabase/supabase-js'
 import { NIVEL_ONBOARDING, gradoOnboarding } from '@/lib/horda-publica'
 import { tematicaPorClave, type ClaveTematica } from '@/lib/tema-muestra'
@@ -11,6 +12,16 @@ import { tematicaPorClave, type ClaveTematica } from '@/lib/tema-muestra'
  *
  * 🔴 Solo temas que salen en el reto (`arcade_rounds`). La muestra existe para
  * quien acaba de fallar ese tema, no para abrir el temario entero por URL.
+ *
+ * CACHÉ (unstable_cache, 300 s, tag 'topics'). /tema es la puerta del embudo
+ * desde el arcade y hacía seis viajes en serie por visita, todos sobre datos
+ * de catálogo que no dependen de quién mira. El cliente es el de abajo
+ * —service role, SIN cookies—, que es lo único que se puede meter en un
+ * scope de caché (unstable_cache.md: nada de cookies ni headers dentro).
+ * Service role se salta la RLS: los filtros que importan (`published`, tema
+ * del reto, temática activa) están escritos a mano en cada consulta.
+ * El tag es el mismo que usa el catálogo de la guía: un revalidateTag('topics')
+ * al publicar refresca las dos cosas.
  */
 function admin() {
   return createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
@@ -28,22 +39,26 @@ export type TemaMuestra = {
   grado: string | null
 }
 
-export async function temaMuestraPorSlugs(subjectSlug: string, topicSlug: string): Promise<TemaMuestra | null> {
+async function leerTemaMuestra(subjectSlug: string, topicSlug: string): Promise<TemaMuestra | null> {
   const db = admin()
-  const { data: subject } = await db
-    .from('subjects')
-    .select('id, slug, name, education_level, grades')
-    .eq('slug', subjectSlug)
-    .maybeSingle()
-  if (!subject) return null
-
-  const { data: topic } = await db
+  // Tema y materia en UNA consulta: `topics.slug` es UNIQUE, así que "el tema
+  // con este slug cuya materia tiene este slug" es la misma fila que antes
+  // salía de dos lecturas en serie.
+  const { data: fila } = await db
     .from('topics')
-    .select('id, name, slug, difficulty, xp_reward, grade, published, horde_ready')
-    .eq('subject_id', subject.id)
+    .select('id, name, slug, difficulty, xp_reward, grade, published, horde_ready, subjects!inner(id, slug, name, education_level, grades)')
     .eq('slug', topicSlug)
+    .eq('subjects.slug', subjectSlug)
     .maybeSingle()
-  if (!topic || !topic.published) return null
+  if (!fila || !fila.published) return null
+  const { subjects: subjectRel, ...topic } = fila
+  const subject = subjectRel as unknown as {
+    id: string
+    slug: string
+    name: string
+    education_level: string | null
+    grades: number[] | null
+  }
 
   const [{ count }, { data: materia }] = await Promise.all([
     db.from('arcade_rounds').select('id', { count: 'exact', head: true }).eq('topic_id', topic.id),
@@ -67,11 +82,16 @@ export async function temaMuestraPorSlugs(subjectSlug: string, topicSlug: string
   }
 }
 
+export const temaMuestraPorSlugs = unstable_cache(leerTemaMuestra, ['tema-muestra-por-slugs'], {
+  revalidate: 300,
+  tags: ['topics'],
+})
+
 /**
  * Secciones y quiz del tema en esa temática, con las mismas formas que lee
  * /guia/[subject]/[topic]/page.tsx. Sin la temática en la base, null.
  */
-export async function contenidoMuestra(topicId: string, clave: ClaveTematica) {
+async function leerContenidoMuestra(topicId: string, clave: ClaveTematica) {
   const tematica = tematicaPorClave(clave)
   if (!tematica) return null
   const db = admin()
@@ -101,3 +121,13 @@ export async function contenidoMuestra(topicId: string, clave: ClaveTematica) {
 
   return { themeName: theme.name as string, sections: sections ?? [], quiz: quiz ?? [] }
 }
+
+/**
+ * Misma caché que temaMuestraPorSlugs. 🔴 El orden de secciones
+ * (display_order) y del quiz (created_at) se resuelve en la consulta y el
+ * arreglo se guarda tal cual: la caché no reordena nada.
+ */
+export const contenidoMuestra = unstable_cache(leerContenidoMuestra, ['tema-muestra-contenido'], {
+  revalidate: 300,
+  tags: ['topics'],
+})

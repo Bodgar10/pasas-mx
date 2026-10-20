@@ -1,6 +1,6 @@
 import ComoSeLee from '@/components/admin/ComoSeLee'
 import { StatCard, SectionTitle, Panel, Nota, Vacio, FilaRanking, COLORES, GRID_4, GRID_2 } from '@/components/admin/Tarjetas'
-import { servicio, idsVigentes, TOPE } from '../_lib/datos'
+import { servicio, idsVigentes, leerTodo } from '../_lib/datos'
 
 const TEMAS_NOMBRE: Record<string, string> = {
   '8675082b-df0f-4599-b566-38fa13753120': '🎮 Videojuegos',
@@ -16,10 +16,18 @@ export default async function Contenido({ incluirPrueba }: { incluirPrueba: bool
 
   const [{ data: avance }, { data: temas }, { data: materias }, { data: subjects }, { data: solicitudes }] =
     await Promise.all([
-      db.from('topic_progress').select('learner_id, topic_id, status').eq('status', 'completed').limit(TOPE),
-      db.from('topics').select('id, name, subject_id, published').limit(TOPE),
-      db.from('user_subjects').select('learner_id, theme_id').limit(TOPE),
-      db.from('subjects').select('id, name').limit(TOPE),
+      // Paginadas con `leerTodo`: PostgREST corta en 1000 filas sin avisar.
+      // topic_progress tiene PK compuesta (learner_id, topic_id), migración 035.
+      leerTodo<{ learner_id: string | null; topic_id: string; status: string }>(() =>
+        db.from('topic_progress').select('learner_id, topic_id, status').eq('status', 'completed').order('learner_id').order('topic_id')
+      ),
+      leerTodo<{ id: string; name: string; subject_id: string; published: boolean }>(() =>
+        db.from('topics').select('id, name, subject_id, published').order('id')
+      ),
+      leerTodo<{ learner_id: string | null; theme_id: string | null }>(() =>
+        db.from('user_subjects').select('learner_id, theme_id').order('id')
+      ),
+      leerTodo<{ id: string; name: string }>(() => db.from('subjects').select('id, name').order('id')),
       db.from('topic_requests').select('subject_name, description, created_at').order('created_at', { ascending: false }).limit(200),
     ])
 

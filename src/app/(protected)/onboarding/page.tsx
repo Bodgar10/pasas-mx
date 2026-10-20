@@ -2,6 +2,13 @@ import { Suspense } from 'react'
 import { createClient as createServiceClient } from '@supabase/supabase-js'
 import OnboardingClient from './onboarding-client'
 
+/**
+ * La página es estática (no lee cookies ni params en el servidor) y se
+ * prerenderizaba UNA vez en el build: una temática nueva o desactivada no
+ * aparecía hasta el siguiente deploy. Con ISR de 1 h se regenera sola.
+ */
+export const revalidate = 3600
+
 export default async function OnboardingPage() {
   // Use service role to read themes — public data, no auth needed
   const serviceClient = createServiceClient(

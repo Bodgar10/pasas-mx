@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, after } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { resolveLearnerFromBody } from '@/lib/learners'
 import { trackServer } from '@/lib/analytics/track-server'
@@ -25,20 +25,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Sin alumno activo' }, { status: 409 })
     }
 
-    // Idempotency check
-    const { data: existing } = await supabase
-      .from('progress')
-      .select('id')
-      .eq('learner_id', learnerId)
-      .eq('event_type', 'section_read')
-      .filter('metadata->>section_id', 'eq', section_id)
-      .maybeSingle()
-
-    if (existing) {
-      return NextResponse.json({ xp_earned: 0, already_read: true })
-    }
-
     /**
+     * Idempotency check + estado previo del alumno, en paralelo: las dos son
+     * lecturas y las dos tienen que ocurrir ANTES del insert.
+     *
      * 🔴 SE LEE ANTES DEL INSERT, Y ESO ES LO IMPORTANTE — s33.
      *
      * Desde la migración 050 la racha la escribe un trigger AFTER INSERT
@@ -52,11 +42,24 @@ export async function POST(request: Request) {
      * nuevas sin extender el GRANT, así que el UPDATE entero venía
      * fallando con 42501 desde el 18-ago y nadie miraba el error.
      */
-    const { data: estadoPrevio } = await supabase
-      .from('learners')
-      .select('streak_days, last_active_at, max_streak_days, first_session_at')
-      .eq('id', learnerId)
-      .single()
+    const [{ data: existing }, { data: estadoPrevio }] = await Promise.all([
+      supabase
+        .from('progress')
+        .select('id')
+        .eq('learner_id', learnerId)
+        .eq('event_type', 'section_read')
+        .filter('metadata->>section_id', 'eq', section_id)
+        .maybeSingle(),
+      supabase
+        .from('learners')
+        .select('streak_days, last_active_at, max_streak_days, first_session_at')
+        .eq('id', learnerId)
+        .single(),
+    ])
+
+    if (existing) {
+      return NextResponse.json({ xp_earned: 0, already_read: true })
+    }
 
     const { error: progressError } = await supabase.from('progress').insert({
       user_id: user.id,
@@ -72,9 +75,6 @@ export async function POST(request: Request) {
       console.error('section-read progress insert failed:', progressError)
       return NextResponse.json({ error: 'No se pudo guardar el avance' }, { status: 500 })
     }
-
-    await supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 10 })
-    await supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 10 })
 
     // --- Streak logic (solo LECTURA: escribe el trigger 050) ---
     //
@@ -124,80 +124,100 @@ export async function POST(request: Request) {
     const nuevaMaxima = Math.max(maximaPrevia, newStreak)
     // --- End streak logic ---
 
+    // --- Después del insert, todo en un solo batch ---
+    //
+    // Son independientes entre sí: las dos RPC de XP escriben en `learners` y
+    // `user_subjects`, y ninguna de las lecturas mira esas columnas. Los
+    // conteos SÍ tienen que ir después del insert (readCount incluye la
+    // sección recién guardada), y lo van.
+    const [, , { data: consentimiento }, { count: totalSections }, { count: readCount }, { data: topicProgress }] =
+      await Promise.all([
+        supabase.rpc('increment_learner_xp', { lid: learnerId, amount: 10 }),
+        supabase.rpc('increment_subject_xp', { lid: learnerId, sid: subject_id, amount: 10 }),
+        // Consentimiento para los eventos de abajo.
+        supabase
+          .from('users')
+          .select('cookie_consent_analytics, cookie_consent_marketing')
+          .eq('id', user.id)
+          .maybeSingle(),
+        // Count total sections for this topic
+        supabase
+          .from('sections')
+          .select('id', { count: 'exact', head: true })
+          .eq('topic_id', topic_id),
+        // Count how many sections the user has already read for this topic
+        // (including the one just inserted)
+        supabase
+          .from('progress')
+          .select('id', { count: 'exact', head: true })
+          .eq('learner_id', learnerId)
+          .eq('topic_id', topic_id)
+          .eq('event_type', 'section_read'),
+        // Para actualizar topic_progress (abajo)
+        supabase
+          .from('topic_progress')
+          .select('status, best_score')
+          .eq('learner_id', learnerId)
+          .eq('topic_id', topic_id)
+          .maybeSingle(),
+      ])
+
     // --- Eventos de servidor ---
     //
     // Nada de esto altera la logica de arriba: se lee lo que ya estaba en la
-    // mano y se emite. Van en su propio try/catch — un fallo de analitica no
-    // puede tumbar el registro del avance de un alumno.
-    try {
-      const { data: consentimiento } = await supabase
-        .from('users')
-        .select('cookie_consent_analytics, cookie_consent_marketing')
-        .eq('id', user.id)
-        .maybeSingle()
-
-      const ctx = {
-        consent: {
-          analytics: consentimiento?.cookie_consent_analytics,
-          marketing: consentimiento?.cookie_consent_marketing,
-        },
-        userId: user.id,
-      }
-
-      if (primeraSesion) {
-        await trackServer('primera_sesion', { fuente: 'section_read' }, ctx)
-      }
-
-      if (streakEvent !== 'none') {
-        await trackServer(
-          'racha_actualizada',
-          {
-            dias_actual: newStreak,
-            dias_maxima: nuevaMaxima,
-            es_record: newStreak > maximaPrevia && newStreak > 1,
-            evento: streakEvent,
+    // mano y se emite. Van en `after()`: se mandan DESPUÉS de responder, así
+    // que la latencia de PostHog/Meta/TikTok ya no la paga el alumno. Y en su
+    // propio try/catch — un fallo de analitica no puede tumbar nada.
+    after(async () => {
+      try {
+        const ctx = {
+          consent: {
+            analytics: consentimiento?.cookie_consent_analytics,
+            marketing: consentimiento?.cookie_consent_marketing,
           },
-          ctx
-        )
+          userId: user.id,
+        }
+
+        if (primeraSesion) {
+          await trackServer('primera_sesion', { fuente: 'section_read' }, ctx)
+        }
+
+        if (streakEvent !== 'none') {
+          await trackServer(
+            'racha_actualizada',
+            {
+              dias_actual: newStreak,
+              dias_maxima: nuevaMaxima,
+              es_record: newStreak > maximaPrevia && newStreak > 1,
+              evento: streakEvent,
+            },
+            ctx
+          )
+        }
+
+        /**
+         * 🔴 `racha_rota` — el unico sitio del codigo donde se sabe.
+         *
+         * `streakEvent === 'started'` cubre DOS casos que el codigo no
+         * distingue: "empieza por primera vez" y "rompio una de 12 dias". La
+         * diferencia esta en el valor viejo, que aqui todavia se tiene en la
+         * mano y despues se pierde — el UPDATE de arriba ya lo piso.
+         *
+         * `> 1` a proposito: una racha de 1 dia que se rompe no es una racha
+         * perdida, es un alumno que vino una vez.
+         */
+        const rachaVieja = userRecord?.streak_days ?? 0
+        if (streakEvent === 'started' && rachaVieja > 1) {
+          await trackServer(
+            'racha_rota',
+            { dias_perdidos: rachaVieja, dias_maxima: nuevaMaxima },
+            ctx
+          )
+        }
+      } catch (err) {
+        console.error('[section-read] analitica fallo:', err)
       }
-
-      /**
-       * 🔴 `racha_rota` — el unico sitio del codigo donde se sabe.
-       *
-       * `streakEvent === 'started'` cubre DOS casos que el codigo no
-       * distingue: "empieza por primera vez" y "rompio una de 12 dias". La
-       * diferencia esta en el valor viejo, que aqui todavia se tiene en la
-       * mano y despues se pierde — el UPDATE de arriba ya lo piso.
-       *
-       * `> 1` a proposito: una racha de 1 dia que se rompe no es una racha
-       * perdida, es un alumno que vino una vez.
-       */
-      const rachaVieja = userRecord?.streak_days ?? 0
-      if (streakEvent === 'started' && rachaVieja > 1) {
-        await trackServer(
-          'racha_rota',
-          { dias_perdidos: rachaVieja, dias_maxima: nuevaMaxima },
-          ctx
-        )
-      }
-    } catch (err) {
-      console.error('[section-read] analitica fallo:', err)
-    }
-
-    // Count total sections for this topic
-    const { count: totalSections } = await supabase
-      .from('sections')
-      .select('id', { count: 'exact', head: true })
-      .eq('topic_id', topic_id)
-
-    // Count how many sections the user has already read for this topic
-    // (including the one just inserted)
-    const { count: readCount } = await supabase
-      .from('progress')
-      .select('id', { count: 'exact', head: true })
-      .eq('learner_id', learnerId)
-      .eq('topic_id', topic_id)
-      .eq('event_type', 'section_read')
+    })
 
     const readingPercent =
       totalSections && totalSections > 0
@@ -205,13 +225,6 @@ export async function POST(request: Request) {
         : 0
 
     // Update topic_progress — never overwrite 'completed' status or its best_score
-    const { data: topicProgress } = await supabase
-      .from('topic_progress')
-      .select('status, best_score')
-      .eq('learner_id', learnerId)
-      .eq('topic_id', topic_id)
-      .maybeSingle()
-
     if (!topicProgress) {
       await supabase.from('topic_progress').insert({
         user_id: user.id,

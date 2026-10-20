@@ -1,11 +1,10 @@
-import { createClient } from '@/utils/supabase/server'
+import { getUsuario } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import PerfilClient from './perfil-client'
 import { rachaVisible } from '@/lib/gamification'
 
 export default async function PerfilPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { supabase, user } = await getUsuario()
   if (!user) redirect('/login')
 
   // La consulta va aparte de getAccountLearners a proposito: esa

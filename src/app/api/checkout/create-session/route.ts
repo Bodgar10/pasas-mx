@@ -16,7 +16,7 @@
  * Response:     { url: string } | { error: string }
  */
 
-import { NextResponse } from 'next/server'
+import { NextResponse, after } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
 import { stripe } from '@/lib/payments/stripe'
 import {
@@ -82,11 +82,22 @@ export async function POST(request: Request) {
     // servidor. Pedirselo al navegador en el body seria dejar que cualquiera
     // se autoatribuya a la campana que quisiera, y ademas se desincronizaria
     // de lo que ya esta en la fila.
-    const { data: profile } = await supabase
-      .from('users')
-      .select('email, full_name, acquisition_source, cookie_consent_analytics, cookie_consent_marketing')
-      .eq('id', user.id)
-      .single()
+    //
+    // Perfil y "¿ya tuvo suscripción?" van en paralelo: las dos solo
+    // necesitan user.id y ninguna depende de la otra.
+    const [{ data: profile }, { data: existingSubs }] = await Promise.all([
+      supabase
+        .from('users')
+        .select('email, full_name, acquisition_source, cookie_consent_analytics, cookie_consent_marketing')
+        .eq('id', user.id)
+        .single(),
+      // Check if user already had a trial — if so, no trial on new subscription
+      supabase
+        .from('subscriptions')
+        .select('id')
+        .eq('user_id', user.id)
+        .limit(1),
+    ])
 
     const acquisition = (profile?.acquisition_source ?? null) as AcquisitionSource | null
 
@@ -102,12 +113,6 @@ export async function POST(request: Request) {
       eventId: checkoutEventId,
     }
 
-    // Check if user already had a trial — if so, no trial on new subscription
-    const { data: existingSubs } = await supabase
-      .from('subscriptions')
-      .select('id')
-      .eq('user_id', user.id)
-      .limit(1)
     const hasHadSubscription = (existingSubs?.length ?? 0) > 0
 
     // 4. Promoción. El servidor decide: valida plan y ciclo contra la fila
@@ -136,15 +141,18 @@ export async function POST(request: Request) {
         // El checkout NO se abrio y la persona ya vio un precio con
         // descuento. Sin este evento, esa venta perdida es invisible: el
         // embudo solo veria un `checkout_iniciado` que nunca llego a pago.
-        void trackServer(
-          'checkout_error',
-          {
-            puerta: 'create_session',
-            motivo: 'promo_no_encontrada',
-            plan,
-            ciclo: duration,
-          },
-          contextoAnalitica
+        // En `after()`: sale después de responder el 409.
+        after(() =>
+          trackServer(
+            'checkout_error',
+            {
+              puerta: 'create_session',
+              motivo: 'promo_no_encontrada',
+              plan,
+              ciclo: duration,
+            },
+            contextoAnalitica
+          )
         )
         return NextResponse.json(
           { error: MENSAJE_PROMO_NO_DISPONIBLE },
@@ -179,15 +187,18 @@ export async function POST(request: Request) {
       try {
         return await crear()
       } catch (err) {
-        void trackServer(
-          'checkout_error',
-          {
-            puerta: 'create_session',
-            motivo: motivoCheckoutError(err),
-            plan,
-            ciclo: duration,
-          },
-          contextoAnalitica
+        const motivo = motivoCheckoutError(err)
+        after(() =>
+          trackServer(
+            'checkout_error',
+            {
+              puerta: 'create_session',
+              motivo,
+              plan,
+              ciclo: duration,
+            },
+            contextoAnalitica
+          )
         )
         throw err
       }
@@ -242,18 +253,23 @@ export async function POST(request: Request) {
     }))
 
     // Evento de servidor. Va DESPUES de crear la sesion: solo se anuncia lo
-    // que de verdad ocurrio. Y no se espera —`void`— para no meter la
-    // latencia de PostHog entre el usuario y su redirect a Stripe; si falla,
-    // trackServer lo traga y loguea.
-    void trackServer(
-      'checkout_session_creada',
-      {
-        plan,
-        ciclo: duration,
-        camino: 'create_session',
-        con_promo: !!promoResuelta,
-      },
-      contextoAnalitica
+    // que de verdad ocurrio. Y va en `after()` para no meter la latencia de
+    // PostHog entre el usuario y su redirect a Stripe. Antes era un `void`
+    // suelto, que en serverless se puede cortar al congelarse la función en
+    // cuanto sale la respuesta; `after()` la mantiene viva hasta que termine.
+    // Si falla, trackServer lo traga y loguea.
+    const conPromo = !!promoResuelta
+    after(() =>
+      trackServer(
+        'checkout_session_creada',
+        {
+          plan,
+          ciclo: duration,
+          camino: 'create_session',
+          con_promo: conPromo,
+        },
+        contextoAnalitica
+      )
     )
 
     // `promo_aplicada` es informativo y no cambia el cobro: lo usa el

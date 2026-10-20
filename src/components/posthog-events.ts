@@ -16,7 +16,27 @@
  * y `streak_milestone`.
  */
 
-import posthog from 'posthog-js'
+// Solo el TIPO: se borra al compilar.
+import type { PostHog } from 'posthog-js'
+
+/**
+ * La instancia que dejó posthog-provider tras el init, o nada — s34.
+ *
+ * Antes este archivo importaba posthog-js de forma estática, y como lo usan
+ * /planes, /registro, /login y la guía, metía la librería entera en esos
+ * bundles aunque la persona hubiera rechazado el banner. Ahora la librería
+ * solo se descarga en iniciarPostHog(), con consentimiento.
+ *
+ * Sin init (sin consentimiento, o todavía cargando) no se manda nada: es lo
+ * mismo que hacía `posthog.capture` sobre la instancia sin inicializar.
+ */
+const posthog = {
+  capture(evento: string, props?: Record<string, unknown>): void {
+    if (typeof window === 'undefined') return
+    const ph = (window as unknown as { posthog?: PostHog }).posthog
+    ph?.capture(evento, props)
+  },
+}
 
 // Auth events
 export const trackSignup = (method: 'email' | 'google') =>

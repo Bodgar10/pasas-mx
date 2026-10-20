@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { temaPorSlugs } from '@/lib/horda-publica-server'
 import { OLEADAS_GRATIS, urlHordaPublica } from '@/lib/horda-publica'
-import { getPromoPorDefecto, leyendaPromo } from '@/lib/promos'
+import { leyendaPromo } from '@/lib/promos'
+import { getPromoPorDefecto } from '@/lib/promos-server'
 import HordaPublicaClient from './horda-publica-client'
 
 /**

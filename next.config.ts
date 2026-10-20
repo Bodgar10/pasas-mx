@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // next/image sirve AVIF a quien lo acepta y WebP al resto (el default es
+  // solo WebP). Las capturas de la landing son PNG de 100–240 KB: en AVIF
+  // pesan una fracción. El AVIF tarda más en codificarse la PRIMERA vez que
+  // se pide cada tamaño; después sale de la caché del optimizador.
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+
   // Las imágenes del Arcade (vista previa y historia) leen sus fuentes .ttf
   // con readFile. El trazado automático no ve esas lecturas, así que se
   // incluyen a mano en las funciones de esas rutas.

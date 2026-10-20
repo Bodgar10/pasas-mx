@@ -1,4 +1,4 @@
-'use client'
+import s from './HuecoPromo.module.css'
 
 /**
  * El hueco que ocupa un contenido que todavía no se puede pintar: un precio o
@@ -33,7 +33,7 @@ export function Hueco({
   return (
     <div
       aria-hidden="true"
-      className="pasas-hueco"
+      className={s.hueco}
       style={{
         height: alto,
         width: ancho,
@@ -43,19 +43,6 @@ export function Hueco({
         // componente vacío ni como un error.
         background: 'rgba(167,139,250,0.10)',
       }}
-    >
-      {/* La clase acota la regla de movimiento reducido a este bloque: un
-          selector por [aria-hidden] habría apagado animaciones ajenas. */}
-      <style>{`
-        .pasas-hueco { animation: pasasHueco 1.4s ease-in-out infinite; }
-        @keyframes pasasHueco {
-          0%, 100% { opacity: 1 }
-          50%      { opacity: 0.45 }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .pasas-hueco { animation: none }
-        }
-      `}</style>
-    </div>
+    />
   )
 }

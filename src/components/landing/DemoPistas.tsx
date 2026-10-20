@@ -44,11 +44,10 @@ const PISTAS = [
 const SOLUCION = ['3 × 27 = 81 bloques en total', '81 − 15 = 66 bloques']
 
 /**
- * Identificador del contenido de este demo. Es fijo y hardcodeado —hay UN
- * ejercicio—, asi que esto solo le pone nombre a lo que ya existe. Cuando
- * haya mas de uno, ya hay donde colgarlo.
+ * El identificador del contenido vive en ./demo-ids (ver ahí por qué). Se
+ * reexporta para no romper a quien lo importe desde aquí.
  */
-export const DEMO_PISTAS_ID = 'pistas_bloques'
+export { DEMO_PISTAS_ID } from './demo-ids'
 
 /**
  * Callbacks de ANALITICA. Ninguno cambia la mecanica ni lo que se pinta: el

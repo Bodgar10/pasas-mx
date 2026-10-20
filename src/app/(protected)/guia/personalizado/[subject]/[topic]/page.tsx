@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+import { getUsuario } from '@/lib/auth'
 import TopicClient from '@/app/(protected)/guia/[subject]/[topic]/topic-client'
+
+/** Mismo tope y mismo motivo que en /guia/[subject]/[topic]/page.tsx. */
+const TOPE_RESPUESTAS_PREVIAS = 200
 
 export default async function PersonalizedTopicPage({
   params,
@@ -8,24 +11,31 @@ export default async function PersonalizedTopicPage({
   params: Promise<{ subject: string; topic: string }>
 }) {
   const { subject: subjectSlug, topic: topicSlug } = await params
-  const supabase = await createClient()
-
-  const { data: { user } } = await supabase.auth.getUser()
+  const { supabase, user } = await getUsuario()
   if (!user) return notFound()
 
-  const [{ data: subject }, { data: topicBySlug }] = await Promise.all([
-    supabase.from('subjects').select('*').eq('slug', subjectSlug).single(),
-    supabase.from('topics').select('id').eq('slug', topicSlug).single(),
+  // Tema + materia en UNA consulta (`subjects!inner`; `topics.slug` es
+  // UNIQUE) y, en paralelo, la materia contratada filtrada por el slug de la
+  // materia en vez de por su id: la misma fila, sin esperar a la materia.
+  const [{ data: topicConMateria }, { data: userSubject }] = await Promise.all([
+    supabase
+      .from('topics')
+      .select('*, subjects!inner(id, name, slug)')
+      .eq('slug', topicSlug)
+      .eq('subjects.slug', subjectSlug)
+      .maybeSingle(),
+    supabase
+      .from('user_subjects')
+      .select('theme_id, subjects!inner(slug)')
+      .eq('user_id', user.id)
+      .eq('subjects.slug', subjectSlug)
+      .eq('plan_type', 'ai_personalized')
+      .maybeSingle(),
   ])
 
-  if (!subject || !topicBySlug) return notFound()
-
-  const [{ data: topic }, { data: userSubject }] = await Promise.all([
-    supabase.from('topics').select('*').eq('id', topicBySlug.id).eq('subject_id', subject.id).single(),
-    supabase.from('user_subjects').select('theme_id').eq('user_id', user.id).eq('subject_id', subject.id).eq('plan_type', 'ai_personalized').maybeSingle(),
-  ])
-
-  if (!topic || !userSubject?.theme_id) return notFound()
+  if (!topicConMateria || !userSubject?.theme_id) return notFound()
+  const { subjects: subjectRel, ...topic } = topicConMateria
+  const subject = subjectRel as unknown as { id: string; name: string; slug: string }
 
   const [
     { data: personalizedSections },
@@ -38,7 +48,7 @@ export default async function PersonalizedTopicPage({
     supabase.from('quiz_questions').select('*').eq('topic_id', topic.id).eq('theme_id', userSubject.theme_id).order('created_at', { ascending: true }).order('id', { ascending: true }),
     supabase.from('topic_progress').select('*').eq('user_id', user.id).eq('topic_id', topic.id).maybeSingle(),
     supabase.from('progress').select('metadata').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'section_read'),
-    supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }),
+    supabase.from('progress').select('question_id, metadata, attempt').eq('user_id', user.id).eq('topic_id', topic.id).eq('event_type', 'quiz_answered').order('attempt', { ascending: false }).limit(TOPE_RESPUESTAS_PREVIAS),
   ])
 
   const needsGeneration = (personalizedSections ?? []).length === 0
@@ -52,7 +62,7 @@ export default async function PersonalizedTopicPage({
 
   const readSectionIds = (readEvents ?? []).map((e) => e.metadata?.section_id).filter(Boolean) as string[]
 
-  let initialAnswers: Record<string, string> = {}
+  const initialAnswers: Record<string, string> = {}
   if (previousAnswers && previousAnswers.length > 0) {
     const maxAttempt = previousAnswers[0].attempt
     const latestAnswers = previousAnswers.filter((a) => a.attempt === maxAttempt)

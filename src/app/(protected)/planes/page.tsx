@@ -233,7 +233,10 @@ function PlanesContent() {
     try {
       const { createClient } = await import('@/utils/supabase/client')
       const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
+      // getSession() y no getUser(): aquí solo se decide qué botón/camino mostrar,
+      // sin viaje a Supabase Auth. El endpoint que sigue valida la sesión de verdad.
+      const { data: { session } } = await supabase.auth.getSession()
+      const user = session?.user
 
       if (!user || user.is_anonymous) {
         sessionStorage.setItem('pasas_pending_plan', activePlan)

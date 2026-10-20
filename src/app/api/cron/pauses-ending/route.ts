@@ -51,7 +51,15 @@ export async function GET(req: Request) {
     let reactivated = 0
     const errors: string[] = []
 
-    for (const sub of pausedSubs) {
+    /**
+     * En lotes de 10 en paralelo (antes: una por una, en serie). Cada
+     * suscripción conserva su propio try/catch, así que una que falla no
+     * frena a las demás; `allSettled` es la red por si algo escapara.
+     * Lotes y no todo a la vez: 10 llamadas simultáneas a Stripe quedan muy
+     * lejos de su límite por segundo.
+     */
+    const LOTE = 10
+    const procesar = async (sub: (typeof pausedSubs)[number]) => {
       try {
         // Quitar pausa en Stripe + aplicar cupón de reactivación (50% off, una vez)
         if (sub.provider_sub_id) {
@@ -134,6 +142,10 @@ export async function GET(req: Request) {
         console.error(`[pauses-ending] Error reactivando ${sub.id}:`, err)
         errors.push(`Sub ${sub.id}: ${String(err)}`)
       }
+    }
+
+    for (let i = 0; i < pausedSubs.length; i += LOTE) {
+      await Promise.allSettled(pausedSubs.slice(i, i + LOTE).map(procesar))
     }
 
     // Filas PROCESADAS, no reactivadas con éxito: `reactivated` es el

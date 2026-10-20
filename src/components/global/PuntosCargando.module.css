@@ -1,0 +1,34 @@
+/*
+ * "." → ".." → "..." cada 500 ms, como el viejo setInterval, pero en CSS:
+ * no vuelve a pintar la pantalla de React cada medio segundo.
+ * Diferencia mínima: el espacio de los 3 puntos queda reservado (visibility),
+ * así que el texto centrado ya no brinca un punto a la vez.
+ */
+.p2,
+.p3 {
+  animation-duration: 1.5s;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}
+.p2 {
+  animation-name: punto2;
+}
+.p3 {
+  animation-name: punto3;
+}
+@keyframes punto2 {
+  0% {
+    visibility: hidden;
+  }
+  33.333% {
+    visibility: visible;
+  }
+}
+@keyframes punto3 {
+  0% {
+    visibility: hidden;
+  }
+  66.667% {
+    visibility: visible;
+  }
+}

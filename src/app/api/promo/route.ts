@@ -27,7 +27,82 @@
  */
 
 import { NextResponse } from 'next/server'
-import { getPromoActiva, getPromoPorDefecto, type PromoPublica } from '@/lib/promos'
+import { unstable_cache } from 'next/cache'
+import { createClient } from '@supabase/supabase-js'
+import { PROMO_COLUMNS, type PromoCampaign, type PromoPublica } from '@/lib/promos'
+// La misma regla de vigencia que usan getPromoActiva/getPromoPorDefecto.
+import { normalizar, vigente } from '@/lib/promos-server'
+
+/**
+ * CACHÉ DE LAS FILAS CRUDAS — 60 s, tag 'promos'.
+ *
+ * Lo llaman /planes y /bienvenida en cada visita y la respuesta es la misma
+ * para todos: cliente ANÓNIMO, sin cookies, sin usuario. Lo único que cambia
+ * la respuesta es `?slug=`, que va en la URL (y por tanto en la clave del CDN).
+ *
+ * 🔴 Se cachean las FILAS, no la decisión. La vigencia por fecha (inicia_at /
+ * termina_at) se evalúa FUERA, en cada request: una campaña que termina a las
+ * 23:59 deja de anunciarse a las 23:59, no 60 s después. Lo que sí puede
+ * tardar hasta 60 s (+ el CDN) es ver el cambio de un `activa` desde /admin.
+ *
+ * La anon key solo ve `activa = true` (policy "public read active", 042), así
+ * que estas filas son exactamente las que getPromoActiva y getPromoPorDefecto
+ * podían ver: buscar el slug aquí dentro es la misma lectura que antes.
+ *
+ * Un error de lectura LANZA dentro del scope para NO cachear el fallo: el
+ * catch de abajo responde { promo: null } como siempre y el siguiente request
+ * vuelve a intentar.
+ */
+const leerFilasActivas = unstable_cache(
+  async (): Promise<PromoCampaign[]> => {
+    const { data, error } = await createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+      { auth: { persistSession: false } }
+    )
+      .from('promo_campaigns')
+      .select(PROMO_COLUMNS)
+      .eq('activa', true)
+    if (error) throw error
+    return (data ?? []) as unknown as PromoCampaign[]
+  },
+  ['api-promo-filas-activas'],
+  { revalidate: 60, tags: ['promos'] }
+)
+
+/** Misma regla que getPromoActiva(slug), sobre las filas cacheadas. */
+function promoPorSlug(filas: PromoCampaign[], slug: string): PromoCampaign | null {
+  const fila = filas.find((f) => f.slug === slug)
+  if (!fila) return null
+  const promo = normalizar(fila)
+  return vigente(promo) ? promo : null
+}
+
+/**
+ * Misma regla que getPromoPorDefecto(): EXACTAMENTE una vigente o null
+ * (fail-closed, ver el porqué en promos-server.ts).
+ */
+function promoPorDefecto(filas: PromoCampaign[]): PromoCampaign | null {
+  const vigentes = filas.map(normalizar).filter(vigente)
+  if (vigentes.length !== 1) {
+    if (vigentes.length > 1) {
+      console.warn(
+        `[promos] ${vigentes.length} campañas vigentes a la vez ` +
+          `(${vigentes.map((p) => p.slug).join(', ')}): no hay promo por ` +
+          'defecto. Quien llegue sin ?promo= verá precio de lista.'
+      )
+    }
+    return null
+  }
+  return vigentes[0]
+}
+
+/**
+ * CDN: 60 s frescos y hasta 300 s sirviendo la copia vieja mientras se
+ * regenera. Va en TODAS las respuestas 200, también en { promo: null }: "no
+ * hay campaña" también es la respuesta de todos.
+ */
+const CACHE_CDN = { 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300' }
 
 export async function GET(request: Request) {
   try {
@@ -35,10 +110,11 @@ export async function GET(request: Request) {
 
     // Con slug manda el slug: una campaña de canal se sigue pudiendo pedir
     // por su nombre aunque no sea la de la casa.
-    const promo = slug ? await getPromoActiva(slug) : await getPromoPorDefecto()
+    const filas = await leerFilasActivas()
+    const promo = slug ? promoPorSlug(filas, slug) : promoPorDefecto(filas)
 
     if (!promo) {
-      return NextResponse.json({ promo: null })
+      return NextResponse.json({ promo: null }, { headers: CACHE_CDN })
     }
 
     const publica: PromoPublica = {
@@ -54,7 +130,7 @@ export async function GET(request: Request) {
       banner_checkout: promo.banner_checkout,
     }
 
-    return NextResponse.json({ promo: publica })
+    return NextResponse.json({ promo: publica }, { headers: CACHE_CDN })
   } catch (error) {
     console.error('[api/promo] Error:', error)
     // Tampoco aquí se devuelve 500: si la promo no se pudo leer, la pantalla

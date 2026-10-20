@@ -1,19 +1,14 @@
-import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
+import { getRol, getUsuario } from '@/lib/auth'
 import InsightsClient from './insights-client'
 
 export default async function InsightsPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  // Mismo usuario y mismo rol que ya resolvió (admin)/layout.tsx en este
+  // request: React cache() los devuelve sin repetir las consultas.
+  const { supabase, user } = await getUsuario()
   if (!user) redirect('/login')
 
-  const { data: profile } = await supabase
-    .from('users')
-    .select('role')
-    .eq('id', user.id)
-    .single()
-
-  if (profile?.role !== 'admin') redirect('/dashboard')
+  if ((await getRol(user.id)) !== 'admin') redirect('/dashboard')
 
   // Cancelaciones con datos del usuario y suscripción
   const { data: cancellations } = await supabase

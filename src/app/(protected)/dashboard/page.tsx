@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
-import { unstable_cache } from 'next/cache'
-import { createClient } from '@/utils/supabase/server'
+import { getUsuario } from '@/lib/auth'
 import DashboardClient from './dashboard-client'
 import { xpToLevel, rachaVisible } from '@/lib/gamification'
-import { resolveLearner, getAccountLearners } from '@/lib/learners'
+import { resolveLearnerYCuenta } from '@/lib/learners'
+import { materiasDeGrado } from '@/lib/catalogo-server'
 import { cicloActual, enVentanaPromocion, siguienteGrado } from '@/lib/ciclo-escolar'
 
 /** Etiqueta legible del grado en curso, para el copy del modal. */
@@ -20,20 +20,30 @@ export default async function DashboardPage({
   searchParams: Promise<{ a?: string }>
 }) {
   const sp = await searchParams
-  const supabase = await createClient()
-
-  const { data: { user } } = await supabase.auth.getUser()
+  const { supabase, user } = await getUsuario()
   if (!user) redirect('/login')
 
   // Fetch profile and active subscription in parallel — both only need user.id
+  //
+  // El alumno activo y la lista de la cuenta salen de UNA lectura de
+  // `learners` (resolveLearnerYCuenta): antes eran dos o tres consultas a la
+  // misma tabla en el mismo render.
+  //
+  // `pastSub` va aquí también aunque solo se use sin suscripción vigente: es
+  // un `select id limit 1` y esperarlo después era un viaje en serie más.
   const now = new Date().toISOString()
-  const [{ data: profile }, learner, { data: subscription }, todosLosAlumnos] = await Promise.all([
+  const [
+    { data: profile },
+    { learner, alumnos: todosLosAlumnos },
+    { data: subscription },
+    { data: pastSub },
+  ] = await Promise.all([
     supabase
       .from('users')
       .select('full_name, onboarding_done, interests')
       .eq('id', user.id)
       .single(),
-    resolveLearner(supabase, user.id, sp),
+    resolveLearnerYCuenta(supabase, user.id, sp),
     supabase
       .from('subscriptions')
       .select('status, current_period_end, plan, trial_ends_at, cancelled_at, billing_cycle, paused_until')
@@ -42,7 +52,12 @@ export default async function DashboardPage({
       .order('current_period_end', { ascending: false })
       .limit(1)
       .maybeSingle(),
-    getAccountLearners(supabase, user.id),
+    supabase
+      .from('subscriptions')
+      .select('id')
+      .eq('user_id', user.id)
+      .limit(1)
+      .maybeSingle(),
   ])
 
   // 🔴 La MISMA derivación que hace el middleware. No leer el flag a secas.
@@ -74,31 +89,12 @@ export default async function DashboardPage({
   // Check if there's any past subscription (for expired state)
   let hasEverSubscribed = false
   if (subscriptionStatus === 'no_subscription') {
-    const { data: pastSub } = await supabase
-      .from('subscriptions')
-      .select('id')
-      .eq('user_id', user.id)
-      .limit(1)
-      .maybeSingle()
     hasEverSubscribed = !!pastSub
     if (hasEverSubscribed) subscriptionStatus = 'expired'
   }
 
   // Cache subjects — they rarely change, safe to cache 5 minutes
-  const getCachedSubjects = unstable_cache(
-    async (educationLevel: string, grade: number) => {
-      const { data } = await supabase
-        .from('subjects')
-        .select('id, slug, name, display_order')
-        .eq('education_level', educationLevel)
-        .contains('grades', [grade])
-        .order('display_order')
-      return data ?? []
-    },
-    [`subjects-${learner?.education_level}-${learner?.grade}`],
-    { revalidate: 300, tags: ['subjects'] }
-  )
-
+  // (lib/catalogo-server: caché a nivel de módulo y SIN cookies)
   // Fetch user-specific data + cached subjects in parallel
   const [
     subjects,
@@ -106,7 +102,7 @@ export default async function DashboardPage({
     { data: lastActiveRows, error: lastActiveError },
     { data: temaDelAlumno },
   ] = await Promise.all([
-    getCachedSubjects(learner?.education_level ?? 'middle_school', learner?.grade ?? 1),
+    materiasDeGrado(learner?.education_level ?? 'middle_school', learner?.grade ?? 1),
     supabase.from('user_subjects').select('subject_id, xp, theme_id').eq('learner_id', learner?.id ?? ''),
     supabase.rpc('get_last_active_topic', { p_learner_id: learner?.id ?? null }),
     // La tematica vive en el ALUMNO. `users.interests` es de la cuenta y

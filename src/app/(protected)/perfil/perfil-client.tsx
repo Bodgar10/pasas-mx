@@ -9,10 +9,22 @@ import {
   updatePasswordAction,
   type ActionState,
 } from './actions'
-import { CancellationFlow } from '@/components/perfil/CancellationFlow'
-import { SeatRemovalFlow } from '@/components/perfil/SeatRemovalFlow'
-import { GradeChangeFlow } from '@/components/perfil/GradeChangeFlow'
+import dynamic from 'next/dynamic'
 import { MAX_SEATS } from '@/lib/payments/config'
+
+// Los tres flujos solo se abren tras un clic: fuera del bundle inicial.
+const CancellationFlow = dynamic(
+  () => import('@/components/perfil/CancellationFlow').then((m) => m.CancellationFlow),
+  { ssr: false }
+)
+const SeatRemovalFlow = dynamic(
+  () => import('@/components/perfil/SeatRemovalFlow').then((m) => m.SeatRemovalFlow),
+  { ssr: false }
+)
+const GradeChangeFlow = dynamic(
+  () => import('@/components/perfil/GradeChangeFlow').then((m) => m.GradeChangeFlow),
+  { ssr: false }
+)
 
 interface Alumno {
   id: string

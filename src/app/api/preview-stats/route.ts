@@ -39,5 +39,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'sin datos' }, { status: 503 })
   }
 
-  return NextResponse.json(stats)
+  // Ningún cliente del repo lo llama ya (la página usa leerStats directo), pero
+  // si algo de fuera lo hace, que lo sirva el CDN: son 6 combinaciones
+  // posibles, iguales para todos, con el mismo TTL que la caché de datos.
+  // Solo en el 200: los 400 y el 503 no se guardan.
+  return NextResponse.json(stats, { headers: { 'Cache-Control': 'public, s-maxage=3600' } })
 }

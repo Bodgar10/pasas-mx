@@ -55,6 +55,24 @@ export function useYaTuvoSuscripcion(): { yaTuvo: boolean; cargando: boolean } {
     // continuación.
     void (async () => {
       try {
+        /**
+         * Sin sesión LOCAL no se pregunta — s34.
+         *
+         * Sin sesión el endpoint solo puede responder 401, que abajo ya se
+         * trata como "elegible". Mirar la cookie primero (getSession no sale
+         * a la red) ahorra esa petición a todo visitante anónimo de /planes y
+         * /bienvenida, que es la mayoría. Con sesión se sigue preguntando al
+         * servidor: la respuesta de verdad es suya, no de la cookie. También
+         * con sesión anónima: el endpoint la trata como usuario y es él quien
+         * decide, no este atajo.
+         */
+        const { createClient } = await import('@/utils/supabase/client')
+        const { data: { session } } = await createClient().auth.getSession()
+        if (!session) {
+          if (vivo) setEstado({ yaTuvo: false, cargando: false })
+          return
+        }
+
         const res = await fetch('/api/subscription/estado')
 
         /**

@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { createClient } from '@/utils/supabase/client'
 import { track } from '@/lib/analytics/track'
 
 /**
@@ -105,26 +104,59 @@ export default function UTMPersistence() {
       return false
     }
 
+    let suscripcion: { unsubscribe: () => void } | null = null
+
     void (async () => {
-      if (await persistir()) return
+      /**
+       * 🔴 SIN SESIÓN LOCAL NO SE MANDA NADA — s34.
+       *
+       * Antes el POST salía en CADA navegación de un anónimo con UTM, más un
+       * reintento a los 4 s, y /api/track-source respondía siempre
+       * `persistido: false`: sin sesión no hay a quién escribirle. Eran dos
+       * peticiones inútiles por pantalla en justo el tráfico frío.
+       *
+       * Ahora se mira primero la sesión LOCAL (getSession lee la cookie, no
+       * pregunta a Supabase). Sin sesión se espera a SIGNED_IN —login o
+       * registro— y solo entonces se manda. El endpoint sigue validando la
+       * sesión de verdad del lado del servidor.
+       *
+       * supabase-js entra con import(): este componente vive en el layout
+       * raíz y un import estático lo metía en todas las páginas.
+       */
+      const { createClient } = await import('@/utils/supabase/client')
+      if (cancelado) return
+      const supabase = createClient()
+      const { data: { session } } = await supabase.auth.getSession()
+      if (cancelado) return
+
+      if (session) {
+        if (await persistir()) return
+        // Había sesión y aun así no persistió (red caída, endpoint fuera).
+        // Un único reintento tardío, no un bucle.
+        setTimeout(() => {
+          if (!cancelado) void persistir()
+        }, 4000)
+        return
+      }
 
       // Sin sesión todavía. Se espera a que aparezca (login o registro). La
       // sesión anónima que antes creaba la landing se quitó en s34-F2.
-      const supabase = createClient()
-      const { data } = supabase.auth.onAuthStateChange(async (_evento, sesion) => {
-        if (cancelado || !sesion) return
-        if (await persistir()) data.subscription.unsubscribe()
+      const { data } = supabase.auth.onAuthStateChange((evento, sesion) => {
+        if (cancelado || evento !== 'SIGNED_IN' || !sesion) return
+        // Fuera del callback y sin await: supabase-js recomienda no esperar
+        // trabajo asíncrono dentro de onAuthStateChange.
+        void persistir().then((ok) => {
+          if (ok) data.subscription.unsubscribe()
+        })
       })
-
-      // Red de seguridad por si la sesión ya existía y el evento no vuelve
-      // a dispararse. Un único reintento tardío, no un bucle.
-      setTimeout(() => {
-        if (!cancelado) void persistir()
-      }, 4000)
+      suscripcion = data.subscription
     })()
 
     return () => {
       cancelado = true
+      // Antes el listener nunca se soltaba: cada navegación con el efecto
+      // vivo dejaba uno más colgado.
+      suscripcion?.unsubscribe()
     }
   }, [searchParams])
 
