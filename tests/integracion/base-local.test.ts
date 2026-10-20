@@ -12,6 +12,11 @@ import { createClient } from '@supabase/supabase-js'
  * `setup-integracion.ts` se ejecute de verdad.
  *
  * Los ids son los fijos de supabase/seed.sql.
+ *
+ * 🔴 SOLO CUENTA LO DEL SEED. La migración 063_materias_faltantes da de alta
+ * materias y temas reales como DATOS, y las migraciones también corren en la
+ * base local: contar la tabla entera mezclaría ese catálogo con el del seed.
+ * Las materias del seed se distinguen por el sufijo " Test" en el nombre.
  */
 
 const admin = createClient(
@@ -22,7 +27,11 @@ const admin = createClient(
 
 describe('base local', () => {
   it('responde y trae el catálogo del seed', async () => {
-    const { data, error } = await admin.from('subjects').select('id, name, grades').order('name')
+    const { data, error } = await admin
+      .from('subjects')
+      .select('id, name, grades')
+      .like('name', '% Test')
+      .order('name')
 
     expect(error).toBeNull()
     expect(data).toHaveLength(3)
@@ -34,12 +43,14 @@ describe('base local', () => {
       .from('subjects')
       .select('id')
       .eq('education_level', 'middle_school')
+      .like('name', '% Test')
       .contains('grades', [1])
 
     const { data: grado2 } = await admin
       .from('subjects')
       .select('id')
       .eq('education_level', 'middle_school')
+      .like('name', '% Test')
       .contains('grades', [2])
 
     expect(grado1).toHaveLength(2)
@@ -47,8 +58,14 @@ describe('base local', () => {
   })
 
   it('hay un topic sin publicar, para que el filtro published se pueda distinguir', async () => {
-    const { data: todos } = await admin.from('topics').select('id')
-    const { data: publicados } = await admin.from('topics').select('id').eq('published', true)
+    const { data: materiasSeed } = await admin.from('subjects').select('id').like('name', '% Test')
+    const ids = (materiasSeed ?? []).map((m) => m.id)
+    const { data: todos } = await admin.from('topics').select('id').in('subject_id', ids)
+    const { data: publicados } = await admin
+      .from('topics')
+      .select('id')
+      .in('subject_id', ids)
+      .eq('published', true)
 
     expect(todos).toHaveLength(8)
     expect(publicados).toHaveLength(7)
