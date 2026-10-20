@@ -17,12 +17,20 @@ on:
         type: boolean
         default: true
   schedule:
-    # Minuto "raro" a propósito: GitHub retrasa los horarios en punto.
+    # Minutos "raros" a propósito: GitHub retrasa los horarios en punto.
+    # GitHub a veces se salta una corrida programada (pasó el martes 20 de octubre),
+    # así que hay dos respaldos. Si ya salió el correo del día, los respaldos no hacen nada.
     - cron: '47 12 * * 1-5'   # ~06:47 hora de México, lunes a viernes
+    - cron: '23 13 * * 1-5'   # respaldo ~07:23
+    - cron: '53 13 * * 1-5'   # respaldo ~07:53
 
 concurrency:
   group: bodgar-videos
   cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   render:
@@ -32,21 +40,39 @@ jobs:
       run:
         working-directory: video
     steps:
+      # Solo en corridas programadas: si hoy (hora de México) ya hubo una corrida exitosa, no repite el correo.
+      - name: ¿Ya salió el correo de hoy?
+        id: hoy
+        if: github.event_name == 'schedule'
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          HOY=$(TZ=America/Mexico_City date +%F)
+          N=$(gh api "repos/${{ github.repository }}/actions/workflows/bodgar-videos.yml/runs?status=success&per_page=30" \
+            --jq "[.workflow_runs[] | select(.id != ${{ github.run_id }}) | select((.created_at | fromdateiso8601 - 21600 | strftime(\"%Y-%m-%d\")) == \"$HOY\")] | length")
+          echo "Corridas exitosas hoy ($HOY): $N"
+          if [ "$N" -gt 0 ]; then echo "listo=1" >> "$GITHUB_OUTPUT"; fi
+
       - uses: actions/checkout@v4
+        if: steps.hoy.outputs.listo != '1'
 
       - uses: actions/setup-node@v4
+        if: steps.hoy.outputs.listo != '1'
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: video/package-lock.json
 
       - name: Instalar dependencias
+        if: steps.hoy.outputs.listo != '1'
         run: |
           npm ci
           npx playwright install --with-deps chromium
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
       - name: Generar y enviar
+        if: steps.hoy.outputs.listo != '1'
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           BODGAR_EMAIL_TO: ${{ secrets.BODGAR_EMAIL_TO }}
