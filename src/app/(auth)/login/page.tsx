@@ -43,6 +43,14 @@ const inputClass =
  * Lo importante: su cuenta SÍ quedó confirmada, porque el prefetch ejecutó
  * el callback. Solo tiene que iniciar sesión. De ahí el tono: no es un
  * error suyo ni hay nada que reparar.
+ *
+ * 🔴 s49 — El otro caso, y en anuncios el más común: se registró dentro del
+ * navegador de Instagram y Gmail abrió el enlace en OTRO navegador. Supabase
+ * confirma el correo, pero el callback no puede canjear el código (el
+ * verificador vive en la pestaña de Instagram) y cae aquí. Por eso el aviso es
+ * verde y dice "confirmado", no "ya se usó": no hay nada roto de su lado. Y
+ * "seguimos donde ibas" ya es verdad: el login respeta el pago pendiente
+ * (destino-tras-entrar.ts).
  */
 function AvisoEnlace() {
   const error = useSearchParams().get('error')
@@ -52,14 +60,15 @@ function AvisoEnlace() {
     <div
       className="rounded-xl px-4 py-3 text-sm"
       style={{
-        backgroundColor: 'rgba(251,191,36,0.08)',
-        color: '#fbbf24',
-        border: '1px solid rgba(251,191,36,0.2)',
+        backgroundColor: 'rgba(52,211,153,0.08)',
+        color: '#6ee7b7',
+        border: '1px solid rgba(52,211,153,0.25)',
         lineHeight: 1.6,
       }}
     >
-      Ese enlace ya se usó. Tu cuenta quedó confirmada — entra aquí con tu
-      correo y contraseña y seguimos donde ibas.
+      <strong>✓ Tu correo ya quedó confirmado.</strong> Entra con tu correo y
+      contraseña y seguimos donde ibas: si elegiste un plan, te llevamos
+      directo a activarlo.
     </div>
   )
 }
