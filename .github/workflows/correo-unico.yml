@@ -1,0 +1,58 @@
+# Correo único de soporte (20-oct-2026). Se borra junto con su rama.
+# 🔴 Repo público: aquí no va ningún correo ni nombre. La dirección y el
+# nombre se leen de Supabase al correr, y la copia oculta es ARCADE_EMAIL_TO.
+name: Correo único de soporte
+on:
+  push:
+    branches: [correo-unico]
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Enviar
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ARCADE_EMAIL_TO: ${{ secrets.ARCADE_EMAIL_TO }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          USER_ID: f9bee422-c91b-4e65-b4f2-f71fcdb52970
+        run: |
+          cat > enviar.mjs <<'JS'
+          const { RESEND_API_KEY, ARCADE_EMAIL_TO, NEXT_PUBLIC_SUPABASE_URL: url, SUPABASE_SERVICE_ROLE_KEY: sk, USER_ID } = process.env
+          const r = await fetch(`${url}/rest/v1/users?id=eq.${USER_ID}&select=email,full_name`, { headers: { apikey: sk, Authorization: `Bearer ${sk}` } })
+          const [u] = await r.json()
+          if (!u?.email) throw new Error('No se encontró la cuenta')
+          const alumno = (u.full_name || '').trim().split(/\s+/)[0] || 'tu hijo'
+          const p = (t) => `<p style="margin:0 0 14px">${t}</p>`
+          const html = `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.6;color:#1f1f1f;max-width:560px">
+          ${p('Hola:')}
+          ${p(`Soy Bodgar, el creador de Pasas.mx. Vi que hoy registraste la cuenta de ${alumno} y quiero pedirte una disculpa: confirmaste tu correo sin problema, pero un error de nuestro lado no te llevó a la pantalla para activar tu plan. Ya lo arreglamos.`)}
+          ${p('Para terminar solo tienes que:')}
+          <ol style="margin:0 0 14px;padding-left:20px">
+          <li>Entrar aquí con tu correo y la contraseña que elegiste: <a href="https://pasas.mx/login">pasas.mx/login</a></li>
+          <li>Confirmar la autorización como mamá, papá o tutor de ${alumno} (es un paso que pide la ley para cuentas de menores).</li>
+          <li>Activar el primer mes por $1 con la promoción que elegiste. Después son $249 al mes y puedes cancelar cuando quieras.</li>
+          </ol>
+          ${p('Si algo no funciona o tienes cualquier duda, responde a este correo y te ayudo personalmente.')}
+          ${p('Gracias por la paciencia,<br>Bodgar<br>Pasas.mx')}
+          </div>`
+          const res = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              from: 'Bodgar de Pasas.mx <hola@pasas.mx>',
+              to: [u.email],
+              bcc: ARCADE_EMAIL_TO.split(',').map((s) => s.trim()),
+              reply_to: 'hola@pasas.mx',
+              subject: 'Tu cuenta de Pasas está lista (perdón por el tropiezo)',
+              html,
+            }),
+          })
+          const body = await res.json().catch(() => ({}))
+          if (!res.ok) throw new Error(`Resend respondió ${res.status}: ${body?.message ?? ''}`)
+          console.log('Enviado. id de Resend:', body.id)
+          JS
+          node enviar.mjs
