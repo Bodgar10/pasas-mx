@@ -70,9 +70,24 @@ function StrengthBar({ password }: { password: string }) {
  */
 function VerifyButton({
   email,
+  password,
   medir,
 }: {
   email: string
+  /**
+   * s49 — La contraseña que la persona acaba de escribir en el formulario
+   * (sigue en el estado de RegistroContent; nunca se guarda en otro lado).
+   *
+   * 🔴 POR QUÉ: casi todo el tráfico de anuncios se registra dentro del
+   * navegador de Instagram, y Gmail abre el enlace de confirmación en OTRO
+   * navegador. La pestaña de Instagram nunca recibe la sesión, así que el
+   * chequeo de abajo con contraseña vacía respondía "aún no vemos tu
+   * verificación" aunque el correo YA estuviera confirmado (pasó con el
+   * primer registro de anuncio, el 20-oct). Con la contraseña real, esta
+   * misma pestaña entra y sigue a /auth/continuar → autorización de tutor o
+   * /bienvenida con su plan y su $1.
+   */
+  password: string
   medir: (verificado: boolean) => Promise<void>
 }) {
   const [checking, setChecking] = useState(false)
@@ -84,6 +99,21 @@ function VerifyButton({
     try {
       const { createClient } = await import('@/utils/supabase/client')
       const supabase = createClient()
+
+      if (password) {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+        if (!error && data.session) {
+          await medir(true)
+          window.location.href = '/auth/continuar'
+          return
+        }
+        // email_not_confirmed (o cualquier otro error): cae al aviso de abajo.
+        await medir(false)
+        setNotVerified(true)
+        return
+      }
+
+      // Sin contraseña en memoria (recargó la pantalla): el chequeo de antes.
       await supabase.auth.signInWithPassword({
         email,
         password: '',
@@ -94,14 +124,14 @@ function VerifyButton({
       const { data: { session } } = await supabase.auth.getSession()
       if (session?.user?.email_confirmed_at) {
         await medir(true)
-        window.location.href = '/dashboard'
+        window.location.href = '/auth/continuar'
         return
       }
       // Intentar refresh de sesión
       const { data: refreshed } = await supabase.auth.refreshSession()
       if (refreshed?.user?.email_confirmed_at) {
         await medir(true)
-        window.location.href = '/dashboard'
+        window.location.href = '/auth/continuar'
         return
       }
       await medir(false)
@@ -144,6 +174,14 @@ function VerifyButton({
           }}
         >
           Aún no vemos tu verificación. Revisa tu correo — puede estar en spam o en la carpeta de "No deseado".
+          {/* s49: si ya lo abrió en otro navegador, el correo sí está
+              confirmado y lo que falta es entrar desde aquí. */}
+          <span style={{ display: 'block', marginTop: 8, color: '#c4b5fd' }}>
+            ¿Ya abriste el enlace y se abrió en otra app?{' '}
+            <a href="/login" style={{ color: '#a78bfa', fontWeight: 700, textDecoration: 'underline' }}>
+              Entra aquí con tu contraseña
+            </a>
+          </span>
         </div>
       )}
     </>
@@ -438,7 +476,7 @@ function RegistroContent() {
         >
           El link expira en 24 horas.
         </div>
-        <VerifyButton email={state.email ?? ''} medir={medirVerificacion} />
+        <VerifyButton email={state.email ?? ''} password={password} medir={medirVerificacion} />
       </div>
     )
   }
