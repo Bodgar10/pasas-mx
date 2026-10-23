@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · pérdida: el paciente deja el plan a la mitad porque no ve su avance. Cifras de ejemplo.
+   Las métricas las decide la clínica; el software solo las ordena. */
+.pac{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.pac .av{width:96px;height:96px;font-size:40px;background:#5B8DB8}
+.pac b{display:block;font-size:38px}.pac span{font-size:27px;color:var(--gris)}
+.estado{margin-left:auto;font-family:M;font-weight:600;font-size:24px;padding:10px 16px;border-radius:14px;background:var(--suave);color:var(--tinta);white-space:nowrap}
+.barra{margin:28px 36px 10px;height:22px;border-radius:12px;background:var(--arena);overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--verde);border-radius:12px}
+.datos{display:flex;justify-content:space-between;padding:10px 36px 30px;font-size:28px;font-weight:600;color:var(--gris)}
+.datos b{color:var(--tinta);font-family:M}
+.globo{position:absolute;left:150px;right:120px;top:1130px;background:#fff;color:var(--tinta);border-radius:36px 36px 36px 10px;padding:32px 36px;font-size:44px;font-weight:700;line-height:1.25;box-shadow:0 24px 50px rgba(0,0,0,.35);opacity:0}
+.globo small{display:block;margin-top:12px;font-size:24px;font-weight:600;color:var(--gris)}
+/* Agenda */
+.cita{display:flex;align-items:center;gap:22px;padding:26px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.cita .h{font-family:M;font-weight:600;font-size:26px;color:var(--gris);width:170px}
+.cita b{font-size:32px}
+.cita .st{margin-left:auto;font-family:M;font-weight:600;font-size:22px;padding:10px 14px;border-radius:12px;white-space:nowrap}
+.st.nst{background:#FBEADF;color:var(--terra2)}.st.sa{background:var(--arena);color:#8a7a66}
+/* Sesiones: 10 puntos */
+.ses{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;padding:40px 46px 30px}
+.ses i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:M;font-weight:600;font-size:30px;color:#fff;background:var(--verde);transform:scale(0)}
+.ses i.f{background:transparent;border:5px dashed var(--terra);color:var(--terra2)}
+.eq{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 30px;border-top:1px solid var(--linea)}
+.eq span{font-size:32px;font-weight:600;color:var(--gris)}
+.eq b{font-family:B;font-weight:800;font-size:84px;color:var(--terra2)}
+/* Mes */
+.pfila{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pfila .av{width:58px;height:58px;font-size:26px}
+.pfila .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px;color:var(--terra2)}
+.pfila small{display:block;font-size:22px;color:var(--gris);font-weight:600}
+/* Notas */
+.notas{padding:24px 36px 30px;font-family:M;font-size:27px;line-height:1.55;color:#8E9A96}
+.notas p{margin:0 0 14px;opacity:0}
+.notas mark{background:transparent;color:inherit;border-radius:8px;padding:0 4px;transition:none}
+.nunca{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:30px;font-weight:700;opacity:0}
+/* Teléfono del terapeuta */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.campo{margin:26px 26px 0;padding:22px 24px;border-radius:20px;border:3px solid var(--linea);background:#fff;opacity:0}
+.campo .k{font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.campo .v{display:flex;align-items:baseline;gap:12px;margin-top:8px}
+.campo .v b{font-family:B;font-weight:800;font-size:66px;line-height:1}
+.campo .v span{font-size:26px;color:var(--gris);font-weight:600}
+.slid{margin-top:16px;height:16px;border-radius:8px;background:var(--arena);position:relative}
+.slid i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:var(--verde)}
+.def{margin:20px 26px 0;font-size:24px;font-weight:600;color:var(--gris);opacity:0}
+.guardar{position:absolute;left:26px;right:26px;bottom:44px;background:var(--terra);color:#fff;border-radius:20px;padding:26px;text-align:center;font-size:30px;font-weight:700;opacity:0}
+.guardar.ok2{background:var(--verde)}
+/* Línea de tiempo */
+.graf{padding:20px 36px 10px}
+.met{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}
+.met b{font-size:32px}
+.met span{font-family:M;font-weight:600;font-size:30px}
+.graf svg{display:block;width:100%;height:190px;margin-top:6px}
+.ejes{display:flex;justify-content:space-between;padding:0 36px 28px;font-family:M;font-size:22px;color:var(--gris)}
+/* Teléfono del paciente */
+.pcab{height:150px;display:flex;align-items:flex-end;gap:18px;padding:0 30px 22px;border-bottom:1px solid var(--linea)}
+.pcab .av{background:#5B8DB8}
+.pcab b{display:block;font-size:30px}.pcab span{font-size:22px;color:var(--gris)}
+.tu{margin:30px 26px 0;font-family:B;font-weight:800;font-size:44px}
+.mini{margin:18px 26px 0;padding:22px 24px;border-radius:20px;background:var(--verde2);display:flex;justify-content:space-between;align-items:baseline;opacity:0}
+.mini span{font-size:28px;font-weight:700}
+.mini b{font-family:M;font-weight:600;font-size:34px;color:var(--verde)}
+.agendar{position:absolute;left:26px;right:26px;bottom:44px;background:var(--terra);color:#fff;border-radius:20px;padding:26px;text-align:center;font-size:30px;font-weight:700;opacity:0}
+.agendar.ok2{background:var(--verde)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-sesion"><h1>«Siento que <em>no avanzo</em>»</h1></div>
+  <div class="tit" id="t-falta"><h1>Y ya no <em>regresa</em></h1></div>
+  <div class="tit" id="t-pierde"><h1>−$4,200 <em>por paciente</em></h1><p>Ejemplo: 6 sesiones × $700</p></div>
+  <div class="tit" id="t-mes"><h1>≈ $16,800 <em>al mes</em></h1><p>Ejemplo: 4 pacientes × $4,200</p></div>
+  <div class="tit" id="t-notas"><h1>Sí <em>avanzaba</em></h1></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>viera?</em></h1></div>
+  <div class="tit" id="t-mide"><h1>Tu equipo <em>mide</em></h1></div>
+  <div class="tit" id="t-linea"><h1>Su avance, <em>a la vista</em></h1></div>
+  <div class="tit" id="t-sigue"><h1>Andrés agenda <em>la 5</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Te dejan el plan <em>a la mitad?</em></h1></div>
+
+  <!-- 1 · Sesión 4 de 10 -->
+  <div class="card" id="paciente">
+    <div class="ccab"><span>Paciente</span><span>Rodilla derecha</span></div>
+    <div class="pac"><div class="av">A</div><div><b>Andrés R.</b><span>Plan de 10 sesiones</span></div><span class="estado">Hoy · sesión 4</span></div>
+    <div class="barra"><i id="bar"></i></div>
+    <div class="datos"><span>Sesiones <b id="ses">0/10</b></span><span>Próxima <b>mar 5:00 PM</b></span></div>
+  </div>
+  <div class="globo" id="globo">Siento que no avanzo…<small>Andrés, al salir de su sesión 4</small></div>
+
+  <!-- 2 · No llega -->
+  <div class="card" id="agenda">
+    <div class="ccab"><span>Agenda · Andrés R.</span><span>Rodilla</span></div>
+    <div class="cita" id="a1"><span class="h">Mar 5:00</span><b>Sesión 5</b><span class="st nst">No asistió</span></div>
+    <div class="cita" id="a2"><span class="h">Jue 5:00</span><b>Sesión 6</b><span class="st sa">Sin agendar</span></div>
+    <div class="cita" id="a3"><span class="h">—</span><b>Sesión 7 a 10</b><span class="st sa">Sin agendar</span></div>
+  </div>
+
+  <!-- 3 · Sesiones que faltaban -->
+  <div class="card" id="puntos">
+    <div class="ccab"><span>Plan de Andrés</span><span class="ej">Ejemplo</span></div>
+    <div class="ses" id="sesg"></div>
+    <div class="eq"><span>6 × $700</span><b id="ptot">$0</b></div>
+  </div>
+
+  <!-- 4 · Un mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Planes abandonados · un mes</span><span class="ej">Ejemplo</span></div>
+    <div class="pfila" id="m1"><div class="av" style="background:#5B8DB8">A</div><div>Andrés R.<small>dejó en la sesión 4</small></div><span class="der">−$4,200</span></div>
+    <div class="pfila" id="m2"><div class="av" style="background:#9C7BB5">L</div><div>Lucía P.<small>dejó en la sesión 4</small></div><span class="der">−$4,200</span></div>
+    <div class="pfila" id="m3"><div class="av" style="background:#C99A3A">J</div><div>Jorge T.<small>dejó en la sesión 4</small></div><span class="der">−$4,200</span></div>
+    <div class="pfila" id="m4"><div class="av" style="background:#6E9C82">E</div><div>Elena V.<small>dejó en la sesión 4</small></div><span class="der">−$4,200</span></div>
+    <div class="total"><span>Al mes</span><b id="mtot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <!-- 5 · El avance escondido en notas -->
+  <div class="card" id="notas">
+    <div class="ccab"><span>Expediente · notas</span><span>Andrés R.</span></div>
+    <div class="notas">
+      <p id="n1">S1 — Px refiere dolor <mark>8/10</mark> al subir escaleras. Flexión <mark>72°</mark>. Se indica…</p>
+      <p id="n2">S2 — Tolera ejercicio. Dolor <mark>6/10</mark>. Flexión <mark>80°</mark>, edema leve…</p>
+      <p id="n3">S3 — Sin cambios relevantes en marcha. Dolor <mark>5/10</mark>. Flexión <mark>90°</mark>…</p>
+      <p id="n4">S4 — Dolor <mark>4/10</mark>. Flexión <mark>98°</mark>. Px refiere que «no avanza»…</p>
+    </div>
+    <div class="nunca" id="nunca">Andrés nunca vio estas notas</div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · El terapeuta registra -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Sesión 4 · Andrés R.</b><span>Terapeuta</span></div>
+    <div class="campo" id="c1"><div class="k">Dolor (0 a 10)</div><div class="v"><b id="vdol">8</b><span>/10</span></div><div class="slid"><i id="sdol" style="width:80%"></i></div></div>
+    <div class="campo" id="c2"><div class="k">Flexión de rodilla</div><div class="v"><b id="vflx">72°</b><span>objetivo 120°</span></div><div class="slid"><i id="sflx" style="width:60%"></i></div></div>
+    <div class="def" id="cdef">Métricas definidas por la clínica</div>
+    <div class="guardar" id="guardar">Guardar medición</div>
+  </div></div>
+
+  <!-- 8 · Línea de tiempo -->
+  <div class="card" id="graf">
+    <div class="ccab"><span>Avance · Andrés R.</span><span class="ej">Ejemplo</span></div>
+    <div class="graf">
+      <div class="met"><b>Dolor</b><span style="color:var(--verde)">8 → 4</span></div>
+      <svg viewBox="0 0 800 190"><polyline id="ldol" points="40,30 280,75 520,98 760,120" fill="none" stroke="#3E8E6A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="met"><b>Flexión</b><span style="color:var(--verde)">72° → 98°</span></div>
+      <svg viewBox="0 0 800 190"><polyline id="lflx" points="40,160 280,130 520,92 760,62" fill="none" stroke="#C96F4A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="ejes"><span>Sesión 1</span><span>2</span><span>3</span><span>Sesión 4</span></div>
+  </div>
+
+  <!-- 9 · El paciente lo ve y agenda -->
+  <div class="phone" id="phone2"><div class="scr">
+    <div class="pcab"><div class="av">A</div><div><b>Andrés R.</b><span>Mi tratamiento</span></div></div>
+    <div class="tu">Tu avance</div>
+    <div class="mini" id="p1"><span>Dolor</span><b>8 → 4</b></div>
+    <div class="mini" id="p2"><span>Flexión</span><b>72° → 98°</b></div>
+    <div class="mini" id="p3" style="background:var(--suave)"><span>Sesiones</span><b style="color:var(--tinta)">4 de 10</b></div>
+    <div class="agendar" id="agendar">Agendar sesión 5</div>
+  </div></div>
+
+  <div id="fin">
+    <div class="pasos"><span>Se mide</span><i>→</i><span>Se ve</span><i>→</i><span class="v">Sigue</span></div>
+    <p>Te cuento cómo lo haría para tu clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  var h = '';
+  for (var i = 1; i <= 10; i++) h += '<i class="' + (i > 4 ? 'f' : '') + '">' + i + '</i>';
+  $('sesg').innerHTML = h;
+  ['ldol', 'lflx'].forEach(function (id) { var l = $(id).getTotalLength(); $(id).style.strokeDasharray = l; $(id).dataset.l = l; });
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  // 1 · Sesión 4
+  bloque($('paciente'), 'sesion', 'sesion', t);
+  var q = easeOut(clamp((t - S.sesion - 0.4) / 1.0));
+  $('bar').style.width = (40 * q) + '%'; $('ses').textContent = Math.round(4 * q) + '/10';
+  var g = t >= S.sesion && t < E.sesion + 0.1 ? Math.min(clamp((t - S.sesion - 1.4) / 0.35), 1 - clamp((t - (E.sesion - 0.3)) / 0.3)) : 0;
+  $('globo').style.opacity = g; $('globo').style.transform = 'scale(' + (0.9 + 0.1 * back(clamp((t - S.sesion - 1.4) / 0.35))) + ')';
+
+  // 2 · No asistió
+  bloque($('agenda'), 'falta', 'falta', t);
+  ['a1', 'a2', 'a3'].forEach(function (id, i) { aparece(id, t, S.falta + 0.4 + i * 0.5, 50); });
+
+  // 3 · Seis sesiones sin dar
+  bloque($('puntos'), 'pierde', 'pierde', t);
+  document.querySelectorAll('#sesg i').forEach(function (el, i) {
+    var at = S.pierde + 0.3 + i * 0.18; var p = clamp((t - at) / 0.3);
+    el.style.transform = 'scale(' + (p ? 0.6 + 0.4 * back(p) : 0) + ')';
+  });
+  $('ptot').textContent = '−' + pesos(Math.round(cuenta(t, S.pierde + 2.2, 1.4, 4200) / 10) * 10);
+
+  // 4 · Un mes
+  bloque($('mes'), 'mes', 'mes', t);
+  ['m1', 'm2', 'm3', 'm4'].forEach(function (id, i) { aparece(id, t, S.mes + 0.4 + i * 0.45, 50); });
+  $('mtot').textContent = '−' + pesos(Math.round(cuenta(t, S.mes + 0.5, 2.2, 16800) / 10) * 10);
+
+  // 5 · Notas
+  bloque($('notas'), 'notas', 'notas', t);
+  ['n1', 'n2', 'n3', 'n4'].forEach(function (id, i) { aparece(id, t, S.notas + 0.3 + i * 0.35, 0); });
+  var hi = clamp((t - S.notas - 2.0) / 0.4);
+  document.querySelectorAll('#notas mark').forEach(function (m) { m.style.background = 'rgba(62,142,106,' + (0.2 * hi) + ')'; m.style.color = hi > 0.5 ? 'var(--verde)' : ''; m.style.fontWeight = hi > 0.5 ? 600 : 400; });
+  pop($('nunca'), t, S.notas + 2.8);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · Registrar medición
+  telefono($('phone1'), 'mide', 'mide', t);
+  aparece('c1', t, S.mide + 0.5); aparece('c2', t, S.mide + 0.8); aparece('cdef', t, S.mide + 1.1); aparece('guardar', t, S.mide + 1.1);
+  var mq = easeOut(clamp((t - S.mide - 1.2) / 1.4));
+  $('vdol').textContent = Math.round(8 - 4 * mq); $('sdol').style.width = (80 - 40 * mq) + '%';
+  $('vflx').textContent = Math.round(72 + 26 * mq) + '°'; $('sflx').style.width = (60 + 22 * mq) + '%';
+  var tapG = S.mide + 3.3, tapped = false;
+  if (t > tapG - 0.5 && t < tapG + 0.4 && t < E.mide) tapped = toque(t, tapG, $('guardar'));
+  $('guardar').textContent = t >= tapG ? '✓ Medición guardada' : 'Guardar medición';
+  $('guardar').classList.toggle('ok2', t >= tapG);
+
+  // 8 · Línea de tiempo
+  bloque($('graf'), 'linea', 'linea', t);
+  ['ldol', 'lflx'].forEach(function (id, i) { var l = +$(id).dataset.l; $(id).style.strokeDashoffset = l * (1 - easeOut(clamp((t - S.linea - 0.5 - i * 0.4) / 1.6))); });
+
+  // 9 · Andrés lo ve y agenda
+  telefono($('phone2'), 'sigue', 'sigue', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.sigue + 0.4 + i * 0.25, 40); });
+  aparece('agendar', t, S.sigue + 0.9);
+  var tapA = S.sigue + 2.2;
+  if (t > tapA - 0.5 && t < tapA + 0.4 && t < E.sigue) tapped = toque(t, tapA, $('agendar')) || tapped;
+  $('agendar').textContent = t >= tapA ? '✓ Sesión 5 · jueves 5:00 PM' : 'Agendar sesión 5';
+  $('agendar').classList.toggle('ok2', t >= tapA);
+  return tapped;
+};
+</script>
+</body></html>

@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-10-26",
+  "dia": "lunes",
+  "linea": "Fisioterapia · pérdida",
+  "plantilla": "fisio-abandono.html",
+  "nombre": "fisio-abandono",
+  "url": "bodgar.dev/plataformas/fisioterapia",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Fisioterapia",
+    "titulo": "«Siento que *no avanzo*»",
+    "dato": { "num": "−$4,200", "texto": "por cada paciente que deja su plan a la mitad", "tipo": "perd" }
+  },
+  "story": {
+    "titulo": "Sí avanzaba. *Nadie se lo enseñó.*",
+    "texto": "Por qué algunos pacientes dejan el tratamiento en la sesión 4."
+  },
+  "post": "Andrés va en la sesión 4 de 10 y dice: «siento que no avanzo». La siguiente semana ya no llega. Le faltaban 6 sesiones.\n\nY sí estaba avanzando: el dolor bajó y la flexión subió. Pero ese avance estaba escondido en notas que él nunca vio.\n\nSi el terapeuta registra las mediciones que la clínica ya usa y el sistema las ordena en una línea de tiempo, el paciente puede ver su propio avance. Las métricas las decide la clínica.\n\nLas cifras del video son un ejemplo, no un resultado. Si te pasa, te cuento cómo lo haría para tu clínica: bodgar.dev/plataformas/fisioterapia (link en la bio). Diagnóstico sin costo.\n\n#fisioterapia #clinica #rehabilitacion #pacientes #pymesmexico",
+  "escenas": [
+    { "id": "sesion", "titulo": "«Siento que no avanzo»", "voz": "Andrés va en la sesión cuatro de diez. Y te dice: siento que no avanzo." },
+    { "id": "falta", "titulo": "Y ya no regresa", "voz": "La siguiente semana no llega. Y ya no regresa." },
+    { "id": "pierde", "titulo": "−$4,200 por paciente", "voz": "Le faltaban seis sesiones. A setecientos pesos, son cuatro mil doscientos." },
+    { "id": "mes", "titulo": "≈ $16,800 al mes", "voz": "Si te pasa con cuatro pacientes al mes, son casi diecisiete mil pesos." },
+    { "id": "notas", "titulo": "Sí avanzaba", "voz": "Y sí estaba avanzando. Pero su avance estaba escondido en notas que él nunca vio." },
+    { "id": "giro", "titulo": "¿Y si lo viera?", "voz": "¿Y si él pudiera verlo?" },
+    { "id": "mide", "titulo": "Tu equipo mide", "voz": "Tu terapeuta registra las mediciones que tu clínica ya usa: dolor, rango de movimiento." },
+    { "id": "linea", "titulo": "Su avance, a la vista", "voz": "Y el sistema las ordena en una línea de tiempo que se entiende de un vistazo." },
+    { "id": "sigue", "titulo": "Andrés agenda la 5", "voz": "Andrés ve que sí avanza. Y agenda su sesión cinco." },
+    { "id": "cierre", "titulo": "¿Te dejan el plan a la mitad?", "voz": "Si tus pacientes dejan el tratamiento a la mitad, te cuento cómo lo haría para tu clínica. Entra a bodgar punto dev." }
+  ]
+}

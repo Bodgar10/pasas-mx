@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Viernes · caso práctico: errores de surtido en una bodega de tiendas en línea. Cuenta → primer flujo → qué mediría.
+   Cifras de ejemplo. Nada de resultados prometidos: se mide y se ajusta. */
+.caso{padding:40px 36px 36px}
+.caso .k{font-family:M;font-weight:600;font-size:28px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra2)}
+.caso h2{margin:16px 0 26px;font-family:B;font-weight:800;font-size:58px;line-height:1.05}
+.dato{display:flex;align-items:center;gap:16px;font-size:32px;font-weight:600;padding:12px 0;opacity:0}
+.dato i{width:18px;height:18px;border-radius:5px;background:var(--terra);flex:none}
+/* Paquete */
+.pq{display:flex;gap:30px;align-items:center;padding:56px 36px 34px}
+.caja{width:250px;height:210px;flex:none;position:relative}
+.caja .cu{position:absolute;left:0;right:0;bottom:0;height:150px;background:#C9A574;border-radius:12px;box-shadow:inset 0 -12px 0 rgba(0,0,0,.1)}
+.caja .ta{position:absolute;left:0;right:0;top:20px;height:44px;background:#D8B98A;border-radius:10px;transform-origin:0 100%}
+.caja .pl{position:absolute;z-index:3;left:55px;right:55px;bottom:70px;height:120px;border-radius:14px 14px 6px 6px;background:#5B8DB8;display:grid;place-items:center;font-family:B;font-weight:800;font-size:56px;color:#fff;opacity:0}
+.pqd b{display:block;font-size:34px}
+.pqd span{display:block;margin-top:8px;font-size:28px;color:var(--gris);font-weight:600}
+.pqd .pide{margin-top:16px;font-family:M;font-weight:600;font-size:26px;color:var(--tinta)}
+.sello{position:absolute;right:34px;top:96px;border:7px solid var(--terra);color:var(--terra);border-radius:18px;padding:8px 22px;font-family:B;font-weight:800;font-size:54px;transform:rotate(-10deg);opacity:0;background:rgba(251,250,247,.85)}
+.globo{position:absolute;left:150px;right:120px;top:1130px;background:#fff;color:var(--tinta);border-radius:36px 36px 36px 10px;padding:30px 34px;font-size:40px;font-weight:700;line-height:1.25;box-shadow:0 24px 50px rgba(0,0,0,.35);opacity:0}
+.globo small{display:block;margin-top:10px;font-size:24px;font-weight:600;color:var(--gris)}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:160px}
+.term span{font-size:29px;font-weight:600;color:var(--gris);line-height:1.25}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Año */
+.meses{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:30px 36px}
+.meses i{height:90px;border-radius:16px;background:var(--arena);position:relative;overflow:hidden;font-style:normal}
+.meses i b{position:absolute;inset:0;background:var(--terra);transform:scaleY(0);transform-origin:50% 100%}
+.meses i span{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:M;font-size:20px;color:#fff;z-index:1;opacity:.95}
+/* Teléfono de empaque */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.lp{margin:26px 26px 0;font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.it{margin:14px 26px 0;padding:20px 22px;border-radius:18px;border:3px solid var(--linea);display:flex;justify-content:space-between;font-size:28px;font-weight:700}
+.it span{color:var(--gris);font-weight:600}
+.esc{margin:26px 26px 0;padding:22px;border-radius:20px;background:#1b2a26;color:#fff;font-family:M;font-weight:600;font-size:26px;display:flex;justify-content:space-between;opacity:0}
+.alto{margin:18px 26px 0;padding:24px;border-radius:20px;background:#FBEADF;border:3px solid var(--terra);color:var(--terra2);opacity:0}
+.alto b{display:block;font-size:31px}.alto span{display:block;margin-top:8px;font-size:24px;font-weight:600}
+/* Báscula */
+.bas{display:grid;grid-template-columns:1fr 1fr;text-align:center}
+.bas div{padding:34px 10px}
+.bas div+div{border-left:1px solid var(--linea)}
+.bas span{display:block;font-family:M;font-weight:600;font-size:23px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.bas b{display:block;margin-top:10px;font-family:B;font-weight:800;font-size:86px;line-height:1}
+.aviso{margin:0 36px 34px;padding:24px 26px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:30px;font-weight:700;opacity:0}
+.plato{margin:10px auto 0;width:420px;height:26px;border-radius:13px;background:#8A9893}
+.pie2{margin:0 auto 30px;width:160px;height:40px;background:#6f7d78;border-radius:0 0 14px 14px}
+/* Medir */
+.medir{padding:36px}
+.medir .k{font-size:32px;font-weight:700}
+.medir .val{display:flex;align-items:baseline;gap:16px;margin:20px 0 26px}
+.medir .val b{font-family:B;font-weight:800;font-size:130px;line-height:1;color:var(--terra2)}
+.medir .val span{font-size:38px;font-weight:700;color:var(--gris)}
+.hoy{display:inline-block;background:var(--arena);color:#8a7a66;border-radius:16px;padding:14px 20px;font-size:28px;font-weight:700;opacity:0}
+.medir .n{margin-top:26px;font-size:28px;color:var(--gris);line-height:1.35;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · caso práctico</div>
+
+  <div class="tit" id="t-caso"><h1>Caso <em>práctico</em></h1></div>
+  <div class="tit" id="t-pasa"><h1>La talla <em>equivocada</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>Hagamos la <em>cuenta</em></h1></div>
+  <div class="tit" id="t-anio"><h1>≈ $90,000 <em>al año</em></h1><p>Ejemplo: $7,500 × 12 meses</p></div>
+  <div class="tit" id="t-primero"><h1>Lo primero que <em>construiría</em></h1></div>
+  <div class="tit" id="t-escaneo"><h1>Lo que no va, <em>se detiene</em></h1></div>
+  <div class="tit" id="t-bascula"><h1>La báscula <em>revisa</em></h1></div>
+  <div class="tit" id="t-medir"><h1>Lo que <em>mediría</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Revisamos tu <em>bodega?</em></h1></div>
+
+  <!-- 1 · El caso -->
+  <div class="card" id="caso">
+    <div class="caso">
+      <div class="k">Caso práctico · ejemplo</div>
+      <h2>Bodega que surte pedidos de tiendas en línea</h2>
+      <div class="dato" id="d1"><i></i>1,500 pedidos al mes</div>
+      <div class="dato" id="d2"><i></i>3 personas en empaque</div>
+      <div class="dato" id="d3"><i></i>Nadie escanea al empacar</div>
+    </div>
+  </div>
+
+  <!-- 2 · El paquete equivocado -->
+  <div class="card" id="paq">
+    <div class="ccab"><span>Pedido #8420 · Moda Luna</span><span class="ej">Ejemplo</span></div>
+    <div class="pq">
+      <div class="caja"><div class="pl" id="pl">L</div><div class="cu"></div><div class="ta" id="ta"></div></div>
+      <div class="pqd"><b>Playera básica</b><span>Entregado a tiempo</span><div class="pide">Pidió: talla M</div></div>
+    </div>
+    <div class="sello" id="sello">TALLA L</div>
+  </div>
+  <div class="globo" id="globo">Me llegó otra talla. ¿Cómo la cambio?<small>Mensaje del cliente final</small></div>
+
+  <!-- 3 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>30</b><span>pedidos con error<br>(2% de 1,500)</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$250</b><span>reenvío, devolución<br>y soporte</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">$0</b></div>
+  </div>
+
+  <!-- 4 · Al año -->
+  <div class="card" id="anio">
+    <div class="ccab"><span>Un año · ejemplo</span><span>$7,500 por mes</span></div>
+    <div class="meses" id="meses"></div>
+    <div class="total"><span>Al año</span><b id="atot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Escaneo en empaque -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Empaque · #8420</b><span>Ana</span></div>
+    <div class="lp">El pedido lleva</div>
+    <div class="it">Playera básica<span>talla M · ×1</span></div>
+    <div class="esc" id="esc"><span>Escaneado</span><span>Playera · talla L</span></div>
+    <div class="alto" id="alto"><b>✕ No corresponde al pedido</b><span>La caja no se puede cerrar</span></div>
+  </div></div>
+
+  <!-- 7 · Báscula -->
+  <div class="card" id="bas">
+    <div class="ccab"><span>Pedido #8431 · antes de la guía</span><span class="ej">Ejemplo</span></div>
+    <div class="bas"><div><span>Peso esperado</span><b>1.85 kg</b></div><div><span>Peso real</span><b id="peso" style="color:var(--terra2)">0.00 kg</b></div></div>
+    <div class="plato"></div><div class="pie2"></div>
+    <div class="aviso" id="aviso">⚠ Falta algo: revisa antes de imprimir la guía</div>
+  </div>
+
+  <!-- 8 · Qué mediría -->
+  <div class="card" id="medir">
+    <div class="ccab"><span>Una sola métrica</span><span>Desde el día 1</span></div>
+    <div class="medir">
+      <div class="k">Pedidos con error</div>
+      <div class="val"><b>20</b><span>de cada 1,000</span></div>
+      <div class="hoy" id="hoy">Punto de partida · ejemplo</div>
+      <div class="n" id="mn">Si no baja, se ajusta antes de construir lo siguiente.</div>
+    </div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>La cuenta</span><i>→</i><span>Un flujo</span><i>→</i><span class="v">Se mide</span></div>
+    <p>Así pienso cada proceso de una bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  var M = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+  $('meses').innerHTML = M.map(function (m) { return '<i><b></b><span>' + m + '</span></i>'; }).join('');
+};
+window.escena = function (t) {
+  // 1 · El caso
+  bloque($('caso'), 'caso', 'caso', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { aparece(id, t, S.caso + 0.6 + i * 0.45, 40); });
+
+  // 2 · Se abre la caja: talla equivocada
+  bloque($('paq'), 'pasa', 'pasa', t);
+  var aq = easeOut(clamp((t - S.pasa - 0.8) / 0.5));
+  $('ta').style.transform = 'translate(' + (40 * aq) + 'px,' + (-6 * aq) + 'px) rotate(' + (-16 * aq) + 'deg)';
+  $('pl').style.opacity = clamp((t - S.pasa - 1.1) / 0.3); $('pl').style.transform = 'translateY(' + (-40 * easeOut(clamp((t - S.pasa - 1.1) / 0.4))) + 'px)';
+  var sq = clamp((t - (S.pasa + 1.8)) / 0.3);
+  $('sello').style.opacity = sq; $('sello').style.transform = 'rotate(-10deg) scale(' + (1.6 - 0.6 * easeOut(sq)) + ')';
+  var g = t >= S.pasa && t < E.pasa + 0.1 ? Math.min(clamp((t - S.pasa - 2.8) / 0.35), 1 - clamp((t - (E.pasa - 0.3)) / 0.3)) : 0;
+  $('globo').style.opacity = g; $('globo').style.transform = 'scale(' + (0.9 + 0.1 * back(clamp((t - S.pasa - 2.8) / 0.35))) + ')';
+
+  // 3 · La cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  aparece('e1', t, S.cuenta + 1.2, 50); aparece('e2', t, S.cuenta + 3.4, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuenta + 6.4, 1.4, 7500) / 10) * 10);
+
+  // 4 · Al año
+  bloque($('anio'), 'anio', 'anio', t);
+  document.querySelectorAll('#meses i b').forEach(function (b, i) { b.style.transform = 'scaleY(' + easeOut(clamp((t - (S.anio + 0.3 + i * 0.1)) / 0.3)) + ')'; });
+  $('atot').textContent = pesos(Math.round(cuenta(t, S.anio + 0.3, 1.5, 90000) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'primero');
+
+  // 6 · Escaneo en empaque
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.escaneo) / 0.6)), pout = easeOut(clamp((t - (E.escaneo - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.escaneo && t < E.escaneo + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  aparece('esc', t, S.escaneo + 1.4); pop($('alto'), t, S.escaneo + 2.4);
+
+  // 7 · Báscula
+  bloque($('bas'), 'bascula', 'bascula', t);
+  $('peso').textContent = cuenta(t, S.bascula + 0.6, 1.4, 1.42).toFixed(2) + ' kg';
+  pop($('aviso'), t, S.bascula + 2.3);
+
+  // 8 · Qué mediría
+  bloque($('medir'), 'medir', 'medir', t);
+  aparece('hoy', t, S.medir + 1.4); aparece('mn', t, S.medir + 2.4);
+  return false;
+};
+</script>
+</body></html>

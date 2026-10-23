@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · crecimiento: pacientes activos que no saben lo que la clínica ya ofrece. Cifras de ejemplo.
+   El equipo clínico define a quién le puede servir cada servicio; el sistema solo lo muestra a tiempo. */
+.pac{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.pac .av{width:96px;height:96px;font-size:40px;background:#C99A3A}
+.pac b{display:block;font-size:38px}.pac span{font-size:27px;color:var(--gris)}
+.estado{margin-left:auto;font-family:M;font-weight:600;font-size:24px;padding:10px 16px;border-radius:14px;background:var(--verde2);color:var(--verde);white-space:nowrap}
+.barra{margin:28px 36px 10px;height:22px;border-radius:12px;background:var(--arena);overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--verde);border-radius:12px}
+.datos{display:flex;justify-content:space-between;padding:10px 36px 30px;font-size:28px;font-weight:600;color:var(--gris)}
+.datos b{color:var(--tinta);font-family:M}
+.globo{position:absolute;left:150px;right:120px;top:1130px;background:#fff;color:var(--tinta);border-radius:36px 36px 36px 10px;padding:32px 36px;font-size:42px;font-weight:700;line-height:1.25;box-shadow:0 24px 50px rgba(0,0,0,.35);opacity:0}
+.globo small{display:block;margin-top:12px;font-size:24px;font-weight:600;color:var(--gris)}
+/* Servicios */
+.serv{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.serv:last-child{border-bottom:0}
+.serv b{display:block;font-size:32px}.serv small{font-size:24px;color:var(--gris);font-weight:600}
+.serv .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px;white-space:nowrap}
+.serv.hl{background:#FFF6E8}
+.nadie{display:inline-block;margin-top:10px;font-family:M;font-size:21px;font-weight:600;background:#FBEADF;color:var(--terra2);padding:6px 12px;border-radius:10px;opacity:0}
+/* Puntos */
+.puntos{display:grid;grid-template-columns:repeat(20,1fr);gap:9px;padding:30px 36px 20px}
+.puntos i{aspect-ratio:1;border-radius:50%;background:#C9C2B5;transform:scale(0)}
+.puntos i.v{background:var(--verde)}
+.cuentas{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px 30px;border-top:1px solid var(--linea)}
+.cuentas span{font-size:30px;font-weight:600;color:var(--gris)}
+.cuentas b{font-family:B;font-weight:800;font-size:80px}
+/* Definido por el equipo */
+.regla{margin:22px 36px 0;padding:22px 26px;border-radius:20px;border:3px solid var(--linea);opacity:0}
+.regla b{display:block;font-size:31px}
+.regla span{display:inline-block;margin-top:10px;font-family:M;font-size:22px;font-weight:600;color:var(--verde);background:var(--verde2);padding:6px 12px;border-radius:10px}
+.pie{padding:24px 36px 30px;font-size:26px;font-weight:600;color:var(--gris)}
+/* Expediente en el teléfono */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.exp{margin:26px 26px 0;padding:20px 22px;border-radius:18px;background:var(--suave);font-size:26px;font-weight:600;display:flex;justify-content:space-between}
+.exp span{color:var(--gris)}
+.alerta{margin:22px 26px 0;padding:24px;border-radius:22px;background:#FFF6E8;border:3px solid var(--oro);opacity:0}
+.alerta .k{font-family:M;font-weight:600;font-size:21px;letter-spacing:.06em;text-transform:uppercase;color:#A07220}
+.alerta b{display:block;margin-top:10px;font-size:31px;line-height:1.2}
+.alerta small{display:block;margin-top:10px;font-size:23px;color:var(--gris);font-weight:600}
+.btnc{position:absolute;left:26px;right:26px;bottom:44px;background:var(--terra);color:#fff;border-radius:20px;padding:26px;text-align:center;font-size:29px;font-weight:700;opacity:0}
+.btnc.ok2{background:var(--verde)}
+/* Inscripción */
+.insc{padding:34px 36px 36px;text-align:center}
+.insc .big{width:130px;height:130px;margin:0 auto 22px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:70px;transform:scale(0)}
+.insc b{display:block;font-size:40px}
+.insc span{display:block;margin-top:12px;font-size:29px;color:var(--gris);font-weight:600}
+.insc .pr{display:inline-block;margin-top:22px;font-family:M;font-weight:600;font-size:30px;background:var(--verde2);color:var(--verde);padding:12px 20px;border-radius:14px;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-termina"><h1>Carlos va <em>en la 9</em></h1></div>
+  <div class="tit" id="t-gym"><h1>Y se va a <em>un gimnasio</em></h1></div>
+  <div class="tit" id="t-tenias"><h1>Tú ya lo <em>tenías</em></h1></div>
+  <div class="tit" id="t-base"><h1>200 pacientes <em>activos</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>supieran?</em></h1></div>
+  <div class="tit" id="t-define"><h1>Tu terapeuta <em>decide</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>Aparece <em>a tiempo</em></h1></div>
+  <div class="tit" id="t-inscribe"><h1>Carlos se <em>inscribe</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $24,000</h1><p>Ejemplo: 10% de 200 pacientes × $1,200</p></div>
+  <div class="tit" id="t-cierre"><h1>Tus pacientes ya <em>confían</em></h1></div>
+
+  <!-- 1 · Sesión 9 de 10 -->
+  <div class="card" id="paciente">
+    <div class="ccab"><span>Paciente</span><span>Espalda baja</span></div>
+    <div class="pac"><div class="av">C</div><div><b>Carlos D.</b><span>Plan de 10 sesiones</span></div><span class="estado">Va bien</span></div>
+    <div class="barra"><i id="bar"></i></div>
+    <div class="datos"><span>Sesiones <b id="ses">0/10</b></span><span>Dolor <b>2</b>/10</span></div>
+  </div>
+  <div class="globo" id="globo">Ya me voy a inscribir a un gimnasio, para no recaer.<small>Carlos, en su sesión 9</small></div>
+
+  <!-- 3 · Lo que la clínica ya ofrece -->
+  <div class="card" id="servicios">
+    <div class="ccab"><span>Servicios de tu clínica</span><span class="ej">Ejemplo</span></div>
+    <div class="serv" id="s1"><span class="ok">✓</span><div><b>Fisioterapia</b><small>lo que vino a tomar</small></div></div>
+    <div class="serv hl" id="s2"><span class="ok" style="background:var(--oro)">★</span><div><b>Ejercicio supervisado</b><small>4 semanas · grupo pequeño</small><br><span class="nadie" id="nadie">Nadie se lo mencionó</span></div><span class="der">$1,200</span></div>
+    <div class="serv" id="s3"><span class="ok" style="background:var(--gris)">+</span><div><b>Programa preventivo</b><small>columna y postura</small></div></div>
+  </div>
+
+  <!-- 4 y 9 · Pacientes activos -->
+  <div class="card" id="activos">
+    <div class="ccab"><span>Pacientes activos</span><span class="ej">Ejemplo</span></div>
+    <div class="puntos" id="puntos"></div>
+    <div class="cuentas"><span id="clab">Ya confían en tu clínica</span><b id="cnum">0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Lo define el equipo -->
+  <div class="card" id="define">
+    <div class="ccab"><span>Lo define tu equipo</span><span>Clínico</span></div>
+    <div class="regla" id="r1"><b>Programa preventivo</b><span>Lo indica su terapeuta</span></div>
+    <div class="regla" id="r2"><b>Ejercicio supervisado</b><span>Lo indica su terapeuta</span></div>
+    <div class="regla" id="r3"><b>Otra área de la clínica</b><span>Lo indica su terapeuta</span></div>
+    <div class="pie">El sistema no recomienda nada por su cuenta.</div>
+  </div>
+
+  <!-- 7 · En el expediente, antes de la última sesión -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Carlos D. · expediente</b><span>Terapeuta</span></div>
+    <div class="exp">Sesión 9 de 10<span>Espalda baja</span></div>
+    <div class="alerta" id="alerta"><div class="k">Antes de la última sesión</div><b>Puede servirle: ejercicio supervisado</b><small>Según el criterio que definió tu equipo</small></div>
+    <div class="btnc" id="btnc">Comentarlo en sesión</div>
+  </div></div>
+
+  <!-- 8 · Inscrito -->
+  <div class="card" id="insc">
+    <div class="insc">
+      <div class="big" id="big">✓</div>
+      <b>Carlos D. se inscribió</b>
+      <span>Ejercicio supervisado · inicia lunes 9 nov</span>
+      <div class="pr" id="pr">$1,200 · ejemplo</div>
+    </div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Ya confía</span><i>→</i><span>Su terapeuta decide</span><i>→</i><span class="v">Se entera</span></div>
+    <p>Más ingreso con los pacientes que ya tienes.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () { var h = ''; for (var i = 0; i < 200; i++) h += '<i></i>'; $('puntos').innerHTML = h; };
+window.escena = function (t) {
+  // 1 · Sesión 9
+  bloque($('paciente'), 'termina', 'termina', t);
+  var q = easeOut(clamp((t - S.termina - 0.4) / 1.2));
+  $('bar').style.width = (90 * q) + '%'; $('ses').textContent = Math.round(9 * q) + '/10';
+
+  // 2 · El gimnasio (la tarjeta del paciente se queda)
+  if (t >= S.gym && t < E.gym + 0.1) { bloque($('paciente'), 'termina', 'gym', t); }
+  var g = t >= S.gym && t < E.gym + 0.1 ? Math.min(clamp((t - S.gym - 0.2) / 0.35), 1 - clamp((t - (E.gym - 0.3)) / 0.3)) : 0;
+  $('globo').style.opacity = g; $('globo').style.transform = 'scale(' + (0.9 + 0.1 * back(clamp((t - S.gym - 0.2) / 0.35))) + ')';
+
+  // 3 · Servicios
+  bloque($('servicios'), 'tenias', 'tenias', t);
+  ['s1', 's2', 's3'].forEach(function (id, i) { aparece(id, t, S.tenias + 0.4 + i * 0.4, 50); });
+  pop($('nadie'), t, S.tenias + 2.6);
+
+  // 4 y 9 · Puntos
+  var enB = t >= S.base && t < E.base + 0.1, enC = t >= S.cuenta && t < E.cuenta + 0.1;
+  if (enB) bloque($('activos'), 'base', 'base', t); else if (enC) bloque($('activos'), 'cuenta', 'cuenta', t); else $('activos').style.opacity = 0;
+  document.querySelectorAll('#puntos i').forEach(function (p, i) {
+    var at = enC ? S.cuenta : S.base + 0.3 + i * 0.008;
+    p.style.transform = 'scale(' + easeOut(clamp((t - at) / 0.25)) + ')';
+    p.classList.toggle('v', enC && (i * 37) % 200 < 20 && t >= S.cuenta + 0.8 + (i / 200) * 1.5);
+  });
+  if (enC) { $('clab').textContent = '20 × $1,200'; $('cnum').textContent = pesos(Math.round(cuenta(t, S.cuenta + 1.0, 2.4, 24000) / 100) * 100); $('cnum').style.color = 'var(--verde)'; }
+  else { $('clab').textContent = 'Ya confían en tu clínica'; $('cnum').textContent = Math.round(cuenta(t, S.base + 0.3, 1.6, 200)); $('cnum').style.color = ''; }
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Reglas del equipo
+  bloque($('define'), 'define', 'define', t);
+  ['r1', 'r2', 'r3'].forEach(function (id, i) { aparece(id, t, S.define + 0.5 + i * 0.6, 50); });
+
+  // 7 · Expediente
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.aviso) / 0.6)), pout = easeOut(clamp((t - (E.aviso - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.aviso && t < E.aviso + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  pop($('alerta'), t, S.aviso + 0.9); aparece('btnc', t, S.aviso + 1.4);
+  var tapT = S.aviso + 2.9, tapped = false;
+  if (t > tapT - 0.5 && t < tapT + 0.4 && t < E.aviso) tapped = toque(t, tapT, $('btnc'));
+  $('btnc').textContent = t >= tapT ? '✓ Anotado para la sesión 10' : 'Comentarlo en sesión';
+  $('btnc').classList.toggle('ok2', t >= tapT);
+
+  // 8 · Inscrito
+  bloque($('insc'), 'inscribe', 'inscribe', t);
+  var bq = clamp((t - S.inscribe - 0.6) / 0.4); $('big').style.transform = 'scale(' + (bq ? back(bq) : 0) + ')';
+  pop($('pr'), t, S.inscribe + 1.4);
+  return tapped;
+};
+</script>
+</body></html>

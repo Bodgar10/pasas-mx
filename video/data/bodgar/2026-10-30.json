@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-10-30",
+  "dia": "viernes",
+  "linea": "Caso práctico · errores de surtido",
+  "plantilla": "caso-errores-surtido.html",
+  "nombre": "caso-errores-surtido",
+  "url": "bodgar.dev/plataformas/bodegas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Caso práctico",
+    "titulo": "Caso práctico: *la talla equivocada*",
+    "dato": { "num": "$7,500", "texto": "al mes en pedidos que salen con error", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Caso práctico",
+    "titulo": "30 × $250 = *$7,500*",
+    "texto": "Así atacaría los errores de surtido en una bodega de tiendas en línea."
+  },
+  "post": "Caso práctico: una bodega que surte 1,500 pedidos al mes para tiendas en línea.\n\nEl paquete sale a tiempo, pero con la talla equivocada, y el cliente se entera en su casa. Si el 2% sale con error, son 30 pedidos; a $250 cada uno entre reenvío, devolución y soporte, son $7,500 al mes.\n\nLo primero que construiría: en empaque, el operador escanea cada pieza y el sistema detiene lo que no corresponde al pedido; antes de imprimir la guía, la báscula compara el peso esperado contra el real. Y mediría una sola cosa: cuántos pedidos salen con error de cada mil.\n\nLas cifras son un ejemplo, no un resultado. Si quieres que revise el proceso de tu bodega, entra a bodgar.dev/plataformas/bodegas (link en la bio). Revisión sin costo.\n\n#bodegas #3PL #ecommerce #logistica #pymesmexico",
+  "escenas": [
+    { "id": "caso", "titulo": "Caso práctico", "voz": "Caso práctico. Una bodega que surte mil quinientos pedidos al mes para tiendas en línea." },
+    { "id": "pasa", "titulo": "La talla equivocada", "voz": "El paquete salió a tiempo. Pero llevaba la talla equivocada. Y el cliente se entera en su casa." },
+    { "id": "cuenta", "titulo": "Hagamos la cuenta", "voz": "Hagamos la cuenta. Treinta pedidos al mes con error, a doscientos cincuenta pesos entre reenvío, devolución y soporte: siete mil quinientos pesos." },
+    { "id": "anio", "titulo": "≈ $90,000 al año", "voz": "Al año, son noventa mil pesos." },
+    { "id": "primero", "titulo": "Lo primero que construiría", "voz": "Esto es lo primero que construiría." },
+    { "id": "escaneo", "titulo": "Lo que no va, se detiene", "voz": "En empaque, el operador escanea cada pieza. Si no corresponde al pedido, el sistema lo detiene." },
+    { "id": "bascula", "titulo": "La báscula revisa", "voz": "Y antes de imprimir la guía, la báscula compara el peso esperado contra el real." },
+    { "id": "medir", "titulo": "Lo que mediría", "voz": "Y mediría una sola cosa: cuántos pedidos salen con error de cada mil." },
+    { "id": "cierre", "titulo": "¿Revisamos tu bodega?", "voz": "Así pienso cada proceso de una bodega. Si quieres que revise el tuyo, entra a bodgar punto dev." }
+  ]
+}

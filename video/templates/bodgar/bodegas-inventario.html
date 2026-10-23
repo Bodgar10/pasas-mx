@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · pérdida: el inventario no cuadra (Excel 120, rack 113) y la diferencia la paga la bodega. Cifras de ejemplo. */
+/* Pedido + hoja */
+.ped{padding:28px 36px;display:flex;align-items:center;gap:22px;border-bottom:1px solid var(--linea)}
+.ped .av{background:#B5708F}
+.ped b{display:block;font-size:34px}.ped span{font-size:26px;color:var(--gris)}
+.ped .cant{margin-left:auto;color:var(--tinta);font-family:B;font-weight:800;font-size:64px}
+.hoja{display:grid;grid-template-columns:70px 1fr 1fr 170px;font-family:M;font-size:26px}
+.hoja div{border-right:1px solid #DCE3E0;border-bottom:1px solid #DCE3E0;padding:16px 14px;white-space:nowrap;overflow:hidden}
+.hoja .h{background:#EEF3F1;color:var(--gris);text-align:center;font-weight:600}
+.hoja .sel{outline:5px solid #2F8F5B;outline-offset:-5px;background:#E7F4EC;font-weight:600;text-align:right}
+.xls{position:absolute;left:90px;right:90px;top:1000px;background:#fff;color:var(--tinta);border-radius:30px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);opacity:0}
+.xls .tab{background:#2F8F5B;color:#fff;font-family:M;font-weight:600;font-size:24px;padding:16px 28px;letter-spacing:.06em}
+/* Rack */
+.rack{padding:30px 36px 10px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.rack i{height:84px;border-radius:10px;background:#D8B98A;box-shadow:inset 0 -8px 0 rgba(0,0,0,.12);opacity:.25;font-style:normal}
+.rack i.c{opacity:1}
+.viga{height:14px;margin:0 36px;background:#8A9893;border-radius:6px}
+.conteo{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 30px}
+.conteo span{font-size:32px;font-weight:600;color:var(--gris)}
+.conteo b{font-family:B;font-weight:800;font-size:100px}
+/* Diferencia */
+.dif{display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center}
+.dif div{padding:34px 10px;border-right:1px solid var(--linea);opacity:0}
+.dif div:last-child{border-right:0;background:#FBEADF}
+.dif span{display:block;font-family:M;font-weight:600;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.dif b{display:block;margin-top:10px;font-family:B;font-weight:800;font-size:96px;line-height:1}
+.porq{padding:10px 36px 30px}
+.porq p{margin:20px 0 0;display:flex;align-items:center;gap:18px;font-size:31px;font-weight:600;opacity:0}
+.porq p i{font-style:normal;width:52px;height:52px;border-radius:50%;background:var(--arena);color:#8a7a66;display:grid;place-items:center;font-family:B;font-weight:800;font-size:30px;flex:none}
+/* Reclamación */
+.rec{padding:30px 36px}
+.rec .k{font-family:M;font-weight:600;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.rec p{margin:16px 0 0;font-size:34px;line-height:1.35;font-weight:600}
+.rec .resp{margin-top:26px;padding:22px 24px;border-radius:18px;background:var(--arena);display:flex;justify-content:space-between;align-items:baseline;font-size:30px;font-weight:700;opacity:0}
+.rec .resp b{font-family:M;color:var(--terra2);font-size:34px}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:170px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Teléfono: escaneo */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:32px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.visor{margin:26px;height:250px;border-radius:24px;background:#1b2a26;position:relative;overflow:hidden;display:grid;place-items:center}
+.codigo{width:300px;height:130px;background:repeating-linear-gradient(90deg,#fff 0 6px,transparent 6px 10px,#fff 10px 12px,transparent 12px 20px,#fff 20px 28px,transparent 28px 32px);opacity:.9}
+.laser{position:absolute;left:30px;right:30px;height:5px;background:#ff5a4a;box-shadow:0 0 18px #ff5a4a;top:50%}
+.esq{position:absolute;inset:30px;border:4px solid rgba(255,255,255,.5);border-radius:18px}
+.sku{margin:0 26px;padding:20px 22px;border-radius:18px;background:var(--suave);font-size:27px;font-weight:700;display:flex;justify-content:space-between}
+.sku span{color:var(--gris);font-weight:600}
+.stock{margin:18px 26px 0;padding:22px;border-radius:18px;border:3px solid var(--linea);display:flex;justify-content:space-between;align-items:baseline}
+.stock span{font-size:27px;font-weight:600;color:var(--gris)}
+.stock b{font-family:B;font-weight:800;font-size:64px}
+.toast{position:absolute;left:24px;right:24px;bottom:40px;background:var(--verde);color:#fff;border-radius:20px;padding:22px 24px;font-size:25px;font-weight:700;opacity:0}
+.btnesc{position:absolute;left:24px;right:24px;bottom:40px;background:var(--terra);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:30px;font-weight:700}
+/* Cuadra */
+.igual{display:flex;align-items:center;justify-content:center;gap:30px;padding:44px 36px 20px}
+.igual div{text-align:center}
+.igual span{display:block;font-family:M;font-weight:600;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.igual b{display:block;font-family:B;font-weight:800;font-size:120px;line-height:1.05}
+.igual i{font-style:normal;font-family:B;font-weight:800;font-size:90px;color:var(--verde)}
+.okc{margin:10px 36px 0;text-align:center;opacity:0}
+.okc span{display:inline-flex;align-items:center;gap:14px;background:var(--verde2);color:var(--verde);border-radius:999px;padding:14px 26px;font-size:30px;font-weight:700}
+.ultimo{margin:26px 36px 32px;padding:22px 24px;border-radius:18px;background:var(--suave);font-size:29px;font-weight:600;opacity:0}
+.ultimo b{font-family:M}
+/* Historial */
+.mov{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.mov .hr{font-family:M;font-weight:600;font-size:25px;color:var(--gris);width:96px;flex:none}
+.mov b{display:block;font-size:31px}.mov small{font-size:24px;color:var(--gris);font-weight:600}
+.mov .q{margin-left:auto;font-family:M;font-weight:600;font-size:32px}
+.mov .q.m{color:var(--terra2)}.mov .q.p{color:var(--verde)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-pedido"><h1>Excel dice <em>120</em></h1></div>
+  <div class="tit" id="t-fisico"><h1>En el rack <em>hay 113</em></h1></div>
+  <div class="tit" id="t-nadie"><h1>¿Y las <em>otras 7?</em></h1></div>
+  <div class="tit" id="t-paga"><h1>Y las pagas <em>tú</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $10,000 <em>al mes</em></h1><p>Ejemplo: 40 piezas × $250</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si cuadrara <em>solo?</em></h1></div>
+  <div class="tit" id="t-escanea"><h1>Se mueve → <em>se escanea</em></h1></div>
+  <div class="tit" id="t-cuadra"><h1>113 = <em>113</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Cada pieza, <em>explicada</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Tu inventario <em>no cuadra?</em></h1></div>
+
+  <!-- 1 · Pedido y Excel -->
+  <div class="card" id="pedido">
+    <div class="ccab"><span>Pedido nuevo</span><span>10:20 AM</span></div>
+    <div class="ped"><div class="av">M</div><div><b>Moda Luna</b><span>Playera básica · talla M</span></div><span class="cant">120</span></div>
+  </div>
+  <div class="xls" id="xls">
+    <div class="tab">inventario_oct_FINAL(2).xlsx</div>
+    <div class="hoja">
+      <div class="h"></div><div class="h">A</div><div class="h">B</div><div class="h">C</div>
+      <div class="h">14</div><div>Moda Luna</div><div>Playera M</div><div class="sel">120</div>
+      <div class="h">15</div><div>Moda Luna</div><div>Playera L</div><div style="text-align:right">86</div>
+    </div>
+  </div>
+
+  <!-- 2 · Conteo en el rack -->
+  <div class="card" id="rackc">
+    <div class="ccab"><span>Rack B-03 · conteo</span><span>Playera M</span></div>
+    <div class="rack" id="rack"></div>
+    <div class="viga"></div>
+    <div class="conteo"><span>Contadas</span><b id="cnt">0</b></div>
+  </div>
+
+  <!-- 3 · La diferencia -->
+  <div class="card" id="difc">
+    <div class="ccab"><span>Playera M · Moda Luna</span><span class="ej">Ejemplo</span></div>
+    <div class="dif"><div id="d1"><span>Excel</span><b>120</b></div><div id="d2"><span>Rack</span><b>113</b></div><div id="d3"><span>Diferencia</span><b style="color:var(--terra2)">−7</b></div></div>
+    <div class="porq">
+      <p id="q1"><i>?</i>¿Se capturó después?</p>
+      <p id="q2"><i>?</i>¿Salió en otro pedido?</p>
+      <p id="q3"><i>?</i>¿Nadie la registró?</p>
+    </div>
+  </div>
+
+  <!-- 4 · Reclamación -->
+  <div class="card" id="recc">
+    <div class="ccab"><span>Reclamación · Moda Luna</span><span class="ej">Ejemplo</span></div>
+    <div class="rec">
+      <div class="k">Faltante de inventario</div>
+      <p>«Les dejamos 120 playeras. ¿Dónde están las otras 7?»</p>
+      <div class="resp" id="resp">Lo repone tu bodega<b>7 × $250 = $1,750</b></div>
+    </div>
+  </div>
+
+  <!-- 5 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>40</b><span>piezas que faltan</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$250</b><span>que repones por pieza</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · Escaneo -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Movimiento</b><span>Ana · andén 1</span></div>
+    <div class="visor"><div class="codigo"></div><div class="esq"></div><div class="laser" id="laser"></div></div>
+    <div class="sku">Playera M · Moda Luna<span>B-03-14</span></div>
+    <div class="stock"><span>En sistema</span><b id="stk">117</b></div>
+    <div class="btnesc" id="btnesc">Escanear salida</div>
+    <div class="toast" id="toast">✓ Pedido #8391 · −4 pzas · 13:05 · Ana</div>
+  </div></div>
+
+  <!-- 8 · Cuadra -->
+  <div class="card" id="cuadra">
+    <div class="ccab"><span>Playera M · Moda Luna</span><span class="ej">Ejemplo</span></div>
+    <div class="igual"><div><span>Sistema</span><b>113</b></div><i>=</i><div><span>Rack</span><b>113</b></div></div>
+    <div class="okc" id="okc"><span>✓ Cuadra</span></div>
+    <div class="ultimo" id="ultimo">Último escaneo: <b>13:05</b> · Ana · pedido #8391</div>
+  </div>
+
+  <!-- 9 · Historial -->
+  <div class="card" id="hist">
+    <div class="ccab"><span>Historial · Playera M</span><span>Hoy</span></div>
+    <div class="mov" id="h1"><span class="hr">08:42</span><div><b>Recibido</b><small>Juan · rack B-03-14</small></div><span class="q p">120</span></div>
+    <div class="mov" id="h2"><span class="hr">11:10</span><div><b>Caja dañada</b><small>Luis · con foto</small></div><span class="q m">−3</span></div>
+    <div class="mov" id="h3"><span class="hr">13:05</span><div><b>Pedido #8391</b><small>Ana · escaneado</small></div><span class="q m">−4</span></div>
+    <div class="total"><span>Quedan</span><b>113</b></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Se mueve</span><i>→</i><span>Se escanea</span><i>→</i><span class="v">Cuadra</span></div>
+    <p>Te cuento cómo lo haría para tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () { var h = ''; for (var i = 0; i < 24; i++) h += '<i></i>'; $('rack').innerHTML = h; };
+window.escena = function (t) {
+  // 1 · Pedido + Excel
+  bloque($('pedido'), 'pedido', 'pedido', t);
+  var x = t >= S.pedido && t < E.pedido + 0.1 ? Math.min(clamp((t - S.pedido - 1.0) / 0.4), 1 - clamp((t - (E.pedido - 0.3)) / 0.3)) : 0;
+  $('xls').style.opacity = x; $('xls').style.transform = 'translateY(' + ((1 - easeOut(x)) * 60) + 'px) rotate(-1.5deg)';
+
+  // 2 · Conteo
+  bloque($('rackc'), 'fisico', 'fisico', t);
+  var cq = easeOut(clamp((t - S.fisico - 0.5) / 2.2));
+  $('cnt').textContent = Math.round(113 * cq);
+  document.querySelectorAll('#rack i').forEach(function (b, i) { b.classList.toggle('c', i < Math.round(23 * cq)); });
+
+  // 3 · Diferencia
+  bloque($('difc'), 'nadie', 'nadie', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { pop($(id), t, S.nadie + 0.4 + i * 0.4); });
+  ['q1', 'q2', 'q3'].forEach(function (id, i) { aparece(id, t, S.nadie + 2.0 + i * 0.45, 40); });
+
+  // 4 · Reclamación
+  bloque($('recc'), 'paga', 'paga', t);
+  pop($('resp'), t, S.paga + 1.8);
+
+  // 5 · Cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  aparece('e1', t, S.cuenta + 0.8, 50); aparece('e2', t, S.cuenta + 2.0, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuenta + 3.4, 1.4, 10000) / 10) * 10);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · Escaneo
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.escanea) / 0.6)), pout = easeOut(clamp((t - (E.escanea - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.escanea && t < E.escanea + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  $('laser').style.top = (50 + 32 * Math.sin(t * 5)) + '%';
+  var tapT = S.escanea + 1.8, hecho = t >= tapT, tapped = false;
+  if (t > tapT - 0.5 && t < tapT + 0.4) tapped = toque(t, tapT, $('btnesc'));
+  $('btnesc').style.opacity = hecho ? 0 : 1;
+  var tq = clamp((t - tapT - 0.15) / 0.3);
+  $('toast').style.opacity = hecho ? tq : 0;
+  $('stk').textContent = Math.round(117 - (hecho ? 4 * easeOut(clamp((t - tapT - 0.2) / 0.5)) : 0));
+
+  // 8 · Cuadra
+  bloque($('cuadra'), 'cuadra', 'cuadra', t);
+  pop($('okc'), t, S.cuadra + 0.9); aparece('ultimo', t, S.cuadra + 2.6);
+
+  // 9 · Historial
+  bloque($('hist'), 'gana', 'gana', t);
+  ['h1', 'h2', 'h3'].forEach(function (id, i) { aparece(id, t, S.gana + 0.4 + i * 0.45, 50); });
+  return tapped;
+};
+</script>
+</body></html>

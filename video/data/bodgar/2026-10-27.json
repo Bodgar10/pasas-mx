@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-10-27",
+  "dia": "martes",
+  "linea": "Bodegas · pérdida",
+  "plantilla": "bodegas-inventario.html",
+  "nombre": "bodegas-inventario",
+  "url": "bodgar.dev/plataformas/bodegas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Bodegas y 3PL",
+    "titulo": "Excel dice 120. *En el rack hay 113.*",
+    "dato": { "num": "≈ $10,000", "texto": "al mes en piezas que nadie sabe explicar", "tipo": "perd" }
+  },
+  "story": {
+    "titulo": "¿Dónde quedaron *las otras 7?*",
+    "texto": "Cuando el inventario no cuadra, la diferencia la pagas tú. Así lo cerraría."
+  },
+  "post": "Tu cliente te pide 120 piezas. Tu Excel dice que hay 120. Tu equipo va al rack y cuenta 113.\n\n¿Dónde quedaron las otras 7? Se capturó después, o no se capturó. Y cuando falta mercancía de un cliente, la que responde es la bodega.\n\nSi cada entrada, salida o cambio de rack se escanea en el momento, el inventario cambia cuando la mercancía cambia. Y si algo falta, sabes cuándo se escaneó por última vez y quién lo tuvo.\n\nLas cifras del video son un ejemplo, no un resultado. Si tu inventario no cuadra, te cuento cómo lo haría para tu bodega: bodgar.dev/plataformas/bodegas (link en la bio). Revisión sin costo.\n\n#bodegas #3PL #logistica #inventario #pymesmexico",
+  "escenas": [
+    { "id": "pedido", "titulo": "Excel dice 120", "voz": "Moda Luna te pide ciento veinte piezas. Tu Excel dice que hay ciento veinte." },
+    { "id": "fisico", "titulo": "En el rack hay 113", "voz": "Tu equipo va al rack, cuenta... y hay ciento trece." },
+    { "id": "nadie", "titulo": "¿Y las otras 7?", "voz": "¿Dónde quedaron las otras siete? Nadie sabe. Se capturó después, o no se capturó." },
+    { "id": "paga", "titulo": "Y las pagas tú", "voz": "Y cuando falta mercancía de tu cliente, la que responde es tu bodega." },
+    { "id": "cuenta", "titulo": "≈ $10,000 al mes", "voz": "Si cada mes faltan cuarenta piezas de doscientos cincuenta pesos, son diez mil pesos al mes." },
+    { "id": "giro", "titulo": "¿Y si cuadrara solo?", "voz": "¿Y si tu inventario cuadrara solo?" },
+    { "id": "escanea", "titulo": "Se mueve → se escanea", "voz": "Cada entrada, salida o cambio de rack se escanea en el momento. Nadie captura después." },
+    { "id": "cuadra", "titulo": "113 = 113", "voz": "El sistema y el rack dicen lo mismo. Y si algo falta, ves cuándo se escaneó por última vez, y quién." },
+    { "id": "gana", "titulo": "Cada pieza, explicada", "voz": "Cada diferencia tiene explicación antes de que la pagues tú." },
+    { "id": "cierre", "titulo": "¿Tu inventario no cuadra?", "voz": "Si tu inventario no cuadra, te cuento cómo lo haría para tu bodega. Entra a bodgar punto dev." }
+  ]
+}

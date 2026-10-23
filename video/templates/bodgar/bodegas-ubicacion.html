@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · eficiencia: el producto está en la bodega pero nadie sabe dónde. Cifras de ejemplo. */
+.reloj{display:flex;align-items:center;gap:30px;padding:34px 36px;border-bottom:1px solid var(--linea)}
+.reloj b{font-family:B;font-weight:800;font-size:130px;line-height:1}
+.reloj span{font-size:30px;font-weight:600;color:var(--gris);line-height:1.3}
+.reloj span strong{color:var(--terra2)}
+.pf{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pf:last-child{border-bottom:0}
+.pf small{display:block;font-size:24px;color:var(--gris)}
+.pf .st{margin-left:auto;font-family:M;font-weight:600;font-size:22px;padding:10px 14px;border-radius:12px;white-space:nowrap;background:var(--verde2);color:var(--verde)}
+.pf .st.pe{background:#FBEADF;color:var(--terra2)}
+/* Búsqueda */
+.busca{margin:30px 36px 10px;padding:22px 26px;border-radius:20px;border:3px solid var(--linea);font-size:32px;font-weight:600;display:flex;gap:16px;align-items:center}
+.busca i{font-style:normal;color:var(--gris)}
+.resu{display:grid;grid-template-columns:1fr 1fr;margin:20px 36px 34px;border-radius:20px;overflow:hidden;border:1px solid var(--linea)}
+.resu div{padding:26px;text-align:center;opacity:0}
+.resu div+div{border-left:1px solid var(--linea);background:#FBEADF}
+.resu span{display:block;font-family:M;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.resu b{display:block;margin-top:8px;font-family:B;font-weight:800;font-size:92px;line-height:1}
+/* Mapa */
+.mapa{position:relative;height:560px;margin:24px 30px 10px;border-radius:22px;background:#EFEBE3}
+.pas{position:absolute;top:40px;bottom:40px;width:90px;border-radius:12px;background:repeating-linear-gradient(#D8B98A 0 52px,#C9A574 52px 56px)}
+.pas b{position:absolute;top:-34px;left:0;right:0;text-align:center;font-family:M;font-weight:600;font-size:22px;color:var(--gris)}
+.mapa svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:var(--terra);border:6px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0}
+.pin.v{background:var(--verde)}
+.yo{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--tinta);border:5px solid #fff}
+.crono{display:flex;justify-content:space-between;align-items:baseline;padding:16px 36px 28px}
+.crono span{font-size:30px;font-weight:600;color:var(--gris)}
+.crono b{font-family:M;font-weight:600;font-size:60px}
+.etq{position:absolute;font-family:M;font-weight:600;font-size:22px;background:#fff;color:var(--terra2);padding:6px 12px;border-radius:10px;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15);opacity:0}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:150px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Teléfono: escaneo */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:32px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.visor{margin:26px;height:240px;border-radius:24px;background:#1b2a26;position:relative;overflow:hidden;display:grid;place-items:center}
+.codigo{width:300px;height:120px;background:repeating-linear-gradient(90deg,#fff 0 6px,transparent 6px 10px,#fff 10px 12px,transparent 12px 20px,#fff 20px 28px,transparent 28px 32px);opacity:.9}
+.laser{position:absolute;left:30px;right:30px;height:5px;background:#ff5a4a;box-shadow:0 0 18px #ff5a4a;top:50%}
+.esq{position:absolute;inset:30px;border:4px solid rgba(255,255,255,.5);border-radius:18px}
+.lin{margin:0 26px 14px;padding:18px 22px;border-radius:18px;background:var(--suave);font-size:26px;font-weight:700;display:flex;justify-content:space-between}
+.lin span{color:var(--gris);font-weight:600}
+.btnesc{position:absolute;left:24px;right:24px;bottom:40px;background:var(--terra);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:30px;font-weight:700}
+.toast{position:absolute;left:24px;right:24px;bottom:40px;background:var(--verde);color:#fff;border-radius:20px;padding:22px 24px;font-size:25px;font-weight:700;opacity:0}
+/* Gana */
+.tarea{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);font-size:33px;font-weight:700;opacity:0}
+.tarea:last-child{border-bottom:0}
+.tarea.off{color:#B9B2A6;text-decoration:line-through}
+.tarea.off .no{background:#C9C2B5}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-hora"><h1>4:30 <em>PM</em></h1></div>
+  <div class="tit" id="t-donde"><h1>¿Pero <em>dónde?</em></h1></div>
+  <div class="tit" id="t-rack"><h1>Rack por <em>rack</em></h1></div>
+  <div class="tit" id="t-horas"><h1>≈ 44 horas <em>al mes</em></h1><p>Ejemplo: 20 búsquedas × 6 min × 22 días</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>supiera?</em></h1></div>
+  <div class="tit" id="t-escanea"><h1>Cada caja, <em>su lugar</em></h1></div>
+  <div class="tit" id="t-directo"><h1>Directo a <em>B-03-14</em></h1></div>
+  <div class="tit" id="t-sale"><h1>Sale <em>a tiempo</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Menos tiempo <em>buscando</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Se pierde en <em>tu bodega?</em></h1></div>
+
+  <!-- 1 · La hora -->
+  <div class="card" id="hora">
+    <div class="ccab"><span>Hoy · despachos</span><span>Bodega</span></div>
+    <div class="reloj"><b>4:30</b><span>La paquetería<br>pasa a las <strong>5:00</strong></span></div>
+    <div class="pf" id="p1">Pedido #8400<small>Moda Luna · 3 piezas</small><span class="st">Empacado</span></div>
+    <div class="pf" id="p2">Pedido #8401<small>Nube Store · 1 pieza</small><span class="st">Empacado</span></div>
+    <div class="pf" id="p3">Pedido #8402<small>Café Tierra · molino manual ×2</small><span class="st pe">Falta</span></div>
+  </div>
+
+  <!-- 2 · ¿Dónde? -->
+  <div class="card" id="donde">
+    <div class="ccab"><span>Inventario · Café Tierra</span><span>Excel</span></div>
+    <div class="busca"><i>⌕</i>Molino manual</div>
+    <div class="resu"><div id="r1"><span>En bodega</span><b>2</b></div><div id="r2"><span>Ubicación</span><b style="color:var(--terra2)">?</b></div></div>
+  </div>
+
+  <!-- 3 y 7 · El mapa -->
+  <div class="card" id="mapac">
+    <div class="ccab"><span>Bodega · vista de arriba</span><span id="mapq">Juan busca</span></div>
+    <div class="mapa" id="mapa">
+      <div class="pas" style="left:60px"><b>A</b></div>
+      <div class="pas" style="left:250px"><b>B</b></div>
+      <div class="pas" style="left:440px"><b>C</b></div>
+      <div class="pas" style="left:630px"><b>D</b></div>
+      <svg viewBox="0 0 840 560">
+        <polyline id="ruta1" points="30,520 200,520 200,60 390,60 390,500 580,500 580,90 770,90 770,470 580,470 580,330 390,330" fill="none" stroke="#C96F4A" stroke-width="8" stroke-dasharray="18 14" stroke-linecap="round"/>
+        <polyline id="ruta2" points="30,520 200,520 200,250" fill="none" stroke="#3E8E6A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="pin" id="pin1" style="left:390px;top:330px"></div>
+      <div class="pin v" id="pin2" style="left:200px;top:250px"></div>
+      <div class="etq" id="etq1" style="left:410px;top:270px">C-07 · pasillo equivocado</div>
+      <div class="etq" id="etq2" style="left:220px;top:190px;color:var(--verde)">B-03-14</div>
+      <div class="yo" id="yo"></div>
+    </div>
+    <div class="crono"><span id="crlab">Buscando</span><b id="crono">0:00</b></div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>20</b><span>búsquedas al día</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>6 min</b><span>cada una</span></div>
+    <div class="term" id="e3"><span class="op">×</span><b>22</b><span>días al mes</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">0 h</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Escaneo al acomodar -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Acomodo</b><span>Luis · 11:20</span></div>
+    <div class="visor"><div class="codigo"></div><div class="esq"></div><div class="laser" id="laser"></div></div>
+    <div class="lin">Producto<span>Molino manual</span></div>
+    <div class="lin">Piezas<span>2</span></div>
+    <div class="lin">Rack<span>B-03-14</span></div>
+    <div class="btnesc" id="btnesc">Escanear ubicación</div>
+    <div class="toast" id="toast">✓ Molino manual · 2 pzas · B-03-14</div>
+  </div></div>
+
+  <!-- 8 · Sale a tiempo -->
+  <div class="card" id="sale">
+    <div class="ccab"><span>Recolección · 5:00 PM</span><span>Paquetería</span></div>
+    <div class="pf" id="v1">Pedido #8400<small>Moda Luna</small><span class="st">Listo</span></div>
+    <div class="pf" id="v2">Pedido #8401<small>Nube Store</small><span class="st">Listo</span></div>
+    <div class="pf" id="v3">Pedido #8402<small>Café Tierra · empacado 4:41 PM</small><span class="st">Listo</span></div>
+  </div>
+
+  <!-- 9 · El tiempo vuelve a la operación -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>El tiempo de tu equipo</span><span>Se usa en</span></div>
+    <div class="tarea off" id="g1"><span class="no">✕</span>Buscar rack por rack</div>
+    <div class="tarea" id="g2"><span class="ok">✓</span>Surtir pedidos</div>
+    <div class="tarea" id="g3"><span class="ok">✓</span>Empacar</div>
+    <div class="tarea" id="g4"><span class="ok">✓</span>Despachar a tiempo</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Entra</span><i>→</i><span>Se escanea</span><i>→</i><span class="v">Se encuentra</span></div>
+    <p>Te cuento cómo lo haría para tu operación.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  ['ruta1', 'ruta2'].forEach(function (id) { $(id).dataset.l = $(id).getTotalLength(); });
+};
+function enRuta(id, p) {
+  var r = $(id), pt = r.getPointAtLength(+r.dataset.l * p), m = $('mapa');
+  var k = m.clientWidth / 840;
+  $('yo').style.left = (pt.x * k) + 'px'; $('yo').style.top = (pt.y * k) + 'px';
+}
+window.escena = function (t) {
+  // 1 · La hora
+  bloque($('hora'), 'hora', 'hora', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.hora + 0.5 + i * 0.4, 50); });
+
+  // 2 · ¿Dónde?
+  bloque($('donde'), 'donde', 'donde', t);
+  pop($('r1'), t, S.donde + 0.6); pop($('r2'), t, S.donde + 1.3);
+
+  // 3 y 7 · Mapa: búsqueda larga o ruta directa
+  var enR = t >= S.rack && t < E.rack + 0.1, enD = t >= S.directo && t < E.directo + 0.1;
+  if (enR) bloque($('mapac'), 'rack', 'rack', t); else if (enD) bloque($('mapac'), 'directo', 'directo', t); else $('mapac').style.opacity = 0;
+  var r1 = $('ruta1'), r2 = $('ruta2');
+  if (enD) {
+    var p2 = easeOut(clamp((t - S.directo - 0.5) / 1.6));
+    r1.style.opacity = 0; r2.style.opacity = 1;
+    r2.style.strokeDasharray = r2.dataset.l; r2.style.strokeDashoffset = r2.dataset.l * (1 - p2);
+    enRuta('ruta2', p2);
+    $('pin1').style.opacity = 0; $('etq1').style.opacity = 0;
+    pop($('pin2'), t, S.directo + 0.3); $('etq2').style.opacity = clamp((t - S.directo - 0.4) / 0.3);
+    $('mapq').textContent = 'Ruta directa'; $('crlab').textContent = 'Ubicación exacta';
+    $('crono').textContent = '0:' + String(Math.round(90 * p2) % 60).padStart(2, '0'); if (p2 >= 0.67) $('crono').textContent = '1:' + String(Math.round(90 * p2) - 60).padStart(2, '0');
+    $('crono').style.color = 'var(--verde)';
+  } else {
+    var p1 = clamp((t - S.rack - 0.4) / 3.8);
+    r2.style.opacity = 0; r1.style.opacity = 1;
+    var L = +r1.dataset.l; r1.style.strokeDasharray = '18 14'; r1.style.clipPath = '';
+    r1.style.strokeDashoffset = 0; r1.setAttribute('stroke-dasharray', '18 14');
+    // revelar la ruta punteada con una máscara: se dibuja la parte recorrida
+    r1.style.strokeDasharray = (L * p1) + ' ' + L;
+    enRuta('ruta1', p1);
+    $('pin2').style.opacity = 0; $('etq2').style.opacity = 0;
+    pop($('pin1'), t, S.rack + 4.3); $('etq1').style.opacity = clamp((t - S.rack - 4.4) / 0.3);
+    $('mapq').textContent = 'Juan busca'; $('crlab').textContent = 'Buscando';
+    var min = Math.floor(20 * p1); $('crono').textContent = min + ':' + String(Math.floor((20 * p1 - min) * 60)).padStart(2, '0');
+    $('crono').style.color = 'var(--terra2)';
+  }
+
+  // 4 · Cuenta
+  bloque($('ecu'), 'horas', 'horas', t);
+  ['e1', 'e2', 'e3'].forEach(function (id, i) { aparece(id, t, S.horas + 0.5 + i * 0.9, 50); });
+  $('eres').textContent = Math.round(cuenta(t, S.horas + 3.4, 1.4, 44)) + ' h';
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Escaneo
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.escanea) / 0.6)), pout = easeOut(clamp((t - (E.escanea - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.escanea && t < E.escanea + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  $('laser').style.top = (50 + 32 * Math.sin(t * 5)) + '%';
+  var tapT = S.escanea + 2.0, hecho = t >= tapT, tapped = false;
+  if (t > tapT - 0.5 && t < tapT + 0.4) tapped = toque(t, tapT, $('btnesc'));
+  $('btnesc').style.opacity = hecho ? 0 : 1;
+  $('toast').style.opacity = hecho ? clamp((t - tapT - 0.15) / 0.3) : 0;
+
+  // 8 · Sale a tiempo
+  bloque($('sale'), 'sale', 'sale', t);
+  ['v1', 'v2', 'v3'].forEach(function (id, i) { aparece(id, t, S.sale + 0.4 + i * 0.35, 50); });
+
+  // 9 · Tiempo de vuelta
+  bloque($('gana'), 'gana', 'gana', t);
+  ['g1', 'g2', 'g3', 'g4'].forEach(function (id, i) { aparece(id, t, S.gana + 0.4 + i * 0.4, 50); });
+  return tapped;
+};
+</script>
+</body></html>
