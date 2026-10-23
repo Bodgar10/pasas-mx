@@ -137,7 +137,12 @@ export function OfertaMuestra({
   contar,
 }: {
   muestra: MuestraTema
-  lugar: 'quiz' | 'resumen'
+  /**
+   * Dónde aparece. 'minijuego' (s50): justo después del primer minijuego de la
+   * guía, porque casi nadie llega al quiz (20-22 oct: 15 abrieron el tema, 16
+   * minijuegos, 2 vieron la oferta del final).
+   */
+  lugar: 'quiz' | 'resumen' | 'minijuego'
   topicName: string
   contar: (evento: string, props?: Record<string, unknown>) => void
 }) {

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { memo, useCallback, useLayoutEffect, useMemo, useState, useEffect, useRef } from 'react'
+import React, { Fragment, memo, useCallback, useLayoutEffect, useMemo, useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { trackTopicCompleted, trackQuizAnswered, trackTopicStarted } from '@/components/posthog-events'
 import HordeEntryCard from '@/components/guia/HordeEntryCard'
@@ -899,6 +899,12 @@ export default function TopicClient({
     [sections]
   )
 
+  // s50: índice del primer minijuego en el orden de la guía (-1 si no hay).
+  const primerMinijuego = useMemo(
+    () => orderedSections.findIndex((sec) => INTERACTIVE_TYPES.has(sec.type)),
+    [orderedSections]
+  )
+
   const resumenSections = useMemo(() => {
     const summaryItems = orderedSections.filter((s) => s.type === 'key_fact' || s.type === 'tip')
     return summaryItems.length > 0 ? summaryItems : orderedSections
@@ -1220,19 +1226,32 @@ export default function TopicClient({
             }} />
 
             {orderedSections.map((section, index) => (
-              <SeccionGuia
-                key={section.id}
-                section={section}
-                index={index}
-                leida={readSections.has(section.id)}
-                esMuestra={!!muestra}
-                topicName={topic.name}
-                registrarSeccion={registrarSeccion}
-                onInteractiveComplete={handleInteractiveComplete}
-                estadoInteractivo={estadoInteractivo}
-                primeraInteraccion={primeraInteraccion}
-                contarMuestra={contarMuestra}
-              />
+              <Fragment key={section.id}>
+                <SeccionGuia
+                  section={section}
+                  index={index}
+                  leida={readSections.has(section.id)}
+                  esMuestra={!!muestra}
+                  topicName={topic.name}
+                  registrarSeccion={registrarSeccion}
+                  onInteractiveComplete={handleInteractiveComplete}
+                  estadoInteractivo={estadoInteractivo}
+                  primeraInteraccion={primeraInteraccion}
+                  contarMuestra={contarMuestra}
+                />
+                {/*
+                  s50 — En la muestra, la oferta de $1 también va justo después
+                  del PRIMER minijuego. Del 20 al 22 oct, 15 abrieron el tema,
+                  hubo 16 minijuegos y solo 2 llegaron a ver la oferta del
+                  final del quiz. Este es el momento en que más gente está
+                  enganchada. Las del quiz y el resumen se quedan igual.
+                */}
+                {muestra && index === primerMinijuego && (
+                  <div style={{ margin: '4px 0 24px' }}>
+                    <OfertaMuestra muestra={muestra} lugar="minijuego" topicName={topic.name} contar={contarMuestra} />
+                  </div>
+                )}
+              </Fragment>
             ))}
           </div>
         )}
