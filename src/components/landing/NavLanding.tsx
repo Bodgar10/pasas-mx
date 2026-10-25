@@ -51,6 +51,9 @@ export default function NavLanding({
           un utm interno pisaría el canal real (orgánico) de quien lo toque. El
           clic se mide con su propio evento, y ?desde= marca el origen en los
           eventos del Arcade, la Horda y el onboarding (lib/arcade.ts). */}
+      {/* s51 — A/B del botón principal (cta-ab.ts): el banner acompaña al
+          brazo. A lleva al reto; B, a la clase gratis. */}
+      <div className="ab-reto">
       <Link
         href="/arcade?desde=landing_banner"
         onClick={() => track('landing_banner_arcade_clic', { variant })}
@@ -67,10 +70,34 @@ export default function NavLanding({
           transition: 'transform 0.3s ease',
         }}
       >
-        <span style={{ fontWeight: 900 }}>¿Cuál sobra?</span>
+        {/* s51: decía "¿Cuál sobra?"; el reto diario es Verdadero o mentira desde el 13 oct. */}
+        <span style={{ fontWeight: 900 }}>¿Verdadero o mentira?</span>
         <span className="banner-arcade-medio" style={{ opacity: 0.9 }}>· Un reto nuevo cada día ·</span>
         <span style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>Juega gratis →</span>
       </Link>
+      </div>
+      <div className="ab-clase">
+      <Link
+        href="/clase-gratis"
+        onClick={() => track('landing_cta_clicked', { location: 'banner_clase', variant })}
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 101,
+          height: BANNER_ALTO,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          padding: '0 16px',
+          background: `linear-gradient(90deg, ${COLORS.primary}, ${COLORS.pink})`,
+          color: '#fff', textDecoration: 'none',
+          fontFamily: FONTS.nunito, fontSize: 14, fontWeight: 800,
+          whiteSpace: 'nowrap', overflow: 'hidden',
+          transform: scrolled ? `translateY(-${BANNER_ALTO}px)` : 'translateY(0)',
+          transition: 'transform 0.3s ease',
+        }}
+      >
+        <span style={{ fontWeight: 900 }}>🎁 Tu primera clase gratis</span>
+        <span className="banner-arcade-medio" style={{ opacity: 0.9 }}>· Con su hobby ·</span>
+        <span style={{ textDecoration: 'underline', textUnderlineOffset: 3 }}>Tómala →</span>
+      </Link>
+      </div>
       <style>{`@media (max-width: 360px){ .banner-arcade-medio{ display:none } }`}</style>
 
       {/* ── Sticky nav ── */}

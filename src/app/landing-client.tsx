@@ -18,6 +18,7 @@ import Logo from '@/components/global/Logo'
 import { DEMO_PISTAS_ID, DEMO_HORDA_ID } from '@/components/landing/demo-ids'
 import EtiquetaCTA from '@/components/landing/EtiquetaCTA'
 import NavLanding, { BANNER_ALTO } from '@/components/landing/NavLanding'
+import { CSS_BASE_CTA, brazoCta, scriptCtaAb } from '@/components/landing/cta-ab'
 import CapturasTabs from '@/components/landing/CapturasTabs'
 import {
   CSS_BASE_HERO,
@@ -692,6 +693,9 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
     // Idempotente: en una carga normal deja la misma regla que puso el
     // script. Corrige el texto solo si el script no corrió o discrepó.
     aplicarCssHero(v)
+    // s51: mismo caso para el A/B del botón (reto / clase). Lo deja aplicado
+    // antes de hero_variant_seen para que ese evento ya lleve ab_landing.
+    brazoCta()
     setVariant(v)
     // `utm_source` ya no se manda a mano: track() lo agrega solo desde el
     // sessionStorage de UTMPersistence, con first-touch. `audience` SI se
@@ -822,6 +826,10 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
           Ver components/landing/hero-variante.ts. */}
       <script dangerouslySetInnerHTML={{ __html: scriptVarianteHero() }} />
       <style>{CSS_BASE_HERO}</style>
+      {/* s51 — A/B del botón principal (reto contra clase gratis), con el
+          mismo truco: ver components/landing/cta-ab.ts. */}
+      <script dangerouslySetInnerHTML={{ __html: scriptCtaAb() }} />
+      <style>{CSS_BASE_CTA}</style>
 
       {/* Banner del Arcade + nav fija, con su propio estado de scroll. */}
       <NavLanding
@@ -876,6 +884,9 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
             landing"; cuál botón fue se distingue con landing_cta_clicked
             { location: 'hero_reto' } contra landing_banner_arcade_clic.
           */}
+          {/* s51 — A: el reto (lo de siempre). B: la clase gratis. Solo uno
+              se ve (cta-ab.ts); los dos van en el HTML para no saltar. */}
+          <div className="ab-reto">
           <Link
             href="/arcade?desde=landing_banner"
             // Este prefetch={true} SÍ se queda: /arcade es ISR (HTML estático
@@ -889,6 +900,20 @@ export default function LandingClient({ stats }: { stats: LandingStats }) {
           <p style={{ marginTop: 10, fontSize: 13, color: COLORS.muted, opacity: 0.8 }}>
             5 rondas · 2 minutos · Sin registrarte
           </p>
+          </div>
+          <div className="ab-clase">
+          <Link
+            href="/clase-gratis"
+            prefetch={true}
+            onClick={() => track('landing_cta_clicked', { location: 'hero_clase', variant })}
+            style={{ background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.pink})`, border: 'none', color: '#fff', borderRadius: RADIUS.xl, padding: '16px 20px', fontFamily: FONTS.nunito, fontWeight: 900, fontSize: 17, cursor: 'pointer', width: '100%', maxWidth: 360, minHeight: 52, boxShadow: `0 0 32px ${COLORS.primary}55`, transition: 'transform 0.15s ease, box-shadow 0.15s ease', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            Toma tu primera clase gratis →
+          </Link>
+          <p style={{ marginTop: 10, fontSize: 13, color: COLORS.muted, opacity: 0.8 }}>
+            Elige su materia y su hobby · Sin registrarte
+          </p>
+          </div>
 
           {/* Secundario: la suscripción, con su texto y promo de siempre.
               REGLA D: con promo, su sublabel reemplaza la micro de la
