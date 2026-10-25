@@ -101,9 +101,17 @@ export default function ClaseGratisClient({ catalogo }: { catalogo: MateriaClase
     [catalogo, nivel, grado]
   )
 
-  // Al abrirse la siguiente pregunta, se acerca a la vista (en celular queda abajo).
+  // Al abrirse la siguiente pregunta, se acerca a la vista SOLO si quedó fuera
+  // de la pantalla, y lo mínimo ('nearest'). Antes siempre jalaba la página
+  // hasta arriba de la sección: si la persona estaba haciendo scroll al mismo
+  // tiempo, las dos cosas peleaban y se sentía trabado.
   const bajarA = (ref: React.RefObject<HTMLDivElement | null>) =>
-    window.setTimeout(() => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60)
+    window.setTimeout(() => {
+      const el = ref.current
+      if (!el) return
+      const r = el.getBoundingClientRect()
+      if (r.top > window.innerHeight - 120) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }, 60)
 
   function elegirNivel(n: Nivel) {
     setNivel(n)
