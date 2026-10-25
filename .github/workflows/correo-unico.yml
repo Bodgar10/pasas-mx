@@ -18,26 +18,23 @@ jobs:
           ARCADE_EMAIL_TO: ${{ secrets.ARCADE_EMAIL_TO }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          USER_ID: f9bee422-c91b-4e65-b4f2-f71fcdb52970
+          USER_ID: a62dea3e-6ea8-456d-8d79-40bddc4f19cc
         run: |
           cat > enviar.mjs <<'JS'
           const { RESEND_API_KEY, ARCADE_EMAIL_TO, NEXT_PUBLIC_SUPABASE_URL: url, SUPABASE_SERVICE_ROLE_KEY: sk, USER_ID } = process.env
-          const r = await fetch(`${url}/rest/v1/users?id=eq.${USER_ID}&select=email,full_name`, { headers: { apikey: sk, Authorization: `Bearer ${sk}` } })
+          const r = await fetch(`${url}/rest/v1/users?id=eq.${USER_ID}&select=email,full_name,parent_name,parent_email`, { headers: { apikey: sk, Authorization: `Bearer ${sk}` } })
           const [u] = await r.json()
           if (!u?.email) throw new Error('No se encontró la cuenta')
-          const alumno = (u.full_name || '').trim().split(/\s+/)[0] || 'tu hijo'
+          const primero = (t) => (t || '').trim().split(/\s+/)[0] || ''
+          const alumno = primero(u.full_name) || 'tu hijo'
+          const tutor = u.parent_email === u.email ? primero(u.parent_name) : ''
           const p = (t) => `<p style="margin:0 0 14px">${t}</p>`
           const html = `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.6;color:#1f1f1f;max-width:560px">
-          ${p('Hola:')}
-          ${p(`Soy Bodgar, el creador de Pasas.mx. Vi que hoy registraste la cuenta de ${alumno} y quiero pedirte una disculpa: confirmaste tu correo sin problema, pero un error de nuestro lado no te llevó a la pantalla para activar tu plan. Ya lo arreglamos.`)}
-          ${p('Para terminar solo tienes que:')}
-          <ol style="margin:0 0 14px;padding-left:20px">
-          <li>Entrar aquí con tu correo y la contraseña que elegiste: <a href="https://pasas.mx/login">pasas.mx/login</a></li>
-          <li>Confirmar la autorización como mamá, papá o tutor de ${alumno} (es un paso que pide la ley para cuentas de menores).</li>
-          <li>Activar el primer mes por $1 con la promoción que elegiste. Después son $249 al mes y puedes cancelar cuando quieras.</li>
-          </ol>
-          ${p('Si algo no funciona o tienes cualquier duda, responde a este correo y te ayudo personalmente.')}
-          ${p('Gracias por la paciencia,<br>Bodgar<br>Pasas.mx')}
+          ${p(tutor ? `Hola, ${tutor}:` : 'Hola:')}
+          ${p(`Soy Bodgar, uno de los creadores de Pasas. Vi que ayer abriste la cuenta de ${alumno} y quería escribirte yo mismo para darte las gracias por confiar en nosotros.`)}
+          ${p(`Pasas lo estamos construyendo mi esposa, que es psicóloga educativa, y yo, y apenas estamos empezando. Por eso tu opinión nos sirve muchísimo: si tienes alguna duda, algo que nos sugieras o, con toda honestidad, si a ${alumno} le está funcionando o no, respóndeme este correo. Lo leo yo y nos ayuda a saber qué mejorar para que de verdad les sirva a los estudiantes.`)}
+          ${p('Un recordatorio para que no haya sorpresas: tu prueba gratis dura hasta el 31 de octubre; ese día se cobra $1 del primer mes y después $249 al mes. Puedes cancelar cuando quieras desde tu cuenta.')}
+          ${p('Gracias de nuevo,<br>Bodgar<br>Pasas.mx')}
           </div>`
           const res = await fetch('https://api.resend.com/emails', {
             method: 'POST',
@@ -47,7 +44,7 @@ jobs:
               to: [u.email],
               bcc: ARCADE_EMAIL_TO.split(',').map((s) => s.trim()),
               reply_to: 'hola@pasas.mx',
-              subject: 'Tu cuenta de Pasas está lista (perdón por el tropiezo)',
+              subject: 'Gracias por confiar en Pasas',
               html,
             }),
           })
