@@ -29,6 +29,12 @@ export function tematicaPorClave(clave: string | null | undefined) {
  * siempre: ninguna de estas ramas toca a quien tiene cuenta.
  */
 export type MuestraTema = {
+  /**
+   * s51 — De dónde llegó: 'reto' (falló el tema en el Arcade) o 'clase' (la
+   * clase gratis de la landing B, /clase-gratis). Cambia el texto de entrada
+   * y viaja como `origen` en los eventos tema_muestra_*.
+   */
+  origen: OrigenMuestra
   /** Materia corta del reto (historia, biologia…), para la medición. */
   materia: string | null
   tematica: ClaveTematica
@@ -50,13 +56,18 @@ export type MuestraTema = {
   }
 }
 
-/** Link del resultado del reto al tema. Sin temática: primero se elige. */
+export type OrigenMuestra = 'reto' | 'clase'
+
+/**
+ * Link al tema sin cuenta. Sin temática: primero se elige.
+ * `from`: 'arcade' (resultado del reto, el de siempre) o 'clase' (s51).
+ */
 export function urlTemaMuestra(
   subjectSlug: string,
   topicSlug: string,
-  o: { tematica?: ClaveTematica | null; perfecto?: boolean } = {}
+  o: { tematica?: ClaveTematica | null; perfecto?: boolean; from?: 'arcade' | 'clase' } = {}
 ): string {
-  const q = new URLSearchParams({ from: 'arcade' })
+  const q = new URLSearchParams({ from: o.from ?? 'arcade' })
   if (o.perfecto) q.set('r', '5')
   if (o.tematica) q.set('tematica', o.tematica)
   return `/tema/${subjectSlug}/${topicSlug}?${q.toString()}`

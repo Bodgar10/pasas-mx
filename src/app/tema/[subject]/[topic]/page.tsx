@@ -28,7 +28,10 @@ import ElegirTematica from './elegir-tematica'
  *
  *  - Con cuenta → la guía de verdad (/guia/...?from=arcade), con su progreso.
  *  - Sin ?tematica= → primero se elige con qué se lo explicamos (un toque).
- *  - Solo temas del reto (arcade_rounds): no es una puerta al temario entero.
+ *  - Solo lo permitido (migración 065): la clase gratis fija de la materia o
+ *    un tema del reto de los últimos 8 días. No es una puerta al temario.
+ *  - s51: ?from=clase = llegó por la clase gratis de la landing B
+ *    (/clase-gratis). Mismo tema, otro texto de entrada y vuelve allá.
  *
  * Dinámica (lee la sesión y el ?tematica=). noindex: es un paso del embudo.
  */
@@ -45,7 +48,9 @@ export default async function TemaMuestraPage({ params, searchParams }: { params
   const sp = await searchParams
   const leer = (k: string) => (typeof sp[k] === 'string' ? (sp[k] as string) : null)
   const perfecto = leer('r') === '5'
-  const desdeArcade = leer('from') === 'arcade'
+  const deClase = leer('from') === 'clase'
+  const desdeArcade = !deClase && leer('from') === 'arcade'
+  const from = deClase ? 'clase' : 'arcade'
 
   // Quien ya tiene cuenta no necesita la muestra: va a su guía, con su avance.
   //
@@ -64,7 +69,7 @@ export default async function TemaMuestraPage({ params, searchParams }: { params
         subjectName={tema.subject.name}
         materia={tema.materia}
         perfecto={perfecto}
-        opciones={linksTematicas(tema.subject.slug, tema.topic.slug, perfecto)}
+        opciones={linksTematicas(tema.subject.slug, tema.topic.slug, perfecto, from)}
       />
     )
   }
@@ -92,11 +97,12 @@ export default async function TemaMuestraPage({ params, searchParams }: { params
   linkPapa.searchParams.set('utm_campaign', 'pidele-a-papa')
 
   const muestra: MuestraTema = {
+    origen: deClase ? 'clase' : 'reto',
     materia: tema.materia,
     tematica: tematica.clave,
     tematicaCorta: tematica.corto,
-    volverHref: '/arcade',
-    cambiarTematicaHref: urlTemaMuestra(tema.subject.slug, tema.topic.slug, { perfecto }),
+    volverHref: deClase ? '/clase-gratis' : '/arcade',
+    cambiarTematicaHref: urlTemaMuestra(tema.subject.slug, tema.topic.slug, { perfecto, from }),
     hordaHref:
       tema.hordeReady && esMateriaPublica(tema.subject.slug)
         ? `${urlHordaPublica(tema.subject.slug, tema.topic.slug)}?desde=arcade`
@@ -130,11 +136,11 @@ export default async function TemaMuestraPage({ params, searchParams }: { params
   )
 }
 
-function linksTematicas(subjectSlug: string, topicSlug: string, perfecto: boolean) {
+function linksTematicas(subjectSlug: string, topicSlug: string, perfecto: boolean, from: 'arcade' | 'clase') {
   return TEMATICAS.map((t) => ({
     clave: t.clave,
     nombre: t.corto,
     emoji: t.emoji,
-    href: urlTemaMuestra(subjectSlug, topicSlug, { tematica: t.clave, perfecto }),
+    href: urlTemaMuestra(subjectSlug, topicSlug, { tematica: t.clave, perfecto, from }),
   }))
 }

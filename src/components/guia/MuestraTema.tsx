@@ -25,6 +25,7 @@ type Paso = (typeof PASOS)[number]['paso']
 
 export function EntradaDesdeReto({
   perfecto = false,
+  deClase = false,
   tieneHorda,
   tematicaCorta,
   cambiarTematicaHref,
@@ -32,6 +33,8 @@ export function EntradaDesdeReto({
 }: {
   /** 5/5 en el reto: no hay error que reforzar, hay un nivel que subir. */
   perfecto?: boolean
+  /** s51 — Llegó por la clase gratis de la landing B, no por el reto. */
+  deClase?: boolean
   tieneHorda: boolean
   tematicaCorta: string | null
   cambiarTematicaHref: string | null
@@ -48,10 +51,14 @@ export function EntradaDesdeReto({
       }}
     >
       <div style={{ fontSize: 17, fontWeight: 900, color: '#f0e6ff' }}>
-        {perfecto ? 'Cinco de cinco en el reto 🔥' : 'Fallaste este tema en el reto 👀'}
+        {deClase ? 'Tu primera clase gratis 🎁' : perfecto ? 'Cinco de cinco en el reto 🔥' : 'Fallaste este tema en el reto 👀'}
       </div>
       <div style={{ fontSize: 15, fontWeight: 700, color: '#c4b5fd', marginTop: 2 }}>
-        {perfecto ? 'Ahora el tema completo, de fácil a difícil.' : 'Vamos a reforzarlo.'}
+        {deClase
+          ? 'Así se aprende en PASAS: con lo que te gusta.'
+          : perfecto
+            ? 'Ahora el tema completo, de fácil a difícil.'
+            : 'Vamos a reforzarlo.'}
       </div>
       {tematicaCorta && (
         <div style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', marginTop: 6 }}>

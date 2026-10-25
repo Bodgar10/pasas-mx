@@ -14,7 +14,9 @@
  *    misma persona no se pueden unir: esto da totales por paso, no recorridos.
  *  - NO se guarda IP ni user agent. La ruta solo deriva "celular/computadora"
  *    y "navegador de Instagram/TikTok/Facebook/otro", y descarta el resto.
- *  - NO se escribe nada en el navegador (ni cookies ni storage).
+ *  - NO se escribe nada en el navegador (ni cookies ni storage). Solo se LEE
+ *    el brazo de la prueba A/B de la landing (cta-ab.ts), que no identifica
+ *    a nadie: dice 'reto' o 'clase'.
  *  - Las propiedades pasan por una lista blanca de claves y de tipos.
  *
  * Para recorridos, grabaciones y personas sigue PostHog, con consentimiento.
@@ -26,6 +28,7 @@
 
 import { detectarCanal } from '@/lib/arcade/canal'
 import { esInterno } from '@/lib/analytics/interno'
+import { leerBrazoGuardado } from '@/components/landing/cta-ab'
 
 /**
  * Los únicos eventos que se cuentan. Es el embudo previo a la cuenta:
@@ -92,6 +95,10 @@ export const EVENTOS_CONTEO = [
   'tema_muestra_horda_clic',
   'tema_muestra_cta_vista',
   'tema_muestra_cta_clic',
+  // s51: la clase gratis de la landing B (/clase-gratis).
+  'clase_gratis_vista',
+  'clase_gratis_paso',
+  'clase_gratis_elegida',
 
   // Embudo de cuenta
   'onboarding_paso',
@@ -161,6 +168,9 @@ export const PROPS_CONTEO = [
   'materia',
   // s47: qué juego del reto ('sobra' | 'vom'), para la prueba A/B por anuncio.
   'juego',
+  // s51: brazo de la prueba A/B del botón de la landing ('reto' | 'clase').
+  // Lo pone contarAnonimo solo, en todos los eventos de ese navegador.
+  'ab_landing',
 ] as const
 
 const PROPS = new Set<string>(PROPS_CONTEO)
@@ -232,6 +242,12 @@ function canalDeLaVisita(): { canal: string; utm_source: string | null; utm_camp
   })
 }
 
+/** s51 — Agrega el brazo de la prueba A/B de la landing, si este navegador tiene uno. */
+function conBrazo(p: Record<string, string | number | boolean>) {
+  const brazo = leerBrazoGuardado()
+  return brazo && !('ab_landing' in p) ? { ...p, ab_landing: brazo } : p
+}
+
 /**
  * Cuenta un evento sin identificar a nadie. Si el evento no está en la
  * lista, no hace nada. Nunca lanza y nunca bloquea: sale por sendBeacon,
@@ -251,7 +267,7 @@ export function contarAnonimo(evento: string, props?: Record<string, unknown>): 
       uc: atribucion.utm_campaign,
       t: EVENTOS_CON_CARGA.has(evento) ? cargaDePagina() : null,
       i: esInterno(),
-      p: limpiarProps(props),
+      p: conBrazo(limpiarProps(props)),
     })
 
     if (typeof navigator.sendBeacon === 'function') {

@@ -10,8 +10,12 @@ import { tematicaPorClave, type ClaveTematica } from '@/lib/tema-muestra'
  * `quiz_questions` solo se leen con sesión (RLS). Solo LEEN: la muestra no
  * escribe progreso, XP ni rachas.
  *
- * 🔴 Solo temas que salen en el reto (`arcade_rounds`). La muestra existe para
- * quien acaba de fallar ese tema, no para abrir el temario entero por URL.
+ * 🔴 SOLO SE ABRE LO PERMITIDO (s51, migración 065: tema_muestra_permitido):
+ *   1. la clase gratis de su materia (UN tema fijo por materia, siempre el
+ *      mismo: tabla clase_gratis), o
+ *   2. un tema del reto de los últimos 8 días.
+ * Antes bastaba con que el tema hubiera salido ALGUNA VEZ en el reto (~294
+ * temas abiertos por URL). La muestra no es una puerta al temario entero.
  *
  * CACHÉ (unstable_cache, 300 s, tag 'topics'). /tema es la puerta del embudo
  * desde el arcade y hacía seis viajes en serie por visita, todos sobre datos
@@ -60,11 +64,13 @@ async function leerTemaMuestra(subjectSlug: string, topicSlug: string): Promise<
     grades: number[] | null
   }
 
-  const [{ count }, { data: materia }] = await Promise.all([
-    db.from('arcade_rounds').select('id', { count: 'exact', head: true }).eq('topic_id', topic.id),
+  const [{ data: permitido, error: errPermitido }, { data: materia }] = await Promise.all([
+    db.rpc('tema_muestra_permitido', { p_topic_id: topic.id }),
     db.rpc('arcade_materia_de_slug', { p_slug: subject.slug }),
   ])
-  if (!count) return null
+  // Falla cerrada: si la base no contesta, no se abre nada.
+  if (errPermitido) console.error('[tema-muestra] tema_muestra_permitido falló:', errPermitido)
+  if (permitido !== true) return null
 
   return {
     subject: { id: subject.id, name: subject.name, slug: subject.slug },
@@ -129,5 +135,41 @@ async function leerContenidoMuestra(topicId: string, clave: ClaveTematica) {
  */
 export const contenidoMuestra = unstable_cache(leerContenidoMuestra, ['tema-muestra-contenido'], {
   revalidate: 300,
+  tags: ['topics'],
+})
+
+/** Una materia con clase gratis, para el formulario de /clase-gratis (s51). */
+export type MateriaClaseGratis = {
+  nivel: 'secundaria' | 'prepa'
+  grado: number
+  subjectSlug: string
+  nombre: string
+  topicSlug: string
+}
+
+async function leerCatalogoClaseGratis(): Promise<MateriaClaseGratis[]> {
+  const { data, error } = await admin().rpc('clase_gratis_catalogo')
+  if (error) {
+    console.error('[clase-gratis] clase_gratis_catalogo falló:', error)
+    return []
+  }
+  type Fila = { education_level: string; grade: number; subject_slug: string; subject_name: string; topic_slug: string }
+  return ((data ?? []) as Fila[])
+    .filter((f) => (f.education_level === 'middle_school' || f.education_level === 'high_school') && f.grade >= 1 && f.grade <= 3)
+    .map((f) => ({
+      nivel: f.education_level === 'middle_school' ? 'secundaria' : 'prepa',
+      grado: f.grade,
+      subjectSlug: f.subject_slug,
+      nombre: f.subject_name,
+      topicSlug: f.topic_slug,
+    }))
+}
+
+/**
+ * Catálogo de la clase gratis: materia → su único tema gratis. Mismo tag que
+ * el resto del catálogo ('topics'); 1 h, porque solo cambia a mano.
+ */
+export const catalogoClaseGratis = unstable_cache(leerCatalogoClaseGratis, ['clase-gratis-catalogo'], {
+  revalidate: 3600,
   tags: ['topics'],
 })

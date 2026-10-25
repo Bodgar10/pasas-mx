@@ -10,6 +10,12 @@ describe('tema-muestra', () => {
     expect(urlTemaMuestra('h', 't', { perfecto: true, tematica: 'kpop' })).toBe('/tema/h/t?from=arcade&r=5&tematica=kpop')
   })
 
+  it('la clase gratis de la landing B lleva from=clase y la temática', () => {
+    expect(urlTemaMuestra('matematicas-sec-3', 'ecuaciones', { tematica: 'kpop', from: 'clase' })).toBe(
+      '/tema/matematicas-sec-3/ecuaciones?from=clase&tematica=kpop'
+    )
+  })
+
   it('quien tiene cuenta va a su guía con from=arcade', () => {
     expect(urlGuia('h', 't')).toBe('/guia/h/t?from=arcade')
     expect(urlGuia('h', 't', true)).toBe('/guia/h/t?from=arcade&r=5')

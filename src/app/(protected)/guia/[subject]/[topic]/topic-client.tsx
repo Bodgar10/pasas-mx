@@ -275,7 +275,7 @@ export default function TopicClient({
   const contarMuestra = useCallback(
     (evento: string, props: Record<string, unknown> = {}) => {
       if (!muestra) return
-      track(evento, { materia: muestra.materia ?? undefined, theme: muestra.tematica, ...props })
+      track(evento, { materia: muestra.materia ?? undefined, theme: muestra.tematica, origen: muestra.origen, ...props })
     },
     [muestra]
   )
@@ -498,7 +498,7 @@ export default function TopicClient({
       n_preguntas_quiz: quizQuestions.length,
       tiene_horda: hordeHasBank,
     })
-    contarMuestra('tema_muestra_vista', { elemento: desdeArcade ? 'arcade' : 'directo' })
+    contarMuestra('tema_muestra_vista', { elemento: muestra?.origen === 'clase' ? 'clase' : desdeArcade ? 'arcade' : 'directo' })
     // Solo al montar.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -1193,6 +1193,7 @@ export default function TopicClient({
         {(muestra || desdeArcade) && sections.length > 0 && (
           <EntradaDesdeReto
             perfecto={retoPerfecto}
+            deClase={muestra?.origen === 'clase'}
             tieneHorda={muestra ? !!muestra.hordaHref : hordeHasBank && !_isPersonalized}
             tematicaCorta={muestra?.tematicaCorta ?? null}
             cambiarTematicaHref={muestra?.cambiarTematicaHref ?? null}
