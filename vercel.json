@@ -12,5 +12,6 @@
       "path": "/api/cron/arcade-recordatorio",
       "schedule": "30 13 * * *"
     }
-  ]
+  ],
+  "ignoreCommand": "git log -1 --pretty=%B | grep -q '\\[skip ci\\]' && exit 0 || exit 1"
 }
