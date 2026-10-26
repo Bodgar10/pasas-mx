@@ -232,8 +232,8 @@ window.render = function (t) {
     $('hc' + i).style.opacity = v * clamp((t - a) / 0.25); $('hc' + i).style.transform = 'translateX(' + ((1 - clamp((t - a) / 0.3)) * -8) + 'cqw)';
     $('ht' + i).style.opacity = v * clamp((t - a - 0.1) / 0.3);
     var tx = $('hx' + i), q = clamp((t - a - 0.2) / 0.4); tx.style.opacity = v * q; tx.style.transform = 'translateY(' + ((1 - easeOut(q)) * 4) + 'cqw)';
-    $('hq' + i).style.opacity = v * clamp((t - a - 1.1) / 0.3);
-    var e = clamp((t - a - 1.6) / 0.35), eq = $('he' + i); eq.style.opacity = v * e; eq.style.transform = 'translateX(-50%) scale(' + (0.8 + 0.2 * back(e)) + ')';
+    $('hq' + i).style.opacity = v * clamp((t - a - 1.4) / 0.3);
+    var e = clamp((t - a - 2.2) / 0.35), eq = $('he' + i); eq.style.opacity = v * e; eq.style.transform = 'translateX(-50%) scale(' + (0.8 + 0.2 * back(e)) + ')';
   });
   var inHob = t >= T.hob[0][0] && t < T.hob[H.length - 1][1];
   $('dots').style.opacity = inHob ? 1 : 0;
