@@ -19,11 +19,12 @@
 /* Gancho: 4 paneles de color que giran rápido detrás + la x gigante */
 .panel{position:absolute;inset:0;opacity:0}
 .panel .big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:70cqw;opacity:.18;filter:blur(.4cqw)}
-.panel .lab{position:absolute;left:0;right:0;bottom:7cqw;text-align:center;font-family:var(--font-title);font-weight:900;font-size:7cqw;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:.9;text-shadow:0 0 3cqw rgba(0,0,0,.6)}
+.panel .lab{position:absolute;left:50%;top:66cqw;transform:translateX(-50%);white-space:nowrap;font-family:var(--font-title);font-weight:900;font-size:9.5cqw;letter-spacing:.04em;text-transform:uppercase;color:#1a1035;background:var(--pc);padding:2.4cqw 7cqw;border-radius:99px;box-shadow:0 0 6cqw var(--pc), 0 1cqw 3cqw rgba(0,0,0,.5)}
+.panel .lab i{font-style:normal;margin-right:2cqw}
 #hook{position:absolute;left:7cqw;right:7cqw;top:30cqw;z-index:6;text-align:center}
 #hook .ct{font-size:11cqw}
 #hook .ct span.k{color:#fbbf24}
-#hx{position:absolute;left:50%;top:92cqw;transform:translateX(-50%);z-index:6;font-family:var(--font-brand);font-weight:900;font-size:34cqw;color:#fff;
+#hx{position:absolute;left:50%;top:104cqw;transform:translateX(-50%);z-index:4;font-family:var(--font-brand);font-weight:900;font-size:30cqw;color:#fff;opacity:.55;
   text-shadow:0 0 6cqw rgba(236,72,153,.9), 0 2cqw 0 rgba(0,0,0,.5)}
 #hsub{position:absolute;left:7cqw;right:7cqw;top:128cqw;z-index:6;text-align:center;font-family:var(--font-title);font-weight:900;font-size:6.4cqw;color:#fff;opacity:0;text-shadow:0 .5cqw 2cqw rgba(0,0,0,.8)}
 
@@ -162,7 +163,7 @@ window.setup = function (data) {
   var s = ''; for (var i = 0; i < 90; i++) s += '<i style="left:' + ((i * 173) % 1080) + 'px;top:' + ((i * 389) % 1920) + 'px;width:' + (1 + i % 3) + 'px;height:' + (1 + i % 3) + 'px;opacity:' + (0.2 + (i % 5) * 0.12) + '"></i>';
   $('stars').innerHTML = s;
   $('panels').innerHTML = H.map(function (h, i) {
-    return '<div class="panel" id="pn' + i + '" style="background:radial-gradient(90% 60% at 50% 40%, ' + h.color + '66, #0f0a1e 75%)"><div class="big">' + h.icono + '</div><div class="lab">' + esc(h.nombre.replace(/^Con /, '')) + '</div></div>';
+    return '<div class="panel" id="pn' + i + '" style="--pc:' + h.color + ';background:radial-gradient(90% 60% at 50% 40%, ' + h.color + '66, #0f0a1e 75%)"><div class="big">' + h.icono + '</div><div class="lab"><i>' + h.icono + '</i>' + esc(h.nombre.replace(/^Con /, '')) + '</div></div>';
   }).join('');
   $('hook-ct').innerHTML = ctHTML(data.gancho.lineas);
   $('hsub').textContent = (data.materia || '') + ' · ' + (data.tema || '');
@@ -218,11 +219,12 @@ window.render = function (t) {
     var pn = $('pn' + i), on = i === idx && t < T.hook[1];
     pn.style.opacity = on ? hk : 0;
     var q = (t - i * (T.hook[1] / H.length)) / (T.hook[1] / H.length);
-    pn.style.transform = 'scale(' + (1.04 + 0.06 * clamp(q)) + ') rotate(' + ((i % 2 ? 1 : -1) * 1.5 * clamp(q)) + 'deg)';
+    pn.style.transform = 'scale(' + (1.04 + 0.04 * clamp(q)) + ')';
+    var lb = pn.querySelector('.lab'), lq = clamp(q * 4); lb.style.transform = 'translateX(-50%) scale(' + (0.7 + 0.3 * back(lq)) + ')';
   });
   $('hook').style.opacity = hk;
   $('hook').querySelectorAll('span').forEach(function (s, k) { var q = clamp((t - 0.05 - k * 0.3) / 0.3); s.style.opacity = q; s.style.transform = 'scale(' + (0.8 + 0.2 * back(q)) + ') translateY(' + ((1 - q) * -3) + 'cqw)'; });
-  var beat = 1 + 0.08 * Math.max(0, Math.sin(t * 9)); $('hx').style.opacity = hk; $('hx').style.transform = 'translateX(-50%) scale(' + beat + ') rotate(' + (Math.sin(t * 5) * 6) + 'deg)';
+  var beat = 1 + 0.08 * Math.max(0, Math.sin(t * 9)); $('hx').style.opacity = hk * 0.55; $('hx').style.transform = 'translateX(-50%) scale(' + beat + ') rotate(' + (Math.sin(t * 5) * 6) + 'deg)';
   $('hsub').style.opacity = hk * clamp((t - 0.7) / 0.3);
   // ── Hobbies
   var dotsOn = 0;
