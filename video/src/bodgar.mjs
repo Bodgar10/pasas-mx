@@ -13,6 +13,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
+import { sendEmail } from './email.mjs';
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATOS = path.join(RAIZ, 'data', 'bodgar');
@@ -151,20 +152,13 @@ ${aviso}
   };
 }
 
-async function mandar({ subject, html }, files) {
-  const key = process.env.RESEND_API_KEY;
-  const to = process.env.BODGAR_EMAIL_TO || process.env.ARCADE_EMAIL_TO;
-  const from = process.env.BODGAR_EMAIL_FROM || 'Videos bodgar.dev <hola@pasas.mx>';
-  if (!key) throw new Error('Falta RESEND_API_KEY');
-  if (!to) throw new Error('Falta BODGAR_EMAIL_TO');
-  const attachments = await Promise.all(files.map(async f => ({ filename: path.basename(f), content: (await readFile(f)).toString('base64') })));
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from, to: to.split(',').map(s => s.trim()), subject, html, attachments: attachments.length ? attachments : undefined }),
+// Mismo envío que los retos (email.mjs): archivos en Google Drive si está configurado; si no, adjuntos.
+function mandar(correo, files) {
+  return sendEmail(correo, files, {
+    to: process.env.BODGAR_EMAIL_TO || process.env.ARCADE_EMAIL_TO,
+    from: process.env.BODGAR_EMAIL_FROM || 'Videos bodgar.dev <hola@pasas.mx>',
+    faltaTo: 'Falta BODGAR_EMAIL_TO',
   });
-  const body = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`Resend respondió ${res.status}: ${JSON.stringify(body)}`);
-  return body;
 }
 
 // Solo corre como programa, no cuando otro script lo importa.
