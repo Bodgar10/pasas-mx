@@ -12,6 +12,10 @@ on:
         description: 'AAAA-MM-DD (vacío = hoy en hora de México)'
         type: string
         default: ''
+      data:
+        description: 'Video extra fuera del calendario: ruta del JSON dentro de video/ (ej. data/bodgar/extra/idiomas-tope.json). Vacío = el del día'
+        type: string
+        default: ''
       enviar:
         description: 'Mandar el correo'
         type: boolean
@@ -80,6 +84,7 @@ jobs:
         run: |
           ARGS=""
           if [ -n "${{ inputs.fecha }}" ]; then ARGS="$ARGS --fecha ${{ inputs.fecha }}"; fi
+          if [ -n "${{ inputs.data }}" ]; then ARGS="$ARGS --data ${{ inputs.data }}"; fi
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.enviar }}" = "true" ]; then ARGS="$ARGS --enviar"; fi
           node src/bodgar.mjs $ARGS
 
