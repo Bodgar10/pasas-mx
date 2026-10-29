@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · pérdida: mercancía dañada sin evidencia; la merma la paga la bodega. Cifras de ejemplo. */
+/* Cajas ilustradas */
+.caja{position:relative;border-radius:8px;background:#D8B98A;box-shadow:inset 0 -10px 0 rgba(0,0,0,.12)}
+.caja:before{content:'';position:absolute;left:50%;top:0;bottom:0;width:18%;margin-left:-9%;background:rgba(255,255,255,.35)}
+.caja.mal{background:#C9A274;clip-path:polygon(0 12%,22% 0,100% 0,100% 78%,84% 100%,0 100%)}
+.caja.mal:after{content:'';position:absolute;left:18%;top:30%;width:46%;height:5px;background:rgba(60,35,20,.5);transform:rotate(-24deg);box-shadow:20px 34px 0 rgba(60,35,20,.4)}
+/* Chat del reclamo */
+.chat{padding:26px 30px 30px;background:#EEF0EC}
+.bur{max-width:82%;background:#fff;border-radius:8px 28px 28px 28px;padding:20px 24px;font-size:32px;font-weight:600;line-height:1.3;box-shadow:0 4px 10px rgba(0,0,0,.06);margin-top:18px;opacity:0}
+.bur small{display:block;margin-top:6px;font-family:M;font-size:20px;color:var(--gris);text-align:right}
+.fotob{width:430px;padding:14px}
+.fotob .esc{height:260px;border-radius:18px;background:#5b6763;display:flex;align-items:flex-end;justify-content:center;gap:16px;padding:0 20px 26px}
+.fotob .caja{width:110px;height:120px}
+.fotob .caja:nth-child(1){transform:rotate(-9deg)}.fotob .caja:nth-child(2){height:150px;transform:rotate(4deg)}.fotob .caja:nth-child(3){transform:rotate(12deg)}
+.cab{display:flex;align-items:center;gap:20px;padding:22px 30px;border-bottom:1px solid var(--linea)}
+.cab b{font-size:32px}.cab span{display:block;font-size:24px;color:var(--gris);font-weight:600}
+/* Buscar evidencia */
+.busq{margin:26px 36px 8px;padding:20px 24px;border-radius:18px;border:3px solid var(--linea);font-size:30px;font-weight:600;color:var(--gris);display:flex;gap:16px;align-items:center}
+.busq i{font-style:normal;font-size:30px}
+.reg{display:flex;align-items:center;gap:22px;padding:26px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.reg .ic{width:96px;height:96px;border-radius:18px;border:3px dashed #C9C2B6;display:grid;place-items:center;font-family:M;font-size:22px;color:var(--gris);flex:none}
+.reg b{display:block;font-size:32px}.reg small{font-size:25px;color:var(--gris);font-weight:600}
+.reg .sin{margin-left:auto;font-family:M;font-weight:600;font-size:26px;color:var(--terra2);background:#FBEADF;padding:10px 16px;border-radius:12px}
+.nofoto{padding:26px 36px 30px;font-size:32px;font-weight:700;color:var(--terra2);opacity:0}
+/* Palabra contra palabra */
+.duelo{padding:34px 36px 20px}
+.dic{display:flex;gap:18px;align-items:flex-start;opacity:0}
+.dic.tu{flex-direction:row-reverse}
+.dic .q{white-space:nowrap;padding:24px 28px;border-radius:28px;font-size:38px;font-weight:700;line-height:1.25}
+.dic.cli .q{background:#FBEADF;color:var(--terra2);border-top-left-radius:8px}
+.dic.tu .q{background:var(--suave);border-top-right-radius:8px}
+.dic .who{font-family:M;font-weight:600;font-size:22px;color:var(--gris);letter-spacing:.06em;text-transform:uppercase;margin-top:12px}
+.vs{text-align:center;font-family:B;font-weight:800;font-size:56px;color:var(--gris);margin:14px 0;opacity:0}
+.prueba{margin:10px 36px 32px;padding:22px 24px;border-radius:18px;background:var(--arena);display:flex;justify-content:space-between;font-size:31px;font-weight:700;opacity:0}
+.prueba b{color:var(--terra2)}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:170px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Teléfono: cámara */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.visor{margin:22px;height:400px;border-radius:24px;background:#3d4a46;position:relative;overflow:hidden}
+.tarima{position:absolute;left:50%;bottom:44px;width:360px;margin-left:-180px}
+.tarima .fila3{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.tarima .caja{width:110px;height:92px}
+.tarima .palet{height:22px;margin-top:8px;background:#9C7A50;border-radius:4px;box-shadow:0 10px 0 -4px #7d6040}
+.esq{position:absolute;inset:24px;border:4px solid rgba(255,255,255,.45);border-radius:18px}
+.flash{position:absolute;inset:0;background:#fff;opacity:0}
+.sello{position:absolute;left:16px;right:16px;bottom:14px;background:rgba(0,0,0,.6);color:#fff;border-radius:12px;padding:10px 14px;font-family:M;font-weight:600;font-size:21px;opacity:0}
+.liga{margin:0 22px;padding:20px 22px;border-radius:18px;background:var(--suave);font-size:27px;font-weight:700;display:flex;justify-content:space-between}
+.liga span{color:var(--gris);font-weight:600;font-family:M;font-size:24px}
+.disp{position:absolute;left:50%;bottom:40px;width:118px;height:118px;margin-left:-59px;border-radius:50%;border:8px solid var(--terra);background:#fff}
+.toast{position:absolute;left:22px;right:22px;bottom:40px;background:var(--verde);color:#fff;border-radius:20px;padding:22px 24px;font-size:26px;font-weight:700;opacity:0}
+/* Expediente */
+.evi{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.evi .mini{width:150px;height:110px;border-radius:14px;background:#3d4a46;position:relative;overflow:hidden;flex:none;display:flex;align-items:flex-end;justify-content:center;gap:6px;padding-bottom:16px}
+.evi .mini .caja{width:36px;height:34px;border-radius:4px}
+.evi .mini:after{content:'';position:absolute;left:14px;right:14px;bottom:8px;height:6px;background:#9C7A50;border-radius:2px}
+.evi b{display:block;font-size:31px}.evi small{display:block;font-size:24px;color:var(--gris);font-weight:600;font-family:M;margin-top:4px}
+.evi .ok{margin-left:auto}
+.abierto{margin:24px 36px 30px;text-align:center;opacity:0}
+.abierto span{display:inline-flex;align-items:center;gap:14px;background:var(--verde2);color:var(--verde);border-radius:999px;padding:14px 26px;font-size:30px;font-weight:700}
+/* Qué ganas */
+.gan{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.gan:last-child{border-bottom:0}
+.gan div{min-width:0}.gan small{display:block;font-family:M;font-weight:600;font-size:23px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.gan b{display:block;font-size:36px;margin-top:6px}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-reclamo"><h1>Llegó <em>golpeado</em></h1></div>
+  <div class="tit" id="t-buscar"><h1>¿Cómo <em>entraron?</em></h1></div>
+  <div class="tit" id="t-palabra"><h1>Tu palabra <em>contra la suya</em></h1></div>
+  <div class="tit" id="t-paga"><h1>≈ $6,500 <em>por reclamo</em></h1><p>Ejemplo: 10 cajas × $650</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si cada caja <em>tuviera foto?</em></h1></div>
+  <div class="tit" id="t-recibe"><h1>Al recibir, <em>foto</em></h1></div>
+  <div class="tit" id="t-despacha"><h1>Al despachar, <em>también</em></h1></div>
+  <div class="tit" id="t-abre"><h1>La evidencia, <em>en segundos</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Ya no pagas <em>a ciegas</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Te pasan <em>estos reclamos?</em></h1></div>
+
+  <!-- 1 · Reclamo -->
+  <div class="card" id="reclamo">
+    <div class="cab"><div class="av" style="background:#4F8FA0">CB</div><div><b>Casa Brisa</b><span>Mensaje · 10:42 AM</span></div></div>
+    <div class="chat">
+      <div class="bur" id="b1">Hola. Llegaron 10 cajas de vajilla golpeadas 😟</div>
+      <div class="bur fotob" id="b2"><div class="esc"><div class="caja mal"></div><div class="caja mal"></div><div class="caja mal"></div></div></div>
+      <div class="bur" id="b3">¿Qué pasó? ¿Así salieron de su bodega?<small>10:43</small></div>
+    </div>
+  </div>
+
+  <!-- 2 · Buscar evidencia -->
+  <div class="card" id="buscar">
+    <div class="ccab"><span>Buscar evidencia</span><span>Casa Brisa</span></div>
+    <div class="busq"><i>⌕</i>Vajilla · 10 cajas</div>
+    <div class="reg" id="r1"><div class="ic">foto</div><div><b>Entrada · 14 oct</b><small>¿Cómo entraron?</small></div><span class="sin">Sin foto</span></div>
+    <div class="reg" id="r2"><div class="ic">foto</div><div><b>Salida · 22 oct</b><small>¿Cómo salieron?</small></div><span class="sin">Sin foto</span></div>
+    <div class="nofoto" id="nofoto">Ni una sola foto.</div>
+  </div>
+
+  <!-- 3 · Palabra contra palabra -->
+  <div class="card" id="palabra">
+    <div class="ccab"><span>Reclamo · Casa Brisa</span><span>Vajilla</span></div>
+    <div class="duelo">
+      <div class="dic cli" id="p1"><div><div class="q">«Así nos llegó.»</div><div class="who">Tu cliente</div></div></div>
+      <div class="vs" id="vs">vs</div>
+      <div class="dic tu" id="p2"><div style="text-align:right"><div class="q">«Salió bien de aquí.»</div><div class="who">Tu bodega</div></div></div>
+    </div>
+    <div class="prueba" id="prueba">¿Con qué lo demuestras?<b>Con nada</b></div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Un reclamo</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>10</b><span>cajas golpeadas</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$650</b><span>que repones por caja</span></div>
+    <div class="res"><span>= lo pagas tú</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 y 7 · Cámara en la app -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="pant" id="pa">
+      <div class="otop"><b>Recepción</b><span>Juan · andén 2</span></div>
+      <div class="visor"><div class="tarima"><div class="fila3"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div><div class="fila3"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div><div class="palet"></div></div><div class="esq"></div><div class="flash" id="fla"></div><div class="sello" id="sa">14 oct · 09:12 · Juan · E-2207</div></div>
+      <div class="liga">Entrada E-2207<span>Casa Brisa</span></div>
+      <div class="disp" id="da"></div>
+      <div class="toast" id="ta">✓ Foto guardada en la entrada</div>
+    </div>
+    <div class="pant" id="pb">
+      <div class="otop"><b>Despacho</b><span>Luis · andén 4</span></div>
+      <div class="visor"><div class="tarima"><div class="fila3"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div><div class="fila3"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div><div class="palet"></div></div><div class="esq"></div><div class="flash" id="flb"></div><div class="sello" id="sb">22 oct · 16:40 · Luis · P-5130</div></div>
+      <div class="liga">Pedido P-5130<span>Casa Brisa</span></div>
+      <div class="disp" id="db"></div>
+      <div class="toast" id="tb">✓ Foto ligada al pedido</div>
+    </div>
+  </div></div>
+
+  <!-- 8 · Expediente -->
+  <div class="card" id="abre">
+    <div class="ccab"><span>Pedido P-5130 · Casa Brisa</span><span class="ej">Ejemplo</span></div>
+    <div class="evi" id="v1"><div class="mini"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div><div><b>Entrada</b><small>14 oct · 09:12 · Juan</small></div><span class="ok">✓</span></div>
+    <div class="evi" id="v2"><div class="mini"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div><div><b>Despacho</b><small>22 oct · 16:40 · Luis</small></div><span class="ok">✓</span></div>
+    <div class="abierto" id="abierto"><span>Abierto en segundos</span></div>
+  </div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>Cuando llega un reclamo</span><span>Con evidencia</span></div>
+    <div class="gan" id="g1"><span class="ok">✓</span><div><small>Si pasó en tu bodega</small><b>Lo sabes y lo resuelves</b></div></div>
+    <div class="gan" id="g2"><span class="ok">✓</span><div><small>Si pasó después</small><b>Tienes cómo demostrarlo</b></div></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Recibes</span><i>→</i><span>Foto</span><i>→</i><span class="v">Evidencia</span></div>
+    <p>Te cuento cómo lo haría en tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+// Disparo de cámara en una pantalla: dedo en el obturador, flash, sello y aviso.
+function foto(t, t0, sufijo) {
+  var hecho = t >= t0, tapped = false;
+  if (t > t0 - 0.5 && t < t0 + 0.4) tapped = toque(t, t0, $('d' + sufijo));
+  $('fl' + sufijo).style.opacity = hecho ? 0.9 * (1 - clamp((t - t0) / 0.35)) : 0;
+  $('s' + sufijo).style.opacity = hecho ? clamp((t - t0 - 0.3) / 0.3) : 0;
+  $('d' + sufijo).style.opacity = hecho ? 0 : 1;
+  $('t' + sufijo).style.opacity = hecho ? clamp((t - t0 - 0.6) / 0.3) : 0;
+  return tapped;
+}
+window.escena = function (t) {
+  // 1 · Reclamo
+  bloque($('reclamo'), 'reclamo', 'reclamo', t);
+  aparece('b1', t, S.reclamo + 0.5); aparece('b2', t, S.reclamo + 1.4); aparece('b3', t, S.reclamo + 2.6);
+
+  // 2 · Buscar
+  bloque($('buscar'), 'buscar', 'buscar', t);
+  aparece('r1', t, S.buscar + 0.6, 50); aparece('r2', t, S.buscar + 1.6, 50); pop($('nofoto'), t, S.buscar + 3.0);
+
+  // 3 · Palabra contra palabra
+  bloque($('palabra'), 'palabra', 'palabra', t);
+  aparece('p1', t, S.palabra + 0.4, -50); pop($('vs'), t, S.palabra + 1.1); aparece('p2', t, S.palabra + 1.6, 50); pop($('prueba'), t, S.palabra + 3.2);
+
+  // 4 · Cuenta
+  bloque($('ecu'), 'paga', 'paga', t);
+  aparece('e1', t, S.paga + 1.2, 50); aparece('e2', t, S.paga + 2.6, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.paga + 4.0, 1.4, 6500) / 10) * 10);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 y 7 · Cámara (el teléfono se queda entre las dos escenas)
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.recibe) / 0.6)), pout = easeOut(clamp((t - (E.despacha - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.recibe && t < E.despacha + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var enB = t >= S.despacha;
+  $('pa').style.opacity = enB ? 1 - clamp((t - S.despacha) / 0.3) : 1;
+  $('pb').style.opacity = enB ? clamp((t - S.despacha) / 0.3) : 0;
+  var tapped = false;
+  if (!enB) tapped = foto(t, S.recibe + 1.6, 'a') || tapped;
+  else tapped = foto(t, S.despacha + 1.0, 'b') || tapped;
+
+  // 8 · Expediente
+  bloque($('abre'), 'abre', 'abre', t);
+  aparece('v1', t, S.abre + 0.6, 50); aparece('v2', t, S.abre + 1.2, 50); pop($('abierto'), t, S.abre + 2.2);
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  aparece('g1', t, S.gana + 0.5, 50); aparece('g2', t, S.gana + 2.6, 50);
+  return tapped;
+};
+</script>
+</body></html>
