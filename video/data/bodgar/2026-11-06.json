@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-11-06",
+  "dia": "viernes",
+  "linea": "Caso práctico · horas canceladas",
+  "plantilla": "caso-hora-vacia.html",
+  "nombre": "caso-hora-vacia",
+  "url": "bodgar.dev/plataformas/fisioterapia",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Caso práctico",
+    "titulo": "Caso práctico: *la hora vacía*",
+    "dato": { "num": "$5,600", "texto": "a la semana en horas canceladas", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Caso práctico",
+    "titulo": "8 × $700 = *$5,600*",
+    "texto": "Así atacaría las horas canceladas en una clínica de fisioterapia."
+  },
+  "post": "Caso práctico: una clínica de fisioterapia con 3 terapeutas y sesiones de $700.\n\nEsta semana se cancelaron 8 citas. Son 8 horas vacías: 8 × $700 = $5,600 a la semana, y en 4 semanas, $22,400.\n\nLo primero que construiría: una lista de espera con los pacientes que quieren una hora antes. Cuando alguien cancela, el sistema les manda un aviso y el primero que confirma se queda con la hora. Y mediría una sola cosa: de cada 10 horas canceladas, cuántas se vuelven a llenar.\n\nLas cifras son un ejemplo, no un resultado. Si quieres que revise el proceso de tu clínica, entra a bodgar.dev/plataformas/fisioterapia (link en la bio). Diagnóstico sin costo.\n\n#fisioterapia #clinicas #rehabilitacion #pymesmexico #agenda",
+  "escenas": [
+    { "id": "caso", "titulo": "Caso práctico", "voz": "Caso práctico. Una clínica de fisioterapia con tres terapeutas. Cada sesión cuesta setecientos pesos." },
+    { "id": "hueco", "titulo": "La hora vacía", "voz": "Esta semana se cancelaron ocho citas. Ocho horas que se quedaron vacías." },
+    { "id": "cuenta", "titulo": "Hagamos la cuenta", "voz": "Hagamos la cuenta. Ocho horas por setecientos pesos: cinco mil seiscientos pesos a la semana." },
+    { "id": "mes", "titulo": "≈ $22,400 al mes", "voz": "En cuatro semanas, son veintidós mil cuatrocientos pesos." },
+    { "id": "primero", "titulo": "Lo primero que construiría", "voz": "Esto es lo primero que construiría." },
+    { "id": "lista", "titulo": "Una lista de espera", "voz": "Una lista de espera: pacientes que quieren una hora antes de la que tienen." },
+    { "id": "aviso", "titulo": "Cancela → aviso a la lista", "voz": "Cuando alguien cancela, el sistema les avisa. El primero que confirma, toma la hora." },
+    { "id": "llena", "titulo": "La hora vuelve a tener paciente", "voz": "Y la hora vacía vuelve a tener paciente." },
+    { "id": "medir", "titulo": "Lo que mediría", "voz": "Y mediría una sola cosa: de cada diez horas canceladas, cuántas se vuelven a llenar." },
+    { "id": "cierre", "titulo": "¿Revisamos tu clínica?", "voz": "Así pienso cada proceso de una clínica. Si quieres que revise el tuyo, entra a bodgar punto dev." }
+  ]
+}
