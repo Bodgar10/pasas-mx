@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · pérdida: sesiones del paquete contadas a mano; las de más se dan sin cobrar. Cifras de ejemplo.
+   Renovar o terminar lo deciden el paciente y su terapeuta; el sistema solo lleva la cuenta y avisa. */
+.pac{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.pac .av{width:96px;height:96px;font-size:40px;background:#9C7BB5}
+.pac b{display:block;font-size:38px}.pac span{font-size:27px;color:var(--gris)}
+.estado{margin-left:auto;font-family:M;font-weight:600;font-size:24px;padding:10px 16px;border-radius:14px;background:var(--suave);color:var(--tinta);white-space:nowrap;opacity:0}
+/* Puntos de sesiones */
+.ses{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;padding:34px 46px 30px}
+.ses i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:M;font-weight:600;font-size:30px;border:5px solid var(--linea);color:var(--gris);background:transparent}
+.ses i.v{background:var(--verde);border-color:var(--verde);color:#fff}
+.ses i.f{border:5px dashed var(--terra);color:var(--terra2);background:#FBEADF}
+.leyenda{display:flex;justify-content:space-between;padding:0 36px 30px;font-family:M;font-weight:600;font-size:24px;color:var(--gris)}
+/* Libreta */
+.libreta{position:absolute;left:120px;right:120px;top:620px;background:#FFF8E1;color:#3b3a33;border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.35);padding:30px 44px 40px 110px;opacity:0;
+  background-image:linear-gradient(transparent 0,transparent 74px,#E7D9AE 74px,#E7D9AE 76px);background-size:100% 76px;background-position:0 26px}
+.libreta:before{content:'';position:absolute;left:78px;top:0;bottom:0;width:3px;background:#E3A49A}
+.libreta .lt{font-family:B;font-weight:700;font-size:40px;height:76px;line-height:76px;color:var(--tinta)}
+.renglon{height:76px;line-height:76px;font-family:M;font-size:32px;display:flex;justify-content:space-between;opacity:0}
+.renglon s{color:#b29a8a}
+.renglon .x{color:var(--terra2);font-weight:600}
+.circulo{display:inline-block;margin-left:18px;font-family:B;font-weight:800;font-size:50px;line-height:1;color:var(--terra2);border:5px solid var(--terra);border-radius:50%;padding:6px 22px;vertical-align:middle;opacity:0}
+/* Comparación */
+.vs{display:flex;gap:20px;padding:30px 36px 6px}
+.vs div{flex:1;border-radius:22px;padding:22px 24px;background:var(--suave)}
+.vs div.mal{background:#FBEADF}
+.vs span{display:block;font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.vs b{font-family:B;font-weight:800;font-size:76px;line-height:1.1}
+.vs .mal b{color:var(--terra2)}
+.ses11{grid-template-columns:repeat(6,1fr);gap:18px;padding:26px 40px 20px}
+.ses11 i{font-size:26px}
+.sinc{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:#FBEADF;display:flex;justify-content:space-between;align-items:center;font-size:30px;font-weight:700;color:var(--terra2);opacity:0}
+.sinc b{font-family:M;font-weight:600}
+/* Mes */
+.pfila{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pfila .av{width:58px;height:58px;font-size:26px}
+.pfila .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px;color:var(--terra2)}
+.pfila small{display:block;font-size:22px;color:var(--gris);font-weight:600}
+/* Teléfono de recepción */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.citah{display:flex;align-items:center;gap:16px;padding:22px 26px;border-bottom:1px solid var(--linea);font-size:26px;font-weight:600}
+.citah .h{font-family:M;font-size:22px;color:var(--gris);width:96px}
+.citah .av{width:52px;height:52px;font-size:22px}
+.citah .st{margin-left:auto;font-family:M;font-size:20px;color:var(--gris)}
+.citah.yo{background:#FFF7F1}
+.llegar{margin:22px 26px 0;background:var(--terra);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:28px;font-weight:700;opacity:0}
+.llegar.ok2{background:var(--verde)}
+.cont{margin:24px 26px 0;padding:22px 24px;border-radius:22px;border:3px solid var(--linea);background:#fff;opacity:0}
+.cont .k{font-family:M;font-weight:600;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.cont .n{display:flex;align-items:baseline;gap:10px;margin-top:6px}
+.cont .n b{font-family:B;font-weight:800;font-size:72px;line-height:1}
+.cont .n span{font-size:26px;font-weight:600;color:var(--gris)}
+.mini{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-top:16px}
+.mini i{height:20px;border-radius:6px;background:var(--arena)}
+.mini i.v{background:var(--verde)}
+.quedan{margin-top:14px;font-family:M;font-weight:600;font-size:24px;color:var(--terra2)}
+/* Avisos */
+.aviso{position:absolute;left:110px;right:110px;background:rgba(251,250,247,.97);color:var(--tinta);border-radius:34px;padding:28px 30px;box-shadow:0 24px 60px rgba(0,0,0,.4);display:flex;gap:24px;align-items:flex-start;opacity:0}
+.aviso .ic{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;font-family:B;font-weight:800;font-size:34px;color:#fff;flex:none}
+.aviso .q{font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);display:flex;justify-content:space-between}
+.aviso p{margin:8px 0 0;font-size:34px;font-weight:600;line-height:1.3}
+.aviso p b{color:var(--terra2)}
+.para{position:absolute;left:110px;font-family:M;font-weight:600;font-size:26px;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,234,.7);opacity:0}
+/* Cobrada */
+.decide{margin:0 36px 30px;padding:22px 24px;border-radius:18px;background:var(--suave);font-size:29px;font-weight:600;line-height:1.35;opacity:0}
+.decide b{color:var(--verde)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-paquete"><h1>Laura pagó <em>10 sesiones</em></h1></div>
+  <div class="tit" id="t-libreta"><h1>La cuenta, <em>en una libreta</em></h1></div>
+  <div class="tit" id="t-agenda"><h1>La 11 salió <em>gratis</em></h1><p>Ejemplo: sesión de $700</p></div>
+  <div class="tit" id="t-mes"><h1>≈ $2,800 <em>al mes</em></h1><p>Ejemplo: 4 sesiones × $700</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si se <em>contara sola?</em></h1></div>
+  <div class="tit" id="t-registro"><h1>Llega y <em>se descuenta</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>Quedan 2: <em>aviso</em></h1></div>
+  <div class="tit" id="t-cobrada"><h1>Cada sesión, <em>cobrada</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Cuentas sesiones <em>a mano?</em></h1></div>
+
+  <!-- 1 · El paquete -->
+  <div class="card" id="paq">
+    <div class="ccab"><span>Paquete</span><span class="ej">Ejemplo</span></div>
+    <div class="pac"><div class="av">L</div><div><b>Laura G.</b><span>Hombro izquierdo</span></div><span class="estado" id="hoy">Hoy · 5:00 PM</span></div>
+    <div class="fila"><span class="ok">✓</span>10 sesiones pagadas<span class="der">$7,000</span></div>
+    <div class="ses" id="sesA"></div>
+    <div class="leyenda"><span>10 × $700</span><span>¿Cuántas lleva?</span></div>
+  </div>
+
+  <!-- 2 · La libreta -->
+  <div class="libreta" id="lib">
+    <div class="lt">Paquetes · octubre</div>
+    <div class="renglon" id="r1"><span>Laura G. · paq. 10</span><span></span></div>
+    <div class="renglon" id="r2"><span>|||| ||</span><span class="x">✓</span></div>
+    <div class="renglon" id="r3"><span><s>lleva 6</s> &nbsp;<s>7</s></span><span></span></div>
+    <div class="renglon" id="r4"><span>Mario S. · paq. 8</span><span></span></div>
+    <div class="renglon" id="r5"><span>Laura · ¿vino el jueves?</span><span class="x">?</span></div>
+    <div class="renglon" id="r6"><span>Laura: lleva<span class="circulo" id="ocho">8</span></span><span></span></div>
+  </div>
+
+  <!-- 3 · La agenda dice otra cosa -->
+  <div class="card" id="ag">
+    <div class="ccab"><span>Laura G.</span><span class="ej">Ejemplo</span></div>
+    <div class="vs"><div id="vl"><span>Libreta</span><b>8</b></div><div class="mal" id="va"><span>Agenda</span><b id="nag">0</b></div></div>
+    <div class="ses ses11" id="sesB"></div>
+    <div class="sinc" id="sinc"><span>Sesión 11 · sin cobrar</span><b>−$700</b></div>
+  </div>
+
+  <!-- 4 · Un mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Sesiones sin cobrar · un mes</span><span class="ej">Ejemplo</span></div>
+    <div class="pfila" id="m1"><div class="av" style="background:#9C7BB5">L</div><div>Laura G.<small>sesión 11 de un paquete de 10</small></div><span class="der">−$700</span></div>
+    <div class="pfila" id="m2"><div class="av" style="background:#5B8DB8">M</div><div>Mario S.<small>sesión 9 de un paquete de 8</small></div><span class="der">−$700</span></div>
+    <div class="pfila" id="m3"><div class="av" style="background:#C99A3A">I</div><div>Inés R.<small>sesión 11 de un paquete de 10</small></div><span class="der">−$700</span></div>
+    <div class="pfila" id="m4"><div class="av" style="background:#6E9C82">P</div><div>Pablo D.<small>sesión 6 de un paquete de 5</small></div><span class="der">−$700</span></div>
+    <div class="total"><span>Al mes</span><b id="mtot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Recepción registra la llegada -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Recepción · hoy</b><span>Lun 2 nov</span></div>
+    <div class="citah"><span class="h">4:00</span><div class="av" style="background:#5B8DB8">M</div>Mario S.<span class="st">Llegó</span></div>
+    <div class="citah yo"><span class="h">5:00</span><div class="av" style="background:#9C7BB5">L</div>Laura G.<span class="st" id="stL">Por llegar</span></div>
+    <div class="llegar" id="llegar">Registrar llegada</div>
+    <div class="cont" id="cont">
+      <div class="k">Paquete de Laura</div>
+      <div class="n"><b id="cnum">7</b><span>de 10 sesiones</span></div>
+      <div class="mini" id="mini"></div>
+      <div class="quedan" id="qued">Quedan 3</div>
+    </div>
+  </div></div>
+
+  <!-- 7 · Avisos -->
+  <div class="para" id="para1" style="top:640px">Para recepción</div>
+  <div class="aviso" id="av1" style="top:690px"><div class="ic" style="background:var(--tinta)">R</div><div style="flex:1"><div class="q"><span>Paquetes</span><span>ahora</span></div><p>A Laura G. le quedan <b>2 sesiones</b> de su paquete.</p></div></div>
+  <div class="para" id="para2" style="top:1010px">Para Laura</div>
+  <div class="aviso" id="av2" style="top:1060px"><div class="ic" style="background:var(--terra)">F</div><div style="flex:1"><div class="q"><span>Tu clínica</span><span>ahora</span></div><p>Hola, Laura. Te quedan <b>2 sesiones</b> de tu paquete.</p></div></div>
+
+  <!-- 8 · Todo cobrado -->
+  <div class="card" id="cob">
+    <div class="ccab"><span>Paquete · Laura G.</span><span class="ej">Ejemplo</span></div>
+    <div class="ses" id="sesC"></div>
+    <div class="total"><span>10 de 10</span><b style="color:var(--verde);font-size:72px" id="cobt">cobradas</b></div>
+    <div class="decide" id="dec">¿Renueva o termina? <b>Lo deciden ella y su terapeuta.</b></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Llega</span><i>→</i><span>Se descuenta</span><i>→</i><span class="v">Se cobra</span></div>
+    <p>Te cuento cómo lo haría para tu clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  var a = '', b = '', c = '', m = '';
+  for (var i = 1; i <= 10; i++) { a += '<i>' + i + '</i>'; c += '<i>' + i + '</i>'; m += '<i></i>'; }
+  for (var j = 1; j <= 11; j++) b += '<i>' + j + '</i>';
+  $('sesA').innerHTML = a; $('sesB').innerHTML = b; $('sesC').innerHTML = c; $('mini').innerHTML = m;
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+function vis(id, a, b, t) { var el = $(id); var on = t >= S[a] && t < E[b] + 0.1; var o = 1 - clamp((t - (E[b] - 0.3)) / 0.4); return on ? o : 0; }
+window.escena = function (t) {
+  var tapped = false;
+  // 1 · Paquete
+  bloque($('paq'), 'paquete', 'paquete', t);
+  aparece('hoy', t, S.paquete + 1.6, 40);
+
+  // 2 · Libreta
+  bloque($('lib'), 'libreta', 'libreta', t);
+  ['r1', 'r2', 'r3', 'r4', 'r5', 'r6'].forEach(function (id, i) { aparece(id, t, S.libreta + 0.4 + i * 0.4, 30); });
+  var oq = clamp((t - S.libreta - 3.2) / 0.35); $('ocho').style.opacity = oq; $('ocho').style.transform = 'rotate(-6deg) scale(' + (0.85 + 0.15 * back(oq)) + ')';
+
+  // 3 · Agenda: 11
+  bloque($('ag'), 'agenda', 'agenda', t);
+  var n = 0;
+  document.querySelectorAll('#sesB i').forEach(function (el, i) {
+    var at = S.agenda + 0.9 + i * 0.22, on = t >= at; if (on) n = i + 1;
+    el.className = on ? (i < 10 ? 'v' : 'f') : '';
+    el.style.transform = 'scale(' + (on ? 0.85 + 0.15 * back(clamp((t - at) / 0.3)) : 1) + ')';
+  });
+  $('nag').textContent = n;
+  aparece('sinc', t, S.agenda + 3.6);
+
+  // 4 · Un mes
+  bloque($('mes'), 'mes', 'mes', t);
+  ['m1', 'm2', 'm3', 'm4'].forEach(function (id, i) { aparece(id, t, S.mes + 0.4 + i * 0.45, 50); });
+  $('mtot').textContent = '−' + pesos(Math.round(cuenta(t, S.mes + 0.5, 2.4, 2800) / 10) * 10);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Registrar llegada
+  telefono($('phone1'), 'registro', 'registro', t);
+  aparece('llegar', t, S.registro + 0.6); aparece('cont', t, S.registro + 0.9);
+  var tapL = S.registro + 2.0;
+  if (t > tapL - 0.5 && t < tapL + 0.4 && t < E.registro) tapped = toque(t, tapL, $('llegar'));
+  var ok = t >= tapL;
+  $('llegar').textContent = ok ? '✓ Llegada registrada' : 'Registrar llegada';
+  $('llegar').classList.toggle('ok2', ok);
+  $('stL').textContent = ok ? 'Llegó' : 'Por llegar';
+  $('cnum').textContent = ok ? 8 : 7;
+  $('qued').textContent = ok ? 'Quedan 2' : 'Quedan 3';
+  document.querySelectorAll('#mini i').forEach(function (el, i) { el.className = i < (ok ? 8 : 7) ? 'v' : ''; });
+
+  // 7 · Avisos
+  var o = vis('av1', 'aviso', 'aviso', t);
+  [['para1', 0.3], ['av1', 0.4], ['para2', 1.9], ['av2', 2.0]].forEach(function (x) {
+    var q = clamp((t - S.aviso - x[1]) / 0.35), el = $(x[0]);
+    el.style.opacity = Math.min(q, o);
+    el.style.transform = 'translateY(' + ((1 - easeOut(q)) * -60) + 'px)';
+  });
+
+  // 8 · Todo cobrado
+  bloque($('cob'), 'cobrada', 'cobrada', t);
+  document.querySelectorAll('#sesC i').forEach(function (el, i) {
+    var at = S.cobrada + 0.5 + i * 0.12; el.className = t >= at ? 'v' : '';
+    el.textContent = t >= at ? '✓' : (i + 1);
+  });
+  aparece('dec', t, S.cobrada + 2.2);
+  return tapped;
+};
+</script>
+</body></html>

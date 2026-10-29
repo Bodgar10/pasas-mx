@@ -1,0 +1,30 @@
+{
+  "fecha": "2026-11-02",
+  "dia": "lunes",
+  "linea": "Fisioterapia · pérdida",
+  "plantilla": "fisio-paquete-sesiones.html",
+  "nombre": "fisio-paquete-sesiones",
+  "url": "bodgar.dev/plataformas/fisioterapia",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Fisioterapia",
+    "titulo": "Pagó 10 sesiones. *¿Cuántas lleva?*",
+    "dato": { "num": "≈ $2,800", "texto": "al mes en sesiones sin cobrar", "tipo": "perd" }
+  },
+  "story": {
+    "titulo": "La libreta dice 8. *La agenda, 11.*",
+    "texto": "Lo que cuesta llevar los paquetes de sesiones a mano."
+  },
+  "post": "Laura pagó un paquete de 10 sesiones. ¿Cuántas lleva? La cuenta está en una libreta de recepción, con tachones.\n\nLa libreta dice 8, pero en la agenda ya van 11. La sesión 11 se dio y nadie la cobró. Si pasa 4 veces al mes, a $700 la sesión, son $2,800.\n\nSi recepción registra la llegada de cada paciente, el paquete descuenta la sesión solo. Cuando quedan 2, avisa a recepción y al paciente. Si renueva o termina, lo deciden el paciente y su terapeuta; pero cada sesión que das queda cobrada.\n\nLas cifras del video son un ejemplo, no un resultado. Si te pasa, te cuento cómo lo haría para tu clínica: bodgar.dev/plataformas/fisioterapia (link en la bio). Diagnóstico sin costo.\n\n#fisioterapia #clinica #rehabilitacion #recepcion #pymesmexico",
+  "escenas": [
+    { "id": "paquete", "titulo": "Laura pagó 10 sesiones", "voz": "Laura pagó un paquete de diez sesiones. Hoy llega a su cita." },
+    { "id": "libreta", "titulo": "La cuenta, en una libreta", "voz": "¿Cuántas lleva? La cuenta está en una libreta de recepción, con tachones." },
+    { "id": "agenda", "titulo": "La 11 salió gratis", "voz": "La libreta dice ocho. Pero en la agenda ya van once. La sesión once se dio, y nadie la cobró." },
+    { "id": "mes", "titulo": "≈ $2,800 al mes", "voz": "Si eso pasa cuatro veces al mes, a setecientos pesos la sesión, son dos mil ochocientos pesos." },
+    { "id": "giro", "titulo": "¿Y si se contara sola?", "voz": "¿Y si la cuenta se llevara sola?" },
+    { "id": "registro", "titulo": "Llega y se descuenta", "voz": "Cuando Laura llega, recepción registra su llegada. Y el paquete descuenta la sesión solo." },
+    { "id": "aviso", "titulo": "Quedan 2: aviso", "voz": "Cuando le quedan dos, recepción recibe un aviso. Y Laura también." },
+    { "id": "cobrada", "titulo": "Cada sesión, cobrada", "voz": "Si renueva o termina, lo deciden ella y su terapeuta. Pero cada sesión que das queda cobrada." },
+    { "id": "cierre", "titulo": "¿Cuentas sesiones a mano?", "voz": "Si en tu clínica las sesiones se cuentan a mano, te cuento cómo lo haría. Entra a bodgar punto dev." }
+  ]
+}
