@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-10-29",
+  "dia": "jueves",
+  "linea": "Idiomas · 4 de 4 · cobranza",
+  "plantilla": "idiomas-cobranza.html",
+  "nombre": "idiomas-cobranza",
+  "url": "bodgar.dev/plataformas/idiomas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Idiomas",
+    "titulo": "¿Otra vez *a cobrarle?*",
+    "dato": { "num": "≈ $3,200", "texto": "al mes que no se cobran", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Nuevo reel",
+    "titulo": "Día 5: *otra vez a cobrar*",
+    "texto": "Si cada mes persigues pagos, así lo resolvería."
+  },
+  "post": "Es día 5 y otra vez le escribes a medio grupo para recordarle que te debe.\n\nCon 40 alumnos, si 8 pagan tarde y a cada uno le escribes 3 veces, son 24 mensajes incómodos al mes. Y si 2 nunca pagan, son $3,200 al mes que se pierden.\n\nAsí lo resolvería: ves quién pagó y quién debe, el recordatorio sale solo antes de que venza (y después, si hace falta), y tu alumno ve en su celular cuánto debe, cuándo vence y sube ahí su comprobante. Tú te quedas con las clases.\n\nLas cifras son un ejemplo, no un resultado. Si das clases de idiomas y quieres que revise cómo cobras hoy, entra a bodgar.dev/plataformas/idiomas (link en la bio). Diagnóstico sin costo.\n\n#maestrosdeingles #academiadeidiomas #clasesdeingles #idiomas #pymesmexico",
+  "escenas": [
+    { "id": "dia", "titulo": "Día 5 del mes", "voz": "Día cinco del mes. Otra vez a escribirle a medio grupo que te debe." },
+    { "id": "mensajes", "titulo": "Tres mensajes. Un visto.", "voz": "A Luis ya le escribiste tres veces. Y entre capturas del chat y la libreta, ya no sabes quién pagó." },
+    { "id": "cuenta", "titulo": "24 mensajes incómodos", "voz": "Con cuarenta alumnos, si ocho pagan tarde y les escribes tres veces, son veinticuatro mensajes incómodos al mes." },
+    { "id": "perdida", "titulo": "≈ $3,200 que se pierden", "voz": "Y si dos nunca pagan: tres mil doscientos pesos al mes que se pierden." },
+    { "id": "giro", "titulo": "¿Y si cobrar no pasara por ti?", "voz": "¿Y si cobrar no pasara por ti?" },
+    { "id": "tablero", "titulo": "Quién pagó, de un vistazo", "voz": "Ves quién pagó y quién debe. Y el recordatorio sale solo, antes de que venza y después, si hace falta." },
+    { "id": "alumno", "titulo": "Su pago, en su celular", "voz": "Tu alumno ve cuánto debe y cuándo vence, y sube su comprobante desde su celular." },
+    { "id": "gana", "titulo": "Tú, a dar clase", "voz": "Cobras a tiempo. Y la relación con tus alumnos se queda en las clases." },
+    { "id": "cierre", "titulo": "¿Persigues pagos cada mes?", "voz": "Si cada mes persigues pagos, te cuento cómo lo haría para tus clases. Entra a bodgar punto dev." }
+  ]
+}

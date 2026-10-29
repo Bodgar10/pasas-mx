@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Idiomas · pérdida: cobranza. Cada mes persigues pagos; 2 alumnos que nunca pagan = $3,200 al mes. Cifras de ejemplo.
+   El producto manda recordatorios/avisos; nunca se nombra un canal de mensajería como parte del producto. */
+/* 1 · Diccionario */
+.dic{padding-bottom:6px}
+.dpal{padding:40px 40px 0;font-family:B;font-weight:800;font-size:120px;line-height:1;letter-spacing:-.02em}
+.dfon{padding:14px 40px 0;font-family:M;font-size:34px;color:var(--gris)}
+.dsig{padding:8px 40px 30px;font-size:46px;font-weight:700;color:var(--terra2);border-bottom:1px solid var(--linea)}
+.deb{display:flex;align-items:center;gap:20px;padding:20px 40px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600;opacity:0}
+.deb:last-child{border-bottom:0}
+.deb .av{width:58px;height:58px;font-size:26px}
+.deb .der{margin-left:auto;font-family:M;font-weight:600;font-size:26px;color:var(--terra2);background:#FBEADF;padding:8px 14px;border-radius:12px}
+.deb.mas{color:var(--gris);font-family:M;font-size:26px}
+/* 2 · Chat con el alumno */
+.chead{display:flex;align-items:center;gap:20px;padding:24px 32px;border-bottom:1px solid var(--linea)}
+.chead .av{width:70px;height:70px;font-size:30px}
+.chead b{display:block;font-size:34px}.chead span{font-size:24px;color:var(--gris)}
+.chead .tag{margin-left:auto;font-family:M;font-size:22px;color:var(--gris)}
+.cuerpo{background:#EEF0EC;padding:28px 30px 26px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+.bub{max-width:640px;background:var(--verde2);color:var(--tinta);border-radius:30px 30px 8px 30px;padding:22px 28px 14px;font-size:32px;line-height:1.3;font-weight:500;opacity:0}
+.bub small{display:block;text-align:right;font-family:M;font-size:20px;color:var(--gris);margin-top:6px}
+.visto{font-family:M;font-weight:600;font-size:24px;color:var(--gris);opacity:0}
+.nlib{position:absolute;left:150px;right:150px;top:1310px;background:#FFF8E1;color:#3b3a33;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:22px 34px 24px;opacity:0;transform-origin:50% 0}
+.nlib .lt{font-family:B;font-weight:700;font-size:32px;color:var(--tinta);margin-bottom:8px}
+.nlib div.r{font-family:M;font-size:28px;line-height:1.55;display:flex;justify-content:space-between}
+.nlib .x{color:var(--terra2);font-weight:600}
+/* 3 · La cuenta */
+.num{font-family:B;font-weight:800;font-size:64px;width:120px;text-align:right}
+.lbl{font-size:30px;font-weight:600;color:var(--gris)}
+.op{font-family:M;font-weight:600;font-size:36px;color:var(--terra2);width:40px;text-align:center}
+.cfila{display:flex;align-items:center;gap:24px;padding:20px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.mens{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;padding:24px 36px 6px}
+.mens i{height:34px;border-radius:12px 12px 12px 4px;background:var(--arena)}
+.mens i.on{background:var(--terra)}
+/* 4 · La pérdida */
+.pfila{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600;opacity:0}
+.pfila .av{width:62px;height:62px;font-size:28px}
+.pfila small{display:block;font-size:24px;color:var(--gris);font-weight:600}
+.pfila .der{margin-left:auto;font-family:M;font-weight:600;font-size:30px;color:var(--terra2)}
+/* 6 · Tablero del maestro */
+.cobr{padding:30px 36px 10px}
+.cobr .k{font-size:28px;font-weight:600;color:var(--gris)}
+.cobr .v{display:flex;align-items:baseline;gap:14px;margin-top:4px}
+.cobr .v b{font-family:B;font-weight:800;font-size:86px;line-height:1;color:var(--verde)}
+.cobr .v span{font-size:32px;font-weight:600;color:var(--gris)}
+.barra{height:22px;border-radius:12px;background:var(--arena);margin:20px 0 14px;overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--verde);border-radius:12px}
+.tfila{display:flex;align-items:center;gap:20px;padding:20px 36px;border-top:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.tfila .av{width:58px;height:58px;font-size:26px}
+.est{margin-left:auto;font-family:M;font-weight:600;font-size:23px;padding:9px 14px;border-radius:12px;white-space:nowrap}
+.est.ok2{background:var(--verde2);color:#2c6a4f}
+.est.rec{background:#FBF1DC;color:#9a6a12}
+.est.hoy{background:#FBEADF;color:var(--terra2)}
+/* 7 · Celular del alumno */
+.atop{height:240px;background:var(--tinta);color:var(--crema);display:flex;flex-direction:column;justify-content:flex-end;padding:0 32px 22px}
+.atop small{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.atop b{font-size:38px}
+.noti{position:absolute;left:18px;right:18px;top:20px;background:#fff;border-radius:26px;box-shadow:0 14px 36px rgba(0,0,0,.25);padding:18px 22px;display:flex;gap:16px;align-items:center;opacity:0;z-index:3}
+.noti .ic{width:56px;height:56px;border-radius:16px;background:var(--terra);display:grid;place-items:center;color:#fff;font-family:B;font-weight:800;font-size:28px;flex:none}
+.noti p{margin:0;font-size:25px;font-weight:600;line-height:1.3}
+.noti p span{display:block;font-family:M;font-size:19px;color:var(--gris);font-weight:400}
+.mes{margin:26px 26px 0;padding:24px 26px;border-radius:24px;background:#fff;border:3px solid var(--linea)}
+.mes .k{font-family:M;font-weight:600;font-size:21px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.mes .m{font-family:B;font-weight:800;font-size:76px;line-height:1.1}
+.mes .vence{font-size:26px;font-weight:600;color:var(--terra2)}
+.subir{margin:22px 26px 0;background:var(--terra);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:27px;font-weight:700}
+.subir.ok2{background:var(--verde)}
+.hist{margin:24px 26px 0}
+.hist div{display:flex;justify-content:space-between;padding:14px 4px;border-bottom:1px solid var(--linea);font-size:25px;font-weight:600}
+.hist span{font-family:M;font-size:22px;color:#2c6a4f}
+/* 8 · Qué ganas */
+.gfila{display:flex;align-items:center;gap:22px;padding:28px 36px;border-bottom:1px solid var(--linea);font-size:36px;font-weight:600;opacity:0}
+.gfila:last-child{border-bottom:0}
+.gfila s{color:var(--gris)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · academias de idiomas</div>
+
+  <div class="tit" id="t-dia"><h1>Día 5 <em>del mes</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-mensajes"><h1>Tres mensajes. <em>Un visto.</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>24 mensajes <em>incómodos</em></h1><p>Ejemplo: 8 alumnos × 3 mensajes</p></div>
+  <div class="tit" id="t-perdida"><h1>≈ $3,200 <em>que se pierden</em></h1><p>Ejemplo: 2 alumnos × $1,600</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si cobrar <em>no pasara por ti?</em></h1></div>
+  <div class="tit" id="t-tablero"><h1>Quién pagó, <em>de un vistazo</em></h1></div>
+  <div class="tit" id="t-alumno"><h1>Su pago, <em>en su celular</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Tú, a <em>dar clase</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Persigues pagos <em>cada mes?</em></h1></div>
+
+  <!-- 1 · Diccionario: overdue -->
+  <div class="card dic" id="dic">
+    <div class="ccab"><span>Nº 04 · Cobranza</span><span>5 de noviembre</span></div>
+    <div class="dpal">overdue</div>
+    <div class="dfon">/ˌəʊ.vəˈdjuː/ adj.</div>
+    <div class="dsig">vencido</div>
+    <div class="deb" id="d1"><div class="av" style="background:#5B8DB8">L</div>Luis G.<span class="der">Debe noviembre</span></div>
+    <div class="deb" id="d2"><div class="av" style="background:#C99A3A">D</div>Diego R.<span class="der">Debe noviembre</span></div>
+    <div class="deb" id="d3"><div class="av" style="background:#6E9C82">A</div>Andrés T.<span class="der">Debe noviembre</span></div>
+    <div class="deb mas" id="d4">… y 5 más</div>
+  </div>
+
+  <!-- 2 · Chat con Luis -->
+  <div class="card" id="chat">
+    <div class="chead"><div class="av" style="background:#5B8DB8">L</div><div><b>Luis G.</b><span>Alumno · B1</span></div><span class="tag">Mensajes</span></div>
+    <div class="cuerpo">
+      <div class="bub" id="b1">Hola, Luis. Te recuerdo tu mensualidad de noviembre.<small>1 nov</small></div>
+      <div class="bub" id="b2">¿Pudiste ver lo del pago?<small>4 nov</small></div>
+      <div class="bub" id="b3">Luis, ¿me mandas tu comprobante?<small>5 nov</small></div>
+      <div class="visto" id="visto">Visto ✓✓</div>
+    </div>
+  </div>
+  <div class="nlib" id="nlib">
+    <div class="lt">Pagos · noviembre</div>
+    <div class="r"><span>Ana L.</span><span>✓</span></div>
+    <div class="r"><span>Carla P. · ¿transfirió?</span><span class="x">?</span></div>
+    <div class="r"><span>Luis G. · 3er mensaje</span><span class="x">✗</span></div>
+  </div>
+
+  <!-- 3 · La cuenta -->
+  <div class="card" id="cta">
+    <div class="ccab"><span>La cuenta · un mes</span><span class="ej">Ejemplo</span></div>
+    <div class="cfila" id="c1"><span class="op"></span><span class="num">40</span><span class="lbl">alumnos</span></div>
+    <div class="cfila" id="c2"><span class="op"></span><span class="num">8</span><span class="lbl">pagan tarde</span></div>
+    <div class="cfila" id="c3"><span class="op">×</span><span class="num">3</span><span class="lbl">mensajes a cada uno</span></div>
+    <div class="mens" id="mens"></div>
+    <div class="total"><span>Mensajes al mes</span><b id="ctot" style="color:var(--terra2)">0</b></div>
+  </div>
+
+  <!-- 4 · La pérdida -->
+  <div class="card" id="per">
+    <div class="ccab"><span>Nunca pagaron · un mes</span><span class="ej">Ejemplo</span></div>
+    <div class="pfila" id="p1"><div class="av" style="background:#9C7BB5">M</div><div>Mónica V.<small>mensualidad de noviembre</small></div><span class="der">−$1,600</span></div>
+    <div class="pfila" id="p2"><div class="av" style="background:#6E9C82">A</div><div>Andrés T.<small>mensualidad de noviembre</small></div><span class="der">−$1,600</span></div>
+    <div class="total"><span>Al mes</span><b id="ptot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Tablero del maestro -->
+  <div class="card" id="tab">
+    <div class="ccab"><span>Pagos de noviembre</span><span class="ej">Ejemplo</span></div>
+    <div class="cobr">
+      <div class="k">Cobrado</div>
+      <div class="v"><b id="tcob">$0</b><span>de $64,000</span></div>
+      <div class="barra"><i id="tbar"></i></div>
+    </div>
+    <div class="tfila" id="f1"><div class="av" style="background:#C96F4A">A</div>Ana L.<span class="est ok2">✓ Pagado</span></div>
+    <div class="tfila" id="f2"><div class="av" style="background:#9C7BB5">C</div>Carla P.<span class="est ok2">✓ Transferencia registrada</span></div>
+    <div class="tfila" id="f3"><div class="av" style="background:#5B8DB8">L</div>Luis G.<span class="est rec">Recordatorio enviado</span></div>
+    <div class="tfila" id="f4"><div class="av" style="background:#C99A3A">D</div>Diego R.<span class="est hoy">Vence hoy</span></div>
+  </div>
+
+  <!-- 7 · Celular del alumno -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="noti" id="noti"><div class="ic">!</div><p>Tu pago vence en 3 días<span>Tus clases · recordatorio</span></p></div>
+    <div class="atop"><small>Tus clases de inglés</small><b>Hola, Luis</b></div>
+    <div class="mes">
+      <div class="k">Noviembre</div>
+      <div class="m">$1,600</div>
+      <div class="vence">Vence el 5 de noviembre</div>
+    </div>
+    <div class="subir" id="subir">Ya transferí · subir comprobante</div>
+    <div class="hist">
+      <div>Octubre<span>✓ Pagado</span></div>
+      <div>Septiembre<span>✓ Pagado</span></div>
+    </div>
+  </div></div>
+
+  <!-- 8 · Qué ganas -->
+  <div class="card" id="gan">
+    <div class="ccab"><span>Tu mes</span><span>Con recordatorios</span></div>
+    <div class="gfila" id="g1"><span class="no">✕</span><s>Perseguir pagos</s></div>
+    <div class="gfila" id="g2"><span class="ok">✓</span>Cobras a tiempo</div>
+    <div class="gfila" id="g3"><span class="ok">✓</span>Con tus alumnos, solo clases</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Recordatorio</span><i>→</i><span>Comprobante</span><i>→</i><span class="v">Cobrado</span></div>
+    <p>Te cuento cómo lo haría para tus clases.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/idiomas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  var m = ''; for (var i = 0; i < 24; i++) m += '<i></i>';
+  $('mens').innerHTML = m;
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tapped = false;
+  // 1 · Diccionario
+  bloque($('dic'), 'dia', 'dia', t);
+  ['d1', 'd2', 'd3', 'd4'].forEach(function (id, i) { aparece(id, t, S.dia + 1.2 + i * 0.45, 50); });
+
+  // 2 · Chat
+  bloque($('chat'), 'mensajes', 'mensajes', t);
+  ['b1', 'b2', 'b3'].forEach(function (id, i) { pop($(id), t, S.mensajes + 0.5 + i * 0.7); });
+  aparece('visto', t, S.mensajes + 2.7);
+  var nq = clamp((t - S.mensajes - 3.6) / 0.4), no = 1 - clamp((t - (E.mensajes - 0.3)) / 0.4);
+  $('nlib').style.opacity = t < E.mensajes + 0.1 ? Math.min(nq, no) : 0;
+  $('nlib').style.transform = 'rotate(' + (-2.5 + 0 * nq) + 'deg) translateY(' + ((1 - easeOut(nq)) * 50) + 'px)';
+
+  // 3 · La cuenta
+  bloque($('cta'), 'cuenta', 'cuenta', t);
+  ['c1', 'c2', 'c3'].forEach(function (id, i) { aparece(id, t, S.cuenta + 0.4 + i * 0.6, 40); });
+  var n = 0;
+  document.querySelectorAll('#mens i').forEach(function (el, i) {
+    var at = S.cuenta + 2.4 + i * 0.12, on = t >= at; if (on) n = i + 1;
+    el.className = on ? 'on' : '';
+    el.style.transform = 'scale(' + (on ? 0.8 + 0.2 * back(clamp((t - at) / 0.25)) : 1) + ')';
+  });
+  $('ctot').textContent = n;
+
+  // 4 · La pérdida
+  bloque($('per'), 'perdida', 'perdida', t);
+  aparece('p1', t, S.perdida + 0.4, 50); aparece('p2', t, S.perdida + 0.9, 50);
+  $('ptot').textContent = '−' + pesos(Math.round(cuenta(t, S.perdida + 1.2, 1.6, 3200) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Tablero
+  bloque($('tab'), 'tablero', 'tablero', t);
+  var c = cuenta(t, S.tablero + 0.5, 2.0, 52800);
+  $('tcob').textContent = pesos(Math.round(c / 100) * 100);
+  $('tbar').style.width = (c / 64000 * 100) + '%';
+  ['f1', 'f2', 'f3', 'f4'].forEach(function (id, i) { aparece(id, t, S.tablero + 1.0 + i * 0.5, 50); });
+
+  // 7 · Celular del alumno
+  telefono($('phone'), 'alumno', 'alumno', t);
+  var nt = clamp((t - S.alumno - 0.9) / 0.35);
+  $('noti').style.opacity = nt; $('noti').style.transform = 'translateY(' + ((1 - easeOut(nt)) * -120) + 'px)';
+  var tapS = S.alumno + 3.0;
+  if (t > tapS - 0.5 && t < tapS + 0.4 && t < E.alumno) tapped = toque(t, tapS, $('subir'));
+  var ok = t >= tapS;
+  $('subir').textContent = ok ? '✓ Comprobante enviado' : 'Ya transferí · subir comprobante';
+  $('subir').classList.toggle('ok2', ok);
+
+  // 8 · Qué ganas
+  bloque($('gan'), 'gana', 'gana', t);
+  ['g1', 'g2', 'g3'].forEach(function (id, i) { aparece(id, t, S.gana + 0.4 + i * 0.6, 50); });
+  return tapped;
+};
+</script>
+</body></html>
