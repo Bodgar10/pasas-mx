@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · eficiencia: cada guía de paquetería se captura a mano copiando el pedido. Cifras de ejemplo. */
+/* 1 · La hora */
+.reloj{display:flex;align-items:center;gap:30px;padding:34px 36px;border-bottom:1px solid var(--linea)}
+.reloj b{font-family:B;font-weight:800;font-size:130px;line-height:1}
+.reloj span{font-size:30px;font-weight:600;color:var(--gris);line-height:1.3}
+.reloj span strong{color:var(--terra2)}
+.pf{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pf:last-child{border-bottom:0}
+.pf small{display:block;font-size:24px;color:var(--gris)}
+.pf .st{margin-left:auto;font-family:M;font-weight:600;font-size:22px;padding:10px 14px;border-radius:12px;white-space:nowrap;background:#FBEADF;color:var(--terra2)}
+.pf .st.v{background:var(--verde2);color:var(--verde)}
+/* 2 · Copiar y pegar */
+.pane{padding:6px 0 10px}
+.pcab{display:flex;justify-content:space-between;align-items:center;padding:20px 36px;font-family:M;font-weight:600;font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2);background:var(--suave);border-bottom:1px solid var(--linea)}
+.pcab span:last-child{color:var(--gris)}
+.dato{display:flex;gap:16px;align-items:baseline;padding:16px 36px;font-size:29px;font-weight:600;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato span{width:170px;flex:none;font-family:M;font-size:22px;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
+.dato.sel b{background:rgba(201,111,74,.22);border-radius:6px;padding:0 6px}
+.puente{display:flex;align-items:center;justify-content:center;gap:18px;padding:16px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--arena);font-family:M;font-weight:600;font-size:24px;color:#8a7a66}
+.puente i{font-style:normal;font-size:34px;color:var(--terra)}
+.campo{display:flex;align-items:center;gap:16px;padding:12px 36px}
+.campo>span{width:170px;flex:none;font-family:M;font-size:22px;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
+.campo div{flex:1;min-height:58px;border:2px solid var(--linea);border-radius:14px;padding:10px 16px;font-size:28px;font-weight:600;white-space:nowrap;overflow:hidden}
+.campo div.on{border-color:var(--terra)}
+.cur{display:inline-block;width:3px;height:30px;background:var(--tinta);vertical-align:-5px;margin-left:2px}
+/* 3 · El error */
+.cmp{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--linea)}
+.cmp div{padding:26px 30px;text-align:center}
+.cmp div+div{border-left:1px solid var(--linea)}
+.cmp span{display:block;font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.cmp b{display:block;margin-top:10px;font-family:M;font-weight:600;font-size:64px;letter-spacing:.02em}
+.cmp b em{font-style:normal;color:var(--terra2);background:#FBEADF;border-radius:8px;padding:0 4px}
+.paso{position:relative;display:flex;align-items:center;gap:22px;padding:22px 36px;font-size:31px;font-weight:700;opacity:0}
+.paso .pt{width:46px;height:46px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-items:center;font-size:24px;flex:none}
+.paso.mal .pt{background:var(--terra)}
+.paso.mal{color:var(--terra2)}
+.paso small{display:block;font-size:24px;font-weight:600;color:var(--gris)}
+/* 4 · La cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:190px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* 6 · Entra solo */
+.enlace{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.nodo{display:flex;align-items:center;gap:14px;font-size:28px;font-weight:700}
+.nodo i{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-style:normal;font-size:30px;color:#fff;background:var(--tinta)}
+.nodo.b i{background:var(--verde)}
+.puntos{flex:1;height:8px;position:relative;margin:0 6px}
+.puntos s{position:absolute;top:0;width:14px;height:14px;margin-top:-3px;border-radius:50%;background:var(--terra)}
+.pd{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:30px;font-weight:700;opacity:0}
+.pd>div{flex:1;min-width:0}
+.pd:last-child{border-bottom:0}
+.pd small{display:block;font-size:24px;font-weight:600;color:var(--gris)}
+.pd .ok{margin-left:auto}
+/* 7 · Báscula */
+.bas{display:flex;align-items:center;gap:30px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.lcd{background:#1b2a26;color:#9BE3B9;font-family:M;font-weight:600;font-size:76px;padding:16px 28px;border-radius:20px;min-width:330px;text-align:right;box-shadow:inset 0 0 0 4px #2c4540}
+.bas span{font-size:28px;font-weight:600;color:var(--gris);line-height:1.35}
+.bas span b{color:var(--tinta)}
+.auto{display:flex;align-items:center;gap:16px;padding:16px 36px;border-bottom:1px solid var(--linea);font-size:29px;font-weight:600;opacity:0}
+.auto:last-child{border-bottom:0}
+.auto>span{width:170px;flex:none;font-family:M;font-size:22px;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
+.auto em{margin-left:auto;font-style:normal;font-family:M;font-size:20px;color:var(--verde);background:var(--verde2);padding:6px 12px;border-radius:10px;white-space:nowrap}
+.auto .ok{width:44px;height:44px;font-size:22px}
+/* 8 · Imprime */
+#impr{position:absolute;left:0;right:0;top:620px;height:920px;opacity:0}
+.boton{position:absolute;left:50%;top:0;transform:translateX(-50%);background:var(--terra);color:#fff;border-radius:24px;padding:26px 46px;font-size:36px;font-weight:700;white-space:nowrap;box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.boton.listo{background:var(--verde)}
+.impresora{position:absolute;left:190px;right:190px;top:150px;height:170px;border-radius:30px;background:#2c4540;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.impresora::after{content:"";position:absolute;left:70px;right:70px;bottom:34px;height:14px;border-radius:7px;background:#0c1513}
+.impresora i{position:absolute;right:36px;top:30px;width:22px;height:22px;border-radius:50%;background:#9BE3B9;box-shadow:0 0 12px #9BE3B9}
+.recorte{position:absolute;left:250px;right:250px;top:300px;height:620px;overflow:hidden}
+.etiqueta{position:absolute;left:0;right:0;top:0;height:600px;background:#fff;color:var(--tinta);border-radius:0 0 18px 18px;padding:30px 34px;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.etiqueta .de{font-family:M;font-size:20px;color:var(--gris);text-transform:uppercase;letter-spacing:.08em}
+.etiqueta .para{margin-top:10px;font-size:32px;font-weight:700;line-height:1.25}
+.etiqueta .para small{display:block;font-size:26px;font-weight:600;color:#4b5b56}
+.etiqueta .cp{display:inline-block;margin-top:14px;font-family:M;font-weight:600;font-size:30px;background:var(--verde2);color:var(--verde);padding:4px 12px;border-radius:8px}
+.barras{margin:26px 0 12px;height:120px;background:repeating-linear-gradient(90deg,#1F332E 0 5px,transparent 5px 9px,#1F332E 9px 11px,transparent 11px 17px,#1F332E 17px 24px,transparent 24px 28px)}
+.etiqueta .pie{display:flex;justify-content:space-between;font-family:M;font-weight:600;font-size:24px}
+/* 9 · Gana */
+.tarea{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);font-size:33px;font-weight:700;opacity:0}
+.tarea:last-child{border-bottom:0}
+.tarea.off{color:#B9B2A6;text-decoration:line-through}
+.tarea.off .no{background:#C9C2B5}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-hora"><h1>10:15 <em>AM</em></h1></div>
+  <div class="tit" id="t-copia"><h1>Copiar y <em>pegar</em></h1></div>
+  <div class="tit" id="t-error"><h1>Un número <em>mal copiado</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ 40 horas <em>al mes</em></h1><p>Ejemplo: 300 pedidos × 8 min</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si se armara <em>sola?</em></h1></div>
+  <div class="tit" id="t-entra"><h1>El pedido <em>entra solo</em></h1></div>
+  <div class="tit" id="t-bascula"><h1>La báscula <em>pone el peso</em></h1></div>
+  <div class="tit" id="t-imprime"><h1>Imprime <em>y pega</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Horas que <em>regresan</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Capturas cada <em>guía a mano?</em></h1></div>
+
+  <!-- 1 · La hora -->
+  <div class="card" id="hora">
+    <div class="ccab"><span>Hoy · envíos</span><span>Bodega</span></div>
+    <div class="reloj"><b>10:15</b><span><strong>14 pedidos</strong><br>esperan su guía</span></div>
+    <div class="pf" id="p1">Pedido #5120<small>Moda Luna · Andrea R.</small><span class="st">Sin guía</span></div>
+    <div class="pf" id="p2">Pedido #5121<small>Café Tierra · Mario G.</small><span class="st">Sin guía</span></div>
+    <div class="pf" id="p3">Pedido #5122<small>Nube Store · Laura P.</small><span class="st">Sin guía</span></div>
+  </div>
+
+  <!-- 2 · Copiar y pegar -->
+  <div class="card" id="copia">
+    <div class="pcab"><span>Tienda en línea · #5120</span><span>Pestaña 1</span></div>
+    <div class="pane">
+      <div class="dato" id="d1"><span>Dirección</span><b>Calle Fresno 18, Col. Del Valle</b></div>
+      <div class="dato" id="d2"><span>C.P.</span><b>03100</b></div>
+    </div>
+    <div class="puente"><i>⧉</i>copiar <i>→</i> pegar · pedido por pedido</div>
+    <div class="pcab"><span>La paquetería · nueva guía</span><span>Pestaña 2</span></div>
+    <div class="pane">
+      <div class="campo"><span>Dirección</span><div id="f1"></div></div>
+      <div class="campo"><span>C.P.</span><div id="f2"></div></div>
+      <div class="campo"><span>Peso</span><div id="f3"></div></div>
+      <div class="campo"><span>Medidas</span><div id="f4"></div></div>
+    </div>
+  </div>
+
+  <!-- 3 · El error -->
+  <div class="card" id="error">
+    <div class="ccab"><span>Guía · pedido #5120</span><span>Rastreo</span></div>
+    <div class="cmp"><div><span>En el pedido</span><b>03100</b></div><div><span>En la guía</span><b>03<em>01</em>0</b></div></div>
+    <div class="paso" id="s1"><span class="pt">✓</span><div>En camino<small>Salió de la bodega</small></div></div>
+    <div class="paso mal" id="s2"><span class="pt">!</span><div>Dirección no encontrada<small>Intento de entrega</small></div></div>
+    <div class="paso mal" id="s3"><span class="pt">↩</span><div>Devuelto a la bodega<small>Hay que enviarlo otra vez</small></div></div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>300</b><span>pedidos al mes</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>8 min</b><span>para capturar cada guía</span></div>
+    <div class="term" id="e3"><span class="op">=</span><b>2,400</b><span>minutos</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">0 h</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Entra solo -->
+  <div class="card" id="entra">
+    <div class="ccab"><span>Pedidos nuevos</span><span>Sin capturar</span></div>
+    <div class="enlace">
+      <div class="nodo"><i>🛒</i>Tienda en línea</div>
+      <div class="puntos" id="puntos"><s></s><s></s><s></s></div>
+      <div class="nodo b"><i>▦</i>Bodega</div>
+    </div>
+    <div class="pd" id="n1"><div>#5120 · Andrea R.<small>Calle Fresno 18, Col. Del Valle · C.P. 03100</small></div><span class="ok">✓</span></div>
+    <div class="pd" id="n2"><div>#5121 · Mario G.<small>Av. Hidalgo 402, Centro · C.P. 76000</small></div><span class="ok">✓</span></div>
+    <div class="pd" id="n3"><div>#5122 · Laura P.<small>Calle Roble 7, Jardines · C.P. 45050</small></div><span class="ok">✓</span></div>
+  </div>
+
+  <!-- 7 · Báscula -->
+  <div class="card" id="bascula">
+    <div class="ccab"><span>Empaque · pedido #5120</span><span>Guía</span></div>
+    <div class="bas"><div class="lcd" id="lcd">0.00 kg</div><span>Caja M<br><b>30 × 20 × 15 cm</b></span></div>
+    <div class="auto" id="a1"><span>Dirección</span><b>Calle Fresno 18…</b><em>del pedido</em></div>
+    <div class="auto" id="a2"><span>C.P.</span><b>03100</b><em>del pedido</em></div>
+    <div class="auto" id="a3"><span>Peso</span><b>1.25 kg</b><em>de la báscula</em></div>
+    <div class="auto" id="a4"><span>Medidas</span><b>30 × 20 × 15</b><em>de la caja</em></div>
+  </div>
+
+  <!-- 8 · Imprime -->
+  <div id="impr">
+    <div class="boton" id="boton">Imprimir guía</div>
+    <div class="impresora"><i></i></div>
+    <div class="recorte"><div class="etiqueta" id="etq">
+      <div class="de">Envío · pedido #5120</div>
+      <div class="para">Andrea R.<small>Calle Fresno 18<br>Col. Del Valle, CDMX</small></div>
+      <div class="cp">C.P. 03100</div>
+      <div class="barras"></div>
+      <div class="pie"><span>1.25 kg</span><span>30×20×15</span></div>
+    </div></div>
+  </div>
+
+  <!-- 9 · Gana -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>El tiempo de tu equipo</span><span>Se usa en</span></div>
+    <div class="tarea off" id="g1"><span class="no">✕</span>Copiar pedidos a mano</div>
+    <div class="tarea" id="g2"><span class="ok">✓</span>Surtir pedidos</div>
+    <div class="tarea" id="g3"><span class="ok">✓</span>Empacar</div>
+    <div class="tarea" id="g4"><span class="ok">✓</span>Enviar a tiempo</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Pedido</span><i>→</i><span>Báscula</span><i>→</i><span class="v">Guía lista</span></div>
+    <p>Te cuento cómo lo haría para tu operación.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var CAMPOS = [['f1', 'Calle Fresno 18, Col. Del Valle'], ['f2', '03100'], ['f3', '1.25 kg'], ['f4', '30 × 20 × 15 cm']];
+function escribe(t, a, b) {
+  // Escribe los campos uno tras otro entre a y b; el cursor va en el campo activo.
+  var total = 0; CAMPOS.forEach(function (c) { total += c[1].length + 6; });
+  var n = clamp((t - a) / (b - a)) * total, ac = 0;
+  CAMPOS.forEach(function (c) {
+    var L = c[1].length, k = Math.max(0, Math.min(L, Math.floor(n - ac))), el = $(c[0]);
+    var activo = n >= ac && n < ac + L + 6;
+    el.innerHTML = c[1].slice(0, k) + (activo ? '<span class="cur"></span>' : '');
+    el.className = activo ? 'on' : '';
+    ac += L + 6;
+  });
+  var sel = -1, acc = 0;
+  CAMPOS.forEach(function (c, i) { if (n >= acc && n < acc + c[1].length + 6) sel = i; acc += c[1].length + 6; });
+  $('d1').className = 'dato' + (sel === 0 ? ' sel' : '');
+  $('d2').className = 'dato' + (sel === 1 ? ' sel' : '');
+}
+window.escena = function (t) {
+  // 1 · La hora
+  bloque($('hora'), 'hora', 'hora', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.hora + 0.5 + i * 0.4, 50); });
+
+  // 2 · Copiar y pegar
+  bloque($('copia'), 'copia', 'copia', t);
+  escribe(t, S.copia + 0.6, E.copia - 0.6);
+
+  // 3 · El error
+  bloque($('error'), 'error', 'error', t);
+  ['s1', 's2', 's3'].forEach(function (id, i) { aparece(id, t, S.error + 0.8 + i * 0.9, 50); });
+
+  // 4 · La cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  ['e1', 'e2', 'e3'].forEach(function (id, i) { aparece(id, t, S.cuenta + 0.4 + i * 0.8, 50); });
+  $('eres').textContent = Math.round(cuenta(t, S.cuenta + 2.9, 1.3, 40)) + ' h';
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Entra solo
+  bloque($('entra'), 'entra', 'entra', t);
+  document.querySelectorAll('#puntos s').forEach(function (s, i) {
+    var p = ((t * 0.7 + i / 3) % 1); s.style.left = (p * 100) + '%'; s.style.opacity = Math.sin(p * Math.PI);
+  });
+  ['n1', 'n2', 'n3'].forEach(function (id, i) { aparece(id, t, S.entra + 0.8 + i * 0.7, 50); });
+
+  // 7 · Báscula
+  bloque($('bascula'), 'bascula', 'bascula', t);
+  $('lcd').textContent = cuenta(t, S.bascula + 0.4, 1.0, 1.25).toFixed(2) + ' kg';
+  ['a1', 'a2', 'a3', 'a4'].forEach(function (id, i) { aparece(id, t, S.bascula + 1.2 + i * 0.4, 50); });
+
+  // 8 · Imprime
+  var im = $('impr');
+  var ii = easeOut(clamp((t - S.imprime - 0.05) / 0.5)), io = easeOut(clamp((t - (E.imprime - 0.3)) / 0.4));
+  im.style.opacity = (t >= S.imprime && t < E.imprime + 0.1) ? Math.min(ii, 1 - io) : 0;
+  im.style.transform = 'translateY(' + ((1 - ii) * 120 - io * 60) + 'px)';
+  var tapT = S.imprime + 0.6, tapped = false;
+  if (t > tapT - 0.5 && t < tapT + 0.4) tapped = toque(t, tapT, $('boton'));
+  var hecho = t >= tapT;
+  $('boton').textContent = hecho ? '✓ Guía impresa' : 'Imprimir guía';
+  $('boton').className = 'boton' + (hecho ? ' listo' : '');
+  var pe = easeOut(clamp((t - tapT - 0.2) / 1.3));
+  $('etq').style.transform = 'translateY(' + (-600 + 600 * pe) + 'px)';
+
+  // 9 · Gana
+  bloque($('gana'), 'gana', 'gana', t);
+  ['g1', 'g2', 'g3', 'g4'].forEach(function (id, i) { aparece(id, t, S.gana + 0.4 + i * 0.4, 50); });
+  return tapped;
+};
+</script>
+</body></html>
