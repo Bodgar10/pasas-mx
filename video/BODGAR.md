@@ -13,7 +13,7 @@ Si no hay JSON para ese día, llega un correo corto avisando. Cada correo dice c
 
 **Para rehacer o probar** sin esperar la hora: Actions → "Videos de bodgar.dev" → Run workflow (fecha opcional; `enviar` en falso para solo bajar los archivos de la corrida).
 
-**Videos extra fuera del calendario** (por ejemplo, un sector nuevo como idiomas): el JSON va en `data/bodgar/extra/<nombre>.json` (no cuenta como programado) y se manda con Run workflow → `data` = `data/bodgar/extra/<nombre>.json`. Uno por corrida.
+**Videos extra fuera del calendario** (por ejemplo, un sector nuevo como idiomas): el JSON va en `data/bodgar/extra/<nombre>.json` (no cuenta como programado) y se manda con Run workflow → `data` = `data/bodgar/extra/<nombre>.json`. Uno por corrida, y espera a que termine antes de lanzar el siguiente: GitHub deja solo una corrida en espera y cancela las demás.
 
 ## Calendario
 
