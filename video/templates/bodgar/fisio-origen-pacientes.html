@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · crecimiento: no saber de dónde llegan los pacientes que sí pagan tratamiento. Cifras de ejemplo.
+   40 primeras citas: redes 20 → 4 tratamientos; recomendación 12 → 8; búsqueda en internet 8 → 3. Total 15. */
+:root{--c-redes:#C96F4A;--c-reco:#3E8E6A;--c-bus:#E0A63A}
+/* Puntos de pacientes */
+.pts{display:grid;grid-template-columns:repeat(10,1fr);gap:18px;padding:34px 40px 30px}
+.pts i{aspect-ratio:1;border-radius:50%;background:#C9C2B5;transform:scale(0);position:relative}
+.pts i.pago::after{content:'✓';position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:30px;font-weight:700;font-style:normal}
+.qm{font-family:B;font-weight:800;font-size:90px;color:var(--terra2)}
+.fila .no{font-family:B;font-weight:800}
+.leyenda{display:flex;gap:26px;flex-wrap:wrap;padding:0 40px 30px;font-size:26px;font-weight:600;color:var(--gris)}
+.leyenda span{display:flex;align-items:center;gap:10px}
+.leyenda i{width:24px;height:24px;border-radius:50%;display:inline-block}
+/* Ficha sin origen */
+.dato{display:flex;justify-content:space-between;align-items:center;padding:26px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600}
+.dato span{color:var(--gris);font-size:28px}
+.dato.vacio{background:#FBEADF}
+.dato.vacio b{font-family:M;color:var(--terra2);font-size:30px}
+.sello{display:inline-block;margin:26px 36px 30px;font-family:M;font-weight:600;font-size:26px;background:var(--arena);color:#8a7a66;padding:10px 16px;border-radius:12px;opacity:0}
+/* Teléfono: ficha de primera cita */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.pac{display:flex;align-items:center;gap:18px;padding:26px 28px 10px}
+.pac .av{background:#7B8FA6}
+.pac b{display:block;font-size:30px}.pac small{font-size:23px;color:var(--gris);font-weight:600}
+.preg{padding:22px 28px 8px;font-size:30px;font-weight:700}
+.opc{margin:14px 28px 0;padding:22px 24px;border-radius:18px;border:3px solid var(--linea);font-size:28px;font-weight:600;display:flex;align-items:center;gap:16px;opacity:0}
+.opc i{width:30px;height:30px;border-radius:50%;border:3px solid var(--gris);flex:none}
+.opc.sel{border-color:var(--verde);background:var(--verde2)}
+.opc.sel i{border-color:var(--verde);background:var(--verde);box-shadow:inset 0 0 0 5px var(--verde2)}
+.btnc{position:absolute;left:26px;right:26px;bottom:44px;background:var(--tinta);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:28px;font-weight:700;opacity:0}
+.btnc.ok2{background:var(--verde)}
+/* Reporte por canal */
+.canal{padding:26px 36px 24px;border-bottom:1px solid var(--linea);opacity:0}
+.canal:last-of-type{border-bottom:0}
+.canal .nom{display:flex;justify-content:space-between;align-items:baseline;font-size:31px;font-weight:700}
+.canal .nom span{font-family:M;font-size:25px;font-weight:600;color:var(--gris)}
+.canal .nom span b{color:var(--tinta)}
+.bar{margin-top:14px;height:30px;border-radius:10px;background:var(--arena);position:relative;overflow:hidden}
+.bar .c{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:10px;opacity:.35}
+.bar .t{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:10px}
+.clave{display:flex;gap:30px;padding:20px 36px 28px;border-top:1px solid var(--linea);font-size:24px;font-weight:600;color:var(--gris)}
+.clave span{display:flex;align-items:center;gap:10px}
+.clave i{width:36px;height:18px;border-radius:6px;background:var(--tinta);display:inline-block}
+.clave i.c{opacity:.35}
+/* Comparación */
+.comp{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.lado{padding:36px 30px 34px;text-align:center;opacity:0}
+.lado+.lado{border-left:1px solid var(--linea)}
+.lado small{display:block;font-family:M;font-weight:600;font-size:24px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.lado b{display:block;margin-top:18px;font-family:B;font-weight:800;font-size:96px;line-height:1}
+.lado span{display:block;margin-top:12px;font-size:27px;font-weight:600;color:var(--gris);line-height:1.25}
+.lado.g b{color:var(--verde)}.lado.p b{color:var(--terra2)}
+.dec{padding:26px 36px 32px;border-top:1px solid var(--linea);font-size:30px;font-weight:600;line-height:1.3;opacity:0}
+.dec b{color:var(--verde)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-gasto"><h1>40 primeras <em>citas</em></h1><p>Ejemplo · este mes</p></div>
+  <div class="tit" id="t-cuales"><h1>¿Quién se <em>quedó?</em></h1></div>
+  <div class="tit" id="t-nadie"><h1>Nadie lo <em>anotó</em></h1></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>supieras?</em></h1></div>
+  <div class="tit" id="t-ficha"><h1>Se anota en la <em>primera cita</em></h1></div>
+  <div class="tit" id="t-cruza"><h1>Se cruza con el <em>tratamiento</em></h1></div>
+  <div class="tit" id="t-reporte"><h1>El reporte <em>del mes</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-decides"><h1>Tú decides <em>dónde invertir</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>Invierte donde <em>se quedan</em></h1></div>
+
+  <!-- 1, 2 y 6 · Las 40 primeras citas -->
+  <div class="card" id="citas">
+    <div class="ccab"><span id="ccab">Primeras citas · octubre</span><span class="ej">Ejemplo</span></div>
+    <div class="fila" id="anuncio"><span class="ok" style="background:var(--terra)">$</span>Anuncios en redes<span class="der" style="color:var(--gris)">Pagado</span></div>
+    <div class="pts" id="pts"></div>
+    <div class="leyenda" id="leyenda" style="display:none">
+      <span><i style="background:var(--c-redes)"></i>Redes</span>
+      <span><i style="background:var(--c-reco)"></i>Recomendación</span>
+      <span><i style="background:var(--c-bus)"></i>Búsqueda</span>
+    </div>
+    <div class="total"><span id="tlab">Primeras citas</span><b id="tnum">0</b></div>
+  </div>
+
+  <!-- 3 · Ficha sin origen -->
+  <div class="card" id="fichav">
+    <div class="ccab"><span>Expediente</span><span>Recepción</span></div>
+    <div class="dato">Laura G.<span>Rodilla</span></div>
+    <div class="dato">Primera cita<span>14 oct · 10:00</span></div>
+    <div class="dato">Tratamiento<span>8 sesiones · pagado</span></div>
+    <div class="dato vacio" id="vacio">¿Cómo nos conoció?<b>— sin dato</b></div>
+    <div class="sello" id="sello">Igual en las 40 primeras citas</div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 5 · Primera cita en recepción -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Primera cita</b><span>Recepción</span></div>
+    <div class="pac"><div class="av">L</div><div><b>Laura G.</b><small>Rodilla · hoy 10:00</small></div></div>
+    <div class="preg">¿Cómo nos conociste?</div>
+    <div class="opc" id="o1"><i></i>Anuncio en redes</div>
+    <div class="opc" id="o2"><i></i>Recomendación</div>
+    <div class="opc" id="o3"><i></i>Búsqueda en internet</div>
+    <div class="btnc" id="btnc">Guardar</div>
+  </div></div>
+
+  <!-- 7 · Reporte por canal -->
+  <div class="card" id="reporte">
+    <div class="ccab"><span>Reporte · octubre</span><span class="ej">Ejemplo</span></div>
+    <div class="canal" id="k1"><div class="nom">Anuncios en redes<span><b>20</b> citas · <b>4</b> trat.</span></div><div class="bar"><i class="c" style="background:var(--c-redes)"></i><i class="t" style="background:var(--c-redes)"></i></div></div>
+    <div class="canal" id="k2"><div class="nom">Recomendación<span><b>12</b> citas · <b>8</b> trat.</span></div><div class="bar"><i class="c" style="background:var(--c-reco)"></i><i class="t" style="background:var(--c-reco)"></i></div></div>
+    <div class="canal" id="k3"><div class="nom">Búsqueda en internet<span><b>8</b> citas · <b>3</b> trat.</span></div><div class="bar"><i class="c" style="background:var(--c-bus)"></i><i class="t" style="background:var(--c-bus)"></i></div></div>
+    <div class="clave"><span><i class="c"></i>Primeras citas</span><span><i></i>Pagaron tratamiento</span></div>
+  </div>
+
+  <!-- 8 · Comparación -->
+  <div class="card" id="decide">
+    <div class="ccab"><span>Pagaron tratamiento</span><span class="ej">Ejemplo</span></div>
+    <div class="comp">
+      <div class="lado g" id="l1"><small>Recomendación</small><b>8 de 12</b><span>citas</span></div>
+      <div class="lado p" id="l2"><small>Anuncios en redes</small><b>4 de 20</b><span>citas</span></div>
+    </div>
+    <div class="dec" id="dec">Tu presupuesto va a lo que trae <b>tratamientos</b>, no solo citas.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Primera cita</span><i>→</i><span>Origen</span><i>→</i><span class="v">Qué canal paga</span></div>
+    <p>Invierte donde llegan tratamientos, no solo citas.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+// 40 pacientes: canal y si pagó tratamiento. Redes 20 (4 pagan), recomendación 12 (8), búsqueda 8 (3).
+var PAC = [];
+window.prepara = function () {
+  var lista = [], i;
+  for (i = 0; i < 20; i++) lista.push({ c: 'var(--c-redes)', p: i < 4 });
+  for (i = 0; i < 12; i++) lista.push({ c: 'var(--c-reco)', p: i < 8 });
+  for (i = 0; i < 8; i++) lista.push({ c: 'var(--c-bus)', p: i < 3 });
+  var s = 7; // barajado fijo
+  for (i = lista.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; var j = Math.floor(s / 233280 * (i + 1)); var x = lista[i]; lista[i] = lista[j]; lista[j] = x; }
+  PAC = lista;
+  var h = ''; for (i = 0; i < 40; i++) h += '<i></i>'; $('pts').innerHTML = h;
+};
+window.escena = function (t) {
+  // 1, 2 y 6 · Tarjeta de citas
+  var enA = t >= S.gasto && t < E.cuales + 0.1, enC = t >= S.cruza && t < E.cruza + 0.1;
+  if (enA) bloque($('citas'), 'gasto', 'cuales', t); else if (enC) bloque($('citas'), 'cruza', 'cruza', t); else $('citas').style.opacity = 0;
+  $('anuncio').style.display = enC ? 'none' : '';
+  $('leyenda').style.display = enC ? '' : 'none';
+  $('ccab').textContent = enC ? 'Primeras citas por origen' : 'Primeras citas · octubre';
+  var dots = document.querySelectorAll('#pts i');
+  dots.forEach(function (d, i) {
+    var at = enC ? S.cruza + 0.2 : S.gasto + 0.5 + i * 0.03;
+    d.style.transform = 'scale(' + easeOut(clamp((t - at) / 0.25)) + ')';
+    var col = enC && t >= S.cruza + 0.5 + i * 0.02;
+    d.style.background = col ? PAC[i].c : '#C9C2B5';
+    var paga = enC && t >= S.cruza + 1.6 + i * 0.015;
+    d.style.opacity = paga && !PAC[i].p ? 0.3 : 1;
+    d.classList.toggle('pago', paga && PAC[i].p);
+    if (!enC && t >= S.cuales + 0.3) d.style.opacity = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(t * 5 + i));
+  });
+  var tn = $('tnum'), tl = $('tlab');
+  if (enC) { tl.textContent = 'Pagaron tratamiento'; tn.textContent = Math.round(cuenta(t, S.cruza + 1.6, 1.2, 15)); tn.style.color = 'var(--verde)'; tn.className = ''; }
+  else if (t >= S.cuales) { tl.textContent = 'Pagaron tratamiento'; tn.textContent = '?'; tn.style.color = 'var(--terra2)'; tn.className = 'qm'; }
+  else { tl.textContent = 'Primeras citas'; tn.textContent = Math.round(cuenta(t, S.gasto + 0.5, 1.4, 40)); tn.style.color = ''; tn.className = ''; }
+
+  // 3 · Ficha sin origen
+  bloque($('fichav'), 'nadie', 'nadie', t);
+  pop($('vacio'), t, S.nadie + 0.8);
+  aparece('sello', t, S.nadie + 2.2);
+
+  // 4 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 5 · Recepción marca el origen
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.ficha) / 0.6)), pout = easeOut(clamp((t - (E.ficha - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.ficha && t < E.ficha + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  ['o1', 'o2', 'o3'].forEach(function (id, i) { aparece(id, t, S.ficha + 0.8 + i * 0.35, 40); });
+  aparece('btnc', t, S.ficha + 2.0);
+  var tapO = S.ficha + 3.0, tapG = S.ficha + 4.3, tapped = false;
+  if (t > tapO - 0.5 && t < tapO + 0.4) tapped = toque(t, tapO, $('o2'));
+  if (t > tapG - 0.5 && t < tapG + 0.4 && t < E.ficha) tapped = toque(t, tapG, $('btnc')) || tapped;
+  $('o2').classList.toggle('sel', t >= tapO);
+  $('btnc').textContent = t >= tapG ? '✓ Origen guardado' : 'Guardar';
+  $('btnc').classList.toggle('ok2', t >= tapG);
+
+  // 7 · Reporte
+  bloque($('reporte'), 'reporte', 'reporte', t);
+  var datos = [[20, 4], [12, 8], [8, 3]];
+  ['k1', 'k2', 'k3'].forEach(function (id, i) {
+    var at = S.reporte + 0.6 + i * 1.9;
+    aparece(id, t, at, 40);
+    var c = $(id).querySelector('.c'), tr = $(id).querySelector('.t');
+    c.style.width = (datos[i][0] / 20 * 100 * easeOut(clamp((t - at - 0.2) / 0.6))) + '%';
+    tr.style.width = (datos[i][1] / 20 * 100 * easeOut(clamp((t - at - 0.9) / 0.6))) + '%';
+  });
+
+  // 8 · Tú decides
+  bloque($('decide'), 'decides', 'decides', t);
+  pop($('l1'), t, S.decides + 0.5); pop($('l2'), t, S.decides + 0.9);
+  aparece('dec', t, S.decides + 1.8);
+  return tapped;
+};
+</script>
+</body></html>
