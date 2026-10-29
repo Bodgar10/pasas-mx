@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Idiomas 1 de 4 · Tu tope: cada hora es un alumno. Club de conversación con cupo → misma hora para 8.
+   Cifras de ejemplo de la landing (clase $250; club 8 × $200 = $1,600). */
+/* 1 · Semana llena */
+.sem{display:grid;grid-template-columns:100px repeat(5,1fr);gap:10px;padding:26px 30px 10px}
+.sem .h{font-family:M;font-weight:600;font-size:24px;color:var(--gris);text-align:center;padding-bottom:4px}
+.sem .hr{font-family:M;font-weight:600;font-size:23px;color:var(--gris);display:flex;align-items:center}
+.sem .c{height:92px;border-radius:14px;background:var(--suave);border:3px dashed #cfdad6;position:relative}
+.sem .c b{position:absolute;inset:-3px;border-radius:14px;background:var(--verde2);color:var(--verde);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:24px;font-weight:700;opacity:0}
+.sem .c b small{font-family:M;font-weight:600;font-size:18px;color:#6aa286;margin-top:2px}
+.cont{display:flex;justify-content:space-between;align-items:baseline;padding:20px 36px 30px;border-top:1px solid var(--linea);margin-top:16px}
+.cont span{font-size:32px;font-weight:600;color:var(--gris)}
+.cont b{font-family:B;font-weight:800;font-size:80px;color:var(--terra2)}
+/* 2 · Mensaje de alguien nuevo */
+.chat{padding:30px 32px 34px;background:#EEF1EE}
+.burb{max-width:84%;padding:22px 26px;border-radius:26px;font-size:32px;font-weight:600;line-height:1.3;opacity:0}
+.burb small{display:block;margin-top:8px;font-family:M;font-size:20px;color:var(--gris);text-align:right}
+.burb.el{background:#fff;border-top-left-radius:8px}
+.burb.yo{margin:22px 0 0 auto;background:#E2EFE7;border-top-right-radius:8px}
+.quien{display:flex;align-items:center;gap:18px;padding:22px 32px;border-bottom:1px solid var(--linea)}
+.quien div b{display:block;font-size:32px}.quien div span{display:block;font-size:24px;font-weight:600;color:var(--gris)}
+.lleno{margin-left:auto;font-family:M;font-weight:600;font-size:22px;background:#FBEADF;color:var(--terra2);border-radius:12px;padding:8px 14px;opacity:0}
+/* 3 · Ficha de diccionario */
+.dic{padding:44px 44px 40px}
+.dic .k{font-family:M;font-weight:600;font-size:24px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.dic .w{margin:18px 0 6px;font-family:B;font-weight:800;font-size:110px;line-height:1;letter-spacing:-.02em}
+.dic .f{font-family:M;font-size:34px;color:var(--gris)}
+.dic .s{margin-top:22px;font-size:40px;font-weight:600}
+.dic .s i{font-family:M;font-style:italic;font-weight:400;font-size:32px;color:var(--terra2);margin-right:12px}
+.eq{display:flex;align-items:center;gap:14px;padding:30px 36px 36px;border-top:1px solid var(--linea);background:var(--suave)}
+.eq span{background:#fff;border:2px solid var(--linea);border-radius:18px;padding:16px 20px;font-size:31px;font-weight:700;opacity:0}
+.eq i{font-style:normal;font-family:B;font-weight:800;font-size:40px;color:var(--terra);opacity:0}
+/* 4 · Techo */
+.horas{padding:30px 36px 14px;position:relative}
+.barras{display:flex;align-items:flex-end;gap:18px;height:330px;position:relative}
+.barras div{flex:1;border-radius:14px 14px 6px 6px;background:var(--terra);height:0;position:relative}
+.barras div span{position:absolute;bottom:-44px;left:0;right:0;text-align:center;font-family:M;font-weight:600;font-size:22px;color:var(--gris)}
+.techo{position:absolute;left:36px;right:36px;top:52px;border-top:5px dashed var(--terra2);opacity:0}
+.techo b{position:absolute;right:0;top:-54px;font-family:M;font-weight:600;font-size:24px;background:#FBEADF;color:var(--terra2);border-radius:10px;padding:6px 12px}
+.pie{display:flex;justify-content:space-between;align-items:baseline;padding:56px 36px 30px;border-top:1px solid var(--linea);margin-top:20px}
+.pie span{font-size:30px;font-weight:600;color:var(--gris)}
+.pie b{font-family:B;font-weight:800;font-size:56px}
+/* 6 · Club */
+.ses{padding:30px 36px 10px}
+.ses .n{font-family:B;font-weight:800;font-size:56px;line-height:1.05}
+.ses .d{margin-top:8px;font-size:30px;font-weight:600;color:var(--gris)}
+.lug{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:30px 36px 20px;justify-items:center}
+.lug div{width:150px;height:150px;border-radius:50%;border:4px dashed #cfdad6;display:grid;place-items:center;position:relative}
+.lug div b{position:absolute;inset:-4px;border-radius:50%;display:grid;place-items:center;font-family:B;font-weight:700;font-size:48px;color:#fff;opacity:0}
+.cupo{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px 30px;border-top:1px solid var(--linea)}
+.cupo span{font-size:30px;font-weight:600;color:var(--gris)}
+.cupo b{font-family:B;font-weight:800;font-size:64px;color:var(--verde)}
+/* 7 · Teléfono del alumno */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.club{margin:30px 24px 0;padding:28px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.club .q{font-family:M;font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.club h3{margin:12px 0 6px;font-family:B;font-weight:800;font-size:44px;line-height:1.05}
+.club p{margin:0 0 20px;font-size:27px;font-weight:600;color:var(--gris)}
+.quedan{display:inline-block;margin-bottom:22px;font-family:M;font-weight:600;font-size:22px;background:#FBEADF;color:var(--terra2);border-radius:10px;padding:8px 12px}
+.bt{display:block;text-align:center;padding:24px;border-radius:18px;font-size:31px;font-weight:700;background:var(--terra);color:#fff}
+.conf{margin:22px 24px 0;padding:24px;border-radius:20px;background:var(--verde2);color:var(--verde);opacity:0}
+.conf b{display:block;font-size:31px}.conf span{display:block;margin-top:6px;font-size:24px;font-weight:600}
+/* 8 · Lleno + lista de espera */
+.est{display:flex;gap:18px;padding:26px 36px}
+.est div{flex:1;border-radius:20px;background:var(--suave);padding:20px 24px}
+.est div span{display:block;font-family:M;font-weight:600;font-size:22px;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
+.est div b{display:block;margin-top:6px;font-family:B;font-weight:800;font-size:60px}
+.est .ll b{color:var(--verde)}
+.tag{display:inline-block;margin-left:10px;font-family:M;font-weight:600;font-size:20px;vertical-align:middle;background:var(--verde);color:#fff;border-radius:10px;padding:6px 10px;opacity:0}
+.le{display:flex;align-items:center;gap:22px;padding:22px 36px;border-top:1px solid var(--linea);opacity:0}
+.le div b{display:block;font-size:32px}
+.le div span{display:block;margin-top:4px;font-size:25px;font-weight:600;color:var(--gris)}
+.le .pos{margin-left:auto;font-family:M;font-weight:600;font-size:24px;background:var(--suave);color:var(--tinta);border-radius:12px;padding:8px 14px}
+/* 9 · La cuenta */
+.vs{display:grid;grid-template-columns:1fr 1fr}
+.vs > div{padding:34px 30px 30px;text-align:center}
+.vs > div + div{border-left:1px solid var(--linea)}
+.vs .k{font-family:M;font-weight:600;font-size:22px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.vs .ic{margin:22px auto 18px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;min-height:118px;align-content:center}
+.vs .ic i{width:50px;height:50px;border-radius:50%;background:var(--gris);display:block}
+.vs .ic.g{display:grid;grid-template-columns:repeat(4,46px);gap:12px;justify-content:center}
+.vs .ic.g i{width:46px;height:46px}
+.vs .ic.g i{background:var(--verde);opacity:0}
+.vs .op{font-family:M;font-weight:600;font-size:26px;color:var(--gris);min-height:36px}
+.vs b{display:block;margin-top:10px;font-family:B;font-weight:800;font-size:92px;line-height:1}
+.vs .a b{color:var(--tinta)}.vs .g2 b{color:var(--verde)}
+.misma{padding:24px 36px 30px;border-top:1px solid var(--linea);background:var(--suave);font-size:30px;font-weight:700;text-align:center}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · academias de idiomas</div>
+
+  <div class="tit" id="t-semana"><h1>Tu semana, <em>llena</em></h1></div>
+  <div class="tit" id="t-nuevo"><h1>Y otro quiere <em>entrar</em></h1></div>
+  <div class="tit" id="t-palabra"><h1>Tu <em>tope</em></h1></div>
+  <div class="tit" id="t-techo"><h1>Tu ingreso tiene <em>techo</em></h1><p>Ejemplo: clase individual de $250</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si rindiera <em>para 8?</em></h1></div>
+  <div class="tit" id="t-club"><h1>Un club de <em>conversación</em></h1></div>
+  <div class="tit" id="t-aparta"><h1>Apartan con <em>un botón</em></h1></div>
+  <div class="tit" id="t-espera"><h1>Se llena, y se forma <em>la lista</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>La misma hora, <em>$1,600</em></h1><p>Ejemplo: 8 alumnos × $200</p></div>
+  <div class="tit" id="t-cierre"><h1>¿Ya llegaste a <em>tu tope?</em></h1></div>
+
+  <!-- 1 · La semana llena: un alumno por hora -->
+  <div class="card" id="semana">
+    <div class="ccab"><span>Tus clases · esta semana</span><span class="ej">Ejemplo</span></div>
+    <div class="sem" id="sem"></div>
+    <div class="cont"><span>Horas libres</span><b id="libres">20</b></div>
+  </div>
+
+  <!-- 2 · Alguien nuevo quiere empezar -->
+  <div class="card" id="nuevo">
+    <div class="quien"><div class="av" style="background:#5B8DB8">S</div><div><b>Sofía R.</b><span>Mensaje · 7:12 PM</span></div><span class="lleno" id="lleno">Sin horario</span></div>
+    <div class="chat">
+      <div class="burb el" id="b1">Hola, ¿tienes lugar para clases de inglés en la noche?<small>7:12 PM</small></div>
+      <div class="burb yo" id="b2">Ahorita no tengo ningún horario libre 😕<small>7:20 PM</small></div>
+    </div>
+  </div>
+
+  <!-- 3 · La palabra -->
+  <div class="card" id="palabra">
+    <div class="dic">
+      <div class="k">Nº 01 · Tu tope</div>
+      <div class="w">bottleneck</div>
+      <div class="f">/ˈbɒt.əl.nek/</div>
+      <div class="s"><i>n.</i>cuello de botella</div>
+    </div>
+    <div class="eq"><span id="q1">1 hora</span><i id="i1">=</i><span id="q2">1 clase</span><i id="i2">=</i><span id="q3">1 alumno</span></div>
+  </div>
+
+  <!-- 4 · El techo -->
+  <div class="card" id="techo">
+    <div class="ccab"><span>Tus horas de clase</span><span class="ej">Ejemplo</span></div>
+    <div class="horas">
+      <div class="barras" id="barras"></div>
+      <div class="techo" id="tlin"><b>Tu tope</b></div>
+    </div>
+    <div class="pie"><span>Cada hora · 1 alumno</span><b>$250</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · El club -->
+  <div class="card" id="club">
+    <div class="ccab"><span>Nueva sesión</span><span class="ej">Ejemplo</span></div>
+    <div class="ses"><div class="n">Club de conversación</div><div class="d">Jueves 7:00 PM · Travel stories · B1</div></div>
+    <div class="lug" id="lug"></div>
+    <div class="cupo"><span>Lugares apartados</span><b id="nlug">0 / 8</b></div>
+  </div>
+
+  <!-- 7 · El alumno aparta su lugar -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Tu academia</b><span>Ana L.</span></div>
+    <div class="club">
+      <div class="q">Club de conversación</div>
+      <h3>Jueves 7:00 PM</h3>
+      <p>Travel stories · nivel B1</p>
+      <span class="quedan">Quedan 2 lugares</span>
+      <div class="bt" id="apartar">Apartar mi lugar</div>
+    </div>
+    <div class="conf" id="conf"><b>✓ Lugar apartado</b><span>Jueves 7:00 PM · club de conversación</span></div>
+  </div></div>
+
+  <!-- 8 · Lleno y lista de espera -->
+  <div class="card" id="espera">
+    <div class="ccab"><span>Club · jueves 7:00 PM</span><span class="ej">Ejemplo</span></div>
+    <div class="est">
+      <div class="ll"><span>Lugares</span><b>8/8<em class="tag" id="tag">Lleno</em></b></div>
+      <div><span>Lista de espera</span><b id="nesp">0</b></div>
+    </div>
+    <div class="le" id="l1"><div class="av" style="background:#8F6BB0">M</div><div><b>Mariana R.</b><span>Pidió lugar · 7:31 PM</span></div><span class="pos">1</span></div>
+    <div class="le" id="l2"><div class="av" style="background:#C96F4A">J</div><div><b>Jorge T.</b><span>Pidió lugar · 7:40 PM</span></div><span class="pos">2</span></div>
+    <div class="le" id="l3"><div class="av" style="background:#3E8E6A">P</div><div><b>Pau L.</b><span>Pidió lugar · 8:02 PM</span></div><span class="pos">3</span></div>
+  </div>
+
+  <!-- 9 · La cuenta -->
+  <div class="card" id="cuenta">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>1 hora tuya</span></div>
+    <div class="vs">
+      <div class="a"><div class="k">Clase individual</div><div class="ic"><i></i></div><div class="op">1 × $250</div><b>$250</b></div>
+      <div class="g2"><div class="k">Club de conversación</div><div class="ic g" id="ic8"></div><div class="op">8 × $200</div><b id="v8">$0</b></div>
+    </div>
+    <div class="misma">La misma hora tuya</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>1 hora</span><i>→</i><span>8 alumnos</span><i>→</i><span class="v">Sin contratar</span></div>
+    <p>Más alumnos, sin sumar horas a tu semana.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/idiomas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var NOM = ['Ana', 'Luis', 'Carla', 'Diego', 'Fer', 'Pau', 'Iván', 'Lupe', 'Toño', 'Majo', 'Raúl', 'Bere', 'Hugo', 'Sara', 'Nico', 'Eli', 'Omar', 'Vale', 'Beto', 'Caro'];
+var NIV = ['A2', 'B1', 'B2', 'A2', 'B1', 'A1', 'B2', 'A2', 'B1', 'B1', 'A2', 'B2', 'A1', 'B1', 'A2', 'B2', 'B1', 'A2', 'B1', 'B2'];
+var COL = ['#5B8DB8', '#8F6BB0', '#3E8E6A', '#C96F4A', '#E0A63A', '#5B8DB8', '#8F6BB0', '#3E8E6A'];
+window.prepara = function () {
+  var D = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'], H = ['16:00', '17:00', '18:00', '19:00'];
+  var h = '<span></span>' + D.map(function (d) { return '<span class="h">' + d + '</span>'; }).join('');
+  H.forEach(function (hr, r) {
+    h += '<span class="hr">' + hr + '</span>';
+    D.forEach(function (d, c) { var k = r * 5 + c; h += '<div class="c"><b id="s' + k + '">' + NOM[k] + '<small>' + NIV[k] + '</small></b></div>'; });
+  });
+  $('sem').innerHTML = h;
+  $('barras').innerHTML = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'].map(function (d) { return '<div><span>' + d + '</span></div>'; }).join('');
+  var ini = ['A', 'L', 'C', 'D', 'F', 'P', 'I', 'L'];
+  $('lug').innerHTML = ini.map(function (x, i) { return '<div><b style="background:' + COL[i] + '">' + x + '</b></div>'; }).join('');
+  $('ic8').innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>';
+};
+// orden en que se llenan las 20 horas
+var ORD = [0, 6, 12, 18, 3, 9, 15, 1, 7, 13, 19, 4, 10, 16, 2, 8, 14, 5, 11, 17];
+window.escena = function (t) {
+  // 1 · La semana se llena
+  bloque($('semana'), 'semana', 'semana', t);
+  var n = 0;
+  ORD.forEach(function (k, i) {
+    var at = S.semana + 0.5 + i * 0.13, q = clamp((t - at) / 0.22), b = $('s' + k);
+    b.style.opacity = q; b.style.transform = 'scale(' + (0.8 + 0.2 * back(q)) + ')';
+    if (t >= at) n++;
+  });
+  $('libres').textContent = 20 - n;
+
+  // 2 · Llega el mensaje, no hay lugar
+  bloque($('nuevo'), 'nuevo', 'nuevo', t);
+  pop($('b1'), t, S.nuevo + 0.5); pop($('b2'), t, S.nuevo + 2.0); pop($('lleno'), t, S.nuevo + 2.6);
+
+  // 3 · La palabra
+  bloque($('palabra'), 'palabra', 'palabra', t);
+  ['q1', 'i1', 'q2', 'i2', 'q3'].forEach(function (id, i) { aparece(id, t, S.palabra + 1.2 + i * 0.35); });
+
+  // 4 · El techo: las barras suben y chocan con el tope
+  bloque($('techo'), 'techo', 'techo', t);
+  document.querySelectorAll('#barras div').forEach(function (b, i) {
+    var q = easeOut(clamp((t - (S.techo + 0.4 + i * 0.18)) / 0.6));
+    b.style.height = (q * 278) + 'px';
+  });
+  aparece('tlin', t, S.techo + 1.5);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · El club se va llenando
+  bloque($('club'), 'club', 'club', t);
+  var m = 0;
+  document.querySelectorAll('#lug b').forEach(function (b, i) {
+    var at = S.club + 0.8 + i * 0.32; pop(b, t, at); if (t >= at) m++;
+  });
+  $('nlug').textContent = m + ' / 8';
+
+  // 7 · El alumno aparta su lugar
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.aparta) / 0.6)), pout = easeOut(clamp((t - (E.aparta - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.aparta && t < E.aparta + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var tt = S.aparta + 1.8, tapOn = false;
+  if (t >= S.aparta && t < E.aparta) tapOn = toque(t, tt, $('apartar'));
+  pop($('conf'), t, tt + 0.35);
+
+  // 8 · Lleno y lista de espera
+  bloque($('espera'), 'espera', 'espera', t);
+  pop($('tag'), t, S.espera + 0.5);
+  var w = 0;
+  ['l1', 'l2', 'l3'].forEach(function (id, i) { var at = S.espera + 0.9 + i * 0.55; aparece(id, t, at, 50); if (t >= at) w++; });
+  $('nesp').textContent = w;
+
+  // 9 · La cuenta
+  bloque($('cuenta'), 'cuenta', 'cuenta', t);
+  document.querySelectorAll('#ic8 i').forEach(function (b, i) { pop(b, t, S.cuenta + 2.4 + i * 0.12); });
+  $('v8').textContent = pesos(Math.round(cuenta(t, S.cuenta + 3.6, 1.2, 1600) / 10) * 10);
+  return tapOn;
+};
+</script>
+</body></html>
