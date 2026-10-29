@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Idiomas · crecimiento: alumnos fieles que pagarían por practicar más y no tienes nada extra que ofrecerles.
+   Cifras de ejemplo: 40 alumnos, 3 de cada 10 toman un plan de $400 = 12 × $400 = $4,800 al mes. */
+.alu{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.alu .av{width:96px;height:96px;font-size:40px;background:#7A6BB0}
+.alu b{display:block;font-size:40px}.alu span{font-size:27px;color:var(--gris);font-weight:600}
+.nivel{margin-left:auto;font-family:B;font-weight:800;font-size:56px;line-height:1;padding:14px 24px;border-radius:16px;background:var(--verde2);color:var(--verde)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr)}
+.stats div{padding:26px 20px 30px;text-align:center;border-right:1px solid var(--linea)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-family:B;font-weight:800;font-size:58px;line-height:1}
+.stats span{display:block;margin-top:10px;font-size:24px;font-weight:600;color:var(--gris)}
+/* Ficha de diccionario */
+.dic{position:absolute;left:90px;right:90px;top:1120px;border:3px dashed rgba(244,241,234,.3);border-radius:30px;padding:30px 36px;opacity:0}
+.dic .w{font-family:B;font-weight:800;font-size:64px;color:var(--crema)}
+.dic .ph{font-family:I;font-weight:500;font-size:32px;color:rgba(244,241,234,.6);margin-left:14px}
+.dic .def{margin-top:10px;font-size:34px;font-weight:600;color:rgba(244,241,234,.85)}
+.dic .def i{font-family:M;font-style:normal;font-size:26px;color:var(--terra);margin-right:10px}
+/* Mensaje de Ana */
+.globo{position:absolute;left:90px;right:150px;top:1120px;background:#fff;color:var(--tinta);border-radius:36px 36px 36px 10px;padding:32px 36px;font-size:42px;font-weight:700;line-height:1.25;box-shadow:0 24px 50px rgba(0,0,0,.35);opacity:0}
+.globo small{display:block;margin-top:12px;font-size:24px;font-weight:600;color:var(--gris)}
+/* Lo que ofreces hoy */
+.of{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.of b{display:block;font-size:32px}.of small{font-size:24px;color:var(--gris);font-weight:600}
+.of .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px;white-space:nowrap}
+.of.vacio{margin:24px 36px 30px;padding:26px 28px;border:3px dashed #D9B9A9;border-radius:22px;background:#FDF6F2}
+.of.vacio b{color:var(--gris)}
+.nada{margin-left:auto;font-family:M;font-size:23px;font-weight:600;background:#FBEADF;color:var(--terra2);padding:8px 14px;border-radius:10px;white-space:nowrap;opacity:0}
+/* Puntos: 40 alumnos */
+.puntos{display:grid;grid-template-columns:repeat(8,1fr);gap:22px;padding:36px 46px 30px}
+.puntos i{aspect-ratio:1;border-radius:50%;background:#C9C2B5;transform:scale(0);display:grid;place-items:center;font-style:normal;font-family:B;font-weight:800;font-size:34px;color:#fff}
+.puntos i.v{background:var(--verde)}
+.puntos i.ana{box-shadow:0 0 0 6px #7A6BB0}
+.cuentas{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px 30px;border-top:1px solid var(--linea)}
+.cuentas span{font-size:30px;font-weight:600;color:var(--gris)}
+.cuentas b{font-family:B;font-weight:800;font-size:80px;color:var(--verde)}
+/* Plan Club */
+.pcab{display:flex;justify-content:space-between;align-items:baseline;padding:30px 36px 24px;border-bottom:1px solid var(--linea)}
+.pcab b{font-family:B;font-weight:800;font-size:60px}
+.pcab span{font-family:B;font-weight:800;font-size:52px;color:var(--verde)}
+.pcab small{font-size:26px;color:var(--gris);font-weight:600;margin-left:8px;font-family:I}
+.inc{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.inc:last-child{border-bottom:0}
+.inc b{display:block;font-size:32px}.inc small{font-size:24px;color:var(--gris);font-weight:600}
+/* Teléfono de Ana */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 34px 22px}
+.otop b{font-size:32px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.mini{margin:28px 26px 0;padding:26px;border-radius:24px;background:var(--suave)}
+.mini .k{font-family:M;font-weight:600;font-size:21px;letter-spacing:.06em;text-transform:uppercase;color:var(--terra2)}
+.mini b{display:block;margin-top:8px;font-family:B;font-weight:800;font-size:50px}
+.mini b small{font-family:I;font-size:26px;color:var(--gris);font-weight:600}
+.mini ul{margin:14px 0 0;padding:0;list-style:none;font-size:25px;font-weight:600;line-height:1.7;color:var(--tinta)}
+.mini li:before{content:'✓ ';color:var(--verde)}
+.apart{margin:22px 26px 0;padding:22px 24px;border-radius:20px;background:var(--verde2);font-size:25px;font-weight:600;color:var(--verde);opacity:0}
+.apart b{display:block;color:var(--tinta);font-size:28px;margin-bottom:4px}
+.btnc{position:absolute;left:26px;right:26px;bottom:44px;background:var(--terra);color:#fff;border-radius:20px;padding:26px;text-align:center;font-size:30px;font-weight:700;opacity:0}
+.btnc.ok2{background:var(--verde)}
+/* Cuenta */
+.fila .der{font-size:30px}
+.fila .eq{margin-left:auto;font-family:M;font-weight:600;font-size:30px;color:var(--gris)}
+.mismas{display:flex;align-items:center;gap:16px;margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:var(--suave);font-size:28px;font-weight:600;opacity:0}
+.mismas b{margin-left:auto;font-family:M;color:var(--verde)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · academias de idiomas</div>
+
+  <div class="tit" id="t-fiel"><h1>Ana lleva <em>2 años</em></h1></div>
+  <div class="tit" id="t-pide"><h1>Quiere <em>practicar más</em></h1></div>
+  <div class="tit" id="t-nada"><h1>Y no tienes <em>qué ofrecerle</em></h1></div>
+  <div class="tit" id="t-base"><h1>12 de 40 <em>alumnos</em></h1><p>Ejemplo: 3 de cada 10</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si tuvieras <em>un plan extra?</em></h1></div>
+  <div class="tit" id="t-plan"><h1>Plan Club, <em>$400 al mes</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-inscribe"><h1>Se inscribe <em>desde su celular</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $4,800 <em>al mes</em></h1><p>Ejemplo: 12 × $400</p></div>
+  <div class="tit" id="t-cierre"><h1>¿Tus fieles <em>quieren más?</em></h1></div>
+
+  <!-- 1 y 2 · Ana -->
+  <div class="card" id="ana">
+    <div class="ccab"><span>Tu alumna</span><span class="ej">Ejemplo</span></div>
+    <div class="alu"><div class="av">A</div><div><b>Ana L.</b><span>Inglés · jueves 7:00 PM</span></div><span class="nivel">B1</span></div>
+    <div class="stats">
+      <div><b id="anios">0</b><span>años contigo</span></div>
+      <div><b id="asis">0%</b><span>asistencia</span></div>
+      <div><b id="tareas">0</b><span>tareas</span></div>
+    </div>
+  </div>
+  <div class="dic" id="dic"><span class="w">loyal</span><span class="ph">/ˈlɔɪ.əl/</span><div class="def"><i>adj.</i>fiel</div></div>
+  <div class="globo" id="globo">¿Tienes algo para practicar más entre clases?<small>Ana, al salir de clase</small></div>
+
+  <!-- 3 · Lo que le ofreces hoy -->
+  <div class="card" id="ofreces">
+    <div class="ccab"><span>Lo que le ofreces hoy</span><span class="ej">Ejemplo</span></div>
+    <div class="of" id="o1"><span class="ok">✓</span><div><b>Clase individual</b><small>una hora por semana</small></div><span class="der">$1,600/mes</span></div>
+    <div class="of" id="o2"><span class="ok">✓</span><div><b>Tarea de la clase</b><small>la revisas tú</small></div></div>
+    <div class="of vacio" id="o3"><span class="ok" style="background:#D9B9A9">+</span><div><b>Algo extra para practicar</b></div><span class="nada" id="nada">Nada todavía</span></div>
+  </div>
+
+  <!-- 4 · 40 alumnos -->
+  <div class="card" id="alumnos">
+    <div class="ccab"><span>Tus alumnos</span><span class="ej">Ejemplo</span></div>
+    <div class="puntos" id="puntos"></div>
+    <div class="cuentas"><span id="clab">Quieren practicar más</span><b id="cnum">0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Plan Club -->
+  <div class="card" id="plan">
+    <div class="pcab"><b>Plan Club</b><span>$400<small>al mes</small></span></div>
+    <div class="inc" id="i1"><span class="ok">1</span><div><b>Club de conversación</b><small>cada semana, en grupo</small></div></div>
+    <div class="inc" id="i2"><span class="ok">2</span><div><b>Comunidad de su nivel</b><small>con alumnos de B1</small></div></div>
+    <div class="inc" id="i3"><span class="ok">3</span><div><b>Reto semanal</b><small>escribir, grabar o responder</small></div></div>
+    <div class="inc" id="i4"><span class="ok">4</span><div><b>Práctica guiada</b><small>entre una clase y otra</small></div></div>
+  </div>
+
+  <!-- 7 · El celular de Ana -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Hola, Ana</b><span>B1</span></div>
+    <div class="mini">
+      <div class="k">Nuevo · para alumnos</div>
+      <b>Plan Club <small>$400 al mes</small></b>
+      <ul><li>Club cada semana</li><li>Comunidad B1</li><li>Reto semanal</li></ul>
+    </div>
+    <div class="apart" id="apart"><b>Club · jueves 8:00 PM</b>Lugar apartado</div>
+    <div class="btnc" id="btnc">Inscribirme y pagar $400</div>
+  </div></div>
+
+  <!-- 8 · La cuenta -->
+  <div class="card" id="cuenta">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="fila" id="f1">Tus alumnos<span class="eq">40</span></div>
+    <div class="fila" id="f2">3 de cada 10 lo toman<span class="eq">12</span></div>
+    <div class="fila" id="f3">Plan Club<span class="eq">× $400</span></div>
+    <div class="total"><span>Más al mes</span><b id="tot" style="color:var(--verde)">$0</b></div>
+    <div class="mismas" id="mismas">Clases individuales<b>+0 horas</b></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Ya son fieles</span><i>→</i><span>Plan extra</span><i>→</i><span class="v">Más por alumno</span></div>
+    <p>Más ingreso con los alumnos que ya tienes.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/idiomas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+// 12 de 40, repartidos (Ana es la primera)
+var VERDES = [0, 3, 6, 10, 13, 17, 20, 24, 27, 31, 34, 38];
+window.prepara = function () { var h = ''; for (var i = 0; i < 40; i++) h += '<i' + (i === 0 ? ' class="ana"' : '') + '>' + (i === 0 ? 'A' : '') + '</i>'; $('puntos').innerHTML = h; };
+window.escena = function (t) {
+  // 1 y 2 · Ana (la tarjeta se queda las dos escenas)
+  bloque($('ana'), 'fiel', 'pide', t);
+  $('anios').textContent = Math.round(cuenta(t, S.fiel + 0.5, 1.0, 2));
+  $('asis').textContent = Math.round(cuenta(t, S.fiel + 0.6, 1.4, 96)) + '%';
+  $('tareas').textContent = Math.round(cuenta(t, S.fiel + 0.7, 1.6, 74));
+  var d = t >= S.fiel && t < E.fiel + 0.1 ? Math.min(clamp((t - S.fiel - 1.6) / 0.4), 1 - clamp((t - (E.fiel - 0.3)) / 0.3)) : 0;
+  $('dic').style.opacity = d; $('dic').style.transform = 'translateY(' + ((1 - d) * 30) + 'px)';
+  var g = t >= S.pide && t < E.pide + 0.1 ? Math.min(clamp((t - S.pide - 0.2) / 0.35), 1 - clamp((t - (E.pide - 0.3)) / 0.3)) : 0;
+  $('globo').style.opacity = g; $('globo').style.transform = 'scale(' + (0.9 + 0.1 * back(clamp((t - S.pide - 0.2) / 0.35))) + ')';
+
+  // 3 · Lo que le ofreces hoy
+  bloque($('ofreces'), 'nada', 'nada', t);
+  ['o1', 'o2', 'o3'].forEach(function (id, i) { aparece(id, t, S.nada + 0.4 + i * 0.45, 50); });
+  pop($('nada'), t, S.nada + 2.2);
+
+  // 4 · 12 de 40
+  bloque($('alumnos'), 'base', 'base', t);
+  var n = 0;
+  document.querySelectorAll('#puntos i').forEach(function (p, i) {
+    p.style.transform = 'scale(' + easeOut(clamp((t - S.base - 0.3 - i * 0.02) / 0.25)) + ')';
+    var k = VERDES.indexOf(i), on = k >= 0 && t >= S.base + 1.8 + k * 0.18;
+    p.classList.toggle('v', on); if (on) n++;
+  });
+  $('cnum').textContent = n;
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Plan Club
+  bloque($('plan'), 'plan', 'plan', t);
+  ['i1', 'i2', 'i3', 'i4'].forEach(function (id, i) { aparece(id, t, S.plan + 0.6 + i * 1.8, 50); });
+
+  // 7 · Ana se inscribe
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.inscribe) / 0.6)), pout = easeOut(clamp((t - (E.inscribe - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.inscribe && t < E.inscribe + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  aparece('btnc', t, S.inscribe + 0.6);
+  var tapT = S.inscribe + 1.5, tapped = false;
+  if (t > tapT - 0.5 && t < tapT + 0.4 && t < E.inscribe) tapped = toque(t, tapT, $('btnc'));
+  $('btnc').textContent = t >= tapT ? '✓ Ya eres del Club' : 'Inscribirme y pagar $400';
+  $('btnc').classList.toggle('ok2', t >= tapT);
+  pop($('apart'), t, tapT + 0.4);
+
+  // 8 · La cuenta
+  bloque($('cuenta'), 'cuenta', 'cuenta', t);
+  ['f1', 'f2', 'f3'].forEach(function (id, i) { aparece(id, t, S.cuenta + 0.4 + i * 0.5, 50); });
+  $('tot').textContent = pesos(Math.round(cuenta(t, S.cuenta + 2.0, 1.8, 4800) / 100) * 100);
+  aparece('mismas', t, S.cuenta + 4.6);
+  return tapped;
+};
+</script>
+</body></html>
