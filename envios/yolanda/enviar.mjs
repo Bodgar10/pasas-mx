@@ -15,7 +15,7 @@ const resultados = [];
 
 for (const [i, v] of cfg.videos.entries()) {
   const html = `<div style="font-family:system-ui,sans-serif;color:#1b1330;max-width:560px;line-height:1.5">
-<p>${esc(cfg.saludo || "Hola")}. Este es el <b>short ${i + 1} de ${n}</b> del video de Yolanda <i>"Mi hijo no puede soltar el control"</i>. El video va adjunto (<b>${esc(v.file)}</b>), listo para subir en vertical.</p>
+<p>${esc(cfg.saludo || "Hola")}. Este es el <b>short ${i + 1} de ${n}</b> del video de Yolanda <i>"${esc(cfg.video_largo || "")}"</i>. El video va adjunto (<b>${esc(v.file)}</b>), listo para subir en vertical.</p>
 <p style="color:#6b6485;font-size:14px">${esc(cfg.nota || '')} Video completo: <a href="${cfg.youtube}">${cfg.youtube}</a></p>
 ${(v.secciones || []).map(([t, x]) => `<h3 style="${h}">${esc(t)}</h3>\n<pre style="${box}">${esc(x)}</pre>`).join('\n')}
 </div>`;
