@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Viernes · caso práctico: almacenaje por posición de tarima; el cliente ocupa más de lo contratado y nadie lo cuenta.
+   Cuenta → primer flujo → qué mediría. Cifras de ejemplo. Nada de resultados prometidos: se mide y se ajusta. */
+.caso{padding:40px 36px 36px}
+.caso .k{font-family:M;font-weight:600;font-size:28px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra2)}
+.caso h2{margin:16px 0 26px;font-family:B;font-weight:800;font-size:58px;line-height:1.05}
+.dato{display:flex;align-items:center;gap:16px;font-size:32px;font-weight:600;padding:12px 0;opacity:0}
+.dato i{width:18px;height:18px;border-radius:5px;background:var(--terra);flex:none}
+/* Rack de posiciones */
+.rack{display:grid;grid-template-columns:repeat(20,1fr);gap:7px;padding:30px 36px 16px}
+.rack i{aspect-ratio:1;border-radius:5px;background:var(--verde);opacity:0;font-style:normal}
+.rack i.x{background:var(--terra)}
+.ley{display:flex;gap:30px;padding:6px 36px 20px;font-family:M;font-weight:600;font-size:24px;color:var(--gris)}
+.ley span{display:flex;align-items:center;gap:10px}
+.ley span:before{content:'';width:22px;height:22px;border-radius:5px;background:var(--verde)}
+.ley span.x:before{background:var(--terra)}
+.cmp{display:flex;border-top:1px solid var(--linea)}
+.cmp div{flex:1;padding:22px 36px 28px}
+.cmp div+div{border-left:1px solid var(--linea)}
+.cmp span{display:block;font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.cmp b{font-family:B;font-weight:800;font-size:76px;line-height:1.1}
+.cmp .mal b{color:var(--terra2)}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:160px}
+.term span{font-size:29px;font-weight:600;color:var(--gris);line-height:1.25}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Año */
+.meses{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;align-items:end;height:260px;padding:30px 36px 10px}
+.meses i{display:block;height:180px;border-radius:10px;background:var(--terra);transform:scaleY(0);transform-origin:50% 100%}
+.mlab{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;padding:0 36px 16px;font-family:M;font-weight:600;font-size:20px;color:var(--gris);text-align:center}
+/* Conteo por cliente */
+.tb{display:grid;grid-template-columns:1fr 170px 170px;align-items:center}
+.tb div{padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.tb .h{font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);opacity:1;padding-top:20px;padding-bottom:16px}
+.tb .n{font-family:M;font-weight:600;text-align:right;padding-left:0}
+.tb .mal{color:var(--terra2);background:#FBEADF}
+/* Teléfono: aviso */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.not{margin:30px 24px 0;padding:26px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);opacity:0}
+.not .q{font-family:M;font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.not h3{margin:12px 0 8px;font-family:B;font-weight:800;font-size:42px;line-height:1.05}
+.not p{margin:0 0 22px;font-size:27px;font-weight:600;color:var(--gris)}
+.bt{display:block;text-align:center;padding:22px;border-radius:18px;font-size:30px;font-weight:700;background:var(--tinta);color:#fff}
+.mini{margin:22px 24px 0;padding:22px;border-radius:20px;background:var(--suave);opacity:0}
+.mini .k{font-family:M;font-weight:600;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.mini .bar{height:22px;border-radius:11px;background:var(--arena);margin-top:14px;position:relative;overflow:hidden}
+.mini .bar i{position:absolute;left:0;top:0;bottom:0;width:71.4%;background:var(--verde)}
+.mini .bar em{position:absolute;left:71.4%;top:0;bottom:0;width:28.6%;background:var(--terra)}
+.mini .n{display:flex;justify-content:space-between;margin-top:10px;font-family:M;font-weight:600;font-size:22px;color:var(--gris)}
+/* Prefactura */
+.fl{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:30px;font-weight:600;opacity:0}
+.fl small{display:block;font-family:M;font-size:22px;color:var(--gris)}
+.fl .der{margin-left:auto;font-family:M;font-weight:600;font-size:30px}
+.fl.nuevo{background:#FBEADF}
+.fl.nuevo .der{color:var(--terra2)}
+.rev{margin:24px 36px 30px;display:flex;justify-content:space-between;align-items:center;opacity:0}
+.rev span{font-family:M;font-weight:600;font-size:24px;color:var(--terra2);background:#FBEADF;padding:10px 16px;border-radius:12px}
+.rev b{background:var(--verde);color:#fff;border-radius:16px;padding:18px 26px;font-size:28px}
+/* Medir */
+.medir{padding:36px}
+.medir .k{font-size:32px;font-weight:700;line-height:1.25}
+.vs2{display:flex;align-items:center;gap:24px;margin:26px 0}
+.vs2 div{flex:1;border-radius:22px;background:var(--suave);padding:20px 24px}
+.vs2 span{display:block;font-family:M;font-weight:600;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.vs2 b{font-family:B;font-weight:800;font-size:90px;line-height:1.1;color:var(--verde)}
+.vs2 i{font-style:normal;font-family:B;font-weight:800;font-size:60px;color:var(--gris)}
+.sem2{display:inline-block;background:var(--verde2);color:var(--verde);border-radius:16px;padding:14px 20px;font-size:28px;font-weight:700;opacity:0}
+.medir .n{margin-top:26px;font-size:28px;color:var(--gris);line-height:1.35;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · caso práctico</div>
+
+  <div class="tit" id="t-caso"><h1>Caso <em>práctico</em></h1></div>
+  <div class="tit" id="t-pasa"><h1>Contrató 100. <em>Ocupa 140.</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>Hagamos la <em>cuenta</em></h1></div>
+  <div class="tit" id="t-anio"><h1>≈ $144,000 <em>al año</em></h1><p>Ejemplo: $12,000 × 12 meses</p></div>
+  <div class="tit" id="t-primero"><h1>Lo primero que <em>construiría</em></h1></div>
+  <div class="tit" id="t-conteo"><h1>Cada noche, <em>se cuenta</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>Si se pasa, <em>aviso</em></h1></div>
+  <div class="tit" id="t-factura"><h1>Listo para <em>facturar</em></h1></div>
+  <div class="tit" id="t-medir"><h1>Lo que <em>mediría</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Revisamos tu <em>bodega?</em></h1></div>
+
+  <!-- 1 · El caso -->
+  <div class="card" id="caso">
+    <div class="caso">
+      <div class="k">Caso práctico · ejemplo</div>
+      <h2>Bodega 3PL</h2>
+      <div class="dato" id="d1"><i></i>Cobra almacenaje por posición de tarima</div>
+      <div class="dato" id="d2"><i></i>$300 al mes por posición</div>
+      <div class="dato" id="d3"><i></i>Factura lo contratado</div>
+    </div>
+  </div>
+
+  <!-- 2 · Contrató 100, ocupa 140 -->
+  <div class="card" id="pasa">
+    <div class="ccab"><span>Casa Brisa · posiciones</span><span class="ej">Ejemplo</span></div>
+    <div class="rack" id="rack"></div>
+    <div class="ley"><span>Contratadas</span><span class="x">De más</span></div>
+    <div class="cmp"><div><span>Contrató</span><b>100</b></div><div class="mal"><span>Ocupa hoy</span><b id="nocu">0</b></div></div>
+  </div>
+
+  <!-- 3 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>40</b><span>posiciones<br>de más</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$300</b><span>al mes cada una</span></div>
+    <div class="res"><span>= sin facturar</span><b id="eres">$0</b></div>
+  </div>
+
+  <!-- 4 · El año -->
+  <div class="card" id="anio">
+    <div class="ccab"><span>Un año · ejemplo</span><span>$12,000 por mes</span></div>
+    <div class="meses" id="meses"></div>
+    <div class="mlab" id="mlab"></div>
+    <div class="total"><span>En 12 meses</span><b id="atot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Conteo por cliente -->
+  <div class="card" id="conteo">
+    <div class="ccab"><span>Conteo de anoche · 23:00</span><span class="ej">Ejemplo</span></div>
+    <div class="tb">
+      <div class="h">Cliente</div><div class="h n">Contrató</div><div class="h n">Ocupa</div>
+      <div class="c1">Moda Luna</div><div class="c1 n">60</div><div class="c1 n">58</div>
+      <div class="c2">Café Tierra</div><div class="c2 n">40</div><div class="c2 n">40</div>
+      <div class="c3 mal">Casa Brisa</div><div class="c3 n mal">100</div><div class="c3 n mal">140</div>
+    </div>
+  </div>
+
+  <!-- 7 · Aviso -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Bodega · aviso</b><span>Hoy 07:00</span></div>
+    <div class="not" id="not">
+      <div class="q">Pasó lo contratado</div>
+      <h3>Casa Brisa ocupa 140 posiciones</h3>
+      <p>Tiene contratadas 100. Son 40 de más.</p>
+      <div class="bt" id="ver">Ver detalle</div>
+    </div>
+    <div class="mini" id="mini"><div class="k">Posiciones · Casa Brisa</div><div class="bar"><i></i><em></em></div><div class="n"><span>100 contratadas</span><span>+40</span></div></div>
+  </div></div>
+
+  <!-- 8 · Prefactura -->
+  <div class="card" id="factura">
+    <div class="ccab"><span>Prefactura · Casa Brisa</span><span class="ej">Ejemplo</span></div>
+    <div class="fl" id="f1"><div>Almacenaje contratado<small>100 × $300</small></div><span class="der">$30,000</span></div>
+    <div class="fl nuevo" id="f2"><div>Almacenaje excedente<small>40 × $300</small></div><span class="der">$12,000</span></div>
+    <div class="rev" id="rev"><span>Por revisar</span><b id="revb">Revisar y facturar</b></div>
+  </div>
+
+  <!-- 9 · Qué mediría -->
+  <div class="card" id="medir">
+    <div class="ccab"><span>Una sola métrica</span><span>Cada mes</span></div>
+    <div class="medir">
+      <div class="k">Posiciones ocupadas contra posiciones facturadas</div>
+      <div class="vs2"><div><span>Ocupadas</span><b>?</b></div><i>=</i><div><span>Facturadas</span><b>?</b></div></div>
+      <div class="sem2" id="sem2">Se mide desde el primer cierre</div>
+      <div class="n" id="mn">Si no cuadran, se ajusta antes de construir lo siguiente.</div>
+    </div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>La cuenta</span><i>→</i><span>Un flujo</span><i>→</i><span class="v">Se mide</span></div>
+    <p>Así pienso cada proceso de una bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  var h = ''; for (var i = 0; i < 140; i++) h += '<i class="' + (i >= 100 ? 'x' : '') + '"></i>'; $('rack').innerHTML = h;
+  var m = '', l = '', M = ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+  M.forEach(function (x) { m += '<i></i>'; l += '<span>' + x + '</span>'; });
+  $('meses').innerHTML = m; $('mlab').innerHTML = l;
+};
+window.escena = function (t) {
+  var tap = false;
+  // 1 · El caso
+  bloque($('caso'), 'caso', 'caso', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { aparece(id, t, S.caso + 0.6 + i * 0.5, 40); });
+
+  // 2 · Posiciones: 100 contratadas, luego 40 de más
+  bloque($('pasa'), 'pasa', 'pasa', t);
+  var cs = document.querySelectorAll('#rack i'), n = 0;
+  cs.forEach(function (c, i) {
+    var at = i < 100 ? S.pasa + 0.4 + i * 0.008 : S.pasa + 1.6 + (i - 100) * 0.035;
+    c.style.opacity = clamp((t - at) / 0.15); if (t >= at) n++;
+  });
+  $('nocu').textContent = n;
+
+  // 3 · La cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  aparece('e1', t, S.cuenta + 1.2, 50); aparece('e2', t, S.cuenta + 2.4, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuenta + 3.6, 1.0, 12000) / 100) * 100);
+
+  // 4 · El año
+  bloque($('anio'), 'anio', 'anio', t);
+  document.querySelectorAll('#meses i').forEach(function (b, i) { b.style.transform = 'scaleY(' + easeOut(clamp((t - (S.anio + 0.3 + i * 0.12)) / 0.3)) + ')'; });
+  $('atot').textContent = pesos(Math.round(cuenta(t, S.anio + 0.3, 1.8, 144000) / 1000) * 1000);
+
+  // 5 · Giro
+  giro($('giro'), t, 'primero');
+
+  // 6 · Conteo
+  bloque($('conteo'), 'conteo', 'conteo', t);
+  ['c1', 'c2', 'c3'].forEach(function (c, i) {
+    document.querySelectorAll('.tb .' + c).forEach(function (el) { aparece(el, t, S.conteo + 0.6 + i * 0.7, 40); });
+  });
+
+  // 7 · Aviso
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.aviso) / 0.6)), pout = easeOut(clamp((t - (E.aviso - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.aviso && t < E.aviso + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  pop($('not'), t, S.aviso + 0.7);
+  aparece('mini', t, S.aviso + 1.6);
+
+  // 8 · Prefactura
+  bloque($('factura'), 'factura', 'factura', t);
+  aparece('f1', t, S.factura + 0.5, 50); pop($('f2'), t, S.factura + 1.3); aparece('rev', t, S.factura + 2.2);
+  var tr = S.factura + 3.6;
+  if (t >= S.factura && t < E.factura) tap = toque(t, tr, $('revb')) || tap;
+
+  // 9 · Qué mediría
+  bloque($('medir'), 'medir', 'medir', t);
+  aparece('sem2', t, S.medir + 2.0); aparece('mn', t, S.medir + 3.2);
+  return tap;
+};
+</script>
+</body></html>

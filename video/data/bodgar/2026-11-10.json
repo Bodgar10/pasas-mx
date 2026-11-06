@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-11-10",
+  "dia": "martes",
+  "linea": "Bodegas · pérdida",
+  "plantilla": "bodegas-devoluciones.html",
+  "nombre": "bodegas-devoluciones",
+  "url": "bodgar.dev/plataformas/bodegas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Bodegas y 3PL",
+    "titulo": "Las devoluciones, *en el rincón.*",
+    "dato": { "num": "≈ $10,000", "texto": "en piezas que tu cliente no puede vender", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Nuevo reel",
+    "titulo": "¿Devoluciones *sin registrar?*",
+    "texto": "Lo que regresa y no se registra, tu cliente te lo reclama. Así lo resolvería."
+  },
+  "post": "Esta semana regresaron 40 prendas de Moda Luna a tu bodega. Quedaron en el rincón, sin registrar.\n\nPasan tres semanas. Nadie las revisa y nadie las regresa al inventario. Hasta que Moda Luna te escribe: en su sistema faltan 40 piezas que ya debería poder vender. 40 piezas de $250 son $10,000 detenidos en un rincón, y mientras no aparezcan, el faltante te lo reclama a ti.\n\nAsí lo resolvería: al llegar, tu operador escanea cada devolución y registra de qué pedido viene y en qué estado llega. Si está para venta, vuelve al inventario el mismo día, y tu cliente lo ve en su reporte. Las piezas vuelven a estar disponibles, sin rincón y sin reclamo.\n\nLas cifras del video son un ejemplo, no un resultado. Si en tu bodega se juntan las devoluciones, te cuento cómo lo haría para la tuya: bodgar.dev/plataformas/bodegas (link en la bio). Revisión sin costo.\n\n#bodegas #3PL #logistica #devoluciones #pymesmexico",
+  "escenas": [
+    { "id": "rincon", "titulo": "Las devoluciones, en el rincón", "voz": "Regresaron cuarenta prendas de Moda Luna. Quedaron en el rincón, sin registrar." },
+    { "id": "semanas", "titulo": "Tres semanas después", "voz": "Pasan tres semanas. Nadie las revisa. Nadie las regresa al inventario." },
+    { "id": "reclamo", "titulo": "«¿Dónde están mis piezas?»", "voz": "Moda Luna te escribe: le faltan cuarenta piezas que ya debería poder vender." },
+    { "id": "cuesta", "titulo": "≈ $10,000 en un rincón", "voz": "Cuarenta piezas de doscientos cincuenta pesos: diez mil pesos detenidos en un rincón." },
+    { "id": "reclama", "titulo": "Y te las reclama a ti", "voz": "Y mientras no aparezcan, te las reclama a ti." },
+    { "id": "giro", "titulo": "¿Y si se registrara al llegar?", "voz": "¿Y si cada devolución se registrara al llegar?" },
+    { "id": "escanea", "titulo": "Llega y se escanea", "voz": "Al llegar, tu operador la escanea: de qué pedido viene y en qué estado llega." },
+    { "id": "vuelve", "titulo": "De vuelta, el mismo día", "voz": "Si está para venta, vuelve al inventario el mismo día. Y tu cliente lo ve en su reporte." },
+    { "id": "gana", "titulo": "Sin rincón y sin reclamo", "voz": "Las piezas vuelven a estar disponibles. Sin rincón y sin reclamo." },
+    { "id": "cierre", "titulo": "¿Se te juntan devoluciones?", "voz": "Si en tu bodega se juntan las devoluciones, te cuento cómo lo haría para la tuya. Entra a bodgar punto dev." }
+  ]
+}

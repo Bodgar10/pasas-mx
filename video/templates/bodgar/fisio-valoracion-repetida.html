@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · pérdida: la paciente cambia de sede y la vuelven a valorar desde cero; esa hora no se cobra. Cifras de ejemplo.
+   Revalorar o no lo decide la terapeuta; el sistema solo pone el historial a la vista. */
+/* Dos sedes */
+.sedes{display:flex;gap:24px;padding:36px 36px 20px;position:relative}
+.sede{flex:1;border-radius:26px;background:var(--suave);padding:26px 24px 30px;min-height:330px;position:relative}
+.sede .k{font-family:M;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.sede h3{margin:8px 0 6px;font-family:B;font-weight:800;font-size:46px}
+.sede .tp{font-size:27px;font-weight:600;color:var(--gris)}
+.sede.sur{background:#FBEADF}
+.flecha{position:absolute;left:50%;top:200px;margin-left:-29px;width:58px;height:58px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:32px;font-weight:700;z-index:2;opacity:0}
+.chip{position:absolute;top:250px;display:flex;align-items:center;gap:14px;background:#fff;border-radius:999px;padding:10px 22px 10px 10px;box-shadow:0 10px 24px rgba(0,0,0,.12);font-size:28px;font-weight:700;white-space:nowrap;z-index:3}
+.chip .av{width:56px;height:56px;font-size:26px;background:#9C7BB5}
+.horario{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:var(--arena);font-size:29px;font-weight:600;display:flex;justify-content:space-between;opacity:0}
+.horario b{font-family:M;font-weight:600}
+/* Teléfono */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.busq{margin:26px 24px 0;padding:20px 22px;border-radius:18px;border:3px solid var(--linea);font-size:29px;font-weight:600;display:flex;gap:14px;align-items:center;background:#fff}
+.busq i{font-style:normal;color:var(--gris)}
+.busq .cur{width:3px;height:34px;background:var(--terra)}
+.vacio{margin:26px 24px 0;padding:34px 24px;border-radius:22px;border:3px dashed #D9CFC1;text-align:center;opacity:0}
+.vacio b{display:block;font-size:31px;color:var(--terra2)}
+.vacio span{display:block;margin-top:8px;font-size:24px;color:var(--gris);font-weight:600}
+.bnueva{margin:26px 24px 0;background:var(--terra);color:#fff;border-radius:20px;padding:24px;text-align:center;font-size:29px;font-weight:700;opacity:0}
+/* Diálogo */
+.dlg{padding:30px 36px 14px}
+.lin{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px;opacity:0}
+.lin.pac{flex-direction:row-reverse}
+.lin .av{width:64px;height:64px;font-size:28px}
+.lin .q{max-width:640px;padding:22px 26px;border-radius:28px;font-size:34px;font-weight:600;line-height:1.3}
+.lin.ter .q{background:var(--suave);border-top-left-radius:8px}
+.lin.pac .q{background:#FBEADF;color:var(--terra2);border-top-right-radius:8px}
+.reinicio{margin:4px 36px 32px;padding:22px 24px;border-radius:18px;background:var(--arena);display:flex;justify-content:space-between;align-items:center;font-size:30px;font-weight:700;opacity:0}
+.reinicio s{color:var(--gris);font-family:M;font-weight:600}
+.reinicio b{color:var(--terra2);font-family:M;font-weight:600}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:170px}
+.term span{font-size:30px;font-weight:600;color:var(--gris);line-height:1.25}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Mes */
+.rep{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:30px 36px 10px}
+.rep div{border-radius:20px;background:#FBEADF;border:3px dashed var(--terra);padding:18px 18px;opacity:0}
+.rep b{display:block;font-size:29px}
+.rep span{display:block;margin-top:4px;font-family:M;font-weight:600;font-size:22px;color:var(--terra2)}
+/* Expediente único */
+.pac{display:flex;align-items:center;gap:22px;padding:28px 36px;border-bottom:1px solid var(--linea)}
+.pac .av{width:96px;height:96px;font-size:40px;background:#9C7BB5}
+.pac b{display:block;font-size:38px}.pac span{font-size:26px;color:var(--gris);font-weight:600}
+.ssd{display:flex;gap:14px;padding:24px 36px 6px}
+.ssd span{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 20px;background:var(--verde2);color:var(--verde);font-size:27px;font-weight:700;opacity:0}
+.obj{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.obj:last-child{border-bottom:0}
+.obj .bar{margin-left:auto;width:200px;height:18px;border-radius:9px;background:var(--arena);overflow:hidden}
+.obj .bar i{display:block;height:100%;background:var(--verde);border-radius:9px}
+.obj small{display:block;font-size:23px;color:var(--gris)}
+/* Vista de Ana */
+.hist{padding:18px 24px 0}
+.hi{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--linea);opacity:0}
+.hi .pt{width:20px;height:20px;border-radius:50%;background:var(--verde);margin-top:8px;flex:none}
+.hi b{display:block;font-size:27px}.hi span{display:block;font-size:22px;color:var(--gris);font-weight:600;font-family:M;margin-top:2px}
+.decide{margin:20px 24px 0;padding:22px;border-radius:20px;background:var(--suave);opacity:0}
+.decide .k{font-family:M;font-weight:600;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.decide .bts{display:flex;gap:12px;margin-top:14px}
+.decide .bts span{flex:1;text-align:center;padding:18px 10px;border-radius:16px;font-size:25px;font-weight:700;background:#fff;border:3px solid var(--linea)}
+.decide .bts span.si{background:var(--verde);border-color:var(--verde);color:#fff}
+/* Qué ganas */
+.gan{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.gan:last-child{border-bottom:0}
+.gan small{display:block;font-family:M;font-weight:600;font-size:23px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.gan b{display:block;font-size:36px;margin-top:6px}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-cambio"><h1>Mariana <em>cambia de sede</em></h1></div>
+  <div class="tit" id="t-cero"><h1>Ahí no hay <em>expediente</em></h1></div>
+  <div class="tit" id="t-otra"><h1>«¿Otra vez <em>desde el principio?</em>»</h1></div>
+  <div class="tit" id="t-cuesta"><h1>−$700 <em>por valoración</em></h1><p>Ejemplo: una hora de terapeuta</p></div>
+  <div class="tit" id="t-mes"><h1>≈ $4,200 <em>al mes</em></h1><p>Ejemplo: 6 valoraciones × $700</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si fuera <em>un solo expediente?</em></h1></div>
+  <div class="tit" id="t-unico"><h1>Una paciente, <em>un expediente</em></h1></div>
+  <div class="tit" id="t-ve"><h1>Ana ve lo que <em>ya se hizo</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Sigue donde <em>se quedó</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Tienes <em>varias sedes?</em></h1></div>
+
+  <!-- 1 · Cambio de sede -->
+  <div class="card" id="cambio">
+    <div class="ccab"><span>Tu clínica</span><span class="ej">Ejemplo</span></div>
+    <div class="sedes">
+      <div class="sede"><div class="k">Sede</div><h3>Norte</h3><div class="tp">Con Luis</div></div>
+      <div class="sede sur"><div class="k">Sede</div><h3>Sur</h3><div class="tp">Con Ana</div></div>
+      <div class="flecha" id="flecha">→</div>
+      <div class="chip" id="chip"><div class="av">M</div>Mariana R.</div>
+    </div>
+    <div class="horario" id="horario">Nuevo horario<b>Martes 18:00</b></div>
+  </div>
+
+  <!-- 2 · Sin expediente en la sede Sur -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Sede Sur</b><span>Recepción</span></div>
+    <div class="busq"><i>⌕</i><span id="q"></span><span class="cur"></span></div>
+    <div class="vacio" id="vacio"><b>Sin expediente en esta sede</b><span>Mariana R.</span></div>
+    <div class="bnueva" id="bnueva">+ Nueva valoración</div>
+  </div></div>
+
+  <!-- 3 · Otra vez desde el principio -->
+  <div class="card" id="otra">
+    <div class="ccab"><span>Sede Sur · con Ana</span><span>Martes 18:00</span></div>
+    <div class="dlg">
+      <div class="lin ter" id="o1"><div class="av" style="background:#3E8E6A">A</div><div class="q">¿Desde cuándo te duele?</div></div>
+      <div class="lin pac" id="o2"><div class="av" style="background:#9C7BB5">M</div><div class="q">Ya lo conté en la otra sede…</div></div>
+    </div>
+    <div class="reinicio" id="reinicio"><span>Iba en la sesión</span><span><s>6</s> → <b>valoración</b></span></div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Una valoración</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>1 h</b><span>de terapeuta<br>valorando otra vez</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$700</b><span>que no se cobran</span></div>
+    <div class="res"><span>= sin cobrar</span><b id="eres">$0</b></div>
+  </div>
+
+  <!-- 5 · El mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>Valoraciones repetidas</span></div>
+    <div class="rep" id="rep"></div>
+    <div class="total"><span>6 × $700</span><b id="mtot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · Expediente único -->
+  <div class="card" id="unico">
+    <div class="pac"><div class="av">M</div><div><b>Mariana R.</b><span>Un solo expediente</span></div><span class="ej" style="margin-left:auto">Ejemplo</span></div>
+    <div class="ssd"><span id="s1">✓ Sede Norte</span><span id="s2">✓ Sede Sur</span></div>
+    <div class="obj" id="j1"><div>Subir escaleras sin dolor<small>Objetivo · Luis</small></div><div class="bar"><i style="width:70%"></i></div></div>
+    <div class="obj" id="j2"><div>Flexión de rodilla<small>Objetivo · Luis</small></div><div class="bar"><i style="width:55%"></i></div></div>
+    <div class="obj" id="j3"><div>Volver a correr<small>Objetivo · Luis</small></div><div class="bar"><i style="width:25%"></i></div></div>
+  </div>
+
+  <!-- 8 · Lo que ve Ana -->
+  <div class="phone" id="phone2"><div class="scr">
+    <div class="otop"><b>Mariana R.</b><span>Ana · Sede Sur</span></div>
+    <div class="hist">
+      <div class="hi" id="h1"><span class="pt"></span><div><b>Valoración inicial</b><span>2 sep · Luis · Norte</span></div></div>
+      <div class="hi" id="h2"><span class="pt"></span><div><b>Objetivos definidos</b><span>3 activos</span></div></div>
+      <div class="hi" id="h3"><span class="pt"></span><div><b>Última sesión: la 5</b><span>28 oct · Luis · Norte</span></div></div>
+    </div>
+    <div class="decide" id="decide">
+      <div class="k">Ana decide</div>
+      <div class="bts"><span class="si" id="seguir">Seguir el plan</span><span>Revalorar</span></div>
+    </div>
+  </div></div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>Martes 18:00 · con Ana</span><span class="ej">Ejemplo</span></div>
+    <div class="gan" id="g1"><span class="ok">✓</span><div><small>La hora</small><b>Se usa para tratar: sesión 6</b></div></div>
+    <div class="gan" id="g2"><span class="ok">✓</span><div><small>Mariana</small><b>No vuelve a empezar de cero</b></div></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Sede Norte</span><i>→</i><span>Sede Sur</span><i>→</i><span class="v">Mismo expediente</span></div>
+    <p>Te cuento cómo lo haría en tu clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var PAC = ['Laura G.', 'Pedro L.', 'Rosa T.', 'Diego M.', 'Carmen S.', 'Mariana R.'];
+window.prepara = function () {
+  $('rep').innerHTML = PAC.map(function (n) { return '<div><b>' + n + '</b><span>−$700</span></div>'; }).join('');
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tap = false;
+  // 1 · Cambio de sede: el chip pasa de Norte a Sur
+  bloque($('cambio'), 'cambio', 'cambio', t);
+  pop($('flecha'), t, S.cambio + 0.8);
+  var m = easeOut(clamp((t - S.cambio - 1.4) / 1.0));
+  $('chip').style.left = (24 + m * 438) + 'px';
+  aparece('horario', t, S.cambio + 2.4);
+
+  // 2 · Búsqueda sin resultado
+  telefono($('phone1'), 'cero', 'cero', t);
+  var txt = 'Mariana R.', n = Math.floor(clamp((t - S.cero - 0.6) / 0.9) * txt.length);
+  $('q').textContent = txt.slice(0, n);
+  pop($('vacio'), t, S.cero + 1.7);
+  aparece('bnueva', t, S.cero + 2.6);
+  if (t >= S.cero && t < E.cero) tap = toque(t, S.cero + 3.6, $('bnueva')) || tap;
+
+  // 3 · Diálogo
+  bloque($('otra'), 'otra', 'otra', t);
+  aparece('o1', t, S.otra + 0.5, -50); aparece('o2', t, S.otra + 1.6, 50); pop($('reinicio'), t, S.otra + 3.0);
+
+  // 4 · Cuenta
+  bloque($('ecu'), 'cuesta', 'cuesta', t);
+  aparece('e1', t, S.cuesta + 0.6, 50); aparece('e2', t, S.cuesta + 1.6, 50);
+  $('eres').textContent = '−' + pesos(Math.round(cuenta(t, S.cuesta + 2.6, 1.0, 700) / 10) * 10);
+
+  // 5 · Mes
+  bloque($('mes'), 'mes', 'mes', t);
+  document.querySelectorAll('#rep div').forEach(function (d, i) { pop(d, t, S.mes + 0.4 + i * 0.3); });
+  $('mtot').textContent = pesos(Math.round(cuenta(t, S.mes + 0.4, 2.0, 4200) / 100) * 100);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · Expediente único
+  bloque($('unico'), 'unico', 'unico', t);
+  pop($('s1'), t, S.unico + 0.6); pop($('s2'), t, S.unico + 1.0);
+  ['j1', 'j2', 'j3'].forEach(function (id, i) { aparece(id, t, S.unico + 1.6 + i * 0.4, 50); });
+
+  // 8 · Lo que ve Ana
+  telefono($('phone2'), 've', 've', t);
+  ['h1', 'h2', 'h3'].forEach(function (id, i) { aparece(id, t, S.ve + 0.7 + i * 0.6, 40); });
+  pop($('decide'), t, S.ve + 3.4);
+  if (t >= S.ve && t < E.ve) tap = toque(t, S.ve + 5.4, $('seguir')) || tap;
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  aparece('g1', t, S.gana + 0.5, 50); aparece('g2', t, S.gana + 2.0, 50);
+  return tap;
+};
+</script>
+</body></html>

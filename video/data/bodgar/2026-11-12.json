@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-11-12",
+  "dia": "jueves",
+  "linea": "Bodegas · eficiencia",
+  "plantilla": "bodegas-recepcion.html",
+  "nombre": "bodegas-recepcion",
+  "url": "bodgar.dev/plataformas/bodegas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Bodegas y 3PL",
+    "titulo": "Recibes en papel. *Capturas dos veces.*",
+    "dato": { "num": "≈ 30 h", "texto": "al mes pasando hojas de recepción al Excel", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Nuevo reel",
+    "titulo": "¿Tu recepción todavía *va en una hoja?*",
+    "texto": "Contar y capturar podría ser un solo paso. Así lo haría."
+  },
+  "post": "Son las 8 de la mañana. Llega un camión con 50 cajas para Casa Brisa.\n\nTu equipo cuenta caja por caja y lo apunta en una hoja. Después, alguien pasa esa hoja al Excel, y el cliente no ve su mercancía hasta la tarde. 20 recepciones al mes, hora y media de captura cada una: 30 horas al mes.\n\nAsí lo haría: al recibir, tu operador escanea cada caja contra la lista que mandó el cliente. Si esperabas 50 y llegan 48, lo ves ahí, con el camión en el andén. Y queda el rastro: qué entró, cuántas piezas, quién lo recibió y a qué hora. Sin hoja que capturar después, y tu cliente ve su mercancía en cuanto entra.\n\nLas cifras del video son un ejemplo, no un resultado. Si en tu bodega todavía se recibe en papel, te cuento cómo lo haría para la tuya: bodgar.dev/plataformas/bodegas (link en la bio). Revisión sin costo.\n\n#bodegas #3PL #logistica #almacen #pymesmexico",
+  "escenas": [
+    { "id": "camion", "titulo": "Llegó el camión", "voz": "Son las ocho. Llega un camión con cincuenta cajas para Casa Brisa." },
+    { "id": "papel", "titulo": "Se cuenta en una hoja", "voz": "Tu equipo cuenta caja por caja y lo apunta en una hoja." },
+    { "id": "captura", "titulo": "Y luego, a capturar", "voz": "Después, alguien pasa esa hoja al Excel. Y el cliente no ve nada hasta la tarde." },
+    { "id": "cuesta", "titulo": "≈ 30 horas al mes", "voz": "Veinte recepciones al mes, hora y media de captura cada una: treinta horas al mes." },
+    { "id": "giro", "titulo": "¿Y si contar fuera capturar?", "voz": "¿Y si contar y capturar fueran lo mismo?" },
+    { "id": "escaneo", "titulo": "Se escanea al recibir", "voz": "Al recibir, tu operador escanea cada caja contra la lista que mandó el cliente." },
+    { "id": "diferencia", "titulo": "La diferencia, en el andén", "voz": "Si esperabas cincuenta y llegan cuarenta y ocho, lo ves ahí, con el camión en el andén." },
+    { "id": "rastro", "titulo": "Queda el rastro", "voz": "Y queda registrado qué entró, cuántas piezas, quién lo recibió y a qué hora." },
+    { "id": "gana", "titulo": "Nada que capturar después", "voz": "Sin hoja que pasar al Excel. Y tu cliente ve su mercancía en cuanto entra." },
+    { "id": "cierre", "titulo": "¿Todavía recibes en papel?", "voz": "Si en tu bodega todavía se recibe en papel, te cuento cómo lo haría para la tuya. Entra a bodgar punto dev." }
+  ]
+}

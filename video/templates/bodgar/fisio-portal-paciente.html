@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · crecimiento: recepción contestando «¿a qué hora es mi cita?» todo el día; con un portal del paciente,
+   ese tiempo puede ir a llenar la agenda. Cifras de ejemplo. Lo que ve el paciente lo decide la clínica. */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+/* Bandeja de recepción */
+.msg{display:flex;gap:16px;padding:18px 24px;border-bottom:1px solid var(--linea);opacity:0}
+.msg .av{width:58px;height:58px;font-size:24px}
+.msg div{min-width:0}.msg b{display:block;font-size:25px}.msg span{display:block;font-size:24px;color:#5d6b66;line-height:1.3}
+.msg i{font-style:normal;margin-left:auto;align-self:center;width:20px;height:20px;border-radius:50%;background:var(--terra);flex:none}
+.badge{position:absolute;right:30px;top:40px;background:var(--terra);color:#fff;font-family:M;font-weight:600;font-size:22px;padding:8px 14px;border-radius:999px}
+/* Cuentas */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:190px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Pendientes */
+.pd{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600;opacity:0}
+.pd:last-child{border-bottom:0}
+.pd .ic{width:56px;height:56px;border-radius:16px;background:var(--arena);display:grid;place-items:center;font-size:28px;flex:none}
+.pd .st{margin-left:auto;font-family:M;font-weight:600;font-size:23px;padding:10px 14px;border-radius:12px;white-space:nowrap;background:#FBEADF;color:var(--terra2)}
+.pd .st.v{background:var(--verde2);color:var(--verde)}
+/* Portal */
+.hola{padding:24px 26px 6px;font-size:30px;font-weight:700}
+.bx{margin:16px 22px 0;padding:20px 22px;border-radius:22px;border:3px solid var(--linea);background:#fff;opacity:0}
+.bx .k{font-family:M;font-weight:600;font-size:19px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.bx .v{margin-top:6px;font-family:B;font-weight:800;font-size:40px;line-height:1.1}
+.bx .s{font-size:23px;font-weight:600;color:var(--gris);margin-top:2px}
+.mini{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;margin-top:12px}
+.mini i{height:18px;border-radius:6px;background:var(--arena)}
+.mini i.v{background:var(--verde)}
+.ejs{display:flex;gap:10px;margin-top:12px}
+.ejs span{flex:1;border-radius:14px;background:var(--suave);padding:12px 10px;font-size:21px;font-weight:700;text-align:center}
+.ejs span.hecho{background:var(--verde2);color:var(--verde)}
+/* Lo que se muestra */
+.tg{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600;opacity:0}
+.tg:last-child{border-bottom:0}
+.sw{margin-left:auto;width:96px;height:54px;border-radius:27px;background:#D9D3C8;position:relative;flex:none}
+.sw i{position:absolute;left:5px;top:5px;width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.sw.on{background:var(--verde)}.sw.on i{left:47px}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-nueve"><h1>«¿A qué hora <em>es mi cita?</em>»</h1></div>
+  <div class="tit" id="t-dia"><h1>40 mensajes <em>al día</em></h1><p>Ejemplo: 2 minutos cada uno</p></div>
+  <div class="tit" id="t-mes"><h1>≈ 27 horas <em>al mes</em></h1><p>Ejemplo: 80 min × 20 días</p></div>
+  <div class="tit" id="t-espera"><h1>Lo que se queda <em>esperando</em></h1></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>vieran solos?</em></h1></div>
+  <div class="tit" id="t-portal"><h1>Su propio <em>portal</em></h1></div>
+  <div class="tit" id="t-decide"><h1>Tu clínica decide <em>qué se ve</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Tiempo para <em>llenar la agenda</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Tu recepción <em>contesta lo mismo?</em></h1></div>
+
+  <!-- 1 · Bandeja de recepción a las 9:00 -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Recepción · 9:00</b><span>Mensajes</span></div>
+    <span class="badge" id="badge">0 hoy</span>
+    <div id="msgs"></div>
+  </div></div>
+
+  <!-- 2 · El día -->
+  <div class="card" id="dia">
+    <div class="ccab"><span>Un día · ejemplo</span><span>Recepción</span></div>
+    <div class="term" id="d1"><span class="op"></span><b>40</b><span>mensajes</span></div>
+    <div class="term" id="d2"><span class="op">×</span><b>2 min</b><span>cada uno</span></div>
+    <div class="res"><span>= al día</span><b id="dres">0 min</b></div>
+  </div>
+
+  <!-- 3 · El mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>20 días hábiles</span></div>
+    <div class="term" id="k1"><span class="op"></span><b>80 min</b><span>al día</span></div>
+    <div class="term" id="k2"><span class="op">×</span><b>20</b><span>días</span></div>
+    <div class="res"><span>= al mes</span><b id="mres">0 h</b></div>
+  </div>
+
+  <!-- 4 · Lo que espera -->
+  <div class="card" id="espera">
+    <div class="ccab"><span>Pendientes de recepción</span><span class="ej">Ejemplo</span></div>
+    <div class="pd" id="p1"><span class="ic">📅</span>Llenar huecos de la agenda<span class="st">Pendiente</span></div>
+    <div class="pd" id="p2"><span class="ic">💳</span>Cobros por confirmar<span class="st">Pendiente</span></div>
+    <div class="pd" id="p3"><span class="ic">↺</span>Seguimiento a pacientes<span class="st">Pendiente</span></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Portal del paciente -->
+  <div class="phone" id="phone2"><div class="scr">
+    <div class="otop"><b>Mi portal</b><span>Carlos D.</span></div>
+    <div class="hola">Hola, Carlos</div>
+    <div class="bx" id="x1"><div class="k">Próxima cita</div><div class="v">Jueves 17:00</div><div class="s">Con Ana · Sede Centro</div></div>
+    <div class="bx" id="x2"><div class="k">Sesiones restantes</div><div class="v">4 de 10</div><div class="mini" id="mini"></div></div>
+    <div class="bx" id="x3"><div class="k">Ejercicios de hoy · los asignó Ana</div><div class="ejs"><span class="hecho">✓ Puente</span><span class="hecho">✓ Sentadilla</span><span>Plancha</span></div></div>
+  </div></div>
+
+  <!-- 7 · Lo que se muestra -->
+  <div class="card" id="decide">
+    <div class="ccab"><span>Lo que ve el paciente</span><span>Lo decide tu clínica</span></div>
+    <div class="tg" id="g1">Próxima cita<span class="sw on"><i></i></span></div>
+    <div class="tg" id="g2">Sesiones restantes<span class="sw on"><i></i></span></div>
+    <div class="tg" id="g3">Indicaciones<span class="sw" id="sw3"><i></i></span></div>
+    <div class="tg" id="g4">Pagos<span class="sw" id="sw4"><i></i></span></div>
+    <div class="tg" id="g5">Documentos<span class="sw"><i></i></span></div>
+  </div>
+
+  <!-- 8 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>Recepción · esta semana</span><span class="ej">Ejemplo</span></div>
+    <div class="pd" id="q1"><span class="ic">📅</span>Llenar huecos de la agenda<span class="st v">En curso</span></div>
+    <div class="pd" id="q2"><span class="ic">💳</span>Cobros por confirmar<span class="st v">En curso</span></div>
+    <div class="pd" id="q3"><span class="ic">↺</span>Seguimiento a pacientes<span class="st v">En curso</span></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Pregunta</span><i>→</i><span>Portal</span><i>→</i><span class="v">Tiempo libre</span></div>
+    <p>Te cuento cómo lo haría en tu clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var MS = [['C', '#5B8DB8', 'Carlos D.', '¿A qué hora es mi cita?'], ['L', '#8F6BB0', 'Lucía P.', '¿Mi cita es hoy o mañana?'],
+  ['D', '#C96F4A', 'Mamá de Diego', '¿A qué hora le toca?'], ['J', '#3E8E6A', 'Jorge R.', '¿Cuántas sesiones me quedan?'],
+  ['R', '#B5739A', 'Rosa G.', '¿A qué hora es mi cita?'], ['P', '#6C8A7F', 'Pedro L.', '¿Me mandas mis ejercicios?']];
+window.prepara = function () {
+  $('msgs').innerHTML = MS.map(function (m, i) { return '<div class="msg" id="m' + i + '"><div class="av" style="background:' + m[1] + '">' + m[0] + '</div><div><b>' + m[2] + '</b><span>' + m[3] + '</span></div><i></i></div>'; }).join('');
+  var h = ''; for (var i = 0; i < 10; i++) h += '<i class="' + (i < 6 ? 'v' : '') + '"></i>'; $('mini').innerHTML = h;
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tap = false;
+  // 1 · Mensajes que llegan
+  telefono($('phone1'), 'nueve', 'nueve', t);
+  MS.forEach(function (m, i) { aparece('m' + i, t, S.nueve + 0.6 + i * 0.55, 60); });
+  $('badge').textContent = Math.round(cuenta(t, S.nueve + 0.6, 3.6, 12)) + ' hoy';
+
+  // 2 · El día
+  bloque($('dia'), 'dia', 'dia', t);
+  aparece('d1', t, S.dia + 0.5, 50); aparece('d2', t, S.dia + 1.6, 50);
+  $('dres').textContent = Math.round(cuenta(t, S.dia + 2.6, 1.0, 80)) + ' min';
+
+  // 3 · El mes
+  bloque($('mes'), 'mes', 'mes', t);
+  aparece("k1", t, S.mes + 0.4, 50); aparece("k2", t, S.mes + 1.2, 50);
+  $('mres').textContent = '≈ ' + Math.round(cuenta(t, S.mes + 2.0, 1.2, 27)) + ' h';
+
+  // 4 · Pendientes
+  bloque($('espera'), 'espera', 'espera', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.espera + 0.5 + i * 0.6, 50); });
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Portal
+  telefono($('phone2'), 'portal', 'portal', t);
+  ['x1', 'x2', 'x3'].forEach(function (id, i) { pop($(id), t, S.portal + 0.8 + i * 1.2); });
+
+  // 7 · La clínica decide
+  bloque($('decide'), 'decide', 'decide', t);
+  ['g1', 'g2', 'g3', 'g4', 'g5'].forEach(function (id, i) { aparece(id, t, S.decide + 0.4 + i * 0.25, 40); });
+  var t3 = S.decide + 2.0, t4 = S.decide + 3.0;
+  if (t >= S.decide && t < E.decide) tap = toque(t, t3, $('sw3')) || toque(t, t4, $('sw4')) || tap;
+  $('sw3').classList.toggle('on', t >= t3); $('sw4').classList.toggle('on', t >= t4);
+
+  // 8 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  ['q1', 'q2', 'q3'].forEach(function (id, i) { aparece(id, t, S.gana + 0.6 + i * 0.7, 50); });
+  return tap;
+};
+</script>
+</body></html>

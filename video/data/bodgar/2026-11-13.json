@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-11-13",
+  "dia": "viernes",
+  "linea": "Caso práctico · almacenaje excedente",
+  "plantilla": "caso-almacenaje.html",
+  "nombre": "caso-almacenaje",
+  "url": "bodgar.dev/plataformas/bodegas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Caso práctico",
+    "titulo": "Contrató 100 posiciones. *Ocupa 140.*",
+    "dato": { "num": "$12,000", "texto": "al mes en almacenaje que no se factura", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Caso práctico",
+    "titulo": "40 × $300 = *$12,000*",
+    "texto": "Así atacaría el almacenaje que se ocupa y no se cobra en una bodega."
+  },
+  "post": "Caso práctico: una bodega que cobra almacenaje por posición de tarima, a $300 al mes.\n\nUn cliente contrató 100 posiciones. Hoy ocupa 140, y nadie lo contó. 40 posiciones de más × $300 = $12,000 al mes. Al año, $144,000.\n\nLo primero que construiría: cada noche, el sistema cuenta cuántas posiciones ocupa cada cliente. Cuando uno pasa lo contratado, te llega un aviso. Y al cierre, el excedente aparece listo para revisar y facturar. Mediría una sola cosa: posiciones ocupadas contra posiciones facturadas, cada mes.\n\nLas cifras son un ejemplo, no un resultado. Si quieres que revise el proceso de tu bodega, entra a bodgar.dev/plataformas/bodegas (link en la bio). Revisión sin costo.\n\n#bodegas #3PL #logistica #almacen #pymesmexico",
+  "escenas": [
+    { "id": "caso", "titulo": "Caso práctico", "voz": "Caso práctico. Una bodega que cobra almacenaje por posición de tarima: trescientos pesos al mes." },
+    { "id": "pasa", "titulo": "Contrató 100. Ocupa 140.", "voz": "Un cliente contrató cien posiciones. Hoy ocupa ciento cuarenta. Y nadie lo contó." },
+    { "id": "cuenta", "titulo": "Hagamos la cuenta", "voz": "Hagamos la cuenta. Cuarenta posiciones de más, a trescientos pesos: doce mil pesos al mes." },
+    { "id": "anio", "titulo": "≈ $144,000 al año", "voz": "Al año, son ciento cuarenta y cuatro mil pesos." },
+    { "id": "primero", "titulo": "Lo primero que construiría", "voz": "Esto es lo primero que construiría." },
+    { "id": "conteo", "titulo": "Cada noche, se cuenta", "voz": "Cada noche, el sistema cuenta cuántas posiciones ocupa cada cliente." },
+    { "id": "aviso", "titulo": "Si se pasa, aviso", "voz": "Cuando un cliente pasa lo contratado, te llega un aviso." },
+    { "id": "factura", "titulo": "Listo para facturar", "voz": "Y al cierre, el excedente aparece listo para revisar y facturar." },
+    { "id": "medir", "titulo": "Lo que mediría", "voz": "Y mediría una sola cosa: posiciones ocupadas contra posiciones facturadas, cada mes." },
+    { "id": "cierre", "titulo": "¿Revisamos tu bodega?", "voz": "Así pienso cada proceso de una bodega. Si quieres que revise el tuyo, entra a bodgar punto dev." }
+  ]
+}

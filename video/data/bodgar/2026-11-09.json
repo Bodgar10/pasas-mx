@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-11-09",
+  "dia": "lunes",
+  "linea": "Fisioterapia · pérdida",
+  "plantilla": "fisio-valoracion-repetida.html",
+  "nombre": "fisio-valoracion-repetida",
+  "url": "bodgar.dev/plataformas/fisioterapia",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Clínicas de fisioterapia",
+    "titulo": "Cambió de sede. *Empezó de cero.*",
+    "dato": { "num": "−$700", "texto": "por cada valoración que se repite sin cobrar", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Nuevo reel",
+    "titulo": "¿Tu paciente tiene *dos expedientes?*",
+    "texto": "Cuando cambia de sede, ¿alguien vuelve a valorarlo desde cero?"
+  },
+  "post": "Mariana se atendía en la sede Norte de tu clínica. Por su horario, pasa a la sede Sur.\n\nAhí su expediente no aparece. Su nueva terapeuta la tiene que valorar otra vez, y Mariana vuelve a contar todo desde el principio. Siente que empezó de cero.\n\nEsa valoración repetida es una hora de terapeuta que no se cobra: $700. Si pasa 6 veces al mes, son $4,200.\n\nAsí lo resolvería: un solo expediente por paciente, sin importar en qué sede o con qué terapeuta se atienda. Su nueva terapeuta ve el historial, los objetivos y la última sesión, y ella decide si hace falta revalorar. La hora se usa para tratar, y Mariana sigue donde se quedó.\n\nLas cifras del video son un ejemplo, no un resultado. Si tu clínica tiene varias sedes o varios terapeutas, te cuento cómo lo haría para la tuya: bodgar.dev/plataformas/fisioterapia (link en la bio). Diagnóstico sin costo.\n\n#fisioterapia #clinicas #rehabilitacion #pymesmexico #expedienteclinico",
+  "escenas": [
+    { "id": "cambio", "titulo": "Mariana cambia de sede", "voz": "Mariana se atendía en la sede Norte. Por su horario, pasa a la sede Sur." },
+    { "id": "cero", "titulo": "Ahí no hay expediente", "voz": "Ahí su expediente no aparece. Su nueva terapeuta la tiene que valorar otra vez." },
+    { "id": "otra", "titulo": "«¿Otra vez desde el principio?»", "voz": "Y Mariana vuelve a contar todo desde el principio. Siente que empezó de cero." },
+    { "id": "cuesta", "titulo": "−$700 por valoración", "voz": "Esa valoración repetida es una hora de terapeuta que no se cobra." },
+    { "id": "mes", "titulo": "≈ $4,200 al mes", "voz": "Si pasa seis veces al mes, son cuatro mil doscientos pesos." },
+    { "id": "giro", "titulo": "¿Y si fuera un solo expediente?", "voz": "¿Y si fuera un solo expediente?" },
+    { "id": "unico", "titulo": "Una paciente, un expediente", "voz": "Un solo expediente por paciente, sin importar en qué sede se atienda." },
+    { "id": "ve", "titulo": "Ana ve lo que ya se hizo", "voz": "Su nueva terapeuta ve el historial, los objetivos y la última sesión. Y ella decide si hace falta revalorar." },
+    { "id": "gana", "titulo": "Sigue donde se quedó", "voz": "La hora se usa para tratar. Y Mariana sigue donde se quedó." },
+    { "id": "cierre", "titulo": "¿Tienes varias sedes?", "voz": "Si tu clínica tiene varias sedes o terapeutas, te cuento cómo lo haría para la tuya. Entra a bodgar punto dev." }
+  ]
+}

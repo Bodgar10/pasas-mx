@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · eficiencia: la recepción se cuenta en papel y luego se captura en Excel. Con escaneo contra la lista del cliente,
+   contar y capturar son un solo paso y la diferencia se ve en el andén. Cifras de ejemplo. */
+/* Andén y camión */
+.anden{position:relative;height:420px;margin:26px 36px 0;border-radius:24px;background:linear-gradient(#DDE5E2 0,#DDE5E2 72%,#B9B2A4 72%);overflow:hidden}
+.camion{position:absolute;bottom:58px;left:40px;width:640px;height:250px}
+.caja-t{position:absolute;left:0;top:0;width:480px;height:220px;border-radius:14px;background:#fff;border:5px solid #c7cfcc;display:flex;flex-wrap:wrap;align-content:flex-end;gap:6px;padding:14px;overflow:hidden}
+.cab2{position:absolute;left:490px;top:70px;width:140px;height:150px;border-radius:14px 40px 14px 14px;background:var(--terra)}
+.cab2:before{content:'';position:absolute;right:16px;top:20px;width:64px;height:48px;border-radius:8px 26px 8px 8px;background:#cfe0ea}
+.rueda{position:absolute;bottom:-26px;width:62px;height:62px;border-radius:50%;background:#2b2b2b;border:10px solid #555}
+.cj{width:48px;height:40px;border-radius:5px;background:#D8B98A;box-shadow:inset 0 -6px 0 rgba(0,0,0,.12);opacity:0}
+.llega{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 30px}
+.llega span{font-size:31px;font-weight:600;color:var(--gris)}
+.llega b{font-family:B;font-weight:800;font-size:76px}
+/* Hoja de papel */
+.hoja{position:absolute;left:150px;right:150px;top:620px;background:#FFFDF6;color:#3b3a33;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.35);padding:90px 48px 40px;opacity:0}
+.clip{position:absolute;left:50%;top:-26px;width:200px;height:64px;margin-left:-100px;border-radius:14px;background:#8a8f8d}
+.hoja .ht{font-family:B;font-weight:700;font-size:40px;margin-bottom:18px}
+.rg{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #E7DFC9;padding:16px 0;font-family:M;font-size:30px;opacity:0}
+.rg .tally{font-family:B;font-weight:600;font-size:40px;letter-spacing:4px;color:#4a4a8a}
+.firma{margin-top:22px;font-family:M;font-size:24px;color:#9a917c;opacity:0}
+/* Excel */
+.xl{display:grid;grid-template-columns:60px 1fr 110px 200px;font-family:M;font-size:25px}
+.xl div{border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:16px 14px;height:62px;white-space:nowrap;overflow:hidden}
+.xl .h{background:var(--suave);font-weight:600;color:var(--gris)}
+.xl .n{background:var(--suave);color:var(--gris);text-align:center}
+.cur{display:inline-block;width:3px;height:28px;background:var(--terra);vertical-align:middle;margin-left:2px}
+.reloj{display:flex;justify-content:space-between;align-items:center;padding:22px 36px 28px;font-size:30px;font-weight:700}
+.reloj span{font-family:M;font-weight:600;font-size:24px;color:var(--terra2);background:#FBEADF;padding:10px 16px;border-radius:12px;opacity:0}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:170px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Teléfono: recepción con escaneo */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.lista{margin:22px 22px 0;padding:20px 22px;border-radius:20px;background:var(--suave)}
+.lista .k{font-family:M;font-weight:600;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.lista .v{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px}
+.lista .v b{font-family:B;font-weight:800;font-size:56px}
+.lista .v span{font-size:24px;font-weight:600;color:var(--gris)}
+.barra{height:18px;border-radius:9px;background:var(--arena);margin-top:12px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--verde);border-radius:9px;width:0}
+.esc{display:flex;align-items:center;gap:16px;margin:0 22px;padding:16px 4px;border-bottom:1px solid var(--linea);font-size:25px;font-weight:600;opacity:0}
+.esc .ok{width:42px;height:42px;font-size:22px}
+.esc span{margin-left:auto;font-family:M;font-size:21px;color:var(--gris)}
+.esc span.ok,.esc span.no{margin-left:0;width:42px;height:42px;font-size:22px;color:#fff;font-family:I}
+.dif{margin:22px 22px 0;padding:22px;border-radius:20px;background:#FBEADF;color:var(--terra2);opacity:0}
+.dif b{display:block;font-size:31px}
+.dif span{display:block;margin-top:6px;font-size:24px;font-weight:600;font-family:M}
+.btn{margin:16px 22px 0;background:var(--tinta);color:#fff;border-radius:18px;padding:22px;text-align:center;font-size:27px;font-weight:700;opacity:0}
+.btn.ok2{background:var(--verde)}
+/* Rastro */
+.ev{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.ev:last-child{border-bottom:0}
+.ev .k{width:150px;font-family:M;font-weight:600;font-size:23px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.ev b{font-size:33px}
+/* Qué ganas */
+.gan{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.gan:last-child{border-bottom:0}
+.gan small{display:block;font-family:M;font-weight:600;font-size:23px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.gan b{display:block;font-size:36px;margin-top:6px}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-camion"><h1>Llegó <em>el camión</em></h1></div>
+  <div class="tit" id="t-papel"><h1>Se cuenta <em>en una hoja</em></h1></div>
+  <div class="tit" id="t-captura"><h1>Y luego, <em>a capturar</em></h1></div>
+  <div class="tit" id="t-cuesta"><h1>≈ 30 horas <em>al mes</em></h1><p>Ejemplo: 20 recepciones × 1.5 h</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si contar fuera <em>capturar?</em></h1></div>
+  <div class="tit" id="t-escaneo"><h1>Se escanea <em>al recibir</em></h1></div>
+  <div class="tit" id="t-diferencia"><h1>La diferencia, <em>en el andén</em></h1></div>
+  <div class="tit" id="t-rastro"><h1>Queda <em>el rastro</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Nada que capturar <em>después</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Todavía recibes <em>en papel?</em></h1></div>
+
+  <!-- 1 · El camión -->
+  <div class="card" id="camion">
+    <div class="ccab"><span>Andén 2 · 8:00</span><span class="ej">Ejemplo</span></div>
+    <div class="anden"><div class="camion" id="truck"><div class="caja-t" id="carga"></div><div class="cab2"></div><div class="rueda" style="left:60px"></div><div class="rueda" style="left:360px"></div><div class="rueda" style="left:540px"></div></div></div>
+    <div class="llega"><span>Cajas según la remisión</span><b id="ncj">0</b></div>
+  </div>
+
+  <!-- 2 · La hoja -->
+  <div class="hoja" id="hoja"><div class="clip"></div>
+    <div class="ht">Recepción · Casa Brisa</div>
+    <div class="rg" id="r1">Vajilla<span class="tally">卌卌 ||</span></div>
+    <div class="rg" id="r2">Vasos<span class="tally">卌卌卌 |||</span></div>
+    <div class="rg" id="r3">Platos<span class="tally">卌卌卌 |||</span></div>
+    <div class="firma" id="firma">Contó: Juan · «luego lo paso»</div>
+  </div>
+
+  <!-- 3 · El Excel -->
+  <div class="card" id="captura">
+    <div class="ccab"><span>Inventario.xlsx</span><span>Captura manual</span></div>
+    <div class="xl" id="xl">
+      <div class="h n"></div><div class="h">Producto</div><div class="h">Cajas</div><div class="h">Cliente</div>
+      <div class="n">1</div><div id="x1"></div><div id="x2"></div><div id="x3"></div>
+      <div class="n">2</div><div id="x4"></div><div id="x5"></div><div id="x6"></div>
+      <div class="n">3</div><div id="x7"></div><div id="x8"></div><div id="x9"></div>
+    </div>
+    <div class="reloj"><b id="hora">10:15</b><span id="nove">El cliente todavía no ve nada</span></div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>20</b><span>recepciones</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>1.5 h</b><span>de captura cada una</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">0 h</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 y 7 · Escaneo en el andén -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Recepción</b><span>Juan · andén 2</span></div>
+    <div class="lista"><div class="k">Lista de Casa Brisa</div><div class="v"><b id="nesc">0 / 50</b><span>cajas</span></div><div class="barra"><i id="barra"></i></div></div>
+    <div class="esc" id="s1"><span class="ok">✓</span>Vajilla · 12 de 12<span>08:41</span></div>
+    <div class="esc" id="s2"><span class="ok">✓</span>Vasos · 18 de 18<span>08:42</span></div>
+    <div class="esc" id="s3"><span class="no">!</span>Platos · 18 de 20<span>08:42</span></div>
+    <div class="dif" id="dif"><b>Faltan 2 cajas de platos</b><span>Esperadas 50 · recibidas 48</span></div>
+    <div class="btn" id="btn">Registrar diferencia</div>
+  </div></div>
+
+  <!-- 8 · Rastro -->
+  <div class="card" id="rastro">
+    <div class="ccab"><span>Entrada E-2231 · Casa Brisa</span><span class="ej">Ejemplo</span></div>
+    <div class="ev" id="v1"><span class="k">Qué</span><b>Vajilla, vasos y platos</b></div>
+    <div class="ev" id="v2"><span class="k">Cuánto</span><b>48 de 50 cajas</b></div>
+    <div class="ev" id="v3"><span class="k">Quién</span><b>Juan · andén 2</b></div>
+    <div class="ev" id="v4"><span class="k">Cuándo</span><b>Hoy, 08:42</b></div>
+  </div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>Cada recepción</span><span>Escaneada al recibir</span></div>
+    <div class="gan" id="g1"><span class="ok">✓</span><div><small>Tu equipo</small><b>Sin hoja que pasar al Excel</b></div></div>
+    <div class="gan" id="g2"><span class="ok">✓</span><div><small>Tu cliente</small><b>Ve su mercancía en cuanto entra</b></div></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Llega</span><i>→</i><span>Escaneo</span><i>→</i><span class="v">Registrado</span></div>
+    <p>Te cuento cómo lo haría en tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var NC = 24, XL = ['Vajilla', '12', 'Casa Brisa', 'Vasos', '18', 'Casa Brisa', 'Platos', '18', 'Casa Brisa'];
+window.prepara = function () {
+  var h = ''; for (var i = 0; i < NC; i++) h += '<div class="cj"></div>'; $('carga').innerHTML = h;
+};
+window.escena = function (t) {
+  var tap = false;
+  // 1 · El camión entra y se ven las cajas
+  bloque($('camion'), 'camion', 'camion', t);
+  var tr = easeOut(clamp((t - S.camion - 0.3) / 1.0));
+  $('truck').style.transform = 'translateX(' + ((1 - tr) * -700) + 'px)';
+  document.querySelectorAll('.cj').forEach(function (c, i) { c.style.opacity = clamp((t - (S.camion + 1.2 + i * 0.06)) / 0.15); });
+  $('ncj').textContent = Math.round(cuenta(t, S.camion + 1.2, NC * 0.06 + 0.4, 50));
+
+  // 2 · La hoja
+  bloque($('hoja'), 'papel', 'papel', t);
+  ['r1', 'r2', 'r3'].forEach(function (id, i) { aparece(id, t, S.papel + 0.5 + i * 0.7, 40); });
+  aparece('firma', t, S.papel + 2.6);
+
+  // 3 · Captura en Excel, letra por letra
+  bloque($('captura'), 'captura', 'captura', t);
+  var tot = XL.join('').length, n = Math.floor(clamp((t - S.captura - 0.5) / 3.2) * tot), k = 0;
+  XL.forEach(function (s, i) {
+    var v = s.slice(0, Math.max(0, n - k)); k += s.length;
+    $('x' + (i + 1)).innerHTML = v + (v.length && v.length < s.length ? '<span class="cur"></span>' : '');
+  });
+  var mins = Math.round(cuenta(t, S.captura + 0.5, 3.6, 205)), hh = 10 + Math.floor((15 + mins) / 60), mm = (15 + mins) % 60;
+  $('hora').textContent = hh + ':' + (mm < 10 ? '0' : '') + mm;
+  pop($('nove'), t, S.captura + 3.0);
+
+  // 4 · Cuenta
+  bloque($('ecu'), 'cuesta', 'cuesta', t);
+  aparece('e1', t, S.cuesta + 0.6, 50); aparece('e2', t, S.cuesta + 1.8, 50);
+  $('eres').textContent = Math.round(cuenta(t, S.cuesta + 3.4, 1.0, 30)) + ' h';
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 y 7 · Escaneo (el teléfono se queda entre las dos escenas)
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.escaneo) / 0.6)), pout = easeOut(clamp((t - (E.diferencia - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.escaneo && t < E.diferencia + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var ne = Math.round(cuenta(t, S.escaneo + 0.8, (E.escaneo - S.escaneo) + 0.6, 48));
+  $('nesc').textContent = ne + ' / 50'; $('barra').style.width = (ne / 50 * 100) + '%';
+  ['s1', 's2', 's3'].forEach(function (id, i) { aparece(id, t, S.escaneo + 1.0 + i * 1.1, 40); });
+  pop($('dif'), t, S.diferencia + 0.8);
+  aparece('btn', t, S.diferencia + 2.0);
+  var tb = S.diferencia + 4.4;
+  if (t >= S.diferencia && t < E.diferencia) tap = toque(t, tb, $('btn')) || tap;
+  $('btn').classList.toggle('ok2', t >= tb); $('btn').textContent = t >= tb ? '✓ Diferencia registrada' : 'Registrar diferencia';
+
+  // 8 · Rastro
+  bloque($('rastro'), 'rastro', 'rastro', t);
+  ['v1', 'v2', 'v3', 'v4'].forEach(function (id, i) { aparece(id, t, S.rastro + 0.5 + i * 0.6, 50); });
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  aparece('g1', t, S.gana + 0.5, 50); aparece('g2', t, S.gana + 2.2, 50);
+  return tap;
+};
+</script>
+</body></html>

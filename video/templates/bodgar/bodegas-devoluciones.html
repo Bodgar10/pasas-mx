@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · pérdida: devoluciones que se quedan en el rincón sin registrar; el cliente no puede venderlas y reclama el faltante. Cifras de ejemplo. */
+/* El rincón */
+.rincon{position:relative;height:440px;margin:26px 36px 0;border-radius:24px;background:linear-gradient(#E9E3D8 0,#E9E3D8 68%,#CFC6B6 68%);overflow:hidden}
+.letrero{position:absolute;left:50px;top:50px;background:#FFF3B0;color:#5a4a1a;font-family:M;font-weight:600;font-size:26px;padding:14px 20px;transform:rotate(-4deg);box-shadow:0 6px 12px rgba(0,0,0,.12)}
+.pila{position:absolute;left:0;right:0;bottom:40px;display:flex;justify-content:center;align-items:flex-end;gap:6px;flex-wrap:wrap-reverse;padding:0 60px}
+.bolsa{width:96px;height:76px;border-radius:16px 16px 10px 10px;background:#9FB7C9;position:relative;opacity:0;flex:none}
+.bolsa:before{content:'';position:absolute;left:30%;right:30%;top:-14px;height:20px;border:6px solid #7d97ab;border-bottom:0;border-radius:14px 14px 0 0}
+.bolsa.b2{background:#C9A3B5}.bolsa.b2:before{border-color:#a9849a}
+.bolsa.b3{background:#D8B98A}.bolsa.b3:before{border-color:#b89a6d}
+.cont{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 30px}
+.cont span{font-size:31px;font-weight:600;color:var(--gris)}
+.cont b{font-family:B;font-weight:800;font-size:76px;color:var(--terra2)}
+/* Semanas */
+.sm{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.sm span{width:170px;font-family:M;font-weight:600;font-size:25px;color:var(--gris)}
+.sm .pend{margin-left:auto;font-family:M;font-weight:600;font-size:24px;color:var(--terra2);background:#FBEADF;padding:10px 16px;border-radius:12px}
+.dias{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 30px;background:var(--suave)}
+.dias span{font-size:31px;font-weight:700}
+.dias b{font-family:B;font-weight:800;font-size:80px;color:var(--terra2)}
+/* Chat */
+.cab{display:flex;align-items:center;gap:20px;padding:22px 30px;border-bottom:1px solid var(--linea)}
+.cab b{font-size:32px}.cab span{display:block;font-size:24px;color:var(--gris);font-weight:600}
+.chat{padding:20px 30px 34px;background:#EEF0EC}
+.bur{max-width:86%;background:#fff;border-radius:8px 28px 28px 28px;padding:20px 24px;font-size:32px;font-weight:600;line-height:1.3;box-shadow:0 4px 10px rgba(0,0,0,.06);margin-top:18px;opacity:0}
+.bur small{display:block;margin-top:6px;font-family:M;font-size:20px;color:var(--gris);text-align:right}
+.bur b{color:var(--terra2)}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:170px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Faltante */
+.ff{display:flex;justify-content:space-between;align-items:center;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.ff b{font-family:M;font-weight:600;font-size:29px}
+.ff.resp{background:#FBEADF;color:var(--terra2);border-bottom:0}
+.ff.resp b{font-family:B;font-weight:800;font-size:40px}
+/* Teléfono: escaneo de devolución */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.visor{margin:20px 22px 0;height:250px;border-radius:24px;background:#3d4a46;position:relative;overflow:hidden;display:grid;place-items:center}
+.prenda{width:150px;height:170px;background:#C9A3B5;clip-path:polygon(25% 0,40% 8%,60% 8%,75% 0,100% 18%,88% 38%,80% 32%,80% 100%,20% 100%,20% 32%,12% 38%,0 18%)}
+.etq{position:absolute;right:120px;top:120px;width:70px;height:42px;background:#fff;border-radius:6px;background-image:repeating-linear-gradient(90deg,#222 0 3px,#fff 3px 6px);background-size:60px 24px;background-repeat:no-repeat;background-position:5px 9px}
+.laser{position:absolute;left:30px;right:30px;height:5px;background:#ff5a4a;box-shadow:0 0 14px #ff5a4a;opacity:0}
+.dat{margin:18px 22px 0;padding:16px 20px;border-radius:18px;background:var(--suave);opacity:0}
+.dat div{display:flex;justify-content:space-between;font-size:25px;font-weight:700;padding:4px 0}
+.dat span{font-family:M;font-weight:600;font-size:22px;color:var(--gris)}
+.edo{margin:16px 22px 0;opacity:0}
+.edo .k{font-family:M;font-weight:600;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.edo .bts{display:flex;gap:12px;margin-top:10px}
+.edo .bts span{flex:1;text-align:center;padding:20px 10px;border-radius:16px;font-size:26px;font-weight:700;background:#fff;border:3px solid var(--linea)}
+.edo .bts span.si.on{background:var(--verde);border-color:var(--verde);color:#fff}
+/* Inventario */
+.inv{display:flex;align-items:center;gap:22px;padding:28px 36px;border-bottom:1px solid var(--linea)}
+.inv .ic{width:90px;height:90px;border-radius:18px;background:#F3E6EC;display:grid;place-items:center;flex:none}
+.inv .ic i{display:block;width:54px;height:60px;background:#C9A3B5;clip-path:polygon(25% 0,40% 8%,60% 8%,75% 0,100% 18%,88% 38%,80% 32%,80% 100%,20% 100%,20% 32%,12% 38%,0 18%)}
+.inv b{display:block;font-size:34px}.inv small{display:block;font-size:24px;color:var(--gris);font-weight:600}
+.num{margin-left:auto;font-family:B;font-weight:800;font-size:80px;position:relative;width:130px;height:90px;text-align:right}
+.num span{position:absolute;right:0;top:0;line-height:90px}
+.num .n2{color:var(--verde)}
+.mov{margin:22px 36px 0;padding:18px 22px;border-radius:16px;background:var(--verde2);color:var(--verde);font-size:28px;font-weight:700;display:flex;justify-content:space-between;opacity:0}
+.mov span{font-family:M;font-weight:600;font-size:23px}
+.rep{margin:18px 36px 32px;padding:18px 22px;border-radius:16px;background:var(--suave);font-size:28px;font-weight:700;display:flex;justify-content:space-between;opacity:0}
+.rep span{color:var(--verde)}
+/* Qué ganas */
+.gan{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.gan:last-child{border-bottom:0}
+.gan small{display:block;font-family:M;font-weight:600;font-size:23px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.gan b{display:block;font-size:36px;margin-top:6px}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-rincon"><h1>Las devoluciones, <em>en el rincón</em></h1></div>
+  <div class="tit" id="t-semanas"><h1>Tres semanas <em>después</em></h1></div>
+  <div class="tit" id="t-reclamo"><h1>«¿Dónde están <em>mis piezas?</em>»</h1></div>
+  <div class="tit" id="t-cuesta"><h1>≈ $10,000 <em>en un rincón</em></h1><p>Ejemplo: 40 piezas × $250</p></div>
+  <div class="tit" id="t-reclama"><h1>Y te las <em>reclama a ti</em></h1></div>
+  <div class="tit" id="t-giro"><h1>¿Y si se registrara <em>al llegar?</em></h1></div>
+  <div class="tit" id="t-escanea"><h1>Llega y <em>se escanea</em></h1></div>
+  <div class="tit" id="t-vuelve"><h1>De vuelta, <em>el mismo día</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Sin rincón y <em>sin reclamo</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Se te juntan <em>devoluciones?</em></h1></div>
+
+  <!-- 1 · El rincón -->
+  <div class="card" id="rincon">
+    <div class="ccab"><span>Bodega · rincón del fondo</span><span class="ej">Ejemplo</span></div>
+    <div class="rincon"><div class="letrero">DEVOLUCIONES · luego</div><div class="pila" id="pila"></div></div>
+    <div class="cont"><span>Prendas de Moda Luna · sin registrar</span><b id="npz">0</b></div>
+  </div>
+
+  <!-- 2 · Pasan las semanas -->
+  <div class="card" id="semanas">
+    <div class="ccab"><span>Devoluciones · Moda Luna</span><span>40 prendas</span></div>
+    <div class="sm" id="w1"><span>Semana 1</span>Nadie las revisa<em class="pend" style="font-style:normal">Pendiente</em></div>
+    <div class="sm" id="w2"><span>Semana 2</span>Siguen en el rincón<em class="pend" style="font-style:normal">Pendiente</em></div>
+    <div class="sm" id="w3"><span>Semana 3</span>No vuelven al inventario<em class="pend" style="font-style:normal">Pendiente</em></div>
+    <div class="dias"><span>Días sin registrar</span><b id="ndias">0</b></div>
+  </div>
+
+  <!-- 3 · El reclamo -->
+  <div class="card" id="reclamo">
+    <div class="cab"><div class="av" style="background:#B5739A">ML</div><div><b>Moda Luna</b><span>Mensaje · 9:15 AM</span></div></div>
+    <div class="chat">
+      <div class="bur" id="b1">Hola. En nuestro sistema nos faltan <b>40 piezas</b>.</div>
+      <div class="bur" id="b2">Son devoluciones que ya deberíamos poder vender. ¿Dónde están?<small>9:16</small></div>
+    </div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Moda Luna</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>40</b><span>piezas sin registrar</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$250</b><span>por pieza</span></div>
+    <div class="res"><span>= detenidos</span><b id="eres">$0</b></div>
+  </div>
+
+  <!-- 5 · El faltante -->
+  <div class="card" id="falt">
+    <div class="ccab"><span>Faltante · Moda Luna</span><span class="ej">Ejemplo</span></div>
+    <div class="ff" id="f1">Piezas que no aparecen<b>40</b></div>
+    <div class="ff" id="f2">Valor<b>$10,000</b></div>
+    <div class="ff resp" id="f3">¿Quién responde?<b>Tu bodega</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · Escaneo de la devolución -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Devoluciones</b><span>Juan · andén 1</span></div>
+    <div class="visor"><div class="prenda"></div><div class="etq"></div><div class="laser" id="laser"></div></div>
+    <div class="dat" id="dat"><div>Pedido P-4821<span>Moda Luna</span></div><div>Blusa lino · M<span>1 pieza</span></div></div>
+    <div class="edo" id="edo"><div class="k">¿En qué estado llega?</div><div class="bts"><span class="si" id="si">Para venta</span><span>Dañada</span></div></div>
+  </div></div>
+
+  <!-- 8 · De vuelta al inventario -->
+  <div class="card" id="vuelve">
+    <div class="ccab"><span>Inventario · Moda Luna</span><span class="ej">Ejemplo</span></div>
+    <div class="inv"><div class="ic"><i></i></div><div><b>Blusa lino · M</b><small>Disponible para venta</small></div><div class="num"><span class="n1" id="n1">12</span><span class="n2" id="n2">13</span></div></div>
+    <div class="mov" id="mov">+1 devolución, para venta<span>hoy 11:20</span></div>
+    <div class="rep" id="rep">Reporte de Moda Luna<span>✓ Actualizado</span></div>
+  </div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>Cada devolución</span><span>Registrada al llegar</span></div>
+    <div class="gan" id="g1"><span class="ok">✓</span><div><small>Las piezas</small><b>Vuelven a estar disponibles</b></div></div>
+    <div class="gan" id="g2"><span class="ok">✓</span><div><small>Tu cliente</small><b>Ve lo que regresó, sin preguntar</b></div></div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Regresa</span><i>→</i><span>Escaneo</span><i>→</i><span class="v">Disponible</span></div>
+    <p>Te cuento cómo lo haría en tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var NB = 18;
+window.prepara = function () {
+  var h = '';
+  for (var i = 0; i < NB; i++) h += '<div class="bolsa b' + (1 + (i * 7) % 3) + '" style="transform:rotate(' + (((i * 37) % 13) - 6) + 'deg)"></div>';
+  $('pila').innerHTML = h;
+};
+window.escena = function (t) {
+  var tap = false;
+  // 1 · El rincón se llena
+  bloque($('rincon'), 'rincon', 'rincon', t);
+  var bs = document.querySelectorAll('.bolsa');
+  bs.forEach(function (b, i) { b.style.opacity = clamp((t - (S.rincon + 0.5 + i * 0.13)) / 0.2); });
+  $('npz').textContent = Math.round(cuenta(t, S.rincon + 0.5, NB * 0.13 + 0.3, 40));
+
+  // 2 · Semanas
+  bloque($('semanas'), 'semanas', 'semanas', t);
+  ['w1', 'w2', 'w3'].forEach(function (id, i) { aparece(id, t, S.semanas + 0.5 + i * 0.9, 50); });
+  $('ndias').textContent = Math.round(cuenta(t, S.semanas + 0.5, 2.6, 21));
+
+  // 3 · Reclamo
+  bloque($('reclamo'), 'reclamo', 'reclamo', t);
+  aparece('b1', t, S.reclamo + 0.5); aparece('b2', t, S.reclamo + 1.8);
+
+  // 4 · Cuenta
+  bloque($('ecu'), 'cuesta', 'cuesta', t);
+  aparece('e1', t, S.cuesta + 0.6, 50); aparece('e2', t, S.cuesta + 1.8, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuesta + 3.0, 1.2, 10000) / 100) * 100);
+
+  // 5 · Faltante
+  bloque($('falt'), 'reclama', 'reclama', t);
+  aparece('f1', t, S.reclama + 0.4, 50); aparece('f2', t, S.reclama + 0.9, 50); pop($('f3'), t, S.reclama + 1.7);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · Escaneo
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.escanea) / 0.6)), pout = easeOut(clamp((t - (E.escanea - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.escanea && t < E.escanea + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var lz = clamp((t - S.escanea - 0.8) / 0.8);
+  $('laser').style.opacity = lz > 0 && lz < 1 ? 1 : 0; $('laser').style.top = (40 + lz * 170) + 'px';
+  pop($('dat'), t, S.escanea + 1.7);
+  aparece('edo', t, S.escanea + 2.4);
+  var tt = S.escanea + 4.2;
+  if (t >= S.escanea && t < E.escanea) tap = toque(t, tt, $('si')) || tap;
+  $('si').classList.toggle('on', t >= tt);
+
+  // 8 · De vuelta
+  bloque($('vuelve'), 'vuelve', 'vuelve', t);
+  var q = clamp((t - S.vuelve - 1.0) / 0.4);
+  $('n1').style.opacity = 1 - q; $('n1').style.transform = 'translateY(' + (-q * 40) + 'px)';
+  $('n2').style.opacity = q; $('n2').style.transform = 'translateY(' + ((1 - q) * 40) + 'px)';
+  aparece('mov', t, S.vuelve + 1.4, 40); aparece('rep', t, S.vuelve + 3.2, 40);
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  aparece('g1', t, S.gana + 0.5, 50); aparece('g2', t, S.gana + 2.0, 50);
+  return tap;
+};
+</script>
+</body></html>
