@@ -1,0 +1,111 @@
+{
+  "_nota": "Anuncio pagado para papás: reto 'Verdadero o mentira' de Historia → pasas.mx/arcade?materia=historia&juego=vom. Reusa los fondos de anuncio-reto-historia-papas (arte.universo igual). Render: node src/anuncio.mjs --data data/anuncios/2026-10-reto-historia-vom-papas.json",
+  "nombre": "anuncio reto historia vom papas",
+  "materia": "Historia",
+  "color": "#fbbf24",
+  "slides": [],
+  "arte": {
+    "universo": "Ancient Tenochtitlan at golden hour, original and respectful, like a museum diorama come to life: the great twin-temple pyramid of the Templo Mayor with its stairs, white plastered buildings, canals with small wooden canoes, floating chinampa gardens full of flowers and corn, the two snowy volcanoes on the horizon, warm sunset sky turning purple, glowing lanterns, flower petals and golden particles in the air. Stone tablets, codex-like painted panels and feathers appear as props, but every symbol on them is an abstract geometric shape (no letters, no glyphs that read as text). No warriors, no weapons, no battles, no real historical people: the only character is the Pasita, a curious explorer with a small backpack."
+  },
+  "reel": {
+    "escenas": [
+      {
+        "tipo": "texto",
+        "dur": 3.0,
+        "lineas": [
+          [
+            "¿Tu hijo se aburre",
+            "s"
+          ],
+          [
+            "con Historia?",
+            "k"
+          ]
+        ]
+      },
+      {
+        "tipo": "texto",
+        "dur": 2.6,
+        "lineas": [
+          [
+            "Que lo juegue",
+            "s"
+          ],
+          [
+            "2 minutos",
+            "k"
+          ]
+        ]
+      },
+      {
+        "tipo": "vom",
+        "dur": 6.8,
+        "lineas": [
+          [
+            "¿Verdad o mentira?",
+            "k"
+          ]
+        ],
+        "frase": "Pancho Villa encabezó la Revolución en el sur del país.",
+        "verdad": false
+      },
+      {
+        "tipo": "explica",
+        "dur": 4.6,
+        "lineas": [
+          [
+            "¡Es",
+            "s"
+          ],
+          [
+            "mentira!",
+            "k"
+          ]
+        ],
+        "texto": "Villa fue el gran caudillo del **norte**, al mando de la División del Norte. El líder del **sur** fue Zapata."
+      },
+      {
+        "tipo": "materias",
+        "dur": 3.8,
+        "lineas": [
+          [
+            "Un reto nuevo",
+            "s"
+          ],
+          [
+            "cada día",
+            "k"
+          ]
+        ],
+        "materias": [
+          "Historia",
+          "Biología",
+          "Geografía",
+          "Química y Física",
+          "Español"
+        ]
+      },
+      {
+        "tipo": "cta",
+        "dur": 4.6,
+        "lineas": [
+          [
+            "Juéguenlo",
+            "s"
+          ],
+          [
+            "juntos hoy",
+            "k"
+          ]
+        ],
+        "cta": {
+          "linea": "**Gratis** y sin registrarse",
+          "sub": "5 rondas · 2 minutos"
+        },
+        "url": "pasas.mx/arcade"
+      }
+    ]
+  },
+  "post": "¿Verdad o mentira? \"Pancho Villa encabezó la Revolución en el sur del país.\" Así se juega el reto diario de PASAS Arcade: una frase, dos botones, 5 rondas en 2 minutos. Gratis y sin registrarse. Un reto nuevo cada día. ¿Ustedes qué dirían? pasas.mx/arcade",
+  "fondos_de": "anuncio-reto-historia-papas"
+}

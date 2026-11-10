@@ -1,0 +1,110 @@
+{
+  "_nota": "Retador A/B del 'Así funciona PASAS' (s45): mismo cierre, música, público y landing; cambia el gancho (movimiento desde el primer cuadro) y la parte de en medio (el mismo tema de Matemáticas explicado con los 4 hobbies, texto en grande). Contenido real: analogías de 'Ecuaciones lineales' (Matemáticas 1°). Render: node src/cuatro-hobbies.mjs --data data/anuncios/2026-10-un-tema-cuatro-hobbies-papas.json [--revisar] Nombres reales solo como texto (regla de la skill: nunca logos, fotos ni música de terceros).",
+  "nombre": "un tema cuatro hobbies papas",
+  "color": "#ec4899",
+  "slides": [],
+  "tema": "Ecuaciones lineales",
+  "materia": "Matemáticas 1°",
+  "gancho": {
+    "dur": 3.6,
+    "lineas": [
+      [
+        "¿Las ecuaciones",
+        "s"
+      ],
+      [
+        "no le entran?",
+        "k"
+      ]
+    ]
+  },
+  "hobbies": [
+    {
+      "id": "videojuegos",
+      "nombre": "Con videojuegos",
+      "icono": "🎮",
+      "color": "#7c3aed",
+      "dur": 4.8,
+      "texto": "En **Fortnite** quieres la skin de **John Wick**: 2000 V-Bucks. Ya tenías algo ahorrado y te regalan 800: te alcanza justo.",
+      "pregunta": "¿Cuántos V-Bucks tenías?",
+      "ecuacion": "x + 800 = 2000"
+    },
+    {
+      "id": "futbol",
+      "nombre": "Con fútbol",
+      "icono": "⚽",
+      "color": "#10b981",
+      "dur": 4.8,
+      "texto": "**Messi** pelea el Pichichi. El líder lleva **25 goles**; si mete 9 más, lo empata.",
+      "pregunta": "¿Cuántos goles lleva Messi?",
+      "ecuacion": "x + 9 = 25"
+    },
+    {
+      "id": "kpop",
+      "nombre": "Con K-pop",
+      "icono": "🎤",
+      "color": "#ec4899",
+      "dur": 4.8,
+      "texto": "El álbum especial de **BTS** cuesta 600 pesos. Tu hermana te presta 250 y te alcanza exacto.",
+      "pregunta": "¿Cuánto tenías ahorrado?",
+      "ecuacion": "x + 250 = 600"
+    },
+    {
+      "id": "anime",
+      "nombre": "Con anime",
+      "icono": "⚔️",
+      "color": "#06b6d4",
+      "dur": 4.8,
+      "texto": "**Vegeta** mide a **Goku** con el scouter: \"su poder, más 700 al volverse Super Saiyan, da 1500\".",
+      "pregunta": "¿Cuánto poder tiene Goku ahora?",
+      "ecuacion": "x + 700 = 1500"
+    }
+  ],
+  "remate": {
+    "dur": 3.2,
+    "lineas": [
+      [
+        "El mismo tema.",
+        "s"
+      ],
+      [
+        "Él elige cómo aprenderlo.",
+        "k"
+      ]
+    ]
+  },
+  "practica": {
+    "dur": 5.6,
+    "lineas": [
+      [
+        "Y luego lo practica",
+        "s"
+      ],
+      [
+        "jugando",
+        "k"
+      ]
+    ]
+  },
+  "cierre": {
+    "dur": 6.0,
+    "lineas": [
+      [
+        "Primer mes",
+        "k"
+      ],
+      [
+        "a $1",
+        "k"
+      ]
+    ],
+    "bullets": [
+      "Secundaria + prepa · 65 materias",
+      "Código PASAS1 al pagar",
+      "Cancela cuando quieras"
+    ],
+    "url": "pasas.mx"
+  },
+  "promo_texto": "Pruébalo · 1er mes $1",
+  "post": "El mismo tema de Matemáticas explicado con videojuegos, fútbol, K-pop o anime: en PASAS tu hijo elige con qué aprenderlo y luego lo practica jugando. Secundaria y prepa, 65 materias. Primer mes a $1 con el código PASAS1 al pagar, en pasas.mx"
+}
