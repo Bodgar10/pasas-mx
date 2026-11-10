@@ -1,7 +1,8 @@
-// Arma el correo con los archivos adjuntos y lo manda por Resend.
+// Arma el correo y lo manda por Resend (archivos en Google Drive o, de respaldo, adjuntos).
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { MIN_JUGADORES } from './data.mjs';
+import { driveConfigurado, subirADrive, conEnlaces } from './drive.mjs';
 
 const LETTERS = 'ABCD';
 
@@ -156,12 +157,26 @@ Me faltó alguna</pre>
   };
 }
 
-export async function sendEmail({ subject, html }, files) {
+// Manda el correo por Resend. Si Google Drive está configurado (GDRIVE_*), los archivos se
+// suben a Drive y el correo lleva enlaces en lugar de adjuntos; si Drive falla o no está
+// configurado, se adjuntan como antes para que el correo nunca deje de llegar.
+export async function sendEmail({ subject, html }, files, opts = {}) {
   const key = process.env.RESEND_API_KEY;
-  const to = process.env.ARCADE_EMAIL_TO;
-  const from = process.env.ARCADE_EMAIL_FROM || 'PASAS Arcade <hola@pasas.mx>';
+  const to = opts.to || process.env.ARCADE_EMAIL_TO;
+  const from = opts.from || process.env.ARCADE_EMAIL_FROM || 'PASAS Arcade <hola@pasas.mx>';
   if (!key) throw new Error('Falta RESEND_API_KEY');
-  if (!to) throw new Error('Falta ARCADE_EMAIL_TO (a qué correo mandar los videos)');
+  if (!to) throw new Error(opts.faltaTo || 'Falta ARCADE_EMAIL_TO (a qué correo mandar los videos)');
+  if (files.length && driveConfigurado()) {
+    try {
+      const subida = await subirADrive(files, subject);
+      console.log(`  ${files.length} archivo(s) en Google Drive: ${subida.carpeta}`);
+      html = conEnlaces(html, subida);
+      files = [];
+    } catch (e) {
+      console.warn(`  aviso: no se pudo subir a Google Drive (${e.message}); van como adjuntos`);
+      html += `<p style="color:#b45309;font-size:13px;font-family:system-ui,sans-serif">Esta vez los archivos van adjuntos porque no se pudieron subir a Google Drive: ${String(e.message).replace(/[&<>"]/g, '')}</p>`;
+    }
+  }
   const attachments = await Promise.all(files.map(async f => ({
     filename: path.basename(f),
     content: (await readFile(f)).toString('base64'),
