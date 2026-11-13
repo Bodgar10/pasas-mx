@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · eficiencia: la lista de surtido viene en el orden del cliente y el surtidor recorre la bodega de ida y vuelta.
+   Con la ubicación registrada de cada producto, la lista sale en orden de ruta y los pedidos chicos se surten juntos.
+   Cifras de ejemplo. */
+/* Lista de surtido */
+.ls{display:flex;align-items:center;gap:22px;padding:0 36px;height:96px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;position:absolute;left:0;right:0;background:var(--papel)}
+.ls .n{width:46px;height:46px;border-radius:50%;background:var(--suave);display:grid;place-items:center;font-family:M;font-size:22px;flex:none}
+.ls .ub{margin-left:auto;font-family:M;font-weight:600;font-size:26px;padding:8px 14px;border-radius:12px;background:var(--arena)}
+.ls .ub.A{background:#DCE7F2;color:#2f5f8a}.ls .ub.C{background:#EDE3F3;color:#6b4a8a}.ls .ub.D{background:#FBEADF;color:var(--terra2)}
+.lsw{position:relative;height:576px}
+.orden{display:flex;justify-content:space-between;padding:20px 36px 26px;font-family:M;font-weight:600;font-size:24px;color:var(--gris);border-top:1px solid var(--linea)}
+.orden b{color:var(--terra2)}.orden b.v{color:var(--verde)}
+/* Plano */
+.plano{padding:10px 20px 0}
+.plano svg{display:block;width:100%;height:auto}
+.leyenda{display:flex;justify-content:space-between;align-items:center;padding:16px 36px 28px;font-size:29px;font-weight:700}
+.leyenda b{font-family:B;font-weight:800;font-size:56px}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:190px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Pedidos juntos */
+.pj{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pj .cj{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-family:M;font-weight:600;font-size:24px;color:#fff;flex:none}
+.pj span.d{margin-left:auto;font-family:M;font-size:24px;color:var(--gris)}
+.una{display:flex;justify-content:space-between;align-items:center;padding:28px 36px 32px;background:var(--verde2);opacity:0}
+.una span{font-size:32px;font-weight:700;color:var(--verde)}
+.una b{font-family:B;font-weight:800;font-size:64px;color:var(--verde)}
+/* Qué ganas */
+.bar{padding:30px 36px 10px}
+.br{margin-bottom:26px}
+.br .k{display:flex;justify-content:space-between;font-size:30px;font-weight:700;margin-bottom:12px}
+.br .k span{font-family:M;font-size:23px;color:var(--gris);font-weight:600}
+.br i{display:block;height:62px;border-radius:16px;background:var(--arena);position:relative;overflow:hidden}
+.br i b{position:absolute;left:0;top:0;bottom:0;border-radius:16px}
+.nota{padding:0 36px 30px;font-family:M;font-size:23px;color:var(--gris)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-lista"><h1>La lista, <em>en desorden</em></h1></div>
+  <div class="tit" id="t-vueltas"><h1>A, D… <em>y otra vez A</em></h1></div>
+  <div class="tit" id="t-dia"><h1>3 horas <em>al día</em></h1><p>Ejemplo: 3 min × 60 pedidos</p></div>
+  <div class="tit" id="t-mes"><h1>≈ 66 horas <em>al mes</em></h1><p>Ejemplo: 3 h × 22 días</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si la lista <em>supiera dónde?</em></h1></div>
+  <div class="tit" id="t-orden"><h1>En orden <em>de ruta</em></h1></div>
+  <div class="tit" id="t-vuelta"><h1>Una sola <em>vuelta</em></h1></div>
+  <div class="tit" id="t-juntos"><h1>Varios pedidos, <em>un recorrido</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Menos caminar, <em>más surtir</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Tu equipo camina <em>de más?</em></h1></div>
+
+  <!-- 1 y 6 · La lista de surtido (se reordena en la escena "orden") -->
+  <div class="card" id="lista">
+    <div class="ccab"><span>Pedido #2381 · Juan</span><span class="ej">Ejemplo</span></div>
+    <div class="lsw" id="lsw"></div>
+    <div class="orden"><span>Orden</span><b id="ord">Como lo pidió el cliente</b></div>
+  </div>
+
+  <!-- 2 y 7 · El plano con el recorrido -->
+  <div class="card" id="plano">
+    <div class="ccab"><span>Recorrido · pedido #2381</span><span class="ej">Ejemplo</span></div>
+    <div class="plano"><svg viewBox="0 0 900 620" id="svg"></svg></div>
+    <div class="leyenda"><span id="ley">Recorrido</span><b id="ida">—</b></div>
+  </div>
+
+  <!-- 3 · El día -->
+  <div class="card" id="dia">
+    <div class="ccab"><span>Un día · ejemplo</span><span>Caminata de más</span></div>
+    <div class="term" id="d1"><span class="op"></span><b>3 min</b><span>de más por pedido</span></div>
+    <div class="term" id="d2"><span class="op">×</span><b>60</b><span>pedidos al día</span></div>
+    <div class="res"><span>= al día</span><b id="dres">0 min</b></div>
+  </div>
+
+  <!-- 4 · El mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>22 días</span></div>
+    <div class="term" id="k1"><span class="op"></span><b>3 h</b><span>al día</span></div>
+    <div class="term" id="k2"><span class="op">×</span><b>22</b><span>días</span></div>
+    <div class="res"><span>= al mes</span><b id="mres">0 h</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 8 · Pedidos juntos -->
+  <div class="card" id="juntos">
+    <div class="ccab"><span>Surtido en grupo</span><span class="ej">Ejemplo</span></div>
+    <div class="pj" id="j1"><span class="cj" style="background:#5B8DB8">1</span>Pedido #2382<span class="d">2 productos</span></div>
+    <div class="pj" id="j2"><span class="cj" style="background:#8F6BB0">2</span>Pedido #2383<span class="d">1 producto</span></div>
+    <div class="pj" id="j3"><span class="cj" style="background:#3E8E6A">3</span>Pedido #2384<span class="d">3 productos</span></div>
+    <div class="pj" id="j4"><span class="cj" style="background:#C96F4A">4</span>Pedido #2385<span class="d">2 productos</span></div>
+    <div class="una" id="una"><span>Un carrito, una ruta</span><b>1 vuelta</b></div>
+  </div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>El turno de Juan</span><span class="ej">Ilustrativo</span></div>
+    <div class="bar">
+      <div class="br"><div class="k">Caminando<span>antes → después</span></div><i><b id="b1" style="background:var(--terra)"></b></i></div>
+      <div class="br"><div class="k">Surtiendo<span>antes → después</span></div><i><b id="b2" style="background:var(--verde)"></b></i></div>
+    </div>
+    <div class="nota">Cuánto cambia depende de cada bodega: se mide.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Ubicación</span><i>→</i><span>Ruta</span><i>→</i><span class="v">Una vuelta</span></div>
+    <p>Te cuento cómo lo haría en tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+// Productos en el orden del cliente: [nombre, pasillo, posición 1-12]
+var P = [['Playera', 'A', 3], ['Termo', 'D', 12], ['Gorra', 'A', 7], ['Mochila', 'C', 4], ['Botella', 'D', 2], ['Calcetas', 'A', 11]];
+var RUTA = [0, 2, 5, 3, 4, 1];   // en orden de ruta: A-03, A-07, A-11, C-04, D-02, D-12
+var PAS = { A: 0, B: 1, C: 2, D: 3 };
+var LARGO1 = 0, LARGO2 = 0;
+function lane(p) { return 80 + PAS[p] * 200 + 70 + 52; }
+function yy(n) { return 520 - n * 38; }
+function ruta(orden) {
+  var pts = [[30, 575]], x0 = 30;
+  orden.forEach(function (i) { var x = lane(P[i][1]), y = yy(P[i][2]); pts.push([x, 575], [x, y], [x, 575]); });
+  pts.push([30, 575]);
+  return 'M' + pts.map(function (p) { return p[0] + ' ' + p[1]; }).join(' L');
+}
+function rutaBuena() {
+  // Una sola vuelta: sube por A hasta 11, baja; C hasta 4, baja; D hasta 12, regresa por el fondo.
+  return 'M30 575 L' + lane('A') + ' 575 L' + lane('A') + ' ' + yy(11) + ' L' + lane('A') + ' 575 L' + lane('C') + ' 575 L' + lane('C') + ' ' + yy(4) +
+    ' L' + lane('C') + ' 575 L' + lane('D') + ' 575 L' + lane('D') + ' ' + yy(12) + ' L' + (lane('D') + 40) + ' ' + yy(12) + ' L' + (lane('D') + 40) + ' 600 L30 600';
+}
+window.prepara = function () {
+  var h = '';
+  P.forEach(function (p, i) { h += '<div class="ls" id="r' + i + '"><span class="n">' + (i + 1) + '</span>' + p[0] + '<span class="ub ' + p[1] + '">' + p[1] + '-' + ('0' + p[2]).slice(-2) + '</span></div>'; });
+  $('lsw').innerHTML = h;
+  var s = '';
+  ['A', 'B', 'C', 'D'].forEach(function (a, i) {
+    var x = 80 + i * 200;
+    s += '<rect x="' + x + '" y="40" width="70" height="490" rx="10" fill="#D9D3C8"/>';
+    for (var k = 1; k < 12; k++) s += '<line x1="' + x + '" x2="' + (x + 70) + '" y1="' + (40 + k * 40.8) + '" y2="' + (40 + k * 40.8) + '" stroke="#c7bfb2" stroke-width="2"/>';
+    s += '<text x="' + (x + 35) + '" y="28" text-anchor="middle" font-family="M" font-weight="600" font-size="26" fill="#8A9893">' + a + '</text>';
+  });
+  s += '<text x="30" y="615" font-family="M" font-size="20" fill="#8A9893">ENTRADA</text>';
+  s += '<path id="pmala" d="' + ruta([0, 1, 2, 3, 4, 5]) + '" fill="none" stroke="#C96F4A" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>';
+  s += '<path id="pbuena" d="' + rutaBuena() + '" fill="none" stroke="#3E8E6A" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>';
+  P.forEach(function (p, i) { s += '<g id="pt' + i + '" opacity="0"><circle cx="' + lane(p[1]) + '" cy="' + yy(p[2]) + '" r="22" fill="#1F332E"/><text x="' + lane(p[1]) + '" y="' + (yy(p[2]) + 8) + '" text-anchor="middle" font-family="M" font-weight="600" font-size="22" fill="#fff" id="ptn' + i + '">' + (i + 1) + '</text></g>'; });
+  $('svg').innerHTML = s;
+  LARGO1 = $('pmala').getTotalLength(); LARGO2 = $('pbuena').getTotalLength();
+  $('pmala').style.strokeDasharray = LARGO1; $('pbuena').style.strokeDasharray = LARGO2;
+};
+window.escena = function (t) {
+  // 1 · Lista en desorden / 6 · reordenada
+  bloque($('lista'), 'lista', 'lista', t);
+  var enOrden = t >= S.orden;
+  if (t >= S.orden) bloque($('lista'), 'orden', 'orden', t);
+  var q = easeOut(clamp((t - S.orden - 0.9) / 0.8));
+  P.forEach(function (p, i) {
+    var el = $('r' + i), pos = RUTA.indexOf(i), y0 = i * 96, y1 = pos * 96;
+    el.style.top = (enOrden ? y0 + (y1 - y0) * q : y0) + 'px';
+    if (!enOrden) aparece(el, t, S.lista + 0.4 + i * 0.25, 50); else { el.style.opacity = 1; el.style.transform = 'none'; }
+    el.querySelector('.n').textContent = enOrden && q > 0.5 ? pos + 1 : i + 1;
+  });
+  $('ord').textContent = enOrden && q > 0.5 ? 'Por pasillo: A → C → D' : 'Como lo pidió el cliente';
+  $('ord').className = enOrden && q > 0.5 ? 'v' : '';
+
+  // 2 · Recorrido malo / 7 · una vuelta
+  var buena = t >= S.vuelta;
+  if (!buena) bloque($('plano'), 'vueltas', 'vueltas', t); else bloque($('plano'), 'vuelta', 'vuelta', t);
+  var a = buena ? 'vuelta' : 'vueltas';
+  var pr = clamp((t - S[a] - 0.4) / (E[a] - S[a] - 1.0));
+  $('pmala').style.display = buena ? 'none' : ''; $('pbuena').style.display = buena ? '' : 'none';
+  if (LARGO1) $('pmala').style.strokeDashoffset = LARGO1 * (1 - pr);
+  if (LARGO2) $('pbuena').style.strokeDashoffset = LARGO2 * (1 - pr);
+  P.forEach(function (p, i) {
+    var g = $('pt' + i), n = buena ? RUTA.indexOf(i) + 1 : i + 1;
+    g.setAttribute('opacity', t >= S[a] + 0.2 ? 1 : 0); $('ptn' + i).textContent = n;
+    g.querySelector('circle').setAttribute('fill', buena ? '#3E8E6A' : '#1F332E');
+  });
+  $('ley').textContent = buena ? 'Orden de ruta' : 'Orden del cliente';
+  $('ida').textContent = buena ? '1 vuelta' : '3 veces al pasillo A';
+  $('ida').style.color = buena ? 'var(--verde)' : 'var(--terra2)';
+
+  // 3 · El día
+  bloque($('dia'), 'dia', 'dia', t);
+  aparece('d1', t, S.dia + 0.4, 50); aparece('d2', t, S.dia + 2.0, 50);
+  var m = Math.round(cuenta(t, S.dia + 3.4, 1.2, 180));
+  $('dres').textContent = m >= 180 ? '180 min = 3 h' : m + ' min';
+
+  // 4 · El mes
+  bloque($('mes'), 'mes', 'mes', t);
+  aparece('k1', t, S.mes + 0.4, 50); aparece('k2', t, S.mes + 1.2, 50);
+  var hh = Math.round(cuenta(t, S.mes + 2.0, 1.2, 66));
+  $('mres').textContent = (hh >= 66 ? '≈ ' : '') + hh + ' h';
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 8 · Juntos
+  bloque($('juntos'), 'juntos', 'juntos', t);
+  ['j1', 'j2', 'j3', 'j4'].forEach(function (id, i) { aparece(id, t, S.juntos + 0.4 + i * 0.4, 50); });
+  pop($('una'), t, S.juntos + 2.4);
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  var g = easeOut(clamp((t - S.gana - 0.8) / 1.0));
+  $('b1').style.width = (70 - 30 * g) + '%'; $('b2').style.width = (30 + 30 * g) + '%';
+  return false;
+};
+</script>
+</body></html>

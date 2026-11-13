@@ -1,0 +1,76 @@
+{
+  "fecha": "2026-11-17",
+  "dia": "martes",
+  "linea": "Bodegas · pérdida",
+  "plantilla": "bodegas-sobreventa.html",
+  "nombre": "bodegas-sobreventa",
+  "url": "bodgar.dev/plataformas/bodegas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Bodegas y 3PL",
+    "titulo": "Lo vendiste en línea. *Ya no había.*",
+    "dato": {
+      "num": "≈ $9,750",
+      "texto": "al mes en pedidos que se cancelan",
+      "tipo": "perd"
+    }
+  },
+  "story": {
+    "chip": "Nuevo reel",
+    "titulo": "¿Vendes lo que *ya no tienes?*",
+    "texto": "El inventario puede bajar cuando la pieza sale. Así lo haría."
+  },
+  "post": "Son las 10. Entra un pedido de la tienda en línea: 2 chamarras talla M. Tu equipo va al rack… y no hay.\n\nAyer salieron para un pedido de mayoreo, pero la hoja de inventario todavía dice que hay 5. Toca escribirle al cliente, cancelar y devolverle su dinero. Si pasa 15 veces al mes, con pedidos de $650, son $9,750 en ventas que no se hicieron.\n\nAsí lo haría: cada pieza que sale de la bodega se escanea, y el inventario baja en ese momento, no al final del día. La tienda en línea toma ese número: si ya no hay, deja de ofrecerla.\n\nLas cifras del video son un ejemplo, no un resultado. Si en tu bodega se vende lo que ya no está, te cuento cómo lo haría para la tuya: bodgar.dev/plataformas/bodegas (link en la bio). Revisión sin costo.\n\n#bodegas #inventario #ecommerce #logistica #pymesmexico",
+  "escenas": [
+    {
+      "id": "pedido",
+      "titulo": "Llegó un pedido",
+      "voz": "Son las diez. Entra un pedido de la tienda en línea: dos chamarras talla M."
+    },
+    {
+      "id": "rack",
+      "titulo": "En el rack, cero",
+      "voz": "Tu equipo va al rack… y no hay ninguna."
+    },
+    {
+      "id": "hoja",
+      "titulo": "La hoja dice 5",
+      "voz": "Ayer salieron para un mayoreo. Pero la hoja todavía dice que hay cinco."
+    },
+    {
+      "id": "cancelar",
+      "titulo": "Toca cancelar",
+      "voz": "Toca escribirle al cliente, cancelar y devolver su dinero."
+    },
+    {
+      "id": "cuesta",
+      "titulo": "≈ $9,750 al mes",
+      "voz": "Quince veces al mes, con pedidos de seiscientos cincuenta: nueve mil setecientos cincuenta pesos sin vender."
+    },
+    {
+      "id": "giro",
+      "titulo": "¿Y si bajara al momento?",
+      "voz": "¿Y si el inventario bajara cuando sale la pieza?"
+    },
+    {
+      "id": "escaneo",
+      "titulo": "Sale → se escanea",
+      "voz": "Cada pieza que sale se escanea. Y el inventario baja ahí, no al final del día."
+    },
+    {
+      "id": "tienda",
+      "titulo": "La tienda ve lo que hay",
+      "voz": "La tienda en línea toma ese número. Si ya no hay, deja de ofrecerla."
+    },
+    {
+      "id": "gana",
+      "titulo": "Vendes lo que sí tienes",
+      "voz": "Menos pedidos cancelados y menos clientes molestos."
+    },
+    {
+      "id": "cierre",
+      "titulo": "¿Vendes lo que ya no tienes?",
+      "voz": "Si en tu bodega se vende lo que ya no está, te cuento cómo lo haría. Entra a bodgar punto dev."
+    }
+  ]
+}

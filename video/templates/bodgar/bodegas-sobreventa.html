@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Bodegas · pérdida: la tienda en línea vende piezas que ya salieron de la bodega porque la hoja de inventario
+   se actualiza tarde. Con escaneo en la salida, el inventario baja en el momento y la tienda deja de ofrecerla.
+   Cifras de ejemplo. */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+/* Pedido nuevo en el teléfono */
+.not{margin:30px 24px 0;padding:26px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);opacity:0}
+.not .q{font-family:M;font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+.not h3{margin:12px 0 6px;font-family:B;font-weight:800;font-size:44px;line-height:1.05}
+.prod{display:flex;align-items:center;gap:18px;margin-top:18px;padding:18px;border-radius:18px;background:var(--suave)}
+.prod .img{width:96px;height:96px;border-radius:16px;background:#5B8DB8;display:grid;place-items:center;flex:none}
+.prod .img svg{width:64px;height:64px}
+.prod b{display:block;font-size:28px}.prod span{display:block;font-size:23px;font-weight:600;color:var(--gris);margin-top:4px}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;font-size:26px;font-weight:700;color:var(--gris)}
+.tot b{font-family:B;font-weight:800;font-size:52px;color:var(--tinta)}
+.sts{margin:22px 24px 0;padding:20px 22px;border-radius:18px;background:var(--verde2);color:var(--verde);font-size:26px;font-weight:700;opacity:0}
+/* Rack vacío */
+.rack{padding:30px 36px 10px}
+.nivel{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:14px 0;border-bottom:12px solid #9aa7a2}
+.caja{height:130px;border-radius:12px;background:#D9B88F;position:relative}
+.caja::after{content:"";position:absolute;left:0;right:0;top:44%;height:14px;background:rgba(0,0,0,.08)}
+.caja.v{background:transparent;border:4px dashed var(--terra)}
+.caja.v b{position:absolute;inset:0;display:grid;place-items:center;font-family:M;font-weight:600;font-size:24px;color:var(--terra2);text-align:center;line-height:1.2}
+.etq{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 32px}
+.etq span{font-family:M;font-weight:600;font-size:26px;color:var(--gris)}
+.etq b{font-family:B;font-weight:800;font-size:84px;color:var(--terra2)}
+/* Hoja de inventario */
+.hj{display:grid;grid-template-columns:1fr 150px 150px;font-size:29px;font-weight:600}
+.hj div{padding:22px 24px;border-bottom:1px solid var(--linea);border-right:1px solid var(--linea)}
+.hj div:nth-child(3n){border-right:0}
+.hj .h{font-family:M;font-size:22px;color:var(--gris);background:var(--suave)}
+.hj .n{font-family:M;text-align:right}
+.hj .mal{background:#FBEADF;color:var(--terra2);font-weight:700}
+.nota2{margin:24px 36px 32px;padding:20px 24px;border-radius:18px;background:var(--arena);font-size:27px;font-weight:600;color:#6d604f;opacity:0}
+/* Cancelación */
+.msj{margin:28px 36px 0;padding:24px 26px;border-radius:22px 22px 22px 6px;background:var(--suave);font-size:30px;font-weight:600;line-height:1.35;opacity:0}
+.estado{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.estado:last-child{border-bottom:0}
+.estado .st{margin-left:auto;font-family:M;font-weight:600;font-size:24px;padding:8px 14px;border-radius:12px;background:#FBEADF;color:var(--terra2)}
+.sp{height:28px}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:190px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Escaneo en la salida */
+.esc{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:30px;font-weight:600;opacity:0}
+.esc .bc{width:70px;height:44px;flex:none;background:repeating-linear-gradient(90deg,var(--tinta) 0 3px,transparent 3px 6px,var(--tinta) 6px 8px,transparent 8px 12px)}
+.esc .h2{margin-left:auto;font-family:M;font-size:24px;color:var(--gris)}
+.exis{display:flex;justify-content:space-between;align-items:baseline;padding:26px 36px 32px;background:var(--suave)}
+.exis span{font-size:32px;font-weight:700}
+.exis b{font-family:B;font-weight:800;font-size:96px;color:var(--tinta)}
+/* Tienda */
+.ficha{margin:26px 24px 0;border-radius:24px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08);overflow:hidden}
+.ficha .foto{height:250px;background:#5B8DB8;display:grid;place-items:center;position:relative}
+.ficha .foto svg{width:150px;height:150px}
+.ago{position:absolute;right:18px;top:18px;background:var(--tinta);color:#fff;font-family:M;font-weight:600;font-size:22px;padding:8px 14px;border-radius:12px;opacity:0}
+.ficha .tx{padding:22px}
+.ficha h3{margin:0;font-family:B;font-weight:800;font-size:38px}
+.ficha p{margin:6px 0 0;font-size:24px;font-weight:600;color:var(--gris)}
+.tallas{display:flex;gap:10px;margin-top:16px}
+.tallas span{flex:1;text-align:center;padding:12px 0;border-radius:12px;border:3px solid var(--linea);font-family:M;font-weight:600;font-size:24px}
+.tallas span.x{color:#c3bcb0;text-decoration:line-through;background:var(--suave)}
+.bt{margin-top:18px;display:block;text-align:center;padding:20px;border-radius:16px;font-size:28px;font-weight:700;background:var(--tinta);color:#fff}
+.bt.off{background:#D9D3C8;color:#fff}
+.sync{margin:18px 24px 0;font-family:M;font-size:21px;color:var(--gris);opacity:0}
+/* Qué ganas */
+.pd{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600;opacity:0}
+.pd:last-child{border-bottom:0}
+.pd .ic{width:56px;height:56px;border-radius:16px;background:var(--verde2);color:var(--verde);display:grid;place-items:center;font-size:28px;flex:none}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · bodegas y 3PL</div>
+
+  <div class="tit" id="t-pedido"><h1>Llegó un <em>pedido</em></h1></div>
+  <div class="tit" id="t-rack"><h1>En el rack, <em>cero</em></h1></div>
+  <div class="tit" id="t-hoja"><h1>La hoja <em>dice 5</em></h1></div>
+  <div class="tit" id="t-cancelar"><h1>Toca <em>cancelar</em></h1></div>
+  <div class="tit" id="t-cuesta"><h1>≈ $9,750 <em>al mes</em></h1><p>Ejemplo: 15 pedidos × $650</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si bajara <em>al momento?</em></h1></div>
+  <div class="tit" id="t-escaneo"><h1>Sale → <em>se escanea</em></h1></div>
+  <div class="tit" id="t-tienda"><h1>La tienda ve <em>lo que hay</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Vendes lo que <em>sí tienes</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Vendes lo que <em>ya no tienes?</em></h1></div>
+
+  <!-- 1 · Pedido nuevo -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Tienda en línea</b><span>10:00</span></div>
+    <div class="not" id="not">
+      <div class="q">● Pedido nuevo #1047</div>
+      <h3>Chamarra ligera</h3>
+      <div class="prod"><div class="img"><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"><path d="M22 8 10 16l4 14 6-3v29h24V27l6 3 4-14-12-8c-2 5-6 7-10 7s-8-2-10-7z"/></svg></div><div><b>Talla M × 2</b><span>Ejemplo</span></div></div>
+      <div class="tot"><span>Total</span><b>$650</b></div>
+    </div>
+    <div class="sts" id="sts">Pagado · listo para surtir</div>
+  </div></div>
+
+  <!-- 2 · Rack vacío -->
+  <div class="card" id="rack">
+    <div class="ccab"><span>Rack C-02-05</span><span class="ej">Ejemplo</span></div>
+    <div class="rack">
+      <div class="nivel"><div class="caja"></div><div class="caja"></div><div class="caja"></div></div>
+      <div class="nivel"><div class="caja"></div><div class="caja v" id="vac"><b>Chamarra M<br>vacío</b></div><div class="caja"></div></div>
+    </div>
+    <div class="etq"><span>Piezas en el rack</span><b id="cero">0</b></div>
+  </div>
+
+  <!-- 3 · La hoja dice otra cosa -->
+  <div class="card" id="hoja">
+    <div class="ccab"><span>Inventario.xlsx</span><span class="ej">Ejemplo</span></div>
+    <div class="hj">
+      <div class="h">Producto</div><div class="h n">Hoja</div><div class="h n">Rack</div>
+      <div>Chamarra S</div><div class="n">8</div><div class="n">8</div>
+      <div id="h1">Chamarra M</div><div class="n" id="h2">5</div><div class="n" id="h3">0</div>
+      <div>Chamarra L</div><div class="n">6</div><div class="n">6</div>
+    </div>
+    <div class="nota2" id="nota2">Ayer salieron 5 · mayoreo #882 · sin capturar</div>
+  </div>
+
+  <!-- 4 · Cancelar -->
+  <div class="card" id="cancelar">
+    <div class="ccab"><span>Pedido #1047</span><span class="ej">Ejemplo</span></div>
+    <div class="msj" id="msj">«Hola. Lo sentimos: tu chamarra talla M ya no está disponible. Te devolvemos tu pago.»</div>
+    <div class="sp"></div>
+    <div class="estado" id="c1">Pedido<span class="st">Cancelado</span></div>
+    <div class="estado" id="c2">Reembolso<span class="st">$650</span></div>
+  </div>
+
+  <!-- 5 · La cuenta -->
+  <div class="card" id="cuesta">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>Pedidos sin pieza</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>15</b><span>pedidos cancelados</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$650</b><span>por pedido</span></div>
+    <div class="res"><span>= sin vender</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · Escaneo en la salida -->
+  <div class="card" id="escaneo">
+    <div class="ccab"><span>Salida · mayoreo #882</span><span class="ej">Ejemplo</span></div>
+    <div class="esc" id="k0"><span class="bc"></span>Chamarra M<span class="h2">16:01</span></div>
+    <div class="esc" id="k1"><span class="bc"></span>Chamarra M<span class="h2">16:01</span></div>
+    <div class="esc" id="k2"><span class="bc"></span>Chamarra M<span class="h2">16:02</span></div>
+    <div class="esc" id="k3"><span class="bc"></span>Chamarra M<span class="h2">16:02</span></div>
+    <div class="esc" id="k4"><span class="bc"></span>Chamarra M<span class="h2">16:03</span></div>
+    <div class="exis"><span>Existencia · Chamarra M</span><b id="exis">5</b></div>
+  </div>
+
+  <!-- 8 · La tienda -->
+  <div class="phone" id="phone2"><div class="scr">
+    <div class="otop"><b>Tienda en línea</b><span>16:03</span></div>
+    <div class="ficha">
+      <div class="foto"><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"><path d="M22 8 10 16l4 14 6-3v29h24V27l6 3 4-14-12-8c-2 5-6 7-10 7s-8-2-10-7z"/></svg><span class="ago" id="ago">Agotada en M</span></div>
+      <div class="tx">
+        <h3>Chamarra ligera</h3><p>Ejemplo</p>
+        <div class="tallas"><span>S</span><span id="tm">M</span><span>L</span></div>
+        <div class="bt" id="bt">Agregar al carrito</div>
+      </div>
+    </div>
+    <div class="sync" id="sync">Existencia tomada de la bodega · 16:03</div>
+  </div></div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>Tu bodega</span><span>Así lo haría</span></div>
+    <div class="pd" id="q1"><span class="ic">✓</span>Menos pedidos cancelados</div>
+    <div class="pd" id="q2"><span class="ic">✓</span>Menos clientes molestos</div>
+    <div class="pd" id="q3"><span class="ic">✓</span>Inventario al momento</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Sale</span><i>→</i><span>Se escanea</span><i>→</i><span class="v">La tienda lo sabe</span></div>
+    <p>Te cuento cómo lo haría en tu bodega.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/bodegas</div>
+    <div class="diag"><i>✓</i>Revisión sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tap = false;
+  // 1 · Pedido
+  telefono($('phone1'), 'pedido', 'pedido', t);
+  pop($('not'), t, S.pedido + 0.7);
+  aparece('sts', t, S.pedido + 2.2);
+
+  // 2 · Rack vacío
+  bloque($('rack'), 'rack', 'rack', t);
+  pop($('vac'), t, S.rack + 0.6); pop($('cero'), t, S.rack + 1.0);
+
+  // 3 · La hoja
+  bloque($('hoja'), 'hoja', 'hoja', t);
+  var m = t >= S.hoja + 1.2;
+  ['h1', 'h2', 'h3'].forEach(function (id) { $(id).classList.toggle('mal', m); });
+  aparece('nota2', t, S.hoja + 2.2);
+
+  // 4 · Cancelar
+  bloque($('cancelar'), 'cancelar', 'cancelar', t);
+  aparece('msj', t, S.cancelar + 0.5); aparece('c1', t, S.cancelar + 1.5, 50); aparece('c2', t, S.cancelar + 2.1, 50);
+
+  // 5 · Cuenta
+  bloque($('cuesta'), 'cuesta', 'cuesta', t);
+  aparece('e1', t, S.cuesta + 0.6, 50); aparece('e2', t, S.cuesta + 2.0, 50);
+  var v = Math.round(cuenta(t, S.cuesta + 3.4, 1.2, 9750) / 10) * 10;
+  $('eres').textContent = (v >= 9750 ? '≈ ' : '') + pesos(v);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · Escaneo
+  bloque($('escaneo'), 'escaneo', 'escaneo', t);
+  var n = 0;
+  for (var i = 0; i < 5; i++) { var at = S.escaneo + 0.6 + i * 0.5; aparece('k' + i, t, at, 50); if (t >= at + 0.15) n++; }
+  $('exis').textContent = 5 - n; $('exis').style.color = n === 5 ? 'var(--terra2)' : 'var(--tinta)';
+
+  // 8 · Tienda
+  telefono($('phone2'), 'tienda', 'tienda', t);
+  var ag = t >= S.tienda + 1.2;
+  $('tm').classList.toggle('x', ag); $('bt').classList.toggle('off', ag); $('bt').textContent = ag ? 'Sin existencia en M' : 'Agregar al carrito';
+  pop($('ago'), t, S.tienda + 1.2); aparece('sync', t, S.tienda + 1.8);
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  ['q1', 'q2', 'q3'].forEach(function (id, i) { aparece(id, t, S.gana + 0.4 + i * 0.6, 50); });
+  return tap;
+};
+</script>
+</body></html>

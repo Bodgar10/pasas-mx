@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Fisioterapia · crecimiento: personas que preguntan el precio y nadie les vuelve a escribir.
+   Cada interesado queda registrado y, si pasan 3 días sin respuesta, recepción recibe un aviso.
+   El seguimiento lo hace el equipo (no hay mensajes automáticos). Cifras de ejemplo. */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+/* Chat */
+.chat{padding:24px 22px;display:flex;flex-direction:column;gap:16px}
+.bb{max-width:80%;padding:18px 22px;border-radius:24px;font-size:27px;font-weight:600;line-height:1.3;opacity:0}
+.bb.el{align-self:flex-start;background:var(--suave);border-bottom-left-radius:6px}
+.bb.yo{align-self:flex-end;background:var(--tinta);color:var(--crema);border-bottom-right-radius:6px}
+.bb small{display:block;margin-top:6px;font-family:M;font-size:18px;opacity:.6}
+.dia0{align-self:center;font-family:M;font-size:20px;color:var(--gris);padding:6px 14px;border-radius:10px;background:var(--arena)}
+/* Bandeja */
+.msg{display:flex;gap:16px;align-items:center;padding:18px 24px;border-bottom:1px solid var(--linea);background:var(--papel);position:absolute;left:0;right:0;height:104px}
+.msg .av{width:58px;height:58px;font-size:24px}
+.msg div:not(.av){min-width:0;flex:1}.msg b{display:block;font-size:25px}.msg span{display:block;font-size:23px;color:#5d6b66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msg i{font-style:normal;font-family:M;font-size:19px;color:var(--gris);flex:none}
+.msg.and{background:#FBEADF}
+.lista0{position:absolute;left:0;right:0;top:150px;bottom:0;overflow:hidden}
+.badge{position:absolute;right:30px;top:40px;background:var(--terra);color:#fff;font-family:M;font-weight:600;font-size:22px;padding:8px 14px;border-radius:999px;z-index:2}
+/* Embudo */
+.emb{padding:34px 36px 20px}
+.et{display:flex;align-items:center;gap:20px;margin-bottom:22px}
+.et span{width:220px;font-size:30px;font-weight:600}
+.et i{flex:1;height:84px;border-radius:16px;background:var(--arena);position:relative;overflow:hidden;font-style:normal}
+.et i b{position:absolute;left:0;top:0;bottom:0;border-radius:16px;background:var(--terra);transform-origin:0 50%}
+.et em{font-style:normal;font-family:B;font-weight:800;font-size:60px;width:110px;text-align:right}
+.hueco{margin:0 36px 32px;padding:20px 24px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:28px;font-weight:700;opacity:0}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:190px}
+.term span{font-size:30px;font-weight:600;color:var(--gris)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--verde2)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--verde)}
+/* Interesados */
+.it{display:flex;align-items:center;gap:20px;padding:22px 30px;border-bottom:1px solid var(--linea);opacity:0}
+.it:last-child{border-bottom:0}
+.it div b{display:block;font-size:31px}.it div span{display:block;font-size:24px;font-weight:600;color:var(--gris);margin-top:2px}
+.it .st{margin-left:auto;font-family:M;font-weight:600;font-size:22px;padding:8px 12px;border-radius:12px;white-space:nowrap;background:var(--suave)}
+.it .st.p{background:#FBEADF;color:var(--terra2)}
+.it .st.v{background:var(--verde2);color:var(--verde)}
+.pasos2{display:flex;gap:8px;padding:0 30px 26px;opacity:0}
+.pasos2 span{flex:1;text-align:center;padding:12px 0;border-radius:12px;background:var(--suave);font-family:M;font-weight:600;font-size:20px;color:var(--gris)}
+.pasos2 span.a{background:var(--terra);color:#fff}
+/* Aviso */
+.not{margin:30px 24px 0;padding:26px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);opacity:0}
+.not .q{font-family:M;font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.not h3{margin:12px 0 8px;font-family:B;font-weight:800;font-size:42px;line-height:1.05}
+.not p{margin:0 0 22px;font-size:26px;font-weight:600;color:var(--gris);line-height:1.3}
+.bt{display:block;text-align:center;padding:22px;border-radius:18px;font-size:30px;font-weight:700;background:var(--verde);color:#fff}
+.conf{margin:22px 24px 0;padding:22px 24px;border-radius:20px;background:var(--verde2);color:var(--verde);font-size:27px;font-weight:700;opacity:0}
+.quien{margin:18px 24px 0;font-family:M;font-size:21px;color:var(--gris);opacity:0}
+/* Agenda */
+.hora{display:flex;align-items:center;gap:22px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:32px;font-weight:600}
+.hora span{width:110px;font-family:M;font-weight:600;font-size:26px;color:var(--gris)}
+.slot{flex:1;position:relative;height:74px}
+.slot div{position:absolute;inset:0;border-radius:16px;display:flex;align-items:center;padding:0 22px;font-size:30px;font-weight:700}
+.lleno{background:var(--suave)}
+#libre{border:3px dashed #cfc7b9;color:var(--gris);font-family:M;font-weight:600;font-size:24px}
+#andrea{background:var(--verde2);color:var(--verde);opacity:0}
+.hora:last-child{border-bottom:0}
+/* Qué ganas */
+.flujo{padding:34px 36px}
+.fp{display:flex;align-items:center;gap:20px;padding:22px 24px;border-radius:20px;background:var(--suave);font-size:32px;font-weight:700;opacity:0}
+.fp .n{width:52px;height:52px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;font-family:M;font-size:24px;flex:none}
+.fp.v{background:var(--verde2);color:var(--verde)}.fp.v .n{background:var(--verde)}
+.fl{height:34px;margin-left:49px;border-left:4px dotted var(--gris);opacity:0}
+.fn{margin-top:24px;font-size:27px;font-weight:600;color:var(--gris);opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · clínicas de fisioterapia</div>
+
+  <div class="tit" id="t-pregunta"><h1>«¿Cuánto <em>cuesta?»</em></h1></div>
+  <div class="tit" id="t-pierde"><h1>Y ahí <em>se quedó</em></h1></div>
+  <div class="tit" id="t-mes"><h1>80 preguntaron. <em>6 empezaron.</em></h1><p>Ejemplo de un mes</p></div>
+  <div class="tit" id="t-cuenta"><h1>+$12,000 <em>posibles</em></h1><p>Ejemplo: 3 tratamientos × $4,000</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si nadie <em>se perdiera?</em></h1></div>
+  <div class="tit" id="t-lista"><h1>Cada interesado, <em>registrado</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>3 días sin respuesta → <em>aviso</em></h1></div>
+  <div class="tit" id="t-agenda"><h1>Andrea <em>agenda</em></h1></div>
+  <div class="tit" id="t-gana"><h1>Ya pagaste por <em>esa pregunta</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Preguntan muchos, <em>empiezan pocos?</em></h1></div>
+
+  <!-- 1 · La pregunta -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Andrea R.</b><span>Mensajes</span></div>
+    <div class="chat">
+      <span class="dia0">Lunes</span>
+      <div class="bb el" id="b1">Hola, ¿cuánto cuesta la valoración? Me duele la rodilla<small>10:12</small></div>
+      <div class="bb yo" id="b2">Hola, Andrea. Te comparto precios y horarios 📄<small>10:40</small></div>
+      <div class="bb el" id="b3">Gracias, lo pienso 🙂<small>10:52</small></div>
+    </div>
+  </div></div>
+
+  <!-- 2 · Se pierde entre mensajes -->
+  <div class="phone" id="phone2"><div class="scr">
+    <div class="otop"><b>Recepción</b><span>Mensajes</span></div>
+    <span class="badge" id="badge">0 nuevos</span>
+    <div class="lista0" id="lista0"></div>
+  </div></div>
+
+  <!-- 3 · El mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Un mes · ejemplo</span><span>Interesados</span></div>
+    <div class="emb">
+      <div class="et"><span>Preguntaron</span><i><b id="f1" style="width:100%"></b></i><em>80</em></div>
+      <div class="et"><span>Empezaron</span><i><b id="f2" style="width:7.5%"></b></i><em>6</em></div>
+    </div>
+    <div class="hueco" id="hueco">74 no empezaron. ¿Cuántos solo necesitaban seguimiento?</div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="cuenta">
+    <div class="ccab"><span>Si fueran 9 · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>+3</b><span>tratamientos</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$4,000</b><span>por tratamiento</span></div>
+    <div class="res"><span>= posibles</span><b id="eres">+$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · Interesados -->
+  <div class="card" id="lista">
+    <div class="ccab"><span>Interesados · esta semana</span><span class="ej">Ejemplo</span></div>
+    <div class="it" id="i1"><div class="av" style="background:#B5739A">A</div><div><b>Andrea R.</b><span>Rodilla · preguntó precio</span></div><span class="st p">Lo piensa</span></div>
+    <div class="it" id="i2"><div class="av" style="background:#5B8DB8">L</div><div><b>Luis M.</b><span>Espalda · pidió horarios</span></div><span class="st v">Agendó</span></div>
+    <div class="it" id="i3"><div class="av" style="background:#6C8A7F">C</div><div><b>Carmen T.</b><span>Hombro · preguntó precio</span></div><span class="st">Contestado</span></div>
+    <div class="pasos2" id="pasos2"><span class="a">Preguntó</span><span>Seguimiento</span><span>Valoración</span><span>Tratamiento</span></div>
+  </div>
+
+  <!-- 7 · Aviso a recepción -->
+  <div class="phone" id="phone3"><div class="scr">
+    <div class="otop"><b>Recepción · jueves</b><span>Aviso</span></div>
+    <div class="not" id="not">
+      <div class="q">3 días sin respuesta</div>
+      <h3>Andrea R. · valoración de rodilla</h3>
+      <p>Preguntó el lunes. Dijo «lo pienso».</p>
+      <div class="bt" id="si">Darle seguimiento</div>
+    </div>
+    <div class="conf" id="conf">✓ Recepción le escribió · 11:05</div>
+    <div class="quien" id="quien">Tu equipo decide qué decirle</div>
+  </div></div>
+
+  <!-- 8 · Agenda -->
+  <div class="card" id="agenda">
+    <div class="ccab"><span>Sábado · valoraciones</span><span class="ej">Ejemplo</span></div>
+    <div class="hora"><span>9:00</span><div class="slot"><div class="lleno">Pedro L.</div></div></div>
+    <div class="hora"><span>10:00</span><div class="slot"><div id="libre">Libre</div><div id="andrea">Andrea R. · valoración ✓</div></div></div>
+    <div class="hora"><span>11:00</span><div class="slot"><div class="lleno">Rosa G.</div></div></div>
+  </div>
+
+  <!-- 9 · Qué ganas -->
+  <div class="card" id="gana">
+    <div class="ccab"><span>La misma publicidad</span><span>Así lo haría</span></div>
+    <div class="flujo">
+      <div class="fp" id="p1"><span class="n">1</span>Alguien pregunta</div>
+      <div class="fl" id="l1"></div>
+      <div class="fp v" id="p2"><span class="n">2</span>Alguien le da seguimiento</div>
+      <div class="fl" id="l2"></div>
+      <div class="fp" id="p3"><span class="n">3</span>Otra oportunidad de agendar</div>
+      <div class="fn" id="fn">El sistema solo evita que se olvide.</div>
+    </div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Pregunta</span><i>→</i><span>Seguimiento</span><i>→</i><span class="v">Valoración</span></div>
+    <p>Te cuento cómo lo haría en tu clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var MS = [['C', '#5B8DB8', 'Carlos D.', '¿Tienen lugar el jueves?'], ['L', '#8F6BB0', 'Lucía P.', '¿Aceptan tarjeta?'],
+  ['D', '#C96F4A', 'Mamá de Diego', '¿A qué hora le toca?'], ['J', '#3E8E6A', 'Jorge R.', '¿Me mandas la ubicación?'],
+  ['R', '#B5739A', 'Rosa G.', 'Llego 10 min tarde'], ['P', '#6C8A7F', 'Pedro L.', '¿Cuántas sesiones me quedan?'],
+  ['M', '#5B8DB8', 'Marta S.', '¿Dan factura?']];
+window.prepara = function () {
+  var h = '<div class="msg and" id="mand"><div class="av" style="background:#B5739A">A</div><div><b>Andrea R.</b><span>Gracias, lo pienso 🙂</span></div><i>lun</i></div>';
+  MS.forEach(function (m, i) { h += '<div class="msg" id="m' + i + '"><div class="av" style="background:' + m[1] + '">' + m[0] + '</div><div><b>' + m[2] + '</b><span>' + m[3] + '</span></div><i>hoy</i></div>'; });
+  $('lista0').innerHTML = h;
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tap = false;
+  // 1 · Pregunta
+  telefono($('phone1'), 'pregunta', 'pregunta', t);
+  aparece('b1', t, S.pregunta + 0.7); aparece('b2', t, S.pregunta + 2.6);
+
+  // 1-2 · "Lo pienso" (aparece al inicio de la escena 2 en el mismo chat) → luego la bandeja
+  $('b3').style.opacity = clamp((t - S.pregunta - 4.0) / 0.3);
+  telefono($('phone2'), 'pierde', 'pierde', t);
+  var k = 0;
+  MS.forEach(function (m, i) { if (t >= S.pierde + 0.8 + i * 0.45) k++; });
+  var y = 0;
+  MS.forEach(function (m, i) {
+    var q = easeOut(clamp((t - (S.pierde + 0.8 + i * 0.45)) / 0.3));
+    var pos = i < k ? (k - 1 - i) : -1;   // los nuevos arriba
+    var el = $('m' + i); el.style.top = (pos * 104) + 'px'; el.style.opacity = i < k ? q : 0;
+  });
+  $('mand').style.top = (k * 104) + 'px';
+  $('badge').textContent = Math.round(cuenta(t, S.pierde + 0.8, 3.2, 40)) + ' nuevos';
+
+  // 3 · El mes
+  bloque($('mes'), 'mes', 'mes', t);
+  $('f1').style.transform = 'scaleX(' + easeOut(clamp((t - S.mes - 0.5) / 0.6)) + ')';
+  $('f2').style.transform = 'scaleX(' + easeOut(clamp((t - S.mes - 1.6) / 0.6)) + ')';
+  aparece('hueco', t, S.mes + 2.6);
+
+  // 4 · La cuenta
+  bloque($('cuenta'), 'cuenta', 'cuenta', t);
+  aparece('e1', t, S.cuenta + 0.8, 50); aparece('e2', t, S.cuenta + 2.4, 50);
+  $('eres').textContent = '+' + pesos(Math.round(cuenta(t, S.cuenta + 3.6, 1.0, 12000) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 · Interesados
+  bloque($('lista'), 'lista', 'lista', t);
+  ['i1', 'i2', 'i3'].forEach(function (id, i) { aparece(id, t, S.lista + 0.5 + i * 0.6, 50); });
+  aparece('pasos2', t, S.lista + 2.6);
+
+  // 7 · Aviso
+  telefono($('phone3'), 'aviso', 'aviso', t);
+  pop($('not'), t, S.aviso + 0.7);
+  var tt = S.aviso + 3.0;
+  if (t >= S.aviso && t < E.aviso) tap = toque(t, tt, $('si')) || tap;
+  pop($('conf'), t, tt + 0.35); aparece('quien', t, tt + 0.9);
+
+  // 8 · Agenda
+  bloque($('agenda'), 'agenda', 'agenda', t);
+  var fq = clamp((t - S.agenda - 1.0) / 0.4);
+  $('libre').style.opacity = 1 - fq; $('andrea').style.opacity = fq;
+  $('andrea').style.transform = 'scale(' + (0.9 + 0.1 * back(fq)) + ')';
+
+  // 9 · Qué ganas
+  bloque($('gana'), 'gana', 'gana', t);
+  aparece('p1', t, S.gana + 0.4); aparece('l1', t, S.gana + 0.8); aparece('p2', t, S.gana + 1.1);
+  aparece('l2', t, S.gana + 1.6); aparece('p3', t, S.gana + 1.9); aparece('fn', t, S.gana + 2.8);
+  return tap;
+};
+</script>
+</body></html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Viernes · caso práctico: ejercicios en casa en una clínica de fisioterapia. Cuenta → primer flujo → qué mediría.
+   Los ejercicios los asigna el terapeuta; el sistema no diagnostica ni recomienda. Cifras de ejemplo. */
+.caso{padding:40px 36px 36px}
+.caso .k{font-family:M;font-weight:600;font-size:28px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra2)}
+.caso h2{margin:16px 0 26px;font-family:B;font-weight:800;font-size:58px;line-height:1.05}
+.dato{display:flex;align-items:center;gap:16px;font-size:32px;font-weight:600;padding:12px 0;opacity:0}
+.dato i{width:18px;height:18px;border-radius:5px;background:var(--terra);flex:none}
+/* Hoja de papel */
+.papel{margin:0;padding:36px 40px 34px;background:#FFFDF6;background-image:repeating-linear-gradient(transparent 0 63px,#e7e1d2 63px 65px);color:#2a3a5a}
+.papel .h{font-family:M;font-weight:600;font-size:24px;color:var(--gris);margin-bottom:18px}
+.ej2{display:flex;align-items:center;gap:18px;height:65px;font-size:32px;font-weight:600;opacity:0}
+.ej2 b{margin-left:auto;font-family:M;font-size:26px;color:#5a6a8a}
+.q{width:56px;height:56px;border-radius:50%;background:#FBEADF;color:var(--terra2);display:grid;place-items:center;font-family:B;font-weight:800;font-size:34px;flex:none;opacity:0}
+.sabe{display:flex;justify-content:space-between;align-items:center;padding:24px 40px 30px;background:var(--suave);font-size:30px;font-weight:700;opacity:0}
+.sabe span{font-family:M;font-size:24px;color:var(--terra2)}
+/* Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:190px}
+.term span{font-size:29px;font-weight:600;color:var(--gris);line-height:1.25}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Planes cortados */
+.pl{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.pl .nm{width:150px;font-size:29px;font-weight:700}
+.pl .ss{flex:1;display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+.pl .ss i{height:30px;border-radius:7px;background:var(--verde)}
+.pl .ss i.x{background:#FBEADF;border:2px dashed var(--terra)}
+/* Teléfono */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.hoy{padding:24px 26px 6px;font-size:30px;font-weight:700}
+.hoy span{display:block;font-family:M;font-size:20px;font-weight:600;color:var(--gris);margin-top:4px}
+.ex{display:flex;align-items:center;gap:18px;margin:14px 22px 0;padding:18px 20px;border-radius:20px;border:3px solid var(--linea);background:#fff;opacity:0}
+.ex .vid{width:84px;height:84px;border-radius:16px;background:var(--suave);display:grid;place-items:center;flex:none}
+.ex .vid svg{width:36px;height:36px}
+.ex div b{display:block;font-size:27px}.ex div span{display:block;font-family:M;font-size:21px;color:var(--gris);margin-top:4px}
+.chk{margin-left:auto;width:58px;height:58px;border-radius:16px;border:3px solid #cfc7b9;display:grid;place-items:center;font-size:32px;color:#fff;flex:none}
+.chk.on{background:var(--verde);border-color:var(--verde)}
+.asig{margin:18px 24px 0;font-family:M;font-size:20px;color:var(--gris)}
+/* Vista del terapeuta */
+.pac{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea)}
+.pac b{display:block;font-size:32px}.pac span{display:block;font-size:24px;font-weight:600;color:var(--gris)}
+.semana{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;padding:28px 36px 10px}
+.semana div{text-align:center;opacity:0}
+.semana div span{display:block;font-family:M;font-weight:600;font-size:22px;color:var(--gris);margin-bottom:10px}
+.semana div i{display:block;height:84px;border-radius:16px;background:var(--arena);font-style:normal;font-family:M;font-weight:600;font-size:24px;line-height:84px}
+.semana div i.v{background:var(--verde2);color:var(--verde)}
+.semana div i.m{background:#FBEADF;color:var(--terra2)}
+.decide{margin:20px 36px 32px;padding:22px 24px;border-radius:18px;background:var(--suave);font-size:28px;font-weight:700;opacity:0}
+.decide small{display:block;margin-top:6px;font-size:23px;font-weight:600;color:var(--gris)}
+/* Medir */
+.mt{display:flex;align-items:center;gap:24px;padding:30px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.mt:last-of-type{border-bottom:0}
+.mt b{font-family:B;font-weight:800;font-size:96px;line-height:1;color:var(--verde);width:120px;text-align:center}
+.mt span{font-size:32px;font-weight:700;line-height:1.25}
+.mn{padding:0 36px 32px;font-size:27px;font-weight:600;color:var(--gris);opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · caso práctico</div>
+
+  <div class="tit" id="t-caso"><h1>Caso <em>práctico</em></h1></div>
+  <div class="tit" id="t-hoja"><h1>Una hoja <em>y suerte</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>Hagamos la <em>cuenta</em></h1></div>
+  <div class="tit" id="t-total"><h1>$14,000 <em>al mes</em></h1><p>Ejemplo: 4 × 5 × $700</p></div>
+  <div class="tit" id="t-primero"><h1>Lo primero que <em>construiría</em></h1></div>
+  <div class="tit" id="t-celular"><h1>Sus ejercicios, <em>en su celular</em></h1></div>
+  <div class="tit" id="t-terapeuta"><h1>El terapeuta <em>llega sabiendo</em></h1></div>
+  <div class="tit" id="t-medir"><h1>Lo que <em>mediría</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Revisamos tu <em>clínica?</em></h1></div>
+
+  <!-- 1 · El caso -->
+  <div class="card" id="caso">
+    <div class="caso">
+      <div class="k">Caso práctico · ejemplo</div>
+      <h2>Clínica de fisioterapia</h2>
+      <div class="dato" id="d1"><i></i>40 pacientes en tratamiento</div>
+      <div class="dato" id="d2"><i></i>Sesión de $700</div>
+      <div class="dato" id="d3"><i></i>Ejercicios en casa, en papel</div>
+    </div>
+  </div>
+
+  <!-- 2 · La hoja -->
+  <div class="card" id="hoja">
+    <div class="papel">
+      <div class="h">EJERCICIOS EN CASA · SOFÍA M. · EJEMPLO</div>
+      <div class="ej2" id="h1">Puente de glúteos<b>3 × 12</b><span class="q" id="q1">?</span></div>
+      <div class="ej2" id="h2">Movilidad de cadera<b>2 × 10</b><span class="q" id="q2">?</span></div>
+      <div class="ej2" id="h3">Sentadilla asistida<b>3 × 8</b><span class="q" id="q3">?</span></div>
+    </div>
+    <div class="sabe" id="sabe">¿Los hizo?<span>Nadie sabe hasta la cita</span></div>
+  </div>
+
+  <!-- 3 · La cuenta -->
+  <div class="card" id="cuenta">
+    <div class="ccab"><span>Planes cortados · ejemplo</span><span>Un mes</span></div>
+    <div class="pl" id="p1"><span class="nm">Paciente 1</span><div class="ss"></div></div>
+    <div class="pl" id="p2"><span class="nm">Paciente 2</span><div class="ss"></div></div>
+    <div class="pl" id="p3"><span class="nm">Paciente 3</span><div class="ss"></div></div>
+    <div class="pl" id="p4"><span class="nm">Paciente 4</span><div class="ss"></div></div>
+    <div class="nota" style="padding-top:22px">Planes de 10 sesiones que se dejan en la 5</div>
+  </div>
+
+  <!-- 4 · El total -->
+  <div class="card" id="total">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>4</b><span>pacientes que<br>dejan el plan</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>5</b><span>sesiones<br>pendientes</span></div>
+    <div class="term" id="e3"><span class="op">×</span><b>$700</b><span>por sesión</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · En el celular del paciente -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Mis ejercicios</b><span>Sofía M.</span></div>
+    <div class="hoy">Hoy<span>LOS ASIGNÓ TU TERAPEUTA</span></div>
+    <div class="ex" id="x1"><div class="vid"><svg viewBox="0 0 24 24" fill="#3E8E6A"><path d="M7 4v16l13-8z"/></svg></div><div><b>Puente de glúteos</b><span>3 × 12</span></div><span class="chk" id="c1"></span></div>
+    <div class="ex" id="x2"><div class="vid"><svg viewBox="0 0 24 24" fill="#3E8E6A"><path d="M7 4v16l13-8z"/></svg></div><div><b>Movilidad de cadera</b><span>2 × 10</span></div><span class="chk" id="c2"></span></div>
+    <div class="ex" id="x3"><div class="vid"><svg viewBox="0 0 24 24" fill="#3E8E6A"><path d="M7 4v16l13-8z"/></svg></div><div><b>Sentadilla asistida</b><span>3 × 8</span></div><span class="chk" id="c3"></span></div>
+    <div class="asig">Con video, series y repeticiones</div>
+  </div></div>
+
+  <!-- 7 · El terapeuta -->
+  <div class="card" id="terapeuta">
+    <div class="ccab"><span>Antes de la sesión</span><span class="ej">Ejemplo</span></div>
+    <div class="pac"><div class="av" style="background:#B5739A">S</div><div><b>Sofía M.</b><span>Ejercicios marcados esta semana</span></div></div>
+    <div class="semana" id="sem"></div>
+    <div class="decide" id="dec">Qué ajustar lo decide el terapeuta<small>El sistema no diagnostica ni recomienda.</small></div>
+  </div>
+
+  <!-- 8 · Qué mediría -->
+  <div class="card" id="medir">
+    <div class="ccab"><span>Dos métricas</span><span>Cada semana</span></div>
+    <div class="mt" id="m1"><b>?</b><span>Ejercicios marcados por semana</span></div>
+    <div class="mt" id="m2"><b>?</b><span>Planes que se terminan completos</span></div>
+    <div class="mn" id="mn">Si no se mueven, se ajusta antes de construir lo siguiente.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>La cuenta</span><i>→</i><span>Un flujo</span><i>→</i><span class="v">Se mide</span></div>
+    <p>Así pienso cada proceso de una clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+window.prepara = function () {
+  document.querySelectorAll('.pl .ss').forEach(function (s) {
+    var h = ''; for (var i = 0; i < 10; i++) h += '<i class="' + (i >= 5 ? 'x' : '') + '"></i>'; s.innerHTML = h;
+  });
+  var D = [['L', '3/3', 'v'], ['M', '3/3', 'v'], ['M', '1/3', 'm'], ['J', '3/3', 'v'], ['V', '2/3', 'm'], ['S', '3/3', 'v'], ['D', '—', '']];
+  $('sem').innerHTML = D.map(function (d, i) { return '<div id="w' + i + '"><span>' + d[0] + '</span><i class="' + d[2] + '">' + d[1] + '</i></div>'; }).join('');
+};
+window.escena = function (t) {
+  var tap = false;
+  // 1 · El caso
+  bloque($('caso'), 'caso', 'caso', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { aparece(id, t, S.caso + 0.6 + i * 0.5, 40); });
+
+  // 2 · La hoja
+  bloque($('hoja'), 'hoja', 'hoja', t);
+  ['h1', 'h2', 'h3'].forEach(function (id, i) { aparece(id, t, S.hoja + 0.4 + i * 0.35, 40); });
+  ['q1', 'q2', 'q3'].forEach(function (id, i) { pop($(id), t, S.hoja + 2.4 + i * 0.25); });
+  aparece('sabe', t, S.hoja + 3.2);
+
+  // 3 · Planes cortados
+  bloque($('cuenta'), 'cuenta', 'cuenta', t);
+  ['p1', 'p2', 'p3', 'p4'].forEach(function (id, i) { aparece(id, t, S.cuenta + 0.6 + i * 0.6, 50); });
+
+  // 4 · Total
+  bloque($('total'), 'total', 'total', t);
+  aparece('e1', t, S.total + 0.3, 50); aparece('e2', t, S.total + 0.8, 50); aparece('e3', t, S.total + 1.3, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.total + 1.9, 1.0, 14000) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'primero');
+
+  // 6 · Celular: aparecen y el paciente marca dos
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.celular) / 0.6)), pout = easeOut(clamp((t - (E.celular - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.celular && t < E.celular + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  ['x1', 'x2', 'x3'].forEach(function (id, i) { pop($(id), t, S.celular + 0.7 + i * 0.4); });
+  var t1 = S.celular + 3.6, t2 = S.celular + 4.6;
+  if (t >= S.celular && t < E.celular) tap = toque(t, t1, $('c1')) || toque(t, t2, $('c2')) || tap;
+  $('c1').classList.toggle('on', t >= t1); $('c1').textContent = t >= t1 ? '✓' : '';
+  $('c2').classList.toggle('on', t >= t2); $('c2').textContent = t >= t2 ? '✓' : '';
+
+  // 7 · Terapeuta
+  bloque($('terapeuta'), 'terapeuta', 'terapeuta', t);
+  for (var i = 0; i < 7; i++) aparece('w' + i, t, S.terapeuta + 0.5 + i * 0.15);
+  aparece('dec', t, S.terapeuta + 2.4);
+
+  // 8 · Medir
+  bloque($('medir'), 'medir', 'medir', t);
+  aparece('m1', t, S.medir + 0.8, 50); aparece('m2', t, S.medir + 2.6, 50); aparece('mn', t, S.medir + 3.6);
+  return tap;
+};
+</script>
+</body></html>
