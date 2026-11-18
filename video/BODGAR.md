@@ -22,12 +22,12 @@ Desde el 23 de noviembre de 2026 (decisión de Bodgar del 18 nov): **bodegas sal
 | Día | Publicación | Cierre (landing) |
 |---|---|---|
 | Lunes | Fisioterapia | `bodgar.dev/plataformas/fisioterapia` |
-| Martes | Dentistas | su landing si ya existe; si no, `bodgar.dev/plataformas` |
-| Miércoles | Psicología | su landing si ya existe; si no, `bodgar.dev/plataformas` |
+| Martes | Dentistas | `bodgar.dev/plataformas/dentistas` |
+| Miércoles | Psicología | `bodgar.dev/plataformas/psicologia` |
 | Jueves | Educación (academias de idiomas) | `bodgar.dev/plataformas/idiomas` |
 | Viernes | Fisioterapia: caso práctico (la cuenta, lo primero que construiría, qué mediría) | `bodgar.dev/plataformas/fisioterapia` |
 
-- **La landing se verifica, nunca de memoria**: existe si hay carpeta en `plataformas/` del repo `Bodgar10/bodgar-dev` (para dentistas y psicología, la carpeta cuyo nombre empiece con `dent` o `psic`). Mientras no exista, el video cierra en `bodgar.dev/plataformas`.
+- **Las direcciones de cada sector las fijó Bodgar el 18 nov** (`/plataformas/<sector>`, sin acentos): fisioterapia, dentistas, psicologia, idiomas. Los videos usan siempre la del sector aunque la landing todavía no esté publicada; Bodgar la construye con esa dirección.
 - **Dentistas y psicología copian todo fisio.** Cada video de fisio (incluidos los casos prácticos de fisio) se pasa, uno por uno y en el orden en que se publicaron, a dentistas y a psicología: misma estructura, misma cuenta y mismo problema, pero con la historia, las palabras y las escenas de ese consultorio (sillón, limpieza cada 6 meses, presupuesto de tratamiento; sesión semanal, inasistencia, recibo). El JSON lleva `"origen": "<nombre del video de fisio>"`; el siguiente a adaptar es el video de fisio más antiguo que todavía no tenga versión de ese sector. Si un problema de fisio no tiene sentido en ese sector, se salta y se anota por qué en el resumen.
 - **No forzar.** Cuando de un sector ya no salga un problema real y nuevo, no se inventa: ese día no se escribe video nuevo y en el resumen se dice cuál video viejo conviene volver a publicar (no tienen fecha de caducidad).
 - **Psicología, más estricto**: la decisión clínica es del psicólogo; nunca notas, diagnósticos ni datos de un paciente en pantalla; nada de "retener" pacientes (se dice seguimiento, si el paciente quiere); nada sobre crisis o riesgo; nada que prometa resultados terapéuticos.
