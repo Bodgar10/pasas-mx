@@ -17,17 +17,22 @@ Si no hay JSON para ese día, llega un correo corto avisando. Cada correo dice c
 
 ## Calendario
 
-| Día | Publicación | Ejemplo de gancho |
-|---|---|---|
-| Lunes | Fisioterapia: pérdida de dinero | "Tu terapeuta está ahí, pero la camilla está vacía." |
-| Martes | Bodegas: pérdida de dinero | "Hiciste el trabajo, pero nadie lo facturó." |
-| Miércoles | Fisioterapia: crecimiento / ingreso | "Ya tienes pacientes. ¿Cómo haces que vuelvan cuando tiene sentido?" |
-| Jueves | Bodegas: crecimiento / eficiencia | "Tus clientes podrían consultar su inventario sin escribirte por WhatsApp." |
-| Viernes | Caso práctico: cálculo y "lo primero que construiría" | "8 cancelaciones × $700 = $5,600. Así intentaría recuperar parte." |
+Desde el 23 de noviembre de 2026 (decisión de Bodgar del 18 nov): **bodegas sale** del calendario y se queda en salud y educación.
 
-- Una sola hora para empezar: **12:30 PM**, 4 semanas, para comparar tema y gancho sin la variable de la hora. Después se prueba el ganador a las 7:00 PM.
-- Mezcla aproximada: **70% "estás perdiendo dinero aquí", 30% "podrías ganar o crecer haciendo esto"**.
-- El viernes es el más importante: números, flujo o "esto es lo primero que construiría". Es lo que hace pensar "quiero que este tipo revise mi negocio".
+| Día | Publicación | Cierre (landing) |
+|---|---|---|
+| Lunes | Fisioterapia | `bodgar.dev/plataformas/fisioterapia` |
+| Martes | Dentistas | su landing si ya existe; si no, `bodgar.dev/plataformas` |
+| Miércoles | Psicología | su landing si ya existe; si no, `bodgar.dev/plataformas` |
+| Jueves | Educación (academias de idiomas) | `bodgar.dev/plataformas/idiomas` |
+| Viernes | Fisioterapia: caso práctico (la cuenta, lo primero que construiría, qué mediría) | `bodgar.dev/plataformas/fisioterapia` |
+
+- **La landing se verifica, nunca de memoria**: existe si hay carpeta en `plataformas/` del repo `Bodgar10/bodgar-dev` (para dentistas y psicología, la carpeta cuyo nombre empiece con `dent` o `psic`). Mientras no exista, el video cierra en `bodgar.dev/plataformas`.
+- **Reciclar, no forzar.** Dentistas y psicología empiezan adaptando los guiones de fisio que mejor han funcionado: misma estructura y misma cuenta, pero la historia, las palabras y las escenas de ese consultorio (sillón, presupuesto de tratamiento, limpieza cada 6 meses; sesión semanal, inasistencia, recibo). Cuando de un sector ya no salga un problema real y nuevo, no se inventa: ese día no se escribe video nuevo y en el resumen se dice cuál video viejo conviene volver a publicar (no tienen fecha de caducidad).
+- **Psicología, más estricto**: la decisión clínica es del psicólogo; nunca notas, diagnósticos ni datos de un paciente en pantalla; nada de "retener" pacientes (se dice seguimiento, si el paciente quiere); nada sobre crisis o riesgo; nada que prometa resultados terapéuticos.
+- **Dentistas**: la decisión del tratamiento es del dentista; nada de precios de tratamientos como promesa (las cifras son ejemplo).
+- Una sola hora: **12:30 PM**.
+- Mezcla aproximada: **70% "estás perdiendo dinero aquí", 30% "podrías ganar o crecer haciendo esto"**, contada sobre la semana.
 - Ninguna publicación repite el problema de las 3 anteriores del mismo sector.
 
 ## La fórmula de cada video
@@ -40,9 +45,9 @@ Si no hay JSON para ese día, llega un correo corto avisando. Cada correo dice c
 - **Una frase corta por escena** en pantalla (título de 2 a 6 palabras). Sin subtítulos largos.
 - Cifras siempre **marcadas como ejemplo**, en el título o en la tarjeta. Al cierre: "Las cifras del video son un ejemplo, no un resultado."
 - Sin testimonios, sin clientes inventados, sin logos ajenos. Nombres de personas y negocios genéricos (Sofía M., Moda Luna, Café Tierra).
-- Nada que prometa resultados; en salud, la decisión clínica es del terapeuta ("tu equipo decide cuándo").
+- Nada que prometa resultados; en salud, la decisión clínica es del profesional (fisioterapeuta, dentista o psicólogo: "tú decides cuándo").
 - Sin WhatsApp como canal automático del producto; se dice "mensaje" o "aviso".
-- Cierre: la landing del sector (`bodgar.dev/plataformas/fisioterapia`, `bodgar.dev/plataformas/bodegas`; apps: `bodgar.dev`) y "Diagnóstico sin costo" o "Revisión sin costo".
+- Cierre: la landing del sector (ver Calendario; apps: `bodgar.dev`) y "Diagnóstico sin costo" o "Revisión sin costo".
 - 8 a 10 escenas, 40 a 55 segundos.
 
 ## Hacer un video
