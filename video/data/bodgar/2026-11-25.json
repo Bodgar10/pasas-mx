@@ -1,0 +1,76 @@
+{
+  "fecha": "2026-11-25",
+  "dia": "miércoles",
+  "linea": "Psicología · pérdida · inasistencias",
+  "plantilla": "psico-inasistencias.html",
+  "nombre": "psico-inasistencias",
+  "url": "bodgar.dev/plataformas",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Psicología",
+    "titulo": "La hora era suya. *No llegó.*",
+    "dato": {
+      "num": "≈ $12,800",
+      "texto": "al mes en sesiones que no se dieron",
+      "tipo": "perd"
+    }
+  },
+  "story": {
+    "titulo": "¿Se te quedan *horas vacías?*",
+    "texto": "Cuando un paciente no llega, esa hora ya no la puede tomar nadie más. Así lo ordenaría."
+  },
+  "post": "Son las 5:00 PM y tu paciente de las 6:00 te avisa que hoy no va a poder llegar. Esa hora estaba reservada solo para él y, con una hora de aviso, nadie más la puede tomar.\n\nCon un aviso un día antes (Confirmo / Necesito cambiar), el paciente puede elegir otro horario desde su celular y la hora que se libera se le ofrece a quien estaba esperando un lugar. La política de cancelación la decides tú y tu paciente la ve desde que agenda.\n\nLas cifras del video son un ejemplo, no un resultado. Si quieres que revise tu consultorio, entra a bodgar.dev/plataformas (link en la bio). Diagnóstico sin costo.\n\n#psicologia #psicologos #consultoriopsicologico #psicologiamexico #emprendedoresdelasalud",
+  "escenas": [
+    {
+      "id": "mensaje",
+      "voz": "Son las cinco de la tarde. Tu paciente de las seis te escribe: hoy no voy a poder llegar.",
+      "titulo": "5:00 PM"
+    },
+    {
+      "id": "sillones",
+      "voz": "Esa hora era suya. Estaba reservada solo para él, y con una hora de aviso nadie la puede tomar.",
+      "titulo": "La hora era suya"
+    },
+    {
+      "id": "semana",
+      "voz": "Y no pasa una vez. Digamos que se te caen cuatro a la semana.",
+      "titulo": "4 a la semana"
+    },
+    {
+      "id": "cuenta",
+      "voz": "A ochocientos pesos cada una, son tres mil doscientos a la semana. Casi trece mil al mes.",
+      "titulo": "≈ $12,800 al mes"
+    },
+    {
+      "id": "giro",
+      "voz": "¿Y si te avisaran a tiempo?",
+      "titulo": "¿Y si avisara a tiempo?"
+    },
+    {
+      "id": "recordatorio",
+      "voz": "Un día antes, tu paciente recibe un aviso: confirmo, o necesito cambiar.",
+      "titulo": "Un día antes, un aviso"
+    },
+    {
+      "id": "cambio",
+      "voz": "Si necesita cambiar, elige otro horario desde su celular.",
+      "titulo": "Él elige otro horario"
+    },
+    {
+      "id": "espera",
+      "voz": "Y la hora que se libera se le ofrece a quien estaba esperando un lugar.",
+      "titulo": "La hora, para quien espera"
+    },
+    {
+      "id": "politica",
+      "voz": "La política de cancelación la decides tú, y tu paciente la ve desde que agenda.",
+      "titulo": "Tus reglas, claras"
+    },
+    {
+      "id": "cierre",
+      "voz": "Si te pasa, te cuento cómo lo haría. Entra a bodgar punto dev.",
+      "titulo": "¿Se te van horas así?"
+    }
+  ],
+  "origen": "fisio-cancelaciones"
+}

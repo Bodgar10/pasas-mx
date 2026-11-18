@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Psicología · pérdida: sesiones a las que el paciente no llega (reciclado de fisio-cancelaciones).
+   Reglas de psicología: nunca notas, diagnósticos ni datos de un paciente en pantalla (solo "Paciente de las 6:00" o iniciales);
+   no se culpa al paciente; la política y la decisión clínica son de la psicóloga. Cifras de ejemplo. */
+/* Teléfonos */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 34px 24px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.chatcab{height:150px;background:var(--papel);border-bottom:1px solid var(--linea);display:flex;align-items:flex-end;gap:20px;padding:0 34px 22px}
+.chatcab b{display:block;font-size:32px}.chatcab span{font-size:23px;color:var(--gris)}
+.chatfondo{position:absolute;left:0;right:0;top:150px;bottom:0;background:#ECE7DD}
+.bub{position:absolute;left:30px;top:210px;max-width:450px;background:#fff;border-radius:30px 30px 30px 8px;padding:24px 28px 16px;font-size:34px;line-height:1.3;box-shadow:0 4px 0 rgba(0,0,0,.06);opacity:0}
+.bub small{display:block;text-align:right;font-size:22px;color:var(--gris);margin-top:8px}
+.typing{position:absolute;left:30px;top:210px;background:#fff;border-radius:30px;padding:26px 30px;display:flex;gap:12px;opacity:0}
+.typing i{width:16px;height:16px;border-radius:50%;background:#b5b0a6}
+.not{margin:30px 24px 0;padding:28px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);opacity:0}
+.not .q{font-family:M;font-weight:600;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.not h3{margin:12px 0 6px;font-family:B;font-weight:800;font-size:48px;line-height:1.05}
+.not p{margin:0 0 24px;font-size:27px;font-weight:600;color:var(--gris)}
+.bt{display:block;text-align:center;padding:22px;border-radius:18px;font-size:30px;font-weight:700}
+.bt.si{background:var(--verde);color:#fff}
+.bt.cam{margin-top:12px;background:var(--suave);color:var(--tinta);border:2px solid #cfdad6}
+.hz{margin:24px 24px 0}
+.hz .k{font-family:M;font-weight:600;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin:0 4px 14px}
+.op{display:flex;justify-content:space-between;align-items:center;padding:24px 26px;margin-bottom:12px;border-radius:18px;background:#fff;border:2px solid var(--linea);font-size:31px;font-weight:700;opacity:0}
+.op span{font-family:M;font-size:22px;font-weight:600;color:var(--verde)}
+.op.sel{border-color:var(--verde);background:var(--verde2)}
+.conf{margin:18px 24px 0;padding:24px;border-radius:20px;background:var(--verde);color:#fff;opacity:0}
+.conf b{display:block;font-size:31px}.conf span{display:block;margin-top:6px;font-size:24px;font-weight:600;opacity:.9}
+/* Consultorio */
+.cuarto{position:relative;height:500px;background:linear-gradient(#EFE9DF 0 66%,#E2D7C7 66%);overflow:hidden}
+.reloj{position:absolute;left:50%;top:44px;width:112px;height:112px;margin-left:-56px;border-radius:50%;background:#fff;border:8px solid var(--tinta)}
+.reloj i{position:absolute;left:50%;bottom:50%;width:8px;margin-left:-4px;border-radius:4px;background:var(--tinta);transform-origin:50% 100%}
+.reloj .hh{height:30px;transform:rotate(180deg)}.reloj .mm{height:40px;transform:rotate(0deg)}
+.cuadro{position:absolute;left:96px;top:70px;width:150px;height:110px;border-radius:10px;background:#A9C4B8;border:8px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.cuadro::after{content:"";position:absolute;left:18px;right:18px;bottom:18px;height:34px;border-radius:30px 30px 4px 4px;background:#7FA897}
+.sillon{position:absolute;bottom:92px;width:250px;height:230px}
+.sillon .resp{position:absolute;left:30px;right:30px;top:0;height:150px;border-radius:40px 40px 14px 14px}
+.sillon .asi{position:absolute;left:14px;right:14px;top:118px;height:72px;border-radius:22px}
+.sillon .br{position:absolute;top:84px;width:44px;height:110px;border-radius:22px}
+.sillon .br.l{left:0}.sillon .br.r{right:0}
+.sillon .pata{position:absolute;bottom:0;width:14px;height:34px;border-radius:4px;background:#6b5a48}
+.sillon .pata.l{left:40px}.sillon .pata.r{right:40px}
+#s1{left:70px}#s2{right:70px}
+#s1 .resp,#s1 .br{background:#B9785A}#s1 .asi{background:#C98A6B}
+#s2 .resp,#s2 .br{background:#5F8F7B}#s2 .asi{background:#73A28D}
+.mesita{position:absolute;left:50%;bottom:92px;width:110px;height:120px;margin-left:-55px}
+.mesita .tab{position:absolute;left:0;right:0;top:40px;height:18px;border-radius:9px;background:#8a735c}
+.mesita .pie{position:absolute;left:50%;top:56px;bottom:0;width:14px;margin-left:-7px;background:#8a735c}
+.mesita .pan{position:absolute;left:24px;top:6px;width:62px;height:36px;border-radius:8px;background:#fff;border:3px solid #d9d2c6}
+.mesita .pan::after{content:"";position:absolute;left:18px;top:-14px;width:22px;height:18px;border-radius:6px 6px 0 0;background:#fff}
+.planta{position:absolute;right:40px;top:150px;width:60px;height:120px}
+.planta i{position:absolute;left:12px;bottom:0;width:36px;height:40px;border-radius:6px 6px 14px 14px;background:#C96F4A}
+.planta b{position:absolute;left:4px;bottom:34px;width:52px;height:80px;border-radius:50% 50% 40% 40%;background:#6E9E86}
+.sello{position:absolute;left:50%;top:230px;margin-left:-220px;width:440px;padding:18px 0;text-align:center;border-radius:20px;border:5px dashed var(--terra);background:rgba(251,234,223,.95);font-family:M;font-weight:600;font-size:36px;color:var(--terra2);opacity:0;transform:rotate(-6deg)}
+.fsesion{display:flex;justify-content:space-between;align-items:center;padding:28px 36px;font-size:32px;font-weight:700}
+.fsesion span{font-family:M;font-weight:600;font-size:24px;color:var(--gris)}
+.res-chip{background:var(--tinta);color:var(--crema);border-radius:16px;padding:12px 20px;font-family:I;font-size:27px;font-weight:700}
+/* Semana */
+.sem{display:grid;grid-template-columns:104px repeat(5,1fr);gap:12px;padding:26px 30px 10px}
+.sem .h{font-family:M;font-weight:600;font-size:24px;color:var(--gris);text-align:center}
+.sem .hr{font-family:M;font-weight:600;font-size:23px;color:var(--gris);display:flex;align-items:center}
+.sem .c{height:100px;border-radius:14px;background:var(--suave);position:relative;overflow:hidden}
+.sem .c::before{content:"";position:absolute;left:12px;right:12px;top:22px;height:10px;border-radius:5px;background:#c9d6d1}
+.sem .c::after{content:"";position:absolute;left:12px;right:30px;top:42px;height:10px;border-radius:5px;background:#dbe4e0}
+.sem .c b{position:absolute;inset:0;border-radius:14px;border:3px dashed var(--terra);background:#FBEADF;display:grid;place-items:center;text-align:center;font-family:M;font-weight:600;font-size:20px;line-height:1.15;color:var(--terra2);opacity:0;z-index:1}
+.cont{display:flex;justify-content:space-between;align-items:baseline;padding:20px 36px 30px;border-top:1px solid var(--linea);margin-top:16px}
+.cont span{font-size:31px;font-weight:600;color:var(--gris)}
+.cont b{font-family:B;font-weight:800;font-size:84px;color:var(--terra2)}
+/* Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:20px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .o{width:56px;font-family:B;font-weight:800;font-size:54px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:60px;min-width:200px}
+.term span{font-size:29px;font-weight:600;color:var(--gris);line-height:1.25}
+.term.sub b{color:var(--terra2)}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:26px 36px 32px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* Día: la hora se ofrece */
+.dia .hora{display:flex;align-items:center;gap:22px;padding:20px 36px;border-bottom:1px solid var(--linea)}
+.dia .hora span{width:120px;font-family:M;font-weight:600;font-size:26px;color:var(--gris)}
+.dia .slot{flex:1;position:relative;height:78px}
+.dia .slot div{position:absolute;inset:0;border-radius:16px;display:flex;align-items:center;padding:0 22px;font-size:29px;font-weight:700}
+.dia .lleno{background:var(--suave)}
+.dia .lleno::before{content:"";width:170px;height:12px;border-radius:6px;background:#c9d6d1}
+.dia #libre{border:3px dashed var(--terra);background:#FBEADF;color:var(--terra2);font-family:M;font-weight:600;font-size:24px}
+.dia #avis{background:var(--tinta);color:var(--crema);font-size:26px;opacity:0}
+.dia #tom{background:var(--verde2);color:var(--verde);opacity:0}
+.mas{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px 28px}
+.mas span{font-size:30px;font-weight:600;color:var(--gris)}
+.mas b{font-family:B;font-weight:800;font-size:72px;color:var(--verde);opacity:0}
+/* Política */
+.pol .fila{opacity:0}
+.pol .fila small{display:block;margin-top:4px;font-family:M;font-size:21px;font-weight:600;color:var(--gris)}
+.pol .tuya{margin:6px 36px 30px;padding:22px 26px;border-radius:20px;background:var(--verde2);color:var(--verde);font-size:29px;font-weight:700;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · psicología</div>
+
+  <div class="tit" id="t-mensaje"><h1>5:00 <em>PM</em></h1></div>
+  <div class="tit" id="t-sillones"><h1>La hora era <em>suya</em></h1></div>
+  <div class="tit" id="t-semana"><h1>4 a la <em>semana</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $12,800 <em>al mes</em></h1><p>Ejemplo: 4 × $800 × 4 semanas</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si avisara <em>a tiempo?</em></h1></div>
+  <div class="tit" id="t-recordatorio"><h1>Un día antes, <em>un aviso</em></h1></div>
+  <div class="tit" id="t-cambio"><h1>Él elige <em>otro horario</em></h1></div>
+  <div class="tit" id="t-espera"><h1>La hora, para <em>quien espera</em></h1></div>
+  <div class="tit" id="t-politica"><h1>Tus reglas, <em>claras</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Se te van <em>horas así?</em></h1></div>
+
+  <!-- 1 · El mensaje -->
+  <div class="phone" id="ph1"><div class="scr">
+    <div class="chatcab"><div class="av" style="background:#5B8DB8">J</div><div><b>Paciente de las 6:00</b><span>Mensajes</span></div></div>
+    <div class="chatfondo"></div>
+    <div class="typing" id="typing"><i></i><i></i><i></i></div>
+    <div class="bub" id="bub">Hola, perdón. Hoy no voy a poder llegar a la sesión.<small>5:00 PM</small></div>
+  </div></div>
+
+  <!-- 2 · El consultorio: la hora reservada -->
+  <div class="card" id="consul">
+    <div class="cuarto">
+      <div class="cuadro"></div>
+      <div class="reloj"><i class="hh"></i><i class="mm"></i></div>
+      <div class="planta"><b></b><i></i></div>
+      <div class="sillon" id="s1"><div class="resp"></div><div class="br l"></div><div class="br r"></div><div class="asi"></div><div class="pata l"></div><div class="pata r"></div></div>
+      <div class="mesita"><div class="tab"></div><div class="pie"></div><div class="pan"></div></div>
+      <div class="sillon" id="s2"><div class="resp"></div><div class="br l"></div><div class="br r"></div><div class="asi"></div><div class="pata l"></div><div class="pata r"></div></div>
+      <div class="sello" id="sello">Sin sesión</div>
+    </div>
+    <div class="fsesion"><div>6:00 PM <span>· 50 min</span></div><div class="res-chip">Reservada para él</div></div>
+  </div>
+
+  <!-- 3 · La semana -->
+  <div class="card" id="semana">
+    <div class="ccab"><span>Tu agenda · esta semana</span><span class="ej">Ejemplo</span></div>
+    <div class="sem" id="sem"></div>
+    <div class="cont"><span>Sesiones que no se dieron</span><b id="ncan">0</b></div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Un mes</span></div>
+    <div class="term" id="e1"><span class="o"></span><b>4</b><span>sesiones<br>a la semana</span></div>
+    <div class="term" id="e2"><span class="o">×</span><b>$800</b><span>por sesión</span></div>
+    <div class="term sub" id="e3"><span class="o">=</span><b>$3,200</b><span>a la semana</span></div>
+    <div class="term" id="e4"><span class="o">×</span><b>4</b><span>semanas</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 y 7 · El celular del paciente: aviso y cambio de horario -->
+  <div class="phone" id="ph2"><div class="scr">
+    <div class="otop"><b>Consultorio · aviso</b><span>Mañana</span></div>
+    <div class="pant" id="pa">
+      <div style="height:150px"></div>
+      <div class="not" id="not">
+        <div class="q">Recordatorio</div>
+        <h3>Mañana 6:00 PM</h3>
+        <p>Tu sesión con Mariana · 50 min</p>
+        <div class="bt si">Confirmo</div>
+        <div class="bt cam" id="cam">Necesito cambiar</div>
+      </div>
+    </div>
+    <div class="pant" id="pb">
+      <div style="height:150px"></div>
+      <div class="hz">
+        <div class="k">Elige otro horario</div>
+        <div class="op" id="o1">Jueves 5:00 PM<span>Libre</span></div>
+        <div class="op" id="o2">Viernes 4:00 PM<span>Libre</span></div>
+        <div class="op" id="o3">Viernes 7:00 PM<span>Libre</span></div>
+      </div>
+      <div class="conf" id="conf"><b>✓ Sesión cambiada</b><span>Jueves 5:00 PM · con Mariana</span></div>
+    </div>
+  </div></div>
+
+  <!-- 8 · La hora liberada se ofrece -->
+  <div class="card dia" id="dia">
+    <div class="ccab"><span>Mañana · Mariana</span><span class="ej">Ejemplo</span></div>
+    <div class="hora"><span>4:00 PM</span><div class="slot"><div class="lleno"></div></div></div>
+    <div class="hora"><span>5:00 PM</span><div class="slot"><div class="lleno"></div></div></div>
+    <div class="hora"><span>6:00 PM</span><div class="slot"><div id="libre">Se liberó · hora libre</div><div id="avis">Aviso a la lista de espera</div><div id="tom">✓ La tomó quien esperaba</div></div></div>
+    <div class="hora"><span>7:00 PM</span><div class="slot"><div class="lleno"></div></div></div>
+    <div class="mas"><span>Esa hora sí se da</span><b id="mas">+$800</b></div>
+  </div>
+
+  <!-- 9 · La política -->
+  <div class="card pol" id="pol">
+    <div class="ccab"><span>Tu política de cancelación</span><span>La escribes tú</span></div>
+    <div class="fila" id="p1"><div class="ok">✓</div><div>Avisar con 24 horas<small>Ejemplo: tú pones el tiempo</small></div></div>
+    <div class="fila" id="p2"><div class="ok">✓</div><div>Cambios desde su celular<small>Solo a horarios que tú abres</small></div></div>
+    <div class="fila" id="p3"><div class="ok">✓</div><div>La ve al agendar<small>Antes de su primera sesión</small></div></div>
+    <div class="tuya" id="tuya">Tú decides las reglas. El sistema solo las recuerda.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Aviso</span><i>→</i><span>Otro horario</span><i>→</i><span class="v">Hora ocupada</span></div>
+    <p>Te cuento cómo lo haría en tu consultorio.</p>
+    <div class="url" id="url">bodgar.dev/plataformas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+// 4 sesiones que no se dieron en la semana (fila, columna), en el orden en que aparecen
+var CAN = [[2,0],[1,2],[3,3],[0,4]];
+window.prepara = function () {
+  var D = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'], H = ['4:00', '5:00', '6:00', '7:00'];
+  var h = '<span></span>' + D.map(function (d) { return '<span class="h">' + d + '</span>'; }).join('');
+  H.forEach(function (hr, r) {
+    h += '<span class="hr">' + hr + '</span>';
+    D.forEach(function (d, c) { h += '<div class="c" id="c' + r + c + '"><b>Sin<br>sesión</b></div>'; });
+  });
+  $('sem').innerHTML = h;
+};
+function telefono(el, t, a, b) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tapOn = false;
+
+  // 1 · Mensaje
+  telefono($('ph1'), t, 'mensaje', 'mensaje');
+  var ty = $('typing'), tyq = t >= S.mensaje + 0.6 && t < S.mensaje + 1.9 ? 1 : 0;
+  ty.style.opacity = tyq;
+  ty.querySelectorAll('i').forEach(function (d, i) { d.style.transform = 'translateY(' + (Math.sin(t * 10 - i) * 5) + 'px)'; });
+  pop($('bub'), t, S.mensaje + 1.9);
+
+  // 2 · Consultorio: la hora reservada se queda sin sesión
+  bloque($('consul'), 'sillones', 'sillones', t);
+  var sq = clamp((t - (S.sillones + 2.2)) / 0.3);
+  $('sello').style.opacity = sq; $('sello').style.transform = 'rotate(-6deg) scale(' + (1.25 - 0.25 * back(sq)) + ')';
+
+  // 3 · Semana: 4 sesiones que no se dieron
+  bloque($('semana'), 'semana', 'semana', t);
+  var n = 0;
+  CAN.forEach(function (rc, i) {
+    var at = S.semana + 0.7 + i * 0.55, q = clamp((t - at) / 0.25), b = $('c' + rc[0] + rc[1]).querySelector('b');
+    b.style.opacity = q; b.style.transform = 'scale(' + (0.8 + 0.2 * back(q)) + ')';
+    if (t >= at) n++;
+  });
+  $('ncan').textContent = n;
+
+  // 4 · Cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  aparece('e1', t, S.cuenta + 0.4, 50); aparece('e2', t, S.cuenta + 1.1, 50);
+  aparece('e3', t, S.cuenta + 2.1, 50); aparece('e4', t, S.cuenta + 3.2, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuenta + 3.7, 1.0, 12800) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6 y 7 · Celular del paciente
+  telefono($('ph2'), t, 'recordatorio', 'cambio');
+  var ab = clamp((t - S.cambio) / 0.35);
+  $('pa').style.opacity = 1 - ab; $('pb').style.opacity = ab;
+  pop($('not'), t, S.recordatorio + 0.7);
+  var t1 = S.recordatorio + 3.0;
+  if (t >= S.recordatorio && t < S.cambio) tapOn = toque(t, t1, $('cam')) || tapOn;
+  $('cam').style.background = t >= t1 ? '#cfdad6' : '';
+  ['o1', 'o2', 'o3'].forEach(function (id, i) { aparece(id, t, S.cambio + 0.4 + i * 0.25, 40); });
+  var t2 = S.cambio + 1.8;
+  if (t >= S.cambio && t < E.cambio) tapOn = toque(t, t2, $('o1')) || tapOn;
+  $('o1').classList.toggle('sel', t >= t2);
+  pop($('conf'), t, t2 + 0.4);
+
+  // 8 · La hora liberada se ofrece a la lista de espera
+  bloque($('dia'), 'espera', 'espera', t);
+  var a1 = clamp((t - S.espera - 0.9) / 0.35), a2 = clamp((t - S.espera - 2.3) / 0.35);
+  $('libre').style.opacity = 1 - a1;
+  $('avis').style.opacity = a1 * (1 - a2);
+  $('tom').style.opacity = a2; $('tom').style.transform = 'scale(' + (0.9 + 0.1 * back(a2)) + ')';
+  pop($('mas'), t, S.espera + 2.9);
+
+  // 9 · Política
+  bloque($('pol'), 'politica', 'politica', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.politica + 0.5 + i * 0.5, 40); });
+  aparece('tuya', t, S.politica + 2.4);
+
+  return tapOn;
+};
+</script>
+</body></html>
