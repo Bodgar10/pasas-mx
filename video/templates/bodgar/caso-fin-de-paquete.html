@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Viernes · caso práctico: paquetes de sesiones que terminan sin que nadie revise la continuidad (clínica de fisioterapia).
+   Cuenta → primer flujo → qué mediría. Si continúa o se da de alta lo decide el terapeuta; el sistema solo avisa.
+   Cifras de ejemplo de la landing: 12 paquetes, 3 que debían continuar × $5,000 = $15,000. */
+.caso{padding:40px 36px 36px}
+.caso .k{font-family:M;font-weight:600;font-size:28px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra2)}
+.caso h2{margin:16px 0 26px;font-family:B;font-weight:800;font-size:58px;line-height:1.05}
+.dato{display:flex;align-items:center;gap:16px;font-size:32px;font-weight:600;padding:12px 0;opacity:0}
+.dato i{width:18px;height:18px;border-radius:5px;background:var(--terra);flex:none}
+/* 2 · Paquetes que terminan */
+.pq{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.pq .nm{width:160px;font-size:29px;font-weight:700}
+.pq .ss{flex:1;display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.pq .ss i{height:30px;border-radius:7px;background:var(--verde)}
+.pq .st{font-family:M;font-weight:600;font-size:21px;background:#FBEADF;color:var(--terra2);border-radius:10px;padding:8px 10px;white-space:nowrap;opacity:0}
+.mas{padding:22px 36px 30px;font-size:28px;font-weight:600;color:var(--gris);opacity:0}
+/* 3 · 12 paquetes, 3 debían continuar */
+.doce{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 46px 24px;justify-items:center}
+.doce div{width:150px;height:110px;border-radius:20px;background:var(--suave);border:3px solid #cfdad6;display:grid;place-items:center;font-family:M;font-weight:600;font-size:26px;color:var(--gris);opacity:0}
+.doce div.c{background:#FBEADF;border:4px dashed var(--terra);color:var(--terra2)}
+.leyenda{display:flex;justify-content:space-between;padding:20px 36px 30px;border-top:1px solid var(--linea);font-size:28px;font-weight:600;color:var(--gris);opacity:0}
+.leyenda b{color:var(--terra2);font-family:B;font-weight:800;font-size:44px}
+/* 4 · Ecuación */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:220px}
+.term span{font-size:29px;font-weight:600;color:var(--gris);line-height:1.25}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* 6 · Plan del paciente */
+.pac{display:flex;align-items:center;gap:20px;padding:24px 36px;border-bottom:1px solid var(--linea)}
+.pac b{display:block;font-size:32px}.pac span{display:block;font-size:24px;font-weight:600;color:var(--gris)}
+.ses10{display:grid;grid-template-columns:repeat(10,1fr);gap:10px;padding:30px 36px 12px}
+.ses10 i{height:76px;border-radius:14px;background:var(--arena);display:grid;place-items:center;font-style:normal;font-family:M;font-weight:600;font-size:22px;color:var(--gris)}
+.ses10 i.v{background:var(--verde);color:#fff}
+.nums{display:flex;justify-content:space-between;padding:12px 36px 22px;font-size:28px;font-weight:600;color:var(--gris)}
+.nums b{font-family:M;color:var(--tinta)}
+.alerta{margin:4px 36px 32px;padding:24px 26px;border-radius:20px;background:var(--tinta);color:var(--crema);display:flex;align-items:center;gap:18px;font-size:29px;font-weight:700;opacity:0}
+.alerta svg{width:40px;height:40px;flex:none}
+.alerta small{display:block;font-size:23px;font-weight:600;color:rgba(244,241,234,.7);margin-top:4px}
+/* 7 · Decide el terapeuta */
+.opc{display:flex;align-items:center;gap:22px;padding:26px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.opc .pt{width:58px;height:58px;border-radius:50%;border:4px solid #cfdad6;flex:none}
+.opc b{display:block;font-size:34px}.opc span{display:block;font-size:25px;font-weight:600;color:var(--gris);margin-top:2px}
+.decide{margin:22px 36px 32px;padding:22px 24px;border-radius:18px;background:var(--suave);font-size:28px;font-weight:700;opacity:0}
+.decide small{display:block;margin-top:6px;font-size:23px;font-weight:600;color:var(--gris)}
+/* 8 · Medir */
+.mt{display:flex;align-items:center;gap:28px;padding:34px 36px 26px;opacity:0}
+.mt b{font-family:B;font-weight:800;font-size:92px;line-height:1;color:var(--verde);white-space:nowrap;text-align:center}
+.mt span{font-size:32px;font-weight:700;line-height:1.25}
+.diez{display:grid;grid-template-columns:repeat(10,1fr);gap:10px;padding:6px 36px 24px}
+.diez i{height:64px;border-radius:14px;background:var(--arena);opacity:0}
+.mn{padding:0 36px 32px;font-size:27px;font-weight:600;color:var(--gris);opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · caso práctico</div>
+
+  <div class="tit" id="t-caso"><h1>Caso <em>práctico</em></h1></div>
+  <div class="tit" id="t-ultima"><h1>Última sesión, <em>y ya</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>Hagamos la <em>cuenta</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-total"><h1>$15,000 <em>al mes</em></h1><p>Ejemplo: 3 × $5,000</p></div>
+  <div class="tit" id="t-primero"><h1>Lo primero que <em>construiría</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>Quedan 2: <em>aviso</em></h1></div>
+  <div class="tit" id="t-decide"><h1>El terapeuta <em>decide</em></h1></div>
+  <div class="tit" id="t-medir"><h1>Lo que <em>mediría</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Revisamos tu <em>clínica?</em></h1></div>
+
+  <!-- 1 · El caso -->
+  <div class="card" id="caso">
+    <div class="caso">
+      <div class="k">Caso práctico · ejemplo</div>
+      <h2>Clínica de fisioterapia</h2>
+      <div class="dato" id="d1"><i></i>Paquetes de 10 sesiones</div>
+      <div class="dato" id="d2"><i></i>Cada paquete, $5,000</div>
+      <div class="dato" id="d3"><i></i>12 paquetes terminan al mes</div>
+    </div>
+  </div>
+
+  <!-- 2 · Paquetes que terminan -->
+  <div class="card" id="ultima">
+    <div class="ccab"><span>Paquetes terminados</span><span class="ej">Ejemplo</span></div>
+    <div class="pq" id="q1"><span class="nm">Mariana L.</span><div class="ss"></div><span class="st" id="s1">Sin revisar</span></div>
+    <div class="pq" id="q2"><span class="nm">Jorge P.</span><div class="ss"></div><span class="st" id="s2">Sin revisar</span></div>
+    <div class="pq" id="q3"><span class="nm">Sofía R.</span><div class="ss"></div><span class="st" id="s3">Sin revisar</span></div>
+    <div class="mas" id="qmas">y 9 más este mes · 10 de 10 sesiones</div>
+  </div>
+
+  <!-- 3 · 12 paquetes, 3 que debían continuar -->
+  <div class="card" id="cuenta">
+    <div class="ccab"><span>Paquetes del mes</span><span class="ej">Ejemplo</span></div>
+    <div class="doce" id="doce"></div>
+    <div class="leyenda" id="ley"><span>Necesitaban continuar</span><b>3 de 12</b></div>
+  </div>
+
+  <!-- 4 · El total -->
+  <div class="card" id="total">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Al mes</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>3</b><span>paquetes que<br>debían continuar</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$5,000</b><span>por paquete</span></div>
+    <div class="res"><span>= al mes</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6 · El plan del paciente y el aviso -->
+  <div class="card" id="aviso">
+    <div class="ccab"><span>Plan del paciente</span><span class="ej">Ejemplo</span></div>
+    <div class="pac"><div class="av" style="background:#9C7BB5">M</div><div><b>Mariana L.</b><span>Plan de 10 sesiones</span></div></div>
+    <div class="ses10" id="ses10"></div>
+    <div class="nums"><span>Utilizadas <b id="usa">0</b></span><span>Quedan <b id="qda">10</b></span></div>
+    <div class="alerta" id="alerta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><div>Quedan 2 sesiones<small>Aviso al terapeuta · revisar continuidad</small></div></div>
+  </div>
+
+  <!-- 7 · Decide el terapeuta -->
+  <div class="card" id="decide">
+    <div class="ccab"><span>Sesión 9 · Mariana L.</span><span>Lo decide el terapeuta</span></div>
+    <div class="opc" id="o1"><span class="pt"></span><div><b>Alta</b><span>Termina su tratamiento</span></div></div>
+    <div class="opc" id="o2"><span class="pt"></span><div><b>Seguimiento</b><span>Una revisión más adelante</span></div></div>
+    <div class="opc" id="o3"><span class="pt"></span><div><b>Nuevo plan</b><span>Si hace falta continuar</span></div></div>
+    <div class="decide" id="dec">La decisión clínica es del terapeuta<small>El sistema solo avisa a tiempo.</small></div>
+  </div>
+
+  <!-- 8 · Qué mediría -->
+  <div class="card" id="medir">
+    <div class="ccab"><span>Una métrica</span><span>Cada mes</span></div>
+    <div class="mt" id="m1"><b>?/10</b><span>Paquetes con la continuidad revisada antes de la última sesión</span></div>
+    <div class="diez" id="diez"></div>
+    <div class="mn" id="mn">Si no sube, se ajusta el aviso antes de construir lo siguiente.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>La cuenta</span><i>→</i><span>Un flujo</span><i>→</i><span class="v">Se mide</span></div>
+    <p>Así pienso cada proceso de una clínica.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/fisioterapia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var CONT = [2, 6, 9]; // los 3 de 12 que debían continuar
+window.prepara = function () {
+  document.querySelectorAll('.pq .ss').forEach(function (s) { var h = ''; for (var i = 0; i < 10; i++) h += '<i></i>'; s.innerHTML = h; });
+  var d = ''; for (var k = 0; k < 12; k++) d += '<div id="p' + k + '" class="' + (CONT.indexOf(k) >= 0 ? 'c' : '') + '">' + (CONT.indexOf(k) >= 0 ? '¿y?' : '10/10') + '</div>';
+  $('doce').innerHTML = d;
+  var s = ''; for (var j = 0; j < 10; j++) s += '<i id="x' + j + '">' + (j + 1) + '</i>'; $('ses10').innerHTML = s;
+  var z = ''; for (var m = 0; m < 10; m++) z += '<i id="z' + m + '"></i>'; $('diez').innerHTML = z;
+};
+window.escena = function (t) {
+  var tap = false;
+  // 1 · El caso
+  bloque($('caso'), 'caso', 'caso', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { aparece(id, t, S.caso + 0.6 + i * 0.6, 40); });
+
+  // 2 · Paquetes terminados, sin revisar
+  bloque($('ultima'), 'ultima', 'ultima', t);
+  ['q1', 'q2', 'q3'].forEach(function (id, i) { aparece(id, t, S.ultima + 0.5 + i * 0.4, 50); });
+  aparece('qmas', t, S.ultima + 1.9);
+  ['s1', 's2', 's3'].forEach(function (id, i) { pop($(id), t, S.ultima + 3.2 + i * 0.3); });
+
+  // 3 · 12 paquetes, 3 que debían continuar
+  bloque($('cuenta'), 'cuenta', 'cuenta', t);
+  for (var k = 0; k < 12; k++) {
+    var c = CONT.indexOf(k) >= 0;
+    pop($('p' + k), t, S.cuenta + 0.3 + (c ? 1.6 + CONT.indexOf(k) * 0.3 : k * 0.08), 0.25);
+  }
+  aparece('ley', t, S.cuenta + 2.6);
+
+  // 4 · Total
+  bloque($('total'), 'total', 'total', t);
+  aparece('e1', t, S.total + 0.3, 50); aparece('e2', t, S.total + 0.9, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.total + 1.5, 1.0, 15000) / 100) * 100);
+
+  // 5 · Giro
+  giro($('giro'), t, 'primero');
+
+  // 6 · Cada sesión se registra; con 2 por delante, aviso
+  bloque($('aviso'), 'aviso', 'aviso', t);
+  var u = 0;
+  for (var j = 0; j < 8; j++) { var at = S.aviso + 0.6 + j * 0.22; if (t >= at) u++; $('x' + j).classList.toggle('v', t >= at); }
+  $('usa').textContent = u; $('qda').textContent = 10 - u;
+  pop($('alerta'), t, S.aviso + 2.6);
+
+  // 7 · El terapeuta decide
+  bloque($('decide'), 'decide', 'decide', t);
+  ['o1', 'o2', 'o3'].forEach(function (id, i) { aparece(id, t, S.decide + 0.5 + i * 0.5, 40); });
+  aparece('dec', t, S.decide + 2.3);
+
+  // 8 · Medir
+  bloque($('medir'), 'medir', 'medir', t);
+  aparece('m1', t, S.medir + 0.8, 50);
+  for (var m = 0; m < 10; m++) aparece('z' + m, t, S.medir + 1.6 + m * 0.12);
+  aparece('mn', t, S.medir + 3.4);
+  return tap;
+};
+</script>
+</body></html>

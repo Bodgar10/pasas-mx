@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-11-27",
+  "dia": "viernes",
+  "linea": "Caso práctico · paquetes que terminan sin revisión",
+  "plantilla": "caso-fin-de-paquete.html",
+  "nombre": "caso-fin-de-paquete",
+  "url": "bodgar.dev/plataformas/fisioterapia",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Caso práctico",
+    "titulo": "Caso práctico: *el paquete que se acaba*",
+    "dato": { "num": "$15,000", "texto": "al mes en paquetes que se quedaron en el aire", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Caso práctico",
+    "titulo": "Terminó su paquete. *¿Alguien revisó cómo sigue?*",
+    "texto": "La cuenta, lo primero que construiría y lo que mediría."
+  },
+  "post": "Caso práctico. Una clínica de fisioterapia que vende paquetes de 10 sesiones de $5,000. Este mes terminaron 12 paquetes, y en la última sesión nadie revisó cómo sigue el paciente.\n\nLa cuenta, con cifras de ejemplo: si 3 de esos 12 necesitaban continuar, son 3 × $5,000 = $15,000 al mes que se quedaron en el aire.\n\nLo primero que construiría: cada sesión se registra contra el plan del paciente y, cuando quedan 2, el terapeuta recibe un aviso para revisar la continuidad a tiempo. Si es alta, seguimiento o un nuevo plan, lo decide el terapeuta; el sistema solo avisa.\n\nY mediría una sola cosa: de cada 10 paquetes que terminan, en cuántos se revisó la continuidad antes de la última sesión.\n\nLas cifras del video son un ejemplo, no un resultado. Si quieres que revise tu clínica, entra a bodgar.dev/plataformas/fisioterapia (link en la bio). Diagnóstico sin costo.\n\n#fisioterapia #clinica #rehabilitacion #fisioterapeutas #pymesmexico",
+  "escenas": [
+    { "id": "caso", "titulo": "Caso práctico", "voz": "Caso práctico. Una clínica de fisioterapia que vende paquetes de diez sesiones, de cinco mil pesos." },
+    { "id": "ultima", "titulo": "Última sesión, y ya", "voz": "Este mes terminaron doce paquetes. Y en la última sesión, nadie revisó cómo sigue el paciente." },
+    { "id": "cuenta", "titulo": "Hagamos la cuenta", "voz": "Supongamos que tres de esos doce necesitaban continuar." },
+    { "id": "total", "titulo": "$15,000 al mes", "voz": "Tres paquetes de cinco mil: quince mil pesos al mes que se quedaron en el aire." },
+    { "id": "primero", "titulo": "Lo primero que construiría", "voz": "Esto es lo primero que construiría." },
+    { "id": "aviso", "titulo": "Quedan 2: aviso", "voz": "Cada sesión se registra contra el plan. Cuando quedan dos, el terapeuta recibe un aviso." },
+    { "id": "decide", "titulo": "El terapeuta decide", "voz": "Y revisa a tiempo cómo sigue: alta, seguimiento o un nuevo plan. Eso lo decide él." },
+    { "id": "medir", "titulo": "Lo que mediría", "voz": "Y mediría una sola cosa: de cada diez paquetes que terminan, en cuántos se revisó cómo sigue el paciente." },
+    { "id": "cierre", "titulo": "¿Revisamos tu clínica?", "voz": "Así pienso cada proceso de una clínica. Si quieres que revise el tuyo, entra a bodgar punto dev." }
+  ]
+}

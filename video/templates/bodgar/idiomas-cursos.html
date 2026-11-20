@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Idiomas · Cursos: se llena «inglés para viajes» y se pierden los contactos de los que no entraron.
+   Cifras de ejemplo de la landing (15 preguntaron, 10 lugares, 5 × $1,800 = $9,000). Escenas ilustradas. */
+/* 1 y 2 · El curso */
+.ses{padding:28px 36px 4px}
+.ses .n{font-family:B;font-weight:800;font-size:62px;line-height:1.05}
+.ses .d{margin-top:10px;font-size:30px;font-weight:600;color:var(--gris)}
+#curso{top:560px}
+.lug{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding:22px 36px 18px;justify-items:center}
+.lug div{width:104px;height:104px;border-radius:50%;border:4px dashed #cfdad6;position:relative}
+.lug div b{position:absolute;inset:-4px;border-radius:50%;display:grid;place-items:center;font-family:B;font-weight:700;font-size:42px;color:#fff;opacity:0}
+.cupo{display:flex;justify-content:space-between;align-items:baseline;padding:16px 36px 22px;border-top:1px solid var(--linea)}
+.cupo span{font-size:30px;font-weight:600;color:var(--gris)}
+.cupo b{font-family:B;font-weight:800;font-size:64px;color:var(--verde)}
+.tag{display:inline-block;margin-left:14px;font-family:M;font-weight:600;font-size:22px;vertical-align:middle;background:var(--terra);color:#fff;border-radius:10px;padding:6px 12px;opacity:0}
+/* 2 · Siguen escribiendo */
+#chats{top:1190px}
+.cm{display:flex;align-items:center;gap:18px;padding:15px 32px;border-bottom:1px solid var(--linea);opacity:0}
+.cm:last-child{border-bottom:0}
+.cm .av{width:58px;height:58px;font-size:26px}
+.cm b{display:block;font-size:28px}.cm span{display:block;font-size:25px;font-weight:600;color:var(--gris)}
+.cm em{margin-left:auto;font-style:normal;font-family:M;font-size:21px;color:var(--gris)}
+/* 3 · 15 preguntaron */
+.gente{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;padding:34px 46px 26px;justify-items:center}
+.gente i{width:110px;height:110px;border-radius:50%;background:var(--verde);display:grid;place-items:center;font-style:normal;font-family:B;font-weight:700;font-size:40px;color:#fff;opacity:0}
+.gente i.x{background:#FBEADF;color:var(--terra2);border:4px dashed var(--terra)}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--linea)}
+.tres div{padding:22px 10px 28px;text-align:center;opacity:0}
+.tres div + div{border-left:1px solid var(--linea)}
+.tres span{display:block;font-family:M;font-weight:600;font-size:21px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.tres b{display:block;margin-top:6px;font-family:B;font-weight:800;font-size:72px;line-height:1}
+.tres .v b{color:var(--verde)}.tres .t b{color:var(--terra2)}
+/* 4 · Ficha de diccionario */
+.dic{padding:44px 44px 40px}
+.dic .k{font-family:M;font-weight:600;font-size:24px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.dic .w{margin:18px 0 6px;font-family:B;font-weight:800;font-size:116px;line-height:1;letter-spacing:-.02em}
+.dic .f{font-family:M;font-size:34px;color:var(--gris)}
+.dic .s{margin-top:22px;font-size:40px;font-weight:600}
+.dic .s i{font-family:M;font-style:italic;font-weight:400;font-size:32px;color:var(--terra2);margin-right:12px}
+.guard{display:flex;justify-content:space-between;align-items:center;padding:28px 44px 32px;border-top:1px solid var(--linea);background:#FBEADF;opacity:0}
+.guard span{font-size:31px;font-weight:700;color:var(--tinta)}
+.guard b{font-family:B;font-weight:800;font-size:72px;color:var(--terra2)}
+/* 5 · Cuenta */
+.term{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.term .op{width:60px;font-family:B;font-weight:800;font-size:56px;color:var(--terra);text-align:center}
+.term b{font-family:B;font-weight:800;font-size:62px;min-width:220px}
+.term span{font-size:29px;font-weight:600;color:var(--gris);line-height:1.25}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:28px 36px 34px;background:var(--suave)}
+.res span{font-size:32px;font-weight:700}
+.res b{font-family:B;font-weight:800;font-size:96px;color:var(--terra2)}
+/* 7 · Página de inscripción */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.pg{margin:28px 24px 0;padding:28px;border-radius:26px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);opacity:0}
+.pg .q{font-family:M;font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra2)}
+.pg h3{margin:12px 0 14px;font-family:B;font-weight:800;font-size:46px;line-height:1.05}
+.pg .r{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--linea);font-size:26px;font-weight:600;color:var(--gris)}
+.pg .r b{color:var(--tinta)}
+.quedan{display:inline-block;margin:16px 0 18px;font-family:M;font-weight:600;font-size:22px;background:#FBEADF;color:var(--terra2);border-radius:10px;padding:8px 12px}
+.bt{display:block;text-align:center;padding:24px;border-radius:18px;font-size:30px;font-weight:700;background:var(--terra);color:#fff}
+.conf{margin:20px 24px 0;padding:24px;border-radius:20px;background:var(--verde2);color:var(--verde);opacity:0}
+.conf b{display:block;font-size:30px}.conf span{display:block;margin-top:6px;font-size:24px;font-weight:600}
+/* 8 · Lleno + lista de espera */
+.est{display:flex;gap:18px;padding:26px 36px}
+.est div{flex:1;border-radius:20px;background:var(--suave);padding:20px 24px}
+.est div span{display:block;font-family:M;font-weight:600;font-size:22px;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
+.est div b{display:block;margin-top:6px;font-family:B;font-weight:800;font-size:60px}
+.est .ll b{color:var(--verde)}.est .le2 b{color:var(--terra2)}
+.le{display:flex;align-items:center;gap:20px;padding:20px 36px;border-top:1px solid var(--linea);opacity:0}
+.le div b{display:block;font-size:31px}
+.le div span{display:block;margin-top:4px;font-size:24px;font-weight:600;color:var(--gris)}
+.le .gd{margin-left:auto;font-family:M;font-weight:600;font-size:21px;background:var(--verde2);color:var(--verde);border-radius:12px;padding:8px 12px;white-space:nowrap}
+.mas{padding:18px 36px 28px;border-top:1px solid var(--linea);font-size:27px;font-weight:600;color:var(--gris);opacity:0}
+/* 9 · Siguiente grupo */
+.ng{padding:30px 36px 10px}
+.ng .n{font-family:B;font-weight:800;font-size:52px;line-height:1.05}
+.ng .d{margin-top:8px;font-size:29px;font-weight:600;color:var(--gris)}
+.aq{display:flex;justify-content:space-between;align-items:center;padding:22px 36px;border-top:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.aq b{font-family:M;font-size:30px}
+.btn2{margin:20px 36px 14px;padding:26px;border-radius:20px;background:var(--terra);color:#fff;text-align:center;font-size:32px;font-weight:700;opacity:0}
+.btn2.on{background:var(--verde)}
+.ng-n{padding:0 36px 30px;font-family:M;font-size:23px;color:var(--gris);opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · academias de idiomas</div>
+
+  <div class="tit" id="t-abre"><h1>Abres un <em>curso</em></h1></div>
+  <div class="tit" id="t-lleno"><h1>Se llena en <em>una semana</em></h1></div>
+  <div class="tit" id="t-fuera"><h1>5 se quedan <em>fuera</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-palabra"><h1>Eran tu <em>siguiente grupo</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>$9,000 que ya <em>preguntaron</em></h1><p>Ejemplo: 5 × $1,800</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si se quedaran <em>contigo?</em></h1></div>
+  <div class="tit" id="t-inscripcion"><h1>Su página para <em>inscribirse</em></h1></div>
+  <div class="tit" id="t-lista"><h1>Se llena → <em>lista de espera</em></h1></div>
+  <div class="tit" id="t-siguiente"><h1>El siguiente, <em>con un clic</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Se te llenan <em>los cursos?</em></h1></div>
+
+  <!-- 1 y 2 · El curso se llena -->
+  <div class="card" id="curso">
+    <div class="ccab"><span>Nuevo curso</span><span class="ej">Ejemplo</span></div>
+    <div class="ses"><div class="n">Inglés para viajes</div><div class="d">Sábados 10:00 · 6 semanas · $1,800</div></div>
+    <div class="lug" id="lug"></div>
+    <div class="cupo"><span>Lugares <em class="tag" id="tag">Lleno</em></span><b id="nlug">0 / 10</b></div>
+  </div>
+  <div class="card" id="chats">
+    <div class="ccab"><span>Mensajes</span><span>Esta semana</span></div>
+    <div class="cm" id="m1"><div class="av" style="background:#5B8DB8">R</div><div><b>Rosa</b><span>¿Todavía hay lugar para viajes?</span></div><em>lun</em></div>
+    <div class="cm" id="m2"><div class="av" style="background:#8F6BB0">D</div><div><b>Daniel</b><span>¿Me apartas uno?</span></div><em>mié</em></div>
+    <div class="cm" id="m3"><div class="av" style="background:#C98A5A">P</div><div><b>Paola</b><span>¿Cuándo abres otro?</span></div><em>vie</em></div>
+  </div>
+
+  <!-- 3 · 15 preguntaron -->
+  <div class="card" id="gente">
+    <div class="ccab"><span>Preguntaron por el curso</span><span class="ej">Ejemplo</span></div>
+    <div class="gente" id="gen"></div>
+    <div class="tres">
+      <div id="r1"><span>Preguntaron</span><b>15</b></div>
+      <div id="r2" class="v"><span>Entraron</span><b>10</b></div>
+      <div id="r3" class="t"><span>Sin lugar</span><b>5</b></div>
+    </div>
+  </div>
+
+  <!-- 4 · La palabra -->
+  <div class="card" id="palabra">
+    <div class="dic">
+      <div class="k">Nº 06 · Cursos</div>
+      <div class="w">waitlist</div>
+      <div class="f">/ˈweɪt.lɪst/</div>
+      <div class="s"><i>n.</i>lista de espera</div>
+    </div>
+    <div class="guard" id="guard"><span>Teléfonos que guardaste</span><b>0 de 5</b></div>
+  </div>
+
+  <!-- 5 · La cuenta -->
+  <div class="card" id="ecu">
+    <div class="ccab"><span>La cuenta · ejemplo</span><span>Un curso</span></div>
+    <div class="term" id="e1"><span class="op"></span><b>5</b><span>personas que<br>ya preguntaron</span></div>
+    <div class="term" id="e2"><span class="op">×</span><b>$1,800</b><span>por curso</span></div>
+    <div class="res"><span>= tu siguiente grupo</span><b id="eres">$0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · La página de inscripción -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="otop"><b>Tu academia</b><span>Inscripción</span></div>
+    <div class="pg" id="pg">
+      <div class="q">Curso · ejemplo</div>
+      <h3>Inglés para viajes</h3>
+      <div class="r">Cuándo<b>Sábados 10:00</b></div>
+      <div class="r">Duración<b>6 semanas</b></div>
+      <div class="r">Precio<b>$1,800</b></div>
+      <span class="quedan">Quedan 2 lugares</span>
+      <div class="bt" id="pagar">Inscribirme y pagar</div>
+    </div>
+    <div class="conf" id="conf"><b>✓ Inscrita · lugar 9 de 10</b><span>Te llega tu comprobante</span></div>
+  </div></div>
+
+  <!-- 8 · Lleno y lista de espera -->
+  <div class="card" id="lista">
+    <div class="ccab"><span>Inglés para viajes</span><span class="ej">Ejemplo</span></div>
+    <div class="est">
+      <div class="ll"><span>Lugares</span><b>10/10</b></div>
+      <div class="le2"><span>Lista de espera</span><b id="nesp">0</b></div>
+    </div>
+    <div class="le" id="l1"><div class="av" style="background:#5B8DB8">R</div><div><b>Rosa M.</b><span>Pidió lugar · lunes</span></div><span class="gd">✓ En tus contactos</span></div>
+    <div class="le" id="l2"><div class="av" style="background:#8F6BB0">D</div><div><b>Daniel T.</b><span>Pidió lugar · miércoles</span></div><span class="gd">✓ En tus contactos</span></div>
+    <div class="le" id="l3"><div class="av" style="background:#C98A5A">P</div><div><b>Paola R.</b><span>Pidió lugar · viernes</span></div><span class="gd">✓ En tus contactos</span></div>
+    <div class="mas" id="lmas">y 2 más en la lista</div>
+  </div>
+
+  <!-- 9 · El siguiente grupo -->
+  <div class="card" id="sig">
+    <div class="ccab"><span>Siguiente grupo</span><span class="ej">Ejemplo</span></div>
+    <div class="ng"><div class="n">Inglés para viajes · grupo 2</div><div class="d">Abre en enero · 10 lugares</div></div>
+    <div class="aq" id="a1">Lista de espera<b>5</b></div>
+    <div class="aq" id="a2">Exalumnos e interesados<b>124</b></div>
+    <div class="btn2" id="avisar">Avisar a 129 contactos</div>
+    <div class="ng-n" id="ngn">Gente que ya te conoce, antes de anunciarlo en redes.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Curso lleno</span><i>→</i><span>Lista de espera</span><i>→</i><span class="v">Siguiente grupo</span></div>
+    <p>Te cuento cómo lo haría para tus clases.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/idiomas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var COL = ['#5B8DB8', '#8F6BB0', '#C96F4A', '#4F8F7A', '#B5739A', '#6C7FB0', '#C98A5A', '#3E8E6A', '#9C7BB5', '#5F8F7B'];
+var INI = ['A', 'L', 'C', 'J', 'M', 'S', 'E', 'G', 'V', 'N'];
+window.prepara = function () {
+  var h = ''; for (var i = 0; i < 10; i++) h += '<div><b id="u' + i + '" style="background:' + COL[i] + '">' + INI[i] + '</b></div>';
+  $('lug').innerHTML = h;
+  var g = ''; for (var k = 0; k < 15; k++) g += '<i id="g' + k + '" class="' + (k >= 10 ? 'x' : '') + '">' + (k >= 10 ? '?' : '') + '</i>';
+  $('gen').innerHTML = g;
+};
+window.escena = function (t) {
+  var tap = false;
+
+  // 1 y 2 · El curso: se abre y se llena
+  bloque($('curso'), 'abre', 'lleno', t);
+  var n = 0;
+  for (var i = 0; i < 10; i++) {
+    var at = (i < 2 ? S.abre + 2.2 + i * 0.4 : S.lleno + 0.2 + (i - 2) * 0.22);
+    pop($('u' + i), t, at, 0.25); if (t >= at) n++;
+  }
+  $('nlug').textContent = n + ' / 10';
+  var tq = pop($('tag'), t, S.lleno + 2.1);
+  bloque($('chats'), 'lleno', 'lleno', t);
+  ['m1', 'm2', 'm3'].forEach(function (id, k) { aparece(id, t, S.lleno + 0.8 + k * 0.6, 40); });
+
+  // 3 · 15 preguntaron, 5 sin lugar
+  bloque($('gente'), 'fuera', 'fuera', t);
+  for (var k = 0; k < 15; k++) pop($('g' + k), t, S.fuera + 0.4 + (k < 10 ? k * 0.08 : 1.6 + (k - 10) * 0.25), 0.25);
+  aparece('r1', t, S.fuera + 0.6); aparece('r2', t, S.fuera + 1.4); aparece('r3', t, S.fuera + 3.0);
+
+  // 4 · La palabra
+  bloque($('palabra'), 'palabra', 'palabra', t);
+  aparece('guard', t, S.palabra + 1.8);
+
+  // 5 · La cuenta
+  bloque($('ecu'), 'cuenta', 'cuenta', t);
+  aparece('e1', t, S.cuenta + 0.4, 50); aparece('e2', t, S.cuenta + 1.2, 50);
+  $('eres').textContent = pesos(Math.round(cuenta(t, S.cuenta + 2.0, 1.0, 9000) / 100) * 100);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · Inscripción en el celular
+  var ph = $('phone');
+  var pin = easeOut(clamp((t - S.inscripcion) / 0.6)), pout = easeOut(clamp((t - (E.inscripcion - 0.35)) / 0.45));
+  ph.style.opacity = t >= S.inscripcion && t < E.inscripcion + 0.1 ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  pop($('pg'), t, S.inscripcion + 0.6);
+  var t1 = S.inscripcion + 3.4;
+  if (t >= S.inscripcion && t < E.inscripcion) tap = toque(t, t1, $('pagar')) || tap;
+  pop($('conf'), t, t1 + 0.35);
+
+  // 8 · Lleno y lista de espera
+  bloque($('lista'), 'lista', 'lista', t);
+  var ne = 0;
+  ['l1', 'l2', 'l3'].forEach(function (id, k) { var at = S.lista + 0.8 + k * 0.5; aparece(id, t, at, 50); if (t >= at) ne++; });
+  if (t >= S.lista + 2.4) ne = 5;
+  $('nesp').textContent = ne;
+  aparece('lmas', t, S.lista + 2.4);
+
+  // 9 · El siguiente grupo, con un clic
+  bloque($('sig'), 'siguiente', 'siguiente', t);
+  aparece('a1', t, S.siguiente + 0.5, 40); aparece('a2', t, S.siguiente + 0.9, 40);
+  aparece('avisar', t, S.siguiente + 1.4);
+  var t2 = S.siguiente + 2.7;
+  if (t >= S.siguiente && t < E.siguiente) tap = toque(t, t2, $('avisar')) || tap;
+  $('avisar').classList.toggle('on', t >= t2);
+  $('avisar').textContent = t >= t2 ? '✓ Aviso enviado' : 'Avisar a 129 contactos';
+  aparece('ngn', t, t2 + 0.4);
+
+  return tap;
+};
+</script>
+</body></html>

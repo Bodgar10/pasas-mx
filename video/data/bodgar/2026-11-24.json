@@ -1,0 +1,33 @@
+{
+  "fecha": "2026-11-24",
+  "dia": "martes",
+  "linea": "Dentistas · pérdida · citas canceladas",
+  "plantilla": "dental-cancelaciones.html",
+  "nombre": "dental-cancelaciones",
+  "url": "bodgar.dev/plataformas/dentistas",
+  "idioma": "es-MX",
+  "origen": "fisio-cancelaciones",
+  "portada": {
+    "etiqueta": "Dentistas",
+    "titulo": "Canceló su limpieza. *El sillón se quedó vacío.*",
+    "dato": { "num": "≈ $18,000", "texto": "al mes en citas canceladas", "tipo": "perd" }
+  },
+  "story": {
+    "chip": "Nuevo reel",
+    "titulo": "Tu paciente de las 5 *canceló*",
+    "texto": "Y tenías gente esperando una cita más pronto. Así se vuelve a llenar esa hora."
+  },
+  "post": "Son las 9:00 AM y tu paciente de las 5 te escribe: hoy ya no va a poder llegar a su limpieza. El sillón se queda vacío, pero la asistente, la renta y el equipo ya se pagaron. Y tenías tres pacientes esperando una cita más pronto.\n\nCuando alguien cancela, el sistema puede avisarle a tu lista de espera al instante, y el primero que confirma se queda con la hora. Tu recepción no tiene que hacer nada.\n\nLa cuenta, con cifras de ejemplo: 6 citas canceladas a la semana × $700 = $4,200 a la semana, casi $18,000 al mes.\n\nLas cifras del video son un ejemplo, no un resultado. Si quieres que revise tu consultorio, entra a bodgar.dev/plataformas/dentistas (link en la bio). Diagnóstico sin costo.\n\n#dentistas #odontologia #consultoriodental #dentistasmexico #saludbucal",
+  "escenas": [
+    { "id": "mensaje", "titulo": "9:00 AM", "voz": "Son las nueve de la mañana. Tu paciente de las cinco te escribe: hoy ya no voy a poder llegar a mi limpieza." },
+    { "id": "vacia", "titulo": "Un sillón vacío", "voz": "Y a las cinco, ese sillón... se queda vacío." },
+    { "id": "pagada", "titulo": "Que ya pagaste", "voz": "Pero esa hora ya la pagaste: la asistente, la renta, el equipo." },
+    { "id": "espera", "titulo": "Y alguien la quería", "voz": "Y lo peor: tenías tres pacientes esperando una cita más pronto. Nadie les avisó." },
+    { "id": "giro", "titulo": "Esto se resuelve solo", "voz": "Esto se puede resolver solo." },
+    { "id": "aviso", "titulo": "Cancela → aviso al instante", "voz": "Cuando alguien cancela, el sistema le avisa a tu lista de espera. Al instante." },
+    { "id": "confirma", "titulo": "El primero que confirma, la toma", "voz": "El primero que confirma se queda con la hora. Tu recepción no tiene que hacer nada." },
+    { "id": "cobrada", "titulo": "El sillón vuelve a trabajar", "voz": "Y esa hora del sillón se vuelve a cobrar." },
+    { "id": "cuenta", "titulo": "≈ $18,000 al mes", "voz": "Si cada semana se te cancelan seis citas de setecientos pesos, son casi dieciocho mil pesos al mes." },
+    { "id": "cierre", "titulo": "¿Se te cancelan citas?", "voz": "Si te pasa, te cuento cómo lo haría para tu consultorio. Entra a bodgar punto dev." }
+  ]
+}
