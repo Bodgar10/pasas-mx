@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Idiomas · pérdida: lo que ven en clase se queda en clase; la siguiente empieza repasando. Cifras de ejemplo (landing de idiomas, tarjeta «Práctica»).
+   Repasar o avanzar lo decide el maestro; la plataforma solo pone la práctica en el celular y muestra quién practicó. */
+/* Clase */
+.piz{margin:30px 36px 0;padding:30px 34px;border-radius:24px;background:#24443B;color:var(--crema)}
+.piz .k{font-family:M;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,234,.6)}
+.piz .tema{font-family:B;font-weight:800;font-size:76px;line-height:1.05;margin-top:8px}
+.piz p{margin:14px 0 0;font-family:M;font-size:32px;opacity:0}
+.piz p b{color:#F2B48F;font-weight:600}
+.grupo{display:flex;gap:12px;padding:28px 36px 30px;align-items:center}
+.grupo .av{width:60px;height:60px;font-size:26px;opacity:0}
+.grupo span{margin-left:auto;font-family:M;font-weight:600;font-size:24px;color:var(--gris)}
+/* Diccionario + semana */
+.dicc{padding:30px 36px 24px;border-bottom:1px solid var(--linea)}
+.dicc .w{font-family:B;font-weight:800;font-size:80px;line-height:1}
+.dicc .f{font-family:M;font-size:28px;color:var(--gris);margin-left:14px}
+.dicc .d{margin-top:12px;font-size:32px;font-weight:600;color:var(--terra2)}
+.dicc .d i{font-family:M;font-style:italic;font-weight:400;color:var(--gris);margin-right:10px}
+.dia{display:flex;align-items:center;gap:22px;padding:24px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.dia .h{font-family:M;font-weight:600;font-size:26px;color:var(--gris);width:110px}
+.dia b{font-size:32px}
+.dia .st{margin-left:auto;font-family:M;font-weight:600;font-size:22px;padding:10px 14px;border-radius:12px;white-space:nowrap;background:var(--suave);color:var(--gris)}
+.dia .st.cl{background:var(--verde2);color:var(--verde)}
+.dia .st.sin{background:#FBEADF;color:var(--terra2)}
+.nadie{margin:22px 36px 30px;padding:20px 24px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:30px;font-weight:700;opacity:0}
+/* Reloj de la clase */
+.reloj{display:flex;align-items:baseline;gap:18px;padding:34px 36px 6px}
+.reloj b{font-family:B;font-weight:800;font-size:120px;line-height:1;color:var(--terra2)}
+.reloj span{font-size:30px;font-weight:600;color:var(--gris)}
+.barra{display:flex;height:64px;margin:24px 36px 0;border-radius:18px;overflow:hidden;background:var(--arena)}
+.barra i{display:block;height:100%}
+.barra .rep{background:var(--terra);width:0}
+.barra .nue{background:var(--verde2);flex:1}
+.ley{display:flex;justify-content:space-between;margin:14px 36px 30px;font-family:M;font-weight:600;font-size:23px;color:var(--gris)}
+.ley b{color:var(--terra2);font-weight:600}
+.repite{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:var(--suave);font-family:M;font-size:28px;line-height:1.4;opacity:0}
+/* Cuenta */
+.eq{display:flex;align-items:center;gap:20px;padding:26px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.eq .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px}
+.cuatro{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:30px;font-weight:700;opacity:0}
+/* Teléfono del alumno */
+.pcab{height:150px;display:flex;align-items:flex-end;gap:18px;padding:0 30px 22px;border-bottom:1px solid var(--linea)}
+.pcab .av{background:#5B8DB8}
+.pcab b{display:block;font-size:30px}.pcab span{font-size:22px;color:var(--gris)}
+.ck{margin:28px 28px 0;font-family:M;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.ctema{margin:6px 28px 0;font-family:B;font-weight:800;font-size:52px;line-height:1.1}
+.it{display:flex;align-items:center;gap:18px;margin:18px 28px 0;padding:20px 22px;border-radius:20px;background:var(--suave);opacity:0}
+.it .ic{width:62px;height:62px;border-radius:16px;display:grid;place-items:center;font-family:B;font-weight:800;font-size:28px;color:#fff;flex:none}
+.it b{display:block;font-size:28px}.it span{font-size:22px;color:var(--gris);font-weight:600}
+.it .der{margin-left:auto;font-family:M;font-weight:600;font-size:22px;color:var(--verde)}
+.audio{display:flex;align-items:center;gap:4px;height:30px;margin-top:6px}
+.audio i{display:block;width:6px;border-radius:3px;background:#C9D6D1}
+.audio i.v{background:var(--verde)}
+/* Examen */
+.preg{margin:26px 28px 0;padding:26px 24px;border-radius:22px;background:var(--suave);font-size:34px;font-weight:700;line-height:1.3}
+.preg u{text-decoration:none;display:inline-block;min-width:110px;border-bottom:4px solid var(--tinta);text-align:center;color:var(--verde)}
+.op{margin:16px 28px 0;padding:22px 24px;border-radius:20px;border:3px solid var(--linea);background:#fff;font-family:M;font-weight:600;font-size:32px;display:flex;justify-content:space-between}
+.op.bien{border-color:var(--verde);background:var(--verde2);color:var(--verde)}
+.res{margin:24px 28px 0;padding:24px;border-radius:22px;background:var(--tinta);color:var(--crema);display:flex;align-items:baseline;justify-content:space-between;opacity:0}
+.res span{font-size:28px;font-weight:600}
+.res b{font-family:B;font-weight:800;font-size:72px;line-height:1;color:#8FD3B0}
+/* Banco */
+.ej3{display:flex;align-items:center;gap:22px;padding:28px 36px;border-bottom:1px solid var(--linea)}
+.ej3 .ic{width:84px;height:84px;border-radius:22px;background:var(--terra);color:#fff;display:grid;place-items:center;font-family:B;font-weight:800;font-size:38px;flex:none}
+.ej3 b{display:block;font-size:36px}.ej3 span{font-size:26px;color:var(--gris);font-weight:600}
+.usa{padding:24px 36px 0;font-family:M;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.grp{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.grp:last-child{border-bottom:0}
+.grp .der{margin-left:auto;font-family:M;font-weight:600;font-size:24px;color:var(--verde)}
+/* Quién practicó */
+.pfila{display:flex;align-items:center;gap:20px;padding:20px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pfila .av{width:58px;height:58px;font-size:26px}
+.pfila .der{margin-left:auto;font-family:M;font-weight:600;font-size:26px}
+.pfila .der.v{color:var(--verde)}.pfila .der.g{color:var(--gris)}
+.resumen{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px;border-bottom:1px solid var(--linea)}
+.resumen span{font-size:30px;font-weight:600;color:var(--gris)}
+.resumen b{font-family:B;font-weight:800;font-size:64px;color:var(--verde)}
+.decide{margin:24px 36px 30px;padding:22px 24px;border-radius:18px;background:var(--verde2);font-size:30px;font-weight:700;line-height:1.35;color:var(--verde);opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · academias de idiomas</div>
+
+  <div class="tit" id="t-clase"><h1>Martes: <em>past simple</em></h1></div>
+  <div class="tit" id="t-casa"><h1>Y se queda <em>en clase</em></h1></div>
+  <div class="tit" id="t-repaso"><h1>El jueves, <em>a repasar</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ 2 horas <em>al mes</em></h1><p>Ejemplo: 10 min × 3 clases × 4.3 semanas</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si siguiera <em>en su celular?</em></h1></div>
+  <div class="tit" id="t-celular"><h1>La clase, <em>en su celular</em></h1></div>
+  <div class="tit" id="t-examen"><h1>Examen <em>rápido</em></h1></div>
+  <div class="tit" id="t-banco"><h1>Lo subes <em>una vez</em></h1></div>
+  <div class="tit" id="t-nuevo"><h1>El jueves, <em>tema nuevo</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Empiezas <em>repasando?</em></h1></div>
+
+  <!-- 1 · La clase del martes -->
+  <div class="card" id="clase">
+    <div class="ccab"><span>Grupo A2 · martes 7:00 PM</span><span class="ej">Ejemplo</span></div>
+    <div class="piz">
+      <div class="k">Inglés A2 · tema de hoy</div>
+      <div class="tema">Past simple</div>
+      <p id="p1">I <b>went</b> to the park.</p>
+      <p id="p2">She <b>played</b> soccer.</p>
+      <p id="p3">We <b>watched</b> a movie.</p>
+    </div>
+    <div class="grupo" id="grupo">
+      <div class="av" style="background:#5B8DB8">D</div><div class="av" style="background:#9C7BB5">A</div><div class="av" style="background:#C99A3A">P</div><div class="av" style="background:#6E9C82">M</div>
+      <div class="av" style="background:#B86E5B">L</div><div class="av" style="background:#5B9CB8">J</div><div class="av" style="background:#8A7BB5">S</div><div class="av" style="background:#A3A35B">R</div>
+      <span>8 alumnos</span>
+    </div>
+  </div>
+
+  <!-- 2 · Entre clases, nadie practica -->
+  <div class="card" id="casa">
+    <div class="dicc"><span class="w">forget</span><span class="f">/fəˈɡet/</span><div class="d"><i>v.</i>olvidar</div></div>
+    <div class="dia" id="d1"><span class="h">Mar</span><b>Clase: past simple</b><span class="st cl">Clase</span></div>
+    <div class="dia" id="d2"><span class="h">Mié</span><b>Práctica</b><span class="st sin">0 ejercicios</span></div>
+    <div class="dia" id="d3"><span class="h">Jue</span><b>Clase</b><span class="st cl">Clase</span></div>
+    <div class="nadie" id="nadie">Entre una clase y otra, nadie practicó</div>
+  </div>
+
+  <!-- 3 · El jueves empieza repasando -->
+  <div class="card" id="rep">
+    <div class="ccab"><span>Grupo A2 · jueves 7:00 PM</span><span class="ej">Ejemplo</span></div>
+    <div class="reloj"><b id="min">0:00</b><span>min de repaso</span></div>
+    <div class="barra"><i class="rep" id="brep"></i><i class="nue"></i></div>
+    <div class="ley"><span><b>Repaso del martes</b></span><span>Tema nuevo</span></div>
+    <div class="repite" id="repite">«¿Se acuerdan de <b>went</b>?<br>Otra vez, desde el principio…»</div>
+  </div>
+
+  <!-- 4 · La cuenta -->
+  <div class="card" id="cta">
+    <div class="ccab"><span>Repaso · un mes</span><span class="ej">Ejemplo</span></div>
+    <div class="eq" id="q1"><span>Repaso por clase</span><span class="der">10 min</span></div>
+    <div class="eq" id="q2"><span>Clases a la semana</span><span class="der">× 3</span></div>
+    <div class="eq" id="q3"><span>Semanas al mes</span><span class="der">× 4.3</span></div>
+    <div class="total"><span>Por grupo, al mes</span><b id="qtot" style="color:var(--terra2)">0 min</b></div>
+    <div class="cuatro" id="cuatro">Con 4 grupos: ≈ 516 min, más de 8 horas</div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 6–7 · Teléfono de Diego -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="pcab"><div class="av">D</div><div><b>Hola, Diego</b><span>Inglés A2 · mar, jue y sáb</span></div></div>
+    <div class="pant" id="pc" style="top:150px">
+      <div class="ck">Clase del martes</div>
+      <div class="ctema">Past simple</div>
+      <div class="it" id="i1"><div class="ic" style="background:var(--terra)">✎</div><div><b>Ejercicios</b><span>8 · de esta clase</span></div></div>
+      <div class="it" id="i2"><div class="ic" style="background:var(--tinta)">▶</div><div style="flex:1"><b>Audio</b><div class="audio" id="aud"></div></div></div>
+      <div class="it" id="i3"><div class="ic" style="background:var(--verde)">Aa</div><div><b>Vocabulario</b><span>12 palabras</span></div></div>
+      <div class="it" id="i4"><div class="ic" style="background:#C99A3A">?</div><div><b>Examen rápido</b><span>5 preguntas</span></div><span class="der">Nuevo</span></div>
+    </div>
+    <div class="pant" id="pe" style="top:150px">
+      <div class="ck">Examen rápido · 3 de 5</div>
+      <div class="preg">Yesterday I <u id="hueco">___</u> to the park.</div>
+      <div class="op" id="o1"><span>go</span></div>
+      <div class="op" id="o2"><span>went</span><span id="palomita"></span></div>
+      <div class="op" id="o3"><span>goes</span></div>
+      <div class="res" id="res"><span>Tu calificación</span><b>4/5</b></div>
+    </div>
+  </div></div>
+
+  <!-- 8 · El banco de ejercicios -->
+  <div class="card" id="banco">
+    <div class="ccab"><span>Tu banco de ejercicios</span><span class="ej">Ejemplo</span></div>
+    <div class="ej3"><div class="ic">A2</div><div><b>Past simple</b><span>8 ejercicios · audio · examen de 5</span></div></div>
+    <div class="usa">Lo usas en</div>
+    <div class="grp" id="g1"><span>Grupo A2 · mar, jue y sáb</span><span class="der">✓ asignado</span></div>
+    <div class="grp" id="g2"><span>Grupo A2 · lun, mié y vie</span><span class="der">✓ asignado</span></div>
+    <div class="grp" id="g3"><span>Grupo A2 · en línea</span><span class="der">✓ asignado</span></div>
+  </div>
+
+  <!-- 9 · Quién practicó -->
+  <div class="card" id="quien">
+    <div class="ccab"><span>Grupo A2 · practicaron</span><span class="ej">Ejemplo</span></div>
+    <div class="resumen"><span>Antes de la clase</span><b id="cuantos">0 de 8</b></div>
+    <div class="pfila" id="w1"><div class="av" style="background:#5B8DB8">D</div>Diego R.<span class="der v">✓ 4/5</span></div>
+    <div class="pfila" id="w2"><div class="av" style="background:#9C7BB5">A</div>Ana L.<span class="der v">✓ 5/5</span></div>
+    <div class="pfila" id="w3"><div class="av" style="background:#C99A3A">P</div>Pau L.<span class="der v">✓ 4/5</span></div>
+    <div class="pfila" id="w4"><div class="av" style="background:#B86E5B">L</div>Luis M.<span class="der g">sin practicar</span></div>
+    <div class="decide" id="dec">¿Repasar o tema nuevo? Lo decides tú.</div>
+  </div>
+
+  <div id="fin">
+    <div class="pasos"><span>Clase</span><i>→</i><span>Practica en su celular</span><i>→</i><span class="v">Tema nuevo</span></div>
+    <p>Te cuento cómo lo haría para tus clases.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/idiomas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var ONDA = [10, 18, 26, 14, 22, 30, 16, 24, 12, 28, 20, 14, 26, 18, 10, 22, 30, 16, 24, 12, 18, 26, 14, 20];
+window.prepara = function () {
+  $('aud').innerHTML = ONDA.map(function (h) { return '<i style="height:' + h + 'px"></i>'; }).join('');
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  var tapped = false;
+  // 1 · Clase del martes
+  bloque($('clase'), 'clase', 'clase', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.clase + 0.5 + i * 0.4, 30); });
+  document.querySelectorAll('#grupo .av').forEach(function (a, i) { pop(a, t, S.clase + 1.6 + i * 0.12); });
+
+  // 2 · Entre clases, nada
+  bloque($('casa'), 'casa', 'casa', t);
+  ['d1', 'd2', 'd3'].forEach(function (id, i) { aparece(id, t, S.casa + 0.5 + i * 0.5, 50); });
+  pop($('nadie'), t, S.casa + 2.4);
+
+  // 3 · Repaso del jueves
+  bloque($('rep'), 'repaso', 'repaso', t);
+  var m = cuenta(t, S.repaso + 0.4, 2.4, 10);
+  $('min').textContent = Math.floor(m) + ':' + (m >= 10 ? '00' : String(Math.floor((m % 1) * 60)).padStart(2, '0'));
+  $('brep').style.width = (m / 60 * 100 * 1.0) + '%';
+  aparece('repite', t, S.repaso + 1.6);
+
+  // 4 · La cuenta
+  bloque($('cta'), 'cuenta', 'cuenta', t);
+  ['q1', 'q2', 'q3'].forEach(function (id, i) { aparece(id, t, S.cuenta + 0.4 + i * 0.5, 50); });
+  $('qtot').textContent = '≈ ' + Math.round(cuenta(t, S.cuenta + 1.8, 1.8, 129)) + ' min';
+  pop($('cuatro'), t, S.cuenta + 4.6);
+
+  // 5 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 6–7 · Teléfono de Diego
+  telefono($('phone'), 'celular', 'examen', t);
+  $('pc').style.opacity = t < S.examen ? 1 : 1 - clamp((t - S.examen) / 0.3);
+  $('pe').style.opacity = clamp((t - S.examen - 0.15) / 0.3);
+  ['i1', 'i2', 'i3', 'i4'].forEach(function (id, i) { aparece(id, t, S.celular + 0.9 + i * 0.5, 40); });
+  var aq = clamp((t - S.celular - 2.0) / 2.5);
+  document.querySelectorAll('#aud i').forEach(function (b, i) { b.className = i / ONDA.length < aq ? 'v' : ''; });
+  var tapW = S.examen + 1.6;
+  if (t > tapW - 0.5 && t < tapW + 0.4) tapped = toque(t, tapW, $('o2'));
+  var ok = t >= tapW;
+  $('o2').classList.toggle('bien', ok); $('palomita').textContent = ok ? '✓' : '';
+  $('hueco').textContent = ok ? 'went' : '___';
+  pop($('res'), t, S.examen + 2.6);
+
+  // 8 · Banco
+  bloque($('banco'), 'banco', 'banco', t);
+  ['g1', 'g2', 'g3'].forEach(function (id, i) { aparece(id, t, S.banco + 1.2 + i * 0.5, 40); });
+
+  // 9 · Quién practicó
+  bloque($('quien'), 'nuevo', 'nuevo', t);
+  var n = 0;
+  ['w1', 'w2', 'w3', 'w4'].forEach(function (id, i) { aparece(id, t, S.nuevo + 0.4 + i * 0.4, 40); });
+  n = Math.round(cuenta(t, S.nuevo + 0.4, 1.6, 6));
+  $('cuantos').textContent = n + ' de 8';
+  pop($('dec'), t, S.nuevo + 2.8);
+  return tapped;
+};
+</script>
+</body></html>

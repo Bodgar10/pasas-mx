@@ -1,0 +1,30 @@
+{
+  "fecha": "2026-11-30",
+  "dia": "lunes",
+  "linea": "Fisioterapia · pérdida · «te pago la próxima»",
+  "plantilla": "fisio-te-pago.html",
+  "nombre": "fisio-te-pago",
+  "url": "bodgar.dev/plataformas/fisioterapia",
+  "idioma": "es-MX",
+  "portada": {
+    "etiqueta": "Fisioterapia",
+    "titulo": "«Te pago *la próxima.*»",
+    "dato": { "num": "≈ $4,200", "texto": "al mes en sesiones sin cobrar (ejemplo)", "tipo": "perd" }
+  },
+  "story": {
+    "titulo": "¿Cuántas sesiones quedaron *«para la próxima»?*",
+    "texto": "Lo que cuesta llevar los pendientes en un papelito."
+  },
+  "post": "Martes, 7:00 PM. Jorge termina su sesión y en recepción dice: «Se me olvidó la cartera. Te pago la próxima».\n\nRecepción lo apunta en un papelito. La semana siguiente, Jorge regresa, toma su sesión y paga esa. La anterior ya nadie la recuerda. Si pasa 6 veces al mes, a $700 la sesión, son $4,200 (ejemplo).\n\nAsí lo resolvería: cada sesión queda ligada a su pago. Si al terminar no se pagó, queda como saldo pendiente a nombre del paciente, no en un papel. Cuando vuelve, recepción lo ve antes de empezar. Y cuando paga, el paciente recibe un aviso con su comprobante. Sin perseguir a nadie y sin momentos incómodos.\n\nLas cifras del video son un ejemplo, no un resultado. Si te pasa, te cuento cómo lo haría para tu clínica: bodgar.dev/plataformas/fisioterapia (link en la bio). Diagnóstico sin costo.\n\n#fisioterapia #clinica #rehabilitacion #recepcion #pymesmexico",
+  "escenas": [
+    { "id": "cartera", "titulo": "«Te pago la próxima»", "voz": "Martes, siete de la noche. Jorge termina su sesión y dice: se me olvidó la cartera, te pago la próxima." },
+    { "id": "papel", "titulo": "Un papelito en recepción", "voz": "Recepción lo apunta en un papelito, junto a la computadora." },
+    { "id": "vuelve", "titulo": "Y nadie se acuerda", "voz": "A la semana, Jorge regresa y paga su sesión de hoy. La anterior, ya nadie la recuerda." },
+    { "id": "mes", "titulo": "≈ $4,200 al mes", "voz": "Si pasa seis veces al mes, a setecientos pesos la sesión, son cuatro mil doscientos pesos." },
+    { "id": "giro", "titulo": "¿Y si no dependiera del papel?", "voz": "¿Y si eso no dependiera de un papelito?" },
+    { "id": "saldo", "titulo": "Queda a su nombre", "voz": "Cada sesión queda ligada a su pago. Si no se pagó, queda como saldo pendiente a nombre de Jorge." },
+    { "id": "llega", "titulo": "Recepción lo ve antes", "voz": "Cuando vuelve, recepción lo ve antes de empezar: una sesión pendiente, setecientos pesos." },
+    { "id": "pagado", "titulo": "Pagado, con comprobante", "voz": "Jorge paga, y le llega un aviso con su comprobante. Sin perseguir a nadie." },
+    { "id": "cierre", "titulo": "¿Tienes pendientes en papelitos?", "voz": "Si en tu clínica los pendientes viven en papelitos, te cuento cómo lo haría. Entra a bodgar punto dev." }
+  ]
+}

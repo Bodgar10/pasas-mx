@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Psicología · crecimiento: sesión de seguimiento después del cierre (copia de fisio-despues-alta).
+   Reglas de psicología: nunca notas, diagnósticos, motivos ni datos de pacientes en pantalla (solo nombre de pila e inicial);
+   el aviso sale solo a quien lo pidió; si tiene sentido lo decide la psicóloga, si agenda lo decide el paciente. Cifras de ejemplo. */
+.pac{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.pac .av{width:96px;height:96px;font-size:40px;background:#7A9CB5}
+.pac b{display:block;font-size:38px}.pac span{font-size:27px;color:var(--gris)}
+.estado{margin-left:auto;font-family:M;font-weight:600;font-size:24px;padding:10px 16px;border-radius:14px;background:#FBEADF;color:var(--terra2);white-space:nowrap}
+.estado.alta{background:var(--verde2);color:var(--verde)}
+.barra{margin:28px 36px 10px;height:22px;border-radius:12px;background:var(--arena);overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--verde);border-radius:12px}
+.datos{display:flex;justify-content:space-between;padding:10px 36px 30px;font-size:28px;font-weight:600;color:var(--gris)}
+.datos b{color:var(--tinta);font-family:M}
+/* Meses sin contacto */
+.meses{display:flex;gap:12px;padding:30px 30px 34px}
+.mes{flex:1;border-radius:18px;background:var(--arena);padding:18px 8px;text-align:center;opacity:0}
+.mes b{display:block;font-family:M;font-weight:600;font-size:26px;color:var(--tinta)}
+.mes span{display:block;margin-top:10px;font-size:22px;color:var(--gris)}
+.ult{padding:0 36px 30px;font-size:28px;color:var(--gris)}
+/* Puntos: un cierre = un punto */
+.puntos{display:grid;grid-template-columns:repeat(20,1fr);gap:9px;padding:30px 36px 20px}
+.puntos i{aspect-ratio:1;border-radius:50%;background:#D8D2C6;transform:scale(0)}
+.puntos i.v{background:var(--verde)}
+.cuentas{display:flex;justify-content:space-between;align-items:baseline;padding:22px 36px 30px;border-top:1px solid var(--linea)}
+.cuentas span{font-size:30px;font-weight:600;color:var(--gris)}
+.cuentas b{font-family:B;font-weight:800;font-size:80px}
+/* Al cerrar: seguimiento si el paciente quiere */
+.paso{display:flex;align-items:center;gap:24px;padding:26px 36px;position:relative;opacity:0}
+.paso .pt{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:M;font-weight:600;font-size:24px;color:#fff;background:var(--verde);flex:none;z-index:1}
+.paso.pend .pt{background:var(--terra)}
+.paso b{display:block;font-size:34px}.paso span{font-size:26px;color:var(--gris)}
+.paso::before{content:"";position:absolute;left:67px;top:90px;height:52px;width:4px;background:var(--linea)}
+.paso:last-of-type::before{display:none}
+.def{margin:6px 36px 30px;padding:20px 24px;border-radius:18px;background:var(--suave);font-size:27px;font-weight:600;color:var(--tinta)}
+/* Teléfono: mensaje y agenda */
+.mcab{height:150px;display:flex;align-items:flex-end;gap:18px;padding:0 30px 22px;border-bottom:1px solid var(--linea)}
+.mcab .av{background:var(--verde)}
+.mcab b{display:block;font-size:30px}.mcab span{font-size:22px;color:var(--gris)}
+.msj{margin:30px 26px 0;background:var(--suave);border-radius:28px 28px 28px 8px;padding:24px 26px;font-size:30px;line-height:1.35;opacity:0}
+.botones{display:flex;gap:14px;margin:22px 26px 0;opacity:0}
+.botones div{flex:1;border-radius:18px;padding:20px 0;text-align:center;font-size:28px;font-weight:700;border:3px solid var(--linea)}
+.botones .si{background:var(--verde);border-color:var(--verde);color:#fff}
+.hor h3{margin:34px 30px 18px;font-family:B;font-weight:800;font-size:40px}
+.slot{margin:0 26px 14px;border:3px solid var(--linea);border-radius:18px;padding:22px 24px;font-size:30px;font-weight:700;display:flex;justify-content:space-between}
+.slot span{color:var(--gris);font-weight:600}
+.slot.sel{border-color:var(--verde);background:var(--verde2)}
+.conf{position:absolute;left:26px;right:26px;bottom:50px;background:var(--verde);color:#fff;border-radius:22px;padding:26px;font-size:28px;font-weight:700;text-align:center;opacity:0}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · psicología</div>
+
+  <div class="tit" id="t-cierre1"><h1>Cerraron el <em>proceso</em></h1></div>
+  <div class="tit" id="t-silencio"><h1>Y nunca más supiste <em>de ella</em></h1></div>
+  <div class="tit" id="t-base"><h1>300 cierres, <em>cero seguimiento</em></h1><p>Ejemplo</p></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>preguntaras?</em></h1></div>
+  <div class="tit" id="t-plan"><h1>Tu paciente decide <em>si quiere</em></h1></div>
+  <div class="tit" id="t-aviso"><h1>El aviso sale <em>solo</em></h1></div>
+  <div class="tit" id="t-vuelve"><h1>Daniela <em>agenda</em></h1></div>
+  <div class="tit" id="t-cuenta"><h1>≈ $21,000</h1><p>Ejemplo: 10% de 300 cierres × $700</p></div>
+  <div class="tit" id="t-cierre"><h1>El seguimiento también <em>cuenta</em></h1></div>
+
+  <!-- 1 y 2 · La paciente -->
+  <div class="card" id="paciente">
+    <div class="ccab"><span>Proceso</span><span class="ej">Ejemplo</span></div>
+    <div class="pac"><div class="av">D</div><div><b>Daniela R.</b><span>Sesiones semanales</span></div><span class="estado" id="est">En proceso</span></div>
+    <div class="barra"><i id="bar"></i></div>
+    <div class="datos"><span>Sesión <b id="ses">9</b></span><span>Desde <b>junio</b></span></div>
+  </div>
+  <div class="card" id="cal" style="top:1100px">
+    <div class="ccab"><span>Después del cierre</span><span>Contacto</span></div>
+    <div class="meses">
+      <div class="mes"><b>Sep</b><span>—</span></div><div class="mes"><b>Oct</b><span>—</span></div><div class="mes"><b>Nov</b><span>—</span></div>
+      <div class="mes"><b>Dic</b><span>—</span></div><div class="mes"><b>Ene</b><span>—</span></div><div class="mes"><b>Feb</b><span>—</span></div>
+    </div>
+    <div class="ult">Último contacto: el día del cierre</div>
+  </div>
+
+  <!-- 3 y 8 · Todos los cierres -->
+  <div class="card" id="altas">
+    <div class="ccab"><span>Procesos cerrados · último año</span><span class="ej">Ejemplo</span></div>
+    <div class="puntos" id="puntos"></div>
+    <div class="cuentas"><span id="clab">Con seguimiento</span><b id="cval">0</b></div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 5 · El plan lo define el equipo -->
+  <div class="card" id="plan">
+    <div class="ccab"><span>Al cerrar el proceso</span><span class="ej">Ejemplo</span></div>
+    <div class="paso" id="p1"><span class="pt">✓</span><div><b>Cierre del proceso</b><span>2 de septiembre</span></div></div>
+    <div class="paso pend" id="p2"><span class="pt">3m</span><div><b>Sesión de seguimiento</b><span>A los 3 meses · si quiere</span></div></div>
+    <div class="paso pend" id="p3"><span class="pt">6m</span><div><b>O a los 6 meses</b><span>Lo eligen juntos</span></div></div>
+    <div class="def" id="pdef">✓ Daniela pidió el recordatorio. Si tiene sentido, lo decides tú.</div>
+  </div>
+
+  <!-- 6 y 7 · El mensaje y la cita -->
+  <div class="phone" id="phone"><div class="scr">
+    <div class="pant" id="pmsj">
+      <div class="mcab"><div class="av">P</div><div><b>Tu psicóloga</b><span>Aviso · diciembre</span></div></div>
+      <div class="msj" id="msj">Hola, Daniela. Como acordamos al cerrar, te recuerdo la sesión de seguimiento. Si quieres agendarla, aquí están mis horarios.</div>
+      <div class="botones" id="bots"><div>Ahora no</div><div class="si" id="si">Agendar</div></div>
+    </div>
+    <div class="pant hor" id="phor">
+      <div class="mcab"><div class="av">P</div><div><b>Tu psicóloga</b><span>Elige un horario</span></div></div>
+      <h3>Sesión de seguimiento</h3>
+      <div class="slot">Mar 10:00<span>Disponible</span></div>
+      <div class="slot" id="jue">Jue 17:00<span>Disponible</span></div>
+      <div class="slot">Vie 9:00<span>Disponible</span></div>
+      <div class="conf" id="conf">✓ Seguimiento agendado · jueves 17:00</div>
+    </div>
+  </div></div>
+
+  <div id="fin">
+    <div class="pasos"><span>Cierre</span><i>→</i><span>Si quiere, aviso</span><i>→</i><span class="v">Seguimiento</span></div>
+    <p>Te cuento cómo lo haría en tu consultorio.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/psicologia</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var VUELVEN = [];
+window.prepara = function () {
+  var h = ''; for (var i = 0; i < 300; i++) h += '<i></i>';
+  $('puntos').innerHTML = h;
+  // 30 de 300 (10%), repartidos
+  for (var k = 0; k < 30; k++) VUELVEN.push((k * 97 + 13) % 300);
+};
+window.escena = function (t) {
+  // 1 · Cierre del proceso de Daniela; 2 · y luego nada
+  var a = t >= S.cierre1 && t < E.silencio + 0.1;
+  if (a) bloque($('paciente'), 'cierre1', 'silencio', t); else $('paciente').style.opacity = 0;
+  var pq = easeOut(clamp((t - (S.cierre1 + 0.5)) / 1.6));
+  $('ses').textContent = Math.min(12, 9 + Math.floor(pq * 3.999));
+  $('bar').style.width = (75 + 25 * pq) + '%';
+  var alta = t >= S.cierre1 + 2.1;
+  $('est').textContent = alta ? 'Cierre ✓' : 'En proceso'; $('est').classList.toggle('alta', alta);
+  if (alta) $('est').style.transform = 'scale(' + (0.85 + 0.15 * back(clamp((t - S.cierre1 - 2.1) / 0.35))) + ')';
+  var gris = clamp((t - (S.silencio + 1.2)) / 0.8);
+  $('paciente').style.filter = 'saturate(' + (1 - 0.8 * gris) + ')';
+  if (t >= S.silencio && t < E.silencio + 0.1) bloque($('cal'), 'silencio', 'silencio', t); else $('cal').style.opacity = 0;
+  document.querySelectorAll('#cal .mes').forEach(function (m, i) { aparece(m, t, S.silencio + 0.3 + i * 0.22); });
+
+  // 3 · Todas las altas; 8 · las que vuelven
+  var enB = t >= S.base && t < E.base + 0.1, enC = t >= S.cuenta && t < E.cuenta + 0.1;
+  if (enB) bloque($('altas'), 'base', 'base', t); else if (enC) bloque($('altas'), 'cuenta', 'cuenta', t); else $('altas').style.opacity = 0;
+  var pts = document.querySelectorAll('#puntos i');
+  pts.forEach(function (p, i) {
+    var q = enC ? 1 : easeOut(clamp((t - (S.base + 0.4 + i * 0.006)) / 0.3));
+    p.style.transform = 'scale(' + q + ')';
+    p.classList.remove('v');
+  });
+  if (enC) {
+    VUELVEN.forEach(function (i, k) {
+      var q = clamp((t - (S.cuenta + 0.5 + k * 0.08)) / 0.2);
+      if (q > 0) { pts[i].classList.add('v'); pts[i].style.transform = 'scale(' + (1 + 0.6 * Math.sin(Math.PI * q)) + ')'; }
+    });
+    var n = Math.min(30, Math.floor(clamp((t - (S.cuenta + 0.5)) / 2.4) * 30));
+    $('clab').textContent = n + ' agendan seguimiento';
+    $('cval').textContent = pesos(n * 700); $('cval').style.color = 'var(--verde)';
+  } else { $('clab').textContent = 'Con seguimiento'; $('cval').textContent = '0'; $('cval').style.color = 'var(--terra2)'; }
+
+  // 4 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 5 · Plan
+  bloque($('plan'), 'plan', 'plan', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.plan + 0.5 + i * 0.6, 50); });
+  aparece('pdef', t, S.plan + 2.6);
+
+  // 6 y 7 · Mensaje y cita
+  var ph = $('phone'), on = t >= S.aviso && t < E.vuelve + 0.1;
+  var pin = easeOut(clamp((t - S.aviso) / 0.6)), pout = easeOut(clamp((t - (E.vuelve - 0.35)) / 0.45));
+  ph.style.opacity = on ? 1 : 0;
+  ph.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+  var tapA = S.vuelve + 0.5, tapB = S.vuelve + 1.9;
+  $('pmsj').style.opacity = t < tapA + 0.25 ? 1 : 0;
+  $('phor').style.opacity = t >= tapA + 0.25 ? 1 : 0;
+  pop($('msj'), t, S.aviso + 0.7, 0.35);
+  aparece('bots', t, S.aviso + 1.4);
+  var tapped = false;
+  if (t > tapA - 0.5 && t < tapA + 0.4) tapped = toque(t, tapA, $('si'));
+  else if (t > tapB - 0.5 && t < tapB + 0.4) tapped = toque(t, tapB, $('jue'));
+  $('jue').classList.toggle('sel', t >= tapB);
+  var c = clamp((t - (tapB + 0.3)) / 0.3); $('conf').style.opacity = c; $('conf').style.transform = 'translateY(' + ((1 - easeOut(c)) * 30) + 'px)';
+  return tapped;
+};
+</script>
+</body></html>

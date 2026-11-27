@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+/* Dentistas · pérdida (copia de fisio-abandono): el paciente deja el plan de tratamiento a la mitad porque ya no le duele
+   y no ve lo que falta. Cifras de ejemplo. El tratamiento lo decide el dentista; el software solo ordena y muestra el plan. */
+.pac{display:flex;align-items:center;gap:22px;padding:30px 36px;border-bottom:1px solid var(--linea)}
+.pac .av{width:96px;height:96px;font-size:40px;background:#5B8DB8}
+.pac b{display:block;font-size:38px}.pac span{font-size:27px;color:var(--gris)}
+.estado{margin-left:auto;font-family:M;font-weight:600;font-size:24px;padding:10px 16px;border-radius:14px;background:var(--suave);color:var(--tinta);white-space:nowrap}
+.barra{margin:28px 36px 10px;height:22px;border-radius:12px;background:var(--arena);overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--verde);border-radius:12px}
+.datos{display:flex;justify-content:space-between;padding:10px 36px 30px;font-size:28px;font-weight:600;color:var(--gris)}
+.datos b{color:var(--tinta);font-family:M}
+.globo{position:absolute;left:150px;right:120px;top:1130px;background:#fff;color:var(--tinta);border-radius:36px 36px 36px 10px;padding:32px 36px;font-size:44px;font-weight:700;line-height:1.25;box-shadow:0 24px 50px rgba(0,0,0,.35);opacity:0}
+.globo small{display:block;margin-top:12px;font-size:24px;font-weight:600;color:var(--gris)}
+/* Diente */
+.diente{width:40px;height:44px;flex:none}
+.diente path{fill:#fff;stroke:var(--gris);stroke-width:1.6}
+.diente.v path{fill:var(--verde2);stroke:var(--verde)}
+.diente.p path{fill:#FBEADF;stroke:var(--terra)}
+/* Agenda */
+.cita{display:flex;align-items:center;gap:22px;padding:26px 36px;border-bottom:1px solid var(--linea);opacity:0}
+.cita .h{font-family:M;font-weight:600;font-size:26px;color:var(--gris);width:150px}
+.cita b{font-size:32px}
+.cita b small{display:block;font-size:22px;color:var(--gris);font-weight:600}
+.cita .st{margin-left:auto;font-family:M;font-weight:600;font-size:22px;padding:10px 14px;border-radius:12px;white-space:nowrap}
+.st.nst{background:#FBEADF;color:var(--terra2)}.st.sa{background:var(--arena);color:#8a7a66}
+/* Citas del plan: 5 */
+.ses{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;padding:40px 46px 14px}
+.ses i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:M;font-weight:600;font-size:36px;color:#fff;background:var(--verde);transform:scale(0)}
+.ses i.f{background:transparent;border:5px dashed var(--terra);color:var(--terra2)}
+.sesl{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;padding:0 46px 26px;font-family:M;font-weight:600;font-size:20px;color:var(--gris);text-align:center}
+.eq{display:flex;justify-content:space-between;align-items:baseline;padding:24px 36px 30px;border-top:1px solid var(--linea)}
+.eq span{font-size:32px;font-weight:600;color:var(--gris)}
+.eq b{font-family:B;font-weight:800;font-size:84px;color:var(--terra2)}
+/* Mes */
+.pfila{display:flex;align-items:center;gap:20px;padding:22px 36px;border-bottom:1px solid var(--linea);font-size:31px;font-weight:600;opacity:0}
+.pfila .av{width:58px;height:58px;font-size:26px}
+.pfila .der{margin-left:auto;font-family:M;font-weight:600;font-size:28px;color:var(--terra2)}
+.pfila small{display:block;font-size:22px;color:var(--gris);font-weight:600}
+/* Notas */
+.notas{padding:24px 36px 30px;font-family:M;font-size:27px;line-height:1.55;color:#8E9A96}
+.notas p{margin:0 0 14px;opacity:0}
+.notas mark{background:transparent;color:inherit;border-radius:8px;padding:0 4px}
+.nunca{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:#FBEADF;color:var(--terra2);font-size:30px;font-weight:700;opacity:0}
+/* Teléfono del dentista */
+.otop{height:150px;background:var(--tinta);color:var(--crema);display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 22px}
+.otop b{font-size:30px}.otop span{font-family:M;font-size:22px;color:rgba(244,241,234,.7)}
+.paso{display:flex;align-items:center;gap:16px;padding:12px 26px;border-bottom:1px solid var(--linea);font-size:26px;font-weight:600;opacity:0}
+.paso .n{font-family:M;font-size:20px;color:var(--gris);width:100px;white-space:nowrap}
+.chk{margin-left:auto;width:42px;height:42px;border-radius:12px;border:3px solid var(--linea);display:grid;place-items:center;font-size:24px;color:#fff;flex:none}
+.chk.v{background:var(--verde);border-color:var(--verde)}
+.porq{margin:16px 26px 0;padding:18px 20px;border-radius:18px;border:3px solid var(--linea);background:#fff;opacity:0}
+.porq .k{font-family:M;font-weight:600;font-size:19px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.porq p{margin:8px 0 0;font-size:25px;font-weight:600;line-height:1.3;min-height:66px}
+#phone1 .guardar{padding:20px;bottom:30px}
+.guardar{position:absolute;left:26px;right:26px;bottom:44px;background:var(--terra);color:#fff;border-radius:20px;padding:26px;text-align:center;font-size:30px;font-weight:700;opacity:0}
+.guardar.ok2{background:var(--verde)}
+/* Su plan, línea de tiempo */
+.tl{padding:24px 36px 8px}
+.tlf{display:flex;gap:22px;align-items:flex-start;padding:0 0 22px;position:relative;opacity:0}
+.tlf:before{content:'';position:absolute;left:25px;top:56px;bottom:-4px;width:4px;background:var(--linea)}
+.tlf:last-child:before{display:none}
+.tlf .pt{width:54px;height:54px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:M;font-weight:600;font-size:24px;border:4px solid var(--linea);color:var(--gris);background:#fff}
+.tlf.v .pt{background:var(--verde);border-color:var(--verde);color:#fff}
+.tlf.s .pt{background:var(--terra);border-color:var(--terra);color:#fff}
+.tlf b{display:block;font-size:32px;margin-top:6px}
+.tlf span{font-size:24px;color:var(--gris);font-weight:600}
+.tlf.s span{color:var(--terra2)}
+.dice{margin:0 36px 30px;padding:20px 24px;border-radius:18px;background:var(--suave);font-size:28px;font-weight:600;line-height:1.35;opacity:0}
+.dice small{display:block;font-family:M;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);margin-bottom:6px}
+/* Teléfono del paciente */
+.pcab{height:150px;display:flex;align-items:flex-end;gap:18px;padding:0 30px 22px;border-bottom:1px solid var(--linea)}
+.pcab .av{background:#5B8DB8}
+.pcab b{display:block;font-size:30px}.pcab span{font-size:22px;color:var(--gris)}
+.tu{margin:30px 26px 0;font-family:B;font-weight:800;font-size:44px}
+.mini{margin:18px 26px 0;padding:22px 24px;border-radius:20px;background:var(--verde2);display:flex;justify-content:space-between;align-items:baseline;opacity:0}
+.mini span{font-size:28px;font-weight:700}
+.mini b{font-family:M;font-weight:600;font-size:30px;color:var(--verde)}
+.agendar{position:absolute;left:26px;right:26px;bottom:44px;background:var(--terra);color:#fff;border-radius:20px;padding:26px;text-align:center;font-size:30px;font-weight:700;opacity:0}
+.agendar.ok2{background:var(--verde)}
+</style></head>
+<body><div class="frame" id="frame">
+  <div class="marca">bodgar<b>.</b>dev · dentistas</div>
+
+  <div class="tit" id="t-cita"><h1>«Ya no <em>me duele</em>»</h1></div>
+  <div class="tit" id="t-falta"><h1>Y ya no <em>regresa</em></h1></div>
+  <div class="tit" id="t-pierde"><h1>−$4,200 <em>por paciente</em></h1><p>Ejemplo: 3 resinas × $1,400</p></div>
+  <div class="tit" id="t-mes"><h1>≈ $16,800 <em>al mes</em></h1><p>Ejemplo: 4 pacientes × $4,200</p></div>
+  <div class="tit" id="t-notas"><h1>Sí le <em>faltaba</em></h1></div>
+  <div class="tit" id="t-giro"><h1>¿Y si lo <em>viera?</em></h1></div>
+  <div class="tit" id="t-registra"><h1>Tú registras <em>el plan</em></h1></div>
+  <div class="tit" id="t-vista"><h1>Su plan, <em>a la vista</em></h1></div>
+  <div class="tit" id="t-sigue"><h1>Daniel agenda <em>la 3</em></h1></div>
+  <div class="tit" id="t-cierre"><h1>¿Te dejan el plan <em>a la mitad?</em></h1></div>
+
+  <!-- 1 · Cita 2 de 5 -->
+  <div class="card" id="paciente">
+    <div class="ccab"><span>Paciente</span><span class="ej">Ejemplo</span></div>
+    <div class="pac"><div class="av">D</div><div><b>Daniel V.</b><span>Plan de tratamiento · 5 citas</span></div><span class="estado">Hoy · cita 2</span></div>
+    <div class="barra"><i id="bar"></i></div>
+    <div class="datos"><span>Citas <b id="ses">0/5</b></span><span>Próxima <b>mar 5:00 PM</b></span></div>
+  </div>
+  <div class="globo" id="globo">Ya no me duele…<small>Daniel, al salir de su cita 2</small></div>
+
+  <!-- 2 · No llega -->
+  <div class="card" id="agenda">
+    <div class="ccab"><span>Agenda · Daniel V.</span><span class="ej">Ejemplo</span></div>
+    <div class="cita" id="a1"><span class="h">Mar 5:00</span><b>Cita 3<small>Resina</small></b><span class="st nst">No asistió</span></div>
+    <div class="cita" id="a2"><span class="h">—</span><b>Cita 4<small>Resina</small></b><span class="st sa">Sin agendar</span></div>
+    <div class="cita" id="a3"><span class="h">—</span><b>Cita 5<small>Resina</small></b><span class="st sa">Sin agendar</span></div>
+  </div>
+
+  <!-- 3 · Citas que faltaban -->
+  <div class="card" id="puntos">
+    <div class="ccab"><span>Plan de Daniel</span><span class="ej">Ejemplo</span></div>
+    <div class="ses" id="sesg"></div>
+    <div class="sesl"><span>Hecha</span><span>Hecha</span><span>Falta</span><span>Falta</span><span>Falta</span></div>
+    <div class="eq"><span>3 × $1,400</span><b id="ptot">$0</b></div>
+  </div>
+
+  <!-- 4 · Un mes -->
+  <div class="card" id="mes">
+    <div class="ccab"><span>Planes a medias · un mes</span><span class="ej">Ejemplo</span></div>
+    <div class="pfila" id="m1"><div class="av" style="background:#5B8DB8">D</div><div>Daniel V.<small>dejó en la cita 2</small></div><span class="der">−$4,200</span></div>
+    <div class="pfila" id="m2"><div class="av" style="background:#9C7BB5">R</div><div>Rosa M.<small>dejó en la cita 2</small></div><span class="der">−$4,200</span></div>
+    <div class="pfila" id="m3"><div class="av" style="background:#C99A3A">H</div><div>Hugo L.<small>dejó en la cita 2</small></div><span class="der">−$4,200</span></div>
+    <div class="pfila" id="m4"><div class="av" style="background:#6E9C82">C</div><div>Carmen S.<small>dejó en la cita 2</small></div><span class="der">−$4,200</span></div>
+    <div class="total"><span>Al mes</span><b id="mtot" style="color:var(--terra2)">$0</b></div>
+  </div>
+
+  <!-- 5 · El plan escondido en notas -->
+  <div class="card" id="notas">
+    <div class="ccab"><span>Expediente · notas</span><span class="ej">Ejemplo</span></div>
+    <div class="notas">
+      <p id="n1">C1 — Px llega con dolor en molar inferior. Se hace curación…</p>
+      <p id="n2">C2 — Resina en la pieza con dolor. Se observan <mark>3 piezas más con caries</mark>…</p>
+      <p id="n3">Plan — <mark>Resinas en citas 3, 4 y 5</mark>. Px refiere que «ya no le duele»…</p>
+    </div>
+    <div class="nunca" id="nunca">Daniel nunca vio su plan</div>
+  </div>
+
+  <div class="giro" id="giro"></div>
+
+  <!-- 7 · El dentista registra el plan -->
+  <div class="phone" id="phone1"><div class="scr">
+    <div class="otop"><b>Plan · Daniel V.</b><span>Dentista</span></div>
+    <div class="paso" id="c1"><span class="n">Cita 1</span>Curación<span class="chk v">✓</span></div>
+    <div class="paso" id="c2"><span class="n">Cita 2</span>Resina<span class="chk v">✓</span></div>
+    <div class="paso" id="c3"><span class="n">Cita 3</span>Resina<span class="chk"></span></div>
+    <div class="paso" id="c4"><span class="n">Cita 4</span>Resina<span class="chk"></span></div>
+    <div class="paso" id="c5"><span class="n">Cita 5</span>Resina<span class="chk"></span></div>
+    <div class="porq" id="cpq"><div class="k">Lo que verá Daniel · tus palabras</div><p id="ptxt"></p></div>
+    <div class="guardar" id="guardar">Guardar plan</div>
+  </div></div>
+
+  <!-- 8 · Su plan, a la vista -->
+  <div class="card" id="plan">
+    <div class="ccab"><span>Mi plan · Daniel V.</span><span class="ej">Ejemplo</span></div>
+    <div class="tl">
+      <div class="tlf v" id="l1"><div class="pt">✓</div><div><b>Cita 1 · Curación</b><span>Hecha</span></div></div>
+      <div class="tlf v" id="l2"><div class="pt">✓</div><div><b>Cita 2 · Resina</b><span>Hecha</span></div></div>
+      <div class="tlf s" id="l3"><div class="pt">3</div><div><b>Cita 3 · Resina</b><span>Sigue</span></div></div>
+      <div class="tlf" id="l4"><div class="pt">4</div><div><b>Citas 4 y 5 · Resinas</b><span>Después</span></div></div>
+    </div>
+    <div class="dice" id="dice"><small>Por qué · tu dentista</small>Son 3 caries pequeñas. Atenderlas ahora es más sencillo.</div>
+  </div>
+
+  <!-- 9 · El paciente lo ve y agenda -->
+  <div class="phone" id="phone2"><div class="scr">
+    <div class="pcab"><div class="av">D</div><div><b>Daniel V.</b><span>Mi tratamiento</span></div></div>
+    <div class="tu">Tu plan</div>
+    <div class="mini" id="p1"><span>Hechas</span><b>2 de 5</b></div>
+    <div class="mini" id="p2" style="background:#FBEADF"><span>Sigue</span><b style="color:var(--terra2)">Cita 3</b></div>
+    <div class="mini" id="p3" style="background:var(--suave)"><span>Faltan</span><b style="color:var(--tinta)">3 citas</b></div>
+    <div class="agendar" id="agendar">Agendar cita 3</div>
+  </div></div>
+
+  <div id="fin">
+    <div class="pasos"><span>Se registra</span><i>→</i><span>Se ve</span><i>→</i><span class="v">Sigue</span></div>
+    <p>Te cuento cómo lo haría para tu consultorio.</p>
+    <div class="url" id="url">bodgar.dev/plataformas/dentistas</div>
+    <div class="diag"><i>✓</i>Diagnóstico sin costo</div>
+    <div class="cifras">Las cifras del video son un ejemplo, no un resultado.</div>
+  </div>
+  <div id="tap"></div><div id="ripple"></div>
+</div>
+<script src="base.js"></script>
+<script>
+var POR = 'Son 3 caries pequeñas. Atenderlas ahora es más sencillo.';
+window.prepara = function () {
+  var h = '';
+  for (var i = 1; i <= 5; i++) h += '<i class="' + (i > 2 ? 'f' : '') + '">' + (i > 2 ? i : '✓') + '</i>';
+  $('sesg').innerHTML = h;
+};
+function telefono(el, a, b, t) {
+  var pin = easeOut(clamp((t - S[a]) / 0.6)), pout = easeOut(clamp((t - (E[b] - 0.35)) / 0.45));
+  el.style.opacity = t >= S[a] && t < E[b] + 0.1 ? 1 : 0;
+  el.style.transform = 'translateY(' + ((1 - pin) * 900 + pout * 1200) + 'px)';
+}
+window.escena = function (t) {
+  // 1 · Cita 2 de 5
+  bloque($('paciente'), 'cita', 'cita', t);
+  var q = easeOut(clamp((t - S.cita - 0.4) / 1.0));
+  $('bar').style.width = (40 * q) + '%'; $('ses').textContent = Math.round(2 * q) + '/5';
+  var g = t >= S.cita && t < E.cita + 0.1 ? Math.min(clamp((t - S.cita - 2.6) / 0.35), 1 - clamp((t - (E.cita - 0.3)) / 0.3)) : 0;
+  $('globo').style.opacity = g; $('globo').style.transform = 'scale(' + (0.9 + 0.1 * back(clamp((t - S.cita - 2.6) / 0.35))) + ')';
+
+  // 2 · No asistió
+  bloque($('agenda'), 'falta', 'falta', t);
+  ['a1', 'a2', 'a3'].forEach(function (id, i) { aparece(id, t, S.falta + 0.4 + i * 0.5, 50); });
+
+  // 3 · Tres citas sin dar
+  bloque($('puntos'), 'pierde', 'pierde', t);
+  document.querySelectorAll('#sesg i').forEach(function (el, i) {
+    var at = S.pierde + 0.3 + i * 0.3; var p = clamp((t - at) / 0.3);
+    el.style.transform = 'scale(' + (p ? 0.6 + 0.4 * back(p) : 0) + ')';
+  });
+  $('ptot').textContent = '−' + pesos(Math.round(cuenta(t, S.pierde + 2.0, 1.4, 4200) / 10) * 10);
+
+  // 4 · Un mes
+  bloque($('mes'), 'mes', 'mes', t);
+  ['m1', 'm2', 'm3', 'm4'].forEach(function (id, i) { aparece(id, t, S.mes + 0.4 + i * 0.45, 50); });
+  $('mtot').textContent = '−' + pesos(Math.round(cuenta(t, S.mes + 0.5, 2.2, 16800) / 10) * 10);
+
+  // 5 · Notas
+  bloque($('notas'), 'notas', 'notas', t);
+  ['n1', 'n2', 'n3'].forEach(function (id, i) { aparece(id, t, S.notas + 0.3 + i * 0.4, 0); });
+  var hi = clamp((t - S.notas - 1.8) / 0.4);
+  document.querySelectorAll('#notas mark').forEach(function (m) { m.style.background = 'rgba(201,111,74,' + (0.18 * hi) + ')'; m.style.color = hi > 0.5 ? 'var(--terra2)' : ''; m.style.fontWeight = hi > 0.5 ? 600 : 400; });
+  pop($('nunca'), t, S.notas + 2.6);
+
+  // 6 · Giro
+  giro($('giro'), t, 'giro');
+
+  // 7 · El dentista registra el plan
+  telefono($('phone1'), 'registra', 'registra', t);
+  ['c1', 'c2', 'c3', 'c4', 'c5'].forEach(function (id, i) { aparece(id, t, S.registra + 0.5 + i * 0.2, 30); });
+  aparece('cpq', t, S.registra + 1.6); aparece('guardar', t, S.registra + 1.6);
+  var n = Math.round(POR.length * clamp((t - S.registra - 1.9) / 2.2));
+  $('ptxt').textContent = POR.slice(0, n);
+  var tapG = S.registra + 4.8, tapped = false;
+  if (t > tapG - 0.5 && t < tapG + 0.4 && t < E.registra) tapped = toque(t, tapG, $('guardar'));
+  $('guardar').textContent = t >= tapG ? '✓ Plan guardado' : 'Guardar plan';
+  $('guardar').classList.toggle('ok2', t >= tapG);
+
+  // 8 · Su plan, a la vista
+  bloque($('plan'), 'vista', 'vista', t);
+  ['l1', 'l2', 'l3', 'l4'].forEach(function (id, i) { aparece(id, t, S.vista + 0.4 + i * 0.35, 40); });
+  aparece('dice', t, S.vista + 2.0);
+
+  // 9 · Daniel agenda
+  telefono($('phone2'), 'sigue', 'sigue', t);
+  ['p1', 'p2', 'p3'].forEach(function (id, i) { aparece(id, t, S.sigue + 0.4 + i * 0.25, 40); });
+  aparece('agendar', t, S.sigue + 0.9);
+  var tapA = S.sigue + 2.2;
+  if (t > tapA - 0.5 && t < tapA + 0.4 && t < E.sigue) tapped = toque(t, tapA, $('agendar')) || tapped;
+  $('agendar').textContent = t >= tapA ? '✓ Cita 3 · jueves 5:00 PM' : 'Agendar cita 3';
+  $('agendar').classList.toggle('ok2', t >= tapA);
+  return tapped;
+};
+</script>
+</body></html>
